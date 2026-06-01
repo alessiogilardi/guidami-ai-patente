@@ -35,8 +35,8 @@ MAX_RETRIES = 3
 
 
 class LawConfig(TypedDict):
-    slug: str         # used for directory and file naming
-    toc_url: str      # normattiva.it URN URL with !vig=
+    slug: str  # used for directory and file naming
+    toc_url: str  # normattiva.it URN URL with !vig=
     output_name: str  # output JSON filename
 
 
@@ -66,13 +66,13 @@ class ArticleParams(TypedDict):
 
 
 class ArticleRecord(TypedDict):
-    numero: str
-    titolo: str
+    number: str
+    title: str
     text: str
-    commi: list[str]
+    paragraphs: list[str]
     url: str
     scraped_at: str
-    abrogato: bool
+    repealed: bool  # abrogato
 
 
 def _sotto_articolo_suffix(sotto: str) -> str:
@@ -164,13 +164,13 @@ def _parse_article(html: str, url: str) -> ArticleRecord:
     abrogato = bool(soup.find(class_="abrogato")) or "abrogato" in html.lower()
 
     return ArticleRecord(
-        numero=numero,
-        titolo=titolo,
+        number=numero,
+        title=titolo,
         text=text,
-        commi=commi,
+        paragraphs=commi,
         url=url,
         scraped_at=datetime.now(UTC).isoformat(),
-        abrogato=abrogato,
+        repealed=abrogato,
     )
 
 
@@ -241,9 +241,7 @@ def main(law: LawConfig) -> None:
             suffix = _sotto_articolo_suffix(params["idSottoArticolo"])
             label = f"Art. {params['idArticolo']}{suffix}"
             url = _build_article_url(params)
-            raw_filename = (
-                f"art_{int(params['idArticolo']):04d}_{params['idSottoArticolo']}.html"
-            )
+            raw_filename = f"art_{int(params['idArticolo']):04d}_{params['idSottoArticolo']}.html"
 
             print(f"[{i}/{len(articles_params)}] {label}…", end=" ", flush=True)
 
