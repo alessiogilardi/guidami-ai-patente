@@ -8,11 +8,14 @@ dependencies = [
     "beautifulsoup4>=4.14.3",
     "httpx>=0.28.1",
     "lxml>=6.1.1",
+    "pdfplumber>=0.11.9",
+    "pymupdf>=1.27.2.3",
 ]
 
 [project.scripts]
-scrape-codice = "scrapers.normattiva:main_cds"
-scrape-cap    = "scrapers.normattiva:main_cap"
+scrape-codice  = "scrapers.normattiva:main_cds"
+scrape-cap     = "scrapers.normattiva:main_cap"
+parse-domande  = "parsers.questions_pdf:main_domande"
 
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12.0"]
