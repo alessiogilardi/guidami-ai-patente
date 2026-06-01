@@ -1,0 +1,23 @@
+{
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        },
+        // Solo due righelli: 72 per la documentazione, 99 per il codice
+        "editor.rulers": [72, 99],
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true
+    },
+
+    // Configurazione Ruff
+    "ruff.enable": true,
+    "ruff.nativeServer": "on",
+
+    // Configurazione Pylance (Minimale per evitare conflitti)
+    "python.languageServer": "Pylance",
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.autoImportCompletions": true
+}
