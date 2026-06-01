@@ -17,3 +17,35 @@ scrape-cap    = "scrapers.normattiva:main_cap"
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.408",
+    "pytest>=9.0.3",
+    "ruff>=0.15.10",
+]
+
+[tool.ruff]
+line-length = 99
+target-version = "py312"
+
+[tool.ruff.lint]
+# E, F = PEP8, I = isort, G = logging, D = docstring, UP = modernizzazione
+select = ["E", "F", "I", "G", "D", "UP"]
+ignore = [
+    "D100", # missing-module-docstring
+    "G004", # logging-fstring-interpolation
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.pyright]
+include = ["src"]
+# Impostazioni di analisi
+typeCheckingMode = "standard"
+pythonVersion = "3.12"
+useLibraryCodeForTypes = true
+reportMissingTypeStubs = false
+# Esclude il controllo dei tipi sulle dipendenze esterne installate
+reportMissingImports = "none"
