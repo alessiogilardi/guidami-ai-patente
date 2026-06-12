@@ -72,38 +72,77 @@ Pezzo a più alto valore di test isolato: logica pura, nessun I/O.
   `chunk_text`.
 
 ### 3. `orchestrators/knowledge_indexing/indexing_pipeline.py` —
-   `IndexingPipeline`
+   `IndexingPipeline` — ✅ fatto
 
 - Dipendenze iniettate: `ArticleLoader`, `ArticleChunker`, `EmbeddingClient`,
   `VectorStoreClient` (da `commons`), `IngestorConfig`.
-- `run() -> None`:
-  1. `load`: `ArticleLoader.load(...)` per `cds` e `cap`.
-  2. `chunk`: `ArticleChunker.chunk(article, source)` per ogni articolo →
-     `list[KnowledgeChunk]` (senza `embedding`).
-  3. `embed`: `EmbeddingClient.embed_passages([c.chunk_text for c in
-     chunks])` in batch (size configurabile), assegna `chunk.embedding`.
+- `run() -> None`, layout **flat** (ogni passaggio una riga sequenziale, senza
+  nidificazione):
+  1. `load`: due chiamate separate ad `ArticleLoader.load(...)`, una per
+     `cds_path` e una per `cap_path` — step di load completato prima di
+     iniziare il chunking.
+  2. `chunk`: per ciascun set di articoli, helper privato `_chunk_articles`
+     chiama `ArticleChunker.chunk(article, source)` per ogni articolo →
+     `list[KnowledgeChunk]` (senza `embedding`); i due risultati (`cds`,
+     `cap`) vengono concatenati.
+  3. `embed`: helper privato `_assign_embeddings` itera i chunk a batch di
+     `config.embedding_batch_size`, chiama `EmbeddingClient.embed_passages([c.chunk_text
+     for c in batch])` e assegna `chunk.embedding` in place (campo mutabile,
+     non frozen).
   4. `load`: `VectorStoreClient.truncate()` poi `bulk_insert(chunks)`.
-- Test: integrazione contro Postgres del compose (richiede `commons` step 4
-  e 1 completati) — verifica conteggio righe finale == numero chunk generati
-  dall'`ArticleChunker` sui dati reali (o su un sottoinsieme).
+- Test: `tests/guidami_ai_patente_ingestor/orchestrators/knowledge_indexing/test_indexing_pipeline.py`
+  — unit, nessun I/O reale. Un test usa `ArticleLoader`/`ArticleChunker` reali
+  sulle fixture esistenti (cds/cap sample) con `EmbeddingClient`/`VectorStoreClient`
+  mockati, verifica batching degli embedding e che `truncate()` precede
+  `bulk_insert()`; un secondo test mocka anche `ArticleLoader`/`ArticleChunker`
+  per verificare che **entrambi** i load avvengano prima di qualsiasi chunk
+  (step separati, non interlacciati).
+- Test di integrazione contro Postgres reale (full pipeline con modello e DB
+  veri) **rimandato**, da marcare `@pytest.mark.integration` quando
+  implementato — non bloccante per questo step.
 
 ### 4. `orchestrators/knowledge_indexing/indexing_pipeline_builder.py` —
-   `IndexingPipelineBuilder`
+   `IndexingPipelineBuilder` — ✅ fatto
 
-- Valida `IngestorConfig`, istanzia le dipendenze concrete (`E5SmallEmbeddingClient`,
-  `VectorStoreClient`, `ArticleLoader`, `ArticleChunker`) e assembla `IndexingPipeline`.
+- Valida `IngestorConfig` (esistenza di `cds_path`/`cap_path`, fail-fast con
+  `FileNotFoundError` **prima** di istanziare `E5SmallEmbeddingClient`
+  — carica il modello sentence-transformers — o `VectorStoreClient` — apre
+  connessione Postgres), istanzia le dipendenze concrete
+  (`E5SmallEmbeddingClient`, `VectorStoreClient`, `ArticleLoader`,
+  `ArticleChunker`) e assembla `IndexingPipeline`.
+- Nessuna classe di eccezioni dedicata: `FileNotFoundError` con messaggio
+  chiaro è sufficiente a questa scala (coerente con KISS).
+- Test: `tests/guidami_ai_patente_ingestor/orchestrators/knowledge_indexing/test_indexing_pipeline_builder.py`
+  — verifica che path sorgente mancanti facciano fallire `build()` con
+  `FileNotFoundError` **senza** istanziare `E5SmallEmbeddingClient`/
+  `VectorStoreClient` (mockati per fallire il test se chiamati). Il caso
+  "path validi → pipeline costruita" richiederebbe download del modello e
+  connessione Postgres reale: rimandato a test di integrazione futuro.
 
-### 5. `configs/ingestor_config.py` — `IngestorConfig`
+### 5. `configs/ingestor_config.py` — `IngestorConfig` — ✅ fatto
 
-- Path ai JSON sorgente (`cds_path`, `cap_path`, default da
-  `data/processed/...`), batch size embedding, aggrega `EmbeddingConfig` e
-  `VectorStoreConfig` di `commons`.
+- `BaseModel` con `model_config = ConfigDict(frozen=True)`.
+- Campi: `cds_path` (default `data/processed/cds/codice_della_strada.json`),
+  `cap_path` (default `data/processed/cap/codice_rca.json` — **non**
+  `codice_assicurazioni_private.json`, che contiene 610 articoli del codice
+  completo invece dei 96 rilevanti per RCA, vedi `architecture-ingestor.md`),
+  `embedding_batch_size` (default 64), `embedding: EmbeddingConfig` (default
+  `EmbeddingConfig()`), `vector_store: VectorStoreConfig` (obbligatorio, nessun
+  default perché `database_url` è richiesto).
+- Test: `tests/guidami_ai_patente_ingestor/configs/test_ingestor_config.py` —
+  default dei path, `vector_store` obbligatorio, immutabilità (`frozen=True`).
 
-### 6. `main.py` + script CLI
+### 6. `main.py` + script CLI — ✅ fatto
 
-- `main()`: carica `IngestorConfig` (da env/yaml), costruisce pipeline via
-  `IndexingPipelineBuilder`, chiama `run()`.
-- Registra `ingest-knowledge = "guidami_ai_patente_ingestor.main:main"` in
+- `main()`: costruisce `IngestorConfig` con `VectorStoreConfig(database_url=os.environ["DATABASE_URL"])`,
+  assembla la pipeline via `IndexingPipelineBuilder(config).build()` e chiama
+  `run()`.
+- `DATABASE_URL` letto direttamente da `os.environ` in `main.py` (unico punto
+  di caricamento config, come da regola architetturale). Nessuna dipendenza
+  `pydantic-settings` introdotta: per un'unica variabile d'ambiente
+  `os.environ["DATABASE_URL"]` è la soluzione più semplice. Da rivalutare se in
+  futuro nascerà un `AppConfig` più ampio condiviso con l'applicativo.
+- Registrato `ingest-knowledge = "guidami_ai_patente_ingestor.main:main"` in
   `[project.scripts]`.
 
 ## File layout (da architecture-code-layout.md)
@@ -112,6 +151,7 @@ Pezzo a più alto valore di test isolato: logica pura, nessun I/O.
 guidami_ai_patente_ingestor/
   __init__.py
   orchestrators/
+    __init__.py
     knowledge_indexing/
       __init__.py
       indexing_pipeline.py
@@ -132,6 +172,9 @@ guidami_ai_patente_ingestor/
 
 ## Stato
 
-Step 1-2 completati (`Article`, `ArticleLoader`, `ArticleChunker`, con test su
-fixture reali). `ruff check` e `pyright` su `src/guidami_ai_patente_ingestor`
-e relativi test puliti. Prossimo step: 3 (`IndexingPipeline`).
+Step 1-6 completati: `Article`, `ArticleLoader`, `ArticleChunker`,
+`IndexingPipeline`, `IndexingPipelineBuilder`, `IngestorConfig`, `main.py` +
+script `ingest-knowledge`. `uv run pytest tests/guidami_ai_patente_ingestor/`
+(13 test) e `ruff check`/`pyright` su `src/guidami_ai_patente_ingestor` e
+relativi test puliti. Resta da fare (non bloccante): test di integrazione end
+to end contro Postgres + modello reali (`@pytest.mark.integration`).
