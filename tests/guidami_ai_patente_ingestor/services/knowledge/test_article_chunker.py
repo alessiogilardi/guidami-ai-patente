@@ -1,0 +1,68 @@
+from pathlib import Path
+
+from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleLoader
+
+FIXTURES_DIR = Path(__file__).parents[2] / "fixtures"
+
+
+def _load_cds() -> dict[str, object]:
+    articles = ArticleLoader().load(FIXTURES_DIR / "cds_sample.json")
+    return {article.number: article for article in articles}
+
+
+def _load_cap() -> dict[str, object]:
+    articles = ArticleLoader().load(FIXTURES_DIR / "cap_sample.json")
+    return {article.number: article for article in articles}
+
+
+def test_normal_article_chunks_text_and_paragraphs_without_markup() -> None:
+    article = _load_cds()["1"]
+
+    chunks = ArticleChunker().chunk(article, source="cds")
+
+    assert [chunk.comma_index for chunk in chunks] == [0, 1, 2, 3, 4]
+    assert all(chunk.article_number == "1" for chunk in chunks)
+    assert all(chunk.source == "cds" for chunk in chunks)
+    assert all("((" not in chunk.chunk_text and "))" not in chunk.chunk_text for chunk in chunks)
+    assert chunks[0].chunk_text.startswith("1. La sicurezza")
+    assert all(chunk.is_repealed is False for chunk in chunks)
+
+
+def test_empty_text_article_starts_chunking_from_paragraphs() -> None:
+    article = _load_cap()["118"]
+
+    chunks = ArticleChunker().chunk(article, source="cap")
+
+    assert [chunk.comma_index for chunk in chunks] == [1, 2, 3, 4]
+
+
+def test_abrogato_comma_marks_only_that_chunk_as_repealed() -> None:
+    article = _load_cds()["231"]
+
+    chunks = ArticleChunker().chunk(article, source="cds")
+
+    by_comma = {chunk.comma_index: chunk for chunk in chunks}
+    assert by_comma[1].is_repealed is True
+    assert by_comma[2].is_repealed is True
+    assert by_comma[3].is_repealed is False
+
+
+def test_fully_repealed_article_marks_all_chunks_as_repealed() -> None:
+    article = _load_cds()["2"]
+
+    chunks = ArticleChunker().chunk(article, source="cds")
+
+    assert len(chunks) == 10
+    assert all(chunk.is_repealed is True for chunk in chunks)
+
+
+def test_non_numeric_article_number_is_kept_as_string_and_markup_removed() -> None:
+    article = _load_cds()["94-bis"]
+
+    chunks = ArticleChunker().chunk(article, source="cds")
+
+    assert all(chunk.article_number == "94-bis" for chunk in chunks)
+    second_chunk = next(chunk for chunk in chunks if chunk.comma_index == 2)
+    assert "da € 543 a € 2.170" in second_chunk.chunk_text
+    assert "163" in second_chunk.chunk_text
+    assert "((" not in second_chunk.chunk_text
