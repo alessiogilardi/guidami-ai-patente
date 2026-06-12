@@ -34,6 +34,26 @@ uv add <package>
 
 Register new CLI commands under `[project.scripts]` in `pyproject.toml`.
 
+## Architettura
+
+- Progettazione (anche non ancora implementata): `plans/`. Prima di iniziare un
+  task implementativo, leggere sempre i piani partendo da
+  [plans/architecture-index.md](plans/architecture-index.md) e seguendo i
+  documenti collegati.
+- Decisioni architetturali **effettivamente implementate**:
+  [.claude/architectures/index.md](.claude/architectures/index.md). Al termine
+  di un task implementativo, invocare l'agente `architecture-doc-keeper`
+  (definito in [.claude/agents/architecture-doc-keeper.md](.claude/agents/architecture-doc-keeper.md))
+  per aggiornare questa cartella con le decisioni prese e il design
+  effettivamente realizzato — non modificare direttamente i file in
+  `.claude/architectures/`.
+
+## Code Conventions
+
+- Pydantic config classes (anything under `configs/`) must set
+  `model_config = ConfigDict(frozen=True)` — configurations are immutable
+  once loaded.
+
 ## Data Notes
 
 - `data/docs/domande AB italiano 23 04 2025.pdf` — official question bank for categories A/B, Italian language, dated April 2025.
