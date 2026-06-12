@@ -24,7 +24,15 @@ uv run pytest tests/path/to/test_file.py::test_name
 uv add <package>
 ```
 
-No entry-point scripts exist yet. When adding CLI commands, register them under `[project.scripts]` in `pyproject.toml`.
+### Available scripts
+
+| Command | Entry point | Output |
+|---|---|---|
+| `uv run scrape-codice` | `scrapers.normattiva:main_cds` | `data/raw/cds/`, `data/processed/cds/codice_della_strada.json` |
+| `uv run scrape-cap` | `scrapers.normattiva:main_cap` | `data/raw/cap/`, `data/processed/cap/codice_assicurazioni_private.json` |
+| `uv run parse-domande` | `parsers.domande_pdf:main_domande` | `data/processed/quiz-patente-ab/quiz-patente-ab.json`, `data/processed/quiz-patente-ab/images/` |
+
+Register new CLI commands under `[project.scripts]` in `pyproject.toml`.
 
 ## Data Notes
 
