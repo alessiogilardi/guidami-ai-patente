@@ -9,13 +9,18 @@ dependencies = [
     "httpx>=0.28.1",
     "lxml>=6.1.1",
     "pdfplumber>=0.11.9",
+    "pgvector>=0.4.2",
+    "psycopg[binary]>=3.3.4",
+    "pydantic>=2.13.4",
     "pymupdf>=1.27.2.3",
+    "sentence-transformers>=5.5.1",
 ]
 
 [project.scripts]
-scrape-codice  = "scrapers.normattiva:main_cds"
-scrape-cap     = "scrapers.normattiva:main_cap"
-parse-domande  = "parsers.questions_pdf:main_domande"
+scrape-codice    = "scrapers.normattiva:main_cds"
+scrape-cap       = "scrapers.normattiva:main_cap"
+parse-domande    = "parsers.questions_pdf:main_domande"
+ingest-knowledge = "guidami_ai_patente_ingestor.main:main"
 
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12.0"]
@@ -42,6 +47,15 @@ ignore = [
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Nomi dei test sono autoesplicativi, niente docstring richieste.
+"tests/**" = ["D101", "D102", "D103"]
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: tests that require external services (Postgres, model downloads, ...)",
+]
 
 [tool.pyright]
 include = ["src"]
