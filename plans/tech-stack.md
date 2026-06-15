@@ -4,12 +4,14 @@ Riferimento da [architecture-index.md](architecture-index.md).
 
 ## Vector store
 
-Postgres + pgvector, gestito via Docker (docker-compose). Il Postgres viene
-predisposto da subito ma per la v1 è usato solo per i vettori del corpus
-normativo (CdS + CAP) — la sessione resta ephemeral (in-memory, vedi
-architecture-index.md, sezione persistenza sessione). Avere già il DB pronto
-evita di reintrodurre infrastruttura quando in futuro arriverà la persistenza di
-sessione/progress (v2): un solo storage per dati relazionali e vettoriali.
+Postgres + pgvector, gestito via Docker (docker-compose). Dalla v1 il Postgres
+ospita sia i vettori del corpus normativo (CdS + CAP, tabella
+`knowledge_chunks`) sia il quiz bank relazionale (tabella `quiz_questions`,
+vedi [architecture-quiz-bank.md](architecture-quiz-bank.md)) — la sessione
+resta invece ephemeral (in-memory, vedi architecture-index.md, sezione
+persistenza sessione). Un solo storage per dati relazionali e vettoriali evita
+di reintrodurre infrastruttura quando in futuro arriverà la persistenza di
+sessione/progress (v2).
 
 ## Embeddings
 

@@ -23,6 +23,8 @@ store) e un'applicazione backend (FastAPI) che serve il quiz bot.
 - [tech-stack.md](tech-stack.md) — vector store, embeddings, LLM
 - [architecture-ingestor.md](architecture-ingestor.md) — schema vector store,
   chunking, flusso di ingestion
+- [architecture-quiz-bank.md](architecture-quiz-bank.md) — schema tabella
+  `quiz_questions`, flusso di ingestion del quiz bank
 - [architecture-code-layout.md](architecture-code-layout.md) — organizzazione del
   codice (layer `common`, ingestor, applicativo)
 
@@ -33,7 +35,7 @@ store) e un'applicazione backend (FastAPI) che serve il quiz bot.
 | Tipo | Contenuto | Quando cambia | Dove vive |
 |---|---|---|---|
 | Knowledge base (corpus normativo) | CdS + CAP, chunkati per paragrafo/comma con metadata (codice, articolo, titolo) | Solo a re-scrape della fonte | Vector store Postgres/pgvector (vedi [tech-stack.md](tech-stack.md)) |
-| Quiz bank (ground truth) | 7106 sotto-domande con risposta corretta | Solo a nuovo import PDF | JSON statico, caricato in memoria all'avvio — NON va in retrieval |
+| Quiz bank (ground truth) | 7106 sotto-domande con risposta corretta, una riga per sotto-domanda | Solo a nuovo import PDF (full reload) | Tabella relazionale Postgres `quiz_questions` (vedi [architecture-quiz-bank.md](architecture-quiz-bank.md)), interrogata on-demand da `QuizRepository` — NON va in retrieval |
 | Conversazione/sessione | Cronologia chat per utente, domanda corrente, risposta data | Per ogni sessione utente | Store ephemeral (in-memory), dietro repository astratto |
 
 Il check corretto/sbagliato resta **deterministico** (confronto diretto con
@@ -50,7 +52,8 @@ Ephemeral per v1 (in-memory, niente DB/auth), ma dietro un'interfaccia
 
 ## Flusso runtime
 
-1. `QuizRepository` serve una sotto-domanda → utente risponde
+1. `QuizRepository` (Postgres-backed, query on-demand su `quiz_questions`)
+   serve una sotto-domanda → utente risponde
 2. `AnswerChecker` confronta con `correct_answer` (zero LLM, istantaneo)
 3. `ExplanationService`: embed della domanda → retrieval top-k chunk da pgvector
    (CdS+CAP) → prompt a Groq con domanda + risposta utente + esito + chunk

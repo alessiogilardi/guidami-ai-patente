@@ -58,8 +58,12 @@ istantaneo). Se il corpus crescesse di ordini di grandezza, valutare HNSW con
    coerente con l'addestramento standard dei modelli sentence-transformers.
 
 6. **Client DB**: `psycopg` (v3) + libreria Python `pgvector` (adapter
-   numpy↔vector) in `clients/vector_store_client.py`. Niente SQLAlchemy — overhead
-   non giustificato per una singola tabella a questa scala.
+   numpy↔vector), tramite `PostgresClient` generico e table-agnostic in
+   `commons/clients/postgres_client.py` (condiviso con `quiz_questions`, vedi
+   [architecture-quiz-bank.md](architecture-quiz-bank.md), decisione 8) +
+   `KnowledgeChunkStoreRepository` nell'ingestor per truncate/bulk insert su
+   `knowledge_chunks`. Niente SQLAlchemy — overhead non giustificato per
+   poche tabelle a questa scala.
 
 7. **Gestione schema**: `db/init.sql` montato in
    `/docker-entrypoint-initdb.d/` del container Postgres, eseguito automaticamente
@@ -70,10 +74,12 @@ istantaneo). Se il corpus crescesse di ordini di grandezza, valutare HNSW con
    (es. `uv run ingest-knowledge`), seguendo la convenzione di
    `scrape-codice`/`parse-domande`. Config a due livelli: YAML committato
    (non-secret, `configs/ingestor_config.yaml`) + env/`.env` per le sole
-   credenziali DB (`VECTOR_STORE__USER`/`VECTOR_STORE__PASSWORD`), caricati da
-   `IngestorConfig` (`pydantic_settings.BaseSettings`) a livello di entry
-   point — vedi `.claude/architectures/ingestor.md` per i dettagli
-   implementati.
+   credenziali DB (`POSTGRES__USER`/`POSTGRES__PASSWORD`, rinominate da
+   `VECTOR_STORE__USER`/`PASSWORD` — vedi
+   [architecture-quiz-bank.md](architecture-quiz-bank.md), decisione 7),
+   caricati da `IngestorConfig` (`pydantic_settings.BaseSettings`) a livello
+   di entry point — vedi `.claude/architectures/ingestor.md` per i dettagli
+   implementati finora.
 
 ## Flusso di ingestion
 
@@ -112,4 +118,11 @@ e5-small sui casi reali.
 
 ## Stato
 
-Decisioni prese, nessuna implementazione ancora avviata.
+**Implementato**: pipeline `knowledge_indexing` (load/chunk/embed/store) e
+schema `knowledge_chunks` in `db/init.sql`. Decisioni 6-8 (client/config
+Postgres condivisi con `quiz_questions`, `PostgresClient` generico +
+`KnowledgeChunkStoreRepository`, comando `uv run ingest-knowledge`) aggiornate
+e implementate insieme al refactor descritto in
+[architecture-quiz-bank.md](architecture-quiz-bank.md) (decisioni 7-8).
+Hybrid search (sezione "Possibili estensioni future") non implementato,
+rimandato come da nota.
