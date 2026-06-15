@@ -1,3 +1,4 @@
+import logging
 from typing import Literal
 
 from commons.clients import EmbeddingClient, VectorStoreClient
@@ -5,6 +6,8 @@ from commons.models.knowledge import KnowledgeChunk
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.entities import Article
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleLoader
+
+logger = logging.getLogger(__name__)
 
 
 class IndexingPipeline:
@@ -29,15 +32,22 @@ class IndexingPipeline:
         """Esegue il full reload di `knowledge_chunks` da CdS e CAP."""
         cds_articles = self._article_loader.load(self._config.cds_path)
         cap_articles = self._article_loader.load(self._config.cap_path)
+        logger.info(f"loaded {len(cds_articles)} CdS articles, {len(cap_articles)} CAP articles")
 
         cds_chunks = self._chunk_articles(cds_articles, source="cds")
         cap_chunks = self._chunk_articles(cap_articles, source="cap")
         chunks = cds_chunks + cap_chunks
+        logger.info(
+            f"generated {len(cds_chunks)} CdS chunks, {len(cap_chunks)} CAP chunks "
+            f"({len(chunks)} total)"
+        )
 
         self._assign_embeddings(chunks)
 
+        logger.info(f"truncating knowledge_chunks, inserting {len(chunks)} chunks")
         self._vector_store_client.truncate()
         self._vector_store_client.bulk_insert(chunks)
+        logger.info("insertion completed")
 
     def _chunk_articles(
         self, articles: list[Article], source: Literal["cds", "cap"]
@@ -50,8 +60,11 @@ class IndexingPipeline:
 
     def _assign_embeddings(self, chunks: list[KnowledgeChunk]) -> None:
         batch_size = self._config.embedding_batch_size
+        total_batches = -(-len(chunks) // batch_size)  # ceil division
         for start in range(0, len(chunks), batch_size):
             batch = chunks[start : start + batch_size]
+            batch_number = start // batch_size + 1
+            logger.info(f"embedding batch {batch_number}/{total_batches} ({len(batch)} chunks)")
             vectors = self._embedding_client.embed_passages(
                 [chunk.chunk_text for chunk in batch]
             )
