@@ -1,4 +1,4 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, SecretStr
 
 
 class VectorStoreConfig(BaseModel):
@@ -6,5 +6,10 @@ class VectorStoreConfig(BaseModel):
 
     model_config = ConfigDict(frozen=True)
 
-    database_url: str
+    host: str
+    port: int = 5432
+    user: str
+    password: SecretStr
+    dbname: str
+    sslmode: str | None = None
     table_name: str = "knowledge_chunks"
