@@ -1,11 +1,14 @@
 from pathlib import Path
 from unittest.mock import Mock, call
 
-from commons.clients import EmbeddingClient, VectorStoreClient
-from commons.configs import VectorStoreConfig
+from commons.clients import EmbeddingClient
+from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators.knowledge_indexing import IndexingPipeline
-from guidami_ai_patente_ingestor.repositories import ArticleRepository
+from guidami_ai_patente_ingestor.repositories import (
+    ArticleRepository,
+    KnowledgeChunkStoreRepository,
+)
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker
 
 FIXTURES_DIR = Path(__file__).parents[2] / "fixtures"
@@ -16,7 +19,7 @@ def _build_config(embedding_batch_size: int) -> IngestorConfig:
         cds_cleaned_path=FIXTURES_DIR / "cds_sample.json",
         cap_cleaned_path=FIXTURES_DIR / "cap_sample.json",
         embedding_batch_size=embedding_batch_size,
-        vector_store=VectorStoreConfig(
+        postgres=PostgresConnectionConfig(
             host="localhost", user="unused", password="unused", dbname="unused"
         ),
     )
@@ -38,29 +41,29 @@ def _expected_chunks() -> list:
     return cds + cap
 
 
-def test_run_assigns_embeddings_in_batches_and_reloads_vector_store() -> None:
+def test_run_assigns_embeddings_in_batches_and_reloads_knowledge_chunks() -> None:
     expected_chunks = _expected_chunks()
     batch_size = 2
 
     embedding_client = Mock(spec=EmbeddingClient)
     embedding_client.embed_passages.side_effect = lambda texts: [[float(len(t))] for t in texts]
 
-    vector_store_client = Mock(spec=VectorStoreClient)
+    knowledge_chunk_store_repository = Mock(spec=KnowledgeChunkStoreRepository)
 
     pipeline = IndexingPipeline(
         article_repository=ArticleRepository(),
         article_chunker=ArticleChunker(),
         embedding_client=embedding_client,
-        vector_store_client=vector_store_client,
+        knowledge_chunk_store_repository=knowledge_chunk_store_repository,
         config=_build_config(batch_size),
     )
 
     pipeline.run()
 
-    assert vector_store_client.method_calls[0] == call.truncate()
-    assert vector_store_client.method_calls[1][0] == "bulk_insert"
+    assert knowledge_chunk_store_repository.method_calls[0] == call.truncate()
+    assert knowledge_chunk_store_repository.method_calls[1][0] == "bulk_insert"
 
-    inserted_chunks = vector_store_client.bulk_insert.call_args.args[0]
+    inserted_chunks = knowledge_chunk_store_repository.bulk_insert.call_args.args[0]
     assert len(inserted_chunks) == len(expected_chunks)
     assert all(chunk.embedding == [float(len(chunk.chunk_text))] for chunk in inserted_chunks)
 
@@ -89,13 +92,13 @@ def test_run_loads_both_sources_before_chunking() -> None:
 
     embedding_client = Mock(spec=EmbeddingClient)
     embedding_client.embed_passages.return_value = []
-    vector_store_client = Mock(spec=VectorStoreClient)
+    knowledge_chunk_store_repository = Mock(spec=KnowledgeChunkStoreRepository)
 
     pipeline = IndexingPipeline(
         article_repository=article_repository,
         article_chunker=article_chunker,
         embedding_client=embedding_client,
-        vector_store_client=vector_store_client,
+        knowledge_chunk_store_repository=knowledge_chunk_store_repository,
         config=config,
     )
 

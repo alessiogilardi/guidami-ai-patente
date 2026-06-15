@@ -3,7 +3,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from commons.configs import VectorStoreConfig
+from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators.knowledge_cleaning import (
     CleaningPipeline,
@@ -22,7 +22,7 @@ def _build_config(
     return IngestorConfig(
         cds_parsed_path=cds_parsed_path,
         cap_parsed_path=cap_parsed_path,
-        vector_store=VectorStoreConfig(
+        postgres=PostgresConnectionConfig(
             host="localhost", user="unused", password="unused", dbname="unused"
         ),
     )

@@ -1,7 +1,7 @@
 from pathlib import Path
 from unittest.mock import Mock
 
-from commons.configs import VectorStoreConfig
+from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators.knowledge_cleaning import CleaningPipeline
 from guidami_ai_patente_ingestor.repositories import ArticleRepository
@@ -25,7 +25,7 @@ def _build_config(
         cds_cleaned_path=cds_cleaned_path,
         cap_parsed_path=tmp_path / "parsed" / "cap.json",
         cap_cleaned_path=cap_cleaned_path,
-        vector_store=VectorStoreConfig(
+        postgres=PostgresConnectionConfig(
             host="localhost", user="unused", password="unused", dbname="unused"
         ),
     )
