@@ -8,7 +8,11 @@ from guidami_ai_patente_ingestor.configs import IngestorConfig
 
 
 def _build_config() -> IngestorConfig:
-    return IngestorConfig(vector_store=VectorStoreConfig(database_url="postgresql://unused"))
+    return IngestorConfig(
+        vector_store=VectorStoreConfig(
+            host="localhost", user="unused", password="unused", dbname="unused"
+        )
+    )
 
 
 def test_default_paths_point_to_expected_source_files() -> None:
@@ -18,9 +22,12 @@ def test_default_paths_point_to_expected_source_files() -> None:
     assert config.cap_path == Path("data/processed/cap/codice_rca.json")
 
 
-def test_vector_store_is_required() -> None:
+def test_vector_store_is_required(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("VECTOR_STORE__USER", raising=False)
+    monkeypatch.delenv("VECTOR_STORE__PASSWORD", raising=False)
+
     with pytest.raises(ValidationError):
-        IngestorConfig()
+        IngestorConfig(_env_file=None)
 
 
 def test_config_is_frozen() -> None:

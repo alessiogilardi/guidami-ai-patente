@@ -24,7 +24,9 @@ def _build_config(
     return IngestorConfig(
         cds_path=cds_path,
         cap_path=cap_path,
-        vector_store=VectorStoreConfig(database_url="postgresql://unused"),
+        vector_store=VectorStoreConfig(
+            host="localhost", user="unused", password="unused", dbname="unused"
+        ),
     )
 
 

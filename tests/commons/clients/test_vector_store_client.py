@@ -6,12 +6,17 @@ from commons.clients import VectorStoreClient
 from commons.configs import VectorStoreConfig
 from commons.models.knowledge import KnowledgeChunk
 
-DATABASE_URL = "postgresql://guidami:guidami@localhost:5432/guidami_ai_patente"
-
 
 @pytest.fixture
 def client() -> Iterator[VectorStoreClient]:
-    with VectorStoreClient(VectorStoreConfig(database_url=DATABASE_URL)) as client:
+    config = VectorStoreConfig(
+        host="localhost",
+        port=5432,
+        user="guidami",
+        password="guidami",
+        dbname="guidami_ai_patente",
+    )
+    with VectorStoreClient(config) as client:
         client.truncate()
         yield client
         client.truncate()

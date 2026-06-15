@@ -15,7 +15,9 @@ def _build_config(embedding_batch_size: int) -> IngestorConfig:
         cds_path=FIXTURES_DIR / "cds_sample.json",
         cap_path=FIXTURES_DIR / "cap_sample.json",
         embedding_batch_size=embedding_batch_size,
-        vector_store=VectorStoreConfig(database_url="postgresql://unused"),
+        vector_store=VectorStoreConfig(
+            host="localhost", user="unused", password="unused", dbname="unused"
+        ),
     )
 
 
