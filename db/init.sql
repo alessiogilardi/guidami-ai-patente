@@ -17,3 +17,17 @@ CREATE TABLE IF NOT EXISTS knowledge_chunks (
     embedding       VECTOR(384),
     UNIQUE (source, article_number, comma_index)
 );
+
+-- Quiz bank (esame teorico A/B), vedi plans/architecture-quiz-bank.md.
+CREATE TABLE IF NOT EXISTS quiz_questions (
+    id              BIGSERIAL PRIMARY KEY,
+    number          TEXT NOT NULL,
+    question_id     INTEGER NOT NULL,
+    topic           TEXT NOT NULL,
+    text            TEXT NOT NULL,
+    correct_answer  BOOLEAN NOT NULL,
+    image_filename  TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_quiz_questions_topic ON quiz_questions (topic);
+CREATE INDEX IF NOT EXISTS idx_quiz_questions_question_id ON quiz_questions (question_id);
