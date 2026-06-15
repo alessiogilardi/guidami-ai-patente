@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from .knowledge_chunk import KnowledgeChunk
+from commons.entities.knowledge import KnowledgeChunk
 
 
 class RetrievalResult(BaseModel):
