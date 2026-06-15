@@ -121,27 +121,35 @@ Pezzo a più alto valore di test isolato: logica pura, nessun I/O.
 
 ### 5. `configs/ingestor_config.py` — `IngestorConfig` — ✅ fatto
 
-- `BaseModel` con `model_config = ConfigDict(frozen=True)`.
 - Campi: `cds_path` (default `data/processed/cds/codice_della_strada.json`),
   `cap_path` (default `data/processed/cap/codice_rca.json` — **non**
   `codice_assicurazioni_private.json`, che contiene 610 articoli del codice
   completo invece dei 96 rilevanti per RCA, vedi `architecture-ingestor.md`),
   `embedding_batch_size` (default 64), `embedding: EmbeddingConfig` (default
   `EmbeddingConfig()`), `vector_store: VectorStoreConfig` (obbligatorio, nessun
-  default perché `database_url` è richiesto).
+  default — `user`/`password` arrivano da env).
+- **Modifica rispetto al piano originale**: `pydantic_settings.BaseSettings`
+  (non `BaseModel`) con `model_config = SettingsConfigDict(frozen=True,
+  env_nested_delimiter="__", env_file=".env",
+  yaml_file="configs/ingestor_config.yaml")` — config a due livelli: YAML
+  committato (non-secret) + env/`.env` (solo `VECTOR_STORE__USER`/
+  `VECTOR_STORE__PASSWORD`). `settings_customise_sources` dà precedenza a
+  env/`.env` sul YAML. Nuova dipendenza `pydantic-settings[yaml]`. Dettagli
+  completi in `.claude/architectures/ingestor.md`.
 - Test: `tests/guidami_ai_patente_ingestor/configs/test_ingestor_config.py` —
-  default dei path, `vector_store` obbligatorio, immutabilità (`frozen=True`).
+  default dei path, caricamento da YAML, override da env, precedenza
+  env > YAML, immutabilità (`frozen=True`).
 
 ### 6. `main.py` + script CLI — ✅ fatto
 
-- `main()`: costruisce `IngestorConfig` con `VectorStoreConfig(database_url=os.environ["DATABASE_URL"])`,
-  assembla la pipeline via `IndexingPipelineBuilder(config).build()` e chiama
-  `run()`.
-- `DATABASE_URL` letto direttamente da `os.environ` in `main.py` (unico punto
-  di caricamento config, come da regola architetturale). Nessuna dipendenza
-  `pydantic-settings` introdotta: per un'unica variabile d'ambiente
-  `os.environ["DATABASE_URL"]` è la soluzione più semplice. Da rivalutare se in
-  futuro nascerà un `AppConfig` più ampio condiviso con l'applicativo.
+- `main()`: costruisce `config = IngestorConfig()` (campi popolati a runtime
+  da env/`.env`/YAML, `# pyright: ignore[reportCallIssue]`), assembla la
+  pipeline via `IndexingPipelineBuilder(config).build()` e chiama `run()`.
+- **Modifica rispetto al piano originale**: niente `os.environ["DATABASE_URL"]`
+  — i secrets (`VECTOR_STORE__USER`/`VECTOR_STORE__PASSWORD`) e la config
+  non-secret (YAML) sono caricati da `IngestorConfig` stesso (config a due
+  livelli, vedi step 5), unico punto di caricamento config come da regola
+  architetturale.
 - Registrato `ingest-knowledge = "guidami_ai_patente_ingestor.main:main"` in
   `[project.scripts]`.
 

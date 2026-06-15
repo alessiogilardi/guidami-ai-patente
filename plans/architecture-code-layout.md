@@ -34,7 +34,7 @@ commons/
     vector_store_client.py     # VectorStoreClient: wrapper pgvector (psycopg)
   configs/
     embedding_config.py         # nome modello, dimensione vettore, prefissi query/passage
-    vector_store_config.py      # connection string, nome tabella
+    vector_store_config.py      # campi di connessione espliciti (host/port/user/password/dbname/sslmode), nome tabella
 ```
 
 ## `guidami_ai_patente_ingestor/`

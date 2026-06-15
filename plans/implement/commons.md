@@ -62,9 +62,12 @@ da nessuno degli altri due package.
 
 ### 4. `configs/vector_store_config.py` + `clients/vector_store_client.py` — ✅ fatto
 
-- `VectorStoreConfig` (Pydantic, `frozen=True`): `database_url` (passato dal
-  chiamante, non letto da env all'interno di `commons`), nome tabella
-  (default `knowledge_chunks`).
+- `VectorStoreConfig` (Pydantic, `frozen=True`): nome tabella (default
+  `knowledge_chunks`). **Modifica rispetto al piano originale**: niente
+  `database_url` opaco — campi di connessione espliciti (`host`, `port`,
+  `user`, `password: SecretStr`, `dbname`, `sslmode`), passati dal chiamante,
+  non letti da env all'interno di `commons` (vedi `architecture-ingestor.md`
+  e `.claude/architectures/commons.md` per i dettagli).
 - `VectorStoreClient`: wrapper `psycopg` (v3) + `pgvector` adapter
   (`register_vector`), context manager (`with`). Metodi implementati:
   - `truncate()`

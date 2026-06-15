@@ -68,8 +68,12 @@ istantaneo). Se il corpus crescesse di ordini di grandezza, valutare HNSW con
 
 8. **Trigger ingestion**: CLI script registrato in `[project.scripts]`
    (es. `uv run ingest-knowledge`), seguendo la convenzione di
-   `scrape-codice`/`parse-domande`. Credenziali DB via `DATABASE_URL` in
-   `AppConfig`, letto a livello di entry point.
+   `scrape-codice`/`parse-domande`. Config a due livelli: YAML committato
+   (non-secret, `configs/ingestor_config.yaml`) + env/`.env` per le sole
+   credenziali DB (`VECTOR_STORE__USER`/`VECTOR_STORE__PASSWORD`), caricati da
+   `IngestorConfig` (`pydantic_settings.BaseSettings`) a livello di entry
+   point — vedi `.claude/architectures/ingestor.md` per i dettagli
+   implementati.
 
 ## Flusso di ingestion
 
