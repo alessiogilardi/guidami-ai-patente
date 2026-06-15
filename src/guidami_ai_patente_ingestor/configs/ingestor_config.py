@@ -16,8 +16,10 @@ class IngestorConfig(BaseSettings):
         yaml_file="configs/ingestor_config.yaml",
     )
 
-    cds_path: Path = Path("data/processed/cds/codice_della_strada.json")
-    cap_path: Path = Path("data/processed/cap/codice_rca.json")
+    cds_parsed_path: Path = Path("data/parsed/cds/codice_della_strada.json")
+    cds_cleaned_path: Path = Path("data/cleaned/cds/codice_della_strada.json")
+    cap_parsed_path: Path = Path("data/parsed/cap/codice_rca.json")
+    cap_cleaned_path: Path = Path("data/cleaned/cap/codice_rca.json")
     embedding_batch_size: int = 64
     embedding: EmbeddingConfig = EmbeddingConfig()
     vector_store: VectorStoreConfig
