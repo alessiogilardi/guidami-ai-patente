@@ -5,7 +5,8 @@ from commons.clients import EmbeddingClient, VectorStoreClient
 from commons.models.knowledge import KnowledgeChunk
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.entities import Article
-from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleLoader
+from guidami_ai_patente_ingestor.repositories import ArticleRepository
+from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker
 
 logger = logging.getLogger(__name__)
 
@@ -15,14 +16,14 @@ class IndexingPipeline:
 
     def __init__(
         self,
-        article_loader: ArticleLoader,
+        article_repository: ArticleRepository,
         article_chunker: ArticleChunker,
         embedding_client: EmbeddingClient,
         vector_store_client: VectorStoreClient,
         config: IngestorConfig,
     ) -> None:
         """Inietta le dipendenze della pipeline e la configurazione."""
-        self._article_loader = article_loader
+        self._article_repository = article_repository
         self._article_chunker = article_chunker
         self._embedding_client = embedding_client
         self._vector_store_client = vector_store_client
@@ -30,8 +31,8 @@ class IndexingPipeline:
 
     def run(self) -> None:
         """Esegue il full reload di `knowledge_chunks` da CdS e CAP."""
-        cds_articles = self._article_loader.load(self._config.cds_path)
-        cap_articles = self._article_loader.load(self._config.cap_path)
+        cds_articles = self._article_repository.load(self._config.cds_cleaned_path)
+        cap_articles = self._article_repository.load(self._config.cap_cleaned_path)
         logger.info(f"loaded {len(cds_articles)} CdS articles, {len(cap_articles)} CAP articles")
 
         cds_chunks = self._chunk_articles(cds_articles, source="cds")

@@ -2,7 +2,8 @@ from typing import Self
 
 from commons.clients import E5SmallEmbeddingClient, EmbeddingClient, VectorStoreClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
-from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleLoader
+from guidami_ai_patente_ingestor.repositories import ArticleRepository
+from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker
 
 from .indexing_pipeline import IndexingPipeline
 
@@ -17,14 +18,14 @@ class IndexingPipelineBuilder:
     def __init__(self, config: IngestorConfig) -> None:
         """Memorizza la configurazione da cui costruire la pipeline."""
         self._config = config
-        self._article_loader: ArticleLoader | None = None
+        self._article_repository: ArticleRepository | None = None
         self._article_chunker: ArticleChunker | None = None
         self._embedding_client: EmbeddingClient | None = None
         self._vector_store_client: VectorStoreClient | None = None
 
-    def with_article_loader(self, article_loader: ArticleLoader) -> Self:
-        """Sostituisce l'`ArticleLoader` di default."""
-        self._article_loader = article_loader
+    def with_article_repository(self, article_repository: ArticleRepository) -> Self:
+        """Sostituisce l'`ArticleRepository` di default."""
+        self._article_repository = article_repository
         return self
 
     def with_article_chunker(self, article_chunker: ArticleChunker) -> Self:
@@ -46,8 +47,10 @@ class IndexingPipelineBuilder:
         """Verifica i path sorgente e assembla la pipeline."""
         self._validate_source_paths()
         return IndexingPipeline(
-            article_loader=(
-                self._article_loader if self._article_loader is not None else ArticleLoader()
+            article_repository=(
+                self._article_repository
+                if self._article_repository is not None
+                else ArticleRepository()
             ),
             article_chunker=(
                 self._article_chunker
@@ -70,7 +73,7 @@ class IndexingPipelineBuilder:
     def _validate_source_paths(self) -> None:
         missing = [
             path
-            for path in (self._config.cds_path, self._config.cap_path)
+            for path in (self._config.cds_cleaned_path, self._config.cap_cleaned_path)
             if not path.exists()
         ]
         if missing:
