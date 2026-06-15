@@ -3,6 +3,7 @@ from types import TracebackType
 import psycopg
 from pgvector.psycopg import register_vector
 from psycopg import sql
+from psycopg.conninfo import make_conninfo
 
 from commons.configs import VectorStoreConfig
 from commons.models.knowledge import KnowledgeChunk, RetrievalResult
@@ -14,7 +15,16 @@ class VectorStoreClient:
     def __init__(self, config: VectorStoreConfig) -> None:
         """Apre la connessione e registra l'adapter pgvector."""
         self._config = config
-        self._connection = psycopg.connect(config.database_url, autocommit=True)
+
+        conninfo = make_conninfo(
+            host=config.host,
+            port=config.port,
+            user=config.user,
+            password=config.password.get_secret_value(),
+            dbname=config.dbname,
+            sslmode=config.sslmode,
+        )
+        self._connection = psycopg.connect(conninfo, autocommit=True)
         register_vector(self._connection)
 
     def __enter__(self) -> "VectorStoreClient":
