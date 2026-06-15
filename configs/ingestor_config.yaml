@@ -1,0 +1,13 @@
+cds_path: data/processed/cds/codice_della_strada.json
+cap_path: data/processed/cap/codice_rca.json
+embedding_batch_size: 64
+embedding:
+  model_name: intfloat/multilingual-e5-small
+  vector_dim: 384
+  query_prefix: "query: "
+  passage_prefix: "passage: "
+vector_store:
+  host: localhost
+  port: 5432
+  dbname: guidami_ai_patente
+  table_name: knowledge_chunks
