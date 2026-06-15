@@ -1,21 +1,26 @@
 from pathlib import Path
 
-from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleLoader
+from guidami_ai_patente_ingestor.repositories import ArticleRepository
+from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
 
 FIXTURES_DIR = Path(__file__).parents[2] / "fixtures"
 
 
 def _load_cds() -> dict[str, object]:
-    articles = ArticleLoader().load(FIXTURES_DIR / "cds_sample.json")
-    return {article.number: article for article in articles}
+    articles = ArticleRepository().load(FIXTURES_DIR / "cds_sample.json")
+    return {
+        article.number: ArticleCleaner().clean(article) for article in articles
+    }
 
 
 def _load_cap() -> dict[str, object]:
-    articles = ArticleLoader().load(FIXTURES_DIR / "cap_sample.json")
-    return {article.number: article for article in articles}
+    articles = ArticleRepository().load(FIXTURES_DIR / "cap_sample.json")
+    return {
+        article.number: ArticleCleaner().clean(article) for article in articles
+    }
 
 
-def test_normal_article_chunks_text_and_paragraphs_without_markup() -> None:
+def test_normal_article_chunks_text_and_paragraphs() -> None:
     article = _load_cds()["1"]
 
     chunks = ArticleChunker().chunk(article, source="cds")
@@ -56,13 +61,17 @@ def test_fully_repealed_article_marks_all_chunks_as_repealed() -> None:
     assert all(chunk.is_repealed is True for chunk in chunks)
 
 
-def test_non_numeric_article_number_is_kept_as_string_and_markup_removed() -> None:
+def test_non_numeric_article_number_is_kept_as_string() -> None:
     article = _load_cds()["94-bis"]
 
     chunks = ArticleChunker().chunk(article, source="cds")
 
     assert all(chunk.article_number == "94-bis" for chunk in chunks)
-    second_chunk = next(chunk for chunk in chunks if chunk.comma_index == 2)
-    assert "da € 543 a € 2.170" in second_chunk.chunk_text
-    assert "163" in second_chunk.chunk_text
-    assert "((" not in second_chunk.chunk_text
+
+
+def test_article_with_empty_cleaned_text_skips_comma_zero() -> None:
+    article = _load_cds()["116-bis"]
+
+    chunks = ArticleChunker().chunk(article, source="cds")
+
+    assert [chunk.comma_index for chunk in chunks] == [1]

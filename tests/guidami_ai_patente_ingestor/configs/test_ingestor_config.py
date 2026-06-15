@@ -18,8 +18,10 @@ def _build_config() -> IngestorConfig:
 def test_default_paths_point_to_expected_source_files() -> None:
     config = _build_config()
 
-    assert config.cds_path == Path("data/processed/cds/codice_della_strada.json")
-    assert config.cap_path == Path("data/processed/cap/codice_rca.json")
+    assert config.cds_parsed_path == Path("data/parsed/cds/codice_della_strada.json")
+    assert config.cds_cleaned_path == Path("data/cleaned/cds/codice_della_strada.json")
+    assert config.cap_parsed_path == Path("data/parsed/cap/codice_rca.json")
+    assert config.cap_cleaned_path == Path("data/cleaned/cap/codice_rca.json")
 
 
 def test_vector_store_is_required(monkeypatch: pytest.MonkeyPatch) -> None:

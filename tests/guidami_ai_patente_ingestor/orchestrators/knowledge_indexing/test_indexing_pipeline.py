@@ -5,15 +5,16 @@ from commons.clients import EmbeddingClient, VectorStoreClient
 from commons.configs import VectorStoreConfig
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators.knowledge_indexing import IndexingPipeline
-from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleLoader
+from guidami_ai_patente_ingestor.repositories import ArticleRepository
+from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker
 
 FIXTURES_DIR = Path(__file__).parents[2] / "fixtures"
 
 
 def _build_config(embedding_batch_size: int) -> IngestorConfig:
     return IngestorConfig(
-        cds_path=FIXTURES_DIR / "cds_sample.json",
-        cap_path=FIXTURES_DIR / "cap_sample.json",
+        cds_cleaned_path=FIXTURES_DIR / "cds_sample.json",
+        cap_cleaned_path=FIXTURES_DIR / "cap_sample.json",
         embedding_batch_size=embedding_batch_size,
         vector_store=VectorStoreConfig(
             host="localhost", user="unused", password="unused", dbname="unused"
@@ -22,16 +23,16 @@ def _build_config(embedding_batch_size: int) -> IngestorConfig:
 
 
 def _expected_chunks() -> list:
-    loader = ArticleLoader()
+    repository = ArticleRepository()
     chunker = ArticleChunker()
     cds = [
         chunk
-        for article in loader.load(FIXTURES_DIR / "cds_sample.json")
+        for article in repository.load(FIXTURES_DIR / "cds_sample.json")
         for chunk in chunker.chunk(article, "cds")
     ]
     cap = [
         chunk
-        for article in loader.load(FIXTURES_DIR / "cap_sample.json")
+        for article in repository.load(FIXTURES_DIR / "cap_sample.json")
         for chunk in chunker.chunk(article, "cap")
     ]
     return cds + cap
@@ -47,7 +48,7 @@ def test_run_assigns_embeddings_in_batches_and_reloads_vector_store() -> None:
     vector_store_client = Mock(spec=VectorStoreClient)
 
     pipeline = IndexingPipeline(
-        article_loader=ArticleLoader(),
+        article_repository=ArticleRepository(),
         article_chunker=ArticleChunker(),
         embedding_client=embedding_client,
         vector_store_client=vector_store_client,
@@ -73,17 +74,17 @@ def test_run_assigns_embeddings_in_batches_and_reloads_vector_store() -> None:
 def test_run_loads_both_sources_before_chunking() -> None:
     config = _build_config(embedding_batch_size=64)
 
-    article_loader = Mock(spec=ArticleLoader)
+    article_repository = Mock(spec=ArticleRepository)
     cds_article, cap_article = Mock(), Mock()
-    article_loader.load.side_effect = lambda path: (
-        [cds_article] if path == config.cds_path else [cap_article]
+    article_repository.load.side_effect = lambda path: (
+        [cds_article] if path == config.cds_cleaned_path else [cap_article]
     )
 
     article_chunker = Mock(spec=ArticleChunker)
     article_chunker.chunk.return_value = []
 
     manager = Mock()
-    manager.attach_mock(article_loader, "loader")
+    manager.attach_mock(article_repository, "repository")
     manager.attach_mock(article_chunker, "chunker")
 
     embedding_client = Mock(spec=EmbeddingClient)
@@ -91,7 +92,7 @@ def test_run_loads_both_sources_before_chunking() -> None:
     vector_store_client = Mock(spec=VectorStoreClient)
 
     pipeline = IndexingPipeline(
-        article_loader=article_loader,
+        article_repository=article_repository,
         article_chunker=article_chunker,
         embedding_client=embedding_client,
         vector_store_client=vector_store_client,
@@ -100,8 +101,8 @@ def test_run_loads_both_sources_before_chunking() -> None:
 
     pipeline.run()
 
-    load_calls = [c.args[0] for c in article_loader.load.call_args_list]
-    assert load_calls == [config.cds_path, config.cap_path]
+    load_calls = [c.args[0] for c in article_repository.load.call_args_list]
+    assert load_calls == [config.cds_cleaned_path, config.cap_cleaned_path]
 
     assert article_chunker.chunk.call_args_list == [
         call(cds_article, "cds"),
@@ -109,7 +110,7 @@ def test_run_loads_both_sources_before_chunking() -> None:
     ]
 
     step_names = [c[0] for c in manager.mock_calls]
-    load_indices = [i for i, name in enumerate(step_names) if name == "loader.load"]
+    load_indices = [i for i, name in enumerate(step_names) if name == "repository.load"]
     chunk_indices = [i for i, name in enumerate(step_names) if name == "chunker.chunk"]
     assert len(load_indices) == 2
     assert max(load_indices) < min(chunk_indices)
