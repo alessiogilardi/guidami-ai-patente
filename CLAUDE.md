@@ -53,6 +53,16 @@ Register new CLI commands under `[project.scripts]` in `pyproject.toml`.
 - Pydantic config classes (anything under `configs/`) must set
   `model_config = ConfigDict(frozen=True)` — configurations are immutable
   once loaded.
+- Root configuration classes loaded at the entry point (`main.py`) that need
+  values from outside the codebase must use `pydantic_settings.BaseSettings`
+  with the two-level pattern: a committed, non-secret YAML file under
+  `configs/<service>_config.yaml` (via `SettingsConfigDict(yaml_file=...)`
+  and a `YamlConfigSettingsSource`), plus env vars / `.env` for secrets only
+  (`env_nested_delimiter="__"`, `env_file=".env"`). Override
+  `settings_customise_sources` so env/`.env` (secrets) take precedence over
+  the YAML (non-secrets). `model_config` must still set `frozen=True`. See
+  `IngestorConfig` (`src/guidami_ai_patente_ingestor/configs/ingestor_config.py`)
+  and `.claude/architectures/ingestor.md` for the reference implementation.
 
 ## Data Notes
 
