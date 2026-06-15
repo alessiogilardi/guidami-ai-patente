@@ -18,10 +18,11 @@ dependencies = [
 ]
 
 [project.scripts]
-scrape-codice    = "scrapers.normattiva:main_cds"
-scrape-cap       = "scrapers.normattiva:main_cap"
-parse-domande    = "parsers.questions_pdf:main_domande"
-ingest-knowledge = "guidami_ai_patente_ingestor.main:main"
+scrape-codice      = "scrapers.normattiva:main_cds"
+scrape-cap         = "scrapers.normattiva:main_cap"
+parse-domande      = "parsers.questions_pdf:main_domande"
+ingest-knowledge   = "guidami_ai_patente_ingestor.main:main"
+reset-knowledge-db = "guidami_ai_patente_ingestor.reset_db:main"
 
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12.0"]
