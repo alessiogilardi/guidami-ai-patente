@@ -62,9 +62,21 @@ src/guidami_ai_patente_ingestor/
 - **`IndexingPipelineBuilder`**: valida l'esistenza di `cds_path`/`cap_path`
   con `FileNotFoundError` fail-fast **prima** di istanziare
   `E5SmallEmbeddingClient` (carica il modello sentence-transformers) o
-  `VectorStoreClient` (apre connessione Postgres). Nessuna classe di
-  eccezioni dedicata — `FileNotFoundError` con messaggio chiaro, coerente con
-  KISS a questa scala.
+  `VectorStoreClient` (apre connessione Postgres). `_validate_source_paths`
+  aggrega tutti i path mancanti in un unico `FileNotFoundError` (report
+  completo, non solo il primo). Nessuna classe di eccezioni dedicata —
+  `FileNotFoundError` con messaggio chiaro, coerente con KISS a questa scala.
+  - Setter fluent `with_article_loader`, `with_article_chunker`,
+    `with_embedding_client`, `with_vector_store_client` (ritornano `Self`)
+    per assegnare ogni dipendenza concreta prima di `build()`. `build()` usa
+    controlli espliciti `is not None` (non `or`) per scegliere tra
+    dipendenza assegnata e default, per evitare problemi di truthiness se in
+    futuro una di queste classi implementasse `__bool__`.
+  - `main.py` (composition root) chiama tutti e quattro i `with_*`
+    esplicitamente — wiring delle dipendenze concrete visibile a colpo
+    d'occhio nell'entry point, coerente con "explicit over implicit". I
+    default interni del builder restano comunque disponibili per chi
+    costruisce la pipeline con override parziali (es. nei test).
 
 - **`IngestorConfig`** (Pydantic `BaseModel`, `frozen=True`):
   - `cds_path: Path = Path("data/processed/cds/codice_della_strada.json")`
@@ -80,12 +92,36 @@ src/guidami_ai_patente_ingestor/
   dipendenza `pydantic-settings` introdotta (per un'unica env var è la
   soluzione più semplice; da rivalutare se in futuro nascerà un `AppConfig`
   condiviso più ampio con l'app). Config caricata solo qui (entry point).
-  Script registrato: `ingest-knowledge = "guidami_ai_patente_ingestor.main:main"`.
+  Wiring delle dipendenze concrete (`ArticleLoader`, `ArticleChunker`,
+  `E5SmallEmbeddingClient`, `VectorStoreClient`) esplicito tramite i `with_*`
+  del builder (vedi sopra). Script registrato:
+  `ingest-knowledge = "guidami_ai_patente_ingestor.main:main"`.
 
 - **`repositories/`**: non presente nell'ingestor — `IndexingPipeline` scrive
   solo `truncate()` + `bulk_insert()` su `VectorStoreClient` (nessuna logica
   di query da nascondere). `KnowledgeRepository` è previsto solo per l'app
   FastAPI (vedi `plans/architecture-code-layout.md`).
+
+- **Logging**: nessun componente dedicato (niente `LoggingConfig`/
+  `LoggingService` in `commons`) — scelta deliberata per evitare
+  overengineering, si usa direttamente lo stdlib `logging`.
+  - `main.py` (composition root) chiama
+    `logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")`
+    all'inizio di `main()`, prima di qualsiasi altro log; `logger =
+    logging.getLogger(__name__)` a livello di modulo, con log `info` di
+    inizio/fine pipeline ("starting indexing pipeline" / "indexing pipeline
+    completed").
+  - `indexing_pipeline.py`: `logger = logging.getLogger(__name__)` a livello
+    di modulo, log `info` in `run()`:
+    - dopo il load: conteggio articoli CdS/CAP caricati;
+    - dopo il chunking: conteggio chunk CdS/CAP/totali;
+    - in `_assign_embeddings`: una riga per batch (`embedding batch
+      {n}/{total} ({size} chunks)`);
+    - prima di `truncate()`: numero di chunk da inserire;
+    - dopo `bulk_insert()`: completamento.
+  - **Convenzione**: i messaggi di log sono in inglese (a differenza di
+    docstring/commenti, in italiano), per coerenza con eventuali strumenti di
+    log aggregation/osservabilità.
 
 ## Test
 
