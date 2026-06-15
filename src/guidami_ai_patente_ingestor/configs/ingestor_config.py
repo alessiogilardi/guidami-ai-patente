@@ -3,11 +3,11 @@ from pathlib import Path
 from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, SettingsConfigDict
 from pydantic_settings.sources import YamlConfigSettingsSource
 
-from commons.configs import EmbeddingConfig, VectorStoreConfig
+from commons.configs import EmbeddingConfig, PostgresConnectionConfig
 
 
 class IngestorConfig(BaseSettings):
-    """Configurazione della pipeline di indicizzazione (CdS + CAP)."""
+    """Configurazione delle pipeline di ingestion (corpus normativo CdS + CAP, quiz bank)."""
 
     model_config = SettingsConfigDict(
         frozen=True,
@@ -20,9 +20,12 @@ class IngestorConfig(BaseSettings):
     cds_cleaned_path: Path = Path("data/cleaned/cds/codice_della_strada.json")
     cap_parsed_path: Path = Path("data/parsed/cap/codice_rca.json")
     cap_cleaned_path: Path = Path("data/cleaned/cap/codice_rca.json")
+    quiz_bank_path: Path = Path("data/parsed/quiz-patente-ab/quiz-patente-ab.json")
     embedding_batch_size: int = 64
     embedding: EmbeddingConfig = EmbeddingConfig()
-    vector_store: VectorStoreConfig
+    postgres: PostgresConnectionConfig
+    knowledge_chunks_table: str = "knowledge_chunks"
+    quiz_questions_table: str = "quiz_questions"
 
     @classmethod
     def settings_customise_sources(
