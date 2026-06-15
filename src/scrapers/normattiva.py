@@ -217,7 +217,7 @@ def _fetch_with_retry(
 
 def main(law: LawConfig) -> None:
     raw_dir = Path("data/raw") / law["slug"]
-    processed_dir = Path("data/processed") / law["slug"]
+    processed_dir = Path("data/parsed") / law["slug"]
     raw_dir.mkdir(parents=True, exist_ok=True)
     processed_dir.mkdir(parents=True, exist_ok=True)
 
