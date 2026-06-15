@@ -31,11 +31,22 @@ src/commons/
   `sentence-transformers`, applica i prefissi e normalizza i vettori
   (`normalize_embeddings=True`), coerente con l'operatore
   `vector_cosine_ops` usato in `similarity_search`.
-- **`VectorStoreConfig`**: `database_url` passato dal chiamante (non letto da
-  env dentro `commons` — il caricamento config resta a `main.py` dei
-  rispettivi servizi, vedi `rules/python/architecture.md`).
+- **`VectorStoreConfig`**: resta `BaseModel` (non `BaseSettings`) — `commons`
+  non legge env, i valori arrivano dal chiamante (il caricamento config resta
+  a `main.py` dei rispettivi servizi, vedi `rules/python/architecture.md`).
+  Campi di connessione **espliciti** (non più `database_url: str`): `host`,
+  `port: int = 5432`, `user`, `password: SecretStr`, `dbname`,
+  `sslmode: str | None = None`, `table_name: str = "knowledge_chunks"`. La
+  decomposizione garantisce che l'autenticazione sia sempre esplicita e
+  validata (niente stringa di connessione opaca).
 - **`VectorStoreClient`**: wrapper `psycopg` v3 + adapter `pgvector`
-  (`register_vector`), usabile come context manager. Metodi:
+  (`register_vector`), usabile come context manager. La connessione è
+  costruita con `psycopg.conninfo.make_conninfo(host=..., port=..., user=...,
+  password=config.password.get_secret_value(), dbname=...,
+  sslmode=config.sslmode)` seguito da `psycopg.connect(conninfo,
+  autocommit=True)` — `make_conninfo` filtra automaticamente `sslmode=None`,
+  ed evita i problemi di typing pyright di un dict di kwargs union-typed
+  passato a `connect()`. Metodi:
   - `truncate()`
   - `bulk_insert(chunks: list[KnowledgeChunk])`
   - `similarity_search(embedding, top_k, source=None) ->

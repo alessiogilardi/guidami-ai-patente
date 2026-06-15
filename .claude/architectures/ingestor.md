@@ -23,8 +23,14 @@ src/guidami_ai_patente_ingestor/
       indexing_pipeline.py          # IndexingPipeline
       indexing_pipeline_builder.py  # IndexingPipelineBuilder
   configs/
-    ingestor_config.py            # IngestorConfig (frozen)
+    ingestor_config.py            # IngestorConfig (BaseSettings, frozen)
   main.py                          # entry point CLI (uv run ingest-knowledge)
+
+configs/                            # root del progetto (non sotto src/)
+  ingestor_config.yaml              # config non-secret, committata
+
+.env.example                        # documenta le sole env var secret
+                                     # (VECTOR_STORE__USER, VECTOR_STORE__PASSWORD)
 ```
 
 ## Decisioni implementate
@@ -78,24 +84,57 @@ src/guidami_ai_patente_ingestor/
     default interni del builder restano comunque disponibili per chi
     costruisce la pipeline con override parziali (es. nei test).
 
-- **`IngestorConfig`** (Pydantic `BaseModel`, `frozen=True`):
+- **`IngestorConfig`** (`pydantic_settings.BaseSettings`, `frozen=True`) —
+  pattern "config a due livelli": YAML committato (non-secret) + env/`.env`
+  (solo secrets). Vedi `dipendenze`/`Configurazione (config a due livelli)`
+  sotto per i dettagli; campi:
   - `cds_path: Path = Path("data/processed/cds/codice_della_strada.json")`
   - `cap_path: Path = Path("data/processed/cap/codice_rca.json")` — **non**
     `codice_assicurazioni_private.json` (610 articoli, codice completo);
     `codice_rca.json` contiene i 96 articoli rilevanti per RCA/patente.
   - `embedding_batch_size: int = 64`
   - `embedding: EmbeddingConfig = EmbeddingConfig()` (default `commons`)
-  - `vector_store: VectorStoreConfig` (obbligatorio, `database_url` richiesto
-    senza default)
+  - `vector_store: VectorStoreConfig` (obbligatorio, nessun default —
+    `user`/`password` arrivano da env, il resto dal YAML)
 
-- **`main.py`**: legge `DATABASE_URL` da `os.environ` direttamente — nessuna
-  dipendenza `pydantic-settings` introdotta (per un'unica env var è la
-  soluzione più semplice; da rivalutare se in futuro nascerà un `AppConfig`
-  condiviso più ampio con l'app). Config caricata solo qui (entry point).
-  Wiring delle dipendenze concrete (`ArticleLoader`, `ArticleChunker`,
-  `E5SmallEmbeddingClient`, `VectorStoreClient`) esplicito tramite i `with_*`
-  del builder (vedi sopra). Script registrato:
-  `ingest-knowledge = "guidami_ai_patente_ingestor.main:main"`.
+### Configurazione (config a due livelli)
+
+- **YAML committato, non-secret** — `configs/ingestor_config.yaml` (root del
+  progetto, fuori da `src/`): `cds_path`, `cap_path`,
+  `embedding_batch_size`, `embedding` (model_name/vector_dim/prefissi), e i
+  campi non-secret di `vector_store` (`host`, `port`, `dbname`,
+  `table_name`). La cartella `configs/` alla root è pensata come contenitore
+  anche per le future configurazioni non sensibili (es. futuro
+  `app_config.yaml` per l'app FastAPI).
+- **Env / `.env`, solo secrets** — `.env.example` (root) documenta le sole
+  variabili richieste: `VECTOR_STORE__USER`, `VECTOR_STORE__PASSWORD` (doppio
+  underscore = `env_nested_delimiter`, popola `vector_store.user` /
+  `vector_store.password`). Mai committare un `.env` reale.
+- **`IngestorConfig.model_config`**: `SettingsConfigDict(frozen=True,
+  env_nested_delimiter="__", env_file=".env",
+  yaml_file="configs/ingestor_config.yaml")`.
+- **`settings_customise_sources`** override: precedenza
+  `init_settings > env_settings > dotenv_settings >
+  YamlConfigSettingsSource`. I secrets da env/`.env` hanno priorità sul YAML,
+  che fornisce tutti i valori non sensibili con merge profondo dei campi
+  annidati di `vector_store` (es. `host`/`port`/`dbname`/`table_name` dal
+  YAML, `user`/`password` da env, uniti nello stesso `VectorStoreConfig`).
+- Questo pattern è pensato per essere riusato dal futuro `AppConfig`
+  dell'app FastAPI (stessa cartella `configs/`, stesso schema
+  `VectorStoreConfig`).
+- **`commons/` resta privo di dipendenze `pydantic-settings`/env-loading** —
+  `VectorStoreConfig` è un DTO puro popolato dal chiamante; solo
+  `guidami_ai_patente_ingestor` (e in futuro l'app) dipendono da
+  `pydantic-settings[yaml]` (nuova dipendenza, aggiunta per il caricamento
+  YAML).
+
+- **`main.py`**: `config = IngestorConfig()` —
+  `# pyright: ignore[reportCallIssue]` con commento, perché pyright non sa
+  che i campi richiesti sono popolati a runtime da env/`.env`/YAML. Config
+  caricata solo qui (entry point). Wiring delle dipendenze concrete
+  (`ArticleLoader`, `ArticleChunker`, `E5SmallEmbeddingClient`,
+  `VectorStoreClient`) esplicito tramite i `with_*` del builder (vedi sopra).
+  Script registrato: `ingest-knowledge = "guidami_ai_patente_ingestor.main:main"`.
 
 - **`repositories/`**: non presente nell'ingestor — `IndexingPipeline` scrive
   solo `truncate()` + `bulk_insert()` su `VectorStoreClient` (nessuna logica
@@ -138,6 +177,11 @@ src/guidami_ai_patente_ingestor/
   path sorgente mancanti → `FileNotFoundError` senza istanziare
   `E5SmallEmbeddingClient`/`VectorStoreClient`.
 - `tests/guidami_ai_patente_ingestor/configs/test_ingestor_config.py` —
-  default path, `vector_store` obbligatorio, immutabilità (`frozen=True`).
+  default path, caricamento da YAML, override da env (`VECTOR_STORE__USER`/
+  `VECTOR_STORE__PASSWORD`), precedenza env > YAML, immutabilità
+  (`frozen=True`).
+- `tests/commons/clients/test_vector_store_client.py` — aggiornato per i
+  nuovi campi espliciti di `VectorStoreConfig` (host/port/user/password/
+  dbname/sslmode) al posto di `database_url`.
 - **Non ancora implementato**: test di integrazione end-to-end contro
   Postgres + modello reali (da marcare `@pytest.mark.integration`).
