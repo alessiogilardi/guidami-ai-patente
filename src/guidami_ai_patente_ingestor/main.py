@@ -1,8 +1,6 @@
 import logging
-import os
 
 from commons.clients import E5SmallEmbeddingClient, VectorStoreClient
-from commons.configs import VectorStoreConfig
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators.knowledge_indexing import IndexingPipelineBuilder
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleLoader
@@ -16,9 +14,8 @@ def main() -> None:
         level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s"
     )
 
-    config = IngestorConfig(
-        vector_store=VectorStoreConfig(database_url=os.environ["DATABASE_URL"])
-    )
+    # pyright non sa che i campi richiesti sono popolati da env/.env/YAML a runtime.
+    config = IngestorConfig()  # pyright: ignore[reportCallIssue]
     logger.info("starting indexing pipeline")
     pipeline = (
         IndexingPipelineBuilder(config)
