@@ -1,25 +1,30 @@
 # Package `src/commons/`
 
 Riferimento progettazione: `plans/architecture-code-layout.md`,
-`plans/implement/commons.md`.
+`plans/implement/commons.md`, `plans/architecture-quiz-bank.md` (decisioni
+7-8, refactor Postgres condiviso).
 
-Componenti condivisi tra `guidami_ai_patente_ingestor` (non ancora avviato) e
-l'app FastAPI (non ancora avviata). `commons` non dipende da nessuno dei due.
+Componenti condivisi tra `guidami_ai_patente_ingestor` e l'app FastAPI (non
+ancora avviata). `commons` non dipende da nessuno dei due.
 
 ## Layout
 
 ```
 src/commons/
-  models/
+  entities/
     knowledge/
       knowledge_chunk.py   # KnowledgeChunk — riga di knowledge_chunks
+    quiz/
+      quiz_question.py     # QuizQuestion — riga di quiz_questions
+  models/
+    knowledge/
       retrieval_result.py  # RetrievalResult — chunk + score (similarity search)
   clients/
     embedding_client.py    # EmbeddingClient (interfaccia) + E5SmallEmbeddingClient
-    vector_store_client.py # VectorStoreClient — wrapper psycopg + pgvector
+    postgres_client.py     # PostgresClient — wrapper psycopg generico, table-agnostic
   configs/
-    embedding_config.py    # EmbeddingConfig (frozen)
-    vector_store_config.py # VectorStoreConfig (frozen)
+    embedding_config.py          # EmbeddingConfig (frozen)
+    postgres_connection_config.py # PostgresConnectionConfig (frozen)
 ```
 
 ## Decisioni implementate
@@ -30,40 +35,60 @@ src/commons/
 - **`E5SmallEmbeddingClient`**: implementazione locale via
   `sentence-transformers`, applica i prefissi e normalizza i vettori
   (`normalize_embeddings=True`), coerente con l'operatore
-  `vector_cosine_ops` usato in `similarity_search`.
-- **`VectorStoreConfig`**: resta `BaseModel` (non `BaseSettings`) — `commons`
-  non legge env, i valori arrivano dal chiamante (il caricamento config resta
-  a `main.py` dei rispettivi servizi, vedi `rules/python/architecture.md`).
-  Campi di connessione **espliciti** (non più `database_url: str`): `host`,
-  `port: int = 5432`, `user`, `password: SecretStr`, `dbname`,
-  `sslmode: str | None = None`, `table_name: str = "knowledge_chunks"`. La
-  decomposizione garantisce che l'autenticazione sia sempre esplicita e
-  validata (niente stringa di connessione opaca).
-- **`VectorStoreClient`**: wrapper `psycopg` v3 + adapter `pgvector`
-  (`register_vector`), usabile come context manager. La connessione è
-  costruita con `psycopg.conninfo.make_conninfo(host=..., port=..., user=...,
+  `vector_cosine_ops` usato nelle query di similarity search.
+- **`PostgresConnectionConfig`** (`BaseModel`, `frozen=True`): sostituisce
+  `VectorStoreConfig` (rimosso). Resta `BaseModel`, non `BaseSettings` —
+  `commons` non legge env, i valori arrivano dal chiamante (il caricamento
+  config resta a `main.py` dei rispettivi servizi, vedi
+  `rules/python/architecture.md`). Campi: `host`, `port: int = 5432`, `user`,
+  `password: SecretStr`, `dbname`, `sslmode: str | None = None`. **Nessun
+  campo `table_name`**: il nome tabella è un dettaglio del repository che usa
+  il client (decisione 7 del piano quiz-bank), non della connessione — un
+  unico `PostgresConnectionConfig` è condiviso tra `knowledge_chunks` e
+  `quiz_questions` (stesso Postgres, stesse credenziali).
+- **`PostgresClient`**: wrapper `psycopg` v3 generico e **table-agnostic**
+  con adapter `pgvector` registrato (`register_vector`), usabile come context
+  manager (`__enter__`/`__exit__` chiude la connessione, più `close()`
+  esplicito). Sostituisce `VectorStoreClient` (rimosso, incluso
+  `similarity_search` — nessun consumer attuale). La connessione è costruita
+  con `psycopg.conninfo.make_conninfo(host=..., port=..., user=...,
   password=config.password.get_secret_value(), dbname=...,
   sslmode=config.sslmode)` seguito da `psycopg.connect(conninfo,
-  autocommit=True)` — `make_conninfo` filtra automaticamente `sslmode=None`,
-  ed evita i problemi di typing pyright di un dict di kwargs union-typed
-  passato a `connect()`. Metodi:
-  - `truncate()`
-  - `bulk_insert(chunks: list[KnowledgeChunk])`
-  - `similarity_search(embedding, top_k, source=None) ->
-    list[RetrievalResult]` — usa `<=>`, **non filtra `is_repealed`** (lasciato
-    al chiamante, es. futuro `KnowledgeRepository` nell'app).
+  autocommit=True)` — `make_conninfo` filtra automaticamente `sslmode=None`.
+  Metodi:
+  - `truncate(table_name: str)` — `TRUNCATE TABLE {table}` con
+    `sql.Identifier` (nome tabella passato dal chiamante, non dalla config);
+  - `execute_many(query: sql.Composed, params_seq: Sequence[Sequence[object]])`
+    — `cursor.executemany`, usato per i bulk insert dei repository;
+  - `fetch(query: sql.Composed, params: Sequence[object] | None = None) ->
+    list[tuple]` — `cursor.execute` + `fetchall`, pensato per le letture
+    on-demand del futuro `QuizRepository`/`KnowledgeRepository` lato app.
   - I parametri vettoriali richiedono cast esplicito `%s::vector` nelle query
     (psycopg altrimenti adatta `list[float]` ad `array`, incompatibile con
     `<=>`).
-- **`KnowledgeChunk`** (Pydantic): `source: Literal["cds", "cap"]`,
-  `embedding: list[float] | None = None` (None prima dell'embedding).
+- **`KnowledgeChunk`** (Pydantic, `commons/entities/knowledge/`): `source:
+  Literal["cds", "cap"]`, `embedding: list[float] | None = None` (None prima
+  dell'embedding).
+- **`QuizQuestion`** (Pydantic, `BaseModel`, `commons/entities/quiz/`): riga
+  di `quiz_questions` — `number: str`, `question_id: int`, `topic: str`,
+  `text: str`, `correct_answer: bool`, `image_filename: str | None = None`.
+- **`entities/` vs `models/`**: `KnowledgeChunk` e `QuizQuestion` sono entità
+  di dominio (righe di tabella), spostate da `commons/models/` a
+  `commons/entities/` per coerenza con `rules/python/architecture.md`
+  (`models/` = DTO/value object, `entities/` = entità di dominio).
+  `commons/models/knowledge/` ora esporta solo `RetrievalResult`, che
+  importa `KnowledgeChunk` da `commons.entities.knowledge` (import assoluto,
+  attraversa il confine di package). `commons/models/quiz/` è stato rimosso
+  interamente (conteneva solo `QuizQuestion`).
 
 ## Test
 
 - `tests/commons/clients/test_embedding_client.py` —
   `@pytest.mark.integration`, verifica `len(vector) == 384`.
-- `tests/commons/clients/test_vector_store_client.py` —
-  `@pytest.mark.integration`, contro il Postgres del compose: bulk insert +
-  similarity search ordinata, filtro per `source`, truncate.
-- `tests/commons/models/test_knowledge_chunk.py` — default `embedding=None`,
-  wrapping in `RetrievalResult`.
+- `tests/commons/clients/test_postgres_client.py` — contro il Postgres del
+  compose (no marker `integration`): `truncate`, `execute_many`/`fetch` su
+  `knowledge_chunks` (bulk insert + lettura ordinata).
+- `tests/commons/entities/knowledge/test_knowledge_chunk.py` — default
+  `embedding=None`.
+- `tests/commons/models/knowledge/test_retrieval_result.py` — wrapping di
+  `KnowledgeChunk` in `RetrievalResult` con `score`.

@@ -1,12 +1,20 @@
 # Package `src/guidami_ai_patente_ingestor/`
 
 Riferimento progettazione: `plans/architecture-ingestor.md`,
-`plans/architecture-code-layout.md`, `plans/implement/ingestor.md`.
+`plans/architecture-code-layout.md`, `plans/implement/ingestor.md`,
+`plans/architecture-quiz-bank.md` (pipeline quiz bank, refactor Postgres
+condiviso).
 
-Pipeline batch in due fasi — pulizia (`CleaningPipeline`) e indicizzazione
-(`IndexingPipeline`) — del corpus normativo (CdS + CAP) in
-`knowledge_chunks`. Dipende da `commons` (modelli, client embedding/vector
-store, config condivise).
+Due pipeline batch indipendenti, entrambe full-reload su Postgres:
+
+- **corpus normativo (CdS + CAP)**: pulizia (`CleaningPipeline`) e
+  indicizzazione (`IndexingPipeline`) in `knowledge_chunks` (embedding
+  incluso);
+- **quiz bank**: `QuizIndexingPipeline`, load + map (flatten/dedup) +
+  full-reload di `quiz_questions` (nessun embedding).
+
+Dipende da `commons` (modelli, `EmbeddingClient`, `PostgresClient`, config
+condivise).
 
 ## Layout
 
@@ -15,13 +23,19 @@ src/guidami_ai_patente_ingestor/
   entities/
     article.py                    # Article — mappa 1:1 il JSON sorgente (number, title, text,
                                    # paragraphs, url, scraped_at, repealed)
+    quiz_bank.py                   # QuizMainQuestion, QuizSubQuestion — mappano 1:1 il JSON sorgente
   repositories/
     article_repository.py         # ArticleRepository.load(path) -> list[Article]
                                    # ArticleRepository.write(articles, path) -> None
+    knowledge_chunk_store_repository.py  # KnowledgeChunkStoreRepository (truncate + bulk insert)
+    quiz_bank_repository.py        # QuizBankRepository.load(path) -> list[QuizMainQuestion]
+    quiz_question_store_repository.py    # QuizQuestionStoreRepository (truncate + bulk insert)
   services/
     knowledge/
       article_cleaner.py          # ArticleCleaner.clean(article) -> Article
       article_chunker.py          # ArticleChunker.chunk(article, source) -> list[KnowledgeChunk]
+    quiz/
+      quiz_question_mapper.py     # QuizQuestionMapper.map(main_questions) -> list[QuizQuestion]
   orchestrators/
     knowledge_cleaning/
       cleaning_pipeline.py          # CleaningPipeline
@@ -29,16 +43,21 @@ src/guidami_ai_patente_ingestor/
     knowledge_indexing/
       indexing_pipeline.py          # IndexingPipeline
       indexing_pipeline_builder.py  # IndexingPipelineBuilder
+    quiz_indexing/
+      quiz_indexing_pipeline.py          # QuizIndexingPipeline
+      quiz_indexing_pipeline_builder.py  # QuizIndexingPipelineBuilder
   configs/
     ingestor_config.py            # IngestorConfig (BaseSettings, frozen)
   main.py                          # entry point CLI (uv run ingest-knowledge)
   reset_db.py                      # entry point CLI (uv run reset-knowledge-db)
+  quiz_main.py                     # entry point CLI (uv run ingest-quiz)
+  reset_quiz_db.py                 # entry point CLI (uv run reset-quiz-db)
 
 configs/                            # root del progetto (non sotto src/)
   ingestor_config.yaml              # config non-secret, committata
 
 .env.example                        # documenta le sole env var secret
-                                     # (VECTOR_STORE__USER, VECTOR_STORE__PASSWORD)
+                                     # (POSTGRES__USER, POSTGRES__PASSWORD)
 ```
 
 ## Convenzione directory dati
@@ -165,24 +184,99 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   3. `_assign_embeddings` (helper privato): batch di
      `config.embedding_batch_size`, `EmbeddingClient.embed_passages()` e
      assegnazione di `chunk.embedding` in place (campo mutabile);
-  4. `VectorStoreClient.truncate()` poi `bulk_insert(chunks)` (full reload).
+  4. `KnowledgeChunkStoreRepository.truncate()` poi `bulk_insert(chunks)`
+     (full reload).
   - Dipendenze iniettate via costruttore: `ArticleRepository`,
-    `ArticleChunker`, `EmbeddingClient` (ABC, `commons`), `VectorStoreClient`
-    (`commons`), `IngestorConfig`.
+    `ArticleChunker`, `EmbeddingClient` (ABC, `commons`),
+    `KnowledgeChunkStoreRepository`, `IngestorConfig`.
 - **`IndexingPipelineBuilder`**: valida l'esistenza di `cds_cleaned_path`/
   `cap_cleaned_path` (non più `cds_path`/`cap_path`) con `FileNotFoundError`
   fail-fast **prima** di istanziare `E5SmallEmbeddingClient` (carica il
-  modello sentence-transformers) o `VectorStoreClient` (apre connessione
+  modello sentence-transformers) o `PostgresClient` (apre connessione
   Postgres). `_validate_source_paths` aggrega tutti i path mancanti in un
   unico `FileNotFoundError` (report completo, non solo il primo). Nessuna
   classe di eccezioni dedicata — `FileNotFoundError` con messaggio chiaro,
   coerente con KISS a questa scala.
   - Setter fluent `with_article_repository`, `with_article_chunker`,
-    `with_embedding_client`, `with_vector_store_client` (ritornano `Self`)
-    per assegnare ogni dipendenza concreta prima di `build()`. `build()` usa
-    controlli espliciti `is not None` (non `or`) per scegliere tra
-    dipendenza assegnata e default, per evitare problemi di truthiness se in
-    futuro una di queste classi implementasse `__bool__`.
+    `with_embedding_client`, `with_knowledge_chunk_store_repository`
+    (ritornano `Self`) per assegnare ogni dipendenza concreta prima di
+    `build()`. Il default di `knowledge_chunk_store_repository` è
+    `KnowledgeChunkStoreRepository(PostgresClient(config.postgres),
+    config.knowledge_chunks_table)`. `build()` usa controlli espliciti
+    `is not None` (non `or`) per scegliere tra dipendenza assegnata e
+    default, per evitare problemi di truthiness se in futuro una di queste
+    classi implementasse `__bool__`.
+
+### `repositories/` — `KnowledgeChunkStoreRepository` / `QuizQuestionStoreRepository`
+
+- Sostituiscono l'uso diretto di `VectorStoreClient` (rimosso, vedi
+  `commons.md`): entrambi sono repository di scrittura full-reload,
+  iniettati con un `PostgresClient` generico e il nome tabella
+  (`config.knowledge_chunks_table` / `config.quiz_questions_table`).
+- **`KnowledgeChunkStoreRepository`**: `truncate()` +
+  `bulk_insert(chunks: list[KnowledgeChunk])` — colonne `source,
+  article_number, article_title, comma_index, chunk_text, is_repealed,
+  source_url, embedding`.
+- **`QuizQuestionStoreRepository`**: `truncate()` +
+  `bulk_insert(questions: list[QuizQuestion])` — colonne `number,
+  question_id, topic, text, correct_answer, image_filename`.
+- Entrambi costruiscono la query con `psycopg.sql.SQL(...).format(table=
+  sql.Identifier(table_name))` e `client.execute_many(query, params_seq)`;
+  `bulk_insert` ritorna immediatamente (`return`) se la lista è vuota.
+
+### `entities/quiz_bank.py` — `QuizMainQuestion` / `QuizSubQuestion`
+
+- Mappano 1:1 il JSON sorgente `data/parsed/quiz-patente-ab/quiz-patente-ab.json`
+  (715 domande madri, 7106 sotto-domande): `QuizMainQuestion` (`question_id:
+  int`, `topic: str`, `sub_questions: list[QuizSubQuestion]`),
+  `QuizSubQuestion` (`number: str`, `text: str`, `correct_answer: bool`,
+  `image: str | None = None`).
+- `question_id` è una stringa numerica nel JSON, ma Pydantic v2 la coercise a
+  `int` (coercizione lax) — la colonna `quiz_questions.question_id INTEGER`
+  è quindi corretta senza conversioni manuali.
+
+### `repositories/quiz_bank_repository.py` — `QuizBankRepository`
+
+- `load(path: Path) -> list[QuizMainQuestion]`: legge il JSON e valida ogni
+  elemento con `QuizMainQuestion.model_validate`. Nessuna dipendenza/config
+  iniettata — stesso ruolo di `ArticleRepository` per il quiz bank, ma solo
+  lettura (non c'è uno stadio "cleaned" per il quiz bank).
+
+### `services/quiz/quiz_question_mapper.py` — `QuizQuestionMapper`
+
+- `map(main_questions: list[QuizMainQuestion]) -> list[QuizQuestion]`:
+  appiattisce ogni `sub_questions` in una `QuizQuestion`, denormalizzando
+  `question_id`/`topic` dalla domanda madre.
+- `image_filename = PurePosixPath(image).name if image is not None else
+  None` — salva solo il nome file (non il path repo-relative stantio della
+  fonte), risolvendo l'incoerenza `data/processed` vs `data/parsed` osservata
+  nei dati senza dipendere da un refactor del parser (decisione 4 del piano).
+- **Dedup duplicati esatti**: chiave `(text.strip(), correct_answer, image)`
+  in un `set`; ogni duplicato scartato genera
+  `logger.warning(f"skipping duplicate sub-question {number} (question_id=...)")`.
+  Verificato su dati reali: 8 duplicati esatti su 7106 sotto-domande → 7098
+  righe mappate.
+
+### `orchestrators/quiz_indexing/` — `QuizIndexingPipeline` + `QuizIndexingPipelineBuilder`
+
+- **`QuizIndexingPipeline.run()`** — tre step lineari, nessuno step di
+  cleaning/embedding (il JSON del quiz bank non ha markup da pulire, le righe
+  non hanno vettori):
+  1. `QuizBankRepository.load(config.quiz_bank_path)`;
+  2. `QuizQuestionMapper.map(main_questions)`;
+  3. `QuizQuestionStoreRepository.truncate()` poi `bulk_insert(questions)`
+     (full reload, stessa strategia di `IndexingPipeline`).
+  - Dipendenze iniettate via costruttore: `QuizBankRepository`,
+    `QuizQuestionMapper`, `QuizQuestionStoreRepository`, `IngestorConfig`.
+- **`QuizIndexingPipelineBuilder`**: valida l'esistenza di
+  `config.quiz_bank_path` con `FileNotFoundError` fail-fast prima di
+  istanziare `PostgresClient`. Setter fluent `with_quiz_bank_repository`,
+  `with_quiz_question_mapper`, `with_quiz_question_store_repository`
+  (ritornano `Self`); `build()` usa controlli espliciti `is not None`,
+  stesso pattern di `IndexingPipelineBuilder`. Default di
+  `quiz_question_store_repository`:
+  `QuizQuestionStoreRepository(PostgresClient(config.postgres),
+  config.quiz_questions_table)`.
 
 ### `IngestorConfig`
 
@@ -196,27 +290,34 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
     **non** `codice_assicurazioni_private.json` (610 articoli, codice
     completo); `codice_rca.json` contiene i 96 articoli rilevanti per
     RCA/patente.
+  - `quiz_bank_path: Path = Path("data/parsed/quiz-patente-ab/quiz-patente-ab.json")`
   - `embedding_batch_size: int = 64`
   - `embedding: EmbeddingConfig = EmbeddingConfig()` (default `commons`)
-  - `vector_store: VectorStoreConfig` (obbligatorio, nessun default —
+  - `postgres: PostgresConnectionConfig` (obbligatorio, nessun default —
     `user`/`password` arrivano da env, il resto dal YAML)
-- I vecchi campi `cds_path`/`cap_path` sono stati sostituiti dai 4 path
-  espliciti sopra (separazione parsed/cleaned). `configs/ingestor_config.yaml`
-  aggiornato di conseguenza.
+  - `knowledge_chunks_table: str = "knowledge_chunks"`
+  - `quiz_questions_table: str = "quiz_questions"`
+- Il vecchio campo `vector_store: VectorStoreConfig` è stato sostituito da
+  `postgres: PostgresConnectionConfig` (senza `table_name`, vedi
+  `commons.md`) + i due campi `*_table` separati, iniettati nei rispettivi
+  repository di scrittura (decisione 7 del piano quiz-bank).
+  `configs/ingestor_config.yaml` aggiornato di conseguenza.
 
 ### Configurazione (config a due livelli)
 
 - **YAML committato, non-secret** — `configs/ingestor_config.yaml` (root del
   progetto, fuori da `src/`): `cds_parsed_path`, `cds_cleaned_path`,
-  `cap_parsed_path`, `cap_cleaned_path`, `embedding_batch_size`, `embedding`
-  (model_name/vector_dim/prefissi), e i campi non-secret di `vector_store`
-  (`host`, `port`, `dbname`, `table_name`). La cartella `configs/` alla root
-  è pensata come contenitore anche per le future configurazioni non
+  `cap_parsed_path`, `cap_cleaned_path`, `quiz_bank_path`,
+  `embedding_batch_size`, `embedding` (model_name/vector_dim/prefissi), i
+  campi non-secret di `postgres` (`host`, `port`, `dbname`), e
+  `knowledge_chunks_table`/`quiz_questions_table`. La cartella `configs/`
+  alla root è pensata come contenitore anche per le future configurazioni non
   sensibili (es. futuro `app_config.yaml` per l'app FastAPI).
 - **Env / `.env`, solo secrets** — `.env.example` (root) documenta le sole
-  variabili richieste: `VECTOR_STORE__USER`, `VECTOR_STORE__PASSWORD` (doppio
-  underscore = `env_nested_delimiter`, popola `vector_store.user` /
-  `vector_store.password`). Mai committare un `.env` reale.
+  variabili richieste: `POSTGRES__USER`, `POSTGRES__PASSWORD` (doppio
+  underscore = `env_nested_delimiter`, popola `postgres.user` /
+  `postgres.password`; rinominate da `VECTOR_STORE__USER`/`PASSWORD`). Mai
+  committare un `.env` reale.
 - **`IngestorConfig.model_config`**: `SettingsConfigDict(frozen=True,
   env_nested_delimiter="__", env_file=".env",
   yaml_file="configs/ingestor_config.yaml")`.
@@ -224,16 +325,15 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   `init_settings > env_settings > dotenv_settings >
   YamlConfigSettingsSource`. I secrets da env/`.env` hanno priorità sul YAML,
   che fornisce tutti i valori non sensibili con merge profondo dei campi
-  annidati di `vector_store` (es. `host`/`port`/`dbname`/`table_name` dal
-  YAML, `user`/`password` da env, uniti nello stesso `VectorStoreConfig`).
+  annidati di `postgres` (es. `host`/`port`/`dbname` dal YAML, `user`/
+  `password` da env, uniti nello stesso `PostgresConnectionConfig`).
 - Questo pattern è pensato per essere riusato dal futuro `AppConfig`
   dell'app FastAPI (stessa cartella `configs/`, stesso schema
-  `VectorStoreConfig`).
+  `PostgresConnectionConfig`, stessi nomi tabella).
 - **`commons/` resta privo di dipendenze `pydantic-settings`/env-loading** —
-  `VectorStoreConfig` è un DTO puro popolato dal chiamante; solo
+  `PostgresConnectionConfig` è un DTO puro popolato dal chiamante; solo
   `guidami_ai_patente_ingestor` (e in futuro l'app) dipendono da
-  `pydantic-settings[yaml]` (nuova dipendenza, aggiunta per il caricamento
-  YAML).
+  `pydantic-settings[yaml]`.
 
 ### `main.py`
 
@@ -249,7 +349,8 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
      .with_article_repository(ArticleRepository())
      .with_article_chunker(ArticleChunker())
      .with_embedding_client(E5SmallEmbeddingClient(config.embedding))
-     .with_vector_store_client(VectorStoreClient(config.vector_store))
+     .with_knowledge_chunk_store_repository(KnowledgeChunkStoreRepository(
+       PostgresClient(config.postgres), config.knowledge_chunks_table))
      .build()`).
 - `ArticleRepository()` viene istanziata due volte (una per pipeline) — è
   un componente stateless e senza config iniettata, condiviso/equivalente
@@ -271,9 +372,35 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
 - Stesso pattern di `main.py`: `logging.basicConfig(...)`,
   `config = IngestorConfig()` caricata come unico entry point, `logger =
   logging.getLogger(__name__)` a livello di modulo.
-- Istanzia `VectorStoreClient(config.vector_store)` come context manager e
-  chiama `client.truncate()`; log `info` di completamento
-  ("knowledge_chunks table truncated").
+- Istanzia `PostgresClient(config.postgres)` come context manager,
+  `KnowledgeChunkStoreRepository(client, config.knowledge_chunks_table)
+  .truncate()`; log `info` di completamento ("knowledge_chunks table
+  truncated").
+
+### `quiz_main.py`
+
+- Entry point CLI (`uv run ingest-quiz`,
+  `ingest-quiz = "guidami_ai_patente_ingestor.quiz_main:main"`). Stesso
+  pattern di `main.py`: `logging.basicConfig(...)`, `config =
+  IngestorConfig()` (`# pyright: ignore[reportCallIssue]`), `logger =
+  logging.getLogger(__name__)` a livello di modulo.
+- Esegue `QuizIndexingPipeline.run()` da
+  `QuizIndexingPipelineBuilder(config).build()` (nessun `with_*` esplicito —
+  i default del builder bastano), con log `info` "starting quiz indexing
+  pipeline" / "quiz indexing pipeline completed".
+- Pipeline separata da `main.py` (decisione 8 del piano quiz-bank): step
+  diversi (chunk+embed vs map+dedup), eseguibili indipendentemente, pur
+  condividendo la strategia di store (truncate + insert).
+
+### `reset_quiz_db.py`
+
+- Entry point separato (`uv run reset-quiz-db`,
+  `reset-quiz-db = "guidami_ai_patente_ingestor.reset_quiz_db:main"`) per
+  svuotare `quiz_questions` senza rieseguire `QuizIndexingPipeline`. Stesso
+  pattern di `reset_db.py`: `PostgresClient(config.postgres)` come context
+  manager, `QuizQuestionStoreRepository(client,
+  config.quiz_questions_table).truncate()`; log `info` ("quiz_questions
+  table truncated").
 
 ### Logging
 
@@ -299,6 +426,12 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
     {n}/{total} ({size} chunks)`);
   - prima di `truncate()`: numero di chunk da inserire;
   - dopo `bulk_insert()`: completamento.
+- `quiz_indexing_pipeline.py`: `logger = logging.getLogger(__name__)` a
+  livello di modulo, log `info` in `run()` per ciascuno dei tre step (numero
+  di domande madri caricate, numero di righe mappate, numero di righe da
+  inserire prima del truncate, completamento dopo `bulk_insert`).
+  `quiz_question_mapper.py`: `logger.warning` per ogni sotto-domanda
+  scartata come duplicato esatto.
 - **Convenzione**: i messaggi di log sono in inglese (a differenza di
   docstring/commenti, in italiano), per coerenza con eventuali strumenti di
   log aggregation/osservabilità.
@@ -332,13 +465,35 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   completato prima del chunking.
 - `tests/guidami_ai_patente_ingestor/orchestrators/knowledge_indexing/test_indexing_pipeline_builder.py` —
   path `*_cleaned_path` mancanti → `FileNotFoundError` senza istanziare
-  `E5SmallEmbeddingClient`/`VectorStoreClient`.
+  `E5SmallEmbeddingClient`/`PostgresClient`.
 - `tests/guidami_ai_patente_ingestor/configs/test_ingestor_config.py` —
-  default path (4 path `*_parsed_path`/`*_cleaned_path`), caricamento da
-  YAML, override da env (`VECTOR_STORE__USER`/`VECTOR_STORE__PASSWORD`),
-  precedenza env > YAML, immutabilità (`frozen=True`).
-- `tests/commons/clients/test_vector_store_client.py` — aggiornato per i
-  nuovi campi espliciti di `VectorStoreConfig` (host/port/user/password/
-  dbname/sslmode) al posto di `database_url`.
+  default path (`*_parsed_path`/`*_cleaned_path`/`quiz_bank_path`), default
+  dei nomi tabella (`knowledge_chunks_table`/`quiz_questions_table`),
+  `postgres: PostgresConnectionConfig` obbligatorio (`ValidationError` se
+  assente con `_env_file=None`), immutabilità (`frozen=True`).
+- `tests/guidami_ai_patente_ingestor/repositories/test_quiz_bank_repository.py` —
+  `load` su fixture reale (`tests/.../fixtures/quiz_bank_sample.json`):
+  mappatura in `QuizMainQuestion`/`QuizSubQuestion`.
+- `tests/guidami_ai_patente_ingestor/services/quiz/test_quiz_question_mapper.py` —
+  denormalizzazione `question_id`/`topic`, estrazione `image_filename` da
+  path repo-relative (`PurePosixPath(...).name`), `image_filename=None` se
+  assente, dedup su `(text.strip(), correct_answer, image)` (mantiene righe
+  con stesso testo ma immagine o `correct_answer` diversi).
+- `tests/guidami_ai_patente_ingestor/orchestrators/quiz_indexing/test_quiz_indexing_pipeline.py` —
+  unit con `Mock(spec=...)` per repository/mapper: ordine
+  load→map→truncate→bulk_insert.
+- `tests/guidami_ai_patente_ingestor/orchestrators/quiz_indexing/test_quiz_indexing_pipeline_builder.py` —
+  `quiz_bank_path` mancante → `FileNotFoundError` senza istanziare
+  `PostgresClient`.
+- `tests/guidami_ai_patente_ingestor/repositories/test_quiz_question_store_repository.py` —
+  contro il Postgres del compose (no marker `integration`): `truncate` +
+  `bulk_insert` su `quiz_questions`, fixture `client` analoga a
+  `test_postgres_client.py`.
+- `tests/commons/clients/test_postgres_client.py` — aggiornato per
+  `PostgresConnectionConfig` (host/port/user/password/dbname/sslmode) al
+  posto di `VectorStoreConfig`/`database_url`; nessuna assert su
+  `similarity_search` (rimosso).
 - **Non ancora implementato**: test di integrazione end-to-end contro
-  Postgres + modello reali (da marcare `@pytest.mark.integration`).
+  Postgres + modello reali con marker `@pytest.mark.integration` dedicato
+  (i test Postgres attuali girano contro il compose locale ma non sono
+  marcati).
