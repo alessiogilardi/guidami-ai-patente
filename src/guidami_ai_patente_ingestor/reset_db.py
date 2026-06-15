@@ -1,7 +1,8 @@
 import logging
 
-from commons.clients import VectorStoreClient
+from commons.clients import PostgresClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
+from guidami_ai_patente_ingestor.repositories import KnowledgeChunkStoreRepository
 
 logger = logging.getLogger(__name__)
 
@@ -15,7 +16,7 @@ def main() -> None:
     # pyright non sa che i campi richiesti sono popolati da env/.env/YAML a runtime.
     config = IngestorConfig()  # pyright: ignore[reportCallIssue]
 
-    with VectorStoreClient(config.vector_store) as client:
-        client.truncate()
+    with PostgresClient(config.postgres) as client:
+        KnowledgeChunkStoreRepository(client, config.knowledge_chunks_table).truncate()
 
     logger.info("knowledge_chunks table truncated")

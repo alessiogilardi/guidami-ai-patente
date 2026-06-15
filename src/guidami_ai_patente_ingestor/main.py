@@ -1,11 +1,13 @@
 import logging
 
-from commons.clients import E5SmallEmbeddingClient, VectorStoreClient
+from commons.clients import E5SmallEmbeddingClient, PostgresClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
-from guidami_ai_patente_ingestor.entities import article
 from guidami_ai_patente_ingestor.orchestrators.knowledge_cleaning import CleaningPipelineBuilder
 from guidami_ai_patente_ingestor.orchestrators.knowledge_indexing import IndexingPipelineBuilder
-from guidami_ai_patente_ingestor.repositories import ArticleRepository, article_repository
+from guidami_ai_patente_ingestor.repositories import (
+    ArticleRepository,
+    KnowledgeChunkStoreRepository,
+)
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
 
 logger = logging.getLogger(__name__)
@@ -38,7 +40,11 @@ def main() -> None:
         .with_article_repository(article_repository)
         .with_article_chunker(ArticleChunker())
         .with_embedding_client(E5SmallEmbeddingClient(config.embedding))
-        .with_vector_store_client(VectorStoreClient(config.vector_store))
+        .with_knowledge_chunk_store_repository(
+            KnowledgeChunkStoreRepository(
+                PostgresClient(config.postgres), config.knowledge_chunks_table
+            )
+        )
         .build()
     )
     indexing_pipeline.run()
