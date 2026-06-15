@@ -2,9 +2,10 @@ import logging
 
 from commons.clients import E5SmallEmbeddingClient, VectorStoreClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
+from guidami_ai_patente_ingestor.entities import article
 from guidami_ai_patente_ingestor.orchestrators.knowledge_cleaning import CleaningPipelineBuilder
 from guidami_ai_patente_ingestor.orchestrators.knowledge_indexing import IndexingPipelineBuilder
-from guidami_ai_patente_ingestor.repositories import ArticleRepository
+from guidami_ai_patente_ingestor.repositories import ArticleRepository, article_repository
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
 
 logger = logging.getLogger(__name__)
@@ -19,10 +20,12 @@ def main() -> None:
     # pyright non sa che i campi richiesti sono popolati da env/.env/YAML a runtime.
     config = IngestorConfig()  # pyright: ignore[reportCallIssue]
 
+    article_repository = ArticleRepository()
+
     logger.info("starting cleaning pipeline")
     cleaning_pipeline = (
         CleaningPipelineBuilder(config)
-        .with_article_repository(ArticleRepository())
+        .with_article_repository(article_repository)
         .with_article_cleaner(ArticleCleaner())
         .build()
     )
@@ -32,7 +35,7 @@ def main() -> None:
     logger.info("starting indexing pipeline")
     indexing_pipeline = (
         IndexingPipelineBuilder(config)
-        .with_article_repository(ArticleRepository())
+        .with_article_repository(article_repository)
         .with_article_chunker(ArticleChunker())
         .with_embedding_client(E5SmallEmbeddingClient(config.embedding))
         .with_vector_store_client(VectorStoreClient(config.vector_store))
