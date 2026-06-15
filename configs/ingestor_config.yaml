@@ -2,14 +2,16 @@ cds_parsed_path: data/parsed/cds/codice_della_strada.json
 cds_cleaned_path: data/cleaned/cds/codice_della_strada.json
 cap_parsed_path: data/parsed/cap/codice_rca.json
 cap_cleaned_path: data/cleaned/cap/codice_rca.json
+quiz_bank_path: data/parsed/quiz-patente-ab/quiz-patente-ab.json
 embedding_batch_size: 64
 embedding:
   model_name: intfloat/multilingual-e5-small
   vector_dim: 384
   query_prefix: "query: "
   passage_prefix: "passage: "
-vector_store:
+postgres:
   host: localhost
   port: 5432
   dbname: guidami_ai_patente
-  table_name: knowledge_chunks
+knowledge_chunks_table: knowledge_chunks
+quiz_questions_table: quiz_questions
