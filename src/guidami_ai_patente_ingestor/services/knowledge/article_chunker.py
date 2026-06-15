@@ -1,6 +1,6 @@
 from typing import Literal
 
-from commons.models.knowledge import KnowledgeChunk
+from commons.entities.knowledge import KnowledgeChunk
 from guidami_ai_patente_ingestor.entities import Article
 
 
