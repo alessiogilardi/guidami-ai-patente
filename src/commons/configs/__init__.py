@@ -1,6 +1,6 @@
 """Configurazioni condivise tra ingestor e applicativo."""
 
 from .embedding_config import EmbeddingConfig
-from .vector_store_config import VectorStoreConfig
+from .postgres_connection_config import PostgresConnectionConfig
 
-__all__ = ["EmbeddingConfig", "VectorStoreConfig"]
+__all__ = ["EmbeddingConfig", "PostgresConnectionConfig"]
