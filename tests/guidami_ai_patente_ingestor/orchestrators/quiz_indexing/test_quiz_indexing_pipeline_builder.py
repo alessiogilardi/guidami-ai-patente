@@ -53,7 +53,7 @@ def test_build_uses_overridden_dependencies_instead_of_defaults(
         lambda config: pytest.fail("non deve essere istanziato se sovrascritto con with_*"),
     )
     monkeypatch.setattr(
-        f"{MODULE}.SentenceTransformerEmbeddingClient",
+        f"{MODULE}.LiteLLMEmbeddingClient",
         lambda config: pytest.fail("non deve essere istanziato se sovrascritto con with_*"),
     )
 

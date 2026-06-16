@@ -1,6 +1,6 @@
 import logging
 
-from commons.clients import SentenceTransformerEmbeddingClient
+from commons.clients import LiteLLMEmbeddingClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators.quiz_indexing import QuizIndexingPipelineBuilder
 
@@ -19,7 +19,7 @@ def main() -> None:
     logger.info("starting quiz indexing pipeline")
     quiz_indexing_pipeline = (
         QuizIndexingPipelineBuilder(config)
-        .with_embedding_client(SentenceTransformerEmbeddingClient(config.embedding))
+        .with_embedding_client(LiteLLMEmbeddingClient(config.embedding))
         .build()
     )
     quiz_indexing_pipeline.run()

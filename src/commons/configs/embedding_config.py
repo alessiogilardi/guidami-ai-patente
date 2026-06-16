@@ -2,16 +2,17 @@ from pydantic import BaseModel, ConfigDict
 
 
 class EmbeddingConfig(BaseModel):
-    """Configurazione dell'embedder di default locale (BAAI/bge-m3, 1024 dim).
+    """Configurazione dell'embedder di default cloud (text-embedding-3-small, 1536 dim).
 
-    I campi cloud (`dimensions`, `timeout`, `num_retries`) sono ignorati dal client
-    locale e restano per l'alternativa `LiteLLMEmbeddingClient` (A/B di qualità).
+    Usato da `LiteLLMEmbeddingClient` via OpenRouter (`OPENROUTER_API_KEY`).
+    I campi `timeout` e `num_retries` sono ignorati dal client locale
+    `SentenceTransformerEmbeddingClient`.
     """
 
     model_config = ConfigDict(frozen=True)
 
-    model_name: str = "BAAI/bge-m3"
-    vector_dim: int = 1024
+    model_name: str = "openrouter/openai/text-embedding-3-small"
+    vector_dim: int = 1536
     # Matryoshka: se valorizzato, accorcia l'output del modello; deve combaciare
     # con vector_dim e con la dimensione della colonna VECTOR(N). Default: full.
     dimensions: int | None = None

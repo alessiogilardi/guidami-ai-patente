@@ -38,4 +38,4 @@ class LiteLLMEmbeddingClient(EmbeddingClient):
             kwargs["dimensions"] = self._config.dimensions
         response = litellm.embedding(**kwargs)
         ordered = sorted(response.data, key=lambda item: item["index"])
-        return [item["embedding"] for item in ordered]
+        return [[float(v) for v in item["embedding"]] for item in ordered]

@@ -3,10 +3,10 @@ cds_cleaned_path: data/cleaned/cds/codice_della_strada.json
 cap_parsed_path: data/parsed/cap/codice_rca.json
 cap_cleaned_path: data/cleaned/cap/codice_rca.json
 quiz_bank_path: data/cleaned/quiz-patente-ab/quiz-patente-ab.json
-embedding_batch_size: 64
+embedding_batch_size: 8
 embedding:
-  model_name: BAAI/bge-m3
-  vector_dim: 1024
+  model_name: openrouter/openai/text-embedding-3-small
+  vector_dim: 1536
 postgres:
   host: localhost
   port: 5432

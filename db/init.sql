@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS knowledge_chunks (
     chunk_text      TEXT NOT NULL,
     is_repealed     BOOLEAN NOT NULL DEFAULT FALSE,
     source_url      TEXT NOT NULL,
-    embedding       VECTOR(1024),
+    embedding       VECTOR(1536),
     UNIQUE (source, article_number, comma_index)
 );
 
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
     text            TEXT NOT NULL,
     correct_answer  BOOLEAN NOT NULL,
     image_filename  TEXT,
-    embedding       VECTOR(1024),
+    embedding       VECTOR(1536),
     UNIQUE(number)
 );
 

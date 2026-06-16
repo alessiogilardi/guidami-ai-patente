@@ -38,7 +38,7 @@ def test_build_raises_before_instantiating_clients_when_source_path_is_missing(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
     monkeypatch.setattr(
-        f"{MODULE}.SentenceTransformerEmbeddingClient",
+        f"{MODULE}.LiteLLMEmbeddingClient",
         lambda config: pytest.fail("non deve essere istanziato se i path sorgente sono invalidi"),
     )
     monkeypatch.setattr(
@@ -61,7 +61,7 @@ def test_build_uses_overridden_dependencies_instead_of_defaults(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setattr(
-        f"{MODULE}.SentenceTransformerEmbeddingClient",
+        f"{MODULE}.LiteLLMEmbeddingClient",
         lambda config: pytest.fail("non deve essere istanziato se sovrascritto con with_*"),
     )
     monkeypatch.setattr(

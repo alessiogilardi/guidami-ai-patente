@@ -1,6 +1,6 @@
 from typing import Self
 
-from commons.clients import EmbeddingClient, PostgresClient, SentenceTransformerEmbeddingClient
+from commons.clients import EmbeddingClient, LiteLLMEmbeddingClient, PostgresClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.repositories import (
     QuizBankRepository,
@@ -44,7 +44,7 @@ class QuizIndexingPipelineBuilder:
         return self
 
     def with_embedding_client(self, embedding_client: EmbeddingClient) -> Self:
-        """Sostituisce l'`EmbeddingClient` di default (`SentenceTransformerEmbeddingClient`)."""
+        """Sostituisce l'`EmbeddingClient` di default (`LiteLLMEmbeddingClient`)."""
         self._embedding_client = embedding_client
         return self
 
@@ -72,7 +72,7 @@ class QuizIndexingPipelineBuilder:
             embedding_client=(
                 self._embedding_client
                 if self._embedding_client is not None
-                else SentenceTransformerEmbeddingClient(self._config.embedding)
+                else LiteLLMEmbeddingClient(self._config.embedding)
             ),
             config=self._config,
         )
