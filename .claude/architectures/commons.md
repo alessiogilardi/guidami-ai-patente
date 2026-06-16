@@ -20,7 +20,7 @@ src/commons/
     knowledge/
       retrieval_result.py  # RetrievalResult — chunk + score (similarity search)
   clients/
-    embedding_client.py    # EmbeddingClient (interfaccia) + E5SmallEmbeddingClient
+    embedding_client.py    # EmbeddingClient (interfaccia ABC) + LiteLLMEmbeddingClient
     postgres_client.py     # PostgresClient — wrapper psycopg generico, table-agnostic
   configs/
     embedding_config.py          # EmbeddingConfig (frozen)
@@ -29,13 +29,29 @@ src/commons/
 
 ## Decisioni implementate
 
-- **`EmbeddingConfig`**: default `intfloat/multilingual-e5-small`,
-  `vector_dim=384`, prefissi `query: ` / `passage: ` (richiesti dal modello
-  e5).
-- **`E5SmallEmbeddingClient`**: implementazione locale via
-  `sentence-transformers`, applica i prefissi e normalizza i vettori
-  (`normalize_embeddings=True`), coerente con l'operatore
-  `vector_cosine_ops` usato nelle query di similarity search.
+- **`EmbeddingConfig`** (`BaseModel`, `frozen=True`): campi `model_name`
+  (default `openrouter/openai/text-embedding-3-small`), `vector_dim: int =
+  1536`, `dimensions: int | None = None` (Matryoshka opzionale, passato
+  all'API se impostato), `timeout: float = 30.0`, `num_retries: int = 3`.
+  Rimossi i campi `query_prefix`/`passage_prefix` (non necessari con i
+  modelli OpenAI).
+- **`LiteLLMEmbeddingClient`**: implementazione cloud via libreria
+  **litellm**, instradato su **OpenRouter** (endpoint embeddings
+  OpenAI-compatible). Riceve in costruzione un `EmbeddingConfig`; chiama
+  `litellm.embedding(model=..., input=texts, ...)` passando `timeout`,
+  `num_retries` e opzionalmente `dimensions`. La risposta viene ordinata per
+  `data[i]["index"]` per garantire l'allineamento input↔output
+  indipendentemente dall'ordine restituito dall'API. L'API key
+  `OPENROUTER_API_KEY` è letta da litellm dall'ambiente (`.env`), senza
+  lettura esplicita nel codice. Nessuna normalizzazione manuale: i vettori
+  `text-embedding-3-small` sono già unit-norm, coerente con
+  `vector_cosine_ops`. Nessun prefisso `query: `/`passage: ` (rimossi).
+- **`EmbeddingClient` (ABC)**: interfaccia `embed_query(text: str) ->
+  list[float]` / `embed_passages(texts: list[str]) -> list[list[float]]`
+  invariata — l'implementazione concreta è sostituibile con il solo nome
+  modello (Dependency Inversion). `E5SmallEmbeddingClient` rimosso
+  (insieme a `sentence-transformers`, torch, transformers, scipy,
+  scikit-learn).
 - **`PostgresConnectionConfig`** (`BaseModel`, `frozen=True`): sostituisce
   `VectorStoreConfig` (rimosso). Resta `BaseModel`, non `BaseSettings` —
   `commons` non legge env, i valori arrivano dal chiamante (il caricamento
@@ -83,8 +99,11 @@ src/commons/
 
 ## Test
 
-- `tests/commons/clients/test_embedding_client.py` —
-  `@pytest.mark.integration`, verifica `len(vector) == 384`.
+- `tests/commons/clients/test_embedding_client.py` — test offline con mock di
+  `litellm.embedding`: verifica costruzione risposta, ordinamento per `index`,
+  separazione `embed_query`/`embed_passages`. Test `@pytest.mark.integration`
+  (skippato senza `OPENROUTER_API_KEY`) verifica `len(vector) == 1536` contro
+  l'API reale.
 - `tests/commons/clients/test_postgres_client.py` — contro il Postgres del
   compose (no marker `integration`): `truncate`, `execute_many`/`fetch` su
   `knowledge_chunks` (bulk insert + lettura ordinata).

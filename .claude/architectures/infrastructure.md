@@ -22,14 +22,17 @@ Riferimento progettazione: `plans/tech-stack.md`,
   | `chunk_text` | `TEXT` | |
   | `is_repealed` | `BOOLEAN` | default `FALSE` |
   | `source_url` | `TEXT` | |
-  | `embedding` | `VECTOR(384)` | nullable, popolato dall'ingestor |
+  | `embedding` | `VECTOR(1536)` | nullable, popolato dall'ingestor |
 
   Vincolo `UNIQUE (source, article_number, comma_index)`.
 
 ## Decisioni confermate
 
-- Dimensione embedding **384** (modello `intfloat/multilingual-e5-small`),
-  verificata empiricamente — nessun bisogno di `ALTER TABLE` per il default.
+- Dimensione embedding **1536** (modello `openrouter/openai/text-embedding-3-small`).
+  Il cambio da 384 (e5 locale) a 1536 è un **breaking change di schema**: richiede
+  re-ingest completo del corpus. `init.sql` viene eseguito solo alla creazione del
+  volume Docker; per un'installazione esistente occorre distruggere e ricreare il
+  volume.
 - Un solo Postgres per dati vettoriali e (in futuro) relazionali
   (es. persistenza sessione v2) — vedi `plans/tech-stack.md`.
 

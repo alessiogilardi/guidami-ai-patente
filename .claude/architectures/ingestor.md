@@ -183,7 +183,9 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
      concatenazione dei chunk;
   3. `_assign_embeddings` (helper privato): batch di
      `config.embedding_batch_size`, `EmbeddingClient.embed_passages()` e
-     assegnazione di `chunk.embedding` in place (campo mutabile);
+     assegnazione di `chunk.embedding` in place (campo mutabile). Ogni
+     chiamata è una richiesta API a pagamento (OpenRouter) — il costo è
+     limitato al re-ingest del corpus (operazione offline, non query utente);
   4. `KnowledgeChunkStoreRepository.truncate()` poi `bulk_insert(chunks)`
      (full reload).
   - Dipendenze iniettate via costruttore: `ArticleRepository`,
@@ -191,16 +193,17 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
     `KnowledgeChunkStoreRepository`, `IngestorConfig`.
 - **`IndexingPipelineBuilder`**: valida l'esistenza di `cds_cleaned_path`/
   `cap_cleaned_path` (non più `cds_path`/`cap_path`) con `FileNotFoundError`
-  fail-fast **prima** di istanziare `E5SmallEmbeddingClient` (carica il
-  modello sentence-transformers) o `PostgresClient` (apre connessione
-  Postgres). `_validate_source_paths` aggrega tutti i path mancanti in un
-  unico `FileNotFoundError` (report completo, non solo il primo). Nessuna
-  classe di eccezioni dedicata — `FileNotFoundError` con messaggio chiaro,
-  coerente con KISS a questa scala.
+  fail-fast **prima** di istanziare `LiteLLMEmbeddingClient` o `PostgresClient`
+  (apre connessione Postgres). `_validate_source_paths` aggrega tutti i path
+  mancanti in un unico `FileNotFoundError` (report completo, non solo il
+  primo). Nessuna classe di eccezioni dedicata — `FileNotFoundError` con
+  messaggio chiaro, coerente con KISS a questa scala.
   - Setter fluent `with_article_repository`, `with_article_chunker`,
     `with_embedding_client`, `with_knowledge_chunk_store_repository`
     (ritornano `Self`) per assegnare ogni dipendenza concreta prima di
-    `build()`. Il default di `knowledge_chunk_store_repository` è
+    `build()`. Il default di `embedding_client` è
+    `LiteLLMEmbeddingClient(config.embedding)`; il default di
+    `knowledge_chunk_store_repository` è
     `KnowledgeChunkStoreRepository(PostgresClient(config.postgres),
     config.knowledge_chunks_table)`. `build()` usa controlli espliciti
     `is not None` (non `or`) per scegliere tra dipendenza assegnata e
@@ -308,16 +311,17 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
 - **YAML committato, non-secret** — `configs/ingestor_config.yaml` (root del
   progetto, fuori da `src/`): `cds_parsed_path`, `cds_cleaned_path`,
   `cap_parsed_path`, `cap_cleaned_path`, `quiz_bank_path`,
-  `embedding_batch_size`, `embedding` (model_name/vector_dim/prefissi), i
-  campi non-secret di `postgres` (`host`, `port`, `dbname`), e
-  `knowledge_chunks_table`/`quiz_questions_table`. La cartella `configs/`
+  `embedding_batch_size`, `embedding` (model_name `openrouter/openai/text-embedding-3-small`,
+  `vector_dim=1536`, nessun prefisso), i campi non-secret di `postgres`
+  (`host`, `port`, `dbname`), e `knowledge_chunks_table`/`quiz_questions_table`. La cartella `configs/`
   alla root è pensata come contenitore anche per le future configurazioni non
   sensibili (es. futuro `app_config.yaml` per l'app FastAPI).
 - **Env / `.env`, solo secrets** — `.env.example` (root) documenta le sole
   variabili richieste: `POSTGRES__USER`, `POSTGRES__PASSWORD` (doppio
   underscore = `env_nested_delimiter`, popola `postgres.user` /
-  `postgres.password`; rinominate da `VECTOR_STORE__USER`/`PASSWORD`). Mai
-  committare un `.env` reale.
+  `postgres.password`; rinominate da `VECTOR_STORE__USER`/`PASSWORD`),
+  `OPENROUTER_API_KEY` (letta da litellm dall'ambiente, non da
+  `IngestorConfig`). Mai committare un `.env` reale.
 - **`IngestorConfig.model_config`**: `SettingsConfigDict(frozen=True,
   env_nested_delimiter="__", env_file=".env",
   yaml_file="configs/ingestor_config.yaml")`.
@@ -348,7 +352,7 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   2. `IndexingPipeline.run()` (`IndexingPipelineBuilder(config)
      .with_article_repository(ArticleRepository())
      .with_article_chunker(ArticleChunker())
-     .with_embedding_client(E5SmallEmbeddingClient(config.embedding))
+     .with_embedding_client(LiteLLMEmbeddingClient(config.embedding))
      .with_knowledge_chunk_store_repository(KnowledgeChunkStoreRepository(
        PostgresClient(config.postgres), config.knowledge_chunks_table))
      .build()`).
@@ -465,7 +469,7 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   completato prima del chunking.
 - `tests/guidami_ai_patente_ingestor/orchestrators/knowledge_indexing/test_indexing_pipeline_builder.py` —
   path `*_cleaned_path` mancanti → `FileNotFoundError` senza istanziare
-  `E5SmallEmbeddingClient`/`PostgresClient`.
+  `LiteLLMEmbeddingClient`/`PostgresClient`.
 - `tests/guidami_ai_patente_ingestor/configs/test_ingestor_config.py` —
   default path (`*_parsed_path`/`*_cleaned_path`/`quiz_bank_path`), default
   dei nomi tabella (`knowledge_chunks_table`/`quiz_questions_table`),
