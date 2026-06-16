@@ -1,6 +1,6 @@
 import logging
 
-from commons.clients import LiteLLMEmbeddingClient, PostgresClient
+from commons.clients import PostgresClient, SentenceTransformerEmbeddingClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators.knowledge_cleaning import CleaningPipelineBuilder
 from guidami_ai_patente_ingestor.orchestrators.knowledge_indexing import IndexingPipelineBuilder
@@ -39,7 +39,7 @@ def main() -> None:
         IndexingPipelineBuilder(config)
         .with_article_repository(article_repository)
         .with_article_chunker(ArticleChunker())
-        .with_embedding_client(LiteLLMEmbeddingClient(config.embedding))
+        .with_embedding_client(SentenceTransformerEmbeddingClient(config.embedding))
         .with_knowledge_chunk_store_repository(
             KnowledgeChunkStoreRepository(
                 PostgresClient(config.postgres), config.knowledge_chunks_table

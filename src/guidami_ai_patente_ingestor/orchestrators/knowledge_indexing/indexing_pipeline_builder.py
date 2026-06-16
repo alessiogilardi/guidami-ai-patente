@@ -1,6 +1,6 @@
 from typing import Self
 
-from commons.clients import EmbeddingClient, LiteLLMEmbeddingClient, PostgresClient
+from commons.clients import EmbeddingClient, PostgresClient, SentenceTransformerEmbeddingClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.repositories import (
     ArticleRepository,
@@ -37,7 +37,7 @@ class IndexingPipelineBuilder:
         return self
 
     def with_embedding_client(self, embedding_client: EmbeddingClient) -> Self:
-        """Sostituisce l'`EmbeddingClient` di default (`LiteLLMEmbeddingClient`)."""
+        """Sostituisce l'`EmbeddingClient` di default (`SentenceTransformerEmbeddingClient`)."""
         self._embedding_client = embedding_client
         return self
 
@@ -65,7 +65,7 @@ class IndexingPipelineBuilder:
             embedding_client=(
                 self._embedding_client
                 if self._embedding_client is not None
-                else LiteLLMEmbeddingClient(self._config.embedding)
+                else SentenceTransformerEmbeddingClient(self._config.embedding)
             ),
             knowledge_chunk_store_repository=(
                 self._knowledge_chunk_store_repository

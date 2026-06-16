@@ -1,6 +1,6 @@
 from typing import Self
 
-from commons.clients import PostgresClient
+from commons.clients import EmbeddingClient, PostgresClient, SentenceTransformerEmbeddingClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.repositories import (
     QuizBankRepository,
@@ -24,6 +24,7 @@ class QuizIndexingPipelineBuilder:
         self._quiz_bank_repository: QuizBankRepository | None = None
         self._quiz_question_mapper: QuizQuestionMapper | None = None
         self._quiz_question_store_repository: QuizQuestionStoreRepository | None = None
+        self._embedding_client: EmbeddingClient | None = None
 
     def with_quiz_bank_repository(self, quiz_bank_repository: QuizBankRepository) -> Self:
         """Sostituisce il `QuizBankRepository` di default."""
@@ -40,6 +41,11 @@ class QuizIndexingPipelineBuilder:
     ) -> Self:
         """Sostituisce il `QuizQuestionStoreRepository` di default."""
         self._quiz_question_store_repository = quiz_question_store_repository
+        return self
+
+    def with_embedding_client(self, embedding_client: EmbeddingClient) -> Self:
+        """Sostituisce l'`EmbeddingClient` di default (`SentenceTransformerEmbeddingClient`)."""
+        self._embedding_client = embedding_client
         return self
 
     def build(self) -> QuizIndexingPipeline:
@@ -62,6 +68,11 @@ class QuizIndexingPipelineBuilder:
                 else QuizQuestionStoreRepository(
                     PostgresClient(self._config.postgres), self._config.quiz_questions_table
                 )
+            ),
+            embedding_client=(
+                self._embedding_client
+                if self._embedding_client is not None
+                else SentenceTransformerEmbeddingClient(self._config.embedding)
             ),
             config=self._config,
         )

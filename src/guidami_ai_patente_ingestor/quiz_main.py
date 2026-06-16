@@ -1,5 +1,6 @@
 import logging
 
+from commons.clients import SentenceTransformerEmbeddingClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators.quiz_indexing import QuizIndexingPipelineBuilder
 
@@ -16,6 +17,10 @@ def main() -> None:
     config = IngestorConfig()  # pyright: ignore[reportCallIssue]
 
     logger.info("starting quiz indexing pipeline")
-    quiz_indexing_pipeline = QuizIndexingPipelineBuilder(config).build()
+    quiz_indexing_pipeline = (
+        QuizIndexingPipelineBuilder(config)
+        .with_embedding_client(SentenceTransformerEmbeddingClient(config.embedding))
+        .build()
+    )
     quiz_indexing_pipeline.run()
     logger.info("quiz indexing pipeline completed")
