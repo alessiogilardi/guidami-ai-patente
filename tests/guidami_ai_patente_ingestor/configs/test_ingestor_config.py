@@ -22,7 +22,7 @@ def test_default_paths_point_to_expected_source_files() -> None:
     assert config.cds_cleaned_path == Path("data/cleaned/cds/codice_della_strada.json")
     assert config.cap_parsed_path == Path("data/parsed/cap/codice_rca.json")
     assert config.cap_cleaned_path == Path("data/cleaned/cap/codice_rca.json")
-    assert config.quiz_bank_path == Path("data/parsed/quiz-patente-ab/quiz-patente-ab.json")
+    assert config.quiz_bank_path == Path("data/cleaned/quiz-patente-ab/quiz-patente-ab.json")
 
 
 def test_default_table_names() -> None:

@@ -3,6 +3,7 @@ from unittest.mock import Mock
 
 import pytest
 
+from commons.clients import EmbeddingClient
 from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators.quiz_indexing import (
@@ -51,6 +52,10 @@ def test_build_uses_overridden_dependencies_instead_of_defaults(
         f"{MODULE}.PostgresClient",
         lambda config: pytest.fail("non deve essere istanziato se sovrascritto con with_*"),
     )
+    monkeypatch.setattr(
+        f"{MODULE}.SentenceTransformerEmbeddingClient",
+        lambda config: pytest.fail("non deve essere istanziato se sovrascritto con with_*"),
+    )
 
     quiz_bank_path = tmp_path / "quiz-bank.json"
     quiz_bank_path.write_text("[]", encoding="utf-8")
@@ -58,12 +63,14 @@ def test_build_uses_overridden_dependencies_instead_of_defaults(
     quiz_bank_repository = Mock(spec=QuizBankRepository)
     quiz_question_mapper = Mock(spec=QuizQuestionMapper)
     quiz_question_store_repository = Mock(spec=QuizQuestionStoreRepository)
+    embedding_client = Mock(spec=EmbeddingClient)
 
     pipeline = (
         QuizIndexingPipelineBuilder(_build_config(quiz_bank_path))
         .with_quiz_bank_repository(quiz_bank_repository)
         .with_quiz_question_mapper(quiz_question_mapper)
         .with_quiz_question_store_repository(quiz_question_store_repository)
+        .with_embedding_client(embedding_client)
         .build()
     )
 
@@ -71,3 +78,4 @@ def test_build_uses_overridden_dependencies_instead_of_defaults(
     assert pipeline._quiz_bank_repository is quiz_bank_repository
     assert pipeline._quiz_question_mapper is quiz_question_mapper
     assert pipeline._quiz_question_store_repository is quiz_question_store_repository
+    assert pipeline._embedding_client is embedding_client
