@@ -40,12 +40,11 @@ Mapping esistente: **nessuno** — è ciò che questa feature crea.
 > ⚠️ **Prerequisito bloccante — embedding di corpus e quiz con lo stesso modello.**
 > Lo stadio retrieve confronta l'embedding (precomputato) della domanda con quello
 > dei chunk: i due **devono** provenire dallo stesso modello. Prima di questa
-> feature vanno quindi eseguiti, con `bge-m3` (1024 dim): (1) re-ingestion del
-> corpus (`ingest-knowledge`) e (2) embedding offline dei quiz
-> (`ingest-quiz`, che ora popola `quiz_questions.embedding`) — entrambi descritti in
-> [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md). 🧪 embedder ancora da
-> validare: controllarne qualità/recall (anche con la modalità sample) prima del
-> batch di mapping completo.
+> feature vanno quindi eseguiti, con `text-embedding-3-small` (1536 dim): (1)
+> re-ingestion del corpus (`ingest-knowledge`) e (2) embedding offline dei quiz
+> (`ingest-quiz`, che popola `quiz_questions.embedding`) — quest'ultimo descritto in
+> [ingest--quiz-embeddings.md](ingest--quiz-embeddings.md). 🧪 recall ancora da
+> validare (anche con la modalità sample) prima del batch di mapping completo.
 
 > ⚠️ Le chiavi di join sono le **business key**, non i surrogate `id` (BIGSERIAL):
 > entrambe le tabelle sono ricostruite in full-reload (truncate+insert), quindi
@@ -59,8 +58,9 @@ Pattern candidate-generation + selezione, che riusa l'infra già implementata.
 
 ### 1. Retrieve — generazione candidati
 Per ogni domanda si **legge l'embedding già precomputato** in
-`quiz_questions.embedding` (1024 dim, calcolato offline da `ingest-quiz` con
-**`bge-m3`** — vedi [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md)) e si
+`quiz_questions.embedding` (1536 dim, calcolato offline da `ingest-quiz` con
+**`text-embedding-3-small`** — vedi
+[ingest--quiz-embeddings.md](ingest--quiz-embeddings.md)) e si
 fa top-k (default k=8) per cosine similarity su `knowledge_chunks` via pgvector
 (`<=>`). Restringe ~1700 chunk a pochi candidati. **Niente embedding a tempo di
 giudizio**: questa pipeline non carica il modello né chiama l'embedder — l'embedding
@@ -180,13 +180,13 @@ sample/dry-run pilotata dagli args.
 
 ## Embedding
 
-Default: **`bge-m3` locale (1024 dim)** via sentence-transformers — multilingue,
-forte sull'italiano, qualità paragonabile a `text-embedding-3-small` ma **gratis e
-senza dipendenza/latenza di rete a runtime**. `LiteLLMEmbeddingClient` (OpenRouter,
-`text-embedding-3-small`) resta come alternativa intercambiabile per A/B.
+Default: **`text-embedding-3-small` cloud (1536 dim)** via litellm → OpenRouter
+(`LiteLLMEmbeddingClient`) — multilingue, forte sull'italiano. `E5SmallEmbeddingClient`
+locale (sentence-transformers) resta come alternativa per A/B / uso offline. Vedi
+[tech-stack.md](tech-stack.md).
 
 **L'embedding delle domande è precomputato offline** in `quiz_questions.embedding`
-da `ingest-quiz` (vedi [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md)),
+da `ingest-quiz` (vedi [ingest--quiz-embeddings.md](ingest--quiz-embeddings.md)),
 con lo **stesso** embedder usato per il corpus → stesso spazio vettoriale. Questa
 pipeline lo **legge** soltanto, non lo ricalcola.
 
@@ -235,9 +235,11 @@ la soglia vive in `JudgeConfig`. v1: solo storage + report, nessuna UI.
 5. **Anti-allucinazione**: il giudice sceglie solo tra candidati o "nessuno".
 6. **Validazione su sample prima del batch**: si gira `--sample N` in dry-run e si
    valuta a mano il report; solo dopo il batch completo.
-7. **Embedding**: **`bge-m3` locale (1024)** come default (unico per offline e
-   runtime); `LiteLLMEmbeddingClient` cloud resta alternativa A/B. Se il recall@k è
-   insufficiente la prima azione è alzare `top_k`, non cambiare embedder.
+7. **Embedding**: **`text-embedding-3-small` cloud (1536)** come default (unico per
+   offline e runtime), precomputato offline sui quiz (vedi
+   [ingest--quiz-embeddings.md](ingest--quiz-embeddings.md)); `E5SmallEmbeddingClient`
+   locale resta alternativa A/B. Se il recall@k è insufficiente la prima azione è
+   alzare `top_k`, non cambiare embedder.
 
 ## Limiti noti
 
@@ -248,8 +250,9 @@ la soglia vive in `JudgeConfig`. v1: solo storage + report, nessuna UI.
 ## Stato
 
 ⬜ Non avviato. Architettura discussa e concordata. **Prerequisito**: corpus
-re-ingestato a 1024 dim con l'embedder locale `bge-m3` (ancora da validare, vedi
-Prerequisiti). Implementazione in TDD (test prima per `QuizNormaJudge` e
+indicizzato e quiz embeddati a 1536 dim con `text-embedding-3-small` (vedi
+[ingest--quiz-embeddings.md](ingest--quiz-embeddings.md); recall ancora da validare,
+vedi Prerequisiti). Implementazione in TDD (test prima per `QuizNormaJudge` e
 `QuizNormaMappingStoreRepository`, poi pipeline) come task successivo. Al termine,
 aggiornare `.claude/architectures/` via `architecture-doc-keeper` e aggiungere il
 link in [architecture-index.md](architecture-index.md).

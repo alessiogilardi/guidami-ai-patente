@@ -15,24 +15,33 @@ sessione/progress (v2).
 
 ## Embeddings
 
-**Default**: `BAAI/bge-m3` (1024 dim) **locale**, via `sentence-transformers`
-in-process — multilingue, forte sull'italiano, qualità paragonabile a
-`text-embedding-3-small`, ma **gratis** e **senza API key né latenza di rete**.
-Migrazione descritta in [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md).
+**Default**: `text-embedding-3-small` (**1536 dim**, full), **cloud** via litellm →
+OpenRouter (`openrouter/openai/text-embedding-3-small`), client
+`LiteLLMEmbeddingClient`. Multilingue, forte sull'italiano. È il default già
+implementato nel codice.
+
+> ⚠️ **Da verificare**: OpenRouter è orientato a chat/completions e il supporto
+> all'endpoint `/embeddings` per questo modello va confermato (test d'integrazione
+> `test_embed_query_against_openrouter_returns_configured_dimension`, gated da
+> `OPENROUTER_API_KEY`). Se non affidabile, il fallback naturale è **OpenAI
+> diretto** (`openai/text-embedding-3-small` + `OPENAI_API_KEY`), stessa libreria
+> litellm, nessun altro cambiamento.
 
 **Embedder unico** per indicizzazione offline e retrieval a runtime (query e chunk
 devono vivere nello stesso spazio vettoriale). A runtime serve comunque **solo per
-i follow-up liberi**: la spiegazione iniziale di un quiz mappato è una JOIN sul
-mapping precomputato (vedi [ingest--llm-as-judge.md](ingest--llm-as-judge.md)).
+i follow-up liberi** — e lì è una **chiamata cloud a pagamento** (OpenRouter) con
+latenza di rete; la spiegazione iniziale di un quiz mappato resta invece una JOIN
+sul mapping precomputato, senza embed (vedi
+[ingest--llm-as-judge.md](ingest--llm-as-judge.md)).
 
 **Interfaccia**: `clients/embeddings/embedding_client.py` espone un'interfaccia
 astratta (`EmbeddingClient`); l'implementazione concreta è intercambiabile senza
-toccare i chiamanti. Profilo cloud alternativo per A/B di qualità:
-`LiteLLMEmbeddingClient` (`openrouter/openai/text-embedding-3-small`, 1536 dim) —
-richiede `OPENROUTER_API_KEY` + rete, stessa libreria litellm del giudice LLM.
+toccare i chiamanti. Profilo **locale alternativo** per A/B di qualità / uso offline
+senza rete: `E5SmallEmbeddingClient` (sentence-transformers) — gratis, nessuna API
+key, ma dimensione diversa (e5-small = 384) → non hot-swap col default (vedi sotto).
 
 ⚠️ Cambiare modello (tra modelli con dimensioni diverse) **non è un hot-swap**:
-la colonna `VECTOR(N)` in pgvector ha dimensione fissa (oggi `1024`), quindi
+la colonna `VECTOR(N)` in pgvector ha dimensione fissa (oggi `1536`), quindi
 richiede `ALTER TABLE`/nuova tabella + re-ingestion completa del corpus. Vedi
 [architecture-ingestor.md](architecture-ingestor.md).
 

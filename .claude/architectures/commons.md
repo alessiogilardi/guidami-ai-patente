@@ -36,11 +36,13 @@ src/commons/
 ## Decisioni implementate
 
 - **`EmbeddingConfig`** (`BaseModel`, `frozen=True`): campi `model_name`
-  (default `"BAAI/bge-m3"`), `vector_dim: int = 1024`, `dimensions: int |
-  None = None` (Matryoshka opzionale — ignorato dal client locale, passato
+  (default `"openrouter/openai/text-embedding-3-small"`), `vector_dim: int =
+  1536`, `dimensions: int | None = None` (Matryoshka opzionale — passato
   all'API se si usa `LiteLLMEmbeddingClient`), `timeout: float = 30.0`,
-  `num_retries: int = 3`. I campi cloud rimangono per compatibilità A/B con
-  `LiteLLMEmbeddingClient`.
+  `num_retries: int = 3`. Il valore di `vector_dim` deve corrispondere alla
+  dimensione configurata nel DB (`VECTOR(1536)` in `db/init.sql`). Il campo
+  `SentenceTransformerEmbeddingClient` rimane disponibile per sperimentazione
+  offline ma non è il default di produzione.
 - **`SentenceTransformerEmbeddingClient`**: implementazione locale via
   libreria **sentence-transformers**. Carica il modello con
   `SentenceTransformer(config.model_name)` al momento della costruzione

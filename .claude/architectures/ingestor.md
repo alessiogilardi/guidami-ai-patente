@@ -202,8 +202,8 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
     `with_embedding_client`, `with_knowledge_chunk_store_repository`
     (ritornano `Self`) per assegnare ogni dipendenza concreta prima di
     `build()`. Il default di `embedding_client` è
-    `SentenceTransformerEmbeddingClient(config.embedding)` (locale, bge-m3);
-    il default di `knowledge_chunk_store_repository` è
+    `LiteLLMEmbeddingClient(config.embedding)` (cloud, `text-embedding-3-small`
+    via OpenRouter); il default di `knowledge_chunk_store_repository` è
     `KnowledgeChunkStoreRepository(PostgresClient(config.postgres),
     config.knowledge_chunks_table)`. `build()` usa controlli espliciti
     `is not None` (non `or`) per scegliere tra dipendenza assegnata e
@@ -281,8 +281,11 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   `with_quiz_question_store_repository`, `with_embedding_client`
   (ritornano `Self`); `build()` usa controlli espliciti `is not None`,
   stesso pattern di `IndexingPipelineBuilder`. Default di
-  `embedding_client`: `SentenceTransformerEmbeddingClient(config.embedding)`.
-  Default di `quiz_question_store_repository`:
+  `embedding_client`: `LiteLLMEmbeddingClient(config.embedding)` (cloud,
+  `text-embedding-3-small` via OpenRouter) — stesso default di
+  `IndexingPipelineBuilder`, per garantire che corpus e quiz siano
+  embedati nello stesso spazio vettoriale. Default di
+  `quiz_question_store_repository`:
   `QuizQuestionStoreRepository(PostgresClient(config.postgres),
   config.quiz_questions_table)`.
 
@@ -316,10 +319,11 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
 - **YAML committato, non-secret** — `configs/ingestor_config.yaml` (root del
   progetto, fuori da `src/`): `cds_parsed_path`, `cds_cleaned_path`,
   `cap_parsed_path`, `cap_cleaned_path`, `quiz_bank_path`,
-  `embedding_batch_size`, `embedding` (model_name `BAAI/bge-m3`,
-  `vector_dim=1024`), i campi non-secret di `postgres`
-  (`host`, `port`, `dbname`), e `knowledge_chunks_table`/`quiz_questions_table`. La cartella `configs/`
-  alla root è pensata come contenitore anche per le future configurazioni non
+  `embedding_batch_size`, `embedding` (`model_name:
+  openrouter/openai/text-embedding-3-small`, `vector_dim: 1536`), i campi
+  non-secret di `postgres` (`host`, `port`, `dbname`), e
+  `knowledge_chunks_table`/`quiz_questions_table`. La cartella `configs/` alla
+  root è pensata come contenitore anche per le future configurazioni non
   sensibili (es. futuro `app_config.yaml` per l'app FastAPI).
 - **Env / `.env`, solo secrets** — `.env.example` (root) documenta le sole
   variabili richieste: `POSTGRES__USER`, `POSTGRES__PASSWORD` (doppio
@@ -358,7 +362,7 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   2. `IndexingPipeline.run()` (`IndexingPipelineBuilder(config)
      .with_article_repository(ArticleRepository())
      .with_article_chunker(ArticleChunker())
-     .with_embedding_client(SentenceTransformerEmbeddingClient(config.embedding))
+     .with_embedding_client(LiteLLMEmbeddingClient(config.embedding))
      .with_knowledge_chunk_store_repository(KnowledgeChunkStoreRepository(
        PostgresClient(config.postgres), config.knowledge_chunks_table))
      .build()`).
@@ -396,14 +400,15 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   logging.getLogger(__name__)` a livello di modulo.
 - Esegue `QuizIndexingPipeline.run()` da
   `QuizIndexingPipelineBuilder(config)
-  .with_embedding_client(SentenceTransformerEmbeddingClient(config.embedding))
+  .with_embedding_client(LiteLLMEmbeddingClient(config.embedding))
   .build()` — l'embedding client è passato esplicitamente, coerente con il
   pattern di `main.py` (wiring visibile nell'entry point). Log `info`
   "starting quiz indexing pipeline" / "quiz indexing pipeline completed".
 - Pipeline separata da `main.py` (decisione 8 del piano quiz-bank): step
   diversi (corpus: load+chunk+embed vs quiz: load+map+embed), eseguibili
   indipendentemente, pur condividendo la strategia di store (truncate +
-  insert) e lo stesso embedder locale (bge-m3).
+  insert) e lo stesso embedder (`text-embedding-3-small` via
+  `LiteLLMEmbeddingClient`).
 
 ### `reset_quiz_db.py`
 

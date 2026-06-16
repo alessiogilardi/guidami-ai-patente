@@ -31,8 +31,11 @@ store) e un'applicazione backend (FastAPI) che serve il quiz bot.
   ibrido del corpus (pgvector + FTS, fusione RRF) su `knowledge_chunks`
 - [ingest--llm-as-judge.md](ingest--llm-as-judge.md) — mapping offline quiz ↔
   norma (LLM-as-a-Judge) via litellm
-- [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md) — migrazione
-  dell'embedder del corpus a bge-m3 locale (1024 dim)
+- [ingest--quiz-embeddings.md](ingest--quiz-embeddings.md) — embedding offline dei
+  quiz (precompute per il giudice), 1536 dim
+- [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md) — ❌ archiviato:
+  migrazione a bge-m3 locale **non eseguita**; embedder resta
+  `text-embedding-3-small` cloud (vedi [tech-stack.md](tech-stack.md))
 
 ## Decisioni architetturali
 
@@ -68,8 +71,9 @@ Ephemeral per v1 (in-memory, niente DB/auth), ma dietro un'interfaccia
    retrieval pgvector solo per quiz non mappati / mapping a bassa confidence.
 4. Se l'utente fa follow-up, `ChatService` mantiene la `ChatSession` (via
    `SessionRepository` in-memory): qui sì si **embedda la domanda di follow-up**
-   (bge-m3 locale, vedi [tech-stack.md](tech-stack.md)) per il retrieval ad-hoc su
-   pgvector, e si richiama Groq con la history
+   (`text-embedding-3-small` cloud → **chiamata a pagamento** su OpenRouter, vedi
+   [tech-stack.md](tech-stack.md)) per il retrieval ad-hoc su pgvector, e si
+   richiama Groq con la history
 
 ## Note operative
 

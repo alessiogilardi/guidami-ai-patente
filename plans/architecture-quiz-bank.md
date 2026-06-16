@@ -49,11 +49,10 @@ CREATE INDEX idx_quiz_questions_question_id ON quiz_questions (question_id);
 [architecture-ingestor.md](architecture-ingestor.md), decisione 7).
 
 > 📌 **Incremento successivo** — embedding offline dei quiz: a `quiz_questions`
-> viene aggiunta la colonna `embedding VECTOR(1024)`, popolata da `ingest-quiz` con
-> `bge-m3`, così il giudice LLM non embedda a runtime. Schema e step di pipeline
-> descritti in [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md) (sezione
-> "Embedding dei quiz offline"), consumato da
-> [ingest--llm-as-judge.md](ingest--llm-as-judge.md).
+> viene aggiunta la colonna `embedding VECTOR(1536)`, popolata da `ingest-quiz` con
+> `text-embedding-3-small`, così il giudice LLM non embedda a runtime. Schema e step
+> di pipeline descritti in [ingest--quiz-embeddings.md](ingest--quiz-embeddings.md),
+> consumato da [ingest--llm-as-judge.md](ingest--llm-as-judge.md).
 
 ## Decisioni
 
