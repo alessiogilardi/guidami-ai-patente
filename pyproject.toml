@@ -9,6 +9,7 @@ dependencies = [
     "httpx>=0.28.1",
     "lxml>=6.1.1",
     "pdfplumber>=0.11.9",
+    "pillow>=10.0.0",
     "pgvector>=0.4.2",
     "psycopg[binary]>=3.3.4",
     "pydantic>=2.13.4",
@@ -20,7 +21,7 @@ dependencies = [
 [project.scripts]
 scrape-codice      = "scrapers.normattiva:main_cds"
 scrape-cap         = "scrapers.normattiva:main_cap"
-parse-domande      = "parsers.questions_pdf:main_domande"
+parse-domande      = "parsers.questions_pdf:main_questions"
 ingest-knowledge   = "guidami_ai_patente_ingestor.main:main"
 reset-knowledge-db = "guidami_ai_patente_ingestor.reset_db:main"
 ingest-quiz        = "guidami_ai_patente_ingestor.quiz_main:main"
