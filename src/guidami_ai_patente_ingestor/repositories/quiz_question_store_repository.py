@@ -23,8 +23,8 @@ class QuizQuestionStoreRepository:
 
         query = sql.SQL(
             "INSERT INTO {table} "
-            "(number, question_id, topic, text, correct_answer, image_filename) "
-            "VALUES (%s, %s, %s, %s, %s, %s)"
+            "(number, question_id, topic, text, correct_answer, image_filename, embedding) "
+            "VALUES (%s, %s, %s, %s, %s, %s, %s)"
         ).format(table=sql.Identifier(self._table_name))
 
         self._client.execute_many(
@@ -37,6 +37,7 @@ class QuizQuestionStoreRepository:
                     question.text,
                     question.correct_answer,
                     question.image_filename,
+                    question.embedding,
                 )
                 for question in questions
             ],
