@@ -5,10 +5,8 @@ cap_cleaned_path: data/cleaned/cap/codice_rca.json
 quiz_bank_path: data/cleaned/quiz-patente-ab/quiz-patente-ab.json
 embedding_batch_size: 64
 embedding:
-  model_name: intfloat/multilingual-e5-small
-  vector_dim: 384
-  query_prefix: "query: "
-  passage_prefix: "passage: "
+  model_name: openrouter/openai/text-embedding-3-small
+  vector_dim: 1536
 postgres:
   host: localhost
   port: 5432
