@@ -27,6 +27,10 @@ store) e un'applicazione backend (FastAPI) che serve il quiz bot.
   `quiz_questions`, flusso di ingestion del quiz bank
 - [architecture-code-layout.md](architecture-code-layout.md) — organizzazione del
   codice (layer `common`, ingestor, applicativo)
+- [architecture-hybrid-retrieval.md](architecture-hybrid-retrieval.md) — retrieval
+  ibrido del corpus (pgvector + FTS, fusione RRF) su `knowledge_chunks`
+- [ingest--llm-as-judge.md](ingest--llm-as-judge.md) — mapping offline quiz ↔
+  norma (LLM-as-a-Judge) via litellm
 
 ## Decisioni architetturali
 

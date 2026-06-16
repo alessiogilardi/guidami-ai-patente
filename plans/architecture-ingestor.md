@@ -114,7 +114,8 @@ migliorare il retrieval. Rimandata perché:
   di embedding
 
 Da valutare dopo aver validato la qualità del retrieval semantico puro con
-e5-small sui casi reali.
+e5-small sui casi reali. **Progettazione di dettaglio**:
+[architecture-hybrid-retrieval.md](architecture-hybrid-retrieval.md).
 
 ## Stato
 
