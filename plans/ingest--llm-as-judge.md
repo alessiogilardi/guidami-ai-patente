@@ -37,6 +37,16 @@ Vantaggi:
 
 Mapping esistente: **nessuno** — è ciò che questa feature crea.
 
+> ⚠️ **Prerequisito bloccante — embedding di corpus e quiz con lo stesso modello.**
+> Lo stadio retrieve confronta l'embedding (precomputato) della domanda con quello
+> dei chunk: i due **devono** provenire dallo stesso modello. Prima di questa
+> feature vanno quindi eseguiti, con `bge-m3` (1024 dim): (1) re-ingestion del
+> corpus (`ingest-knowledge`) e (2) embedding offline dei quiz
+> (`ingest-quiz`, che ora popola `quiz_questions.embedding`) — entrambi descritti in
+> [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md). 🧪 embedder ancora da
+> validare: controllarne qualità/recall (anche con la modalità sample) prima del
+> batch di mapping completo.
+
 > ⚠️ Le chiavi di join sono le **business key**, non i surrogate `id` (BIGSERIAL):
 > entrambe le tabelle sono ricostruite in full-reload (truncate+insert), quindi
 > gli `id` non sono stabili tra una re-ingestion e l'altra. Valutare un
@@ -48,9 +58,13 @@ Mapping esistente: **nessuno** — è ciò che questa feature crea.
 Pattern candidate-generation + selezione, che riusa l'infra già implementata.
 
 ### 1. Retrieve — generazione candidati
-Per ogni domanda: embed del testo con `E5SmallEmbeddingClient` (esistente) e
-top-k (default k=8) per cosine similarity su `knowledge_chunks` via pgvector
-(`<=>`). Restringe ~1700 chunk a pochi candidati. v1: solo testo.
+Per ogni domanda si **legge l'embedding già precomputato** in
+`quiz_questions.embedding` (1024 dim, calcolato offline da `ingest-quiz` con
+**`bge-m3`** — vedi [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md)) e si
+fa top-k (default k=8) per cosine similarity su `knowledge_chunks` via pgvector
+(`<=>`). Restringe ~1700 chunk a pochi candidati. **Niente embedding a tempo di
+giudizio**: questa pipeline non carica il modello né chiama l'embedder — l'embedding
+delle domande è un valore in tabella. v1: solo testo.
 
 ### 2. Judge — giudice su litellm (uso diretto, zero wrapper)
 I k candidati, etichettati `[A]…[H]`, vengono passati al **giudice** insieme alla
@@ -117,17 +131,20 @@ Segue le convenzioni del repo (commons condiviso, ingestor batch, builder fluent
 | `IngestorConfig` | config | esistente | aggiungere `judge: JudgeConfig`, `quiz_norma_mappings_table` |
 | `quiz_mapping_main.py` | entry point | `src/guidami_ai_patente_ingestor/` | carica config e args (`--force`, `--sample N`, `--seed`), costruisce e avvia la pipeline |
 
-Nuova dipendenza: **`litellm`** (`uv add litellm`) come unico wrapper LLM.
-Le API key dei provider (`GROQ_API_KEY`, poi `OPENROUTER_API_KEY`) stanno nel
-`.env` (secret): litellm le legge dall'ambiente. CLI registrata in
-`pyproject.toml` `[project.scripts]` → `ingest-quiz-mapping`.
+Dipendenze: **`litellm`** (wrapper del giudice). Questa pipeline **non** dipende da
+`sentence-transformers`: l'embedding delle domande è precomputato offline da
+`ingest-quiz` e letto da `quiz_questions.embedding`. Le API key del giudice stanno
+nel `.env` (secret), lette da litellm dall'ambiente: `GROQ_API_KEY` per la Fase 1,
+`OPENROUTER_API_KEY` per la Fase 2. CLI registrata in `pyproject.toml`
+`[project.scripts]` → `ingest-quiz-mapping`.
 
 ## Flusso della pipeline (idempotente / ripartibile)
 
 1. Carica da DB i `quiz_number` già presenti in `quiz_norma_mappings` (skip set);
    con `--force` lo skip set è vuoto.
 2. Per ogni `QuizQuestion` non ancora mappata:
-   1. `embed_query(text)` → top-k chunk candidati via pgvector.
+   1. leggi `quiz_questions.embedding` (precomputato) → top-k chunk candidati via
+      pgvector.
    2. `QuizNormaJudge.judge(question, candidates)` → (via litellm) JSON
       `{selezioni, confidence, rationale}`.
    3. costruisci le righe `QuizNormaMapping` con `rank` crescente.
@@ -161,25 +178,33 @@ Implementazione minimale (coerente col "meno layer possibili"): un campionamento
 Nessuna pipeline separata: è la stessa `QuizMappingPipeline` con modalità
 sample/dry-run pilotata dagli args.
 
-## Embedding: serve un modello più potente?
+## Embedding
 
-Oggi: `intfloat/multilingual-e5-small` (384 dim). **In questa pipeline l'embedding
-serve solo a generare i candidati** (top-k), poi è il giudice LLM a selezionare con
-precisione. Conta quindi il **recall@k** (basta che la norma giusta sia tra i k
-candidati), non la precisione fine dell'embedding.
+Default: **`bge-m3` locale (1024 dim)** via sentence-transformers — multilingue,
+forte sull'italiano, qualità paragonabile a `text-embedding-3-small` ma **gratis e
+senza dipendenza/latenza di rete a runtime**. `LiteLLMEmbeddingClient` (OpenRouter,
+`text-embedding-3-small`) resta come alternativa intercambiabile per A/B.
 
-Indicazione: **non aggiornare alla cieca**. Leve in ordine di costo crescente:
-1. **Alzare `top_k`** (es. 8 → 15): più candidati al giudice, nessuna
-   re-ingestion. Costo: prompt più lungo per chiamata.
-2. **Modello più grande** solo se il sample mostra che la norma giusta resta fuori
-   dai candidati: `multilingual-e5-base` (768) o `BAAI/bge-m3` (1024, ottimo
-   multilingue/legale, contesto lungo). A ~1700 chunk storage/latenza sono
-   irrilevanti; il costo è un **re-embedding completo del corpus + cambio
-   dimensione `VECTOR(N)`** (ALTER TABLE/nuova tabella — non è un hot-swap, vedi
-   [tech-stack.md](tech-stack.md)).
+**L'embedding delle domande è precomputato offline** in `quiz_questions.embedding`
+da `ingest-quiz` (vedi [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md)),
+con lo **stesso** embedder usato per il corpus → stesso spazio vettoriale. Questa
+pipeline lo **legge** soltanto, non lo ricalcola.
 
-La **modalità sample** è esattamente il modo per decidere su dati reali se e quando
-salire di modello.
+**In questa pipeline l'embedding serve solo a generare i candidati** (top-k), poi è
+il giudice LLM a selezionare con precisione: conta il **recall@k** (basta che la
+norma giusta sia tra i k candidati), non la precisione fine. Se il recall@k è
+insufficiente, la prima leva (economica) è **alzare `top_k`** (es. 8 → 15) — più
+candidati al giudice, nessuna re-ingestion. Cambiare embedder implica invece un
+**re-embedding completo + cambio dimensione `VECTOR(N)`** (non hot-swap, vedi
+[tech-stack.md](tech-stack.md)).
+
+> L'embedder è **unico** per offline e runtime (stesso spazio vettoriale): a
+> runtime serve però solo per i **follow-up liberi**; la spiegazione iniziale di un
+> quiz mappato è una JOIN sul mapping precomputato, senza embed. Vedi
+> [architecture-index.md](architecture-index.md).
+
+La **modalità sample** resta il modo per decidere su dati reali se serve agire (di
+norma alzando `top_k`).
 
 ## Revisione umana (QC)
 
@@ -210,9 +235,9 @@ la soglia vive in `JudgeConfig`. v1: solo storage + report, nessuna UI.
 5. **Anti-allucinazione**: il giudice sceglie solo tra candidati o "nessuno".
 6. **Validazione su sample prima del batch**: si gira `--sample N` in dry-run e si
    valuta a mano il report; solo dopo il batch completo.
-7. **Embedding**: si resta su `e5-small` (384) per la v1; l'upgrade
-   (`e5-base`/`bge-m3`) si decide sui dati del sample, non a priori. Prima leva:
-   alzare `top_k`.
+7. **Embedding**: **`bge-m3` locale (1024)** come default (unico per offline e
+   runtime); `LiteLLMEmbeddingClient` cloud resta alternativa A/B. Se il recall@k è
+   insufficiente la prima azione è alzare `top_k`, non cambiare embedder.
 
 ## Limiti noti
 
@@ -222,8 +247,9 @@ la soglia vive in `JudgeConfig`. v1: solo storage + report, nessuna UI.
 
 ## Stato
 
-⬜ Non avviato. Architettura discussa e concordata; implementazione (TDD: test
-prima per `QuizNormaJudge` e `QuizNormaMappingStoreRepository`, poi pipeline) come
-task successivo. Al termine, aggiornare `.claude/architectures/` via
-`architecture-doc-keeper` e aggiungere il link in
-[architecture-index.md](architecture-index.md).
+⬜ Non avviato. Architettura discussa e concordata. **Prerequisito**: corpus
+re-ingestato a 1024 dim con l'embedder locale `bge-m3` (ancora da validare, vedi
+Prerequisiti). Implementazione in TDD (test prima per `QuizNormaJudge` e
+`QuizNormaMappingStoreRepository`, poi pipeline) come task successivo. Al termine,
+aggiornare `.claude/architectures/` via `architecture-doc-keeper` e aggiungere il
+link in [architecture-index.md](architecture-index.md).

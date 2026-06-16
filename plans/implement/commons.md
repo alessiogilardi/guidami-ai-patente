@@ -17,9 +17,8 @@ da nessuno degli altri due package.
 
 - `db/init.sql` (a livello di `src/`): `CREATE EXTENSION vector;` + `CREATE
   TABLE knowledge_chunks (...)` come da schema in
-  [architecture-ingestor.md](../architecture-ingestor.md), `VECTOR(384)` come
-  default — da correggere al punto 2 se la verifica empirica dà un valore
-  diverso.
+  [architecture-ingestor.md](../architecture-ingestor.md), `VECTOR(1536)`
+  (dimensione di `openrouter/openai/text-embedding-3-small`, vedi punto 2).
 - `docker/docker-compose.yml` (modulo dedicato, a livello di `src/`): servizio
   `postgres` (`pgvector/pgvector:pg16`), volume persistente
   `postgres_data`, porta configurabile, variabili `POSTGRES_USER/PASSWORD/DB`
@@ -32,22 +31,26 @@ da nessuno degli altri due package.
 
 ### 2. `configs/embedding_config.py` + `clients/embedding_client.py` — ✅ fatto
 
-- `EmbeddingConfig` (Pydantic): nome modello (default
-  `intfloat/multilingual-e5-small`), dimensione vettore (`384`), prefissi
-  `query:`/`passage:`.
+- `EmbeddingConfig` (Pydantic, `frozen=True`): nome modello (default
+  `openrouter/openai/text-embedding-3-small`), dimensione vettore (`1536`),
+  `dimensions: int | None` opzionale (Matryoshka), `timeout`, `num_retries`.
+  Nessun prefisso e5 (specifici di e5, rimossi).
 - `EmbeddingClient`: interfaccia astratta con metodi `embed_query(text) ->
   list[float]` e `embed_passages(texts: list[str]) -> list[list[float]]`
   (batch).
-- `E5SmallEmbeddingClient`: implementazione locale via
-  `sentence-transformers`, applica i prefissi configurati, normalizza i
-  vettori (`normalize_embeddings=True`, coerente con `vector_cosine_ops`).
-- **Verifica eseguita (chiude punto 4 apertura di architecture-ingestor.md)**:
-  test di integrazione (`tests/commons/clients/test_embedding_client.py`,
-  marcato `@pytest.mark.integration`) che embedda query e passaggi e
-  controlla `len(vector) == 384` — confermato, nessuna modifica a
-  `db/init.sql` necessaria.
-- Aggiunte dipendenze esplicite `sentence-transformers` (embedding locale,
-  vedi tech-stack.md) e `pydantic` (usata direttamente in `commons`).
+- `LiteLLMEmbeddingClient`: embedder cloud via **litellm**, instrada su
+  OpenRouter con la sola stringa modello. Nessun prefisso, nessuna
+  normalizzazione manuale (i vettori OpenAI sono già unit-norm, coerente con
+  `vector_cosine_ops`). Ordina la risposta per `index` per garantire
+  l'allineamento input↔output. API key (`OPENROUTER_API_KEY`) letta da litellm
+  dall'ambiente.
+- **Verifica eseguita**: unit test (`tests/commons/clients/test_embedding_client.py`)
+  che mockano `litellm.embedding` (dimensione, ordine preservato, assenza di
+  prefissi, forwarding di `dimensions` solo se valorizzato) + un test
+  `@pytest.mark.integration` skippato senza `OPENROUTER_API_KEY` che verifica
+  `len(vector) == 1536` dall'endpoint reale.
+- Dipendenza `litellm` (LLM + embedding, vedi tech-stack.md);
+  `sentence-transformers`/torch rimossi.
 
 ### 3. `models/knowledge/` — ✅ fatto
 
@@ -105,8 +108,8 @@ commons/
 
 ## Punti confermati durante l'implementazione
 
-- Dimensione embedding reale: **384**, confermata (vedi step 2). Nessuna
-  modifica a `db/init.sql`/`EmbeddingConfig` necessaria.
+- Dimensione embedding: **1536** (`openrouter/openai/text-embedding-3-small`),
+  riflessa in `db/init.sql` (`VECTOR(1536)`) e `EmbeddingConfig`.
 - Immagine Docker: `pgvector/pgvector:pg16`.
 - `similarity_search` non filtra `is_repealed` — lasciato al chiamante
   (`KnowledgeRepository` nell'app, non bloccante per l'ingestor).

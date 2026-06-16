@@ -30,16 +30,17 @@ RAG — coerente con la scelta `psycopg` diretto / no-SQLAlchemy del progetto).
 
 ## Stato di partenza (verificato nel codice)
 
-- `knowledge_chunks` esiste (`db/init.sql`) con `embedding VECTOR(384)`;
-  ingestion (load → chunk → embed → store) **già implementata**. Nessun indice
-  vettoriale (seq scan su ~1500-2000 righe è istantaneo).
+- `knowledge_chunks` esiste (`db/init.sql`) con `embedding VECTOR(1536)`
+  (`openrouter/openai/text-embedding-3-small` via litellm); ingestion (load →
+  chunk → embed → store) **già implementata**. Nessun indice vettoriale (seq
+  scan su ~1500-2000 righe è istantaneo).
 - **Il retrieval non esiste ancora**: `KnowledgeRepository` è solo *pianificato*
   in [architecture-code-layout.md](architecture-code-layout.md) sotto
   `guidami_ai_patente/` (app FastAPI non ancora avviata). **L'hybrid search è la
   prima implementazione del layer di recupero** — non si sostituisce a una
   `similarity_search` esistente.
-- Esistono già e si riusano: `EmbeddingClient.embed_query()` (prefisso e5
-  `query: `, embedding normalizzato → coseno), `PostgresClient` (psycopg +
+- Esistono già e si riusano: `EmbeddingClient.embed_query()` (litellm/OpenRouter,
+  vettore unit-norm → coseno, nessun prefisso), `PostgresClient` (psycopg +
   adapter `pgvector` registrato, `fetch()`), `RetrievalResult` (chunk + score),
   `KnowledgeChunk`.
 

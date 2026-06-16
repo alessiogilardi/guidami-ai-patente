@@ -25,7 +25,7 @@ CREATE TABLE knowledge_chunks (
     chunk_text      TEXT NOT NULL,        -- testo pulito usato per embedding e citazione
     is_repealed     BOOLEAN NOT NULL DEFAULT FALSE,  -- a livello di articolo O di singolo comma
     source_url      TEXT NOT NULL,
-    embedding       VECTOR(384),          -- intfloat/multilingual-e5-small, da confermare al primo run (vedi punto 4)
+    embedding       VECTOR(1536),         -- openrouter/openai/text-embedding-3-small (vedi punto 4)
     UNIQUE (source, article_number, comma_index)
 );
 ```
@@ -48,14 +48,14 @@ istantaneo). Se il corpus crescesse di ordini di grandezza, valutare HNSW con
    chunk anche se l'articolo non è interamente abrogato. `is_repealed` finale di
    un chunk = `article.repealed OR comma_abrogato_rilevato`.
 
-4. **Dimensione embedding**: da verificare empiricamente al primo run con
-   `intfloat/multilingual-e5-small` (presumibilmente 384); la migration/schema
-   verrà aggiustata di conseguenza se diversa. Cambio di modello (es. verso il
-   profilo cloud) richiede `ALTER TABLE`/nuova tabella + re-ingestion completa,
-   vedi [tech-stack.md](tech-stack.md).
+4. **Dimensione embedding**: `1536`, fissata da
+   `openrouter/openai/text-embedding-3-small` (via litellm/OpenRouter). Cambio di
+   modello richiede `ALTER TABLE`/nuova tabella + re-ingestion completa, vedi
+   [tech-stack.md](tech-stack.md).
 
 5. **Metrica di distanza**: cosine (`vector_cosine_ops`, operatore `<=>`),
-   coerente con l'addestramento standard dei modelli sentence-transformers.
+   scale-invariant: i vettori OpenAI sono già unit-norm, nessuna normalizzazione
+   manuale necessaria.
 
 6. **Client DB**: `psycopg` (v3) + libreria Python `pgvector` (adapter
    numpy↔vector), tramite `PostgresClient` generico e table-agnostic in
@@ -89,7 +89,7 @@ orchestrators/knowledge_indexing/indexing_pipeline.py
 1. Load: legge cds/codice_della_strada.json + cap/codice_rca.json
 2. Chunk: per ogni articolo, genera 0..n chunk (text + paragraphs),
           pulisce markup, calcola is_repealed (articolo OR comma)
-3. Embed: batch embedding via sentence-transformers (locale, batch size
+3. Embed: batch embedding via litellm / OpenRouter (batch size
           configurabile)
 4. Load: truncate + bulk insert in knowledge_chunks
 ```
@@ -114,7 +114,7 @@ migliorare il retrieval. Rimandata perché:
   di embedding
 
 Da valutare dopo aver validato la qualità del retrieval semantico puro con
-e5-small sui casi reali. **Progettazione di dettaglio**:
+text-embedding-3-small sui casi reali. **Progettazione di dettaglio**:
 [architecture-hybrid-retrieval.md](architecture-hybrid-retrieval.md).
 
 ## Stato

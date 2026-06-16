@@ -35,7 +35,7 @@ commons/
     knowledge/
       retrieval_result.py     # RetrievalResult (chunk + score, per query di similarity)
   clients/
-    embedding_client.py        # EmbeddingClient: interfaccia + impl e5-small (sentence-transformers)
+    embedding_client.py        # EmbeddingClient: interfaccia + LiteLLMEmbeddingClient (litellm/OpenRouter)
     postgres_client.py         # PostgresClient: generico e table-agnostic (connect/execute/fetch/copy,
                                 # registrazione adapter pgvector)
   configs/

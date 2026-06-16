@@ -11,7 +11,7 @@ Due pipeline batch indipendenti, entrambe full-reload su Postgres:
   indicizzazione (`IndexingPipeline`) in `knowledge_chunks` (embedding
   incluso);
 - **quiz bank**: `QuizIndexingPipeline`, load + map (flatten/dedup) +
-  full-reload di `quiz_questions` (nessun embedding).
+  embedding + full-reload di `quiz_questions`.
 
 Dipende da `commons` (modelli, `EmbeddingClient`, `PostgresClient`, config
 condivise).
@@ -193,7 +193,7 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
     `KnowledgeChunkStoreRepository`, `IngestorConfig`.
 - **`IndexingPipelineBuilder`**: valida l'esistenza di `cds_cleaned_path`/
   `cap_cleaned_path` (non più `cds_path`/`cap_path`) con `FileNotFoundError`
-  fail-fast **prima** di istanziare `LiteLLMEmbeddingClient` o `PostgresClient`
+  fail-fast **prima** di istanziare il client di embedding o `PostgresClient`
   (apre connessione Postgres). `_validate_source_paths` aggrega tutti i path
   mancanti in un unico `FileNotFoundError` (report completo, non solo il
   primo). Nessuna classe di eccezioni dedicata — `FileNotFoundError` con
@@ -202,8 +202,8 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
     `with_embedding_client`, `with_knowledge_chunk_store_repository`
     (ritornano `Self`) per assegnare ogni dipendenza concreta prima di
     `build()`. Il default di `embedding_client` è
-    `LiteLLMEmbeddingClient(config.embedding)`; il default di
-    `knowledge_chunk_store_repository` è
+    `SentenceTransformerEmbeddingClient(config.embedding)` (locale, bge-m3);
+    il default di `knowledge_chunk_store_repository` è
     `KnowledgeChunkStoreRepository(PostgresClient(config.postgres),
     config.knowledge_chunks_table)`. `build()` usa controlli espliciti
     `is not None` (non `or`) per scegliere tra dipendenza assegnata e
@@ -222,7 +222,7 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   source_url, embedding`.
 - **`QuizQuestionStoreRepository`**: `truncate()` +
   `bulk_insert(questions: list[QuizQuestion])` — colonne `number,
-  question_id, topic, text, correct_answer, image_filename`.
+  question_id, topic, text, correct_answer, image_filename, embedding`.
 - Entrambi costruiscono la query con `psycopg.sql.SQL(...).format(table=
   sql.Identifier(table_name))` e `client.execute_many(query, params_seq)`;
   `bulk_insert` ritorna immediatamente (`return`) se la lista è vuota.
@@ -262,22 +262,27 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
 
 ### `orchestrators/quiz_indexing/` — `QuizIndexingPipeline` + `QuizIndexingPipelineBuilder`
 
-- **`QuizIndexingPipeline.run()`** — tre step lineari, nessuno step di
-  cleaning/embedding (il JSON del quiz bank non ha markup da pulire, le righe
-  non hanno vettori):
+- **`QuizIndexingPipeline.run()`** — quattro step lineari:
   1. `QuizBankRepository.load(config.quiz_bank_path)`;
   2. `QuizQuestionMapper.map(main_questions)`;
-  3. `QuizQuestionStoreRepository.truncate()` poi `bulk_insert(questions)`
+  3. `_assign_embeddings(questions)`: batch di `config.embedding_batch_size`,
+     `EmbeddingClient.embed_passages([q.text for q in batch])`, assegnazione
+     `question.embedding = vector` in-place (campo mutabile). Stessa
+     strategia di `_assign_embeddings` in `IndexingPipeline`.
+  4. `QuizQuestionStoreRepository.truncate()` poi `bulk_insert(questions)`
      (full reload, stessa strategia di `IndexingPipeline`).
   - Dipendenze iniettate via costruttore: `QuizBankRepository`,
-    `QuizQuestionMapper`, `QuizQuestionStoreRepository`, `IngestorConfig`.
+    `QuizQuestionMapper`, `QuizQuestionStoreRepository`,
+    `EmbeddingClient` (ABC), `IngestorConfig`.
 - **`QuizIndexingPipelineBuilder`**: valida l'esistenza di
   `config.quiz_bank_path` con `FileNotFoundError` fail-fast prima di
-  istanziare `PostgresClient`. Setter fluent `with_quiz_bank_repository`,
-  `with_quiz_question_mapper`, `with_quiz_question_store_repository`
+  istanziare il client di embedding o `PostgresClient`. Setter fluent
+  `with_quiz_bank_repository`, `with_quiz_question_mapper`,
+  `with_quiz_question_store_repository`, `with_embedding_client`
   (ritornano `Self`); `build()` usa controlli espliciti `is not None`,
   stesso pattern di `IndexingPipelineBuilder`. Default di
-  `quiz_question_store_repository`:
+  `embedding_client`: `SentenceTransformerEmbeddingClient(config.embedding)`.
+  Default di `quiz_question_store_repository`:
   `QuizQuestionStoreRepository(PostgresClient(config.postgres),
   config.quiz_questions_table)`.
 
@@ -311,8 +316,8 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
 - **YAML committato, non-secret** — `configs/ingestor_config.yaml` (root del
   progetto, fuori da `src/`): `cds_parsed_path`, `cds_cleaned_path`,
   `cap_parsed_path`, `cap_cleaned_path`, `quiz_bank_path`,
-  `embedding_batch_size`, `embedding` (model_name `openrouter/openai/text-embedding-3-small`,
-  `vector_dim=1536`, nessun prefisso), i campi non-secret di `postgres`
+  `embedding_batch_size`, `embedding` (model_name `BAAI/bge-m3`,
+  `vector_dim=1024`), i campi non-secret di `postgres`
   (`host`, `port`, `dbname`), e `knowledge_chunks_table`/`quiz_questions_table`. La cartella `configs/`
   alla root è pensata come contenitore anche per le future configurazioni non
   sensibili (es. futuro `app_config.yaml` per l'app FastAPI).
@@ -320,8 +325,9 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   variabili richieste: `POSTGRES__USER`, `POSTGRES__PASSWORD` (doppio
   underscore = `env_nested_delimiter`, popola `postgres.user` /
   `postgres.password`; rinominate da `VECTOR_STORE__USER`/`PASSWORD`),
-  `OPENROUTER_API_KEY` (letta da litellm dall'ambiente, non da
-  `IngestorConfig`). Mai committare un `.env` reale.
+  `OPENROUTER_API_KEY` (opzionale — necessaria solo se si usa
+  `LiteLLMEmbeddingClient` al posto del client locale; letta da litellm
+  dall'ambiente, non da `IngestorConfig`). Mai committare un `.env` reale.
 - **`IngestorConfig.model_config`**: `SettingsConfigDict(frozen=True,
   env_nested_delimiter="__", env_file=".env",
   yaml_file="configs/ingestor_config.yaml")`.
@@ -352,7 +358,7 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   2. `IndexingPipeline.run()` (`IndexingPipelineBuilder(config)
      .with_article_repository(ArticleRepository())
      .with_article_chunker(ArticleChunker())
-     .with_embedding_client(LiteLLMEmbeddingClient(config.embedding))
+     .with_embedding_client(SentenceTransformerEmbeddingClient(config.embedding))
      .with_knowledge_chunk_store_repository(KnowledgeChunkStoreRepository(
        PostgresClient(config.postgres), config.knowledge_chunks_table))
      .build()`).
@@ -389,12 +395,15 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   IngestorConfig()` (`# pyright: ignore[reportCallIssue]`), `logger =
   logging.getLogger(__name__)` a livello di modulo.
 - Esegue `QuizIndexingPipeline.run()` da
-  `QuizIndexingPipelineBuilder(config).build()` (nessun `with_*` esplicito —
-  i default del builder bastano), con log `info` "starting quiz indexing
-  pipeline" / "quiz indexing pipeline completed".
+  `QuizIndexingPipelineBuilder(config)
+  .with_embedding_client(SentenceTransformerEmbeddingClient(config.embedding))
+  .build()` — l'embedding client è passato esplicitamente, coerente con il
+  pattern di `main.py` (wiring visibile nell'entry point). Log `info`
+  "starting quiz indexing pipeline" / "quiz indexing pipeline completed".
 - Pipeline separata da `main.py` (decisione 8 del piano quiz-bank): step
-  diversi (chunk+embed vs map+dedup), eseguibili indipendentemente, pur
-  condividendo la strategia di store (truncate + insert).
+  diversi (corpus: load+chunk+embed vs quiz: load+map+embed), eseguibili
+  indipendentemente, pur condividendo la strategia di store (truncate +
+  insert) e lo stesso embedder locale (bge-m3).
 
 ### `reset_quiz_db.py`
 
@@ -431,9 +440,11 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   - prima di `truncate()`: numero di chunk da inserire;
   - dopo `bulk_insert()`: completamento.
 - `quiz_indexing_pipeline.py`: `logger = logging.getLogger(__name__)` a
-  livello di modulo, log `info` in `run()` per ciascuno dei tre step (numero
-  di domande madri caricate, numero di righe mappate, numero di righe da
-  inserire prima del truncate, completamento dopo `bulk_insert`).
+  livello di modulo, log `info` in `run()` per ciascuno dei quattro step
+  (numero di domande madri caricate, numero di righe mappate, in
+  `_assign_embeddings` una riga per batch `embedding batch {n}/{total}
+  ({size} questions)`, numero di righe da inserire prima del truncate,
+  completamento dopo `bulk_insert`).
   `quiz_question_mapper.py`: `logger.warning` per ogni sotto-domanda
   scartata come duplicato esatto.
 - **Convenzione**: i messaggi di log sono in inglese (a differenza di
@@ -484,15 +495,16 @@ Struttura mirror per source: `data/cleaned/cds/codice_della_strada.json`,
   assente, dedup su `(text.strip(), correct_answer, image)` (mantiene righe
   con stesso testo ma immagine o `correct_answer` diversi).
 - `tests/guidami_ai_patente_ingestor/orchestrators/quiz_indexing/test_quiz_indexing_pipeline.py` —
-  unit con `Mock(spec=...)` per repository/mapper: ordine
-  load→map→truncate→bulk_insert.
+  unit con `Mock(spec=...)` per repository/mapper/embedding_client: ordine
+  load→map→assign_embeddings→truncate→bulk_insert; verifica batching degli
+  embedding (stessa strategia di `test_indexing_pipeline.py`).
 - `tests/guidami_ai_patente_ingestor/orchestrators/quiz_indexing/test_quiz_indexing_pipeline_builder.py` —
   `quiz_bank_path` mancante → `FileNotFoundError` senza istanziare
-  `PostgresClient`.
+  `PostgresClient` o l'embedding client.
 - `tests/guidami_ai_patente_ingestor/repositories/test_quiz_question_store_repository.py` —
   contro il Postgres del compose (no marker `integration`): `truncate` +
-  `bulk_insert` su `quiz_questions`, fixture `client` analoga a
-  `test_postgres_client.py`.
+  `bulk_insert` su `quiz_questions` con colonna `embedding`, fixture `client`
+  analoga a `test_postgres_client.py`.
 - `tests/commons/clients/test_postgres_client.py` — aggiornato per
   `PostgresConnectionConfig` (host/port/user/password/dbname/sslmode) al
   posto di `VectorStoreConfig`/`database_url`; nessuna assert su

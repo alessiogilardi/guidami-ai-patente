@@ -20,7 +20,13 @@ src/commons/
     knowledge/
       retrieval_result.py  # RetrievalResult — chunk + score (similarity search)
   clients/
-    embedding_client.py    # EmbeddingClient (interfaccia ABC) + LiteLLMEmbeddingClient
+    embeddings/
+      __init__.py                                  # re-esporta EmbeddingClient, LiteLLMEmbeddingClient,
+                                                   # SentenceTransformerEmbeddingClient
+      embedding_client.py                          # EmbeddingClient (interfaccia ABC)
+      litellm_embedding_client.py                  # LiteLLMEmbeddingClient (cloud, OpenRouter)
+      sentence_transformer_embedding_client.py     # SentenceTransformerEmbeddingClient (locale, bge-m3)
+    __init__.py            # re-esporta tutti i client pubblici
     postgres_client.py     # PostgresClient — wrapper psycopg generico, table-agnostic
   configs/
     embedding_config.py          # EmbeddingConfig (frozen)
@@ -30,11 +36,19 @@ src/commons/
 ## Decisioni implementate
 
 - **`EmbeddingConfig`** (`BaseModel`, `frozen=True`): campi `model_name`
-  (default `openrouter/openai/text-embedding-3-small`), `vector_dim: int =
-  1536`, `dimensions: int | None = None` (Matryoshka opzionale, passato
-  all'API se impostato), `timeout: float = 30.0`, `num_retries: int = 3`.
-  Rimossi i campi `query_prefix`/`passage_prefix` (non necessari con i
-  modelli OpenAI).
+  (default `"BAAI/bge-m3"`), `vector_dim: int = 1024`, `dimensions: int |
+  None = None` (Matryoshka opzionale — ignorato dal client locale, passato
+  all'API se si usa `LiteLLMEmbeddingClient`), `timeout: float = 30.0`,
+  `num_retries: int = 3`. I campi cloud rimangono per compatibilità A/B con
+  `LiteLLMEmbeddingClient`.
+- **`SentenceTransformerEmbeddingClient`**: implementazione locale via
+  libreria **sentence-transformers**. Carica il modello con
+  `SentenceTransformer(config.model_name)` al momento della costruzione
+  (import a livello di modulo). Costruttore: `config: EmbeddingConfig`,
+  `query_prefix: str = ""`, `passage_prefix: str = ""` — prefissi vuoti per
+  default (stile bge-m3); passare prefissi espliciti per modelli asimmetrici
+  come `intfloat/multilingual-e5-*`. `normalize_embeddings=True` sempre in
+  entrambi i metodi. Sostituisce `E5SmallEmbeddingClient` (rimosso).
 - **`LiteLLMEmbeddingClient`**: implementazione cloud via libreria
   **litellm**, instradato su **OpenRouter** (endpoint embeddings
   OpenAI-compatible). Riceve in costruzione un `EmbeddingConfig`; chiama
@@ -43,15 +57,14 @@ src/commons/
   `data[i]["index"]` per garantire l'allineamento input↔output
   indipendentemente dall'ordine restituito dall'API. L'API key
   `OPENROUTER_API_KEY` è letta da litellm dall'ambiente (`.env`), senza
-  lettura esplicita nel codice. Nessuna normalizzazione manuale: i vettori
-  `text-embedding-3-small` sono già unit-norm, coerente con
-  `vector_cosine_ops`. Nessun prefisso `query: `/`passage: ` (rimossi).
+  lettura esplicita nel codice. Rimane disponibile come alternativa cloud per
+  A/B di qualità.
 - **`EmbeddingClient` (ABC)**: interfaccia `embed_query(text: str) ->
   list[float]` / `embed_passages(texts: list[str]) -> list[list[float]]`
-  invariata — l'implementazione concreta è sostituibile con il solo nome
-  modello (Dependency Inversion). `E5SmallEmbeddingClient` rimosso
-  (insieme a `sentence-transformers`, torch, transformers, scipy,
-  scikit-learn).
+  invariata — l'implementazione concreta è sostituibile senza cambiare i
+  chiamanti (Dependency Inversion). Entrambe le implementazioni
+  (`SentenceTransformerEmbeddingClient`, `LiteLLMEmbeddingClient`) sono
+  esportate da `commons.clients`.
 - **`PostgresConnectionConfig`** (`BaseModel`, `frozen=True`): sostituisce
   `VectorStoreConfig` (rimosso). Resta `BaseModel`, non `BaseSettings` —
   `commons` non legge env, i valori arrivano dal chiamante (il caricamento
@@ -87,7 +100,9 @@ src/commons/
   dell'embedding).
 - **`QuizQuestion`** (Pydantic, `BaseModel`, `commons/entities/quiz/`): riga
   di `quiz_questions` — `number: str`, `question_id: int`, `topic: str`,
-  `text: str`, `correct_answer: bool`, `image_filename: str | None = None`.
+  `text: str`, `correct_answer: bool`, `image_filename: str | None = None`,
+  `embedding: list[float] | None = None` (None prima dell'embedding, stesso
+  pattern di `KnowledgeChunk`).
 - **`entities/` vs `models/`**: `KnowledgeChunk` e `QuizQuestion` sono entità
   di dominio (righe di tabella), spostate da `commons/models/` a
   `commons/entities/` per coerenza con `rules/python/architecture.md`
@@ -103,7 +118,9 @@ src/commons/
   `litellm.embedding`: verifica costruzione risposta, ordinamento per `index`,
   separazione `embed_query`/`embed_passages`. Test `@pytest.mark.integration`
   (skippato senza `OPENROUTER_API_KEY`) verifica `len(vector) == 1536` contro
-  l'API reale.
+  l'API reale. Test per `SentenceTransformerEmbeddingClient`: `embed_query` e
+  `embed_passages` con prefissi vuoti (bge-m3) e con prefissi espliciti
+  (e5-style); verifica `len(vector) == config.vector_dim`.
 - `tests/commons/clients/test_postgres_client.py` — contro il Postgres del
   compose (no marker `integration`): `truncate`, `execute_many`/`fetch` su
   `knowledge_chunks` (bulk insert + lettura ordinata).

@@ -105,18 +105,17 @@ Pezzo a più alto valore di test isolato: logica pura, nessun I/O.
    `IndexingPipelineBuilder` — ✅ fatto
 
 - Valida `IngestorConfig` (esistenza di `cds_path`/`cap_path`, fail-fast con
-  `FileNotFoundError` **prima** di istanziare `E5SmallEmbeddingClient`
-  — carica il modello sentence-transformers — o `VectorStoreClient` — apre
-  connessione Postgres), istanzia le dipendenze concrete
-  (`E5SmallEmbeddingClient`, `VectorStoreClient`, `ArticleLoader`,
+  `FileNotFoundError` **prima** di istanziare `LiteLLMEmbeddingClient` o
+  `VectorStoreClient` — apre connessione Postgres), istanzia le dipendenze
+  concrete (`LiteLLMEmbeddingClient`, `VectorStoreClient`, `ArticleLoader`,
   `ArticleChunker`) e assembla `IndexingPipeline`.
 - Nessuna classe di eccezioni dedicata: `FileNotFoundError` con messaggio
   chiaro è sufficiente a questa scala (coerente con KISS).
 - Test: `tests/guidami_ai_patente_ingestor/orchestrators/knowledge_indexing/test_indexing_pipeline_builder.py`
   — verifica che path sorgente mancanti facciano fallire `build()` con
-  `FileNotFoundError` **senza** istanziare `E5SmallEmbeddingClient`/
+  `FileNotFoundError` **senza** istanziare `LiteLLMEmbeddingClient`/
   `VectorStoreClient` (mockati per fallire il test se chiamati). Il caso
-  "path validi → pipeline costruita" richiederebbe download del modello e
+  "path validi → pipeline costruita" richiederebbe `OPENROUTER_API_KEY` e
   connessione Postgres reale: rimandato a test di integrazione futuro.
 
 ### 5. `configs/ingestor_config.py` — `IngestorConfig` — ✅ fatto

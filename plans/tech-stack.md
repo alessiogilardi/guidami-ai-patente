@@ -15,20 +15,24 @@ sessione/progress (v2).
 
 ## Embeddings
 
-**Default locale**: `intfloat/multilingual-e5-small` (384 dim) via
-`sentence-transformers`, eseguito in-process — nessuna infra aggiuntiva oltre a
-Postgres. Leggero e sufficiente per la scala del corpus (~1500-2000 chunk).
+**Default**: `BAAI/bge-m3` (1024 dim) **locale**, via `sentence-transformers`
+in-process — multilingue, forte sull'italiano, qualità paragonabile a
+`text-embedding-3-small`, ma **gratis** e **senza API key né latenza di rete**.
+Migrazione descritta in [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md).
 
-**Interfaccia**: `clients/embedding_client.py` espone un'interfaccia astratta
-(`EmbeddingClient`), così l'implementazione concreta (locale in-process vs
-provider cloud) è intercambiabile senza toccare i chiamanti.
+**Embedder unico** per indicizzazione offline e retrieval a runtime (query e chunk
+devono vivere nello stesso spazio vettoriale). A runtime serve comunque **solo per
+i follow-up liberi**: la spiegazione iniziale di un quiz mappato è una JOIN sul
+mapping precomputato (vedi [ingest--llm-as-judge.md](ingest--llm-as-judge.md)).
 
-**Profilo cloud opzionale**: `text-embedding-3-small` (OpenAI, 1536 dim di
-default) come alternativa configurabile per A/B testing qualità — richiede
-`OPENAI_API_KEY` e non è il default.
+**Interfaccia**: `clients/embeddings/embedding_client.py` espone un'interfaccia
+astratta (`EmbeddingClient`); l'implementazione concreta è intercambiabile senza
+toccare i chiamanti. Profilo cloud alternativo per A/B di qualità:
+`LiteLLMEmbeddingClient` (`openrouter/openai/text-embedding-3-small`, 1536 dim) —
+richiede `OPENROUTER_API_KEY` + rete, stessa libreria litellm del giudice LLM.
 
-⚠️ Cambiare modello (locale↔cloud o tra modelli con dimensioni diverse) **non è
-un hot-swap**: la colonna `VECTOR(N)` in pgvector ha dimensione fissa, quindi
+⚠️ Cambiare modello (tra modelli con dimensioni diverse) **non è un hot-swap**:
+la colonna `VECTOR(N)` in pgvector ha dimensione fissa (oggi `1024`), quindi
 richiede `ALTER TABLE`/nuova tabella + re-ingestion completa del corpus. Vedi
 [architecture-ingestor.md](architecture-ingestor.md).
 

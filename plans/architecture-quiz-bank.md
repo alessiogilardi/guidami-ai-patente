@@ -48,6 +48,13 @@ CREATE INDEX idx_quiz_questions_question_id ON quiz_questions (question_id);
 `CREATE TABLE` in `db/init.sql`, coerente con `knowledge_chunks` (vedi
 [architecture-ingestor.md](architecture-ingestor.md), decisione 7).
 
+> 📌 **Incremento successivo** — embedding offline dei quiz: a `quiz_questions`
+> viene aggiunta la colonna `embedding VECTOR(1024)`, popolata da `ingest-quiz` con
+> `bge-m3`, così il giudice LLM non embedda a runtime. Schema e step di pipeline
+> descritti in [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md) (sezione
+> "Embedding dei quiz offline"), consumato da
+> [ingest--llm-as-judge.md](ingest--llm-as-judge.md).
+
 ## Decisioni
 
 1. **Granularità: una riga per sotto-domanda (flat)**. Il `QuizRepository`
