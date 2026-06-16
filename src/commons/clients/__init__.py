@@ -1,6 +1,6 @@
 """Client per servizi esterni (embedding, Postgres)."""
 
-from .embedding_client import E5SmallEmbeddingClient, EmbeddingClient
+from .embeddings import E5SmallEmbeddingClient, EmbeddingClient, LiteLLMEmbeddingClient
 from .postgres_client import PostgresClient
 
-__all__ = ["E5SmallEmbeddingClient", "EmbeddingClient", "PostgresClient"]
+__all__ = ["E5SmallEmbeddingClient", "EmbeddingClient", "LiteLLMEmbeddingClient", "PostgresClient"]
