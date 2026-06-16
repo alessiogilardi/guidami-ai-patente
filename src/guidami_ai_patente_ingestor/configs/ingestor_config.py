@@ -20,7 +20,7 @@ class IngestorConfig(BaseSettings):
     cds_cleaned_path: Path = Path("data/cleaned/cds/codice_della_strada.json")
     cap_parsed_path: Path = Path("data/parsed/cap/codice_rca.json")
     cap_cleaned_path: Path = Path("data/cleaned/cap/codice_rca.json")
-    quiz_bank_path: Path = Path("data/parsed/quiz-patente-ab/quiz-patente-ab.json")
+    quiz_bank_path: Path = Path("data/cleaned/quiz-patente-ab/quiz-patente-ab.json")
     embedding_batch_size: int = 64
     embedding: EmbeddingConfig = EmbeddingConfig()
     postgres: PostgresConnectionConfig
