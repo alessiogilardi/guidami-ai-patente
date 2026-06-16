@@ -1,5 +1,5 @@
-from .e5_small_embedding_client import E5SmallEmbeddingClient
 from .embedding_client import EmbeddingClient
 from .litellm_embedding_client import LiteLLMEmbeddingClient
+from .sentence_transformer_embedding_client import SentenceTransformerEmbeddingClient
 
-__all__ = ["E5SmallEmbeddingClient", "EmbeddingClient", "LiteLLMEmbeddingClient"]
+__all__ = ["EmbeddingClient", "LiteLLMEmbeddingClient", "SentenceTransformerEmbeddingClient"]

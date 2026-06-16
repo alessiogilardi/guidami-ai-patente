@@ -1,28 +1,24 @@
+from sentence_transformers import SentenceTransformer
+
 from commons.configs import EmbeddingConfig
 
 from .embedding_client import EmbeddingClient
 
 
-class E5SmallEmbeddingClient(EmbeddingClient):
-    """Embedder locale via sentence-transformers (intfloat/multilingual-e5-small).
+class SentenceTransformerEmbeddingClient(EmbeddingClient):
+    """Embedder locale via sentence-transformers.
 
-    Richiede `sentence-transformers` installato (`uv add sentence-transformers`).
-    I prefissi e5 `query: ` / `passage: ` sono applicati per default.
+    Default: nessun prefisso (compatibile con bge-m3). Passare `query_prefix`
+    e `passage_prefix` per modelli asimmetrici come intfloat/multilingual-e5-*.
     """
 
     def __init__(
         self,
         config: EmbeddingConfig,
-        query_prefix: str = "query: ",
-        passage_prefix: str = "passage: ",
+        query_prefix: str = "",
+        passage_prefix: str = "",
     ) -> None:
         """Carica il modello sentence-transformers indicato in config."""
-        try:
-            from sentence_transformers import SentenceTransformer
-        except ImportError as exc:
-            raise ImportError(
-                "sentence-transformers non è installato: `uv add sentence-transformers`"
-            ) from exc
         self._config = config
         self._query_prefix = query_prefix
         self._passage_prefix = passage_prefix
