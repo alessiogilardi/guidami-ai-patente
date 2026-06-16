@@ -111,7 +111,7 @@ def _extract_image(
 
     dest = IMAGES_DIR / f"{uuid.uuid4()}.{ext}"
     dest.write_bytes(img_bytes)
-    rel_path = dest.as_posix()
+    rel_path = dest.relative_to(OUT_DIR).as_posix()
     seen[img_hash] = rel_path
     return rel_path
 
