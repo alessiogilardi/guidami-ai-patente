@@ -11,3 +11,7 @@ class QuizQuestion(BaseModel):
     correct_answer: bool
     image_filename: str | None = None
     embedding: list[float] | None = None
+
+    @property
+    def embedded_text(self) -> str:
+        return f"{self.topic} {self.text}"

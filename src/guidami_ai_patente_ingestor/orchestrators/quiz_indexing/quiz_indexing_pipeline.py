@@ -52,6 +52,6 @@ class QuizIndexingPipeline:
             batch = questions[start : start + batch_size]
             batch_number = start // batch_size + 1
             logger.info(f"embedding batch {batch_number}/{total_batches} ({len(batch)} questions)")
-            vectors = self._embedding_client.embed_passages([q.text for q in batch])
+            vectors = self._embedding_client.embed_passages([q.embedded_text for q in batch])
             for question, vector in zip(batch, vectors, strict=True):
                 question.embedding = vector
