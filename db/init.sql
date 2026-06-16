@@ -26,7 +26,8 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
     topic           TEXT NOT NULL,
     text            TEXT NOT NULL,
     correct_answer  BOOLEAN NOT NULL,
-    image_filename  TEXT
+    image_filename  TEXT,
+    UNIQUE(number)
 );
 
 CREATE INDEX IF NOT EXISTS idx_quiz_questions_topic ON quiz_questions (topic);
