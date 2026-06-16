@@ -57,12 +57,11 @@ class IndexingPipeline:
         self, articles: list[Article], source: Literal["cds", "cap"]
     ) -> list[KnowledgeChunk]:
         return [
-            chunk
-            for article in articles
-            for chunk in self._article_chunker.chunk(article, source)
+            chunk for article in articles for chunk in self._article_chunker.chunk(article, source)
         ]
 
     def _assign_embeddings(self, chunks: list[KnowledgeChunk]) -> None:
+        chunks = self._filter_chunks(chunks)
         batch_size = self._config.embedding_batch_size
         total_batches = -(-len(chunks) // batch_size)  # ceil division
         for start in range(0, len(chunks), batch_size):
@@ -70,7 +69,14 @@ class IndexingPipeline:
             batch_number = start // batch_size + 1
             logger.info(f"embedding batch {batch_number}/{total_batches} ({len(batch)} chunks)")
             vectors = self._embedding_client.embed_passages(
-                [chunk.chunk_text for chunk in batch]
+                [chunk.embedded_text for chunk in batch]
             )
             for chunk, vector in zip(batch, vectors, strict=True):
                 chunk.embedding = vector
+
+    def _filter_chunks(self, chunks: list[KnowledgeChunk]) -> list[KnowledgeChunk]:
+        if self._config.embed_repealed:
+            return chunks
+
+        return [chunk for chunk in chunks if not chunk.is_repealed]
+

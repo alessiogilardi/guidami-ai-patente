@@ -13,3 +13,4 @@ postgres:
   dbname: guidami_ai_patente
 knowledge_chunks_table: knowledge_chunks
 quiz_questions_table: quiz_questions
+embed_repealed: false

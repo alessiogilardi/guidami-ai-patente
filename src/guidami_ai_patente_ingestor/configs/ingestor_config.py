@@ -29,6 +29,7 @@ class IngestorConfig(BaseSettings):
     postgres: PostgresConnectionConfig
     knowledge_chunks_table: str = "knowledge_chunks"
     quiz_questions_table: str = "quiz_questions"
+    embed_repealed: bool = False
 
     @classmethod
     def settings_customise_sources(

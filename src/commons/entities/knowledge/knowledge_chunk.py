@@ -14,3 +14,7 @@ class KnowledgeChunk(BaseModel):
     is_repealed: bool
     source_url: str
     embedding: list[float] | None = None
+
+    @property
+    def embedded_text(self) -> str:
+        return f"{self.article_title} {self.chunk_text}"
