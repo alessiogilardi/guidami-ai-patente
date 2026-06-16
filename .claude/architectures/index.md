@@ -14,8 +14,10 @@ contesto/motivazione completa.
   compose, schema `knowledge_chunks`
 - [commons.md](commons.md) — package `src/commons/`: modelli, client
   embedding e vector store, config condivise
-- [ingestor.md](ingestor.md) — package `src/guidami_ai_patente_ingestor/`:
-  pipeline di indicizzazione CdS + CAP (load → chunk → embed → store)
+- [ingestor/index.md](ingestor/index.md) — package `src/guidami_ai_patente_ingestor/`:
+  pipeline corpus normativo (CdS + CAP) e quiz bank (load → chunk/map → embed → store);
+  dettaglio in `ingestor/knowledge_pipelines.md`, `ingestor/quiz_pipelines.md`,
+  `ingestor/config_and_entrypoints.md`, `ingestor/tests.md`
 
 ## Stato implementazione (vedi plans/architecture-index.md per il quadro completo)
 

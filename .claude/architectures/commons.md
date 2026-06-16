@@ -99,12 +99,17 @@ src/commons/
     `<=>`).
 - **`KnowledgeChunk`** (Pydantic, `commons/entities/knowledge/`): `source:
   Literal["cds", "cap"]`, `embedding: list[float] | None = None` (None prima
-  dell'embedding).
+  dell'embedding). Property `embedded_text -> str`: restituisce
+  `f"{article_title} {chunk_text}"` — testo prefissato dal titolo
+  dell'articolo, usato come input per l'embedding al posto del solo
+  `chunk_text`.
 - **`QuizQuestion`** (Pydantic, `BaseModel`, `commons/entities/quiz/`): riga
   di `quiz_questions` — `number: str`, `question_id: int`, `topic: str`,
   `text: str`, `correct_answer: bool`, `image_filename: str | None = None`,
   `embedding: list[float] | None = None` (None prima dell'embedding, stesso
-  pattern di `KnowledgeChunk`).
+  pattern di `KnowledgeChunk`). Property `embedded_text -> str`: restituisce
+  `f"{topic} {text}"` — testo prefissato dal topic della domanda, usato come
+  input per l'embedding al posto del solo `text`.
 - **`entities/` vs `models/`**: `KnowledgeChunk` e `QuizQuestion` sono entità
   di dominio (righe di tabella), spostate da `commons/models/` a
   `commons/entities/` per coerenza con `rules/python/architecture.md`
