@@ -33,6 +33,9 @@ store) e un'applicazione backend (FastAPI) che serve il quiz bot.
   norma (LLM-as-a-Judge) via litellm
 - [ingest--quiz-embeddings.md](ingest--quiz-embeddings.md) — embedding offline dei
   quiz (precompute per il giudice), 1536 dim
+- [ingest--article-contextual-embedding.md](ingest--article-contextual-embedding.md)
+  — arricchimento dell'embedding degli articoli con contesto situante generato da
+  LLM (Contextual Retrieval, dense-only) su `knowledge_chunks`
 - [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md) — ❌ archiviato:
   migrazione a bge-m3 locale **non eseguita**; embedder resta
   `text-embedding-3-small` cloud (vedi [tech-stack.md](tech-stack.md))

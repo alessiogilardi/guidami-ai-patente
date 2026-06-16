@@ -46,7 +46,9 @@ orchestrator di backfill aggiungerebbe complessità senza vantaggi: scartato.
    `embedding: list[float] | None = None`.
 3. **Pipeline** (`QuizIndexingPipeline`): nuovo step `_assign_embeddings` tra `map` e
    `store`, identico a quello di `IndexingPipeline` (batch da
-   `config.embedding_batch_size`, `embed_passages([q.text for q in batch])`).
+   `config.embedding_batch_size`, `embed_passages([q.embedded_text for q in batch])`
+   dove `embedded_text = f"{topic} {text}"` — topic prefissato per arricchire la
+   rappresentazione semantica nell'embedding).
 4. **Builder** (`QuizIndexingPipelineBuilder`): iniettare un `EmbeddingClient`
    (`with_embedding_client`, default `LiteLLMEmbeddingClient(config.embedding)`),
    come fa `IndexingPipelineBuilder`. `quiz_main.py` passa il client di default.
