@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from pydantic import SecretStr
 from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, SettingsConfigDict
 from pydantic_settings.sources import YamlConfigSettingsSource
 
@@ -11,6 +12,7 @@ class IngestorConfig(BaseSettings):
 
     model_config = SettingsConfigDict(
         frozen=True,
+        extra="ignore",
         env_nested_delimiter="__",
         env_file=".env",
         yaml_file="configs/ingestor_config.yaml",
@@ -21,6 +23,7 @@ class IngestorConfig(BaseSettings):
     cap_parsed_path: Path = Path("data/parsed/cap/codice_rca.json")
     cap_cleaned_path: Path = Path("data/cleaned/cap/codice_rca.json")
     quiz_bank_path: Path = Path("data/cleaned/quiz-patente-ab/quiz-patente-ab.json")
+    openrouter_api_key: SecretStr | None = None
     embedding_batch_size: int = 64
     embedding: EmbeddingConfig = EmbeddingConfig()
     postgres: PostgresConnectionConfig
