@@ -28,6 +28,12 @@ class LiteLLMEmbeddingClient(EmbeddingClient):
 
     def _embed(self, inputs: list[str]) -> list[list[float]]:
         """Chiama litellm e restituisce i vettori allineati all'ordine di input."""
+        kwargs = self._build_embed_args(inputs)
+        response = litellm.embedding(**kwargs)
+        ordered = sorted(response.data, key=lambda item: item["index"])
+        return [[float(v) for v in item["embedding"]] for item in ordered]
+
+    def _build_embed_args(self, inputs: list[str]) -> dict[str, Any]:
         kwargs: dict[str, Any] = {
             "model": self._config.model_name,
             "input": inputs,
@@ -36,6 +42,5 @@ class LiteLLMEmbeddingClient(EmbeddingClient):
         }
         if self._config.dimensions is not None:
             kwargs["dimensions"] = self._config.dimensions
-        response = litellm.embedding(**kwargs)
-        ordered = sorted(response.data, key=lambda item: item["index"])
-        return [[float(v) for v in item["embedding"]] for item in ordered]
+
+        return kwargs
