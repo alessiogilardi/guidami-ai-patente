@@ -10,6 +10,7 @@ from typing import TypedDict
 
 import fitz
 import pdfplumber
+from pdfplumber.page import Page as PlumberPage
 
 PDF_PATH = Path("data/docs/domande AB italiano 23 04 2025.pdf")
 OUT_DIR = Path("data/cleaned/quiz-patente-ab")
@@ -22,6 +23,8 @@ _ROW_TOLERANCE = 50.0  # max distance (px) between image.top and row_y for per-r
 
 
 class SubQuestion(TypedDict):
+    """Sotto-domanda estratta dal PDF del banco delle domande."""
+
     number: str
     text: str
     correct_answer: bool | None
@@ -29,6 +32,8 @@ class SubQuestion(TypedDict):
 
 
 class Question(TypedDict):
+    """Domanda principale con le sotto-domande associate."""
+
     question_id: str
     topic: str
     sub_questions: list[SubQuestion]
@@ -54,7 +59,7 @@ def _is_data_row(row: list[str | None]) -> bool:
     return bool(first) and first.isdigit()
 
 
-def _get_headers_with_y(page: pdfplumber.page.Page) -> list[tuple[float, str, str]]:
+def _get_headers_with_y(page: PlumberPage) -> list[tuple[float, str, str]]:
     """Return [(y_pos, quesito_id, topic)] for all quesito headers on the page."""
     words = page.extract_words()
     if not words:
@@ -107,7 +112,7 @@ def _save_image(img_bytes: bytes, ext: str, seen: dict[str, str]) -> str:
 
 
 def _extract_image(
-    plumber_page: pdfplumber.page.Page,
+    plumber_page: PlumberPage,
     fitz_doc: fitz.Document,
     page_num: int,
     above_y: float,
@@ -134,7 +139,7 @@ def _extract_image(
 
 
 def _extract_image_at_y(
-    plumber_page: pdfplumber.page.Page,
+    plumber_page: PlumberPage,
     fitz_doc: fitz.Document,
     page_num: int,
     row_y: float,
@@ -173,6 +178,7 @@ def _extract_image_at_y(
 
 
 def main_questions(pdf_path: Path = PDF_PATH) -> None:
+    """Esegue il parsing del PDF e scrive le domande in `data/parsed/quiz-patente-ab/`."""
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     IMAGES_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -194,9 +200,7 @@ def main_questions(pdf_path: Path = PDF_PATH) -> None:
 
             # Build row_number → y_position from page words for per-row image lookup
             row_y_by_num: dict[str, float] = {
-                w["text"]: w["top"]
-                for w in plumber_page.extract_words()
-                if w["text"].isdigit()
+                w["text"]: w["top"] for w in plumber_page.extract_words() if w["text"].isdigit()
             }
 
             claimed_qids: set[str] = set()
