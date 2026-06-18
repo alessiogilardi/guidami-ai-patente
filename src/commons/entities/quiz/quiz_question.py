@@ -14,4 +14,5 @@ class QuizQuestion(BaseModel):
 
     @property
     def embedded_text(self) -> str:
+        """Testo usato per il calcolo dell'embedding (topic + testo)."""
         return f"{self.topic} {self.text}"
