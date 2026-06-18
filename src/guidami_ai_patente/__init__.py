@@ -1,2 +1,1 @@
-def hello() -> str:
-    return "Hello from guidami-ai-patente!"
+"""Pacchetto principale dell'app guidami-ai-patente (FastAPI, non ancora avviata)."""
