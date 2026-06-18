@@ -11,10 +11,13 @@ class KnowledgeChunk(BaseModel):
     article_title: str
     comma_index: int
     chunk_text: str
+    context: str = ""
     is_repealed: bool
     source_url: str
     embedding: list[float] | None = None
 
     @property
     def embedded_text(self) -> str:
-        return f"{self.article_title} {self.chunk_text}"
+        """Testo usato per il calcolo dell'embedding (titolo + contesto + testo)."""
+        parts = [self.article_title, self.context, self.chunk_text]
+        return "\n".join(p for p in parts if p)
