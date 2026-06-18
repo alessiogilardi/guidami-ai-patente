@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS knowledge_chunks (
     article_title   TEXT NOT NULL,
     comma_index     INT NOT NULL,
     chunk_text      TEXT NOT NULL,
+    context         TEXT NOT NULL DEFAULT '',
     is_repealed     BOOLEAN NOT NULL DEFAULT FALSE,
     source_url      TEXT NOT NULL,
     embedding       VECTOR(1536),
