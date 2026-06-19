@@ -17,12 +17,15 @@ dependencies = [
     "pymupdf>=1.27.2.3",
     "litellm>=1.80.15",
     "sentence-transformers>=5.5.1",
+    "pydantic-ai-slim[openrouter]>=1.107.0",
 ]
 
 [project.scripts]
 scrape-codice      = "scrapers.normattiva:main_cds"
 scrape-cap         = "scrapers.normattiva:main_cap"
 parse-domande      = "parsers.questions_pdf:main_questions"
+prepare-knowledge  = "guidami_ai_patente_ingestor.prepare_knowledge_main:main"
+prepare-quiz       = "guidami_ai_patente_ingestor.quiz_preparation_main:main"
 ingest-knowledge   = "guidami_ai_patente_ingestor.main:main"
 reset-knowledge-db = "guidami_ai_patente_ingestor.reset_db:main"
 ingest-quiz        = "guidami_ai_patente_ingestor.quiz_main:main"
