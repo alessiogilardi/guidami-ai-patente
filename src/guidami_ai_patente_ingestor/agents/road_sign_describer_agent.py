@@ -17,7 +17,7 @@ class RoadSignDescriberAgent(BaseAgent[ImageDescription]):
         Returns:
             Descrizione strutturata con `name` e `description`.
         """
-        return self.run_prompt_sync({}, images=(image_path,)).data
+        return self.run_prompt_sync({}, images=(image_path,)).output
 
     @classmethod
     def from_yaml(

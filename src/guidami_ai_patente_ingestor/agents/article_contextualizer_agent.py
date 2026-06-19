@@ -32,7 +32,7 @@ class ArticleContextualizerAgent(BaseAgent[dict[int, str]]):
 
         # Pydantic AI espone il risultato strutturato in .data
         result = self.run_prompt_sync(variables)
-        return result.data
+        return result.output
 
     @classmethod
     def from_yaml(
