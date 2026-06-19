@@ -1,8 +1,36 @@
-cds_parsed_path: data/parsed/cds/codice_della_strada.json
-cds_cleaned_path: data/cleaned/cds/codice_della_strada.json
-cap_parsed_path: data/parsed/cap/codice_rca.json
-cap_cleaned_path: data/cleaned/cap/codice_rca.json
-quiz_bank_path: data/cleaned/quiz-patente-ab/quiz-patente-ab.json
+layers:
+  parsed: data/parsed
+  cleaned: data/cleaned
+  enriched: data/enriched
+
+sources:
+  cds:
+    dir: cds
+    file: codice_della_strada.json
+  cap:
+    dir: cap
+    file: codice_rca.json
+  quiz:
+    dir: quiz-patente-ab
+    file: quiz-patente-ab.json
+
+knowledge_preparation:
+  input_layer: parsed
+  output_layer: enriched
+
+knowledge_indexing:
+  input_layer: enriched
+
+quiz_preparation:
+  input_layer: cleaned
+  output_layer: enriched
+
+quiz_indexing:
+  input_layer: enriched
+
+agents_dir: configs/agents
+quiz_images_dir: data/cleaned/quiz-patente-ab/images
+
 embedding_batch_size: 8
 embedding:
   model_name: openrouter/openai/text-embedding-3-small
