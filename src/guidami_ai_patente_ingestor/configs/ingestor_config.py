@@ -1,10 +1,13 @@
 from pathlib import Path
 
-from pydantic import SecretStr
+from pydantic import Field
 from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, SettingsConfigDict
 from pydantic_settings.sources import YamlConfigSettingsSource
 
 from commons.configs import EmbeddingConfig, PostgresConnectionConfig
+
+from .pipeline_layer_config import PipelineLayerConfig
+from .source_config import SourceConfig
 
 
 class IngestorConfig(BaseSettings):
@@ -18,12 +21,31 @@ class IngestorConfig(BaseSettings):
         yaml_file="configs/ingestor_config.yaml",
     )
 
-    cds_parsed_path: Path = Path("data/parsed/cds/codice_della_strada.json")
-    cds_cleaned_path: Path = Path("data/cleaned/cds/codice_della_strada.json")
-    cap_parsed_path: Path = Path("data/parsed/cap/codice_rca.json")
-    cap_cleaned_path: Path = Path("data/cleaned/cap/codice_rca.json")
-    quiz_bank_path: Path = Path("data/cleaned/quiz-patente-ab/quiz-patente-ab.json")
-    openrouter_api_key: SecretStr | None = None
+    layers: dict[str, str] = Field(
+        default_factory=lambda: {
+            "parsed": "data/parsed",
+            "cleaned": "data/cleaned",
+            "enriched": "data/enriched",
+        }
+    )
+    sources: dict[str, SourceConfig] = Field(
+        default_factory=lambda: {
+            "cds": SourceConfig(dir="cds", file="codice_della_strada.json"),
+            "cap": SourceConfig(dir="cap", file="codice_rca.json"),
+            "quiz": SourceConfig(dir="quiz-patente-ab", file="quiz-patente-ab.json"),
+        }
+    )
+    knowledge_preparation: PipelineLayerConfig = PipelineLayerConfig(
+        input_layer="parsed", output_layer="enriched"
+    )
+    knowledge_indexing: PipelineLayerConfig = PipelineLayerConfig(input_layer="enriched")
+    quiz_preparation: PipelineLayerConfig = PipelineLayerConfig(
+        input_layer="cleaned", output_layer="enriched"
+    )
+    quiz_indexing: PipelineLayerConfig = PipelineLayerConfig(input_layer="enriched")
+    agents_dir: Path = Path("configs/agents")
+    quiz_images_dir: Path = Path("data/cleaned/quiz-patente-ab/images")
+
     embedding_batch_size: int = 64
     embedding: EmbeddingConfig = EmbeddingConfig()
     postgres: PostgresConnectionConfig
