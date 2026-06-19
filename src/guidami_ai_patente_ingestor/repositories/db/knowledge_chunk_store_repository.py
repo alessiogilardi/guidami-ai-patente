@@ -24,8 +24,8 @@ class KnowledgeChunkStoreRepository:
         query = sql.SQL(
             "INSERT INTO {table} "
             "(source, article_number, article_title, comma_index, chunk_text, "
-            "is_repealed, source_url, embedding) "
-            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+            "context, is_repealed, source_url, embedding) "
+            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
         ).format(table=sql.Identifier(self._table_name))
 
         self._client.execute_many(
@@ -37,6 +37,7 @@ class KnowledgeChunkStoreRepository:
                     chunk.article_title,
                     chunk.comma_index,
                     chunk.chunk_text,
+                    chunk.context,
                     chunk.is_repealed,
                     chunk.source_url,
                     chunk.embedding,
