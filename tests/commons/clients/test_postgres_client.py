@@ -30,9 +30,12 @@ _INSERT_CHUNK = sql.SQL(
 )
 
 
+_EMBEDDING_DIM = 1536
+
+
 @pytest.mark.integration
 def test_execute_many_and_fetch_round_trip_with_pgvector(client: PostgresClient) -> None:
-    embedding = [1.0, 0.0, *([0.0] * 382)]
+    embedding = [1.0, *([0.0] * (_EMBEDDING_DIM - 1))]
     client.execute_many(
         _INSERT_CHUNK,
         [("cds", "1", "Articolo 1", 1, "Testo", False, "https://example.com/1", embedding)],
@@ -46,7 +49,7 @@ def test_execute_many_and_fetch_round_trip_with_pgvector(client: PostgresClient)
 
 @pytest.mark.integration
 def test_truncate_empties_table(client: PostgresClient) -> None:
-    embedding = [1.0, *([0.0] * 383)]
+    embedding = [1.0, *([0.0] * (_EMBEDDING_DIM - 1))]
     client.execute_many(
         _INSERT_CHUNK,
         [("cds", "1", "Articolo 1", 1, "Testo", False, "https://example.com/1", embedding)],
@@ -56,3 +59,20 @@ def test_truncate_empties_table(client: PostgresClient) -> None:
 
     rows = client.fetch(sql.SQL("SELECT article_number FROM knowledge_chunks"))
     assert rows == []
+
+
+@pytest.mark.integration
+def test_execute_runs_parametrized_statement(client: PostgresClient) -> None:
+    embedding = [1.0, *([0.0] * (_EMBEDDING_DIM - 1))]
+    client.execute_many(
+        _INSERT_CHUNK,
+        [
+            ("cds", "1", "Articolo 1", 1, "Testo", False, "https://example.com/1", embedding),
+            ("cap", "2", "Articolo 2", 1, "Testo", False, "https://example.com/2", embedding),
+        ],
+    )
+
+    client.execute(sql.SQL("DELETE FROM knowledge_chunks WHERE source = %s"), ["cds"])
+
+    rows = client.fetch(sql.SQL("SELECT source FROM knowledge_chunks"))
+    assert [row[0] for row in rows] == ["cap"]

@@ -3,5 +3,11 @@
 from .chunk_articles_step import ChunkArticlesStep
 from .embed_chunks_step import EmbedChunksStep
 from .load_enriched_articles_step import LoadEnrichedArticlesStep
+from .store_chunks_step import StoreChunksStep
 
-__all__ = ["ChunkArticlesStep", "EmbedChunksStep", "LoadEnrichedArticlesStep"]
+__all__ = [
+    "ChunkArticlesStep",
+    "EmbedChunksStep",
+    "LoadEnrichedArticlesStep",
+    "StoreChunksStep",
+]

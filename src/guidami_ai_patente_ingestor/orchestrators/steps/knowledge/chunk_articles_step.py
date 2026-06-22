@@ -3,7 +3,6 @@
 import logging
 from typing import Literal, cast
 
-from commons.entities.knowledge import KnowledgeChunk
 from commons.flowstep import FlowContext, Step
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
 from guidami_ai_patente_ingestor.orchestrators import context_keys
@@ -11,55 +10,52 @@ from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker
 
 logger = logging.getLogger(__name__)
 
-_KNOWN_SOURCES: frozenset[str] = frozenset({"cds", "cap"})
-
 
 class ChunkArticlesStep(Step):
-    """Chunka tutti gli articoli di ogni source e produce la lista piatta di KnowledgeChunk.
+    """Chunka gli articoli della source corrente e produce la lista piatta di KnowledgeChunk.
 
     Nessun filtro repealed: i chunk repealed sono inclusi nell'output (il filtro
-    è responsabilità di `EmbedChunksStep`).
+    è responsabilità di `EmbedChunksStep`). La `source` è iniettata: il flow è
+    per-source (una run per source).
     """
 
-    def __init__(self, name: str, article_chunker: ArticleChunker) -> None:
-        """Inietta il chunker di dominio.
+    def __init__(
+        self,
+        name: str,
+        article_chunker: ArticleChunker,
+        source: Literal["cds", "cap"],
+    ) -> None:
+        """Inietta il chunker di dominio e la source della run.
 
         Args:
             name: Nome univoco dello step nel flow.
             article_chunker: Servizio che trasforma un `EnrichedArticle` in `KnowledgeChunk`.
+            source: Source degli articoli (es. "cds"), passata al chunker per ogni articolo.
         """
         super().__init__(name)
         self._chunker = article_chunker
+        self._source: Literal["cds", "cap"] = source
 
     def execute(self, context: FlowContext) -> None:
-        """Legge `ARTICLES_BY_SOURCE`, chunka e scrive `CHUNKS` (lista piatta).
+        """Legge `ENRICHED_ARTICLES`, chunka e scrive `CHUNKS` (lista piatta).
 
         Args:
             context: Shared pipeline context.
         """
-        articles_by_source = cast(
-            dict[str, list[EnrichedArticle]], context.get(context_keys.ARTICLES_BY_SOURCE)
-        )
-        chunks: list[KnowledgeChunk] = []
-        for source, articles in articles_by_source.items():
-            typed_source = cast(Literal["cds", "cap"], source)
-            source_chunks = [
-                chunk
-                for article in articles
-                for chunk in self._chunker.chunk(article, typed_source)
-            ]
-            chunks.extend(source_chunks)
-            logger.info(
-                f"Chunked {len(articles)} articles for source '{source}' "
-                f"→ {len(source_chunks)} chunks"
-            )
+        articles = cast(list[EnrichedArticle], context.get(context_keys.ENRICHED_ARTICLES))
+        chunks = [
+            chunk for article in articles for chunk in self._chunker.chunk(article, self._source)
+        ]
 
-        logger.info(f"Total chunks produced: {len(chunks)}")
+        logger.info(
+            f"Chunked {len(articles)} articles for source '{self._source}' "
+            f"→ {len(chunks)} chunks"
+        )
         context.put(context_keys.CHUNKS, chunks)
 
     def get_required_keys(self) -> set[str]:
-        """Richiede `ARTICLES_BY_SOURCE` in input."""
-        return {context_keys.ARTICLES_BY_SOURCE}
+        """Richiede `ENRICHED_ARTICLES` in input."""
+        return {context_keys.ENRICHED_ARTICLES}
 
     def get_produced_keys(self) -> set[str]:
         """Produce `CHUNKS`: lista piatta di KnowledgeChunk."""

@@ -6,8 +6,9 @@ qui solo le chiavi consumate dall'indexing (SP03/04); le chiavi di preparation
 """
 
 # --- Knowledge indexing (SP03) ---
-ENRICHED_ARTICLES = "enriched_articles"    # input enrich (SP05) — NON rimuovere
-ARTICLES_BY_SOURCE = "articles_by_source"  # input indexing: dict[str, list[EnrichedArticle]]
+# Il flow di indexing è per-source (una run per source): input = lista piatta di
+# EnrichedArticle di UNA sola source. Stessa chiave usata dal flow di enrichment (SP05).
+ENRICHED_ARTICLES = "enriched_articles"  # input indexing/enrich: list[EnrichedArticle], una source
 CHUNKS = "chunks"  # output del chunker → embed → store
 
 # --- Quiz indexing (SP04) ---

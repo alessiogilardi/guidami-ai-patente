@@ -1,4 +1,4 @@
-"""Step che carica gli articoli enriched da disco per tutte le source configurate."""
+"""Step che carica gli articoli enriched da disco per una singola source."""
 
 import logging
 from typing import cast
@@ -13,10 +13,11 @@ logger = logging.getLogger(__name__)
 
 
 class LoadEnrichedArticlesStep(Step):
-    """Carica gli articoli enriched da disco per tutte le source e li espone nel context.
+    """Carica gli articoli enriched da disco per UNA source e li espone nel context.
 
-    Produce `ARTICLES_BY_SOURCE`: un dict `{source: list[EnrichedArticle]}`.
-    Non richiede chiavi in input: è il primo step del flow di indexing.
+    L'indexing è per-source (una run per source): produce `ENRICHED_ARTICLES`,
+    una lista piatta di `EnrichedArticle`. Non richiede chiavi in input: è il
+    primo step del flow di indexing.
     """
 
     def __init__(
@@ -25,7 +26,7 @@ class LoadEnrichedArticlesStep(Step):
         enriched_article_repository: EnrichedArticleRepository,
         layer_resolver: LayerResolver,
         input_layer: str,
-        sources: list[str],
+        source: str,
     ) -> None:
         """Inietta il repository, il resolver e i selettori di layer/source.
 
@@ -34,33 +35,30 @@ class LoadEnrichedArticlesStep(Step):
             enriched_article_repository: Repository per la lettura degli articoli enriched da JSON.
             layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
             input_layer: Nome del layer di input (es. "enriched").
-            sources: Lista delle chiavi source da caricare (es. ["cds", "cap"]).
+            source: Chiave della source da caricare (es. "cds").
         """
         super().__init__(name)
         self._repository = enriched_article_repository
         self._layer_resolver = layer_resolver
         self._input_layer = input_layer
-        self._sources = sources
+        self._source = source
 
     def execute(self, context: FlowContext) -> None:
-        """Carica gli articoli per ogni source e scrive il dict in `ARTICLES_BY_SOURCE`.
+        """Carica gli articoli della source e scrive la lista in `ENRICHED_ARTICLES`.
 
         Args:
             context: Shared pipeline context.
         """
-        articles_by_source: dict[str, list[EnrichedArticle]] = {}
-        for source in self._sources:
-            path = self._layer_resolver.path(self._input_layer, source)
-            articles = self._repository.load(path)
-            articles_by_source[source] = cast(list[EnrichedArticle], articles)
-            logger.info(f"Loaded {len(articles)} enriched articles for source '{source}'")
+        path = self._layer_resolver.path(self._input_layer, self._source)
+        articles = cast(list[EnrichedArticle], self._repository.load(path))
+        logger.info(f"Loaded {len(articles)} enriched articles for source '{self._source}'")
 
-        context.put(context_keys.ARTICLES_BY_SOURCE, articles_by_source)
+        context.put(context_keys.ENRICHED_ARTICLES, articles)
 
     def get_required_keys(self) -> set[str]:
         """Nessuna chiave richiesta: questo step è il punto di partenza del flow."""
         return set()
 
     def get_produced_keys(self) -> set[str]:
-        """Produce `ARTICLES_BY_SOURCE`: dict per-source degli articoli caricati."""
-        return {context_keys.ARTICLES_BY_SOURCE}
+        """Produce `ENRICHED_ARTICLES`: lista piatta degli articoli della source."""
+        return {context_keys.ENRICHED_ARTICLES}

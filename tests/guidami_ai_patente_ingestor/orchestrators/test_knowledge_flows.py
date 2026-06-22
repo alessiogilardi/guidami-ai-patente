@@ -1,4 +1,4 @@
-"""Test per build_knowledge_indexing_flow (flow factory SP03)."""
+"""Test per build_knowledge_indexing_flow (flow factory SP03, per-source)."""
 
 import json
 from pathlib import Path
@@ -28,16 +28,6 @@ def _base_config() -> IngestorConfig:
     )
 
 
-def _make_layer_resolver(tmp_path: Path) -> LayerResolver:
-    return LayerResolver(
-        layers={"enriched": str(tmp_path / "enriched")},
-        sources={
-            "cds": SourceConfig(dir="cds", file="articles.json"),
-            "cap": SourceConfig(dir="cap", file="articles.json"),
-        },
-    )
-
-
 def _make_embedding_client() -> EmbeddingClient:
     client = MagicMock(spec=EmbeddingClient)
     client.embed_passages.side_effect = lambda texts: [[float(len(t))] * 1536 for t in texts]
@@ -54,34 +44,24 @@ def _make_postgres_client() -> PostgresClient:
 
 
 def test_build_returns_flow_instance() -> None:
-    config = _base_config()
-    embedding_client = _make_embedding_client()
-    postgres_client = _make_postgres_client()
-    resolver = MagicMock(spec=LayerResolver)
-
     flow = build_knowledge_indexing_flow(
-        config=config,
-        layer_resolver=resolver,
-        embedding_client=embedding_client,
-        postgres_client=postgres_client,
+        config=_base_config(),
+        layer_resolver=MagicMock(spec=LayerResolver),
+        embedding_client=_make_embedding_client(),
+        postgres_client=_make_postgres_client(),
+        source="cds",
     )
-
     assert isinstance(flow, Flow)
 
 
 def test_flow_name_is_knowledge_indexing() -> None:
-    config = _base_config()
-    embedding_client = _make_embedding_client()
-    postgres_client = _make_postgres_client()
-    resolver = MagicMock(spec=LayerResolver)
-
     flow = build_knowledge_indexing_flow(
-        config=config,
-        layer_resolver=resolver,
-        embedding_client=embedding_client,
-        postgres_client=postgres_client,
+        config=_base_config(),
+        layer_resolver=MagicMock(spec=LayerResolver),
+        embedding_client=_make_embedding_client(),
+        postgres_client=_make_postgres_client(),
+        source="cap",
     )
-
     assert flow.name == "knowledge_indexing"
 
 
@@ -89,16 +69,12 @@ def test_flow_required_input_keys_is_empty_set() -> None:
     """Il flow non richiede chiavi esterne: LoadEnrichedArticlesStep parte da zero."""
     from commons.flowstep import FlowValidator
 
-    config = _base_config()
-    embedding_client = _make_embedding_client()
-    postgres_client = _make_postgres_client()
-    resolver = MagicMock(spec=LayerResolver)
-
     flow = build_knowledge_indexing_flow(
-        config=config,
-        layer_resolver=resolver,
-        embedding_client=embedding_client,
-        postgres_client=postgres_client,
+        config=_base_config(),
+        layer_resolver=MagicMock(spec=LayerResolver),
+        embedding_client=_make_embedding_client(),
+        postgres_client=_make_postgres_client(),
+        source="cds",
     )
 
     report = FlowValidator().validate(flow)
@@ -107,21 +83,27 @@ def test_flow_required_input_keys_is_empty_set() -> None:
 
 def test_build_with_validate_true_does_not_raise() -> None:
     """validate=True non solleva (il WARNING su CHUNKS è benigno)."""
-    config = _base_config()
-    embedding_client = _make_embedding_client()
-    postgres_client = _make_postgres_client()
-    resolver = MagicMock(spec=LayerResolver)
-
-    # deve completare senza eccezioni
     flow = build_knowledge_indexing_flow(
-        config=config,
-        layer_resolver=resolver,
-        embedding_client=embedding_client,
-        postgres_client=postgres_client,
+        config=_base_config(),
+        layer_resolver=MagicMock(spec=LayerResolver),
+        embedding_client=_make_embedding_client(),
+        postgres_client=_make_postgres_client(),
+        source="cds",
         validate=True,
     )
-
     assert isinstance(flow, Flow)
+
+
+def test_build_with_unknown_source_raises_value_error() -> None:
+    """Una source fuori dal catalogo configurato è un errore esplicito."""
+    with pytest.raises(ValueError, match="Unknown source"):
+        build_knowledge_indexing_flow(
+            config=_base_config(),
+            layer_resolver=MagicMock(spec=LayerResolver),
+            embedding_client=_make_embedding_client(),
+            postgres_client=_make_postgres_client(),
+            source="quiz",
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -149,19 +131,29 @@ def _write_enriched(path: Path, articles: list[EnrichedArticle]) -> None:
     )
 
 
-@pytest.mark.integration
-def test_flow_run_stores_all_chunks_including_repealed(tmp_path: Path) -> None:
-    """Flow completo su Postgres.
+def _integration_resolver(tmp_path: Path) -> LayerResolver:
+    return LayerResolver(
+        layers={"enriched": str(tmp_path / "enriched")},
+        sources={
+            "cds": SourceConfig(dir="cds", file="articles.json"),
+            "cap": SourceConfig(dir="cap", file="articles.json"),
+        },
+    )
 
-    - tutti i chunk (repealed inclusi) vengono inseriti in knowledge_chunks;
-    - i chunk repealed hanno embedding IS NULL;
-    - i chunk non-repealed hanno il vettore valorizzato.
-    """
+
+def _count(pg_client: PostgresClient, where: str) -> int:
     from psycopg import sql
 
-    from commons.clients import PostgresClient
-    from commons.configs import PostgresConnectionConfig
+    query = sql.SQL("SELECT COUNT(*) FROM knowledge_chunks WHERE " + where)  # noqa: S608
+    return pg_client.fetch(query)[0][0]
 
+
+@pytest.mark.integration
+def test_cap_run_does_not_overwrite_cds_run(tmp_path: Path) -> None:
+    """Il punto chiave del per-source: una run su 'cap' non cancella i chunk di 'cds'.
+
+    Inoltre: i chunk repealed sono storati con embedding IS NULL, i non-repealed embeddati.
+    """
     db_config = PostgresConnectionConfig(
         host="localhost",
         port=5432,
@@ -170,59 +162,85 @@ def test_flow_run_stores_all_chunks_including_repealed(tmp_path: Path) -> None:
         dbname="guidami_ai_patente",
     )
     pg_client = PostgresClient(db_config)
+    pg_client.truncate("knowledge_chunks")
 
-    resolver = LayerResolver(
-        layers={"enriched": str(tmp_path / "enriched")},
-        sources={
-            "cds": SourceConfig(dir="cds", file="articles.json"),
-            "cap": SourceConfig(dir="cap", file="articles.json"),
-        },
-    )
-
+    resolver = _integration_resolver(tmp_path)
     cds_articles = [
         _make_enriched_article("1", repealed=False),
         _make_enriched_article("2", repealed=True),
     ]
-    cap_articles = [
-        _make_enriched_article("3", repealed=False),
-    ]
+    cap_articles = [_make_enriched_article("3", repealed=False)]
     _write_enriched(resolver.path("enriched", "cds"), cds_articles)
     _write_enriched(resolver.path("enriched", "cap"), cap_articles)
 
-    config = IngestorConfig(
-        embedding_batch_size=4,
-        postgres=db_config,
-    )
-
+    config = IngestorConfig(embedding_batch_size=4, postgres=db_config)
     embedding_client = _make_embedding_client()
 
-    flow = build_knowledge_indexing_flow(
-        config=config,
-        layer_resolver=resolver,
-        embedding_client=embedding_client,
-        postgres_client=pg_client,
-    )
-    flow.run()
+    def _run(source: str) -> None:
+        build_knowledge_indexing_flow(
+            config=config,
+            layer_resolver=resolver,
+            embedding_client=embedding_client,
+            postgres_client=pg_client,
+            source=source,
+        ).run()
 
-    # Verifica su DB
-    total: int = pg_client.fetch(sql.SQL("SELECT COUNT(*) FROM knowledge_chunks"))[0][0]
-    repealed_null: int = pg_client.fetch(
-        sql.SQL(
-            "SELECT COUNT(*) FROM knowledge_chunks "
-            "WHERE embedding IS NULL AND is_repealed = TRUE"
-        )
-    )[0][0]
-    non_repealed_embedded: int = pg_client.fetch(
-        sql.SQL(
-            "SELECT COUNT(*) FROM knowledge_chunks "
-            "WHERE embedding IS NOT NULL AND is_repealed = FALSE"
-        )
-    )[0][0]
+    # Run 1: cds
+    _run("cds")
+    cds_after_run1 = _count(pg_client, "source = 'cds'")
+    assert cds_after_run1 > 0, "la run cds deve inserire chunk"
+
+    # Run 2: cap — NON deve toccare le righe cds
+    _run("cap")
+
+    cds_count = _count(pg_client, "source = 'cds'")
+    cap_count = _count(pg_client, "source = 'cap'")
+    repealed_null = _count(pg_client, "embedding IS NULL AND is_repealed = TRUE")
+    non_repealed_embedded = _count(pg_client, "embedding IS NOT NULL AND is_repealed = FALSE")
     pg_client.close()
 
-    assert total > 0, "devono esserci righe in knowledge_chunks"
+    assert cds_count == cds_after_run1, "la run cap non deve cancellare i chunk cds"
+    assert cap_count > 0, "la run cap deve inserire i propri chunk"
     assert repealed_null > 0, "i chunk repealed devono avere embedding IS NULL"
     assert non_repealed_embedded > 0, "i chunk non-repealed devono avere embedding valorizzato"
-    assert total == repealed_null + non_repealed_embedded, (
-        "ogni chunk è o repealed-null o non-repealed-embedded"
+
+
+@pytest.mark.integration
+def test_rerunning_same_source_is_full_reload(tmp_path: Path) -> None:
+    """Ri-eseguire la stessa source è un full-reload per-source: il conteggio resta stabile."""
+    db_config = PostgresConnectionConfig(
+        host="localhost",
+        port=5432,
+        user="guidami",
+        password="guidami",
+        dbname="guidami_ai_patente",
     )
+    pg_client = PostgresClient(db_config)
+    pg_client.truncate("knowledge_chunks")
+
+    resolver = _integration_resolver(tmp_path)
+    _write_enriched(
+        resolver.path("enriched", "cds"),
+        [_make_enriched_article("1"), _make_enriched_article("2")],
+    )
+
+    config = IngestorConfig(embedding_batch_size=4, postgres=db_config)
+    embedding_client = _make_embedding_client()
+
+    def _run() -> None:
+        build_knowledge_indexing_flow(
+            config=config,
+            layer_resolver=resolver,
+            embedding_client=embedding_client,
+            postgres_client=pg_client,
+            source="cds",
+        ).run()
+
+    _run()
+    count_after_first = _count(pg_client, "source = 'cds'")
+    _run()
+    count_after_second = _count(pg_client, "source = 'cds'")
+    pg_client.close()
+
+    assert count_after_first > 0
+    assert count_after_second == count_after_first, "il re-run non deve duplicare i chunk"

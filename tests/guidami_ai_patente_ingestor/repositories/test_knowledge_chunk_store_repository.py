@@ -24,16 +24,23 @@ def client() -> Iterator[PostgresClient]:
         client.truncate("knowledge_chunks")
 
 
-def _chunk(article_number: str, embedding: list[float]) -> KnowledgeChunk:
+_EMBEDDING_DIM = 1536
+
+
+def _embedding() -> list[float]:
+    return [1.0, *([0.0] * (_EMBEDDING_DIM - 1))]
+
+
+def _chunk(article_number: str, source: str = "cds") -> KnowledgeChunk:
     return KnowledgeChunk(
-        source="cds",
+        source=source,  # type: ignore[arg-type]
         article_number=article_number,
         article_title=f"Articolo {article_number}",
         comma_index=1,
         chunk_text=f"Testo dell'articolo {article_number}",
         is_repealed=False,
         source_url=f"https://example.com/art-{article_number}",
-        embedding=embedding,
+        embedding=_embedding(),
     )
 
 
@@ -41,9 +48,7 @@ def _chunk(article_number: str, embedding: list[float]) -> KnowledgeChunk:
 def test_bulk_insert_inserts_chunks(client: PostgresClient) -> None:
     repository = KnowledgeChunkStoreRepository(client, "knowledge_chunks")
 
-    repository.bulk_insert(
-        [_chunk("1", [1.0, *([0.0] * 383)]), _chunk("2", [0.0, *([0.0] * 383)])]
-    )
+    repository.bulk_insert([_chunk("1"), _chunk("2")])
 
     rows = client.fetch(sql.SQL("SELECT article_number FROM knowledge_chunks ORDER BY id"))
     assert [row[0] for row in rows] == ["1", "2"]
@@ -60,11 +65,12 @@ def test_bulk_insert_with_empty_list_is_noop(client: PostgresClient) -> None:
 
 
 @pytest.mark.integration
-def test_truncate_empties_table(client: PostgresClient) -> None:
+def test_delete_source_removes_only_that_source(client: PostgresClient) -> None:
+    """delete_source cancella solo i chunk della source indicata, gli altri sopravvivono."""
     repository = KnowledgeChunkStoreRepository(client, "knowledge_chunks")
-    repository.bulk_insert([_chunk("1", [1.0, *([0.0] * 383)])])
+    repository.bulk_insert([_chunk("1", source="cds"), _chunk("2", source="cap")])
 
-    repository.truncate()
+    repository.delete_source("cds")
 
-    rows = client.fetch(sql.SQL("SELECT article_number FROM knowledge_chunks"))
-    assert rows == []
+    rows = client.fetch(sql.SQL("SELECT source FROM knowledge_chunks"))
+    assert [row[0] for row in rows] == ["cap"]

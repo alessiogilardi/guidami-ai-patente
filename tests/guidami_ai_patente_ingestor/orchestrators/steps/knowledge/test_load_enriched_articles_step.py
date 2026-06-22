@@ -1,4 +1,4 @@
-"""Test per LoadEnrichedArticlesStep."""
+"""Test per LoadEnrichedArticlesStep (per-source)."""
 
 from pathlib import Path
 from unittest.mock import MagicMock
@@ -32,80 +32,40 @@ def _make_layer_resolver() -> LayerResolver:
     return resolver
 
 
-def _make_repo(articles_by_source: dict[str, list[EnrichedArticle]]) -> EnrichedArticleRepository:
-    repo = MagicMock(spec=EnrichedArticleRepository)
-    repo.load.side_effect = lambda path: articles_by_source.get(path.parent.name, [])
-    return repo
-
-
 def test_required_keys_is_empty_set() -> None:
     repo = MagicMock(spec=EnrichedArticleRepository)
     resolver = _make_layer_resolver()
-    step = LoadEnrichedArticlesStep(
-        "load", repo, resolver, input_layer="enriched", sources=["cds", "cap"]
-    )
+    step = LoadEnrichedArticlesStep("load", repo, resolver, input_layer="enriched", source="cds")
     assert step.get_required_keys() == set()
 
 
-def test_produced_keys_contains_articles_by_source() -> None:
+def test_produced_keys_contains_enriched_articles() -> None:
     repo = MagicMock(spec=EnrichedArticleRepository)
     resolver = _make_layer_resolver()
-    step = LoadEnrichedArticlesStep(
-        "load", repo, resolver, input_layer="enriched", sources=["cds", "cap"]
-    )
-    assert step.get_produced_keys() == {context_keys.ARTICLES_BY_SOURCE}
+    step = LoadEnrichedArticlesStep("load", repo, resolver, input_layer="enriched", source="cds")
+    assert step.get_produced_keys() == {context_keys.ENRICHED_ARTICLES}
 
 
-def test_execute_loads_each_source_and_puts_dict_in_context() -> None:
-    cds_articles = [_make_article("1"), _make_article("2")]
-    cap_articles = [_make_article("3")]
-
+def test_execute_loads_source_and_puts_flat_list_in_context() -> None:
+    articles = [_make_article("1"), _make_article("2")]
     repo = MagicMock(spec=EnrichedArticleRepository)
+    repo.load.return_value = articles
     resolver = _make_layer_resolver()
-    repo.load.side_effect = lambda path: (
-        cds_articles if "cds" in str(path) else cap_articles if "cap" in str(path) else []
-    )
 
-    step = LoadEnrichedArticlesStep(
-        "load", repo, resolver, input_layer="enriched", sources=["cds", "cap"]
-    )
+    step = LoadEnrichedArticlesStep("load", repo, resolver, input_layer="enriched", source="cds")
     context = FlowContext()
     step.execute(context)
 
-    result: dict[str, list[EnrichedArticle]] = context.get(context_keys.ARTICLES_BY_SOURCE)
-    assert set(result.keys()) == {"cds", "cap"}
-    assert result["cds"] is cds_articles
-    assert result["cap"] is cap_articles
+    result: list[EnrichedArticle] = context.get(context_keys.ENRICHED_ARTICLES)
+    assert result is articles
 
 
-def test_execute_calls_resolver_for_each_source() -> None:
+def test_execute_resolves_path_for_the_configured_source() -> None:
     repo = MagicMock(spec=EnrichedArticleRepository)
     repo.load.return_value = []
     resolver = _make_layer_resolver()
 
-    step = LoadEnrichedArticlesStep(
-        "load", repo, resolver, input_layer="enriched", sources=["cds", "cap"]
-    )
-    context = FlowContext()
-    step.execute(context)
+    step = LoadEnrichedArticlesStep("load", repo, resolver, input_layer="enriched", source="cap")
+    step.execute(FlowContext())
 
-    assert resolver.path.call_count == 2
-    called_sources = {call.args[1] for call in resolver.path.call_args_list}
-    assert called_sources == {"cds", "cap"}
-
-
-def test_execute_with_single_source() -> None:
-    quiz_articles = [_make_article("Q1")]
-    repo = MagicMock(spec=EnrichedArticleRepository)
-    repo.load.return_value = quiz_articles
-    resolver = _make_layer_resolver()
-
-    step = LoadEnrichedArticlesStep(
-        "load", repo, resolver, input_layer="enriched", sources=["quiz"]
-    )
-    context = FlowContext()
-    step.execute(context)
-
-    result: dict[str, list[EnrichedArticle]] = context.get(context_keys.ARTICLES_BY_SOURCE)
-    assert list(result.keys()) == ["quiz"]
-    assert result["quiz"] is quiz_articles
+    resolver.path.assert_called_once_with("enriched", "cap")
