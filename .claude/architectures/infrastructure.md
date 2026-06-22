@@ -23,6 +23,7 @@ Riferimento progettazione: `plans/tech-stack.md`,
   | `article_title` | `TEXT` | |
   | `comma_index` | `INT` | |
   | `chunk_text` | `TEXT` | |
+  | `context` | `TEXT` | `NOT NULL DEFAULT ''`; contesto LLM del comma, prodotto da `ArticleContextualizerAgent` |
   | `is_repealed` | `BOOLEAN` | default `FALSE` |
   | `source_url` | `TEXT` | |
   | `embedding` | `VECTOR(1536)` | nullable, popolato dall'ingestor |
@@ -62,7 +63,7 @@ Riferimento progettazione: `plans/tech-stack.md`,
   richiede la distruzione e ricreazione del volume Docker (o `ALTER TABLE` sul
   DB esistente) e il re-ingest completo di entrambe le pipeline.
 - Un solo Postgres per dati vettoriali e (in futuro) relazionali
-  (es. persistenza sessione v2) — vedi `plans/tech-stack.md`.
+  (es. persistenza sessione v2) — vedi [tech-stack.md](tech-stack.md).
 
 ## Avvio locale
 

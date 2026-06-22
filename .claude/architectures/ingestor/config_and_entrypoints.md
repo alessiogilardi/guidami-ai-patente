@@ -7,42 +7,58 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 
 - (`pydantic_settings.BaseSettings`, `frozen=True`) — pattern "config a due
   livelli": YAML committato (non-secret) + env/`.env` (solo secrets). Vedi
-  `Configurazione (config a due livelli)` sotto per i dettagli; campi:
-  - `cds_parsed_path: Path = Path("data/parsed/cds/codice_della_strada.json")`
-  - `cds_cleaned_path: Path = Path("data/cleaned/cds/codice_della_strada.json")`
-  - `cap_parsed_path: Path = Path("data/parsed/cap/codice_rca.json")`
-  - `cap_cleaned_path: Path = Path("data/cleaned/cap/codice_rca.json")` —
-    **non** `codice_assicurazioni_private.json` (610 articoli, codice
-    completo); `codice_rca.json` contiene i 96 articoli rilevanti per
-    RCA/patente.
-  - `quiz_bank_path: Path = Path("data/parsed/quiz-patente-ab/quiz-patente-ab.json")`
+  `Configurazione (config a due livelli)` sotto per i dettagli.
+- I path hard-coded (`cds_parsed_path`, `cds_cleaned_path`, `cap_*`,
+  `quiz_bank_path`) sono stati **rimossi** e sostituiti dal modello a layer
+  configurabile. Campi attuali:
+  - `layers: dict[str, Path]` — mappa nome-layer → directory radice. Nel YAML:
+    `parsed: data/parsed`, `cleaned: data/cleaned`, `enriched: data/enriched`.
+  - `sources: dict[str, SourceConfig]` — mappa nome-source →
+    `SourceConfig(dir: str, file: str)`. Nel YAML: `cds`, `cap`, `quiz`
+    con le rispettive directory e nome file JSON.
+  - `knowledge_preparation: PipelineLayerConfig` — `input_layer: "parsed"`,
+    `output_layer: "enriched"`.
+  - `knowledge_indexing: PipelineLayerConfig` — `input_layer: "enriched"`.
+  - `quiz_preparation: PipelineLayerConfig` — `input_layer: "cleaned"` (il
+    file del quiz bank vive in `data/cleaned/`, non in `data/parsed/` —
+    **deviazione dal piano**, che prevedeva `parsed`; adattato ai dati reali
+    su disco). `output_layer: "enriched"`.
+  - `quiz_indexing: PipelineLayerConfig` — `input_layer: "enriched"`.
+  - `agents_dir: Path = Path("configs/agents")` — directory dei file YAML
+    degli agenti.
+  - `quiz_images_dir: Path` — directory contenente le immagini del quiz bank
+    (usata da `QuizDataPreparationPipeline`).
   - `embedding_batch_size: int = 64`
   - `embedding: EmbeddingConfig = EmbeddingConfig()` (default `commons`)
-  - `postgres: PostgresConnectionConfig` (obbligatorio, nessun default —
-    `user`/`password` arrivano da env, il resto dal YAML)
-  - `embed_repealed: bool = False` — se `False` (default e valore in YAML),
-    i chunk con `is_repealed=True` vengono esclusi dall'embedding in
-    `IndexingPipeline._filter_chunks`; impostare a `True` per indicizzare
-    anche gli articoli abrogati.
+  - `postgres: PostgresConnectionConfig` (obbligatorio)
+  - `embed_repealed: bool = False`
   - `knowledge_chunks_table: str = "knowledge_chunks"`
   - `quiz_questions_table: str = "quiz_questions"`
-- Il vecchio campo `vector_store: VectorStoreConfig` è stato sostituito da
-  `postgres: PostgresConnectionConfig` (senza `table_name`, vedi
-  `commons.md`) + i due campi `*_table` separati, iniettati nei rispettivi
-  repository di scrittura (decisione 7 del piano quiz-bank).
-  `configs/ingestor_config.yaml` aggiornato di conseguenza.
+
+## `LayerResolver`
+
+- Servizio di dominio in `services/layer_resolver.py` (non una configurazione
+  Pydantic: riceve dipendenze iniettate e espone comportamento). Costruito
+  dall'entry point a partire da `IngestorConfig.layers` + `IngestorConfig.sources`.
+- `path(layer: str, source: str) -> Path` =
+  `layers[layer] / sources[source].dir / sources[source].file`.
+- Istanziato all'entry point da `IngestorConfig` e iniettato nei builder
+  (config solo all'entry point, regola architetturale invariata).
+- Aggiungere una nuova source o un nuovo layer è puramente dichiarativo nel
+  YAML, senza modifiche al codice.
 
 ## Configurazione (config a due livelli)
 
 - **YAML committato, non-secret** — `configs/ingestor_config.yaml` (root del
-  progetto, fuori da `src/`): `cds_parsed_path`, `cds_cleaned_path`,
-  `cap_parsed_path`, `cap_cleaned_path`, `quiz_bank_path`,
-  `embedding_batch_size`, `embedding` (`model_name:
-  openrouter/openai/text-embedding-3-small`, `vector_dim: 1536`), i campi
-  non-secret di `postgres` (`host`, `port`, `dbname`), e
-  `knowledge_chunks_table`/`quiz_questions_table`. La cartella `configs/` alla
-  root è pensata come contenitore anche per le future configurazioni non
-  sensibili (es. futuro `app_config.yaml` per l'app FastAPI).
+  progetto, fuori da `src/`): `layers`, `sources`, selettori per pipeline
+  (`knowledge_preparation`, `knowledge_indexing`, `quiz_preparation`,
+  `quiz_indexing`), `agents_dir`, `quiz_images_dir`, `embedding_batch_size`,
+  `embedding` (`model_name: openrouter/openai/text-embedding-3-small`,
+  `vector_dim: 1536`), i campi non-secret di `postgres` (`host`, `port`,
+  `dbname`), `knowledge_chunks_table`, `quiz_questions_table`,
+  `embed_repealed`. La cartella `configs/` alla root contiene anche la
+  sottodirectory `agents/` con un file YAML per agente. È pensata come
+  contenitore per tutte le configurazioni non sensibili del progetto.
 - **Env / `.env`, solo secrets** — `.env.example` (root) documenta le sole
   variabili richieste: `POSTGRES__USER`, `POSTGRES__PASSWORD` (doppio
   underscore = `env_nested_delimiter`, popola `postgres.user` /
@@ -69,38 +85,37 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 
 ## `main.py`
 
-- `config = IngestorConfig()` — `# pyright: ignore[reportCallIssue]` con
-  commento, perché pyright non sa che i campi richiesti sono popolati a
-  runtime da env/`.env`/YAML. Config caricata solo qui (entry point).
-- Esegue in sequenza:
-  1. `CleaningPipeline.run()` (`CleaningPipelineBuilder(config)
-     .with_article_repository(ArticleRepository())
-     .with_article_cleaner(ArticleCleaner()).build()`) — skip automatico per
-     source già pulite;
-  2. `IndexingPipeline.run()` (`IndexingPipelineBuilder(config)
-     .with_article_repository(ArticleRepository())
-     .with_article_chunker(ArticleChunker())
-     .with_embedding_client(LiteLLMEmbeddingClient(config.embedding))
-     .with_knowledge_chunk_store_repository(KnowledgeChunkStoreRepository(
-       PostgresClient(config.postgres), config.knowledge_chunks_table))
-     .build()`).
-- `ArticleRepository()` viene istanziata due volte (una per pipeline) — è
-  un componente stateless e senza config iniettata, condiviso/equivalente
-  tra `CleaningPipelineBuilder` e `IndexingPipelineBuilder`; nessuna
-  necessità di condividere la stessa istanza.
-- Wiring delle dipendenze concrete esplicito tramite i `with_*` dei
-  builder — visibile a colpo d'occhio nell'entry point, coerente con
-  "explicit over implicit". I default interni dei builder restano comunque
-  disponibili per chi costruisce le pipeline con override parziali (es. nei
-  test).
+- `config = IngestorConfig()` — `# pyright: ignore[reportCallIssue]`. Config
+  caricata solo qui (entry point). Argomento CLI `--source` **obbligatorio**:
+  la source da indicizzare (es. `cds`, `cap`). Esegue l'indexing per-source
+  leggendo dal layer `enriched`.
+- Flusso:
+  1. `argparse.ArgumentParser` — `--source` required.
+  2. `config = IngestorConfig()`, `layer_resolver = LayerResolver(...)`.
+  3. `build_knowledge_indexing_flow(config, layer_resolver, LiteLLMEmbeddingClient(...),
+     PostgresClient(...), source=args.source)` — la factory valida `source`
+     contro `config.knowledge_indexing.sources` e assembla il flow.
+  4. `flow.run()`.
 - Script registrato: `ingest-knowledge = "guidami_ai_patente_ingestor.main:main"`.
+- Usage: `uv run ingest-knowledge --source cds`, poi `uv run ingest-knowledge --source cap`.
+
+## `prepare_knowledge_main.py`
+
+- Entry point CLI (`uv run prepare-knowledge`). Argomento opzionale `--force`
+  (default `False`): se passato, forza la rigenerazione degli artefatti
+  `enriched` anche se esistono.
+- Instanzia `config = IngestorConfig()`, `layer_resolver = LayerResolver(...)`,
+  `Agent("article_contextualizer", config.agents_dir)`, poi esegue
+  `DataPreparationPipeline.run(force=...)` via
+  `DataPreparationPipelineBuilder(config, layer_resolver).build()`.
+- Script registrato: `prepare-knowledge = "guidami_ai_patente_ingestor.prepare_knowledge_main:main"`.
 
 ## `reset_db.py`
 
 - Entry point separato (`uv run reset-knowledge-db`,
   `reset-knowledge-db = "guidami_ai_patente_ingestor.reset_db:main"`) per
-  svuotare la tabella `knowledge_chunks` in vista di un full reload, senza
-  rieseguire `CleaningPipeline`/`IndexingPipeline`.
+  svuotare **l'intera** tabella `knowledge_chunks` (tutte le source) in vista
+  di un full reload da zero, senza rieseguire il flow di indexing.
 - Stesso pattern di `main.py`: `logging.basicConfig(...)`,
   `config = IngestorConfig()` caricata come unico entry point, `logger =
   logging.getLogger(__name__)` a livello di modulo.
@@ -111,22 +126,9 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 
 ## `quiz_main.py`
 
-- Entry point CLI (`uv run ingest-quiz`,
-  `ingest-quiz = "guidami_ai_patente_ingestor.quiz_main:main"`). Stesso
-  pattern di `main.py`: `logging.basicConfig(...)`, `config =
-  IngestorConfig()` (`# pyright: ignore[reportCallIssue]`), `logger =
-  logging.getLogger(__name__)` a livello di modulo.
-- Esegue `QuizIndexingPipeline.run()` da
-  `QuizIndexingPipelineBuilder(config)
-  .with_embedding_client(LiteLLMEmbeddingClient(config.embedding))
-  .build()` — l'embedding client è passato esplicitamente, coerente con il
-  pattern di `main.py` (wiring visibile nell'entry point). Log `info`
-  "starting quiz indexing pipeline" / "quiz indexing pipeline completed".
-- Pipeline separata da `main.py` (decisione 8 del piano quiz-bank): step
-  diversi (corpus: load+chunk+embed vs quiz: load+map+embed), eseguibili
-  indipendentemente, pur condividendo la strategia di store (truncate +
-  insert) e lo stesso embedder (`text-embedding-3-small` via
-  `LiteLLMEmbeddingClient`).
+**Rimosso** (decommissioning SP03-bis). Lo script `ingest-quiz` e la voce
+`[project.scripts]` corrispondente non esistono più. Il flow di quiz indexing
+sarà reintrodotto come flow flowstep (SP04) quando implementato.
 
 ## `reset_quiz_db.py`
 
@@ -143,33 +145,18 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 - Nessun componente dedicato (niente `LoggingConfig`/`LoggingService` in
   `commons`) — scelta deliberata per evitare overengineering, si usa
   direttamente lo stdlib `logging`.
-- `main.py` (composition root) chiama
+- Entry point attivi (`main.py`, `prepare_knowledge_main.py`,
+  `reset_db.py`, `reset_quiz_db.py`) chiamano
   `logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")`
-  all'inizio di `main()`, prima di qualsiasi altro log; `logger =
-  logging.getLogger(__name__)` a livello di modulo, con log `info` di
-  inizio/fine di entrambe le pipeline ("starting cleaning pipeline" /
-  "cleaning pipeline completed", "starting indexing pipeline" / "indexing
-  pipeline completed").
-- `cleaning_pipeline.py`: `logger = logging.getLogger(__name__)` a livello
-  di modulo; log `info` per source skippata
-  (`"{source}: {cleaned_path} already exists, skipping cleaning"`) o
-  pulita (`"{source}: cleaned {n} articles -> {cleaned_path}"`).
-- `indexing_pipeline.py`: `logger = logging.getLogger(__name__)` a livello
-  di modulo, log `info` in `run()`:
-  - dopo il load: conteggio articoli CdS/CAP caricati;
-  - dopo il chunking: conteggio chunk CdS/CAP/totali;
-  - in `_assign_embeddings`: una riga per batch (`embedding batch
-    {n}/{total} ({size} chunks)`);
-  - prima di `truncate()`: numero di chunk da inserire;
-  - dopo `bulk_insert()`: completamento.
-- `quiz_indexing_pipeline.py`: `logger = logging.getLogger(__name__)` a
-  livello di modulo, log `info` in `run()` per ciascuno dei quattro step
-  (numero di domande madri caricate, numero di righe mappate, in
-  `_assign_embeddings` una riga per batch `embedding batch {n}/{total}
-  ({size} questions)`, numero di righe da inserire prima del truncate,
-  completamento dopo `bulk_insert`).
-  `quiz_question_mapper.py`: `logger.warning` per ogni sotto-domanda
-  scartata come duplicato esatto.
-- **Convenzione**: i messaggi di log sono in inglese (a differenza di
-  docstring/commenti, in italiano), per coerenza con eventuali strumenti di
-  log aggregation/osservabilità.
+  all'inizio di `main()`.
+- `data_preparation_pipeline.py`: log `info` per source skippata (artefatto
+  enriched già presente), log `info` per source processata (n articoli
+  descritti), `logger.warning` per immagine non trovata su disco.
+- Step del knowledge flow (`load_enriched_articles_step.py`,
+  `chunk_articles_step.py`, `embed_chunks_step.py`, `store_chunks_step.py`):
+  log `info` in `execute()` con conteggio articoli/chunk e source della run.
+  `EmbeddingService` logga ogni batch (`embedding batch {n}/{total} ({k} items)`).
+- `quiz_question_mapper.py`: `logger.warning` per ogni sotto-domanda scartata
+  come duplicato esatto.
+- **Convenzione**: i messaggi di log sono in inglese, per coerenza con
+  eventuali strumenti di log aggregation/osservabilità.

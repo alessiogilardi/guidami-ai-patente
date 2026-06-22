@@ -1,9 +1,12 @@
 # Ingestor — Pipeline quiz bank
 
-Riferimento progettazione: `plans/architecture-quiz-bank.md`.
+Riferimento progettazione: `plans/architecture-quiz-bank.md`,
+`plans/ingest--data-preparation.md`.
 
-Vedi [config_and_entrypoints.md](config_and_entrypoints.md) per `IngestorConfig`
-e gli entry point CLI.
+Vedi [data_preparation.md](data_preparation.md) per `QuizDataPreparationPipeline`
+(stadio di enrichment vision che produce il layer `enriched`).
+Vedi [config_and_entrypoints.md](config_and_entrypoints.md) per `IngestorConfig`,
+`LayerResolver` e gli entry point CLI.
 
 ## Decisioni implementate
 
@@ -18,64 +21,58 @@ e gli entry point CLI.
   `int` (coercizione lax) — la colonna `quiz_questions.question_id INTEGER`
   è quindi corretta senza conversioni manuali.
 
-### `repositories/quiz_bank_repository.py` — `QuizBankRepository`
+Per la struttura `db/`/`json/` e la base class `JsonRepository[T]` vedi
+[knowledge_pipelines.md](knowledge_pipelines.md).
 
-- `load(path: Path) -> list[QuizMainQuestion]`: legge il JSON e valida ogni
-  elemento con `QuizMainQuestion.model_validate`. Nessuna dipendenza/config
-  iniettata — stesso ruolo di `ArticleRepository` per il quiz bank, ma solo
-  lettura (non c'è uno stadio "cleaned" per il quiz bank).
+### `repositories/json/quiz_bank_repository.py` — `QuizBankRepository`
+
+- Estende `JsonRepository[QuizMainQuestion]`; eredita `load` e `write` da
+  base. In pratica usato solo in lettura (`load`): non c'è uno stadio
+  "cleaned" per il quiz bank. Nessuna dipendenza/config iniettata.
+  Re-esportato da `repositories/__init__.py`.
 
 ### `services/quiz/quiz_question_mapper.py` — `QuizQuestionMapper`
 
-- `map(main_questions: list[QuizMainQuestion]) -> list[QuizQuestion]`:
-  appiattisce ogni `sub_questions` in una `QuizQuestion`, denormalizzando
-  `question_id`/`topic` dalla domanda madre.
+- **Input aggiornato**: ora accetta `list[EnrichedQuizMainQuestion]` (layer
+  enriched) invece di `list[QuizMainQuestion]` (layer parsed).
+- `map(main_questions: list[EnrichedQuizMainQuestion]) ->
+  list[EmbeddableQuizQuestion]`: appiattisce ogni `sub_questions` in una
+  `EmbeddableQuizQuestion`, denormalizzando `question_id`/`topic` dalla
+  domanda madre e portando `image_description` dalla sotto-domanda arricchita.
+- **Output aggiornato**: produce `EmbeddableQuizQuestion` (non più
+  `QuizQuestion` direttamente). La conversione finale in entità DB
+  (`QuizQuestion`) è delegata a `EmbeddableQuizQuestionMapper.to_entity()`.
 - `image_filename = PurePosixPath(image).name if image is not None else
-  None` — salva solo il nome file (non il path repo-relative stantio della
-  fonte), risolvendo l'incoerenza `data/processed` vs `data/parsed` osservata
-  nei dati senza dipendere da un refactor del parser (decisione 4 del piano).
+  None` — salva solo il nome file (invariato).
 - **Dedup duplicati esatti**: chiave `(text.strip(), correct_answer, image)`
   in un `set`; ogni duplicato scartato genera
-  `logger.warning(f"skipping duplicate sub-question {number} (question_id=...)")`.
-  Verificato su dati reali: 8 duplicati esatti su 7106 sotto-domande → 7098
-  righe mappate.
+  `logger.warning(...)`. Verificato su dati reali: 8 duplicati esatti su
+  7106 sotto-domande → 7098 righe mappate.
 
-### `orchestrators/quiz_indexing/` — `QuizIndexingPipeline` + `QuizIndexingPipelineBuilder`
+### `mappers/quiz/embeddable_quiz_question_mapper.py` — `EmbeddableQuizQuestionMapper`
 
-- **`QuizIndexingPipeline.run()`** — quattro step lineari:
-  1. `QuizBankRepository.load(config.quiz_bank_path)`;
-  2. `QuizQuestionMapper.map(main_questions)`;
-  3. `_assign_embeddings(questions)`: batch di `config.embedding_batch_size`,
-     `EmbeddingClient.embed_passages([q.embedded_text for q in batch])`
-     (il testo embeddato è `f"{topic} {text}"`, topic prefissato),
-     assegnazione `question.embedding = vector` in-place (campo mutabile).
-     Stessa strategia di `_assign_embeddings` in `IndexingPipeline`.
-  4. `QuizQuestionStoreRepository.truncate()` poi `bulk_insert(questions)`
-     (full reload, stessa strategia di `IndexingPipeline`).
-  - Dipendenze iniettate via costruttore: `QuizBankRepository`,
-    `QuizQuestionMapper`, `QuizQuestionStoreRepository`,
-    `EmbeddingClient` (ABC), `IngestorConfig`.
-- **`QuizIndexingPipelineBuilder`**: valida l'esistenza di
-  `config.quiz_bank_path` con `FileNotFoundError` fail-fast prima di
-  istanziare il client di embedding o `PostgresClient`. Setter fluent
-  `with_quiz_bank_repository`, `with_quiz_question_mapper`,
-  `with_quiz_question_store_repository`, `with_embedding_client`
-  (ritornano `Self`); `build()` usa controlli espliciti `is not None`,
-  stesso pattern di `IndexingPipelineBuilder`. Default di
-  `embedding_client`: `LiteLLMEmbeddingClient(config.embedding)` (cloud,
-  `text-embedding-3-small` via OpenRouter) — stesso default di
-  `IndexingPipelineBuilder`, per garantire che corpus e quiz siano
-  embedati nello stesso spazio vettoriale. Default di
-  `quiz_question_store_repository`:
-  `QuizQuestionStoreRepository(PostgresClient(config.postgres),
-  config.quiz_questions_table)`.
+- `to_entity(question: EmbeddableQuizQuestion) -> QuizQuestion`: copia i
+  campi persistiti (`number`, `question_id`, `topic`, `text`,
+  `correct_answer`, `image_filename`, `embedding`), **scarta**
+  `image_description` (non è una colonna di `quiz_questions`). Mapper
+  stateless, nessuna config iniettata. Applicato in
+  `QuizIndexingPipeline._assign_embeddings` per ottenere le entità da
+  passare al repository.
 
-### `repositories/` — `QuizQuestionStoreRepository`
+### `orchestrators/quiz_indexing/` — `QuizIndexingPipeline` (rimosso)
+
+`QuizIndexingPipeline`, `QuizIndexingPipelineBuilder` e l'entry point
+`quiz_main.py` sono stati rimossi in SP03-bis. Il flow di quiz indexing sarà
+reintrodotto come flow flowstep in SP04. Lo script `ingest-quiz` non è
+disponibile fino ad allora.
+
+### `repositories/db/` — `QuizQuestionStoreRepository`
 
 - Sostituisce l'uso diretto di `VectorStoreClient` (rimosso, vedi
   `commons.md`): repository di scrittura full-reload, iniettato con un
   `PostgresClient` generico e il nome tabella
-  (`config.quiz_questions_table`).
+  (`config.quiz_questions_table`). Vive in `repositories/db/` (storage
+  Postgres), re-esportato da `repositories/__init__.py`.
 - `truncate()` + `bulk_insert(questions: list[QuizQuestion])` — colonne
   `number, question_id, topic, text, correct_answer, image_filename,
   embedding`.

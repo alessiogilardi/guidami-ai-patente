@@ -1,23 +1,52 @@
 # Ingestor — Pipeline corpus normativo (CdS + CAP)
 
 Riferimento progettazione: `plans/architecture-ingestor.md`,
-`plans/implement/ingestor.md`.
+`plans/implement/ingestor.md`, `plans/ingest--data-preparation.md`.
 
-Vedi [config_and_entrypoints.md](config_and_entrypoints.md) per `IngestorConfig`
-e gli entry point CLI.
+Vedi [data_preparation.md](data_preparation.md) per `DataPreparationPipeline`
+(stadio di cleaning + enrichment LLM che produce il layer `enriched`).
+Vedi [config_and_entrypoints.md](config_and_entrypoints.md) per `IngestorConfig`,
+`LayerResolver` e gli entry point CLI.
 
 ## Decisioni implementate
 
-### `repositories/` — `ArticleRepository`
+### `repositories/` — struttura `db/` + `json/`
 
-- Unico componente di data-access per `Article` da/verso JSON:
-  `load(path: Path) -> list[Article]` e
-  `write(articles: list[Article], path: Path) -> None`.
-- Sostituisce il precedente `ArticleLoader` (che era in
-  `services/knowledge` ed era solo lettura) — ora lettura e scrittura sono
-  nello stesso componente perché operano sullo stesso formato (JSON di
-  `Article`). `write` crea le directory mancanti (`mkdir(parents=True,
-  exist_ok=True)`) e serializza con `ensure_ascii=False, indent=2`.
+- Il package `repositories/` è suddiviso in due sub-package per tipo di
+  storage:
+  - `db/` — Postgres (psycopg v3): `KnowledgeChunkStoreRepository`,
+    `QuizQuestionStoreRepository`.
+  - `json/` — file system JSON: `ArticleRepository`,
+    `EnrichedArticleRepository`, `QuizBankRepository`,
+    `EnrichedQuizBankRepository`.
+- Il `__init__.py` top-level re-esporta tutti e 6 i repository: i caller
+  (orchestrators, test, entry point) importano da
+  `guidami_ai_patente_ingestor.repositories` senza conoscere la suddivisione
+  interna — zero breaking change rispetto alla struttura flat precedente.
+
+### `repositories/json/_json_repository.py` — `JsonRepository[T: BaseModel]`
+
+- Classe base generica (Python 3.12 native generics) per tutti i repository
+  JSON. Prefisso `_` → privata al sub-package, non re-esportata da nessun
+  `__init__.py`.
+- `__init__`: ispeziona `__orig_bases__` della classe concreta per dedurre
+  il tipo Pydantic `T` (es. `Article` da `ArticleRepository(JsonRepository[Article])`);
+  lancia `TypeError` se il tipo non viene trovato.
+- `load(path: Path) -> list[T]`: legge JSON e valida ogni elemento con
+  `T.model_validate()`.
+- `write(items: list[T], path: Path) -> None`: crea le directory mancanti
+  (`mkdir(parents=True, exist_ok=True)`), serializza con
+  `json.dumps(..., ensure_ascii=False, indent=2)`.
+- Le quattro sottoclassi (`ArticleRepository`, `EnrichedArticleRepository`,
+  `QuizBankRepository`, `EnrichedQuizBankRepository`) non aggiungono né
+  `__init__` né metodi: ereditano tutto dalla base.
+
+### `repositories/json/` — `ArticleRepository`
+
+- Estende `JsonRepository[Article]`; eredita `load` e `write` senza
+  aggiungere codice. Il caller (`DataPreparationPipeline`,
+  `IndexingPipeline`) importa da `guidami_ai_patente_ingestor.repositories`
+  (top-level `__init__.py`), non dal sub-package interno.
 - Nessun parametro `source`: il `source` ("cds"/"cap") è noto al chiamante
   e passato direttamente ad `ArticleChunker.chunk`.
 
@@ -66,33 +95,17 @@ e gli entry point CLI.
     rimozione ordinale + rimozione ordinale duplicato + filtro "remainder
     vuoto" prima di appendere a `merged`.
 
-### `orchestrators/knowledge_cleaning/` — `CleaningPipeline` + `CleaningPipelineBuilder`
-
-- **`CleaningPipeline.run()`**: per ciascuna source (cds, cap) chiama
-  `_clean_source(parsed_path, cleaned_path, source)`:
-  1. se `cleaned_path.exists()` → log `info` e skip (pipeline
-     **idempotente**, nessuna ri-pulizia di dati già processati);
-  2. altrimenti `ArticleRepository.load(parsed_path)` →
-     `ArticleCleaner.clean(article)` per ciascun articolo →
-     `ArticleRepository.write(cleaned_articles, cleaned_path)`, con log
-     `info` del conteggio.
-  - Dipendenze iniettate via costruttore: `ArticleRepository`,
-    `ArticleCleaner`, `IngestorConfig`.
-- **`CleaningPipelineBuilder`**: valida che `cds_parsed_path` e
-  `cap_parsed_path` esistano, stesso pattern di
-  `IndexingPipelineBuilder._validate_source_paths` —
-  `FileNotFoundError` aggregato su entrambi i path mancanti (report
-  completo, non solo il primo).
-  - Setter fluent `with_article_repository`, `with_article_cleaner`
-    (ritornano `Self`); `build()` usa controlli espliciti `is not None`
-    per scegliere tra dipendenza assegnata e default.
 
 ### `services/knowledge/article_chunker.py` — `ArticleChunker`
 
 - **Non pulisce più i dati**: rimossi `_MARKUP_PATTERN`/`_clean`. Opera
   solo su `Article` già puliti da `ArticleCleaner` (precondizione: input
-  letto da `data/cleaned/`).
-- `chunk(article, source) -> list[KnowledgeChunk]`: `comma_index=0`
+  letto dal layer `enriched`).
+- **Ora accetta `EnrichedArticle`** (da `commons.models.knowledge`) invece di
+  `Article`: popola `chunk.context = enriched_article.contexts.get(comma_index,
+  "")`. Se `contexts` è `{}` (articolo abrogato o non arricchito), `context`
+  resta `""`.
+- `chunk(enriched_article, source) -> list[KnowledgeChunk]`: `comma_index=0`
   generato da `article.text` **solo `if article.text:`** (testo non vuoto
   dopo cleaning); `comma_index=i+1` per ogni `paragraphs[i]`.
 - `is_repealed = article.repealed OR "ABROGAT" in raw_text.upper()` —
@@ -100,61 +113,102 @@ e gli entry point CLI.
   (non solo "COMMA ABROGATO"), confermato su dati reali (CdS art. 231) e
   accettato così com'è.
 
-### `orchestrators/knowledge_indexing/` — `IndexingPipeline` + `IndexingPipelineBuilder`
+### `orchestrators/steps/knowledge/` — step di dominio knowledge (SP03)
 
-- Rinominato `article_loader`/`with_article_loader` →
-  `article_repository`/`with_article_repository` (usa `ArticleRepository`
-  da `repositories/`).
-- **`IndexingPipeline.run()`** — layout flat, step sequenziali senza
-  nidificazione:
-  1. due chiamate separate `ArticleRepository.load()`
-     (`config.cds_cleaned_path`, `config.cap_cleaned_path`) — legge da
-     `data/cleaned/`, non più da `data/parsed/`; load completato prima di
-     iniziare il chunking;
-  2. `_chunk_articles` (helper privato) per cds e cap separatamente, poi
-     concatenazione dei chunk;
-  3. `_assign_embeddings` (helper privato): chiama prima `_filter_chunks`
-     che, se `config.embed_repealed` è `False`, esclude i chunk con
-     `is_repealed=True` dalla lista prima di procedere. Poi batch di
-     `config.embedding_batch_size`, `EmbeddingClient.embed_passages(
-     [chunk.embedded_text for chunk in batch])` (il testo embeddato è
-     `f"{article_title} {chunk_text}"`, titolo prefissato) e assegnazione di
-     `chunk.embedding` in place (campo mutabile). Ogni chiamata è una
-     richiesta API a pagamento (OpenRouter) — il costo è limitato al
-     re-ingest del corpus (operazione offline, non query utente);
-  4. `KnowledgeChunkStoreRepository.truncate()` poi `bulk_insert(chunks)`
-     (full reload).
-  - Dipendenze iniettate via costruttore: `ArticleRepository`,
-    `ArticleChunker`, `EmbeddingClient` (ABC, `commons`),
-    `KnowledgeChunkStoreRepository`, `IngestorConfig`.
-- **`IndexingPipelineBuilder`**: valida l'esistenza di `cds_cleaned_path`/
-  `cap_cleaned_path` (non più `cds_path`/`cap_path`) con `FileNotFoundError`
-  fail-fast **prima** di istanziare il client di embedding o `PostgresClient`
-  (apre connessione Postgres). `_validate_source_paths` aggrega tutti i path
-  mancanti in un unico `FileNotFoundError` (report completo, non solo il
-  primo). Nessuna classe di eccezioni dedicata — `FileNotFoundError` con
-  messaggio chiaro, coerente con KISS a questa scala.
-  - Setter fluent `with_article_repository`, `with_article_chunker`,
-    `with_embedding_client`, `with_knowledge_chunk_store_repository`
-    (ritornano `Self`) per assegnare ogni dipendenza concreta prima di
-    `build()`. Il default di `embedding_client` è
-    `LiteLLMEmbeddingClient(config.embedding)` (cloud, `text-embedding-3-small`
-    via OpenRouter); il default di `knowledge_chunk_store_repository` è
-    `KnowledgeChunkStoreRepository(PostgresClient(config.postgres),
-    config.knowledge_chunks_table)`. `build()` usa controlli espliciti
-    `is not None` (non `or`) per scegliere tra dipendenza assegnata e
-    default, per evitare problemi di truthiness se in futuro una di queste
-    classi implementasse `__bool__`.
+Quattro step flowstep domain-specific per il knowledge indexing. Vivono in
+`orchestrators/steps/knowledge/`, mai in `services/` (la dipendenza va verso
+`commons.flowstep`, non il contrario). Il flow è **per-source**: un'esecuzione
+per source (`cds`, poi `cap`), source iniettata nei singoli step.
 
-### `repositories/` — `KnowledgeChunkStoreRepository`
+- **`LoadEnrichedArticlesStep`**: iniettati `EnrichedArticleRepository`,
+  `LayerResolver`, `input_layer: str`, `source: str` (singola source della run).
+  `execute`: chiama `layer_resolver.path(input_layer, source)` +
+  `repository.load(path)` → `put(ENRICHED_ARTICLES, list[EnrichedArticle])`.
+  Lista piatta di UNA source, non un dict per source.
+  `required=set()`, `produced={ENRICHED_ARTICLES}`.
+- **`ChunkArticlesStep`**: iniettati `ArticleChunker` e `source: Literal["cds","cap"]`
+  (iniettata nel costruttore, non letta dal context). `execute`: legge
+  `ENRICHED_ARTICLES`, chiama `chunker.chunk(article, source)` per ogni
+  articolo, appiattisce. Nessun filtro repealed — i chunk repealed sono
+  nell'output. `required={ENRICHED_ARTICLES}`, `produced={CHUNKS}`.
+- **`EmbedChunksStep`**: iniettati `EmbeddingService` (SP01) e `embed_repealed: bool`.
+  `execute`: se `embed_repealed=False`, filtra i chunk non-repealed
+  (`to_embed = [c for c in chunks if not c.is_repealed]`) → li embeddita in
+  place → ri-scrive `CHUNKS` con la lista **intera** (repealed inclusi, con
+  `embedding=None`). Composizione pura, nessuna ereditarietà da `EmbedStep`.
+  `required={CHUNKS}`, `produced={CHUNKS}` (WARNING benigno FlowValidator:
+  "Produced key overwrites an already available key" — non ERROR, non blocca
+  `build(validate=True)`).
+- **`StoreChunksStep`** (domain-specific, non il generico `DbStoreStep`):
+  iniettati `KnowledgeChunkStoreRepository` e `source: str`. `execute`: legge
+  `CHUNKS`, chiama `repository.delete_source(source)` poi
+  `repository.bulk_insert(chunks)`. Full-reload della **sola source corrente**:
+  le altre source nella tabella restano intatte. `required={CHUNKS}`,
+  `produced=set()` (step terminale/sink).
 
-- Sostituisce l'uso diretto di `VectorStoreClient` (rimosso, vedi
-  `commons.md`): repository di scrittura full-reload, iniettato con un
-  `PostgresClient` generico e il nome tabella
-  (`config.knowledge_chunks_table`).
-- `truncate()` + `bulk_insert(chunks: list[KnowledgeChunk])` — colonne
-  `source, article_number, article_title, comma_index, chunk_text,
+### `orchestrators/knowledge_flows.py` — flow factory (SP03)
+
+```python
+def build_knowledge_indexing_flow(
+    config: IngestorConfig,
+    layer_resolver: LayerResolver,
+    embedding_client: EmbeddingClient,
+    postgres_client: PostgresClient,
+    source: str,
+    validate: bool = False,
+) -> Flow
+```
+
+Mappatura step: `LoadEnrichedArticlesStep` → `ChunkArticlesStep` →
+`EmbedChunksStep` → `StoreChunksStep`. Il flow è prodotto da
+`FlowBuilder("knowledge_indexing").add_step(...).build(validate=validate)`.
+Re-esportato da `orchestrators/__init__.py` come `build_knowledge_indexing_flow`.
+
+**Decisioni:**
+- `source` ricevuta come parametro esplicito; validata contro
+  `config.knowledge_indexing.sources` → `ValueError` se non riconosciuta.
+  Poi narrowing a `Literal["cds","cap"]` con `cast` al confine (per `ChunkArticlesStep`).
+- `input_layer` letto da `config.knowledge_indexing.input_layer`.
+- Collega `main.py` direttamente (non più `IndexingPipeline` legacy).
+- `StoreChunksStep` usato al posto del generico `DbStoreStep` perché la
+  strategia di store è delete-by-source (non TRUNCATE): con il per-source,
+  la seconda run su una source diversa non può azzerare la tabella intera.
+
+### `configs/pipeline_layer_config.py` — campo `sources` (SP03)
+
+Aggiunto `sources: list[str] = Field(default_factory=list)` a
+`PipelineLayerConfig`. Valorizzato in `IngestorConfig` e nel YAML:
+
+| Pipeline | `sources` |
+|---|---|
+| `knowledge_preparation` | `["cds", "cap"]` |
+| `knowledge_indexing` | `["cds", "cap"]` |
+| `quiz_preparation` | `["quiz"]` |
+| `quiz_indexing` | `["quiz"]` |
+
+Fonte unica del selettore source: la factory legge
+`config.knowledge_indexing.sources` invece di hardcodare `["cds","cap"]`.
+
+### `repositories/db/` — `KnowledgeChunkStoreRepository`
+
+- Repository di scrittura iniettato con un `PostgresClient` generico e il
+  nome tabella (`config.knowledge_chunks_table`). Vive in `repositories/db/`
+  (storage Postgres), re-esportato da `repositories/__init__.py`.
+- Due modalità di reset, distinte per scope:
+  - `delete_source(source: str)` — cancella solo i chunk della source indicata
+    (`DELETE FROM {table} WHERE source = %s`), via `PostgresClient.execute`.
+    Usato da `StoreChunksStep` nel flow per-source: le altre source restano
+    intatte.
+  - `truncate()` — svuota l'intera tabella (`TRUNCATE TABLE`). Usato da
+    `reset-knowledge-db` per il wipe totale pre-reimport completo.
+- `bulk_insert(chunks: list[KnowledgeChunk])` — colonne
+  `source, article_number, article_title, comma_index, chunk_text, context,
   is_repealed, source_url, embedding`.
 - Costruisce la query con `psycopg.sql.SQL(...).format(table=
   sql.Identifier(table_name))` e `client.execute_many(query, params_seq)`;
   `bulk_insert` ritorna immediatamente (`return`) se la lista è vuota.
+- Vincolo architetturale: con il per-source NON si può usare `truncate` nel
+  flow di indexing — la seconda run su source diversa cancellerebbe la prima.
+  La colonna `source` e l'unique `(source, article_number, comma_index)` sullo
+  schema DB sono la precondizione che rende il delete-by-source sicuro e
+  idempotente.
