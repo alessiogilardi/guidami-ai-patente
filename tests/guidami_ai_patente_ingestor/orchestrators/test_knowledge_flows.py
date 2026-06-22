@@ -40,7 +40,7 @@ def _make_layer_resolver(tmp_path: Path) -> LayerResolver:
 
 def _make_embedding_client() -> EmbeddingClient:
     client = MagicMock(spec=EmbeddingClient)
-    client.embed_passages.side_effect = lambda texts: [[float(len(t))] for t in texts]
+    client.embed_passages.side_effect = lambda texts: [[float(len(t))] * 1536 for t in texts]
     return client
 
 
@@ -157,6 +157,8 @@ def test_flow_run_stores_all_chunks_including_repealed(tmp_path: Path) -> None:
     - i chunk repealed hanno embedding IS NULL;
     - i chunk non-repealed hanno il vettore valorizzato.
     """
+    from psycopg import sql
+
     from commons.clients import PostgresClient
     from commons.configs import PostgresConnectionConfig
 
@@ -203,24 +205,20 @@ def test_flow_run_stores_all_chunks_including_repealed(tmp_path: Path) -> None:
     flow.run()
 
     # Verifica su DB
-    with pg_client.connect() as conn:
-        with conn.cursor() as cur:
-            cur.execute("SELECT COUNT(*) FROM knowledge_chunks")
-            total: int = cur.fetchone()[0]  # type: ignore[index]
-
-            sql_repealed = (
-                "SELECT COUNT(*) FROM knowledge_chunks "
-                "WHERE embedding IS NULL AND is_repealed = TRUE"
-            )
-            cur.execute(sql_repealed)
-            repealed_null: int = cur.fetchone()[0]  # type: ignore[index]
-
-            sql_embedded = (
-                "SELECT COUNT(*) FROM knowledge_chunks "
-                "WHERE embedding IS NOT NULL AND is_repealed = FALSE"
-            )
-            cur.execute(sql_embedded)
-            non_repealed_embedded: int = cur.fetchone()[0]  # type: ignore[index]
+    total: int = pg_client.fetch(sql.SQL("SELECT COUNT(*) FROM knowledge_chunks"))[0][0]
+    repealed_null: int = pg_client.fetch(
+        sql.SQL(
+            "SELECT COUNT(*) FROM knowledge_chunks "
+            "WHERE embedding IS NULL AND is_repealed = TRUE"
+        )
+    )[0][0]
+    non_repealed_embedded: int = pg_client.fetch(
+        sql.SQL(
+            "SELECT COUNT(*) FROM knowledge_chunks "
+            "WHERE embedding IS NOT NULL AND is_repealed = FALSE"
+        )
+    )[0][0]
+    pg_client.close()
 
     assert total > 0, "devono esserci righe in knowledge_chunks"
     assert repealed_null > 0, "i chunk repealed devono avere embedding IS NULL"
