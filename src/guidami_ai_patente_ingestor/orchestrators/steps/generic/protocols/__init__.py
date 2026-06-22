@@ -1,1 +1,1 @@
-from .store_repository import StoreRepository
+from .store_repository import StoreRepository as StoreRepository

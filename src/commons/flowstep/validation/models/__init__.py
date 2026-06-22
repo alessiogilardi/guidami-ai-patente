@@ -1,1 +1,1 @@
-from .step_validation_result import StepValidationResult
+from .step_validation_result import StepValidationResult as StepValidationResult
