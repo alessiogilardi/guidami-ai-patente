@@ -5,7 +5,12 @@ from commons.entities.knowledge import KnowledgeChunk
 
 
 class KnowledgeChunkStoreRepository:
-    """Scrittura full-reload su `knowledge_chunks` (truncate + bulk insert)."""
+    """Scrittura su `knowledge_chunks`.
+
+    Due modalità di reset:
+    - `delete_source`: full-reload della singola source (usato dal flow per-source).
+    - `truncate`: wipe dell'intera tabella (usato da `reset-knowledge-db`).
+    """
 
     def __init__(self, client: PostgresClient, table_name: str) -> None:
         """Inietta il `PostgresClient` e il nome della tabella."""
@@ -13,8 +18,19 @@ class KnowledgeChunkStoreRepository:
         self._table_name = table_name
 
     def truncate(self) -> None:
-        """Svuota la tabella in vista di un full reload."""
+        """Svuota l'intera tabella (wipe totale, non per-source)."""
         self._client.truncate(self._table_name)
+
+    def delete_source(self, source: str) -> None:
+        """Cancella i chunk della sola `source` in vista di un full reload per-source.
+
+        Le altre source nella tabella restano intatte: l'indexing è per-source
+        (una run per source), quindi non si può fare TRUNCATE dell'intera tabella.
+        """
+        query = sql.SQL("DELETE FROM {table} WHERE source = %s").format(
+            table=sql.Identifier(self._table_name)
+        )
+        self._client.execute(query, [source])
 
     def bulk_insert(self, chunks: list[KnowledgeChunk]) -> None:
         """Inserisce in batch i chunk del corpus, embedding incluso."""
