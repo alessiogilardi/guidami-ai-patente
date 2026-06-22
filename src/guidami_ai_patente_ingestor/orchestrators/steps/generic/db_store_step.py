@@ -3,7 +3,7 @@ from typing import Any, cast
 
 from commons.flowstep import FlowContext, Step
 
-from .store_repository import StoreRepository
+from .protocols import StoreRepository
 
 logger = logging.getLogger(__name__)
 

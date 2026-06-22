@@ -2,6 +2,6 @@
 
 from .db_store_step import DbStoreStep
 from .embed_step import EmbedStep
-from .store_repository import StoreRepository
+from .protocols import StoreRepository
 
 __all__ = ["DbStoreStep", "EmbedStep", "StoreRepository"]
