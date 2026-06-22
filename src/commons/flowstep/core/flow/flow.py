@@ -1,9 +1,8 @@
 """Pipeline orchestrator."""
 
-
-from ..step import Step
 from ..context import FlowContext
 from ..exceptions import FlowExecutionError
+from ..step import Step
 
 
 class Flow:
@@ -46,9 +45,7 @@ class Flow:
         else:
             self.__context = FlowContext(new_context)
 
-    def run(
-        self, initial_context: FlowContext | dict | None = None
-    ) -> FlowContext:
+    def run(self, initial_context: FlowContext | dict | None = None) -> FlowContext:
         """Execute the pipeline sequentially.
 
         Args:

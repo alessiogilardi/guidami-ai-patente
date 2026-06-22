@@ -1,7 +1,7 @@
 """Basic usage example of the FlowStep pipeline."""
 
 from ..builder import FlowBuilder
-from ..core import Step, FlowContext
+from ..core import FlowContext, Step
 
 
 class LoadDataStep(Step):

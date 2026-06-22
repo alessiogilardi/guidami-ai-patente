@@ -4,16 +4,14 @@ from collections.abc import Iterable
 
 from ..core import Flow
 from .enums import ValidationSeverity
-from .models.step_validation_result import StepValidationResult
 from .flow_validation_report import FlowValidationReport
+from .models.step_validation_result import StepValidationResult
 
 
 class FlowValidator:
     """Validate pipeline structure and input contract before execution."""
 
-    def validate(
-        self, flow: Flow, initial_keys: set[str] | None = None
-    ) -> FlowValidationReport:
+    def validate(self, flow: Flow, initial_keys: set[str] | None = None) -> FlowValidationReport:
         """Validate pipeline structure and, optionally, input keys.
 
         Args:
@@ -85,9 +83,7 @@ class FlowValidator:
         report.set_required_input_keys(required_input_keys)
         return report
 
-    def validate_with_context(
-        self, flow: Flow, initial_keys: set[str]
-    ) -> FlowValidationReport:
+    def validate_with_context(self, flow: Flow, initial_keys: set[str]) -> FlowValidationReport:
         """Validate pipeline against explicit initial context keys."""
         report = self.validate_structure(flow)
         missing_from_context = report.required_input_keys - set(initial_keys)
