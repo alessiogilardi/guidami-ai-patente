@@ -1,51 +1,42 @@
+"""Entrypoint CLI per `ingest-knowledge` — indicizza il corpus per una source."""
+
+import argparse
 import logging
 
 from commons.clients import LiteLLMEmbeddingClient, PostgresClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
-from guidami_ai_patente_ingestor.orchestrators.knowledge_cleaning import CleaningPipelineBuilder
-from guidami_ai_patente_ingestor.orchestrators.knowledge_indexing import IndexingPipelineBuilder
-from guidami_ai_patente_ingestor.repositories import (
-    ArticleRepository,
-    KnowledgeChunkStoreRepository,
-)
-from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
+from guidami_ai_patente_ingestor.orchestrators import build_knowledge_indexing_flow
+from guidami_ai_patente_ingestor.services import LayerResolver
 
 logger = logging.getLogger(__name__)
 
 
 def main() -> None:
-    """Esegue la pipeline di pulizia (skip se già fatta) e di indicizzazione."""
+    """Esegue il flow di knowledge indexing per-source (corpus → chunk → embed → store)."""
     logging.basicConfig(
         level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s"
     )
 
+    parser = argparse.ArgumentParser(description="Indicizza il corpus normativo per una source.")
+    parser.add_argument(
+        "--source",
+        required=True,
+        help="Source da indicizzare (es. 'cds', 'cap').",
+    )
+    args = parser.parse_args()
+
     # pyright non sa che i campi richiesti sono popolati da env/.env/YAML a runtime.
     config = IngestorConfig()  # pyright: ignore[reportCallIssue]
+    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
 
-    article_repository = ArticleRepository()
-
-    logger.info("starting cleaning pipeline")
-    cleaning_pipeline = (
-        CleaningPipelineBuilder(config)
-        .with_article_repository(article_repository)
-        .with_article_cleaner(ArticleCleaner())
-        .build()
+    flow = build_knowledge_indexing_flow(
+        config=config,
+        layer_resolver=layer_resolver,
+        embedding_client=LiteLLMEmbeddingClient(config.embedding),
+        postgres_client=PostgresClient(config.postgres),
+        source=args.source,
     )
-    cleaning_pipeline.run()
-    logger.info("cleaning pipeline completed")
 
-    logger.info("starting indexing pipeline")
-    indexing_pipeline = (
-        IndexingPipelineBuilder(config)
-        .with_article_repository(article_repository)
-        .with_article_chunker(ArticleChunker())
-        .with_embedding_client(LiteLLMEmbeddingClient(config.embedding))
-        .with_knowledge_chunk_store_repository(
-            KnowledgeChunkStoreRepository(
-                PostgresClient(config.postgres), config.knowledge_chunks_table
-            )
-        )
-        .build()
-    )
-    indexing_pipeline.run()
-    logger.info("indexing pipeline completed")
+    logger.info(f"starting knowledge indexing flow for source '{args.source}'")
+    flow.run()
+    logger.info(f"knowledge indexing flow completed for source '{args.source}'")
