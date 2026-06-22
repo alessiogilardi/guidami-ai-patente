@@ -17,16 +17,20 @@ sources:
 knowledge_preparation:
   input_layer: parsed
   output_layer: enriched
+  sources: [cds, cap]
 
 knowledge_indexing:
   input_layer: enriched
+  sources: [cds, cap]
 
 quiz_preparation:
   input_layer: cleaned
   output_layer: enriched
+  sources: [quiz]
 
 quiz_indexing:
   input_layer: enriched
+  sources: [quiz]
 
 agents_dir: configs/agents
 quiz_images_dir: data/cleaned/quiz-patente-ab/images

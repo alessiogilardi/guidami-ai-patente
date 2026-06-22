@@ -6,7 +6,8 @@ qui solo le chiavi consumate dall'indexing (SP03/04); le chiavi di preparation
 """
 
 # --- Knowledge indexing (SP03) ---
-ENRICHED_ARTICLES = "enriched_articles"  # input: articoli enriched caricati da disco
+ENRICHED_ARTICLES = "enriched_articles"    # input enrich (SP05) — NON rimuovere
+ARTICLES_BY_SOURCE = "articles_by_source"  # input indexing: dict[str, list[EnrichedArticle]]
 CHUNKS = "chunks"  # output del chunker → embed → store
 
 # --- Quiz indexing (SP04) ---
