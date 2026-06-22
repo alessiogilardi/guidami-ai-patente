@@ -1,0 +1,44 @@
+from pathlib import Path
+
+import pytest
+
+from guidami_ai_patente_ingestor.configs import SourceConfig
+from guidami_ai_patente_ingestor.services import LayerResolver
+
+
+def _resolver() -> LayerResolver:
+    layers = {
+        "parsed": "data/parsed",
+        "cleaned": "data/cleaned",
+        "enriched": "data/enriched",
+    }
+    sources = {
+        "cds": SourceConfig(dir="cds", file="codice_della_strada.json"),
+        "cap": SourceConfig(dir="cap", file="codice_rca.json"),
+        "quiz": SourceConfig(dir="quiz-patente-ab", file="quiz-patente-ab.json"),
+    }
+    return LayerResolver(layers=layers, sources=sources)
+
+
+def test_path_resolves_layer_and_source_correctly() -> None:
+    resolver = _resolver()
+    result = resolver.path("parsed", "cds")
+    assert result == Path("data/parsed/cds/codice_della_strada.json")
+
+
+def test_path_resolves_enriched_quiz_layer() -> None:
+    resolver = _resolver()
+    result = resolver.path("enriched", "quiz")
+    assert result == Path("data/enriched/quiz-patente-ab/quiz-patente-ab.json")
+
+
+def test_path_raises_for_unknown_layer() -> None:
+    resolver = _resolver()
+    with pytest.raises(KeyError, match="unknown_layer"):
+        resolver.path("unknown_layer", "cds")
+
+
+def test_path_raises_for_unknown_source() -> None:
+    resolver = _resolver()
+    with pytest.raises(KeyError, match="unknown_source"):
+        resolver.path("parsed", "unknown_source")

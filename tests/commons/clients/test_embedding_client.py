@@ -24,10 +24,10 @@ class _FakeEmbeddingResponse:
 # ---------------------------------------------------------------------------
 
 
-def test_embedding_config_defaults_to_bge_m3() -> None:
+def test_embedding_config_defaults_to_text_embedding_3_small() -> None:
     config = EmbeddingConfig()
-    assert config.model_name == "BAAI/bge-m3"
-    assert config.vector_dim == 1024
+    assert config.model_name == "openrouter/openai/text-embedding-3-small"
+    assert config.vector_dim == 1536
 
 
 # ---------------------------------------------------------------------------
@@ -51,7 +51,9 @@ def test_embed_query_returns_single_vector_of_configured_dimension(
 
     monkeypatch.setattr(litellm, "embedding", fake_embedding)
 
-    vector = LiteLLMEmbeddingClient(cloud_config).embed_query("Quando si accendono gli abbaglianti?")
+    vector = LiteLLMEmbeddingClient(cloud_config).embed_query(
+        "Quando si accendono gli abbaglianti?"
+    )
 
     assert len(vector) == cloud_config.vector_dim
     assert captured["model"] == cloud_config.model_name
@@ -130,7 +132,9 @@ def test_dimensions_is_forwarded_only_when_set(monkeypatch: pytest.MonkeyPatch) 
     reason="richiede OPENROUTER_API_KEY per chiamare l'endpoint OpenRouter reale",
 )
 def test_embed_query_against_openrouter_returns_configured_dimension() -> None:
-    config = EmbeddingConfig(model_name="openrouter/openai/text-embedding-3-small", vector_dim=1536)
+    config = EmbeddingConfig(
+        model_name="openrouter/openai/text-embedding-3-small", vector_dim=1536
+    )
     vector = LiteLLMEmbeddingClient(config).embed_query("Quando si accendono gli abbaglianti?")
 
     assert len(vector) == config.vector_dim
@@ -207,7 +211,9 @@ def test_st_custom_query_prefix_is_applied(monkeypatch: pytest.MonkeyPatch) -> N
     _mock_sentence_transformer_class(monkeypatch, mock_model)
 
     config = EmbeddingConfig(model_name="intfloat/multilingual-e5-small", vector_dim=384)
-    client = SentenceTransformerEmbeddingClient(config, query_prefix="query: ", passage_prefix="passage: ")
+    client = SentenceTransformerEmbeddingClient(
+        config, query_prefix="query: ", passage_prefix="passage: "
+    )
     client.embed_query("test")
 
     assert captured == ["query: test"]
@@ -224,7 +230,9 @@ def test_st_custom_passage_prefix_is_applied(monkeypatch: pytest.MonkeyPatch) ->
     _mock_sentence_transformer_class(monkeypatch, mock_model)
 
     config = EmbeddingConfig(model_name="intfloat/multilingual-e5-small", vector_dim=384)
-    client = SentenceTransformerEmbeddingClient(config, query_prefix="query: ", passage_prefix="passage: ")
+    client = SentenceTransformerEmbeddingClient(
+        config, query_prefix="query: ", passage_prefix="passage: "
+    )
     client.embed_passages(["Articolo 1"])
 
     assert captured == [["passage: Articolo 1"]]

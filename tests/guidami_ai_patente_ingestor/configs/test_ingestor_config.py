@@ -7,27 +7,48 @@ from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 
 
-def _build_config() -> IngestorConfig:
+def _build_config(**kwargs) -> IngestorConfig:
     return IngestorConfig(
         postgres=PostgresConnectionConfig(
             host="localhost", user="unused", password="unused", dbname="unused"
-        )
+        ),
+        **kwargs,
     )
 
 
-def test_default_paths_point_to_expected_source_files() -> None:
+def test_default_layers_contain_parsed_cleaned_enriched() -> None:
     config = _build_config()
+    assert config.layers["parsed"] == "data/parsed"
+    assert config.layers["cleaned"] == "data/cleaned"
+    assert config.layers["enriched"] == "data/enriched"
 
-    assert config.cds_parsed_path == Path("data/parsed/cds/codice_della_strada.json")
-    assert config.cds_cleaned_path == Path("data/cleaned/cds/codice_della_strada.json")
-    assert config.cap_parsed_path == Path("data/parsed/cap/codice_rca.json")
-    assert config.cap_cleaned_path == Path("data/cleaned/cap/codice_rca.json")
-    assert config.quiz_bank_path == Path("data/cleaned/quiz-patente-ab/quiz-patente-ab.json")
+
+def test_default_sources_contain_cds_cap_quiz() -> None:
+    config = _build_config()
+    assert "cds" in config.sources
+    assert "cap" in config.sources
+    assert "quiz" in config.sources
+    assert config.sources["cds"].file == "codice_della_strada.json"
+    assert config.sources["quiz"].dir == "quiz-patente-ab"
+
+
+def test_default_pipeline_selectors() -> None:
+    config = _build_config()
+    assert config.knowledge_preparation.input_layer == "parsed"
+    assert config.knowledge_preparation.output_layer == "enriched"
+    assert config.knowledge_indexing.input_layer == "enriched"
+    assert config.quiz_preparation.input_layer == "cleaned"
+    assert config.quiz_preparation.output_layer == "enriched"
+    assert config.quiz_indexing.input_layer == "enriched"
+
+
+def test_default_agents_dir() -> None:
+    config = _build_config()
+    assert config.agents_dir == Path("configs/agents")
 
 
 def test_default_table_names() -> None:
     config = _build_config()
-
     assert config.knowledge_chunks_table == "knowledge_chunks"
     assert config.quiz_questions_table == "quiz_questions"
 

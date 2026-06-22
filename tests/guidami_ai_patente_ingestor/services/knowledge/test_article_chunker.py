@@ -1,22 +1,43 @@
 from pathlib import Path
 
+from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
 from guidami_ai_patente_ingestor.repositories import ArticleRepository
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
 
 FIXTURES_DIR = Path(__file__).parents[2] / "fixtures"
 
 
-def _load_cds() -> dict[str, object]:
+def _load_cds() -> dict[str, EnrichedArticle]:
     articles = ArticleRepository().load(FIXTURES_DIR / "cds_sample.json")
+    cleaned = {article.number: ArticleCleaner().clean(article) for article in articles}
     return {
-        article.number: ArticleCleaner().clean(article) for article in articles
+        number: EnrichedArticle(
+            number=article.number,
+            title=article.title,
+            text=article.text,
+            paragraphs=article.paragraphs,
+            url=article.url,
+            scraped_at=article.scraped_at,
+            repealed=article.repealed,
+        )
+        for number, article in cleaned.items()
     }
 
 
-def _load_cap() -> dict[str, object]:
+def _load_cap() -> dict[str, EnrichedArticle]:
     articles = ArticleRepository().load(FIXTURES_DIR / "cap_sample.json")
+    cleaned = {article.number: ArticleCleaner().clean(article) for article in articles}
     return {
-        article.number: ArticleCleaner().clean(article) for article in articles
+        number: EnrichedArticle(
+            number=article.number,
+            title=article.title,
+            text=article.text,
+            paragraphs=article.paragraphs,
+            url=article.url,
+            scraped_at=article.scraped_at,
+            repealed=article.repealed,
+        )
+        for number, article in cleaned.items()
     }
 
 
@@ -75,3 +96,22 @@ def test_article_with_empty_cleaned_text_skips_comma_zero() -> None:
     chunks = ArticleChunker().chunk(article, source="cds")
 
     assert [chunk.comma_index for chunk in chunks] == [1]
+
+
+def test_chunk_context_populated_from_enriched_article_contexts() -> None:
+    article = _load_cds()["1"]
+    article = article.model_copy(update={"contexts": {0: "Contesto del comma 0."}})
+
+    chunks = ArticleChunker().chunk(article, source="cds")
+
+    by_comma = {chunk.comma_index: chunk for chunk in chunks}
+    assert by_comma[0].context == "Contesto del comma 0."
+    assert by_comma[1].context == ""
+
+
+def test_chunk_context_defaults_to_empty_when_not_in_enriched() -> None:
+    article = _load_cds()["1"]
+
+    chunks = ArticleChunker().chunk(article, source="cds")
+
+    assert all(chunk.context == "" for chunk in chunks)
