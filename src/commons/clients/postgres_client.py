@@ -47,6 +47,10 @@ class PostgresClient:
         query = sql.SQL("TRUNCATE TABLE {table}").format(table=sql.Identifier(table_name))
         self._connection.execute(query)
 
+    def execute(self, query: sql.Composed, params: Sequence[object] | None = None) -> None:
+        """Esegue `query` una sola volta (statement senza risultato, es. DELETE parametrico)."""
+        self._connection.execute(query, params)
+
     def execute_many(self, query: sql.Composed, params_seq: Sequence[Sequence[object]]) -> None:
         """Esegue `query` una volta per ciascuna riga di `params_seq`."""
         with self._connection.cursor() as cursor:
