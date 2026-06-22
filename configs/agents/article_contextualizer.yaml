@@ -2,6 +2,7 @@ model_name: openrouter/google/gemini-2.5-flash-lite
 temperature: 0.0
 system: "Riformuli norme in linguaggio piano, senza inventare contenuti."
 user: |
-  (placeholder Fase 3) Articolo:
-  $article
+  (placeholder Fase 3) Articolo: $title
+  $text
+  $paragraphs
   Restituisci JSON {comma_index: contesto} per ogni comma.
