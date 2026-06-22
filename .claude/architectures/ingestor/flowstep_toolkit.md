@@ -18,10 +18,15 @@ src/guidami_ai_patente_ingestor/orchestrators/
       store_repository.py  # Protocol StoreRepository
       embed_step.py        # class EmbedStep
       db_store_step.py     # class DbStoreStep
+    knowledge/             # step domain-specific knowledge (SP03)
+      __init__.py          # re-esporta i 4 step knowledge
+      ...
+    quiz/                  # step domain-specific quiz (SP04)
+      __init__.py          # re-esporta LoadEnrichedQuizStep, MapToEmbeddableStep, MapToQuizEntityStep
+      load_enriched_quiz_step.py
+      map_to_embeddable_step.py
+      map_to_quiz_entity_step.py
 ```
-
-Nessun package `steps/knowledge/` o `steps/quiz/` creato: li creerà chi ha step da ospitare
-(SP03–SP06). Nessun package vuoto.
 
 ## `context_keys.py` — vocabolario chiavi
 
@@ -39,7 +44,8 @@ le proprie in modo **additivo**):
 
 I consumatori accedono come `context_keys.CHUNKS` — import di submodule
 (`from guidami_ai_patente_ingestor.orchestrators import context_keys`).
-`orchestrators/__init__.py` re-esporta `build_knowledge_indexing_flow` (SP03).
+`orchestrators/__init__.py` re-esporta `build_knowledge_indexing_flow` (SP03) e
+`build_quiz_indexing_flow` (SP04).
 
 ## Decisioni implementate
 

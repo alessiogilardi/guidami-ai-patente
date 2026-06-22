@@ -99,6 +99,24 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
   chunk inseriti (repealed inclusi), repealed con `embedding IS NULL`,
   non-repealed con vettore valorizzato.
 
+### Orchestrators — step quiz (SP04)
+
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_load_enriched_quiz_step.py` —
+  `required == set()`, `produced == {ENRICHED_QUIZ}`; `execute` carica via
+  `layer_resolver.path(input_layer, source)` e repository; source iniettata
+  (non hardcoded `"quiz"`); source diversa produce lista distinta.
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_map_to_embeddable_step.py` —
+  `required == {ENRICHED_QUIZ}`, `produced == {EMBEDDABLE_QUIZ}`; delega
+  `QuizQuestionMapper`; dedup sui duplicati esatti.
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_map_to_quiz_entity_step.py` —
+  `required == {EMBEDDABLE_QUIZ}`, `produced == {QUIZ_ENTITIES}`; delega
+  `EmbeddableQuizQuestionMapper.to_entity`; contratto chiavi rispettato.
+- `tests/guidami_ai_patente_ingestor/orchestrators/test_quiz_flows.py` —
+  `build_quiz_indexing_flow(...)` ritorna un `Flow`; `flow.name ==
+  "quiz_indexing"`; `FlowValidator().validate(flow).required_input_keys ==
+  set()`; `validate=True` non solleva (WARNING benigno su `EMBEDDABLE_QUIZ`
+  di `EmbedStep`); ordine dei 5 step verificato.
+
 ### Orchestrators — step generici (SP02)
 
 - `tests/guidami_ai_patente_ingestor/orchestrators/steps/generic/test_embed_step.py` —

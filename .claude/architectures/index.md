@@ -31,5 +31,5 @@ contesto/motivazione completa.
 | `guidami_ai_patente_ingestor/` — data preparation (LLM enrichment) | ✅ implementato |
 | `guidami_ai_patente_ingestor/` — step flowstep generici (SP02: `EmbedStep`, `DbStoreStep`, `StoreRepository`, `context_keys`) | ✅ implementato |
 | `guidami_ai_patente_ingestor/` — knowledge indexing flow per-source (SP03: `LoadEnrichedArticlesStep`, `ChunkArticlesStep`, `EmbedChunksStep`, `StoreChunksStep`, `build_knowledge_indexing_flow`, `KnowledgeChunkStoreRepository.delete_source`, `PostgresClient.execute`) | ✅ implementato |
-| `guidami_ai_patente_ingestor/` — quiz indexing flow (SP04) | ⬜ non avviato |
+| `guidami_ai_patente_ingestor/` — quiz indexing flow (SP04: `LoadEnrichedQuizStep`, `MapToEmbeddableStep`, `MapToQuizEntityStep`, `build_quiz_indexing_flow`, `DbStoreStep` generico truncate full-reload) | ✅ implementato |
 | `guidami_ai_patente/` (app FastAPI) | ⬜ non avviato |

@@ -15,11 +15,10 @@ Pipeline batch attive:
   insert). Eseguito una volta per source: `--source cds`, poi `--source cap`.
 - **quiz bank — preparation** (`QuizDataPreparationPipeline`): vision LLM
   per immagini uniche con `RoadSignDescriberAgent` → layer `enriched`.
-
-Non ancora disponibili (decommissionati i legacy, flow flowstep attesi in SP04/05/06):
-
-- **quiz bank — indexing**: `QuizIndexingPipeline` e relativo entry point
-  `ingest-quiz` rimossi. Saranno reintrodotti come flow flowstep in SP04.
+- **quiz bank — indexing** (flow flowstep SP04): legge `enriched` quiz →
+  mappa in `EmbeddableQuizQuestion` (dedup) → embed → mappa in `QuizQuestion`
+  → `quiz_questions` (truncate full-reload). Entry point CLI non ancora
+  wired (atteso in SP07); `reset_quiz_db.py` resta disponibile.
 
 Dipende da `commons` (modelli, entità, `BaseAgent`, `EmbeddingClient`, `PostgresClient`,
 config condivise).
@@ -71,9 +70,10 @@ src/guidami_ai_patente_ingestor/
                                   #   (EnrichedQuizSubQuestion aggiunge image_description: str | None)
       image_description.py        # ImageDescription(BaseModel, frozen=True) — name: str, description: str
   orchestrators/
-    __init__.py                    # re-esporta build_knowledge_indexing_flow (SP03)
+    __init__.py                    # re-esporta build_knowledge_indexing_flow (SP03), build_quiz_indexing_flow (SP04)
     context_keys.py                # Costanti chiavi FlowContext — vocabolario SP03/04 (additivo)
     knowledge_flows.py             # build_knowledge_indexing_flow(config, ..., source) -> Flow (SP03)
+    quiz_flows.py                  # build_quiz_indexing_flow(config, ...) -> Flow (SP04)
     steps/
       __init__.py                  # docstring package
       generic/
@@ -88,6 +88,11 @@ src/guidami_ai_patente_ingestor/
         chunk_articles_step.py          # ChunkArticlesStep — legge ENRICHED_ARTICLES → CHUNKS
         embed_chunks_step.py            # EmbedChunksStep — embeddita (con filtro repealed) → CHUNKS
         store_chunks_step.py            # StoreChunksStep — delete_source + bulk_insert (per-source sink)
+      quiz/
+        __init__.py                     # re-esporta LoadEnrichedQuizStep, MapToEmbeddableStep, MapToQuizEntityStep
+        load_enriched_quiz_step.py      # LoadEnrichedQuizStep — carica source quiz → ENRICHED_QUIZ
+        map_to_embeddable_step.py       # MapToEmbeddableStep — ENRICHED_QUIZ → EMBEDDABLE_QUIZ (dedup)
+        map_to_quiz_entity_step.py      # MapToQuizEntityStep — EMBEDDABLE_QUIZ → QUIZ_ENTITIES
     knowledge_preparation/
       data_preparation_pipeline.py          # DataPreparationPipeline (clean → contextualize → enriched)
       data_preparation_pipeline_builder.py  # DataPreparationPipelineBuilder
@@ -145,8 +150,10 @@ Risoluzione path: `LayerResolver.path(layer, source)` =
   `KnowledgeChunkStoreRepository` (con `delete_source`).
 - [quiz_pipelines.md](quiz_pipelines.md) — quiz bank: `QuizMainQuestion`/`QuizSubQuestion`,
   `QuizBankRepository`, `QuizQuestionMapper`, `EmbeddableQuizQuestionMapper`,
-  `QuizQuestionStoreRepository`. Il flow di indexing quiz è non disponibile
-  (rimosso in SP03-bis, atteso in SP04).
+  `QuizQuestionStoreRepository`; flow indexing quiz (SP04): step
+  `LoadEnrichedQuizStep`, `MapToEmbeddableStep`, `MapToQuizEntityStep`,
+  factory `build_quiz_indexing_flow` (truncate full-reload, `EmbedStep`
+  generico riusato, cutover CLI pendente in SP07).
 - [config_and_entrypoints.md](config_and_entrypoints.md) — `IngestorConfig`, `LayerResolver`,
   pattern config a due livelli, entry point CLI (incl. `--source` di `ingest-knowledge`),
   convenzioni di logging.

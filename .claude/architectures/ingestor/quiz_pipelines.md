@@ -59,12 +59,70 @@ Per la struttura `db/`/`json/` e la base class `JsonRepository[T]` vedi
   `QuizIndexingPipeline._assign_embeddings` per ottenere le entità da
   passare al repository.
 
-### `orchestrators/quiz_indexing/` — `QuizIndexingPipeline` (rimosso)
+### `orchestrators/steps/quiz/` — step di dominio quiz (SP04)
 
-`QuizIndexingPipeline`, `QuizIndexingPipelineBuilder` e l'entry point
-`quiz_main.py` sono stati rimossi in SP03-bis. Il flow di quiz indexing sarà
-reintrodotto come flow flowstep in SP04. Lo script `ingest-quiz` non è
-disponibile fino ad allora.
+Tre step flowstep domain-specific per il quiz indexing. Vivono in
+`orchestrators/steps/quiz/`, mai in `services/` (colla di orchestrazione, non
+logica di dominio). Delegano ai mapper statici esistenti in `mappers/quiz/`.
+
+- **`LoadEnrichedQuizStep`**: iniettati `name`, `enriched_quiz_bank_repository`,
+  `layer_resolver`, `input_layer: str`, `source: str`.
+  `execute`: chiama `layer_resolver.path(input_layer, source)` +
+  `repository.load(path)` → `put(ENRICHED_QUIZ, list[EnrichedQuizMainQuestion])`.
+  `required=set()`, `produced={ENRICHED_QUIZ}`. La `source` è iniettata (no
+  hardcode `"quiz"`), speculare a `LoadEnrichedArticlesStep` (SP03).
+- **`MapToEmbeddableStep`**: nessuna iniezione di config. `execute`: legge
+  `ENRICHED_QUIZ`, delega `QuizQuestionMapper.from_enriched_quiz_main_questions_to_embeddable_quiz_questions`
+  (dedup interna: 8 duplicati esatti su 7106 sotto-domande → 7098 righe).
+  `required={ENRICHED_QUIZ}`, `produced={EMBEDDABLE_QUIZ}`.
+- **`MapToQuizEntityStep`**: nessuna iniezione di config. `execute`: legge
+  `EMBEDDABLE_QUIZ`, delega `EmbeddableQuizQuestionMapper.to_entity` per ogni
+  elemento. `required={EMBEDDABLE_QUIZ}`, `produced={QUIZ_ENTITIES}`.
+
+Il package `orchestrators/steps/quiz/__init__.py` re-esporta i tre step.
+
+### `orchestrators/quiz_flows.py` — flow factory quiz (SP04)
+
+```python
+def build_quiz_indexing_flow(
+    config: IngestorConfig,
+    layer_resolver: LayerResolver,
+    embedding_client: EmbeddingClient,
+    postgres_client: PostgresClient,
+    validate: bool = False,
+) -> Flow
+```
+
+Catena: `LoadEnrichedQuizStep` → `MapToEmbeddableStep` →
+`EmbedStep(items_key=EMBEDDABLE_QUIZ)` → `MapToQuizEntityStep` →
+`DbStoreStep(items_key=QUIZ_ENTITIES)`.
+
+Re-esportata da `orchestrators/__init__.py` accanto a
+`build_knowledge_indexing_flow`.
+
+**Decisioni:**
+
+- `source` derivata da `config.quiz_indexing.sources[0]`: il quiz bank ha
+  sempre una sola source (`"quiz"`), quindi non c'è parametro `source` esplicito
+  come nel knowledge flow (che è per-source).
+- `input_layer` letto da `config.quiz_indexing.input_layer`.
+- **`DbStoreStep` generico (truncate full-reload)** al posto di uno step
+  custom delete-by-source: il quiz ha una sola source, quindi il
+  `TRUNCATE TABLE quiz_questions` è corretto e sicuro. Divergenza voluta dal
+  `StoreChunksStep` di SP03 (delete-by-source) che serve perché le due source
+  knowledge (`cds`, `cap`) coesistono nella stessa tabella.
+- **`EmbedStep` generico riusato** (con `items_key=EMBEDDABLE_QUIZ`): il quiz
+  non ha il filtro `embed_repealed`, quindi lo step generico è sufficiente senza
+  un dedicato `EmbedQuizStep`. Il WARNING benigno del `FlowValidator`
+  "Produced key overwrites an already available key" (perché `required == produced
+  == {EMBEDDABLE_QUIZ}`) non è un ERROR e non blocca `build(validate=True)`.
+- `QuizQuestionStoreRepository` soddisfa strutturalmente il `StoreRepository`
+  Protocol (già verificato in `test_store_repository.py`): `DbStoreStep` può
+  riceverlo senza modifiche.
+
+**Cutover CLI pendente (SP07):** il flow non è ancora wired a un entry point
+CLI. Lo script `ingest-quiz` e `reset_quiz_db.py` restano nella configurazione
+corrente fino a SP07.
 
 ### `repositories/db/` — `QuizQuestionStoreRepository`
 
