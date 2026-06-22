@@ -1,29 +1,29 @@
 # SP03 — Flow knowledge indexing
 
-> **Stato: ✅ COMPLETATO** (2026-06-22).
+> **Stato: ✅ COMPLETATO** (2026-06-22) — **design PER-SOURCE** (vedi amendment sotto).
+>
+> ⚠️ **Decisione architetturale 2026-06-22**: l'indexing è **per-source, una run per source**
+> (`uv run ingest-knowledge --source cds`, poi `--source cap`). NON carica più cds+cap insieme.
+> Conseguenza vincolante: lo store fa **delete-by-source + insert** (`delete_source`), NON
+> `truncate` dell'intera tabella — altrimenti la seconda run cancellerebbe la prima. Questo
+> supera le parti del corpo qui sotto che parlano di "carica tutte le source in un colpo" e
+> `ARTICLES_BY_SOURCE` (rimossa: l'indexing riusa `ENRICHED_ARTICLES`, lista piatta di una source).
 >
 > **File creati:**
-> - `src/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/__init__.py`
-> - `src/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/load_enriched_articles_step.py`
-> - `src/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/chunk_articles_step.py`
-> - `src/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/embed_chunks_step.py`
-> - `src/guidami_ai_patente_ingestor/orchestrators/knowledge_flows.py`
-> - `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/__init__.py`
-> - `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_load_enriched_articles_step.py`
-> - `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_chunk_articles_step.py`
-> - `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_embed_chunks_step.py`
-> - `tests/guidami_ai_patente_ingestor/orchestrators/test_knowledge_flows.py`
+> - `src/.../orchestrators/steps/knowledge/{load_enriched_articles_step,chunk_articles_step,embed_chunks_step,store_chunks_step}.py` + `__init__.py`
+> - `src/.../orchestrators/knowledge_flows.py`
+> - test corrispondenti in `tests/.../orchestrators/steps/knowledge/` + `tests/.../orchestrators/test_knowledge_flows.py`
 >
-> **File modificati:**
-> - `src/guidami_ai_patente_ingestor/orchestrators/context_keys.py` (aggiunto `ARTICLES_BY_SOURCE`)
-> - `src/guidami_ai_patente_ingestor/orchestrators/__init__.py` (re-export `build_knowledge_indexing_flow`)
-> - `src/guidami_ai_patente_ingestor/configs/pipeline_layer_config.py` (aggiunto `sources: list[str]`)
-> - `src/guidami_ai_patente_ingestor/configs/ingestor_config.py` (valorizzato `sources` per tutte le pipeline)
-> - `configs/ingestor_config.yaml` (aggiunto campo `sources` per tutte le pipeline)
+> **File modificati (incl. refactor per-source):**
+> - `src/commons/clients/postgres_client.py` (nuovo `execute(query, params)` generico)
+> - `src/.../repositories/db/knowledge_chunk_store_repository.py` (`delete_source`; `truncate` mantenuto per `reset-knowledge-db`)
+> - `src/.../orchestrators/context_keys.py` (l'indexing usa `ENRICHED_ARTICLES`; `ARTICLES_BY_SOURCE` rimossa)
+> - `src/.../orchestrators/__init__.py` (re-export `build_knowledge_indexing_flow`)
+> - `src/.../configs/pipeline_layer_config.py` + `ingestor_config.py` + `configs/ingestor_config.yaml` (`sources: list[str]` = catalogo source valide)
 >
-> **Verifiche verdi:** 22 test unit passati (+ 1 integration deselezionato per Postgres assente),
-> pyright 0 errori, ruff clean sui file SP03. `IndexingPipeline`/builder non rimossi.
-> `ENRICHED_ARTICLES` mantenuta. `EmbedStep` generico non toccato.
+> **Verifiche verdi:** unit + integration su Postgres (incl. test chiave "run cap non cancella cds"
+> e idempotenza re-run), pyright 0 errori, ruff clean. `IndexingPipeline`/builder e `main.py` non
+> rimossi (cutover SP07). `EmbedStep` generico non toccato.
 
 ## Scopo singolo
 Ricostruire l'indicizzazione del corpus normativo come **Flow flowstep**: corpus `enriched`
