@@ -48,8 +48,7 @@ class ChunkArticlesStep(Step):
         ]
 
         logger.info(
-            f"Chunked {len(articles)} articles for source '{self._source}' "
-            f"→ {len(chunks)} chunks"
+            f"Chunked {len(articles)} articles for source '{self._source}' → {len(chunks)} chunks"
         )
         context.put(context_keys.CHUNKS, chunks)
 

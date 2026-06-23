@@ -1,4 +1,4 @@
-"""Factory per il flow di knowledge indexing (SP03) — per-source."""
+"""Factory per i flow di knowledge preparation (SP05) e indexing (SP03) — per-source."""
 
 import logging
 from typing import Literal, cast
@@ -6,21 +6,33 @@ from typing import Literal, cast
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.flowstep import Flow, FlowBuilder
 from commons.services.embeddings import EmbeddingService
+from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
     ChunkArticlesStep,
+    CleanArticlesStep,
+    ContextualizeStep,
     EmbedChunksStep,
+    LoadCleanedArticlesStep,
     LoadEnrichedArticlesStep,
+    LoadParsedArticlesStep,
     StoreChunksStep,
+    WriteCleanedStep,
+    WriteEnrichedStep,
 )
 from guidami_ai_patente_ingestor.repositories import (
+    ArticleRepository,
     EnrichedArticleRepository,
     KnowledgeChunkStoreRepository,
 )
 from guidami_ai_patente_ingestor.services import LayerResolver
-from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker
+from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
 
 logger = logging.getLogger(__name__)
+
+# Layer intermedio condiviso dalle due factory di preparation (clean/enrich):
+# non espresso in PipelineLayerConfig (vedi decisione di layer in SP05).
+_CLEANED_LAYER = "cleaned"
 
 
 def build_knowledge_indexing_flow(
@@ -62,9 +74,7 @@ def build_knowledge_indexing_flow(
 
     valid_sources = set(indexing_config.sources)
     if source not in valid_sources:
-        raise ValueError(
-            f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}"
-        )
+        raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
     typed_source = cast(Literal["cds", "cap"], source)
 
     load_step = LoadEnrichedArticlesStep(
@@ -99,6 +109,136 @@ def build_knowledge_indexing_flow(
         .add_step(chunk_step)
         .add_step(embed_step)
         .add_step(store_step)
+        .build(validate=validate)
+    )
+
+    return flow
+
+
+def build_knowledge_cleaning_flow(
+    config: IngestorConfig,
+    layer_resolver: LayerResolver,
+    source: str,
+    validate: bool = False,
+) -> Flow:
+    """Assembla il flow di knowledge cleaning per UNA source (parsed → cleaned).
+
+    Il flow è per-source: va eseguito una volta per source (es. `cds`, poi `cap`).
+    Nessun embed/store: questo flow appartiene allo stadio di preparazione.
+
+    Mappatura step:
+      `LoadParsedArticlesStep` → `CleanArticlesStep` → `WriteCleanedStep`
+
+    Args:
+        config: Configurazione completa dell'ingestor (già caricata all'entry point).
+        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
+        source: Source da pulire; deve appartenere a `config.knowledge_preparation.sources`.
+        validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
+
+    Returns:
+        Flow configurato e pronto per l'esecuzione.
+
+    Raises:
+        ValueError: se `source` non è tra le source valide configurate per la preparation.
+    """
+    preparation_config = config.knowledge_preparation
+
+    valid_sources = set(preparation_config.sources)
+    if source not in valid_sources:
+        raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
+
+    load_step = LoadParsedArticlesStep(
+        "load_parsed_articles",
+        article_repository=ArticleRepository(),
+        layer_resolver=layer_resolver,
+        input_layer=preparation_config.input_layer,
+        source=source,
+    )
+
+    clean_step = CleanArticlesStep("clean_articles", article_cleaner=ArticleCleaner())
+
+    write_step = WriteCleanedStep(
+        "write_cleaned",
+        article_repository=ArticleRepository(),
+        layer_resolver=layer_resolver,
+        output_layer=_CLEANED_LAYER,
+        source=source,
+    )
+
+    flow: Flow = (
+        FlowBuilder("knowledge_cleaning")
+        .add_step(load_step)
+        .add_step(clean_step)
+        .add_step(write_step)
+        .build(validate=validate)
+    )
+
+    return flow
+
+
+def build_knowledge_enrichment_flow(
+    config: IngestorConfig,
+    layer_resolver: LayerResolver,
+    source: str,
+    validate: bool = False,
+) -> Flow:
+    """Assembla il flow di knowledge enrichment per UNA source (cleaned → enriched).
+
+    Il flow è per-source: va eseguito una volta per source (es. `cds`, poi `cap`).
+    Nessun embed/store: questo flow appartiene allo stadio di preparazione.
+
+    Mappatura step:
+      `LoadCleanedArticlesStep` → `ContextualizeStep` → `WriteEnrichedStep`
+
+    Args:
+        config: Configurazione completa dell'ingestor (già caricata all'entry point).
+        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
+        source: Source da arricchire; deve appartenere a `config.knowledge_preparation.sources`.
+        validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
+
+    Returns:
+        Flow configurato e pronto per l'esecuzione.
+
+    Raises:
+        ValueError: se `source` non è tra le source valide configurate per la preparation.
+    """
+    preparation_config = config.knowledge_preparation
+
+    valid_sources = set(preparation_config.sources)
+    if source not in valid_sources:
+        raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
+
+    if preparation_config.output_layer is None:
+        raise ValueError("knowledge_preparation.output_layer is not configured")
+
+    load_step = LoadCleanedArticlesStep(
+        "load_cleaned_articles",
+        article_repository=ArticleRepository(),
+        layer_resolver=layer_resolver,
+        input_layer=_CLEANED_LAYER,
+        source=source,
+    )
+
+    contextualize_step = ContextualizeStep(
+        "contextualize",
+        article_contextualizer_agent=ArticleContextualizerAgent.from_yaml(
+            "article_contextualizer", config.agents_dir
+        ),
+    )
+
+    write_step = WriteEnrichedStep(
+        "write_enriched",
+        enriched_article_repository=EnrichedArticleRepository(),
+        layer_resolver=layer_resolver,
+        output_layer=preparation_config.output_layer,
+        source=source,
+    )
+
+    flow: Flow = (
+        FlowBuilder("knowledge_enrichment")
+        .add_step(load_step)
+        .add_step(contextualize_step)
+        .add_step(write_step)
         .build(validate=validate)
     )
 
