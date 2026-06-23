@@ -1,5 +1,11 @@
 # SP05 — Flow knowledge preparation + runner generico
 
+> **Stato: ✅ COMPLETATO** (2026-06-23). Due flow factory (`build_knowledge_cleaning_flow`,
+> `build_knowledge_enrichment_flow`) + runner `run_preparation` + 6 step di dominio in
+> `orchestrators/steps/knowledge/` + `EnrichedArticleMapper` (`mappers/knowledge/`), implementati
+> su flowstep. Verifiche verdi: 201 test passati (26 nuovi), pyright 0 errori, ruff pulito sui file
+> in scope. CLI/cutover legacy restano fuori scope (SP07).
+
 > ⚠️ **Decisione architetturale 2026-06-22 — PER-SOURCE, una run per source.**
 > Coerente con SP03 (già implementato così): la preparazione gira **una source per esecuzione**
 > via CLI `--source` obbligatoria (`uv run prepare-knowledge --source cds`), **non** un runner che

@@ -1,5 +1,10 @@
 # SP04 — Flow quiz indexing
 
+> **Stato: ✅ COMPLETATO** (2026-06-22). Flow quiz indexing implementato su flowstep
+> (`orchestrators/quiz_flows.py` + `orchestrators/steps/quiz/`), `build_quiz_indexing_flow`
+> re-esportato. Riusa gli step generici `EmbedStep`/`DbStoreStep` (SP02). Test verdi (unit +
+> integration), doc architetturale sincronizzata.
+
 ## Scopo singolo
 Ricostruire l'indicizzazione del quiz bank come **Flow flowstep**: quiz bank `enriched` →
 embeddable → embed → entity → `quiz_questions`. Sostituisce `QuizIndexingPipeline` + builder

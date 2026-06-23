@@ -1,5 +1,9 @@
 # SP03-bis — Stabilizzazione post-rimozione orchestrator legacy
 
+> **Stato: ✅ COMPLETATO** (2026-06-22). Orchestrator legacy rimossi, `ingest-knowledge`
+> ripuntato al flow per-source, test orfani eliminati (`pytest --co` pulito), `[project.scripts]`
+> riallineato. Refactor per-source committato.
+
 > **Tipo:** raccolta di punti aperti da risolvere **prima di SP04**.
 > **Contesto:** dopo SP03 (knowledge indexing **per-source**, ✅ implementato ma **non ancora
 > committato**), gli orchestrator legacy sono stati **rimossi a mano** (`knowledge_indexing/`,
