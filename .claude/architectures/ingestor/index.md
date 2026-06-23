@@ -4,13 +4,19 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 `plans/implement/ingestor.md`,
 `plans/architecture-quiz-bank.md` (pipeline quiz bank, refactor Postgres
 condiviso), `plans/ingest--data-preparation.md`,
-`plans/ingest--agent-and-prompt-provider.md`.
+`plans/ingest--agent-and-prompt-provider.md`,
+`plans/ingest--orchestrator/05-knowledge-preparation-flow.md`.
 
-Pipeline batch attive:
+Pipeline/flow batch attivi:
 
-- **corpus normativo — preparation** (`DataPreparationPipeline`): cleaning +
-  enrichment LLM con `ArticleContextualizerAgent` → layer `enriched`;
-- **corpus normativo — indexing** (flow flowstep per-source): legge `enriched`
+- **corpus normativo — preparation** (flow flowstep per-source, SP05): due
+  flow lineari, `build_knowledge_cleaning_flow` (`parsed` → `cleaned`) e
+  `build_knowledge_enrichment_flow` (`cleaned` → `enriched`, con
+  `ArticleContextualizerAgent`), eseguiti via il runner generico
+  `run_preparation`. Una run per source. Sostituisce la precedente
+  `DataPreparationPipeline` (rimossa). Entry point CLI non ancora wired
+  (atteso in SP07).
+- **corpus normativo — indexing** (flow flowstep per-source, SP03): legge `enriched`
   di UNA source → chunk → embed → `knowledge_chunks` (delete-by-source +
   insert). Eseguito una volta per source: `--source cds`, poi `--source cap`.
 - **quiz bank — preparation** (`QuizDataPreparationPipeline`): vision LLM
@@ -36,6 +42,10 @@ src/guidami_ai_patente_ingestor/
                                    #   paragraphs, url, scraped_at, repealed)
     quiz_bank.py                   # QuizMainQuestion, QuizSubQuestion — layer parsed
   mappers/
+    knowledge/
+      __init__.py                         # re-esporta EnrichedArticleMapper
+      enriched_article_mapper.py          # EnrichedArticleMapper.from_article_to_enriched_article(article, contexts)
+                                          #   -> EnrichedArticle (SP05)
     quiz/
       quiz_question_mapper.py             # QuizQuestionMapper.map(enriched_main_questions)
                                           #   -> list[EmbeddableQuizQuestion]
@@ -70,10 +80,15 @@ src/guidami_ai_patente_ingestor/
                                   #   (EnrichedQuizSubQuestion aggiunge image_description: str | None)
       image_description.py        # ImageDescription(BaseModel, frozen=True) — name: str, description: str
   orchestrators/
-    __init__.py                    # re-esporta build_knowledge_indexing_flow (SP03), build_quiz_indexing_flow (SP04)
-    context_keys.py                # Costanti chiavi FlowContext — vocabolario SP03/04 (additivo)
+    __init__.py                    # re-esporta build_knowledge_indexing_flow (SP03),
+                                   #   build_knowledge_cleaning_flow/build_knowledge_enrichment_flow (SP05),
+                                   #   build_quiz_indexing_flow (SP04), run_preparation (SP05)
+    context_keys.py                # Costanti chiavi FlowContext — vocabolario SP03/04/05 (additivo)
     knowledge_flows.py             # build_knowledge_indexing_flow(config, ..., source) -> Flow (SP03)
+                                   #   build_knowledge_cleaning_flow(config, layer_resolver, source) -> Flow (SP05)
+                                   #   build_knowledge_enrichment_flow(config, layer_resolver, source) -> Flow (SP05)
     quiz_flows.py                  # build_quiz_indexing_flow(config, ...) -> Flow (SP04)
+    preparation_runner.py          # run_preparation(flow, out_path, force) -> None — runner per-source (SP05)
     steps/
       __init__.py                  # docstring package
       generic/
@@ -83,19 +98,22 @@ src/guidami_ai_patente_ingestor/
         embed_step.py              # EmbedStep(Step) — assegna embedding in place, ri-scrive items_key
         db_store_step.py           # DbStoreStep(Step) — sink full-reload (truncate → bulk_insert)
       knowledge/
-        __init__.py                # re-esporta i 4 step knowledge
-        load_enriched_articles_step.py  # LoadEnrichedArticlesStep — carica UNA source → ENRICHED_ARTICLES
-        chunk_articles_step.py          # ChunkArticlesStep — legge ENRICHED_ARTICLES → CHUNKS
-        embed_chunks_step.py            # EmbedChunksStep — embeddita (con filtro repealed) → CHUNKS
-        store_chunks_step.py            # StoreChunksStep — delete_source + bulk_insert (per-source sink)
+        __init__.py                # re-esporta i 10 step knowledge (4 indexing SP03 + 6 preparation SP05)
+        load_enriched_articles_step.py  # LoadEnrichedArticlesStep — carica UNA source → ENRICHED_ARTICLES (SP03)
+        chunk_articles_step.py          # ChunkArticlesStep — legge ENRICHED_ARTICLES → CHUNKS (SP03)
+        embed_chunks_step.py            # EmbedChunksStep — embeddita (con filtro repealed) → CHUNKS (SP03)
+        store_chunks_step.py            # StoreChunksStep — delete_source + bulk_insert (per-source sink) (SP03)
+        load_parsed_articles_step.py    # LoadParsedArticlesStep — carica UNA source → PARSED_ARTICLES (SP05)
+        clean_articles_step.py          # CleanArticlesStep — PARSED_ARTICLES → CLEANED_ARTICLES (SP05)
+        write_cleaned_step.py           # WriteCleanedStep — sink, scrive layer "cleaned" (SP05)
+        load_cleaned_articles_step.py   # LoadCleanedArticlesStep — carica layer "cleaned" → CLEANED_ARTICLES (SP05)
+        contextualize_step.py           # ContextualizeStep — CLEANED_ARTICLES → ENRICHED_ARTICLES (SP05)
+        write_enriched_step.py          # WriteEnrichedStep — sink, scrive layer "enriched" (SP05)
       quiz/
         __init__.py                     # re-esporta LoadEnrichedQuizStep, MapToEmbeddableStep, MapToQuizEntityStep
         load_enriched_quiz_step.py      # LoadEnrichedQuizStep — carica source quiz → ENRICHED_QUIZ
         map_to_embeddable_step.py       # MapToEmbeddableStep — ENRICHED_QUIZ → EMBEDDABLE_QUIZ (dedup)
         map_to_quiz_entity_step.py      # MapToQuizEntityStep — EMBEDDABLE_QUIZ → QUIZ_ENTITIES
-    knowledge_preparation/
-      data_preparation_pipeline.py          # DataPreparationPipeline (clean → contextualize → enriched)
-      data_preparation_pipeline_builder.py  # DataPreparationPipelineBuilder
     quiz_preparation/
       quiz_data_preparation_pipeline.py          # QuizDataPreparationPipeline (dedup → describe → enriched)
       quiz_data_preparation_pipeline_builder.py  # QuizDataPreparationPipelineBuilder
@@ -120,29 +138,35 @@ configs/                            # root del progetto (non sotto src/)
 
 ## Convenzione directory dati
 
-Pipeline a quattro layer su disco, risolti da `LayerResolver`:
+Pipeline/flow a quattro layer su disco, risolti da `LayerResolver`:
 
 - `data/raw/<source>/` — HTML grezzo dello scraper (non toccato da questo
   package).
 - `data/parsed/<source>/...json` — JSON grezzo prodotto dallo scraper, markup
-  normattiva ancora presente. Input di `DataPreparationPipeline` e
-  `QuizDataPreparationPipeline`.
-- `data/cleaned/<source>/...json` — (layer `cleaned`) non più scritto come
-  stadio esplicito: `ArticleCleaner` ora è un intermedio in-memory dentro
-  `DataPreparationPipeline`. Il layer `cleaned` rimane nella configurazione
-  `layers` ma non è prodotto come artefatto disco.
-- `data/enriched/<source>/...json` — (layer `enriched`) output delle pipeline
-  di preparation; input di `IndexingPipeline` e `QuizIndexingPipeline`.
-  Self-contained: articolo pulito + `contexts` per i commi (corpus), o quiz
-  bank + `image_description` per le sotto-domande (quiz).
+  normattiva ancora presente. Input del flow `build_knowledge_cleaning_flow`
+  (corpus, SP05) e di `QuizDataPreparationPipeline` (quiz).
+- `data/cleaned/<source>/...json` — (layer `cleaned`) per il corpus normativo,
+  ricostruito da SP05 come **stadio esplicito su disco**: output del flow
+  `build_knowledge_cleaning_flow` (sink `WriteCleanedStep`), input del flow
+  `build_knowledge_enrichment_flow` (`LoadCleanedArticlesStep`). Il layer
+  `"cleaned"` è una costante privata in `knowledge_flows.py`
+  (`_CLEANED_LAYER`), non un campo di `PipelineLayerConfig`.
+- `data/enriched/<source>/...json` — (layer `enriched`) output del flow di
+  enrichment (corpus) o di `QuizDataPreparationPipeline` (quiz); input
+  dei flow/pipeline di indexing. Self-contained: articolo pulito + `contexts`
+  per i commi (corpus), o quiz bank + `image_description` per le
+  sotto-domande (quiz).
 
 Risoluzione path: `LayerResolver.path(layer, source)` =
 `layers[layer] / sources[source].dir / sources[source].file`.
 
 ## Dettaglio per area
 
-- [data_preparation.md](data_preparation.md) — pipeline di preparation (LLM offline):
-  `DataPreparationPipeline`, `QuizDataPreparationPipeline`, `ArticleContextualizerAgent`,
+- [data_preparation.md](data_preparation.md) — preparation: corpus normativo
+  ricostruito su due flow flowstep per-source (SP05: `build_knowledge_cleaning_flow`,
+  `build_knowledge_enrichment_flow`, `run_preparation`, step `Load*`/`Clean*`/
+  `Write*`/`Contextualize*`, `EnrichedArticleMapper`); quiz bank ancora su
+  `QuizDataPreparationPipeline`. Più `ArticleContextualizerAgent`,
   `RoadSignDescriberAgent`, `EnrichedArticleRepository`, `EnrichedQuizBankRepository`.
 - [knowledge_pipelines.md](knowledge_pipelines.md) — corpus normativo (CdS + CAP):
   `ArticleRepository`, `ArticleCleaner`, `ArticleChunker`, flow per-source

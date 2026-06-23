@@ -1,10 +1,15 @@
 # Ingestor — Pipeline corpus normativo (CdS + CAP)
 
 Riferimento progettazione: `plans/architecture-ingestor.md`,
-`plans/implement/ingestor.md`, `plans/ingest--data-preparation.md`.
+`plans/implement/ingestor.md`, `plans/ingest--data-preparation.md`,
+`plans/ingest--orchestrator/05-knowledge-preparation-flow.md`.
 
-Vedi [data_preparation.md](data_preparation.md) per `DataPreparationPipeline`
-(stadio di cleaning + enrichment LLM che produce il layer `enriched`).
+Questo documento copre l'**indexing** (`enriched` → chunk → embed → DB, SP03).
+Vedi [data_preparation.md](data_preparation.md) per la **preparation**
+(`parsed` → `cleaned` → `enriched`, ricostruita su due flow flowstep per-source
+in SP05: `build_knowledge_cleaning_flow`, `build_knowledge_enrichment_flow`,
+`run_preparation`, step `Load*ArticlesStep`/`CleanArticlesStep`/`Write*Step`/
+`ContextualizeStep`, `EnrichedArticleMapper`).
 Vedi [config_and_entrypoints.md](config_and_entrypoints.md) per `IngestorConfig`,
 `LayerResolver` e gli entry point CLI.
 
@@ -119,6 +124,11 @@ Quattro step flowstep domain-specific per il knowledge indexing. Vivono in
 `orchestrators/steps/knowledge/`, mai in `services/` (la dipendenza va verso
 `commons.flowstep`, non il contrario). Il flow è **per-source**: un'esecuzione
 per source (`cds`, poi `cap`), source iniettata nei singoli step.
+
+Lo stesso package ospita anche i sei step di **preparation** introdotti da
+SP05 (`LoadParsedArticlesStep`, `CleanArticlesStep`, `WriteCleanedStep`,
+`LoadCleanedArticlesStep`, `ContextualizeStep`, `WriteEnrichedStep`) — vedi
+[data_preparation.md](data_preparation.md) per il loro dettaglio.
 
 - **`LoadEnrichedArticlesStep`**: iniettati `EnrichedArticleRepository`,
   `LayerResolver`, `input_layer: str`, `source: str` (singola source della run).

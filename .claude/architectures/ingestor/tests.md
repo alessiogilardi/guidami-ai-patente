@@ -1,7 +1,8 @@
 # Ingestor — Test
 
 Riferimento progettazione: `plans/architecture-ingestor.md`,
-`plans/architecture-quiz-bank.md`, `plans/ingest--data-preparation.md`.
+`plans/architecture-quiz-bank.md`, `plans/ingest--data-preparation.md`,
+`plans/ingest--orchestrator/05-knowledge-preparation-flow.md`.
 
 ## Test
 
@@ -63,17 +64,49 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 
 ### Orchestrators — preparation
 
-- `tests/guidami_ai_patente_ingestor/orchestrators/knowledge_preparation/test_data_preparation_pipeline.py` —
-  unit con `Mock`: clean → contextualize → write enriched; skip se enriched
-  esiste; `force=True` rigenera; articoli `is_repealed` non contestualizzati.
-- `tests/guidami_ai_patente_ingestor/orchestrators/knowledge_preparation/test_data_preparation_pipeline_builder.py` —
-  path parsed mancanti → `FileNotFoundError` aggregato.
 - `tests/guidami_ai_patente_ingestor/orchestrators/quiz_preparation/test_quiz_data_preparation_pipeline.py` —
   unit con `Mock`: solo i filename unici descritti; enriched bank con
   `image_description` inline; immagine mancante → warning + `None`;
   `force=True`.
 - `tests/guidami_ai_patente_ingestor/orchestrators/quiz_preparation/test_quiz_data_preparation_pipeline_builder.py` —
   path enriched mancante → `FileNotFoundError`.
+
+### Orchestrators — knowledge preparation flow + runner (SP05)
+
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_load_parsed_articles_step.py` —
+  `required == set()`, `produced == {PARSED_ARTICLES}`; `execute` carica la
+  source iniettata via `layer_resolver.path(input_layer, source)`; source
+  diversa produce lista distinta.
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_clean_articles_step.py` —
+  `required == {PARSED_ARTICLES}`, `produced == {CLEANED_ARTICLES}`; delega a
+  `ArticleCleaner.clean` per ogni articolo.
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_write_cleaned_step.py` —
+  `required == {CLEANED_ARTICLES}`, `produced == set()`; `execute` risolve il
+  path sul layer `cleaned` e chiama `ArticleRepository.write`.
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_load_cleaned_articles_step.py` —
+  `required == set()`, `produced == {CLEANED_ARTICLES}`; carica dal layer
+  `cleaned` iniettato.
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_contextualize_step.py` —
+  `required == {CLEANED_ARTICLES}`, `produced == {ENRICHED_ARTICLES}`; delega
+  `ArticleContextualizerAgent.contextualize` + `EnrichedArticleMapper` per ogni
+  articolo.
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_write_enriched_step.py` —
+  `required == {ENRICHED_ARTICLES}`, `produced == set()`; `execute` risolve il
+  path sul layer `enriched` e chiama `EnrichedArticleRepository.write`.
+- `tests/guidami_ai_patente_ingestor/mappers/knowledge/test_enriched_article_mapper.py` —
+  `from_article_to_enriched_article` copia tutti i campi comuni e imposta
+  `contexts`.
+- `tests/guidami_ai_patente_ingestor/orchestrators/test_knowledge_flows.py` —
+  (estensione SP05, stesso file di SP03) `build_knowledge_cleaning_flow`/
+  `build_knowledge_enrichment_flow` ritornano un `Flow` con il nome corretto
+  (`knowledge_cleaning`/`knowledge_enrichment`); source non valida →
+  `ValueError`; `output_layer` non configurato → `ValueError`;
+  `FlowValidator().validate(flow).required_input_keys == set()` per entrambi;
+  `validate=True` non solleva.
+- `tests/guidami_ai_patente_ingestor/orchestrators/test_preparation_runner.py` —
+  `run_preparation`: skip (`flow.run` non chiamato) se `out_path` esiste e
+  `force=False`; esegue `flow.run()` se `out_path` non esiste; esegue
+  `flow.run()` con `force=True` anche se `out_path` esiste.
 
 ### Orchestrators — step knowledge (SP03)
 
