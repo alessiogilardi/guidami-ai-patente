@@ -4,7 +4,7 @@ from pathlib import Path
 from unittest.mock import MagicMock
 
 from commons.flowstep import FlowContext
-from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizMainQuestion
+from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.quiz import LoadEnrichedQuizStep
 from guidami_ai_patente_ingestor.repositories import EnrichedQuizBankRepository
@@ -17,8 +17,8 @@ def _make_layer_resolver() -> LayerResolver:
     return resolver
 
 
-def _make_main_question(question_id: int) -> EnrichedQuizMainQuestion:
-    return MagicMock(spec=EnrichedQuizMainQuestion, question_id=question_id)
+def _make_main_question(question_id: int) -> EnrichedQuizModel:
+    return MagicMock(spec=EnrichedQuizModel, question_id=question_id)
 
 
 def test_required_keys_is_empty_set() -> None:
@@ -45,7 +45,7 @@ def test_execute_loads_source_and_puts_list_in_context() -> None:
     context = FlowContext()
     step.execute(context)
 
-    result: list[EnrichedQuizMainQuestion] = context.get(context_keys.ENRICHED_QUIZ)
+    result: list[EnrichedQuizModel] = context.get(context_keys.ENRICHED_QUIZ)
     assert result is questions
 
 

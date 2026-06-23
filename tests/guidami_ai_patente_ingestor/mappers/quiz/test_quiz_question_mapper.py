@@ -1,8 +1,8 @@
 from guidami_ai_patente_ingestor.mappers.quiz import QuizQuestionMapper
 from guidami_ai_patente_ingestor.models.quiz import (
-    EmbeddableQuizQuestion,
-    EnrichedQuizMainQuestion,
-    EnrichedQuizSubQuestion,
+    EmbeddableQuizModel,
+    EnrichedQuizItemModel,
+    EnrichedQuizModel,
 )
 
 _map_one = QuizQuestionMapper.from_enriched_quiz_sub_question_to_embeddable_quiz_question
@@ -10,11 +10,9 @@ _map_many = QuizQuestionMapper.from_enriched_quiz_main_questions_to_embeddable_q
 
 
 def _main_question(
-    question_id: int, topic: str, sub_questions: list[EnrichedQuizSubQuestion]
-) -> EnrichedQuizMainQuestion:
-    return EnrichedQuizMainQuestion(
-        question_id=question_id, topic=topic, sub_questions=sub_questions
-    )
+    question_id: int, topic: str, sub_questions: list[EnrichedQuizItemModel]
+) -> EnrichedQuizModel:
+    return EnrichedQuizModel(question_id=question_id, topic=topic, sub_questions=sub_questions)
 
 
 def _sub_question(
@@ -23,8 +21,8 @@ def _sub_question(
     correct_answer: bool,
     image: str | None = None,
     image_description: str | None = None,
-) -> EnrichedQuizSubQuestion:
-    return EnrichedQuizSubQuestion(
+) -> EnrichedQuizItemModel:
+    return EnrichedQuizItemModel(
         number=number,
         text=text,
         correct_answer=correct_answer,
@@ -42,7 +40,7 @@ def test_map_one_copies_all_fields_from_sub_and_parent() -> None:
 
     result = _map_one(sub, parent)
 
-    assert isinstance(result, EmbeddableQuizQuestion)
+    assert isinstance(result, EmbeddableQuizModel)
     assert result.number == "1"
     assert result.question_id == 100
     assert result.topic == "Segnaletica"
@@ -89,7 +87,7 @@ def test_map_many_denormalizes_question_id_and_topic_onto_each_row() -> None:
     questions = _map_many(main_questions)
 
     assert len(questions) == 1
-    assert isinstance(questions[0], EmbeddableQuizQuestion)
+    assert isinstance(questions[0], EmbeddableQuizModel)
     assert questions[0].question_id == 100
     assert questions[0].topic == "Segnaletica"
 

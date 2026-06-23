@@ -4,7 +4,7 @@ import logging
 from typing import cast
 
 from commons.flowstep import FlowContext, Step
-from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizMainQuestion
+from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.repositories import EnrichedQuizBankRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 class LoadEnrichedQuizStep(Step):
     """Carica il quiz bank enriched da disco e lo espone nel context.
 
-    Produce `ENRICHED_QUIZ`, una lista di `EnrichedQuizMainQuestion`. Non
+    Produce `ENRICHED_QUIZ`, una lista di `EnrichedQuizModel`. Non
     richiede chiavi in input: è il primo step del flow di quiz indexing.
     """
 
@@ -49,7 +49,7 @@ class LoadEnrichedQuizStep(Step):
             context: Shared pipeline context.
         """
         path = self._layer_resolver.path(self._input_layer, self._source)
-        questions = cast(list[EnrichedQuizMainQuestion], self._repository.load(path))
+        questions = cast(list[EnrichedQuizModel], self._repository.load(path))
         logger.info(
             f"Loaded {len(questions)} enriched quiz main questions for source '{self._source}'"
         )

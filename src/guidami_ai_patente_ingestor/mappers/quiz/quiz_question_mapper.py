@@ -2,35 +2,35 @@ import logging
 from pathlib import PurePosixPath
 
 from guidami_ai_patente_ingestor.models.quiz import (
-    EmbeddableQuizQuestion,
-    EnrichedQuizMainQuestion,
-    EnrichedQuizSubQuestion,
+    EmbeddableQuizModel,
+    EnrichedQuizItemModel,
+    EnrichedQuizModel,
 )
 
 logger = logging.getLogger(__name__)
 
 
 class QuizQuestionMapper:
-    """Trasforma il quiz bank enriched in `EmbeddableQuizQuestion`.
+    """Trasforma il quiz bank enriched in `EmbeddableQuizModel`.
 
     Tutti i metodi sono statici: la classe è priva di stato e di dipendenze iniettate.
     """
 
     @staticmethod
     def from_enriched_quiz_sub_question_to_embeddable_quiz_question(
-        sub: EnrichedQuizSubQuestion,
-        parent: EnrichedQuizMainQuestion,
-    ) -> EmbeddableQuizQuestion:
-        """Mappa una sotto-domanda enriched in `EmbeddableQuizQuestion`.
+        sub: EnrichedQuizItemModel,
+        parent: EnrichedQuizModel,
+    ) -> EmbeddableQuizModel:
+        """Mappa una sotto-domanda enriched in `EmbeddableQuizModel`.
 
         Args:
             sub: La sotto-domanda da mappare.
             parent: La domanda madre che fornisce `question_id` e `topic`.
 
         Returns:
-            `EmbeddableQuizQuestion` pronto per il calcolo dell'embedding.
+            `EmbeddableQuizModel` pronto per il calcolo dell'embedding.
         """
-        return EmbeddableQuizQuestion(
+        return EmbeddableQuizModel(
             number=sub.number,
             question_id=parent.question_id,
             topic=parent.topic,
@@ -42,9 +42,9 @@ class QuizQuestionMapper:
 
     @staticmethod
     def from_enriched_quiz_main_questions_to_embeddable_quiz_questions(
-        main_questions: list[EnrichedQuizMainQuestion],
-    ) -> list[EmbeddableQuizQuestion]:
-        """Appiattisce le domande madri in `EmbeddableQuizQuestion`, deduplicando.
+        main_questions: list[EnrichedQuizModel],
+    ) -> list[EmbeddableQuizModel]:
+        """Appiattisce le domande madri in `EmbeddableQuizModel`, deduplicando.
 
         Un duplicato esatto è identificato dalla tripla (testo normalizzato,
         risposta corretta, identità immagine).
@@ -53,9 +53,9 @@ class QuizQuestionMapper:
             main_questions: Domande madri del quiz bank enriched.
 
         Returns:
-            Lista di `EmbeddableQuizQuestion` deduplicata, pronta per l'embedding.
+            Lista di `EmbeddableQuizModel` deduplicata, pronta per l'embedding.
         """
-        questions: list[EmbeddableQuizQuestion] = []
+        questions: list[EmbeddableQuizModel] = []
         seen: set[tuple[str, bool, str | None]] = set()
 
         for main_question in main_questions:

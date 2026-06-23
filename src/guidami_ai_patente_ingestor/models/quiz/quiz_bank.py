@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class QuizSubQuestion(BaseModel):
+class QuizBankItemModel(BaseModel):
     """Sotto-domanda del quiz bank, come da JSON sorgente."""
 
     number: str
@@ -10,9 +10,9 @@ class QuizSubQuestion(BaseModel):
     image: str | None = None
 
 
-class QuizMainQuestion(BaseModel):
+class QuizBankModel(BaseModel):
     """Domanda madre del quiz bank, come da JSON sorgente."""
 
     question_id: int
     topic: str
-    sub_questions: list[QuizSubQuestion]
+    sub_questions: list[QuizBankItemModel]

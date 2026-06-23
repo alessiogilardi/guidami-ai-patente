@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class EmbeddableQuizQuestion(BaseModel):
+class EmbeddableQuizModel(BaseModel):
     """Modello intermedio per il calcolo dell'embedding di una sotto-domanda.
 
     Contiene `image_description` (non persistita in DB) e `embedded_text`

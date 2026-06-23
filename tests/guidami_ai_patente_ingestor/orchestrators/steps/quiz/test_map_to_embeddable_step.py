@@ -4,19 +4,19 @@ from unittest.mock import MagicMock, patch
 
 from commons.flowstep import FlowContext
 from guidami_ai_patente_ingestor.models.quiz import (
-    EmbeddableQuizQuestion,
-    EnrichedQuizMainQuestion,
+    EmbeddableQuizModel,
+    EnrichedQuizModel,
 )
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.quiz import MapToEmbeddableStep
 
 
-def _make_main_question(question_id: int) -> EnrichedQuizMainQuestion:
-    return MagicMock(spec=EnrichedQuizMainQuestion, question_id=question_id)
+def _make_main_question(question_id: int) -> EnrichedQuizModel:
+    return MagicMock(spec=EnrichedQuizModel, question_id=question_id)
 
 
-def _make_embeddable(number: str) -> EmbeddableQuizQuestion:
-    return MagicMock(spec=EmbeddableQuizQuestion, number=number)
+def _make_embeddable(number: str) -> EmbeddableQuizModel:
+    return MagicMock(spec=EmbeddableQuizModel, number=number)
 
 
 def test_required_keys_contains_enriched_quiz() -> None:
@@ -53,7 +53,7 @@ def test_execute_delegates_to_quiz_question_mapper() -> None:
 def test_execute_produces_correct_number_of_embeddable_items() -> None:
     """Verifica che lo step non filtri né duplchi gli item restituiti dal mapper."""
     embeddable_questions = [_make_embeddable(str(i)) for i in range(5)]
-    main_questions: list[EnrichedQuizMainQuestion] = []
+    main_questions: list[EnrichedQuizModel] = []
 
     context = FlowContext({context_keys.ENRICHED_QUIZ: main_questions})
 

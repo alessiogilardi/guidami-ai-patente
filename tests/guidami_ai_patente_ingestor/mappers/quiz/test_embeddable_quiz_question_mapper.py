@@ -1,9 +1,9 @@
 from commons.entities.quiz import QuizQuestion
 from guidami_ai_patente_ingestor.mappers.quiz import EmbeddableQuizQuestionMapper
-from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizQuestion
+from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel
 
 
-def _embeddable(**kwargs) -> EmbeddableQuizQuestion:
+def _embeddable(**kwargs) -> EmbeddableQuizModel:
     defaults = dict(
         number="1",
         question_id=100,
@@ -14,7 +14,7 @@ def _embeddable(**kwargs) -> EmbeddableQuizQuestion:
         image_description="Segnale di stop.",
         embedding=[0.1, 0.2, 0.3],
     )
-    return EmbeddableQuizQuestion(**{**defaults, **kwargs})
+    return EmbeddableQuizModel(**{**defaults, **kwargs})
 
 
 def test_to_entity_copies_all_quiz_question_fields() -> None:

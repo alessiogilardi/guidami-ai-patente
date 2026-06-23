@@ -1,11 +1,12 @@
-from guidami_ai_patente_ingestor.entities import QuizMainQuestion
+from guidami_ai_patente_ingestor.models.quiz import QuizBankModel
 
 from ._json_repository import JsonRepository
 
 
-class QuizBankRepository(JsonRepository[QuizMainQuestion]):
-    """Nessun __init__ necessario! JsonRepository capirà da solo
-    che deve usare `Article` leggendo le parentesi quadre.
+class QuizBankRepository(JsonRepository[QuizBankModel]):
+    """Repository di lettura del quiz bank sorgente da JSON.
+
+    `JsonRepository` deduce il tipo degli item dal parametro generico.
     """
 
     pass

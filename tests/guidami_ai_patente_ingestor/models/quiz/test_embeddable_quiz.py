@@ -1,7 +1,7 @@
-from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizQuestion
+from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel
 
 
-def _question(**kwargs) -> EmbeddableQuizQuestion:
+def _question(**kwargs) -> EmbeddableQuizModel:
     defaults = dict(
         number="1",
         question_id=100,
@@ -9,7 +9,7 @@ def _question(**kwargs) -> EmbeddableQuizQuestion:
         text="Il segnale raffigurato preavvisa un incrocio.",
         correct_answer=True,
     )
-    return EmbeddableQuizQuestion(**{**defaults, **kwargs})
+    return EmbeddableQuizModel(**{**defaults, **kwargs})
 
 
 def test_embeddable_quiz_question_defaults_image_fields_to_none() -> None:

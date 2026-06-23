@@ -3,7 +3,7 @@ import pytest
 from commons.clients import EmbeddingClient
 from commons.entities.knowledge import KnowledgeChunk
 from commons.services.embeddings import Embeddable, Embedded, EmbeddingService
-from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizQuestion
+from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel
 
 
 class _RecordingFakeClient(EmbeddingClient):
@@ -86,7 +86,7 @@ class TestEmbeddingService:
         assert _accepts_embeddable(chunk) == chunk.embedded_text
 
     def test_protocol_conformance_embeddable_quiz_question(self) -> None:
-        question = EmbeddableQuizQuestion(
+        question = EmbeddableQuizModel(
             number="1",
             question_id=1,
             topic="topico",

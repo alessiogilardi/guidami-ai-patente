@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class EnrichedQuizSubQuestion(BaseModel):
+class EnrichedQuizItemModel(BaseModel):
     """Sotto-domanda del quiz bank enriched, con `image_description` inline."""
 
     number: str
@@ -11,9 +11,9 @@ class EnrichedQuizSubQuestion(BaseModel):
     image_description: str | None = None
 
 
-class EnrichedQuizMainQuestion(BaseModel):
+class EnrichedQuizModel(BaseModel):
     """Domanda madre del quiz bank enriched."""
 
     question_id: int
     topic: str
-    sub_questions: list[EnrichedQuizSubQuestion]
+    sub_questions: list[EnrichedQuizItemModel]

@@ -4,13 +4,13 @@ from unittest.mock import MagicMock, patch
 
 from commons.entities.quiz import QuizQuestion
 from commons.flowstep import FlowContext
-from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizQuestion
+from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.quiz import MapToQuizEntityStep
 
 
-def _make_embeddable(number: str) -> EmbeddableQuizQuestion:
-    return MagicMock(spec=EmbeddableQuizQuestion, number=number)
+def _make_embeddable(number: str) -> EmbeddableQuizModel:
+    return MagicMock(spec=EmbeddableQuizModel, number=number)
 
 
 def _make_quiz_question(number: str) -> QuizQuestion:

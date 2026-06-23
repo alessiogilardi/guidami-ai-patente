@@ -1,8 +1,8 @@
 from pathlib import Path
 
 from guidami_ai_patente_ingestor.models.quiz import (
-    EnrichedQuizMainQuestion,
-    EnrichedQuizSubQuestion,
+    EnrichedQuizItemModel,
+    EnrichedQuizModel,
 )
 from guidami_ai_patente_ingestor.repositories import EnrichedQuizBankRepository
 
@@ -10,12 +10,12 @@ from guidami_ai_patente_ingestor.repositories import EnrichedQuizBankRepository
 def _main_question(
     question_id: int = 1,
     image_description: str | None = None,
-) -> EnrichedQuizMainQuestion:
-    return EnrichedQuizMainQuestion(
+) -> EnrichedQuizModel:
+    return EnrichedQuizModel(
         question_id=question_id,
         topic="Segnaletica",
         sub_questions=[
-            EnrichedQuizSubQuestion(
+            EnrichedQuizItemModel(
                 number="1",
                 text="Domanda di esempio.",
                 correct_answer=True,
