@@ -27,8 +27,8 @@ def test_produced_keys_contains_quiz_entities() -> None:
     assert step.get_produced_keys() == {context_keys.QUIZ_ENTITIES}
 
 
-def test_execute_delegates_to_embeddable_quiz_question_mapper() -> None:
-    """Lo step chiama EmbeddableQuizQuestionMapper.to_entity per ogni item."""
+def test_execute_delegates_to_quiz_mapper() -> None:
+    """Lo step chiama QuizMapper.from_embeddable_to_quiz_question per ogni item."""
     embeddables = [_make_embeddable("001"), _make_embeddable("002")]
     entities = [_make_quiz_question("001"), _make_quiz_question("002")]
 
@@ -36,7 +36,7 @@ def test_execute_delegates_to_embeddable_quiz_question_mapper() -> None:
 
     with patch(
         "guidami_ai_patente_ingestor.orchestrators.steps.quiz.map_to_quiz_entity_step"
-        ".EmbeddableQuizQuestionMapper.to_entity",
+        ".QuizMapper.from_embeddable_to_quiz_question",
         side_effect=entities,
     ) as mock_mapper:
         step = MapToQuizEntityStep("map_to_quiz_entity")
@@ -59,7 +59,7 @@ def test_execute_produces_entity_list_same_length_as_input() -> None:
 
     with patch(
         "guidami_ai_patente_ingestor.orchestrators.steps.quiz.map_to_quiz_entity_step"
-        ".EmbeddableQuizQuestionMapper.to_entity",
+        ".QuizMapper.from_embeddable_to_quiz_question",
         side_effect=entities,
     ):
         step = MapToQuizEntityStep("map_to_quiz_entity")
