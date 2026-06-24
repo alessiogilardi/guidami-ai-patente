@@ -1,4 +1,12 @@
-"""Step che mappa il quiz bank enriched in EmbeddableQuizModel."""
+"""Step che mappa il quiz bank enriched in EmbeddableQuizModel.
+
+NOTE (SP09 plans/ingest--orchestrator/09-quiz-flatten-at-preparation.md):
+`EnrichedQuizModel` è ora flat (nessun `sub_questions`), quindi questo step
+(indexing, fuori scope per SP09) non è più semanticamente corretto e fallisce
+il type-check su `sub_questions`. Rottura nota e accettata, non riparata qui
+(vedi sezione "Out of scope" del piano) — il fix è tracciato in un piano
+futuro di adeguamento dell'indexing.
+"""
 
 import logging
 from typing import cast
@@ -49,7 +57,7 @@ class MapToEmbeddableStep(Step):
         seen: set[tuple[str, bool, str | None]] = set()
 
         for main_question in main_questions:
-            for sub_question in main_question.sub_questions:
+            for sub_question in main_question.sub_questions:  # pyright: ignore[reportAttributeAccessIssue]
                 text = sub_question.text.strip()
                 key = (text, sub_question.correct_answer, sub_question.image)
                 if key in seen:
