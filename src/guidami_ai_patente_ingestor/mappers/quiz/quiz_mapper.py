@@ -6,6 +6,8 @@ from guidami_ai_patente_ingestor.models.quiz import (
     EmbeddableQuizModel,
     EnrichedQuizItemModel,
     EnrichedQuizModel,
+    QuizBankItemModel,
+    QuizBankModel,
 )
 
 logger = logging.getLogger(__name__)
@@ -64,6 +66,44 @@ class QuizMapper:
             correct_answer=model.correct_answer,
             image_filename=model.image_filename,
             embedding=model.embedding,
+        )
+
+    @staticmethod
+    def from_quiz_bank_item_to_enriched(item: QuizBankItemModel) -> EnrichedQuizItemModel:
+        """Mappa una sotto-domanda sorgente in `EnrichedQuizItemModel` (base-map).
+
+        Args:
+            item: La sotto-domanda sorgente da mappare.
+
+        Returns:
+            `EnrichedQuizItemModel` con `image_description=None` (da popolare
+            dagli enricher).
+        """
+        return EnrichedQuizItemModel(
+            number=item.number,
+            text=item.text,
+            correct_answer=item.correct_answer,
+            image=item.image,
+            image_description=None,
+        )
+
+    @staticmethod
+    def from_quiz_bank_to_enriched(model: QuizBankModel) -> EnrichedQuizModel:
+        """Mappa una domanda madre sorgente in `EnrichedQuizModel` (base-map).
+
+        Args:
+            model: La domanda madre sorgente da mappare.
+
+        Returns:
+            `EnrichedQuizModel` con tutte le sotto-domande mappate via
+            `from_quiz_bank_item_to_enriched`.
+        """
+        return EnrichedQuizModel(
+            question_id=model.question_id,
+            topic=model.topic,
+            sub_questions=[
+                QuizMapper.from_quiz_bank_item_to_enriched(item) for item in model.sub_questions
+            ],
         )
 
     @staticmethod
