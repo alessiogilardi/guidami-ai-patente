@@ -3,6 +3,11 @@
 Sostituisce i 4 test per-sottoclasse (ArticleRepository, EnrichedArticleRepository,
 QuizBankRepository, EnrichedQuizBankRepository) con un unico test parametrizzato
 che passa per ``JsonRepository.get_instance(Model)``.
+
+NOTE (SP09 plans/ingest--orchestrator/09-quiz-flatten-at-preparation.md): i modelli
+quiz `QuizBankModel`/`QuizBankItemModel` sono rinominati in `ParsedQuizModel`/
+`ParsedQuizItemModel` (nested, layer "parsed"); `EnrichedQuizModel` è ora flat
+(niente più `EnrichedQuizItemModel`/`sub_questions`).
 """
 
 import json
@@ -13,10 +18,9 @@ import pytest
 from guidami_ai_patente_ingestor.entities import Article
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
 from guidami_ai_patente_ingestor.models.quiz import (
-    EnrichedQuizItemModel,
     EnrichedQuizModel,
-    QuizBankItemModel,
-    QuizBankModel,
+    ParsedQuizItemModel,
+    ParsedQuizModel,
 )
 from guidami_ai_patente_ingestor.repositories import JsonRepository
 
@@ -53,12 +57,12 @@ def _enriched_article(number: str = "1") -> EnrichedArticle:
     )
 
 
-def _quiz_bank(question_id: int = 100) -> QuizBankModel:
-    return QuizBankModel(
+def _parsed_quiz(question_id: int = 100) -> ParsedQuizModel:
+    return ParsedQuizModel(
         question_id=question_id,
         topic="Segnaletica",
         sub_questions=[
-            QuizBankItemModel(
+            ParsedQuizItemModel(
                 number="1",
                 text="Domanda?",
                 correct_answer=True,
@@ -75,15 +79,11 @@ def _enriched_quiz(
     return EnrichedQuizModel(
         question_id=question_id,
         topic="Segnaletica",
-        sub_questions=[
-            EnrichedQuizItemModel(
-                number="1",
-                text="Domanda?",
-                correct_answer=True,
-                image="img.jpeg",
-                image_description=image_description,
-            ),
-        ],
+        number="1",
+        text="Domanda?",
+        correct_answer=True,
+        image="img.jpeg",
+        image_description=image_description,
     )
 
 
@@ -94,7 +94,7 @@ def _enriched_quiz(
 ROUND_TRIP_CASES = [
     pytest.param(_article, Article, id="Article"),
     pytest.param(_enriched_article, EnrichedArticle, id="EnrichedArticle"),
-    pytest.param(_quiz_bank, QuizBankModel, id="QuizBankModel"),
+    pytest.param(_parsed_quiz, ParsedQuizModel, id="ParsedQuizModel"),
     pytest.param(_enriched_quiz, EnrichedQuizModel, id="EnrichedQuizModel"),
 ]
 
@@ -186,12 +186,12 @@ def test_article_load_from_cap_sample_repealed_and_empty_text() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Fixture-based field mapping: QuizBankModel ← quiz_bank_sample.json
+# Fixture-based field mapping: ParsedQuizModel ← quiz_bank_sample.json
 # ---------------------------------------------------------------------------
 
 
-def test_quiz_bank_load_from_sample() -> None:
-    repo = JsonRepository.get_instance(QuizBankModel)
+def test_parsed_quiz_load_from_sample() -> None:
+    repo = JsonRepository.get_instance(ParsedQuizModel)
     main_questions = repo.load(FIXTURES_DIR / "quiz_bank_sample.json")
 
     assert len(main_questions) == 2
@@ -206,7 +206,7 @@ def test_quiz_bank_load_from_sample() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Round-trip None for EnrichedQuizModel.sub_questions[].image_description
+# Round-trip None for EnrichedQuizModel.image_description
 # ---------------------------------------------------------------------------
 
 
@@ -216,19 +216,15 @@ def test_enriched_quiz_round_trip_none_image_description(tmp_path: Path) -> None
         EnrichedQuizModel(
             question_id=1,
             topic="Segnaletica",
-            sub_questions=[
-                EnrichedQuizItemModel(
-                    number="1",
-                    text="Domanda?",
-                    correct_answer=True,
-                    image="img.jpeg",
-                    image_description=None,
-                ),
-            ],
+            number="1",
+            text="Domanda?",
+            correct_answer=True,
+            image="img.jpeg",
+            image_description=None,
         )
     ]
     repo = JsonRepository.get_instance(EnrichedQuizModel)
     repo.write(questions, path)
     loaded = repo.load(path)
 
-    assert loaded[0].sub_questions[0].image_description is None
+    assert loaded[0].image_description is None
