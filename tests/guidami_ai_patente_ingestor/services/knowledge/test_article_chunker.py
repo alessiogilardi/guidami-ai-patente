@@ -1,14 +1,18 @@
 from pathlib import Path
 
+from guidami_ai_patente_ingestor.entities import Article
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
-from guidami_ai_patente_ingestor.repositories import ArticleRepository
+from guidami_ai_patente_ingestor.repositories import JsonRepository
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
 
 FIXTURES_DIR = Path(__file__).parents[2] / "fixtures"
 
 
+_article_repo = JsonRepository.get_instance(Article)
+
+
 def _load_cds() -> dict[str, EnrichedArticle]:
-    articles = ArticleRepository().load(FIXTURES_DIR / "cds_sample.json")
+    articles = _article_repo.load(FIXTURES_DIR / "cds_sample.json")
     cleaned = {article.number: ArticleCleaner().clean(article) for article in articles}
     return {
         number: EnrichedArticle(
@@ -25,7 +29,7 @@ def _load_cds() -> dict[str, EnrichedArticle]:
 
 
 def _load_cap() -> dict[str, EnrichedArticle]:
-    articles = ArticleRepository().load(FIXTURES_DIR / "cap_sample.json")
+    articles = _article_repo.load(FIXTURES_DIR / "cap_sample.json")
     cleaned = {article.number: ArticleCleaner().clean(article) for article in articles}
     return {
         number: EnrichedArticle(

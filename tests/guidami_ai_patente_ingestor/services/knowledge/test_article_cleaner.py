@@ -1,13 +1,14 @@
 from pathlib import Path
 
-from guidami_ai_patente_ingestor.repositories import ArticleRepository
+from guidami_ai_patente_ingestor.entities import Article
+from guidami_ai_patente_ingestor.repositories import JsonRepository
 from guidami_ai_patente_ingestor.services.knowledge import ArticleCleaner
 
 FIXTURES_DIR = Path(__file__).parents[2] / "fixtures"
 
 
 def _load_cds() -> dict[str, object]:
-    articles = ArticleRepository().load(FIXTURES_DIR / "cds_sample.json")
+    articles = JsonRepository.get_instance(Article).load(FIXTURES_DIR / "cds_sample.json")
     return {article.number: ArticleCleaner().clean(article) for article in articles}
 
 
