@@ -11,8 +11,3 @@ class QuizQuestion(BaseModel):
     correct_answer: bool
     image_filename: str | None = None
     embedding: list[float] | None = None
-
-    @property
-    def embedded_text(self) -> str:
-        """Testo usato per il calcolo dell'embedding (topic + testo)."""
-        return f"{self.topic} {self.text}"
