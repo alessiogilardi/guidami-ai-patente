@@ -1,4 +1,4 @@
-"""Factory per i flow di quiz indexing (SP04) e quiz preparation (SP06)."""
+"""Factory per i flow di quiz indexing (SP04) e quiz preparation (SP06, esteso da SP09)."""
 
 import logging
 
@@ -8,7 +8,11 @@ from commons.services.embeddings import EmbeddingService
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.mappers.quiz import QuizMapper
-from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel, QuizBankModel
+from guidami_ai_patente_ingestor.models.quiz import (
+    CleanedQuizModel,
+    EnrichedQuizModel,
+    ParsedQuizModel,
+)
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
     DbStoreStep,
@@ -19,6 +23,7 @@ from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
 )
 from guidami_ai_patente_ingestor.orchestrators.steps.quiz import (
     EnrichQuizStep,
+    FlattenQuizStep,
     MapToEmbeddableStep,
 )
 from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
@@ -29,6 +34,10 @@ from guidami_ai_patente_ingestor.services.quiz.enrichers import (
 )
 
 logger = logging.getLogger(__name__)
+
+# Layer intermedio condiviso dalle due factory di preparation (clean/enrich):
+# non espresso in PipelineLayerConfig (vedi decisione di layer in SP05, replicata da SP09).
+_CLEANED_LAYER = "cleaned"
 
 
 def build_quiz_indexing_flow(
@@ -107,12 +116,67 @@ def build_quiz_indexing_flow(
     return flow
 
 
-def build_quiz_preparation_flow(
+def build_quiz_cleaning_flow(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
     validate: bool = False,
 ) -> Flow:
-    """Assembla il flow di quiz preparation (quiz bank cleaned → enriched).
+    """Assembla il flow di quiz cleaning (parsed → cleaned, flatten+dedup).
+
+    Nessun embed/store: questo flow appartiene allo stadio di preparazione. Il
+    quiz bank ha una sola source (`"quiz"`), derivata da
+    `config.quiz_preparation.sources[0]`.
+
+    Mappatura step:
+      `LoadJsonStep` → `FlattenQuizStep` → `WriteJsonStep`
+
+    Args:
+        config: Configurazione completa dell'ingestor (già caricata all'entry point).
+        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
+        validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
+            Solleva `FlowValidationError` su ERROR.
+
+    Returns:
+        Flow configurato e pronto per l'esecuzione.
+    """
+    prep = config.quiz_preparation
+    source = prep.sources[0]
+
+    load_step = LoadJsonStep(
+        "load_parsed_quiz",
+        layer_resolver,
+        prep.input_layer,
+        source,
+        ParsedQuizModel,
+        context_keys.PARSED_QUIZ,
+    )
+    flatten_step = FlattenQuizStep("flatten_quiz")
+    write_step = WriteJsonStep(
+        "write_cleaned_quiz",
+        layer_resolver,
+        _CLEANED_LAYER,
+        source,
+        CleanedQuizModel,
+        context_keys.CLEANED_QUIZ,
+    )
+
+    flow: Flow = (
+        FlowBuilder("quiz_cleaning")
+        .add_step(load_step)
+        .add_step(flatten_step)
+        .add_step(write_step)
+        .build(validate=validate)
+    )
+
+    return flow
+
+
+def build_quiz_enrichment_flow(
+    config: IngestorConfig,
+    layer_resolver: LayerResolver,
+    validate: bool = False,
+) -> Flow:
+    """Assembla il flow di quiz enrichment (cleaned → enriched).
 
     Stadio di preparazione: nessun embed/store. Il quiz bank ha una sola
     source (`"quiz"`), derivata da `config.quiz_preparation.sources[0]`.
@@ -140,33 +204,34 @@ def build_quiz_preparation_flow(
     if prep.output_layer is None:
         raise ValueError("quiz_preparation.output_layer is not configured")
 
+    load_step = LoadJsonStep(
+        "load_cleaned_quiz",
+        layer_resolver,
+        _CLEANED_LAYER,
+        source,
+        CleanedQuizModel,
+        context_keys.CLEANED_QUIZ,
+    )
+
     describer = RoadSignDescriberAgent.from_yaml("road_sign_describer", config.agents_dir)
     enrichers: list[QuizEnricher] = [ImageDescriptionEnricher(describer, config.quiz_images_dir)]
     enrichment_service = QuizEnrichmentService(enrichers)
+    enrich_step = EnrichQuizStep("enrich_quiz", enrichment_service)
+
+    write_step = WriteJsonStep(
+        "write_enriched_quiz",
+        layer_resolver,
+        prep.output_layer,
+        source,
+        EnrichedQuizModel,
+        context_keys.ENRICHED_QUIZ,
+    )
 
     flow: Flow = (
-        FlowBuilder("quiz_preparation")
-        .add_step(
-            LoadJsonStep(
-                "load_quiz",
-                layer_resolver,
-                prep.input_layer,
-                source,
-                QuizBankModel,
-                context_keys.CLEANED_QUIZ,
-            )
-        )
-        .add_step(EnrichQuizStep("enrich_quiz", enrichment_service))
-        .add_step(
-            WriteJsonStep(
-                "write_enriched_quiz",
-                layer_resolver,
-                prep.output_layer,
-                source,
-                EnrichedQuizModel,
-                context_keys.ENRICHED_QUIZ,
-            )
-        )
+        FlowBuilder("quiz_enrichment")
+        .add_step(load_step)
+        .add_step(enrich_step)
+        .add_step(write_step)
         .build(validate=validate)
     )
 
