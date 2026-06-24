@@ -27,7 +27,7 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
   - `agents_dir: Path = Path("configs/agents")` — directory dei file YAML
     degli agenti.
   - `quiz_images_dir: Path` — directory contenente le immagini del quiz bank
-    (usata da `QuizDataPreparationPipeline`).
+    (usata da `ImageDescriptionEnricher`, SP06).
   - `embedding_batch_size: int = 64`
   - `embedding: EmbeddingConfig = EmbeddingConfig()` (default `commons`)
   - `postgres: PostgresConnectionConfig` (obbligatorio)

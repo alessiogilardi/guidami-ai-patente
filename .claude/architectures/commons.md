@@ -136,8 +136,9 @@ src/commons/
 - **`entities/` vs `models/`**: `KnowledgeChunk` e `QuizQuestion` sono entità
   di dominio (righe di tabella), in `commons/entities/`. `commons/models/`
   ospita DTO di layer/intermedi che non finiscono a DB. `commons/models/quiz/`
-  è stato rimosso: i modelli intermedi del quiz bank (`EmbeddableQuizQuestion`,
-  `ImageDescription`, `EnrichedQuizMainQuestion`, `EnrichedQuizSubQuestion`) e
+  è stato rimosso: i modelli intermedi del quiz bank (`QuizBankModel`/
+  `QuizBankItemModel`, `EnrichedQuizModel`/`EnrichedQuizItemModel`,
+  `EmbeddableQuizModel`, `ImageDescription`, rinominati in SP04-bis) e
   `EnrichedArticle` vivono in `guidami_ai_patente_ingestor/models/` perché
   sono DTO specifici dell'ingestor e non servono all'app FastAPI.
 - **`Embeddable` Protocol** (`commons/services/embeddings/embeddable.py`,
@@ -146,7 +147,7 @@ src/commons/
   quella property è accettato per structural subtyping senza ereditarietà.
 - **`Embedded(Embeddable)` Protocol** (`@runtime_checkable`): estende `Embeddable`
   aggiungendo l'attributo scrivibile `embedding: list[float] | None`. `KnowledgeChunk`
-  e `EmbeddableQuizQuestion` soddisfano entrambi i Protocol (verificato con
+  e `EmbeddableQuizModel` soddisfano entrambi i Protocol (verificato con
   `isinstance` nei test). Il Protocol è disegnato per SP02–SP04, dove il caller
   assegnerà `item.embedding` dopo aver ricevuto i vettori da `EmbeddingService`.
 - **`EmbeddingService`** (`commons/services/embeddings/embedding_service.py`):
@@ -202,7 +203,7 @@ src/commons/
   `ValueError` per `batch_size=0` e `batch_size=-1`; purezza (nessuna mutazione
   di `item.embedding`); conformità strutturale di `KnowledgeChunk` a
   `Embeddable` e `Embedded` via `isinstance`; conformità di
-  `EmbeddableQuizQuestion` agli stessi Protocol.
+  `EmbeddableQuizModel` agli stessi Protocol.
 - `tests/commons/clients/test_embedding_client.py` — test offline con mock di
   `litellm.embedding`: verifica costruzione risposta, ordinamento per `index`,
   separazione `embed_query`/`embed_passages`. Test `@pytest.mark.integration`

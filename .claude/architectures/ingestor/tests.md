@@ -2,7 +2,10 @@
 
 Riferimento progettazione: `plans/architecture-ingestor.md`,
 `plans/architecture-quiz-bank.md`, `plans/ingest--data-preparation.md`,
-`plans/ingest--orchestrator/05-knowledge-preparation-flow.md`.
+`plans/ingest--orchestrator/04-bis-quiz-data-models.md`,
+`plans/ingest--orchestrator/04-tris-quiz-mappers.md`,
+`plans/ingest--orchestrator/05-knowledge-preparation-flow.md`,
+`plans/ingest--orchestrator/06-quiz-preparation-flow.md`.
 
 ## Test
 
@@ -13,11 +16,10 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 - `tests/guidami_ai_patente_ingestor/repositories/test_enriched_article_repository.py` —
   round-trip `write`/`load` su `EnrichedArticle` con `contexts`.
 - `tests/guidami_ai_patente_ingestor/repositories/test_enriched_quiz_bank_repository.py` —
-  round-trip `write`/`load` su `EnrichedQuizMainQuestion` con
-  `image_description`.
+  round-trip `write`/`load` su `EnrichedQuizModel` con `image_description`.
 - `tests/guidami_ai_patente_ingestor/repositories/test_quiz_bank_repository.py` —
   `load` su fixture reale (`tests/.../fixtures/quiz_bank_sample.json`):
-  mappatura in `QuizMainQuestion`/`QuizSubQuestion`.
+  mappatura in `QuizBankModel`/`QuizBankItemModel`.
 - `tests/guidami_ai_patente_ingestor/repositories/test_quiz_question_store_repository.py` —
   contro il Postgres del compose (no marker `integration`): `truncate` +
   `bulk_insert` su `quiz_questions` con colonna `embedding`.
@@ -45,31 +47,31 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
   con `Agent` fake: parsa `dict[int, str]` dal JSON canned; articolo abrogato
   → ritorna `{}` senza chiamare l'agent; JSON malformato → `ValueError`.
 
-### Services — quiz
+### Services — quiz (preparation, SP06)
 
-- `tests/guidami_ai_patente_ingestor/services/quiz/test_quiz_question_mapper.py` —
-  accetta `EnrichedQuizMainQuestion`; produce `EmbeddableQuizQuestion` con
-  `image_description`; denormalizzazione `question_id`/`topic`; estrazione
-  `image_filename`; `image_filename=None` se assente; dedup su
-  `(text.strip(), correct_answer, image)`.
-- `tests/guidami_ai_patente_ingestor/services/quiz/test_road_sign_describer.py` —
-  con `Agent` fake: parsa `ImageDescription` dal JSON canned; JSON malformato
-  → `ValueError`.
+- `tests/guidami_ai_patente_ingestor/services/quiz/test_quiz_enrichment_service.py` —
+  applica il base-map (`QuizMapper.from_quiz_bank_to_enriched`) e concatena
+  gli enricher in ordine (2 fake enricher → entrambi applicati); lista vuota
+  → solo base-map (tutti i campi enrichment `None`).
+- `tests/guidami_ai_patente_ingestor/services/quiz/enrichers/test_image_description_enricher.py` —
+  con fake `RoadSignDescriberAgent`: dedup (3 sotto-domande, 2 file distinti
+  → 2 chiamate `describe`); immagine mancante → skip + warning, nessuna
+  eccezione; `describe` che lancia → skip + warning; `image_description ==
+  "name. description"`; sotto-domanda con `image is None` → resta `None`;
+  nessuna mutazione in place (verificato via identità oggetti).
 
-### Mappers
+### Mappers — quiz (consolidato, SP04-bis/SP04-tris)
 
-- `tests/guidami_ai_patente_ingestor/mappers/quiz/test_embeddable_quiz_question_mapper.py` —
-  `to_entity` copia i campi persistiti, scarta `image_description`, mantiene
-  `embedding`.
-
-### Orchestrators — preparation
-
-- `tests/guidami_ai_patente_ingestor/orchestrators/quiz_preparation/test_quiz_data_preparation_pipeline.py` —
-  unit con `Mock`: solo i filename unici descritti; enriched bank con
-  `image_description` inline; immagine mancante → warning + `None`;
-  `force=True`.
-- `tests/guidami_ai_patente_ingestor/orchestrators/quiz_preparation/test_quiz_data_preparation_pipeline_builder.py` —
-  path enriched mancante → `FileNotFoundError`.
+- `tests/guidami_ai_patente_ingestor/mappers/quiz/test_quiz_mapper.py` —
+  unico file di test per `QuizMapper` (sostituisce i precedenti
+  `test_quiz_question_mapper.py` + `test_embeddable_quiz_question_mapper.py`):
+  `from_enriched_quiz_item_to_embeddable` (denormalizzazione `question_id`/
+  `topic` da `parent`, estrazione `image_filename`, `image_filename=None` se
+  assente); `from_embeddable_to_quiz_question` (copia i campi persistiti,
+  scarta `image_description`, mantiene `embedding`);
+  `from_quiz_bank_item_to_enriched`/`from_quiz_bank_to_enriched` (base-map,
+  `image_description=None`). **Nessun test di dedup qui**: il dedup è
+  migrato in `test_map_to_embeddable_step.py` (non è più nel mapper).
 
 ### Orchestrators — knowledge preparation flow + runner (SP05)
 
@@ -132,23 +134,45 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
   chunk inseriti (repealed inclusi), repealed con `embedding IS NULL`,
   non-repealed con vettore valorizzato.
 
-### Orchestrators — step quiz (SP04)
+### Orchestrators — step quiz indexing (SP04, mapper aggiornato in SP04-tris)
 
 - `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_load_enriched_quiz_step.py` —
   `required == set()`, `produced == {ENRICHED_QUIZ}`; `execute` carica via
   `layer_resolver.path(input_layer, source)` e repository; source iniettata
   (non hardcoded `"quiz"`); source diversa produce lista distinta.
 - `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_map_to_embeddable_step.py` —
-  `required == {ENRICHED_QUIZ}`, `produced == {EMBEDDABLE_QUIZ}`; delega
-  `QuizQuestionMapper`; dedup sui duplicati esatti.
+  `required == {ENRICHED_QUIZ}`, `produced == {EMBEDDABLE_QUIZ}`; **dedup
+  reale** (non mockato) su `(text.strip(), correct_answer, image)` (es. 3
+  sotto-domande, 2 distinte → 2 embeddable) — i casi di dedup sono migrati
+  qui da SP04-tris (prima erano nel test del mapper); più un test di
+  delegazione (mocked) a `QuizMapper.from_enriched_quiz_item_to_embeddable`.
 - `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_map_to_quiz_entity_step.py` —
   `required == {EMBEDDABLE_QUIZ}`, `produced == {QUIZ_ENTITIES}`; delega
-  `EmbeddableQuizQuestionMapper.to_entity`; contratto chiavi rispettato.
+  `QuizMapper.from_embeddable_to_quiz_question`; contratto chiavi rispettato.
 - `tests/guidami_ai_patente_ingestor/orchestrators/test_quiz_flows.py` —
   `build_quiz_indexing_flow(...)` ritorna un `Flow`; `flow.name ==
   "quiz_indexing"`; `FlowValidator().validate(flow).required_input_keys ==
   set()`; `validate=True` non solleva (WARNING benigno su `EMBEDDABLE_QUIZ`
   di `EmbedStep`); ordine dei 5 step verificato.
+
+### Orchestrators — quiz preparation flow + service (SP06)
+
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_load_quiz_step.py` —
+  `required == set()`, `produced == {CLEANED_QUIZ}`; carica dal path
+  risolto da `LayerResolver.path(input_layer, source)` (fake repo +
+  resolver); usa la `source` iniettata (non hardcoded).
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_enrich_quiz_step.py` —
+  `required == {CLEANED_QUIZ}`, `produced == {ENRICHED_QUIZ}`; delega al
+  `QuizEnrichmentService` (fake/spy).
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_write_enriched_quiz_step.py` —
+  `required == {ENRICHED_QUIZ}`, `produced == set()`; scrive sul path
+  risolto da `LayerResolver.path(output_layer, source)`.
+- `tests/guidami_ai_patente_ingestor/orchestrators/test_quiz_flows.py` —
+  (estensione SP06, stesso file di SP04) `build_quiz_preparation_flow(...)`
+  ritorna un `Flow` con nome `"quiz_preparation"`;
+  `FlowValidator().validate(flow).required_input_keys == set()` (il
+  `LoadQuizStep` non richiede input esterni); nessun WARNING "overwrites"
+  atteso; `output_layer is None` → `ValueError`.
 
 ### Orchestrators — step generici (SP02)
 

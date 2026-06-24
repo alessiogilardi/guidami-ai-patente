@@ -5,11 +5,14 @@ Riferimento progettazione: `plans/ingest--data-preparation.md`,
 `plans/ingest--article-contextual-embedding.md`,
 `plans/ingest--quiz-image-descriptions.md`,
 `plans/ingest--orchestrator/05-knowledge-preparation-flow.md` (knowledge,
-ricostruito su flowstep in SP05).
+ricostruito su flowstep in SP05),
+`plans/ingest--orchestrator/06-quiz-preparation-flow.md` (quiz, costruito da
+zero su flowstep in SP06).
 
 Vedi [config_and_entrypoints.md](config_and_entrypoints.md) per `IngestorConfig`,
 `LayerResolver` e gli entry point CLI, [flowstep_toolkit.md](flowstep_toolkit.md)
-per `context_keys` condivise.
+per `context_keys` condivise, [quiz_pipelines.md](quiz_pipelines.md) per la
+catena dei modelli quiz e il dettaglio di `QuizMapper`/`services/quiz/`.
 
 Due aree di preparation offline, idempotenti, che precedono le pipeline/flow di
 indexing. Producono gli artefatti `enriched` da cui l'indexing legge.
@@ -18,20 +21,33 @@ indexing. Producono gli artefatti `enriched` da cui l'indexing legge.
   flowstep lineari per-source** (`clean`, `enrich`) + runner generico
   `run_preparation`. Sostituisce la precedente `DataPreparationPipeline`
   (rimossa).
-- **quiz bank**: resta la pipeline `QuizDataPreparationPipeline` (non toccata
-  da SP05/06).
+- **quiz bank**: costruito **da zero** in SP06 come **un Flow flowstep
+  lineare** (`cleaned` → `enriched`), riusando il runner `run_preparation` di
+  SP05. Non è un refactor: non esisteva alcuna pipeline di quiz preparation
+  prima di SP06 (verificato su git history). Sostituisce concettualmente il
+  vecchio riferimento `QuizDataPreparationPipeline` descritto in versioni
+  precedenti di questo documento — quel componente non è mai stato
+  implementato nel codice attuale.
 
-## Topologia a due stadi
+## Topologia
 
 ```
 parsed ──[clean flow: Load→Clean→Write]────▶ cleaned ──[enrich flow: Load→Contextualize→Write]──▶ enriched ──[knowledge_indexing flow]──▶ DB
-parsed ──[QuizDataPreparationPipeline: enrich]──────────────────────────────────────────────────▶ enriched ──[QuizIndexingPipeline]──────────▶ DB
+cleaned ──[quiz_preparation flow: Load→Enrich→Write]──────────────────────────────────────────────▶ enriched ──[quiz_indexing flow]───────────▶ DB
 ```
 
+Per il quiz bank il layer `parsed`/stadio di "clean" non esiste: l'input del
+flow di preparation è già il layer `cleaned` (`data/cleaned/quiz-patente-ab/quiz-patente-ab.json`),
+quindi un solo flow basta (a differenza del knowledge, che ne richiede due).
+
 L'enrichment LLM (costoso, offline) è separato dall'indexing (ri-eseguibile a
-costo zero su `enriched`). Knowledge e quiz preparation sono idempotenti:
-saltano se l'output del rispettivo layer esiste; un flag `force` forza la
-rigenerazione (per il knowledge, applicato dal chiamante via `run_preparation`).
+costo zero su `enriched`). Knowledge e quiz preparation sono idempotenti a
+**livello di file**: saltano se l'output del rispettivo layer esiste; un flag
+`force` (applicato dal chiamante via `run_preparation`) forza la
+rigenerazione. Per il quiz, questo è un limite noto e accettato: aggiungere un
+nuovo enricher richiede di rigenerare l'intero file (incluse le chiamate
+vision, le più costose) — un checkpoint per-enricher è rimandato a quando
+servirà davvero.
 
 ## Knowledge preparation (SP05) — due Flow per-source + runner generico
 
@@ -101,8 +117,8 @@ def run_preparation(flow: Flow, out_path: Path, force: bool) -> None:
   `LayerResolver.path(layer, source)`), così lo stesso runner serve sia il
   flow `clean` (out = layer `cleaned`) sia il flow `enrich` (out = layer
   `enriched`), e per SP06 anche il flow di quiz preparation.
-- **Condiviso con SP06** (quiz preparation flow, non ancora implementato):
-  nessuna logica domain-specific knowledge al suo interno.
+- **Condiviso con SP06** (quiz preparation flow, implementato): nessuna
+  logica domain-specific knowledge al suo interno.
 
 ### `orchestrators/steps/knowledge/` — sei step di dominio (estensione SP05)
 
@@ -174,14 +190,15 @@ Vedi [flowstep_toolkit.md](flowstep_toolkit.md) per il vocabolario completo.
   — atteso in SP07.
 - Nessuna rimozione di pipeline legacy residue: fuori scope di SP05.
 
-### Entità ingestor per l'enriched quiz bank
+### Modelli ingestor per il quiz bank (rinominati in SP04-bis)
 
-`EnrichedQuizMainQuestion` e `EnrichedQuizSubQuestion` (in
-`guidami_ai_patente_ingestor/entities/enriched_quiz_bank.py`) mappano il formato
-del quiz bank enriched su disco. `EnrichedQuizSubQuestion` aggiunge
-`image_description: str | None` rispetto alla controparte parsed.
-Sono distinte da `QuizMainQuestion`/`QuizSubQuestion` (che restano il mapping
-del layer parsed) per rispettare la regola entità ↔ layer.
+`QuizBankModel`/`QuizBankItemModel` (layer `cleaned`) ed
+`EnrichedQuizModel`/`EnrichedQuizItemModel` (layer `enriched`) vivono in
+`guidami_ai_patente_ingestor/models/quiz/` — non in `entities/` (sono DTO non
+persistiti, non righe DB). `EnrichedQuizItemModel` aggiunge
+`image_description: str | None` rispetto a `QuizBankItemModel`. Dettaglio
+completo della catena dei modelli e del `QuizMapper` consolidato in
+[quiz_pipelines.md](quiz_pipelines.md).
 
 ### `repositories/enriched_article_repository.py` — `EnrichedArticleRepository`
 
@@ -190,11 +207,11 @@ del layer parsed) per rispettare la regola entità ↔ layer.
   di `ArticleRepository`, ma opera sul tipo `EnrichedArticle` (da `commons`).
 - `write` crea directory mancanti e serializza con `ensure_ascii=False, indent=2`.
 
-### `repositories/enriched_quiz_bank_repository.py` — `EnrichedQuizBankRepository`
+### `repositories/json/enriched_quiz_bank_repository.py` — `EnrichedQuizBankRepository`
 
-- `load(path: Path) -> list[EnrichedQuizMainQuestion]` e
-  `write(questions: list[EnrichedQuizMainQuestion], path: Path) -> None`.
-- Stesso pattern dei repository JSON esistenti.
+- `load(path: Path) -> list[EnrichedQuizModel]` e
+  `write(questions: list[EnrichedQuizModel], path: Path) -> None`.
+- Stesso pattern dei repository JSON esistenti (`JsonRepository[T]` generica).
 
 ### `agents/article_contextualizer_agent.py` — `ArticleContextualizerAgent`
 
@@ -223,34 +240,59 @@ precedente service `RoadSignDescriber` (rimosso).
 - `ImageDescription(BaseModel, frozen=True)` — `name: str`, `description: str`
   — vive in `guidami_ai_patente_ingestor/models/quiz/image_description.py`.
 
-### `orchestrators/quiz_preparation/` — `QuizDataPreparationPipeline` + `QuizDataPreparationPipelineBuilder`
+## Quiz preparation (SP06) — un Flow + runner generico (riuso SP05)
 
-- **`QuizDataPreparationPipeline.run(force: bool = False)`**:
-  1. risolve `enriched_path = layer_resolver.path("enriched", "quiz")`;
-  2. se `enriched_path.exists()` e non `force` → skip;
-  3. altrimenti: `QuizBankRepository.load(parsed_path)`;
-  4. raccoglie i `image_filename` unici da tutte le sotto-domande (dedup in-memory);
-  5. per ogni filename unico: `RoadSignDescriberAgent.describe(quiz_images_dir / filename)`
-     → `ImageDescription`; le domande prive di immagine hanno
-     `image_description = None`;
-  6. assembla `list[EnrichedQuizMainQuestion]` con `image_description` inline
-     per ogni sotto-domanda → `EnrichedQuizBankRepository.write(enriched)`.
-  - Dedup: riduce le chiamate al vision agent da ~4.148 (totale sotto-domande
-    con immagine) a ~427 (immagini uniche). Ogni sotto-domanda con la stessa
-    immagine riceve la stessa descrizione.
-  - Immagine non trovata su disco → `logger.warning` + `image_description = None`
-    (non blocca la pipeline).
-- **`QuizDataPreparationPipelineBuilder(config: IngestorConfig, layer_resolver:
-  LayerResolver)`**: costruisce `RoadSignDescriberAgent.from_yaml("road_sign_describer",
-  config.agents_dir)` internamente; setter fluent `with_quiz_bank_repository`,
-  `with_enriched_quiz_bank_repository`, `with_road_sign_describer`; `build()`
-  con controlli `is not None`.
+> **Greenfield, non un refactor**: prima di SP06 non esisteva alcuna pipeline
+> di quiz preparation né un entry point dedicato (`RoadSignDescriberAgent`
+> esisteva già ma aveva zero chiamanti). Il flow descritto qui è stato
+> costruito da zero su flowstep, non sostituisce codice preesistente.
+
+Catena: `LoadQuizStep` → `EnrichQuizStep` → `WriteEnrichedQuizStep`, chiavi
+`CLEANED_QUIZ` → `ENRICHED_QUIZ`. Un solo flow (non due come il knowledge)
+perché l'input è già il layer `cleaned` — non esiste un layer `parsed`
+separato né uno stadio di "clean" per il quiz bank.
+
+```python
+def build_quiz_preparation_flow(
+    config: IngestorConfig,
+    layer_resolver: LayerResolver,
+    validate: bool = False,
+) -> Flow
+```
+
+in `orchestrators/quiz_flows.py` (file additivo, condiviso con
+`build_quiz_indexing_flow` di SP04). Riusa **lo stesso runner** di SP05
+(`run_preparation(flow, out_path, force)`), invocato dal chiamante con
+`out_path = layer_resolver.path(config.quiz_preparation.output_layer, "quiz")`.
+
+Dettaglio completo di step, enrichment Open/Closed
+(`QuizEnricher`/`QuizEnrichmentService`/`ImageDescriptionEnricher`) e
+decisioni della factory in [quiz_pipelines.md](quiz_pipelines.md).
+
+### Dedup immagini (`ImageDescriptionEnricher`)
+
+Stessa motivazione del precedente componente di enrichment quiz (mai
+implementato come pipeline a parte, ma il principio era già nel piano
+`ingest--quiz-image-descriptions.md`): raccogliere i `sub.image` **unici**
+prima di chiamare la vision LLM riduce drasticamente il numero di chiamate
+(da una per sotto-domanda con immagine a una per immagine distinta). Ogni
+sotto-domanda con la stessa immagine riceve la stessa descrizione.
+Immagine non trovata su disco o `describe()` che lancia → `logger.warning` +
+`image_description = None` (non blocca l'enrichment delle altre domande).
+
+### Cosa NON è (ancora) cambiato (SP06)
+
+- Nessun entry point CLI dedicato: il flow non è wired a nessuno script —
+  atteso in SP07.
+- `agents_dir`/yaml dell'agente (`road_sign_describer.yaml`) non cambiati.
 
 ## Test
 
-Per i test del knowledge preparation flow (SP05: step, mapper, flow factory,
-runner) vedi [tests.md](tests.md). Test rimasti per i componenti condivisi e
-per il quiz preparation:
+Per i test del knowledge preparation flow (SP05) e del quiz preparation flow
+(SP06): step, mapper, flow factory, runner, service/enricher — vedi
+[tests.md](tests.md).
+
+Test rimasti per i componenti condivisi:
 
 - `tests/guidami_ai_patente_ingestor/agents/test_article_contextualizer_agent.py` —
   via `agent.core_agent.override(model=TestModel(...))`: articolo abrogato →
@@ -262,7 +304,4 @@ per il quiz preparation:
 - `tests/guidami_ai_patente_ingestor/repositories/test_enriched_article_repository.py` —
   round-trip `write`/`load` su `EnrichedArticle`.
 - `tests/guidami_ai_patente_ingestor/repositories/test_enriched_quiz_bank_repository.py` —
-  round-trip `write`/`load` su `EnrichedQuizMainQuestion`.
-- `tests/guidami_ai_patente_ingestor/orchestrators/quiz_preparation/test_quiz_data_preparation_pipeline.py` —
-  unit con `Mock`: solo i filename unici descritti; enriched bank con
-  `image_description` inline; immagine mancante → warning + `None`; `force=True`.
+  round-trip `write`/`load` su `EnrichedQuizModel`.

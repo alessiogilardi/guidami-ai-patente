@@ -22,17 +22,20 @@ src/guidami_ai_patente_ingestor/orchestrators/
     knowledge/             # step domain-specific knowledge (SP03 indexing + SP05 preparation)
       __init__.py          # re-esporta i 10 step knowledge (4 indexing + 6 preparation)
       ...
-    quiz/                  # step domain-specific quiz (SP04)
-      __init__.py          # re-esporta LoadEnrichedQuizStep, MapToEmbeddableStep, MapToQuizEntityStep
-      load_enriched_quiz_step.py
-      map_to_embeddable_step.py
-      map_to_quiz_entity_step.py
+    quiz/                  # step domain-specific quiz (SP04 indexing + SP06 preparation)
+      __init__.py          # re-esporta i 6 step quiz (3 indexing + 3 preparation)
+      load_enriched_quiz_step.py   # SP04, indexing
+      map_to_embeddable_step.py    # SP04, indexing (flatten+dedup migrato qui da SP04-tris)
+      map_to_quiz_entity_step.py   # SP04, indexing
+      load_quiz_step.py            # SP06, preparation
+      enrich_quiz_step.py          # SP06, preparation
+      write_enriched_quiz_step.py  # SP06, preparation
 ```
 
 ## `context_keys.py` — vocabolario chiavi
 
-Costanti usate dalle slice indexing SP03/04 e dalla preparation knowledge SP05
-(la preparation quiz SP06 aggiungerà le proprie in modo **additivo**):
+Costanti usate dalle slice indexing SP03/04 e dalla preparation knowledge/quiz
+SP05/SP06:
 
 | Costante | Valore | Usata da |
 |---|---|---|
@@ -40,22 +43,26 @@ Costanti usate dalle slice indexing SP03/04 e dalla preparation knowledge SP05
 | `PARSED_ARTICLES` | `"parsed_articles"` | SP05 — input flow `clean`: `list[Article]` dal layer `parsed` |
 | `CLEANED_ARTICLES` | `"cleaned_articles"` | SP05 — output flow `clean` / input flow `enrich`: `list[Article]` puliti |
 | `CHUNKS` | `"chunks"` | SP03 — output chunker → embed → store |
-| `ENRICHED_QUIZ` | `"enriched_quiz"` | SP04 — input: quiz bank enriched da disco |
+| `ENRICHED_QUIZ` | `"enriched_quiz"` | SP04 (input indexing) + SP06 (output flow preparation) — quiz bank enriched |
 | `EMBEDDABLE_QUIZ` | `"embeddable_quiz"` | SP04 — modelli intermedi → embed |
 | `QUIZ_ENTITIES` | `"quiz_entities"` | SP04 — entità finali → store |
+| `CLEANED_QUIZ` | `"cleaned_quiz"` | SP06 — input flow preparation: `list[QuizBankModel]` dal layer `cleaned` |
 
 `ARTICLES_BY_SOURCE` (proposta nel piano SP03 come `dict[str, list[EnrichedArticle]]`
 per più source) **non esiste nel codice**: il design implementato è per-source
 (una run per source), quindi `ENRICHED_ARTICLES`/`PARSED_ARTICLES`/`CLEANED_ARTICLES`
 sono sempre liste piatte di UNA sola source. Nessuna chiave `SOURCE`: la source
 non passa mai dal `FlowContext`, è iniettata negli step `Load*`/`Write*` alla
-factory.
+factory. Stesso principio per il quiz (SP06): `IMAGE_DESCRIPTIONS` non è una
+chiave di context — resta un dict interno a `ImageDescriptionEnricher`,
+l'enrichment ripiega describe+map in un solo step.
 
 I consumatori accedono come `context_keys.CHUNKS` — import di submodule
 (`from guidami_ai_patente_ingestor.orchestrators import context_keys`).
 `orchestrators/__init__.py` re-esporta `build_knowledge_indexing_flow` (SP03),
 `build_knowledge_cleaning_flow`/`build_knowledge_enrichment_flow` (SP05),
-`build_quiz_indexing_flow` (SP04) e `run_preparation` (SP05).
+`build_quiz_indexing_flow` (SP04), `build_quiz_preparation_flow` (SP06) e
+`run_preparation` (SP05).
 
 ## Decisioni implementate
 
