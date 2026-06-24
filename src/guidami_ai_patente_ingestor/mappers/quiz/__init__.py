@@ -1,6 +1,5 @@
 """Mapper per il quiz bank."""
 
-from .embeddable_quiz_question_mapper import EmbeddableQuizQuestionMapper
-from .quiz_question_mapper import QuizQuestionMapper
+from .quiz_mapper import QuizMapper
 
-__all__ = ["EmbeddableQuizQuestionMapper", "QuizQuestionMapper"]
+__all__ = ["QuizMapper"]

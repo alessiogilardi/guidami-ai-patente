@@ -4,8 +4,8 @@ import logging
 from typing import cast
 
 from commons.flowstep import FlowContext, Step
-from guidami_ai_patente_ingestor.mappers.quiz import QuizQuestionMapper
-from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
+from guidami_ai_patente_ingestor.mappers.quiz import QuizMapper
+from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel, EnrichedQuizModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 
 logger = logging.getLogger(__name__)
@@ -14,22 +14,19 @@ logger = logging.getLogger(__name__)
 class MapToEmbeddableStep(Step):
     """Appiattisce e deduplica il quiz bank enriched in `EmbeddableQuizModel`.
 
-    Delega a `QuizQuestionMapper.from_enriched_quiz_main_questions_to_embeddable_quiz_questions`,
-    che esegue la dedup (8 duplicati esatti → 7098 righe) prima dell'embedding.
+    Un duplicato esatto è identificato dalla tripla (testo normalizzato,
+    risposta corretta, identità immagine). Per ogni item mantenuto delega a
+    `QuizMapper.from_enriched_quiz_item_to_embeddable`.
     """
 
     def execute(self, context: FlowContext) -> None:
-        """Legge `ENRICHED_QUIZ`, mappa e scrive `EMBEDDABLE_QUIZ`.
+        """Legge `ENRICHED_QUIZ`, appiattisce+dedup e scrive `EMBEDDABLE_QUIZ`.
 
         Args:
             context: Shared pipeline context.
         """
         main_questions = cast(list[EnrichedQuizModel], context.get(context_keys.ENRICHED_QUIZ))
-        embeddable = (
-            QuizQuestionMapper.from_enriched_quiz_main_questions_to_embeddable_quiz_questions(
-                main_questions
-            )
-        )
+        embeddable = self._flatten_and_dedup(main_questions)
         logger.info(
             f"Mapped {len(main_questions)} main questions → {len(embeddable)} embeddable questions"
         )
@@ -43,3 +40,27 @@ class MapToEmbeddableStep(Step):
     def get_produced_keys(self) -> set[str]:
         """Produce `EMBEDDABLE_QUIZ`: lista deduplicata di `EmbeddableQuizModel`."""
         return {context_keys.EMBEDDABLE_QUIZ}
+
+    @staticmethod
+    def _flatten_and_dedup(
+        main_questions: list[EnrichedQuizModel],
+    ) -> list[EmbeddableQuizModel]:
+        embeddable: list[EmbeddableQuizModel] = []
+        seen: set[tuple[str, bool, str | None]] = set()
+
+        for main_question in main_questions:
+            for sub_question in main_question.sub_questions:
+                text = sub_question.text.strip()
+                key = (text, sub_question.correct_answer, sub_question.image)
+                if key in seen:
+                    logger.warning(
+                        f"skipping duplicate sub-question {sub_question.number} "
+                        f"(question_id={main_question.question_id})"
+                    )
+                    continue
+                seen.add(key)
+                embeddable.append(
+                    QuizMapper.from_enriched_quiz_item_to_embeddable(sub_question, main_question)
+                )
+
+        return embeddable
