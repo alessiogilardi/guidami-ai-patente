@@ -3,11 +3,11 @@ from pathlib import PurePosixPath
 
 from commons.entities.quiz import QuizQuestion
 from guidami_ai_patente_ingestor.models.quiz import (
+    CleanedQuizModel,
     EmbeddableQuizModel,
-    EnrichedQuizItemModel,
     EnrichedQuizModel,
-    QuizBankItemModel,
-    QuizBankModel,
+    ParsedQuizItemModel,
+    ParsedQuizModel,
 )
 
 logger = logging.getLogger(__name__)
@@ -19,12 +19,13 @@ class QuizMapper:
     Tutti i metodi sono statici e puri: ciascuno mappa un modello nel
     successivo della catena (`from_X_to_Y`). Il flatten+dedup non è qui
     (non è un mapping 1:1, ma un'operazione su collezione): vive in
-    `MapToEmbeddableStep`.
+    `FlattenQuizStep` (preparation, parsed→cleaned) e in `MapToEmbeddableStep`
+    (indexing, enriched→embeddable).
     """
 
     @staticmethod
     def from_enriched_quiz_item_to_embeddable(
-        item: EnrichedQuizItemModel,
+        item: EnrichedQuizModel,
         parent: EnrichedQuizModel,
     ) -> EmbeddableQuizModel:
         """Mappa una sotto-domanda enriched in `EmbeddableQuizModel`.
@@ -69,17 +70,18 @@ class QuizMapper:
         )
 
     @staticmethod
-    def from_quiz_bank_item_to_enriched(item: QuizBankItemModel) -> EnrichedQuizItemModel:
-        """Mappa una sotto-domanda sorgente in `EnrichedQuizItemModel` (base-map).
+    def from_cleaned_to_enriched(item: CleanedQuizModel) -> EnrichedQuizModel:
+        """Mappa una sotto-domanda cleaned in `EnrichedQuizModel` (base-map, flat→flat).
 
         Args:
-            item: La sotto-domanda sorgente da mappare.
+            item: La sotto-domanda cleaned (flat, auto-contenuta) da mappare.
 
         Returns:
-            `EnrichedQuizItemModel` con `image_description=None` (da popolare
-            dagli enricher).
+            `EnrichedQuizModel` con `image_description=None` (da popolare dagli enricher).
         """
-        return EnrichedQuizItemModel(
+        return EnrichedQuizModel(
+            question_id=item.question_id,
+            topic=item.topic,
             number=item.number,
             text=item.text,
             correct_answer=item.correct_answer,
@@ -88,22 +90,26 @@ class QuizMapper:
         )
 
     @staticmethod
-    def from_quiz_bank_to_enriched(model: QuizBankModel) -> EnrichedQuizModel:
-        """Mappa una domanda madre sorgente in `EnrichedQuizModel` (base-map).
+    def from_parsed_to_cleaned(
+        item: ParsedQuizItemModel, parent: ParsedQuizModel
+    ) -> CleanedQuizModel:
+        """Mappa una sotto-domanda parsed in `CleanedQuizModel` (denormalizza question_id/topic).
 
         Args:
-            model: La domanda madre sorgente da mappare.
+            item: La sotto-domanda da mappare.
+            parent: La domanda madre che fornisce `question_id` e `topic`.
 
         Returns:
-            `EnrichedQuizModel` con tutte le sotto-domande mappate via
-            `from_quiz_bank_item_to_enriched`.
+            `CleanedQuizModel` (flat, auto-contenuto) pronto per il dedup a monte
+            (`FlattenQuizStep`).
         """
-        return EnrichedQuizModel(
-            question_id=model.question_id,
-            topic=model.topic,
-            sub_questions=[
-                QuizMapper.from_quiz_bank_item_to_enriched(item) for item in model.sub_questions
-            ],
+        return CleanedQuizModel(
+            question_id=parent.question_id,
+            topic=parent.topic,
+            number=item.number,
+            text=item.text.strip(),
+            correct_answer=item.correct_answer,
+            image=item.image,
         )
 
     @staticmethod
