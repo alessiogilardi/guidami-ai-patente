@@ -7,21 +7,21 @@ from commons.flowstep import Flow, FlowBuilder
 from commons.services.embeddings import EmbeddingService
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
+from guidami_ai_patente_ingestor.mappers.quiz import QuizMapper
+from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel, QuizBankModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
-from guidami_ai_patente_ingestor.orchestrators.steps.generic import DbStoreStep, EmbedStep
+from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
+    DbStoreStep,
+    EmbedStep,
+    LoadJsonStep,
+    MapStep,
+    WriteJsonStep,
+)
 from guidami_ai_patente_ingestor.orchestrators.steps.quiz import (
     EnrichQuizStep,
-    LoadEnrichedQuizStep,
-    LoadQuizStep,
     MapToEmbeddableStep,
-    MapToQuizEntityStep,
-    WriteEnrichedQuizStep,
 )
-from guidami_ai_patente_ingestor.repositories import (
-    EnrichedQuizBankRepository,
-    QuizBankRepository,
-    QuizQuestionStoreRepository,
-)
+from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
 from guidami_ai_patente_ingestor.services import LayerResolver, QuizEnrichmentService
 from guidami_ai_patente_ingestor.services.quiz.enrichers import (
     ImageDescriptionEnricher,
@@ -45,8 +45,8 @@ def build_quiz_indexing_flow(
     `quiz_questions` (truncate + bulk_insert) tramite il `DbStoreStep` generico.
 
     Mappatura step:
-      `LoadEnrichedQuizStep` → `MapToEmbeddableStep` → `EmbedStep`
-      → `MapToQuizEntityStep` → `DbStoreStep`
+      `LoadJsonStep` → `MapToEmbeddableStep` → `EmbedStep`
+      → `MapStep` → `DbStoreStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -64,12 +64,13 @@ def build_quiz_indexing_flow(
     indexing_config = config.quiz_indexing
     source = indexing_config.sources[0]
 
-    load_step = LoadEnrichedQuizStep(
+    load_step = LoadJsonStep(
         "load_enriched_quiz",
-        EnrichedQuizBankRepository(),
         layer_resolver,
         indexing_config.input_layer,
         source,
+        EnrichedQuizModel,
+        context_keys.ENRICHED_QUIZ,
     )
 
     map_to_embeddable_step = MapToEmbeddableStep("map_to_embeddable")
@@ -80,7 +81,12 @@ def build_quiz_indexing_flow(
         context_keys.EMBEDDABLE_QUIZ,
     )
 
-    map_to_quiz_entity_step = MapToQuizEntityStep("map_to_quiz_entity")
+    map_to_quiz_entity_step = MapStep(
+        "map_to_quiz_entity",
+        QuizMapper.from_embeddable_to_quiz_question,
+        context_keys.EMBEDDABLE_QUIZ,
+        context_keys.QUIZ_ENTITIES,
+    )
 
     store_step = DbStoreStep(
         "store_quiz",
@@ -114,7 +120,7 @@ def build_quiz_preparation_flow(
     lista `enrichers` qui sotto, non lo step né il service.
 
     Mappatura step:
-      `LoadQuizStep` → `EnrichQuizStep` → `WriteEnrichedQuizStep`
+      `LoadJsonStep` → `EnrichQuizStep` → `WriteJsonStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -141,18 +147,24 @@ def build_quiz_preparation_flow(
     flow: Flow = (
         FlowBuilder("quiz_preparation")
         .add_step(
-            LoadQuizStep(
-                "load_quiz", QuizBankRepository(), layer_resolver, prep.input_layer, source
+            LoadJsonStep(
+                "load_quiz",
+                layer_resolver,
+                prep.input_layer,
+                source,
+                QuizBankModel,
+                context_keys.CLEANED_QUIZ,
             )
         )
         .add_step(EnrichQuizStep("enrich_quiz", enrichment_service))
         .add_step(
-            WriteEnrichedQuizStep(
+            WriteJsonStep(
                 "write_enriched_quiz",
-                EnrichedQuizBankRepository(),
                 layer_resolver,
                 prep.output_layer,
                 source,
+                EnrichedQuizModel,
+                context_keys.ENRICHED_QUIZ,
             )
         )
         .build(validate=validate)

@@ -8,23 +8,21 @@ from commons.flowstep import Flow, FlowBuilder
 from commons.services.embeddings import EmbeddingService
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
+from guidami_ai_patente_ingestor.entities import Article
+from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
+from guidami_ai_patente_ingestor.orchestrators import context_keys
+from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
+    LoadJsonStep,
+    MapStep,
+    WriteJsonStep,
+)
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
     ChunkArticlesStep,
-    CleanArticlesStep,
     ContextualizeStep,
     EmbedChunksStep,
-    LoadCleanedArticlesStep,
-    LoadEnrichedArticlesStep,
-    LoadParsedArticlesStep,
     StoreChunksStep,
-    WriteCleanedStep,
-    WriteEnrichedStep,
 )
-from guidami_ai_patente_ingestor.repositories import (
-    ArticleRepository,
-    EnrichedArticleRepository,
-    KnowledgeChunkStoreRepository,
-)
+from guidami_ai_patente_ingestor.repositories import KnowledgeChunkStoreRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
 
@@ -50,7 +48,7 @@ def build_knowledge_indexing_flow(
     run su source diverse non si sovrascrivono.
 
     Mappatura step:
-      `LoadEnrichedArticlesStep` → `ChunkArticlesStep` → `EmbedChunksStep`
+      `LoadJsonStep` → `ChunkArticlesStep` → `EmbedChunksStep`
       → `StoreChunksStep`
 
     Args:
@@ -77,12 +75,13 @@ def build_knowledge_indexing_flow(
         raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
     typed_source = cast(Literal["cds", "cap"], source)
 
-    load_step = LoadEnrichedArticlesStep(
+    load_step = LoadJsonStep(
         "load_enriched_articles",
-        enriched_article_repository=EnrichedArticleRepository(),
         layer_resolver=layer_resolver,
         input_layer=indexing_config.input_layer,
         source=source,
+        model_class=EnrichedArticle,
+        output_key=context_keys.ENRICHED_ARTICLES,
     )
 
     chunk_step = ChunkArticlesStep(
@@ -127,7 +126,7 @@ def build_knowledge_cleaning_flow(
     Nessun embed/store: questo flow appartiene allo stadio di preparazione.
 
     Mappatura step:
-      `LoadParsedArticlesStep` → `CleanArticlesStep` → `WriteCleanedStep`
+      `LoadJsonStep` → `MapStep` → `WriteJsonStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -147,22 +146,29 @@ def build_knowledge_cleaning_flow(
     if source not in valid_sources:
         raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
 
-    load_step = LoadParsedArticlesStep(
+    load_step = LoadJsonStep(
         "load_parsed_articles",
-        article_repository=ArticleRepository(),
         layer_resolver=layer_resolver,
         input_layer=preparation_config.input_layer,
         source=source,
+        model_class=Article,
+        output_key=context_keys.PARSED_ARTICLES,
     )
 
-    clean_step = CleanArticlesStep("clean_articles", article_cleaner=ArticleCleaner())
+    clean_step = MapStep(
+        "clean_articles",
+        mapper=ArticleCleaner().clean,
+        input_key=context_keys.PARSED_ARTICLES,
+        output_key=context_keys.CLEANED_ARTICLES,
+    )
 
-    write_step = WriteCleanedStep(
+    write_step = WriteJsonStep(
         "write_cleaned",
-        article_repository=ArticleRepository(),
         layer_resolver=layer_resolver,
         output_layer=_CLEANED_LAYER,
         source=source,
+        model_class=Article,
+        input_key=context_keys.CLEANED_ARTICLES,
     )
 
     flow: Flow = (
@@ -188,7 +194,7 @@ def build_knowledge_enrichment_flow(
     Nessun embed/store: questo flow appartiene allo stadio di preparazione.
 
     Mappatura step:
-      `LoadCleanedArticlesStep` → `ContextualizeStep` → `WriteEnrichedStep`
+      `LoadJsonStep` → `ContextualizeStep` → `WriteJsonStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -211,12 +217,13 @@ def build_knowledge_enrichment_flow(
     if preparation_config.output_layer is None:
         raise ValueError("knowledge_preparation.output_layer is not configured")
 
-    load_step = LoadCleanedArticlesStep(
+    load_step = LoadJsonStep(
         "load_cleaned_articles",
-        article_repository=ArticleRepository(),
         layer_resolver=layer_resolver,
         input_layer=_CLEANED_LAYER,
         source=source,
+        model_class=Article,
+        output_key=context_keys.CLEANED_ARTICLES,
     )
 
     contextualize_step = ContextualizeStep(
@@ -226,12 +233,13 @@ def build_knowledge_enrichment_flow(
         ),
     )
 
-    write_step = WriteEnrichedStep(
+    write_step = WriteJsonStep(
         "write_enriched",
-        enriched_article_repository=EnrichedArticleRepository(),
         layer_resolver=layer_resolver,
         output_layer=preparation_config.output_layer,
         source=source,
+        model_class=EnrichedArticle,
+        input_key=context_keys.ENRICHED_ARTICLES,
     )
 
     flow: Flow = (

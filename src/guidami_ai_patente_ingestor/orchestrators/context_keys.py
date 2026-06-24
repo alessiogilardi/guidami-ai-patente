@@ -15,8 +15,8 @@ ENRICHED_ARTICLES = "enriched_articles"  # input indexing/enrich: list[EnrichedA
 CHUNKS = "chunks"  # output del chunker → embed → store
 
 # --- Knowledge preparation (SP05) ---
-# Flow clean: LoadParsedArticlesStep → CleanArticlesStep → WriteCleanedStep.
-# Flow enrich: LoadCleanedArticlesStep → ContextualizeStep → WriteEnrichedStep.
+# Flow clean: LoadJsonStep → MapStep → WriteJsonStep.
+# Flow enrich: LoadJsonStep → ContextualizeStep → WriteJsonStep.
 PARSED_ARTICLES = "parsed_articles"  # input clean: list[Article] caricati dal layer "parsed"
 CLEANED_ARTICLES = "cleaned_articles"  # output clean / input enrich: list[Article] puliti
 
@@ -26,5 +26,5 @@ EMBEDDABLE_QUIZ = "embeddable_quiz"  # modelli intermedi → embed
 QUIZ_ENTITIES = "quiz_entities"  # entità finali → store
 
 # --- Quiz preparation (SP06) ---
-# Flow: LoadQuizStep → EnrichQuizStep → WriteEnrichedQuizStep.
+# Flow: LoadJsonStep → EnrichQuizStep → WriteJsonStep.
 CLEANED_QUIZ = "cleaned_quiz"  # input: quiz bank caricato dal layer "cleaned"
