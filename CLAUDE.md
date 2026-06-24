@@ -47,12 +47,16 @@ docker compose -f docker/docker-compose.yml up -d
 | `uv run scrape-codice` | `scrapers.normattiva:main_cds` | Scrapes CdS → `data/raw/cds/`, `data/parsed/cds/codice_della_strada.json` |
 | `uv run scrape-cap` | `scrapers.normattiva:main_cap` | Scrapes CAP → `data/raw/cap/`, `data/parsed/cap/codice_rca.json` |
 | `uv run parse-domande` | `parsers.questions_pdf:main_questions` | Parses quiz PDF → `data/parsed/quiz-patente-ab/` |
-| `uv run ingest-knowledge` | `guidami_ai_patente_ingestor.main:main` | Runs CleaningPipeline + IndexingPipeline (CdS + CAP → `knowledge_chunks`) |
+| `uv run ingest-knowledge --source <cds\|cap>` | `guidami_ai_patente_ingestor.main:main` | Runs `build_knowledge_indexing_flow` for one source (`enriched` → chunk → embed → `knowledge_chunks`) |
 | `uv run reset-knowledge-db` | `guidami_ai_patente_ingestor.reset_db:main` | Truncates `knowledge_chunks` without re-ingesting |
-| `uv run ingest-quiz` | `guidami_ai_patente_ingestor.quiz_main:main` | Runs QuizIndexingPipeline (quiz bank → `quiz_questions`) |
 | `uv run reset-quiz-db` | `guidami_ai_patente_ingestor.reset_quiz_db:main` | Truncates `quiz_questions` without re-ingesting |
 
 Register new CLI commands under `[project.scripts]` in `pyproject.toml`.
+
+> ⚠️ The ingestion pipelines were rebuilt on a `flowstep`-based orchestrator (see below); CLI cutover
+> for quiz indexing and for both preparation flows (knowledge + quiz) is **pending** — their old
+> entry points (`quiz_main.py`, `prepare_knowledge_main.py`) were removed and not yet rewired. Only
+> `ingest-knowledge` is currently wired to the new flow.
 
 ### Secrets required
 
@@ -76,9 +80,15 @@ Copy `.env.example` to `.env` and fill in:
 
 ### Package layout
 
+Ingestion pipelines are built on an in-house `commons/flowstep` toolkit (`Flow`/`FlowBuilder`/`Step`
++ `FlowContext`): each pipeline is a linear chain of thin `Step`s wired by a `*_flows.py` factory.
+Full design rationale lives in `.claude/architectures/ingestor/` (start at
+[index.md](.claude/architectures/ingestor/index.md)); current layout:
+
 ```
 src/
   commons/                              # Shared between ingestor and future app — no dependencies on either
+    flowstep/                           # Generic Flow/FlowBuilder/Step/FlowContext toolkit + validator
     entities/knowledge/                 # KnowledgeChunk (knowledge_chunks row)
     entities/quiz/                      # QuizQuestion (quiz_questions row)
     models/knowledge/                   # RetrievalResult (chunk + similarity score)
@@ -87,15 +97,23 @@ src/
     configs/                            # EmbeddingConfig, PostgresConnectionConfig (frozen BaseModel, not BaseSettings)
 
   guidami_ai_patente_ingestor/          # Batch ingestion service — depends on commons
-    orchestrators/knowledge_cleaning/   # CleaningPipeline + Builder
-    orchestrators/knowledge_indexing/   # IndexingPipeline + Builder
-    orchestrators/quiz_indexing/        # QuizIndexingPipeline + Builder
-    repositories/                       # ArticleRepository, KnowledgeChunkStoreRepository, QuizBankRepository, QuizQuestionStoreRepository
+    entities/                           # Article only (quiz source/enriched DTOs live in models/quiz/)
+    models/knowledge/                   # EnrichedArticle
+    models/quiz/                        # QuizBankModel/EnrichedQuizModel/EmbeddableQuizModel chain
+    mappers/knowledge/                  # EnrichedArticleMapper
+    mappers/quiz/                       # QuizMapper (single consolidated mapper, all 1:1 stage transitions)
+    services/layer_resolver.py          # LayerResolver(layers, sources).path(layer, source) -> Path
     services/knowledge/                 # ArticleCleaner, ArticleChunker
-    services/quiz/                      # QuizQuestionMapper
+    services/quiz/                      # QuizEnrichmentService + enrichers/ (QuizEnricher Protocol, ImageDescriptionEnricher)
+    repositories/json/                  # ArticleRepository, EnrichedArticleRepository, QuizBankRepository, EnrichedQuizBankRepository
+    repositories/db/                    # KnowledgeChunkStoreRepository, QuizQuestionStoreRepository
+    orchestrators/knowledge_flows.py    # build_knowledge_indexing_flow, build_knowledge_cleaning_flow, build_knowledge_enrichment_flow
+    orchestrators/quiz_flows.py         # build_quiz_indexing_flow, build_quiz_preparation_flow
+    orchestrators/preparation_runner.py # run_preparation(flow, out_path, force) — per-source idempotent runner
+    orchestrators/steps/knowledge/      # thin Step subclasses for both knowledge flows
+    orchestrators/steps/quiz/           # thin Step subclasses for both quiz flows
     configs/ingestor_config.py          # IngestorConfig (BaseSettings, frozen)
-    main.py / reset_db.py               # CLI entry points for knowledge corpus
-    quiz_main.py / reset_quiz_db.py     # CLI entry points for quiz bank
+    main.py / reset_db.py / reset_quiz_db.py  # only wired CLI entry points today (see table above)
 
   guidami_ai_patente/                   # Future FastAPI app — not yet started
   scrapers/                             # Web scrapers (normattiva.it)
@@ -104,15 +122,17 @@ src/
 
 ### Data directory convention
 
-Pipelines use a three-stage layout on disk:
+Pipelines use a four-stage layout on disk, resolved by `LayerResolver.path(layer, source)`:
 
 | Directory | Content | Produced by |
 |---|---|---|
 | `data/raw/<source>/` | Raw HTML from scrapers | `scrape-*` |
 | `data/parsed/<source>/` | Parsed JSON (normattiva markup still present) | `scrape-*` / `parse-domande` |
-| `data/cleaned/<source>/` | Cleaned JSON, markup stripped | `CleaningPipeline` (idempotent: skips if already exists) |
+| `data/cleaned/<source>/` | Cleaned JSON, markup stripped | `build_knowledge_cleaning_flow` (corpus). For the quiz bank there is no separate "clean" stage — `parse-domande`'s output **is** the `cleaned` layer input directly. |
+| `data/enriched/<source>/` | Self-contained enriched JSON (corpus: article + per-comma `contexts`; quiz: quiz bank + `image_description` per sub-question) | `build_knowledge_enrichment_flow` (corpus) / `build_quiz_preparation_flow` (quiz) |
 
-Knowledge pipeline reads from `data/cleaned/`, quiz pipeline reads from `data/parsed/quiz-patente-ab/`.
+Knowledge indexing reads from `data/enriched/`; quiz indexing reads from `data/enriched/quiz-patente-ab/`
+(produced by `build_quiz_preparation_flow`, not yet wired to a CLI entry point).
 
 ### Database schema
 
@@ -125,14 +145,21 @@ Embedding dimension is **1536** (`text-embedding-3-small`). Changing the model t
 
 ### Ingestion pipelines
 
-**Knowledge corpus** (`uv run ingest-knowledge`):
-1. `CleaningPipeline`: `data/parsed/` → `ArticleCleaner` → `data/cleaned/` (idempotent, skips if cleaned file exists)
-2. `IndexingPipeline`: `data/cleaned/` → `ArticleChunker` → `_filter_chunks` (skips `is_repealed` unless `embed_repealed=True`) → `LiteLLMEmbeddingClient.embed_passages([chunk.embedded_text])` in batches → `KnowledgeChunkStoreRepository.truncate() + bulk_insert()`. `embedded_text = f"{article_title} {chunk_text}"`.
+Each pipeline is a linear `Flow` (`commons.flowstep`) assembled by a factory in `orchestrators/*_flows.py`.
+Preparation flows (parsed/cleaned → enriched) are idempotent at the file level via the shared
+`run_preparation(flow, out_path, force)` runner: skips `flow.run()` if `out_path` already exists,
+unless `force=True`. Indexing flows are **always full-reload** (truncate + bulk insert), not idempotent.
 
-**Quiz bank** (`uv run ingest-quiz`):
-1. `QuizIndexingPipeline`: `data/parsed/quiz-patente-ab/quiz-patente-ab.json` → `QuizQuestionMapper` (flatten + dedup 8 exact duplicates → 7098 rows) → `_assign_embeddings` → `QuizQuestionStoreRepository.truncate() + bulk_insert()`. `embedded_text = f"{topic} {text}"`.
+**Knowledge corpus** (per-source, `--source cds`/`--source cap`):
+1. `build_knowledge_cleaning_flow`: `data/parsed/<source>/` → `ArticleCleaner` → `data/cleaned/<source>/`.
+2. `build_knowledge_enrichment_flow`: `data/cleaned/<source>/` → `ArticleContextualizerAgent` (per-comma `contexts`) → `EnrichedArticleMapper` → `data/enriched/<source>/`.
+3. `build_knowledge_indexing_flow` (wired to `uv run ingest-knowledge --source <cds|cap>`): `data/enriched/<source>/` → `ArticleChunker` → filters `is_repealed` chunks (unless `embed_repealed=True`) → `LiteLLMEmbeddingClient.embed_passages([chunk.embedded_text])` in batches → `KnowledgeChunkStoreRepository.delete_source(source) + bulk_insert()`. `embedded_text = f"{article_title} {chunk_text}"`.
 
-Both pipelines are **full-reload** (truncate + bulk insert). `embed_passages` is batched (`embedding_batch_size=64` in config).
+**Quiz bank** (single source `"quiz"`, no CLI entry point wired yet for either flow):
+1. `build_quiz_preparation_flow`: `data/cleaned/quiz-patente-ab/` → `QuizMapper.from_quiz_bank_to_enriched` base-map → `QuizEnrichmentService` applies enrichers in order (currently `ImageDescriptionEnricher`: vision-LLM description per unique image, deduped, via `RoadSignDescriberAgent`; missing file or describe failure → skip + warning, never raises) → `data/enriched/quiz-patente-ab/`. Open/Closed: adding an enricher only changes the factory's enricher list, never the step/service.
+2. `build_quiz_indexing_flow`: `data/enriched/quiz-patente-ab/` → flatten + dedup sub-questions (key `(text.strip(), correct_answer, image)`) via `MapToEmbeddableStep` → `QuizMapper.from_enriched_quiz_item_to_embeddable` → embed → `QuizMapper.from_embeddable_to_quiz_question` → `QuizQuestionStoreRepository.truncate() + bulk_insert()`. `embedded_text = f"{topic} {text}"`. Dedup historically removes 8 exact duplicates (7098 final rows).
+
+`embed_passages` is batched (`embedding_batch_size=64` in config) for both pipelines.
 
 ### Configuration pattern
 
