@@ -1,4 +1,3 @@
-from .article_repository import ArticleRepository as ArticleRepository
-from .enriched_article_repository import EnrichedArticleRepository as EnrichedArticleRepository
-from .enriched_quiz_bank_repository import EnrichedQuizBankRepository as EnrichedQuizBankRepository
-from .quiz_bank_repository import QuizBankRepository as QuizBankRepository
+"""JSON repository layer — only JsonRepository (domain-agnostic)."""
+
+from ._json_repository import JsonRepository as JsonRepository

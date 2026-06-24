@@ -1,18 +1,10 @@
 """Data-access layer dell'ingestor."""
 
 from .db import KnowledgeChunkStoreRepository, QuizQuestionStoreRepository
-from .json import (
-    ArticleRepository,
-    EnrichedArticleRepository,
-    EnrichedQuizBankRepository,
-    QuizBankRepository,
-)
+from .json import JsonRepository
 
 __all__ = [
-    "ArticleRepository",
-    "EnrichedArticleRepository",
-    "EnrichedQuizBankRepository",
+    "JsonRepository",
     "KnowledgeChunkStoreRepository",
-    "QuizBankRepository",
     "QuizQuestionStoreRepository",
 ]
