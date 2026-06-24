@@ -30,33 +30,21 @@ class ImageDescriptionEnricher(QuizEnricher):
         """Valorizza `image_description` su ogni sotto-domanda con immagine.
 
         Args:
-            questions: Domande madri enriched da arricchire.
+            questions: Sotto-domande enriched (flat) da arricchire.
 
         Returns:
             Nuove `EnrichedQuizModel` con `image_description` valorizzato sulle
             sotto-domande la cui immagine è stata descritta con successo.
         """
-        unique_images = {
-            sub.image
-            for question in questions
-            for sub in question.sub_questions
-            if sub.image is not None
-        }
+        unique_images = {q.image for q in questions if q.image is not None}
         descriptions = self._describe_images(unique_images)
 
         return [
             question.model_copy(
                 update={
-                    "sub_questions": [
-                        sub.model_copy(
-                            update={
-                                "image_description": (
-                                    descriptions.get(sub.image) if sub.image is not None else None
-                                )
-                            }
-                        )
-                        for sub in question.sub_questions
-                    ]
+                    "image_description": (
+                        descriptions.get(question.image) if question.image is not None else None
+                    )
                 }
             )
             for question in questions

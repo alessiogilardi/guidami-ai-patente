@@ -1,11 +1,11 @@
 from guidami_ai_patente_ingestor.mappers.quiz import QuizMapper
-from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel, QuizBankModel
+from guidami_ai_patente_ingestor.models.quiz import CleanedQuizModel, EnrichedQuizModel
 
 from .enrichers import QuizEnricher
 
 
 class QuizEnrichmentService:
-    """Base-map del quiz bank seguito dall'applicazione in catena degli enricher."""
+    """Base-map del quiz bank cleaned (flat) seguito dall'applicazione in catena degli enricher."""
 
     def __init__(self, enrichers: list[QuizEnricher]) -> None:
         """Inietta gli enricher da applicare, in ordine.
@@ -15,16 +15,16 @@ class QuizEnrichmentService:
         """
         self._enrichers = enrichers
 
-    def enrich(self, questions: list[QuizBankModel]) -> list[EnrichedQuizModel]:
-        """Mappa il quiz bank sorgente in enriched e applica gli enricher in ordine.
+    def enrich(self, questions: list[CleanedQuizModel]) -> list[EnrichedQuizModel]:
+        """Mappa il quiz bank cleaned in enriched e applica gli enricher in ordine.
 
         Args:
-            questions: Domande madri sorgente da arricchire.
+            questions: Sotto-domande cleaned (flat) sorgente da arricchire.
 
         Returns:
-            `EnrichedQuizModel` risultanti dal base-map e dalla catena di enricher.
+            `EnrichedQuizModel` (flat) risultanti dal base-map e dalla catena di enricher.
         """
-        enriched = [QuizMapper.from_quiz_bank_to_enriched(question) for question in questions]
+        enriched = [QuizMapper.from_cleaned_to_enriched(question) for question in questions]
         for enricher in self._enrichers:
             enriched = enricher.enrich(enriched)
         return enriched

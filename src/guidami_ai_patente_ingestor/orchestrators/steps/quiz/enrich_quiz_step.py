@@ -4,7 +4,7 @@ import logging
 from typing import cast
 
 from commons.flowstep import FlowContext, Step
-from guidami_ai_patente_ingestor.models.quiz import QuizBankModel
+from guidami_ai_patente_ingestor.models.quiz import CleanedQuizModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.services import QuizEnrichmentService
 
@@ -33,9 +33,9 @@ class EnrichQuizStep(Step):
         Args:
             context: Shared pipeline context.
         """
-        questions = cast(list[QuizBankModel], context.get(context_keys.CLEANED_QUIZ))
+        questions = cast(list[CleanedQuizModel], context.get(context_keys.CLEANED_QUIZ))
         enriched = self._service.enrich(questions)
-        logger.info(f"Enriched {len(enriched)} quiz main questions")
+        logger.info(f"Enriched {len(enriched)} quiz questions")
 
         context.put(context_keys.ENRICHED_QUIZ, enriched)
 
