@@ -13,7 +13,7 @@ import pdfplumber
 from pdfplumber.page import Page as PlumberPage
 
 PDF_PATH = Path("data/docs/domande AB italiano 23 04 2025.pdf")
-OUT_DIR = Path("data/cleaned/quiz-patente-ab")
+OUT_DIR = Path("data/parsed/quiz-patente-ab")
 IMAGES_DIR = OUT_DIR / "images"
 OUT_JSON = OUT_DIR / "quiz-patente-ab.json"
 
