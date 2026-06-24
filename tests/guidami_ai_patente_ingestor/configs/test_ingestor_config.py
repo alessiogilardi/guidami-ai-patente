@@ -37,7 +37,7 @@ def test_default_pipeline_selectors() -> None:
     assert config.knowledge_preparation.input_layer == "parsed"
     assert config.knowledge_preparation.output_layer == "enriched"
     assert config.knowledge_indexing.input_layer == "enriched"
-    assert config.quiz_preparation.input_layer == "cleaned"
+    assert config.quiz_preparation.input_layer == "parsed"
     assert config.quiz_preparation.output_layer == "enriched"
     assert config.quiz_indexing.input_layer == "enriched"
 

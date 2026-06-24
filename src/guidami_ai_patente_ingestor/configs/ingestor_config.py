@@ -42,13 +42,13 @@ class IngestorConfig(BaseSettings):
         input_layer="enriched", sources=["cds", "cap"]
     )
     quiz_preparation: PipelineLayerConfig = PipelineLayerConfig(
-        input_layer="cleaned", output_layer="enriched", sources=["quiz"]
+        input_layer="parsed", output_layer="enriched", sources=["quiz"]
     )
     quiz_indexing: PipelineLayerConfig = PipelineLayerConfig(
         input_layer="enriched", sources=["quiz"]
     )
     agents_dir: Path = Path("configs/agents")
-    quiz_images_dir: Path = Path("data/cleaned/quiz-patente-ab/images")
+    quiz_images_dir: Path = Path("data/parsed/quiz-patente-ab/images")
 
     embedding_batch_size: int = 64
     embedding: EmbeddingConfig = EmbeddingConfig()
