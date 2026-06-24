@@ -66,7 +66,7 @@ def test_flow_name_is_knowledge_indexing() -> None:
 
 
 def test_flow_required_input_keys_is_empty_set() -> None:
-    """Il flow non richiede chiavi esterne: LoadEnrichedArticlesStep parte da zero."""
+    """Il flow non richiede chiavi esterne: LoadJsonStep parte da zero."""
     from commons.flowstep import FlowValidator
 
     flow = build_knowledge_indexing_flow(

@@ -57,7 +57,7 @@ def test_flow_name_is_quiz_indexing() -> None:
 
 
 def test_flow_required_input_keys_is_empty_set() -> None:
-    """Il flow non richiede chiavi esterne: LoadEnrichedQuizStep parte da zero."""
+    """Il flow non richiede chiavi esterne: LoadJsonStep parte da zero."""
     report = FlowValidator().validate(_build())
     assert report.required_input_keys == set()
 
