@@ -2,13 +2,13 @@ from pathlib import Path
 from typing import Any, Self, cast
 
 from commons.agents import BaseAgent
-from guidami_ai_patente_ingestor.entities import Article
+from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
 
 
 class ArticleContextualizerAgent(BaseAgent[dict[int, str]]):
     """Arricchisce i commi del corpus normativo con contesto situazionale via LLM."""
 
-    def contextualize(self, article: Article) -> dict[int, str]:
+    def contextualize(self, article: EnrichedArticle) -> dict[int, str]:
         """Produce un contesto situazionale per ogni comma dell'articolo.
 
         Articoli abrogati vengono saltati senza chiamare il modello.

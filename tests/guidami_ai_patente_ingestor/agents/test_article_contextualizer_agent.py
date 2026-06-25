@@ -12,11 +12,11 @@ from pydantic_ai.messages import (
 from pydantic_ai.models.function import AgentInfo, FunctionModel
 
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
-from guidami_ai_patente_ingestor.entities import Article
+from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
 
 
-def _article(repealed: bool = False) -> Article:
-    return Article(
+def _article(repealed: bool = False) -> EnrichedArticle:
+    return EnrichedArticle(
         number="1",
         title="Finalità",
         text="Comma 0.",
@@ -24,6 +24,7 @@ def _article(repealed: bool = False) -> Article:
         url="https://example.com/art-1",
         scraped_at="2025-01-01T00:00:00",
         repealed=repealed,
+        contexts={},
     )
 
 
