@@ -9,22 +9,27 @@ from commons.services.embeddings import EmbeddingService
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.entities import Article
+from guidami_ai_patente_ingestor.mappers.knowledge import ArticleMapper
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
+    EnrichDataStep,
     LoadJsonStep,
     MapStep,
     WriteJsonStep,
 )
+from guidami_ai_patente_ingestor.orchestrators.steps.generic.protocols.enricher_protocol import (
+    EnricherProtocol,
+)
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
     ChunkArticlesStep,
-    ContextualizeStep,
     EmbedChunksStep,
     StoreChunksStep,
 )
 from guidami_ai_patente_ingestor.repositories import KnowledgeChunkStoreRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
+from guidami_ai_patente_ingestor.services.knowledge.enrichers import ContextEnricher
 
 logger = logging.getLogger(__name__)
 
@@ -194,7 +199,7 @@ def build_knowledge_enrichment_flow(
     Nessun embed/store: questo flow appartiene allo stadio di preparazione.
 
     Mappatura step:
-      `LoadJsonStep` → `ContextualizeStep` → `WriteJsonStep`
+      `LoadJsonStep` → `MapStep` → `EnrichDataStep` → `WriteJsonStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -226,11 +231,20 @@ def build_knowledge_enrichment_flow(
         output_key=context_keys.CLEANED_ARTICLES,
     )
 
-    contextualize_step = ContextualizeStep(
-        "contextualize",
-        article_contextualizer_agent=ArticleContextualizerAgent.from_yaml(
-            "article_contextualizer", config.agents_dir
-        ),
+    base_map_step = MapStep(
+        "map_article_to_enriched",
+        ArticleMapper.from_article_to_enriched_article,
+        context_keys.CLEANED_ARTICLES,
+        context_keys.ENRICHED_ARTICLES,
+    )
+
+    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", config.agents_dir)
+    enrichers: list[EnricherProtocol[EnrichedArticle, EnrichedArticle]] = [ContextEnricher(agent)]
+    enrich_step = EnrichDataStep[EnrichedArticle](
+        "enrich_articles",
+        enrichers,
+        context_keys.ENRICHED_ARTICLES,
+        context_keys.ENRICHED_ARTICLES,
     )
 
     write_step = WriteJsonStep(
@@ -245,7 +259,8 @@ def build_knowledge_enrichment_flow(
     flow: Flow = (
         FlowBuilder("knowledge_enrichment")
         .add_step(load_step)
-        .add_step(contextualize_step)
+        .add_step(base_map_step)
+        .add_step(enrich_step)
         .add_step(write_step)
         .build(validate=validate)
     )

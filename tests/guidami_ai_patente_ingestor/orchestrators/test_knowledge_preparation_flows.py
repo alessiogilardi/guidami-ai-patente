@@ -12,6 +12,12 @@ from guidami_ai_patente_ingestor.orchestrators import (
     build_knowledge_cleaning_flow,
     build_knowledge_enrichment_flow,
 )
+from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
+    EnrichDataStep,
+    LoadJsonStep,
+    MapStep,
+    WriteJsonStep,
+)
 from guidami_ai_patente_ingestor.services import LayerResolver
 
 # ---------------------------------------------------------------------------
@@ -122,3 +128,19 @@ def test_enrichment_flow_unknown_source_raises_value_error() -> None:
             layer_resolver=_make_layer_resolver(),
             source="quiz",
         )
+
+
+def test_enrichment_flow_has_four_steps_load_map_enrich_write() -> None:
+    with patch.object(ArticleContextualizerAgent, "from_yaml", return_value=_patched_agent()):
+        flow = build_knowledge_enrichment_flow(
+            config=_base_config(),
+            layer_resolver=_make_layer_resolver(),
+            source="cds",
+        )
+
+    steps = flow.get_steps()
+    assert len(steps) == 4
+    assert isinstance(steps[0], LoadJsonStep)
+    assert isinstance(steps[1], MapStep)
+    assert isinstance(steps[2], EnrichDataStep)
+    assert isinstance(steps[3], WriteJsonStep)

@@ -16,7 +16,7 @@ CHUNKS = "chunks"  # output del chunker → embed → store
 
 # --- Knowledge preparation (SP05) ---
 # Flow clean: LoadJsonStep → MapStep → WriteJsonStep.
-# Flow enrich: LoadJsonStep → ContextualizeStep → WriteJsonStep.
+# Flow enrich: LoadJsonStep → MapStep → EnrichDataStep → WriteJsonStep.
 PARSED_ARTICLES = "parsed_articles"  # input clean: list[Article] caricati dal layer "parsed"
 CLEANED_ARTICLES = "cleaned_articles"  # output clean / input enrich: list[Article] puliti
 
