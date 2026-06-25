@@ -17,21 +17,21 @@ from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
     DbStoreStep,
     EmbedStep,
+    EnrichDataStep,
     LoadJsonStep,
     MapStep,
     WriteJsonStep,
 )
+from guidami_ai_patente_ingestor.orchestrators.steps.generic.protocols.enricher_protocol import (
+    EnricherProtocol,
+)
 from guidami_ai_patente_ingestor.orchestrators.steps.quiz import (
-    EnrichQuizStep,
     FlattenQuizStep,
     MapToEmbeddableStep,
 )
 from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
-from guidami_ai_patente_ingestor.services import LayerResolver, QuizEnrichmentService
-from guidami_ai_patente_ingestor.services.quiz.enrichers import (
-    ImageDescriptionEnricher,
-    QuizEnricher,
-)
+from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.services.quiz.enrichers import ImageDescriptionEnricher
 
 logger = logging.getLogger(__name__)
 
@@ -181,10 +181,10 @@ def build_quiz_enrichment_flow(
     Stadio di preparazione: nessun embed/store. Il quiz bank ha una sola
     source (`"quiz"`), derivata da `config.quiz_preparation.sources[0]`.
     L'enrichment è Open/Closed: aggiungere un futuro enricher tocca solo la
-    lista `enrichers` qui sotto, non lo step né il service.
+    lista `enrichers` qui sotto, non lo step generico.
 
     Mappatura step:
-      `LoadJsonStep` → `EnrichQuizStep` → `WriteJsonStep`
+      `LoadJsonStep` → `MapStep` → `EnrichDataStep` → `WriteJsonStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -213,10 +213,23 @@ def build_quiz_enrichment_flow(
         context_keys.CLEANED_QUIZ,
     )
 
+    base_map_step = MapStep(
+        "map_cleaned_to_enriched",
+        QuizMapper.from_cleaned_to_enriched,
+        context_keys.CLEANED_QUIZ,
+        context_keys.ENRICHED_QUIZ,
+    )
+
     describer = RoadSignDescriberAgent.from_yaml("road_sign_describer", config.agents_dir)
-    enrichers: list[QuizEnricher] = [ImageDescriptionEnricher(describer, config.quiz_images_dir)]
-    enrichment_service = QuizEnrichmentService(enrichers)
-    enrich_step = EnrichQuizStep("enrich_quiz", enrichment_service)
+    enrichers: list[EnricherProtocol[EnrichedQuizModel, EnrichedQuizModel]] = [
+        ImageDescriptionEnricher(describer, config.quiz_images_dir)
+    ]
+    enrich_step = EnrichDataStep[EnrichedQuizModel](
+        "enrich_quiz",
+        enrichers,
+        context_keys.ENRICHED_QUIZ,
+        context_keys.ENRICHED_QUIZ,
+    )
 
     write_step = WriteJsonStep(
         "write_enriched_quiz",
@@ -230,6 +243,7 @@ def build_quiz_enrichment_flow(
     flow: Flow = (
         FlowBuilder("quiz_enrichment")
         .add_step(load_step)
+        .add_step(base_map_step)
         .add_step(enrich_step)
         .add_step(write_step)
         .build(validate=validate)
