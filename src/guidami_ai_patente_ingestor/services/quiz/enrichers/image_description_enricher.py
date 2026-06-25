@@ -4,16 +4,16 @@ from pathlib import Path
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 
-from .quiz_enricher import QuizEnricher
-
 logger = logging.getLogger(__name__)
 
 
-class ImageDescriptionEnricher(QuizEnricher):
+class ImageDescriptionEnricher:
     """Arricchisce le sotto-domande con la descrizione del segnale stradale.
 
     Una sola chiamata vision per immagine unica (dedup), non per occorrenza:
-    più sotto-domande possono condividere la stessa immagine.
+    più sotto-domande possono condividere la stessa immagine. Soddisfa
+    `EnricherProtocol[EnrichedQuizModel, EnrichedQuizModel]` per struttura
+    (typing strutturale del `Protocol`, nessuna eredità esplicita richiesta).
     """
 
     def __init__(self, road_sign_describer: RoadSignDescriberAgent, images_dir: Path) -> None:
@@ -26,17 +26,17 @@ class ImageDescriptionEnricher(QuizEnricher):
         self._road_sign_describer = road_sign_describer
         self._images_dir = images_dir
 
-    def enrich(self, questions: list[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
+    def enrich(self, items: list[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
         """Valorizza `image_description` su ogni sotto-domanda con immagine.
 
         Args:
-            questions: Sotto-domande enriched (flat) da arricchire.
+            items: Sotto-domande enriched (flat) da arricchire.
 
         Returns:
             Nuove `EnrichedQuizModel` con `image_description` valorizzato sulle
             sotto-domande la cui immagine è stata descritta con successo.
         """
-        unique_images = {q.image for q in questions if q.image is not None}
+        unique_images = {q.image for q in items if q.image is not None}
         descriptions = self._describe_images(unique_images)
 
         return [
@@ -47,7 +47,7 @@ class ImageDescriptionEnricher(QuizEnricher):
                     )
                 }
             )
-            for question in questions
+            for question in items
         ]
 
     def _describe_images(self, images: set[str]) -> dict[str, str]:
