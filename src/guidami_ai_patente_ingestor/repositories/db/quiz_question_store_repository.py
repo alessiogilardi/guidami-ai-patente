@@ -1,44 +1,38 @@
-from psycopg import sql
-
 from commons.clients import PostgresClient
 from commons.entities.quiz import QuizQuestion
+from guidami_ai_patente_ingestor.repositories.db._bulk_insert_store_repository import (
+    BulkInsertStoreRepository,
+)
 
 
-class QuizQuestionStoreRepository:
+class QuizQuestionStoreRepository(BulkInsertStoreRepository[QuizQuestion]):
     """Scrittura full-reload su `quiz_questions` (truncate + bulk insert)."""
 
     def __init__(self, client: PostgresClient, table_name: str) -> None:
         """Inietta il `PostgresClient` e il nome della tabella."""
-        self._client = client
-        self._table_name = table_name
+        super().__init__(
+            client=client,
+            table_name=table_name,
+            columns=(
+                "number",
+                "question_id",
+                "topic",
+                "text",
+                "correct_answer",
+                "image_filename",
+                "embedding",
+            ),
+            row_mapper=self._to_db_row,
+        )
 
-    def truncate(self) -> None:
-        """Svuota la tabella in vista di un full reload."""
-        self._client.truncate(self._table_name)
-
-    def bulk_insert(self, questions: list[QuizQuestion]) -> None:
-        """Inserisce in batch le domande del quiz bank."""
-        if not questions:
-            return
-
-        query = sql.SQL(
-            "INSERT INTO {table} "
-            "(number, question_id, topic, text, correct_answer, image_filename, embedding) "
-            "VALUES (%s, %s, %s, %s, %s, %s, %s)"
-        ).format(table=sql.Identifier(self._table_name))
-
-        self._client.execute_many(
-            query,
-            [
-                (
-                    question.number,
-                    question.question_id,
-                    question.topic,
-                    question.text,
-                    question.correct_answer,
-                    question.image_filename,
-                    question.embedding,
-                )
-                for question in questions
-            ],
+    @staticmethod
+    def _to_db_row(item: QuizQuestion) -> tuple[object, ...]:
+        return (
+            item.number,
+            item.question_id,
+            item.topic,
+            item.text,
+            item.correct_answer,
+            item.image_filename,
+            item.embedding,
         )
