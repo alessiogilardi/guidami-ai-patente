@@ -1,6 +1,5 @@
 """Servizi di dominio per la preparazione del quiz bank (enrichment)."""
 
-from .enrichers import ImageDescriptionEnricher, QuizEnricher
-from .quiz_enrichment_service import QuizEnrichmentService
+from .enrichers import ImageDescriptionEnricher
 
-__all__ = ["ImageDescriptionEnricher", "QuizEnricher", "QuizEnrichmentService"]
+__all__ = ["ImageDescriptionEnricher"]
