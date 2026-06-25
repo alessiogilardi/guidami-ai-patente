@@ -1,5 +1,5 @@
 from guidami_ai_patente_ingestor.entities import Article
-from guidami_ai_patente_ingestor.mappers.knowledge import EnrichedArticleMapper
+from guidami_ai_patente_ingestor.mappers.knowledge import ArticleMapper
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
 
 
@@ -16,11 +16,10 @@ def _article(**kwargs) -> Article:
     return Article(**{**defaults, **kwargs})
 
 
-def test_to_enriched_article_copies_all_common_fields() -> None:
+def test_from_article_to_enriched_article_copies_all_common_fields() -> None:
     article = _article()
-    contexts = {0: "Contesto comma 1.", 1: "Contesto comma 2."}
 
-    result = EnrichedArticleMapper.from_article_to_enriched_article(article, contexts)
+    result = ArticleMapper.from_article_to_enriched_article(article)
 
     assert isinstance(result, EnrichedArticle)
     assert result.number == article.number
@@ -32,19 +31,18 @@ def test_to_enriched_article_copies_all_common_fields() -> None:
     assert result.repealed == article.repealed
 
 
-def test_to_enriched_article_sets_contexts() -> None:
+def test_from_article_to_enriched_article_sets_empty_contexts() -> None:
     article = _article()
-    contexts = {0: "Contesto comma 1."}
 
-    result = EnrichedArticleMapper.from_article_to_enriched_article(article, contexts)
+    result = ArticleMapper.from_article_to_enriched_article(article)
 
-    assert result.contexts == contexts
+    assert result.contexts == {}
 
 
-def test_to_enriched_article_with_empty_contexts() -> None:
+def test_from_article_to_enriched_article_preserves_repealed_flag() -> None:
     article = _article(repealed=True)
 
-    result = EnrichedArticleMapper.from_article_to_enriched_article(article, {})
+    result = ArticleMapper.from_article_to_enriched_article(article)
 
     assert result.contexts == {}
     assert result.repealed is True

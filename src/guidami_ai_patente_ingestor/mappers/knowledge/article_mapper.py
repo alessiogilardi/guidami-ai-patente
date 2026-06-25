@@ -2,18 +2,16 @@ from guidami_ai_patente_ingestor.entities import Article
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
 
 
-class EnrichedArticleMapper:
-    """Converte `Article` in `EnrichedArticle` (layer enriched).
+class ArticleMapper:
+    """Backbone delle trasformazioni 1:1 della pipeline del corpus normativo.
 
-    Copia i campi comuni e imposta `contexts` con i contesti per comma
-    generati dall'agente di contestualizzazione.
+    Tutti i metodi sono statici e puri: ciascuno mappa un modello nel successivo
+    della catena (`from_X_to_Y`), sullo stesso pattern di `QuizMapper`.
     """
 
     @staticmethod
-    def from_article_to_enriched_article(
-        article: Article, contexts: dict[int, str]
-    ) -> EnrichedArticle:
-        """Mappa un `Article` + contesti per comma in `EnrichedArticle`."""
+    def from_article_to_enriched_article(article: Article) -> EnrichedArticle:
+        """Base-map: copia i campi comuni, `contexts` vuoto (valorizzato dal ContextEnricher)."""
         return EnrichedArticle(
             number=article.number,
             title=article.title,
@@ -22,5 +20,5 @@ class EnrichedArticleMapper:
             url=article.url,
             scraped_at=article.scraped_at,
             repealed=article.repealed,
-            contexts=contexts,
+            contexts={},
         )

@@ -1,5 +1,5 @@
 """Mapper per il corpus normativo (CdS/CAP)."""
 
-from .enriched_article_mapper import EnrichedArticleMapper
+from .article_mapper import ArticleMapper
 
-__all__ = ["EnrichedArticleMapper"]
+__all__ = ["ArticleMapper"]
