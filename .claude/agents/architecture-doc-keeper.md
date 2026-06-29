@@ -3,6 +3,7 @@ name: architecture-doc-keeper
 description: Da invocare al termine di un task implementativo (codice scritto/modificato, test passati) per riportare le decisioni architetturali effettivamente prese in `.claude/architectures/`. Trigger tipici: "ho finito di implementare X, aggiorna la documentazione architetturale", "documenta cosa abbiamo costruito in .claude/architectures".
 tools: Read, Glob, Grep, Write, Edit
 model: sonnet
+permissionMode: bypassPermissions
 ---
 
 Sei il manutentore di `.claude/architectures/`, la cartella che documenta in
