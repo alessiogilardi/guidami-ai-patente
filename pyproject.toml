@@ -24,9 +24,7 @@ dependencies = [
 scrape-codice      = "scrapers.normattiva:main_cds"
 scrape-cap         = "scrapers.normattiva:main_cap"
 parse-domande      = "parsers.questions_pdf:main_questions"
-ingest-knowledge   = "guidami_ai_patente_ingestor.main:main"
-reset-knowledge-db = "guidami_ai_patente_ingestor.reset_db:main"
-reset-quiz-db      = "guidami_ai_patente_ingestor.reset_quiz_db:main"
+ingest             = "guidami_ai_patente_ingestor.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12.0"]
