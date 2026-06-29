@@ -19,15 +19,18 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
   - `knowledge_preparation: PipelineLayerConfig` — `input_layer: "parsed"`,
     `output_layer: "enriched"`.
   - `knowledge_indexing: PipelineLayerConfig` — `input_layer: "enriched"`.
-  - `quiz_preparation: PipelineLayerConfig` — `input_layer: "cleaned"` (il
-    file del quiz bank vive in `data/cleaned/`, non in `data/parsed/` —
-    **deviazione dal piano**, che prevedeva `parsed`; adattato ai dati reali
-    su disco). `output_layer: "enriched"`.
+  - `quiz_preparation: PipelineLayerConfig` — `input_layer: "parsed"`,
+    `output_layer: "enriched"`, `sources: ["quiz"]`. **Cambiato in SP09**: in
+    precedenza era `input_layer: "cleaned"` (il quiz bank partiva
+    direttamente dal layer `cleaned`, senza un proprio `parsed`); SP09 ha
+    introdotto un layer `parsed` esplicito per il quiz (output del parser
+    PDF) e spostato il flatten+dedup nello stadio di cleaning
+    (`build_quiz_cleaning_flow`), a specchio del knowledge.
   - `quiz_indexing: PipelineLayerConfig` — `input_layer: "enriched"`.
   - `agents_dir: Path = Path("configs/agents")` — directory dei file YAML
     degli agenti.
   - `quiz_images_dir: Path` — directory contenente le immagini del quiz bank
-    (usata da `ImageDescriptionEnricher`, SP06).
+    (usata da `ImageDescriptionEnricher`).
   - `embedding_batch_size: int = 64`
   - `embedding: EmbeddingConfig = EmbeddingConfig()` (default `commons`)
   - `postgres: PostgresConnectionConfig` (obbligatorio)

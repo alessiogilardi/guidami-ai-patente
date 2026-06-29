@@ -5,7 +5,9 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 `plans/ingest--orchestrator/04-bis-quiz-data-models.md`,
 `plans/ingest--orchestrator/04-tris-quiz-mappers.md`,
 `plans/ingest--orchestrator/05-knowledge-preparation-flow.md`,
-`plans/ingest--orchestrator/06-quiz-preparation-flow.md`.
+`plans/ingest--orchestrator/06-quiz-preparation-flow.md`,
+`plans/ingest--orchestrator/08-generic-map-to-step.md`,
+`plans/ingest--orchestrator/09-quiz-flatten-at-preparation.md`.
 
 ## Test
 
@@ -15,14 +17,27 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
   `load`/`write` round-trip su fixture reali.
 - `tests/guidami_ai_patente_ingestor/repositories/test_enriched_article_repository.py` —
   round-trip `write`/`load` su `EnrichedArticle` con `contexts`.
-- `tests/guidami_ai_patente_ingestor/repositories/test_enriched_quiz_bank_repository.py` —
-  round-trip `write`/`load` su `EnrichedQuizModel` con `image_description`.
-- `tests/guidami_ai_patente_ingestor/repositories/test_quiz_bank_repository.py` —
-  `load` su fixture reale (`tests/.../fixtures/quiz_bank_sample.json`):
-  mappatura in `QuizBankModel`/`QuizBankItemModel`.
 - `tests/guidami_ai_patente_ingestor/repositories/test_quiz_question_store_repository.py` —
-  contro il Postgres del compose (no marker `integration`): `truncate` +
-  `bulk_insert` su `quiz_questions` con colonna `embedding`.
+  tutti i test marcati `@pytest.mark.integration` (richiedono il Postgres del
+  compose): `truncate` + `bulk_insert` su `quiz_questions` con colonna
+  `embedding`.
+
+> **Nota (refactor `BulkInsertStoreRepository`)**: `QuizQuestionStoreRepository`
+> e `KnowledgeChunkStoreRepository` condividono oggi la base generica
+> `BulkInsertStoreRepository[T]` (vedi
+> [knowledge_pipelines.md](knowledge_pipelines.md)) per `truncate`/`bulk_insert`.
+> Non esiste un test unitario dedicato alla base stessa (è astratta, prefisso
+> `_`, non re-esportata): la copertura passa solo dai test di integrazione
+> sulle due sottoclassi concrete (`test_quiz_question_store_repository.py` qui
+> sopra; il knowledge store è coperto via `test_knowledge_flows.py`, vedi
+> sezione "Orchestrators — step knowledge indexing" sotto).
+
+> **Nota (SP09)**: `test_quiz_bank_repository.py` e
+> `test_enriched_quiz_bank_repository.py` non esistono più — i flow di quiz
+> preparation usano oggi i generici `LoadJsonStep`/`WriteJsonStep`
+> (parametrizzati con `model_class`), non `QuizBankRepository`/
+> `EnrichedQuizBankRepository` direttamente nei flow. I due repository
+> restano nel codice (`repositories/json/`) ma senza test dedicato corrente.
 
 ### Config e layer resolver
 
@@ -47,12 +62,8 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
   con `Agent` fake: parsa `dict[int, str]` dal JSON canned; articolo abrogato
   → ritorna `{}` senza chiamare l'agent; JSON malformato → `ValueError`.
 
-### Services — quiz (preparation, SP06)
+### Services — quiz (enrichment)
 
-- `tests/guidami_ai_patente_ingestor/services/quiz/test_quiz_enrichment_service.py` —
-  applica il base-map (`QuizMapper.from_quiz_bank_to_enriched`) e concatena
-  gli enricher in ordine (2 fake enricher → entrambi applicati); lista vuota
-  → solo base-map (tutti i campi enrichment `None`).
 - `tests/guidami_ai_patente_ingestor/services/quiz/enrichers/test_image_description_enricher.py` —
   con fake `RoadSignDescriberAgent`: dedup (3 sotto-domande, 2 file distinti
   → 2 chiamate `describe`); immagine mancante → skip + warning, nessuna
@@ -60,44 +71,53 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
   "name. description"`; sotto-domanda con `image is None` → resta `None`;
   nessuna mutazione in place (verificato via identità oggetti).
 
-### Mappers — quiz (consolidato, SP04-bis/SP04-tris)
+> **Nota (refactor enrichment)**: `test_quiz_enrichment_service.py` non
+> esiste più — `QuizEnrichmentService` (base-map + catena enricher) è stata
+> rimossa in favore dei building block generici `MapStep`/`EnrichDataStep`.
+> Il base-map è oggi testato in `test_quiz_mapper.py`
+> (`from_cleaned_to_enriched`); la catena di enricher è testata
+> genericamente in `test_enrich_data_step.py` (vedi sezione "Orchestrators —
+> step generici" sotto), non più con un test service-specific.
+
+### Mappers — quiz (consolidato, rinominato in SP09)
 
 - `tests/guidami_ai_patente_ingestor/mappers/quiz/test_quiz_mapper.py` —
-  unico file di test per `QuizMapper` (sostituisce i precedenti
-  `test_quiz_question_mapper.py` + `test_embeddable_quiz_question_mapper.py`):
-  `from_enriched_quiz_item_to_embeddable` (denormalizzazione `question_id`/
-  `topic` da `parent`, estrazione `image_filename`, `image_filename=None` se
-  assente); `from_embeddable_to_quiz_question` (copia i campi persistiti,
-  scarta `image_description`, mantiene `embedding`);
-  `from_quiz_bank_item_to_enriched`/`from_quiz_bank_to_enriched` (base-map,
-  `image_description=None`). **Nessun test di dedup qui**: il dedup è
-  migrato in `test_map_to_embeddable_step.py` (non è più nel mapper).
+  test per `QuizMapper` lato indexing: `from_enriched_quiz_item_to_embeddable`
+  (denormalizzazione `question_id`/`topic` da `parent`, estrazione
+  `image_filename`, `image_filename=None` se assente); `from_embeddable_to_quiz_question`
+  (copia i campi persistiti, scarta `image_description`, mantiene
+  `embedding`). **Nota**: questi due metodi assumono ancora la struttura
+  nested pre-SP09 e sono "out of scope" per SP09 (rottura nota e accettata,
+  vedi [quiz_pipelines.md](quiz_pipelines.md)) — i test sono mantenuti
+  minimali (compilano, non sono stati corretti).
+- `tests/guidami_ai_patente_ingestor/mappers/quiz/test_quiz_mapper_flatten_at_preparation.py` —
+  (SP09) `from_parsed_to_cleaned` (denormalizzazione `question_id`/`topic` da
+  `parent`) e `from_cleaned_to_enriched` (base-map flat→flat,
+  `image_description=None`). **Nessun test di dedup qui**: il dedup è in
+  `test_flatten_quiz_step.py` (non è nel mapper).
 
-### Orchestrators — knowledge preparation flow + runner (SP05)
+### Orchestrators — knowledge preparation flow + runner
 
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_load_parsed_articles_step.py` —
-  `required == set()`, `produced == {PARSED_ARTICLES}`; `execute` carica la
-  source iniettata via `layer_resolver.path(input_layer, source)`; source
-  diversa produce lista distinta.
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_clean_articles_step.py` —
-  `required == {PARSED_ARTICLES}`, `produced == {CLEANED_ARTICLES}`; delega a
-  `ArticleCleaner.clean` per ogni articolo.
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_write_cleaned_step.py` —
-  `required == {CLEANED_ARTICLES}`, `produced == set()`; `execute` risolve il
-  path sul layer `cleaned` e chiama `ArticleRepository.write`.
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_load_cleaned_articles_step.py` —
-  `required == set()`, `produced == {CLEANED_ARTICLES}`; carica dal layer
-  `cleaned` iniettato.
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_contextualize_step.py` —
-  `required == {CLEANED_ARTICLES}`, `produced == {ENRICHED_ARTICLES}`; delega
-  `ArticleContextualizerAgent.contextualize` + `EnrichedArticleMapper` per ogni
-  articolo.
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_write_enriched_step.py` —
-  `required == {ENRICHED_ARTICLES}`, `produced == set()`; `execute` risolve il
-  path sul layer `enriched` e chiama `EnrichedArticleRepository.write`.
-- `tests/guidami_ai_patente_ingestor/mappers/knowledge/test_enriched_article_mapper.py` —
-  `from_article_to_enriched_article` copia tutti i campi comuni e imposta
-  `contexts`.
+`LoadParsedArticlesStep`/`CleanArticlesStep`/`WriteCleanedStep`/
+`LoadCleanedArticlesStep`/`WriteEnrichedStep` non esistono più — sostituiti
+dai generici `LoadJsonStep`/`MapStep`/`WriteJsonStep`, testati genericamente
+(vedi sezione "Orchestrators — step generici" sotto). Resta domain-specific:
+
+- `tests/guidami_ai_patente_ingestor/mappers/knowledge/test_article_mapper.py` —
+  `from_parsed_to_enriched` copia tutti i campi comuni e imposta `contexts={}`;
+  `from_embeddable_chunk_to_knowledge_chunk` copia tutti i campi (incluso
+  `embedding=None` se absent). `test_enriched_article_mapper.py` è stato rimosso
+  e rimpiazzato da questo file.
+- `tests/guidami_ai_patente_ingestor/models/knowledge/test_embeddable_chunk.py` —
+  default `embedding=None`, default `context=""`, `embedded_text` senza context
+  (titolo + testo uniti da `\n`), `embedded_text` con context (tre parti unite da
+  `\n`), parti vuote saltate.
+- `tests/guidami_ai_patente_ingestor/services/knowledge/enrichers/test_context_enricher.py` —
+  con fake `ArticleContextualizerAgent`: contestualizzazione riuscita →
+  `contexts` valorizzato; eccezione dell'agente → `contexts={}` + warning,
+  nessuna eccezione propagata; nessuna mutazione in place (nuovi oggetti via
+  `model_copy`). `test_contextualize_step.py` non esiste più (`ContextualizeStep`
+  rimosso).
 - `tests/guidami_ai_patente_ingestor/orchestrators/test_knowledge_flows.py` —
   (estensione SP05, stesso file di SP03) `build_knowledge_cleaning_flow`/
   `build_knowledge_enrichment_flow` ritornano un `Flow` con il nome corretto
@@ -110,71 +130,82 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
   `force=False`; esegue `flow.run()` se `out_path` non esiste; esegue
   `flow.run()` con `force=True` anche se `out_path` esiste.
 
-### Orchestrators — step knowledge (SP03)
+### Orchestrators — step knowledge indexing
 
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_load_enriched_articles_step.py` —
-  `required == set()`, `produced == {ENRICHED_ARTICLES}`; `execute` carica la
-  source iniettata e produce la lista piatta; source diversa produce lista distinta.
+`LoadEnrichedArticlesStep` non esiste più — sostituito dal generico
+`LoadJsonStep` (vedi sezione "Orchestrators — step generici" sotto).
+
 - `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_chunk_articles_step.py` —
-  `required == {ENRICHED_ARTICLES}`, `produced == {CHUNKS}`; tutti i chunk prodotti
+  `required == {ENRICHED_ARTICLES}`, `produced == {EMBEDDABLE_CHUNKS}`; tutti i chunk prodotti
   (repealed inclusi, nessun filtro); flatten corretto da più articoli;
   deleghe a `ArticleChunker` con la source iniettata nel costruttore.
 - `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_embed_chunks_step.py` —
-  `required == produced == {CHUNKS}`; `embed_repealed=False` → i chunk repealed
+  `required == produced == {EMBEDDABLE_CHUNKS}`; `embed_repealed=False` → i chunk repealed
   restano **presenti** con `embedding=None`; `embed_repealed=True` → tutti embeddati;
   mutazione in place + ri-scrittura stessa lista; vettori corretti; lista vuota noop.
 - `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_store_chunks_step.py` —
-  `required == {CHUNKS}`, `produced == set()`; `execute` chiama `delete_source(source)`
+  `required == {CHUNK_ENTITIES}`, `produced == set()`; `execute` chiama `delete_source(source)`
   poi `bulk_insert(chunks)` nell'ordine; source iniettata passata correttamente al repository.
 - `tests/guidami_ai_patente_ingestor/orchestrators/test_knowledge_flows.py` —
   `build_knowledge_indexing_flow(...)` ritorna un `Flow`; `flow.name == "knowledge_indexing"`;
   source non valida → `ValueError`; `FlowValidator().validate(flow).required_input_keys == set()`;
-  `validate=True` non solleva (WARNING benigno su `CHUNKS` di `EmbedChunksStep`).
+  `validate=True` non solleva (WARNING benigno su `EMBEDDABLE_CHUNKS` di `EmbedChunksStep`);
+  ordine dei 5 step verificato (`load_enriched_articles`, `chunk_articles`, `embed_chunks`,
+  `map_to_chunk_entity`, `store_chunks`).
   Integrazione (`@pytest.mark.integration`): flow completo su Postgres — tutti i
   chunk inseriti (repealed inclusi), repealed con `embedding IS NULL`,
   non-repealed con vettore valorizzato.
 
-### Orchestrators — step quiz indexing (SP04, mapper aggiornato in SP04-tris)
+### Orchestrators — step quiz indexing
 
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_load_enriched_quiz_step.py` —
-  `required == set()`, `produced == {ENRICHED_QUIZ}`; `execute` carica via
-  `layer_resolver.path(input_layer, source)` e repository; source iniettata
-  (non hardcoded `"quiz"`); source diversa produce lista distinta.
+`LoadEnrichedQuizStep`/`MapToQuizEntityStep` sono stati sostituiti dai
+generici `LoadJsonStep`/`MapStep` (vedi sopra) — nessun test step-dedicato
+residuo per loro.
+
 - `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_map_to_embeddable_step.py` —
   `required == {ENRICHED_QUIZ}`, `produced == {EMBEDDABLE_QUIZ}`; **dedup
   reale** (non mockato) su `(text.strip(), correct_answer, image)` (es. 3
-  sotto-domande, 2 distinte → 2 embeddable) — i casi di dedup sono migrati
-  qui da SP04-tris (prima erano nel test del mapper); più un test di
-  delegazione (mocked) a `QuizMapper.from_enriched_quiz_item_to_embeddable`.
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_map_to_quiz_entity_step.py` —
-  `required == {EMBEDDABLE_QUIZ}`, `produced == {QUIZ_ENTITIES}`; delega
-  `QuizMapper.from_embeddable_to_quiz_question`; contratto chiavi rispettato.
+  sotto-domande, 2 distinte → 2 embeddable); più un test di delegazione
+  (mocked) a `QuizMapper.from_enriched_quiz_item_to_embeddable`. Step e
+  mapper sottostanti assumono la struttura nested pre-SP09 (rottura nota e
+  accettata fuori scope, vedi [quiz_pipelines.md](quiz_pipelines.md)).
 - `tests/guidami_ai_patente_ingestor/orchestrators/test_quiz_flows.py` —
   `build_quiz_indexing_flow(...)` ritorna un `Flow`; `flow.name ==
   "quiz_indexing"`; `FlowValidator().validate(flow).required_input_keys ==
   set()`; `validate=True` non solleva (WARNING benigno su `EMBEDDABLE_QUIZ`
-  di `EmbedStep`); ordine dei 5 step verificato.
+  di `EmbedStep`); ordine dei 5 step verificato (`load_enriched_quiz`,
+  `map_to_embeddable`, `embed_quiz`, `map_to_quiz_entity`, `store_quiz`).
 
-### Orchestrators — quiz preparation flow + service (SP06)
+### Orchestrators — quiz preparation: cleaning flow (SP09)
 
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_load_quiz_step.py` —
-  `required == set()`, `produced == {CLEANED_QUIZ}`; carica dal path
-  risolto da `LayerResolver.path(input_layer, source)` (fake repo +
-  resolver); usa la `source` iniettata (non hardcoded).
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_enrich_quiz_step.py` —
-  `required == {CLEANED_QUIZ}`, `produced == {ENRICHED_QUIZ}`; delega al
-  `QuizEnrichmentService` (fake/spy).
-- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_write_enriched_quiz_step.py` —
-  `required == {ENRICHED_QUIZ}`, `produced == set()`; scrive sul path
-  risolto da `LayerResolver.path(output_layer, source)`.
-- `tests/guidami_ai_patente_ingestor/orchestrators/test_quiz_flows.py` —
-  (estensione SP06, stesso file di SP04) `build_quiz_preparation_flow(...)`
-  ritorna un `Flow` con nome `"quiz_preparation"`;
-  `FlowValidator().validate(flow).required_input_keys == set()` (il
-  `LoadQuizStep` non richiede input esterni); nessun WARNING "overwrites"
-  atteso; `output_layer is None` → `ValueError`.
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/quiz/test_flatten_quiz_step.py` —
+  `required == {PARSED_QUIZ}`, `produced == {CLEANED_QUIZ}`; delega a
+  `QuizMapper.from_parsed_to_cleaned` per ogni item mantenuto; dedup reale su
+  `(text.strip(), correct_answer, image)` (duplicato esatto scartato; stesso
+  testo con immagine o risposta diversa → entrambi mantenuti).
+- `tests/guidami_ai_patente_ingestor/orchestrators/test_quiz_preparation_flows_v2.py` —
+  `build_quiz_cleaning_flow(...)`: `Flow` con nome `"quiz_cleaning"`;
+  `required_input_keys == set()`; `validate=True` non solleva; tre step
+  nell'ordine `load_parsed_quiz` → `flatten_quiz` → `write_cleaned_quiz`.
 
-### Orchestrators — step generici (SP02)
+### Orchestrators — quiz preparation: enrichment flow (refactor attuale, sostituisce SP06)
+
+- `tests/guidami_ai_patente_ingestor/orchestrators/test_quiz_preparation_flows_v2.py` —
+  `build_quiz_enrichment_flow(...)`: `Flow` con nome `"quiz_enrichment"`;
+  `required_input_keys == set()`; `validate=True` non solleva; quattro step
+  nell'ordine `load_cleaned_quiz` → `map_cleaned_to_enriched` →
+  `enrich_quiz` → `write_enriched_quiz` (sostituisce il precedente
+  `build_quiz_preparation_flow`, rimosso, e il relativo test in
+  `test_quiz_flows.py`).
+
+> **Nota (refactor enrichment)**: `LoadQuizStep`, `EnrichQuizStep`,
+> `WriteEnrichedQuizStep` e i rispettivi test (`test_load_quiz_step.py`,
+> `test_enrich_quiz_step.py`, `test_write_enriched_quiz_step.py`) **non
+> esistono più** — sostituiti dai generici `LoadJsonStep`/`MapStep`/
+> `EnrichDataStep`/`WriteJsonStep`, già testati genericamente (vedi sezione
+> "Orchestrators — step generici" sotto).
+
+### Orchestrators — step generici (SP02, esteso da SP08-bis e dal refactor enrichment)
 
 - `tests/guidami_ai_patente_ingestor/orchestrators/steps/generic/test_embed_step.py` —
   `get_required_keys`/`get_produced_keys` identici a `{items_key}`; `execute` assegna
@@ -190,6 +221,26 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
   conformità strutturale statica (pyright): `_conforms` annota `KnowledgeChunkStoreRepository`
   e `QuizQuestionStoreRepository` come `StoreRepository` senza istanziarli a runtime
   (nessun Postgres necessario).
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/generic/test_load_json_step.py` —
+  `required == set()`, `produced == {output_key}`; `execute` risolve il path via
+  `layer_resolver.path(layer, source)` e carica con `model_class.model_validate`
+  via il repository JSON generico; source diversa produce path/lista distinti.
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/generic/test_write_json_step.py` —
+  `required == {input_key}`, `produced == set()`; `execute` risolve il path e
+  scrive la lista letta dal context.
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/generic/test_map_step.py` —
+  `required == {input_key}`, `produced == {output_key}`; `execute` applica il
+  `mapper` iniettato a ogni elemento della lista, preservando l'ordine; lista
+  vuota → lista vuota.
+- `tests/guidami_ai_patente_ingestor/orchestrators/steps/generic/test_enrich_data_step.py` —
+  `required == {input_key}`, `produced == {output_key}`; lista enricher vuota →
+  passthrough (`context.get(output_key) == items` originale, stessa identità
+  lista); un solo enricher → invocato **una volta** con l'intera lista (non
+  item per item, verificato con `assert_called_once_with(items)`); più
+  enricher → applicati in sequenza, ciascuno sull'output del precedente
+  (verificato con enricher fake che concatenano suffissi distinti); metodo
+  `enrich(items)` testato a parte con firma list-in/list-out (`[1,2,3] →
+  [2,4,6]` con un enricher che raddoppia).
 
 ### Infrastruttura condivisa
 

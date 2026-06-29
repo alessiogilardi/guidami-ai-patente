@@ -118,14 +118,11 @@ src/commons/
     `<=>`).
 - **`KnowledgeChunk`** (Pydantic, `commons/entities/knowledge/`): `source:
   Literal["cds", "cap"]`, `embedding: list[float] | None = None` (None prima
-  dell'embedding), `context: str = ""` (contesto LLM del comma, nuova colonna
-  DB, default stringa vuota per compatibilità con chunk non arricchiti).
-  Property `embedded_text -> str`: ora unisce `[article_title, context,
-  chunk_text]` con `"\n"`, saltando le parti vuote (`"\n".join(p for p in
-  parts if p)`). Se `context` è vuoto (chunk non arricchito o articolo
-  abrogato), il risultato è identico al precedente `f"{article_title}
-  {chunk_text}"` separato da spazio — con la differenza che ora il separatore
-  è `\n`. La property è l'unico punto dove `context` confluisce nell'embedding.
+  dell'embedding), `context: str = ""` (contesto LLM del comma, colonna DB,
+  default stringa vuota). Entità **DB-write-only**: nessuna property
+  `embedded_text` — il testo da embeddare è sulla property omonima di
+  `EmbeddableChunkModel` (DTO intermedio nell'ingestor). `KnowledgeChunk`
+  soddisfa solo il protocollo `Embedded` (ha `embedding`), non `Embeddable`.
 - **`QuizQuestion`** (Pydantic, `BaseModel`, `commons/entities/quiz/`): riga
   di `quiz_questions` — `number: str`, `question_id: int`, `topic: str`,
   `text: str`, `correct_answer: bool`, `image_filename: str | None = None`,
@@ -139,17 +136,19 @@ src/commons/
   è stato rimosso: i modelli intermedi del quiz bank (`QuizBankModel`/
   `QuizBankItemModel`, `EnrichedQuizModel`/`EnrichedQuizItemModel`,
   `EmbeddableQuizModel`, `ImageDescription`, rinominati in SP04-bis) e
-  `EnrichedArticle` vivono in `guidami_ai_patente_ingestor/models/` perché
+  `EnrichedArticleModel` (insieme a `ParsedArticleModel` e `EmbeddableChunkModel`)
+  vivono in `guidami_ai_patente_ingestor/models/knowledge/` perché
   sono DTO specifici dell'ingestor e non servono all'app FastAPI.
 - **`Embeddable` Protocol** (`commons/services/embeddings/embeddable.py`,
   `@runtime_checkable`): espone una property `embedded_text: str` in sola lettura.
   Usato come tipo di input di `EmbeddingService.embed` — qualunque oggetto con
   quella property è accettato per structural subtyping senza ereditarietà.
 - **`Embedded(Embeddable)` Protocol** (`@runtime_checkable`): estende `Embeddable`
-  aggiungendo l'attributo scrivibile `embedding: list[float] | None`. `KnowledgeChunk`
-  e `EmbeddableQuizModel` soddisfano entrambi i Protocol (verificato con
-  `isinstance` nei test). Il Protocol è disegnato per SP02–SP04, dove il caller
-  assegnerà `item.embedding` dopo aver ricevuto i vettori da `EmbeddingService`.
+  aggiungendo l'attributo scrivibile `embedding: list[float] | None`.
+  `EmbeddableChunkModel` (ingestor) e `EmbeddableQuizModel` soddisfano entrambi i
+  Protocol (verificato con `isinstance` nei test). `KnowledgeChunk` soddisfa
+  solo `Embedded` (ha `embedding`) ma non `Embeddable` (non ha `embedded_text`):
+  è DB-only, non partecipa all'embedding direttamente.
 - **`EmbeddingService`** (`commons/services/embeddings/embedding_service.py`):
   - Costruttore `__init__(client: EmbeddingClient, batch_size: int)`: inietta il
     client e la dimensione del batch; alza `ValueError` se `batch_size < 1`.
@@ -201,7 +200,7 @@ src/commons/
   lunghezza/ordine output; batching con `_RecordingFakeClient` (verifica numero
   di chiamate e testi per batch); input vuoto → lista vuota e zero chiamate;
   `ValueError` per `batch_size=0` e `batch_size=-1`; purezza (nessuna mutazione
-  di `item.embedding`); conformità strutturale di `KnowledgeChunk` a
+  di `item.embedding`); conformità strutturale di `EmbeddableChunkModel` a
   `Embeddable` e `Embedded` via `isinstance`; conformità di
   `EmbeddableQuizModel` agli stessi Protocol.
 - `tests/commons/clients/test_embedding_client.py` — test offline con mock di
@@ -215,8 +214,8 @@ src/commons/
   compose (no marker `integration`): `truncate`, `execute_many`/`fetch` su
   `knowledge_chunks` (bulk insert + lettura ordinata).
 - `tests/commons/entities/knowledge/test_knowledge_chunk.py` — default
-  `embedding=None`, default `context=""`, `embedded_text` con e senza context
-  (con context: parti unite da `\n`, vuoti saltati).
+  `embedding=None`, default `context=""`. Nessun test su `embedded_text`
+  (`KnowledgeChunk` non ha questa property — è su `EmbeddableChunkModel`).
 - `tests/commons/models/knowledge/test_retrieval_result.py` — wrapping di
   `KnowledgeChunk` in `RetrievalResult` con `score`.
 - `tests/commons/agents/test_agent_config.py` — parsing da dict YAML;
