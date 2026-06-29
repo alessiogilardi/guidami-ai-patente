@@ -28,6 +28,8 @@ contesto/motivazione completa.
   costruito sui building block generici `MapStep`/`EnrichDataStep` (sostituiti
   i precedenti step/service quiz-specific `EnrichQuizStep`/
   `QuizEnrichmentService`/`Protocol QuizEnricher`, rimossi come duplicazione);
+  unico entry point `cli.py` con sottocomandi `ingest prepare/index/reset`
+  (SP07, sostituisce `main.py`/`reset_db.py`/`reset_quiz_db.py`);
   dettaglio in `ingestor/data_preparation.md`, `ingestor/knowledge_pipelines.md`,
   `ingestor/quiz_pipelines.md`, `ingestor/config_and_entrypoints.md`,
   `ingestor/flowstep_toolkit.md`, `ingestor/tests.md`
@@ -47,5 +49,5 @@ contesto/motivazione completa.
 | `guidami_ai_patente_ingestor/` — knowledge preparation flow + runner generico (`build_knowledge_cleaning_flow`, `build_knowledge_enrichment_flow`, `run_preparation`, generici `LoadJsonStep`/`MapStep`/`WriteJsonStep`/`EnrichDataStep` + `ContextEnricher` domain-specific, `ArticleMapper`; catena `ParsedArticleModel`→`EnrichedArticleModel`→`EmbeddableChunkModel`→`KnowledgeChunk`; rimossi `ContextualizeStep` e `EnrichedArticleMapper`) | ✅ implementato |
 | `guidami_ai_patente_ingestor/` — quiz preparation flow a due stadi (SP09: `build_quiz_cleaning_flow` con `FlattenQuizStep` per il flatten+dedup `parsed`→`cleaned`, layer `parsed` introdotto per il quiz; sostituisce il precedente flow unico) | ✅ implementato |
 | `guidami_ai_patente_ingestor/` — refactor enrichment quiz su building block generici (`build_quiz_enrichment_flow` con `MapStep` (base-map) + `EnrichDataStep`/`EnricherProtocol` generici + `ImageDescriptionEnricher`; rimossi `EnrichQuizStep`, `QuizEnrichmentService`, `Protocol QuizEnricher` come duplicazione dei generici già esistenti) | ✅ implementato |
-| `guidami_ai_patente_ingestor/` — cutover CLI preparation + rimozione pipeline legacy residue | ⬜ non avviato |
+| `guidami_ai_patente_ingestor/` — cutover CLI preparation + rimozione pipeline legacy residue | ✅ implementato |
 | `guidami_ai_patente/` (app FastAPI) | ⬜ non avviato |

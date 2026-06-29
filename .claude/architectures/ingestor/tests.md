@@ -6,6 +6,7 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 `plans/ingest--orchestrator/04-tris-quiz-mappers.md`,
 `plans/ingest--orchestrator/05-knowledge-preparation-flow.md`,
 `plans/ingest--orchestrator/06-quiz-preparation-flow.md`,
+`plans/ingest--orchestrator/07-cli-and-decommission.md`,
 `plans/ingest--orchestrator/08-generic-map-to-step.md`,
 `plans/ingest--orchestrator/09-quiz-flatten-at-preparation.md`.
 
@@ -241,6 +242,39 @@ residuo per loro.
   (verificato con enricher fake che concatenano suffissi distinti); metodo
   `enrich(items)` testato a parte con firma list-in/list-out (`[1,2,3] →
   [2,4,6]` con un enricher che raddoppia).
+
+### CLI (SP07)
+
+- `tests/guidami_ai_patente_ingestor/test_cli.py` — 12 test unitari senza
+  dipendenze esterne (tutto mockato con `unittest.mock.patch`):
+  - `test_prepare_knowledge_runs_both_preparation_flows` — due factory
+    chiamate + `run_preparation` invocato due volte per `prepare knowledge`.
+  - `test_prepare_knowledge_passes_source_to_factories` — `source="cap"`
+    propagato a `build_knowledge_cleaning_flow` e
+    `build_knowledge_enrichment_flow`.
+  - `test_prepare_knowledge_default_force_is_false` — `force=False` di
+    default per entrambe le chiamate a `run_preparation`.
+  - `test_prepare_knowledge_with_force_passes_force_true_to_runner` —
+    `--force` propaga `force=True` a entrambe le chiamate a `run_preparation`.
+  - `test_prepare_knowledge_requires_source_argument` — `SystemExit` se
+    `--source` assente.
+  - `test_index_knowledge_builds_flow_with_source_and_runs` — factory
+    riceve `source="cds"` e `flow.run()` chiamato una volta.
+  - `test_index_knowledge_requires_source_argument` — `SystemExit` se
+    `--source` assente.
+  - `test_prepare_quiz_runs_both_preparation_flows` — due factory chiamate
+    + `run_preparation` invocato due volte per `prepare quiz`.
+  - `test_prepare_quiz_with_force_passes_force_true_to_runner` — `--force`
+    propaga `force=True`.
+  - `test_index_quiz_builds_flow_and_runs` — factory chiamata una volta e
+    `flow.run()` invocato.
+  - `test_reset_knowledge_calls_knowledge_chunk_truncate` — `truncate()`
+    invocato su `KnowledgeChunkStoreRepository`.
+  - `test_reset_quiz_calls_quiz_question_truncate` — `truncate()` invocato
+    su `QuizQuestionStoreRepository`.
+
+> Tutti i test usano `monkeypatch.setattr(sys, "argv", [...])` per simulare
+> gli argomenti CLI e patching a livello di modulo per isolare le dipendenze.
 
 ### Infrastruttura condivisa
 

@@ -9,6 +9,7 @@ condiviso), `plans/ingest--data-preparation.md`,
 `plans/ingest--orchestrator/04-tris-quiz-mappers.md`,
 `plans/ingest--orchestrator/05-knowledge-preparation-flow.md`,
 `plans/ingest--orchestrator/06-quiz-preparation-flow.md`,
+`plans/ingest--orchestrator/07-cli-and-decommission.md`,
 `plans/ingest--orchestrator/08-generic-map-to-step.md`,
 `plans/ingest--orchestrator/09-quiz-flatten-at-preparation.md`.
 
@@ -19,10 +20,11 @@ Pipeline/flow batch attivi:
   `build_knowledge_enrichment_flow` (`cleaned` → `enriched`, con
   `ArticleContextualizerAgent`), eseguiti via il runner generico
   `run_preparation`. Una run per source. Sostituisce la precedente
-  `DataPreparationPipeline` (rimossa). Entry point CLI non ancora wired.
+  `DataPreparationPipeline` (rimossa). Wired via `uv run ingest prepare
+  knowledge --source <cds|cap>` (SP07).
 - **corpus normativo — indexing** (flow flowstep per-source): legge `enriched`
   di UNA source → chunk → embed → `knowledge_chunks` (delete-by-source +
-  insert). Eseguito una volta per source: `--source cds`, poi `--source cap`.
+  insert). Wired via `uv run ingest index knowledge --source <cds|cap>` (SP07).
 - **quiz bank — preparation** (due flow flowstep, ristrutturati in SP09 a
   specchio del knowledge): `build_quiz_cleaning_flow` (`parsed` → `cleaned`,
   flatten+dedup delle sotto-domande in `FlattenQuizStep`) e
@@ -33,14 +35,14 @@ Pipeline/flow batch attivi:
   `ImageDescriptionEnricher`, vision LLM con `RoadSignDescriberAgent`, dedup
   immagini uniche) — sostituiscono i precedenti step/service quiz-specific
   `EnrichQuizStep`/`QuizEnrichmentService`/`Protocol QuizEnricher` (rimossi:
-  duplicavano building block già generici). Entry point CLI non ancora
-  wired.
+  duplicavano building block già generici). Wired via `uv run ingest prepare
+  quiz` (SP07).
 - **quiz bank — indexing** (flow flowstep, mapper consolidato): legge
   `enriched` quiz → mappa in `EmbeddableQuizModel` (dedup, nello step
   `MapToEmbeddableStep`, assume ancora struttura nested pre-SP09: rottura
   nota e accettata, fuori scope) → embed → mappa in `QuizQuestion`
-  (`QuizMapper`) → `quiz_questions` (truncate full-reload). Entry point CLI
-  non ancora wired; `reset_quiz_db.py` resta disponibile.
+  (`QuizMapper`) → `quiz_questions` (truncate full-reload). Wired via
+  `uv run ingest index quiz` (SP07).
 
 Dipende da `commons` (modelli, entità, `BaseAgent`, `EmbeddingClient`, `PostgresClient`,
 config condivise).
@@ -169,11 +171,15 @@ src/guidami_ai_patente_ingestor/
     ingestor_config.py            # IngestorConfig (BaseSettings, frozen)
     source_config.py              # SourceConfig(dir, file) — frozen BaseModel
     pipeline_layer_config.py      # PipelineLayerConfig(input_layer, output_layer?, sources: list[str]) — frozen
-  main.py                          # entry point CLI (uv run ingest-knowledge --source <cds|cap>)
-  reset_db.py                      # entry point CLI (uv run reset-knowledge-db)
-  reset_quiz_db.py                 # entry point CLI (uv run reset-quiz-db)
-                                   # quiz_main.py e prepare_knowledge_main.py rimossi (legacy):
-                                   #   nessun entry point CLI per quiz/preparation flow ancora wired
+  cli.py                           # unico entry point `ingest` (SP07)
+                                   #   ingest prepare knowledge --source <cds|cap> [--force]
+                                   #   ingest prepare quiz [--force]
+                                   #   ingest index knowledge --source <cds|cap>
+                                   #   ingest index quiz
+                                   #   ingest reset knowledge
+                                   #   ingest reset quiz
+                                   # main.py, reset_db.py, reset_quiz_db.py rimossi (SP07)
+                                   # quiz_main.py, prepare_knowledge_main.py già rimossi in precedenza (legacy)
 
 configs/                            # root del progetto (non sotto src/)
   ingestor_config.yaml              # config non-secret, committata (layers/sources/pipeline selettori)
@@ -242,8 +248,8 @@ Risoluzione path: `LayerResolver.path(layer, source)` =
   `EnrichQuizStep`/`QuizEnrichmentService`/`Protocol QuizEnricher` (rimossi).
   Cutover CLI per entrambi pendente.
 - [config_and_entrypoints.md](config_and_entrypoints.md) — `IngestorConfig`, `LayerResolver`,
-  pattern config a due livelli, entry point CLI (incl. `--source` di `ingest-knowledge`),
-  convenzioni di logging.
+  pattern config a due livelli, unico entry point `cli.py` (SP07, sottocomandi `ingest prepare
+  / index / reset`), convenzioni di logging.
 - [flowstep_toolkit.md](flowstep_toolkit.md) — step generici flowstep:
   `EmbedStep`, `DbStoreStep`, `LoadJsonStep`, `MapStep`, `WriteJsonStep`,
   `EnrichDataStep`, `StoreRepository`/`EnricherProtocol` Protocol, `context_keys`.

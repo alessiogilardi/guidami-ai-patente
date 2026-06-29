@@ -1,7 +1,8 @@
 # Ingestor — Configurazione ed entry point
 
 Riferimento progettazione: `plans/architecture-ingestor.md`,
-`plans/architecture-quiz-bank.md`.
+`plans/architecture-quiz-bank.md`,
+`plans/ingest--orchestrator/07-cli-and-decommission.md`.
 
 ## `IngestorConfig`
 
@@ -86,80 +87,78 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
   `guidami_ai_patente_ingestor` (e in futuro l'app) dipendono da
   `pydantic-settings[yaml]`.
 
-## `main.py`
+## `cli.py` (SP07 — unico entry point)
 
-- `config = IngestorConfig()` — `# pyright: ignore[reportCallIssue]`. Config
-  caricata solo qui (entry point). Argomento CLI `--source` **obbligatorio**:
-  la source da indicizzare (es. `cds`, `cap`). Esegue l'indexing per-source
-  leggendo dal layer `enriched`.
-- Flusso:
-  1. `argparse.ArgumentParser` — `--source` required.
-  2. `config = IngestorConfig()`, `layer_resolver = LayerResolver(...)`.
-  3. `build_knowledge_indexing_flow(config, layer_resolver, LiteLLMEmbeddingClient(...),
-     PostgresClient(...), source=args.source)` — la factory valida `source`
-     contro `config.knowledge_indexing.sources` e assembla il flow.
-  4. `flow.run()`.
-- Script registrato: `ingest-knowledge = "guidami_ai_patente_ingestor.main:main"`.
-- Usage: `uv run ingest-knowledge --source cds`, poi `uv run ingest-knowledge --source cap`.
+Tutti i vecchi entry point (`main.py`, `reset_db.py`, `reset_quiz_db.py`)
+sono stati rimossi e sostituiti dall'unico file `cli.py`. Le corrispondenti
+voci `[project.scripts]` (`ingest-knowledge`, `reset-knowledge-db`,
+`reset-quiz-db`) sono state sostituite dall'unico script
+`ingest = "guidami_ai_patente_ingestor.cli:main"`.
 
-## `prepare_knowledge_main.py`
+### Struttura sottocomandi
 
-- Entry point CLI (`uv run prepare-knowledge`). Argomento opzionale `--force`
-  (default `False`): se passato, forza la rigenerazione degli artefatti
-  `enriched` anche se esistono.
-- Instanzia `config = IngestorConfig()`, `layer_resolver = LayerResolver(...)`,
-  `Agent("article_contextualizer", config.agents_dir)`, poi esegue
-  `DataPreparationPipeline.run(force=...)` via
-  `DataPreparationPipelineBuilder(config, layer_resolver).build()`.
-- Script registrato: `prepare-knowledge = "guidami_ai_patente_ingestor.prepare_knowledge_main:main"`.
+```
+ingest prepare knowledge --source <cds|cap> [--force]
+ingest prepare quiz       [--force]
+ingest index   knowledge --source <cds|cap>
+ingest index   quiz
+ingest reset   knowledge
+ingest reset   quiz
+```
 
-## `reset_db.py`
+### Decisioni implementate
 
-- Entry point separato (`uv run reset-knowledge-db`,
-  `reset-knowledge-db = "guidami_ai_patente_ingestor.reset_db:main"`) per
-  svuotare **l'intera** tabella `knowledge_chunks` (tutte le source) in vista
-  di un full reload da zero, senza rieseguire il flow di indexing.
-- Stesso pattern di `main.py`: `logging.basicConfig(...)`,
-  `config = IngestorConfig()` caricata come unico entry point, `logger =
-  logging.getLogger(__name__)` a livello di modulo.
-- Istanzia `PostgresClient(config.postgres)` come context manager,
-  `KnowledgeChunkStoreRepository(client, config.knowledge_chunks_table)
-  .truncate()`; log `info` di completamento ("knowledge_chunks table
-  truncated").
+- **`IngestorConfig` e `LayerResolver` istanziati una sola volta** in
+  `main()`, prima del parsing degli argomenti. `_build_parser(config)` riceve
+  il config già costruito per popolare `choices=` dai cataloghi sorgente
+  (`config.knowledge_preparation.sources`, `config.knowledge_indexing.sources`,
+  `config.quiz_preparation.sources`) — nessuna lista hardcoded nella CLI.
+- **Argparse annidato**: `add_subparsers(dest="command")` → `"prepare"` /
+  `"index"` / `"reset"`; ciascuno ha un secondo `add_subparsers(dest="entity")`
+  → `"knowledge"` / `"quiz"`. `required=True` su tutti i livelli.
+- **`match/case`** per il dispatch su `args.command` e `args.entity` (Python
+  3.12+ structural pattern matching).
+- **`prepare knowledge`** → chiama `build_knowledge_cleaning_flow` +
+  `build_knowledge_enrichment_flow` (con `source` dal CLI) + `run_preparation`
+  due volte (per `_CLEANED_LAYER` e per `output_layer` da config). Layer
+  intermedio `"cleaned"` come costante `_CLEANED_LAYER` nel modulo.
+- **`prepare quiz`** → stessa struttura a due flow; source unica letta da
+  `config.quiz_preparation.sources[0]` (non esposta come argomento CLI —
+  il quiz ha una sola source).
+- **`index`** → costruisce `LiteLLMEmbeddingClient` + `PostgresClient` e
+  chiama la factory di flow corrispondente + `flow.run()`.
+- **`reset`** → costruisce `PostgresClient` + repository target (nessun flow);
+  chiama `truncate()` sulla tabella giusta (`KnowledgeChunkStoreRepository` o
+  `QuizQuestionStoreRepository`).
 
-## `quiz_main.py`
+### `_build_parser(config)`
 
-**Rimosso** (decommissioning SP03-bis). Lo script `ingest-quiz` e la voce
-`[project.scripts]` corrispondente non esistono più. Il flow di quiz indexing
-sarà reintrodotto come flow flowstep (SP04) quando implementato.
+Funzione privata (non classe): costruisce e ritorna il parser argparse. Riceve
+`config: IngestorConfig` per leggere i cataloghi sorgenti senza liste
+hardcoded.
 
-## `reset_quiz_db.py`
+### Funzioni di dispatch private
 
-- Entry point separato (`uv run reset-quiz-db`,
-  `reset-quiz-db = "guidami_ai_patente_ingestor.reset_quiz_db:main"`) per
-  svuotare `quiz_questions` senza rieseguire `QuizIndexingPipeline`. Stesso
-  pattern di `reset_db.py`: `PostgresClient(config.postgres)` come context
-  manager, `QuizQuestionStoreRepository(client,
-  config.quiz_questions_table).truncate()`; log `info` ("quiz_questions
-  table truncated").
+- `_run_prepare(config, layer_resolver, args)` — gestisce `prepare`
+- `_run_index(config, layer_resolver, args)` — gestisce `index`
+- `_run_reset(config, args)` — gestisce `reset`
+
+Ciascuna usa `match args.entity` per selezionare il ramo corretto.
 
 ## Logging
 
 - Nessun componente dedicato (niente `LoggingConfig`/`LoggingService` in
   `commons`) — scelta deliberata per evitare overengineering, si usa
   direttamente lo stdlib `logging`.
-- Entry point attivi (`main.py`, `prepare_knowledge_main.py`,
-  `reset_db.py`, `reset_quiz_db.py`) chiamano
-  `logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")`
-  all'inizio di `main()`.
-- `data_preparation_pipeline.py`: log `info` per source skippata (artefatto
-  enriched già presente), log `info` per source processata (n articoli
-  descritti), `logger.warning` per immagine non trovata su disco.
-- Step del knowledge flow (`load_enriched_articles_step.py`,
-  `chunk_articles_step.py`, `embed_chunks_step.py`, `store_chunks_step.py`):
-  log `info` in `execute()` con conteggio articoli/chunk e source della run.
-  `EmbeddingService` logga ogni batch (`embedding batch {n}/{total} ({k} items)`).
-- `quiz_question_mapper.py`: `logger.warning` per ogni sotto-domanda scartata
-  come duplicato esatto.
+- `cli.py:main()` chiama `logging.basicConfig(level=logging.INFO,
+  format="%(asctime)s %(levelname)s %(name)s: %(message)s")`.
+- Step del knowledge flow (`chunk_articles_step.py`, `embed_chunks_step.py`,
+  `store_chunks_step.py`): log `info` in `execute()` con conteggio
+  articoli/chunk e source della run. `EmbeddingService` logga ogni batch
+  (`embedding batch {n}/{total} ({k} items)`).
+- `cli.py`: log `info` al completamento di ogni operazione `index` (es.
+  `"knowledge indexing completed for source 'cds'"`).
+- `image_description_enricher.py`: `logger.warning` per ogni immagine
+  non trovata su disco o per ogni fallimento di `describe`.
 - **Convenzione**: i messaggi di log sono in inglese, per coerenza con
   eventuali strumenti di log aggregation/osservabilità.
