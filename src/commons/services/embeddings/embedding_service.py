@@ -3,7 +3,7 @@ from collections.abc import Sequence
 
 from commons.clients import EmbeddingClient
 
-from .embeddable import Embeddable
+from .protocols import Embeddable
 
 logger = logging.getLogger(__name__)
 

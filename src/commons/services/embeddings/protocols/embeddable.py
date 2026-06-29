@@ -11,8 +11,4 @@ class Embeddable(Protocol):
         ...
 
 
-@runtime_checkable
-class Embedded(Embeddable, Protocol):
-    """Embeddable con il cassetto scrivibile per il vettore risultante."""
 
-    embedding: list[float] | None
