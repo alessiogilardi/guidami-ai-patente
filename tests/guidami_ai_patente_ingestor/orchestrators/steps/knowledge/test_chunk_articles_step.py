@@ -2,16 +2,15 @@
 
 from unittest.mock import MagicMock
 
-from commons.entities.knowledge import KnowledgeChunk
 from commons.flowstep import FlowContext
-from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
+from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel, EnrichedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import ChunkArticlesStep
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker
 
 
-def _make_article(number: str, repealed: bool = False) -> EnrichedArticle:
-    return EnrichedArticle(
+def _make_article(number: str, repealed: bool = False) -> EnrichedArticleModel:
+    return EnrichedArticleModel(
         number=number,
         title=f"Articolo {number}",
         text=f"Testo {number}.",
@@ -30,7 +29,7 @@ def test_required_keys() -> None:
 
 def test_produced_keys() -> None:
     step = ChunkArticlesStep("chunk", ArticleChunker(), source="cds")
-    assert step.get_produced_keys() == {context_keys.CHUNKS}
+    assert step.get_produced_keys() == {context_keys.EMBEDDABLE_CHUNKS}
 
 
 def test_execute_produces_chunks_tagged_with_the_injected_source() -> None:
@@ -40,7 +39,7 @@ def test_execute_produces_chunks_tagged_with_the_injected_source() -> None:
     step = ChunkArticlesStep("chunk", ArticleChunker(), source="cap")
     step.execute(context)
 
-    chunks: list[KnowledgeChunk] = context.get(context_keys.CHUNKS)
+    chunks: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
     assert len(chunks) > 0
     assert {c.source for c in chunks} == {"cap"}
 
@@ -53,7 +52,7 @@ def test_execute_includes_repealed_chunks_without_filter() -> None:
     step = ChunkArticlesStep("chunk", ArticleChunker(), source="cds")
     step.execute(context)
 
-    chunks: list[KnowledgeChunk] = context.get(context_keys.CHUNKS)
+    chunks: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
     assert len([c for c in chunks if c.is_repealed]) > 0
     assert len([c for c in chunks if not c.is_repealed]) > 0
 
@@ -66,7 +65,7 @@ def test_execute_flattens_chunks_from_multiple_articles() -> None:
     step = ChunkArticlesStep("chunk", ArticleChunker(), source="cds")
     step.execute(context)
 
-    chunks: list[KnowledgeChunk] = context.get(context_keys.CHUNKS)
+    chunks: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
     # ogni articolo ha text + 1 paragraph → 2 chunk; 3 articoli → 6 chunk
     assert len(chunks) == 6
 

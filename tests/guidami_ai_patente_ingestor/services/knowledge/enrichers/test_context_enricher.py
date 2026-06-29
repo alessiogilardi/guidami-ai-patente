@@ -3,12 +3,12 @@
 from unittest.mock import MagicMock
 
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
-from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
+from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 from guidami_ai_patente_ingestor.services.knowledge.enrichers import ContextEnricher
 
 
-def _article(number: str, repealed: bool = False) -> EnrichedArticle:
-    return EnrichedArticle(
+def _article(number: str, repealed: bool = False) -> EnrichedArticleModel:
+    return EnrichedArticleModel(
         number=number,
         title=f"Articolo {number}",
         text=f"Testo {number}.",
@@ -73,7 +73,7 @@ def test_enrich_does_not_mutate_input_models() -> None:
 def test_enrich_agent_failure_on_one_item_skips_with_empty_contexts_and_warns(caplog) -> None:
     agent = _make_agent()
 
-    def side_effect(article: EnrichedArticle) -> dict[int, str]:
+    def side_effect(article: EnrichedArticleModel) -> dict[int, str]:
         if article.number == "2":
             raise RuntimeError("LLM call failed")
         return {0: "Contesto ok."}

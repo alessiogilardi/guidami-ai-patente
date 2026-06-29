@@ -1,8 +1,8 @@
 import pytest
 
 from commons.clients import EmbeddingClient
-from commons.entities.knowledge import KnowledgeChunk
 from commons.services.embeddings import Embeddable, Embedded, EmbeddingService
+from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel
 from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel
 
 
@@ -71,8 +71,8 @@ class TestEmbeddingService:
         self._make_service().embed([item])
         assert item.embedding is None
 
-    def test_protocol_conformance_knowledge_chunk(self) -> None:
-        chunk = KnowledgeChunk(
+    def test_protocol_conformance_embeddable_chunk(self) -> None:
+        chunk = EmbeddableChunkModel(
             source="cds",
             article_number="1",
             article_title="Titolo",

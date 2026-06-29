@@ -15,8 +15,7 @@ from pathlib import Path
 
 import pytest
 
-from guidami_ai_patente_ingestor.entities import Article
-from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
+from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel, ParsedArticleModel
 from guidami_ai_patente_ingestor.models.quiz import (
     EnrichedQuizModel,
     ParsedQuizItemModel,
@@ -32,8 +31,8 @@ FIXTURES_DIR = Path(__file__).parents[1] / "fixtures"
 # ---------------------------------------------------------------------------
 
 
-def _article(number: str = "1") -> Article:
-    return Article(
+def _article(number: str = "1") -> ParsedArticleModel:
+    return ParsedArticleModel(
         number=number,
         title=f"Articolo {number}",
         text=f"Testo {number}.",
@@ -44,8 +43,8 @@ def _article(number: str = "1") -> Article:
     )
 
 
-def _enriched_article(number: str = "1") -> EnrichedArticle:
-    return EnrichedArticle(
+def _enriched_article(number: str = "1") -> EnrichedArticleModel:
+    return EnrichedArticleModel(
         number=number,
         title=f"Articolo {number}",
         text=f"Testo {number}.",
@@ -92,8 +91,8 @@ def _enriched_quiz(
 # ---------------------------------------------------------------------------
 
 ROUND_TRIP_CASES = [
-    pytest.param(_article, Article, id="Article"),
-    pytest.param(_enriched_article, EnrichedArticle, id="EnrichedArticle"),
+    pytest.param(_article, ParsedArticleModel, id="ParsedArticleModel"),
+    pytest.param(_enriched_article, EnrichedArticleModel, id="EnrichedArticleModel"),
     pytest.param(_parsed_quiz, ParsedQuizModel, id="ParsedQuizModel"),
     pytest.param(_enriched_quiz, EnrichedQuizModel, id="EnrichedQuizModel"),
 ]
@@ -139,7 +138,7 @@ class TestRoundTrip:
 def test_write_preserves_utf8_characters(tmp_path: Path) -> None:
     path = tmp_path / "enriched.json"
     articles = [
-        EnrichedArticle(
+        EnrichedArticleModel(
             number="1",
             title="Articolo 1",
             text="Testo.",
@@ -150,7 +149,7 @@ def test_write_preserves_utf8_characters(tmp_path: Path) -> None:
             contexts={0: "È obbligatorio indossare le cinture."},
         )
     ]
-    repo = JsonRepository.get_instance(EnrichedArticle)
+    repo = JsonRepository.get_instance(EnrichedArticleModel)
     repo.write(articles, path)
 
     raw = json.loads(path.read_text(encoding="utf-8"))
@@ -158,12 +157,12 @@ def test_write_preserves_utf8_characters(tmp_path: Path) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Fixture-based field mapping: Article ← cds_sample.json / cap_sample.json
+# Fixture-based field mapping: ParsedArticleModel ← cds_sample.json / cap_sample.json
 # ---------------------------------------------------------------------------
 
 
 def test_article_load_from_cds_sample() -> None:
-    repo = JsonRepository.get_instance(Article)
+    repo = JsonRepository.get_instance(ParsedArticleModel)
     articles = repo.load(FIXTURES_DIR / "cds_sample.json")
 
     article_1 = next(a for a in articles if a.number == "1")
@@ -175,7 +174,7 @@ def test_article_load_from_cds_sample() -> None:
 
 
 def test_article_load_from_cap_sample_repealed_and_empty_text() -> None:
-    repo = JsonRepository.get_instance(Article)
+    repo = JsonRepository.get_instance(ParsedArticleModel)
     articles = repo.load(FIXTURES_DIR / "cap_sample.json")
 
     article_118 = articles[0]

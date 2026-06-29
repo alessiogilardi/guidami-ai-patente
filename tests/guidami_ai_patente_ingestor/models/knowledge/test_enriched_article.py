@@ -1,7 +1,7 @@
-from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
+from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 
 
-def _article(**kwargs) -> EnrichedArticle:
+def _article(**kwargs) -> EnrichedArticleModel:
     defaults = dict(
         number="1",
         title="Finalità",
@@ -11,7 +11,7 @@ def _article(**kwargs) -> EnrichedArticle:
         scraped_at="2025-01-01T00:00:00",
         repealed=False,
     )
-    return EnrichedArticle(**{**defaults, **kwargs})
+    return EnrichedArticleModel(**{**defaults, **kwargs})
 
 
 def test_enriched_article_defaults_contexts_to_empty_dict() -> None:
@@ -29,6 +29,6 @@ def test_enriched_article_accepts_contexts_keyed_by_comma_index() -> None:
 def test_enriched_article_round_trips_through_json() -> None:
     contexts = {0: "Contesto.", 1: "Altro contesto."}
     original = _article(contexts=contexts)
-    restored = EnrichedArticle.model_validate(original.model_dump())
+    restored = EnrichedArticleModel.model_validate(original.model_dump())
     assert restored.contexts == original.contexts
     assert restored.number == original.number

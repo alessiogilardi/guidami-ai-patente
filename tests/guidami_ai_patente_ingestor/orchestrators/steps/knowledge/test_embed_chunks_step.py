@@ -1,9 +1,9 @@
 """Test per EmbedChunksStep."""
 
 from commons.clients import EmbeddingClient
-from commons.entities.knowledge import KnowledgeChunk
 from commons.flowstep import FlowContext
 from commons.services.embeddings import EmbeddingService
+from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import EmbedChunksStep
 
@@ -20,8 +20,8 @@ def _make_service(batch_size: int = 10) -> EmbeddingService:
     return EmbeddingService(_FakeClient(), batch_size=batch_size)
 
 
-def _make_chunk(number: str, repealed: bool = False) -> KnowledgeChunk:
-    return KnowledgeChunk(
+def _make_chunk(number: str, repealed: bool = False) -> EmbeddableChunkModel:
+    return EmbeddableChunkModel(
         source="cds",
         article_number=number,
         article_title=f"Articolo {number}",
@@ -34,12 +34,12 @@ def _make_chunk(number: str, repealed: bool = False) -> KnowledgeChunk:
 
 def test_required_keys() -> None:
     step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
-    assert step.get_required_keys() == {context_keys.CHUNKS}
+    assert step.get_required_keys() == {context_keys.EMBEDDABLE_CHUNKS}
 
 
 def test_produced_keys() -> None:
     step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
-    assert step.get_produced_keys() == {context_keys.CHUNKS}
+    assert step.get_produced_keys() == {context_keys.EMBEDDABLE_CHUNKS}
 
 
 def test_embed_repealed_false_skips_repealed_but_keeps_them_in_context() -> None:
@@ -48,11 +48,11 @@ def test_embed_repealed_false_skips_repealed_but_keeps_them_in_context() -> None
     repealed = _make_chunk("2", repealed=True)
     chunks = [normal, repealed]
 
-    context = FlowContext({context_keys.CHUNKS: chunks})
+    context = FlowContext({context_keys.EMBEDDABLE_CHUNKS: chunks})
     step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
     step.execute(context)
 
-    result: list[KnowledgeChunk] = context.get(context_keys.CHUNKS)
+    result: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
     assert len(result) == 2, "entrambi i chunk devono essere presenti nel context"
 
     # il non-repealed ha il vettore
@@ -66,11 +66,11 @@ def test_embed_repealed_true_embeds_all_chunks() -> None:
     repealed = _make_chunk("2", repealed=True)
     chunks = [normal, repealed]
 
-    context = FlowContext({context_keys.CHUNKS: chunks})
+    context = FlowContext({context_keys.EMBEDDABLE_CHUNKS: chunks})
     step = EmbedChunksStep("embed", _make_service(), embed_repealed=True)
     step.execute(context)
 
-    result: list[KnowledgeChunk] = context.get(context_keys.CHUNKS)
+    result: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
     assert all(c.embedding is not None for c in result), "tutti i chunk devono essere embeddati"
 
 
@@ -80,11 +80,11 @@ def test_execute_mutates_in_place_and_writes_full_list_to_context() -> None:
     normal2 = _make_chunk("2", repealed=False)
     chunks = [normal1, normal2]
 
-    context = FlowContext({context_keys.CHUNKS: chunks})
+    context = FlowContext({context_keys.EMBEDDABLE_CHUNKS: chunks})
     step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
     step.execute(context)
 
-    result: list[KnowledgeChunk] = context.get(context_keys.CHUNKS)
+    result: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
     assert result is chunks  # stessa lista (mutata in place e ri-scritta)
     assert all(c.embedding is not None for c in result)
 
@@ -94,18 +94,18 @@ def test_execute_assigns_correct_vector_values() -> None:
     chunk = _make_chunk("1", repealed=False)
     expected_vector = [float(len(chunk.embedded_text))]
 
-    context = FlowContext({context_keys.CHUNKS: [chunk]})
+    context = FlowContext({context_keys.EMBEDDABLE_CHUNKS: [chunk]})
     step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
     step.execute(context)
 
-    result: list[KnowledgeChunk] = context.get(context_keys.CHUNKS)
+    result: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
     assert result[0].embedding == expected_vector
 
 
 def test_execute_with_empty_chunks_list_is_noop() -> None:
-    context = FlowContext({context_keys.CHUNKS: []})
+    context = FlowContext({context_keys.EMBEDDABLE_CHUNKS: []})
     step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
     step.execute(context)
 
-    result: list[KnowledgeChunk] = context.get(context_keys.CHUNKS)
+    result: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
     assert result == []

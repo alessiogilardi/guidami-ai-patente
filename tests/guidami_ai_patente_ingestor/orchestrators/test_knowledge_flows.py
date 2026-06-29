@@ -10,7 +10,7 @@ from commons.clients import EmbeddingClient, PostgresClient
 from commons.configs import PostgresConnectionConfig
 from commons.flowstep import Flow
 from guidami_ai_patente_ingestor.configs import IngestorConfig, SourceConfig
-from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
+from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import build_knowledge_indexing_flow
 from guidami_ai_patente_ingestor.services import LayerResolver
 
@@ -111,8 +111,8 @@ def test_build_with_unknown_source_raises_value_error() -> None:
 # ---------------------------------------------------------------------------
 
 
-def _make_enriched_article(number: str, repealed: bool = False) -> EnrichedArticle:
-    return EnrichedArticle(
+def _make_enriched_article(number: str, repealed: bool = False) -> EnrichedArticleModel:
+    return EnrichedArticleModel(
         number=number,
         title=f"Articolo {number}",
         text=f"Testo articolo {number}.",
@@ -124,7 +124,7 @@ def _make_enriched_article(number: str, repealed: bool = False) -> EnrichedArtic
     )
 
 
-def _write_enriched(path: Path, articles: list[EnrichedArticle]) -> None:
+def _write_enriched(path: Path, articles: list[EnrichedArticleModel]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
         json.dumps([a.model_dump() for a in articles], ensure_ascii=False), encoding="utf-8"
