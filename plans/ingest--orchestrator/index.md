@@ -12,23 +12,34 @@ che le consumano, infine assemblaggio + decommissioning.
 
 ## Elenco
 
-| # | Sotto-piano | Scopo singolo | Dipende da |
-|---|---|---|---|
-| [01](01-embedding-service.md) | Embedding service (commons) | testo→vettori + batching, riusabile dall'app | — |
-| [02](02-flowstep-toolkit.md) | Toolkit step generici flowstep | adattatori flowstep domain-agnostic + context keys | 01 |
-| [03](03-knowledge-indexing-flow.md) | Flow knowledge indexing | corpus enriched → `knowledge_chunks` | 02 |
-| [03-bis](03-bis-cleanup-legacy-removal.md) | Stabilizzazione post-rimozione orchestrator legacy | fix entrypoint/script/test rotti + cutover CLI knowledge per-source | 03 |
-| [04](04-quiz-indexing-flow.md) | Flow quiz indexing | quiz bank enriched → `quiz_questions` | 02 |
-| [05](05-knowledge-preparation-flow.md) | Flow knowledge preparation + runner | parsed → cleaned → enriched corpus | 02 |
-| [06](06-quiz-preparation-flow.md) | Flow quiz preparation | quiz bank → descrizioni immagini (vision) | 05 |
-| [07](07-cli-and-decommission.md) | CLI unica + decommissioning + doc | un solo entry point, rimozione del vecchio | 03–06 |
+| # | Sotto-piano | Scopo singolo | Dipende da | Stato |
+|---|---|---|---|---|
+| [01](01-embedding-service.md) | Embedding service (commons) | testo→vettori + batching, riusabile dall'app | — | ✅ implementato (2026-06-19) |
+| [02](02-flowstep-toolkit.md) | Toolkit step generici flowstep | adattatori flowstep domain-agnostic + context keys | 01 | ✅ implementato (2026-06-19) |
+| [03](03-knowledge-indexing-flow.md) | Flow knowledge indexing | corpus enriched → `knowledge_chunks` | 02 | ✅ implementato (2026-06-22) |
+| [03-bis](03-bis-cleanup-legacy-removal.md) | Stabilizzazione post-rimozione orchestrator legacy | fix entrypoint/script/test rotti + cutover CLI knowledge per-source | 03 | ✅ implementato (2026-06-22) |
+| [04](04-quiz-indexing-flow.md) | Flow quiz indexing | quiz bank enriched → `quiz_questions` | 02 | ✅ implementato (2026-06-22) |
+| [04-bis](04-bis-quiz-data-models.md) | Allineamento data model quiz | rename model quiz + spostamento DTO entities/→models/quiz/ (solo data model, rename puro) | 04 | ✅ implementato (2026-06-23) |
+| [04-tris](04-tris-quiz-mappers.md) | Consolidamento mapper quiz | `QuizMapper` unico (1:1) + flatten/dedup nello step | 04-bis | ✅ implementato (2026-06-24) |
+| [05](05-knowledge-preparation-flow.md) | Flow knowledge preparation + runner | parsed → cleaned → enriched corpus | 02 | ✅ implementato (2026-06-23) |
+| [06](06-quiz-preparation-flow.md) | Flow quiz preparation | quiz bank → descrizioni immagini (vision) | 05, 04-tris | ⬜ da fare |
+| [07](07-cli-and-decommission.md) | CLI unica + decommissioning + doc | un solo entry point, rimozione del vecchio | 03–06 (incl. 04-bis, 04-tris) | ⬜ da fare |
+| [09](09-quiz-flatten-at-preparation.md) | Quiz: layer "parsed" + flatten anticipato | parsed→cleaned→enriched simmetrico al corpus normativo | 04-tris, 05 | ✅ implementato (2026-06-25) |
+| [10](10-knowledge-enrichment-enricher-pattern.md) | Knowledge: enrichment via MapStep + EnrichDataStep | mirror del pattern enricher quiz (SP09) sul corpus normativo | 02, 05, 09 | ✅ implementato (2026-06-29) |
+
+> SP08 (step generico `MapToStep`) è **✅ OBSOLETO**: `MapStep[T_In, T_Out]` è già implementato
+> in `orchestrators/steps/generic/map_step.py` e copre l'unico obiettivo residuo valido.
+> Gli altri obiettivi (QuizQuestionFlattener, rimozione MapToEmbeddableStep) sono caduti per
+> effetto di SP09. Vedi [08-generic-map-to-step.md](08-generic-map-to-step.md) per il dettaglio.
 
 ## DAG di esecuzione
 
 ```
 01 ─► 02 ─►┬─ 03 (knowledge index) ─┐
-           ├─ 04 (quiz index) ──────┤
-           └─ 05 (knowledge prep+runner) ─► 06 (quiz prep) ─┘ ─► 07 (CLI + cleanup + doc)
+           ├─ 04 ─► 04-bis (data model) ─► 04-tris (mapper) ─► 09 (quiz flatten@prep) ─┐
+           └─ 05 (knowledge prep+runner) ──────────────────────────────────────────────┴─► 06 (quiz prep) ─┘ ─► 07 (CLI + cleanup + doc)
+
+05 ──► 10 (knowledge enrichment: mirror enricher pattern di 09)
 ```
 
 - 03/04 parallelizzabili dopo 02; 05 parallelo a 03/04.
@@ -43,6 +54,11 @@ che le consumano, infine assemblaggio + decommissioning.
 
 ## Vincoli trasversali (validi per tutti)
 
+- **Gate di avvio (sequenzialità implementativa)**: nessun sotto-piano inizia finché TUTTE le sue
+  dipendenze (colonna "Dipende da") non sono ✅ implementato — suite verde **e** mergiate. In
+  particolare: 04-bis dopo 04; 04-tris dopo 04-bis; 06 dopo 04-tris **e** 05; 07 dopo 03–06 (incl.
+  04-bis). Ogni piano
+  downstream porta in testa un blocco "Precondizione di avvio (gate)".
 - **PER-SOURCE, una run per source (decisione 2026-06-22)**: per il dominio knowledge sia
   `prepare` sia `index` girano **una source per esecuzione** via CLI `--source` (cds, poi cap),
   **non** caricando/ciclando cds+cap insieme. La `source` è iniettata negli step al momento della

@@ -5,7 +5,12 @@
 e rimuovere tutto il vecchio (pipeline/builder custom + 6 entry point). Aggiornare la doc.
 
 ## Dipende da
-SP03, SP04, SP05, SP06 (tutti i flow + runner esistenti e verdi).
+SP03, SP04, **SP04-bis**, **SP04-tris**, SP05, SP06 (tutti i flow + runner esistenti e verdi,
+model quiz già rinominati da SP04-bis e mapper consolidati da SP04-tris).
+
+> ⛔ **Gate**: cutover atomico — non iniziare finché 03, 04, 04-bis, 04-tris, 05, 06 non sono tutti ✅ (verde +
+> merged). La verifica e2e del quiz indexing (`quiz_questions` count 7098) è possibile **solo qui**,
+> perché è SP06 a generare per la prima volta l'output `enriched` che il quiz indexing consuma.
 
 ## Componenti
 

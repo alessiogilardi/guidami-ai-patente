@@ -2,56 +2,60 @@
 
 Riferimento: [architecture-index.md](architecture-index.md),
 [architecture-ingestor.md](architecture-ingestor.md),
-[architecture-hybrid-retrieval.md](architecture-hybrid-retrieval.md),
-[tech-stack.md](tech-stack.md).
+[architecture-hybrid-retrieval.md](architecture-hybrid-retrieval.md), [tech-stack.md](tech-stack.md).
+
+> **Questo piano è il dettaglio di dominio dell'enrichment del corpus.** L'impianto (stadio di
+> preparation, layer configurabili, artefatto `enriched` self-contained) è definito in
+> [ingest--data-preparation.md](ingest--data-preparation.md); l'astrazione LLM in
+> [ingest--agent-and-prompt-provider.md](ingest--agent-and-prompt-provider.md). Qui si
+> specificano solo la **generazione del contesto** e la sua forma nell'`embedded_text`.
+> **Aggiornamento**: la contestualizzazione è ora uno step della `DataPreparationPipeline`
+> (cleaning + enrichment), non più uno step inline dentro `IndexingPipeline`; il contesto vive
+> **inline** nell'articolo enriched, non in un sidecar separato.
 
 ## Contesto e motivazione
 
 L'embedding degli articoli è oggi `KnowledgeChunk.embedded_text = f"{article_title}
-{chunk_text}"` (`src/commons/entities/knowledge/knowledge_chunk.py`), **un chunk per
-comma**. Il lato query è **colloquiale** — domande quiz (`"{topic} {text}"`, affermazioni
-vero/falso) e follow-up utente in linguaggio naturale — mentre il lato corpus è **legalese
-denso**. Il solo prefisso del titolo non colma questa asimmetria:
+{chunk_text}"` (`src/commons/entities/knowledge/knowledge_chunk.py`), **un chunk per comma**. Il
+lato query è **colloquiale** (domande quiz `"{topic} {text}"`, follow-up in linguaggio naturale),
+il lato corpus è **legalese denso**. Il solo prefisso del titolo non colma l'asimmetria:
 
-1. **Perdita di contesto per comma.** Ogni comma è embeddato isolato. Commi di rinvio
-   ("*le disposizioni del comma 1 non si applicano…*"), sanzioni ed eccezioni sono
-   semanticamente poveri da soli; molti titoli sono generici ("Definizioni", "Principi
-   generali").
-2. **Gap lessicale legalese↔colloquiale** — la leva principale per questo caso d'uso. Il
-   testo legale ("*è fatto obbligo di…*", "*salvo quanto previsto*") è lontano nello
-   spazio vettoriale dal linguaggio di quiz/utente ("*è obbligatorio*", "*posso…?*").
-   `text-embedding-3-small` regge l'italiano ma non chiude da solo questo divario.
+1. **Perdita di contesto per comma.** Ogni comma è embeddato isolato; commi di rinvio, sanzioni
+   ed eccezioni sono poveri da soli e molti titoli sono generici ("Definizioni").
+2. **Gap lessicale legalese↔colloquiale** — la leva principale. "*è fatto obbligo di…*" è
+   lontano da "*è obbligatorio*"/"*posso…?*"; `text-embedding-3-small` non chiude da solo il
+   divario.
 3. **Arricchimento uniforme e sottile.** Lo stesso titolo prefigge ogni comma → bassa
-   discriminazione intra-articolo e segnale scarso quando il titolo è generico.
+   discriminazione intra-articolo.
 
-**Esito atteso:** ranking di recupero migliore quando una domanda colloquiale deve trovare
-il comma normativo pertinente, integrandosi col dense + FTS + RRF di
+**Esito atteso:** ranking migliore quando una domanda colloquiale deve trovare il comma
+pertinente, integrandosi col dense + FTS + RRF di
 [architecture-hybrid-retrieval.md](architecture-hybrid-retrieval.md).
 
 ## Approccio — Contextual Retrieval (Anthropic), dense-only
 
-Per ogni comma, un **LLM economico** genera 1–2 frasi di **contesto situante** in
-linguaggio piano (cosa regola il comma, soggetti e azioni chiave, riferito all'oggetto
-dell'articolo). Il contesto **non sostituisce** il testo legale: arricchisce solo l'input
-dell'embedding. È esattamente la ricetta che il retrieval ibrido già pianificato
-(dense + FTS + RRF) presuppone.
+Per ogni comma, un **LLM economico** genera 1–2 frasi di **contesto situante** in linguaggio
+piano (cosa regola il comma, soggetti e azioni chiave, riferito all'oggetto dell'articolo). Il
+contesto **non sostituisce** il testo legale: arricchisce solo l'input dell'embedding.
 
 Decisioni:
 
-- **Strategia:** Contextual Retrieval con LLM (scartato il solo-deterministico: non chiude
-  il gap lessicale).
-- **Ambito FTS — solo embedding denso.** `chunk_text` resta **puro**: la colonna
-  `chunk_tsv GENERATED ALWAYS AS (to_tsvector('italian', chunk_text))` di
-  [architecture-hybrid-retrieval.md](architecture-hybrid-retrieval.md) e la citazione
-  restano **invariate, senza alcuna modifica**. Il contesto vive in un campo separato.
-- **Provider LLM — modello economico via OpenRouter** (litellm), non Groq: nessun rate
-  limit stretto sul batch one-off offline.
-- **Granularità per comma invariata.** `ArticleChunker` non cambia (KISS, ~362 articoli).
+- **Strategia:** Contextual Retrieval con LLM (scartato il solo-deterministico).
+- **Ambito FTS — solo embedding denso.** `chunk_text` resta **puro**: la colonna `chunk_tsv
+  GENERATED ALWAYS AS (to_tsvector('italian', chunk_text))` di
+  [architecture-hybrid-retrieval.md](architecture-hybrid-retrieval.md) e la citazione restano
+  **invariate**. Il contesto vive in un campo separato.
+- **LLM via `Agent`** (`configs/agents/article_contextualizer.yaml`), modello economico
+  `openrouter/google/gemini-2.5-flash-lite` via OpenRouter (litellm). Decade l'ABC
+  `LlmClient`/`LiteLLMChatClient` del disegno precedente:
+  l'astrazione è l'`Agent` (vedi
+  [ingest--agent-and-prompt-provider.md](ingest--agent-and-prompt-provider.md)).
+- **Granularità per comma invariata.** `ArticleChunker` non cambia (~362 articoli).
 
 ### Forma dell'`embedded_text`
 
-Nuovo campo persistito `context: str = ""` su `KnowledgeChunk`. Il testo embeddato
-concatena titolo, contesto e testo legale; `chunk_text` resta intatto per citazione e FTS.
+Nuovo campo persistito `context: str = ""` su `KnowledgeChunk`. Il testo embeddato concatena
+titolo, contesto e testo legale; `chunk_text` resta intatto per citazione e FTS.
 
 ```python
 # commons/entities/knowledge/knowledge_chunk.py
@@ -65,124 +69,116 @@ def embedded_text(self) -> str:
 
 ## Generazione del contesto — una chiamata LLM per articolo
 
-L'LLM riceve **l'intero articolo** (titolo + tutti i commi numerati) e restituisce un
-contesto **per ciascun comma** in un'unica risposta strutturata (JSON
-`{comma_index: context}`). Una chiamata per articolo (~362 totali), non una per comma:
-meno overhead e contesto inter-comma di qualità migliore.
+`ArticleContextualizer` riceve **l'intero articolo** (titolo + tutti i commi numerati) e
+restituisce un contesto **per ciascun comma** in un'unica risposta strutturata (JSON
+`{comma_index: context}`). Una chiamata per articolo (~362 totali), non una per comma: meno
+overhead e contesto inter-comma migliore.
 
-Vincoli di prompt:
+Vincoli di prompt (definiti nello YAML dell'agente, rifiniti in **Fase 3 — prompt engineering**):
 
 - Fedeltà assoluta: **nessuna norma inventata**, solo riformulazione situante del comma.
-- Italiano piano, 1–2 frasi, deve nominare l'oggetto dell'articolo e i termini "ponte"
-  verso il linguaggio comune (quiz/utente).
-- I commi `is_repealed` vengono **saltati**, coerente col filtro pre-embedding già
-  presente in `IndexingPipeline._filter_chunks`.
+- Italiano piano, 1–2 frasi, deve nominare l'oggetto dell'articolo e i termini "ponte" verso il
+  linguaggio comune.
+- I commi `is_repealed` vengono **saltati**, coerente col filtro pre-embedding di
+  `IndexingPipeline._filter_chunks`.
 
-### Cache su sidecar (costo LLM realmente one-off)
+### Artefatto enriched inline (costo LLM one-off)
 
-I runbook di schema ricreano il volume DB → `ingest-knowledge` rigira spesso. Per non
-ri-pagare l'LLM a ogni reload, i contesti generati si persistono in un **sidecar JSON**
-(`data/cleaned/cds/contexts.json`, `data/cleaned/cap/contexts.json`), chiave
-`(article_number, comma_index)`. La pipeline genera **solo** i contesti mancanti; il file
-è ispezionabile e correggibile a mano. Coerente col principio già in `CLAUDE.md` ("store
-intermediate artifacts so re-parsing is possible without re-fetching"). Rigenerazione
-forzata via flag di config.
+> **Nota — entità ↔ tabelle DB** (vedi [ingest--data-preparation.md](ingest--data-preparation.md)).
+> `KnowledgeChunk.context` è una **nuova colonna** di `knowledge_chunks` → legittimamente
+> sull'entità. `Article` invece **non** è un'entità DB ma un **modello** di layer: resta puro
+> (shape parsed/cleaned); il contesto vive su un modello **`EnrichedArticle`** = `Article` +
+> `contexts`, serializzato nel layer `enriched`.
+
+I runbook di schema ricreano il volume DB → l'indexing rigira spesso. Per non ri-pagare l'LLM, i
+contesti vivono **inline nell'`EnrichedArticle`** (`contexts: dict[int, str]`, chiave =
+`comma_index`), prodotto dalla `DataPreparationPipeline` e ispezionabile/correggibile a mano.
+L'indexing legge solo il layer `enriched`. La rigenerazione è forzabile con `--force` su
+`prepare-knowledge`. Coerente col principio in `CLAUDE.md` ("store intermediate artifacts so
+re-parsing is possible without re-fetching").
 
 ## Modifiche
 
 | File | Azione |
 |---|---|
-| `commons/clients/llm/llm_client.py` | nuovo — interfaccia astratta `LlmClient.complete(...)` (parallela a `EmbeddingClient`) |
-| `commons/clients/llm/litellm_chat_client.py` | nuovo — `LiteLLMChatClient` via `litellm.completion`, riusabile dal futuro LLM-as-judge ([ingest--llm-as-judge.md](ingest--llm-as-judge.md)) |
-| `commons/configs/llm_config.py` | nuovo — `LlmConfig(frozen=True)`: `model_name` (default es. `openrouter/openai/gpt-4o-mini`), `timeout`, `num_retries`, `temperature=0` |
-| `commons/entities/knowledge/knowledge_chunk.py` | + campo `context`; aggiornare `embedded_text` |
-| `guidami_ai_patente_ingestor/services/knowledge/article_contextualizer.py` | nuovo — `ArticleContextualizer` (inietta `LlmClient` + config); `contextualize(article) -> dict[int, str]` |
-| `guidami_ai_patente_ingestor/repositories/context_cache_repository.py` | nuovo — load/save del sidecar JSON dei contesti |
-| `orchestrators/knowledge_indexing/indexing_pipeline.py` | nuovo step `_assign_contexts(chunks)` prima di `_assign_embeddings` (cache → contextualizer) |
-| `orchestrators/knowledge_indexing/indexing_pipeline_builder.py` | `with_llm_client` / `with_article_contextualizer`; default `LiteLLMChatClient(config.llm)` |
-| `configs/ingestor_config.py` | + `llm: LlmConfig`, `contextualize: bool = True`, path delle cache contesti |
+| `commons/entities/knowledge/knowledge_chunk.py` | + campo `context` (nuova colonna DB); aggiornare `embedded_text` |
+| `commons/models/knowledge/enriched_article.py` | nuovo **modello** `EnrichedArticle` = `Article` + `contexts: dict[int, str]`; `Article` resta puro |
+| `guidami_ai_patente_ingestor/services/knowledge/article_contextualizer.py` | nuovo — `ArticleContextualizer` (inietta `Agent`); `contextualize(article) -> dict[int, str]` |
+| `orchestrators/knowledge_cleaning/` → `orchestrators/knowledge_preparation/` | rename `CleaningPipeline` → `DataPreparationPipeline`; nuovo step `_assign_contexts` (clean → contextualize → write enriched) |
+| `orchestrators/knowledge_indexing/indexing_pipeline.py` | legge gli `EnrichedArticle` dal layer `enriched`; `ArticleChunker` valorizza `chunk.context` da `enriched_article.contexts[comma_index]` |
+| `orchestrators/.../*_builder.py` | `with_article_contextualizer` / `with_agent`; default `Agent("article_contextualizer", config.agents_dir)` |
+| `configs/ingestor_config.py` | + `layers`/`sources`/selettori, `agents_dir`, flag `contextualize: bool = True`; rimozione path hard-coded |
 | `db/init.sql` | + colonna `context TEXT NOT NULL DEFAULT ''` in `knowledge_chunks` |
 | `repositories/knowledge_chunk_store_repository.py` | `bulk_insert` include la colonna `context` |
-| `main.py` | inietta il client LLM nel builder dell'indexing |
+| `prepare_knowledge_main.py` | nuovo entry point `prepare-knowledge` (clean + enrich) |
 
-**Riuso senza modifiche:** `ArticleChunker`, la struttura a batch di `_assign_embeddings`,
-`LiteLLMEmbeddingClient`, lo schema FTS (`chunk_tsv` resta su `chunk_text`).
+**Riuso senza modifiche:** `ArticleChunker` (a parte la lettura di `context`), la struttura a
+batch di `_assign_embeddings`, `LiteLLMEmbeddingClient`, lo schema FTS (`chunk_tsv` resta su
+`chunk_text`).
 
-**Nessuna nuova dipendenza:** `litellm` è già presente; serve solo `OPENROUTER_API_KEY`
-(già nel `.env` / `IngestorConfig`).
+**Nessuna nuova dipendenza:** `litellm` già presente; serve solo `OPENROUTER_API_KEY`.
 
 ### Flusso pipeline aggiornato
 
 ```
-load → chunk → [assign_contexts (cache → LLM per articolo)] → assign_embeddings → store
+prepare-knowledge:  load(parsed) → clean (→ cleaned) → contextualize (Agent) → write EnrichedArticle (enriched, contexts inline)
+ingest-knowledge:   load EnrichedArticle (enriched) → chunk (context inline) → embed → store
 ```
 
-`_assign_contexts`: per ogni articolo non abrogato legge i contesti da cache; per i
-mancanti chiama `ArticleContextualizer`; aggiorna la cache; assegna `chunk.context`. Se
-`config.contextualize is False`, lo step è no-op (`context=""`) → comportamento identico a
-oggi (fallback sicuro e baseline per confronto A/B).
+Se `config.contextualize is False`, lo step di contestualizzazione è no-op (`contexts={}` →
+`context=""`) → comportamento identico a oggi (fallback sicuro e baseline per confronto A/B).
 
 ## Reset DB + re-ingestion (runbook)
 
-L'aggiunta della colonna `context` cambia lo schema di `knowledge_chunks`. Dato che
-`init.sql` gira solo alla creazione del volume:
+L'aggiunta della colonna `context` cambia lo schema. Vedi il runbook completo in
+[ingest--data-preparation.md](ingest--data-preparation.md):
 
 ```bash
-# 1. Ricrea il volume → init.sql applica lo schema aggiornato (knowledge_chunks.context)
-docker compose -f docker/docker-compose.yml down -v
-docker compose -f docker/docker-compose.yml up -d
-
-# 2. Re-ingestion del corpus — genera i contesti (1ª volta) e ri-embedda
-uv run ingest-knowledge
-
-# 3. Re-ingestion del quiz bank (invariata)
-uv run ingest-quiz
+docker compose -f docker/docker-compose.yml down -v && docker compose -f docker/docker-compose.yml up -d
+uv run prepare-knowledge   # genera i contesti inline (1ª volta) nell'enriched
+uv run ingest-knowledge    # legge enriched, ri-embedda; nessuna chiamata LLM
 ```
 
-> Il secondo `ingest-knowledge` non chiama l'LLM: i contesti sono già nei sidecar
-> `contexts.json`. Alternativa non distruttiva: `ALTER TABLE knowledge_chunks ADD COLUMN
-> context TEXT NOT NULL DEFAULT ''` + `uv run ingest-knowledge`.
+> Alternativa non distruttiva: `ALTER TABLE knowledge_chunks ADD COLUMN context TEXT NOT NULL
+> DEFAULT ''` + re-ingest.
 
 ## TDD
 
 - `KnowledgeChunk`: `embedded_text` con/senza `context`; default `context=""`.
-- `LiteLLMChatClient`: `litellm.completion` mockato → parsing della risposta e passaggio di
-  `model/timeout/num_retries/temperature`.
-- `ArticleContextualizer` (fake `LlmClient`): mappa comma→contesto allineata agli indici;
-  salta i commi `is_repealed`; risposta malformata → errore gestito.
-- `ContextCacheRepository`: round-trip load/save; merge dei soli contesti mancanti.
-- `IndexingPipeline._assign_contexts` (fake client + cache): cache-hit non chiama l'LLM;
-  cache-miss sì e aggiorna il file; `contextualize=False` → no-op.
+- `EnrichedArticle.contexts`: default vuoto; round-trip JSON; `Article` resta puro.
+- `ArticleContextualizer` (con `Agent` fake): mappa comma→contesto allineata agli indici; salta
+  i commi `is_repealed`; risposta malformata → errore gestito.
+- `DataPreparationPipeline._assign_contexts` (fake agent): produce l'`EnrichedArticle` con
+  `contexts` inline; skip se enriched esiste; `--force` rigenera; `contextualize=False` → no-op.
+- `IndexingPipeline`/`ArticleChunker`: `chunk.context` valorizzato da `enriched_article.contexts`.
 - `KnowledgeChunkStoreRepository.bulk_insert`: la INSERT include `context`.
 
-> Nota TDD (regola utente): test scritti prima dell'implementazione; il glue Python è
-> coperto da unit con fake/mock, la qualità semantica del contesto si valuta con lo
-> spot-check di recupero qui sotto (non testabile a priori in unit).
+> Nota TDD (regola utente): test prima dell'implementazione; il glue è coperto da unit con
+> fake/mock, la qualità semantica del contesto si valuta con lo spot-check di recupero.
 
 ## Verifica end-to-end
 
-1. `docker compose -f docker/docker-compose.yml down -v && up -d` → `knowledge_chunks` ha
-   la colonna `context`.
-2. `uv run ingest-knowledge` → log dello step di contestualizzazione; `contexts.json`
-   popolati; **secondo run = 0 chiamate LLM** (tutto da cache).
-3. `SELECT count(*) FROM knowledge_chunks WHERE context = '' AND NOT is_repealed;` → `0`.
-4. **Sanity di recupero** (il test che conta): per una domanda quiz colloquiale (es. sulla
-   distanza di sicurezza o sull'obbligo del casco), il top-k dense su `knowledge_chunks`
-   con l'embedding arricchito porta il comma corretto più in alto rispetto al baseline
-   `titolo + testo`. Confronto in `psql` o mini-script su un campione di quiz mappabili.
+1. `down -v && up -d` → `knowledge_chunks` ha la colonna `context`.
+2. `uv run prepare-knowledge` → articoli `enriched` con `contexts` inline; secondo run = 0
+   chiamate LLM (artefatto già presente).
+3. `uv run ingest-knowledge` → ok; `SELECT count(*) FROM knowledge_chunks WHERE context = '' AND
+   NOT is_repealed;` → `0`.
+4. **Sanity di recupero** (il test che conta): per una domanda quiz colloquiale (distanza di
+   sicurezza, obbligo del casco) il top-k dense con l'embedding arricchito porta il comma corretto
+   più in alto del baseline `titolo + testo`.
 
 ## Possibili estensioni future
 
-- **Domande ipotetiche (HyDE @ index)** — generare e indicizzare le domande tipiche cui il
-  comma risponde; massimo allineamento alla query, ma più token e rischio di drift dal
-  testo legale.
-- **Topic taxonomy sugli articoli** — tag con la stessa tassonomia `topic` dei quiz, utile
-  soprattutto al mapping quiz↔norma offline ([ingest--llm-as-judge.md](ingest--llm-as-judge.md)).
-- **Contextual BM25** — far confluire il contesto anche nel `tsvector` (oggi escluso per
-  tenere pura la citazione e l'FTS).
+- **Domande ipotetiche (HyDE @ index)** — indicizzare le domande tipiche cui il comma risponde.
+- **Topic taxonomy sugli articoli** — tag con la tassonomia `topic` dei quiz, utile al mapping
+  quiz↔norma offline ([ingest--llm-as-judge.md](ingest--llm-as-judge.md)).
+- **Contextual BM25** — far confluire il contesto anche nel `tsvector` (oggi escluso per tenere
+  pura la citazione e l'FTS).
 
 ## Stato
 
 Progettazione completata e concordata. **Non ancora implementato.** L'arricchimento è
-**dense-only**: non tocca lo schema FTS e richiede solo l'aggiunta della colonna `context`
-+ re-embedding del corpus.
+**dense-only** (non tocca lo schema FTS) e richiede la colonna `context` + re-embedding. Ora
+integrato nella `DataPreparationPipeline` con contesto inline nell'enriched e LLM via `Agent`;
+vedi [ingest--data-preparation.md](ingest--data-preparation.md) e
+[ingest--agent-and-prompt-provider.md](ingest--agent-and-prompt-provider.md).

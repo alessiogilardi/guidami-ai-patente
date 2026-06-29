@@ -11,8 +11,18 @@
 
 ## Scopo singolo
 Fornire gli **adattatori flowstep domain-agnostic** (`EmbedStep`, `DbStoreStep`), il contratto
-`StoreRepository` e il vocabolario di chiavi context, riusati dalle slice indexing (03–04) e poi
-prep (05–06). **Nessuna logica di dominio qui.**
+`StoreRepository` e il vocabolario di chiavi context, riusati dalle slice indexing e prep.
+**Nessuna logica di dominio qui.**
+
+> **Nota post-SP03**: `EmbedStep` generico è riusato **solo dal quiz indexing (SP04)**. Il
+> knowledge indexing (SP03) usa uno step dedicato `EmbedChunksStep` perché applica il filtro
+> repealed di dominio (vedi [03-knowledge-indexing-flow.md](03-knowledge-indexing-flow.md)).
+> `DbStoreStep` e `StoreRepository` restano condivisi da entrambe le slice.
+>
+> **Nota post-SP03 su `context_keys.py`**: SP03 estende in modo **additivo** il blocco *Knowledge
+> indexing* di `context_keys.py` (aggiunge `ARTICLES_BY_SOURCE`). `ENRICHED_ARTICLES` **resta**:
+> non la usa SP03 ma la consuma SP05 (flow di enrichment). Lo snippet "Componenti — specifica
+> esatta" qui sotto riflette lo stato **iniziale** di SP02.
 
 ## Dipende da
 SP01 (`EmbeddingService`, `Embeddable`, `Embedded` da `commons.services.embeddings`). ✅ completato.

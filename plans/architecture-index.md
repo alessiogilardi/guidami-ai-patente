@@ -29,6 +29,13 @@ store) e un'applicazione backend (FastAPI) che serve il quiz bot.
   codice (layer `common`, ingestor, applicativo)
 - [architecture-hybrid-retrieval.md](architecture-hybrid-retrieval.md) — retrieval
   ibrido del corpus (pgvector + FTS, fusione RRF) su `knowledge_chunks`
+- [ingest--data-preparation.md](ingest--data-preparation.md) — stadio di data
+  preparation (cleaning + enrichment) a monte dell'indexing, layer di I/O
+  configurabili, artefatto `enriched` self-contained
+- [ingest--agent-and-prompt-provider.md](ingest--agent-and-prompt-provider.md) —
+  astrazione `Agent` LLM con definizione su `configs/agents/<name>.yaml`
+- [ingest--quiz-image-descriptions.md](ingest--quiz-image-descriptions.md) —
+  enrichment vision delle immagini dei quiz (descrizione cartelli per l'embedding)
 - [ingest--llm-as-judge.md](ingest--llm-as-judge.md) — mapping offline quiz ↔
   norma (LLM-as-a-Judge) via litellm
 - [ingest--quiz-embeddings.md](ingest--quiz-embeddings.md) — embedding offline dei
@@ -39,6 +46,9 @@ store) e un'applicazione backend (FastAPI) che serve il quiz bot.
 - [ingest--embedding-bge-m3.md](ingest--embedding-bge-m3.md) — ❌ archiviato:
   migrazione a bge-m3 locale **non eseguita**; embedder resta
   `text-embedding-3-small` cloud (vedi [tech-stack.md](tech-stack.md))
+- [ingest--orchestrator/index.md](ingest--orchestrator/index.md) — refactor degli
+  orchestrators di ingestion sopra il framework `commons/flowstep` (7 sotto-piani):
+  pipeline custom → `Flow` di `Step`, embedding service condiviso, CLI unica
 
 ## Decisioni architetturali
 
@@ -61,6 +71,25 @@ Il chunking del corpus normativo (per paragrafo/comma) è descritto in
 Ephemeral per v1 (in-memory, niente DB/auth), ma dietro un'interfaccia
 `SessionRepository` astratta — così lo storage concreto si sostituisce in futuro
 (es. sqlite/postgres per progress tracking) senza toccare la logica del chatbot.
+
+### 3. Orchestrators di ingestion ricostruiti su `flowstep`
+
+Gli orchestrator attuali (`*Pipeline` + `*PipelineBuilder` in
+`orchestrators/{knowledge,quiz}_{indexing,preparation}/`) sono **da buttare**: vengono
+rimpiazzati da `Flow` di `Step` sopra `commons/flowstep`. Si conserva **solo il
+comportamento operativo** — *cosa* fanno, non *come* sono strutturati: sequenza di
+trasformazioni, idempotenza/skip-se-esiste, loop per-source, full-reload
+(truncate + bulk_insert), batching dell'embedding. Le classi `*Pipeline`/`*PipelineBuilder`
+e i 6 entry point CLI vengono eliminati. Mappatura pipeline→Step e piano di cutover in
+[ingest--orchestrator/index.md](ingest--orchestrator/index.md).
+
+**Convenzione Step** (vincolante): uno `Step` è un adattatore sottile al framework flowstep
+(legge/scrive il `FlowContext`, delega la logica) → vive **sempre** in
+`orchestrators/steps/{generic,knowledge,quiz}/`, **mai** in `services/`. Metterlo in
+`services/` legherebbe la logica di dominio a flowstep e la renderebbe non riusabile
+dall'applicativo (viola SRP + direzione delle dipendenze). La logica delegata
+(`ArticleCleaner`, mapper, describer, `EmbeddingService`) resta in `services/`/`mappers/`,
+framework-free e riusabile dall'app.
 
 ## Flusso runtime
 
