@@ -15,9 +15,3 @@ class KnowledgeChunk(BaseModel):
     is_repealed: bool
     source_url: str
     embedding: list[float] | None = None
-
-    @property
-    def embedded_text(self) -> str:
-        """Testo usato per il calcolo dell'embedding (titolo + contesto + testo)."""
-        parts = [self.article_title, self.context, self.chunk_text]
-        return "\n".join(p for p in parts if p)

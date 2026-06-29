@@ -10,15 +10,22 @@ alla factory, non letta dal context.
 
 # --- Knowledge indexing (SP03) ---
 # Il flow di indexing è per-source (una run per source): input = lista piatta di
-# EnrichedArticle di UNA sola source. Stessa chiave usata dal flow di enrichment (SP05).
-ENRICHED_ARTICLES = "enriched_articles"  # input indexing/enrich: list[EnrichedArticle], una source
-CHUNKS = "chunks"  # output del chunker → embed → store
+# EnrichedArticleModel di UNA sola source. Stessa chiave usata dal flow di enrichment (SP05).
+ENRICHED_ARTICLES = (
+    "enriched_articles"  # input indexing/enrich: list[EnrichedArticleModel], una source
+)
+EMBEDDABLE_CHUNKS = "embeddable_chunks"  # output chunker → embed: list[EmbeddableChunkModel]
+CHUNK_ENTITIES = "chunk_entities"  # output map→entità: list[KnowledgeChunk] → store
 
 # --- Knowledge preparation (SP05) ---
 # Flow clean: LoadJsonStep → MapStep → WriteJsonStep.
 # Flow enrich: LoadJsonStep → MapStep → EnrichDataStep → WriteJsonStep.
-PARSED_ARTICLES = "parsed_articles"  # input clean: list[Article] caricati dal layer "parsed"
-CLEANED_ARTICLES = "cleaned_articles"  # output clean / input enrich: list[Article] puliti
+PARSED_ARTICLES = (
+    "parsed_articles"  # input clean: list[ParsedArticleModel] caricati dal layer "parsed"
+)
+CLEANED_ARTICLES = (
+    "cleaned_articles"  # output clean / input enrich: list[ParsedArticleModel] puliti
+)
 
 # --- Quiz indexing (SP04) ---
 ENRICHED_QUIZ = "enriched_quiz"  # input: quiz bank enriched caricato da disco

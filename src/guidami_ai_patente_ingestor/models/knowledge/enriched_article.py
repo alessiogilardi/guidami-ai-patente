@@ -1,11 +1,11 @@
 from pydantic import BaseModel, Field
 
 
-class EnrichedArticle(BaseModel):
+class EnrichedArticleModel(BaseModel):
     """Articolo con contesti per comma generati dall'LLM (layer enriched).
 
-    Self-contained: non dipende da `Article` — i campi sono replicati per
-    mantenere `commons` indipendente dall'ingestor.
+    Self-contained: non dipende da `ParsedArticleModel` — i campi sono replicati
+    per mantenere `commons` indipendente dall'ingestor.
     """
 
     number: str

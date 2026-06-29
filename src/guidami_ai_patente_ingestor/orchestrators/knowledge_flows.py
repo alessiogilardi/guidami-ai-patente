@@ -8,19 +8,9 @@ from commons.flowstep import Flow, FlowBuilder
 from commons.services.embeddings import EmbeddingService
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
-from guidami_ai_patente_ingestor.entities import Article
 from guidami_ai_patente_ingestor.mappers.knowledge import ArticleMapper
-from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticle
+from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel, ParsedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
-from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
-    EnrichDataStep,
-    LoadJsonStep,
-    MapStep,
-    WriteJsonStep,
-)
-from guidami_ai_patente_ingestor.orchestrators.steps.generic.protocols.enricher_protocol import (
-    EnricherProtocol,
-)
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
     ChunkArticlesStep,
     EmbedChunksStep,
@@ -30,6 +20,9 @@ from guidami_ai_patente_ingestor.repositories import KnowledgeChunkStoreReposito
 from guidami_ai_patente_ingestor.services import LayerResolver
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
 from guidami_ai_patente_ingestor.services.knowledge.enrichers import ContextEnricher
+
+from .steps.generic import EnrichDataStep, LoadJsonStep, MapStep, WriteJsonStep
+from .steps.generic.protocols.enricher_protocol import EnricherProtocol
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +47,7 @@ def build_knowledge_indexing_flow(
 
     Mappatura step:
       `LoadJsonStep` → `ChunkArticlesStep` → `EmbedChunksStep`
-      → `StoreChunksStep`
+      → `MapStep` → `StoreChunksStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -63,7 +56,7 @@ def build_knowledge_indexing_flow(
         postgres_client: Client Postgres per le operazioni sul DB.
         source: Source da indicizzare; deve appartenere a `config.knowledge_indexing.sources`.
         validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
-            Solleva `FlowValidationError` su ERROR; il WARNING benigno su `CHUNKS`
+            Solleva `FlowValidationError` su ERROR; il WARNING benigno su `EMBEDDABLE_CHUNKS`
             (EmbedChunksStep ri-dichiara una chiave già prodotta da ChunkArticlesStep)
             non blocca la build.
 
@@ -85,7 +78,7 @@ def build_knowledge_indexing_flow(
         layer_resolver=layer_resolver,
         input_layer=indexing_config.input_layer,
         source=source,
-        model_class=EnrichedArticle,
+        model_class=EnrichedArticleModel,
         output_key=context_keys.ENRICHED_ARTICLES,
     )
 
@@ -101,6 +94,13 @@ def build_knowledge_indexing_flow(
         embed_repealed=config.embed_repealed,
     )
 
+    map_to_entity_step = MapStep(
+        "map_to_chunk_entity",
+        ArticleMapper.from_embeddable_chunk_to_knowledge_chunk,
+        context_keys.EMBEDDABLE_CHUNKS,
+        context_keys.CHUNK_ENTITIES,
+    )
+
     store_step = StoreChunksStep(
         "store_chunks",
         repository=KnowledgeChunkStoreRepository(postgres_client, config.knowledge_chunks_table),
@@ -112,6 +112,7 @@ def build_knowledge_indexing_flow(
         .add_step(load_step)
         .add_step(chunk_step)
         .add_step(embed_step)
+        .add_step(map_to_entity_step)
         .add_step(store_step)
         .build(validate=validate)
     )
@@ -156,7 +157,7 @@ def build_knowledge_cleaning_flow(
         layer_resolver=layer_resolver,
         input_layer=preparation_config.input_layer,
         source=source,
-        model_class=Article,
+        model_class=ParsedArticleModel,
         output_key=context_keys.PARSED_ARTICLES,
     )
 
@@ -172,7 +173,7 @@ def build_knowledge_cleaning_flow(
         layer_resolver=layer_resolver,
         output_layer=_CLEANED_LAYER,
         source=source,
-        model_class=Article,
+        model_class=ParsedArticleModel,
         input_key=context_keys.CLEANED_ARTICLES,
     )
 
@@ -227,20 +228,22 @@ def build_knowledge_enrichment_flow(
         layer_resolver=layer_resolver,
         input_layer=_CLEANED_LAYER,
         source=source,
-        model_class=Article,
+        model_class=ParsedArticleModel,
         output_key=context_keys.CLEANED_ARTICLES,
     )
 
     base_map_step = MapStep(
         "map_article_to_enriched",
-        ArticleMapper.from_article_to_enriched_article,
+        ArticleMapper.from_parsed_to_enriched,
         context_keys.CLEANED_ARTICLES,
         context_keys.ENRICHED_ARTICLES,
     )
 
     agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", config.agents_dir)
-    enrichers: list[EnricherProtocol[EnrichedArticle, EnrichedArticle]] = [ContextEnricher(agent)]
-    enrich_step = EnrichDataStep[EnrichedArticle](
+    enrichers: list[EnricherProtocol[EnrichedArticleModel, EnrichedArticleModel]] = [
+        ContextEnricher(agent)
+    ]
+    enrich_step = EnrichDataStep[EnrichedArticleModel](
         "enrich_articles",
         enrichers,
         context_keys.ENRICHED_ARTICLES,
@@ -252,7 +255,7 @@ def build_knowledge_enrichment_flow(
         layer_resolver=layer_resolver,
         output_layer=preparation_config.output_layer,
         source=source,
-        model_class=EnrichedArticle,
+        model_class=EnrichedArticleModel,
         input_key=context_keys.ENRICHED_ARTICLES,
     )
 

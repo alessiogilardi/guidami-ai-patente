@@ -37,19 +37,19 @@ class StoreChunksStep(Step):
         self._source = source
 
     def execute(self, context: FlowContext) -> None:
-        """Legge `CHUNKS`, cancella i chunk della source e re-inserisce.
+        """Legge `CHUNK_ENTITIES`, cancella i chunk della source e re-inserisce.
 
         Args:
             context: Shared pipeline context.
         """
-        chunks = cast(list[KnowledgeChunk], context.get(context_keys.CHUNKS))
+        chunks = cast(list[KnowledgeChunk], context.get(context_keys.CHUNK_ENTITIES))
         self._repository.delete_source(self._source)
         self._repository.bulk_insert(chunks)
         logger.info(f"Stored {len(chunks)} chunks for source '{self._source}'")
 
     def get_required_keys(self) -> set[str]:
-        """Richiede `CHUNKS` in input."""
-        return {context_keys.CHUNKS}
+        """Richiede `CHUNK_ENTITIES` in input."""
+        return {context_keys.CHUNK_ENTITIES}
 
     def get_produced_keys(self) -> set[str]:
         """Nessuna chiave prodotta: è lo step terminale (sink) del flow."""

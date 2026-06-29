@@ -1,19 +1,19 @@
 import re
 
-from guidami_ai_patente_ingestor.entities import Article
+from guidami_ai_patente_ingestor.models.knowledge import ParsedArticleModel
 
 _INLINE_MARKUP_PATTERN = re.compile(r"\(\((.*?)\)\)", re.DOTALL)
 _ORDINAL_PREFIX_PATTERN = re.compile(r"^(\d+(?:-\w+)?\.?)\s*")
 
 
 class ArticleCleaner:
-    """Pulisce un `Article` dal markup normattiva.
+    """Pulisce un `ParsedArticleModel` dal markup normattiva.
 
     Rimuove anche i titoli avvolti in parentesi superflue e la numerazione
     ordinale dei commi.
     """
 
-    def clean(self, article: Article) -> Article:
+    def clean(self, article: ParsedArticleModel) -> ParsedArticleModel:
         """Ritorna una copia di `article` con title/text/paragraphs puliti."""
         return article.model_copy(
             update={

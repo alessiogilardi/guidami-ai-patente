@@ -1,5 +1,7 @@
 """Modelli intermedi per il corpus normativo."""
 
-from .enriched_article import EnrichedArticle
+from .embeddable_chunk import EmbeddableChunkModel
+from .enriched_article import EnrichedArticleModel
+from .parsed_article import ParsedArticleModel
 
-__all__ = ["EnrichedArticle"]
+__all__ = ["EmbeddableChunkModel", "EnrichedArticleModel", "ParsedArticleModel"]

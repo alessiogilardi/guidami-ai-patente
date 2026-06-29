@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class Article(BaseModel):
+class ParsedArticleModel(BaseModel):
     """Articolo del corpus normativo (CdS o CAP), come da JSON sorgente."""
 
     number: str
