@@ -47,16 +47,14 @@ docker compose -f docker/docker-compose.yml up -d
 | `uv run scrape-codice` | `scrapers.normattiva:main_cds` | Scrapes CdS → `data/raw/cds/`, `data/parsed/cds/codice_della_strada.json` |
 | `uv run scrape-cap` | `scrapers.normattiva:main_cap` | Scrapes CAP → `data/raw/cap/`, `data/parsed/cap/codice_rca.json` |
 | `uv run parse-domande` | `parsers.questions_pdf:main_questions` | Parses quiz PDF → `data/parsed/quiz-patente-ab/` |
-| `uv run ingest-knowledge --source <cds\|cap>` | `guidami_ai_patente_ingestor.main:main` | Runs `build_knowledge_indexing_flow` for one source (`enriched` → chunk → embed → `knowledge_chunks`) |
-| `uv run reset-knowledge-db` | `guidami_ai_patente_ingestor.reset_db:main` | Truncates `knowledge_chunks` without re-ingesting |
-| `uv run reset-quiz-db` | `guidami_ai_patente_ingestor.reset_quiz_db:main` | Truncates `quiz_questions` without re-ingesting |
+| `uv run ingest prepare knowledge --source <cds\|cap> [--force]` | `guidami_ai_patente_ingestor.cli:main` | Clean + enrich knowledge corpus for one source (`parsed` → `cleaned` → `enriched`); skips if output exists unless `--force` |
+| `uv run ingest prepare quiz [--force]` | `guidami_ai_patente_ingestor.cli:main` | Prepare quiz bank (`cleaned` → `enriched` with image descriptions); skips if output exists unless `--force` |
+| `uv run ingest index knowledge --source <cds\|cap>` | `guidami_ai_patente_ingestor.cli:main` | Embed + store knowledge corpus for one source (`enriched` → `knowledge_chunks`; delete-by-source + bulk insert) |
+| `uv run ingest index quiz` | `guidami_ai_patente_ingestor.cli:main` | Embed + store quiz bank (`enriched` → `quiz_questions`; truncate + bulk insert) |
+| `uv run ingest reset knowledge` | `guidami_ai_patente_ingestor.cli:main` | Truncates `knowledge_chunks` (full wipe) |
+| `uv run ingest reset quiz` | `guidami_ai_patente_ingestor.cli:main` | Truncates `quiz_questions` (full wipe) |
 
 Register new CLI commands under `[project.scripts]` in `pyproject.toml`.
-
-> ⚠️ The ingestion pipelines were rebuilt on a `flowstep`-based orchestrator (see below); CLI cutover
-> for quiz indexing and for both preparation flows (knowledge + quiz) is **pending** — their old
-> entry points (`quiz_main.py`, `prepare_knowledge_main.py`) were removed and not yet rewired. Only
-> `ingest-knowledge` is currently wired to the new flow.
 
 ### Secrets required
 
@@ -113,7 +111,7 @@ src/
     orchestrators/steps/knowledge/      # thin Step subclasses for both knowledge flows
     orchestrators/steps/quiz/           # thin Step subclasses for both quiz flows
     configs/ingestor_config.py          # IngestorConfig (BaseSettings, frozen)
-    main.py / reset_db.py / reset_quiz_db.py  # only wired CLI entry points today (see table above)
+    cli.py                              # unified `ingest` CLI entry point (argparse subcommands)
 
   guidami_ai_patente/                   # Future FastAPI app — not yet started
   scrapers/                             # Web scrapers (normattiva.it)
