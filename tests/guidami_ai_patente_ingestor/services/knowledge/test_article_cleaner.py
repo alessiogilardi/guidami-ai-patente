@@ -11,7 +11,7 @@ def _load_cds() -> dict[str, object]:
     articles = JsonRepository.get_instance(ParsedArticleModel).load(
         FIXTURES_DIR / "cds_sample.json"
     )
-    return {article.number: ArticleCleaner().clean(article) for article in articles}
+    return {article.number: ArticleCleaner().execute(article) for article in articles}
 
 
 def test_inline_markup_is_removed_from_text_and_paragraphs() -> None:

@@ -38,7 +38,7 @@ class TestEmbeddingService:
 
     def test_length_and_order(self) -> None:
         items = [_FakeEmbeddable("ab"), _FakeEmbeddable("cde"), _FakeEmbeddable("f")]
-        result = self._make_service().embed(items)
+        result = self._make_service().execute(items)
         assert len(result) == 3
         assert result == [[2.0], [3.0], [1.0]]
 
@@ -46,7 +46,7 @@ class TestEmbeddingService:
         items = [_FakeEmbeddable(f"item{i}") for i in range(5)]
         client = _RecordingFakeClient()
         service = EmbeddingService(client, batch_size=2)
-        service.embed(items)
+        service.execute(items)
         assert len(client.calls) == 3
         assert client.calls[0] == ["item0", "item1"]
         assert client.calls[1] == ["item2", "item3"]
@@ -54,7 +54,7 @@ class TestEmbeddingService:
 
     def test_empty_input(self) -> None:
         client = _RecordingFakeClient()
-        result = EmbeddingService(client, batch_size=10).embed([])
+        result = EmbeddingService(client, batch_size=10).execute([])
         assert result == []
         assert client.calls == []
 
@@ -68,7 +68,7 @@ class TestEmbeddingService:
 
     def test_purity(self) -> None:
         item = _FakeEmbeddable("hello")
-        self._make_service().embed([item])
+        self._make_service().execute([item])
         assert item.embedding is None
 
     def test_protocol_conformance_embeddable_chunk(self) -> None:

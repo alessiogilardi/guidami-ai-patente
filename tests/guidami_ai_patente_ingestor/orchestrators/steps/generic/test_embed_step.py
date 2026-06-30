@@ -63,9 +63,9 @@ def test_execute_raises_value_error_on_length_mismatch() -> None:
     """Se EmbeddingService ritorna meno vettori degli item, zip(strict=True) alza ValueError."""
 
     class _ShortEmbeddingService(EmbeddingService):
-        def embed(self, items: Sequence) -> list[list[float]]:  # type: ignore[override]
+        def execute(self, input: Sequence) -> list[list[float]]:  # type: ignore[override]
             # Restituisce un vettore in meno degli item
-            return [[1.0]] * (len(items) - 1)
+            return [[1.0]] * (len(input) - 1)
 
     short_service = _ShortEmbeddingService(_FakeClient(), batch_size=10)
     items = [_FakeEmbeddable("a"), _FakeEmbeddable("b"), _FakeEmbeddable("c")]
