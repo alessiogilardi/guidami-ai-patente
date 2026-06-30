@@ -3,4 +3,9 @@ temperature: 0.0
 max_tokens: 512
 system: "Sei un esperto di segnaletica stradale italiana."
 user: |
-  (placeholder Fase 3) Descrivi il segnale e restituisci JSON con i campi name e description.
+  Contesto della domanda:
+  Argomento: $topic
+  Testo: $text
+
+  Osserva l'immagine allegata e descrivi il segnale stradale raffigurato.
+  Restituisci un oggetto JSON con i campi name (nome ufficiale del segnale) e description (descrizione dettagliata).

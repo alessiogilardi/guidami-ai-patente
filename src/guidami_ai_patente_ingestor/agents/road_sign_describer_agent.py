@@ -1,29 +1,28 @@
 from pathlib import Path
-from typing import Any, Self, cast
 
 from commons.agents import BaseAgent
-from guidami_ai_patente_ingestor.models.quiz import ImageDescription
+from commons.agents.base_agent import ConfigLoader
+from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
+    RoadSignDescriberRequest,
+    RoadSignDescriberResponse,
+)
 
 
-class RoadSignDescriberAgent(BaseAgent[ImageDescription]):
-    """Descrive segnali stradali tramite vision LLM."""
-
-    def describe(self, image_path: Path) -> ImageDescription:
-        """Descrive il segnale stradale nell'immagine.
-
-        Args:
-            image_path: Percorso dell'immagine del segnale.
-
-        Returns:
-            Descrizione strutturata con `name` e `description`.
-        """
-        return self.run_prompt_sync({}, images=(image_path,)).output
+class RoadSignDescriberAgent(BaseAgent[RoadSignDescriberRequest, RoadSignDescriberResponse]):
+    """Wrapper puro intorno all'LLM per la descrizione dei segnali stradali via vision."""
 
     @classmethod
-    def from_yaml(
-        cls,
-        name: str,
-        agents_dir: Path,
-        output_type: Any = None,
-    ) -> Self:
-        return cast(Self, super().from_yaml(name, agents_dir, ImageDescription))
+    def from_yaml(  # type: ignore[override]
+        cls, name: str, agents_dir: Path
+    ) -> "RoadSignDescriberAgent":
+        """Istanzia l'agente leggendo la configurazione da un file YAML.
+
+        Args:
+            name: Nome del file YAML (senza estensione).
+            agents_dir: Directory che contiene i file di configurazione degli agenti.
+
+        Returns:
+            Istanza configurata di `RoadSignDescriberAgent`.
+        """
+        config = ConfigLoader.from_yaml(agents_dir, name)
+        return cls(config, RoadSignDescriberResponse)

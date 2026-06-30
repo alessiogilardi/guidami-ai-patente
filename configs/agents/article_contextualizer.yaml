@@ -2,7 +2,10 @@ model_name: openrouter/google/gemini-2.5-flash-lite
 temperature: 0.0
 system: "Riformuli norme in linguaggio piano, senza inventare contenuti."
 user: |
-  (placeholder Fase 3) Articolo: $title
+  Articolo: $title
   $text
   $paragraphs
-  Restituisci JSON {comma_index: contesto} per ogni comma.
+  Restituisci un oggetto JSON con un campo "contexts": un dizionario dove le chiavi sono gli
+  indici interi dei commi (0, 1, 2, ...) e i valori sono stringhe che spiegano ciascun comma
+  in linguaggio semplice e accessibile.
+  Esempio: {"contexts": {"0": "Il codice regolamenta la circolazione.", "1": "Le norme si applicano su strade pubbliche."}}
