@@ -4,7 +4,7 @@
 (nested item -> flat, denormalizza question_id/topic dal genitore).
 """
 
-from guidami_ai_patente_ingestor.mappers.quiz import QuizMapper
+from guidami_ai_patente_ingestor.mappers import QuizMapper
 from guidami_ai_patente_ingestor.models.quiz import (
     CleanedQuizModel,
     EnrichedQuizModel,

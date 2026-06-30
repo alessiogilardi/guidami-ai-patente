@@ -12,20 +12,10 @@ from pydantic_ai.messages import (
 from pydantic_ai.models.function import AgentInfo, FunctionModel
 
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
-from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
-
-
-def _article(repealed: bool = False) -> EnrichedArticleModel:
-    return EnrichedArticleModel(
-        number="1",
-        title="Finalità",
-        text="Comma 0.",
-        paragraphs=["Comma 1.", "Comma 2."],
-        url="https://example.com/art-1",
-        scraped_at="2025-01-01T00:00:00",
-        repealed=repealed,
-        contexts={},
-    )
+from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
+    ArticleContextualizerRequest,
+    ArticleContextualizerResponse,
+)
 
 
 @pytest.fixture
@@ -41,9 +31,14 @@ def agents_dir(tmp_path: Path) -> Path:
     return d
 
 
-def test_contextualize_returns_dict_for_article(agents_dir: Path) -> None:
+def _request(**kwargs) -> ArticleContextualizerRequest:
+    defaults = dict(title="Finalità", text="Comma 0.", paragraphs="1. Comma 1.\n2. Comma 2.")
+    return ArticleContextualizerRequest(**{**defaults, **kwargs})
+
+
+def test_run_sync_returns_article_contextualizer_response(agents_dir: Path) -> None:
     agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir)
-    expected = {"0": "Primo contesto.", "1": "Secondo contesto."}
+    expected_contexts = {"0": "Primo contesto.", "1": "Secondo contesto."}
 
     def func(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
         return ModelResponse(
@@ -51,36 +46,21 @@ def test_contextualize_returns_dict_for_article(agents_dir: Path) -> None:
                 ToolCallPart(
                     tool_name=info.output_tools[0].name,
                     tool_call_id="call_1",
-                    args=json.dumps({"response": expected}),
+                    args=json.dumps({"contexts": expected_contexts}),
                 )
             ]
         )
 
     with agent.core_agent.override(model=FunctionModel(func)):
-        result = agent.contextualize(_article())
+        result = agent.run_sync(_request())
 
-    assert result == {0: "Primo contesto.", 1: "Secondo contesto."}
+    assert isinstance(result, ArticleContextualizerResponse)
+    assert result.contexts == {0: "Primo contesto.", 1: "Secondo contesto."}
 
 
-def test_contextualize_skips_repealed_and_returns_empty(agents_dir: Path) -> None:
+def test_run_sync_passes_title_in_prompt(agents_dir: Path) -> None:
     agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir)
-    model_was_called = False
-
-    def flagging_func(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
-        nonlocal model_was_called
-        model_was_called = True
-        return ModelResponse(parts=[])
-
-    with agent.core_agent.override(model=FunctionModel(flagging_func)):
-        result = agent.contextualize(_article(repealed=True))
-
-    assert result == {}
-    assert not model_was_called
-
-
-def test_contextualize_passes_article_title_in_prompt(agents_dir: Path) -> None:
-    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir)
-    article = _article()
+    request = _request(title="Norme generali")
     captured_text: list[str] = []
 
     def capturing_func(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
@@ -94,12 +74,39 @@ def test_contextualize_passes_article_title_in_prompt(agents_dir: Path) -> None:
                 ToolCallPart(
                     tool_name=info.output_tools[0].name,
                     tool_call_id="call_1",
-                    args=json.dumps({"response": {"0": "ctx"}}),
+                    args=json.dumps({"contexts": {"0": "ctx"}}),
                 )
             ]
         )
 
     with agent.core_agent.override(model=FunctionModel(capturing_func)):
-        agent.contextualize(article)
+        agent.run_sync(request)
 
-    assert any(article.title in t for t in captured_text)
+    assert any("Norme generali" in t for t in captured_text)
+
+
+def test_run_sync_passes_paragraphs_in_prompt(agents_dir: Path) -> None:
+    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir)
+    request = _request(paragraphs="1. Primo comma.\n2. Secondo comma.")
+    captured_text: list[str] = []
+
+    def capturing_func(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
+        for msg in messages:
+            if isinstance(msg, ModelRequest):
+                for part in msg.parts:
+                    if isinstance(part, UserPromptPart) and isinstance(part.content, str):
+                        captured_text.append(part.content)
+        return ModelResponse(
+            parts=[
+                ToolCallPart(
+                    tool_name=info.output_tools[0].name,
+                    tool_call_id="call_1",
+                    args=json.dumps({"contexts": {"0": "ctx"}}),
+                )
+            ]
+        )
+
+    with agent.core_agent.override(model=FunctionModel(capturing_func)):
+        agent.run_sync(request)
+
+    assert any("Primo comma." in t for t in captured_text)
