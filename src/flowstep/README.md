@@ -5,7 +5,7 @@ FlowStep is a lightweight, flexible framework for building and executing data pr
 ## Quick Start
 
 ```python
-from commons.flowstep import Flow, Step, FlowContext, FlowBuilder
+from flowstep import Flow, Step, FlowContext, FlowBuilder
 
 # Define your custom steps
 class LoadDataStep(Step):
@@ -208,7 +208,7 @@ Raised when a step fails during execution.
 ### Example 1: Data Transformation Pipeline
 
 ```python
-from commons.flowstep import FlowBuilder, Step, FlowContext
+from flowstep import FlowBuilder, Step, FlowContext
 
 class LoadCSVStep(Step):
     def execute(self, context: FlowContext) -> None:
@@ -264,7 +264,7 @@ print(f"Total: {result.get('total')}")  # Total: 50
 ### Example 2: Error Handling
 
 ```python
-from commons.flowstep import FlowBuilder, Step, FlowContext, FlowExecutionError
+from flowstep import FlowBuilder, Step, FlowContext, FlowExecutionError
 
 class RiskyStep(Step):
     def execute(self, context: FlowContext) -> None:
@@ -292,7 +292,7 @@ except FlowExecutionError as e:
 ### Example 3: Reusable Flow Factory
 
 ```python
-from commons.flowstep import Flow, FlowBuilder
+from flowstep import Flow, FlowBuilder
 
 def create_etl_flow(name: str) -> Flow:
     return (FlowBuilder(name)

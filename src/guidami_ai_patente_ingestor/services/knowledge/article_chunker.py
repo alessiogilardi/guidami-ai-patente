@@ -1,6 +1,6 @@
 from typing import Literal
 
-from commons.abstracts.use_case import UseCase
+from commons.use_cases import UseCase
 from guidami_ai_patente_ingestor.mappers import ArticleMapper
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel, EnrichedArticleModel
 
@@ -19,21 +19,21 @@ class ArticleChunker(UseCase[EnrichedArticleModel, list[EmbeddableChunkModel]]):
         """
         self._source: Literal["cds", "cap"] = source
 
-    def execute(self, input: EnrichedArticleModel) -> list[EmbeddableChunkModel]:
+    def execute(self, request: EnrichedArticleModel) -> list[EmbeddableChunkModel]:
         """Genera i chunk di `article`: comma 0 da `text` (se non vuoto) + uno per paragrafo."""
         chunks: list[EmbeddableChunkModel] = []
 
-        if input.text:
+        if request.text:
             chunks.append(
                 ArticleMapper.from_enriched_to_embeddable_chunk(
-                    input, self._source, comma_index=0, raw_text=input.text
+                    request, self._source, comma_index=0, raw_text=request.text
                 )
             )
 
-        for comma_index, paragraph in enumerate(input.paragraphs, start=1):
+        for comma_index, paragraph in enumerate(request.paragraphs, start=1):
             chunks.append(
                 ArticleMapper.from_enriched_to_embeddable_chunk(
-                    input, self._source, comma_index=comma_index, raw_text=paragraph
+                    request, self._source, comma_index=comma_index, raw_text=paragraph
                 )
             )
 

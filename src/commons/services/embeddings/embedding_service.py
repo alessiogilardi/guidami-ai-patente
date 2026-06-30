@@ -1,8 +1,8 @@
 import logging
 from collections.abc import Sequence
 
-from commons.abstracts import UseCase
 from commons.clients import EmbeddingClient
+from commons.use_cases import UseCase
 
 from .protocols import Embeddable
 
@@ -22,12 +22,12 @@ class EmbeddingService(UseCase[Sequence[Embeddable], list[list[float]]]):
         self._client = client
         self._batch_size = batch_size
 
-    def execute(self, input: Sequence[Embeddable]) -> list[list[float]]:
+    def execute(self, request: Sequence[Embeddable]) -> list[list[float]]:
         """Ritorna i vettori allineati a `items` (stesso ordine). Nessuna mutazione."""
-        total_batches = -(-len(input) // self._batch_size)
+        total_batches = -(-len(request) // self._batch_size)
         vectors: list[list[float]] = []
-        for start in range(0, len(input), self._batch_size):
-            batch = input[start : start + self._batch_size]
+        for start in range(0, len(request), self._batch_size):
+            batch = request[start : start + self._batch_size]
             batch_number = start // self._batch_size + 1
             logger.info(f"embedding batch {batch_number}/{total_batches} ({len(batch)} items)")
             vectors.extend(self._client.embed_passages([item.embedded_text for item in batch]))

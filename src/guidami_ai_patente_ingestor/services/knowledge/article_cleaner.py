@@ -1,6 +1,6 @@
 import re
 
-from commons.abstracts.use_case import UseCase
+from commons.use_cases import UseCase
 from guidami_ai_patente_ingestor.models.knowledge import ParsedArticleModel
 
 _INLINE_MARKUP_PATTERN = re.compile(r"\(\((.*?)\)\)", re.DOTALL)
@@ -14,13 +14,13 @@ class ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel]):
     ordinale dei commi.
     """
 
-    def execute(self, input: ParsedArticleModel) -> ParsedArticleModel:
+    def execute(self, request: ParsedArticleModel) -> ParsedArticleModel:
         """Ritorna una copia di `article` con title/text/paragraphs puliti."""
-        return input.model_copy(
+        return request.model_copy(
             update={
-                "title": self._clean_title(input.title),
-                "text": self._clean_text(input.text),
-                "paragraphs": self._clean_paragraphs(input.paragraphs),
+                "title": self._clean_title(request.title),
+                "text": self._clean_text(request.text),
+                "paragraphs": self._clean_paragraphs(request.paragraphs),
             }
         )
 
