@@ -24,23 +24,19 @@ class QuizMapper:
     """
 
     @staticmethod
-    def from_enriched_quiz_item_to_embeddable(
-        item: EnrichedQuizModel,
-        parent: EnrichedQuizModel,
-    ) -> EmbeddableQuizModel:
-        """Mappa una sotto-domanda enriched in `EmbeddableQuizModel`.
+    def from_enriched_to_embeddable(item: EnrichedQuizModel) -> EmbeddableQuizModel:
+        """Mappa una domanda enriched (flat) in `EmbeddableQuizModel`.
 
         Args:
-            item: La sotto-domanda da mappare.
-            parent: La domanda madre che fornisce `question_id` e `topic`.
+            item: La domanda enriched da mappare (modello flat, auto-contenuta).
 
         Returns:
             `EmbeddableQuizModel` pronto per il calcolo dell'embedding.
         """
         return EmbeddableQuizModel(
             number=item.number,
-            question_id=parent.question_id,
-            topic=parent.topic,
+            question_id=item.question_id,
+            topic=item.topic,
             text=item.text.strip(),
             correct_answer=item.correct_answer,
             image_filename=QuizMapper._image_filename(item.image),

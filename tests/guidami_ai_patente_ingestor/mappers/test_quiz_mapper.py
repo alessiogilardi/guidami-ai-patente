@@ -9,10 +9,10 @@ from guidami_ai_patente_ingestor.mappers import QuizMapper
 from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel, EnrichedQuizModel
 
 
-def _sub_question(
+def _enriched_item(
     number: str,
-    text: str,
-    correct_answer: bool,
+    text: str = "Domanda di esempio.",
+    correct_answer: bool = True,
     image: str | None = None,
     image_description: str | None = None,
 ) -> EnrichedQuizModel:
@@ -41,72 +41,64 @@ def _embeddable(**kwargs) -> EmbeddableQuizModel:
     return EmbeddableQuizModel(**{**defaults, **kwargs})
 
 
-# --- from_enriched_quiz_item_to_embeddable ---
-# NOTE (SP09 09-quiz-flatten-at-preparation.md): MapToEmbeddableStep and
-# from_enriched_quiz_item_to_embeddable belong to indexing, explicitly out of
-# scope for this plan. These tests are kept minimal (compiling, not fixed) to
-# avoid breaking the suite; the real fix is tracked in a future indexing plan.
+# --- from_enriched_to_embeddable ---
 
 
-def test_from_enriched_quiz_item_to_embeddable_copies_all_fields_from_item_and_parent() -> None:
-    parent = _sub_question("0", "", correct_answer=False)
-    item = _sub_question("1", "Domanda.", correct_answer=True, image_description="Stop.")
+def test_from_enriched_to_embeddable_copies_all_fields() -> None:
+    item = _enriched_item("1", "Domanda.", correct_answer=True, image_description="Stop.")
 
-    result = QuizMapper.from_enriched_quiz_item_to_embeddable(item, parent)
+    result = QuizMapper.from_enriched_to_embeddable(item)
 
     assert isinstance(result, EmbeddableQuizModel)
     assert result.number == "1"
+    assert result.question_id == 100
+    assert result.topic == "Segnaletica"
     assert result.text == "Domanda."
     assert result.correct_answer is True
     assert result.image_description == "Stop."
 
 
-def test_from_enriched_quiz_item_to_embeddable_strips_whitespace_from_text() -> None:
-    parent = _sub_question("0", "", correct_answer=False)
-    item = _sub_question("1", "  Testo con spazi  ", correct_answer=True)
+def test_from_enriched_to_embeddable_strips_whitespace_from_text() -> None:
+    item = _enriched_item("1", "  Testo con spazi  ", correct_answer=True)
 
-    result = QuizMapper.from_enriched_quiz_item_to_embeddable(item, parent)
+    result = QuizMapper.from_enriched_to_embeddable(item)
 
     assert result.text == "Testo con spazi"
 
 
-def test_from_enriched_quiz_item_to_embeddable_extracts_image_filename_from_path() -> None:
-    parent = _sub_question("0", "", correct_answer=False)
-    item = _sub_question("1", "D", correct_answer=True, image="images/abc123.jpeg")
+def test_from_enriched_to_embeddable_extracts_image_filename_from_path() -> None:
+    item = _enriched_item("1", "D", correct_answer=True, image="images/abc123.jpeg")
 
-    result = QuizMapper.from_enriched_quiz_item_to_embeddable(item, parent)
+    result = QuizMapper.from_enriched_to_embeddable(item)
 
     assert result.image_filename == "abc123.jpeg"
 
 
-def test_from_enriched_quiz_item_to_embeddable_no_image_means_no_filename() -> None:
-    parent = _sub_question("0", "", correct_answer=False)
-    item = _sub_question("1", "D", correct_answer=True)
+def test_from_enriched_to_embeddable_no_image_means_no_filename() -> None:
+    item = _enriched_item("1", "D", correct_answer=True)
 
-    result = QuizMapper.from_enriched_quiz_item_to_embeddable(item, parent)
+    result = QuizMapper.from_enriched_to_embeddable(item)
 
     assert result.image_filename is None
 
 
-def test_from_enriched_quiz_item_to_embeddable_propagates_image_description() -> None:
-    parent = _sub_question("0", "", correct_answer=False)
-    item = _sub_question(
+def test_from_enriched_to_embeddable_propagates_image_description() -> None:
+    item = _enriched_item(
         "1",
         "Il segnale raffigurato.",
         correct_answer=True,
         image_description="Segnale di stop ottagonale rosso.",
     )
 
-    result = QuizMapper.from_enriched_quiz_item_to_embeddable(item, parent)
+    result = QuizMapper.from_enriched_to_embeddable(item)
 
     assert result.image_description == "Segnale di stop ottagonale rosso."
 
 
-def test_from_enriched_quiz_item_to_embeddable_no_description_means_none() -> None:
-    parent = _sub_question("0", "", correct_answer=False)
-    item = _sub_question("1", "D", correct_answer=True)
+def test_from_enriched_to_embeddable_no_description_means_none() -> None:
+    item = _enriched_item("1", "D", correct_answer=True)
 
-    result = QuizMapper.from_enriched_quiz_item_to_embeddable(item, parent)
+    result = QuizMapper.from_enriched_to_embeddable(item)
 
     assert result.image_description is None
 
