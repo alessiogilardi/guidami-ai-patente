@@ -7,7 +7,7 @@ from commons.flowstep import Flow, FlowBuilder
 from commons.services.embeddings import EmbeddingService
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
-from guidami_ai_patente_ingestor.mappers.quiz import QuizMapper
+from guidami_ai_patente_ingestor.mappers import QuizMapper
 from guidami_ai_patente_ingestor.models.quiz import (
     CleanedQuizModel,
     EnrichedQuizModel,

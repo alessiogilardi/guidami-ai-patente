@@ -36,7 +36,7 @@ class EmbedChunksStep(Step):
             embed_repealed: Se True, embeddita anche i chunk repealed.
         """
         super().__init__(name)
-        self._embedding_service = embedding_service
+        self._embed = embedding_service
         self._embed_repealed = embed_repealed
 
     def execute(self, context: FlowContext) -> None:
@@ -52,7 +52,7 @@ class EmbedChunksStep(Step):
         to_embed = chunks if self._embed_repealed else [c for c in chunks if not c.is_repealed]
 
         if to_embed:
-            vectors = self._embedding_service.embed(to_embed)
+            vectors = self._embed(to_embed)
             for chunk, vector in zip(to_embed, vectors, strict=True):
                 chunk.embedding = vector
 

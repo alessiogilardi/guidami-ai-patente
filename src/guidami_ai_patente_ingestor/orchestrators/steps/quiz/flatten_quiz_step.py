@@ -4,7 +4,7 @@ import logging
 from typing import cast
 
 from commons.flowstep import FlowContext, Step
-from guidami_ai_patente_ingestor.mappers.quiz import QuizMapper
+from guidami_ai_patente_ingestor.mappers import QuizMapper
 from guidami_ai_patente_ingestor.models.quiz import CleanedQuizModel, ParsedQuizModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 

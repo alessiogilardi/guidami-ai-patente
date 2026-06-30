@@ -13,13 +13,13 @@ class EmbedStep(Step):
     def __init__(self, name: str, embedding_service: EmbeddingService, items_key: str) -> None:
         """Inietta il service di embedding e la chiave context degli item da embeddare."""
         super().__init__(name)
-        self._embedding_service = embedding_service
+        self._embed = embedding_service
         self._items_key = items_key
 
     def execute(self, context: FlowContext) -> None:
         """Legge gli item da `items_key`, assegna gli embedding, ri-scrive `items_key`."""
         items = cast(list[Embedded], context.get(self._items_key))
-        vectors = self._embedding_service.embed(items)
+        vectors = self._embed(items)
         for item, vector in zip(items, vectors, strict=True):
             item.embedding = vector
         context.put(self._items_key, items)

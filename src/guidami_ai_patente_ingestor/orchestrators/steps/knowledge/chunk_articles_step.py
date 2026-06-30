@@ -44,9 +44,7 @@ class ChunkArticlesStep(Step):
             context: Shared pipeline context.
         """
         articles = cast(list[EnrichedArticleModel], context.get(context_keys.ENRICHED_ARTICLES))
-        chunks = [
-            chunk for article in articles for chunk in self._chunker.chunk(article, self._source)
-        ]
+        chunks = [chunk for article in articles for chunk in self._chunker(article)]
 
         logger.info(
             f"Chunked {len(articles)} articles for source '{self._source}' → {len(chunks)} chunks"

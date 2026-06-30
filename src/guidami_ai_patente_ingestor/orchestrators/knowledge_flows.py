@@ -8,7 +8,7 @@ from commons.flowstep import Flow, FlowBuilder
 from commons.services.embeddings import EmbeddingService
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
-from guidami_ai_patente_ingestor.mappers.knowledge import ArticleMapper
+from guidami_ai_patente_ingestor.mappers import ArticleMapper
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel, ParsedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
@@ -84,7 +84,7 @@ def build_knowledge_indexing_flow(
 
     chunk_step = ChunkArticlesStep(
         "chunk_articles",
-        article_chunker=ArticleChunker(),
+        article_chunker=ArticleChunker(typed_source),
         source=typed_source,
     )
 
@@ -163,7 +163,7 @@ def build_knowledge_cleaning_flow(
 
     clean_step = MapStep(
         "clean_articles",
-        mapper=ArticleCleaner().clean,
+        mapper=ArticleCleaner().execute,
         input_key=context_keys.PARSED_ARTICLES,
         output_key=context_keys.CLEANED_ARTICLES,
     )
