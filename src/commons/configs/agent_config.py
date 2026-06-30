@@ -15,7 +15,7 @@ class AgentConfig(BaseModel):
         default=0.0,
         ge=0.0,
         le=2.0,
-        description="Creatività del modello. Valori tipici: 0.0 (deterministico) - 2.0 (creativo).",
+        description="Creatività del modello. Tipici: 0.0 (deterministico) - 2.0 (creativo).",
     )
 
     max_tokens: int | None = Field(
@@ -35,5 +35,5 @@ class AgentConfig(BaseModel):
     user: str = Field(
         ...,
         min_length=1,
-        description="Il template per il prompt utente, supporta variabili tramite la sintassi $var.",
+        description="Template del prompt utente; supporta variabili con la sintassi $var.",
     )
