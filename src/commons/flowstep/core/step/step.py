@@ -27,6 +27,7 @@ class Step(ABC):
 
     @property
     def name(self) -> str:
+        """Nome identificativo dello step."""
         return self._name
 
     @abstractmethod
@@ -60,4 +61,5 @@ class Step(ABC):
         pass
 
     def __repr__(self) -> str:
+        """Rappresentazione stringa leggibile dello step."""
         return f"{self.__class__.__name__}(name='{self._name}')"

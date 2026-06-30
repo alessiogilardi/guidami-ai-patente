@@ -71,6 +71,7 @@ class Flow:
         return self._steps.copy()
 
     def __repr__(self) -> str:
+        """Rappresentazione stringa leggibile del flow."""
         return f"Flow(name='{self.name}', steps={len(self._steps)})"
 
     def __execute_step(self, step: Step) -> None:

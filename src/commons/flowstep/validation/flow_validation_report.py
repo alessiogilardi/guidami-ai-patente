@@ -6,15 +6,22 @@ from .models import StepValidationResult
 class FlowValidationReport:
     """Aggregated report of all validation results for a pipeline."""
 
-    def __init__(self):
+    def __init__(self) -> None:
+        """Inizializza un report vuoto senza risultati né chiavi richieste."""
         self._results: list[StepValidationResult] = []
         self._required_input_keys: set[str] = set()
 
     @property
     def required_input_keys(self) -> set[str]:
+        """Chiavi di input richieste dal pipeline prima dell'esecuzione."""
         return self._required_input_keys.copy()
 
     def set_required_input_keys(self, keys: set[str]) -> None:
+        """Imposta le chiavi di input richieste dal pipeline.
+
+        Args:
+            keys: Insieme di chiavi richieste.
+        """
         self._required_input_keys = set(keys)
 
     def add_result(self, result: StepValidationResult) -> None:
@@ -65,6 +72,7 @@ class FlowValidationReport:
         }
 
     def __str__(self) -> str:
+        """Rappresentazione leggibile del report con errori e warning."""
         lines = ["Flow Validation Report"]
         lines.append("=" * 50)
 

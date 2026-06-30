@@ -8,6 +8,7 @@ class LoadDataStep(Step):
     """Step to load initial data."""
 
     def execute(self, context: FlowContext) -> None:
+        """Load sample user data into context."""
         data = {
             "users": [
                 {"id": 1, "name": "Alice", "age": 30},
@@ -19,9 +20,11 @@ class LoadDataStep(Step):
         context.put("load_timestamp", "2024-01-01T00:00:00")
 
     def get_required_keys(self) -> set[str]:
+        """Return the set of keys required from context before execution."""
         return set()
 
     def get_produced_keys(self) -> set[str]:
+        """Return the set of keys produced into context after execution."""
         return {"raw_data", "load_timestamp"}
 
 
@@ -29,6 +32,7 @@ class TransformDataStep(Step):
     """Step to transform the data."""
 
     def execute(self, context: FlowContext) -> None:
+        """Transform raw user data into a structured format."""
         raw_data = context.get("raw_data")
         users = raw_data.get("users", [])
 
@@ -47,9 +51,11 @@ class TransformDataStep(Step):
         context.put("transformed_data", transformed)
 
     def get_required_keys(self) -> set[str]:
+        """Return the set of keys required from context before execution."""
         return {"raw_data"}
 
     def get_produced_keys(self) -> set[str]:
+        """Return the set of keys produced into context after execution."""
         return {"transformed_data"}
 
 

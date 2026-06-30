@@ -78,4 +78,5 @@ class FlowContext:
         return self._data.copy()
 
     def __repr__(self) -> str:
+        """Rappresentazione stringa leggibile del contesto."""
         return f"FlowContext(keys={list(self.keys())})"
