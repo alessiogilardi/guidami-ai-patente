@@ -2,7 +2,7 @@
 
 from unittest.mock import MagicMock
 
-from commons.flowstep import FlowContext
+from flowstep import FlowContext
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel, EnrichedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import ChunkArticlesStep

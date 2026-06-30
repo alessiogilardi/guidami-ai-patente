@@ -1,8 +1,8 @@
 """Test per EmbedChunksStep."""
 
 from commons.clients import EmbeddingClient
-from commons.flowstep import FlowContext
 from commons.services.embeddings import EmbeddingService
+from flowstep import FlowContext
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import EmbedChunksStep

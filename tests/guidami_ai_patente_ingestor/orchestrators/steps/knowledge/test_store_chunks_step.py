@@ -3,7 +3,7 @@
 from unittest.mock import MagicMock, call
 
 from commons.entities.knowledge import KnowledgeChunk
-from commons.flowstep import FlowContext
+from flowstep import FlowContext
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import StoreChunksStep
 from guidami_ai_patente_ingestor.repositories import KnowledgeChunkStoreRepository
