@@ -1,5 +1,6 @@
 import logging
 
+from commons.use_cases import UseCase
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.mappers.agents import ArticleContextualizerMapper
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
@@ -7,10 +8,9 @@ from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 logger = logging.getLogger(__name__)
 
 
-class ContextEnricher:
+class ContextEnricher(UseCase[list[EnrichedArticleModel], list[EnrichedArticleModel]]):
     """Arricchisce gli articoli con i contesti per comma generati via LLM.
 
-    Soddisfa `EnricherProtocol[EnrichedArticleModel, EnrichedArticleModel]` per struttura.
     La guard `repealed` e il mapping dominio↔DTO vivono qui, non nell'agente.
     Un fallimento isolato su un articolo non abortisce il batch: logga un warning
     e restituisce l'articolo invariato.
@@ -24,16 +24,16 @@ class ContextEnricher:
         """
         self._agent = article_contextualizer_agent
 
-    def enrich(self, items: list[EnrichedArticleModel]) -> list[EnrichedArticleModel]:
+    def execute(self, request: list[EnrichedArticleModel]) -> list[EnrichedArticleModel]:
         """Valorizza `contexts` su ogni articolo.
 
         Args:
-            items: Articoli enriched (base-map) da arricchire.
+            request: Articoli enriched (base-map) da arricchire.
 
         Returns:
             Nuove `EnrichedArticleModel` con `contexts` valorizzato.
         """
-        return [self._contextualize(item) for item in items]
+        return [self._contextualize(item) for item in request]
 
     def _contextualize(self, article: EnrichedArticleModel) -> EnrichedArticleModel:
         if article.repealed or not article.paragraphs:

@@ -39,7 +39,7 @@ def test_enrich_sets_contexts_from_agent() -> None:
     enricher = ContextEnricher(agent)
     articles = [_article("1")]
 
-    result = enricher.enrich(articles)
+    result = enricher(articles)
 
     assert result[0].contexts == {0: "Contesto comma 1."}
 
@@ -49,7 +49,7 @@ def test_enrich_calls_agent_run_sync_once_per_article() -> None:
     enricher = ContextEnricher(agent)
     articles = [_article("1"), _article("2")]
 
-    enricher.enrich(articles)
+    enricher(articles)
 
     assert agent.run_sync.call_count == 2
 
@@ -59,7 +59,7 @@ def test_enrich_passes_correct_request_to_agent() -> None:
     enricher = ContextEnricher(agent)
     article = _article("1")
 
-    enricher.enrich([article])
+    enricher([article])
 
     call_args = agent.run_sync.call_args
     request = call_args.args[0]
@@ -72,7 +72,7 @@ def test_enrich_empty_list_returns_empty_list() -> None:
     agent = _make_agent()
     enricher = ContextEnricher(agent)
 
-    result = enricher.enrich([])
+    result = enricher([])
 
     assert result == []
     agent.run_sync.assert_not_called()
@@ -84,7 +84,7 @@ def test_enrich_does_not_mutate_input_models() -> None:
     original = _article("1")
     articles = [original]
 
-    enricher.enrich(articles)
+    enricher(articles)
 
     assert original.contexts == {}
 
@@ -94,7 +94,7 @@ def test_enrich_skips_repealed_article_without_calling_agent() -> None:
     enricher = ContextEnricher(agent)
     article = _article("1", repealed=True)
 
-    result = enricher.enrich([article])
+    result = enricher([article])
 
     assert result[0].contexts == {}
     agent.run_sync.assert_not_called()
@@ -105,7 +105,7 @@ def test_enrich_skips_article_with_no_paragraphs_without_calling_agent() -> None
     enricher = ContextEnricher(agent)
     article = _article("1", paragraphs=[])
 
-    result = enricher.enrich([article])
+    result = enricher([article])
 
     assert result[0].contexts == {}
     agent.run_sync.assert_not_called()
@@ -124,7 +124,7 @@ def test_enrich_agent_failure_on_one_item_returns_article_unchanged_and_warns(ca
     articles = [_article("1"), _article("2"), _article("3")]
 
     with caplog.at_level("WARNING"):
-        result = enricher.enrich(articles)
+        result = enricher(articles)
 
     by_number = {article.number: article for article in result}
     assert by_number["1"].contexts == {0: "Contesto ok."}

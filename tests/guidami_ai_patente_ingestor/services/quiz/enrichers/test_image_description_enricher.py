@@ -43,7 +43,7 @@ def test_enrich_dedups_calls_for_same_image_topic_text(tmp_path: Path) -> None:
         _question("2", image="a.jpeg", topic="Segnaletica", text="Domanda."),
     ]
 
-    enricher.enrich(questions)
+    enricher(questions)
 
     assert describer.run_sync.call_count == 1
 
@@ -57,7 +57,7 @@ def test_enrich_calls_separately_for_same_image_different_text(tmp_path: Path) -
         _question("2", image="a.jpeg", text="Seconda domanda."),
     ]
 
-    enricher.enrich(questions)
+    enricher(questions)
 
     assert describer.run_sync.call_count == 2
 
@@ -73,7 +73,7 @@ def test_enrich_dedups_across_multiple_distinct_images(tmp_path: Path) -> None:
         _question("3", image="b.jpeg"),
     ]
 
-    enricher.enrich(questions)
+    enricher(questions)
 
     assert describer.run_sync.call_count == 2
 
@@ -84,7 +84,7 @@ def test_enrich_sets_formatted_description_on_matching_sub_questions(tmp_path: P
     enricher = ImageDescriptionEnricher(describer, tmp_path)
     questions = [_question("1", image="stop.jpeg")]
 
-    result = enricher.enrich(questions)
+    result = enricher(questions)
 
     assert result[0].image_description == "Stop. Segnale rosso ottagonale."
 
@@ -95,7 +95,7 @@ def test_enrich_missing_file_skips_and_warns(tmp_path: Path, caplog) -> None:
     questions = [_question("1", image="missing.jpeg")]
 
     with caplog.at_level("WARNING"):
-        result = enricher.enrich(questions)
+        result = enricher(questions)
 
     assert result[0].image_description is None
     describer.run_sync.assert_not_called()
@@ -110,7 +110,7 @@ def test_enrich_describe_raising_skips_and_warns(tmp_path: Path, caplog) -> None
     questions = [_question("1", image="stop.jpeg")]
 
     with caplog.at_level("WARNING"):
-        result = enricher.enrich(questions)
+        result = enricher(questions)
 
     assert result[0].image_description is None
     assert any("stop.jpeg" in record.message for record in caplog.records)
@@ -121,7 +121,7 @@ def test_enrich_no_image_means_description_stays_none(tmp_path: Path) -> None:
     enricher = ImageDescriptionEnricher(describer, tmp_path)
     questions = [_question("1", image=None)]
 
-    result = enricher.enrich(questions)
+    result = enricher(questions)
 
     assert result[0].image_description is None
     describer.run_sync.assert_not_called()
@@ -134,6 +134,6 @@ def test_enrich_does_not_mutate_input_models(tmp_path: Path) -> None:
     original = _question("1", image="stop.jpeg")
     questions = [original]
 
-    enricher.enrich(questions)
+    enricher(questions)
 
     assert original.image_description is None
