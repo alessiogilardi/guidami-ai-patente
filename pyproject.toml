@@ -1,7 +1,7 @@
 [project]
 name = "guidami-ai-patente"
 version = "0.1.0"
-description = "Add your description here"
+description = "Quiz bot and RAG pipeline over Italian driving exam corpus (CdS + CAP)"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
