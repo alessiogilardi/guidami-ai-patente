@@ -8,7 +8,7 @@ build_knowledge_cleaning_flow / build_knowledge_enrichment_flow, ma single-sourc
 from unittest.mock import MagicMock, patch
 
 from commons.configs import PostgresConnectionConfig
-from commons.flowstep import Flow, FlowValidator
+from flowstep import Flow, FlowValidator
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators import (
@@ -134,8 +134,8 @@ def test_enrichment_flow_build_with_validate_true_does_not_raise() -> None:
     assert isinstance(flow, Flow)
 
 
-def test_enrichment_flow_has_four_steps_in_order() -> None:
-    """La catena è LoadCleanedQuiz -> MapCleanedToEnriched -> EnrichQuiz -> WriteEnrichedQuiz."""
+def test_enrichment_flow_has_three_steps_in_order() -> None:
+    """La catena è LoadCleanedQuiz -> Enrich -> WriteEnrichedQuiz."""
     with patch.object(RoadSignDescriberAgent, "from_yaml", return_value=_patched_describer()):
         flow = build_quiz_enrichment_flow(
             config=_base_config(),
@@ -144,7 +144,6 @@ def test_enrichment_flow_has_four_steps_in_order() -> None:
     steps = flow.get_steps()
     assert [step.name for step in steps] == [
         "load_cleaned_quiz",
-        "map_cleaned_to_enriched",
-        "enrich_quiz",
+        "enrich",
         "write_enriched_quiz",
     ]

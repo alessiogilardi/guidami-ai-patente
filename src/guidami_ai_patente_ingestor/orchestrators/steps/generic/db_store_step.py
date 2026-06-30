@@ -1,7 +1,7 @@
 import logging
 from typing import Any, cast
 
-from commons.flowstep import FlowContext, Step
+from flowstep import FlowContext, Step
 
 from .protocols import StoreRepository
 

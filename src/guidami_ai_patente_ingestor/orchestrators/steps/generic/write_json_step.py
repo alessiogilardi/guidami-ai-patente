@@ -6,7 +6,7 @@ Domain-agnostic: parametrizzato dal tipo del modello e dalla chiave di contesto.
 import logging
 from typing import cast
 
-from commons.flowstep import FlowContext, Step
+from flowstep import FlowContext, Step
 from guidami_ai_patente_ingestor.repositories.json import JsonRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
 

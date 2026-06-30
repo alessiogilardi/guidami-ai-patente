@@ -4,7 +4,7 @@ from unittest.mock import MagicMock
 
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.configs import PostgresConnectionConfig
-from commons.flowstep import Flow, FlowValidator
+from flowstep import Flow, FlowValidator
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators import build_quiz_indexing_flow
 from guidami_ai_patente_ingestor.services import LayerResolver

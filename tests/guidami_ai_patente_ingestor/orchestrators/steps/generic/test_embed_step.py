@@ -5,8 +5,8 @@ from collections.abc import Sequence
 import pytest
 
 from commons.clients import EmbeddingClient
-from commons.flowstep import FlowContext
 from commons.services.embeddings import EmbeddingService
+from flowstep import FlowContext
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import EmbedStep
 
 

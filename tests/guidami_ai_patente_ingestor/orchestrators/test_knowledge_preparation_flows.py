@@ -5,7 +5,8 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 from commons.configs import PostgresConnectionConfig
-from commons.flowstep import Flow, FlowValidator
+from flowstep import Flow, FlowValidator
+from flowstep.steps import ApplyStep
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators import (
@@ -13,9 +14,7 @@ from guidami_ai_patente_ingestor.orchestrators import (
     build_knowledge_enrichment_flow,
 )
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
-    EnrichDataStep,
     LoadJsonStep,
-    MapStep,
     WriteJsonStep,
 )
 from guidami_ai_patente_ingestor.services import LayerResolver
@@ -130,7 +129,7 @@ def test_enrichment_flow_unknown_source_raises_value_error() -> None:
         )
 
 
-def test_enrichment_flow_has_four_steps_load_map_enrich_write() -> None:
+def test_enrichment_flow_has_three_steps_load_enrich_write() -> None:
     with patch.object(ArticleContextualizerAgent, "from_yaml", return_value=_patched_agent()):
         flow = build_knowledge_enrichment_flow(
             config=_base_config(),
@@ -139,8 +138,7 @@ def test_enrichment_flow_has_four_steps_load_map_enrich_write() -> None:
         )
 
     steps = flow.get_steps()
-    assert len(steps) == 4
+    assert len(steps) == 3
     assert isinstance(steps[0], LoadJsonStep)
-    assert isinstance(steps[1], MapStep)
-    assert isinstance(steps[2], EnrichDataStep)
-    assert isinstance(steps[3], WriteJsonStep)
+    assert isinstance(steps[1], ApplyStep)
+    assert isinstance(steps[2], WriteJsonStep)

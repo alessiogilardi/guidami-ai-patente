@@ -3,8 +3,10 @@
 import logging
 
 from commons.clients import EmbeddingClient, PostgresClient
-from commons.flowstep import Flow, FlowBuilder
 from commons.services.embeddings import EmbeddingService
+from commons.use_cases import ForEach
+from flowstep import Flow, FlowBuilder
+from flowstep.steps import ApplyStep
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.mappers import QuizMapper
@@ -17,21 +19,14 @@ from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
     DbStoreStep,
     EmbedStep,
-    EnrichDataStep,
     LoadJsonStep,
-    MapStep,
     WriteJsonStep,
-)
-from guidami_ai_patente_ingestor.orchestrators.steps.generic.protocols.enricher_protocol import (
-    EnricherProtocol,
-)
-from guidami_ai_patente_ingestor.orchestrators.steps.quiz import (
-    FlattenQuizStep,
-    MapToEmbeddableStep,
 )
 from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
 from guidami_ai_patente_ingestor.services.quiz.enrichers import ImageDescriptionEnricher
+from guidami_ai_patente_ingestor.services.quiz.flatten_quiz import FlattenQuiz
+from guidami_ai_patente_ingestor.services.quiz.to_embeddable_quiz import ToEmbeddableQuiz
 
 logger = logging.getLogger(__name__)
 
@@ -54,8 +49,8 @@ def build_quiz_indexing_flow(
     `quiz_questions` (truncate + bulk_insert) tramite il `DbStoreStep` generico.
 
     Mappatura step:
-      `LoadJsonStep` → `MapToEmbeddableStep` → `EmbedStep`
-      → `MapStep` → `DbStoreStep`
+      `LoadJsonStep` → `ApplyStep(map_to_embeddable)` → `EmbedStep`
+      → `ApplyStep(map_to_quiz_entity)` → `DbStoreStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -65,7 +60,7 @@ def build_quiz_indexing_flow(
         validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
             Solleva `FlowValidationError` su ERROR; il WARNING benigno su
             `EMBEDDABLE_QUIZ` (l'`EmbedStep` ri-dichiara una chiave già prodotta da
-            `MapToEmbeddableStep`) non blocca la build.
+            `ApplyStep`) non blocca la build.
 
     Returns:
         Flow configurato e pronto per l'esecuzione.
@@ -82,7 +77,12 @@ def build_quiz_indexing_flow(
         context_keys.ENRICHED_QUIZ,
     )
 
-    map_to_embeddable_step = MapToEmbeddableStep("map_to_embeddable")
+    map_to_embeddable_step = ApplyStep(
+        "map_to_embeddable",
+        ToEmbeddableQuiz(),
+        input_key=context_keys.ENRICHED_QUIZ,
+        output_key=context_keys.EMBEDDABLE_QUIZ,
+    )
 
     embed_step = EmbedStep(
         "embed_quiz",
@@ -90,11 +90,11 @@ def build_quiz_indexing_flow(
         context_keys.EMBEDDABLE_QUIZ,
     )
 
-    map_to_quiz_entity_step = MapStep(
+    map_to_quiz_entity_step = ApplyStep(
         "map_to_quiz_entity",
-        QuizMapper.from_embeddable_to_quiz_question,
-        context_keys.EMBEDDABLE_QUIZ,
-        context_keys.QUIZ_ENTITIES,
+        ForEach(QuizMapper.from_embeddable_to_quiz_question),
+        input_key=context_keys.EMBEDDABLE_QUIZ,
+        output_key=context_keys.QUIZ_ENTITIES,
     )
 
     store_step = DbStoreStep(
@@ -128,7 +128,7 @@ def build_quiz_cleaning_flow(
     `config.quiz_preparation.sources[0]`.
 
     Mappatura step:
-      `LoadJsonStep` → `FlattenQuizStep` → `WriteJsonStep`
+      `LoadJsonStep` → `ApplyStep(flatten_quiz)` → `WriteJsonStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -150,7 +150,12 @@ def build_quiz_cleaning_flow(
         ParsedQuizModel,
         context_keys.PARSED_QUIZ,
     )
-    flatten_step = FlattenQuizStep("flatten_quiz")
+    flatten_step = ApplyStep(
+        "flatten_quiz",
+        FlattenQuiz(),
+        input_key=context_keys.PARSED_QUIZ,
+        output_key=context_keys.CLEANED_QUIZ,
+    )
     write_step = WriteJsonStep(
         "write_cleaned_quiz",
         layer_resolver,
@@ -181,10 +186,10 @@ def build_quiz_enrichment_flow(
     Stadio di preparazione: nessun embed/store. Il quiz bank ha una sola
     source (`"quiz"`), derivata da `config.quiz_preparation.sources[0]`.
     L'enrichment è Open/Closed: aggiungere un futuro enricher tocca solo la
-    lista `enrichers` qui sotto, non lo step generico.
+    lista dei transform nell'ApplyStep, non lo step generico.
 
     Mappatura step:
-      `LoadJsonStep` → `MapStep` → `EnrichDataStep` → `WriteJsonStep`
+      `LoadJsonStep` → `ApplyStep(enrich)` → `WriteJsonStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -213,22 +218,13 @@ def build_quiz_enrichment_flow(
         context_keys.CLEANED_QUIZ,
     )
 
-    base_map_step = MapStep(
-        "map_cleaned_to_enriched",
-        QuizMapper.from_cleaned_to_enriched,
-        context_keys.CLEANED_QUIZ,
-        context_keys.ENRICHED_QUIZ,
-    )
-
     describer = RoadSignDescriberAgent.from_yaml("road_sign_describer", config.agents_dir)
-    enrichers: list[EnricherProtocol[EnrichedQuizModel, EnrichedQuizModel]] = [
-        ImageDescriptionEnricher(describer, config.quiz_images_dir)
-    ]
-    enrich_step = EnrichDataStep[EnrichedQuizModel](
-        "enrich_quiz",
-        enrichers,
-        context_keys.ENRICHED_QUIZ,
-        context_keys.ENRICHED_QUIZ,
+    enrich_step = ApplyStep(
+        "enrich",
+        ForEach(QuizMapper.from_cleaned_to_enriched),
+        ImageDescriptionEnricher(describer, config.quiz_images_dir),
+        input_key=context_keys.CLEANED_QUIZ,
+        output_key=context_keys.ENRICHED_QUIZ,
     )
 
     write_step = WriteJsonStep(
@@ -243,7 +239,6 @@ def build_quiz_enrichment_flow(
     flow: Flow = (
         FlowBuilder("quiz_enrichment")
         .add_step(load_step)
-        .add_step(base_map_step)
         .add_step(enrich_step)
         .add_step(write_step)
         .build(validate=validate)

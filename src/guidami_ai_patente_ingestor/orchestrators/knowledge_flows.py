@@ -4,8 +4,10 @@ import logging
 from typing import Literal, cast
 
 from commons.clients import EmbeddingClient, PostgresClient
-from commons.flowstep import Flow, FlowBuilder
 from commons.services.embeddings import EmbeddingService
+from commons.use_cases import ForEach
+from flowstep import Flow, FlowBuilder
+from flowstep.steps import ApplyStep
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.mappers import ArticleMapper
@@ -21,8 +23,7 @@ from guidami_ai_patente_ingestor.services import LayerResolver
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
 from guidami_ai_patente_ingestor.services.knowledge.enrichers import ContextEnricher
 
-from .steps.generic import EnrichDataStep, LoadJsonStep, MapStep, WriteJsonStep
-from .steps.generic.protocols.enricher_protocol import EnricherProtocol
+from .steps.generic import LoadJsonStep, WriteJsonStep
 
 logger = logging.getLogger(__name__)
 
@@ -47,7 +48,7 @@ def build_knowledge_indexing_flow(
 
     Mappatura step:
       `LoadJsonStep` → `ChunkArticlesStep` → `EmbedChunksStep`
-      → `MapStep` → `StoreChunksStep`
+      → `ApplyStep` → `StoreChunksStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -94,11 +95,11 @@ def build_knowledge_indexing_flow(
         embed_repealed=config.embed_repealed,
     )
 
-    map_to_entity_step = MapStep(
+    map_to_entity_step = ApplyStep(
         "map_to_chunk_entity",
-        ArticleMapper.from_embeddable_chunk_to_knowledge_chunk,
-        context_keys.EMBEDDABLE_CHUNKS,
-        context_keys.CHUNK_ENTITIES,
+        ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk),
+        input_key=context_keys.EMBEDDABLE_CHUNKS,
+        output_key=context_keys.CHUNK_ENTITIES,
     )
 
     store_step = StoreChunksStep(
@@ -132,7 +133,7 @@ def build_knowledge_cleaning_flow(
     Nessun embed/store: questo flow appartiene allo stadio di preparazione.
 
     Mappatura step:
-      `LoadJsonStep` → `MapStep` → `WriteJsonStep`
+      `LoadJsonStep` → `ApplyStep` → `WriteJsonStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -161,9 +162,9 @@ def build_knowledge_cleaning_flow(
         output_key=context_keys.PARSED_ARTICLES,
     )
 
-    clean_step = MapStep(
+    clean_step = ApplyStep(
         "clean_articles",
-        mapper=ArticleCleaner().execute,
+        ForEach(ArticleCleaner()),
         input_key=context_keys.PARSED_ARTICLES,
         output_key=context_keys.CLEANED_ARTICLES,
     )
@@ -200,7 +201,7 @@ def build_knowledge_enrichment_flow(
     Nessun embed/store: questo flow appartiene allo stadio di preparazione.
 
     Mappatura step:
-      `LoadJsonStep` → `MapStep` → `EnrichDataStep` → `WriteJsonStep`
+      `LoadJsonStep` → `ApplyStep` → `WriteJsonStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -232,22 +233,13 @@ def build_knowledge_enrichment_flow(
         output_key=context_keys.CLEANED_ARTICLES,
     )
 
-    base_map_step = MapStep(
-        "map_article_to_enriched",
-        ArticleMapper.from_parsed_to_enriched,
-        context_keys.CLEANED_ARTICLES,
-        context_keys.ENRICHED_ARTICLES,
-    )
-
     agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", config.agents_dir)
-    enrichers: list[EnricherProtocol[EnrichedArticleModel, EnrichedArticleModel]] = [
-        ContextEnricher(agent)
-    ]
-    enrich_step = EnrichDataStep[EnrichedArticleModel](
-        "enrich_articles",
-        enrichers,
-        context_keys.ENRICHED_ARTICLES,
-        context_keys.ENRICHED_ARTICLES,
+    enrich_step = ApplyStep(
+        "enrich",
+        ForEach(ArticleMapper.from_parsed_to_enriched),
+        ContextEnricher(agent),
+        input_key=context_keys.CLEANED_ARTICLES,
+        output_key=context_keys.ENRICHED_ARTICLES,
     )
 
     write_step = WriteJsonStep(
@@ -262,7 +254,6 @@ def build_knowledge_enrichment_flow(
     flow: Flow = (
         FlowBuilder("knowledge_enrichment")
         .add_step(load_step)
-        .add_step(base_map_step)
         .add_step(enrich_step)
         .add_step(write_step)
         .build(validate=validate)

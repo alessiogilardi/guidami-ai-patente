@@ -8,7 +8,7 @@ import pytest
 
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.configs import PostgresConnectionConfig
-from commons.flowstep import Flow
+from flowstep import Flow
 from guidami_ai_patente_ingestor.configs import IngestorConfig, SourceConfig
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import build_knowledge_indexing_flow
@@ -67,7 +67,7 @@ def test_flow_name_is_knowledge_indexing() -> None:
 
 def test_flow_required_input_keys_is_empty_set() -> None:
     """Il flow non richiede chiavi esterne: LoadJsonStep parte da zero."""
-    from commons.flowstep import FlowValidator
+    from flowstep import FlowValidator
 
     flow = build_knowledge_indexing_flow(
         config=_base_config(),

@@ -3,7 +3,7 @@
 import logging
 from pathlib import Path
 
-from commons.flowstep import Flow
+from flowstep import Flow
 
 logger = logging.getLogger(__name__)
 

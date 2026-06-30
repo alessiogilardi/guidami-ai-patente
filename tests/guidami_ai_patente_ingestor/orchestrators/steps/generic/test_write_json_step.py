@@ -3,7 +3,7 @@
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from commons.flowstep import FlowContext
+from flowstep import FlowContext
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import WriteJsonStep
 from guidami_ai_patente_ingestor.repositories.json import JsonRepository
 from guidami_ai_patente_ingestor.services import LayerResolver

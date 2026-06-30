@@ -3,7 +3,7 @@
 import logging
 from typing import Literal, cast
 
-from commons.flowstep import FlowContext, Step
+from flowstep import FlowContext, Step
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker

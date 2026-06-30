@@ -1,8 +1,8 @@
 import logging
 from typing import cast
 
-from commons.flowstep import FlowContext, Step
 from commons.services.embeddings import Embedded, EmbeddingService
+from flowstep import FlowContext, Step
 
 logger = logging.getLogger(__name__)
 

@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from commons.flowstep import FlowContext
+from flowstep import FlowContext
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import DbStoreStep
 
 

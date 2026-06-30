@@ -3,7 +3,7 @@
 from pathlib import Path
 from unittest.mock import MagicMock
 
-from commons.flowstep import Flow
+from flowstep import Flow
 from guidami_ai_patente_ingestor.orchestrators import run_preparation
 
 
