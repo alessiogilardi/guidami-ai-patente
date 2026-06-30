@@ -58,7 +58,8 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 - `tests/guidami_ai_patente_ingestor/services/knowledge/test_article_chunker.py` —
   casi limite: articolo interamente abrogato, `text=""`, comma singolarmente
   abrogato, context popolato da `EnrichedArticle.contexts`; `context` vuoto
-  se non arricchito.
+  se non arricchito. Il costruttore riceve `source` (non più parametro di
+  chiamata); il metodo testato è `execute(article)` (non più `chunk`).
 - `tests/guidami_ai_patente_ingestor/services/knowledge/test_article_contextualizer.py` —
   con `Agent` fake: parsa `dict[int, str]` dal JSON canned; articolo abrogato
   → ritorna `{}` senza chiamare l'agent; JSON malformato → `ValueError`.
@@ -80,22 +81,42 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 > genericamente in `test_enrich_data_step.py` (vedi sezione "Orchestrators —
 > step generici" sotto), non più con un test service-specific.
 
-### Mappers — quiz (consolidato, rinominato in SP09)
+### Mappers — dominio (flat, non più sub-package `knowledge/` e `quiz/`)
 
-- `tests/guidami_ai_patente_ingestor/mappers/quiz/test_quiz_mapper.py` —
+- `tests/guidami_ai_patente_ingestor/mappers/test_article_mapper.py` —
+  `from_parsed_to_enriched` copia tutti i campi comuni e imposta `contexts={}`;
+  `from_embeddable_chunk_to_knowledge_chunk` copia tutti i campi (incluso
+  `embedding=None` se absent); `from_enriched_to_embeddable_chunk` costruisce
+  correttamente l'`EmbeddableChunkModel` con `source`, `comma_index`, `raw_text`
+  e `context` estratto da `contexts`. `test_enriched_article_mapper.py` (rimosso
+  in precedenza) e `tests/.../mappers/knowledge/test_article_mapper.py` (rinominato
+  a flat) sono stati consolidati in questo file.
+- `tests/guidami_ai_patente_ingestor/mappers/test_quiz_mapper.py` —
   test per `QuizMapper` lato indexing: `from_enriched_quiz_item_to_embeddable`
   (denormalizzazione `question_id`/`topic` da `parent`, estrazione
   `image_filename`, `image_filename=None` se assente); `from_embeddable_to_quiz_question`
   (copia i campi persistiti, scarta `image_description`, mantiene
   `embedding`). **Nota**: questi due metodi assumono ancora la struttura
-  nested pre-SP09 e sono "out of scope" per SP09 (rottura nota e accettata,
-  vedi [quiz_pipelines.md](quiz_pipelines.md)) — i test sono mantenuti
-  minimali (compilano, non sono stati corretti).
-- `tests/guidami_ai_patente_ingestor/mappers/quiz/test_quiz_mapper_flatten_at_preparation.py` —
-  (SP09) `from_parsed_to_cleaned` (denormalizzazione `question_id`/`topic` da
-  `parent`) e `from_cleaned_to_enriched` (base-map flat→flat,
-  `image_description=None`). **Nessun test di dedup qui**: il dedup è in
-  `test_flatten_quiz_step.py` (non è nel mapper).
+  nested pre-SP09 (rottura nota e accettata, vedi [quiz_pipelines.md](quiz_pipelines.md)).
+- `tests/guidami_ai_patente_ingestor/mappers/test_quiz_mapper_flatten_at_preparation.py` —
+  (SP09) `from_parsed_to_cleaned` e `from_cleaned_to_enriched` (base-map flat→flat,
+  `image_description=None`). **Nessun test di dedup**: il dedup è in
+  `test_flatten_quiz_step.py`.
+
+### Mappers — agent DTO
+
+- `tests/guidami_ai_patente_ingestor/agents/dto/test_article_contextualizer_dto.py`
+  (o simile) — `ArticleContextualizerRequest` e `ArticleContextualizerResponse`
+  validati come Pydantic models; campi obbligatori e tipi corretti.
+- `tests/guidami_ai_patente_ingestor/agents/dto/test_road_sign_describer_dto.py`
+  (o simile) — `RoadSignDescriberRequest` e `RoadSignDescriberResponse` validati.
+- `tests/guidami_ai_patente_ingestor/mappers/agents/test_article_contextualizer_mapper.py` —
+  `from_enriched_article_to_request` popola correttamente `title`/`text`/`paragraphs`;
+  `from_response_to_enriched_article` applica `contexts` via `model_copy` senza
+  mutare l'originale.
+- `tests/guidami_ai_patente_ingestor/mappers/agents/test_road_sign_describer_mapper.py` —
+  `from_enriched_quiz_to_request` popola `topic`/`text`; `from_response_to_enriched_quiz`
+  produce `image_description = f"{name}. {description}"` via `model_copy`.
 
 ### Orchestrators — knowledge preparation flow + runner
 
@@ -104,11 +125,8 @@ Riferimento progettazione: `plans/architecture-ingestor.md`,
 dai generici `LoadJsonStep`/`MapStep`/`WriteJsonStep`, testati genericamente
 (vedi sezione "Orchestrators — step generici" sotto). Resta domain-specific:
 
-- `tests/guidami_ai_patente_ingestor/mappers/knowledge/test_article_mapper.py` —
-  `from_parsed_to_enriched` copia tutti i campi comuni e imposta `contexts={}`;
-  `from_embeddable_chunk_to_knowledge_chunk` copia tutti i campi (incluso
-  `embedding=None` se absent). `test_enriched_article_mapper.py` è stato rimosso
-  e rimpiazzato da questo file.
+- `tests/guidami_ai_patente_ingestor/mappers/test_article_mapper.py` — vedi
+  sezione "Mappers — dominio" sopra per il dettaglio completo.
 - `tests/guidami_ai_patente_ingestor/models/knowledge/test_embeddable_chunk.py` —
   default `embedding=None`, default `context=""`, `embedded_text` senza context
   (titolo + testo uniti da `\n`), `embedded_text` con context (tre parti unite da
@@ -139,7 +157,8 @@ dai generici `LoadJsonStep`/`MapStep`/`WriteJsonStep`, testati genericamente
 - `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_chunk_articles_step.py` —
   `required == {ENRICHED_ARTICLES}`, `produced == {EMBEDDABLE_CHUNKS}`; tutti i chunk prodotti
   (repealed inclusi, nessun filtro); flatten corretto da più articoli;
-  deleghe a `ArticleChunker` con la source iniettata nel costruttore.
+  delega a `ArticleChunker.execute(article)` (non più `chunk(article, source)` —
+  la source è nel costruttore del chunker, già iniettata nello step).
 - `tests/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/test_embed_chunks_step.py` —
   `required == produced == {EMBEDDABLE_CHUNKS}`; `embed_repealed=False` → i chunk repealed
   restano **presenti** con `embedding=None`; `embed_repealed=True` → tutti embeddati;

@@ -13,9 +13,12 @@ ancora avviata). `commons` non dipende da nessuno dei due.
 
 ```
 src/commons/
+  abstracts/
+    __init__.py              # re-esporta UseCase
+    use_case.py              # UseCase[T_In, T_Out](ABC) — execute(T_In) -> T_Out, __call__ delegate
   agents/
     __init__.py              # re-esporta BaseAgent
-    base_agent.py            # PromptRenderer, ConfigLoader, BaseAgent[T_out] — composizione su pydantic_ai.Agent
+    base_agent.py            # PromptRenderer, ConfigLoader, BaseAgent[T_In: BaseModel, T_Out] — composizione su pydantic_ai.Agent
   configs/
     agent_config.py          # AgentConfig (frozen BaseModel) — modello YAML agente
   entities/
@@ -50,6 +53,14 @@ src/commons/
 
 ## Decisioni implementate
 
+- **`UseCase[T_In, T_Out]`** (`commons/abstracts/use_case.py`): ABC generica a due parametri
+  di tipo che standardizza il contratto dei componenti stateless con una singola
+  operazione. Metodo astratto `execute(input: T_In) -> T_Out`; `__call__` delega a
+  `execute` rendendo ogni `UseCase` callable direttamente (compatibile con `MapStep`
+  e simili che ricevono una funzione). Adottata da `EmbeddingService`, `ArticleCleaner`,
+  `ArticleChunker` in sostituzione dei rispettivi metodi nominali (`embed`, `clean`,
+  `chunk`) — il metodo pubblico di tutti e tre si chiama ora `execute()`. Mantiene
+  la separazione puro/impuro: il contratto non prescrive side effect.
 - **`EmbeddingConfig`** (`BaseModel`, `frozen=True`): campi `model_name`
   (default `"openrouter/openai/text-embedding-3-small"`), `vector_dim: int =
   1536`, `dimensions: int | None = None` (Matryoshka opzionale — passato
@@ -149,18 +160,19 @@ src/commons/
   Protocol (verificato con `isinstance` nei test). `KnowledgeChunk` soddisfa
   solo `Embedded` (ha `embedding`) ma non `Embeddable` (non ha `embedded_text`):
   è DB-only, non partecipa all'embedding direttamente.
-- **`EmbeddingService`** (`commons/services/embeddings/embedding_service.py`):
+- **`EmbeddingService`** (`commons/services/embeddings/embedding_service.py`,
+  implementa `UseCase[Sequence[Embeddable], list[list[float]]]`):
   - Costruttore `__init__(client: EmbeddingClient, batch_size: int)`: inietta il
     client e la dimensione del batch; alza `ValueError` se `batch_size < 1`.
-  - Metodo `embed(items: Sequence[Embeddable]) -> list[list[float]]`: puro — non muta
-    gli item in input, restituisce i vettori allineati 1:1 nello stesso ordine.
+  - Metodo `execute(items: Sequence[Embeddable]) -> list[list[float]]`: puro — non
+    muta gli item in input, restituisce i vettori allineati 1:1 nello stesso ordine.
     Batching con ceiling division (`-(-len // batch_size)`); log per ogni batch
     nel formato `embedding batch {n}/{total} ({k} items)`. Delega a
     `EmbeddingClient.embed_passages([item.embedded_text for item in batch])`.
   - Import cross-package: `commons.clients.EmbeddingClient` via import assoluto;
     `embeddable.py` via import relativo (stesso package).
   - Il service **non** assegna `item.embedding`: la responsabilità di mutazione
-    resta al caller (pipeline, SP02–SP04). Separazione puro/impuro esplicita.
+    resta al caller (pipeline). Separazione puro/impuro esplicita.
 - **`AgentConfig`** (Pydantic, `commons/configs/agent_config.py`, `frozen=True`):
   modella il contenuto di un file `configs/agents/<name>.yaml` — campi:
   `model_name`, `temperature: float = 0.0`, `max_tokens: int | None = None`,
@@ -171,23 +183,26 @@ src/commons/
 - **`PromptRenderer`** (`commons/agents/base_agent.py`): SRP — formatta il
   template utente via `string.Template.safe_substitute(**variables)` e allega
   immagini come `BinaryContent` (usa `mimetypes.guess_type`). Metodo:
-  `render(variables, images=()) -> str | list[str | BinaryContent]`.
+  `render(variables: dict, images=()) -> str | list[str | BinaryContent]`.
+  Il chiamante (`BaseAgent`) estrae le variabili dal `T_In` request via
+  `request.model_dump()` prima di invocare `render`.
 - **`ConfigLoader`** (`commons/agents/base_agent.py`): SRP/DIP — carica
   `AgentConfig` da YAML. Metodo statico: `from_yaml(agents_dir, name) ->
   AgentConfig`; lancia `FileNotFoundError` se il file non esiste.
-- **`BaseAgent[T_out]`** (`commons/agents/base_agent.py`): usa Python 3.12
-  native generics (`class BaseAgent[T_out]`). **Composizione** (non ereditarietà)
-  su `pydantic_ai.Agent`, wrappato come `self._agent: Agent[None, T_out]`.
-  - `__init__(config: AgentConfig, output_type: type[T_out])`: converte
+- **`BaseAgent[T_In: BaseModel, T_Out]`** (`commons/agents/base_agent.py`): usa Python 3.12
+  native generics. **Composizione** (non ereditarietà) su `pydantic_ai.Agent`,
+  wrappato come `self._agent: Agent[None, T_Out]`. `T_In` è vincolato a `BaseModel`:
+  ogni agente riceve e restituisce DTO Pydantic tipizzati, non dizionari grezzi.
+  - `__init__(config: AgentConfig, output_type: type[T_Out])`: converte
     `model_name` sostituendo il primo `/` con `:` (es. `openrouter/google/model`
     → `openrouter:google/model`), costruisce `self._agent` con
     `defer_model_check=True` — l'API key (`OPENROUTER_API_KEY`) è verificata
     solo a runtime, non alla creazione.
-  - Metodi: `run_prompt(variables, images)` (async), `run_prompt_sync(variables,
-    images)` (sync). Entrambi delegano a `self._agent.run_sync` /
-    `self._agent.run`; restituiscono il `RunResult` su cui il chiamante accede
-    a `.output`.
-  - Factory: `from_yaml(name, agents_dir, output_type) -> BaseAgent[T_out]` —
+  - Metodi: `run_prompt(request: T_In, images)` (async), `run_prompt_sync(request: T_In,
+    images)` (sync). Estraggono le variabili template via `request.model_dump()`
+    e le passano a `PromptRenderer.render`. Entrambi delegano a `self._agent.run_sync` /
+    `self._agent.run`; restituiscono `.output` tipizzato come `T_Out`.
+  - Factory: `from_yaml(name, agents_dir, output_type) -> BaseAgent[T_In, T_Out]` —
     usa `ConfigLoader.from_yaml` + `PromptRenderer`.
   - Property `core_agent`: espone `self._agent` per permettere
     `with agent.core_agent.override(model=TestModel(...))` nei test.
@@ -202,7 +217,8 @@ src/commons/
   `ValueError` per `batch_size=0` e `batch_size=-1`; purezza (nessuna mutazione
   di `item.embedding`); conformità strutturale di `EmbeddableChunkModel` a
   `Embeddable` e `Embedded` via `isinstance`; conformità di
-  `EmbeddableQuizModel` agli stessi Protocol.
+  `EmbeddableQuizModel` agli stessi Protocol. Il metodo testato è `execute`
+  (non più `embed` — rinominato con la migrazione a `UseCase`).
 - `tests/commons/clients/test_embedding_client.py` — test offline con mock di
   `litellm.embedding`: verifica costruzione risposta, ordinamento per `index`,
   separazione `embed_query`/`embed_passages`. Test `@pytest.mark.integration`

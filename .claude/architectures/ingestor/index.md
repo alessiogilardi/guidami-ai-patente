@@ -53,20 +53,36 @@ config condivise).
 src/guidami_ai_patente_ingestor/
   agents/
     __init__.py                        # re-esporta ArticleContextualizerAgent, RoadSignDescriberAgent
-    article_contextualizer_agent.py    # ArticleContextualizerAgent(BaseAgent[dict[int,str]])
-    road_sign_describer_agent.py       # RoadSignDescriberAgent(BaseAgent[ImageDescription])
+    article_contextualizer_agent.py    # ArticleContextualizerAgent(BaseAgent[ArticleContextualizerRequest, ArticleContextualizerResponse])
+    road_sign_describer_agent.py       # RoadSignDescriberAgent(BaseAgent[RoadSignDescriberRequest, RoadSignDescriberResponse])
+    dto/
+      __init__.py
+      article_contextualizer/
+        __init__.py
+        request.py           # ArticleContextualizerRequest(BaseModel) — title, text, paragraphs: str
+        response.py          # ArticleContextualizerResponse(BaseModel) — contexts: dict[int, str]
+      road_sign_describer/
+        __init__.py
+        request.py           # RoadSignDescriberRequest(BaseModel) — topic, text
+        response.py          # RoadSignDescriberResponse(BaseModel) — name, description
   mappers/
-    knowledge/
-      __init__.py                         # re-esporta ArticleMapper
-      article_mapper.py                   # ArticleMapper — trasformazioni 1:1 pipeline knowledge:
+    __init__.py                           # re-esporta ArticleMapper, QuizMapper
+    article_mapper.py                     # ArticleMapper — trasformazioni 1:1 pipeline knowledge (3 metodi):
                                           #   from_parsed_to_enriched(ParsedArticleModel) -> EnrichedArticleModel
+                                          #   from_enriched_to_embeddable_chunk(model, source, comma_index, raw_text) -> EmbeddableChunkModel
                                           #   from_embeddable_chunk_to_knowledge_chunk(EmbeddableChunkModel) -> KnowledgeChunk
-    quiz/
-      __init__.py                         # re-esporta QuizMapper (unico mapper)
-      quiz_mapper.py                      # QuizMapper — backbone statico di tutte le transizioni 1:1:
-                                          #   from_parsed_to_cleaned, from_cleaned_to_enriched (SP09),
+    quiz_mapper.py                        # QuizMapper — backbone statico di tutte le transizioni 1:1:
+                                          #   from_parsed_to_cleaned, from_cleaned_to_enriched,
                                           #   from_enriched_quiz_item_to_embeddable,
-                                          #   from_embeddable_to_quiz_question (lato indexing, fuori scope SP09)
+                                          #   from_embeddable_to_quiz_question
+    agents/
+      __init__.py                         # re-esporta ArticleContextualizerMapper, RoadSignDescriberMapper
+      article_contextualizer_mapper.py    # ArticleContextualizerMapper — domain↔DTO:
+                                          #   from_enriched_article_to_request(EnrichedArticleModel) -> ArticleContextualizerRequest
+                                          #   from_response_to_enriched_article(EnrichedArticleModel, ArticleContextualizerResponse) -> EnrichedArticleModel
+      road_sign_describer_mapper.py       # RoadSignDescriberMapper — domain↔DTO:
+                                          #   from_enriched_quiz_to_request(EnrichedQuizModel) -> RoadSignDescriberRequest
+                                          #   from_response_to_enriched_quiz(EnrichedQuizModel, RoadSignDescriberResponse) -> EnrichedQuizModel
   repositories/
     __init__.py                              # re-esporta tutti e 6 i repository (surface pubblica invariata)
     db/
@@ -87,9 +103,11 @@ src/guidami_ai_patente_ingestor/
     __init__.py                   # re-esporta LayerResolver
     layer_resolver.py             # LayerResolver(layers, sources).path(layer, source) -> Path
     knowledge/
-      article_cleaner.py          # ArticleCleaner.clean(article: ParsedArticleModel) -> ParsedArticleModel
-      article_chunker.py          # ArticleChunker.chunk(enriched_article: EnrichedArticleModel, source)
-                                  #   -> list[EmbeddableChunkModel] (non KnowledgeChunk; popola chunk.context)
+      article_cleaner.py          # ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel])
+                                  #   .execute(article) -> ParsedArticleModel
+      article_chunker.py          # ArticleChunker(UseCase[EnrichedArticleModel, list[EmbeddableChunkModel]])
+                                  #   source iniettata nel costruttore; .execute(article) -> list[EmbeddableChunkModel]
+                                  #   usa ArticleMapper.from_enriched_to_embeddable_chunk
       enrichers/
         __init__.py               # re-esporta ContextEnricher
         context_enricher.py       # ContextEnricher — per-comma LLM contextualization via ArticleContextualizerAgent;

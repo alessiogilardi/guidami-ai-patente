@@ -76,7 +76,7 @@ def build_knowledge_cleaning_flow(
 ) -> Flow
 ```
 Catena: `LoadJsonStep("load_parsed_articles", model_class=ParsedArticleModel)` →
-`MapStep("clean_articles", mapper=ArticleCleaner().clean)` →
+`MapStep("clean_articles", mapper=ArticleCleaner().execute)` →
 `WriteJsonStep("write_cleaned", model_class=ParsedArticleModel)`. Layer: input =
 `config.knowledge_preparation.input_layer` (`"parsed"`), output = costante
 privata del modulo `_CLEANED_LAYER = "cleaned"`. **Generificato**: i precedenti
@@ -164,12 +164,16 @@ Sostituito da `MapStep("map_article_to_enriched", ArticleMapper.from_parsed_to_e
   `ImageDescriptionEnricher`.
 - `enrich(items: list[EnrichedArticleModel]) -> list[EnrichedArticleModel]`:
   chiama `_contextualize(article)` per ogni item e restituisce nuove istanze
-  via `model_copy(update={"contexts": ...})` (immutabilità).
-- `_contextualize(article)`: chiama `agent.contextualize(article)`. In caso
-  di eccezione: `logger.warning` + ritorna `{}` per quell'articolo, senza
-  interrompere il batch (stessa tolleranza ai fallimenti di
+  (immutabilità via `model_copy`).
+- `_contextualize(article)`: delega la traduzione dominio↔DTO a
+  `ArticleContextualizerMapper`:
+  1. `mapper.from_enriched_article_to_request(article)` → `ArticleContextualizerRequest`
+  2. `agent.run_sync(request)` → `ArticleContextualizerResponse`
+  3. `mapper.from_response_to_enriched_article(article, response)` → nuovo `EnrichedArticleModel`
+  In caso di eccezione: `logger.warning` + ritorna l'articolo originale con
+  `contexts={}`, senza interrompere il batch (stessa tolleranza ai fallimenti di
   `ImageDescriptionEnricher`).
-- Inietta `ArticleContextualizerAgent` nel costruttore.
+- Inietta `ArticleContextualizerAgent` e `ArticleContextualizerMapper` nel costruttore.
 - Vive in `services/knowledge/enrichers/` — non in `orchestrators/steps/knowledge/`
   (nessuna dipendenza da `commons.flowstep`).
 
@@ -177,17 +181,44 @@ Gli step generici `LoadJsonStep`/`WriteJsonStep` ricevono `layer_resolver`/
 layer/`source` nel costruttore e risolvono il path via
 `layer_resolver.path(layer, source)` — mai leggono `source` dal `FlowContext`.
 
-### `mappers/knowledge/` — `ArticleMapper` (rinominato da `EnrichedArticleMapper`)
+### `mappers/` — `ArticleMapper` (flat, non più sub-package `knowledge/`)
 
-- Package `mappers/knowledge/` con un unico mapper: **`ArticleMapper`** —
-  statico, backbone delle trasformazioni 1:1 della pipeline knowledge sullo
-  stesso pattern di `QuizMapper`.
+- **`ArticleMapper`** vive ora direttamente in `mappers/article_mapper.py`
+  (non più in `mappers/knowledge/`). Statico, backbone delle trasformazioni
+  1:1 della pipeline knowledge. Re-esportato da `mappers/__init__.py`.
+  Tre metodi:
   - `from_parsed_to_enriched(article: ParsedArticleModel) -> EnrichedArticleModel`:
     copia i campi comuni, imposta `contexts={}` (valorizzato da `ContextEnricher`).
     Usato da `MapStep("map_article_to_enriched")` nell'enrichment flow.
+  - `from_enriched_to_embeddable_chunk(model: EnrichedArticleModel, source: str,
+    comma_index: int, raw_text: str) -> EmbeddableChunkModel`:
+    costruisce un `EmbeddableChunkModel` per un singolo comma. Usato da
+    `ArticleChunker.execute` al posto della costruzione inline precedente.
   - `from_embeddable_chunk_to_knowledge_chunk(model: EmbeddableChunkModel) -> KnowledgeChunk`:
     copia tutti i campi (incluso `embedding`) in `KnowledgeChunk` (entità
     DB-only). Usato da `MapStep("map_to_chunk_entity")` nell'indexing flow.
+
+### `mappers/agents/` — `ArticleContextualizerMapper` e `RoadSignDescriberMapper`
+
+Principio architetturale: la traduzione dominio↔DTO è responsabilità del mapper,
+non dell'enricher né dell'agente. Vivono in `mappers/agents/`, re-esportati
+da `mappers/agents/__init__.py`.
+
+- **`ArticleContextualizerMapper`** (`mappers/agents/article_contextualizer_mapper.py`):
+  - `from_enriched_article_to_request(article: EnrichedArticleModel) -> ArticleContextualizerRequest`:
+    costruisce il DTO di input per l'agente dai campi dell'articolo
+    (`title`, `text`, `paragraphs` formattati come stringa `"Comma {i}: ..."`)
+  - `from_response_to_enriched_article(article: EnrichedArticleModel,
+    response: ArticleContextualizerResponse) -> EnrichedArticleModel`:
+    applica `model_copy(update={"contexts": response.contexts})` — immutabile.
+
+- **`RoadSignDescriberMapper`** (`mappers/agents/road_sign_describer_mapper.py`):
+  - `from_enriched_quiz_to_request(item: EnrichedQuizModel) -> RoadSignDescriberRequest`:
+    costruisce il DTO di input (`topic`, `text`) dal modello quiz.
+  - `from_response_to_enriched_quiz(item: EnrichedQuizModel,
+    response: RoadSignDescriberResponse) -> EnrichedQuizModel`:
+    applica `model_copy(update={"image_description": f"{response.name}. {response.description}"})`.
+
 
 ### `context_keys.py` — chiavi aggiunte da SP05
 
@@ -232,30 +263,38 @@ Dettaglio completo della catena dei modelli e del `QuizMapper` consolidato in
 
 ### `agents/article_contextualizer_agent.py` — `ArticleContextualizerAgent`
 
-Sottoclasse di `BaseAgent[dict[int, str]]` (`commons/agents/`). Sostituisce il
-precedente service `ArticleContextualizer` (rimosso).
+Sottoclasse di `BaseAgent[ArticleContextualizerRequest, ArticleContextualizerResponse]`
+(`commons/agents/`). Sostituisce il precedente service `ArticleContextualizer` (rimosso).
 
-- `contextualize(article: EnrichedArticleModel) -> dict[int, str]`: early return `{}` se
-  `article.repealed or not article.paragraphs` (nessuna chiamata LLM). Costruisce
-  `variables = {"title": ..., "text": ..., "paragraphs": "Comma {i}: {para}..."}`.
-  Chiama `run_prompt_sync(variables).output` — PydanticAI tipa il risultato come
-  `dict[int, str]` direttamente.
-- `from_yaml(name, agents_dir, output_type=None) -> Self`: factory che ignora
-  `output_type` e lo fissa a `dict[int, str]`.
-- L'output strutturato è gestito da PydanticAI via `output_type`; non è necessario
-  parsare JSON manualmente né validare la risposta grezza.
+- L'agente **non** ha logica di traduzione dominio↔DTO: riceve e restituisce
+  DTO tipizzati (`ArticleContextualizerRequest` / `ArticleContextualizerResponse`).
+  La traduzione da/a `EnrichedArticleModel` è responsabilità di
+  `ArticleContextualizerMapper` (vedi sezione `mappers/agents/` sopra).
+- Prompt YAML (`configs/agents/article_contextualizer.yaml`): variabili
+  `$title`, `$text`, `$paragraphs` (corrispondono ai campi del request).
+- `from_yaml(name, agents_dir, output_type=None) -> Self`: factory che fissa
+  `output_type=ArticleContextualizerResponse`.
+- L'output strutturato è gestito da PydanticAI via `output_type`; non è
+  necessario parsare JSON manualmente né validare la risposta grezza.
 
 ### `agents/road_sign_describer_agent.py` — `RoadSignDescriberAgent`
 
-Sottoclasse di `BaseAgent[ImageDescription]` (`commons/agents/`). Sostituisce il
-precedente service `RoadSignDescriber` (rimosso).
+Sottoclasse di `BaseAgent[RoadSignDescriberRequest, RoadSignDescriberResponse]`
+(`commons/agents/`). Sostituisce il precedente service `RoadSignDescriber` (rimosso).
 
-- `describe(image_path: Path) -> ImageDescription`: chiama
-  `run_prompt_sync({}, images=(image_path,)).output`.
+- L'agente riceve `RoadSignDescriberRequest(topic, text)` come input tipizzato;
+  le immagini rimangono passate separatamente via parametro `images` (non entrano
+  nel DTO). La traduzione da/a `EnrichedQuizModel` è responsabilità di
+  `RoadSignDescriberMapper`.
+- Prompt YAML (`configs/agents/road_sign_describer.yaml`): variabili `$topic`,
+  `$text` (corrispondono ai campi del request).
 - `from_yaml(name, agents_dir, output_type=None) -> Self`: factory che fissa
-  `output_type=ImageDescription`.
-- `ImageDescription(BaseModel, frozen=True)` — `name: str`, `description: str`
-  — vive in `guidami_ai_patente_ingestor/models/quiz/image_description.py`.
+  `output_type=RoadSignDescriberResponse`.
+- `RoadSignDescriberResponse(BaseModel, frozen=True)` — `name: str`, `description: str`
+  — vive in `agents/dto/road_sign_describer/`. `ImageDescription` (precedente DTO
+  con gli stessi campi in `models/quiz/`) è ora sostituita da questo response DTO;
+  i due modelli condividono la stessa struttura ma sono concettualmente distinti
+  (response dell'agente vs. modello di dominio).
 
 ## Quiz preparation — due Flow (SP09) + runner generico, enrichment refattorizzato sui building block generici
 
@@ -304,16 +343,25 @@ Dettaglio completo di step, enrichment Open/Closed
 (`EnrichDataStep`/`EnricherProtocol`/`ImageDescriptionEnricher`) e decisioni
 della factory in [quiz_pipelines.md](quiz_pipelines.md).
 
-### Dedup immagini (`ImageDescriptionEnricher`)
+### Dedup e traduzione dominio↔DTO (`ImageDescriptionEnricher`)
 
-Raccogliere gli `item.image` **unici** prima di chiamare la vision LLM
-riduce drasticamente il numero di chiamate (da una per sotto-domanda con
-immagine a una per immagine distinta). Ogni sotto-domanda con la stessa
-immagine riceve la stessa descrizione. Immagine non trovata su disco o
-`describe()` che lancia → `logger.warning` + `image_description = None`
-(non blocca l'enrichment delle altre domande). Comportamento invariato dal
-refactor: solo la colla che lo invoca (`EnrichDataStep` al posto di
-`EnrichQuizStep`/`QuizEnrichmentService`) è cambiata.
+`ImageDescriptionEnricher` usa `RoadSignDescriberMapper` per la traduzione
+dominio↔DTO, coerentemente con `ContextEnricher`. Flusso per ogni
+sotto-domanda con immagine:
+1. `mapper.from_enriched_quiz_to_request(item)` → `RoadSignDescriberRequest`
+2. `agent.run_sync(request, images=(image_path,))` → `RoadSignDescriberResponse`
+3. `mapper.from_response_to_enriched_quiz(item, response)` → nuovo `EnrichedQuizModel`
+
+**Chiave di dedup**: la cache delle descrizioni è indicizzata su
+`(image, topic, text)` (tupla a 3 campi). Rispetto alla versione precedente
+(solo `item.image`), la chiave allargata garantisce che la stessa immagine
+con topic/testo diversi riceva descrizioni distinte — rispecchiando il fatto
+che il prompt dell'agente include sia `$topic` sia `$text`.
+
+Immagine non trovata su disco o errore nell'agente → `logger.warning` +
+`image_description = None` (non blocca l'enrichment delle altre domande).
+L'enricher soddisfa `EnricherProtocol[EnrichedQuizModel, EnrichedQuizModel]`
+per struttura; nessuna ereditarietà esplicita.
 
 ### Cosa NON è (ancora) cambiato
 

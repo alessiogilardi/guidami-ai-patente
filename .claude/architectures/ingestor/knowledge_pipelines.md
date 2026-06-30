@@ -102,13 +102,16 @@ Vedi [config_and_entrypoints.md](config_and_entrypoints.md) per `IngestorConfig`
 
 ### `services/knowledge/article_chunker.py` — `ArticleChunker`
 
-- Accetta `EnrichedArticleModel` (da `models/knowledge/`); produce
-  `list[EmbeddableChunkModel]` — non `list[KnowledgeChunk]` (la conversione
-  a entità avviene nel `MapStep` successivo, tramite
-  `ArticleMapper.from_embeddable_chunk_to_knowledge_chunk`).
-- `chunk(enriched_article: EnrichedArticleModel, source) -> list[EmbeddableChunkModel]`:
+Implementa `UseCase[EnrichedArticleModel, list[EmbeddableChunkModel]]`.
+
+- `source` iniettata nel costruttore (`ArticleChunker(source: str)`): non viene
+  più passata per chiamata. Questo permette di usare `chunker.execute` come
+  funzione callable in `MapStep` senza adattatori.
+- `execute(enriched_article: EnrichedArticleModel) -> list[EmbeddableChunkModel]`:
   `comma_index=0` generato da `article.text` **solo `if article.text:`**
   (testo non vuoto dopo cleaning); `comma_index=i+1` per ogni `paragraphs[i]`.
+  Usa `ArticleMapper.from_enriched_to_embeddable_chunk(model, source, comma_index, raw_text)`
+  per costruire ogni `EmbeddableChunkModel` invece di istanziare il modello inline.
 - Popola `chunk.context = enriched_article.contexts.get(comma_index, "")`.
   Se `contexts` è `{}` (articolo non arricchito o abrogato), `context`
   resta `""`.
@@ -148,12 +151,12 @@ Gli step di preparation (cleaning/enrichment) non esistono più come classi
 dedicate in questo package: sostituiti dai generici `LoadJsonStep`/`MapStep`/
 `WriteJsonStep`/`EnrichDataStep` — vedi [data_preparation.md](data_preparation.md).
 
-- **`ChunkArticlesStep`**: iniettati `ArticleChunker` e `source: Literal["cds","cap"]`
-  (iniettata nel costruttore, non letta dal context). `execute`: legge
-  `ENRICHED_ARTICLES`, chiama `chunker.chunk(article, source)` per ogni
-  articolo, appiattisce. Nessun filtro repealed — i chunk repealed sono
-  nell'output come `EmbeddableChunkModel`. `required={ENRICHED_ARTICLES}`,
-  `produced={EMBEDDABLE_CHUNKS}`.
+- **`ChunkArticlesStep`**: iniettato `ArticleChunker(source)` già costruito con
+  la source (la source è nel costruttore del chunker, non più un parametro
+  separato di `ChunkArticlesStep`). `execute`: legge `ENRICHED_ARTICLES`,
+  chiama `chunker.execute(article)` per ogni articolo, appiattisce. Nessun
+  filtro repealed — i chunk repealed sono nell'output come `EmbeddableChunkModel`.
+  `required={ENRICHED_ARTICLES}`, `produced={EMBEDDABLE_CHUNKS}`.
 - **`EmbedChunksStep`**: iniettati `EmbeddingService` (SP01) e `embed_repealed: bool`.
   `execute`: se `embed_repealed=False`, filtra i chunk non-repealed
   (`to_embed = [c for c in chunks if not c.is_repealed]`) → li embeddita in
