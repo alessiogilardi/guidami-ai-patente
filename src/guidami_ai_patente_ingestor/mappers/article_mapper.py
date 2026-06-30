@@ -1,3 +1,5 @@
+from typing import Literal
+
 from commons.entities.knowledge import KnowledgeChunk
 from guidami_ai_patente_ingestor.models.knowledge import (
     EmbeddableChunkModel,
@@ -25,6 +27,35 @@ class ArticleMapper:
             scraped_at=article.scraped_at,
             repealed=article.repealed,
             contexts={},
+        )
+
+    @staticmethod
+    def from_enriched_to_embeddable_chunk(
+        model: EnrichedArticleModel,
+        source: Literal["cds", "cap"],
+        comma_index: int,
+        raw_text: str,
+    ) -> EmbeddableChunkModel:
+        """Crea un `EmbeddableChunkModel` da un articolo enriched e un comma specifico.
+
+        Args:
+            model: Articolo enriched sorgente.
+            source: Sorgente normativa ("cds" o "cap").
+            comma_index: Indice del comma (0 = testo principale).
+            raw_text: Testo grezzo del comma da embeddare.
+
+        Returns:
+            Chunk pronto per l'embedding e l'indicizzazione.
+        """
+        return EmbeddableChunkModel(
+            source=source,
+            article_number=model.number,
+            article_title=model.title,
+            comma_index=comma_index,
+            chunk_text=raw_text,
+            context=model.contexts.get(comma_index, ""),
+            is_repealed=model.repealed or "ABROGAT" in raw_text.upper(),
+            source_url=model.url,
         )
 
     @staticmethod

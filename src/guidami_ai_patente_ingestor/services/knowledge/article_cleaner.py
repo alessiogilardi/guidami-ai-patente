@@ -1,25 +1,26 @@
 import re
 
+from commons.abstracts.use_case import UseCase
 from guidami_ai_patente_ingestor.models.knowledge import ParsedArticleModel
 
 _INLINE_MARKUP_PATTERN = re.compile(r"\(\((.*?)\)\)", re.DOTALL)
 _ORDINAL_PREFIX_PATTERN = re.compile(r"^(\d+(?:-\w+)?\.?)\s*")
 
 
-class ArticleCleaner:
+class ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel]):
     """Pulisce un `ParsedArticleModel` dal markup normattiva.
 
     Rimuove anche i titoli avvolti in parentesi superflue e la numerazione
     ordinale dei commi.
     """
 
-    def clean(self, article: ParsedArticleModel) -> ParsedArticleModel:
+    def execute(self, input: ParsedArticleModel) -> ParsedArticleModel:
         """Ritorna una copia di `article` con title/text/paragraphs puliti."""
-        return article.model_copy(
+        return input.model_copy(
             update={
-                "title": self._clean_title(article.title),
-                "text": self._clean_text(article.text),
-                "paragraphs": self._clean_paragraphs(article.paragraphs),
+                "title": self._clean_title(input.title),
+                "text": self._clean_text(input.text),
+                "paragraphs": self._clean_paragraphs(input.paragraphs),
             }
         )
 
