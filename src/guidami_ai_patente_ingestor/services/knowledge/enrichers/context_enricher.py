@@ -1,6 +1,7 @@
 import logging
 
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
+from guidami_ai_patente_ingestor.mappers.agents import ArticleContextualizerMapper
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 
 logger = logging.getLogger(__name__)
@@ -10,9 +11,9 @@ class ContextEnricher:
     """Arricchisce gli articoli con i contesti per comma generati via LLM.
 
     Soddisfa `EnricherProtocol[EnrichedArticleModel, EnrichedArticleModel]` per struttura.
-    Un fallimento isolato dell'agente su un articolo non abort l'intero batch:
-    logga un warning e produce `contexts={}` per quell'articolo, mirror esatto
-    della tolleranza ai fallimenti di `ImageDescriptionEnricher._describe_images`.
+    La guard `repealed` e il mapping dominio↔DTO vivono qui, non nell'agente.
+    Un fallimento isolato su un articolo non abortisce il batch: logga un warning
+    e restituisce l'articolo invariato.
     """
 
     def __init__(self, article_contextualizer_agent: ArticleContextualizerAgent) -> None:
@@ -32,13 +33,17 @@ class ContextEnricher:
         Returns:
             Nuove `EnrichedArticleModel` con `contexts` valorizzato.
         """
-        return [item.model_copy(update={"contexts": self._contextualize(item)}) for item in items]
+        return [self._contextualize(item) for item in items]
 
-    def _contextualize(self, article: EnrichedArticleModel) -> dict[int, str]:
+    def _contextualize(self, article: EnrichedArticleModel) -> EnrichedArticleModel:
+        if article.repealed or not article.paragraphs:
+            return article
         try:
-            return self._agent.contextualize(article)
+            request = ArticleContextualizerMapper.from_enriched_article_to_request(article)
+            response = self._agent.run_sync(request)
+            return ArticleContextualizerMapper.from_response_to_enriched_article(article, response)
         except Exception:
             logger.warning(
-                f"Failed to contextualize article, skipping: {article.number}", exc_info=True
+                "Failed to contextualize article, skipping: %s", article.number, exc_info=True
             )
-            return {}
+            return article

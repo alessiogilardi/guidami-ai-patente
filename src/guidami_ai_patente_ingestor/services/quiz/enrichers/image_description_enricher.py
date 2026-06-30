@@ -2,18 +2,22 @@ import logging
 from pathlib import Path
 
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
+from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import RoadSignDescriberResponse
+from guidami_ai_patente_ingestor.mappers.agents import RoadSignDescriberMapper
 from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 
 logger = logging.getLogger(__name__)
+
+_DedupeKey = tuple[str, str, str]  # (image, topic, text)
 
 
 class ImageDescriptionEnricher:
     """Arricchisce le sotto-domande con la descrizione del segnale stradale.
 
-    Una sola chiamata vision per immagine unica (dedup), non per occorrenza:
-    più sotto-domande possono condividere la stessa immagine. Soddisfa
-    `EnricherProtocol[EnrichedQuizModel, EnrichedQuizModel]` per struttura
-    (typing strutturale del `Protocol`, nessuna eredità esplicita richiesta).
+    La chiave di dedup è `(image, topic, text)`: stessa immagine in contesti diversi
+    genera chiamate separate per descrizioni contestualizzate; duplicati esatti vengono
+    collassati. Soddisfa `EnricherProtocol[EnrichedQuizModel, EnrichedQuizModel]` per
+    struttura (typing strutturale del `Protocol`).
     """
 
     def __init__(self, road_sign_describer: RoadSignDescriberAgent, images_dir: Path) -> None:
@@ -36,31 +40,35 @@ class ImageDescriptionEnricher:
             Nuove `EnrichedQuizModel` con `image_description` valorizzato sulle
             sotto-domande la cui immagine è stata descritta con successo.
         """
-        unique_images = {q.image for q in items if q.image is not None}
-        descriptions = self._describe_images(unique_images)
-
+        descriptions = self._describe_questions_with_images(items)
         return [
-            question.model_copy(
-                update={
-                    "image_description": (
-                        descriptions.get(question.image) if question.image is not None else None
-                    )
-                }
+            RoadSignDescriberMapper.from_response_to_enriched_quiz(
+                q, descriptions[(q.image, q.topic, q.text)]
             )
-            for question in items
+            if q.image and (q.image, q.topic, q.text) in descriptions
+            else q
+            for q in items
         ]
 
-    def _describe_images(self, images: set[str]) -> dict[str, str]:
-        descriptions: dict[str, str] = {}
-        for image in images:
-            path = self._images_dir / image
+    def _describe_questions_with_images(
+        self, questions: list[EnrichedQuizModel]
+    ) -> dict[_DedupeKey, RoadSignDescriberResponse]:
+        seen: set[_DedupeKey] = set()
+        results: dict[_DedupeKey, RoadSignDescriberResponse] = {}
+        for q in questions:
+            if q.image is None:
+                continue
+            key: _DedupeKey = (q.image, q.topic, q.text)
+            if key in seen:
+                continue
+            seen.add(key)
+            path = self._images_dir / q.image
             if not path.exists():
-                logger.warning(f"Image file not found, skipping description: {path}")
+                logger.warning("Image file not found, skipping description: %s", path)
                 continue
             try:
-                desc = self._road_sign_describer.describe(path)
+                request = RoadSignDescriberMapper.from_enriched_quiz_to_request(q)
+                results[key] = self._road_sign_describer.run_sync(request, images=(path,))
             except Exception:
-                logger.warning(f"Failed to describe image, skipping: {path}", exc_info=True)
-                continue
-            descriptions[image] = f"{desc.name}. {desc.description}"
-        return descriptions
+                logger.warning("Failed to describe image, skipping: %s", path, exc_info=True)
+        return results
