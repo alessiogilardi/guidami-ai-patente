@@ -9,6 +9,3 @@ class Embeddable(Protocol):
     def embedded_text(self) -> str:
         """Testo da usare per il calcolo dell'embedding."""
         ...
-
-
-
