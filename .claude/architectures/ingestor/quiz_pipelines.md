@@ -21,23 +21,24 @@ Vedi [config_and_entrypoints.md](config_and_entrypoints.md) per `IngestorConfig`
 ```text
 parsed (layer "parsed", nested — output diretto del parser PDF)
    ParsedQuizModel ─┬─ sub_questions: list[ParsedQuizItemModel]
-        │ flatten + dedup → FlattenQuizStep._flatten_and_dedup
+        │ flatten + dedup → FlattenQuiz.execute(items)
         │                   (per item: QuizMapper.from_parsed_to_cleaned)
         ▼
 cleaned (layer "cleaned", flat — una riga per sotto-domanda, auto-contenuta)
    CleanedQuizModel
-        │ base-map → QuizMapper.from_cleaned_to_enriched (MapStep)
-        │ + enricher (EnrichDataStep) valorizzano i campi via model_copy
+        │ ApplyStep("enrich"):
+        │   ForEach(QuizMapper.from_cleaned_to_enriched) base-map flat→flat
+        │   + ImageDescriptionEnricher.execute() valorizza image_description
         ▼
 enriched (layer "enriched", flat)
    EnrichedQuizModel   (+ image_description)
-        │ to embeddable → QuizMapper.from_enriched_quiz_item_to_embeddable
-        │                 (lato indexing, vedi nota sotto)
+        │ to embeddable → ToEmbeddableQuiz().execute(items)
+        │                 (lato indexing: dedup + QuizMapper.from_enriched_to_embeddable)
         ▼
 embeddable (flat)
    EmbeddableQuizModel   (image_description, embedding, embedded_text)
         │ embed (EmbedStep) → embedding popolato
-        │ to_entity → QuizMapper.from_embeddable_to_quiz_question
+        │ to_entity → QuizMapper.from_embeddable_to_quiz_question (via ForEach)
         ▼
 db row (flat)
    QuizQuestion   [entità, commons/entities/quiz — invariata]
@@ -48,23 +49,14 @@ suffisso) = riga DB (`commons/entities/quiz/`).
 
 **Decisione SP09 — flatten+dedup spostato a preparation**: il flatten (nested
 → flat) e il dedup sulle sotto-domande avvenivano storicamente nello stadio di
-indexing (`MapToEmbeddableStep`, enriched→embeddable). SP09 li ha spostati
-**a monte**, nello stadio di cleaning (`FlattenQuizStep`, parsed→cleaned): da
+indexing. SP09 li ha spostati **a monte**, nello stadio di cleaning: da
 `cleaned` in poi (`cleaned`, `enriched`, `embeddable`) il quiz bank è **già
 flat**, una riga per sotto-domanda, autocontenuta (`question_id`/`topic`
-denormalizzati su ogni riga). Motivazione: l'enrichment (es.
-`ImageDescriptionEnricher`) opera naturalmente su una lista flat di
-sotto-domande, non su domande madri con `sub_questions` annidate — lavorare
-già flat dall'enrichment in poi evita di iterare due livelli ad ogni stadio.
-
-> **Nota — rottura nota e accettata (SP09, out of scope)**: lo step di
-> indexing `MapToEmbeddableStep` e il metodo
-> `QuizMapper.from_enriched_quiz_item_to_embeddable` assumono ancora
-> `EnrichedQuizModel.sub_questions` (struttura nested pre-SP09), ma
-> `EnrichedQuizModel` è oggi flat (nessun campo `sub_questions`) — il
-> type-check su questo punto fallisce (`pyright: ignore` esplicito nello
-> step). L'adeguamento dell'indexing al modello flat è tracciato in un piano
-> futuro, non in SP09 né nel refactor descritto qui sotto.
+denormalizzati su ogni riga). Il refactor SP04 ha poi spostato la logica di
+flatten+dedup **da uno step flowstep** (`FlattenQuizStep`) a un **service
+domain** (`FlattenQuiz`), e analogamente la logica di mapping enriched→embeddable
+da `MapToEmbeddableStep` a `ToEmbeddableQuiz`. I due service sono poi wrappati
+da `ApplyStep` nei flow factory — nessuna rottura nell'interfaccia flowstep.
 
 ## Decisioni implementate
 
@@ -75,7 +67,7 @@ già flat dall'enrichment in poi evita di iterare due livelli ad ogni stadio.
   `parsed`). Ex `QuizBankModel`/`QuizBankItemModel`.
 - `cleaned_quiz.py` — `CleanedQuizModel`: una sotto-domanda per riga, flat,
   autocontenuta (`question_id`, `topic`, `number`, `text`, `correct_answer`,
-  `image`). Output di `FlattenQuizStep` (layer `cleaned`).
+  `image`). Output di `FlattenQuiz.execute` (layer `cleaned`).
 - `enriched_quiz.py` — `EnrichedQuizModel`: stessi campi di `CleanedQuizModel`
   + `image_description: str | None`. Output del flow di enrichment (layer
   `enriched`).
@@ -109,7 +101,7 @@ quiz, ciascuna `from_X_to_Y(model, *extra) -> Z`.
 | --- | --- | --- |
 | `from_parsed_to_cleaned` | `(item: ParsedQuizItemModel, parent: ParsedQuizModel) -> CleanedQuizModel` | denormalizza `question_id`/`topic` da `parent` (SP09) |
 | `from_cleaned_to_enriched` | `(item: CleanedQuizModel) -> EnrichedQuizModel` | base-map flat→flat, `image_description=None` (SP09) |
-| `from_enriched_quiz_item_to_embeddable` | `(item: EnrichedQuizModel, parent: EnrichedQuizModel) -> EmbeddableQuizModel` | lato indexing; assume ancora la vecchia struttura nested, vedi nota "rottura nota" sopra |
+| `from_enriched_to_embeddable` | `(item: EnrichedQuizModel) -> EmbeddableQuizModel` | lato indexing; 1 argomento, modello flat (rinominato in SP03, ex `from_enriched_quiz_item_to_embeddable`) |
 | `from_embeddable_to_quiz_question` | `(model: EmbeddableQuizModel) -> QuizQuestion` | scarta `image_description`, mantiene `embedding` |
 
 **Decisioni:**
@@ -119,142 +111,94 @@ quiz, ciascuna `from_X_to_Y(model, *extra) -> Z`.
   trasformazione"), ma rende la catena leggibile in un unico punto.
   Mitigazione: metodi statici, piccoli, puri.
 - **`flatten+dedup` NON è nel mapper**: non è un mapping 1:1 ma
-  un'operazione di collezione + regola di dedup → vive in `FlattenQuizStep`
-  (preparation, parsed→cleaned, SP09), non in `QuizMapper`.
+  un'operazione di collezione + regola di dedup → vive in `FlattenQuiz`
+  (preparation, parsed→cleaned, SP09/SP02) e `ToEmbeddableQuiz` (indexing,
+  enriched→embeddable, SP03), non in `QuizMapper`.
 - **Enrichment e Open/Closed**: il base-map (`from_cleaned_to_enriched`)
   produce `EnrichedQuizModel` con i campi di enrichment a `None`; gli
   enricher li valorizzano via `model_copy`. Aggiungere un agente non
   modifica la firma del base-map.
 
-### `orchestrators/steps/quiz/` — step di dominio domain-specific
+### `orchestrators/steps/quiz/` — package vuoto
 
-Package `orchestrators/steps/quiz/__init__.py` re-esporta oggi **due** step
-(non più sei: gli step di preparation quiz-specific, `LoadQuizStep`/
-`EnrichQuizStep`/`WriteEnrichedQuizStep`, sono stati **rimossi** — vedi sotto
-e `services/quiz/`). Vivono in `orchestrators/steps/quiz/`, mai in
-`services/` (colla di orchestrazione, non logica di dominio). Delegano a
-`QuizMapper`.
+Il package `orchestrators/steps/quiz/` non contiene più alcuna classe step
+(`__all__ = []`). Tutta la logica di dominio quiz precedentemente in
+`FlattenQuizStep` e `MapToEmbeddableStep` è stata spostata in `services/quiz/`
+(vedi sotto). I flow builder usano `ApplyStep` per wrappare quei service.
 
-- **`FlattenQuizStep`** (SP09, preparation, `parsed` → `cleaned`): nessuna
-  iniezione di config. `execute`: legge `PARSED_QUIZ`, chiama l'helper
-  statico privato `_flatten_and_dedup` che itera `sub_questions`, deduplica
-  sulla chiave `(text.strip(), correct_answer, image)` (loggando un
-  `warning` per ogni duplicato scartato) e per ogni item mantenuto delega a
-  `QuizMapper.from_parsed_to_cleaned(item, parent)`. `required={PARSED_QUIZ}`,
-  `produced={CLEANED_QUIZ}`.
-- **`MapToEmbeddableStep`** (indexing, `enriched` → `embeddable`): nessuna
-  iniezione di config. `execute`: legge `ENRICHED_QUIZ`, delega
-  `_flatten_and_dedup` → `QuizMapper.from_enriched_quiz_item_to_embeddable`
-  per item mantenuto. `required={ENRICHED_QUIZ}`, `produced={EMBEDDABLE_QUIZ}`.
-  Stesso dedup di sempre (8 duplicati esatti su 7106 sotto-domande → 7098
-  righe storicamente), ma oggi il dedup **reale** avviene a monte in
-  `FlattenQuizStep` (preparation): questo step e
-  `from_enriched_quiz_item_to_embeddable` restano scritti per la vecchia
-  struttura nested e non sono più semanticamente corretti rispetto al
-  modello flat attuale (vedi nota "rottura nota e accettata" sopra) —
-  fuori scope del refactor di enrichment descritto in questo documento.
+**Step rimossi (SP04):**
+- `FlattenQuizStep` → logica spostata in `services/quiz/flatten_quiz.py::FlattenQuiz`
+- `MapToEmbeddableStep` → logica spostata in `services/quiz/to_embeddable_quiz.py::ToEmbeddableQuiz`
+- `LoadQuizStep`, `EnrichQuizStep`, `WriteEnrichedQuizStep` — rimossi in
+  precedenza, sostituiti da `LoadJsonStep`/`WriteJsonStep` generici.
 
-**Step rimossi (sostituiti dai building block generici, vedi sotto):**
-`LoadQuizStep`, `EnrichQuizStep`, `WriteEnrichedQuizStep` —
-`orchestrators/steps/quiz/load_quiz_step.py`,
-`orchestrators/steps/quiz/enrich_quiz_step.py`,
-`orchestrators/steps/quiz/write_enriched_quiz_step.py` non esistono più nel
-codice.
-
-### `services/quiz/` — solo l'enricher concreto (package svuotato del livello di servizio)
+### `services/quiz/` — service domain per il quiz bank
 
 ```
 services/quiz/
 ├── __init__.py                          # re-esporta ImageDescriptionEnricher
+├── flatten_quiz.py                      # FlattenQuiz(UseCase[list[ParsedQuizModel], list[CleanedQuizModel]])
+├── to_embeddable_quiz.py                # ToEmbeddableQuiz(UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]])
 └── enrichers/
     ├── __init__.py                      # re-esporta ImageDescriptionEnricher
-    └── image_description_enricher.py    # ImageDescriptionEnricher
+    └── image_description_enricher.py    # ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]])
 ```
+
+**`FlattenQuiz`** (`services/quiz/flatten_quiz.py`, SP02): implementa
+`UseCase[list[ParsedQuizModel], list[CleanedQuizModel]]`. `execute`: itera
+`sub_questions` di ogni domanda madre, deduplica sulla chiave `(text.strip(),
+correct_answer, image)` (`logger.warning` per ogni duplicato scartato), per
+ogni item mantenuto delega a `QuizMapper.from_parsed_to_cleaned(item, parent)`.
+Responsabilità: flatten nested→flat + dedup. Non dipende da flowstep.
+
+**`ToEmbeddableQuiz`** (`services/quiz/to_embeddable_quiz.py`, SP03):
+implementa `UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]]`.
+`execute`: scorre la lista flat enriched, deduplica sulla stessa tripla
+`(text.strip(), correct_answer, image)` (rimuove gli 8 duplicati esatti
+storici → 7098 righe finali), per ogni item mantenuto chiama
+`QuizMapper.from_enriched_to_embeddable(item)` (1 argomento, modello flat).
+Responsabilità: dedup + mapping enriched→embeddable. Non dipende da flowstep.
+
+**`ImageDescriptionEnricher`** ora implementa
+`UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]]` (ex soddisfaceva
+solo `EnricherProtocol` per struttura). `execute` (ex `enrich`): stessa
+logica di prima — dedup su chiave `(image, topic, text)`, una chiamata vision
+per immagine unica, skip + warning su file mancante o eccezione.
 
 **Rimossi**: `services/quiz/quiz_enrichment_service.py` (`QuizEnrichmentService`)
 e `services/quiz/enrichers/quiz_enricher.py` (`Protocol QuizEnricher`).
 
-**Decisione architetturale — generificazione dell'enrichment (refactor
-attuale).** Il quiz bank era già flat al layer `cleaned` (SP09): a quel punto
-`QuizEnrichmentService` (base-map + catena enricher) e `EnrichQuizStep`
-(colla flowstep) non aggiungevano più nulla rispetto ai building block
-generici già usati altrove nel codebase (`MapStep`, `EnrichDataStep`):
-- il base-map (`QuizMapper.from_cleaned_to_enriched`) è ora un `MapStep`
-  qualunque — niente di diverso da come il knowledge cleaning usa `MapStep`
-  con `ArticleCleaner.clean`;
-- la catena di enricher è ora il generico
-  `orchestrators/steps/generic/enrich_data_step.py::EnrichDataStep[T]`
-  (Step generico, list-in/list-out) applicata a `[ImageDescriptionEnricher(...)]`.
+**Decisione architetturale — evoluzione dell'enrichment (due fasi).** Prima
+fase (ex refactor): rimossi `QuizEnrichmentService`/`EnrichQuizStep`/`Protocol
+QuizEnricher` in favore di `MapStep` + `EnrichDataStep` generici. Seconda fase
+(SP04): rimossi `MapStep`/`EnrichDataStep` in favore di un unico `ApplyStep`
+che accetta callable diretti. Gli enricher ora sono `UseCase` callable via
+`__call__` — nessun `Protocol` intermedio necessario.
 
-Il `Protocol QuizEnricher` era un alias 1:1 ridondante di
-`EnricherProtocol[EnrichedQuizModel, EnrichedQuizModel]` (stesso generico
-domain-agnostic già definito per `EnrichDataStep`): rimosso senza perdita di
-type-safety, perché il typing è strutturale (`Protocol`) — `ImageDescriptionEnricher`
-soddisfa `EnricherProtocol[EnrichedQuizModel, EnrichedQuizModel]` senza
-ereditarietà esplicita.
+**Open/Closed**: aggiungere un futuro enricher = aggiungere il callable
+nella lista `*transforms` dell'`ApplyStep("enrich")` nella factory. Zero
+modifiche allo step, al framework flowstep o agli altri enricher.
 
-**L'estensione Open/Closed per un futuro enricher non passa più da un
-servizio quiz-specific**: si aggiunge solo una nuova classe che soddisfa
-`EnricherProtocol[EnrichedQuizModel, EnrichedQuizModel]` e si inserisce nella
-lista passata a `EnrichDataStep` nella factory
-(`build_quiz_enrichment_flow`). Zero modifiche a `EnrichDataStep`, al
-`Protocol` generico o ad altri step.
-
-- **`ImageDescriptionEnricher`** (unico enricher concreto, invariato nel
-  comportamento da prima del refactor): `__init__(road_sign_describer:
-  RoadSignDescriberAgent, images_dir: Path)`. Non eredita più esplicitamente
-  da `QuizEnricher` (rimosso) — soddisfa `EnricherProtocol[EnrichedQuizModel,
-  EnrichedQuizModel]` per struttura. `enrich(items: list[EnrichedQuizModel])
+- **`ImageDescriptionEnricher`** (unico enricher concreto): `__init__(road_sign_describer:
+  RoadSignDescriberAgent, images_dir: Path)`. Implementa `UseCase[list[EnrichedQuizModel],
+  list[EnrichedQuizModel]]`; callable via `__call__` (nessuna ereditarietà
+  da `Protocol` esplicita). `execute(request: list[EnrichedQuizModel])
   -> list[EnrichedQuizModel]`:
-  1. raccoglie gli `item.image` **unici** (≠ `None`) sull'intera lista flat
-     (dedup → una sola chiamata vision per immagine, non per occorrenza);
+  1. raccoglie le chiavi `(image, topic, text)` **uniche** sull'intera lista
+     flat (dedup su tripla → una sola chiamata vision per contesto unico);
   2. per ogni immagine unica: se il file non esiste → `logger.warning` +
      skip (nessuna eccezione); se `describe()` lancia → `logger.warning`
      (con `exc_info=True`) + skip; altrimenti formatta
      `f"{desc.name}. {desc.description}"`;
-  3. ritorna nuove `EnrichedQuizModel` (via `model_copy`, nessuna mutazione
-     in place) con `image_description = descriptions.get(item.image)` su
-     ogni sotto-questione (resta `None` se `image is None` o la descrizione
-     è assente dal dict per skip).
+  3. ritorna nuove `EnrichedQuizModel` (via list comprehension con
+     `RoadSignDescriberMapper.from_response_to_enriched_quiz`, nessuna
+     mutazione in place) con `image_description` valorizzato per ogni
+     sotto-domanda la cui chiave è nel dict (resta `None` se assente o skip).
 
-### `orchestrators/steps/generic/enrich_data_step.py` — `EnrichDataStep[T]` (generico, domain-agnostic)
-
-Building block generico in `orchestrators/steps/generic/`, non quiz-specific
-— vive accanto a `EmbedStep`/`DbStoreStep`/`LoadJsonStep`/`MapStep`/`WriteJsonStep`
-(vedi [flowstep_toolkit.md](flowstep_toolkit.md)).
-
-```python
-class EnrichDataStep[T: BaseModel](Step):
-    def __init__(
-        self,
-        name: str,
-        enrichers: list[EnricherProtocol[T, T]],
-        input_key: str,
-        output_key: str,
-    ) -> None: ...
-
-    def execute(self, context: FlowContext) -> None: ...  # legge input_key, applica enrich(), scrive output_key
-    def enrich(self, items: list[T]) -> list[T]: ...        # applica la catena in ordine sull'intera lista
-```
-
-- **List-in/list-out, non item-per-item**: ogni enricher della catena riceve
-  l'intera lista in un'unica chiamata (`EnricherProtocol[T_In, T_Out].enrich(items:
-  list[T_In]) -> list[T_Out]`, definito in
-  `orchestrators/steps/generic/protocols/enricher_protocol.py`). Necessario
-  per enricher che devono deduplicare o aggregare informazioni sull'intero
-  batch prima di restituire il risultato (es. una sola chiamata vision LLM
-  per immagine unica, condivisa da più item) — esattamente il caso di
-  `ImageDescriptionEnricher`.
-- **Lista vuota di enricher → passthrough**: `enrich([])` ritorna la lista
-  immutata.
-- **`input_key`/`output_key` possono coincidere** (come nel quiz: entrambi
-  `ENRICHED_QUIZ`): lo step legge e ri-scrive la stessa chiave, analogo
-  pattern di `EmbedStep` (WARNING benigno del `FlowValidator`, non blocca
-  `build(validate=True)`).
-- **`EnricherProtocol[T_In, T_Out]`** (generico, in `protocols/`): non è un
-  alias quiz-specific — qualunque dominio futuro che debba arricchire una
-  lista di modelli Pydantic con la stessa interfaccia list-in/list-out lo
-  riusa direttamente, senza bisogno di un proprio Protocol "alias".
+> **`EnrichDataStep[T]` e `EnricherProtocol` RIMOSSI in SP04**: erano lo
+> step generico (catena enricher list-in/list-out) e il relativo Protocol.
+> Sostituiti da `ApplyStep` con callable diretti (enricher come `UseCase`
+> callable via `__call__`). Vedi [flowstep_toolkit.md](flowstep_toolkit.md).
 
 ### `orchestrators/quiz_flows.py` — flow factory quiz
 
@@ -268,11 +212,12 @@ def build_quiz_indexing_flow(
 ) -> Flow
 ```
 
-Catena: `LoadJsonStep("load_enriched_quiz")` → `MapToEmbeddableStep` →
-`EmbedStep(items_key=EMBEDDABLE_QUIZ)` →
-`MapStep("map_to_quiz_entity", QuizMapper.from_embeddable_to_quiz_question)`
-→ `DbStoreStep("store_quiz")`. **Invariato da prima del refactor** (fuori
-scope).
+Catena (5 step):
+`LoadJsonStep("load_enriched_quiz")` →
+`ApplyStep("map_to_embeddable", ToEmbeddableQuiz())` →
+`EmbedStep("embed_quiz", items_key=EMBEDDABLE_QUIZ)` →
+`ApplyStep("map_to_quiz_entity", ForEach(QuizMapper.from_embeddable_to_quiz_question))` →
+`DbStoreStep("store_quiz")`.
 
 ```python
 def build_quiz_cleaning_flow(
@@ -282,9 +227,12 @@ def build_quiz_cleaning_flow(
 ) -> Flow
 ```
 
-Catena: `LoadJsonStep("load_parsed_quiz")` → `FlattenQuizStep("flatten_quiz")`
-→ `WriteJsonStep("write_cleaned_quiz")`. Introdotto in SP09 (sostituisce il
-precedente flow unico `build_quiz_preparation_flow`, vedi sotto).
+Catena (3 step):
+`LoadJsonStep("load_parsed_quiz")` →
+`ApplyStep("flatten_quiz", FlattenQuiz())` →
+`WriteJsonStep("write_cleaned_quiz")`.
+Introdotto in SP09; SP04 ha sostituito `FlattenQuizStep` con
+`ApplyStep(FlattenQuiz())`.
 
 ```python
 def build_quiz_enrichment_flow(
@@ -294,11 +242,13 @@ def build_quiz_enrichment_flow(
 ) -> Flow
 ```
 
-Catena (attuale, post-refactor):
+Catena (attuale, 3 step):
 `LoadJsonStep("load_cleaned_quiz")` →
-`MapStep("map_cleaned_to_enriched", QuizMapper.from_cleaned_to_enriched)` →
-`EnrichDataStep("enrich_quiz", [ImageDescriptionEnricher(...)], ENRICHED_QUIZ, ENRICHED_QUIZ)`
-→ `WriteJsonStep("write_enriched_quiz")`.
+`ApplyStep("enrich", ForEach(QuizMapper.from_cleaned_to_enriched), ImageDescriptionEnricher(...))` →
+`WriteJsonStep("write_enriched_quiz")`.
+Il base-map (`ForEach`) e l'enrichment (`ImageDescriptionEnricher`) sono
+applicati in sequenza dallo stesso `ApplyStep`, eliminando i precedenti
+`MapStep` + `EnrichDataStep` separati.
 
 **Decisioni:**
 
@@ -313,9 +263,11 @@ Catena (attuale, post-refactor):
   `build_quiz_enrichment_flow`), a specchio della topologia knowledge
   (`parsed`→`cleaned`→`enriched`). Il quiz bank ha ora anche un proprio
   layer `parsed` esplicito (output del parser PDF) distinto da `cleaned`.
-- **Refactor enrichment (attuale)**: `EnrichQuizStep`/`QuizEnrichmentService`
-  sostituiti da `MapStep` (base-map) + `EnrichDataStep` (catena enricher) —
-  vedi sezione `services/quiz/` sopra per la motivazione completa.
+- **Refactor SP04**: `EnrichQuizStep`/`QuizEnrichmentService` già rimossi nel
+  refactor precedente; `FlattenQuizStep`/`MapToEmbeddableStep` rimossi in SP04
+  — sostituiti da service (`FlattenQuiz`/`ToEmbeddableQuiz`) wrappati da
+  `ApplyStep`. Il flow di enrichment è ora a 3 step (da 4), combinando base-map
+  e enrichment in un unico `ApplyStep`.
 - **`DbStoreStep` generico (truncate full-reload)** per l'indexing: il quiz
   ha una sola source, quindi il `TRUNCATE TABLE quiz_questions` è corretto e
   sicuro. Divergenza voluta dal `StoreChunksStep` knowledge (delete-by-source)

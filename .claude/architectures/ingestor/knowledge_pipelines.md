@@ -8,8 +8,8 @@ Questo documento copre l'**indexing** (`enriched` → chunk → embed → DB, SP
 Vedi [data_preparation.md](data_preparation.md) per la **preparation**
 (`parsed` → `cleaned` → `enriched`, ricostruita su due flow flowstep per-source
 in SP05: `build_knowledge_cleaning_flow`, `build_knowledge_enrichment_flow`,
-`run_preparation`, building block generici `LoadJsonStep`/`MapStep`/`WriteJsonStep`/
-`EnrichDataStep` + `ContextEnricher` domain-specific, `ArticleMapper`).
+`run_preparation`, `ApplyStep`+`ForEach` + `ContextEnricher` (UseCase, SP01),
+`ArticleMapper`).
 Vedi [config_and_entrypoints.md](config_and_entrypoints.md) per `IngestorConfig`,
 `LayerResolver` e gli entry point CLI.
 
@@ -106,7 +106,7 @@ Implementa `UseCase[EnrichedArticleModel, list[EmbeddableChunkModel]]`.
 
 - `source` iniettata nel costruttore (`ArticleChunker(source: str)`): non viene
   più passata per chiamata. Questo permette di usare `chunker.execute` come
-  funzione callable in `MapStep` senza adattatori.
+  funzione callable in `ForEach` (o `ApplyStep`) senza adattatori.
 - `execute(enriched_article: EnrichedArticleModel) -> list[EmbeddableChunkModel]`:
   `comma_index=0` generato da `article.text` **solo `if article.text:`**
   (testo non vuoto dopo cleaning); `comma_index=i+1` per ogni `paragraphs[i]`.
@@ -141,15 +141,15 @@ Implementa `UseCase[EnrichedArticleModel, list[EmbeddableChunkModel]]`.
 
 Tre step flowstep domain-specific per il knowledge indexing. Vivono in
 `orchestrators/steps/knowledge/`, mai in `services/` (la dipendenza va verso
-`commons.flowstep`, non il contrario). Il flow è **per-source**: un'esecuzione
+`flowstep` top-level, non il contrario). Il flow è **per-source**: un'esecuzione
 per source (`cds`, poi `cap`), source iniettata nei singoli step.
 
-Il quarto step del flow indexing (`MapStep("map_to_chunk_entity",
-ArticleMapper.from_embeddable_chunk_to_knowledge_chunk)`) è il generico
-`MapStep` — non vive in `steps/knowledge/` ma in `steps/generic/`.
+Il quarto step del flow indexing è
+`ApplyStep("map_to_chunk_entity", ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk))`
+— vive in `knowledge_flows.py` (non in `steps/knowledge/`).
 Gli step di preparation (cleaning/enrichment) non esistono più come classi
-dedicate in questo package: sostituiti dai generici `LoadJsonStep`/`MapStep`/
-`WriteJsonStep`/`EnrichDataStep` — vedi [data_preparation.md](data_preparation.md).
+dedicate in questo package: sostituiti da `LoadJsonStep`/`ApplyStep`/`WriteJsonStep`
+generici — vedi [data_preparation.md](data_preparation.md).
 
 - **`ChunkArticlesStep`**: iniettato `ArticleChunker(source)` già costruito con
   la source (la source è nel costruttore del chunker, non più un parametro
@@ -165,10 +165,11 @@ dedicate in questo package: sostituiti dai generici `LoadJsonStep`/`MapStep`/
   `required={EMBEDDABLE_CHUNKS}`, `produced={EMBEDDABLE_CHUNKS}` (WARNING benigno FlowValidator:
   "Produced key overwrites an already available key" — non ERROR, non blocca
   `build(validate=True)`).
-- **`MapStep("map_to_chunk_entity")`** (generico, non domain-specific): converte
-  `list[EmbeddableChunkModel]` → `list[KnowledgeChunk]` via
-  `ArticleMapper.from_embeddable_chunk_to_knowledge_chunk`.
-  `required={EMBEDDABLE_CHUNKS}`, `produced={CHUNK_ENTITIES}`.
+- **`ApplyStep("map_to_chunk_entity", ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk))`**:
+  converte `list[EmbeddableChunkModel]` → `list[KnowledgeChunk]` via
+  `ForEach` + mapper statico. `required={EMBEDDABLE_CHUNKS}`,
+  `produced={CHUNK_ENTITIES}`. Non è una classe step dedicata: è un
+  `ApplyStep` configurato inline nel flow builder.
 - **`StoreChunksStep`** (domain-specific, non il generico `DbStoreStep`):
   iniettati `KnowledgeChunkStoreRepository` e `source: str`. `execute`: legge
   `CHUNK_ENTITIES`, chiama `repository.delete_source(source)` poi
@@ -191,7 +192,7 @@ def build_knowledge_indexing_flow(
 
 Mappatura step (5 step): `LoadJsonStep("load_enriched_articles", model_class=EnrichedArticleModel)` →
 `ChunkArticlesStep` → `EmbedChunksStep` →
-`MapStep("map_to_chunk_entity", ArticleMapper.from_embeddable_chunk_to_knowledge_chunk)` →
+`ApplyStep("map_to_chunk_entity", ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk))` →
 `StoreChunksStep`. Il flow è prodotto da
 `FlowBuilder("knowledge_indexing").add_step(...).build(validate=validate)`.
 Re-esportato da `orchestrators/__init__.py` come `build_knowledge_indexing_flow`.
@@ -202,10 +203,11 @@ Re-esportato da `orchestrators/__init__.py` come `build_knowledge_indexing_flow`
   Poi narrowing a `Literal["cds","cap"]` con `cast` al confine (per `ChunkArticlesStep`).
 - `input_layer` letto da `config.knowledge_indexing.input_layer`.
 - Collega `main.py` direttamente (non più `IndexingPipeline` legacy).
-- Il `MapStep("map_to_chunk_entity")` è interposizione obbligatoria tra
-  `EmbedChunksStep` e `StoreChunksStep`: `KnowledgeChunk` è ora DB-write-only
-  (nessuna property `embedded_text`), e `EmbeddableChunkModel` (che ha
-  `embedded_text`) non è direttamente accettato dal repository.
+- L'`ApplyStep("map_to_chunk_entity", ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk))`
+  è interposizione obbligatoria tra `EmbedChunksStep` e `StoreChunksStep`:
+  `KnowledgeChunk` è DB-write-only (nessuna property `embedded_text`), e
+  `EmbeddableChunkModel` (che ha `embedded_text`) non è direttamente
+  accettato dal repository.
 - `StoreChunksStep` usato al posto del generico `DbStoreStep` perché la
   strategia di store è delete-by-source (non TRUNCATE): con il per-source,
   la seconda run su una source diversa non può azzerare la tabella intera.

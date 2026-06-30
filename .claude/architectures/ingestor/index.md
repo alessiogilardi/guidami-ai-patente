@@ -27,22 +27,18 @@ Pipeline/flow batch attivi:
   insert). Wired via `uv run ingest index knowledge --source <cds|cap>` (SP07).
 - **quiz bank — preparation** (due flow flowstep, ristrutturati in SP09 a
   specchio del knowledge): `build_quiz_cleaning_flow` (`parsed` → `cleaned`,
-  flatten+dedup delle sotto-domande in `FlattenQuizStep`) e
-  `build_quiz_enrichment_flow` (`cleaned` → `enriched`), entrambi via lo
-  stesso runner `run_preparation`. L'enrichment è oggi costruito sui building
-  block **generici** `MapStep` (base-map `QuizMapper.from_cleaned_to_enriched`)
-  + `EnrichDataStep` (catena enricher, primo e unico enricher concreto:
-  `ImageDescriptionEnricher`, vision LLM con `RoadSignDescriberAgent`, dedup
-  immagini uniche) — sostituiscono i precedenti step/service quiz-specific
-  `EnrichQuizStep`/`QuizEnrichmentService`/`Protocol QuizEnricher` (rimossi:
-  duplicavano building block già generici). Wired via `uv run ingest prepare
+  flatten+dedup via `ApplyStep(FlattenQuiz())`) e `build_quiz_enrichment_flow`
+  (`cleaned` → `enriched`, base-map + `ImageDescriptionEnricher` in unico
+  `ApplyStep`), entrambi via lo stesso runner `run_preparation`. In SP04
+  la logica di flatten+dedup è spostata da step flowstep a service UseCase
+  (`FlattenQuiz`, `ToEmbeddableQuiz`); `EnrichDataStep`/`MapStep`/
+  `EnricherProtocol` eliminati; tutti i flow usano `ApplyStep+ForEach`.
+  Wired via `uv run ingest prepare quiz` (SP07).
+- **quiz bank — indexing** (flow flowstep): legge `enriched` quiz →
+  `ApplyStep(ToEmbeddableQuiz())` (dedup + mapping enriched→embeddable, modello
+  flat) → embed → `ApplyStep(ForEach(QuizMapper.from_embeddable_to_quiz_question))`
+  → `quiz_questions` (truncate full-reload). Wired via `uv run ingest index
   quiz` (SP07).
-- **quiz bank — indexing** (flow flowstep, mapper consolidato): legge
-  `enriched` quiz → mappa in `EmbeddableQuizModel` (dedup, nello step
-  `MapToEmbeddableStep`, assume ancora struttura nested pre-SP09: rottura
-  nota e accettata, fuori scope) → embed → mappa in `QuizQuestion`
-  (`QuizMapper`) → `quiz_questions` (truncate full-reload). Wired via
-  `uv run ingest index quiz` (SP07).
 
 Dipende da `commons` (modelli, entità, `BaseAgent`, `EmbeddingClient`, `PostgresClient`,
 config condivise).
@@ -73,7 +69,7 @@ src/guidami_ai_patente_ingestor/
                                           #   from_embeddable_chunk_to_knowledge_chunk(EmbeddableChunkModel) -> KnowledgeChunk
     quiz_mapper.py                        # QuizMapper — backbone statico di tutte le transizioni 1:1:
                                           #   from_parsed_to_cleaned, from_cleaned_to_enriched,
-                                          #   from_enriched_quiz_item_to_embeddable,
+                                          #   from_enriched_to_embeddable(item) (1 arg, rinominato SP03),
                                           #   from_embeddable_to_quiz_question
     agents/
       __init__.py                         # re-esporta ArticleContextualizerMapper, RoadSignDescriberMapper
@@ -115,15 +111,17 @@ src/guidami_ai_patente_ingestor/
                                   #   fallimento isolato → contexts={} + warning, non abort
     quiz/
       __init__.py                          # re-esporta ImageDescriptionEnricher
+      flatten_quiz.py                      # FlattenQuiz(UseCase[list[ParsedQuizModel], list[CleanedQuizModel]])
+                                           #   flatten+dedup parsed→cleaned (SP02; ex FlattenQuizStep)
+      to_embeddable_quiz.py                # ToEmbeddableQuiz(UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]])
+                                           #   dedup+mapping enriched→embeddable (SP03; ex MapToEmbeddableStep)
                                            # quiz_enrichment_service.py RIMOSSO (QuizEnrichmentService,
-                                           #   sostituito da MapStep + EnrichDataStep generici)
+                                           #   sostituito da ApplyStep+UseCase in SP04)
       enrichers/
         __init__.py                        # re-esporta ImageDescriptionEnricher
-                                           # quiz_enricher.py RIMOSSO (Protocol QuizEnricher,
-                                           #   alias ridondante di EnricherProtocol generico)
-        image_description_enricher.py      # ImageDescriptionEnricher — vision LLM, dedup immagini uniche;
-                                           #   soddisfa EnricherProtocol[EnrichedQuizModel, EnrichedQuizModel]
-                                           #   per struttura, nessuna eredità esplicita
+                                           # quiz_enricher.py RIMOSSO (Protocol QuizEnricher, alias ridondante)
+        image_description_enricher.py      # ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]])
+                                           #   vision LLM, dedup su (image, topic, text); execute() ex enrich()
   models/
     knowledge/
       __init__.py                  # re-esporta ParsedArticleModel, EnrichedArticleModel, EmbeddableChunkModel
@@ -158,33 +156,26 @@ src/guidami_ai_patente_ingestor/
     steps/
       __init__.py                  # docstring package
       generic/
-        __init__.py                # re-esporta DbStoreStep, EmbedStep, LoadJsonStep, MapStep, StoreRepository,
-                                   #   WriteJsonStep, EnrichDataStep
+        __init__.py                # re-esporta DbStoreStep, EmbedStep, LoadJsonStep, StoreRepository, WriteJsonStep
+                                   # MapStep RIMOSSO (SP04); EnrichDataStep RIMOSSO (SP04)
         protocols/
           store_repository.py      # Protocol StoreRepository (truncate + bulk_insert positional-only)
-          enricher_protocol.py     # Protocol EnricherProtocol[T_In, T_Out] — generico, domain-agnostic
+                                   # enricher_protocol.py RIMOSSO (SP04)
         embed_step.py              # EmbedStep(Step) — assegna embedding in place, ri-scrive items_key
         db_store_step.py           # DbStoreStep(Step) — sink full-reload (truncate → bulk_insert)
         load_json_step.py          # LoadJsonStep(Step) — load(layer, source) → put(output_key, list[model_class])
-        map_step.py                 # MapStep(Step) — get(input_key) → mapper(item) per ogni item → put(output_key)
-        write_json_step.py          # WriteJsonStep(Step) — get(input_key) → write(layer, source)
-        enrich_data_step.py         # EnrichDataStep[T](Step) — get(input_key) → catena enricher
-                                   #   (list-in/list-out) → put(output_key)
+        write_json_step.py         # WriteJsonStep(Step) — get(input_key) → write(layer, source)
       knowledge/                   # solo step domain-specific non generificabili (tutti indexing)
         __init__.py
-        chunk_articles_step.py          # ChunkArticlesStep — legge ENRICHED_ARTICLES → EMBEDDABLE_CHUNKS (indexing)
-        embed_chunks_step.py            # EmbedChunksStep — embeddita (con filtro repealed) → EMBEDDABLE_CHUNKS (indexing)
-        store_chunks_step.py            # StoreChunksStep — delete_source + bulk_insert → CHUNK_ENTITIES (indexing)
-                                        # ContextualizeStep RIMOSSO: preparation ora usa generici
-                                        #   MapStep(ArticleMapper.from_parsed_to_enriched) + EnrichDataStep([ContextEnricher])
-      quiz/                         # solo step domain-specific non generificabili
-        __init__.py                     # re-esporta FlattenQuizStep, MapToEmbeddableStep
-        flatten_quiz_step.py            # FlattenQuizStep — PARSED_QUIZ → CLEANED_QUIZ (flatten+dedup, preparation, SP09)
-        map_to_embeddable_step.py       # MapToEmbeddableStep — ENRICHED_QUIZ → EMBEDDABLE_QUIZ
-                                        #   (flatten+dedup, indexing; assume ancora struttura nested
-                                        #   pre-SP09, rottura nota e accettata, fuori scope)
-                                        # LoadQuizStep/EnrichQuizStep/WriteEnrichedQuizStep RIMOSSI:
-                                        #   sostituiti dai generici LoadJsonStep/MapStep/EnrichDataStep/WriteJsonStep
+        chunk_articles_step.py         # ChunkArticlesStep — ENRICHED_ARTICLES → EMBEDDABLE_CHUNKS (indexing)
+        embed_chunks_step.py           # EmbedChunksStep — embed con filtro repealed (indexing)
+        store_chunks_step.py           # StoreChunksStep — delete_source + bulk_insert (indexing)
+                                       # ContextualizeStep RIMOSSO; MapStep/EnrichDataStep RIMOSSI (SP04)
+                                       # preparation usa ApplyStep(ForEach+ContextEnricher)
+      quiz/                        # package vuoto (SP04)
+        __init__.py                    # __all__ = []
+                                       # FlattenQuizStep RIMOSSO → FlattenQuiz in services/quiz/ (SP02)
+                                       # MapToEmbeddableStep RIMOSSO → ToEmbeddableQuiz in services/quiz/ (SP03)
   configs/
     ingestor_config.py            # IngestorConfig (BaseSettings, frozen)
     source_config.py              # SourceConfig(dir, file) — frozen BaseModel
@@ -227,7 +218,7 @@ stadi** (`parsed` → `cleaned` → `enriched`):
   (`LoadJsonStep`). Il layer `"cleaned"` è una costante privata in
   `knowledge_flows.py`/`quiz_flows.py` (`_CLEANED_LAYER`), non un campo di
   `PipelineLayerConfig`. Per il quiz bank (SP09): output del flow
-  `build_quiz_cleaning_flow` (flatten+dedup di `FlattenQuizStep`, una riga
+  `build_quiz_cleaning_flow` (flatten+dedup di `FlattenQuiz` UseCase, una riga
   flat per sotto-domanda), input del flow `build_quiz_enrichment_flow`.
 - `data/enriched/<source>/...json` — (layer `enriched`) output del flow di
   enrichment (corpus o quiz); input dei flow di indexing. Self-contained:
@@ -241,34 +232,35 @@ Risoluzione path: `LayerResolver.path(layer, source)` =
 
 - [data_preparation.md](data_preparation.md) — preparation: corpus normativo
   su due flow flowstep per-source (`build_knowledge_cleaning_flow`,
-  `build_knowledge_enrichment_flow`, `run_preparation`, generici `LoadJsonStep`/
-  `MapStep`/`WriteJsonStep`/`EnrichDataStep` + `ContextEnricher` domain-specific,
-  `ArticleMapper`); quiz bank su due flow analoghi dal SP09
-  (`build_quiz_cleaning_flow`, `build_quiz_enrichment_flow`, con
-  `FlattenQuizStep` per il flatten+dedup e i generici `MapStep`/
-  `EnrichDataStep` per l'enrichment). Più `ArticleContextualizerAgent`,
-  `RoadSignDescriberAgent`, `EnrichedArticleRepository`, `EnrichedQuizBankRepository`.
+  `build_knowledge_enrichment_flow`, `run_preparation`, `ApplyStep`+`ForEach` +
+  `ContextEnricher` domain-specific, `ArticleMapper`); quiz bank su due flow
+  analoghi (`build_quiz_cleaning_flow` con `ApplyStep(FlattenQuiz())`,
+  `build_quiz_enrichment_flow` con `ApplyStep(ForEach+ImageDescriptionEnricher)`).
+  Più `ArticleContextualizerAgent`, `RoadSignDescriberAgent`,
+  `EnrichedArticleRepository`, `EnrichedQuizBankRepository`.
 - [knowledge_pipelines.md](knowledge_pipelines.md) — corpus normativo (CdS + CAP):
   catena modelli `ParsedArticleModel`/`EnrichedArticleModel`/`EmbeddableChunkModel`
   (un modello per layer, `EmbeddableChunkModel` ha `embedded_text`),
   `ArticleMapper` consolidato, `ArticleCleaner`, `ArticleChunker`,
-  flow per-source (`build_knowledge_indexing_flow`, 5 step con `MapStep` generico
+  flow per-source (`build_knowledge_indexing_flow`, 5 step con `ApplyStep`
   tra `EmbedChunksStep` e `StoreChunksStep`), `KnowledgeChunkStoreRepository`
   (con `delete_source`).
 - [quiz_pipelines.md](quiz_pipelines.md) — quiz bank: catena modelli
   `ParsedQuizModel`/`CleanedQuizModel`/`EnrichedQuizModel`/`EmbeddableQuizModel`
-  (un modello per layer, SP09), `QuizMapper` consolidato,
-  `QuizQuestionStoreRepository`; flow indexing quiz: step `MapToEmbeddableStep`
-  (flatten+dedup legacy, fuori scope SP09), factory `build_quiz_indexing_flow`
-  (truncate full-reload, `EmbedStep` generico riusato); flow preparation
-  quiz: `FlattenQuizStep` (cleaning) + `MapStep`/`EnrichDataStep` generici
-  con `ImageDescriptionEnricher` (enrichment) — sostituiscono i precedenti
-  `EnrichQuizStep`/`QuizEnrichmentService`/`Protocol QuizEnricher` (rimossi).
-  Cutover CLI per entrambi pendente.
+  (un modello per layer, SP09), `QuizMapper` consolidato (metodo
+  `from_enriched_to_embeddable` rinominato da SP03, 1 argomento),
+  `QuizQuestionStoreRepository`; service `FlattenQuiz` e `ToEmbeddableQuiz`
+  (UseCase, ex step flowstep, SP02/SP03); flow indexing quiz con
+  `ApplyStep(ToEmbeddableQuiz())` e `ApplyStep(ForEach(...))` (SP04);
+  flow preparation quiz: `ApplyStep(FlattenQuiz())` (cleaning) +
+  `ApplyStep(ForEach+ImageDescriptionEnricher)` (enrichment, 3 step, SP04);
+  `ImageDescriptionEnricher` ora implementa `UseCase` (ex `EnricherProtocol`).
 - [config_and_entrypoints.md](config_and_entrypoints.md) — `IngestorConfig`, `LayerResolver`,
   pattern config a due livelli, unico entry point `cli.py` (SP07, sottocomandi `ingest prepare
   / index / reset`), convenzioni di logging.
-- [flowstep_toolkit.md](flowstep_toolkit.md) — step generici flowstep:
-  `EmbedStep`, `DbStoreStep`, `LoadJsonStep`, `MapStep`, `WriteJsonStep`,
-  `EnrichDataStep`, `StoreRepository`/`EnricherProtocol` Protocol, `context_keys`.
+- [flowstep_toolkit.md](flowstep_toolkit.md) — `flowstep` package top-level
+  (SP00b) con `ApplyStep` in `src/flowstep/steps/`; step generici ingestor:
+  `EmbedStep`, `DbStoreStep`, `LoadJsonStep`, `WriteJsonStep`, `StoreRepository`
+  Protocol; `context_keys`; `MapStep`/`EnrichDataStep`/`EnricherProtocol`
+  rimossi in SP04.
 - [tests.md](tests.md) — elenco completo dei test con file e comportamenti verificati.

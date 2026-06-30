@@ -13,9 +13,10 @@ ancora avviata). `commons` non dipende da nessuno dei due.
 
 ```
 src/commons/
-  abstracts/
-    __init__.py              # re-esporta UseCase
-    use_case.py              # UseCase[T_In, T_Out](ABC) — execute(T_In) -> T_Out, __call__ delegate
+  use_cases/
+    __init__.py              # re-esporta UseCase, AsyncUseCase, ForEach
+    use_case.py              # UseCase[T_In, T_Out](ABC) + AsyncUseCase[T_In, T_Out](ABC)
+    for_each.py              # ForEach[T, U](UseCase[list[T], list[U]]) — applica Callable[[T], U] a ogni elemento
   agents/
     __init__.py              # re-esporta BaseAgent
     base_agent.py            # PromptRenderer, ConfigLoader, BaseAgent[T_In: BaseModel, T_Out] — composizione su pydantic_ai.Agent
@@ -42,7 +43,6 @@ src/commons/
     agent_config.py               # AgentConfig (frozen BaseModel) — re-esportato da commons/configs/__init__.py
     embedding_config.py           # EmbeddingConfig (frozen)
     postgres_connection_config.py # PostgresConnectionConfig (frozen)
-  flowstep/                    # Pipeline framework leggero (Flow + Step) — non ancora integrato nel sistema
   services/
     __init__.py
     embeddings/
@@ -53,14 +53,27 @@ src/commons/
 
 ## Decisioni implementate
 
-- **`UseCase[T_In, T_Out]`** (`commons/abstracts/use_case.py`): ABC generica a due parametri
-  di tipo che standardizza il contratto dei componenti stateless con una singola
-  operazione. Metodo astratto `execute(input: T_In) -> T_Out`; `__call__` delega a
-  `execute` rendendo ogni `UseCase` callable direttamente (compatibile con `MapStep`
-  e simili che ricevono una funzione). Adottata da `EmbeddingService`, `ArticleCleaner`,
-  `ArticleChunker` in sostituzione dei rispettivi metodi nominali (`embed`, `clean`,
-  `chunk`) — il metodo pubblico di tutti e tre si chiama ora `execute()`. Mantiene
-  la separazione puro/impuro: il contratto non prescrive side effect.
+- **`UseCase[T_In, T_Out]`** (`commons/use_cases/use_case.py`): ABC generica a due
+  parametri di tipo che standardizza il contratto dei componenti stateless con una
+  singola operazione. Metodo astratto `execute(request: T_In) -> T_Out`; `__call__`
+  è marcato `@final` e delega a `execute` — ogni `UseCase` è callable direttamente
+  (compatibile con `ApplyStep`/`ForEach` che ricevono un callable). Adottata da
+  `EmbeddingService`, `ArticleCleaner`, `ArticleChunker`, `FlattenQuiz`,
+  `ToEmbeddableQuiz`, `ContextEnricher`, `ImageDescriptionEnricher`. Il metodo
+  pubblico di tutti si chiama `execute`. Mantiene la separazione puro/impuro: il
+  contratto non prescrive side effect.
+- **`AsyncUseCase[T_In, T_Out]`** (`commons/use_cases/use_case.py`): variante
+  asincrona — stessa struttura di `UseCase` ma `execute` è `async`. `__call__`
+  è `@final async`. Aggiunta senza consumer attivi: stabilisce il contratto per
+  future implementazioni async (es. chiamate embedding o LLM con `asyncio`).
+- **`ForEach[T, U]`** (`commons/use_cases/for_each.py`): `UseCase[list[T],
+  list[U]]` che wrappa un `Callable[[T], U]` e lo applica a ogni elemento della
+  lista in input. Accetta sia istanze `UseCase` (invocate via `__call__`) sia
+  static method (es. `QuizMapper.from_embeddable_to_quiz_question`). Usata nei
+  flow builder per wrappare mapper 1:1 in un callable list→list compatibile con
+  `ApplyStep`. Trade-off: `fn: Callable[[T], U]` è più largo di
+  `UseCase[T, U]` — permette di passare static method senza wrapper
+  aggiuntivo.
 - **`EmbeddingConfig`** (`BaseModel`, `frozen=True`): campi `model_name`
   (default `"openrouter/openai/text-embedding-3-small"`), `vector_dim: int =
   1536`, `dimensions: int | None = None` (Matryoshka opzionale — passato
@@ -210,6 +223,10 @@ src/commons/
 
 ## Test
 
+- `tests/commons/use_cases/test_for_each.py` — `ForEach(fn)` applicato a lista
+  vuota, lista di un elemento, lista di più elementi; verifica che il callable
+  sia invocato una volta per elemento nell'ordine corretto; compatibilità con
+  static method e con istanze `UseCase`.
 - `tests/commons/services/embeddings/test_embedding_service.py` — 8 test TDD
   senza marker `integration` (nessuna dipendenza esterna): allineamento
   lunghezza/ordine output; batching con `_RecordingFakeClient` (verifica numero

@@ -15,8 +15,8 @@ quiz spostato a preparation, layer `parsed` introdotto per il quiz).
 
 Vedi [config_and_entrypoints.md](config_and_entrypoints.md) per `IngestorConfig`,
 `LayerResolver` e gli entry point CLI, [flowstep_toolkit.md](flowstep_toolkit.md)
-per `context_keys` condivise e i building block generici (`LoadJsonStep`/
-`MapStep`/`WriteJsonStep`/`EnrichDataStep`), [quiz_pipelines.md](quiz_pipelines.md)
+per `context_keys` condivise e i building block (`ApplyStep`, `LoadJsonStep`,
+`WriteJsonStep`, `EmbedStep`, `DbStoreStep`), [quiz_pipelines.md](quiz_pipelines.md)
 per la catena dei modelli quiz e il dettaglio di `QuizMapper`/`services/quiz/`.
 
 Due aree di preparation offline, idempotenti, che precedono le pipeline/flow di
@@ -29,24 +29,24 @@ indexing. Producono gli artefatti `enriched` da cui l'indexing legge.
 - **quiz bank**: costruito **da zero** in SP06 come un singolo Flow
   (`cleaned` → `enriched`), poi **ristrutturato in SP09** a specchio della
   topologia knowledge: oggi sono **due Flow flowstep lineari**
-  (`build_quiz_cleaning_flow`: `parsed` → `cleaned`, con flatten+dedup;
-  `build_quiz_enrichment_flow`: `cleaned` → `enriched`), entrambi via il
-  runner generico `run_preparation`. Il flow di enrichment è stato poi
-  refattorizzato (vedi sotto) per usare i building block generici `MapStep`/
-  `EnrichDataStep` al posto degli step/service quiz-specific.
+  (`build_quiz_cleaning_flow`: `parsed` → `cleaned`, con flatten+dedup via
+  `ApplyStep(FlattenQuiz())`; `build_quiz_enrichment_flow`: `cleaned` →
+  `enriched`), entrambi via il runner generico `run_preparation`. In SP04
+  tutti gli step usano `ApplyStep`+`ForEach`/`UseCase` invece di `MapStep`/
+  `EnrichDataStep` (rimossi).
 
 ## Topologia
 
 ```
-parsed ──[knowledge_cleaning flow: Load→Map(clean)→Write]──▶ cleaned ──[knowledge_enrichment flow: Load→Contextualize→Write]──▶ enriched ──[knowledge_indexing flow]──▶ DB
-parsed ──[quiz_cleaning flow: Load→Flatten(dedup)→Write]────▶ cleaned ──[quiz_enrichment flow: Load→Map(base)→Enrich→Write]────▶ enriched ──[quiz_indexing flow]────────▶ DB
+parsed ──[knowledge_cleaning flow: Load→Apply(ForEach(clean))→Write]───▶ cleaned ──[knowledge_enrichment flow: Load→Apply(ForEach(map)+ContextEnricher)→Write]──▶ enriched ──[knowledge_indexing flow]──▶ DB
+parsed ──[quiz_cleaning flow: Load→Apply(FlattenQuiz)→Write]───────────▶ cleaned ──[quiz_enrichment flow: Load→Apply(ForEach(base-map)+ImageDescEnricher)→Write]──▶ enriched ──[quiz_indexing flow]────▶ DB
 ```
 
 Dal SP09 il quiz bank ha la **stessa topologia a tre layer** del knowledge
 (`parsed` → `cleaned` → `enriched`), non più un solo layer di input: il layer
 `parsed` (output diretto del parser PDF, struttura nested) è distinto dal
 layer `cleaned` (flat, una riga per sotto-domanda, prodotto dal flatten+dedup
-di `FlattenQuizStep`).
+di `FlattenQuiz` UseCase, wrappato da `ApplyStep`).
 
 L'enrichment LLM (costoso, offline) è separato dall'indexing (ri-eseguibile a
 costo zero su `enriched`). Knowledge e quiz preparation sono idempotenti a
@@ -76,14 +76,14 @@ def build_knowledge_cleaning_flow(
 ) -> Flow
 ```
 Catena: `LoadJsonStep("load_parsed_articles", model_class=ParsedArticleModel)` →
-`MapStep("clean_articles", mapper=ArticleCleaner().execute)` →
+`ApplyStep("clean_articles", ForEach(ArticleCleaner()))` →
 `WriteJsonStep("write_cleaned", model_class=ParsedArticleModel)`. Layer: input =
 `config.knowledge_preparation.input_layer` (`"parsed"`), output = costante
-privata del modulo `_CLEANED_LAYER = "cleaned"`. **Generificato**: i precedenti
-step dedicati `LoadParsedArticlesStep`/`CleanArticlesStep`/`WriteCleanedStep`
-sono stati sostituiti dai building block generici `LoadJsonStep`/`MapStep`/
-`WriteJsonStep` (vedi [flowstep_toolkit.md](flowstep_toolkit.md)) — non
-esistono più come classi dedicate.
+privata del modulo `_CLEANED_LAYER = "cleaned"`. I precedenti step dedicati
+`LoadParsedArticlesStep`/`CleanArticlesStep`/`WriteCleanedStep` non esistono più:
+sostituiti da `LoadJsonStep`/`ApplyStep`/`WriteJsonStep` generici (il `MapStep`
+usato in precedenza è stato rimosso in SP04 e sostituito da `ApplyStep +
+ForEach`).
 
 ```python
 def build_knowledge_enrichment_flow(
@@ -95,18 +95,15 @@ def build_knowledge_enrichment_flow(
 ```
 Catena: `LoadJsonStep("load_cleaned_articles", model_class=ParsedArticleModel,
 output_key=CLEANED_ARTICLES)` →
-`MapStep("map_article_to_enriched", ArticleMapper.from_parsed_to_enriched,
-CLEANED_ARTICLES, ENRICHED_ARTICLES)` →
-`EnrichDataStep("enrich_articles", [ContextEnricher(agent)], ENRICHED_ARTICLES,
-ENRICHED_ARTICLES)` →
+`ApplyStep("enrich", ForEach(ArticleMapper.from_parsed_to_enriched), ContextEnricher(agent))` →
 `WriteJsonStep("write_enriched", model_class=EnrichedArticleModel)`.
 Layer: input = `_CLEANED_LAYER`, output = `config.knowledge_preparation.output_layer`
 (`"enriched"`); solleva `ValueError` se `output_layer` non configurato. Istanzia
 l'agente via `ArticleContextualizerAgent.from_yaml("article_contextualizer",
-config.agents_dir)` e lo inietta in `ContextEnricher`.
-`ContextualizeStep` (che combinava mapping + contestualizzazione in un unico step
-domain-specific) è stato **rimosso** e sostituito dai building block generici
-`MapStep` + `EnrichDataStep` — stesso schema già usato dall'enrichment quiz.
+config.agents_dir)` e lo inietta in `ContextEnricher`. In SP04 il precedente
+`MapStep + EnrichDataStep` (due step separati) è stato unificato in un unico
+`ApplyStep` con catena `[ForEach(ArticleMapper.from_parsed_to_enriched),
+ContextEnricher(agent)]`.
 
 **Decisioni:**
 - Entrambe le factory validano `source` contro
@@ -146,23 +143,21 @@ def run_preparation(flow: Flow, out_path: Path, force: bool) -> None:
 ### `orchestrators/steps/knowledge/` — step preparation knowledge (aggiornato)
 
 Tutti gli step preparation knowledge sono sostituiti dai generici
-`LoadJsonStep`/`MapStep`/`WriteJsonStep`/`EnrichDataStep` (vedi sopra) —
+`LoadJsonStep`/`ApplyStep`/`WriteJsonStep` (vedi sopra) —
 **nessuna classe step dedicata** rimane in `steps/knowledge/` per il preparation
 (il package ospita solo i tre step dell'indexing: `ChunkArticlesStep`,
 `EmbedChunksStep`, `StoreChunksStep`).
 
-`ContextualizeStep` (precedente step domain-specific preparation che combinava
-base-map + chiamata all'agente in un'unica delega per item) è stato **rimosso**.
-Sostituito da `MapStep("map_article_to_enriched", ArticleMapper.from_parsed_to_enriched)`
-+ `EnrichDataStep("enrich_articles", [ContextEnricher(agent)])`.
+`ContextualizeStep` era già stato rimosso. Il precedente `MapStep +
+EnrichDataStep` separati sono stati unificati in un unico `ApplyStep` in SP04.
 
 ### `services/knowledge/enrichers/context_enricher.py` — `ContextEnricher`
 
 - Enricher domain-specific per la contestualizzazione per comma via LLM.
-  Soddisfa `EnricherProtocol[EnrichedArticleModel, EnrichedArticleModel]` per
-  struttura (nessuna ereditarietà esplicita) — stesso pattern di
-  `ImageDescriptionEnricher`.
-- `enrich(items: list[EnrichedArticleModel]) -> list[EnrichedArticleModel]`:
+  Implementa `UseCase[list[EnrichedArticleModel], list[EnrichedArticleModel]]`
+  (ex soddisfaceva `EnricherProtocol` per struttura; ora estende `UseCase`
+  esplicitamente). Callable direttamente grazie a `UseCase.__call__`.
+- `execute(request: list[EnrichedArticleModel]) -> list[EnrichedArticleModel]`:
   chiama `_contextualize(article)` per ogni item e restituisce nuove istanze
   (immutabilità via `model_copy`).
 - `_contextualize(article)`: delega la traduzione dominio↔DTO a
@@ -175,7 +170,7 @@ Sostituito da `MapStep("map_article_to_enriched", ArticleMapper.from_parsed_to_e
   `ImageDescriptionEnricher`).
 - Inietta `ArticleContextualizerAgent` e `ArticleContextualizerMapper` nel costruttore.
 - Vive in `services/knowledge/enrichers/` — non in `orchestrators/steps/knowledge/`
-  (nessuna dipendenza da `commons.flowstep`).
+  (nessuna dipendenza da `flowstep`).
 
 Gli step generici `LoadJsonStep`/`WriteJsonStep` ricevono `layer_resolver`/
 layer/`source` nel costruttore e risolvono il path via
@@ -189,14 +184,15 @@ layer/`source` nel costruttore e risolvono il path via
   Tre metodi:
   - `from_parsed_to_enriched(article: ParsedArticleModel) -> EnrichedArticleModel`:
     copia i campi comuni, imposta `contexts={}` (valorizzato da `ContextEnricher`).
-    Usato da `MapStep("map_article_to_enriched")` nell'enrichment flow.
+    Usato via `ForEach(ArticleMapper.from_parsed_to_enriched)` nell'enrichment flow.
   - `from_enriched_to_embeddable_chunk(model: EnrichedArticleModel, source: str,
     comma_index: int, raw_text: str) -> EmbeddableChunkModel`:
     costruisce un `EmbeddableChunkModel` per un singolo comma. Usato da
-    `ArticleChunker.execute` al posto della costruzione inline precedente.
+    `ArticleChunker.execute`.
   - `from_embeddable_chunk_to_knowledge_chunk(model: EmbeddableChunkModel) -> KnowledgeChunk`:
     copia tutti i campi (incluso `embedding`) in `KnowledgeChunk` (entità
-    DB-only). Usato da `MapStep("map_to_chunk_entity")` nell'indexing flow.
+    DB-only). Usato via `ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk)`
+    nell'indexing flow (`ApplyStep("map_to_chunk_entity")`).
 
 ### `mappers/agents/` — `ArticleContextualizerMapper` e `RoadSignDescriberMapper`
 
@@ -318,9 +314,10 @@ def build_quiz_cleaning_flow(
 ) -> Flow
 ```
 Catena: `LoadJsonStep("load_parsed_quiz", model_class=ParsedQuizModel)` →
-`FlattenQuizStep("flatten_quiz")` →
+`ApplyStep("flatten_quiz", FlattenQuiz())` →
 `WriteJsonStep("write_cleaned_quiz", model_class=CleanedQuizModel)`. Chiavi
-`PARSED_QUIZ` → `CLEANED_QUIZ`.
+`PARSED_QUIZ` → `CLEANED_QUIZ`. SP04 ha spostato la logica da `FlattenQuizStep`
+(step flowstep) a `FlattenQuiz` (service UseCase).
 
 ```python
 def build_quiz_enrichment_flow(
@@ -330,17 +327,17 @@ def build_quiz_enrichment_flow(
 ) -> Flow
 ```
 Catena: `LoadJsonStep("load_cleaned_quiz", model_class=CleanedQuizModel)` →
-`MapStep("map_cleaned_to_enriched", QuizMapper.from_cleaned_to_enriched)` →
-`EnrichDataStep("enrich_quiz", [ImageDescriptionEnricher(...)], ENRICHED_QUIZ, ENRICHED_QUIZ)`
-→ `WriteJsonStep("write_enriched_quiz", model_class=EnrichedQuizModel)`.
-Chiavi `CLEANED_QUIZ` → `ENRICHED_QUIZ`.
+`ApplyStep("enrich", ForEach(QuizMapper.from_cleaned_to_enriched), ImageDescriptionEnricher(...))` →
+`WriteJsonStep("write_enriched_quiz", model_class=EnrichedQuizModel)`.
+Chiavi `CLEANED_QUIZ` → `ENRICHED_QUIZ`. SP04 ha unificato il precedente
+`MapStep + EnrichDataStep` in un unico `ApplyStep`.
 
 Entrambi riusano **lo stesso runner** del knowledge
 (`run_preparation(flow, out_path, force)`), invocato dal chiamante con
 `out_path = layer_resolver.path(<layer>, "quiz")`.
 
 Dettaglio completo di step, enrichment Open/Closed
-(`EnrichDataStep`/`EnricherProtocol`/`ImageDescriptionEnricher`) e decisioni
+(`ApplyStep`/`ImageDescriptionEnricher` come `UseCase`) e decisioni
 della factory in [quiz_pipelines.md](quiz_pipelines.md).
 
 ### Dedup e traduzione dominio↔DTO (`ImageDescriptionEnricher`)
@@ -360,8 +357,9 @@ che il prompt dell'agente include sia `$topic` sia `$text`.
 
 Immagine non trovata su disco o errore nell'agente → `logger.warning` +
 `image_description = None` (non blocca l'enrichment delle altre domande).
-L'enricher soddisfa `EnricherProtocol[EnrichedQuizModel, EnrichedQuizModel]`
-per struttura; nessuna ereditarietà esplicita.
+L'enricher implementa `UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]]`
+(ex soddisfaceva `EnricherProtocol` per struttura; ora estende `UseCase`
+esplicitamente, con `execute` in luogo di `enrich`).
 
 ### Cosa NON è (ancora) cambiato
 
