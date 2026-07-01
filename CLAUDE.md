@@ -79,9 +79,17 @@ Un piano è obbligatorio prima di qualsiasi nuova funzionalità, modulo o cambio
 
 Vedi `.claude/rules/code-conventions.md`.
 
+### Aggiornare le regole durante la conversazione
+
+Ogni volta che nel corso di una conversazione vengono stabilite decisioni su come scrivere o organizzare il codice (convenzioni di stile, pattern architetturali, vincoli di naming, regole di testing, ecc.), aggiornare immediatamente il file appropriato in `.claude/rules/`:
+
+- Se la decisione riguarda convenzioni già coperte da un file esistente → aggiungere lì.
+- Se la decisione apre un tema nuovo → creare un nuovo file in `.claude/rules/` con nome descrittivo.
+  - Buono: `error-handling.md`, `async-patterns.md`, `repository-conventions.md`
+  - Non va: `rules.md`, `misc.md`, `decisions.md`, `new-stuff.md`
+
+Non attendere la fine del task: aggiornare `.claude/rules/` **prima** di chiudere la conversazione.
+
 ## Data Notes
 
-- `data/docs/domande AB italiano 23 04 2025.pdf` — official question bank for categories A/B, Italian language, dated April 2025.
-- `data/parsed/cap/codice_rca.json` — 96 articles relevant to RCA/patente (subset of full CAP).
-- When scraping, prefer storing raw HTML/PDF alongside parsed output so re-parsing is possible without re-fetching.
-- Source URLs and scrape timestamps must be recorded with every document.
+Vedi `.claude/architectures/data-sources.md`.
