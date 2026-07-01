@@ -10,7 +10,6 @@ contesto/motivazione completa.
 
 ## Documenti
 
-- [code-conventions.md](code-conventions.md) — convenzioni specifiche del progetto: Pydantic frozen, cast `%s::vector` psycopg, marker `@pytest.mark.integration`
 - [tech-stack.md](tech-stack.md) — panoramica cross-cutting del tech stack: package
   management, storage, embedding, agenti LLM, librerie principali
 - [infrastructure.md](infrastructure.md) — Postgres/pgvector via Docker
@@ -33,7 +32,7 @@ contesto/motivazione completa.
   `ingestor/config_and_entrypoints.md`, `ingestor/flowstep_toolkit.md`,
   `ingestor/tests.md`
 
-## Stato implementazione (vedi plans/architecture-index.md per il quadro completo)
+## Stato implementazione (vedi plans/_index.md per il quadro completo)
 
 | Componente | Stato |
 |---|---|
