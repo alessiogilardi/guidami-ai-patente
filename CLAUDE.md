@@ -66,7 +66,7 @@ Copy `.env.example` to `.env` and fill in:
 
 Prima di iniziare qualsiasi task implementativo, leggere i documenti di riferimento:
 
-- **Piani di progettazione** (inclusi quelli non ancora implementati): `plans/` — indice in `plans/architecture-index.md`
+- **Piani di progettazione** (inclusi quelli non ancora implementati): `plans/` — indice in `plans/_index.md`
 - **Decisioni implementate**: `.claude/architectures/` — indice in `.claude/architectures/index.md`
 - **Package layout, pipeline, layer dati, pattern di config**: `.claude/architectures/ingestor/index.md`
 - **Schema DB e infrastruttura**: `.claude/architectures/infrastructure.md`
@@ -77,7 +77,7 @@ Un piano è obbligatorio prima di qualsiasi nuova funzionalità, modulo o cambio
 
 ## Code Conventions
 
-Vedi `.claude/architectures/code-conventions.md`.
+Vedi `.claude/rules/code-conventions.md`.
 
 ## Data Notes
 

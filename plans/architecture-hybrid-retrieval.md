@@ -1,6 +1,6 @@
 # Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF)
 
-Riferimenti: [architecture-index.md](architecture-index.md),
+Riferimenti: [_index.md](_index.md),
 [architecture-ingestor.md](architecture-ingestor.md) (sezione "Possibili
 estensioni future"), [architecture-code-layout.md](architecture-code-layout.md),
 [tech-stack.md](tech-stack.md).
@@ -155,7 +155,7 @@ class KnowledgeRepository:
 - **Il repository riceve sia `query_text` (per l'FTS) sia `query_embedding`
   (per il dense)**; non dipende da `EmbeddingClient`. L'embedding della query è
   responsabilità del chiamante (`ExplanationService`, che già "embed della
-  domanda → retrieval" nel flusso runtime di architecture-index.md). Mantiene il
+  domanda → retrieval" nel flusso runtime di _index.md). Mantiene il
   repository come puro data-access e testabile senza caricare il modello.
 - Mappa ogni riga del `fetch` in `RetrievalResult(chunk=KnowledgeChunk(...),
   score=rrf_score)`, preservando l'ordine restituito da SQL.

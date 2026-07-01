@@ -1,6 +1,6 @@
 # Mapping offline quiz ↔ norma (LLM-as-a-Judge)
 
-Riferimento: [architecture-index.md](architecture-index.md),
+Riferimento: [_index.md](_index.md),
 [architecture-ingestor.md](architecture-ingestor.md),
 [architecture-quiz-bank.md](architecture-quiz-bank.md),
 [tech-stack.md](tech-stack.md).
@@ -201,7 +201,7 @@ candidati al giudice, nessuna re-ingestion. Cambiare embedder implica invece un
 > L'embedder è **unico** per offline e runtime (stesso spazio vettoriale): a
 > runtime serve però solo per i **follow-up liberi**; la spiegazione iniziale di un
 > quiz mappato è una JOIN sul mapping precomputato, senza embed. Vedi
-> [architecture-index.md](architecture-index.md).
+> [_index.md](_index.md).
 
 La **modalità sample** resta il modo per decidere su dati reali se serve agire (di
 norma alzando `top_k`).
@@ -255,4 +255,4 @@ indicizzato e quiz embeddati a 1536 dim con `text-embedding-3-small` (vedi
 vedi Prerequisiti). Implementazione in TDD (test prima per `QuizNormaJudge` e
 `QuizNormaMappingStoreRepository`, poi pipeline) come task successivo. Al termine,
 aggiornare `.claude/architectures/` via `architecture-doc-keeper` e aggiungere il
-link in [architecture-index.md](architecture-index.md).
+link in [_index.md](_index.md).

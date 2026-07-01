@@ -1,92 +1,77 @@
-# Come scrivere un piano
+# How to write a plan
+These rules apply to anyone writing or editing a plan in `plans/`.
 
-Queste regole si applicano a chiunque scriva o modifichi un piano in `plans/`.
+## Location and file name
+Plans must be written **exclusively in `<project-root>/plans/`** — the `plans/`
+directory at the root of *this* project, not any global or system-level
+directory. Use a descriptive, self-explanatory file name, do not use generic names like `plan.md`.
 
-## Posizione e nome file
-
-I piani vanno scritti **esclusivamente in `plans/`** con un nome parlante che
-descriva chiaramente l'oggetto (es. `ingest--quiz-image-descriptions.md`,
-`app--answer-checker.md`). Non usare sottocartelle, non usare nomi generici
-come `plan.md`.
-
-Dopo aver creato il file, aggiungi il puntatore a `plans/architecture-index.md`.
+After creating the file, add a pointer to it in `plans/_index.md`.
 
 ## Frontmatter
-
-Ogni piano inizia con un frontmatter YAML che ne traccia lo stato:
-
+Every plan starts with a YAML frontmatter that tracks its status:
 ```yaml
 ---
 status: Draft | Reviewed | Implemented | Archived
 ---
 ```
 
-| Stato | Significato |
+| Status | Meaning |
 |---|---|
-| `Draft` | In scrittura, non pronto per l'implementazione |
-| `Reviewed` | Discusso e approvato — pronto per l'implementazione |
-| `Implemented` | Codice completato e `architecture-doc-keeper` aggiornato |
-| `Archived` | Superato o abbandonato (indicare motivo/piano sostitutivo nel testo) |
+| `Draft` | Being written, not ready for implementation |
+| `Reviewed` | Discussed and approved — ready for implementation |
+| `Implemented` | Code completed and `architecture-doc-keeper` updated |
+| `Archived` | Superseded or abandoned (state the reason/replacement plan in the text) |
 
-## Struttura attesa
-
+## Expected structure
 ```
 ---
 status: Draft
 ---
+# Title
+References: links to related plans and architectures.
 
-# Titolo
+## Context and motivation
+Why this plan is needed. What the current problem is.
 
-Riferimenti: link a piani e architetture correlate.
+## Decisions
+1. **Decision 1** — rationale.
+2. **Decision 2** — rationale.
 
-## Contesto e motivazione
+## Implementation steps
+### 1. Step title
+Description of the change with target file/class.
 
-Perché serve questo piano. Qual è il problema corrente.
+**Tests:**
+- Add: `tests/path/test_file.py::test_name` — behavior verified
+- Modify: `tests/path/test_file.py::test_name` — why it changes
+- Remove: `tests/path/test_file.py::test_name` — why it's no longer valid
 
-## Decisioni
-
-1. **Decisione 1** — motivazione.
-2. **Decisione 2** — motivazione.
-
-## Passi implementativi
-
-### 1. Titolo step
-
-Descrizione del cambiamento con file/classe target.
-
-**Test:**
-- Aggiungere: `tests/path/test_file.py::test_name` — comportamento verificato
-- Modificare: `tests/path/test_file.py::test_name` — perché cambia
-- Rimuovere: `tests/path/test_file.py::test_name` — perché non più valido
-
-### 2. Titolo step
-
+### 2. Step title
 ...
 
 ## Definition of Done
-
-- [ ] `grep -r "OldSymbol" src/` → zero match
-- [ ] `from package.module import NewClass` risolve
-- [ ] `uv run pytest` verde (inclusi nuovi test che coprono il comportamento)
-- [ ] `uv run pyright` pulito
-- [ ] `uv run ruff check src tests` pulito
-- [ ] Piano aggiornato a `status: Implemented`
-- [ ] `architecture-doc-keeper` invocato
+- [ ] `grep -r "OldSymbol" src/` → zero matches
+- [ ] `from package.module import NewClass` resolves
+- [ ] `uv run pytest` green (including new tests covering the behavior)
+- [ ] `uv run pyright` clean
+- [ ] `uv run ruff check src tests` clean
+- [ ] Plan updated to `status: Implemented`
+- [ ] `architecture-doc-keeper` invoked
 ```
 
-## Regole DoD
+## DoD rules
+The DoD is always the **last section** of the plan. Every item must be
+verifiable with a command (`grep`, `uv run pytest`, `python -c "import ..."`)
+— no subjective criteria.
 
-La DoD è sempre l'**ultima sezione** del piano. Ogni voce deve essere
-verificabile con un comando (`grep`, `uv run pytest`, `python -c "import ..."`)
-— nessun criterio soggettivo.
-
-## Workflow completo
-
-1. Scrivi il piano con `status: Draft`
-2. Aggiungi il puntatore a `plans/architecture-index.md`
-3. Fai revisionare il piano → aggiorna a `status: Reviewed`
-4. Genera i test TDD fallenti con l'agente `tdd-test-writer`
-5. Implementa (agente `python-developer` o manualmente)
-6. Verifica **meccanicamente** ogni voce della DoD
-7. Invoca l'agente `architecture-doc-keeper` — non modificare `.claude/architectures/` direttamente
-8. Aggiorna il piano a `status: Implemented`
+## Full workflow
+1. Write the plan with `status: Draft`
+2. Add the pointer to `plans/_index.md`
+3. Have the plan reviewed → update to `status: Reviewed`
+4. Generate failing TDD tests with the `tdd-test-writer` agent
+5. Implement (`python-developer` agent or manually)
+6. Verify **mechanically** every DoD item
+7. Invoke the `architecture-doc-keeper` agent — do not edit
+   `.claude/architectures/` directly
+8. Update the plan to `status: Implemented`
