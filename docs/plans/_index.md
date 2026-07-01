@@ -48,7 +48,7 @@ Ephemeral per v1 (in-memory, niente DB/auth), ma dietro un'interfaccia
 ### 3. Orchestrators di ingestion su `flowstep`
 
 Orchestrators ricostruiti su `Flow` di `Step` sopra `commons/flowstep`. Implementato
-e documentato in [`.claude/architectures/ingestor/`](../.claude/architectures/ingestor/index.md).
+e documentato in [`docs/architecture/ingestor/`](../docs/architecture/ingestor/_index.md).
 
 ## Flusso runtime
 
@@ -73,5 +73,5 @@ e documentato in [`.claude/architectures/ingestor/`](../.claude/architectures/in
 
 ## Stato generale
 
-- Ingestor: ✅ implementato — dettaglio in [`.claude/architectures/index.md`](../.claude/architectures/index.md)
+- Ingestor: ✅ implementato — dettaglio in [`docs/architecture/_index.md`](../docs/architecture/_index.md)
 - Applicativo FastAPI: ⬜ non avviato

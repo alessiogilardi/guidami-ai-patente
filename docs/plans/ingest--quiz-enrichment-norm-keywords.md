@@ -4,7 +4,7 @@ status: Draft
 
 # Quiz Enrichment: NormReference + Keyword
 
-Riferimenti: `.claude/architectures/ingestor/quiz_pipelines.md`,
+Riferimenti: `docs/architecture/ingestor/quiz_pipelines.md`,
 `plans/ingest--quiz-image-descriptions.md`, `plans/_index.md`
 
 ## Contesto e motivazione
@@ -281,4 +281,4 @@ Aggiungere re-export di `NormReferenceEnricher` e `KeywordEnricher` in
 - [ ] `uv run ingest index quiz` persiste correttamente —
   `SELECT norm_description, keywords FROM quiz_questions LIMIT 3` restituisce valori non-null
 - [ ] Piano aggiornato a `status: Implemented`
-- [ ] `architecture-doc-keeper` invocato
+- [ ] `doc-architect` invocato

@@ -254,5 +254,5 @@ indicizzato e quiz embeddati a 1536 dim con `text-embedding-3-small` (vedi
 [ingest--quiz-embeddings.md](ingest--quiz-embeddings.md); recall ancora da validare,
 vedi Prerequisiti). Implementazione in TDD (test prima per `QuizNormaJudge` e
 `QuizNormaMappingStoreRepository`, poi pipeline) come task successivo. Al termine,
-aggiornare `.claude/architectures/` via `architecture-doc-keeper` e aggiungere il
+aggiornare `docs/architecture/` via `doc-architect` e aggiungere il
 link in [_index.md](_index.md).
