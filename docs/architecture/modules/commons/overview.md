@@ -10,39 +10,37 @@ yet started). `commons` does not depend on either.
 ```
 src/commons/
   use_cases/
-    __init__.py              # re-esporta UseCase, AsyncUseCase, ForEach
+    __init__.py              # re-exports UseCase, AsyncUseCase, ForEach
     use_case.py              # UseCase[T_In, T_Out](ABC) + AsyncUseCase[T_In, T_Out](ABC)
-    for_each.py              # ForEach[T, U](UseCase[list[T], list[U]]) — applica Callable[[T], U] a ogni elemento
+    for_each.py              # ForEach[T, U](UseCase[list[T], list[U]]) — applies Callable[[T], U] to each element
   agents/
-    __init__.py              # re-esporta BaseAgent
-    base_agent.py            # PromptRenderer, ConfigLoader, BaseAgent[T_In: BaseModel, T_Out] — composizione su pydantic_ai.Agent
-  configs/
-    agent_config.py          # AgentConfig (frozen BaseModel) — modello YAML agente
+    __init__.py              # re-exports BaseAgent
+    base_agent.py            # PromptRenderer, ConfigLoader, BaseAgent[T_In: BaseModel, T_Out] — composition over pydantic_ai.Agent
   entities/
     knowledge/
-      knowledge_chunk.py   # KnowledgeChunk — riga di knowledge_chunks (+ context: str = "")
+      knowledge_chunk.py   # KnowledgeChunk — row in knowledge_chunks (+ context: str = "")
     quiz/
-      quiz_question.py     # QuizQuestion — riga di quiz_questions
+      quiz_question.py     # QuizQuestion — row in quiz_questions
   models/
     knowledge/
       retrieval_result.py     # RetrievalResult — chunk + score (similarity search)
   clients/
     embeddings/
-      __init__.py                                  # re-esporta EmbeddingClient, LiteLLMEmbeddingClient,
+      __init__.py                                  # re-exports EmbeddingClient, LiteLLMEmbeddingClient,
                                                    # SentenceTransformerEmbeddingClient
-      embedding_client.py                          # EmbeddingClient (interfaccia ABC)
+      embedding_client.py                          # EmbeddingClient (ABC interface)
       litellm_embedding_client.py                  # LiteLLMEmbeddingClient (cloud, OpenRouter)
-      sentence_transformer_embedding_client.py     # SentenceTransformerEmbeddingClient (locale, bge-m3)
-    __init__.py            # re-esporta tutti i client pubblici
-    postgres_client.py     # PostgresClient — wrapper psycopg generico, table-agnostic
+      sentence_transformer_embedding_client.py     # SentenceTransformerEmbeddingClient (local, bge-m3)
+    __init__.py            # re-exports all public clients
+    postgres_client.py     # PostgresClient — generic psycopg wrapper, table-agnostic
   configs/
-    agent_config.py               # AgentConfig (frozen BaseModel) — re-esportato da commons/configs/__init__.py
+    agent_config.py               # AgentConfig (frozen BaseModel) — re-exported from commons/configs/__init__.py
     embedding_config.py           # EmbeddingConfig (frozen)
     postgres_connection_config.py # PostgresConnectionConfig (frozen)
   services/
     __init__.py
     embeddings/
-      __init__.py              # re-esporta Embeddable, Embedded, EmbeddingService
+      __init__.py              # re-exports Embeddable, Embedded, EmbeddingService
       embeddable.py            # Protocol Embeddable + Embedded (@runtime_checkable)
       embedding_service.py     # class EmbeddingService
 ```

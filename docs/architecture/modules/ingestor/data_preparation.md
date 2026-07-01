@@ -1,7 +1,7 @@
 # Ingestor — Data preparation
 
 See [config_and_entrypoints.md](config_and_entrypoints.md) for `IngestorConfig`,
-`LayerResolver` and the CLI entry points, [flowstep_toolkit.md](flowstep_toolkit.md)
+`LayerResolver` and the CLI entry points, [generic_steps.md](generic_steps.md)
 for shared `context_keys` and building blocks (`ApplyStep`, `LoadJsonStep`,
 `WriteJsonStep`, `EmbedStep`, `DbStoreStep`), [quiz_pipelines.md](quiz_pipelines.md)
 for the quiz model chain and the detail of `QuizMapper`/`services/quiz/`.
@@ -207,7 +207,7 @@ from `mappers/agents/__init__.py`.
 input of `enrich`). Reuses `ENRICHED_ARTICLES` (already defined by SP02/03, now
 also produced by the `enrich` flow, not only consumed by indexing). No
 `SOURCE` key: the source never passes through the context, it is fixed at the
-factory. See [flowstep_toolkit.md](flowstep_toolkit.md) for the complete vocabulary.
+factory. See [generic_steps.md](generic_steps.md) for the complete vocabulary.
 
 ### What has NOT (yet) changed
 

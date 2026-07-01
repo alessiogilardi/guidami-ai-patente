@@ -187,7 +187,7 @@ changes to the step, the flowstep framework or other enrichers.
 > **`EnrichDataStep[T]` and `EnricherProtocol` REMOVED in SP04**: they were the
 > generic step (list-in/list-out enricher chain) and the related Protocol.
 > Replaced by `ApplyStep` with direct callables (enrichers as `UseCase`
-> callable via `__call__`). See [flowstep_toolkit.md](flowstep_toolkit.md).
+> callable via `__call__`). See [generic_steps.md](generic_steps.md).
 
 ### `orchestrators/quiz_flows.py` — quiz flow factory
 
