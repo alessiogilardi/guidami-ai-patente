@@ -66,10 +66,18 @@ Copy `.env.example` to `.env` and fill in:
 
 Prima di iniziare qualsiasi task implementativo, leggere i documenti di riferimento:
 
-- **Piani di progettazione** (inclusi quelli non ancora implementati): `plans/` — indice in `plans/_index.md`
-- **Decisioni implementate**: `.claude/architectures/` — indice in `.claude/architectures/index.md`
-- **Package layout, pipeline, layer dati, pattern di config**: `.claude/architectures/ingestor/index.md`
-- **Schema DB e infrastruttura**: `.claude/architectures/infrastructure.md`
+- **Piani di progettazione** (inclusi quelli non ancora implementati): `docs/plans/` — indice in `docs/plans/_index.md`
+- **Decisioni implementate**: `docs/architecture/` — indice in `docs/architecture/_index.md`
+- **Package layout, pipeline, layer dati, pattern di config**: `docs/architecture/modules/ingestor/_index.md`
+- **Schema DB e infrastruttura**: `docs/architecture/database/_index.md`
+
+Per qualsiasi domanda sull'architettura, leggere `docs/architecture/_index.md` come punto di partenza: linka tutti i documenti specifici. Ogni sottocartella ha un proprio `index.md` da leggere prima dei file di dettaglio.
+
+To read architecture documentation, invoke the **`doc-reader`** agent — it navigates `docs/architecture/` and returns relevant content with source references.
+
+### Updating architectural documentation
+
+At the end of every implementation task, invoke the **`doc-architect`** agent with a summary of what was built and which decisions were made. Do not edit `docs/architecture/` directly — the agent reads existing content via `doc-reader` before writing, to avoid duplication.
 
 ### Scrivere un piano
 
@@ -92,4 +100,4 @@ Non attendere la fine del task: aggiornare `.claude/rules/` **prima** di chiuder
 
 ## Data Notes
 
-Vedi `.claude/architectures/data-sources.md`.
+Vedi `docs/architecture/data-sources.md`.

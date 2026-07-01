@@ -2,17 +2,47 @@
 These rules apply to anyone writing or editing a plan in `plans/`.
 
 ## Location and file name
-Plans must be written **exclusively in `<project-root>/plans/`** — the `plans/`
-directory at the root of *this* project, not any global or system-level
-directory. Use a descriptive, self-explanatory file name, do not use generic names like `plan.md`.
+Plans must be written **exclusively in `<project-root>/docs/plans/`** — not any
+global or system-level directory. Use a descriptive, self-explanatory file name;
+do not use generic names like `plan.md`.
 
-After creating the file, add a pointer to it in `plans/_index.md`.
+**File name format**: `YYYY-MM-DD--<descriptive-slug>.md` — the creation date
+comes first so plans sort chronologically.
+Examples: `2026-07-01--ingest-quiz-enrichment.md`, `2026-07-15--hybrid-retrieval-rrf.md`.
+
+After creating the file, add a pointer to it in `docs/plans/_index.md`.
+
+### Piani troppo lunghi — suddivisione in sottopiani
+
+Se un piano risulta troppo lungo o copre ambiti distinti, può essere suddiviso in
+sottopiani. In quel caso:
+
+1. Crea una sottocartella in `docs/plans/` con lo stesso formato data-slug:
+   `docs/plans/YYYY-MM-DD--<topic>/`
+2. Aggiungi un `_index.md` nella sottocartella che descrive il piano padre e
+   linka i sottopiani.
+3. I file dei sottopiani seguono lo stesso formato: `YYYY-MM-DD--<sub-slug>.md`.
+4. Aggiungi un unico puntatore alla sottocartella in `docs/plans/_index.md`
+   (non elencare ogni sottopiano nell'indice radice).
+
+Esempio:
+```
+docs/plans/
+  _index.md
+  2026-07-01--ingest-quiz-enrichment/
+    _index.md                              ← descrive il piano complessivo, linka i sotto-piani
+    2026-07-01--step-01-normalization.md
+    2026-07-01--step-02-keyword-tagging.md
+```
 
 ## Frontmatter
 Every plan starts with a YAML frontmatter that tracks its status:
 ```yaml
 ---
 status: Draft | Reviewed | Implemented | Archived
+creation_date: YYYY-MM-DD
+last_update_date: YYYY-MM-DD
+effort: S | M | L | XL
 ---
 ```
 
@@ -27,6 +57,9 @@ status: Draft | Reviewed | Implemented | Archived
 ```
 ---
 status: Draft
+creation_date: YYYY-MM-DD
+last_update_date: YYYY-MM-DD
+effort: S | M | L | XL
 ---
 # Title
 References: links to related plans and architectures.
@@ -67,11 +100,11 @@ verifiable with a command (`grep`, `uv run pytest`, `python -c "import ..."`)
 
 ## Full workflow
 1. Write the plan with `status: Draft`
-2. Add the pointer to `plans/_index.md`
+2. Add the pointer to `docs/plans/_index.md`
 3. Have the plan reviewed → update to `status: Reviewed`
 4. Generate failing TDD tests with the `tdd-test-writer` agent
 5. Implement (`python-developer` agent or manually)
 6. Verify **mechanically** every DoD item
-7. Invoke the `architecture-doc-keeper` agent — do not edit
-   `.claude/architectures/` directly
+7. Invoke the `doc-architect` agent — do not edit
+   `docs/architecture/` directly
 8. Update the plan to `status: Implemented`
