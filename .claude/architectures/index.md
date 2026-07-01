@@ -18,6 +18,7 @@ contesto/motivazione completa.
   embedding e vector store, `Agent`/`AgentImpl`, config condivise; `use_cases/`
   con `UseCase[T_In, T_Out]` (parametro `request`, `@final __call__`),
   `AsyncUseCase`, `ForEach[T, U]`
+- [data-sources.md](data-sources.md) — file sorgente (PDF, JSON parsed, raw HTML), convenzioni di scraping (raw + parsed, URL + timestamp)
 - [ingestor/index.md](ingestor/index.md) — package `src/guidami_ai_patente_ingestor/`:
   pipeline/flow batch (preparation + indexing) per corpus normativo e quiz bank;
   `flowstep` package top-level (SP00b, `src/flowstep/`) con `ApplyStep` in
