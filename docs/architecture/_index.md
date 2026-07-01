@@ -18,9 +18,11 @@ This directory documents architectural decisions **actually implemented** in the
   - [modules/commons/overview.md](modules/commons/overview.md) — `src/commons/`: models, entities,
     embedding client and vector store, `Agent`/`AgentImpl`, shared configs; `use_cases/`
     with `UseCase[T_In, T_Out]`, `AsyncUseCase`, `ForEach[T, U]`
+  - [modules/flowstep/_index.md](modules/flowstep/_index.md) — `src/flowstep/`: domain-agnostic
+    sequential-pipeline framework; `Flow`, `Step`, `FlowBuilder`, `FlowContext`,
+    `FlowValidator`, `ApplyStep`
   - [modules/ingestor/_index.md](modules/ingestor/_index.md) — `src/guidami_ai_patente_ingestor/`:
-    batch pipeline/flow (preparation + indexing) for the normative corpus and quiz bank;
-    `flowstep` top-level package (`src/flowstep/`) with `ApplyStep`
+    batch pipeline/flow (preparation + indexing) for the normative corpus and quiz bank
 
 ## Implementation Status
 
@@ -29,8 +31,8 @@ This directory documents architectural decisions **actually implemented** in the
 | Docker Compose + `db/init.sql` | ✅ implemented |
 | `src/commons/` (models, clients, configs, agents, `use_cases/` with `UseCase`/`AsyncUseCase`/`ForEach`) | ✅ implemented |
 | `guidami_ai_patente_ingestor/` — data preparation (LLM enrichment) | ✅ implemented |
-| `src/flowstep/` (top-level package, SP00b) + `ApplyStep` in `flowstep/steps/` (SP04) | ✅ implemented |
-| `guidami_ai_patente_ingestor/` — generic flowstep steps (`EmbedStep`, `DbStoreStep`, `LoadJsonStep`, `WriteJsonStep`, `StoreRepository`, `context_keys`; `MapStep`/`EnrichDataStep`/`EnricherProtocol` REMOVED in SP04) | ✅ implemented |
+| `src/flowstep/` — sequential-pipeline framework (SP00b) + `ApplyStep` in `flowstep/steps/` (SP04) | ✅ implemented |
+| `guidami_ai_patente_ingestor/` — generic steps (`EmbedStep`, `DbStoreStep`, `LoadJsonStep`, `WriteJsonStep`, `StoreRepository`, `context_keys`; `MapStep`/`EnrichDataStep`/`EnricherProtocol` REMOVED in SP04) | ✅ implemented |
 | `guidami_ai_patente_ingestor/` — knowledge indexing flow per-source (`ChunkArticlesStep`, `EmbedChunksStep`, `ApplyStep("map_to_chunk_entity", ForEach(...))`, `StoreChunksStep`, `build_knowledge_indexing_flow` — 5 steps; `EmbeddableChunkModel`; `ArticleMapper`; `KnowledgeChunkStoreRepository.delete_source`) | ✅ implemented |
 | `guidami_ai_patente_ingestor/` — quiz indexing flow (`build_quiz_indexing_flow` with `ApplyStep(ToEmbeddableQuiz())` + `ApplyStep(ForEach(...))`, `DbStoreStep` truncate full-reload; `MapToEmbeddableStep` REMOVED → `ToEmbeddableQuiz` service UseCase, SP03) | ✅ implemented |
 | `guidami_ai_patente_ingestor/` — quiz data model one-model-per-layer (`ParsedQuizModel`/`ParsedQuizItemModel`/`CleanedQuizModel`/`EnrichedQuizModel`/`EmbeddableQuizModel` in `models/quiz/`; `entities/` ingestor only `Article`) | ✅ implemented |

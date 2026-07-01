@@ -246,9 +246,9 @@ Path resolution: `LayerResolver.path(layer, source)` =
 - [config_and_entrypoints.md](config_and_entrypoints.md) — `IngestorConfig`, `LayerResolver`,
   two-level config pattern, single entry point `cli.py` (SP07, subcommands `ingest prepare
   / index / reset`), logging conventions.
-- [flowstep_toolkit.md](flowstep_toolkit.md) — `flowstep` top-level package
-  (SP00b) with `ApplyStep` in `src/flowstep/steps/`; generic ingestor steps:
-  `EmbedStep`, `DbStoreStep`, `LoadJsonStep`, `WriteJsonStep`, `StoreRepository`
-  Protocol; `context_keys`; `MapStep`/`EnrichDataStep`/`EnricherProtocol`
-  removed in SP04.
+- [generic_steps.md](generic_steps.md) — generic ingestor steps in
+  `orchestrators/steps/generic/`: `EmbedStep`, `DbStoreStep`, `LoadJsonStep`,
+  `WriteJsonStep`, `StoreRepository` Protocol; `context_keys` vocabulary;
+  `MapStep`/`EnrichDataStep`/`EnricherProtocol` removed in SP04. For the
+  underlying framework see [flowstep module](../../flowstep/_index.md).
 - [tests.md](tests.md) — complete list of tests with files and verified behaviours.
