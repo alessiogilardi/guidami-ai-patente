@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **guidami-ai-patente** is a tool that makes Italian driving exam information freely accessible. It aggregates official questions, regulations, and reference material — currently scraped from the web and from PDFs — so users can study and query it without paywalls.
 
-The end goal is a **quiz bot** (FastAPI) that checks answers deterministically and explains them using RAG over the corpus normativo (CdS + CAP). The project is currently in the **data ingestion phase**: infrastruttura Postgres/pgvector operativa, pipeline di ingestion corpus + quiz bank implementate. L'app FastAPI non è ancora avviata.
+The end goal is a **quiz bot** (FastAPI) that checks answers deterministically and explains them using RAG over the corpus normativo (CdS + CAP). The project is currently in the **data ingestion phase**: Postgres/pgvector infrastructure is running, corpus and quiz-bank ingestion pipelines are implemented. The FastAPI app has not been started yet.
 
 ## Environment & Commands
 
@@ -64,40 +64,57 @@ Copy `.env.example` to `.env` and fill in:
 
 ## Architecture
 
-Prima di iniziare qualsiasi task implementativo, leggere i documenti di riferimento:
+Before starting any implementation task, read the reference documents:
 
-- **Piani di progettazione** (inclusi quelli non ancora implementati): `docs/plans/` — indice in `docs/plans/_index.md`
-- **Decisioni implementate**: `docs/architecture/` — indice in `docs/architecture/_index.md`
-- **Package layout, pipeline, layer dati, pattern di config**: `docs/architecture/modules/ingestor/_index.md`
-- **Schema DB e infrastruttura**: `docs/architecture/database/_index.md`
+- **Design plans** (including not-yet-implemented ones): `docs/plans/` — index at `docs/plans/_index.md`
+- **Implemented decisions**: `docs/architecture/` — index at `docs/architecture/_index.md`
+- **Package layout, pipelines, data layer, config patterns**: `docs/architecture/modules/ingestor/_index.md`
+- **DB schema and infrastructure**: `docs/architecture/database/_index.md`
 
-Per qualsiasi domanda sull'architettura, leggere `docs/architecture/_index.md` come punto di partenza: linka tutti i documenti specifici. Ogni sottocartella ha un proprio `index.md` da leggere prima dei file di dettaglio.
+For any architecture question, start from `docs/architecture/_index.md`: it links all specific documents. Each subfolder has its own `_index.md` — read it before the detail files.
 
-To read architecture documentation, invoke the **`doc-reader`** agent — it navigates `docs/architecture/` and returns relevant content with source references.
+### Reading architecture documentation — `doc-reader`
 
-### Updating architectural documentation
+**MUST** invoke the `doc-reader` agent (never Read `docs/architecture/` files directly) in every one of these situations:
 
-At the end of every implementation task, invoke the **`doc-architect`** agent with a summary of what was built and which decisions were made. Do not edit `docs/architecture/` directly — the agent reads existing content via `doc-reader` before writing, to avoid duplication.
+- Before writing or reviewing any implementation plan
+- Before starting any non-trivial implementation task (orientation phase)
+- When answering any question about the project architecture, existing modules, or design decisions
+- Before making any edit to `docs/architecture/` for any reason
 
-### Scrivere un piano
+`doc-reader` navigates `docs/architecture/` and returns structured content with source references.
 
-Un piano è obbligatorio prima di qualsiasi nuova funzionalità, modulo o cambio architetturale non banale. Regole complete in `.claude/rules/plan-writing.md`.
+### Updating architectural documentation — `doc-architect`
+
+**MUST** invoke the `doc-architect` agent after every one of these events:
+
+- Completing any implementation task (new feature, refactor, bugfix) that changes code in `src/`
+- Making any architectural decision during a conversation (new pattern, naming convention, structural choice)
+- Adding or removing a module, package, or significant component
+
+Do not edit `docs/architecture/` directly — `doc-architect` reads existing content via `doc-reader` before writing, to prevent duplication. Pass it a concise summary of what changed and which decisions were made.
+
+### Writing a plan
+
+A plan is mandatory before any new feature, module, or non-trivial architectural change. Full rules in `.claude/rules/plan-writing.md`.
 
 ## Code Conventions
 
-Vedi `.claude/rules/code-conventions.md`.
+See `.claude/rules/code-conventions.md`.
 
-### Aggiornare le regole durante la conversazione
+### Updating rules during a conversation
 
-Ogni volta che nel corso di una conversazione vengono stabilite decisioni su come scrivere o organizzare il codice (convenzioni di stile, pattern architetturali, vincoli di naming, regole di testing, ecc.), aggiornare immediatamente il file appropriato in `.claude/rules/`:
+Whenever a decision about how to write or organize code is established during a conversation
+(style conventions, architectural patterns, naming constraints, testing rules, etc.),
+immediately update the appropriate file in `.claude/rules/`:
 
-- Se la decisione riguarda convenzioni già coperte da un file esistente → aggiungere lì.
-- Se la decisione apre un tema nuovo → creare un nuovo file in `.claude/rules/` con nome descrittivo.
-  - Buono: `error-handling.md`, `async-patterns.md`, `repository-conventions.md`
-  - Non va: `rules.md`, `misc.md`, `decisions.md`, `new-stuff.md`
+- If the decision concerns conventions already covered by an existing file → add it there.
+- If the decision opens a new topic → create a new file in `.claude/rules/` with a descriptive name.
+  - Good: `error-handling.md`, `async-patterns.md`, `repository-conventions.md`
+  - Avoid: `rules.md`, `misc.md`, `decisions.md`, `new-stuff.md`
 
-Non attendere la fine del task: aggiornare `.claude/rules/` **prima** di chiudere la conversazione.
+Do not wait until the end of the task: update `.claude/rules/` **before** closing the conversation.
 
 ## Data Notes
 
-Vedi `docs/architecture/data-sources.md`.
+See `docs/architecture/data-sources.md`.

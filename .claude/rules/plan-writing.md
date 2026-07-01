@@ -12,25 +12,23 @@ Examples: `2026-07-01--ingest-quiz-enrichment.md`, `2026-07-15--hybrid-retrieval
 
 After creating the file, add a pointer to it in `docs/plans/_index.md`.
 
-### Piani troppo lunghi — suddivisione in sottopiani
+### Long plans — splitting into sub-plans
 
-Se un piano risulta troppo lungo o copre ambiti distinti, può essere suddiviso in
-sottopiani. In quel caso:
+If a plan becomes too long or covers distinct areas, it can be split into sub-plans:
 
-1. Crea una sottocartella in `docs/plans/` con lo stesso formato data-slug:
+1. Create a subfolder in `docs/plans/` using the same date-slug format:
    `docs/plans/YYYY-MM-DD--<topic>/`
-2. Aggiungi un `_index.md` nella sottocartella che descrive il piano padre e
-   linka i sottopiani.
-3. I file dei sottopiani seguono lo stesso formato: `YYYY-MM-DD--<sub-slug>.md`.
-4. Aggiungi un unico puntatore alla sottocartella in `docs/plans/_index.md`
-   (non elencare ogni sottopiano nell'indice radice).
+2. Add an `_index.md` in the subfolder describing the parent plan and linking the sub-plans.
+3. Sub-plan files follow the same format: `YYYY-MM-DD--<sub-slug>.md`.
+4. Add a single pointer to the subfolder in `docs/plans/_index.md`
+   (do not list each sub-plan individually in the root index).
 
-Esempio:
+Example:
 ```
 docs/plans/
   _index.md
   2026-07-01--ingest-quiz-enrichment/
-    _index.md                              ← descrive il piano complessivo, linka i sotto-piani
+    _index.md                              ← describes the overall plan, links sub-plans
     2026-07-01--step-01-normalization.md
     2026-07-01--step-02-keyword-tagging.md
 ```
@@ -50,7 +48,7 @@ effort: S | M | L | XL
 |---|---|
 | `Draft` | Being written, not ready for implementation |
 | `Reviewed` | Discussed and approved — ready for implementation |
-| `Implemented` | Code completed and `architecture-doc-keeper` updated |
+| `Implemented` | Code completed and `doc-architect` agent invoked |
 | `Archived` | Superseded or abandoned (state the reason/replacement plan in the text) |
 
 ## Expected structure
@@ -90,7 +88,7 @@ Description of the change with target file/class.
 - [ ] `uv run pyright` clean
 - [ ] `uv run ruff check src tests` clean
 - [ ] Plan updated to `status: Implemented`
-- [ ] `architecture-doc-keeper` invoked
+- [ ] `doc-architect` agent invoked
 ```
 
 ## DoD rules
