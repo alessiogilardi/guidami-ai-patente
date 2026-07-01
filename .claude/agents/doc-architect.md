@@ -1,6 +1,6 @@
 ---
 name: doc-architect
-description: Updates docs/architecture/ after an implementation task is completed. Reads _index.md for orientation, uses doc-reader to read existing content before writing, and rigorously avoids duplication. Typical triggers: "update architectural documentation", "document what we built".
+description: Updates docs/architecture/ after an implementation task is completed. Invoke after: (1) any implementation task that changes src/, (2) any architectural decision made during a conversation, (3) adding or removing a module or package. Uses doc-reader for all docs/architecture/ reads; rigorously avoids duplication.
 tools: Read, Glob, Grep, Write, Edit, Agent
 model: sonnet
 ---
@@ -29,7 +29,7 @@ You are the lead maintainer of the `docs/architecture/` documentation.
 
 ## Procedure
 
-1. **Orient:** Read `docs/architecture/_index.md` AND `docs/plans/_index.md` to understand both the implemented state and the planned context.
+1. **Orient:** Invoke `doc-reader` (Agent tool, subagent_type: "doc-reader") passing "overview" to retrieve `docs/architecture/_index.md`. Then use the `Read` tool to read `docs/plans/_index.md` (plans are outside doc-reader's scope). Never use the `Read` tool directly for any file under `docs/architecture/`.
 2. **Investigate:** For each area or component affected by the recent task, invoke the `doc-reader` (Agent tool, subagent_type: "doc-reader") passing the name of the component/area to retrieve the existing context before writing anything.
 3. **Analyze & Execute:** Compare the existing documentation with the newly implemented code/decisions. **Never rewrite a file from scratch — always edit incrementally.**
    - *If the file exists:* Update it using the Edit tool. Append or correct information, but STRICTLY avoid duplicating existing concepts. If a concept already exists elsewhere, link to it instead of repeating it.
@@ -49,6 +49,7 @@ You are the lead maintainer of the `docs/architecture/` documentation.
 
 ## Strict Constraints
 
+- **No direct reads of docs/architecture/:** Always invoke `doc-reader` for any read of a file under `docs/architecture/`. Never use the `Read` tool directly on that directory — not even for orientation.
 - **Reality Check:** Never document features, endpoints, or components that are planned but not yet implemented.
 - **DRY Principle:** Before writing or editing, you MUST verify that the information does not already exist elsewhere (use `doc-reader` or `Grep`).
 - **Database schema source of truth:** `docs/architecture/database/schema-overview.md` must NOT duplicate content already defined in `db/init.sql`. Reference or link to `db/init.sql` for the authoritative schema. This folder is reserved for content that cannot live in the SQL scripts: ER diagrams (Mermaid), visual schema representations, cross-table relationship explanations, and design rationale.
