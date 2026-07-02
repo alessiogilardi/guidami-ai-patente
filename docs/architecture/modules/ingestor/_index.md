@@ -36,154 +36,154 @@ shared configs).
 
 ```
 src/guidami_ai_patente_ingestor/
-  agents/
-    __init__.py                        # re-exports ArticleContextualizerAgent, RoadSignDescriberAgent
-    article_contextualizer_agent.py    # ArticleContextualizerAgent(BaseAgent[ArticleContextualizerRequest, ArticleContextualizerResponse])
-    road_sign_describer_agent.py       # RoadSignDescriberAgent(BaseAgent[RoadSignDescriberRequest, RoadSignDescriberResponse])
-    dto/
-      __init__.py
-      article_contextualizer/
-        __init__.py
-        request.py           # ArticleContextualizerRequest(BaseModel) — title, text, paragraphs: str
-        response.py          # ArticleContextualizerResponse(BaseModel) — contexts: dict[int, str]
-      road_sign_describer/
-        __init__.py
-        request.py           # RoadSignDescriberRequest(BaseModel) — topic, text
-        response.py          # RoadSignDescriberResponse(BaseModel) — name, description
-  mappers/
-    __init__.py                           # re-exports ArticleMapper, QuizMapper
-    article_mapper.py                     # ArticleMapper — 1:1 transformations for the knowledge pipeline (3 methods):
-                                          #   from_parsed_to_enriched(ParsedArticleModel) -> EnrichedArticleModel
-                                          #   from_enriched_to_embeddable_chunk(model, source, comma_index, raw_text) -> EmbeddableChunkModel
-                                          #   from_embeddable_chunk_to_knowledge_chunk(EmbeddableChunkModel) -> KnowledgeChunk
-    quiz_mapper.py                        # QuizMapper — static backbone for all 1:1 transitions:
-                                          #   from_parsed_to_cleaned, from_cleaned_to_enriched,
-                                          #   from_enriched_to_embeddable(item) (1 arg, renamed in SP03),
-                                          #   from_embeddable_to_quiz_question
-    agents/
-      __init__.py                         # re-exports ArticleContextualizerMapper, RoadSignDescriberMapper
-      article_contextualizer_mapper.py    # ArticleContextualizerMapper — domain↔DTO:
-                                          #   from_enriched_article_to_request(EnrichedArticleModel) -> ArticleContextualizerRequest
-                                          #   from_response_to_enriched_article(EnrichedArticleModel, ArticleContextualizerResponse) -> EnrichedArticleModel
-      road_sign_describer_mapper.py       # RoadSignDescriberMapper — domain↔DTO:
-                                          #   from_enriched_quiz_to_request(EnrichedQuizModel) -> RoadSignDescriberRequest
-                                          #   from_response_to_enriched_quiz(EnrichedQuizModel, RoadSignDescriberResponse) -> EnrichedQuizModel
-  repositories/
-    __init__.py                              # re-exports all 6 repositories (unchanged public surface)
-    db/
-      __init__.py                            # re-exports KnowledgeChunkStoreRepository, QuizQuestionStoreRepository
-      knowledge_chunk_store_repository.py    # KnowledgeChunkStoreRepository
-                                             #   delete_source(source) + truncate() + bulk_insert(chunks)
-      quiz_question_store_repository.py      # QuizQuestionStoreRepository (truncate + bulk insert)
-    json/
-      __init__.py                            # re-exports ArticleRepository, EnrichedArticleRepository, QuizBankRepository, EnrichedQuizBankRepository
-      _json_repository.py                    # JsonRepository[T: BaseModel] — generic base (private to the sub-package)
-      article_repository.py                  # ArticleRepository(JsonRepository[Article])
-      enriched_article_repository.py         # EnrichedArticleRepository(JsonRepository[EnrichedArticle])
-      quiz_bank_repository.py                # QuizBankRepository(JsonRepository[ParsedQuizModel])
-      enriched_quiz_bank_repository.py       # EnrichedQuizBankRepository(JsonRepository[EnrichedQuizModel])
-                                             #   (no longer used directly by preparation flows, which use
-                                             #   LoadJsonStep/WriteJsonStep with explicit model_class)
-  services/
-    __init__.py                   # re-exports LayerResolver
-    layer_resolver.py             # LayerResolver(layers, sources).path(layer, source) -> Path
-    knowledge/
-      article_cleaner.py          # ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel])
-                                  #   .execute(article) -> ParsedArticleModel
-      article_chunker.py          # ArticleChunker(UseCase[EnrichedArticleModel, list[EmbeddableChunkModel]])
-                                  #   source injected in constructor; .execute(article) -> list[EmbeddableChunkModel]
-                                  #   uses ArticleMapper.from_enriched_to_embeddable_chunk
-      enrichers/
-        __init__.py               # re-exports ContextEnricher
-        context_enricher.py       # ContextEnricher — per-clause LLM contextualization via ArticleContextualizerAgent;
-                                  #   satisfies EnricherProtocol[EnrichedArticleModel, EnrichedArticleModel];
-                                  #   isolated failure → contexts={} + warning, no abort
-    quiz/
-      __init__.py                          # re-exports ImageDescriptionEnricher
-      flatten_quiz.py                      # FlattenQuiz(UseCase[list[ParsedQuizModel], list[CleanedQuizModel]])
-                                           #   flatten+dedup parsed→cleaned (SP02; ex FlattenQuizStep)
-      to_embeddable_quiz.py                # ToEmbeddableQuiz(UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]])
-                                           #   dedup+mapping enriched→embeddable (SP03; ex MapToEmbeddableStep)
-                                           # quiz_enrichment_service.py REMOVED (QuizEnrichmentService,
-                                           #   replaced by ApplyStep+UseCase in SP04)
-      enrichers/
-        __init__.py                        # re-exports ImageDescriptionEnricher
-                                           # quiz_enricher.py REMOVED (Protocol QuizEnricher, redundant alias)
-        image_description_enricher.py      # ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]])
-                                           #   vision LLM, dedup on (image, topic, text); execute() ex enrich()
-  models/
-    knowledge/
-      __init__.py                  # re-exports ParsedArticleModel, EnrichedArticleModel, EmbeddableChunkModel
-      parsed_article.py            # ParsedArticleModel — parsed/cleaned JSON (number, title, text,
-                                   #   paragraphs, url, scraped_at, repealed)
-      enriched_article.py          # EnrichedArticleModel — cleaned article + contexts: dict[int, str] per clause
-      embeddable_chunk.py          # EmbeddableChunkModel — intermediate chunk DTO + embedded_text property
-                                   #   (article_title\ncontext\nchunk_text); embedding: list[float]|None
-    quiz/
-      __init__.py                  # re-exports all quiz models
-      parsed_quiz.py               # ParsedQuizModel, ParsedQuizItemModel — parsed layer, nested
-                                   #   (direct output of the PDF parser; SP09)
-      cleaned_quiz.py               # CleanedQuizModel — cleaned layer, flat, self-contained (SP09)
-      enriched_quiz.py             # EnrichedQuizModel — enriched layer, flat
-                                   #   (adds image_description: str | None)
-      embeddable_quiz.py           # EmbeddableQuizModel — intermediate flat DTO with embedded_text
-      image_description.py        # ImageDescription(BaseModel, frozen=True) — name: str, description: str
-  orchestrators/
-    __init__.py                    # re-exports build_knowledge_indexing_flow,
-                                   #   build_knowledge_cleaning_flow/build_knowledge_enrichment_flow,
-                                   #   build_quiz_indexing_flow, build_quiz_cleaning_flow/build_quiz_enrichment_flow,
-                                   #   run_preparation
-    context_keys.py                # FlowContext key constants — shared vocabulary (additive)
-    knowledge_flows.py             # build_knowledge_indexing_flow(config, ..., source) -> Flow
-                                   #   build_knowledge_cleaning_flow(config, layer_resolver, source) -> Flow
-                                   #   build_knowledge_enrichment_flow(config, layer_resolver, source) -> Flow
-    quiz_flows.py                  # build_quiz_indexing_flow(config, ...) -> Flow
-                                   #   build_quiz_cleaning_flow(config, layer_resolver) -> Flow (SP09)
-                                   #   build_quiz_enrichment_flow(config, layer_resolver) -> Flow
-                                   #   (replaces the previous build_quiz_preparation_flow, removed)
-    preparation_runner.py          # run_preparation(flow, out_path, force) -> None — per-source runner
-    steps/
-      __init__.py                  # package docstring
-      generic/
-        __init__.py                # re-exports DbStoreStep, EmbedStep, LoadJsonStep, StoreRepository, WriteJsonStep
-                                   # MapStep REMOVED (SP04); EnrichDataStep REMOVED (SP04)
-        protocols/
-          store_repository.py      # Protocol StoreRepository (truncate + bulk_insert positional-only)
-                                   # enricher_protocol.py REMOVED (SP04)
-        embed_step.py              # EmbedStep(Step) — assigns embedding in place, rewrites items_key
-        db_store_step.py           # DbStoreStep(Step) — full-reload sink (truncate → bulk_insert)
-        load_json_step.py          # LoadJsonStep(Step) — load(layer, source) → put(output_key, list[model_class])
-        write_json_step.py         # WriteJsonStep(Step) — get(input_key) → write(layer, source)
-      knowledge/                   # domain-specific steps only (all indexing)
-        __init__.py
-        chunk_articles_step.py         # ChunkArticlesStep — ENRICHED_ARTICLES → EMBEDDABLE_CHUNKS (indexing)
-        embed_chunks_step.py           # EmbedChunksStep — embed with repealed filter (indexing)
-        store_chunks_step.py           # StoreChunksStep — delete_source + bulk_insert (indexing)
-                                       # ContextualizeStep REMOVED; MapStep/EnrichDataStep REMOVED (SP04)
-                                       # preparation uses ApplyStep(ForEach+ContextEnricher)
-      quiz/                        # empty package (SP04)
-        __init__.py                    # __all__ = []
-                                       # FlattenQuizStep REMOVED → FlattenQuiz in services/quiz/ (SP02)
-                                       # MapToEmbeddableStep REMOVED → ToEmbeddableQuiz in services/quiz/ (SP03)
-  configs/
-    ingestor_config.py            # IngestorConfig (BaseSettings, frozen)
-    source_config.py              # SourceConfig(dir, file) — frozen BaseModel
-    pipeline_layer_config.py      # PipelineLayerConfig(input_layer, output_layer?, sources: list[str]) — frozen
-  cli.py                           # single entry point `ingest` (SP07)
-                                   #   ingest prepare knowledge --source <cds|cap> [--force]
-                                   #   ingest prepare quiz [--force]
-                                   #   ingest index knowledge --source <cds|cap>
-                                   #   ingest index quiz
-                                   #   ingest reset knowledge
-                                   #   ingest reset quiz
-                                   # main.py, reset_db.py, reset_quiz_db.py removed (SP07)
-                                   # quiz_main.py, prepare_knowledge_main.py already removed earlier (legacy)
+├── agents/
+│   ├── __init__.py                        # re-exports ArticleContextualizerAgent, RoadSignDescriberAgent
+│   ├── article_contextualizer_agent.py    # ArticleContextualizerAgent(BaseAgent[ArticleContextualizerRequest, ArticleContextualizerResponse])
+│   ├── road_sign_describer_agent.py       # RoadSignDescriberAgent(BaseAgent[RoadSignDescriberRequest, RoadSignDescriberResponse])
+│   └── dto/
+│       ├── __init__.py
+│       ├── article_contextualizer/
+│       │   ├── __init__.py
+│       │   ├── request.py           # ArticleContextualizerRequest(BaseModel) — title, text, paragraphs: str
+│       │   └── response.py          # ArticleContextualizerResponse(BaseModel) — contexts: dict[int, str]
+│       └── road_sign_describer/
+│           ├── __init__.py
+│           ├── request.py           # RoadSignDescriberRequest(BaseModel) — topic, text
+│           └── response.py          # RoadSignDescriberResponse(BaseModel) — name, description
+├── mappers/
+│   ├── __init__.py                           # re-exports ArticleMapper, QuizMapper
+│   ├── article_mapper.py                     # ArticleMapper — 1:1 transformations for the knowledge pipeline (3 methods):
+│   │                                         #   from_parsed_to_enriched(ParsedArticleModel) -> EnrichedArticleModel
+│   │                                         #   from_enriched_to_embeddable_chunk(model, source, comma_index, raw_text) -> EmbeddableChunkModel
+│   │                                         #   from_embeddable_chunk_to_knowledge_chunk(EmbeddableChunkModel) -> KnowledgeChunk
+│   ├── quiz_mapper.py                        # QuizMapper — static backbone for all 1:1 transitions:
+│   │                                         #   from_parsed_to_cleaned, from_cleaned_to_enriched,
+│   │                                         #   from_enriched_to_embeddable(item) (1 arg, renamed in SP03),
+│   │                                         #   from_embeddable_to_quiz_question
+│   └── agents/
+│       ├── __init__.py                         # re-exports ArticleContextualizerMapper, RoadSignDescriberMapper
+│       ├── article_contextualizer_mapper.py    # ArticleContextualizerMapper — domain↔DTO:
+│       │                                       #   from_enriched_article_to_request(EnrichedArticleModel) -> ArticleContextualizerRequest
+│       │                                       #   from_response_to_enriched_article(EnrichedArticleModel, ArticleContextualizerResponse) -> EnrichedArticleModel
+│       └── road_sign_describer_mapper.py       # RoadSignDescriberMapper — domain↔DTO:
+│                                               #   from_enriched_quiz_to_request(EnrichedQuizModel) -> RoadSignDescriberRequest
+│                                               #   from_response_to_enriched_quiz(EnrichedQuizModel, RoadSignDescriberResponse) -> EnrichedQuizModel
+├── repositories/
+│   ├── __init__.py                              # re-exports all 6 repositories (unchanged public surface)
+│   ├── db/
+│   │   ├── __init__.py                            # re-exports KnowledgeChunkStoreRepository, QuizQuestionStoreRepository
+│   │   ├── knowledge_chunk_store_repository.py    # KnowledgeChunkStoreRepository
+│   │   │                                          #   delete_source(source) + truncate() + bulk_insert(chunks)
+│   │   └── quiz_question_store_repository.py      # QuizQuestionStoreRepository (truncate + bulk insert)
+│   └── json/
+│       ├── __init__.py                            # re-exports ArticleRepository, EnrichedArticleRepository, QuizBankRepository, EnrichedQuizBankRepository
+│       ├── _json_repository.py                    # JsonRepository[T: BaseModel] — generic base (private to the sub-package)
+│       ├── article_repository.py                  # ArticleRepository(JsonRepository[Article])
+│       ├── enriched_article_repository.py         # EnrichedArticleRepository(JsonRepository[EnrichedArticle])
+│       ├── quiz_bank_repository.py                # QuizBankRepository(JsonRepository[ParsedQuizModel])
+│       └── enriched_quiz_bank_repository.py       # EnrichedQuizBankRepository(JsonRepository[EnrichedQuizModel])
+│                                                  #   (no longer used directly by preparation flows, which use
+│                                                  #   LoadJsonStep/WriteJsonStep with explicit model_class)
+├── services/
+│   ├── __init__.py                   # re-exports LayerResolver
+│   ├── layer_resolver.py             # LayerResolver(layers, sources).path(layer, source) -> Path
+│   ├── knowledge/
+│   │   ├── article_cleaner.py          # ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel])
+│   │   │                               #   .execute(article) -> ParsedArticleModel
+│   │   ├── article_chunker.py          # ArticleChunker(UseCase[EnrichedArticleModel, list[EmbeddableChunkModel]])
+│   │   │                               #   source injected in constructor; .execute(article) -> list[EmbeddableChunkModel]
+│   │   │                               #   uses ArticleMapper.from_enriched_to_embeddable_chunk
+│   │   └── enrichers/
+│   │       ├── __init__.py               # re-exports ContextEnricher
+│   │       └── context_enricher.py       # ContextEnricher — per-clause LLM contextualization via ArticleContextualizerAgent;
+│   │                                     #   satisfies EnricherProtocol[EnrichedArticleModel, EnrichedArticleModel];
+│   │                                     #   isolated failure → contexts={} + warning, no abort
+│   └── quiz/
+│       ├── __init__.py                          # re-exports ImageDescriptionEnricher
+│       ├── flatten_quiz.py                      # FlattenQuiz(UseCase[list[ParsedQuizModel], list[CleanedQuizModel]])
+│       │                                        #   flatten+dedup parsed→cleaned (SP02; ex FlattenQuizStep)
+│       ├── to_embeddable_quiz.py                # ToEmbeddableQuiz(UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]])
+│       │                                        #   dedup+mapping enriched→embeddable (SP03; ex MapToEmbeddableStep)
+│       │                                        # quiz_enrichment_service.py REMOVED (QuizEnrichmentService,
+│       │                                        #   replaced by ApplyStep+UseCase in SP04)
+│       └── enrichers/
+│           ├── __init__.py                        # re-exports ImageDescriptionEnricher
+│           │                                      # quiz_enricher.py REMOVED (Protocol QuizEnricher, redundant alias)
+│           └── image_description_enricher.py      # ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]])
+│                                                  #   vision LLM, dedup on (image, topic, text); execute() ex enrich()
+├── models/
+│   ├── knowledge/
+│   │   ├── __init__.py                  # re-exports ParsedArticleModel, EnrichedArticleModel, EmbeddableChunkModel
+│   │   ├── parsed_article.py            # ParsedArticleModel — parsed/cleaned JSON (number, title, text,
+│   │   │                                #   paragraphs, url, scraped_at, repealed)
+│   │   ├── enriched_article.py          # EnrichedArticleModel — cleaned article + contexts: dict[int, str] per clause
+│   │   └── embeddable_chunk.py          # EmbeddableChunkModel — intermediate chunk DTO + embedded_text property
+│   │                                    #   (article_title\ncontext\nchunk_text); embedding: list[float]|None
+│   └── quiz/
+│       ├── __init__.py                  # re-exports all quiz models
+│       ├── parsed_quiz.py               # ParsedQuizModel, ParsedQuizItemModel — parsed layer, nested
+│       │                                #   (direct output of the PDF parser; SP09)
+│       ├── cleaned_quiz.py              # CleanedQuizModel — cleaned layer, flat, self-contained (SP09)
+│       ├── enriched_quiz.py             # EnrichedQuizModel — enriched layer, flat
+│       │                                #   (adds image_description: str | None)
+│       ├── embeddable_quiz.py           # EmbeddableQuizModel — intermediate flat DTO with embedded_text
+│       └── image_description.py        # ImageDescription(BaseModel, frozen=True) — name: str, description: str
+├── orchestrators/
+│   ├── __init__.py                    # re-exports build_knowledge_indexing_flow,
+│   │                                  #   build_knowledge_cleaning_flow/build_knowledge_enrichment_flow,
+│   │                                  #   build_quiz_indexing_flow, build_quiz_cleaning_flow/build_quiz_enrichment_flow,
+│   │                                  #   run_preparation
+│   ├── context_keys.py                # FlowContext key constants — shared vocabulary (additive)
+│   ├── knowledge_flows.py             # build_knowledge_indexing_flow(config, ..., source) -> Flow
+│   │                                  #   build_knowledge_cleaning_flow(config, layer_resolver, source) -> Flow
+│   │                                  #   build_knowledge_enrichment_flow(config, layer_resolver, source) -> Flow
+│   ├── quiz_flows.py                  # build_quiz_indexing_flow(config, ...) -> Flow
+│   │                                  #   build_quiz_cleaning_flow(config, layer_resolver) -> Flow (SP09)
+│   │                                  #   build_quiz_enrichment_flow(config, layer_resolver) -> Flow
+│   │                                  #   (replaces the previous build_quiz_preparation_flow, removed)
+│   ├── preparation_runner.py          # run_preparation(flow, out_path, force) -> None — per-source runner
+│   └── steps/
+│       ├── __init__.py                  # package docstring
+│       ├── generic/
+│       │   ├── __init__.py                # re-exports DbStoreStep, EmbedStep, LoadJsonStep, StoreRepository, WriteJsonStep
+│       │   │                              # MapStep REMOVED (SP04); EnrichDataStep REMOVED (SP04)
+│       │   ├── protocols/
+│       │   │   └── store_repository.py      # Protocol StoreRepository (truncate + bulk_insert positional-only)
+│       │   │                                # enricher_protocol.py REMOVED (SP04)
+│       │   ├── embed_step.py              # EmbedStep(Step) — assigns embedding in place, rewrites items_key
+│       │   ├── db_store_step.py           # DbStoreStep(Step) — full-reload sink (truncate → bulk_insert)
+│       │   ├── load_json_step.py          # LoadJsonStep(Step) — load(layer, source) → put(output_key, list[model_class])
+│       │   └── write_json_step.py         # WriteJsonStep(Step) — get(input_key) → write(layer, source)
+│       ├── knowledge/                   # domain-specific steps only (all indexing)
+│       │   ├── __init__.py
+│       │   ├── chunk_articles_step.py         # ChunkArticlesStep — ENRICHED_ARTICLES → EMBEDDABLE_CHUNKS (indexing)
+│       │   ├── embed_chunks_step.py           # EmbedChunksStep — embed with repealed filter (indexing)
+│       │   └── store_chunks_step.py           # StoreChunksStep — delete_source + bulk_insert (indexing)
+│       │                                      # ContextualizeStep REMOVED; MapStep/EnrichDataStep REMOVED (SP04)
+│       │                                      # preparation uses ApplyStep(ForEach+ContextEnricher)
+│       └── quiz/                        # empty package (SP04)
+│           └── __init__.py                    # __all__ = []
+│                                              # FlattenQuizStep REMOVED → FlattenQuiz in services/quiz/ (SP02)
+│                                              # MapToEmbeddableStep REMOVED → ToEmbeddableQuiz in services/quiz/ (SP03)
+├── configs/
+│   ├── ingestor_config.py            # IngestorConfig (BaseSettings, frozen)
+│   ├── source_config.py              # SourceConfig(dir, file) — frozen BaseModel
+│   └── pipeline_layer_config.py      # PipelineLayerConfig(input_layer, output_layer?, sources: list[str]) — frozen
+└── cli.py                           # single entry point `ingest` (SP07)
+                                     #   ingest prepare knowledge --source <cds|cap> [--force]
+                                     #   ingest prepare quiz [--force]
+                                     #   ingest index knowledge --source <cds|cap>
+                                     #   ingest index quiz
+                                     #   ingest reset knowledge
+                                     #   ingest reset quiz
+                                     # main.py, reset_db.py, reset_quiz_db.py removed (SP07)
+                                     # quiz_main.py, prepare_knowledge_main.py already removed earlier (legacy)
 
 configs/                            # project root (not under src/)
-  ingestor_config.yaml              # non-secret config, committed (layers/sources/pipeline selectors)
-  agents/
-    article_contextualizer.yaml     # AgentDefinition for ArticleContextualizer
-    road_sign_describer.yaml        # AgentDefinition for RoadSignDescriber (vision)
+├── ingestor_config.yaml              # non-secret config, committed (layers/sources/pipeline selectors)
+└── agents/
+    ├── article_contextualizer.yaml     # AgentDefinition for ArticleContextualizer
+    └── road_sign_describer.yaml        # AgentDefinition for RoadSignDescriber (vision)
 
 .env.example                        # documents only the secret env vars
                                      # (POSTGRES__USER, POSTGRES__PASSWORD)
@@ -243,6 +243,8 @@ Path resolution: `LayerResolver.path(layer, source)` =
   quiz preparation flows: `ApplyStep(FlattenQuiz())` (cleaning) +
   `ApplyStep(ForEach+ImageDescriptionEnricher)` (enrichment, 3 steps, SP04);
   `ImageDescriptionEnricher` now implements `UseCase` (ex `EnricherProtocol`).
+  All three services use `commons.utils.deduplicate` (2026-07-02 refactor,
+  replacing hand-rolled `seen: set` in each).
 - [config_and_entrypoints.md](config_and_entrypoints.md) — `IngestorConfig`, `LayerResolver`,
   two-level config pattern, single entry point `cli.py` (SP07, subcommands `ingest prepare
   / index / reset`), logging conventions.

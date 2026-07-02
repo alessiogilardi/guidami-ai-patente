@@ -134,18 +134,20 @@ services/quiz/
 ```
 
 **`FlattenQuiz`** (`services/quiz/flatten_quiz.py`, SP02): implements
-`UseCase[list[ParsedQuizModel], list[CleanedQuizModel]]`. `execute`: iterates
-`sub_questions` of each parent question, deduplicates on key `(text.strip(),
-correct_answer, image)` (`logger.warning` for each discarded duplicate), for
-each kept item delegates to `QuizMapper.from_parsed_to_cleaned(item, parent)`.
+`UseCase[list[ParsedQuizModel], list[CleanedQuizModel]]`. `execute`: flattens
+the nested structure to a `(sub_q, main_q)` generator, passes it to
+`deduplicate()` (from `commons.utils`) keyed on `(text.strip(), correct_answer,
+image)` with `logger.warning` for each discarded duplicate, then unpacks each
+pair to call `QuizMapper.from_parsed_to_cleaned(sub_q, main_q)`.
 Responsibility: nested→flat flatten + dedup. Does not depend on flowstep.
 
 **`ToEmbeddableQuiz`** (`services/quiz/to_embeddable_quiz.py`, SP03):
 implements `UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]]`.
-`execute`: iterates the flat enriched list, deduplicates on the same triple
-`(text.strip(), correct_answer, image)` (removes the 8 historical exact duplicates
-→ 7098 final rows), for each kept item calls
-`QuizMapper.from_enriched_to_embeddable(item)` (1 argument, flat model).
+`execute`: passes the flat enriched list to `deduplicate()` (from `commons.utils`)
+keyed on the same triple `(text.strip(), correct_answer, image)` — removes the
+8 historical exact duplicates → 7098 final rows — with `logger.warning` per
+discarded item; for each kept item calls `QuizMapper.from_enriched_to_embeddable(item)`
+(1 argument, flat model) in a list comprehension.
 Responsibility: dedup + enriched→embeddable mapping. Does not depend on flowstep.
 
 **`ImageDescriptionEnricher`** now implements
@@ -173,8 +175,10 @@ changes to the step, the flowstep framework or other enrichers.
   list[EnrichedQuizModel]]`; callable via `__call__` (no explicit `Protocol`
   inheritance). `execute(request: list[EnrichedQuizModel])
   -> list[EnrichedQuizModel]`:
-  1. collects the **unique** `(image, topic, text)` keys across the entire flat
-     list (dedup on triple → one vision call per unique context);
+  1. collects the **unique** `(image, topic, text)` keys via `deduplicate()` (from
+     `commons.utils`) applied to a pre-filter generator `(q for q in questions if
+     q.image is not None)`; `cast(str, q.image)` inside the loop resolves pyright's
+     `str | None` narrowing; one vision call per unique context;
   2. for each unique image: if the file does not exist → `logger.warning` +
      skip (no exception); if `describe()` raises → `logger.warning`
      (with `exc_info=True`) + skip; otherwise formats

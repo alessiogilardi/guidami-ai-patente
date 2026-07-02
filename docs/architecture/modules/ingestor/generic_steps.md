@@ -9,20 +9,20 @@ repositories/services/mappers. No domain logic.
 
 ```
 src/guidami_ai_patente_ingestor/orchestrators/
-  context_keys.py                # FlowContext key constants (no magic strings)
-  steps/
-    generic/
-      __init__.py                # re-exports DbStoreStep, EmbedStep, LoadJsonStep,
-                                 #   StoreRepository, WriteJsonStep
-      protocols/
-        store_repository.py      # Protocol StoreRepository
-                                 # enricher_protocol.py REMOVED (EnricherProtocol removed in SP04)
-      embed_step.py              # class EmbedStep(Step)
-      db_store_step.py           # class DbStoreStep(Step)
-      load_json_step.py          # class LoadJsonStep(Step)
-      write_json_step.py         # class WriteJsonStep(Step)
-                                 # map_step.py REMOVED (MapStep replaced by ApplyStep+ForEach in SP04)
-                                 # enrich_data_step.py REMOVED (EnrichDataStep removed in SP04)
+├── context_keys.py                # FlowContext key constants (no magic strings)
+└── steps/
+    └── generic/
+        ├── __init__.py            # re-exports DbStoreStep, EmbedStep, LoadJsonStep,
+        │                          #   StoreRepository, WriteJsonStep
+        ├── protocols/
+        │   └── store_repository.py  # Protocol StoreRepository
+        │                            # enricher_protocol.py REMOVED (EnricherProtocol removed in SP04)
+        ├── embed_step.py          # class EmbedStep(Step)
+        ├── db_store_step.py       # class DbStoreStep(Step)
+        ├── load_json_step.py      # class LoadJsonStep(Step)
+        └── write_json_step.py     # class WriteJsonStep(Step)
+                                   # map_step.py REMOVED (MapStep replaced by ApplyStep+ForEach in SP04)
+                                   # enrich_data_step.py REMOVED (EnrichDataStep removed in SP04)
 ```
 
 ## `context_keys.py` — key vocabulary

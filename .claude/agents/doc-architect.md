@@ -44,7 +44,20 @@ You are the lead maintainer of the `docs/architecture/` documentation.
 - **Isolation:** Do NOT include any links or references to `docs/plans/`.
 - **Standard Sections:** When applicable, use standard headings such as "Current State" / "Layout" / "Implemented Decisions" / "Testing".
 - **Visuals:** Use Markdown tables to represent database schemas, data structures, or structured comparisons.
-- **Tree structures:** Always use `├──`, `│`, `└──` characters for nested directory or package layouts. Never use indented plain text or bullet lists to represent trees.
+- **Tree structures:** Always use `├──`, `│`, `└──` characters for directory or package layouts inside code blocks. Never use plain indented text. This applies to every Layout section without exception.
+  ```
+  # WRONG — plain indented text
+  src/foo/
+    bar.py
+    baz/
+      qux.py
+
+  # RIGHT — tree characters
+  src/foo/
+  ├── bar.py
+  └── baz/
+      └── qux.py
+  ```
 - **Tone:** Concise and focused. Provide quick orientation. Document the *architecture* and the *why*, do not duplicate the line-by-line code logic.
 
 ## Strict Constraints

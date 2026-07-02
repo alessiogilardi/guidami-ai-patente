@@ -9,40 +9,43 @@ yet started). `commons` does not depend on either.
 
 ```
 src/commons/
-  use_cases/
-    __init__.py              # re-exports UseCase, AsyncUseCase, ForEach
-    use_case.py              # UseCase[T_In, T_Out](ABC) + AsyncUseCase[T_In, T_Out](ABC)
-    for_each.py              # ForEach[T, U](UseCase[list[T], list[U]]) — applies Callable[[T], U] to each element
-  agents/
-    __init__.py              # re-exports BaseAgent
-    base_agent.py            # PromptRenderer, ConfigLoader, BaseAgent[T_In: BaseModel, T_Out] — composition over pydantic_ai.Agent
-  entities/
-    knowledge/
-      knowledge_chunk.py   # KnowledgeChunk — row in knowledge_chunks (+ context: str = "")
-    quiz/
-      quiz_question.py     # QuizQuestion — row in quiz_questions
-  models/
-    knowledge/
-      retrieval_result.py     # RetrievalResult — chunk + score (similarity search)
-  clients/
-    embeddings/
-      __init__.py                                  # re-exports EmbeddingClient, LiteLLMEmbeddingClient,
-                                                   # SentenceTransformerEmbeddingClient
-      embedding_client.py                          # EmbeddingClient (ABC interface)
-      litellm_embedding_client.py                  # LiteLLMEmbeddingClient (cloud, OpenRouter)
-      sentence_transformer_embedding_client.py     # SentenceTransformerEmbeddingClient (local, bge-m3)
-    __init__.py            # re-exports all public clients
-    postgres_client.py     # PostgresClient — generic psycopg wrapper, table-agnostic
-  configs/
-    agent_config.py               # AgentConfig (frozen BaseModel) — re-exported from commons/configs/__init__.py
-    embedding_config.py           # EmbeddingConfig (frozen)
-    postgres_connection_config.py # PostgresConnectionConfig (frozen)
-  services/
-    __init__.py
-    embeddings/
-      __init__.py              # re-exports Embeddable, Embedded, EmbeddingService
-      embeddable.py            # Protocol Embeddable + Embedded (@runtime_checkable)
-      embedding_service.py     # class EmbeddingService
+├── use_cases/
+│   ├── __init__.py              # re-exports UseCase, AsyncUseCase, ForEach
+│   ├── use_case.py              # UseCase[T_In, T_Out](ABC) + AsyncUseCase[T_In, T_Out](ABC)
+│   └── for_each.py              # ForEach[T, U](UseCase[list[T], list[U]]) — applies Callable[[T], U] to each element
+├── agents/
+│   ├── __init__.py              # re-exports BaseAgent
+│   └── base_agent.py            # PromptRenderer, ConfigLoader, BaseAgent[T_In: BaseModel, T_Out] — composition over pydantic_ai.Agent
+├── entities/
+│   ├── knowledge/
+│   │   └── knowledge_chunk.py   # KnowledgeChunk — row in knowledge_chunks (+ context: str = "")
+│   └── quiz/
+│       └── quiz_question.py     # QuizQuestion — row in quiz_questions
+├── models/
+│   └── knowledge/
+│       └── retrieval_result.py  # RetrievalResult — chunk + score (similarity search)
+├── clients/
+│   ├── embeddings/
+│   │   ├── __init__.py                                  # re-exports EmbeddingClient, LiteLLMEmbeddingClient,
+│   │   │                                                # SentenceTransformerEmbeddingClient
+│   │   ├── embedding_client.py                          # EmbeddingClient (ABC interface)
+│   │   ├── litellm_embedding_client.py                  # LiteLLMEmbeddingClient (cloud, OpenRouter)
+│   │   └── sentence_transformer_embedding_client.py     # SentenceTransformerEmbeddingClient (local, bge-m3)
+│   ├── __init__.py              # re-exports all public clients
+│   └── postgres_client.py       # PostgresClient — generic psycopg wrapper, table-agnostic
+├── configs/
+│   ├── agent_config.py               # AgentConfig (frozen BaseModel) — re-exported from commons/configs/__init__.py
+│   ├── embedding_config.py           # EmbeddingConfig (frozen)
+│   └── postgres_connection_config.py # PostgresConnectionConfig (frozen)
+├── utils/
+│   ├── __init__.py              # re-exports deduplicate
+│   └── deduplicate.py           # deduplicate[T](items, key, on_duplicate=None) -> Iterator[T]
+└── services/
+    ├── __init__.py
+    └── embeddings/
+        ├── __init__.py              # re-exports Embeddable, Embedded, EmbeddingService
+        ├── embeddable.py            # Protocol Embeddable + Embedded (@runtime_checkable)
+        └── embedding_service.py     # class EmbeddingService
 ```
 
 ## Implemented decisions
@@ -212,6 +215,26 @@ src/commons/
   - Property `core_agent`: exposes `self._agent` to allow
     `with agent.core_agent.override(model=TestModel(...))` in tests.
   Auth via `OPENROUTER_API_KEY` in the environment — never in the YAML or in the code.
+- **`deduplicate[T]`** (`commons/utils/deduplicate.py`): generic, order-preserving
+  deduplication iterator. Signature: `deduplicate(items: Iterable[T], key:
+  Callable[[T], Hashable], on_duplicate: Callable[[T], None] | None = None) ->
+  Iterator[T]`. Yields each item the first time its key is seen; subsequent
+  duplicates are discarded (calling `on_duplicate` if provided). Exported from
+  `commons.utils` via `__all__ = ["deduplicate"]`. Imported by three quiz
+  services with `from commons.utils import deduplicate` (absolute import —
+  `commons` and `guidami_ai_patente_ingestor` are separate top-level packages).
+  Three usage patterns established in the quiz bank:
+  1. **List comprehension with `on_duplicate` warning**: `[mapper(item) for item in
+     deduplicate(request, key=..., on_duplicate=lambda item: logger.warning(...))]`;
+     used in `FlattenQuiz` and `ToEmbeddableQuiz`.
+  2. **Generator of pairs** (flatten nested structure before dedup): flatten
+     `(sub_q, main_q)` pairs in a generator expression, pass to `deduplicate()`,
+     unpack the pair for the mapper call inside the list comprehension; used in
+     `FlattenQuiz`.
+  3. **Pre-filter generator + `cast`**: `deduplicate((q for q in items if q.image
+     is not None), key=...)` to restrict the dedup set to a subset; `cast(str,
+     q.image)` inside the loop to satisfy pyright's `str | None` narrowing; used
+     in `ImageDescriptionEnricher._describe_questions_with_images`.
 
 ## Tests
 
@@ -254,3 +277,9 @@ src/commons/
   property used with `agent.core_agent.override(model=TestModel(...))` in tests;
   `dict[int, str]` as `output_type` → PydanticAI wraps under the `response` key,
   the `FunctionModel` must return `{"response": {...}}`.
+- `tests/commons/utils/test_deduplicate.py` — 9 unit tests (no `integration`
+  marker, no external dependencies): unique items returned in first-occurrence
+  order; empty iterable → empty iterator; all-unique passthrough; `on_duplicate`
+  called once per duplicate; `on_duplicate=None` does not raise; tuple key;
+  return type is `Iterator` (not list); generator as input. Test package mirrors
+  `src/` layout (`tests/commons/utils/__init__.py` present).

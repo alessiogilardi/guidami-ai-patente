@@ -12,15 +12,15 @@ Exposes the sequential-pipeline framework: `Flow`, `Step`, `FlowBuilder`,
 
 ```
 src/flowstep/
-  __init__.py          # re-exports Flow, Step, FlowBuilder, FlowContext, ApplyStep,
-                       #   FlowValidator, FlowValidationError, FlowValidationReport,
-                       #   StepValidationResult, ValidationSeverity, FlowExecutionError
-  core/                # Flow, Step, FlowContext
-  builder/             # FlowBuilder
-  validation/          # FlowValidator, report, exceptions
-  steps/
-    __init__.py        # re-exports ApplyStep
-    apply_step.py      # class ApplyStep(Step)
+├── __init__.py          # re-exports Flow, Step, FlowBuilder, FlowContext, ApplyStep,
+│                        #   FlowValidator, FlowValidationError, FlowValidationReport,
+│                        #   StepValidationResult, ValidationSeverity, FlowExecutionError
+├── core/                # Flow, Step, FlowContext
+├── builder/             # FlowBuilder
+├── validation/          # FlowValidator, report, exceptions
+└── steps/
+    ├── __init__.py      # re-exports ApplyStep
+    └── apply_step.py    # class ApplyStep(Step)
 ```
 
 ## ApplyStep
