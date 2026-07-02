@@ -25,6 +25,7 @@ store) e un'applicazione backend (FastAPI) che serve il quiz bot.
 | [architecture-hybrid-retrieval.md](architecture-hybrid-retrieval.md) | Retrieval ibrido (pgvector + FTS, fusione RRF) su `knowledge_chunks` |
 | [ingest--llm-as-judge.md](ingest--llm-as-judge.md) | Mapping offline quiz ↔ norma (LLM-as-a-Judge) via litellm |
 | [ingest--quiz-enrichment-norm-keywords.md](ingest--quiz-enrichment-norm-keywords.md) | Enrichment quiz con keyword normative e riferimenti normativi strutturati |
+| [2026-07-02--replace-custom-dedup-with-utility.md](2026-07-02--replace-custom-dedup-with-utility.md) | Refactor: replace manual `seen` sets in 3 services with `deduplicate()` utility |
 
 ## Decisioni architetturali principali
 
