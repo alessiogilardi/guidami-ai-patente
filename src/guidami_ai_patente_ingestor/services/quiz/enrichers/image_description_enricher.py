@@ -1,7 +1,9 @@
 import logging
 from pathlib import Path
+from typing import cast
 
 from commons.use_cases import UseCase
+from commons.utils import deduplicate
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import RoadSignDescriberResponse
 from guidami_ai_patente_ingestor.mappers.agents import RoadSignDescriberMapper
@@ -53,16 +55,14 @@ class ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQui
     def _describe_questions_with_images(
         self, questions: list[EnrichedQuizModel]
     ) -> dict[_DedupeKey, RoadSignDescriberResponse]:
-        seen: set[_DedupeKey] = set()
         results: dict[_DedupeKey, RoadSignDescriberResponse] = {}
-        for q in questions:
-            if q.image is None:
-                continue
-            key: _DedupeKey = (q.image, q.topic, q.text)
-            if key in seen:
-                continue
-            seen.add(key)
-            path = self._images_dir / q.image
+        for q in deduplicate(
+            (q for q in questions if q.image is not None),
+            key=lambda q: (q.image, q.topic, q.text),
+        ):
+            image = cast(str, q.image)
+            key: _DedupeKey = (image, q.topic, q.text)
+            path = self._images_dir / image
             if not path.exists():
                 logger.warning("Image file not found, skipping description: %s", path)
                 continue

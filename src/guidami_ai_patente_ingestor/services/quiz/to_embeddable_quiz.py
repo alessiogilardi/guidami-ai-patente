@@ -1,6 +1,7 @@
 import logging
 
 from commons.use_cases import UseCase
+from commons.utils import deduplicate
 from guidami_ai_patente_ingestor.mappers.quiz_mapper import QuizMapper
 from guidami_ai_patente_ingestor.models.quiz.embeddable_quiz import EmbeddableQuizModel
 from guidami_ai_patente_ingestor.models.quiz.enriched_quiz import EnrichedQuizModel
@@ -25,19 +26,13 @@ class ToEmbeddableQuiz(UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel
         Returns:
             Lista deduplicata di `EmbeddableQuizModel`.
         """
-        embeddable: list[EmbeddableQuizModel] = []
-        seen: set[tuple[str, bool, str | None]] = set()
-
-        for item in request:
-            text = item.text.strip()
-            key = (text, item.correct_answer, item.image)
-            if key in seen:
-                logger.warning(
-                    "skipping duplicate quiz item %s",
-                    item.number,
-                )
-                continue
-            seen.add(key)
-            embeddable.append(QuizMapper.from_enriched_to_embeddable(item))
-
-        return embeddable
+        return [
+            QuizMapper.from_enriched_to_embeddable(item)
+            for item in deduplicate(
+                request,
+                key=lambda item: (item.text.strip(), item.correct_answer, item.image),
+                on_duplicate=lambda item: logger.warning(
+                    "skipping duplicate quiz item %s", item.number
+                ),
+            )
+        ]

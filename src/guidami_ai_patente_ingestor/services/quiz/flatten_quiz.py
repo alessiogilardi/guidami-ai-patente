@@ -1,6 +1,7 @@
 import logging
 
 from commons.use_cases import UseCase
+from commons.utils import deduplicate
 from guidami_ai_patente_ingestor.mappers.quiz_mapper import QuizMapper
 from guidami_ai_patente_ingestor.models.quiz.cleaned_quiz import CleanedQuizModel
 from guidami_ai_patente_ingestor.models.quiz.parsed_quiz import ParsedQuizModel
@@ -25,21 +26,16 @@ class FlattenQuiz(UseCase[list[ParsedQuizModel], list[CleanedQuizModel]]):
         Returns:
             Lista piatta e deduplicata di `CleanedQuizModel`.
         """
-        cleaned: list[CleanedQuizModel] = []
-        seen: set[tuple[str, bool, str | None]] = set()
-
-        for main_question in request:
-            for sub_question in main_question.sub_questions:
-                text = sub_question.text.strip()
-                key = (text, sub_question.correct_answer, sub_question.image)
-                if key in seen:
-                    logger.warning(
-                        "skipping duplicate sub-question %s (question_id=%d)",
-                        sub_question.number,
-                        main_question.question_id,
-                    )
-                    continue
-                seen.add(key)
-                cleaned.append(QuizMapper.from_parsed_to_cleaned(sub_question, main_question))
-
-        return cleaned
+        pairs = ((sub_q, main_q) for main_q in request for sub_q in main_q.sub_questions)
+        return [
+            QuizMapper.from_parsed_to_cleaned(sub_q, main_q)
+            for sub_q, main_q in deduplicate(
+                pairs,
+                key=lambda p: (p[0].text.strip(), p[0].correct_answer, p[0].image),
+                on_duplicate=lambda p: logger.warning(
+                    "skipping duplicate sub-question %s (question_id=%d)",
+                    p[0].number,
+                    p[1].question_id,
+                ),
+            )
+        ]
