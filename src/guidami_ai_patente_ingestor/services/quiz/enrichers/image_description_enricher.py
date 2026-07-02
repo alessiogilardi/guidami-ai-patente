@@ -14,6 +14,10 @@ logger = logging.getLogger(__name__)
 _DedupeKey = tuple[str, str, str]  # (image, topic, text)
 
 
+def _make_key(q: EnrichedQuizModel) -> _DedupeKey:
+    return (cast(str, q.image), q.topic, q.text)
+
+
 class ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]]):
     """Arricchisce le sotto-domande con la descrizione del segnale stradale.
 
@@ -23,52 +27,45 @@ class ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQui
     """
 
     def __init__(self, road_sign_describer: RoadSignDescriberAgent, images_dir: Path) -> None:
-        """Inietta l'agente di descrizione e la directory delle immagini.
-
-        Args:
-            road_sign_describer: Agente vision LLM che descrive un segnale.
-            images_dir: Directory che contiene i file immagine del quiz bank.
-        """
         self._road_sign_describer = road_sign_describer
         self._images_dir = images_dir
 
     def execute(self, request: list[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
-        """Valorizza `image_description` su ogni sotto-domanda con immagine.
+        descriptions = self._build_description_map(request)
+        return [self._apply_description(q, descriptions) for q in request]
 
-        Args:
-            request: Sotto-domande enriched (flat) da arricchire.
+    def _apply_description(
+        self, q: EnrichedQuizModel, descriptions: dict[_DedupeKey, RoadSignDescriberResponse]
+    ) -> EnrichedQuizModel:
+        if not q.image:
+            return q
+        key = _make_key(q)
+        if key not in descriptions:
+            return q
+        return RoadSignDescriberMapper.from_response_to_enriched_quiz(q, descriptions[key])
 
-        Returns:
-            Nuove `EnrichedQuizModel` con `image_description` valorizzato sulle
-            sotto-domande la cui immagine è stata descritta con successo.
-        """
-        descriptions = self._describe_questions_with_images(request)
-        return [
-            RoadSignDescriberMapper.from_response_to_enriched_quiz(
-                q, descriptions[(q.image, q.topic, q.text)]
-            )
-            if q.image and (q.image, q.topic, q.text) in descriptions
-            else q
-            for q in request
-        ]
-
-    def _describe_questions_with_images(
+    def _build_description_map(
         self, questions: list[EnrichedQuizModel]
     ) -> dict[_DedupeKey, RoadSignDescriberResponse]:
-        results: dict[_DedupeKey, RoadSignDescriberResponse] = {}
-        for q in deduplicate(
+        unique = deduplicate(
             (q for q in questions if q.image is not None),
-            key=lambda q: (q.image, q.topic, q.text),
-        ):
-            image = cast(str, q.image)
-            key: _DedupeKey = (image, q.topic, q.text)
-            path = self._images_dir / image
-            if not path.exists():
-                logger.warning("Image file not found, skipping description: %s", path)
-                continue
-            try:
-                request = RoadSignDescriberMapper.from_enriched_quiz_to_request(q)
-                results[key] = self._road_sign_describer.run_sync(request, images=(path,))
-            except Exception:
-                logger.warning("Failed to describe image, skipping: %s", path, exc_info=True)
-        return results
+            key=_make_key,
+        )
+        return {
+            _make_key(q): desc
+            for q in unique
+            if (desc := self._describe_image(q)) is not None
+        }
+
+    def _describe_image(self, q: EnrichedQuizModel) -> RoadSignDescriberResponse | None:
+        image = cast(str, q.image)
+        path = self._images_dir / image
+        if not path.exists():
+            logger.warning("Image file not found, skipping description: %s", path)
+            return None
+        try:
+            req = RoadSignDescriberMapper.from_enriched_quiz_to_request(q)
+            return self._road_sign_describer.run_sync(req, images=(path,))
+        except Exception:
+            logger.warning("Failed to describe image, skipping: %s", path, exc_info=True)
+            return None
