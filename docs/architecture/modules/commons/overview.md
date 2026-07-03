@@ -1,9 +1,12 @@
-# Package `src/commons/`
+# Shared packages: `src/commons/` and `src/domain/`
 
-Documents exclusively the `src/commons/` package.
+Documents the `src/commons/` and `src/domain/` packages.
 
-Shared components between `guidami_ai_patente_ingestor` and the FastAPI app (not
-yet started). `commons` does not depend on either.
+`commons` provides shared infrastructure (clients, configs, utils, agents, use-cases,
+services) between `guidami_ai_patente_ingestor` and the FastAPI app (not yet started).
+`domain` holds the innermost ring of the Clean Architecture: entities (DB-row models)
+and domain-level DTOs shared across packages. Neither `commons` nor `domain` depends
+on the ingestor or the app.
 
 ## Layout
 
@@ -16,14 +19,6 @@ src/commons/
 ├── agents/
 │   ├── __init__.py              # re-exports BaseAgent
 │   └── base_agent.py            # PromptRenderer, ConfigLoader, BaseAgent[T_In: BaseModel, T_Out] — composition over pydantic_ai.Agent
-├── entities/
-│   ├── knowledge/
-│   │   └── knowledge_chunk.py   # KnowledgeChunk — row in knowledge_chunks (+ context: str = "")
-│   └── quiz/
-│       └── quiz_question.py     # QuizQuestion — row in quiz_questions
-├── models/
-│   └── knowledge/
-│       └── retrieval_result.py  # RetrievalResult — chunk + score (similarity search)
 ├── clients/
 │   ├── embeddings/
 │   │   ├── __init__.py                                  # re-exports EmbeddingClient, LiteLLMEmbeddingClient,
@@ -46,6 +41,25 @@ src/commons/
         ├── __init__.py              # re-exports Embeddable, Embedded, EmbeddingService
         ├── embeddable.py            # Protocol Embeddable + Embedded (@runtime_checkable)
         └── embedding_service.py     # class EmbeddingService
+
+src/domain/
+├── __init__.py
+├── entities/
+│   ├── __init__.py
+│   ├── knowledge/
+│   │   ├── __init__.py
+│   │   └── knowledge_chunk.py   # KnowledgeChunk — row in knowledge_chunks (+ context: str = "")
+│   └── quiz/
+│       ├── __init__.py
+│       └── quiz_question.py     # QuizQuestion — row in quiz_questions (+ quiz_metadata)
+└── models/
+    ├── __init__.py
+    ├── knowledge/
+    │   ├── __init__.py
+    │   └── retrieval_result.py  # RetrievalResult — chunk + score (similarity search)
+    └── quiz/
+        ├── __init__.py
+        └── quiz_metadata.py     # QuizMetadata — structured enrichment metadata (NormReferenceDescriberAgent output)
 ```
 
 ## Implemented decisions
@@ -56,7 +70,8 @@ src/commons/
   is marked `@final` and delegates to `execute` — every `UseCase` is directly
   callable (compatible with `ApplyStep`/`ForEach` that receive a callable). Adopted
   by `EmbeddingService`, `ArticleCleaner`, `ArticleChunker`, `FlattenQuiz`,
-  `ToEmbeddableQuiz`, `ContextEnricher`, `ImageDescriptionEnricher`. The public
+  `ToEmbeddableQuiz`, `ContextEnricher`, `ImageDescriptionEnricher`,
+  `NormReferenceEnricher`. The public
   method of all is named `execute`. Maintains the pure/impure separation: the
   contract does not prescribe side effects.
 - **`AsyncUseCase[T_In, T_Out]`** (`commons/use_cases/use_case.py`): async
@@ -134,28 +149,32 @@ src/commons/
     in the future `QuizRepository`/`KnowledgeRepository` on the app side.
   - Vector parameters require explicit `%s::vector` cast in queries (otherwise
     psycopg adapts `list[float]` to `array`, which is incompatible with `<=>`).
-- **`KnowledgeChunk`** (Pydantic, `commons/entities/knowledge/`): `source:
+- **`KnowledgeChunk`** (Pydantic, `domain/entities/knowledge/`): `source:
   Literal["cds", "cap"]`, `embedding: list[float] | None = None` (None before
   embedding), `context: str = ""` (LLM context for the article paragraph, DB
   column, default empty string). **DB-write-only** entity: no `embedded_text`
   property — the text to embed is on the same-named property of
   `EmbeddableChunkModel` (intermediate DTO in the ingestor). `KnowledgeChunk`
   satisfies only the `Embedded` protocol (has `embedding`), not `Embeddable`.
-- **`QuizQuestion`** (Pydantic, `BaseModel`, `commons/entities/quiz/`): row of
+- **`QuizQuestion`** (Pydantic, `BaseModel`, `domain/entities/quiz/`): row of
   `quiz_questions` — `number: str`, `question_id: int`, `topic: str`,
   `text: str`, `correct_answer: bool`, `image_filename: str | None = None`,
+  `quiz_metadata: QuizMetadata | None = None` (nullable; structured enrichment
+  metadata produced by `NormReferenceDescriberAgent`, serialised as JSONB in DB),
   `embedding: list[float] | None = None` (None before embedding, same pattern as
   `KnowledgeChunk`). Property `embedded_text -> str`: returns `f"{topic} {text}"`
   — text prefixed with the question topic, used as embedding input instead of
   `text` alone.
 - **`entities/` vs `models/`**: `KnowledgeChunk` and `QuizQuestion` are domain
-  entities (table rows), in `commons/entities/`. `commons/models/` hosts
-  layer/intermediate DTOs that do not go to the DB. `commons/models/quiz/` has
-  been removed: the quiz bank intermediate models (`QuizBankModel`/
+  entities (table rows), now in `domain/entities/` (moved from `commons/entities/`
+  — Clean Architecture naming: `domain` is the innermost ring). `domain/models/`
+  hosts cross-package domain DTOs: `RetrievalResult` (knowledge retrieval) and
+  `QuizMetadata` (structured enrichment metadata shared between the ingestor and
+  the future app). Ingestor-specific intermediate DTOs (`QuizBankModel`/
   `QuizBankItemModel`, `EnrichedQuizModel`/`EnrichedQuizItemModel`,
   `EmbeddableQuizModel`, `ImageDescription`, renamed in SP04-bis) and
   `EnrichedArticleModel` (together with `ParsedArticleModel` and
-  `EmbeddableChunkModel`) live in `guidami_ai_patente_ingestor/models/knowledge/`
+  `EmbeddableChunkModel`) live in `guidami_ai_patente_ingestor/models/`
   because they are ingestor-specific DTOs not needed by the FastAPI app.
 - **`Embeddable` Protocol** (`commons/services/embeddings/embeddable.py`,
   `@runtime_checkable`): exposes a read-only `embedded_text: str` property.
@@ -261,10 +280,10 @@ src/commons/
 - `tests/commons/clients/test_postgres_client.py` — against the compose Postgres
   (no `integration` marker): `truncate`, `execute_many`/`fetch` on
   `knowledge_chunks` (bulk insert + ordered read).
-- `tests/commons/entities/knowledge/test_knowledge_chunk.py` — default
+- `tests/domain/entities/knowledge/test_knowledge_chunk.py` — default
   `embedding=None`, default `context=""`. No tests for `embedded_text`
   (`KnowledgeChunk` does not have this property — it is on `EmbeddableChunkModel`).
-- `tests/commons/models/knowledge/test_retrieval_result.py` — wrapping
+- `tests/domain/models/knowledge/test_retrieval_result.py` — wrapping
   `KnowledgeChunk` in `RetrievalResult` with `score`.
 - `tests/commons/agents/test_agent_config.py` — parsing from YAML dict; defaults
   applied; missing required fields → `ValidationError`; `frozen=True` verifies

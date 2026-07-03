@@ -36,6 +36,7 @@ Constraint: `UNIQUE (source, article_number, comma_index)`.
 | `text` | `TEXT` | |
 | `correct_answer` | `BOOLEAN` | |
 | `image_filename` | `TEXT` | nullable |
+| `quiz_metadata` | `JSONB` | nullable; structured metadata produced by `NormReferenceDescriberAgent` (fields: `core_concepts`, `entities`, `exact_keywords`, `vector_search_queries`, `rule_explanation`) |
 | `embedding` | `VECTOR(1536)` | nullable, populated by the ingestor |
 
 Constraint: `UNIQUE(number)`. Indexes: `idx_quiz_questions_topic (topic)`,

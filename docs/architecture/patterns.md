@@ -1,11 +1,11 @@
 # Cross-Cutting Patterns
 
-Patterns used across the codebase. All implementations live in `src/commons/` or
+Patterns used across the codebase. All implementations live in `src/domain/` or
 `src/flowstep/` and are shared between the ingestor and the future FastAPI app.
 
 ## `UseCase[T_In, T_Out]`
 
-**Location**: `commons/use_cases/use_case.py`
+**Location**: `domain/use_cases/use_case.py`
 
 Abstract base class with two type parameters that standardises the contract of stateless
 components with a single operation.

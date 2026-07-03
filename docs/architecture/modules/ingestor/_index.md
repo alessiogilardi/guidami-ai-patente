@@ -17,8 +17,8 @@ Active batch pipelines/flows:
 - **quiz bank — preparation** (two flowstep flows, restructured in SP09
   mirroring the knowledge topology): `build_quiz_cleaning_flow` (`parsed` → `cleaned`,
   flatten+dedup via `ApplyStep(FlattenQuiz())`) and `build_quiz_enrichment_flow`
-  (`cleaned` → `enriched`, base-map + `ImageDescriptionEnricher` in a single
-  `ApplyStep`), both via the same runner `run_preparation`. In SP04
+  (`cleaned` → `enriched`, base-map + `ImageDescriptionEnricher` + `NormReferenceEnricher`
+  in a single `ApplyStep`), both via the same runner `run_preparation`. In SP04
   the flatten+dedup logic is moved from flowstep step to service UseCase
   (`FlattenQuiz`, `ToEmbeddableQuiz`); `EnrichDataStep`/`MapStep`/
   `EnricherProtocol` removed; all flows use `ApplyStep+ForEach`.
@@ -29,27 +29,35 @@ Active batch pipelines/flows:
   → `quiz_questions` (truncate full-reload). Wired via `uv run ingest index
   quiz` (SP07).
 
-Depends on `commons` (models, entities, `BaseAgent`, `EmbeddingClient`, `PostgresClient`,
-shared configs).
+Depends on `commons` (`BaseAgent`, `EmbeddingClient`, `PostgresClient`, shared configs,
+`UseCase`/`ForEach`) and `domain` (entities: `KnowledgeChunk`, `QuizQuestion`;
+models: `RetrievalResult`, `QuizMetadata`).
 
 ## Layout
 
 ```
 src/guidami_ai_patente_ingestor/
 ├── agents/
-│   ├── __init__.py                        # re-exports ArticleContextualizerAgent, RoadSignDescriberAgent
+│   ├── __init__.py                        # re-exports ArticleContextualizerAgent, RoadSignDescriberAgent, NormReferenceDescriberAgent
 │   ├── article_contextualizer_agent.py    # ArticleContextualizerAgent(BaseAgent[ArticleContextualizerRequest, ArticleContextualizerResponse])
 │   ├── road_sign_describer_agent.py       # RoadSignDescriberAgent(BaseAgent[RoadSignDescriberRequest, RoadSignDescriberResponse])
+│   ├── norm_reference_describer_agent.py  # NormReferenceDescriberAgent(BaseAgent[NormReferenceDescriberRequest, NormReferenceDescriberResponse])
+│   │                                      #   text-only; model: openrouter/google/gemini-2.5-flash-lite
 │   └── dto/
 │       ├── __init__.py
 │       ├── article_contextualizer/
 │       │   ├── __init__.py
 │       │   ├── request.py           # ArticleContextualizerRequest(BaseModel) — title, text, paragraphs: str
 │       │   └── response.py          # ArticleContextualizerResponse(BaseModel) — contexts: dict[int, str]
-│       └── road_sign_describer/
+│       ├── road_sign_describer/
+│       │   ├── __init__.py
+│       │   ├── request.py           # RoadSignDescriberRequest(BaseModel) — topic, text
+│       │   └── response.py          # RoadSignDescriberResponse(BaseModel) — name, description
+│       └── norm_reference_describer/
 │           ├── __init__.py
-│           ├── request.py           # RoadSignDescriberRequest(BaseModel) — topic, text
-│           └── response.py          # RoadSignDescriberResponse(BaseModel) — name, description
+│           ├── request.py           # NormReferenceDescriberRequest(BaseModel) — topic, text, correct_answer, image_description
+│           └── response.py          # NormReferenceDescriberResponse(BaseModel) — core_concepts, entities, exact_keywords,
+│                                    #   vector_search_queries, rule_explanation
 ├── mappers/
 │   ├── __init__.py                           # re-exports ArticleMapper, QuizMapper
 │   ├── article_mapper.py                     # ArticleMapper — 1:1 transformations for the knowledge pipeline (3 methods):
@@ -61,13 +69,17 @@ src/guidami_ai_patente_ingestor/
 │   │                                         #   from_enriched_to_embeddable(item) (1 arg, renamed in SP03),
 │   │                                         #   from_embeddable_to_quiz_question
 │   └── agents/
-│       ├── __init__.py                         # re-exports ArticleContextualizerMapper, RoadSignDescriberMapper
+│       ├── __init__.py                         # re-exports ArticleContextualizerMapper, RoadSignDescriberMapper, NormReferenceDescriberMapper
 │       ├── article_contextualizer_mapper.py    # ArticleContextualizerMapper — domain↔DTO:
 │       │                                       #   from_enriched_article_to_request(EnrichedArticleModel) -> ArticleContextualizerRequest
 │       │                                       #   from_response_to_enriched_article(EnrichedArticleModel, ArticleContextualizerResponse) -> EnrichedArticleModel
-│       └── road_sign_describer_mapper.py       # RoadSignDescriberMapper — domain↔DTO:
-│                                               #   from_enriched_quiz_to_request(EnrichedQuizModel) -> RoadSignDescriberRequest
-│                                               #   from_response_to_enriched_quiz(EnrichedQuizModel, RoadSignDescriberResponse) -> EnrichedQuizModel
+│       ├── road_sign_describer_mapper.py       # RoadSignDescriberMapper — domain↔DTO:
+│       │                                       #   from_enriched_quiz_to_request(EnrichedQuizModel) -> RoadSignDescriberRequest
+│       │                                       #   from_response_to_enriched_quiz(EnrichedQuizModel, RoadSignDescriberResponse) -> EnrichedQuizModel
+│       └── norm_reference_describer_mapper.py  # NormReferenceDescriberMapper — domain↔DTO:
+│                                               #   from_enriched_quiz_to_request(EnrichedQuizModel) -> NormReferenceDescriberRequest
+│                                               #   from_response_to_enriched_quiz(EnrichedQuizModel, NormReferenceDescriberResponse) -> EnrichedQuizModel
+│                                               #   converts Response→QuizMetadata at the boundary
 ├── repositories/
 │   ├── __init__.py                              # re-exports all 6 repositories (unchanged public surface)
 │   ├── db/
@@ -99,7 +111,7 @@ src/guidami_ai_patente_ingestor/
 │   │                                     #   satisfies EnricherProtocol[EnrichedArticleModel, EnrichedArticleModel];
 │   │                                     #   isolated failure → contexts={} + warning, no abort
 │   └── quiz/
-│       ├── __init__.py                          # re-exports ImageDescriptionEnricher
+│       ├── __init__.py                          # re-exports ImageDescriptionEnricher, NormReferenceEnricher
 │       ├── flatten_quiz.py                      # FlattenQuiz(UseCase[list[ParsedQuizModel], list[CleanedQuizModel]])
 │       │                                        #   flatten+dedup parsed→cleaned (SP02; ex FlattenQuizStep)
 │       ├── to_embeddable_quiz.py                # ToEmbeddableQuiz(UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]])
@@ -107,10 +119,12 @@ src/guidami_ai_patente_ingestor/
 │       │                                        # quiz_enrichment_service.py REMOVED (QuizEnrichmentService,
 │       │                                        #   replaced by ApplyStep+UseCase in SP04)
 │       └── enrichers/
-│           ├── __init__.py                        # re-exports ImageDescriptionEnricher
+│           ├── __init__.py                        # re-exports ImageDescriptionEnricher, NormReferenceEnricher
 │           │                                      # quiz_enricher.py REMOVED (Protocol QuizEnricher, redundant alias)
-│           └── image_description_enricher.py      # ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]])
-│                                                  #   vision LLM, dedup on (image, topic, text); execute() ex enrich()
+│           ├── image_description_enricher.py      # ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]])
+│           │                                      #   vision LLM, dedup on (image, topic, text); execute() ex enrich()
+│           └── norm_reference_enricher.py         # NormReferenceEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]])
+│                                                  #   text-only LLM, dedup on (topic, text, correct_answer, image_filename)
 ├── models/
 │   ├── knowledge/
 │   │   ├── __init__.py                  # re-exports ParsedArticleModel, EnrichedArticleModel, EmbeddableChunkModel
@@ -125,7 +139,7 @@ src/guidami_ai_patente_ingestor/
 │       │                                #   (direct output of the PDF parser; SP09)
 │       ├── cleaned_quiz.py              # CleanedQuizModel — cleaned layer, flat, self-contained (SP09)
 │       ├── enriched_quiz.py             # EnrichedQuizModel — enriched layer, flat
-│       │                                #   (adds image_description: str | None)
+│       │                                #   (adds image_description: str | None, quiz_metadata: QuizMetadata | None)
 │       ├── embeddable_quiz.py           # EmbeddableQuizModel — intermediate flat DTO with embedded_text
 │       └── image_description.py        # ImageDescription(BaseModel, frozen=True) — name: str, description: str
 ├── orchestrators/
@@ -182,8 +196,9 @@ src/guidami_ai_patente_ingestor/
 configs/                            # project root (not under src/)
 ├── ingestor_config.yaml              # non-secret config, committed (layers/sources/pipeline selectors)
 └── agents/
-    ├── article_contextualizer.yaml     # AgentDefinition for ArticleContextualizer
-    └── road_sign_describer.yaml        # AgentDefinition for RoadSignDescriber (vision)
+    ├── article_contextualizer.yaml       # AgentDefinition for ArticleContextualizer
+    ├── road_sign_describer.yaml          # AgentDefinition for RoadSignDescriber (vision)
+    └── norm_reference_describer.yaml     # AgentDefinition for NormReferenceDescriber (text-only, gemini-2.5-flash-lite)
 
 .env.example                        # documents only the secret env vars
                                      # (POSTGRES__USER, POSTGRES__PASSWORD)
@@ -211,7 +226,7 @@ both the normative corpus and the quiz bank follow the **same three-stage topolo
 - `data/enriched/<source>/...json` — (`enriched` layer) output of the
   enrichment flow (corpus or quiz); input of the indexing flows. Self-contained:
   cleaned article + `contexts` per clause (corpus), or flat sub-question +
-  `image_description` (quiz).
+  `image_description` + `quiz_metadata` (quiz).
 
 Path resolution: `LayerResolver.path(layer, source)` =
 `layers[layer] / sources[source].dir / sources[source].file`.
@@ -223,9 +238,9 @@ Path resolution: `LayerResolver.path(layer, source)` =
   `build_knowledge_enrichment_flow`, `run_preparation`, `ApplyStep`+`ForEach` +
   `ContextEnricher` domain-specific, `ArticleMapper`); quiz bank on two analogous
   flows (`build_quiz_cleaning_flow` with `ApplyStep(FlattenQuiz())`,
-  `build_quiz_enrichment_flow` with `ApplyStep(ForEach+ImageDescriptionEnricher)`).
-  Plus `ArticleContextualizerAgent`, `RoadSignDescriberAgent`,
-  `EnrichedArticleRepository`, `EnrichedQuizBankRepository`.
+  `build_quiz_enrichment_flow` with `ApplyStep(ForEach+ImageDescriptionEnricher+NormReferenceEnricher)`).
+  Plus `ArticleContextualizerAgent`, `RoadSignDescriberAgent`, `NormReferenceDescriberAgent`,
+  all agent mappers, `EnrichedArticleRepository`, `EnrichedQuizBankRepository`.
 - [knowledge_pipelines.md](knowledge_pipelines.md) — normative corpus (CdS + CAP):
   model chain `ParsedArticleModel`/`EnrichedArticleModel`/`EmbeddableChunkModel`
   (one model per layer, `EmbeddableChunkModel` has `embedded_text`),
@@ -242,8 +257,8 @@ Path resolution: `LayerResolver.path(layer, source)` =
   `ApplyStep(ToEmbeddableQuiz())` and `ApplyStep(ForEach(...))` (SP04);
   quiz preparation flows: `ApplyStep(FlattenQuiz())` (cleaning) +
   `ApplyStep(ForEach+ImageDescriptionEnricher)` (enrichment, 3 steps, SP04);
-  `ImageDescriptionEnricher` now implements `UseCase` (ex `EnricherProtocol`).
-  All three services use `commons.utils.deduplicate` (2026-07-02 refactor,
+  `ImageDescriptionEnricher` and `NormReferenceEnricher` both implement `UseCase`.
+  All four services use `commons.utils.deduplicate` (2026-07-02 refactor,
   replacing hand-rolled `seen: set` in each).
 - [config_and_entrypoints.md](config_and_entrypoints.md) — `IngestorConfig`, `LayerResolver`,
   two-level config pattern, single entry point `cli.py` (SP07, subcommands `ingest prepare

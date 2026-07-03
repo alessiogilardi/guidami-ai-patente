@@ -31,7 +31,7 @@ Full schema (columns, constraints, indexes) → [database/](database/_index.md).
 - **Alternative local client**: `SentenceTransformerEmbeddingClient` — bge-m3
   model via **sentence-transformers**, for offline A/B testing without network.
   Different dimension (384) → not hot-swappable with the default.
-- **Interface**: `EmbeddingClient` (ABC) in `commons/clients/embeddings/` —
+- **Interface**: `EmbeddingClient` (ABC) in `domain/clients/embeddings/` —
   the concrete implementation is swappable without changing callers.
 - **Critical constraint**: changing the model to one with a different dimension
   requires `ALTER TABLE` + destruction/recreation of the Docker volume + full
@@ -44,11 +44,12 @@ Implementation detail (config, methods, API response ordering) →
 
 - **pydantic-ai-slim[openrouter]** — AI agent framework, slim build with openrouter extra.
 - **OpenRouter** as gateway — authenticated via `OPENROUTER_API_KEY` in the environment.
-- **`BaseAgent[T_out]`** in `commons/agents/` — shared infrastructure for LLM
+- **`BaseAgent[T_out]`** in `domain/agents/` — shared infrastructure for LLM
   agents: loads config from YAML (`AgentConfig`), renders the prompt via
   `PromptRenderer`, wraps `pydantic_ai.Agent` for composition.
-- Currently used by: `ArticleContextualizerAgent` in the ingestor (LLM enrichment
-  of chunks in the data preparation phase).
+- Currently used by: `ArticleContextualizerAgent`, `RoadSignDescriberAgent`, and
+  `NormReferenceDescriberAgent` in the ingestor (LLM enrichment in the data
+  preparation phase).
 
 Implementation detail (`PromptRenderer`, `ConfigLoader`, `BaseAgent`) →
 [modules/commons/overview.md](modules/commons/overview.md).

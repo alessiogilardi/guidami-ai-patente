@@ -25,7 +25,7 @@ pipelines/flows. They produce the `enriched` artefacts that indexing reads from.
 
 ```
 parsed ──[knowledge_cleaning flow: Load→Apply(ForEach(clean))→Write]───▶ cleaned ──[knowledge_enrichment flow: Load→Apply(ForEach(map)+ContextEnricher)→Write]──▶ enriched ──[knowledge_indexing flow]──▶ DB
-parsed ──[quiz_cleaning flow: Load→Apply(FlattenQuiz)→Write]───────────▶ cleaned ──[quiz_enrichment flow: Load→Apply(ForEach(base-map)+ImageDescEnricher)→Write]──▶ enriched ──[quiz_indexing flow]────▶ DB
+parsed ──[quiz_cleaning flow: Load→Apply(FlattenQuiz)→Write]───────────▶ cleaned ──[quiz_enrichment flow: Load→Apply(ForEach(base-map)+ImageDescEnricher+NormRefEnricher)→Write]──▶ enriched ──[quiz_indexing flow]────▶ DB
 ```
 
 From SP09 the quiz bank has the **same three-layer topology** as the knowledge
@@ -178,7 +178,7 @@ layer/`source` in the constructor and resolve the path via
     Used via `ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk)`
     in the indexing flow (`ApplyStep("map_to_chunk_entity")`).
 
-### `mappers/agents/` — `ArticleContextualizerMapper` and `RoadSignDescriberMapper`
+### `mappers/agents/` — `ArticleContextualizerMapper`, `RoadSignDescriberMapper`, and `NormReferenceDescriberMapper`
 
 Architectural principle: domain↔DTO translation is the mapper's responsibility,
 not the enricher's or the agent's. They live in `mappers/agents/`, re-exported
@@ -198,6 +198,18 @@ from `mappers/agents/__init__.py`.
   - `from_response_to_enriched_quiz(item: EnrichedQuizModel,
     response: RoadSignDescriberResponse) -> EnrichedQuizModel`:
     applies `model_copy(update={"image_description": f"{response.name}. {response.description}"})`.
+
+- **`NormReferenceDescriberMapper`** (`mappers/agents/norm_reference_describer_mapper.py`):
+  - `from_enriched_quiz_to_request(item: EnrichedQuizModel) -> NormReferenceDescriberRequest`:
+    builds the agent input DTO (`topic`, `text`, `correct_answer`, `image_description`)
+    from the quiz model (called after `ImageDescriptionEnricher`, so
+    `image_description` may already be populated).
+  - `from_response_to_enriched_quiz(item: EnrichedQuizModel,
+    response: NormReferenceDescriberResponse) -> EnrichedQuizModel`:
+    converts `NormReferenceDescriberResponse` → `QuizMetadata` at the boundary
+    and applies `model_copy(update={"quiz_metadata": quiz_metadata})` — immutable.
+    `NormReferenceDescriberResponse` and `QuizMetadata` are intentionally separate
+    models (independent lifecycle: agent response vs. domain model).
 
 
 ### `context_keys.py` — keys added by SP05
@@ -224,7 +236,8 @@ factory. See [generic_steps.md](generic_steps.md) for the complete vocabulary.
 `CleanedQuizModel` (layer `cleaned`, flat) and `EnrichedQuizModel` (layer
 `enriched`, flat) live in `guidami_ai_patente_ingestor/models/quiz/` — not
 in `entities/` (they are non-persisted DTOs, not DB rows). `EnrichedQuizModel`
-adds `image_description: str | None` compared to `CleanedQuizModel`.
+adds `image_description: str | None` and `quiz_metadata: QuizMetadata | None`
+compared to `CleanedQuizModel`.
 Full detail of the model chain and the consolidated `QuizMapper` in
 [quiz_pipelines.md](quiz_pipelines.md).
 
@@ -276,6 +289,25 @@ Subclass of `BaseAgent[RoadSignDescriberRequest, RoadSignDescriberResponse]`
   the two models share the same structure but are conceptually distinct
   (agent response vs. domain model).
 
+### `agents/norm_reference_describer_agent.py` — `NormReferenceDescriberAgent`
+
+Subclass of `BaseAgent[NormReferenceDescriberRequest, NormReferenceDescriberResponse]`
+(`commons/agents/`). Text-only (no images) — same structural pattern as
+`RoadSignDescriberAgent` but no `images` parameter.
+
+- Receives `NormReferenceDescriberRequest(topic, text, correct_answer,
+  image_description)` as typed input. Translation to/from `EnrichedQuizModel`
+  is the responsibility of `NormReferenceDescriberMapper`.
+- YAML prompt (`configs/agents/norm_reference_describer.yaml`): model
+  `openrouter/google/gemini-2.5-flash-lite`; variables `$topic`, `$text`,
+  `$correct_answer`, `$image_description`.
+- `from_yaml(name, agents_dir, output_type=None) -> Self`: factory that fixes
+  `output_type=NormReferenceDescriberResponse`.
+- `NormReferenceDescriberResponse(BaseModel, frozen=True)` — fields
+  `core_concepts: list[str]`, `entities: list[str]`, `exact_keywords: list[str]`,
+  `vector_search_queries: list[str]`, `rule_explanation: str` — lives in
+  `agents/dto/norm_reference_describer/`.
+
 ## Quiz preparation — two Flows (SP09) + generic runner, enrichment refactored on generic building blocks
 
 > **History**: introduced in SP06 as a single Flow (`cleaned` → `enriched`,
@@ -311,10 +343,12 @@ def build_quiz_enrichment_flow(
 ) -> Flow
 ```
 Chain: `LoadJsonStep("load_cleaned_quiz", model_class=CleanedQuizModel)` →
-`ApplyStep("enrich", ForEach(QuizMapper.from_cleaned_to_enriched), ImageDescriptionEnricher(...))` →
+`ApplyStep("enrich", ForEach(QuizMapper.from_cleaned_to_enriched), ImageDescriptionEnricher(...), NormReferenceEnricher(...))` →
 `WriteJsonStep("write_enriched_quiz", model_class=EnrichedQuizModel)`.
 Keys `CLEANED_QUIZ` → `ENRICHED_QUIZ`. SP04 unified the previous
-`MapStep + EnrichDataStep` into a single `ApplyStep`.
+`MapStep + EnrichDataStep` into a single `ApplyStep`; `NormReferenceEnricher`
+was added after `ImageDescriptionEnricher` — Open/Closed: zero changes to
+existing steps or enrichers.
 
 Both reuse **the same runner** as the knowledge
 (`run_preparation(flow, out_path, force)`), invoked by the caller with
@@ -344,6 +378,22 @@ Image not found on disk or agent error → `logger.warning` +
 The enricher implements `UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]]`
 (previously satisfied `EnricherProtocol` structurally; now explicitly extends
 `UseCase`, with `execute` instead of `enrich`).
+
+### `NormReferenceEnricher` — text-only enricher for norm-reference metadata
+
+`NormReferenceEnricher` uses `NormReferenceDescriberMapper` for domain↔DTO
+translation, following the same pattern as `ContextEnricher` and
+`ImageDescriptionEnricher`.
+
+- **Dedup key**: `(topic, text, correct_answer, image_filename)` (4-field tuple)
+  — one LLM call per unique sub-question. A sub-question may appear under
+  multiple parent questions, so the key is wider than the image-dedup key to
+  avoid conflating semantically distinct items.
+- Called after `ImageDescriptionEnricher` in `ApplyStep("enrich")`, so
+  `image_description` is already populated when the agent runs and can be
+  included in the prompt via `NormReferenceDescriberRequest.image_description`.
+- Agent error: `logger.warning` + `quiz_metadata` remains `None` (does not
+  interrupt the batch — same failure tolerance as `ImageDescriptionEnricher`).
 
 ### What has NOT (yet) changed
 

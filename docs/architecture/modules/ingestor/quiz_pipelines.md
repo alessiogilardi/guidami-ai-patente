@@ -21,21 +21,21 @@ cleaned (layer "cleaned", flat — one row per sub-question, self-contained)
         │   + ImageDescriptionEnricher.execute() populates image_description
         ▼
 enriched (layer "enriched", flat)
-   EnrichedQuizModel   (+ image_description)
+   EnrichedQuizModel   (+ image_description, quiz_metadata)
         │ to embeddable → ToEmbeddableQuiz().execute(items)
         │                 (indexing side: dedup + QuizMapper.from_enriched_to_embeddable)
         ▼
 embeddable (flat)
-   EmbeddableQuizModel   (image_description, embedding, embedded_text)
+   EmbeddableQuizModel   (image_description, quiz_metadata, embedding, embedded_text)
         │ embed (EmbedStep) → embedding populated
         │ to_entity → QuizMapper.from_embeddable_to_quiz_question (via ForEach)
         ▼
 db row (flat)
-   QuizQuestion   [entity, commons/entities/quiz — unchanged]
+   QuizQuestion   [entity, domain/entities/quiz]
 ```
 
 `*Model` = non-persisted intermediate (`models/quiz/`); `QuizQuestion` (no
-suffix) = DB row (`commons/entities/quiz/`).
+suffix) = DB row (`domain/entities/quiz/`).
 
 **SP09 decision — flatten+dedup moved to preparation**: flatten (nested
 → flat) and dedup on sub-questions historically happened at the indexing stage.
@@ -59,11 +59,14 @@ by `ApplyStep` in the flow factories — no breakage to the flowstep interface.
   self-contained (`question_id`, `topic`, `number`, `text`, `correct_answer`,
   `image`). Output of `FlattenQuiz.execute` (layer `cleaned`).
 - `enriched_quiz.py` — `EnrichedQuizModel`: same fields as `CleanedQuizModel`
-  + `image_description: str | None`. Output of the enrichment flow (layer
-  `enriched`).
+  + `image_description: str | None` + `quiz_metadata: QuizMetadata | None`.
+  Output of the enrichment flow (layer `enriched`). The base-map
+  (`from_cleaned_to_enriched`) leaves both enrichment fields `None`; each
+  enricher populates its own field via `model_copy`.
 - `embeddable_quiz.py` — `EmbeddableQuizModel`: DTO for computing
   the embedding (indexing side), `embedded_text` property = `f"{topic}
-  {text}"` + `f" {image_description}"` if present.
+  {text}"` + `f" {image_description}"` if present. Carries `quiz_metadata`
+  (passed through from `EnrichedQuizModel` for DB storage).
 - `image_description.py` — `ImageDescription(BaseModel, frozen=True)`:
   `name: str`, `description: str`.
 
@@ -92,7 +95,7 @@ each as `from_X_to_Y(model, *extra) -> Z`.
 | `from_parsed_to_cleaned` | `(item: ParsedQuizItemModel, parent: ParsedQuizModel) -> CleanedQuizModel` | denormalises `question_id`/`topic` from `parent` (SP09) |
 | `from_cleaned_to_enriched` | `(item: CleanedQuizModel) -> EnrichedQuizModel` | base-map flat→flat, `image_description=None` (SP09) |
 | `from_enriched_to_embeddable` | `(item: EnrichedQuizModel) -> EmbeddableQuizModel` | indexing side; 1 argument, flat model (renamed in SP03, ex `from_enriched_quiz_item_to_embeddable`) |
-| `from_embeddable_to_quiz_question` | `(model: EmbeddableQuizModel) -> QuizQuestion` | drops `image_description`, keeps `embedding` |
+| `from_embeddable_to_quiz_question` | `(model: EmbeddableQuizModel) -> QuizQuestion` | drops `image_description`, carries `quiz_metadata` and `embedding` to entity |
 
 **Decisions:**
 
@@ -125,12 +128,13 @@ The `orchestrators/steps/quiz/` package no longer contains any step class
 
 ```
 services/quiz/
-├── __init__.py                          # re-exports ImageDescriptionEnricher
+├── __init__.py                          # re-exports ImageDescriptionEnricher, NormReferenceEnricher
 ├── flatten_quiz.py                      # FlattenQuiz(UseCase[list[ParsedQuizModel], list[CleanedQuizModel]])
 ├── to_embeddable_quiz.py                # ToEmbeddableQuiz(UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]])
 └── enrichers/
-    ├── __init__.py                      # re-exports ImageDescriptionEnricher
-    └── image_description_enricher.py    # ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]])
+    ├── __init__.py                      # re-exports ImageDescriptionEnricher, NormReferenceEnricher
+    ├── image_description_enricher.py    # ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]])
+    └── norm_reference_enricher.py       # NormReferenceEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]])
 ```
 
 **`FlattenQuiz`** (`services/quiz/flatten_quiz.py`, SP02): implements
@@ -155,6 +159,16 @@ Responsibility: dedup + enriched→embeddable mapping. Does not depend on flowst
 satisfied `EnricherProtocol` structurally). `execute` (ex `enrich`): same
 logic as before — dedup on key `(image, topic, text)`, one vision call
 per unique image, skip + warning on missing file or exception.
+
+**`NormReferenceEnricher`** (`services/quiz/enrichers/norm_reference_enricher.py`):
+implements `UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]]`. Text-only
+(no vision calls); same structural pattern as `ImageDescriptionEnricher`.
+`__init__(agent: NormReferenceDescriberAgent, mapper: NormReferenceDescriberMapper)`.
+**Dedup key**: `(topic, text, correct_answer, image_filename)` (4-field tuple) —
+one LLM call per unique sub-question. Called after `ImageDescriptionEnricher` in
+`ApplyStep("enrich")`, so `image_description` is already available for the prompt.
+Agent error → `logger.warning` + `quiz_metadata` remains `None` (does not interrupt
+the batch — same failure tolerance as `ImageDescriptionEnricher`).
 
 **Removed**: `services/quiz/quiz_enrichment_service.py` (`QuizEnrichmentService`)
 and `services/quiz/enrichers/quiz_enricher.py` (`Protocol QuizEnricher`).
@@ -237,11 +251,13 @@ def build_quiz_enrichment_flow(
 
 Chain (current, 3 steps):
 `LoadJsonStep("load_cleaned_quiz")` →
-`ApplyStep("enrich", ForEach(QuizMapper.from_cleaned_to_enriched), ImageDescriptionEnricher(...))` →
+`ApplyStep("enrich", ForEach(QuizMapper.from_cleaned_to_enriched), ImageDescriptionEnricher(...), NormReferenceEnricher(...))` →
 `WriteJsonStep("write_enriched_quiz")`.
-The base-map (`ForEach`) and enrichment (`ImageDescriptionEnricher`) are
-applied in sequence by the same `ApplyStep`, eliminating the previous
-separate `MapStep` + `EnrichDataStep`.
+The base-map (`ForEach`) and both enrichers are applied in sequence by the same
+`ApplyStep`: `ImageDescriptionEnricher` runs first (populates `image_description`),
+then `NormReferenceEnricher` (populates `quiz_metadata`, with `image_description`
+already available for the prompt). Open/Closed: adding a further enricher
+requires only inserting it into the `*transforms` list.
 
 **Decisions:**
 
@@ -294,6 +310,8 @@ available.
   `repositories/__init__.py`.
 - `truncate()` + `bulk_insert(questions: list[QuizQuestion])` — both
   inherited from the base; columns `number, question_id, topic, text,
-  correct_answer, image_filename, embedding`, mapped row by row by
-  `_to_db_row` (`@staticmethod` override). No additional own methods
-  (unlike knowledge, the quiz has a single source → no `delete_source`).
+  correct_answer, image_filename, quiz_metadata, embedding`, mapped row by row by
+  `_to_db_row` (`@staticmethod` override). `quiz_metadata` is serialised as
+  `Jsonb(item.quiz_metadata.model_dump())` when present, `None` otherwise.
+  No additional own methods (unlike knowledge, the quiz has a single source
+  → no `delete_source`).
