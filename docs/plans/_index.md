@@ -69,7 +69,6 @@ e documentato in [`docs/architecture/ingestor/`](../docs/architecture/ingestor/_
 | File | Topic | Status |
 |------|-------|--------|
 | [Mapping offline quiz ↔ norma (LLM-as-a-Judge)](2026-07-03--ingest-llm-as-judge.md) | Mapping offline quiz ↔ norma (LLM-as-a-Judge) | Draft |
-| [Quiz Enrichment: NormReference Keywords](2026-07-03--ingest-quiz-enrichment-norm-keywords.md) | Quiz Enrichment: NormReference Keywords | Implemented |
 | [Quiz Indexing: Metadata Embedding](2026-07-03--ingest-quiz-indexing-metadata-embedding.md) | Quiz Indexing: Metadata Embedding | Draft |
 | [Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF)](architecture-hybrid-retrieval.md) | Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF) | Draft |
 
