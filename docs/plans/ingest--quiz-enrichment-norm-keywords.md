@@ -37,31 +37,54 @@ non il dominio normativo.
    immagini: `run_sync(request, images=())`. Config in YAML, DTO separati per request/response.
 4. **Nessuna modifica a `embedded_text`** — `EmbeddableQuizModel.embedded_text` rimane
    `"{topic} {text} {image_description}"`. Il nuovo campo transita nel modello ma non vi entra.
-5. **JSONB serialization** — nel `_to_db_row` wrappare `quiz_metadata` con
-   `psycopg.types.json.Jsonb(...)` per evitare ambiguità di tipo con psycopg3.
+5. **JSONB serialization** — nel `_to_db_row` wrappare con `psycopg.types.json.Jsonb(...)`
+   chiamando `item.quiz_metadata.model_dump()` per evitare ambiguità di tipo con psycopg3.
 6. **`image_filename` fuori dalla request DTO** — la request porta solo i campi usati nel
    prompt (`topic`, `text`, `correct_answer`, `image_description`). `image_filename` resta
    nell'`EnrichedQuizModel` e viene letto dall'enricher per il dedup key tramite `_make_key`.
+7. **`QuizMetadata` come domain model in `commons`** — `quiz_metadata` è tipizzato come
+   `QuizMetadata | None` su tutti i modelli e sull'entità. Il modello vive in `commons`
+   perché è un concetto di dominio condiviso tra ingestor e judge futuro (Clean Architecture:
+   dipendenze verso l'interno). `NormReferenceDescriberResponse` è un DTO separato con la
+   stessa shape: la duplicazione è intenzionale perché i due oggetti hanno cicli di vita
+   indipendenti (DTO agente vs. domain model).
 
 ## Passi implementativi
 
-### 1. Estendere i modelli pipeline
+### 1. Domain model `QuizMetadata` in `commons`
+
+Creare **`src/commons/models/quiz/quiz_metadata.py`**:
+
+```python
+class QuizMetadata(BaseModel):
+    core_concepts: list[str]
+    entities: list[str]
+    exact_keywords: list[str]
+    vector_search_queries: list[str]
+    rule_explanation: str
+```
+
+Esportare da `src/commons/models/quiz/__init__.py` (crearlo se non esiste).
+
+**Test:** nessun test unitario (model puro Pydantic, testato indirettamente).
+
+### 2. Estendere i modelli pipeline
 
 Modificare **`src/guidami_ai_patente_ingestor/models/quiz/enriched_quiz.py`**:
-- Aggiungere `quiz_metadata: dict | None = None`
+- Aggiungere `quiz_metadata: QuizMetadata | None = None`
 
 Modificare **`src/guidami_ai_patente_ingestor/models/quiz/embeddable_quiz.py`**:
-- Aggiungere `quiz_metadata: dict | None = None`
+- Aggiungere `quiz_metadata: QuizMetadata | None = None`
 - **Non toccare `embedded_text`** — il nuovo campo non vi entra.
 
 Modificare **`src/commons/entities/quiz/quiz_question.py`**:
-- Aggiungere `quiz_metadata: dict | None = None`
+- Aggiungere `quiz_metadata: QuizMetadata | None = None`
 
 **Test:**
 - Modificare: `tests/.../mappers/test_quiz_mapper.py` — verificare che `from_enriched_to_embeddable`
   passi `quiz_metadata` e che `embedded_text` non lo contenga
 
-### 2. DB schema
+### 3. DB schema
 
 Modificare **`db/init.sql`** — aggiungere a `quiz_questions`:
 ```sql
@@ -76,7 +99,7 @@ docker compose -f docker/docker-compose.yml up -d
 
 **Test:** nessun test aggiuntivo — verificato dal DoD (query diretta).
 
-### 3. Agent DTO: NormReferenceDescriber
+### 4. Agent DTO: NormReferenceDescriber
 
 Creare il sotto-package `src/guidami_ai_patente_ingestor/agents/dto/norm_reference_describer/`:
 
@@ -101,7 +124,7 @@ class NormReferenceDescriberResponse(BaseModel):
 
 **`__init__.py`** — re-esporta entrambi.
 
-### 4. Agente e config YAML
+### 5. Agente e config YAML
 
 Creare **`src/guidami_ai_patente_ingestor/agents/norm_reference_describer_agent.py`**
 (pattern identico a `RoadSignDescriberAgent`, output_type=`NormReferenceDescriberResponse`).
@@ -145,20 +168,24 @@ Aggiornare `src/guidami_ai_patente_ingestor/agents/__init__.py` con il nuovo re-
 **Test:** nessun test diretto sull'agente (wrapper thin su pydantic_ai, testato
 indirettamente tramite l'enricher con mock).
 
-### 5. Mapper agente
+### 6. Mapper agente
 
 Creare **`src/guidami_ai_patente_ingestor/mappers/agents/norm_reference_describer_mapper.py`**
 (statico, nessuna dipendenza iniettata — pattern `RoadSignDescriberMapper`):
 - `from_enriched_quiz_to_request(q: EnrichedQuizModel) -> NormReferenceDescriberRequest`
   → mappa `topic`, `text`, `correct_answer`, `image_description`
 - `from_response_to_enriched_quiz(q: EnrichedQuizModel, r: NormReferenceDescriberResponse) -> EnrichedQuizModel`
-  → `q.model_copy(update={"quiz_metadata": r.model_dump()})`
+  → `q.model_copy(update={"quiz_metadata": QuizMetadata(**r.model_dump())})`
+
+  Nota: la conversione `NormReferenceDescriberResponse` → `QuizMetadata` avviene qui al
+  confine tra DTO agente e domain model. `model_dump()` + costruttore è sicuro perché i
+  due modelli hanno la stessa shape (duplicazione intenzionale, cfr. decisione n.7).
 
 Aggiornare `src/guidami_ai_patente_ingestor/mappers/agents/__init__.py`.
 
 **Test:** nessun test diretto (mapper puro, testato indirettamente tramite enricher).
 
-### 6. Enricher: NormReferenceEnricher
+### 7. Enricher: NormReferenceEnricher
 
 Creare **`src/guidami_ai_patente_ingestor/services/quiz/enrichers/norm_reference_enricher.py`**:
 
@@ -181,7 +208,7 @@ Pattern identico a `ImageDescriptionEnricher` ma:
 - Aggiungere: `test_agent_failure_skips_question` — eccezione → riga invariata, warning loggato
 - Aggiungere: `test_unique_questions_each_get_a_call` — N domande diverse → N chiamate agente
 
-### 7. Aggiornare `QuizMapper`
+### 8. Aggiornare `QuizMapper`
 
 Modificare `src/guidami_ai_patente_ingestor/mappers/quiz_mapper.py`:
 
@@ -194,7 +221,7 @@ Modificare `src/guidami_ai_patente_ingestor/mappers/quiz_mapper.py`:
 - Modificare: `test_from_embeddable_to_quiz_question` — verifica che `quiz_metadata` sia nell'entità
 - Aggiungere: `test_embedded_text_excludes_quiz_metadata` — `embedded_text` non contiene `quiz_metadata`
 
-### 8. Aggiornare il repository
+### 9. Aggiornare il repository
 
 Modificare `src/guidami_ai_patente_ingestor/repositories/db/quiz_question_store_repository.py`:
 
@@ -212,7 +239,7 @@ def _to_db_row(item: QuizQuestion) -> tuple[object, ...]:
     return (
         item.number, item.question_id, item.topic, item.text,
         item.correct_answer, item.image_filename,
-        Jsonb(item.quiz_metadata) if item.quiz_metadata is not None else None,
+        Jsonb(item.quiz_metadata.model_dump()) if item.quiz_metadata is not None else None,
         item.embedding,
     )
 ```
@@ -220,7 +247,7 @@ def _to_db_row(item: QuizQuestion) -> tuple[object, ...]:
 **Test:** integration test (opzionale, richiede DB attivo) — verifica che
 `quiz_metadata` venga persistito correttamente.
 
-### 9. Aggiornare `build_quiz_enrichment_flow`
+### 10. Aggiornare `build_quiz_enrichment_flow`
 
 Modificare `src/guidami_ai_patente_ingestor/orchestrators/quiz_flows.py`,
 funzione `build_quiz_enrichment_flow`:
@@ -242,7 +269,7 @@ Aggiornare gli import.
 
 **Test:** nessun test nuovo (flow builder testato a livello di smoke test esistente).
 
-### 10. Aggiornare `enrichers/__init__.py`
+### 11. Aggiornare `enrichers/__init__.py`
 
 Aggiungere re-export di `NormReferenceEnricher` in
 `src/guidami_ai_patente_ingestor/services/quiz/enrichers/__init__.py`.
