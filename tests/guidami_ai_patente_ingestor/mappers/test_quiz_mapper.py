@@ -139,3 +139,35 @@ def test_from_embeddable_to_quiz_question_preserves_none_image_filename() -> Non
     result = QuizMapper.from_embeddable_to_quiz_question(eq)
 
     assert result.image_filename is None
+
+
+# --- quiz_metadata pass-through (requires implementation of plan
+#     2026-07-03--ingest-quiz-enrichment-norm-keywords) ---
+
+
+def test_from_enriched_to_embeddable_propagates_quiz_metadata() -> None:
+    item = _enriched_item("1")
+    # Inject quiz_metadata onto EnrichedQuizModel bypassing Pydantic validation to simulate
+    # the state after the quiz_metadata field is declared on the model.
+    sentinel = object()
+    item.__dict__["quiz_metadata"] = sentinel
+
+    result = QuizMapper.from_enriched_to_embeddable(item)
+
+    assert getattr(result, "quiz_metadata", "MISSING") is sentinel, (
+        "from_enriched_to_embeddable must propagate quiz_metadata to EmbeddableQuizModel"
+    )
+
+
+def test_from_embeddable_to_quiz_question_propagates_quiz_metadata() -> None:
+    eq = _embeddable()
+    # Inject quiz_metadata onto EmbeddableQuizModel bypassing Pydantic validation to simulate
+    # the state after the quiz_metadata field is declared on the model.
+    sentinel = object()
+    eq.__dict__["quiz_metadata"] = sentinel
+
+    result = QuizMapper.from_embeddable_to_quiz_question(eq)
+
+    assert getattr(result, "quiz_metadata", "MISSING") is sentinel, (
+        "from_embeddable_to_quiz_question must propagate quiz_metadata to QuizQuestion entity"
+    )
