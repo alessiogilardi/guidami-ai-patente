@@ -15,7 +15,7 @@ allowed-tools: Bash(uv run ${CLAUDE_PROJECT_DIR}/.claude/skills/write-plan/scrip
 
 Create a task for each of these items and complete them strictly in order:
 
-1. **Context exploration**: Analyse the current project state (files, documentation, recent commits).
+1. **Context exploration**: Analyze the current project state (files, documentation, recent commits).
 2. **Step 0 (Understanding)**: Run the preliminary analysis and fill in the understanding template.
 3. **Blocking gate**: Get explicit user confirmation on *slug* and *effort* before proceeding.
 4. **Approach proposals**: Present 2–3 options with trade-offs and your recommendation.
@@ -29,26 +29,32 @@ Create a task for each of these items and complete them strictly in order:
 
 Before starting the scaffolding phase or generating any plan file, run a preliminary analysis of the task by exploring the project context (files, documentation, recent commits). This phase must produce a structured, targeted output — no free-form conversations or rituals.
 
-**Scope Assessment and Decomposition:** \
+#### **Scope Assessment and Decomposition:**
+
 Before asking detailed questions, assess the breadth of the request. If it describes multiple independent subsystems (e.g. "build a platform with chat, file storage, billing, and analytics"), flag it immediately. Help the user decompose the work into independent sub-projects, defining relationships and development order. Each sub-project will follow its own independent cycle (spec → plan → implementation).
 
-1. **Required Output (Step 0 Template):** \
+#### **Required Output (Step 0 Template):**
+
 Every initial interaction must produce a single message that maps directly to the future plan sections:
 
-    * **Problem / Motivation:** The business value or bug to fix (extreme summary).
-    * **Non-Goals (Draft):** What is explicitly excluded from this intervention.
-    * **Affected Areas:** Modules, files, or code components impacted.
-    * **Effort Estimate:** Proposed sizing (S, M, L, XL).
+* **Problem / Motivation:** The business value or bug to fix (extreme summary).
+* **Non-Goals (Draft):** What is explicitly excluded from this intervention.
+* **Affected Areas:** Modules, files, or code components impacted.
+* **Effort Estimate:** Proposed sizing (S, M, L, XL).
 
-2. **Question Logic Proportional to Effort:** \
+#### **Question Logic Proportional to Effort:**
+
 Calibrate the depth of investigation to avoid unnecessary overhead:
 
-    * **For effort S:** Zero investigative questions. Only propose the plan *slug* and effort *S*, asking only for confirmation to proceed.
-    * **For effort M:** At most 1 or 2 targeted questions, asked **one at a time per message**, only if there are real ambiguities about affected areas.
-    * **For effort L / XL:** Strategic questions are mandatory before proceeding, focusing on understanding scope, constraints, and success criteria. Ask questions **one at a time per message**. Clarify *non-goals*, technical risks, critical dependencies, and potential breaking changes.
-    * *Note on questions:* Prefer multiple-choice questions when possible, but keep flexibility for open-ended questions when needed.
+| Effort Level | Question Quantity | Required Actions and Focus |
+| :--- | :--- | :--- |
+| **S** | None (0) | Only propose the plan *slug* and effort *S*, asking only for confirmation to proceed. |
+| **M** | Max 1 or 2 (one per message) | Ask questions only if there are real ambiguities about affected code areas. |
+| **L / XL** | Mandatory (one per message) | Strategic questions to understand scope, constraints, and success criteria. Clarify *non-goals*, technical risks, critical dependencies, and potential breaking changes. |
 
-3. **Blocking Gate (Non-Negotiable Rule):** \
+> **General note on questions:** Prefer multiple-choice questions when possible, but keep flexibility for open-ended questions when strictly necessary.
+
+#### **Blocking Gate (Non-Negotiable Rule):**
 **ABSOLUTE PROHIBITION:** Do not run `create_plan.py` (or any scaffolding command/script) until *slug* and *effort* have been explicitly confirmed by the user in chat.
 
 The model proposes the understanding card and any necessary questions; the user unlocks execution of the next step.
@@ -80,7 +86,7 @@ The model proposes the understanding card and any necessary questions; the user 
 #### Working on Existing Codebases
 
 * Thoroughly explore the current structure before proposing changes, and always follow existing project patterns.
-* If the existing code has structural problems that affect the current work (e.g. files too large, confused responsibilities, unclear boundaries), include targeted and localised improvements as part of the design.
+* If the existing code has structural problems that affect the current work (e.g. files too large, confused responsibilities, unclear boundaries), include targeted and localized improvements as part of the design.
 * **Do not propose unrelated refactoring**: stay strictly focused only on what is needed to reach the current goal.
 
 #### Key Principles
