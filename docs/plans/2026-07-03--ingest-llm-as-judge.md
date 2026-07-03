@@ -5,9 +5,7 @@ effort: L
 # Mapping offline quiz ↔ norma (LLM-as-a-Judge)
 
 References: [docs/plans/_index.md](_index.md),
-[ingest--quiz-embeddings.md](ingest--quiz-embeddings.md),
-[architecture-ingestor.md](architecture-ingestor.md),
-[tech-stack.md](tech-stack.md).
+[ingest--quiz-enrichment-norm-keywords.md](ingest--quiz-enrichment-norm-keywords.md).
 
 ## Context and motivation
 
@@ -20,10 +18,14 @@ ad articolo/comma e il linguaggio semplificato del quiz non combacia con il
 Il collegamento viene costruito offline, una volta sola, tramite un pattern
 candidate-generation + LLM-as-a-Judge a due stadi:
 
-1. **Retrieve** — per ogni domanda si legge l'embedding precomputato da
-   `quiz_questions.embedding` (1536 dim, `text-embedding-3-small`) e si fanno
-   top-k chunk candidati via pgvector cosine similarity (`<=>`).
-2. **Judge** — un LLM (`QuizNormaJudge`) sceglie tra i candidati quelli
+1. **Retrieve** — per ogni domanda si legge `quiz_questions.metadata_embedding`
+   (precomputato da `MetadataEmbeddingEnricher` durante `ingest prepare quiz`) e si
+   fa una ricerca top-k su `knowledge_chunks` via pgvector cosine similarity (`<=>`).
+   Il vettore vive nello spazio semantico normativo — stesso spazio dei chunk — perché
+   è costruito dalle `vector_search_queries` di `quiz_metadata`. Per le domande senza
+   `metadata_embedding` (quiz image-only che non hanno ricevuto `quiz_metadata`) il
+   fallback usa `quiz_questions.embedding` precomputato.
+2. **Judge** — un LLM (`QuizNormaJudgeAgent`) sceglie tra i candidati quelli
    pertinenti, restituendo label selezionati, `confidence` 0–1 e `rationale`.
 
 Vantaggi:
@@ -33,17 +35,19 @@ Vantaggi:
   l'articolo dal testo ambiguo.
 - **QC umano**: la `confidence` consente di revisionare i mapping incerti con
   una semplice query su soglia.
-- **Costi ottimizzati**: la chiamata LLM avviene una volta sola offline;
-  il provider evolve per fasi (Groq → OpenRouter).
+- **Costi ottimizzati**: la chiamata LLM avviene una volta sola offline.
 
-**Prerequisito bloccante**: corpus indicizzato e quiz embeddati a 1536 dim con
-`text-embedding-3-small` (vedi [ingest--quiz-embeddings.md](ingest--quiz-embeddings.md)).
-Il recall@k è ancora da validare con `--sample N` prima del batch completo.
+**Prerequisito bloccante**: piano `ingest--quiz-enrichment-norm-keywords.md`
+implementato — `quiz_questions.metadata_embedding` popolato per la maggioranza dei
+quiz. Il recall del retrieve dipende interamente da questo vettore; senza di esso
+il sistema cade sul fallback `quiz_questions.embedding` (spazio quiz-language → recall
+basso sui chunk normativi).
 
 ## Non-goals
 
-- Nessun embedding a tempo di giudizio: l'embedding delle domande è
-  precomputato da `ingest-quiz`; questa pipeline lo legge, non lo ricalcola.
+- **Nessun embedding a tempo di giudizio**: il retrieve usa `quiz_questions.metadata_embedding`
+  precomputato durante `ingest prepare quiz`. Il judge non chiama alcun servizio di
+  embedding — legge solo vettori già presenti in DB.
 - Nessuna UI per la revisione dei mapping (v1: solo storage + report JSON).
 - Nessun retrieval semantico a runtime per la spiegazione iniziale: il futuro
   `ExplanationService` farà solo JOIN su `quiz_norma_mappings`.
@@ -53,19 +57,24 @@ Il recall@k è ancora da validare con `--sample N` prima del batch completo.
 
 ## Decisions
 
-1. **litellm diretto, senza wrapper** — `QuizNormaJudge` chiama
-   `litellm.completion` senza ABC né client intermedi: litellm è già il layer
-   di astrazione sui provider. Il provider si cambia con la sola stringa
-   modello in `JudgeConfig` (`groq/…`, `openrouter/…`, `ollama/…`).
-   - Fase 1: `groq/llama-3.3-70b-versatile` (free tier, feedback rapido).
-   - Fase 2: `openrouter/…` (pay-as-you-go per il batch definitivo).
+1. **`BaseAgent` pattern (pydantic-ai), non litellm diretto** — `QuizNormaJudgeAgent`
+   estende `BaseAgent[QuizNormaJudgeRequest, QuizNormaJudgeResponse]` (stesso pattern
+   di `RoadSignDescriberAgent` e `ArticleContextualizerAgent`). Config da YAML →
+   `AgentConfig`. L'output strutturato è gestito da pydantic-ai via `output_type`;
+   nessun parsing JSON manuale né `response_format` da configurare. Il provider si
+   cambia con la sola stringa `model_name` nel YAML
+   (`openrouter/google/gemini-2.5-flash`, `groq/llama-3.3-70b-versatile`, …).
 
-2. **Output strutturato via JSON schema** — `response_format` di litellm forza
-   la forma della risposta (label candidati `[A]…[H]`, `confidence`, `rationale`);
-   il parsing è deterministico, senza regex fragili.
+2. **Retrieve via `metadata_embedding` precomputato** — `quiz_questions.metadata_embedding`
+   è costruito dalle `vector_search_queries` di `quiz_metadata` (già tradotte in linguaggio
+   burocratico da `NormReferenceEnricher`) e vive nello stesso spazio semantico normativo
+   dei `knowledge_chunks`. Il retrieve è una singola chiamata `search(quiz.metadata_embedding, top_k)`
+   — zero embedding a judge-time, zero complessità multi-query. Questo vettore serve anche
+   come target per retrieval inverso `norm→quiz` (fallback se `quiz_norma_mappings` fosse
+   incompleto): dato un chunk, si cerca tra i `metadata_embedding` dei quiz.
 
 3. **Anti-allucinazione nel prompt** — il prompt impone di scegliere solo tra i
-   candidati forniti o rispondere "nessuno pertinente"; nessuna citazione libera.
+   candidati forniti o rispondere con `selected_labels: []`; nessuna citazione libera.
 
 4. **Cardinalità N:M con rank** — una domanda può mappare più norme; riga per
    `(quiz_number, source, article_number, comma_index)` con `rank` (1 = più
@@ -83,23 +92,26 @@ Il recall@k è ancora da validare con `--sample N` prima del batch completo.
    produce un report JSON (`data/eval/quiz-mapping-sample-<timestamp>.json`)
    per la validazione manuale del recall e della qualità del giudizio.
 
-8. **Fast-path opzionale** — se il candidato top ha similarity ≥ soglia alta,
+8. **Fast-path opzionale** — se il candidato top ha similarity ≤ soglia alta,
    lo si accetta direttamente saltando l'LLM. Off per default; configurabile
-   in `JudgeConfig`.
+   in `QuizMappingConfig`.
 
 ## Open questions / Risks
 
-- **Recall@k embedding**: da validare con `--sample N` prima del batch.
-  Se il chunk giusto non è tra i k candidati, nessun giudice può recuperarlo.
-  Leva principale: alzare `top_k` (es. 8 → 15), non cambiare embedder.
-- **Rate limit Groq free tier**: su ~7098 chiamate i rate limit si assorbono con
-  retry/backoff di litellm + pipeline ripartibile. Da monitorare durante la
-  Fase 1 prima di considerare la migrazione a OpenRouter.
-- **Domande con immagine**: testo minimale → retrieval debole; v1 le mappa
-  comunque ma tendono a bassa confidence. Possibile flag/skip nel report sample.
-- **Unicità di `quiz_questions.number`**: oggi nessun vincolo DB impone
-  l'unicità; il join sulla business key è implicito. Valutare `UNIQUE` constraint
-  (fuori scope di questo piano, ma da segnalare).
+- **Recall@k su `metadata_embedding`**: da validare con `--sample N` prima del batch.
+  Se `metadata_embedding` è assente (quiz senza `quiz_metadata`) il fallback su
+  `quiz_questions.embedding` riduce drasticamente il recall (spazio quiz ≠ spazio
+  normativo). Leva principale: aumentare la copertura dell'enricher o alzare `top_k`,
+  non cambiare embedder.
+- **Rate limit provider**: su ~7098 chiamate i rate limit si assorbono con
+  retry/backoff di pydantic-ai (`num_retries` in `AgentConfig`). Da monitorare
+  durante la fase 1 con Groq free tier prima di migrare a OpenRouter.
+- **Domande con immagine**: testo minimale → `vector_search_queries` potrebbero
+  essere generiche; il fallback su `quiz_questions.embedding` produce candidati
+  peggiori. V1 le mappa comunque ma tendono a bassa confidence. Flag nel report sample.
+- **Unicità di `quiz_questions.number`**: nessun vincolo DB impone l'unicità;
+  il join sulla business key è implicito. Valutare `UNIQUE` constraint
+  (fuori scope di questo piano).
 
 ## Implementation tasks
 
@@ -123,25 +135,24 @@ CREATE TABLE IF NOT EXISTS quiz_norma_mappings (
 CREATE INDEX IF NOT EXISTS idx_qnm_quiz_number ON quiz_norma_mappings (quiz_number);
 ```
 
-Nessun test unitario; verificato con `docker compose down -v && docker compose up -d`.
+**Test:** nessun test unitario — verificato con `docker compose down -v && docker compose up -d`,
+poi `\d quiz_norma_mappings`.
 
-### 2. `JudgeConfig`
+### 2. `QuizMappingConfig`
 
-File: `src/commons/configs/judge_config.py`
+File: `src/commons/configs/quiz_mapping_config.py`
 
-Config Pydantic (`frozen=True`):
-- `model: str` — stringa litellm (es. `groq/llama-3.3-70b-versatile`)
-- `api_base: str | None` — default `None`
-- `top_k: int` — default 8
-- `confidence_threshold: float` — default 0.5
-- `temperature: float` — default 0.0
-- `max_retries: int` — default 3
+Config Pydantic (`frozen=True`) con i soli parametri specifici del retrieve/judge
+(i parametri agente vivono nel YAML → `AgentConfig`, non qui):
 
-Aggiungere `judge: JudgeConfig` e `quiz_norma_mappings_table: str` a
-`IngestorConfig` (campo esistente in `src/guidami_ai_patente_ingestor/configs/`).
+- `top_k: int = 8` — candidati per il retrieve
+- `confidence_threshold: float = 0.5` — soglia minima per accettare un mapping
+- `fast_path_threshold: float | None = None` — similarity threshold per fast-path (None = disabilitato)
 
-**Tests:**
-- Add: `tests/commons/configs/test_judge_config.py::test_judge_config_defaults`
+Aggiungere `quiz_mapping: QuizMappingConfig` a `IngestorConfig`.
+
+**Test:**
+- Aggiungere: `tests/commons/configs/test_quiz_mapping_config.py::test_defaults`
   — valori default corretti, modifica bloccata (frozen)
 
 ### 3. `QuizNormaMapping` entity
@@ -152,8 +163,8 @@ Pydantic model 1:1 con la riga DB: `quiz_number`, `source`, `article_number`,
 `comma_index`, `rank`, `confidence`, `rationale`, `judged_at`.
 Esposto in `src/commons/entities/quiz/__init__.py`.
 
-**Tests:**
-- Add: `tests/commons/entities/quiz/test_quiz_norma_mapping.py::test_construction`
+**Test:**
+- Aggiungere: `tests/commons/entities/quiz/test_quiz_norma_mapping.py::test_construction`
   — costruzione da dict, serializzazione round-trip
 
 ### 4. `KnowledgeChunkSearchRepository`
@@ -163,13 +174,13 @@ File: `src/commons/repositories/knowledge_chunk_search_repository.py`
 Metodo: `search(embedding: list[float], top_k: int) -> list[tuple[KnowledgeChunk, float]]`
 
 Top-k cosine similarity su `knowledge_chunks` via `embedding <=> %s::vector`.
-Ritorna chunk ordinati per score crescente (distanza) con il punteggio associato.
-Riusabile dall'app a runtime per follow-up liberi.
+Ritorna chunk ordinati per score crescente (distanza coseno) con il punteggio associato.
+Il pipeline chiama questo metodo una volta per ogni query in `vector_search_queries`
+e fa union dei risultati prima di passarli al judge.
 
-**Tests:**
-- Add: `tests/commons/repositories/test_knowledge_chunk_search_repository.py::test_search_returns_top_k`
-  (integration, `@pytest.mark.integration`) — top-k ritorna i chunk più vicini
-  nell'ordine corretto
+**Test:**
+- Aggiungere: `tests/commons/repositories/test_knowledge_chunk_search_repository.py::test_search_returns_top_k`
+  (`@pytest.mark.integration`) — top-k ritorna i chunk più vicini nell'ordine corretto
 
 ### 5. `QuizNormaMappingStoreRepository`
 
@@ -180,53 +191,116 @@ Metodi:
 - `upsert(mappings: list[QuizNormaMapping]) -> None` —
   `INSERT … ON CONFLICT (quiz_number, source, article_number, comma_index) DO UPDATE`
 
-**Tests:**
-- Add: `tests/ingestor/repositories/test_quiz_norma_mapping_store_repository.py`
-  (integration) — `upsert` idempotente su conflitto; `get_mapped_quiz_numbers`
+**Test:**
+- Aggiungere: `tests/ingestor/repositories/test_quiz_norma_mapping_store_repository.py`
+  (`@pytest.mark.integration`) — `upsert` idempotente su conflitto; `get_mapped_quiz_numbers`
   ritorna esattamente i `quiz_number` presenti
 
-### 6. `QuizNormaJudge`
+### 6. Agent DTO: `QuizNormaJudge`
 
-File: `src/guidami_ai_patente_ingestor/services/quiz_mapping/quiz_norma_judge.py`
+Creare il sotto-package `src/guidami_ai_patente_ingestor/agents/dto/quiz_norma_judge/`:
 
-Riceve `JudgeConfig`; espone:
-`judge(question: QuizQuestion, candidates: list[KnowledgeChunk]) -> JudgeResult`
+**`quiz_norma_judge_request.py`**:
+```python
+class QuizNormaJudgeRequest(BaseModel):
+    topic: str
+    text: str
+    correct_answer: bool
+    image_description: str | None = None
+    candidates_text: str  # candidati pre-formattati: "[A] testo\n[B] ..."
+```
 
-Flusso interno:
-1. Etichetta i candidati `[A]…[H]`.
-2. Costruisce il prompt (domanda + candidati con testo e riferimento norma).
-3. Chiama `litellm.completion` con `response_format` JSON schema.
-4. Valida e parsa l'output in `JudgeResult` (`selections`, `confidence`, `rationale`).
+**`quiz_norma_judge_response.py`**:
+```python
+class QuizNormaJudgeResponse(BaseModel):
+    selected_labels: list[str]  # es. ["A", "C"]
+    confidence: float           # 0.0–1.0
+    rationale: str
+```
 
-`JudgeResult` è un Pydantic model interno al modulo.
+**`__init__.py`** — re-esporta entrambi.
 
-**Tests:**
-- Add: `tests/ingestor/services/quiz_mapping/test_quiz_norma_judge.py`
-  - `test_judge_valid_response` — mock `litellm.completion`, output parsato correttamente
-  - `test_judge_no_match` — "nessuno pertinente" gestito senza eccezioni
-  - `test_judge_malformed_response` — output malformato solleva eccezione definita
+Il labeling `[A]…[H]` viene costruito dal pipeline prima della chiamata agente:
+`candidates_text` è una stringa preformattata e il template YAML la inserisce nel
+prompt via `$candidates_text`. pydantic-ai deduce il JSON schema da `output_type`;
+nessun `response_format` da configurare manualmente.
 
-### 7. `QuizMappingPipeline` + `QuizMappingPipelineBuilder`
+**Test:** nessun test diretto (plain Pydantic, testati indirettamente tramite l'agente con mock).
+
+### 7. `QuizNormaJudgeAgent` e config YAML
+
+Creare **`src/guidami_ai_patente_ingestor/agents/quiz_norma_judge_agent.py`**:
+
+```python
+class QuizNormaJudgeAgent(BaseAgent[QuizNormaJudgeRequest, QuizNormaJudgeResponse]):
+    @classmethod
+    def from_yaml(cls, name: str, agents_dir: Path) -> "QuizNormaJudgeAgent":
+        config = ConfigLoader.from_yaml(agents_dir, name)
+        return cls(config, QuizNormaJudgeResponse)
+```
+
+Creare **`configs/agents/quiz_norma_judge.yaml`**:
+```yaml
+model_name: openrouter/google/gemini-2.5-flash
+temperature: 0.0
+max_tokens: 2000
+num_retries: 3
+system: |
+  Sei un esperto del Codice della Strada italiano. Analizza la domanda del quiz
+  e i candidati articoli normativi forniti. Seleziona SOLO i candidati pertinenti
+  a giustificare la risposta corretta. Non inventare né citare articoli non presenti
+  tra i candidati. Se nessun candidato è pertinente, restituisci selected_labels vuoto.
+user: |
+  Argomento: $topic
+  Domanda: $text
+  Risposta corretta: $correct_answer
+  Descrizione immagine: $image_description
+
+  Candidati:
+  $candidates_text
+
+  Seleziona i candidati pertinenti e restituisci selected_labels, confidence (0.0–1.0)
+  e rationale.
+```
+
+Aggiornare `src/guidami_ai_patente_ingestor/agents/__init__.py` con il nuovo re-export.
+
+**Test:**
+- Aggiungere: `tests/ingestor/agents/test_quiz_norma_judge_agent.py`
+  - `test_judge_valid_response` — mock `Agent.run_sync`, output parsato correttamente
+  - `test_judge_no_match` — `selected_labels: []` gestito senza eccezioni
+  - `test_judge_malformed_response` — output malformato → pydantic-ai solleva eccezione
+
+### 8. `QuizMappingPipeline` + `QuizMappingPipelineBuilder`
 
 Files:
 - `src/guidami_ai_patente_ingestor/orchestrators/quiz_mapping/quiz_mapping_pipeline.py`
 - `src/guidami_ai_patente_ingestor/orchestrators/quiz_mapping/quiz_mapping_pipeline_builder.py`
 
 `QuizMappingPipeline.run(force: bool, sample: int | None, seed: int | None)`:
-1. Carica skip set da `QuizNormaMappingStoreRepository` (`vuoto se --force`).
+1. Carica skip set da `QuizNormaMappingStoreRepository` (vuoto se `--force`).
 2. Se `sample`: estrae N domande a caso con `random.Random(seed).sample(...)`.
-3. Per ogni domanda non nel skip set: retrieve → judge → costruisci `QuizNormaMapping`.
-4. Se non dry-run: `upsert`; altrimenti accumula per il report.
+3. Per ogni domanda non nel skip set:
+   - **Retrieve**: chiama `KnowledgeChunkSearchRepository.search(quiz.metadata_embedding, top_k)`
+     se `metadata_embedding` presente; fallback su `quiz.embedding` se assente.
+   - **Fast-path**: se `fast_path_threshold` configurato e il candidato top supera
+     la soglia di similarity, accetta direttamente senza LLM.
+   - **Judge**: costruisce `candidates_text` con labeling `[A]…`, chiama
+     `QuizNormaJudgeAgent.run_sync(request)`, mappa le label selezionate ai chunk
+     reali, costruisce lista di `QuizNormaMapping`.
+4. Se non dry-run: `upsert(mappings)`.
 5. Log progress `n/total`; riepilogo finale (mappate / senza match / sotto-soglia).
 6. Se dry-run: scrive `data/eval/quiz-mapping-sample-<timestamp>.json`.
 
-**Tests:**
-- Add: `tests/ingestor/orchestrators/quiz_mapping/test_quiz_mapping_pipeline.py`
+**Test:**
+- Aggiungere: `tests/ingestor/orchestrators/quiz_mapping/test_quiz_mapping_pipeline.py`
   - `test_skip_already_mapped` — domande nello skip set non chiamano il judge
   - `test_dry_run_no_upsert` — con `sample` non si chiama `upsert`
   - `test_force_clears_skip_set` — `--force` fa girare la pipeline su tutte le domande
+  - `test_uses_metadata_embedding_for_retrieve` — `search` riceve `metadata_embedding`, non `embedding`
+  - `test_fallback_to_primary_embedding` — quiz con `metadata_embedding=None` usa `quiz.embedding`
 
-### 8. Entry point e CLI
+### 9. Entry point e CLI
 
 File: `src/guidami_ai_patente_ingestor/quiz_mapping_main.py`
 
@@ -238,19 +312,18 @@ Carica `IngestorConfig` dal path YAML, parsea args (`--force`, `--sample N`,
 ingest-quiz-mapping = "guidami_ai_patente_ingestor.quiz_mapping_main:main"
 ```
 
-**Tests**: copertura garantita dai test del builder e della pipeline.
+**Test:** copertura garantita dai test del builder e della pipeline.
 
 ## Definition of Done
 
-- [ ] `CREATE TABLE quiz_norma_mappings` presente in `db/init.sql` e applicato
-  sul DB locale dopo `docker compose down -v && up -d`
-- [ ] `from commons.configs.judge_config import JudgeConfig` risolve
+- [ ] `CREATE TABLE quiz_norma_mappings` presente in `db/init.sql` e applicato sul DB locale
+- [ ] `from commons.configs.quiz_mapping_config import QuizMappingConfig` risolve
 - [ ] `from commons.entities.quiz import QuizNormaMapping` risolve
 - [ ] `from commons.repositories.knowledge_chunk_search_repository import KnowledgeChunkSearchRepository` risolve
-- [ ] `uv run ingest-quiz-mapping --sample 5` gira senza errori e produce un
-  report JSON in `data/eval/`
-- [ ] `uv run pytest` verde (inclusi i nuovi test)
-- [ ] `uv run pyright` pulito
-- [ ] `uv run ruff check src tests` pulito
-- [ ] Agent `doc-architect` invocato (se presente)
-- [ ] Piano aggiornato a `status: Implemented`
+- [ ] `from guidami_ai_patente_ingestor.agents import QuizNormaJudgeAgent` risolve
+- [ ] `uv run ingest-quiz-mapping --sample 5` gira senza errori e produce un report JSON in `data/eval/`
+- [ ] `uv run pytest` green (including new tests)
+- [ ] `uv run pyright` clean
+- [ ] `uv run ruff check src tests` clean
+- [ ] Agent `doc-architect` invoked (if available)
+- [ ] Plan updated to `status: Implemented`
