@@ -5,6 +5,18 @@ from commons.entities.knowledge import KnowledgeChunk
 
 from ._bulk_insert_store_repository import BulkInsertStoreRepository
 
+_KNOWLEDGE_CHUNK_TABLE_COLUMNS = (
+    "source",
+    "article_number",
+    "article_title",
+    "comma_index",
+    "chunk_text",
+    "context",
+    "is_repealed",
+    "source_url",
+    "embedding",
+)
+
 
 class KnowledgeChunkStoreRepository(BulkInsertStoreRepository[KnowledgeChunk]):
     """Scrittura su `knowledge_chunks`.
@@ -19,17 +31,7 @@ class KnowledgeChunkStoreRepository(BulkInsertStoreRepository[KnowledgeChunk]):
         super().__init__(
             client=client,
             table_name=table_name,
-            columns=(
-                "source",
-                "article_number",
-                "article_title",
-                "comma_index",
-                "chunk_text",
-                "context",
-                "is_repealed",
-                "source_url",
-                "embedding",
-            ),
+            columns=_KNOWLEDGE_CHUNK_TABLE_COLUMNS,
             row_mapper=self._to_db_row,
         )
 
