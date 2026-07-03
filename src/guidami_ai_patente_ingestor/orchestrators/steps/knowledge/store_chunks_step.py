@@ -3,7 +3,7 @@
 import logging
 from typing import cast
 
-from commons.entities.knowledge import KnowledgeChunk
+from domain.entities.knowledge import KnowledgeChunk
 from flowstep import FlowContext, Step
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.repositories import KnowledgeChunkStoreRepository

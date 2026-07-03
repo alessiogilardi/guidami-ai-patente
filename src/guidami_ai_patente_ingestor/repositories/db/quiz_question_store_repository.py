@@ -1,7 +1,7 @@
 from psycopg.types.json import Jsonb
 
 from commons.clients import PostgresClient
-from commons.entities.quiz import QuizQuestion
+from domain.entities.quiz import QuizQuestion
 from guidami_ai_patente_ingestor.repositories.db._bulk_insert_store_repository import (
     BulkInsertStoreRepository,
 )

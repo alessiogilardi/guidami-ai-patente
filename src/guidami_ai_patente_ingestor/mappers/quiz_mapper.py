@@ -1,7 +1,7 @@
 import logging
 from pathlib import PurePosixPath
 
-from commons.entities.quiz import QuizQuestion
+from domain.entities.quiz import QuizQuestion
 from guidami_ai_patente_ingestor.models.quiz import (
     CleanedQuizModel,
     EmbeddableQuizModel,

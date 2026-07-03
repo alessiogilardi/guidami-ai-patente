@@ -1,6 +1,6 @@
 from typing import Literal
 
-from commons.entities.knowledge import KnowledgeChunk
+from domain.entities.knowledge import KnowledgeChunk
 from guidami_ai_patente_ingestor.models.knowledge import (
     EmbeddableChunkModel,
     EnrichedArticleModel,

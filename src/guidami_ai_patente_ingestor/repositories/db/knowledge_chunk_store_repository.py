@@ -1,7 +1,7 @@
 from psycopg import sql
 
 from commons.clients import PostgresClient
-from commons.entities.knowledge import KnowledgeChunk
+from domain.entities.knowledge import KnowledgeChunk
 
 from ._bulk_insert_store_repository import BulkInsertStoreRepository
 
