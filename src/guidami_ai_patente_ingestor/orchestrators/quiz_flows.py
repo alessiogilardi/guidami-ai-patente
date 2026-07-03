@@ -7,7 +7,7 @@ from commons.services.embeddings import EmbeddingService
 from commons.use_cases import ForEach
 from flowstep import Flow, FlowBuilder
 from flowstep.steps import ApplyStep
-from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
+from guidami_ai_patente_ingestor.agents import NormReferenceDescriberAgent, RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.mappers import QuizMapper
 from guidami_ai_patente_ingestor.models.quiz import (
@@ -24,7 +24,10 @@ from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
 )
 from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
-from guidami_ai_patente_ingestor.services.quiz.enrichers import ImageDescriptionEnricher
+from guidami_ai_patente_ingestor.services.quiz.enrichers import (
+    ImageDescriptionEnricher,
+    NormReferenceEnricher,
+)
 from guidami_ai_patente_ingestor.services.quiz.flatten_quiz import FlattenQuiz
 from guidami_ai_patente_ingestor.services.quiz.to_embeddable_quiz import ToEmbeddableQuiz
 
@@ -219,10 +222,14 @@ def build_quiz_enrichment_flow(
     )
 
     describer = RoadSignDescriberAgent.from_yaml("road_sign_describer", config.agents_dir)
+    norm_describer = NormReferenceDescriberAgent.from_yaml(
+        "norm_reference_describer", config.agents_dir
+    )
     enrich_step = ApplyStep(
         "enrich",
         ForEach(QuizMapper.from_cleaned_to_enriched),
         ImageDescriptionEnricher(describer, config.quiz_images_dir),
+        NormReferenceEnricher(norm_describer),
         input_key=context_keys.CLEANED_QUIZ,
         output_key=context_keys.ENRICHED_QUIZ,
     )
