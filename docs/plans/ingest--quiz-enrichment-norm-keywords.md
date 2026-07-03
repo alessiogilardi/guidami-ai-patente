@@ -1,11 +1,14 @@
 ---
 status: Draft
+effort: L
 ---
 
 # Quiz Enrichment: NormReference
 
 Riferimenti: `docs/architecture/ingestor/quiz_pipelines.md`,
 `plans/ingest--quiz-image-descriptions.md`, `plans/_index.md`
+
+Piano di indexing correlato: `docs/plans/2026-07-03--ingest-quiz-indexing-metadata-embedding.md`
 
 ## Contesto e motivazione
 
@@ -18,9 +21,9 @@ query di ricerca semantica e spiegazione della regola, generata da LLM. Serve co
 **ponte di retrieval** verso `knowledge_chunks`: il judge legge i metadati e fa lookup
 mirato invece di blind similarity search quiz→norme.
 
-Il campo è **persistito nel DB** ma **escluso da `embedded_text`**: non deve alterare
-il vettore semantico del quiz, che deve rappresentare la formulazione della domanda,
-non il dominio normativo.
+Il campo è **persistito nel DB**. Il calcolo dell'embedding a partire da `quiz_metadata`
+è demandato al piano di indexing separato (`2026-07-03--ingest-quiz-indexing-metadata-embedding.md`),
+che sostituisce il contenuto di `embedded_text` con le `vector_search_queries`.
 
 ## Decisioni
 
@@ -35,8 +38,10 @@ non il dominio normativo.
    per il judge.
 3. **Pattern agente testo-only** — stessa struttura di `RoadSignDescriberAgent` ma senza
    immagini: `run_sync(request, images=())`. Config in YAML, DTO separati per request/response.
-4. **Nessuna modifica a `embedded_text`** — `EmbeddableQuizModel.embedded_text` rimane
-   `"{topic} {text} {image_description}"`. Il nuovo campo transita nel modello ma non vi entra.
+4. **`embedded_text` gestito nel piano di indexing** — `EmbeddableQuizModel.embedded_text`
+   delegherà a `quiz_metadata.embedded_text` nella fase di indexing; il suo contenuto attuale
+   (testo quiz) viene rimosso in quel piano. Vedere
+   `2026-07-03--ingest-quiz-indexing-metadata-embedding.md`.
 5. **JSONB serialization** — nel `_to_db_row` wrappare con `psycopg.types.json.Jsonb(...)`
    chiamando `item.quiz_metadata.model_dump()` per evitare ambiguità di tipo con psycopg3.
 6. **`image_filename` fuori dalla request DTO** — la request porta solo i campi usati nel
@@ -75,14 +80,13 @@ Modificare **`src/guidami_ai_patente_ingestor/models/quiz/enriched_quiz.py`**:
 
 Modificare **`src/guidami_ai_patente_ingestor/models/quiz/embeddable_quiz.py`**:
 - Aggiungere `quiz_metadata: QuizMetadata | None = None`
-- **Non toccare `embedded_text`** — il nuovo campo non vi entra.
 
 Modificare **`src/commons/entities/quiz/quiz_question.py`**:
 - Aggiungere `quiz_metadata: QuizMetadata | None = None`
 
 **Test:**
 - Modificare: `tests/.../mappers/test_quiz_mapper.py` — verificare che `from_enriched_to_embeddable`
-  passi `quiz_metadata` e che `embedded_text` non lo contenga
+  passi `quiz_metadata`
 
 ### 3. DB schema
 
@@ -218,8 +222,7 @@ Modificare `src/guidami_ai_patente_ingestor/mappers/quiz_mapper.py`:
 
 **Test:** aggiornare `tests/.../mappers/test_quiz_mapper.py`:
 - Modificare: `test_from_enriched_to_embeddable` — verifica che `quiz_metadata` transiti
-- Modificare: `test_from_embeddable_to_quiz_question` — verifica che `quiz_metadata` sia nell'entità
-- Aggiungere: `test_embedded_text_excludes_quiz_metadata` — `embedded_text` non contiene `quiz_metadata`
+- Modificare: `test_from_embeddable_to_quiz_question` — verifica che il campo sia nell'entità
 
 ### 9. Aggiornare il repository
 
@@ -244,8 +247,8 @@ def _to_db_row(item: QuizQuestion) -> tuple[object, ...]:
     )
 ```
 
-**Test:** integration test (opzionale, richiede DB attivo) — verifica che
-`quiz_metadata` venga persistito correttamente.
+**Test:** integration test (opzionale, richiede DB attivo) — verifica che `quiz_metadata`
+venga persistito correttamente.
 
 ### 10. Aggiornare `build_quiz_enrichment_flow`
 
@@ -283,6 +286,6 @@ Aggiungere re-export di `NormReferenceEnricher` in
 - [ ] `uv run ingest prepare quiz` completa senza errori; file JSON enriched contiene
   `quiz_metadata` non-None per almeno alcune domande
 - [ ] `uv run ingest index quiz` persiste correttamente —
-  `SELECT quiz_metadata FROM quiz_questions LIMIT 3` restituisce valori non-null
+  `SELECT quiz_metadata IS NOT NULL FROM quiz_questions LIMIT 3` restituisce valori non-null
 - [ ] Piano aggiornato a `status: Implemented`
 - [ ] `doc-architect` invocato
