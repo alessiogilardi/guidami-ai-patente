@@ -1,4 +1,4 @@
-from domain.models.quiz import QuizMetadata
+from domain.entities.quiz import QuizMetadata
 from guidami_ai_patente_ingestor.agents.dto.norm_reference_describer import (
     NormReferenceDescriberRequest,
     NormReferenceDescriberResponse,

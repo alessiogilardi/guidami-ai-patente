@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from domain.models.quiz import QuizMetadata
+from domain.entities.quiz import QuizMetadata
 
 
 class EnrichedQuizModel(BaseModel):
