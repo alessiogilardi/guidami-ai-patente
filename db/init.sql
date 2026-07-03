@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
     text            TEXT NOT NULL,
     correct_answer  BOOLEAN NOT NULL,
     image_filename  TEXT,
+    quiz_metadata   JSONB,
     embedding       VECTOR(1536),
     UNIQUE(number)
 );
