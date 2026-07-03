@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
+from commons.models.quiz import QuizMetadata
+
 
 class EnrichedQuizModel(BaseModel):
     """Sotto-domanda del quiz bank enriched, appiattita, con `image_description` inline."""
@@ -11,3 +13,4 @@ class EnrichedQuizModel(BaseModel):
     correct_answer: bool
     image: str | None = None
     image_description: str | None = None
+    quiz_metadata: QuizMetadata | None = None

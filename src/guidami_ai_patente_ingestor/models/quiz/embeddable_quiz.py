@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
+from commons.models.quiz import QuizMetadata
+
 
 class EmbeddableQuizModel(BaseModel):
     """Modello intermedio per il calcolo dell'embedding di una sotto-domanda.
@@ -16,6 +18,7 @@ class EmbeddableQuizModel(BaseModel):
     image_filename: str | None = None
     image_description: str | None = None
     embedding: list[float] | None = None
+    quiz_metadata: QuizMetadata | None = None
 
     @property
     def embedded_text(self) -> str:

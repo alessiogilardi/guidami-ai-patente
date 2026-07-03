@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
+from commons.models.quiz import QuizMetadata
+
 
 class QuizQuestion(BaseModel):
     """Riga della tabella `quiz_questions` (vedi db/init.sql)."""
@@ -11,3 +13,4 @@ class QuizQuestion(BaseModel):
     correct_answer: bool
     image_filename: str | None = None
     embedding: list[float] | None = None
+    quiz_metadata: QuizMetadata | None = None
