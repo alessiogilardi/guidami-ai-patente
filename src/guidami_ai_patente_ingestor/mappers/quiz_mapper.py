@@ -33,7 +33,7 @@ class QuizMapper:
         Returns:
             `EmbeddableQuizModel` pronto per il calcolo dell'embedding.
         """
-        return EmbeddableQuizModel(
+        base = EmbeddableQuizModel(
             number=item.number,
             question_id=item.question_id,
             topic=item.topic,
@@ -42,6 +42,7 @@ class QuizMapper:
             image_filename=QuizMapper._image_filename(item.image),
             image_description=item.image_description,
         )
+        return base.model_copy(update={"quiz_metadata": item.quiz_metadata})
 
     @staticmethod
     def from_embeddable_to_quiz_question(model: EmbeddableQuizModel) -> QuizQuestion:
@@ -55,7 +56,7 @@ class QuizMapper:
         Returns:
             Entità `QuizQuestion` pronta per lo store.
         """
-        return QuizQuestion(
+        base = QuizQuestion(
             number=model.number,
             question_id=model.question_id,
             topic=model.topic,
@@ -64,6 +65,7 @@ class QuizMapper:
             image_filename=model.image_filename,
             embedding=model.embedding,
         )
+        return base.model_copy(update={"quiz_metadata": model.quiz_metadata})
 
     @staticmethod
     def from_cleaned_to_enriched(item: CleanedQuizModel) -> EnrichedQuizModel:
@@ -83,6 +85,7 @@ class QuizMapper:
             correct_answer=item.correct_answer,
             image=item.image,
             image_description=None,
+            quiz_metadata=None,
         )
 
     @staticmethod
