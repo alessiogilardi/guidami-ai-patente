@@ -27,10 +27,12 @@ class ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQui
     """
 
     def __init__(self, road_sign_describer: RoadSignDescriberAgent, images_dir: Path) -> None:
+        """Inject the road sign describer agent and the directory containing quiz images."""
         self._road_sign_describer = road_sign_describer
         self._images_dir = images_dir
 
     def execute(self, request: list[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
+        """Enrich each quiz item with a road sign description where an image is present."""
         descriptions = self._build_description_map(request)
         return [self._apply_description(q, descriptions) for q in request]
 
@@ -52,9 +54,7 @@ class ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQui
             key=_make_key,
         )
         return {
-            _make_key(q): desc
-            for q in unique
-            if (desc := self._describe_image(q)) is not None
+            _make_key(q): desc for q in unique if (desc := self._describe_image(q)) is not None
         }
 
     def _describe_image(self, q: EnrichedQuizModel) -> RoadSignDescriberResponse | None:
