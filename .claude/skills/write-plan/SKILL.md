@@ -1,112 +1,116 @@
 ---
 name: write-plan
-description: Scrivere, revisionare o aggiornare piani di implementazione tecnica per il progetto. Usa questa skill ogni volta che l'utente chiede di "scrivere un piano", "pianificare" una feature/refactor, creare o modificare file in docs/plans/, aggiornare lo status di un piano (Draft/Reviewed/Implemented/Archived), o splittare un piano lungo in sub-piani. Applicala sempre PRIMA di scrivere qualunque file dentro docs/plans/, anche se l'utente non menziona esplicitamente questa skill.
+description: Write, review, or update technical implementation plans for the project. Use this skill every time the user asks to "write a plan", "plan" a feature/refactor, create or modify files in docs/plans/, update a plan status (Draft/Reviewed/Implemented/Archived), or split a long plan into sub-plans. Always invoke it BEFORE writing any file inside docs/plans/, even if the user does not explicitly mention this skill.
 allowed-tools: Bash(uv run ${CLAUDE_PROJECT_DIR}/.claude/skills/write-plan/scripts/create_plan.py *)
 
 ---
 
 # Writing Plans
 
-## Workflow dettagliato
+> **Language rule**: All plan files must be written in **English** — this applies regardless of the language used in the conversation with the user.
 
-**Checklist di Processo**:
+## Detailed Workflow
 
-Devi creare un task per ciascuno di questi elementi e completarli rigorosamente in ordine:
+**Process Checklist**:
 
-1. **Esplorazione del contesto**: Analizza lo stato attuale del progetto (file, documentazione, commit recenti).
-2. **Step 0 (Comprensione)**: Esegui l'analisi preliminare e compila il template di comprensione.
-3. **Gate di Blocco**: Ottieni la conferma esplicita dell'utente su *slug* ed *effort* prima di procedere.
-4. **Proposta di approcci**: Presenta 2-3 opzioni con relativi trade-off e la tua raccomandazione.
-5. **Presentazione del design**: Mostra il design suddiviso in sezioni proporzionate alla complessità, richiedendo approvazione dopo ogni sezione.
-6. **Auto-revisione (Spec Self-Review)**: Verifica l'assenza di placeholder, contraddizioni o ambiguità.
-7. **Revisione dell'utente**: Chiedi all'utente di verificare il file di specifica finale prima di procedere con l'implementazione.
+Create a task for each of these items and complete them strictly in order:
 
----
-
-### Step 0 — **Comprensione (Pre-Scaffolding)**
-
-Prima di avviare la fase di scaffolding o di generare qualsiasi file di piano, esegui un'analisi preliminare del task esplorando il contesto del progetto (file, documentazione, commit recenti). Questa fase deve produrre un output strutturato e mirato, evitando conversazioni libere o rituali.
-
-**Valutazione dello Scope e Decomposizione:** \
-Prima di porre domande dettagliate, valuta l'estensione della richiesta. Se descrive più sottosistemi indipendenti (es. "crea una piattaforma con chat, storage di file, fatturazione e analytics"), segnalalo immediatamente. Aiuta l'utente a decomporre il lavoro in sotto-progetti indipendenti, definendo le relazioni e l'ordine di sviluppo. Ogni sotto-progetto seguirà il proprio ciclo indipendente (specifica -> piano -> implementazione).
-
-1. **Output Richiesto (Template Step 0)**: \
-Ogni interazione iniziale deve tradursi in un unico messaggio che mappa direttamente le sezioni del piano futuro:
-
-    * **Problema / Motivazione:** Il valore di business o il bug da risolvere (sintesi estrema).
-    * **Non-Goals (Bozza):** Cosa viene esplicitamente escluso da questo intervento.
-    * **Aree Toccate:** Moduli, file o componenti del codice impattati.
-    * **Stima Effort:** Dimensionamento proposto (S, M, L, XL).
-
-2. **Logica delle Domande Proporzionata all'Effort**: \
-Calibra il livello di approfondimento per non generare overhead inutile:
-
-    * **Per effort S:** Zero domande investigative. Limitati a proporre lo *slug* del piano e l'effort *S*, chiedendo solo la conferma per procedere.
-    * **Per effort M:** Massimo 1 o 2 domande mirate, poste **una alla volta per messaggio**, solo se ci sono reali ambiguità sulle aree toccate.
-    * **Per effort L / XL:** È obbligatorio porre domande strategiche prima di procedere, concentrandoti sulla comprensione di scopo, vincoli e criteri di successo. Poni le domande **una alla volta per messaggio**. Chiarisci i *non-goals*, i rischi tecnici, le dipendenze critiche e i potenziali breaking change.
-    * *Nota sulle domande:* Preferisci domande a scelta multipla quando possibile, ma mantieni la flessibilità per domande aperte se necessario.
-
-3. **Gate di Blocco (Regola Non Negoziabile)**: \
-**DIVIETO ASSOLUTO:** Non eseguire `create_plan.py` (o qualsiasi comando/script di scaffolding) finché lo *slug* e l'*effort* non sono stati esplicitamente confermati dall'utente nella chat.
-
-Il modello propone la scheda di comprensione e le eventuali domande di rito; l'utente sblocca l'esecuzione dello step successivo.
+1. **Context exploration**: Analyse the current project state (files, documentation, recent commits).
+2. **Step 0 (Understanding)**: Run the preliminary analysis and fill in the understanding template.
+3. **Blocking gate**: Get explicit user confirmation on *slug* and *effort* before proceeding.
+4. **Approach proposals**: Present 2–3 options with trade-offs and your recommendation.
+5. **Design presentation**: Show the design split into sections proportional to complexity, requesting approval after each section.
+6. **Self-review (Spec Self-Review)**: Verify the absence of placeholders, contradictions, or ambiguities.
+7. **User review**: Ask the user to verify the final spec file before proceeding with implementation.
 
 ---
 
-### Step 1 — **Esplorazione e Design**
+### Step 0 — **Understanding (Pre-Scaffolding)**
 
-#### Esplorazione degli Approcci
+Before starting the scaffolding phase or generating any plan file, run a preliminary analysis of the task by exploring the project context (files, documentation, recent commits). This phase must produce a structured, targeted output — no free-form conversations or rituals.
 
-* Proponi 2-3 approcci differenti evidenziando i relativi trade-off.
-* Presenta le opzioni in modo conversazionale, indicando chiaramente la tua raccomandazione e le motivazioni sottostanti.
-* Inizia sempre esponendo l'opzione raccomandata e spiegandone il perché.
+**Scope Assessment and Decomposition:** \
+Before asking detailed questions, assess the breadth of the request. If it describes multiple independent subsystems (e.g. "build a platform with chat, file storage, billing, and analytics"), flag it immediately. Help the user decompose the work into independent sub-projects, defining relationships and development order. Each sub-project will follow its own independent cycle (spec → plan → implementation).
 
-#### Presentazione del Design
+1. **Required Output (Step 0 Template):** \
+Every initial interaction must produce a single message that maps directly to the future plan sections:
 
-* Una volta ottenuto il consenso sui requisiti, presenta il design del sistema.
-* Modula l'estensione di ogni sezione in base alla sua complessità: poche frasi se è lineare, fino a 200-300 parole se presenta elementi complessi o sfumature tecniche.
-* **Richiedi l'approvazione dell'utente dopo ogni singola sezione** per verificare la correttezza del design prima di avanzare.
-* Il design deve coprire esaustivamente: architettura, componenti, flusso dei dati, gestione degli errori e testing.
+    * **Problem / Motivation:** The business value or bug to fix (extreme summary).
+    * **Non-Goals (Draft):** What is explicitly excluded from this intervention.
+    * **Affected Areas:** Modules, files, or code components impacted.
+    * **Effort Estimate:** Proposed sizing (S, M, L, XL).
 
-#### Design per l'Isolamento e la Chiarezza
+2. **Question Logic Proportional to Effort:** \
+Calibrate the depth of investigation to avoid unnecessary overhead:
 
-* Suddividi il sistema in unità più piccole, ognuna con un unico scopo chiaro, che comunichino tramite interfacce ben definite e che possano essere comprese e testate in modo indipendente.
-* Per ogni unità devi poter rispondere chiaramente a: *cosa fa*, *come si usa* e *da cosa dipende*.
-* Se non è possibile capire cosa fa un'unità senza leggerne l'implementazione interna, o se modificare i suoi interni rompe i componenti che la utilizzano, i confini strutturali vanno riprogettati.
-* Unità più piccole riducono il carico cognitivo e rendono le modifiche ai file più mirate e affidabili.
+    * **For effort S:** Zero investigative questions. Only propose the plan *slug* and effort *S*, asking only for confirmation to proceed.
+    * **For effort M:** At most 1 or 2 targeted questions, asked **one at a time per message**, only if there are real ambiguities about affected areas.
+    * **For effort L / XL:** Strategic questions are mandatory before proceeding, focusing on understanding scope, constraints, and success criteria. Ask questions **one at a time per message**. Clarify *non-goals*, technical risks, critical dependencies, and potential breaking changes.
+    * *Note on questions:* Prefer multiple-choice questions when possible, but keep flexibility for open-ended questions when needed.
 
-#### Lavorare su Codebase Esistenti
+3. **Blocking Gate (Non-Negotiable Rule):** \
+**ABSOLUTE PROHIBITION:** Do not run `create_plan.py` (or any scaffolding command/script) until *slug* and *effort* have been explicitly confirmed by the user in chat.
 
-* Esplora accuratamente la struttura attuale prima di proporre modifiche e segui sempre i pattern già esistenti nel progetto.
-* Se il codice esistente presenta problemi strutturali che impattano sul lavoro corrente (es. file troppo grandi, responsabilità confuse, confini poco chiari), includi miglioramenti mirati e localizzati come parte integrante del design.
-* **Non proporre refactoring non correlati**: rimani strettamente focalizzato solo su ciò che serve a raggiungere l'obiettivo attuale.
+The model proposes the understanding card and any necessary questions; the user unlocks execution of the next step.
+
+---
+
+### Step 1 — **Exploration and Design**
+
+#### Approach Exploration
+
+* Propose 2–3 different approaches highlighting their respective trade-offs.
+* Present options conversationally, clearly stating your recommendation and the reasoning behind it.
+* Always start by presenting the recommended option and explaining why.
+
+#### Design Presentation
+
+* Once requirements are agreed upon, present the system design.
+* Modulate the length of each section based on its complexity: a few sentences if straightforward, up to 200–300 words if it has complex elements or technical nuances.
+* **Request user approval after each individual section** to verify design correctness before advancing.
+* The design must comprehensively cover: architecture, components, data flow, error handling, and testing.
+
+#### Design for Isolation and Clarity
+
+* Divide the system into smaller units, each with a single clear purpose, communicating through well-defined interfaces and independently testable.
+* For each unit you must be able to clearly answer: *what it does*, *how it is used*, and *what it depends on*.
+* If you cannot understand what a unit does without reading its internal implementation, or if modifying its internals breaks its callers, the structural boundaries need redesigning.
+* Smaller units reduce cognitive load and make file edits more targeted and reliable.
+
+#### Working on Existing Codebases
+
+* Thoroughly explore the current structure before proposing changes, and always follow existing project patterns.
+* If the existing code has structural problems that affect the current work (e.g. files too large, confused responsibilities, unclear boundaries), include targeted and localised improvements as part of the design.
+* **Do not propose unrelated refactoring**: stay strictly focused only on what is needed to reach the current goal.
 
 #### Key Principles
 
-  - **One question at a time** - Don't overwhelm with multiple questions
-  - **Multiple choice preferred** - Easier to answer than open-ended when possible
-  - **YAGNI ruthlessly** - Remove unnecessary features from all designs
-  - **Explore alternatives** - Always propose 2-3 approaches before settling
-  - **Incremental validation** - Present design, get approval before moving on
-  - **Be flexible** - Go back and clarify when something doesn't make sense
+- **One question at a time** — Don't overwhelm with multiple questions
+- **Multiple choice preferred** — Easier to answer than open-ended when possible
+- **YAGNI ruthlessly** — Remove unnecessary features from all designs
+- **Explore alternatives** — Always propose 2–3 approaches before settling
+- **Incremental validation** — Present design, get approval before moving on
+- **Be flexible** — Go back and clarify when something doesn't make sense
 
 ---
 
-### Step 2 — **Scaffolding (obbligatorio, via script)**
+### Step 2 — **Scaffolding (mandatory, via script)**
 
-Esegui `create_plan.py` passando lo slug del piano: `uv run ${CLAUDE_SKILL_DIR}/scripts/create_plan.py $ARGUMENTS`
-Lo script crea la struttura deterministica in `docs/plans/<slug>/` e stampa il path del file principale da modificare.
+Run `create_plan.py` passing the plan slug: `uv run ${CLAUDE_SKILL_DIR}/scripts/create_plan.py $ARGUMENTS`
 
-Non creare a mano file o cartelle in `docs/plans/`: la struttura è responsabilità dello script, non tua.
+The script creates the deterministic structure in `docs/plans/` and prints the path of the file to edit.
+
+Do not manually create files or folders in `docs/plans/`: the structure is the script's responsibility, not yours.
 
 ---
 
-### Step 3 — **Redazione/modifica del contenuto**:
-Apri il file restituito dallo script e compila le sezioni seguendo le convenzioni sotto.
+### Step 3 — **Writing/editing content**:
 
-## Indice: generato, non scritto a mano
+Open the file returned by the script and fill in the sections following the conventions below.
 
-L'indice si rigenera automaticamente dopo ogni scrittura in `docs/plans/`; non editarlo mai a mano.
+## Index: generated, not hand-written
+
+The index regenerates automatically after every write to `docs/plans/`; never edit it by hand.
 
 
 ## Frontmatter
@@ -118,60 +122,61 @@ effort: S | M | L | XL
 ---
 ```
 
-| Status | Significato | Chi può impostarlo |
+| Status | Meaning | Who can set it |
 |---|---|---|
-| `Draft` | In scrittura, non pronto per l'implementazione | L'agent, in autonomia |
-| `Reviewed` | Discusso e approvato — pronto per l'implementazione | **Solo l'utente**, con approvazione esplicita in chat |
-| `Implemented` | Codice completato | L'agent, **solo dopo** che ogni item del DoD è verificato meccanicamente |
-| `Archived` | Superato o abbandonato (indicare motivo/piano sostitutivo nel testo) | L'utente, o l'agent su richiesta esplicita |
+| `Draft` | Being written, not ready for implementation | The agent, autonomously |
+| `Reviewed` | Discussed and approved — ready for implementation | **The user only**, with explicit approval in chat |
+| `Implemented` | Code completed | The agent, **only after** every DoD item is mechanically verified |
+| `Archived` | Superseded or abandoned (indicate reason/replacement plan in the text) | The user, or the agent on explicit request |
 
-**Regola non negoziabile**: l'agent non può mai promuovere autonomamente un piano da `Draft` a `Reviewed`. Se ti viene chiesto di implementare un piano ancora in `Draft`, fermati e chiedi conferma esplicita prima di procedere — anche se il piano "sembra pronto".
+**Non-negotiable rule**: the agent may never autonomously promote a plan from `Draft` to `Reviewed`. If asked to implement a plan still in `Draft`, stop and ask for explicit confirmation before proceeding — even if the plan "looks ready".
 
 
-## Effort — calibrazione
+## Effort — Calibration
 
-| Effort | Criterio |
+| Effort | Criterion |
 |---|---|
-| `S` | 1 file toccato, meno di 1h di lavoro stimato |
-| `M` | 2-4 file, mezza giornata |
-| `L` | Modulo intero o refactor con migrazione dati/schema |
-| `XL` | Copre più aree distinte → **va suddiviso in sub-piani - vedi [sub-plans.md](./references/sub-plans.md)**, non scritto come piano unico |
+| `S` | 1 file changed, less than 1h of estimated work |
+| `M` | 2–4 files, half a day |
+| `L` | Entire module or refactor with data/schema migration |
+| `XL` | Covers multiple distinct areas → **must be split into sub-plans — see [sub-plans.md](./references/sub-plans.md)**, not written as a single plan |
 
 
 ## Definition of Done
 
-Vedi [Template](./references/template.md).
+See [Template](./references/template.md).
 
-### Nota sui test nel piano
+### Note on tests in the plan
 
-I test elencati sotto ogni step in `Draft` sono **intento**, non un contratto immutabile. I test reali vengono generati dall'agent `tdd-test-writer` (o altro agent specifico) e possono legittimamente divergere da quanto scritto in fase di planning. Se divergono, **aggiorna il piano** invece di lasciarlo disallineato: un DoD che referenzia test inesistenti non è verificabile, il che viola il principio guida di questa skill.
+Tests listed under each step in `Draft` are **intent**, not an immutable contract. Real tests are generated by the `tdd-test-writer` agent (or another specific agent) and may legitimately diverge from what was written at planning time. If they diverge, **update the plan** instead of leaving it misaligned: a DoD that references non-existent tests is not verifiable, which violates this skill's guiding principle.
 
-### Nota sul DoD
+### Note on the DoD
 
-Il DoD è sempre l'**ultima sezione** del piano. Ogni item deve essere verificabile con un comando (`grep`, `uv run pytest`, `python -c "import ..."`) — zero criteri soggettivi.
+The DoD is always the **last section** of the plan. Every item must be verifiable with a command (`grep`, `uv run pytest`, `python -c "import ..."`) — zero subjective criteria.
 
-Non copiare il blocco variabile di esempio (es. `grep "OldSymbol"`) letteralmente: ha senso solo per rinomine/refactor. Per ogni piano, **genera item specifici al contenuto di quel piano**. Il blocco fisso invece è sempre lo stesso e va lasciato com'è.
+Do not copy the example variable block (e.g. `grep "OldSymbol"`) literally: it only makes sense for renames/refactors. For each plan, **generate items specific to that plan's content**. The fixed block is always the same and must be left as-is.
 
-## Enforcement meccanico
+## Mechanical Enforcement
 
-Le regole sopra non si applicano da sole. Usa:
+The rules above do not enforce themselves. Use:
 
-- **`${CLAUDE_SKILL_DIR}/scripts/validate_plan.py <file>`** — valida filename, frontmatter (campi ammessi, enum corretti), presenza e posizione del DoD, presenza del blocco fisso.
+- **`${CLAUDE_SKILL_DIR}/scripts/validate_plan.py <file>`** — validates filename, frontmatter (allowed fields, correct enum values), presence and position of the DoD, presence of the fixed block.
 
 
-## Piani archiviati
+## Archived Plans
 
-`docs/plans/` accumula rumore nel tempo se i piani `Archived` restano mescolati con quelli attivi. `generate_index.py` (## Indice: generato, non scritto a mano) li filtra automaticamente fuori dalla vista principale dell'indice raggruppandoli in una sezione a parte — NON spostarli fisicamente in una cartella `archive/`.
+`docs/plans/` accumulates noise over time if `Archived` plans remain mixed with active ones. `generate_index.py` (see [Index: generated, not hand-written](#index-generated-not-hand-written)) filters them automatically out of the main index view, grouping them in a separate section — do NOT physically move them to an `archive/` folder.
 
-## Full workflow
+## Full Workflow
 
-1. Scrivi il piano con `status: Draft`, seguendo la struttura (## Struttura del piano).
-2. Esegui `uv run ${CLAUDE_SKILL_DIR}/scripts/validate_plan.py <file>` **solo dopo aver scritto il contenuto** — il file appena scaffoldato fallisce intenzionalmente (sezioni vuote). Correggi finché non passa.
-3. Il piano viene revisionato → **solo l'utente** approva esplicitamente → aggiorna a `status: Reviewed`.
+1. Write the plan with `status: Draft`, following the structure described in the sections above.
+2. Run `uv run ${CLAUDE_SKILL_DIR}/scripts/validate_plan.py <file>` **only after writing the content** — a freshly scaffolded file intentionally fails (empty sections). Fix until it passes.
+3. The plan is reviewed → **the user only** explicitly approves → update to `status: Reviewed`.
 
-## Workflow per chi implementa
-1. (Opzionale) Genera i test TDD failing (agent `tdd-test-writer` o manuale). Se divergono dai test descritti nel piano, aggiorna il piano.
-2. Implementa (agent `python-developer` o manualmente) il piano.
-3. Verifica **meccanicamente** ogni item del DoD — nessuno spuntato "a occhio".
-4. (Opzionale) Invoca l'agent `doc-architect` (se disponibile) che aggiorna la documentazione.
-5. Aggiorna il piano a `status: Implemented`.
+## Implementation Workflow
+
+1. (Optional) Generate failing TDD tests (`tdd-test-writer` agent or manually). If they diverge from the tests described in the plan, update the plan.
+2. Implement the plan (`python-developer` agent or manually).
+3. Verify **mechanically** every DoD item — none ticked "by eye".
+4. (Optional) Invoke the `doc-architect` agent (if available) to update the documentation.
+5. Update the plan to `status: Implemented`.
