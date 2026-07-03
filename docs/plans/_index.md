@@ -18,14 +18,6 @@ store) e un'applicazione backend (FastAPI) che serve il quiz bot.
   (un elemento per comma)
 - `cap/codice_rca.json` — 96 articoli CAP, stessa struttura
 
-## Piani attivi
-
-| File | Argomento |
-|---|---|
-| [architecture-hybrid-retrieval.md](architecture-hybrid-retrieval.md) | Retrieval ibrido (pgvector + FTS, fusione RRF) su `knowledge_chunks` |
-| [ingest--llm-as-judge.md](ingest--llm-as-judge.md) | Mapping offline quiz ↔ norma (LLM-as-a-Judge) via litellm |
-| [ingest--quiz-enrichment-norm-keywords.md](ingest--quiz-enrichment-norm-keywords.md) | Enrichment quiz con keyword normative e riferimenti normativi strutturati |
-
 ## Decisioni architetturali principali
 
 ### 1. Tre tipi di memoria, vita diversa
@@ -57,21 +49,37 @@ e documentato in [`docs/architecture/ingestor/`](../docs/architecture/ingestor/_
 2. `AnswerChecker` confronta con `correct_answer` (zero LLM, istantaneo)
 3. `ExplanationService`: per un quiz mappato recupera le norme via **JOIN sul
    mapping precomputato** quiz↔norma (zero embed, zero retrieval semantico — vedi
-   [ingest--llm-as-judge.md](ingest--llm-as-judge.md)) → prompt a Groq con domanda
+   [2026-07-03--ingest-llm-as-judge.md](2026-07-03--ingest-llm-as-judge.md)) → prompt a LLM con domanda
    + risposta utente + esito + chunk collegati → spiegazione iniziale. Fallback a
    retrieval pgvector solo per quiz non mappati / mapping a bassa confidence.
 4. Se l'utente fa follow-up, `ChatService` mantiene la `ChatSession` (via
    `SessionRepository` in-memory): qui sì si **embedda la domanda di follow-up**
    (`text-embedding-3-small` cloud → chiamata a pagamento su OpenRouter) per il
-   retrieval ad-hoc su pgvector, e si richiama Groq con la history.
-
-## Note operative
-
-- Rate limit Groq free tier sono per-modello e relativamente stretti
-  (richieste/minuto): isolare la chiamata LLM dietro `GroqClient` con eventuale
-  retry/backoff configurabile.
+   retrieval ad-hoc su pgvector, e si richiama LLM con la history.
 
 ## Stato generale
 
 - Ingestor: ✅ implementato — dettaglio in [`docs/architecture/_index.md`](../docs/architecture/_index.md)
 - Applicativo FastAPI: ⬜ non avviato
+
+## Piani attivi
+
+<!-- BEGIN_PLANS_ACTIVE -->
+
+| File | Argomento | Status |
+|------|-----------|--------|
+| [Mapping offline quiz ↔ norma (LLM-as-a-Judge)](2026-07-03--ingest-llm-as-judge.md) | Mapping offline quiz ↔ norma (LLM-as-a-Judge) | Draft |
+| [Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF)](architecture-hybrid-retrieval.md) | Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF) | Draft |
+| [Quiz Enrichment: NormReference](ingest--quiz-enrichment-norm-keywords.md) | Quiz Enrichment: NormReference | Draft |
+
+
+<!-- END_PLANS_ACTIVE -->
+
+## Piani archiviati
+
+<!-- BEGIN_PLANS_ARCHIVED -->
+
+_Nessun piano._
+
+
+<!-- END_PLANS_ARCHIVED -->
