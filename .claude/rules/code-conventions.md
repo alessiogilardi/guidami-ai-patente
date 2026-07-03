@@ -22,6 +22,13 @@ cursor.execute("SELECT ... WHERE embedding <=> %s", [vector])
 cursor.execute("SELECT ... WHERE embedding <=> %s::vector", [vector])
 ```
 
+## Tests — no `__init__.py` in test directories
+
+Test directories never contain `__init__.py`. Any test directory named after a source
+package (e.g. `tests/domain/`) would create a namespace collision with `src/<package>/`
+in `sys.path`, causing imports inside tests to resolve to the empty test package instead
+of the real source package. The rule applies uniformly to all directories under `tests/`.
+
 ## Tests — integration marker
 
 `@pytest.mark.integration` marks tests that require external services (Postgres,

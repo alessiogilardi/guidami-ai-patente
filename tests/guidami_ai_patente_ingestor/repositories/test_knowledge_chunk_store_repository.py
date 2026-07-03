@@ -5,7 +5,7 @@ from psycopg import sql
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
-from commons.entities.knowledge import KnowledgeChunk
+from domain.entities.knowledge import KnowledgeChunk
 from guidami_ai_patente_ingestor.repositories import KnowledgeChunkStoreRepository
 
 

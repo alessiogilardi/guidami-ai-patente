@@ -1,5 +1,5 @@
-from commons.entities.knowledge import KnowledgeChunk
-from commons.models.knowledge import RetrievalResult
+from domain.entities.knowledge import KnowledgeChunk
+from domain.models.knowledge import RetrievalResult
 
 
 def test_retrieval_result_wraps_chunk_with_score() -> None:

@@ -1,4 +1,4 @@
-from commons.entities.knowledge import KnowledgeChunk
+from domain.entities.knowledge import KnowledgeChunk
 
 
 def _chunk(**kwargs) -> KnowledgeChunk:

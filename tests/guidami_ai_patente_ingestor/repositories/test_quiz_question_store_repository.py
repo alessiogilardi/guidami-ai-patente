@@ -5,7 +5,7 @@ from psycopg import sql
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
-from commons.entities.quiz import QuizQuestion
+from domain.entities.quiz import QuizQuestion
 from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
 
 

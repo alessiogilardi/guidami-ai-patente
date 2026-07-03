@@ -4,7 +4,7 @@ I metodi preparation (`from_parsed_to_cleaned`, `from_cleaned_to_enriched`) sono
 testati separatamente in `test_quiz_mapper_flatten_at_preparation.py` (SP09).
 """
 
-from commons.entities.quiz import QuizQuestion
+from domain.entities.quiz import QuizQuestion
 from guidami_ai_patente_ingestor.mappers import QuizMapper
 from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel, EnrichedQuizModel
 
