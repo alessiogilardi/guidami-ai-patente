@@ -51,15 +51,13 @@ src/domain/
 │   │   └── knowledge_chunk.py   # KnowledgeChunk — row in knowledge_chunks (+ context: str = "")
 │   └── quiz/
 │       ├── __init__.py
+│       ├── quiz_metadata.py     # QuizMetadata — structured enrichment metadata (NormReferenceDescriberAgent output)
 │       └── quiz_question.py     # QuizQuestion — row in quiz_questions (+ quiz_metadata)
 └── models/
     ├── __init__.py
-    ├── knowledge/
-    │   ├── __init__.py
-    │   └── retrieval_result.py  # RetrievalResult — chunk + score (similarity search)
-    └── quiz/
+    └── knowledge/
         ├── __init__.py
-        └── quiz_metadata.py     # QuizMetadata — structured enrichment metadata (NormReferenceDescriberAgent output)
+        └── retrieval_result.py  # RetrievalResult — chunk + score (similarity search)
 ```
 
 ## Implemented decisions
@@ -165,17 +163,20 @@ src/domain/
   `KnowledgeChunk`). Property `embedded_text -> str`: returns `f"{topic} {text}"`
   — text prefixed with the question topic, used as embedding input instead of
   `text` alone.
-- **`entities/` vs `models/`**: `KnowledgeChunk` and `QuizQuestion` are domain
-  entities (table rows), now in `domain/entities/` (moved from `commons/entities/`
-  — Clean Architecture naming: `domain` is the innermost ring). `domain/models/`
-  hosts cross-package domain DTOs: `RetrievalResult` (knowledge retrieval) and
-  `QuizMetadata` (structured enrichment metadata shared between the ingestor and
-  the future app). Ingestor-specific intermediate DTOs (`QuizBankModel`/
-  `QuizBankItemModel`, `EnrichedQuizModel`/`EnrichedQuizItemModel`,
-  `EmbeddableQuizModel`, `ImageDescription`, renamed in SP04-bis) and
-  `EnrichedArticleModel` (together with `ParsedArticleModel` and
-  `EmbeddableChunkModel`) live in `guidami_ai_patente_ingestor/models/`
-  because they are ingestor-specific DTOs not needed by the FastAPI app.
+- **`entities/` vs `models/`**: `KnowledgeChunk`, `QuizQuestion`, and
+  `QuizMetadata` are domain entities, now in `domain/entities/` (moved from
+  `commons/entities/` — Clean Architecture naming: `domain` is the innermost ring).
+  `QuizMetadata` is embedded as a JSONB value inside `QuizQuestion` and has no
+  independent lifecycle: it is an embedded value object of the `quiz_questions`
+  table row, so it belongs alongside `QuizQuestion` in `domain/entities/quiz/`.
+  `domain/models/` hosts cross-package domain DTOs that are not DB rows:
+  `RetrievalResult` (knowledge retrieval — wraps a `KnowledgeChunk` with a score).
+  Ingestor-specific intermediate DTOs (`QuizBankModel`/`QuizBankItemModel`,
+  `EnrichedQuizModel`/`EnrichedQuizItemModel`, `EmbeddableQuizModel`,
+  `ImageDescription`, renamed in SP04-bis) and `EnrichedArticleModel` (together
+  with `ParsedArticleModel` and `EmbeddableChunkModel`) live in
+  `guidami_ai_patente_ingestor/models/` because they are ingestor-specific DTOs
+  not needed by the FastAPI app.
 - **`Embeddable` Protocol** (`commons/services/embeddings/embeddable.py`,
   `@runtime_checkable`): exposes a read-only `embedded_text: str` property.
   Used as the input type of `EmbeddingService.embed` — any object with that

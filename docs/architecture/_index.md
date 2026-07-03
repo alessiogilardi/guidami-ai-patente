@@ -41,5 +41,5 @@ This directory documents architectural decisions **actually implemented** in the
 | `guidami_ai_patente_ingestor/` — two-stage quiz preparation flow (SP09: `build_quiz_cleaning_flow` with `ApplyStep(FlattenQuiz())` `parsed`→`cleaned`; SP04: `FlattenQuizStep` removed, logic moved to `FlattenQuiz` service UseCase) | ✅ implemented |
 | `guidami_ai_patente_ingestor/` — SP04 refactor: `ApplyStep+ForEach` replace `MapStep`/`EnrichDataStep` in all flows; `FlattenQuiz`/`ToEmbeddableQuiz` service UseCase (SP02/SP03); enrichers implement `UseCase` (SP01); `EnricherProtocol` removed | ✅ implemented |
 | `guidami_ai_patente_ingestor/` — CLI preparation cutover + removal of remaining legacy pipelines | ✅ implemented |
-| `guidami_ai_patente_ingestor/` — `NormReferenceEnricher` + `NormReferenceDescriberAgent` + `QuizMetadata` domain model; `quiz_metadata JSONB` column on `quiz_questions`; wired into `build_quiz_enrichment_flow` after `ImageDescriptionEnricher` | ✅ implemented |
+| `guidami_ai_patente_ingestor/` — `NormReferenceEnricher` + `NormReferenceDescriberAgent` + `QuizMetadata` entity (embedded value object in `domain/entities/quiz/`); `quiz_metadata JSONB` column on `quiz_questions`; wired into `build_quiz_enrichment_flow` after `ImageDescriptionEnricher` | ✅ implemented |
 | `guidami_ai_patente/` (FastAPI app) | ⬜ not started |

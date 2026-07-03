@@ -30,8 +30,8 @@ Active batch pipelines/flows:
   quiz` (SP07).
 
 Depends on `commons` (`BaseAgent`, `EmbeddingClient`, `PostgresClient`, shared configs,
-`UseCase`/`ForEach`) and `domain` (entities: `KnowledgeChunk`, `QuizQuestion`;
-models: `RetrievalResult`, `QuizMetadata`).
+`UseCase`/`ForEach`) and `domain` (entities: `KnowledgeChunk`, `QuizQuestion`,
+`QuizMetadata`; models: `RetrievalResult`).
 
 ## Layout
 

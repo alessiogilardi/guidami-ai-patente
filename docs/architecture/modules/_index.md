@@ -8,7 +8,7 @@ scoped to one top-level package and contains an `_index.md` plus detail files.
 - [commons/](commons/overview.md) — `src/commons/` + `src/domain/`: shared
   infrastructure (embedding client, `PostgresClient`, `BaseAgent`, `UseCase[T_In, T_Out]`,
   `AsyncUseCase`, `ForEach[T, U]`, configs, utils) and domain ring
-  (entities `KnowledgeChunk`/`QuizQuestion`, models `RetrievalResult`/`QuizMetadata`)
+  (entities `KnowledgeChunk`/`QuizQuestion`/`QuizMetadata`, models `RetrievalResult`)
 - [flowstep/](flowstep/_index.md) — `src/flowstep/`: domain-agnostic framework for
   sequential pipelines; `Flow`, `Step`, `FlowBuilder`, `FlowContext`,
   `FlowValidator`, `ApplyStep`
