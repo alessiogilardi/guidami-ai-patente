@@ -1,57 +1,52 @@
-# Struttura del piano
+# Plan structure
 
 ```markdown
 ---
 status: Draft
 effort: S | M | L | XL
 ---
-# Titolo
+# Title
 
-References: link a piani e documenti di architettura correlati.
+References: links to related plans and architecture documents.
 
 ## Context and motivation
-Perché serve questo piano. Qual è il problema attuale.
+Why this plan is needed. What the current problem is.
 
 ## Non-goals
-Cosa questo piano NON copre, esplicitamente. Impedisce allo scope di
-espandersi silenziosamente durante l'implementazione.
+What this plan explicitly does NOT cover. Prevents scope from silently expanding
+during implementation.
 
 ## Decisions
-1. **Decisione 1** — motivazione.
-2. **Decisione 2** — motivazione.
+1. **Decision 1** — rationale.
+2. **Decision 2** — rationale.
 
 ## Open questions / Risks
-Incertezze non ancora risolte, rischi noti. Se una decisione non è
-ancora presa, va qui — non nella sezione Decisions travestita da
-scelta definitiva.
+Unresolved uncertainties, known risks. If a decision has not yet been made,
+it belongs here — not in the Decisions section disguised as a final choice.
 
 ## Implementation tasks
-### 1. Titolo del task
-Descrizione della modifica con file/classe target.
+### 1. Task title
+Description of the change with target file/class.
 
-**Tests** (intento, non contratto — vedi nota sotto):
-- Add: `tests/path/test_file.py::test_name` — comportamento verificato
-- Modify: `tests/path/test_file.py::test_name` — perché cambia
-- Remove: `tests/path/test_file.py::test_name` — perché non è più valido
+**Tests** (intent, not contract — see the write-plan skill's "Note on tests"):
+- Add: `tests/path/test_file.py::test_name` — behaviour verified
+- Modify: `tests/path/test_file.py::test_name` — why it changes
+- Remove: `tests/path/test_file.py::test_name` — why it is no longer valid
 
-### 2. Titolo del task
+### 2. Task title
 ...
 
 ## Definition of Done
 
-Blocco variabile (specifico di questo piano — rigenerato ogni volta,
-mai copiato dal template):
+Variable block (plan-specific):
 
-```markdown
-- [ ] `grep -r "OldSymbol" src/` → zero match
-- [ ] `from package.module import NewClass` risolve
+<!-- Add plan-specific, mechanically verifiable items here -->
+
+Fixed block (same for every plan):
+
+- [ ] `uv run pytest` green (including new tests)
+- [ ] `uv run pyright` clean
+- [ ] `uv run ruff check src tests` clean
+- [ ] Agent `doc-architect` invoked (if available)
+- [ ] Plan updated to `status: Implemented`
 ```
-
-Blocco fisso (uguale per ogni piano):
-
-```markdown
-- [ ] `uv run pytest` verde (inclusi i nuovi test)
-- [ ] `uv run pyright` pulito
-- [ ] `uv run ruff check src tests` pulito
-- [ ] Agent `doc-architect` invocato (se presente)
-- [ ] Piano aggiornato a `status: Implemented`

@@ -9,6 +9,7 @@ Checks:
 - Required sections present and non-empty
 - DoD is the last section
 - DoD contains the fixed block of 5 standard checklist items
+- DoD does not use code fences (items must be plain checklist lines)
 
 Exits 0 on success, 1 on failure (with error messages to stderr).
 """
@@ -49,12 +50,6 @@ FIXED_BLOCK_ITEMS = [
     r"Plan updated to `status: Implemented`.*",
 ]
 
-errors: list[str] = []
-
-
-def _add_error(msg: str) -> None:
-    errors.append(msg)
-
 
 def _parse_frontmatter(text: str) -> dict[str, str]:
     """Extract frontmatter fields into a dict. Returns empty dict if not found."""
@@ -89,88 +84,156 @@ def _section_body(text: str, section_title: str, sections: list[tuple[str, int]]
     return text[start:next_start]
 
 
-def _check_filename(filepath: Path) -> None:
-    """Validate filename format."""
+def _check_filename(filepath: Path) -> list[str]:
+    """Validate filename format.
+
+    Args:
+        filepath: Path to the plan file.
+
+    Returns:
+        List of error strings (empty if valid).
+    """
+    errors: list[str] = []
     fname = filepath.name
     match = FILENAME_RE.match(fname)
     if not match:
-        _add_error(
+        errors.append(
             f"Invalid filename: '{fname}'. "
             f"Expected format: YYYY-MM-DD--<slug>.md"
         )
     else:
         slug = match.group(4)
         if slug.startswith("-") or slug.endswith("-") or "--" in slug:
-            _add_error(f"Invalid slug: '{slug}'")
+            errors.append(f"Invalid slug: '{slug}'")
+    return errors
 
 
-def _check_frontmatter(text: str) -> None:
-    """Validate frontmatter fields and values."""
+def _check_frontmatter(text: str) -> list[str]:
+    """Validate frontmatter fields and values.
+
+    Args:
+        text: Full plan file text.
+
+    Returns:
+        List of error strings (empty if valid).
+    """
+    errors: list[str] = []
     fields = _parse_frontmatter(text)
     if not fields:
-        _add_error("Frontmatter missing or malformed (expected --- ... ---)")
-        return
+        errors.append("Frontmatter missing or malformed (expected --- ... ---)")
+        return errors
 
     for key in fields:
         if key not in ALLOWED_FRONTMATTER_FIELDS:
-            _add_error(
+            errors.append(
                 f"Disallowed frontmatter field: '{key}'. "
                 f"Allowed fields: {', '.join(sorted(ALLOWED_FRONTMATTER_FIELDS))}"
             )
 
     if "status" not in fields:
-        _add_error("Frontmatter field 'status' missing")
+        errors.append("Frontmatter field 'status' missing")
     elif fields["status"] not in VALID_STATUSES:
-        _add_error(
+        errors.append(
             f"Invalid status: '{fields['status']}'. "
             f"Allowed values: {', '.join(sorted(VALID_STATUSES))}"
         )
 
     if "effort" not in fields:
-        _add_error("Frontmatter field 'effort' missing")
+        errors.append("Frontmatter field 'effort' missing")
     elif fields["effort"] not in VALID_EFFORTS:
-        _add_error(
+        errors.append(
             f"Invalid effort: '{fields['effort']}'. "
             f"Allowed values: {', '.join(sorted(VALID_EFFORTS))}"
         )
 
+    return errors
 
-def _check_required_sections(text: str, sections: list[tuple[str, int]]) -> None:
-    """Verify every required section is present and non-empty."""
+
+def _check_required_sections(
+    text: str, sections: list[tuple[str, int]]
+) -> list[str]:
+    """Verify every required section is present and non-empty.
+
+    Args:
+        text: Full plan file text.
+        sections: Parsed section list from ``_get_sections``.
+
+    Returns:
+        List of error strings (empty if valid).
+    """
+    errors: list[str] = []
     section_names = {title for title, _ in sections}
     for req in REQUIRED_SECTIONS:
         if req not in section_names:
-            _add_error(f"Required section '{req}' missing")
+            errors.append(f"Required section '{req}' missing")
             continue
         body = _section_body(text, req, sections)
-        # The body starts with the header line itself; check there's content after it
         lines = body.split("\n")
-        # Remove header line (first line) and trailing whitespace
         content_lines = [ln.strip() for ln in lines[1:] if ln.strip()]
         if not content_lines:
-            _add_error(f"Section '{req}' present but empty")
+            errors.append(f"Section '{req}' present but empty")
+    return errors
 
 
-def _check_dod_last(sections: list[tuple[str, int]]) -> None:
-    """Verify 'Definition of Done' is the last section."""
+def _check_dod_last(sections: list[tuple[str, int]]) -> list[str]:
+    """Verify 'Definition of Done' is the last section.
+
+    Args:
+        sections: Parsed section list from ``_get_sections``.
+
+    Returns:
+        List of error strings (empty if valid).
+    """
     if not sections:
-        return
+        return []
     last_title = sections[-1][0]
     if last_title != "Definition of Done":
-        _add_error(
+        return [
             f"Definition of Done must be the last section. "
             f"Last section found: '{last_title}'"
-        )
+        ]
+    return []
 
 
-def _check_fixed_block(text: str, sections: list[tuple[str, int]]) -> None:
-    """Verify the fixed DoD block is present."""
+def _check_fixed_block(
+    text: str, sections: list[tuple[str, int]]
+) -> list[str]:
+    """Verify the fixed DoD block is present.
+
+    Args:
+        text: Full plan file text.
+        sections: Parsed section list from ``_get_sections``.
+
+    Returns:
+        List of error strings (empty if valid).
+    """
+    errors: list[str] = []
     dod_body = _section_body(text, "Definition of Done", sections)
     for pattern in FIXED_BLOCK_ITEMS:
         if not re.search(pattern, dod_body):
-            _add_error(
-                f"DoD fixed block: missing item (pattern: '{pattern}')"
-            )
+            errors.append(f"DoD fixed block: missing item (pattern: '{pattern}')")
+    return errors
+
+
+def _check_dod_not_fenced(
+    text: str, sections: list[tuple[str, int]]
+) -> list[str]:
+    """Fail if any code fence appears inside the Definition of Done section body.
+
+    Args:
+        text: Full plan file text.
+        sections: Parsed section list from ``_get_sections``.
+
+    Returns:
+        List of error strings (empty if valid).
+    """
+    dod_body = _section_body(text, "Definition of Done", sections)
+    if "```" in dod_body:
+        return [
+            "Definition of Done must not contain code fences (``` blocks). "
+            "Use plain checklist items (- [ ] ...) instead."
+        ]
+    return []
 
 
 def main() -> None:
@@ -185,18 +248,19 @@ def main() -> None:
         sys.exit(1)
 
     text = filepath.read_text(encoding="utf-8")
-
-    _check_filename(filepath)
-    _check_frontmatter(text)
-
     sections = _get_sections(text)
-    _check_required_sections(text, sections)
-    _check_dod_last(sections)
-    _check_fixed_block(text, sections)
 
-    if errors:
-        print(f"\nValidation failed ({len(errors)} error(s)):", file=sys.stderr)
-        for i, err in enumerate(errors, 1):
+    all_errors: list[str] = []
+    all_errors.extend(_check_filename(filepath))
+    all_errors.extend(_check_frontmatter(text))
+    all_errors.extend(_check_required_sections(text, sections))
+    all_errors.extend(_check_dod_last(sections))
+    all_errors.extend(_check_fixed_block(text, sections))
+    all_errors.extend(_check_dod_not_fenced(text, sections))
+
+    if all_errors:
+        print(f"\nValidation failed ({len(all_errors)} error(s)):", file=sys.stderr)
+        for i, err in enumerate(all_errors, 1):
             print(f"  {i}. {err}", file=sys.stderr)
         sys.exit(1)
     else:

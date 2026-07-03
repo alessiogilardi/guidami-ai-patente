@@ -1,8 +1,7 @@
 ---
 name: write-plan
 description: Write, review, or update technical implementation plans for the project. Use this skill every time the user asks to "write a plan", "plan" a feature/refactor, create or modify files in docs/plans/, update a plan status (Draft/Reviewed/Implemented/Archived), or split a long plan into sub-plans. Always invoke it BEFORE writing any file inside docs/plans/, even if the user does not explicitly mention this skill.
-allowed-tools: Bash(uv run ${CLAUDE_PROJECT_DIR}/.claude/skills/write-plan/scripts/create_plan.py *)
-
+allowed-tools: Bash(uv run .claude/skills/write-plan/scripts/*)
 ---
 
 # Writing Plans
@@ -19,9 +18,12 @@ Create a task for each of these items and complete them strictly in order:
 2. **Step 0 (Understanding)**: Run the preliminary analysis and fill in the understanding template.
 3. **Blocking gate**: Get explicit user confirmation on *slug* and *effort* before proceeding.
 4. **Approach proposals**: Present 2–3 options with trade-offs and your recommendation.
-5. **Design presentation**: Show the design split into sections proportional to complexity, requesting approval after each section.
-6. **Self-review (Spec Self-Review)**: Verify the absence of placeholders, contradictions, or ambiguities.
-7. **User review**: Ask the user to verify the final spec file before proceeding with implementation.
+5. **Design presentation**: Present design proportional to effort; get approval (single message for S/M; macro-sections for L/XL — see Design Presentation below).
+6. **Scaffolding**: Run `create_plan.py` to create the plan file and regenerate the index.
+7. **Write plan content**: Fill in all sections following the conventions below.
+8. **Validate**: Run `validate_plan.py` until it exits 0.
+9. **Self-review**: Verify the absence of placeholders, contradictions, or ambiguities.
+10. **User review**: Ask the user to review the final plan file before proceeding with implementation.
 
 ---
 
@@ -31,7 +33,7 @@ Before starting the scaffolding phase or generating any plan file, run a prelimi
 
 #### **Scope Assessment and Decomposition:**
 
-Before asking detailed questions, assess the breadth of the request. If it describes multiple independent subsystems (e.g. "build a platform with chat, file storage, billing, and analytics"), flag it immediately. Help the user decompose the work into independent sub-projects, defining relationships and development order. Each sub-project will follow its own independent cycle (spec → plan → implementation).
+Before asking detailed questions, assess the breadth of the request. If it describes multiple independent subsystems (e.g. "build a platform with chat, file storage, billing, and analytics"), flag it immediately. Help the user decompose the work into independent sub-projects, defining relationships and development order. Each sub-project will follow its own independent cycle (plan → implementation).
 
 #### **Required Output (Step 0 Template):**
 
@@ -49,8 +51,8 @@ Calibrate the depth of investigation to avoid unnecessary overhead:
 | Effort Level | Question Quantity | Required Actions and Focus |
 | :--- | :--- | :--- |
 | **S** | None (0) | Only propose the plan *slug* and effort *S*, asking only for confirmation to proceed. |
-| **M** | Max 1 or 2 (one per message) | Ask questions only if there are real ambiguities about affected code areas. |
-| **L / XL** | Mandatory (one per message) | Strategic questions to understand scope, constraints, and success criteria. Clarify *non-goals*, technical risks, critical dependencies, and potential breaking changes. |
+| **M** | Max 1 or 2 | Ask questions only if there are real ambiguities about affected code areas. Independent questions may be grouped (2–4 at a time) in a single AskUserQuestion call; ask strictly one at a time only when an answer determines the next question. |
+| **L / XL** | Mandatory | Strategic questions to understand scope, constraints, and success criteria. Clarify *non-goals*, technical risks, critical dependencies, and potential breaking changes. Independent questions may be grouped (2–4 at a time) in a single AskUserQuestion call; ask strictly one at a time only when an answer determines the next question. |
 
 > **General note on questions:** Prefer multiple-choice questions when possible, but keep flexibility for open-ended questions when strictly necessary.
 
@@ -65,7 +67,7 @@ The model proposes the understanding card and any necessary questions; the user 
 
 #### Approach Exploration
 
-* Propose 2–3 different approaches highlighting their respective trade-offs.
+* Propose 2–3 different approaches highlighting their trade-offs.
 * Present options conversationally, clearly stating your recommendation and the reasoning behind it.
 * Always start by presenting the recommended option and explaining why.
 
@@ -73,7 +75,8 @@ The model proposes the understanding card and any necessary questions; the user 
 
 * Once requirements are agreed upon, present the system design.
 * Modulate the length of each section based on its complexity: a few sentences if straightforward, up to 200–300 words if it has complex elements or technical nuances.
-* **Request user approval after each individual section** to verify design correctness before advancing.
+* **For S and M plans**, present the whole design in one message and request a single approval before proceeding.
+* **For L and XL plans**, present the design in macro-sections (e.g. architecture + components, data flow + error handling, testing) and request approval after each macro-section, not after every subsection.
 * The design must comprehensively cover: architecture, components, data flow, error handling, and testing.
 
 #### Design for Isolation and Clarity
@@ -91,7 +94,7 @@ The model proposes the understanding card and any necessary questions; the user 
 
 #### Key Principles
 
-- **One question at a time** — Don't overwhelm with multiple questions
+- **Group related questions** — Independent questions may be grouped, 2–4 at a time, in a single AskUserQuestion call; ask strictly one at a time only when an answer determines the next question
 - **Multiple choice preferred** — Easier to answer than open-ended when possible
 - **YAGNI ruthlessly** — Remove unnecessary features from all designs
 - **Explore alternatives** — Always propose 2–3 approaches before settling
@@ -102,11 +105,11 @@ The model proposes the understanding card and any necessary questions; the user 
 
 ### Step 2 — **Scaffolding (mandatory, via script)**
 
-Run `create_plan.py` passing the plan slug: `uv run ${CLAUDE_SKILL_DIR}/scripts/create_plan.py $ARGUMENTS`
+Run `uv run .claude/skills/write-plan/scripts/create_plan.py <confirmed-slug> --effort <confirmed-effort>` where `<confirmed-slug>` and `<confirmed-effort>` are exactly the values the user confirmed at the blocking gate. Add `--subdir <topic-slug> --step <N>` for sub-plans (see [sub-plans.md](./references/sub-plans.md)).
 
-The script creates the deterministic structure in `docs/plans/` and prints the path of the file to edit.
+The script creates the deterministic structure in `docs/plans/`, prints the path of the file to edit, and regenerates `_index.md` automatically.
 
-Do not manually create files or folders in `docs/plans/`: the structure is the script's responsibility, not yours.
+Do not manually create files or folders in `docs/plans/`: the structure is the script's responsibility, not yours. This applies to sub-plans as well — see [sub-plans.md](./references/sub-plans.md).
 
 ---
 
@@ -116,7 +119,7 @@ Open the file returned by the script and fill in the sections following the conv
 
 ## Index: generated, not hand-written
 
-The index regenerates automatically after every write to `docs/plans/`; never edit it by hand.
+`create_plan.py` regenerates the index as part of scaffolding. After ANY other change to a plan file (content edit, status change, archive), you MUST run `uv run .claude/skills/write-plan/scripts/generate_index.py`. Never edit `_index.md` by hand.
 
 
 ## Frontmatter
@@ -144,7 +147,7 @@ effort: S | M | L | XL
 |---|---|
 | `S` | 1 file changed, less than 1h of estimated work |
 | `M` | 2–4 files, half a day |
-| `L` | Entire module or refactor with data/schema migration |
+| `L` | 5+ files OR a data/schema migration; 1–3 days of estimated work |
 | `XL` | Covers multiple distinct areas → **must be split into sub-plans — see [sub-plans.md](./references/sub-plans.md)**, not written as a single plan |
 
 
@@ -154,19 +157,19 @@ See [Template](./references/template.md).
 
 ### Note on tests in the plan
 
-Tests listed under each step in `Draft` are **intent**, not an immutable contract. Real tests are generated by the `tdd-test-writer` agent (or another specific agent) and may legitimately diverge from what was written at planning time. If they diverge, **update the plan** instead of leaving it misaligned: a DoD that references non-existent tests is not verifiable, which violates this skill's guiding principle.
+Tests listed under each step in `Draft` are **intent**, not an immutable contract. Real tests are generated by the `tdd-test-writer` agent (or another dedicated agent) and may legitimately diverge from what was written at planning time. If they diverge, **update the plan** instead of leaving it misaligned: a DoD that references non-existent tests is not verifiable, which violates this skill's guiding principle.
 
 ### Note on the DoD
 
 The DoD is always the **last section** of the plan. Every item must be verifiable with a command (`grep`, `uv run pytest`, `python -c "import ..."`) — zero subjective criteria.
 
-Do not copy the example variable block (e.g. `grep "OldSymbol"`) literally: it only makes sense for renames/refactors. For each plan, **generate items specific to that plan's content**. The fixed block is always the same and must be left as-is.
+Do not copy the example variable block (e.g. `grep "OldSymbol"`) literally: it only makes sense for renames/refactors. For each plan, **generate items tailored to that plan's content**. The fixed block is always the same and must be left as-is.
 
 ## Mechanical Enforcement
 
 The rules above do not enforce themselves. Use:
 
-- **`${CLAUDE_SKILL_DIR}/scripts/validate_plan.py <file>`** — validates filename, frontmatter (allowed fields, correct enum values), presence and position of the DoD, presence of the fixed block.
+- **`uv run .claude/skills/write-plan/scripts/validate_plan.py <file>`** — validates filename, frontmatter (allowed fields, correct enum values), presence and position of the DoD, presence of the fixed block, and absence of code fences in the DoD.
 
 
 ## Archived Plans
@@ -176,8 +179,14 @@ The rules above do not enforce themselves. Use:
 ## Full Workflow
 
 1. Write the plan with `status: Draft`, following the structure described in the sections above.
-2. Run `uv run ${CLAUDE_SKILL_DIR}/scripts/validate_plan.py <file>` **only after writing the content** — a freshly scaffolded file intentionally fails (empty sections). Fix until it passes.
+2. Run `uv run .claude/skills/write-plan/scripts/validate_plan.py <file>` **only after writing the content** — a freshly scaffolded file intentionally fails (empty sections). Fix until it passes.
 3. The plan is reviewed → **the user only** explicitly approves → update to `status: Reviewed`.
+
+## Updating an existing plan
+
+1. After **any** edit to a plan file (content, status, wording), re-run `uv run .claude/skills/write-plan/scripts/validate_plan.py <file>` and re-run `uv run .claude/skills/write-plan/scripts/generate_index.py`.
+2. Any substantive content change to a plan with `status: Reviewed` demotes it back to `Draft`; a new explicit user approval is required to return it to `Reviewed`. Typo and formatting fixes are excluded from this rule.
+3. Status transitions always follow the permissions table above.
 
 ## Implementation Workflow
 
