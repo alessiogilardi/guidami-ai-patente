@@ -18,7 +18,15 @@ src/commons/
 │   └── for_each.py              # ForEach[T, U](UseCase[list[T], list[U]]) — applies Callable[[T], U] to each element
 ├── agents/
 │   ├── __init__.py              # re-exports BaseAgent
-│   └── base_agent.py            # PromptRenderer, ConfigLoader, BaseAgent[T_In: BaseModel, T_Out] — composition over pydantic_ai.Agent
+│   └── base_agent.py            # PromptRenderer, BaseAgent[T_In: BaseModel, T_Out] — composition over pydantic_ai.Agent
+├── repositories/
+│   ├── __init__.py              # re-exports FileRepository, JsonRepository, YamlRepository
+│   └── file_repository/
+│       ├── __init__.py                      # explicit re-exports (AS aliases)
+│       ├── file_repository_protocol.py      # FileRepository[T] (Protocol) — load / write
+│       ├── _base_file_repository.py         # BaseFileRepository[T](ABC) — (de)serialisation + type inference
+│       ├── json_repository.py               # JsonRepository[T](BaseFileRepository[T])
+│       └── yaml_repository.py               # YamlRepository[T](BaseFileRepository[T])
 ├── clients/
 │   ├── embeddings/
 │   │   ├── __init__.py                                  # re-exports EmbeddingClient, LiteLLMEmbeddingClient,
@@ -213,9 +221,37 @@ src/domain/
   `render(variables: dict, images=()) -> str | list[str | BinaryContent]`.
   The caller (`BaseAgent`) extracts template variables from the `T_In` request via
   `request.model_dump()` before invoking `render`.
-- **`ConfigLoader`** (`commons/agents/base_agent.py`): SRP/DIP — loads
-  `AgentConfig` from YAML. Static method: `from_yaml(agents_dir, name) ->
-  AgentConfig`; raises `FileNotFoundError` if the file does not exist.
+- **`FileRepository[T]`** (`commons/repositories/file_repository/file_repository_protocol.py`,
+  `Protocol`): abstract interface following the Dependency Inversion Principle.
+  Two methods: `load(file_name) -> T | Sequence[T]` and
+  `write(data, file_name) -> None`. The domain depends on this protocol, not on
+  the concrete format.
+- **`BaseFileRepository[T]`** (`commons/repositories/file_repository/_base_file_repository.py`,
+  abstract): shared (de)serialisation logic for Pydantic models, dataclasses, and
+  plain dicts. Subclasses implement `_read_raw(path) -> dict | list` and
+  `_write_raw(data, path) -> None` for the format-specific I/O.
+  - `__init__(base_path, model_class=None)`: resolves and stores the base
+    directory; infers `model_class` from the generic parameter if not passed
+    explicitly (walks `__orig_bases__` looking for any parameterised
+    `BaseFileRepository` subclass and returns the first concrete type argument —
+    skipping TypeVars).
+  - `get_instance(base_path, model_class)` — classmethod factory; creates a
+    typed instance without requiring a named subclass.
+  - `load(file_name)`: calls `_read_raw`, then dispatches to `_deserialize_item`
+    for dicts or iterates for lists; raises `ValueError` if the content is neither.
+  - `write(data)`: serialises via `_serialize_item` and calls `_write_raw`.
+  - `_resolve(path)`: joins `base_path / path`; an absolute path argument
+    bypasses `base_path` (standard `pathlib` behaviour).
+  - Supports Pydantic v2 (`model_validate` / `model_dump`), dataclasses
+    (`asdict`), and plain dicts. Unsupported types raise `TypeError`.
+- **`JsonRepository[T]`** (`commons/repositories/file_repository/json_repository.py`):
+  concrete JSON implementation of `BaseFileRepository[T]`. `_read_raw` raises
+  `FileNotFoundError` with the full path; `_write_raw` creates parent directories
+  and writes with `ensure_ascii=False, indent=2` to preserve Unicode.
+- **`YamlRepository[T]`** (`commons/repositories/file_repository/yaml_repository.py`):
+  concrete YAML implementation of `BaseFileRepository[T]` using `yaml.safe_load`
+  / `yaml.safe_dump`. Currently used by `BaseAgent.from_yaml` to load
+  `AgentConfig` files.
 - **`BaseAgent[T_In: BaseModel, T_Out]`** (`commons/agents/base_agent.py`): uses Python 3.12
   native generics. **Composition** (not inheritance) over `pydantic_ai.Agent`,
   wrapped as `self._agent: Agent[None, T_Out]`. `T_In` is constrained to
@@ -226,12 +262,16 @@ src/domain/
     → `openrouter:google/model`), builds `self._agent` with
     `defer_model_check=True` — the API key (`OPENROUTER_API_KEY`) is verified
     only at runtime, not at construction.
-  - Methods: `run_prompt(request: T_In, images)` (async), `run_prompt_sync(request: T_In,
-    images)` (sync). They extract template variables via `request.model_dump()`
-    and pass them to `PromptRenderer.render`. Both delegate to `self._agent.run_sync` /
-    `self._agent.run`; return `.output` typed as `T_Out`.
-  - Factory: `from_yaml(name, agents_dir, output_type) -> BaseAgent[T_In, T_Out]` —
-    uses `ConfigLoader.from_yaml` + `PromptRenderer`.
+  - Methods: `run(request: T_In, images)` (async), `run_sync(request: T_In,
+    images)` (sync) and `__call__` (alias for `run_sync`). They extract template
+    variables via `request.model_dump()` and pass them to `PromptRenderer.render`.
+    Both delegate to `self._agent.run_sync` / `self._agent.run`; return `.output`
+    typed as `T_Out`.
+  - Factory: `from_yaml(name, agents_dir, output_type) -> BaseAgent[T_In, T_Out]`
+    — creates a `YamlRepository(agents_dir, AgentConfig)` and loads
+    `f"{name}.yaml"` (the `.yaml` extension is appended by `from_yaml`, not by the
+    repository). Agent subclasses override `from_yaml` with a fixed `output_type`
+    and call `super().from_yaml(name, agents_dir, output_type=ResponseType)`.
   - Property `core_agent`: exposes `self._agent` to allow
     `with agent.core_agent.override(model=TestModel(...))` in tests.
   Auth via `OPENROUTER_API_KEY` in the environment — never in the YAML or in the code.
@@ -290,13 +330,19 @@ src/domain/
   applied; missing required fields → `ValidationError`; `frozen=True` verifies
   immutability. (`AgentConfig` now lives in `commons/configs/agent_config.py`
   but the tests remain in `tests/commons/agents/`.)
-- `tests/commons/agents/test_base_agent.py` — missing YAML → `FileNotFoundError`;
-  YAML parameters mapped to `model_settings` (`temperature`, `max_tokens`,
-  `timeout`, `_max_output_retries`); `PromptRenderer.render` substitutes `$var`
-  placeholders; with `images` the list contains `BinaryContent`; `core_agent`
-  property used with `agent.core_agent.override(model=TestModel(...))` in tests;
-  `dict[int, str]` as `output_type` → PydanticAI wraps under the `response` key,
-  the `FunctionModel` must return `{"response": {...}}`.
+- `tests/commons/agents/test_base_agent.py` — `YamlRepository` raises
+  `FileNotFoundError` for missing files and parses valid YAML into `AgentConfig`;
+  `PromptRenderer.render` substitutes `$var` placeholders; with `images` the list
+  contains `BinaryContent`; `BaseAgent.from_yaml` factory method; missing agent
+  file raises `FileNotFoundError`; YAML parameters mapped to `model_settings`
+  (`temperature`, `max_tokens`, `timeout`, `_max_output_retries`).
+- `tests/commons/repositories/test_file_repository.py` — round-trips for
+  `JsonRepository` and `YamlRepository` (single object, list, empty list);
+  creates parent directories; preserves UTF-8; `FileNotFoundError` for missing
+  files; absolute path bypasses `base_path`; `get_instance` factory; typed
+  subclass type inference; untyped subclass raises `TypeError`; Pydantic, dataclass,
+  and dict (de)serialisation; unsupported type raises `TypeError`;
+  non-dict/non-list content raises `ValueError`.
 - `tests/commons/utils/test_deduplicate.py` — 9 unit tests (no `integration`
   marker, no external dependencies): unique items returned in first-occurrence
   order; empty iterable → empty iterator; all-unique passthrough; `on_duplicate`
