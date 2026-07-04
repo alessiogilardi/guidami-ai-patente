@@ -34,6 +34,17 @@ src/commons/
 │   │   ├── embedding_client.py                          # EmbeddingClient (ABC interface)
 │   │   ├── litellm_embedding_client.py                  # LiteLLMEmbeddingClient (cloud, OpenRouter)
 │   │   └── sentence_transformer_embedding_client.py     # SentenceTransformerEmbeddingClient (local, bge-m3)
+│   ├── file_system/
+│   │   ├── __init__.py                              # re-exports BaseFileSystemClient, 4 interfaces, 2 concrete clients
+│   │   ├── _base_file_system_client.py              # BaseFileSystemClient — path security mixin
+│   │   ├── interfaces/
+│   │   │   ├── __init__.py
+│   │   │   ├── file_reader.py                       # FileReaderInterface (ABC, sync)
+│   │   │   ├── file_writer.py                       # FileWriterInterface (ABC, sync)
+│   │   │   ├── async_file_reader.py                 # AsyncFileReaderInterface (ABC, async)
+│   │   │   └── async_file_writer.py                 # AsyncFileWriterInterface (ABC, async)
+│   │   ├── local_file_system_client.py              # LocalFileSystemClient — sync concrete adapter
+│   │   └── async_local_file_system_client.py        # AsyncLocalFileSystemClient — async concrete adapter (aiofiles)
 │   ├── __init__.py              # re-exports all public clients
 │   └── postgres_client.py       # PostgresClient — generic psycopg wrapper, table-agnostic
 ├── configs/
@@ -267,14 +278,50 @@ src/domain/
     variables via `request.model_dump()` and pass them to `PromptRenderer.render`.
     Both delegate to `self._agent.run_sync` / `self._agent.run`; return `.output`
     typed as `T_Out`.
-  - Factory: `from_yaml(name, agents_dir, output_type) -> BaseAgent[T_In, T_Out]`
-    — creates a `YamlRepository(agents_dir, AgentConfig)` and loads
-    `f"{name}.yaml"` (the `.yaml` extension is appended by `from_yaml`, not by the
-    repository). Agent subclasses override `from_yaml` with a fixed `output_type`
-    and call `super().from_yaml(name, agents_dir, output_type=ResponseType)`.
+  - Factory: `from_yaml(name, repository, output_type) -> BaseAgent[T_In, T_Out]`
+    — accepts a pre-constructed `YamlRepository[AgentConfig]` (built by the caller)
+    and loads `f"{name}.yaml"` (the `.yaml` extension is appended by `from_yaml`,
+    not by the repository). The repository is injected, not created internally —
+    aligns with the project DI convention (repositories are constructed at the
+    orchestrator level and passed in). Agent subclasses override `from_yaml` with a
+    fixed `output_type` and call
+    `super().from_yaml(name, repository, output_type=ResponseType)`.
   - Property `core_agent`: exposes `self._agent` to allow
     `with agent.core_agent.override(model=TestModel(...))` in tests.
   Auth via `OPENROUTER_API_KEY` in the environment — never in the YAML or in the code.
+- **`BaseFileSystemClient`** (`commons/clients/file_system/_base_file_system_client.py`):
+  security mixin — no abstract methods, no I/O. Constructor accepts `base_directory: str | Path`
+  and resolves it with `Path.resolve()`. Three layered protected helpers:
+  - `_resolve_path(relative_path)` → validates path traversal, raises
+    `PermissionError("Path traversal attempt detected.")`, returns the absolute `Path`
+    regardless of file existence;
+  - `_get_safe_read_path(relative_path)` → calls `_resolve_path` then raises
+    `FileNotFoundError` if the file does not exist;
+  - `_get_safe_write_path(relative_path)` → calls `_resolve_path` then auto-creates
+    parent directories (`mkdir(parents=True, exist_ok=True)`).
+  Traversal protection always has precedence — `PermissionError` is raised before any
+  I/O error.
+- **4 ABC interfaces** (`commons/clients/file_system/interfaces/`): follow Interface
+  Segregation — sync and async are separate; read and write are separate.
+  - `FileReaderInterface`: `read_text`, `read_bytes`, `read_stream(chunk_size=8192) -> Iterator[bytes]`,
+    `exists` (validation — returns `None` on success, raises `FileNotFoundError` if missing);
+  - `FileWriterInterface`: `write_text`, `write_bytes`, `write_stream(data: Iterable[bytes])`;
+  - `AsyncFileReaderInterface`: async variants; `read_stream` is an async generator declared as
+    plain `def` returning `AsyncIterator[bytes]` to avoid ABC/async-generator override mismatch;
+  - `AsyncFileWriterInterface`: async variants; `write_stream` accepts `AsyncIterable[bytes]`.
+- **`LocalFileSystemClient`** (`commons/clients/file_system/local_file_system_client.py`):
+  inherits `BaseFileSystemClient + FileReaderInterface + FileWriterInterface`. Read methods call
+  `_get_safe_read_path`; write methods call `_get_safe_write_path`; `exists` delegates to
+  `_get_safe_read_path` and discards the return value. Module-level
+  `logger = logging.getLogger(__name__)` with f-strings (G004 suppressed globally).
+  Unexpected `OSError` is logged at ERROR then re-raised; `PermissionError`/`FileNotFoundError`
+  propagate as-is.
+- **`AsyncLocalFileSystemClient`** (`commons/clients/file_system/async_local_file_system_client.py`):
+  inherits `BaseFileSystemClient + AsyncFileReaderInterface + AsyncFileWriterInterface`. Uses
+  `aiofiles` for all async I/O. `async exists` calls `_get_safe_read_path` synchronously (path
+  resolution is CPU-bound; no await). Same logging/error pattern as the sync client.
+  Both clients are exported from `commons.clients` alongside `PostgresClient` and the embedding
+  clients.
 - **`deduplicate[T]`** (`commons/utils/deduplicate.py`): generic, order-preserving
   deduplication iterator. Signature: `deduplicate(items: Iterable[T], key:
   Callable[[T], Hashable], on_duplicate: Callable[[T], None] | None = None) ->
@@ -318,6 +365,14 @@ src/domain/
   the real API. Tests for `SentenceTransformerEmbeddingClient`: `embed_query` and
   `embed_passages` with empty prefixes (bge-m3) and with explicit prefixes
   (e5-style); verifies `len(vector) == config.vector_dim`.
+- `tests/commons/clients/test_file_system_client.py` — 21 unit tests, no `integration`
+  marker, all use `tmp_path`. Three test classes: `TestBaseFileSystemClient` (5 tests —
+  traversal blocked, valid path resolved, missing file on read, traversal on write,
+  auto-mkdir on write); `TestLocalFileSystemClient` (9 tests — text/bytes/stream
+  round-trips, UTF-8 with `àèìòù`, missing parent auto-created, overwrite, `exists`
+  happy path and both error paths); `TestAsyncLocalFileSystemClient` (7 tests — same
+  I/O scenarios async + `exists` error paths). Async tests run via `pytest-asyncio`
+  with `asyncio_mode = "auto"`.
 - `tests/commons/clients/test_postgres_client.py` — against the compose Postgres
   (no `integration` marker): `truncate`, `execute_many`/`fetch` on
   `knowledge_chunks` (bulk insert + ordered read).

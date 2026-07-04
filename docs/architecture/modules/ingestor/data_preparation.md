@@ -82,9 +82,10 @@ output_key=CLEANED_ARTICLES)` →
 `ApplyStep("enrich", ForEach(ArticleMapper.from_parsed_to_enriched), ContextEnricher(agent))` →
 `WriteJsonStep("write_enriched", model_class=EnrichedArticleModel)`.
 Layers: input = `_CLEANED_LAYER`, output = `config.knowledge_preparation.output_layer`
-(`"enriched"`); raises `ValueError` if `output_layer` is not configured. Instantiates
-the agent via `ArticleContextualizerAgent.from_yaml("article_contextualizer",
-config.agents_dir)` and injects it into `ContextEnricher`. In SP04 the previous
+(`"enriched"`); raises `ValueError` if `output_layer` is not configured. Constructs a
+`YamlRepository[AgentConfig]` from `config.agents_dir`, then instantiates the agent
+via `ArticleContextualizerAgent.from_yaml("article_contextualizer", repository)` and
+injects it into `ContextEnricher`. In SP04 the previous
 `MapStep + EnrichDataStep` (two separate steps) was unified into a single
 `ApplyStep` with chain `[ForEach(ArticleMapper.from_parsed_to_enriched),
 ContextEnricher(agent)]`.
@@ -265,7 +266,7 @@ Subclass of `BaseAgent[ArticleContextualizerRequest, ArticleContextualizerRespon
   `ArticleContextualizerMapper` (see `mappers/agents/` section above).
 - YAML prompt (`configs/agents/article_contextualizer.yaml`): variables
   `$title`, `$text`, `$paragraphs` (match the request fields).
-- `from_yaml(name, agents_dir, output_type=None) -> Self`: factory that fixes
+- `from_yaml(name, repository, output_type=None) -> Self`: factory that fixes
   `output_type=ArticleContextualizerResponse`.
 - Structured output is handled by PydanticAI via `output_type`; no need to
   parse JSON manually or validate the raw response.
@@ -281,7 +282,7 @@ Subclass of `BaseAgent[RoadSignDescriberRequest, RoadSignDescriberResponse]`
   of `RoadSignDescriberMapper`.
 - YAML prompt (`configs/agents/road_sign_describer.yaml`): variables `$topic`,
   `$text` (match the request fields).
-- `from_yaml(name, agents_dir, output_type=None) -> Self`: factory that fixes
+- `from_yaml(name, repository, output_type=None) -> Self`: factory that fixes
   `output_type=RoadSignDescriberResponse`.
 - `RoadSignDescriberResponse(BaseModel, frozen=True)` — `name: str`, `description: str`
   — lives in `agents/dto/road_sign_describer/`. `ImageDescription` (previous DTO
@@ -301,7 +302,7 @@ Subclass of `BaseAgent[NormReferenceDescriberRequest, NormReferenceDescriberResp
 - YAML prompt (`configs/agents/norm_reference_describer.yaml`): model
   `openrouter/google/gemini-2.5-flash-lite`; variables `$topic`, `$text`,
   `$correct_answer`, `$image_description`.
-- `from_yaml(name, agents_dir, output_type=None) -> Self`: factory that fixes
+- `from_yaml(name, repository, output_type=None) -> Self`: factory that fixes
   `output_type=NormReferenceDescriberResponse`.
 - `NormReferenceDescriberResponse(BaseModel, frozen=True)` — fields
   `core_concepts: list[str]`, `entities: list[str]`, `exact_keywords: list[str]`,
