@@ -60,7 +60,7 @@ class AsyncFileReaderInterface(ABC):
         """
 
     @abstractmethod
-    async def exists(self, path: str | Path) -> None:
+    async def exists_or_raise(self, path: str | Path) -> None:
         """Validate that a file is accessible under the base directory asynchronously.
 
         Path resolution is synchronous internally; the method is declared ``async``

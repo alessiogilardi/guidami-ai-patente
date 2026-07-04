@@ -1,7 +1,10 @@
 """Base class for file system clients — path security only, no I/O."""
 
 import logging
+from collections.abc import Iterator
+from contextlib import contextmanager
 from pathlib import Path
+from typing import Literal
 
 logger = logging.getLogger(__name__)
 
@@ -40,6 +43,14 @@ class BaseFileSystemClient:
             raise PermissionError("Path traversal attempt detected.")
         return full_path
 
+    def _get_safe_path(self, relative_path: str | Path, mode: Literal["r", "w"] = "r") -> Path:
+        if mode == "w":
+            return self._get_safe_write_path(relative_path)
+        if mode == "r":
+            return self._get_safe_read_path(relative_path)
+
+        raise ValueError(f"Invalid mode: {mode}. Use 'r' or 'w'.")
+
     def _get_safe_read_path(self, relative_path: str | Path) -> Path:
         """Resolve, validate, and assert the file exists.
 
@@ -73,3 +84,17 @@ class BaseFileSystemClient:
         path = self._resolve_path(relative_path)
         path.parent.mkdir(parents=True, exist_ok=True)
         return path
+
+    @contextmanager
+    def _io_operation(self, path: str | Path, mode: Literal["r", "w"] = "r") -> Iterator[Path]:
+        logger.debug("Starting I/O operation on '%s'", path)
+        try:
+            yield self._get_safe_path(path, mode)
+        except (FileNotFoundError, PermissionError):
+            logger.error("I/O operation failed on '%s'", path)
+            raise
+        except OSError:
+            logger.exception("Unexpected I/O error on '%s'", path)
+            raise
+        finally:
+            logger.debug("Finished I/O operation on '%s'", path)

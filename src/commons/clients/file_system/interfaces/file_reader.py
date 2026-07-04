@@ -60,7 +60,7 @@ class FileReaderInterface(ABC):
         """
 
     @abstractmethod
-    def exists(self, path: str | Path) -> None:
+    def exists_or_raise(self, path: str | Path) -> None:
         """Validate that a file is accessible under the base directory.
 
         This is a validation method, not a boolean probe. It raises rather
