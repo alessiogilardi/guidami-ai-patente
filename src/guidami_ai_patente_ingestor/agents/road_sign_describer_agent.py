@@ -1,7 +1,6 @@
 from pathlib import Path
 
 from commons.agents import BaseAgent
-from commons.agents.base_agent import ConfigLoader
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
     RoadSignDescriberRequest,
     RoadSignDescriberResponse,
@@ -9,20 +8,19 @@ from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
 
 
 class RoadSignDescriberAgent(BaseAgent[RoadSignDescriberRequest, RoadSignDescriberResponse]):
-    """Wrapper puro intorno all'LLM per la descrizione dei segnali stradali via vision."""
+    """Pure LLM wrapper for describing road signs via vision."""
 
     @classmethod
     def from_yaml(  # type: ignore[override]
         cls, name: str, agents_dir: Path
     ) -> "RoadSignDescriberAgent":
-        """Istanzia l'agente leggendo la configurazione da un file YAML.
+        """Instantiate the agent from a YAML configuration file.
 
         Args:
-            name: Nome del file YAML (senza estensione).
-            agents_dir: Directory che contiene i file di configurazione degli agenti.
+            name: YAML file name without extension.
+            agents_dir: Directory containing agent configuration files.
 
         Returns:
-            Istanza configurata di `RoadSignDescriberAgent`.
+            Configured `RoadSignDescriberAgent` instance.
         """
-        config = ConfigLoader.from_yaml(agents_dir, name)
-        return cls(config, RoadSignDescriberResponse)
+        return super().from_yaml(name, agents_dir, output_type=RoadSignDescriberResponse)  # type: ignore[return-value]

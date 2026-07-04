@@ -1,7 +1,6 @@
 from pathlib import Path
 
 from commons.agents import BaseAgent
-from commons.agents.base_agent import ConfigLoader
 from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
     ArticleContextualizerRequest,
     ArticleContextualizerResponse,
@@ -11,20 +10,19 @@ from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
 class ArticleContextualizerAgent(
     BaseAgent[ArticleContextualizerRequest, ArticleContextualizerResponse]
 ):
-    """Wrapper puro intorno all'LLM per la contestualizzazione degli articoli normativi."""
+    """Pure LLM wrapper for contextualising normative articles."""
 
     @classmethod
     def from_yaml(  # type: ignore[override]
         cls, name: str, agents_dir: Path
     ) -> "ArticleContextualizerAgent":
-        """Istanzia l'agente leggendo la configurazione da un file YAML.
+        """Instantiate the agent from a YAML configuration file.
 
         Args:
-            name: Nome del file YAML (senza estensione).
-            agents_dir: Directory che contiene i file di configurazione degli agenti.
+            name: YAML file name without extension.
+            agents_dir: Directory containing agent configuration files.
 
         Returns:
-            Istanza configurata di `ArticleContextualizerAgent`.
+            Configured `ArticleContextualizerAgent` instance.
         """
-        config = ConfigLoader.from_yaml(agents_dir, name)
-        return cls(config, ArticleContextualizerResponse)
+        return super().from_yaml(name, agents_dir, output_type=ArticleContextualizerResponse)  # type: ignore[return-value]
