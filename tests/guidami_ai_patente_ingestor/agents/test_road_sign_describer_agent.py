@@ -13,6 +13,8 @@ from pydantic_ai.messages import (
 from pydantic_ai.models.function import AgentInfo, FunctionModel
 from pydantic_ai.models.test import TestModel
 
+from commons.configs import AgentConfig
+from commons.repositories import YamlRepository
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
     RoadSignDescriberRequest,
@@ -21,7 +23,7 @@ from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
 
 
 @pytest.fixture
-def agents_dir(tmp_path: Path) -> Path:
+def agents_dir(tmp_path: Path) -> YamlRepository:
     d = tmp_path / "agents"
     d.mkdir()
     (d / "road_sign_describer.yaml").write_text(
@@ -30,10 +32,12 @@ def agents_dir(tmp_path: Path) -> Path:
         "user: 'Argomento: $topic\\nDomanda: $text\\nDescrivi il segnale.'\n",
         encoding="utf-8",
     )
-    return d
+    return YamlRepository(d, AgentConfig)
 
 
-def test_run_sync_returns_road_sign_describer_response(agents_dir: Path, tmp_path: Path) -> None:
+def test_run_sync_returns_road_sign_describer_response(
+    agents_dir: YamlRepository, tmp_path: Path
+) -> None:
     img = tmp_path / "stop.jpg"
     img.write_bytes(b"\xff\xd8\xff")
     request = RoadSignDescriberRequest(topic="Segnaletica", text="Cosa indica il segnale?")
@@ -49,7 +53,7 @@ def test_run_sync_returns_road_sign_describer_response(agents_dir: Path, tmp_pat
     assert result.description == "Segnale rosso."
 
 
-def test_run_sync_sends_binary_content(agents_dir: Path, tmp_path: Path) -> None:
+def test_run_sync_sends_binary_content(agents_dir: YamlRepository, tmp_path: Path) -> None:
     img = tmp_path / "stop.jpg"
     img.write_bytes(b"\xff\xd8\xff")
     request = RoadSignDescriberRequest(topic="Segnaletica", text="Domanda.")
@@ -83,7 +87,7 @@ def test_run_sync_sends_binary_content(agents_dir: Path, tmp_path: Path) -> None
     assert has_binary
 
 
-def test_run_sync_passes_topic_in_prompt(agents_dir: Path, tmp_path: Path) -> None:
+def test_run_sync_passes_topic_in_prompt(agents_dir: YamlRepository, tmp_path: Path) -> None:
     img = tmp_path / "stop.jpg"
     img.write_bytes(b"\xff\xd8\xff")
     request = RoadSignDescriberRequest(topic="Precedenza", text="Domanda sul segnale.")
@@ -116,7 +120,7 @@ def test_run_sync_passes_topic_in_prompt(agents_dir: Path, tmp_path: Path) -> No
 
 
 def test_render_prompt_with_image_includes_binary_content(
-    agents_dir: Path, tmp_path: Path
+    agents_dir: YamlRepository, tmp_path: Path
 ) -> None:
     img = tmp_path / "stop.jpg"
     img.write_bytes(b"\xff\xd8\xff")

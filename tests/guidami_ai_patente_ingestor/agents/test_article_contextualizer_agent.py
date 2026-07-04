@@ -11,6 +11,8 @@ from pydantic_ai.messages import (
 )
 from pydantic_ai.models.function import AgentInfo, FunctionModel
 
+from commons.configs import AgentConfig
+from commons.repositories import YamlRepository
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
     ArticleContextualizerRequest,
@@ -19,7 +21,7 @@ from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
 
 
 @pytest.fixture
-def agents_dir(tmp_path: Path) -> Path:
+def agents_dir(tmp_path: Path) -> YamlRepository:
     d = tmp_path / "agents"
     d.mkdir()
     (d / "article_contextualizer.yaml").write_text(
@@ -28,7 +30,7 @@ def agents_dir(tmp_path: Path) -> Path:
         "user: 'Articolo: $title\\n$text\\n$paragraphs'\n",
         encoding="utf-8",
     )
-    return d
+    return YamlRepository(d, AgentConfig)
 
 
 def _request(**kwargs) -> ArticleContextualizerRequest:
@@ -36,7 +38,7 @@ def _request(**kwargs) -> ArticleContextualizerRequest:
     return ArticleContextualizerRequest(**{**defaults, **kwargs})
 
 
-def test_run_sync_returns_article_contextualizer_response(agents_dir: Path) -> None:
+def test_run_sync_returns_article_contextualizer_response(agents_dir: YamlRepository) -> None:
     agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir)
     expected_contexts = {"0": "Primo contesto.", "1": "Secondo contesto."}
 
@@ -58,7 +60,7 @@ def test_run_sync_returns_article_contextualizer_response(agents_dir: Path) -> N
     assert result.contexts == {0: "Primo contesto.", 1: "Secondo contesto."}
 
 
-def test_run_sync_passes_title_in_prompt(agents_dir: Path) -> None:
+def test_run_sync_passes_title_in_prompt(agents_dir: YamlRepository) -> None:
     agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir)
     request = _request(title="Norme generali")
     captured_text: list[str] = []
@@ -85,7 +87,7 @@ def test_run_sync_passes_title_in_prompt(agents_dir: Path) -> None:
     assert any("Norme generali" in t for t in captured_text)
 
 
-def test_run_sync_passes_paragraphs_in_prompt(agents_dir: Path) -> None:
+def test_run_sync_passes_paragraphs_in_prompt(agents_dir: YamlRepository) -> None:
     agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir)
     request = _request(paragraphs="1. Primo comma.\n2. Secondo comma.")
     captured_text: list[str] = []
