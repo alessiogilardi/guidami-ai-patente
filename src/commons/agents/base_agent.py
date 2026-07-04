@@ -1,40 +1,40 @@
 import mimetypes
 from pathlib import Path
 from string import Template
-from typing import Any
+from typing import Any, cast
 
-import yaml
 from pydantic import BaseModel
 from pydantic_ai import Agent, BinaryContent
 from pydantic_ai.settings import ModelSettings
 
 from ..configs import AgentConfig
+from ..repositories import YamlRepository
 
 
 class PromptRenderer:
-    """SRP: Si occupa esclusivamente della formattazione del prompt e della gestione media."""
+    """Formats the user prompt template and attaches media."""
 
     def __init__(self, template_str: str) -> None:
-        """Inizializza il renderer con un template stringa in formato `$var`.
+        """Initialize the renderer with a `$var`-style template string.
 
         Args:
-            template_str: Template del prompt utente con variabili in formato `$var`.
+            template_str: User prompt template with `$var` placeholders.
         """
         self._template = Template(template_str)
 
     def render(
         self, request: BaseModel | dict[str, Any], images: tuple[Path, ...] = ()
     ) -> str | list[str | BinaryContent]:
-        """Sostituisce le variabili nel template e allega le immagini binarie.
+        """Substitute template variables and attach binary images.
 
         Args:
-            request: Modello Pydantic o dizionario con le variabili da sostituire.
-            images: Tuple di percorsi immagine da allegare come `BinaryContent`.
+            request: Pydantic model or dict providing substitution values.
+            images: Image paths to attach as `BinaryContent`.
 
         Returns:
-            Stringa renderizzata se nessuna immagine, altrimenti lista con testo e binari.
+            Rendered string when no images are provided, otherwise a list
+            containing the text followed by `BinaryContent` items.
         """
-        # Centralizziamo qui lo spacchettamento del modello Pydantic
         variables = request.model_dump() if isinstance(request, BaseModel) else request
         text = self._template.safe_substitute(**variables)
 
@@ -45,48 +45,20 @@ class PromptRenderer:
         for img in images:
             mime_type, _ = mimetypes.guess_type(img)
             media_type = mime_type or "application/octet-stream"
-
             parts.append(BinaryContent(data=img.read_bytes(), media_type=media_type))
 
         return parts
 
 
-class ConfigLoader:
-    """SRP/DIP: Isola la logica di caricamento della configurazione dal filesystem."""
-
-    @staticmethod
-    def from_yaml(agents_dir: Path, name: str) -> AgentConfig:
-        """Carica e valida la configurazione dell'agente da un file YAML.
-
-        Args:
-            agents_dir: Directory che contiene i file di configurazione degli agenti.
-            name: Nome dell'agente (senza estensione `.yaml`).
-
-        Returns:
-            `AgentConfig` validata.
-
-        Raises:
-            FileNotFoundError: Se il file YAML non esiste.
-        """
-        yaml_path = agents_dir / f"{name}.yaml"
-        if not yaml_path.exists():
-            raise FileNotFoundError(f"Agent config not found: {name} ({yaml_path})")
-
-        with yaml_path.open(encoding="utf-8") as f:
-            raw = yaml.safe_load(f)
-
-        return AgentConfig.model_validate(raw)
-
-
 class BaseAgent[T_In: BaseModel, T_Out]:
-    """Wrappa `pydantic_ai.Agent` gestendo modelli Pydantic per Request e Response."""
+    """Wraps `pydantic_ai.Agent` with Pydantic request/response models."""
 
     def __init__(self, config: AgentConfig, output_type: type[T_Out]) -> None:
-        """Inizializza l'agente con la configurazione e il tipo di output.
+        """Initialize the agent with configuration and output type.
 
         Args:
-            config: Configurazione dell'agente (modello, prompt, parametri).
-            output_type: Tipo Pydantic atteso per l'output strutturato dell'LLM.
+            config: Agent configuration (model, prompts, parameters).
+            output_type: Expected Pydantic type for structured LLM output.
         """
         self.config = config
         self.renderer = PromptRenderer(config.user)
@@ -110,36 +82,47 @@ class BaseAgent[T_In: BaseModel, T_Out]:
     def from_yaml(
         cls, name: str, agents_dir: Path, output_type: type[T_Out]
     ) -> "BaseAgent[T_In, T_Out]":
-        """Factory method per istanziare l'agente leggendo un file YAML."""
-        config = ConfigLoader.from_yaml(agents_dir, name)
+        """Instantiate the agent by loading its YAML configuration file.
+
+        Args:
+            name: Agent name (without the `.yaml` extension).
+            agents_dir: Directory containing agent configuration files.
+            output_type: Expected Pydantic type for structured LLM output.
+
+        Returns:
+            Configured agent instance.
+
+        Raises:
+            FileNotFoundError: If the YAML file does not exist.
+        """
+        repository = YamlRepository(agents_dir, AgentConfig)
+        config = cast(AgentConfig, repository.load(f"{name}.yaml"))
         return cls(config, output_type)
 
     async def run(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
-        """Esegue l'agente in modo ASINCRONO."""
-        # Adesso passiamo direttamente l'oggetto 'request' al renderer
+        """Run the agent asynchronously."""
         prompt_content = self.renderer.render(request, images)
         result = await self._agent.run(prompt_content)
         return result.output
 
     def run_sync(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
-        """Esegue l'agente in modo SINCRONO bloccando il thread corrente."""
-        # Adesso passiamo direttamente l'oggetto 'request' al renderer
+        """Run the agent synchronously, blocking the current thread."""
         prompt_content = self.renderer.render(request, images)
         result = self._agent.run_sync(prompt_content)
         return result.output
 
     def __call__(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
-        """Alias sincrono di `run_sync`: consente di usare l'agente come funzione callable."""
+        """Synchronous alias for `run_sync`; allows the agent to be used as a callable."""
         return self.run_sync(request, images)
 
     @property
     def core_agent(self) -> Agent[None, T_Out]:
-        """Permette di accedere all'agente pydantic_ai originale."""
+        """The underlying pydantic_ai Agent instance."""
         return self._agent
 
     @staticmethod
     def __parse_model_name(config: AgentConfig) -> str:
-        """Adatta il nome del modello rimuovendo l'eventuale slash iniziale per compatibilità."""
+        """Rewrite the model name: replace the first `/` with `:` for pydantic_ai compatibility."""
         if "/" in config.model_name:
             return config.model_name.replace("/", ":", 1)
 

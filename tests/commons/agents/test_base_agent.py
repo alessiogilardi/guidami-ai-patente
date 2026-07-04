@@ -5,8 +5,9 @@ import yaml
 from pydantic_ai import BinaryContent
 
 from commons.agents import BaseAgent
-from commons.agents.base_agent import ConfigLoader, PromptRenderer
+from commons.agents.base_agent import PromptRenderer
 from commons.configs import AgentConfig
+from commons.repositories import YamlRepository
 
 
 def _write_yaml(agents_dir: Path, name: str, content: dict) -> None:
@@ -21,20 +22,22 @@ MINIMAL_CONFIG: dict = {
 }
 
 
-# --- ConfigLoader ---
+# --- YamlRepository (agent config loading) ---
 
 
-def test_config_loader_raises_file_not_found_for_missing_yaml(tmp_path: Path) -> None:
+def test_yaml_repository_raises_file_not_found_for_missing_yaml(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     agents_dir.mkdir()
-    with pytest.raises(FileNotFoundError, match="nonexistent"):
-        ConfigLoader.from_yaml(agents_dir, "nonexistent")
+    repo = YamlRepository(agents_dir, AgentConfig)
+    with pytest.raises(FileNotFoundError, match="nonexistent.yaml"):
+        repo.load("nonexistent.yaml")
 
 
-def test_config_loader_parses_yaml_into_agent_config(tmp_path: Path) -> None:
+def test_yaml_repository_parses_yaml_into_agent_config(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
-    config = ConfigLoader.from_yaml(agents_dir, "test_agent")
+    repo = YamlRepository(agents_dir, AgentConfig)
+    config = repo.load("test_agent.yaml")
     assert isinstance(config, AgentConfig)
     assert config.model_name == "openrouter/google/gemini-2.5-flash-lite"
 
@@ -65,7 +68,8 @@ def test_prompt_renderer_returns_list_with_binary_content_for_images(
 def test_base_agent_created_from_valid_config(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
-    config = ConfigLoader.from_yaml(agents_dir, "test_agent")
+    repo = YamlRepository(agents_dir, AgentConfig)
+    config = repo.load("test_agent.yaml")
     agent = BaseAgent(config, str)
     assert agent is not None
 
@@ -75,6 +79,13 @@ def test_base_agent_from_yaml_factory_method(tmp_path: Path) -> None:
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     agent = BaseAgent.from_yaml("test_agent", agents_dir, str)
     assert agent is not None
+
+
+def test_base_agent_from_yaml_raises_file_not_found(tmp_path: Path) -> None:
+    agents_dir = tmp_path / "agents"
+    agents_dir.mkdir()
+    with pytest.raises(FileNotFoundError):
+        BaseAgent.from_yaml("nonexistent", agents_dir, str)
 
 
 def test_base_agent_yaml_params_mapped_to_model_settings(tmp_path: Path) -> None:
