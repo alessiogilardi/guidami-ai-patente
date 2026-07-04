@@ -18,6 +18,7 @@ dependencies = [
     "litellm>=1.80.15",
     "sentence-transformers>=5.5.1",
     "pydantic-ai-slim[openrouter]>=1.107.0",
+    "aiofiles>=25.1.0",
 ]
 
 [project.scripts]
@@ -34,6 +35,7 @@ build-backend = "uv_build"
 dev = [
     "pyright>=1.1.408",
     "pytest>=9.0.3",
+    "pytest-asyncio>=1.4.0",
     "ruff>=0.15.10",
 ]
 
@@ -58,6 +60,7 @@ convention = "google"
 "**/__init__.py" = ["D104"]
 
 [tool.pytest.ini_options]
+asyncio_mode = "auto"
 markers = [
     "integration: tests that require external services (Postgres, model downloads, ...)",
 ]
