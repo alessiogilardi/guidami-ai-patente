@@ -80,13 +80,13 @@ class BaseAgent[T_In: BaseModel, T_Out]:
 
     @classmethod
     def from_yaml(
-        cls, name: str, agents_dir: Path, output_type: type[T_Out]
+        cls, name: str, repository: YamlRepository, output_type: type[T_Out]
     ) -> "BaseAgent[T_In, T_Out]":
         """Instantiate the agent by loading its YAML configuration file.
 
         Args:
             name: Agent name (without the `.yaml` extension).
-            agents_dir: Directory containing agent configuration files.
+            repository: Repository used to load agent configuration files.
             output_type: Expected Pydantic type for structured LLM output.
 
         Returns:
@@ -95,7 +95,6 @@ class BaseAgent[T_In: BaseModel, T_Out]:
         Raises:
             FileNotFoundError: If the YAML file does not exist.
         """
-        repository = YamlRepository(agents_dir, AgentConfig)
         config = cast(AgentConfig, repository.load(f"{name}.yaml"))
         return cls(config, output_type)
 

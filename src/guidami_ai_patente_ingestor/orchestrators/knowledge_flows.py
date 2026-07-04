@@ -4,6 +4,8 @@ import logging
 from typing import Literal, cast
 
 from commons.clients import EmbeddingClient, PostgresClient
+from commons.configs import AgentConfig
+from commons.repositories import YamlRepository
 from commons.services.embeddings import EmbeddingService
 from commons.use_cases import ForEach
 from flowstep import Flow, FlowBuilder
@@ -233,7 +235,8 @@ def build_knowledge_enrichment_flow(
         output_key=context_keys.CLEANED_ARTICLES,
     )
 
-    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", config.agents_dir)
+    agents_repository = YamlRepository(config.agents_dir, AgentConfig)
+    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_repository)
     enrich_step = ApplyStep(
         "enrich",
         ForEach(ArticleMapper.from_parsed_to_enriched),

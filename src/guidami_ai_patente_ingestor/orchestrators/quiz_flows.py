@@ -3,6 +3,8 @@
 import logging
 
 from commons.clients import EmbeddingClient, PostgresClient
+from commons.configs import AgentConfig
+from commons.repositories import YamlRepository
 from commons.services.embeddings import EmbeddingService
 from commons.use_cases import ForEach
 from flowstep import Flow, FlowBuilder
@@ -221,9 +223,10 @@ def build_quiz_enrichment_flow(
         context_keys.CLEANED_QUIZ,
     )
 
-    describer = RoadSignDescriberAgent.from_yaml("road_sign_describer", config.agents_dir)
+    agents_repository = YamlRepository(config.agents_dir, AgentConfig)
+    describer = RoadSignDescriberAgent.from_yaml("road_sign_describer", agents_repository)
     norm_describer = NormReferenceDescriberAgent.from_yaml(
-        "norm_reference_describer", config.agents_dir
+        "norm_reference_describer", agents_repository
     )
     enrich_step = ApplyStep(
         "enrich",
