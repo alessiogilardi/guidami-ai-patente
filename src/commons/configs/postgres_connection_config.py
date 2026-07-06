@@ -12,3 +12,4 @@ class PostgresConnectionConfig(BaseModel):
     password: SecretStr
     dbname: str
     sslmode: str | None = None
+    connect_timeout: int = 5

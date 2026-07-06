@@ -21,6 +21,7 @@ class PostgresClient:
             password=config.password.get_secret_value(),
             dbname=config.dbname,
             sslmode=config.sslmode,
+            connect_timeout=config.connect_timeout,
         )
         self._connection = psycopg.connect(conninfo, autocommit=True)
         register_vector(self._connection)
