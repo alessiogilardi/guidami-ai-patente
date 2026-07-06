@@ -94,20 +94,20 @@ class TestLocalFileSystemClient:
     def test_exists_returns_none_for_existing_file(self, tmp_path: Path) -> None:
         client = LocalFileSystemClient(tmp_path)
         client.write_text("present.txt", "here")
-        result = client.exists("present.txt")
+        result = client.exists_or_raise("present.txt")
         assert result is None
 
     def test_exists_raises_file_not_found_for_missing_file(self, tmp_path: Path) -> None:
         client = LocalFileSystemClient(tmp_path)
         with pytest.raises(FileNotFoundError):
-            client.exists("ghost.txt")
+            client.exists_or_raise("ghost.txt")
 
     def test_exists_raises_permission_error_on_traversal_before_not_found(
         self, tmp_path: Path
     ) -> None:
         client = LocalFileSystemClient(tmp_path)
         with pytest.raises(PermissionError, match="Path traversal attempt detected"):
-            client.exists("../escaped.txt")
+            client.exists_or_raise("../escaped.txt")
 
 
 # ---------------------------------------------------------------------------
@@ -156,10 +156,10 @@ class TestAsyncLocalFileSystemClient:
     async def test_exists_returns_none_for_existing_file(self, tmp_path: Path) -> None:
         client = AsyncLocalFileSystemClient(tmp_path)
         await client.write_text("present.txt", "here")
-        result = await client.exists("present.txt")
+        result = await client.exists_or_raise("present.txt")
         assert result is None
 
     async def test_exists_raises_file_not_found_for_missing_file(self, tmp_path: Path) -> None:
         client = AsyncLocalFileSystemClient(tmp_path)
         with pytest.raises(FileNotFoundError):
-            await client.exists("ghost.txt")
+            await client.exists_or_raise("ghost.txt")
