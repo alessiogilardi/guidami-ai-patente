@@ -26,13 +26,13 @@ class KnowledgeChunkStoreRepository(BulkInsertStoreRepository[KnowledgeChunk]):
     - `truncate`: wipe dell'intera tabella (usato da `reset-knowledge-db`).
     """
 
-    def __init__(self, client: PostgresClient, table_name: str) -> None:
-        """Inietta il `PostgresClient` e il nome della tabella."""
+    def __init__(self, table_name: str, client: PostgresClient) -> None:
+        """Inietta il nome della tabella e il `PostgresClient`."""
         super().__init__(
-            client=client,
             table_name=table_name,
             columns=_KNOWLEDGE_CHUNK_TABLE_COLUMNS,
             row_mapper=self._to_db_row,
+            client=client,
         )
 
     def delete_source(self, source: str) -> None:

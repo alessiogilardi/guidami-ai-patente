@@ -24,4 +24,4 @@ class NormReferenceDescriberAgent(
         Returns:
             Configured `NormReferenceDescriberAgent` instance.
         """
-        return super().from_yaml(name, repository, output_type=NormReferenceDescriberResponse)  # type: ignore[return-value]
+        return super().from_yaml(name, NormReferenceDescriberResponse, repository)  # type: ignore[return-value]

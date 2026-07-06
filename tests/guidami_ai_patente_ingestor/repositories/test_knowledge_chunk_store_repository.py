@@ -46,7 +46,7 @@ def _chunk(article_number: str, source: str = "cds") -> KnowledgeChunk:
 
 @pytest.mark.integration
 def test_bulk_insert_inserts_chunks(client: PostgresClient) -> None:
-    repository = KnowledgeChunkStoreRepository(client, "knowledge_chunks")
+    repository = KnowledgeChunkStoreRepository("knowledge_chunks", client)
 
     repository.bulk_insert([_chunk("1"), _chunk("2")])
 
@@ -56,7 +56,7 @@ def test_bulk_insert_inserts_chunks(client: PostgresClient) -> None:
 
 @pytest.mark.integration
 def test_bulk_insert_with_empty_list_is_noop(client: PostgresClient) -> None:
-    repository = KnowledgeChunkStoreRepository(client, "knowledge_chunks")
+    repository = KnowledgeChunkStoreRepository("knowledge_chunks", client)
 
     repository.bulk_insert([])
 
@@ -67,7 +67,7 @@ def test_bulk_insert_with_empty_list_is_noop(client: PostgresClient) -> None:
 @pytest.mark.integration
 def test_delete_source_removes_only_that_source(client: PostgresClient) -> None:
     """delete_source cancella solo i chunk della source indicata, gli altri sopravvivono."""
-    repository = KnowledgeChunkStoreRepository(client, "knowledge_chunks")
+    repository = KnowledgeChunkStoreRepository("knowledge_chunks", client)
     repository.bulk_insert([_chunk("1", source="cds"), _chunk("2", source="cap")])
 
     repository.delete_source("cds")

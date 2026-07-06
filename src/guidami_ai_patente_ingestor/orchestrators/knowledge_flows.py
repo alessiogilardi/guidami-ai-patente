@@ -5,7 +5,7 @@ from typing import Literal, cast
 
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.configs import AgentConfig
-from commons.repositories import YamlRepository
+from commons.repositories import JsonRepository, YamlRepository
 from commons.services.embeddings import EmbeddingService
 from commons.use_cases import ForEach
 from flowstep import Flow, FlowBuilder
@@ -81,7 +81,7 @@ def build_knowledge_indexing_flow(
         layer_resolver=layer_resolver,
         input_layer=indexing_config.input_layer,
         source=source,
-        model_class=EnrichedArticleModel,
+        repository=JsonRepository.get_instance(".", EnrichedArticleModel),
         output_key=context_keys.ENRICHED_ARTICLES,
     )
 
@@ -93,7 +93,7 @@ def build_knowledge_indexing_flow(
 
     embed_step = EmbedChunksStep(
         "embed_chunks",
-        embedding_service=EmbeddingService(embedding_client, config.embedding_batch_size),
+        embedding_service=EmbeddingService(config.embedding_batch_size, embedding_client),
         embed_repealed=config.embed_repealed,
     )
 
@@ -106,8 +106,8 @@ def build_knowledge_indexing_flow(
 
     store_step = StoreChunksStep(
         "store_chunks",
-        repository=KnowledgeChunkStoreRepository(postgres_client, config.knowledge_chunks_table),
         source=source,
+        repository=KnowledgeChunkStoreRepository(config.knowledge_chunks_table, postgres_client),
     )
 
     flow: Flow = (
@@ -155,12 +155,14 @@ def build_knowledge_cleaning_flow(
     if source not in valid_sources:
         raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
 
+    articles_repository = JsonRepository.get_instance(".", ParsedArticleModel)
+
     load_step = LoadJsonStep(
         "load_parsed_articles",
         layer_resolver=layer_resolver,
         input_layer=preparation_config.input_layer,
         source=source,
-        model_class=ParsedArticleModel,
+        repository=articles_repository,
         output_key=context_keys.PARSED_ARTICLES,
     )
 
@@ -176,7 +178,7 @@ def build_knowledge_cleaning_flow(
         layer_resolver=layer_resolver,
         output_layer=_CLEANED_LAYER,
         source=source,
-        model_class=ParsedArticleModel,
+        repository=articles_repository,
         input_key=context_keys.CLEANED_ARTICLES,
     )
 
@@ -231,7 +233,7 @@ def build_knowledge_enrichment_flow(
         layer_resolver=layer_resolver,
         input_layer=_CLEANED_LAYER,
         source=source,
-        model_class=ParsedArticleModel,
+        repository=JsonRepository.get_instance(".", ParsedArticleModel),
         output_key=context_keys.CLEANED_ARTICLES,
     )
 
@@ -250,7 +252,7 @@ def build_knowledge_enrichment_flow(
         layer_resolver=layer_resolver,
         output_layer=preparation_config.output_layer,
         source=source,
-        model_class=EnrichedArticleModel,
+        repository=JsonRepository.get_instance(".", EnrichedArticleModel),
         input_key=context_keys.ENRICHED_ARTICLES,
     )
 

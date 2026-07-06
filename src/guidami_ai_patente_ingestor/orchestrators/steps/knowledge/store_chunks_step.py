@@ -22,15 +22,15 @@ class StoreChunksStep(Step):
     def __init__(
         self,
         name: str,
-        repository: KnowledgeChunkStoreRepository,
         source: str,
+        repository: KnowledgeChunkStoreRepository,
     ) -> None:
-        """Inietta il repository di store e la source della run.
+        """Inietta la source della run e il repository di store.
 
         Args:
             name: Nome univoco dello step nel flow.
-            repository: Repository di scrittura su `knowledge_chunks`.
             source: Source il cui contenuto va sostituito (delete-by-source + insert).
+            repository: Repository di scrittura su `knowledge_chunks`.
         """
         super().__init__(name)
         self._repository = repository

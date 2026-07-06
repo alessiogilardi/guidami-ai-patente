@@ -37,7 +37,7 @@ def _make_describer(name: str = "Stop", description: str = "Segnale rosso.") -> 
 def test_enrich_dedups_calls_for_same_image_topic_text(tmp_path: Path) -> None:
     (tmp_path / "a.jpeg").write_bytes(b"\x00")
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer, tmp_path)
+    enricher = ImageDescriptionEnricher(tmp_path, describer)
     questions = [
         _question("1", image="a.jpeg", topic="Segnaletica", text="Domanda."),
         _question("2", image="a.jpeg", topic="Segnaletica", text="Domanda."),
@@ -51,7 +51,7 @@ def test_enrich_dedups_calls_for_same_image_topic_text(tmp_path: Path) -> None:
 def test_enrich_calls_separately_for_same_image_different_text(tmp_path: Path) -> None:
     (tmp_path / "a.jpeg").write_bytes(b"\x00")
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer, tmp_path)
+    enricher = ImageDescriptionEnricher(tmp_path, describer)
     questions = [
         _question("1", image="a.jpeg", text="Prima domanda."),
         _question("2", image="a.jpeg", text="Seconda domanda."),
@@ -66,7 +66,7 @@ def test_enrich_dedups_across_multiple_distinct_images(tmp_path: Path) -> None:
     (tmp_path / "a.jpeg").write_bytes(b"\x00")
     (tmp_path / "b.jpeg").write_bytes(b"\x00")
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer, tmp_path)
+    enricher = ImageDescriptionEnricher(tmp_path, describer)
     questions = [
         _question("1", image="a.jpeg"),
         _question("2", image="a.jpeg"),
@@ -81,7 +81,7 @@ def test_enrich_dedups_across_multiple_distinct_images(tmp_path: Path) -> None:
 def test_enrich_sets_formatted_description_on_matching_sub_questions(tmp_path: Path) -> None:
     (tmp_path / "stop.jpeg").write_bytes(b"\x00")
     describer = _make_describer(name="Stop", description="Segnale rosso ottagonale.")
-    enricher = ImageDescriptionEnricher(describer, tmp_path)
+    enricher = ImageDescriptionEnricher(tmp_path, describer)
     questions = [_question("1", image="stop.jpeg")]
 
     result = enricher(questions)
@@ -91,7 +91,7 @@ def test_enrich_sets_formatted_description_on_matching_sub_questions(tmp_path: P
 
 def test_enrich_missing_file_skips_and_warns(tmp_path: Path, caplog) -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer, tmp_path)
+    enricher = ImageDescriptionEnricher(tmp_path, describer)
     questions = [_question("1", image="missing.jpeg")]
 
     with caplog.at_level("WARNING"):
@@ -106,7 +106,7 @@ def test_enrich_describe_raising_skips_and_warns(tmp_path: Path, caplog) -> None
     (tmp_path / "stop.jpeg").write_bytes(b"\x00")
     describer = _make_describer()
     describer.run_sync.side_effect = RuntimeError("vision call failed")
-    enricher = ImageDescriptionEnricher(describer, tmp_path)
+    enricher = ImageDescriptionEnricher(tmp_path, describer)
     questions = [_question("1", image="stop.jpeg")]
 
     with caplog.at_level("WARNING"):
@@ -118,7 +118,7 @@ def test_enrich_describe_raising_skips_and_warns(tmp_path: Path, caplog) -> None
 
 def test_enrich_no_image_means_description_stays_none(tmp_path: Path) -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer, tmp_path)
+    enricher = ImageDescriptionEnricher(tmp_path, describer)
     questions = [_question("1", image=None)]
 
     result = enricher(questions)
@@ -130,7 +130,7 @@ def test_enrich_no_image_means_description_stays_none(tmp_path: Path) -> None:
 def test_enrich_does_not_mutate_input_models(tmp_path: Path) -> None:
     (tmp_path / "stop.jpeg").write_bytes(b"\x00")
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer, tmp_path)
+    enricher = ImageDescriptionEnricher(tmp_path, describer)
     original = _question("1", image="stop.jpeg")
     questions = [original]
 

@@ -6,8 +6,8 @@ Domain-agnostic: parametrizzato dal tipo del modello e dalla chiave di contesto.
 import logging
 from typing import cast
 
+from commons.repositories import JsonRepository
 from flowstep import FlowContext, Step
-from guidami_ai_patente_ingestor.repositories.json import JsonRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
 
 logger = logging.getLogger(__name__)
@@ -18,30 +18,28 @@ class WriteJsonStep[T](Step):
 
     Args:
         name:           Nome univoco dello step nel flow.
-        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
         output_layer:   Nome del layer di output (es. ``"cleaned"``, ``"enriched"``).
         source:         Chiave della source da scrivere (es. ``"cds"``, ``"quiz"``).
-        model_class:    Classe Pydantic del modello (usata al solo scopo di
-                        ottenere l'istanza di ``JsonRepository``).
         input_key:      Chiave del ``FlowContext`` da cui leggere la lista.
+        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
+        repository:     Repository iniettato, già mappato sul modello da scrivere.
     """
 
     def __init__(
         self,
         name: str,
-        layer_resolver: LayerResolver,
         output_layer: str,
         source: str,
-        model_class: type[T],
         input_key: str,
+        layer_resolver: LayerResolver,
+        repository: JsonRepository[T],
     ) -> None:
-        """Inietta resolver, layer/source, model class e chiave di contesto."""
+        """Inietta layer/source/chiave di contesto, poi resolver e repository."""
         super().__init__(name)
         self._layer_resolver = layer_resolver
         self._output_layer = output_layer
         self._source = source
-        self._model_class = model_class
-        self._repository = JsonRepository.get_instance(self._model_class)
+        self._repository = repository
         self._input_key = input_key
 
     def execute(self, context: FlowContext) -> None:

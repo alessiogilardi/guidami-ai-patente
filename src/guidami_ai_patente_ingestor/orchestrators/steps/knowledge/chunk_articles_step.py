@@ -22,16 +22,16 @@ class ChunkArticlesStep(Step):
     def __init__(
         self,
         name: str,
-        article_chunker: ArticleChunker,
         source: Literal["cds", "cap"],
+        article_chunker: ArticleChunker,
     ) -> None:
-        """Inietta il chunker di dominio e la source della run.
+        """Inietta la source della run e il chunker di dominio.
 
         Args:
             name: Nome univoco dello step nel flow.
+            source: Source degli articoli (es. "cds"), passata al chunker per ogni articolo.
             article_chunker: Servizio che trasforma un `EnrichedArticleModel` in
                 `EmbeddableChunkModel`.
-            source: Source degli articoli (es. "cds"), passata al chunker per ogni articolo.
         """
         super().__init__(name)
         self._chunker = article_chunker

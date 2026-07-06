@@ -26,8 +26,8 @@ class ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQui
     collassati.
     """
 
-    def __init__(self, road_sign_describer: RoadSignDescriberAgent, images_dir: Path) -> None:
-        """Inject the road sign describer agent and the directory containing quiz images."""
+    def __init__(self, images_dir: Path, road_sign_describer: RoadSignDescriberAgent) -> None:
+        """Inject the quiz images directory and the road sign describer agent."""
         self._road_sign_describer = road_sign_describer
         self._images_dir = images_dir
 

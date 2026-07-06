@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from collections.abc import Sequence
 from dataclasses import asdict, is_dataclass
 from pathlib import Path
-from typing import Any, get_args
+from typing import Any, Self, get_args
 
 from pydantic import BaseModel
 
@@ -19,7 +19,7 @@ class BaseFileRepository[T](ABC):
         self._model_class = model_class or self._infer_model_class()
 
     @classmethod
-    def get_instance(cls, base_path: str | Path, model_class: type[T]) -> "BaseFileRepository[T]":
+    def get_instance(cls, base_path: str | Path, model_class: type[T]) -> Self:
         """Create an instance mapped to a model class without requiring a subclass."""
         return cls(base_path, model_class=model_class)
 

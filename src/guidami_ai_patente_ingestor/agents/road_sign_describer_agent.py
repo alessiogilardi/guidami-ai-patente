@@ -22,4 +22,4 @@ class RoadSignDescriberAgent(BaseAgent[RoadSignDescriberRequest, RoadSignDescrib
         Returns:
             Configured `RoadSignDescriberAgent` instance.
         """
-        return super().from_yaml(name, repository, output_type=RoadSignDescriberResponse)  # type: ignore[return-value]
+        return super().from_yaml(name, RoadSignDescriberResponse, repository)  # type: ignore[return-value]

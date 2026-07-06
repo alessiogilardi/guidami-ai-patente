@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 class EmbedStep(Step):
     """Step generico: assegna l'embedding agli item presenti nel context (in place)."""
 
-    def __init__(self, name: str, embedding_service: EmbeddingService, items_key: str) -> None:
-        """Inietta il service di embedding e la chiave context degli item da embeddare."""
+    def __init__(self, name: str, items_key: str, embedding_service: EmbeddingService) -> None:
+        """Inietta la chiave context degli item da embeddare e il service di embedding."""
         super().__init__(name)
         self._embed = embedding_service
         self._items_key = items_key

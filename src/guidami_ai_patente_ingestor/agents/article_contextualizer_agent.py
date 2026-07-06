@@ -24,4 +24,4 @@ class ArticleContextualizerAgent(
         Returns:
             Configured `ArticleContextualizerAgent` instance.
         """
-        return super().from_yaml(name, repository, output_type=ArticleContextualizerResponse)  # type: ignore[return-value]
+        return super().from_yaml(name, ArticleContextualizerResponse, repository)  # type: ignore[return-value]

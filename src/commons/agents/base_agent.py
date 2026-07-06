@@ -80,14 +80,14 @@ class BaseAgent[T_In: BaseModel, T_Out]:
 
     @classmethod
     def from_yaml(
-        cls, name: str, repository: YamlRepository, output_type: type[T_Out]
+        cls, name: str, output_type: type[T_Out], repository: YamlRepository
     ) -> "BaseAgent[T_In, T_Out]":
         """Instantiate the agent by loading its YAML configuration file.
 
         Args:
             name: Agent name (without the `.yaml` extension).
-            repository: Repository used to load agent configuration files.
             output_type: Expected Pydantic type for structured LLM output.
+            repository: Repository used to load agent configuration files.
 
         Returns:
             Configured agent instance.

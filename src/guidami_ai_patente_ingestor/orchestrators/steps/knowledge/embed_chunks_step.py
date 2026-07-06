@@ -25,15 +25,15 @@ class EmbedChunksStep(Step):
     def __init__(
         self,
         name: str,
-        embedding_service: EmbeddingService,
         embed_repealed: bool,
+        embedding_service: EmbeddingService,
     ) -> None:
-        """Inietta il service di embedding e il flag repealed.
+        """Inietta il flag repealed e il service di embedding.
 
         Args:
             name: Nome univoco dello step nel flow.
-            embedding_service: Service che calcola gli embedding in batch.
             embed_repealed: Se True, embeddita anche i chunk repealed.
+            embedding_service: Service che calcola gli embedding in batch.
         """
         super().__init__(name)
         self._embed = embedding_service

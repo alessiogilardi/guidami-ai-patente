@@ -77,7 +77,7 @@ def test_base_agent_created_from_valid_config(tmp_path: Path) -> None:
 def test_base_agent_from_yaml_factory_method(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
-    agent = BaseAgent.from_yaml("test_agent", YamlRepository(agents_dir, AgentConfig), str)
+    agent = BaseAgent.from_yaml("test_agent", str, YamlRepository(agents_dir, AgentConfig))
     assert agent is not None
 
 
@@ -85,7 +85,7 @@ def test_base_agent_from_yaml_raises_file_not_found(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     agents_dir.mkdir()
     with pytest.raises(FileNotFoundError):
-        BaseAgent.from_yaml("nonexistent", YamlRepository(agents_dir, AgentConfig), str)
+        BaseAgent.from_yaml("nonexistent", str, YamlRepository(agents_dir, AgentConfig))
 
 
 def test_base_agent_yaml_params_mapped_to_model_settings(tmp_path: Path) -> None:
@@ -103,7 +103,7 @@ def test_base_agent_yaml_params_mapped_to_model_settings(tmp_path: Path) -> None
             "user": "User.",
         },
     )
-    agent = BaseAgent.from_yaml("test_agent", YamlRepository(agents_dir, AgentConfig), str)
+    agent = BaseAgent.from_yaml("test_agent", str, YamlRepository(agents_dir, AgentConfig))
     assert agent.core_agent.model_settings["temperature"] == 0.5
     assert agent.core_agent.model_settings["max_tokens"] == 256
     assert agent.core_agent._max_output_retries == 2
@@ -113,5 +113,5 @@ def test_base_agent_model_name_slash_converted_to_colon(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     # Should not raise even without OPENROUTER_API_KEY (defer_model_check=True)
-    agent = BaseAgent.from_yaml("test_agent", YamlRepository(agents_dir, AgentConfig), str)
+    agent = BaseAgent.from_yaml("test_agent", str, YamlRepository(agents_dir, AgentConfig))
     assert agent is not None

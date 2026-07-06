@@ -17,7 +17,7 @@ class _FakeClient(EmbeddingClient):
 
 
 def _make_service(batch_size: int = 10) -> EmbeddingService:
-    return EmbeddingService(_FakeClient(), batch_size=batch_size)
+    return EmbeddingService(batch_size=batch_size, client=_FakeClient())
 
 
 def _make_chunk(number: str, repealed: bool = False) -> EmbeddableChunkModel:
@@ -33,12 +33,12 @@ def _make_chunk(number: str, repealed: bool = False) -> EmbeddableChunkModel:
 
 
 def test_required_keys() -> None:
-    step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
+    step = EmbedChunksStep("embed", embed_repealed=False, embedding_service=_make_service())
     assert step.get_required_keys() == {context_keys.EMBEDDABLE_CHUNKS}
 
 
 def test_produced_keys() -> None:
-    step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
+    step = EmbedChunksStep("embed", embed_repealed=False, embedding_service=_make_service())
     assert step.get_produced_keys() == {context_keys.EMBEDDABLE_CHUNKS}
 
 
@@ -49,7 +49,7 @@ def test_embed_repealed_false_skips_repealed_but_keeps_them_in_context() -> None
     chunks = [normal, repealed]
 
     context = FlowContext({context_keys.EMBEDDABLE_CHUNKS: chunks})
-    step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
+    step = EmbedChunksStep("embed", embed_repealed=False, embedding_service=_make_service())
     step.execute(context)
 
     result: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
@@ -67,7 +67,7 @@ def test_embed_repealed_true_embeds_all_chunks() -> None:
     chunks = [normal, repealed]
 
     context = FlowContext({context_keys.EMBEDDABLE_CHUNKS: chunks})
-    step = EmbedChunksStep("embed", _make_service(), embed_repealed=True)
+    step = EmbedChunksStep("embed", embed_repealed=True, embedding_service=_make_service())
     step.execute(context)
 
     result: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
@@ -81,7 +81,7 @@ def test_execute_mutates_in_place_and_writes_full_list_to_context() -> None:
     chunks = [normal1, normal2]
 
     context = FlowContext({context_keys.EMBEDDABLE_CHUNKS: chunks})
-    step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
+    step = EmbedChunksStep("embed", embed_repealed=False, embedding_service=_make_service())
     step.execute(context)
 
     result: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
@@ -95,7 +95,7 @@ def test_execute_assigns_correct_vector_values() -> None:
     expected_vector = [float(len(chunk.embedded_text))]
 
     context = FlowContext({context_keys.EMBEDDABLE_CHUNKS: [chunk]})
-    step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
+    step = EmbedChunksStep("embed", embed_repealed=False, embedding_service=_make_service())
     step.execute(context)
 
     result: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
@@ -104,7 +104,7 @@ def test_execute_assigns_correct_vector_values() -> None:
 
 def test_execute_with_empty_chunks_list_is_noop() -> None:
     context = FlowContext({context_keys.EMBEDDABLE_CHUNKS: []})
-    step = EmbedChunksStep("embed", _make_service(), embed_repealed=False)
+    step = EmbedChunksStep("embed", embed_repealed=False, embedding_service=_make_service())
     step.execute(context)
 
     result: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)

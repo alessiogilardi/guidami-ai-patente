@@ -37,7 +37,7 @@ def _question(number: str, image_filename: str | None = None) -> QuizQuestion:
 
 @pytest.mark.integration
 def test_bulk_insert_inserts_questions(client: PostgresClient) -> None:
-    repository = QuizQuestionStoreRepository(client, "quiz_questions")
+    repository = QuizQuestionStoreRepository("quiz_questions", client)
 
     repository.bulk_insert([_question("1"), _question("2", image_filename="abc.jpeg")])
 
@@ -47,7 +47,7 @@ def test_bulk_insert_inserts_questions(client: PostgresClient) -> None:
 
 @pytest.mark.integration
 def test_bulk_insert_with_empty_list_is_noop(client: PostgresClient) -> None:
-    repository = QuizQuestionStoreRepository(client, "quiz_questions")
+    repository = QuizQuestionStoreRepository("quiz_questions", client)
 
     repository.bulk_insert([])
 
@@ -57,7 +57,7 @@ def test_bulk_insert_with_empty_list_is_noop(client: PostgresClient) -> None:
 
 @pytest.mark.integration
 def test_truncate_empties_table(client: PostgresClient) -> None:
-    repository = QuizQuestionStoreRepository(client, "quiz_questions")
+    repository = QuizQuestionStoreRepository("quiz_questions", client)
     repository.bulk_insert([_question("1")])
 
     repository.truncate()

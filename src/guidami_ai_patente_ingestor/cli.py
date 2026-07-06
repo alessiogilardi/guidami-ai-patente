@@ -179,11 +179,11 @@ def _run_reset(config: IngestorConfig, args: argparse.Namespace) -> None:
     match args.entity:
         case "knowledge":
             KnowledgeChunkStoreRepository(
-                postgres_client, config.knowledge_chunks_table
+                config.knowledge_chunks_table, postgres_client
             ).truncate()
             logger.info("knowledge_chunks table truncated")
         case "quiz":
-            QuizQuestionStoreRepository(postgres_client, config.quiz_questions_table).truncate()
+            QuizQuestionStoreRepository(config.quiz_questions_table, postgres_client).truncate()
             logger.info("quiz_questions table truncated")
 
 

@@ -23,12 +23,12 @@ def _make_article(number: str, repealed: bool = False) -> EnrichedArticleModel:
 
 
 def test_required_keys() -> None:
-    step = ChunkArticlesStep("chunk", ArticleChunker("cds"), source="cds")
+    step = ChunkArticlesStep("chunk", source="cds", article_chunker=ArticleChunker("cds"))
     assert step.get_required_keys() == {context_keys.ENRICHED_ARTICLES}
 
 
 def test_produced_keys() -> None:
-    step = ChunkArticlesStep("chunk", ArticleChunker("cds"), source="cds")
+    step = ChunkArticlesStep("chunk", source="cds", article_chunker=ArticleChunker("cds"))
     assert step.get_produced_keys() == {context_keys.EMBEDDABLE_CHUNKS}
 
 
@@ -36,7 +36,7 @@ def test_execute_produces_chunks_tagged_with_the_injected_source() -> None:
     articles = [_make_article("1"), _make_article("2")]
     context = FlowContext({context_keys.ENRICHED_ARTICLES: articles})
 
-    step = ChunkArticlesStep("chunk", ArticleChunker("cap"), source="cap")
+    step = ChunkArticlesStep("chunk", source="cap", article_chunker=ArticleChunker("cap"))
     step.execute(context)
 
     chunks: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
@@ -49,7 +49,7 @@ def test_execute_includes_repealed_chunks_without_filter() -> None:
     articles = [_make_article("1", repealed=False), _make_article("2", repealed=True)]
     context = FlowContext({context_keys.ENRICHED_ARTICLES: articles})
 
-    step = ChunkArticlesStep("chunk", ArticleChunker("cds"), source="cds")
+    step = ChunkArticlesStep("chunk", source="cds", article_chunker=ArticleChunker("cds"))
     step.execute(context)
 
     chunks: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
@@ -62,7 +62,7 @@ def test_execute_flattens_chunks_from_multiple_articles() -> None:
     articles = [_make_article("1"), _make_article("2"), _make_article("3")]
     context = FlowContext({context_keys.ENRICHED_ARTICLES: articles})
 
-    step = ChunkArticlesStep("chunk", ArticleChunker("cds"), source="cds")
+    step = ChunkArticlesStep("chunk", source="cds", article_chunker=ArticleChunker("cds"))
     step.execute(context)
 
     chunks: list[EmbeddableChunkModel] = context.get(context_keys.EMBEDDABLE_CHUNKS)
@@ -77,7 +77,7 @@ def test_execute_delegates_to_chunker_for_each_article() -> None:
     mock_chunker.return_value = []
     context = FlowContext({context_keys.ENRICHED_ARTICLES: articles})
 
-    step = ChunkArticlesStep("chunk", mock_chunker, source="cds")
+    step = ChunkArticlesStep("chunk", source="cds", article_chunker=mock_chunker)
     step.execute(context)
 
     assert mock_chunker.call_count == 2

@@ -34,7 +34,7 @@ def _accepts_embeddable(x: Embeddable) -> str:
 
 class TestEmbeddingService:
     def _make_service(self, batch_size: int = 10) -> EmbeddingService:
-        return EmbeddingService(_RecordingFakeClient(), batch_size)
+        return EmbeddingService(batch_size, _RecordingFakeClient())
 
     def test_length_and_order(self) -> None:
         items = [_FakeEmbeddable("ab"), _FakeEmbeddable("cde"), _FakeEmbeddable("f")]
@@ -45,7 +45,7 @@ class TestEmbeddingService:
     def test_batching(self) -> None:
         items = [_FakeEmbeddable(f"item{i}") for i in range(5)]
         client = _RecordingFakeClient()
-        service = EmbeddingService(client, batch_size=2)
+        service = EmbeddingService(batch_size=2, client=client)
         service.execute(items)
         assert len(client.calls) == 3
         assert client.calls[0] == ["item0", "item1"]
@@ -54,17 +54,17 @@ class TestEmbeddingService:
 
     def test_empty_input(self) -> None:
         client = _RecordingFakeClient()
-        result = EmbeddingService(client, batch_size=10).execute([])
+        result = EmbeddingService(batch_size=10, client=client).execute([])
         assert result == []
         assert client.calls == []
 
     def test_invalid_batch_size_zero(self) -> None:
         with pytest.raises(ValueError):
-            EmbeddingService(_RecordingFakeClient(), 0)
+            EmbeddingService(0, _RecordingFakeClient())
 
     def test_invalid_batch_size_negative(self) -> None:
         with pytest.raises(ValueError):
-            EmbeddingService(_RecordingFakeClient(), -1)
+            EmbeddingService(-1, _RecordingFakeClient())
 
     def test_purity(self) -> None:
         item = _FakeEmbeddable("hello")

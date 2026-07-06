@@ -4,7 +4,7 @@ import logging
 
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.configs import AgentConfig
-from commons.repositories import YamlRepository
+from commons.repositories import JsonRepository, YamlRepository
 from commons.services.embeddings import EmbeddingService
 from commons.use_cases import ForEach
 from flowstep import Flow, FlowBuilder
@@ -75,11 +75,11 @@ def build_quiz_indexing_flow(
 
     load_step = LoadJsonStep(
         "load_enriched_quiz",
-        layer_resolver,
         indexing_config.input_layer,
         source,
-        EnrichedQuizModel,
         context_keys.ENRICHED_QUIZ,
+        layer_resolver,
+        JsonRepository.get_instance(".", EnrichedQuizModel),
     )
 
     map_to_embeddable_step = ApplyStep(
@@ -91,8 +91,8 @@ def build_quiz_indexing_flow(
 
     embed_step = EmbedStep(
         "embed_quiz",
-        EmbeddingService(embedding_client, config.embedding_batch_size),
         context_keys.EMBEDDABLE_QUIZ,
+        EmbeddingService(config.embedding_batch_size, embedding_client),
     )
 
     map_to_quiz_entity_step = ApplyStep(
@@ -104,8 +104,8 @@ def build_quiz_indexing_flow(
 
     store_step = DbStoreStep(
         "store_quiz",
-        QuizQuestionStoreRepository(postgres_client, config.quiz_questions_table),
         context_keys.QUIZ_ENTITIES,
+        QuizQuestionStoreRepository(config.quiz_questions_table, postgres_client),
     )
 
     flow: Flow = (
@@ -149,11 +149,11 @@ def build_quiz_cleaning_flow(
 
     load_step = LoadJsonStep(
         "load_parsed_quiz",
-        layer_resolver,
         prep.input_layer,
         source,
-        ParsedQuizModel,
         context_keys.PARSED_QUIZ,
+        layer_resolver,
+        JsonRepository.get_instance(".", ParsedQuizModel),
     )
     flatten_step = ApplyStep(
         "flatten_quiz",
@@ -163,11 +163,11 @@ def build_quiz_cleaning_flow(
     )
     write_step = WriteJsonStep(
         "write_cleaned_quiz",
-        layer_resolver,
         _CLEANED_LAYER,
         source,
-        CleanedQuizModel,
         context_keys.CLEANED_QUIZ,
+        layer_resolver,
+        JsonRepository.get_instance(".", CleanedQuizModel),
     )
 
     flow: Flow = (
@@ -216,11 +216,11 @@ def build_quiz_enrichment_flow(
 
     load_step = LoadJsonStep(
         "load_cleaned_quiz",
-        layer_resolver,
         _CLEANED_LAYER,
         source,
-        CleanedQuizModel,
         context_keys.CLEANED_QUIZ,
+        layer_resolver,
+        JsonRepository.get_instance(".", CleanedQuizModel),
     )
 
     agents_repository = YamlRepository(config.agents_dir, AgentConfig)
@@ -231,7 +231,7 @@ def build_quiz_enrichment_flow(
     enrich_step = ApplyStep(
         "enrich",
         ForEach(QuizMapper.from_cleaned_to_enriched),
-        ImageDescriptionEnricher(describer, config.quiz_images_dir),
+        ImageDescriptionEnricher(config.quiz_images_dir, describer),
         NormReferenceEnricher(norm_describer),
         input_key=context_keys.CLEANED_QUIZ,
         output_key=context_keys.ENRICHED_QUIZ,
@@ -239,11 +239,11 @@ def build_quiz_enrichment_flow(
 
     write_step = WriteJsonStep(
         "write_enriched_quiz",
-        layer_resolver,
         prep.output_layer,
         source,
-        EnrichedQuizModel,
         context_keys.ENRICHED_QUIZ,
+        layer_resolver,
+        JsonRepository.get_instance(".", EnrichedQuizModel),
     )
 
     flow: Flow = (

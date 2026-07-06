@@ -23,14 +23,14 @@ def _chunk(number: str) -> KnowledgeChunk:
 
 def test_required_keys() -> None:
     repo = MagicMock(spec=KnowledgeChunkStoreRepository)
-    assert StoreChunksStep("store", repo, "cds").get_required_keys() == {
+    assert StoreChunksStep("store", "cds", repo).get_required_keys() == {
         context_keys.CHUNK_ENTITIES
     }
 
 
 def test_produced_keys_is_empty_set() -> None:
     repo = MagicMock(spec=KnowledgeChunkStoreRepository)
-    assert StoreChunksStep("store", repo, "cds").get_produced_keys() == set()
+    assert StoreChunksStep("store", "cds", repo).get_produced_keys() == set()
 
 
 def test_execute_deletes_source_then_bulk_inserts() -> None:
@@ -38,7 +38,7 @@ def test_execute_deletes_source_then_bulk_inserts() -> None:
     chunks = [_chunk("1"), _chunk("2")]
     context = FlowContext({context_keys.CHUNK_ENTITIES: chunks})
 
-    StoreChunksStep("store", repo, "cap").execute(context)
+    StoreChunksStep("store", "cap", repo).execute(context)
 
     # delete-by-source PRIMA dell'insert, con la source iniettata
     assert repo.mock_calls == [call.delete_source("cap"), call.bulk_insert(chunks)]

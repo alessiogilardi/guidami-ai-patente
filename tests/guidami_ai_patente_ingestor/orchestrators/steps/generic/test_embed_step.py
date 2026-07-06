@@ -31,11 +31,11 @@ class _FakeEmbeddable:
 
 
 def _make_service(batch_size: int = 10) -> EmbeddingService:
-    return EmbeddingService(_FakeClient(), batch_size=batch_size)
+    return EmbeddingService(batch_size=batch_size, client=_FakeClient())
 
 
 def test_required_and_produced_keys_equal_items_key() -> None:
-    step = EmbedStep("embed", _make_service(), items_key="my_items")
+    step = EmbedStep("embed", items_key="my_items", embedding_service=_make_service())
     assert step.get_required_keys() == {"my_items"}
     assert step.get_produced_keys() == {"my_items"}
 
@@ -46,7 +46,7 @@ def test_execute_assigns_embedding_and_writes_back_to_context() -> None:
         _FakeEmbeddable("world!"),
     ]
     context = FlowContext({"my_items": items})
-    step = EmbedStep("embed", _make_service(), items_key="my_items")
+    step = EmbedStep("embed", items_key="my_items", embedding_service=_make_service())
 
     step.execute(context)
 
@@ -67,10 +67,10 @@ def test_execute_raises_value_error_on_length_mismatch() -> None:
             # Restituisce un vettore in meno degli item
             return [[1.0]] * (len(input) - 1)
 
-    short_service = _ShortEmbeddingService(_FakeClient(), batch_size=10)
+    short_service = _ShortEmbeddingService(batch_size=10, client=_FakeClient())
     items = [_FakeEmbeddable("a"), _FakeEmbeddable("b"), _FakeEmbeddable("c")]
     context = FlowContext({"items": items})
-    step = EmbedStep("embed", short_service, items_key="items")
+    step = EmbedStep("embed", items_key="items", embedding_service=short_service)
 
     with pytest.raises(ValueError):
         step.execute(context)

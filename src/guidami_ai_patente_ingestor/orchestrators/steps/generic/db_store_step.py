@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 class DbStoreStep(Step):
     """Sink terminale: full-reload del repository (truncate + bulk_insert)."""
 
-    def __init__(self, name: str, store_repo: StoreRepository, items_key: str) -> None:
-        """Inietta il repository (contratto StoreRepository) e la chiave context degli item."""
+    def __init__(self, name: str, items_key: str, store_repo: StoreRepository) -> None:
+        """Inietta la chiave context degli item e il repository (contratto StoreRepository)."""
         super().__init__(name)
         self._store_repo = store_repo
         self._items_key = items_key

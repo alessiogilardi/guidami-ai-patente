@@ -11,12 +11,12 @@ class BulkInsertStoreRepository[T](ABC):
 
     def __init__(
         self,
-        client: PostgresClient,
         table_name: str,
         columns: Sequence[str],
         row_mapper: Callable[[T], Sequence[object]],
+        client: PostgresClient,
     ) -> None:
-        """Configura client, tabella, colonne target e mapping item -> riga DB."""
+        """Configura tabella, colonne target, mapping item -> riga DB e client."""
         if not columns:
             raise ValueError("columns must contain at least one column")
 

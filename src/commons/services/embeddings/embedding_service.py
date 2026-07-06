@@ -15,8 +15,8 @@ class EmbeddingService(UseCase[Sequence[Embeddable], list[list[float]]]):
     Puro: non muta gli item in input. Ritorna i vettori allineati 1:1 (stesso ordine).
     """
 
-    def __init__(self, client: EmbeddingClient, batch_size: int) -> None:
-        """Inietta il client di embedding e la dimensione del batch (>= 1)."""
+    def __init__(self, batch_size: int, client: EmbeddingClient) -> None:
+        """Inietta la dimensione del batch (>= 1) e il client di embedding."""
         if batch_size < 1:
             raise ValueError(f"batch_size must be >= 1, got {batch_size}")
         self._client = client
