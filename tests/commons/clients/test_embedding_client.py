@@ -4,7 +4,6 @@ from unittest.mock import MagicMock
 import litellm
 import pytest
 
-import commons.clients.embeddings.sentence_transformer_embedding_client as _st_mod
 from commons.clients import LiteLLMEmbeddingClient, SentenceTransformerEmbeddingClient
 from commons.configs import EmbeddingConfig
 
@@ -148,8 +147,15 @@ def test_embed_query_against_openrouter_returns_configured_dimension() -> None:
 def _mock_sentence_transformer_class(
     monkeypatch: pytest.MonkeyPatch, mock_model: MagicMock
 ) -> None:
-    """Sostituisce SentenceTransformer nel modulo del client con un fake."""
-    monkeypatch.setattr(_st_mod, "SentenceTransformer", MagicMock(return_value=mock_model))
+    """Sostituisce SentenceTransformer nel package sentence_transformers con un fake.
+
+    Import locale: il client la importa dentro __init__ per evitare il costo
+    dell'import di sentence-transformers/torch nelle sessioni che non la usano.
+    """
+    import sentence_transformers
+
+    fake_class = MagicMock(return_value=mock_model)
+    monkeypatch.setattr(sentence_transformers, "SentenceTransformer", fake_class)
 
 
 def test_st_embed_query_adds_no_prefix_by_default(monkeypatch: pytest.MonkeyPatch) -> None:

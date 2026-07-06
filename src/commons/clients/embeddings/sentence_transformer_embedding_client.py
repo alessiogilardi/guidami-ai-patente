@@ -1,5 +1,3 @@
-from sentence_transformers import SentenceTransformer
-
 from commons.configs import EmbeddingConfig
 
 from .embedding_client import EmbeddingClient
@@ -19,6 +17,8 @@ class SentenceTransformerEmbeddingClient(EmbeddingClient):
         passage_prefix: str = "",
     ) -> None:
         """Carica il modello sentence-transformers indicato in config."""
+        from sentence_transformers import SentenceTransformer
+
         self._config = config
         self._query_prefix = query_prefix
         self._passage_prefix = passage_prefix

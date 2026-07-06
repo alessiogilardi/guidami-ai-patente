@@ -1,7 +1,5 @@
 from typing import Any
 
-import litellm
-
 from commons.configs import EmbeddingConfig
 
 from .embedding_client import EmbeddingClient
@@ -28,6 +26,8 @@ class LiteLLMEmbeddingClient(EmbeddingClient):
 
     def _embed(self, inputs: list[str]) -> list[list[float]]:
         """Chiama litellm e restituisce i vettori allineati all'ordine di input."""
+        import litellm
+
         kwargs = self._build_embed_args(inputs)
         response = litellm.embedding(**kwargs)
         ordered = sorted(response.data, key=lambda item: item["index"])
