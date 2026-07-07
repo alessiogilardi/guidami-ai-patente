@@ -27,7 +27,8 @@ enriched (layer "enriched", flat)
         ▼
 embeddable (flat)
    EmbeddableQuizModel   (image_description, quiz_metadata, embedding, embedded_text)
-        │ embed (EmbedStep) → embedding populated
+        │ embed (EmbedQuizMetadata) → embedding populated from quiz_metadata.embedded_text
+        │   (items with quiz_metadata is None pass through, embedding stays None)
         │ to_entity → QuizMapper.from_embeddable_to_quiz_question (via ForEach)
         ▼
 db row (flat)
@@ -64,9 +65,12 @@ by `ApplyStep` in the flow factories — no breakage to the flowstep interface.
   (`from_cleaned_to_enriched`) leaves both enrichment fields `None`; each
   enricher populates its own field via `model_copy`.
 - `embeddable_quiz.py` — `EmbeddableQuizModel`: DTO for computing
-  the embedding (indexing side), `embedded_text` property = `f"{topic}
-  {text}"` + `f" {image_description}"` if present. Carries `quiz_metadata`
-  (passed through from `EnrichedQuizModel` for DB storage).
+  the embedding (indexing side), `embedded_text` property delegates to
+  `self.quiz_metadata.embedded_text` (only ever read on items where
+  `EmbedQuizMetadata` has already filtered `quiz_metadata is not None`).
+  `QuizMetadata` itself satisfies `Embeddable` via duck typing, exposing
+  `embedded_text = "\n".join(vector_search_queries)` — the semantic vector
+  is computed from the LLM-generated metadata, not from the raw quiz text.
 - `image_description.py` — `ImageDescription(BaseModel, frozen=True)`:
   `name: str`, `description: str`.
 
@@ -128,9 +132,10 @@ The `orchestrators/steps/quiz/` package no longer contains any step class
 
 ```
 services/quiz/
-├── __init__.py                          # re-exports ImageDescriptionEnricher, NormReferenceEnricher
+├── __init__.py                          # re-exports ImageDescriptionEnricher, NormReferenceEnricher, EmbedQuizMetadata
 ├── flatten_quiz.py                      # FlattenQuiz(UseCase[list[ParsedQuizModel], list[CleanedQuizModel]])
 ├── to_embeddable_quiz.py                # ToEmbeddableQuiz(UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]])
+├── embed_quiz_metadata.py               # EmbedQuizMetadata(UseCase[list[EmbeddableQuizModel], list[EmbeddableQuizModel]])
 └── enrichers/
     ├── __init__.py                      # re-exports ImageDescriptionEnricher, NormReferenceEnricher
     ├── image_description_enricher.py    # ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]])
@@ -227,7 +232,7 @@ def build_quiz_indexing_flow(
 Chain (5 steps):
 `LoadJsonStep("load_enriched_quiz")` →
 `ApplyStep("map_to_embeddable", ToEmbeddableQuiz())` →
-`EmbedStep("embed_quiz", items_key=EMBEDDABLE_QUIZ)` →
+`ApplyStep("embed_quiz", EmbedQuizMetadata(embedding_service))` →
 `ApplyStep("map_to_quiz_entity", ForEach(QuizMapper.from_embeddable_to_quiz_question))` →
 `DbStoreStep("store_quiz")`.
 
@@ -295,9 +300,16 @@ requires only inserting it into the `*transforms` list.
   safe. Intentional divergence from `StoreChunksStep` for knowledge
   (delete-by-source), which is needed because knowledge sources (`cds`, `cap`)
   coexist in the same table.
-- **Generic `EmbedStep` reused** (with `items_key=EMBEDDABLE_QUIZ`): the quiz
-  has no `embed_repealed` filter, so the generic step is sufficient without
-  a dedicated `EmbedQuizStep`.
+- **`EmbedQuizMetadata` replaces the generic `EmbedStep`**
+  (`services/quiz/embed_quiz_metadata.py`): `UseCase[list[EmbeddableQuizModel],
+  list[EmbeddableQuizModel]]` injected with `EmbeddingService`. Filters items
+  with `quiz_metadata is not None`, passes their `quiz_metadata` (an
+  `Embeddable` via duck typing) to `EmbeddingService.execute`, and assigns the
+  resulting vector to `item.embedding`. Items without metadata pass through
+  unchanged (`embedding` stays `None` — no fallback to quiz text). If
+  `EmbeddingService.execute` raises, the whole batch is skipped unchanged with
+  a `logger.warning` — the flow does not stop. Wrapped by `ApplyStep`, same as
+  every other quiz-domain service.
 - `QuizQuestionStoreRepository` satisfies `StoreRepository` Protocol
   structurally: `DbStoreStep` can receive it without changes.
 
