@@ -1,72 +1,17 @@
-import mimetypes
 from pathlib import Path
-from string import Template
-from typing import Any, cast
+from typing import cast
 
-from pydantic import BaseModel
-from pydantic_ai import Agent, BinaryContent
+from pydantic_ai import Agent
 from pydantic_ai.settings import ModelSettings
 
 from commons.clients import FileReaderInterface
 
 from ..configs import AgentConfig
 from ..repositories import YamlRepository
+from .utils.prompt_renderer import PromptInput, PromptRenderer
 
 
-class PromptRenderer:
-    """Formats the user prompt template and attaches media."""
-
-    def __init__(self, template_str: str, file_reader: FileReaderInterface | None = None) -> None:
-        """Initialize the renderer with a `$var`-style template string.
-
-        Args:
-            template_str: User prompt template with `$var` placeholders.
-            file_reader: Reader used to resolve `images` paths, relative to its
-                base directory. Optional: only required when `render` is called
-                with a non-empty `images` tuple.
-        """
-        self._template = Template(template_str)
-        self._file_reader = file_reader
-
-    def render(
-        self, request: BaseModel | dict[str, Any], images: tuple[Path, ...] = ()
-    ) -> str | list[str | BinaryContent]:
-        """Substitute template variables and attach binary images.
-
-        Args:
-            request: Pydantic model or dict providing substitution values.
-            images: Image paths, resolved relative to `file_reader`'s base
-                directory, to attach as `BinaryContent`.
-
-        Returns:
-            Rendered string when no images are provided, otherwise a list
-            containing the text followed by `BinaryContent` items.
-
-        Raises:
-            ValueError: If `images` is non-empty but no `file_reader` was
-                configured.
-        """
-        variables = request.model_dump() if isinstance(request, BaseModel) else request
-        text = self._template.safe_substitute(**variables)
-
-        if not images:
-            return text
-
-        if self._file_reader is None:
-            raise ValueError("images were provided but no file_reader was configured")
-
-        parts: list[str | BinaryContent] = [text]
-        for img in images:
-            mime_type, _ = mimetypes.guess_type(img)
-            media_type = mime_type or "application/octet-stream"
-            parts.append(
-                BinaryContent(data=self._file_reader.read_bytes(img), media_type=media_type)
-            )
-
-        return parts
-
-
-class BaseAgent[T_In: BaseModel, T_Out]:
+class BaseAgent[T_In, T_Out]:
     """Wraps `pydantic_ai.Agent` with Pydantic request/response models."""
 
     def __init__(
@@ -129,13 +74,13 @@ class BaseAgent[T_In: BaseModel, T_Out]:
 
     async def run(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
         """Run the agent asynchronously."""
-        prompt_content = self.renderer.render(request, images)
+        prompt_content = self.renderer.render(cast(PromptInput, request), images)
         result = await self._agent.run(prompt_content)
         return result.output
 
     def run_sync(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
         """Run the agent synchronously, blocking the current thread."""
-        prompt_content = self.renderer.render(request, images)
+        prompt_content = self.renderer.render(cast(PromptInput, request), images)
         result = self._agent.run_sync(prompt_content)
         return result.output
 

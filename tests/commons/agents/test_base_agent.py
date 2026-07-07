@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from pathlib import Path
 
 import pytest
@@ -5,7 +6,7 @@ import yaml
 from pydantic_ai import BinaryContent
 
 from commons.agents import BaseAgent
-from commons.agents.base_agent import PromptRenderer
+from commons.agents.utils.prompt_renderer import PromptRenderer
 from commons.clients.file_system import LocalFileSystemClient
 from commons.configs import AgentConfig
 from commons.repositories import YamlRepository
@@ -66,6 +67,22 @@ def test_prompt_renderer_raises_value_error_when_no_file_reader_configured() -> 
     renderer = PromptRenderer("Descrivi.")
     with pytest.raises(ValueError, match="file_reader"):
         renderer.render({}, images=(Path("x.jpg"),))
+
+
+def test_prompt_renderer_renders_dataclass() -> None:
+    @dataclass
+    class Foo:
+        input: str
+
+    renderer = PromptRenderer("Testo: $input")
+    result = renderer.render(Foo(input="ciao"))
+    assert result == "Testo: ciao"
+
+
+def test_prompt_renderer_renders_str_directly() -> None:
+    renderer = PromptRenderer("Testo: $input")
+    result = renderer.render("Prompt pre-renderizzato")
+    assert result == "Prompt pre-renderizzato"
 
 
 # --- BaseAgent ---
