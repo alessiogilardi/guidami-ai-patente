@@ -2,6 +2,7 @@ import pytest
 
 from commons.clients import EmbeddingClient
 from commons.services.embeddings import Embeddable, Embedded, EmbeddingService
+from domain.entities.quiz import QuizMetadata
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel
 from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel
 
@@ -86,12 +87,20 @@ class TestEmbeddingService:
         assert _accepts_embeddable(chunk) == chunk.embedded_text
 
     def test_protocol_conformance_embeddable_quiz_question(self) -> None:
+        metadata = QuizMetadata(
+            core_concepts=["Obbligo di precedenza"],
+            entities=["incrocio"],
+            exact_keywords=["preavviso di incrocio"],
+            vector_search_queries=["prima query di ricerca", "seconda query di ricerca"],
+            rule_explanation="Il segnale preavvisa un incrocio regolato.",
+        )
         question = EmbeddableQuizModel(
             number="1",
             question_id=1,
             topic="topico",
             text="domanda",
             correct_answer=True,
+            quiz_metadata=metadata,
         )
         assert isinstance(question, Embeddable)
         assert isinstance(question, Embedded)

@@ -21,12 +21,12 @@ from guidami_ai_patente_ingestor.models.quiz import (
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
     DbStoreStep,
-    EmbedStep,
     LoadJsonStep,
     WriteJsonStep,
 )
 from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.services.quiz import EmbedQuizMetadata
 from guidami_ai_patente_ingestor.services.quiz.enrichers import (
     ImageDescriptionEnricher,
     NormReferenceEnricher,
@@ -55,8 +55,11 @@ def build_quiz_indexing_flow(
     `quiz_questions` (truncate + bulk_insert) tramite il `DbStoreStep` generico.
 
     Mappatura step:
-      `LoadJsonStep` → `ApplyStep(map_to_embeddable)` → `EmbedStep`
+      `LoadJsonStep` → `ApplyStep(map_to_embeddable)` → `ApplyStep(EmbedQuizMetadata)`
       → `ApplyStep(map_to_quiz_entity)` → `DbStoreStep`
+
+    L'embedding è calcolato da `quiz_metadata.vector_search_queries`, non dal testo
+    del quiz: gli item senza `quiz_metadata` transitano con `embedding = None`.
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -64,9 +67,7 @@ def build_quiz_indexing_flow(
         embedding_client: Client per il calcolo degli embedding.
         postgres_client: Client Postgres per le operazioni sul DB.
         validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
-            Solleva `FlowValidationError` su ERROR; il WARNING benigno su
-            `EMBEDDABLE_QUIZ` (l'`EmbedStep` ri-dichiara una chiave già prodotta da
-            `ApplyStep`) non blocca la build.
+            Solleva `FlowValidationError` su ERROR.
 
     Returns:
         Flow configurato e pronto per l'esecuzione.
@@ -90,10 +91,11 @@ def build_quiz_indexing_flow(
         output_key=context_keys.EMBEDDABLE_QUIZ,
     )
 
-    embed_step = EmbedStep(
+    embed_step = ApplyStep(
         "embed_quiz",
-        context_keys.EMBEDDABLE_QUIZ,
-        EmbeddingService(config.embedding_batch_size, embedding_client),
+        EmbedQuizMetadata(EmbeddingService(config.embedding_batch_size, embedding_client)),
+        input_key=context_keys.EMBEDDABLE_QUIZ,
+        output_key=context_keys.EMBEDDABLE_QUIZ,
     )
 
     map_to_quiz_entity_step = ApplyStep(

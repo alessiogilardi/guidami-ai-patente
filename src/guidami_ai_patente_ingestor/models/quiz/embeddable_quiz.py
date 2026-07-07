@@ -6,8 +6,8 @@ from domain.entities.quiz import QuizMetadata
 class EmbeddableQuizModel(BaseModel):
     """Modello intermedio per il calcolo dell'embedding di una sotto-domanda.
 
-    Contiene `image_description` (non persistita in DB) e `embedded_text`
-    che include la descrizione dell'immagine quando presente.
+    Contiene `image_description` (non persistita in DB) e `embedded_text`, che
+    delega a `quiz_metadata.embedded_text`.
     """
 
     number: str
@@ -22,6 +22,9 @@ class EmbeddableQuizModel(BaseModel):
 
     @property
     def embedded_text(self) -> str:
-        """Testo usato per il calcolo dell'embedding, con descrizione immagine se presente."""
-        base = f"{self.topic} {self.text}"
-        return f"{base} {self.image_description}" if self.image_description else base
+        """Testo usato per il calcolo dell'embedding, delegato a `quiz_metadata`.
+
+        Richiede `quiz_metadata is not None`: `EmbedQuizMetadata` filtra gli item
+        senza metadata prima di leggere questa property.
+        """
+        return self.quiz_metadata.embedded_text  # type: ignore[union-attr]
