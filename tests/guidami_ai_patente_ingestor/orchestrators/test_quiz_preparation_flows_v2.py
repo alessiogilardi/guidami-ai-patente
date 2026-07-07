@@ -78,7 +78,7 @@ def test_cleaning_flow_build_with_validate_true_does_not_raise() -> None:
 
 
 def test_cleaning_flow_has_three_steps_in_order() -> None:
-    """La catena è LoadParsedQuiz -> FlattenQuiz -> WriteCleanedQuiz."""
+    """La catena è LoadParsedQuiz -> FlattenQuiz+DeduplicateQuizItems -> WriteCleanedQuiz."""
     flow = build_quiz_cleaning_flow(
         config=_base_config(),
         layer_resolver=_make_layer_resolver(),

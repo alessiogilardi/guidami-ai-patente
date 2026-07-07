@@ -19,8 +19,10 @@ class QuizMapper:
     Tutti i metodi sono statici e puri: ciascuno mappa un modello nel
     successivo della catena (`from_X_to_Y`). Il flatten+dedup non è qui
     (non è un mapping 1:1, ma un'operazione su collezione): vive in
-    `FlattenQuizStep` (preparation, parsed→cleaned) e in `MapToEmbeddableStep`
-    (indexing, enriched→embeddable).
+    `FlattenQuiz` (unnest+map, preparation, parsed→cleaned) e in
+    `DeduplicateQuizItems` (dedup, condivisa da preparation e indexing,
+    incatenata a questo mapper negli step `flatten_quiz` e
+    `map_to_embeddable` di `quiz_flows.py`).
     """
 
     @staticmethod

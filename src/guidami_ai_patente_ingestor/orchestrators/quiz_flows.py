@@ -1,7 +1,5 @@
 """Factory per i flow di quiz indexing (SP04) e quiz preparation (SP06, esteso da SP09)."""
 
-import logging
-
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
 from commons.configs import AgentConfig
@@ -26,15 +24,12 @@ from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
 )
 from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
-from guidami_ai_patente_ingestor.services.quiz import EmbedQuizMetadata
+from guidami_ai_patente_ingestor.services.quiz import DeduplicateQuizItems, EmbedQuizMetadata
 from guidami_ai_patente_ingestor.services.quiz.enrichers import (
     ImageDescriptionEnricher,
     NormReferenceEnricher,
 )
 from guidami_ai_patente_ingestor.services.quiz.flatten_quiz import FlattenQuiz
-from guidami_ai_patente_ingestor.services.quiz.to_embeddable_quiz import ToEmbeddableQuiz
-
-logger = logging.getLogger(__name__)
 
 # Layer intermedio condiviso dalle due factory di preparation (clean/enrich):
 # non espresso in PipelineLayerConfig (vedi decisione di layer in SP05, replicata da SP09).
@@ -55,8 +50,13 @@ def build_quiz_indexing_flow(
     `quiz_questions` (truncate + bulk_insert) tramite il `DbStoreStep` generico.
 
     Mappatura step:
-      `LoadJsonStep` → `ApplyStep(map_to_embeddable)` → `ApplyStep(EmbedQuizMetadata)`
-      → `ApplyStep(map_to_quiz_entity)` → `DbStoreStep`
+      `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems, map_to_embeddable)`
+      → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(map_to_quiz_entity)` → `DbStoreStep`
+
+    Lo step `map_to_embeddable` incatena due transform: dedup sulla tripla
+    (testo normalizzato, risposta corretta, identità immagine) via
+    `DeduplicateQuizItems` (condivisa con `build_quiz_cleaning_flow`), poi
+    mapping 1:1 enriched→embeddable via `ForEach(QuizMapper.from_enriched_to_embeddable)`.
 
     L'embedding è calcolato da `quiz_metadata.vector_search_queries`, non dal testo
     del quiz: gli item senza `quiz_metadata` transitano con `embedding = None`.
@@ -81,19 +81,24 @@ def build_quiz_indexing_flow(
         source,
         context_keys.ENRICHED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(EnrichedQuizModel, LocalFileSystemClient(config.project_root)),
+        JsonRepository.get_instance(
+            EnrichedQuizModel, file_system_client=LocalFileSystemClient(config.project_root)
+        ),
     )
 
     map_to_embeddable_step = ApplyStep(
         "map_to_embeddable",
-        ToEmbeddableQuiz(),
+        DeduplicateQuizItems(),
+        ForEach(QuizMapper.from_enriched_to_embeddable),
         input_key=context_keys.ENRICHED_QUIZ,
         output_key=context_keys.EMBEDDABLE_QUIZ,
     )
 
     embed_step = ApplyStep(
         "embed_quiz",
-        EmbedQuizMetadata(EmbeddingService(config.embedding_batch_size, embedding_client)),
+        EmbedQuizMetadata(
+            embedding_service=EmbeddingService(config.embedding_batch_size, embedding_client)
+        ),
         input_key=context_keys.EMBEDDABLE_QUIZ,
         output_key=context_keys.EMBEDDABLE_QUIZ,
     )
@@ -129,14 +134,19 @@ def build_quiz_cleaning_flow(
     layer_resolver: LayerResolver,
     validate: bool = False,
 ) -> Flow:
-    """Assembla il flow di quiz cleaning (parsed → cleaned, flatten+dedup).
+    """Assembla il flow di quiz cleaning (parsed → cleaned, flatten + dedup).
 
     Nessun embed/store: questo flow appartiene allo stadio di preparazione. Il
     quiz bank ha una sola source (`"quiz"`), derivata da
     `config.quiz_preparation.sources[0]`.
 
     Mappatura step:
-      `LoadJsonStep` → `ApplyStep(flatten_quiz)` → `WriteJsonStep`
+      `LoadJsonStep` → `ApplyStep(FlattenQuiz, DeduplicateQuizItems)` → `WriteJsonStep`
+
+    Lo step `flatten_quiz` incatena due transform: unnest+map parsed→cleaned via
+    `FlattenQuiz`, poi dedup sulla tripla (testo normalizzato, risposta corretta,
+    identità immagine) via `DeduplicateQuizItems` (condivisa con
+    `build_quiz_indexing_flow`).
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -156,11 +166,14 @@ def build_quiz_cleaning_flow(
         source,
         context_keys.PARSED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(ParsedQuizModel, LocalFileSystemClient(config.project_root)),
+        JsonRepository.get_instance(
+            ParsedQuizModel, file_system_client=LocalFileSystemClient(config.project_root)
+        ),
     )
     flatten_step = ApplyStep(
         "flatten_quiz",
         FlattenQuiz(),
+        DeduplicateQuizItems(),
         input_key=context_keys.PARSED_QUIZ,
         output_key=context_keys.CLEANED_QUIZ,
     )
@@ -170,7 +183,9 @@ def build_quiz_cleaning_flow(
         source,
         context_keys.CLEANED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(CleanedQuizModel, LocalFileSystemClient(config.project_root)),
+        JsonRepository.get_instance(
+            CleanedQuizModel, file_system_client=LocalFileSystemClient(config.project_root)
+        ),
     )
 
     flow: Flow = (
@@ -223,7 +238,9 @@ def build_quiz_enrichment_flow(
         source,
         context_keys.CLEANED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(CleanedQuizModel, LocalFileSystemClient(config.project_root)),
+        JsonRepository.get_instance(
+            CleanedQuizModel, file_system_client=LocalFileSystemClient(config.project_root)
+        ),
     )
 
     agents_repository = YamlRepository(
@@ -251,7 +268,9 @@ def build_quiz_enrichment_flow(
         source,
         context_keys.ENRICHED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(EnrichedQuizModel, LocalFileSystemClient(config.project_root)),
+        JsonRepository.get_instance(
+            EnrichedQuizModel, file_system_client=LocalFileSystemClient(config.project_root)
+        ),
     )
 
     flow: Flow = (
