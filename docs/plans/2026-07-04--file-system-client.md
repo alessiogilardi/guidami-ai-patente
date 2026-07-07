@@ -1,8 +1,12 @@
 ---
-status: Implemented
+status: Archived
 effort: L
 ---
 # File System Client
+
+_Archived: fully implemented and shipped (see DoD below); kept for historical reference. Superseded
+in scope by [Integrate File System Client into Repositories](2026-07-06--integrate-file-system-client-into-repositories.md),
+which wired this client into the repository layer._
 
 References: `file_system_client.md` (reference design at repo root)
 

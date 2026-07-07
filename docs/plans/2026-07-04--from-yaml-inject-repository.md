@@ -1,8 +1,10 @@
 ---
-status: Implemented
+status: Archived
 effort: L
 ---
 # From Yaml Inject Repository
+
+_Archived: fully implemented and shipped (see DoD below); kept for historical reference._
 
 ## Context and motivation
 
