@@ -6,10 +6,15 @@ distinct independent areas, it must be split into sub-plans:
 1. Use `create_plan.py` with `--subdir <topic-slug>` and `--step <N>` to scaffold each
    sub-plan. The script creates (or reuses) the dated sub-directory and generates a stub
    `_index.md` if one does not yet exist.
+   - **Card gate**: creating the sub-directory (i.e. the first step) requires a confirmed
+     Understanding card for the **topic slug** at `docs/plans/.brainstorm/<topic-slug>.md`.
+     The card's sections are copied into the sub-directory `_index.md` and the card is
+     deleted. Subsequent steps reuse the existing sub-directory and need no card.
+   - Step files get their effort from `--effort` (default `M`), not from the topic card.
 2. Fill in the `_index.md` with **discursive breakdown reasoning** — not a mechanical
    list. Explain why the feature was split, what each step covers, and how they relate
-   to each other. The stub only provides the frontmatter and heading; the author writes
-   all explanatory content.
+   to each other. The stub provides the frontmatter, heading, and the card's context
+   sections; the author writes all explanatory content.
 3. Sub-plan files follow the same filename format: `YYYY-MM-DD--step-<NN>-<sub-slug>.md`.
 4. `generate_index.py` treats the sub-directory as a single entry in the root index
    (sub-plans are not listed individually).

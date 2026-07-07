@@ -1,7 +1,11 @@
 ---
 name: write-plan
-description: Write, review, or update technical implementation plans for the project. Use this skill every time the user asks to "write a plan", "plan" a feature/refactor, create or modify files in docs/plans/, update a plan status (Draft/Reviewed/Implemented/Archived), or split a long plan into sub-plans. Always invoke it BEFORE writing any file inside docs/plans/, even if the user does not explicitly mention this skill.
-allowed-tools: Bash(uv run .claude/skills/write-plan/scripts/*)
+description: Write, review, or update technical implementation plans for the project. Use this skill every time the user asks to "write a plan", "plan" a feature/refactor, create or modify files in docs/plans/, update a plan status (Draft/Reviewed/Implemented/Archived), or split a long plan into sub-plans. Always invoke it BEFORE writing any file inside docs/plans/, even if the user does not explicitly mention this skill. If no confirmed Understanding card file exists yet for the slug (docs/plans/.brainstorm/<slug>.md with confirmed true), this skill invokes the brainstorm skill first.
+allowed-tools:
+  - Skill
+  - Read
+  - Glob
+  - "Bash(uv run .claude/skills/write-plan/scripts/*)"
 ---
 
 # Writing Plans
@@ -14,52 +18,28 @@ allowed-tools: Bash(uv run .claude/skills/write-plan/scripts/*)
 
 Create a task for each of these items and complete them strictly in order:
 
-1. **Context exploration**: Analyze the current project state (files, documentation, recent commits).
-2. **Step 0 (Understanding)**: Run the preliminary analysis and fill in the understanding template.
-3. **Blocking gate**: Get explicit user confirmation on *slug* and *effort* before proceeding.
-4. **Approach proposals**: Present 2–3 options with trade-offs and your recommendation.
-5. **Design presentation**: Present design proportional to effort; get approval (single message for S/M; macro-sections for L/XL — see Design Presentation below).
-6. **Scaffolding**: Run `create_plan.py` to create the plan file and regenerate the index.
-7. **Write plan content**: Fill in all sections following the conventions below.
-8. **Validate**: Run `validate_plan.py` until it exits 0.
-9. **Self-review**: Verify the absence of placeholders, contradictions, or ambiguities.
-10. **User review**: Ask the user to review the final plan file before proceeding with implementation.
+1. **Ensure Understanding**: Check that a confirmed Understanding card file exists at `docs/plans/.brainstorm/<slug>.md` (`confirmed: true`); if not, invoke the `brainstorm` skill first.
+2. **Approach proposals**: Present 2–3 options with trade-offs and your recommendation.
+3. **Design presentation**: Present design proportional to effort; get approval (single message for S/M; macro-sections for L/XL — see Design Presentation below).
+4. **Scaffolding**: Run `create_plan.py` to create the plan file and regenerate the index.
+5. **Write plan content**: Fill in all sections following the conventions below.
+6. **Validate**: Run `validate_plan.py` until it exits 0.
+7. **Self-review**: Verify the absence of placeholders, contradictions, or ambiguities.
+8. **User review**: Ask the user to review the final plan file before proceeding with implementation.
 
 ---
 
-### Step 0 — **Understanding (Pre-Scaffolding)**
+### Step 0 — **Ensure Understanding (delegate to `brainstorm`)**
 
-Before starting the scaffolding phase or generating any plan file, run a preliminary analysis of the task by exploring the project context (files, documentation, recent commits). This phase must produce a structured, targeted output — no free-form conversations or rituals.
+`write-plan` never runs its own discovery conversation — that responsibility belongs entirely to the [`brainstorm`](../brainstorm/SKILL.md) skill, which explores context, asks scoping questions one at a time, and persists a confirmed **Understanding card** (Problem/Motivation, Non-Goals, Affected Areas, Success Criteria, Effort) to `docs/plans/.brainstorm/<slug>.md` after the user explicitly confirms *slug* and *effort*.
 
-#### **Scope Assessment and Decomposition:**
+Before doing anything else:
 
-Before asking detailed questions, assess the breadth of the request. If it describes multiple independent subsystems (e.g. "build a platform with chat, file storage, billing, and analytics"), flag it immediately. Help the user decompose the work into independent sub-projects, defining relationships and development order. Each sub-project will follow its own independent cycle (plan → implementation).
-
-#### **Required Output (Step 0 Template):**
-
-Every initial interaction must produce a single message that maps directly to the future plan sections:
-
-* **Problem / Motivation:** The business value or bug to fix (extreme summary).
-* **Non-Goals (Draft):** What is explicitly excluded from this intervention.
-* **Affected Areas:** Modules, files, or code components impacted.
-* **Effort Estimate:** Proposed sizing (S, M, L, XL).
-
-#### **Question Logic Proportional to Effort:**
-
-Calibrate the depth of investigation to avoid unnecessary overhead:
-
-| Effort Level | Question Quantity | Required Actions and Focus |
-| :--- | :--- | :--- |
-| **S** | None (0) | Only propose the plan *slug* and effort *S*, asking only for confirmation to proceed. |
-| **M** | Max 1 or 2 | Ask questions only if there are real ambiguities about affected code areas. Independent questions may be grouped (2–4 at a time) in a single AskUserQuestion call; ask strictly one at a time only when an answer determines the next question. |
-| **L / XL** | Mandatory | Strategic questions to understand scope, constraints, and success criteria. Clarify *non-goals*, technical risks, critical dependencies, and potential breaking changes. Independent questions may be grouped (2–4 at a time) in a single AskUserQuestion call; ask strictly one at a time only when an answer determines the next question. |
-
-> **General note on questions:** Prefer multiple-choice questions when possible, but keep flexibility for open-ended questions when strictly necessary.
+* If a card file exists at `docs/plans/.brainstorm/<slug>.md` with `confirmed: true` in its frontmatter, skip straight to Step 1 — the file survives session restarts, so a brainstorm confirmed in an earlier conversation is still valid.
+* Otherwise, invoke the `brainstorm` skill (Skill tool, `skill: "brainstorm"`) and wait for it to produce the confirmed card file before proceeding.
 
 #### **Blocking Gate (Non-Negotiable Rule):**
-**ABSOLUTE PROHIBITION:** Do not run `create_plan.py` (or any scaffolding command/script) until *slug* and *effort* have been explicitly confirmed by the user in chat.
-
-The model proposes the understanding card and any necessary questions; the user unlocks execution of the next step.
+**ABSOLUTE PROHIBITION:** Do not run `create_plan.py` (or any scaffolding command/script) until a confirmed card file exists — the script enforces this mechanically (it exits with an error if the card is missing, unconfirmed, or its effort contradicts `--effort`). Never work around that error by creating or editing anything in `docs/plans/.brainstorm/` yourself: only `brainstorm`'s `create_card.py` writes cards, and only after the user's explicit confirmation in chat.
 
 ---
 
@@ -105,9 +85,9 @@ The model proposes the understanding card and any necessary questions; the user 
 
 ### Step 2 — **Scaffolding (mandatory, via script)**
 
-Run `uv run .claude/skills/write-plan/scripts/create_plan.py <confirmed-slug> --effort <confirmed-effort>` where `<confirmed-slug>` and `<confirmed-effort>` are exactly the values the user confirmed at the blocking gate. Add `--subdir <topic-slug> --step <N>` for sub-plans (see [sub-plans.md](./references/sub-plans.md)).
+Run `uv run .claude/skills/write-plan/scripts/create_plan.py <confirmed-slug>` — the effort is inherited from the confirmed card (pass `--effort` only to cross-check; a mismatch aborts). Add `--subdir <topic-slug> --step <N>` for sub-plans (see [sub-plans.md](./references/sub-plans.md)).
 
-The script creates the deterministic structure in `docs/plans/`, prints the path of the file to edit, and regenerates `_index.md` automatically.
+The script verifies the confirmed card, creates the deterministic structure in `docs/plans/`, **pre-fills** the plan's *Context and motivation* and *Non-goals* sections from the card, then **deletes the card** — from that moment the plan file is the single source of truth. It prints the path of the file to edit and regenerates `_index.md` automatically. If the design phase changed the effort agreed at the gate, get the user's explicit re-confirmation of the new effort, scaffold with the card's original effort, then update the plan frontmatter to the re-confirmed value and record the deviation in the plan's *Decisions* section.
 
 Do not manually create files or folders in `docs/plans/`: the structure is the script's responsibility, not yours. This applies to sub-plans as well — see [sub-plans.md](./references/sub-plans.md).
 
