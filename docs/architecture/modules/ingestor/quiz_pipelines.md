@@ -11,8 +11,9 @@ See [config_and_entrypoints.md](config_and_entrypoints.md) for `IngestorConfig`,
 ```text
 parsed (layer "parsed", nested — direct output of the PDF parser)
    ParsedQuizModel ─┬─ sub_questions: list[ParsedQuizItemModel]
-        │ flatten + dedup → FlattenQuiz.execute(items)
-        │                   (per item: QuizMapper.from_parsed_to_cleaned)
+        │ ApplyStep("flatten_quiz"):
+        │   FlattenQuiz.execute(items) unnest + map (per item: QuizMapper.from_parsed_to_cleaned)
+        │   + DeduplicateQuizItems.execute(items) dedup on triple
         ▼
 cleaned (layer "cleaned", flat — one row per sub-question, self-contained)
    CleanedQuizModel
@@ -22,8 +23,9 @@ cleaned (layer "cleaned", flat — one row per sub-question, self-contained)
         ▼
 enriched (layer "enriched", flat)
    EnrichedQuizModel   (+ image_description, quiz_metadata)
-        │ to embeddable → ToEmbeddableQuiz().execute(items)
-        │                 (indexing side: dedup + QuizMapper.from_enriched_to_embeddable)
+        │ ApplyStep("map_to_embeddable"):
+        │   DeduplicateQuizItems.execute(items) dedup on triple
+        │   + ForEach(QuizMapper.from_enriched_to_embeddable) mapping flat→flat
         ▼
 embeddable (flat)
    EmbeddableQuizModel   (image_description, quiz_metadata, embedding, embedded_text)
@@ -46,8 +48,21 @@ one row per sub-question, self-contained (`question_id`/`topic`
 denormalised on each row). The SP04 refactor then moved the flatten+dedup logic
 **from a flowstep step** (`FlattenQuizStep`) to a **domain service**
 (`FlattenQuiz`), and analogously the enriched→embeddable mapping logic
-from `MapToEmbeddableStep` to `ToEmbeddableQuiz`. The two services are then wrapped
-by `ApplyStep` in the flow factories — no breakage to the flowstep interface.
+from `MapToEmbeddableStep` to a service `ToEmbeddableQuiz`, wrapped by
+`ApplyStep` in the flow factories — no breakage to the flowstep interface.
+
+**Later decision — dedup promoted to a shared `services/quiz/` class**:
+`ToEmbeddableQuiz` (dedup + mapping in one `UseCase`) was removed and split
+into two transforms chained in the same `ApplyStep("map_to_embeddable", ...)`:
+dedup, then `ForEach(QuizMapper.from_enriched_to_embeddable)`. The dedup
+transform first lived as `_dedup_enriched_quiz`, a private module-level
+function in `orchestrators/quiz_flows.py` (single call site, no injected
+config). Once `FlattenQuiz` gained the identical dedup rule as a *second* call
+site (`build_quiz_cleaning_flow`, parsed→cleaned), the logic was promoted to
+`DeduplicateQuizItems` in `services/quiz/` — a generic, Protocol-typed,
+independently testable `UseCase` shared by both flow builders. See
+"`DeduplicateQuizItems` — dedup promoted to a shared service" below for the
+full rationale.
 
 ## Implemented decisions
 
@@ -107,24 +122,31 @@ each as `from_X_to_Y(model, *extra) -> Z`.
   more reasons (weaker than the "one class per transformation" rule), but makes
   the chain readable in a single place. Mitigation: static, small, pure methods.
 - **`flatten+dedup` NOT in the mapper**: it is not a 1:1 mapping but
-  a collection operation + dedup rule → lives in `FlattenQuiz`
-  (preparation, parsed→cleaned, SP09/SP02) and `ToEmbeddableQuiz` (indexing,
-  enriched→embeddable, SP03), not in `QuizMapper`.
+  a collection operation → lives in `FlattenQuiz` (unnest+map,
+  parsed→cleaned, SP09/SP02) and `DeduplicateQuizItems` (dedup, shared by
+  both the cleaning and indexing flows, `services/quiz/`), not in
+  `QuizMapper`.
 - **Enrichment and Open/Closed**: the base-map (`from_cleaned_to_enriched`)
   produces `EnrichedQuizModel` with enrichment fields set to `None`; enrichers
   populate them via `model_copy`. Adding an agent does not modify the base-map
   signature.
 
-### `orchestrators/steps/quiz/` — empty package
+### `orchestrators/steps/quiz/` — package removed
 
-The `orchestrators/steps/quiz/` package no longer contains any step class
-(`__all__ = []`). All the quiz domain logic previously in
-`FlattenQuizStep` and `MapToEmbeddableStep` has been moved to `services/quiz/`
-(see below). The flow builders use `ApplyStep` to wrap those services.
+The package existed as an empty placeholder (`__all__ = []`) after all its
+step classes were removed, and has now been deleted entirely along with its
+test directory. All the quiz domain logic previously hosted there has moved
+to `services/quiz/` and to the flow builders themselves (see below); flow
+builders use `ApplyStep` to wrap those services — including
+`DeduplicateQuizItems`, now a `services/quiz/` class rather than a bare
+orchestrator function (see "`DeduplicateQuizItems` — dedup promoted to a
+shared service" below).
 
 **Removed steps (SP04):**
 - `FlattenQuizStep` → logic moved to `services/quiz/flatten_quiz.py::FlattenQuiz`
 - `MapToEmbeddableStep` → logic moved to `services/quiz/to_embeddable_quiz.py::ToEmbeddableQuiz`
+  (that service was itself later removed — see "`DeduplicateQuizItems` —
+  dedup promoted to a shared service" below)
 - `LoadQuizStep`, `EnrichQuizStep`, `WriteEnrichedQuizStep` — removed
   earlier, replaced by generic `LoadJsonStep`/`WriteJsonStep`.
 
@@ -132,9 +154,9 @@ The `orchestrators/steps/quiz/` package no longer contains any step class
 
 ```
 services/quiz/
-├── __init__.py                          # re-exports ImageDescriptionEnricher, NormReferenceEnricher, EmbedQuizMetadata
+├── __init__.py                          # re-exports DeduplicateQuizItems, EmbedQuizMetadata, ImageDescriptionEnricher
+├── deduplicate_quiz_items.py            # DeduplicateQuizItems[T: _QuizItemLike](UseCase[list[T], list[T]])
 ├── flatten_quiz.py                      # FlattenQuiz(UseCase[list[ParsedQuizModel], list[CleanedQuizModel]])
-├── to_embeddable_quiz.py                # ToEmbeddableQuiz(UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]])
 ├── embed_quiz_metadata.py               # EmbedQuizMetadata(UseCase[list[EmbeddableQuizModel], list[EmbeddableQuizModel]])
 └── enrichers/
     ├── __init__.py                      # re-exports ImageDescriptionEnricher, NormReferenceEnricher
@@ -143,21 +165,50 @@ services/quiz/
 ```
 
 **`FlattenQuiz`** (`services/quiz/flatten_quiz.py`, SP02): implements
-`UseCase[list[ParsedQuizModel], list[CleanedQuizModel]]`. `execute`: flattens
-the nested structure to a `(sub_q, main_q)` generator, passes it to
-`deduplicate()` (from `commons.utils`) keyed on `(text.strip(), correct_answer,
-image)` with `logger.warning` for each discarded duplicate, then unpacks each
-pair to call `QuizMapper.from_parsed_to_cleaned(sub_q, main_q)`.
-Responsibility: nested→flat flatten + dedup. Does not depend on flowstep.
+`UseCase[list[ParsedQuizModel], list[CleanedQuizModel]]`. `execute`: unnests
+`ParsedQuizModel.sub_questions` into `(sub_q, main_q)` pairs and maps each pair
+via `QuizMapper.from_parsed_to_cleaned(sub_q, main_q)`. Responsibility:
+nested→flat unnest + map only — it does **not** deduplicate; dedup is a
+separate transform (`DeduplicateQuizItems`) chained after it in
+`build_quiz_cleaning_flow`. Does not depend on flowstep.
 
-**`ToEmbeddableQuiz`** (`services/quiz/to_embeddable_quiz.py`, SP03):
-implements `UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]]`.
-`execute`: passes the flat enriched list to `deduplicate()` (from `commons.utils`)
-keyed on the same triple `(text.strip(), correct_answer, image)` — removes the
-8 historical exact duplicates → 7098 final rows — with `logger.warning` per
-discarded item; for each kept item calls `QuizMapper.from_enriched_to_embeddable(item)`
-(1 argument, flat model) in a list comprehension.
-Responsibility: dedup + enriched→embeddable mapping. Does not depend on flowstep.
+**`DeduplicateQuizItems` — dedup promoted to a shared service**
+(`services/quiz/deduplicate_quiz_items.py`): implements
+`class DeduplicateQuizItems[T: _QuizItemLike](UseCase[list[T], list[T]])`,
+generic over a structural `Protocol` (`_QuizItemLike`: `text: str`,
+`correct_answer: bool`, `image: str | None`, `number: str`) satisfied by both
+`CleanedQuizModel` and `EnrichedQuizModel` with no subclassing or model
+changes. `execute` deduplicates via `deduplicate()` (from `commons.utils`)
+keyed on `(text.strip(), correct_answer, image)`, logging
+`"skipping duplicate quiz item %s"` for each discarded item.
+
+Replaces the SP03 `ToEmbeddableQuiz` service (dedup + enriched→embeddable
+mapping in one `UseCase`, since removed) and the interim
+`_dedup_enriched_quiz` — a private, module-level function that briefly lived
+in `orchestrators/quiz_flows.py`. Both `build_quiz_indexing_flow` and
+`build_quiz_cleaning_flow` chain `DeduplicateQuizItems()` as a separate
+transform in their respective `ApplyStep`s:
+
+- `build_quiz_cleaning_flow`'s `"flatten_quiz"` step: `FlattenQuiz()` (unnest +
+  map) then `DeduplicateQuizItems()`.
+- `build_quiz_indexing_flow`'s `"map_to_embeddable"` step: `DeduplicateQuizItems()`
+  then `ForEach(QuizMapper.from_enriched_to_embeddable)`.
+
+**Decision reversal — why a bare function first, then a class**: when the
+dedup logic was extracted from `ToEmbeddableQuiz`, it had a single call site
+(`build_quiz_indexing_flow`) and no injected config, so it was kept as
+`_dedup_enriched_quiz`, a small pure module-level function in the orchestrator
+— promoting it to a `services/` class felt like unnecessary ceremony for one
+caller (mirroring how `ApplyStep` already accepts bare callables, not just
+`UseCase`s, as transforms). That premise stopped holding once the exact same
+dedup key `(text.strip(), correct_answer, image)` was found duplicated inside
+`FlattenQuiz` — a second, independent call site in `build_quiz_cleaning_flow`.
+With the logic genuinely shared across two flow builders, it was promoted to
+`DeduplicateQuizItems`, a shared, independently unit-tested `services/quiz/`
+class, generic over `_QuizItemLike` so it works for both flat quiz models
+without duplication. Tested directly in
+`tests/guidami_ai_patente_ingestor/services/quiz/test_deduplicate_quiz_items.py`
+(see [tests.md](tests.md)).
 
 **`ImageDescriptionEnricher`** now implements
 `UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]]` (previously only
@@ -231,10 +282,16 @@ def build_quiz_indexing_flow(
 
 Chain (5 steps):
 `LoadJsonStep("load_enriched_quiz")` →
-`ApplyStep("map_to_embeddable", ToEmbeddableQuiz())` →
+`ApplyStep("map_to_embeddable", DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embeddable))` →
 `ApplyStep("embed_quiz", EmbedQuizMetadata(embedding_service))` →
 `ApplyStep("map_to_quiz_entity", ForEach(QuizMapper.from_embeddable_to_quiz_question))` →
 `DbStoreStep("store_quiz")`.
+`map_to_embeddable` chains two transforms in the same `ApplyStep`: dedup on
+`(text.strip(), correct_answer, image)` via `DeduplicateQuizItems()`
+(`services/quiz/`, shared with `build_quiz_cleaning_flow` below), then 1:1
+mapping via `ForEach(QuizMapper.from_enriched_to_embeddable)` — see
+"`DeduplicateQuizItems` — dedup promoted to a shared service" above for the
+history of this decision.
 
 ```python
 def build_quiz_cleaning_flow(
@@ -246,10 +303,13 @@ def build_quiz_cleaning_flow(
 
 Chain (3 steps):
 `LoadJsonStep("load_parsed_quiz")` →
-`ApplyStep("flatten_quiz", FlattenQuiz())` →
+`ApplyStep("flatten_quiz", FlattenQuiz(), DeduplicateQuizItems())` →
 `WriteJsonStep("write_cleaned_quiz")`.
 Introduced in SP09; SP04 replaced `FlattenQuizStep` with
-`ApplyStep(FlattenQuiz())`.
+`ApplyStep(FlattenQuiz())`. `flatten_quiz` chains two transforms: unnest+map
+parsed→cleaned via `FlattenQuiz()`, then dedup on
+`(text.strip(), correct_answer, image)` via `DeduplicateQuizItems()` —
+shared with `build_quiz_indexing_flow` above.
 
 ```python
 def build_quiz_enrichment_flow(
@@ -294,7 +354,10 @@ requires only inserting it into the `*transforms` list.
   the previous refactor; `FlattenQuizStep`/`MapToEmbeddableStep` removed in SP04
   — replaced by services (`FlattenQuiz`/`ToEmbeddableQuiz`) wrapped by
   `ApplyStep`. The enrichment flow is now 3 steps (down from 4), combining
-  base-map and enrichment in a single `ApplyStep`.
+  base-map and enrichment in a single `ApplyStep`. `ToEmbeddableQuiz` was
+  itself later removed and its dedup responsibility promoted to the shared
+  `DeduplicateQuizItems` service — see "`DeduplicateQuizItems` — dedup
+  promoted to a shared service" above.
 - **Generic `DbStoreStep` (truncate full-reload)** for indexing: the quiz
   has a single source, so `TRUNCATE TABLE quiz_questions` is correct and
   safe. Intentional divergence from `StoreChunksStep` for knowledge

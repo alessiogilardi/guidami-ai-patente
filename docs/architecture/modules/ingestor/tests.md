@@ -56,15 +56,21 @@
 ### Services — quiz
 
 - `tests/guidami_ai_patente_ingestor/services/quiz/test_flatten_quiz.py` —
-  `FlattenQuiz().execute(parsed_questions)`: empty list → empty list; questions
-  without sub-questions → empty list; dedup on triple `(text.strip(),
-  correct_answer, image)` (exact duplicate discarded, duplicate with different
-  answer kept); `warning` logged for each duplicate; `question_id`/`topic`
-  denormalisation from `parent` verified on results.
-- `tests/guidami_ai_patente_ingestor/services/quiz/test_to_embeddable_quiz.py` —
-  `ToEmbeddableQuiz().execute(enriched_items)`: dedup on triple; unique items
-  kept in order; delegation to `QuizMapper.from_enriched_to_embeddable(item)`
-  (1 argument); empty list → empty list.
+  `FlattenQuiz().execute(parsed_questions)`: empty list → empty list; single
+  main question with sub-questions → all sub-questions flattened and mapped
+  to `CleanedQuizModel`; multiple main questions → all sub-questions
+  flattened, `question_id` denormalised per group. **No dedup test here**:
+  `FlattenQuiz` only unnests + maps; dedup is tested separately in
+  `test_deduplicate_quiz_items.py` below.
+- `tests/guidami_ai_patente_ingestor/services/quiz/test_deduplicate_quiz_items.py` —
+  `DeduplicateQuizItems().execute(items)`: empty list → empty list; no
+  duplicates → all preserved; duplicates on the triple `(text.strip(),
+  correct_answer, image)` discarded (keeps the first occurrence); same text
+  with different image → both kept; same text with different
+  `correct_answer` → both kept; `warning` logged with the discarded item's
+  `number` for each duplicate. Exercised against **both**
+  `CleanedQuizModel` and `EnrichedQuizModel` to verify the Protocol-generic
+  contract (`_QuizItemLike`) works unmodified on either flat model.
 - `tests/guidami_ai_patente_ingestor/services/quiz/enrichers/test_image_description_enricher.py` —
   with fake `RoadSignDescriberAgent`: dedup on `(image, topic, text)` (3 sub-questions,
   2 distinct keys → 2 calls); missing image → skip + warning, no exception;
@@ -74,10 +80,15 @@
 
 > **Note (enrichment refactor)**: `test_quiz_enrichment_service.py` no
 > longer exists — `QuizEnrichmentService` removed. The base-map is tested in
-> `test_quiz_mapper.py` (`from_cleaned_to_enriched`); the flatten+dedup logic
-> is tested in `test_flatten_quiz.py` (service) and
-> `test_to_embeddable_quiz.py` (service). `test_enrich_data_step.py` no
-> longer exists (EnrichDataStep removed).
+> `test_quiz_mapper.py` (`from_cleaned_to_enriched`); the parsed→cleaned
+> unnest+map logic is tested in `test_flatten_quiz.py` (service).
+> `test_enrich_data_step.py` no longer exists (EnrichDataStep removed).
+> `test_to_embeddable_quiz.py` no longer exists — `ToEmbeddableQuiz` was
+> removed; the enriched→embeddable dedup logic it used to cover moved first
+> to a private `_dedup_enriched_quiz` function (tested inline in
+> `test_quiz_flows.py`), then — once the same dedup rule was found duplicated
+> in `FlattenQuiz` — was promoted to the shared `DeduplicateQuizItems` service,
+> now covered by `test_deduplicate_quiz_items.py` above instead.
 
 ### Mappers — domain (flat, no longer in `knowledge/` and `quiz/` sub-packages)
 
@@ -98,7 +109,7 @@
 - `tests/guidami_ai_patente_ingestor/mappers/test_quiz_mapper_flatten_at_preparation.py` —
   (SP09) `from_parsed_to_cleaned` and `from_cleaned_to_enriched` (base-map flat→flat,
   `image_description=None`). **No dedup test**: dedup is in
-  `test_flatten_quiz_step.py`.
+  `test_deduplicate_quiz_items.py` (see "Services — quiz" above).
 
 ### Mappers — agent DTOs
 
@@ -177,20 +188,26 @@ generic `LoadJsonStep`/`MapStep`/`WriteJsonStep`, tested generically
 
 `LoadEnrichedQuizStep`/`MapToQuizEntityStep` and `MapToEmbeddableStep` removed
 (replaced respectively by `LoadJsonStep`, `ApplyStep+ForEach`,
-`ApplyStep(ToEmbeddableQuiz())`) — no remaining dedicated step tests for them.
+`ApplyStep(DeduplicateQuizItems(), ForEach(...))`) — no remaining dedicated
+step tests for them.
 
 - `tests/guidami_ai_patente_ingestor/orchestrators/test_quiz_flows.py` —
   `build_quiz_indexing_flow(...)` returns a `Flow`; `flow.name ==
   "quiz_indexing"`; `FlowValidator().validate(flow).required_input_keys ==
   set()`; `validate=True` does not raise (benign WARNING on `EMBEDDABLE_QUIZ`
   from `EmbedStep`); order of the 5 steps verified (`load_enriched_quiz`,
-  `map_to_embeddable`, `embed_quiz`, `map_to_quiz_entity`, `store_quiz`).
+  `map_to_embeddable`, `embed_quiz`, `map_to_quiz_entity`, `store_quiz`). No
+  longer imports or tests a private dedup function directly — the dedup logic
+  was promoted to `DeduplicateQuizItems` and its behaviour is now covered by
+  `test_deduplicate_quiz_items.py` (see "Services — quiz" above), independent
+  of this flow.
 
 ### Orchestrators — quiz preparation: cleaning flow (SP09)
 
 `test_flatten_quiz_step.py` no longer exists — `FlattenQuizStep` removed in SP04;
-the logic is tested in `test_flatten_quiz.py` (service, see "Services —
-quiz" section above).
+the unnest+map logic is tested in `test_flatten_quiz.py` and the dedup logic
+in `test_deduplicate_quiz_items.py` (services, see "Services — quiz" section
+above).
 
 - `tests/guidami_ai_patente_ingestor/orchestrators/test_quiz_preparation_flows_v2.py` —
   `build_quiz_cleaning_flow(...)`: `Flow` with name `"quiz_cleaning"`;

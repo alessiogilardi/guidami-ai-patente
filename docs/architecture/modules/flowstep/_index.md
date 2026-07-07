@@ -39,6 +39,14 @@ callable directly (for list-in/list-out operations).
 `enrich_data_step.py`, `enricher_protocol.py`, `flatten_quiz_step.py`, and
 `map_to_embeddable_step.py` were removed. Stateful logic (flatten+dedup) moved to
 `services/quiz/` (`FlattenQuiz`, `ToEmbeddableQuiz` — see the ingestor module).
+`ToEmbeddableQuiz` was itself later removed and its dedup responsibility split
+into its own transform, chained with `ForEach(QuizMapper.
+from_enriched_to_embeddable)` in the same `ApplyStep`. That transform first
+existed as a private orchestrator function (`_dedup_enriched_quiz`, single
+call site), then — once the identical dedup rule was found duplicated in
+`FlattenQuiz` (a second call site) — was promoted to `DeduplicateQuizItems`, a
+shared, Protocol-generic `services/quiz/` class used by both flow builders —
+see [ingestor/quiz_pipelines.md](../ingestor/quiz_pipelines.md).
 Accepted trade-off: `*transforms: Callable[[list[Any]], list[Any]]` uses `Any` to
 express heterogeneous chains (not expressible in Python 3.12 without losing type
 information on mixed chains). The surviving domain-specific steps are those whose

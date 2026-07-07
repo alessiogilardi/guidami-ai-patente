@@ -15,8 +15,8 @@ pipelines/flows. They produce the `enriched` artefacts that indexing reads from.
 - **quiz bank**: built **from scratch** in SP06 as a single Flow
   (`cleaned` → `enriched`), then **restructured in SP09** to mirror the
   knowledge topology: today there are **two linear flowstep Flows**
-  (`build_quiz_cleaning_flow`: `parsed` → `cleaned`, with flatten+dedup via
-  `ApplyStep(FlattenQuiz())`; `build_quiz_enrichment_flow`: `cleaned` →
+  (`build_quiz_cleaning_flow`: `parsed` → `cleaned`, with unnest+map then dedup via
+  `ApplyStep(FlattenQuiz(), DeduplicateQuizItems())`; `build_quiz_enrichment_flow`: `cleaned` →
   `enriched`), both via the generic runner `run_preparation`. In SP04
   all steps use `ApplyStep`+`ForEach`/`UseCase` instead of `MapStep`/
   `EnrichDataStep` (removed).
@@ -25,14 +25,15 @@ pipelines/flows. They produce the `enriched` artefacts that indexing reads from.
 
 ```
 parsed ──[knowledge_cleaning flow: Load→Apply(ForEach(clean))→Write]───▶ cleaned ──[knowledge_enrichment flow: Load→Apply(ForEach(map)+ContextEnricher)→Write]──▶ enriched ──[knowledge_indexing flow]──▶ DB
-parsed ──[quiz_cleaning flow: Load→Apply(FlattenQuiz)→Write]───────────▶ cleaned ──[quiz_enrichment flow: Load→Apply(ForEach(base-map)+ImageDescEnricher+NormRefEnricher)→Write]──▶ enriched ──[quiz_indexing flow]────▶ DB
+parsed ──[quiz_cleaning flow: Load→Apply(FlattenQuiz+DeduplicateQuizItems)→Write]──▶ cleaned ──[quiz_enrichment flow: Load→Apply(ForEach(base-map)+ImageDescEnricher+NormRefEnricher)→Write]──▶ enriched ──[quiz_indexing flow]────▶ DB
 ```
 
 From SP09 the quiz bank has the **same three-layer topology** as the knowledge
 (`parsed` → `cleaned` → `enriched`), no longer a single input layer: the `parsed`
 layer (direct output of the PDF parser, nested structure) is distinct from the
-`cleaned` layer (flat, one row per sub-question, produced by the flatten+dedup
-of the `FlattenQuiz` UseCase, wrapped by `ApplyStep`).
+`cleaned` layer (flat, one row per sub-question, produced by unnest+map via
+`FlattenQuiz` then dedup via `DeduplicateQuizItems`, both `UseCase`s chained in
+the same `ApplyStep`).
 
 LLM enrichment (expensive, offline) is separate from indexing (re-runnable at
 zero cost on `enriched`). Knowledge and quiz preparation are idempotent at
@@ -336,10 +337,12 @@ def build_quiz_cleaning_flow(
 ) -> Flow
 ```
 Chain: `LoadJsonStep("load_parsed_quiz", model_class=ParsedQuizModel)` →
-`ApplyStep("flatten_quiz", FlattenQuiz())` →
+`ApplyStep("flatten_quiz", FlattenQuiz(), DeduplicateQuizItems())` →
 `WriteJsonStep("write_cleaned_quiz", model_class=CleanedQuizModel)`. Keys
 `PARSED_QUIZ` → `CLEANED_QUIZ`. SP04 moved the logic from `FlattenQuizStep`
-(flowstep step) to `FlattenQuiz` (service UseCase).
+(flowstep step) to `FlattenQuiz` (service UseCase, unnest+map only);
+`DeduplicateQuizItems` (`services/quiz/`) was chained in later as the shared
+dedup transform — see [quiz_pipelines.md](quiz_pipelines.md).
 
 ```python
 def build_quiz_enrichment_flow(

@@ -90,7 +90,7 @@ src/domain/
   is marked `@final` and delegates to `execute` — every `UseCase` is directly
   callable (compatible with `ApplyStep`/`ForEach` that receive a callable). Adopted
   by `EmbeddingService`, `ArticleCleaner`, `ArticleChunker`, `FlattenQuiz`,
-  `ToEmbeddableQuiz`, `ContextEnricher`, `ImageDescriptionEnricher`,
+  `ContextEnricher`, `ImageDescriptionEnricher`,
   `NormReferenceEnricher`. The public
   method of all is named `execute`. Maintains the pure/impure separation: the
   contract does not prescribe side effects.
@@ -395,20 +395,24 @@ src/domain/
   Iterator[T]`. Yields each item the first time its key is seen; subsequent
   duplicates are discarded (calling `on_duplicate` if provided). Exported from
   `commons.utils` via `__all__ = ["deduplicate"]`. Imported by three quiz
-  services with `from commons.utils import deduplicate` (absolute import —
-  `commons` and `guidami_ai_patente_ingestor` are separate top-level packages).
-  Three usage patterns established in the quiz bank:
-  1. **List comprehension with `on_duplicate` warning**: `[mapper(item) for item in
-     deduplicate(request, key=..., on_duplicate=lambda item: logger.warning(...))]`;
-     used in `FlattenQuiz` and `ToEmbeddableQuiz`.
-  2. **Generator of pairs** (flatten nested structure before dedup): flatten
-     `(sub_q, main_q)` pairs in a generator expression, pass to `deduplicate()`,
-     unpack the pair for the mapper call inside the list comprehension; used in
-     `FlattenQuiz`.
-  3. **Pre-filter generator + `cast`**: `deduplicate((q for q in items if q.image
+  services (`DeduplicateQuizItems`, `ImageDescriptionEnricher`,
+  `NormReferenceEnricher`), all with `from commons.utils import deduplicate`
+  (absolute import — `commons` and `guidami_ai_patente_ingestor` are separate
+  top-level packages). Usage patterns established in the quiz bank:
+  1. **Pre-filter generator + `cast`**: `deduplicate((q for q in items if q.image
      is not None), key=...)` to restrict the dedup set to a subset; `cast(str,
      q.image)` inside the loop to satisfy pyright's `str | None` narrowing; used
      in `ImageDescriptionEnricher._describe_questions_with_images`.
+  2. **Pure dedup, mapping left to a separate transform**: `list(deduplicate(items,
+     key=..., on_duplicate=lambda item: logger.warning(...)))` with no mapper call
+     inline — used by `DeduplicateQuizItems` (`services/quiz/`), chained
+     either ahead of `ForEach(QuizMapper.from_enriched_to_embeddable)`
+     (indexing) or after `FlattenQuiz` (cleaning), in the same `ApplyStep`
+     (see [ingestor/quiz_pipelines.md](../ingestor/quiz_pipelines.md)). This
+     pattern replaced an earlier one where `FlattenQuiz` and the former
+     `ToEmbeddableQuiz` service each flattened/mapped and deduplicated in a
+     single pass (dedup interleaved with the generator of pairs or with the
+     mapping call) — dedup is now always a separate, standalone transform.
 
 ## Tests
 

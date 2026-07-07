@@ -16,16 +16,20 @@ Active batch pipelines/flows:
   insert). Wired via `uv run ingest index knowledge --source <cds|cap>` (SP07).
 - **quiz bank — preparation** (two flowstep flows, restructured in SP09
   mirroring the knowledge topology): `build_quiz_cleaning_flow` (`parsed` → `cleaned`,
-  flatten+dedup via `ApplyStep(FlattenQuiz())`) and `build_quiz_enrichment_flow`
+  unnest+map via `FlattenQuiz` then dedup via `DeduplicateQuizItems`, chained in
+  `ApplyStep(FlattenQuiz(), DeduplicateQuizItems())`) and `build_quiz_enrichment_flow`
   (`cleaned` → `enriched`, base-map + `ImageDescriptionEnricher` + `NormReferenceEnricher`
   in a single `ApplyStep`), both via the same runner `run_preparation`. In SP04
   the flatten+dedup logic is moved from flowstep step to service UseCase
-  (`FlattenQuiz`, `ToEmbeddableQuiz`); `EnrichDataStep`/`MapStep`/
+  (`FlattenQuiz`); `EnrichDataStep`/`MapStep`/
   `EnricherProtocol` removed; all flows use `ApplyStep+ForEach`.
   Wired via `uv run ingest prepare quiz` (SP07).
 - **quiz bank — indexing** (flowstep flow): reads `enriched` quiz →
-  `ApplyStep(ToEmbeddableQuiz())` (dedup + mapping enriched→embeddable, flat model)
-  → embed → `ApplyStep(ForEach(QuizMapper.from_embeddable_to_quiz_question))`
+  `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embeddable))`
+  (dedup then mapping enriched→embeddable, flat model — `DeduplicateQuizItems`
+  is a shared `services/quiz/` class, generic/Protocol-typed, reused by
+  `build_quiz_cleaning_flow` above) → embed →
+  `ApplyStep(ForEach(QuizMapper.from_embeddable_to_quiz_question))`
   → `quiz_questions` (truncate full-reload). Wired via `uv run ingest index
   quiz` (SP07).
 
@@ -111,11 +115,16 @@ src/guidami_ai_patente_ingestor/
 │   │                                     #   satisfies EnricherProtocol[EnrichedArticleModel, EnrichedArticleModel];
 │   │                                     #   isolated failure → contexts={} + warning, no abort
 │   └── quiz/
-│       ├── __init__.py                          # re-exports ImageDescriptionEnricher, NormReferenceEnricher
+│       ├── __init__.py                          # re-exports DeduplicateQuizItems, EmbedQuizMetadata, ImageDescriptionEnricher
+│       ├── deduplicate_quiz_items.py            # DeduplicateQuizItems[T: _QuizItemLike](UseCase[list[T], list[T]])
+│       │                                        #   dedup on (text.strip(), correct_answer, image); Protocol-generic,
+│       │                                        #   shared by build_quiz_cleaning_flow and build_quiz_indexing_flow
 │       ├── flatten_quiz.py                      # FlattenQuiz(UseCase[list[ParsedQuizModel], list[CleanedQuizModel]])
-│       │                                        #   flatten+dedup parsed→cleaned (SP02; ex FlattenQuizStep)
-│       ├── to_embeddable_quiz.py                # ToEmbeddableQuiz(UseCase[list[EnrichedQuizModel], list[EmbeddableQuizModel]])
-│       │                                        #   dedup+mapping enriched→embeddable (SP03; ex MapToEmbeddableStep)
+│       │                                        #   unnest+map parsed→cleaned only, no dedup (SP02; ex FlattenQuizStep)
+│       │                                        # to_embeddable_quiz.py REMOVED (ToEmbeddableQuiz, SP03; dedup split
+│       │                                        #   out — first into a private orchestrator function, later promoted
+│       │                                        #   to DeduplicateQuizItems above; mapping left to
+│       │                                        #   QuizMapper.from_enriched_to_embeddable — see quiz_pipelines.md)
 │       │                                        # quiz_enrichment_service.py REMOVED (QuizEnrichmentService,
 │       │                                        #   replaced by ApplyStep+UseCase in SP04)
 │       └── enrichers/
@@ -155,6 +164,9 @@ src/guidami_ai_patente_ingestor/
 │   │                                  #   build_quiz_cleaning_flow(config, layer_resolver) -> Flow (SP09)
 │   │                                  #   build_quiz_enrichment_flow(config, layer_resolver) -> Flow
 │   │                                  #   (replaces the previous build_quiz_preparation_flow, removed)
+│   │                                  #   dedup chained via services/quiz/DeduplicateQuizItems() in both
+│   │                                  #     ApplyStep("flatten_quiz") and ApplyStep("map_to_embeddable")
+│   │                                  #     (no longer a private function in this module)
 │   ├── preparation_runner.py          # run_preparation(flow, out_path, force) -> None — per-source runner
 │   └── steps/
 │       ├── __init__.py                  # package docstring
@@ -175,10 +187,13 @@ src/guidami_ai_patente_ingestor/
 │       │   └── store_chunks_step.py           # StoreChunksStep — delete_source + bulk_insert (indexing)
 │       │                                      # ContextualizeStep REMOVED; MapStep/EnrichDataStep REMOVED (SP04)
 │       │                                      # preparation uses ApplyStep(ForEach+ContextEnricher)
-│       └── quiz/                        # empty package (SP04)
-│           └── __init__.py                    # __all__ = []
+│       └── quiz/                        # package removed entirely (deleted, was empty since SP04)
 │                                              # FlattenQuizStep REMOVED → FlattenQuiz in services/quiz/ (SP02)
 │                                              # MapToEmbeddableStep REMOVED → ToEmbeddableQuiz in services/quiz/ (SP03)
+│                                              # ToEmbeddableQuiz itself later REMOVED → split into a dedup transform
+│                                              #   (first a private orchestrator function, later promoted to
+│                                              #   services/quiz/DeduplicateQuizItems) + QuizMapper.from_enriched_to_embeddable
+│                                              #   (see quiz_pipelines.md)
 ├── configs/
 │   ├── ingestor_config.py            # IngestorConfig (BaseSettings, frozen)
 │   ├── source_config.py              # SourceConfig(dir, file) — frozen BaseModel
@@ -221,8 +236,9 @@ both the normative corpus and the quiz bank follow the **same three-stage topolo
   input of `build_knowledge_enrichment_flow` (`LoadJsonStep`). The `"cleaned"`
   layer is a private constant in `knowledge_flows.py`/`quiz_flows.py`
   (`_CLEANED_LAYER`), not a field of `PipelineLayerConfig`. For the quiz bank
-  (SP09): output of `build_quiz_cleaning_flow` (flatten+dedup by `FlattenQuiz`
-  UseCase, one flat row per sub-question), input of `build_quiz_enrichment_flow`.
+  (SP09): output of `build_quiz_cleaning_flow` (unnest+map by `FlattenQuiz`
+  then dedup by `DeduplicateQuizItems`, one flat row per sub-question), input
+  of `build_quiz_enrichment_flow`.
 - `data/enriched/<source>/...json` — (`enriched` layer) output of the
   enrichment flow (corpus or quiz); input of the indexing flows. Self-contained:
   cleaned article + `contexts` per clause (corpus), or flat sub-question +
@@ -237,7 +253,7 @@ Path resolution: `LayerResolver.path(layer, source)` =
   on two flowstep flows per-source (`build_knowledge_cleaning_flow`,
   `build_knowledge_enrichment_flow`, `run_preparation`, `ApplyStep`+`ForEach` +
   `ContextEnricher` domain-specific, `ArticleMapper`); quiz bank on two analogous
-  flows (`build_quiz_cleaning_flow` with `ApplyStep(FlattenQuiz())`,
+  flows (`build_quiz_cleaning_flow` with `ApplyStep(FlattenQuiz(), DeduplicateQuizItems())`,
   `build_quiz_enrichment_flow` with `ApplyStep(ForEach+ImageDescriptionEnricher+NormReferenceEnricher)`).
   Plus `ArticleContextualizerAgent`, `RoadSignDescriberAgent`, `NormReferenceDescriberAgent`,
   all agent mappers, `EnrichedArticleRepository`, `EnrichedQuizBankRepository`.
@@ -252,14 +268,20 @@ Path resolution: `LayerResolver.path(layer, source)` =
   `ParsedQuizModel`/`CleanedQuizModel`/`EnrichedQuizModel`/`EmbeddableQuizModel`
   (one model per layer, SP09), consolidated `QuizMapper` (method
   `from_enriched_to_embeddable` renamed in SP03, 1 argument),
-  `QuizQuestionStoreRepository`; service `FlattenQuiz` and `ToEmbeddableQuiz`
-  (UseCase, ex flowstep step, SP02/SP03); quiz indexing flow with
-  `ApplyStep(ToEmbeddableQuiz())` and `ApplyStep(ForEach(...))` (SP04);
-  quiz preparation flows: `ApplyStep(FlattenQuiz())` (cleaning) +
+  `QuizQuestionStoreRepository`; service `FlattenQuiz` (UseCase, unnest+map
+  only, ex flowstep step, SP02) and service `DeduplicateQuizItems`
+  (Protocol-generic dedup `UseCase`, replacing the removed `ToEmbeddableQuiz`
+  service — see quiz_pipelines.md for the decision reversal from a
+  single-call-site private function to a shared `services/quiz/` class);
+  quiz indexing flow with `ApplyStep(DeduplicateQuizItems(),
+  ForEach(QuizMapper.from_enriched_to_embeddable))` and
+  `ApplyStep(ForEach(...))`; quiz preparation flows:
+  `ApplyStep(FlattenQuiz(), DeduplicateQuizItems())` (cleaning) +
   `ApplyStep(ForEach+ImageDescriptionEnricher)` (enrichment, 3 steps, SP04);
   `ImageDescriptionEnricher` and `NormReferenceEnricher` both implement `UseCase`.
-  All four services use `commons.utils.deduplicate` (2026-07-02 refactor,
-  replacing hand-rolled `seen: set` in each).
+  `DeduplicateQuizItems`, `ImageDescriptionEnricher` and `NormReferenceEnricher`
+  all use `commons.utils.deduplicate` (2026-07-02 refactor, replacing
+  hand-rolled `seen: set` in each).
 - [config_and_entrypoints.md](config_and_entrypoints.md) — `IngestorConfig`, `LayerResolver`,
   two-level config pattern, single entry point `cli.py` (SP07, subcommands `ingest prepare
   / index / reset`), logging conventions.
