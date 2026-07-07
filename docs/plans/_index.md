@@ -70,7 +70,6 @@ e documentato in [`docs/architecture/ingestor/`](../docs/architecture/ingestor/_
 |------|-------|--------|
 | [Mapping offline quiz ↔ norma (LLM-as-a-Judge)](2026-07-03--ingest-llm-as-judge.md) | Mapping offline quiz ↔ norma (LLM-as-a-Judge) | Draft |
 | [Quiz Indexing: Metadata Embedding](2026-07-03--ingest-quiz-indexing-metadata-embedding.md) | Quiz Indexing: Metadata Embedding | Draft |
-| [Base Agent Generic Input](2026-07-04--base-agent-generic-input.md) | Base Agent Generic Input | Draft |
 | [Integrate File System Client into Repositories](2026-07-06--integrate-file-system-client-into-repositories.md) | Integrate File System Client into Repositories | Implemented |
 | [Wire Image Reading To File System Client](2026-07-06--wire-image-reading-to-file-system-client.md) | Wire Image Reading To File System Client | Implemented |
 | [Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF)](architecture-hybrid-retrieval.md) | Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF) | Draft |
