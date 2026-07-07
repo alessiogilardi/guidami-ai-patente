@@ -17,8 +17,11 @@ src/commons/
 │   ├── use_case.py              # UseCase[T_In, T_Out](ABC) + AsyncUseCase[T_In, T_Out](ABC)
 │   └── for_each.py              # ForEach[T, U](UseCase[list[T], list[U]]) — applies Callable[[T], U] to each element
 ├── agents/
-│   ├── __init__.py              # re-exports BaseAgent
-│   └── base_agent.py            # PromptRenderer, BaseAgent[T_In: BaseModel, T_Out] — composition over pydantic_ai.Agent
+│   ├── __init__.py              # re-exports AgentConfig, BaseAgent (PromptRenderer NOT re-exported — private)
+│   ├── base_agent.py            # BaseAgent[T_In, T_Out] — composition over pydantic_ai.Agent
+│   └── utils/                   # private subpackage, not re-exported from agents/__init__.py
+│       ├── __init__.py
+│       └── prompt_renderer.py   # PromptRenderer, PromptInput = BaseModel | Mapping[str, Any] | str
 ├── repositories/
 │   ├── __init__.py              # re-exports FileRepository, JsonRepository, YamlRepository
 │   └── file_repository/
@@ -226,12 +229,25 @@ src/domain/
   (template with `$var` placeholders in `string.Template` syntax). No
   `response_format` field: structured output is handled by PydanticAI via
   `output_type`. Re-exported from `commons/configs/__init__.py`.
-- **`PromptRenderer`** (`commons/agents/base_agent.py`): SRP — formats the user
-  template via `string.Template.safe_substitute(**variables)` and attaches images
-  as `BinaryContent` (uses `mimetypes.guess_type`). Method:
-  `render(variables: dict, images=()) -> str | list[str | BinaryContent]`.
-  The caller (`BaseAgent`) extracts template variables from the `T_In` request via
-  `request.model_dump()` before invoking `render`.
+- **`PromptRenderer`** (`commons/agents/utils/prompt_renderer.py`): SRP — formats
+  the user template via `string.Template.safe_substitute(**variables)` and
+  attaches images as `BinaryContent` (uses `mimetypes.guess_type`). Lives in a
+  private `utils/` subpackage: not re-exported from `commons/agents/__init__.py`
+  — callers that need it (currently only the test file) import it directly from
+  `commons.agents.utils.prompt_renderer` (the "intentionally private, not
+  re-exported" exception in `rules/python/imports.md`).
+  - Method: `render(request: PromptInput, images=()) -> str | list[str |
+    BinaryContent]`, where `PromptInput = BaseModel | Mapping[str, Any] | str`.
+    Dataclass instances are also accepted (detected internally, not part of the
+    type alias itself — see `_to_vars` below).
+  - `_to_vars(request: PromptInput) -> Mapping[str, Any] | None` (private,
+    static): ordered dispatch — `BaseModel` → `.model_dump()`; dataclass
+    instance (`dataclasses.is_dataclass(request) and not isinstance(request,
+    type)`) → `dataclasses.asdict()`; `Mapping` → passthrough unchanged; `str` →
+    returns `None`, signalling `render()` to bypass `Template.safe_substitute`
+    entirely and use the string verbatim (pre-rendered prompt semantics). Any
+    other type raises `TypeError`. `render()` calls `_to_vars` once and branches
+    only on whether the result is `None`.
   - `__init__(template_str: str, file_reader: FileReaderInterface | None = None)`:
     `file_reader` is an **optional** injected dependency (default `None`) — a
     deliberate narrow deviation from "dependencies are always required": only
@@ -298,11 +314,13 @@ src/domain/
   `LocalFileSystemClient(config.project_root)` (or `LocalFileSystemClient(config.agents_dir)`
   for the agent YAML repository) explicitly and pass it via `file_system_client=`
   — the repository never builds its own client.
-- **`BaseAgent[T_In: BaseModel, T_Out]`** (`commons/agents/base_agent.py`): uses Python 3.12
+- **`BaseAgent[T_In, T_Out]`** (`commons/agents/base_agent.py`): uses Python 3.12
   native generics. **Composition** (not inheritance) over `pydantic_ai.Agent`,
-  wrapped as `self._agent: Agent[None, T_Out]`. `T_In` is constrained to
-  `BaseModel`: every agent receives and returns typed Pydantic DTOs, not raw
-  dictionaries.
+  wrapped as `self._agent: Agent[None, T_Out]`. `T_In` carries no `BaseModel`
+  bound — the actual request type is constrained at the `render()` call site via
+  `cast(PromptInput, request)` (see `PromptRenderer` above), not via the generic
+  parameter. Every existing agent subclass still passes a Pydantic DTO, so this
+  is a source-compatible widening: nothing outside `commons/agents/` changed.
   - `__init__(config: AgentConfig, output_type: type[T_Out], file_reader:
     FileReaderInterface | None = None)`: converts `model_name` by replacing the
     first `/` with `:` (e.g. `openrouter/google/model` → `openrouter:google/model`),
@@ -311,10 +329,11 @@ src/domain/
     `file_reader` is forwarded as-is (same optional default) into
     `PromptRenderer(config.user, file_reader)`.
   - Methods: `run(request: T_In, images)` (async), `run_sync(request: T_In,
-    images)` (sync) and `__call__` (alias for `run_sync`). They extract template
-    variables via `request.model_dump()` and pass them to `PromptRenderer.render`.
-    Both delegate to `self._agent.run_sync` / `self._agent.run`; return `.output`
-    typed as `T_Out`.
+    images)` (sync) and `__call__` (alias for `run_sync`). Each calls
+    `self.renderer.render(cast(PromptInput, request), images)` — variable
+    extraction (`PromptRenderer._to_vars`) is entirely the renderer's
+    responsibility, not `BaseAgent`'s. Both delegate to `self._agent.run_sync` /
+    `self._agent.run`; return `.output` typed as `T_Out`.
   - Factory: `from_yaml(name, output_type, repository, file_reader=None) ->
     BaseAgent[T_In, T_Out]` — accepts a pre-constructed `YamlRepository[AgentConfig]`
     (built by the caller) and loads `f"{name}.yaml"` (the `.yaml` extension is
@@ -435,7 +454,9 @@ src/domain/
   but the tests remain in `tests/commons/agents/`.)
 - `tests/commons/agents/test_base_agent.py` — `YamlRepository` raises
   `FileNotFoundError` for missing files and parses valid YAML into `AgentConfig`;
-  `PromptRenderer.render` substitutes `$var` placeholders; with `images` the list
+  `PromptRenderer.render` substitutes `$var` placeholders from a `dict` and from
+  a dataclass instance (`_to_vars`'s `dataclasses.asdict()` branch); a `str`
+  request bypasses substitution and is returned verbatim; with `images` the list
   contains `BinaryContent`; `BaseAgent.from_yaml` factory method; missing agent
   file raises `FileNotFoundError`; YAML parameters mapped to `model_settings`
   (`temperature`, `max_tokens`, `timeout`, `_max_output_retries`).

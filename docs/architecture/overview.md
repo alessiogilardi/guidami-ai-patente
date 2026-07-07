@@ -44,9 +44,12 @@ Implementation detail (config, methods, API response ordering) →
 
 - **pydantic-ai-slim[openrouter]** — AI agent framework, slim build with openrouter extra.
 - **OpenRouter** as gateway — authenticated via `OPENROUTER_API_KEY` in the environment.
-- **`BaseAgent[T_out]`** in `domain/agents/` — shared infrastructure for LLM
+- **`BaseAgent[T_In, T_Out]`** in `commons/agents/` — shared infrastructure for LLM
   agents: loads config from YAML (`AgentConfig`), renders the prompt via
-  `PromptRenderer`, wraps `pydantic_ai.Agent` for composition.
+  `PromptRenderer` (private `commons/agents/utils/` subpackage), wraps
+  `pydantic_ai.Agent` for composition. Accepts a `PromptInput` request
+  (`BaseModel`, dataclass, `Mapping`, or pre-rendered `str`) — not constrained
+  to Pydantic models.
 - Currently used by: `ArticleContextualizerAgent`, `RoadSignDescriberAgent`, and
   `NormReferenceDescriberAgent` in the ingestor (LLM enrichment in the data
   preparation phase).
