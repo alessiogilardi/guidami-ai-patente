@@ -49,6 +49,7 @@ class IngestorConfig(BaseSettings):
     )
     agents_dir: Path = Path("configs/agents")
     quiz_images_dir: Path = Path("data/parsed/quiz-patente-ab/images")
+    project_root: Path = Path(".")
 
     embedding_batch_size: int = 64
     embedding: EmbeddingConfig = EmbeddingConfig()

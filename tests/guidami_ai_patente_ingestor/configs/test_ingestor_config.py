@@ -47,6 +47,11 @@ def test_default_agents_dir() -> None:
     assert config.agents_dir == Path("configs/agents")
 
 
+def test_default_project_root() -> None:
+    config = _build_config()
+    assert config.project_root == Path(".")
+
+
 def test_default_table_names() -> None:
     config = _build_config()
     assert config.knowledge_chunks_table == "knowledge_chunks"

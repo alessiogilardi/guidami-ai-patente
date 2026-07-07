@@ -15,6 +15,7 @@ from pathlib import Path
 
 import pytest
 
+from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import JsonRepository
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel, ParsedArticleModel
 from guidami_ai_patente_ingestor.models.quiz import (
@@ -104,7 +105,7 @@ class TestRoundTrip:
     @pytest.mark.parametrize("factory,model_cls", ROUND_TRIP_CASES)
     def test_write_then_load_round_trips(self, factory, model_cls, tmp_path: Path) -> None:
         items = [factory()]
-        repo = JsonRepository.get_instance(tmp_path, model_cls)
+        repo = JsonRepository.get_instance(model_cls, LocalFileSystemClient(tmp_path))
 
         repo.write(items, "layer/source.json")
         loaded = repo.load("layer/source.json")
@@ -114,7 +115,7 @@ class TestRoundTrip:
 
     @pytest.mark.parametrize("factory,model_cls", ROUND_TRIP_CASES)
     def test_write_creates_parent_directories(self, factory, model_cls, tmp_path: Path) -> None:
-        repo = JsonRepository.get_instance(tmp_path, model_cls)
+        repo = JsonRepository.get_instance(model_cls, LocalFileSystemClient(tmp_path))
 
         repo.write([factory()], "deep/nested/data.json")
         assert (tmp_path / "deep" / "nested" / "data.json").exists()
@@ -122,7 +123,7 @@ class TestRoundTrip:
     @pytest.mark.parametrize("factory,model_cls", ROUND_TRIP_CASES)
     def test_load_empty_list_returns_empty_list(self, factory, model_cls, tmp_path: Path) -> None:
         (tmp_path / "empty.json").write_text("[]", encoding="utf-8")
-        repo = JsonRepository.get_instance(tmp_path, model_cls)
+        repo = JsonRepository.get_instance(model_cls, LocalFileSystemClient(tmp_path))
 
         assert repo.load("empty.json") == []
 
@@ -145,7 +146,7 @@ def test_write_preserves_utf8_characters(tmp_path: Path) -> None:
             contexts={0: "È obbligatorio indossare le cinture."},
         )
     ]
-    repo = JsonRepository.get_instance(tmp_path, EnrichedArticleModel)
+    repo = JsonRepository.get_instance(EnrichedArticleModel, LocalFileSystemClient(tmp_path))
     repo.write(articles, "enriched.json")
 
     raw = json.loads((tmp_path / "enriched.json").read_text(encoding="utf-8"))
@@ -158,7 +159,7 @@ def test_write_preserves_utf8_characters(tmp_path: Path) -> None:
 
 
 def test_article_load_from_cds_sample() -> None:
-    repo = JsonRepository.get_instance(FIXTURES_DIR, ParsedArticleModel)
+    repo = JsonRepository.get_instance(ParsedArticleModel, LocalFileSystemClient(FIXTURES_DIR))
     articles = repo.load("cds_sample.json")
 
     article_1 = next(a for a in articles if a.number == "1")
@@ -170,7 +171,7 @@ def test_article_load_from_cds_sample() -> None:
 
 
 def test_article_load_from_cap_sample_repealed_and_empty_text() -> None:
-    repo = JsonRepository.get_instance(FIXTURES_DIR, ParsedArticleModel)
+    repo = JsonRepository.get_instance(ParsedArticleModel, LocalFileSystemClient(FIXTURES_DIR))
     articles = repo.load("cap_sample.json")
 
     article_118 = articles[0]
@@ -186,7 +187,7 @@ def test_article_load_from_cap_sample_repealed_and_empty_text() -> None:
 
 
 def test_parsed_quiz_load_from_sample() -> None:
-    repo = JsonRepository.get_instance(FIXTURES_DIR, ParsedQuizModel)
+    repo = JsonRepository.get_instance(ParsedQuizModel, LocalFileSystemClient(FIXTURES_DIR))
     main_questions = repo.load("quiz_bank_sample.json")
 
     assert len(main_questions) == 2
@@ -217,7 +218,7 @@ def test_enriched_quiz_round_trip_none_image_description(tmp_path: Path) -> None
             image_description=None,
         )
     ]
-    repo = JsonRepository.get_instance(tmp_path, EnrichedQuizModel)
+    repo = JsonRepository.get_instance(EnrichedQuizModel, LocalFileSystemClient(tmp_path))
     repo.write(questions, "quiz.json")
     loaded = repo.load("quiz.json")
 

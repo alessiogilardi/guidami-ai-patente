@@ -10,6 +10,7 @@ from pathlib import Path
 import pytest
 from pydantic import BaseModel
 
+from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories.file_repository import (
     JsonRepository,
     YamlRepository,
@@ -51,26 +52,26 @@ def _sample_dc() -> SampleDataclass:
 
 class TestJsonRepositoryRoundTrip:
     def test_single_object_round_trip(self, tmp_path: Path) -> None:
-        repo = JsonRepository(tmp_path, SampleModel)
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         item = _sample()
         repo.write(item, "item.json")
         loaded = repo.load("item.json")
         assert loaded == item
 
     def test_list_round_trip(self, tmp_path: Path) -> None:
-        repo = JsonRepository(tmp_path, SampleModel)
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         items = [SampleModel(name="a", value=1), SampleModel(name="b", value=2)]
         repo.write(items, "items.json")
         loaded = repo.load("items.json")
         assert loaded == items
 
     def test_empty_list_round_trip(self, tmp_path: Path) -> None:
-        repo = JsonRepository(tmp_path, SampleModel)
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         repo.write([], "empty.json")
         assert repo.load("empty.json") == []
 
     def test_creates_parent_directories(self, tmp_path: Path) -> None:
-        repo = JsonRepository(tmp_path, SampleModel)
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         nested = tmp_path / "a" / "b" / "c.json"
         repo.write([_sample()], nested)
         assert nested.exists()
@@ -79,24 +80,26 @@ class TestJsonRepositoryRoundTrip:
         class UnicodeModel(BaseModel):
             text: str
 
-        repo = JsonRepository(tmp_path, UnicodeModel)
+        repo = JsonRepository(UnicodeModel, file_system_client=LocalFileSystemClient(tmp_path))
         item = UnicodeModel(text="È obbligatorio indossare le cinture.")
         repo.write(item, "uni.json")
         raw = (tmp_path / "uni.json").read_text(encoding="utf-8")
         assert "È obbligatorio" in raw
 
     def test_file_not_found_raises(self, tmp_path: Path) -> None:
-        repo = JsonRepository(tmp_path, SampleModel)
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         with pytest.raises(FileNotFoundError, match="missing.json"):
             repo.load("missing.json")
 
-    def test_absolute_path_bypasses_base_path(self, tmp_path: Path) -> None:
-        repo = JsonRepository(tmp_path / "base", SampleModel)
-        absolute = tmp_path / "elsewhere" / "data.json"
-        absolute.parent.mkdir(parents=True)
-        repo.write([_sample()], absolute)
-        loaded = repo.load(absolute)
-        assert loaded == [_sample()]
+    def test_absolute_path_outside_base_raises_permission_error(self, tmp_path: Path) -> None:
+        base = tmp_path / "base"
+        base.mkdir()
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(base))
+        outside = tmp_path / "elsewhere" / "data.json"
+        outside.parent.mkdir(parents=True)
+
+        with pytest.raises(PermissionError, match="[Tt]raversal"):
+            repo.write([_sample()], outside)
 
 
 # ---------------------------------------------------------------------------
@@ -106,32 +109,32 @@ class TestJsonRepositoryRoundTrip:
 
 class TestYamlRepositoryRoundTrip:
     def test_single_object_round_trip(self, tmp_path: Path) -> None:
-        repo = YamlRepository(tmp_path, SampleModel)
+        repo = YamlRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         item = _sample()
         repo.write(item, "item.yaml")
         loaded = repo.load("item.yaml")
         assert loaded == item
 
     def test_list_round_trip(self, tmp_path: Path) -> None:
-        repo = YamlRepository(tmp_path, SampleModel)
+        repo = YamlRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         items = [SampleModel(name="x", value=10), SampleModel(name="y", value=20)]
         repo.write(items, "items.yaml")
         loaded = repo.load("items.yaml")
         assert loaded == items
 
     def test_empty_list_round_trip(self, tmp_path: Path) -> None:
-        repo = YamlRepository(tmp_path, SampleModel)
+        repo = YamlRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         repo.write([], "empty.yaml")
         assert repo.load("empty.yaml") == []
 
     def test_creates_parent_directories(self, tmp_path: Path) -> None:
-        repo = YamlRepository(tmp_path, SampleModel)
+        repo = YamlRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         nested = tmp_path / "deep" / "nested.yaml"
         repo.write([_sample()], nested)
         assert nested.exists()
 
     def test_file_not_found_raises(self, tmp_path: Path) -> None:
-        repo = YamlRepository(tmp_path, SampleModel)
+        repo = YamlRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         with pytest.raises(FileNotFoundError, match="missing.yaml"):
             repo.load("missing.yaml")
 
@@ -143,13 +146,13 @@ class TestYamlRepositoryRoundTrip:
 
 class TestGetInstance:
     def test_get_instance_produces_working_repository(self, tmp_path: Path) -> None:
-        repo = JsonRepository.get_instance(tmp_path, SampleModel)
+        repo = JsonRepository.get_instance(SampleModel, LocalFileSystemClient(tmp_path))
         items = [_sample()]
         repo.write(items, "data.json")
         assert repo.load("data.json") == items
 
     def test_get_instance_yaml(self, tmp_path: Path) -> None:
-        repo = YamlRepository.get_instance(tmp_path, SampleModel)
+        repo = YamlRepository.get_instance(SampleModel, LocalFileSystemClient(tmp_path))
         items = [_sample()]
         repo.write(items, "data.yaml")
         assert repo.load("data.yaml") == items
@@ -160,7 +163,7 @@ class TestTypeInference:
         class TypedRepo(JsonRepository[SampleModel]):
             pass
 
-        repo = TypedRepo(tmp_path)
+        repo = TypedRepo(file_system_client=LocalFileSystemClient(tmp_path))
         items = [_sample()]
         repo.write(items, "data.json")
         assert repo.load("data.json") == items
@@ -170,7 +173,7 @@ class TestTypeInference:
             pass
 
         with pytest.raises(TypeError, match="Cannot infer model type"):
-            UntypedRepo(tmp_path)
+            UntypedRepo(file_system_client=LocalFileSystemClient(tmp_path))
 
 
 # ---------------------------------------------------------------------------
@@ -180,32 +183,32 @@ class TestTypeInference:
 
 class TestSerialization:
     def test_pydantic_model_round_trip_via_json(self, tmp_path: Path) -> None:
-        repo = JsonRepository(tmp_path, SampleModel)
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         item = _sample()
         repo.write(item, "pydantic.json")
         assert repo.load("pydantic.json") == item
 
     def test_dataclass_round_trip_via_json(self, tmp_path: Path) -> None:
-        repo = JsonRepository(tmp_path, SampleDataclass)
+        repo = JsonRepository(SampleDataclass, file_system_client=LocalFileSystemClient(tmp_path))
         item = _sample_dc()
         repo.write(item, "dc.json")
         loaded = repo.load("dc.json")
         assert loaded == item
 
     def test_dict_round_trip_via_json(self, tmp_path: Path) -> None:
-        repo = JsonRepository(tmp_path, dict)
+        repo = JsonRepository(dict, file_system_client=LocalFileSystemClient(tmp_path))
         item = {"name": "test", "value": 42}
         repo.write(item, "d.json")
         assert repo.load("d.json") == item
 
     def test_unsupported_type_serialize_raises(self, tmp_path: Path) -> None:
-        repo = JsonRepository(tmp_path, SampleModel)
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         with pytest.raises(TypeError, match="Unsupported type for serialization"):
             repo._serialize_item(42)  # type: ignore[arg-type]
 
     def test_invalid_file_content_raises_value_error(self, tmp_path: Path) -> None:
         bad = tmp_path / "bad.json"
         bad.write_text('"just a string"', encoding="utf-8")
-        repo = JsonRepository(tmp_path, SampleModel)
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         with pytest.raises(ValueError, match="dict or a list"):
             repo.load("bad.json")

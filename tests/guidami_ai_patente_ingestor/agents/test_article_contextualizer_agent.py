@@ -11,6 +11,7 @@ from pydantic_ai.messages import (
 )
 from pydantic_ai.models.function import AgentInfo, FunctionModel
 
+from commons.clients.file_system import LocalFileSystemClient
 from commons.configs import AgentConfig
 from commons.repositories import YamlRepository
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
@@ -30,7 +31,7 @@ def agents_dir(tmp_path: Path) -> YamlRepository:
         "user: 'Articolo: $title\\n$text\\n$paragraphs'\n",
         encoding="utf-8",
     )
-    return YamlRepository(d, AgentConfig)
+    return YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(d))
 
 
 def _request(**kwargs) -> ArticleContextualizerRequest:

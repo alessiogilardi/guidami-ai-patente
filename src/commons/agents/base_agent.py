@@ -7,6 +7,8 @@ from pydantic import BaseModel
 from pydantic_ai import Agent, BinaryContent
 from pydantic_ai.settings import ModelSettings
 
+from commons.clients import FileReaderInterface
+
 from ..configs import AgentConfig
 from ..repositories import YamlRepository
 
@@ -14,13 +16,17 @@ from ..repositories import YamlRepository
 class PromptRenderer:
     """Formats the user prompt template and attaches media."""
 
-    def __init__(self, template_str: str) -> None:
+    def __init__(self, template_str: str, file_reader: FileReaderInterface | None = None) -> None:
         """Initialize the renderer with a `$var`-style template string.
 
         Args:
             template_str: User prompt template with `$var` placeholders.
+            file_reader: Reader used to resolve `images` paths, relative to its
+                base directory. Optional: only required when `render` is called
+                with a non-empty `images` tuple.
         """
         self._template = Template(template_str)
+        self._file_reader = file_reader
 
     def render(
         self, request: BaseModel | dict[str, Any], images: tuple[Path, ...] = ()
@@ -29,11 +35,16 @@ class PromptRenderer:
 
         Args:
             request: Pydantic model or dict providing substitution values.
-            images: Image paths to attach as `BinaryContent`.
+            images: Image paths, resolved relative to `file_reader`'s base
+                directory, to attach as `BinaryContent`.
 
         Returns:
             Rendered string when no images are provided, otherwise a list
             containing the text followed by `BinaryContent` items.
+
+        Raises:
+            ValueError: If `images` is non-empty but no `file_reader` was
+                configured.
         """
         variables = request.model_dump() if isinstance(request, BaseModel) else request
         text = self._template.safe_substitute(**variables)
@@ -41,11 +52,16 @@ class PromptRenderer:
         if not images:
             return text
 
+        if self._file_reader is None:
+            raise ValueError("images were provided but no file_reader was configured")
+
         parts: list[str | BinaryContent] = [text]
         for img in images:
             mime_type, _ = mimetypes.guess_type(img)
             media_type = mime_type or "application/octet-stream"
-            parts.append(BinaryContent(data=img.read_bytes(), media_type=media_type))
+            parts.append(
+                BinaryContent(data=self._file_reader.read_bytes(img), media_type=media_type)
+            )
 
         return parts
 
@@ -53,15 +69,22 @@ class PromptRenderer:
 class BaseAgent[T_In: BaseModel, T_Out]:
     """Wraps `pydantic_ai.Agent` with Pydantic request/response models."""
 
-    def __init__(self, config: AgentConfig, output_type: type[T_Out]) -> None:
+    def __init__(
+        self,
+        config: AgentConfig,
+        output_type: type[T_Out],
+        file_reader: FileReaderInterface | None = None,
+    ) -> None:
         """Initialize the agent with configuration and output type.
 
         Args:
             config: Agent configuration (model, prompts, parameters).
             output_type: Expected Pydantic type for structured LLM output.
+            file_reader: Reader used to resolve `images` paths passed to `run`.
+                Optional: only required by agents that pass `images=`.
         """
         self.config = config
-        self.renderer = PromptRenderer(config.user)
+        self.renderer = PromptRenderer(config.user, file_reader)
 
         model_name = self.__parse_model_name(config)
 
@@ -80,7 +103,11 @@ class BaseAgent[T_In: BaseModel, T_Out]:
 
     @classmethod
     def from_yaml(
-        cls, name: str, output_type: type[T_Out], repository: YamlRepository
+        cls,
+        name: str,
+        output_type: type[T_Out],
+        repository: YamlRepository,
+        file_reader: FileReaderInterface | None = None,
     ) -> "BaseAgent[T_In, T_Out]":
         """Instantiate the agent by loading its YAML configuration file.
 
@@ -88,6 +115,8 @@ class BaseAgent[T_In: BaseModel, T_Out]:
             name: Agent name (without the `.yaml` extension).
             output_type: Expected Pydantic type for structured LLM output.
             repository: Repository used to load agent configuration files.
+            file_reader: Reader used to resolve `images` paths passed to `run`.
+                Optional: only required by agents that pass `images=`.
 
         Returns:
             Configured agent instance.
@@ -96,7 +125,7 @@ class BaseAgent[T_In: BaseModel, T_Out]:
             FileNotFoundError: If the YAML file does not exist.
         """
         config = cast(AgentConfig, repository.load(f"{name}.yaml"))
-        return cls(config, output_type)
+        return cls(config, output_type, file_reader)
 
     async def run(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
         """Run the agent asynchronously."""

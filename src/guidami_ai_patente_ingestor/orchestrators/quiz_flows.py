@@ -3,6 +3,7 @@
 import logging
 
 from commons.clients import EmbeddingClient, PostgresClient
+from commons.clients.file_system import LocalFileSystemClient
 from commons.configs import AgentConfig
 from commons.repositories import JsonRepository, YamlRepository
 from commons.services.embeddings import EmbeddingService
@@ -79,7 +80,7 @@ def build_quiz_indexing_flow(
         source,
         context_keys.ENRICHED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(".", EnrichedQuizModel),
+        JsonRepository.get_instance(EnrichedQuizModel, LocalFileSystemClient(config.project_root)),
     )
 
     map_to_embeddable_step = ApplyStep(
@@ -153,7 +154,7 @@ def build_quiz_cleaning_flow(
         source,
         context_keys.PARSED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(".", ParsedQuizModel),
+        JsonRepository.get_instance(ParsedQuizModel, LocalFileSystemClient(config.project_root)),
     )
     flatten_step = ApplyStep(
         "flatten_quiz",
@@ -167,7 +168,7 @@ def build_quiz_cleaning_flow(
         source,
         context_keys.CLEANED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(".", CleanedQuizModel),
+        JsonRepository.get_instance(CleanedQuizModel, LocalFileSystemClient(config.project_root)),
     )
 
     flow: Flow = (
@@ -220,18 +221,23 @@ def build_quiz_enrichment_flow(
         source,
         context_keys.CLEANED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(".", CleanedQuizModel),
+        JsonRepository.get_instance(CleanedQuizModel, LocalFileSystemClient(config.project_root)),
     )
 
-    agents_repository = YamlRepository(config.agents_dir, AgentConfig)
-    describer = RoadSignDescriberAgent.from_yaml("road_sign_describer", agents_repository)
+    agents_repository = YamlRepository(
+        AgentConfig, file_system_client=LocalFileSystemClient(config.agents_dir)
+    )
+    images_file_reader = LocalFileSystemClient(config.quiz_images_dir)
+    describer = RoadSignDescriberAgent.from_yaml(
+        "road_sign_describer", agents_repository, images_file_reader
+    )
     norm_describer = NormReferenceDescriberAgent.from_yaml(
         "norm_reference_describer", agents_repository
     )
     enrich_step = ApplyStep(
         "enrich",
         ForEach(QuizMapper.from_cleaned_to_enriched),
-        ImageDescriptionEnricher(config.quiz_images_dir, describer),
+        ImageDescriptionEnricher(describer, images_file_reader),
         NormReferenceEnricher(norm_describer),
         input_key=context_keys.CLEANED_QUIZ,
         output_key=context_keys.ENRICHED_QUIZ,
@@ -243,7 +249,7 @@ def build_quiz_enrichment_flow(
         source,
         context_keys.ENRICHED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(".", EnrichedQuizModel),
+        JsonRepository.get_instance(EnrichedQuizModel, LocalFileSystemClient(config.project_root)),
     )
 
     flow: Flow = (

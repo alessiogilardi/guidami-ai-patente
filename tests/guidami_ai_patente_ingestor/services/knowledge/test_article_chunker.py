@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import JsonRepository
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel, ParsedArticleModel
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
@@ -7,7 +8,9 @@ from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, Artic
 FIXTURES_DIR = Path(__file__).parents[2] / "fixtures"
 
 
-_article_repo = JsonRepository.get_instance(FIXTURES_DIR, ParsedArticleModel)
+_article_repo = JsonRepository.get_instance(
+    ParsedArticleModel, LocalFileSystemClient(FIXTURES_DIR)
+)
 
 
 def _load_cds() -> dict[str, EnrichedArticleModel]:

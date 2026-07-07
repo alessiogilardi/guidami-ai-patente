@@ -6,6 +6,8 @@ from typing import Any, Self, get_args
 
 from pydantic import BaseModel
 
+from commons.clients.file_system import LocalFileSystemClient
+
 
 class BaseFileRepository[T](ABC):
     """Base class for file-backed repositories.
@@ -14,20 +16,26 @@ class BaseFileRepository[T](ABC):
     Concrete subclasses implement the format-specific read/write logic.
     """
 
-    def __init__(self, base_path: str | Path, model_class: type[T] | None = None) -> None:
-        self._base_path = Path(base_path).resolve()
+    def __init__(
+        self,
+        model_class: type[T] | None = None,
+        *,
+        file_system_client: LocalFileSystemClient,
+    ) -> None:
+        self._file_system_client = file_system_client
         self._model_class = model_class or self._infer_model_class()
 
     @classmethod
-    def get_instance(cls, base_path: str | Path, model_class: type[T]) -> Self:
+    def get_instance(cls, model_class: type[T], file_system_client: LocalFileSystemClient) -> Self:
         """Create an instance mapped to a model class without requiring a subclass."""
-        return cls(base_path, model_class=model_class)
+        return cls(model_class, file_system_client=file_system_client)
 
     def load(self, file_name: str | Path) -> T | Sequence[T]:
         """Load and deserialize objects from a file.
 
         Args:
-            file_name: Path (relative to base_path) or absolute path to the file.
+            file_name: Path (relative to the file system client's base directory) or
+                absolute path to the file.
 
         Returns:
             A single deserialized object if the file contains a dict,
@@ -37,7 +45,7 @@ class BaseFileRepository[T](ABC):
             FileNotFoundError: If the file does not exist.
             ValueError: If the file content is neither a dict nor a list.
         """
-        raw_data = self._read_raw(self._resolve(file_name))
+        raw_data = self._read_raw(file_name)
 
         match raw_data:
             case list():
@@ -52,23 +60,21 @@ class BaseFileRepository[T](ABC):
 
         Args:
             data: Single object or sequence of objects to serialize.
-            file_name: Path (relative to base_path) or absolute path to the file.
+            file_name: Path (relative to the file system client's base directory) or
+                absolute path to the file.
         """
         if isinstance(data, Sequence) and not isinstance(data, (str, bytes, dict)):
             raw_data = [self._serialize_item(item) for item in data]
         else:
             raw_data = self._serialize_item(data)  # type: ignore
 
-        self._write_raw(raw_data, self._resolve(file_name))
+        self._write_raw(raw_data, file_name)
 
     @abstractmethod
-    def _read_raw(self, path: Path) -> dict | list: ...
+    def _read_raw(self, file_name: str | Path) -> dict | list: ...
 
     @abstractmethod
-    def _write_raw(self, data: dict | list, path: Path) -> None: ...
-
-    def _resolve(self, path: str | Path) -> Path:
-        return self._base_path / path
+    def _write_raw(self, data: dict | list, file_name: str | Path) -> None: ...
 
     def _infer_model_class(self) -> type[T]:
         """Infer the model type from the generic parameter declared on the subclass.
@@ -96,7 +102,7 @@ class BaseFileRepository[T](ABC):
         raise TypeError(
             f"Cannot infer model type for {self.__class__.__name__}. "
             "Either subclass with a type parameter (e.g. class Repo(JsonRepository[Model])) "
-            "or instantiate via JsonRepository.get_instance(base_path, Model)."
+            "or instantiate via JsonRepository.get_instance(Model, file_system_client)."
         )
 
     def _deserialize_item(self, raw_item: dict[str, Any]) -> T:

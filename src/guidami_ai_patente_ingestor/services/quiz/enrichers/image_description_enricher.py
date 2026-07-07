@@ -2,6 +2,7 @@ import logging
 from pathlib import Path
 from typing import cast
 
+from commons.clients import FileReaderInterface
 from commons.use_cases import UseCase
 from commons.utils import deduplicate
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
@@ -26,10 +27,12 @@ class ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQui
     collassati.
     """
 
-    def __init__(self, images_dir: Path, road_sign_describer: RoadSignDescriberAgent) -> None:
-        """Inject the quiz images directory and the road sign describer agent."""
+    def __init__(
+        self, road_sign_describer: RoadSignDescriberAgent, file_reader: FileReaderInterface
+    ) -> None:
+        """Inject the road sign describer agent and the images file reader."""
         self._road_sign_describer = road_sign_describer
-        self._images_dir = images_dir
+        self._file_reader = file_reader
 
     def execute(self, request: list[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
         """Enrich each quiz item with a road sign description where an image is present."""
@@ -59,13 +62,14 @@ class ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQui
 
     def _describe_image(self, q: EnrichedQuizModel) -> RoadSignDescriberResponse | None:
         image = cast(str, q.image)
-        path = self._images_dir / image
-        if not path.exists():
-            logger.warning("Image file not found, skipping description: %s", path)
+        try:
+            self._file_reader.exists_or_raise(image)
+        except (FileNotFoundError, PermissionError):
+            logger.warning("Image file not found, skipping description: %s", image)
             return None
         try:
             req = RoadSignDescriberMapper.from_enriched_quiz_to_request(q)
-            return self._road_sign_describer.run_sync(req, images=(path,))
+            return self._road_sign_describer.run_sync(req, images=(Path(image),))
         except Exception:
-            logger.warning("Failed to describe image, skipping: %s", path, exc_info=True)
+            logger.warning("Failed to describe image, skipping: %s", image, exc_info=True)
             return None

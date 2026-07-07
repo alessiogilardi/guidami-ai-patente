@@ -3,12 +3,14 @@
 These tests describe the new contract: callers construct a YamlRepository and
 pass it directly to from_yaml instead of passing agents_dir: Path.
 """
+
 from pathlib import Path
 
 import pytest
 import yaml
 
 from commons.agents import BaseAgent
+from commons.clients.file_system import LocalFileSystemClient
 from commons.configs import AgentConfig
 from commons.repositories import YamlRepository
 
@@ -27,7 +29,7 @@ def _write_yaml(agents_dir: Path, name: str, content: dict) -> None:
 def test_base_agent_from_yaml_accepts_repository(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
-    repository = YamlRepository(agents_dir, AgentConfig)
+    repository = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
 
     agent = BaseAgent.from_yaml("test_agent", output_type=str, repository=repository)
 
@@ -37,9 +39,7 @@ def test_base_agent_from_yaml_accepts_repository(tmp_path: Path) -> None:
 def test_base_agent_from_yaml_raises_file_not_found_via_repository(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     agents_dir.mkdir()
-    repository = YamlRepository(agents_dir, AgentConfig)
+    repository = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
 
     with pytest.raises(FileNotFoundError):
         BaseAgent.from_yaml("nonexistent", output_type=str, repository=repository)
-
-
