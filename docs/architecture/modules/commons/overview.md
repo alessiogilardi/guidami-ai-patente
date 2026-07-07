@@ -232,6 +232,20 @@ src/domain/
   `render(variables: dict, images=()) -> str | list[str | BinaryContent]`.
   The caller (`BaseAgent`) extracts template variables from the `T_In` request via
   `request.model_dump()` before invoking `render`.
+  - `__init__(template_str: str, file_reader: FileReaderInterface | None = None)`:
+    `file_reader` is an **optional** injected dependency (default `None`) — a
+    deliberate narrow deviation from "dependencies are always required": only
+    `RoadSignDescriberAgent` (of the three ingestor agents) ever passes
+    `images=`, so `ArticleContextualizerAgent`/`NormReferenceDescriberAgent`
+    are not forced to construct and thread through a `LocalFileSystemClient`
+    they never use.
+  - `render` reads image bytes via `self._file_reader.read_bytes(img)` (instead
+    of `img.read_bytes()` directly on the `Path`); `images` paths are therefore
+    relative, resolved against the file_reader's base directory, not
+    assumed-valid absolute paths. If `images` is non-empty and no
+    `file_reader` was configured, raises
+    `ValueError("images were provided but no file_reader was configured")` —
+    fail-fast at first use rather than silently reading nothing.
 - **`FileRepository[T]`** (`commons/repositories/file_repository/file_repository_protocol.py`,
   `Protocol`): abstract interface following the Dependency Inversion Principle.
   Two methods: `load(file_name) -> T | Sequence[T]` and
@@ -239,53 +253,82 @@ src/domain/
   the concrete format.
 - **`BaseFileRepository[T]`** (`commons/repositories/file_repository/_base_file_repository.py`,
   abstract): shared (de)serialisation logic for Pydantic models, dataclasses, and
-  plain dicts. Subclasses implement `_read_raw(path) -> dict | list` and
-  `_write_raw(data, path) -> None` for the format-specific I/O.
-  - `__init__(base_path, model_class=None)`: resolves and stores the base
-    directory; infers `model_class` from the generic parameter if not passed
-    explicitly (walks `__orig_bases__` looking for any parameterised
+  plain dicts. All disk I/O is delegated to an injected `LocalFileSystemClient` —
+  the repository owns no path-resolution logic of its own. Subclasses implement
+  `_read_raw(file_name: str | Path) -> dict | list` and
+  `_write_raw(data: dict | list, file_name: str | Path) -> None`, passing
+  `file_name` straight through to the client's `read_text` / `write_text`.
+  - `__init__(model_class: type[T] | None = None, *, file_system_client: LocalFileSystemClient)`:
+    `model_class` stays a plain, optional positional argument (preserves
+    type-inference-from-subclass); `file_system_client` is a required
+    keyword-only dependency, placed after a bare `*` — the standard escape
+    hatch in this codebase for satisfying the "dependency last" DI convention
+    (`.claude/rules/dependency-injection.md`) when the preceding plain arg must
+    keep a default. Infers `model_class` from the generic parameter if not
+    passed explicitly (walks `__orig_bases__` looking for any parameterised
     `BaseFileRepository` subclass and returns the first concrete type argument —
     skipping TypeVars).
-  - `get_instance(base_path, model_class)` — classmethod factory; creates a
-    typed instance without requiring a named subclass.
+  - `get_instance(model_class: type[T], file_system_client: LocalFileSystemClient) -> Self`
+    — classmethod factory; creates a typed instance without requiring a named
+    subclass.
   - `load(file_name)`: calls `_read_raw`, then dispatches to `_deserialize_item`
     for dicts or iterates for lists; raises `ValueError` if the content is neither.
-  - `write(data)`: serialises via `_serialize_item` and calls `_write_raw`.
-  - `_resolve(path)`: joins `base_path / path`; an absolute path argument
-    bypasses `base_path` (standard `pathlib` behaviour).
+  - `write(data, file_name)`: serialises via `_serialize_item` and calls `_write_raw`.
+  - No `_resolve`/`base_path` on the repository itself: resolving `file_name`
+    against a base directory, and rejecting paths that escape it, is entirely
+    `LocalFileSystemClient`'s responsibility (see below). This closes a prior gap
+    where an absolute `file_name` could bypass the repository's base path —
+    traversal is now always checked by the client, before the repository ever
+    sees the raw path.
   - Supports Pydantic v2 (`model_validate` / `model_dump`), dataclasses
     (`asdict`), and plain dicts. Unsupported types raise `TypeError`.
 - **`JsonRepository[T]`** (`commons/repositories/file_repository/json_repository.py`):
-  concrete JSON implementation of `BaseFileRepository[T]`. `_read_raw` raises
-  `FileNotFoundError` with the full path; `_write_raw` creates parent directories
-  and writes with `ensure_ascii=False, indent=2` to preserve Unicode.
+  concrete JSON implementation of `BaseFileRepository[T]`. `_read_raw` calls
+  `self._file_system_client.read_text(file_name)` and parses with `json.loads`;
+  `_write_raw` calls `self._file_system_client.write_text(file_name, ...)` with
+  `ensure_ascii=False, indent=2` to preserve Unicode (parent-directory creation
+  is handled by the client, not the repository).
 - **`YamlRepository[T]`** (`commons/repositories/file_repository/yaml_repository.py`):
-  concrete YAML implementation of `BaseFileRepository[T]` using `yaml.safe_load`
-  / `yaml.safe_dump`. Currently used by `BaseAgent.from_yaml` to load
-  `AgentConfig` files.
+  concrete YAML implementation of `BaseFileRepository[T]`: `_read_raw` calls
+  `self._file_system_client.read_text(file_name)` and parses with
+  `yaml.safe_load`; `_write_raw` calls `self._file_system_client.write_text(...)`
+  with `yaml.safe_dump(allow_unicode=True, sort_keys=False)`. Currently used by
+  `BaseAgent.from_yaml` to load `AgentConfig` files.
+- All production call sites (`knowledge_flows.py`, `quiz_flows.py`) construct
+  `LocalFileSystemClient(config.project_root)` (or `LocalFileSystemClient(config.agents_dir)`
+  for the agent YAML repository) explicitly and pass it via `file_system_client=`
+  — the repository never builds its own client.
 - **`BaseAgent[T_In: BaseModel, T_Out]`** (`commons/agents/base_agent.py`): uses Python 3.12
   native generics. **Composition** (not inheritance) over `pydantic_ai.Agent`,
   wrapped as `self._agent: Agent[None, T_Out]`. `T_In` is constrained to
   `BaseModel`: every agent receives and returns typed Pydantic DTOs, not raw
   dictionaries.
-  - `__init__(config: AgentConfig, output_type: type[T_Out])`: converts
-    `model_name` by replacing the first `/` with `:` (e.g. `openrouter/google/model`
-    → `openrouter:google/model`), builds `self._agent` with
-    `defer_model_check=True` — the API key (`OPENROUTER_API_KEY`) is verified
-    only at runtime, not at construction.
+  - `__init__(config: AgentConfig, output_type: type[T_Out], file_reader:
+    FileReaderInterface | None = None)`: converts `model_name` by replacing the
+    first `/` with `:` (e.g. `openrouter/google/model` → `openrouter:google/model`),
+    builds `self._agent` with `defer_model_check=True` — the API key
+    (`OPENROUTER_API_KEY`) is verified only at runtime, not at construction.
+    `file_reader` is forwarded as-is (same optional default) into
+    `PromptRenderer(config.user, file_reader)`.
   - Methods: `run(request: T_In, images)` (async), `run_sync(request: T_In,
     images)` (sync) and `__call__` (alias for `run_sync`). They extract template
     variables via `request.model_dump()` and pass them to `PromptRenderer.render`.
     Both delegate to `self._agent.run_sync` / `self._agent.run`; return `.output`
     typed as `T_Out`.
-  - Factory: `from_yaml(name, repository, output_type) -> BaseAgent[T_In, T_Out]`
-    — accepts a pre-constructed `YamlRepository[AgentConfig]` (built by the caller)
-    and loads `f"{name}.yaml"` (the `.yaml` extension is appended by `from_yaml`,
-    not by the repository). The repository is injected, not created internally —
-    aligns with the project DI convention (repositories are constructed at the
-    orchestrator level and passed in). Agent subclasses override `from_yaml` with a
-    fixed `output_type` and call
-    `super().from_yaml(name, repository, output_type=ResponseType)`.
+  - Factory: `from_yaml(name, output_type, repository, file_reader=None) ->
+    BaseAgent[T_In, T_Out]` — accepts a pre-constructed `YamlRepository[AgentConfig]`
+    (built by the caller) and loads `f"{name}.yaml"` (the `.yaml` extension is
+    appended by `from_yaml`, not by the repository). The repository is injected,
+    not created internally — aligns with the project DI convention (repositories
+    are constructed at the orchestrator level and passed in). `file_reader`
+    defaults to `None` and is forwarded unchanged to `cls(config, output_type,
+    file_reader)` — same optional-dependency rationale as `PromptRenderer`
+    above. Agent subclasses override `from_yaml` with a fixed `output_type` and
+    call `super().from_yaml(name, repository, output_type=ResponseType)`; the
+    one subclass that always needs images (`RoadSignDescriberAgent`, ingestor)
+    narrows its own override to make `file_reader` a required parameter instead
+    of forwarding the optional default — see
+    [ingestor/data_preparation.md](../ingestor/data_preparation.md).
   - Property `core_agent`: exposes `self._agent` to allow
     `with agent.core_agent.override(model=TestModel(...))` in tests.
   Auth via `OPENROUTER_API_KEY` in the environment — never in the YAML or in the code.
@@ -304,18 +347,23 @@ src/domain/
 - **4 ABC interfaces** (`commons/clients/file_system/interfaces/`): follow Interface
   Segregation — sync and async are separate; read and write are separate.
   - `FileReaderInterface`: `read_text`, `read_bytes`, `read_stream(chunk_size=8192) -> Iterator[bytes]`,
-    `exists` (validation — returns `None` on success, raises `FileNotFoundError` if missing);
+    `exists_or_raise` (validation — returns `None` on success, raises `FileNotFoundError` if missing);
   - `FileWriterInterface`: `write_text`, `write_bytes`, `write_stream(data: Iterable[bytes])`;
   - `AsyncFileReaderInterface`: async variants; `read_stream` is an async generator declared as
     plain `def` returning `AsyncIterator[bytes]` to avoid ABC/async-generator override mismatch;
   - `AsyncFileWriterInterface`: async variants; `write_stream` accepts `AsyncIterable[bytes]`.
 - **`LocalFileSystemClient`** (`commons/clients/file_system/local_file_system_client.py`):
   inherits `BaseFileSystemClient + FileReaderInterface + FileWriterInterface`. Read methods call
-  `_get_safe_read_path`; write methods call `_get_safe_write_path`; `exists` delegates to
+  `_get_safe_read_path`; write methods call `_get_safe_write_path`; `exists_or_raise` delegates to
   `_get_safe_read_path` and discards the return value. Module-level
   `logger = logging.getLogger(__name__)` with f-strings (G004 suppressed globally).
   Unexpected `OSError` is logged at ERROR then re-raised; `PermissionError`/`FileNotFoundError`
-  propagate as-is.
+  propagate as-is. This is the concrete dependency injected into
+  `BaseFileRepository`/`JsonRepository`/`YamlRepository` (see above): it is typed
+  as the concrete class there, not as `FileReaderInterface`/`FileWriterInterface`
+  or a combined protocol — `BaseFileRepository` is fully synchronous and
+  `LocalFileSystemClient` is the only synchronous implementation of both
+  interfaces, so a combined abstraction was judged premature.
 - **`AsyncLocalFileSystemClient`** (`commons/clients/file_system/async_local_file_system_client.py`):
   inherits `BaseFileSystemClient + AsyncFileReaderInterface + AsyncFileWriterInterface`. Uses
   `aiofiles` for all async I/O. `async exists` calls `_get_safe_read_path` synchronously (path

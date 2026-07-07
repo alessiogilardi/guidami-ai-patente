@@ -185,7 +185,7 @@ to the `*transforms` list of `ApplyStep("enrich")` in the factory. Zero
 changes to the step, the flowstep framework or other enrichers.
 
 - **`ImageDescriptionEnricher`** (only concrete enricher): `__init__(road_sign_describer:
-  RoadSignDescriberAgent, images_dir: Path)`. Implements `UseCase[list[EnrichedQuizModel],
+  RoadSignDescriberAgent, file_reader: FileReaderInterface)`. Implements `UseCase[list[EnrichedQuizModel],
   list[EnrichedQuizModel]]`; callable via `__call__` (no explicit `Protocol`
   inheritance). `execute(request: list[EnrichedQuizModel])
   -> list[EnrichedQuizModel]`:
@@ -193,10 +193,15 @@ changes to the step, the flowstep framework or other enrichers.
      `commons.utils`) applied to a pre-filter generator `(q for q in questions if
      q.image is not None)`; `cast(str, q.image)` inside the loop resolves pyright's
      `str | None` narrowing; one vision call per unique context;
-  2. for each unique image: if the file does not exist → `logger.warning` +
-     skip (no exception); if `describe()` raises → `logger.warning`
+  2. for each unique image: `self._file_reader.exists_or_raise(image)` — if it
+     raises `FileNotFoundError` or `PermissionError` (path-traversal, raised by
+     `BaseFileSystemClient._resolve_path` — see
+     [commons/overview.md](../commons/overview.md)) → `logger.warning` + skip,
+     both handled the same way; if `describe()` raises → `logger.warning`
      (with `exc_info=True`) + skip; otherwise formats
-     `f"{desc.name}. {desc.description}"`;
+     `f"{desc.name}. {desc.description}"`. The image name passed through is a
+     bare relative path (no `images_dir / image` join) — resolved by the
+     `file_reader`'s own base directory;
   3. returns new `EnrichedQuizModel` instances (via list comprehension with
      `RoadSignDescriberMapper.from_response_to_enriched_quiz`, no in-place
      mutation) with `image_description` populated for each sub-question whose
@@ -261,6 +266,14 @@ requires only inserting it into the `*transforms` list.
 
 **Decisions:**
 
+- **One `LocalFileSystemClient(config.quiz_images_dir)` shared by both image
+  consumers**: `build_quiz_enrichment_flow` constructs
+  `images_file_reader = LocalFileSystemClient(config.quiz_images_dir)` once and
+  passes it both to `RoadSignDescriberAgent.from_yaml("road_sign_describer",
+  agents_repository, images_file_reader)` and to
+  `ImageDescriptionEnricher(describer, images_file_reader)` — mirroring the
+  existing `LocalFileSystemClient(config.agents_dir)` reused for
+  `agents_repository` in the same file.
 - `source` derived from `prep.sources[0]` (`"quiz"`, single source): no
   explicit `source` parameter, unlike the knowledge flow (per-source on
   `cds`/`cap`).

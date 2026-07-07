@@ -24,9 +24,19 @@
     cleaning stage (`build_quiz_cleaning_flow`), mirroring the knowledge topology.
   - `quiz_indexing: PipelineLayerConfig` — `input_layer: "enriched"`.
   - `agents_dir: Path = Path("configs/agents")` — directory containing agent
-    YAML files.
+    YAML files; passed as the `base_directory` of the `LocalFileSystemClient`
+    injected into the agents' `YamlRepository`.
   - `quiz_images_dir: Path` — directory containing quiz bank images
     (used by `ImageDescriptionEnricher`).
+  - `project_root: Path = Path(".")` — anchors the `LocalFileSystemClient` passed
+    to the `JsonRepository` instances built in `knowledge_flows.py` /
+    `quiz_flows.py` (e.g. `LocalFileSystemClient(config.project_root)`),
+    replacing a previously hard-coded `"."` literal. Overridable via the
+    `PROJECT_ROOT` env var or `configs/ingestor_config.yaml` like any other
+    field. Deliberately independent of `agents_dir` and `quiz_images_dir`,
+    which keep their own separate paths — not an oversight, see the source plan
+    (`docs/plans/2026-07-06--integrate-file-system-client-into-repositories.md`)
+    Risks section.
   - `embedding_batch_size: int = 64`
   - `embedding: EmbeddingConfig = EmbeddingConfig()` (default from `commons`)
   - `postgres: PostgresConnectionConfig` (required)

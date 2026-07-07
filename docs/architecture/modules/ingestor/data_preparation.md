@@ -282,8 +282,13 @@ Subclass of `BaseAgent[RoadSignDescriberRequest, RoadSignDescriberResponse]`
   of `RoadSignDescriberMapper`.
 - YAML prompt (`configs/agents/road_sign_describer.yaml`): variables `$topic`,
   `$text` (match the request fields).
-- `from_yaml(name, repository, output_type=None) -> Self`: factory that fixes
-  `output_type=RoadSignDescriberResponse`.
+- `from_yaml(name, repository, file_reader) -> Self` (`# type: ignore[override]`):
+  factory that fixes `output_type=RoadSignDescriberResponse` and, unlike the
+  base class's optional `file_reader: FileReaderInterface | None = None`,
+  **narrows `file_reader` to a required parameter** — this is the only agent
+  that ever passes `images=` to `run`/`run_sync`, so its own factory makes the
+  dependency mandatory even though `BaseAgent.from_yaml` keeps it optional (see
+  [commons/overview.md](../commons/overview.md)).
 - `RoadSignDescriberResponse(BaseModel, frozen=True)` — `name: str`, `description: str`
   — lives in `agents/dto/road_sign_describer/`. `ImageDescription` (previous DTO
   with the same fields in `models/quiz/`) is now replaced by this response DTO;
@@ -379,6 +384,15 @@ Image not found on disk or agent error → `logger.warning` +
 The enricher implements `UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]]`
 (previously satisfied `EnricherProtocol` structurally; now explicitly extends
 `UseCase`, with `execute` instead of `enrich`).
+
+**File access wired through `FileReaderInterface`**: `ImageDescriptionEnricher.__init__`
+takes `file_reader: FileReaderInterface` instead of a raw `images_dir: Path` —
+the existence check calls `self._file_reader.exists_or_raise(image)` in a
+`try/except (FileNotFoundError, PermissionError)` block (both treated the same:
+skip + `logger.warning`), so a path-traversal attempt raised by the client is
+handled identically to a missing file rather than propagating as an unhandled
+crash. See [commons/overview.md](../commons/overview.md) for
+`FileReaderInterface`/`LocalFileSystemClient`.
 
 ### `NormReferenceEnricher` — text-only enricher for norm-reference metadata
 
