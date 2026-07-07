@@ -9,7 +9,9 @@ FIXTURES_DIR = Path(__file__).parents[2] / "fixtures"
 
 
 def _load_cds() -> dict[str, object]:
-    repo = JsonRepository.get_instance(ParsedArticleModel, LocalFileSystemClient(FIXTURES_DIR))
+    repo = JsonRepository.get_instance(
+        ParsedArticleModel, file_system_client=LocalFileSystemClient(FIXTURES_DIR)
+    )
     articles = repo.load("cds_sample.json")
     return {article.number: ArticleCleaner().execute(article) for article in articles}
 

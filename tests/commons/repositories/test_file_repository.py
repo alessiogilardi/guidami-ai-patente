@@ -146,13 +146,17 @@ class TestYamlRepositoryRoundTrip:
 
 class TestGetInstance:
     def test_get_instance_produces_working_repository(self, tmp_path: Path) -> None:
-        repo = JsonRepository.get_instance(SampleModel, LocalFileSystemClient(tmp_path))
+        repo = JsonRepository.get_instance(
+            SampleModel, file_system_client=LocalFileSystemClient(tmp_path)
+        )
         items = [_sample()]
         repo.write(items, "data.json")
         assert repo.load("data.json") == items
 
     def test_get_instance_yaml(self, tmp_path: Path) -> None:
-        repo = YamlRepository.get_instance(SampleModel, LocalFileSystemClient(tmp_path))
+        repo = YamlRepository.get_instance(
+            SampleModel, file_system_client=LocalFileSystemClient(tmp_path)
+        )
         items = [_sample()]
         repo.write(items, "data.yaml")
         assert repo.load("data.yaml") == items

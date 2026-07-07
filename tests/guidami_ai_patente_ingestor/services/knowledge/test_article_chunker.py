@@ -9,7 +9,7 @@ FIXTURES_DIR = Path(__file__).parents[2] / "fixtures"
 
 
 _article_repo = JsonRepository.get_instance(
-    ParsedArticleModel, LocalFileSystemClient(FIXTURES_DIR)
+    ParsedArticleModel, file_system_client=LocalFileSystemClient(FIXTURES_DIR)
 )
 
 

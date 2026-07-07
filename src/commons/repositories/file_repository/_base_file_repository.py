@@ -26,7 +26,9 @@ class BaseFileRepository[T](ABC):
         self._model_class = model_class or self._infer_model_class()
 
     @classmethod
-    def get_instance(cls, model_class: type[T], file_system_client: LocalFileSystemClient) -> Self:
+    def get_instance(
+        cls, model_class: type[T], *, file_system_client: LocalFileSystemClient
+    ) -> Self:
         """Create an instance mapped to a model class without requiring a subclass."""
         return cls(model_class, file_system_client=file_system_client)
 

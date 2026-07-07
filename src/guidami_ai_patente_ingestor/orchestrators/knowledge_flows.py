@@ -83,7 +83,7 @@ def build_knowledge_indexing_flow(
         input_layer=indexing_config.input_layer,
         source=source,
         repository=JsonRepository.get_instance(
-            EnrichedArticleModel, LocalFileSystemClient(config.project_root)
+            EnrichedArticleModel, file_system_client=LocalFileSystemClient(config.project_root)
         ),
         output_key=context_keys.ENRICHED_ARTICLES,
     )
@@ -159,7 +159,7 @@ def build_knowledge_cleaning_flow(
         raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
 
     articles_repository = JsonRepository.get_instance(
-        ParsedArticleModel, LocalFileSystemClient(config.project_root)
+        ParsedArticleModel, file_system_client=LocalFileSystemClient(config.project_root)
     )
 
     load_step = LoadJsonStep(
@@ -239,7 +239,7 @@ def build_knowledge_enrichment_flow(
         input_layer=_CLEANED_LAYER,
         source=source,
         repository=JsonRepository.get_instance(
-            ParsedArticleModel, LocalFileSystemClient(config.project_root)
+            ParsedArticleModel, file_system_client=LocalFileSystemClient(config.project_root)
         ),
         output_key=context_keys.CLEANED_ARTICLES,
     )
@@ -262,7 +262,7 @@ def build_knowledge_enrichment_flow(
         output_layer=preparation_config.output_layer,
         source=source,
         repository=JsonRepository.get_instance(
-            EnrichedArticleModel, LocalFileSystemClient(config.project_root)
+            EnrichedArticleModel, file_system_client=LocalFileSystemClient(config.project_root)
         ),
         input_key=context_keys.ENRICHED_ARTICLES,
     )
