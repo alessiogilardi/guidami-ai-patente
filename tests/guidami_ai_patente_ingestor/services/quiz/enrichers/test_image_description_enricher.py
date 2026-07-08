@@ -31,7 +31,9 @@ def _question(
 
 def _make_describer(name: str = "Stop", description: str = "Segnale rosso.") -> MagicMock:
     describer = MagicMock(spec=RoadSignDescriberAgent)
-    describer.run_sync.return_value = RoadSignDescriberResponse(name=name, description=description)
+    describer.run_sync.return_value = RoadSignDescriberResponse(
+        visual_analysis="Analisi visiva di test.", name=name, description=description
+    )
     return describer
 
 

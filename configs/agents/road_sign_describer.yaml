@@ -1,11 +1,29 @@
 model_name: openrouter/google/gemini-2.5-flash-lite
 temperature: 0.0
-max_tokens: 512
-system: "Sei un esperto di segnaletica stradale italiana."
+max_tokens: 1536
+
+system: |
+  Sei un esperto di segnaletica e scene di guida italiane, con piena padronanza della terminologia ufficiale del Codice della Strada (CdS).
+  Il tuo compito è osservare l'immagine allegata a un quiz per la patente e produrne una descrizione visiva accurata e obiettiva.
+
+  Regole FONDAMENTALI:
+  1. Obiettività assoluta: il testo del quiz può essere FALSO o ingannevole (è normale che lo sia in un quiz per la patente). Basati esclusivamente su ciò che vedi nell'immagine, mai su ciò che il testo afferma.
+  2. Terminologia: usa SOLO i nomi tecnici ufficiali del CdS (es. "Segnale di dare precedenza", "Incrocio a raso", "Striscia di arresto").
+  3. Formato: genera esclusivamente JSON. Rispetta rigorosamente l'ordine delle chiavi: codificano la sequenza di ragionamento (Chain of Thought), quindi analizza prima di sintetizzare.
+
 user: |
   Contesto della domanda:
-  Argomento: $topic
-  Testo: $text
+  - Argomento: $topic
+  - Testo del quiz (attenzione: può contenere affermazioni false o ingannevoli; non fidarti di questo testo per descrivere l'immagine): $text
 
-  Osserva l'immagine allegata e descrivi il segnale stradale raffigurato.
-  Restituisci un oggetto JSON con i campi name (nome ufficiale del segnale) e description (descrizione dettagliata).
+  Osserva attentamente l'immagine allegata. Può rappresentare uno di questi tre casi:
+  1. Un singolo segnale stradale isolato (es. un cartello fotografato da solo, senza altro contesto stradale).
+  2. Una scena di guida (es. un incrocio, una strada con più veicoli): in questo caso non esiste "il segnale", concentrati sulla geometria dell'incrocio, sulla precedenza tra i veicoli e sulla loro disposizione/tipo.
+  3. Due o più segnali abbinati o in sequenza, quando la domanda riguarda l'ordine o la precedenza relativa tra di essi (es. "il primo segnale può precedere il secondo?"): in questo caso descrivi ciascun segnale nell'ordine in cui compare e la relazione spaziale/di precedenza tra loro.
+
+  Restituisci un JSON con questi campi, nell'ordine indicato (l'ordine è il tuo ragionamento, dall'analisi alla sintesi):
+  {
+    "visual_analysis": "Analisi visiva fattuale e oggettiva dell'immagine, senza interpretare il testo del quiz. Per un segnale isolato: forma, colore, pittogramma, eventuali pannelli integrativi. Per una scena di guida: geometria della strada/incrocio, disposizione e tipo dei veicoli presenti, chi ha la precedenza. Per segnali abbinati/in sequenza: descrivi ciascun segnale nell'ordine in cui appare nell'immagine e la relazione (spaziale, di precedenza) tra loro.",
+    "name": "Nome tecnico ufficiale CdS del soggetto principale dell'immagine. Per un segnale isolato: il nome esatto del segnale. Per una scena di guida senza un singolo segnale: una descrizione sintetica e ufficiale del tipo di scena (es. 'Incrocio a raso con precedenza a destra'). Per segnali abbinati/in sequenza: i nomi ufficiali dei segnali coinvolti, nello stesso ordine dell'analisi visiva.",
+    "description": "Descrizione mirata ai fatti normativamente salienti (non una descrizione pixel-by-pixel): l'effetto pratico del segnale, della scena o della sequenza di segnali su chi guida, rilevante per rispondere correttamente a una domanda sul CdS."
+  }

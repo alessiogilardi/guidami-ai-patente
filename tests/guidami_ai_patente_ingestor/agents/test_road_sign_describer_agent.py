@@ -46,11 +46,20 @@ def test_run_sync_returns_road_sign_describer_response(
         "road_sign_describer", agents_dir, LocalFileSystemClient(tmp_path)
     )
     with agent.core_agent.override(
-        model=TestModel(custom_output_args={"name": "Stop", "description": "Segnale rosso."})
+        model=TestModel(
+            custom_output_args={
+                "visual_analysis": "Segnale triangolare rosso con bordo bianco, forma ottagonale.",
+                "name": "Stop",
+                "description": "Segnale rosso.",
+            }
+        )
     ):
         result = agent.run_sync(request, images=(Path("stop.jpg"),))
 
     assert isinstance(result, RoadSignDescriberResponse)
+    assert (
+        result.visual_analysis == "Segnale triangolare rosso con bordo bianco, forma ottagonale."
+    )
     assert result.name == "Stop"
     assert result.description == "Segnale rosso."
 
@@ -71,7 +80,9 @@ def test_run_sync_sends_binary_content(agents_dir: YamlRepository, tmp_path: Pat
                 ToolCallPart(
                     tool_name=info.output_tools[0].name,
                     tool_call_id="call_1",
-                    args=json.dumps({"name": "Stop", "description": "desc"}),
+                    args=json.dumps(
+                        {"visual_analysis": "analisi", "name": "Stop", "description": "desc"}
+                    ),
                 )
             ]
         )
@@ -112,7 +123,9 @@ def test_run_sync_passes_topic_in_prompt(agents_dir: YamlRepository, tmp_path: P
                 ToolCallPart(
                     tool_name=info.output_tools[0].name,
                     tool_call_id="call_1",
-                    args=json.dumps({"name": "Precedenza", "description": "desc"}),
+                    args=json.dumps(
+                        {"visual_analysis": "analisi", "name": "Precedenza", "description": "desc"}
+                    ),
                 )
             ]
         )
