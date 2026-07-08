@@ -56,7 +56,8 @@ src/guidami_ai_patente_ingestor/
 │       ├── road_sign_describer/
 │       │   ├── __init__.py
 │       │   ├── request.py           # RoadSignDescriberRequest(BaseModel) — topic, text
-│       │   └── response.py          # RoadSignDescriberResponse(BaseModel) — name, description
+│       │   └── response.py          # RoadSignDescriberResponse(BaseModel) — visual_analysis, name, description
+│       │                            #   (CoT field order — see modules/ingestor/data_preparation.md)
 │       └── norm_reference_describer/
 │           ├── __init__.py
 │           ├── request.py           # NormReferenceDescriberRequest(BaseModel) — topic, text, correct_answer, image_description

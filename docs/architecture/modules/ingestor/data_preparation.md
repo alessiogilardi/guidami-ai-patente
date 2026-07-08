@@ -290,11 +290,18 @@ Subclass of `BaseAgent[RoadSignDescriberRequest, RoadSignDescriberResponse]`
   that ever passes `images=` to `run`/`run_sync`, so its own factory makes the
   dependency mandatory even though `BaseAgent.from_yaml` keeps it optional (see
   [commons/overview.md](../commons/overview.md)).
-- `RoadSignDescriberResponse(BaseModel, frozen=True)` — `name: str`, `description: str`
-  — lives in `agents/dto/road_sign_describer/`. `ImageDescription` (previous DTO
-  with the same fields in `models/quiz/`) is now replaced by this response DTO;
-  the two models share the same structure but are conceptually distinct
-  (agent response vs. domain model).
+- `RoadSignDescriberResponse(BaseModel)` — fields, in this exact order:
+  `visual_analysis: str`, `name: str`, `description: str` — lives in
+  `agents/dto/road_sign_describer/`. Field order is not incidental: it encodes
+  a Chain-of-Thought sequence enforced by pydantic-ai's `output_type`, so the
+  model reasons in writing (`visual_analysis`) before synthesizing `name` and
+  `description`. `visual_analysis` is internal reasoning only — it is never
+  persisted and never enters `image_description`; `RoadSignDescriberMapper`
+  (below) reads only `name`/`description`, discarding it by design.
+- `ImageDescription` (previous DTO with `name`/`description` in `models/quiz/`)
+  is replaced by this response DTO for those two fields; the two models share
+  that partial structure but are conceptually distinct (agent response vs.
+  domain model).
 
 ### `agents/norm_reference_describer_agent.py` — `NormReferenceDescriberAgent`
 
