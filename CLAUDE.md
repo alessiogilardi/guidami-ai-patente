@@ -67,32 +67,9 @@ Copy `.env.example` to `.env` and fill in:
 Before starting any implementation task, read the reference documents:
 
 - **Design plans** (including not-yet-implemented ones): `docs/plans/` — index at `docs/plans/_index.md`
-- **Implemented decisions**: `docs/architecture/` — index at `docs/architecture/_index.md`
-- **Package layout, pipelines, data layer, config patterns**: `docs/architecture/modules/ingestor/_index.md`
-- **DB schema and infrastructure**: `docs/architecture/database/_index.md`
+- **Implemented architecture, patterns, database, layout, testing, glossary**: the Second Brain under `docs/` — start at `docs/README.md`, which routes to `architecture.md`, `database.md`, `patterns.md`, `glossary.md`, `layout.md`, `testing.md`, and `adr/`.
 
-For any architecture question, start from `docs/architecture/_index.md`: it links all specific documents. Each subfolder has its own `_index.md` — read it before the detail files.
-
-### Reading architecture documentation — `doc-reader`
-
-**MUST** invoke the `doc-reader` agent (never Read `docs/architecture/` files directly) in every one of these situations:
-
-- Before writing or reviewing any implementation plan
-- Before starting any non-trivial implementation task (orientation phase)
-- When answering any question about the project architecture, existing modules, or design decisions
-- Before making any edit to `docs/architecture/` for any reason
-
-`doc-reader` navigates `docs/architecture/` and returns structured content with source references.
-
-### Updating architectural documentation — `doc-architect`
-
-**MUST** invoke the `doc-architect` agent after every one of these events:
-
-- Completing any implementation task (new feature, refactor, bugfix) that changes code in `src/`
-- Making any architectural decision during a conversation (new pattern, naming convention, structural choice)
-- Adding or removing a module, package, or significant component
-
-Do not edit `docs/architecture/` directly — `doc-architect` reads existing content via `doc-reader` before writing, to prevent duplication. Pass it a concise summary of what changed and which decisions were made.
+Reading and updating these files is governed by the `update-second-brain` skill (see the "Skill: Second Brain" block below) — read the relevant `docs/*.md` file directly rather than invoking an agent, and run the skill after any change described in its triggers. The former `doc-reader`/`doc-architect` agents are decommissioned; the Second Brain plugin's skills replace them.
 
 ### Writing a plan
 
@@ -117,4 +94,27 @@ Do not wait until the end of the task: update `.claude/rules/` **before** closin
 
 ## Data Notes
 
-See `docs/architecture/data-sources.md`.
+Domain terms for the scraped/parsed sources (CdS, CAP, corpus normativo) are in `docs/glossary.md`; the pipeline stages that produce/consume them are in `docs/architecture.md`.
+
+
+<!-- BEGIN SECOND BRAIN SYSTEM (managed by the second-brain plugin: do not edit this block by hand, edit bootstrap/payload/claude-md-block.md and re-run the bootstrap with --refresh-system) -->
+## Skill: Second Brain
+**Source of Truth:** `docs/` (architecture, ADRs, state).
+**Full Policy:** the `second-brain:update` skill.
+
+@docs/README.md
+
+### Triggers (IMMEDIATE ACTION REQUIRED)
+Run `skill: "second-brain:update"` after:
+* Schema changes or structural refactors.
+* New architectural decisions or recurring patterns.
+* Testing-strategy changes.
+* `[SECOND BRAIN SYSTEM] COMMIT REJECTED` pre-commit error.
+
+**Exception:** IF `docs/*.md` contains `> Placeholder —`, run `second-brain:onboard` instead.
+
+### Strict Commit Rule
+Commits touching code **MUST** stage an update to `docs/` **or this file**.
+If rejected: 1. Run skill -> 2. Stage docs -> 3. Retry. Never use dummy updates.
+<!-- END SECOND BRAIN SYSTEM -->
+
