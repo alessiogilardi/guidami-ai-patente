@@ -8,7 +8,7 @@ Checks:
 - Frontmatter: only ``status`` and ``effort``; valid enum values
 - Required sections present and non-empty
 - DoD is the last section
-- DoD contains the fixed block of 5 standard checklist items
+- DoD contains the fixed block of 4 standard checklist items
 - DoD does not use code fences (items must be plain checklist lines)
 
 Exits 0 on success, 1 on failure (with error messages to stderr).
@@ -46,7 +46,6 @@ FIXED_BLOCK_ITEMS = [
     r"`uv run pytest` green.*",
     r"`uv run pyright` clean.*",
     r"`uv run ruff check src tests` clean.*",
-    r"Agent `doc-architect` invoked.*",
     r"Plan updated to `status: Implemented`.*",
 ]
 

@@ -7,7 +7,7 @@ effort: S | M | L | XL
 ---
 # Title
 
-References: links to related plans and architecture documents.
+References: links to related plans and other relevant documents.
 
 ## Context and motivation
 Why this plan is needed. What the current problem is.
@@ -47,6 +47,5 @@ Fixed block (same for every plan):
 - [ ] `uv run pytest` green (including new tests)
 - [ ] `uv run pyright` clean
 - [ ] `uv run ruff check src tests` clean
-- [ ] Agent `doc-architect` invoked (if available)
 - [ ] Plan updated to `status: Implemented`
 ```
