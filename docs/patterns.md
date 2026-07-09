@@ -11,6 +11,7 @@ it does not restate those rules.
 |---|---|---|
 | `UseCase[T_In, T_Out]` / `AsyncUseCase` protocol | `src/commons/use_cases/use_case.py` — `__call__` is `@final`, delegates to abstract `execute()` | Uniform callable contract for domain logic; every business-logic unit is typed, testable, composable |
 | `ForEach[T, U]` | `src/commons/use_cases/for_each.py` — a `UseCase[list[T], list[U]]` wrapping a per-item callable | Turns any `UseCase`/callable into a list-mapper without per-step loop boilerplate |
+| `FlatMap[T, U]` | `src/commons/use_cases/flat_map.py` — a `UseCase[list[T], list[U]]` wrapping a per-item `Callable[[T], Iterable[U]]`, concatenating results | One-to-many transforms (one input produces N outputs); e.g. `ApplyStep("chunk_articles", FlatMap(ArticleChunker(source)), ...)` in `orchestrators/knowledge_flows.py`. `services/quiz/flatten_quiz.py`'s `FlattenQuiz` is a latent second consumer (flagged with a `TODO(FlatMap)`), not yet collapsed |
 | `ApplyStep(ForEach(...))` composition | `orchestrators/knowledge_flows.py` — e.g. `ApplyStep("map_to_chunk_entity", ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk), ...)`; also combined with `ContextEnricher(agent)` in one `ApplyStep` | Standard glue between the domain-agnostic `flowstep` framework and per-item domain transforms/mappers |
 | `embedded_text` computed property | `models/knowledge/embeddable_chunk.py`, `models/quiz/embeddable_quiz.py` (delegates to `quiz_metadata.embedded_text`) | Single source of truth for "what text gets embedded", decoupled from the persisted entity's fields |
 | `embed_repealed` config flag | `configs/ingestor_config.py` (default `False`), consumed by `orchestrators/steps/knowledge/embed_chunks_step.py` | Lets repealed norms be indexed or excluded without a schema/pipeline change |
@@ -44,4 +45,4 @@ Stale references to them survive only as outdated comments in
   what they *are* (e.g. `self._agent`), never `self._use_case` — see
   `feedback_usecase_naming` memory.
 
-*Last updated: 2026-07-09 — verified against commit `8ca395d`.*
+*Last updated: 2026-07-09 — verified against commit `6db33e8`.*
