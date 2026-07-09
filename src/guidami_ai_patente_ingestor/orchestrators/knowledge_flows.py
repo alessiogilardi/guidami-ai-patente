@@ -8,7 +8,7 @@ from commons.clients.file_system import LocalFileSystemClient
 from commons.configs import AgentConfig
 from commons.repositories import JsonRepository, YamlRepository
 from commons.services.embeddings import EmbeddingService
-from commons.use_cases import ForEach
+from commons.use_cases import FlatMap, ForEach
 from flowstep import Flow, FlowBuilder
 from flowstep.steps import ApplyStep
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
@@ -17,7 +17,6 @@ from guidami_ai_patente_ingestor.mappers import ArticleMapper
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel, ParsedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
-    ChunkArticlesStep,
     EmbedChunksStep,
     StoreChunksStep,
 )
@@ -50,8 +49,8 @@ def build_knowledge_indexing_flow(
     run su source diverse non si sovrascrivono.
 
     Mappatura step:
-      `LoadJsonStep` → `ChunkArticlesStep` → `EmbedChunksStep`
-      → `ApplyStep` → `StoreChunksStep`
+      `LoadJsonStep` → `ApplyStep` (chunk_articles, `FlatMap(ArticleChunker)`)
+      → `EmbedChunksStep` → `ApplyStep` (map_to_chunk_entity) → `StoreChunksStep`
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -61,7 +60,7 @@ def build_knowledge_indexing_flow(
         source: Source da indicizzare; deve appartenere a `config.knowledge_indexing.sources`.
         validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
             Solleva `FlowValidationError` su ERROR; il WARNING benigno su `EMBEDDABLE_CHUNKS`
-            (EmbedChunksStep ri-dichiara una chiave già prodotta da ChunkArticlesStep)
+            (EmbedChunksStep ri-dichiara una chiave già prodotta dallo step chunk_articles)
             non blocca la build.
 
     Returns:
@@ -88,10 +87,11 @@ def build_knowledge_indexing_flow(
         output_key=context_keys.ENRICHED_ARTICLES,
     )
 
-    chunk_step = ChunkArticlesStep(
+    chunk_step = ApplyStep(
         "chunk_articles",
-        article_chunker=ArticleChunker(typed_source),
-        source=typed_source,
+        FlatMap(ArticleChunker(typed_source)),
+        input_key=context_keys.ENRICHED_ARTICLES,
+        output_key=context_keys.EMBEDDABLE_CHUNKS,
     )
 
     embed_step = EmbedChunksStep(

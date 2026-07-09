@@ -35,7 +35,7 @@ data-acquisition scripts, each registered as a `[project.scripts]` entry.
 | `commons/clients/embeddings/` | `EmbeddingClient` ABC (`embed_query`, `embed_passages`); `LiteLLMEmbeddingClient` (production) and `SentenceTransformerEmbeddingClient` (offline alternative, not hot-swappable — different dimension) | litellm (→ OpenRouter), sentence-transformers |
 | `commons/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` from YAML, renders prompts via `PromptRenderer` | pydantic-ai-slim[openrouter] |
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
-| `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach` — generic composition primitives used across pipeline steps | — |
+| `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach`, `FlatMap` — generic composition primitives used across pipeline steps | — |
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
 | `flowstep/` | Generic sequential-pipeline engine (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) | — |
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
@@ -65,7 +65,7 @@ stage if its output file already exists, unless `--force`).
 **Knowledge corpus** (per source, `cds`/`cap` — `orchestrators/knowledge_flows.py`):
 1. *Cleaning*: `LoadJsonStep` → `ApplyStep(ForEach(ArticleCleaner))` → `WriteJsonStep` (parsed → cleaned).
 2. *Enrichment*: `LoadJsonStep` → `ApplyStep(ForEach(ArticleMapper.from_parsed_to_enriched), ContextEnricher(ArticleContextualizerAgent))` → `WriteJsonStep` (cleaned → enriched).
-3. *Indexing*: `LoadJsonStep` → `ChunkArticlesStep` → `EmbedChunksStep` → `ApplyStep(ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk))` → `StoreChunksStep` (deletes only that source's rows, then inserts — scoped full-reload).
+3. *Indexing*: `LoadJsonStep` → `ApplyStep(FlatMap(ArticleChunker))` → `EmbedChunksStep` → `ApplyStep(ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk))` → `StoreChunksStep` (deletes only that source's rows, then inserts — scoped full-reload).
 
 **Quiz bank** (`orchestrators/quiz_flows.py`):
 1. *Cleaning*: `LoadJsonStep` → `ApplyStep(FlattenQuiz(), DeduplicateQuizItems())` → `WriteJsonStep` (parsed → cleaned; dedup on normalized-text + correct_answer + image identity).
@@ -80,4 +80,4 @@ See `adr/` for the full history. Currently accepted:
   never receives `correct_answer` in its request DTO, by design, to avoid
   the description leaking the answer. Still true in code today.
 
-*Last updated: 2026-07-09 — verified against commit `8ca395d`.*
+*Last updated: 2026-07-09 — verified against commit `6db33e8`.*
