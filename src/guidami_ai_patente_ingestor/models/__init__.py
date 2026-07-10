@@ -1,1 +1,1 @@
-"""Modelli intermedi dell'ingestor (non persistiti in DB)."""
+"""Intermediate models of the ingestor (not persisted in DB)."""

@@ -1,1 +1,1 @@
-"""Modelli di dati condivisi tra ingestor e applicativo."""
+"""Data models shared between ingestor and application."""

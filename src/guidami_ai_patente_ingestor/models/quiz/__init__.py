@@ -1,4 +1,4 @@
-"""Modelli intermedi per il quiz bank (non persistiti in DB)."""
+"""Intermediate models for the quiz bank (not persisted in DB)."""
 
 from .cleaned_quiz import CleanedQuizModel
 from .embeddable_quiz import EmbeddableQuizModel

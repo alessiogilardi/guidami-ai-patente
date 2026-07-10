@@ -1,1 +1,1 @@
-"""Entità di dominio condivise tra ingestor e applicativo."""
+"""Domain entities shared between ingestor and application."""

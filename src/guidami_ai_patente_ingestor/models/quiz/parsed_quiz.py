@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class ParsedQuizItemModel(BaseModel):
-    """Sotto-domanda estratta dal PDF del banco delle domande, come da JSON sorgente."""
+    """Sub-question extracted from the question bank PDF, as found in the source JSON."""
 
     number: str
     text: str
@@ -11,7 +11,7 @@ class ParsedQuizItemModel(BaseModel):
 
 
 class ParsedQuizModel(BaseModel):
-    """Domanda principale estratta dal PDF, con le sotto-domande associate."""
+    """Main question extracted from the PDF, with its associated sub-questions."""
 
     question_id: int
     topic: str

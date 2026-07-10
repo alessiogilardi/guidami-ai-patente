@@ -4,7 +4,7 @@ from .quiz_metadata import QuizMetadata
 
 
 class QuizQuestion(BaseModel):
-    """Riga della tabella `quiz_questions` (vedi db/init.sql)."""
+    """Row of the `quiz_questions` table (see db/init.sql)."""
 
     number: str
     question_id: int

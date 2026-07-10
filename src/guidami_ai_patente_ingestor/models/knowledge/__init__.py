@@ -1,4 +1,4 @@
-"""Modelli intermedi per il corpus normativo."""
+"""Intermediate models for the corpus normativo."""
 
 from .embeddable_chunk import EmbeddableChunkModel
 from .enriched_article import EnrichedArticleModel

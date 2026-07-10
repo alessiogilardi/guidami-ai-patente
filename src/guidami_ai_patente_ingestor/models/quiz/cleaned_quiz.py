@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class CleanedQuizModel(BaseModel):
-    """Sotto-domanda del quiz bank, appiattita e deduplicata, auto-contenuta."""
+    """Quiz bank sub-question, flattened and deduplicated, self-contained."""
 
     question_id: int
     topic: str

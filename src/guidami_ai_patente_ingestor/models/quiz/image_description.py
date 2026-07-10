@@ -2,7 +2,7 @@ from pydantic import BaseModel, ConfigDict
 
 
 class ImageDescription(BaseModel):
-    """Descrizione di un segnale stradale prodotta dal vision LLM."""
+    """Description of a road sign produced by the vision LLM."""
 
     model_config = ConfigDict(frozen=True)
 

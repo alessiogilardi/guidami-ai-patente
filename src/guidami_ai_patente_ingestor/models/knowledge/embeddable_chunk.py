@@ -4,10 +4,10 @@ from pydantic import BaseModel
 
 
 class EmbeddableChunkModel(BaseModel):
-    """Modello intermedio per il calcolo dell'embedding di un chunk del corpus.
+    """Intermediate model for computing the embedding of a corpus chunk.
 
-    Specchio di `KnowledgeChunk` (stessi campi): separato per disaccoppiare
-    `embedded_text` (riservato alla pipeline) dall'entità di scrittura DB.
+    Mirrors `KnowledgeChunk` (same fields): kept separate to decouple
+    `embedded_text` (reserved for the pipeline) from the DB write entity.
     """
 
     source: Literal["cds", "cap"]
@@ -22,10 +22,10 @@ class EmbeddableChunkModel(BaseModel):
 
     @property
     def embedded_text(self) -> str:
-        """Testo usato per il calcolo dell'embedding.
+        """Text used for computing the embedding.
 
-        Concatena titolo, contesto (se presente) e testo del chunk, una parte
-        per riga, scartando le parti vuote.
+        Concatenates title, context (if present), and chunk text, one part
+        per line, discarding empty parts.
         """
         parts = [self.article_title, self.context, self.chunk_text]
         return "\n".join(part for part in parts if part)

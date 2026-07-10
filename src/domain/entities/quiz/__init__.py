@@ -1,4 +1,4 @@
-"""Entità relative al quiz bank nella tabella `quiz_questions`."""
+"""Entities related to the quiz bank in the `quiz_questions` table."""
 
 from .quiz_metadata import QuizMetadata
 from .quiz_question import QuizQuestion

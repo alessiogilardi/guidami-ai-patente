@@ -4,10 +4,10 @@ from domain.entities.quiz import QuizMetadata
 
 
 class EmbeddableQuizModel(BaseModel):
-    """Modello intermedio per il calcolo dell'embedding di una sotto-domanda.
+    """Intermediate model for computing the embedding of a sub-question.
 
-    Contiene `image_description` (non persistita in DB) e `embedded_text`, che
-    delega a `quiz_metadata.embedded_text`.
+    Contains `image_description` (not persisted in DB) and `embedded_text`,
+    which delegates to `quiz_metadata.embedded_text`.
     """
 
     number: str
@@ -22,9 +22,9 @@ class EmbeddableQuizModel(BaseModel):
 
     @property
     def embedded_text(self) -> str:
-        """Testo usato per il calcolo dell'embedding, delegato a `quiz_metadata`.
+        """Text used for computing the embedding, delegated to `quiz_metadata`.
 
-        Richiede `quiz_metadata is not None`: `EmbedQuizMetadata` filtra gli item
-        senza metadata prima di leggere questa property.
+        Requires `quiz_metadata is not None`: `EmbedQuizMetadata` filters out
+        items without metadata before reading this property.
         """
         return self.quiz_metadata.embedded_text  # type: ignore[union-attr]

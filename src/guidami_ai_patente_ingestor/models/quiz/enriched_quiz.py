@@ -4,7 +4,7 @@ from domain.entities.quiz import QuizMetadata
 
 
 class EnrichedQuizModel(BaseModel):
-    """Sotto-domanda del quiz bank enriched, appiattita, con `image_description` inline."""
+    """Enriched quiz bank sub-question, flattened, with inline `image_description`."""
 
     question_id: int
     topic: str

@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 class KnowledgeChunk(BaseModel):
-    """Riga della tabella `knowledge_chunks` (vedi db/init.sql)."""
+    """Row of the `knowledge_chunks` table (see db/init.sql)."""
 
     source: Literal["cds", "cap"]
     article_number: str
