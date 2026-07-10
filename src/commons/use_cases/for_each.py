@@ -1,10 +1,10 @@
-from collections.abc import Callable
+from collections.abc import Callable, Iterable
 
 from commons.use_cases.use_case import UseCase
 
 
-class ForEach[T, U](UseCase[list[T], list[U]]):
-    """Applica un callable a ogni elemento di una lista.
+class ForEach[T, U](UseCase[Iterable[T], list[U]]):
+    """Applica un callable a ogni elemento di un iterabile.
 
     Args:
         fn: Callable applicato a ogni elemento; accetta istanze `UseCase`
@@ -19,11 +19,11 @@ class ForEach[T, U](UseCase[list[T], list[U]]):
         """
         self._fn = fn
 
-    def execute(self, request: list[T]) -> list[U]:
+    def execute(self, request: Iterable[T]) -> list[U]:
         """Applica `fn` a ogni elemento di `request`.
 
         Args:
-            request: Lista di input.
+            request: Iterabile di input.
 
         Returns:
             Lista trasformata nello stesso ordine.

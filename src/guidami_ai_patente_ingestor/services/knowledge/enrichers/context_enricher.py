@@ -1,4 +1,5 @@
 import logging
+from collections.abc import Iterable
 
 from commons.use_cases import UseCase
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
@@ -8,7 +9,7 @@ from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 logger = logging.getLogger(__name__)
 
 
-class ContextEnricher(UseCase[list[EnrichedArticleModel], list[EnrichedArticleModel]]):
+class ContextEnricher(UseCase[Iterable[EnrichedArticleModel], list[EnrichedArticleModel]]):
     """Arricchisce gli articoli con i contesti per comma generati via LLM.
 
     La guard `repealed` e il mapping dominio↔DTO vivono qui, non nell'agente.
@@ -24,7 +25,7 @@ class ContextEnricher(UseCase[list[EnrichedArticleModel], list[EnrichedArticleMo
         """
         self._agent = article_contextualizer_agent
 
-    def execute(self, request: list[EnrichedArticleModel]) -> list[EnrichedArticleModel]:
+    def execute(self, request: Iterable[EnrichedArticleModel]) -> list[EnrichedArticleModel]:
         """Valorizza `contexts` su ogni articolo.
 
         Args:

@@ -1,4 +1,5 @@
 import logging
+from collections.abc import Iterable
 from typing import Protocol
 
 from commons.use_cases import UseCase
@@ -20,8 +21,8 @@ class _QuizItemLike(Protocol):
     number: str
 
 
-class DeduplicateQuizItems[T: _QuizItemLike](UseCase[list[T], list[T]]):
-    """Deduplica una lista flat di quiz item sulla tripla (testo, risposta, immagine).
+class DeduplicateQuizItems[T: _QuizItemLike](UseCase[Iterable[T], list[T]]):
+    """Deduplica un iterabile flat di quiz item sulla tripla (testo, risposta, immagine).
 
     Un duplicato esatto è identificato da (testo normalizzato, risposta
     corretta, identità immagine). Generico e Protocol-typed: condiviso da
@@ -29,11 +30,11 @@ class DeduplicateQuizItems[T: _QuizItemLike](UseCase[list[T], list[T]]):
     (`EnrichedQuizModel`), senza subclassing model-specific.
     """
 
-    def execute(self, request: list[T]) -> list[T]:
-        """Deduplica la lista mantenendo il primo item incontrato per ogni chiave.
+    def execute(self, request: Iterable[T]) -> list[T]:
+        """Deduplica mantenendo il primo item incontrato per ogni chiave.
 
         Args:
-            request: Lista flat di quiz item, potenzialmente con duplicati esatti.
+            request: Iterabile flat di quiz item, potenzialmente con duplicati esatti.
 
         Returns:
             Lista deduplicata, nello stesso ordine.

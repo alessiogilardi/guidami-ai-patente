@@ -3,8 +3,8 @@ from collections.abc import Callable, Iterable
 from commons.use_cases.use_case import UseCase
 
 
-class FlatMap[T, U](UseCase[list[T], list[U]]):
-    """Applica un callable a ogni elemento di una lista e concatena i risultati.
+class FlatMap[T, U](UseCase[Iterable[T], list[U]]):
+    """Applica un callable a ogni elemento di un iterabile e concatena i risultati.
 
     Args:
         fn: Callable applicato a ogni elemento; accetta istanze `UseCase`
@@ -20,11 +20,11 @@ class FlatMap[T, U](UseCase[list[T], list[U]]):
         """
         self._fn = fn
 
-    def execute(self, request: list[T]) -> list[U]:
+    def execute(self, request: Iterable[T]) -> list[U]:
         """Applica `fn` a ogni elemento di `request` e concatena i risultati.
 
         Args:
-            request: Lista di input.
+            request: Iterabile di input.
 
         Returns:
             Lista piatta con i risultati di `fn` concatenati, ordine preservato.

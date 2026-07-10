@@ -1,4 +1,5 @@
 import logging
+from collections.abc import Iterable
 
 from commons.use_cases import UseCase
 from guidami_ai_patente_ingestor.agents import NormReferenceDescriberAgent
@@ -17,7 +18,7 @@ def _make_key(q: EnrichedQuizModel) -> _DedupeKey:
     return (q.topic, q.text, q.correct_answer, q.image)
 
 
-class NormReferenceEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]]):
+class NormReferenceEnricher(UseCase[Iterable[EnrichedQuizModel], list[EnrichedQuizModel]]):
     """Arricchisce le sotto-domande con metadati normativi generati dall'LLM.
 
     La chiave di dedup è `(topic, text, correct_answer, image_filename)`: duplicati
@@ -29,17 +30,18 @@ class NormReferenceEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizMo
         """Inietta l'agente LLM per la generazione di metadati normativi."""
         self._agent = agent
 
-    def execute(self, request: list[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
-        """Esegue l'arricchimento normativo su ogni sotto-domanda della lista.
+    def execute(self, request: Iterable[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
+        """Esegue l'arricchimento normativo su ogni sotto-domanda.
 
         Args:
-            request: Lista di sotto-domande enriched da arricchire.
+            request: Iterabile di sotto-domande enriched da arricchire.
 
         Returns:
             Lista di sotto-domande con `quiz_metadata` valorizzato dove possibile.
         """
-        metadata_map = self._build_metadata_map(request)
-        return [self._apply_metadata(q, metadata_map) for q in request]
+        questions = list(request)
+        metadata_map = self._build_metadata_map(questions)
+        return [self._apply_metadata(q, metadata_map) for q in questions]
 
     def _apply_metadata(
         self,

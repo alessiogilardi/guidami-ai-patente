@@ -1,4 +1,5 @@
 import logging
+from collections.abc import Iterable
 from pathlib import Path
 from typing import cast
 
@@ -19,7 +20,7 @@ def _make_key(q: EnrichedQuizModel) -> _DedupeKey:
     return (cast(str, q.image), q.topic, q.text)
 
 
-class ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQuizModel]]):
+class ImageDescriptionEnricher(UseCase[Iterable[EnrichedQuizModel], list[EnrichedQuizModel]]):
     """Arricchisce le sotto-domande con la descrizione del segnale stradale.
 
     La chiave di dedup è `(image, topic, text)`: stessa immagine in contesti diversi
@@ -34,10 +35,11 @@ class ImageDescriptionEnricher(UseCase[list[EnrichedQuizModel], list[EnrichedQui
         self._road_sign_describer = road_sign_describer
         self._file_reader = file_reader
 
-    def execute(self, request: list[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
+    def execute(self, request: Iterable[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
         """Enrich each quiz item with a road sign description where an image is present."""
-        descriptions = self._build_description_map(request)
-        return [self._apply_description(q, descriptions) for q in request]
+        questions = list(request)
+        descriptions = self._build_description_map(questions)
+        return [self._apply_description(q, descriptions) for q in questions]
 
     def _apply_description(
         self, q: EnrichedQuizModel, descriptions: dict[_DedupeKey, RoadSignDescriberResponse]
