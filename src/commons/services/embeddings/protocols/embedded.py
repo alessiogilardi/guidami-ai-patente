@@ -5,6 +5,6 @@ from .embeddable import Embeddable
 
 @runtime_checkable
 class Embedded(Embeddable, Protocol):
-    """Embeddable con il cassetto scrivibile per il vettore risultante."""
+    """Embeddable with a writable slot for the resulting vector."""
 
     embedding: list[float] | None

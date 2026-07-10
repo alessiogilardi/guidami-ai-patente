@@ -1,4 +1,4 @@
-"""Configurazioni condivise tra ingestor e applicativo."""
+"""Configurations shared between ingestor and application."""
 
 from .agent_config import AgentConfig
 from .embedding_config import EmbeddingConfig

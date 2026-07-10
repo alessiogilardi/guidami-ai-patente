@@ -10,10 +10,10 @@ from commons.configs import PostgresConnectionConfig
 
 
 class PostgresClient:
-    """Wrapper psycopg generico e table-agnostic, con adapter pgvector registrato."""
+    """Generic, table-agnostic psycopg wrapper with the pgvector adapter registered."""
 
     def __init__(self, config: PostgresConnectionConfig) -> None:
-        """Apre la connessione e registra l'adapter pgvector."""
+        """Opens the connection and registers the pgvector adapter."""
         conninfo = make_conninfo(
             host=config.host,
             port=config.port,
@@ -27,7 +27,7 @@ class PostgresClient:
         register_vector(self._connection)
 
     def __enter__(self) -> "PostgresClient":
-        """Permette l'uso come context manager (chiude la connessione in uscita)."""
+        """Allows use as a context manager (closes the connection on exit)."""
         return self
 
     def __exit__(
@@ -36,29 +36,29 @@ class PostgresClient:
         exc_value: BaseException | None,
         traceback: TracebackType | None,
     ) -> None:
-        """Chiude la connessione all'uscita dal blocco `with`."""
+        """Closes the connection when exiting the `with` block."""
         self.close()
 
     def close(self) -> None:
-        """Chiude la connessione al database."""
+        """Closes the database connection."""
         self._connection.close()
 
     def truncate(self, table_name: str) -> None:
-        """Svuota la tabella `table_name` in vista di un full reload."""
+        """Empties the `table_name` table in preparation for a full reload."""
         query = sql.SQL("TRUNCATE TABLE {table}").format(table=sql.Identifier(table_name))
         self._connection.execute(query)
 
     def execute(self, query: sql.Composed, params: Sequence[object] | None = None) -> None:
-        """Esegue `query` una sola volta (statement senza risultato, es. DELETE parametrico)."""
+        """Executes `query` once (statement with no result, e.g. parameterized DELETE)."""
         self._connection.execute(query, params)
 
     def execute_many(self, query: sql.Composed, params_seq: Sequence[Sequence[object]]) -> None:
-        """Esegue `query` una volta per ciascuna riga di `params_seq`."""
+        """Executes `query` once for each row of `params_seq`."""
         with self._connection.cursor() as cursor:
             cursor.executemany(query, params_seq)
 
     def fetch(self, query: sql.Composed, params: Sequence[object] | None = None) -> list[tuple]:
-        """Esegue `query` e ritorna tutte le righe del risultato."""
+        """Executes `query` and returns all result rows."""
         with self._connection.cursor() as cursor:
             cursor.execute(query, params)
             return cursor.fetchall()

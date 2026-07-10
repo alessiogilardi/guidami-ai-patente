@@ -4,28 +4,28 @@ from commons.use_cases.use_case import UseCase
 
 
 class ForEach[T, U](UseCase[Iterable[T], list[U]]):
-    """Applica un callable a ogni elemento di un iterabile.
+    """Applies a callable to every element of an iterable.
 
     Args:
-        fn: Callable applicato a ogni elemento; accetta istanze `UseCase`
-            (invocate via `__call__`) o qualsiasi callable `T → U`.
+        fn: Callable applied to each element; accepts `UseCase` instances
+            (invoked via `__call__`) or any callable `T → U`.
     """
 
     def __init__(self, fn: Callable[[T], U]) -> None:
-        """Inietta il callable da applicare a ogni elemento.
+        """Injects the callable to apply to each element.
 
         Args:
-            fn: Funzione o UseCase istanziato da applicare elemento per elemento.
+            fn: Function or instantiated UseCase to apply element by element.
         """
         self._fn = fn
 
     def execute(self, request: Iterable[T]) -> list[U]:
-        """Applica `fn` a ogni elemento di `request`.
+        """Applies `fn` to each element of `request`.
 
         Args:
-            request: Iterabile di input.
+            request: Input iterable.
 
         Returns:
-            Lista trasformata nello stesso ordine.
+            Transformed list in the same order.
         """
         return [self._fn(item) for item in request]

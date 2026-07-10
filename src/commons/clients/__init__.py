@@ -1,4 +1,4 @@
-"""Client per servizi esterni (embedding, Postgres, file system)."""
+"""Clients for external services (embedding, Postgres, file system)."""
 
 from .embeddings import EmbeddingClient, LiteLLMEmbeddingClient, SentenceTransformerEmbeddingClient
 from .file_system import (

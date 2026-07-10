@@ -6,12 +6,12 @@ def deduplicate[T](
     key: Callable[[T], Hashable],
     on_duplicate: Callable[[T], None] | None = None,
 ) -> Iterator[T]:
-    """Filtra un iterabile restituendo un generatore di elementi unici.
+    """Filters an iterable, returning a generator of unique elements.
 
     Args:
-        items: L'iterabile da deduplicare.
-        key: Funzione per estrarre la chiave di unicità (es. una tupla).
-        on_duplicate: Callback opzionale da eseguire sui duplicati scartati.
+        items: The iterable to deduplicate.
+        key: Function to extract the uniqueness key (e.g. a tuple).
+        on_duplicate: Optional callback executed on discarded duplicates.
     """
     seen: set[Hashable] = set()
 

@@ -1,1 +1,1 @@
-"""Service condivisi tra ingestor e applicativo (framework-free)."""
+"""Services shared between ingestor and application (framework-free)."""

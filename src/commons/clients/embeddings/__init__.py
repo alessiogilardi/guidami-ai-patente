@@ -1,4 +1,4 @@
-"""Client per l'embedding: ABC + implementazioni LiteLLM e SentenceTransformer."""
+"""Embedding clients: ABC + LiteLLM and SentenceTransformer implementations."""
 
 from .embedding_client import EmbeddingClient
 from .litellm_embedding_client import LiteLLMEmbeddingClient

@@ -3,9 +3,9 @@ from typing import Protocol, runtime_checkable
 
 @runtime_checkable
 class Embeddable(Protocol):
-    """Oggetto che espone il testo da embeddare (sola lettura)."""
+    """Object exposing the text to embed (read-only)."""
 
     @property
     def embedded_text(self) -> str:
-        """Testo da usare per il calcolo dell'embedding."""
+        """Text to use for computing the embedding."""
         ...

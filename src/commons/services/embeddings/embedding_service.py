@@ -10,20 +10,20 @@ logger = logging.getLogger(__name__)
 
 
 class EmbeddingService(UseCase[Sequence[Embeddable], list[list[float]]]):
-    """Calcola gli embedding di una sequenza di Embeddable in batch.
+    """Computes embeddings for a sequence of Embeddable items in batches.
 
-    Puro: non muta gli item in input. Ritorna i vettori allineati 1:1 (stesso ordine).
+    Pure: does not mutate the input items. Returns vectors aligned 1:1 (same order).
     """
 
     def __init__(self, batch_size: int, client: EmbeddingClient) -> None:
-        """Inietta la dimensione del batch (>= 1) e il client di embedding."""
+        """Injects the batch size (>= 1) and the embedding client."""
         if batch_size < 1:
             raise ValueError(f"batch_size must be >= 1, got {batch_size}")
         self._client = client
         self._batch_size = batch_size
 
     def execute(self, request: Sequence[Embeddable]) -> list[list[float]]:
-        """Ritorna i vettori allineati a `items` (stesso ordine). Nessuna mutazione."""
+        """Returns the vectors aligned to `items` (same order). No mutation."""
         total_batches = -(-len(request) // self._batch_size)
         vectors: list[list[float]] = []
         for start in range(0, len(request), self._batch_size):

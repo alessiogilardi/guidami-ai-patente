@@ -1,4 +1,4 @@
-"""Service per il calcolo batch di embedding e relativi contratti."""
+"""Service for batch embedding computation and its related contracts."""
 
 from .embedding_service import EmbeddingService
 from .protocols import Embeddable, Embedded

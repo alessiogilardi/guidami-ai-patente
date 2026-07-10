@@ -4,29 +4,29 @@ from commons.use_cases.use_case import UseCase
 
 
 class FlatMap[T, U](UseCase[Iterable[T], list[U]]):
-    """Applica un callable a ogni elemento di un iterabile e concatena i risultati.
+    """Applies a callable to every element of an iterable and concatenates the results.
 
     Args:
-        fn: Callable applicato a ogni elemento; accetta istanze `UseCase`
-            (invocate via `__call__`) o qualsiasi callable `T → Iterable[U]`.
+        fn: Callable applied to each element; accepts `UseCase` instances
+            (invoked via `__call__`) or any callable `T → Iterable[U]`.
     """
 
     def __init__(self, fn: Callable[[T], Iterable[U]]) -> None:
-        """Inietta il callable da applicare a ogni elemento.
+        """Injects the callable to apply to each element.
 
         Args:
-            fn: Funzione o UseCase istanziato che produce, per ogni elemento,
-                un `Iterable[U]` da concatenare all'output finale.
+            fn: Function or instantiated UseCase that produces, for each element,
+                an `Iterable[U]` to concatenate into the final output.
         """
         self._fn = fn
 
     def execute(self, request: Iterable[T]) -> list[U]:
-        """Applica `fn` a ogni elemento di `request` e concatena i risultati.
+        """Applies `fn` to each element of `request` and concatenates the results.
 
         Args:
-            request: Iterabile di input.
+            request: Input iterable.
 
         Returns:
-            Lista piatta con i risultati di `fn` concatenati, ordine preservato.
+            Flat list with `fn` results concatenated, order preserved.
         """
         return [result for item in request for result in self._fn(item)]

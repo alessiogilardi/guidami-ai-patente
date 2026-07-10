@@ -2,7 +2,7 @@ from pydantic import BaseModel, ConfigDict, SecretStr
 
 
 class PostgresConnectionConfig(BaseModel):
-    """Configurazione di connessione Postgres condivisa tra ingestor e applicativo."""
+    """Postgres connection configuration shared between ingestor and application."""
 
     model_config = ConfigDict(frozen=True)
 
