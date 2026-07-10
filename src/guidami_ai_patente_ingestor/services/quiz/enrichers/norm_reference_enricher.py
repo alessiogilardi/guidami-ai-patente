@@ -2,6 +2,7 @@ import logging
 from collections.abc import Iterable
 
 from commons.use_cases import UseCase
+from commons.utils import deduplicate
 from guidami_ai_patente_ingestor.agents import NormReferenceDescriberAgent
 from guidami_ai_patente_ingestor.agents.dto.norm_reference_describer import (
     NormReferenceDescriberResponse,
@@ -48,25 +49,18 @@ class NormReferenceEnricher(UseCase[Iterable[EnrichedQuizModel], list[EnrichedQu
         q: EnrichedQuizModel,
         metadata_map: dict[_DedupeKey, NormReferenceDescriberResponse],
     ) -> EnrichedQuizModel:
-        key = _make_key(q)
-        if key not in metadata_map:
+        response = metadata_map.get(_make_key(q))
+        if response is None:
             return q
-        return NormReferenceDescriberMapper.from_response_to_enriched_quiz(q, metadata_map[key])
+        return NormReferenceDescriberMapper.from_response_to_enriched_quiz(q, response)
 
     def _build_metadata_map(
         self, questions: list[EnrichedQuizModel]
     ) -> dict[_DedupeKey, NormReferenceDescriberResponse]:
-        seen: set[_DedupeKey] = set()
-        result: dict[_DedupeKey, NormReferenceDescriberResponse] = {}
-        for q in questions:
-            key = _make_key(q)
-            if key in seen:
-                continue
-            seen.add(key)
-            response = self._call_agent(q)
-            if response is not None:
-                result[key] = response
-        return result
+        unique = deduplicate(questions, key=_make_key)
+        return {
+            _make_key(q): response for q in unique if (response := self._call_agent(q)) is not None
+        }
 
     def _call_agent(self, q: EnrichedQuizModel) -> NormReferenceDescriberResponse | None:
         try:
