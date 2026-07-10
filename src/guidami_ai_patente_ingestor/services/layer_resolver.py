@@ -4,22 +4,22 @@ from guidami_ai_patente_ingestor.configs import SourceConfig
 
 
 class LayerResolver:
-    """Risolve il path di un artefatto dato il layer e la source.
+    """Resolves the path of an artifact given the layer and the source.
 
-    Costruito dall'entry point da `IngestorConfig.layers` e
-    `IngestorConfig.sources`; iniettato nei builder delle pipeline.
+    Built by the entry point from `IngestorConfig.layers` and
+    `IngestorConfig.sources`; injected into the pipeline builders.
     """
 
     def __init__(self, layers: dict[str, str], sources: dict[str, SourceConfig]) -> None:
-        """Memorizza la mappa layer→dir e source→{dir, file}."""
+        """Stores the layer→dir and source→{dir, file} maps."""
         self._layers = layers
         self._sources = sources
 
     def path(self, layer: str, source: str) -> Path:
-        """Restituisce `layers[layer] / sources[source].dir / sources[source].file`.
+        """Returns `layers[layer] / sources[source].dir / sources[source].file`.
 
         Raises:
-            KeyError: se `layer` o `source` non sono configurati.
+            KeyError: if `layer` or `source` are not configured.
         """
         if layer not in self._layers:
             raise KeyError(f"Unknown layer: {layer!r}. Available: {list(self._layers)}")

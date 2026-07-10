@@ -11,7 +11,7 @@ from .source_config import SourceConfig
 
 
 class IngestorConfig(BaseSettings):
-    """Configurazione delle pipeline di ingestion (corpus normativo CdS + CAP, quiz bank)."""
+    """Configuration for the ingestion pipelines (corpus normativo CdS + CAP, quiz bank)."""
 
     model_config = SettingsConfigDict(
         frozen=True,
@@ -67,7 +67,7 @@ class IngestorConfig(BaseSettings):
         dotenv_settings: PydanticBaseSettingsSource,
         file_secret_settings: PydanticBaseSettingsSource,
     ) -> tuple[PydanticBaseSettingsSource, ...]:
-        """Precedenza: init > env/.env (secrets) > ingestor_config.yaml (non-secrets)."""
+        """Precedence: init > env/.env (secrets) > ingestor_config.yaml (non-secrets)."""
         return (
             init_settings,
             env_settings,

@@ -21,11 +21,11 @@ def _make_key(q: EnrichedQuizModel) -> _DedupeKey:
 
 
 class ImageDescriptionEnricher(UseCase[Iterable[EnrichedQuizModel], list[EnrichedQuizModel]]):
-    """Arricchisce le sotto-domande con la descrizione del segnale stradale.
+    """Enriches sub-questions with the road sign description.
 
-    La chiave di dedup è `(image, topic, text)`: stessa immagine in contesti diversi
-    genera chiamate separate per descrizioni contestualizzate; duplicati esatti vengono
-    collassati.
+    The dedup key is `(image, topic, text)`: the same image in different contexts
+    triggers separate calls to get contextualized descriptions; exact duplicates
+    are collapsed.
     """
 
     def __init__(

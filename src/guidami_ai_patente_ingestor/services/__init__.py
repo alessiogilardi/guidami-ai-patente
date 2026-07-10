@@ -1,4 +1,4 @@
-"""Servizi di dominio dell'ingestor."""
+"""Domain services of the ingestor."""
 
 from .layer_resolver import LayerResolver
 

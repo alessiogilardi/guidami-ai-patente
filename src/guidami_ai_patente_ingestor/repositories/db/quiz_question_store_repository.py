@@ -19,10 +19,10 @@ _QUIZ_QUESTION_TABLE_COLUMNS = (
 
 
 class QuizQuestionStoreRepository(BulkInsertStoreRepository[QuizQuestion]):
-    """Scrittura full-reload su `quiz_questions` (truncate + bulk insert)."""
+    """Full-reload write to `quiz_questions` (truncate + bulk insert)."""
 
     def __init__(self, table_name: str, client: PostgresClient) -> None:
-        """Inietta il nome della tabella e il `PostgresClient`."""
+        """Injects the table name and the `PostgresClient`."""
         super().__init__(
             table_name=table_name,
             columns=_QUIZ_QUESTION_TABLE_COLUMNS,

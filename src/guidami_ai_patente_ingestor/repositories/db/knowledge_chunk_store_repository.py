@@ -19,15 +19,15 @@ _KNOWLEDGE_CHUNK_TABLE_COLUMNS = (
 
 
 class KnowledgeChunkStoreRepository(BulkInsertStoreRepository[KnowledgeChunk]):
-    """Scrittura su `knowledge_chunks`.
+    """Writes to `knowledge_chunks`.
 
-    Due modalita di reset:
-    - `delete_source`: full-reload della singola source (usato dal flow per-source).
-    - `truncate`: wipe dell'intera tabella (usato da `reset-knowledge-db`).
+    Two reset modes:
+    - `delete_source`: full reload of a single source (used by the per-source flow).
+    - `truncate`: wipes the entire table (used by `reset-knowledge-db`).
     """
 
     def __init__(self, table_name: str, client: PostgresClient) -> None:
-        """Inietta il nome della tabella e il `PostgresClient`."""
+        """Injects the table name and the `PostgresClient`."""
         super().__init__(
             table_name=table_name,
             columns=_KNOWLEDGE_CHUNK_TABLE_COLUMNS,
@@ -36,10 +36,10 @@ class KnowledgeChunkStoreRepository(BulkInsertStoreRepository[KnowledgeChunk]):
         )
 
     def delete_source(self, source: str) -> None:
-        """Cancella i chunk della sola `source` in vista di un full reload per-source.
+        """Deletes the chunks of the given `source` only, ahead of a per-source full reload.
 
-        Le altre source nella tabella restano intatte: l'indexing e per-source
-        (una run per source), quindi non si puo fare TRUNCATE dell'intera tabella.
+        The other sources in the table remain intact: indexing is per-source
+        (one run per source), so the entire table cannot be TRUNCATEd.
         """
         query = sql.SQL("DELETE FROM {table} WHERE source = %s").format(
             table=sql.Identifier(self._table_name)

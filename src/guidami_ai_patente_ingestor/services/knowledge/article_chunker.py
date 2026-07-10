@@ -6,21 +6,25 @@ from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel, E
 
 
 class ArticleChunker(UseCase[EnrichedArticleModel, list[EmbeddableChunkModel]]):
-    """Trasforma un `EnrichedArticleModel` in `EmbeddableChunkModel` (uno per comma).
+    """Transforms an `EnrichedArticleModel` into `EmbeddableChunkModel` (one per paragraph).
 
-    Valorizza `chunk.context` dai contesti inline dell'articolo enriched.
+    Populates `chunk.context` from the enriched article's inline contexts.
     """
 
     def __init__(self, source: Literal["cds", "cap"]) -> None:
-        """Inizializza il chunker con la sorgente normativa.
+        """Initializes the chunker with the norm source.
 
         Args:
-            source: Sorgente normativa ("cds" o "cap").
+            source: Norm source ("cds" or "cap").
         """
         self._source: Literal["cds", "cap"] = source
 
     def execute(self, request: EnrichedArticleModel) -> list[EmbeddableChunkModel]:
-        """Genera i chunk di `article`: comma 0 da `text` (se non vuoto) + uno per paragrafo."""
+        """Generates `article` chunks.
+
+        Paragraph 0 comes from `text` (if non-empty), followed by one chunk
+        per paragraph.
+        """
         chunks: list[EmbeddableChunkModel] = []
 
         if request.text:

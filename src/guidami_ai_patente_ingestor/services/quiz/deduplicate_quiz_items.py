@@ -9,10 +9,10 @@ logger = logging.getLogger(__name__)
 
 
 class _QuizItemLike(Protocol):
-    """Contratto strutturale minimo per la deduplicazione di un quiz item flat.
+    """Minimal structural contract for deduplicating a flat quiz item.
 
-    Soddisfatto strutturalmente da `CleanedQuizModel` e `EnrichedQuizModel`
-    (nessuna ereditarietà esplicita).
+    Satisfied structurally by `CleanedQuizModel` and `EnrichedQuizModel`
+    (no explicit inheritance).
     """
 
     text: str
@@ -22,22 +22,22 @@ class _QuizItemLike(Protocol):
 
 
 class DeduplicateQuizItems[T: _QuizItemLike](UseCase[Iterable[T], list[T]]):
-    """Deduplica un iterabile flat di quiz item sulla tripla (testo, risposta, immagine).
+    """Deduplicates a flat iterable of quiz items on the triple (text, answer, image).
 
-    Un duplicato esatto è identificato da (testo normalizzato, risposta
-    corretta, identità immagine). Generico e Protocol-typed: condiviso da
-    `build_quiz_cleaning_flow` (`CleanedQuizModel`) e `build_quiz_indexing_flow`
-    (`EnrichedQuizModel`), senza subclassing model-specific.
+    An exact duplicate is identified by (normalized text, correct answer,
+    image identity). Generic and Protocol-typed: shared by
+    `build_quiz_cleaning_flow` (`CleanedQuizModel`) and `build_quiz_indexing_flow`
+    (`EnrichedQuizModel`), without model-specific subclassing.
     """
 
     def execute(self, request: Iterable[T]) -> list[T]:
-        """Deduplica mantenendo il primo item incontrato per ogni chiave.
+        """Deduplicates, keeping the first item encountered for each key.
 
         Args:
-            request: Iterabile flat di quiz item, potenzialmente con duplicati esatti.
+            request: Flat iterable of quiz items, potentially with exact duplicates.
 
         Returns:
-            Lista deduplicata, nello stesso ordine.
+            Deduplicated list, in the same order.
         """
         return list(
             deduplicate(
@@ -49,10 +49,10 @@ class DeduplicateQuizItems[T: _QuizItemLike](UseCase[Iterable[T], list[T]]):
 
     @staticmethod
     def _dedup_key(item: _QuizItemLike) -> tuple[str, bool, str | None]:
-        """Chiave di unicità: testo normalizzato, risposta corretta, immagine."""
+        """Uniqueness key: normalized text, correct answer, image."""
         return item.text.strip(), item.correct_answer, item.image
 
     @staticmethod
     def _log_duplicate(item: _QuizItemLike) -> None:
-        """Logga lo scarto di un quiz item duplicato."""
+        """Logs the discarding of a duplicate quiz item."""
         logger.warning("skipping duplicate quiz item %s", item.number)

@@ -2,7 +2,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 class PipelineLayerConfig(BaseModel):
-    """Selettori di layer e source per una pipeline."""
+    """Layer and source selectors for a pipeline."""
 
     model_config = ConfigDict(frozen=True)
 

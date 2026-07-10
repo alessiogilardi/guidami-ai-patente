@@ -1,4 +1,4 @@
-"""Data-access layer dell'ingestor."""
+"""Data-access layer of the ingestor."""
 
 from .db import KnowledgeChunkStoreRepository, QuizQuestionStoreRepository
 

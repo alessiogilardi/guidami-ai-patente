@@ -10,29 +10,29 @@ logger = logging.getLogger(__name__)
 
 
 class ContextEnricher(UseCase[Iterable[EnrichedArticleModel], list[EnrichedArticleModel]]):
-    """Arricchisce gli articoli con i contesti per comma generati via LLM.
+    """Enriches articles with per-paragraph contexts generated via LLM.
 
-    La guard `repealed` e il mapping dominio↔DTO vivono qui, non nell'agente.
-    Un fallimento isolato su un articolo non abortisce il batch: logga un warning
-    e restituisce l'articolo invariato.
+    The `repealed` guard and the domain↔DTO mapping live here, not in the agent.
+    An isolated failure on one article does not abort the batch: it logs a warning
+    and returns the article unchanged.
     """
 
     def __init__(self, article_contextualizer_agent: ArticleContextualizerAgent) -> None:
-        """Inietta l'agente di contestualizzazione.
+        """Injects the contextualization agent.
 
         Args:
-            article_contextualizer_agent: Agente che genera i contesti per comma via LLM.
+            article_contextualizer_agent: Agent that generates per-paragraph contexts via LLM.
         """
         self._agent = article_contextualizer_agent
 
     def execute(self, request: Iterable[EnrichedArticleModel]) -> list[EnrichedArticleModel]:
-        """Valorizza `contexts` su ogni articolo.
+        """Populates `contexts` on every article.
 
         Args:
-            request: Articoli enriched (base-map) da arricchire.
+            request: Enriched articles (base-map) to enrich.
 
         Returns:
-            Nuove `EnrichedArticleModel` con `contexts` valorizzato.
+            New `EnrichedArticleModel` instances with `contexts` populated.
         """
         return [self._contextualize(item) for item in request]
 

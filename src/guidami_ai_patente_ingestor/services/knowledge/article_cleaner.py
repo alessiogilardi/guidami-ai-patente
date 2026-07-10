@@ -8,14 +8,14 @@ _ORDINAL_PREFIX_PATTERN = re.compile(r"^(\d+(?:-\w+)?\.?)\s*")
 
 
 class ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel]):
-    """Pulisce un `ParsedArticleModel` dal markup normattiva.
+    """Cleans a `ParsedArticleModel` from normattiva markup.
 
-    Rimuove anche i titoli avvolti in parentesi superflue e la numerazione
-    ordinale dei commi.
+    Also removes titles wrapped in superfluous parentheses and the ordinal
+    numbering of paragraphs.
     """
 
     def execute(self, request: ParsedArticleModel) -> ParsedArticleModel:
-        """Ritorna una copia di `article` con title/text/paragraphs puliti."""
+        """Returns a copy of `article` with cleaned title/text/paragraphs."""
         return request.model_copy(
             update={
                 "title": self._clean_title(request.title),
@@ -25,10 +25,10 @@ class ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel]):
         )
 
     def _clean_title(self, title: str) -> str:
-        """Rimuove le parentesi superflue che avvolgono il titolo.
+        """Removes the superfluous parentheses wrapping the title.
 
-        Gestisce anche il caso in cui la chiusura manchi per un difetto
-        upstream dello scraper.
+        Also handles the case where the closing parenthesis is missing due
+        to an upstream defect in the scraper.
         """
         title = title.strip()
         if not title.startswith("("):
@@ -41,10 +41,10 @@ class ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel]):
         return title.strip()
 
     def _clean_text(self, text: str) -> str:
-        """Rimuove il markup inline da `text`.
+        """Removes inline markup from `text`.
 
-        Se resta markup non bilanciato (titolo finito nel campo `text`),
-        scarta il testo.
+        If unbalanced markup remains (title ended up in the `text` field),
+        discards the text.
         """
         cleaned = _INLINE_MARKUP_PATTERN.sub(r"\1", text).strip()
         if "((" in cleaned or "))" in cleaned:
@@ -52,11 +52,12 @@ class ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel]):
         return cleaned
 
     def _clean_paragraphs(self, paragraphs: list[str]) -> list[str]:
-        """Normalizza i commi di un articolo.
+        """Normalizes the paragraphs (commi) of an article.
 
-        Filtra i marcatori `"(("`/`"))"` standalone e i riferimenti a note
-        (`"((171))"`), fonde i commi con elenco a)/b)/c)/d) spalmati su più
-        elementi e rimuove l'ordinale da ogni comma risultante.
+        Filters out standalone `"(("`/`"))"` markers and note references
+        (`"((171))"`), merges paragraphs whose a)/b)/c)/d) list is spread
+        across multiple elements, and strips the ordinal from each resulting
+        paragraph.
         """
         merged: list[str] = []
         buffer: list[str] | None = None
@@ -77,10 +78,10 @@ class ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel]):
                 continue
 
             if text in ("((", "))"):
-                continue  # marcatore di vigenza standalone
+                continue  # standalone effective-date marker
 
             if text.startswith("((") and not text.endswith("))"):
-                buffer = [text[2:].strip()]  # apre un comma multi-elemento
+                buffer = [text[2:].strip()]  # opens a multi-element paragraph
                 continue
 
             self._append_cleaned(merged, text)
@@ -93,10 +94,10 @@ class ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel]):
         if not match:
             return
         remainder = cleaned[match.end() :].strip()
-        # difetto upstream: ordinale duplicato, es. "2. 2. Nell'archivio..."
+        # upstream defect: duplicated ordinal, e.g. "2. 2. Nell'archivio..."
         duplicate = _ORDINAL_PREFIX_PATTERN.match(remainder)
         if duplicate and duplicate.group(1) == match.group(1):
             remainder = remainder[duplicate.end() :].strip()
         if remainder:
             merged.append(remainder)
-        # altrimenti rumore residuo (es. "((171))" -> "171" -> ""): scartato
+        # otherwise leftover noise (e.g. "((171))" -> "171" -> ""): discarded

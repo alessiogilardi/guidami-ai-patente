@@ -9,26 +9,26 @@ logger = logging.getLogger(__name__)
 
 
 class EmbedQuizMetadata(UseCase[Iterable[EmbeddableQuizModel], list[EmbeddableQuizModel]]):
-    """Calcola l'embedding di ogni item dal relativo `quiz_metadata`.
+    """Computes the embedding of every item from its `quiz_metadata`.
 
-    Filtra gli item con `quiz_metadata is not None` e li passa a `EmbeddingService`
-    (soddisfano `Embeddable` via `quiz_metadata.embedded_text`). Gli item senza
-    metadata transitano invariati con `embedding = None`.
+    Filters items with `quiz_metadata is not None` and passes them to `EmbeddingService`
+    (they satisfy `Embeddable` via `quiz_metadata.embedded_text`). Items without
+    metadata pass through unchanged with `embedding = None`.
     """
 
     def __init__(self, embedding_service: EmbeddingService) -> None:
-        """Inietta il service di embedding usato per calcolare i vettori."""
+        """Injects the embedding service used to compute the vectors."""
         self._embedding_service = embedding_service
 
     def execute(self, request: Iterable[EmbeddableQuizModel]) -> list[EmbeddableQuizModel]:
-        """Assegna l'embedding agli item con metadata; lascia invariati gli altri.
+        """Assigns the embedding to items with metadata; leaves the others unchanged.
 
         Args:
-            request: Iterabile di item embeddable, alcuni con `quiz_metadata is None`.
+            request: Iterable of embeddable items, some with `quiz_metadata is None`.
 
         Returns:
-            Lista con `embedding` popolato per gli item con metadata. Se il calcolo
-            fallisce, ritorna la lista originale invariata con un warning loggato.
+            List with `embedding` populated for items with metadata. If the computation
+            fails, returns the original list unchanged with a warning logged.
         """
         items = list(request)
         to_embed = [

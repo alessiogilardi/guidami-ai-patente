@@ -7,7 +7,7 @@ from commons.clients import PostgresClient
 
 
 class BulkInsertStoreRepository[T](ABC):
-    """Repository DB generico per store basati su truncate + bulk insert."""
+    """Generic DB repository for stores based on truncate + bulk insert."""
 
     def __init__(
         self,
@@ -16,7 +16,7 @@ class BulkInsertStoreRepository[T](ABC):
         row_mapper: Callable[[T], Sequence[object]],
         client: PostgresClient,
     ) -> None:
-        """Configura tabella, colonne target, mapping item -> riga DB e client."""
+        """Configures table, target columns, item -> DB row mapping, and client."""
         if not columns:
             raise ValueError("columns must contain at least one column")
 
@@ -26,11 +26,11 @@ class BulkInsertStoreRepository[T](ABC):
         self._row_mapper = row_mapper
 
     def truncate(self) -> None:
-        """Svuota la tabella in vista di un full reload."""
+        """Empties the table ahead of a full reload."""
         self._client.truncate(self._table_name)
 
     def bulk_insert(self, items: list[T]) -> None:
-        """Inserisce in batch gli item configurati dal mapper concreto."""
+        """Batch-inserts the items using the concrete mapper."""
         if not items:
             return
 
