@@ -1,1 +1,1 @@
-"""Pacchetto principale dell'app guidami-ai-patente (FastAPI, non ancora avviata)."""
+"""Main package for the guidami-ai-patente app (FastAPI, not yet started)."""

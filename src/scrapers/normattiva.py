@@ -35,7 +35,7 @@ MAX_RETRIES = 3
 
 
 class LawConfig(TypedDict):
-    """Configurazione per lo scraping di un testo normativo da normattiva.it."""
+    """Configuration for scraping a legal text from normattiva.it."""
 
     slug: str  # used for directory and file naming
     toc_url: str  # normattiva.it URN URL with !vig=
@@ -56,7 +56,7 @@ CAP = LawConfig(
 
 
 class ArticleParams(TypedDict):
-    """Parametri query per la chiamata all'API caricaArticolo di normattiva.it."""
+    """Query parameters for the call to normattiva.it's caricaArticolo API."""
 
     versione: str
     idGruppo: str
@@ -70,7 +70,7 @@ class ArticleParams(TypedDict):
 
 
 class ArticleRecord(TypedDict):
-    """Record di un articolo normativo estratto e serializzato in JSON."""
+    """Record of a legal article extracted and serialized to JSON."""
 
     number: str
     title: str
@@ -222,7 +222,7 @@ def _fetch_with_retry(
 
 
 def main(law: LawConfig) -> None:
-    """Scarica il testo normativo indicato da `law` e lo salva in `data/parsed/`."""
+    """Download the legal text specified by `law` and save it to `data/parsed/`."""
     raw_dir = Path("data/raw") / law["slug"]
     processed_dir = Path("data/parsed") / law["slug"]
     raw_dir.mkdir(parents=True, exist_ok=True)
@@ -274,7 +274,7 @@ def main(law: LawConfig) -> None:
 
             record = _parse_article(raw_html, url)
             records.append(record)
-            print(f"OK — {record['title'] or '(senza titolo)'}")
+            print(f"OK — {record['title'] or '(untitled)'}")
 
             time.sleep(DELAY_SECONDS)
 
@@ -287,12 +287,12 @@ def main(law: LawConfig) -> None:
 
 
 def main_cds() -> None:
-    """Entry point per lo scraping del Codice della Strada."""
+    """Entry point for scraping the Codice della Strada."""
     main(CDS)
 
 
 def main_cap() -> None:
-    """Entry point per lo scraping del Codice delle Assicurazioni Private."""
+    """Entry point for scraping the Codice delle Assicurazioni Private."""
     main(CAP)
 
 

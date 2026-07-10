@@ -23,7 +23,7 @@ _ROW_TOLERANCE = 50.0  # max distance (px) between image.top and row_y for per-r
 
 
 class SubQuestion(TypedDict):
-    """Sotto-domanda estratta dal PDF del banco delle domande."""
+    """Sub-question extracted from the question bank PDF."""
 
     number: str
     text: str
@@ -32,7 +32,7 @@ class SubQuestion(TypedDict):
 
 
 class Question(TypedDict):
-    """Domanda principale con le sotto-domande associate."""
+    """Main question with its associated sub-questions."""
 
     question_id: str
     topic: str
@@ -178,7 +178,7 @@ def _extract_image_at_y(
 
 
 def main_questions(pdf_path: Path = PDF_PATH) -> None:
-    """Esegue il parsing del PDF e scrive le domande in `data/parsed/quiz-patente-ab/`."""
+    """Parse the PDF and write the questions to `data/parsed/quiz-patente-ab/`."""
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     IMAGES_DIR.mkdir(parents=True, exist_ok=True)
 

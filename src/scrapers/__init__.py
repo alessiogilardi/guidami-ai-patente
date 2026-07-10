@@ -1,1 +1,1 @@
-"""Scraper per siti web esterni (normattiva.it)."""
+"""Scrapers for external websites (normattiva.it)."""

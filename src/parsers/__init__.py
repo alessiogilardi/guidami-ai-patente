@@ -1,1 +1,1 @@
-"""Parser per file PDF (banco delle domande di patente)."""
+"""Parser for PDF files (driving license question bank)."""
