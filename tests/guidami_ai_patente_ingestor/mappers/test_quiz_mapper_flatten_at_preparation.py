@@ -1,7 +1,9 @@
 """Test per i nuovi metodi QuizMapper introdotti da SP09 (flatten anticipato a preparation).
 
-`from_cleaned_to_enriched` (flat->flat base-map) e `from_parsed_to_cleaned`
-(nested item -> flat, denormalizza question_id/topic dal genitore).
+`from_cleaned_to_enriched` (flat->flat base-map), `from_parsed_to_cleaned`
+(nested item -> flat, denormalizza question_id/topic dal genitore) e
+`from_parsed_to_cleaned_all` (unnest+map di una domanda parsed intera,
+collassato da FlattenQuiz, vedi docs/plans/2026-07-09--collapse-flatten-quiz-into-flatmap.md).
 """
 
 from guidami_ai_patente_ingestor.mappers import QuizMapper
@@ -101,3 +103,37 @@ def test_from_parsed_to_cleaned_no_image_means_none() -> None:
     result = QuizMapper.from_parsed_to_cleaned(item, parent)
 
     assert result.image is None
+
+
+# --- from_parsed_to_cleaned_all ---
+
+
+def test_from_parsed_to_cleaned_all_empty_sub_questions_returns_empty_list() -> None:
+    parent = _parsed_question(sub_questions=[])
+
+    result = QuizMapper.from_parsed_to_cleaned_all(parent)
+
+    assert result == []
+
+
+def test_from_parsed_to_cleaned_all_maps_every_sub_question_in_order() -> None:
+    sub_1 = _parsed_item(number="1", text="Prima domanda.")
+    sub_2 = _parsed_item(number="2", text="Seconda domanda.")
+    parent = _parsed_question(question_id=100, topic="Segnaletica", sub_questions=[sub_1, sub_2])
+
+    result = QuizMapper.from_parsed_to_cleaned_all(parent)
+
+    assert [item.number for item in result] == ["1", "2"]
+    assert [item.text for item in result] == ["Prima domanda.", "Seconda domanda."]
+
+
+def test_from_parsed_to_cleaned_all_denormalizes_parent_question_id_and_topic() -> None:
+    sub_1 = _parsed_item(number="1")
+    sub_2 = _parsed_item(number="2")
+    parent = _parsed_question(question_id=42, topic="Precedenza", sub_questions=[sub_1, sub_2])
+
+    result = QuizMapper.from_parsed_to_cleaned_all(parent)
+
+    assert all(isinstance(item, CleanedQuizModel) for item in result)
+    assert all(item.question_id == 42 for item in result)
+    assert all(item.topic == "Precedenza" for item in result)

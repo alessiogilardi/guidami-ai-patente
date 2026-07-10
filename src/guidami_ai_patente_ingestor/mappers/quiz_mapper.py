@@ -17,12 +17,12 @@ class QuizMapper:
     """Backbone delle trasformazioni 1:1 della pipeline quiz bank.
 
     Tutti i metodi sono statici e puri: ciascuno mappa un modello nel
-    successivo della catena (`from_X_to_Y`). Il flatten+dedup non è qui
-    (non è un mapping 1:1, ma un'operazione su collezione): vive in
-    `FlattenQuiz` (unnest+map, preparation, parsed→cleaned) e in
-    `DeduplicateQuizItems` (dedup, condivisa da preparation e indexing,
-    incatenata a questo mapper negli step `flatten_quiz` e
-    `map_to_embeddable` di `quiz_flows.py`).
+    successivo della catena (`from_X_to_Y`). Il dedup non è qui (non è un
+    mapping 1:1, ma un'operazione su collezione): vive in
+    `DeduplicateQuizItems` (condivisa da preparation e indexing, incatenata
+    a questo mapper negli step `flatten_quiz` e `map_to_embeddable` di
+    `quiz_flows.py`). L'unnest+map parsed→cleaned (preparation) è invece
+    espresso come `FlatMap(QuizMapper.from_parsed_to_cleaned_all)`.
     """
 
     @staticmethod
@@ -101,8 +101,8 @@ class QuizMapper:
             parent: La domanda madre che fornisce `question_id` e `topic`.
 
         Returns:
-            `CleanedQuizModel` (flat, auto-contenuto) pronto per il dedup a monte
-            (`FlattenQuizStep`).
+            `CleanedQuizModel` (flat, auto-contenuto) pronto per il dedup a monte,
+            chiamato per ogni sotto-domanda da `from_parsed_to_cleaned_all`.
         """
         return CleanedQuizModel(
             question_id=parent.question_id,
@@ -112,6 +112,25 @@ class QuizMapper:
             correct_answer=item.correct_answer,
             image=item.image,
         )
+
+    @staticmethod
+    def from_parsed_to_cleaned_all(parent: ParsedQuizModel) -> list[CleanedQuizModel]:
+        """Appiattisce una domanda parsed (nested) nelle sue sotto-domande cleaned (flat).
+
+        Mappa ogni sotto-domanda in `parent.sub_questions` delegando a
+        `from_parsed_to_cleaned`, preservando l'ordine. Non deduplica: la
+        deduplicazione è un transform separato (`DeduplicateQuizItems`),
+        incatenato dopo `FlatMap(from_parsed_to_cleaned_all)` in
+        `build_quiz_cleaning_flow`.
+
+        Args:
+            parent: La domanda parsed con le sotto-domande annidate.
+
+        Returns:
+            Lista piatta di `CleanedQuizModel`, una per sotto-domanda, nello
+            stesso ordine di `parent.sub_questions`.
+        """
+        return [QuizMapper.from_parsed_to_cleaned(sub, parent) for sub in parent.sub_questions]
 
     @staticmethod
     def _image_filename(image: str | None) -> str | None:

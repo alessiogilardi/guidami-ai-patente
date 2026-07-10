@@ -68,7 +68,7 @@ stage if its output file already exists, unless `--force`).
 3. *Indexing*: `LoadJsonStep` → `ApplyStep(FlatMap(ArticleChunker))` → `EmbedChunksStep` → `ApplyStep(ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk))` → `StoreChunksStep` (deletes only that source's rows, then inserts — scoped full-reload).
 
 **Quiz bank** (`orchestrators/quiz_flows.py`):
-1. *Cleaning*: `LoadJsonStep` → `ApplyStep(FlattenQuiz(), DeduplicateQuizItems())` → `WriteJsonStep` (parsed → cleaned; dedup on normalized-text + correct_answer + image identity).
+1. *Cleaning*: `LoadJsonStep` → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` → `WriteJsonStep` (parsed → cleaned; dedup on normalized-text + correct_answer + image identity).
 2. *Enrichment*: `LoadJsonStep` → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched), ImageDescriptionEnricher(RoadSignDescriberAgent), NormReferenceEnricher(NormReferenceDescriberAgent))` → `WriteJsonStep` (cleaned → enriched).
 3. *Indexing*: `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embeddable))` → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(ForEach(QuizMapper.from_embeddable_to_quiz_question))` → `DbStoreStep` (full truncate + bulk insert). Embeddings are computed from `quiz_metadata.vector_search_queries`, not raw quiz text — items without `quiz_metadata` end up with `embedding=None`.
 

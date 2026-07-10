@@ -33,7 +33,7 @@ EMBEDDABLE_QUIZ = "embeddable_quiz"  # modelli intermedi → embed
 QUIZ_ENTITIES = "quiz_entities"  # entità finali → store
 
 # --- Quiz preparation (SP06, esteso da SP09) ---
-# Flow cleaning: LoadJsonStep → FlattenQuizStep → WriteJsonStep.
-# Flow enrichment: LoadJsonStep → MapStep → EnrichDataStep → WriteJsonStep.
+# Flow cleaning: LoadJsonStep → ApplyStep(flatten_quiz) → WriteJsonStep.
+# Flow enrichment: LoadJsonStep → ApplyStep(enrich) → WriteJsonStep.
 PARSED_QUIZ = "parsed_quiz"  # input: quiz bank nested caricato dal layer "parsed"
 CLEANED_QUIZ = "cleaned_quiz"  # output cleaning / input enrichment: list[CleanedQuizModel] flat

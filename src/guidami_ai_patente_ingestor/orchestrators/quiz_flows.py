@@ -5,7 +5,7 @@ from commons.clients.file_system import LocalFileSystemClient
 from commons.configs import AgentConfig
 from commons.repositories import JsonRepository, YamlRepository
 from commons.services.embeddings import EmbeddingService
-from commons.use_cases import ForEach
+from commons.use_cases import FlatMap, ForEach
 from flowstep import Flow, FlowBuilder
 from flowstep.steps import ApplyStep
 from guidami_ai_patente_ingestor.agents import NormReferenceDescriberAgent, RoadSignDescriberAgent
@@ -29,7 +29,6 @@ from guidami_ai_patente_ingestor.services.quiz.enrichers import (
     ImageDescriptionEnricher,
     NormReferenceEnricher,
 )
-from guidami_ai_patente_ingestor.services.quiz.flatten_quiz import FlattenQuiz
 
 # Layer intermedio condiviso dalle due factory di preparation (clean/enrich):
 # non espresso in PipelineLayerConfig (vedi decisione di layer in SP05, replicata da SP09).
@@ -141,12 +140,14 @@ def build_quiz_cleaning_flow(
     `config.quiz_preparation.sources[0]`.
 
     Mappatura step:
-      `LoadJsonStep` → `ApplyStep(FlattenQuiz, DeduplicateQuizItems)` → `WriteJsonStep`
+      `LoadJsonStep`
+      → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems)`
+      → `WriteJsonStep`
 
     Lo step `flatten_quiz` incatena due transform: unnest+map parsed→cleaned via
-    `FlattenQuiz`, poi dedup sulla tripla (testo normalizzato, risposta corretta,
-    identità immagine) via `DeduplicateQuizItems` (condivisa con
-    `build_quiz_indexing_flow`).
+    `FlatMap(QuizMapper.from_parsed_to_cleaned_all)`, poi dedup sulla tripla
+    (testo normalizzato, risposta corretta, identità immagine) via
+    `DeduplicateQuizItems` (condivisa con `build_quiz_indexing_flow`).
 
     Args:
         config: Configurazione completa dell'ingestor (già caricata all'entry point).
@@ -172,7 +173,7 @@ def build_quiz_cleaning_flow(
     )
     flatten_step = ApplyStep(
         "flatten_quiz",
-        FlattenQuiz(),
+        FlatMap(QuizMapper.from_parsed_to_cleaned_all),
         DeduplicateQuizItems(),
         input_key=context_keys.PARSED_QUIZ,
         output_key=context_keys.CLEANED_QUIZ,
