@@ -525,6 +525,14 @@ wheels = [
 ]
 
 [[package]]
+name = "flowstep"
+version = "0.1.0"
+source = { git = "https://github.com/alessiogilardi/flowstep.git?branch=main#961f5e48636e7380f598e5a58fd68d18ed6a988f" }
+dependencies = [
+    { name = "pydantic" },
+]
+
+[[package]]
 name = "frozenlist"
 version = "1.8.0"
 source = { registry = "https://pypi.org/simple" }
@@ -651,6 +659,7 @@ source = { editable = "." }
 dependencies = [
     { name = "aiofiles" },
     { name = "beautifulsoup4" },
+    { name = "flowstep" },
     { name = "httpx" },
     { name = "litellm" },
     { name = "lxml" },
@@ -677,6 +686,7 @@ dev = [
 requires-dist = [
     { name = "aiofiles", specifier = ">=25.1.0" },
     { name = "beautifulsoup4", specifier = ">=4.14.3" },
+    { name = "flowstep", git = "https://github.com/alessiogilardi/flowstep.git?branch=main" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "litellm", specifier = ">=1.80.15" },
     { name = "lxml", specifier = ">=6.1.1" },

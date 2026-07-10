@@ -23,10 +23,12 @@ doing so once the FastAPI app starts):
 - `domain/` — entities/models persisted or shared across apps
   (`knowledge_chunk`, `quiz_question`, `quiz_metadata`, `retrieval_result`).
 
-`flowstep/` is a separate, domain-agnostic sequential-pipeline framework
+`flowstep` is a domain-agnostic sequential-pipeline framework
 (`Flow`/`Step`/`FlowBuilder`/`FlowContext`/`ApplyStep`) that the ingestor
-is built on top of. `parsers/` and `scrapers/` are one-shot
-data-acquisition scripts, each registered as a `[project.scripts]` entry.
+is built on top of; it is an external git dependency (github.com/alessiogilardi/flowstep,
+tracking `main` — see `[tool.uv.sources]` in `pyproject.toml`), not an
+in-repo package. `parsers/` and `scrapers/` are one-shot data-acquisition
+scripts, each registered as a `[project.scripts]` entry.
 
 ## Main components
 
@@ -37,7 +39,7 @@ data-acquisition scripts, each registered as a `[project.scripts]` entry.
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
 | `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach`, `FlatMap` — generic composition primitives used across pipeline steps | — |
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
-| `flowstep/` | Generic sequential-pipeline engine (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) | — |
+| `flowstep` (external dependency) | Generic sequential-pipeline engine (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) | git dependency (github.com/alessiogilardi/flowstep) |
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
 | `guidami_ai_patente/` | FastAPI quiz bot — **not started** | FastAPI (planned) |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/` | pdfplumber, pymupdf |
@@ -80,4 +82,4 @@ See `adr/` for the full history. Currently accepted:
   never receives `correct_answer` in its request DTO, by design, to avoid
   the description leaking the answer. Still true in code today.
 
-*Last updated: 2026-07-09 — verified against commit `6db33e8`.*
+*Last updated: 2026-07-10 — verified against commit `66593a7`.*

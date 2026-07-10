@@ -29,11 +29,14 @@ repositories or embedding clients.
 
 `tests/` mirrors `src/` 1:1 for every package that has tests:
 `tests/commons/` ~ `src/commons/`, `tests/domain/` ~ `src/domain/`,
-`tests/flowstep/` ~ `src/flowstep/`, `tests/guidami_ai_patente_ingestor/`
-~ `src/guidami_ai_patente_ingestor/` (subfolder structure matches,
-including `orchestrators/steps/{generic,knowledge}` and
+`tests/guidami_ai_patente_ingestor/` ~ `src/guidami_ai_patente_ingestor/`
+(subfolder structure matches, including
+`orchestrators/steps/{generic,knowledge}` and
 `services/{knowledge,quiz}/enrichers`). No tests yet for `src/parsers/`,
 `src/scrapers/`, or the empty `src/guidami_ai_patente/` scaffold.
+`flowstep` is an external git dependency (not part of this repo's `src/`
+or `tests/`), so it has no local test mirror here — see
+`docs/architecture.md`.
 
 No `__init__.py` in any test directory — see
 `.claude/rules/code-conventions.md` for the rule and rationale.
@@ -49,4 +52,4 @@ mechanism in this project.
 Naming: `test_*.py`, generally one test file per source file/class (e.g.
 `test_article_chunker.py` for `article_chunker.py`).
 
-*Last updated: 2026-07-09 — verified against commit `8ca395d`.*
+*Last updated: 2026-07-10 — verified against commit `66593a7`.*

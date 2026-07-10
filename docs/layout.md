@@ -10,8 +10,6 @@ repo/
 │   │                                #   agents/ (BaseAgent + PromptRenderer)
 │   ├── domain/                     # Shared domain entities/models (persisted + intermediate),
 │   │                                #   no I/O or business logic
-│   ├── flowstep/                   # Domain-agnostic sequential-pipeline framework
-│   │                                #   (Flow, Step, FlowBuilder, FlowContext, ApplyStep)
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
 │   │                                #   normative corpus (CdS/CAP) and quiz bank
 │   ├── guidami_ai_patente/         # FastAPI quiz-bot app — scaffold only, not started
@@ -20,7 +18,6 @@ repo/
 ├── tests/                          # Mirrors src/ structure, no __init__.py per directory
 │   ├── commons/
 │   ├── domain/
-│   ├── flowstep/
 │   └── guidami_ai_patente_ingestor/
 ├── configs/                        # Runtime YAML config (ingestor_config.yaml, agents/*.yaml)
 ├── db/                             # init.sql — Postgres/pgvector schema, applied on container init
@@ -29,6 +26,11 @@ repo/
 ├── docs/                           # This documentation (Second Brain) + docs/plans/ (design plans)
 └── .claude/                        # Claude Code config: rules/, skills/, hooks/, agents/
 ```
+
+`flowstep` (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) is
+**not** part of this repo's tree: it's an external git dependency
+(github.com/alessiogilardi/flowstep, tracked via `main` in `pyproject.toml`'s
+`[tool.uv.sources]`) — see `docs/architecture.md`.
 
 ## Placement conventions
 
@@ -49,8 +51,10 @@ repo/
   local to that package's `models/` (e.g.
   `guidami_ai_patente_ingestor/models/knowledge/parsed_article.py`).
 - **Generic, domain-agnostic pipeline mechanics** (a new step type, a new
-  flow-control primitive with no knowledge of ingestion/quiz content) goes
-  in `src/flowstep/`, never in `guidami_ai_patente_ingestor/`.
+  flow-control primitive with no knowledge of ingestion/quiz content) is
+  out of scope for this repo: it belongs in the external `flowstep`
+  package (github.com/alessiogilardi/flowstep), not in
+  `guidami_ai_patente_ingestor/` or anywhere else in this tree.
 - **One-shot data-acquisition scripts** (a new scraper source, a new PDF
   parser) go in `src/scrapers/` or `src/parsers/` respectively, and are
   registered as a `[project.scripts]` entry in `pyproject.toml`.
@@ -61,4 +65,4 @@ repo/
   `tests/`, with no `__init__.py` in any test directory (see
   `.claude/rules/code-conventions.md`).
 
-*Last updated: 2026-07-09 — verified against commit `8ca395d`.*
+*Last updated: 2026-07-10 — verified against commit `66593a7`.*

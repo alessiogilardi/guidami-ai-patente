@@ -28,9 +28,10 @@ position makes sense (usually first, per `rules/python/architecture.md`).
 ## Applies to
 
 `src/commons/` and `src/guidami_ai_patente_ingestor/` (services, repositories,
-clients, agents, orchestrator steps). Does **not** apply to `src/flowstep/`: it
-is a generic, domain-agnostic pipeline framework whose constructors
-(`Step`, `Flow`, `FlowBuilder`, ...) don't take service/repository dependencies.
+clients, agents, orchestrator steps). Does **not** apply to `flowstep`
+(`Step`, `Flow`, `FlowBuilder`, ...): it's a generic, domain-agnostic
+pipeline framework whose constructors don't take service/repository
+dependencies, and it's an external git dependency, not code in this repo.
 
 When a constructor takes two dependencies (e.g. `layer_resolver` and
 `repository` in `LoadJsonStep`/`WriteJsonStep`), both go at the end, after all

@@ -19,6 +19,7 @@ dependencies = [
     "sentence-transformers>=5.5.1",
     "pydantic-ai-slim[openrouter]>=1.107.0",
     "aiofiles>=25.1.0",
+    "flowstep",
 ]
 
 [project.scripts]
@@ -30,6 +31,9 @@ ingest             = "guidami_ai_patente_ingestor.cli:main"
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12.0"]
 build-backend = "uv_build"
+
+[tool.uv.sources]
+flowstep = { git = "https://github.com/alessiogilardi/flowstep.git", branch = "main" }
 
 [dependency-groups]
 dev = [
