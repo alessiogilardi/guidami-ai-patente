@@ -2,11 +2,11 @@ from pydantic import BaseModel
 
 
 class ArticleContextualizerResponse(BaseModel):
-    """Output strutturato dell'agente di contestualizzazione.
+    """Structured output of the contextualization agent.
 
     Attributes:
-        contexts: Dizionario `{comma_index: testo_di_contesto}` per ogni comma
-            dell'articolo. Le chiavi sono interi (indici dei commi a partire da 0).
+        contexts: Dictionary `{comma_index: context_text}` for each comma
+            of the article. Keys are integers (comma indices starting from 0).
     """
 
     contexts: dict[int, str]

@@ -1,4 +1,4 @@
-"""Mapper di dominio dell'ingestor."""
+"""Domain mappers of the ingestor."""
 
 from .article_mapper import ArticleMapper
 from .quiz_mapper import QuizMapper

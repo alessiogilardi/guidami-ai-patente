@@ -7,22 +7,22 @@ from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 
 
 class NormReferenceDescriberMapper:
-    """Traduzione bidirezionale tra `EnrichedQuizModel` e i DTO dell'agente NormReferenceDescriber.
+    """Bidirectional translation between `EnrichedQuizModel` and the NormReferenceDescriber DTOs.
 
-    Tutti i metodi sono statici e puri (nessuna dipendenza iniettata).
+    All methods are static and pure (no injected dependencies).
     """
 
     @staticmethod
     def from_enriched_quiz_to_request(
         question: EnrichedQuizModel,
     ) -> NormReferenceDescriberRequest:
-        """Costruisce la request dell'agente a partire da una sotto-domanda enriched.
+        """Builds the agent request from an enriched sub-question.
 
         Args:
-            question: Sotto-domanda del quiz bank con topic, testo e risposta corretta.
+            question: Quiz bank sub-question with topic, text, and correct answer.
 
         Returns:
-            `NormReferenceDescriberRequest` con i campi prompt-rilevanti.
+            `NormReferenceDescriberRequest` with the prompt-relevant fields.
         """
         return NormReferenceDescriberRequest(
             topic=question.topic,
@@ -36,14 +36,14 @@ class NormReferenceDescriberMapper:
         question: EnrichedQuizModel,
         response: NormReferenceDescriberResponse,
     ) -> EnrichedQuizModel:
-        """Applica i metadati normativi prodotti dall'agente alla sotto-domanda enriched.
+        """Applies the norm metadata produced by the agent to the enriched sub-question.
 
         Args:
-            question: Sotto-domanda originale su cui applicare i metadati.
-            response: Risposta strutturata dell'agente con i metadati normativi.
+            question: Original sub-question to apply the metadata to.
+            response: Structured agent response with the norm metadata.
 
         Returns:
-            Nuova `EnrichedQuizModel` con `quiz_metadata` valorizzato.
+            New `EnrichedQuizModel` with `quiz_metadata` populated.
         """
         return question.model_copy(
             update={

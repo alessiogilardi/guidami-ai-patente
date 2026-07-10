@@ -2,13 +2,13 @@ from pydantic import BaseModel, Field
 
 
 class NormReferenceDescriberRequest(BaseModel):
-    """Input per l'agente di generazione dei metadati normativi di un quiz.
+    """Input for the agent generating norm metadata for a quiz question.
 
     Attributes:
-        topic: Argomento della domanda del quiz.
-        text: Testo della domanda del quiz.
-        correct_answer: Risposta corretta alla domanda.
-        image_description: Descrizione dell'immagine allegata (se presente).
+        topic: Topic of the quiz question.
+        text: Text of the quiz question.
+        correct_answer: Correct answer to the question.
+        image_description: Description of the attached image (if present).
     """
 
     topic: str = Field(min_length=1)

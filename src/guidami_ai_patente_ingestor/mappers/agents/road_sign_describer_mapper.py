@@ -6,20 +6,20 @@ from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 
 
 class RoadSignDescriberMapper:
-    """Traduzione bidirezionale tra `EnrichedQuizModel` e i DTO dell'agente descrittore.
+    """Bidirectional translation between `EnrichedQuizModel` and the describer agent's DTOs.
 
-    Tutti i metodi sono statici e puri (nessuna dipendenza iniettata).
+    All methods are static and pure (no injected dependencies).
     """
 
     @staticmethod
     def from_enriched_quiz_to_request(question: EnrichedQuizModel) -> RoadSignDescriberRequest:
-        """Costruisce la request dell'agente a partire da una sotto-domanda enriched.
+        """Builds the agent request from an enriched sub-question.
 
         Args:
-            question: Sotto-domanda del quiz bank con topic e testo.
+            question: Quiz bank sub-question with topic and text.
 
         Returns:
-            `RoadSignDescriberRequest` con topic e testo della domanda come contesto.
+            `RoadSignDescriberRequest` with the question's topic and text as context.
         """
         return RoadSignDescriberRequest(topic=question.topic, text=question.text)
 
@@ -28,14 +28,14 @@ class RoadSignDescriberMapper:
         question: EnrichedQuizModel,
         response: RoadSignDescriberResponse,
     ) -> EnrichedQuizModel:
-        """Applica la descrizione prodotta dall'agente alla sotto-domanda enriched.
+        """Applies the description produced by the agent to the enriched sub-question.
 
         Args:
-            question: Sotto-domanda originale su cui applicare la descrizione.
-            response: Risposta strutturata dell'agente con nome e descrizione del segnale.
+            question: Original sub-question to apply the description to.
+            response: Structured agent response with the sign's name and description.
 
         Returns:
-            Nuova `EnrichedQuizModel` con `image_description` valorizzato.
+            New `EnrichedQuizModel` with `image_description` populated.
         """
         description = f"{response.name}. {response.description}"
         return question.model_copy(update={"image_description": description})

@@ -14,26 +14,26 @@ logger = logging.getLogger(__name__)
 
 
 class QuizMapper:
-    """Backbone delle trasformazioni 1:1 della pipeline quiz bank.
+    """Backbone of the 1:1 transformations in the quiz bank pipeline.
 
-    Tutti i metodi sono statici e puri: ciascuno mappa un modello nel
-    successivo della catena (`from_X_to_Y`). Il dedup non è qui (non è un
-    mapping 1:1, ma un'operazione su collezione): vive in
-    `DeduplicateQuizItems` (condivisa da preparation e indexing, incatenata
-    a questo mapper negli step `flatten_quiz` e `map_to_embeddable` di
-    `quiz_flows.py`). L'unnest+map parsed→cleaned (preparation) è invece
-    espresso come `FlatMap(QuizMapper.from_parsed_to_cleaned_all)`.
+    All methods are static and pure: each maps a model to the next one in
+    the chain (`from_X_to_Y`). Dedup does not live here (it's not a 1:1
+    mapping, but a collection-level operation): it lives in
+    `DeduplicateQuizItems` (shared by preparation and indexing, chained to
+    this mapper in the `flatten_quiz` and `map_to_embeddable` steps of
+    `quiz_flows.py`). The parsed→cleaned unnest+map (preparation) is instead
+    expressed as `FlatMap(QuizMapper.from_parsed_to_cleaned_all)`.
     """
 
     @staticmethod
     def from_enriched_to_embeddable(item: EnrichedQuizModel) -> EmbeddableQuizModel:
-        """Mappa una domanda enriched (flat) in `EmbeddableQuizModel`.
+        """Maps an enriched question (flat) to `EmbeddableQuizModel`.
 
         Args:
-            item: La domanda enriched da mappare (modello flat, auto-contenuta).
+            item: The enriched question to map (flat, self-contained model).
 
         Returns:
-            `EmbeddableQuizModel` pronto per il calcolo dell'embedding.
+            `EmbeddableQuizModel` ready for embedding computation.
         """
         base = EmbeddableQuizModel(
             number=item.number,
@@ -48,15 +48,15 @@ class QuizMapper:
 
     @staticmethod
     def from_embeddable_to_quiz_question(model: EmbeddableQuizModel) -> QuizQuestion:
-        """Mappa un `EmbeddableQuizModel` nell'entità `QuizQuestion`.
+        """Maps an `EmbeddableQuizModel` to the `QuizQuestion` entity.
 
-        Scarta `image_description` (non persistita), mantiene `embedding`.
+        Discards `image_description` (not persisted), keeps `embedding`.
 
         Args:
-            model: Modello embeddable con embedding già calcolato.
+            model: Embeddable model with embedding already computed.
 
         Returns:
-            Entità `QuizQuestion` pronta per lo store.
+            `QuizQuestion` entity ready for the store.
         """
         base = QuizQuestion(
             number=model.number,
@@ -71,13 +71,13 @@ class QuizMapper:
 
     @staticmethod
     def from_cleaned_to_enriched(item: CleanedQuizModel) -> EnrichedQuizModel:
-        """Mappa una sotto-domanda cleaned in `EnrichedQuizModel` (base-map, flat→flat).
+        """Maps a cleaned sub-question to `EnrichedQuizModel` (base-map, flat→flat).
 
         Args:
-            item: La sotto-domanda cleaned (flat, auto-contenuta) da mappare.
+            item: The cleaned sub-question (flat, self-contained) to map.
 
         Returns:
-            `EnrichedQuizModel` con `image_description=None` (da popolare dagli enricher).
+            `EnrichedQuizModel` with `image_description=None` (to be populated by the enrichers).
         """
         return EnrichedQuizModel(
             question_id=item.question_id,
@@ -94,15 +94,15 @@ class QuizMapper:
     def from_parsed_to_cleaned(
         item: ParsedQuizItemModel, parent: ParsedQuizModel
     ) -> CleanedQuizModel:
-        """Mappa una sotto-domanda parsed in `CleanedQuizModel` (denormalizza question_id/topic).
+        """Maps a parsed sub-question to `CleanedQuizModel` (denormalizes question_id/topic).
 
         Args:
-            item: La sotto-domanda da mappare.
-            parent: La domanda madre che fornisce `question_id` e `topic`.
+            item: The sub-question to map.
+            parent: The parent question providing `question_id` and `topic`.
 
         Returns:
-            `CleanedQuizModel` (flat, auto-contenuto) pronto per il dedup a monte,
-            chiamato per ogni sotto-domanda da `from_parsed_to_cleaned_all`.
+            `CleanedQuizModel` (flat, self-contained) ready for upstream dedup,
+            called for each sub-question by `from_parsed_to_cleaned_all`.
         """
         return CleanedQuizModel(
             question_id=parent.question_id,
@@ -115,20 +115,20 @@ class QuizMapper:
 
     @staticmethod
     def from_parsed_to_cleaned_all(parent: ParsedQuizModel) -> list[CleanedQuizModel]:
-        """Appiattisce una domanda parsed (nested) nelle sue sotto-domande cleaned (flat).
+        """Flattens a parsed (nested) question into its cleaned (flat) sub-questions.
 
-        Mappa ogni sotto-domanda in `parent.sub_questions` delegando a
-        `from_parsed_to_cleaned`, preservando l'ordine. Non deduplica: la
-        deduplicazione è un transform separato (`DeduplicateQuizItems`),
-        incatenato dopo `FlatMap(from_parsed_to_cleaned_all)` in
+        Maps each sub-question in `parent.sub_questions` by delegating to
+        `from_parsed_to_cleaned`, preserving order. Does not deduplicate:
+        deduplication is a separate transform (`DeduplicateQuizItems`),
+        chained after `FlatMap(from_parsed_to_cleaned_all)` in
         `build_quiz_cleaning_flow`.
 
         Args:
-            parent: La domanda parsed con le sotto-domande annidate.
+            parent: The parsed question with nested sub-questions.
 
         Returns:
-            Lista piatta di `CleanedQuizModel`, una per sotto-domanda, nello
-            stesso ordine di `parent.sub_questions`.
+            Flat list of `CleanedQuizModel`, one per sub-question, in the
+            same order as `parent.sub_questions`.
         """
         return [QuizMapper.from_parsed_to_cleaned(sub, parent) for sub in parent.sub_questions]
 

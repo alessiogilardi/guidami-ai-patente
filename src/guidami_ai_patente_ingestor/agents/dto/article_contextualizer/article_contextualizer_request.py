@@ -2,12 +2,12 @@ from pydantic import BaseModel
 
 
 class ArticleContextualizerRequest(BaseModel):
-    """Input per l'agente di contestualizzazione degli articoli normativi.
+    """Input for the norm article contextualization agent.
 
     Attributes:
-        title: Titolo dell'articolo.
-        text: Testo principale dell'articolo.
-        paragraphs: Commi pre-formattati come stringa numerata (es. "1. ...", "2. ...").
+        title: Article title.
+        text: Article main text.
+        paragraphs: Commas pre-formatted as a numbered string (e.g. "1. ...", "2. ...").
     """
 
     title: str

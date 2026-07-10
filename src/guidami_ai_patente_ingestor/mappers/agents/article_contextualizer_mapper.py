@@ -6,22 +6,22 @@ from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 
 
 class ArticleContextualizerMapper:
-    """Traduzione bidirezionale tra `EnrichedArticleModel` e i DTO dell'agente contestualizzatore.
+    """Bidirectional translation between `EnrichedArticleModel` and the contextualizer agent DTOs.
 
-    Tutti i metodi sono statici e puri (nessuna dipendenza iniettata).
+    All methods are static and pure (no injected dependencies).
     """
 
     @staticmethod
     def from_enriched_article_to_request(
         article: EnrichedArticleModel,
     ) -> ArticleContextualizerRequest:
-        """Costruisce la request dell'agente a partire da un articolo enriched.
+        """Builds the agent request from an enriched article.
 
         Args:
-            article: Articolo del corpus normativo da contestualizzare.
+            article: Article of the corpus normativo to contextualize.
 
         Returns:
-            `ArticleContextualizerRequest` con i commi pre-formattati come stringa numerata.
+            `ArticleContextualizerRequest` with the commas pre-formatted as a numbered string.
         """
         paragraphs = "\n".join(f"{i + 1}. {p}" for i, p in enumerate(article.paragraphs))
         return ArticleContextualizerRequest(
@@ -35,13 +35,13 @@ class ArticleContextualizerMapper:
         article: EnrichedArticleModel,
         response: ArticleContextualizerResponse,
     ) -> EnrichedArticleModel:
-        """Applica i contesti prodotti dall'agente all'articolo enriched.
+        """Applies the contexts produced by the agent to the enriched article.
 
         Args:
-            article: Articolo originale su cui applicare i contesti.
-            response: Risposta strutturata dell'agente con i contesti per comma.
+            article: Original article to apply the contexts to.
+            response: Structured agent response with the contexts per comma.
 
         Returns:
-            Nuova `EnrichedArticleModel` con `contexts` valorizzato dalla response.
+            New `EnrichedArticleModel` with `contexts` populated from the response.
         """
         return article.model_copy(update={"contexts": response.contexts})

@@ -1,4 +1,4 @@
-"""Mapper tra modelli di dominio e DTO degli agenti LLM."""
+"""Mappers between domain models and LLM agent DTOs."""
 
 from .article_contextualizer_mapper import ArticleContextualizerMapper
 from .norm_reference_describer_mapper import NormReferenceDescriberMapper

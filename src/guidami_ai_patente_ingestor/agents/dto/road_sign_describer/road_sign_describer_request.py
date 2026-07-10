@@ -2,11 +2,11 @@ from pydantic import BaseModel
 
 
 class RoadSignDescriberRequest(BaseModel):
-    """Input per l'agente di descrizione dei segnali stradali.
+    """Input for the road sign description agent.
 
     Attributes:
-        topic: Argomento della domanda del quiz (fornisce contesto alla descrizione).
-        text: Testo della domanda del quiz (fornisce contesto alla descrizione).
+        topic: Topic of the quiz question (provides context for the description).
+        text: Text of the quiz question (provides context for the description).
     """
 
     topic: str

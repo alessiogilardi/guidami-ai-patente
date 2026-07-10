@@ -2,19 +2,19 @@ from pydantic import BaseModel
 
 
 class RoadSignDescriberResponse(BaseModel):
-    """Output strutturato dell'agente di descrizione dei segnali stradali.
+    """Structured output of the road sign description agent.
 
-    L'ordine dei campi codifica la sequenza di Chain-of-Thought imposta da
-    pydantic-ai tramite `output_type`: il modello ragiona per iscritto in
-    `visual_analysis` prima di sintetizzare `name` e `description`.
+    The field order encodes the Chain-of-Thought sequence enforced by
+    pydantic-ai via `output_type`: the model reasons in writing in
+    `visual_analysis` before synthesizing `name` and `description`.
 
     Attributes:
-        visual_analysis: Ragionamento visivo interno (Chain-of-Thought) sul
-            contenuto dell'immagine. Non viene persistito né incluso in
-            `image_description`: è scartato a valle da `RoadSignDescriberMapper`,
-            che legge solo `name` e `description`.
-        name: Nome del segnale stradale.
-        description: Descrizione dettagliata del segnale.
+        visual_analysis: Internal visual reasoning (Chain-of-Thought) about
+            the image content. Not persisted or included in
+            `image_description`: it is discarded downstream by
+            `RoadSignDescriberMapper`, which reads only `name` and `description`.
+        name: Name of the road sign.
+        description: Detailed description of the sign.
     """
 
     visual_analysis: str

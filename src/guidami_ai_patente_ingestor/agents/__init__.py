@@ -1,4 +1,4 @@
-"""Agenti LLM di dominio dell'ingestor."""
+"""Domain LLM agents of the ingestor."""
 
 from .article_contextualizer_agent import ArticleContextualizerAgent
 from .norm_reference_describer_agent import NormReferenceDescriberAgent

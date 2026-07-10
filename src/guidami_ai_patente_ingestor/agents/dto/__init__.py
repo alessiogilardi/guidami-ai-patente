@@ -1,1 +1,1 @@
-"""DTO degli agenti LLM dell'ingestor."""
+"""DTOs for the ingestor's LLM agents."""

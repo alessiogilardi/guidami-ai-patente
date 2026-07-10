@@ -9,15 +9,15 @@ from guidami_ai_patente_ingestor.models.knowledge import (
 
 
 class ArticleMapper:
-    """Backbone delle trasformazioni 1:1 della pipeline del corpus normativo.
+    """Backbone of the 1:1 transformations in the corpus normativo pipeline.
 
-    Tutti i metodi sono statici e puri: ciascuno mappa un modello nel successivo
-    della catena (`from_X_to_Y`), sullo stesso pattern di `QuizMapper`.
+    All methods are static and pure: each maps a model to the next one in
+    the chain (`from_X_to_Y`), following the same pattern as `QuizMapper`.
     """
 
     @staticmethod
     def from_parsed_to_enriched(article: ParsedArticleModel) -> EnrichedArticleModel:
-        """Base-map: copia i campi comuni, `contexts` vuoto (valorizzato dal ContextEnricher)."""
+        """Base-map: copies the common fields, `contexts` empty (populated by ContextEnricher)."""
         return EnrichedArticleModel(
             number=article.number,
             title=article.title,
@@ -36,16 +36,16 @@ class ArticleMapper:
         comma_index: int,
         raw_text: str,
     ) -> EmbeddableChunkModel:
-        """Crea un `EmbeddableChunkModel` da un articolo enriched e un comma specifico.
+        """Creates an `EmbeddableChunkModel` from an enriched article and a specific comma.
 
         Args:
-            model: Articolo enriched sorgente.
-            source: Sorgente normativa ("cds" o "cap").
-            comma_index: Indice del comma (0 = testo principale).
-            raw_text: Testo grezzo del comma da embeddare.
+            model: Source enriched article.
+            source: Norm source ("cds" or "cap").
+            comma_index: Comma index (0 = main text).
+            raw_text: Raw text of the comma to embed.
 
         Returns:
-            Chunk pronto per l'embedding e l'indicizzazione.
+            Chunk ready for embedding and indexing.
         """
         return EmbeddableChunkModel(
             source=source,
@@ -60,14 +60,14 @@ class ArticleMapper:
 
     @staticmethod
     def from_embeddable_chunk_to_knowledge_chunk(model: EmbeddableChunkModel) -> KnowledgeChunk:
-        """Mappa un `EmbeddableChunkModel` nell'entità `KnowledgeChunk`.
+        """Maps an `EmbeddableChunkModel` to the `KnowledgeChunk` entity.
 
         Args:
-            model: Modello embeddable con embedding già calcolato (o `None` se
-                escluso dal filtro repealed).
+            model: Embeddable model with embedding already computed (or `None`
+                if excluded by the repealed filter).
 
         Returns:
-            Entità `KnowledgeChunk` pronta per lo store.
+            `KnowledgeChunk` entity ready for the store.
         """
         return KnowledgeChunk(
             source=model.source,
