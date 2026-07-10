@@ -32,10 +32,9 @@ class LocalFileSystemClient(BaseFileSystemClient, FileReaderInterface, FileWrite
 
     def read_stream(self, path: str | Path, chunk_size: int = 8192) -> Iterator[bytes]:
         """Stream a binary file in fixed-size chunks."""
-        with self._io_operation(path) as safe_path:
-            with safe_path.open(mode="rb") as f:
-                while chunk := f.read(chunk_size):
-                    yield chunk
+        with self._io_operation(path) as safe_path, safe_path.open(mode="rb") as f:
+            while chunk := f.read(chunk_size):
+                yield chunk
 
     def write_text(self, path: str | Path, content: str, encoding: str = "utf-8") -> None:
         """Write a string to a text file, overwriting any existing content."""
@@ -49,10 +48,9 @@ class LocalFileSystemClient(BaseFileSystemClient, FileReaderInterface, FileWrite
 
     def write_stream(self, path: str | Path, data: Iterable[bytes]) -> None:
         """Write a stream of byte chunks to a file, overwriting any existing content."""
-        with self._io_operation(path, mode="w") as safe_path:
-            with safe_path.open(mode="wb") as f:
-                for chunk in data:
-                    f.write(chunk)
+        with self._io_operation(path, mode="w") as safe_path, safe_path.open(mode="wb") as f:
+            for chunk in data:
+                f.write(chunk)
 
     def exists_or_raise(self, path: str | Path) -> None:
         """Validate that a file is accessible under the base directory."""

@@ -32,6 +32,46 @@ cursor.execute("SELECT ... WHERE embedding <=> %s", [vector])
 cursor.execute("SELECT ... WHERE embedding <=> %s::vector", [vector])
 ```
 
+## Collection transformations — direct iteration over index-tracking
+
+Do **not** build a side list of `(index, payload)` tuples and then splice results back
+by position. When a producer guarantees its output is aligned 1:1 to its input (e.g.
+`EmbeddingService.execute` returns vectors in input order), exploit that invariant
+instead of re-deriving alignment through positional indices:
+
+- filter the input,
+- call the producer,
+- consume the results in lockstep (`iter()` + `next()`, or `zip(..., strict=True)`),
+- rebuild in a single pass.
+
+Throwaway destructuring is the smell that flags this anti-pattern — if you write
+`for (i, _), x in zip(...)` or `[y for _, y in pairs]`, you are carrying state you
+do not need.
+
+```python
+# WRONG — track indices, splice back by position
+to_embed = [(i, item.meta) for i, item in enumerate(items) if item.meta is not None]
+vectors = service.execute([meta for _, meta in to_embed])
+result = list(items)
+for (i, _), vector in zip(to_embed, vectors, strict=True):
+    result[i] = result[i].model_copy(update={"embedding": vector})
+
+# RIGHT — lockstep consumption, one rebuild pass, no indices
+to_embed = [item for item in items if item.meta is not None]
+vectors = service.execute(to_embed)
+vectors_iter = iter(vectors)
+result = [
+    item.model_copy(update={"embedding": next(vectors_iter)}) if item.meta is not None else item
+    for item in items
+]
+```
+
+Rationale: KISS — the indices are accidental complexity the ordering guarantee makes
+superfluous. This class of defect is **not** caught by a linter (no tool knows the
+producer preserves order); enforcement is this rule plus `/code-review` / `/simplify`.
+`ruff` `SIM` and `C901` (mccabe, `max-complexity = 10`) are enabled as a mechanical
+floor for the correlated smells, not as a substitute for review.
+
 ## Tests — no `__init__.py` in test directories
 
 Test directories never contain `__init__.py`. Any test directory named after a source

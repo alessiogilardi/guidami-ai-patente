@@ -9,10 +9,10 @@ logger = logging.getLogger(__name__)
 
 
 class EmbedQuizMetadata(UseCase[Iterable[EmbeddableQuizModel], list[EmbeddableQuizModel]]):
-    """Computes the embedding of every item from its `quiz_metadata`.
+    """Computes the embedding of every item that carries `quiz_metadata`.
 
-    Filters items with `quiz_metadata is not None` and passes them to `EmbeddingService`
-    (they satisfy `Embeddable` via `quiz_metadata.embedded_text`). Items without
+    Items with metadata are passed to `EmbeddingService` (they satisfy `Embeddable`
+    via their `embedded_text`, which delegates to `quiz_metadata`). Items without
     metadata pass through unchanged with `embedding = None`.
     """
 
@@ -31,21 +31,25 @@ class EmbedQuizMetadata(UseCase[Iterable[EmbeddableQuizModel], list[EmbeddableQu
             fails, returns the original list unchanged with a warning logged.
         """
         items = list(request)
-        to_embed = [
-            (i, item.quiz_metadata)
-            for i, item in enumerate(items)
-            if item.quiz_metadata is not None
-        ]
+        to_embed = [item for item in items if item.quiz_metadata is not None]
         if not to_embed:
             return items
 
         try:
-            vectors = self._embedding_service.execute([metadata for _, metadata in to_embed])
+            # TODO: narrow to EmbeddingError once the domain-exception pattern lands
+            # (see the deferred plan); a broad catch here also swallows real bugs.
+            vectors = self._embedding_service.execute(to_embed)
         except Exception:
             logger.warning("metadata embedding failed, skipping batch")
             return items
 
-        result = list(items)
-        for (i, _), vector in zip(to_embed, vectors, strict=True):
-            result[i] = result[i].model_copy(update={"embedding": vector})
+        # EmbeddingService returns vectors aligned 1:1 to `to_embed`; consuming them
+        # in lockstep while re-scanning `items` avoids tracking positional indices.
+        vectors_iter = iter(vectors)
+        result: list[EmbeddableQuizModel] = []
+        for item in items:
+            if item.quiz_metadata is None:
+                result.append(item)
+            else:
+                result.append(item.model_copy(update={"embedding": next(vectors_iter)}))
         return result

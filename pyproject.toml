@@ -48,12 +48,16 @@ line-length = 99
 target-version = "py312"
 
 [tool.ruff.lint]
-# E, F = PEP8, I = isort, G = logging, D = docstring, UP = modernization
-select = ["E", "F", "I", "G", "D", "UP"]
+# E, F = PEP8, I = isort, G = logging, D = docstring, UP = modernization,
+# SIM = simplify (flags over-complicated constructs), C901 = cyclomatic complexity
+select = ["E", "F", "I", "G", "D", "UP", "SIM", "C901"]
 ignore = [
     "D100", # missing-module-docstring
     "G004", # logging-fstring-interpolation
 ]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
@@ -62,6 +66,11 @@ convention = "google"
 # Test names are self-explanatory, no docstrings required.
 "tests/**" = ["D101", "D102", "D103"]
 "**/__init__.py" = ["D104"]
+# scrapers/parsers are one-shot script entry points: cyclomatic complexity of their
+# top-level orchestration is low-value to enforce (same spirit as the TDD exemption
+# for scripts). C901 stays active for commons/ and the ingestor.
+"src/scrapers/**" = ["C901"]
+"src/parsers/**" = ["C901"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

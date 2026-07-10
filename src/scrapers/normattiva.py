@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import contextlib
 import json
 import re
 import time
@@ -185,10 +186,8 @@ def _headers(toc_url: str) -> dict[str, str]:
 
 
 def _refresh_session(client: httpx.Client, toc_url: str) -> None:
-    try:
+    with contextlib.suppress(httpx.RequestError):
         client.get(toc_url, headers=_headers(toc_url))
-    except httpx.RequestError:
-        pass
 
 
 def _fetch_with_retry(

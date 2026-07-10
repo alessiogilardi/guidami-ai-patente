@@ -20,7 +20,10 @@ repositories or embedding clients.
   `pytest-cov`, `pytest-mock`, or `faker`; no coverage tooling configured.
 - Run commands: `uv run pytest`, `uv run pytest tests/path/to/test_file.py::test_name`.
 - Adjacent quality gates: `ruff` (line-length 99, py312, Google docstring
-  convention, tests exempted from docstring rules) and `pyright`
+  convention, tests exempted from docstring rules; rule set `E,F,I,G,D,UP`
+  plus `SIM` simplify and `C901` cyclomatic complexity with
+  `max-complexity = 10`, `src/scrapers/**` and `src/parsers/**` exempted
+  from `C901` as script entry points) and `pyright`
   (`include = ["src"]` only — **`tests/` is not type-checked by pyright**).
 - A PostToolUse hook (`.claude/settings.json`) runs `ruff` autofix then
   `pyright` automatically on every `Edit`/`Write` touching a `*.py` file.
@@ -52,4 +55,4 @@ mechanism in this project.
 Naming: `test_*.py`, generally one test file per source file/class (e.g.
 `test_article_chunker.py` for `article_chunker.py`).
 
-*Last updated: 2026-07-10 — verified against commit `66593a7`.*
+*Last updated: 2026-07-10 — verified against commit `10e5fe7`.*
