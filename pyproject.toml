@@ -48,7 +48,7 @@ line-length = 99
 target-version = "py312"
 
 [tool.ruff.lint]
-# E, F = PEP8, I = isort, G = logging, D = docstring, UP = modernizzazione
+# E, F = PEP8, I = isort, G = logging, D = docstring, UP = modernization
 select = ["E", "F", "I", "G", "D", "UP"]
 ignore = [
     "D100", # missing-module-docstring
@@ -59,7 +59,7 @@ ignore = [
 convention = "google"
 
 [tool.ruff.lint.per-file-ignores]
-# Nomi dei test sono autoesplicativi, niente docstring richieste.
+# Test names are self-explanatory, no docstrings required.
 "tests/**" = ["D101", "D102", "D103"]
 "**/__init__.py" = ["D104"]
 
@@ -72,10 +72,10 @@ markers = [
 
 [tool.pyright]
 include = ["src"]
-# Impostazioni di analisi
+# Analysis settings
 typeCheckingMode = "standard"
 pythonVersion = "3.12"
 useLibraryCodeForTypes = true
 reportMissingTypeStubs = false
-# Esclude il controllo dei tipi sulle dipendenze esterne installate
+# Excludes type checking on installed external dependencies
 reportMissingImports = "none"
