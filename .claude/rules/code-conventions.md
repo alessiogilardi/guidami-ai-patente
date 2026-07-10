@@ -3,6 +3,16 @@
 Project-specific conventions. General Python rules (typing, PEP 8 style, relative/absolute
 imports, SOLID, configuration patterns) live in `~/.claude/rules/python/`.
 
+## Language — English only
+
+Docstrings, inline comments, log messages, and print/console output are always written
+in English, regardless of the language used in the conversation with the user or in
+commit messages. This applies uniformly across `src/` and `tests/`.
+
+Domain proper nouns that are legitimately Italian (e.g. "Codice della Strada", "CdS",
+"CAP") are not translated. Quiz/legal-text content stored as data (fixtures, DB rows)
+is not documentation and is unaffected by this rule.
+
 ## Pydantic
 
 Configuration classes (any file under `configs/`) must set
