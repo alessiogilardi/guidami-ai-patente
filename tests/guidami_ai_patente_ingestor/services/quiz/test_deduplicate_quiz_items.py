@@ -1,7 +1,7 @@
-"""Test per DeduplicateQuizItems (UseCase generico che deduplica quiz item flat).
+"""Tests for DeduplicateQuizItems (generic UseCase that deduplicates flat quiz items).
 
-Chiave di unicità: (testo normalizzato, risposta corretta, identità immagine),
-condivisa da `build_quiz_cleaning_flow` (CleanedQuizModel) e
+Uniqueness key: (normalized text, correct answer, image identity),
+shared by `build_quiz_cleaning_flow` (CleanedQuizModel) and
 `build_quiz_indexing_flow` (EnrichedQuizModel).
 """
 
@@ -89,7 +89,7 @@ def test_same_text_different_correct_answer_both_kept() -> None:
 
 
 def test_works_on_cleaned_quiz_model() -> None:
-    """Il componente deduplica CleanedQuizModel senza subclassing model-specific."""
+    """The component deduplicates CleanedQuizModel without model-specific subclassing."""
     items = [
         _cleaned("1", "Domanda", correct_answer=True, image="img.jpeg"),
         _cleaned("2", "Domanda", correct_answer=True, image="img.jpeg"),
@@ -103,7 +103,7 @@ def test_works_on_cleaned_quiz_model() -> None:
 
 
 def test_works_on_enriched_quiz_model() -> None:
-    """Lo stesso componente, senza modifiche, deduplica anche EnrichedQuizModel."""
+    """The same component, unmodified, also deduplicates EnrichedQuizModel."""
     items = [
         _enriched("1", "Domanda", correct_answer=True, image="img.jpeg"),
         _enriched("2", "Domanda", correct_answer=True, image="img.jpeg"),
@@ -117,7 +117,7 @@ def test_works_on_enriched_quiz_model() -> None:
 
 
 def test_logs_warning_with_item_number_on_duplicate(caplog) -> None:
-    """Il messaggio di log unificato riporta solo item.number (no question_id)."""
+    """The unified log message reports only item.number (no question_id)."""
     items = [_cleaned("1", "Domanda"), _cleaned("2", "Domanda")]
     dedup = DeduplicateQuizItems()
 

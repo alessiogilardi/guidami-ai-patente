@@ -1,10 +1,11 @@
-"""Test per build_quiz_indexing_flow (flow factory SP04, single-source full-reload)."""
+"""Tests for build_quiz_indexing_flow (flow factory SP04, single-source full-reload)."""
 
 from unittest.mock import MagicMock
 
+from flowstep import Flow, FlowValidator
+
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.configs import PostgresConnectionConfig
-from flowstep import Flow, FlowValidator
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators import build_quiz_indexing_flow
 from guidami_ai_patente_ingestor.services import LayerResolver
@@ -57,18 +58,18 @@ def test_flow_name_is_quiz_indexing() -> None:
 
 
 def test_flow_required_input_keys_is_empty_set() -> None:
-    """Il flow non richiede chiavi esterne: LoadJsonStep parte da zero."""
+    """The flow requires no external keys: LoadJsonStep starts from scratch."""
     report = FlowValidator().validate(_build())
     assert report.required_input_keys == set()
 
 
 def test_build_with_validate_true_does_not_raise() -> None:
-    """validate=True non solleva (il WARNING su EMBEDDABLE_QUIZ è benigno)."""
+    """validate=True does not raise (the WARNING on EMBEDDABLE_QUIZ is benign)."""
     assert isinstance(_build(validate=True), Flow)
 
 
 def test_flow_has_five_steps_in_order() -> None:
-    """La catena è Load → MapToEmbeddable → Embed → MapToQuizEntity → Store."""
+    """The chain is Load → MapToEmbeddable → Embed → MapToQuizEntity → Store."""
     steps = _build().get_steps()
     assert [step.name for step in steps] == [
         "load_enriched_quiz",

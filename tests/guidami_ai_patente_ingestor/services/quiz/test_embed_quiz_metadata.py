@@ -1,4 +1,4 @@
-"""Test per EmbedQuizMetadata (UseCase che calcola l'embedding da quiz_metadata)."""
+"""Tests for EmbedQuizMetadata (UseCase that computes the embedding from quiz_metadata)."""
 
 from unittest.mock import MagicMock
 
@@ -31,7 +31,7 @@ def _question(**kwargs) -> EmbeddableQuizModel:
 
 
 def test_embeds_vector_search_queries() -> None:
-    """Il testo passato a EmbeddingService è vector_search_queries via quiz_metadata."""
+    """The text passed to EmbeddingService is vector_search_queries via quiz_metadata."""
     metadata = _metadata(vector_search_queries=["query uno", "query due"])
     item = _question(quiz_metadata=metadata)
     embedding_service = MagicMock(spec=EmbeddingService)

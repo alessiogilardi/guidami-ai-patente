@@ -66,7 +66,7 @@ def test_bulk_insert_with_empty_list_is_noop(client: PostgresClient) -> None:
 
 @pytest.mark.integration
 def test_delete_source_removes_only_that_source(client: PostgresClient) -> None:
-    """delete_source cancella solo i chunk della source indicata, gli altri sopravvivono."""
+    """delete_source removes only chunks of the given source, others survive."""
     repository = KnowledgeChunkStoreRepository("knowledge_chunks", client)
     repository.bulk_insert([_chunk("1", source="cds"), _chunk("2", source="cap")])
 

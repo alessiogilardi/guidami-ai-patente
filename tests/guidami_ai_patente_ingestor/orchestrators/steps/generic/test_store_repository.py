@@ -1,4 +1,4 @@
-"""Test di conformità statica: i repository concreti soddisfano StoreRepository."""
+"""Static conformance test: concrete repositories satisfy StoreRepository."""
 
 from typing import TYPE_CHECKING
 
@@ -15,12 +15,12 @@ def _conforms(
     kc: "KnowledgeChunkStoreRepository",
     qq: "QuizQuestionStoreRepository",
 ) -> None:
-    a: StoreRepository = kc  # pyright verifica la conformità strutturale
+    a: StoreRepository = kc  # pyright verifies structural conformance
     b: StoreRepository = qq
     _ = (a, b)
 
 
 def test_real_repos_satisfy_store_repository_protocol() -> None:
-    # La conformità è garantita staticamente da `_conforms` (pyright in CI);
-    # qui un'asserzione runtime banale per far esistere il test.
+    # Conformance is statically guaranteed by `_conforms` (pyright in CI);
+    # here a trivial runtime assertion so the test exists.
     assert _conforms is not None

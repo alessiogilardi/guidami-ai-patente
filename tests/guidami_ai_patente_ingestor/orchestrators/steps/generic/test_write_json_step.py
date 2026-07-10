@@ -1,10 +1,11 @@
-"""Test per WriteJsonStep generico."""
+"""Tests for the generic WriteJsonStep."""
 
 from pathlib import Path
 from unittest.mock import MagicMock
 
-from commons.repositories import JsonRepository
 from flowstep import FlowContext
+
+from commons.repositories import JsonRepository
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import WriteJsonStep
 from guidami_ai_patente_ingestor.services import LayerResolver
 

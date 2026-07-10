@@ -1,12 +1,12 @@
-"""Test per EmbedStep (step generico di embedding)."""
+"""Tests for EmbedStep (generic embedding step)."""
 
 from collections.abc import Sequence
 
 import pytest
+from flowstep import FlowContext
 
 from commons.clients import EmbeddingClient
 from commons.services.embeddings import EmbeddingService
-from flowstep import FlowContext
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import EmbedStep
 
 
@@ -19,7 +19,7 @@ class _FakeClient(EmbeddingClient):
 
 
 class _FakeEmbeddable:
-    """Soddisfa il Protocol Embedded strutturalmente."""
+    """Structurally satisfies the Embedded Protocol."""
 
     def __init__(self, text: str) -> None:
         self._text = text
@@ -50,21 +50,21 @@ def test_execute_assigns_embedding_and_writes_back_to_context() -> None:
 
     step.execute(context)
 
-    # ogni item deve avere l'embedding valorizzato
+    # each item must have its embedding set
     assert items[0].embedding == [float(len("hello"))]
     assert items[1].embedding == [float(len("world!"))]
 
-    # context.get deve ritornare gli item aggiornati
+    # context.get must return the updated items
     result = context.get("my_items")
-    assert result is items  # stessa lista (mutata in place e ri-scritta)
+    assert result is items  # same list (mutated in place and re-written)
 
 
 def test_execute_raises_value_error_on_length_mismatch() -> None:
-    """Se EmbeddingService ritorna meno vettori degli item, zip(strict=True) alza ValueError."""
+    """If EmbeddingService returns fewer vectors than items, zip(strict=True) raises ValueError."""
 
     class _ShortEmbeddingService(EmbeddingService):
         def execute(self, input: Sequence) -> list[list[float]]:  # type: ignore[override]
-            # Restituisce un vettore in meno degli item
+            # Returns one vector fewer than the items
             return [[1.0]] * (len(input) - 1)
 
     short_service = _ShortEmbeddingService(batch_size=10, client=_FakeClient())

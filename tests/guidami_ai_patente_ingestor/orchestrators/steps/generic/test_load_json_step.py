@@ -1,10 +1,11 @@
-"""Test per LoadJsonStep generico."""
+"""Tests for the generic LoadJsonStep."""
 
 from pathlib import Path
 from unittest.mock import MagicMock
 
-from commons.repositories import JsonRepository
 from flowstep import FlowContext
+
+from commons.repositories import JsonRepository
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import LoadJsonStep
 from guidami_ai_patente_ingestor.services import LayerResolver
 
@@ -20,7 +21,7 @@ def _make_repository() -> JsonRepository:
 
 
 def test_required_keys_is_empty_set() -> None:
-    """Lo step è il punto di partenza del flow: nessuna chiave richiesta."""
+    """The step is the flow's starting point: no key is required."""
     resolver = _make_layer_resolver()
     step = LoadJsonStep("load", "parsed", "cds", "my_key", resolver, _make_repository())
     assert step.get_required_keys() == set()
@@ -33,7 +34,7 @@ def test_produced_keys_contains_output_key() -> None:
 
 
 def test_execute_loads_source_and_puts_list_under_output_key() -> None:
-    """Le items caricate dal repository finiscono nel context sotto output_key."""
+    """Items loaded from the repository end up in the context under output_key."""
     items = [{"a": 1}, {"b": 2}]
     resolver = _make_layer_resolver()
     repository = _make_repository()
@@ -49,7 +50,7 @@ def test_execute_loads_source_and_puts_list_under_output_key() -> None:
 
 
 def test_execute_resolves_path_with_configured_layer_and_source() -> None:
-    """Il path risolto combina il layer e la source iniettati."""
+    """The resolved path combines the injected layer and source."""
     resolver = _make_layer_resolver()
     repository = _make_repository()
     repository.load.return_value = []
@@ -61,7 +62,7 @@ def test_execute_resolves_path_with_configured_layer_and_source() -> None:
 
 
 def test_step_name_is_set() -> None:
-    """Regressione: il nome passato a __init__ deve essere esposto tramite Step._name."""
+    """Regression: the name passed to __init__ must be exposed via Step._name."""
     resolver = _make_layer_resolver()
     step = LoadJsonStep("my_step_name", "parsed", "cds", "my_key", resolver, _make_repository())
     assert step._name == "my_step_name"

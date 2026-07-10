@@ -1,14 +1,14 @@
-"""Test per build_knowledge_indexing_flow (flow factory SP03, per-source)."""
+"""Tests for build_knowledge_indexing_flow (flow factory SP03, per-source)."""
 
 import json
 from pathlib import Path
 from unittest.mock import MagicMock
 
 import pytest
+from flowstep import Flow
 
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.configs import PostgresConnectionConfig
-from flowstep import Flow
 from guidami_ai_patente_ingestor.configs import IngestorConfig, SourceConfig
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import build_knowledge_indexing_flow
@@ -66,7 +66,7 @@ def test_flow_name_is_knowledge_indexing() -> None:
 
 
 def test_flow_required_input_keys_is_empty_set() -> None:
-    """Il flow non richiede chiavi esterne: LoadJsonStep parte da zero."""
+    """The flow requires no external keys: LoadJsonStep starts from scratch."""
     from flowstep import FlowValidator
 
     flow = build_knowledge_indexing_flow(
@@ -82,7 +82,7 @@ def test_flow_required_input_keys_is_empty_set() -> None:
 
 
 def test_build_with_validate_true_does_not_raise() -> None:
-    """validate=True non solleva (il WARNING su CHUNKS è benigno)."""
+    """validate=True does not raise (the WARNING on CHUNKS is benign)."""
     flow = build_knowledge_indexing_flow(
         config=_base_config(),
         layer_resolver=MagicMock(spec=LayerResolver),
@@ -95,7 +95,7 @@ def test_build_with_validate_true_does_not_raise() -> None:
 
 
 def test_build_with_unknown_source_raises_value_error() -> None:
-    """Una source fuori dal catalogo configurato è un errore esplicito."""
+    """A source outside the configured catalog is an explicit error."""
     with pytest.raises(ValueError, match="Unknown source"):
         build_knowledge_indexing_flow(
             config=_base_config(),
@@ -107,7 +107,7 @@ def test_build_with_unknown_source_raises_value_error() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Integration test — richiede Postgres e file su disco
+# Integration test — requires Postgres and files on disk
 # ---------------------------------------------------------------------------
 
 
@@ -150,9 +150,9 @@ def _count(pg_client: PostgresClient, where: str) -> int:
 
 @pytest.mark.integration
 def test_cap_run_does_not_overwrite_cds_run(tmp_path: Path) -> None:
-    """Il punto chiave del per-source: una run su 'cap' non cancella i chunk di 'cds'.
+    """The key point of per-source: a run on 'cap' does not delete 'cds' chunks.
 
-    Inoltre: i chunk repealed sono storati con embedding IS NULL, i non-repealed embeddati.
+    Also: repealed chunks are stored with embedding IS NULL, non-repealed ones are embedded.
     """
     db_config = PostgresConnectionConfig(
         host="localhost",
@@ -188,9 +188,9 @@ def test_cap_run_does_not_overwrite_cds_run(tmp_path: Path) -> None:
     # Run 1: cds
     _run("cds")
     cds_after_run1 = _count(pg_client, "source = 'cds'")
-    assert cds_after_run1 > 0, "la run cds deve inserire chunk"
+    assert cds_after_run1 > 0, "the cds run must insert chunks"
 
-    # Run 2: cap — NON deve toccare le righe cds
+    # Run 2: cap — must NOT touch the cds rows
     _run("cap")
 
     cds_count = _count(pg_client, "source = 'cds'")
@@ -199,15 +199,15 @@ def test_cap_run_does_not_overwrite_cds_run(tmp_path: Path) -> None:
     non_repealed_embedded = _count(pg_client, "embedding IS NOT NULL AND is_repealed = FALSE")
     pg_client.close()
 
-    assert cds_count == cds_after_run1, "la run cap non deve cancellare i chunk cds"
-    assert cap_count > 0, "la run cap deve inserire i propri chunk"
-    assert repealed_null > 0, "i chunk repealed devono avere embedding IS NULL"
-    assert non_repealed_embedded > 0, "i chunk non-repealed devono avere embedding valorizzato"
+    assert cds_count == cds_after_run1, "the cap run must not delete the cds chunks"
+    assert cap_count > 0, "the cap run must insert its own chunks"
+    assert repealed_null > 0, "repealed chunks must have embedding IS NULL"
+    assert non_repealed_embedded > 0, "non-repealed chunks must have a populated embedding"
 
 
 @pytest.mark.integration
 def test_rerunning_same_source_is_full_reload(tmp_path: Path) -> None:
-    """Ri-eseguire la stessa source è un full-reload per-source: il conteggio resta stabile."""
+    """Re-running the same source is a per-source full-reload: the count stays stable."""
     db_config = PostgresConnectionConfig(
         host="localhost",
         port=5432,
@@ -243,4 +243,4 @@ def test_rerunning_same_source_is_full_reload(tmp_path: Path) -> None:
     pg_client.close()
 
     assert count_after_first > 0
-    assert count_after_second == count_after_first, "il re-run non deve duplicare i chunk"
+    assert count_after_second == count_after_first, "re-running must not duplicate the chunks"

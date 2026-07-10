@@ -1,9 +1,10 @@
-"""Test per StoreChunksStep (full-reload per-source)."""
+"""Tests for StoreChunksStep (per-source full-reload)."""
 
 from unittest.mock import MagicMock, call
 
-from domain.entities.knowledge import KnowledgeChunk
 from flowstep import FlowContext
+
+from domain.entities.knowledge import KnowledgeChunk
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import StoreChunksStep
 from guidami_ai_patente_ingestor.repositories import KnowledgeChunkStoreRepository
@@ -40,5 +41,5 @@ def test_execute_deletes_source_then_bulk_inserts() -> None:
 
     StoreChunksStep("store", "cap", repo).execute(context)
 
-    # delete-by-source PRIMA dell'insert, con la source iniettata
+    # delete-by-source BEFORE the insert, with the injected source
     assert repo.mock_calls == [call.delete_source("cap"), call.bulk_insert(chunks)]

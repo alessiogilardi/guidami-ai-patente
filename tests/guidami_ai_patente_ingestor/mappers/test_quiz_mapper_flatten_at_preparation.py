@@ -1,9 +1,9 @@
-"""Test per i nuovi metodi QuizMapper introdotti da SP09 (flatten anticipato a preparation).
+"""Tests for the new QuizMapper methods introduced by SP09 (flatten moved to preparation).
 
 `from_cleaned_to_enriched` (flat->flat base-map), `from_parsed_to_cleaned`
-(nested item -> flat, denormalizza question_id/topic dal genitore) e
-`from_parsed_to_cleaned_all` (unnest+map di una domanda parsed intera,
-collassato da FlattenQuiz, vedi docs/plans/2026-07-09--collapse-flatten-quiz-into-flatmap.md).
+(nested item -> flat, denormalizes question_id/topic from the parent) and
+`from_parsed_to_cleaned_all` (unnest+map of an entire parsed question,
+collapsed from FlattenQuiz, see docs/plans/2026-07-09--collapse-flatten-quiz-into-flatmap.md).
 """
 
 from guidami_ai_patente_ingestor.mappers import QuizMapper

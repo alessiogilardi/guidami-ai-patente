@@ -1,13 +1,14 @@
-"""Test per DbStoreStep (sink terminale full-reload)."""
+"""Tests for DbStoreStep (full-reload terminal sink)."""
 
 from typing import Any
 
 from flowstep import FlowContext
+
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import DbStoreStep
 
 
 class _RecordingRepo:
-    """Soddisfa il Protocol StoreRepository. Registra le chiamate."""
+    """Satisfies the StoreRepository Protocol. Records the calls."""
 
     def __init__(self) -> None:
         self.events: list[str] = []

@@ -1,13 +1,14 @@
-"""Test consolidato per JsonRepository.get_instance() su tutti i modelli supportati.
+"""Consolidated test for JsonRepository.get_instance() across all supported models.
 
-Sostituisce i 4 test per-sottoclasse (ArticleRepository, EnrichedArticleRepository,
-QuizBankRepository, EnrichedQuizBankRepository) con un unico test parametrizzato
-che passa per ``JsonRepository.get_instance(base_path, Model)`` (da ``commons.repositories``).
+Replaces the 4 per-subclass tests (ArticleRepository, EnrichedArticleRepository,
+QuizBankRepository, EnrichedQuizBankRepository) with a single parametrized test
+that goes through ``JsonRepository.get_instance(base_path, Model)`` (from
+``commons.repositories``).
 
-NOTE (SP09 plans/ingest--orchestrator/09-quiz-flatten-at-preparation.md): i modelli
-quiz `QuizBankModel`/`QuizBankItemModel` sono rinominati in `ParsedQuizModel`/
-`ParsedQuizItemModel` (nested, layer "parsed"); `EnrichedQuizModel` è ora flat
-(niente più `EnrichedQuizItemModel`/`sub_questions`).
+NOTE (SP09 plans/ingest--orchestrator/09-quiz-flatten-at-preparation.md): the quiz
+models `QuizBankModel`/`QuizBankItemModel` are renamed to `ParsedQuizModel`/
+`ParsedQuizItemModel` (nested, "parsed" layer); `EnrichedQuizModel` is now flat
+(no more `EnrichedQuizItemModel`/`sub_questions`).
 """
 
 import json
@@ -28,7 +29,7 @@ FIXTURES_DIR = Path(__file__).parents[1] / "fixtures"
 
 
 # ---------------------------------------------------------------------------
-# Factory helpers (un modello semplice per tipo)
+# Factory helpers (one simple model per type)
 # ---------------------------------------------------------------------------
 
 
@@ -88,7 +89,7 @@ def _enriched_quiz(
 
 
 # ---------------------------------------------------------------------------
-# Round-trip parametrizzato sui 4 modelli
+# Round-trip parametrized across the 4 models
 # ---------------------------------------------------------------------------
 
 ROUND_TRIP_CASES = [
@@ -100,7 +101,7 @@ ROUND_TRIP_CASES = [
 
 
 class TestRoundTrip:
-    """Round-trip write → load per ogni modello tramite JsonRepository.get_instance."""
+    """Round-trip write → load for every model via JsonRepository.get_instance."""
 
     @pytest.mark.parametrize("factory,model_cls", ROUND_TRIP_CASES)
     def test_write_then_load_round_trips(self, factory, model_cls, tmp_path: Path) -> None:
@@ -135,7 +136,7 @@ class TestRoundTrip:
 
 
 # ---------------------------------------------------------------------------
-# UTF-8 preservation (accentate italiane)
+# UTF-8 preservation (Italian accented characters)
 # ---------------------------------------------------------------------------
 
 

@@ -1,14 +1,15 @@
-"""Test per build_quiz_cleaning_flow / build_quiz_enrichment_flow (SP09).
+"""Tests for build_quiz_cleaning_flow / build_quiz_enrichment_flow (SP09).
 
-Rimpiazzano build_quiz_preparation_flow (rimosso): mirror di
-build_knowledge_cleaning_flow / build_knowledge_enrichment_flow, ma single-source
-(niente parametro `source` esplicito: deriva da `config.quiz_preparation.sources[0]`).
+Replaces build_quiz_preparation_flow (removed): mirrors
+build_knowledge_cleaning_flow / build_knowledge_enrichment_flow, but single-source
+(no explicit `source` parameter: derived from `config.quiz_preparation.sources[0]`).
 """
 
 from unittest.mock import MagicMock, patch
 
-from commons.configs import PostgresConnectionConfig
 from flowstep import Flow, FlowValidator
+
+from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators import (
@@ -78,7 +79,7 @@ def test_cleaning_flow_build_with_validate_true_does_not_raise() -> None:
 
 
 def test_cleaning_flow_has_three_steps_in_order() -> None:
-    """La catena è LoadParsedQuiz -> FlatMap+DeduplicateQuizItems -> WriteCleanedQuiz."""
+    """The chain is LoadParsedQuiz -> FlatMap+DeduplicateQuizItems -> WriteCleanedQuiz."""
     flow = build_quiz_cleaning_flow(
         config=_base_config(),
         layer_resolver=_make_layer_resolver(),
@@ -135,7 +136,7 @@ def test_enrichment_flow_build_with_validate_true_does_not_raise() -> None:
 
 
 def test_enrichment_flow_has_three_steps_in_order() -> None:
-    """La catena è LoadCleanedQuiz -> Enrich -> WriteEnrichedQuiz."""
+    """The chain is LoadCleanedQuiz -> Enrich -> WriteEnrichedQuiz."""
     with patch.object(RoadSignDescriberAgent, "from_yaml", return_value=_patched_describer()):
         flow = build_quiz_enrichment_flow(
             config=_base_config(),

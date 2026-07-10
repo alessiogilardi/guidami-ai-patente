@@ -1,7 +1,7 @@
-"""Test per QuizMapper (lato indexing, fuori scope SP09).
+"""Tests for QuizMapper (indexing side, out of scope for SP09).
 
-I metodi preparation (`from_parsed_to_cleaned`, `from_cleaned_to_enriched`) sono
-testati separatamente in `test_quiz_mapper_flatten_at_preparation.py` (SP09).
+The preparation methods (`from_parsed_to_cleaned`, `from_cleaned_to_enriched`) are
+tested separately in `test_quiz_mapper_flatten_at_preparation.py` (SP09).
 """
 
 from domain.entities.quiz import QuizQuestion

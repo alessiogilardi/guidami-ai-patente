@@ -1,4 +1,4 @@
-"""Test per ContextEnricher."""
+"""Tests for ContextEnricher."""
 
 from unittest.mock import MagicMock
 

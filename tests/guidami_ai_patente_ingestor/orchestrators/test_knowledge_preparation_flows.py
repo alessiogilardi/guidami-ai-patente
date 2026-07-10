@@ -1,12 +1,12 @@
-"""Test per build_knowledge_cleaning_flow / build_knowledge_enrichment_flow (SP05, per-source)."""
+"""Tests for build_knowledge_cleaning_flow / build_knowledge_enrichment_flow (SP05, per-source)."""
 
 from unittest.mock import MagicMock, patch
 
 import pytest
-
-from commons.configs import PostgresConnectionConfig
 from flowstep import Flow, FlowValidator
 from flowstep.steps import ApplyStep
+
+from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators import (
