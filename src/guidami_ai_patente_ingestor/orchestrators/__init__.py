@@ -1,4 +1,4 @@
-"""Orchestratori dell'ingestor."""
+"""Ingestor orchestrators."""
 
 from .knowledge_flows import (
     build_knowledge_cleaning_flow,

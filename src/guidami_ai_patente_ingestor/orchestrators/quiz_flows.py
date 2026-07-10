@@ -1,4 +1,7 @@
-"""Factory per i flow di quiz indexing (SP04) e quiz preparation (SP06, esteso da SP09)."""
+"""Factories for the quiz indexing (SP04) and quiz preparation (SP06, extended by SP09) flows."""
+
+from flowstep import Flow, FlowBuilder
+from flowstep.steps import ApplyStep
 
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
@@ -6,8 +9,6 @@ from commons.configs import AgentConfig
 from commons.repositories import JsonRepository, YamlRepository
 from commons.services.embeddings import EmbeddingService
 from commons.use_cases import FlatMap, ForEach
-from flowstep import Flow, FlowBuilder
-from flowstep.steps import ApplyStep
 from guidami_ai_patente_ingestor.agents import NormReferenceDescriberAgent, RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.mappers import QuizMapper
@@ -30,8 +31,8 @@ from guidami_ai_patente_ingestor.services.quiz.enrichers import (
     NormReferenceEnricher,
 )
 
-# Layer intermedio condiviso dalle due factory di preparation (clean/enrich):
-# non espresso in PipelineLayerConfig (vedi decisione di layer in SP05, replicata da SP09).
+# Intermediate layer shared by the two preparation factories (clean/enrich):
+# not expressed in PipelineLayerConfig (see the layer decision in SP05, replicated by SP09).
 _CLEANED_LAYER = "cleaned"
 
 
@@ -42,34 +43,34 @@ def build_quiz_indexing_flow(
     postgres_client: PostgresClient,
     validate: bool = False,
 ) -> Flow:
-    """Assembla il flow di quiz indexing (quiz bank → embeddable → embed → entity → store).
+    """Assembles the quiz indexing flow (quiz bank → embeddable → embed → entity → store).
 
-    Il quiz bank ha una sola source (`"quiz"`), derivata da
-    `config.quiz_indexing.sources[0]`: lo store è un full-reload dell'intera
-    `quiz_questions` (truncate + bulk_insert) tramite il `DbStoreStep` generico.
+    The quiz bank has a single source (`"quiz"`), derived from
+    `config.quiz_indexing.sources[0]`: the store is a full-reload of the entire
+    `quiz_questions` table (truncate + bulk_insert) via the generic `DbStoreStep`.
 
-    Mappatura step:
+    Step mapping:
       `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems, map_to_embeddable)`
       → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(map_to_quiz_entity)` → `DbStoreStep`
 
-    Lo step `map_to_embeddable` incatena due transform: dedup sulla tripla
-    (testo normalizzato, risposta corretta, identità immagine) via
-    `DeduplicateQuizItems` (condivisa con `build_quiz_cleaning_flow`), poi
-    mapping 1:1 enriched→embeddable via `ForEach(QuizMapper.from_enriched_to_embeddable)`.
+    The `map_to_embeddable` step chains two transforms: dedup on the triple
+    (normalized text, correct answer, image identity) via
+    `DeduplicateQuizItems` (shared with `build_quiz_cleaning_flow`), then a
+    1:1 enriched→embeddable mapping via `ForEach(QuizMapper.from_enriched_to_embeddable)`.
 
-    L'embedding è calcolato da `quiz_metadata.vector_search_queries`, non dal testo
-    del quiz: gli item senza `quiz_metadata` transitano con `embedding = None`.
+    The embedding is computed from `quiz_metadata.vector_search_queries`, not from
+    the quiz text: items without `quiz_metadata` pass through with `embedding = None`.
 
     Args:
-        config: Configurazione completa dell'ingestor (già caricata all'entry point).
-        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
-        embedding_client: Client per il calcolo degli embedding.
-        postgres_client: Client Postgres per le operazioni sul DB.
-        validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
-            Solleva `FlowValidationError` su ERROR.
+        config: Full ingestor configuration (already loaded at the entry point).
+        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        embedding_client: Client for computing embeddings.
+        postgres_client: Postgres client for DB operations.
+        validate: If True, runs structural validation of the flow before returning it.
+            Raises `FlowValidationError` on ERROR.
 
     Returns:
-        Flow configurato e pronto per l'esecuzione.
+        Flow configured and ready for execution.
     """
     indexing_config = config.quiz_indexing
     source = indexing_config.sources[0]
@@ -133,30 +134,30 @@ def build_quiz_cleaning_flow(
     layer_resolver: LayerResolver,
     validate: bool = False,
 ) -> Flow:
-    """Assembla il flow di quiz cleaning (parsed → cleaned, flatten + dedup).
+    """Assembles the quiz cleaning flow (parsed → cleaned, flatten + dedup).
 
-    Nessun embed/store: questo flow appartiene allo stadio di preparazione. Il
-    quiz bank ha una sola source (`"quiz"`), derivata da
+    No embed/store: this flow belongs to the preparation stage. The quiz bank
+    has a single source (`"quiz"`), derived from
     `config.quiz_preparation.sources[0]`.
 
-    Mappatura step:
+    Step mapping:
       `LoadJsonStep`
       → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems)`
       → `WriteJsonStep`
 
-    Lo step `flatten_quiz` incatena due transform: unnest+map parsed→cleaned via
-    `FlatMap(QuizMapper.from_parsed_to_cleaned_all)`, poi dedup sulla tripla
-    (testo normalizzato, risposta corretta, identità immagine) via
-    `DeduplicateQuizItems` (condivisa con `build_quiz_indexing_flow`).
+    The `flatten_quiz` step chains two transforms: unnest+map parsed→cleaned via
+    `FlatMap(QuizMapper.from_parsed_to_cleaned_all)`, then dedup on the triple
+    (normalized text, correct answer, image identity) via
+    `DeduplicateQuizItems` (shared with `build_quiz_indexing_flow`).
 
     Args:
-        config: Configurazione completa dell'ingestor (già caricata all'entry point).
-        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
-        validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
-            Solleva `FlowValidationError` su ERROR.
+        config: Full ingestor configuration (already loaded at the entry point).
+        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        validate: If True, runs structural validation of the flow before returning it.
+            Raises `FlowValidationError` on ERROR.
 
     Returns:
-        Flow configurato e pronto per l'esecuzione.
+        Flow configured and ready for execution.
     """
     prep = config.quiz_preparation
     source = prep.sources[0]
@@ -205,27 +206,27 @@ def build_quiz_enrichment_flow(
     layer_resolver: LayerResolver,
     validate: bool = False,
 ) -> Flow:
-    """Assembla il flow di quiz enrichment (cleaned → enriched).
+    """Assembles the quiz enrichment flow (cleaned → enriched).
 
-    Stadio di preparazione: nessun embed/store. Il quiz bank ha una sola
-    source (`"quiz"`), derivata da `config.quiz_preparation.sources[0]`.
-    L'enrichment è Open/Closed: aggiungere un futuro enricher tocca solo la
-    lista dei transform nell'ApplyStep, non lo step generico.
+    Preparation stage: no embed/store. The quiz bank has a single source
+    (`"quiz"`), derived from `config.quiz_preparation.sources[0]`.
+    The enrichment is Open/Closed: adding a future enricher only touches the
+    list of transforms in the ApplyStep, not the generic step.
 
-    Mappatura step:
+    Step mapping:
       `LoadJsonStep` → `ApplyStep(enrich)` → `WriteJsonStep`
 
     Args:
-        config: Configurazione completa dell'ingestor (già caricata all'entry point).
-        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
-        validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
-            Solleva `FlowValidationError` su ERROR.
+        config: Full ingestor configuration (already loaded at the entry point).
+        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        validate: If True, runs structural validation of the flow before returning it.
+            Raises `FlowValidationError` on ERROR.
 
     Returns:
-        Flow configurato e pronto per l'esecuzione.
+        Flow configured and ready for execution.
 
     Raises:
-        ValueError: se `config.quiz_preparation.output_layer` non è configurato.
+        ValueError: if `config.quiz_preparation.output_layer` is not configured.
     """
     prep = config.quiz_preparation
     source = prep.sources[0]

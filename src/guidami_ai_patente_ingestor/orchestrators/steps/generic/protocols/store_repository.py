@@ -2,16 +2,16 @@ from typing import Any, Protocol
 
 
 class StoreRepository(Protocol):
-    """Contratto minimale di uno store full-reload (truncate + bulk insert).
+    """Minimal contract for a full-reload store (truncate + bulk insert).
 
-    Soddisfatto strutturalmente da KnowledgeChunkStoreRepository e
-    QuizQuestionStoreRepository (nessuna ereditarietà esplicita).
+    Structurally satisfied by KnowledgeChunkStoreRepository and
+    QuizQuestionStoreRepository (no explicit inheritance).
     """
 
     def truncate(self) -> None:
-        """Svuota la tabella in vista di un full reload."""
+        """Empties the table ahead of a full reload."""
         ...
 
     def bulk_insert(self, items: list[Any], /) -> None:
-        """Inserisce in bulk gli item (positional-only: disaccoppia dal nome param concreto)."""
+        """Bulk-inserts the items (positional-only: decouples from the concrete param name)."""
         ...

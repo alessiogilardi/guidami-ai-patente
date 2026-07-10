@@ -1,10 +1,11 @@
-"""Step che assegna gli embedding agli EmbeddableChunkModel (con filtro repealed di dominio)."""
+"""Step that assigns embeddings to EmbeddableChunkModel (with domain repealed filter)."""
 
 import logging
 from typing import cast
 
-from commons.services.embeddings import EmbeddingService
 from flowstep import FlowContext, Step
+
+from commons.services.embeddings import EmbeddingService
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 
@@ -12,14 +13,14 @@ logger = logging.getLogger(__name__)
 
 
 class EmbedChunksStep(Step):
-    """Assegna gli embedding agli EmbeddableChunkModel presenti in `EMBEDDABLE_CHUNKS`.
+    """Assigns embeddings to the EmbeddableChunkModel present in `EMBEDDABLE_CHUNKS`.
 
-    Comportamento repealed (invariante rispetto al baseline):
-    - `embed_repealed=False` (default): solo i chunk non-repealed ricevono il vettore;
-      i repealed restano con `embedding=None` ma sono **presenti** in `EMBEDDABLE_CHUNKS`.
-    - `embed_repealed=True`: tutti i chunk vengono embeddati.
+    Repealed behavior (invariant with respect to the baseline):
+    - `embed_repealed=False` (default): only non-repealed chunks receive the vector;
+      repealed ones remain with `embedding=None` but are **present** in `EMBEDDABLE_CHUNKS`.
+    - `embed_repealed=True`: all chunks are embedded.
 
-    Composizione pura: nessuna ereditarietà da `EmbedStep` generico.
+    Pure composition: no inheritance from the generic `EmbedStep`.
     """
 
     def __init__(
@@ -28,22 +29,22 @@ class EmbedChunksStep(Step):
         embed_repealed: bool,
         embedding_service: EmbeddingService,
     ) -> None:
-        """Inietta il flag repealed e il service di embedding.
+        """Injects the repealed flag and the embedding service.
 
         Args:
-            name: Nome univoco dello step nel flow.
-            embed_repealed: Se True, embeddita anche i chunk repealed.
-            embedding_service: Service che calcola gli embedding in batch.
+            name: Unique step name within the flow.
+            embed_repealed: If True, also embeds repealed chunks.
+            embedding_service: Service that computes embeddings in batch.
         """
         super().__init__(name)
         self._embed = embedding_service
         self._embed_repealed = embed_repealed
 
     def execute(self, context: FlowContext) -> None:
-        """Legge `EMBEDDABLE_CHUNKS`, assegna i vettori (in place), ri-scrive `EMBEDDABLE_CHUNKS`.
+        """Reads `EMBEDDABLE_CHUNKS`, assigns vectors (in place), rewrites `EMBEDDABLE_CHUNKS`.
 
-        I chunk repealed non filtrati restano con `embedding=None` nella lista
-        completa, che viene re-inserita in `EMBEDDABLE_CHUNKS` invariata in lunghezza.
+        Filtered-out repealed chunks remain with `embedding=None` in the full
+        list, which is re-inserted into `EMBEDDABLE_CHUNKS` unchanged in length.
 
         Args:
             context: Shared pipeline context.
@@ -63,13 +64,13 @@ class EmbedChunksStep(Step):
         context.put(context_keys.EMBEDDABLE_CHUNKS, chunks)
 
     def get_required_keys(self) -> set[str]:
-        """Richiede `EMBEDDABLE_CHUNKS` in input."""
+        """Requires `EMBEDDABLE_CHUNKS` as input."""
         return {context_keys.EMBEDDABLE_CHUNKS}
 
     def get_produced_keys(self) -> set[str]:
-        """Ri-dichiara `EMBEDDABLE_CHUNKS`: aggiorna i chunk con embedding assegnato in place.
+        """Re-declares `EMBEDDABLE_CHUNKS`: updates the chunks with embedding assigned in place.
 
-        Nota: FlowValidator emette un WARNING benigno 'Produced key overwrites
-        an already available key' — atteso e non bloccante.
+        Note: FlowValidator emits a benign WARNING 'Produced key overwrites
+        an already available key' — expected and non-blocking.
         """
         return {context_keys.EMBEDDABLE_CHUNKS}

@@ -1,4 +1,4 @@
-"""Step flowstep generici, domain-agnostic."""
+"""Generic, domain-agnostic flowstep steps."""
 
 from .db_store_step import DbStoreStep
 from .embed_step import EmbedStep

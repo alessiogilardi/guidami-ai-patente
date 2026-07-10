@@ -1,23 +1,24 @@
 import logging
 from typing import cast
 
-from commons.services.embeddings import Embedded, EmbeddingService
 from flowstep import FlowContext, Step
+
+from commons.services.embeddings import Embedded, EmbeddingService
 
 logger = logging.getLogger(__name__)
 
 
 class EmbedStep(Step):
-    """Step generico: assegna l'embedding agli item presenti nel context (in place)."""
+    """Generic step: assigns embeddings to the items present in the context (in place)."""
 
     def __init__(self, name: str, items_key: str, embedding_service: EmbeddingService) -> None:
-        """Inietta la chiave context degli item da embeddare e il service di embedding."""
+        """Injects the items-to-embed context key and the embedding service."""
         super().__init__(name)
         self._embed = embedding_service
         self._items_key = items_key
 
     def execute(self, context: FlowContext) -> None:
-        """Legge gli item da `items_key`, assegna gli embedding, ri-scrive `items_key`."""
+        """Reads items from `items_key`, assigns embeddings, rewrites `items_key`."""
         items = cast(list[Embedded], context.get(self._items_key))
         vectors = self._embed(items)
         for item, vector in zip(items, vectors, strict=True):
@@ -25,9 +26,9 @@ class EmbedStep(Step):
         context.put(self._items_key, items)
 
     def get_required_keys(self) -> set[str]:
-        """Ritorna `{items_key}`: lo step richiede gli item nel context."""
+        """Returns `{items_key}`: the step requires the items in the context."""
         return {self._items_key}
 
     def get_produced_keys(self) -> set[str]:
-        """Ritorna `{items_key}`: lo step ri-scrive gli item arricchiti."""
+        """Returns `{items_key}`: the step rewrites the enriched items."""
         return {self._items_key}

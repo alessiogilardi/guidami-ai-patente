@@ -1,28 +1,29 @@
-"""Step generico che carica una lista di modelli da disco tramite JsonRepository.
+"""Generic step that loads a list of models from disk via JsonRepository.
 
-Domain-agnostic: parametrizzato dal tipo del modello e dalla chiave di contesto.
+Domain-agnostic: parametrized by model type and context key.
 """
 
 import logging
 from typing import cast
 
-from commons.repositories import JsonRepository
 from flowstep import FlowContext, Step
+
+from commons.repositories import JsonRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
 
 logger = logging.getLogger(__name__)
 
 
 class LoadJsonStep[T](Step):
-    """Carica una lista di modelli da disco e la espone nel contesto con una data chiave.
+    """Loads a list of models from disk and exposes it in the context under a given key.
 
     Args:
-        name:           Nome univoco dello step nel flow.
-        input_layer:    Nome del layer di input (es. ``"parsed"``, ``"cleaned"``).
-        source:         Chiave della source da caricare (es. ``"cds"``, ``"quiz"``).
-        output_key:     Chiave del ``FlowContext`` in cui scrivere la lista.
-        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
-        repository:     Repository iniettato, già mappato sul modello da caricare.
+        name:           Unique step name within the flow.
+        input_layer:    Name of the input layer (e.g. ``"parsed"``, ``"cleaned"``).
+        source:         Source key to load (e.g. ``"cds"``, ``"quiz"``).
+        output_key:     ``FlowContext`` key to write the list to.
+        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        repository:     Injected repository, already mapped onto the model to load.
     """
 
     def __init__(
@@ -34,7 +35,7 @@ class LoadJsonStep[T](Step):
         layer_resolver: LayerResolver,
         repository: JsonRepository[T],
     ) -> None:
-        """Inietta layer/source/chiave di contesto, poi resolver e repository."""
+        """Injects layer/source/context key, then resolver and repository."""
         super().__init__(name)
         self._layer_resolver = layer_resolver
         self._input_layer = input_layer
@@ -43,7 +44,7 @@ class LoadJsonStep[T](Step):
         self._output_key = output_key
 
     def execute(self, context: FlowContext) -> None:
-        """Risolve il path, carica la lista e la scrive nel contesto."""
+        """Resolves the path, loads the list, and writes it to the context."""
         path = self._layer_resolver.path(self._input_layer, self._source)
         items = cast(list[T], self._repository.load(path))
         logger.info("Loaded %d items for source '%s' via LoadJsonStep", len(items), self._source)
@@ -51,9 +52,9 @@ class LoadJsonStep[T](Step):
         context.put(self._output_key, items)
 
     def get_required_keys(self) -> set[str]:
-        """Nessuna chiave richiesta: questo step è il punto di partenza del flow."""
+        """No required key: this step is the flow's starting point."""
         return set()
 
     def get_produced_keys(self) -> set[str]:
-        """Produce la chiave configurata ``output_key``."""
+        """Produces the configured ``output_key``."""
         return {self._output_key}

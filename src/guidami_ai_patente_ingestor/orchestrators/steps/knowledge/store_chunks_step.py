@@ -1,10 +1,11 @@
-"""Step che persiste i KnowledgeChunk su DB con full-reload per-source."""
+"""Step that persists KnowledgeChunk records to the DB with per-source full-reload."""
 
 import logging
 from typing import cast
 
-from domain.entities.knowledge import KnowledgeChunk
 from flowstep import FlowContext, Step
+
+from domain.entities.knowledge import KnowledgeChunk
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.repositories import KnowledgeChunkStoreRepository
 
@@ -12,11 +13,12 @@ logger = logging.getLogger(__name__)
 
 
 class StoreChunksStep(Step):
-    """Persiste i chunk in `knowledge_chunks` con full-reload della sola source.
+    """Persists the chunks to `knowledge_chunks` with full-reload of that source only.
 
-    Domain-specific: a differenza del generico `DbStoreStep` (che fa TRUNCATE
-    dell'intera tabella), cancella solo i chunk della `source` corrente e poi li
-    re-inserisce. Così run su source diverse non si sovrascrivono a vicenda.
+    Domain-specific: unlike the generic `DbStoreStep` (which does a TRUNCATE
+    of the entire table), it only deletes the chunks of the current `source`
+    and then re-inserts them. This way runs on different sources do not
+    overwrite each other.
     """
 
     def __init__(
@@ -25,19 +27,19 @@ class StoreChunksStep(Step):
         source: str,
         repository: KnowledgeChunkStoreRepository,
     ) -> None:
-        """Inietta la source della run e il repository di store.
+        """Injects the run's source and the store repository.
 
         Args:
-            name: Nome univoco dello step nel flow.
-            source: Source il cui contenuto va sostituito (delete-by-source + insert).
-            repository: Repository di scrittura su `knowledge_chunks`.
+            name: Unique step name within the flow.
+            source: Source whose content must be replaced (delete-by-source + insert).
+            repository: Write repository for `knowledge_chunks`.
         """
         super().__init__(name)
         self._repository = repository
         self._source = source
 
     def execute(self, context: FlowContext) -> None:
-        """Legge `CHUNK_ENTITIES`, cancella i chunk della source e re-inserisce.
+        """Reads `CHUNK_ENTITIES`, deletes the source's chunks, and re-inserts them.
 
         Args:
             context: Shared pipeline context.
@@ -48,9 +50,9 @@ class StoreChunksStep(Step):
         logger.info(f"Stored {len(chunks)} chunks for source '{self._source}'")
 
     def get_required_keys(self) -> set[str]:
-        """Richiede `CHUNK_ENTITIES` in input."""
+        """Requires `CHUNK_ENTITIES` as input."""
         return {context_keys.CHUNK_ENTITIES}
 
     def get_produced_keys(self) -> set[str]:
-        """Nessuna chiave prodotta: è lo step terminale (sink) del flow."""
+        """No produced key: this is the flow's terminal (sink) step."""
         return set()

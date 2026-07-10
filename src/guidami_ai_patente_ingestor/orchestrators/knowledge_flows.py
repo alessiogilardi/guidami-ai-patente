@@ -1,7 +1,10 @@
-"""Factory per i flow di knowledge preparation (SP05) e indexing (SP03) — per-source."""
+"""Factories for the knowledge preparation (SP05) and indexing (SP03) flows — per-source."""
 
 import logging
 from typing import Literal, cast
+
+from flowstep import Flow, FlowBuilder
+from flowstep.steps import ApplyStep
 
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
@@ -9,8 +12,6 @@ from commons.configs import AgentConfig
 from commons.repositories import JsonRepository, YamlRepository
 from commons.services.embeddings import EmbeddingService
 from commons.use_cases import FlatMap, ForEach
-from flowstep import Flow, FlowBuilder
-from flowstep.steps import ApplyStep
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.mappers import ArticleMapper
@@ -29,8 +30,8 @@ from .steps.generic import LoadJsonStep, WriteJsonStep
 
 logger = logging.getLogger(__name__)
 
-# Layer intermedio condiviso dalle due factory di preparation (clean/enrich):
-# non espresso in PipelineLayerConfig (vedi decisione di layer in SP05).
+# Intermediate layer shared by the two preparation factories (clean/enrich):
+# not expressed in PipelineLayerConfig (see the layer decision in SP05).
 _CLEANED_LAYER = "cleaned"
 
 
@@ -42,32 +43,32 @@ def build_knowledge_indexing_flow(
     source: str,
     validate: bool = False,
 ) -> Flow:
-    """Assembla il flow di knowledge indexing per UNA source (corpus → chunk → embed → store).
+    """Assembles the knowledge indexing flow for ONE source (corpus → chunk → embed → store).
 
-    Il flow è per-source: va eseguito una volta per source (es. `cds`, poi `cap`).
-    Lo store fa full-reload della sola source (delete-by-source + insert), quindi
-    run su source diverse non si sovrascrivono.
+    The flow is per-source: it must run once per source (e.g. `cds`, then `cap`).
+    The store performs a full-reload of that source only (delete-by-source + insert),
+    so runs on different sources do not overwrite each other.
 
-    Mappatura step:
+    Step mapping:
       `LoadJsonStep` → `ApplyStep` (chunk_articles, `FlatMap(ArticleChunker)`)
       → `EmbedChunksStep` → `ApplyStep` (map_to_chunk_entity) → `StoreChunksStep`
 
     Args:
-        config: Configurazione completa dell'ingestor (già caricata all'entry point).
-        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
-        embedding_client: Client per il calcolo degli embedding.
-        postgres_client: Client Postgres per le operazioni sul DB.
-        source: Source da indicizzare; deve appartenere a `config.knowledge_indexing.sources`.
-        validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
-            Solleva `FlowValidationError` su ERROR; il WARNING benigno su `EMBEDDABLE_CHUNKS`
-            (EmbedChunksStep ri-dichiara una chiave già prodotta dallo step chunk_articles)
-            non blocca la build.
+        config: Full ingestor configuration (already loaded at the entry point).
+        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        embedding_client: Client for computing embeddings.
+        postgres_client: Postgres client for DB operations.
+        source: Source to index; must belong to `config.knowledge_indexing.sources`.
+        validate: If True, runs structural validation of the flow before returning it.
+            Raises `FlowValidationError` on ERROR; the benign WARNING on `EMBEDDABLE_CHUNKS`
+            (EmbedChunksStep re-declares a key already produced by the chunk_articles step)
+            does not block the build.
 
     Returns:
-        Flow configurato e pronto per l'esecuzione.
+        Flow configured and ready for execution.
 
     Raises:
-        ValueError: se `source` non è tra le source valide configurate per l'indexing.
+        ValueError: if `source` is not among the valid sources configured for indexing.
     """
     indexing_config = config.knowledge_indexing
 
@@ -132,25 +133,25 @@ def build_knowledge_cleaning_flow(
     source: str,
     validate: bool = False,
 ) -> Flow:
-    """Assembla il flow di knowledge cleaning per UNA source (parsed → cleaned).
+    """Assembles the knowledge cleaning flow for ONE source (parsed → cleaned).
 
-    Il flow è per-source: va eseguito una volta per source (es. `cds`, poi `cap`).
-    Nessun embed/store: questo flow appartiene allo stadio di preparazione.
+    The flow is per-source: it must run once per source (e.g. `cds`, then `cap`).
+    No embed/store: this flow belongs to the preparation stage.
 
-    Mappatura step:
+    Step mapping:
       `LoadJsonStep` → `ApplyStep` → `WriteJsonStep`
 
     Args:
-        config: Configurazione completa dell'ingestor (già caricata all'entry point).
-        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
-        source: Source da pulire; deve appartenere a `config.knowledge_preparation.sources`.
-        validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
+        config: Full ingestor configuration (already loaded at the entry point).
+        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        source: Source to clean; must belong to `config.knowledge_preparation.sources`.
+        validate: If True, runs structural validation of the flow before returning it.
 
     Returns:
-        Flow configurato e pronto per l'esecuzione.
+        Flow configured and ready for execution.
 
     Raises:
-        ValueError: se `source` non è tra le source valide configurate per la preparation.
+        ValueError: if `source` is not among the valid sources configured for preparation.
     """
     preparation_config = config.knowledge_preparation
 
@@ -204,25 +205,25 @@ def build_knowledge_enrichment_flow(
     source: str,
     validate: bool = False,
 ) -> Flow:
-    """Assembla il flow di knowledge enrichment per UNA source (cleaned → enriched).
+    """Assembles the knowledge enrichment flow for ONE source (cleaned → enriched).
 
-    Il flow è per-source: va eseguito una volta per source (es. `cds`, poi `cap`).
-    Nessun embed/store: questo flow appartiene allo stadio di preparazione.
+    The flow is per-source: it must run once per source (e.g. `cds`, then `cap`).
+    No embed/store: this flow belongs to the preparation stage.
 
-    Mappatura step:
+    Step mapping:
       `LoadJsonStep` → `ApplyStep` → `WriteJsonStep`
 
     Args:
-        config: Configurazione completa dell'ingestor (già caricata all'entry point).
-        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
-        source: Source da arricchire; deve appartenere a `config.knowledge_preparation.sources`.
-        validate: Se True, esegue la validazione strutturale del flow prima di restituirlo.
+        config: Full ingestor configuration (already loaded at the entry point).
+        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        source: Source to enrich; must belong to `config.knowledge_preparation.sources`.
+        validate: If True, runs structural validation of the flow before returning it.
 
     Returns:
-        Flow configurato e pronto per l'esecuzione.
+        Flow configured and ready for execution.
 
     Raises:
-        ValueError: se `source` non è tra le source valide configurate per la preparation.
+        ValueError: if `source` is not among the valid sources configured for preparation.
     """
     preparation_config = config.knowledge_preparation
 

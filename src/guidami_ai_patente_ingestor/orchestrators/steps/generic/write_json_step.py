@@ -1,28 +1,29 @@
-"""Step generico che scrive una lista di modelli su disco tramite JsonRepository.
+"""Generic step that writes a list of models to disk via JsonRepository.
 
-Domain-agnostic: parametrizzato dal tipo del modello e dalla chiave di contesto.
+Domain-agnostic: parametrized by model type and context key.
 """
 
 import logging
 from typing import cast
 
-from commons.repositories import JsonRepository
 from flowstep import FlowContext, Step
+
+from commons.repositories import JsonRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
 
 logger = logging.getLogger(__name__)
 
 
 class WriteJsonStep[T](Step):
-    """Scrive una lista di modelli su disco per una data (layer, source).
+    """Writes a list of models to disk for a given (layer, source).
 
     Args:
-        name:           Nome univoco dello step nel flow.
-        output_layer:   Nome del layer di output (es. ``"cleaned"``, ``"enriched"``).
-        source:         Chiave della source da scrivere (es. ``"cds"``, ``"quiz"``).
-        input_key:      Chiave del ``FlowContext`` da cui leggere la lista.
-        layer_resolver: Resolver che mappa (layer, source) → Path del file JSON.
-        repository:     Repository iniettato, già mappato sul modello da scrivere.
+        name:           Unique step name within the flow.
+        output_layer:   Name of the output layer (e.g. ``"cleaned"``, ``"enriched"``).
+        source:         Source key to write (e.g. ``"cds"``, ``"quiz"``).
+        input_key:      ``FlowContext`` key to read the list from.
+        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        repository:     Injected repository, already mapped onto the model to write.
     """
 
     def __init__(
@@ -34,7 +35,7 @@ class WriteJsonStep[T](Step):
         layer_resolver: LayerResolver,
         repository: JsonRepository[T],
     ) -> None:
-        """Inietta layer/source/chiave di contesto, poi resolver e repository."""
+        """Injects layer/source/context key, then resolver and repository."""
         super().__init__(name)
         self._layer_resolver = layer_resolver
         self._output_layer = output_layer
@@ -43,7 +44,7 @@ class WriteJsonStep[T](Step):
         self._input_key = input_key
 
     def execute(self, context: FlowContext) -> None:
-        """Legge la lista dal contesto e la scrive sul path risolto."""
+        """Reads the list from the context and writes it to the resolved path."""
         items = cast(list[T], context.get(self._input_key))
         path = self._layer_resolver.path(self._output_layer, self._source)
         self._repository.write(items, path)
@@ -55,9 +56,9 @@ class WriteJsonStep[T](Step):
         )
 
     def get_required_keys(self) -> set[str]:
-        """Richiede ``input_key`` nel contesto."""
+        """Requires ``input_key`` in the context."""
         return {self._input_key}
 
     def get_produced_keys(self) -> set[str]:
-        """Nessuna chiave prodotta: questo step è il punto di arrivo del flow."""
+        """No produced key: this step is the flow's endpoint."""
         return set()

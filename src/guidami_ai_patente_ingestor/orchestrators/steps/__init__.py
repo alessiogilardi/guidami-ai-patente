@@ -1,1 +1,1 @@
-"""Step flowstep dell'ingestor, raggruppati per dominio."""
+"""Ingestor flowstep steps, grouped by domain."""

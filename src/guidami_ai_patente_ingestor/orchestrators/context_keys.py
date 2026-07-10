@@ -1,39 +1,39 @@
-"""Costanti per le chiavi del FlowContext (no magic string).
+"""Constants for FlowContext keys (no magic strings).
 
-Vocabolario unico dei flow di ingestion. Esteso in modo ADDITIVO dalle slice:
-qui le chiavi consumate dall'indexing (SP03/04), dalla preparation knowledge
-(SP05) e dalla preparation quiz (SP06: `CLEANED_QUIZ`). L'enrichment quiz
-ripiega describe+map in un solo step: `IMAGE_DESCRIPTIONS` non è una chiave
-di context, resta un dict interno all'enricher. Niente `SOURCE`: è iniettata
-alla factory, non letta dal context.
+Single vocabulary for the ingestion flows. Extended in an ADDITIVE way by the
+slices: here are the keys consumed by indexing (SP03/04), by knowledge
+preparation (SP05), and by quiz preparation (SP06: `CLEANED_QUIZ`). Quiz
+enrichment folds describe+map into a single step: `IMAGE_DESCRIPTIONS` is not
+a context key, it stays an internal dict of the enricher. No `SOURCE`: it is
+injected at the factory, not read from the context.
 """
 
 # --- Knowledge indexing (SP03) ---
-# Il flow di indexing è per-source (una run per source): input = lista piatta di
-# EnrichedArticleModel di UNA sola source. Stessa chiave usata dal flow di enrichment (SP05).
+# The indexing flow is per-source (one run per source): input = flat list of
+# EnrichedArticleModel for ONE source only. Same key used by the enrichment flow (SP05).
 ENRICHED_ARTICLES = (
-    "enriched_articles"  # input indexing/enrich: list[EnrichedArticleModel], una source
+    "enriched_articles"  # indexing/enrich input: list[EnrichedArticleModel], one source
 )
-EMBEDDABLE_CHUNKS = "embeddable_chunks"  # output chunker → embed: list[EmbeddableChunkModel]
-CHUNK_ENTITIES = "chunk_entities"  # output map→entità: list[KnowledgeChunk] → store
+EMBEDDABLE_CHUNKS = "embeddable_chunks"  # chunker output → embed: list[EmbeddableChunkModel]
+CHUNK_ENTITIES = "chunk_entities"  # map→entity output: list[KnowledgeChunk] → store
 
 # --- Knowledge preparation (SP05) ---
-# Flow clean: LoadJsonStep → MapStep → WriteJsonStep.
-# Flow enrich: LoadJsonStep → MapStep → EnrichDataStep → WriteJsonStep.
+# Clean flow: LoadJsonStep → MapStep → WriteJsonStep.
+# Enrich flow: LoadJsonStep → MapStep → EnrichDataStep → WriteJsonStep.
 PARSED_ARTICLES = (
-    "parsed_articles"  # input clean: list[ParsedArticleModel] caricati dal layer "parsed"
+    "parsed_articles"  # clean input: list[ParsedArticleModel] loaded from the "parsed" layer
 )
 CLEANED_ARTICLES = (
-    "cleaned_articles"  # output clean / input enrich: list[ParsedArticleModel] puliti
+    "cleaned_articles"  # clean output / enrich input: list[ParsedArticleModel] cleaned
 )
 
 # --- Quiz indexing (SP04) ---
-ENRICHED_QUIZ = "enriched_quiz"  # input: quiz bank enriched caricato da disco
-EMBEDDABLE_QUIZ = "embeddable_quiz"  # modelli intermedi → embed
-QUIZ_ENTITIES = "quiz_entities"  # entità finali → store
+ENRICHED_QUIZ = "enriched_quiz"  # input: enriched quiz bank loaded from disk
+EMBEDDABLE_QUIZ = "embeddable_quiz"  # intermediate models → embed
+QUIZ_ENTITIES = "quiz_entities"  # final entities → store
 
-# --- Quiz preparation (SP06, esteso da SP09) ---
-# Flow cleaning: LoadJsonStep → ApplyStep(flatten_quiz) → WriteJsonStep.
-# Flow enrichment: LoadJsonStep → ApplyStep(enrich) → WriteJsonStep.
-PARSED_QUIZ = "parsed_quiz"  # input: quiz bank nested caricato dal layer "parsed"
-CLEANED_QUIZ = "cleaned_quiz"  # output cleaning / input enrichment: list[CleanedQuizModel] flat
+# --- Quiz preparation (SP06, extended by SP09) ---
+# Cleaning flow: LoadJsonStep → ApplyStep(flatten_quiz) → WriteJsonStep.
+# Enrichment flow: LoadJsonStep → ApplyStep(enrich) → WriteJsonStep.
+PARSED_QUIZ = "parsed_quiz"  # input: nested quiz bank loaded from the "parsed" layer
+CLEANED_QUIZ = "cleaned_quiz"  # cleaning output / enrichment input: list[CleanedQuizModel] flat
