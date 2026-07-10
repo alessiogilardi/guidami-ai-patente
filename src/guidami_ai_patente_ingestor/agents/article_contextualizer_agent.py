@@ -1,5 +1,4 @@
 from commons.agents import BaseAgent
-from commons.repositories import YamlRepository
 from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
     ArticleContextualizerRequest,
     ArticleContextualizerResponse,
@@ -11,17 +10,4 @@ class ArticleContextualizerAgent(
 ):
     """Pure LLM wrapper for contextualising normative articles."""
 
-    @classmethod
-    def from_yaml(  # type: ignore[override]
-        cls, name: str, repository: YamlRepository
-    ) -> "ArticleContextualizerAgent":
-        """Instantiate the agent from a YAML configuration file.
-
-        Args:
-            name: YAML file name without extension.
-            repository: Repository used to load agent configuration files.
-
-        Returns:
-            Configured `ArticleContextualizerAgent` instance.
-        """
-        return super().from_yaml(name, ArticleContextualizerResponse, repository)  # type: ignore[return-value]
+    output_type = ArticleContextualizerResponse

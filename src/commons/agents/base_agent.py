@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import cast
+from typing import Self, cast
 
 from pydantic_ai import Agent
 from pydantic_ai.settings import ModelSettings
@@ -14,17 +14,15 @@ from .utils.prompt_renderer import PromptInput, PromptRenderer
 class BaseAgent[T_In, T_Out]:
     """Wraps `pydantic_ai.Agent` with Pydantic request/response models."""
 
+    output_type: type[T_Out]
+
     def __init__(
-        self,
-        config: AgentConfig,
-        output_type: type[T_Out],
-        file_reader: FileReaderInterface | None = None,
+        self, config: AgentConfig, file_reader: FileReaderInterface | None = None
     ) -> None:
-        """Initialize the agent with configuration and output type.
+        """Initialize the agent with configuration.
 
         Args:
             config: Agent configuration (model, prompts, parameters).
-            output_type: Expected Pydantic type for structured LLM output.
             file_reader: Reader used to resolve `images` paths passed to `run`.
                 Optional: only required by agents that pass `images=`.
         """
@@ -39,7 +37,7 @@ class BaseAgent[T_In, T_Out]:
 
         self._agent: Agent[None, T_Out] = Agent(
             model_name,
-            output_type=output_type,
+            output_type=self.output_type,
             system_prompt=config.system,
             model_settings=settings,
             retries=config.num_retries,
@@ -50,15 +48,13 @@ class BaseAgent[T_In, T_Out]:
     def from_yaml(
         cls,
         name: str,
-        output_type: type[T_Out],
         repository: YamlRepository,
         file_reader: FileReaderInterface | None = None,
-    ) -> "BaseAgent[T_In, T_Out]":
+    ) -> Self:
         """Instantiate the agent by loading its YAML configuration file.
 
         Args:
             name: Agent name (without the `.yaml` extension).
-            output_type: Expected Pydantic type for structured LLM output.
             repository: Repository used to load agent configuration files.
             file_reader: Reader used to resolve `images` paths passed to `run`.
                 Optional: only required by agents that pass `images=`.
@@ -70,7 +66,7 @@ class BaseAgent[T_In, T_Out]:
             FileNotFoundError: If the YAML file does not exist.
         """
         config = cast(AgentConfig, repository.load(f"{name}.yaml"))
-        return cls(config, output_type, file_reader)
+        return cls(config, file_reader)
 
     async def run(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
         """Run the agent asynchronously."""

@@ -21,6 +21,10 @@ MINIMAL_CONFIG: dict = {
 }
 
 
+class _StrAgent(BaseAgent[str, str]):
+    output_type = str
+
+
 def _write_yaml(agents_dir: Path, name: str, content: dict) -> None:
     agents_dir.mkdir(parents=True, exist_ok=True)
     (agents_dir / f"{name}.yaml").write_text(yaml.dump(content), encoding="utf-8")
@@ -31,7 +35,7 @@ def test_base_agent_from_yaml_accepts_repository(tmp_path: Path) -> None:
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     repository = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
 
-    agent = BaseAgent.from_yaml("test_agent", output_type=str, repository=repository)
+    agent = _StrAgent.from_yaml("test_agent", repository=repository)
 
     assert agent is not None
 
@@ -42,4 +46,4 @@ def test_base_agent_from_yaml_raises_file_not_found_via_repository(tmp_path: Pat
     repository = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
 
     with pytest.raises(FileNotFoundError):
-        BaseAgent.from_yaml("nonexistent", output_type=str, repository=repository)
+        _StrAgent.from_yaml("nonexistent", repository=repository)

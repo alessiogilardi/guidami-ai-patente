@@ -1,7 +1,7 @@
 """Tests for the repository-injection signature of agent subclass from_yaml methods.
 
-Each agent subclass must accept a YamlRepository instead of agents_dir: Path,
-and forward it to BaseAgent.from_yaml without the # type: ignore[override] suppression.
+Each agent subclass accepts a YamlRepository instead of agents_dir: Path via the
+inherited BaseAgent.from_yaml, with no override and no `# type: ignore` suppression.
 """
 
 from pathlib import Path

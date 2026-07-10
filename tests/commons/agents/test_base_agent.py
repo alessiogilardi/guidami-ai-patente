@@ -24,6 +24,10 @@ MINIMAL_CONFIG: dict = {
 }
 
 
+class _StrAgent(BaseAgent[str, str]):
+    output_type = str
+
+
 # --- YamlRepository (agent config loading) ---
 
 
@@ -93,16 +97,15 @@ def test_base_agent_created_from_valid_config(tmp_path: Path) -> None:
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     repo = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
     config = repo.load("test_agent.yaml")
-    agent = BaseAgent(config, str)
+    agent = _StrAgent(config)
     assert agent is not None
 
 
 def test_base_agent_from_yaml_factory_method(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
-    agent = BaseAgent.from_yaml(
+    agent = _StrAgent.from_yaml(
         "test_agent",
-        str,
         YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir)),
     )
     assert agent is not None
@@ -112,9 +115,8 @@ def test_base_agent_from_yaml_raises_file_not_found(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     agents_dir.mkdir()
     with pytest.raises(FileNotFoundError):
-        BaseAgent.from_yaml(
+        _StrAgent.from_yaml(
             "nonexistent",
-            str,
             YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir)),
         )
 
@@ -134,9 +136,8 @@ def test_base_agent_yaml_params_mapped_to_model_settings(tmp_path: Path) -> None
             "user": "User.",
         },
     )
-    agent = BaseAgent.from_yaml(
+    agent = _StrAgent.from_yaml(
         "test_agent",
-        str,
         YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir)),
     )
     assert agent.core_agent.model_settings["temperature"] == 0.5
@@ -148,9 +149,8 @@ def test_base_agent_model_name_slash_converted_to_colon(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     # Should not raise even without OPENROUTER_API_KEY (defer_model_check=True)
-    agent = BaseAgent.from_yaml(
+    agent = _StrAgent.from_yaml(
         "test_agent",
-        str,
         YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir)),
     )
     assert agent is not None
