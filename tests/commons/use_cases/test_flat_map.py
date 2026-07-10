@@ -1,4 +1,4 @@
-"""Test per FlatMap (UseCase che applica fn a ogni elemento e concatena i risultati)."""
+"""Tests for FlatMap (UseCase that applies fn to each element and concatenates the results)."""
 
 from unittest.mock import Mock
 

@@ -9,7 +9,7 @@ from commons.configs import EmbeddingConfig
 
 
 class _FakeEmbeddingResponse:
-    """Imita la `EmbeddingResponse` di litellm: attributo `data` con dict per input."""
+    """Mimics litellm's `EmbeddingResponse`: `data` attribute with a dict per input."""
 
     def __init__(self, vectors: list[list[float]]) -> None:
         self.data = [
@@ -80,7 +80,7 @@ def test_embed_passages_preserves_input_order_even_if_response_is_unordered(
 ) -> None:
     def fake_embedding(**kwargs: object) -> _FakeEmbeddingResponse:
         response = _FakeEmbeddingResponse([[1.0], [2.0]])
-        response.data = list(reversed(response.data))  # provider restituisce fuori ordine
+        response.data = list(reversed(response.data))  # provider returns results out of order
         return response
 
     monkeypatch.setattr(litellm, "embedding", fake_embedding)
@@ -128,7 +128,7 @@ def test_dimensions_is_forwarded_only_when_set(monkeypatch: pytest.MonkeyPatch) 
 @pytest.mark.integration
 @pytest.mark.skipif(
     not os.getenv("OPENROUTER_API_KEY"),
-    reason="richiede OPENROUTER_API_KEY per chiamare l'endpoint OpenRouter reale",
+    reason="requires OPENROUTER_API_KEY to call the real OpenRouter endpoint",
 )
 def test_embed_query_against_openrouter_returns_configured_dimension() -> None:
     config = EmbeddingConfig(
@@ -140,17 +140,17 @@ def test_embed_query_against_openrouter_returns_configured_dimension() -> None:
 
 
 # ---------------------------------------------------------------------------
-# SentenceTransformerEmbeddingClient — test offline con SentenceTransformer mockato
+# SentenceTransformerEmbeddingClient — offline tests with a mocked SentenceTransformer
 # ---------------------------------------------------------------------------
 
 
 def _mock_sentence_transformer_class(
     monkeypatch: pytest.MonkeyPatch, mock_model: MagicMock
 ) -> None:
-    """Sostituisce SentenceTransformer nel package sentence_transformers con un fake.
+    """Replaces SentenceTransformer in the sentence_transformers package with a fake.
 
-    Import locale: il client la importa dentro __init__ per evitare il costo
-    dell'import di sentence-transformers/torch nelle sessioni che non la usano.
+    Local import: the client imports it inside __init__ to avoid the cost
+    of importing sentence-transformers/torch in sessions that don't use it.
     """
     import sentence_transformers
 

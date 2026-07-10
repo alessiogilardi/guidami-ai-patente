@@ -24,5 +24,5 @@ def test_embedded_text_with_single_query_omits_newline() -> None:
 
 
 def test_quiz_metadata_satisfies_embeddable_protocol() -> None:
-    """Duck typing: QuizMetadata deve soddisfare Embeddable senza ereditarietà esplicita."""
+    """Duck typing: QuizMetadata must satisfy Embeddable without explicit inheritance."""
     assert isinstance(_metadata(), Embeddable)
