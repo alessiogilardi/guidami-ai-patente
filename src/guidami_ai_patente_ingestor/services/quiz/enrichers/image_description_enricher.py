@@ -3,7 +3,6 @@ from collections.abc import Iterable
 from pathlib import Path
 from typing import cast
 
-from commons.clients import FileReaderInterface
 from commons.use_cases import UseCase
 from commons.utils import deduplicate
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
@@ -28,12 +27,9 @@ class ImageDescriptionEnricher(UseCase[Iterable[EnrichedQuizModel], list[Enriche
     are collapsed.
     """
 
-    def __init__(
-        self, road_sign_describer: RoadSignDescriberAgent, file_reader: FileReaderInterface
-    ) -> None:
-        """Inject the road sign describer agent and the images file reader."""
+    def __init__(self, road_sign_describer: RoadSignDescriberAgent) -> None:
+        """Inject the road sign describer agent."""
         self._road_sign_describer = road_sign_describer
-        self._file_reader = file_reader
 
     def execute(self, request: Iterable[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
         """Enrich each quiz item with a road sign description where an image is present."""
@@ -46,10 +42,10 @@ class ImageDescriptionEnricher(UseCase[Iterable[EnrichedQuizModel], list[Enriche
     ) -> EnrichedQuizModel:
         if not q.image:
             return q
-        key = _make_key(q)
-        if key not in descriptions:
+        response = descriptions.get(_make_key(q))
+        if response is None:
             return q
-        return RoadSignDescriberMapper.from_response_to_enriched_quiz(q, descriptions[key])
+        return RoadSignDescriberMapper.from_response_to_enriched_quiz(q, response)
 
     def _build_description_map(
         self, questions: list[EnrichedQuizModel]
@@ -64,14 +60,16 @@ class ImageDescriptionEnricher(UseCase[Iterable[EnrichedQuizModel], list[Enriche
 
     def _describe_image(self, q: EnrichedQuizModel) -> RoadSignDescriberResponse | None:
         image = cast(str, q.image)
+        req = RoadSignDescriberMapper.from_enriched_quiz_to_request(q)
         try:
-            self._file_reader.exists_or_raise(image)
-        except (FileNotFoundError, PermissionError):
-            logger.warning("Image file not found, skipping description: %s", image)
-            return None
-        try:
-            req = RoadSignDescriberMapper.from_enriched_quiz_to_request(q)
             return self._road_sign_describer.run_sync(req, images=(Path(image),))
+        except (FileNotFoundError, PermissionError):
+            logger.warning("Image file not found or inaccessible, skipping: %s", image)
+            return None
         except Exception:
+            # TODO: narrow this broad catch once the agent domain-exception hierarchy
+            # lands (see the deferred EmbeddingError plan); it currently also swallows
+            # real bugs. Per-item degrade is intentional: one bad image must not kill
+            # the batch.
             logger.warning("Failed to describe image, skipping: %s", image, exc_info=True)
             return None

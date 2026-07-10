@@ -49,7 +49,9 @@ LLM agents in use today (all `BaseAgent` subclasses under
 `guidami_ai_patente_ingestor/agents/`):
 - `ArticleContextualizerAgent` — knowledge-corpus enrichment (per-article context).
 - `RoadSignDescriberAgent` — vision agent, quiz enrichment; deliberately
-  answer-blind (see ADR below).
+  answer-blind (see ADR below). Owns image-file reading via its
+  `PromptRenderer`/`file_reader`; `ImageDescriptionEnricher` only passes
+  image paths and holds no reader of its own.
 - `NormReferenceDescriberAgent` — quiz enrichment, norm-reference metadata
   for future RAG retrieval.
 
@@ -82,4 +84,4 @@ See `adr/` for the full history. Currently accepted:
   never receives `correct_answer` in its request DTO, by design, to avoid
   the description leaking the answer. Still true in code today.
 
-*Last updated: 2026-07-10 — verified against commit `66593a7`.*
+*Last updated: 2026-07-10 — verified against commit `83c3436`.*

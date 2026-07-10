@@ -258,7 +258,7 @@ def build_quiz_enrichment_flow(
     enrich_step = ApplyStep(
         "enrich",
         ForEach(QuizMapper.from_cleaned_to_enriched),
-        ImageDescriptionEnricher(describer, images_file_reader),
+        ImageDescriptionEnricher(describer),
         NormReferenceEnricher(norm_describer),
         input_key=context_keys.CLEANED_QUIZ,
         output_key=context_keys.ENRICHED_QUIZ,
