@@ -521,3 +521,5 @@ $RECYCLE.BIN/
 
 
 *.local*
+data/*/quiz-test/
+data/enriched/
