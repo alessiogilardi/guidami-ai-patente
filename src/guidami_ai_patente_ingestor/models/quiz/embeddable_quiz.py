@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from domain.entities.quiz import QuizMetadata
+from .quiz_metadata import QuizMetadata
 
 
 class EmbeddableQuizModel(BaseModel):

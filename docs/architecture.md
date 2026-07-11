@@ -21,7 +21,10 @@ doing so once the FastAPI app starts):
   LLM agent base class, `UseCase`/`ForEach` composition primitives,
   configs.
 - `domain/` — entities/models persisted or shared across apps
-  (`knowledge_chunk`, `quiz_question`, `quiz_metadata`, `retrieval_result`).
+  (`knowledge_chunk`, `quiz_question`, `retrieval_result`). `quiz_question`
+  is flat: its former nested `quiz_metadata` was demoted to a transient
+  ingestion model (`guidami_ai_patente_ingestor/models/quiz/quiz_metadata.py`)
+  and flattened into columns (see `adr/0002-flatten-quiz-metadata-columns.md`).
 
 `flowstep` is a domain-agnostic sequential-pipeline framework
 (`Flow`/`Step`/`FlowBuilder`/`FlowContext`/`ApplyStep`) that the ingestor
@@ -81,7 +84,7 @@ stage if its output file already exists, unless `--force`).
 **Quiz bank** (`orchestrators/quiz_flows.py`):
 1. *Cleaning*: `LoadJsonStep` → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` → `WriteJsonStep` (parsed → cleaned; dedup on normalized-text + correct_answer + image identity).
 2. *Enrichment*: `LoadJsonStep` → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched), ImageDescriptionEnricher(RoadSignDescriberAgent), NormReferenceEnricher(NormReferenceDescriberAgent))` → `WriteJsonStep` (cleaned → enriched).
-3. *Indexing*: `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embeddable))` → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(ForEach(QuizMapper.from_embeddable_to_quiz_question))` → `DbStoreStep` (full truncate + bulk insert). Embeddings are computed from `quiz_metadata.vector_search_queries`, not raw quiz text — items without `quiz_metadata` end up with `embedding=None`.
+3. *Indexing*: `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embeddable))` → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(ForEach(QuizMapper.from_embeddable_to_quiz_question))` → `DbStoreStep` (full truncate + bulk insert). Embeddings are computed from `quiz_metadata.vector_search_queries`, not raw quiz text — items without `quiz_metadata` end up with `embedding=None`. `QuizMetadata` stays a cohesive nested object through the ingestion models (`EnrichedQuizModel`/`EmbeddableQuizModel`) and is flattened onto the `QuizQuestion` entity columns **only** at the boundary, inside `from_embeddable_to_quiz_question`.
 
 ## Relevant architectural decisions
 
@@ -90,5 +93,9 @@ See `adr/` for the full history. Currently accepted:
 - **Road sign describer is answer-blind** — `RoadSignDescriberAgent`
   never receives `correct_answer` in its request DTO, by design, to avoid
   the description leaking the answer. Still true in code today.
+- **Quiz metadata flattened into columns** — the retrieval-relevant
+  `QuizMetadata` fields are first-class `quiz_questions` columns and
+  `QuizMetadata` is a transient ingestion model, not a persisted entity
+  (`adr/0002-flatten-quiz-metadata-columns.md`).
 
-*Last updated: 2026-07-11 — verified against commit `3419994`.*
+*Last updated: 2026-07-11 — verified against commit `f4a0936`.*

@@ -49,14 +49,28 @@ quiz_questions
 ├── text (TEXT, NOT NULL)
 ├── correct_answer (BOOLEAN, NOT NULL)
 ├── image_filename (TEXT, nullable)
-├── quiz_metadata (JSONB, nullable)       -- embedded QuizMetadata value object
+├── core_concepts (TEXT[], nullable)        -- flattened QuizMetadata retrieval key
+├── named_entities (TEXT[], nullable)       -- named entities mentioned in the question
+├── exact_keywords (TEXT[], nullable)       -- CdS technical terms, retrieval key
+├── rule_explanation (TEXT, nullable)       -- serving payload, not a retrieval key
+├── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())  -- load-batch timestamp
 ├── embedding (VECTOR(1536), nullable)
 ├── INDEX idx_quiz_questions_topic (topic)
 └── INDEX idx_quiz_questions_question_id (question_id)
 ```
 
+The former `quiz_metadata` JSONB blob was flattened into the four
+retrieval/payload columns above (see `docs/adr/0002-flatten-quiz-metadata-columns.md`).
+The metadata's `vector_search_queries` field is **not** persisted — it is only
+the embedding input, consumed to produce `embedding`. The four metadata columns
+are all-or-nothing: `NULL` on rows for which no `QuizMetadata` was generated
+(aligned with `embedding` being `NULL` there). `created_at` is DB-managed and,
+under the truncate + bulk-insert reload strategy, records the load-batch time,
+not first ingestion.
+
 No index exists on either `embedding` column (no ivfflat/hnsw) — vector
-search currently runs as an exact `<=>` scan.
+search currently runs as an exact `<=>` scan. No index yet on the `TEXT[]`
+metadata columns (GIN/FTS deferred with the hybrid-search work).
 
 ## Migrations
 
@@ -74,4 +88,4 @@ docker compose -f docker/docker-compose.yml up -d
 (see also the "Infrastructure" section of `CLAUDE.md`). There is no
 changelog file tracking schema history beyond `git log db/init.sql`.
 
-*Last updated: 2026-07-09 — verified against commit `8ca395d`.*
+*Last updated: 2026-07-11 — verified against commit `f4a0936`.*

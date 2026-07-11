@@ -1,5 +1,4 @@
-from domain.entities.quiz import QuizMetadata
-from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel
+from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel, QuizMetadata
 
 
 def _question(**kwargs) -> EmbeddableQuizModel:

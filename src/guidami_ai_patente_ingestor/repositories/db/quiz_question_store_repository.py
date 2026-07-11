@@ -1,5 +1,3 @@
-from psycopg.types.json import Jsonb
-
 from commons.clients import PostgresClient
 from domain.entities.quiz import QuizQuestion
 from guidami_ai_patente_ingestor.repositories.db._bulk_insert_store_repository import (
@@ -13,7 +11,10 @@ _QUIZ_QUESTION_TABLE_COLUMNS = (
     "text",
     "correct_answer",
     "image_filename",
-    "quiz_metadata",
+    "core_concepts",
+    "named_entities",
+    "exact_keywords",
+    "rule_explanation",
     "embedding",
 )
 
@@ -39,6 +40,9 @@ class QuizQuestionStoreRepository(BulkInsertStoreRepository[QuizQuestion]):
             item.text,
             item.correct_answer,
             item.image_filename,
-            Jsonb(item.quiz_metadata.model_dump()) if item.quiz_metadata is not None else None,
+            item.core_concepts,
+            item.named_entities,
+            item.exact_keywords,
+            item.rule_explanation,
             item.embedding,
         )

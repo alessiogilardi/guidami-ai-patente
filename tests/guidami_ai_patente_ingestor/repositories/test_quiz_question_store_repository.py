@@ -7,6 +7,9 @@ from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
 from domain.entities.quiz import QuizQuestion
 from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
+from guidami_ai_patente_ingestor.repositories.db.quiz_question_store_repository import (
+    _QUIZ_QUESTION_TABLE_COLUMNS,
+)
 
 
 @pytest.fixture
@@ -32,6 +35,59 @@ def _question(number: str, image_filename: str | None = None) -> QuizQuestion:
         text=f"Domanda {number}",
         correct_answer=True,
         image_filename=image_filename,
+    )
+
+
+def _flat_question(**kwargs: object) -> QuizQuestion:
+    defaults = dict(
+        number="1",
+        question_id=100,
+        topic="Segnaletica",
+        text="Domanda 1",
+        correct_answer=True,
+        image_filename=None,
+        core_concepts=["Obbligo di precedenza"],
+        named_entities=["segnale di stop"],
+        exact_keywords=["obbligo di precedenza"],
+        rule_explanation="Il segnale impone l'obbligo di precedenza.",
+        embedding=[0.1, 0.2],
+    )
+    return QuizQuestion(**{**defaults, **kwargs})
+
+
+def test_table_columns_are_flat_metadata_columns_without_quiz_metadata() -> None:
+    assert _QUIZ_QUESTION_TABLE_COLUMNS == (
+        "number",
+        "question_id",
+        "topic",
+        "text",
+        "correct_answer",
+        "image_filename",
+        "core_concepts",
+        "named_entities",
+        "exact_keywords",
+        "rule_explanation",
+        "embedding",
+    )
+
+
+def test_to_db_row_emits_flat_metadata_fields_without_jsonb() -> None:
+    question = _flat_question()
+
+    row = QuizQuestionStoreRepository._to_db_row(question)
+
+    assert row == (
+        question.number,
+        question.question_id,
+        question.topic,
+        question.text,
+        question.correct_answer,
+        question.image_filename,
+        question.core_concepts,
+        question.named_entities,
+        question.exact_keywords,
+        question.rule_explanation,
+        question.embedding,
     )
 
 

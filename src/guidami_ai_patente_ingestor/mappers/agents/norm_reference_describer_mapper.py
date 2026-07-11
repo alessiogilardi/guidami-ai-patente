@@ -1,9 +1,8 @@
-from domain.entities.quiz import QuizMetadata
 from guidami_ai_patente_ingestor.agents.dto.norm_reference_describer import (
     NormReferenceDescriberRequest,
     NormReferenceDescriberResponse,
 )
-from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
+from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel, QuizMetadata
 
 
 class NormReferenceDescriberMapper:

@@ -1,5 +1,5 @@
 from commons.services.embeddings import Embeddable
-from domain.entities.quiz import QuizMetadata
+from guidami_ai_patente_ingestor.models.quiz import QuizMetadata
 
 
 def _metadata(**kwargs) -> QuizMetadata:

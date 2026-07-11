@@ -28,8 +28,12 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
     text            TEXT NOT NULL,
     correct_answer  BOOLEAN NOT NULL,
     image_filename  TEXT,
-    quiz_metadata   JSONB,
+    core_concepts TEXT[],
+    named_entities TEXT[],
+    exact_keywords TEXT[],
+    rule_explanation TEXT,
     embedding       VECTOR(1536),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     UNIQUE(number)
 );
 

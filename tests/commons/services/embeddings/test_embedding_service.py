@@ -2,9 +2,8 @@ import pytest
 
 from commons.clients import EmbeddingClient
 from commons.services.embeddings import Embeddable, Embedded, EmbeddingService
-from domain.entities.quiz import QuizMetadata
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel
-from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel
+from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel, QuizMetadata
 
 
 class _RecordingFakeClient(EmbeddingClient):

@@ -6,7 +6,11 @@ tested separately in `test_quiz_mapper_flatten_at_preparation.py` (SP09).
 
 from domain.entities.quiz import QuizQuestion
 from guidami_ai_patente_ingestor.mappers import QuizMapper
-from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel, EnrichedQuizModel
+from guidami_ai_patente_ingestor.models.quiz import (
+    EmbeddableQuizModel,
+    EnrichedQuizModel,
+    QuizMetadata,
+)
 
 
 def _enriched_item(
@@ -39,6 +43,17 @@ def _embeddable(**kwargs) -> EmbeddableQuizModel:
         embedding=[0.1, 0.2, 0.3],
     )
     return EmbeddableQuizModel(**{**defaults, **kwargs})
+
+
+def _metadata(**kwargs) -> QuizMetadata:
+    defaults = dict(
+        core_concepts=["Obbligo di precedenza"],
+        entities=["segnale di stop"],
+        exact_keywords=["obbligo di precedenza"],
+        vector_search_queries=["prima query di ricerca", "seconda query di ricerca"],
+        rule_explanation="Il segnale impone l'obbligo di precedenza.",
+    )
+    return QuizMetadata(**{**defaults, **kwargs})
 
 
 # --- from_enriched_to_embeddable ---
@@ -141,8 +156,7 @@ def test_from_embeddable_to_quiz_question_preserves_none_image_filename() -> Non
     assert result.image_filename is None
 
 
-# --- quiz_metadata pass-through (requires implementation of plan
-#     2026-07-03--ingest-quiz-enrichment-norm-keywords) ---
+# --- quiz_metadata pass-through (from_enriched_to_embeddable keeps the nested model) ---
 
 
 def test_from_enriched_to_embeddable_propagates_quiz_metadata() -> None:
@@ -159,15 +173,43 @@ def test_from_enriched_to_embeddable_propagates_quiz_metadata() -> None:
     )
 
 
-def test_from_embeddable_to_quiz_question_propagates_quiz_metadata() -> None:
-    eq = _embeddable()
-    # Inject quiz_metadata onto EmbeddableQuizModel bypassing Pydantic validation to simulate
-    # the state after the quiz_metadata field is declared on the model.
-    sentinel = object()
-    eq.__dict__["quiz_metadata"] = sentinel
+# --- from_embeddable_to_quiz_question flattens quiz_metadata onto the entity ---
+
+
+def test_from_embeddable_to_quiz_question_spreads_metadata_into_flat_fields() -> None:
+    metadata = _metadata()
+    eq = _embeddable(quiz_metadata=metadata)
 
     result = QuizMapper.from_embeddable_to_quiz_question(eq)
 
-    assert getattr(result, "quiz_metadata", "MISSING") is sentinel, (
-        "from_embeddable_to_quiz_question must propagate quiz_metadata to QuizQuestion entity"
-    )
+    assert result.core_concepts == metadata.core_concepts
+    assert result.named_entities == metadata.entities
+    assert result.exact_keywords == metadata.exact_keywords
+    assert result.rule_explanation == metadata.rule_explanation
+
+
+def test_from_embeddable_to_quiz_question_drops_vector_search_queries() -> None:
+    eq = _embeddable(quiz_metadata=_metadata())
+
+    result = QuizMapper.from_embeddable_to_quiz_question(eq)
+
+    assert not hasattr(result, "vector_search_queries")
+
+
+def test_from_embeddable_to_quiz_question_no_metadata_yields_none_fields() -> None:
+    eq = _embeddable(quiz_metadata=None)
+
+    result = QuizMapper.from_embeddable_to_quiz_question(eq)
+
+    assert result.core_concepts is None
+    assert result.named_entities is None
+    assert result.exact_keywords is None
+    assert result.rule_explanation is None
+
+
+def test_from_embeddable_to_quiz_question_has_no_nested_quiz_metadata() -> None:
+    eq = _embeddable(quiz_metadata=_metadata())
+
+    result = QuizMapper.from_embeddable_to_quiz_question(eq)
+
+    assert not hasattr(result, "quiz_metadata")
