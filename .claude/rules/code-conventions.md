@@ -18,6 +18,25 @@ is not documentation and is unaffected by this rule.
 Configuration classes (any file under `configs/`) must set
 `model_config = ConfigDict(frozen=True)`.
 
+## Entities — insertable projection of the table row
+
+An entity in `src/domain/entities/` models the **insertable projection** of its DB row,
+not the full row:
+
+- 1:1 with the table's **writable** columns.
+- **DB-generated columns are omitted** (`id BIGSERIAL`, `created_at DEFAULT now()`) —
+  never declared as `Optional` fields "populated only on read". An always-`None` field on
+  the write path lies about its type and forces pointless None-checks downstream.
+- Data needed in the pipeline but not persisted lives on an intermediate model
+  (`models/…`) plus a mapper — never on the entity.
+- If a future read path needs row identity, prefer the natural keys already in the schema
+  (e.g. `quiz_questions.number` UNIQUE) or introduce a separate read model with a
+  non-nullable `id` — do not weaken the write entity.
+
+These are persistence DTOs by design. Rich domain entities (behavior + invariants) are
+deferred until the FastAPI app introduces real domain logic, and will be added pull-based
+where an invariant actually emerges.
+
 ## PostgresClient — vector cast
 
 `PostgresClient` requires the explicit cast `%s::vector` for vector parameters:

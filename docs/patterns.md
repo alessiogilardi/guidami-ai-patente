@@ -20,6 +20,7 @@ it does not restate those rules.
 | `BaseAgent[T_In, T_Out]` + `PromptRenderer` | `src/commons/agents/base_agent.py` (wraps `pydantic_ai.Agent`, `from_yaml` factory returning `Self`, `run`/`run_sync`/`__call__`); concrete agents declare `output_type` as a class attribute (e.g. `output_type = RoadSignDescriberResponse`) and inherit `from_yaml` unchanged — no override, no `# type: ignore` | Shared LLM plumbing (config load, prompt rendering, retries); per-agent code reduces to the generic params, the `output_type` attribute, and a prompt file |
 | Repository with scoped reset (`*StoreRepository`) | `repositories/db/knowledge_chunk_store_repository.py` extends `BulkInsertStoreRepository[KnowledgeChunk]`, adds `delete_source` alongside the inherited `truncate` | Two reset strategies for two different CLI flows: `ingest index` (per-source reload) vs `ingest reset` (full wipe) |
 | Static, verbose mapper methods (`from_X_to_Y`) | `mappers/article_mapper.py`, `mappers/quiz_mapper.py` — all methods static and pure, one pure function per pipeline-stage transform | Confirmed convention: mappers are static utility classes, never DI-injected (see also `feedback_mappers_static_verbose` memory) |
+| Entity = insertable row projection | `domain/entities/knowledge/knowledge_chunk.py`, `domain/entities/quiz/quiz_question.py` — DB-generated columns (`id`, `created_at`) have **no** field on the entity; `QuizQuestion`'s docstring states the omission | Rule (with rationale) in `.claude/rules/code-conventions.md`, "Entities — insertable projection of the table row" — not restated here. Entities are persistence DTOs by design; rich DDD entities deferred until the FastAPI app brings real invariants |
 | Config loaded once at entry point | `cli.py` — `IngestorConfig()` constructed inside `main()`, then passed down into every `build_*_flow(config=..., ...)` call | Matches the global rule: root config loaded in `main`, never inside builders/services |
 
 **Naming discrepancy** (worth knowing, not "wrong"): the global
@@ -47,4 +48,4 @@ Stale references to them survive only as outdated comments in
   what they *are* (e.g. `self._agent`), never `self._use_case` — see
   `feedback_usecase_naming` memory.
 
-*Last updated: 2026-07-10 — verified against commit `f0d7535`.*
+*Last updated: 2026-07-11 — verified against commit `d862311`.*
