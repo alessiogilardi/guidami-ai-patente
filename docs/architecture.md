@@ -45,6 +45,13 @@ scripts, each registered as a `[project.scripts]` entry.
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/` | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/` | beautifulsoup4, lxml, httpx |
 
+`parsers/questions_pdf.py` extracts each sub-question's image lazily: the
+per-question default image (fallback for rows without their own nearby
+image) is only extracted the first time a row actually needs it, not
+eagerly when the question is created. Extracting it eagerly regardless of
+use silently orphans files under `data/parsed/quiz-patente-ab/images/`
+whenever every row of a question resolves its own row-level image instead.
+
 LLM agents in use today (all `BaseAgent` subclasses under
 `guidami_ai_patente_ingestor/agents/`):
 - `ArticleContextualizerAgent` — knowledge-corpus enrichment (per-article context).
@@ -84,4 +91,4 @@ See `adr/` for the full history. Currently accepted:
   never receives `correct_answer` in its request DTO, by design, to avoid
   the description leaking the answer. Still true in code today.
 
-*Last updated: 2026-07-10 — verified against commit `83c3436`.*
+*Last updated: 2026-07-11 — verified against commit `3419994`.*

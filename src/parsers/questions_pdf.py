@@ -252,10 +252,25 @@ def main_questions(pdf_path: Path = PDF_PATH) -> None:
     questions: list[Question] = []
     current: Question | None = None
     current_image: str | None = None
+    image_source: tuple[PlumberPage, int, float] | None = None
     seen_hashes: dict[str, str] = {}
     topic_open = False
 
     fitz_doc = fitz.open(str(pdf_path))
+
+    def resolve_current_image() -> str | None:
+        """Extract the pending per-question default image on first actual need.
+
+        Deferred so a question whose every row resolves its own row-level image
+        (the common case) never triggers this extraction at all — avoids writing
+        an orphan file that ends up referenced by nothing in the output JSON.
+        """
+        nonlocal current_image, image_source
+        if image_source is not None:
+            src_page, src_page_num, above_y = image_source
+            current_image = _extract_image(src_page, fitz_doc, src_page_num, above_y, seen_hashes)
+            image_source = None
+        return current_image
 
     with pdfplumber.open(pdf_path) as pdf:
         total = len(pdf.pages)
@@ -291,13 +306,10 @@ def main_questions(pdf_path: Path = PDF_PATH) -> None:
                         if current is not None:
                             questions.append(current)
                         current = Question(question_id=qid, topic=topic, sub_questions=[])
-                        current_image = _extract_image(
-                            plumber_page, fitz_doc, page_num - 1, header_y, seen_hashes
-                        )
-                elif current is not None and current_image is None:
-                    current_image = _extract_image(
-                        plumber_page, fitz_doc, page_num - 1, 0.0, seen_hashes
-                    )
+                        current_image = None
+                        image_source = (plumber_page, page_num - 1, header_y)
+                elif current is not None and current_image is None and image_source is None:
+                    image_source = (plumber_page, page_num - 1, 0.0)
 
                 if current is None:
                     continue
@@ -317,10 +329,10 @@ def main_questions(pdf_path: Path = PDF_PATH) -> None:
                             _extract_image_at_y(
                                 plumber_page, fitz_doc, page_num - 1, row_y, seen_hashes
                             )
-                            or current_image
+                            or resolve_current_image()
                         )
                     else:
-                        image = current_image
+                        image = resolve_current_image()
 
                     current["sub_questions"].append(
                         SubQuestion(
@@ -338,6 +350,7 @@ def main_questions(pdf_path: Path = PDF_PATH) -> None:
                         questions.append(current)
                     current = Question(question_id=qid, topic=topic, sub_questions=[])
                     current_image = None
+                    image_source = None
 
     if current is not None:
         questions.append(current)
