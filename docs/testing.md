@@ -35,8 +35,13 @@ repositories or embedding clients.
 `tests/guidami_ai_patente_ingestor/` ~ `src/guidami_ai_patente_ingestor/`
 (subfolder structure matches, including
 `orchestrators/steps/{generic,knowledge}` and
-`services/{knowledge,quiz}/enrichers`). No tests yet for `src/parsers/`,
-`src/scrapers/`, or the empty `src/guidami_ai_patente/` scaffold.
+`services/{knowledge,quiz}/enrichers`), `tests/parsers/` ~ `src/parsers/`.
+`tests/parsers/test_questions_pdf.py` unit-tests `_get_headers_with_y` in
+isolation via a small local fake page object exposing only
+`extract_words()` (the one pdfplumber method the function calls) — the
+PDF-parsing entry point `main_questions` itself is not tested (would
+require a real PDF plus `fitz`/`pdfplumber`/image extraction). No tests
+yet for `src/scrapers/`, or the empty `src/guidami_ai_patente/` scaffold.
 `flowstep` is an external git dependency (not part of this repo's `src/`
 or `tests/`), so it has no local test mirror here — see
 `docs/architecture.md`.
@@ -55,4 +60,4 @@ mechanism in this project.
 Naming: `test_*.py`, generally one test file per source file/class (e.g.
 `test_article_chunker.py` for `article_chunker.py`).
 
-*Last updated: 2026-07-10 — verified against commit `10e5fe7`.*
+*Last updated: 2026-07-11 — verified against commit `dfdae5d`.*

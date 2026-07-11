@@ -61,8 +61,24 @@ def _is_data_row(row: list[str | None]) -> bool:
     return bool(first) and first.isdigit()
 
 
-def _get_headers_with_y(page: PlumberPage) -> list[tuple[float, str, str]]:
-    """Return [(y_pos, quesito_id, topic)] for all quesito headers on the page."""
+def _is_topic_boundary(line_text: str) -> bool:
+    """True when line_text ends topic continuation.
+
+    Boundary is a next quesito header, table header row, or table data row. Tighter than
+    `_is_header_row`'s substring check ("Numero" == first token, not `in`) since this
+    operates on raw line text rather than an extracted cell.
+    """
+    first_token = line_text.split(maxsplit=1)[0] if line_text else ""
+    return bool(_QUESITO_RE.search(line_text)) or first_token == "Numero" or first_token.isdigit()
+
+
+def _line_texts(page: PlumberPage) -> list[tuple[float, str]]:
+    """Return [(y_pos, line_text)] for all physical text lines on the page, sorted by y.
+
+    Note: round(top) can in principle merge two visually distinct lines into one key,
+    garbling line_text. Pre-existing risk in this line-grouping strategy, not observed
+    in the current PDF.
+    """
     words = page.extract_words()
     if not words:
         return []
@@ -72,14 +88,68 @@ def _get_headers_with_y(page: PlumberPage) -> list[tuple[float, str, str]]:
         key = round(w["top"])
         lines.setdefault(key, []).append(w)
 
-    results = []
-    for y_key in sorted(lines):
-        line_text = " ".join(w["text"] for w in sorted(lines[y_key], key=lambda w: w["x0"]))
-        m = _QUESITO_RE.search(line_text)
-        if m:
-            results.append((float(y_key), m.group(1), m.group(2).strip()))
+    return [
+        (float(y_key), " ".join(w["text"] for w in sorted(lines[y_key], key=lambda w: w["x0"])))
+        for y_key in sorted(lines)
+    ]
 
-    return results
+
+def _consume_continuation(
+    line_texts: list[tuple[float, str]], start: int
+) -> tuple[list[str], int]:
+    """Collect topic-continuation lines from `start` until a boundary or end of page."""
+    parts = []
+    i = start
+    while i < len(line_texts) and not _is_topic_boundary(line_texts[i][1]):
+        parts.append(line_texts[i][1].strip())
+        i += 1
+    return parts, i
+
+
+def _get_headers_with_y(
+    page: PlumberPage, resume_topic: bool = False
+) -> tuple[list[tuple[float, str, str]], str, bool]:
+    """Return (headers, leading_continuation, topic_still_open).
+
+    `headers` is [(y_pos, quesito_id, topic)] for all quesito headers on the page. A
+    quesito's topic may wrap onto subsequent PDF lines — including across a page
+    boundary — so continuation lines are stitched onto the topic until a boundary line
+    is reached (see `_is_topic_boundary`).
+
+    `resume_topic`, if True, means the caller has an in-progress topic (its last header's
+    topic ran off the end of the previous page without hitting a boundary); this page's
+    leading lines are then consumed as that topic's continuation instead of being scanned
+    for a new header. `leading_continuation` is that consumed text (joined, possibly
+    empty) — the caller must append it to its pending topic. `topic_still_open` is True
+    when, after scanning this whole page, the last header found here (or the resumed one,
+    if no header was found) still hasn't hit a boundary — the caller must keep resuming
+    on the next page.
+    """
+    line_texts = _line_texts(page)
+
+    i = 0
+    leading_continuation = ""
+    topic_still_open = False
+    if resume_topic:
+        parts, i = _consume_continuation(line_texts, 0)
+        leading_continuation = " ".join(parts)
+        topic_still_open = i >= len(line_texts)
+
+    results: list[tuple[float, str, str]] = []
+    while i < len(line_texts):
+        y_key, line_text = line_texts[i]
+        m = _QUESITO_RE.search(line_text)
+        if not m:
+            i += 1
+            continue
+
+        i += 1
+        parts, i = _consume_continuation(line_texts, i)
+        topic_parts = [m.group(2).strip(), *parts]
+        results.append((y_key, m.group(1), " ".join(topic_parts)))
+        topic_still_open = i >= len(line_texts)
+
+    return results, leading_continuation, topic_still_open
 
 
 def _stitch_images_vertical(images_data: list[tuple[bytes, str]]) -> tuple[bytes, str]:
@@ -183,6 +253,7 @@ def main_questions(pdf_path: Path = PDF_PATH) -> None:
     current: Question | None = None
     current_image: str | None = None
     seen_hashes: dict[str, str] = {}
+    topic_open = False
 
     fitz_doc = fitz.open(str(pdf_path))
 
@@ -192,7 +263,12 @@ def main_questions(pdf_path: Path = PDF_PATH) -> None:
             if page_num % 50 == 0:
                 print(f"  Page {page_num}/{total}…")
 
-            headers = _get_headers_with_y(plumber_page)
+            headers, leading_continuation, topic_open = _get_headers_with_y(
+                plumber_page, resume_topic=topic_open
+            )
+            if leading_continuation and current is not None:
+                current["topic"] = f"{current['topic']} {leading_continuation}"
+
             tables = sorted(plumber_page.find_tables(), key=lambda t: t.bbox[1])
 
             # Build row_number → y_position from page words for per-row image lookup
