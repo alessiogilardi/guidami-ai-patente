@@ -1,5 +1,4 @@
 import logging
-from pathlib import PurePosixPath
 
 from domain.entities.quiz import QuizQuestion
 from guidami_ai_patente_ingestor.models.quiz import (
@@ -41,7 +40,7 @@ class QuizMapper:
             topic=item.topic,
             text=item.text.strip(),
             correct_answer=item.correct_answer,
-            image_filename=QuizMapper._image_filename(item.image),
+            image_filename=item.image,
             image_description=item.image_description,
         )
         return base.model_copy(update={"quiz_metadata": item.quiz_metadata})
@@ -131,7 +130,3 @@ class QuizMapper:
             same order as `parent.sub_questions`.
         """
         return [QuizMapper.from_parsed_to_cleaned(sub, parent) for sub in parent.sub_questions]
-
-    @staticmethod
-    def _image_filename(image: str | None) -> str | None:
-        return PurePosixPath(image).name if image is not None else None

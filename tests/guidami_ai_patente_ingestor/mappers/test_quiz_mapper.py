@@ -66,8 +66,8 @@ def test_from_enriched_to_embeddable_strips_whitespace_from_text() -> None:
     assert result.text == "Testo con spazi"
 
 
-def test_from_enriched_to_embeddable_extracts_image_filename_from_path() -> None:
-    item = _enriched_item("1", "D", correct_answer=True, image="images/abc123.jpeg")
+def test_from_enriched_to_embeddable_copies_image_filename() -> None:
+    item = _enriched_item("1", "D", correct_answer=True, image="abc123.jpeg")
 
     result = QuizMapper.from_enriched_to_embeddable(item)
 

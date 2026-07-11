@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import re
 from pathlib import Path
@@ -11,6 +12,7 @@ from typing import TypedDict
 import fitz
 import pdfplumber
 from pdfplumber.page import Page as PlumberPage
+from PIL import Image
 
 PDF_PATH = Path("data/docs/domande AB italiano 23 04 2025.pdf")
 OUT_DIR = Path("data/parsed/quiz-patente-ab")
@@ -82,10 +84,6 @@ def _get_headers_with_y(page: PlumberPage) -> list[tuple[float, str, str]]:
 
 def _stitch_images_vertical(images_data: list[tuple[bytes, str]]) -> tuple[bytes, str]:
     """Stack images top-to-bottom; return (jpeg_bytes, 'jpeg')."""
-    import io
-
-    from PIL import Image
-
     pil_imgs = [Image.open(io.BytesIO(b)).convert("RGB") for b, _ in images_data]
     w = max(img.width for img in pil_imgs)
     h = sum(img.height for img in pil_imgs)
@@ -100,15 +98,14 @@ def _stitch_images_vertical(images_data: list[tuple[bytes, str]]) -> tuple[bytes
 
 
 def _save_image(img_bytes: bytes, ext: str, seen: dict[str, str]) -> str:
-    """Persist image bytes (dedup by MD5). Returns relative path from OUT_DIR."""
+    """Persist image bytes (dedup by MD5). Returns the bare filename within IMAGES_DIR."""
     img_hash = hashlib.md5(img_bytes).hexdigest()
     if img_hash in seen:
         return seen[img_hash]
-    dest = IMAGES_DIR / f"{img_hash}.{ext}"
-    dest.write_bytes(img_bytes)
-    rel_path = dest.relative_to(OUT_DIR).as_posix()
-    seen[img_hash] = rel_path
-    return rel_path
+    filename = f"{img_hash}.{ext}"
+    (IMAGES_DIR / filename).write_bytes(img_bytes)
+    seen[img_hash] = filename
+    return filename
 
 
 def _extract_image(

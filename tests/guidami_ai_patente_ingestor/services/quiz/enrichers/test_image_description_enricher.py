@@ -1,5 +1,6 @@
 """Tests for ImageDescriptionEnricher."""
 
+from pathlib import Path
 from unittest.mock import MagicMock
 
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
@@ -83,6 +84,24 @@ def test_enrich_sets_formatted_description_on_matching_sub_questions() -> None:
     result = enricher(questions)
 
     assert result[0].image_description == "Stop. Segnale rosso ottagonale."
+
+
+def test_enrich_passes_image_field_unchanged_as_path() -> None:
+    """Regression guard: `image` must reach the describer untouched.
+
+    `EnrichedQuizModel.image` is a bare filename, resolved by the describer's
+    file reader against `quiz_images_dir`. Re-adding any path manipulation
+    here (e.g. re-deriving a directory-relative path) would break that
+    resolution again, as it did when the parser used to emit `"images/<file>"`.
+    """
+    describer = _make_describer()
+    enricher = ImageDescriptionEnricher(describer)
+    questions = [_question("1", image="abc123.jpeg")]
+
+    enricher(questions)
+
+    _, kwargs = describer.run_sync.call_args
+    assert kwargs["images"] == (Path("abc123.jpeg"),)
 
 
 def test_enrich_missing_file_skips_and_warns(caplog) -> None:

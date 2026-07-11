@@ -87,13 +87,13 @@ def test_from_parsed_to_cleaned_strips_whitespace_from_text() -> None:
     assert result.text == "Testo con spazi"
 
 
-def test_from_parsed_to_cleaned_propagates_image_path_unchanged() -> None:
+def test_from_parsed_to_cleaned_propagates_image_filename_unchanged() -> None:
     parent = _parsed_question()
-    item = _parsed_item(image="images/sign.jpeg")
+    item = _parsed_item(image="sign.jpeg")
 
     result = QuizMapper.from_parsed_to_cleaned(item, parent)
 
-    assert result.image == "images/sign.jpeg"
+    assert result.image == "sign.jpeg"
 
 
 def test_from_parsed_to_cleaned_no_image_means_none() -> None:
