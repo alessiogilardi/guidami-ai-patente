@@ -39,3 +39,24 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
 
 CREATE INDEX IF NOT EXISTS idx_quiz_questions_topic ON quiz_questions (topic);
 CREATE INDEX IF NOT EXISTS idx_quiz_questions_question_id ON quiz_questions (question_id);
+
+-- LLM call observability log, see docs/plans/2026-07-11--llm-call-log-schema.md.
+CREATE TABLE IF NOT EXISTS llm_call_logs (
+    id BIGSERIAL PRIMARY KEY,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    caller TEXT NOT NULL,
+    model TEXT NOT NULL,
+    system_prompt TEXT,
+    prompt TEXT NOT NULL,
+    response TEXT,
+    input_tokens INTEGER,
+    output_tokens INTEGER,
+    total_tokens INTEGER,
+    cost_usd NUMERIC(12, 6),
+    status TEXT NOT NULL DEFAULT 'success',
+    error_message TEXT,
+    latency_ms INTEGER
+);
+
+CREATE INDEX IF NOT EXISTS idx_llm_call_logs_created_at ON llm_call_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_llm_call_logs_caller ON llm_call_logs (caller);

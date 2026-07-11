@@ -24,7 +24,7 @@
 
 ## Main schema
 
-Two tables, both defined in `db/init.sql` (the `vector` extension is
+Three tables, all defined in `db/init.sql` (the `vector` extension is
 enabled at the top of that file).
 
 ```text
@@ -57,6 +57,24 @@ quiz_questions
 ├── embedding (VECTOR(1536), nullable)
 ├── INDEX idx_quiz_questions_topic (topic)
 └── INDEX idx_quiz_questions_question_id (question_id)
+
+llm_call_logs
+├── id (PK, BIGSERIAL)
+├── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
+├── caller (TEXT, NOT NULL)               -- agent/pipeline stage, e.g. "image_description"
+├── model (TEXT, NOT NULL)
+├── system_prompt (TEXT, nullable)
+├── prompt (TEXT, NOT NULL)               -- rendered user prompt, text only (no images)
+├── response (TEXT, nullable)             -- NULL on failed calls
+├── input_tokens (INTEGER, nullable)
+├── output_tokens (INTEGER, nullable)
+├── total_tokens (INTEGER, nullable)      -- provider value verbatim, not enforced == input + output
+├── cost_usd (NUMERIC(12,6), nullable)    -- populated best-effort by future instrumentation
+├── status (TEXT, NOT NULL DEFAULT 'success')  -- "success" | "error"
+├── error_message (TEXT, nullable)
+├── latency_ms (INTEGER, nullable)
+├── INDEX idx_llm_call_logs_created_at (created_at)
+└── INDEX idx_llm_call_logs_caller (caller)
 ```
 
 The former `quiz_metadata` JSONB blob was flattened into the four
@@ -71,6 +89,15 @@ not first ingestion.
 No index exists on either `embedding` column (no ivfflat/hnsw) — vector
 search currently runs as an exact `<=>` scan. No index yet on the `TEXT[]`
 metadata columns (GIN/FTS deferred with the hybrid-search work).
+
+`llm_call_logs` is a design-only foundation for LLM call observability
+(cost/token/quality tracking): the table and the `LlmCallLog` entity
+(`src/domain/entities/observability/llm_call_log.py`) exist, but no capture
+logic writes to it yet — `cost_usd` stays `NULL` until a pricing-lookup
+instrumentation step is added (out of scope, tracked separately). Failures
+are first-class: `status`/`error_message` are always populated, while
+`response` and the token/cost/latency columns are nullable so a failed call
+is still loggable.
 
 ## Migrations
 
@@ -88,4 +115,4 @@ docker compose -f docker/docker-compose.yml up -d
 (see also the "Infrastructure" section of `CLAUDE.md`). There is no
 changelog file tracking schema history beyond `git log db/init.sql`.
 
-*Last updated: 2026-07-11 — verified against commit `f4a0936`.*
+*Last updated: 2026-07-11 — verified against commit `f8216ed`.*
