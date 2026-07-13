@@ -5,9 +5,11 @@ that the correct factory / runner / repository methods are invoked depending on
 the subcommand parsed from sys.argv.
 """
 
+import logging
 import sys
 from unittest.mock import MagicMock, patch
 
+import psycopg
 import pytest
 
 # ---------------------------------------------------------------------------
@@ -159,6 +161,40 @@ def test_prepare_knowledge_requires_source_argument(monkeypatch: pytest.MonkeyPa
 
         with pytest.raises(SystemExit):
             main()
+
+
+def test_prepare_degrades_without_postgres(
+    monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
+    """When PostgresClient construction fails, prepare still dispatches with tracker=None."""
+    monkeypatch.setattr(sys, "argv", ["ingest", "prepare", "knowledge", "--source", "cds"])
+    config_mock = _make_config_mock()
+
+    with (
+        patch("guidami_ai_patente_ingestor.cli.IngestorConfig", return_value=config_mock),
+        patch("guidami_ai_patente_ingestor.cli.LayerResolver"),
+        patch(
+            "guidami_ai_patente_ingestor.cli.PostgresClient",
+            side_effect=psycopg.OperationalError("connection refused"),
+        ),
+        patch(
+            "guidami_ai_patente_ingestor.cli.build_knowledge_cleaning_flow",
+            return_value=MagicMock(),
+        ),
+        patch(
+            "guidami_ai_patente_ingestor.cli.build_knowledge_enrichment_flow",
+            return_value=MagicMock(),
+        ) as build_enrich,
+        patch("guidami_ai_patente_ingestor.cli.run_preparation") as run_prep,
+        caplog.at_level(logging.WARNING),
+    ):
+        from guidami_ai_patente_ingestor.cli import main
+
+        main()
+
+    assert run_prep.call_count == 2
+    assert build_enrich.call_args.kwargs["tracker"] is None
+    assert any(record.levelno == logging.WARNING for record in caplog.records)
 
 
 # ---------------------------------------------------------------------------

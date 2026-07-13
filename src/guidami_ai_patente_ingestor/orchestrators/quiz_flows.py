@@ -3,6 +3,7 @@
 from flowstep import Flow, FlowBuilder
 from flowstep.steps import ApplyStep
 
+from commons.ai.observability import LlmCallTracker
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
 from commons.configs import AgentConfig
@@ -205,6 +206,7 @@ def build_quiz_enrichment_flow(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
     validate: bool = False,
+    tracker: LlmCallTracker | None = None,
 ) -> Flow:
     """Assembles the quiz enrichment flow (cleaned → enriched).
 
@@ -221,6 +223,8 @@ def build_quiz_enrichment_flow(
         layer_resolver: Resolver mapping (layer, source) → JSON file Path.
         validate: If True, runs structural validation of the flow before returning it.
             Raises `FlowValidationError` on ERROR.
+        tracker: Optional port persisting one `LlmCallLog` per call made by the
+            enrichment agents. Forwarded to `from_yaml`; `None` disables tracking.
 
     Returns:
         Flow configured and ready for execution.
@@ -250,10 +254,10 @@ def build_quiz_enrichment_flow(
     )
     images_file_reader = LocalFileSystemClient(config.quiz_images_dir)
     describer = RoadSignDescriberAgent.from_yaml(
-        "road_sign_describer", agents_repository, images_file_reader
+        "road_sign_describer", agents_repository, images_file_reader, tracker
     )
     norm_describer = NormReferenceDescriberAgent.from_yaml(
-        "norm_reference_describer", agents_repository
+        "norm_reference_describer", agents_repository, tracker=tracker
     )
     enrich_step = ApplyStep(
         "enrich",

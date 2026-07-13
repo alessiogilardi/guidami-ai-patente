@@ -12,6 +12,14 @@ Subcommand structure:
 import argparse
 import logging
 
+import psycopg
+
+from commons.ai.observability import (
+    LlmCallLogRepository,
+    LlmCallTracker,
+    LlmCostCalculator,
+    QueuedLlmCallTracker,
+)
 from commons.clients import LiteLLMEmbeddingClient, PostgresClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators import (
@@ -92,10 +100,11 @@ def _build_parser(config: IngestorConfig) -> argparse.ArgumentParser:
     return parser
 
 
-def _run_prepare(
+def _dispatch_prepare(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
     args: argparse.Namespace,
+    tracker: LlmCallTracker | None,
 ) -> None:
     """Dispatch prepare subcommand: clean + enrich flow pair, with idempotency check."""
     force: bool = args.force
@@ -109,7 +118,7 @@ def _run_prepare(
                 config=config, layer_resolver=layer_resolver, source=source
             )
             enrich_flow = build_knowledge_enrichment_flow(
-                config=config, layer_resolver=layer_resolver, source=source
+                config=config, layer_resolver=layer_resolver, source=source, tracker=tracker
             )
             run_preparation(
                 clean_flow,
@@ -127,7 +136,9 @@ def _run_prepare(
             if quiz_enrich_layer is None:
                 raise ValueError("quiz_preparation.output_layer is not configured")
             clean_flow = build_quiz_cleaning_flow(config=config, layer_resolver=layer_resolver)
-            enrich_flow = build_quiz_enrichment_flow(config=config, layer_resolver=layer_resolver)
+            enrich_flow = build_quiz_enrichment_flow(
+                config=config, layer_resolver=layer_resolver, tracker=tracker
+            )
             run_preparation(
                 clean_flow,
                 layer_resolver.path(_CLEANED_LAYER, quiz_source),
@@ -138,6 +149,35 @@ def _run_prepare(
                 layer_resolver.path(quiz_enrich_layer, quiz_source),
                 force=force,
             )
+
+
+def _run_prepare(
+    config: IngestorConfig,
+    layer_resolver: LayerResolver,
+    args: argparse.Namespace,
+) -> None:
+    """Build the tracking DB client (best-effort) and dispatch the prepare subcommand.
+
+    `PostgresClient` connects eagerly and `prepare` does not otherwise need a DB, so a
+    connection/setup failure degrades gracefully: a warning is logged and the flows run
+    untracked (`tracker=None`) instead of aborting the pipeline. `psycopg.Error` (not
+    just `OperationalError`) is caught here: any failure while establishing the tracking
+    connection is an observability concern, never a reason to abort `prepare`.
+    """
+    try:
+        postgres_client = PostgresClient(config.postgres)
+    except psycopg.Error:
+        logger.warning("Postgres unavailable; prepare will run without LLM call tracking")
+        _dispatch_prepare(config, layer_resolver, args, tracker=None)
+        return
+
+    with (
+        postgres_client,
+        QueuedLlmCallTracker(
+            LlmCallLogRepository(postgres_client), LlmCostCalculator()
+        ) as tracker,
+    ):
+        _dispatch_prepare(config, layer_resolver, args, tracker)
 
 
 def _run_index(

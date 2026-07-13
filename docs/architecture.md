@@ -38,7 +38,8 @@ scripts, each registered as a `[project.scripts]` entry.
 | Component | Role | Main technology |
 |---|---|---|
 | `commons/clients/embeddings/` | `EmbeddingClient` ABC (`embed_query`, `embed_passages`); `LiteLLMEmbeddingClient` (production) and `SentenceTransformerEmbeddingClient` (offline alternative, not hot-swappable — different dimension) | litellm (→ OpenRouter), sentence-transformers |
-| `commons/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` from YAML, renders prompts via `PromptRenderer` | pydantic-ai-slim[openrouter] |
+| `commons/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` from YAML, renders prompts via `PromptRenderer`; optionally tracks every call via an injected `LlmCallTracker` port | pydantic-ai-slim[openrouter] |
+| `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker`/`LlmCostCalculator` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | litellm (pricing map only), psycopg[binary] |
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
 | `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach`, `FlatMap` — generic composition primitives used across pipeline steps | — |
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
@@ -76,6 +77,20 @@ prepare|index|reset knowledge|quiz` (see command table in `CLAUDE.md`).
 `run_preparation` wraps every preparation flow with idempotency (skips a
 stage if its output file already exists, unless `--force`).
 
+**LLM call observability** (`prepare` path only, no agent calls on `index`/`reset`):
+`cli._run_prepare` opens a `PostgresClient` and, inside `with postgres_client,
+QueuedLlmCallTracker(LlmCallLogRepository(postgres_client), LlmCostCalculator()) as
+tracker:`, dispatches to `_dispatch_prepare(..., tracker)`, which forwards `tracker`
+into `build_knowledge_enrichment_flow`/`build_quiz_enrichment_flow` → the agents'
+`from_yaml(..., tracker=tracker)`. Inside `BaseAgent.run`/`run_sync`, a tracked call is
+wrapped in `PydanticAILlmCallCapture` (records prompt/response/tokens/latency/status synchronously)
+and `tracker.track(capture.log)` enqueues the log for the background worker, which
+computes `cost_usd` (litellm pricing lookup) and inserts via `LlmCallLogRepository` —
+off the hot path, so a slow/failing DB write never blocks the LLM call. If
+`PostgresClient` construction fails (`psycopg.Error`), `_run_prepare` logs a warning and
+dispatches with `tracker=None`: the untracked path is byte-for-byte what `BaseAgent` ran
+before this feature (see `docs/patterns.md`).
+
 **Knowledge corpus** (per source, `cds`/`cap` — `orchestrators/knowledge_flows.py`):
 1. *Cleaning*: `LoadJsonStep` → `ApplyStep(ForEach(ArticleCleaner))` → `WriteJsonStep` (parsed → cleaned).
 2. *Enrichment*: `LoadJsonStep` → `ApplyStep(ForEach(ArticleMapper.from_parsed_to_enriched), ContextEnricher(ArticleContextualizerAgent))` → `WriteJsonStep` (cleaned → enriched).
@@ -97,5 +112,12 @@ See `adr/` for the full history. Currently accepted:
   `QuizMetadata` fields are first-class `quiz_questions` columns and
   `QuizMetadata` is a transient ingestion model, not a persisted entity
   (`adr/0002-flatten-quiz-metadata-columns.md`).
+- **LLM call tracking is a port injected into `BaseAgent`, not an external
+  wrapper** — token usage (`result.usage()`) only exists inside
+  `run`/`run_sync`; an external decorator would force `BaseAgent.run` to
+  return a rich result object, breaking every enricher. `LlmCallTracker`
+  persistence failures degrade gracefully (log a warning, never abort the
+  pipeline) — a deliberate, documented exception to "never swallow
+  exceptions" (`docs/plans/2026-07-13--llm-call-tracking.md`).
 
-*Last updated: 2026-07-11 — verified against commit `f4a0936`.*
+*Last updated: 2026-07-13 — verified against commit `5398b2d`.*

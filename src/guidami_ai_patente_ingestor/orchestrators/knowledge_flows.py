@@ -6,6 +6,7 @@ from typing import Literal, cast
 from flowstep import Flow, FlowBuilder
 from flowstep.steps import ApplyStep
 
+from commons.ai.observability import LlmCallTracker
 from commons.clients import EmbeddingClient, PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
 from commons.configs import AgentConfig
@@ -204,6 +205,7 @@ def build_knowledge_enrichment_flow(
     layer_resolver: LayerResolver,
     source: str,
     validate: bool = False,
+    tracker: LlmCallTracker | None = None,
 ) -> Flow:
     """Assembles the knowledge enrichment flow for ONE source (cleaned → enriched).
 
@@ -218,6 +220,8 @@ def build_knowledge_enrichment_flow(
         layer_resolver: Resolver mapping (layer, source) → JSON file Path.
         source: Source to enrich; must belong to `config.knowledge_preparation.sources`.
         validate: If True, runs structural validation of the flow before returning it.
+        tracker: Optional port persisting one `LlmCallLog` per call made by the
+            enrichment agent. Forwarded to `from_yaml`; `None` disables tracking.
 
     Returns:
         Flow configured and ready for execution.
@@ -248,7 +252,9 @@ def build_knowledge_enrichment_flow(
     agents_repository = YamlRepository(
         AgentConfig, file_system_client=LocalFileSystemClient(config.agents_dir)
     )
-    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_repository)
+    agent = ArticleContextualizerAgent.from_yaml(
+        "article_contextualizer", agents_repository, tracker=tracker
+    )
     enrich_step = ApplyStep(
         "enrich",
         ForEach(ArticleMapper.from_parsed_to_enriched),
