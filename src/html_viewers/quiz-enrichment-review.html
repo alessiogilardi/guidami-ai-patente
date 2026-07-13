@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>Revisione Enrichment Quiz</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f5f6f8;
+    --panel: #ffffff;
+    --border: #d8dce1;
+    --text: #1b1f24;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --true: #15803d;
+    --false: #b91c1c;
+    --warn-bg: #fff7ed;
+    --warn-border: #fdba74;
+    --chip-bg: #eef2ff;
+    --chip-text: #3730a3;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  h1 { font-size: 1.25rem; margin: 0 0 4px; }
+  .subtitle { color: var(--muted); font-size: 0.9rem; margin: 0 0 12px; }
+  .loaders { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end; }
+  .loader-field { display: flex; flex-direction: column; gap: 4px; }
+  .loader-field label { font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+  .loader-field small { color: var(--muted); }
+  #errorBanner {
+    display: none;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
+  #statsBar {
+    display: none;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  #statsBar strong { color: var(--text); }
+  main { padding: 20px 24px 60px; max-width: 1100px; margin: 0 auto; }
+  #emptyState { color: var(--muted); text-align: center; padding: 60px 0; }
+  .filters {
+    display: none;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 18px;
+  }
+  .filters input[type="text"], .filters select {
+    padding: 6px 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    background: var(--panel);
+    color: var(--text);
+  }
+  .filters label.checkbox { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; }
+  .group {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 16px;
+    background: #f9fafb;
+    border-bottom: 1px solid var(--border);
+  }
+  .group-header .topic { font-weight: 600; }
+  .group-header .qid { color: var(--muted); font-size: 0.8rem; }
+  .subq {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eef0f2;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+  }
+  .subq:last-child { border-bottom: none; }
+  .subq-media { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .subq-media img {
+    max-width: 130px;
+    max-height: 130px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    object-fit: contain;
+    background: #fff;
+  }
+  .subq-media .no-image {
+    width: 130px;
+    height: 90px;
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-align: center;
+    padding: 4px;
+  }
+  .subq-media .filename { font-size: 0.7rem; color: var(--muted); word-break: break-all; text-align: center; }
+  .subq-body .qtext { margin: 0 0 8px; font-size: 0.95rem; }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-right: 8px;
+  }
+  .badge.true { background: #dcfce7; color: var(--true); }
+  .badge.false { background: #fee2e2; color: var(--false); }
+  .number { font-size: 0.75rem; color: var(--muted); }
+  .description {
+    margin: 8px 0;
+    padding: 8px 10px;
+    background: #f0f9ff;
+    border-radius: 6px;
+    font-size: 0.85rem;
+  }
+  .description.missing {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    color: #9a3412;
+    font-style: italic;
+  }
+  .metadata { margin-top: 8px; font-size: 0.82rem; }
+  .metadata.missing {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    color: #9a3412;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-style: italic;
+  }
+  .metadata .field { margin-bottom: 6px; }
+  .metadata .field-label { font-weight: 600; color: var(--muted); margin-right: 6px; }
+  .chip {
+    display: inline-block;
+    background: var(--chip-bg);
+    color: var(--chip-text);
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    margin: 2px 4px 2px 0;
+  }
+  .metadata .queries { margin: 4px 0 0 18px; padding: 0; font-size: 0.78rem; color: var(--muted); }
+  .metadata .rule-explanation { margin-top: 4px; }
+  .pagination {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .pagination button {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .pagination button:disabled { opacity: 0.4; cursor: not-allowed; }
+  .pagination span { font-size: 0.85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Revisione Enrichment Quiz</h1>
+  <p class="subtitle">
+    Visualizzatore locale, read-only, per ispezionare l'output di
+    <code>uv run ingest prepare quiz</code> (<code>data/enriched/quiz-patente-ab/quiz-patente-ab.json</code>).
+    Nessun dato lascia il browser.
+  </p>
+  <div class="loaders">
+    <div class="loader-field">
+      <label for="jsonInput">JSON di enrichment</label>
+      <input type="file" id="jsonInput" accept="application/json,.json">
+      <small>Seleziona <code>quiz-patente-ab.json</code> dalla cartella <code>data/enriched/</code>.</small>
+    </div>
+    <div class="loader-field">
+      <label for="imagesInput">Immagini segnali (opzionale)</label>
+      <input type="file" id="imagesInput" accept="image/*" multiple>
+      <small>Apri <code>data/parsed/quiz-patente-ab/images/</code> e seleziona tutti i file (Ctrl/Cmd+A).</small>
+    </div>
+  </div>
+  <div id="errorBanner"></div>
+  <div id="statsBar"></div>
+</header>
+<main>
+  <div id="emptyState">Carica il file JSON di enrichment per iniziare la revisione.</div>
+  <div class="filters" id="filters">
+    <input type="text" id="searchInput" placeholder="Cerca nel testo della domanda…">
+    <select id="topicSelect">
+      <option value="">Tutti i topic</option>
+    </select>
+    <label class="checkbox"><input type="checkbox" id="onlyWithImage"> Solo con immagine</label>
+    <label class="checkbox"><input type="checkbox" id="onlyMissingDescription"> Solo senza image_description</label>
+    <label class="checkbox"><input type="checkbox" id="onlyMissingMetadata"> Solo senza quiz_metadata</label>
+  </div>
+  <div id="results"></div>
+  <div class="pagination" id="pagination">
+    <button id="prevPage">&larr; Precedente</button>
+    <span id="pageIndicator"></span>
+    <button id="nextPage">Successiva &rarr;</button>
+  </div>
+</main>
+<script>
+(function () {
+  "use strict";
+
+  const GROUPS_PER_PAGE = 15;
+
+  const state = {
+    items: [],
+    imageMap: new Map(),
+    page: 1,
+  };
+
+  const jsonInput = document.getElementById("jsonInput");
+  const imagesInput = document.getElementById("imagesInput");
+  const errorBanner = document.getElementById("errorBanner");
+  const statsBar = document.getElementById("statsBar");
+  const emptyState = document.getElementById("emptyState");
+  const filtersEl = document.getElementById("filters");
+  const resultsEl = document.getElementById("results");
+  const paginationEl = document.getElementById("pagination");
+  const pageIndicator = document.getElementById("pageIndicator");
+  const prevPageBtn = document.getElementById("prevPage");
+  const nextPageBtn = document.getElementById("nextPage");
+  const searchInput = document.getElementById("searchInput");
+  const topicSelect = document.getElementById("topicSelect");
+  const onlyWithImage = document.getElementById("onlyWithImage");
+  const onlyMissingDescription = document.getElementById("onlyMissingDescription");
+  const onlyMissingMetadata = document.getElementById("onlyMissingMetadata");
+
+  function showError(message) {
+    errorBanner.textContent = message;
+    errorBanner.style.display = "block";
+  }
+
+  function clearError() {
+    errorBanner.style.display = "none";
+    errorBanner.textContent = "";
+  }
+
+  function isValidEnrichedItem(item) {
+    return (
+      item &&
+      typeof item === "object" &&
+      "question_id" in item &&
+      "topic" in item &&
+      "number" in item &&
+      "text" in item &&
+      "correct_answer" in item
+    );
+  }
+
+  jsonInput.addEventListener("change", async () => {
+    clearError();
+    const file = jsonInput.files[0];
+    if (!file) return;
+    let parsed;
+    try {
+      parsed = JSON.parse(await file.text());
+    } catch (err) {
+      showError("Il file selezionato non è un JSON valido: " + err.message);
+      return;
+    }
+    if (!Array.isArray(parsed)) {
+      showError("Formato inatteso: il JSON di enrichment deve essere un array di sotto-domande.");
+      return;
+    }
+    if (parsed.length > 0 && !isValidEnrichedItem(parsed[0])) {
+      showError(
+        "Formato inatteso: il primo elemento non ha i campi attesi " +
+        "(question_id, topic, number, text, correct_answer). " +
+        "Assicurati di aver caricato il file dalla cartella data/enriched/, non parsed/ o cleaned/."
+      );
+      return;
+    }
+    state.items = parsed;
+    state.page = 1;
+    render();
+  });
+
+  imagesInput.addEventListener("change", () => {
+    state.imageMap.forEach((url) => URL.revokeObjectURL(url));
+    state.imageMap = new Map();
+    for (const file of imagesInput.files) {
+      state.imageMap.set(file.name, URL.createObjectURL(file));
+    }
+    render();
+  });
+
+  [searchInput, topicSelect, onlyWithImage, onlyMissingDescription, onlyMissingMetadata].forEach((el) => {
+    el.addEventListener("input", () => {
+      state.page = 1;
+      render();
+    });
+  });
+
+  prevPageBtn.addEventListener("click", () => {
+    if (state.page > 1) {
+      state.page -= 1;
+      render();
+    }
+  });
+  nextPageBtn.addEventListener("click", () => {
+    state.page += 1;
+    render();
+  });
+
+  function populateTopics() {
+    const topics = [...new Set(state.items.map((it) => it.topic))].sort();
+    const current = topicSelect.value;
+    topicSelect.innerHTML = '<option value="">Tutti i topic</option>';
+    for (const topic of topics) {
+      const opt = document.createElement("option");
+      opt.value = topic;
+      opt.textContent = topic;
+      topicSelect.appendChild(opt);
+    }
+    topicSelect.value = topics.includes(current) ? current : "";
+  }
+
+  function filteredItems() {
+    const query = searchInput.value.trim().toLowerCase();
+    const topic = topicSelect.value;
+    return state.items.filter((it) => {
+      if (topic && it.topic !== topic) return false;
+      if (query && !it.text.toLowerCase().includes(query)) return false;
+      if (onlyWithImage.checked && !it.image) return false;
+      if (onlyMissingDescription.checked && !(it.image && !it.image_description)) return false;
+      if (onlyMissingMetadata.checked && it.quiz_metadata) return false;
+      return true;
+    });
+  }
+
+  function groupByQuestionId(items) {
+    const order = [];
+    const groups = new Map();
+    for (const item of items) {
+      if (!groups.has(item.question_id)) {
+        groups.set(item.question_id, { question_id: item.question_id, topic: item.topic, items: [] });
+        order.push(item.question_id);
+      }
+      groups.get(item.question_id).items.push(item);
+    }
+    return order.map((id) => groups.get(id));
+  }
+
+  function renderStats(filtered) {
+    const total = state.items.length;
+    const withImage = state.items.filter((it) => it.image).length;
+    const missingDescription = state.items.filter((it) => it.image && !it.image_description).length;
+    const missingMetadata = state.items.filter((it) => !it.quiz_metadata).length;
+    const mappedImages = state.imageMap.size;
+    statsBar.innerHTML =
+      `<span><strong>${total}</strong> sotto-domande totali</span>` +
+      `<span><strong>${filtered}</strong> dopo i filtri</span>` +
+      `<span><strong>${withImage}</strong> con immagine</span>` +
+      `<span><strong>${missingDescription}</strong> senza image_description</span>` +
+      `<span><strong>${missingMetadata}</strong> senza quiz_metadata</span>` +
+      `<span><strong>${mappedImages}</strong> immagini caricate nel browser</span>`;
+    statsBar.style.display = "flex";
+  }
+
+  function renderMetadata(metadata) {
+    if (!metadata) {
+      return '<div class="metadata missing">quiz_metadata mancante</div>';
+    }
+    const chips = (values) => (values || []).map((v) => `<span class="chip">${escapeHtml(v)}</span>`).join("");
+    const queries = (metadata.vector_search_queries || [])
+      .map((q) => `<li>${escapeHtml(q)}</li>`)
+      .join("");
+    return `
+      <div class="metadata">
+        <div class="field"><span class="field-label">Concetti:</span>${chips(metadata.core_concepts)}</div>
+        <div class="field"><span class="field-label">Entità:</span>${chips(metadata.entities)}</div>
+        <div class="field"><span class="field-label">Keyword esatte:</span>${chips(metadata.exact_keywords)}</div>
+        <div class="field rule-explanation"><span class="field-label">Spiegazione norma:</span>${escapeHtml(metadata.rule_explanation || "")}</div>
+        <div class="field"><span class="field-label">Query di ricerca:</span><ul class="queries">${queries}</ul></div>
+      </div>
+    `;
+  }
+
+  function renderMedia(item) {
+    if (!item.image) return "";
+    const url = state.imageMap.get(item.image);
+    const imgOrPlaceholder = url
+      ? `<img src="${url}" alt="${escapeHtml(item.image)}">`
+      : `<div class="no-image">immagine non caricata</div>`;
+    return `
+      <div class="subq-media">
+        ${imgOrPlaceholder}
+        <div class="filename">${escapeHtml(item.image)}</div>
+      </div>
+    `;
+  }
+
+  function renderDescription(item) {
+    if (!item.image) return "";
+    if (item.image_description) {
+      return `<div class="description">${escapeHtml(item.image_description)}</div>`;
+    }
+    return `<div class="description missing">image_description mancante</div>`;
+  }
+
+  function renderSubQuestion(item) {
+    const hasMedia = Boolean(item.image);
+    return `
+      <div class="subq" style="grid-template-columns: ${hasMedia ? "140px 1fr" : "1fr"};">
+        ${renderMedia(item)}
+        <div class="subq-body">
+          <span class="badge ${item.correct_answer ? "true" : "false"}">${item.correct_answer ? "VERO" : "FALSO"}</span>
+          <span class="number">#${escapeHtml(item.number)}</span>
+          <p class="qtext">${escapeHtml(item.text)}</p>
+          ${renderDescription(item)}
+          ${renderMetadata(item.quiz_metadata)}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderGroup(group) {
+    return `
+      <div class="group">
+        <div class="group-header">
+          <span class="topic">${escapeHtml(group.topic)}</span>
+          <span class="qid">domanda #${group.question_id}</span>
+        </div>
+        ${group.items.map(renderSubQuestion).join("")}
+      </div>
+    `;
+  }
+
+  function escapeHtml(value) {
+    const div = document.createElement("div");
+    div.textContent = value ?? "";
+    return div.innerHTML;
+  }
+
+  function render() {
+    if (state.items.length === 0) {
+      emptyState.style.display = "block";
+      filtersEl.style.display = "none";
+      statsBar.style.display = "none";
+      paginationEl.style.display = "none";
+      resultsEl.innerHTML = "";
+      return;
+    }
+    emptyState.style.display = "none";
+    filtersEl.style.display = "flex";
+    populateTopics();
+
+    const filtered = filteredItems();
+    renderStats(filtered.length);
+    const groups = groupByQuestionId(filtered);
+
+    const totalPages = Math.max(1, Math.ceil(groups.length / GROUPS_PER_PAGE));
+    if (state.page > totalPages) state.page = totalPages;
+    const start = (state.page - 1) * GROUPS_PER_PAGE;
+    const pageGroups = groups.slice(start, start + GROUPS_PER_PAGE);
+
+    resultsEl.innerHTML = pageGroups.length
+      ? pageGroups.map(renderGroup).join("")
+      : '<div id="emptyState" style="display:block;">Nessuna sotto-domanda corrisponde ai filtri selezionati.</div>';
+
+    paginationEl.style.display = groups.length > GROUPS_PER_PAGE ? "flex" : "none";
+    pageIndicator.textContent = `Pagina ${state.page} di ${totalPages} (${groups.length} domande)`;
+    prevPageBtn.disabled = state.page <= 1;
+    nextPageBtn.disabled = state.page >= totalPages;
+  }
+})();
+</script>
+</body>
+</html>
