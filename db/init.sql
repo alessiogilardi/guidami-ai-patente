@@ -55,7 +55,9 @@ CREATE TABLE IF NOT EXISTS llm_call_logs (
     cost_usd NUMERIC(12, 6),
     status TEXT NOT NULL DEFAULT 'success',
     error_message TEXT,
-    latency_ms INTEGER
+    latency_ms INTEGER,
+    start_time TIMESTAMPTZ,
+    end_time TIMESTAMPTZ
 );
 
 CREATE INDEX IF NOT EXISTS idx_llm_call_logs_created_at ON llm_call_logs (created_at);

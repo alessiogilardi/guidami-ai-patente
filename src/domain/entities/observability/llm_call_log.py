@@ -1,3 +1,4 @@
+from datetime import datetime
 from decimal import Decimal
 from typing import Literal
 
@@ -23,3 +24,5 @@ class LlmCallLog(BaseModel):
     status: Literal["success", "error"] = "success"
     error_message: str | None = None
     latency_ms: int | None = None
+    start_time: datetime | None = None
+    end_time: datetime | None = None

@@ -18,6 +18,8 @@ _INSERTABLE_COLUMNS = {
     "status",
     "error_message",
     "latency_ms",
+    "start_time",
+    "end_time",
 }
 
 
@@ -48,6 +50,8 @@ def test_defaults() -> None:
     assert log.cost_usd is None
     assert log.error_message is None
     assert log.latency_ms is None
+    assert log.start_time is None
+    assert log.end_time is None
 
 
 def test_cost_is_decimal() -> None:

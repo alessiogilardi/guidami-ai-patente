@@ -72,7 +72,9 @@ llm_call_logs
 ├── cost_usd (NUMERIC(12,6), nullable)    -- populated best-effort by future instrumentation
 ├── status (TEXT, NOT NULL DEFAULT 'success')  -- "success" | "error"
 ├── error_message (TEXT, nullable)
-├── latency_ms (INTEGER, nullable)
+├── latency_ms (INTEGER, nullable)         -- monotonic duration (time.perf_counter), not derived from start/end_time
+├── start_time (TIMESTAMPTZ, nullable)     -- wall-clock call start
+├── end_time (TIMESTAMPTZ, nullable)       -- wall-clock call end
 ├── INDEX idx_llm_call_logs_created_at (created_at)
 └── INDEX idx_llm_call_logs_caller (caller)
 ```
@@ -90,14 +92,18 @@ No index exists on either `embedding` column (no ivfflat/hnsw) — vector
 search currently runs as an exact `<=>` scan. No index yet on the `TEXT[]`
 metadata columns (GIN/FTS deferred with the hybrid-search work).
 
-`llm_call_logs` is a design-only foundation for LLM call observability
-(cost/token/quality tracking): the table and the `LlmCallLog` entity
-(`src/domain/entities/observability/llm_call_log.py`) exist, but no capture
-logic writes to it yet — `cost_usd` stays `NULL` until a pricing-lookup
-instrumentation step is added (out of scope, tracked separately). Failures
-are first-class: `status`/`error_message` are always populated, while
-`response` and the token/cost/latency columns are nullable so a failed call
-is still loggable.
+`llm_call_logs` is populated by every tracked `BaseAgent` call (`commons/ai/observability/`,
+see `docs/architecture.md` and `docs/patterns.md`): `caller`/`model`/`prompt`/`response`/
+tokens/`latency_ms`/`start_time`/`end_time` are captured synchronously inside `run`/`run_sync`
+by `PydanticAILlmCallCapture` (`start_time`/`end_time` are wall-clock `datetime.now(UTC)` stamps taken on
+`__enter__`/`__exit__`; `latency_ms` is measured separately with the monotonic
+`time.perf_counter()`, so it is not guaranteed to equal `end_time - start_time` under clock
+adjustments), `cost_usd` is computed off the hot path by a background worker via litellm's
+bundled pricing map and stays `NULL` when the model is unmapped. Failures are first-class:
+`status`/`error_message` are always populated, while `response` and the token/cost/latency/
+timestamp columns are nullable so a failed call is still loggable. Tracking is opt-in per
+`BaseAgent` instance (`tracker` ctor param, `None` by default) — only the ingestor's `prepare`
+CLI path wires it today.
 
 ## Migrations
 
@@ -115,4 +121,4 @@ docker compose -f docker/docker-compose.yml up -d
 (see also the "Infrastructure" section of `CLAUDE.md`). There is no
 changelog file tracking schema history beyond `git log db/init.sql`.
 
-*Last updated: 2026-07-11 — verified against commit `f8216ed`.*
+*Last updated: 2026-07-13 — verified against commit `5398b2d`.*
