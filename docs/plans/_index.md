@@ -71,6 +71,7 @@ e documentato in [`docs/architecture/ingestor/`](../docs/architecture/ingestor/_
 | [Mapping offline quiz ↔ norma (LLM-as-a-Judge)](2026-07-03--ingest-llm-as-judge.md) | Mapping offline quiz ↔ norma (LLM-as-a-Judge) | Draft |
 | [Flatten Quiz Entity](2026-07-11--flatten-quiz-entity.md) | Flatten Quiz Entity | Implemented |
 | [Llm Call Log Schema](2026-07-11--llm-call-log-schema.md) | Llm Call Log Schema | Implemented |
+| [Llm Call Tracking](2026-07-13--llm-call-tracking.md) | Llm Call Tracking | Implemented |
 | [Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF)](architecture-hybrid-retrieval.md) | Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF) | Draft |
 
 
