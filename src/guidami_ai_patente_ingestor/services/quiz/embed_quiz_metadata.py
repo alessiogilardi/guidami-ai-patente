@@ -1,7 +1,7 @@
 import logging
 from collections.abc import Iterable
 
-from commons.services.embeddings import EmbeddingService
+from commons.ai.embedding import EmbeddingService
 from commons.use_cases import UseCase
 from guidami_ai_patente_ingestor.models.quiz.embeddable_quiz import EmbeddableQuizModel
 

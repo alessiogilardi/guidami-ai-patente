@@ -14,13 +14,14 @@ import logging
 
 import psycopg
 
+from commons.ai.embedding import LiteLLMEmbeddingClient
 from commons.ai.observability import (
     LlmCallLogRepository,
     LlmCallTracker,
     LlmCostCalculator,
     QueuedLlmCallTracker,
 )
-from commons.clients import LiteLLMEmbeddingClient, PostgresClient
+from commons.clients import PostgresClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators import (
     build_knowledge_cleaning_flow,

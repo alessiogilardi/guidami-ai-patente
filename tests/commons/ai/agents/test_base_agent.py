@@ -7,10 +7,9 @@ from pydantic_ai import BinaryContent
 from pydantic_ai.messages import ModelMessage, ModelResponse, TextPart
 from pydantic_ai.models.function import AgentInfo, FunctionModel
 
-from commons.agents import BaseAgent
-from commons.agents.utils.prompt_renderer import PromptRenderer
+from commons.ai.agents import AgentConfig, BaseAgent
+from commons.ai.agents.utils.prompt_renderer import PromptRenderer
 from commons.clients.file_system import LocalFileSystemClient
-from commons.configs import AgentConfig
 from commons.repositories import YamlRepository
 from domain.entities.observability import LlmCallLog
 

@@ -1,4 +1,4 @@
-from commons.agents import BaseAgent
+from commons.ai.agents import BaseAgent
 from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
     ArticleContextualizerRequest,
     ArticleContextualizerResponse,

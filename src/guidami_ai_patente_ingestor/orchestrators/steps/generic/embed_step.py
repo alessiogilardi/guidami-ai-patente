@@ -3,7 +3,7 @@ from typing import cast
 
 from flowstep import FlowContext, Step
 
-from commons.services.embeddings import Embedded, EmbeddingService
+from commons.ai.embedding import Embedded, EmbeddingService
 
 logger = logging.getLogger(__name__)
 

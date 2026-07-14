@@ -7,7 +7,8 @@ from unittest.mock import MagicMock
 import pytest
 from flowstep import Flow
 
-from commons.clients import EmbeddingClient, PostgresClient
+from commons.ai.embedding import EmbeddingClient
+from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.configs import IngestorConfig, SourceConfig
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel

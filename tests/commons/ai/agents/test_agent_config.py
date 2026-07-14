@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from commons.configs import AgentConfig
+from commons.ai.agents import AgentConfig
 
 
 def test_agent_config_parses_from_dict() -> None:

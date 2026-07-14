@@ -8,8 +8,8 @@ from pydantic_ai.settings import ModelSettings
 from commons.ai.observability import LlmCallTracker, PydanticAILlmCallCapture
 from commons.clients import FileReaderInterface
 
-from ..configs import AgentConfig
-from ..repositories import YamlRepository
+from ...repositories import YamlRepository
+from .configs import AgentConfig
 from .utils.prompt_renderer import PromptInput, PromptRenderer
 
 

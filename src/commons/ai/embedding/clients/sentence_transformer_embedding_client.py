@@ -1,4 +1,4 @@
-from commons.configs import EmbeddingConfig
+from commons.ai.embedding.configs import EmbeddingConfig
 
 from .embedding_client import EmbeddingClient
 

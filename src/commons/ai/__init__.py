@@ -1,1 +1,4 @@
-"""AI-related capabilities shared between ingestor and application (agents, observability)."""
+"""AI-related capabilities shared between ingestor and application.
+
+Agents, embedding, observability.
+"""

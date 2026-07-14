@@ -9,9 +9,8 @@ from pathlib import Path
 import pytest
 import yaml
 
-from commons.agents import BaseAgent
+from commons.ai.agents import AgentConfig, BaseAgent
 from commons.clients.file_system import LocalFileSystemClient
-from commons.configs import AgentConfig
 from commons.repositories import YamlRepository
 
 MINIMAL_CONFIG: dict = {

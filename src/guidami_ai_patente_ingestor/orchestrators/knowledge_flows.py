@@ -6,12 +6,12 @@ from typing import Literal, cast
 from flowstep import Flow, FlowBuilder
 from flowstep.steps import ApplyStep
 
+from commons.ai.agents import AgentConfig
+from commons.ai.embedding import EmbeddingClient, EmbeddingService
 from commons.ai.observability import LlmCallTracker
-from commons.clients import EmbeddingClient, PostgresClient
+from commons.clients import PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
-from commons.configs import AgentConfig
 from commons.repositories import JsonRepository, YamlRepository
-from commons.services.embeddings import EmbeddingService
 from commons.use_cases import FlatMap, ForEach
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig

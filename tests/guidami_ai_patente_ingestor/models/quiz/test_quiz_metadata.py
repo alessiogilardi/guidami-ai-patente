@@ -1,4 +1,4 @@
-from commons.services.embeddings import Embeddable
+from commons.ai.embedding import Embeddable
 from guidami_ai_patente_ingestor.models.quiz import QuizMetadata
 
 

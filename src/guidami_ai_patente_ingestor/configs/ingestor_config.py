@@ -4,7 +4,8 @@ from pydantic import Field
 from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, SettingsConfigDict
 from pydantic_settings.sources import YamlConfigSettingsSource
 
-from commons.configs import EmbeddingConfig, PostgresConnectionConfig
+from commons.ai.embedding import EmbeddingConfig
+from commons.configs import PostgresConnectionConfig
 
 from .pipeline_layer_config import PipelineLayerConfig
 from .source_config import SourceConfig

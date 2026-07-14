@@ -5,7 +5,7 @@ from typing import cast
 
 from flowstep import FlowContext, Step
 
-from commons.services.embeddings import EmbeddingService
+from commons.ai.embedding import EmbeddingService
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 

@@ -4,8 +4,11 @@ from unittest.mock import MagicMock
 import litellm
 import pytest
 
-from commons.clients import LiteLLMEmbeddingClient, SentenceTransformerEmbeddingClient
-from commons.configs import EmbeddingConfig
+from commons.ai.embedding import (
+    EmbeddingConfig,
+    LiteLLMEmbeddingClient,
+    SentenceTransformerEmbeddingClient,
+)
 
 
 class _FakeEmbeddingResponse:

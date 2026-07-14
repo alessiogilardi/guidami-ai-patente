@@ -13,8 +13,8 @@ from pydantic_ai.messages import (
 from pydantic_ai.models.function import AgentInfo, FunctionModel
 from pydantic_ai.models.test import TestModel
 
+from commons.ai.agents import AgentConfig
 from commons.clients.file_system import LocalFileSystemClient
-from commons.configs import AgentConfig
 from commons.repositories import YamlRepository
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
