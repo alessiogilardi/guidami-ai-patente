@@ -12,7 +12,6 @@ from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
 )
 from guidami_ai_patente_ingestor.mappers.agents import RoadSignDescriberMapper
 from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
-from commons.utils.pydantic_utils.pydantic_instance_utils import PydanticInstanceUtils
 
 logger = logging.getLogger(__name__)
 
