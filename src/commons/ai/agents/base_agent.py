@@ -1,8 +1,11 @@
+import logging
 from contextlib import AbstractContextManager
 from pathlib import Path
 from typing import Self, cast
 
 from pydantic_ai import Agent, BinaryContent
+from pydantic_ai.models.openai import OpenAIChatModel
+from pydantic_ai.providers.openrouter import OpenRouterProvider
 from pydantic_ai.settings import ModelSettings
 
 from commons.ai.observability import LlmCallTracker, PydanticAILlmCallCapture
@@ -11,6 +14,8 @@ from commons.repositories import YamlRepository
 
 from .configs import AgentConfig
 from .utils.prompt_renderer import PromptInput, PromptRenderer
+
+logger = logging.getLogger(__name__)
 
 
 class BaseAgent[T_In, T_Out]:
@@ -21,38 +26,34 @@ class BaseAgent[T_In, T_Out]:
     def __init__(
         self,
         config: AgentConfig,
-        name: str | None = None,
+        provider: OpenRouterProvider,
         file_reader: FileReaderInterface | None = None,
         tracker: LlmCallTracker | None = None,
     ) -> None:
         """Initialize the agent with configuration.
 
         Args:
-            config: Agent configuration (model, prompts, parameters).
-            name: Identifies this agent as `LlmCallLog.caller` in tracked rows.
-                Defaults to the concrete subclass name when omitted.
+            config: Agent configuration (model, prompts, parameters). `config.name`
+                identifies this agent as `LlmCallLog.caller` in tracked rows,
+                defaulting to the concrete subclass name when `None`.
+            provider: OpenRouter provider injected into the underlying `pydantic_ai` model.
             file_reader: Reader used to resolve `images` paths passed to `run`.
                 Optional: only required by agents that pass `images=`.
             tracker: Optional port persisting one `LlmCallLog` per call. When
                 `None`, `run`/`run_sync` run today's untracked path unchanged.
         """
-        self._name = name if name is not None else type(self).__name__
+        self._name = config.name if config.name is not None else type(self).__name__
         self._model_name = config.model_name
+        self._provider = provider
         self._system_prompt = config.system
         self._tracker = tracker
-        self.renderer = PromptRenderer(config.user, file_reader)
-
-        pydantic_ai_model_name = self.__parse_model_name(config.model_name)
-
-        settings: ModelSettings = {"temperature": config.temperature, "timeout": config.timeout}
-        if config.max_tokens is not None:
-            settings["max_tokens"] = config.max_tokens
+        self._renderer = PromptRenderer(config.user, file_reader)
 
         self._agent: Agent[None, T_Out] = Agent(
-            pydantic_ai_model_name,
+            self._create_model(),
             output_type=self.output_type,
-            system_prompt=config.system,
-            model_settings=settings,
+            system_prompt=self._system_prompt,
+            model_settings=self._create_model_settings(config),
             retries=config.num_retries,
             defer_model_check=True,
         )
@@ -61,7 +62,8 @@ class BaseAgent[T_In, T_Out]:
     def from_yaml(
         cls,
         name: str,
-        repository: YamlRepository,
+        repository: YamlRepository[AgentConfig],
+        provider: OpenRouterProvider,
         file_reader: FileReaderInterface | None = None,
         tracker: LlmCallTracker | None = None,
     ) -> Self:
@@ -71,6 +73,7 @@ class BaseAgent[T_In, T_Out]:
             name: Agent name (without the `.yaml` extension); also becomes the
                 agent's identity (`self._name`, i.e. `LlmCallLog.caller`).
             repository: Repository used to load agent configuration files.
+            provider: OpenRouter provider injected into the underlying `pydantic_ai` model.
             file_reader: Reader used to resolve `images` paths passed to `run`.
                 Optional: only required by agents that pass `images=`.
             tracker: Optional port persisting one `LlmCallLog` per call.
@@ -82,11 +85,16 @@ class BaseAgent[T_In, T_Out]:
             FileNotFoundError: If the YAML file does not exist.
         """
         config = cast(AgentConfig, repository.load(f"{name}.yaml"))
-        return cls(config, name, file_reader, tracker)
+        return cls(
+            config=config,
+            provider=provider,
+            file_reader=file_reader,
+            tracker=tracker,
+        )
 
     async def run(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
         """Run the agent asynchronously."""
-        prompt_content = self.renderer.render(cast(PromptInput, request), images)
+        prompt_content = self._renderer.render(cast(PromptInput, request), images)
         if self._tracker is None:
             result = await self._agent.run(prompt_content)
             return result.output
@@ -98,7 +106,7 @@ class BaseAgent[T_In, T_Out]:
 
     def run_sync(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
         """Run the agent synchronously, blocking the current thread."""
-        prompt_content = self.renderer.render(cast(PromptInput, request), images)
+        prompt_content = self._renderer.render(cast(PromptInput, request), images)
         if self._tracker is None:
             result = self._agent.run_sync(prompt_content)
             return result.output
@@ -134,13 +142,29 @@ class BaseAgent[T_In, T_Out]:
             self._name, self._model_name, prompt, self._system_prompt, self._tracker
         )
 
-    @staticmethod
-    def __parse_model_name(model_name: str) -> str:
-        """Rewrite the model name: replace the first `/` with `:` for pydantic_ai compatibility."""
-        if "/" in model_name:
-            return model_name.replace("/", ":", 1)
+    def _create_model(self) -> OpenAIChatModel:
+        return OpenAIChatModel(
+            _parse_model_name(self._model_name),
+            provider=self._provider,
+        )
 
-        return model_name
+    def _create_model_settings(self, config: AgentConfig) -> ModelSettings:
+        settings: ModelSettings = {
+            "temperature": config.temperature,
+            "timeout": config.timeout,
+        }
+        if config.max_tokens is not None:
+            settings["max_tokens"] = config.max_tokens
+
+        return settings
+
+
+def _parse_model_name(model_name: str) -> str:
+    """Rewrite the model name: removes "openrouter/" for pydantic_ai compatibility."""
+    if model_name.startswith("openrouter/"):
+        return model_name.removeprefix("openrouter/")
+
+    return model_name
 
 
 def _prompt_text(prompt: str | list[str | BinaryContent]) -> str:

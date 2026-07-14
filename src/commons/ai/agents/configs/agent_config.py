@@ -6,6 +6,11 @@ class AgentConfig(BaseModel):
 
     model_config = ConfigDict(frozen=True, extra="forbid")
 
+    name: str | None = Field(
+        default=None,
+        description="Identity used as `LlmCallLog.caller`; defaults to the class name.",
+    )
+
     model_name: str = Field(
         ...,
         description="The ID of the model to use (e.g. openrouter/anthropic/claude-3.5-sonnet).",

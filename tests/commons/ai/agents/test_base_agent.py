@@ -1,17 +1,21 @@
 from dataclasses import dataclass
 from pathlib import Path
+from typing import cast
 
 import pytest
 import yaml
 from pydantic_ai import BinaryContent
 from pydantic_ai.messages import ModelMessage, ModelResponse, TextPart
 from pydantic_ai.models.function import AgentInfo, FunctionModel
+from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig, BaseAgent
 from commons.ai.agents.utils.prompt_renderer import PromptRenderer
 from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import YamlRepository
 from domain.entities.observability import LlmCallLog
+
+_PROVIDER = OpenRouterProvider(api_key="test-key")
 
 
 def _write_yaml(agents_dir: Path, name: str, content: dict) -> None:
@@ -98,8 +102,8 @@ def test_base_agent_created_from_valid_config(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     repo = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
-    config = repo.load("test_agent.yaml")
-    agent = _StrAgent(config)
+    config = cast(AgentConfig, repo.load("test_agent.yaml"))
+    agent = _StrAgent(config, _PROVIDER)
     assert agent is not None
 
 
@@ -109,6 +113,7 @@ def test_base_agent_from_yaml_factory_method(tmp_path: Path) -> None:
     agent = _StrAgent.from_yaml(
         "test_agent",
         YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir)),
+        _PROVIDER,
     )
     assert agent is not None
 
@@ -120,6 +125,7 @@ def test_base_agent_from_yaml_raises_file_not_found(tmp_path: Path) -> None:
         _StrAgent.from_yaml(
             "nonexistent",
             YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir)),
+            _PROVIDER,
         )
 
 
@@ -141,9 +147,12 @@ def test_base_agent_yaml_params_mapped_to_model_settings(tmp_path: Path) -> None
     agent = _StrAgent.from_yaml(
         "test_agent",
         YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir)),
+        _PROVIDER,
     )
-    assert agent.core_agent.model_settings["temperature"] == 0.5
-    assert agent.core_agent.model_settings["max_tokens"] == 256
+    settings = agent.core_agent.model_settings
+    assert settings is not None and not callable(settings)
+    assert settings["temperature"] == 0.5  # pyright: ignore[reportTypedDictNotRequiredAccess]
+    assert settings["max_tokens"] == 256  # pyright: ignore[reportTypedDictNotRequiredAccess]
     assert agent.core_agent._max_output_retries == 2
 
 
@@ -154,6 +163,7 @@ def test_base_agent_model_name_slash_converted_to_colon(tmp_path: Path) -> None:
     agent = _StrAgent.from_yaml(
         "test_agent",
         YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir)),
+        _PROVIDER,
     )
     assert agent is not None
 
@@ -189,8 +199,8 @@ def _load_agent(tmp_path: Path, tracker: _ListTracker | None = None) -> BaseAgen
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     repo = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
-    config = repo.load("test_agent.yaml")
-    return _StrAgent(config, tracker=tracker)
+    config = cast(AgentConfig, repo.load("test_agent.yaml"))
+    return _StrAgent(config, _PROVIDER, tracker=tracker)
 
 
 def test_tracked_run_sync_records_success(tmp_path: Path) -> None:
@@ -249,10 +259,10 @@ def test_untracked_agent_unchanged(tmp_path: Path) -> None:
 
 def test_repr(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
-    _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
+    _write_yaml(agents_dir, "test_agent", {**MINIMAL_CONFIG, "name": "custom_name"})
     repo = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
-    config = repo.load("test_agent.yaml")
+    config = cast(AgentConfig, repo.load("test_agent.yaml"))
 
-    agent = _StrAgent(config, name="custom_name")
+    agent = _StrAgent(config, _PROVIDER)
 
     assert repr(agent) == "_StrAgent(name='custom_name')"

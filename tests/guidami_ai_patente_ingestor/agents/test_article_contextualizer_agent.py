@@ -10,6 +10,7 @@ from pydantic_ai.messages import (
     UserPromptPart,
 )
 from pydantic_ai.models.function import AgentInfo, FunctionModel
+from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig
 from commons.clients.file_system import LocalFileSystemClient
@@ -19,6 +20,8 @@ from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
     ArticleContextualizerRequest,
     ArticleContextualizerResponse,
 )
+
+_PROVIDER = OpenRouterProvider(api_key="test-key")
 
 
 @pytest.fixture
@@ -40,7 +43,7 @@ def _request(**kwargs) -> ArticleContextualizerRequest:
 
 
 def test_run_sync_returns_article_contextualizer_response(agents_dir: YamlRepository) -> None:
-    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir)
+    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir, _PROVIDER)
     expected_contexts = {"0": "Primo contesto.", "1": "Secondo contesto."}
 
     def func(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
@@ -62,7 +65,7 @@ def test_run_sync_returns_article_contextualizer_response(agents_dir: YamlReposi
 
 
 def test_run_sync_passes_title_in_prompt(agents_dir: YamlRepository) -> None:
-    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir)
+    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir, _PROVIDER)
     request = _request(title="Norme generali")
     captured_text: list[str] = []
 
@@ -89,7 +92,7 @@ def test_run_sync_passes_title_in_prompt(agents_dir: YamlRepository) -> None:
 
 
 def test_run_sync_passes_paragraphs_in_prompt(agents_dir: YamlRepository) -> None:
-    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir)
+    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir, _PROVIDER)
     request = _request(paragraphs="1. Primo comma.\n2. Secondo comma.")
     captured_text: list[str] = []
 

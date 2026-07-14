@@ -12,6 +12,7 @@ from pydantic_ai.messages import (
 )
 from pydantic_ai.models.function import AgentInfo, FunctionModel
 from pydantic_ai.models.test import TestModel
+from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig
 from commons.clients.file_system import LocalFileSystemClient
@@ -21,6 +22,8 @@ from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
     RoadSignDescriberRequest,
     RoadSignDescriberResponse,
 )
+
+_PROVIDER = OpenRouterProvider(api_key="test-key")
 
 
 @pytest.fixture
@@ -45,7 +48,7 @@ def test_run_sync_returns_road_sign_describer_response(
     )
 
     agent = RoadSignDescriberAgent.from_yaml(
-        "road_sign_describer", agents_dir, LocalFileSystemClient(tmp_path)
+        "road_sign_describer", agents_dir, _PROVIDER, LocalFileSystemClient(tmp_path)
     )
     with agent.core_agent.override(
         model=TestModel(
@@ -71,7 +74,7 @@ def test_run_sync_sends_binary_content(agents_dir: YamlRepository, tmp_path: Pat
     request = RoadSignDescriberRequest(contexts=["Argomento: Segnaletica — Testo: Domanda."])
 
     agent = RoadSignDescriberAgent.from_yaml(
-        "road_sign_describer", agents_dir, LocalFileSystemClient(tmp_path)
+        "road_sign_describer", agents_dir, _PROVIDER, LocalFileSystemClient(tmp_path)
     )
     captured: list[ModelMessage] = []
 
@@ -110,7 +113,7 @@ def test_run_sync_passes_topic_in_prompt(agents_dir: YamlRepository, tmp_path: P
     )
 
     agent = RoadSignDescriberAgent.from_yaml(
-        "road_sign_describer", agents_dir, LocalFileSystemClient(tmp_path)
+        "road_sign_describer", agents_dir, _PROVIDER, LocalFileSystemClient(tmp_path)
     )
     captured_text: list[str] = []
 
@@ -149,9 +152,9 @@ def test_render_prompt_with_image_includes_binary_content(
     )
 
     agent = RoadSignDescriberAgent.from_yaml(
-        "road_sign_describer", agents_dir, LocalFileSystemClient(tmp_path)
+        "road_sign_describer", agents_dir, _PROVIDER, LocalFileSystemClient(tmp_path)
     )
-    parts = agent.renderer.render(request, images=(Path("stop.jpg"),))
+    parts = agent._renderer.render(request, images=(Path("stop.jpg"),))
 
     assert isinstance(parts, list)
     assert any(isinstance(p, BinaryContent) for p in parts)

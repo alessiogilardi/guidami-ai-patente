@@ -8,6 +8,7 @@ build_knowledge_cleaning_flow / build_knowledge_enrichment_flow, but single-sour
 from unittest.mock import MagicMock, patch
 
 from flowstep import Flow, FlowValidator
+from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
@@ -33,6 +34,9 @@ def _base_config() -> IngestorConfig:
 
 def _make_layer_resolver() -> LayerResolver:
     return MagicMock(spec=LayerResolver)
+
+
+_PROVIDER = OpenRouterProvider(api_key="test-key")
 
 
 def _patched_describer() -> MagicMock:
@@ -102,6 +106,7 @@ def test_enrichment_flow_returns_flow_instance() -> None:
         flow = build_quiz_enrichment_flow(
             config=_base_config(),
             layer_resolver=_make_layer_resolver(),
+            open_router_provider=_PROVIDER,
         )
     assert isinstance(flow, Flow)
 
@@ -111,6 +116,7 @@ def test_enrichment_flow_name_is_quiz_enrichment() -> None:
         flow = build_quiz_enrichment_flow(
             config=_base_config(),
             layer_resolver=_make_layer_resolver(),
+            open_router_provider=_PROVIDER,
         )
     assert flow.name == "quiz_enrichment"
 
@@ -120,6 +126,7 @@ def test_enrichment_flow_required_input_keys_is_empty_set() -> None:
         flow = build_quiz_enrichment_flow(
             config=_base_config(),
             layer_resolver=_make_layer_resolver(),
+            open_router_provider=_PROVIDER,
         )
     report = FlowValidator().validate(flow)
     assert report.required_input_keys == set()
@@ -130,6 +137,7 @@ def test_enrichment_flow_build_with_validate_true_does_not_raise() -> None:
         flow = build_quiz_enrichment_flow(
             config=_base_config(),
             layer_resolver=_make_layer_resolver(),
+            open_router_provider=_PROVIDER,
             validate=True,
         )
     assert isinstance(flow, Flow)
@@ -141,6 +149,7 @@ def test_enrichment_flow_has_three_steps_in_order() -> None:
         flow = build_quiz_enrichment_flow(
             config=_base_config(),
             layer_resolver=_make_layer_resolver(),
+            open_router_provider=_PROVIDER,
         )
     steps = flow.get_steps()
     assert [step.name for step in steps] == [

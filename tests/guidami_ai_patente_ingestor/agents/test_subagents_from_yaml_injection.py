@@ -7,6 +7,7 @@ inherited BaseAgent.from_yaml, with no override and no `# type: ignore` suppress
 from pathlib import Path
 
 import yaml
+from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig
 from commons.clients.file_system import LocalFileSystemClient
@@ -16,6 +17,8 @@ from guidami_ai_patente_ingestor.agents import (
     NormReferenceDescriberAgent,
     RoadSignDescriberAgent,
 )
+
+_PROVIDER = OpenRouterProvider(api_key="test-key")
 
 MINIMAL_CONFIG: dict = {
     "model_name": "openrouter/google/gemini-2.5-flash-lite",
@@ -34,7 +37,9 @@ def test_article_contextualizer_from_yaml_accepts_repository(tmp_path: Path) -> 
     _write_yaml(agents_dir, "article_contextualizer", MINIMAL_CONFIG)
     repository = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
 
-    agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", repository=repository)
+    agent = ArticleContextualizerAgent.from_yaml(
+        "article_contextualizer", repository=repository, provider=_PROVIDER
+    )
 
     assert agent is not None
     assert isinstance(agent, ArticleContextualizerAgent)
@@ -48,6 +53,7 @@ def test_road_sign_describer_from_yaml_accepts_repository(tmp_path: Path) -> Non
     agent = RoadSignDescriberAgent.from_yaml(
         "road_sign_describer",
         repository=repository,
+        provider=_PROVIDER,
         file_reader=LocalFileSystemClient(agents_dir),
     )
 
@@ -61,7 +67,7 @@ def test_norm_reference_describer_from_yaml_accepts_repository(tmp_path: Path) -
     repository = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
 
     agent = NormReferenceDescriberAgent.from_yaml(
-        "norm_reference_describer", repository=repository
+        "norm_reference_describer", repository=repository, provider=_PROVIDER
     )
 
     assert agent is not None

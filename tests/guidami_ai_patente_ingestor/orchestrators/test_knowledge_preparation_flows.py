@@ -5,6 +5,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 from flowstep import Flow, FlowValidator
 from flowstep.steps import ApplyStep
+from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
@@ -84,6 +85,9 @@ def test_cleaning_flow_unknown_source_raises_value_error() -> None:
 # ---------------------------------------------------------------------------
 
 
+_PROVIDER = OpenRouterProvider(api_key="test-key")
+
+
 def _patched_agent() -> MagicMock:
     return MagicMock(spec=ArticleContextualizerAgent)
 
@@ -94,6 +98,7 @@ def test_enrichment_flow_returns_flow_instance() -> None:
             config=_base_config(),
             layer_resolver=_make_layer_resolver(),
             source="cds",
+            open_router_provider=_PROVIDER,
         )
     assert isinstance(flow, Flow)
 
@@ -104,6 +109,7 @@ def test_enrichment_flow_required_input_keys_is_empty_set() -> None:
             config=_base_config(),
             layer_resolver=_make_layer_resolver(),
             source="cds",
+            open_router_provider=_PROVIDER,
         )
     report = FlowValidator().validate(flow)
     assert report.required_input_keys == set()
@@ -115,6 +121,7 @@ def test_enrichment_flow_build_with_validate_true_does_not_raise() -> None:
             config=_base_config(),
             layer_resolver=_make_layer_resolver(),
             source="cds",
+            open_router_provider=_PROVIDER,
             validate=True,
         )
     assert isinstance(flow, Flow)
@@ -126,6 +133,7 @@ def test_enrichment_flow_unknown_source_raises_value_error() -> None:
             config=_base_config(),
             layer_resolver=_make_layer_resolver(),
             source="quiz",
+            open_router_provider=_PROVIDER,
         )
 
 
@@ -135,6 +143,7 @@ def test_enrichment_flow_has_three_steps_load_enrich_write() -> None:
             config=_base_config(),
             layer_resolver=_make_layer_resolver(),
             source="cds",
+            open_router_provider=_PROVIDER,
         )
 
     steps = flow.get_steps()

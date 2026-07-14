@@ -38,7 +38,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | Component | Role | Main technology |
 |---|---|---|
 | `commons/ai/embedding/` | `clients/`: `EmbeddingClient` ABC (`embed_query`, `embed_passages`); `LiteLLMEmbeddingClient` (production) and `SentenceTransformerEmbeddingClient` (offline alternative, not hot-swappable — different dimension). `services/`: `EmbeddingService` (batching) + `Embeddable`/`Embedded` protocols. `configs/`: `EmbeddingConfig` | litellm (→ OpenRouter), sentence-transformers |
-| `commons/ai/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` (in `configs/`) from YAML, renders prompts via `PromptRenderer`; optionally tracks every call via an injected `LlmCallTracker` port | pydantic-ai-slim[openrouter] |
+| `commons/ai/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` (in `configs/`) from YAML, renders prompts via `PromptRenderer`; requires an injected `OpenRouterProvider` (never reads env itself); optionally tracks every call via an injected `LlmCallTracker` port | pydantic-ai-slim[openrouter] |
 | `commons/configs/` | Shared, app-agnostic Pydantic settings: `PostgresConnectionConfig`, `OpenRouterConfig` (`BaseSettings`, `env_prefix="OPENROUTER_"`, holds `api_key: SecretStr`) | pydantic-settings |
 | `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker`/`LlmCostCalculator` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | litellm (pricing map only), psycopg[binary] |
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
@@ -72,7 +72,14 @@ LLM agents in use today (all `BaseAgent` subclasses under
 
 Storage: Postgres 16 + pgvector — see `database.md`. Embedding: production
 model is `text-embedding-3-small` (OpenAI), 1536-dim, via litellm routed
-through OpenRouter, authenticated with `OPENROUTER_API_KEY`.
+through OpenRouter, authenticated with `OPENROUTER_API_KEY` (litellm reads
+the env var itself). LLM agents (`BaseAgent`) authenticate differently:
+`cli.main()` builds one `OpenRouterProvider` from
+`IngestorConfig.open_router_config.api_key` (populated from the same
+`OPENROUTER_API_KEY` via `commons.configs.OpenRouterConfig`) and threads it
+explicitly through every `build_*_enrichment_flow(...)` → `Agent.from_yaml(...,
+provider=...)` call — no agent constructor reads the environment directly
+(see `patterns.md`).
 
 ## Main flows
 
@@ -129,4 +136,4 @@ See `adr/` for the full history. Currently accepted:
   pipeline) — a deliberate, documented exception to "never swallow
   exceptions" (`docs/plans/2026-07-13--llm-call-tracking.md`).
 
-*Last updated: 2026-07-14 — verified against commit `21cdf06`.*
+*Last updated: 2026-07-14 — verified against commit `2b29ec2`.*

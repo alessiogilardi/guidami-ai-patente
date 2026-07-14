@@ -13,6 +13,7 @@ import argparse
 import logging
 
 import psycopg
+from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.embedding import LiteLLMEmbeddingClient
 from commons.ai.observability import (
@@ -104,6 +105,7 @@ def _build_parser(config: IngestorConfig) -> argparse.ArgumentParser:
 def _dispatch_prepare(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
+    open_router_provider: OpenRouterProvider,
     args: argparse.Namespace,
     tracker: LlmCallTracker | None,
 ) -> None:
@@ -116,10 +118,16 @@ def _dispatch_prepare(
             if knowledge_enrich_layer is None:
                 raise ValueError("knowledge_preparation.output_layer is not configured")
             clean_flow = build_knowledge_cleaning_flow(
-                config=config, layer_resolver=layer_resolver, source=source
+                config=config,
+                layer_resolver=layer_resolver,
+                source=source,
             )
             enrich_flow = build_knowledge_enrichment_flow(
-                config=config, layer_resolver=layer_resolver, source=source, tracker=tracker
+                config=config,
+                layer_resolver=layer_resolver,
+                open_router_provider=open_router_provider,
+                source=source,
+                tracker=tracker,
             )
             run_preparation(
                 clean_flow,
@@ -136,9 +144,15 @@ def _dispatch_prepare(
             quiz_enrich_layer = config.quiz_preparation.output_layer
             if quiz_enrich_layer is None:
                 raise ValueError("quiz_preparation.output_layer is not configured")
-            clean_flow = build_quiz_cleaning_flow(config=config, layer_resolver=layer_resolver)
+            clean_flow = build_quiz_cleaning_flow(
+                config=config,
+                layer_resolver=layer_resolver,
+            )
             enrich_flow = build_quiz_enrichment_flow(
-                config=config, layer_resolver=layer_resolver, tracker=tracker
+                config=config,
+                layer_resolver=layer_resolver,
+                open_router_provider=open_router_provider,
+                tracker=tracker,
             )
             run_preparation(
                 clean_flow,
@@ -155,6 +169,7 @@ def _dispatch_prepare(
 def _run_prepare(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
+    open_router_provider: OpenRouterProvider,
     args: argparse.Namespace,
 ) -> None:
     """Build the tracking DB client (best-effort) and dispatch the prepare subcommand.
@@ -169,7 +184,7 @@ def _run_prepare(
         postgres_client = PostgresClient(config.postgres)
     except psycopg.Error:
         logger.warning("Postgres unavailable; prepare will run without LLM call tracking")
-        _dispatch_prepare(config, layer_resolver, args, tracker=None)
+        _dispatch_prepare(config, layer_resolver, open_router_provider, args, tracker=None)
         return
 
     with (
@@ -178,12 +193,13 @@ def _run_prepare(
             LlmCallLogRepository(postgres_client), LlmCostCalculator()
         ) as tracker,
     ):
-        _dispatch_prepare(config, layer_resolver, args, tracker)
+        _dispatch_prepare(config, layer_resolver, open_router_provider, args, tracker)
 
 
 def _run_index(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
+    open_router_provider: OpenRouterProvider,
     args: argparse.Namespace,
 ) -> None:
     """Dispatch index subcommand: build indexing flow and run it."""
@@ -237,12 +253,25 @@ def main() -> None:
     layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
 
     parser = _build_parser(config)
+    open_router_provider = OpenRouterProvider(
+        api_key=config.open_router_config.api_key.get_secret_value()
+    )
     args = parser.parse_args()
 
     match args.command:
         case "prepare":
-            _run_prepare(config, layer_resolver, args)
+            _run_prepare(
+                config,
+                layer_resolver,
+                open_router_provider,
+                args,
+            )
         case "index":
-            _run_index(config, layer_resolver, args)
+            _run_index(
+                config,
+                layer_resolver,
+                open_router_provider,
+                args,
+            )
         case "reset":
             _run_reset(config, args)

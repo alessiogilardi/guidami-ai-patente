@@ -8,10 +8,13 @@ from pathlib import Path
 
 import pytest
 import yaml
+from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig, BaseAgent
 from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import YamlRepository
+
+_PROVIDER = OpenRouterProvider(api_key="test-key")
 
 MINIMAL_CONFIG: dict = {
     "model_name": "openrouter/google/gemini-2.5-flash-lite",
@@ -34,7 +37,7 @@ def test_base_agent_from_yaml_accepts_repository(tmp_path: Path) -> None:
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     repository = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
 
-    agent = _StrAgent.from_yaml("test_agent", repository=repository)
+    agent = _StrAgent.from_yaml("test_agent", repository=repository, provider=_PROVIDER)
 
     assert agent is not None
 
@@ -45,4 +48,4 @@ def test_base_agent_from_yaml_raises_file_not_found_via_repository(tmp_path: Pat
     repository = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
 
     with pytest.raises(FileNotFoundError):
-        _StrAgent.from_yaml("nonexistent", repository=repository)
+        _StrAgent.from_yaml("nonexistent", repository=repository, provider=_PROVIDER)

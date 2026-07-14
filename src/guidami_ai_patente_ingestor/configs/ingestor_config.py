@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, Settings
 from pydantic_settings.sources import YamlConfigSettingsSource
 
 from commons.ai.embedding import EmbeddingConfig
-from commons.configs import PostgresConnectionConfig
+from commons.configs import OpenRouterConfig, PostgresConnectionConfig
 
 from .pipeline_layer_config import PipelineLayerConfig
 from .source_config import SourceConfig
@@ -22,6 +22,9 @@ class IngestorConfig(BaseSettings):
         yaml_file="configs/ingestor_config.yaml",
     )
 
+    open_router_config: OpenRouterConfig = Field(
+        default_factory=OpenRouterConfig  # pyright: ignore[reportArgumentType]
+    )
     layers: dict[str, str] = Field(
         default_factory=lambda: {
             "parsed": "data/parsed",

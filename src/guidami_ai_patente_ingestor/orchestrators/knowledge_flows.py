@@ -5,6 +5,7 @@ from typing import Literal, cast
 
 from flowstep import Flow, FlowBuilder
 from flowstep.steps import ApplyStep
+from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig
 from commons.ai.embedding import EmbeddingClient, EmbeddingService
@@ -204,6 +205,7 @@ def build_knowledge_enrichment_flow(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
     source: str,
+    open_router_provider: OpenRouterProvider,
     validate: bool = False,
     tracker: LlmCallTracker | None = None,
 ) -> Flow:
@@ -219,6 +221,7 @@ def build_knowledge_enrichment_flow(
         config: Full ingestor configuration (already loaded at the entry point).
         layer_resolver: Resolver mapping (layer, source) → JSON file Path.
         source: Source to enrich; must belong to `config.knowledge_preparation.sources`.
+        open_router_provider: OpenRouter provider injected into the enrichment agent.
         validate: If True, runs structural validation of the flow before returning it.
         tracker: Optional port persisting one `LlmCallLog` per call made by the
             enrichment agent. Forwarded to `from_yaml`; `None` disables tracking.
@@ -253,7 +256,7 @@ def build_knowledge_enrichment_flow(
         AgentConfig, file_system_client=LocalFileSystemClient(config.agents_dir)
     )
     agent = ArticleContextualizerAgent.from_yaml(
-        "article_contextualizer", agents_repository, tracker=tracker
+        "article_contextualizer", agents_repository, open_router_provider, tracker=tracker
     )
     enrich_step = ApplyStep(
         "enrich",
