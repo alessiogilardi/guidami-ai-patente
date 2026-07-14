@@ -16,6 +16,9 @@ repo/
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
 │   │                                #   normative corpus (CdS/CAP) and quiz bank
 │   ├── guidami_ai_patente/         # FastAPI quiz-bot app — scaffold only, not started
+│   ├── html_viewers/               # Standalone, dependency-free HTML pages for manually
+│   │                                #   inspecting pipeline output (e.g. quiz enrichment
+│   │                                #   review); opened directly in a browser, no server
 │   ├── parsers/                    # Standalone script: quiz PDF -> data/parsed/
 │   └── scrapers/                   # Standalone script: normattiva.it -> data/raw/ + data/parsed/
 ├── tests/                          # Mirrors src/ structure, no __init__.py per directory
@@ -79,6 +82,11 @@ repo/
 - **One-shot data-acquisition scripts** (a new scraper source, a new PDF
   parser) go in `src/scrapers/` or `src/parsers/` respectively, and are
   registered as a `[project.scripts]` entry in `pyproject.toml`.
+- **Manual review tooling for pipeline output** (a read-only HTML page to
+  eyeball an enriched/cleaned JSON artifact) goes in `src/html_viewers/`:
+  self-contained (no build step, no server, no external dependency), kept
+  in sync with the Pydantic model it renders whenever that model's shape
+  changes.
 - **FastAPI routes/services for the quiz bot** (not started yet) go under
   `src/guidami_ai_patente/`, following the same layered convention as the
   ingestor once that work begins.
@@ -86,4 +94,4 @@ repo/
   `tests/`, with no `__init__.py` in any test directory (see
   `.claude/rules/code-conventions.md`).
 
-*Last updated: 2026-07-14 — verified against commit `21cdf06`.*
+*Last updated: 2026-07-14 — verified against commit `7f71468`.*

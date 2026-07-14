@@ -154,6 +154,28 @@
     color: #9a3412;
     font-style: italic;
   }
+  .analysis-toggle {
+    display: inline-block;
+    margin: 4px 0 0;
+    font-size: 0.78rem;
+    color: var(--accent);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+  }
+  .analysis {
+    margin: 6px 0 0;
+    padding: 8px 10px;
+    background: #f8fafc;
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    font-size: 0.8rem;
+  }
+  .analysis .field { margin-bottom: 6px; }
+  .analysis .field:last-child { margin-bottom: 0; }
+  .analysis .field-label { font-weight: 600; color: var(--muted); margin-right: 6px; }
   .metadata { margin-top: 8px; font-size: 0.82rem; }
   .metadata.missing {
     background: var(--warn-bg);
@@ -343,6 +365,16 @@
     render();
   });
 
+  resultsEl.addEventListener("click", (event) => {
+    const toggle = event.target.closest(".analysis-toggle");
+    if (!toggle) return;
+    const target = document.getElementById(toggle.dataset.target);
+    if (!target) return;
+    const expanded = !target.hidden;
+    target.hidden = expanded;
+    toggle.innerHTML = (expanded ? "&#9654;" : "&#9660;") + " image_analysis (debug)";
+  });
+
   function populateTopics() {
     const topics = [...new Set(state.items.map((it) => it.topic))].sort();
     const current = topicSelect.value;
@@ -388,10 +420,12 @@
     const missingDescription = state.items.filter((it) => it.image && !it.image_description).length;
     const missingMetadata = state.items.filter((it) => !it.quiz_metadata).length;
     const mappedImages = state.imageMap.size;
+    const uniqueImages = new Set(state.items.filter((it) => it.image).map((it) => it.image)).size;
     statsBar.innerHTML =
       `<span><strong>${total}</strong> sotto-domande totali</span>` +
       `<span><strong>${filtered}</strong> dopo i filtri</span>` +
       `<span><strong>${withImage}</strong> con immagine</span>` +
+      `<span><strong>${uniqueImages}</strong> immagini distinte</span>` +
       `<span><strong>${missingDescription}</strong> senza image_description</span>` +
       `<span><strong>${missingMetadata}</strong> senza quiz_metadata</span>` +
       `<span><strong>${mappedImages}</strong> immagini caricate nel browser</span>`;
@@ -439,6 +473,21 @@
     return `<div class="description missing">image_description mancante</div>`;
   }
 
+  let analysisSeq = 0;
+
+  function renderAnalysis(analysis) {
+    if (!analysis) return "";
+    const id = `analysis-${analysisSeq++}`;
+    return `
+      <button type="button" class="analysis-toggle" data-target="${id}">&#9654; image_analysis (debug)</button>
+      <div class="analysis" id="${id}" hidden>
+        <div class="field"><span class="field-label">Nome:</span>${escapeHtml(analysis.name)}</div>
+        <div class="field"><span class="field-label">Analisi visiva:</span>${escapeHtml(analysis.visual_analysis)}</div>
+        <div class="field"><span class="field-label">Descrizione:</span>${escapeHtml(analysis.description)}</div>
+      </div>
+    `;
+  }
+
   function renderSubQuestion(item) {
     const hasMedia = Boolean(item.image);
     return `
@@ -449,6 +498,7 @@
           <span class="number">#${escapeHtml(item.number)}</span>
           <p class="qtext">${escapeHtml(item.text)}</p>
           ${renderDescription(item)}
+          ${renderAnalysis(item.image_analysis)}
           ${renderMetadata(item.quiz_metadata)}
         </div>
       </div>
