@@ -1,11 +1,14 @@
-"""Tests for ImageDescriptionEnricher."""
+"""Tests for ImageDescriptionEnricher (grouped by image, one call per image, async)."""
 
 from pathlib import Path
 from unittest.mock import MagicMock
 
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
-from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import RoadSignDescriberResponse
-from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
+from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
+    RoadSignDescriberRequest,
+    RoadSignDescriberResponse,
+)
+from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel, ImageAnalysis
 from guidami_ai_patente_ingestor.services.quiz.enrichers import ImageDescriptionEnricher
 
 
@@ -29,42 +32,53 @@ def _question(
 
 
 def _make_describer(name: str = "Stop", description: str = "Segnale rosso.") -> MagicMock:
+    """Fake agent exposing an async `run` (auto-detected as AsyncMock via `spec`)."""
     describer = MagicMock(spec=RoadSignDescriberAgent)
-    describer.run_sync.return_value = RoadSignDescriberResponse(
+    describer.run.return_value = RoadSignDescriberResponse(
         visual_analysis="Analisi visiva di test.", name=name, description=description
     )
     return describer
 
 
-def test_enrich_dedups_calls_for_same_image_topic_text() -> None:
+def test_enrich_calls_once_per_image_regardless_of_distinct_texts() -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer)
+    enricher = ImageDescriptionEnricher(4, describer)
     questions = [
-        _question("1", image="a.jpeg", topic="Segnaletica", text="Domanda."),
-        _question("2", image="a.jpeg", topic="Segnaletica", text="Domanda."),
+        _question("1", image="a.jpeg", topic="Segnaletica", text="Prima domanda."),
+        _question("2", image="a.jpeg", topic="Segnaletica", text="Seconda domanda."),
+    ]
+
+    result = enricher(questions)
+
+    assert describer.run.call_count == 1
+    assert result[0].image_description == result[1].image_description
+    assert result[0].image_analysis == result[1].image_analysis
+    assert result[0].image_analysis == ImageAnalysis(
+        visual_analysis="Analisi visiva di test.", name="Stop", description="Segnale rosso."
+    )
+
+
+def test_enrich_single_call_carries_both_distinct_contexts() -> None:
+    describer = _make_describer()
+    enricher = ImageDescriptionEnricher(4, describer)
+    questions = [
+        _question("1", image="a.jpeg", topic="Segnaletica", text="Prima domanda."),
+        _question("2", image="a.jpeg", topic="Precedenza", text="Seconda domanda."),
     ]
 
     enricher(questions)
 
-    assert describer.run_sync.call_count == 1
-
-
-def test_enrich_calls_separately_for_same_image_different_text() -> None:
-    describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer)
-    questions = [
-        _question("1", image="a.jpeg", text="Prima domanda."),
-        _question("2", image="a.jpeg", text="Seconda domanda."),
+    request_dto = describer.run.call_args_list[0].args[0]
+    assert isinstance(request_dto, RoadSignDescriberRequest)
+    assert request_dto.contexts == [
+        "Argomento: Segnaletica — Testo: Prima domanda.",
+        "Argomento: Precedenza — Testo: Seconda domanda.",
     ]
 
-    enricher(questions)
 
-    assert describer.run_sync.call_count == 2
-
-
-def test_enrich_dedups_across_multiple_distinct_images() -> None:
+def test_enrich_calls_once_per_distinct_image() -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer)
+    enricher = ImageDescriptionEnricher(4, describer)
     questions = [
         _question("1", image="a.jpeg"),
         _question("2", image="a.jpeg"),
@@ -73,90 +87,83 @@ def test_enrich_dedups_across_multiple_distinct_images() -> None:
 
     enricher(questions)
 
-    assert describer.run_sync.call_count == 2
+    assert describer.run.call_count == 2
+    called_images = {call.kwargs["images"][0] for call in describer.run.call_args_list}
+    assert called_images == {Path("a.jpeg"), Path("b.jpeg")}
 
 
-def test_enrich_sets_formatted_description_on_matching_sub_questions() -> None:
-    describer = _make_describer(name="Stop", description="Segnale rosso ottagonale.")
-    enricher = ImageDescriptionEnricher(describer)
-    questions = [_question("1", image="stop.jpeg")]
-
-    result = enricher(questions)
-
-    assert result[0].image_description == "Stop. Segnale rosso ottagonale."
-
-
-def test_enrich_passes_image_field_unchanged_as_path() -> None:
-    """Regression guard: `image` must reach the describer untouched.
-
-    `EnrichedQuizModel.image` is a bare filename, resolved by the describer's
-    file reader against `quiz_images_dir`. Re-adding any path manipulation
-    here (e.g. re-deriving a directory-relative path) would break that
-    resolution again, as it did when the parser used to emit `"images/<file>"`.
-    """
+def test_enrich_no_image_means_description_stays_none_and_no_call() -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer)
-    questions = [_question("1", image="abc123.jpeg")]
-
-    enricher(questions)
-
-    _, kwargs = describer.run_sync.call_args
-    assert kwargs["images"] == (Path("abc123.jpeg"),)
-
-
-def test_enrich_missing_file_skips_and_warns(caplog) -> None:
-    describer = _make_describer()
-    describer.run_sync.side_effect = FileNotFoundError("missing.jpeg")
-    enricher = ImageDescriptionEnricher(describer)
-    questions = [_question("1", image="missing.jpeg")]
-
-    with caplog.at_level("WARNING"):
-        result = enricher(questions)
-
-    assert result[0].image_description is None
-    assert any("missing.jpeg" in record.message for record in caplog.records)
-
-
-def test_enrich_inaccessible_image_skips_and_warns(caplog) -> None:
-    describer = _make_describer()
-    describer.run_sync.side_effect = PermissionError("blocked")
-    enricher = ImageDescriptionEnricher(describer)
-    questions = [_question("1", image="blocked.jpeg")]
-
-    with caplog.at_level("WARNING"):
-        result = enricher(questions)
-
-    assert result[0].image_description is None
-    assert any("blocked.jpeg" in record.message for record in caplog.records)
-
-
-def test_enrich_describe_raising_skips_and_warns(caplog) -> None:
-    describer = _make_describer()
-    describer.run_sync.side_effect = RuntimeError("vision call failed")
-    enricher = ImageDescriptionEnricher(describer)
-    questions = [_question("1", image="stop.jpeg")]
-
-    with caplog.at_level("WARNING"):
-        result = enricher(questions)
-
-    assert result[0].image_description is None
-    assert any("stop.jpeg" in record.message for record in caplog.records)
-
-
-def test_enrich_no_image_means_description_stays_none() -> None:
-    describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer)
+    enricher = ImageDescriptionEnricher(4, describer)
     questions = [_question("1", image=None)]
 
     result = enricher(questions)
 
     assert result[0].image_description is None
-    describer.run_sync.assert_not_called()
+    describer.run.assert_not_called()
+
+
+def test_enrich_failing_image_degrades_alone_others_still_described(caplog) -> None:
+    describer = MagicMock(spec=RoadSignDescriberAgent)
+
+    def _side_effect(
+        request: RoadSignDescriberRequest, images: tuple[Path, ...]
+    ) -> RoadSignDescriberResponse:
+        if images[0].name == "missing.jpeg":
+            raise FileNotFoundError("missing.jpeg")
+        return RoadSignDescriberResponse(
+            visual_analysis="Analisi.", name="Stop", description="Segnale rosso."
+        )
+
+    describer.run.side_effect = _side_effect
+    enricher = ImageDescriptionEnricher(4, describer)
+    questions = [
+        _question("1", image="missing.jpeg"),
+        _question("2", image="ok.jpeg"),
+    ]
+
+    with caplog.at_level("WARNING"):
+        result = enricher(questions)
+
+    missing_result = next(q for q in result if q.image == "missing.jpeg")
+    ok_result = next(q for q in result if q.image == "ok.jpeg")
+    assert missing_result.image_description is None
+    assert ok_result.image_description == "Stop. Segnale rosso."
+    assert any("missing.jpeg" in record.message for record in caplog.records)
+
+
+def test_enrich_describe_raising_generic_exception_degrades_that_image_only(caplog) -> None:
+    describer = MagicMock(spec=RoadSignDescriberAgent)
+
+    def _side_effect(
+        request: RoadSignDescriberRequest, images: tuple[Path, ...]
+    ) -> RoadSignDescriberResponse:
+        if images[0].name == "broken.jpeg":
+            raise RuntimeError("vision call failed")
+        return RoadSignDescriberResponse(
+            visual_analysis="Analisi.", name="Stop", description="Segnale rosso."
+        )
+
+    describer.run.side_effect = _side_effect
+    enricher = ImageDescriptionEnricher(4, describer)
+    questions = [
+        _question("1", image="broken.jpeg"),
+        _question("2", image="ok.jpeg"),
+    ]
+
+    with caplog.at_level("WARNING"):
+        result = enricher(questions)
+
+    broken_result = next(q for q in result if q.image == "broken.jpeg")
+    ok_result = next(q for q in result if q.image == "ok.jpeg")
+    assert broken_result.image_description is None
+    assert ok_result.image_description == "Stop. Segnale rosso."
+    assert any("broken.jpeg" in record.message for record in caplog.records)
 
 
 def test_enrich_does_not_mutate_input_models() -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(describer)
+    enricher = ImageDescriptionEnricher(4, describer)
     original = _question("1", image="stop.jpeg")
     questions = [original]
 

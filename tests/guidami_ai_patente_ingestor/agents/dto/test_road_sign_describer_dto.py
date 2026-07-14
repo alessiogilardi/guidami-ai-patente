@@ -1,7 +1,26 @@
-"""Tests for RoadSignDescriberResponse DTO."""
+"""Tests for RoadSignDescriberRequest and RoadSignDescriberResponse DTOs."""
 
 import pytest
 from pydantic import ValidationError
+
+from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import RoadSignDescriberRequest
+
+
+def test_request_accepts_a_list_of_contexts() -> None:
+    request = RoadSignDescriberRequest(
+        contexts=["Argomento: A — Testo: uno", "Argomento: B — Testo: due"]
+    )
+    assert request.contexts == ["Argomento: A — Testo: uno", "Argomento: B — Testo: due"]
+
+
+def test_request_contexts_block_renders_bullet_list() -> None:
+    request = RoadSignDescriberRequest(contexts=["a", "b"])
+    assert request.contexts_block == "- a\n- b"
+
+
+def test_request_contexts_block_is_exposed_in_model_dump() -> None:
+    request = RoadSignDescriberRequest(contexts=["a"])
+    assert "contexts_block" in request.model_dump()
 
 
 def test_response_fields_are_ordered_visual_analysis_name_description() -> None:

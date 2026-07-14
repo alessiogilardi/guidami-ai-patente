@@ -62,7 +62,10 @@ LLM agents in use today (all `BaseAgent` subclasses under
 - `RoadSignDescriberAgent` — vision agent, quiz enrichment; deliberately
   answer-blind (see ADR below). Owns image-file reading via its
   `PromptRenderer`/`file_reader`; `ImageDescriptionEnricher` only passes
-  image paths and holds no reader of its own.
+  image paths and holds no reader of its own. Called **once per distinct
+  image** (not per quiz), concurrently across images, bounded by
+  `IngestorConfig.road_sign_describer_concurrency` (default `8`) — see
+  `adr/0003-group-road-sign-description-by-image.md` and `patterns.md`.
 - `NormReferenceDescriberAgent` — quiz enrichment, norm-reference metadata
   for future RAG retrieval.
 
@@ -98,7 +101,7 @@ before this feature (see `docs/patterns.md`).
 
 **Quiz bank** (`orchestrators/quiz_flows.py`):
 1. *Cleaning*: `LoadJsonStep` → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` → `WriteJsonStep` (parsed → cleaned; dedup on normalized-text + correct_answer + image identity).
-2. *Enrichment*: `LoadJsonStep` → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched), ImageDescriptionEnricher(RoadSignDescriberAgent), NormReferenceEnricher(NormReferenceDescriberAgent))` → `WriteJsonStep` (cleaned → enriched).
+2. *Enrichment*: `LoadJsonStep` → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched), ImageDescriptionEnricher(road_sign_describer_concurrency, RoadSignDescriberAgent), NormReferenceEnricher(NormReferenceDescriberAgent))` → `WriteJsonStep` (cleaned → enriched). `ImageDescriptionEnricher` groups quizzes by image filename and issues one concurrent vision call per image (see `patterns.md`), writing both the flat `image_description` (downstream/embedding field) and the structured `image_analysis` (full LLM output, debug-only) onto every quiz sharing that image.
 3. *Indexing*: `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embeddable))` → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(ForEach(QuizMapper.from_embeddable_to_quiz_question))` → `DbStoreStep` (full truncate + bulk insert). Embeddings are computed from `quiz_metadata.vector_search_queries`, not raw quiz text — items without `quiz_metadata` end up with `embedding=None`. `QuizMetadata` stays a cohesive nested object through the ingestion models (`EnrichedQuizModel`/`EmbeddableQuizModel`) and is flattened onto the `QuizQuestion` entity columns **only** at the boundary, inside `from_embeddable_to_quiz_question`.
 
 ## Relevant architectural decisions
@@ -112,6 +115,11 @@ See `adr/` for the full history. Currently accepted:
   `QuizMetadata` fields are first-class `quiz_questions` columns and
   `QuizMetadata` is a transient ingestion model, not a persisted entity
   (`adr/0002-flatten-quiz-metadata-columns.md`).
+- **Road sign description is grouped by image, not by quiz** —
+  `ImageDescriptionEnricher` keys on the image filename only; all quizzes
+  sharing an image get one vision call and one `image_description`/
+  `image_analysis` instead of one call per `(image, topic, text)` triple
+  (`adr/0003-group-road-sign-description-by-image.md`).
 - **LLM call tracking is a port injected into `BaseAgent`, not an external
   wrapper** — token usage (`result.usage()`) only exists inside
   `run`/`run_sync`; an external decorator would force `BaseAgent.run` to
@@ -120,4 +128,4 @@ See `adr/` for the full history. Currently accepted:
   pipeline) — a deliberate, documented exception to "never swallow
   exceptions" (`docs/plans/2026-07-13--llm-call-tracking.md`).
 
-*Last updated: 2026-07-13 — verified against commit `5398b2d`.*
+*Last updated: 2026-07-14 — verified against commit `21cdf06`.*

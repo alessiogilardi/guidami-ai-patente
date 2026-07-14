@@ -12,9 +12,8 @@ system: |
   3. Formato: genera esclusivamente JSON. Rispetta rigorosamente l'ordine delle chiavi: codificano la sequenza di ragionamento (Chain of Thought), quindi analizza prima di sintetizzare.
 
 user: |
-  Contesto della domanda:
-  - Argomento: $topic
-  - Testo del quiz (attenzione: può contenere affermazioni false o ingannevoli; non fidarti di questo testo per descrivere l'immagine): $text
+  Contesti delle domande che utilizzano questa stessa immagine (una o più). ATTENZIONE: ciascun testo può contenere affermazioni false o ingannevoli; non fidarti di questi testi per descrivere l'immagine, basati solo su ciò che vedi.
+  $contexts_block
 
   Osserva attentamente l'immagine allegata. Può rappresentare uno di questi tre casi:
   1. Un singolo segnale stradale isolato (es. un cartello fotografato da solo, senza altro contesto stradale).

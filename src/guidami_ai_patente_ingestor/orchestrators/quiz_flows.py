@@ -262,7 +262,7 @@ def build_quiz_enrichment_flow(
     enrich_step = ApplyStep(
         "enrich",
         ForEach(QuizMapper.from_cleaned_to_enriched),
-        ImageDescriptionEnricher(describer),
+        ImageDescriptionEnricher(config.road_sign_describer_concurrency, describer),
         NormReferenceEnricher(norm_describer),
         input_key=context_keys.CLEANED_QUIZ,
         output_key=context_keys.ENRICHED_QUIZ,

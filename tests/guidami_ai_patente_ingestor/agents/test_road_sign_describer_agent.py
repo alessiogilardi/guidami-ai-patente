@@ -30,7 +30,7 @@ def agents_dir(tmp_path: Path) -> YamlRepository:
     (d / "road_sign_describer.yaml").write_text(
         "model_name: openrouter/google/gemini-2.5-flash-lite\n"
         "system: 'Test system.'\n"
-        "user: 'Argomento: $topic\\nDomanda: $text\\nDescrivi il segnale.'\n",
+        "user: '$contexts_block\\nDescrivi il segnale.'\n",
         encoding="utf-8",
     )
     return YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(d))
@@ -40,7 +40,9 @@ def test_run_sync_returns_road_sign_describer_response(
     agents_dir: YamlRepository, tmp_path: Path
 ) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
-    request = RoadSignDescriberRequest(topic="Segnaletica", text="Cosa indica il segnale?")
+    request = RoadSignDescriberRequest(
+        contexts=["Argomento: Segnaletica — Testo: Cosa indica il segnale?"]
+    )
 
     agent = RoadSignDescriberAgent.from_yaml(
         "road_sign_describer", agents_dir, LocalFileSystemClient(tmp_path)
@@ -66,7 +68,7 @@ def test_run_sync_returns_road_sign_describer_response(
 
 def test_run_sync_sends_binary_content(agents_dir: YamlRepository, tmp_path: Path) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
-    request = RoadSignDescriberRequest(topic="Segnaletica", text="Domanda.")
+    request = RoadSignDescriberRequest(contexts=["Argomento: Segnaletica — Testo: Domanda."])
 
     agent = RoadSignDescriberAgent.from_yaml(
         "road_sign_describer", agents_dir, LocalFileSystemClient(tmp_path)
@@ -103,7 +105,9 @@ def test_run_sync_sends_binary_content(agents_dir: YamlRepository, tmp_path: Pat
 
 def test_run_sync_passes_topic_in_prompt(agents_dir: YamlRepository, tmp_path: Path) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
-    request = RoadSignDescriberRequest(topic="Precedenza", text="Domanda sul segnale.")
+    request = RoadSignDescriberRequest(
+        contexts=["Argomento: Precedenza — Testo: Domanda sul segnale."]
+    )
 
     agent = RoadSignDescriberAgent.from_yaml(
         "road_sign_describer", agents_dir, LocalFileSystemClient(tmp_path)
@@ -140,7 +144,9 @@ def test_render_prompt_with_image_includes_binary_content(
     agents_dir: YamlRepository, tmp_path: Path
 ) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
-    request = RoadSignDescriberRequest(topic="Segnaletica", text="Domanda di test.")
+    request = RoadSignDescriberRequest(
+        contexts=["Argomento: Segnaletica — Testo: Domanda di test."]
+    )
 
     agent = RoadSignDescriberAgent.from_yaml(
         "road_sign_describer", agents_dir, LocalFileSystemClient(tmp_path)

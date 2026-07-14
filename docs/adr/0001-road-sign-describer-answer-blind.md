@@ -44,8 +44,11 @@ added to `RoadSignDescriberRequest`.
 
 ## Consequences
 
-- `RoadSignDescriberRequest` stays `{topic, text}`;
-  `RoadSignDescriberMapper.from_enriched_quiz_to_request` is unaffected.
+- `RoadSignDescriberRequest` never carries `correct_answer`, whatever its
+  shape. The DTO shape itself later changed to `contexts: list[str]` for
+  an unrelated reason — one call per image, not per quiz
+  (`adr/0003-group-road-sign-description-by-image.md`) — the answer-blind
+  property described here is unaffected.
 - No evidence yet that the answer-blind design underperforms in
   practice.
 - If real-world output quality turns out insufficient (vague

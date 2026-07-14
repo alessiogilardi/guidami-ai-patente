@@ -21,6 +21,7 @@ from commons.repositories import JsonRepository
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel, ParsedArticleModel
 from guidami_ai_patente_ingestor.models.quiz import (
     EnrichedQuizModel,
+    ImageAnalysis,
     ParsedQuizItemModel,
     ParsedQuizModel,
 )
@@ -240,3 +241,30 @@ def test_enriched_quiz_round_trip_none_image_description(tmp_path: Path) -> None
     loaded = repo.load("quiz.json")
 
     assert loaded[0].image_description is None
+
+
+def test_enriched_quiz_round_trip_with_image_analysis(tmp_path: Path) -> None:
+    analysis = ImageAnalysis(
+        visual_analysis="Segnale ottagonale rosso con scritta STOP.",
+        name="Stop",
+        description="Segnale di stop ottagonale rosso.",
+    )
+    questions = [
+        EnrichedQuizModel(
+            question_id=1,
+            topic="Segnaletica",
+            number="1",
+            text="Domanda?",
+            correct_answer=True,
+            image="img.jpeg",
+            image_description="Stop. Segnale di stop ottagonale rosso.",
+            image_analysis=analysis,
+        )
+    ]
+    repo = JsonRepository.get_instance(
+        EnrichedQuizModel, file_system_client=LocalFileSystemClient(tmp_path)
+    )
+    repo.write(questions, "quiz.json")
+    loaded = repo.load("quiz.json")
+
+    assert loaded[0].image_analysis == analysis

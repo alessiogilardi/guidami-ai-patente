@@ -52,6 +52,7 @@ class IngestorConfig(BaseSettings):
     project_root: Path = Path(".")
 
     embedding_batch_size: int = 64
+    road_sign_describer_concurrency: int = 8
     embedding: EmbeddingConfig = EmbeddingConfig()
     postgres: PostgresConnectionConfig
     knowledge_chunks_table: str = "knowledge_chunks"
