@@ -47,6 +47,21 @@ codebase (per the legacy architecture docs) — confirmed gone from `src/`.
 Stale references to them survive only as outdated comments in
 `orchestrators/context_keys.py`; don't use them as a model for new code.
 
+## Available, not yet adopted
+
+- `commons/utils/hash_utils.py::HashUtils.make_hashable` and
+  `commons/utils/pydantic_utils/` (`PydanticInstanceUtils.group_by`/`filter_by`,
+  `PydanticModelUtils.validate_model_attributes`) — a generic "group/filter a
+  sequence of Pydantic models by one or more attributes" utility, with a
+  validated multi-attribute key and non-hashable-value support via
+  `HashUtils.make_hashable`. Fully tested (`tests/commons/utils/`), but **no
+  call site uses it yet**: `image_description_enricher.py`'s grouping needs
+  were single-attribute and `str`-keyed, so it uses a plain `defaultdict`
+  instead (see `adr/0003-group-road-sign-description-by-image.md`). Reach
+  for `PydanticInstanceUtils.group_by`/`filter_by` when a real caller needs
+  multi-attribute or non-hashable-value grouping; don't add a second,
+  parallel grouping helper.
+
 ## Naming conventions
 
 - Suffix-per-role: `*Step` (flowstep steps), `*Service`/`*Enricher`
@@ -57,4 +72,4 @@ Stale references to them survive only as outdated comments in
   what they *are* (e.g. `self._agent`), never `self._use_case` — see
   `feedback_usecase_naming` memory.
 
-*Last updated: 2026-07-14 — verified against commit `21cdf06`.*
+*Last updated: 2026-07-14 — verified against commit `071940e`.*
