@@ -2,7 +2,7 @@
 
 from unittest.mock import MagicMock
 
-from commons.services.embeddings import EmbeddingService
+from commons.ai.embedding import EmbeddingService
 from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel, QuizMetadata
 from guidami_ai_patente_ingestor.services.quiz import EmbedQuizMetadata
 

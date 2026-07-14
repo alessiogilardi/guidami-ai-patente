@@ -1,7 +1,7 @@
 import logging
 from collections.abc import Sequence
 
-from commons.clients import EmbeddingClient
+from commons.ai.embedding.clients import EmbeddingClient
 from commons.use_cases import UseCase
 
 from .protocols import Embeddable

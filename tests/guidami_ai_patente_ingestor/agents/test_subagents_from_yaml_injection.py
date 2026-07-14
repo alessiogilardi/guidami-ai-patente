@@ -8,8 +8,8 @@ from pathlib import Path
 
 import yaml
 
+from commons.ai.agents import AgentConfig
 from commons.clients.file_system import LocalFileSystemClient
-from commons.configs import AgentConfig
 from commons.repositories import YamlRepository
 from guidami_ai_patente_ingestor.agents import (
     ArticleContextualizerAgent,

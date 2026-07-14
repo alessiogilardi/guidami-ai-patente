@@ -1,6 +1,5 @@
-"""Clients for external services (embedding, Postgres, file system)."""
+"""Clients for external services (Postgres, file system)."""
 
-from .embeddings import EmbeddingClient, LiteLLMEmbeddingClient, SentenceTransformerEmbeddingClient
 from .file_system import (
     AsyncFileReaderInterface,
     AsyncFileWriterInterface,
@@ -17,11 +16,8 @@ __all__ = [
     "AsyncFileWriterInterface",
     "AsyncLocalFileSystemClient",
     "BaseFileSystemClient",
-    "EmbeddingClient",
     "FileReaderInterface",
     "FileWriterInterface",
-    "LiteLLMEmbeddingClient",
     "LocalFileSystemClient",
     "PostgresClient",
-    "SentenceTransformerEmbeddingClient",
 ]

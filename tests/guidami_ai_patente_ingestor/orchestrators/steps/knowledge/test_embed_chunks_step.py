@@ -2,8 +2,7 @@
 
 from flowstep import FlowContext
 
-from commons.clients import EmbeddingClient
-from commons.services.embeddings import EmbeddingService
+from commons.ai.embedding import EmbeddingClient, EmbeddingService
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import EmbedChunksStep
