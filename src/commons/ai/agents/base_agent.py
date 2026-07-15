@@ -8,7 +8,7 @@ from pydantic_ai.models.openai import OpenAIChatModel
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 from pydantic_ai.settings import ModelSettings
 
-from commons.ai.observability import LlmCallTracker, PydanticAILlmCallCapture
+from commons.ai.observability import LlmCallTracker, NullLlmCallTracker, PydanticAILlmCallCapture
 from commons.clients import FileReaderInterface
 from commons.repositories import YamlRepository
 
@@ -40,13 +40,13 @@ class BaseAgent[T_In, T_Out]:
             file_reader: Reader used to resolve `images` paths passed to `run`.
                 Optional: only required by agents that pass `images=`.
             tracker: Optional port persisting one `LlmCallLog` per call. When
-                `None`, `run`/`run_sync` run today's untracked path unchanged.
+                `None`, defaults to `NullLlmCallTracker`, a no-op collaborator.
         """
         self._name = config.name if config.name is not None else type(self).__name__
         self._model_name = config.model_name
         self._provider = provider
         self._system_prompt = config.system
-        self._tracker = tracker
+        self._tracker: LlmCallTracker = tracker if tracker is not None else NullLlmCallTracker()
         self._renderer = PromptRenderer(config.user, file_reader)
 
         self._agent: Agent[None, T_Out] = Agent(
@@ -96,11 +96,6 @@ class BaseAgent[T_In, T_Out]:
         """Run the agent asynchronously."""
         prompt_content = self._renderer.render(cast(PromptInput, request), images)
         logger.debug("Calling agent %r (model=%s) asynchronously", self._name, self._model_name)
-        if self._tracker is None:
-            result = await self._agent.run(prompt_content)
-            logger.info("Agent %r call completed", self._name)
-            return result.output
-
         with self._tracked(_prompt_text(prompt_content)) as capture:
             result = await self._agent.run(prompt_content)
             capture.record(result)
@@ -111,11 +106,6 @@ class BaseAgent[T_In, T_Out]:
         """Run the agent synchronously, blocking the current thread."""
         prompt_content = self._renderer.render(cast(PromptInput, request), images)
         logger.debug("Calling agent %r (model=%s) synchronously", self._name, self._model_name)
-        if self._tracker is None:
-            result = self._agent.run_sync(prompt_content)
-            logger.info("Agent %r call completed", self._name)
-            return result.output
-
         with self._tracked(_prompt_text(prompt_content)) as capture:
             result = self._agent.run_sync(prompt_content)
             capture.record(result)
@@ -140,10 +130,8 @@ class BaseAgent[T_In, T_Out]:
 
         `caller`/`model`/`system_prompt`/`tracker` never change across calls to this
         agent instance, so only `prompt` (the one thing that varies per call) needs
-        to be supplied at the `run`/`run_sync` call site. Callers must have already
-        checked `self._tracker is not None` (both do, via their early-return branch).
+        to be supplied at the `run`/`run_sync` call site.
         """
-        assert self._tracker is not None
         return PydanticAILlmCallCapture.tracked(
             self._name, self._model_name, prompt, self._system_prompt, self._tracker
         )

@@ -109,8 +109,9 @@ and `tracker.track(capture.log)` enqueues the log for the background worker, whi
 computes `cost_usd` (litellm pricing lookup) and inserts via `LlmCallLogRepository` —
 off the hot path, so a slow/failing DB write never blocks the LLM call. If
 `PostgresClient` construction fails (`psycopg.Error`), `run_prepare` logs a warning and
-dispatches with `tracker=None`: the untracked path is byte-for-byte what `BaseAgent` ran
-before this feature (see `docs/patterns.md`).
+dispatches with `tracker=None`: `BaseAgent.__init__` substitutes a `NullLlmCallTracker`
+(Null Object, see `docs/patterns.md`), so the capture is still built on every call but
+`track()` is a no-op — the LLM output is unaffected, only the DB write is skipped.
 
 **`ingest status [--online]`** (`cli/commands/status.py:run_status`, never
 raises, always exits 0): `cli/services/status/status_inspector.py:
@@ -179,4 +180,4 @@ See `adr/` for the full history. Currently accepted:
   them (`docs/plans/2026-07-15--ingest-cli-revamp.md`,
   `.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-07-15 — verified against commit `5412a17`.*
+*Last updated: 2026-07-15 — verified against commit `09bcec8`.*
