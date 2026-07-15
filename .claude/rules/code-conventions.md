@@ -13,6 +13,25 @@ Domain proper nouns that are legitimately Italian (e.g. "Codice della Strada", "
 "CAP") are not translated. Quiz/legal-text content stored as data (fixtures, DB rows)
 is not documentation and is unaffected by this rule.
 
+### Exception — prompt-facing text on agent response DTOs
+
+A response model's class docstring and `Field(description=...)` under
+`agents/dto/*/*_response.py` are shipped to the LLM by pydantic-ai
+(`Agent(output_type=...)` in `BaseAgent` sends the model's JSON schema — docstring
+becomes the output/tool description, `Field(description=...)` becomes the field
+schema). They are functionally *prompt content*, not code documentation: write
+them in Italian. The domain is Italian legal text (CdS/CAP) and the system
+prompts are already Italian, so Italian descriptions improve extraction fidelity
+and avoid an IT/EN split within the same LLM call.
+
+This exception applies to **every** agent response DTO (class docstring + field
+descriptions), for cross-agent consistency. It does **not** apply to request DTOs
+(`*_request.py`): their values are substituted into the user-prompt template, but
+their docstrings/descriptions are never shipped to the model as schema, so they
+stay English. Every other docstring/comment/log on a response DTO (e.g. an inline
+note explaining this exception) stays English — only the LLM-facing docstring and
+`Field(description=...)` text switch to Italian.
+
 ## Pydantic
 
 Configuration classes (any file under `configs/`) must set

@@ -1,22 +1,35 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class RoadSignDescriberResponse(BaseModel):
-    """Structured output of the road sign description agent.
+    """Output strutturato dell'agente di descrizione dei segnali stradali.
 
-    The field order encodes the Chain-of-Thought sequence enforced by
-    pydantic-ai via `output_type`: the model reasons in writing in
-    `visual_analysis` before synthesizing `name` and `description`.
+    L'ordine dei campi codifica la sequenza di Chain-of-Thought imposta da
+    pydantic-ai tramite `output_type`: il modello ragiona per iscritto in
+    `visual_analysis` prima di sintetizzare `name` e `description`.
+
+    Note: the docstring and field descriptions below are prompt-facing text
+    shipped to the LLM by pydantic-ai (`output_type=RoadSignDescriberResponse`
+    in `BaseAgent`), not code documentation — hence written in Italian. See the
+    Language section of `.claude/rules/code-conventions.md` for the exception.
 
     Attributes:
-        visual_analysis: Internal visual reasoning (Chain-of-Thought) about
-            the image content. Not persisted or included in
-            `image_description`: it is discarded downstream by
-            `RoadSignDescriberMapper`, which reads only `name` and `description`.
-        name: Name of the road sign.
-        description: Detailed description of the sign.
+        visual_analysis: Ragionamento visivo interno (Chain-of-Thought) sul
+            contenuto dell'immagine. Non persistito né incluso in
+            `image_description`: viene scartato a valle da
+            `RoadSignDescriberMapper`, che legge solo `name` e `description`.
+        name: Nome del segnale stradale.
+        description: Descrizione dettagliata del segnale.
     """
 
-    visual_analysis: str
-    name: str
-    description: str
+    visual_analysis: str = Field(
+        description=(
+            "Ragionamento visivo passo-passo (Chain-of-Thought) sul contenuto "
+            "dell'immagine, prima di sintetizzare nome e descrizione del segnale. "
+            "Campo interno, non persistito a valle."
+        )
+    )
+    name: str = Field(description="Nome ufficiale del segnale stradale raffigurato.")
+    description: str = Field(
+        description="Descrizione dettagliata del segnale stradale raffigurato."
+    )
