@@ -46,6 +46,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
 | `flowstep` (external dependency) | Generic sequential-pipeline engine (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) | git dependency (github.com/alessiogilardi/flowstep) |
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
+| `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
 | `guidami_ai_patente/` | FastAPI quiz bot — **not started** | FastAPI (planned) |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/` | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/` | beautifulsoup4, lxml, httpx |
@@ -74,33 +75,64 @@ Storage: Postgres 16 + pgvector — see `database.md`. Embedding: production
 model is `text-embedding-3-small` (OpenAI), 1536-dim, via litellm routed
 through OpenRouter, authenticated with `OPENROUTER_API_KEY` (litellm reads
 the env var itself). LLM agents (`BaseAgent`) authenticate differently:
-`cli.main()` builds one `OpenRouterProvider` from
-`IngestorConfig.open_router_config.api_key` (populated from the same
-`OPENROUTER_API_KEY` via `commons.configs.OpenRouterConfig`) and threads it
-explicitly through every `build_*_enrichment_flow(...)` → `Agent.from_yaml(...,
-provider=...)` call — no agent constructor reads the environment directly
-(see `patterns.md`).
+`cli/wiring.py:build_open_router_provider` builds one `OpenRouterProvider`
+from `IngestorConfig.open_router_config.api_key` (populated from the same
+`OPENROUTER_API_KEY` via `commons.configs.OpenRouterConfig`), built lazily
+by `cli/main.py` only for the `prepare` command (never for `index`/`reset`/
+`status`), and threads it explicitly through every
+`build_*_enrichment_flow(...)` → `Agent.from_yaml(..., provider=...)` call —
+no agent constructor reads the environment directly (see `patterns.md`).
 
 ## Main flows
 
-Entry point: `guidami_ai_patente_ingestor/cli.py` — `ingest
-prepare|index|reset knowledge|quiz` (see command table in `CLAUDE.md`).
-`run_preparation` wraps every preparation flow with idempotency (skips a
-stage if its output file already exists, unless `--force`).
+Entry point: `guidami_ai_patente_ingestor/cli/` (package, not a single
+module) — `ingest prepare|index|reset knowledge|quiz` and `ingest status
+[--online]` (see command table in `CLAUDE.md`). `cli/main.py` loads
+`IngestorConfig`, builds the parser (`cli/parser.py:build_parser`) and
+dispatches by subcommand to `cli/commands/{prepare,index,reset,status}.py`;
+`cli/wiring.py` holds the lazy DI builders (`build_layer_resolver`,
+`build_open_router_provider`, `build_postgres_client`, `build_tracker`,
+`build_health_repositories`) so each command only builds the
+clients/providers it actually needs. `run_preparation` wraps every
+preparation flow with idempotency (skips a stage if its output file already
+exists, unless `--force`).
 
 **LLM call observability** (`prepare` path only, no agent calls on `index`/`reset`):
-`cli._run_prepare` opens a `PostgresClient` and, inside `with postgres_client,
-QueuedLlmCallTracker(LlmCallLogRepository(postgres_client), LlmCostCalculator()) as
-tracker:`, dispatches to `_dispatch_prepare(..., tracker)`, which forwards `tracker`
-into `build_knowledge_enrichment_flow`/`build_quiz_enrichment_flow` → the agents'
+`cli/commands/prepare.py:run_prepare` opens a `PostgresClient` (via
+`wiring.build_postgres_client`) and, inside `with postgres_client,
+wiring.build_tracker(postgres_client) as tracker:`, dispatches to
+`dispatch_prepare(..., tracker)`, which forwards `tracker` into
+`build_knowledge_enrichment_flow`/`build_quiz_enrichment_flow` → the agents'
 `from_yaml(..., tracker=tracker)`. Inside `BaseAgent.run`/`run_sync`, a tracked call is
 wrapped in `PydanticAILlmCallCapture` (records prompt/response/tokens/latency/status synchronously)
 and `tracker.track(capture.log)` enqueues the log for the background worker, which
 computes `cost_usd` (litellm pricing lookup) and inserts via `LlmCallLogRepository` —
 off the hot path, so a slow/failing DB write never blocks the LLM call. If
-`PostgresClient` construction fails (`psycopg.Error`), `_run_prepare` logs a warning and
+`PostgresClient` construction fails (`psycopg.Error`), `run_prepare` logs a warning and
 dispatches with `tracker=None`: the untracked path is byte-for-byte what `BaseAgent` ran
 before this feature (see `docs/patterns.md`).
+
+**`ingest status [--online]`** (`cli/commands/status.py:run_status`, never
+raises, always exits 0): `cli/services/status/status_inspector.py:
+StatusInspector.evaluate_readiness()` computes a per-(command, entity)
+readiness matrix (`RUNNABLE`/`SKIP`/`BLOCKED`) purely from
+`Path.exists()` checks via `LayerResolver` — no DB, no network, by default.
+`prepare` is `SKIP` when its enriched output already exists, `BLOCKED` when
+its parsed input is missing, else `RUNNABLE`; `index` has no filesystem
+signal for its output (a DB table), so it is only `RUNNABLE`/`BLOCKED`
+depending on whether its enriched input exists; `reset` is always
+`RUNNABLE` offline (a single synthetic entry per entity, no source
+dimension). With `--online`, `run_status` best-effort opens a
+`PostgresClient` (catching `psycopg.Error` → `db_reachable=False,
+tables=None`, still exits 0) and, if reachable, runs
+`cli/services/status/table_health_checker.py:TableHealthChecker` over the
+repositories from `wiring.build_health_repositories` to report per-table
+existence and row count (`table_exists()`/`row_count()`, added to the
+shared `BulkInsertStoreRepository` base — the one explicit exception to the
+CLI's self-containment, see `.claude/rules/cli-structure.md`).
+`cli/rendering/status_renderer.py:render` presents the report via `rich`,
+masking `postgres.password`/`open_router_config.api_key` to `****`/
+`missing` — never printed in clear.
 
 **Knowledge corpus** (per source, `cds`/`cap` — `orchestrators/knowledge_flows.py`):
 1. *Cleaning*: `LoadJsonStep` → `ApplyStep(ForEach(ArticleCleaner))` → `WriteJsonStep` (parsed → cleaned).
@@ -135,5 +167,16 @@ See `adr/` for the full history. Currently accepted:
   persistence failures degrade gracefully (log a warning, never abort the
   pipeline) — a deliberate, documented exception to "never swallow
   exceptions" (`docs/plans/2026-07-13--llm-call-tracking.md`).
+- **`ingest` CLI is a self-contained package with lazy DI wiring** — the
+  former 278-line `cli.py` monolith (which built a `PostgresClient` and an
+  `OpenRouterProvider` eagerly in `main()` for every command) was split into
+  `cli/{main,parser,wiring}.py` + `cli/commands/*.py`; clients/providers are
+  now built per command in `wiring.py`, so `reset`/`status` run without
+  `OPENROUTER_API_KEY`, and `status` never touches the network unless
+  `--online` is passed. `status`'s readiness/health services and DTOs
+  (`cli/services/status/`, `cli/models/status/`) are CLI-local rather than
+  top-level `services/`/`models/`, since nothing outside the CLI consumes
+  them (`docs/plans/2026-07-15--ingest-cli-revamp.md`,
+  `.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-07-14 — verified against commit `2b29ec2`.*
+*Last updated: 2026-07-15 — verified against commit `5412a17`.*

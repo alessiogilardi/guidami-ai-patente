@@ -45,6 +45,20 @@ class BulkInsertStoreRepository[T](ABC):
             [self._row_mapper(item) for item in items],
         )
 
+    def table_exists(self) -> bool:
+        """Checks whether the table exists (relies on the default `public` search_path)."""
+        query = sql.SQL("SELECT to_regclass(%s) IS NOT NULL").format()
+        rows = self._client.fetch(query, [self._table_name])
+        return bool(rows[0][0])
+
+    def row_count(self) -> int:
+        """Returns the current row count of the table."""
+        query = sql.SQL("SELECT count(*) FROM {table}").format(
+            table=sql.Identifier(self._table_name)
+        )
+        rows = self._client.fetch(query)
+        return rows[0][0]
+
     @staticmethod
     @abstractmethod
     def _to_db_row(item: T) -> tuple[object, ...]: ...

@@ -20,6 +20,7 @@ dependencies = [
     "pydantic-ai-slim[openrouter]>=1.107.0",
     "aiofiles>=25.1.0",
     "flowstep",
+    "rich>=13",
 ]
 
 [project.scripts]

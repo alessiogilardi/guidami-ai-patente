@@ -93,5 +93,18 @@ repo/
 - **New tests** mirror the `src/` path of the code under test inside
   `tests/`, with no `__init__.py` in any test directory (see
   `.claude/rules/code-conventions.md`).
+- **CLI-only components for the `ingest` CLI** (argument parsing, DI wiring,
+  command dispatch, and any service/DTO/renderer that exists solely to serve
+  a CLI command) go under `src/guidami_ai_patente_ingestor/cli/`, a
+  self-contained package that replicates the layered structure locally
+  (`cli/services/status/`, `cli/models/status/`, `cli/rendering/`) instead of
+  polluting the top-level `services/`/`models/` packages: `cli/main.py`
+  (entry point), `cli/parser.py` (`build_parser`), `cli/wiring.py` (lazy DI
+  builders, called per command rather than eagerly), `cli/commands/`
+  (`prepare.py`, `index.py`, `reset.py`, `status.py` — one thin controller
+  per subcommand). Genuinely shared infrastructure (e.g. the
+  `table_exists`/`row_count` read primitives on `BulkInsertStoreRepository`)
+  stays in its own top-level layer instead — see
+  `.claude/rules/cli-structure.md` for the full boundary rule.
 
-*Last updated: 2026-07-14 — verified against commit `7f71468`.*
+*Last updated: 2026-07-15 — verified against commit `5412a17`.*

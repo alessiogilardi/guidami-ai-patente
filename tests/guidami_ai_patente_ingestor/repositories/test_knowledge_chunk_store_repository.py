@@ -74,3 +74,21 @@ def test_delete_source_removes_only_that_source(client: PostgresClient) -> None:
 
     rows = client.fetch(sql.SQL("SELECT source FROM knowledge_chunks"))
     assert [row[0] for row in rows] == ["cap"]
+
+
+@pytest.mark.integration
+def test_row_count_and_table_exists(client: PostgresClient) -> None:
+    """table_exists/row_count read the real table state for an existing table."""
+    repository = KnowledgeChunkStoreRepository("knowledge_chunks", client)
+    repository.bulk_insert([_chunk("1"), _chunk("2")])
+
+    assert repository.table_exists() is True
+    assert repository.row_count() == 2
+
+
+@pytest.mark.integration
+def test_table_exists_is_false_for_missing_table(client: PostgresClient) -> None:
+    """A non-existent table name is reported as absent without issuing a count."""
+    repository = KnowledgeChunkStoreRepository("definitely_not_a_real_table", client)
+
+    assert repository.table_exists() is False

@@ -53,6 +53,7 @@ docker compose -f docker/docker-compose.yml up -d
 | `uv run ingest index quiz` | `guidami_ai_patente_ingestor.cli:main` | Embed + store quiz bank |
 | `uv run ingest reset knowledge` | `guidami_ai_patente_ingestor.cli:main` | Truncates `knowledge_chunks` (full wipe) |
 | `uv run ingest reset quiz` | `guidami_ai_patente_ingestor.cli:main` | Truncates `quiz_questions` (full wipe) |
+| `uv run ingest status [--online]` | `guidami_ai_patente_ingestor.cli:main` | Shows config (secrets masked) and per-command readiness; `--online` also checks Postgres reachability and per-table row counts |
 
 Register new CLI commands under `[project.scripts]` in `pyproject.toml`.
 

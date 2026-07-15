@@ -1,0 +1,88 @@
+from pathlib import Path
+
+from commons.configs import PostgresConnectionConfig
+from guidami_ai_patente_ingestor.cli.models.status import CommandReadiness, ReadinessState
+from guidami_ai_patente_ingestor.cli.services.status import StatusInspector
+from guidami_ai_patente_ingestor.configs import IngestorConfig, PipelineLayerConfig, SourceConfig
+from guidami_ai_patente_ingestor.services import LayerResolver
+
+
+def _build_config(tmp_path: Path, **overrides: object) -> IngestorConfig:
+    return IngestorConfig(
+        postgres=PostgresConnectionConfig(
+            host="localhost", user="unused", password="unused", dbname="unused"
+        ),
+        layers={
+            "parsed": str(tmp_path / "parsed"),
+            "enriched": str(tmp_path / "enriched"),
+        },
+        **overrides,  # type: ignore[arg-type]
+    )
+
+
+def _entity_readiness(
+    readiness: list[CommandReadiness], command: str, entity: str
+) -> CommandReadiness:
+    for item in readiness:
+        if item.command == command and item.entity == entity:
+            return item
+    raise AssertionError(f"no CommandReadiness found for command={command!r} entity={entity!r}")
+
+
+def test_prepare_states_from_filesystem(tmp_path: Path) -> None:
+    """SKIP when enriched output exists; BLOCKED when parsed input is missing; else RUNNABLE."""
+    (tmp_path / "enriched" / "skip_src").mkdir(parents=True)
+    (tmp_path / "enriched" / "skip_src" / "f.json").write_text("{}")
+    (tmp_path / "parsed" / "run_src").mkdir(parents=True)
+    (tmp_path / "parsed" / "run_src" / "f.json").write_text("{}")
+    # block_src: neither parsed nor enriched exist.
+
+    config = _build_config(
+        tmp_path,
+        sources={
+            "skip_src": SourceConfig(dir="skip_src", file="f.json"),
+            "block_src": SourceConfig(dir="block_src", file="f.json"),
+            "run_src": SourceConfig(dir="run_src", file="f.json"),
+        },
+        knowledge_preparation=PipelineLayerConfig(
+            input_layer="parsed",
+            output_layer="enriched",
+            sources=["skip_src", "block_src", "run_src"],
+        ),
+    )
+    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    inspector = StatusInspector(config, layer_resolver)
+
+    readiness = inspector.evaluate_readiness()
+
+    prepare_knowledge = _entity_readiness(readiness, "prepare", "knowledge")
+    states_by_source = {s.source: s.state for s in prepare_knowledge.sources}
+    assert states_by_source["skip_src"] == ReadinessState.SKIP
+    assert states_by_source["block_src"] == ReadinessState.BLOCKED
+    assert states_by_source["run_src"] == ReadinessState.RUNNABLE
+
+
+def test_index_has_no_skip_offline(tmp_path: Path) -> None:
+    """Index is RUNNABLE when its enriched input exists, BLOCKED when absent, never SKIP."""
+    (tmp_path / "enriched" / "cds").mkdir(parents=True)
+    (tmp_path / "enriched" / "cds" / "f.json").write_text("{}")
+    # cap: enriched input missing.
+
+    config = _build_config(
+        tmp_path,
+        sources={
+            "cds": SourceConfig(dir="cds", file="f.json"),
+            "cap": SourceConfig(dir="cap", file="f.json"),
+        },
+        knowledge_indexing=PipelineLayerConfig(input_layer="enriched", sources=["cds", "cap"]),
+    )
+    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    inspector = StatusInspector(config, layer_resolver)
+
+    readiness = inspector.evaluate_readiness()
+
+    index_knowledge = _entity_readiness(readiness, "index", "knowledge")
+    states_by_source = {s.source: s.state for s in index_knowledge.sources}
+    assert states_by_source["cds"] == ReadinessState.RUNNABLE
+    assert states_by_source["cap"] == ReadinessState.BLOCKED
+    assert ReadinessState.SKIP not in states_by_source.values()
