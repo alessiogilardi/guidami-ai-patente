@@ -1,5 +1,5 @@
 ---
-status: Reviewed
+status: Implemented
 effort: M
 ---
 # Base Agent Null Tracker
@@ -86,13 +86,13 @@ File `src/commons/ai/agents/base_agent.py`:
 
 Variable block (plan-specific):
 
-- [ ] `grep -n "self._tracker is None" src/commons/ai/agents/base_agent.py` returns no matches
-- [ ] `uv run python -c "from commons.ai.observability import NullLlmCallTracker"` succeeds
-- [ ] `uv run pytest tests/commons/ai/agents/test_base_agent.py tests/commons/ai/observability/services/test_null_llm_call_tracker.py -v` all pass
+- [x] `grep -n "self._tracker is None" src/commons/ai/agents/base_agent.py` returns no matches
+- [x] `uv run python -c "from commons.ai.observability import NullLlmCallTracker"` succeeds
+- [x] `uv run pytest tests/commons/ai/agents/test_base_agent.py tests/commons/ai/observability/services/test_null_llm_call_tracker.py -v` all pass
 
 Fixed block (same for every plan):
 
-- [ ] `uv run pytest` green (including new tests)
-- [ ] `uv run pyright` clean
-- [ ] `uv run ruff check src tests` clean
-- [ ] Plan updated to `status: Implemented`
+- [x] `uv run pytest` green (including new tests)
+- [x] `uv run pyright` clean
+- [x] `uv run ruff check src tests` clean
+- [x] Plan updated to `status: Implemented`
