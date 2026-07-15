@@ -74,6 +74,7 @@ e documentato in [`docs/architecture/ingestor/`](../docs/architecture/ingestor/_
 | [Llm Call Tracking](2026-07-13--llm-call-tracking.md) | Llm Call Tracking | Implemented |
 | [Ingest Cli Revamp](2026-07-15--ingest-cli-revamp.md) | Ingest Cli Revamp | Implemented |
 | [Quiz Enrichment Single Loop](2026-07-15--quiz-enrichment-single-loop.md) | Quiz Enrichment Single Loop | Implemented |
+| [Remove Quiz Named Entities](2026-07-15--remove-quiz-named-entities.md) | Remove Quiz Named Entities | Implemented |
 | [Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF)](architecture-hybrid-retrieval.md) | Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF) | Draft |
 
 
