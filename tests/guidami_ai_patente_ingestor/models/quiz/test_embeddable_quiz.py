@@ -15,7 +15,6 @@ def _question(**kwargs) -> EmbeddableQuizModel:
 def _metadata(**kwargs) -> QuizMetadata:
     defaults = dict(
         core_concepts=["Obbligo di precedenza"],
-        entities=["incrocio"],
         exact_keywords=["preavviso di incrocio"],
         vector_search_queries=["segnale preavviso incrocio", "obbligo precedenza incrocio"],
         rule_explanation="Il segnale preavvisa un incrocio regolato.",

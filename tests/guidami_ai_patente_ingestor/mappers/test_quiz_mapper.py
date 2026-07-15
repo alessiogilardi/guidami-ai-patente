@@ -48,7 +48,6 @@ def _embeddable(**kwargs) -> EmbeddableQuizModel:
 def _metadata(**kwargs) -> QuizMetadata:
     defaults = dict(
         core_concepts=["Obbligo di precedenza"],
-        entities=["segnale di stop"],
         exact_keywords=["obbligo di precedenza"],
         vector_search_queries=["prima query di ricerca", "seconda query di ricerca"],
         rule_explanation="Il segnale impone l'obbligo di precedenza.",
@@ -183,9 +182,9 @@ def test_from_embeddable_to_quiz_question_spreads_metadata_into_flat_fields() ->
     result = QuizMapper.from_embeddable_to_quiz_question(eq)
 
     assert result.core_concepts == metadata.core_concepts
-    assert result.named_entities == metadata.entities
     assert result.exact_keywords == metadata.exact_keywords
     assert result.rule_explanation == metadata.rule_explanation
+    assert not hasattr(result, "named_entities")
 
 
 def test_from_embeddable_to_quiz_question_drops_vector_search_queries() -> None:
@@ -202,7 +201,6 @@ def test_from_embeddable_to_quiz_question_no_metadata_yields_none_fields() -> No
     result = QuizMapper.from_embeddable_to_quiz_question(eq)
 
     assert result.core_concepts is None
-    assert result.named_entities is None
     assert result.exact_keywords is None
     assert result.rule_explanation is None
 

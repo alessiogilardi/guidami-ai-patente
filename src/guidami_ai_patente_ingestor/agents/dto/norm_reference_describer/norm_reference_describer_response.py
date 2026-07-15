@@ -2,33 +2,31 @@ from pydantic import BaseModel, Field
 
 
 class NormReferenceDescriberResponse(BaseModel):
-    """Structured output for driving license quiz analysis.
+    """Output strutturato dell'analisi di un quiz per la patente.
 
-    Contains semantic norm metadata to be used in a RAG system for retrieving
-    Codice della Strada (CdS) and Assicurazioni Private (CAP) articles.
+    Contiene i metadati semantici normativi usati in un sistema RAG per
+    recuperare gli articoli del Codice della Strada (CdS) e del Codice delle
+    Assicurazioni Private (CAP).
+
+    Note: the docstring and field descriptions below are prompt-facing text
+    shipped to the LLM by pydantic-ai (`output_type=NormReferenceDescriberResponse`
+    in `BaseAgent`), not code documentation — hence written in Italian. See the
+    Language section of `.claude/rules/code-conventions.md` for the exception.
     """
 
     core_concepts: list[str] = Field(
         description=(
-            "2-3 general legal and normative concepts underlying the quiz "
-            "(e.g. 'Right of way', 'Speed limits')."
+            "2-3 concetti normativi generali alla base del quiz "
+            "(es. 'Obbligo di precedenza', 'Limiti di velocità')."
         ),
         min_length=2,
         max_length=3,
     )
 
-    entities: list[str] = Field(
-        description=(
-            "Subjects (e.g. 'Pedestrian', 'New driver'), objects (e.g. 'Category B license', "
-            "'Intersection') or specific signs mentioned in the quiz."
-        ),
-        min_length=1,
-    )
-
     exact_keywords: list[str] = Field(
         description=(
-            "3-5 exact keywords or technical terms used in the official text of the "
-            "Codice della Strada or CAP."
+            "3-5 parole chiave o termini tecnici esatti usati nel testo ufficiale "
+            "del Codice della Strada o del CAP."
         ),
         min_length=3,
         max_length=5,
@@ -36,8 +34,8 @@ class NormReferenceDescriberResponse(BaseModel):
 
     vector_search_queries: list[str] = Field(
         description=(
-            "2-3 phrases formulated specifically to maximize the effectiveness of a "
-            "vector semantic search in the CdS legal text."
+            "2-3 frasi formulate per massimizzare l'efficacia di una ricerca "
+            "semantica vettoriale nel testo normativo del CdS."
         ),
         min_length=2,
         max_length=3,
@@ -45,9 +43,9 @@ class NormReferenceDescriberResponse(BaseModel):
 
     rule_explanation: str = Field(
         description=(
-            "Brief explanation of the normative principle applied in the quiz. "
-            "MAXIMUM 30 words. Be concise and technical."
+            "Breve spiegazione del principio normativo applicato nel quiz. "
+            "Circa 30 parole, concisa e tecnica."
         ),
-        # ~30-40 words as a hard constraint (helps prevent verbose hallucinations)
-        max_length=250,
+        # Safety net against runaway hallucinations, not a normal-length constraint.
+        max_length=500,
     )

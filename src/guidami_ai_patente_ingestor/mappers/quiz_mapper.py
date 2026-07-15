@@ -50,10 +50,9 @@ class QuizMapper:
         """Maps an `EmbeddableQuizModel` to the `QuizQuestion` entity.
 
         Discards `image_description` (not persisted), keeps `embedding`.
-        Spreads `quiz_metadata` onto the flat retrieval columns (`entities`
-        renamed to `named_entities`), dropping `vector_search_queries` (embedder
-        input only, not persisted). If `quiz_metadata` is `None`, the four flat
-        fields are `None`.
+        Spreads `quiz_metadata` onto the flat retrieval columns, dropping
+        `vector_search_queries` (embedder input only, not persisted). If
+        `quiz_metadata` is `None`, the three flat fields are `None`.
 
         Args:
             model: Embeddable model with embedding already computed.
@@ -64,12 +63,10 @@ class QuizMapper:
         metadata = model.quiz_metadata
         if metadata is None:
             core_concepts = None
-            named_entities = None
             exact_keywords = None
             rule_explanation = None
         else:
             core_concepts = metadata.core_concepts
-            named_entities = metadata.entities
             exact_keywords = metadata.exact_keywords
             rule_explanation = metadata.rule_explanation
 
@@ -81,7 +78,6 @@ class QuizMapper:
             correct_answer=model.correct_answer,
             image_filename=model.image_filename,
             core_concepts=core_concepts,
-            named_entities=named_entities,
             exact_keywords=exact_keywords,
             rule_explanation=rule_explanation,
             embedding=model.embedding,

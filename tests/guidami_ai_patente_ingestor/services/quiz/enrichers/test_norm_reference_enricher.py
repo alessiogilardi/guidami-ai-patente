@@ -29,7 +29,6 @@ def _make_agent_mock() -> MagicMock:
     agent = MagicMock(spec=NormReferenceDescriberAgent)
     response = MagicMock()
     response.core_concepts = ["concetto"]
-    response.entities = ["entità"]
     response.exact_keywords = ["parola chiave"]
     response.vector_search_queries = ["query di ricerca"]
     response.rule_explanation = "Spiegazione breve."

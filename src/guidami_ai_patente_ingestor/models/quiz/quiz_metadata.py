@@ -10,14 +10,12 @@ class QuizMetadata(BaseModel):
 
     Attributes:
         core_concepts: General regulatory concepts.
-        entities: Specific subjects, objects, or signs mentioned.
         exact_keywords: Exact keywords or technical terms from the Codice della Strada.
         vector_search_queries: Phrases for semantic search in the CdS text.
         rule_explanation: Brief explanation of the regulatory principle.
     """
 
     core_concepts: list[str]
-    entities: list[str]
     exact_keywords: list[str]
     vector_search_queries: list[str]
     rule_explanation: str

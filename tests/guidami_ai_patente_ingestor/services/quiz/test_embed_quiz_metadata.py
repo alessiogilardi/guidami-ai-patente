@@ -10,7 +10,6 @@ from guidami_ai_patente_ingestor.services.quiz import EmbedQuizMetadata
 def _metadata(**kwargs) -> QuizMetadata:
     defaults = dict(
         core_concepts=["Obbligo di precedenza"],
-        entities=["incrocio"],
         exact_keywords=["preavviso di incrocio"],
         vector_search_queries=["prima query di ricerca", "seconda query di ricerca"],
         rule_explanation="Il segnale preavvisa un incrocio regolato.",

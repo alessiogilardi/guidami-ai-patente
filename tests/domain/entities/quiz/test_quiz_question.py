@@ -6,4 +6,5 @@ def test_quiz_question_is_flat() -> None:
     fields = set(QuizQuestion.model_fields)
 
     assert "quiz_metadata" not in fields
-    assert {"core_concepts", "named_entities", "exact_keywords", "rule_explanation"} <= fields
+    assert {"core_concepts", "exact_keywords", "rule_explanation"} <= fields
+    assert "named_entities" not in fields

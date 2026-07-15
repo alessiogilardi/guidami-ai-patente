@@ -50,7 +50,6 @@ quiz_questions
 ├── correct_answer (BOOLEAN, NOT NULL)
 ├── image_filename (TEXT, nullable)
 ├── core_concepts (TEXT[], nullable)        -- flattened QuizMetadata retrieval key
-├── named_entities (TEXT[], nullable)       -- named entities mentioned in the question
 ├── exact_keywords (TEXT[], nullable)       -- CdS technical terms, retrieval key
 ├── rule_explanation (TEXT, nullable)       -- serving payload, not a retrieval key
 ├── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())  -- load-batch timestamp

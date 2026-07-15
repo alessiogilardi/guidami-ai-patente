@@ -17,11 +17,17 @@ user: |
   Risposta corretta: $correct_answer
   Descrizione dell'immagine: $image_description
 
-  Analizza la domanda e restituisci SOLO un oggetto JSON con la seguente struttura:
+  Analizza la domanda e compila ogni campo dello schema di output fornito.
+
+  Esempio (domanda solo testo):
+  Argomento Quiz: Segnaletica
+  Testo della domanda: Il segnale di stop impone l'obbligo di arresto anche in assenza di traffico.
+  Risposta corretta: true
+  Descrizione dell'immagine: Nessuna immagine allegata a questa domanda.
+  ->
   {
-    "core_concepts": ["2-3 concetti normativi generali"],
-    "entities": ["Soggetti, oggetti o segnali specifici menzionati"],
-    "exact_keywords": ["3-5 parole chiave o termini tecnici esatti del Codice della Strada"],
-    "vector_search_queries": ["2-3 frasi per ricerca semantica nel testo del CdS"],
-    "rule_explanation": "Breve spiegazione (max 30 parole) del principio normativo."
+    "core_concepts": ["Obbligo di arresto", "Segnaletica verticale di prescrizione"],
+    "exact_keywords": ["obbligo di arresto", "segnale di stop", "dare precedenza"],
+    "vector_search_queries": ["obbligo di arresto al segnale di stop", "precedenza incroci con segnale di stop"],
+    "rule_explanation": "Il segnale di stop impone sempre l'arresto, indipendentemente dalla presenza di altri veicoli."
   }

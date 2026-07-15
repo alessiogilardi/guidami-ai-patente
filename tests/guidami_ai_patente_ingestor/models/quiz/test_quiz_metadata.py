@@ -5,7 +5,6 @@ from guidami_ai_patente_ingestor.models.quiz import QuizMetadata
 def _metadata(**kwargs) -> QuizMetadata:
     defaults = dict(
         core_concepts=["Obbligo di arresto"],
-        entities=["segnale di stop"],
         exact_keywords=["obbligo di arresto"],
         vector_search_queries=["prima query di ricerca", "seconda query di ricerca"],
         rule_explanation="Il segnale di stop impone l'obbligo di arresto.",

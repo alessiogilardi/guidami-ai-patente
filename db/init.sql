@@ -29,7 +29,6 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
     correct_answer  BOOLEAN NOT NULL,
     image_filename  TEXT,
     core_concepts TEXT[],
-    named_entities TEXT[],
     exact_keywords TEXT[],
     rule_explanation TEXT,
     embedding       VECTOR(1536),

@@ -87,7 +87,6 @@ class TestEmbeddingService:
     def test_protocol_conformance_embeddable_quiz_question(self) -> None:
         metadata = QuizMetadata(
             core_concepts=["Obbligo di precedenza"],
-            entities=["incrocio"],
             exact_keywords=["preavviso di incrocio"],
             vector_search_queries=["prima query di ricerca", "seconda query di ricerca"],
             rule_explanation="Il segnale preavvisa un incrocio regolato.",

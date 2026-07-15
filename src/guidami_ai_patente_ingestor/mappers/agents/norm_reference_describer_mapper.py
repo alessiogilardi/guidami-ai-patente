@@ -27,7 +27,9 @@ class NormReferenceDescriberMapper:
             topic=question.topic,
             text=question.text,
             correct_answer=question.correct_answer,
-            image_description=question.image_description,
+            image_description=(
+                question.image_description or "Nessuna immagine allegata a questa domanda."
+            ),
         )
 
     @staticmethod
@@ -48,7 +50,6 @@ class NormReferenceDescriberMapper:
             update={
                 "quiz_metadata": QuizMetadata(
                     core_concepts=response.core_concepts,
-                    entities=response.entities,
                     exact_keywords=response.exact_keywords,
                     vector_search_queries=response.vector_search_queries,
                     rule_explanation=response.rule_explanation,
