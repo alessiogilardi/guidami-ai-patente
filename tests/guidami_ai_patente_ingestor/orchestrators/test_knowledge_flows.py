@@ -174,7 +174,7 @@ def test_cap_run_does_not_overwrite_cds_run(tmp_path: Path) -> None:
     _write_enriched(resolver.path("enriched", "cds"), cds_articles)
     _write_enriched(resolver.path("enriched", "cap"), cap_articles)
 
-    config = IngestorConfig(embedding_batch_size=4, postgres=db_config)
+    config = IngestorConfig(embedding_batch_size=4, postgres=db_config, project_root=tmp_path)
     embedding_client = _make_embedding_client()
 
     def _run(source: str) -> None:
@@ -225,7 +225,7 @@ def test_rerunning_same_source_is_full_reload(tmp_path: Path) -> None:
         [_make_enriched_article("1"), _make_enriched_article("2")],
     )
 
-    config = IngestorConfig(embedding_batch_size=4, postgres=db_config)
+    config = IngestorConfig(embedding_batch_size=4, postgres=db_config, project_root=tmp_path)
     embedding_client = _make_embedding_client()
 
     def _run() -> None:

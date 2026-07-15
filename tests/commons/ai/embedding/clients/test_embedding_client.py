@@ -249,7 +249,7 @@ def test_st_custom_passage_prefix_is_applied(monkeypatch: pytest.MonkeyPatch) ->
 
 @pytest.mark.integration
 def test_st_bge_m3_embed_query_returns_1024_dim_vector() -> None:
-    config = EmbeddingConfig()
+    config = EmbeddingConfig(model_name="BAAI/bge-m3", vector_dim=1024)
     client = SentenceTransformerEmbeddingClient(config)
     vector = client.embed_query("Quando si accendono gli abbaglianti?")
 
