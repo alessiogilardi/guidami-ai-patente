@@ -21,6 +21,7 @@ from guidami_ai_patente_ingestor.models.quiz import (
 )
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
+    AsyncApplyStep,
     DbStoreStep,
     LoadJsonStep,
     WriteJsonStep,
@@ -214,11 +215,17 @@ def build_quiz_enrichment_flow(
 
     Preparation stage: no embed/store. The quiz bank has a single source
     (`"quiz"`), derived from `config.quiz_preparation.sources[0]`.
-    The enrichment is Open/Closed: adding a future enricher only touches the
-    list of transforms in the ApplyStep, not the generic step.
+    The enrichment is Open/Closed: adding a future async enricher only touches the
+    list of transforms in the `AsyncApplyStep`, not the generic step.
 
     Step mapping:
-      `LoadJsonStep` → `ApplyStep(enrich)` → `WriteJsonStep`
+      `LoadJsonStep` → `ApplyStep(map_cleaned_quiz)` → `AsyncApplyStep(enrich_quiz)`
+      → `WriteJsonStep`
+
+    The whole enrichment phase (`AsyncApplyStep(enrich_quiz)`) runs under a single
+    `asyncio.run`: image description enrichment always completes before norm reference
+    enrichment starts (sequential awaits), so no client held by the enrichment agents is
+    ever reused across event loops.
 
     Args:
         config: Full ingestor configuration (already loaded at the entry point).
@@ -266,12 +273,17 @@ def build_quiz_enrichment_flow(
     norm_describer = NormReferenceDescriberAgent.from_yaml(
         "norm_reference_describer", agents_repository, open_router_provider, tracker=tracker
     )
-    enrich_step = ApplyStep(
-        "enrich",
+    map_step = ApplyStep(
+        "map_cleaned_quiz",
         ForEach(QuizMapper.from_cleaned_to_enriched),
-        ImageDescriptionEnricher(config.road_sign_describer_concurrency, describer),
-        NormReferenceEnricher(norm_describer),
         input_key=context_keys.CLEANED_QUIZ,
+        output_key=context_keys.MAPPED_QUIZ,
+    )
+    enrich_step = AsyncApplyStep(
+        "enrich_quiz",
+        ImageDescriptionEnricher(config.road_sign_describer_concurrency, describer),
+        NormReferenceEnricher(config.norm_reference_describer_concurrency, norm_describer),
+        input_key=context_keys.MAPPED_QUIZ,
         output_key=context_keys.ENRICHED_QUIZ,
     )
 
@@ -289,6 +301,7 @@ def build_quiz_enrichment_flow(
     flow: Flow = (
         FlowBuilder("quiz_enrichment")
         .add_step(load_step)
+        .add_step(map_step)
         .add_step(enrich_step)
         .add_step(write_step)
         .build(validate=validate)

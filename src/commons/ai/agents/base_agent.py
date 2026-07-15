@@ -95,25 +95,31 @@ class BaseAgent[T_In, T_Out]:
     async def run(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
         """Run the agent asynchronously."""
         prompt_content = self._renderer.render(cast(PromptInput, request), images)
+        logger.debug("Calling agent %r (model=%s) asynchronously", self._name, self._model_name)
         if self._tracker is None:
             result = await self._agent.run(prompt_content)
+            logger.info("Agent %r call completed", self._name)
             return result.output
 
         with self._tracked(_prompt_text(prompt_content)) as capture:
             result = await self._agent.run(prompt_content)
             capture.record(result)
+        logger.info("Agent %r call completed", self._name)
         return result.output
 
     def run_sync(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
         """Run the agent synchronously, blocking the current thread."""
         prompt_content = self._renderer.render(cast(PromptInput, request), images)
+        logger.debug("Calling agent %r (model=%s) synchronously", self._name, self._model_name)
         if self._tracker is None:
             result = self._agent.run_sync(prompt_content)
+            logger.info("Agent %r call completed", self._name)
             return result.output
 
         with self._tracked(_prompt_text(prompt_content)) as capture:
             result = self._agent.run_sync(prompt_content)
             capture.record(result)
+        logger.info("Agent %r call completed", self._name)
         return result.output
 
     def __call__(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:

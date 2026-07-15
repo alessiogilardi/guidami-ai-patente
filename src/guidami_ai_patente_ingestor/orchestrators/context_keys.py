@@ -2,8 +2,8 @@
 
 Single vocabulary for the ingestion flows. Extended in an ADDITIVE way by the
 slices: here are the keys consumed by indexing (SP03/04), by knowledge
-preparation (SP05), and by quiz preparation (SP06: `CLEANED_QUIZ`). Quiz
-enrichment folds describe+map into a single step: `IMAGE_DESCRIPTIONS` is not
+preparation (SP05), and by quiz preparation (SP06: `CLEANED_QUIZ`, extended by
+the single-loop enrichment revamp: `MAPPED_QUIZ`). `IMAGE_DESCRIPTIONS` is not
 a context key, it stays an internal dict of the enricher. No `SOURCE`: it is
 injected at the factory, not read from the context.
 """
@@ -34,6 +34,8 @@ QUIZ_ENTITIES = "quiz_entities"  # final entities → store
 
 # --- Quiz preparation (SP06, extended by SP09) ---
 # Cleaning flow: LoadJsonStep → ApplyStep(flatten_quiz) → WriteJsonStep.
-# Enrichment flow: LoadJsonStep → ApplyStep(enrich) → WriteJsonStep.
+# Enrichment flow: LoadJsonStep → ApplyStep(map_cleaned_quiz) → AsyncApplyStep(enrich_quiz)
+#   → WriteJsonStep.
 PARSED_QUIZ = "parsed_quiz"  # input: nested quiz bank loaded from the "parsed" layer
 CLEANED_QUIZ = "cleaned_quiz"  # cleaning output / enrichment input: list[CleanedQuizModel] flat
+MAPPED_QUIZ = "mapped_quiz"  # cleaned→enriched map output; async-enrichment input

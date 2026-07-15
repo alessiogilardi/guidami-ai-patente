@@ -143,8 +143,11 @@ def test_enrichment_flow_build_with_validate_true_does_not_raise() -> None:
     assert isinstance(flow, Flow)
 
 
-def test_enrichment_flow_has_three_steps_in_order() -> None:
-    """The chain is LoadCleanedQuiz -> Enrich -> WriteEnrichedQuiz."""
+def test_enrichment_flow_has_four_steps_in_order() -> None:
+    """The chain is LoadCleanedQuiz -> ApplyStep(map_cleaned_quiz) -> AsyncApplyStep(enrich_quiz).
+
+    -> WriteEnrichedQuiz (single event loop, Decision 4).
+    """
     with patch.object(RoadSignDescriberAgent, "from_yaml", return_value=_patched_describer()):
         flow = build_quiz_enrichment_flow(
             config=_base_config(),
@@ -154,6 +157,7 @@ def test_enrichment_flow_has_three_steps_in_order() -> None:
     steps = flow.get_steps()
     assert [step.name for step in steps] == [
         "load_cleaned_quiz",
-        "enrich",
+        "map_cleaned_quiz",
+        "enrich_quiz",
         "write_enriched_quiz",
     ]

@@ -72,6 +72,8 @@ e documentato in [`docs/architecture/ingestor/`](../docs/architecture/ingestor/_
 | [Flatten Quiz Entity](2026-07-11--flatten-quiz-entity.md) | Flatten Quiz Entity | Implemented |
 | [Llm Call Log Schema](2026-07-11--llm-call-log-schema.md) | Llm Call Log Schema | Implemented |
 | [Llm Call Tracking](2026-07-13--llm-call-tracking.md) | Llm Call Tracking | Implemented |
+| [Ingest Cli Revamp](2026-07-15--ingest-cli-revamp.md) | Ingest Cli Revamp | Implemented |
+| [Quiz Enrichment Single Loop](2026-07-15--quiz-enrichment-single-loop.md) | Quiz Enrichment Single Loop | Implemented |
 | [Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF)](architecture-hybrid-retrieval.md) | Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF) | Draft |
 
 

@@ -40,7 +40,7 @@ def _make_describer(name: str = "Stop", description: str = "Segnale rosso.") -> 
     return describer
 
 
-def test_enrich_calls_once_per_image_regardless_of_distinct_texts() -> None:
+async def test_enrich_calls_once_per_image_regardless_of_distinct_texts() -> None:
     describer = _make_describer()
     enricher = ImageDescriptionEnricher(4, describer)
     questions = [
@@ -48,7 +48,7 @@ def test_enrich_calls_once_per_image_regardless_of_distinct_texts() -> None:
         _question("2", image="a.jpeg", topic="Segnaletica", text="Seconda domanda."),
     ]
 
-    result = enricher(questions)
+    result = await enricher(questions)
 
     assert describer.run.call_count == 1
     assert result[0].image_description == result[1].image_description
@@ -58,7 +58,7 @@ def test_enrich_calls_once_per_image_regardless_of_distinct_texts() -> None:
     )
 
 
-def test_enrich_single_call_carries_both_distinct_contexts() -> None:
+async def test_enrich_single_call_carries_both_distinct_contexts() -> None:
     describer = _make_describer()
     enricher = ImageDescriptionEnricher(4, describer)
     questions = [
@@ -66,7 +66,7 @@ def test_enrich_single_call_carries_both_distinct_contexts() -> None:
         _question("2", image="a.jpeg", topic="Precedenza", text="Seconda domanda."),
     ]
 
-    enricher(questions)
+    await enricher(questions)
 
     request_dto = describer.run.call_args_list[0].args[0]
     assert isinstance(request_dto, RoadSignDescriberRequest)
@@ -76,7 +76,7 @@ def test_enrich_single_call_carries_both_distinct_contexts() -> None:
     ]
 
 
-def test_enrich_calls_once_per_distinct_image() -> None:
+async def test_enrich_calls_once_per_distinct_image() -> None:
     describer = _make_describer()
     enricher = ImageDescriptionEnricher(4, describer)
     questions = [
@@ -85,25 +85,25 @@ def test_enrich_calls_once_per_distinct_image() -> None:
         _question("3", image="b.jpeg"),
     ]
 
-    enricher(questions)
+    await enricher(questions)
 
     assert describer.run.call_count == 2
     called_images = {call.kwargs["images"][0] for call in describer.run.call_args_list}
     assert called_images == {Path("a.jpeg"), Path("b.jpeg")}
 
 
-def test_enrich_no_image_means_description_stays_none_and_no_call() -> None:
+async def test_enrich_no_image_means_description_stays_none_and_no_call() -> None:
     describer = _make_describer()
     enricher = ImageDescriptionEnricher(4, describer)
     questions = [_question("1", image=None)]
 
-    result = enricher(questions)
+    result = await enricher(questions)
 
     assert result[0].image_description is None
     describer.run.assert_not_called()
 
 
-def test_enrich_failing_image_degrades_alone_others_still_described(caplog) -> None:
+async def test_enrich_failing_image_degrades_alone_others_still_described(caplog) -> None:
     describer = MagicMock(spec=RoadSignDescriberAgent)
 
     def _side_effect(
@@ -123,7 +123,7 @@ def test_enrich_failing_image_degrades_alone_others_still_described(caplog) -> N
     ]
 
     with caplog.at_level("WARNING"):
-        result = enricher(questions)
+        result = await enricher(questions)
 
     missing_result = next(q for q in result if q.image == "missing.jpeg")
     ok_result = next(q for q in result if q.image == "ok.jpeg")
@@ -132,7 +132,7 @@ def test_enrich_failing_image_degrades_alone_others_still_described(caplog) -> N
     assert any("missing.jpeg" in record.message for record in caplog.records)
 
 
-def test_enrich_describe_raising_generic_exception_degrades_that_image_only(caplog) -> None:
+async def test_enrich_describe_raising_generic_exception_degrades_that_image_only(caplog) -> None:
     describer = MagicMock(spec=RoadSignDescriberAgent)
 
     def _side_effect(
@@ -152,21 +152,25 @@ def test_enrich_describe_raising_generic_exception_degrades_that_image_only(capl
     ]
 
     with caplog.at_level("WARNING"):
-        result = enricher(questions)
+        result = await enricher(questions)
 
     broken_result = next(q for q in result if q.image == "broken.jpeg")
     ok_result = next(q for q in result if q.image == "ok.jpeg")
     assert broken_result.image_description is None
     assert ok_result.image_description == "Stop. Segnale rosso."
     assert any("broken.jpeg" in record.message for record in caplog.records)
+    # Per Decision 7 (no traceback on the WARNING degrade path): the failure record
+    # itself must carry no traceback text.
+    warning_records = [r for r in caplog.records if "broken.jpeg" in r.message]
+    assert all(record.exc_info is None for record in warning_records)
 
 
-def test_enrich_does_not_mutate_input_models() -> None:
+async def test_enrich_does_not_mutate_input_models() -> None:
     describer = _make_describer()
     enricher = ImageDescriptionEnricher(4, describer)
     original = _question("1", image="stop.jpeg")
     questions = [original]
 
-    enricher(questions)
+    await enricher(questions)
 
     assert original.image_description is None

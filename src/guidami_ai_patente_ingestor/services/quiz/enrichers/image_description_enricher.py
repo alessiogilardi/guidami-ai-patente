@@ -4,7 +4,7 @@ from collections import defaultdict
 from collections.abc import Iterable
 from pathlib import Path
 
-from commons.use_cases import UseCase
+from commons.use_cases import AsyncUseCase
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
     RoadSignDescriberRequest,
@@ -16,7 +16,7 @@ from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 logger = logging.getLogger(__name__)
 
 
-class ImageDescriptionEnricher(UseCase[Iterable[EnrichedQuizModel], list[EnrichedQuizModel]]):
+class ImageDescriptionEnricher(AsyncUseCase[Iterable[EnrichedQuizModel], list[EnrichedQuizModel]]):
     """Enriches sub-questions with a road sign description, one call per image.
 
     All quizzes that reference the same image are grouped and described in a single
@@ -33,19 +33,19 @@ class ImageDescriptionEnricher(UseCase[Iterable[EnrichedQuizModel], list[Enriche
             road_sign_describer: Agent used to describe each grouped image.
         """
         # Store the limit, not the Semaphore: an asyncio.Semaphore binds to the loop of its
-        # first use, and execute() spins a fresh loop per call (asyncio.run). Building it
-        # per-run in _fetch_descriptions keeps the enricher reusable across runs/loops.
+        # first use; the loop is owned by the caller (AsyncApplyStep) and the semaphore is
+        # built per-run in `_fetch_descriptions`, keeping the enricher reusable across
+        # runs/loops.
         self._max_concurrency = max_concurrency
         self._road_sign_describer = road_sign_describer
 
-    def execute(self, request: Iterable[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
+    async def execute(self, request: Iterable[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
         """Enrich each quiz item with a road sign description where an image is present."""
         quizzes = list(request)
-
         quizzes_by_image = self._group_by_image(quizzes)
-        # execute stays sync (flowstep/UseCase contract); it owns the event loop.
-        descriptions = asyncio.run(self._fetch_descriptions(quizzes_by_image))
-
+        logger.info("Describing %d distinct image(s)", len(quizzes_by_image))
+        # The event loop is owned by the caller (AsyncApplyStep); this enricher only awaits.
+        descriptions = await self._fetch_descriptions(quizzes_by_image)
         return [self._enrich_quiz(quiz, descriptions) for quiz in quizzes]
 
     def _group_by_image(
@@ -99,10 +99,9 @@ class ImageDescriptionEnricher(UseCase[Iterable[EnrichedQuizModel], list[Enriche
         except (FileNotFoundError, PermissionError):
             logger.warning("Image file not found or inaccessible, skipping: %s", image)
             return None
-        except Exception:
-            # TODO: narrow this broad catch once the agent domain-exception hierarchy
-            # lands (see the deferred EmbeddingError plan); it currently also swallows
-            # real bugs. Per-image degrade is intentional: one bad image must not kill
-            # the batch.
-            logger.warning("Failed to describe image, skipping: %s", image, exc_info=True)
+        except Exception as exc:
+            # Per-image degrade is intentional: one bad image must not kill the batch.
+            # TODO: narrow this broad catch once the agent domain-exception hierarchy lands.
+            logger.warning("Failed to describe image, skipping: %s (%s)", image, exc)
+            logger.debug("Image description failed for %s", image, exc_info=True)
             return None
