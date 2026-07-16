@@ -14,7 +14,7 @@ system: |
 user: |
   Argomento Quiz: $topic
   Testo della domanda: $text
-  Risposta corretta: $correct_answer
+  Risposta corretta: $correct_answer_it
   Descrizione dell'immagine: $image_description
 
   Analizza la domanda e compila ogni campo dello schema di output fornito.
@@ -22,7 +22,7 @@ user: |
   Esempio (domanda solo testo):
   Argomento Quiz: Segnaletica
   Testo della domanda: Il segnale di stop impone l'obbligo di arresto anche in assenza di traffico.
-  Risposta corretta: true
+  Risposta corretta: Vero
   Descrizione dell'immagine: Nessuna immagine allegata a questa domanda.
   ->
   {
