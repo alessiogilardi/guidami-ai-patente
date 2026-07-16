@@ -38,7 +38,7 @@ class EmbedQuizMetadata(UseCase[Iterable[EmbeddableQuizModel], list[EmbeddableQu
         try:
             # TODO: narrow to EmbeddingError once the domain-exception pattern lands
             # (see the deferred plan); a broad catch here also swallows real bugs.
-            vectors = self._embedding_service.execute(to_embed)
+            vectors = self._embedding_service(to_embed)
         except Exception:
             logger.warning("metadata embedding failed, skipping batch")
             return items

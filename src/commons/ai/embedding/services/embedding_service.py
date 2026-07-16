@@ -24,11 +24,19 @@ class EmbeddingService(UseCase[Sequence[Embeddable], list[list[float]]]):
 
     def execute(self, request: Sequence[Embeddable]) -> list[list[float]]:
         """Returns the vectors aligned to `items` (same order). No mutation."""
-        total_batches = -(-len(request) // self._batch_size)
+        total_batches = self._get_total_batches(request)
         vectors: list[list[float]] = []
         for start in range(0, len(request), self._batch_size):
-            batch = request[start : start + self._batch_size]
-            batch_number = start // self._batch_size + 1
-            logger.info(f"embedding batch {batch_number}/{total_batches} ({len(batch)} items)")
-            vectors.extend(self._client.embed_passages([item.embedded_text for item in batch]))
+            vectors.extend(self._embed(request, start=start, total_batches=total_batches))
         return vectors
+
+    def _embed(
+        self, request: Sequence[Embeddable], *, start: int, total_batches: int
+    ) -> list[list[float]]:
+        batch = request[start : start + self._batch_size]
+        batch_number = start // self._batch_size + 1
+        logger.info(f"embedding batch {batch_number}/{total_batches} ({len(batch)} items)")
+        return self._client.embed_passages([item.embedded_text for item in batch])
+
+    def _get_total_batches(self, request: Sequence[Embeddable]) -> int:
+        return -(-len(request) // self._batch_size)
