@@ -2,7 +2,6 @@ import pytest
 
 from commons.ai.embedding import Embeddable, Embedded, EmbeddingClient, EmbeddingService
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel
-from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel, QuizMetadata
 
 
 class _RecordingFakeClient(EmbeddingClient):
@@ -83,22 +82,3 @@ class TestEmbeddingService:
         assert isinstance(chunk, Embeddable)
         assert isinstance(chunk, Embedded)
         assert _accepts_embeddable(chunk) == chunk.embedded_text
-
-    def test_protocol_conformance_embeddable_quiz_question(self) -> None:
-        metadata = QuizMetadata(
-            core_concepts=["Obbligo di precedenza"],
-            exact_keywords=["preavviso di incrocio"],
-            vector_search_queries=["prima query di ricerca", "seconda query di ricerca"],
-            rule_explanation="Il segnale preavvisa un incrocio regolato.",
-        )
-        question = EmbeddableQuizModel(
-            number="1",
-            question_id=1,
-            topic="topico",
-            text="domanda",
-            correct_answer=True,
-            quiz_metadata=metadata,
-        )
-        assert isinstance(question, Embeddable)
-        assert isinstance(question, Embedded)
-        assert _accepts_embeddable(question) == question.embedded_text

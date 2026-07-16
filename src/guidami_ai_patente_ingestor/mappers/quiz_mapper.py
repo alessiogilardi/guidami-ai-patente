@@ -3,7 +3,7 @@ import logging
 from domain.entities.quiz import QuizQuestion
 from guidami_ai_patente_ingestor.models.quiz import (
     CleanedQuizModel,
-    EmbeddableQuizModel,
+    EmbeddedQuizModel,
     EnrichedQuizModel,
     ParsedQuizItemModel,
     ParsedQuizModel,
@@ -19,22 +19,22 @@ class QuizMapper:
     the chain (`from_X_to_Y`). Dedup does not live here (it's not a 1:1
     mapping, but a collection-level operation): it lives in
     `DeduplicateQuizItems` (shared by preparation and indexing, chained to
-    this mapper in the `flatten_quiz` and `map_to_embeddable` steps of
+    this mapper in the `flatten_quiz` and `map_to_embedded` steps of
     `quiz_flows.py`). The parsed→cleaned unnest+map (preparation) is instead
     expressed as `FlatMap(QuizMapper.from_parsed_to_cleaned_all)`.
     """
 
     @staticmethod
-    def from_enriched_to_embeddable(item: EnrichedQuizModel) -> EmbeddableQuizModel:
-        """Maps an enriched question (flat) to `EmbeddableQuizModel`.
+    def from_enriched_to_embedded(item: EnrichedQuizModel) -> EmbeddedQuizModel:
+        """Maps an enriched question (flat) to `EmbeddedQuizModel`.
 
         Args:
             item: The enriched question to map (flat, self-contained model).
 
         Returns:
-            `EmbeddableQuizModel` ready for embedding computation.
+            `EmbeddedQuizModel` ready for embedding computation.
         """
-        base = EmbeddableQuizModel(
+        base = EmbeddedQuizModel(
             number=item.number,
             question_id=item.question_id,
             topic=item.topic,
@@ -46,8 +46,8 @@ class QuizMapper:
         return base.model_copy(update={"quiz_metadata": item.quiz_metadata})
 
     @staticmethod
-    def from_embeddable_to_quiz_question(model: EmbeddableQuizModel) -> QuizQuestion:
-        """Maps an `EmbeddableQuizModel` to the `QuizQuestion` entity.
+    def from_embedded_to_quiz_question(model: EmbeddedQuizModel) -> QuizQuestion:
+        """Maps an `EmbeddedQuizModel` to the `QuizQuestion` entity.
 
         Discards `image_description` (not persisted), keeps `embedding`.
         Spreads `quiz_metadata` onto the flat retrieval columns, dropping
@@ -55,7 +55,7 @@ class QuizMapper:
         `quiz_metadata` is `None`, the three flat fields are `None`.
 
         Args:
-            model: Embeddable model with embedding already computed.
+            model: Embedded model with embedding already computed.
 
         Returns:
             `QuizQuestion` entity ready for the store.

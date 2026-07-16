@@ -29,7 +29,7 @@ CLEANED_ARTICLES = (
 
 # --- Quiz indexing (SP04) ---
 ENRICHED_QUIZ = "enriched_quiz"  # input: enriched quiz bank loaded from disk
-EMBEDDABLE_QUIZ = "embeddable_quiz"  # intermediate models → embed
+EMBEDDED_QUIZ = "embedded_quiz"  # intermediate models → embed
 QUIZ_ENTITIES = "quiz_entities"  # final entities → store
 
 # --- Quiz preparation (SP06, extended by SP09) ---

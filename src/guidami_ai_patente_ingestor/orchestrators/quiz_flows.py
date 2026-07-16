@@ -46,20 +46,20 @@ def build_quiz_indexing_flow(
     postgres_client: PostgresClient,
     validate: bool = False,
 ) -> Flow:
-    """Assembles the quiz indexing flow (quiz bank → embeddable → embed → entity → store).
+    """Assembles the quiz indexing flow (quiz bank → embedded → embed → entity → store).
 
     The quiz bank has a single source (`"quiz"`), derived from
     `config.quiz_indexing.sources[0]`: the store is a full-reload of the entire
     `quiz_questions` table (truncate + bulk_insert) via the generic `DbStoreStep`.
 
     Step mapping:
-      `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems, map_to_embeddable)`
+      `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems, map_to_embedded)`
       → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(map_to_quiz_entity)` → `DbStoreStep`
 
-    The `map_to_embeddable` step chains two transforms: dedup on the triple
+    The `map_to_embedded` step chains two transforms: dedup on the triple
     (normalized text, correct answer, image identity) via
     `DeduplicateQuizItems` (shared with `build_quiz_cleaning_flow`), then a
-    1:1 enriched→embeddable mapping via `ForEach(QuizMapper.from_enriched_to_embeddable)`.
+    1:1 enriched→embedded mapping via `ForEach(QuizMapper.from_enriched_to_embedded)`.
 
     The embedding is computed from `quiz_metadata.vector_search_queries`, not from
     the quiz text: items without `quiz_metadata` pass through with `embedding = None`.
@@ -89,12 +89,12 @@ def build_quiz_indexing_flow(
         ),
     )
 
-    map_to_embeddable_step = ApplyStep(
-        "map_to_embeddable",
+    map_to_embedded_step = ApplyStep(
+        "map_to_embedded",
         DeduplicateQuizItems(),
-        ForEach(QuizMapper.from_enriched_to_embeddable),
+        ForEach(QuizMapper.from_enriched_to_embedded),
         input_key=context_keys.ENRICHED_QUIZ,
-        output_key=context_keys.EMBEDDABLE_QUIZ,
+        output_key=context_keys.EMBEDDED_QUIZ,
     )
 
     embed_step = ApplyStep(
@@ -102,14 +102,14 @@ def build_quiz_indexing_flow(
         EmbedQuizMetadata(
             embedding_service=EmbeddingService(config.embedding_batch_size, embedding_client)
         ),
-        input_key=context_keys.EMBEDDABLE_QUIZ,
-        output_key=context_keys.EMBEDDABLE_QUIZ,
+        input_key=context_keys.EMBEDDED_QUIZ,
+        output_key=context_keys.EMBEDDED_QUIZ,
     )
 
     map_to_quiz_entity_step = ApplyStep(
         "map_to_quiz_entity",
-        ForEach(QuizMapper.from_embeddable_to_quiz_question),
-        input_key=context_keys.EMBEDDABLE_QUIZ,
+        ForEach(QuizMapper.from_embedded_to_quiz_question),
+        input_key=context_keys.EMBEDDED_QUIZ,
         output_key=context_keys.QUIZ_ENTITIES,
     )
 
@@ -122,7 +122,7 @@ def build_quiz_indexing_flow(
     flow: Flow = (
         FlowBuilder("quiz_indexing")
         .add_step(load_step)
-        .add_step(map_to_embeddable_step)
+        .add_step(map_to_embedded_step)
         .add_step(embed_step)
         .add_step(map_to_quiz_entity_step)
         .add_step(store_step)

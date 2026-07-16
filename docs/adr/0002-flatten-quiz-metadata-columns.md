@@ -29,7 +29,7 @@ transient ingestion model (LLM output / embedder input), relocated from
 `src/domain/entities/quiz/` to `src/guidami_ai_patente_ingestor/models/quiz/`.
 `QuizMetadata` still exists and is still a cohesive object through the
 enrichment and embedding steps — it only flattens at the entity boundary, in
-`QuizMapper.from_embeddable_to_quiz_question`.
+`QuizMapper.from_embedded_to_quiz_question`.
 
 A DB-managed `created_at TIMESTAMPTZ NOT NULL DEFAULT now()` column is added
 at the same time, as the load-batch timestamp (see Consequences).

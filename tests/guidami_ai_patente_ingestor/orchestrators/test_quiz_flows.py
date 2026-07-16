@@ -65,16 +65,16 @@ def test_flow_required_input_keys_is_empty_set() -> None:
 
 
 def test_build_with_validate_true_does_not_raise() -> None:
-    """validate=True does not raise (the WARNING on EMBEDDABLE_QUIZ is benign)."""
+    """validate=True does not raise (the WARNING on EMBEDDED_QUIZ is benign)."""
     assert isinstance(_build(validate=True), Flow)
 
 
 def test_flow_has_five_steps_in_order() -> None:
-    """The chain is Load → MapToEmbeddable → Embed → MapToQuizEntity → Store."""
+    """The chain is Load → MapToEmbedded → Embed → MapToQuizEntity → Store."""
     steps = _build().get_steps()
     assert [step.name for step in steps] == [
         "load_enriched_quiz",
-        "map_to_embeddable",
+        "map_to_embedded",
         "embed_quiz",
         "map_to_quiz_entity",
         "store_quiz",

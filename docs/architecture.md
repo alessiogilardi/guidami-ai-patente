@@ -149,7 +149,7 @@ masking `postgres.password`/`open_router_config.api_key` to `****`/
 **Quiz bank** (`orchestrators/quiz_flows.py`):
 1. *Cleaning*: `LoadJsonStep` → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` → `WriteJsonStep` (parsed → cleaned; dedup on normalized-text + correct_answer + image identity).
 2. *Enrichment*: `LoadJsonStep` → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched), ImageDescriptionEnricher(road_sign_describer_concurrency, RoadSignDescriberAgent), NormReferenceEnricher(NormReferenceDescriberAgent))` → `WriteJsonStep` (cleaned → enriched). `ImageDescriptionEnricher` groups quizzes by image filename and issues one concurrent vision call per image (see `patterns.md`), writing both the flat `image_description` (downstream/embedding field) and the structured `image_analysis` (full LLM output, debug-only) onto every quiz sharing that image.
-3. *Indexing*: `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embeddable))` → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(ForEach(QuizMapper.from_embeddable_to_quiz_question))` → `DbStoreStep` (full truncate + bulk insert). Embeddings are computed from `quiz_metadata.vector_search_queries`, not raw quiz text — items without `quiz_metadata` end up with `embedding=None`. `QuizMetadata` stays a cohesive nested object through the ingestion models (`EnrichedQuizModel`/`EmbeddableQuizModel`) and is flattened onto the `QuizQuestion` entity columns **only** at the boundary, inside `from_embeddable_to_quiz_question`.
+3. *Indexing*: `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embedded))` → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(ForEach(QuizMapper.from_embedded_to_quiz_question))` → `DbStoreStep` (full truncate + bulk insert). `EmbedQuizMetadata` extracts `quiz_metadata` (itself `Embeddable`) from each item and calls `EmbeddingService` on that list directly — not on the `EmbeddedQuizModel` items themselves, which no longer implement `Embeddable`/`Embedded`. Items without `quiz_metadata` end up with `embedding=None`. `QuizMetadata` stays a cohesive nested object through the ingestion models (`EnrichedQuizModel`/`EmbeddedQuizModel`) and is flattened onto the `QuizQuestion` entity columns **only** at the boundary, inside `from_embedded_to_quiz_question`.
 
 ## Relevant architectural decisions
 
@@ -191,4 +191,4 @@ See `adr/` for the full history. Currently accepted:
   them (`docs/plans/2026-07-15--ingest-cli-revamp.md`,
   `.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-07-16 — verified against commit `0b5db01`.*
+*Last updated: 2026-07-16 — verified against commit `d739002`.*

@@ -3,7 +3,7 @@
 from unittest.mock import MagicMock
 
 from commons.ai.embedding import EmbeddingService
-from guidami_ai_patente_ingestor.models.quiz import EmbeddableQuizModel, QuizMetadata
+from guidami_ai_patente_ingestor.models.quiz import EmbeddedQuizModel, QuizMetadata
 from guidami_ai_patente_ingestor.services.quiz import EmbedQuizMetadata
 
 
@@ -17,7 +17,7 @@ def _metadata(**kwargs) -> QuizMetadata:
     return QuizMetadata(**{**defaults, **kwargs})
 
 
-def _question(**kwargs) -> EmbeddableQuizModel:
+def _question(**kwargs) -> EmbeddedQuizModel:
     defaults = dict(
         number="1",
         question_id=100,
@@ -25,7 +25,7 @@ def _question(**kwargs) -> EmbeddableQuizModel:
         text="Il segnale raffigurato preavvisa un incrocio.",
         correct_answer=True,
     )
-    return EmbeddableQuizModel(**{**defaults, **kwargs})
+    return EmbeddedQuizModel(**{**defaults, **kwargs})
 
 
 def test_embeds_vector_search_queries() -> None:
