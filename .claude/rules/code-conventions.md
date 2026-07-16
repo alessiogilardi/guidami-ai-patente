@@ -3,6 +3,31 @@
 Project-specific conventions. General Python rules (typing, PEP 8 style, relative/absolute
 imports, SOLID, configuration patterns) live in `~/.claude/rules/python/`.
 
+## Loop bodies — no `continue`, guard with a nested `if` instead
+
+Do not use `continue` to skip an iteration. Wrap the rest of the loop body in a
+positive `if` condition instead.
+
+```python
+# WRONG
+for quiz in questions:
+    if quiz.text in seen_texts:
+        continue
+    contexts[quiz.topic].append(quiz.text)
+    seen_texts.add(quiz.text)
+
+# RIGHT
+for quiz in questions:
+    if quiz.text not in seen_texts:
+        contexts[quiz.topic].append(quiz.text)
+        seen_texts.add(quiz.text)
+```
+
+User preference, no further rationale given — apply uniformly across `src/` and
+`tests/`. This does not affect the separate, already-established preference for
+early *returns* in functions (`~/.claude/rules/python/standards.md`); it is
+specifically about `continue` inside loops.
+
 ## Language — English only
 
 Docstrings, inline comments, log messages, and print/console output are always written

@@ -72,9 +72,8 @@ class RoadSignDescriberMapper:
         contexts: defaultdict[str, list[str]] = defaultdict(list)
         seen_texts: set[str] = set()
         for quiz in questions:
-            if quiz.text in seen_texts:
-                continue
-            contexts[quiz.topic].append(quiz.text)
-            seen_texts.add(quiz.text)
+            if quiz.text not in seen_texts:
+                contexts[quiz.topic].append(quiz.text)
+                seen_texts.add(quiz.text)
 
         return [QuizContextModel(topic=topic, texts=texts) for topic, texts in contexts.items()]
