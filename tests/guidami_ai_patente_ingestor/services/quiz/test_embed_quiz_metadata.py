@@ -33,13 +33,13 @@ def test_embeds_vector_search_queries() -> None:
     metadata = _metadata(vector_search_queries=["query uno", "query due"])
     item = _question(quiz_metadata=metadata)
     embedding_service = MagicMock(spec=EmbeddingService)
-    embedding_service.execute.return_value = [[1.0, 2.0]]
+    embedding_service.return_value = [[1.0, 2.0]]
     use_case = EmbedQuizMetadata(embedding_service)
 
     result = use_case.execute([item])
 
-    embedding_service.execute.assert_called_once()
-    (passed,), _ = embedding_service.execute.call_args
+    embedding_service.assert_called_once()
+    (passed,), _ = embedding_service.call_args
     assert [entry.embedded_text for entry in passed] == ["query uno\nquery due"]
     assert result[0].embedding == [1.0, 2.0]
 
@@ -52,15 +52,15 @@ def test_skips_quiz_without_metadata() -> None:
 
     result = use_case.execute([item])
 
-    embedding_service.execute.assert_not_called()
+    embedding_service.assert_not_called()
     assert result[0].embedding is None
 
 
 def test_embedding_failure_skips_batch(caplog) -> None:
-    """Se EmbeddingService.execute solleva, tutti gli item restano invariati con warning."""
+    """Se EmbeddingService solleva, tutti gli item restano invariati con warning."""
     item = _question(quiz_metadata=_metadata())
     embedding_service = MagicMock(spec=EmbeddingService)
-    embedding_service.execute.side_effect = RuntimeError("embedding backend unavailable")
+    embedding_service.side_effect = RuntimeError("embedding backend unavailable")
     use_case = EmbedQuizMetadata(embedding_service)
 
     with caplog.at_level("WARNING"):
