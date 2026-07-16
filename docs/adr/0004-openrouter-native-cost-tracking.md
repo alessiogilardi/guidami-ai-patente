@@ -53,8 +53,8 @@ mapping in `pydantic_ai` drops falsy/missing `usage.cost` via
 `if cost := usage.cost`), `cost_usd` stays `NULL` for that row.
 
 Computing cost synchronously, inside `record()`, is a deliberate reversal
-of the prior `2026-07-13--llm-call-tracking` plan's decision to defer
-cost computation to `QueuedLlmCallTracker`'s background worker. That
+of the earlier approach, which deferred cost computation to
+`QueuedLlmCallTracker`'s background worker. That
 earlier deferral existed specifically because `litellm.cost_per_token`
 was a *fallible external lookup* (wrapped in `except Exception`). Reading
 `provider_details["cost"]` is a pure dict read on data already fetched

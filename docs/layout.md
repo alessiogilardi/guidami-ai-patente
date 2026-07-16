@@ -28,7 +28,8 @@ repo/
 ├── configs/                        # Runtime YAML config (ingestor_config.yaml, agents/*.yaml)
 ├── db/                             # init.sql — Postgres/pgvector schema, applied on container init
 ├── docker/                         # docker-compose.yml + .env for the Postgres/pgvector service
-├── data/                           # Pipeline data at rest: raw/ -> parsed/ -> cleaned/ -> docs/
+├── data/                           # Pipeline data at rest: raw/ -> parsed/ -> cleaned/ -> enriched/
+│                                    #   (data/docs/ is not a pipeline stage: it holds the source quiz PDF)
 ├── docs/                           # This documentation (Second Brain) + docs/plans/ (design plans)
 └── .claude/                        # Claude Code config: rules/, skills/, hooks/, agents/
 ```
@@ -97,14 +98,10 @@ repo/
   command dispatch, and any service/DTO/renderer that exists solely to serve
   a CLI command) go under `src/guidami_ai_patente_ingestor/cli/`, a
   self-contained package that replicates the layered structure locally
-  (`cli/services/status/`, `cli/models/status/`, `cli/rendering/`) instead of
-  polluting the top-level `services/`/`models/` packages: `cli/main.py`
-  (entry point), `cli/parser.py` (`build_parser`), `cli/wiring.py` (lazy DI
-  builders, called per command rather than eagerly), `cli/commands/`
-  (`prepare.py`, `index.py`, `reset.py`, `status.py` — one thin controller
-  per subcommand). Genuinely shared infrastructure (e.g. the
-  `table_exists`/`row_count` read primitives on `BulkInsertStoreRepository`)
-  stays in its own top-level layer instead — see
-  `.claude/rules/cli-structure.md` for the full boundary rule.
+  instead of polluting the top-level `services/`/`models/` packages.
+  Genuinely shared infrastructure (e.g. the `table_exists`/`row_count` read
+  primitives on `BulkInsertStoreRepository`) stays in its own top-level layer
+  instead. The internal `cli/` breakdown and the full self-containment
+  boundary rule live in `.claude/rules/cli-structure.md` — not restated here.
 
-*Last updated: 2026-07-15 — verified against commit `5412a17`.*
+*Last updated: 2026-07-16 — verified against commit `a6db92b`.*

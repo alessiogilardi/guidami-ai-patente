@@ -68,7 +68,7 @@ llm_call_logs
 ├── input_tokens (INTEGER, nullable)
 ├── output_tokens (INTEGER, nullable)
 ├── total_tokens (INTEGER, nullable)      -- provider value verbatim, not enforced == input + output
-├── cost_usd (NUMERIC(12,6), nullable)    -- populated best-effort by future instrumentation
+├── cost_usd (NUMERIC(12,6), nullable)    -- OpenRouter's own reported cost, summed per call; NULL when absent
 ├── status (TEXT, NOT NULL DEFAULT 'success')  -- "success" | "error"
 ├── error_message (TEXT, nullable)
 ├── latency_ms (INTEGER, nullable)         -- monotonic duration (time.perf_counter), not derived from start/end_time
@@ -91,18 +91,21 @@ No index exists on either `embedding` column (no ivfflat/hnsw) — vector
 search currently runs as an exact `<=>` scan. No index yet on the `TEXT[]`
 metadata columns (GIN/FTS deferred with the hybrid-search work).
 
-`llm_call_logs` is populated by every tracked `BaseAgent` call (`commons/ai/observability/`,
-see `docs/architecture.md` and `docs/patterns.md`): `caller`/`model`/`prompt`/`response`/
-tokens/`latency_ms`/`start_time`/`end_time` are captured synchronously inside `run`/`run_sync`
-by `PydanticAILlmCallCapture` (`start_time`/`end_time` are wall-clock `datetime.now(UTC)` stamps taken on
-`__enter__`/`__exit__`; `latency_ms` is measured separately with the monotonic
-`time.perf_counter()`, so it is not guaranteed to equal `end_time - start_time` under clock
-adjustments), `cost_usd` is computed off the hot path by a background worker via litellm's
-bundled pricing map and stays `NULL` when the model is unmapped. Failures are first-class:
-`status`/`error_message` are always populated, while `response` and the token/cost/latency/
-timestamp columns are nullable so a failed call is still loggable. Tracking is opt-in per
-`BaseAgent` instance (`tracker` ctor param, `None` by default) — only the ingestor's `prepare`
-CLI path wires it today.
+`llm_call_logs` is populated by every tracked `BaseAgent` call — see
+`docs/patterns.md` (observability rows), `docs/architecture.md` (prepare-path
+wiring), and `docs/adr/0004-openrouter-native-cost-tracking.md` for the
+mechanism; this section documents only what each column holds. Column
+semantics worth noting: `start_time`/`end_time` are wall-clock
+`datetime.now(UTC)` stamps, whereas `latency_ms` is measured separately with the
+monotonic `time.perf_counter()`, so it is not guaranteed to equal
+`end_time - start_time` under clock adjustments. `cost_usd` is OpenRouter's own
+reported cost, summed synchronously in `PydanticAILlmCallCapture.record()` across
+every `ModelResponse` in the call (no litellm pricing lookup, no deferred
+computation); it stays `NULL` when OpenRouter omits a cost. Failures are
+first-class: `status`/`error_message` are always populated, while `response` and
+the token/cost/latency/timestamp columns are nullable so a failed call is still
+loggable. Tracking is opt-in per `BaseAgent` instance (`tracker` ctor param,
+`None` by default) — only the ingestor's `prepare` CLI path wires it today.
 
 ## Migrations
 
@@ -120,4 +123,4 @@ docker compose -f docker/docker-compose.yml up -d
 (see also the "Infrastructure" section of `CLAUDE.md`). There is no
 changelog file tracking schema history beyond `git log db/init.sql`.
 
-*Last updated: 2026-07-13 — verified against commit `5398b2d`.*
+*Last updated: 2026-07-16 — verified against commit `a6db92b`.*

@@ -70,3 +70,8 @@ at the same time, as the load-batch timestamp (see Consequences).
   `guidami_ai_patente_ingestor.models.quiz.QuizMetadata`. Any future code that
   needs a persisted, queryable representation of this data reads it off
   `QuizQuestion`'s flat columns, not off `QuizMetadata`.
+- **Correction (post-decision):** the `named_entities` column named above was
+  dropped before the schema shipped. `QuizMetadata` and `quiz_questions` carry
+  only `core_concepts`, `exact_keywords`, and `rule_explanation` as flattened
+  columns (plus the non-persisted `vector_search_queries`) — see
+  `docs/database.md` for the current schema.
