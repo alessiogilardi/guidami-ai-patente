@@ -41,7 +41,12 @@ uv run ingest index quiz
 # Reset (full wipe)
 uv run ingest reset knowledge
 uv run ingest reset quiz
+
+# Status (config + per-command readiness; --online also checks Postgres)
+uv run ingest status [--online]
 ```
+
+See [`docs/`](./docs/README.md) for architecture, database schema, and design plans.
 
 ### Development
 
