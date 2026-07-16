@@ -35,7 +35,7 @@ class NormReferenceDescriberResponse(BaseModel):
     vector_search_queries: list[str] = Field(
         description=(
             "2-3 frasi formulate per massimizzare l'efficacia di una ricerca "
-            "semantica vettoriale nel testo normativo del CdS."
+            "semantica vettoriale nel testo normativo del CdS o del CAP."
         ),
         min_length=2,
         max_length=3,

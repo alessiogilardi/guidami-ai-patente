@@ -69,7 +69,11 @@ LLM agents in use today (all `BaseAgent` subclasses under
   `IngestorConfig.road_sign_describer_concurrency` (default `8`) — see
   `adr/0003-group-road-sign-description-by-image.md` and `patterns.md`.
 - `NormReferenceDescriberAgent` — quiz enrichment, norm-reference metadata
-  for future RAG retrieval.
+  for future RAG retrieval. Answer-aware (the counterpart to the
+  answer-blind road-sign describer): its request carries `correct_answer`,
+  and its prompt instructs that when the statement is **false** the metadata
+  must describe the *correct* norm, not the false claim — so retrieval lands
+  on the right CdS/CAP article either way.
 
 Storage: Postgres 16 + pgvector — see `database.md`. Embedding: production
 model is `text-embedding-3-small` (OpenAI), 1536-dim, via litellm routed
@@ -187,4 +191,4 @@ See `adr/` for the full history. Currently accepted:
   them (`docs/plans/2026-07-15--ingest-cli-revamp.md`,
   `.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-07-16 — verified against commit `10cb14f`.*
+*Last updated: 2026-07-16 — verified against commit `0b5db01`.*
