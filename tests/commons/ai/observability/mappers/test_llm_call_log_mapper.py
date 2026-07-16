@@ -1,4 +1,5 @@
 from datetime import UTC, datetime
+from decimal import Decimal
 
 from commons.ai.observability.mappers import LlmCallLogMapper
 from commons.ai.observability.models import LlmCallCaptureModel
@@ -16,6 +17,7 @@ def test_from_model_to_entity_maps_all_fields() -> None:
         input_tokens=10,
         output_tokens=5,
         total_tokens=15,
+        cost_usd=Decimal("0.001234"),
         status="success",
         error_message=None,
         latency_ms=42,
@@ -38,7 +40,7 @@ def test_from_model_to_entity_maps_all_fields() -> None:
     assert log.latency_ms == data.latency_ms
     assert log.start_time == data.start_time
     assert log.end_time == data.end_time
-    assert log.cost_usd is None
+    assert log.cost_usd == data.cost_usd
 
 
 def test_from_model_to_entity_error_path() -> None:

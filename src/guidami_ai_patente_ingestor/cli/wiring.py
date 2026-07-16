@@ -9,7 +9,6 @@ from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.observability import (
     LlmCallLogRepository,
-    LlmCostCalculator,
     QueuedLlmCallTracker,
 )
 from commons.clients import PostgresClient
@@ -38,7 +37,7 @@ def build_postgres_client(config: IngestorConfig) -> PostgresClient:
 
 def build_tracker(postgres_client: PostgresClient) -> QueuedLlmCallTracker:
     """Builds the queued LLM call tracker, persisted through the given client."""
-    return QueuedLlmCallTracker(LlmCallLogRepository(postgres_client), LlmCostCalculator())
+    return QueuedLlmCallTracker(LlmCallLogRepository(postgres_client))
 
 
 def build_health_repositories(

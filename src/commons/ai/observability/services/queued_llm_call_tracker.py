@@ -5,7 +5,6 @@ from types import TracebackType
 
 from domain.entities.observability import LlmCallLog
 
-from .protocols.cost_calculator import _CostCalculator
 from .protocols.llm_call_log_repository import _LlmCallLogRepository
 
 logger = logging.getLogger(__name__)
@@ -27,17 +26,14 @@ class QueuedLlmCallTracker:
 
     `track()` is a `queue.SimpleQueue.put` (microseconds, thread-safe), so it serves
     both `BaseAgent.run` and `run_sync` without touching the event loop. The worker
-    drains the queue sequentially: cost lookup, then `repository.insert`. A failing
+    drains the queue sequentially, calling `repository.insert` for each log. A failing
     `insert` is logged and swallowed (see plan Decision 4) — observability must never
     break the main flow. Use as a context manager, or call `close()` directly.
     """
 
-    def __init__(
-        self, repository: _LlmCallLogRepository, cost_calculator: _CostCalculator
-    ) -> None:
-        """Stores the repository and cost calculator used by the worker thread."""
+    def __init__(self, repository: _LlmCallLogRepository) -> None:
+        """Stores the repository used by the worker thread."""
         self._repository = repository
-        self._cost_calculator = cost_calculator
         self._queue: queue.SimpleQueue[LlmCallLog | _Shutdown] = queue.SimpleQueue()
         self._worker: threading.Thread | None = None
 
@@ -79,9 +75,8 @@ class QueuedLlmCallTracker:
             self._persist(item)
 
     def _persist(self, log: LlmCallLog) -> None:
-        """Computes `cost_usd` and inserts the log; swallows and logs any failure."""
+        """Inserts the log; swallows and logs any failure."""
         try:
-            cost = self._cost_calculator.cost_usd(log.model, log.input_tokens, log.output_tokens)
-            self._repository.insert(log.model_copy(update={"cost_usd": cost}))
+            self._repository.insert(log)
         except Exception:
             logger.warning("failed to persist LLM call log", exc_info=True)

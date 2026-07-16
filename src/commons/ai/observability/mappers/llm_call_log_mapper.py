@@ -8,11 +8,7 @@ class LlmCallLogMapper:
 
     @staticmethod
     def from_model_to_entity(data: LlmCallCaptureModel) -> LlmCallLog:
-        """Maps captured call data to `LlmCallLog`.
-
-        `cost_usd` is always `None`: it is computed later, off the hot path, by
-        `QueuedLlmCallTracker`.
-        """
+        """Maps captured call data to `LlmCallLog`."""
         return LlmCallLog(
             caller=data.caller,
             model=data.model,
@@ -22,7 +18,7 @@ class LlmCallLogMapper:
             input_tokens=data.input_tokens,
             output_tokens=data.output_tokens,
             total_tokens=data.total_tokens,
-            cost_usd=None,
+            cost_usd=data.cost_usd,
             status=data.status,
             error_message=data.error_message,
             latency_ms=data.latency_ms,

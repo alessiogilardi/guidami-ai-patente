@@ -7,6 +7,7 @@ import yaml
 from pydantic_ai import BinaryContent
 from pydantic_ai.messages import ModelMessage, ModelResponse, TextPart
 from pydantic_ai.models.function import AgentInfo, FunctionModel
+from pydantic_ai.models.openrouter import OpenRouterModel
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig, BaseAgent
@@ -154,6 +155,7 @@ def test_base_agent_yaml_params_mapped_to_model_settings(tmp_path: Path) -> None
     assert settings["temperature"] == 0.5  # pyright: ignore[reportTypedDictNotRequiredAccess]
     assert settings["max_tokens"] == 256  # pyright: ignore[reportTypedDictNotRequiredAccess]
     assert agent.core_agent._max_output_retries == 2
+    assert settings["openrouter_usage"] == {"include": True}  # pyright: ignore[reportGeneralTypeIssues]
 
 
 def test_base_agent_model_name_slash_converted_to_colon(tmp_path: Path) -> None:
@@ -166,6 +168,17 @@ def test_base_agent_model_name_slash_converted_to_colon(tmp_path: Path) -> None:
         _PROVIDER,
     )
     assert agent is not None
+
+
+def test_base_agent_uses_openrouter_model(tmp_path: Path) -> None:
+    agents_dir = tmp_path / "agents"
+    _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
+    agent = _StrAgent.from_yaml(
+        "test_agent",
+        YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir)),
+        _PROVIDER,
+    )
+    assert isinstance(agent.core_agent.model, OpenRouterModel)
 
 
 # --- BaseAgent tracking (LlmCallTracker injection) ---

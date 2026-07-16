@@ -40,7 +40,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `commons/ai/embedding/` | `clients/`: `EmbeddingClient` ABC (`embed_query`, `embed_passages`); `LiteLLMEmbeddingClient` (production) and `SentenceTransformerEmbeddingClient` (offline alternative, not hot-swappable — different dimension). `services/`: `EmbeddingService` (batching) + `Embeddable`/`Embedded` protocols. `configs/`: `EmbeddingConfig` | litellm (→ OpenRouter), sentence-transformers |
 | `commons/ai/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` (in `configs/`) from YAML, renders prompts via `PromptRenderer`; requires an injected `OpenRouterProvider` (never reads env itself); optionally tracks every call via an injected `LlmCallTracker` port | pydantic-ai-slim[openrouter] |
 | `commons/configs/` | Shared, app-agnostic Pydantic settings: `PostgresConnectionConfig`, `OpenRouterConfig` (`BaseSettings`, `env_prefix="OPENROUTER_"`, holds `api_key: SecretStr`) | pydantic-settings |
-| `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker`/`LlmCostCalculator` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | litellm (pricing map only), psycopg[binary] |
+| `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | psycopg[binary] |
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
 | `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach`, `FlatMap` — generic composition primitives used across pipeline steps | — |
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
@@ -104,10 +104,12 @@ wiring.build_tracker(postgres_client) as tracker:`, dispatches to
 `dispatch_prepare(..., tracker)`, which forwards `tracker` into
 `build_knowledge_enrichment_flow`/`build_quiz_enrichment_flow` → the agents'
 `from_yaml(..., tracker=tracker)`. Inside `BaseAgent.run`/`run_sync`, a tracked call is
-wrapped in `PydanticAILlmCallCapture` (records prompt/response/tokens/latency/status synchronously)
-and `tracker.track(capture.log)` enqueues the log for the background worker, which
-computes `cost_usd` (litellm pricing lookup) and inserts via `LlmCallLogRepository` —
-off the hot path, so a slow/failing DB write never blocks the LLM call. If
+wrapped in `PydanticAILlmCallCapture` (records prompt/response/tokens/latency/status
+synchronously, including `cost_usd` — summed from OpenRouter's own reported cost on every
+`ModelResponse` in the run, see `adr/0004-openrouter-native-cost-tracking.md`) and
+`tracker.track(capture.log)` enqueues the already-final log for the background worker,
+which just inserts it via `LlmCallLogRepository` — off the hot path, so a slow/failing
+DB write never blocks the LLM call. If
 `PostgresClient` construction fails (`psycopg.Error`), `run_prepare` logs a warning and
 dispatches with `tracker=None`: `BaseAgent.__init__` substitutes a `NullLlmCallTracker`
 (Null Object, see `docs/patterns.md`), so the capture is still built on every call but
@@ -168,6 +170,11 @@ See `adr/` for the full history. Currently accepted:
   persistence failures degrade gracefully (log a warning, never abort the
   pipeline) — a deliberate, documented exception to "never swallow
   exceptions" (`docs/plans/2026-07-13--llm-call-tracking.md`).
+- **`cost_usd` comes from OpenRouter's own reported cost, not a litellm
+  pricing-table lookup** — `BaseAgent` uses `pydantic_ai`'s `OpenRouterModel`
+  with `openrouter_usage={"include": True}`, and `PydanticAILlmCallCapture`
+  sums `ModelResponse.provider_details["cost"]` synchronously; no fallback
+  estimate when OpenRouter omits cost (`adr/0004-openrouter-native-cost-tracking.md`).
 - **`ingest` CLI is a self-contained package with lazy DI wiring** — the
   former 278-line `cli.py` monolith (which built a `PostgresClient` and an
   `OpenRouterProvider` eagerly in `main()` for every command) was split into
@@ -180,4 +187,4 @@ See `adr/` for the full history. Currently accepted:
   them (`docs/plans/2026-07-15--ingest-cli-revamp.md`,
   `.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-07-15 — verified against commit `09bcec8`.*
+*Last updated: 2026-07-16 — verified against commit `10cb14f`.*

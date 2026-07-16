@@ -45,12 +45,7 @@ class _BlockingRepository:
         self._release.wait(timeout=5)
 
 
-class _StubCostCalculator:
-    def cost_usd(self, model: str, input_tokens: int | None, output_tokens: int | None):
-        return Decimal("0.001234")
-
-
-def _make_log() -> LlmCallLog:
+def _make_log(cost_usd: Decimal | None = Decimal("0.001234")) -> LlmCallLog:
     return LlmCallLog(
         caller="test_agent",
         model="openrouter/anthropic/claude-3.5-sonnet",
@@ -59,14 +54,15 @@ def _make_log() -> LlmCallLog:
         input_tokens=10,
         output_tokens=5,
         total_tokens=15,
+        cost_usd=cost_usd,
         latency_ms=42,
     )
 
 
-def test_track_persists_with_cost() -> None:
+def test_track_persists_cost_unchanged() -> None:
     repository = _FakeRepository()
 
-    with QueuedLlmCallTracker(repository, _StubCostCalculator()) as tracker:
+    with QueuedLlmCallTracker(repository) as tracker:
         tracker.track(_make_log())
 
     assert len(repository.inserted) == 1
@@ -78,7 +74,7 @@ def test_repository_failure_degrades(caplog: pytest.LogCaptureFixture) -> None:
 
     with (
         caplog.at_level(logging.WARNING),
-        QueuedLlmCallTracker(repository, _StubCostCalculator()) as tracker,
+        QueuedLlmCallTracker(repository) as tracker,
     ):
         tracker.track(_make_log())
         tracker.track(_make_log())
@@ -89,7 +85,7 @@ def test_repository_failure_degrades(caplog: pytest.LogCaptureFixture) -> None:
 
 def test_close_flushes_pending() -> None:
     repository = _FakeRepository()
-    tracker = QueuedLlmCallTracker(repository, _StubCostCalculator())
+    tracker = QueuedLlmCallTracker(repository)
     tracker.__enter__()
 
     for _ in range(20):
@@ -102,7 +98,7 @@ def test_close_flushes_pending() -> None:
 def test_track_does_not_block() -> None:
     release = threading.Event()
     entered = threading.Event()
-    tracker = QueuedLlmCallTracker(_BlockingRepository(release, entered), _StubCostCalculator())
+    tracker = QueuedLlmCallTracker(_BlockingRepository(release, entered))
 
     with tracker:
         start = time.perf_counter()

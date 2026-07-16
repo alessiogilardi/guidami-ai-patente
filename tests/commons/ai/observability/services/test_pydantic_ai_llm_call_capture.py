@@ -1,5 +1,9 @@
+from collections.abc import Sequence
+from decimal import Decimal
+
 import pytest
 from pydantic_ai._agent_graph import GraphAgentState
+from pydantic_ai.messages import ModelMessage, ModelResponse, TextPart
 from pydantic_ai.run import AgentRunResult
 from pydantic_ai.usage import RunUsage
 
@@ -45,6 +49,73 @@ def test_success_path() -> None:
     assert log.start_time is not None
     assert log.end_time is not None
     assert log.end_time >= log.start_time
+
+
+def test_success_path_captures_cost_from_single_response() -> None:
+    capture = PydanticAILlmCallCapture(
+        caller="test_agent",
+        model=_MODEL,
+        prompt="Domanda di test.",
+        system_prompt="Sistema di test.",
+    )
+    response = ModelResponse(
+        parts=[TextPart(content="Risposta di test.")], provider_details={"cost": 0.000123}
+    )
+
+    with capture:
+        capture.record(
+            _make_result(
+                "Risposta di test.", input_tokens=10, output_tokens=5, messages=[response]
+            )
+        )
+
+    assert capture.log.cost_usd == Decimal("0.000123")
+
+
+def test_success_path_sums_cost_across_retry_responses() -> None:
+    capture = PydanticAILlmCallCapture(
+        caller="test_agent",
+        model=_MODEL,
+        prompt="Domanda di test.",
+        system_prompt="Sistema di test.",
+    )
+    first_attempt = ModelResponse(
+        parts=[TextPart(content="tentativo fallito")], provider_details={"cost": 0.0001}
+    )
+    retry = ModelResponse(
+        parts=[TextPart(content="Risposta di test.")], provider_details={"cost": 0.0002}
+    )
+
+    with capture:
+        capture.record(
+            _make_result(
+                "Risposta di test.",
+                input_tokens=10,
+                output_tokens=5,
+                messages=[first_attempt, retry],
+            )
+        )
+
+    assert capture.log.cost_usd == Decimal("0.000300")
+
+
+def test_success_path_cost_none_when_no_response_reports_cost() -> None:
+    capture = PydanticAILlmCallCapture(
+        caller="test_agent",
+        model=_MODEL,
+        prompt="Domanda di test.",
+        system_prompt="Sistema di test.",
+    )
+    response = ModelResponse(parts=[TextPart(content="Risposta di test.")], provider_details=None)
+
+    with capture:
+        capture.record(
+            _make_result(
+                "Risposta di test.", input_tokens=10, output_tokens=5, messages=[response]
+            )
+        )
+
+    assert capture.log.cost_usd is None
 
 
 def test_error_path_propagates_and_records() -> None:
@@ -100,6 +171,14 @@ def test_tracked_persists_log_on_error() -> None:
     assert "boom" in tracker.tracked[0].error_message
 
 
-def _make_result(output: str, *, input_tokens: int, output_tokens: int) -> AgentRunResult[str]:
+def _make_result(
+    output: str,
+    *,
+    input_tokens: int,
+    output_tokens: int,
+    messages: Sequence[ModelMessage] = (),
+) -> AgentRunResult[str]:
     usage = RunUsage(input_tokens=input_tokens, output_tokens=output_tokens)
-    return AgentRunResult(output=output, _state=GraphAgentState(usage=usage))
+    return AgentRunResult(
+        output=output, _state=GraphAgentState(usage=usage, message_history=list(messages))
+    )

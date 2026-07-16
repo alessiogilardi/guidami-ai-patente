@@ -4,9 +4,8 @@ from pathlib import Path
 from typing import Self, cast
 
 from pydantic_ai import Agent, BinaryContent
-from pydantic_ai.models.openai import OpenAIChatModel
+from pydantic_ai.models.openrouter import OpenRouterModel, OpenRouterModelSettings
 from pydantic_ai.providers.openrouter import OpenRouterProvider
-from pydantic_ai.settings import ModelSettings
 
 from commons.ai.observability import LlmCallTracker, NullLlmCallTracker, PydanticAILlmCallCapture
 from commons.clients import FileReaderInterface
@@ -136,16 +135,17 @@ class BaseAgent[T_In, T_Out]:
             self._name, self._model_name, prompt, self._system_prompt, self._tracker
         )
 
-    def _create_model(self) -> OpenAIChatModel:
-        return OpenAIChatModel(
+    def _create_model(self) -> OpenRouterModel:
+        return OpenRouterModel(
             _parse_model_name(self._model_name),
             provider=self._provider,
         )
 
-    def _create_model_settings(self, config: AgentConfig) -> ModelSettings:
-        settings: ModelSettings = {
+    def _create_model_settings(self, config: AgentConfig) -> OpenRouterModelSettings:
+        settings: OpenRouterModelSettings = {
             "temperature": config.temperature,
             "timeout": config.timeout,
+            "openrouter_usage": {"include": True},
         }
         if config.max_tokens is not None:
             settings["max_tokens"] = config.max_tokens

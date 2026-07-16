@@ -2,10 +2,12 @@ import time
 from collections.abc import Iterator
 from contextlib import contextmanager
 from datetime import UTC, datetime
+from decimal import Decimal
 from types import TracebackType
 from typing import Any, Literal
 
 from pydantic import BaseModel
+from pydantic_ai.messages import ModelResponse
 from pydantic_ai.run import AgentRunResult
 
 from domain.entities.observability import LlmCallLog
@@ -13,6 +15,9 @@ from domain.entities.observability import LlmCallLog
 from ..mappers import LlmCallLogMapper
 from ..models import LlmCallCaptureModel
 from ..protocols import LlmCallTracker
+
+# Matches the `NUMERIC(12, 6)` column type of `llm_call_logs.cost_usd`.
+_QUANTIZE = Decimal("0.000001")
 
 
 class PydanticAILlmCallCapture:
@@ -22,8 +27,10 @@ class PydanticAILlmCallCapture:
     `AgentRunResult` on success. `__exit__` always stamps `latency_ms` and,
     on exception, `status="error"` plus `error_message` — then returns
     `False` so the failure always propagates unchanged (see
-    `docs/plans/2026-07-13--llm-call-tracking.md`, Decision 2). `cost_usd`
-    stays `None`: it is computed later, off the hot path, by the tracker.
+    `docs/plans/2026-07-13--llm-call-tracking.md`, Decision 2). `cost_usd` is
+    read from OpenRouter's own reported cost (`ModelResponse.provider_details
+    ["cost"]`, see `docs/plans/2026-07-16--openrouter-native-cost-tracking.md`)
+    and stays `None` when no response in the run reports one.
 
     `latency_ms` is measured with `time.perf_counter()` (monotonic, immune to
     wall-clock adjustments); `start_time`/`end_time` are separate wall-clock
@@ -51,6 +58,7 @@ class PydanticAILlmCallCapture:
         self._input_tokens: int | None = None
         self._output_tokens: int | None = None
         self._total_tokens: int | None = None
+        self._cost_usd: Decimal | None = None
         self._status: Literal["success", "error"] = "success"
         self._error_message: str | None = None
         self._latency_ms: int | None = None
@@ -92,12 +100,13 @@ class PydanticAILlmCallCapture:
         return self
 
     def record(self, result: AgentRunResult[Any]) -> None:
-        """Records a successful call's response and token usage from `result`."""
+        """Records a successful call's response, token usage, and cost from `result`."""
         usage = result.usage
         self._response = _response_text(result.output)
         self._input_tokens = usage.input_tokens
         self._output_tokens = usage.output_tokens
         self._total_tokens = usage.total_tokens
+        self._cost_usd = _call_cost(result)
 
     def __exit__(
         self,
@@ -132,6 +141,7 @@ class PydanticAILlmCallCapture:
             input_tokens=self._input_tokens,
             output_tokens=self._output_tokens,
             total_tokens=self._total_tokens,
+            cost_usd=self._cost_usd,
             status=self._status,
             error_message=self._error_message,
             latency_ms=self._latency_ms,
@@ -146,3 +156,26 @@ def _response_text(output: object) -> str:
         return output.model_dump_json()
 
     return str(output)
+
+
+def _call_cost(result: AgentRunResult[Any]) -> Decimal | None:
+    """Sums OpenRouter's reported cost across every `ModelResponse` in this run.
+
+    Mirrors how `result.usage` aggregates `input_tokens`/`output_tokens` across
+    validation retries: a retried call incurs real cost for each underlying HTTP
+    request, so every `ModelResponse.provider_details["cost"]` in
+    `result.new_messages()` is summed, not just the last one. Returns `None`
+    when no response reports a cost.
+    """
+    responses = (
+        message for message in result.new_messages() if isinstance(message, ModelResponse)
+    )
+    costs = [
+        Decimal(str(response.provider_details["cost"]))
+        for response in responses
+        if response.provider_details is not None and "cost" in response.provider_details
+    ]
+    if not costs:
+        return None
+
+    return sum(costs, Decimal(0)).quantize(_QUANTIZE)
