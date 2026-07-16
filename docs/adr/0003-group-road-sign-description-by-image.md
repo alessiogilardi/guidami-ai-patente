@@ -24,7 +24,8 @@ quiz text as anything more than a hint.
 Group by the image filename only. `ImageDescriptionEnricher` now issues
 exactly one vision call per distinct image, concatenating the contexts of
 every quiz that references it (`RoadSignDescriberRequest.contexts:
-list[str]`) into a single request. The resulting `image_description` and
+list[QuizContextModel]`, one entry per distinct topic among those quizzes)
+into a single request. The resulting `image_description` and
 `image_analysis` (full LLM output: `visual_analysis`, `name`,
 `description`) are broadcast to every quiz sharing that image.
 

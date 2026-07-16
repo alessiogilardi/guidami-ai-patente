@@ -19,6 +19,7 @@ from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import YamlRepository
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
+    QuizContextModel,
     RoadSignDescriberRequest,
     RoadSignDescriberResponse,
 )
@@ -44,7 +45,7 @@ def test_run_sync_returns_road_sign_describer_response(
 ) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
     request = RoadSignDescriberRequest(
-        contexts=["Argomento: Segnaletica — Testo: Cosa indica il segnale?"]
+        contexts=[QuizContextModel(topic="Segnaletica", texts=["Cosa indica il segnale?"])]
     )
 
     agent = RoadSignDescriberAgent.from_yaml(
@@ -71,7 +72,9 @@ def test_run_sync_returns_road_sign_describer_response(
 
 def test_run_sync_sends_binary_content(agents_dir: YamlRepository, tmp_path: Path) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
-    request = RoadSignDescriberRequest(contexts=["Argomento: Segnaletica — Testo: Domanda."])
+    request = RoadSignDescriberRequest(
+        contexts=[QuizContextModel(topic="Segnaletica", texts=["Domanda."])]
+    )
 
     agent = RoadSignDescriberAgent.from_yaml(
         "road_sign_describer", agents_dir, _PROVIDER, LocalFileSystemClient(tmp_path)
@@ -109,7 +112,7 @@ def test_run_sync_sends_binary_content(agents_dir: YamlRepository, tmp_path: Pat
 def test_run_sync_passes_topic_in_prompt(agents_dir: YamlRepository, tmp_path: Path) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
     request = RoadSignDescriberRequest(
-        contexts=["Argomento: Precedenza — Testo: Domanda sul segnale."]
+        contexts=[QuizContextModel(topic="Precedenza", texts=["Domanda sul segnale."])]
     )
 
     agent = RoadSignDescriberAgent.from_yaml(
@@ -148,7 +151,7 @@ def test_render_prompt_with_image_includes_binary_content(
 ) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
     request = RoadSignDescriberRequest(
-        contexts=["Argomento: Segnaletica — Testo: Domanda di test."]
+        contexts=[QuizContextModel(topic="Segnaletica", texts=["Domanda di test."])]
     )
 
     agent = RoadSignDescriberAgent.from_yaml(

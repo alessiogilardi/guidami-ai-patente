@@ -3,23 +3,46 @@
 import pytest
 from pydantic import ValidationError
 
-from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import RoadSignDescriberRequest
+from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
+    QuizContextModel,
+    RoadSignDescriberRequest,
+)
 
 
-def test_request_accepts_a_list_of_contexts() -> None:
+def test_request_accepts_a_list_of_quiz_contexts() -> None:
     request = RoadSignDescriberRequest(
-        contexts=["Argomento: A — Testo: uno", "Argomento: B — Testo: due"]
+        contexts=[
+            QuizContextModel(topic="A", texts=["uno"]),
+            QuizContextModel(topic="B", texts=["due"]),
+        ]
     )
-    assert request.contexts == ["Argomento: A — Testo: uno", "Argomento: B — Testo: due"]
+    assert request.contexts == [
+        QuizContextModel(topic="A", texts=["uno"]),
+        QuizContextModel(topic="B", texts=["due"]),
+    ]
 
 
-def test_request_contexts_block_renders_bullet_list() -> None:
-    request = RoadSignDescriberRequest(contexts=["a", "b"])
-    assert request.contexts_block == "- a\n- b"
+def test_request_contexts_block_renders_topic_and_dot_list_of_questions() -> None:
+    request = RoadSignDescriberRequest(
+        contexts=[QuizContextModel(topic="Segnaletica", texts=["a", "b"])]
+    )
+    assert request.contexts_block == "Argomento: Segnaletica\nDomande:\n- a\n- b"
+
+
+def test_request_contexts_block_joins_multiple_topics_with_blank_line() -> None:
+    request = RoadSignDescriberRequest(
+        contexts=[
+            QuizContextModel(topic="A", texts=["uno"]),
+            QuizContextModel(topic="B", texts=["due"]),
+        ]
+    )
+    assert request.contexts_block == (
+        "Argomento: A\nDomande:\n- uno\n\nArgomento: B\nDomande:\n- due"
+    )
 
 
 def test_request_contexts_block_is_exposed_in_model_dump() -> None:
-    request = RoadSignDescriberRequest(contexts=["a"])
+    request = RoadSignDescriberRequest(contexts=[QuizContextModel(topic="A", texts=["a"])])
     assert "contexts_block" in request.model_dump()
 
 

@@ -1,5 +1,9 @@
+from collections import defaultdict
+from collections.abc import Iterable
+
 from commons.utils import deduplicate
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
+    QuizContextModel,
     RoadSignDescriberRequest,
     RoadSignDescriberResponse,
 )
@@ -18,17 +22,20 @@ class RoadSignDescriberMapper:
     ) -> RoadSignDescriberRequest:
         """Builds a single request from every quiz that references the same image.
 
-        Duplicate (topic, text) pairs are collapsed (first-seen order) so the prompt
-        lists each distinct context once.
+        Duplicate (topic, text) pairs are collapsed (first-seen order); a quiz text
+        repeated verbatim under a different topic is also deduplicated (first-seen
+        topic wins), so the prompt never lists the same question text twice.
 
         Args:
             questions: Quiz bank sub-questions that all reference the same image.
 
         Returns:
-            `RoadSignDescriberRequest` with one context per distinct (topic, text).
+            `RoadSignDescriberRequest` with one context per distinct topic, each
+            holding its distinct (and globally text-deduplicated) quiz texts.
         """
         unique = deduplicate(questions, key=lambda q: (q.topic, q.text))
-        contexts = [f"Argomento: {q.topic} — Testo: {q.text}" for q in unique]
+        contexts = RoadSignDescriberMapper._from_enriched_quizzes_to_quiz_context(unique)
+
         return RoadSignDescriberRequest(contexts=contexts)
 
     @staticmethod
@@ -57,3 +64,17 @@ class RoadSignDescriberMapper:
         return question.model_copy(
             update={"image_description": description, "image_analysis": analysis}
         )
+
+    @staticmethod
+    def _from_enriched_quizzes_to_quiz_context(
+        questions: Iterable[EnrichedQuizModel],
+    ) -> list[QuizContextModel]:
+        contexts: defaultdict[str, list[str]] = defaultdict(list)
+        seen_texts: set[str] = set()
+        for quiz in questions:
+            if quiz.text in seen_texts:
+                continue
+            contexts[quiz.topic].append(quiz.text)
+            seen_texts.add(quiz.text)
+
+        return [QuizContextModel(topic=topic, texts=texts) for topic, texts in contexts.items()]

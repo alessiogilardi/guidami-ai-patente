@@ -1,6 +1,9 @@
 """Tests for RoadSignDescriberMapper (many-quizzes-per-image request, dual-field response)."""
 
-from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import RoadSignDescriberResponse
+from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
+    QuizContextModel,
+    RoadSignDescriberResponse,
+)
 from guidami_ai_patente_ingestor.mappers.agents import RoadSignDescriberMapper
 from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel, ImageAnalysis
 
@@ -31,8 +34,30 @@ def test_from_enriched_quizzes_to_request_collapses_duplicate_topic_text() -> No
     )
 
     assert request.contexts == [
-        "Argomento: Segnaletica — Testo: Domanda.",
-        "Argomento: Precedenza — Testo: Altra domanda.",
+        QuizContextModel(topic="Segnaletica", texts=["Domanda."]),
+        QuizContextModel(topic="Precedenza", texts=["Altra domanda."]),
+    ]
+
+
+def test_from_enriched_quizzes_to_request_groups_distinct_texts_under_same_topic() -> None:
+    q1 = _question("1", topic="Segnaletica", text="Prima domanda.")
+    q2 = _question("2", topic="Segnaletica", text="Seconda domanda.")
+
+    request = RoadSignDescriberMapper.from_enriched_quizzes_to_request([q1, q2])
+
+    assert request.contexts == [
+        QuizContextModel(topic="Segnaletica", texts=["Prima domanda.", "Seconda domanda."]),
+    ]
+
+
+def test_from_enriched_quizzes_to_request_dedupes_repeated_text_across_topics() -> None:
+    q1 = _question("1", topic="Segnaletica", text="Testo identico.")
+    q2 = _question("2", topic="Precedenza", text="Testo identico.")
+
+    request = RoadSignDescriberMapper.from_enriched_quizzes_to_request([q1, q2])
+
+    assert request.contexts == [
+        QuizContextModel(topic="Segnaletica", texts=["Testo identico."]),
     ]
 
 
@@ -43,8 +68,8 @@ def test_from_enriched_quizzes_to_request_preserves_first_seen_order() -> None:
     request = RoadSignDescriberMapper.from_enriched_quizzes_to_request([q1, q2])
 
     assert request.contexts == [
-        "Argomento: B — Testo: Seconda.",
-        "Argomento: A — Testo: Prima.",
+        QuizContextModel(topic="B", texts=["Seconda."]),
+        QuizContextModel(topic="A", texts=["Prima."]),
     ]
 
 
