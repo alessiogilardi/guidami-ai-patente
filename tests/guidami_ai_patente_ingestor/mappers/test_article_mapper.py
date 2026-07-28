@@ -1,6 +1,7 @@
 from domain.entities.knowledge import KnowledgeChunk
 from guidami_ai_patente_ingestor.mappers import ArticleMapper
 from guidami_ai_patente_ingestor.models.knowledge import (
+    CleanedArticleModel,
     EmbeddableChunkModel,
     EnrichedArticleModel,
     ParsedArticleModel,
@@ -20,6 +21,20 @@ def _article(**kwargs) -> ParsedArticleModel:
     return ParsedArticleModel(**{**defaults, **kwargs})
 
 
+def _cleaned(**kwargs) -> CleanedArticleModel:
+    defaults = dict(
+        number="1",
+        title="Titolo articolo 1",
+        text="Testo articolo 1.",
+        paragraphs=["Comma 1.", "Comma 2."],
+        url="https://example.com/art-1",
+        scraped_at="2025-01-01T00:00:00",
+        repealed=False,
+        source="cds",
+    )
+    return CleanedArticleModel(**{**defaults, **kwargs})
+
+
 def _enriched(**kwargs) -> EnrichedArticleModel:
     defaults = dict(
         number="1",
@@ -30,6 +45,7 @@ def _enriched(**kwargs) -> EnrichedArticleModel:
         scraped_at="2025-01-01T00:00:00",
         repealed=False,
         contexts={},
+        source="cds",
     )
     return EnrichedArticleModel(**{**defaults, **kwargs})
 
@@ -49,15 +65,16 @@ def _embeddable_chunk(**kwargs) -> EmbeddableChunkModel:
     return EmbeddableChunkModel(**{**defaults, **kwargs})
 
 
-# --- from_parsed_to_enriched ---
+# --- from_parsed_to_cleaned ---
 
 
-def test_from_parsed_to_enriched_copies_all_common_fields() -> None:
+def test_from_parsed_to_cleaned_sets_source() -> None:
     article = _article()
 
-    result = ArticleMapper.from_parsed_to_enriched(article)
+    result = ArticleMapper.from_parsed_to_cleaned(article, "cds")
 
-    assert isinstance(result, EnrichedArticleModel)
+    assert isinstance(result, CleanedArticleModel)
+    assert result.source == "cds"
     assert result.number == article.number
     assert result.title == article.title
     assert result.text == article.text
@@ -67,31 +84,50 @@ def test_from_parsed_to_enriched_copies_all_common_fields() -> None:
     assert result.repealed == article.repealed
 
 
-def test_from_parsed_to_enriched_sets_empty_contexts() -> None:
-    article = _article()
-
-    result = ArticleMapper.from_parsed_to_enriched(article)
-
-    assert result.contexts == {}
-
-
-def test_from_parsed_to_enriched_preserves_repealed_flag() -> None:
+def test_from_parsed_to_cleaned_preserves_repealed_flag() -> None:
     article = _article(repealed=True)
 
-    result = ArticleMapper.from_parsed_to_enriched(article)
+    result = ArticleMapper.from_parsed_to_cleaned(article, "cap")
+
+    assert result.repealed is True
+    assert result.source == "cap"
+
+
+# --- from_cleaned_to_enriched ---
+
+
+def test_from_cleaned_to_enriched_propagates_source() -> None:
+    article = _cleaned(source="cap")
+
+    result = ArticleMapper.from_cleaned_to_enriched(article)
+
+    assert isinstance(result, EnrichedArticleModel)
+    assert result.source == "cap"
+    assert result.number == article.number
+    assert result.title == article.title
+    assert result.text == article.text
+    assert result.paragraphs == article.paragraphs
+    assert result.url == article.url
+    assert result.scraped_at == article.scraped_at
+    assert result.repealed == article.repealed
+
+
+def test_from_cleaned_to_enriched_sets_empty_contexts() -> None:
+    article = _cleaned()
+
+    result = ArticleMapper.from_cleaned_to_enriched(article)
 
     assert result.contexts == {}
-    assert result.repealed is True
 
 
 # --- from_enriched_to_embeddable_chunk ---
 
 
-def test_from_enriched_to_embeddable_chunk_copies_article_fields() -> None:
-    article = _enriched()
+def test_from_enriched_to_embeddable_chunk_reads_source_from_model() -> None:
+    article = _enriched(source="cds")
 
     result = ArticleMapper.from_enriched_to_embeddable_chunk(
-        article, source="cds", comma_index=0, raw_text="Testo."
+        article, comma_index=0, raw_text="Testo."
     )
 
     assert isinstance(result, EmbeddableChunkModel)
@@ -101,11 +137,11 @@ def test_from_enriched_to_embeddable_chunk_copies_article_fields() -> None:
     assert result.source_url == article.url
 
 
-def test_from_enriched_to_embeddable_chunk_uses_provided_raw_text_and_comma_index() -> None:
-    article = _enriched()
+def test_from_enriched_to_embeddable_chunk_uses_model_source_not_a_separate_parameter() -> None:
+    article = _enriched(source="cap")
 
     result = ArticleMapper.from_enriched_to_embeddable_chunk(
-        article, source="cap", comma_index=2, raw_text="Testo del secondo comma."
+        article, comma_index=2, raw_text="Testo del secondo comma."
     )
 
     assert result.comma_index == 2
@@ -117,7 +153,7 @@ def test_from_enriched_to_embeddable_chunk_fetches_context_from_article_contexts
     article = _enriched(contexts={1: "Contesto per il comma 1."})
 
     result = ArticleMapper.from_enriched_to_embeddable_chunk(
-        article, source="cds", comma_index=1, raw_text="Testo."
+        article, comma_index=1, raw_text="Testo."
     )
 
     assert result.context == "Contesto per il comma 1."
@@ -127,7 +163,7 @@ def test_from_enriched_to_embeddable_chunk_defaults_context_to_empty_string_when
     article = _enriched(contexts={})
 
     result = ArticleMapper.from_enriched_to_embeddable_chunk(
-        article, source="cds", comma_index=3, raw_text="Testo."
+        article, comma_index=3, raw_text="Testo."
     )
 
     assert result.context == ""
@@ -137,7 +173,7 @@ def test_from_enriched_to_embeddable_chunk_marks_repealed_when_article_is_repeal
     article = _enriched(repealed=True)
 
     result = ArticleMapper.from_enriched_to_embeddable_chunk(
-        article, source="cds", comma_index=0, raw_text="Testo qualsiasi."
+        article, comma_index=0, raw_text="Testo qualsiasi."
     )
 
     assert result.is_repealed is True
@@ -147,7 +183,7 @@ def test_from_enriched_to_embeddable_chunk_marks_repealed_when_text_contains_abr
     article = _enriched(repealed=False)
 
     result = ArticleMapper.from_enriched_to_embeddable_chunk(
-        article, source="cds", comma_index=0, raw_text="Comma ABROGATO dal D.Lgs. 150/2021."
+        article, comma_index=0, raw_text="Comma ABROGATO dal D.Lgs. 150/2021."
     )
 
     assert result.is_repealed is True
@@ -157,7 +193,7 @@ def test_from_enriched_to_embeddable_chunk_not_repealed_when_neither() -> None:
     article = _enriched(repealed=False)
 
     result = ArticleMapper.from_enriched_to_embeddable_chunk(
-        article, source="cds", comma_index=0, raw_text="Testo valido."
+        article, comma_index=0, raw_text="Testo valido."
     )
 
     assert result.is_repealed is False

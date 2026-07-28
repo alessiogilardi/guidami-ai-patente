@@ -17,14 +17,15 @@ ENRICHED_ARTICLES = (
 EMBEDDABLE_CHUNKS = "embeddable_chunks"  # chunker output → embed: list[EmbeddableChunkModel]
 CHUNK_ENTITIES = "chunk_entities"  # map→entity output: list[KnowledgeChunk] → store
 
-# --- Knowledge preparation (SP05) ---
-# Clean flow: LoadJsonStep → MapStep → WriteJsonStep.
-# Enrich flow: LoadJsonStep → MapStep → EnrichDataStep → WriteJsonStep.
+# --- Knowledge preparation (per-element layers) ---
+# Clean flow: LoadJsonStep → ApplyStep → FilterAlreadyDoneStep → WriteJsonDirStep.
+# Enrich flow: LoadJsonDirStep → FilterAlreadyDoneStep → ApplyStep → WriteJsonDirStep.
 PARSED_ARTICLES = (
     "parsed_articles"  # clean input: list[ParsedArticleModel] loaded from the "parsed" layer
 )
-CLEANED_ARTICLES = (
-    "cleaned_articles"  # clean output / enrich input: list[ParsedArticleModel] cleaned
+CLEANED_ARTICLES = "cleaned_articles"  # clean output / enrich input: list[CleanedArticleModel]
+FILTERED_ARTICLES = (
+    "filtered_articles"  # FilterAlreadyDoneStep output: elements still to (clean|enrich)
 )
 
 # --- Quiz indexing (SP04) ---

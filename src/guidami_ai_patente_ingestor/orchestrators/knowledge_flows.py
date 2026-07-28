@@ -1,6 +1,7 @@
 """Factories for the knowledge preparation (SP05) and indexing (SP03) flows — per-source."""
 
 import logging
+from functools import partial
 from typing import Literal, cast
 
 from flowstep import Flow, FlowBuilder
@@ -14,10 +15,15 @@ from commons.clients import PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import JsonRepository, YamlRepository
 from commons.use_cases import FlatMap, ForEach
+from commons.utils import element_id
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.mappers import ArticleMapper
-from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel, ParsedArticleModel
+from guidami_ai_patente_ingestor.models.knowledge import (
+    CleanedArticleModel,
+    EnrichedArticleModel,
+    ParsedArticleModel,
+)
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
     EmbedChunksStep,
@@ -28,13 +34,23 @@ from guidami_ai_patente_ingestor.services import LayerResolver
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
 from guidami_ai_patente_ingestor.services.knowledge.enrichers import ContextEnricher
 
-from .steps.generic import LoadJsonStep, WriteJsonStep
+from .steps.generic import (
+    FilterAlreadyDoneStep,
+    LoadJsonDirStep,
+    LoadJsonStep,
+    WriteJsonDirStep,
+)
 
 logger = logging.getLogger(__name__)
 
 # Intermediate layer shared by the two preparation factories (clean/enrich):
 # not expressed in PipelineLayerConfig (see the layer decision in SP05).
 _CLEANED_LAYER = "cleaned"
+
+
+def _article_id(article: CleanedArticleModel | EnrichedArticleModel) -> str:
+    """Stable per-element id, derived from the element itself."""
+    return element_id(article.source, article.number)
 
 
 def build_knowledge_indexing_flow(
@@ -52,12 +68,12 @@ def build_knowledge_indexing_flow(
     so runs on different sources do not overwrite each other.
 
     Step mapping:
-      `LoadJsonStep` → `ApplyStep` (chunk_articles, `FlatMap(ArticleChunker)`)
+      `LoadJsonDirStep` → `ApplyStep` (chunk_articles, `FlatMap(ArticleChunker)`)
       → `EmbedChunksStep` → `ApplyStep` (map_to_chunk_entity) → `StoreChunksStep`
 
     Args:
         config: Full ingestor configuration (already loaded at the entry point).
-        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        layer_resolver: Resolver mapping (layer, source) → container directory.
         embedding_client: Client for computing embeddings.
         postgres_client: Postgres client for DB operations.
         source: Source to index; must belong to `config.knowledge_indexing.sources`.
@@ -77,22 +93,21 @@ def build_knowledge_indexing_flow(
     valid_sources = set(indexing_config.sources)
     if source not in valid_sources:
         raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
-    typed_source = cast(Literal["cds", "cap"], source)
 
-    load_step = LoadJsonStep(
+    load_step = LoadJsonDirStep(
         "load_enriched_articles",
-        layer_resolver=layer_resolver,
-        input_layer=indexing_config.input_layer,
-        source=source,
-        repository=JsonRepository.get_instance(
+        indexing_config.input_layer,
+        source,
+        context_keys.ENRICHED_ARTICLES,
+        layer_resolver,
+        JsonRepository.get_instance(
             EnrichedArticleModel, file_system_client=LocalFileSystemClient(config.project_root)
         ),
-        output_key=context_keys.ENRICHED_ARTICLES,
     )
 
     chunk_step = ApplyStep(
         "chunk_articles",
-        FlatMap(ArticleChunker(typed_source)),
+        FlatMap(ArticleChunker()),  # source now read from each article (Decision 17)
         input_key=context_keys.ENRICHED_ARTICLES,
         output_key=context_keys.EMBEDDABLE_CHUNKS,
     )
@@ -133,20 +148,28 @@ def build_knowledge_cleaning_flow(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
     source: str,
+    force: bool = False,
     validate: bool = False,
 ) -> Flow:
     """Assembles the knowledge cleaning flow for ONE source (parsed → cleaned).
 
     The flow is per-source: it must run once per source (e.g. `cds`, then `cap`).
-    No embed/store: this flow belongs to the preparation stage.
+    No embed/store: this flow belongs to the preparation stage. `cleaned` is a
+    per-element layer: one file per article, filtered by `FilterAlreadyDoneStep`
+    (skipped entirely with `force=True`) before being written by `WriteJsonDirStep`.
 
     Step mapping:
-      `LoadJsonStep` → `ApplyStep` → `WriteJsonStep`
+      `LoadJsonStep` → `ApplyStep(clean + stamp source)` → `FilterAlreadyDoneStep`
+      → `WriteJsonDirStep`
+
+    The clean-then-stamp order matters (Decision 18): the filter needs `a.source`,
+    which only exists after the parsed→cleaned map runs.
 
     Args:
         config: Full ingestor configuration (already loaded at the entry point).
-        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        layer_resolver: Resolver mapping (layer, source) → container directory.
         source: Source to clean; must belong to `config.knowledge_preparation.sources`.
+        force: If True, re-cleans every article even if already present in `cleaned/`.
         validate: If True, runs structural validation of the flow before returning it.
 
     Returns:
@@ -160,40 +183,55 @@ def build_knowledge_cleaning_flow(
     valid_sources = set(preparation_config.sources)
     if source not in valid_sources:
         raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
+    typed_source = cast(Literal["cds", "cap"], source)
 
-    articles_repository = JsonRepository.get_instance(
-        ParsedArticleModel, file_system_client=LocalFileSystemClient(config.project_root)
-    )
+    file_system_client = LocalFileSystemClient(config.project_root)
 
     load_step = LoadJsonStep(
         "load_parsed_articles",
-        layer_resolver=layer_resolver,
-        input_layer=preparation_config.input_layer,
-        source=source,
-        repository=articles_repository,
-        output_key=context_keys.PARSED_ARTICLES,
+        preparation_config.input_layer,
+        source,
+        context_keys.PARSED_ARTICLES,
+        layer_resolver,
+        JsonRepository.get_instance(ParsedArticleModel, file_system_client=file_system_client),
     )
 
+    # Clean first, then stamp the source: the filter needs `a.source` (Decision 18).
     clean_step = ApplyStep(
         "clean_articles",
         ForEach(ArticleCleaner()),
+        ForEach(partial(ArticleMapper.from_parsed_to_cleaned, source=typed_source)),
         input_key=context_keys.PARSED_ARTICLES,
         output_key=context_keys.CLEANED_ARTICLES,
     )
 
-    write_step = WriteJsonStep(
+    filter_step = FilterAlreadyDoneStep(
+        "filter_cleaned",
+        context_keys.CLEANED_ARTICLES,
+        context_keys.FILTERED_ARTICLES,
+        _CLEANED_LAYER,
+        source,
+        force,
+        _article_id,
+        layer_resolver,
+        file_system_client,
+    )
+
+    write_step = WriteJsonDirStep(
         "write_cleaned",
-        layer_resolver=layer_resolver,
-        output_layer=_CLEANED_LAYER,
-        source=source,
-        repository=articles_repository,
-        input_key=context_keys.CLEANED_ARTICLES,
+        _CLEANED_LAYER,
+        source,
+        context_keys.FILTERED_ARTICLES,
+        _article_id,
+        layer_resolver,
+        JsonRepository.get_instance(CleanedArticleModel, file_system_client=file_system_client),
     )
 
     flow: Flow = (
         FlowBuilder("knowledge_cleaning")
         .add_step(load_step)
         .add_step(clean_step)
+        .add_step(filter_step)
         .add_step(write_step)
         .build(validate=validate)
     )
@@ -206,22 +244,28 @@ def build_knowledge_enrichment_flow(
     layer_resolver: LayerResolver,
     source: str,
     open_router_provider: OpenRouterProvider,
+    force: bool = False,
     validate: bool = False,
     tracker: LlmCallTracker | None = None,
 ) -> Flow:
     """Assembles the knowledge enrichment flow for ONE source (cleaned → enriched).
 
     The flow is per-source: it must run once per source (e.g. `cds`, then `cap`).
-    No embed/store: this flow belongs to the preparation stage.
+    No embed/store: this flow belongs to the preparation stage. Both `cleaned` and
+    `enriched` are per-element layers: `FilterAlreadyDoneStep` runs *before* the LLM
+    call (skipped entirely with `force=True`), since that call is the expensive
+    transform this filter exists to save (Decision 18).
 
     Step mapping:
-      `LoadJsonStep` → `ApplyStep` → `WriteJsonStep`
+      `LoadJsonDirStep` → `FilterAlreadyDoneStep` → `ApplyStep(map + enrich)`
+      → `WriteJsonDirStep`
 
     Args:
         config: Full ingestor configuration (already loaded at the entry point).
-        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        layer_resolver: Resolver mapping (layer, source) → container directory.
         source: Source to enrich; must belong to `config.knowledge_preparation.sources`.
         open_router_provider: OpenRouter provider injected into the enrichment agent.
+        force: If True, re-enriches every article even if already present in `enriched/`.
         validate: If True, runs structural validation of the flow before returning it.
         tracker: Optional port persisting one `LlmCallLog` per call made by the
             enrichment agent. Forwarded to `from_yaml`; `None` disables tracking.
@@ -241,15 +285,28 @@ def build_knowledge_enrichment_flow(
     if preparation_config.output_layer is None:
         raise ValueError("knowledge_preparation.output_layer is not configured")
 
-    load_step = LoadJsonStep(
+    file_system_client = LocalFileSystemClient(config.project_root)
+
+    load_step = LoadJsonDirStep(
         "load_cleaned_articles",
-        layer_resolver=layer_resolver,
-        input_layer=_CLEANED_LAYER,
-        source=source,
-        repository=JsonRepository.get_instance(
-            ParsedArticleModel, file_system_client=LocalFileSystemClient(config.project_root)
-        ),
-        output_key=context_keys.CLEANED_ARTICLES,
+        _CLEANED_LAYER,
+        source,
+        context_keys.CLEANED_ARTICLES,
+        layer_resolver,
+        JsonRepository.get_instance(CleanedArticleModel, file_system_client=file_system_client),
+    )
+
+    # Filter BEFORE the expensive transform: this is what saves LLM calls.
+    filter_step = FilterAlreadyDoneStep(
+        "filter_enriched",
+        context_keys.CLEANED_ARTICLES,
+        context_keys.FILTERED_ARTICLES,
+        preparation_config.output_layer,
+        source,
+        force,
+        _article_id,
+        layer_resolver,
+        file_system_client,
     )
 
     agents_repository = YamlRepository(
@@ -260,26 +317,26 @@ def build_knowledge_enrichment_flow(
     )
     enrich_step = ApplyStep(
         "enrich",
-        ForEach(ArticleMapper.from_parsed_to_enriched),
+        ForEach(ArticleMapper.from_cleaned_to_enriched),
         ContextEnricher(agent),
-        input_key=context_keys.CLEANED_ARTICLES,
+        input_key=context_keys.FILTERED_ARTICLES,
         output_key=context_keys.ENRICHED_ARTICLES,
     )
 
-    write_step = WriteJsonStep(
+    write_step = WriteJsonDirStep(
         "write_enriched",
-        layer_resolver=layer_resolver,
-        output_layer=preparation_config.output_layer,
-        source=source,
-        repository=JsonRepository.get_instance(
-            EnrichedArticleModel, file_system_client=LocalFileSystemClient(config.project_root)
-        ),
-        input_key=context_keys.ENRICHED_ARTICLES,
+        preparation_config.output_layer,
+        source,
+        context_keys.ENRICHED_ARTICLES,
+        _article_id,
+        layer_resolver,
+        JsonRepository.get_instance(EnrichedArticleModel, file_system_client=file_system_client),
     )
 
     flow: Flow = (
         FlowBuilder("knowledge_enrichment")
         .add_step(load_step)
+        .add_step(filter_step)
         .add_step(enrich_step)
         .add_step(write_step)
         .build(validate=validate)

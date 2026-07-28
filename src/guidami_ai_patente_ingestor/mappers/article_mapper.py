@@ -2,6 +2,7 @@ from typing import Literal
 
 from domain.entities.knowledge import KnowledgeChunk
 from guidami_ai_patente_ingestor.models.knowledge import (
+    CleanedArticleModel,
     EmbeddableChunkModel,
     EnrichedArticleModel,
     ParsedArticleModel,
@@ -16,31 +17,33 @@ class ArticleMapper:
     """
 
     @staticmethod
-    def from_parsed_to_enriched(article: ParsedArticleModel) -> EnrichedArticleModel:
-        """Base-map: copies the common fields, `contexts` empty (populated by ContextEnricher)."""
-        return EnrichedArticleModel(
-            number=article.number,
-            title=article.title,
-            text=article.text,
-            paragraphs=article.paragraphs,
-            url=article.url,
-            scraped_at=article.scraped_at,
-            repealed=article.repealed,
-            contexts={},
-        )
+    def from_parsed_to_cleaned(
+        article: ParsedArticleModel, source: Literal["cds", "cap"]
+    ) -> CleanedArticleModel:
+        """Stamp the source onto a cleaned article.
+
+        `source` enters the data here, at the parsed→cleaned boundary, where the
+        flow knows which source it is processing.
+        """
+        return CleanedArticleModel(**article.model_dump(), source=source)
+
+    @staticmethod
+    def from_cleaned_to_enriched(article: CleanedArticleModel) -> EnrichedArticleModel:
+        """Base-map: carries `source` over, `contexts` filled by ContextEnricher."""
+        return EnrichedArticleModel(**article.model_dump(), contexts={})
 
     @staticmethod
     def from_enriched_to_embeddable_chunk(
         model: EnrichedArticleModel,
-        source: Literal["cds", "cap"],
         comma_index: int,
         raw_text: str,
     ) -> EmbeddableChunkModel:
         """Creates an `EmbeddableChunkModel` from an enriched article and a specific comma.
 
+        `source` now comes from the model — no separate parameter to disagree with it.
+
         Args:
             model: Source enriched article.
-            source: Norm source ("cds" or "cap").
             comma_index: Comma index (0 = main text).
             raw_text: Raw text of the comma to embed.
 
@@ -48,7 +51,7 @@ class ArticleMapper:
             Chunk ready for embedding and indexing.
         """
         return EmbeddableChunkModel(
-            source=source,
+            source=model.source,
             article_number=model.number,
             article_title=model.title,
             comma_index=comma_index,

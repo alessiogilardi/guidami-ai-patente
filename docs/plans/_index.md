@@ -11,6 +11,7 @@ skill — do not edit the plan tables by hand.
 | File | Topic | Status |
 |------|-------|--------|
 | [Mapping offline quiz ↔ norma (LLM-as-a-Judge)](2026-07-03--ingest-llm-as-judge.md) | Mapping offline quiz ↔ norma (LLM-as-a-Judge) | Draft |
+| [Per Element Knowledge Layers](2026-07-17--per-element-knowledge-layers.md) | Per Element Knowledge Layers | Implemented |
 | [Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF)](architecture-hybrid-retrieval.md) | Hybrid Search — retrieval ibrido (pgvector + FTS, fusione RRF) | Draft |
 
 

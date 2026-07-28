@@ -10,8 +10,14 @@ def _article(**kwargs) -> EnrichedArticleModel:
         url="https://example.com/art-1",
         scraped_at="2025-01-01T00:00:00",
         repealed=False,
+        source="cds",
     )
     return EnrichedArticleModel(**{**defaults, **kwargs})
+
+
+def test_enriched_article_requires_source() -> None:
+    article = _article(source="cap")
+    assert article.source == "cap"
 
 
 def test_enriched_article_defaults_contexts_to_empty_dict() -> None:

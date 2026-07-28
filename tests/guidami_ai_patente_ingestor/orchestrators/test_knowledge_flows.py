@@ -2,6 +2,7 @@
 
 import json
 from pathlib import Path
+from typing import Literal
 from unittest.mock import MagicMock
 
 import pytest
@@ -10,6 +11,7 @@ from flowstep import Flow
 from commons.ai.embedding import EmbeddingClient
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
+from commons.utils import element_id
 from guidami_ai_patente_ingestor.configs import IngestorConfig, SourceConfig
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import build_knowledge_indexing_flow
@@ -112,7 +114,9 @@ def test_build_with_unknown_source_raises_value_error() -> None:
 # ---------------------------------------------------------------------------
 
 
-def _make_enriched_article(number: str, repealed: bool = False) -> EnrichedArticleModel:
+def _make_enriched_article(
+    number: str, source: Literal["cds", "cap"], repealed: bool = False
+) -> EnrichedArticleModel:
     return EnrichedArticleModel(
         number=number,
         title=f"Articolo {number}",
@@ -121,15 +125,19 @@ def _make_enriched_article(number: str, repealed: bool = False) -> EnrichedArtic
         url=f"https://example.com/art-{number}",
         scraped_at="2025-01-01T00:00:00",
         repealed=repealed,
+        source=source,
         contexts={},
     )
 
 
-def _write_enriched(path: Path, articles: list[EnrichedArticleModel]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps([a.model_dump() for a in articles], ensure_ascii=False), encoding="utf-8"
-    )
+def _write_enriched(directory: Path, articles: list[EnrichedArticleModel]) -> None:
+    """Writes one JSON file per article, named by `element_id` (per-element layer)."""
+    directory.mkdir(parents=True, exist_ok=True)
+    for article in articles:
+        file_path = directory / f"{element_id(article.source, article.number)}.json"
+        file_path.write_text(
+            json.dumps(article.model_dump(), ensure_ascii=False), encoding="utf-8"
+        )
 
 
 def _integration_resolver(tmp_path: Path) -> LayerResolver:
@@ -167,12 +175,12 @@ def test_cap_run_does_not_overwrite_cds_run(tmp_path: Path) -> None:
 
     resolver = _integration_resolver(tmp_path)
     cds_articles = [
-        _make_enriched_article("1", repealed=False),
-        _make_enriched_article("2", repealed=True),
+        _make_enriched_article("1", "cds", repealed=False),
+        _make_enriched_article("2", "cds", repealed=True),
     ]
-    cap_articles = [_make_enriched_article("3", repealed=False)]
-    _write_enriched(resolver.path("enriched", "cds"), cds_articles)
-    _write_enriched(resolver.path("enriched", "cap"), cap_articles)
+    cap_articles = [_make_enriched_article("3", "cap", repealed=False)]
+    _write_enriched(resolver.dir("enriched", "cds"), cds_articles)
+    _write_enriched(resolver.dir("enriched", "cap"), cap_articles)
 
     config = IngestorConfig(embedding_batch_size=4, postgres=db_config, project_root=tmp_path)
     embedding_client = _make_embedding_client()
@@ -221,8 +229,8 @@ def test_rerunning_same_source_is_full_reload(tmp_path: Path) -> None:
 
     resolver = _integration_resolver(tmp_path)
     _write_enriched(
-        resolver.path("enriched", "cds"),
-        [_make_enriched_article("1"), _make_enriched_article("2")],
+        resolver.dir("enriched", "cds"),
+        [_make_enriched_article("1", "cds"), _make_enriched_article("2", "cds")],
     )
 
     config = IngestorConfig(embedding_batch_size=4, postgres=db_config, project_root=tmp_path)

@@ -42,3 +42,21 @@ def test_path_raises_for_unknown_source() -> None:
     resolver = _resolver()
     with pytest.raises(KeyError, match="unknown_source"):
         resolver.path("parsed", "unknown_source")
+
+
+def test_dir_returns_container() -> None:
+    resolver = _resolver()
+    result = resolver.dir("cleaned", "cds")
+    assert result == Path("data/cleaned/cds")
+
+
+def test_dir_unknown_layer_raises() -> None:
+    resolver = _resolver()
+    with pytest.raises(KeyError, match="unknown_layer"):
+        resolver.dir("unknown_layer", "cds")
+
+
+def test_dir_unknown_source_raises() -> None:
+    resolver = _resolver()
+    with pytest.raises(KeyError, match="unknown_source"):
+        resolver.dir("cleaned", "unknown_source")

@@ -124,11 +124,20 @@ raises, always exits 0): `cli/services/status/status_inspector.py:
 StatusInspector.evaluate_readiness()` computes a per-(command, entity)
 readiness matrix (`RUNNABLE`/`SKIP`/`BLOCKED`) purely from
 `Path.exists()` checks via `LayerResolver` — no DB, no network, by default.
-`prepare` is `SKIP` when its enriched output already exists, `BLOCKED` when
-its parsed input is missing, else `RUNNABLE`; `index` has no filesystem
-signal for its output (a DB table), so it is only `RUNNABLE`/`BLOCKED`
-depending on whether its enriched input exists; `reset` is always
-`RUNNABLE` offline (a single synthetic entry per entity, no source
+For **quiz** (still monolithic single-file layers): `prepare` is `SKIP` when
+its enriched output already exists, `BLOCKED` when its parsed input is
+missing, else `RUNNABLE`; `index` has no filesystem signal for its output (a
+DB table), so it is only `RUNNABLE`/`BLOCKED` depending on whether its
+enriched input exists. For **knowledge** (per-element `cleaned`/`enriched`
+directories — see the flow description above): `prepare` is **never** `SKIP`
+(a directory can be partially populated, so there is no honest binary
+"already done" signal), only `BLOCKED` when its `parsed` input file is
+missing (that layer is still a single file) or `RUNNABLE`; `index`'s input is
+now a directory too, so it drops the `BLOCKED` signal as well and is always
+`RUNNABLE`. `StatusInspector` takes this `per_element` flag from the caller
+rather than inferring it from the entity name, so the readiness logic itself
+stays free of hardcoded domain strings. `reset` is always `RUNNABLE` offline
+for both entities (a single synthetic entry per entity, no source
 dimension). With `--online`, `run_status` best-effort opens a
 `PostgresClient` (catching `psycopg.Error` → `db_reachable=False,
 tables=None`, still exits 0) and, if reachable, runs
@@ -141,10 +150,28 @@ CLI's self-containment, see `.claude/rules/cli-structure.md`).
 masking `postgres.password`/`open_router_config.api_key` to `****`/
 `missing` — never printed in clear.
 
-**Knowledge corpus** (per source, `cds`/`cap` — `orchestrators/knowledge_flows.py`):
-1. *Cleaning*: `LoadJsonStep` → `ApplyStep(ForEach(ArticleCleaner))` → `WriteJsonStep` (parsed → cleaned).
-2. *Enrichment*: `LoadJsonStep` → `ApplyStep(ForEach(ArticleMapper.from_parsed_to_enriched), ContextEnricher(ArticleContextualizerAgent))` → `WriteJsonStep` (cleaned → enriched).
-3. *Indexing*: `LoadJsonStep` → `ApplyStep(FlatMap(ArticleChunker))` → `EmbedChunksStep` → `ApplyStep(ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk))` → `StoreChunksStep` (deletes only that source's rows, then inserts — scoped full-reload).
+**Knowledge corpus** (per source, `cds`/`cap` — `orchestrators/knowledge_flows.py`). `cleaned`
+and `enriched` are **per-element** layers (one JSON file per article, named by a
+deterministic `commons.utils.element_id(source, number)`; `parsed` stays a single
+monolithic file per source — see
+`docs/plans/2026-07-17--per-element-knowledge-layers.md`):
+1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(ForEach(ArticleCleaner), ForEach(partial(ArticleMapper.from_parsed_to_cleaned, source=source)))` → `FilterAlreadyDoneStep` (drops articles already present in `cleaned/`) → `WriteJsonDirStep` (one file per article).
+2. *Enrichment*: `LoadJsonDirStep` (cleaned, per-element) → `FilterAlreadyDoneStep` (drops articles already present in `enriched/`, **before** the LLM call — this is what saves the cost) → `ApplyStep(ForEach(ArticleMapper.from_cleaned_to_enriched), ContextEnricher(ArticleContextualizerAgent))` → `WriteJsonDirStep` (one file per article).
+3. *Indexing*: `LoadJsonDirStep` (enriched, per-element) → `ApplyStep(FlatMap(ArticleChunker))` → `EmbedChunksStep` → `ApplyStep(ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk))` → `StoreChunksStep` (deletes only that source's rows, then inserts — scoped full-reload).
+
+Resumability from the per-element layout is **cross-run only**: a re-run of
+`ingest prepare knowledge` without `--force` re-processes only the articles
+missing their destination file (`FilterAlreadyDoneStep`); a crash *during* a
+run still loses that run's unwritten work, since writing stays a terminal
+`WriteJsonDirStep` (write-through is deferred to a future plan). `--force`
+bypasses the filter entirely (every article is kept, no filesystem check).
+`CleanedArticleModel` (`models/knowledge/cleaned_article.py`) carries its own
+`source: Literal["cds", "cap"]`, stamped on at the parsed→cleaned boundary by
+`ArticleMapper.from_parsed_to_cleaned`; `EnrichedArticleModel` also carries
+`source`, propagated by `ArticleMapper.from_cleaned_to_enriched`. This makes
+the element's id (and its filename) computable from the element alone,
+independent of flow context — `ArticleChunker` no longer takes a `source`
+constructor argument either, reading it off the article instead.
 
 **Quiz bank** (`orchestrators/quiz_flows.py`):
 1. *Cleaning*: `LoadJsonStep` → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` → `WriteJsonStep` (parsed → cleaned; dedup on normalized-text + correct_answer + image identity).
@@ -179,6 +206,13 @@ See `adr/` for the full history. Currently accepted:
   with `openrouter_usage={"include": True}`, and `PydanticAILlmCallCapture`
   sums `ModelResponse.provider_details["cost"]` synchronously; no fallback
   estimate when OpenRouter omits cost (`adr/0004-openrouter-native-cost-tracking.md`).
+- **Per-element knowledge layers, cross-run resumability, write-through
+  deferred** — `cleaned`/`enriched` for the knowledge corpus moved from one
+  monolithic JSON per source to one JSON file per article, so a `--force`-less
+  re-run only pays for the articles still missing (see the flow description
+  above and `docs/plans/2026-07-17--per-element-knowledge-layers.md`). Full
+  write-through (durable progress *during* a run, not just across runs) is
+  explicitly out of scope for this change and left to a follow-up plan.
 - **`ingest` CLI is a self-contained package with lazy DI wiring** — the
   former 278-line `cli.py` monolith (which built a `PostgresClient` and an
   `OpenRouterProvider` eagerly in `main()` for every command) was split into
@@ -190,4 +224,4 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-07-16 — verified against commit `a6db92b`.*
+*Last updated: 2026-07-19 — verified against commit `94ff3de`.*

@@ -22,6 +22,7 @@ def _article(
         url=f"https://example.com/art-{number}",
         scraped_at="2025-01-01T00:00:00",
         repealed=repealed,
+        source="cds",
         contexts={},
     )
 

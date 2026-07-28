@@ -1,5 +1,12 @@
-"""Tests for build_knowledge_cleaning_flow / build_knowledge_enrichment_flow (SP05, per-source)."""
+"""Tests for build_knowledge_cleaning_flow / build_knowledge_enrichment_flow.
 
+Per-element layers (`cleaned`/`enriched`): the flows now rewire through
+`LoadJsonDirStep`/`FilterAlreadyDoneStep`/`WriteJsonDirStep` (see
+`docs/plans/2026-07-17--per-element-knowledge-layers.md`).
+"""
+
+import json
+from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -8,15 +15,21 @@ from flowstep.steps import ApplyStep
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.configs import PostgresConnectionConfig
+from commons.utils import element_id
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
-from guidami_ai_patente_ingestor.configs import IngestorConfig
+from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
+    ArticleContextualizerResponse,
+)
+from guidami_ai_patente_ingestor.configs import IngestorConfig, PipelineLayerConfig, SourceConfig
 from guidami_ai_patente_ingestor.orchestrators import (
     build_knowledge_cleaning_flow,
     build_knowledge_enrichment_flow,
 )
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
+    FilterAlreadyDoneStep,
+    LoadJsonDirStep,
     LoadJsonStep,
-    WriteJsonStep,
+    WriteJsonDirStep,
 )
 from guidami_ai_patente_ingestor.services import LayerResolver
 
@@ -25,16 +38,33 @@ from guidami_ai_patente_ingestor.services import LayerResolver
 # ---------------------------------------------------------------------------
 
 
-def _base_config() -> IngestorConfig:
+def _base_config(**overrides: object) -> IngestorConfig:
     return IngestorConfig(
         postgres=PostgresConnectionConfig(
             host="localhost", user="unused", password="unused", dbname="unused"
         ),
+        **overrides,  # type: ignore[arg-type]
     )
 
 
 def _make_layer_resolver() -> LayerResolver:
     return MagicMock(spec=LayerResolver)
+
+
+def _parsed_article_payload(number: str) -> dict:
+    return {
+        "number": number,
+        "title": f"Articolo {number}",
+        "text": f"Testo {number}.",
+        "paragraphs": [f"Comma 1 art {number}."],
+        "url": f"https://example.com/art-{number}",
+        "scraped_at": "2025-01-01T00:00:00",
+        "repealed": False,
+    }
+
+
+def _cleaned_article_payload(number: str, source: str) -> dict:
+    return {**_parsed_article_payload(number), "source": source}
 
 
 # ---------------------------------------------------------------------------
@@ -78,6 +108,52 @@ def test_cleaning_flow_unknown_source_raises_value_error() -> None:
             layer_resolver=_make_layer_resolver(),
             source="quiz",
         )
+
+
+def test_cleaning_flow_has_four_steps_load_clean_filter_write() -> None:
+    flow = build_knowledge_cleaning_flow(
+        config=_base_config(),
+        layer_resolver=_make_layer_resolver(),
+        source="cds",
+    )
+
+    steps = flow.get_steps()
+    assert len(steps) == 4
+    assert isinstance(steps[0], LoadJsonStep)
+    assert isinstance(steps[1], ApplyStep)
+    assert isinstance(steps[2], FilterAlreadyDoneStep)
+    assert isinstance(steps[3], WriteJsonDirStep)
+
+
+def test_cleaning_flow_force_false_skips_already_cleaned_article(tmp_path: Path) -> None:
+    """Decision 10/18: an article already present in `cleaned/` is not rewritten."""
+    resolver = LayerResolver(
+        layers={"parsed": str(tmp_path / "parsed"), "cleaned": str(tmp_path / "cleaned")},
+        sources={"cds": SourceConfig(dir="cds", file="articles.json")},
+    )
+    parsed_path = resolver.path("parsed", "cds")
+    parsed_path.parent.mkdir(parents=True)
+    parsed_path.write_text(
+        json.dumps([_parsed_article_payload("1"), _parsed_article_payload("2")]),
+        encoding="utf-8",
+    )
+
+    cleaned_dir = resolver.dir("cleaned", "cds")
+    cleaned_dir.mkdir(parents=True)
+    already_done_id = element_id("cds", "1")
+    sentinel_path = cleaned_dir / f"{already_done_id}.json"
+    sentinel_path.write_text(json.dumps({"sentinel": True}), encoding="utf-8")
+
+    config = _base_config(project_root=tmp_path)
+
+    build_knowledge_cleaning_flow(
+        config=config, layer_resolver=resolver, source="cds", force=False
+    ).run()
+
+    files = sorted(cleaned_dir.glob("*.json"))
+    assert len(files) == 2
+    # The pre-existing file for article "1" was not overwritten by the cleaning step.
+    assert json.loads(sentinel_path.read_text())["sentinel"] is True
 
 
 # ---------------------------------------------------------------------------
@@ -137,7 +213,7 @@ def test_enrichment_flow_unknown_source_raises_value_error() -> None:
         )
 
 
-def test_enrichment_flow_has_three_steps_load_enrich_write() -> None:
+def test_enrichment_flow_has_four_steps_load_filter_enrich_write() -> None:
     with patch.object(ArticleContextualizerAgent, "from_yaml", return_value=_patched_agent()):
         flow = build_knowledge_enrichment_flow(
             config=_base_config(),
@@ -147,7 +223,56 @@ def test_enrichment_flow_has_three_steps_load_enrich_write() -> None:
         )
 
     steps = flow.get_steps()
-    assert len(steps) == 3
-    assert isinstance(steps[0], LoadJsonStep)
-    assert isinstance(steps[1], ApplyStep)
-    assert isinstance(steps[2], WriteJsonStep)
+    assert len(steps) == 4
+    assert isinstance(steps[0], LoadJsonDirStep)
+    assert isinstance(steps[1], FilterAlreadyDoneStep)
+    assert isinstance(steps[2], ApplyStep)
+    assert isinstance(steps[3], WriteJsonDirStep)
+
+
+def test_enrichment_flow_force_false_skips_already_enriched_article_without_calling_agent(
+    tmp_path: Path,
+) -> None:
+    """Decision 18: the filter runs BEFORE the LLM call, so it's what saves the cost."""
+    resolver = LayerResolver(
+        layers={"cleaned": str(tmp_path / "cleaned"), "enriched": str(tmp_path / "enriched")},
+        sources={"cds": SourceConfig(dir="cds", file="articles.json")},
+    )
+    cleaned_dir = resolver.dir("cleaned", "cds")
+    cleaned_dir.mkdir(parents=True)
+    for number in ("1", "2"):
+        (cleaned_dir / f"{element_id('cds', number)}.json").write_text(
+            json.dumps(_cleaned_article_payload(number, "cds")), encoding="utf-8"
+        )
+
+    enriched_dir = resolver.dir("enriched", "cds")
+    enriched_dir.mkdir(parents=True)
+    already_done_id = element_id("cds", "1")
+    (enriched_dir / f"{already_done_id}.json").write_text(
+        json.dumps({**_cleaned_article_payload("1", "cds"), "contexts": {}}), encoding="utf-8"
+    )
+
+    config = _base_config(
+        project_root=tmp_path,
+        knowledge_preparation=PipelineLayerConfig(
+            input_layer="parsed", output_layer="enriched", sources=["cds"]
+        ),
+    )
+
+    agent = _patched_agent()
+    agent.run_sync.return_value = ArticleContextualizerResponse(contexts={0: "Contesto."})
+
+    with patch.object(ArticleContextualizerAgent, "from_yaml", return_value=agent):
+        build_knowledge_enrichment_flow(
+            config=config,
+            layer_resolver=resolver,
+            source="cds",
+            open_router_provider=_PROVIDER,
+            force=False,
+        ).run()
+
+    # Only article "2" (not yet enriched) reaches the agent.
+    assert agent.run_sync.call_count == 1
+    assert sorted(p.stem for p in enriched_dir.glob("*.json")) == sorted(
+        [element_id("cds", "1"), element_id("cds", "2")]
+    )

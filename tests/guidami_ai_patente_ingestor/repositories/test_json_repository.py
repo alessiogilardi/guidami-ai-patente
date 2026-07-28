@@ -55,6 +55,7 @@ def _enriched_article(number: str = "1") -> EnrichedArticleModel:
         url=f"https://example.com/art-{number}",
         scraped_at="2025-01-01T00:00:00",
         repealed=False,
+        source="cds",
         contexts={0: "Contesto.", 1: "Altro contesto."},
     )
 
@@ -151,6 +152,7 @@ def test_write_preserves_utf8_characters(tmp_path: Path) -> None:
             url="https://example.com/art-1",
             scraped_at="2025-01-01T00:00:00",
             repealed=False,
+            source="cds",
             contexts={0: "È obbligatorio indossare le cinture."},
         )
     ]

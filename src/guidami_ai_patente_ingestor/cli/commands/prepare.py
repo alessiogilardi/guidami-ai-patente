@@ -37,31 +37,24 @@ def dispatch_prepare(
     match args.entity:
         case "knowledge":
             source: str = args.source
-            knowledge_enrich_layer = config.knowledge_preparation.output_layer
-            if knowledge_enrich_layer is None:
-                raise ValueError("knowledge_preparation.output_layer is not configured")
             clean_flow = build_knowledge_cleaning_flow(
                 config=config,
                 layer_resolver=layer_resolver,
                 source=source,
+                force=force,
             )
             enrich_flow = build_knowledge_enrichment_flow(
                 config=config,
                 layer_resolver=layer_resolver,
                 open_router_provider=open_router_provider,
                 source=source,
+                force=force,
                 tracker=tracker,
             )
-            run_preparation(
-                clean_flow,
-                layer_resolver.path(_CLEANED_LAYER, source),
-                force=force,
-            )
-            run_preparation(
-                enrich_flow,
-                layer_resolver.path(knowledge_enrich_layer, source),
-                force=force,
-            )
+            # No run_preparation: per-element skipping lives in FilterAlreadyDoneStep
+            # (Decision 11) — a per-element layer has no honest coarse skip signal.
+            clean_flow.run()
+            enrich_flow.run()
         case "quiz":
             quiz_source: str = config.quiz_preparation.sources[0]
             quiz_enrich_layer = config.quiz_preparation.output_layer

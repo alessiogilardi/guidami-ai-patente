@@ -22,18 +22,21 @@ def _make_config_mock() -> MagicMock:
     return config
 
 
-def test_dispatch_prepare_knowledge_runs_both_preparation_flows() -> None:
+def test_dispatch_prepare_knowledge_runs_both_flows_directly_without_run_preparation() -> None:
+    """Decision 11: the knowledge branch always runs; no coarse run_preparation skip."""
     args = argparse.Namespace(entity="knowledge", source="cds", force=False)
     config_mock = _make_config_mock()
+    clean_flow_mock = MagicMock()
+    enrich_flow_mock = MagicMock()
 
     with (
         patch(
             "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
-            return_value=MagicMock(),
+            return_value=clean_flow_mock,
         ) as build_clean,
         patch(
             "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_enrichment_flow",
-            return_value=MagicMock(),
+            return_value=enrich_flow_mock,
         ) as build_enrich,
         patch("guidami_ai_patente_ingestor.cli.commands.prepare.run_preparation") as run_prep,
     ):
@@ -43,7 +46,9 @@ def test_dispatch_prepare_knowledge_runs_both_preparation_flows() -> None:
 
     build_clean.assert_called_once()
     build_enrich.assert_called_once()
-    assert run_prep.call_count == 2
+    clean_flow_mock.run.assert_called_once()
+    enrich_flow_mock.run.assert_called_once()
+    run_prep.assert_not_called()
 
 
 def test_dispatch_prepare_knowledge_passes_source_to_factories() -> None:
@@ -69,7 +74,8 @@ def test_dispatch_prepare_knowledge_passes_source_to_factories() -> None:
     assert build_enrich.call_args.kwargs["source"] == "cap"
 
 
-def test_dispatch_prepare_knowledge_with_force_passes_force_true_to_runner() -> None:
+def test_dispatch_prepare_knowledge_with_force_passes_force_to_both_flow_factories() -> None:
+    """`force` now threads into the flow factories (FilterAlreadyDoneStep), not run_preparation."""
     args = argparse.Namespace(entity="knowledge", source="cds", force=True)
     config_mock = _make_config_mock()
 
@@ -77,20 +83,19 @@ def test_dispatch_prepare_knowledge_with_force_passes_force_true_to_runner() -> 
         patch(
             "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
             return_value=MagicMock(),
-        ),
+        ) as build_clean,
         patch(
             "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_enrichment_flow",
             return_value=MagicMock(),
-        ),
-        patch("guidami_ai_patente_ingestor.cli.commands.prepare.run_preparation") as run_prep,
+        ) as build_enrich,
+        patch("guidami_ai_patente_ingestor.cli.commands.prepare.run_preparation"),
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
 
         dispatch_prepare(config_mock, MagicMock(), MagicMock(), args, tracker=None)
 
-    for c in run_prep.call_args_list:
-        force = c.kwargs.get("force") if "force" in c.kwargs else c.args[2]
-        assert force is True, f"expected force=True when args.force is True, got {force!r}"
+    assert build_clean.call_args.kwargs["force"] is True
+    assert build_enrich.call_args.kwargs["force"] is True
 
 
 def test_dispatch_prepare_quiz_runs_both_preparation_flows() -> None:

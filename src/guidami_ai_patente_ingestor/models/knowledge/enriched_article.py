@@ -1,3 +1,5 @@
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 
@@ -15,4 +17,5 @@ class EnrichedArticleModel(BaseModel):
     url: str
     scraped_at: str
     repealed: bool
+    source: Literal["cds", "cap"]
     contexts: dict[int, str] = Field(default_factory=dict)

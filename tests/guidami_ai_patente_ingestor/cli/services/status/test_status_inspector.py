@@ -29,25 +29,24 @@ def _entity_readiness(
     raise AssertionError(f"no CommandReadiness found for command={command!r} entity={entity!r}")
 
 
-def test_prepare_states_from_filesystem(tmp_path: Path) -> None:
-    """SKIP when enriched output exists; BLOCKED when parsed input is missing; else RUNNABLE."""
-    (tmp_path / "enriched" / "skip_src").mkdir(parents=True)
-    (tmp_path / "enriched" / "skip_src" / "f.json").write_text("{}")
-    (tmp_path / "parsed" / "run_src").mkdir(parents=True)
-    (tmp_path / "parsed" / "run_src" / "f.json").write_text("{}")
-    # block_src: neither parsed nor enriched exist.
+def test_knowledge_prepare_never_skips_even_when_enriched_populated(tmp_path: Path) -> None:
+    """Decision 15: per-element layers have no honest SKIP signal for knowledge.
+
+    The output file is written at the exact path `path()` resolves to, so the
+    current (unfixed) implementation would report SKIP: this is what must change.
+    """
+    (tmp_path / "enriched" / "populated_src").mkdir(parents=True)
+    (tmp_path / "enriched" / "populated_src" / "f.json").write_text("{}")
+    (tmp_path / "parsed" / "populated_src").mkdir(parents=True)
+    (tmp_path / "parsed" / "populated_src" / "f.json").write_text("{}")
 
     config = _build_config(
         tmp_path,
-        sources={
-            "skip_src": SourceConfig(dir="skip_src", file="f.json"),
-            "block_src": SourceConfig(dir="block_src", file="f.json"),
-            "run_src": SourceConfig(dir="run_src", file="f.json"),
-        },
+        sources={"populated_src": SourceConfig(dir="populated_src", file="f.json")},
         knowledge_preparation=PipelineLayerConfig(
             input_layer="parsed",
             output_layer="enriched",
-            sources=["skip_src", "block_src", "run_src"],
+            sources=["populated_src"],
         ),
     )
     layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
@@ -57,13 +56,33 @@ def test_prepare_states_from_filesystem(tmp_path: Path) -> None:
 
     prepare_knowledge = _entity_readiness(readiness, "prepare", "knowledge")
     states_by_source = {s.source: s.state for s in prepare_knowledge.sources}
-    assert states_by_source["skip_src"] == ReadinessState.SKIP
-    assert states_by_source["block_src"] == ReadinessState.BLOCKED
-    assert states_by_source["run_src"] == ReadinessState.RUNNABLE
+    assert states_by_source["populated_src"] == ReadinessState.RUNNABLE
+    assert ReadinessState.SKIP not in states_by_source.values()
 
 
-def test_index_has_no_skip_offline(tmp_path: Path) -> None:
-    """Index is RUNNABLE when its enriched input exists, BLOCKED when absent, never SKIP."""
+def test_knowledge_prepare_blocked_when_parsed_input_missing(tmp_path: Path) -> None:
+    """Decision 19: prepare's input is still a single file, so BLOCKED is preserved."""
+    config = _build_config(
+        tmp_path,
+        sources={"missing_src": SourceConfig(dir="missing_src", file="f.json")},
+        knowledge_preparation=PipelineLayerConfig(
+            input_layer="parsed",
+            output_layer="enriched",
+            sources=["missing_src"],
+        ),
+    )
+    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    inspector = StatusInspector(config, layer_resolver)
+
+    readiness = inspector.evaluate_readiness()
+
+    prepare_knowledge = _entity_readiness(readiness, "prepare", "knowledge")
+    states_by_source = {s.source: s.state for s in prepare_knowledge.sources}
+    assert states_by_source["missing_src"] == ReadinessState.BLOCKED
+
+
+def test_knowledge_index_always_runnable_even_when_enriched_input_missing(tmp_path: Path) -> None:
+    """Decision 19: index's input is now a directory, so no BLOCKED signal either."""
     (tmp_path / "enriched" / "cds").mkdir(parents=True)
     (tmp_path / "enriched" / "cds" / "f.json").write_text("{}")
     # cap: enriched input missing.
@@ -84,5 +103,39 @@ def test_index_has_no_skip_offline(tmp_path: Path) -> None:
     index_knowledge = _entity_readiness(readiness, "index", "knowledge")
     states_by_source = {s.source: s.state for s in index_knowledge.sources}
     assert states_by_source["cds"] == ReadinessState.RUNNABLE
-    assert states_by_source["cap"] == ReadinessState.BLOCKED
+    assert states_by_source["cap"] == ReadinessState.RUNNABLE
     assert ReadinessState.SKIP not in states_by_source.values()
+    assert ReadinessState.BLOCKED not in states_by_source.values()
+
+
+def test_quiz_prepare_still_uses_skip_and_blocked_signals(tmp_path: Path) -> None:
+    """Quiz is unaffected by the per-element rework (Decision 15 scopes it to knowledge only)."""
+    (tmp_path / "enriched" / "skip_src").mkdir(parents=True)
+    (tmp_path / "enriched" / "skip_src" / "f.json").write_text("{}")
+    (tmp_path / "parsed" / "run_src").mkdir(parents=True)
+    (tmp_path / "parsed" / "run_src" / "f.json").write_text("{}")
+    # block_src: neither parsed nor enriched exist.
+
+    config = _build_config(
+        tmp_path,
+        sources={
+            "skip_src": SourceConfig(dir="skip_src", file="f.json"),
+            "block_src": SourceConfig(dir="block_src", file="f.json"),
+            "run_src": SourceConfig(dir="run_src", file="f.json"),
+        },
+        quiz_preparation=PipelineLayerConfig(
+            input_layer="parsed",
+            output_layer="enriched",
+            sources=["skip_src", "block_src", "run_src"],
+        ),
+    )
+    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    inspector = StatusInspector(config, layer_resolver)
+
+    readiness = inspector.evaluate_readiness()
+
+    prepare_quiz = _entity_readiness(readiness, "prepare", "quiz")
+    states_by_source = {s.source: s.state for s in prepare_quiz.sources}
+    assert states_by_source["skip_src"] == ReadinessState.SKIP
+    assert states_by_source["block_src"] == ReadinessState.BLOCKED
+    assert states_by_source["run_src"] == ReadinessState.RUNNABLE

@@ -27,3 +27,18 @@ class LayerResolver:
             raise KeyError(f"Unknown source: {source!r}. Available: {list(self._sources)}")
         src = self._sources[source]
         return Path(self._layers[layer]) / src.dir / src.file
+
+    def dir(self, layer: str, source: str) -> Path:
+        """Return the container directory for a (layer, source) pair.
+
+        Unlike `path()`, it stops before `SourceConfig.file`: per-element layers
+        hold one file per element inside this directory.
+
+        Raises:
+            KeyError: If `layer` or `source` are not configured.
+        """
+        if layer not in self._layers:
+            raise KeyError(f"Unknown layer: {layer!r}. Available: {list(self._layers)}")
+        if source not in self._sources:
+            raise KeyError(f"Unknown source: {source!r}. Available: {list(self._sources)}")
+        return Path(self._layers[layer]) / self._sources[source].dir
