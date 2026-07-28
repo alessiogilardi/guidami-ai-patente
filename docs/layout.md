@@ -50,7 +50,15 @@ repo/
   `orchestrators/` (pipelines + builders) → `services/` (domain logic) →
   `repositories/` (data access) → `clients/` (external API adapters) →
   `models/` / `entities/` (data shapes) → `mappers/` (transformations) →
-  `configs/` (Pydantic settings) → `agents/` (LLM agent wrappers).
+  `configs/` (Pydantic settings) → `agents/` (LLM agent wrappers). The
+  top-level `mappers/` package (`ArticleMapper`, `QuizMapper`) holds only
+  pipeline-stage domain mappers; a mapper that exists solely to translate
+  a domain model to/from one agent's request/response DTOs lives in
+  `agents/mappers/` instead (`ArticleContextualizerMapper`,
+  `NormReferenceDescriberMapper`, `RoadSignDescriberMapper`) — `agents/`
+  is a self-contained package for its own DTOs (`agents/dto/`) and their
+  mappers, the same self-containment convention `cli/` follows (see
+  `.claude/rules/cli-structure.md`).
 - **Code shared across the ingestor and the future FastAPI app** (embedding
   clients, `UseCase`/`ForEach`, `BaseAgent`, Postgres client, generic
   configs) goes in `src/commons/`, not duplicated into
@@ -121,4 +129,4 @@ repo/
   instead. The internal `cli/` breakdown and the full self-containment
   boundary rule live in `.claude/rules/cli-structure.md` — not restated here.
 
-*Last updated: 2026-07-19 — verified against commit `94ff3de`.*
+*Last updated: 2026-07-28 — verified against commit `09c7345`.*

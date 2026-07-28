@@ -1,6 +1,6 @@
 """Tests for NormReferenceDescriberMapper (image sentinel, entities removal)."""
 
-from guidami_ai_patente_ingestor.mappers.agents import NormReferenceDescriberMapper
+from guidami_ai_patente_ingestor.agents.mappers import NormReferenceDescriberMapper
 from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 
 

@@ -10,7 +10,7 @@ from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
     RoadSignDescriberRequest,
     RoadSignDescriberResponse,
 )
-from guidami_ai_patente_ingestor.mappers.agents import RoadSignDescriberMapper
+from guidami_ai_patente_ingestor.agents.mappers import RoadSignDescriberMapper
 from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 
 logger = logging.getLogger(__name__)

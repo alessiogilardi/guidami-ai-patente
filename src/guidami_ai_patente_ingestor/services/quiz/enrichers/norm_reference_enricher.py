@@ -8,7 +8,7 @@ from guidami_ai_patente_ingestor.agents import NormReferenceDescriberAgent
 from guidami_ai_patente_ingestor.agents.dto.norm_reference_describer import (
     NormReferenceDescriberResponse,
 )
-from guidami_ai_patente_ingestor.mappers.agents import NormReferenceDescriberMapper
+from guidami_ai_patente_ingestor.agents.mappers import NormReferenceDescriberMapper
 from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 
 logger = logging.getLogger(__name__)

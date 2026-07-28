@@ -7,7 +7,7 @@ from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
     ArticleContextualizerResponse,
 )
-from guidami_ai_patente_ingestor.mappers.agents import ArticleContextualizerMapper
+from guidami_ai_patente_ingestor.agents.mappers import ArticleContextualizerMapper
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 
 logger = logging.getLogger(__name__)
