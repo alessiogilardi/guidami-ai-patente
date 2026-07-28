@@ -84,3 +84,7 @@ class AsyncLocalFileSystemClient(
     async def exists_or_raise(self, path: str | Path) -> None:
         """Validate that a file is accessible under the base directory asynchronously."""
         self._get_safe_read_path(path)
+
+    async def list_files(self, path: str | Path, pattern: str = "*.json") -> list[Path]:
+        """Async twin of the sync client: same shared implementation."""
+        return self._list_files(path, pattern)

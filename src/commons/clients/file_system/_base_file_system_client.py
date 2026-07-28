@@ -85,6 +85,40 @@ class BaseFileSystemClient:
         path.parent.mkdir(parents=True, exist_ok=True)
         return path
 
+    def _get_safe_dir_path(self, relative_path: str | Path) -> Path | None:
+        """Resolve and validate a directory path; ``None`` if it does not exist.
+
+        Args:
+            relative_path: Path relative to the base directory.
+
+        Returns:
+            Absolute resolved path if it exists and is a directory, else ``None``.
+
+        Raises:
+            PermissionError: If path traversal is detected.
+        """
+        path = self._resolve_path(relative_path)
+        return path if path.is_dir() else None
+
+    def _list_files(self, dir_path: str | Path, pattern: str) -> list[Path]:
+        """Shared listing logic for the sync and async clients.
+
+        Args:
+            dir_path: Directory (relative to the base directory) to list.
+            pattern: Glob pattern to match files against.
+
+        Returns:
+            Sorted list of matching paths; ``[]`` if the directory does not exist.
+
+        Raises:
+            PermissionError: If path traversal is detected.
+        """
+        safe_dir = self._get_safe_dir_path(dir_path)
+        if safe_dir is None:
+            logger.debug("Directory '%s' does not exist, returning no files", dir_path)
+            return []
+        return sorted(safe_dir.glob(pattern))
+
     @contextmanager
     def _io_operation(self, path: str | Path, mode: Literal["r", "w"] = "r") -> Iterator[Path]:
         logger.debug("Starting I/O operation on '%s'", path)

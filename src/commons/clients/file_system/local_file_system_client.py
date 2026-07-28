@@ -55,3 +55,7 @@ class LocalFileSystemClient(BaseFileSystemClient, FileReaderInterface, FileWrite
     def exists_or_raise(self, path: str | Path) -> None:
         """Validate that a file is accessible under the base directory."""
         self._get_safe_read_path(path)
+
+    def list_files(self, path: str | Path, pattern: str = "*.json") -> list[Path]:
+        """List files matching ``pattern``, sorted by name; ``[]`` if absent."""
+        return self._list_files(path, pattern)

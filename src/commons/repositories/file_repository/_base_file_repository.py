@@ -72,6 +72,30 @@ class BaseFileRepository[T](ABC):
 
         self._write_raw(raw_data, file_name)
 
+    def load_all(self, dir_path: str | Path) -> list[T]:
+        """Load every file of a directory as ONE object each, ordered by filename.
+
+        Args:
+            dir_path: Directory holding one serialized object per file.
+
+        Returns:
+            Deserialized objects, in filename order (empty if the dir is absent).
+
+        Raises:
+            ValueError: If a file holds an array instead of a single object
+                (typically a leftover monolithic artifact).
+        """
+        items: list[T] = []
+        for file_path in self._file_system_client.list_files(dir_path):
+            raw_data = self._read_raw(file_path)
+            if not isinstance(raw_data, dict):
+                raise ValueError(
+                    f"Expected one object per file, found "
+                    f"{type(raw_data).__name__} in '{file_path}'"
+                )
+            items.append(self._deserialize_item(raw_data))
+        return items
+
     @abstractmethod
     def _read_raw(self, file_name: str | Path) -> dict | list: ...
 

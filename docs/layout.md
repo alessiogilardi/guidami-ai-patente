@@ -29,6 +29,9 @@ repo/
 ├── db/                             # init.sql — Postgres/pgvector schema, applied on container init
 ├── docker/                         # docker-compose.yml + .env for the Postgres/pgvector service
 ├── data/                           # Pipeline data at rest: raw/ -> parsed/ -> cleaned/ -> enriched/
+│                                    #   knowledge's cleaned/enriched are per-element (one JSON
+│                                    #   file per article, named by commons.utils.element_id);
+│                                    #   parsed and the whole quiz pipeline stay monolithic
 │                                    #   (data/docs/ is not a pipeline stage: it holds the source quiz PDF)
 ├── docs/                           # This documentation (Second Brain) + docs/plans/ (design plans)
 └── .claude/                        # Claude Code config: rules/, skills/, hooks/, agents/
@@ -79,7 +82,21 @@ repo/
   flow-control primitive with no knowledge of ingestion/quiz content) is
   out of scope for this repo: it belongs in the external `flowstep`
   package (github.com/alessiogilardi/flowstep), not in
-  `guidami_ai_patente_ingestor/` or anywhere else in this tree.
+  `guidami_ai_patente_ingestor/` or anywhere else in this tree. Exception:
+  steps that are domain-agnostic but specific to *this repo's* layer/source
+  model (e.g. `orchestrators/steps/generic/{load_json_dir_step,
+  filter_already_done_step,write_json_dir_step}.py`, parametrized by
+  `LayerResolver`/`JsonRepository`/an injected `id_of` keyer) stay in
+  `guidami_ai_patente_ingestor/orchestrators/steps/generic/`, next to
+  `LoadJsonStep`/`WriteJsonStep` — they know nothing of articles or quizzes,
+  but they do know this repo's layer/source vocabulary, which `flowstep`
+  itself does not.
+- **A new, genuinely generic helper with no domain logic** (e.g. a
+  deterministic id function usable by any future keyer) goes flat in
+  `src/commons/utils/`, next to `deduplicate.py`/`hash_utils.py` — e.g.
+  `commons/utils/element_id.py::element_id(*parts) -> str`. Domain binding
+  (which parts identify an element) stays at the call site, not inside the
+  helper.
 - **One-shot data-acquisition scripts** (a new scraper source, a new PDF
   parser) go in `src/scrapers/` or `src/parsers/` respectively, and are
   registered as a `[project.scripts]` entry in `pyproject.toml`.
@@ -104,4 +121,4 @@ repo/
   instead. The internal `cli/` breakdown and the full self-containment
   boundary rule live in `.claude/rules/cli-structure.md` — not restated here.
 
-*Last updated: 2026-07-16 — verified against commit `a6db92b`.*
+*Last updated: 2026-07-19 — verified against commit `94ff3de`.*

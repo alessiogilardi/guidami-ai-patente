@@ -76,3 +76,18 @@ class FileReaderInterface(ABC):
             PermissionError: If path traversal is detected (checked first).
             FileNotFoundError: If the file does not exist.
         """
+
+    @abstractmethod
+    def list_files(self, path: str | Path, pattern: str = "*.json") -> list[Path]:
+        """List files matching ``pattern`` in a directory, sorted by name.
+
+        Args:
+            path: Directory relative to the client's base directory.
+            pattern: Glob pattern to match files against. Defaults to ``"*.json"``.
+
+        Returns:
+            Sorted list of matching paths; ``[]`` if the directory does not exist.
+
+        Raises:
+            PermissionError: If path traversal is detected.
+        """

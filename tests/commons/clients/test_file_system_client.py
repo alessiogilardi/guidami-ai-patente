@@ -109,6 +109,26 @@ class TestLocalFileSystemClient:
         with pytest.raises(PermissionError, match="Path traversal attempt detected"):
             client.exists_or_raise("../escaped.txt")
 
+    def test_list_files_sorted(self, tmp_path: Path) -> None:
+        client = LocalFileSystemClient(tmp_path)
+        (tmp_path / "dir").mkdir()
+        client.write_text("dir/b.json", "{}")
+        client.write_text("dir/a.json", "{}")
+        client.write_text("dir/c.json", "{}")
+
+        result = client.list_files("dir")
+
+        assert [p.name for p in result] == ["a.json", "b.json", "c.json"]
+
+    def test_list_files_missing_dir_returns_empty(self, tmp_path: Path) -> None:
+        client = LocalFileSystemClient(tmp_path)
+        assert client.list_files("does_not_exist") == []
+
+    def test_list_files_rejects_traversal(self, tmp_path: Path) -> None:
+        client = LocalFileSystemClient(tmp_path)
+        with pytest.raises(PermissionError, match="Path traversal attempt detected"):
+            client.list_files("../outside")
+
 
 # ---------------------------------------------------------------------------
 # TestAsyncLocalFileSystemClient
@@ -163,3 +183,14 @@ class TestAsyncLocalFileSystemClient:
         client = AsyncLocalFileSystemClient(tmp_path)
         with pytest.raises(FileNotFoundError):
             await client.exists_or_raise("ghost.txt")
+
+    async def test_list_files_matches_sync(self, tmp_path: Path) -> None:
+        sync_client = LocalFileSystemClient(tmp_path)
+        (tmp_path / "dir").mkdir()
+        sync_client.write_text("dir/b.json", "{}")
+        sync_client.write_text("dir/a.json", "{}")
+
+        async_client = AsyncLocalFileSystemClient(tmp_path)
+        result = await async_client.list_files("dir")
+
+        assert [p.name for p in result] == sorted(p.name for p in sync_client.list_files("dir"))

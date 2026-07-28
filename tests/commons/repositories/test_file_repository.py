@@ -216,3 +216,35 @@ class TestSerialization:
         repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
         with pytest.raises(ValueError, match="dict or a list"):
             repo.load("bad.json")
+
+
+# ---------------------------------------------------------------------------
+# BaseFileRepository — load_all(dir)
+# ---------------------------------------------------------------------------
+
+
+class TestLoadAll:
+    def test_load_all_roundtrip(self, tmp_path: Path) -> None:
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
+        (tmp_path / "dir").mkdir()
+        repo.write(SampleModel(name="a", value=1), "dir/a.json")
+        repo.write(SampleModel(name="b", value=2), "dir/b.json")
+
+        loaded = repo.load_all("dir")
+
+        assert loaded == [SampleModel(name="a", value=1), SampleModel(name="b", value=2)]
+
+    def test_load_all_empty_dir(self, tmp_path: Path) -> None:
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
+        assert repo.load_all("does_not_exist") == []
+
+    def test_load_all_rejects_array_file(self, tmp_path: Path) -> None:
+        repo = JsonRepository(SampleModel, file_system_client=LocalFileSystemClient(tmp_path))
+        (tmp_path / "dir").mkdir()
+        monolith = tmp_path / "dir" / "monolith.json"
+        monolith.write_text(
+            '[{"name": "a", "value": 1}, {"name": "b", "value": 2}]', encoding="utf-8"
+        )
+
+        with pytest.raises(ValueError, match="one object per file"):
+            repo.load_all("dir")
