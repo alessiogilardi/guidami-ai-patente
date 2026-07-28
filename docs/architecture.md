@@ -63,7 +63,10 @@ LLM agents in use today (all `BaseAgent` subclasses under
 - `ArticleContextualizerAgent` — knowledge-corpus enrichment (per-article context).
   Called once per article, concurrently across articles, bounded by
   `IngestorConfig.article_contextualizer_concurrency` (default `8`) — symmetric to
-  the quiz enrichers (see `patterns.md`).
+  the quiz enrichers (see `patterns.md`). `ContextEnricher` skips the call (article
+  returned unchanged) only when the article is `repealed` or has neither `text` nor
+  `paragraphs` — an article with intro `text` but no numbered `paragraphs` is still
+  contextualized, since `ArticleChunker` turns `text` into the `comma_index=0` chunk.
 - `RoadSignDescriberAgent` — vision agent, quiz enrichment; deliberately
   answer-blind (see ADR below). Owns image-file reading via its
   `PromptRenderer`/`file_reader`; `ImageDescriptionEnricher` only passes
@@ -227,4 +230,4 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-07-28 — verified against commit `10f6fa1`.*
+*Last updated: 2026-07-28 — verified against commit `0f386a9`.*

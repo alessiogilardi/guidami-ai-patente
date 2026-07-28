@@ -12,12 +12,15 @@ from guidami_ai_patente_ingestor.services.knowledge.enrichers import ContextEnri
 
 
 def _article(
-    number: str, repealed: bool = False, paragraphs: list[str] | None = None
+    number: str,
+    repealed: bool = False,
+    paragraphs: list[str] | None = None,
+    text: str | None = None,
 ) -> EnrichedArticleModel:
     return EnrichedArticleModel(
         number=number,
         title=f"Articolo {number}",
-        text=f"Testo {number}.",
+        text=text if text is not None else f"Testo {number}.",
         paragraphs=paragraphs if paragraphs is not None else [f"Comma 1 art {number}."],
         url=f"https://example.com/art-{number}",
         scraped_at="2025-01-01T00:00:00",
@@ -98,15 +101,26 @@ async def test_enrich_skips_repealed_article_without_calling_agent() -> None:
     agent.run.assert_not_called()
 
 
-async def test_enrich_skips_article_with_no_paragraphs_without_calling_agent() -> None:
+async def test_enrich_skips_article_with_no_text_and_no_paragraphs_without_calling_agent() -> None:
     agent = _make_agent()
     enricher = ContextEnricher(8, agent)
-    article = _article("1", paragraphs=[])
+    article = _article("1", paragraphs=[], text="")
 
     result = await enricher([article])
 
     assert result[0].contexts == {}
     agent.run.assert_not_called()
+
+
+async def test_enrich_contextualizes_article_with_text_but_no_paragraphs() -> None:
+    agent = _make_agent(contexts={0: "Contesto sul testo introduttivo."})
+    enricher = ContextEnricher(8, agent)
+    article = _article("1", paragraphs=[])
+
+    result = await enricher([article])
+
+    assert result[0].contexts == {0: "Contesto sul testo introduttivo."}
+    agent.run.assert_called_once()
 
 
 async def test_enrich_agent_failure_on_one_item_returns_article_unchanged_and_warns(

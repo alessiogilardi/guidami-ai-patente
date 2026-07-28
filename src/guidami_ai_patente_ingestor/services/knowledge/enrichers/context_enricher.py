@@ -16,10 +16,11 @@ logger = logging.getLogger(__name__)
 class ContextEnricher(AsyncUseCase[Iterable[EnrichedArticleModel], list[EnrichedArticleModel]]):
     """Enriches articles with per-paragraph contexts generated via LLM.
 
-    The `repealed`/`paragraphs` guard and the domain↔DTO mapping live here, not in the
-    agent. Per-article calls run concurrently under `asyncio.gather`, bounded by a
-    semaphore. An isolated failure on one article does not abort the batch: it logs a
-    warning and returns the article unchanged.
+    An article is skipped (returned unchanged, agent not called) when it is `repealed`
+    or has neither `text` nor `paragraphs` to contextualize. The guard and the domain↔DTO
+    mapping live here, not in the agent. Per-article calls run concurrently under
+    `asyncio.gather`, bounded by a semaphore. An isolated failure on one article does not
+    abort the batch: it logs a warning and returns the article unchanged.
     """
 
     def __init__(
@@ -53,7 +54,7 @@ class ContextEnricher(AsyncUseCase[Iterable[EnrichedArticleModel], list[Enriched
     async def _contextualize(
         self, article: EnrichedArticleModel, semaphore: asyncio.Semaphore
     ) -> EnrichedArticleModel:
-        if article.repealed or not article.paragraphs:
+        if article.repealed or not (article.text or article.paragraphs):
             return article
         try:
             request = ArticleContextualizerMapper.from_enriched_article_to_request(article)
