@@ -19,7 +19,8 @@ CHUNK_ENTITIES = "chunk_entities"  # map→entity output: list[KnowledgeChunk] �
 
 # --- Knowledge preparation (per-element layers) ---
 # Clean flow: LoadJsonStep → ApplyStep → FilterAlreadyDoneStep → WriteJsonDirStep.
-# Enrich flow: LoadJsonDirStep → FilterAlreadyDoneStep → ApplyStep → WriteJsonDirStep.
+# Enrich flow: LoadJsonDirStep → FilterAlreadyDoneStep → ApplyStep(map_cleaned_articles)
+#   → AsyncApplyStep(enrich_articles) → WriteJsonDirStep.
 PARSED_ARTICLES = (
     "parsed_articles"  # clean input: list[ParsedArticleModel] loaded from the "parsed" layer
 )
@@ -27,6 +28,7 @@ CLEANED_ARTICLES = "cleaned_articles"  # clean output / enrich input: list[Clean
 FILTERED_ARTICLES = (
     "filtered_articles"  # FilterAlreadyDoneStep output: elements still to (clean|enrich)
 )
+MAPPED_ARTICLES = "mapped_articles"  # cleaned→enriched map output; async-enrichment input
 
 # --- Quiz indexing (SP04) ---
 ENRICHED_QUIZ = "enriched_quiz"  # input: enriched quiz bank loaded from disk

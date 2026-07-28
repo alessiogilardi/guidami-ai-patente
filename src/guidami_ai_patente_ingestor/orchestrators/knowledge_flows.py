@@ -35,6 +35,7 @@ from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, Artic
 from guidami_ai_patente_ingestor.services.knowledge.enrichers import ContextEnricher
 
 from .steps.generic import (
+    AsyncApplyStep,
     FilterAlreadyDoneStep,
     LoadJsonDirStep,
     LoadJsonStep,
@@ -257,8 +258,12 @@ def build_knowledge_enrichment_flow(
     transform this filter exists to save (Decision 18).
 
     Step mapping:
-      `LoadJsonDirStep` → `FilterAlreadyDoneStep` → `ApplyStep(map + enrich)`
-      → `WriteJsonDirStep`
+      `LoadJsonDirStep` → `FilterAlreadyDoneStep` → `ApplyStep(map_cleaned_articles)`
+      → `AsyncApplyStep(enrich_articles)` → `WriteJsonDirStep`
+
+    The enrichment phase runs under a single `asyncio.run` owned by `AsyncApplyStep`;
+    per-article LLM calls fire concurrently, bounded by
+    `config.article_contextualizer_concurrency` (symmetric to the quiz enrichment flow).
 
     Args:
         config: Full ingestor configuration (already loaded at the entry point).
@@ -315,11 +320,19 @@ def build_knowledge_enrichment_flow(
     agent = ArticleContextualizerAgent.from_yaml(
         "article_contextualizer", agents_repository, open_router_provider, tracker=tracker
     )
-    enrich_step = ApplyStep(
-        "enrich",
+    # Base-map cleaned→enriched is a sync ApplyStep; the LLM enrichment is a separate
+    # AsyncApplyStep that owns the single asyncio.run and fires per-article calls
+    # concurrently (symmetric to the quiz enrichment flow).
+    map_step = ApplyStep(
+        "map_cleaned_articles",
         ForEach(ArticleMapper.from_cleaned_to_enriched),
-        ContextEnricher(agent),
         input_key=context_keys.FILTERED_ARTICLES,
+        output_key=context_keys.MAPPED_ARTICLES,
+    )
+    enrich_step = AsyncApplyStep(
+        "enrich_articles",
+        ContextEnricher(config.article_contextualizer_concurrency, agent),
+        input_key=context_keys.MAPPED_ARTICLES,
         output_key=context_keys.ENRICHED_ARTICLES,
     )
 
@@ -337,6 +350,7 @@ def build_knowledge_enrichment_flow(
         FlowBuilder("knowledge_enrichment")
         .add_step(load_step)
         .add_step(filter_step)
+        .add_step(map_step)
         .add_step(enrich_step)
         .add_step(write_step)
         .build(validate=validate)

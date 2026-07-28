@@ -1,47 +1,64 @@
+import asyncio
 import logging
 from collections.abc import Iterable
 
-from commons.use_cases import UseCase
+from commons.use_cases import AsyncUseCase
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
+from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
+    ArticleContextualizerResponse,
+)
 from guidami_ai_patente_ingestor.mappers.agents import ArticleContextualizerMapper
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 
 logger = logging.getLogger(__name__)
 
 
-class ContextEnricher(UseCase[Iterable[EnrichedArticleModel], list[EnrichedArticleModel]]):
+class ContextEnricher(AsyncUseCase[Iterable[EnrichedArticleModel], list[EnrichedArticleModel]]):
     """Enriches articles with per-paragraph contexts generated via LLM.
 
-    The `repealed` guard and the domain↔DTO mapping live here, not in the agent.
-    An isolated failure on one article does not abort the batch: it logs a warning
-    and returns the article unchanged.
+    The `repealed`/`paragraphs` guard and the domain↔DTO mapping live here, not in the
+    agent. Per-article calls run concurrently under `asyncio.gather`, bounded by a
+    semaphore. An isolated failure on one article does not abort the batch: it logs a
+    warning and returns the article unchanged.
     """
 
-    def __init__(self, article_contextualizer_agent: ArticleContextualizerAgent) -> None:
-        """Injects the contextualization agent.
+    def __init__(
+        self, max_concurrency: int, article_contextualizer_agent: ArticleContextualizerAgent
+    ) -> None:
+        """Injects the concurrency limit and the contextualization agent.
 
         Args:
+            max_concurrency: Maximum number of in-flight LLM calls per run.
             article_contextualizer_agent: Agent that generates per-paragraph contexts via LLM.
         """
+        # Store the limit, not the Semaphore: an asyncio.Semaphore binds to the loop of its
+        # first use; the loop is owned by the caller (AsyncApplyStep), so the semaphore is
+        # built per-run in `execute`, keeping the enricher reusable across runs/loops.
+        self._max_concurrency = max_concurrency
         self._agent = article_contextualizer_agent
 
-    def execute(self, request: Iterable[EnrichedArticleModel]) -> list[EnrichedArticleModel]:
+    async def execute(self, request: Iterable[EnrichedArticleModel]) -> list[EnrichedArticleModel]:
         """Populates `contexts` on every article.
 
         Args:
             request: Enriched articles (base-map) to enrich.
 
         Returns:
-            New `EnrichedArticleModel` instances with `contexts` populated.
+            New `EnrichedArticleModel` instances with `contexts` populated where possible.
         """
-        return [self._contextualize(item) for item in request]
+        articles = list(request)
+        semaphore = asyncio.Semaphore(self._max_concurrency)  # bound to this run's loop
+        return list(await asyncio.gather(*(self._contextualize(a, semaphore) for a in articles)))
 
-    def _contextualize(self, article: EnrichedArticleModel) -> EnrichedArticleModel:
+    async def _contextualize(
+        self, article: EnrichedArticleModel, semaphore: asyncio.Semaphore
+    ) -> EnrichedArticleModel:
         if article.repealed or not article.paragraphs:
             return article
         try:
             request = ArticleContextualizerMapper.from_enriched_article_to_request(article)
-            response = self._agent.run_sync(request)
+            async with semaphore:
+                response: ArticleContextualizerResponse = await self._agent.run(request)
             return ArticleContextualizerMapper.from_response_to_enriched_article(article, response)
         except Exception:
             logger.warning(

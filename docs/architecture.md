@@ -61,6 +61,9 @@ whenever every row of a question resolves its own row-level image instead.
 LLM agents in use today (all `BaseAgent` subclasses under
 `guidami_ai_patente_ingestor/agents/`):
 - `ArticleContextualizerAgent` — knowledge-corpus enrichment (per-article context).
+  Called once per article, concurrently across articles, bounded by
+  `IngestorConfig.article_contextualizer_concurrency` (default `8`) — symmetric to
+  the quiz enrichers (see `patterns.md`).
 - `RoadSignDescriberAgent` — vision agent, quiz enrichment; deliberately
   answer-blind (see ADR below). Owns image-file reading via its
   `PromptRenderer`/`file_reader`; `ImageDescriptionEnricher` only passes
@@ -156,7 +159,7 @@ deterministic `commons.utils.element_id(source, number)`; `parsed` stays a singl
 monolithic file per source — see
 `docs/plans/2026-07-17--per-element-knowledge-layers.md`):
 1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(ForEach(ArticleCleaner), ForEach(partial(ArticleMapper.from_parsed_to_cleaned, source=source)))` → `FilterAlreadyDoneStep` (drops articles already present in `cleaned/`) → `WriteJsonDirStep` (one file per article).
-2. *Enrichment*: `LoadJsonDirStep` (cleaned, per-element) → `FilterAlreadyDoneStep` (drops articles already present in `enriched/`, **before** the LLM call — this is what saves the cost) → `ApplyStep(ForEach(ArticleMapper.from_cleaned_to_enriched), ContextEnricher(ArticleContextualizerAgent))` → `WriteJsonDirStep` (one file per article).
+2. *Enrichment*: `LoadJsonDirStep` (cleaned, per-element) → `FilterAlreadyDoneStep` (drops articles already present in `enriched/`, **before** the LLM call — this is what saves the cost) → `ApplyStep(ForEach(ArticleMapper.from_cleaned_to_enriched))` → `AsyncApplyStep(ContextEnricher(article_contextualizer_concurrency, ArticleContextualizerAgent))` → `WriteJsonDirStep` (one file per article). The base-map runs in a synchronous `ApplyStep`; the LLM enrichment runs in a separate `AsyncApplyStep` (per-article concurrent calls under one `asyncio.run`) — symmetric to the quiz enrichment flow.
 3. *Indexing*: `LoadJsonDirStep` (enriched, per-element) → `ApplyStep(FlatMap(ArticleChunker))` → `EmbedChunksStep` → `ApplyStep(ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk))` → `StoreChunksStep` (deletes only that source's rows, then inserts — scoped full-reload).
 
 Resumability from the per-element layout is **cross-run only**: a re-run of
@@ -224,4 +227,4 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-07-19 — verified against commit `94ff3de`.*
+*Last updated: 2026-07-28 — verified against commit `10f6fa1`.*

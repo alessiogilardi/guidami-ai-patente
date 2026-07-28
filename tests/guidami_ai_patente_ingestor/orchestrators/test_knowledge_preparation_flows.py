@@ -26,6 +26,7 @@ from guidami_ai_patente_ingestor.orchestrators import (
     build_knowledge_enrichment_flow,
 )
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
+    AsyncApplyStep,
     FilterAlreadyDoneStep,
     LoadJsonDirStep,
     LoadJsonStep,
@@ -213,7 +214,7 @@ def test_enrichment_flow_unknown_source_raises_value_error() -> None:
         )
 
 
-def test_enrichment_flow_has_four_steps_load_filter_enrich_write() -> None:
+def test_enrichment_flow_has_five_steps_load_filter_map_enrich_write() -> None:
     with patch.object(ArticleContextualizerAgent, "from_yaml", return_value=_patched_agent()):
         flow = build_knowledge_enrichment_flow(
             config=_base_config(),
@@ -223,11 +224,12 @@ def test_enrichment_flow_has_four_steps_load_filter_enrich_write() -> None:
         )
 
     steps = flow.get_steps()
-    assert len(steps) == 4
+    assert len(steps) == 5
     assert isinstance(steps[0], LoadJsonDirStep)
     assert isinstance(steps[1], FilterAlreadyDoneStep)
     assert isinstance(steps[2], ApplyStep)
-    assert isinstance(steps[3], WriteJsonDirStep)
+    assert isinstance(steps[3], AsyncApplyStep)
+    assert isinstance(steps[4], WriteJsonDirStep)
 
 
 def test_enrichment_flow_force_false_skips_already_enriched_article_without_calling_agent(
@@ -260,7 +262,7 @@ def test_enrichment_flow_force_false_skips_already_enriched_article_without_call
     )
 
     agent = _patched_agent()
-    agent.run_sync.return_value = ArticleContextualizerResponse(contexts={0: "Contesto."})
+    agent.run.return_value = ArticleContextualizerResponse(contexts={0: "Contesto."})
 
     with patch.object(ArticleContextualizerAgent, "from_yaml", return_value=agent):
         build_knowledge_enrichment_flow(
@@ -272,7 +274,7 @@ def test_enrichment_flow_force_false_skips_already_enriched_article_without_call
         ).run()
 
     # Only article "2" (not yet enriched) reaches the agent.
-    assert agent.run_sync.call_count == 1
+    assert agent.run.call_count == 1
     assert sorted(p.stem for p in enriched_dir.glob("*.json")) == sorted(
         [element_id("cds", "1"), element_id("cds", "2")]
     )

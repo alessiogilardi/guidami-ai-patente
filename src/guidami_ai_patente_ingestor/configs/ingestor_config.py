@@ -58,6 +58,7 @@ class IngestorConfig(BaseSettings):
     embedding_batch_size: int = 64
     road_sign_describer_concurrency: int = 8
     norm_reference_describer_concurrency: int = 8
+    article_contextualizer_concurrency: int = 8
     embedding: EmbeddingConfig = EmbeddingConfig()
     postgres: PostgresConnectionConfig
     knowledge_chunks_table: str = "knowledge_chunks"
