@@ -5,7 +5,7 @@ system: "Riformuli norme in linguaggio piano, senza inventare contenuti."
 user: |
   Articolo: $title
   $text
-  $paragraphs
+  $paragraphs_block
   Restituisci un oggetto JSON con un campo "contexts": un dizionario dove le chiavi sono gli
   indici interi dei commi (0, 1, 2, ...) e i valori sono stringhe che spiegano ciascun comma
   in linguaggio semplice e accessibile.

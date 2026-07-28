@@ -1,7 +1,7 @@
 """Tests for ArticleContextualizerRequest and ArticleContextualizerResponse DTOs."""
 
 
-def test_request_accepts_title_text_paragraphs_as_strings() -> None:
+def test_request_accepts_title_text_and_paragraphs_as_list() -> None:
     from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
         ArticleContextualizerRequest,
     )
@@ -9,22 +9,42 @@ def test_request_accepts_title_text_paragraphs_as_strings() -> None:
     req = ArticleContextualizerRequest(
         title="Finalità del codice",
         text="La circolazione stradale è regolata dal presente codice.",
-        paragraphs="1. Le norme del presente codice.\n2. Si applicano.",
+        paragraphs=["Le norme del presente codice.", "Si applicano."],
     )
     assert req.title == "Finalità del codice"
     assert req.text == "La circolazione stradale è regolata dal presente codice."
-    assert req.paragraphs == "1. Le norme del presente codice.\n2. Si applicano."
+    assert req.paragraphs == ["Le norme del presente codice.", "Si applicano."]
 
 
-def test_request_paragraphs_is_str_not_list() -> None:
+def test_request_paragraphs_is_list_not_str() -> None:
     from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
         ArticleContextualizerRequest,
     )
 
-    req = ArticleContextualizerRequest(title="T", text="X", paragraphs="1. Comma.")
-    assert isinstance(req.paragraphs, str), (
-        f"paragraphs must be str but got {type(req.paragraphs)}"
+    req = ArticleContextualizerRequest(title="T", text="X", paragraphs=["Comma."])
+    assert isinstance(req.paragraphs, list), (
+        f"paragraphs must be list but got {type(req.paragraphs)}"
     )
+
+
+def test_request_paragraphs_block_renders_numbered_list() -> None:
+    from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
+        ArticleContextualizerRequest,
+    )
+
+    req = ArticleContextualizerRequest(
+        title="T", text="X", paragraphs=["Primo comma.", "Secondo comma."]
+    )
+    assert req.paragraphs_block == "1. Primo comma.\n2. Secondo comma."
+
+
+def test_request_paragraphs_block_exposed_by_model_dump() -> None:
+    from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
+        ArticleContextualizerRequest,
+    )
+
+    req = ArticleContextualizerRequest(title="T", text="X", paragraphs=["Comma."])
+    assert req.model_dump()["paragraphs_block"] == "1. Comma."
 
 
 def test_request_has_exactly_title_text_paragraphs_fields() -> None:

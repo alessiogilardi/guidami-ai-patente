@@ -31,14 +31,14 @@ def agents_dir(tmp_path: Path) -> YamlRepository:
     (d / "article_contextualizer.yaml").write_text(
         "model_name: openrouter/google/gemini-2.5-flash-lite\n"
         "system: 'Test system.'\n"
-        "user: 'Articolo: $title\\n$text\\n$paragraphs'\n",
+        "user: 'Articolo: $title\\n$text\\n$paragraphs_block'\n",
         encoding="utf-8",
     )
     return YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(d))
 
 
 def _request(**kwargs) -> ArticleContextualizerRequest:
-    defaults = dict(title="Finalità", text="Comma 0.", paragraphs="1. Comma 1.\n2. Comma 2.")
+    defaults = dict(title="Finalità", text="Comma 0.", paragraphs=["Comma 1.", "Comma 2."])
     return ArticleContextualizerRequest(**{**defaults, **kwargs})
 
 
@@ -93,7 +93,7 @@ def test_run_sync_passes_title_in_prompt(agents_dir: YamlRepository) -> None:
 
 def test_run_sync_passes_paragraphs_in_prompt(agents_dir: YamlRepository) -> None:
     agent = ArticleContextualizerAgent.from_yaml("article_contextualizer", agents_dir, _PROVIDER)
-    request = _request(paragraphs="1. Primo comma.\n2. Secondo comma.")
+    request = _request(paragraphs=["Primo comma.", "Secondo comma."])
     captured_text: list[str] = []
 
     def capturing_func(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:

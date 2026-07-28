@@ -21,13 +21,12 @@ class ArticleContextualizerMapper:
             article: Article of the corpus normativo to contextualize.
 
         Returns:
-            `ArticleContextualizerRequest` with the commas pre-formatted as a numbered string.
+            `ArticleContextualizerRequest` with the article's paragraphs.
         """
-        paragraphs = "\n".join(f"{i + 1}. {p}" for i, p in enumerate(article.paragraphs))
         return ArticleContextualizerRequest(
             title=article.title,
             text=article.text,
-            paragraphs=paragraphs,
+            paragraphs=article.paragraphs,
         )
 
     @staticmethod
