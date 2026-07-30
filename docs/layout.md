@@ -42,6 +42,13 @@ repo/
 (github.com/alessiogilardi/flowstep, tracked via `main` in `pyproject.toml`'s
 `[tool.uv.sources]`) — see `docs/architecture.md`.
 
+`specs/` (claude-planner plugin, not shown in the tree above — it's SDD
+pipeline state, not app code) holds two kinds of file with different
+lifetimes: `specs/NNNN-*.md` are the permanent spec contracts, tracked
+normally; `specs/discussions/*.md` are ephemeral brainstorm logs and are
+gitignored — never committed, safe to delete once the spec they fed is
+`implemented`.
+
 ## Placement conventions
 
 - **New batch-pipeline code** (ingestion, enrichment, indexing) goes under
@@ -129,4 +136,4 @@ repo/
   instead. The internal `cli/` breakdown and the full self-containment
   boundary rule live in `.claude/rules/cli-structure.md` — not restated here.
 
-*Last updated: 2026-07-28 — verified against commit `09c7345`.*
+*Last updated: 2026-07-31 — verified against commit `c031d77`.*
