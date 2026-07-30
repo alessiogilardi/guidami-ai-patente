@@ -107,6 +107,27 @@ clients/providers it actually needs. `run_preparation` wraps every
 preparation flow with idempotency (skips a stage if its output file already
 exists, unless `--force`).
 
+**`--dry-run`** (`prepare`/`index`/`reset` only, every entity; `status` has
+none — it never mutates anything): each `run_*` command function checks
+`args.dry_run` as its first instruction, before any wiring call, and if set
+calls a private `_render_*_dry_run` helper that describes the step chain via
+`cli/rendering/dry_run_renderer.py:render_dry_run` (a `rich.Panel`; step text
+is markup-escaped with `rich.markup.escape` since a literal `[...]` substring
+is otherwise silently swallowed as an invalid style tag), then returns — no
+`wiring.build_postgres_client`, no flow construction, no LLM/DB/filesystem
+access.
+
+**Per-run file logging**: `cli/main.py:main` parses args first (the log
+folder name needs `args.command`), then calls
+`cli/logging_setup.py:configure_logging(config.project_root, args.command,
+dry_run=...)`, which attaches a console `StreamHandler` and — unless
+`dry_run` — a `FileHandler` to the root logger, so every
+`logging.getLogger(...)` call anywhere in the codebase is captured. Log
+files land in `logs/ingest_<command>_<YYYYMMDDHHMM>/run.log`; a same-minute
+collision appends a numeric suffix (`_2`, `_3`, ...) via the private
+`_build_run_dir`. `--dry-run` runs never get a log directory — that would
+contradict the "no filesystem writes" guarantee `render_dry_run` prints.
+
 **LLM call observability** (`prepare` path only, no agent calls on `index`/`reset`):
 `cli/commands/prepare.py:run_prepare` opens a `PostgresClient` (via
 `wiring.build_postgres_client`) and, inside `with postgres_client,
@@ -230,4 +251,4 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-07-28 — verified against commit `0f386a9`.*
+*Last updated: 2026-07-31 — verified against commit `71087f2`.*
