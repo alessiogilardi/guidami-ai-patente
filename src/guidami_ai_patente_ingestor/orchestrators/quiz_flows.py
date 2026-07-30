@@ -1,7 +1,7 @@
 """Factories for the quiz indexing (SP04) and quiz preparation (SP06, extended by SP09) flows."""
 
 from flowstep import Flow, FlowBuilder
-from flowstep.steps import ApplyStep
+from flowstep.steps import ApplyStep, AsyncApplyStep
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig
@@ -21,7 +21,6 @@ from guidami_ai_patente_ingestor.models.quiz import (
 )
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
-    AsyncApplyStep,
     DbStoreStep,
     LoadJsonStep,
     WriteJsonStep,

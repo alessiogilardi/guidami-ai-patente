@@ -5,7 +5,7 @@ from functools import partial
 from typing import Literal, cast
 
 from flowstep import Flow, FlowBuilder
-from flowstep.steps import ApplyStep
+from flowstep.steps import ApplyStep, AsyncApplyStep
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig
@@ -35,7 +35,6 @@ from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, Artic
 from guidami_ai_patente_ingestor.services.knowledge.enrichers import ContextEnricher
 
 from .steps.generic import (
-    AsyncApplyStep,
     FilterAlreadyDoneStep,
     LoadJsonDirStep,
     LoadJsonStep,

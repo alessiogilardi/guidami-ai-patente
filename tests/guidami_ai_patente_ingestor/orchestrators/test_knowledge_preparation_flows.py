@@ -11,7 +11,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 from flowstep import Flow, FlowValidator
-from flowstep.steps import ApplyStep
+from flowstep.steps import ApplyStep, AsyncApplyStep
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.configs import PostgresConnectionConfig
@@ -26,7 +26,6 @@ from guidami_ai_patente_ingestor.orchestrators import (
     build_knowledge_enrichment_flow,
 )
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
-    AsyncApplyStep,
     FilterAlreadyDoneStep,
     LoadJsonDirStep,
     LoadJsonStep,
