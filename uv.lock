@@ -526,8 +526,8 @@ wheels = [
 
 [[package]]
 name = "flowstep"
-version = "0.1.0"
-source = { git = "https://github.com/alessiogilardi/flowstep.git?branch=main#961f5e48636e7380f598e5a58fd68d18ed6a988f" }
+version = "0.4.0"
+source = { git = "https://github.com/alessiogilardi/flowstep.git?branch=main#df35b216dbaf84e3a7a5e7b17a0263215db82c3d" }
 dependencies = [
     { name = "pydantic" },
 ]
