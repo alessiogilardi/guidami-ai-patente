@@ -57,6 +57,11 @@ docker compose -f docker/docker-compose.yml up -d
 
 `--dry-run` (on `prepare`/`index`/`reset`) prints the step chain that would run and exits — no filesystem writes, no LLM calls, no DB connection is ever opened.
 
+Every real (non-`--dry-run`) invocation logs to console **and** to a per-run file at
+`logs/ingest_<command>_<YYYYMMDDHHMM>/run.log` (a numeric suffix is appended on a
+same-minute collision). `--dry-run` never writes to `logs/`, to keep its "no filesystem
+writes" guarantee.
+
 Register new CLI commands under `[project.scripts]` in `pyproject.toml`.
 
 ### Secrets required
