@@ -72,10 +72,6 @@ Before starting any implementation task, read the reference documents:
 
 Reading and updating these files is governed by the `update-second-brain` skill (see the "Skill: Second Brain" block below) — read the relevant `docs/*.md` file directly rather than invoking an agent, and run the skill after any change described in its triggers. The former `doc-reader`/`doc-architect` agents are decommissioned; the Second Brain plugin's skills replace them.
 
-### Writing a plan
-
-A plan is mandatory before any new feature, module, or non-trivial architectural change. Full rules in `.claude/rules/plan-writing.md`.
-
 ## Code Conventions
 
 See `.claude/rules/code-conventions.md`.
@@ -119,3 +115,45 @@ Commits touching code **MUST** stage an update to `docs/` **or this file**.
 If rejected: 1. Run skill -> 2. Stage docs -> 3. Retry. Never use dummy updates.
 <!-- END SECOND BRAIN SYSTEM -->
 
+<!-- claude-planner:bootstrap:start (managed by the claude-planner plugin: do not hand-edit this block, edit skills/bootstrap/templates/claude-md-section.md in the plugin and re-run /bootstrap to refresh) -->
+<!-- claude-planner:config specs-dir=specs plans-dir=plans -->
+## Spec-Driven Development (claude-planner plugin)
+
+This repository has the `claude-planner` plugin available for Spec-Driven Development (SDD).
+
+**When it pays off**: multi-session or medium-and-larger features, work where
+requirement-to-test traceability matters, or a design that is genuinely still
+open. **When it doesn't**: small fixes and well-understood changes — make
+those directly, no pipeline needed.
+
+```
+/brainstorm ──▶ discussion log ──▶ /write-spec ──▶ spec (contract) ──▶ /write-plan ──▶ plan ──▶ (implementation) ──▶ /close-plan
+```
+
+**Short path**: `/write-spec` can compile a spec directly from a conversation,
+skipping `/brainstorm`, whenever the conversation already contains the
+substance (decisions, alternatives, constraints).
+
+**Permanence**: specs are the only permanent artifact. Discussion logs and
+plans are ephemeral — deletable once the spec they fed reaches `implemented`
+(`/close-plan` proposes the cleanup; nothing is deleted automatically).
+
+| Skill | Invoke when | Reads | Writes |
+|---|---|---|---|
+| `/brainstorm` | Exploring or resuming a fuzzy feature/architecture idea before committing. | Conversation + codebase (+ existing log to resume) | `specs/discussions/<topic-slug>.md` |
+| `/write-spec` | The discussion has converged, or the conversation already holds the substance; formalize it into a tracked contract. | Discussion log, or the conversation itself | `specs/NNNN-<slug>.md` |
+| `/write-plan` | A spec is `ready`; extract an executable plan. | Spec | `plans/NNNN-<slug>-plan.md` |
+| `/close-plan` | Implementation is done; verify the Definition of Done and close the loop. | Plan + spec + repo state | Changelog entry on the spec; proposes `status: implemented` |
+
+Rules when touching these artifacts:
+- The spec is the source of truth; plans are disposable, regenerated wholesale
+  from the spec, never hand-patched.
+- Only the user promotes a spec's status
+  (`draft → ready → in-progress → implemented`, side exit `superseded`);
+  skills only propose transitions.
+- Specs are never deleted or renumbered. A replacing spec sets `status:
+  superseded` on the old one and points to its successor; removed requirements
+  are struck through (`~~FR-n: ...~~`).
+- Every codebase claim in a spec or plan is backed by a verified `path:line`
+  reference, not assumed.
+<!-- claude-planner:bootstrap:end -->
