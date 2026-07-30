@@ -5,7 +5,7 @@ from unittest.mock import MagicMock, patch
 
 
 def test_run_index_knowledge_builds_flow_with_source_and_runs() -> None:
-    args = argparse.Namespace(entity="knowledge", source="cds")
+    args = argparse.Namespace(entity="knowledge", source="cds", dry_run=False)
     flow = MagicMock()
 
     with (
@@ -25,7 +25,7 @@ def test_run_index_knowledge_builds_flow_with_source_and_runs() -> None:
 
 
 def test_run_index_quiz_builds_flow_and_runs() -> None:
-    args = argparse.Namespace(entity="quiz")
+    args = argparse.Namespace(entity="quiz", dry_run=False)
     flow = MagicMock()
 
     with (
@@ -42,3 +42,20 @@ def test_run_index_quiz_builds_flow_and_runs() -> None:
 
     build.assert_called_once()
     flow.run.assert_called_once()
+
+
+def test_run_index_dry_run_never_touches_postgres_or_builds_a_flow() -> None:
+    args = argparse.Namespace(entity="knowledge", source="cds", dry_run=True)
+
+    with (
+        patch("guidami_ai_patente_ingestor.cli.commands.index.wiring.build_postgres_client") as pg,
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.index.build_knowledge_indexing_flow"
+        ) as build,
+    ):
+        from guidami_ai_patente_ingestor.cli.commands.index import run_index
+
+        run_index(MagicMock(), MagicMock(), args)
+
+    pg.assert_not_called()
+    build.assert_not_called()

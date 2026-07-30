@@ -5,6 +5,7 @@ import logging
 
 import psycopg
 from pydantic_ai.providers.openrouter import OpenRouterProvider
+from rich.console import Console
 
 from commons.ai.observability import LlmCallTracker
 from guidami_ai_patente_ingestor.configs import IngestorConfig
@@ -18,11 +19,41 @@ from guidami_ai_patente_ingestor.orchestrators import (
 from guidami_ai_patente_ingestor.services import LayerResolver
 
 from .. import wiring
+from ..rendering import render_dry_run
 
 logger = logging.getLogger(__name__)
 
 # Shared intermediate layer used by both preparation factory pairs.
 _CLEANED_LAYER = "cleaned"
+
+
+def _render_prepare_dry_run(args: argparse.Namespace) -> None:
+    """Describes the flow pair `dispatch_prepare` would run, without building any of it."""
+    force: bool = args.force
+    console = Console()
+    match args.entity:
+        case "knowledge":
+            source: str = args.source
+            steps = [
+                f"knowledge_cleaning ({source}): LoadJsonStep(parsed/{source}) -> "
+                f"clean + stamp source -> FilterAlreadyDoneStep(force={force}) -> "
+                f"WriteJsonDirStep(cleaned/{source})",
+                f"knowledge_enrichment ({source}): LoadJsonDirStep(cleaned/{source}) -> "
+                f"FilterAlreadyDoneStep(force={force}) -> map -> "
+                "LLM enrich (ArticleContextualizerAgent) -> "
+                f"WriteJsonDirStep(enriched/{source})",
+            ]
+            render_dry_run(console, f"prepare {args.entity}", steps)
+        case "quiz":
+            skip_note = f"(skipped entirely if already present, force={force})"
+            steps = [
+                f"quiz_cleaning: LoadJsonStep(parsed/quiz) -> flatten + dedup -> "
+                f"WriteJsonStep(cleaned/quiz) {skip_note}",
+                "quiz_enrichment: LoadJsonStep(cleaned/quiz) -> map -> "
+                "LLM enrich (RoadSignDescriberAgent, NormReferenceDescriberAgent) -> "
+                f"WriteJsonStep(enriched/quiz) {skip_note}",
+            ]
+            render_dry_run(console, f"prepare {args.entity}", steps)
 
 
 def dispatch_prepare(
@@ -96,6 +127,10 @@ def run_prepare(
     just `OperationalError`) is caught here: any failure while establishing the tracking
     connection is an observability concern, never a reason to abort `prepare`.
     """
+    if args.dry_run:
+        _render_prepare_dry_run(args)
+        return
+
     try:
         postgres_client = wiring.build_postgres_client(config)
     except psycopg.Error:

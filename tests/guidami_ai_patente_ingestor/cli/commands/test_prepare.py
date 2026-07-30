@@ -124,7 +124,7 @@ def test_dispatch_prepare_quiz_runs_both_preparation_flows() -> None:
 
 def test_run_prepare_degrades_without_postgres(caplog: pytest.LogCaptureFixture) -> None:
     """When the tracking Postgres client fails to build, prepare dispatches with tracker=None."""
-    args = argparse.Namespace(entity="knowledge", source="cds", force=False)
+    args = argparse.Namespace(entity="knowledge", source="cds", force=False, dry_run=False)
     config_mock = _make_config_mock()
 
     with (
@@ -143,3 +143,23 @@ def test_run_prepare_degrades_without_postgres(caplog: pytest.LogCaptureFixture)
 
     assert dispatch_mock.call_args.kwargs.get("tracker") is None
     assert any(record.levelno == logging.WARNING for record in caplog.records)
+
+
+def test_run_prepare_dry_run_never_touches_postgres_or_dispatches() -> None:
+    args = argparse.Namespace(entity="knowledge", source="cds", force=False, dry_run=True)
+    config_mock = _make_config_mock()
+
+    with (
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.prepare.wiring.build_postgres_client"
+        ) as pg,
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.prepare.dispatch_prepare"
+        ) as dispatch_mock,
+    ):
+        from guidami_ai_patente_ingestor.cli.commands.prepare import run_prepare
+
+        run_prepare(config_mock, MagicMock(), MagicMock(), args)
+
+    pg.assert_not_called()
+    dispatch_mock.assert_not_called()

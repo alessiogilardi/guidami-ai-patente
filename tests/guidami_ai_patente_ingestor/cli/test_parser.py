@@ -31,3 +31,34 @@ def test_help_lists_all_commands() -> None:
 
     for command in ("prepare", "index", "reset", "status"):
         assert command in help_text, f"expected {command!r} to be listed in --help output"
+
+
+@pytest.mark.parametrize(
+    "argv",
+    [
+        ["prepare", "knowledge", "--source", "cds", "--dry-run"],
+        ["prepare", "quiz", "--dry-run"],
+        ["index", "knowledge", "--source", "cds", "--dry-run"],
+        ["index", "quiz", "--dry-run"],
+        ["reset", "knowledge", "--dry-run"],
+        ["reset", "quiz", "--dry-run"],
+    ],
+)
+def test_dry_run_flag_parses_true_on_every_command_entity(argv: list[str]) -> None:
+    from guidami_ai_patente_ingestor.cli.parser import build_parser
+
+    parser = build_parser(_make_config_mock())
+
+    args = parser.parse_args(argv)
+
+    assert args.dry_run is True
+
+
+def test_dry_run_flag_defaults_to_false() -> None:
+    from guidami_ai_patente_ingestor.cli.parser import build_parser
+
+    parser = build_parser(_make_config_mock())
+
+    args = parser.parse_args(["reset", "knowledge"])
+
+    assert args.dry_run is False
