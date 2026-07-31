@@ -1,5 +1,8 @@
 """Tests for ContextEnricher (async, symmetric to the quiz enrichers)."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from unittest.mock import MagicMock
 
 from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
@@ -9,6 +12,10 @@ from guidami_ai_patente_ingestor.agents.dto.article_contextualizer import (
 )
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 from guidami_ai_patente_ingestor.services.knowledge.enrichers import ContextEnricher
+
+if TYPE_CHECKING:
+    # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
+    from tests.conftest import RecordingProgressReporter
 
 
 def _article(
@@ -147,3 +154,27 @@ async def test_enrich_agent_failure_on_one_item_returns_article_unchanged_and_wa
     assert by_number["2"].contexts == {}
     assert by_number["3"].contexts == {0: "Contesto ok."}
     assert any("2" in record.message for record in caplog.records)
+
+
+async def test_reports_one_tick_per_article_including_skips_and_failures(
+    progress_recorder: RecordingProgressReporter,
+) -> None:
+    agent = _make_agent()
+
+    async def side_effect(
+        request: ArticleContextualizerRequest,
+    ) -> ArticleContextualizerResponse:
+        if "3" in request.title:
+            raise RuntimeError("LLM call failed")
+        return ArticleContextualizerResponse(contexts={0: "Contesto ok."})
+
+    agent.run.side_effect = side_effect
+    enricher = ContextEnricher(8, agent, progress_recorder)
+    articles = [_article("1"), _article("2", repealed=True), _article("3")]
+
+    result = await enricher(articles)
+
+    assert progress_recorder.calls[0] == ("begin_items", ("articles", 3))
+    assert progress_recorder.count("advance_item") == 3
+    assert progress_recorder.calls[-1] == ("end_items", ())
+    assert len(result) == 3

@@ -2,6 +2,7 @@ import asyncio
 import logging
 from collections.abc import Iterable
 
+from commons.observability import ItemProgressReporter, NullProgressReporter
 from commons.use_cases import AsyncUseCase
 from commons.utils import deduplicate
 from guidami_ai_patente_ingestor.agents import NormReferenceDescriberAgent
@@ -28,13 +29,28 @@ class NormReferenceEnricher(AsyncUseCase[Iterable[EnrichedQuizModel], list[Enric
     calls run concurrently under `asyncio.gather`, bounded by a semaphore.
     """
 
-    def __init__(self, max_concurrency: int, agent: NormReferenceDescriberAgent) -> None:
-        """Injects the concurrency limit and the LLM agent for norm metadata generation."""
+    def __init__(
+        self,
+        max_concurrency: int,
+        agent: NormReferenceDescriberAgent,
+        progress: ItemProgressReporter | None = None,
+    ) -> None:
+        """Injects the concurrency limit, the LLM agent, and an optional reporter.
+
+        Args:
+            max_concurrency: Maximum number of in-flight LLM calls per run.
+            agent: Agent used to generate norm reference metadata.
+            progress: Optional port reporting one tick per unique question processed.
+                When `None`, defaults to `NullProgressReporter`, a no-op collaborator.
+        """
         # Store the limit, not the Semaphore: an asyncio.Semaphore binds to the loop of its
         # first use; the loop is owned by the caller (AsyncApplyStep), so the semaphore is
         # built per-run in _build_metadata_map.
         self._max_concurrency = max_concurrency
         self._agent = agent
+        self._progress: ItemProgressReporter = (
+            progress if progress is not None else NullProgressReporter()
+        )
 
     async def execute(self, request: Iterable[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
         """Runs norm enrichment on every sub-question.
@@ -64,8 +80,12 @@ class NormReferenceEnricher(AsyncUseCase[Iterable[EnrichedQuizModel], list[Enric
     ) -> dict[_DedupeKey, NormReferenceDescriberResponse]:
         unique = list(deduplicate(questions, key=_make_key))
         logger.info("Generating norm metadata for %d unique question(s)", len(unique))
-        semaphore = asyncio.Semaphore(self._max_concurrency)  # bound to this run's loop
-        responses = await asyncio.gather(*(self._call_agent(q, semaphore) for q in unique))
+        self._progress.begin_items("questions", len(unique))
+        try:
+            semaphore = asyncio.Semaphore(self._max_concurrency)  # bound to this run's loop
+            responses = await asyncio.gather(*(self._call_agent(q, semaphore) for q in unique))
+        finally:
+            self._progress.end_items()
         # gather preserves input order -> lockstep zip, no index bookkeeping.
         return {
             _make_key(q): response
@@ -77,15 +97,18 @@ class NormReferenceEnricher(AsyncUseCase[Iterable[EnrichedQuizModel], list[Enric
         self, q: EnrichedQuizModel, semaphore: asyncio.Semaphore
     ) -> NormReferenceDescriberResponse | None:
         try:
-            req = NormReferenceDescriberMapper.from_enriched_quiz_to_request(q)
-            async with semaphore:
-                return await self._agent.run(req, images=())
-        except Exception as exc:
-            logger.warning(
-                "Failed to generate norm reference metadata, skipping: topic=%r text=%r (%s)",
-                q.topic,
-                q.text,
-                exc,
-            )
-            logger.debug("Norm reference metadata generation failed", exc_info=True)
-            return None
+            try:
+                req = NormReferenceDescriberMapper.from_enriched_quiz_to_request(q)
+                async with semaphore:
+                    return await self._agent.run(req, images=())
+            except Exception as exc:
+                logger.warning(
+                    "Failed to generate norm reference metadata, skipping: topic=%r text=%r (%s)",
+                    q.topic,
+                    q.text,
+                    exc,
+                )
+                logger.debug("Norm reference metadata generation failed", exc_info=True)
+                return None
+        finally:
+            self._progress.advance_item()

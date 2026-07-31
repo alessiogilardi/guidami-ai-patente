@@ -5,8 +5,11 @@ Per-element layers (`cleaned`/`enriched`): the flows now rewire through
 `docs/plans/2026-07-17--per-element-knowledge-layers.md`).
 """
 
+from __future__ import annotations
+
 import json
 from pathlib import Path
+from typing import TYPE_CHECKING
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -32,6 +35,10 @@ from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
     WriteJsonDirStep,
 )
 from guidami_ai_patente_ingestor.services import LayerResolver
+
+if TYPE_CHECKING:
+    # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
+    from tests.conftest import RecordingProgressReporter
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -277,3 +284,74 @@ def test_enrichment_flow_force_false_skips_already_enriched_article_without_call
     assert sorted(p.stem for p in enriched_dir.glob("*.json")) == sorted(
         [element_id("cds", "1"), element_id("cds", "2")]
     )
+
+
+# ---------------------------------------------------------------------------
+# Progress reporting (T-10)
+# ---------------------------------------------------------------------------
+
+
+def test_cleaning_flow_reports_step_progress(
+    tmp_path: Path, progress_recorder: RecordingProgressReporter
+) -> None:
+    resolver = LayerResolver(
+        layers={"parsed": str(tmp_path / "parsed"), "cleaned": str(tmp_path / "cleaned")},
+        sources={"cds": SourceConfig(dir="cds", file="articles.json")},
+    )
+    parsed_path = resolver.path("parsed", "cds")
+    parsed_path.parent.mkdir(parents=True)
+    parsed_path.write_text(json.dumps([_parsed_article_payload("1")]), encoding="utf-8")
+
+    config = _base_config(project_root=tmp_path)
+
+    build_knowledge_cleaning_flow(
+        config=config, layer_resolver=resolver, source="cds", progress=progress_recorder
+    ).run()
+
+    begin_steps = [args for name, args in progress_recorder.calls if name == "begin_step"]
+    end_steps = [args for name, args in progress_recorder.calls if name == "end_step"]
+    assert len(begin_steps) == 4
+    assert len(end_steps) == 4
+    assert [args[1] for args in begin_steps] == [1, 2, 3, 4]
+    assert all(args[2] == 4 for args in begin_steps)
+
+
+def test_enrichment_flow_reports_step_and_item_progress(
+    tmp_path: Path, progress_recorder: RecordingProgressReporter
+) -> None:
+    resolver = LayerResolver(
+        layers={"cleaned": str(tmp_path / "cleaned"), "enriched": str(tmp_path / "enriched")},
+        sources={"cds": SourceConfig(dir="cds", file="articles.json")},
+    )
+    cleaned_dir = resolver.dir("cleaned", "cds")
+    cleaned_dir.mkdir(parents=True)
+    (cleaned_dir / f"{element_id('cds', '1')}.json").write_text(
+        json.dumps(_cleaned_article_payload("1", "cds")), encoding="utf-8"
+    )
+
+    config = _base_config(
+        project_root=tmp_path,
+        knowledge_preparation=PipelineLayerConfig(
+            input_layer="parsed", output_layer="enriched", sources=["cds"]
+        ),
+    )
+
+    agent = _patched_agent()
+    agent.run.return_value = ArticleContextualizerResponse(contexts={0: "Contesto."})
+
+    with patch.object(ArticleContextualizerAgent, "from_yaml", return_value=agent):
+        build_knowledge_enrichment_flow(
+            config=config,
+            layer_resolver=resolver,
+            source="cds",
+            open_router_provider=_PROVIDER,
+            progress=progress_recorder,
+        ).run()
+
+    begin_steps = [args for name, args in progress_recorder.calls if name == "begin_step"]
+    end_steps = [args for name, args in progress_recorder.calls if name == "end_step"]
+    assert len(begin_steps) == 5
+    assert len(end_steps) == 5
+    assert [args[1] for args in begin_steps] == [1, 2, 3, 4, 5]
+    # Proves the reporter reached the injected ContextEnricher, not just the observer.
+    assert ("begin_items", ("articles", 1)) in progress_recorder.calls

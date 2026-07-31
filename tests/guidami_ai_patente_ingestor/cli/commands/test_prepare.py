@@ -5,12 +5,19 @@
 covers the Postgres-degradation path (tracker=None on connection failure).
 """
 
+from __future__ import annotations
+
 import argparse
 import logging
+from typing import TYPE_CHECKING
 from unittest.mock import MagicMock, patch
 
 import psycopg
 import pytest
+
+if TYPE_CHECKING:
+    # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
+    from tests.conftest import RecordingProgressReporter
 
 
 def _make_config_mock() -> MagicMock:
@@ -42,7 +49,9 @@ def test_dispatch_prepare_knowledge_runs_both_flows_directly_without_run_prepara
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
 
-        dispatch_prepare(config_mock, MagicMock(), MagicMock(), args, tracker=None)
+        dispatch_prepare(
+            config_mock, MagicMock(), MagicMock(), args, tracker=None, progress=MagicMock()
+        )
 
     build_clean.assert_called_once()
     build_enrich.assert_called_once()
@@ -68,7 +77,9 @@ def test_dispatch_prepare_knowledge_passes_source_to_factories() -> None:
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
 
-        dispatch_prepare(config_mock, MagicMock(), MagicMock(), args, tracker=None)
+        dispatch_prepare(
+            config_mock, MagicMock(), MagicMock(), args, tracker=None, progress=MagicMock()
+        )
 
     assert build_clean.call_args.kwargs["source"] == "cap"
     assert build_enrich.call_args.kwargs["source"] == "cap"
@@ -92,7 +103,9 @@ def test_dispatch_prepare_knowledge_with_force_passes_force_to_both_flow_factori
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
 
-        dispatch_prepare(config_mock, MagicMock(), MagicMock(), args, tracker=None)
+        dispatch_prepare(
+            config_mock, MagicMock(), MagicMock(), args, tracker=None, progress=MagicMock()
+        )
 
     assert build_clean.call_args.kwargs["force"] is True
     assert build_enrich.call_args.kwargs["force"] is True
@@ -115,7 +128,9 @@ def test_dispatch_prepare_quiz_runs_both_preparation_flows() -> None:
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
 
-        dispatch_prepare(config_mock, MagicMock(), MagicMock(), args, tracker=None)
+        dispatch_prepare(
+            config_mock, MagicMock(), MagicMock(), args, tracker=None, progress=MagicMock()
+        )
 
     build_clean.assert_called_once()
     build_enrich.assert_called_once()
@@ -139,7 +154,7 @@ def test_run_prepare_degrades_without_postgres(caplog: pytest.LogCaptureFixture)
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import run_prepare
 
-        run_prepare(config_mock, MagicMock(), MagicMock(), args)
+        run_prepare(config_mock, MagicMock(), MagicMock(), args, progress=MagicMock())
 
     assert dispatch_mock.call_args.kwargs.get("tracker") is None
     assert any(record.levelno == logging.WARNING for record in caplog.records)
@@ -159,7 +174,51 @@ def test_run_prepare_dry_run_never_touches_postgres_or_dispatches() -> None:
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import run_prepare
 
-        run_prepare(config_mock, MagicMock(), MagicMock(), args)
+        run_prepare(config_mock, MagicMock(), MagicMock(), args, progress=MagicMock())
 
     pg.assert_not_called()
     dispatch_mock.assert_not_called()
+
+
+def test_knowledge_branch_brackets_both_flows(
+    progress_recorder: RecordingProgressReporter,
+) -> None:
+    args = argparse.Namespace(entity="knowledge", source="cds", force=False)
+    config_mock = _make_config_mock()
+
+    with (
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
+            return_value=MagicMock(),
+        ),
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_enrichment_flow",
+            return_value=MagicMock(),
+        ),
+    ):
+        from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
+
+        dispatch_prepare(
+            config_mock, MagicMock(), MagicMock(), args, tracker=None, progress=progress_recorder
+        )
+
+    assert progress_recorder.calls == [
+        ("begin_run", (2,)),
+        ("begin_flow", ("knowledge_cleaning",)),
+        ("end_flow", ()),
+        ("begin_flow", ("knowledge_enrichment",)),
+        ("end_flow", ()),
+    ]
+
+
+def test_dry_run_emits_no_progress_calls(
+    progress_recorder: RecordingProgressReporter,
+) -> None:
+    args = argparse.Namespace(entity="knowledge", source="cds", force=False, dry_run=True)
+    config_mock = _make_config_mock()
+
+    from guidami_ai_patente_ingestor.cli.commands.prepare import run_prepare
+
+    run_prepare(config_mock, MagicMock(), MagicMock(), args, progress=progress_recorder)
+
+    assert progress_recorder.calls == []

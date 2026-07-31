@@ -1,7 +1,19 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 import pytest
 
 from commons.ai.embedding import Embeddable, Embedded, EmbeddingClient, EmbeddingService
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel
+
+if TYPE_CHECKING:
+    # `tests` has no `__init__.py` (project convention) and is not importable as a
+    # dotted package at runtime under `uv run pytest <file>` (console-script entry
+    # point does not add the project root to sys.path). Type-only import, resolved
+    # statically; never evaluated at runtime thanks to `from __future__ import
+    # annotations`. Pytest matches fixtures by parameter name, not by annotation.
+    from tests.conftest import RecordingProgressReporter
 
 
 class _RecordingFakeClient(EmbeddingClient):
@@ -82,3 +94,37 @@ class TestEmbeddingService:
         assert isinstance(chunk, Embeddable)
         assert isinstance(chunk, Embedded)
         assert _accepts_embeddable(chunk) == chunk.embedded_text
+
+    def test_reports_one_tick_per_batch(
+        self, progress_recorder: RecordingProgressReporter
+    ) -> None:
+        items = [_FakeEmbeddable(f"item{i}") for i in range(5)]
+        client = _RecordingFakeClient()
+        service = EmbeddingService(batch_size=2, client=client, progress=progress_recorder)
+
+        service.execute(items)
+
+        assert progress_recorder.calls[0] == ("begin_items", ("batches", 3))
+        assert progress_recorder.count("advance_item") == 3
+        assert progress_recorder.calls[-1] == ("end_items", ())
+
+    def test_end_items_still_runs_when_a_batch_raises(
+        self, progress_recorder: RecordingProgressReporter
+    ) -> None:
+        items = [_FakeEmbeddable(f"item{i}") for i in range(4)]
+        client = _RecordingFakeClient()
+
+        def _embed_passages(texts: list[str]) -> list[list[float]]:
+            client.calls.append(list(texts))
+            if len(client.calls) == 2:
+                raise RuntimeError("embedding backend unavailable")
+            return [[float(len(t))] for t in texts]
+
+        client.embed_passages = _embed_passages  # type: ignore[method-assign]
+        service = EmbeddingService(batch_size=2, client=client, progress=progress_recorder)
+
+        with pytest.raises(RuntimeError):
+            service.execute(items)
+
+        assert progress_recorder.count("advance_item") == 1
+        assert progress_recorder.calls[-1] == ("end_items", ())

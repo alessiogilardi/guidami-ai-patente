@@ -4,6 +4,7 @@ from collections import defaultdict
 from collections.abc import Iterable
 from pathlib import Path
 
+from commons.observability import ItemProgressReporter, NullProgressReporter
 from commons.use_cases import AsyncUseCase
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
@@ -25,12 +26,19 @@ class ImageDescriptionEnricher(AsyncUseCase[Iterable[EnrichedQuizModel], list[En
     without an image pass through untouched.
     """
 
-    def __init__(self, max_concurrency: int, road_sign_describer: RoadSignDescriberAgent) -> None:
-        """Inject the concurrency limit and the road sign describer agent.
+    def __init__(
+        self,
+        max_concurrency: int,
+        road_sign_describer: RoadSignDescriberAgent,
+        progress: ItemProgressReporter | None = None,
+    ) -> None:
+        """Inject the concurrency limit, the road sign describer agent, and an optional reporter.
 
         Args:
             max_concurrency: Maximum number of in-flight vision calls per run.
             road_sign_describer: Agent used to describe each grouped image.
+            progress: Optional port reporting one tick per described image. When
+                `None`, defaults to `NullProgressReporter`, a no-op collaborator.
         """
         # Store the limit, not the Semaphore: an asyncio.Semaphore binds to the loop of its
         # first use; the loop is owned by the caller (AsyncApplyStep) and the semaphore is
@@ -38,14 +46,21 @@ class ImageDescriptionEnricher(AsyncUseCase[Iterable[EnrichedQuizModel], list[En
         # runs/loops.
         self._max_concurrency = max_concurrency
         self._road_sign_describer = road_sign_describer
+        self._progress: ItemProgressReporter = (
+            progress if progress is not None else NullProgressReporter()
+        )
 
     async def execute(self, request: Iterable[EnrichedQuizModel]) -> list[EnrichedQuizModel]:
         """Enrich each quiz item with a road sign description where an image is present."""
         quizzes = list(request)
         quizzes_by_image = self._group_by_image(quizzes)
         logger.info("Describing %d distinct image(s)", len(quizzes_by_image))
-        # The event loop is owned by the caller (AsyncApplyStep); this enricher only awaits.
-        descriptions = await self._fetch_descriptions(quizzes_by_image)
+        self._progress.begin_items("images", len(quizzes_by_image))
+        try:
+            # The event loop is owned by the caller (AsyncApplyStep); this enricher only awaits.
+            descriptions = await self._fetch_descriptions(quizzes_by_image)
+        finally:
+            self._progress.end_items()
         return [self._enrich_quiz(quiz, descriptions) for quiz in quizzes]
 
     def _group_by_image(
@@ -94,14 +109,17 @@ class ImageDescriptionEnricher(AsyncUseCase[Iterable[EnrichedQuizModel], list[En
         semaphore: asyncio.Semaphore,
     ) -> RoadSignDescriberResponse | None:
         try:
-            async with semaphore:
-                return await self._road_sign_describer.run(request_dto, images=(Path(image),))
-        except (FileNotFoundError, PermissionError):
-            logger.warning("Image file not found or inaccessible, skipping: %s", image)
-            return None
-        except Exception as exc:
-            # Per-image degrade is intentional: one bad image must not kill the batch.
-            # TODO: narrow this broad catch once the agent domain-exception hierarchy lands.
-            logger.warning("Failed to describe image, skipping: %s (%s)", image, exc)
-            logger.debug("Image description failed for %s", image, exc_info=True)
-            return None
+            try:
+                async with semaphore:
+                    return await self._road_sign_describer.run(request_dto, images=(Path(image),))
+            except (FileNotFoundError, PermissionError):
+                logger.warning("Image file not found or inaccessible, skipping: %s", image)
+                return None
+            except Exception as exc:
+                # Per-image degrade is intentional: one bad image must not kill the batch.
+                # TODO: narrow this broad catch once the agent domain-exception hierarchy lands.
+                logger.warning("Failed to describe image, skipping: %s (%s)", image, exc)
+                logger.debug("Image description failed for %s", image, exc_info=True)
+                return None
+        finally:
+            self._progress.advance_item()

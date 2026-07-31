@@ -9,6 +9,7 @@ from commons.ai.embedding import EmbeddingClient, EmbeddingService
 from commons.ai.observability import LlmCallTracker
 from commons.clients import PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
+from commons.observability import NullProgressReporter, ProgressReporter
 from commons.repositories import JsonRepository, YamlRepository
 from commons.use_cases import FlatMap, ForEach
 from guidami_ai_patente_ingestor.agents import NormReferenceDescriberAgent, RoadSignDescriberAgent
@@ -33,6 +34,8 @@ from guidami_ai_patente_ingestor.services.quiz.enrichers import (
     NormReferenceEnricher,
 )
 
+from .progress_flow_observer import ProgressFlowObserver
+
 # Intermediate layer shared by the two preparation factories (clean/enrich):
 # not expressed in PipelineLayerConfig (see the layer decision in SP05, replicated by SP09).
 _CLEANED_LAYER = "cleaned"
@@ -44,6 +47,7 @@ def build_quiz_indexing_flow(
     embedding_client: EmbeddingClient,
     postgres_client: PostgresClient,
     validate: bool = False,
+    progress: ProgressReporter | None = None,
 ) -> Flow:
     """Assembles the quiz indexing flow (quiz bank → embedded → embed → entity → store).
 
@@ -70,12 +74,17 @@ def build_quiz_indexing_flow(
         postgres_client: Postgres client for DB operations.
         validate: If True, runs structural validation of the flow before returning it.
             Raises `FlowValidationError` on ERROR.
+        progress: Optional reporter driving the step/flow bars (via a registered
+            `ProgressFlowObserver`) and, through `EmbedQuizMetadata`, the embedding
+            step's item bar. When `None`, defaults to `NullProgressReporter`, a no-op
+            collaborator.
 
     Returns:
         Flow configured and ready for execution.
     """
     indexing_config = config.quiz_indexing
     source = indexing_config.sources[0]
+    reporter: ProgressReporter = progress if progress is not None else NullProgressReporter()
 
     load_step = LoadJsonStep(
         "load_enriched_quiz",
@@ -99,7 +108,9 @@ def build_quiz_indexing_flow(
     embed_step = ApplyStep(
         "embed_quiz",
         EmbedQuizMetadata(
-            embedding_service=EmbeddingService(config.embedding_batch_size, embedding_client)
+            embedding_service=EmbeddingService(
+                config.embedding_batch_size, embedding_client, reporter
+            )
         ),
         input_key=context_keys.EMBEDDED_QUIZ,
         output_key=context_keys.EMBEDDED_QUIZ,
@@ -125,6 +136,7 @@ def build_quiz_indexing_flow(
         .add_step(embed_step)
         .add_step(map_to_quiz_entity_step)
         .add_step(store_step)
+        .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)
     )
 
@@ -135,6 +147,7 @@ def build_quiz_cleaning_flow(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
     validate: bool = False,
+    progress: ProgressReporter | None = None,
 ) -> Flow:
     """Assembles the quiz cleaning flow (parsed → cleaned, flatten + dedup).
 
@@ -157,12 +170,16 @@ def build_quiz_cleaning_flow(
         layer_resolver: Resolver mapping (layer, source) → JSON file Path.
         validate: If True, runs structural validation of the flow before returning it.
             Raises `FlowValidationError` on ERROR.
+        progress: Optional reporter driving the step/flow bars via a registered
+            `ProgressFlowObserver`. When `None`, defaults to `NullProgressReporter`,
+            a no-op collaborator. This flow has no instrumented service.
 
     Returns:
         Flow configured and ready for execution.
     """
     prep = config.quiz_preparation
     source = prep.sources[0]
+    reporter: ProgressReporter = progress if progress is not None else NullProgressReporter()
 
     load_step = LoadJsonStep(
         "load_parsed_quiz",
@@ -197,6 +214,7 @@ def build_quiz_cleaning_flow(
         .add_step(load_step)
         .add_step(flatten_step)
         .add_step(write_step)
+        .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)
     )
 
@@ -209,6 +227,7 @@ def build_quiz_enrichment_flow(
     open_router_provider: OpenRouterProvider,
     validate: bool = False,
     tracker: LlmCallTracker | None = None,
+    progress: ProgressReporter | None = None,
 ) -> Flow:
     """Assembles the quiz enrichment flow (cleaned → enriched).
 
@@ -234,6 +253,10 @@ def build_quiz_enrichment_flow(
             Raises `FlowValidationError` on ERROR.
         tracker: Optional port persisting one `LlmCallLog` per call made by the
             enrichment agents. Forwarded to `from_yaml`; `None` disables tracking.
+        progress: Optional reporter driving the step/flow bars (via a registered
+            `ProgressFlowObserver`) and, in sequence, the image-description and
+            norm-reference enrichers' item bars. When `None`, defaults to
+            `NullProgressReporter`, a no-op collaborator.
 
     Returns:
         Flow configured and ready for execution.
@@ -243,6 +266,7 @@ def build_quiz_enrichment_flow(
     """
     prep = config.quiz_preparation
     source = prep.sources[0]
+    reporter: ProgressReporter = progress if progress is not None else NullProgressReporter()
 
     if prep.output_layer is None:
         raise ValueError("quiz_preparation.output_layer is not configured")
@@ -280,8 +304,10 @@ def build_quiz_enrichment_flow(
     )
     enrich_step = AsyncApplyStep(
         "enrich_quiz",
-        ImageDescriptionEnricher(config.road_sign_describer_concurrency, describer),
-        NormReferenceEnricher(config.norm_reference_describer_concurrency, norm_describer),
+        ImageDescriptionEnricher(config.road_sign_describer_concurrency, describer, reporter),
+        NormReferenceEnricher(
+            config.norm_reference_describer_concurrency, norm_describer, reporter
+        ),
         input_key=context_keys.MAPPED_QUIZ,
         output_key=context_keys.ENRICHED_QUIZ,
     )
@@ -303,6 +329,7 @@ def build_quiz_enrichment_flow(
         .add_step(map_step)
         .add_step(enrich_step)
         .add_step(write_step)
+        .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)
     )
 

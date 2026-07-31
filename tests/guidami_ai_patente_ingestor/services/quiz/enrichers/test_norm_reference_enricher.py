@@ -1,9 +1,16 @@
 """Tests for NormReferenceEnricher."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from unittest.mock import MagicMock
 
 from guidami_ai_patente_ingestor.agents import NormReferenceDescriberAgent
 from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
+
+if TYPE_CHECKING:
+    # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
+    from tests.conftest import RecordingProgressReporter
 
 
 def _question(
@@ -108,3 +115,22 @@ async def test_unique_questions_each_get_a_call() -> None:
     assert agent.run.call_count == 3, (
         f"Expected 3 agent calls for 3 distinct questions, got {agent.run.call_count}"
     )
+
+
+async def test_item_total_is_the_post_dedup_unique_count(
+    progress_recorder: RecordingProgressReporter,
+) -> None:
+    from guidami_ai_patente_ingestor.services.quiz.enrichers import NormReferenceEnricher
+
+    agent = _make_agent_mock()
+    enricher = NormReferenceEnricher(8, agent, progress_recorder)
+    questions = [
+        _question("1", topic="T", text="Q", correct_answer=True, image="img.jpeg"),
+        _question("2", topic="T", text="Q", correct_answer=True, image="img.jpeg"),
+        _question("3", topic="Other", text="Q2", correct_answer=True),
+    ]
+
+    await enricher(questions)
+
+    assert progress_recorder.calls[0] == ("begin_items", ("questions", 2))
+    assert progress_recorder.count("advance_item") == 2

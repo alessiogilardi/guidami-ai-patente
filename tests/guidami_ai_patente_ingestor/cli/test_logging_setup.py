@@ -58,3 +58,19 @@ def test_configure_logging_avoids_same_minute_collision_with_numeric_suffix(
     assert first is not None
     assert second is not None
     assert second.parent.name == f"{first.parent.name}_2"
+
+
+def test_no_stream_handler_when_console_handler_disabled(tmp_path: Path) -> None:
+    from guidami_ai_patente_ingestor.cli.logging_setup import configure_logging
+
+    configure_logging(tmp_path, "prepare", dry_run=False, use_console_handler=False)
+
+    root = logging.getLogger()
+    stream_handlers = [
+        h
+        for h in root.handlers
+        if isinstance(h, logging.StreamHandler) and not isinstance(h, logging.FileHandler)
+    ]
+    file_handlers = [h for h in root.handlers if isinstance(h, logging.FileHandler)]
+    assert stream_handlers == []
+    assert len(file_handlers) == 1

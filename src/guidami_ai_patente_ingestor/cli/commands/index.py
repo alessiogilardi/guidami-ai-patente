@@ -6,6 +6,7 @@ import logging
 from rich.console import Console
 
 from commons.ai.embedding import LiteLLMEmbeddingClient
+from commons.observability import ProgressReporter
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators import (
     build_knowledge_indexing_flow,
@@ -41,7 +42,10 @@ def _render_index_dry_run(args: argparse.Namespace) -> None:
 
 
 def run_index(
-    config: IngestorConfig, layer_resolver: LayerResolver, args: argparse.Namespace
+    config: IngestorConfig,
+    layer_resolver: LayerResolver,
+    args: argparse.Namespace,
+    progress: ProgressReporter,
 ) -> None:
     """Dispatch index subcommand: build indexing flow and run it."""
     if args.dry_run:
@@ -50,6 +54,7 @@ def run_index(
 
     embedding_client = LiteLLMEmbeddingClient(config.embedding)
     postgres_client = wiring.build_postgres_client(config)
+    progress.begin_run(1)
     match args.entity:
         case "knowledge":
             source: str = args.source
@@ -59,9 +64,12 @@ def run_index(
                 embedding_client=embedding_client,
                 postgres_client=postgres_client,
                 source=source,
+                progress=progress,
             )
             logger.info(f"starting knowledge indexing for source '{source}'")
+            progress.begin_flow("knowledge_indexing")
             flow.run()
+            progress.end_flow()
             logger.info(f"knowledge indexing completed for source '{source}'")
         case "quiz":
             flow = build_quiz_indexing_flow(
@@ -69,7 +77,10 @@ def run_index(
                 layer_resolver=layer_resolver,
                 embedding_client=embedding_client,
                 postgres_client=postgres_client,
+                progress=progress,
             )
             logger.info("starting quiz indexing")
+            progress.begin_flow("quiz_indexing")
             flow.run()
+            progress.end_flow()
             logger.info("quiz indexing completed")

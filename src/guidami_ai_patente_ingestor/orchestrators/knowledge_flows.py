@@ -13,6 +13,7 @@ from commons.ai.embedding import EmbeddingClient, EmbeddingService
 from commons.ai.observability import LlmCallTracker
 from commons.clients import PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
+from commons.observability import NullProgressReporter, ProgressReporter
 from commons.repositories import JsonRepository, YamlRepository
 from commons.use_cases import FlatMap, ForEach
 from commons.utils import element_id
@@ -34,6 +35,7 @@ from guidami_ai_patente_ingestor.services import LayerResolver
 from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
 from guidami_ai_patente_ingestor.services.knowledge.enrichers import ContextEnricher
 
+from .progress_flow_observer import ProgressFlowObserver
 from .steps.generic import (
     FilterAlreadyDoneStep,
     LoadJsonDirStep,
@@ -60,6 +62,7 @@ def build_knowledge_indexing_flow(
     postgres_client: PostgresClient,
     source: str,
     validate: bool = False,
+    progress: ProgressReporter | None = None,
 ) -> Flow:
     """Assembles the knowledge indexing flow for ONE source (corpus → chunk → embed → store).
 
@@ -81,6 +84,9 @@ def build_knowledge_indexing_flow(
             Raises `FlowValidationError` on ERROR; the benign WARNING on `EMBEDDABLE_CHUNKS`
             (EmbedChunksStep re-declares a key already produced by the chunk_articles step)
             does not block the build.
+        progress: Optional reporter driving the step/flow bars (via a registered
+            `ProgressFlowObserver`) and the embedding step's item bar. When `None`,
+            defaults to `NullProgressReporter`, a no-op collaborator.
 
     Returns:
         Flow configured and ready for execution.
@@ -89,6 +95,7 @@ def build_knowledge_indexing_flow(
         ValueError: if `source` is not among the valid sources configured for indexing.
     """
     indexing_config = config.knowledge_indexing
+    reporter: ProgressReporter = progress if progress is not None else NullProgressReporter()
 
     valid_sources = set(indexing_config.sources)
     if source not in valid_sources:
@@ -114,7 +121,9 @@ def build_knowledge_indexing_flow(
 
     embed_step = EmbedChunksStep(
         "embed_chunks",
-        embedding_service=EmbeddingService(config.embedding_batch_size, embedding_client),
+        embedding_service=EmbeddingService(
+            config.embedding_batch_size, embedding_client, reporter
+        ),
         embed_repealed=config.embed_repealed,
     )
 
@@ -138,6 +147,7 @@ def build_knowledge_indexing_flow(
         .add_step(embed_step)
         .add_step(map_to_entity_step)
         .add_step(store_step)
+        .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)
     )
 
@@ -150,6 +160,7 @@ def build_knowledge_cleaning_flow(
     source: str,
     force: bool = False,
     validate: bool = False,
+    progress: ProgressReporter | None = None,
 ) -> Flow:
     """Assembles the knowledge cleaning flow for ONE source (parsed → cleaned).
 
@@ -171,6 +182,9 @@ def build_knowledge_cleaning_flow(
         source: Source to clean; must belong to `config.knowledge_preparation.sources`.
         force: If True, re-cleans every article even if already present in `cleaned/`.
         validate: If True, runs structural validation of the flow before returning it.
+        progress: Optional reporter driving the step/flow bars via a registered
+            `ProgressFlowObserver`. When `None`, defaults to `NullProgressReporter`,
+            a no-op collaborator. This flow has no instrumented service.
 
     Returns:
         Flow configured and ready for execution.
@@ -179,6 +193,7 @@ def build_knowledge_cleaning_flow(
         ValueError: if `source` is not among the valid sources configured for preparation.
     """
     preparation_config = config.knowledge_preparation
+    reporter: ProgressReporter = progress if progress is not None else NullProgressReporter()
 
     valid_sources = set(preparation_config.sources)
     if source not in valid_sources:
@@ -233,6 +248,7 @@ def build_knowledge_cleaning_flow(
         .add_step(clean_step)
         .add_step(filter_step)
         .add_step(write_step)
+        .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)
     )
 
@@ -247,6 +263,7 @@ def build_knowledge_enrichment_flow(
     force: bool = False,
     validate: bool = False,
     tracker: LlmCallTracker | None = None,
+    progress: ProgressReporter | None = None,
 ) -> Flow:
     """Assembles the knowledge enrichment flow for ONE source (cleaned → enriched).
 
@@ -273,6 +290,9 @@ def build_knowledge_enrichment_flow(
         validate: If True, runs structural validation of the flow before returning it.
         tracker: Optional port persisting one `LlmCallLog` per call made by the
             enrichment agent. Forwarded to `from_yaml`; `None` disables tracking.
+        progress: Optional reporter driving the step/flow bars (via a registered
+            `ProgressFlowObserver`) and the `ContextEnricher`'s item bar. When `None`,
+            defaults to `NullProgressReporter`, a no-op collaborator.
 
     Returns:
         Flow configured and ready for execution.
@@ -281,6 +301,7 @@ def build_knowledge_enrichment_flow(
         ValueError: if `source` is not among the valid sources configured for preparation.
     """
     preparation_config = config.knowledge_preparation
+    reporter: ProgressReporter = progress if progress is not None else NullProgressReporter()
 
     valid_sources = set(preparation_config.sources)
     if source not in valid_sources:
@@ -330,7 +351,7 @@ def build_knowledge_enrichment_flow(
     )
     enrich_step = AsyncApplyStep(
         "enrich_articles",
-        ContextEnricher(config.article_contextualizer_concurrency, agent),
+        ContextEnricher(config.article_contextualizer_concurrency, agent, reporter),
         input_key=context_keys.MAPPED_ARTICLES,
         output_key=context_keys.ENRICHED_ARTICLES,
     )
@@ -352,6 +373,7 @@ def build_knowledge_enrichment_flow(
         .add_step(map_step)
         .add_step(enrich_step)
         .add_step(write_step)
+        .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)
     )
 

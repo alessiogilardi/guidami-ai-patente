@@ -1,10 +1,10 @@
 """Argument parser for the `ingest` CLI.
 
 Subcommand structure:
-    ingest prepare knowledge --source <cds|cap> [--force] [--dry-run]
-    ingest prepare quiz [--force] [--dry-run]
-    ingest index knowledge --source <cds|cap> [--dry-run]
-    ingest index quiz [--dry-run]
+    ingest prepare knowledge --source <cds|cap> [--force] [--dry-run] [--plain]
+    ingest prepare quiz [--force] [--dry-run] [--plain]
+    ingest index knowledge --source <cds|cap> [--dry-run] [--plain]
+    ingest index quiz [--dry-run] [--plain]
     ingest reset knowledge [--dry-run]
     ingest reset quiz [--dry-run]
     ingest status [--online]
@@ -16,13 +16,20 @@ from guidami_ai_patente_ingestor.configs import IngestorConfig
 
 _EPILOG = """\
 Commands:
-  prepare knowledge --source <cds|cap> [--force] [--dry-run]  Clean + enrich the knowledge corpus.
-  prepare quiz [--force] [--dry-run]                          Clean + enrich the quiz bank.
-  index knowledge --source <cds|cap> [--dry-run]              Embed + store the knowledge corpus.
-  index quiz [--dry-run]                                      Embed + store the quiz bank.
-  reset knowledge [--dry-run]                                 Truncate knowledge_chunks (wipe).
-  reset quiz [--dry-run]                                      Truncate quiz_questions (full wipe).
-  status [--online]                                           Show config + per-command readiness.
+  prepare knowledge --source <cds|cap> [--force] [--dry-run] [--plain]
+      Clean + enrich the knowledge corpus.
+  prepare quiz [--force] [--dry-run] [--plain]
+      Clean + enrich the quiz bank.
+  index knowledge --source <cds|cap> [--dry-run] [--plain]
+      Embed + store the knowledge corpus.
+  index quiz [--dry-run] [--plain]
+      Embed + store the quiz bank.
+  reset knowledge [--dry-run]
+      Truncate knowledge_chunks (wipe).
+  reset quiz [--dry-run]
+      Truncate quiz_questions (full wipe).
+  status [--online]
+      Show config + per-command readiness.
 
 `--dry-run` prints the step chain the command would execute and exits: no
 filesystem writes, no LLM calls, no DB connection is ever opened.
@@ -33,6 +40,7 @@ Examples:
   ingest reset knowledge
   ingest status --online
   ingest prepare knowledge --source cds --dry-run
+  ingest index quiz --plain
 """
 
 
@@ -43,6 +51,16 @@ def _add_dry_run_flag(entity_parser: argparse.ArgumentParser) -> None:
         action="store_true",
         default=False,
         help="Print the step chain that would run and exit; no filesystem/LLM/DB access.",
+    )
+
+
+def _add_plain_flag(entity_parser: argparse.ArgumentParser) -> None:
+    """Adds `--plain` to a leaf (command, entity) subparser."""
+    entity_parser.add_argument(
+        "--plain",
+        action="store_true",
+        default=False,
+        help="Disable the live dashboard; emit plain log lines.",
     )
 
 
@@ -74,6 +92,7 @@ def build_parser(config: IngestorConfig) -> argparse.ArgumentParser:
         help="Re-run even if output already exists.",
     )
     _add_dry_run_flag(prep_k)
+    _add_plain_flag(prep_k)
 
     prep_q = prep_subs.add_parser("quiz", help="Prepare quiz bank.")
     prep_q.add_argument(
@@ -83,6 +102,7 @@ def build_parser(config: IngestorConfig) -> argparse.ArgumentParser:
         help="Re-run even if output already exists.",
     )
     _add_dry_run_flag(prep_q)
+    _add_plain_flag(prep_q)
 
     # ---- index ----
     index_p = cmd_subs.add_parser("index", help="Run indexing flows.")
@@ -96,9 +116,11 @@ def build_parser(config: IngestorConfig) -> argparse.ArgumentParser:
         help="Source to index (e.g. 'cds', 'cap').",
     )
     _add_dry_run_flag(idx_k)
+    _add_plain_flag(idx_k)
 
     idx_q = idx_subs.add_parser("quiz", help="Index quiz bank.")
     _add_dry_run_flag(idx_q)
+    _add_plain_flag(idx_q)
 
     # ---- reset ----
     reset_p = cmd_subs.add_parser("reset", help="Truncate DB tables (full wipe).")

@@ -62,3 +62,22 @@ def test_dry_run_flag_defaults_to_false() -> None:
     args = parser.parse_args(["reset", "knowledge"])
 
     assert args.dry_run is False
+
+
+def test_plain_flag_only_on_monitored_commands() -> None:
+    from guidami_ai_patente_ingestor.cli.parser import build_parser
+
+    parser = build_parser(_make_config_mock())
+
+    prepare_args = parser.parse_args(["prepare", "knowledge", "--source", "cds", "--plain"])
+    index_args = parser.parse_args(["index", "quiz", "--plain"])
+    index_default_args = parser.parse_args(["index", "quiz"])
+
+    assert prepare_args.plain is True
+    assert index_args.plain is True
+    assert index_default_args.plain is False
+
+    with pytest.raises(SystemExit):
+        parser.parse_args(["reset", "knowledge", "--plain"])
+    with pytest.raises(SystemExit):
+        parser.parse_args(["status", "--plain"])

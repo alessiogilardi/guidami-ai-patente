@@ -1,5 +1,10 @@
 """Tests for build_quiz_indexing_flow (flow factory SP04, single-source full-reload)."""
 
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import TYPE_CHECKING
 from unittest.mock import MagicMock
 
 from flowstep import Flow, FlowValidator
@@ -7,9 +12,13 @@ from flowstep import Flow, FlowValidator
 from commons.ai.embedding import EmbeddingClient
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
-from guidami_ai_patente_ingestor.configs import IngestorConfig
+from guidami_ai_patente_ingestor.configs import IngestorConfig, SourceConfig
 from guidami_ai_patente_ingestor.orchestrators import build_quiz_indexing_flow
 from guidami_ai_patente_ingestor.services import LayerResolver
+
+if TYPE_CHECKING:
+    # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
+    from tests.conftest import RecordingProgressReporter
 
 # ---------------------------------------------------------------------------
 # Helpers / factories
@@ -79,3 +88,64 @@ def test_flow_has_five_steps_in_order() -> None:
         "map_to_quiz_entity",
         "store_quiz",
     ]
+
+
+# ---------------------------------------------------------------------------
+# Progress reporting (T-10) — real filesystem, stubbed postgres_client, no real DB
+# ---------------------------------------------------------------------------
+
+
+def _enriched_quiz_payload(question_id: int) -> dict:
+    return {
+        "question_id": question_id,
+        "topic": "Segnaletica",
+        "number": "1",
+        "text": "Domanda di prova.",
+        "correct_answer": True,
+        "image": None,
+        # quiz_metadata must be present: EmbedQuizMetadata only calls EmbeddingService
+        # for items that carry it, and this test asserts the reporter reaches that
+        # injected service (begin_items("batches", 1)).
+        "quiz_metadata": {
+            "core_concepts": ["concetto"],
+            "exact_keywords": ["parola chiave"],
+            "vector_search_queries": ["query di ricerca"],
+            "rule_explanation": "Spiegazione breve.",
+        },
+    }
+
+
+def test_indexing_flow_reports_step_progress(
+    tmp_path: Path, progress_recorder: RecordingProgressReporter
+) -> None:
+    resolver = LayerResolver(
+        layers={"enriched": str(tmp_path / "enriched")},
+        sources={"quiz": SourceConfig(dir="quiz", file="quiz.json")},
+    )
+    enriched_path = resolver.path("enriched", "quiz")
+    enriched_path.parent.mkdir(parents=True)
+    enriched_path.write_text(json.dumps([_enriched_quiz_payload(1)]), encoding="utf-8")
+
+    config = IngestorConfig(
+        embedding_batch_size=4,
+        postgres=PostgresConnectionConfig(
+            host="localhost", user="unused", password="unused", dbname="unused"
+        ),
+        project_root=tmp_path,
+    )
+
+    build_quiz_indexing_flow(
+        config=config,
+        layer_resolver=resolver,
+        embedding_client=_make_embedding_client(),
+        postgres_client=_make_postgres_client(),
+        progress=progress_recorder,
+    ).run()
+
+    begin_steps = [args for name, args in progress_recorder.calls if name == "begin_step"]
+    end_steps = [args for name, args in progress_recorder.calls if name == "end_step"]
+    assert len(begin_steps) == 5
+    assert len(end_steps) == 5
+    assert [args[1] for args in begin_steps] == [1, 2, 3, 4, 5]
+    # Proves the reporter reached the injected EmbeddingService (via EmbedQuizMetadata).
+    assert ("begin_items", ("batches", 1)) in progress_recorder.calls

@@ -41,6 +41,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `commons/ai/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` (in `configs/`) from YAML, renders prompts via `PromptRenderer`; requires an injected `OpenRouterProvider` (never reads env itself); optionally tracks every call via an injected `LlmCallTracker` port | pydantic-ai-slim[openrouter] |
 | `commons/configs/` | Shared, app-agnostic Pydantic settings: `PostgresConnectionConfig`, `OpenRouterConfig` (`BaseSettings`, `env_prefix="OPENROUTER_"`, holds `api_key: SecretStr`) | pydantic-settings |
 | `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | psycopg[binary] |
+| `commons/observability/` | `ItemProgressReporter`/`ProgressReporter` port (`protocols/`) + `NullProgressReporter` (`services/`) — progress reporting for the ingest CLI's live dashboard (spec 0002); a sibling of `commons/ai/observability/`, not nested under it, since it is not AI-specific | — |
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
 | `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach`, `FlatMap` — generic composition primitives used across pipeline steps | — |
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
@@ -120,13 +121,64 @@ access.
 **Per-run file logging**: `cli/main.py:main` parses args first (the log
 folder name needs `args.command`), then calls
 `cli/logging_setup.py:configure_logging(config.project_root, args.command,
-dry_run=...)`, which attaches a console `StreamHandler` and — unless
-`dry_run` — a `FileHandler` to the root logger, so every
-`logging.getLogger(...)` call anywhere in the codebase is captured. Log
-files land in `logs/ingest_<command>_<YYYYMMDDHHMM>/run.log`; a same-minute
-collision appends a numeric suffix (`_2`, `_3`, ...) via the private
-`_build_run_dir`. `--dry-run` runs never get a log directory — that would
-contradict the "no filesystem writes" guarantee `render_dry_run` prints.
+dry_run=..., use_console_handler=...)`, which attaches a `FileHandler` to the
+root logger unless `dry_run`, plus a console `StreamHandler` only when
+`use_console_handler` is True — `main` passes `use_console_handler=dashboard
+is None`, since a live dashboard owns the console itself (see below) and would
+otherwise corrupt its `Live` region by racing a plain `StreamHandler` writing
+to the same stream. Every `logging.getLogger(...)` call anywhere in the
+codebase is still captured either way: by the `FileHandler` always, and by
+whichever console sink (`StreamHandler` or the dashboard's `LogPanelHandler`)
+is active. Log files land in `logs/ingest_<command>_<YYYYMMDDHHMM>/run.log`; a
+same-minute collision appends a numeric suffix (`_2`, `_3`, ...) via the
+private `_build_run_dir`. `--dry-run` runs never get a log directory — that
+would contradict the "no filesystem writes" guarantee `render_dry_run` prints.
+
+**Live dashboard** (`prepare`/`index` only, interactive TTY, non-dry-run,
+non-`--plain` — spec 0002): `cli/main.py:_build_dashboard(args)` returns a
+`cli/rendering/dashboard/live_dashboard.py:LiveDashboard` when
+`args.command` is `prepare`/`index`, `args.dry_run` and `args.plain` are both
+falsy (via `getattr(args, ..., False)`, since `reset`/`status` define
+neither flag), and `rich.console.Console().is_terminal` is True; otherwise
+`None`. `main()` always passes a concrete `ProgressReporter` down — the
+dashboard itself when built, else `commons.observability.NullProgressReporter`
+— so no command or flow factory ever branches on whether a dashboard exists.
+When a dashboard is built, `main()` enters it through a `contextlib.ExitStack`
+around the command dispatch, so it is torn down (its `Live` stopped, its
+`LogPanelHandler` detached from the root logger) *before* any exception from
+the flow propagates to the terminal (FR-5).
+
+Progress rides two independent channels, both driven by the same
+`ProgressReporter`, composed with no branching thanks to the null-object
+default:
+- **Step/flow position** rides `flowstep`'s own `FlowObserver` protocol.
+  `orchestrators/progress_flow_observer.py:ProgressFlowObserver` adapts it
+  onto `ProgressReporter.begin_step`/`end_step`; every `build_*_flow` factory
+  registers one via `FlowBuilder.add_observer(ProgressFlowObserver(reporter))`
+  — composed with, not replacing, the framework's default
+  `LoggingFlowObserver`. The flow-level bar (`begin_run`/`begin_flow`/
+  `end_flow`) is driven one level up, by `dispatch_prepare`/`run_index`
+  themselves: a `Flow` only knows its own steps, never that it is the first of
+  a pair (`prepare` always runs two flows back to back; `index` runs one).
+- **Item-level position** (inside one long-running step) rides the
+  `commons/observability/` `ProgressReporter` port directly, injected as the
+  last constructor argument into the four instrumented services:
+  `EmbeddingService` (one tick per batch), `ContextEnricher` (one tick per
+  article, including the skip/failure paths), and, inside the single
+  `enrich_quiz` step, `ImageDescriptionEnricher` then `NormReferenceEnricher`
+  in sequence (one tick per distinct image, then one tick per post-dedup
+  unique question) — two successive item bars for that one step.
+
+`cli/rendering/dashboard/log_panel_handler.py:LogPanelHandler` is a bounded
+(`deque(maxlen=15)`) `logging.Handler` that also filters out third-party
+loggers (`httpx`, `httpcore`, `litellm`, `openai`, `urllib3`, case-insensitive
+prefix match) from the panel only — the run log file, via the separate
+`FileHandler`, still receives every record unfiltered and unbounded. Its
+lifetime is scoped to the dashboard, not to `configure_logging`: attached to
+the root logger in `LiveDashboard.__enter__`, detached and closed in
+`__exit__`. `--plain` (leaf-subparser flag, `prepare`/`index` only, mirroring
+`--dry-run`) and a non-interactive stdout both degrade to the pre-dashboard
+plain-logging behavior, satisfying FR-4 with no separate code path.
 
 **LLM call observability** (`prepare` path only, no agent calls on `index`/`reset`):
 `cli/commands/prepare.py:run_prepare` opens a `PostgresClient` (via
@@ -251,4 +303,6 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-07-31 — verified against commit `71087f2`.*
+*Last updated: 2026-07-31 — records the CLI live dashboard feature (spec 0002):
+`_build_dashboard`, `LiveDashboard`, `ProgressFlowObserver`, and the
+`ProgressReporter`-driven progress channels.*

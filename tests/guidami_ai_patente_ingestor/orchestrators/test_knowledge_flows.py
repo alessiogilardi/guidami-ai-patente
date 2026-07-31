@@ -1,8 +1,10 @@
 """Tests for build_knowledge_indexing_flow (flow factory SP03, per-source)."""
 
+from __future__ import annotations
+
 import json
 from pathlib import Path
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
 from unittest.mock import MagicMock
 
 import pytest
@@ -16,6 +18,10 @@ from guidami_ai_patente_ingestor.configs import IngestorConfig, SourceConfig
 from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import build_knowledge_indexing_flow
 from guidami_ai_patente_ingestor.services import LayerResolver
+
+if TYPE_CHECKING:
+    # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
+    from tests.conftest import RecordingProgressReporter
 
 # ---------------------------------------------------------------------------
 # Helpers / factories
@@ -107,6 +113,37 @@ def test_build_with_unknown_source_raises_value_error() -> None:
             postgres_client=_make_postgres_client(),
             source="quiz",
         )
+
+
+def test_indexing_flow_reports_step_progress(
+    tmp_path: Path, progress_recorder: RecordingProgressReporter
+) -> None:
+    """Runs on a tmp_path filesystem with a stubbed postgres_client: no real DB access."""
+    resolver = _integration_resolver(tmp_path)
+    _write_enriched(resolver.dir("enriched", "cds"), [_make_enriched_article("1", "cds")])
+    config = IngestorConfig(
+        embedding_batch_size=4,
+        postgres=PostgresConnectionConfig(
+            host="localhost", user="unused", password="unused", dbname="unused"
+        ),
+        project_root=tmp_path,
+    )
+
+    build_knowledge_indexing_flow(
+        config=config,
+        layer_resolver=resolver,
+        embedding_client=_make_embedding_client(),
+        postgres_client=_make_postgres_client(),
+        source="cds",
+        progress=progress_recorder,
+    ).run()
+
+    begin_steps = [call for call in progress_recorder.calls if call[0] == "begin_step"]
+    end_steps = [call for call in progress_recorder.calls if call[0] == "end_step"]
+    assert len(begin_steps) == 5
+    assert len(end_steps) == 5
+    assert [args[1] for _, args in begin_steps] == [1, 2, 3, 4, 5]
+    assert all(args[2] == 5 for _, args in begin_steps)
 
 
 # ---------------------------------------------------------------------------

@@ -1,6 +1,9 @@
 """Tests for ImageDescriptionEnricher (grouped by image, one call per image, async)."""
 
+from __future__ import annotations
+
 from pathlib import Path
+from typing import TYPE_CHECKING
 from unittest.mock import MagicMock
 
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
@@ -11,6 +14,10 @@ from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
 )
 from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel, ImageAnalysis
 from guidami_ai_patente_ingestor.services.quiz.enrichers import ImageDescriptionEnricher
+
+if TYPE_CHECKING:
+    # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
+    from tests.conftest import RecordingProgressReporter
 
 
 def _question(
@@ -175,3 +182,22 @@ async def test_enrich_does_not_mutate_input_models() -> None:
     await enricher(questions)
 
     assert original.image_description is None
+
+
+async def test_item_total_is_the_distinct_image_count(
+    progress_recorder: RecordingProgressReporter,
+) -> None:
+    describer = _make_describer()
+    enricher = ImageDescriptionEnricher(4, describer, progress_recorder)
+    questions = [
+        _question("1", image="a.png"),
+        _question("2", image="a.png"),
+        _question("3", image="b.png"),
+        _question("4", image=None),
+    ]
+
+    await enricher(questions)
+
+    assert progress_recorder.calls[0] == ("begin_items", ("images", 2))
+    assert progress_recorder.count("advance_item") == 2
+    assert progress_recorder.calls[-1] == ("end_items", ())
