@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Id** | 0003 |
-| **Status** | draft |
+| **Status** | ready |
 | **Date** | 2026-07-31 |
 | **Discussion log** | — (compiled from conversation, 2026-07-31) |
 | **Supersedes / superseded by** | — |
@@ -245,7 +245,7 @@ that size is a fraction of a cent.
 
 ## Open Questions
 
-- [ ] **blocking** — Is the parenthesised-title and contiguous-inline-comma structure uniform across all 409 articles, or only across the 8 sampled? The sample was unanimous, but a full pass over `data/raw/reg/` after the scrape is what settles FR-2 and FR-3 — owner: investigation (resolved by running the scrape, which is the first implementation task)
+- [ ] **non-blocking** — Is the parenthesised-title and contiguous-inline-comma structure uniform across all 409 articles, or only across the 8 sampled? The sample was unanimous, and FR-2/AD-3 already tolerate an occasional exception by design (empty title + `warning` when no leading parenthesis; relaxed contiguity check per AD-3) rather than failing the whole parse. Guardrail: if more than 5% of the 409 articles (≈20) hit either fallback, treat it as a design failure — revisit FR-2/FR-3 rather than accepting it as noise. Measured by the full pass over `data/raw/reg/` after the scrape, the first implementation task — owner: investigation
 - [ ] **non-blocking** — Does the Regolamento carry repealed articles, and in the same `((ARTICOLO ABROGATO ...))` form spec 0001's FR-13 anchors on? Not observed in the sample; the article-level flag rule is inherited as-is until measured — owner: investigation
 - [ ] **non-blocking** — The Regolamento is amended often. Nothing in the project records *when* a source was scraped at corpus level (`scraped_at` is per record and deliberately not stored in `articles`), so there is no signal that a source has gone stale. Out of scope here, but adding a third source makes it more visible — owner: user
 - [ ] **non-blocking** — Should Phase 2 also bring `src/scrapers/` under test and lift its `C901` exemption? It is currently untested by design as a script (`docs/testing.md:25`, `docs/testing.md:44`), yet it is where spec 0001 found seven silent defects. Deliberately excluded from FR-6/FR-7 because it is a reclassification from script to production code, not a CLI change — owner: user
