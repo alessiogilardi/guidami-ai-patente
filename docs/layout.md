@@ -10,7 +10,10 @@ repo/
 │   │                                #   ai/ (agents/: BaseAgent + PromptRenderer;
 │   │                                #   embedding/: clients/configs/services;
 │   │                                #   observability/: LlmCallTracker port + impls;
-│   │                                #   protocols/services/repositories/mappers/models)
+│   │                                #   protocols/services/repositories/mappers/models);
+│   │                                #   observability/: ItemProgressReporter/ProgressReporter
+│   │                                #   port + NullProgressReporter (sibling of ai/observability/,
+│   │                                #   not AI-specific)
 │   ├── domain/                     # Shared domain entities/models (persisted + intermediate),
 │   │                                #   no I/O or business logic
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
@@ -88,6 +91,15 @@ gitignored — never committed, safe to delete once the spec they fed is
   that package's own mappers). `agents/` and `embedding/` only need the
   subset of that shape relevant to their own responsibility (`configs/`
   instead of a data-access/mapper shape, since neither owns persistence).
+  `src/commons/observability/` (top-level, a **sibling** of `commons/ai/`,
+  not nested under it) holds `ItemProgressReporter`/`ProgressReporter`
+  (`protocols/`) + `NullProgressReporter` (`services/`) — the progress-reporting
+  port the ingest CLI's live dashboard (spec 0002) drives and the four
+  instrumented services (`EmbeddingService`, `ContextEnricher`,
+  `ImageDescriptionEnricher`, `NormReferenceEnricher`) depend on. It is not
+  under `commons/ai/` because it is not AI-specific (`EmbeddingService` is
+  the only one of the four that happens to also be AI-related); see
+  `docs/patterns.md` for the port/null-object shape.
 - **Persisted or cross-cutting domain shapes** (entities that map 1:1 to a
   DB table, models shared by more than one app) go in `src/domain/`.
   Models that only exist as an intermediate step inside one pipeline stay
@@ -135,5 +147,10 @@ gitignored — never committed, safe to delete once the spec they fed is
   primitives on `BulkInsertStoreRepository`) stays in its own top-level layer
   instead. The internal `cli/` breakdown and the full self-containment
   boundary rule live in `.claude/rules/cli-structure.md` — not restated here.
+  `cli/rendering/dashboard/` (`LiveDashboard`, `LogPanelHandler`) is the concrete,
+  CLI-only `rich` implementation of the `commons/observability/` port — the port
+  itself is shared, but nothing outside the CLI renders it, so the renderer stays
+  local per the same rule.
 
-*Last updated: 2026-07-31 — verified against commit `794d1b5`.*
+*Last updated: 2026-07-31 — records `src/commons/observability/` and
+`cli/rendering/dashboard/`, added by the CLI live dashboard feature (spec 0002).*
