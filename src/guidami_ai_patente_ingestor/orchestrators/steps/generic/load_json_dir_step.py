@@ -7,7 +7,7 @@ import logging
 
 from flowstep import FlowContext, Step
 
-from commons.repositories import JsonRepository
+from commons.repositories import FileRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
 
 logger = logging.getLogger(__name__)
@@ -32,7 +32,7 @@ class LoadJsonDirStep[T](Step):
         source: str,
         output_key: str,
         layer_resolver: LayerResolver,
-        repository: JsonRepository[T],
+        repository: FileRepository[T],
     ) -> None:
         """Injects layer/source/context key, then resolver and repository."""
         super().__init__(name)

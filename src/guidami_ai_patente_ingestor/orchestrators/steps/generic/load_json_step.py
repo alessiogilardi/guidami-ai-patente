@@ -1,4 +1,4 @@
-"""Generic step that loads a list of models from disk via JsonRepository.
+"""Generic step that loads a list of models from disk via a FileRepository.
 
 Domain-agnostic: parametrized by model type and context key.
 """
@@ -8,7 +8,7 @@ from typing import cast
 
 from flowstep import FlowContext, Step
 
-from commons.repositories import JsonRepository
+from commons.repositories import FileRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
 
 logger = logging.getLogger(__name__)
@@ -33,7 +33,7 @@ class LoadJsonStep[T](Step):
         source: str,
         output_key: str,
         layer_resolver: LayerResolver,
-        repository: JsonRepository[T],
+        repository: FileRepository[T],
     ) -> None:
         """Injects layer/source/context key, then resolver and repository."""
         super().__init__(name)

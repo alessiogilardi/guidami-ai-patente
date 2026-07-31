@@ -1,4 +1,4 @@
-"""Generic step that writes one JSON file per element into a layer directory.
+"""Generic step that writes one file per element into a layer directory.
 
 Domain-agnostic: parametrized by model type, context key, and an `id_of` keyer.
 """
@@ -9,7 +9,7 @@ from typing import cast
 
 from flowstep import FlowContext, Step
 
-from commons.repositories import JsonRepository
+from commons.repositories import FileRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
 
 logger = logging.getLogger(__name__)
@@ -36,7 +36,7 @@ class WriteJsonDirStep[T](Step):
         input_key: str,
         id_of: Callable[[T], str],
         layer_resolver: LayerResolver,
-        repository: JsonRepository[T],
+        repository: FileRepository[T],
     ) -> None:
         """Injects layer/source/key, then the keyer, resolver, and repository."""
         super().__init__(name)
