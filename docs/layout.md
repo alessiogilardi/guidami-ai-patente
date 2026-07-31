@@ -101,7 +101,7 @@ gitignored — never committed, safe to delete once the spec they fed is
   steps that are domain-agnostic but specific to *this repo's* layer/source
   model (e.g. `orchestrators/steps/generic/{load_json_dir_step,
   filter_already_done_step,write_json_dir_step}.py`, parametrized by
-  `LayerResolver`/`JsonRepository`/an injected `id_of` keyer) stay in
+  `LayerResolver`/`FileRepository`/an injected `id_of` keyer) stay in
   `guidami_ai_patente_ingestor/orchestrators/steps/generic/`, next to
   `LoadJsonStep`/`WriteJsonStep` — they know nothing of articles or quizzes,
   but they do know this repo's layer/source vocabulary, which `flowstep`
@@ -136,4 +136,4 @@ gitignored — never committed, safe to delete once the spec they fed is
   instead. The internal `cli/` breakdown and the full self-containment
   boundary rule live in `.claude/rules/cli-structure.md` — not restated here.
 
-*Last updated: 2026-07-31 — verified against commit `c031d77`.*
+*Last updated: 2026-07-31 — verified against commit `794d1b5`.*

@@ -16,3 +16,7 @@ class FileRepository[T](Protocol):
     def write(self, data: T | Sequence[T], file_name: str | Path) -> None:
         """Serialize and write one object or a sequence to a file."""
         ...
+
+    def load_all(self, dir_path: str | Path) -> list[T]:
+        """Load every file of a directory as one object each, ordered by filename."""
+        ...
