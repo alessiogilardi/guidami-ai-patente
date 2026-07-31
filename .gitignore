@@ -526,3 +526,4 @@ data/enriched/
 .playwright-mcp/
 .browser_session/
 specs/discussions/
+plans/
