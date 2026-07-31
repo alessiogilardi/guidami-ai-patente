@@ -45,12 +45,38 @@
 # never clobbers a host hook's own variables when injected.
 
 # >>> BEGIN SECOND BRAIN SYSTEM pre-commit >>>
-_sb_exclude='^(\.github/|.*\.lock$|package-lock\.json$|yarn\.lock$|pnpm-lock\.yaml$|poetry\.lock$|uv\.lock$|Cargo\.lock$|Gemfile\.lock$|\.claude/|\.githooks/|\.gitattributes$)|(^|/)tests?/'
+_sb_default_exclude='^(\.github/|.*\.lock$|package-lock\.json$|yarn\.lock$|pnpm-lock\.yaml$|poetry\.lock$|uv\.lock$|Cargo\.lock$|Gemfile\.lock$|\.claude/|\.githooks/|\.gitattributes$|\.second-brain\.conf$)|(^|/)tests?/'
+_sb_docs_pattern='^docs/|^CLAUDE\.md$'
+
+# Read KEY from the .second-brain.conf-style file $1. Last assignment wins;
+# surrounding single/double quotes and trailing blanks are stripped; a missing
+# file or key yields the empty string (caller falls back to the default).
+_sb_conf_get() {
+    [ -f "$1" ] || return 0
+    sed -n "s/^[[:space:]]*$2[[:space:]]*=[[:space:]]*//p" "$1" |
+        sed -e 's/[[:space:]]*$//' -e 's/^\(['"'"'"]\)\(.*\)\1$/\2/' |
+        tail -n 1
+}
+
+_sb_root=$(git rev-parse --show-toplevel 2>/dev/null) || _sb_root="."
+[ -n "$_sb_root" ] || _sb_root="."
+_sb_conf="$_sb_root/.second-brain.conf"
+_sb_include=$(_sb_conf_get "$_sb_conf" SB_INCLUDE_PATTERN)
+_sb_exclude=$(_sb_conf_get "$_sb_conf" SB_EXCLUDE_PATTERN)
+_sb_extra=$(_sb_conf_get "$_sb_conf" SB_EXCLUDE_EXTRA)
+[ -n "$_sb_exclude" ] || _sb_exclude="$_sb_default_exclude"
+if [ -n "$_sb_extra" ]; then
+    _sb_exclude="($_sb_exclude)|($_sb_extra)"
+fi
+
 _sb_staged=$(git diff --cached --name-only)
 if [ -n "$_sb_staged" ]; then
-    _sb_relevant=$(printf '%s\n' "$_sb_staged" | grep -vE "$_sb_exclude")
-    _sb_docs=$(printf '%s\n' "$_sb_relevant" | grep -E '^docs/|^CLAUDE\.md$')
-    _sb_source=$(printf '%s\n' "$_sb_relevant" | grep -vE '^docs/|^CLAUDE\.md$')
+    _sb_relevant=$(printf '%s\n' "$_sb_staged" | grep -vE "$_sb_exclude") || true
+    _sb_docs=$(printf '%s\n' "$_sb_relevant" | grep -E "$_sb_docs_pattern") || true
+    _sb_source=$(printf '%s\n' "$_sb_relevant" | grep -vE "$_sb_docs_pattern") || true
+    if [ -n "$_sb_include" ]; then
+        _sb_source=$(printf '%s\n' "$_sb_source" | grep -E "$_sb_include") || true
+    fi
     if [ -n "$_sb_source" ] && [ -z "$_sb_docs" ]; then
         echo ""
         echo "=================================================================="
@@ -61,12 +87,15 @@ if [ -n "$_sb_staged" ]; then
         echo "  or in the CLAUDE.md file."
         echo ""
         echo "  Claude, run the second-brain:update skill, then retry the"
-        echo "  commit. If this is a false positive or a legitimate exception,"
-        echo "  see the second-brain:update skill and use"
+        echo "  commit. If this is a false positive, add the path to"
+        echo "  SB_EXCLUDE_EXTRA in .second-brain.conf. For a legitimate"
+        echo "  one-off exception, see the second-brain:update skill and use"
         echo "  git commit --no-verify."
         echo ""
         echo "=================================================================="
+        unset -f _sb_conf_get 2>/dev/null || true
         exit 1
     fi
 fi
+unset -f _sb_conf_get 2>/dev/null || true
 # <<< END SECOND BRAIN SYSTEM pre-commit <<<
