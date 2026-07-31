@@ -18,9 +18,16 @@
 - **Client**: `PostgresClient` (`src/commons/clients/postgres_client.py`) —
   generic, table-agnostic psycopg3 wrapper; registers the pgvector adapter
   on connect; autocommit; context-manager support; `execute`/`execute_many`/
-  `fetch`/`truncate`. The `%s::vector` cast requirement for vector
-  parameters is documented in `.claude/rules/code-conventions.md` — see
-  there for the rule, not restated here.
+  `execute_many_returning`/`fetch`/`truncate`. `execute_many_returning` runs
+  a batched `executemany(..., returning=True)` and drains each statement's
+  `RETURNING` rows (`fetchall()` + `cursor.nextset()` loop), returning one
+  row per input row, in input order — the way to get DB-generated ids back
+  from a bulk insert without a follow-up `SELECT`. All query-accepting
+  methods take `sql.SQL | sql.Composed` (not just `sql.Composed`), since a
+  literal `sql.SQL(...)` with no `.format()` call is not itself `Composed`.
+  The `%s::vector` cast requirement for vector parameters is documented in
+  `.claude/rules/code-conventions.md` — see there for the rule, not
+  restated here.
 
 ## Main schema
 
@@ -123,4 +130,4 @@ docker compose -f docker/docker-compose.yml up -d
 (see also the "Infrastructure" section of `CLAUDE.md`). There is no
 changelog file tracking schema history beyond `git log db/init.sql`.
 
-*Last updated: 2026-07-16 — verified against commit `a6db92b`.*
+*Last updated: 2026-07-31 — verified against commit `d512325`.*

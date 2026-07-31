@@ -48,16 +48,38 @@ class PostgresClient:
         query = sql.SQL("TRUNCATE TABLE {table}").format(table=sql.Identifier(table_name))
         self._connection.execute(query)
 
-    def execute(self, query: sql.Composed, params: Sequence[object] | None = None) -> None:
+    def execute(
+        self, query: sql.SQL | sql.Composed, params: Sequence[object] | None = None
+    ) -> None:
         """Executes `query` once (statement with no result, e.g. parameterized DELETE)."""
         self._connection.execute(query, params)
 
-    def execute_many(self, query: sql.Composed, params_seq: Sequence[Sequence[object]]) -> None:
+    def execute_many(
+        self, query: sql.SQL | sql.Composed, params_seq: Sequence[Sequence[object]]
+    ) -> None:
         """Executes `query` once for each row of `params_seq`."""
         with self._connection.cursor() as cursor:
             cursor.executemany(query, params_seq)
 
-    def fetch(self, query: sql.Composed, params: Sequence[object] | None = None) -> list[tuple]:
+    def execute_many_returning(
+        self, query: sql.SQL | sql.Composed, params_seq: Sequence[Sequence[object]]
+    ) -> list[tuple]:
+        """Executes `query` once per row of `params_seq`.
+
+        Collects each statement's RETURNING rows, in the same order as `params_seq`.
+        """
+        with self._connection.cursor() as cursor:
+            cursor.executemany(query, params_seq, returning=True)
+            rows: list[tuple] = []
+            while True:
+                rows.extend(cursor.fetchall())
+                if not cursor.nextset():
+                    break
+            return rows
+
+    def fetch(
+        self, query: sql.SQL | sql.Composed, params: Sequence[object] | None = None
+    ) -> list[tuple]:
         """Executes `query` and returns all result rows."""
         with self._connection.cursor() as cursor:
             cursor.execute(query, params)
