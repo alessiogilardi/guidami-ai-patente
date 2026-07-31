@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Id** | 0002 |
-| **Status** | draft |
+| **Status** | ready |
 | **Date** | 2026-07-31 |
 | **Discussion log** | none — compiled directly from conversation |
 | **Supersedes / superseded by** | — |
@@ -42,12 +42,14 @@ visually delimited panel rather than interleaved with the rest of the command's 
 - Given `ingest prepare knowledge --source cds` running on a TTY, when a log record is
   emitted at the configured level or above, then it appears inside the bordered log
   panel and not in the surrounding terminal scrollback.
-- Given the log panel is bounded to N records, when more than N records have been
-  emitted, then the panel displays the most recent N and older records are no longer
-  displayed.
+- Given the log panel retains the 15 most recent records, when more than 15 records have
+  been emitted, then the panel displays the most recent 15 and older records are no
+  longer displayed.
+- Given a log record emitted by a third-party logger (e.g. `httpx`, `litellm`), when it
+  is processed, then it is written to the run log file but is not displayed in the panel.
 - Given any monitored run, when the run completes, then the per-run log file under
   `logs/ingest_<command>_<timestamp>/run.log` contains every record emitted, including
-  those no longer visible in the panel.
+  those filtered out of the panel or aged out of it.
 
 ### FR-2: An outer progress bar tracks step position within the flow
 
@@ -74,6 +76,7 @@ individual work items complete, so progress is observable during a single step.
 - Given the quiz enrichment step, when items are deduplicated before dispatch, then the
   inner bar's total equals the number of unique items actually sent to the LLM, not the
   number of input quiz items.
+- Given the `enrich_quiz` step chains two enrichers with independent post-dedup totals, when the first enricher completes, then its inner bar is removed and a second inner bar opens carrying the second enricher's own total.
 - Given an instrumented step, when the step ends, then its inner bar is removed and the
   outer bar advances.
 
@@ -108,6 +111,16 @@ A failing run reports its error with the same fidelity as before the dashboard e
   rendered, no `logs/` directory is created, and the output matches the current dry-run
   rendering.
 
+### FR-7: A flow-level progress bar tracks position across a multi-flow invocation
+
+A single `prepare` invocation runs two flows back to back; the dashboard shows which of
+them is executing, so the step bar restarting is never mistaken for the run restarting.
+
+**Acceptance criteria:**
+- Given `ingest prepare knowledge --source cds` runs the pair `knowledge_cleaning` + `knowledge_enrichment`, when the first flow's final step completes, then the flow bar displays 1 of 2 and the step bar restarts at 1 of the second flow's step count, relabelled with the second flow's name.
+- Given a monitored invocation that runs F flows, when its last flow's last step completes successfully, then the flow bar displays F of F.
+- Given a monitored invocation that runs exactly one flow (`index knowledge`, `index quiz`), when it runs, then the flow bar shows 1 of 1 for the whole run.
+
 ## Non-Goals
 
 - `ingest reset` and `ingest status` — neither executes a `Flow`. `reset` issues a
@@ -117,8 +130,16 @@ A failing run reports its error with the same fidelity as before the dashboard e
   instrumented; cheap map/filter steps are covered by the outer bar alone.
 - Scrollback, mouse interaction, or level filtering inside the log panel — the panel is a
   fixed window on recent records, and the run log file remains the complete archive.
+- Making the panel's 15-record bound configurable — it is a module constant; a config
+  field for a purely cosmetic parameter is surface without benefit.
+- Item-level (as opposed to batch-level) granularity for the embedding bar — batch ticks
+  are already available at no cost, and a finer callback buys no operational insight.
+- Asserting the rendered terminal output in tests — see Constraints.
 - Changing the log file format, location, or the `--dry-run` no-writes contract.
 - Modifying the `flowstep` dependency.
+- Fixing the pre-existing f-string logging calls in the files this change touches (e.g.
+  `EmbeddingService`) — a convention cleanup, kept separate from this feature per the
+  project's refactoring rule.
 
 ## Architectural Decisions
 
@@ -154,19 +175,29 @@ of the instrumented services.
   contradicts the project's logging conventions. Extending `flowstep` with an item-level
   observer — the instrumented services are not `Step`s, so they would take a framework
   dependency for a presentation concern.
+- **Note:** the reporter reaches `EmbeddingService` directly in the knowledge indexing
+  flow, but through one extra hop in the quiz indexing flow, where the service is wrapped
+  by `EmbedQuizMetadata`.
 
-### AD-4: The reporter enters the flows through one parameter on the flow factories
+### AD-4: Step-level progress rides `flowstep`'s existing `FlowObserver`; the reporter enters through one parameter on the flow factories
 
-Each `build_*_flow` factory accepts `progress: ProgressReporter | None = None` and uses it
-both to register the outer-bar observer on the `FlowBuilder` and to inject into the
-services it constructs.
-- **Rationale:** `Flow` exposes no way to attach an observer post-construction, so
-  something must reach the factories regardless. A single parameter serving both the
-  step-level and item-level paths keeps one concept instead of two, and leaves the
-  `flowstep` dependency untouched.
-- **Rejected alternatives:** Adding `Flow.add_observer()` to `flowstep` — covers only the
-  outer bar, so the factory parameter is still needed for the services; the result is two
-  mechanisms plus a cross-repo release and version bump.
+The step (outer) and flow bars are driven by a `FlowObserver` implementation registered
+via `FlowBuilder.add_observer`; item-level ticks are driven by the separate
+`ProgressReporter` port of AD-3. Each `build_*_flow` factory accepts a single
+`progress: ProgressReporter | None = None` parameter and uses it both to construct and
+register the observer and to inject into the services it builds.
+- **Rationale:** `flowstep` already exposes exactly the step-lifecycle contract FR-2
+  needs — a `FlowObserver` protocol with `on_start`/`on_end`/`on_error`, carrying a
+  `FlowProgress(index, total)` value object — and `FlowBuilder.add_observer` to register
+  it, composing it with the framework's default `LoggingFlowObserver` rather than
+  replacing it. No change to the dependency is required. `Flow` itself exposes no
+  post-construction hook, so registration must happen inside the factory; routing both
+  the step-level and item-level paths through one factory parameter keeps one concept
+  instead of two.
+- **Rejected alternatives:** Two separate factory parameters, one per protocol — doubles
+  the signature change across five factories for no gain, since the same CLI-side object
+  supplies both roles. Forwarding item ticks through the `FlowObserver` as well — its
+  hooks are step-scoped by design and carry no per-item channel.
 
 ### AD-5: The port is defined in `commons/`, outside the CLI package
 
@@ -190,44 +221,106 @@ touches the terminal.
 - **Rejected alternatives:** Redrawing synchronously on each callback — serialises the
   hot per-item path against terminal I/O and races the `Live` refresh thread.
 
+### AD-7: The flow-level total is supplied by the command layer, not derived from a `Flow`
+
+The command that sequences the flows (`dispatch_prepare`, `run_index`) declares how many
+flows the invocation will run; the dashboard advances the flow bar as each one finishes.
+- **Rationale:** A `Flow` knows only its own steps — nothing inside one can know it is the
+  first of two. The command layer is the only place where the flow sequence is expressed,
+  so it is the only honest source for FR-7's total.
+- **Rejected alternatives:** Merging each flow pair into a single composite `Flow` so the
+  step bar never restarts — the two flows are deliberately separate, the second reading
+  from disk what the first wrote, and merging them would collapse two independent
+  step-name namespaces and change every flow factory's contract. Inferring the total from
+  the number of factory calls — implicit, and invisible at the point a reader looks for it.
+
 ## Constraints
 
 - No new runtime dependency: `rich>=13` is already declared and is sufficient.
 - The per-run log file remains the complete record; the panel is a bounded view of it.
+- The panel's retention bound is a fixed module constant of 15 records, not a config field.
 - `--dry-run` must continue to open no `Live`, write no `logs/` directory, and touch no
   filesystem path.
-- Logging calls keep lazy `%s`/`%r` argument style, enforced by ruff's `G` ruleset.
+- Logging calls keep lazy `%s`/`%r` argument style per the project's logging rule. Note
+  this is a convention, *not* a mechanical gate: ruff's `G` ruleset is enabled but `G004`
+  (logging-fstring-interpolation) is explicitly in `ignore`, so f-string log calls do not
+  fail lint.
 - Injected collaborators go last in constructor signatures, per the project's
   dependency-injection rule.
+- Automated tests cover the dashboard's state and adapters — the bounded log deque, the
+  reporter counters, the `FlowObserver` adapter's position mapping, the third-party
+  logger filter, and FR-4's non-interactive degradation (asserting the absence of ANSI
+  control sequences). The rendered output of `rich` itself is not asserted: it is
+  third-party rendering, and snapshot assertions on it break on terminal width, theme,
+  and library version.
 - All new docstrings, comments and log messages in English.
 
 ## Feasibility Evidence
 
-- **AD-1** — supported by: `src/guidami_ai_patente_ingestor/cli/logging_setup.py:38` — the console handler is a plain `logging.StreamHandler` writing to the same stream a `Live` would redraw; constructed in one place, so substituting it is a localised change (verified 2026-07-31 @ 18a58e0)
-- **AD-2** — supported by: `pyproject.toml:23` — `rich>=13` is already a declared runtime dependency, so no new package is required (verified 2026-07-31 @ 18a58e0)
-- **AD-2** — supported by: `src/guidami_ai_patente_ingestor/cli/rendering/dry_run_renderer.py:14` — the CLI already composes rich renderables (`Panel`) through a `Console`, establishing the idiom (verified 2026-07-31 @ 18a58e0)
-- **AD-3** — supported by: `src/commons/ai/observability/protocols/llm_call_tracker.py:6` — an existing `Protocol` port injected as an optional collaborator, the pattern this decision mirrors (verified 2026-07-31 @ 18a58e0)
-- **AD-3** — supported by: `src/commons/ai/observability/services/null_llm_call_tracker.py:4` — the matching no-op implementation that lets call sites avoid branching on absence (verified 2026-07-31 @ 18a58e0)
-- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/enrichers/context_enricher.py:50` — `articles = list(request)` materialises the collection before dispatch, so the item total required by FR-3 is known at that point (verified 2026-07-31 @ 18a58e0)
-- **AD-3** — supported by: `src/commons/ai/embedding/services/embedding_service.py:27` — `total_batches` is already computed, and line 38 already logs per-batch position, so batch-level ticks require no new counting (verified 2026-07-31 @ 18a58e0)
-- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/enrichers/norm_reference_enricher.py:65` — `unique = list(deduplicate(...))` is the post-dedup collection actually dispatched, confirming the FR-3 total must be taken after deduplication (verified 2026-07-31 @ 18a58e0)
-- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/enrichers/image_description_enricher.py:69` — `images = list(requests)` is the deduplicated image set dispatched concurrently, the second post-dedup total (verified 2026-07-31 @ 18a58e0)
-- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/core/flow/flow.py:73` — the built `Flow` exposes only `run` and `get_steps`; there is no post-construction observer hook, so injection must happen at build time (verified 2026-07-31 @ 18a58e0)
-- **AD-4** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/knowledge_flows.py:135` — the factory constructs the `FlowBuilder` internally and returns a sealed `Flow`, so the observer can only be registered inside the factory (verified 2026-07-31 @ 18a58e0)
-- **AD-5** — supported by: `.claude/rules/cli-structure.md:27` — the project rule states a component shared beyond the CLI belongs in the shared layer, which is the test this decision applies (verified 2026-07-31 @ 18a58e0)
-- **AD-6** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/enrichers/context_enricher.py:52` — per-item work runs under `asyncio.gather`, so ticks originate inside a coroutine owned by the async step rather than on the rendering thread (verified 2026-07-31 @ 18a58e0)
-- **AD-6** — supported by: `.venv/Lib/site-packages/flowstep/steps/async_apply_step.py:53` — `AsyncApplyStep.apply` calls `asyncio.run`, confirming the step owns its own event loop that the dashboard must not assume control of (verified 2026-07-31 @ 18a58e0)
+- **AD-1** — supported by: `src/guidami_ai_patente_ingestor/cli/logging_setup.py:38` — the console handler is a plain `logging.StreamHandler` writing to the same stream a `Live` would redraw; constructed in one place, so substituting it is a localised change (verified 2026-07-31 @ 5790d63)
+- **AD-2** — supported by: `pyproject.toml:23` — `rich>=13` is already a declared runtime dependency, so no new package is required (verified 2026-07-31 @ 5790d63)
+- **AD-2** — supported by: `src/guidami_ai_patente_ingestor/cli/rendering/dry_run_renderer.py:14` — the CLI already composes rich renderables (`Panel`) through a `Console`, establishing the idiom (verified 2026-07-31 @ 5790d63)
+- **AD-3** — supported by: `src/commons/ai/observability/protocols/llm_call_tracker.py:6` — an existing `Protocol` port injected as an optional collaborator, the pattern this decision mirrors (verified 2026-07-31 @ 5790d63)
+- **AD-3** — supported by: `src/commons/ai/observability/services/null_llm_call_tracker.py:4` — the matching no-op implementation that lets call sites avoid branching on absence (verified 2026-07-31 @ 5790d63)
+- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/enrichers/context_enricher.py:50` — `articles = list(request)` materialises the collection before dispatch, so the item total required by FR-3 is known at that point (verified 2026-07-31 @ 5790d63)
+- **AD-3** — supported by: `src/commons/ai/embedding/services/embedding_service.py:27` — `total_batches` is already computed, and line 38 already logs per-batch position, so batch-level ticks require no new counting (verified 2026-07-31 @ 5790d63)
+- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/quiz_flows.py:101` — `EmbedQuizMetadata(embedding_service=EmbeddingService(...))` wraps the service, so the quiz indexing flow needs one hop more than the knowledge flow to reach it (verified 2026-07-31 @ 5790d63)
+- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/enrichers/norm_reference_enricher.py:65` — `unique = list(deduplicate(...))` is the post-dedup collection actually dispatched, confirming the FR-3 total must be taken after deduplication (verified 2026-07-31 @ 5790d63)
+- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/enrichers/image_description_enricher.py:69` — `images = list(requests)` is the deduplicated image set dispatched concurrently, the second post-dedup total (verified 2026-07-31 @ 5790d63)
+- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/builder/flow_builder.py:55` — `FlowBuilder.add_observer(observer: FlowObserver)` already exists, so registering the step-level observer requires no change to the dependency (verified 2026-07-31 @ 5790d63)
+- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/core/observability/protocols/flow_observer.py:19` — the `FlowObserver` protocol declares `on_start`/`on_end`/`on_error`, the exact step-lifecycle contract FR-2 needs (verified 2026-07-31 @ 5790d63)
+- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/core/observability/models/flow_progress.py:16` — `FlowProgress` carries `index` and `total`, i.e. FR-2's "position I of T" with no derivation needed (verified 2026-07-31 @ 5790d63)
+- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/builder/flow_builder.py:89` — `build()` wraps the registered observers in `_CompositeFlowObserver`, so adding ours preserves the default `LoggingFlowObserver` instead of replacing it (verified 2026-07-31 @ 5790d63)
+- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/core/flow/flow.py:73` — the built `Flow` exposes only `run` and `get_steps`; there is no post-construction observer hook, so registration must happen at build time (verified 2026-07-31 @ 5790d63)
+- **AD-4** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/knowledge_flows.py:135` — the factory constructs the `FlowBuilder` internally and returns a sealed `Flow`, so the observer can only be registered inside the factory (verified 2026-07-31 @ 5790d63)
+- **AD-5** — supported by: `.claude/rules/cli-structure.md:27` — the project rule states a component shared beyond the CLI belongs in the shared layer, which is the test this decision applies (verified 2026-07-31 @ 5790d63)
+- **AD-6** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/enrichers/context_enricher.py:52` — per-item work runs under `asyncio.gather`, so ticks originate inside a coroutine owned by the async step rather than on the rendering thread (verified 2026-07-31 @ 5790d63)
+- **AD-6** — supported by: `.venv/Lib/site-packages/flowstep/steps/async_apply_step.py:53` — `AsyncApplyStep.apply` calls `asyncio.run`, confirming the step owns its own event loop that the dashboard must not assume control of (verified 2026-07-31 @ 5790d63)
+- **AD-7** — supported by: `src/guidami_ai_patente_ingestor/cli/commands/prepare.py:87` — `clean_flow.run()` followed by `enrich_flow.run()` on the next line: one `prepare knowledge` invocation runs two independent flows, and only this call site knows it (verified 2026-07-31 @ 5790d63)
+- **AD-7** — supported by: `src/guidami_ai_patente_ingestor/cli/commands/prepare.py:104` — the quiz branch runs its own two-flow pair through `run_preparation`, confirming the two-flow shape is not specific to knowledge (verified 2026-07-31 @ 5790d63)
+- **AD-7** — supported by: `src/guidami_ai_patente_ingestor/cli/commands/index.py:64` — `index` runs a single `flow.run()`, the one-flow case FR-7's third criterion covers (verified 2026-07-31 @ 5790d63)
+- **FR-3** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/quiz_flows.py:283` — `ImageDescriptionEnricher` and `NormReferenceEnricher` are chained inside the single `enrich_quiz` `AsyncApplyStep`, which is why that one step needs two successive inner bars (verified 2026-07-31 @ 5790d63)
+- **Constraints** — supported by: `pyproject.toml:57` — `"G004"` sits in ruff's `ignore` list, so the lazy-`%s` logging convention is not mechanically enforced (verified 2026-07-31 @ 5790d63)
+- **FR-4** — supported by: `src/guidami_ai_patente_ingestor/cli/parser.py:39` — `_add_dry_run_flag` is the established per-leaf-subparser flag helper `--plain` can follow (verified 2026-07-31 @ 5790d63)
 
 ## Open Questions
 
-- [ ] **non-blocking** — How many records the log panel retains, and whether that bound is
-  fixed or configurable — owner: investigation
-- [ ] **non-blocking** — Whether the inner bar for embedding counts batches or individual
-  items; batches are free today, items would need a finer callback — owner: user
-- [ ] **non-blocking** — Whether the panel shows every record at the root level or filters
-  noisy third-party loggers (httpx, litellm) — owner: investigation
+None. The three non-blocking questions carried by the initial compilation were resolved
+on 2026-07-31 (see Changelog).
 
 ## Sign-off
 
-- **Scope approved by user:** pending
+- **Scope approved by user:** Alessio Gilardi, 2026-07-31
 - **Feasibility asserted:** by write-spec on 2026-07-31, based on Feasibility Evidence above
+
+## Changelog
+
+- **2026-07-31 — scope review amendment.** Reason: a pre-promotion review against the
+  codebase found two functional gaps and three inaccurate claims; all decisions below were
+  taken by the user during that review.
+  - Added **FR-7** (flow-level progress bar). `prepare` runs two flows per invocation
+    (`prepare.py:87`, `prepare.py:104`), so the step bar reaching T/T and restarting was
+    unspecified and operationally ambiguous. Resolution: a third bar above the step bar.
+  - Extended **FR-3** with the `enrich_quiz` two-enricher criterion. That single step
+    chains two enrichers with independent post-dedup totals (`quiz_flows.py:283`);
+    resolution is two successive inner bars, one per enricher.
+  - Rewrote **AD-4**. The previous version's rejected alternative implied `flowstep` would
+    need an `add_observer` hook added; `FlowBuilder.add_observer` already exists
+    (`flow_builder.py:55`), as do `FlowObserver` and `FlowProgress(index, total)`. The
+    decision now states explicitly that step/flow progress rides the framework's existing
+    observer while item ticks ride the `ProgressReporter` port — two protocols, one factory
+    parameter — and its rejected alternatives were replaced accordingly.
+  - Corrected the logging **Constraint**. It claimed the lazy-`%s` style is "enforced by
+    ruff's `G` ruleset"; `G004` is in `ignore` (`pyproject.toml:57`), so it is a convention
+    only. Added a Non-Goal keeping the pre-existing f-string log calls out of this change.
+  - Added a **Note** to AD-3 and matching evidence for the extra wiring hop: the quiz
+    indexing flow reaches `EmbeddingService` through `EmbedQuizMetadata`
+    (`quiz_flows.py:101`), unlike the knowledge flow's direct injection.
+  - Resolved the three open questions: panel retains **15** records as a fixed module
+    constant (also recorded as a Constraint and a Non-Goal); the embedding inner bar counts
+    **batches**, not items (Non-Goal); the panel **filters third-party loggers**
+    (`httpx`, `litellm`) while the run log keeps them (FR-1 criteria).
+  - Added a testing **Constraint** fixing the automated-verification boundary: state and
+    adapters are tested, `rich`'s rendered output is not (also a Non-Goal).
+  - Status deliberately left at `draft`: the changes are material, so scope sign-off and
+    promotion remain the user's call.
