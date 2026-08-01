@@ -1,10 +1,10 @@
 from typing import Protocol
 
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 
 class LlmCallTracker(Protocol):
-    """Port for persisting one `LlmCallLog` per `BaseAgent` call.
+    """Port for persisting one `LlmCallLogEntity` per `BaseAgent` call.
 
     Injected into `BaseAgent` as an optional dependency (see
     `docs/plans/2026-07-13--llm-call-tracking.md`, Decision 1). Call sites see
@@ -13,7 +13,7 @@ class LlmCallTracker(Protocol):
     composition root.
     """
 
-    def track(self, log: LlmCallLog) -> None:
+    def track(self, log: LlmCallLogEntity) -> None:
         """Records `log`.
 
         Contractually non-blocking: implementations must not sit on the

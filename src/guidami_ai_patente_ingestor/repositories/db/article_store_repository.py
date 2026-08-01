@@ -1,7 +1,7 @@
 from psycopg import sql
 
 from commons.clients import PostgresClient
-from domain.entities.knowledge import Article
+from domain.entities.knowledge import ArticleEntity
 
 from ._bulk_insert_store_repository import BulkInsertStoreRepository
 
@@ -14,7 +14,7 @@ _ARTICLE_TABLE_COLUMNS = (
 )
 
 
-class ArticleStoreRepository(BulkInsertStoreRepository[Article]):
+class ArticleStoreRepository(BulkInsertStoreRepository[ArticleEntity]):
     """Writes to `articles`.
 
     Two reset modes:
@@ -42,10 +42,10 @@ class ArticleStoreRepository(BulkInsertStoreRepository[Article]):
         )
         self._client.execute(query, [source])
 
-    def bulk_insert_returning_ids(self, items: list[Article]) -> list[int]:
+    def bulk_insert_returning_ids(self, items: list[ArticleEntity]) -> list[int]:
         """Batch-inserts the items and returns their DB-generated ids.
 
-        Ids are returned in the same order as `items`, one per input `Article`.
+        Ids are returned in the same order as `items`, one per input `ArticleEntity`.
         """
         query = sql.SQL(
             "INSERT INTO {table} ({columns}) VALUES ({placeholders}) RETURNING id"
@@ -61,7 +61,7 @@ class ArticleStoreRepository(BulkInsertStoreRepository[Article]):
         return [row[0] for row in rows]
 
     @staticmethod
-    def _to_db_row(item: Article) -> tuple[object, ...]:
+    def _to_db_row(item: ArticleEntity) -> tuple[object, ...]:
         return (
             item.source,
             item.number,

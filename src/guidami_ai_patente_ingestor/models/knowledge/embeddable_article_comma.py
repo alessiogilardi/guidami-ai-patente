@@ -6,7 +6,7 @@ class EmbeddableArticleComma(BaseModel):
 
     One instance per comma of an article, produced from a `CleanedArticleModel`
     (`ArticleMapper.from_cleaned_to_embeddable_commas`), consumed by the
-    embedding step, then mapped onto an `ArticleComma` entity for storage.
+    embedding step, then mapped onto an `ArticleCommaEntity` entity for storage.
     """
 
     source: str

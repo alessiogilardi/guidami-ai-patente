@@ -251,7 +251,7 @@ def build_quiz_enrichment_flow(
         open_router_provider: OpenRouter provider injected into the enrichment agents.
         validate: If True, runs structural validation of the flow before returning it.
             Raises `FlowValidationError` on ERROR.
-        tracker: Optional port persisting one `LlmCallLog` per call made by the
+        tracker: Optional port persisting one `LlmCallLogEntity` per call made by the
             enrichment agents. Forwarded to `from_yaml`; `None` disables tracking.
         progress: Optional reporter driving the step/flow bars (via a registered
             `ProgressFlowObserver`) and, in sequence, the image-description and

@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class ArticleComma(BaseModel):
+class ArticleCommaEntity(BaseModel):
     """Row of the `article_commas` table (see db/init.sql).
 
     `article_id` is included, unlike DB-generated id columns, because it is a

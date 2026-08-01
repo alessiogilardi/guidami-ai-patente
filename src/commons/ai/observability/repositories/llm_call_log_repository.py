@@ -1,7 +1,7 @@
 from psycopg import sql
 
 from commons.clients import PostgresClient
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 # Insertable columns of `llm_call_logs`, in table order (see db/init.sql). `id` and
 # `created_at` are DB-generated and excluded (entities-as-insertable-projection rule).
@@ -41,11 +41,11 @@ class LlmCallLogRepository:
         """Stores the DB client used to persist call logs."""
         self._client = client
 
-    def insert(self, log: LlmCallLog) -> None:
-        """Inserts one `LlmCallLog` row. `Decimal` adapts to `NUMERIC` natively."""
+    def insert(self, log: LlmCallLogEntity) -> None:
+        """Inserts one `LlmCallLogEntity` row. `Decimal` adapts to `NUMERIC` natively."""
         self._client.execute(_INSERT_QUERY, self._to_db_row(log))
 
     @staticmethod
-    def _to_db_row(log: LlmCallLog) -> tuple[object, ...]:
+    def _to_db_row(log: LlmCallLogEntity) -> tuple[object, ...]:
         """Projects `log`'s insertable fields onto `_COLUMNS`, in table order."""
         return tuple(getattr(log, column) for column in _COLUMNS)

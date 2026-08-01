@@ -1,6 +1,6 @@
 import logging
 
-from domain.entities.quiz import QuizQuestion
+from domain.entities.quiz import QuizQuestionEntity
 from guidami_ai_patente_ingestor.models.quiz import (
     CleanedQuizModel,
     EmbeddedQuizModel,
@@ -46,8 +46,8 @@ class QuizMapper:
         return base.model_copy(update={"quiz_metadata": item.quiz_metadata})
 
     @staticmethod
-    def from_embedded_to_quiz_question(model: EmbeddedQuizModel) -> QuizQuestion:
-        """Maps an `EmbeddedQuizModel` to the `QuizQuestion` entity.
+    def from_embedded_to_quiz_question(model: EmbeddedQuizModel) -> QuizQuestionEntity:
+        """Maps an `EmbeddedQuizModel` to the `QuizQuestionEntity` entity.
 
         Discards `image_description` (not persisted), keeps `embedding`.
         Spreads `quiz_metadata` onto the flat retrieval columns, dropping
@@ -58,7 +58,7 @@ class QuizMapper:
             model: Embedded model with embedding already computed.
 
         Returns:
-            `QuizQuestion` entity ready for the store.
+            `QuizQuestionEntity` entity ready for the store.
         """
         metadata = model.quiz_metadata
         if metadata is None:
@@ -70,7 +70,7 @@ class QuizMapper:
             exact_keywords = metadata.exact_keywords
             rule_explanation = metadata.rule_explanation
 
-        return QuizQuestion(
+        return QuizQuestionEntity(
             number=model.number,
             question_id=model.question_id,
             topic=model.topic,

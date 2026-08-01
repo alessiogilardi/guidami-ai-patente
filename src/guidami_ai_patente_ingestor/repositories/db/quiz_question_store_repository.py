@@ -1,5 +1,5 @@
 from commons.clients import PostgresClient
-from domain.entities.quiz import QuizQuestion
+from domain.entities.quiz import QuizQuestionEntity
 from guidami_ai_patente_ingestor.repositories.db._bulk_insert_store_repository import (
     BulkInsertStoreRepository,
 )
@@ -18,7 +18,7 @@ _QUIZ_QUESTION_TABLE_COLUMNS = (
 )
 
 
-class QuizQuestionStoreRepository(BulkInsertStoreRepository[QuizQuestion]):
+class QuizQuestionStoreRepository(BulkInsertStoreRepository[QuizQuestionEntity]):
     """Full-reload write to `quiz_questions` (truncate + bulk insert)."""
 
     def __init__(self, table_name: str, client: PostgresClient) -> None:
@@ -31,7 +31,7 @@ class QuizQuestionStoreRepository(BulkInsertStoreRepository[QuizQuestion]):
         )
 
     @staticmethod
-    def _to_db_row(item: QuizQuestion) -> tuple[object, ...]:
+    def _to_db_row(item: QuizQuestionEntity) -> tuple[object, ...]:
         return (
             item.number,
             item.question_id,

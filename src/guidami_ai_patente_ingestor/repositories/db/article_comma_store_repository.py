@@ -1,7 +1,7 @@
 from psycopg import sql
 
 from commons.clients import PostgresClient
-from domain.entities.knowledge import ArticleComma
+from domain.entities.knowledge import ArticleCommaEntity
 
 from ._bulk_insert_store_repository import BulkInsertStoreRepository
 
@@ -15,7 +15,7 @@ _ARTICLE_COMMA_TABLE_COLUMNS = (
 )
 
 
-class ArticleCommaStoreRepository(BulkInsertStoreRepository[ArticleComma]):
+class ArticleCommaStoreRepository(BulkInsertStoreRepository[ArticleCommaEntity]):
     """Writes to `article_commas`.
 
     Two reset modes:
@@ -44,7 +44,7 @@ class ArticleCommaStoreRepository(BulkInsertStoreRepository[ArticleComma]):
         self._client.execute(query, [source])
 
     @staticmethod
-    def _to_db_row(item: ArticleComma) -> tuple[object, ...]:
+    def _to_db_row(item: ArticleCommaEntity) -> tuple[object, ...]:
         return (
             item.article_id,
             item.comma_number,

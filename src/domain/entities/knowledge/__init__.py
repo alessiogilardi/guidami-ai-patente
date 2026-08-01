@@ -1,6 +1,6 @@
 """Entities related to the corpus normativo (CdS + CAP) in the vector store."""
 
-from .article import Article
-from .article_comma import ArticleComma
+from .article import ArticleEntity
+from .article_comma import ArticleCommaEntity
 
-__all__ = ["Article", "ArticleComma"]
+__all__ = ["ArticleEntity", "ArticleCommaEntity"]

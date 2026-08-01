@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class QuizQuestion(BaseModel):
+class QuizQuestionEntity(BaseModel):
     """Row of the `quiz_questions` table (see db/init.sql).
 
     Retrieval metadata (`core_concepts`, `exact_keywords`, `rule_explanation`)

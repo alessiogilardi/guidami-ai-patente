@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class Article(BaseModel):
+class ArticleEntity(BaseModel):
     """Row of the `articles` table (see db/init.sql)."""
 
     source: str

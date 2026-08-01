@@ -1,6 +1,6 @@
 from typing import Literal
 
-from domain.entities.knowledge import Article, ArticleComma
+from domain.entities.knowledge import ArticleCommaEntity, ArticleEntity
 from guidami_ai_patente_ingestor.models.knowledge import (
     CleanedArticleModel,
     EmbeddableArticleComma,
@@ -29,16 +29,16 @@ class ArticleMapper:
         return CleanedArticleModel(**article.model_dump(), source=source)
 
     @staticmethod
-    def from_cleaned_to_article_entity(article: CleanedArticleModel) -> Article:
-        """Maps a `CleanedArticleModel` onto the insertable `Article` entity.
+    def from_cleaned_to_article_entity(article: CleanedArticleModel) -> ArticleEntity:
+        """Maps a `CleanedArticleModel` onto the insertable `ArticleEntity` entity.
 
         Args:
             article: Cleaned article to map.
 
         Returns:
-            `Article` entity ready for `ArticleStoreRepository`.
+            `ArticleEntity` entity ready for `ArticleStoreRepository`.
         """
-        return Article(
+        return ArticleEntity(
             source=article.source,
             number=article.number,
             title=article.title,
@@ -82,18 +82,18 @@ class ArticleMapper:
     @staticmethod
     def from_embeddable_comma_to_article_comma(
         comma: EmbeddableArticleComma, article_id_by_number: dict[str, int]
-    ) -> ArticleComma:
+    ) -> ArticleCommaEntity:
         """Resolves the comma's DB-generated `article_id` and maps it onto the insertable entity.
 
         Args:
             comma: Embeddable comma, still referencing its parent by `article_number`.
-            article_id_by_number: `Article.number` -> DB-generated id, from the
+            article_id_by_number: `ArticleEntity.number` -> DB-generated id, from the
                 just-inserted articles.
 
         Returns:
-            `ArticleComma` entity ready for `ArticleCommaStoreRepository`.
+            `ArticleCommaEntity` entity ready for `ArticleCommaStoreRepository`.
         """
-        return ArticleComma(
+        return ArticleCommaEntity(
             article_id=article_id_by_number[comma.article_number],
             comma_number=comma.comma_number,
             position=comma.position,

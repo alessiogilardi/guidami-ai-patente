@@ -8,7 +8,7 @@ class AgentConfig(BaseModel):
 
     name: str | None = Field(
         default=None,
-        description="Identity used as `LlmCallLog.caller`; defaults to the class name.",
+        description="Identity used as `LlmCallLogEntity.caller`; defaults to the class name.",
     )
 
     model_name: str = Field(

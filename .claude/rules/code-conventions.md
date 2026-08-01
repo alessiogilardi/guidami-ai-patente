@@ -67,6 +67,12 @@ Configuration classes (any file under `configs/`) must set
 An entity in `src/domain/entities/` models the **insertable projection** of its DB row,
 not the full row:
 
+- **Class name suffixed `Entity`** (e.g. `ArticleEntity`, `ArticleCommaEntity`,
+  `QuizQuestionEntity`, `LlmCallLogEntity`) — disambiguates the persisted-row type
+  from same-concept models elsewhere in the pipeline (e.g. `CleanedArticleModel`,
+  `EmbeddableArticleComma`) at the call site, without relying on the import path
+  alone. Applies uniformly to every class under `domain/entities/`, regardless of
+  package (`knowledge/`, `quiz/`, `observability/`).
 - 1:1 with the table's **writable** columns.
 - **DB-generated columns are omitted** (`id BIGSERIAL`, `created_at DEFAULT now()`) —
   never declared as `Optional` fields "populated only on read". An always-`None` field on

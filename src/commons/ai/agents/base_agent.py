@@ -33,12 +33,12 @@ class BaseAgent[T_In, T_Out]:
 
         Args:
             config: Agent configuration (model, prompts, parameters). `config.name`
-                identifies this agent as `LlmCallLog.caller` in tracked rows,
+                identifies this agent as `LlmCallLogEntity.caller` in tracked rows,
                 defaulting to the concrete subclass name when `None`.
             provider: OpenRouter provider injected into the underlying `pydantic_ai` model.
             file_reader: Reader used to resolve `images` paths passed to `run`.
                 Optional: only required by agents that pass `images=`.
-            tracker: Optional port persisting one `LlmCallLog` per call. When
+            tracker: Optional port persisting one `LlmCallLogEntity` per call. When
                 `None`, defaults to `NullLlmCallTracker`, a no-op collaborator.
         """
         self._name = config.name if config.name is not None else type(self).__name__
@@ -70,12 +70,12 @@ class BaseAgent[T_In, T_Out]:
 
         Args:
             name: Agent name (without the `.yaml` extension); also becomes the
-                agent's identity (`self._name`, i.e. `LlmCallLog.caller`).
+                agent's identity (`self._name`, i.e. `LlmCallLogEntity.caller`).
             repository: Repository used to load agent configuration files.
             provider: OpenRouter provider injected into the underlying `pydantic_ai` model.
             file_reader: Reader used to resolve `images` paths passed to `run`.
                 Optional: only required by agents that pass `images=`.
-            tracker: Optional port persisting one `LlmCallLog` per call.
+            tracker: Optional port persisting one `LlmCallLogEntity` per call.
 
         Returns:
             Configured agent instance.

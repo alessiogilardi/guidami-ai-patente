@@ -5,7 +5,7 @@ from typing import Literal
 from pydantic import BaseModel
 
 
-class LlmCallLog(BaseModel):
+class LlmCallLogEntity(BaseModel):
     """Row of the `llm_call_logs` table (see db/init.sql).
 
     `id` and `created_at` are DB-managed (`BIGSERIAL PRIMARY KEY` and

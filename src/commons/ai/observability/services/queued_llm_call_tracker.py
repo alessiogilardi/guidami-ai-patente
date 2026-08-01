@@ -3,7 +3,7 @@ import queue
 import threading
 from types import TracebackType
 
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 from .protocols.llm_call_log_repository import _LlmCallLogRepository
 
@@ -34,7 +34,7 @@ class QueuedLlmCallTracker:
     def __init__(self, repository: _LlmCallLogRepository) -> None:
         """Stores the repository used by the worker thread."""
         self._repository = repository
-        self._queue: queue.SimpleQueue[LlmCallLog | _Shutdown] = queue.SimpleQueue()
+        self._queue: queue.SimpleQueue[LlmCallLogEntity | _Shutdown] = queue.SimpleQueue()
         self._worker: threading.Thread | None = None
 
     def __enter__(self) -> "QueuedLlmCallTracker":
@@ -52,7 +52,7 @@ class QueuedLlmCallTracker:
         """Flushes pending logs (see `close`)."""
         self.close()
 
-    def track(self, log: LlmCallLog) -> None:
+    def track(self, log: LlmCallLogEntity) -> None:
         """Enqueues `log` for the worker thread; returns immediately."""
         self._queue.put(log)
 
@@ -74,7 +74,7 @@ class QueuedLlmCallTracker:
                 return
             self._persist(item)
 
-    def _persist(self, log: LlmCallLog) -> None:
+    def _persist(self, log: LlmCallLogEntity) -> None:
         """Inserts the log; swallows and logs any failure."""
         try:
             self._repository.insert(log)

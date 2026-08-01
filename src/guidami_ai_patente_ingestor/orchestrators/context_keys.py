@@ -13,7 +13,7 @@ injected at the factory, not read from the context.
 # CleanedArticleModel for ONE source only, loaded from the "cleaned" layer (T-14). Two
 # parallel derivations (PD-12) are computed from that same loaded list: ARTICLE_ENTITIES
 # (article rows to store) and EMBEDDABLE_ARTICLE_COMMAS (comma rows to embed then store).
-ARTICLE_ENTITIES = "article_entities"  # map→entity output: list[Article] → store
+ARTICLE_ENTITIES = "article_entities"  # map→entity output: list[ArticleEntity] → store
 EMBEDDABLE_ARTICLE_COMMAS = (
     "embeddable_article_commas"  # expand output → embed: list[EmbeddableArticleComma]
 )

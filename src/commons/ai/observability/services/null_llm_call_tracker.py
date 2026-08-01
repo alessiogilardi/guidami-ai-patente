@@ -1,4 +1,4 @@
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 
 class NullLlmCallTracker:
@@ -8,5 +8,5 @@ class NullLlmCallTracker:
     branching on whether a tracker was provided.
     """
 
-    def track(self, log: LlmCallLog) -> None:
+    def track(self, log: LlmCallLogEntity) -> None:
         """Discards `log`; no observable side effect."""

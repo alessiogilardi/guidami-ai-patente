@@ -9,7 +9,7 @@ class LlmCallCaptureModel(BaseModel):
     """Intermediate model: the fields captured by `LlmCallCapture` for one call.
 
     Bridges `LlmCallCapture` (stateful context manager) and `LlmCallLogMapper`
-    (stateless transformation to the persistable `LlmCallLog` entity) — not
+    (stateless transformation to the persistable `LlmCallLogEntity` entity) — not
     persisted itself.
     """
 

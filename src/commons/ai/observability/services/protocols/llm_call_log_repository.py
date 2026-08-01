@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 
 class _LlmCallLogRepository(Protocol):
@@ -11,4 +11,4 @@ class _LlmCallLogRepository(Protocol):
     `LlmCallLogRepository`, keeping it testable with duck-typed fakes.
     """
 
-    def insert(self, log: LlmCallLog) -> None: ...
+    def insert(self, log: LlmCallLogEntity) -> None: ...

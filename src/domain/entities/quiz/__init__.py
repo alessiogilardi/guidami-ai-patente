@@ -1,5 +1,5 @@
 """Entities related to the quiz bank in the `quiz_questions` table."""
 
-from .quiz_question import QuizQuestion
+from .quiz_question import QuizQuestionEntity
 
-__all__ = ["QuizQuestion"]
+__all__ = ["QuizQuestionEntity"]

@@ -1,15 +1,15 @@
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 from ..models import LlmCallCaptureModel
 
 
 class LlmCallLogMapper:
-    """Stateless transformation from `LlmCallCaptureModel` to the persistable `LlmCallLog`."""
+    """Stateless transformation from `LlmCallCaptureModel` to `LlmCallLogEntity`."""
 
     @staticmethod
-    def from_model_to_entity(data: LlmCallCaptureModel) -> LlmCallLog:
-        """Maps captured call data to `LlmCallLog`."""
-        return LlmCallLog(
+    def from_model_to_entity(data: LlmCallCaptureModel) -> LlmCallLogEntity:
+        """Maps captured call data to `LlmCallLogEntity`."""
+        return LlmCallLogEntity(
             caller=data.caller,
             model=data.model,
             prompt=data.prompt,

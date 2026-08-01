@@ -1,11 +1,11 @@
-"""Step that persists Article/ArticleComma records to the DB with per-source full-reload."""
+"""Persists ArticleEntity/ArticleCommaEntity records to the DB, per-source full-reload."""
 
 import logging
 from typing import cast
 
 from flowstep import FlowContext, Step
 
-from domain.entities.knowledge import Article
+from domain.entities.knowledge import ArticleEntity
 from guidami_ai_patente_ingestor.mappers import ArticleMapper
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableArticleComma
 from guidami_ai_patente_ingestor.orchestrators import context_keys
@@ -53,7 +53,7 @@ class StoreArticlesAndCommasStep(Step):
         Args:
             context: Shared pipeline context.
         """
-        articles = cast(list[Article], context.get(context_keys.ARTICLE_ENTITIES))
+        articles = cast(list[ArticleEntity], context.get(context_keys.ARTICLE_ENTITIES))
         embeddable_commas = cast(
             list[EmbeddableArticleComma], context.get(context_keys.EMBEDDABLE_ARTICLE_COMMAS)
         )

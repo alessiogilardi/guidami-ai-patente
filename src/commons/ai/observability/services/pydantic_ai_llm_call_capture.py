@@ -10,7 +10,7 @@ from pydantic import BaseModel
 from pydantic_ai.messages import ModelResponse
 from pydantic_ai.run import AgentRunResult
 
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 from ..mappers import LlmCallLogMapper
 from ..models import LlmCallCaptureModel
@@ -126,8 +126,8 @@ class PydanticAILlmCallCapture:
         return False
 
     @property
-    def log(self) -> LlmCallLog:
-        """Builds the `LlmCallLog` for this call via `LlmCallLogMapper`."""
+    def log(self) -> LlmCallLogEntity:
+        """Builds the `LlmCallLogEntity` for this call via `LlmCallLogMapper`."""
         return LlmCallLogMapper.from_model_to_entity(self._to_capture_data())
 
     def _to_capture_data(self) -> LlmCallCaptureModel:
