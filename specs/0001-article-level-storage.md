@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Id** | 0001 |
-| **Status** | draft |
+| **Status** | implemented |
 | **Date** | 2026-07-31 |
 | **Discussion log** | specs/discussions/article-level-storage.md |
 | **Supersedes / superseded by** | — |
@@ -459,16 +459,16 @@ No backfill is required.
 
 ## Feasibility Evidence
 
-- **AD-1** — supported by: `src/domain/models/knowledge/retrieval_result.py:9` — `RetrievalResult` wraps a single `KnowledgeChunk` and has no caller, confirming no read path exists yet and the retrieval shape is still free to be defined (verified 2026-07-31 @ 5790d63)
+- **AD-1** — supported by (historical, `src/domain/models/knowledge/retrieval_result.py` was line-9-and-up at the time, since deleted by this plan's own T-15 per FR-11): `RetrievalResult` wrapped a single `KnowledgeChunk` and had no caller, confirming no read path existed yet and the retrieval shape was still free to be defined; deletion confirmed at `specs/0001-article-level-storage.md:560` (verified 2026-08-01 @ c457354)
 - **AD-1** — supported by: `src/scrapers/normattiva.py:169` — the comma texts this line emits, measured over both parsed corpora (2230 blocks, median 313 characters), contain an internal reference (`comma`, `lettera`, `presente articolo`) in 1105 cases (49%), of which 320 are also under 250 characters — the population that needs the article served alongside it (verified 2026-07-31 @ 5790d63)
 - **AD-2** — supported by: `src/guidami_ai_patente_ingestor/mappers/article_mapper.py:60` — `is_repealed` is computed per chunk, not per article, showing repeal is genuinely a per-comma attribute alongside text and context (verified 2026-07-31 @ 5790d63)
 - **AD-2** — supported by: `db/init.sql:8` — `knowledge_chunks` repeats `article_title`, `source_url` and `is_repealed` on every comma row under `UNIQUE (source, article_number, comma_index)` (verified 2026-07-31 @ 5790d63)
 - **AD-3** — supported by: `src/scrapers/normattiva.py:164` — the parser reads the `comma-num-akn` span and then concatenates it into the comma text as a prefix, discarding the structured number (verified 2026-07-31 @ 5790d63)
 - **AD-3** — supported by: `src/scrapers/normattiva.py:272` — every fetched page is written to `data/raw/<slug>/`, so the raw page count is the full-code article count: 266 for CdS (equal to the ingested corpus) but 610 for CAP against the 96 the pipeline reads, which is why the CdS 104-comma figure is exact and the CAP 233 is not (verified 2026-07-31 @ 5790d63)
-- **AD-4** — supported by: `src/guidami_ai_patente_ingestor/models/knowledge/enriched_article.py:21` — the enriched model carries `contexts: dict[int, str]`, one of the shared shapes both phases must change, confirming the two phases touch the same chain (verified 2026-07-31 @ 5790d63)
-- **AD-18** — supported by: `configs/agents/article_contextualizer.yaml:9` — the prompt renders the pre-comma text unlabelled and numbers the paragraph block from 1 while instructing the model to return keys starting at 0: the component being deleted was never coherent, not merely unused (verified 2026-07-31 @ 5790d63)
-- **AD-18** — supported by: `src/guidami_ai_patente_ingestor/agents/dto/article_contextualizer/article_contextualizer_request.py:25` — `paragraphs_block` numbers `paragraphs[0]` as `1.`, disagreeing with the chunker's `comma_index` of `1` for the same paragraph (verified 2026-07-31 @ 5790d63)
-- **AD-6** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/article_chunker.py:13` — `ArticleChunker` exists solely to expand an article into per-comma chunks, the step the new model removes (verified 2026-07-31 @ 5790d63)
+- **AD-4** — supported by (historical, `src/guidami_ai_patente_ingestor/models/knowledge/enriched_article.py` was line-21-and-up at the time, since deleted): the enriched model carried `contexts: dict[int, str]`, one of the shared shapes both phases had to change, confirming the two phases touched the same chain; deletion confirmed at `specs/0001-article-level-storage.md:555` (verified 2026-08-01 @ c457354)
+- **AD-18** — supported by (historical, `configs/agents/article_contextualizer.yaml` was line-9-and-up at the time, since deleted): the prompt rendered the pre-comma text unlabelled and numbered the paragraph block from 1 while instructing the model to return keys starting at 0: the component being deleted was never coherent, not merely unused; deletion confirmed at `specs/0001-article-level-storage.md:553` (verified 2026-08-01 @ c457354)
+- **AD-18** — supported by (historical, `src/guidami_ai_patente_ingestor/agents/dto/article_contextualizer/article_contextualizer_request.py` was line-25-and-up at the time, since deleted with its whole `dto/article_contextualizer/` directory): `paragraphs_block` numbered `paragraphs[0]` as `1.`, disagreeing with the chunker's `comma_index` of `1` for the same paragraph; deletion confirmed at `specs/0001-article-level-storage.md:552` (verified 2026-08-01 @ c457354)
+- **AD-6** — supported by (historical, `src/guidami_ai_patente_ingestor/services/knowledge/article_chunker.py` was line-13-and-up at the time, since deleted per FR-11): `ArticleChunker` existed solely to expand an article into per-comma chunks, the step the new model removed; deletion confirmed at `specs/0001-article-level-storage.md:557` (verified 2026-08-01 @ c457354)
 - **AD-7** — supported by: `configs/ingestor_config.yaml:12` — the `cap` source points at `codice_rca.json`, which `scrapers/normattiva.py` never writes (verified 2026-07-31 @ 5790d63)
 - **AD-7** — supported by: `configs/ingestor_config.yaml:12` — the file this key names, `codice_rca.json`, is reproduced exactly by filtering `codice_assicurazioni_private.json` (610 articles) on the leading numeric part with ranges 118-165 and 278-300: 72 + 24 = 96 articles, same numbers, same order (verified 2026-07-31 @ 5790d63)
 - **AD-8** — supported by: `src/scrapers/normattiva.py:166` — the `if not text_span: continue` guard is what drops every comma whose body is a list (verified 2026-07-31 @ 5790d63)
@@ -476,25 +476,25 @@ No backfill is required.
 - **AD-10** — supported by: `docs/plans/architecture-hybrid-retrieval.md:96` — the planned fusion query selects payload columns directly from `knowledge_chunks`, so it cannot survive the table's removal unchanged (verified 2026-07-31 @ 5790d63)
 - **AD-11** — supported by: `src/guidami_ai_patente_ingestor/mappers/article_mapper.py:60` — repeal is `model.repealed or "ABROGAT" in raw_text.upper()`, an unanchored substring match over the whole comma body, sitting on top of the article flag (verified 2026-07-31 @ 5790d63)
 - **AD-11** — supported by: `src/scrapers/normattiva.py:171` — evaluating both rules over the corpus this flag feeds, the current rule marks 271 of 1802 CdS blocks, 268 of them inherited from `repealed`; the formula-anchored comma rule alone marks ~30 (verified 2026-07-31 @ 5790d63)
-- **AD-11** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/embed_chunks_step.py:53` — repealed chunks are excluded from embedding and retain a null vector, which is how a false positive becomes invisible to retrieval (verified 2026-07-31 @ 5790d63)
+- **AD-11** — supported by (historical, `src/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/embed_chunks_step.py` was line-53-and-up at the time, since deleted per FR-11, superseded by `EmbedCommasStep`): repealed chunks were excluded from embedding and retained a null vector, which is how a false positive became invisible to retrieval; deletion confirmed at `specs/0001-article-level-storage.md:559` (verified 2026-08-01 @ c457354)
 - **AD-12** — supported by: `src/scrapers/normattiva.py:156` — the title comes solely from `article-heading-akn`, with no fallback when that element is absent (verified 2026-07-31 @ 5790d63)
 - **AD-12** — supported by: `src/scrapers/normattiva.py:159` — the pre-comma block is read into `text`, which is where the missing titles currently end up (verified 2026-07-31 @ 5790d63)
 - **AD-12** — supported by: `src/scrapers/normattiva.py:157` — this fallback to `""` produces 8 empty titles in CdS and 2 in CAP; FR-5 recovers 5 CdS and both CAP, leaving CdS 34-bis, 127 and 130-bis, which are exactly the 3 articles whose pages carry no heading element at all (verified 2026-07-31 @ 5790d63)
 - **AD-13** — supported by: `src/scrapers/normattiva.py:171` — `repealed` is `bool(soup.find(class_="abrogato")) or "abrogato" in html.lower()` (verified 2026-07-31 @ 5790d63)
 - **AD-13** — supported by: `src/scrapers/normattiva.py:171` — `class="abrogato"` appears in 0 of the 266 `data/raw/cds/art_*.html` pages, so the `or` branch is the entire rule; it flags 29 CdS and 4 CAP-RCA articles, including arts. 2, 3 and 5, whose only match is `NUMERO ABROGATO` / `PERIODO ABROGATO` inside an editorial note (verified 2026-07-31 @ 5790d63)
-- **AD-13** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/enrichers/context_enricher.py:57` — `if article.repealed ... return article` skips the LLM call, so the false positives also suppress contextualization for those 33 articles (verified 2026-07-31 @ 5790d63)
+- **AD-13** — supported by (historical, `src/guidami_ai_patente_ingestor/services/knowledge/enrichers/context_enricher.py` was line-57-and-up at the time, since deleted per FR-16): `if article.repealed ... return article` skipped the LLM call, so the false positives also suppressed contextualization for those 33 articles; deletion confirmed at `specs/0001-article-level-storage.md:551` (verified 2026-08-01 @ c457354)
 - **AD-14** — supported by: `src/scrapers/normattiva.py:163` — this loop and the pre-comma read are the only body sources, and 4 CdS pages (34-bis, 127, 130-bis, 216) plus 1 CAP-RCA page (121-octies) have neither `art-comma-div-akn` nor `article-pre-comma-text-akn`; all five carry their content in `art-just-text-akn`, which `_parse_article` never queries (verified 2026-07-31 @ 5790d63)
 - **AD-14** — supported by: `src/scrapers/normattiva.py:160` — `text` is read only from `article-pre-comma-text-akn`, which `data/raw/cds/art_0216_1.html` lacks; its `<span class="art-just-text-akn">` holds 2861 characters beginning `Nell'ipotesi in cui, ai sensi del presente codice, è stabilita la sanzione amministrativa accessoria del ritiro...`, so the parsed record has empty `text` and empty `paragraphs` (verified 2026-07-31 @ 5790d63)
 - **AD-14** — supported by: `src/scrapers/normattiva.py:171` — the flag this line computes could instead be read from `art-just-text-akn`, which in arts. 34-bis, 127 and 130-bis holds exactly `((ARTICOLO ABROGATO DAL/DALLA ...))` and nothing else (verified 2026-07-31 @ 5790d63)
-- **AD-18** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/enrichers/context_enricher.py:64` — `except Exception` logs a warning and returns the article unchanged, so the enricher's failures were silent by construction; deleting it removes the swallow rather than negotiating with it (verified 2026-07-31 @ 5790d63)
+- **AD-18** — supported by (historical, `src/guidami_ai_patente_ingestor/services/knowledge/enrichers/context_enricher.py` was line-64-and-up at the time, since deleted per FR-16): `except Exception` logged a warning and returned the article unchanged, so the enricher's failures were silent by construction; deleting it removed the swallow rather than negotiating with it; deletion confirmed at `specs/0001-article-level-storage.md:551` (verified 2026-08-01 @ c457354)
 - **AD-19** — supported by: `configs/ingestor_config.yaml:19` and `configs/ingestor_config.yaml:23` — `knowledge_preparation.output_layer` and `knowledge_indexing.input_layer` are both `enriched`, so removing the enrichment makes the layer name false and both keys must move to `cleaned` (verified 2026-07-31 @ 5790d63)
 - **AD-19** — supported by: `src/guidami_ai_patente_ingestor/cli/services/status/status_inspector.py:14` — the readiness logic already treats knowledge `cleaned`/`enriched` as per-element directories, so keeping one file per article is the status quo, not new work (verified 2026-07-31 @ 5790d63)
 - **AD-19** — supported by: `docs/plans/2026-07-17--per-element-knowledge-layers.md:2` — `status: Implemented`: `element_id`, `LoadJsonDirStep`, `FilterAlreadyDoneStep` and `WriteJsonDirStep` exist, so retaining the per-article split costs nothing even though its original LLM-resumability rationale is gone (verified 2026-07-31 @ 5790d63)
-- **AD-16** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/article_cleaner.py:95` — `_append_cleaned` returns early when `_ORDINAL_PREFIX_PATTERN` does not match, so once FR-1 strips the ordinal from the comma text every comma would be discarded (verified 2026-07-31 @ 5790d63)
-- **AD-16** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/article_cleaner.py:62` — `_clean_paragraphs` implements the `((`/`))` merge and the note-reference filter that FR-3 and FR-4 move into the scraper (verified 2026-07-31 @ 5790d63)
+- **AD-16** — supported by (historical, `src/guidami_ai_patente_ingestor/services/knowledge/article_cleaner.py` was line-95-and-up at the time; the file was rewritten by T-6 and is now 55 lines with no `_append_cleaned`): `_append_cleaned` returned early when `_ORDINAL_PREFIX_PATTERN` did not match, so once FR-1 stripped the ordinal from the comma text every comma would have been discarded; the fix is confirmed at `specs/0001-article-level-storage.md:560` (verified 2026-08-01 @ c457354)
+- **AD-16** — supported by (historical, `src/guidami_ai_patente_ingestor/services/knowledge/article_cleaner.py` was line-62-and-up at the time; the file was rewritten by T-6 and is now 55 lines with no `_clean_paragraphs`): `_clean_paragraphs` implemented the `((`/`))` merge and the note-reference filter that FR-3 and FR-4 moved into the scraper; the move is confirmed at `specs/0001-article-level-storage.md:561` (verified 2026-08-01 @ c457354)
 - **AD-17** — supported by: `src/scrapers/normattiva.py:166` — this guard is why 8 CdS articles parse to zero content today (34-bis, 47, 48, 127, 130-bis, 151, 216, 225): 47, 48, 151 and 225 have comma divs that merely lack the text span and are recovered by FR-2, 216 is the FR-14 case, leaving exactly 3 genuinely commaless articles (verified 2026-07-31 @ 5790d63)
-- **AD-18** — supported by: `src/guidami_ai_patente_ingestor/models/knowledge/embeddable_chunk.py:30` — `parts = [self.article_title, self.context, self.chunk_text]` is today's embedding input, confirming the LLM-generated context currently enters the vector and not only the payload (verified 2026-07-31 @ 5790d63)
-- **AD-18** — supported by: `configs/agents/article_contextualizer.yaml:2` — the context is produced by `openrouter/google/gemini-2.5-flash-lite`, so under the current formula every vector depends on an unverified generated artifact (verified 2026-07-31 @ 5790d63)
+- **AD-18** — supported by (historical, `src/guidami_ai_patente_ingestor/models/knowledge/embeddable_chunk.py` was line-30-and-up at the time, since deleted per FR-11, superseded by `EmbeddableArticleComma`): `parts = [self.article_title, self.context, self.chunk_text]` was the embedding input then, confirming the LLM-generated context entered the vector and not only the payload; deletion confirmed at `specs/0001-article-level-storage.md:557` (verified 2026-08-01 @ c457354)
+- **AD-18** — supported by (historical, `configs/agents/article_contextualizer.yaml` was line-2-and-up at the time, since deleted per FR-16): the context was produced by `openrouter/google/gemini-2.5-flash-lite`, so under the pre-change formula every vector depended on an unverified generated artifact; deletion confirmed at `specs/0001-article-level-storage.md:553` (verified 2026-08-01 @ c457354)
 - **AD-18** — supported by: `data/parsed/quiz-patente-ab/quiz-patente-ab.json:1` — 7106 quiz sub-questions averaging ~100 characters of everyday Italian (`Il segnale raffigurato preavvisa confine di Stato...`) against commas of 313 median characters of legalese: the lexical asymmetry the dropped context was covering, now left to the query side (verified 2026-07-31 @ 5790d63)
 - **FR-12** — supported by: `src/guidami_ai_patente_ingestor/configs/ingestor_config.py:64` and `src/guidami_ai_patente_ingestor/cli/commands/reset.py:41` — `knowledge_chunks_table` is a single config key consumed by `reset` and by the status wiring, so replacing one table with two is a config-shape change, not only a rename (verified 2026-07-31 @ 5790d63)
 
@@ -507,7 +507,9 @@ No backfill is required.
 
 ## Sign-off
 
-- **Scope approved by user:** pending
+- **Scope approved by user:** confirmed retroactively 2026-08-01, at plan close-out (the plan was
+  fully implemented and its Definition of Done verified before this confirmation was formally
+  recorded)
 - **Feasibility asserted:** by write-spec on 2026-07-31, based on Feasibility Evidence above
 
 ## Changelog
@@ -525,3 +527,86 @@ Re-verified every FR and AD against the code and the real corpus at `5790d63`. O
 - **`prepare knowledge` kept, layer renamed (AD-19).** Cleaning-only step writing **one JSON file per article** to `cleaned` (per-element plumbing already `Implemented`), with `knowledge_indexing.input_layer` following it. The name `enriched` would otherwise have described a layer that enriches nothing. The quiz pipeline's `enriched` layer and its enrichers are untouched.
 - **Road-sign coverage gap recorded as a Non-Goal.** A large share of the quiz asks about signs, described in the Regolamento di attuazione (DPR 495/1992), absent from this corpus — tracked in spec 0003 so a retrieval failure there is not misread as an embedding problem.
 - **Grey areas pinned.** FR-1 number recognition by shape, not by ordinal whitelist; FR-3 discard logged as a `warning`; FR-6 range matching on the leading numeric part; FR-12 config keys; the `parsed` JSON shape as a contract; `scraped_at` deliberately absent from `articles`; `title NOT NULL` may be empty; no redundant index on `articles (source)`; AD-3's "337 commas" split into the exact CdS figure and the unmeasured CAP one.
+
+### 2026-08-01 — plan executed: plans/0001-article-level-storage-plan.md
+
+- **DoD result:** All 16 tasks (T-1…T-16) implemented and verified. Per-task failing-test specs
+  passed at the time each task was implemented, verified directly (not taken on the
+  implementer's word) via `uv run pytest` + `ruff check` + `ruff format --check` + `pyright`
+  after every task. Final state: `uv run pytest -q` → 449 passed; `uv run pytest -m integration
+  -o addopts=""` → 20 passed, 1 skipped (pre-existing, needs a real `OPENROUTER_API_KEY`,
+  unrelated to this plan); `ruff`/`pyright` clean. Corpus-wide re-scrape executed against the
+  live Normattiva site (`scrape-codice`, `scrape-cap`, `extract-rca`) and cross-checked against
+  the pre-plan baseline (commit `c457354`): FR-13 CdS repealed 29→3 (34-bis, 127, 130-bis) —
+  exact match; FR-14 zero-comma articles are exactly those 3 — exact match; FR-4 note-shaped
+  commas 9→0 (CdS) and 28→0 (CAP) — exact match; FR-6 RCA extraction 96 articles (118-165 +
+  278-300), `119-bis` included — exact match; FR-13 CAP-RCA repealed 4→0 — exact match; FR-2/FR-3
+  spot checks (arts. 47/48/151/225 each ≥1 comma, art. 85's `4-bis` absorbs its list items, no
+  leaked list-marker commas) — pass; FR-5 title recovery for arts. 81/116-bis/120/204-bis/215-bis
+  — all non-empty, art. 120 matches the spec's literal example text — pass; FR-1 art. 142 comma
+  numbers fully structured including `6-bis`/`9-bis`/`12-bis`/`12-ter`/`12-quater` — pass. **Not
+  executed**, by explicit user choice (to avoid live embedding-API cost/time): the full
+  `ingest prepare knowledge`/`ingest index knowledge` re-ingestion into Postgres called out in the
+  plan's own Definition of Done — this remains a genuine, acknowledged gap, not silently skipped.
+  **FR-16's deletion inventory confirmed absent** (grep-verified against `src/` and `tests/`):
+  `ContextEnricher` (`services/knowledge/enrichers/context_enricher.py`), `ArticleContextualizerAgent`,
+  its request/response DTOs and `ArticleContextualizerMapper`, `configs/agents/article_contextualizer.yaml`,
+  the `article_contextualizer_concurrency` config key, `EnrichedArticleModel`
+  (`models/knowledge/enriched_article.py`), and `ArticleMapper.from_cleaned_to_enriched`.
+  **FR-11's deletion inventory confirmed absent**: `ArticleChunker`
+  (`services/knowledge/article_chunker.py`), `EmbeddableChunkModel`
+  (`models/knowledge/embeddable_chunk.py`), `KnowledgeChunk` (entity), `KnowledgeChunkStoreRepository`,
+  `EmbedChunksStep` (`orchestrators/steps/knowledge/embed_chunks_step.py`), `StoreChunksStep`,
+  and `RetrievalResult`. The old `ArticleCleaner._append_cleaned`/`_clean_paragraphs` (the
+  paragraph-shaped cleaning logic FR-15/AD-16 replaced) are likewise gone — `article_cleaner.py`
+  is now 55 lines, operating on `commas` only.
+- **Deviations from plan:** (1) New Design Decision **PD-13** added mid-implementation:
+  `PostgresClient.truncate()` widened from `truncate(table_name: str)` to
+  `truncate(*table_names: str)`, emitting one combined `TRUNCATE TABLE t1, t2` statement —
+  PD-11's premise (two sequential single-table `TRUNCATE` calls suffice) was factually wrong,
+  verified against a live Postgres: it unconditionally refuses to empty a table referenced by a
+  live FK unless the referencing table is named in the same statement. (2) **T-13 was
+  implemented out of the plan's document order**, immediately after T-5/T-6 rather than after
+  T-7…T-12, to unblock a real breakage: T-5's `CleanedArticleModel` shape change broke
+  `ArticleMapper.from_cleaned_to_enriched` → `EnrichedArticleModel`, and T-13 (which deletes that
+  code path entirely, per FR-16) was the actual fix, not a workaround — T-13 only depends on
+  T-6, so this reordering did not violate any dependency. (3) `EnrichedArticleModel` was **not**
+  deleted by T-13 despite being on its file list — it was kept alive because
+  `ArticleChunker`/`ArticleMapper.from_enriched_to_embeddable_chunk` (out of T-13's scope) still
+  referenced it; deleted in T-15 once those were also removed. This exposed a genuine plan gap:
+  no task's file list ever named `enriched_article.py` for deletion — resolved by treating it as
+  part of T-15's inventory once confirmed dead. (4) **T-15's actual deletion inventory grew
+  beyond its stated file list**: `EnrichedArticleModel` + its test, `test_embeddable_chunk.py`,
+  `context_keys.py`'s three now-dead constants (`ENRICHED_ARTICLES`/`EMBEDDABLE_CHUNKS`/
+  `CHUNK_ENTITIES`), the `StoreRepository` protocol's stale docstring, and — discovered only
+  after the rest of T-15 landed, via a full clean `pytest` run rather than the grep sweep alone —
+  two out-of-inventory test files (`test_json_repository.py`, `test_embedding_service.py`) whose
+  fixtures needed porting from the deleted `EnrichedArticleModel`/`EmbeddableChunkModel` onto
+  `CleanedArticleModel`/`EmbeddableArticleComma`. All confirmed dead/necessary and applied with
+  explicit reasoning, never silently. (5) **T-16's first implementation matched the plan's
+  literal (pre-PD-13) `reset.py` text** — two separate `ArticleCommaStoreRepository`/
+  `ArticleStoreRepository.truncate()` calls — which crashes against a live Postgres for the same
+  FK reason PD-13 fixed elsewhere; corrected to call `postgres_client.truncate(...)` directly
+  with both table names in one statement, and the corresponding test rewritten to assert the
+  combined-call shape instead of the two-separate-calls shape. (6) A small number of files
+  outside their originating task's declared list needed edits as direct, unavoidable
+  consequences of symbol removal: `tests/.../test_subagents_from_yaml_injection.py` (T-13),
+  `cli/rendering/status_renderer.py` and `orchestrators/knowledge_flows.py`'s one
+  `config.knowledge_chunks_table` reference (T-16) — none introduced new behavior.
+- **Learnings:** Postgres's `TRUNCATE` restriction on FK-referenced tables is unconditional and
+  statement-scoped (not row-count- or ordering-dependent) — worth remembering for any future
+  schema with FK relationships and a truncate-based reset path. A spec's predicted corpus-wide
+  counts (e.g. "+104 commas") are order-of-magnitude sanity checks, not exact contracts — the
+  real re-scrape measured +48, a real but non-alarming divergence (same order of magnitude),
+  most likely because the spec's figure and the plan's net-aggregate-delta measurement used
+  different counting methodologies (per-article recovered comma vs. net total, which also nets
+  out list-item merges). A large, mechanical file-deletion task (T-15) benefits from a
+  pre-verified inventory pass before implementation, but even a thorough grep sweep missed 4
+  real references that only surfaced when the full test suite was run clean (without
+  `--continue-on-collection-errors`) — no sweep substitutes for that final full-suite check.
+  Background TDD-writing subagents intermittently ran out of turns on larger multi-file tasks
+  (T-9/T-10, T-14, T-15) and returned truncated handoffs without finishing the requested tests;
+  the orchestrating session had to detect this via direct `pytest` verification and complete the
+  test-writing itself in those cases — worth budgeting for on any future plan with comparably
+  large tasks.
+- **Status change:** in-progress → implemented — confirmed by Alessio Gilardi, 2026-08-01.
