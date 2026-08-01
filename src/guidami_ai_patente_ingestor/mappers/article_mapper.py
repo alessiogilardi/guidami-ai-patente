@@ -1,12 +1,13 @@
 from typing import Literal
 
-from domain.entities.knowledge import KnowledgeChunk
+from domain.entities.knowledge import Article
 from guidami_ai_patente_ingestor.models.knowledge import (
     CleanedArticleModel,
-    EmbeddableChunkModel,
-    EnrichedArticleModel,
+    EmbeddableArticleComma,
     ParsedArticleModel,
 )
+
+_COMMA_REPEALED_PREFIX = "COMMA ABROGATO"
 
 
 class ArticleMapper:
@@ -28,58 +29,52 @@ class ArticleMapper:
         return CleanedArticleModel(**article.model_dump(), source=source)
 
     @staticmethod
-    def from_cleaned_to_enriched(article: CleanedArticleModel) -> EnrichedArticleModel:
-        """Base-map: carries `source` over, `contexts` filled by ContextEnricher."""
-        return EnrichedArticleModel(**article.model_dump(), contexts={})
-
-    @staticmethod
-    def from_enriched_to_embeddable_chunk(
-        model: EnrichedArticleModel,
-        comma_index: int,
-        raw_text: str,
-    ) -> EmbeddableChunkModel:
-        """Creates an `EmbeddableChunkModel` from an enriched article and a specific comma.
-
-        `source` now comes from the model — no separate parameter to disagree with it.
+    def from_cleaned_to_article_entity(article: CleanedArticleModel) -> Article:
+        """Maps a `CleanedArticleModel` onto the insertable `Article` entity.
 
         Args:
-            model: Source enriched article.
-            comma_index: Comma index (0 = main text).
-            raw_text: Raw text of the comma to embed.
+            article: Cleaned article to map.
 
         Returns:
-            Chunk ready for embedding and indexing.
+            `Article` entity ready for `ArticleStoreRepository`.
         """
-        return EmbeddableChunkModel(
-            source=model.source,
-            article_number=model.number,
-            article_title=model.title,
-            comma_index=comma_index,
-            chunk_text=raw_text,
-            context=model.contexts.get(comma_index, ""),
-            is_repealed=model.repealed or "ABROGAT" in raw_text.upper(),
-            source_url=model.url,
+        return Article(
+            source=article.source,
+            number=article.number,
+            title=article.title,
+            url=article.url,
+            is_repealed=article.repealed,
         )
 
     @staticmethod
-    def from_embeddable_chunk_to_knowledge_chunk(model: EmbeddableChunkModel) -> KnowledgeChunk:
-        """Maps an `EmbeddableChunkModel` to the `KnowledgeChunk` entity.
+    def from_cleaned_to_embeddable_commas(
+        article: CleanedArticleModel,
+    ) -> list[EmbeddableArticleComma]:
+        """Expands a `CleanedArticleModel` into one `EmbeddableArticleComma` per comma.
+
+        Per-comma repeal (FR-9): a comma is repealed when its article is repealed,
+        or when its own text (after stripping leading `((` markers) starts with
+        `COMMA ABROGATO` — comma numbers are already stripped from comma text by
+        the scraper, so no separate number-stripping is needed here.
 
         Args:
-            model: Embeddable model with embedding already computed (or `None`
-                if excluded by the repealed filter).
+            article: Cleaned article to expand.
 
         Returns:
-            `KnowledgeChunk` entity ready for the store.
+            One `EmbeddableArticleComma` per comma, in the article's comma order,
+            with `embedding=None` (computed later by `EmbedCommasStep`).
         """
-        return KnowledgeChunk(
-            source=model.source,
-            article_number=model.article_number,
-            article_title=model.article_title,
-            comma_index=model.comma_index,
-            chunk_text=model.chunk_text,
-            context=model.context,
-            is_repealed=model.is_repealed,
-            source_url=model.source_url,
-            embedding=model.embedding,
-        )
+        return [
+            EmbeddableArticleComma(
+                source=article.source,
+                article_number=article.number,
+                article_title=article.title,
+                comma_number=comma.number,
+                position=position,
+                text=comma.text,
+                is_repealed=article.repealed
+                or comma.text.lstrip("(").strip().upper().startswith(_COMMA_REPEALED_PREFIX),
+                embedding=None,
+            )
+            for position, comma in enumerate(article.commas)
+        ]

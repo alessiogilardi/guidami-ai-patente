@@ -28,7 +28,8 @@ def _config_panel(config: IngestorConfig) -> Panel:
         f"Postgres: {config.postgres.host}:{config.postgres.port}/{config.postgres.dbname} "
         f"(password: {postgres_password})",
         f"OpenRouter API key: {open_router_api_key}",
-        f"Knowledge chunks table: {config.knowledge_chunks_table}",
+        f"Articles table: {config.articles_table}",
+        f"Article commas table: {config.article_commas_table}",
         f"Quiz questions table: {config.quiz_questions_table}",
     ]
     return Panel("\n".join(lines), title="Configuration")

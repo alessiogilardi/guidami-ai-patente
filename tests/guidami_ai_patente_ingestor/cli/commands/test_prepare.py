@@ -29,22 +29,17 @@ def _make_config_mock() -> MagicMock:
     return config
 
 
-def test_dispatch_prepare_knowledge_runs_both_flows_directly_without_run_preparation() -> None:
+def test_dispatch_prepare_knowledge_runs_directly_without_run_preparation() -> None:
     """Decision 11: the knowledge branch always runs; no coarse run_preparation skip."""
     args = argparse.Namespace(entity="knowledge", source="cds", force=False)
     config_mock = _make_config_mock()
     clean_flow_mock = MagicMock()
-    enrich_flow_mock = MagicMock()
 
     with (
         patch(
             "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
             return_value=clean_flow_mock,
         ) as build_clean,
-        patch(
-            "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_enrichment_flow",
-            return_value=enrich_flow_mock,
-        ) as build_enrich,
         patch("guidami_ai_patente_ingestor.cli.commands.prepare.run_preparation") as run_prep,
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
@@ -54,13 +49,11 @@ def test_dispatch_prepare_knowledge_runs_both_flows_directly_without_run_prepara
         )
 
     build_clean.assert_called_once()
-    build_enrich.assert_called_once()
     clean_flow_mock.run.assert_called_once()
-    enrich_flow_mock.run.assert_called_once()
     run_prep.assert_not_called()
 
 
-def test_dispatch_prepare_knowledge_passes_source_to_factories() -> None:
+def test_dispatch_prepare_knowledge_passes_source_to_factory() -> None:
     args = argparse.Namespace(entity="knowledge", source="cap", force=False)
     config_mock = _make_config_mock()
 
@@ -69,10 +62,6 @@ def test_dispatch_prepare_knowledge_passes_source_to_factories() -> None:
             "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
             return_value=MagicMock(),
         ) as build_clean,
-        patch(
-            "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_enrichment_flow",
-            return_value=MagicMock(),
-        ) as build_enrich,
         patch("guidami_ai_patente_ingestor.cli.commands.prepare.run_preparation"),
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
@@ -82,11 +71,10 @@ def test_dispatch_prepare_knowledge_passes_source_to_factories() -> None:
         )
 
     assert build_clean.call_args.kwargs["source"] == "cap"
-    assert build_enrich.call_args.kwargs["source"] == "cap"
 
 
-def test_dispatch_prepare_knowledge_with_force_passes_force_to_both_flow_factories() -> None:
-    """`force` now threads into the flow factories (FilterAlreadyDoneStep), not run_preparation."""
+def test_dispatch_prepare_knowledge_with_force_passes_force_to_the_flow_factory() -> None:
+    """`force` now threads into the flow factory (FilterAlreadyDoneStep), not run_preparation."""
     args = argparse.Namespace(entity="knowledge", source="cds", force=True)
     config_mock = _make_config_mock()
 
@@ -95,10 +83,6 @@ def test_dispatch_prepare_knowledge_with_force_passes_force_to_both_flow_factori
             "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
             return_value=MagicMock(),
         ) as build_clean,
-        patch(
-            "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_enrichment_flow",
-            return_value=MagicMock(),
-        ) as build_enrich,
         patch("guidami_ai_patente_ingestor.cli.commands.prepare.run_preparation"),
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
@@ -108,7 +92,30 @@ def test_dispatch_prepare_knowledge_with_force_passes_force_to_both_flow_factori
         )
 
     assert build_clean.call_args.kwargs["force"] is True
-    assert build_enrich.call_args.kwargs["force"] is True
+
+
+def test_dispatch_prepare_knowledge_runs_only_cleaning() -> None:
+    """FR-16/AD-18 (T-13): the knowledge branch no longer builds/runs an enrichment flow."""
+    args = argparse.Namespace(entity="knowledge", source="cds", force=False)
+    config_mock = _make_config_mock()
+    clean_flow_mock = MagicMock()
+
+    with patch(
+        "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
+        return_value=clean_flow_mock,
+    ) as build_clean:
+        from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
+
+        dispatch_prepare(
+            config_mock, MagicMock(), MagicMock(), args, tracker=None, progress=MagicMock()
+        )
+
+    build_clean.assert_called_once()
+    clean_flow_mock.run.assert_called_once()
+
+    from guidami_ai_patente_ingestor.cli.commands import prepare as prepare_module
+
+    assert not hasattr(prepare_module, "build_knowledge_enrichment_flow")
 
 
 def test_dispatch_prepare_quiz_runs_both_preparation_flows() -> None:
@@ -180,21 +187,15 @@ def test_run_prepare_dry_run_never_touches_postgres_or_dispatches() -> None:
     dispatch_mock.assert_not_called()
 
 
-def test_knowledge_branch_brackets_both_flows(
+def test_knowledge_branch_brackets_the_cleaning_flow(
     progress_recorder: RecordingProgressReporter,
 ) -> None:
     args = argparse.Namespace(entity="knowledge", source="cds", force=False)
     config_mock = _make_config_mock()
 
-    with (
-        patch(
-            "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
-            return_value=MagicMock(),
-        ),
-        patch(
-            "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_enrichment_flow",
-            return_value=MagicMock(),
-        ),
+    with patch(
+        "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
+        return_value=MagicMock(),
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
 
@@ -203,10 +204,8 @@ def test_knowledge_branch_brackets_both_flows(
         )
 
     assert progress_recorder.calls == [
-        ("begin_run", (2,)),
+        ("begin_run", (1,)),
         ("begin_flow", ("knowledge_cleaning",)),
-        ("end_flow", ()),
-        ("begin_flow", ("knowledge_enrichment",)),
         ("end_flow", ()),
     ]
 

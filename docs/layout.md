@@ -64,8 +64,8 @@ gitignored — never committed, safe to delete once the spec they fed is
   top-level `mappers/` package (`ArticleMapper`, `QuizMapper`) holds only
   pipeline-stage domain mappers; a mapper that exists solely to translate
   a domain model to/from one agent's request/response DTOs lives in
-  `agents/mappers/` instead (`ArticleContextualizerMapper`,
-  `NormReferenceDescriberMapper`, `RoadSignDescriberMapper`) — `agents/`
+  `agents/mappers/` instead (`NormReferenceDescriberMapper`,
+  `RoadSignDescriberMapper`) — `agents/`
   is a self-contained package for its own DTOs (`agents/dto/`) and their
   mappers, the same self-containment convention `cli/` follows (see
   `.claude/rules/cli-structure.md`).
@@ -94,11 +94,11 @@ gitignored — never committed, safe to delete once the spec they fed is
   `src/commons/observability/` (top-level, a **sibling** of `commons/ai/`,
   not nested under it) holds `ItemProgressReporter`/`ProgressReporter`
   (`protocols/`) + `NullProgressReporter` (`services/`) — the progress-reporting
-  port the ingest CLI's live dashboard (spec 0002) drives and the four
-  instrumented services (`EmbeddingService`, `ContextEnricher`,
-  `ImageDescriptionEnricher`, `NormReferenceEnricher`) depend on. It is not
+  port the ingest CLI's live dashboard (spec 0002) drives and the three
+  instrumented services (`EmbeddingService`, `ImageDescriptionEnricher`,
+  `NormReferenceEnricher`) depend on. It is not
   under `commons/ai/` because it is not AI-specific (`EmbeddingService` is
-  the only one of the four that happens to also be AI-related); see
+  the only one of the three that happens to also be AI-related); see
   `docs/patterns.md` for the port/null-object shape.
 - **Persisted or cross-cutting domain shapes** (entities that map 1:1 to a
   DB table, models shared by more than one app) go in `src/domain/`.
@@ -152,5 +152,6 @@ gitignored — never committed, safe to delete once the spec they fed is
   itself is shared, but nothing outside the CLI renders it, so the renderer stays
   local per the same rule.
 
-*Last updated: 2026-07-31 — records `src/commons/observability/` and
-`cli/rendering/dashboard/`, added by the CLI live dashboard feature (spec 0002).*
+*Last updated: 2026-08-01 — verified against commit `c457354`; updated the
+`agents/mappers/` and instrumented-services examples after spec 0001 T-13
+removed `ArticleContextualizerMapper`/`ContextEnricher`.*

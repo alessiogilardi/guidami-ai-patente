@@ -25,7 +25,7 @@ Commands:
   index quiz [--dry-run] [--plain]
       Embed + store the quiz bank.
   reset knowledge [--dry-run]
-      Truncate knowledge_chunks (wipe).
+      Truncate articles and article_commas (wipe).
   reset quiz [--dry-run]
       Truncate quiz_questions (full wipe).
   status [--online]
@@ -125,7 +125,7 @@ def build_parser(config: IngestorConfig) -> argparse.ArgumentParser:
     # ---- reset ----
     reset_p = cmd_subs.add_parser("reset", help="Truncate DB tables (full wipe).")
     rst_subs = reset_p.add_subparsers(dest="entity", required=True)
-    rst_k = rst_subs.add_parser("knowledge", help="Truncate knowledge_chunks table.")
+    rst_k = rst_subs.add_parser("knowledge", help="Truncate articles and article_commas tables.")
     _add_dry_run_flag(rst_k)
     rst_q = rst_subs.add_parser("quiz", help="Truncate quiz_questions table.")
     _add_dry_run_flag(rst_q)

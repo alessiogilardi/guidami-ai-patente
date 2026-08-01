@@ -14,7 +14,8 @@ from commons.ai.observability import (
 from commons.clients import PostgresClient
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.repositories import (
-    KnowledgeChunkStoreRepository,
+    ArticleCommaStoreRepository,
+    ArticleStoreRepository,
     QuizQuestionStoreRepository,
 )
 from guidami_ai_patente_ingestor.services import LayerResolver
@@ -42,11 +43,12 @@ def build_tracker(postgres_client: PostgresClient) -> QueuedLlmCallTracker:
 
 def build_health_repositories(
     config: IngestorConfig, postgres_client: PostgresClient
-) -> dict[str, KnowledgeChunkStoreRepository | QuizQuestionStoreRepository]:
+) -> dict[str, ArticleStoreRepository | ArticleCommaStoreRepository | QuizQuestionStoreRepository]:
     """Builds the table-name -> repository map consumed by `TableHealthChecker`."""
     return {
-        config.knowledge_chunks_table: KnowledgeChunkStoreRepository(
-            config.knowledge_chunks_table, postgres_client
+        config.articles_table: ArticleStoreRepository(config.articles_table, postgres_client),
+        config.article_commas_table: ArticleCommaStoreRepository(
+            config.article_commas_table, postgres_client
         ),
         config.quiz_questions_table: QuizQuestionStoreRepository(
             config.quiz_questions_table, postgres_client

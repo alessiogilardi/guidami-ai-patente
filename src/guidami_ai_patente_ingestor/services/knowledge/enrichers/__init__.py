@@ -1,5 +1,7 @@
-"""Corpus normativo enrichers (Open/Closed: new enricher = new class)."""
+"""Corpus normativo enrichers (Open/Closed: new enricher = new class).
 
-from .context_enricher import ContextEnricher
+FR-16/AD-18 (T-13): context enrichment (`ContextEnricher`) has been removed;
+this package currently has no enrichers left.
+"""
 
-__all__ = ["ContextEnricher"]
+__all__: list[str] = []

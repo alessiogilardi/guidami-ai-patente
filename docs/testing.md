@@ -40,8 +40,16 @@ repositories or embedding clients.
 isolation via a small local fake page object exposing only
 `extract_words()` (the one pdfplumber method the function calls) — the
 PDF-parsing entry point `main_questions` itself is not tested (would
-require a real PDF plus `fitz`/`pdfplumber`/image extraction). No tests
-yet for `src/scrapers/`, or the empty `src/guidami_ai_patente/` scaffold.
+require a real PDF plus `fitz`/`pdfplumber`/image extraction).
+`tests/scrapers/test_normattiva.py` follows the same precedent: it
+unit-tests `_parse_article` (and the private helper
+`_extract_comma_number_and_text` it delegates to) against small,
+hand-built HTML fixtures using the real Normattiva CSS class names
+(`art-comma-div-akn`, `comma-num-akn`, `art_text_in_comma`,
+`art-just-text-akn`, `article-heading-akn`, `article-pre-comma-text-akn`),
+not real scraped pages — the network-fetching entry points (`main`,
+`main_cds`, `main_cap`) are not tested. No tests yet for the empty
+`src/guidami_ai_patente/` scaffold.
 `flowstep` is an external git dependency (not part of this repo's `src/`
 or `tests/`), so it has no local test mirror here — see
 `docs/architecture.md`.
@@ -52,12 +60,22 @@ No `__init__.py` in any test directory — see
 **There is no `conftest.py` anywhere in the project.**
 `tests/guidami_ai_patente_ingestor/fixtures/` is not pytest fixtures —
 it holds static JSON sample files (`cds_sample.json`, `cap_sample.json`,
-`quiz_bank_sample.json`) used as real input data by tests such as
-`test_article_cleaner.py` and `test_article_chunker.py`. Don't go looking
-for a `conftest.py`-based fixture registry; this directory is the fixture
-mechanism in this project.
+`quiz_bank_sample.json`) used as real input data by
+`test_json_repository.py`'s `ParsedArticleModel` field-mapping tests. Don't
+go looking for a `conftest.py`-based fixture registry; this directory is the
+fixture mechanism in this project.
+
+`test_article_cleaner.py` constructs its `ParsedArticleModel` instances
+inline rather than via the shared JSON fixtures (spec 0001 T-5/T-6): once
+`ParsedArticleModel` moved to a `commas: list[ParsedComma]` shape, its input
+no longer matched the fixture files' original shape closely enough to be
+worth sharing. `test_json_repository.py`'s parametrized round-trip test
+(`ROUND_TRIP_CASES`) covers `CleanedArticleModel` inline instead (spec 0001
+T-15, after `EnrichedArticleModel` was deleted).
 
 Naming: `test_*.py`, generally one test file per source file/class (e.g.
-`test_article_chunker.py` for `article_chunker.py`).
+`test_article_cleaner.py` for `article_cleaner.py`).
 
-*Last updated: 2026-07-11 — verified against commit `dfdae5d`.*
+*Last updated: 2026-08-01 — verified against commit `c457354`; spec 0001
+fully implemented (T-15) — `test_article_chunker.py` deleted along with
+`article_chunker.py`.*

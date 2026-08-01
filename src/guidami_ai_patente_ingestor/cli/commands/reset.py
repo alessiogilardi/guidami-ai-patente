@@ -6,10 +6,7 @@ import logging
 from rich.console import Console
 
 from guidami_ai_patente_ingestor.configs import IngestorConfig
-from guidami_ai_patente_ingestor.repositories import (
-    KnowledgeChunkStoreRepository,
-    QuizQuestionStoreRepository,
-)
+from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
 
 from .. import wiring
 from ..rendering import render_dry_run
@@ -22,7 +19,7 @@ def _render_reset_dry_run(args: argparse.Namespace) -> None:
     console = Console()
     match args.entity:
         case "knowledge":
-            steps = ["TRUNCATE knowledge_chunks (full wipe, irreversible in a real run)"]
+            steps = ["TRUNCATE article_commas, articles (full wipe, irreversible in a real run)"]
             render_dry_run(console, f"reset {args.entity}", steps)
         case "quiz":
             steps = ["TRUNCATE quiz_questions (full wipe, irreversible in a real run)"]
@@ -38,10 +35,12 @@ def run_reset(config: IngestorConfig, args: argparse.Namespace) -> None:
     postgres_client = wiring.build_postgres_client(config)
     match args.entity:
         case "knowledge":
-            KnowledgeChunkStoreRepository(
-                config.knowledge_chunks_table, postgres_client
-            ).truncate()
-            logger.info("knowledge_chunks table truncated")
+            # Combined statement, not two sequential repository .truncate() calls:
+            # Postgres refuses to TRUNCATE `articles` while `article_commas`'s FK
+            # references it, unless both tables are named in the SAME TRUNCATE
+            # statement (PD-13, plans/0001-article-level-storage-plan.md).
+            postgres_client.truncate(config.article_commas_table, config.articles_table)
+            logger.info("articles and article_commas tables truncated")
         case "quiz":
             QuizQuestionStoreRepository(config.quiz_questions_table, postgres_client).truncate()
             logger.info("quiz_questions table truncated")

@@ -16,11 +16,11 @@ sources:
 
 knowledge_preparation:
   input_layer: parsed
-  output_layer: enriched
+  output_layer: cleaned
   sources: [cds, cap]
 
 knowledge_indexing:
-  input_layer: enriched
+  input_layer: cleaned
   sources: [cds, cap]
 
 quiz_preparation:
@@ -43,6 +43,8 @@ postgres:
   host: localhost
   port: 5432
   dbname: guidami_ai_patente
-knowledge_chunks_table: knowledge_chunks
+articles_table: articles
+article_commas_table: article_commas
 quiz_questions_table: quiz_questions
 embed_repealed: false
+rca_ranges: ["118-165", "278-300"]

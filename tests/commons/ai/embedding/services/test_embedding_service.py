@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 import pytest
 
 from commons.ai.embedding import Embeddable, Embedded, EmbeddingClient, EmbeddingService
-from guidami_ai_patente_ingestor.models.knowledge import EmbeddableChunkModel
+from guidami_ai_patente_ingestor.models.knowledge import EmbeddableArticleComma
 
 if TYPE_CHECKING:
     # `tests` has no `__init__.py` (project convention) and is not importable as a
@@ -81,19 +81,19 @@ class TestEmbeddingService:
         self._make_service().execute([item])
         assert item.embedding is None
 
-    def test_protocol_conformance_embeddable_chunk(self) -> None:
-        chunk = EmbeddableChunkModel(
+    def test_protocol_conformance_embeddable_article_comma(self) -> None:
+        comma = EmbeddableArticleComma(
             source="cds",
             article_number="1",
             article_title="Titolo",
-            comma_index=0,
-            chunk_text="testo",
+            comma_number="1",
+            position=0,
+            text="testo",
             is_repealed=False,
-            source_url="http://example.com",
         )
-        assert isinstance(chunk, Embeddable)
-        assert isinstance(chunk, Embedded)
-        assert _accepts_embeddable(chunk) == chunk.embedded_text
+        assert isinstance(comma, Embeddable)
+        assert isinstance(comma, Embedded)
+        assert _accepts_embeddable(comma) == comma.embedded_text
 
     def test_reports_one_tick_per_batch(
         self, progress_recorder: RecordingProgressReporter

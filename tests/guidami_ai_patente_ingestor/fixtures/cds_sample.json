@@ -2,166 +2,31 @@
   {
     "number": "1",
     "title": "Principi generali",
-    "text": "((1. La sicurezza e la tutela della salute delle persone nonché la tutela dell'ambiente, nella circolazione stradale, rientrano tra le finalità primarie di ordine sociale ed economico perseguite dallo Stato))",
-    "paragraphs": [
-      "2. La circolazione dei pedoni, dei veicoli e degli animali sulle strade è regolata dalle norme del presente codice e dai provvedimenti emanati in applicazione di esse, nel rispetto delle normative internazionali e comunitarie in materia. Le norme e i provvedimenti attuativi si ispirano ai principi della sicurezza stradale e della mobilità sostenibile, perseguendo gli obiettivi: di ridurre i costi economici, sociali ed ambientali derivanti dal traffico veicolare; di migliorare il livello di qualità della vita dei cittadini anche attraverso una razionale utilizzazione del territorio; di migliorare la fluidità della circolazione; di promuovere l'uso dei velocipedi.",
-      "3. Al fine di ridurre il numero e gli effetti degli incidenti stradali ed in relazione agli obiettivi ed agli indirizzi della Commissione europea, il Ministro delle infrastrutture e dei trasporti definisce il Piano nazionale per la sicurezza stradale.",
-      "4. Il Governo comunica annualmente al Parlamento l'esito delle indagini periodiche riguardanti i profili sociali, ambientali ed economici della circolazione stradale.",
-      "5. Il Ministro delle infrastrutture e dei trasporti fornisce all'opinione pubblica i dati più significativi utilizzando i più moderni sistemi di comunicazione di massa e, nei riguardi di alcune categorie di cittadini, il messaggio pubblicitario di tipo prevenzionale ed educativo."
+    "commas": [
+      {
+        "number": "1",
+        "text": "La sicurezza e la tutela della salute delle persone, nella circolazione stradale, rientrano tra le finalita' primarie di ordine sociale ed economico perseguite dallo Stato."
+      },
+      {
+        "number": "2",
+        "text": "La circolazione dei pedoni, dei veicoli e degli animali sulle strade e' regolata dalle norme del presente codice."
+      }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=4&art.idGruppo=1&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=1&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=4&art.idArticolo=1",
     "scraped_at": "2026-05-29T14:47:49.780424+00:00",
     "repealed": false
   },
   {
-    "number": "2",
-    "title": "Definizione e classificazione delle strade",
-    "text": "",
-    "paragraphs": [
-      "1. Ai fini dell'applicazione delle norme del presente codice si definisce \"strada\" l'area ad uso pubblico destinata alla circolazione dei pedoni, dei veicoli e degli animali.",
-      "2. Le strade sono classificate, riguardo alle loro caratteristiche costruttive, tecniche e funzionali, nei seguenti tipi: A - Autostrade; B - Strade extraurbane principali; C - Strade extraurbane secondarie; D - Strade urbane di scorrimento; E - Strade urbane di quartiere; E-bis - Strade urbane ciclabili; F - Strade locali. F-bis. Itinerari ciclopedonali.",
-      "3. Le strade di cui al comma 2 devono avere le seguenti caratteristiche minime: A - AUTOSTRADA: strada extraurbana o urbana a carreggiate indipendenti o separate da spartitraffico invalicabile, ciascuna con almeno due corsie di marcia, eventuale banchina pavimentata a sinistra e corsia di emergenza o banchina pavimentata a destra, priva di intersezioni a raso e di accessi privati, dotata di recinzione e di sistemi di assistenza all'utente lungo l'intero tracciato, riservata alla circolazione di talune categorie di veicoli a motore e contraddistinta da appositi segnali di inizio e fine; deve essere attrezzata con apposite aree di servizio ed aree di parcheggio entrambe con accessi dotati di corsie di decelerazione e di accelerazione. B - STRADA EXTRAURBANA PRINCIPALE: strada a carreggiate indipendenti o separate da spartitraffico invalicabile, ciascuna con almeno due corsie di marcia e banchina pavimentata a destra, priva di intersezioni a raso, con accessi alle proprietà laterali coordinati, contraddistinta dagli appositi segnali di inizio e fine, riservata alla circolazione di talune categorie di veicoli a motore; per eventuali altre categorie di utenti devono essere previsti opportuni spazi. Deve essere attrezzata con apposite aree di servizio, che comprendano spazi per la sosta, con accessi dotati di corsie di decelerazione e di accelerazione. C - STRADA EXTRAURBANA SECONDARIA: strada ad unica carreggiata con almeno una corsia per senso di marcia e banchine. D - STRADA URBANA DI SCORRIMENTO: strada a carreggiate indipendenti o separate da spartitraffico, ciascuna con almeno due corsie di marcia, ed una eventuale corsia riservata ai mezzi pubblici, banchina pavimentata a destra e marciapiedi, con le eventuali intersezioni a raso semaforizzate; per la sosta sono previste apposite aree o fasce laterali estranee alla carreggiata, entrambe con immissioni ed uscite concentrate. E - STRADA URBANA DI QUARTIERE: strada ad unica carreggiata con almeno due corsie, banchine pavimentate e marciapiedi; per la sosta sono previste aree attrezzate con apposita corsia di manovra, esterna alla carreggiata. ((E-bis - Strada urbana ciclabile: strada urbana ad unica carreggiata, con limite di velocità non superiore a 30 km/h, definita da apposita segnaletica verticale, con priorità per i velocipedi)) . F - STRADA LOCALE: strada urbana od extraurbana opportunamente sistemata ai fini di cui al comma 1 non facente parte degli altri tipi di strade. F-bis. Itinerario ciclopedonale: strada locale, urbana, extraurbana o vicinale, destinata prevalentemente alla percorrenza pedonale e ciclabile e caratterizzata da una sicurezza intrinseca a tutela dell'utenza vulnerabile della strada.",
-      "4. È denominata \"strada di servizio\" la strada affiancata ad una strada principale (autostrada, strada extraurbana principale, strada urbana di scorrimento) avente la funzione di consentire la sosta ed il raggruppamento degli accessi dalle proprietà laterali alla strada principale e viceversa, nonché il movimento e le manovre dei veicoli non ammessi sulla strada principale stessa.",
-      "5. Per le esigenze di carattere amministrativo e con riferimento all'uso e alle tipologie dei collegamenti svolti, , le strade, come classificate ai sensi del comma 2, si distinguono in strade \"statali\", \"regionali\", \"provinciali\", \"comunali\", secondo le indicazioni che seguono. Enti proprietari delle dette strade sono rispettivamente lo Stato, la regione, la provincia, il comune. PERIODO ABROGATO DAL D.LGS. 15 MARZO 2010, N. 66 .",
-      "7. Le strade urbane di cui al comma 2, lettere D , E e F, sono sempre comunali quando siano situate nell'interno dei centri abitati, eccettuati i tratti interni di strade statali, regionali o provinciali che attraversano centri abitati con popolazione non superiore a diecimila abitanti. PERIODO SOPPRESSO DAL D.LGS. 10 SETTEMBRE 1993, N. 360 . PERIODO SOPPRESSO DAL D.LGS. 10 SETTEMBRE 1993, N. 360 .",
-      "8. Il Ministero delle infrastrutture e dei trasporti, nel termine indicato dall'art. 13, comma 5, procede alla classificazione delle strade statali ai sensi del comma 5 , seguendo i criteri di cui ai commi 5, 6 e 7, sentiti il Consiglio superiore dei lavori pubblici, il consiglio di amministrazione dell'Azienda nazionale autonoma per le strade statali, le regioni interessate, nei casi e con le modalità indicate dal regolamento. Le regioni, nel termine e con gli stessi criteri indicati, procedono, sentiti gli enti locali, alle classificazioni delle strade ai sensi del comma 5. Le strade così classificate sono iscritte nell'Archivio nazionale delle strade previsto dall'art. 226.",
-      "9. Quando le strade non corrispondono più all' uso e alle tipologie di collegamento previste sono declassificate dal Ministero delle infrastrutture e dei trasporti e dalle regioni, secondo le rispettive competenze, acquisiti i pareri indicati nel comma 8. I casi e la procedura per tale declassificazione sono indicati dal regolamento.",
-      "10. Le disposizioni di cui alla presente disciplina non modificano gli effetti del decreto del Presidente del Consiglio dei Ministri 10 agosto 1988, n. 377 , emanato in attuazione della legge 8 luglio 1986, n. 349 , in ordine all'individuazione delle opere sottoposte alla procedura di valutazione d'impatto ambientale.",
-      "10-bis. Resta ferma, per le strade e veicoli militari, la disciplina specificamente prevista dal codice dell'ordinamento militare ."
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=9&art.idGruppo=1&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=2&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
-    "scraped_at": "2026-05-29T14:47:51.445892+00:00",
-    "repealed": true
-  },
-  {
     "number": "94-bis",
     "title": "Divieto di intestazione fittizia dei veicoli",
-    "text": "",
-    "paragraphs": [
-      "1. La carta di circolazione di cui all'articolo 93 e il certificato di circolazione di cui all'articolo 97 non possono essere rilasciati qualora risultino situazioni di intestazione o cointestazione simulate o che eludano o pregiudichino l'accertamento del responsabile civile della circolazione di un veicolo. (138a) (148)",
-      "2. Salvo che il fatto costituisca reato, chiunque richieda o abbia ottenuto il rilascio dei documenti di cui al comma 1 in violazione di quanto disposto dal medesimo comma 1 è punito con la sanzione amministrativa del pagamento di una somma ((da € 543 a € 2.170)) . La sanzione di cui al periodo precedente si applica anche a chi abbia la materiale disponibilità del veicolo al quale si riferisce l'operazione, nonché al soggetto proprietario dissimulato. (114) (124) (133) (145) ((163))",
-      "3. Il veicolo in relazione al quale sono rilasciati i documenti di cui al comma 1 in violazione del divieto di cui al medesimo comma è soggetto alla cancellazione d'ufficio dal PRA e dall'archivio di cui agli articoli 225, comma 1, lettera b), e 226, comma 5. In caso di circolazione dopo la cancellazione, si applicano le sanzioni amministrative di cui al comma 7 dell'articolo 93. La cancellazione è disposta su richiesta degli organi di polizia stradale che hanno accertato le violazioni di cui al comma 2 dopo che l'accertamento è divenuto definitivo.",
-      "4. Con uno o più decreti del Ministro delle infrastrutture e dei trasporti, di concerto con i Ministri della giustizia e dell'interno, sono dettate le disposizioni applicative della disciplina recata dai commi 1, 2 e 3, con particolare riferimento all'individuazione di quelle situazioni che, in relazione alla tutela della finalità di cui al comma 1 o per l'elevato numero dei veicoli coinvolti, siano tali da richiedere una verifica che non ricorrano le circostanze di cui al predetto comma 1."
+    "commas": [
+      {
+        "number": "1",
+        "text": "La carta di circolazione non puo' essere rilasciata in caso di intestazione simulata."
+      }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=7&art.idGruppo=8&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=94&art.idSottoArticolo=2&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=7&art.idArticolo=94",
     "scraped_at": "2026-05-29T14:51:14.418308+00:00",
-    "repealed": false
-  },
-  {
-    "number": "231",
-    "title": "Abrogazione di norme precedentemente in vigore",
-    "text": "",
-    "paragraphs": [
-      "1. Sono abrogate dalla data di entrata in vigore del presente codice, salvo quanto diversamente previsto dalle disposizioni del capo II del presente titolo, le seguenti disposizioni: - regio decreto 8 dicembre 1933, n. 1740 , nella parte rimasta in vigore ai sensi dell' art. 145 del decreto del Presidente della Repubblica 15 giugno 1959, n. 393 ; - il regio decreto legge 16 dicembre 1935, n. 2771 , modificato dalla legge 24 dicembre 1951, n. 1583, articolo 3 ; - legge 12 febbraio 1958, n. 126 , ad eccezione dell'art. 14; - decreto del Presidente della Repubblica 15 giugno 1959, n. 393 ; - decreto del Presidente della Repubblica 30 giugno 1959, n. 420 ; - legge 7 febbraio 1961, n. 59, art. 25, lettera n) ; - legge 24 luglio 1961, n. 729, art. 9, sesto comma ; - legge 12 dicembre 1962, n. 1702 ; - legge 3 febbraio 1963, n. 74 ; - legge 11 febbraio 1963, n. 142 ; - legge 26 giugno 1964, n. 434 ; - legge 15 febbraio 1965, n. 106 ; - legge 14 maggio 1965, n. 576 ; - legge 4 maggio 1966, n. 263 ; - legge 1° giugno 1966, n. 416 ; - legge 20 giugno 1966, n. 599 ; - legge 13 luglio 1966, n. 615 , limitatamente al Capo VI ; - decreto-legge 21 dicembre 1966, n. 1090 , convertito dalla legge 16 febbraio 1967, n. 14 ; (9) - legge 9 luglio 1967, n. 572 ; - legge 4 gennaio 1968, n. 14 ; - legge 13 agosto 1969, n. 613 ; - legge 24 dicembre 1969, n. 990, art. 32 , limitatamente ai veicoli; - legge 10 luglio 1970, n. 579 ; - decreto del Presidente della Repubblica 22 febbraio 1971, n. 323 ; - legge 31 marzo 1971, n. 201 ; - legge 3 giugno 1971, n. 437 ; - legge 22 febbraio 1973, n. 59 ; - decreto-legge 23 novembre 1973, n. 741 , convertito della legge 22 dicembre 1973, n. 842 ; - legge 27 dicembre 1973, n. 942 ; - legge 14 febbraio 1974, n. 62 ; - legge 15 febbraio 1974, n. 38 ; - legge 14 agosto 1974, n. 394 ; - decreto-legge 11 agosto 1975, n. 367 , convertito della legge 10 ottobre 1975, n. 486 ; - legge 10 ottobre 1975, n. 486 ; - legge 25 novembre 1975, n. 707 ; - legge 7 aprile 1976, n. 125 ; - legge 5 maggio 1976, n. 313 ; - legge 8 agosto 1977, n. 631 ; - legge 18 ottobre 1978, n. 625, art. 4, terzo comma ; - legge 24 marzo 1980, n. 85 ; - legge 24 novembre 1981 n. 689 art. 16 secondo comma , per la parte relativa al testo unico delle norme sulla circolazione stradale, approvato con decreto del Presidente della Repubblica 15 giugno 1959, n. 393 ; - legge 10 febbraio 1982, n. 38 ; - legge 16 ottobre 1984, n. 719 ; - legge 11 gennaio 1986, n. 3 ; - decreto-legge 6 febbraio 1987, n. 16 , convertito della legge 30 marzo 1987, n. 132, articoli 8 , 9 , 14 , 15 , 16 ; - legge 14 febbraio 1987, n. 37 ; - legge 18 marzo 1988, n. 111 ; - legge 24 marzo 1988, n. 112 ; - legge 24 marzo 1989, n. 122 , titolo IV; - legge 22 aprile 1989, n. 143 ; - decreto-legge 24 giugno 1989, n. 238 , convertito della legge 4 agosto 1989, n. 284 ; - legge 23 marzo 1990, n. 67 ; - legge 2 agosto 1990, n. 229 ; - legge 15 dicembre 1990, n. 399 ; - legge 8 agosto 1991, n. 264, art. 7, comma 3 ; - legge 14 ottobre 1991, n. 336 ; - legge 8 novembre 1991, n. 376 ; - legge 5 febbraio 1992, n. 122, art. 12 .",
-      "2. Sono inoltre abrogate tutte le disposizioni comunque contrarie o incompatibili con le norme del presente codice.",
-      "3. ((In deroga a quanto previsto dal capo I del titolo II, si applicano le disposizioni di cui al capo V del titolo II del codice delle comunicazioni elettroniche , di cui al decreto legislativo 1° agosto 2003, n. 259 , e successive modificazioni)) . Restano, comunque, in vigore le disposizioni di cui alla legge 24 gennaio 1978, n. 27 ."
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=5&art.idGruppo=16&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=231&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
-    "scraped_at": "2026-05-29T14:56:32.624213+00:00",
-    "repealed": false
-  },
-  {
-    "number": "28",
-    "title": "Obblighi dei concessionari di determinati servizi",
-    "text": "",
-    "paragraphs": [
-      "((",
-      "1. I concessionari di ferrovie, di tranvie, di filovie hanno l'obbligo di osservare le condizioni e le prescrizioni imposte dall'ente proprietario per la conservazione della strada e per la sicurezza della circolazione.",
-      "))",
-      "((",
-      "2. Qualora per comprovate esigenze della viabilità si renda necessario modificare o spostare gli impianti, l'onere relativo allo spostamento è a carico del gestore del pubblico servizio.",
-      "))"
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=2&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=28&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
-    "scraped_at": "2026-05-29T14:48:39.714073+00:00",
-    "repealed": false
-  },
-  {
-    "number": "93-bis",
-    "title": " (Formalità necessarie per la circolazione degli autoveicoli, motoveicoli e rimorchi immatricolati in uno Stato estero e condotti da residenti in Italia). ",
-    "text": "",
-    "paragraphs": [
-      "((",
-      "1. Fuori dei casi di cui al comma 3, gli autoveicoli immatricolati in uno Stato estero sono ammessi a circolare sul territorio nazionale.",
-      "))",
-      "((2. A bordo del veicolo deve essere custodito un documento che attesti il titolo e la durata della disponibilità.))",
-      "((171))"
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=8&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=93&art.idSottoArticolo=2&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
-    "scraped_at": "2026-05-29T14:51:10.867723+00:00",
-    "repealed": false
-  },
-  {
-    "number": "85",
-    "title": "Servizio di noleggio con conducente per trasporto di persone",
-    "text": "",
-    "paragraphs": [
-      "((4-bis. L'utilizzo di un veicolo destinato a noleggio con conducente in violazione è soggetto alle seguenti sanzioni:",
-      "a) alla prima violazione, sanzione amministrativa del pagamento di una somma da euro 178 a euro 672;",
-      "b) alla seconda violazione, sanzione amministrativa del pagamento di una somma da euro 264 a euro 1.010.))"
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=22&art.idGruppo=7&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=85&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
-    "scraped_at": "2026-05-29T14:50:38.317317+00:00",
-    "repealed": false
-  },
-  {
-    "number": "61",
-    "title": "Sagoma limite",
-    "text": "",
-    "paragraphs": [
-      "2. Gli autoarticolati e gli autosnodati non devono eccedere la lunghezza totale di 18,75 m.",
-      "2-bis Gli autosnodati e i filosnodati destinati a sistemi di trasporto rapido di massa possono raggiungere la lunghezza massima di 24 m."
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=23&art.idGruppo=4&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=61&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
-    "scraped_at": "2026-05-29T14:49:55.094596+00:00",
-    "repealed": false
-  },
-  {
-    "number": "9-bis",
-    "title": " (Organizzazione di competizioni non autorizzate in velocità con veicoli a motore e partecipazione alle gare). ",
-    "text": "",
-    "paragraphs": [
-      "((",
-      "1. Salvo che il fatto costituisca più grave reato, chiunque organizza una competizione sportiva in velocità con veicoli a motore senza autorizzazione è punito con la reclusione da uno a tre anni.",
-      "2. Se dallo svolgimento della competizione deriva la morte di una o più persone, si applica la pena della reclusione da sei a dodici anni.",
-      "))"
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=1&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=9&art.idSottoArticolo=2&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
-    "scraped_at": "2026-05-29T14:48:04.662796+00:00",
-    "repealed": false
-  },
-  {
-    "number": "116-bis",
-    "title": "",
-    "text": "(( (Rete dell'Unione europea delle patenti di guida). )) ((",
-    "paragraphs": [
-      "1. Lo scambio di informazioni con gli altri Stati avviene mediante la rete dell'Unione europea delle patenti di guida."
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=10&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=116&art.idSottoArticolo=2&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
-    "scraped_at": "2026-05-29T14:51:55.816811+00:00",
-    "repealed": false
-  },
-  {
-    "number": "205",
-    "title": " (Opposizione all'ordinanza-ingiunzione",
-    "text": "",
-    "paragraphs": [
-      "1. Contro l'ordinanza-ingiunzione di pagamento di una sanzione amministrativa pecuniaria gli interessati possono proporre opposizione davanti all'autorità giudiziaria ordinaria."
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=6&art.idGruppo=12&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=205&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
-    "scraped_at": "2026-05-29T14:54:48.852443+00:00",
-    "repealed": false
-  },
-  {
-    "number": "226",
-    "title": "Organizzazione degli archivi e dell'anagrafe nazionale",
-    "text": "",
-    "paragraphs": [
-      "1. Presso il Ministero delle infrastrutture e dei trasporti è istituito l'archivio nazionale delle strade.",
-      "2. 2. Nell'archivio nazionale, per ogni strada, devono essere indicati i dati relativi allo stato tecnico e giuridico della strada."
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=13&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=226&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
-    "scraped_at": "2026-05-29T14:55:30.123456+00:00",
     "repealed": false
   }
 ]

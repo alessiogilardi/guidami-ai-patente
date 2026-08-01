@@ -27,9 +27,10 @@ def _render_index_dry_run(args: argparse.Namespace) -> None:
         case "knowledge":
             source: str = args.source
             steps = [
-                f"knowledge_indexing ({source}): LoadJsonDirStep(enriched/{source}) -> "
-                "chunk_articles -> embed_chunks -> map_to_chunk_entity -> "
-                f"store_chunks (table=knowledge_chunks, source={source}, full source reload)",
+                f"knowledge_indexing ({source}): LoadJsonDirStep(cleaned/{source}) -> "
+                "map_to_article_entities -> expand_to_embeddable_commas -> embed_commas -> "
+                f"store_articles_and_commas (tables=articles,article_commas, "
+                f"source={source}, full source reload)",
             ]
             render_dry_run(console, f"index {args.entity}", steps)
         case "quiz":

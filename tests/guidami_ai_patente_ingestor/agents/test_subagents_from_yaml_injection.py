@@ -13,7 +13,6 @@ from commons.ai.agents import AgentConfig
 from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import YamlRepository
 from guidami_ai_patente_ingestor.agents import (
-    ArticleContextualizerAgent,
     NormReferenceDescriberAgent,
     RoadSignDescriberAgent,
 )
@@ -30,19 +29,6 @@ MINIMAL_CONFIG: dict = {
 def _write_yaml(agents_dir: Path, name: str, content: dict) -> None:
     agents_dir.mkdir(parents=True, exist_ok=True)
     (agents_dir / f"{name}.yaml").write_text(yaml.dump(content), encoding="utf-8")
-
-
-def test_article_contextualizer_from_yaml_accepts_repository(tmp_path: Path) -> None:
-    agents_dir = tmp_path / "agents"
-    _write_yaml(agents_dir, "article_contextualizer", MINIMAL_CONFIG)
-    repository = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
-
-    agent = ArticleContextualizerAgent.from_yaml(
-        "article_contextualizer", repository=repository, provider=_PROVIDER
-    )
-
-    assert agent is not None
-    assert isinstance(agent, ArticleContextualizerAgent)
 
 
 def test_road_sign_describer_from_yaml_accepts_repository(tmp_path: Path) -> None:

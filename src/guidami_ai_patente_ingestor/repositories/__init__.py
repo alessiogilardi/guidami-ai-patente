@@ -1,8 +1,9 @@
 """Data-access layer of the ingestor."""
 
-from .db import KnowledgeChunkStoreRepository, QuizQuestionStoreRepository
+from .db import ArticleCommaStoreRepository, ArticleStoreRepository, QuizQuestionStoreRepository
 
 __all__ = [
-    "KnowledgeChunkStoreRepository",
+    "ArticleCommaStoreRepository",
+    "ArticleStoreRepository",
     "QuizQuestionStoreRepository",
 ]

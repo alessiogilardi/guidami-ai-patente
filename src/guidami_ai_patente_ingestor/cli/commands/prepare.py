@@ -1,4 +1,4 @@
-"""`ingest prepare` dispatch: clean + enrich flow pair, with idempotency check."""
+"""`ingest prepare` dispatch: knowledge cleaning, quiz clean + enrich pair."""
 
 import argparse
 import logging
@@ -12,7 +12,6 @@ from commons.observability import ProgressReporter
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators import (
     build_knowledge_cleaning_flow,
-    build_knowledge_enrichment_flow,
     build_quiz_cleaning_flow,
     build_quiz_enrichment_flow,
     run_preparation,
@@ -29,7 +28,7 @@ _CLEANED_LAYER = "cleaned"
 
 
 def _render_prepare_dry_run(args: argparse.Namespace) -> None:
-    """Describes the flow pair `dispatch_prepare` would run, without building any of it."""
+    """Describes the flow(s) `dispatch_prepare` would run, without building any of them."""
     force: bool = args.force
     console = Console()
     match args.entity:
@@ -39,10 +38,6 @@ def _render_prepare_dry_run(args: argparse.Namespace) -> None:
                 f"knowledge_cleaning ({source}): LoadJsonStep(parsed/{source}) -> "
                 f"clean + stamp source -> FilterAlreadyDoneStep(force={force}) -> "
                 f"WriteJsonDirStep(cleaned/{source})",
-                f"knowledge_enrichment ({source}): LoadJsonDirStep(cleaned/{source}) -> "
-                f"FilterAlreadyDoneStep(force={force}) -> map -> "
-                "LLM enrich (ArticleContextualizerAgent) -> "
-                f"WriteJsonDirStep(enriched/{source})",
             ]
             render_dry_run(console, f"prepare {args.entity}", steps)
         case "quiz":
@@ -65,12 +60,13 @@ def dispatch_prepare(
     tracker: LlmCallTracker | None,
     progress: ProgressReporter,
 ) -> None:
-    """Dispatch prepare subcommand: clean + enrich flow pair, with idempotency check."""
+    """Dispatch prepare subcommand: knowledge cleaning only, quiz clean + enrich pair."""
     force: bool = args.force
-    progress.begin_run(2)
     match args.entity:
         case "knowledge":
             source: str = args.source
+            # One flow now (FR-16/AD-18, T-13): context enrichment has been removed.
+            progress.begin_run(1)
             clean_flow = build_knowledge_cleaning_flow(
                 config=config,
                 layer_resolver=layer_resolver,
@@ -78,24 +74,13 @@ def dispatch_prepare(
                 force=force,
                 progress=progress,
             )
-            enrich_flow = build_knowledge_enrichment_flow(
-                config=config,
-                layer_resolver=layer_resolver,
-                open_router_provider=open_router_provider,
-                source=source,
-                force=force,
-                tracker=tracker,
-                progress=progress,
-            )
             # No run_preparation: per-element skipping lives in FilterAlreadyDoneStep
             # (Decision 11) — a per-element layer has no honest coarse skip signal.
             progress.begin_flow("knowledge_cleaning")
             clean_flow.run()
             progress.end_flow()
-            progress.begin_flow("knowledge_enrichment")
-            enrich_flow.run()
-            progress.end_flow()
         case "quiz":
+            progress.begin_run(2)
             quiz_source: str = config.quiz_preparation.sources[0]
             quiz_enrich_layer = config.quiz_preparation.output_layer
             if quiz_enrich_layer is None:

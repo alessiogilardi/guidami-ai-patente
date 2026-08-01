@@ -51,6 +51,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `guidami_ai_patente/` | FastAPI quiz bot — **not started** | FastAPI (planned) |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/` | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/` | beautifulsoup4, lxml, httpx |
+| `scrapers/rca_extract.py` | Filters the full CAP corpus (`data/parsed/cap/codice_assicurazioni_private.json`) down to `IngestorConfig.rca_ranges` (inclusive numeric ranges over the article's leading number) → `data/parsed/cap/codice_rca.json`; not wired into `main_cap` or the `ingest` CLI — a standalone follow-up step | stdlib only |
 
 `parsers/questions_pdf.py` extracts each sub-question's image lazily: the
 per-question default image (fallback for rows without their own nearby
@@ -60,14 +61,12 @@ use silently orphans files under `data/parsed/quiz-patente-ab/images/`
 whenever every row of a question resolves its own row-level image instead.
 
 LLM agents in use today (all `BaseAgent` subclasses under
-`guidami_ai_patente_ingestor/agents/`):
-- `ArticleContextualizerAgent` — knowledge-corpus enrichment (per-article context).
-  Called once per article, concurrently across articles, bounded by
-  `IngestorConfig.article_contextualizer_concurrency` (default `8`) — symmetric to
-  the quiz enrichers (see `patterns.md`). `ContextEnricher` skips the call (article
-  returned unchanged) only when the article is `repealed` or has neither `text` nor
-  `paragraphs` — an article with intro `text` but no numbered `paragraphs` is still
-  contextualized, since `ArticleChunker` turns `text` into the `comma_index=0` chunk.
+`guidami_ai_patente_ingestor/agents/`) — **knowledge-corpus enrichment has
+been removed** (spec 0001 FR-16/AD-18, plan task T-13): `ContextEnricher`,
+`ArticleContextualizerAgent` (+ its DTOs/mapper/yaml config), and
+`build_knowledge_enrichment_flow` no longer exist. `ingest prepare
+knowledge` now runs a cleaning-only flow (no LLM call); the two remaining
+agents are quiz-only:
 - `RoadSignDescriberAgent` — vision agent, quiz enrichment; deliberately
   answer-blind (see ADR below). Owns image-file reading via its
   `PromptRenderer`/`file_reader`; `ImageDescriptionEnricher` only passes
@@ -158,16 +157,20 @@ default:
   — composed with, not replacing, the framework's default
   `LoggingFlowObserver`. The flow-level bar (`begin_run`/`begin_flow`/
   `end_flow`) is driven one level up, by `dispatch_prepare`/`run_index`
-  themselves: a `Flow` only knows its own steps, never that it is the first of
-  a pair (`prepare` always runs two flows back to back; `index` runs one).
+  themselves: a `Flow` only knows its own steps, never how many flows
+  `begin_run` covers — `index` always runs one flow; `prepare` runs one for
+  knowledge (cleaning only, since T-13 removed enrichment) and two for quiz
+  (cleaning + enrichment), so `dispatch_prepare` passes a per-entity
+  `begin_run` count rather than a shared constant.
 - **Item-level position** (inside one long-running step) rides the
   `commons/observability/` `ProgressReporter` port directly, injected as the
-  last constructor argument into the four instrumented services:
-  `EmbeddingService` (one tick per batch), `ContextEnricher` (one tick per
-  article, including the skip/failure paths), and, inside the single
+  last constructor argument into the three instrumented services:
+  `EmbeddingService` (one tick per batch), and, inside the single
   `enrich_quiz` step, `ImageDescriptionEnricher` then `NormReferenceEnricher`
   in sequence (one tick per distinct image, then one tick per post-dedup
   unique question) — two successive item bars for that one step.
+  (`ContextEnricher` was a fourth such service before spec 0001/T-13 removed
+  knowledge-corpus enrichment entirely.)
 
 `cli/rendering/dashboard/log_panel_handler.py:LogPanelHandler` is a bounded
 (`deque(maxlen=15)`) `logging.Handler` that also filters out third-party
@@ -185,8 +188,10 @@ plain-logging behavior, satisfying FR-4 with no separate code path.
 `wiring.build_postgres_client`) and, inside `with postgres_client,
 wiring.build_tracker(postgres_client) as tracker:`, dispatches to
 `dispatch_prepare(..., tracker)`, which forwards `tracker` into
-`build_knowledge_enrichment_flow`/`build_quiz_enrichment_flow` → the agents'
-`from_yaml(..., tracker=tracker)`. Inside `BaseAgent.run`/`run_sync`, a tracked call is
+`build_quiz_enrichment_flow` → the agents' `from_yaml(..., tracker=tracker)`
+(the knowledge side has no enrichment flow/agent left to forward it to,
+since T-13 removed context enrichment — `tracker` is simply unused on that
+branch). Inside `BaseAgent.run`/`run_sync`, a tracked call is
 wrapped in `PydanticAILlmCallCapture` (records prompt/response/tokens/latency/status
 synchronously, including `cost_usd` — summed from OpenRouter's own reported cost on every
 `ModelResponse` in the run, see `adr/0004-openrouter-native-cost-tracking.md`) and
@@ -230,13 +235,23 @@ masking `postgres.password`/`open_router_config.api_key` to `****`/
 `missing` — never printed in clear.
 
 **Knowledge corpus** (per source, `cds`/`cap` — `orchestrators/knowledge_flows.py`). `cleaned`
-and `enriched` are **per-element** layers (one JSON file per article, named by a
-deterministic `commons.utils.element_id(source, number)`; `parsed` stays a single
-monolithic file per source — see
-`docs/plans/2026-07-17--per-element-knowledge-layers.md`):
-1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(ForEach(ArticleCleaner), ForEach(partial(ArticleMapper.from_parsed_to_cleaned, source=source)))` → `FilterAlreadyDoneStep` (drops articles already present in `cleaned/`) → `WriteJsonDirStep` (one file per article).
-2. *Enrichment*: `LoadJsonDirStep` (cleaned, per-element) → `FilterAlreadyDoneStep` (drops articles already present in `enriched/`, **before** the LLM call — this is what saves the cost) → `ApplyStep(ForEach(ArticleMapper.from_cleaned_to_enriched))` → `AsyncApplyStep(ContextEnricher(article_contextualizer_concurrency, ArticleContextualizerAgent))` → `WriteJsonDirStep` (one file per article). The base-map runs in a synchronous `ApplyStep`; the LLM enrichment runs in a separate `AsyncApplyStep` (per-article concurrent calls under one `asyncio.run`) — symmetric to the quiz enrichment flow.
-3. *Indexing*: `LoadJsonDirStep` (enriched, per-element) → `ApplyStep(FlatMap(ArticleChunker))` → `EmbedChunksStep` → `ApplyStep(ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk))` → `StoreChunksStep` (deletes only that source's rows, then inserts — scoped full-reload).
+is a **per-element** layer (one JSON file per article, named by a deterministic
+`commons.utils.element_id(source, number)`; `parsed` stays a single monolithic file
+per source — see `docs/plans/2026-07-17--per-element-knowledge-layers.md`). The
+`enriched` layer name still exists in `LayerResolver` config, but only the quiz
+pipeline writes to it now (AD-19) — the knowledge corpus has no `enriched` stage:
+1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(ForEach(ArticleCleaner), ForEach(partial(ArticleMapper.from_parsed_to_cleaned, source=source)))` → `FilterAlreadyDoneStep` (drops articles already present in `cleaned/`) → `WriteJsonDirStep` (one file per article). `ArticleCleaner` operates on `ParsedArticleModel.commas: list[ParsedComma]` (structured per-comma, spec 0001 T-5/T-6), not a flat `paragraphs`/`text` pair — it only normalizes the title and strips residual inline markup from each comma's text, never dropping a comma.
+2. *Enrichment* — **removed** (spec 0001 FR-16/AD-18, plan task T-13):
+   `ingest prepare knowledge` runs the cleaning flow only; there is no LLM call
+   anywhere in the knowledge-preparation path.
+3. *Indexing* (spec 0001 T-14 — **working end-to-end**, validated by a live-Postgres integration test): `LoadJsonDirStep` (`cleaned`, per-element, `CleanedArticleModel`) → `ApplyStep("map_to_article_entities", ForEach(ArticleMapper.from_cleaned_to_article_entity))` → `ApplyStep("expand_to_embeddable_commas", FlatMap(ArticleMapper.from_cleaned_to_embeddable_commas))` → `EmbedCommasStep` → `StoreArticlesAndCommasStep` (writes both `articles` and `article_commas` in one step, per PD-7, keeping a source's full reload — delete-by-source then insert — atomic at the step boundary). The two `ApplyStep`s are an intentional fan-out (PD-12): both read the *same* loaded `CLEANED_ARTICLES` list independently (article rows and comma rows derived in parallel), rather than one being reconstructed from the other. No LLM call anywhere in this chain; the embedding input is article title + raw comma text only (AD-18).
+
+Spec 0001 "Article-level storage with first-class commas" is now fully implemented
+(plan tasks T-1 through T-16 complete). The superseded chunk-based chain
+(`ArticleChunker`, `EmbedChunksStep`, `StoreChunksStep`, `KnowledgeChunkStoreRepository`,
+`KnowledgeChunk`, `EmbeddableChunkModel`, `EnrichedArticleModel`, `RetrievalResult`)
+has been deleted (T-15) — `knowledge_chunks` is gone from both the schema and the
+codebase; the corpus normativo is stored exclusively as `articles`/`article_commas`.
 
 Resumability from the per-element layout is **cross-run only**: a re-run of
 `ingest prepare knowledge` without `--force` re-processes only the articles
@@ -246,11 +261,8 @@ run still loses that run's unwritten work, since writing stays a terminal
 bypasses the filter entirely (every article is kept, no filesystem check).
 `CleanedArticleModel` (`models/knowledge/cleaned_article.py`) carries its own
 `source: Literal["cds", "cap"]`, stamped on at the parsed→cleaned boundary by
-`ArticleMapper.from_parsed_to_cleaned`; `EnrichedArticleModel` also carries
-`source`, propagated by `ArticleMapper.from_cleaned_to_enriched`. This makes
-the element's id (and its filename) computable from the element alone,
-independent of flow context — `ArticleChunker` no longer takes a `source`
-constructor argument either, reading it off the article instead.
+`ArticleMapper.from_parsed_to_cleaned`, making the element's id (and its
+filename) computable from the element alone, independent of flow context.
 
 **Quiz bank** (`orchestrators/quiz_flows.py`):
 1. *Cleaning*: `LoadJsonStep` → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` → `WriteJsonStep` (parsed → cleaned; dedup on normalized-text + correct_answer + image identity).
@@ -303,6 +315,11 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-07-31 — records the CLI live dashboard feature (spec 0002):
-`_build_dashboard`, `LiveDashboard`, `ProgressFlowObserver`, and the
-`ProgressReporter`-driven progress channels.*
+*Last updated: 2026-08-01 — verified against commit `c457354`; added
+`scrapers/rca_extract.py` (T-4); spec 0001 "Article-level storage with first-class
+commas" is now fully implemented (T-1 through T-16 complete) — knowledge-corpus
+enrichment removed (T-13), `build_knowledge_indexing_flow` rewired to
+`articles`/`article_commas` and working end-to-end (T-14), and the superseded
+chunk-based chain (`ArticleChunker`, `EmbedChunksStep`, `StoreChunksStep`,
+`KnowledgeChunkStoreRepository`, `KnowledgeChunk`, `EmbeddableChunkModel`,
+`EnrichedArticleModel`, `RetrievalResult`) deleted entirely (T-15).*

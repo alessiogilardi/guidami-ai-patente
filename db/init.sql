@@ -5,19 +5,28 @@
 
 CREATE EXTENSION IF NOT EXISTS vector;
 
-CREATE TABLE IF NOT EXISTS knowledge_chunks (
-    id              BIGSERIAL PRIMARY KEY,
-    source          TEXT NOT NULL,
-    article_number  TEXT NOT NULL,
-    article_title   TEXT NOT NULL,
-    comma_index     INT NOT NULL,
-    chunk_text      TEXT NOT NULL,
-    context         TEXT NOT NULL DEFAULT '',
-    is_repealed     BOOLEAN NOT NULL DEFAULT FALSE,
-    source_url      TEXT NOT NULL,
-    embedding       VECTOR(1536),
-    UNIQUE (source, article_number, comma_index)
+CREATE TABLE articles (
+    id          BIGSERIAL PRIMARY KEY,
+    source      TEXT NOT NULL,
+    number      TEXT NOT NULL,
+    title       TEXT NOT NULL,
+    url         TEXT NOT NULL,
+    is_repealed BOOLEAN NOT NULL DEFAULT FALSE,
+    UNIQUE (source, number)
 );
+
+CREATE TABLE article_commas (
+    id           BIGSERIAL PRIMARY KEY,
+    article_id   BIGINT NOT NULL REFERENCES articles (id) ON DELETE CASCADE,
+    comma_number TEXT NOT NULL,
+    position     INT NOT NULL,
+    text         TEXT NOT NULL,
+    is_repealed  BOOLEAN NOT NULL DEFAULT FALSE,
+    embedding    VECTOR(1536),
+    UNIQUE (article_id, comma_number)
+);
+
+CREATE INDEX idx_article_commas_article_id ON article_commas (article_id);
 
 -- Quiz bank (esame teorico A/B), vedi plans/architecture-quiz-bank.md.
 CREATE TABLE IF NOT EXISTS quiz_questions (

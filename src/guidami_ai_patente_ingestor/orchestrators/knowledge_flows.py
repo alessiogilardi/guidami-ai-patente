@@ -5,35 +5,29 @@ from functools import partial
 from typing import Literal, cast
 
 from flowstep import Flow, FlowBuilder
-from flowstep.steps import ApplyStep, AsyncApplyStep
-from pydantic_ai.providers.openrouter import OpenRouterProvider
+from flowstep.steps import ApplyStep
 
-from commons.ai.agents import AgentConfig
 from commons.ai.embedding import EmbeddingClient, EmbeddingService
-from commons.ai.observability import LlmCallTracker
 from commons.clients import PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
 from commons.observability import NullProgressReporter, ProgressReporter
-from commons.repositories import JsonRepository, YamlRepository
+from commons.repositories import JsonRepository
 from commons.use_cases import FlatMap, ForEach
 from commons.utils import element_id
-from guidami_ai_patente_ingestor.agents import ArticleContextualizerAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.mappers import ArticleMapper
-from guidami_ai_patente_ingestor.models.knowledge import (
-    CleanedArticleModel,
-    EnrichedArticleModel,
-    ParsedArticleModel,
-)
+from guidami_ai_patente_ingestor.models.knowledge import CleanedArticleModel, ParsedArticleModel
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
-    EmbedChunksStep,
-    StoreChunksStep,
+    EmbedCommasStep,
+    StoreArticlesAndCommasStep,
 )
-from guidami_ai_patente_ingestor.repositories import KnowledgeChunkStoreRepository
+from guidami_ai_patente_ingestor.repositories import (
+    ArticleCommaStoreRepository,
+    ArticleStoreRepository,
+)
 from guidami_ai_patente_ingestor.services import LayerResolver
-from guidami_ai_patente_ingestor.services.knowledge import ArticleChunker, ArticleCleaner
-from guidami_ai_patente_ingestor.services.knowledge.enrichers import ContextEnricher
+from guidami_ai_patente_ingestor.services.knowledge import ArticleCleaner
 
 from .progress_flow_observer import ProgressFlowObserver
 from .steps.generic import (
@@ -50,7 +44,7 @@ logger = logging.getLogger(__name__)
 _CLEANED_LAYER = "cleaned"
 
 
-def _article_id(article: CleanedArticleModel | EnrichedArticleModel) -> str:
+def _article_id(article: CleanedArticleModel) -> str:
     """Stable per-element id, derived from the element itself."""
     return element_id(article.source, article.number)
 
@@ -64,15 +58,20 @@ def build_knowledge_indexing_flow(
     validate: bool = False,
     progress: ProgressReporter | None = None,
 ) -> Flow:
-    """Assembles the knowledge indexing flow for ONE source (corpus → chunk → embed → store).
+    """Assembles the knowledge indexing flow for ONE source (corpus → map/expand → embed → store).
 
     The flow is per-source: it must run once per source (e.g. `cds`, then `cap`).
     The store performs a full-reload of that source only (delete-by-source + insert),
     so runs on different sources do not overwrite each other.
 
+    Two independent derivations (PD-12) are computed from the same loaded
+    `CleanedArticleModel` list rather than one being reconstructed from the other:
+    article rows (`ARTICLE_ENTITIES`) and comma rows (`EMBEDDABLE_ARTICLE_COMMAS`).
+
     Step mapping:
-      `LoadJsonDirStep` → `ApplyStep` (chunk_articles, `FlatMap(ArticleChunker)`)
-      → `EmbedChunksStep` → `ApplyStep` (map_to_chunk_entity) → `StoreChunksStep`
+      `LoadJsonDirStep` → `ApplyStep` (map_to_article_entities, `ForEach`)
+      → `ApplyStep` (expand_to_embeddable_commas, `FlatMap`) → `EmbedCommasStep`
+      → `StoreArticlesAndCommasStep`
 
     Args:
         config: Full ingestor configuration (already loaded at the entry point).
@@ -81,9 +80,9 @@ def build_knowledge_indexing_flow(
         postgres_client: Postgres client for DB operations.
         source: Source to index; must belong to `config.knowledge_indexing.sources`.
         validate: If True, runs structural validation of the flow before returning it.
-            Raises `FlowValidationError` on ERROR; the benign WARNING on `EMBEDDABLE_CHUNKS`
-            (EmbedChunksStep re-declares a key already produced by the chunk_articles step)
-            does not block the build.
+            Raises `FlowValidationError` on ERROR; the benign WARNING on
+            `EMBEDDABLE_ARTICLE_COMMAS` (EmbedCommasStep re-declares a key already
+            produced by the expand_to_embeddable_commas step) does not block the build.
         progress: Optional reporter driving the step/flow bars (via a registered
             `ProgressFlowObserver`) and the embedding step's item bar. When `None`,
             defaults to `NullProgressReporter`, a no-op collaborator.
@@ -102,50 +101,53 @@ def build_knowledge_indexing_flow(
         raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
 
     load_step = LoadJsonDirStep(
-        "load_enriched_articles",
+        "load_cleaned_articles",
         indexing_config.input_layer,
         source,
-        context_keys.ENRICHED_ARTICLES,
+        context_keys.CLEANED_ARTICLES,
         layer_resolver,
         JsonRepository.get_instance(
-            EnrichedArticleModel, file_system_client=LocalFileSystemClient(config.project_root)
+            CleanedArticleModel, file_system_client=LocalFileSystemClient(config.project_root)
         ),
     )
 
-    chunk_step = ApplyStep(
-        "chunk_articles",
-        FlatMap(ArticleChunker()),  # source now read from each article (Decision 17)
-        input_key=context_keys.ENRICHED_ARTICLES,
-        output_key=context_keys.EMBEDDABLE_CHUNKS,
+    map_articles_step = ApplyStep(
+        "map_to_article_entities",
+        ForEach(ArticleMapper.from_cleaned_to_article_entity),
+        input_key=context_keys.CLEANED_ARTICLES,
+        output_key=context_keys.ARTICLE_ENTITIES,
     )
 
-    embed_step = EmbedChunksStep(
-        "embed_chunks",
+    expand_commas_step = ApplyStep(
+        "expand_to_embeddable_commas",
+        FlatMap(ArticleMapper.from_cleaned_to_embeddable_commas),
+        input_key=context_keys.CLEANED_ARTICLES,
+        output_key=context_keys.EMBEDDABLE_ARTICLE_COMMAS,
+    )
+
+    embed_step = EmbedCommasStep(
+        "embed_commas",
+        embed_repealed=config.embed_repealed,
         embedding_service=EmbeddingService(
             config.embedding_batch_size, embedding_client, reporter
         ),
-        embed_repealed=config.embed_repealed,
     )
 
-    map_to_entity_step = ApplyStep(
-        "map_to_chunk_entity",
-        ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk),
-        input_key=context_keys.EMBEDDABLE_CHUNKS,
-        output_key=context_keys.CHUNK_ENTITIES,
-    )
-
-    store_step = StoreChunksStep(
-        "store_chunks",
+    store_step = StoreArticlesAndCommasStep(
+        "store_articles_and_commas",
         source=source,
-        repository=KnowledgeChunkStoreRepository(config.knowledge_chunks_table, postgres_client),
+        article_repository=ArticleStoreRepository(config.articles_table, postgres_client),
+        article_comma_repository=ArticleCommaStoreRepository(
+            config.article_commas_table, postgres_client
+        ),
     )
 
     flow: Flow = (
         FlowBuilder("knowledge_indexing")
         .add_step(load_step)
-        .add_step(chunk_step)
+        .add_step(map_articles_step)
+        .add_step(expand_commas_step)
         .add_step(embed_step)
-        .add_step(map_to_entity_step)
         .add_step(store_step)
         .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)
@@ -247,131 +249,6 @@ def build_knowledge_cleaning_flow(
         .add_step(load_step)
         .add_step(clean_step)
         .add_step(filter_step)
-        .add_step(write_step)
-        .add_observer(ProgressFlowObserver(reporter))
-        .build(validate=validate)
-    )
-
-    return flow
-
-
-def build_knowledge_enrichment_flow(
-    config: IngestorConfig,
-    layer_resolver: LayerResolver,
-    source: str,
-    open_router_provider: OpenRouterProvider,
-    force: bool = False,
-    validate: bool = False,
-    tracker: LlmCallTracker | None = None,
-    progress: ProgressReporter | None = None,
-) -> Flow:
-    """Assembles the knowledge enrichment flow for ONE source (cleaned → enriched).
-
-    The flow is per-source: it must run once per source (e.g. `cds`, then `cap`).
-    No embed/store: this flow belongs to the preparation stage. Both `cleaned` and
-    `enriched` are per-element layers: `FilterAlreadyDoneStep` runs *before* the LLM
-    call (skipped entirely with `force=True`), since that call is the expensive
-    transform this filter exists to save (Decision 18).
-
-    Step mapping:
-      `LoadJsonDirStep` → `FilterAlreadyDoneStep` → `ApplyStep(map_cleaned_articles)`
-      → `AsyncApplyStep(enrich_articles)` → `WriteJsonDirStep`
-
-    The enrichment phase runs under a single `asyncio.run` owned by `AsyncApplyStep`;
-    per-article LLM calls fire concurrently, bounded by
-    `config.article_contextualizer_concurrency` (symmetric to the quiz enrichment flow).
-
-    Args:
-        config: Full ingestor configuration (already loaded at the entry point).
-        layer_resolver: Resolver mapping (layer, source) → container directory.
-        source: Source to enrich; must belong to `config.knowledge_preparation.sources`.
-        open_router_provider: OpenRouter provider injected into the enrichment agent.
-        force: If True, re-enriches every article even if already present in `enriched/`.
-        validate: If True, runs structural validation of the flow before returning it.
-        tracker: Optional port persisting one `LlmCallLog` per call made by the
-            enrichment agent. Forwarded to `from_yaml`; `None` disables tracking.
-        progress: Optional reporter driving the step/flow bars (via a registered
-            `ProgressFlowObserver`) and the `ContextEnricher`'s item bar. When `None`,
-            defaults to `NullProgressReporter`, a no-op collaborator.
-
-    Returns:
-        Flow configured and ready for execution.
-
-    Raises:
-        ValueError: if `source` is not among the valid sources configured for preparation.
-    """
-    preparation_config = config.knowledge_preparation
-    reporter: ProgressReporter = progress if progress is not None else NullProgressReporter()
-
-    valid_sources = set(preparation_config.sources)
-    if source not in valid_sources:
-        raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
-
-    if preparation_config.output_layer is None:
-        raise ValueError("knowledge_preparation.output_layer is not configured")
-
-    file_system_client = LocalFileSystemClient(config.project_root)
-
-    load_step = LoadJsonDirStep(
-        "load_cleaned_articles",
-        _CLEANED_LAYER,
-        source,
-        context_keys.CLEANED_ARTICLES,
-        layer_resolver,
-        JsonRepository.get_instance(CleanedArticleModel, file_system_client=file_system_client),
-    )
-
-    # Filter BEFORE the expensive transform: this is what saves LLM calls.
-    filter_step = FilterAlreadyDoneStep(
-        "filter_enriched",
-        context_keys.CLEANED_ARTICLES,
-        context_keys.FILTERED_ARTICLES,
-        preparation_config.output_layer,
-        source,
-        force,
-        _article_id,
-        layer_resolver,
-        file_system_client,
-    )
-
-    agents_repository = YamlRepository(
-        AgentConfig, file_system_client=LocalFileSystemClient(config.agents_dir)
-    )
-    agent = ArticleContextualizerAgent.from_yaml(
-        "article_contextualizer", agents_repository, open_router_provider, tracker=tracker
-    )
-    # Base-map cleaned→enriched is a sync ApplyStep; the LLM enrichment is a separate
-    # AsyncApplyStep that owns the single asyncio.run and fires per-article calls
-    # concurrently (symmetric to the quiz enrichment flow).
-    map_step = ApplyStep(
-        "map_cleaned_articles",
-        ForEach(ArticleMapper.from_cleaned_to_enriched),
-        input_key=context_keys.FILTERED_ARTICLES,
-        output_key=context_keys.MAPPED_ARTICLES,
-    )
-    enrich_step = AsyncApplyStep(
-        "enrich_articles",
-        ContextEnricher(config.article_contextualizer_concurrency, agent, reporter),
-        input_key=context_keys.MAPPED_ARTICLES,
-        output_key=context_keys.ENRICHED_ARTICLES,
-    )
-
-    write_step = WriteJsonDirStep(
-        "write_enriched",
-        preparation_config.output_layer,
-        source,
-        context_keys.ENRICHED_ARTICLES,
-        _article_id,
-        layer_resolver,
-        JsonRepository.get_instance(EnrichedArticleModel, file_system_client=file_system_client),
-    )
-
-    flow: Flow = (
-        FlowBuilder("knowledge_enrichment")
-        .add_step(load_step)
-        .add_step(filter_step)
-        .add_step(map_step)
-        .add_step(enrich_step)
         .add_step(write_step)
         .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)

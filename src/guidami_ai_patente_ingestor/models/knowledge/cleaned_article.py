@@ -2,6 +2,8 @@ from typing import Literal
 
 from pydantic import BaseModel
 
+from .parsed_article import ParsedComma
+
 
 class CleanedArticleModel(BaseModel):
     """Article cleaned from normattiva markup, carrying its own source.
@@ -12,8 +14,7 @@ class CleanedArticleModel(BaseModel):
 
     number: str
     title: str
-    text: str
-    paragraphs: list[str]
+    commas: list[ParsedComma]
     url: str
     scraped_at: str
     repealed: bool

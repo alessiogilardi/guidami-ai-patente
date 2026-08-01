@@ -2,14 +2,17 @@
   {
     "number": "118",
     "title": "Adempimento delle obbligazioni pecuniarie attraverso intermediari assicurativi",
-    "text": "",
-    "paragraphs": [
-      "1. Il pagamento del premio eseguito in buona fede all'intermediario o ai suoi collaboratori si considera effettuato direttamente all'impresa di assicurazione. Salvo prova contraria a carico dell'impresa o dell'intermediario, le somme dovute agli assicurati ed agli altri aventi diritto a prestazioni assicurative si considerano effettivamente percepite dall'avente diritto solo col rilascio di quietanza scritta.",
-      "2. La disposizione di cui al comma 1 si applica nei confronti dell'intermediario iscritto nella sezione del registro di cui all'articolo 109, comma 2, lettera b), esclusivamente se tali attività sono espressamente previste dall'accordo sottoscritto con l'impresa. A tal fine l'intermediario è tenuto a darne specifica comunicazione al cliente nell'ambito dell'informazione precontrattuale di cui all'articolo 120.",
-      "3. La disposizione di cui al comma 1 si applica nei confronti dell'intermediario iscritto alla sezione del registro di cui all'articolo 109, comma 2, lettera b), anche nel caso di polizza assunta in coassicurazione ed ha effetto nei confronti di ogni impresa coassicuratrice se le attività previste dal comma 1 sono incluse nell'accordo sottoscritto con l'impresa delegataria.",
-      "4. ((COMMA ABROGATO DAL D.LGS. 21 MAGGIO 2018, N. 68 )) ."
+    "commas": [
+      {
+        "number": "1",
+        "text": "Il pagamento del premio eseguito in buona fede all'intermediario si considera effettuato direttamente all'impresa di assicurazione."
+      },
+      {
+        "number": "2",
+        "text": "La disposizione di cui al comma 1 si applica anche nei confronti dell'intermediario iscritto nella sezione del registro di cui all'articolo 109."
+      }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=48&art.flagTipoArticolo=0&art.codiceRedazionale=005G0233&art.idArticolo=118&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2005-10-13&art.progressivo=0",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idArticolo=118",
     "scraped_at": "2026-05-29T14:55:11.284778+00:00",
     "repealed": true
   }

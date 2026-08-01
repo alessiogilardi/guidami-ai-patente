@@ -28,25 +28,55 @@
   The `%s::vector` cast requirement for vector parameters is documented in
   `.claude/rules/code-conventions.md` — see there for the rule, not
   restated here.
+  `truncate(self, *table_names: str)` accepts one or more table names and
+  emits **one** combined `TRUNCATE TABLE t1, t2, ...` statement — this is
+  required, not just convenient: Postgres unconditionally refuses to
+  `TRUNCATE` a table referenced by a live FK constraint (regardless of row
+  count or the ordering of separate sequential `TRUNCATE` calls) unless the
+  referencing table is named in the *same* statement, or `CASCADE` is used.
+  `article_commas` (FK to `articles`) must always be named alongside
+  `articles` in one call, e.g. `client.truncate("article_commas",
+  "articles")` — `CASCADE` was deliberately rejected as the fix, since it
+  would silently empty any future table that gains an FK to `articles`, not
+  just the one known today. Every pre-existing single-table call site
+  (`quiz_questions`, `llm_call_logs`, `BulkInsertStoreRepository`'s own
+  table) is unaffected — a single positional argument is just a 1-tuple.
+  Real consumer (spec 0001 T-16): `cli/commands/reset.py`'s `knowledge`
+  branch calls `postgres_client.truncate(config.article_commas_table,
+  config.articles_table)` directly — **not** two separate
+  `ArticleCommaStoreRepository(...).truncate()` /
+  `ArticleStoreRepository(...).truncate()` calls, which was the first
+  implementation attempt and crashes against a live Postgres for exactly
+  the FK reason above (each repository's `truncate()` only ever emits a
+  single-table statement). The cross-table call bypasses the repository
+  layer's `truncate()` for this one case since the capability is
+  client-level, not repository-level.
 
 ## Main schema
 
-Three tables, all defined in `db/init.sql` (the `vector` extension is
+Four tables, all defined in `db/init.sql` (the `vector` extension is
 enabled at the top of that file).
 
 ```text
-knowledge_chunks
+articles
 ├── id (PK, BIGSERIAL)
 ├── source (TEXT, NOT NULL)               -- "cds" | "cap"
-├── article_number (TEXT, NOT NULL)
-├── article_title (TEXT, NOT NULL)
-├── comma_index (INT, NOT NULL)
-├── chunk_text (TEXT, NOT NULL)
-├── context (TEXT, NOT NULL DEFAULT '')   -- LLM-generated context prefix
+├── number (TEXT, NOT NULL)
+├── title (TEXT, NOT NULL)
+├── url (TEXT, NOT NULL)
 ├── is_repealed (BOOLEAN, NOT NULL DEFAULT FALSE)
-├── source_url (TEXT, NOT NULL)
+└── UNIQUE (source, number)
+
+article_commas
+├── id (PK, BIGSERIAL)
+├── article_id (BIGINT, NOT NULL, REFERENCES articles(id) ON DELETE CASCADE)
+├── comma_number (TEXT, NOT NULL)
+├── position (INT, NOT NULL)              -- source order within the article
+├── text (TEXT, NOT NULL)
+├── is_repealed (BOOLEAN, NOT NULL DEFAULT FALSE)
 ├── embedding (VECTOR(1536), nullable)
-└── UNIQUE (source, article_number, comma_index)
+├── UNIQUE (article_id, comma_number)
+└── INDEX idx_article_commas_article_id (article_id)
 
 quiz_questions
 ├── id (PK, BIGSERIAL)
@@ -84,6 +114,17 @@ llm_call_logs
 ├── INDEX idx_llm_call_logs_created_at (created_at)
 └── INDEX idx_llm_call_logs_caller (caller)
 ```
+
+`articles`/`article_commas` replaced the former single `knowledge_chunks`
+table (spec 0001 T-7): one row per article plus one row per comma, FK-linked
+with `ON DELETE CASCADE`, instead of one row per comma with the article's
+fields duplicated on every row. Domain entities:
+`src/domain/entities/knowledge/article.py::Article` and
+`article_comma.py::ArticleComma` (both plain `BaseModel`s, no `id` field —
+DB-generated; `ArticleComma.article_id` **is** included, since it's a
+caller-supplied FK, not DB-generated). The superseded `KnowledgeChunk` entity
+and `knowledge_chunks` table (one row per comma with the article's fields
+duplicated on every row) have both been fully removed (spec 0001 T-7/T-15).
 
 The former `quiz_metadata` JSONB blob was flattened into the four
 retrieval/payload columns above (see `docs/adr/0002-flatten-quiz-metadata-columns.md`).
@@ -130,4 +171,8 @@ docker compose -f docker/docker-compose.yml up -d
 (see also the "Infrastructure" section of `CLAUDE.md`). There is no
 changelog file tracking schema history beyond `git log db/init.sql`.
 
-*Last updated: 2026-07-31 — verified against commit `d512325`.*
+*Last updated: 2026-08-01 — verified against commit `c457354`; `knowledge_chunks`
+replaced by `articles`/`article_commas` (spec 0001 T-7/T-8); `PostgresClient.truncate()`
+widened to accept multiple table names (FK-truncate fix); documented `reset.py`'s
+real usage of it (T-16) after a two-repository-calls first attempt was caught crashing
+against a live Postgres; `KnowledgeChunk` entity deleted, spec 0001 fully implemented (T-15).*

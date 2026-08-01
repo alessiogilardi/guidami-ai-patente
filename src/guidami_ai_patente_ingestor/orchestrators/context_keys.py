@@ -10,25 +10,21 @@ injected at the factory, not read from the context.
 
 # --- Knowledge indexing (SP03) ---
 # The indexing flow is per-source (one run per source): input = flat list of
-# EnrichedArticleModel for ONE source only. Same key used by the enrichment flow (SP05).
-ENRICHED_ARTICLES = (
-    "enriched_articles"  # indexing/enrich input: list[EnrichedArticleModel], one source
+# CleanedArticleModel for ONE source only, loaded from the "cleaned" layer (T-14). Two
+# parallel derivations (PD-12) are computed from that same loaded list: ARTICLE_ENTITIES
+# (article rows to store) and EMBEDDABLE_ARTICLE_COMMAS (comma rows to embed then store).
+ARTICLE_ENTITIES = "article_entities"  # map→entity output: list[Article] → store
+EMBEDDABLE_ARTICLE_COMMAS = (
+    "embeddable_article_commas"  # expand output → embed: list[EmbeddableArticleComma]
 )
-EMBEDDABLE_CHUNKS = "embeddable_chunks"  # chunker output → embed: list[EmbeddableChunkModel]
-CHUNK_ENTITIES = "chunk_entities"  # map→entity output: list[KnowledgeChunk] → store
 
 # --- Knowledge preparation (per-element layers) ---
 # Clean flow: LoadJsonStep → ApplyStep → FilterAlreadyDoneStep → WriteJsonDirStep.
-# Enrich flow: LoadJsonDirStep → FilterAlreadyDoneStep → ApplyStep(map_cleaned_articles)
-#   → AsyncApplyStep(enrich_articles) → WriteJsonDirStep.
 PARSED_ARTICLES = (
     "parsed_articles"  # clean input: list[ParsedArticleModel] loaded from the "parsed" layer
 )
-CLEANED_ARTICLES = "cleaned_articles"  # clean output / enrich input: list[CleanedArticleModel]
-FILTERED_ARTICLES = (
-    "filtered_articles"  # FilterAlreadyDoneStep output: elements still to (clean|enrich)
-)
-MAPPED_ARTICLES = "mapped_articles"  # cleaned→enriched map output; async-enrichment input
+CLEANED_ARTICLES = "cleaned_articles"  # clean output: list[CleanedArticleModel]
+FILTERED_ARTICLES = "filtered_articles"  # FilterAlreadyDoneStep output: elements still to clean
 
 # --- Quiz indexing (SP04) ---
 ENRICHED_QUIZ = "enriched_quiz"  # input: enriched quiz bank loaded from disk

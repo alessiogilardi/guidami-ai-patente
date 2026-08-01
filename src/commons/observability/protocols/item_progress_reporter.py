@@ -5,8 +5,8 @@ class ItemProgressReporter(Protocol):
     """Port for reporting per-item progress within a long-running unit of work.
 
     Narrower than `ProgressReporter` (ISP): call sites that only tick through a
-    batch of items (e.g. `EmbeddingService`, `ContextEnricher`) depend on this
-    protocol alone, never on the flow/step-level methods they never call.
+    batch of items (e.g. `EmbeddingService`) depend on this protocol alone, never
+    on the flow/step-level methods they never call.
 
     Contract: `begin_items` replaces any currently open item track (no explicit
     close is required before starting a new one). `advance_item` and `end_items`

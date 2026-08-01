@@ -43,9 +43,17 @@ class PostgresClient:
         """Closes the database connection."""
         self._connection.close()
 
-    def truncate(self, table_name: str) -> None:
-        """Empties the `table_name` table in preparation for a full reload."""
-        query = sql.SQL("TRUNCATE TABLE {table}").format(table=sql.Identifier(table_name))
+    def truncate(self, *table_names: str) -> None:
+        """Empties the given tables in preparation for a full reload.
+
+        Emits a single combined `TRUNCATE TABLE t1, t2, ...` statement when multiple
+        names are given, so tables linked by a foreign key are truncated atomically in
+        one statement (Postgres refuses to truncate a table referenced by a live FK
+        constraint via a separate `TRUNCATE` statement, regardless of ordering).
+        """
+        query = sql.SQL("TRUNCATE TABLE {tables}").format(
+            tables=sql.SQL(", ").join(sql.Identifier(name) for name in table_names)
+        )
         self._connection.execute(query)
 
     def execute(

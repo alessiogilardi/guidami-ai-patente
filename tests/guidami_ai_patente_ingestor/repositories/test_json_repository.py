@@ -18,7 +18,11 @@ import pytest
 
 from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import JsonRepository
-from guidami_ai_patente_ingestor.models.knowledge import EnrichedArticleModel, ParsedArticleModel
+from guidami_ai_patente_ingestor.models.knowledge import (
+    CleanedArticleModel,
+    ParsedArticleModel,
+    ParsedComma,
+)
 from guidami_ai_patente_ingestor.models.quiz import (
     EnrichedQuizModel,
     ImageAnalysis,
@@ -38,25 +42,22 @@ def _article(number: str = "1") -> ParsedArticleModel:
     return ParsedArticleModel(
         number=number,
         title=f"Articolo {number}",
-        text=f"Testo {number}.",
-        paragraphs=[f"Comma 1 art {number}."],
+        commas=[ParsedComma(number="1", text=f"Comma 1 art {number}.")],
         url=f"https://example.com/art-{number}",
         scraped_at="2025-01-01T00:00:00",
         repealed=False,
     )
 
 
-def _enriched_article(number: str = "1") -> EnrichedArticleModel:
-    return EnrichedArticleModel(
+def _cleaned_article(number: str = "1") -> CleanedArticleModel:
+    return CleanedArticleModel(
         number=number,
         title=f"Articolo {number}",
-        text=f"Testo {number}.",
-        paragraphs=[f"Comma 1 art {number}."],
+        commas=[ParsedComma(number="1", text=f"Comma 1 art {number}.")],
         url=f"https://example.com/art-{number}",
         scraped_at="2025-01-01T00:00:00",
         repealed=False,
         source="cds",
-        contexts={0: "Contesto.", 1: "Altro contesto."},
     )
 
 
@@ -96,7 +97,7 @@ def _enriched_quiz(
 
 ROUND_TRIP_CASES = [
     pytest.param(_article, ParsedArticleModel, id="ParsedArticleModel"),
-    pytest.param(_enriched_article, EnrichedArticleModel, id="EnrichedArticleModel"),
+    pytest.param(_cleaned_article, CleanedArticleModel, id="CleanedArticleModel"),
     pytest.param(_parsed_quiz, ParsedQuizModel, id="ParsedQuizModel"),
     pytest.param(_enriched_quiz, EnrichedQuizModel, id="EnrichedQuizModel"),
 ]
@@ -144,25 +145,23 @@ class TestRoundTrip:
 
 def test_write_preserves_utf8_characters(tmp_path: Path) -> None:
     articles = [
-        EnrichedArticleModel(
+        CleanedArticleModel(
             number="1",
             title="Articolo 1",
-            text="Testo.",
-            paragraphs=["Comma 1."],
+            commas=[ParsedComma(number="1", text="È obbligatorio indossare le cinture.")],
             url="https://example.com/art-1",
             scraped_at="2025-01-01T00:00:00",
             repealed=False,
             source="cds",
-            contexts={0: "È obbligatorio indossare le cinture."},
         )
     ]
     repo = JsonRepository.get_instance(
-        EnrichedArticleModel, file_system_client=LocalFileSystemClient(tmp_path)
+        CleanedArticleModel, file_system_client=LocalFileSystemClient(tmp_path)
     )
-    repo.write(articles, "enriched.json")
+    repo.write(articles, "cleaned.json")
 
-    raw = json.loads((tmp_path / "enriched.json").read_text(encoding="utf-8"))
-    assert raw[0]["contexts"]["0"] == "È obbligatorio indossare le cinture."
+    raw = json.loads((tmp_path / "cleaned.json").read_text(encoding="utf-8"))
+    assert raw[0]["commas"][0]["text"] == "È obbligatorio indossare le cinture."
 
 
 # ---------------------------------------------------------------------------
@@ -179,12 +178,12 @@ def test_article_load_from_cds_sample() -> None:
     article_1 = next(a for a in articles if a.number == "1")
     assert article_1.title == "Principi generali"
     assert article_1.repealed is False
-    assert article_1.text.startswith("((1. La sicurezza")
-    assert len(article_1.paragraphs) == 4
+    assert len(article_1.commas) == 2
+    assert article_1.commas[0].number == "1"
     assert article_1.url.startswith("https://www.normattiva.it/")
 
 
-def test_article_load_from_cap_sample_repealed_and_empty_text() -> None:
+def test_article_load_from_cap_sample_repealed() -> None:
     repo = JsonRepository.get_instance(
         ParsedArticleModel, file_system_client=LocalFileSystemClient(FIXTURES_DIR)
     )
@@ -192,9 +191,8 @@ def test_article_load_from_cap_sample_repealed_and_empty_text() -> None:
 
     article_118 = articles[0]
     assert article_118.number == "118"
-    assert article_118.text == ""
     assert article_118.repealed is True
-    assert len(article_118.paragraphs) == 4
+    assert len(article_118.commas) == 2
 
 
 # ---------------------------------------------------------------------------

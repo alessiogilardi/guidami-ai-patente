@@ -33,13 +33,19 @@ def test_default_sources_contain_cds_cap_quiz() -> None:
 
 
 def test_default_pipeline_selectors() -> None:
+    """Knowledge layer defaults are covered separately by `test_knowledge_layers_are_cleaned`."""
     config = _build_config()
     assert config.knowledge_preparation.input_layer == "parsed"
-    assert config.knowledge_preparation.output_layer == "enriched"
-    assert config.knowledge_indexing.input_layer == "enriched"
     assert config.quiz_preparation.input_layer == "parsed"
     assert config.quiz_preparation.output_layer == "enriched"
     assert config.quiz_indexing.input_layer == "enriched"
+
+
+def test_knowledge_layers_are_cleaned() -> None:
+    """FR-16/AD-18 (T-13): no LLM enrichment step, pipeline moves parsed→cleaned directly."""
+    config = _build_config()
+    assert config.knowledge_preparation.output_layer == "cleaned"
+    assert config.knowledge_indexing.input_layer == "cleaned"
 
 
 def test_default_agents_dir() -> None:
@@ -54,8 +60,15 @@ def test_default_project_root() -> None:
 
 def test_default_table_names() -> None:
     config = _build_config()
-    assert config.knowledge_chunks_table == "knowledge_chunks"
+    assert config.articles_table == "articles"
+    assert config.article_commas_table == "article_commas"
     assert config.quiz_questions_table == "quiz_questions"
+    assert hasattr(config, "knowledge_chunks_table") is False
+
+
+def test_default_rca_ranges() -> None:
+    config = _build_config()
+    assert config.rca_ranges == ["118-165", "278-300"]
 
 
 def test_postgres_is_required(monkeypatch: pytest.MonkeyPatch) -> None:

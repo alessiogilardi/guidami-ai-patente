@@ -40,10 +40,10 @@ class IngestorConfig(BaseSettings):
         }
     )
     knowledge_preparation: PipelineLayerConfig = PipelineLayerConfig(
-        input_layer="parsed", output_layer="enriched", sources=["cds", "cap"]
+        input_layer="parsed", output_layer="cleaned", sources=["cds", "cap"]
     )
     knowledge_indexing: PipelineLayerConfig = PipelineLayerConfig(
-        input_layer="enriched", sources=["cds", "cap"]
+        input_layer="cleaned", sources=["cds", "cap"]
     )
     quiz_preparation: PipelineLayerConfig = PipelineLayerConfig(
         input_layer="parsed", output_layer="enriched", sources=["quiz"]
@@ -58,12 +58,13 @@ class IngestorConfig(BaseSettings):
     embedding_batch_size: int = 64
     road_sign_describer_concurrency: int = 8
     norm_reference_describer_concurrency: int = 8
-    article_contextualizer_concurrency: int = 8
     embedding: EmbeddingConfig = EmbeddingConfig()
     postgres: PostgresConnectionConfig
-    knowledge_chunks_table: str = "knowledge_chunks"
+    articles_table: str = "articles"
+    article_commas_table: str = "article_commas"
     quiz_questions_table: str = "quiz_questions"
     embed_repealed: bool = False
+    rca_ranges: list[str] = Field(default_factory=lambda: ["118-165", "278-300"])
 
     @classmethod
     def settings_customise_sources(

@@ -1,14 +1,16 @@
 import pytest
 
-from guidami_ai_patente_ingestor.models.knowledge import CleanedArticleModel
+from guidami_ai_patente_ingestor.models.knowledge import CleanedArticleModel, ParsedComma
 
 
 def _article(**kwargs) -> CleanedArticleModel:
     defaults = dict(
         number="1",
         title="Finalità",
-        text="Testo articolo 1.",
-        paragraphs=["Primo comma.", "Secondo comma."],
+        commas=[
+            ParsedComma(number="1", text="Primo comma."),
+            ParsedComma(number="2", text="Secondo comma."),
+        ],
         url="https://example.com/art-1",
         scraped_at="2025-01-01T00:00:00",
         repealed=False,
@@ -31,3 +33,19 @@ def test_cleaned_article_round_trips_through_json() -> None:
     original = _article(source="cds")
     restored = CleanedArticleModel.model_validate(original.model_dump())
     assert restored == original
+
+
+def test_cleaned_article_model_has_commas_field() -> None:
+    data = {
+        "number": "142",
+        "title": "Titolo articolo",
+        "url": "https://example.com/art-142",
+        "scraped_at": "2025-01-01T00:00:00",
+        "repealed": False,
+        "source": "cds",
+        "commas": [{"number": "1", "text": "Testo del comma."}],
+    }
+
+    result = CleanedArticleModel.model_validate(data)
+
+    assert result.commas == [ParsedComma(number="1", text="Testo del comma.")]

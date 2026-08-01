@@ -6,18 +6,21 @@ from guidami_ai_patente_ingestor.orchestrators.steps.generic import StoreReposit
 
 if TYPE_CHECKING:
     from guidami_ai_patente_ingestor.repositories import (
-        KnowledgeChunkStoreRepository,
+        ArticleCommaStoreRepository,
+        ArticleStoreRepository,
         QuizQuestionStoreRepository,
     )
 
 
 def _conforms(
-    kc: "KnowledgeChunkStoreRepository",
+    art: "ArticleStoreRepository",
+    comma: "ArticleCommaStoreRepository",
     qq: "QuizQuestionStoreRepository",
 ) -> None:
-    a: StoreRepository = kc  # pyright verifies structural conformance
-    b: StoreRepository = qq
-    _ = (a, b)
+    a: StoreRepository = art  # pyright verifies structural conformance
+    b: StoreRepository = comma
+    c: StoreRepository = qq
+    _ = (a, b, c)
 
 
 def test_real_repos_satisfy_store_repository_protocol() -> None:
