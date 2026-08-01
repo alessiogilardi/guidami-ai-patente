@@ -45,7 +45,8 @@ docker compose -f docker/docker-compose.yml up -d
 | Command | Entry point | Description |
 |---|---|---|
 | `uv run scrape-codice` | `scrapers.normattiva:main_cds` | Scrapes CdS → `data/raw/cds/`, `data/parsed/cds/codice_della_strada.json` |
-| `uv run scrape-cap` | `scrapers.normattiva:main_cap` | Scrapes CAP → `data/raw/cap/`, `data/parsed/cap/codice_rca.json` |
+| `uv run scrape-cap` | `scrapers.normattiva:main_cap` | Scrapes CAP → `data/raw/cap/`, `data/parsed/cap/codice_assicurazioni_private.json` |
+| `uv run extract-rca` | `scrapers.rca_extract:main` | Filters `codice_assicurazioni_private.json` down to `IngestorConfig.rca_ranges` → `data/parsed/cap/codice_rca.json` |
 | `uv run parse-domande` | `parsers.questions_pdf:main_questions` | Parses quiz PDF → `data/parsed/quiz-patente-ab/` |
 | `uv run ingest prepare knowledge --source <cds\|cap> [--force] [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Clean + enrich knowledge corpus for one source |
 | `uv run ingest prepare quiz [--force] [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Prepare quiz bank (enriched with image descriptions) |

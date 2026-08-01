@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import contextlib
 import json
+import logging
 import re
 import time
 import warnings
@@ -16,6 +17,8 @@ import httpx
 from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
+
+logger = logging.getLogger(__name__)
 
 BASE_URL = "https://www.normattiva.it"
 ARTICLE_URL = BASE_URL + "/atto/caricaArticolo"
@@ -75,11 +78,45 @@ class ArticleRecord(TypedDict):
 
     number: str
     title: str
-    text: str
-    paragraphs: list[str]
+    commas: list[dict[str, str]]  # each item: {"number": str, "text": str}
     url: str
     scraped_at: str
     repealed: bool  # abrogato
+
+
+_COMMA_NUMBER_PATTERN = re.compile(r"^(\d+(?:-[a-z]+)?)\.?\s*")
+
+
+def _extract_comma_number_and_text(raw_text: str) -> tuple[str, str] | None:
+    """Extract a comma's legal number and text from `raw_text`.
+
+    The number is recognised by shape — one or more digits optionally followed by
+    `-` and a lowercase word — never validated against a whitelist of suffixes
+    (FR-1 AC4).
+
+    Returns:
+        `(number, text)` when a number is found at the start of `raw_text`, with the
+        number (and, if present, a leading `((` marker and the following `.` and
+        whitespace) stripped from the front of `text`.
+        `("", text)` when no number is found and the block is not discardable —
+        the caller merges it into the preceding comma (FR-3).
+        `None` when the text, after removing all `((`/`))` occurrences and
+        surrounding whitespace, is empty or consists only of digits — a note
+        reference or bare marker fragment (FR-4).
+    """
+    text = raw_text.strip()
+    marker_free = text.replace("((", "").replace("))", "").strip()
+    if not marker_free or re.fullmatch(r"\d+", marker_free):
+        return None
+
+    matchable = text[2:].lstrip() if text.startswith("((") else text
+    match = _COMMA_NUMBER_PATTERN.match(matchable)
+    if match:
+        number = match.group(1)
+        comma_text = matchable[match.end() :].strip()
+        return number, comma_text
+
+    return "", text
 
 
 def _sotto_articolo_suffix(sotto: str) -> str:
@@ -156,25 +193,79 @@ def _parse_article(html: str, url: str) -> ArticleRecord:
     heading_tag = soup.find(class_="article-heading-akn")
     titolo = heading_tag.get_text(strip=True).strip("().") if heading_tag else ""
 
-    pre_comma = soup.find(class_="article-pre-comma-text-akn")
-    text = pre_comma.get_text(separator=" ", strip=True) if pre_comma else ""
-
-    commi: list[str] = []
+    # FR-1/FR-2/FR-3/FR-4: structured comma numbers, list bodies kept, list items
+    # merged into the comma that introduces them, note fragments discarded.
+    commi: list[dict[str, str]] = []
     for comma_div in soup.find_all(class_="art-comma-div-akn"):
         num_span = comma_div.find(class_="comma-num-akn")
         text_span = comma_div.find(class_="art_text_in_comma")
-        if not text_span:
-            continue
-        prefix = num_span.get_text(strip=True) + " " if num_span else ""
-        commi.append(prefix + text_span.get_text(separator=" ", strip=True))
+        if text_span is not None:
+            prefix = num_span.get_text(strip=True) + " " if num_span is not None else ""
+            raw_text = prefix + text_span.get_text(separator=" ", strip=True)
+        else:
+            raw_text = comma_div.get_text(separator=" ", strip=True)
 
-    abrogato = bool(soup.find(class_="abrogato")) or "abrogato" in html.lower()
+        result = _extract_comma_number_and_text(raw_text)
+        if result is not None:
+            number, comma_text = result
+            if number:
+                commi.append({"number": number, "text": comma_text})
+            elif commi:
+                commi[-1]["text"] = f"{commi[-1]['text']} {comma_text}"
+            else:
+                logger.warning(
+                    "Discarding unnumbered pre-comma block in article %s: %s",
+                    numero,
+                    comma_text[:80],
+                )
+
+    # FR-5: a missing title falls back to the unnumbered pre-comma block; a numbered
+    # pre-comma block is a comma, not a title (prepended so it stays first).
+    pre_comma_tag = soup.find(class_="article-pre-comma-text-akn")
+    if pre_comma_tag is not None:
+        pre_comma_result = _extract_comma_number_and_text(
+            pre_comma_tag.get_text(separator=" ", strip=True)
+        )
+        if pre_comma_result is not None:
+            pre_comma_number, pre_comma_text = pre_comma_result
+            if pre_comma_number:
+                commi.insert(0, {"number": pre_comma_number, "text": pre_comma_text})
+            elif not titolo:
+                titolo = pre_comma_text.strip()
+
+    # FR-13: article-level repeal is anchored to the repeal formula in
+    # `art-just-text-akn`, not to a substring match anywhere in the page.
+    just_text_tag = soup.find(class_="art-just-text-akn")
+    if just_text_tag is not None:
+        just_raw_text = just_text_tag.get_text(separator=" ", strip=True)
+        normalized_repeal_text = just_raw_text
+        if normalized_repeal_text.startswith("(("):
+            normalized_repeal_text = normalized_repeal_text[2:].lstrip()
+        if normalized_repeal_text.endswith("))"):
+            normalized_repeal_text = normalized_repeal_text[:-2].rstrip()
+        abrogato = normalized_repeal_text.upper().startswith("ARTICOLO ABROGATO")
+    else:
+        just_raw_text = ""
+        abrogato = False
+
+    # FR-14: `art-just-text-akn` is a fourth body container, subject to the same
+    # rules — but the pure repeal formula is consumed by FR-13 above, not emitted
+    # as a comma.
+    if just_text_tag is not None and not abrogato:
+        just_text_result = _extract_comma_number_and_text(just_raw_text)
+        if just_text_result is not None:
+            just_number, just_comma_text = just_text_result
+            if just_number:
+                commi.append({"number": just_number, "text": just_comma_text})
+            elif commi:
+                commi[-1]["text"] = f"{commi[-1]['text']} {just_comma_text}"
+            else:
+                commi.append({"number": "1", "text": just_comma_text})
 
     return ArticleRecord(
         number=numero,
         title=titolo,
-        text=text,
-        paragraphs=commi,
+        commas=commi,
         url=url,
         scraped_at=datetime.now(UTC).isoformat(),
         repealed=abrogato,
