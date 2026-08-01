@@ -8,7 +8,7 @@ from psycopg import sql
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
-from domain.entities.knowledge import Article, ArticleComma
+from domain.entities.knowledge import ArticleCommaEntity, ArticleEntity
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableArticleComma
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
@@ -35,8 +35,8 @@ def client() -> Iterator[PostgresClient]:
         client.truncate("article_commas", "articles")
 
 
-def _article(number: str, source: str = "cds") -> Article:
-    return Article(
+def _article(number: str, source: str = "cds") -> ArticleEntity:
+    return ArticleEntity(
         source=source,  # type: ignore[arg-type]
         number=number,
         title=f"Articolo {number}",
@@ -91,7 +91,7 @@ def test_store_replaces_only_target_source(client: PostgresClient) -> None:
     cap_article_ids = article_repository.bulk_insert_returning_ids([_article("1", source="cap")])
     article_comma_repository.bulk_insert(
         [
-            ArticleComma(
+            ArticleCommaEntity(
                 article_id=cap_article_ids[0],
                 comma_number="1",
                 position=0,

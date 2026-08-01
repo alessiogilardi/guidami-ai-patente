@@ -4,16 +4,16 @@ import pytest
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig, BaseAgent
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 
 class _ListTracker:
     """Fake LlmCallTracker collecting every tracked log in memory."""
 
     def __init__(self) -> None:
-        self.logs: list[LlmCallLog] = []
+        self.logs: list[LlmCallLogEntity] = []
 
-    def track(self, log: LlmCallLog) -> None:
+    def track(self, log: LlmCallLogEntity) -> None:
         self.logs.append(log)
 
 

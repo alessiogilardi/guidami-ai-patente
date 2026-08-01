@@ -5,7 +5,7 @@ from commons.ai.observability.repositories.llm_call_log_repository import (
     _COLUMNS,
     LlmCallLogRepository,
 )
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 
 def test_columns_matches_insertable_table_columns() -> None:
@@ -28,7 +28,7 @@ def test_columns_matches_insertable_table_columns() -> None:
 
 
 def test_to_db_row_projects_log_fields_in_column_order() -> None:
-    log = LlmCallLog(
+    log = LlmCallLogEntity(
         caller="road_sign_describer",
         model="openrouter/anthropic/claude-3.5-sonnet",
         system_prompt="Sistema.",

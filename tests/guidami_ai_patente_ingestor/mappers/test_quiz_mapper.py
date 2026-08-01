@@ -4,7 +4,7 @@ The preparation methods (`from_parsed_to_cleaned`, `from_cleaned_to_enriched`) a
 tested separately in `test_quiz_mapper_flatten_at_preparation.py` (SP09).
 """
 
-from domain.entities.quiz import QuizQuestion
+from domain.entities.quiz import QuizQuestionEntity
 from guidami_ai_patente_ingestor.mappers import QuizMapper
 from guidami_ai_patente_ingestor.models.quiz import (
     EmbeddedQuizModel,
@@ -124,7 +124,7 @@ def test_from_embedded_to_quiz_question_copies_all_quiz_question_fields() -> Non
     eq = _embedded()
     result = QuizMapper.from_embedded_to_quiz_question(eq)
 
-    assert isinstance(result, QuizQuestion)
+    assert isinstance(result, QuizQuestionEntity)
     assert result.number == eq.number
     assert result.question_id == eq.question_id
     assert result.topic == eq.topic

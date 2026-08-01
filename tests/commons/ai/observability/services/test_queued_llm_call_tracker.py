@@ -6,16 +6,16 @@ from decimal import Decimal
 import pytest
 
 from commons.ai.observability import QueuedLlmCallTracker
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 
 class _FakeRepository:
     """Collects inserted logs in memory, in insertion order."""
 
     def __init__(self) -> None:
-        self.inserted: list[LlmCallLog] = []
+        self.inserted: list[LlmCallLogEntity] = []
 
-    def insert(self, log: LlmCallLog) -> None:
+    def insert(self, log: LlmCallLogEntity) -> None:
         self.inserted.append(log)
 
 
@@ -23,10 +23,10 @@ class _FlakyRepository:
     """Raises on the first `insert`, succeeds on every subsequent call."""
 
     def __init__(self) -> None:
-        self.inserted: list[LlmCallLog] = []
+        self.inserted: list[LlmCallLogEntity] = []
         self._raised_once = False
 
-    def insert(self, log: LlmCallLog) -> None:
+    def insert(self, log: LlmCallLogEntity) -> None:
         if not self._raised_once:
             self._raised_once = True
             raise RuntimeError("db unreachable")
@@ -40,13 +40,13 @@ class _BlockingRepository:
         self._release = release
         self._entered = entered
 
-    def insert(self, log: LlmCallLog) -> None:
+    def insert(self, log: LlmCallLogEntity) -> None:
         self._entered.set()
         self._release.wait(timeout=5)
 
 
-def _make_log(cost_usd: Decimal | None = Decimal("0.001234")) -> LlmCallLog:
-    return LlmCallLog(
+def _make_log(cost_usd: Decimal | None = Decimal("0.001234")) -> LlmCallLogEntity:
+    return LlmCallLogEntity(
         caller="test_agent",
         model="openrouter/anthropic/claude-3.5-sonnet",
         prompt="Domanda.",

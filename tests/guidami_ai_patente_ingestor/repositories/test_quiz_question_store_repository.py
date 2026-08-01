@@ -5,7 +5,7 @@ from psycopg import sql
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
-from domain.entities.quiz import QuizQuestion
+from domain.entities.quiz import QuizQuestionEntity
 from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
 from guidami_ai_patente_ingestor.repositories.db.quiz_question_store_repository import (
     _QUIZ_QUESTION_TABLE_COLUMNS,
@@ -27,8 +27,8 @@ def client() -> Iterator[PostgresClient]:
         client.truncate("quiz_questions")
 
 
-def _question(number: str, image_filename: str | None = None) -> QuizQuestion:
-    return QuizQuestion(
+def _question(number: str, image_filename: str | None = None) -> QuizQuestionEntity:
+    return QuizQuestionEntity(
         number=number,
         question_id=100,
         topic="Segnaletica",
@@ -38,7 +38,7 @@ def _question(number: str, image_filename: str | None = None) -> QuizQuestion:
     )
 
 
-def _flat_question(**kwargs: object) -> QuizQuestion:
+def _flat_question(**kwargs: object) -> QuizQuestionEntity:
     defaults = dict(
         number="1",
         question_id=100,
@@ -51,7 +51,7 @@ def _flat_question(**kwargs: object) -> QuizQuestion:
         rule_explanation="Il segnale impone l'obbligo di precedenza.",
         embedding=[0.1, 0.2],
     )
-    return QuizQuestion(**{**defaults, **kwargs})
+    return QuizQuestionEntity(**{**defaults, **kwargs})
 
 
 def test_table_columns_are_flat_metadata_columns_without_quiz_metadata() -> None:

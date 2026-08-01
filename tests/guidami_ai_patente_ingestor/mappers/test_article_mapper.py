@@ -1,6 +1,6 @@
 import pytest
 
-from domain.entities.knowledge import Article, ArticleComma
+from domain.entities.knowledge import ArticleCommaEntity, ArticleEntity
 from guidami_ai_patente_ingestor.mappers import ArticleMapper
 from guidami_ai_patente_ingestor.models.knowledge import (
     CleanedArticleModel,
@@ -72,7 +72,7 @@ def test_from_cleaned_to_article_entity() -> None:
 
     result = ArticleMapper.from_cleaned_to_article_entity(article)
 
-    assert isinstance(result, Article)
+    assert isinstance(result, ArticleEntity)
     assert result.source == article.source
     assert result.number == article.number
     assert result.title == article.title
@@ -178,7 +178,7 @@ def test_from_embeddable_comma_to_article_comma_resolves_article_id() -> None:
         comma, article_id_by_number={"142": 7}
     )
 
-    assert isinstance(result, ArticleComma)
+    assert isinstance(result, ArticleCommaEntity)
     assert result.article_id == 7
 
 

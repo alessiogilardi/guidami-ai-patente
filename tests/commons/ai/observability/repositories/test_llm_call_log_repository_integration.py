@@ -7,7 +7,7 @@ from psycopg import sql
 from commons.ai.observability import LlmCallLogRepository
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 
 @pytest.fixture
@@ -28,7 +28,7 @@ def client() -> Iterator[PostgresClient]:
 @pytest.mark.integration
 def test_insert_round_trip(client: PostgresClient) -> None:
     repository = LlmCallLogRepository(client)
-    success_log = LlmCallLog(
+    success_log = LlmCallLogEntity(
         caller="road_sign_describer",
         model="openrouter/anthropic/claude-3.5-sonnet",
         system_prompt="Sistema.",
@@ -41,7 +41,7 @@ def test_insert_round_trip(client: PostgresClient) -> None:
         status="success",
         latency_ms=120,
     )
-    error_log = LlmCallLog(
+    error_log = LlmCallLogEntity(
         caller="article_contextualizer",
         model="openrouter/anthropic/claude-3.5-sonnet",
         prompt="Domanda fallita.",

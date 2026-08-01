@@ -1,8 +1,8 @@
-from domain.entities.knowledge import Article
+from domain.entities.knowledge import ArticleEntity
 
 
 def test_article_entity_has_no_id_field() -> None:
-    article = Article(
+    article = ArticleEntity(
         source="cds",
         number="142",
         title="Titolo",
@@ -10,10 +10,10 @@ def test_article_entity_has_no_id_field() -> None:
         is_repealed=False,
     )
 
-    assert "id" not in Article.model_fields
+    assert "id" not in ArticleEntity.model_fields
     assert article.source == "cds"
     assert article.number == "142"
     assert article.title == "Titolo"
     assert article.url == "https://example.com/142"
     assert article.is_repealed is False
-    assert all(field.is_required() for field in Article.model_fields.values())
+    assert all(field.is_required() for field in ArticleEntity.model_fields.values())

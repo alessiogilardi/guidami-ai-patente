@@ -1,9 +1,9 @@
 from commons.ai.observability import NullLlmCallTracker
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 
-def _make_log() -> LlmCallLog:
-    return LlmCallLog(
+def _make_log() -> LlmCallLogEntity:
+    return LlmCallLogEntity(
         caller="test_agent",
         model="openrouter/anthropic/claude-3.5-sonnet",
         prompt="Domanda.",

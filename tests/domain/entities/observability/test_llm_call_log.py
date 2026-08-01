@@ -3,7 +3,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 _INSERTABLE_COLUMNS = {
     "caller",
@@ -23,14 +23,14 @@ _INSERTABLE_COLUMNS = {
 }
 
 
-def _log(**kwargs) -> LlmCallLog:
+def _log(**kwargs) -> LlmCallLogEntity:
     defaults = dict(caller="image_description", model="gpt-4o-mini", prompt="Describe the sign.")
-    return LlmCallLog(**{**defaults, **kwargs})
+    return LlmCallLogEntity(**{**defaults, **kwargs})
 
 
 def test_llm_call_log_mirrors_table() -> None:
-    """LlmCallLog is the insertable projection of llm_call_logs: no id, no created_at."""
-    fields = set(LlmCallLog.model_fields)
+    """LlmCallLogEntity is the insertable projection of llm_call_logs: no id, no created_at."""
+    fields = set(LlmCallLogEntity.model_fields)
 
     assert "id" not in fields
     assert "created_at" not in fields

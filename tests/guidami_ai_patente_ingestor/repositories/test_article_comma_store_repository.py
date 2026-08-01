@@ -5,7 +5,7 @@ from psycopg import sql
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
-from domain.entities.knowledge import Article, ArticleComma
+from domain.entities.knowledge import ArticleCommaEntity, ArticleEntity
 from guidami_ai_patente_ingestor.repositories import (
     ArticleCommaStoreRepository,
     ArticleStoreRepository,
@@ -28,7 +28,7 @@ def client() -> Iterator[PostgresClient]:
 
 
 def _insert_article(client: PostgresClient, number: str, source: str) -> int:
-    article = Article(
+    article = ArticleEntity(
         source=source,  # type: ignore[arg-type]
         number=number,
         title=f"Articolo {number}",
@@ -39,8 +39,8 @@ def _insert_article(client: PostgresClient, number: str, source: str) -> int:
     return ids[0]
 
 
-def _comma(article_id: int, comma_number: str = "1") -> ArticleComma:
-    return ArticleComma(
+def _comma(article_id: int, comma_number: str = "1") -> ArticleCommaEntity:
+    return ArticleCommaEntity(
         article_id=article_id,
         comma_number=comma_number,
         position=0,
@@ -69,7 +69,7 @@ def test_bulk_insert_stores_embedding_vector(client: PostgresClient) -> None:
 
     repository.bulk_insert(
         [
-            ArticleComma(
+            ArticleCommaEntity(
                 article_id=article_id,
                 comma_number="1",
                 position=0,

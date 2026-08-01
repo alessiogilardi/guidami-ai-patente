@@ -5,7 +5,7 @@ from psycopg import sql
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
-from domain.entities.knowledge import Article
+from domain.entities.knowledge import ArticleEntity
 from guidami_ai_patente_ingestor.repositories import ArticleStoreRepository
 
 
@@ -24,8 +24,8 @@ def client() -> Iterator[PostgresClient]:
         client.truncate("article_commas", "articles")
 
 
-def _article(number: str, source: str = "cds") -> Article:
-    return Article(
+def _article(number: str, source: str = "cds") -> ArticleEntity:
+    return ArticleEntity(
         source=source,  # type: ignore[arg-type]
         number=number,
         title=f"Articolo {number}",

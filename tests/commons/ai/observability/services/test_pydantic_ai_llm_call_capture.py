@@ -8,7 +8,7 @@ from pydantic_ai.run import AgentRunResult
 from pydantic_ai.usage import RunUsage
 
 from commons.ai.observability import PydanticAILlmCallCapture
-from domain.entities.observability import LlmCallLog
+from domain.entities.observability import LlmCallLogEntity
 
 _MODEL = "openrouter/anthropic/claude-3.5-sonnet"
 
@@ -17,9 +17,9 @@ class _FakeTracker:
     """Collects tracked logs in memory, in `track()` call order."""
 
     def __init__(self) -> None:
-        self.tracked: list[LlmCallLog] = []
+        self.tracked: list[LlmCallLogEntity] = []
 
-    def track(self, log: LlmCallLog) -> None:
+    def track(self, log: LlmCallLogEntity) -> None:
         self.tracked.append(log)
 
 
