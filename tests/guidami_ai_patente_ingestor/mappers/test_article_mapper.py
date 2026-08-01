@@ -1,4 +1,6 @@
-from domain.entities.knowledge import Article
+import pytest
+
+from domain.entities.knowledge import Article, ArticleComma
 from guidami_ai_patente_ingestor.mappers import ArticleMapper
 from guidami_ai_patente_ingestor.models.knowledge import (
     CleanedArticleModel,
@@ -150,3 +152,56 @@ def test_from_cleaned_to_embeddable_commas_maps_all_fields_in_position_order() -
     assert all(c.article_number == "142" for c in result)
     assert all(c.article_title == "Titolo" for c in result)
     assert all(c.embedding is None for c in result)
+
+
+# --- from_embeddable_comma_to_article_comma ---
+
+
+def _embeddable_comma(**kwargs) -> EmbeddableArticleComma:
+    defaults = dict(
+        source="cds",
+        article_number="142",
+        article_title="Titolo",
+        comma_number="1",
+        position=0,
+        text="Testo del comma",
+        is_repealed=False,
+        embedding=[0.1, 0.2],
+    )
+    return EmbeddableArticleComma(**{**defaults, **kwargs})
+
+
+def test_from_embeddable_comma_to_article_comma_resolves_article_id() -> None:
+    comma = _embeddable_comma(article_number="142")
+
+    result = ArticleMapper.from_embeddable_comma_to_article_comma(
+        comma, article_id_by_number={"142": 7}
+    )
+
+    assert isinstance(result, ArticleComma)
+    assert result.article_id == 7
+
+
+def test_from_embeddable_comma_to_article_comma_maps_remaining_fields() -> None:
+    comma = _embeddable_comma(
+        comma_number="2-bis", position=3, text="Testo", is_repealed=True, embedding=[0.5]
+    )
+
+    result = ArticleMapper.from_embeddable_comma_to_article_comma(
+        comma, article_id_by_number={"142": 1}
+    )
+
+    assert result.comma_number == "2-bis"
+    assert result.position == 3
+    assert result.text == "Testo"
+    assert result.is_repealed is True
+    assert result.embedding == [0.5]
+
+
+def test_from_embeddable_comma_to_article_comma_unknown_article_number_raises() -> None:
+    comma = _embeddable_comma(article_number="999")
+
+    with pytest.raises(KeyError):
+        ArticleMapper.from_embeddable_comma_to_article_comma(
+            comma, article_id_by_number={"142": 1}
+        )

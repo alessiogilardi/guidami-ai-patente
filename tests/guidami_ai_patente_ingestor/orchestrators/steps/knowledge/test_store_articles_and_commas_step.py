@@ -10,6 +10,7 @@ from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
 from domain.entities.knowledge import Article, ArticleComma
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableArticleComma
+from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
     StoreArticlesAndCommasStep,
 )
@@ -17,12 +18,6 @@ from guidami_ai_patente_ingestor.repositories import (
     ArticleCommaStoreRepository,
     ArticleStoreRepository,
 )
-
-# ARTICLE_ENTITIES/EMBEDDABLE_ARTICLE_COMMAS are not yet context_keys.py constants
-# (added in T-14); the step reads/writes them as hardcoded literals until then
-# (per plan T-12), so tests seed the context with the same literals.
-_ARTICLE_ENTITIES_KEY = "article_entities"
-_EMBEDDABLE_ARTICLE_COMMAS_KEY = "embeddable_article_commas"
 
 
 @pytest.fixture
@@ -69,8 +64,8 @@ def test_store_writes_articles_then_resolves_comma_article_id(client: PostgresCl
     article_comma_repository = ArticleCommaStoreRepository("article_commas", client)
     context = FlowContext(
         {
-            _ARTICLE_ENTITIES_KEY: [_article("142")],
-            _EMBEDDABLE_ARTICLE_COMMAS_KEY: [_embeddable_comma("142")],
+            context_keys.ARTICLE_ENTITIES: [_article("142")],
+            context_keys.EMBEDDABLE_ARTICLE_COMMAS: [_embeddable_comma("142")],
         }
     )
     step = StoreArticlesAndCommasStep(
@@ -109,8 +104,8 @@ def test_store_replaces_only_target_source(client: PostgresClient) -> None:
 
     context = FlowContext(
         {
-            _ARTICLE_ENTITIES_KEY: [_article("142", source="cds")],
-            _EMBEDDABLE_ARTICLE_COMMAS_KEY: [_embeddable_comma("142", source="cds")],
+            context_keys.ARTICLE_ENTITIES: [_article("142", source="cds")],
+            context_keys.EMBEDDABLE_ARTICLE_COMMAS: [_embeddable_comma("142", source="cds")],
         }
     )
     step = StoreArticlesAndCommasStep(
