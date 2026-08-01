@@ -1,6 +1,6 @@
 from typing import Literal
 
-from domain.entities.knowledge import Article
+from domain.entities.knowledge import Article, ArticleComma
 from guidami_ai_patente_ingestor.models.knowledge import (
     CleanedArticleModel,
     EmbeddableArticleComma,
@@ -78,3 +78,26 @@ class ArticleMapper:
             )
             for position, comma in enumerate(article.commas)
         ]
+
+    @staticmethod
+    def from_embeddable_comma_to_article_comma(
+        comma: EmbeddableArticleComma, article_id_by_number: dict[str, int]
+    ) -> ArticleComma:
+        """Resolves the comma's DB-generated `article_id` and maps it onto the insertable entity.
+
+        Args:
+            comma: Embeddable comma, still referencing its parent by `article_number`.
+            article_id_by_number: `Article.number` -> DB-generated id, from the
+                just-inserted articles.
+
+        Returns:
+            `ArticleComma` entity ready for `ArticleCommaStoreRepository`.
+        """
+        return ArticleComma(
+            article_id=article_id_by_number[comma.article_number],
+            comma_number=comma.comma_number,
+            position=comma.position,
+            text=comma.text,
+            is_repealed=comma.is_repealed,
+            embedding=comma.embedding,
+        )
