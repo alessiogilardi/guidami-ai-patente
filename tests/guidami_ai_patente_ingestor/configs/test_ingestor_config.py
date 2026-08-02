@@ -32,6 +32,15 @@ def test_default_sources_contain_cds_cap_quiz() -> None:
     assert config.sources["quiz"].dir == "quiz-patente-ab"
 
 
+def test_default_sources_and_pipelines_include_reg() -> None:
+    config = _build_config()
+
+    assert "reg" in config.sources
+    assert config.sources["reg"].file == "regolamento_attuazione.json"
+    assert "reg" in config.knowledge_preparation.sources
+    assert "reg" in config.knowledge_indexing.sources
+
+
 def test_default_pipeline_selectors() -> None:
     """Knowledge layer defaults are covered separately by `test_knowledge_layers_are_cleaned`."""
     config = _build_config()

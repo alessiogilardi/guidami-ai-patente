@@ -60,7 +60,7 @@ enabled at the top of that file).
 ```text
 articles
 ├── id (PK, BIGSERIAL)
-├── source (TEXT, NOT NULL)               -- "cds" | "cap"
+├── source (TEXT, NOT NULL)               -- "cds" | "cap" | "reg"
 ├── number (TEXT, NOT NULL)
 ├── title (TEXT, NOT NULL)
 ├── url (TEXT, NOT NULL)
@@ -171,9 +171,12 @@ docker compose -f docker/docker-compose.yml up -d
 (see also the "Infrastructure" section of `CLAUDE.md`). There is no
 changelog file tracking schema history beyond `git log db/init.sql`.
 
-*Last updated: 2026-08-01 — verified against commit `81dd6c4`; `knowledge_chunks`
+*Last updated: 2026-08-01 — verified against commit `3cce407`; `knowledge_chunks`
 replaced by `articles`/`article_commas` (spec 0001 T-7/T-8); `PostgresClient.truncate()`
 widened to accept multiple table names (FK-truncate fix); documented `reset.py`'s
 real usage of it (T-16) after a two-repository-calls first attempt was caught crashing
 against a live Postgres; `KnowledgeChunk` entity deleted, spec 0001 fully implemented (T-15);
-`Article`/`ArticleComma` entities renamed to `ArticleEntity`/`ArticleCommaEntity`.*
+`Article`/`ArticleComma` entities renamed to `ArticleEntity`/`ArticleCommaEntity`;
+`articles.source` gained `"reg"` as a third value (spec 0003 Phase 1, FR-4) — no DDL
+change, `UNIQUE (source, number)` already prevented collision with CdS's overlapping
+article numbers.*

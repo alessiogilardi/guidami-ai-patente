@@ -132,6 +132,17 @@ def test_build_with_unknown_source_raises_value_error() -> None:
         )
 
 
+def test_build_knowledge_indexing_flow_accepts_reg_source() -> None:
+    flow = build_knowledge_indexing_flow(
+        config=_base_config(),
+        layer_resolver=MagicMock(spec=LayerResolver),
+        embedding_client=_make_embedding_client(),
+        postgres_client=_make_postgres_client(),
+        source="reg",
+    )
+    assert isinstance(flow, Flow)
+
+
 def test_build_knowledge_indexing_flow_reads_cleaned_layer() -> None:
     """T-14: the flow's first step reads CleanedArticleModel from the 'cleaned' layer."""
     flow = build_knowledge_indexing_flow(

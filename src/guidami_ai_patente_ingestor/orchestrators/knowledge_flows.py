@@ -200,7 +200,7 @@ def build_knowledge_cleaning_flow(
     valid_sources = set(preparation_config.sources)
     if source not in valid_sources:
         raise ValueError(f"Unknown source '{source}'. Valid sources: {sorted(valid_sources)}")
-    typed_source = cast(Literal["cds", "cap"], source)
+    typed_source = cast(Literal["cds", "cap", "reg"], source)
 
     file_system_client = LocalFileSystemClient(config.project_root)
 

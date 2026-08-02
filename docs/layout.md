@@ -17,7 +17,7 @@ repo/
 │   ├── domain/                     # Shared domain entities/models (persisted + intermediate),
 │   │                                #   no I/O or business logic
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
-│   │                                #   normative corpus (CdS/CAP) and quiz bank
+│   │                                #   normative corpus (CdS/CAP/Regolamento) and quiz bank
 │   ├── guidami_ai_patente/         # FastAPI quiz-bot app — scaffold only, not started
 │   ├── html_viewers/               # Standalone, dependency-free HTML pages for manually
 │   │                                #   inspecting pipeline output (e.g. quiz enrichment
@@ -152,6 +152,6 @@ gitignored — never committed, safe to delete once the spec they fed is
   itself is shared, but nothing outside the CLI renders it, so the renderer stays
   local per the same rule.
 
-*Last updated: 2026-08-01 — verified against commit `c457354`; updated the
-`agents/mappers/` and instrumented-services examples after spec 0001 T-13
-removed `ArticleContextualizerMapper`/`ContextEnricher`.*
+*Last updated: 2026-08-01 — verified against commit `3cce407`; widened the
+`guidami_ai_patente_ingestor/` normative-corpus note to CdS/CAP/Regolamento
+(spec 0003 Phase 1 added `reg` as a third source).*

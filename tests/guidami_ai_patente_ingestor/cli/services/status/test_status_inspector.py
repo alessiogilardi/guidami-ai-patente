@@ -108,6 +108,25 @@ def test_knowledge_index_always_runnable_even_when_enriched_input_missing(tmp_pa
     assert ReadinessState.BLOCKED not in states_by_source.values()
 
 
+def test_default_config_reports_reg_readiness_for_prepare_and_index(tmp_path: Path) -> None:
+    """FR-4 AC5: with the real (yaml + Python) defaults, `reg` gets prepare/index readiness.
+
+    `layers` omits `cleaned`, mirroring `_build_config`'s existing override, but
+    knowledge's prepare/index readiness is `per_element=True` and never dereferences
+    that key (see `StatusInspector._prepare_state`/`_index_state`).
+    """
+    config = _build_config(tmp_path)
+    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    inspector = StatusInspector(config, layer_resolver)
+
+    readiness = inspector.evaluate_readiness()
+
+    prepare_knowledge = _entity_readiness(readiness, "prepare", "knowledge")
+    index_knowledge = _entity_readiness(readiness, "index", "knowledge")
+    assert any(s.source == "reg" for s in prepare_knowledge.sources)
+    assert any(s.source == "reg" for s in index_knowledge.sources)
+
+
 def test_quiz_prepare_still_uses_skip_and_blocked_signals(tmp_path: Path) -> None:
     """Quiz is unaffected by the per-element rework (Decision 15 scopes it to knowledge only)."""
     (tmp_path / "enriched" / "skip_src").mkdir(parents=True)

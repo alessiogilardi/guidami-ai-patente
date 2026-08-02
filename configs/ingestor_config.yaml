@@ -10,6 +10,9 @@ sources:
   cap:
     dir: cap
     file: codice_rca.json
+  reg:
+    dir: reg
+    file: regolamento_attuazione.json
   quiz:
     dir: quiz-patente-ab
     file: quiz-patente-ab.json
@@ -17,11 +20,11 @@ sources:
 knowledge_preparation:
   input_layer: parsed
   output_layer: cleaned
-  sources: [cds, cap]
+  sources: [cds, cap, reg]
 
 knowledge_indexing:
   input_layer: cleaned
-  sources: [cds, cap]
+  sources: [cds, cap, reg]
 
 quiz_preparation:
   input_layer: parsed

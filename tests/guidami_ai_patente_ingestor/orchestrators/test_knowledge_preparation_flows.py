@@ -109,6 +109,15 @@ def test_cleaning_flow_unknown_source_raises_value_error() -> None:
         )
 
 
+def test_cleaning_flow_accepts_reg_source() -> None:
+    flow = build_knowledge_cleaning_flow(
+        config=_base_config(),
+        layer_resolver=_make_layer_resolver(),
+        source="reg",
+    )
+    assert isinstance(flow, Flow)
+
+
 def test_cleaning_flow_has_four_steps_load_clean_filter_write() -> None:
     flow = build_knowledge_cleaning_flow(
         config=_base_config(),

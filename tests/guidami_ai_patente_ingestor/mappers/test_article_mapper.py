@@ -64,6 +64,14 @@ def test_from_parsed_to_cleaned_preserves_repealed_flag() -> None:
     assert result.source == "cap"
 
 
+def test_from_parsed_to_cleaned_accepts_reg_source() -> None:
+    article = _article()
+
+    result = ArticleMapper.from_parsed_to_cleaned(article, "reg")
+
+    assert result.source == "reg"
+
+
 # --- from_cleaned_to_article_entity (T-9) ---
 
 

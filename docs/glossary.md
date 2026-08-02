@@ -2,11 +2,12 @@
 
 | Term | Meaning |
 |---|---|
-| **CdS** | Codice della Strada — Italian Highway Code (Legislative Decree 30/04/1992 n.285). Scraped in full; one of the two `source` values. |
+| **CdS** | Codice della Strada — Italian Highway Code (Legislative Decree 30/04/1992 n.285). Scraped in full; one of three `source` values. |
 | **CAP** | Codice delle Assicurazioni Private — Italian Private Insurance Code (Legislative Decree 07/09/2005 n.209). Only a subset of articles relevant to mandatory car-insurance liability (RCA) and driving licences is kept, not the full code. |
 | **RCA** | Responsabilità Civile Auto — mandatory car-insurance liability; the reason only a CAP subset is scraped (only RCA/licence-relevant articles matter for exam prep). |
-| **corpus normativo** | Collective term (used in code docstrings) for the CdS + CAP legal text, as opposed to the quiz bank. |
-| **source** | The discriminator tag for which dataset a knowledge record belongs to: `"cds"` or `"cap"` (`Literal` type on `CleanedArticleModel`; plain `str` on the `ArticleEntity`/`ArticleCommaEntity` entities and `EmbeddableArticleComma`). Enters the data at the parsed→cleaned boundary (`ArticleMapper.from_parsed_to_cleaned`) and is propagated from there on, rather than being re-injected by each pipeline stage. The quiz bank is a separate pipeline and isn't tagged with this field. |
+| **Regolamento** | Regolamento di esecuzione e di attuazione del nuovo codice della strada — DPR 16/12/1992 n.495, the CdS's implementing regulation; holds the normative descriptions of road signs the quiz bank tests. `source = "reg"` (spec 0003). Scraped in full (409 articles), no annexes (figures/tables). |
+| **corpus normativo** | Collective term (used in code docstrings) for the CdS + CAP + Regolamento legal text, as opposed to the quiz bank. |
+| **source** | The discriminator tag for which dataset a knowledge record belongs to: `"cds"`, `"cap"`, or `"reg"` (`Literal` type on `CleanedArticleModel`; plain `str` on the `ArticleEntity`/`ArticleCommaEntity` entities and `EmbeddableArticleComma`). Enters the data at the parsed→cleaned boundary (`ArticleMapper.from_parsed_to_cleaned`) and is propagated from there on, rather than being re-injected by each pipeline stage. The quiz bank is a separate pipeline and isn't tagged with this field. |
 | **layer** (`parsed` / `cleaned` / `enriched`) | A pipeline data-maturity stage, mapped 1:1 to a `data/<layer>/` directory. `PipelineLayerConfig.input_layer`/`output_layer` select which directory a flow reads from / writes to. Not an architecture layer — a data stage on disk. For the knowledge corpus, `cleaned` is **per-element** (one file per article inside the directory — see `LayerResolver.dir()`); `parsed` and the whole quiz pipeline stay monolithic (one file holding every element). The knowledge corpus has no `enriched` stage (removed, spec 0001 T-13) — the `enriched` layer name still exists in config, used only by the quiz pipeline (monolithic, not per-element). |
 | **element id** | The stable, deterministic filename stem for a per-element layer file, computed by `commons.utils.element_id(*parts)` (a `uuid5` over a fixed namespace). For the knowledge corpus: `element_id(article.source, article.number)`. Same parts always yield the same id, so a re-run recognizes an article it already processed — see `docs/plans/2026-07-17--per-element-knowledge-layers.md`. |
 | **article** | One law article as scraped: number, title, and a structured `commas: list[ParsedComma]` (each `{number, text}`, spec 0001 T-1/T-5 — comma numbers are extracted, list-body items merged, note fragments discarded, all upstream in the scraper) (`ParsedArticleModel`/`CleanedArticleModel`). `CleanedArticleModel` (new at the parsed→cleaned boundary) adds `source` to the fields already on `ParsedArticleModel`, so from `cleaned` onward an article is self-identifying (its id no longer depends on which flow is processing it). At the storage boundary, an article is one `articles` row (`domain.entities.knowledge.ArticleEntity`) plus N `article_commas` rows (`ArticleCommaEntity`, one per comma, FK-linked) — see `docs/database.md` (spec 0001 T-7/T-8). |
@@ -22,9 +23,6 @@
 | **image_description** | The flat `f"{name}. {description}"` string on `EnrichedQuizModel`, one per distinct image (see **answer-blind**). Consumed downstream by `NormReferenceEnricher`, the HTML review viewer, and `EmbeddedQuizModel`. |
 | **image_analysis** | `ImageAnalysis` model (`visual_analysis`, `name`, `description`) — the full, structured `RoadSignDescriberAgent` output, persisted inline on `EnrichedQuizModel.image_analysis` for debugging only; not part of the embedding or DB path. `visual_analysis` is the agent's chain-of-thought observation of the image, ahead of the two other fields. |
 
-*Last updated: 2026-08-01 — verified against commit `81dd6c4`; **article** entry
-updated for spec 0001 T-1/T-5's structured `commas` shape and T-7/T-8's
-`articles`/`article_commas` storage boundary; **chunk** entry replaced by
-**comma** (spec 0001 fully implemented, T-15 removed the chunk-based classes
-entirely — no more historical pointer needed); `Article`/`ArticleComma` entity
-references updated to `ArticleEntity`/`ArticleCommaEntity`.*
+*Last updated: 2026-08-01 — verified against commit `3cce407`; added
+**Regolamento** entry and widened **CdS**/**corpus normativo**/**source** to
+three sources (`cds`/`cap`/`reg`) for spec 0003 Phase 1.*

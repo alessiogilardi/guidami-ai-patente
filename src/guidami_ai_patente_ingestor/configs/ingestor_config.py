@@ -36,14 +36,15 @@ class IngestorConfig(BaseSettings):
         default_factory=lambda: {
             "cds": SourceConfig(dir="cds", file="codice_della_strada.json"),
             "cap": SourceConfig(dir="cap", file="codice_rca.json"),
+            "reg": SourceConfig(dir="reg", file="regolamento_attuazione.json"),
             "quiz": SourceConfig(dir="quiz-patente-ab", file="quiz-patente-ab.json"),
         }
     )
     knowledge_preparation: PipelineLayerConfig = PipelineLayerConfig(
-        input_layer="parsed", output_layer="cleaned", sources=["cds", "cap"]
+        input_layer="parsed", output_layer="cleaned", sources=["cds", "cap", "reg"]
     )
     knowledge_indexing: PipelineLayerConfig = PipelineLayerConfig(
-        input_layer="cleaned", sources=["cds", "cap"]
+        input_layer="cleaned", sources=["cds", "cap", "reg"]
     )
     quiz_preparation: PipelineLayerConfig = PipelineLayerConfig(
         input_layer="parsed", output_layer="enriched", sources=["quiz"]
