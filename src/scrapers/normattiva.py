@@ -58,6 +58,13 @@ CAP = LawConfig(
     output_name="codice_assicurazioni_private.json",
 )
 
+REG = LawConfig(
+    slug="reg",
+    toc_url=BASE_URL
+    + "/uri-res/N2Ls?urn:nir:stato:decreto.presidente.repubblica:1992-12-16;495!vig=",
+    output_name="regolamento_attuazione.json",
+)
+
 
 class ArticleParams(TypedDict):
     """Query parameters for the call to normattiva.it's caricaArticolo API."""
@@ -85,6 +92,8 @@ class ArticleRecord(TypedDict):
 
 
 _COMMA_NUMBER_PATTERN = re.compile(r"^(\d+(?:-[a-z]+)?)\.?\s*")
+_INLINE_MARKER_PATTERN = re.compile(r"(\d+(?:-[a-z]+)?)\.(?:\s|\))")
+_MARKER_FALSE_POSITIVE_PREFIXES = frozenset({"art", "artt", "n", "nn", "fig"})
 
 
 def _extract_comma_number_and_text(raw_text: str) -> tuple[str, str] | None:
@@ -114,9 +123,126 @@ def _extract_comma_number_and_text(raw_text: str) -> tuple[str, str] | None:
     if match:
         number = match.group(1)
         comma_text = matchable[match.end() :].strip()
+        # A `((N.))` amendment marker (number wrapped on both sides, no space before
+        # the closing bracket) leaves a leading `))` on the text; strip it, symmetric
+        # with the leading `((` already stripped above.
+        if comma_text.startswith("))"):
+            comma_text = comma_text[2:].lstrip()
         return number, comma_text
 
     return "", text
+
+
+def _split_leading_title(body_text: str, article_number: str) -> tuple[str, str]:
+    """Splits the leading `(Title)` segment(s) off `body_text` (FR-2).
+
+    A title segment is a single-parenthesis segment — `(...)`, not the `((`
+    amendment-bracket marker — at the very start of `body_text`. Some
+    articles carry a leading cross-reference note before the real title
+    (e.g. `(Art. 70 Cod. Str.) (Servizio di piazza...)`); every consecutive
+    leading `(...)` segment is stripped, and the *last* one stripped is kept
+    as the title, since it is the descriptive one. Returns
+    `(title, remaining_text)`. If no leading title segment is found at all
+    (no leading `(`, a leading `((`, or no closing `)`), returns
+    `("", body_text)` unchanged and logs a `warning` naming `article_number`.
+    """
+    remaining = body_text.lstrip()
+    title = ""
+    found = False
+    while remaining.startswith("(") and not remaining.startswith("(("):
+        end = remaining.find(")")
+        if end == -1:
+            break
+        title = remaining[1:end].strip()
+        remaining = remaining[end + 1 :].lstrip()
+        found = True
+    if not found:
+        logger.warning(
+            "Article %s: art-just-text-akn body has no leading title parenthesis",
+            article_number,
+        )
+        return "", body_text
+    return title, remaining
+
+
+def _preceding_word(text: str, index: int) -> str:
+    """Returns the lowercase word immediately ending at `text[:index]`, or `""`."""
+    match = re.search(r"([A-Za-zàèéìòù]+)$", text[:index])
+    return match.group(1).lower() if match else ""
+
+
+def _is_marker_start(text: str, start: int) -> bool:
+    """True if `start` is a genuine inline comma-number marker start (FR-3 AC1-AC3).
+
+    A position qualifies when:
+    - it is the very start of `text`, or only `(`/whitespace precedes it (a
+      leading `((` amendment bracket at the very start of the article);
+    - it is immediately preceded by `((` (an amendment bracket opening
+      elsewhere in the article, not only at its start — real Regolamento
+      articles insert whole later commas this way, e.g. `... si provvede.
+      ((4. I tratti ...`);
+    - the nearest non-whitespace character before it is `)` (the close of a
+      preceding parenthetical aside or amendment bracket, e.g. `...M.C.T.C..))
+      2. Nell'evenienza...`) — always a genuine boundary;
+    - the nearest non-whitespace character before it is `.` and the word
+      immediately before that period is not one of
+      `_MARKER_FALSE_POSITIVE_PREFIXES` (abbreviations such as "art.", "n.",
+      "fig." that also end in digit+period but do not start a new comma).
+    """
+    if start == 0 or not text[:start].strip("( "):
+        return True
+    if start >= 2 and text[start - 2 : start] == "((":
+        return True
+    match = re.search(r"([.)])\s+$", text[:start])
+    if match is None:
+        return False
+    if match.group(1) == ")":
+        return True
+    return _preceding_word(text, match.start()) not in _MARKER_FALSE_POSITIVE_PREFIXES
+
+
+def _split_into_comma_segments(text: str) -> list[str]:
+    """Splits `text` into one segment per recognised inline comma marker (FR-3).
+
+    Returns `[text]` unchanged if no marker is found.
+    """
+    starts = [
+        match.start()
+        for match in _INLINE_MARKER_PATTERN.finditer(text)
+        if _is_marker_start(text, match.start())
+    ]
+    if not starts:
+        return [text]
+    boundaries = [*starts, len(text)]
+    return [text[boundaries[i] : boundaries[i + 1]] for i in range(len(starts))]
+
+
+def _validate_contiguous_numbering(numbers: list[str], article_number: str) -> None:
+    """Raises `ValueError` unless `numbers` is base-contiguous, allowing suffixes.
+
+    Allows `-bis`/`-ter`-style suffixes immediately after their base number
+    (AD-3's relaxed rule: real Regolamento articles do insert a suffixed comma,
+    e.g. art. 9's `1, 2, 3, 3-bis`, the same convention the CdS uses — the base
+    sequence must still be strictly contiguous with no gap/duplicate, which is
+    what actually catches a mis-segmentation).
+    """
+    if not numbers:
+        return
+    base_sequence = [number for number in numbers if "-" not in number]
+    expected_bases = [str(i) for i in range(1, len(base_sequence) + 1)]
+    if base_sequence != expected_bases:
+        raise ValueError(
+            f"Article {article_number}: comma base numbers are not contiguous from 1: {numbers}"
+        )
+    last_base_seen: str | None = None
+    for number in numbers:
+        base = number.split("-", 1)[0]
+        if "-" in number and base != last_base_seen:
+            raise ValueError(
+                f"Article {article_number}: suffixed comma {number!r} does not "
+                f"immediately follow its base number {last_base_seen!r}: {numbers}"
+            )
+        last_base_seen = base
 
 
 def _sotto_articolo_suffix(sotto: str) -> str:
@@ -238,6 +364,7 @@ def _parse_article(html: str, url: str) -> ArticleRecord:
     just_text_tag = soup.find(class_="art-just-text-akn")
     if just_text_tag is not None:
         just_raw_text = just_text_tag.get_text(separator=" ", strip=True)
+        just_raw_text = re.sub(r"\s+", " ", just_raw_text)
         normalized_repeal_text = just_raw_text
         if normalized_repeal_text.startswith("(("):
             normalized_repeal_text = normalized_repeal_text[2:].lstrip()
@@ -252,15 +379,37 @@ def _parse_article(html: str, url: str) -> ArticleRecord:
     # rules — but the pure repeal formula is consumed by FR-13 above, not emitted
     # as a comma.
     if just_text_tag is not None and not abrogato:
-        just_text_result = _extract_comma_number_and_text(just_raw_text)
-        if just_text_result is not None:
-            just_number, just_comma_text = just_text_result
-            if just_number:
-                commi.append({"number": just_number, "text": just_comma_text})
-            elif commi:
-                commi[-1]["text"] = f"{commi[-1]['text']} {just_comma_text}"
-            else:
-                commi.append({"number": "1", "text": just_comma_text})
+        body_text = just_raw_text
+        if not titolo:
+            titolo, body_text = _split_leading_title(body_text, numero)
+        just_text_start = len(commi)
+        for segment in _split_into_comma_segments(body_text):
+            just_text_result = _extract_comma_number_and_text(segment)
+            if just_text_result is not None:
+                just_number, just_comma_text = just_text_result
+                if just_number:
+                    commi.append({"number": just_number, "text": just_comma_text})
+                elif commi:
+                    commi[-1]["text"] = f"{commi[-1]['text']} {just_comma_text}"
+                else:
+                    commi.append({"number": "1", "text": just_comma_text})
+        # A later amendment can re-emit a comma number to mark it repealed/replaced
+        # (e.g. `((COMMA SOPPRESSO ...))` reusing an earlier comma's number) — keep
+        # only the last occurrence, matching Normattiva's "vigente" (currently in
+        # force) convention; `dict` preserves the number's *first* position while
+        # keeping its *last* text, so the replacement lands where that comma belongs.
+        deduped: dict[str, dict[str, str]] = {}
+        for comma in commi[just_text_start:]:
+            if comma["number"] in deduped:
+                logger.warning(
+                    "Article %s: comma %s repeated in art-just-text-akn body, "
+                    "keeping the later occurrence",
+                    numero,
+                    comma["number"],
+                )
+            deduped[comma["number"]] = comma
+        commi[just_text_start:] = list(deduped.values())
+        _validate_contiguous_numbering(list(deduped.keys()), numero)
 
     return ArticleRecord(
         number=numero,
@@ -333,6 +482,7 @@ def main(law: LawConfig) -> None:
         print(f"Found {len(articles_params)} articles in TOC.")
 
         records: list[ArticleRecord] = []
+        skipped_parse_errors: list[str] = []
 
         for i, params in enumerate(articles_params, start=1):
             suffix = _sotto_articolo_suffix(params["idSottoArticolo"])
@@ -362,9 +512,15 @@ def main(law: LawConfig) -> None:
 
             (raw_dir / raw_filename).write_text(raw_html, encoding="utf-8")
 
-            record = _parse_article(raw_html, url)
-            records.append(record)
-            print(f"OK — {record['title'] or '(untitled)'}")
+            try:
+                record = _parse_article(raw_html, url)
+            except ValueError as exc:
+                print(f"SKIP (parse error): {exc}")
+                logger.warning("Skipping %s due to parse error: %s", label, exc)
+                skipped_parse_errors.append(label)
+            else:
+                records.append(record)
+                print(f"OK — {record['title'] or '(untitled)'}")
 
             time.sleep(DELAY_SECONDS)
 
@@ -374,6 +530,11 @@ def main(law: LawConfig) -> None:
             encoding="utf-8",
         )
         print(f"\nDone. {len(records)} articles saved to {output_path}")
+        if skipped_parse_errors:
+            print(
+                f"{len(skipped_parse_errors)} article(s) skipped due to parse errors: "
+                f"{', '.join(skipped_parse_errors)}"
+            )
 
 
 def main_cds() -> None:
@@ -384,6 +545,11 @@ def main_cds() -> None:
 def main_cap() -> None:
     """Entry point for scraping the Codice delle Assicurazioni Private."""
     main(CAP)
+
+
+def main_reg() -> None:
+    """Entry point for scraping the Regolamento di esecuzione e di attuazione."""
+    main(REG)
 
 
 if __name__ == "__main__":

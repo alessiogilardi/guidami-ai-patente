@@ -1,3 +1,5 @@
+
+
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
@@ -46,6 +48,7 @@ docker compose -f docker/docker-compose.yml up -d
 |---|---|---|
 | `uv run scrape-codice` | `scrapers.normattiva:main_cds` | Scrapes CdS → `data/raw/cds/`, `data/parsed/cds/codice_della_strada.json` |
 | `uv run scrape-cap` | `scrapers.normattiva:main_cap` | Scrapes CAP → `data/raw/cap/`, `data/parsed/cap/codice_assicurazioni_private.json` |
+| `uv run scrape-regolamento` | `scrapers.normattiva:main_reg` | Scrapes the Regolamento di attuazione (DPR 495/1992) → `data/raw/reg/`, `data/parsed/reg/regolamento_attuazione.json` |
 | `uv run extract-rca` | `scrapers.rca_extract:main` | Filters `codice_assicurazioni_private.json` down to `IngestorConfig.rca_ranges` → `data/parsed/cap/codice_rca.json` |
 | `uv run parse-domande` | `parsers.questions_pdf:main_questions` | Parses quiz PDF → `data/parsed/quiz-patente-ab/` |
 | `uv run ingest prepare knowledge --source <cds\|cap> [--force] [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Clean + enrich knowledge corpus for one source |

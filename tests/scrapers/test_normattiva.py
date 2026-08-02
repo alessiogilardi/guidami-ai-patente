@@ -244,3 +244,328 @@ def test_parse_article_art_just_text_akn_inline_numbered_comma() -> None:
             "text": "l'IVASS e la CONSOB definiscono attraverso un protocollo d'intesa...",
         }
     ]
+
+
+# --- T-1: REG law config and main_reg entry point (FR-1) --------------------------
+
+
+def test_reg_law_config_matches_urn_and_output_name() -> None:
+    from scrapers.normattiva import BASE_URL, REG
+
+    assert REG["slug"] == "reg"
+    assert REG["output_name"] == "regolamento_attuazione.json"
+    assert (
+        REG["toc_url"]
+        == BASE_URL
+        + "/uri-res/N2Ls?urn:nir:stato:decreto.presidente.repubblica:1992-12-16;495!vig="
+    )
+
+
+def test_main_reg_delegates_to_main_with_reg_config(monkeypatch: pytest.MonkeyPatch) -> None:
+    from unittest.mock import MagicMock
+
+    import scrapers.normattiva as normattiva
+
+    mock_main = MagicMock()
+    monkeypatch.setattr(normattiva, "main", mock_main)
+
+    normattiva.main_reg()
+
+    mock_main.assert_called_once_with(normattiva.REG)
+
+
+# --- T-2: leading `(Title)` split off the art-just-text-akn body (FR-2) -----------
+
+
+def test_parse_article_title_split_from_leading_parenthesis() -> None:
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 116</span>
+      <span class="art-just-text-akn">
+        (Segnali di divieto generici) 1. I segnali di divieto relativi alla circolazione di
+        tutti i veicoli sono elencati di seguito.
+      </span>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    assert result["title"] == "Segnali di divieto generici"
+    assert _commas(result)[0]["text"].startswith("I segnali di divieto")
+    assert not result["title"].startswith("(")
+    assert not result["title"].endswith(")")
+
+
+def test_parse_article_no_leading_parenthesis_logs_warning_and_keeps_body_as_comma(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 50</span>
+      <span class="art-just-text-akn">1. Disposizione priva di titolo esplicito.</span>
+    </div>
+    """
+
+    with caplog.at_level(logging.WARNING):
+        result = _parse_article(html, _URL)
+
+    assert result["title"] == ""
+    assert _commas(result) == [{"number": "1", "text": "Disposizione priva di titolo esplicito."}]
+    assert any("50" in record.getMessage() for record in caplog.records)
+
+
+# --- T-3: segment art-just-text-akn into one comma per inline marker (FR-3) -------
+
+
+def test_parse_article_just_text_akn_splits_multiple_inline_commas() -> None:
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 79</span>
+      <span class="art-just-text-akn">
+        (Titolo) 1. Primo comma. 2. Secondo comma. 3. Terzo comma.
+      </span>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    assert _commas(result) == [
+        {"number": "1", "text": "Primo comma."},
+        {"number": "2", "text": "Secondo comma."},
+        {"number": "3", "text": "Terzo comma."},
+    ]
+
+
+def test_parse_article_just_text_akn_leading_amendment_bracket_marker() -> None:
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 2</span>
+      <span class="art-just-text-akn">
+        ((1. Contro l'ordinanza-ingiunzione si puo' proporre opposizione. 2. L'opposizione e'
+        presentata nel termine di trenta giorni.
+      </span>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    commas = _commas(result)
+    assert commas == [
+        {"number": "1", "text": "Contro l'ordinanza-ingiunzione si puo' proporre opposizione."},
+        {"number": "2", "text": "L'opposizione e' presentata nel termine di trenta giorni."},
+    ]
+    assert all("((" not in comma["text"] for comma in commas)
+
+
+def test_parse_article_just_text_akn_ignores_false_positive_markers() -> None:
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 30</span>
+      <span class="art-just-text-akn">
+        1. Ai fini dell'art. 2. e del n. 495. si applica quanto disposto (fig. II.48) e la
+        normativa del 16 dicembre 1992, n. 495. rimane invariata. 2. Il secondo comma
+        disciplina altro.
+      </span>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    commas = _commas(result)
+    assert [comma["number"] for comma in commas] == ["1", "2"]
+    assert "art. 2." in commas[0]["text"]
+    assert "n. 495." in commas[0]["text"]
+    assert "16 dicembre 1992, n. 495." in commas[0]["text"]
+    assert commas[1]["text"] == "Il secondo comma disciplina altro."
+
+
+def test_parse_article_just_text_akn_noncontiguous_numbering_raises() -> None:
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 55</span>
+      <span class="art-just-text-akn">1. Primo comma. 3. Terzo comma senza il secondo.</span>
+    </div>
+    """
+
+    with pytest.raises(ValueError) as exc_info:
+        _parse_article(html, _URL)
+
+    assert "55" in str(exc_info.value)
+    assert "['1', '3']" in str(exc_info.value)
+
+
+# --- Regression tests: real-world patterns found via a live scrape ----------------
+#
+# The four cases below were not covered by the plan's original failing-test specs
+# (T-2/T-3) because they were only discovered against real Normattiva pages during
+# the actual `scrape-regolamento` run — the marker heuristic's initial version raised
+# `ValueError` or produced wrong output on all four. Fixed directly in
+# `_is_marker_start`/`_INLINE_MARKER_PATTERN`/`_extract_comma_number_and_text`/
+# `_split_leading_title`/`_validate_contiguous_numbering`/`_parse_article`'s dedup
+# step; these tests pin the fixed behavior against minimal reproductions.
+
+
+def test_parse_article_just_text_akn_marker_after_closing_bracket() -> None:
+    """A marker right after `))` (a preceding aside's close) is a genuine boundary.
+
+    Real example: Regolamento art. 211 — "...M.C.T.C..)) 2. Nell'evenienza...".
+    """
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 211</span>
+      <span class="art-just-text-akn">
+        (Titolo) 1. Le macchine operatrici possono circolare ((nonche' di quelle
+        eventualmente riportate sulla carta di circolazione)) . 2. Nell'evenienza di cui
+        al comma 1, possono altresi' circolare con attrezzature di lavoro.
+      </span>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    commas = _commas(result)
+    assert [comma["number"] for comma in commas] == ["1", "2"]
+    assert commas[1]["text"].startswith("Nell'evenienza")
+
+
+def test_parse_article_just_text_akn_mid_body_amendment_bracket_inserts_commas() -> None:
+    """`((N. ... M. ...))` mid-article (not just at the article's start) is recognised.
+
+    Real example: Regolamento art. 4 — commas 4-6 inserted as a block: "... si provvede.
+    ((4. I tratti ... 5. Successivamente ... 6. La consegna ...)) Qualora...".
+    """
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 4</span>
+      <span class="art-just-text-akn">
+        (Titolo) 1. Primo comma. 2. Secondo comma. 3. Terzo comma. ((4. Comma quattro
+        inserito per emendamento. 5. Comma cinque inserito per emendamento.)) 6. Comma
+        sei originario.
+      </span>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    commas = _commas(result)
+    assert [comma["number"] for comma in commas] == ["1", "2", "3", "4", "5", "6"]
+    assert commas[3]["text"] == "Comma quattro inserito per emendamento."
+    assert commas[5]["text"] == "Comma sei originario."
+
+
+def test_parse_article_just_text_akn_marker_wrapped_with_no_space_before_close() -> None:
+    """`((N.))` with no space before the closing bracket is still a recognised marker.
+
+    The leftover `))` is stripped from the following comma's text — symmetric with
+    the existing leading-`((` stripping. Real example: Regolamento art. 46's `((4.))`.
+    """
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 46</span>
+      <span class="art-just-text-akn">
+        (Titolo) 1. Primo comma. 2. Secondo comma. 3. Terzo comma. ((4.)) Qualora
+        l'accesso avvenga direttamente dalla strada, si applica quanto previsto.
+      </span>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    commas = _commas(result)
+    assert [comma["number"] for comma in commas] == ["1", "2", "3", "4"]
+    assert (
+        commas[3]["text"]
+        == "Qualora l'accesso avvenga direttamente dalla strada, si applica quanto previsto."
+    )
+    assert not commas[3]["text"].startswith(")")
+
+
+def test_parse_article_just_text_akn_bis_suffixed_comma_does_not_raise() -> None:
+    """A `-bis`-suffixed comma after its base number is a legitimate exception (AD-3).
+
+    Not a contiguity failure — the CdS already has this convention; real example:
+    Regolamento art. 9's `1, 2, 3, 3-bis`.
+    """
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 9</span>
+      <span class="art-just-text-akn">
+        (Titolo) 1. Primo comma. 2. Secondo comma. 3. Terzo comma. 3-bis. Comma
+        inserito dopo il terzo.
+      </span>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    commas = _commas(result)
+    assert [comma["number"] for comma in commas] == ["1", "2", "3", "3-bis"]
+
+
+def test_parse_article_just_text_akn_bis_suffix_out_of_place_still_raises() -> None:
+    """A suffixed comma that does NOT immediately follow its base number still fails loudly."""
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 9</span>
+      <span class="art-just-text-akn">1. Primo comma. 2. Secondo comma. 1-bis. Fuori posto.</span>
+    </div>
+    """
+
+    with pytest.raises(ValueError, match="does not immediately follow"):
+        _parse_article(html, _URL)
+
+
+def test_parse_article_just_text_akn_repeated_comma_number_keeps_last_occurrence(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """A later amendment can re-emit an earlier comma's number to mark it repealed.
+
+    Only the later occurrence is kept (Normattiva's "vigente" convention), with a
+    warning, not silently — the DB's `UNIQUE (article_id, comma_number)` couldn't
+    store both anyway. Real example: Regolamento art. 4's trailing
+    `6. ((COMMA SOPPRESSO DAL D.P.R. ... N. 610))`.
+    """
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 4</span>
+      <span class="art-just-text-akn">
+        (Titolo) 1. Primo comma. 2. Secondo comma originario. 2. ((COMMA SOPPRESSO DAL
+        D.P.R. 16 SETTEMBRE 1996, N. 610)) .
+      </span>
+    </div>
+    """
+
+    with caplog.at_level(logging.WARNING):
+        result = _parse_article(html, _URL)
+
+    commas = _commas(result)
+    assert [comma["number"] for comma in commas] == ["1", "2"]
+    assert "SOPPRESSO" in commas[1]["text"]
+    assert any(
+        "4" in record.getMessage() and "2" in record.getMessage() for record in caplog.records
+    )
+
+
+def test_parse_article_second_leading_parenthesis_kept_as_title() -> None:
+    """Two consecutive leading `(...)` segments: the descriptive (last) one is the title.
+
+    Real example: Regolamento art. 226 — "(Art. 70 Cod. Str.) (Servizio di piazza con
+    veicoli a trazione animale) 1. ...".
+    """
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 226</span>
+      <span class="art-just-text-akn">
+        (Art. 70 Cod. Str.) (Servizio di piazza con veicoli a trazione animale) 1. I
+        veicoli a trazione animale hanno le seguenti caratteristiche. 2. Il secondo
+        comma disciplina altro.
+      </span>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    assert result["title"] == "Servizio di piazza con veicoli a trazione animale"
+    commas = _commas(result)
+    assert [comma["number"] for comma in commas] == ["1", "2"]
+    assert commas[0]["text"].startswith("I veicoli a trazione animale")

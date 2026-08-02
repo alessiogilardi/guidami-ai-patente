@@ -42,14 +42,16 @@ isolation via a small local fake page object exposing only
 PDF-parsing entry point `main_questions` itself is not tested (would
 require a real PDF plus `fitz`/`pdfplumber`/image extraction).
 `tests/scrapers/test_normattiva.py` follows the same precedent: it
-unit-tests `_parse_article` (and the private helper
-`_extract_comma_number_and_text` it delegates to) against small,
-hand-built HTML fixtures using the real Normattiva CSS class names
-(`art-comma-div-akn`, `comma-num-akn`, `art_text_in_comma`,
-`art-just-text-akn`, `article-heading-akn`, `article-pre-comma-text-akn`),
-not real scraped pages — the network-fetching entry points (`main`,
-`main_cds`, `main_cap`) are not tested. No tests yet for the empty
-`src/guidami_ai_patente/` scaffold.
+unit-tests `_parse_article` (and the private helpers it delegates to —
+`_extract_comma_number_and_text`, and, since spec 0003 Phase 1,
+`_split_leading_title`/`_split_into_comma_segments`/
+`_validate_contiguous_numbering` for the Regolamento's single-block
+`art-just-text-akn` body) against small, hand-built HTML fixtures using the
+real Normattiva CSS class names (`art-comma-div-akn`, `comma-num-akn`,
+`art_text_in_comma`, `art-just-text-akn`, `article-heading-akn`,
+`article-pre-comma-text-akn`), not real scraped pages — the network-fetching
+entry points (`main`, `main_cds`, `main_cap`, `main_reg`) are not tested. No
+tests yet for the empty `src/guidami_ai_patente/` scaffold.
 `flowstep` is an external git dependency (not part of this repo's `src/`
 or `tests/`), so it has no local test mirror here — see
 `docs/architecture.md`.
@@ -76,6 +78,10 @@ T-15, after `EnrichedArticleModel` was deleted).
 Naming: `test_*.py`, generally one test file per source file/class (e.g.
 `test_article_cleaner.py` for `article_cleaner.py`).
 
-*Last updated: 2026-08-01 — verified against commit `c457354`; spec 0001
-fully implemented (T-15) — `test_article_chunker.py` deleted along with
-`article_chunker.py`.*
+*Last updated: 2026-08-01 — verified against commit `3cce407`; spec 0003 Phase 1
+added Regolamento-specific unit tests to `tests/scrapers/test_normattiva.py`
+(title-splitting, inline-marker segmentation, contiguity-guard `ValueError`), plus a
+second round of regression tests pinning marker-boundary/contiguity edge cases found
+only by running the real scrape against normattiva.it (mid-body amendment brackets,
+`)`-boundary markers, `-bis` suffixes, duplicate-comma-number de-duplication) —
+following the existing `_parse_article`-only testing precedent.*

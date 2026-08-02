@@ -50,7 +50,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
 | `guidami_ai_patente/` | FastAPI quiz bot — **not started** | FastAPI (planned) |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/` | pdfplumber, pymupdf |
-| `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/` | beautifulsoup4, lxml, httpx |
+| `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig`/entry point per law (`CDS`/`main_cds`, `CAP`/`main_cap`, `REG`/`main_reg` — spec 0003 FR-1) | beautifulsoup4, lxml, httpx |
 | `scrapers/rca_extract.py` | Filters the full CAP corpus (`data/parsed/cap/codice_assicurazioni_private.json`) down to `IngestorConfig.rca_ranges` (inclusive numeric ranges over the article's leading number) → `data/parsed/cap/codice_rca.json`; not wired into `main_cap` or the `ingest` CLI — a standalone follow-up step | stdlib only |
 
 `parsers/questions_pdf.py` extracts each sub-question's image lazily: the
@@ -234,7 +234,8 @@ CLI's self-containment, see `.claude/rules/cli-structure.md`).
 masking `postgres.password`/`open_router_config.api_key` to `****`/
 `missing` — never printed in clear.
 
-**Knowledge corpus** (per source, `cds`/`cap` — `orchestrators/knowledge_flows.py`). `cleaned`
+**Knowledge corpus** (per source, `cds`/`cap`/`reg` — `orchestrators/knowledge_flows.py`; `reg`
+added by spec 0003 FR-4/FR-5, no source-specific branch anywhere in `prepare`/`index`). `cleaned`
 is a **per-element** layer (one JSON file per article, named by a deterministic
 `commons.utils.element_id(source, number)`; `parsed` stays a single monolithic file
 per source — see `docs/plans/2026-07-17--per-element-knowledge-layers.md`). The
@@ -260,9 +261,40 @@ run still loses that run's unwritten work, since writing stays a terminal
 `WriteJsonDirStep` (write-through is deferred to a future plan). `--force`
 bypasses the filter entirely (every article is kept, no filesystem check).
 `CleanedArticleModel` (`models/knowledge/cleaned_article.py`) carries its own
-`source: Literal["cds", "cap"]`, stamped on at the parsed→cleaned boundary by
+`source: Literal["cds", "cap", "reg"]`, stamped on at the parsed→cleaned boundary by
 `ArticleMapper.from_parsed_to_cleaned`, making the element's id (and its
 filename) computable from the element alone, independent of flow context.
+
+The Regolamento (`reg`, DPR 495/1992) has a markup shape the other two sources don't:
+every article's whole body sits in one `art-just-text-akn` block (no `article-heading-akn`,
+no `art-comma-div-akn`), so `_parse_article` (`scrapers/normattiva.py`) normalizes it to the
+same `commas: list[ParsedComma]` shape via rules added for spec 0003 (FR-2/FR-3): the
+leading `(Title)` parenthesised segment is split off as the article title
+(`_split_leading_title` — loops over *consecutive* leading segments, keeping the *last* as
+the title, since some articles carry a cross-reference note before the real title, e.g.
+`(Art. 70 Cod. Str.) (Servizio di piazza...)`), then the remaining body is segmented into one
+comma per inline `N.` marker (`_split_into_comma_segments`/`_is_marker_start`). A position is
+a genuine marker start when it opens the body, sits right after `((` (an amendment bracket —
+real articles insert whole later commas this way, anywhere in the body, not just at the
+start), or is preceded by `)` (always a boundary) or by `.` whose preceding word isn't an
+abbreviation (`art`/`n`/`fig`/…, which also end in digit+period but aren't a new comma).
+`((N.))` — no space before the closing bracket — is also recognised, and the leftover `))`
+stripped from the following text. `_validate_contiguous_numbering` fails loudly (`ValueError`)
+unless the extracted *base* numbers run `1, 2, 3, …` with no gap/duplicate, while tolerating a
+`-bis`/`-ter`-suffixed comma immediately after its base number (AD-3's relaxed rule — the same
+convention the CdS uses, confirmed needed by real articles, e.g. art. 9's `1, 2, 3, 3-bis`) —
+the guard against a mis-split going undetected, given the CdS/CAP defects spec 0001 found had
+gone unnoticed for months. A later amendment can also re-emit an earlier comma's number to
+mark it repealed/replaced (e.g. a trailing `6. ((COMMA SOPPRESSO ...))`); `_parse_article`
+keeps only the last occurrence (with a `warning`), matching Normattiva's "vigente" convention —
+the DB's `UNIQUE (article_id, comma_number)` couldn't store both anyway. When `_parse_article`
+still raises for an article `main()` can't otherwise reconcile, `main()` catches it, prints
+`SKIP (parse error)`, logs a `warning`, and continues to the next article (mirroring the
+existing fetch-failure skip) rather than aborting the whole 409-article run; skipped articles
+are listed at the end. A live run against the real corpus (2026-08-01) needed all of the above
+and still skipped 2 of 409 articles (a table-formatted comma with no sentence punctuation
+before a marker, and one other) — under spec 0003's own 5%-of-articles guardrail for treating
+the fallback rate as a design failure.
 
 **Quiz bank** (`orchestrators/quiz_flows.py`):
 1. *Cleaning*: `LoadJsonStep` → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` → `WriteJsonStep` (parsed → cleaned; dedup on normalized-text + correct_answer + image identity).
@@ -315,12 +347,11 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-08-01 — verified against commit `81dd6c4`; added
-`scrapers/rca_extract.py` (T-4); spec 0001 "Article-level storage with first-class
-commas" is now fully implemented (T-1 through T-16 complete) — knowledge-corpus
-enrichment removed (T-13), `build_knowledge_indexing_flow` rewired to
-`articles`/`article_commas` and working end-to-end (T-14), and the superseded
-chunk-based chain (`ArticleChunker`, `EmbedChunksStep`, `StoreChunksStep`,
-`KnowledgeChunkStoreRepository`, `KnowledgeChunk`, `EmbeddableChunkModel`,
-`EnrichedArticleModel`, `RetrievalResult`) deleted entirely (T-15); `QuizQuestion`
-entity renamed to `QuizQuestionEntity`.*
+*Last updated: 2026-08-01 — verified against commit `3cce407`; spec 0003 Phase 1
+implemented (FR-1 through FR-5): `reg` (Regolamento, DPR 495/1992) added as a third
+scraper law/entry point and a third knowledge `source`, with no source-specific branch
+in `prepare`/`index`; `_parse_article`'s title-splitting and inline-marker comma
+segmentation, and the marker-boundary/contiguity rules within it, were corrected against
+a real 409-article scrape (mid-body `((N.` brackets, `)`-boundary markers, `-bis`
+suffixes, duplicate-number de-duplication) — `main()` now skips and logs an article whose
+parse still fails rather than aborting the run.*

@@ -26,6 +26,7 @@ dependencies = [
 [project.scripts]
 scrape-codice      = "scrapers.normattiva:main_cds"
 scrape-cap         = "scrapers.normattiva:main_cap"
+scrape-regolamento = "scrapers.normattiva:main_reg"
 extract-rca        = "scrapers.rca_extract:main"
 parse-domande      = "parsers.questions_pdf:main_questions"
 ingest             = "guidami_ai_patente_ingestor.cli:main"
