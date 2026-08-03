@@ -526,6 +526,11 @@ data/*/quiz-test/
 # would churn on every re-run and bloat the repo; unlike raw/parsed/cleaned, it's not
 # a pinned baseline, so it's treated as a build artifact rather than a source asset.
 data/enriched/
+# data/test-data/ mirrors data/{parsed,cleaned,enriched}/ on a random subset (see
+# `sample-test-data`, configs/ingestor_config.test-data.yaml): parsed/cleaned are
+# committed like their main-tree counterparts, enriched is ignored for the same
+# reason as data/enriched/ above.
+data/test-data/enriched/
 .playwright-mcp/
 .browser_session/
 specs/discussions/

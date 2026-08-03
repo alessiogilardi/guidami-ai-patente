@@ -21,6 +21,7 @@ dependencies = [
     "aiofiles>=25.1.0",
     "flowstep",
     "rich>=13",
+    "pyyaml>=6.0.3",
 ]
 
 [project.scripts]
@@ -30,6 +31,7 @@ scrape-regolamento = "scrapers.normattiva:main_reg"
 extract-rca        = "scrapers.rca_extract:main"
 parse-domande      = "parsers.questions_pdf:main_questions"
 ingest             = "guidami_ai_patente_ingestor.cli:main"
+sample-test-data   = "test_data_sampler.sampler:main"
 
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12.0"]
@@ -69,11 +71,12 @@ convention = "google"
 # Test names are self-explanatory, no docstrings required.
 "tests/**" = ["D101", "D102", "D103"]
 "**/__init__.py" = ["D104"]
-# scrapers/parsers are one-shot script entry points: cyclomatic complexity of their
-# top-level orchestration is low-value to enforce (same spirit as the TDD exemption
-# for scripts). C901 stays active for commons/ and the ingestor.
+# scrapers/parsers/test_data_sampler are one-shot script entry points: cyclomatic
+# complexity of their top-level orchestration is low-value to enforce (same spirit
+# as the TDD exemption for scripts). C901 stays active for commons/ and the ingestor.
 "src/scrapers/**" = ["C901"]
 "src/parsers/**" = ["C901"]
+"src/test_data_sampler/**" = ["C901"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

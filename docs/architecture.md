@@ -52,6 +52,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/` | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig`/entry point per law (`CDS`/`main_cds`, `CAP`/`main_cap`, `REG`/`main_reg` — spec 0003 FR-1) | beautifulsoup4, lxml, httpx |
 | `scrapers/rca_extract.py` | Filters the full CAP corpus (`data/parsed/cap/codice_assicurazioni_private.json`) down to `IngestorConfig.rca_ranges` (inclusive numeric ranges over the article's leading number) → `data/parsed/cap/codice_rca.json`; not wired into `main_cap` or the `ingest` CLI — a standalone follow-up step | stdlib only |
+| `test_data_sampler/sampler.py` | Samples `--count` random elements per source from `data/parsed/{cds,cap,reg,quiz-patente-ab}` → `data/test-data/parsed/...`, copying only the quiz images the sampled questions reference; feeds `ingest --config configs/ingestor_config.test-data.yaml prepare\|index` (ADR 0006) | stdlib only |
 
 `parsers/questions_pdf.py` extracts each sub-question's image lazily: the
 per-question default image (fallback for rows without their own nearby
@@ -96,9 +97,14 @@ no agent constructor reads the environment directly (see `patterns.md`).
 ## Main flows
 
 Entry point: `guidami_ai_patente_ingestor/cli/` (package, not a single
-module) — `ingest prepare|index|reset knowledge|quiz` and `ingest status
-[--online]` (see command table in `CLAUDE.md`). `cli/main.py` loads
-`IngestorConfig`, builds the parser (`cli/parser.py:build_parser`) and
+module) — `ingest [--config PATH] prepare|index|reset knowledge|quiz` and
+`ingest [--config PATH] status [--online]` (see command table in
+`CLAUDE.md`). `--config` (anywhere in argv) is pre-parsed out by
+`cli/main.py::_parse_config_override` — before `IngestorConfig` is built,
+since the command parser itself is config-driven — then `_load_yaml_overrides`
+parses it into a dict passed as `IngestorConfig(**overrides)`, deep-merged by
+pydantic-settings with the always-loaded base yaml (ADR 0006, `patterns.md`).
+`cli/main.py` loads `IngestorConfig`, builds the parser (`cli/parser.py:build_parser`) and
 dispatches by subcommand to `cli/commands/{prepare,index,reset,status}.py`;
 `cli/wiring.py` holds the lazy DI builders (`build_layer_resolver`,
 `build_open_router_provider`, `build_postgres_client`, `build_tracker`,
@@ -347,7 +353,5 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-08-03 — verified against commit `35df081`; `commons/observability/`
-row now reflects the `progress_reporter/` sub-package containerization
-(`protocols/`/`services/` moved one level down, same shape, package-root re-exports
-unchanged).*
+*Last updated: 2026-08-03 — verified against commit `d4c92ca`; added
+`test_data_sampler/sampler.py` and the `ingest --config` entry-point note (ADR 0006).*

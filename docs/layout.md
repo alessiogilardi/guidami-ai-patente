@@ -23,12 +23,16 @@ repo/
 │   │                                #   inspecting pipeline output (e.g. quiz enrichment
 │   │                                #   review); opened directly in a browser, no server
 │   ├── parsers/                    # Standalone script: quiz PDF -> data/parsed/
-│   └── scrapers/                   # Standalone script: normattiva.it -> data/raw/ + data/parsed/
+│   ├── scrapers/                   # Standalone script: normattiva.it -> data/raw/ + data/parsed/
+│   └── test_data_sampler/          # Standalone script: data/parsed/ -> a random subset in
+│                                    #   data/test-data/parsed/ (same C901-exempt tier as
+│                                    #   parsers/scrapers)
 ├── tests/                          # Mirrors src/ structure, no __init__.py per directory
 │   ├── commons/
 │   ├── domain/
 │   └── guidami_ai_patente_ingestor/
-├── configs/                        # Runtime YAML config (ingestor_config.yaml, agents/*.yaml)
+├── configs/                        # Runtime YAML config (ingestor_config.yaml, agents/*.yaml,
+│                                    #   ingestor_config.test-data.yaml — see below)
 ├── db/                             # init.sql — Postgres/pgvector schema, applied on container init
 ├── docker/                         # docker-compose.yml + .env for the Postgres/pgvector service
 ├── data/                           # Pipeline data at rest: raw/ -> parsed/ -> cleaned/ -> enriched/
@@ -36,6 +40,8 @@ repo/
 │                                    #   file per article, named by commons.utils.element_id);
 │                                    #   parsed and the whole quiz pipeline stay monolithic
 │                                    #   (data/docs/ is not a pipeline stage: it holds the source quiz PDF)
+│                                    #   test-data/ mirrors parsed/cleaned/enriched on a random
+│                                    #   subset (see ADR 0006), for fast local prepare/index runs
 ├── docs/                           # This documentation (Second Brain) + docs/plans/ (design plans)
 └── .claude/                        # Claude Code config: rules/, skills/, hooks/, agents/
 ```
@@ -157,8 +163,16 @@ gitignored — never committed, safe to delete once the spec they fed is
   CLI-only `rich` implementation of the `commons/observability/` port — the port
   itself is shared, but nothing outside the CLI renders it, so the renderer stays
   local per the same rule.
+- **A one-shot script that reduces/samples an existing pipeline layer**
+  (reads full JSON, writes a smaller derived JSON — same shape as
+  `scrapers/rca_extract.py`) goes as a flat module in its own top-level
+  package, sibling to `parsers/`/`scrapers/`, not inside
+  `guidami_ai_patente_ingestor/` even if it imports `IngestorConfig`/
+  `SourceConfig` from it: `src/test_data_sampler/sampler.py` samples
+  `data/parsed/` into `data/test-data/parsed/` (ADR 0006), registered as
+  `sample-test-data` and exempted from `C901` in `pyproject.toml` per the
+  same "top-level orchestration is low-value to enforce" rationale as its
+  siblings.
 
-*Last updated: 2026-08-03 — verified against commit `35df081`; `commons/observability/`
-containerized its progress-reporting component into a self-contained
-`progress_reporter/` sub-package (`protocols/` + `services/`), same convention as
-`cli/`/`agents/`.*
+*Last updated: 2026-08-03 — verified against commit `d4c92ca`; added
+`src/test_data_sampler/` and the `data/test-data/` mirror (ADR 0006).*
