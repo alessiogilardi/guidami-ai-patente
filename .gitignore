@@ -522,6 +522,9 @@ $RECYCLE.BIN/
 
 *.local*
 data/*/quiz-test/
+# Regenerable, non-deterministic LLM output (image descriptions, norm references) —
+# would churn on every re-run and bloat the repo; unlike raw/parsed/cleaned, it's not
+# a pinned baseline, so it's treated as a build artifact rather than a source asset.
 data/enriched/
 .playwright-mcp/
 .browser_session/
