@@ -41,7 +41,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `commons/ai/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` (in `configs/`) from YAML, renders prompts via `PromptRenderer`; requires an injected `OpenRouterProvider` (never reads env itself); optionally tracks every call via an injected `LlmCallTracker` port | pydantic-ai-slim[openrouter] |
 | `commons/configs/` | Shared, app-agnostic Pydantic settings: `PostgresConnectionConfig`, `OpenRouterConfig` (`BaseSettings`, `env_prefix="OPENROUTER_"`, holds `api_key: SecretStr`) | pydantic-settings |
 | `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | psycopg[binary] |
-| `commons/observability/` | `ItemProgressReporter`/`ProgressReporter` port (`protocols/`) + `NullProgressReporter` (`services/`) — progress reporting for the ingest CLI's live dashboard (spec 0002); a sibling of `commons/ai/observability/`, not nested under it, since it is not AI-specific | — |
+| `commons/observability/` | Thin re-exporting `__init__.py` over the self-contained `progress_reporter/` sub-package: `ItemProgressReporter`/`ProgressReporter` port (`progress_reporter/protocols/`) + `NullProgressReporter` (`progress_reporter/services/`) — progress reporting for the ingest CLI's live dashboard (spec 0002); a sibling of `commons/ai/observability/`, not nested under it, since it is not AI-specific | — |
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
 | `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach`, `FlatMap` — generic composition primitives used across pipeline steps | — |
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
@@ -347,11 +347,7 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-08-01 — verified against commit `3cce407`; spec 0003 Phase 1
-implemented (FR-1 through FR-5): `reg` (Regolamento, DPR 495/1992) added as a third
-scraper law/entry point and a third knowledge `source`, with no source-specific branch
-in `prepare`/`index`; `_parse_article`'s title-splitting and inline-marker comma
-segmentation, and the marker-boundary/contiguity rules within it, were corrected against
-a real 409-article scrape (mid-body `((N.` brackets, `)`-boundary markers, `-bis`
-suffixes, duplicate-number de-duplication) — `main()` now skips and logs an article whose
-parse still fails rather than aborting the run.*
+*Last updated: 2026-08-03 — verified against commit `35df081`; `commons/observability/`
+row now reflects the `progress_reporter/` sub-package containerization
+(`protocols/`/`services/` moved one level down, same shape, package-root re-exports
+unchanged).*

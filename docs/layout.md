@@ -92,14 +92,20 @@ gitignored — never committed, safe to delete once the spec they fed is
   subset of that shape relevant to their own responsibility (`configs/`
   instead of a data-access/mapper shape, since neither owns persistence).
   `src/commons/observability/` (top-level, a **sibling** of `commons/ai/`,
-  not nested under it) holds `ItemProgressReporter`/`ProgressReporter`
-  (`protocols/`) + `NullProgressReporter` (`services/`) — the progress-reporting
-  port the ingest CLI's live dashboard (spec 0002) drives and the three
-  instrumented services (`EmbeddingService`, `ImageDescriptionEnricher`,
-  `NormReferenceEnricher`) depend on. It is not
-  under `commons/ai/` because it is not AI-specific (`EmbeddingService` is
-  the only one of the three that happens to also be AI-related); see
-  `docs/patterns.md` for the port/null-object shape.
+  not nested under it) is itself just a thin re-exporting `__init__.py` over
+  a single self-contained sub-package, `observability/progress_reporter/`
+  (same self-containment convention as `cli/`/`agents/` above — a component
+  whose whole reason to exist is one responsibility gets its own local
+  `protocols/`/`services/` shape instead of being scattered across the
+  parent package's top-level dirs). `progress_reporter/protocols/` holds
+  `ItemProgressReporter`/`ProgressReporter`, `progress_reporter/services/`
+  holds `NullProgressReporter` — the progress-reporting port the ingest
+  CLI's live dashboard (spec 0002) drives and the three instrumented
+  services (`EmbeddingService`, `ImageDescriptionEnricher`,
+  `NormReferenceEnricher`) depend on. It is not under `commons/ai/` because
+  it is not AI-specific (`EmbeddingService` is the only one of the three
+  that happens to also be AI-related); see `docs/patterns.md` for the
+  port/null-object shape.
 - **Persisted or cross-cutting domain shapes** (entities that map 1:1 to a
   DB table, models shared by more than one app) go in `src/domain/`.
   Models that only exist as an intermediate step inside one pipeline stay
@@ -152,6 +158,7 @@ gitignored — never committed, safe to delete once the spec they fed is
   itself is shared, but nothing outside the CLI renders it, so the renderer stays
   local per the same rule.
 
-*Last updated: 2026-08-01 — verified against commit `3cce407`; widened the
-`guidami_ai_patente_ingestor/` normative-corpus note to CdS/CAP/Regolamento
-(spec 0003 Phase 1 added `reg` as a third source).*
+*Last updated: 2026-08-03 — verified against commit `35df081`; `commons/observability/`
+containerized its progress-reporting component into a self-contained
+`progress_reporter/` sub-package (`protocols/` + `services/`), same convention as
+`cli/`/`agents/`.*

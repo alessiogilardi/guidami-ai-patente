@@ -4,7 +4,6 @@ Separate from `commons/ai/observability/` (LLM call tracking): this package is n
 AI-specific, and is consumed by both `commons/` services and `orchestrators/` factories.
 """
 
-from .protocols import ItemProgressReporter, ProgressReporter
-from .services import NullProgressReporter
+from .progress_reporter import ItemProgressReporter, NullProgressReporter, ProgressReporter
 
 __all__ = ["ItemProgressReporter", "NullProgressReporter", "ProgressReporter"]
