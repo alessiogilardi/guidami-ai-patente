@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import ClassVar
 
 from pydantic import Field
 from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, SettingsConfigDict
@@ -67,6 +68,32 @@ class IngestorConfig(BaseSettings):
     embed_repealed: bool = False
     rca_ranges: list[str] = Field(default_factory=lambda: ["118-165", "278-300"])
 
+    _config_override_file: ClassVar[Path | None] = None
+    """Set (on a dynamically-created subclass, never on `IngestorConfig` itself) by
+    `load()` to point `settings_customise_sources` at an extra, higher-precedence
+    yaml source layered on top of the default `configs/ingestor_config.yaml`.
+    """
+
+    @classmethod
+    def load(cls, config_override: Path | None = None, **init_kwargs: object) -> "IngestorConfig":
+        """Builds the config, optionally layering `config_override` over the base yaml.
+
+        `config_override` (e.g. `configs/ingestor_config.test-data.yaml`) only needs to
+        set the fields that actually differ from the base yaml — it becomes its own
+        `YamlConfigSettingsSource`, positioned between env/.env and the base yaml, so
+        fields it doesn't mention still fall through to the base yaml (see ADR 0006).
+        `init_kwargs` are forwarded to the constructor unchanged (highest precedence).
+
+        Note: with `config_override` set, the returned instance is of a dynamically
+        created `IngestorConfig` subclass (carrying `config_override` as its
+        `_config_override_file`), not of `IngestorConfig` itself — hence the plain
+        `IngestorConfig` return type rather than `Self`.
+        """
+        if config_override is None:
+            return cls(**init_kwargs)  # pyright: ignore[reportCallIssue, reportArgumentType]
+        subclass = type(cls.__name__, (cls,), {"_config_override_file": config_override})
+        return subclass(**init_kwargs)  # pyright: ignore[reportCallIssue, reportArgumentType]
+
     @classmethod
     def settings_customise_sources(
         cls,
@@ -76,10 +103,10 @@ class IngestorConfig(BaseSettings):
         dotenv_settings: PydanticBaseSettingsSource,
         file_secret_settings: PydanticBaseSettingsSource,
     ) -> tuple[PydanticBaseSettingsSource, ...]:
-        """Precedence: init > env/.env (secrets) > ingestor_config.yaml (non-secrets)."""
-        return (
-            init_settings,
-            env_settings,
-            dotenv_settings,
-            YamlConfigSettingsSource(settings_cls),
-        )
+        """Precedence: init > env/.env (secrets) > override yaml (`load()`) > base yaml."""
+        sources: list[PydanticBaseSettingsSource] = [init_settings, env_settings, dotenv_settings]
+        override_file = getattr(settings_cls, "_config_override_file", None)
+        if override_file is not None:
+            sources.append(YamlConfigSettingsSource(settings_cls, yaml_file=override_file))
+        sources.append(YamlConfigSettingsSource(settings_cls))
+        return tuple(sources)

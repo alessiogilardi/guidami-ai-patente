@@ -5,7 +5,6 @@ import logging
 from contextlib import ExitStack
 from pathlib import Path
 
-import yaml
 from rich.console import Console
 
 from commons.observability import NullProgressReporter, ProgressReporter
@@ -44,20 +43,6 @@ def _parse_config_override(argv: list[str] | None = None) -> tuple[Path | None, 
     return pre_args.config, remaining_argv
 
 
-def _load_yaml_overrides(config_override: Path | None) -> dict[str, object]:
-    """Parses `config_override` into a dict of `IngestorConfig` init kwargs.
-
-    Passed as `IngestorConfig(**overrides)`, these take the highest precedence
-    (`init_settings`) and are deep-merged with the always-loaded default
-    `configs/ingestor_config.yaml` — so `config_override` only needs to name
-    the fields that actually differ (e.g. `layers`), not a full duplicate of
-    every field. Returns `{}` if `config_override` is `None`.
-    """
-    if config_override is None:
-        return {}
-    return yaml.safe_load(config_override.read_text(encoding="utf-8")) or {}
-
-
 def _build_dashboard(args: argparse.Namespace) -> LiveDashboard | None:
     """Returns a dashboard for an interactive, monitored, non-dry run; otherwise None."""
     if args.command not in _MONITORED_COMMANDS:
@@ -75,9 +60,7 @@ def _build_dashboard(args: argparse.Namespace) -> LiveDashboard | None:
 def main() -> None:
     """Loads config, builds the parser, configures logging, and dispatches to the command."""
     config_override, remaining_argv = _parse_config_override()
-    overrides = _load_yaml_overrides(config_override)
-
-    config = IngestorConfig(**overrides)  # pyright: ignore[reportCallIssue, reportArgumentType]
+    config = IngestorConfig.load(config_override)
     layer_resolver = wiring.build_layer_resolver(config)
 
     parser = build_parser(config)

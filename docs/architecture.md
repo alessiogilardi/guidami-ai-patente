@@ -101,9 +101,10 @@ module) — `ingest [--config PATH] prepare|index|reset knowledge|quiz` and
 `ingest [--config PATH] status [--online]` (see command table in
 `CLAUDE.md`). `--config` (anywhere in argv) is pre-parsed out by
 `cli/main.py::_parse_config_override` — before `IngestorConfig` is built,
-since the command parser itself is config-driven — then `_load_yaml_overrides`
-parses it into a dict passed as `IngestorConfig(**overrides)`, deep-merged by
-pydantic-settings with the always-loaded base yaml (ADR 0006, `patterns.md`).
+since the command parser itself is config-driven — then `main()` calls
+`IngestorConfig.load(config_override)`, which inserts the override file as its
+own `YamlConfigSettingsSource` (higher precedence than the base yaml, lower
+than env/.env), deep-merged by pydantic-settings (ADR 0006, `patterns.md`).
 `cli/main.py` loads `IngestorConfig`, builds the parser (`cli/parser.py:build_parser`) and
 dispatches by subcommand to `cli/commands/{prepare,index,reset,status}.py`;
 `cli/wiring.py` holds the lazy DI builders (`build_layer_resolver`,
@@ -353,5 +354,5 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-08-03 — verified against commit `d4c92ca`; added
-`test_data_sampler/sampler.py` and the `ingest --config` entry-point note (ADR 0006).*
+*Last updated: 2026-08-03 — verified against commit `96feb45`; the
+`ingest --config` entry-point note now reflects `IngestorConfig.load()` (ADR 0006).*

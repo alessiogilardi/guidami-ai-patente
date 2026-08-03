@@ -32,26 +32,29 @@ Three design questions had to be resolved before implementing this:
 - **Config switch**: `cli/main.py::_parse_config_override` pre-parses a
   `--config PATH` flag out of `argv` with a minimal
   `argparse.ArgumentParser(add_help=False).parse_known_args(...)`, *before*
-  `IngestorConfig()`/`build_parser(config)` are constructed (the command
-  parser itself is config-driven, so the switch must happen first).
-  `_load_yaml_overrides` then `yaml.safe_load`s that file into a plain
-  `dict` and `main()` passes it as `IngestorConfig(**overrides)`. Pydantic-
-  settings already deep-merges `init_settings` (highest precedence) with
-  the always-loaded default `configs/ingestor_config.yaml` — verified
-  empirically for both a nested `BaseModel` field (`postgres`, merging
-  `host` from one source with `user`/`password` from another) and a plain
-  `dict[str, str]` field (`layers`, replaced wholesale by whichever source
-  provides it). So `configs/ingestor_config.test-data.yaml` only needs to
-  list the fields that actually differ — `layers` and `quiz_images_dir` —
-  not a full duplicate of every field; every other field (`sources`,
-  `postgres`, `embedding`, table names, `rca_ranges`, ...) is inherited
-  straight from the base yaml, with nothing to keep in sync. `IngestorConfig`
-  itself required **no changes** — `settings_customise_sources` still always
-  loads `configs/ingestor_config.yaml` as the yaml source; the override is
-  layered on top via `init_settings`, the constructor argument path
-  pydantic-settings already gives top precedence.
-  See the "Alternate config profile via a delta yaml, merged through
-  `init_settings`" row in `docs/patterns.md`.
+  `IngestorConfig`/`build_parser(config)` are constructed (the command
+  parser itself is config-driven, so the switch must happen first). `main()`
+  then calls `IngestorConfig.load(config_override)` — a classmethod on
+  `IngestorConfig` (`configs/ingestor_config.py`) that, when `config_override`
+  is given, dynamically creates a one-off subclass carrying it as a `ClassVar`
+  (`_config_override_file`) and instantiates that instead. `settings_customise_sources`
+  reads that `ClassVar` and, if set, inserts a **second**
+  `YamlConfigSettingsSource(settings_cls, yaml_file=config_override)` into the
+  sources tuple — between `env`/`.env` and the always-present base-yaml source
+  — so the override file is a genuine, independent pydantic-settings source,
+  not a dict we parse ourselves and smuggle in through `init_settings`
+  (`init_settings` stays reserved for real constructor kwargs, e.g. in tests).
+  Precedence: `init_settings` > `env`/`.env` > override yaml (`load()`) > base
+  yaml. Pydantic-settings deep-merges these already — verified empirically for
+  both a nested `BaseModel` field (`postgres`, merging `host` from one source
+  with `user`/`password` from another) and a plain `dict[str, str]` field
+  (`layers`, replaced wholesale by whichever source provides it). So
+  `configs/ingestor_config.test-data.yaml` only needs to list the fields that
+  actually differ — `layers` and `quiz_images_dir` — not a full duplicate of
+  every field; every other field (`sources`, `postgres`, `embedding`, table
+  names, `rca_ranges`, ...) is inherited straight from the base yaml, with
+  nothing to keep in sync. See the "Alternate config profile via a second,
+  higher-precedence yaml source" row in `docs/patterns.md`.
 - **DB target**: the test-data profile keeps the same `postgres` connection
   and the same table names (`articles`, `article_commas`,
   `quiz_questions`) as the default profile. Running `ingest index` against
@@ -98,6 +101,29 @@ Three design questions had to be resolved before implementing this:
   user sources manually): considered simpler to implement, but pushes a
   manual, easy-to-forget shell step onto every invocation instead of one
   explicit, visible CLI argument; rejected in favor of the flag.
+- **Read the override yaml into a plain `dict`, pass as `IngestorConfig(**overrides)`**
+  (second implementation attempt, with the reading done either by hand via
+  `yaml.safe_load` or via `commons.repositories.YamlRepository`): worked and
+  kept the delta-yaml benefit, but conflated two different concepts —
+  `init_settings` is meant for genuine caller-supplied constructor kwargs,
+  not a second config file's content smuggled in through the same channel.
+  `YamlRepository` specifically was also a poor fit: it exists to persist
+  **model-shaped** data (Pydantic/dataclass/dict-with-a-known-shape), and
+  its path-traversal safety check became vacuous the only way it could be
+  wired for an arbitrary `--config PATH` (`LocalFileSystemClient(config_override.parent)`
+  makes the base directory self-referential, so the check can never actually
+  fail) — extra indirection bought no real safety. Rejected in favor of making
+  the override file a first-class, independent `YamlConfigSettingsSource`
+  inside `settings_customise_sources`, keeping `init_settings` for real kwargs
+  only and reusing pydantic-settings' own yaml-reading code path.
+- **A public `_yaml_file=...` init kwarg, mirroring `_env_file`** (proposed,
+  never implemented): rejected after confirming empirically that
+  `BaseSettings.__init__` does not special-case a `_yaml_file` kwarg the way
+  it does `_env_file`/`_secrets_dir` — passing one raises `ValidationError`
+  (`extra_forbidden`), and merely setting `yaml_file` in `model_config`
+  without a `YamlConfigSettingsSource` wired into `settings_customise_sources`
+  is silently inert (pydantic-settings itself warns about this). There is no
+  built-in per-instantiation override for a custom-added source like ours.
 - **Isolated DB target for the subset** (a `_test` suffix on table names,
   or a separate database): rejected for now — adds a schema/migration
   surface (`db/init.sql`) for a workflow that, in practice, is bookended by
