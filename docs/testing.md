@@ -43,14 +43,27 @@ PDF-parsing entry point `main_questions` itself is not tested (would
 require a real PDF plus `fitz`/`pdfplumber`/image extraction).
 `tests/scrapers/test_normattiva.py` follows the same precedent: it
 unit-tests `_parse_article` (and the private helpers it delegates to —
-`_extract_comma_number_and_text`, and, since spec 0003 Phase 1,
-`_split_leading_title`/`_split_into_comma_segments`/
-`_validate_contiguous_numbering` for the Regolamento's single-block
-`art-just-text-akn` body) against small, hand-built HTML fixtures using the
-real Normattiva CSS class names (`art-comma-div-akn`, `comma-num-akn`,
+`_extract_comma_number_and_text`, `_split_leading_title`/
+`_split_into_comma_segments`/`_validate_contiguous_numbering` for the
+Regolamento's single-block `art-just-text-akn` body since spec 0003 Phase 1,
+plus, since spec 0004 T-6's `C901` complexity split, the five smaller
+orchestration steps `_parse_article` itself now delegates to —
+`_extract_numero_and_titolo`, `_build_commi_from_comma_divs`,
+`_apply_pre_comma_block`, `_detect_article_repeal`,
+`_apply_just_text_akn_body` — exercised only indirectly, through
+`_parse_article`'s existing characterization tests, not with dedicated unit
+tests of their own) against small, hand-built HTML fixtures using the real
+Normattiva CSS class names (`art-comma-div-akn`, `comma-num-akn`,
 `art_text_in_comma`, `art-just-text-akn`, `article-heading-akn`,
-`article-pre-comma-text-akn`), not real scraped pages — the network-fetching
-entry points (`main`, `main_cds`, `main_cap`, `main_reg`) are not tested. No
+`article-pre-comma-text-akn`), not real scraped pages. Spec 0004 T-4 added
+direct network-free coverage of `main()` (`RunArtifactWriter` wiring, the
+`--dry-run` no-I/O path) and of the extracted `_process_article` (each of
+the three skip categories plus the success path), each via a mocked
+`httpx.Client`/`RunArtifactWriter` — the former `main_cds`/`main_cap`/
+`main_reg` per-law entry points this section used to call out as untested no
+longer exist (spec 0004 T-5 replaced them with one `cli_main`, itself
+covered by `test_cli_main_dispatches_to_main_with_resolved_source`/
+`test_cli_main_dry_run_flag_forwarded` via a monkeypatched `main`). No
 tests yet for the empty `src/guidami_ai_patente/` scaffold.
 `flowstep` is an external git dependency (not part of this repo's `src/`
 or `tests/`), so it has no local test mirror here — see
@@ -78,10 +91,7 @@ T-15, after `EnrichedArticleModel` was deleted).
 Naming: `test_*.py`, generally one test file per source file/class (e.g.
 `test_article_cleaner.py` for `article_cleaner.py`).
 
-*Last updated: 2026-08-01 — verified against commit `3cce407`; spec 0003 Phase 1
-added Regolamento-specific unit tests to `tests/scrapers/test_normattiva.py`
-(title-splitting, inline-marker segmentation, contiguity-guard `ValueError`), plus a
-second round of regression tests pinning marker-boundary/contiguity edge cases found
-only by running the real scrape against normattiva.it (mid-body amendment brackets,
-`)`-boundary markers, `-bis` suffixes, duplicate-comma-number de-duplication) —
-following the existing `_parse_article`-only testing precedent.*
+*Last updated: 2026-08-03 — verified against commit `600b4be`; spec 0004 added
+network-free `main()`/`_process_article` coverage (T-4) and a `cli_main` test replacing
+the removed `main_cds`/`main_cap`/`main_reg` precedent (T-5), and noted the five new
+`_parse_article`-orchestration helpers extracted for the `C901` complexity split (T-6).*

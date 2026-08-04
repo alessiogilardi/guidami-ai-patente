@@ -41,7 +41,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `commons/ai/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` (in `configs/`) from YAML, renders prompts via `PromptRenderer`; requires an injected `OpenRouterProvider` (never reads env itself); optionally tracks every call via an injected `LlmCallTracker` port | pydantic-ai-slim[openrouter] |
 | `commons/configs/` | Shared, app-agnostic Pydantic settings: `PostgresConnectionConfig`, `OpenRouterConfig` (`BaseSettings`, `env_prefix="OPENROUTER_"`, holds `api_key: SecretStr`) | pydantic-settings |
 | `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | psycopg[binary] |
-| `commons/observability/` | Thin re-exporting `__init__.py` over the self-contained `progress_reporter/` sub-package: `ItemProgressReporter`/`ProgressReporter` port (`progress_reporter/protocols/`) + `NullProgressReporter` (`progress_reporter/services/`) — progress reporting for the ingest CLI's live dashboard (spec 0002); a sibling of `commons/ai/observability/`, not nested under it, since it is not AI-specific | — |
+| `commons/observability/` | Thin re-exporting `__init__.py` over two self-contained sibling sub-packages: `progress_reporter/` (`ItemProgressReporter`/`ProgressReporter` port + `NullProgressReporter` — progress reporting for the ingest CLI's live dashboard, spec 0002) and `run_artifact_writer/` (`RunArtifactWriter` + `RunArtifactWriterConfig`, flat — no `protocols/`/`services/` split, since AD-3 rejects a `Protocol` here with only one implementation; a context manager that owns one `logs/<prefix>_<timestamp>/` run directory, writing `run.log`/`manifest.json`/`report.md` and always finalizing them in `__exit__` even on an unhandled exception — shared between `ingest`'s `configure_logging` and the `scrapers/normattiva.py` scraper, spec 0004 FR-3/AD-3); a sibling of `commons/ai/observability/`, not nested under it, since it is not AI-specific | — |
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
 | `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach`, `FlatMap` — generic composition primitives used across pipeline steps | — |
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
@@ -50,7 +50,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
 | `guidami_ai_patente/` | FastAPI quiz bot — **not started** | FastAPI (planned) |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/` | pdfplumber, pymupdf |
-| `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig`/entry point per law (`CDS`/`main_cds`, `CAP`/`main_cap`, `REG`/`main_reg` — spec 0003 FR-1) | beautifulsoup4, lxml, httpx |
+| `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`) selected via a single `scrape --source <cds\|cap\|reg>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`) | beautifulsoup4, lxml, httpx |
 | `scrapers/rca_extract.py` | Filters the full CAP corpus (`data/parsed/cap/codice_assicurazioni_private.json`) down to `IngestorConfig.rca_ranges` (inclusive numeric ranges over the article's leading number) → `data/parsed/cap/codice_rca.json`; not wired into `main_cap` or the `ingest` CLI — a standalone follow-up step | stdlib only |
 
 `parsers/questions_pdf.py` extracts each sub-question's image lazily: the
@@ -129,9 +129,15 @@ to the same stream. Every `logging.getLogger(...)` call anywhere in the
 codebase is still captured either way: by the `FileHandler` always, and by
 whichever console sink (`StreamHandler` or the dashboard's `LogPanelHandler`)
 is active. Log files land in `logs/ingest_<command>_<YYYYMMDDHHMM>/run.log`; a
-same-minute collision appends a numeric suffix (`_2`, `_3`, ...) via the
-private `_build_run_dir`. `--dry-run` runs never get a log directory — that
-would contradict the "no filesystem writes" guarantee `render_dry_run` prints.
+same-minute collision appends a numeric suffix (`_2`, `_3`, ...) via
+`commons.observability.RunArtifactWriter.build_run_dir(logs_root,
+f"ingest_{command}")` (spec 0004 FR-3/AD-3 — `configure_logging` delegates its
+run-dir creation and log format, `commons.observability.LOG_FORMAT`, to the
+shared `RunArtifactWriter` component instead of a private
+`_build_run_dir`/`_LOG_FORMAT`, so `ingest` and `scrape` runs share one
+collision-suffix convention and one log format). `--dry-run` runs never get a
+log directory — that would contradict the "no filesystem writes" guarantee
+`render_dry_run` prints.
 
 **Live dashboard** (`prepare`/`index` only, interactive TTY, non-dry-run,
 non-`--plain` — spec 0002): `cli/main.py:_build_dashboard(args)` returns a
@@ -272,12 +278,28 @@ same `commas: list[ParsedComma]` shape via rules added for spec 0003 (FR-2/FR-3)
 leading `(Title)` parenthesised segment is split off as the article title
 (`_split_leading_title` — loops over *consecutive* leading segments, keeping the *last* as
 the title, since some articles carry a cross-reference note before the real title, e.g.
-`(Art. 70 Cod. Str.) (Servizio di piazza...)`), then the remaining body is segmented into one
-comma per inline `N.` marker (`_split_into_comma_segments`/`_is_marker_start`). A position is
-a genuine marker start when it opens the body, sits right after `((` (an amendment bracket —
-real articles insert whole later commas this way, anywhere in the body, not just at the
-start), or is preceded by `)` (always a boundary) or by `.` whose preceding word isn't an
-abbreviation (`art`/`n`/`fig`/…, which also end in digit+period but aren't a new comma).
+`(Art. 70 Cod. Str.) (Servizio di piazza...)`; since spec 0004 T-7/FR-5, also strips a leading
+`((` amendment-bracket marker first — e.g. Regolamento art. 6's `(( (Modalità e procedura...)`
+— so a whole-title-wrapped-in-`((...))` article no longer falls through to the "no title"
+warning path; the equivalent fix for `heading_tag`-shaped articles, `_extract_heading_title`,
+also handles a glued leading cross-reference note with no separating space, e.g.
+`(Art. 10 Cod. Str.)Provvedimento di autorizzazione`), then the remaining body is segmented
+into one comma per inline `N.` marker (`_split_into_comma_segments`/`_is_marker_start`). A
+position is a genuine marker start when it opens the body, sits right after `((` (an amendment
+bracket — real articles insert whole later commas this way, anywhere in the body, not just at
+the start), is preceded by `)` or `;` (always a boundary), is preceded by `.` whose preceding
+word isn't an abbreviation (`art`/`n`/`fig`/…, which also end in digit+period but aren't a new
+comma), or — since spec 0004 T-8/FR-6 — is preceded by no `.`/`)`/`;` at all but the token
+immediately before it itself ends in a digit (e.g. `"...modello II.6/q2 11. Il modello
+II.7..."`). This last case is **deliberately narrow**, not "any bare token is a boundary": the
+broader formulation (any non-whitespace, non-glued token) was tried first and found, via a
+full offline re-parse of the 409-article Regolamento corpus, to introduce 51 new
+false-positive splits on ordinary numeric cross-references in prose (`"...commi 4, 5 e 6. La
+decorrenza..."`, `"...all'articolo 266. ((46))..."`, bare years like `"...finanziario 1994.
+3. Per il..."`) — the digit-ending-token narrowing fixes exactly the two verified real cases
+(Regolamento art. 83 comma 11, art. 194 comma 2) with zero regressions elsewhere in the
+corpus (confirmed by re-parsing and diffing all 409 articles against the committed JSON); a
+safer, more general rule is deferred to a future enhancement, not attempted by this spec.
 `((N.))` — no space before the closing bracket — is also recognised, and the leftover `))`
 stripped from the following text. `_validate_contiguous_numbering` fails loudly (`ValueError`)
 unless the extracted *base* numbers run `1, 2, 3, …` with no gap/duplicate, while tolerating a
@@ -288,13 +310,28 @@ gone unnoticed for months. A later amendment can also re-emit an earlier comma's
 mark it repealed/replaced (e.g. a trailing `6. ((COMMA SOPPRESSO ...))`); `_parse_article`
 keeps only the last occurrence (with a `warning`), matching Normattiva's "vigente" convention —
 the DB's `UNIQUE (article_id, comma_number)` couldn't store both anyway. When `_parse_article`
-still raises for an article `main()` can't otherwise reconcile, `main()` catches it, prints
-`SKIP (parse error)`, logs a `warning`, and continues to the next article (mirroring the
-existing fetch-failure skip) rather than aborting the whole 409-article run; skipped articles
-are listed at the end. A live run against the real corpus (2026-08-01) needed all of the above
-and still skipped 2 of 409 articles (a table-formatted comma with no sentence punctuation
-before a marker, and one other) — under spec 0003's own 5%-of-articles guardrail for treating
-the fallback rate as a design failure.
+still raises for an article `main()` can't otherwise reconcile, `_process_article`
+(`scrapers/normattiva.py`, spec 0004 T-4 — extracted from `main()`'s former inline loop body,
+replacing its `continue`-based skips with early `return None`s per `.claude/rules/code-conventions.md`)
+catches the `ValueError`, calls `writer.record_skip("parse_error", label, str(exc))` and logs a
+`warning`, then returns `None` — `main()`'s loop only appends non-`None` records, so the run
+proceeds to the next article rather than aborting the whole 409-article run. Skipped articles
+(across all three categories: `fetch_failed`, `session_invalid`, `parse_error`) are grouped in
+the run's `report.md` (see the `commons/observability/` row above), not printed inline. A live
+run against the real corpus (2026-08-01) needed all of the above and still skipped 2 of 409
+articles as `parse_error` (a table-formatted comma with no sentence punctuation before a
+marker — art. 83's `"...modello II.6/q2 11."` boundary — and a semicolon-terminated sub-list
+item — art. 194's `"...pulizia dei supporti; 2."` boundary) — under spec 0003's own
+5%-of-articles guardrail for treating the fallback rate as a design failure. Spec 0004 FR-6
+(T-8, the digit-ending-token and `;`-boundary cases added to `_is_marker_start` above) targets
+exactly these two symptoms and has been confirmed to recover both offline: re-parsing all 409
+`data/raw/reg/*.html` files against the fixed code yields zero `parse_error`s (up from 2), and
+diffing every re-parsed record against the currently-committed
+`data/parsed/reg/regolamento_attuazione.json` shows no unintended comma-boundary change
+elsewhere in the corpus (only the two newly-recovered articles plus the 26 title-only changes
+already attributed to T-7/FR-5 above). A live re-scrape against normattiva.it is still needed
+once, to regenerate the committed JSON file itself with this corrected content — the offline
+check only confirms the *code* behaves correctly against already-fetched HTML.
 
 **Quiz bank** (`orchestrators/quiz_flows.py`):
 1. *Cleaning*: `LoadJsonStep` → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` → `WriteJsonStep` (parsed → cleaned; dedup on normalized-text + correct_answer + image identity).
@@ -347,7 +384,19 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-08-03 — verified against commit `35df081`; `commons/observability/`
-row now reflects the `progress_reporter/` sub-package containerization
-(`protocols/`/`services/` moved one level down, same shape, package-root re-exports
-unchanged).*
+*Last updated: 2026-08-03 — verified against commit `600b4be`; `commons/observability/`
+row now also covers the new `run_artifact_writer/` sibling sub-package (spec 0004 T-2/T-3),
+the per-run file logging section reflects `configure_logging`'s delegation to
+`RunArtifactWriter.build_run_dir`/`LOG_FORMAT`, and the Regolamento parse-error-skip
+paragraph reflects `_process_article`'s extraction and `RunArtifactWriter.record_skip`
+(spec 0004 T-4, replacing the former inline `continue`/print-summary shape). The
+`scrapers/normattiva.py` row now reflects the single `scrape --source <cds|cap|reg>`
+CLI entry point (`cli_main`), replacing the per-law `main_cds`/`main_cap`/`main_reg`
+entry points (spec 0004 T-5). The Regolamento parsing paragraph now documents
+`_split_leading_title`/`_extract_heading_title`'s amendment-bracket and glued
+cross-reference handling (spec 0004 T-7/FR-5) and `_is_marker_start`'s widened
+`;`-boundary and digit-ending-token-boundary rules (spec 0004 T-8/FR-6 — narrowed from an
+initial broader "any bare token" rule after it was found to cause 51 new false-positive
+splits on an offline corpus re-parse; the broader rule is deferred to a future enhancement),
+and records that an offline re-parse of all 409 Regolamento articles confirms both
+previously-skipped articles now recover with zero regressions elsewhere.*

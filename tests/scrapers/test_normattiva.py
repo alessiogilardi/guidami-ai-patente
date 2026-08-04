@@ -1,22 +1,32 @@
+import json
 import logging
+import sys
+from dataclasses import asdict
+from pathlib import Path
+from unittest.mock import MagicMock
 
+import httpx
 import pytest
 
-from scrapers.normattiva import ArticleRecord, _parse_article
+import scrapers.normattiva as normattiva
+from scrapers.normattiva import (
+    ArticleParams,
+    ArticleRecord,
+    LawConfig,
+    _build_article_url,
+    _extract_heading_title,
+    _parse_article,
+    _parse_toc,
+    _process_article,
+    _split_leading_title,
+)
 
 _URL = "http://example"
 
 
 def _commas(result: ArticleRecord) -> list[dict[str, str]]:
-    """Read the `commas` field.
-
-    `ArticleRecord` does not declare `commas` yet (T-1 adds it, replacing
-    `paragraphs`) — indexing it directly trips the pyright hook's
-    `reportGeneralTypeIssues` on every assertion. Centralizing the
-    `type: ignore` here keeps the individual tests below reading exactly
-    like the plan's failing-test spec (`result["commas"] == ...`).
-    """
-    return result["commas"]  # type: ignore[typeddict-item]
+    """Read the `commas` field."""
+    return result.commas
 
 
 # --- T-1: comma extraction rewrite ------------------------------------------------
@@ -134,8 +144,7 @@ def test_parse_article_title_falls_back_to_pre_comma_block() -> None:
     result = _parse_article(html, _URL)
 
     assert (
-        result["title"]
-        == "Requisiti soggettivi per ottenere il rilascio della patente di guida..."
+        result.title == "Requisiti soggettivi per ottenere il rilascio della patente di guida..."
     )
 
 
@@ -150,7 +159,7 @@ def test_parse_article_pre_comma_numbered_block_becomes_comma_not_title() -> Non
 
     result = _parse_article(html, _URL)
 
-    assert result["title"] == ""
+    assert result.title == ""
     assert _commas(result)[0] == {"number": "1", "text": "Contro l'ordinanza-ingiunzione..."}
 
 
@@ -166,7 +175,7 @@ def test_parse_article_heading_present_note_reference_pre_comma_ignored() -> Non
 
     result = _parse_article(html, _URL)
 
-    assert result["title"] == "Sanzioni"
+    assert result.title == "Sanzioni"
     assert _commas(result) == []
 
 
@@ -184,7 +193,7 @@ def test_parse_article_repealed_via_art_just_text_akn_formula() -> None:
 
     result = _parse_article(html, _URL)
 
-    assert result["repealed"] is True
+    assert result.repealed is True
     assert _commas(result) == []
 
 
@@ -203,7 +212,7 @@ def test_parse_article_editorial_note_not_flagged_repealed() -> None:
 
     result = _parse_article(html, _URL)
 
-    assert result["repealed"] is False
+    assert result.repealed is False
 
 
 def test_parse_article_art_just_text_akn_single_unnumbered_body_becomes_comma_one() -> None:
@@ -246,32 +255,19 @@ def test_parse_article_art_just_text_akn_inline_numbered_comma() -> None:
     ]
 
 
-# --- T-1: REG law config and main_reg entry point (FR-1) --------------------------
+# --- T-1: REG law config (FR-1) ----------------------------------------------------
 
 
 def test_reg_law_config_matches_urn_and_output_name() -> None:
     from scrapers.normattiva import BASE_URL, REG
 
-    assert REG["slug"] == "reg"
-    assert REG["output_name"] == "regolamento_attuazione.json"
+    assert REG.slug == "reg"
+    assert REG.output_name == "regolamento_attuazione.json"
     assert (
-        REG["toc_url"]
+        REG.toc_url
         == BASE_URL
         + "/uri-res/N2Ls?urn:nir:stato:decreto.presidente.repubblica:1992-12-16;495!vig="
     )
-
-
-def test_main_reg_delegates_to_main_with_reg_config(monkeypatch: pytest.MonkeyPatch) -> None:
-    from unittest.mock import MagicMock
-
-    import scrapers.normattiva as normattiva
-
-    mock_main = MagicMock()
-    monkeypatch.setattr(normattiva, "main", mock_main)
-
-    normattiva.main_reg()
-
-    mock_main.assert_called_once_with(normattiva.REG)
 
 
 # --- T-2: leading `(Title)` split off the art-just-text-akn body (FR-2) -----------
@@ -290,10 +286,10 @@ def test_parse_article_title_split_from_leading_parenthesis() -> None:
 
     result = _parse_article(html, _URL)
 
-    assert result["title"] == "Segnali di divieto generici"
+    assert result.title == "Segnali di divieto generici"
     assert _commas(result)[0]["text"].startswith("I segnali di divieto")
-    assert not result["title"].startswith("(")
-    assert not result["title"].endswith(")")
+    assert not result.title.startswith("(")
+    assert not result.title.endswith(")")
 
 
 def test_parse_article_no_leading_parenthesis_logs_warning_and_keeps_body_as_comma(
@@ -309,7 +305,7 @@ def test_parse_article_no_leading_parenthesis_logs_warning_and_keeps_body_as_com
     with caplog.at_level(logging.WARNING):
         result = _parse_article(html, _URL)
 
-    assert result["title"] == ""
+    assert result.title == ""
     assert _commas(result) == [{"number": "1", "text": "Disposizione priva di titolo esplicito."}]
     assert any("50" in record.getMessage() for record in caplog.records)
 
@@ -565,7 +561,416 @@ def test_parse_article_second_leading_parenthesis_kept_as_title() -> None:
 
     result = _parse_article(html, _URL)
 
-    assert result["title"] == "Servizio di piazza con veicoli a trazione animale"
+    assert result.title == "Servizio di piazza con veicoli a trazione animale"
     commas = _commas(result)
     assert [comma["number"] for comma in commas] == ["1", "2"]
     assert commas[0]["text"].startswith("I veicoli a trazione animale")
+
+
+# --- T-8: widen _is_marker_start's accepted preceding-punctuation set (FR-6) ------
+
+
+def test_parse_article_recovers_article_83_comma_11() -> None:
+    """FR-6/PD-8: a bare word with no punctuation before the marker is a boundary.
+
+    Genuine comma boundary, provided it isn't glued to the marker. Real example:
+    Regolamento art. 83 comma 10->11 — "...modello II.6/q2 11. Il modello II.7
+    indica...". Comma 12, which follows a period as usual, pins that the fix
+    doesn't merely shift the gap: without the fix, comma 11 merges into 10 and
+    the numbering jumps straight from 10 to 12, which is what raised `ValueError`
+    before this task.
+    """
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 83</span>
+      <span class="art-just-text-akn">
+        (Titolo) 1. Comma uno. 2. Comma due. 3. Comma tre. 4. Comma quattro. 5.
+        Comma cinque. 6. Comma sei. 7. Comma sette. 8. Comma otto. 9. Comma nove.
+        10. I simboli da utilizzare per i pannelli integrativi modello II.6/q2 11.
+        Il modello II.7 indica l'andamento della strada principale. 12. Nei
+        pannelli integrativi e' vietato l'uso di iscrizioni.
+      </span>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    commas = _commas(result)
+    assert [comma["number"] for comma in commas] == [str(n) for n in range(1, 13)]
+    assert commas[9]["text"] == (
+        "I simboli da utilizzare per i pannelli integrativi modello II.6/q2"
+    )
+    assert commas[10]["text"] == "Il modello II.7 indica l'andamento della strada principale."
+
+
+def test_parse_article_recovers_article_194_comma_2() -> None:
+    """FR-6/PD-8: a semicolon immediately before a marker is a genuine boundary.
+
+    Same as the already-accepted closing `)`. Real example: Regolamento art. 194
+    comma 1->2 — "...pulizia dei supporti; 2. Le imprese devono...".
+    """
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 194</span>
+      <span class="art-just-text-akn">
+        (Titolo) 1. Le imprese devono disporre di attrezzature idonee per la
+        pulizia dei supporti; 2. Le imprese devono altresi' disporre di
+        attrezzature per la lavorazione meccanica dei supporti.
+      </span>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    commas = _commas(result)
+    assert [comma["number"] for comma in commas] == ["1", "2"]
+    assert commas[0]["text"] == (
+        "Le imprese devono disporre di attrezzature idonee per la pulizia dei supporti;"
+    )
+    assert commas[1]["text"] == (
+        "Le imprese devono altresi' disporre di attrezzature per la lavorazione "
+        "meccanica dei supporti."
+    )
+
+
+# --- T-1: LawConfig/ArticleParams/ArticleRecord become frozen dataclasses (FR-2) --
+
+
+def test_law_config_missing_field_raises_at_construction() -> None:
+    """AD-1: `LawConfig` is a frozen dataclass — omitting a required field raises."""
+    with pytest.raises(TypeError):
+        LawConfig(slug="x", toc_url="y")  # type: ignore[call-arg]
+
+
+def test_article_record_asdict_matches_json_shape() -> None:
+    """FR-2: `ArticleRecord` is a dataclass — `asdict` mirrors the persisted JSON shape."""
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 1</span>
+      <div class="art-comma-div-akn">
+        <span class="comma-num-akn">1.</span>
+        <span class="art_text_in_comma">Testo del comma.</span>
+      </div>
+    </div>
+    """
+
+    record = _parse_article(html, _URL)
+
+    result = asdict(record)
+
+    assert set(result.keys()) == {"number", "title", "commas", "url", "scraped_at", "repealed"}
+    assert isinstance(result["commas"], list)
+    assert all(set(comma.keys()) == {"number", "text"} for comma in result["commas"])
+
+
+# --- T-4: `_parse_toc`/`_process_article`/`main` control-flow restructure (FR-1, FR-3, FR-4) --
+
+_TEST_LAW = LawConfig(slug="test-law", toc_url="http://toc.example/toc", output_name="out.json")
+
+
+def _toc_entry(id_articolo: str, id_sotto: str, flag: str = "0", progressivo: str = "1") -> str:
+    """Builds one `caricaArticolo?...` onclick handler for a TOC HTML fixture."""
+    qs = (
+        f"art.versione=1&art.idGruppo=10&art.flagTipoArticolo={flag}"
+        f"&art.codiceRedazionale=X&art.idArticolo={id_articolo}"
+        f"&art.idSottoArticolo={id_sotto}&art.idSottoArticolo1=0"
+        f"&art.dataPubblicazioneGazzetta=2020-01-01&art.progressivo={progressivo}"
+    )
+    return f'<a href="#" onclick="caricaArticolo?{qs}">Art. {id_articolo}</a>'
+
+
+def _article_params(id_articolo: str = "5", id_sotto: str = "1") -> ArticleParams:
+    return ArticleParams(
+        versione="1",
+        idGruppo="10",
+        flagTipoArticolo="0",
+        codiceRedazionale="X",
+        idArticolo=id_articolo,
+        idSottoArticolo=id_sotto,
+        idSottoArticolo1="0",
+        dataPubblicazioneGazzetta="2020-01-01",
+        progressivo="1",
+    )
+
+
+def test_parse_toc_skips_non_article_flag_entries() -> None:
+    """PD-4: only `flagTipoArticolo=0` entries are kept."""
+    html = _toc_entry("1", "1", flag="0") + _toc_entry("2", "1", flag="1")
+
+    result = _parse_toc(html)
+
+    assert len(result) == 1
+    assert result[0].idArticolo == "1"
+    assert result[0].flagTipoArticolo == "0"
+
+
+def test_parse_toc_deduplicates_repeated_article_sotto_pairs() -> None:
+    """PD-4: a repeated `(idArticolo, idSottoArticolo)` pair is kept only once."""
+    html = _toc_entry("3", "1", progressivo="1") + _toc_entry("3", "1", progressivo="2")
+
+    result = _parse_toc(html)
+
+    assert len(result) == 1
+
+
+def test_process_article_records_fetch_failed_skip(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.setattr(normattiva.time, "sleep", lambda *_: None)
+    params = _article_params()
+    client = MagicMock()
+    client.get.return_value = httpx.Response(500, text="")
+    writer = MagicMock()
+
+    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, writer)
+
+    assert result is None
+    expected_url = _build_article_url(params)
+    writer.record_skip.assert_called_once_with("fetch_failed", "Art. 5", expected_url)
+
+
+def test_process_article_records_session_invalid_skip(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.setattr(normattiva.time, "sleep", lambda *_: None)
+    params = _article_params()
+    client = MagicMock()
+    client.get.return_value = httpx.Response(200, text="<html>no marker here</html>")
+    writer = MagicMock()
+
+    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, writer)
+
+    assert result is None
+    expected_url = _build_article_url(params)
+    writer.record_skip.assert_called_once_with("session_invalid", "Art. 5", expected_url)
+
+
+def test_process_article_records_parse_error_skip(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.setattr(normattiva.time, "sleep", lambda *_: None)
+    params = _article_params(id_articolo="55")
+    article_html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 55</span>
+      <span class="art-just-text-akn">1. Primo comma. 3. Terzo comma senza il secondo.</span>
+    </div>
+    """
+    client = MagicMock()
+    client.get.return_value = httpx.Response(200, text=article_html)
+    writer = MagicMock()
+
+    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, writer)
+
+    assert result is None
+    writer.record_skip.assert_called_once()
+    category, label, detail = writer.record_skip.call_args[0]
+    assert category == "parse_error"
+    assert label == "Art. 55"
+    assert "55" in detail
+
+
+def test_process_article_returns_record_on_success_and_records_no_skip(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.setattr(normattiva.time, "sleep", lambda *_: None)
+    params = _article_params()
+    article_html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 5</span>
+      <div class="art-comma-div-akn">
+        <span class="comma-num-akn">1.</span>
+        <span class="art_text_in_comma">Testo del comma.</span>
+      </div>
+    </div>
+    """
+    client = MagicMock()
+    client.get.return_value = httpx.Response(200, text=article_html)
+    writer = MagicMock()
+
+    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, writer)
+
+    assert result is not None
+    assert result.number == "5"
+    assert result.title == ""
+    writer.record_skip.assert_not_called()
+
+
+def test_main_clean_run_writes_output_and_finalizes_writer(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.setattr(normattiva.time, "sleep", lambda *_: None)
+
+    law = LawConfig(slug="test-law", toc_url="http://toc.example/toc", output_name="out.json")
+    toc_html = _toc_entry("1", "1")
+    article_html = """
+    <div class="article">
+      <span class="article-num-akn">Art. 1</span>
+      <div class="art-comma-div-akn">
+        <span class="comma-num-akn">1.</span>
+        <span class="art_text_in_comma">Testo del comma.</span>
+      </div>
+    </div>
+    """
+
+    def fake_get(url: str, headers: dict[str, str] | None = None) -> httpx.Response:
+        request = httpx.Request("GET", url)
+        if url == law.toc_url:
+            return httpx.Response(200, text=toc_html, request=request)
+        return httpx.Response(200, text=article_html, request=request)
+
+    mock_client = MagicMock()
+    mock_client.get.side_effect = fake_get
+    mock_client_cm = MagicMock()
+    mock_client_cm.__enter__.return_value = mock_client
+    mock_client_cm.__exit__.return_value = False
+    monkeypatch.setattr(normattiva.httpx, "Client", MagicMock(return_value=mock_client_cm))
+
+    data_root = tmp_path / "data"
+    logs_root = tmp_path / "logs"
+
+    normattiva.main(law, data_root=data_root, logs_root=logs_root)
+
+    output_path = data_root / "parsed" / law.slug / law.output_name
+    assert output_path.exists()
+    records = json.loads(output_path.read_text(encoding="utf-8"))
+    assert len(records) == 1
+    assert records[0]["number"] == "1"
+
+    run_dirs = list(logs_root.iterdir())
+    assert len(run_dirs) == 1
+    assert run_dirs[0].name.startswith(f"scrape_{law.slug}_")
+
+    manifest = json.loads((run_dirs[0] / "manifest.json").read_text(encoding="utf-8"))
+    assert manifest["found"] == 1
+    assert manifest["saved"] == 1
+    assert manifest["skipped"] == {"fetch_failed": 0, "session_invalid": 0, "parse_error": 0}
+
+    report = (run_dirs[0] / "report.md").read_text(encoding="utf-8")
+    assert report.count("None") == 3
+
+
+def test_main_dry_run_makes_no_http_request_and_writes_nothing(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    def _fail_if_constructed(*args: object, **kwargs: object) -> None:
+        pytest.fail("httpx.Client should not be constructed during a dry run")
+
+    monkeypatch.setattr(normattiva.httpx, "Client", _fail_if_constructed)
+
+    law = LawConfig(slug="test-law", toc_url="http://toc.example/toc", output_name="out.json")
+    data_root = tmp_path / "data"
+    logs_root = tmp_path / "logs"
+
+    normattiva.main(law, dry_run=True, data_root=data_root, logs_root=logs_root)
+
+    assert not data_root.exists()
+    assert not logs_root.exists()
+
+
+# --- T-5: `scrape` CLI entry point, replacing main_cds/main_cap/main_reg (FR-1, AD-2) --
+
+
+def test_cli_main_dispatches_to_main_with_resolved_source(monkeypatch: pytest.MonkeyPatch) -> None:
+    mock_main = MagicMock()
+    monkeypatch.setattr(normattiva, "main", mock_main)
+    monkeypatch.setattr(sys, "argv", ["scrape", "--source", "reg"])
+
+    normattiva.cli_main()
+
+    mock_main.assert_called_once_with(normattiva.REG, dry_run=False)
+
+
+def test_cli_main_dry_run_flag_forwarded(monkeypatch: pytest.MonkeyPatch) -> None:
+    mock_main = MagicMock()
+    monkeypatch.setattr(normattiva, "main", mock_main)
+    monkeypatch.setattr(sys, "argv", ["scrape", "--source", "cds", "--dry-run"])
+
+    normattiva.cli_main()
+
+    mock_main.assert_called_once_with(normattiva.CDS, dry_run=True)
+
+
+def test_build_parser_rejects_unknown_source() -> None:
+    with pytest.raises(SystemExit):
+        normattiva._build_parser().parse_args(["--source", "bogus"])
+
+
+# --- T-7: bracket-aware title extraction (FR-5) ------------------------------------
+
+
+def test_split_leading_title_strips_leading_amendment_bracket() -> None:
+    """PD-7: a leading `((` amendment bracket no longer blocks title extraction.
+
+    Real example: Regolamento art. 6's raw `art-just-text-akn` body.
+    """
+    body_text = (
+        "(( (Modalità e procedura per l'esercizio della diffida). 1. Il potere di diffida..."
+    )
+
+    title, remaining = _split_leading_title(body_text, "6")
+
+    assert title == "Modalità e procedura per l'esercizio della diffida"
+    assert remaining == ". 1. Il potere di diffida..."
+
+
+def test_extract_heading_title_common_unwrapped_case_unchanged() -> None:
+    """FR-5: a heading with no leading parenthesis at all is returned unchanged."""
+    raw = "Definizione e classificazione delle strade"
+
+    assert _extract_heading_title(raw) == raw
+
+
+def test_extract_heading_title_well_formed_single_wrap_unchanged() -> None:
+    """FR-5: a well-formed single `(Title)` wrap still strips the parens."""
+    raw = "(Segnaletica orizzontale)"
+
+    assert _extract_heading_title(raw) == "Segnaletica orizzontale"
+
+
+def test_extract_heading_title_double_bracket_with_trailing_debris() -> None:
+    """PD-7: a `((` wrap with trailing `))` debris no longer leaks into the title.
+
+    Real example: CdS art. 9-bis's raw `article-heading-akn` text.
+    """
+    raw = (
+        "(( (Organizzazione di competizioni non autorizzate in velocità con veicoli "
+        "a motore e partecipazione alle gare). ))"
+    )
+
+    result = _extract_heading_title(raw)
+
+    assert result == (
+        "Organizzazione di competizioni non autorizzate in velocità con veicoli a "
+        "motore e partecipazione alle gare"
+    )
+    assert not result.startswith(" ")
+    assert not result.endswith(")")
+    assert not result.endswith(". ")
+
+
+def test_extract_heading_title_double_bracket_no_space_before_close() -> None:
+    """PD-7: a `((` wrap with no space before the closing `)` is parsed correctly.
+
+    Real example: CAP art. 3's raw `article-heading-akn` text.
+    """
+    raw = "(( (Finalità della vigilanza).))"
+
+    assert _extract_heading_title(raw) == "Finalità della vigilanza"
+
+
+def test_extract_heading_title_glued_cross_reference_note_discarded() -> None:
+    """PD-7: a cross-reference note glued (no separating space) to the title is discarded.
+
+    Real example: Regolamento art. 16's raw `article-heading-akn` text.
+    """
+    raw = "(Art. 10 Cod. Str.)Provvedimento di autorizzazione"
+
+    assert _extract_heading_title(raw) == "Provvedimento di autorizzazione"
+
+
+def test_extract_heading_title_multi_segment_keeps_last() -> None:
+    """PD-7: consecutive leading `(...)` segments keep the last (descriptive) one."""
+    raw = "(Art. 70 Cod. Str.) (Servizio di piazza con veicoli a trazione animale)"
+
+    assert _extract_heading_title(raw) == "Servizio di piazza con veicoli a trazione animale"
