@@ -535,3 +535,4 @@ data/test-data/enriched/
 .browser_session/
 specs/discussions/
 plans/
+.zed/
