@@ -1,0 +1,30 @@
+{
+  "number": "275",
+  "title": "Massa rimorchiabile delle macchine agricole semoventi",
+  "commas": [
+    {
+      "number": "1",
+      "text": "La massima massa rimorchiabile viene stabilita in sede di omologazione del tipo della macchina agricola semovente e, per i tipi non omologati, in sede di visita e prova per ciascun esemplare."
+    },
+    {
+      "number": "2",
+      "text": "Nei treni costituiti da macchine agricole munite di dispositivi di frenatura, l'attribuzione della massa rimorchiabile è subordinata all'accertamento delle due condizioni seguenti: a) massa aderente della macchina agricola semovente in ordine di marcia in piano ed in condizioni statiche non inferiore al 16% della massa a pieno carico del treno agricolo. Per le macchine agricole semoventi con trazione sul solo asse posteriore, la massa aderente verificata in piano e in condizioni statiche, è assunta convenzionalmente uguale all'80% della massa della macchina stessa; b) rapporto tra la potenza del motore e la massa massima del treno agricolo espressa in tonnellate, non inferiore a 2,9 kW/t ."
+    },
+    {
+      "number": "3",
+      "text": "A richiesta del costruttore, in alternativa alle prescrizioni del comma 1 e limitatamente alle trattrici agricole, le verifiche per la determinazione della massa rimorchiabile devono soddisfare le due condizioni seguenti: a) che il complesso dei veicoli possa avviarsi su pendenza non inferiore al 14%; b) che il complesso dei veicoli possa marciare ad una velocità che non differisca più del 10% dalla velocità massima - corrispondente al numero di giri di potenza massima del motore con il rapporto più elevato della trasmissione fra i regimi di coppia massima e di potenza massima - su pendenza non inferiore al 2%, ovvero possa raggiungere la predetta velocità, su strada piana con accelerazione media non inferiore a 0,2 m/sec2, nel campo di utilizzazione del rapporto più alto della trasmissione. Le prove possono essere sostituite dal rilevamento in piano degli sforzi di trazione al gancio verificando che lo sforzo di trazione massimo non sia inferiore alla somma del 16% della massa rimorchiabile e del 14% della massa della trattrice e che lo sforzo di trazione corrispondente al numero di giri di potenza massima, col rapporto più elevato della trasmissione, non sia inferiore alla somma del 4% della stessa massa rimorchiabile e del 2% della massa della trattrice."
+    },
+    {
+      "number": "4",
+      "text": "Il valore massimo della massa rimorchiabile, individuato come differenza tra la massa massima del treno agricolo e la massa, in ordine di marcia, della macchina agricola traente è limitato dal rapporto tra la massa complessiva della macchina agricola rimorchiata e la massa della macchina agricola traente; detto rapporto non deve superare i seguenti valori: a) 2 per le macchine agricole traenti di tipo snodato a ruote gommate, per le macchine agricole a ruote non gommate ovvero per quelle cingolate, qualunque sia il tipo di frenatura del complesso; b) 3 per le macchine agricole traenti a ruote gommate se il dispositivo di frenatura del complesso è di tipo meccanico; c) 4 per le macchine agricole traenti a ruote gommate se il dispositivo di frenatura del complesso è di tipo misto e automatico; d) 5 per le macchine agricole traenti a ruote gommate se il dispositivo di frenatura del complesso è di tipo continuo ed automatico."
+    },
+    {
+      "number": "5",
+      "text": "Per massa della macchina agricola in ordine di marcia si intende la massa della macchina agricola con serbatoi e radiatori pieni, con conducente di massa di 75 kg, priva degli eventuali attrezzi portati o semiportati, delle zavorre e del piano di carico , qualora amovibile ."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=35&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=275&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:54:27.084101Z",
+  "repealed": false,
+  "source": "reg"
+}

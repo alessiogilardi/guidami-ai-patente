@@ -1,0 +1,22 @@
+{
+  "number": "216",
+  "title": "Lunghezza massima degli autoarticolati, degli autotreni e dei filotreni",
+  "commas": [
+    {
+      "number": "1",
+      "text": "La lunghezza massima di 16,50 m è consentita per gli autoarticolati in cui l'avanzamento dell'asse della ralla, misurato orizzontalmente, rispetto alla parte posteriore del semirimorchio, risulti non superiore a 12,00 m e, rispetto ad un punto qualsiasi della parte anteriore del semirimorchio, risulti non superiore a 2,04 m. Qualora non si verifichi anche una sola delle dette condizioni, la lunghezza degli autoarticolati non può superare 15,50 m, fermo restando quanto stabilito in proposito dalla direttiva 85/3/CEE e successive modificazioni."
+    },
+    {
+      "number": "2",
+      "text": "La lunghezza massima di 18,35 m è consentita per gli autotreni ed i filotreni che presentano una distanza massima di 15,65 m, misurata parallelamente all'asse longitudinale dell'autotreno, tra l'estremità anteriore della zona di carico dietro l'abitacolo e l'estremità posteriore del rimorchio del veicolo combinato, meno la distanza fra la parte posteriore del veicolo a motore e la parte anteriore del rimorchio nonché una distanza massima di 16,00 m, sempre misurata parallelamente all'asse longitudinale dell'autotreno, tra l'estremità anteriore della zona di carico dietro l'abitacolo e l'estremità posteriore del rimorchio del veicolo combinato. Qualora non si verifichi anche una sola delle dette condizioni, la lunghezza degli autotreni e dei filotreni non può superare 18,00 m, fermo restando quanto stabilito in proposito dalla direttiva 85/3/CEE e successive modificazioni."
+    },
+    {
+      "number": "3",
+      "text": "Il Ministro dei trasporti, con decreto emesso di concerto con il Ministro dei lavori pubblici può determinare per gli autoarticolati, per gli autotreni e per i filotreni valori dimensionali diversi da quelli indicati ai commi 1 e 2."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=25&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=216&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:52:48.321891Z",
+  "repealed": false,
+  "source": "reg"
+}

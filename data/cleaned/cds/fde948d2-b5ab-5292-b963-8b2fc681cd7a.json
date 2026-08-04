@@ -1,0 +1,102 @@
+{
+  "number": "41",
+  "title": "Segnali luminosi",
+  "commas": [
+    {
+      "number": "1",
+      "text": "I segnali luminosi si suddividono nelle seguenti categorie: a) segnali luminosi di pericolo e di prescrizione; b) segnali luminosi di indicazione; b-bis) tabelloni luminosi rilevatori della velocità in tempo reale dei veicoli in transito; c) lanterne semaforiche veicolari normali; d) lanterne semaforiche veicolari di corsia; e) lanterne semaforiche per i veicoli di trasporto pubblico; f) lanterne semaforiche pedonali; g) lanterne semaforiche per velocipedi; h) lanterne semaforiche veicolari per corsie reversibili; i) lanterna semaforica gialla lampeggiante; l) lanterne semaforiche speciali; m) segnali luminosi particolari."
+    },
+    {
+      "number": "2",
+      "text": "Le luci delle lanterne semaforiche veicolari normali sono di forma circolare e di colore: - rosso, con significato di arresto; - giallo, con significato di preavviso di arresto; - verde, con significato di via libera."
+    },
+    {
+      "number": "3",
+      "text": "Le luci delle lanterne semaforiche di corsia sono a forma di freccia colorata su fondo nero; i colori sono rosso, giallo e verde; il significato è identico a quello delle luci di cui al comma 2, ma limitatamente ai veicoli che devono proseguire nella direzione indicata dalla freccia."
+    },
+    {
+      "number": "4",
+      "text": "Le luci delle lanterne semaforiche per i veicoli di trasporto pubblico sono a forma di barra bianca su fondo nero, orizzontale con significato di arresto, verticale o inclinata a destra o sinistra con significato di via libera, rispettivamente diritto, a destra o sinistra, e di un triangolo giallo su fondo nero, con significato di preavviso di arresto."
+    },
+    {
+      "number": "5",
+      "text": "Al fine di agevolare la mobilità delle persone con disabilità visiva, gli attraversamenti pedonali semaforizzati possono essere dotati di segnalazioni acustiche di indicazione dello stato di accensione delle luci nonché di guide tattili a pavimento idonee all'individuazione dei pali di sostegno delle lanterne semaforiche . Le luci delle lanterne semaforiche pedonali sono a forma di pedone colorato su fondo nero. I colori sono: a) rosso, con significato di arresto e non consente ai pedoni di effettuare l'attraversamento, né di impegnare la carreggiata; b) giallo, con significato di sgombero dell'attraversamento pedonale e consente ai pedoni che si trovano all'interno dello attraversamento di sgombrarlo il più rapidamente possibile e vieta a quelli che si trovano sul marciapiede di impegnare la carreggiata; c) verde, con significato di via libera e consente ai pedoni l'attraversamento della carreggiata nella sola direzione consentita dalla luce verde."
+    },
+    {
+      "number": "6",
+      "text": "Le luci delle lanterne semaforiche per velocipedi sono a forma di bicicletta colorata su fondo nero; i colori sono rosso, giallo e verde; il significato è identico a quello delle luci di cui al comma 2, ma limitatamente ai velocipedi provenienti da una pista ciclabile."
+    },
+    {
+      "number": "7",
+      "text": "Le luci delle lanterne semaforiche per corsie reversibili sono rossa a forma di X, con significato di divieto di percorrere la corsia o di impegnare il varco sottostante la luce, e verde a forma di freccia, con significato di consenso a percorrere la corsia o ad impegnare il varco sottostante la luce."
+    },
+    {
+      "number": "8",
+      "text": "Tutti i segnali e dispositivi luminosi previsti dal presente articolo sono soggetti ad omologazione da parte del Ministero delle infrastrutture e dei trasporti, previo accertamento del grado di protezione e delle caratteristiche geometriche, fotometriche, cromatiche e di idoneità indicati dal regolamento e da specifiche normative."
+    },
+    {
+      "number": "8-bis",
+      "text": "A decorrere dalla data di entrata in vigore della presente disposizione, nelle lanterne semaforiche, le lampade ad incandescenza, quando necessitino di sostituzione, devono essere sostituite con lampade a basso consumo energetico, ivi comprese le lampade realizzate con tecnologia a LED. Le lampade da utilizzare nelle lanterne semaforiche devono avere marcatura CE e attacco normalizzato E27 e assicurare l'accensione istantanea. La loro sostituzione deve essere eseguita utilizzando la struttura ottica della lanterna semaforica già esistente, ove ciò sia tecnicamente possibile senza apportarvi modifiche. Le lampade realizzate con tecnologia a LED, in caso di rottura anche di un solo componente, devono spegnersi automaticamente in modo da garantire l'uniformità del segnale luminoso durante il loro funzionamento."
+    },
+    {
+      "number": "9",
+      "text": "Durante il periodo di accensione della luce verde, i veicoli possono procedere verso tutte le direzioni consentite dalla segnaletica verticale ed orizzontale; in ogni caso i veicoli non possono impegnare l'area di intersezione se i conducenti non hanno la certezza di poterla sgombrare prima dell'accensione della luce rossa; i conducenti devono dare sempre la precedenza ai pedoni ed ai ciclisti ai quali sia data contemporaneamente via libera; i conducenti in svolta devono, altresì, dare la precedenza ai veicoli provenienti da destra ed ai veicoli della corrente di traffico nella quale vanno ad immettersi."
+    },
+    {
+      "number": "10",
+      "text": "Durante il periodo di accensione della luce gialla, i veicoli non possono oltrepassare gli stessi punti stabiliti per l'arresto, di cui al comma 11, a meno che vi si trovino così prossimi, al momento dell'accensione della luce gialla, che non possano più arrestarsi in condizioni di sufficiente sicurezza; in tal caso essi devono sgombrare sollecitamente l'area di intersezione con opportuna prudenza."
+    },
+    {
+      "number": "11",
+      "text": "Durante il periodo di accensione della luce rossa, i veicoli non devono superare la striscia di arresto; in mancanza di tale striscia i veicoli non devono impegnare l'area di intersezione, né l'attraversamento pedonale, né oltrepassare il segnale, in modo da poterne osservare le indicazioni."
+    },
+    {
+      "number": "12",
+      "text": "Le luci delle lanterne semaforiche veicolari di corsia o quelle per i veicoli di trasporto pubblico hanno lo stesso significato delle corrispondenti luci delle lanterne semaforiche normali, ma limitatamente ai soli veicoli che devono proseguire nella direzione indicata dalle frecce o dalle barre; di conseguenza, i conducenti di detti veicoli devono attenersi alle stesse disposizioni di cui ai commi 9, 10 e 11."
+    },
+    {
+      "number": "13",
+      "text": "Nel caso in cui la lanterna semaforica pedonale o quella per i velocipedi risulti spenta o presenti indicazioni anomale, il pedone o il ciclista ha l'obbligo di usare particolare prudenza anche in relazione alla possibilità che verso altre direzioni siano accese luci che consentano il passaggio ai veicoli che interferiscono con la sua traiettoria di attraversamento."
+    },
+    {
+      "number": "14",
+      "text": "Durante il periodo di accensione delle luci verde, giallo o rossa a forma di bicicletta, i ciclisti devono tenere lo stesso comportamento dei veicoli nel caso di lanterne semaforiche veicolari normali di cui rispettivamente ai commi 9, 10 e 11."
+    },
+    {
+      "number": "15",
+      "text": "In assenza di lanterne semaforiche per i velocipedi, i ciclisti sulle intersezioni semaforizzate devono assumere il comportamento dei pedoni."
+    },
+    {
+      "number": "16",
+      "text": "Durante il periodo di accensione delle luci delle lanterne semaforiche per corsie reversibili, i conducenti non possono percorrere la corsia o impegnare il varco sottostanti alla luce rossa a forma di X; possono percorrere la corsia o impegnare il varco sottostanti la luce verde a forma di freccia rivolta verso il basso. È vietato ai veicoli di arrestarsi comunque dinnanzi alle luci delle lanterne semaforiche per corsie reversibili anche quando venga data l'indicazione della X rossa."
+    },
+    {
+      "number": "17",
+      "text": "In presenza di una luce gialla lampeggiante, di cui al comma 1, lettera i), i veicoli possono procedere purché a moderata velocità e con particolare prudenza, rispettando le norme di precedenza."
+    },
+    {
+      "number": "18",
+      "text": "Qualora per avaria o per altre cause una lanterna semaforica veicolare di qualsiasi tipo sia spenta o presenti indicazioni anomale, il conducente ha l'obbligo di procedere a minima velocità e di usare particolare prudenza anche in relazione alla possibilità che verso altre direzioni siano accese luci che consentono il passaggio. Se, peraltro, le indicazioni a lui dirette sono ripetute da altre lanterne semaforiche efficienti egli deve tener conto di esse."
+    },
+    {
+      "number": "19",
+      "text": "Il regolamento stabilisce forme, caratteristiche, dimensioni, colori e simboli dei segnali luminosi, nonché le modalità di impiego e il comportamento che l'utente della strada deve tenere in rapporto alle varie situazioni segnalate."
+    },
+    {
+      "number": "19-bis",
+      "text": "Ai fini dell'applicazione delle sanzioni amministrative previste dal presente codice, i segnali luminosi di pericolo e di prescrizione e i segnali a messaggio variabile devono essere dotati di sistemi di controllo a distanza in grado di certificarne il momento di accensione o spegnimento e il regolare funzionamento. Di ogni operazione, anche automatica, di accensione, spegnimento o modifica del contenuto del messaggio deve essere conservata idonea registrazione in grado di certificare l'orario e il corretto svolgimento delle operazioni stesse. L'orario di effettivo funzionamento registrato deve essere certificato conforme al tempo coordinato universale (UTC). Nei provvedimenti di cui all'articolo 5, comma 3, che impongono obblighi, divieti e limitazioni resi noti mediante i segnali luminosi di prescrizione e i segnali a messaggio variabile, devono essere indicati le modalità e i tempi di funzionamento dei segnali e di accensione e spegnimento degli stessi."
+    },
+    {
+      "number": "19-ter",
+      "text": "I segnali a messaggio variabile devono essere utilizzati esclusivamente per fornire indicazioni di pericolo o di prescrizione nonché informazioni utili alla guida relative alla strada su cui sono installati e agli itinerari o ambiti a essa correlati. Tali indicazioni sono fornite con segnali di dimensioni, colori e forme uguali a quelle dei corrispondenti segnali verticali. Nei comuni classificati a vocazione turistica le informazioni fornite attraverso i segnali a messaggio variabile possono prevedere anche l'impiego alternato di lingue straniere."
+    },
+    {
+      "number": "19-quater",
+      "text": ""
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=6&art.idGruppo=3&art.flagTipoArticolo=0&art.codiceRedazionale=092G0306&art.idArticolo=41&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-05-18&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:23:05.290326Z",
+  "repealed": false,
+  "source": "cds"
+}

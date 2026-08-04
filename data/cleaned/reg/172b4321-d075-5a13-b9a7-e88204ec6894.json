@@ -1,0 +1,26 @@
+{
+  "number": "345",
+  "title": "Apparecchiature e mezzi di accertamento della osservanza dei limiti di velocità",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Le apparecchiature destinate a controllare l'osservanza dei limiti di velocità devono essere costruite in modo da raggiungere detto scopo fissando la velocità del veicolo in un dato momento in modo chiaro ed accertabile, tutelando la riservatezza dell'utente."
+    },
+    {
+      "number": "2",
+      "text": "Le singole apparecchiature devono essere approvate dal Ministero dei lavori pubblici. In sede di approvazione è disposto che per gli accertamenti della velocità, qualunque sia l'apparecchiatura utilizzata, al valore rilevato sia applicata una riduzione pari al 5%, con un minimo di 5 km/h. Nella riduzione è compresa anche la tolleranza strumentale. Non possono essere impiegate, per l'accertamento dell'osservanza dei limiti di velocità, apparecchiature con tolleranza strumentale superiore al 5%."
+    },
+    {
+      "number": "3",
+      "text": "Il controllo dell'osservanza del limite di velocità, può essere anche effettuato, ai sensi dell'articolo 142, comma 6, del codice, attraverso le annotazioni cronologiche stampigliate sui biglietti autostradali all'atto dell'emissione e dell'esazione del pedaggio, raffrontandosi tali annotazioni con la distanza tra i caselli di ingresso e di uscita, quale risulta dalle tabelle distanziometriche ufficiali predisposte dagli enti proprietari. In tale caso alla determinazione della velocità è associato l'errore relativo - a favore del trasgressore - pari al 5, 10, 15 per cento a seconda che la velocità dedotta risulti, rispettivamente, inferiore a 70 km/ora, ovvero pari a 70 km/ora ed inferiore a 130 km/ora, ovvero pari o superiore a 130 km/ora."
+    },
+    {
+      "number": "4",
+      "text": "Per l'accertamento delle violazioni ai limiti di velocità, le apparecchiature di cui al comma 1 devono essere gestite direttamente dagli organi di polizia stradale cui all'articolo 12 del codice, e devono essere nella disponibilità degli stessi."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=43&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=345&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:56:21.900525Z",
+  "repealed": false,
+  "source": "reg"
+}

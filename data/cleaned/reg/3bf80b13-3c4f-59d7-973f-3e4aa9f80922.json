@@ -1,0 +1,38 @@
+{
+  "number": "162",
+  "title": "Lanterne semaforiche pedonali",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Le lanterne semaforiche pedonali sono destinate esclusivamente alla regolazione degli attraversamenti pedonali semaforizzati; esse sono a tre luci con i seguenti simboli: a) pedone rosso su fondo circolare nero; la sagoma del pedone è in atteggiamento di attesa; b) pedone giallo su fondo circolare nero; la sagoma del pedone è in atteggiamento di attesa; c) pedone verde su fondo circolare nero; la sagoma del pedone è in atteggiamento di movimento."
+    },
+    {
+      "number": "2",
+      "text": "La disposizione delle luci è verticale: pedone rosso in alto, pedone giallo al centro e pedone verde in basso (figg. II.454 e II.455)."
+    },
+    {
+      "number": "3",
+      "text": "La sequenza di accensione delle luci è la seguente: a) pedone verde, b) pedone giallo, c) pedone rosso."
+    },
+    {
+      "number": "4",
+      "text": "Il tempo di sgombero dell'attraversamento pedonale è contrassegnato da un tempo di giallo di durata sufficiente ai pedoni per completare l'attraversamento, prima che abbia luogo l'accensione della luce verde per i veicoli in conflitto con essi."
+    },
+    {
+      "number": "5",
+      "text": "Le segnalazioni acustiche per i non vedenti previste dall'articolo 41, comma 5, del codice, sono a tre fasi: a) emissione di un suono ad intermittenza con frequenza di 60 impulsi al minuto primo con significato di via libera, in sincrono con la luce verde; b) emissione di un suono ad intermittenza con frequenza di 120 impulsi al minuto primo con significato di arresto o di sgombero dell'area del passaggio pedonale se lo stesso è stato già impegnato, in sincrono con la luce gialla; c) assenza di suono con significato di arresto, in sincrono con la luce rossa."
+    },
+    {
+      "number": "6",
+      "text": "Le segnalazioni di cui al comma 5 possono essere a funzionamento continuo o a chiamata. Nel primo caso la sequenza delle fasi si ripete ad ogni ciclo semaforico. Nel secondo si attua per una sola volta in corrispondenza del primo ciclo utile successivo alla chiamata."
+    },
+    {
+      "number": "7",
+      "text": "Il livello delle emissioni sonore deve essere tarato per ogni impianto in maniera che, tenuto conto del livello sonoro di fondo, sia distintamente percettibile senza arrecare disturbo."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=20&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=162&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:51:03.631607Z",
+  "repealed": false,
+  "source": "reg"
+}

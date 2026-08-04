@@ -1,0 +1,18 @@
+{
+  "number": "115",
+  "title": "Segnali di divieto in generale",
+  "commas": [
+    {
+      "number": "1",
+      "text": "I segnali di divieto sono di forma circolare e vietano agli utenti il transito o determinate direzioni di marcia, una particolare manovra, ovvero impongono limitazioni."
+    },
+    {
+      "number": "2",
+      "text": "I segnali di divieto si dividono in generici o specifici: sono generici quelli che si riferiscono a tutti i veicoli; sono specifici quelli afferenti solo a categorie di veicoli o a particolari categorie di utenti."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=16&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=115&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:49:45.805665Z",
+  "repealed": false,
+  "source": "reg"
+}

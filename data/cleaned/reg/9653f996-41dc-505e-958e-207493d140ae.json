@@ -1,0 +1,22 @@
+{
+  "number": "85",
+  "title": "Segnali relativi a strada deformata, dosso e cunetta",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Il segnale STRADA DEFORMATA (fig. II.1) deve essere usato per presegnalare un tratto di strada in cattivo stato o con pavimentazione irregolare."
+    },
+    {
+      "number": "2",
+      "text": "Il segnale DOSSO (fig. II.2) deve essere usato per presegnalare una anomalia altimetrica convessa della strada che limita la visibilità."
+    },
+    {
+      "number": "3",
+      "text": "Il segnale CUNETTA (fig.II.3) deve essere usato per presegnalare una anomalia altimetrica concava della strada."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=13&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=85&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:48:56.074420Z",
+  "repealed": false,
+  "source": "reg"
+}

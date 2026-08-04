@@ -1,0 +1,26 @@
+{
+  "number": "283",
+  "title": "Sovrapattini delle macchine agricole cingolate",
+  "commas": [
+    {
+      "number": "1",
+      "text": "I sovrapattini sono dispositivi di adattamento per la marcia su strada delle macchine cingolate, da applicarsi su tutte le suole dei cingoli muniti di costola di aggrappamento, allo scopo di impedire il danneggiamento del manto stradale. I sovrapattini possono essere interamente metallici o con elementi di gomma. L'area convenzionale di appoggio di un sovrapattino è quella della superficie prevista per l'appoggio sul terreno supposto perfettamente rigido e piano; esso si misura convenzionalmente sul disegno del sovrapattino escludendo le superfici di raccordo."
+    },
+    {
+      "number": "2",
+      "text": "Su ciascun sovrapattino, unitamente al marchio di fabbrica, deve essere impresso il carico massimo ammissibile in chilogrammi, determinato moltiplicando per 6,5 l'area convenzionale d'appoggio espressa in centimetri quadrati. Il sovrapattino deve essere inoltre conforme alle caratteristiche indicate da tabelle di unificazione approvate dal Ministero dei trasporti e della navigazione - Direzione generale della M.C.T.C."
+    },
+    {
+      "number": "3",
+      "text": "La pressione convenzionale di appoggio del sovrapattino si determina dividendo la massa della macchina, compresa l'eventuale attrezzatura prevista, per il risultato ottenuto dal prodotto del numero dei rulli portanti per l'area convenzionale di appoggio di un sovrapattino; le ruote tendicingolo o quelle motrici, qualora portanti, vengono computate come rulli."
+    },
+    {
+      "number": "4",
+      "text": "Ai fini dell'ammissione alla circolazione su strada delle macchine cingolate, la pressione convenzionale di appoggio, determinata sulla base delle prescrizioni di cui al comma 3, non deve superare 6,5 daN/cm(Elevato al Quadrato)."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=35&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=283&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:54:40.173700Z",
+  "repealed": false,
+  "source": "reg"
+}

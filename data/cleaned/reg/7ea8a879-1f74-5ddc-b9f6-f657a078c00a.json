@@ -1,0 +1,26 @@
+{
+  "number": "302",
+  "title": "Dispositivi di frenatura delle macchine operatrici trainate",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Le macchine operatrici trainate, di cui all'articolo 58 del codice, di massa complessiva a pieno carico superiore a 3 t e non superiore a 6 t devono essere munite di un dispositivo di frenatura di servizio agente sulle ruote di almeno un asse; tale dispositivo, se di tipo meccanico, deve essere comandato dall'inerzia della macchina operatrice trainata e la sua azione, nelle macchine operatrici trainate a due o più assi, può esplicarsi anche sulle sole ruote dell'asse anteriore."
+    },
+    {
+      "number": "2",
+      "text": "Ogni macchina operatrice trainata, di massa a pieno carico superiore a 6 t, deve essere munita di un dispositivo di frenatura di servizio che utilizza una sorgente di energia diversa dalla energia cinetica della macchina operatrice trainata; la sua azione deve esercitarsi contemporaneamente su tutte le ruote. Le caratteristiche costruttive di funzionamento nonché le modalità di verifica del dispositivo devono rispondere a prescrizioni tecniche riportate in tabelle di unificazione approvate dal Ministero dei trasporti."
+    },
+    {
+      "number": "3",
+      "text": "Il valore numerico della somma delle forze di frenatura alla periferia delle ruote della macchina operatrice trainata, espresso in daN, deve comunque essere uguale almeno al 40% del valore numerico della massa complessiva a pieno carico della macchina stessa espresso in kg."
+    },
+    {
+      "number": "4",
+      "text": "Ogni macchina operatrice trainata di massa complessiva a pieno carico superiore a 1,5 t deve essere munita di un dispositivo di frenatura di stazionamento avente le stesse caratteristiche indicate all'articolo 276, comma 8."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=38&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=302&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:55:11.333650Z",
+  "repealed": false,
+  "source": "reg"
+}

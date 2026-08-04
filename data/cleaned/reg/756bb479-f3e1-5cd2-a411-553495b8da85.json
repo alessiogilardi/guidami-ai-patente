@@ -1,0 +1,54 @@
+{
+  "number": "401",
+  "title": "Archivio nazionale delle strade",
+  "commas": [
+    {
+      "number": "1",
+      "text": "L'archivio nazionale delle strade, che deve contenere, ai sensi dell'articolo 226, commi da 1 a 4, tutti i dati relativi allo stato tecnico e giuridico delle strade con indicazioni del traffico veicolare e degli incidenti, è completamente informatizzato e distinto in cinque sezioni ad accesso diretto, fra loro interconnesse, capaci di fornire una visione selezionata o complessiva dei dati da cui risultano popolate."
+    },
+    {
+      "number": "2",
+      "text": "La prima sezione contiene l'elenco delle strade distinte per categorie, come indicato dall'articolo 2 del codice; per ogni strada è indicato lo stato tecnico e giuridico della stessa, con i relativi dati concernenti la strada in sé, la sua percorribilità nei vari tratti, le caratteristiche tecniche geometriche e strutturali delle infrastrutture, le caratteristiche dei mezzi circolanti e le eventuali limitazioni di traffico anche temporanee, nonché tutte le occupazioni, le pertinenze, gli edifici, gli attraversamenti, giusta gli articoli da 20 a 33 del codice."
+    },
+    {
+      "number": "3",
+      "text": "La seconda sezione contiene l'indicazione del traffico veicolare su ogni strada, sempre raggruppate secondo le categorie di cui all'articolo 2, del codice; per ogni strada è indicata l'entità del traffico veicolare, distinto per tratte, delle singole strade, per i vari periodi di tempo in cui si effettua e per le diverse categorie di veicoli."
+    },
+    {
+      "number": "4",
+      "text": "La terza sezione contiene l'indicazione degli incidenti localizzati per ogni strada; al riguardo devono essere indicati il luogo esatto in cui l'incidente è avvenuto, il tipo di veicolo od i tipi di veicoli coinvolti nello stesso con tutti i dati idonei ad identificarli, l'entità e le modalità dell'incidente con le conseguenze dannose alle cose o alle persone; i dati anagrafici degli utenti coinvolti nell'incidente, con l'indicazione del tipo di patente di guida ed anno di rilascio per i guidatori dei veicoli coinvolti, e dei dati dell'avente diritto sul veicolo, se questi non era alla guida; le sanzioni amministrative, principali o accessorie, comminate a seguito dell'incidente stesso."
+    },
+    {
+      "number": "5",
+      "text": "La quarta sezione contiene lo stato di percorribilità da parte dei veicoli classificati mezzi d'opera ai sensi dell'articolo 54, comma 1, lettera n) del codice; tale stato di percorribilità deve essere indicato per ogni strada. Fino a che non vengano attivati l'archivio nazionale delle strade e la sezione suddetta, gli elenchi previsti dall'articolo 226, comma 4, del codice, sono formati e aggiornati, sulla base delle indicazioni fornite dagli enti indicati nel comma 4 citato, i quali sono tenuti annualmente, entro il 31 gennaio di ogni anno, con i dati relativi all'anno precedente, ad inviarli al Ministero dei lavori pubblici, che tempestivamente compila gli elenchi."
+    },
+    {
+      "number": "6",
+      "text": "La quinta sezione contiene i dati inviati mensilmente dagli enti proprietari relativi alle indicazioni fornite dai dispositivi di monitoraggio di cui all'articolo 404, comma 3."
+    },
+    {
+      "number": "7",
+      "text": "Le sezioni suddette verranno popolate automaticamente e continuamente aggiornate attraverso i dati forniti dagli enti proprietari delle strade obbligati a farlo ai sensi dell'articolo 226, comma 3, del codice nonché attraverso le comunicazioni telematiche fornite dall'archivio nazionale dei veicoli e dell'anagrafe nazionale degli abilitati alla guida, circa i dati di loro competenza."
+    },
+    {
+      "number": "8",
+      "text": "I dati per la formazione ed il periodico aggiornamento delle sezioni verranno forniti, sulla base delle direttive elaborate dal Ministero dei lavori pubblici, dall'ANAS e dalle società concessionarie rispettivamente per le strade statali e per le autostrade in concessione e dagli altri enti proprietari coordinati dalle regioni per la rimanente viabilità. Le direttive devono essere conformi alle direttive ed ai regolamenti comunitari ed internazionali."
+    },
+    {
+      "number": "9",
+      "text": "Le modalità di consultazione dell'archivio sono determinate nell'ambito del procedimento di attuazione della legge 7 agosto 1990, n. 241 ."
+    },
+    {
+      "number": "10",
+      "text": "Alla tenuta dell'archivio nazionale delle strade provvede l'Ispettorato generale per la circolazione e la sicurezza stradale del Ministero dei lavori pubblici. Alle relative maggiori spese verrà fatto fronte con i proventi di cui all'articolo 228, comma 6, lettera c) del codice."
+    },
+    {
+      "number": "11",
+      "text": "Sulla base dei dati dell'archivio nazionale delle strade, il Ministro dei lavori pubblici dispone ogni tre anni il censimento del traffico, da pubblicarsi nella Gazzetta Ufficiale della Repubblica."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=55&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=401&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:57:53.717154Z",
+  "repealed": false,
+  "source": "reg"
+}

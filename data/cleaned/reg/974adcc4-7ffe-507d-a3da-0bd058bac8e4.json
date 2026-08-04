@@ -1,0 +1,46 @@
+{
+  "number": "403",
+  "title": "Anagrafe nazionale degli abilitati alla guida",
+  "commas": [
+    {
+      "number": "1",
+      "text": "L'anagrafe nazionale degli abilitati alla guida, costituita presso la Direzione generale della M.C.T.C., ai sensi dell'articolo 226, commi da 10 a 12, del codice, contiene i dati relativi alle abilitazioni di cui all'articolo 116 del codice, è completamente informatizzata ed i suoi dati sono gestiti all'interno del sistema informatico della Direzione generale della M.C.T.C. in cinque distinte sezioni ad accesso diretto, tra loro strettamente interconnesse e capaci di fornire una visione selezionata o complessiva dei dati da cui risultano popolate."
+    },
+    {
+      "number": "2",
+      "text": "La sezione \"abilitazioni\" contiene, per ogni conducente e per ognuna delle abilitazioni conseguite, i dati relativi al procedimento di emissione del documento di guida, dalla richiesta dell'autorizzazione per esercitarsi alla guida agli esiti degli esami, ove ricorrano, nonché a tutti i procedimenti successivi quali il rilascio, il rinnovo, la revisione, la sospensione, la revoca; contiene inoltre i dati relativi ai certificati di abilitazione professionale."
+    },
+    {
+      "number": "3",
+      "text": "La sezione \"anagrafica\" contiene i dati anagrafici delle persone fisiche che risultano avere conseguito l'abilitazione alla guida."
+    },
+    {
+      "number": "4",
+      "text": "La sezione \"infrazioni\" contiene i dati relativi alle infrazioni commesse da ciascun abilitato alla guida, con l'indicazione del luogo, della data, del tipo di infrazione e dell'organo accertatore con menzione del verbale di contestazione e della targa del veicolo alla guida del quale l'infrazione stessa è stata commessa."
+    },
+    {
+      "number": "5",
+      "text": "La sezione \"sanzioni\" contiene i dati relativi alle sanzioni comminate sia che trattasi di sanzione amministrativa pecuniaria sia di sanzione amministrativa accessoria, sia di sanzione penale, sia di sanzione amministrativa accessoria alla sanzione penale, a seguito di infrazione alle norme della circolazione stradale."
+    },
+    {
+      "number": "6",
+      "text": "La sezione \"incidenti\" contiene, per ogni conducente, i dati relativi agli incidenti in cui il conducente stesso sia stato coinvolto, con l'indicazione, per ciascun incidente, dei dati del veicolo, delle modalità, del tempo e del luogo ove lo stesso si sia verificato, della natura e dell'entità dei danni, delle conseguenze che ne siano derivate, nonché i dati relativi allo stato dei procedimenti in corso fino alla applicazione delle sanzioni di cui al comma 5."
+    },
+    {
+      "number": "7",
+      "text": "Le sezioni di cui ai commi 2 e 3 verranno popolate automaticamente utilizzando i dati già disponibili nel sistema informatico della Direzione generale della M.C.T.C. e verranno continuamente aggiornate dagli uffici centrali e periferici della stessa Direzione generale della M.C.T.C. e del Ministero dell'interno, per il tramite del collegamento informatico integrato già esistente fra i sistemi informativi della Direzione generale della M.C.T.C. e della Direzione generale per l'amministrazione generale e per gli affari del personale del Ministero dell'interno. Le sezioni di cui ai commi 4 e 5 verranno popolate utilizzando i dati già disponibili nel sistema informatico della Direzione generale della M.C.T.C. e verranno continuamente aggiornate con i dati trasmessi, su supporto magnetico o per via telematica, dall'organo che ha accertato l'infrazione e dall'organo che ha erogato la sanzione. La sezione di cui al comma 6 verrà gradualmente popolata e in seguito continuamente aggiornata con i dati trasmessi per via telematica o su supporto magnetico, dall'autorità di polizia che ha rilevato l'incidente e dalla compagnia di assicurazione cui l'incidente stesso è stato denunciato. Il trasferimento dei dati necessari al popolamento ed all'aggiornamento delle sezioni di cui ai commi 4, 5 e 6 verrà eseguito secondo i tracciati record che verranno stabiliti con decreto del Ministro dei trasporti, nel termine di un mese decorrente, rispettivamente, dalla data di accertamento dell'infrazione, dalla data di irrogazione della sanzione, dalla data dell'incidente e, per le compagnie di assicurazione, dalla data di presentazione della denuncia dell'incidente."
+    },
+    {
+      "number": "8",
+      "text": "L'accesso e la consultazione dell'anagrafe avverrà con le modalità di cui all'articolo 402, comma 8."
+    },
+    {
+      "number": "9",
+      "text": "L'anagrafe degli abilitati alla guida è in contatto telematico con l'archivio delle strade e con l'archivio dei veicoli di cui agli articoli 401 e 402."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=55&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=403&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:57:57.017995Z",
+  "repealed": false,
+  "source": "reg"
+}

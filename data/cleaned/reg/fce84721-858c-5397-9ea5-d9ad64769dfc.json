@@ -1,0 +1,26 @@
+{
+  "number": "99",
+  "title": "Segnale semaforo",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Il segnale SEMAFORO deve essere usato per presegnalare un impianto semaforico. Il suo impiego è obbligatorio sulle strade extraurbane."
+    },
+    {
+      "number": "2",
+      "text": "I tre dischi, rosso, giallo e verde, del simbolo del semaforo devono essere rifrangenti. Il disco giallo può essere sostituito con un segnale luminoso giallo lampeggiante."
+    },
+    {
+      "number": "3",
+      "text": "I tre dischi possono essere disposti in verticale (fig. II.31/a) o in orizzontale (fig. II.31/b) a seconda della disposizione effettiva delle lanterne del semaforo cui il segnale si riferisce."
+    },
+    {
+      "number": "4",
+      "text": "Le dimensioni del segnale devono essere di formato grande ovunque le condizioni di impianto lo consentano."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=13&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=99&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:49:19.278016Z",
+  "repealed": false,
+  "source": "reg"
+}

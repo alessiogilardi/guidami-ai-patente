@@ -1,0 +1,26 @@
+{
+  "number": "123",
+  "title": "Segnali di obbligo specifico",
+  "commas": [
+    {
+      "number": "1",
+      "text": "I segnali di obbligo specifico sono: a) ALT - DOGANA b) ALT - POLIZIA c) ALT - STAZIONE."
+    },
+    {
+      "number": "2",
+      "text": "Il segnale ALT - DOGANA (fig. II.96) deve essere posto per segnalare un varco doganale al quale è obbligatorio fermarsi. Nello stesso segnale, al di sotto della barra orizzontale, può essere riportata la parola 'Doganà nella lingua dello Stato confinante. Alle frontiere con i paesi aderenti alla Comunità Economica Europea il segnale va sostituito con quello riportato nelle figg. II.97/a e II.97/b."
+    },
+    {
+      "number": "3",
+      "text": "Il segnale ALT - POLIZIA (fig. II.98) deve essere posto per segnalare un posto di blocco stradale istituito da organi di polizia al quale è obbligatorio fermarsi. Il segnale è di impiego mobile, deve essere posto a distanza opportuna dal posto di blocco e deve essere avvistabile con sicurezza e in tempo utile affinchè il conducente possa adeguare la sua condotta, tenuto conto delle condizioni plano-altimetrichedella strada e della velocità predominante dei veicoli nel tratto che precede il posto di blocco. Il segnale deve essere ripetuto all'altezza del punto di arresto. Entrambi i segnali devono essere posti in modo da non costituire pericolo o pregiudizio per la sicurezza stradale. È consentito ripetere il segnale nella lingua dello stato confinante quando il posto di blocco è in prossimità delle zone di confine."
+    },
+    {
+      "number": "4",
+      "text": "Il segnale ALT - STAZIONE (fig. II.99) deve essere posto sulle autostrade e in corrispondenza degli accessi controllati per segnalare una stazione dove è obbligatorio fermarsi per le operazioni di pedaggio. È consentito ripetere il segnale nella lingua dello stato confinante quando la stazione di pedaggio è in prossimità del confine."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=17&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=123&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:49:59.044951Z",
+  "repealed": false,
+  "source": "reg"
+}

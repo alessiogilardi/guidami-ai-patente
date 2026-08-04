@@ -1,0 +1,38 @@
+{
+  "number": "140",
+  "title": "Strisce di corsia",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Il modulo di corsia, inteso come distanza tra gli assi delle strisce che delimitano la corsia, è funzione della sua destinazione, del tipo di strada, del tipo di veicoli in transito e della sua regolazione; il modulo va scelto tra i seguenti valori: 2,75 m - 3 m - 3,25 m - 3,5 m - 3,75 m; mentre per le corsie di emergenza il modulo va scelto nell'intervallo tra 2 e 3,5 m."
+    },
+    {
+      "number": "2",
+      "text": "Negli attestamenti delle intersezioni urbane il modulo di corsia può essere ridotto a 2,5 m, purché le corsie che adottano tale modulo non siano percorse dal trasporto pubblico o dal traffico pesante."
+    },
+    {
+      "number": "3",
+      "text": "La larghezza delle corsie di marcia lungo le strade deve essere mantenuta il più possibile costante, salvo che in prossimità delle intersezioni o in corrispondenza dei salvagenti posti sulle fermate dei tram; in curva deve essere realizzato idoneo allargamento in funzione del tipo di veicoli in transito e del raggio di curvatura."
+    },
+    {
+      "number": "4",
+      "text": "Nelle zone di attestamento, in prossimità delle intersezioni, le strisce di separazione delle corsie di marcia devono essere con- tinue, nel tratto immediatamente precedente la striscia di arresto, per una lunghezza minima di 30 m."
+    },
+    {
+      "number": "5",
+      "text": "Le strisce di corsia delle strade con diritto di precedenza possono essere prolungate all'interno delle aree di intersezione, purché tracciate in modo discontinuo; tuttavia le strisce di corsia non possono essere prolungate all'interno delle aree di intersezione, qualora esistano le strisce di guida di cui all'articolo 143."
+    },
+    {
+      "number": "6",
+      "text": "Le corsie riservate, qualora non protette da elementi in elevazione sulla pavimentazione, sono separate dalle altre corsie di marcia mediante due strisce continue affiancate, una bianca di 12 cm di larghezza ed una gialla di 30 cm, distanziate tra loro di 12 cm; la striscia gialla deve essere posta sul lato della corsia riservata (fig. II.427/a)."
+    },
+    {
+      "number": "7",
+      "text": "Le piste ciclabili, qualora non protette da elementi in elevazione sulla pavimentazione, sono separate dalle corsie di marcia mediante due strisce continue affiancate, una bianca di 12 cm di larghezza ed una gialla di 30 cm distanziate tra loro di 12 cm; la striscia gialla deve essere posta sul lato della pista ciclabile (fig. II.427/b)."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=19&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=140&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:50:27.325266Z",
+  "repealed": false,
+  "source": "reg"
+}

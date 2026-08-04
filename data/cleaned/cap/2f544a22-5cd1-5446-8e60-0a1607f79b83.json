@@ -1,0 +1,22 @@
+{
+  "number": "137",
+  "title": "Danno patrimoniale",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Nel caso di danno alla persona, quando agli effetti del risarcimento si debba considerare l'incidenza dell'inabilità temporanea o dell'invalidità permanente su un reddito di lavoro comunque qualificabile, tale reddito si determina, per il lavoro dipendente, sulla base del reddito di lavoro, maggiorato dei redditi esenti e al lordo delle detrazioni e delle ritenute di legge, che risulta il più elevato tra quelli degli ultimi tre anni e, per il lavoro autonomo, sulla base del reddito netto che risulta il più elevato tra quelli dichiarati dal danneggiato ai fini dell'imposta sul reddito delle persone fisiche negli ultimi tre anni ovvero, nei casi previsti dalla legge, dall'apposita certificazione rilasciata dal datore di lavoro ai sensi delle norme di legge."
+    },
+    {
+      "number": "2",
+      "text": "È in ogni caso ammessa la prova contraria, ma, quando dalla stessa risulti che il reddito sia superiore di oltre un quinto rispetto a quello risultante dagli atti indicati nel comma 1, il giudice ne fa segnalazione al competente ufficio dell'Agenzia delle entrate."
+    },
+    {
+      "number": "3",
+      "text": "In tutti gli altri casi il reddito che occorre considerare ai fini del risarcimento non può essere inferiore a tre volte l'ammontare annuo della pensione sociale."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=53&art.flagTipoArticolo=0&art.codiceRedazionale=005G0233&art.idArticolo=137&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=2005-10-13&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:36:52.353553Z",
+  "repealed": false,
+  "source": "cap"
+}

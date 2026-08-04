@@ -1,0 +1,50 @@
+{
+  "number": "126",
+  "title": "Posizionamento dei segnali di indicazione",
+  "commas": [
+    {
+      "number": "1",
+      "text": "I segnali di preavviso di cui all'articolo 127 devono essere posizionati conformemente a quanto disposto dall'articolo 81. Per detti segnali occorre assicurare uno spazio di avvistamento \"d\" in funzione della velocità locale predominante, conformemente ai valori espressi nella seguente tabella: a) velocità = 130 km/h: d = 250 m b) velocità = 110 km/h: d = 200 m c) velocità = 90 km/h: d = 170 m d) velocità = 70 km/h: d = 140 m e) velocità = 50 km/h: d = 100 m Per valori di velocità non previsti si procede per interpolazione lineare."
+    },
+    {
+      "number": "2",
+      "text": "I segnali di preavviso di intersezione di cui all'articolo 127, comma 2 e seguenti, devono essere posti a distanza \"d\" dal punto in cui inizia la manovra di svolta (inizio della corsia di decelerazione, per le intersezioni che ne sono dotate), in funzione della velocità locale predominante, conformemente ai valori espressi nella seguente tabella: A) intersezioni con corsia di decelerazione: a) velocità = 130 km/h: d = 50 m b) velocità = 110 km/h: d = 40 m c) velocità = 90 km/h: d = 30 m B) intersezioni senza corsia di decelerazione: a) velocità = 110 km/h: d = 130 m b) velocità = 90 km/h: d = 100 m c) velocità = 70 km/h: d = 80 m d) velocità = 50 km/h: d = 60 m Per valori di velocità non previsti si procede per interpolazione lineare."
+    },
+    {
+      "number": "3",
+      "text": "Quando il segnale non può essere installato con il rispetto delle distanze indicate nella tabella di cui al comma 2, per insufficiente spazio di avvistamento o in presenza di gallerie o viadotti, può trovare collocazione a distanza superiore purché la distanza venga riportata su pannello integrativo."
+    },
+    {
+      "number": "4",
+      "text": "Sulle autostrade, sulle strade extraurbane principali ed ogni qualvolta le condizioni di traffico o di sicurezza lo rendano necessario, il segnale posto alla distanza indicata nella tabella di cui al comma 2 deve essere preceduto da uno o più segnali analoghi posti a distanza adeguata, riportata su pannello integrativo. Sulle autostrade e sulle altre strade dotate di corsia di emergenza, il segnale di cui all'articolo 130, o uno dei segnali di cui al comma 2, deve essere posizionato a 500 m dal punto in cui inizia la manovra di svolta con l'indicazione della distanza su pannello integrativo modello II.1."
+    },
+    {
+      "number": "5",
+      "text": "Il segnale di preselezione di cui all'articolo 127, comma 8, deve essere posto in corrispondenza dell'inizio della zona di preselezione che precede l'intersezione. Sulle strade extraurbane qualora non sia possibile rispettare lo spazio di avvistamento di cui al comma 1, il segnale dovrà essere ripetuto in anticipo con la distanza riportata su pannello integrativo."
+    },
+    {
+      "number": "6",
+      "text": "I segnali di direzione di cui all'articolo 128, all'interno dell'area di intersezione, devono essere disposti con orientamento tale da essere perfettamente visibili dalla corrente di traffico alla quale sono diretti e, a seconda della necessità, in uno dei punti più opportuni tra i seguenti: a) sulla soglia dell'intersezione; b) su apposite isole spartitraffico; c) al limite di uscita dell'intersezione."
+    },
+    {
+      "number": "7",
+      "text": "I medesimi segnali di direzione possono essere posti al di sopra della carreggiata quando ricorrano una o più delle seguenti condizioni: a) due o più corsie per senso di marcia; b) intersezioni canalizzate o planimetricamente complesse; c) elevati volumi di traffico con alte percentuali di veicoli con sagoma alta; d) itinerari autostradali, tangenziali e principali direttrici di attraversamento o itinerari di entrata e di uscita dai centri urbani; e) impossibilità di realizzare razionali impianti di segnali laterali efficaci."
+    },
+    {
+      "number": "8",
+      "text": "Se l'intersezione è semaforizzata, le singole lanterne semaforiche possono essere incorporate nei relativi cartelli di direzione disposti sopra la carreggiata sulla soglia dell'intersezione stessa (fig. II.232)."
+    },
+    {
+      "number": "9",
+      "text": "I ponti, i cavalcavia o i manufatti ubicati nel punto di posa ottimale, o nelle immediate vicinanze, possono costituire ancoraggi per i segnali."
+    },
+    {
+      "number": "10",
+      "text": "La stabilità delle strutture portanti dei segnali, nonché l'idoneità delle fondazioni e degli ancoraggi, devono essere calcolati o verificati da tecnici dell'ente proprietario della strada."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=18&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=126&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:50:03.985910Z",
+  "repealed": false,
+  "source": "reg"
+}

@@ -1,0 +1,22 @@
+{
+  "number": "353",
+  "title": "Fermata e sosta dei veicoli",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Non è consentito fermarsi per chiedere informazioni agli agenti del traffico, quando ciò possa causare intralcio o rallentamento alla circolazione."
+    },
+    {
+      "number": "2",
+      "text": "Il conducente che lascia il veicolo in sosta nei casi consentiti, deve azionare il freno di stazionamento e, di regola, deve aver cura di inserire il rapporto più basso del cambio di velocità. Nelle strade a forte pendenza si deve, inoltre, lasciare in sosta il veicolo con le ruote sterzate, ed i veicoli di massa complessiva massima a pieno carico superiore a 3,5 t devono applicare i cunei bloccaruote."
+    },
+    {
+      "number": "3",
+      "text": "Il veicolo in sosta deve avere il motore spento."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=45&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=353&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:56:34.955060Z",
+  "repealed": false,
+  "source": "reg"
+}

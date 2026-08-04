@@ -1,0 +1,50 @@
+{
+  "number": "131",
+  "title": "Segnali di località e di localizzazione",
+  "commas": [
+    {
+      "number": "1",
+      "text": "I segnali che localizzano il territorio ai fini della circolazione stradale sono del tipo: a) segnali di località e fine località; b) localizzazione di punti di pubblico interesse."
+    },
+    {
+      "number": "2",
+      "text": "I segnali di località si suddividono in: a) obbligatori, che sono disposti all'inizio del centro abitato e devono essere a fondo bianco con cornice e lettere nere; b) facoltativi, che possono essere disposti all'inizio e alla fine del territorio regionale o provinciale."
+    },
+    {
+      "number": "3",
+      "text": "Il segnale di inizio centro abitato di cui al comma 1, lettera a)  ha di massima le seguenti dimensioni: a) per la installazione laterale: altezza 70/120 cm e lunghezza variabile in rapporto al nome della località; b) per le installazioni al di sopra della carreggiata: altezza 90/160 cm e lunghezza variabile in rapporto al nome della località con un massimo di 350 cm."
+    },
+    {
+      "number": "4",
+      "text": "Il segnale di INIZIO CENTRO ABITATO (fig. II.273) ha valore anche per segnalare per i centri abitati il limite di velocità e il divieto dei segnali acustici, di cui rispettivamente agli articoli 142, comma 1, e 156, comma 3, del codice. Pertanto non è necessario aggiungere i due segnali di prescrizione di LIMITE DI VELOCITÀ e di DIVIETO DI SEGNALAZIONI ACUSTICHE. Eventuali altre prescrizioni valide per l'intero centro abitato possono essere rese note con il corrispondente segnale installato in abbinamento a quello di INIZIO CENTRO ABITATO."
+    },
+    {
+      "number": "5",
+      "text": "Nei segnali di cui al comma 4 i nomi di località devono essere riportati per intero e senza abbreviazioni. Quando la località ha nome composto, l'iscrizione può essere riportata su due righe. Questi segnali devono essere posti all'inizio dell'abitato lungo tutte le strade dirette alla località segnalata. Qualora si tratti di frazione di un Comune, il nome di quest'ultimo può figurare, tra parentesi ed in carattere ridotto, al di sotto del nome della località segnalata."
+    },
+    {
+      "number": "6",
+      "text": "Il segnale FINE CENTRO ABITATO (fig. II.274) è costituito dalla combinazione di un segnale di località sbarrato obliquamente in rosso e da un segnale di conferma recante i nomi di due o tre località successive, integrati dalle rispettive distanze in chilometri. Le caratteristiche della combinazione sono le seguenti: a) dimensioni suggerite 120 x 160 cm; b) colori: parte superiore con fondo bianco, cornice e iscrizioni nere, barra obliqua rossa (dall'alto a destra in basso a sinistra); nella parte inferiore, con fondo blu e iscrizioni in bianco, le distanze espresse in chilometri delle località seguenti; c) prima riga in alto il prossimo centro abitato; d) nella riga o righe sottostanti il centro abitato o i centri abitati successivi importanti, come il capoluogo della provincia. Nel caso in cui non sia necessario indicare le località successive, specie se facenti parte dello stesso territorio comunale, il segnale è impiegato da solo."
+    },
+    {
+      "number": "7",
+      "text": "I segnali INIZIO E FINE REGIONE (fig. II.275) e INIZIO E FINE PROVINCIA (fig.II.276) sono a fondo verde o blu, in relazione al tipo di strada sulla quale sono installati, con cornici ed iscrizioni bianche. Il nome della regione o provincia in cui si entra è posto superiormente, quello della regione o provincia da cui si esce, posto inferiormente, è barrato con una fascia obliqua rossa, come nel segnale di fine centro abitato. Le dimensioni suggerite del segnale sono di 90 x 200 cm."
+    },
+    {
+      "number": "8",
+      "text": "Non è consentito aggiungere al nome della località altre iscrizioni, né porre sotto il segnale altre scritte sia pure con pannello aggiuntivo. I segnali non conformi devono essere riportati nella norma a cura di chi li ha posti in opera. L'ente proprietario o concessionario della strada deve imporre il ripristino a chi è tenuto e, in caso di inadempienza entro sessanta giorni, può provvedervi d'ufficio con l'addebito delle relative spese. All'uopo comunicherà, con raccomandata con ricevuta di ritorno, al soggetto tenuto, la nota delle spese, con diffida a versarle entro venti giorni dal ricevimento della nota. Se nel termine fissato il versamento non è effettuato, l'ente proprietario si rivolge al Prefetto che, entro trenta giorni emette ordinanza ingiuntiva di pagamento, che costituisce titolo esecutivo ai sensi di legge."
+    },
+    {
+      "number": "9",
+      "text": "I segnali di localizzazione dei luoghi o zone di pubblico interesse, non altrimenti individuabili, possono essere installati in corrispondenza dei posti di pronto soccorso, stazioni, posti di polizia o carabinieri, informazioni, ospedale, comune, polizia municipale, ecc. ."
+    },
+    {
+      "number": "10",
+      "text": "I segnali di cui al comma 9 sono posti perpendicolarmente all'asse stradale, all'altezza del punto segnalato e sono costituiti dal simbolo e da una freccia orizzontale rivolta verso l'ingresso. I simboli sono fissati nelle figure da II.100 a II.231. Le dimensioni sono le stesse di quelle dei segnali che indicano servizi di impianti utili (tab. II.8). Il colore del fondo è bianco, con cornice e freccia nera (figure da II.277 a II.284)."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=18&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=131&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:50:12.302530Z",
+  "repealed": false,
+  "source": "reg"
+}

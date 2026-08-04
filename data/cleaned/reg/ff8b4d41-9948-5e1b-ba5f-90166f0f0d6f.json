@@ -1,0 +1,26 @@
+{
+  "number": "277",
+  "title": "Efficienza della frenatura dei treni costituiti da macchine agricole",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Nei treni costituiti da una macchina agricola semovente, di cui all'articolo 57 del codice, e da una macchina agricola operatrice trainata priva di freni, di massa complessiva a pieno carico non superiore a quella della macchina agricola semovente, ovvero in quelli costituiti da una trattrice agricola e da un rimorchio agricolo considerato parte integrante delle trattrice stessa, ai sensi dell'articolo 276, comma 1, l'efficienza ottenuta con il dispositivo di frenatura di servizio deve garantire decelerazioni medie minime, riferite alle diverse velocità, quali risultano dalla tabella III.4 che fa parte integrante del presente regolamento."
+    },
+    {
+      "number": "2",
+      "text": "Qualora il dispositivo sia comandato a pedale, il risultato di cui sopra deve essere ottenuto esercitando sul pedale una forza non superiore a 60 daN."
+    },
+    {
+      "number": "3",
+      "text": "Per determinare l'efficienza della frenatura dopo il riscaldamento dei freni, il treno a pieno carico viene mantenuto ad una velocità stabilizzata, prossima all'80% di quella massima verificata, su percorso in discesa della pendenza del 10% e della lunghezza di 1 km; alla fine del percorso l'efficienza residua della frenatura di servizio deve garantire una decelerazione media minima, calcolata in base alla distanza di frenatura, non inferiore al 70% di quella regolamentare né al 60% del valore relativo alla prova con freno freddo."
+    },
+    {
+      "number": "4",
+      "text": "Con provvedimento del Ministro dei trasporti, di concerto con il Ministro dell'agricoltura e delle foreste, possono essere stabilite prescrizioni diverse da quelle indicate nei commi precedenti."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=35&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=277&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:54:30.370791Z",
+  "repealed": false,
+  "source": "reg"
+}

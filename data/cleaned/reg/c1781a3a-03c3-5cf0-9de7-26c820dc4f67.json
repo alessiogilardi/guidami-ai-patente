@@ -1,0 +1,38 @@
+{
+  "number": "84",
+  "title": "Segnali di pericolo in generale",
+  "commas": [
+    {
+      "number": "1",
+      "text": "I segnali di pericolo hanno forma di triangolo equilatero con un vertice diretto verso l'alto."
+    },
+    {
+      "number": "2",
+      "text": "I segnali di pericolo devono essere installati quando esiste una reale situazione di pericolo sulla strada, non percepibile con tempestività da un conducente che osservi le normali regole di prudenza."
+    },
+    {
+      "number": "3",
+      "text": "Nei casi in cui non sia possibile rispettare la distanza di posizionamento stabilita dall'articolo 81, comma 7, il segnale deve essere integrato con il pannello modello II.1 indicante la effettiva distanza dal pericolo . Per motivi di sicurezza, il segnale può essere preceduto da un altro identico, sempre con pannello integrativo indicante la effettiva distanza dal pericolo."
+    },
+    {
+      "number": "4",
+      "text": "I segnali di pericolo devono essere posti sul lato destro della strada. Sulle strade con due o più corsie per ogni senso di marcia, devono adottarsi opportune misure, in relazione alle condizioni locali, affinchè i segnali siano chiaramente percepibili anche dai conducenti dei veicoli che percorrono le corsie interne, ripetendoli sul lato sinistro o al sopra della carreggiata."
+    },
+    {
+      "number": "5",
+      "text": "Se il segnale è utilizzato per indicare un pericolo esteso su un tratto di strada di lunghezza definita (es.: serie di curve pericolose, carreggiata dissestata, lavori sulla strada, ecc.) quest'ultima deve essere indicata con pannello integrativo ESTESA (modello II.2). Se in tale tratto di strada vi sono intersezioni, il segnale deve essere ripetuto dopo ogni intersezione. L'estesa massima, oltre la quale il segnale deve essere comunque ripetuto, non può superare i 3 Km."
+    },
+    {
+      "number": "6",
+      "text": "Quando l'estesa di un tratto di strada interessata dal pericolo segnalato non è chiaramente individuabile, il termine del pericolo può essere segnalato mediante lo stesso segnale integrato dal pannello FINE (modelli II.5/a3, II.5/b3)."
+    },
+    {
+      "number": "7",
+      "text": "In caso di abbinamento di un segnale di pericolo con un segnale di prescrizione sullo stesso sostegno, il primo deve essere sempre al di sopra del secondo."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=13&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=84&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:48:54.415059Z",
+  "repealed": false,
+  "source": "reg"
+}

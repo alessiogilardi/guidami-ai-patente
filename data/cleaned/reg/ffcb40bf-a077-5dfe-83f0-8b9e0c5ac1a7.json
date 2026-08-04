@@ -1,0 +1,14 @@
+{
+  "number": "171",
+  "title": "Frequenza dei lampeggiatori",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Nei lampeggiatori la frequenza del ciclo deve essere non inferiore a 50 volte al minuto e non superiore a 80. I due tempi di ACCESO e di SPENTO, che compongono il ciclo, devono essere di uguale durata."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=20&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=171&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:51:34.194081Z",
+  "repealed": false,
+  "source": "reg"
+}

@@ -1,0 +1,18 @@
+{
+  "number": "350",
+  "title": "Limiti sonori massimi",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Il livello sonoro emesso da apparecchi radio o di riproduzione sonora a bordo dei veicoli di cui all'articolo 155, comma 3, del codice, non può superare nell'uso 60 LAeq dB (A) misurato a 10 cm dall'orecchio del guidatore con il microfono rivolto verso la sorgente e con il veicolo a portiere e finestrini chiusi, e, comunque, deve essere tale da non recare pregiudizio alla guida del veicolo."
+    },
+    {
+      "number": "2",
+      "text": "L'emissione sonora dei dispositivi di cui all'articolo 155, comma 4, del codice deve essere intervallata e non può superare in ogni caso la durata massima di tre minuti."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=44&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=350&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:56:30.056700Z",
+  "repealed": false,
+  "source": "reg"
+}

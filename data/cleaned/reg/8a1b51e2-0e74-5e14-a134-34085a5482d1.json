@@ -1,0 +1,22 @@
+{
+  "number": "86",
+  "title": "Segnali relativi a curve pericolose",
+  "commas": [
+    {
+      "number": "1",
+      "text": "Per presegnalare una curva pericolosa, per caratteristiche planimetriche o per insufficiente visibilità, deve essere usato uno dei seguenti segnali: a) CURVA A DESTRA (fig. II.4); b) CURVA A SINISTRA (fig. II.5); c) DOPPIA CURVA, LA PRIMA A DESTRA (fig. II.6); d) DOPPIA CURVA, LA PRIMA A SINISTRA (fig. II.7)."
+    },
+    {
+      "number": "2",
+      "text": "Per segnalare una serie di curve pericolose in successione si deve impiegare il segnale c) o d) a seconda dell'andamento della prima curva, aggiungendo il pannello integrativo modello II.2 recante l'indicazione della lunghezza del tratto di strada interessato."
+    },
+    {
+      "number": "3",
+      "text": "Per segnalare una serie di tornanti in successione si deve impiegare il segnale c) o d) a seconda dell'andamento della prima curva, aggiungendo il pannello integrativo modello II.6/p1. Ciascun tornante può essere indicato con un numero su apposito pannello da collocare sul margine del ciglio stradale esterno e al centro della curva (modello II.6/p2)."
+    }
+  ],
+  "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=13&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=86&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+  "scraped_at": "2026-08-04T09:48:57.714672Z",
+  "repealed": false,
+  "source": "reg"
+}
