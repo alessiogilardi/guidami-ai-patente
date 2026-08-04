@@ -165,21 +165,28 @@ UTC, matching the `datetime.now(UTC)` timestamps used everywhere else
 (`manifest.json`, `TIMESTAMPTZ` columns); see
 `docs/adr/0007-utc-timestamp-convention.md`.
 
-`configure_logging` also sets `os.environ.setdefault("LITELLM_LOG", "WARNING")`
-before returning, and mirrors that same level onto
-`logging.getLogger("LiteLLM").setLevel(...)`. `litellm` attaches its own
-`StreamHandler` to a `"LiteLLM"` logger the first time it's imported (lazily,
-inside `LiteLLMEmbeddingClient._embed`), independent of the root logger
-configured above and defaulting to `DEBUG` when `LITELLM_LOG` is unset — that
-handler writes straight to the stream, bypassing both `LOG_FORMAT` and
-`LogPanelHandler`'s third-party filtering (below). But litellm never calls
-`.setLevel()` on the `"LiteLLM"` logger itself, only on that handler, so its
-*effective* level is otherwise inherited from the root logger (`INFO`) —
-quieting only litellm's own handler still leaves every `INFO` record
-propagating to and printing through our own handlers. Setting the logger's
-level explicitly closes that gap. `setdefault`/mirroring the same value keeps
-an operator-provided `LITELLM_LOG` (e.g. set to `DEBUG` for troubleshooting)
-in control of both sinks together.
+`configure_logging` sets `os.environ.setdefault("LITELLM_LOG", "WARNING")`
+before returning — quiets litellm's own `StreamHandler`, attached to a
+`"LiteLLM"` logger the first time litellm is imported (lazily, inside
+`LiteLLMEmbeddingClient._embed`), independent of the root logger configured
+above and defaulting to `DEBUG` when `LITELLM_LOG` is unset; `setdefault` keeps
+an operator-provided `LITELLM_LOG` (e.g. set to `DEBUG` for troubleshooting) in
+control. That handler writes straight to the stream, bypassing `LOG_FORMAT`,
+but litellm never calls `.setLevel()` on the `"LiteLLM"` logger itself, only on
+that handler — its *effective* level is otherwise inherited from the root
+logger (`INFO`), so records from it (and from `httpx`/`httpcore`/`openai`/
+`urllib3`, all noisy at `INFO`) still propagate to and would print through our
+own handlers. `cli/logging_setup.py:MutedThirdPartyFilter`, a `logging.Filter`
+matching `httpx`/`httpcore`/`litellm`/`openai`/`urllib3` by case-insensitive
+name prefix, is attached to the console `StreamHandler` `configure_logging`
+builds (and to `LogPanelHandler`, below) to drop those records at the
+sink — never at the logger's level, so the run log file's `FileHandler`,
+which never gets this filter, always keeps every record unfiltered and
+unbounded regardless of which console sink is active. (An earlier version
+instead called `logging.getLogger("LiteLLM").setLevel(...)` to quiet the
+console; that approach suppressed the records at the logger itself, silently
+dropping them from the file too — the shared, handler-level filter fixes
+that gap.)
 
 **Live dashboard** (`prepare`/`index` only, interactive TTY, non-dry-run,
 non-`--plain` — spec 0002): `cli/main.py:_build_dashboard(args)` returns a
@@ -222,8 +229,8 @@ default:
 
 `cli/rendering/dashboard/log_panel_handler.py:LogPanelHandler` is a bounded
 (`deque(maxlen=15)`) `logging.Handler` that also filters out third-party
-loggers (`httpx`, `httpcore`, `litellm`, `openai`, `urllib3`, case-insensitive
-prefix match) from the panel only — the run log file, via the separate
+loggers from the panel only, via the same `MutedThirdPartyFilter` the console
+`StreamHandler` uses (above) — the run log file, via the separate
 `FileHandler`, still receives every record unfiltered and unbounded. Its
 lifetime is scoped to the dashboard, not to `configure_logging`: attached to
 the root logger in `LiveDashboard.__enter__`, detached and closed in
@@ -425,6 +432,12 @@ See `adr/` for the full history. Currently accepted:
   (`cli/services/status/`, `cli/models/status/`) are CLI-local rather than
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
+
+*Last updated: 2026-08-04 — verified against commit `86542bc`; the `configure_logging`
+paragraph now describes the shared `MutedThirdPartyFilter` (`cli/logging_setup.py`)
+applied to both the console `StreamHandler` and `LogPanelHandler`, replacing the old
+`logging.getLogger("LiteLLM").setLevel(...)` approach, which silently dropped muted
+records from the run log file too.*
 
 *Last updated: 2026-08-04 — verified against commit `51cabb3`; `parsers/questions_pdf.py`
 row and its lazy-image-extraction paragraph now reflect `data/quiz-images/`, a top-level

@@ -6,6 +6,23 @@ from pathlib import Path
 
 from commons.observability import LOG_FORMAT, RunArtifactWriter
 
+_MUTED_LOGGER_PREFIXES = ("httpx", "httpcore", "litellm", "openai", "urllib3")
+
+
+class MutedThirdPartyFilter(logging.Filter):
+    """Drops records from noisy third-party loggers, on whichever handler it's attached to.
+
+    A `logging.Filter` on a specific handler, not a `Logger.setLevel()` change: muting
+    must only affect what an *interactive* sink displays (this console handler,
+    `LogPanelHandler`'s panel) — the run log file's `FileHandler` never gets this filter
+    attached, so it always keeps full fidelity (PD-4 in `LogPanelHandler`; the same
+    invariant applies here for consistency).
+    """
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        """Returns False (drop) for muted-prefix loggers, True (keep) for everything else."""
+        return not record.name.lower().startswith(_MUTED_LOGGER_PREFIXES)
+
 
 def configure_logging(
     project_root: Path, command: str, dry_run: bool, use_console_handler: bool = True
@@ -26,21 +43,19 @@ def configure_logging(
     # litellm attaches its own StreamHandler to the "LiteLLM" logger the first time it's
     # imported (lazily, inside LiteLLMEmbeddingClient._embed), independent of the root
     # logger this function configures below — that handler defaults to DEBUG when
-    # LITELLM_LOG is unset, so it writes straight to stderr and bypasses both our
-    # formatting and the LiveDashboard's log panel. Must be set before that first import;
-    # setdefault so an operator-provided LITELLM_LOG (e.g. for debugging) still wins.
-    litellm_log_level = os.environ.setdefault("LITELLM_LOG", "WARNING")
-    # litellm never calls .setLevel() on the "LiteLLM" logger itself, only on its own
-    # handler above — left at NOTSET, its *effective* level is inherited from the root
-    # logger (INFO, set by basicConfig below), so INFO records still get created and
-    # propagate to our own handlers/LogPanelHandler even once its own handler is quiet.
-    # Setting it explicitly, to the same LITELLM_LOG value, closes that gap while keeping
-    # both sinks in sync with one operator-facing knob.
-    logging.getLogger("LiteLLM").setLevel(litellm_log_level)
+    # LITELLM_LOG is unset, so it writes straight to stderr, unformatted, bypassing both
+    # LOG_FORMAT and MutedThirdPartyFilter below. Must be set before that first import;
+    # setdefault so an operator-provided LITELLM_LOG (e.g. for debugging) still wins. This
+    # only quiets litellm's *own* handler — its records still propagate to the root logger
+    # at INFO (litellm never calls .setLevel() on the "LiteLLM" logger itself), so they
+    # still reach our own handlers, filtered by MutedThirdPartyFilter same as httpx/openai.
+    os.environ.setdefault("LITELLM_LOG", "WARNING")
 
     handlers: list[logging.Handler] = []
     if use_console_handler:
-        handlers.append(logging.StreamHandler())
+        console_handler = logging.StreamHandler()
+        console_handler.addFilter(MutedThirdPartyFilter())
+        handlers.append(console_handler)
     log_file: Path | None = None
     if not dry_run:
         run_dir = RunArtifactWriter.build_run_dir(project_root / "logs", f"ingest_{command}")
