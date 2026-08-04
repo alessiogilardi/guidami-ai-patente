@@ -14,22 +14,33 @@ from ..rendering import render_dry_run
 logger = logging.getLogger(__name__)
 
 
-def _render_reset_dry_run(args: argparse.Namespace) -> None:
-    """Describes the truncation that would run, without opening a DB connection."""
+def _render_reset_preview(args: argparse.Namespace) -> None:
+    """Describes the truncation `--apply` would run, without opening a DB connection."""
     console = Console()
     match args.entity:
         case "knowledge":
-            steps = ["TRUNCATE article_commas, articles (full wipe, irreversible in a real run)"]
+            steps = [
+                "TRUNCATE article_commas, articles (full wipe, irreversible)",
+                "Pass --apply to execute; without it, nothing is deleted.",
+            ]
             render_dry_run(console, f"reset {args.entity}", steps)
         case "quiz":
-            steps = ["TRUNCATE quiz_questions (full wipe, irreversible in a real run)"]
+            steps = [
+                "TRUNCATE quiz_questions (full wipe, irreversible)",
+                "Pass --apply to execute; without it, nothing is deleted.",
+            ]
             render_dry_run(console, f"reset {args.entity}", steps)
 
 
 def run_reset(config: IngestorConfig, args: argparse.Namespace) -> None:
-    """Dispatch reset subcommand: truncate the target DB table (full wipe)."""
-    if args.dry_run:
-        _render_reset_dry_run(args)
+    """Dispatch reset subcommand: truncate the target DB table (full wipe).
+
+    Destructive, so the gate is inverted from `prepare`/`index`: without `--apply`
+    this only previews the truncation and opens no DB connection; `--apply` is
+    required to actually run it.
+    """
+    if not args.apply:
+        _render_reset_preview(args)
         return
 
     postgres_client = wiring.build_postgres_client(config)

@@ -57,16 +57,21 @@ docker compose -f docker/docker-compose.yml up -d
 | `uv run ingest prepare quiz [--force] [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Prepare quiz bank (enriched with image descriptions) |
 | `uv run ingest index knowledge --source <cds\|cap> [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Embed + store knowledge corpus for one source |
 | `uv run ingest index quiz [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Embed + store quiz bank |
-| `uv run ingest reset knowledge [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Truncates `knowledge_chunks` (full wipe) |
-| `uv run ingest reset quiz [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Truncates `quiz_questions` (full wipe) |
+| `uv run ingest reset knowledge [--apply]` | `guidami_ai_patente_ingestor.cli:main` | Truncates `articles` and `article_commas` (full wipe) |
+| `uv run ingest reset quiz [--apply]` | `guidami_ai_patente_ingestor.cli:main` | Truncates `quiz_questions` (full wipe) |
 | `uv run ingest status [--online]` | `guidami_ai_patente_ingestor.cli:main` | Shows config (secrets masked) and per-command readiness; `--online` also checks Postgres reachability and per-table row counts |
 
-`--dry-run` (on `prepare`/`index`/`reset`) prints the step chain that would run and exits — no filesystem writes, no LLM calls, no DB connection is ever opened.
+`--dry-run` (on `prepare`/`index`) prints the step chain that would run and exits — no
+filesystem writes, no LLM calls, no DB connection is ever opened.
 
-Every real (non-`--dry-run`) invocation logs to console **and** to a per-run file at
+`reset` is destructive, so its gate is inverted: it always previews (same no-filesystem/
+no-DB guarantee as `--dry-run`) unless `--apply` is passed, which is required to actually
+run the `TRUNCATE`. It does not have a `--dry-run` flag of its own.
+
+Every real (non-preview) invocation logs to console **and** to a per-run file at
 `logs/ingest_<command>_<YYYYMMDDHHMM>/run.log` (a numeric suffix is appended on a
-same-minute collision). `--dry-run` never writes to `logs/`, to keep its "no filesystem
-writes" guarantee.
+same-minute collision). Previews (`--dry-run` on `prepare`/`index`, or `reset` without
+`--apply`) never write to `logs/`, to keep the "no filesystem writes" guarantee.
 
 Register new CLI commands under `[project.scripts]` in `pyproject.toml`.
 

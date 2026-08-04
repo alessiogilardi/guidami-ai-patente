@@ -5,9 +5,13 @@ Subcommand structure:
     ingest [--config PATH] prepare quiz [--force] [--dry-run] [--plain]
     ingest [--config PATH] index knowledge --source <cds|cap> [--dry-run] [--plain]
     ingest [--config PATH] index quiz [--dry-run] [--plain]
-    ingest [--config PATH] reset knowledge [--dry-run]
-    ingest [--config PATH] reset quiz [--dry-run]
+    ingest [--config PATH] reset knowledge [--apply]
+    ingest [--config PATH] reset quiz [--apply]
     ingest [--config PATH] status [--online]
+
+`reset` is destructive, so its gate is inverted from every other command: it
+previews (no DB connection) by default, and `--apply` is required to actually
+run the TRUNCATE. It does not define `--dry-run`.
 
 `--config PATH` (anywhere in argv) points every command at an alternate
 `ingestor_config.yaml` instead of the default `configs/ingestor_config.yaml` — e.g.
@@ -30,15 +34,19 @@ Commands:
       Embed + store the knowledge corpus.
   index quiz [--dry-run] [--plain]
       Embed + store the quiz bank.
-  reset knowledge [--dry-run]
-      Truncate articles and article_commas (wipe).
-  reset quiz [--dry-run]
-      Truncate quiz_questions (full wipe).
+  reset knowledge [--apply]
+      Truncate articles and article_commas (wipe). Previews by default; --apply executes.
+  reset quiz [--apply]
+      Truncate quiz_questions (full wipe). Previews by default; --apply executes.
   status [--online]
       Show config + per-command readiness.
 
-`--dry-run` prints the step chain the command would execute and exits: no
-filesystem writes, no LLM calls, no DB connection is ever opened.
+`--dry-run` (on `prepare`/`index`) prints the step chain the command would execute
+and exits: no filesystem writes, no LLM calls, no DB connection is ever opened.
+
+`reset` is destructive, so it inverts that gate: it previews by default (same
+no-filesystem/no-DB guarantee as `--dry-run`) and requires `--apply` to actually
+truncate.
 
 `--config PATH` (before or after the subcommand) points at an alternate
 ingestor_config.yaml, e.g. configs/ingestor_config.test-data.yaml to run against
@@ -48,6 +56,7 @@ Examples:
   ingest prepare knowledge --source cds
   ingest index quiz
   ingest reset knowledge
+  ingest reset knowledge --apply
   ingest status --online
   ingest prepare knowledge --source cds --dry-run
   ingest index quiz --plain
@@ -62,6 +71,16 @@ def _add_dry_run_flag(entity_parser: argparse.ArgumentParser) -> None:
         action="store_true",
         default=False,
         help="Print the step chain that would run and exit; no filesystem/LLM/DB access.",
+    )
+
+
+def _add_apply_flag(entity_parser: argparse.ArgumentParser) -> None:
+    """Adds `--apply` to a `reset` leaf subparser (opt-in destructive gate)."""
+    entity_parser.add_argument(
+        "--apply",
+        action="store_true",
+        default=False,
+        help="Actually execute the truncation; without it, only prints what would be deleted.",
     )
 
 
@@ -137,9 +156,9 @@ def build_parser(config: IngestorConfig) -> argparse.ArgumentParser:
     reset_p = cmd_subs.add_parser("reset", help="Truncate DB tables (full wipe).")
     rst_subs = reset_p.add_subparsers(dest="entity", required=True)
     rst_k = rst_subs.add_parser("knowledge", help="Truncate articles and article_commas tables.")
-    _add_dry_run_flag(rst_k)
+    _add_apply_flag(rst_k)
     rst_q = rst_subs.add_parser("quiz", help="Truncate quiz_questions table.")
-    _add_dry_run_flag(rst_q)
+    _add_apply_flag(rst_q)
 
     # ---- status ----
     status_p = cmd_subs.add_parser("status", help="Show config + per-command readiness.")

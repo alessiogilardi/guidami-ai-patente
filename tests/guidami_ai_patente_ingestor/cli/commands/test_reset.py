@@ -16,7 +16,7 @@ def test_reset_knowledge_truncates_both_tables_commas_first() -> None:
     branch must therefore call `PostgresClient.truncate(*table_names)` directly, with
     the child table named first, not go through per-table repository `.truncate()`.
     """
-    args = argparse.Namespace(entity="knowledge", dry_run=False)
+    args = argparse.Namespace(entity="knowledge", apply=True)
     config_mock = MagicMock()
     config_mock.article_commas_table = "article_commas"
     config_mock.articles_table = "articles"
@@ -33,11 +33,11 @@ def test_reset_knowledge_truncates_both_tables_commas_first() -> None:
     mock_client.truncate.assert_called_once_with("article_commas", "articles")
 
 
-def test_reset_knowledge_dry_run_names_both_tables(
+def test_reset_knowledge_preview_names_both_tables(
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    """T-16 (FR-12): the dry-run description names both tables, no DB connection opened."""
-    args = argparse.Namespace(entity="knowledge", dry_run=True)
+    """T-16 (FR-12): the preview names both tables, no DB connection opened."""
+    args = argparse.Namespace(entity="knowledge", apply=False)
 
     with patch(
         "guidami_ai_patente_ingestor.cli.commands.reset.wiring.build_postgres_client"
@@ -52,8 +52,8 @@ def test_reset_knowledge_dry_run_names_both_tables(
     pg.assert_not_called()
 
 
-def test_run_reset_dry_run_never_opens_a_postgres_connection() -> None:
-    args = argparse.Namespace(entity="knowledge", dry_run=True)
+def test_run_reset_without_apply_never_opens_a_postgres_connection() -> None:
+    args = argparse.Namespace(entity="knowledge", apply=False)
 
     with patch(
         "guidami_ai_patente_ingestor.cli.commands.reset.wiring.build_postgres_client"
@@ -66,7 +66,7 @@ def test_run_reset_dry_run_never_opens_a_postgres_connection() -> None:
 
 
 def test_run_reset_quiz_calls_quiz_question_truncate() -> None:
-    args = argparse.Namespace(entity="quiz", dry_run=False)
+    args = argparse.Namespace(entity="quiz", apply=True)
     config_mock = MagicMock()
     mock_repo_class = MagicMock()
 

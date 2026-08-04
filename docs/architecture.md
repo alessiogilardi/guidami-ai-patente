@@ -126,7 +126,7 @@ clients/providers it actually needs. `run_preparation` wraps every
 preparation flow with idempotency (skips a stage if its output file already
 exists, unless `--force`).
 
-**`--dry-run`** (`prepare`/`index`/`reset` only, every entity; `status` has
+**`--dry-run`** (`prepare`/`index` only, every entity; `status` has
 none — it never mutates anything): each `run_*` command function checks
 `args.dry_run` as its first instruction, before any wiring call, and if set
 calls a private `_render_*_dry_run` helper that describes the step chain via
@@ -136,11 +136,24 @@ is otherwise silently swallowed as an invalid style tag), then returns — no
 `wiring.build_postgres_client`, no flow construction, no LLM/DB/filesystem
 access.
 
+**`reset`'s inverted gate** (`--apply`): `reset` is destructive (`TRUNCATE`),
+so its default is flipped from every other command instead of reusing
+`--dry-run`. `cli/commands/reset.py:run_reset` checks `not args.apply` first
+and, unless `--apply` was passed, calls `_render_reset_preview` — the same
+`render_dry_run` renderer as above — then returns with the identical
+no-DB/no-filesystem guarantee (`wiring.build_postgres_client` is never even
+called). `reset` does not define `--dry-run` at all; `--apply` is required to
+run the real `TRUNCATE`. `cli/main.py:_is_dry_run(args)` centralizes this
+direction flip for the two consumers below that need "is this a no-op
+invocation": it returns `getattr(args, "dry_run", False)` for every command
+except `reset`, where it returns `not args.apply`.
+
 **Per-run file logging**: `cli/main.py:main` parses args first (the log
 folder name needs `args.command`), then calls
 `cli/logging_setup.py:configure_logging(config.project_root, args.command,
-dry_run=..., use_console_handler=...)`, which attaches a `FileHandler` to the
-root logger unless `dry_run`, plus a console `StreamHandler` only when
+dry_run=_is_dry_run(args), use_console_handler=...)`, which attaches a
+`FileHandler` to the root logger unless `dry_run`, plus a console
+`StreamHandler` only when
 `use_console_handler` is True — `main` passes `use_console_handler=dashboard
 is None`, since a live dashboard owns the console itself (see below) and would
 otherwise corrupt its `Live` region by racing a plain `StreamHandler` writing
@@ -154,9 +167,10 @@ f"ingest_{command}")` (spec 0004 FR-3/AD-3 — `configure_logging` delegates its
 run-dir creation and log format, `commons.observability.LOG_FORMAT`, to the
 shared `RunArtifactWriter` component instead of a private
 `_build_run_dir`/`_LOG_FORMAT`, so `ingest` and `scrape` runs share one
-collision-suffix convention and one log format). `--dry-run` runs never get a
-log directory — that would contradict the "no filesystem writes" guarantee
-`render_dry_run` prints. `run_artifact_writer.py` also sets
+collision-suffix convention and one log format). No-op invocations (`--dry-run`
+on `prepare`/`index`, or `reset` without `--apply` — anywhere `_is_dry_run(args)`
+is True) never get a log directory — that would contradict the "no filesystem
+writes" guarantee `render_dry_run` prints. `run_artifact_writer.py` also sets
 `logging.Formatter.converter = time.gmtime` as a module-level side effect
 right after the `LOG_FORMAT` constant, forcing every `%(asctime)s` in every
 `Formatter` created anywhere in the process — including `basicConfig`'s
@@ -200,10 +214,12 @@ restoring inheritance from the root logger.
 **Live dashboard** (`prepare`/`index` only, interactive TTY, non-dry-run,
 non-`--plain` — spec 0002): `cli/main.py:_build_dashboard(args)` returns a
 `cli/rendering/dashboard/live_dashboard.py:LiveDashboard` when
-`args.command` is `prepare`/`index`, `args.dry_run` and `args.plain` are both
-falsy (via `getattr(args, ..., False)`, since `reset`/`status` define
-neither flag), and `rich.console.Console().is_terminal` is True; otherwise
-`None`. `main()` always passes a concrete `ProgressReporter` down — the
+`args.command` is `prepare`/`index`, `_is_dry_run(args)` is False and
+`args.plain` is falsy (via `getattr(args, "plain", False)`, since `reset`/
+`status` define no `--plain`), and `rich.console.Console().is_terminal` is
+True; otherwise `None`. `reset`/`status` short-circuit to `None` on the
+first check (`args.command not in _MONITORED_COMMANDS`) regardless of
+`_is_dry_run`. `main()` always passes a concrete `ProgressReporter` down — the
 dashboard itself when built, else `commons.observability.NullProgressReporter`
 — so no command or flow factory ever branches on whether a dashboard exists.
 When a dashboard is built, `main()` enters it through a `contextlib.ExitStack`
@@ -483,3 +499,10 @@ regressions elsewhere. Also merged in the `feat/ingestion` verification against 
 (ADR 0006).*
 
 *Last updated: 2026-08-04 — verified against commit `78433b5`.*
+
+*Last updated: 2026-08-04 — verified against commit `e503c94`; `reset` now
+inverts the dry-run gate instead of reusing `--dry-run`: it previews by
+default (no `--dry-run` flag of its own) and requires `--apply` to actually
+run the `TRUNCATE`. `cli/main.py:_is_dry_run(args)` centralizes the flip for
+`_build_dashboard`/`configure_logging`, both updated to call it instead of
+reading `args.dry_run` directly.*

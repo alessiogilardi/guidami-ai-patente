@@ -74,6 +74,22 @@ def test_reset_command_returns_none(monkeypatch: pytest.MonkeyPatch) -> None:
     assert _build_dashboard(args) is None
 
 
+def test_is_dry_run_true_for_reset_without_apply() -> None:
+    from guidami_ai_patente_ingestor.cli.main import _is_dry_run
+
+    args = argparse.Namespace(command="reset", entity="knowledge", apply=False)
+
+    assert _is_dry_run(args) is True
+
+
+def test_is_dry_run_false_for_reset_with_apply() -> None:
+    from guidami_ai_patente_ingestor.cli.main import _is_dry_run
+
+    args = argparse.Namespace(command="reset", entity="knowledge", apply=True)
+
+    assert _is_dry_run(args) is False
+
+
 def test_tty_non_plain_non_dry_index_returns_a_dashboard(monkeypatch: pytest.MonkeyPatch) -> None:
     from guidami_ai_patente_ingestor.cli.main import _build_dashboard
     from guidami_ai_patente_ingestor.cli.rendering.dashboard import LiveDashboard

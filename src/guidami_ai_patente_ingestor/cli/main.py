@@ -19,8 +19,20 @@ from .rendering.dashboard import LiveDashboard, LogPanelHandler
 logger = logging.getLogger(__name__)
 
 # Commands that run a `Flow` and are eligible for the live dashboard; `reset`/`status`
-# execute no `Flow` and define neither `--dry-run` nor `--plain` (Non-Goals).
+# execute no `Flow` and define no `--plain` (Non-Goals).
 _MONITORED_COMMANDS = frozenset({"prepare", "index"})
+
+
+def _is_dry_run(args: argparse.Namespace) -> bool:
+    """True when this invocation must make no filesystem/DB writes.
+
+    For `prepare`/`index`, dry-run is opt-in via `--dry-run` (default: real run).
+    `reset` inverts this: it previews by default and `--apply` opts into the real,
+    destructive run — so its dry-run-ness is the negation of `args.apply`.
+    """
+    if args.command == "reset":
+        return not args.apply
+    return getattr(args, "dry_run", False)
 
 
 def _parse_config_override(argv: list[str] | None = None) -> tuple[Path | None, list[str]]:
@@ -47,7 +59,7 @@ def _build_dashboard(args: argparse.Namespace) -> LiveDashboard | None:
     """Returns a dashboard for an interactive, monitored, non-dry run; otherwise None."""
     if args.command not in _MONITORED_COMMANDS:
         return None
-    if getattr(args, "dry_run", False):
+    if _is_dry_run(args):
         return None
     if getattr(args, "plain", False):
         return None
@@ -70,7 +82,7 @@ def main() -> None:
     log_file = configure_logging(
         config.project_root,
         args.command,
-        dry_run=getattr(args, "dry_run", False),
+        dry_run=_is_dry_run(args),
         use_console_handler=dashboard is None,
     )
     if log_file is not None:

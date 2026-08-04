@@ -40,8 +40,6 @@ def test_help_lists_all_commands() -> None:
         ["prepare", "quiz", "--dry-run"],
         ["index", "knowledge", "--source", "cds", "--dry-run"],
         ["index", "quiz", "--dry-run"],
-        ["reset", "knowledge", "--dry-run"],
-        ["reset", "quiz", "--dry-run"],
     ],
 )
 def test_dry_run_flag_parses_true_on_every_command_entity(argv: list[str]) -> None:
@@ -59,9 +57,41 @@ def test_dry_run_flag_defaults_to_false() -> None:
 
     parser = build_parser(_make_config_mock())
 
-    args = parser.parse_args(["reset", "knowledge"])
+    args = parser.parse_args(["index", "quiz"])
 
     assert args.dry_run is False
+
+
+@pytest.mark.parametrize("argv", [["reset", "knowledge"], ["reset", "quiz"]])
+def test_reset_does_not_define_dry_run_flag(argv: list[str]) -> None:
+    from guidami_ai_patente_ingestor.cli.parser import build_parser
+
+    parser = build_parser(_make_config_mock())
+
+    with pytest.raises(SystemExit):
+        parser.parse_args([*argv, "--dry-run"])
+
+
+@pytest.mark.parametrize("argv", [["reset", "knowledge"], ["reset", "quiz"]])
+def test_reset_apply_flag_defaults_to_false(argv: list[str]) -> None:
+    from guidami_ai_patente_ingestor.cli.parser import build_parser
+
+    parser = build_parser(_make_config_mock())
+
+    args = parser.parse_args(argv)
+
+    assert args.apply is False
+
+
+@pytest.mark.parametrize("argv", [["reset", "knowledge"], ["reset", "quiz"]])
+def test_reset_apply_flag_parses_true(argv: list[str]) -> None:
+    from guidami_ai_patente_ingestor.cli.parser import build_parser
+
+    parser = build_parser(_make_config_mock())
+
+    args = parser.parse_args([*argv, "--apply"])
+
+    assert args.apply is True
 
 
 def test_plain_flag_only_on_monitored_commands() -> None:
