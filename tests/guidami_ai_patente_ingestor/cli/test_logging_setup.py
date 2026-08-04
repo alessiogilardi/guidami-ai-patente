@@ -1,10 +1,31 @@
 """Tests for cli/logging_setup.py."""
 
 import logging
+import os
 from collections.abc import Iterator
 from pathlib import Path
 
 import pytest
+
+
+@pytest.fixture(autouse=True)
+def _reset_litellm_log_env() -> Iterator[None]:
+    """Isolates each test from the `LITELLM_LOG` env var `configure_logging` sets."""
+    original = os.environ.get("LITELLM_LOG")
+    yield
+    if original is None:
+        os.environ.pop("LITELLM_LOG", None)
+    else:
+        os.environ["LITELLM_LOG"] = original
+
+
+@pytest.fixture(autouse=True)
+def _reset_litellm_logger_level() -> Iterator[None]:
+    """Isolates each test from the `"LiteLLM"` logger level `configure_logging` sets."""
+    litellm_logger = logging.getLogger("LiteLLM")
+    original_level = litellm_logger.level
+    yield
+    litellm_logger.setLevel(original_level)
 
 
 @pytest.fixture(autouse=True)
@@ -74,3 +95,47 @@ def test_no_stream_handler_when_console_handler_disabled(tmp_path: Path) -> None
     file_handlers = [h for h in root.handlers if isinstance(h, logging.FileHandler)]
     assert stream_handlers == []
     assert len(file_handlers) == 1
+
+
+def test_configure_logging_defaults_litellm_log_to_warning(tmp_path: Path) -> None:
+    from guidami_ai_patente_ingestor.cli.logging_setup import configure_logging
+
+    os.environ.pop("LITELLM_LOG", None)
+
+    configure_logging(tmp_path, "prepare", dry_run=True)
+
+    assert os.environ["LITELLM_LOG"] == "WARNING"
+
+
+def test_configure_logging_does_not_override_existing_litellm_log(tmp_path: Path) -> None:
+    from guidami_ai_patente_ingestor.cli.logging_setup import configure_logging
+
+    os.environ["LITELLM_LOG"] = "DEBUG"
+
+    configure_logging(tmp_path, "prepare", dry_run=True)
+
+    assert os.environ["LITELLM_LOG"] == "DEBUG"
+
+
+def test_configure_logging_raises_litellm_logger_level_to_warning_by_default(
+    tmp_path: Path,
+) -> None:
+    from guidami_ai_patente_ingestor.cli.logging_setup import configure_logging
+
+    os.environ.pop("LITELLM_LOG", None)
+
+    configure_logging(tmp_path, "prepare", dry_run=True)
+
+    assert logging.getLogger("LiteLLM").level == logging.WARNING
+
+
+def test_configure_logging_matches_litellm_logger_level_to_existing_litellm_log(
+    tmp_path: Path,
+) -> None:
+    from guidami_ai_patente_ingestor.cli.logging_setup import configure_logging
+
+    os.environ["LITELLM_LOG"] = "DEBUG"
+
+    configure_logging(tmp_path, "prepare", dry_run=True)
+
+    assert logging.getLogger("LiteLLM").level == logging.DEBUG

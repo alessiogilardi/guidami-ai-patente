@@ -165,6 +165,22 @@ UTC, matching the `datetime.now(UTC)` timestamps used everywhere else
 (`manifest.json`, `TIMESTAMPTZ` columns); see
 `docs/adr/0007-utc-timestamp-convention.md`.
 
+`configure_logging` also sets `os.environ.setdefault("LITELLM_LOG", "WARNING")`
+before returning, and mirrors that same level onto
+`logging.getLogger("LiteLLM").setLevel(...)`. `litellm` attaches its own
+`StreamHandler` to a `"LiteLLM"` logger the first time it's imported (lazily,
+inside `LiteLLMEmbeddingClient._embed`), independent of the root logger
+configured above and defaulting to `DEBUG` when `LITELLM_LOG` is unset — that
+handler writes straight to the stream, bypassing both `LOG_FORMAT` and
+`LogPanelHandler`'s third-party filtering (below). But litellm never calls
+`.setLevel()` on the `"LiteLLM"` logger itself, only on that handler, so its
+*effective* level is otherwise inherited from the root logger (`INFO`) —
+quieting only litellm's own handler still leaves every `INFO` record
+propagating to and printing through our own handlers. Setting the logger's
+level explicitly closes that gap. `setdefault`/mirroring the same value keeps
+an operator-provided `LITELLM_LOG` (e.g. set to `DEBUG` for troubleshooting)
+in control of both sinks together.
+
 **Live dashboard** (`prepare`/`index` only, interactive TTY, non-dry-run,
 non-`--plain` — spec 0002): `cli/main.py:_build_dashboard(args)` returns a
 `cli/rendering/dashboard/live_dashboard.py:LiveDashboard` when
@@ -438,3 +454,5 @@ Regolamento articles confirms both previously-skipped articles now recover with 
 regressions elsewhere. Also merged in the `feat/ingestion` verification against commit
 `96feb45`: the `ingest --config` entry-point note reflects `IngestorConfig.load()`
 (ADR 0006).*
+
+*Last updated: 2026-08-04 — verified against commit `78433b5`.*

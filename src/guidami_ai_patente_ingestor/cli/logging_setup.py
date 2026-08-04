@@ -1,6 +1,7 @@
 """Root logging configuration: console output plus a per-run log file under `logs/`."""
 
 import logging
+import os
 from pathlib import Path
 
 from commons.observability import LOG_FORMAT, RunArtifactWriter
@@ -22,6 +23,21 @@ def configure_logging(
 
     Returns the log file path, or None when `dry_run` is True.
     """
+    # litellm attaches its own StreamHandler to the "LiteLLM" logger the first time it's
+    # imported (lazily, inside LiteLLMEmbeddingClient._embed), independent of the root
+    # logger this function configures below — that handler defaults to DEBUG when
+    # LITELLM_LOG is unset, so it writes straight to stderr and bypasses both our
+    # formatting and the LiveDashboard's log panel. Must be set before that first import;
+    # setdefault so an operator-provided LITELLM_LOG (e.g. for debugging) still wins.
+    litellm_log_level = os.environ.setdefault("LITELLM_LOG", "WARNING")
+    # litellm never calls .setLevel() on the "LiteLLM" logger itself, only on its own
+    # handler above — left at NOTSET, its *effective* level is inherited from the root
+    # logger (INFO, set by basicConfig below), so INFO records still get created and
+    # propagate to our own handlers/LogPanelHandler even once its own handler is quiet.
+    # Setting it explicitly, to the same LITELLM_LOG value, closes that gap while keeping
+    # both sinks in sync with one operator-facing knob.
+    logging.getLogger("LiteLLM").setLevel(litellm_log_level)
+
     handlers: list[logging.Handler] = []
     if use_console_handler:
         handlers.append(logging.StreamHandler())
