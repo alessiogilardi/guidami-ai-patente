@@ -1,4 +1,12 @@
-from parsers.questions_pdf import _get_headers_with_y
+from pathlib import Path
+
+from parsers.questions_pdf import (
+    Question,
+    SubQuestion,
+    _get_headers_with_y,
+    _prune_orphans,
+    _referenced_images,
+)
 
 
 class _FakePage:
@@ -197,3 +205,51 @@ def test_resume_topic_then_new_header_on_same_page() -> None:
         == "guida dei diversi tipi di veicolo e relativo campo visivo del cond."
     )
     assert topic_open is False
+
+
+def _sub_question(number: str, image: str | None) -> SubQuestion:
+    return SubQuestion(number=number, text="Testo", correct_answer=True, image=image)
+
+
+def _question(question_id: str, images: list[str | None]) -> Question:
+    return Question(
+        question_id=question_id,
+        topic="Segnali",
+        sub_questions=[
+            _sub_question(f"{question_id}{i}", image) for i, image in enumerate(images)
+        ],
+    )
+
+
+def test_referenced_images_collects_every_non_null_image_filename() -> None:
+    questions = [
+        _question("1", ["a.jpeg", None]),
+        _question("2", ["b.jpeg", "a.jpeg"]),
+    ]
+
+    assert _referenced_images(questions) == {"a.jpeg", "b.jpeg"}
+
+
+def test_referenced_images_empty_when_no_question_has_an_image() -> None:
+    questions = [_question("1", [None, None])]
+
+    assert _referenced_images(questions) == set()
+
+
+def test_prune_orphans_removes_only_unreferenced_files(tmp_path: Path) -> None:
+    (tmp_path / "a.jpeg").write_bytes(b"referenced")
+    (tmp_path / "b.jpeg").write_bytes(b"orphan")
+
+    pruned = _prune_orphans(tmp_path, referenced={"a.jpeg"})
+
+    assert pruned == 1
+    assert {p.name for p in tmp_path.iterdir()} == {"a.jpeg"}
+
+
+def test_prune_orphans_returns_zero_when_nothing_is_orphaned(tmp_path: Path) -> None:
+    (tmp_path / "a.jpeg").write_bytes(b"referenced")
+
+    pruned = _prune_orphans(tmp_path, referenced={"a.jpeg"})
+
+    assert pruned == 0
+    assert {p.name for p in tmp_path.iterdir()} == {"a.jpeg"}

@@ -32,7 +32,7 @@ def test_load_with_override_merges_over_the_base_yaml(tmp_path: Path) -> None:
         "  parsed: data/test-data/parsed\n"
         "  cleaned: data/test-data/cleaned\n"
         "  enriched: data/test-data/enriched\n"
-        "quiz_images_dir: data/test-data/parsed/quiz-patente-ab/images\n",
+        "quiz_images_dir: data/test-data/quiz-images\n",
         encoding="utf-8",
     )
 
@@ -43,7 +43,7 @@ def test_load_with_override_merges_over_the_base_yaml(tmp_path: Path) -> None:
         "cleaned": "data/test-data/cleaned",
         "enriched": "data/test-data/enriched",
     }
-    assert config.quiz_images_dir == Path("data/test-data/parsed/quiz-patente-ab/images")
+    assert config.quiz_images_dir == Path("data/test-data/quiz-images")
     # Fields the override file doesn't mention still come from the base yaml.
     assert config.sources["cds"].file == "codice_della_strada.json"
     assert config.rca_ranges == ["118-165", "278-300"]
