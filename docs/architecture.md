@@ -144,7 +144,14 @@ shared `RunArtifactWriter` component instead of a private
 `_build_run_dir`/`_LOG_FORMAT`, so `ingest` and `scrape` runs share one
 collision-suffix convention and one log format). `--dry-run` runs never get a
 log directory — that would contradict the "no filesystem writes" guarantee
-`render_dry_run` prints.
+`render_dry_run` prints. `run_artifact_writer.py` also sets
+`logging.Formatter.converter = time.gmtime` as a module-level side effect
+right after the `LOG_FORMAT` constant, forcing every `%(asctime)s` in every
+`Formatter` created anywhere in the process — including `basicConfig`'s
+internal one in both `configure_logging` and `scrapers/normattiva.py` — onto
+UTC, matching the `datetime.now(UTC)` timestamps used everywhere else
+(`manifest.json`, `TIMESTAMPTZ` columns); see
+`docs/adr/0007-utc-timestamp-convention.md`.
 
 **Live dashboard** (`prepare`/`index` only, interactive TTY, non-dry-run,
 non-`--plain` — spec 0002): `cli/main.py:_build_dashboard(args)` returns a
@@ -391,21 +398,23 @@ See `adr/` for the full history. Currently accepted:
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
 
-*Last updated: 2026-08-03 — verified against commit `600b4be`; `commons/observability/`
+*Last updated: 2026-08-04 — verified against commit `2248dcc`; `commons/observability/`
 row now also covers the new `run_artifact_writer/` sibling sub-package (spec 0004 T-2/T-3),
 the per-run file logging section reflects `configure_logging`'s delegation to
-`RunArtifactWriter.build_run_dir`/`LOG_FORMAT`, and the Regolamento parse-error-skip
-paragraph reflects `_process_article`'s extraction and `RunArtifactWriter.record_skip`
-(spec 0004 T-4, replacing the former inline `continue`/print-summary shape). The
-`scrapers/normattiva.py` row now reflects the single `scrape --source <cds|cap|reg>`
-CLI entry point (`cli_main`), replacing the per-law `main_cds`/`main_cap`/`main_reg`
-entry points (spec 0004 T-5). The Regolamento parsing paragraph now documents
-`_split_leading_title`/`_extract_heading_title`'s amendment-bracket and glued
-cross-reference handling (spec 0004 T-7/FR-5) and `_is_marker_start`'s widened
-`;`-boundary and digit-ending-token-boundary rules (spec 0004 T-8/FR-6 — narrowed from an
-initial broader "any bare token" rule after it was found to cause 51 new false-positive
-splits on an offline corpus re-parse; the broader rule is deferred to a future enhancement),
-and records that an offline re-parse of all 409 Regolamento articles confirms both
-previously-skipped articles now recover with zero regressions elsewhere. Also merged in
-the `feat/ingestion` verification against commit `96feb45`: the `ingest --config`
-entry-point note reflects `IngestorConfig.load()` (ADR 0006).*
+`RunArtifactWriter.build_run_dir`/`LOG_FORMAT` plus the module-level
+`logging.Formatter.converter = time.gmtime` UTC forcing (ADR 0007), and the Regolamento
+parse-error-skip paragraph reflects `_process_article`'s extraction and
+`RunArtifactWriter.record_skip` (spec 0004 T-4, replacing the former inline
+`continue`/print-summary shape). The `scrapers/normattiva.py` row now reflects the single
+`scrape --source <cds|cap|reg>` CLI entry point (`cli_main`), replacing the per-law
+`main_cds`/`main_cap`/`main_reg` entry points (spec 0004 T-5). The Regolamento parsing
+paragraph now documents `_split_leading_title`/`_extract_heading_title`'s
+amendment-bracket and glued cross-reference handling (spec 0004 T-7/FR-5) and
+`_is_marker_start`'s widened `;`-boundary and digit-ending-token-boundary rules (spec
+0004 T-8/FR-6 — narrowed from an initial broader "any bare token" rule after it was found
+to cause 51 new false-positive splits on an offline corpus re-parse; the broader rule is
+deferred to a future enhancement), and records that an offline re-parse of all 409
+Regolamento articles confirms both previously-skipped articles now recover with zero
+regressions elsewhere. Also merged in the `feat/ingestion` verification against commit
+`96feb45`: the `ingest --config` entry-point note reflects `IngestorConfig.load()`
+(ADR 0006).*

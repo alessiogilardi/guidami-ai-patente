@@ -2,6 +2,7 @@
 
 import json
 import logging
+import time
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Literal
@@ -9,6 +10,13 @@ from typing import Literal
 from .run_artifact_writer_config import RunArtifactWriterConfig
 
 LOG_FORMAT = "%(asctime)s %(levelname)s %(name)s: %(message)s"
+# Force every log record's asctime onto UTC, matching the datetime.now(UTC) timestamps
+# used everywhere else (manifest.json, DB TIMESTAMPTZ columns). Global logging.Formatter
+# class attribute — the stdlib-documented way to do this — so it applies to every
+# Formatter created anywhere in the process, including basicConfig's internal one in
+# cli/logging_setup.py and scrapers/normattiva.py, both of which import LOG_FORMAT from
+# this module (see ADR on UTC timestamp convention).
+logging.Formatter.converter = time.gmtime
 
 _SkipCategory = Literal["fetch_failed", "session_invalid", "parse_error"]
 _REPORT_HEADINGS: dict[_SkipCategory, str] = {
@@ -50,7 +58,7 @@ class RunArtifactWriter:
 
         Falls back to a numeric suffix (`_2`, `_3`, ...) on a same-minute collision.
         """
-        base_name = f"{prefix}_{datetime.now().strftime('%Y%m%d%H%M')}"
+        base_name = f"{prefix}_{datetime.now(UTC).strftime('%Y%m%d%H%M')}"
         run_dir = logs_root / base_name
         suffix = 2
         while True:
