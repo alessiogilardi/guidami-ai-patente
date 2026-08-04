@@ -1,51 +1,27 @@
 [
   {
-    "number": "276",
-    "title": "Dispositivi di frenatura dei rimorchi agricoli e delle macchine agricole operatrici trainate",
+    "number": "274",
+    "title": "Dispositivi di frenatura delle macchine agricole semoventi",
     "commas": [
       {
         "number": "1",
-        "text": "Un rimorchio agricolo di massa complessiva a pieno carico fino a 1,5 t è considerato parte integrante della trattrice agricola traente quando le dimensioni di ingombro, compresi gli organi di agganciamento, non superano 4,00 m di lunghezza e 2,00 m di larghezza."
+        "text": "I dispositivi di frenatura delle macchine agricole semoventi, di cui all'articolo 57 del codice, devono rispondere alle prescrizioni costruttive e d'efficienza di cui all'allegato 6 del decreto del Presidente della Repubblica 10 febbraio 1981, n. 212 e successive modificazioni."
       },
       {
         "number": "2",
-        "text": "Detti rimorchi possono essere sprovvisti di freni ed essere trainati, con rapporto di traino non superiore a 1, entro il limite della massa rimorchiabile riconosciuta alla trattrice per macchine agricole rimorchiate prive di freni."
+        "text": "Nella prova di tipo \"0\" il dispositivo di frenatura di servizio delle macchine suddette deve garantire decelerazioni medie minime, riferite alle diverse velocità, quali risultano dalla tabella III.4, che fa parte integrante del presente regolamento."
       },
       {
         "number": "3",
-        "text": "Per \"rapporto di traino\" si intende il rapporto tra la massa a pieno carico del rimorchio e la massa della trattrice agricola priva di zavorre, dell'eventuale piano di carico e di attrezzi portati o semiportati."
+        "text": "Il dispositivo di frenatura di stazionamento delle macchine agricole deve poter mantenere immobile il veicolo su una pendenza ascendente e discendente non inferiore al 18%; se la macchina agricola è abilitata al traino, il dispositivo deve mantenere immo- bile il complesso costituito dalla macchina agricola semovente e da una macchina agricola trainata non frenata, della massa complessiva massima ammissibile, su una pendenza ascendente e discendente non inferiore al 12%."
       },
       {
         "number": "4",
-        "text": "Ogni rimorchio agricolo di massa a pieno carico superiore a 1,5 t e fino a 5 t deve essere munito di un dispositivo di frenatura di servizio; tale dispositivo, se di tipo meccanico, può essere con comando a leva di tipo unificato montato sulla trattrice e deve agire sulle ruote di almeno un asse. Lo sforzo muscolare esercitato sul comando non deve superare 30 daN."
-      },
-      {
-        "number": "5",
-        "text": "Ogni rimorchio agricolo di massa a pieno carico superiore a 5 t e fino a 6 t deve essere munito di un dispositivo di frenatura di servizio agente sulle ruote di almeno un asse; tale dispositivo, se di tipo meccanico, deve essere comandato dall'inerzia del rimorchio e, nei rimorchi a due o più assi, può agire anche sul solo asse anteriore."
-      },
-      {
-        "number": "6",
-        "text": "Ogni rimorchio agricolo di massa a pieno carico superiore a 6 t deve essere munito di un dispositivo di frenatura di servizio che utilizza una sorgente di energia diversa da quella muscolare del conducente o dall'energia cinetica del rimorchio; l'azione del dispositivo deve esercitarsi contemporaneamente su tutte le ruote. Le caratteristiche costruttive e di funzionamento nonché le modalità di verifica del dispositivo devono rispondere a prescrizioni tecniche riportate in tabelle di unificazione approvate dal Ministero dei trasporti."
-      },
-      {
-        "number": "7",
-        "text": "Il valore numerico della somma delle forze di frenatura alla periferia delle ruote del rimorchio, espresso in daN, deve essere comunque uguale almeno al 40% del valore numerico della massa complessiva a pieno carico del rimorchio stesso espresso in kg."
-      },
-      {
-        "number": "8",
-        "text": "Ogni rimorchio agricolo di massa complessiva a pieno carico superiore a 1,5 t deve essere munito anche di un dispositivo di frenatura di stazionamento; tale dispositivo deve mantenere, sia in salita che in discesa, il rimorchio fermo su una strada con pendenza almeno pari al 16%. Detto dispositivo può essere comandato da persona a terra; lo sforzo sul comando non deve superare 60 daN."
-      },
-      {
-        "number": "9",
-        "text": "Le norme di cui ai commi precedenti si applicano anche alle macchine agricole operatrici trainate con le esclusioni previste all'articolo 107, comma 1, del codice."
-      },
-      {
-        "number": "10",
-        "text": "Con provvedimento del Ministro dei trasporti, di concerto con il Ministro dell'agricoltura e delle foreste, possono essere stabilite prescrizioni diverse da quelle indicate nei commi precedenti."
+        "text": "Con provvedimento del Ministro dei trasporti, di concerto con il Ministro dell'agricoltura e delle foreste, possono essere stabilite prescrizioni diverse da quelle indicate nei commi precedenti, quando particolari esigenze di sicurezza lo richiedano."
       }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=35&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=276&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:44:59.935548+00:00",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=35&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=274&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:54:25.431312+00:00",
     "repealed": false
   },
   {
@@ -74,28 +50,28 @@
       }
     ],
     "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=8&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=64&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:38:52.328844+00:00",
+    "scraped_at": "2026-08-04T09:48:21.231743+00:00",
     "repealed": false
   },
   {
-    "number": "196",
-    "title": "Caratteristiche dei veicoli per uso di bambini o di invalidi",
+    "number": "194",
+    "title": "Dotazioni tecniche e attrezzature",
     "commas": [
       {
         "number": "1",
-        "text": "I veicoli per uso di bambini o di invalidi devono presentare caratteristiche costruttive tali da non determinare il superamento dei limiti sotto indicati: a) lunghezza massima 1,10 m; b) larghezza massima 0,50 m, ad eccezione della zona compresa tra due piani verticali, ortogonali al piano mediano longitudinale del veicolo e distanti tra loro 0,60 m, dove la larghezza massima può raggiungere il valore di 0,70 m; c) altezza massima ((1,35)) m, nella zona dove la larghezza massima del veicolo può raggiungere il valore di 0,70 m, variabile linearmente da 1,35 m a 0,80 m, valore massimo raggiungibile in corrispondenza dell'estremità anteriore del veicolo; d) sedile monoposto; e) massa in ordine di marcia 40 kg; f) potenza massima del motore 1 kw; g) velocità massima ((6 km/h)) per i veicoli dotati di motore. Tale limite è quello ottenuto per costruzione ed è riferito al numero di giri massimo di utilizzazione del motore dichiarato dal costruttore ed al rapporto di trasmissione più alto. La prova è effettuata su strada piana, in assenza di vento e con il guidatore in posizione eretta (massa 70 (Più o Meno) 5 kg)."
+        "text": "Le imprese che intendono ottenere l'autorizzazione di cui all'articolo 45, comma 8, del codice, devono disporre di almeno un ambiente di lavoro idoneo a norma di legge ((ed essere in possesso)) delle seguenti attrezzature minime: a) applicatore per le pellicole retroriflettenti e non, dotate di adesivo secco, attivabile a caldo. Le dimensioni devono essere idonee alla fabbricazione di ogni tipo di segnale stradale previsto dalle norme del presente regolamento; b) applicatore meccanico a rulli per le pellicole retroriflettenti e non, dotate di adesivo sensibile alla pressione; c) attrezzatura per il taglio delle pellicole, costituita da una fustellatrice con serie completa di fustelle oppure da un plotter o da entrambi integrati e da una idonea attrezzatura per il taglio dei pezzi unici; d) laboratorio serigrafico costituito da almeno una macchina serigrafica semi-automatica con piano aspirato di dimensioni non inferiori a 100 x 150 cm, da un corredo essenziale di telai, da inchiostri trasparenti e non, compatibili con le pellicole utilizzate, e da una camera isolata per l'essiccazione degli stessi; il locale serigrafico deve possedere i requisiti previsti dalle norme igienico-sanitarie vigenti; e) strumento per il controllo della qualità delle stampe serigrafiche che consenta la verifica delle coordinate colorimetriche; f) attrezzature idonee per le operazioni di carteggiatura e per la pulizia dei supporti;"
       },
       {
         "number": "2",
-        "text": "Il superamento anche di uno solo dei limiti indicati nel primo comma comporta l'inclusione della macchina nei veicoli di cui al primo periodo dell'articolo 46, comma 1."
+        "text": "Le imprese devono, altresì, ((avere la proprietà o la disponibilità)) di attrezzature per la lavorazione meccanica dei supporti e la loro verniciatura. La dotazione minima di tali attrezzature deve comprendere: a) attrezzature per il taglio dei metalli; b) presso-piegatrici; c) puntatrici e saldatrici; d) trapani, smerigliatrici ed altre macchine utensili per carpenteria metallica; e) vasche di sgrassaggio metallo; f) cabina di verniciatura; g) forno di essiccazione."
       },
       {
         "number": "3",
-        "text": "In relazione a sopravvenute esigenze costruttive nonché all'unificazione dei veicoli per uso di invalidi, il Ministro dei trasporti ((e della navigazione)) può stabilire per tali veicoli caratteristiche costruttive diverse da quelle indicate al comma 1."
+        "text": "Le attrezzature di cui al comma 2 devono essere in regola ed avere i requisiti previsti dalle disposizioni di legge in vigore in materia di prevenzione degli infortuni e di antinquinamento."
       }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=25&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=196&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:42:40.584405+00:00",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=24&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=194&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:52:12.065151+00:00",
     "repealed": false
   },
   {
@@ -112,167 +88,183 @@
       }
     ],
     "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=6&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=41&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:38:12.346103+00:00",
+    "scraped_at": "2026-08-04T09:47:43.022280+00:00",
     "repealed": false
   },
   {
-    "number": "284",
-    "title": "Ganci delle macchine agricole semoventi",
+    "number": "282",
+    "title": "Dispositivo retrovisore delle macchine agricole semoventi",
     "commas": [
       {
         "number": "1",
-        "text": "I ganci di traino applicati alle macchine agricole semoventi si suddividono nelle seguenti categorie: A - per il traino di macchine agricole aventi massa a pieno carico non superiore a 6000 kg e costruite in modo da non far gravare parte della loro massa sull'occhione di traino; A1 - per il traino di macchine agricole aventi massa a pieno carico non superiore a 3000 kg e costruite in modo da far gravare sull'occhione, in condizioni statiche, un carico verticale non superiore a 250 kg; B - per il traino di macchine agricole aventi massa a pieno carico non superiore a 6000 kg e costruite in modo da far gravare sull'occhione, in condizioni statiche, un carico verticale non superiore a 500 kg; C - per il traino di macchine agricole aventi massa a pieno carico non superiore a 6000 kg e costruite in modo da far gravare sull'occhione, in condizioni statiche, un carico verticale non superiore a 1500 kg; D - per il traino di macchine agricole aventi massa a pieno carico non superiore a 12000 kg e costruite in modo da non far gravare parte della loro massa sull'occhione di traino; D1 - per il traino di macchine agricole aventi massa a pieno carico non superiore a 20000 kg e costruite in modo da non far gravare parte della loro massa sull'occhione di traino; D2 - per il traino di macchine agricole aventi massa a pieno carico non superiore a 14000 kg e costruite in modo da far gravare sull'occhione, in condizioni statiche, un carico verticale non superiore a 2000 kg; D3 - per il traino di macchine agricole aventi masse a pieno carico non superiore a 20000 kg e costruite in modo da far gravare sull'occhione, in condizioni statiche, un carico verticale non superiore a 2500 kg."
-      },
-      {
-        "number": "2",
-        "text": "Le caratteristiche dimensionali e costruttive dei ganci, le verifiche e prove, le modalità di esecuzione delle stesse nonché le marcature di identificazione dovranno rispondere a prescrizioni riportate in tabelle di unificazione approvate dal Ministero dei trasporti - Direzione generale della M.C.T.C."
-      },
-      {
-        "number": "3",
-        "text": "I tipi dei ganci devono essere approvati dal Ministero dei trasporti. Su ogni esemplare dei ganci devono essere indicati in maniera chiara, indelebile e facilmente visibile il marchio di fabbrica, la categoria cui il gancio appartiene, l'anno di fabbricazione e gli estremi della approvazione."
+        "text": "Il dispositivo retrovisore delle macchine agricole semoventi ((...)) di cui all'articolo 57 del codice, deve rispondere alle prescrizioni di cui all'allegato 2 del decreto del Presidente della Repubblica 10 febbraio 1981, n. 212 e successivi aggiornamenti."
       }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=35&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=284&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:45:13.823791+00:00",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=35&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=282&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:54:38.530544+00:00",
     "repealed": false
   },
   {
-    "number": "152",
-    "title": "Altri segnali orizzontali",
+    "number": "151",
+    "title": "Strisce di delimitazione della fermata dei veicoli in servizio di trasporto pubblico collettivo di linea",
     "commas": [
       {
         "number": "1",
-        "text": "I segnali orizzontali di cantiere sono disciplinati dall'articolo 35."
+        "text": "Le strisce di delimitazione della fermata dei veicoli in servizio di trasporto pubblico collettivo di linea sono costituite da una striscia longitudinale gialla discontinua, posta ad una distanza minima di 2,70 m dal marciapiede o dalla striscia di margine continua, e da due strisce trasversali gialle continue che si raccordano perpendicolarmente alle precedenti; nel caso di golfi di fermata le strisce trasversali possono non essere tracciate. La larghezza delle strisce è di 12 cm."
       },
       {
         "number": "2",
-        "text": "Gli spazi riservati allo stazionamento sulla carreggiata dei cassonetti per la raccolta dei rifiuti solidi urbani, non fisicamente delimitati, devono essere segnalati con una striscia gialla continua di larghezza 12 cm. In corrispondenza della parte di delimitazione parallela al margine della carreggiata è vietata la sosta in permanenza."
+        "text": "La zona di fermata è suddivisa in tre parti: la prima e l'ultima di lunghezza pari a 12 m, necessarie per l'effettuazione delle manovre di accostamento al marciapiede e di reinserimento nel flusso di traffico da parte del veicolo; la zona centrale deve avere una lunghezza minima pari alla lunghezza, maggiorata di 2 m, del veicolo più lungo che effettua la fermata."
       },
       {
         "number": "3",
-        "text": "Tratti di strada lungo i quali la sosta è vietata possono essere indicati con segni orizzontali consistenti in segmenti alternati di colore giallo e nero tracciati sulla faccia verticale del ciglio del marciapiede ((o della parete che delimita la strada)) (fig. II.448). (("
+        "text": "La prima e l'ultima parte possono essere evidenziate mediante tracciamento di una striscia gialla a zig zag (fig. II.447)."
       },
       {
         "number": "4",
-        "text": "Nei centri abitati, ove le caratteristiche ambientali lo richiedano, per i segnali a validità diurna e in zone con illuminazione pubblica efficiente, la segnaletica orizzontale può essere realizzata anche con materiale lapideo.)) (("
+        "text": "Sulla pavimentazione all'interno della zona di fermata deve essere apposta l'iscrizione BUS."
       },
       {
         "number": "5",
-        "text": "Per quanto attiene ad altri dispositivi per segnali orizzontali essi sono regolati dall'articolo 154."
+        "text": "Nelle zone di fermata è vietata la sosta dei veicoli."
       }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=19&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=152&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:41:24.749992+00:00",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=19&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=151&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:50:45.467026+00:00",
     "repealed": false
   },
   {
-    "number": "323",
-    "title": "Requisiti uditivi",
+    "number": "321",
+    "title": "Efficienza degli arti",
     "commas": [
       {
         "number": "1",
-        "text": "Per il conseguimento, la conferma di validità o la revisione della patente di guida per motoveicoli ed autoveicoli delle categorie A e B occorre percepire da ciascun orecchio la voce di conversazione con fonemi combinati a non meno di due metri di distanza."
+        "text": "Non possono conseguire o ottenere la conferma di validità della ((...)) patente di guida coloro che presentino, in uno o più arti, alterazioni anatomiche o funzionali invalidanti. Sono da giudicare invalidanti, ai fini della guida, le alterazioni anatomiche o funzionali, considerate singolarmente e nel loro insieme, tali da menomare la forza o la rapidità dei movimenti necessari per eseguire con sicurezza tutte le manovre inerenti alla guida di quei determinati tipi di veicoli ai quali la patente abilita."
       },
       {
         "number": "2",
-        "text": "La funzione uditiva può essere valutata con l'uso di apparecchi correttivi dell'udito monoaurali o binaurali, purché tollerati. L'efficienza delle protesi deve essere attestata dal costruttore con certificazione rilasciata in data non anteriore a tre mesi, da esibire al medico di cui all'articolo 119, comma 2, del codice."
+        "text": "Ai fini del presente articolo l'efficienza degli arti deve essere valutata senza l'uso di apparecchi di protesi od ortesi."
+      }
+    ],
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=40&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=321&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:55:42.590770+00:00",
+    "repealed": false
+  },
+  {
+    "number": "316",
+    "title": "Limitazioni nella guida",
+    "commas": [
+      {
+        "number": "1",
+        "text": "Ai fini del controllo dell'osservanza delle limitazioni della guida di cui all'articolo 117 del codice, le carte di circolazione dei motocicli devono contenere l'indicazione della potenza massima espressa in chilowatt e della potenza specifica, riferita alla tara, espressa in chilowatt per chilogrammo. ((PERIODO SOPPRESSO DAL D.L. 1 APRILE 1995, N. 98 , CONVERTITO CON MODIFICAZIONI DALLA L. 30 MAGGIO 1995, N. 204 )) ."
+      },
+      {
+        "number": "2",
+        "text": "Per consentire i controlli di cui al comma 1 a carico ((...)) dei motocicli già in circolazione alla data di entrata in vigore delle presenti norme, la Direzione generale della M.C.T.C. pubblica l'elenco dei tipi di veicoli non soggetti alle limitazioni nella guida di cui all'articolo 117 del codice."
       },
       {
         "number": "3",
-        "text": "Per il conseguimento, la conferma di validità o la revisione della patente di guida per autoveicoli delle categorie C, D, E occorre percepire la voce di conversazione con fonemi combinati a non meno di otto metri di distanza complessivamente e a non meno di due metri dall'orecchio che sente di meno, con valutazione della funzione uditiva senza l'uso di apparecchi correttivi."
+        "text": "((COMMA SOPPRESSO DAL D.L. 1 APRILE 1995, N. 98 , CONVERTITO CON MODIFICAZIONI DALLA L. 30 MAGGIO 1995, N. 204 )) ."
       }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=40&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=323&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:46:20.743616+00:00",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=39&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=316&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:55:34.369651+00:00",
     "repealed": false
   },
   {
-    "number": "318",
-    "title": "Rilascio del certificato di idoneità alla guida di filoveicoli",
+    "number": "186",
+    "title": "Dispositivi di segnalazione acustica ed ottica delle barriere",
     "commas": [
       {
         "number": "1",
-        "text": "Il direttore dell'Ufficio Speciale Trasporti Impianti Fissi (USTIF) della Direzione generale della M.C.T.C. rilascia, ai candidati che hanno superato gli esami, un certificato di idoneità alle funzioni di guidatore di filoveicoli, conforme al modello approvato dal Ministro dei trasporti ((e della navigazione)) , che è valido solo se accompagnato dalla patente ((di guida per autoveicoli e dall'eventuale certificato di abilitazione professionale, secondo quanto prescritto dall'articolo 118, commi 1 e 2)) , del codice. I certificati di idoneità rilasciati in base alla normativa precedentemente in vigore conservano la loro validità."
+        "text": "Nei passaggi a livello muniti di barriere i dispositivi di segnalazione ottica a luce rossa, ove previsti, sono installati normalmente sul margine destro della carreggiata nelle immediate vicinanze del passaggio a livello e collocati in modo da essere visibili dalla strada alla maggiore distanza possibile. L'altezza da terra del centro dei dispositivi di segnalazione ottica deve essere compresa tra 2 m e 2,50 m; le caratteristiche geometriche dei dispositivi sono indicati nella figura II.477."
       },
       {
         "number": "2",
-        "text": "Il certificato di idoneità abilita a condurre filoveicoli presso le aziende di trasporto pubblico sulle quali resta ferma la competenza degli USTIF di cui all' articolo 12 della legge 1 dicembre 1986, n. 870 ."
-      }
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=39&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=318&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:46:12.150159+00:00",
-    "repealed": false
-  },
-  {
-    "number": "187",
-    "title": "Dispositivi di segnalazione ottica ed acustica delle semibarriere",
-    "commas": [
-      {
-        "number": "1",
-        "text": "Nei passaggi a livello muniti di semibarriere, i dispositivi di segnalazione luminosa devono avere le dimensioni di cui alla figura II.478, essere installati sul margine destro della carreggiata e nelle immediate vicinanze del passaggio a livello e collocati in modo da risultare visibili dalla strada alla maggiore distanza possibile. L'altezza da terra del centro dei dispositivi deve essere non inferiore a 2 m e non superiore a 2,50 m. L'intermittenza delle luci è di 60 % 10 accensioni al minuto. Le caratteristiche tecniche dei dispositivi a luce rossa devono essere tali che l'intensità della luce emessa li renda visibili, in assenza di nebbia, anche di giorno alla distanza di 100 m entro un cono di 30 gradi di apertura."
-      },
-      {
-        "number": "2",
-        "text": "La segnalazione acustica deve avere le caratteristiche prescritte per quelle dei passaggi a livello con barriere che sbarrano l'intera carreggiata, salvo il livello sonoro che può essere inferiore."
+        "text": "Il dispositivo a luce rossa deve avere intensità tale da risultare visibile, di giorno e in assenza di nebbia almeno a 100 m. Qualora la luce rossa sia resa visibile posteriormente, il dispositivo di segnalazione acustica può emettere un segnale di livello sonoro inferiore a quello indicato nel comma 3."
       },
       {
         "number": "3",
-        "text": "I dispositivi di segnalazione luminosa ad una o due luci eventualmente ripetuti sul margine sinistro della strada possono non essere nelle immediate vicinanze del passaggio a livello ma non distarne oltre 30 m; essi devono avere caratteristiche uguali a quelle dei dispositivi installati sul margine destro."
+        "text": "Il dispositivo di segnalazione acustica deve produrre il suono di una campana o suoneria di livello sonoro tale da essere udibile a distanza non inferiore a 100 m in assenza di ostacoli e con vento e rumori trascurabili."
       },
       {
         "number": "4",
-        "text": "Il funzionamento dei dispositivi di segnalazione luminosa ed acustica deve iniziare 30 secondi prima dell'arrivo al passaggio a livello del treno più veloce e l'abbassamento delle barriere deve iniziare non meno di 5 secondi dopo l'inizio del funzionamento dei dispositivi di segnalazione acustica e luminosa."
-      },
-      {
-        "number": "5",
-        "text": "La chiusura delle barriere nonché il funzionamento delle segnalazioni luminose ed acustiche devono proseguire fino al termine del passaggio del treno."
+        "text": "Il funzionamento dei dispositivi di segnalazione acustica deve iniziare almeno 5 secondi prima dell'inizio dell'abbassamento delle barriere e terminare non prima della fine dell'abbassamento delle stesse."
       }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=23&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=187&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:42:25.017270+00:00",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=23&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=186&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:51:58.858543+00:00",
     "repealed": false
   },
   {
-    "number": "297",
-    "title": "Campo di visibilità delle macchine operatrici",
+    "number": "295",
+    "title": "Revisione delle macchine agricole in circolazione",
     "commas": [
       {
         "number": "1",
-        "text": "Il campo di visibilità delle macchine operatrici, di cui all'articolo 58 del codice, deve essere verificato secondo le prescrizioni tecniche dettate in proposito dal Ministro dei trasporti con proprio decreto."
-      }
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=38&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=297&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:45:36.060253+00:00",
-    "repealed": false
-  },
-  {
-    "number": "100",
-    "title": "Segnale aeromobili",
-    "commas": [
-      {
-        "number": "1",
-        "text": "Il segnale AEROMOBILI (fig. II.32) deve essere usato per presegnalare la possibilità di improvvisi e forti rumori od abbagliamenti, su strade in prossimità di aerodromi od aviosuperfici, dovuti ad aeromobili a bassa quota."
-      }
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=13&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=100&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:39:54.602482+00:00",
-    "repealed": false
-  },
-  {
-    "number": "362",
-    "title": "Restituzione dei documenti",
-    "commas": [
-      {
-        "number": "1",
-        "text": "Qualora la idonea sistemazione del carico, ordinata ai sensi dell'articolo 164, comma 9, del codice, possa essere ripristinata immediatamente, i documenti ritirati vengono contestualmente restituiti, previa verifica ad opera dell'organo accertatore ed espressa annotazione sullo stesso verbale di constatazione della violazione."
+        "text": "Le revisioni delle macchine agricole soggette ad immatricolazione sono stabilite con provvedimento del Ministro dei trasporti, di concerto con il Ministro dell'agricoltura e delle foreste, con periodicità non inferiori a cinque anni, a partire dalla data di prima immatricolazione delle macchine agricole stesse."
       },
       {
         "number": "2",
-        "text": "Qualora il ripristino sia differito nel tempo, la restituzione dei documenti ritirati deve essere richiesta al comando da cui dipende l'organo accertatore, che procederà alla restituzione dopo la constatazione che il viaggio può essere ripreso nel rispetto delle condizioni richieste dall'articolo 164, comma 9, del codice, previa espressa annotazione sul verbale di constatazione della violazione."
+        "text": "I requisiti minimi di sicurezza, da accertare con le modalità prescritte dal provvedimento di cui al comma 1, sono, in quanto applicabili, i medesimi dei veicoli di pari massa complessiva, stabiliti nelle appendici VIII e IX al presente titolo."
       }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=46&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=362&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:47:28.048355+00:00",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=37&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=295&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:54:59.877609+00:00",
+    "repealed": false
+  },
+  {
+    "number": "99",
+    "title": "Segnale semaforo",
+    "commas": [
+      {
+        "number": "1",
+        "text": "Il segnale SEMAFORO deve essere usato per presegnalare un impianto semaforico. ((Il suo impiego è obbligatorio sulle strade extraurbane.))"
+      },
+      {
+        "number": "2",
+        "text": "I tre dischi, rosso, giallo e verde, del simbolo del semaforo devono essere rifrangenti. Il disco giallo può essere sostituito con un segnale luminoso giallo lampeggiante."
+      },
+      {
+        "number": "3",
+        "text": "I tre dischi possono essere disposti in verticale (fig. II.31/a) o in orizzontale (fig. II.31/b) a seconda della disposizione effettiva delle lanterne del semaforo cui il segnale si riferisce."
+      },
+      {
+        "number": "4",
+        "text": "Le dimensioni del segnale devono essere di formato grande ovunque le condizioni di impianto lo consentano."
+      }
+    ],
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=13&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=99&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:49:19.278016+00:00",
+    "repealed": false
+  },
+  {
+    "number": "360",
+    "title": "Convogli militari, cortei e simili",
+    "commas": [
+      {
+        "number": "1",
+        "text": "Ai conducenti dei veicoli che fanno parte di convogli militari, o di colonne di truppa, o di cortei o di processioni, incombe l'obbligo di occupare la larghezza di carreggiata strettamente indispensabile sulla propria destra, onde arrecare il minimo intralcio alla circolazione normale."
+      },
+      {
+        "number": "2",
+        "text": "Le colonne o i gruppi di scolari devono, per quanto possibile, servirsi del marciapiede. Nel servirsi della sede stradale, ove necessario, devono procedere in formazione di marcia in modo da arrecare il minimo intralcio o impedimento alla circolazione veicolare."
+      },
+      {
+        "number": "3",
+        "text": "Formazioni in marcia a piedi non possono tenere il passo sui ponti."
+      },
+      {
+        "number": "4",
+        "text": "I conducenti dei veicoli che fanno parte dei convogli indicati nel comma 1 sono tenuti a rispettare la distanza di sicurezza di cui all'articolo 149 del codice, nonché tutte le altre norme relative alle luci ed alle segnalazioni visive."
+      },
+      {
+        "number": "5",
+        "text": "Nel caso di convogli di autoveicoli in numero superiore a dieci unità, sul primo veicolo della colonna nel senso di marcia deve essere collocato anteriormente un cartello a fondo bianco con l'iscrizione in nero INIZIO COLONNA e posteriormente un cartello a fondo bianco con iscrizione in nero FINE COLONNA. Sull'ultimo veicolo della colonna, nel senso di marcia dovrà essere collocato anteriormente analogo cartello con l'iscrizione FINE COLONNA e posteriormente altro cartello con l'iscrizione INIZIO COLONNA ((.)) ((Una competizione ciclistica o atletica in corso di svolgimento può essere indicata con analoghi cartelli riportanti le iscrizioni \"INIZIO GARA . . ..\" e \"FINE GARA . . ..\" con le modalità prescritte nel provvedimento di autorizzazione della gara.))"
+      }
+    ],
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=45&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=360&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:56:46.450036+00:00",
     "repealed": false
   },
   {
@@ -317,12 +309,12 @@
       }
     ],
     "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=6&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=36&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:38:03.733126+00:00",
+    "scraped_at": "2026-08-04T09:47:34.737077+00:00",
     "repealed": false
   },
   {
     "number": "24",
-    "title": "",
+    "title": "Segnale distintivo e norme d'uso. Intimazione dell'alt",
     "commas": [
       {
         "number": "1",
@@ -346,124 +338,94 @@
       }
     ],
     "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=4&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=24&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:37:42.990932+00:00",
+    "scraped_at": "2026-08-04T09:47:14.765154+00:00",
     "repealed": false
   },
   {
-    "number": "340",
-    "title": "Immatricolazione di autoveicoli e motoveicoli appartenenti a cittadini italiani residenti all'estero o a stranieri",
+    "number": "338",
+    "title": "",
+    "commas": [],
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=3&art.idGruppo=42&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=338&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:56:10.433068+00:00",
+    "repealed": true
+  },
+  {
+    "number": "117",
+    "title": "Segnali di divieto specifici",
     "commas": [
       {
         "number": "1",
-        "text": "L'immatricolazione dei veicoli indicati nell'articolo 134 del codice è consentita esclusivamente presso gli uffici provinciali autorizzati dalla Direzione generale della M.C.T.C. Qualora trattasi di veicoli di proprietà di stranieri ai quali la targa viene assegnata in base alle funzioni da essi svolte in Italia, il rilascio della carta di circolazione può avvenire solo su esplicita autorizzazione della stessa Direzione."
+        "text": "I segnali di divieto alla circolazione relativi a particolari categorie di veicoli sono: a) il segnale DIVIETO DI SORPASSO PER I VEICOLI DI MASSA A PIENO CARICO SUPERIORE A 3,5 t (fig. II.52). Indica il divieto di sorpassare veicoli a motore per i veicoli di massa a pieno carico superiore a 3,5 t, indicata sulla carta di circolazione e non adibiti a trasporto di persone. Il sorpasso dei veicoli non a motore è consentito solo se la manovra può compiersi entro la semicarreggiata con o senza la striscia continua. La massa può essere diversamente definita dall'ente proprietario della strada e, in tale caso, il segnale deve essere dotato di pannello integrativo riportante il diverso valore; b) il segnale TRANSITO VIETATO AI VEICOLI A TRAZIONE ANIMALE (fig. II.53); c) il segnale TRANSITO VIETATO AI PEDONI (fig. II.54); d) il segnale TRANSITO VIETATO ALLE BICICLETTE (fig. II.55) ((.)) ((Indica il divieto di transito per i velocipedi;)) e) il segnale TRANSITO VIETATO AI MOTOCICLI (figura II.56); f) il segnale TRANSITO VIETATO AI VEICOLI A BRACCIA (fig. II.57); g) il segnale TRANSITO VIETATO A TUTTI GLI AUTOVEICOLI (fig. II.58) compresi i motoveicoli a 3 ruote e i quadricicli a motore; h) il segnale TRANSITO VIETATO AGLI AUTOBUS (figura II.59); i) il segnale TRANSITO VIETATO AI VEICOLI DI MASSA A PIENO CARICO SUPERIORE A 3,5 t indicata dalla carta di circolazione (fig. II.60/a) non adibiti al trasporto di persone; mediante un'iscrizione in bianco dentro la sagoma del simbolo del veicolo (fig. II.60/bz), ovvero con pannello integrativo, si può prescrivere un diverso valore della suddetta massa consentita al transito; l) il segnale TRANSITO VIETATO A TUTTI I VEICOLI A MOTORE TRAINANTI UN RIMORCHIO (fig. II.61). Eventuali deroghe per rimorchi che non superano una determinata massa possono essere indicate con pannello integrativo; m) il segnale TRANSITO VIETATO ALLE MACCHINE AGRICOLE (fig. II.62); n) il segnale TRANSITO VIETATO AI VEICOLI CHE TRASPORTANO MERCI PERICOLOSE (fig. II.63). o) il segnale TRANSITO VIETATO AI VEICOLI CHE TRASPORTANO ESPLOSIVI O PRODOTTI FACILMENTE INFIAMMABILI (fig. II.64/a) e TRANSITO VIETATO AI VEICOLI CHE TRASPORTANO PRODOTTI SUSCETTIBILI DI CONTAMINARE L'ACQUA (fig. II.64/b). Eventuali deroghe per il trasporto di piccole quantità possono essere indicate con pannello integrativo che ne indichi la quantità."
       },
       {
         "number": "2",
-        "text": "La documentazione da allegare alla domanda per l'immatricolazione con targa EE, ((salvo quanto diversamente disposto dalle normative comunitarie relativamente alle lettere a) e b),)) è la seguente: a) bolletta doganale di importazione temporanea o di esportazione; b) dichiarazione consolare attestante la residenza all'estero oppure dichiarazione, vistata da un notaio o da un pubblico funzionario italiano, rilasciata con le modalità di cui alla legge 4 gennaio 1968, n. 15 , (allegato B) o, nel caso di italiani residenti all'estero, mediante esibizione del passaporto. È consentita la presentazione in anticipo di una dichiarazione preventiva dell'interessato contenente i dati anagrafici, la residenza all'estero, nonché la delega fatta alle persone incaricate per lo svolgimento delle pratiche di immatricolazione. In tal caso la pratica diverrà definitiva con la presentazione della dichiarazione consolare o della dichiarazione fatta ai sensi della legge 4 gennaio 1968, n. 15 , oppure mediante esibizione del passaporto (italiano all'estero); c) dichiarazione di conformità o certificato di origine oppure carta di circolazione originale. Nel caso di esibizione del certificato di origine o della carta di circolazione originale, il veicolo deve essere sottoposto a visita e prova secondo le modalità all'uopo dettate dal Ministero dei trasporti ((e della navigazione)) - Direzione generale della M.C.T.C."
-      },
-      {
-        "number": "3",
-        "text": "Gli uffici provinciali della Direzione generale della M.C.T.C. indicati al comma 1, ricevuta la domanda, provvedono ad iscrivere il veicolo rilasciando la targa di riconoscimento prevista dall'articolo 256, comma 4, lettera b), e la carta di circolazione, secondo le pro- cedure dettate al riguardo dal Ministero dei Trasporti ((e della navigazione)) - Direzione generale della M.C.T.C."
+        "text": "Se le condizioni locali di impianto impediscono l'impiego di segnali di divieto singoli o di segnali di divieto integrati da pannelli di limitazione modello II.4/a è consentito l'inserimento in un solo segnale di un massimo di due simboli relativi alle categorie di veicoli soggette al divieto."
       }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=42&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=340&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:46:50.103348+00:00",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=16&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=117&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:49:49.102189+00:00",
     "repealed": false
   },
   {
-    "number": "118",
-    "title": "Segnali di limitazioni alle dimensioni e alla massa dei veicoli",
-    "commas": [
-      {
-        "number": "1",
-        "text": "I segnali di divieto che comportano limitazioni alle dimensioni e alla massa dei veicoli sono: a) il segnale TRANSITO VIETATO AI VEICOLI AVENTI LARGHEZZA SUPERIORE A . METRI (fig. II.65): deve essere posto solo se la larghezza ammissibile sulla strada è inferiore a quella fissata dall'articolo 61 del codice; b) il segnale TRANSITO VIETATO AI VEICOLI AVENTI ALTEZZA COMPLESSIVA SUPERIORE A . METRI (fig. II.66): deve essere posto solo se l'altezza ammissibile sulla strada è inferiore all'altezza ((dei veicoli)) definita dall'articolo 61 del codice; c) il segnale TRANSITO VIETATO AI VEICOLI, O A COMPLESSI DI VEICOLI, AVENTI LUNGHEZZA SUPERIORE A .METRI (fig. II.67): deve essere posto solo se la lunghezza ammissibile è inferiore alla lunghezza ((dei veicoli)) definita dall'articolo 61 del codice; d) il segnale TRANSITO VIETATO AI VEICOLI AVENTI UNA MASSA SUPERIORE A . TONNELLATE (fig. II.68) deve essere posto solo se la massa consentita è inferiore a quella massima consentita ai sensi dell'articolo 62 del codice per i veicoli ammessi a circolare su quel tratto di strada. Il segnale può essere integrato con pannello modello II.6 indicante il numero massimo dei veicoli ammessi a transitare contemporaneamente; e) il segnale TRANSITO VIETATO AI VEICOLI AVENTI MASSA PER ASSE SUPERIORE A . TONNELLATE (fig. II.69): deve essere posto solo se la massa consentita sull'asse più caricato è inferiore a quella stabilita dall'articolo 62 del codice."
-      },
-      {
-        "number": "2",
-        "text": "Le limitazioni di transito di cui al presente articolo devono essere riportate sui cartelli di preavviso ((...)) ."
-      },
-      {
-        "number": "3",
-        "text": "I valori numerici inseriti nei segnali, di cui al comma 1, sono riferiti alle effettive dimensioni e alla massa del veicolo al momento del transito dello stesso."
-      }
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=16&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=118&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:40:26.160352+00:00",
-    "repealed": false
+    "number": "395",
+    "title": "",
+    "commas": [],
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=54&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=395&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:57:43.868329+00:00",
+    "repealed": true
   },
   {
-    "number": "397",
-    "title": "Art. 215 Cod. Str.)Rimozione del veicolo",
+    "number": "149",
+    "title": "Strisce di delimitazione degli stalli di sosta o per la sosta riservata",
     "commas": [
       {
         "number": "1",
-        "text": "La sanzione amministrativa della rimozione del veicolo, di cui all'articolo 215, comma 1, del codice, è attuata dagli organi di polizia che accertano la violazione attraverso il trasferimento ed il deposito del veicolo in luoghi indicati dall'ente proprietario della strada. Tali luoghi devono essere attrezzati in modo che i veicoli in essi depositati siano sicuri e siano affidati ad un responsabile che assume la figura di custode. Gli enti proprietari di strade devono compilare annualmente un elenco dei depositi così attrezzati, con il numero dei veicoli che vi possono essere depositati e comunicarlo agli organi di polizia di cui all'articolo 12 del codice, incaricati dell'esecuzione della sanzione. Ove in una determinata località, i depositi sono più d'uno, gli organi di polizia suddetti devono, per il trasferimento e il deposito del veicolo rimosso, scegliere quello più vicino al luogo dell'infrazione, nei limiti della loro capienza."
+        "text": "La delimitazione degli stalli di sosta è effettuata mediante il tracciamento sulla pavimentazione di strisce della larghezza di 12 cm formanti un rettangolo, ((oppure con strisce di delimitazione ad L o a T, indicanti l'inizio, la fine o la suddivisione degli stalli entro i quali)) dovrà essere parcheggiato il veicolo."
       },
       {
         "number": "2",
-        "text": "Il trasferimento del veicolo dal luogo dell'infrazione al luogo del deposito è effettuato o direttamente con gli appositi veicoli appartenenti all'ente proprietario ovvero con gli autoveicoli appartenenti alle ditte cui il servizio è stato concesso ai sensi dell'articolo 159, comma 2, del codice, e dell'articolo 354. In ogni caso i veicoli adibiti alla rimozione devono avere le caratteristiche prescritte dall'articolo 12. L'organo di polizia procedente comunica all'interessato l'avvenuta rimozione ed il luogo di deposito, quando possibile. Nel caso in cui l'interessato sopraggiunga durante le operazioni di rimozione del veicolo, è consentita l'immediata restituzione del veicolo stesso, previo pagamento delle spese di intervento e rimozione all'incaricato del concessionario del servizio di rimozione che ne rilascia ricevuta."
+        "text": "La delimitazione degli stalli di sosta mediante strisce (fig. II.444) è obbligatoria ovunque gli stalli siano disposti a spina (con inclinazione di 45Œ rispetto all'asse della corsia adiacente agli stalli) ed a pettine (con inclinazione di 90Œ rispetto all'asse della corsia adiacente agli stalli); è consigliata quando gli stalli sono disposti longitudinalmente (parallelamente all'asse della corsia adiacente agli stalli)."
       },
       {
         "number": "3",
-        "text": "Al responsabile del luogo di deposito che, ai sensi del comma 1 assume la figura di custode si applicano, in quanto compatibili, le disposizioni sulla custodia in caso di sequestro di cui all'articolo 394."
+        "text": "I colori delle strisce di delimitazione degli stalli di sosta sono: a) bianco per gli stalli di sosta non a pagamento; b) azzurro per gli stalli di sosta a pagamento; c) giallo per gli stalli di sosta riservati."
       },
       {
         "number": "4",
-        "text": "Per la restituzione del veicolo rimosso l'interessato o la persona da lui delegata si deve presentare al responsabile del luogo di deposito provando il titolo alla restituzione e versando le spese di intervento, rimozione e custodia secondo tabelle preparate ed annualmente aggiornate dall'ente proprietario. Della avvenuta restituzione è redatto verbale sottoscritto dal custode e dal proprietario del veicolo o persona da lui delegata che espressamente deve dichiarare, previo accertamento, che il veicolo non ha subito danni palesi od occulti a seguito della rimozione. Una copia del verbale è rilasciata all'interessato. Del pagamento delle spese suddette è rilasciata quietanza dal custode."
+        "text": "Gli stalli di sosta riservati devono portare l'indicazione, mediante iscrizione o simbolo, della categoria di veicolo cui lo stallo è riservato."
       },
       {
         "number": "5",
-        "text": "((COMMA ABROGATO DAL D.L.30 SETTEMBRE 2003, N. 269 , CONVERTITO CON MODIFICAZIONI DALLA L. 24 NOVEMBRE 2003, N. 326 )) ."
+        "text": "Gli stalli di sosta riservati alle persone invalide devono essere delimitati da strisce gialle e contrassegnati sulla pavimentazione dall'apposito simbolo; devono, inoltre, essere affiancati da uno spazio libero necessario per consentire l'apertura dello sportello del veicolo nonché la manovra di entrata e di uscita dal veicolo, ovvero per consentire l'accesso al marciapiede (figure II.445/a, II.445/b, II.445/c)."
       }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=3&art.idGruppo=54&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=397&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:48:28.355466+00:00",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=19&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=149&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:50:42.160571+00:00",
     "repealed": false
   },
   {
-    "number": "150",
-    "title": "Presegnalamento di isole di traffico o di ostacoli entro la carreggiata",
+    "number": "120",
+    "title": "Segnali di fermata, di sosta e di parcheggio",
     "commas": [
       {
         "number": "1",
-        "text": "Le isole di traffico a raso sulla pavimentazione ed i triangoli di presegnalamento delle isole di traffico in rilievo devono essere evidenziati mediante zebrature poste entro le strisce di raccordo per l'incanalamento dei veicoli o tra queste ed il bordo della carreggiata."
+        "text": "I segnali che regolano la FERMATA, la SOSTA ed il PARCHEGGIO, o che forniscono indicazioni utili a tal fine, sono: a) il segnale DIVIETO DI SOSTA (fig. II.74). Deve essere usato per indicare i luoghi dove è stato disposto il divieto di sosta dei veicoli, ad eccezione dei luoghi ove per regola generale vige il divieto. Lungo le strade extraurbane, in assenza di iscrizioni integrative, indica che il divieto di sosta è permanente, ed ha valore anche nelle ore notturne. Lungo le strade urbane, in assenza di iscrizioni integrative, indica che il divieto di sosta vige dalle ore 8 ((alle ore 20)) . Il segnale può essere corredato da pannelli integrativi sui quali cifre, o brevi iscrizioni, possono limitare la portata del divieto indicando, secondo i casi: 1) i giorni della settimana o del mese o le ore della giornata durante i quali vige il divieto (pannello integrativo modello II.3); 2) le eccezioni per talune categorie di utenti (pannello integrativo modello II.4/b); 3) i periodi relativi a giorni e ad ore in cui vige il divieto per consentire le operazioni di pulizia della sede stradale mediante macchine operatrici o con altri mezzi (pannello integrativo modello II.6/q2 o, in versione integrata, modello II.8/a). b) il segnale DIVIETO DI FERMATA (fig. II.75). Deve essere usato per indicare i luoghi dove in assenza di iscrizioni integrative sono vietate in permanenza la sosta e la fermata e, comunque, qualsiasi momentaneo arresto volontario del veicolo. ((Il segnale non deve essere corredato dal pannello integrativo modello II.6/m poiché la rimozione coatta può comunque essere eseguita a norma dell'articolo 159, comma 1, lettera c), del codice.)) I segnali DIVIETO DI SOSTA e DIVIETO DI FERMATA possono essere integrati dagli specifici segni orizzontali; c) il segnale PARCHEGGIO (fig. II.76). Può essere usato per indicare un'area organizzata od attrezzata per sostare per un tempo indeterminato, salvo diversa indicazione. Il segnale può essere corredato da pannelli integrativi per indicare con valore prescrittivo: limitazioni di tempo, tariffe per i parcheggi a pagamento, lo schema di disposizione dei veicoli (sosta parallela, obliqua, ortogonale), nonché categorie ammesse o escluse. Il segnale può essere inserito in quelli di preavviso e di direzione; d) il segnale PREAVVISO DI PARCHEGGIO (fig. II.77). Indica la direzione da seguire verso il più vicino parcheggio. e) il segnale PASSO CARRABILE (fig. II.78). Indica la zona per l'accesso dei veicoli alle proprietà laterali, in corrispondenza della quale vige ((, in permanenza,)) il divieto di sosta, ai sensi dell'articolo 158 del codice. Il segnale ha dimensioni normali ((di 45 x 25)) cm e dimensioni maggiorate di ((60 x 40)) cm. Sulla parte alta del segnale deve essere indicato l'ente proprietario della strada che rilascia l'autorizzazione, in basso deve essere indicato il numero e l'anno del rilascio. La mancata indicazione dell'ente e degli estremi dell'autorizzazione comporta l'inefficacia del divieto. Per le strade private, aperte al pubblico transito, l'autorizzazione è concessa dal Comune. ((L'installazione e la manutenzione del segnale sono a cura e spese del soggetto titolare della autorizzazione. Di norma, il segnale è installato in posizione parallela all'asse della strada e può essere applicato su porte o cancelli.))"
       },
       {
         "number": "2",
-        "text": "Le strisce delle zebrature devono essere di colore bianco, inclinate di almeno 45 rispetto alla corsia di marcia e di larghezza non inferiore a 30 cm; gli intervalli tra le strisce sono di larghezza doppia rispetto alle strisce (fig. II.446)."
+        "text": "Le iscrizioni poste sul pannello integrativo dei divieti di sosta e di fermata devono essere concise e del tipo \"7.30 - 19.00\". Nel caso di divieto di sosta valido per un'intera giornata deve essere apposta l'indicazione \"0 - 24\". Per indicarne l'inizio, la ripetizione e la fine, si adottano pannelli integrativi modello II.5. Per indicare l'estesa si impiegano pannelli integrativi modello II.2. Eccezioni ((permanenti)) al divieto di sosta - esclusivamente per i veicoli degli invalidi e per le ambulanze - sono indicate con il segnale composito di SOSTA CONSENTITA A PARTICOLARE CATEGORIA (figg. II.79/a, II.79/b). Per segnalare all'utenza la rimozione coatta del mezzo nel tratto segnalato perché costituisce intralcio o pericolo per la circolazione, si impiega il pannello integrativo modello II.6/m ZONA RIMOZIONE con la stessa validità oraria del segnale di divieto."
       },
       {
         "number": "3",
-        "text": "Le strisce di raccordo sono bianche."
+        "text": "Il segnale composito di cui al comma 2 deve essere utilizzato anche per segnalare l'eccezione al divieto di sosta disposta per i veicoli appartenenti alle forze armate, alle forze di polizia, ai vigili del fuoco, alla polizia municipale e ad altri servizi di pubblico interesse e di soccorso, ((...)) limitatamente alle aree limitrofe le rispettive sedi e per la superficie strettamente indispensabile (fig. II.79/c)."
       },
       {
         "number": "4",
-        "text": "Sulle zone di presegnalamento è vietata la sosta."
+        "text": "I segnali di PARCHEGGIO e PREAVVISO DI PARCHEGGIO possono essere corredati di pannello integrativo modello II.1 o modello II.4/a per indicare rispettivamente distanza e categoria di veicoli cui il parcheggio è riservato. Il segnale PARCHEGGIO in formato ridotto può essere usato in combinazione con segnali di DIVIETO DI SOSTA e DIVIETO DI FERMATA per indicare deroghe ai divieti per quelle particolari, singole categorie, elencate al comma 1, lettera a), punto 2), aventi invece diritto a sostare o a fermarsi. La figura II.79/d rappresenta un esempio di cartello composito per indicare varie regolamentazioni flessibili utili nei centri abitati o nelle località turistiche."
       }
     ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=19&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=150&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:41:21.291953+00:00",
-    "repealed": false
-  },
-  {
-    "number": "121",
-    "title": "Segnali di obbligo in generale",
-    "commas": [
-      {
-        "number": "1",
-        "text": "I segnali di obbligo sono di forma circolare ed impongono agli utenti uno specifico comportamento, ovvero una particolare condizione di circolazione da rispettare."
-      },
-      {
-        "number": "2",
-        "text": "I segnali di obbligo si dividono in generici o specifici. Quelli generici hanno fondo blu e simbolo bianco; quelli specifici hanno fondo bianco, bordo rosso e simbolo nero."
-      },
-      {
-        "number": "3",
-        "text": "I segnali di obbligo sono diretti a tutti gli utenti, salvo deroghe indicate mediante pannello integrativo modello II.4."
-      }
-    ],
-    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=1&art.idGruppo=17&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=121&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:40:31.348899+00:00",
+    "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=16&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=120&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
+    "scraped_at": "2026-08-04T09:49:54.097045+00:00",
     "repealed": false
   },
   {
@@ -488,7 +450,7 @@
       }
     ],
     "url": "https://www.normattiva.it/atto/caricaArticolo?art.versione=2&art.idGruppo=7&art.flagTipoArticolo=0&art.codiceRedazionale=092G0531&art.idArticolo=52&art.idSottoArticolo=1&art.idSottoArticolo1=10&art.dataPubblicazioneGazzetta=1992-12-28&art.progressivo=0",
-    "scraped_at": "2026-08-01T16:38:31.793979+00:00",
+    "scraped_at": "2026-08-04T09:48:01.309783+00:00",
     "repealed": false
   }
 ]
