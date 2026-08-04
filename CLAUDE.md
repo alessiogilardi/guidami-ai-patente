@@ -49,6 +49,7 @@ docker compose -f docker/docker-compose.yml up -d
 | `uv run scrape --source <cds\|cap\|reg> [--dry-run]` | `scrapers.normattiva:cli_main` | Scrapes the selected law (CdS, CAP, or the Regolamento di attuazione DPR 495/1992) → `data/raw/<source>/`, `data/parsed/<source>/` |
 | `uv run extract-rca` | `scrapers.rca_extract:main` | Filters `codice_assicurazioni_private.json` down to `IngestorConfig.rca_ranges` → `data/parsed/cap/codice_rca.json` |
 | `uv run parse-domande` | `parsers.questions_pdf:main_questions` | Parses quiz PDF → `data/parsed/quiz-patente-ab/` |
+| `uv run sample-test-data [--count N] [--seed N]` | `test_data_sampler.sampler:main` | Samples `--count` (default 20) random elements per source from `data/parsed/` → `data/test-data/parsed/` (cds/cap/reg/quiz + only the referenced quiz images) |
 | `uv run ingest prepare knowledge --source <cds\|cap> [--force] [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Clean + enrich knowledge corpus for one source |
 | `uv run ingest prepare quiz [--force] [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Prepare quiz bank (enriched with image descriptions) |
 | `uv run ingest index knowledge --source <cds\|cap> [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Embed + store knowledge corpus for one source |
@@ -65,6 +66,27 @@ same-minute collision). `--dry-run` never writes to `logs/`, to keep its "no fil
 writes" guarantee.
 
 Register new CLI commands under `[project.scripts]` in `pyproject.toml`.
+
+### Running against a test-data subset
+
+Every `ingest` command accepts a global `--config PATH` flag (anywhere in argv,
+before or after the subcommand) pointing at an alternate `ingestor_config.yaml`.
+`configs/ingestor_config.test-data.yaml` retargets the `parsed`/`cleaned`/`enriched`
+layers and `quiz_images_dir` at `data/test-data/` instead of `data/` — same Postgres
+tables, same source catalog, just a smaller corpus:
+
+```bash
+# One-off: (re)generate the subset from the full corpus in data/parsed/
+uv run sample-test-data --count 20 --seed 42
+
+# Run prepare/index against it instead of the full corpus
+uv run ingest --config configs/ingestor_config.test-data.yaml prepare knowledge --source cds
+uv run ingest --config configs/ingestor_config.test-data.yaml index quiz
+```
+
+`data/test-data/parsed/` and `data/test-data/cleaned/` are committed as a pinned
+fixture, same as their main-tree counterparts; `data/test-data/enriched/` is
+`.gitignore`d for the same reason as `data/enriched/` (ADR 0005).
 
 ### Secrets required
 

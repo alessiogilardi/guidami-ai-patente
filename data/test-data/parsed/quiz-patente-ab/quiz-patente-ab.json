@@ -1,0 +1,1394 @@
+[
+  {
+    "question_id": "4032",
+    "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+    "sub_questions": [
+      {
+        "number": "18648",
+        "text": "L'autovettura è un veicolo a motore con quattro ruote, destinato al trasporto di massimo nove persone, compreso il conducente",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18649",
+        "text": "L'autovettura fa parte degli autoveicoli",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18650",
+        "text": "L'autovettura non può avere più di nove posti, compreso il conducente",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18651",
+        "text": "L'autobus non è un'autovettura",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18652",
+        "text": "Le autovetture possono avere motore elettrico",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18653",
+        "text": "Le autovetture sono soggette a revisione periodica",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18654",
+        "text": "Si definiscono autovetture tutti i veicoli a motore che hanno la trazione posteriore",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18655",
+        "text": "Le autovetture non possono trainare carrelli-appendice o rimorchi",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18656",
+        "text": "Vengono definite autovetture tutti i veicoli con motore anteriore",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18657",
+        "text": "L'autovettura è un veicolo con dieci posti in totale, compreso il conducente",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18658",
+        "text": "Si definisce autovettura il veicolo blindato e appositamente attrezzato per il trasporto di valori",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18659",
+        "text": "L'autocarro è un'autovettura",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18660",
+        "text": "L'autovettura può avere, al massimo, cinque posti",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18661",
+        "text": "Le autovetture sono soggette a revisione ogni cinque anni",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  },
+  {
+    "question_id": "4165",
+    "topic": "Segnali di obbligo",
+    "sub_questions": [
+      {
+        "number": "20224",
+        "text": "Il segnale raffigurato obbliga i conducenti a passare a sinistra di un ostacolo",
+        "correct_answer": true,
+        "image": "2b73d96a20a9452074f1346816094569.jpeg"
+      },
+      {
+        "number": "20225",
+        "text": "Il segnale raffigurato obbliga i conducenti a passare a sinistra di un'isola di traffico",
+        "correct_answer": true,
+        "image": "2b73d96a20a9452074f1346816094569.jpeg"
+      },
+      {
+        "number": "20226",
+        "text": "Il segnale raffigurato obbliga i conducenti a passare a sinistra di un salvagente",
+        "correct_answer": true,
+        "image": "2b73d96a20a9452074f1346816094569.jpeg"
+      },
+      {
+        "number": "20227",
+        "text": "Il segnale raffigurato obbliga i conducenti a passare a sinistra di un cantiere stradale",
+        "correct_answer": true,
+        "image": "2b73d96a20a9452074f1346816094569.jpeg"
+      },
+      {
+        "number": "20228",
+        "text": "Il segnale raffigurato obbliga i conducenti a passare a sinistra di uno spartitraffico",
+        "correct_answer": true,
+        "image": "2b73d96a20a9452074f1346816094569.jpeg"
+      },
+      {
+        "number": "20229",
+        "text": "Il segnale raffigurato può essere preceduto dal segnale ROTATORIA",
+        "correct_answer": false,
+        "image": "2b73d96a20a9452074f1346816094569.jpeg"
+      },
+      {
+        "number": "20230",
+        "text": "Il segnale raffigurato indica una discesa pericolosa a sinistra",
+        "correct_answer": false,
+        "image": "2b73d96a20a9452074f1346816094569.jpeg"
+      },
+      {
+        "number": "20231",
+        "text": "Il segnale raffigurato obbliga i conducenti a svoltare a sinistra",
+        "correct_answer": false,
+        "image": "2b73d96a20a9452074f1346816094569.jpeg"
+      },
+      {
+        "number": "20232",
+        "text": "Il segnale raffigurato preannuncia l'obbligo di svoltare a sinistra",
+        "correct_answer": false,
+        "image": "2b73d96a20a9452074f1346816094569.jpeg"
+      },
+      {
+        "number": "20233",
+        "text": "Il segnale raffigurato indica che è obbligatorio svoltare a destra",
+        "correct_answer": false,
+        "image": "2b73d96a20a9452074f1346816094569.jpeg"
+      },
+      {
+        "number": "20234",
+        "text": "Il segnale raffigurato è un segnale di indicazione",
+        "correct_answer": false,
+        "image": "2b73d96a20a9452074f1346816094569.jpeg"
+      }
+    ]
+  },
+  {
+    "question_id": "4405",
+    "topic": "Distanza di sicurezza",
+    "sub_questions": [
+      {
+        "number": "22634",
+        "text": "Sulla distanza di sicurezza influisce la concentrazione del conducente",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "22635",
+        "text": "Sulla distanza di sicurezza influisce la velocità a cui si viaggia",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "22636",
+        "text": "Sulla distanza di sicurezza influisce il carico trasportato dal veicolo",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "22637",
+        "text": "Sulla distanza di sicurezza influiscono l'aderenza e le condizioni dei pneumatici",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "22639",
+        "text": "Sulla distanza di sicurezza influisce il numero di corsie della strada",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "22640",
+        "text": "Sulla distanza di sicurezza influisce la dimensione del veicolo che precede",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "22641",
+        "text": "Sulla distanza di sicurezza influisce il numero di marce del cambio di velocità",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "22642",
+        "text": "Sulla distanza di sicurezza influisce il numero di ruote del veicolo",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "22643",
+        "text": "Sulla distanza di sicurezza da mantenere dal veicolo che precede influisce il tipo di servosterzo utilizzato",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  },
+  {
+    "question_id": "4652",
+    "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+    "sub_questions": [
+      {
+        "number": "24928",
+        "text": "Se un ferito della strada si è ustionato e sono ancora presenti delle residue fiamme, bisogna spegnerle , soffocandole, ad esempio, con una coperta",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "24929",
+        "text": "Se un ferito della strada si è ustionato, è consigliabile non togliere i vestiti rimasti attaccati alla pelle bruciata",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "24930",
+        "text": "Per diminuire il dolore delle ustioni si deve, se possibile, fare uso di acqua fredda",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "24931",
+        "text": "Se un ferito della strada ha riportato delle ustioni al busto, conviene coprirle con materiale pulito, possibilmente sterile",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "24932",
+        "text": "Se un ferito della strada si è ustionato e sono ancora presenti delle residue fiamme, bisogna aspettare che si spengano da sole, prima di intervenire",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "24933",
+        "text": "Se un ferito della strada si è ustionato, bisogna sempre togliere le parti dei vestiti che sono rimaste attaccate alla pelle",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "24934",
+        "text": "Se un ferito della strada si è ustionato, bisogna disinfettare le bruciature con l'alcool",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  },
+  {
+    "question_id": "4016",
+    "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+    "sub_questions": [
+      {
+        "number": "18478",
+        "text": "La corsia può essere destinata alla normale marcia dei veicoli",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18479",
+        "text": "La corsia è limitata da strisce continue o discontinue",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18480",
+        "text": "La corsia può essere di accelerazione",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18481",
+        "text": "La corsia può essere di decelerazione",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18482",
+        "text": "Le corsie possono essere vietate a taluni tipi di veicoli",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18483",
+        "text": "La corsia può essere riservata alla circolazione di alcune categorie di veicoli (taxi, autobus, ecc.)",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18484",
+        "text": "La corsia può essere destinata ad effettuare sorpassi",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18485",
+        "text": "L'ente proprietario della strada può imporre che su una corsia i veicoli transitino ad una velocità minima obbligatoria",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18486",
+        "text": "La corsia è una parte della carreggiata che consente la circolazione di una sola fila di veicoli",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18487",
+        "text": "La corsia può essere destinata alle soste di emergenza, in caso di guasto o malessere",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18488",
+        "text": "La corsia può essere riservata ai veicoli che intendono svoltare (corsia specializzata)",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18489",
+        "text": "La corsia può essere destinata al rallentamento dei veicoli in uscita dalle autostrade",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18490",
+        "text": "La corsia è destinata solo al transito dei pedoni",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18491",
+        "text": "La corsia può essere a doppio senso di circolazione",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18492",
+        "text": "La corsia è una pista riservata alle vetture da corsa",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18493",
+        "text": "La corsia non può mai essere attraversata dai pedoni",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18494",
+        "text": "La corsia è formata da due carreggiate",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18495",
+        "text": "La corsia è una strada a scorrimento veloce",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18496",
+        "text": "Nei centri abitati, su una stessa corsia possono circolare affiancati due motocicli",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18497",
+        "text": "Fuori dai centri abitati, su una stessa corsia possono circolare affiancati due ciclomotori",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  },
+  {
+    "question_id": "4082",
+    "topic": "Segnali di pericolo",
+    "sub_questions": [
+      {
+        "number": "19233",
+        "text": "Il segnale raffigurato preannuncia un restringimento della carreggiata",
+        "correct_answer": true,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19234",
+        "text": "Il segnale raffigurato preannuncia una strettoia sul lato sinistro della carreggiata",
+        "correct_answer": true,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19235",
+        "text": "Il segnale raffigurato preannuncia un restringimento pericoloso sulla sinistra della carreggiata",
+        "correct_answer": true,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19236",
+        "text": "Il segnale raffigurato preannuncia una strettoia con probabile difficoltà di incrocio con i veicoli provenienti dal senso opposto",
+        "correct_answer": true,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19237",
+        "text": "Il segnale raffigurato impone di moderare la velocità e, se occorre, arrestarsi",
+        "correct_answer": true,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19238",
+        "text": "Il segnale raffigurato è un segnale di pericolo",
+        "correct_answer": true,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19239",
+        "text": "Il segnale raffigurato, se a fondo giallo, è posto in presenza di un cantiere stradale che riduce la larghezza della carreggiata",
+        "correct_answer": true,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19240",
+        "text": "Il segnale raffigurato è un segnale di prescrizione",
+        "correct_answer": false,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19241",
+        "text": "Il segnale raffigurato preannuncia una confluenza da sinistra",
+        "correct_answer": false,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19242",
+        "text": "Il segnale raffigurato preannuncia una strada con una serie di curve",
+        "correct_answer": false,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19243",
+        "text": "Il segnale raffigurato preannuncia un cavalcavia",
+        "correct_answer": false,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19244",
+        "text": "Il segnale raffigurato preannuncia un sottopassaggio pedonale",
+        "correct_answer": false,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19245",
+        "text": "Il segnale raffigurato preannuncia un restringimento sulla destra della carreggiata",
+        "correct_answer": false,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19246",
+        "text": "Il segnale raffigurato preannuncia la presenza di un cordolo alto per separare le corsie",
+        "correct_answer": false,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      },
+      {
+        "number": "19247",
+        "text": "Il segnale raffigurato preannuncia un tratto di strada sdrucciolevole",
+        "correct_answer": false,
+        "image": "6a22104defc75f1e908cb883a771b8bc.jpeg"
+      }
+    ]
+  },
+  {
+    "question_id": "4022",
+    "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+    "sub_questions": [
+      {
+        "number": "18533",
+        "text": "Il passo carrabile consente ai veicoli di accedere alle proprietà private laterali alla strada (garage, cortili, ecc.)",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18534",
+        "text": "Il passo carrabile permette ai veicoli che circolano su una strada pubblica di accedere ad un'area laterale adibita alla sosta",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18535",
+        "text": "Il passo carrabile deve essere corredato da apposito segnale, che riporti l'ente e il numero di autorizzazione",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18536",
+        "text": "Il passo carrabile è una zona per l'accesso dei veicoli alle proprietà laterali alla strada",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18537",
+        "text": "In corrispondenza del passo carrabile è consentita la fermata",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18538",
+        "text": "Il passo carrabile è un parcheggio scambiatore",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18539",
+        "text": "Il passo carrabile è una strada riservata ai carri trainati da animali",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18540",
+        "text": "Il passo carrabile è una strada riservata agli autocarri",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18541",
+        "text": "Il passo carrabile è un salvagente circolare per i pedoni",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18542",
+        "text": "Il passo carrabile è un segnale che impone la circolazione rotatoria su una piazza",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18543",
+        "text": "In corrispondenza del passo carrabile è consentita la sosta",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  },
+  {
+    "question_id": "4006",
+    "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+    "sub_questions": [
+      {
+        "number": "18367",
+        "text": "L'isola di traffico serve a facilitare l'incanalamento dei veicoli verso varie direzioni",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18368",
+        "text": "L'isola di traffico è delimitata da strisce bianche continue",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18369",
+        "text": "L'isola di traffico può essere a raso o in rilievo (rialzata)",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18370",
+        "text": "L'isola di traffico viene evidenziata mediante zebrature di colore bianco",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18371",
+        "text": "L'isola di traffico è una parte della strada sulla quale è vietato il transito dei motocicli",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18372",
+        "text": "L'isola di traffico a raso è costituita da zebrature di colore bianco",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18373",
+        "text": "L'isola di traffico, se rialzata, è preceduta da zebrature di colore bianco",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18374",
+        "text": "L'isola di traffico è una parte della strada sulla quale è vietato il transito dei veicoli",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "18375",
+        "text": "L'isola di traffico serve a separare la carreggiata dalla banchina",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18376",
+        "text": "L'isola di traffico serve per il transito dei pedoni",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18377",
+        "text": "L'isola di traffico è una piazzola di sosta per i veicoli",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18378",
+        "text": "L'isola di traffico può essere percorsa solo dai taxi e dagli autobus urbani",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18379",
+        "text": "L'isola di traffico è la parte della città con maggiore traffico",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18380",
+        "text": "L'isola di traffico corrisponde, in genere, al centro storico della città",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18381",
+        "text": "L'isola di traffico è una piazzola per effettuare l'inversione di marcia",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18382",
+        "text": "L'isola di traffico è posta al di fuori della strada",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18383",
+        "text": "L'isola di traffico serve per la fermata dei veicoli",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18384",
+        "text": "L'isola di traffico facilita la salita e la discesa di passeggeri da tram, filobus e autobus",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18385",
+        "text": "L'isola di traffico è una zona destinata al parcheggio dei veicoli",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18386",
+        "text": "L'isola di traffico è un'area pedonale urbana",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "18387",
+        "text": "L'isola di traffico è una parte della strada sulla quale è consentito il transito dei ciclomotori",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  },
+  {
+    "question_id": "4107",
+    "topic": "Segnali di divieto",
+    "sub_questions": [
+      {
+        "number": "19545",
+        "text": "Il segnale raffigurato consente ad un'autovettura di sorpassare un motociclo",
+        "correct_answer": true,
+        "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg"
+      },
+      {
+        "number": "19546",
+        "text": "Il segnale raffigurato si può trovare sia sulle strade urbane che su quelle extraurbane",
+        "correct_answer": true,
+        "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg"
+      },
+      {
+        "number": "19547",
+        "text": "Il segnale (A) può essere ripetuto dopo ogni incrocio con pannello integrativo (B)",
+        "correct_answer": true,
+        "image": "3f226c27c67abb8abdee66edcfdc0a20.jpeg"
+      },
+      {
+        "number": "19548",
+        "text": "Il segnale raffigurato vieta di sorpassare autocarri",
+        "correct_answer": true,
+        "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg"
+      },
+      {
+        "number": "19549",
+        "text": "Il segnale raffigurato consente di sorpassare i ciclomotori",
+        "correct_answer": true,
+        "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg"
+      },
+      {
+        "number": "19550",
+        "text": "Il segnale raffigurato vieta il sorpasso fra autoveicoli, anche se la manovra può compiersi entro la semicarreggiata",
+        "correct_answer": true,
+        "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg"
+      },
+      {
+        "number": "19551",
+        "text": "Il segnale raffigurato consente ad un motociclo di sorpassare un'autovettura",
+        "correct_answer": false,
+        "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg"
+      },
+      {
+        "number": "19552",
+        "text": "Il segnale raffigurato indica che la corsia di destra è riservata ai veicoli lenti",
+        "correct_answer": false,
+        "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg"
+      },
+      {
+        "number": "19553",
+        "text": "Il segnale raffigurato consente di sorpassare un'autovettura purché non si oltrepassi la striscia continua",
+        "correct_answer": false,
+        "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg"
+      },
+      {
+        "number": "19554",
+        "text": "Il segnale raffigurato vieta ad un motociclo di sorpassare una bicicletta",
+        "correct_answer": false,
+        "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg"
+      },
+      {
+        "number": "19555",
+        "text": "Il segnale raffigurato consente il sorpasso tra autovetture se non vi è la striscia bianca continua",
+        "correct_answer": false,
+        "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg"
+      }
+    ]
+  },
+  {
+    "question_id": "4688",
+    "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+    "sub_questions": [
+      {
+        "number": "25180",
+        "text": "Se il coefficiente di aderenza diminuisce le ruote motrici potrebbero pattinare",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "25181",
+        "text": "Se il coefficiente di aderenza diminuisce lo spazio di frenatura aumenta",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "25182",
+        "text": "Se il coefficiente di aderenza è basso bisogna ridurre la velocità",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "25183",
+        "text": "Se il coefficiente di aderenza diminuisce lo spazio di frenatura si riduce",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "25184",
+        "text": "Se il coefficiente di aderenza è basso bisogna ridurre la velocità solo in curva",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  },
+  {
+    "question_id": "4443",
+    "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+    "sub_questions": [
+      {
+        "number": "22983",
+        "text": "Il conducente del veicolo S in figura, muovendosi in retromarcia per immettersi nella circolazione, deve assicurarsi che la strada sia libera ed eseguire la manovra con prudenza",
+        "correct_answer": true,
+        "image": "40d3c6c83dd93c0c3f7c6eb643e38533.jpeg"
+      },
+      {
+        "number": "22984",
+        "text": "Il conducente del veicolo E in figura, muovendosi in retromarcia per immettersi nella circolazione, deve azionare gli indicatori di direzione",
+        "correct_answer": true,
+        "image": "40d3c6c83dd93c0c3f7c6eb643e38533.jpeg"
+      },
+      {
+        "number": "22985",
+        "text": "Il conducente del veicolo S in figura, muovendosi in retromarcia per immettersi nella circolazione, deve dare la precedenza a tutti i veicoli provenienti sia da destra sia da sinistra",
+        "correct_answer": true,
+        "image": "40d3c6c83dd93c0c3f7c6eb643e38533.jpeg"
+      },
+      {
+        "number": "22986",
+        "text": "Il conducente del veicolo S in figura, muovendosi in retromarcia per immettersi nella circolazione, deve fare attenzione agli eventuali pedoni in transito dietro di esso",
+        "correct_answer": true,
+        "image": "40d3c6c83dd93c0c3f7c6eb643e38533.jpeg"
+      },
+      {
+        "number": "22987",
+        "text": "Il conducente del veicolo S in figura, muovendosi in retromarcia per immettersi nella circolazione, deve azionare la segnalazione luminosa di pericolo (quattro frecce lampeggianti simultaneamente)",
+        "correct_answer": false,
+        "image": "40d3c6c83dd93c0c3f7c6eb643e38533.jpeg"
+      },
+      {
+        "number": "22988",
+        "text": "Il conducente del veicolo S in figura, muovendosi in retromarcia per immettersi nella circolazione, deve suonare il clacson durante l'intera manovra",
+        "correct_answer": false,
+        "image": "40d3c6c83dd93c0c3f7c6eb643e38533.jpeg"
+      },
+      {
+        "number": "22989",
+        "text": "Il conducente del veicolo S in figura, muovendosi in retromarcia per immettersi nella circolazione, deve dare la precedenza ai veicoli che transitano nel suo senso di marcia, ad eccezione delle biciclette",
+        "correct_answer": false,
+        "image": "40d3c6c83dd93c0c3f7c6eb643e38533.jpeg"
+      }
+    ]
+  },
+  {
+    "question_id": "4701",
+    "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+    "sub_questions": [
+      {
+        "number": "25276",
+        "text": "Dopo un incidente, se c'è un rischio d'incendio del veicolo è opportuno spegnere il quadro elettrico girando la chiave di accensione",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "25277",
+        "text": "In caso di principio d'incendio del veicolo, in mancanza di estintore, si può gettare sabbia o terra alla base delle fiamme",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "25278",
+        "text": "Dopo un incidente, se c'è un principio d'incendio del veicolo, in mancanza di estintore si può utilizzare una coperta bagnata per spegnere le fiamme",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "25279",
+        "text": "Dopo un incidente, se c'è un principio d'incendio del veicolo occorre svuotarne immediatamente il serbatoio del carburante",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "25280",
+        "text": "Dopo un incidente, il rischio che scoppi un incendio è maggiore se il veicolo è dotato di interruttore inerziale, che blocca l'afflusso di carburante al motore",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "25281",
+        "text": "Dopo un incidente, se c'è un principio d'incendio del veicolo alimentato a GPL, occorre smontare subito il serbatoio contenente il carburante",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  },
+  {
+    "question_id": "4665",
+    "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+    "sub_questions": [
+      {
+        "number": "25027",
+        "text": "Il \"fondo di garanzia per le vittime della strada\" prevede il risarcimento dei danni arrecati alle persone da veicoli non coperti da assicurazione",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "25028",
+        "text": "Il \"fondo di garanzia per le vittime della strada\" prevede il risarcimento dei danni arrecati alle persone da veicoli non identificati",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "25029",
+        "text": "Il \"fondo di garanzia per le vittime della strada\" garantisce un vitalizio al conducente infortunato",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "25030",
+        "text": "Il \"fondo di garanzia per le vittime della strada\" è un premio per chi non ha provocato incidenti",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "25031",
+        "text": "Il \"fondo di garanzia per le vittime della strada\" è una convenzione facoltativa",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "25032",
+        "text": "Il \"fondo di garanzia per le vittime della strada\" risarcisce i danni arrecati dai conducenti minorenni",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  },
+  {
+    "question_id": "4448",
+    "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+    "sub_questions": [
+      {
+        "number": "23042",
+        "text": "Nella situazione rappresentata in figura il tram ha la precedenza rispetto agli altri veicoli",
+        "correct_answer": true,
+        "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg"
+      },
+      {
+        "number": "23043",
+        "text": "Nell'incrocio rappresentato in figura, tutti i veicoli devono usare prudenza nell'attraversarlo",
+        "correct_answer": true,
+        "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg"
+      },
+      {
+        "number": "23044",
+        "text": "Nella situazione rappresentata in figura il veicolo O deve attendere il transito del tram e che il veicolo A si porti al centro",
+        "correct_answer": true,
+        "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg"
+      },
+      {
+        "number": "23045",
+        "text": "Nella situazione rappresentata in figura il tram transita per primo",
+        "correct_answer": true,
+        "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg"
+      },
+      {
+        "number": "23046",
+        "text": "Nella situazione rappresentata in figura il veicolo M deve attendere il transito del veicolo O",
+        "correct_answer": true,
+        "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg"
+      },
+      {
+        "number": "23047",
+        "text": "Nella situazione rappresentata in figura il veicolo M attraversa l'incrocio insieme al tram",
+        "correct_answer": false,
+        "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg"
+      },
+      {
+        "number": "23048",
+        "text": "Nella situazione rappresentata in figura il veicolo A nello svoltare a sinistra ha la destra libera",
+        "correct_answer": false,
+        "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg"
+      },
+      {
+        "number": "23049",
+        "text": "Nella situazione rappresentata in figura il veicolo O deve attendere che passino il tram ed il veicolo M",
+        "correct_answer": false,
+        "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg"
+      },
+      {
+        "number": "23050",
+        "text": "Nella situazione rappresentata in figura il veicolo O deve attendere che transitino tutti gli altri veicoli",
+        "correct_answer": false,
+        "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg"
+      },
+      {
+        "number": "23051",
+        "text": "Nella situazione rappresentata in figura il veicolo A deve dare la precedenza al tram, ma non al veicolo M",
+        "correct_answer": false,
+        "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg"
+      },
+      {
+        "number": "23052",
+        "text": "Nella situazione rappresentata in figura il veicolo O deve dare la precedenza al tram ed al veicolo M",
+        "correct_answer": false,
+        "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg"
+      }
+    ]
+  },
+  {
+    "question_id": "4625",
+    "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+    "sub_questions": [
+      {
+        "number": "24720",
+        "text": "Il fenomeno dell'aquaplaning fa scivolare le ruote sullo strato di acqua",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "24721",
+        "text": "Il fenomeno dell'aquaplaning inizia a velocità più bassa se il pneumatico è molto consumato",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "24722",
+        "text": "Il fenomeno dell'aquaplaning si verifica più facilmente nei veicoli più leggeri",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "24723",
+        "text": "Il fenomeno dell'aquaplaning si verifica più facilmente a bassa velocità",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "24724",
+        "text": "Il fenomeno dell'aquaplaning riduce lo sbandamento del veicolo",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "24725",
+        "text": "Il fenomeno dell'aquaplaning aumenta nelle carreggiate a forte pendenza laterale",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "24726",
+        "text": "Il fenomeno dell'aquaplaning aumenta l'aderenza sul fondo stradale",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "24727",
+        "text": "Il fenomeno dell'aquaplaning rafforza il contatto fra pneumatici e asfalto",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "24728",
+        "text": "Il fenomeno dell'aquaplaning non dipende dallo spessore e dal disegno del battistrada",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  },
+  {
+    "question_id": "4091",
+    "topic": "Segnali di pericolo",
+    "sub_questions": [
+      {
+        "number": "19339",
+        "text": "Il segnale raffigurato preannuncia che una carreggiata a senso unico, diventa a doppio senso di circolazione",
+        "correct_answer": true,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19340",
+        "text": "Il segnale raffigurato preannuncia che, poco oltre, si potranno incontrare veicoli che marciano in senso opposto",
+        "correct_answer": true,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19341",
+        "text": "Il segnale raffigurato preannuncia che termina il senso unico di circolazione",
+        "correct_answer": true,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19342",
+        "text": "Il segnale raffigurato è un segnale di pericolo",
+        "correct_answer": true,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19343",
+        "text": "Il segnale raffigurato indica che, poco oltre, occorrerà usare maggiore prudenza",
+        "correct_answer": true,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19344",
+        "text": "Il segnale raffigurato, se a fondo giallo, è posto in presenza di lavori in corso",
+        "correct_answer": true,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19345",
+        "text": "In presenza del segnale raffigurato il sorpasso, se consentito, deve essere effettuato con particolare prudenza",
+        "correct_answer": true,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19346",
+        "text": "Il segnale raffigurato preannuncia che il traffico si svolge su due carreggiate separate",
+        "correct_answer": false,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19347",
+        "text": "Il segnale raffigurato preannuncia che la circolazione diventa a senso unico",
+        "correct_answer": false,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19348",
+        "text": "Il segnale raffigurato impone di dare la precedenza ai veicoli provenienti in senso contrario",
+        "correct_answer": false,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19349",
+        "text": "Il segnale raffigurato preannuncia il diritto di precedenza nei sensi unici alternati",
+        "correct_answer": false,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19350",
+        "text": "Il segnale raffigurato preannuncia che bisogna ritornare indietro",
+        "correct_answer": false,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19351",
+        "text": "Il segnale raffigurato preannuncia un senso unico alternato",
+        "correct_answer": false,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      },
+      {
+        "number": "19352",
+        "text": "Il segnale raffigurato è un preavviso di direzione obbligatoria",
+        "correct_answer": false,
+        "image": "d74486cedaf64b4708047a7c8d23f672.jpeg"
+      }
+    ]
+  },
+  {
+    "question_id": "4538",
+    "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+    "sub_questions": [
+      {
+        "number": "23864",
+        "text": "Sulle autostrade e strade extraurbane principali è vietata la circolazione di pedoni e animali, ad eccezione delle aree di servizio e delle aree di sosta",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "23865",
+        "text": "Nelle aree di servizio e nelle aree di sosta delle autostrade e delle strade extraurbane principali gli animali possono circolare solo se debitamente custoditi",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "23866",
+        "text": "Lungo le corsie di emergenza delle autostrade i pedoni possono transitare solo per raggiungere i punti per le richieste di soccorso",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "23867",
+        "text": "In autostrada, il traino di veicoli in avaria su carreggiate, rampe, svincoli, aree di servizio o di parcheggio è consentito solo ai veicoli di soccorso autorizzati",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "23868",
+        "text": "Sulle autostrade e strade extraurbane principali è vietata la circolazione di pedoni e animali, anche nelle aree di servizio e nelle aree di sosta",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "23869",
+        "text": "Nelle aree di servizio e nelle aree di sosta delle autostrade e delle strade extraurbane principali gli animali non possono circolare neppure se debitamente custoditi",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  },
+  {
+    "question_id": "4146",
+    "topic": "Segnali di divieto",
+    "sub_questions": [
+      {
+        "number": "19992",
+        "text": "Il segnale raffigurato consente la sosta ai veicoli al servizio di persone invalide munite dell'apposito contrassegno",
+        "correct_answer": true,
+        "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg"
+      },
+      {
+        "number": "19993",
+        "text": "Il segnale raffigurato è un segnale di prescrizione",
+        "correct_answer": true,
+        "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg"
+      },
+      {
+        "number": "19994",
+        "text": "Il segnale raffigurato rappresenta una specifica eccezione al divieto di sosta",
+        "correct_answer": true,
+        "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg"
+      },
+      {
+        "number": "19995",
+        "text": "Il segnale raffigurato non consente la sosta a veicoli diversi da quelli al servizio di persone invalide",
+        "correct_answer": true,
+        "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg"
+      },
+      {
+        "number": "19996",
+        "text": "Il segnale raffigurato consente la sosta agli scuolabus",
+        "correct_answer": false,
+        "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg"
+      },
+      {
+        "number": "19997",
+        "text": "Il segnale raffigurato indica una corsia riservata ai veicoli al servizio di persone invalide",
+        "correct_answer": false,
+        "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg"
+      },
+      {
+        "number": "19998",
+        "text": "Il segnale raffigurato è un divieto di sosta per i veicoli al servizio di invalidi, ed indica il più vicino parcheggio",
+        "correct_answer": false,
+        "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg"
+      },
+      {
+        "number": "19999",
+        "text": "Il segnale raffigurato preavvisa una zona vietata al traffico regolare perché attrezzata per persone invalide",
+        "correct_answer": false,
+        "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg"
+      },
+      {
+        "number": "20000",
+        "text": "Il segnale raffigurato, nella strada ove è posto, consente il transito ai soli veicoli al servizio di persone invalide",
+        "correct_answer": false,
+        "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg"
+      },
+      {
+        "number": "20001",
+        "text": "Il segnale raffigurato consente la sosta ai ciclomotori e ai motocicli",
+        "correct_answer": false,
+        "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg"
+      },
+      {
+        "number": "20002",
+        "text": "Il segnale raffigurato consente la sosta esponendo il tagliando emesso da un parchimetro",
+        "correct_answer": false,
+        "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg"
+      }
+    ]
+  },
+  {
+    "question_id": "4083",
+    "topic": "Segnali di pericolo",
+    "sub_questions": [
+      {
+        "number": "19248",
+        "text": "Il segnale raffigurato preannuncia una strettoia sulla destra della carreggiata",
+        "correct_answer": true,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      },
+      {
+        "number": "19249",
+        "text": "Il segnale raffigurato preannuncia una strettoia causata da un ostacolo fisso sul lato destro",
+        "correct_answer": true,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      },
+      {
+        "number": "19250",
+        "text": "Il segnale raffigurato preannuncia un restringimento pericoloso sulla destra della carreggiata",
+        "correct_answer": true,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      },
+      {
+        "number": "19251",
+        "text": "Il segnale raffigurato preannuncia il restringimento della carreggiata causato da muretti o altro ostacolo sul lato destro",
+        "correct_answer": true,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      },
+      {
+        "number": "19252",
+        "text": "Il segnale raffigurato può trovarsi anche su strada a doppio senso di circolazione",
+        "correct_answer": true,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      },
+      {
+        "number": "19253",
+        "text": "Il segnale raffigurato, se a fondo giallo, è posto in presenza di un cantiere che riduce la larghezza della carreggiata",
+        "correct_answer": true,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      },
+      {
+        "number": "19254",
+        "text": "Il segnale raffigurato indica la fine del doppio senso di circolazione",
+        "correct_answer": false,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      },
+      {
+        "number": "19255",
+        "text": "Il segnale raffigurato obbliga a dare la precedenza ai veicoli provenienti dal senso opposto",
+        "correct_answer": false,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      },
+      {
+        "number": "19256",
+        "text": "Il segnale raffigurato autorizza la marcia per file parallele",
+        "correct_answer": false,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      },
+      {
+        "number": "19257",
+        "text": "Il segnale raffigurato indica di disporsi su due file",
+        "correct_answer": false,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      },
+      {
+        "number": "19258",
+        "text": "Il segnale raffigurato preannuncia una confluenza da destra",
+        "correct_answer": false,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      },
+      {
+        "number": "19259",
+        "text": "Il segnale raffigurato preannuncia l'inizio di un senso unico",
+        "correct_answer": false,
+        "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg"
+      }
+    ]
+  },
+  {
+    "question_id": "4415",
+    "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+    "sub_questions": [
+      {
+        "number": "22729",
+        "text": "In un centro abitato, quando un pedone, fuori delle strisce di attraversamento, non accenni a darci la precedenza, è necessario ridurre la velocità e, occorrendo, fermarsi per non investirlo",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "22730",
+        "text": "In un centro abitato, quando un pedone, fuori delle strisce di attraversamento, non accenni a darci la precedenza, è opportuno rallentare e avvisarlo con un breve colpo di clacson, in caso di pericolo immediato",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "22731",
+        "text": "In un centro abitato, quando un pedone, fuori delle strisce di attraversamento, non accenni a darci la precedenza, è necessario ridurre la velocità fino a fermarsi tempestivamente, se occorre",
+        "correct_answer": true,
+        "image": null
+      },
+      {
+        "number": "22732",
+        "text": "In un centro abitato, quando un pedone, fuori delle strisce di attraversamento, non accenni a darci la precedenza, è opportuno nelle ore notturne, procedere con gli abbaglianti accesi così che possa accorgersi di noi",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "22733",
+        "text": "In un centro abitato, quando un pedone, fuori delle strisce di attraversamento, non accenni a darci la precedenza, è opportuno cercare di richiamare la sua attenzione con qualsiasi mezzo, perché ci dia la precedenza",
+        "correct_answer": false,
+        "image": null
+      },
+      {
+        "number": "22734",
+        "text": "In un centro abitato, quando un pedone, fuori delle strisce di attraversamento, non accenni a darci la precedenza, è necessario proseguire, senza curarci di lui, perché abbiamo la precedenza",
+        "correct_answer": false,
+        "image": null
+      }
+    ]
+  }
+]

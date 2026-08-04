@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Id** | 0004 |
-| **Status** | draft |
+| **Status** | ready |
 | **Date** | 2026-08-02 |
 | **Discussion log** | `specs/discussions/scraper-acquisition-refactor.md` (split from `specs/0003-regolamento-attuazione-corpus.md` §Phase 2 originally; FR-3 through FR-7 compiled from the discussion log's 2 sessions) |
 | **Supersedes / superseded by** | — (split from spec 0003; see spec 0003's Changelog) |
@@ -58,7 +58,7 @@ delegating to it from `ingest scrape` later is a thin call rather than a rewrite
 - Given `scrape --source cds`, `--source cap` and `--source reg`, when each runs, then it scrapes the corresponding law; given an unknown source, then it exits non-zero listing the valid ones, without opening a connection.
 - Given `scrape --source reg --dry-run`, when it runs, then it prints what it would fetch and where it would write, and performs **no** HTTP request and no filesystem write — the same guarantee `ingest --dry-run` gives.
 - Given a real run, when it completes, then progress and diagnostics go through `logging` at purposeful levels (per-article at `debug`, per-source milestones at `info`, a skipped article or a session refresh at `warning`) with lazy `%s` arguments, and the run is captured in a per-run log file as `ingest` commands are.
-- Given `main`, when it is read, then the `continue`-based skips (the TOC flag-filter skip, the TOC dedup skip, the fetch-failure skip, the session-invalid skip) are replaced by positive guards, per `.claude/rules/code-conventions.md`. **Already implemented, ahead of this spec:** the parse-error skip (`try`/`except ValueError`/`else` around `_parse_article`, `src/scrapers/normattiva.py:514-522`) was added on 2026-08-02 as a pragmatic necessity — spec 0003's live scrape needed it to complete past two unparseable articles rather than abort the whole 409-article run — and already avoids `continue`. It is real, working code today, not a plan for this spec to build; this spec's job is only to preserve that shape through the restructuring, not reintroduce a `continue` in its place. Ownership of this piece (and its DoD accounting) belongs here, not to spec 0003, even though it landed in that spec's implementation window — see spec 0003's Changelog.
+- Given `main`, when it is read, then the `continue`-based skips (the TOC flag-filter skip, the TOC dedup skip, the fetch-failure skip, the session-invalid skip) are replaced by positive guards, per `.claude/rules/code-conventions.md`. **Already implemented, ahead of this spec:** the parse-error skip (`try`/`except ValueError`/`else` around `_parse_article`, `src/scrapers/normattiva.py:515-523`) was added on 2026-08-02 as a pragmatic necessity — spec 0003's live scrape needed it to complete past two unparseable articles rather than abort the whole 409-article run — and already avoids `continue`. It is real, working code today, not a plan for this spec to build; this spec's job is only to preserve that shape through the restructuring, not reintroduce a `continue` in its place. Ownership of this piece (and its DoD accounting) belongs here, not to spec 0003, even though it landed in that spec's implementation window — see spec 0003's Changelog.
 
 ### FR-2: The scraper's data structures are dataclasses, not `TypedDict`s
 
@@ -198,7 +198,7 @@ pairing.
 - **AD-2** — supported by: `src/scrapers/normattiva.py:540-556` — `main_cds`/`main_cap`/`main_reg` are three separate entry points for what is one operation parameterised by law (verified 2026-08-02 @ 008d5ae; mechanical drift only — same content, line numbers shifted from the original `538-550` anchor)
 - **AD-3** — supported by: `src/commons/observability/protocols/progress_reporter.py:1-51` — `ProgressReporter`, the existing `Protocol`+service pattern in the same package family that AD-3 deliberately does *not* replicate (verified 2026-08-02 @ 008d5ae)
 - **AD-3** — supported by: `src/guidami_ai_patente_ingestor/cli/logging_setup.py:10-27` — the run-dir-with-collision-suffix logic `RunArtifactWriter` absorbs (verified 2026-08-02 @ 008d5ae)
-- **AD-3** — supported by: `docs/layout.md:121-126` — `src/commons/` as the designated home for shared, domain-agnostic infrastructure (verified 2026-08-02 @ 008d5ae)
+- **AD-3** — supported by: `docs/layout.md:94-102` — `src/commons/observability/` (top-level, a sibling of `commons/ai/`) already holds `ProgressReporter`/`NullProgressReporter`, the existing precedent `RunArtifactWriter` is placed alongside (verified 2026-08-02 @ 008d5ae)
 - **FR-1** — supported by: `pyproject.toml:27-29` — `scrape-codice`, `scrape-cap` and `scrape-regolamento` are three separate `[project.scripts]` entries for what is one operation parameterised by law (verified 2026-08-02 @ 008d5ae)
 - **FR-1** — supported by: `src/scrapers/normattiva.py:269` — a bare `continue` skips a non-article TOC entry (verified 2026-08-02 @ 008d5ae)
 - **FR-1** — supported by: `src/scrapers/normattiva.py:275` — a bare `continue` skips a duplicate TOC entry (verified 2026-08-02 @ 008d5ae)
@@ -227,6 +227,20 @@ pairing.
 - **Feasibility asserted:** by review on 2026-08-02, based on Feasibility Evidence above
 
 ## Changelog
+
+### 2026-08-02 — amendment: fix Feasibility Evidence citations, promote to ready
+A pre-promotion re-read cross-checked every Feasibility Evidence anchor against the
+repository (no drift since the 008d5ae anchor) and reproduced the concrete data claims
+(FR-5's three title-extraction symptoms, FR-6's two `ValueError`s, FR-7's 6/2/12
+`COMMA SOPPRESSO` counts) directly against `data/raw/`/`data/parsed/`. Two citation
+defects found and fixed: AD-3's evidence pointed at `docs/layout.md:121-126` (a rule
+about `commons/utils/`, unrelated to `src/commons/observability/`) instead of the
+lines that actually describe `src/commons/observability/` holding `ProgressReporter`/
+`NullProgressReporter` (`docs/layout.md:94-102`); FR-1's inline citation for the
+already-implemented parse-error skip was off by one line (`514-522` → `515-523`). No
+other defects found — no blocking Open Questions, no logical contradictions. Status
+promoted `draft` → `ready`. Reason: user requested the fixes and promotion after
+reviewing the findings.
 
 ### 2026-08-02 — amendment: run artifacts + Open Questions closed
 Compiled from `specs/discussions/scraper-acquisition-refactor.md` (2 sessions). Added

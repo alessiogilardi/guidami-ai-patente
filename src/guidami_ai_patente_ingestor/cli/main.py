@@ -1,8 +1,9 @@
-"""Entry point: `ingest <command> <entity> [options]`."""
+"""Entry point: `ingest [--config PATH] <command> <entity> [options]`."""
 
 import argparse
 import logging
 from contextlib import ExitStack
+from pathlib import Path
 
 from rich.console import Console
 
@@ -22,6 +23,26 @@ logger = logging.getLogger(__name__)
 _MONITORED_COMMANDS = frozenset({"prepare", "index"})
 
 
+def _parse_config_override(argv: list[str] | None = None) -> tuple[Path | None, list[str]]:
+    """Pre-parses `--config` out of `argv`, before `IngestorConfig` is built.
+
+    Needed because the command parser is config-driven (`build_parser(config)`),
+    so the config override must be resolved before that parser even exists.
+    Returns the override path (`None` if `--config` was not passed) and the
+    remaining argv for the real parser to consume.
+    """
+    pre_parser = argparse.ArgumentParser(add_help=False)
+    pre_parser.add_argument(
+        "--config",
+        type=Path,
+        default=None,
+        metavar="PATH",
+        help="Alternate ingestor_config.yaml (e.g. a test-data profile).",
+    )
+    pre_args, remaining_argv = pre_parser.parse_known_args(argv)
+    return pre_args.config, remaining_argv
+
+
 def _build_dashboard(args: argparse.Namespace) -> LiveDashboard | None:
     """Returns a dashboard for an interactive, monitored, non-dry run; otherwise None."""
     if args.command not in _MONITORED_COMMANDS:
@@ -38,11 +59,12 @@ def _build_dashboard(args: argparse.Namespace) -> LiveDashboard | None:
 
 def main() -> None:
     """Loads config, builds the parser, configures logging, and dispatches to the command."""
-    config = IngestorConfig()  # pyright: ignore[reportCallIssue]
+    config_override, remaining_argv = _parse_config_override()
+    config = IngestorConfig.load(config_override)
     layer_resolver = wiring.build_layer_resolver(config)
 
     parser = build_parser(config)
-    args = parser.parse_args()
+    args = parser.parse_args(remaining_argv)
 
     dashboard = _build_dashboard(args)
     log_file = configure_logging(

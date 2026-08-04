@@ -52,6 +52,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/` | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`) selected via a single `scrape --source <cds\|cap\|reg>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`) | beautifulsoup4, lxml, httpx |
 | `scrapers/rca_extract.py` | Filters the full CAP corpus (`data/parsed/cap/codice_assicurazioni_private.json`) down to `IngestorConfig.rca_ranges` (inclusive numeric ranges over the article's leading number) → `data/parsed/cap/codice_rca.json`; not wired into `main_cap` or the `ingest` CLI — a standalone follow-up step | stdlib only |
+| `test_data_sampler/sampler.py` | Samples `--count` random elements per source from `data/parsed/{cds,cap,reg,quiz-patente-ab}` → `data/test-data/parsed/...`, copying only the quiz images the sampled questions reference; feeds `ingest --config configs/ingestor_config.test-data.yaml prepare\|index` (ADR 0006) | stdlib only |
 
 `parsers/questions_pdf.py` extracts each sub-question's image lazily: the
 per-question default image (fallback for rows without their own nearby
@@ -96,9 +97,15 @@ no agent constructor reads the environment directly (see `patterns.md`).
 ## Main flows
 
 Entry point: `guidami_ai_patente_ingestor/cli/` (package, not a single
-module) — `ingest prepare|index|reset knowledge|quiz` and `ingest status
-[--online]` (see command table in `CLAUDE.md`). `cli/main.py` loads
-`IngestorConfig`, builds the parser (`cli/parser.py:build_parser`) and
+module) — `ingest [--config PATH] prepare|index|reset knowledge|quiz` and
+`ingest [--config PATH] status [--online]` (see command table in
+`CLAUDE.md`). `--config` (anywhere in argv) is pre-parsed out by
+`cli/main.py::_parse_config_override` — before `IngestorConfig` is built,
+since the command parser itself is config-driven — then `main()` calls
+`IngestorConfig.load(config_override)`, which inserts the override file as its
+own `YamlConfigSettingsSource` (higher precedence than the base yaml, lower
+than env/.env), deep-merged by pydantic-settings (ADR 0006, `patterns.md`).
+`cli/main.py` loads `IngestorConfig`, builds the parser (`cli/parser.py:build_parser`) and
 dispatches by subcommand to `cli/commands/{prepare,index,reset,status}.py`;
 `cli/wiring.py` holds the lazy DI builders (`build_layer_resolver`,
 `build_open_router_provider`, `build_postgres_client`, `build_tracker`,
@@ -399,4 +406,6 @@ cross-reference handling (spec 0004 T-7/FR-5) and `_is_marker_start`'s widened
 initial broader "any bare token" rule after it was found to cause 51 new false-positive
 splits on an offline corpus re-parse; the broader rule is deferred to a future enhancement),
 and records that an offline re-parse of all 409 Regolamento articles confirms both
-previously-skipped articles now recover with zero regressions elsewhere.*
+previously-skipped articles now recover with zero regressions elsewhere. Also merged in
+the `feat/ingestion` verification against commit `96feb45`: the `ingest --config`
+entry-point note reflects `IngestorConfig.load()` (ADR 0006).*

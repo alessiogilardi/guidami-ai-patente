@@ -1,13 +1,19 @@
 """Argument parser for the `ingest` CLI.
 
 Subcommand structure:
-    ingest prepare knowledge --source <cds|cap> [--force] [--dry-run] [--plain]
-    ingest prepare quiz [--force] [--dry-run] [--plain]
-    ingest index knowledge --source <cds|cap> [--dry-run] [--plain]
-    ingest index quiz [--dry-run] [--plain]
-    ingest reset knowledge [--dry-run]
-    ingest reset quiz [--dry-run]
-    ingest status [--online]
+    ingest [--config PATH] prepare knowledge --source <cds|cap> [--force] [--dry-run] [--plain]
+    ingest [--config PATH] prepare quiz [--force] [--dry-run] [--plain]
+    ingest [--config PATH] index knowledge --source <cds|cap> [--dry-run] [--plain]
+    ingest [--config PATH] index quiz [--dry-run] [--plain]
+    ingest [--config PATH] reset knowledge [--dry-run]
+    ingest [--config PATH] reset quiz [--dry-run]
+    ingest [--config PATH] status [--online]
+
+`--config PATH` (anywhere in argv) points every command at an alternate
+`ingestor_config.yaml` instead of the default `configs/ingestor_config.yaml` — e.g.
+`configs/ingestor_config.test-data.yaml` to run against the `data/test-data/` subset.
+It is parsed out of argv before the command parser below is built (see
+`cli/main.py::_parse_config_override`), so it is not defined as an argument here.
 """
 
 import argparse
@@ -34,6 +40,10 @@ Commands:
 `--dry-run` prints the step chain the command would execute and exits: no
 filesystem writes, no LLM calls, no DB connection is ever opened.
 
+`--config PATH` (before or after the subcommand) points at an alternate
+ingestor_config.yaml, e.g. configs/ingestor_config.test-data.yaml to run against
+the data/test-data/ subset instead of the full corpus.
+
 Examples:
   ingest prepare knowledge --source cds
   ingest index quiz
@@ -41,6 +51,7 @@ Examples:
   ingest status --online
   ingest prepare knowledge --source cds --dry-run
   ingest index quiz --plain
+  ingest --config configs/ingestor_config.test-data.yaml prepare knowledge --source cds
 """
 
 
