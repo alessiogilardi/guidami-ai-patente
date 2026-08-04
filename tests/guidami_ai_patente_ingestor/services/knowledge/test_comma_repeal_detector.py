@@ -36,6 +36,14 @@ def test_not_repealed_on_plain_text() -> None:
     assert is_comma_repealed(article_repealed=False, comma_text="Testo del comma.") is False
 
 
+def test_repealed_on_empty_text() -> None:
+    assert is_comma_repealed(article_repealed=False, comma_text="") is True
+
+
+def test_repealed_on_whitespace_only_text() -> None:
+    assert is_comma_repealed(article_repealed=False, comma_text="   \n  ") is True
+
+
 # --- detect_comma_repeal ---
 
 
@@ -75,6 +83,14 @@ def test_detect_comma_repeal_not_repealed_on_plain_text() -> None:
     result = detect_comma_repeal(comma)
 
     assert result.is_repealed is False
+
+
+def test_detect_comma_repeal_marks_repealed_on_empty_text() -> None:
+    comma = _comma(is_repealed=False, text="")
+
+    result = detect_comma_repeal(comma)
+
+    assert result.is_repealed is True
 
 
 def test_detect_comma_repeal_leaves_other_fields_unchanged() -> None:

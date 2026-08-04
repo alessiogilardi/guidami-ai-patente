@@ -7,10 +7,16 @@ def is_comma_repealed(*, article_repealed: bool, comma_text: str) -> bool:
     """Decides whether a single comma is repealed.
 
     Per-comma repeal (FR-9/FR-7): a comma is repealed when its article is
-    repealed, or when its own text (after stripping leading `((` markers)
-    starts with `COMMA ABROGATO` or `COMMA SOPPRESSO` — comma numbers are
-    already stripped from comma text by the scraper, so no separate
-    number-stripping is needed here.
+    repealed, when its own text (after stripping leading `((` markers) starts
+    with `COMMA ABROGATO` or `COMMA SOPPRESSO` — comma numbers are already
+    stripped from comma text by the scraper, so no separate number-stripping
+    is needed here — or when its text is empty/whitespace-only: normattiva.it
+    shows some repealed commas as a bare numbered slot with no body text at
+    all, rather than an explicit `COMMA ABROGATO`/`COMMA SOPPRESSO` marker
+    (`_extract_comma_number_and_text` in `scrapers/normattiva.py` extracts
+    these as-is); without this branch such a comma survives as "not repealed"
+    and gets embedded on its article title alone, or — when the article title
+    is also blank — as an empty string, which the embedding provider rejects.
 
     Args:
         article_repealed: Whether the comma's parent article is repealed.
@@ -19,8 +25,9 @@ def is_comma_repealed(*, article_repealed: bool, comma_text: str) -> bool:
     Returns:
         `True` if the comma is repealed.
     """
-    return article_repealed or comma_text.lstrip("(").strip().upper().startswith(
-        _COMMA_REPEALED_PREFIXES
+    stripped = comma_text.lstrip("(").strip()
+    return (
+        article_repealed or not stripped or stripped.upper().startswith(_COMMA_REPEALED_PREFIXES)
     )
 
 
