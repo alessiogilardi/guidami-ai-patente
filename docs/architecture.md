@@ -188,6 +188,15 @@ console; that approach suppressed the records at the logger itself, silently
 dropping them from the file too — the shared, handler-level filter fixes
 that gap.)
 
+`litellm`'s own module-level `_suppress_loggers()` (runs once, on that same
+first import) separately force-sets the `"httpx"` logger's *level* to
+`WARNING`, silently overriding whatever level the host process configured —
+independent of, and not fixed by, `MutedThirdPartyFilter` above (a handler
+filter never changes a logger's level). `LiteLLMEmbeddingClient._embed`
+resets `logging.getLogger("httpx")` back to `NOTSET` immediately after the
+import that causes it (the only import site of litellm in the codebase),
+restoring inheritance from the root logger.
+
 **Live dashboard** (`prepare`/`index` only, interactive TTY, non-dry-run,
 non-`--plain` — spec 0002): `cli/main.py:_build_dashboard(args)` returns a
 `cli/rendering/dashboard/live_dashboard.py:LiveDashboard` when
@@ -432,6 +441,11 @@ See `adr/` for the full history. Currently accepted:
   (`cli/services/status/`, `cli/models/status/`) are CLI-local rather than
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
+
+*Last updated: 2026-08-04 — verified against commit `165fa9e`; noted
+`LiteLLMEmbeddingClient._embed` resetting the `"httpx"` logger's level back to
+`NOTSET` right after litellm's import, undoing litellm's own `_suppress_loggers()`
+side effect that force-sets it to `WARNING` regardless of host configuration.*
 
 *Last updated: 2026-08-04 — verified against commit `86542bc`; the `configure_logging`
 paragraph now describes the shared `MutedThirdPartyFilter` (`cli/logging_setup.py`)

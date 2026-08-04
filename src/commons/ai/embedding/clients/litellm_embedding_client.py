@@ -1,3 +1,4 @@
+import logging
 from typing import Any
 
 from commons.ai.embedding.configs import EmbeddingConfig
@@ -27,6 +28,14 @@ class LiteLLMEmbeddingClient(EmbeddingClient):
     def _embed(self, inputs: list[str]) -> list[list[float]]:
         """Calls litellm and returns the vectors aligned to the input order."""
         import litellm
+
+        # litellm's own module-level _suppress_loggers() (runs once, on the first import
+        # above, in this process) force-sets the "httpx" logger to WARNING, silently
+        # overriding whatever level the host process configured (e.g.
+        # cli/logging_setup.py's INFO root) — this is the only import site of litellm in
+        # the codebase, so undoing that side effect here, right after the import that
+        # causes it, is the only place it can be caught.
+        logging.getLogger("httpx").setLevel(logging.NOTSET)
 
         kwargs = self._build_embed_args(inputs)
         response = litellm.embedding(**kwargs)

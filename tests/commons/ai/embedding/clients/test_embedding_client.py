@@ -1,3 +1,4 @@
+import logging
 import os
 from unittest.mock import MagicMock
 
@@ -19,6 +20,27 @@ class _FakeEmbeddingResponse:
             {"object": "embedding", "index": index, "embedding": vector}
             for index, vector in enumerate(vectors)
         ]
+
+
+def test_embed_resets_httpx_logger_level_forced_by_litellm(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """`_embed` must undo litellm's own httpx logger suppression.
+
+    litellm's own `_suppress_loggers()` force-sets "httpx" to WARNING on import;
+    `_embed` is the only import site of litellm in the codebase.
+    """
+    httpx_logger = logging.getLogger("httpx")
+    original_level = httpx_logger.level
+    httpx_logger.setLevel(logging.WARNING)
+    try:
+        monkeypatch.setattr(
+            litellm, "embedding", lambda **kwargs: _FakeEmbeddingResponse([[0.0] * 8])
+        )
+        LiteLLMEmbeddingClient(EmbeddingConfig(vector_dim=8)).embed_query("x")
+        assert httpx_logger.level == logging.NOTSET
+    finally:
+        httpx_logger.setLevel(original_level)
 
 
 # ---------------------------------------------------------------------------
