@@ -3,10 +3,12 @@
 ## Engine and connection
 
 - **PostgreSQL 16 + pgvector**, image `pgvector/pgvector:pg16`, run via
-  `docker/docker-compose.yml`. Single named volume (`postgres_data`);
-  port/credentials configurable through `docker/.env`
-  (`POSTGRES_USER`/`PASSWORD`/`DB`/`PORT`, default `guidami` /
-  `guidami_ai_patente` / `5432`).
+  `docker/docker-compose.yml`. Data persists to a host bind mount at
+  `docker/.volumes/postgres_data` (untracked — see `.gitignore`)
+  rather than a Docker-managed named volume, so the data directory is
+  visible/removable directly from the repo tree; port/credentials
+  configurable through `docker/.env` (`POSTGRES_USER`/`PASSWORD`/`DB`/`PORT`,
+  default `guidami` / `guidami_ai_patente` / `5432`).
 - **App-side connection config**: `PostgresConnectionConfig`
   (`src/commons/configs/postgres_connection_config.py`) — frozen Pydantic
   model with `host`, `port`, `user`, `password: SecretStr`, `dbname`,
@@ -168,19 +170,37 @@ loggable. Tracking is opt-in per `BaseAgent` instance (`tracker` ctor param,
 There is no migration tool (no Alembic, no versioned migration files).
 `db/init.sql` is the single source of schema truth: it's mounted
 read-only into the Postgres container's `/docker-entrypoint-initdb.d/`
-and only runs on **first** volume creation. Any schema change requires
-tearing down and recreating the volume:
+and only runs when the data directory is empty. Any schema change requires
+tearing down the container and wiping the bind-mounted data directory
+(`down -v` no longer applies — there is no named volume left to remove):
 
 ```bash
-docker compose -f docker/docker-compose.yml down -v
+docker compose -f docker/docker-compose.yml down
+rm -rf docker/.volumes/postgres_data
 docker compose -f docker/docker-compose.yml up -d
 ```
 
 (see also the "Infrastructure" section of `CLAUDE.md`). There is no
 changelog file tracking schema history beyond `git log db/init.sql`.
 
+*Last updated: 2026-08-04 — verified against commit `2248dcc`; switched the Postgres
+volume from a named Docker volume to a bind mount at `docker/.volumes/postgres_data`
+(gitignored; moved here from a repo-root `.volumes/` in the same change); `down -v`
+in the reset instructions replaced with an explicit `rm -rf docker/.volumes/postgres_data`
+since there is no named volume left for `-v` to remove.*
+
 *Last updated: 2026-08-04 — verified against commit `2248dcc`; `articles` gained a
 required `scraped_at TIMESTAMPTZ NOT NULL` column (no default), populated from
 `CleanedArticleModel.scraped_at` (now typed `datetime`, not `str`) via
 `ArticleMapper.from_cleaned_to_article_entity` (`docs/adr/0007-utc-timestamp-convention.md`)
 — previously computed by the scraper and silently dropped before persistence.*
+
+*Last updated: 2026-08-01 — verified against commit `3cce407`; `knowledge_chunks`
+replaced by `articles`/`article_commas` (spec 0001 T-7/T-8); `PostgresClient.truncate()`
+widened to accept multiple table names (FK-truncate fix); documented `reset.py`'s
+real usage of it (T-16) after a two-repository-calls first attempt was caught crashing
+against a live Postgres; `KnowledgeChunk` entity deleted, spec 0001 fully implemented (T-15);
+`Article`/`ArticleComma` entities renamed to `ArticleEntity`/`ArticleCommaEntity`;
+`articles.source` gained `"reg"` as a third value (spec 0003 Phase 1, FR-4) — no DDL
+change, `UNIQUE (source, number)` already prevented collision with CdS's overlapping
+article numbers.*

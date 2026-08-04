@@ -48,6 +48,10 @@ repo/
 └── .claude/                        # Claude Code config: rules/, skills/, hooks/, agents/
 ```
 
+`docker/.volumes/` (gitignored, not shown in the tree above) holds the
+Postgres data directory bind-mounted by `docker/docker-compose.yml` — see
+`docs/database.md`.
+
 `flowstep` (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) is
 **not** part of this repo's tree: it's an external git dependency
 (github.com/alessiogilardi/flowstep, tracked via `main` in `pyproject.toml`'s
@@ -180,6 +184,9 @@ gitignored — never committed, safe to delete once the spec they fed is
   `sample-test-data` and exempted from `C901` in `pyproject.toml` per the
   same "top-level orchestration is low-value to enforce" rationale as its
   siblings.
+
+*Last updated: 2026-08-04 — verified against commit `2248dcc`; noted the gitignored
+`docker/.volumes/` bind-mount directory (Postgres data, was a named Docker volume before).*
 
 *Last updated: 2026-08-03 — verified against commit `600b4be`; `commons/observability/`
 gained a second self-contained sibling sub-package, `run_artifact_writer/` (spec 0004
