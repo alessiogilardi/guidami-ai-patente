@@ -38,7 +38,10 @@ uv run pyright
 cd docker && docker compose up -d
 
 # Recreate DB from scratch (required after schema changes in db/init.sql)
-docker compose -f docker/docker-compose.yml down -v
+# Data persists to the docker/.volumes/postgres_data bind mount (gitignored) — down -v
+# has nothing left to remove, so wipe the directory instead
+docker compose -f docker/docker-compose.yml down
+rm -rf docker/.volumes/postgres_data
 docker compose -f docker/docker-compose.yml up -d
 ```
 
