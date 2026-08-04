@@ -11,9 +11,11 @@ repo/
 │   │                                #   embedding/: clients/configs/services;
 │   │                                #   observability/: LlmCallTracker port + impls;
 │   │                                #   protocols/services/repositories/mappers/models);
-│   │                                #   observability/: ItemProgressReporter/ProgressReporter
-│   │                                #   port + NullProgressReporter (sibling of ai/observability/,
-│   │                                #   not AI-specific)
+│   │                                #   observability/: two self-contained sub-packages,
+│   │                                #   progress_reporter/ (ItemProgressReporter/ProgressReporter
+│   │                                #   port + NullProgressReporter) and run_artifact_writer/
+│   │                                #   (RunArtifactWriter + RunArtifactWriterConfig, flat);
+│   │                                #   sibling of ai/observability/, not AI-specific
 │   ├── domain/                     # Shared domain entities/models (persisted + intermediate),
 │   │                                #   no I/O or business logic
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
@@ -93,19 +95,24 @@ gitignored — never committed, safe to delete once the spec they fed is
   instead of a data-access/mapper shape, since neither owns persistence).
   `src/commons/observability/` (top-level, a **sibling** of `commons/ai/`,
   not nested under it) is itself just a thin re-exporting `__init__.py` over
-  a single self-contained sub-package, `observability/progress_reporter/`
-  (same self-containment convention as `cli/`/`agents/` above — a component
-  whose whole reason to exist is one responsibility gets its own local
-  `protocols/`/`services/` shape instead of being scattered across the
-  parent package's top-level dirs). `progress_reporter/protocols/` holds
-  `ItemProgressReporter`/`ProgressReporter`, `progress_reporter/services/`
+  two self-contained sibling sub-packages (same self-containment convention
+  as `cli/`/`agents/` above — a component whose whole reason to exist is one
+  responsibility gets its own local shape instead of being scattered across
+  the parent package's top-level dirs): `observability/progress_reporter/`
+  and `observability/run_artifact_writer/`. `progress_reporter/protocols/`
+  holds `ItemProgressReporter`/`ProgressReporter`, `progress_reporter/services/`
   holds `NullProgressReporter` — the progress-reporting port the ingest
   CLI's live dashboard (spec 0002) drives and the three instrumented
   services (`EmbeddingService`, `ImageDescriptionEnricher`,
-  `NormReferenceEnricher`) depend on. It is not under `commons/ai/` because
-  it is not AI-specific (`EmbeddingService` is the only one of the three
-  that happens to also be AI-related); see `docs/patterns.md` for the
-  port/null-object shape.
+  `NormReferenceEnricher`) depend on. `run_artifact_writer/` (spec 0004
+  FR-3/AD-3) holds `RunArtifactWriter` + `RunArtifactWriterConfig` directly —
+  no internal `protocols/`/`services/` split, since there is no port (AD-3
+  rejects a `Protocol` here: only one implementation exists) — the shared
+  per-run `run.log`/`manifest.json`/`report.md` writer both `ingest` and
+  `scrape` (`scrapers/normattiva.py`) delegate to. Neither sub-package is
+  under `commons/ai/` because neither is AI-specific (`EmbeddingService` is
+  the only one of the three progress-reporting consumers that happens to
+  also be AI-related); see `docs/patterns.md` for both shapes.
 - **Persisted or cross-cutting domain shapes** (entities that map 1:1 to a
   DB table, models shared by more than one app) go in `src/domain/`.
   Models that only exist as an intermediate step inside one pipeline stay
@@ -158,7 +165,6 @@ gitignored — never committed, safe to delete once the spec they fed is
   itself is shared, but nothing outside the CLI renders it, so the renderer stays
   local per the same rule.
 
-*Last updated: 2026-08-03 — verified against commit `35df081`; `commons/observability/`
-containerized its progress-reporting component into a self-contained
-`progress_reporter/` sub-package (`protocols/` + `services/`), same convention as
-`cli/`/`agents/`.*
+*Last updated: 2026-08-03 — verified against commit `600b4be`; `commons/observability/`
+gained a second self-contained sibling sub-package, `run_artifact_writer/` (spec 0004
+T-2/T-3), alongside the pre-existing `progress_reporter/`.*
