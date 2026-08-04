@@ -1,4 +1,5 @@
 from collections.abc import Iterator
+from datetime import UTC, datetime
 
 import pytest
 from psycopg import sql
@@ -30,6 +31,7 @@ def _article(number: str, source: str = "cds") -> ArticleEntity:
         number=number,
         title=f"Articolo {number}",
         url=f"https://example.com/art-{number}",
+        scraped_at=datetime(2026, 1, 1, tzinfo=UTC),
         is_repealed=False,
     )
 

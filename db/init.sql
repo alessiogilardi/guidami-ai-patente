@@ -11,6 +11,7 @@ CREATE TABLE articles (
     number      TEXT NOT NULL,
     title       TEXT NOT NULL,
     url         TEXT NOT NULL,
+    scraped_at  TIMESTAMPTZ NOT NULL,
     is_repealed BOOLEAN NOT NULL DEFAULT FALSE,
     UNIQUE (source, number)
 );

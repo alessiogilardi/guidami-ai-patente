@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import pytest
 
 from domain.entities.knowledge import ArticleCommaEntity, ArticleEntity
@@ -51,7 +53,7 @@ def test_from_parsed_to_cleaned_sets_source() -> None:
     assert result.title == article.title
     assert result.commas == article.commas
     assert result.url == article.url
-    assert result.scraped_at == article.scraped_at
+    assert result.scraped_at == datetime.fromisoformat(article.scraped_at)
     assert result.repealed == article.repealed
 
 
@@ -85,6 +87,7 @@ def test_from_cleaned_to_article_entity() -> None:
     assert result.number == article.number
     assert result.title == article.title
     assert result.url == article.url
+    assert result.scraped_at == article.scraped_at
     assert result.is_repealed is True
 
 

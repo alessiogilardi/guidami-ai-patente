@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Literal
 
 from pydantic import BaseModel
@@ -16,6 +17,6 @@ class CleanedArticleModel(BaseModel):
     title: str
     commas: list[ParsedComma]
     url: str
-    scraped_at: str
+    scraped_at: datetime
     repealed: bool
     source: Literal["cds", "cap", "reg"]

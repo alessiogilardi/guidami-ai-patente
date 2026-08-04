@@ -64,6 +64,7 @@ articles
 ├── number (TEXT, NOT NULL)
 ├── title (TEXT, NOT NULL)
 ├── url (TEXT, NOT NULL)
+├── scraped_at (TIMESTAMPTZ, NOT NULL)    -- no default; always app-supplied by ArticleMapper
 ├── is_repealed (BOOLEAN, NOT NULL DEFAULT FALSE)
 └── UNIQUE (source, number)
 
@@ -125,6 +126,13 @@ DB-generated; `ArticleCommaEntity.article_id` **is** included, since it's a
 caller-supplied FK, not DB-generated). The superseded `KnowledgeChunk` entity
 and `knowledge_chunks` table (one row per comma with the article's fields
 duplicated on every row) have both been fully removed (spec 0001 T-7/T-15).
+`ArticleEntity.scraped_at` is application-supplied (not DB-generated).
+`CleanedArticleModel.scraped_at` is itself typed `datetime` (pydantic v2
+auto-parses the ISO-8601 string produced by `ParsedArticleModel.scraped_at`
+at the parsed→cleaned mapping boundary), so
+`ArticleMapper.from_cleaned_to_article_entity` just copies the value through
+— see `docs/adr/0007-utc-timestamp-convention.md` for the project's full UTC
+timestamp convention (app/log/DB).
 
 The former `quiz_metadata` JSONB blob was flattened into the four
 retrieval/payload columns above (see `docs/adr/0002-flatten-quiz-metadata-columns.md`).
@@ -171,12 +179,8 @@ docker compose -f docker/docker-compose.yml up -d
 (see also the "Infrastructure" section of `CLAUDE.md`). There is no
 changelog file tracking schema history beyond `git log db/init.sql`.
 
-*Last updated: 2026-08-01 — verified against commit `3cce407`; `knowledge_chunks`
-replaced by `articles`/`article_commas` (spec 0001 T-7/T-8); `PostgresClient.truncate()`
-widened to accept multiple table names (FK-truncate fix); documented `reset.py`'s
-real usage of it (T-16) after a two-repository-calls first attempt was caught crashing
-against a live Postgres; `KnowledgeChunk` entity deleted, spec 0001 fully implemented (T-15);
-`Article`/`ArticleComma` entities renamed to `ArticleEntity`/`ArticleCommaEntity`;
-`articles.source` gained `"reg"` as a third value (spec 0003 Phase 1, FR-4) — no DDL
-change, `UNIQUE (source, number)` already prevented collision with CdS's overlapping
-article numbers.*
+*Last updated: 2026-08-04 — verified against commit `2248dcc`; `articles` gained a
+required `scraped_at TIMESTAMPTZ NOT NULL` column (no default), populated from
+`CleanedArticleModel.scraped_at` (now typed `datetime`, not `str`) via
+`ArticleMapper.from_cleaned_to_article_entity` (`docs/adr/0007-utc-timestamp-convention.md`)
+— previously computed by the scraper and silently dropped before persistence.*

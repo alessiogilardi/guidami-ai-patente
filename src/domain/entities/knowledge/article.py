@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import BaseModel
 
 
@@ -8,4 +10,5 @@ class ArticleEntity(BaseModel):
     number: str
     title: str
     url: str
+    scraped_at: datetime
     is_repealed: bool

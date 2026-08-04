@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime
 from pathlib import Path
 from typing import TYPE_CHECKING, Literal, cast
 from unittest.mock import MagicMock
@@ -272,7 +273,7 @@ def _make_cleaned_article(
         title=f"Articolo {number}",
         commas=[ParsedComma(number="1", text=comma_text or f"Comma 1 articolo {number}.")],
         url=f"https://example.com/art-{number}",
-        scraped_at="2025-01-01T00:00:00",
+        scraped_at=datetime(2025, 1, 1),
         repealed=repealed,
         source=source,
     )
@@ -284,7 +285,7 @@ def _write_cleaned(directory: Path, articles: list[CleanedArticleModel]) -> None
     for article in articles:
         file_path = directory / f"{element_id(article.source, article.number)}.json"
         file_path.write_text(
-            json.dumps(article.model_dump(), ensure_ascii=False), encoding="utf-8"
+            json.dumps(article.model_dump(mode="json"), ensure_ascii=False), encoding="utf-8"
         )
 
 

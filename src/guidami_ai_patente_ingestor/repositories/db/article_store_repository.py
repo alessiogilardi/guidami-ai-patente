@@ -10,6 +10,7 @@ _ARTICLE_TABLE_COLUMNS = (
     "number",
     "title",
     "url",
+    "scraped_at",
     "is_repealed",
 )
 
@@ -67,5 +68,6 @@ class ArticleStoreRepository(BulkInsertStoreRepository[ArticleEntity]):
             item.number,
             item.title,
             item.url,
+            item.scraped_at,
             item.is_repealed,
         )

@@ -145,7 +145,7 @@ class BaseFileRepository[T](ABC):
     def _serialize_item(self, item: T) -> dict[str, Any]:
         """Serialize a model instance to a plain dict."""
         if isinstance(item, BaseModel):
-            return item.model_dump()
+            return item.model_dump(mode="json")
         if is_dataclass(item):
             return asdict(item)  # type: ignore
         if isinstance(item, dict):

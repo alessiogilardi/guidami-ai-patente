@@ -1,6 +1,7 @@
 """Tests for StoreArticlesAndCommasStep (per-source full-reload of articles + commas)."""
 
 from collections.abc import Iterator
+from datetime import UTC, datetime
 
 import pytest
 from flowstep import FlowContext
@@ -41,6 +42,7 @@ def _article(number: str, source: str = "cds") -> ArticleEntity:
         number=number,
         title=f"Articolo {number}",
         url=f"https://example.com/art-{number}",
+        scraped_at=datetime(2026, 1, 1, tzinfo=UTC),
         is_repealed=False,
     )
 

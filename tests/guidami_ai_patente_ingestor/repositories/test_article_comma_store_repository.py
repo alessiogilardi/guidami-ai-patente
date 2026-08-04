@@ -1,4 +1,5 @@
 from collections.abc import Iterator
+from datetime import UTC, datetime
 
 import pytest
 from psycopg import sql
@@ -33,6 +34,7 @@ def _insert_article(client: PostgresClient, number: str, source: str) -> int:
         number=number,
         title=f"Articolo {number}",
         url=f"https://example.com/art-{number}",
+        scraped_at=datetime(2026, 1, 1, tzinfo=UTC),
         is_repealed=False,
     )
     ids = ArticleStoreRepository("articles", client).bulk_insert_returning_ids([article])

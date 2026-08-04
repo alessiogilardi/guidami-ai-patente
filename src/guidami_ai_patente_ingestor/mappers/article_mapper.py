@@ -41,6 +41,7 @@ class ArticleMapper:
             number=article.number,
             title=article.title,
             url=article.url,
+            scraped_at=article.scraped_at,
             is_repealed=article.repealed,
         )
 
