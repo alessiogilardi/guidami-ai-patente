@@ -88,7 +88,11 @@ def test_from_cleaned_to_article_entity() -> None:
     assert result.is_repealed is True
 
 
-# --- from_cleaned_to_embeddable_commas (T-9, FR-9 per-comma repeal anchoring) ---
+# --- from_cleaned_to_embeddable_commas ---
+# The mapper only seeds `is_repealed` with the article-level flag; the per-comma
+# text formula is applied afterwards by the `detect_comma_repeal` pipeline step
+# (tests/guidami_ai_patente_ingestor/services/knowledge/test_comma_repeal_detector.py),
+# not by this mapper.
 
 
 def test_comma_repealed_when_article_repealed() -> None:
@@ -101,37 +105,11 @@ def test_comma_repealed_when_article_repealed() -> None:
     assert result[0].is_repealed is True
 
 
-def test_comma_repealed_by_own_formula() -> None:
+def test_comma_not_repealed_by_text_formula_alone() -> None:
+    """The mapper does not apply the text formula: that's detect_comma_repeal's job."""
     article = _cleaned(
         repealed=False,
         commas=[ParsedComma(number="3", text="COMMA ABROGATO DAL D.LGS. 15 MARZO 2010, N. 66 .")],
-    )
-
-    result = ArticleMapper.from_cleaned_to_embeddable_commas(article)
-
-    assert result[0].is_repealed is True
-
-
-def test_comma_repealed_by_own_formula_with_leading_markers() -> None:
-    article = _cleaned(
-        repealed=False,
-        commas=[
-            ParsedComma(
-                number="4",
-                text="((COMMA ABROGATO DAL D.LGS. 21 MAGGIO 2018, N. 68 )) .",
-            )
-        ],
-    )
-
-    result = ArticleMapper.from_cleaned_to_embeddable_commas(article)
-
-    assert result[0].is_repealed is True
-
-
-def test_comma_not_repealed_on_period_abrogato() -> None:
-    article = _cleaned(
-        repealed=False,
-        commas=[ParsedComma(number="13-ter", text="PERIODO ABROGATO DAL D.LGS. ...")],
     )
 
     result = ArticleMapper.from_cleaned_to_embeddable_commas(article)

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import TYPE_CHECKING, Literal
+from typing import TYPE_CHECKING, Literal, cast
 from unittest.mock import MagicMock
 
 import pytest
@@ -210,6 +210,50 @@ def test_indexing_flow_reports_step_progress(
     assert len(end_steps) == 5
     assert [args[1] for _, args in begin_steps] == [1, 2, 3, 4, 5]
     assert all(args[2] == 5 for _, args in begin_steps)
+
+
+def test_expand_to_embeddable_commas_step_detects_repeal_by_text_formula(
+    tmp_path: Path,
+) -> None:
+    """expand_to_embeddable_commas chains FlatMap(mapper) with ForEach(detect_comma_repeal).
+
+    A comma is marked repealed from its own text even when the parent article
+    is not, all the way through to the DB insert.
+    """
+    resolver = _cleaned_resolver(tmp_path)
+    _write_cleaned(
+        resolver.dir("cleaned", "cds"),
+        [
+            _make_cleaned_article(
+                "1",
+                "cds",
+                repealed=False,
+                comma_text="COMMA ABROGATO DAL D.LGS. 15 MARZO 2010, N. 66 .",
+            )
+        ],
+    )
+    config = IngestorConfig(
+        embedding_batch_size=4,
+        postgres=PostgresConnectionConfig(
+            host="localhost", user="unused", password="unused", dbname="unused"
+        ),
+        project_root=tmp_path,
+    )
+    pg_client = _make_postgres_client()
+
+    build_knowledge_indexing_flow(
+        config=config,
+        layer_resolver=resolver,
+        embedding_client=_make_embedding_client(),
+        postgres_client=pg_client,
+        source="cds",
+    ).run()
+
+    # ArticleCommaStoreRepository is the only caller of execute_many (ArticleStoreRepository
+    # uses execute_many_returning), so this call is unambiguously the article_commas insert.
+    execute_many = cast(MagicMock, pg_client.execute_many)
+    _, comma_rows = execute_many.call_args.args
+    assert comma_rows[0][4] is True  # is_repealed column, per _ARTICLE_COMMA_TABLE_COLUMNS
 
 
 # ---------------------------------------------------------------------------

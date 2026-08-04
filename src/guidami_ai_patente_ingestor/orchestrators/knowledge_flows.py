@@ -27,7 +27,7 @@ from guidami_ai_patente_ingestor.repositories import (
     ArticleStoreRepository,
 )
 from guidami_ai_patente_ingestor.services import LayerResolver
-from guidami_ai_patente_ingestor.services.knowledge import ArticleCleaner
+from guidami_ai_patente_ingestor.services.knowledge import ArticleCleaner, detect_comma_repeal
 
 from .progress_flow_observer import ProgressFlowObserver
 from .steps.generic import (
@@ -118,9 +118,13 @@ def build_knowledge_indexing_flow(
         output_key=context_keys.ARTICLE_ENTITIES,
     )
 
+    # Expand first, then detect repeal: detect_comma_repeal reads is_repealed as the
+    # article-level flag already propagated by ArticleMapper, refining it with the
+    # comma's own text formula.
     expand_commas_step = ApplyStep(
         "expand_to_embeddable_commas",
         FlatMap(ArticleMapper.from_cleaned_to_embeddable_commas),
+        ForEach(detect_comma_repeal),
         input_key=context_keys.CLEANED_ARTICLES,
         output_key=context_keys.EMBEDDABLE_ARTICLE_COMMAS,
     )

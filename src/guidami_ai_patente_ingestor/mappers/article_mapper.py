@@ -7,8 +7,6 @@ from guidami_ai_patente_ingestor.models.knowledge import (
     ParsedArticleModel,
 )
 
-_COMMA_REPEALED_PREFIX = "COMMA ABROGATO"
-
 
 class ArticleMapper:
     """Backbone of the 1:1 transformations in the corpus normativo pipeline.
@@ -52,10 +50,10 @@ class ArticleMapper:
     ) -> list[EmbeddableArticleComma]:
         """Expands a `CleanedArticleModel` into one `EmbeddableArticleComma` per comma.
 
-        Per-comma repeal (FR-9): a comma is repealed when its article is repealed,
-        or when its own text (after stripping leading `((` markers) starts with
-        `COMMA ABROGATO` — comma numbers are already stripped from comma text by
-        the scraper, so no separate number-stripping is needed here.
+        `is_repealed` is only seeded here with the article-level flag, propagated
+        as-is to every comma; the per-comma text formula is applied afterwards by
+        the `detect_comma_repeal` pipeline step (see `orchestrators/knowledge_flows.py`),
+        not by this mapper.
 
         Args:
             article: Cleaned article to expand.
@@ -72,8 +70,7 @@ class ArticleMapper:
                 comma_number=comma.number,
                 position=position,
                 text=comma.text,
-                is_repealed=article.repealed
-                or comma.text.lstrip("(").strip().upper().startswith(_COMMA_REPEALED_PREFIX),
+                is_repealed=article.repealed,
                 embedding=None,
             )
             for position, comma in enumerate(article.commas)
