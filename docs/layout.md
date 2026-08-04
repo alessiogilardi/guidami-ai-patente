@@ -42,8 +42,15 @@ repo/
 │                                    #   file per article, named by commons.utils.element_id);
 │                                    #   parsed and the whole quiz pipeline stay monolithic
 │                                    #   (data/docs/ is not a pipeline stage: it holds the source quiz PDF)
-│                                    #   test-data/ mirrors parsed/cleaned/enriched on a random
-│                                    #   subset (see ADR 0006), for fast local prepare/index runs
+│                                    #   quiz-images/ is a stable top-level sibling of raw/parsed/
+│                                    #   cleaned/enriched, NOT nested under parsed/: extracted image
+│                                    #   bytes never change, so they sit outside the JSON's
+│                                    #   parsed->cleaned->enriched transformation chain, committed
+│                                    #   like parsed/cleaned (deterministic), for enrichment today
+│                                    #   and the future FastAPI app to share (ADR 0008)
+│                                    #   test-data/ mirrors parsed/cleaned/enriched + quiz-images/ on
+│                                    #   a random subset (see ADR 0006, ADR 0008), for fast local
+│                                    #   prepare/index runs
 ├── docs/                           # This documentation (Second Brain) + docs/plans/ (design plans)
 └── .claude/                        # Claude Code config: rules/, skills/, hooks/, agents/
 ```
@@ -180,10 +187,17 @@ gitignored — never committed, safe to delete once the spec they fed is
   package, sibling to `parsers/`/`scrapers/`, not inside
   `guidami_ai_patente_ingestor/` even if it imports `IngestorConfig`/
   `SourceConfig` from it: `src/test_data_sampler/sampler.py` samples
-  `data/parsed/` into `data/test-data/parsed/` (ADR 0006), registered as
-  `sample-test-data` and exempted from `C901` in `pyproject.toml` per the
-  same "top-level orchestration is low-value to enforce" rationale as its
-  siblings.
+  `data/parsed/` into `data/test-data/parsed/` (ADR 0006), copying the
+  referenced subset of `data/quiz-images/` into `data/test-data/quiz-images/`
+  alongside it (ADR 0008), registered as `sample-test-data` and exempted
+  from `C901` in `pyproject.toml` per the same "top-level orchestration is
+  low-value to enforce" rationale as its siblings.
+
+*Last updated: 2026-08-04 — verified against commit `51cabb3`; `data/` tree entry and the
+`test_data_sampler/sampler.py` placement bullet now describe `data/quiz-images/`, a new
+top-level directory (sibling of `raw/`/`parsed/`/`cleaned/`/`enriched/`) holding quiz
+images previously nested under `data/parsed/quiz-patente-ab/images/` (ADR 0008), plus its
+`data/test-data/quiz-images/` mirror.*
 
 *Last updated: 2026-08-04 — verified against commit `2248dcc`; noted the gitignored
 `docker/.volumes/` bind-mount directory (Postgres data, was a named Docker volume before).*

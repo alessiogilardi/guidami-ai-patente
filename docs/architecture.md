@@ -49,17 +49,29 @@ scripts, each registered as a `[project.scripts]` entry.
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
 | `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
 | `guidami_ai_patente/` | FastAPI quiz bot — **not started** | FastAPI (planned) |
-| `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/` | pdfplumber, pymupdf |
+| `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/quiz-patente-ab.json` (questions) + `data/quiz-images/` (extracted images, top-level, sibling of `parsed/` — ADR 0008) | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`) selected via a single `scrape --source <cds\|cap\|reg>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`) | beautifulsoup4, lxml, httpx |
 | `scrapers/rca_extract.py` | Filters the full CAP corpus (`data/parsed/cap/codice_assicurazioni_private.json`) down to `IngestorConfig.rca_ranges` (inclusive numeric ranges over the article's leading number) → `data/parsed/cap/codice_rca.json`; not wired into `main_cap` or the `ingest` CLI — a standalone follow-up step | stdlib only |
-| `test_data_sampler/sampler.py` | Samples `--count` random elements per source from `data/parsed/{cds,cap,reg,quiz-patente-ab}` → `data/test-data/parsed/...`, copying only the quiz images the sampled questions reference; feeds `ingest --config configs/ingestor_config.test-data.yaml prepare\|index` (ADR 0006) | stdlib only |
+| `test_data_sampler/sampler.py` | Samples `--count` random elements per source from `data/parsed/{cds,cap,reg,quiz-patente-ab}` → `data/test-data/parsed/...`, copying only the quiz images the sampled questions reference from `data/quiz-images/` into `data/test-data/quiz-images/`; feeds `ingest --config configs/ingestor_config.test-data.yaml prepare\|index` (ADR 0006, ADR 0008) | stdlib only |
 
 `parsers/questions_pdf.py` extracts each sub-question's image lazily: the
 per-question default image (fallback for rows without their own nearby
 image) is only extracted the first time a row actually needs it, not
 eagerly when the question is created. Extracting it eagerly regardless of
-use silently orphans files under `data/parsed/quiz-patente-ab/images/`
-whenever every row of a question resolves its own row-level image instead.
+use would silently orphan files under `data/quiz-images/` whenever every
+row of a question resolves its own row-level image instead.
+
+Images live in `data/quiz-images/`, a top-level directory sibling to
+`raw/`/`parsed/`/`cleaned/`/`enriched/` rather than nested under `parsed/`
+— unlike the JSON, image bytes never change after extraction, so they
+aren't part of the parsed→cleaned→enriched transformation chain, and a
+top-level location lets the future FastAPI quiz-bot app read them without
+depending on the ingestion pipeline's internal staging (ADR 0008). At the
+end of every `main_questions` run, `_referenced_images`/`_prune_orphans`
+delete any file under `data/quiz-images/` no longer referenced by the
+freshly-parsed output — cross-run drift (an image dropped by a PDF change
+staying on disk forever) that the within-run MD5 dedup in `_save_image`
+never addressed.
 
 LLM agents in use today (all `BaseAgent` subclasses under
 `guidami_ai_patente_ingestor/agents/`) — **knowledge-corpus enrichment has
@@ -397,6 +409,14 @@ See `adr/` for the full history. Currently accepted:
   (`cli/services/status/`, `cli/models/status/`) are CLI-local rather than
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
+
+*Last updated: 2026-08-04 — verified against commit `51cabb3`; `parsers/questions_pdf.py`
+row and its lazy-image-extraction paragraph now reflect `data/quiz-images/`, a top-level
+directory sibling to `raw/`/`parsed/`/`cleaned/`/`enriched/` (moved out of
+`data/parsed/quiz-patente-ab/images/`), plus the new cross-run `_referenced_images`/
+`_prune_orphans` pair in `main_questions` that deletes stale image files no longer
+referenced by the freshly-parsed output (ADR 0008). The `test_data_sampler/sampler.py`
+row now points at the same new source/destination paths.*
 
 *Last updated: 2026-08-04 — verified against commit `2248dcc`; `commons/observability/`
 row now also covers the new `run_artifact_writer/` sibling sub-package (spec 0004 T-2/T-3),

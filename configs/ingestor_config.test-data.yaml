@@ -8,4 +8,4 @@ layers:
   cleaned: data/test-data/cleaned
   enriched: data/test-data/enriched
 
-quiz_images_dir: data/test-data/parsed/quiz-patente-ab/images
+quiz_images_dir: data/test-data/quiz-images

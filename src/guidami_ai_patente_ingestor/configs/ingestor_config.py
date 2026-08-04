@@ -54,7 +54,7 @@ class IngestorConfig(BaseSettings):
         input_layer="enriched", sources=["quiz"]
     )
     agents_dir: Path = Path("configs/agents")
-    quiz_images_dir: Path = Path("data/parsed/quiz-patente-ab/images")
+    quiz_images_dir: Path = Path("data/quiz-images")
     project_root: Path = Path(".")
 
     embedding_batch_size: int = 64

@@ -67,7 +67,10 @@ Three design questions had to be resolved before implementing this:
   writes a `random.Random(seed).sample(...)`-selected subset to
   `data/test-data/parsed/...`, and — for quiz — copies only the images
   actually referenced by the sampled questions' `sub_questions[].image`
-  into `data/test-data/parsed/quiz-patente-ab/images/`. Placed as a flat
+  into `data/test-data/parsed/quiz-patente-ab/images/` (moved to
+  `data/test-data/quiz-images/`, source now `data/quiz-images/` — see ADR
+  0008; this ADR's decision, copy only the referenced subset, is
+  unchanged). Placed as a flat
   module in its own top-level package (sibling to `parsers/`/`scrapers/`,
   same `C901`-exempt "one-shot script" tier), not inside
   `guidami_ai_patente_ingestor/`, following `scrapers/rca_extract.py`'s
@@ -150,11 +153,11 @@ Three design questions had to be resolved before implementing this:
   is just another delta yaml file — no further CLI or `IngestorConfig`
   plumbing needed, and no risk of drifting from the base yaml on fields
   the profile doesn't need to override.
-- `data/test-data/parsed/`'s images subset must be regenerated
-  (`uv run sample-test-data`) whenever `data/parsed/quiz-patente-ab/images/`
-  changes; there is no mechanical check that the two stay in sync — a
-  stale test-data image set would only surface as a missing-file error the
-  next time `sample-test-data` re-samples a question referencing a removed
-  image.
+- `data/test-data/quiz-images/`'s subset must be regenerated
+  (`uv run sample-test-data`) whenever `data/quiz-images/` changes (paths
+  moved by ADR 0008; the sync gap described here is unchanged); there is
+  no mechanical check that the two stay in sync — a stale test-data image
+  set would only surface as a missing-file error the next time
+  `sample-test-data` re-samples a question referencing a removed image.
 
 *Referenced from `docs/layout.md`, `docs/patterns.md`.*

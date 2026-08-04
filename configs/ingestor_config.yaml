@@ -36,7 +36,7 @@ quiz_indexing:
   sources: [quiz]
 
 agents_dir: configs/agents
-quiz_images_dir: data/parsed/quiz-patente-ab/images
+quiz_images_dir: data/quiz-images
 
 embedding_batch_size: 8
 embedding:

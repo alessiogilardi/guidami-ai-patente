@@ -16,8 +16,13 @@ from PIL import Image
 
 PDF_PATH = Path("data/docs/domande AB italiano 23 04 2025.pdf")
 OUT_DIR = Path("data/parsed/quiz-patente-ab")
-IMAGES_DIR = OUT_DIR / "images"
 OUT_JSON = OUT_DIR / "quiz-patente-ab.json"
+
+# Top-level, sibling of OUT_DIR rather than nested under it: unlike the JSON (which keeps
+# moving through parsed -> cleaned -> enriched), extracted image bytes never change after
+# this step, so they live in their own stable location shared by enrichment and, later, the
+# quiz app — not tucked inside one pipeline stage's directory.
+IMAGES_DIR = Path("data/quiz-images")
 
 _QUESITO_RE = re.compile(r"Quesito\s+n.?\s*(\d+)\s*[-–]\s*(.+)")
 _IMAGE_X_THRESHOLD = 400.0  # x0 > this → content image (not logo)
@@ -244,6 +249,32 @@ def _extract_image_at_y(
     return _save_image(img_bytes, ext, seen)
 
 
+def _referenced_images(questions: list[Question]) -> set[str]:
+    """Return every image filename referenced by at least one sub-question."""
+    return {
+        sub["image"]
+        for question in questions
+        for sub in question["sub_questions"]
+        if sub["image"] is not None
+    }
+
+
+def _prune_orphans(images_dir: Path, referenced: set[str]) -> int:
+    """Delete files under `images_dir` not in `referenced`. Returns the count removed.
+
+    Extraction only ever adds files (dedup by MD5 within a run, see `_save_image`); across
+    runs, a question whose image changed or was removed would otherwise leave its old file
+    behind forever. Both `referenced` and the JSON write derive from the same in-memory
+    `questions`, so pruning is always consistent with the run's output regardless of order.
+    """
+    pruned = 0
+    for path in images_dir.iterdir():
+        if path.is_file() and path.name not in referenced:
+            path.unlink()
+            pruned += 1
+    return pruned
+
+
 def main_questions(pdf_path: Path = PDF_PATH) -> None:
     """Parse the PDF and write the questions to `data/parsed/quiz-patente-ab/`."""
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -361,8 +392,11 @@ def main_questions(pdf_path: Path = PDF_PATH) -> None:
         json.dumps(questions, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+    pruned = _prune_orphans(IMAGES_DIR, _referenced_images(questions))
     total_subs = sum(len(q["sub_questions"]) for q in questions)
     print(f"\nDone. {len(questions)} questions, {total_subs} sub-questions -> {OUT_JSON}")
+    if pruned:
+        print(f"Pruned {pruned} orphaned image(s) from {IMAGES_DIR}")
 
 
 if __name__ == "__main__":

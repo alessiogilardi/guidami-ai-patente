@@ -19,9 +19,10 @@ _KNOWLEDGE_SOURCES: dict[str, Path] = {
     "reg": Path("data/parsed/reg/regolamento_attuazione.json"),
 }
 _QUIZ_SOURCE_PATH = Path("data/parsed/quiz-patente-ab/quiz-patente-ab.json")
-_QUIZ_IMAGES_SOURCE_DIR = Path("data/parsed/quiz-patente-ab/images")
+_QUIZ_IMAGES_SOURCE_DIR = Path("data/quiz-images")
 
 _TEST_DATA_PARSED_ROOT = Path("data/test-data/parsed")
+_TEST_DATA_QUIZ_IMAGES_DIR = Path("data/test-data/quiz-images")
 
 _DEFAULT_COUNT = 20
 _DEFAULT_SEED = 42
@@ -103,7 +104,7 @@ def main() -> None:
         _QUIZ_SOURCE_PATH,
         _TEST_DATA_PARSED_ROOT / "quiz-patente-ab" / _QUIZ_SOURCE_PATH.name,
         _QUIZ_IMAGES_SOURCE_DIR,
-        _TEST_DATA_PARSED_ROOT / "quiz-patente-ab" / "images",
+        _TEST_DATA_QUIZ_IMAGES_DIR,
         args.count,
         rng,
     )
