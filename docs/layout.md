@@ -14,7 +14,8 @@ repo/
 │   │                                #   observability/: two self-contained sub-packages,
 │   │                                #   progress_reporter/ (ItemProgressReporter/ProgressReporter
 │   │                                #   port + NullProgressReporter) and run_artifact_writer/
-│   │                                #   (RunArtifactWriter + RunArtifactWriterConfig, flat);
+│   │                                #   (RunArtifactWriter + models/: RunManifest base,
+│   │                                #   ScrapeManifest; RunArtifactWriterConfig removed);
 │   │                                #   sibling of ai/observability/, not AI-specific
 │   ├── domain/                     # Shared domain entities/models (persisted + intermediate),
 │   │                                #   no I/O or business logic
@@ -122,11 +123,19 @@ gitignored — never committed, safe to delete once the spec they fed is
   CLI's live dashboard (spec 0002) drives and the three instrumented
   services (`EmbeddingService`, `ImageDescriptionEnricher`,
   `NormReferenceEnricher`) depend on. `run_artifact_writer/` (spec 0004
-  FR-3/AD-3) holds `RunArtifactWriter` + `RunArtifactWriterConfig` directly —
+  FR-3/AD-3, generalized in spec 0005) holds `RunArtifactWriter` directly —
   no internal `protocols/`/`services/` split, since there is no port (AD-3
-  rejects a `Protocol` here: only one implementation exists) — the shared
-  per-run `run.log`/`manifest.json`/`report.md` writer both `ingest` and
-  `scrape` (`scrapers/normattiva.py`) delegate to. Neither sub-package is
+  rejects a `Protocol` here: only one implementation exists) — plus a
+  `models/` sub-package with `RunManifest` (shared base: `started_at`/
+  `ended_at`, abstract `to_report_lines()`) and `ScrapeManifest` (the
+  scraper's own fields, unchanged behavior). `RunArtifactWriterConfig` was
+  removed (spec 0005 AD-5) — its fields moved onto `ScrapeManifest` directly.
+  This is the shared per-run `run.log`/`manifest.json`/`report.md` writer
+  both `ingest` and `scrape` (`scrapers/normattiva.py`) delegate to; the
+  `ingest`-only manifests (`PrepareManifest`/`IndexManifest`/`ResetManifest`)
+  live under `guidami_ai_patente_ingestor/cli/models/run_artifacts/` instead,
+  per the CLI self-containment rule (spec 0005 AD-6) — see ADR 0009. Neither
+  `commons/observability/` sub-package is
   under `commons/ai/` because neither is AI-specific (`EmbeddingService` is
   the only one of the three progress-reporting consumers that happens to
   also be AI-related); see `docs/patterns.md` for both shapes.
@@ -207,3 +216,8 @@ gained a second self-contained sibling sub-package, `run_artifact_writer/` (spec
 T-2/T-3), alongside the pre-existing `progress_reporter/`. Also merged in the
 `feat/ingestion` verification against commit `d4c92ca`: added `src/test_data_sampler/`
 and the `data/test-data/` mirror (ADR 0006).*
+
+*Last updated: 2026-08-05 — verified against commit `52cc03e`; `run_artifact_writer/`
+gained a `models/` sub-package (`RunManifest`, `ScrapeManifest`), `RunArtifactWriterConfig`
+was removed, and `guidami_ai_patente_ingestor/cli/models/` gained a `run_artifacts/`
+sub-package (`PrepareManifest`/`IndexManifest`/`ResetManifest`) — spec 0005, ADR 0009.*

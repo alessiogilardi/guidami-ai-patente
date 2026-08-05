@@ -15,6 +15,7 @@ from guidami_ai_patente_ingestor.orchestrators import (
 from guidami_ai_patente_ingestor.services import LayerResolver
 
 from .. import wiring
+from ..models.run_artifacts import IndexManifest
 from ..rendering import render_dry_run
 
 logger = logging.getLogger(__name__)
@@ -46,12 +47,15 @@ def run_index(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
     args: argparse.Namespace,
+    manifest: IndexManifest | None,
     progress: ProgressReporter,
 ) -> None:
     """Dispatch index subcommand: build indexing flow and run it."""
     if args.dry_run:
         _render_index_dry_run(args)
         return
+
+    assert manifest is not None
 
     embedding_client = LiteLLMEmbeddingClient(config.embedding)
     postgres_client = wiring.build_postgres_client(config)
@@ -68,6 +72,7 @@ def run_index(
                 progress=progress,
             )
             logger.info(f"starting knowledge indexing for source '{source}'")
+            manifest.record_flow("knowledge_indexing")
             progress.begin_flow("knowledge_indexing")
             flow.run()
             progress.end_flow()
@@ -81,6 +86,7 @@ def run_index(
                 progress=progress,
             )
             logger.info("starting quiz indexing")
+            manifest.record_flow("quiz_indexing")
             progress.begin_flow("quiz_indexing")
             flow.run()
             progress.end_flow()

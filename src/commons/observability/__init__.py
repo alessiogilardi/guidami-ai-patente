@@ -5,7 +5,7 @@ AI-specific, and is consumed by both `commons/` services and `orchestrators/` fa
 """
 
 from .progress_reporter import ItemProgressReporter, NullProgressReporter, ProgressReporter
-from .run_artifact_writer import LOG_FORMAT, RunArtifactWriter, RunArtifactWriterConfig
+from .run_artifact_writer import LOG_FORMAT, RunArtifactWriter, RunManifest, ScrapeManifest
 
 __all__ = [
     "LOG_FORMAT",
@@ -13,5 +13,6 @@ __all__ = [
     "NullProgressReporter",
     "ProgressReporter",
     "RunArtifactWriter",
-    "RunArtifactWriterConfig",
+    "RunManifest",
+    "ScrapeManifest",
 ]

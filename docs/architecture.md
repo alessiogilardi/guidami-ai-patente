@@ -41,7 +41,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `commons/ai/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` (in `configs/`) from YAML, renders prompts via `PromptRenderer`; requires an injected `OpenRouterProvider` (never reads env itself); optionally tracks every call via an injected `LlmCallTracker` port | pydantic-ai-slim[openrouter] |
 | `commons/configs/` | Shared, app-agnostic Pydantic settings: `PostgresConnectionConfig`, `OpenRouterConfig` (`BaseSettings`, `env_prefix="OPENROUTER_"`, holds `api_key: SecretStr`) | pydantic-settings |
 | `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | psycopg[binary] |
-| `commons/observability/` | Thin re-exporting `__init__.py` over two self-contained sibling sub-packages: `progress_reporter/` (`ItemProgressReporter`/`ProgressReporter` port + `NullProgressReporter` — progress reporting for the ingest CLI's live dashboard, spec 0002) and `run_artifact_writer/` (`RunArtifactWriter` + `RunArtifactWriterConfig`, flat — no `protocols/`/`services/` split, since AD-3 rejects a `Protocol` here with only one implementation; a context manager that owns one `logs/<prefix>_<timestamp>/` run directory, writing `run.log`/`manifest.json`/`report.md` and always finalizing them in `__exit__` even on an unhandled exception — shared between `ingest`'s `configure_logging` and the `scrapers/normattiva.py` scraper, spec 0004 FR-3/AD-3); a sibling of `commons/ai/observability/`, not nested under it, since it is not AI-specific | — |
+| `commons/observability/` | Thin re-exporting `__init__.py` over two self-contained sibling sub-packages: `progress_reporter/` (`ItemProgressReporter`/`ProgressReporter` port + `NullProgressReporter` — progress reporting for the ingest CLI's live dashboard, spec 0002) and `run_artifact_writer/` (`RunArtifactWriter` + a `models/` sub-package holding `RunManifest` (base) and `ScrapeManifest`; `RunArtifactWriterConfig` was removed, spec 0005 AD-5 — `RunArtifactWriter` is domain-agnostic mechanics only, no `protocols/`/`services/` split since AD-3 rejects a `Protocol` here with only one implementation; a context manager that owns one `logs/<prefix>_<timestamp>/` run directory, writing `run.log`/`manifest.json`/`report.md` from whatever `RunManifest` it holds and always finalizing them in `__exit__` even on an unhandled exception — shared between `ingest`'s `configure_logging` and the `scrapers/normattiva.py` scraper, spec 0005 AD-1/AD-4); a sibling of `commons/ai/observability/`, not nested under it, since it is not AI-specific. The `ingest`-only manifests (`PrepareManifest`/`IndexManifest`/`ResetManifest`) live in `guidami_ai_patente_ingestor/cli/models/run_artifacts/` instead, per the CLI self-containment rule (spec 0005 AD-6) | — |
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
 | `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach`, `FlatMap` — generic composition primitives used across pipeline steps | — |
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
@@ -145,32 +145,51 @@ no-DB/no-filesystem guarantee (`wiring.build_postgres_client` is never even
 called). `reset` does not define `--dry-run` at all; `--apply` is required to
 run the real `TRUNCATE`. `cli/main.py:_is_dry_run(args)` centralizes this
 direction flip for the two consumers below that need "is this a no-op
-invocation": it returns `getattr(args, "dry_run", False)` for every command
-except `reset`, where it returns `not args.apply`.
+invocation": it returns `True` unconditionally for `status` (always
+read-only, even `--online` only *reads* Postgres — spec 0005 AD-8, fixing a
+prior bug where `status` fell through to the `getattr` default below and was
+incorrectly treated as a real, writing run), `not args.apply` for `reset`,
+and `getattr(args, "dry_run", False)` for every other command
+(`prepare`/`index`).
 
-**Per-run file logging**: `cli/main.py:main` parses args first (the log
-folder name needs `args.command`), then calls
-`cli/logging_setup.py:configure_logging(config.project_root, args.command,
-dry_run=_is_dry_run(args), use_console_handler=...)`, which attaches a
-`FileHandler` to the root logger unless `dry_run`, plus a console
-`StreamHandler` only when
-`use_console_handler` is True — `main` passes `use_console_handler=dashboard
-is None`, since a live dashboard owns the console itself (see below) and would
-otherwise corrupt its `Live` region by racing a plain `StreamHandler` writing
-to the same stream. Every `logging.getLogger(...)` call anywhere in the
-codebase is still captured either way: by the `FileHandler` always, and by
-whichever console sink (`StreamHandler` or the dashboard's `LogPanelHandler`)
-is active. Log files land in `logs/ingest_<command>_<YYYYMMDDHHMM>/run.log`; a
-same-minute collision appends a numeric suffix (`_2`, `_3`, ...) via
+**Per-run file logging and artifacts**: `cli/main.py:main` parses args first
+(the log folder name needs `args.command`), then calls
+`cli/logging_setup.py:configure_logging(config.project_root, args,
+dry_run=_is_dry_run(args), use_console_handler=...)`. Unless `dry_run`, this
+now builds and returns a full `RunArtifactWriter` (spec 0005 AD-4 — no longer
+just a bare `run.log` `Path`): internally, `_build_manifest(args)` dispatches
+on `args.command` to construct the command-appropriate manifest
+(`PrepareManifest`/`IndexManifest`/`ResetManifest`, `guidami_ai_patente_ingestor
+.cli.models.run_artifacts`, never called for `status` — AD-8 makes it always
+dry-run), and `RunArtifactWriter(logs_root, run_id_prefix=f"ingest_{args
+.command}", manifest=...)` reserves the run directory. `main` then enters the
+writer through its existing `contextlib.ExitStack` (the same one conditionally
+entering the live dashboard) — `stack.enter_context(writer)` attaches the
+`run.log` `FileHandler`, and the `ExitStack`'s exception safety guarantees
+`manifest.json`/`report.md` are written by `RunArtifactWriter.__exit__` even
+if the dispatched command raises. `configure_logging` itself still installs a
+console `StreamHandler` only when `use_console_handler` is True — `main`
+passes `use_console_handler=dashboard is None`, since a live dashboard owns
+the console itself (see below) and would otherwise corrupt its `Live` region
+by racing a plain `StreamHandler` writing to the same stream. Every
+`logging.getLogger(...)` call anywhere in the codebase is still captured
+either way: by the `FileHandler` always, and by whichever console sink
+(`StreamHandler` or the dashboard's `LogPanelHandler`) is active. Log files
+land in `logs/ingest_<command>_<YYYYMMDDHHMM>/run.log`, alongside
+`manifest.json`/`report.md` (spec 0005 FR-1) — a same-minute collision appends
+a numeric suffix (`_2`, `_3`, ...) via
 `commons.observability.RunArtifactWriter.build_run_dir(logs_root,
 f"ingest_{command}")` (spec 0004 FR-3/AD-3 — `configure_logging` delegates its
 run-dir creation and log format, `commons.observability.LOG_FORMAT`, to the
 shared `RunArtifactWriter` component instead of a private
 `_build_run_dir`/`_LOG_FORMAT`, so `ingest` and `scrape` runs share one
 collision-suffix convention and one log format). No-op invocations (`--dry-run`
-on `prepare`/`index`, or `reset` without `--apply` — anywhere `_is_dry_run(args)`
-is True) never get a log directory — that would contradict the "no filesystem
-writes" guarantee `render_dry_run` prints. `run_artifact_writer.py` also sets
+on `prepare`/`index`, `reset` without `--apply`, or any `status` invocation —
+anywhere `_is_dry_run(args)` is True) never get a log directory or any
+artifact file — that would contradict the "no filesystem writes" guarantee
+`render_dry_run` prints (and, for `status`, its own documented no-write
+behavior — spec 0005 FR-2/AD-8, fixing a prior bug where `status` created a
+`run.log` unconditionally). `run_artifact_writer.py` also sets
 `logging.Formatter.converter = time.gmtime` as a module-level side effect
 right after the `LOG_FORMAT` constant, forcing every `%(asctime)s` in every
 `Formatter` created anywhere in the process — including `basicConfig`'s
@@ -387,7 +406,9 @@ the DB's `UNIQUE (article_id, comma_number)` couldn't store both anyway. When `_
 still raises for an article `main()` can't otherwise reconcile, `_process_article`
 (`scrapers/normattiva.py`, spec 0004 T-4 — extracted from `main()`'s former inline loop body,
 replacing its `continue`-based skips with early `return None`s per `.claude/rules/code-conventions.md`)
-catches the `ValueError`, calls `writer.record_skip("parse_error", label, str(exc))` and logs a
+catches the `ValueError`, calls `manifest.record_skip("parse_error", label, str(exc))` (spec 0005
+AD-7 — `_process_article` takes the `ScrapeManifest` directly, not the `RunArtifactWriter`, since
+`record_skip` is the only thing it ever needed) and logs a
 `warning`, then returns `None` — `main()`'s loop only appends non-`None` records, so the run
 proceeds to the next article rather than aborting the whole 409-article run. Skipped articles
 (across all three categories: `fetch_failed`, `session_invalid`, `parse_error`) are grouped in
@@ -506,3 +527,13 @@ default (no `--dry-run` flag of its own) and requires `--apply` to actually
 run the `TRUNCATE`. `cli/main.py:_is_dry_run(args)` centralizes the flip for
 `_build_dashboard`/`configure_logging`, both updated to call it instead of
 reading `args.dry_run` directly.*
+
+*Last updated: 2026-08-05 — verified against commit `52cc03e`; `RunArtifactWriter` and
+`configure_logging` reflect spec 0005 (ADR 0009): `RunArtifactWriterConfig` is removed,
+`RunArtifactWriter` is generalized onto a `RunManifest`-typed `manifest` constructor arg,
+`configure_logging` now takes `args` (not `args.command`) and returns
+`RunArtifactWriter | None`, entered by `cli/main.py:main` via its `ExitStack` so `ingest
+prepare`/`index`/`reset` get `manifest.json`/`report.md` alongside `run.log` (previously
+scraper-only). `_is_dry_run` gained a `status` branch (always `True`, AD-8), fixing a prior
+bug where `ingest status` unconditionally created a `run.log`. `_process_article` takes
+`ScrapeManifest` directly, not `RunArtifactWriter` (AD-7).*

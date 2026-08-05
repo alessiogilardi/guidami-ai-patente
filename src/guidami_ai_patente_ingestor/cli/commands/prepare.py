@@ -19,6 +19,7 @@ from guidami_ai_patente_ingestor.orchestrators import (
 from guidami_ai_patente_ingestor.services import LayerResolver
 
 from .. import wiring
+from ..models.run_artifacts import PrepareManifest
 from ..rendering import render_dry_run
 
 logger = logging.getLogger(__name__)
@@ -58,6 +59,7 @@ def dispatch_prepare(
     open_router_provider: OpenRouterProvider,
     args: argparse.Namespace,
     tracker: LlmCallTracker | None,
+    manifest: PrepareManifest,
     progress: ProgressReporter,
 ) -> None:
     """Dispatch prepare subcommand: knowledge cleaning only, quiz clean + enrich pair."""
@@ -76,6 +78,7 @@ def dispatch_prepare(
             )
             # No run_preparation: per-element skipping lives in FilterAlreadyDoneStep
             # (Decision 11) — a per-element layer has no honest coarse skip signal.
+            manifest.record_flow("knowledge_cleaning")
             progress.begin_flow("knowledge_cleaning")
             clean_flow.run()
             progress.end_flow()
@@ -97,6 +100,7 @@ def dispatch_prepare(
                 tracker=tracker,
                 progress=progress,
             )
+            manifest.record_flow("quiz_cleaning")
             progress.begin_flow("quiz_cleaning")
             run_preparation(
                 clean_flow,
@@ -104,6 +108,7 @@ def dispatch_prepare(
                 force=force,
             )
             progress.end_flow()
+            manifest.record_flow("quiz_enrichment")
             progress.begin_flow("quiz_enrichment")
             run_preparation(
                 enrich_flow,
@@ -118,6 +123,7 @@ def run_prepare(
     layer_resolver: LayerResolver,
     open_router_provider: OpenRouterProvider,
     args: argparse.Namespace,
+    manifest: PrepareManifest | None,
     progress: ProgressReporter,
 ) -> None:
     """Build the tracking DB client (best-effort) and dispatch the prepare subcommand.
@@ -132,16 +138,30 @@ def run_prepare(
         _render_prepare_dry_run(args)
         return
 
+    assert manifest is not None
+
     try:
         postgres_client = wiring.build_postgres_client(config)
     except psycopg.Error:
         logger.warning("Postgres unavailable; prepare will run without LLM call tracking")
         dispatch_prepare(
-            config, layer_resolver, open_router_provider, args, tracker=None, progress=progress
+            config,
+            layer_resolver,
+            open_router_provider,
+            args,
+            tracker=None,
+            manifest=manifest,
+            progress=progress,
         )
         return
 
     with postgres_client, wiring.build_tracker(postgres_client) as tracker:
         dispatch_prepare(
-            config, layer_resolver, open_router_provider, args, tracker, progress=progress
+            config,
+            layer_resolver,
+            open_router_provider,
+            args,
+            tracker,
+            manifest=manifest,
+            progress=progress,
         )

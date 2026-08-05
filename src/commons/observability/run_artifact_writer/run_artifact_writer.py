@@ -1,13 +1,11 @@
 """Shared per-run artifact writer: `run.log`, `manifest.json`, `report.md`."""
 
-import json
 import logging
 import time
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Literal
 
-from .run_artifact_writer_config import RunArtifactWriterConfig
+from .models import RunManifest
 
 LOG_FORMAT = "%(asctime)s %(levelname)s %(name)s: %(message)s"
 # Force every log record's asctime onto UTC, matching the datetime.now(UTC) timestamps
@@ -17,13 +15,6 @@ LOG_FORMAT = "%(asctime)s %(levelname)s %(name)s: %(message)s"
 # cli/logging_setup.py and scrapers/normattiva.py, both of which import LOG_FORMAT from
 # this module (see ADR on UTC timestamp convention).
 logging.Formatter.converter = time.gmtime
-
-_SkipCategory = Literal["fetch_failed", "session_invalid", "parse_error"]
-_REPORT_HEADINGS: dict[_SkipCategory, str] = {
-    "fetch_failed": "Fetch failures",
-    "session_invalid": "Session-invalid skips",
-    "parse_error": "Parse errors",
-}
 
 
 class RunArtifactWriter:
@@ -35,20 +26,10 @@ class RunArtifactWriter:
     cleanly or raised (never suppresses the exception).
     """
 
-    def __init__(self, config: RunArtifactWriterConfig) -> None:
+    def __init__(self, logs_root: Path, run_id_prefix: str, manifest: RunManifest) -> None:
         """Reserves the run directory and prepares (but does not attach) the file handler."""
-        self._run_dir = self.build_run_dir(config.logs_root, f"scrape_{config.source}")
-        self._source = config.source
-        self._toc_url = config.toc_url
-        self._output_path = config.output_path
-        self._started_at = datetime.now(UTC)
-        self._found = 0
-        self._saved = 0
-        self._skips: dict[_SkipCategory, list[dict[str, str]]] = {
-            "fetch_failed": [],
-            "session_invalid": [],
-            "parse_error": [],
-        }
+        self._run_dir = self.build_run_dir(logs_root, run_id_prefix)
+        self._manifest = manifest
         self._file_handler = logging.FileHandler(self.log_file)
         self._file_handler.setFormatter(logging.Formatter(LOG_FORMAT))
 
@@ -80,54 +61,30 @@ class RunArtifactWriter:
         """The `run.log` path inside `run_dir`."""
         return self._run_dir / "run.log"
 
+    @property
+    def manifest(self) -> RunManifest:
+        """The manifest instance this writer finalizes on `__exit__`."""
+        return self._manifest
+
     def __enter__(self) -> "RunArtifactWriter":
         """Attaches the `run.log` file handler to the root logger."""
         logging.getLogger().addHandler(self._file_handler)
         return self
 
-    def set_found(self, count: int) -> None:
-        """Records the total number of items discovered for this run."""
-        self._found = count
-
-    def record_saved(self) -> None:
-        """Increments the count of successfully saved items."""
-        self._saved += 1
-
-    def record_skip(self, category: _SkipCategory, article: str, detail: str) -> None:
-        """Records a skip in `category`, with `article`'s label and a category-specific detail."""
-        self._skips[category].append({"article": article, "detail": detail})
-
     def __exit__(self, exc_type: object, exc: object, tb: object) -> None:
         """Writes `manifest.json`/`report.md` and detaches the file handler; never suppresses."""
+        self._manifest.ended_at = datetime.now(UTC)
         self._write_manifest()
         self._write_report()
         logging.getLogger().removeHandler(self._file_handler)
         self._file_handler.close()
 
     def _write_manifest(self) -> None:
-        manifest = {
-            "source": self._source,
-            "toc_url": self._toc_url,
-            "output_path": str(self._output_path),
-            "started_at": self._started_at.isoformat(),
-            "ended_at": datetime.now(UTC).isoformat(),
-            "found": self._found,
-            "saved": self._saved,
-            "skipped": {category: len(entries) for category, entries in self._skips.items()},
-        }
         (self._run_dir / "manifest.json").write_text(
-            json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8"
+            self._manifest.model_dump_json(exclude_none=True, indent=2), encoding="utf-8"
         )
 
     def _write_report(self) -> None:
-        lines = [f"# Scrape report — {self._source} — {self._run_dir.name}", ""]
-        for category, heading in _REPORT_HEADINGS.items():
-            lines.append(f"## {heading}")
-            lines.append("")
-            entries = self._skips[category]
-            if entries:
-                lines.extend(f"- {e['article']}: {e['detail']}" for e in entries)
-            else:
-                lines.append("None")
-            lines.append("")
-        (self._run_dir / "report.md").write_text("\n".join(lines), encoding="utf-8")
+        (self._run_dir / "report.md").write_text(
+            "\n".join(self._manifest.to_report_lines()), encoding="utf-8"
+        )

@@ -18,7 +18,7 @@ import httpx
 from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 from bs4.element import PageElement
 
-from commons.observability import LOG_FORMAT, RunArtifactWriter, RunArtifactWriterConfig
+from commons.observability import LOG_FORMAT, RunArtifactWriter, ScrapeManifest
 
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
@@ -566,12 +566,12 @@ def _process_article(
     toc_url: str,
     raw_dir: Path,
     client: httpx.Client,
-    writer: RunArtifactWriter,
+    manifest: ScrapeManifest,
 ) -> ArticleRecord | None:
     """Fetches, saves and parses one article.
 
     Returns the parsed `ArticleRecord`, or `None` after recording a skip on
-    `writer` (fetch failure, session invalid after refresh, or parse error).
+    `manifest` (fetch failure, session invalid after refresh, or parse error).
     """
     suffix = _sotto_articolo_suffix(params.idSottoArticolo)
     label = f"Art. {params.idArticolo}{suffix}"
@@ -581,7 +581,7 @@ def _process_article(
 
     resp = _fetch_with_retry(client, url, toc_url)
     if resp is None:
-        writer.record_skip("fetch_failed", label, url)
+        manifest.record_skip("fetch_failed", label, url)
         logger.warning("Skipping %s: fetch failed after retries", label)
         return None
 
@@ -592,7 +592,7 @@ def _process_article(
         time.sleep(5)
         resp = _fetch_with_retry(client, url, toc_url)
         if resp is None or "article-num-akn" not in resp.text:
-            writer.record_skip("session_invalid", label, url)
+            manifest.record_skip("session_invalid", label, url)
             logger.warning("Skipping %s: still invalid after session refresh", label)
             return None
         raw_html = resp.text
@@ -602,7 +602,7 @@ def _process_article(
     try:
         record = _parse_article(raw_html, url)
     except ValueError as exc:
-        writer.record_skip("parse_error", label, str(exc))
+        manifest.record_skip("parse_error", label, str(exc))
         logger.warning("Skipping %s: parse error: %s", label, exc)
         return None
 
@@ -636,10 +636,10 @@ def main(
     toc_url = law.toc_url
     headers = _headers(toc_url)
 
-    writer_config = RunArtifactWriterConfig(
-        logs_root=logs_root, source=law.slug, toc_url=toc_url, output_path=output_path
-    )
-    with RunArtifactWriter(writer_config) as writer:
+    manifest = ScrapeManifest(source=law.slug, toc_url=toc_url, output_path=output_path)
+    with RunArtifactWriter(
+        logs_root=logs_root, run_id_prefix=f"scrape_{law.slug}", manifest=manifest
+    ) as writer:
         logger.info("Logging to %s", writer.log_file)
         with httpx.Client(follow_redirects=True, timeout=30) as client:
             logger.info("Fetching TOC for %s", law.slug)
@@ -650,16 +650,16 @@ def main(
             (raw_dir / "toc.html").write_text(toc_html, encoding="utf-8")
 
             articles_params = _parse_toc(toc_html)
-            writer.set_found(len(articles_params))
+            manifest.set_found(len(articles_params))
             logger.info("Found %d articles in TOC", len(articles_params))
 
             records: list[ArticleRecord] = []
             for i, params in enumerate(articles_params, start=1):
                 logger.debug("[%d/%d] Art. %s", i, len(articles_params), params.idArticolo)
-                record = _process_article(params, law, toc_url, raw_dir, client, writer)
+                record = _process_article(params, law, toc_url, raw_dir, client, manifest)
                 if record is not None:
                     records.append(record)
-                    writer.record_saved()
+                    manifest.record_saved()
                 time.sleep(DELAY_SECONDS)
 
             output_path.write_text(

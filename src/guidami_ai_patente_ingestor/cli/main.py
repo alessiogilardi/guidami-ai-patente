@@ -4,6 +4,7 @@ import argparse
 import logging
 from contextlib import ExitStack
 from pathlib import Path
+from typing import cast
 
 from rich.console import Console
 
@@ -13,6 +14,7 @@ from guidami_ai_patente_ingestor.configs import IngestorConfig
 from . import wiring
 from .commands import index, prepare, reset, status
 from .logging_setup import configure_logging
+from .models.run_artifacts import IndexManifest, PrepareManifest
 from .parser import build_parser
 from .rendering.dashboard import LiveDashboard, LogPanelHandler
 
@@ -29,7 +31,11 @@ def _is_dry_run(args: argparse.Namespace) -> bool:
     For `prepare`/`index`, dry-run is opt-in via `--dry-run` (default: real run).
     `reset` inverts this: it previews by default and `--apply` opts into the real,
     destructive run — so its dry-run-ness is the negation of `args.apply`.
+    `status` is unconditionally treated as dry-run: it never performs a filesystem
+    or DB write, `--online` included — that flag only *reads* Postgres.
     """
+    if args.command == "status":
+        return True
     if args.command == "reset":
         return not args.apply
     return getattr(args, "dry_run", False)
@@ -79,27 +85,35 @@ def main() -> None:
     args = parser.parse_args(remaining_argv)
 
     dashboard = _build_dashboard(args)
-    log_file = configure_logging(
+    writer = configure_logging(
         config.project_root,
-        args.command,
+        args,
         dry_run=_is_dry_run(args),
         use_console_handler=dashboard is None,
     )
-    if log_file is not None:
-        logger.info("Logging to %s", log_file)
 
     progress: ProgressReporter = dashboard if dashboard is not None else NullProgressReporter()
     with ExitStack() as stack:
         if dashboard is not None:
             stack.enter_context(dashboard)
+        if writer is not None:
+            stack.enter_context(writer)
+            logger.info("Logging to %s", writer.log_file)
         match args.command:
             case "prepare":
                 open_router_provider = wiring.build_open_router_provider(config)
+                manifest = cast(PrepareManifest, writer.manifest) if writer is not None else None
                 prepare.run_prepare(
-                    config, layer_resolver, open_router_provider, args, progress=progress
+                    config,
+                    layer_resolver,
+                    open_router_provider,
+                    args,
+                    manifest,
+                    progress=progress,
                 )
             case "index":
-                index.run_index(config, layer_resolver, args, progress=progress)
+                manifest = cast(IndexManifest, writer.manifest) if writer is not None else None
+                index.run_index(config, layer_resolver, args, manifest, progress=progress)
             case "reset":
                 reset.run_reset(config, args)
             case "status":

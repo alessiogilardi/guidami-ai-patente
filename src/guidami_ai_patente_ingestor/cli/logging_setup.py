@@ -1,10 +1,13 @@
-"""Root logging configuration: console output plus a per-run log file under `logs/`."""
+"""Root logging configuration: console output plus a per-run `RunArtifactWriter`."""
 
+import argparse
 import logging
 import os
 from pathlib import Path
 
-from commons.observability import LOG_FORMAT, RunArtifactWriter
+from commons.observability import LOG_FORMAT, RunArtifactWriter, RunManifest
+
+from .models.run_artifacts import IndexManifest, PrepareManifest, ResetManifest
 
 _MUTED_LOGGER_PREFIXES = ("httpx", "httpcore", "litellm", "openai", "urllib3")
 
@@ -25,20 +28,19 @@ class MutedThirdPartyFilter(logging.Filter):
 
 
 def configure_logging(
-    project_root: Path, command: str, dry_run: bool, use_console_handler: bool = True
-) -> Path | None:
-    """Configures the root logger with a console handler, plus a file handler unless `dry_run`.
+    project_root: Path,
+    args: argparse.Namespace,
+    dry_run: bool,
+    use_console_handler: bool = True,
+) -> RunArtifactWriter | None:
+    """Configures the root logger with a console handler; builds a `RunArtifactWriter`.
 
-    `--dry-run` commands are advertised as making no filesystem writes (see
-    `render_dry_run`); logging to `logs/` would break that contract, so dry runs log to
-    console only.
-
-    The caller passes `use_console_handler=False` when a `LiveDashboard` owns the
-    console instead (its own `LogPanelHandler` is attached/detached by the dashboard's
-    `__enter__`/`__exit__`, not here): in that case the run log file is the only sink
-    this function installs.
-
-    Returns the log file path, or None when `dry_run` is True.
+    Skips the `RunArtifactWriter` when `dry_run` is `True` (no filesystem write of
+    any kind — FR-2);
+    otherwise builds and returns a not-yet-`__enter__`ed `RunArtifactWriter` wrapping
+    the command-appropriate manifest (`_build_manifest`) — the caller (`cli/main.py`)
+    enters it via its own `ExitStack` (AD-4) and is responsible for attaching the file
+    handler this function used to attach directly.
     """
     # litellm attaches its own StreamHandler to the "LiteLLM" logger the first time it's
     # imported (lazily, inside LiteLLMEmbeddingClient._embed), independent of the root
@@ -56,14 +58,31 @@ def configure_logging(
         console_handler = logging.StreamHandler()
         console_handler.addFilter(MutedThirdPartyFilter())
         handlers.append(console_handler)
-    log_file: Path | None = None
-    if not dry_run:
-        run_dir = RunArtifactWriter.build_run_dir(project_root / "logs", f"ingest_{command}")
-        log_file = run_dir / "run.log"
-        handlers.append(logging.FileHandler(log_file))
 
     # force=True: without it, basicConfig is a no-op whenever the root logger already
     # has a handler (e.g. pytest's own log-capture handler during the test session, or
     # a second invocation within the same process), silently skipping ours.
     logging.basicConfig(level=logging.INFO, format=LOG_FORMAT, handlers=handlers, force=True)
-    return log_file
+
+    if dry_run:
+        return None
+    return RunArtifactWriter(
+        logs_root=project_root / "logs",
+        run_id_prefix=f"ingest_{args.command}",
+        manifest=_build_manifest(args),
+    )
+
+
+def _build_manifest(args: argparse.Namespace) -> RunManifest:
+    """Builds the command-appropriate manifest from `args` (PD-7). Never called for `status`."""
+    match args.command:
+        case "prepare":
+            return PrepareManifest(
+                entity=args.entity, source=getattr(args, "source", None), force=args.force
+            )
+        case "index":
+            return IndexManifest(entity=args.entity, source=getattr(args, "source", None))
+        case "reset":
+            return ResetManifest(entity=args.entity)
+        case _:
+            raise AssertionError(f"no manifest builder for command {args.command!r}")
