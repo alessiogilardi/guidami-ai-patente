@@ -38,7 +38,7 @@ def test_execute_loads_source_and_puts_list_under_output_key() -> None:
     items = [{"a": 1}, {"b": 2}]
     resolver = _make_layer_resolver()
     repository = _make_repository()
-    repository.load.return_value = items
+    repository.load_list.return_value = items
 
     step = LoadJsonStep("load", "parsed", "cds", "my_key", resolver, repository)
     context = FlowContext()
@@ -46,14 +46,14 @@ def test_execute_loads_source_and_puts_list_under_output_key() -> None:
 
     result = context.get("my_key")
     assert result is items
-    repository.load.assert_called_once_with(Path("/fake/parsed/cds/data.json"))
+    repository.load_list.assert_called_once_with(Path("/fake/parsed/cds/data.json"))
 
 
 def test_execute_resolves_path_with_configured_layer_and_source() -> None:
     """The resolved path combines the injected layer and source."""
     resolver = _make_layer_resolver()
     repository = _make_repository()
-    repository.load.return_value = []
+    repository.load_list.return_value = []
 
     step = LoadJsonStep("load", "enriched", "cap", "my_key", resolver, repository)
     step.execute(FlowContext())

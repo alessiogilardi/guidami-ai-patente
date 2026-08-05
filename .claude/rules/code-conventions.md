@@ -141,6 +141,36 @@ producer preserves order); enforcement is this rule plus `/code-review` / `/simp
 `ruff` `SIM` and `C901` (mccabe, `max-complexity = 10`) are enabled as a mechanical
 floor for the correlated smells, not as a substitute for review.
 
+## Shape-polymorphic APIs — one method per shape, never a `T | Sequence[T]` union
+
+A method must not accept or return `T | Sequence[T]`. Split it into one method per
+shape, each validating what it actually got.
+
+```python
+# WRONG — union forces every caller to cast, and the writer to sniff the shape
+def load(self, file_name: str | Path) -> T | Sequence[T]: ...
+def write(self, data: T | Sequence[T], file_name: str | Path) -> None: ...
+
+# RIGHT — monomorphic, self-describing, each rejects the wrong shape explicitly
+def load_one(self, file_name: str | Path) -> T: ...
+def load_list(self, file_name: str | Path) -> list[T]: ...
+def write_one(self, item: T, file_name: str | Path) -> None: ...
+def write_list(self, items: Sequence[T], file_name: str | Path) -> None: ...
+```
+
+Rationale: the caller always knows the shape statically, so the union adds no
+flexibility — it only forces an unchecked `cast()` at every call site (a cast that
+silently lies if the file's actual shape differs) and pushes the writer into runtime
+type-sniffing like `isinstance(data, Sequence) and not isinstance(data, (str, bytes,
+dict))`, whose blacklist breaks for any `T` that happens to implement `Sequence`.
+Splitting turns both into a real, message-carrying `ValueError`.
+
+**Name overloaded methods after the source, not the cardinality.** `load_list` (one
+file holding an array) and `load_dir` (a directory, one object per file) both return
+`list[T]`; a name like `load_all` does not say which one it is. See
+`BaseFileRepository` / the `FileRepository` protocol in
+`src/commons/repositories/file_repository/` for the reference implementation.
+
 ## Tests — no `__init__.py` in test directories
 
 Test directories never contain `__init__.py`. Any test directory named after a source

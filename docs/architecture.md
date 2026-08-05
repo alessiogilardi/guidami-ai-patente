@@ -456,7 +456,7 @@ both flow factories and bypasses their respective `FilterAlreadyDoneStep`s.
 The stale monolithic `data/cleaned/quiz-patente-ab/quiz-patente-ab.json` and
 `data/enriched/quiz-patente-ab/quiz-patente-ab.json` (pre-spec-0006 layout)
 were deleted as a one-time manual prerequisite — an un-deleted monolith sitting
-inside what is now a per-element container directory would make `load_all`
+inside what is now a per-element container directory would make `load_dir`
 raise a loud `ValueError`, not silently corrupt data.
 
 ## Relevant architectural decisions
@@ -570,3 +570,7 @@ prepare`/`index`/`reset` get `manifest.json`/`report.md` alongside `run.log` (pr
 scraper-only). `_is_dry_run` gained a `status` branch (always `True`, AD-8), fixing a prior
 bug where `ingest status` unconditionally created a `run.log`. `_process_article` takes
 `ScrapeManifest` directly, not `RunArtifactWriter` (AD-7).*
+
+*Last updated: 2026-08-05 — verified against commit `b5ce3ea`; the quiz per-element
+layout note now says `load_dir` (renamed from `load_all`) for the loud `ValueError` an
+un-deleted monolith triggers inside a per-element container directory.*

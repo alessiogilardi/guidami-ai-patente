@@ -45,7 +45,7 @@ class LoadJsonDirStep[T](Step):
     def execute(self, context: FlowContext) -> None:
         """Resolves the directory, loads every element, and writes the list to the context."""
         directory = self._layer_resolver.dir(self._input_layer, self._source)
-        items = self._repository.load_all(directory)
+        items = self._repository.load_dir(directory)
         logger.info("Loaded %d items from '%s'", len(items), directory)
         context.put(self._output_key, items)
 

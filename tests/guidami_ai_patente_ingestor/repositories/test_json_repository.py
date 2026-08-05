@@ -113,8 +113,8 @@ class TestRoundTrip:
             model_cls, file_system_client=LocalFileSystemClient(tmp_path)
         )
 
-        repo.write(items, "layer/source.json")
-        loaded = repo.load("layer/source.json")
+        repo.write_list(items, "layer/source.json")
+        loaded = repo.load_list("layer/source.json")
 
         assert len(loaded) == 1
         assert loaded == items
@@ -125,7 +125,7 @@ class TestRoundTrip:
             model_cls, file_system_client=LocalFileSystemClient(tmp_path)
         )
 
-        repo.write([factory()], "deep/nested/data.json")
+        repo.write_list([factory()], "deep/nested/data.json")
         assert (tmp_path / "deep" / "nested" / "data.json").exists()
 
     @pytest.mark.parametrize("factory,model_cls", ROUND_TRIP_CASES)
@@ -135,7 +135,7 @@ class TestRoundTrip:
             model_cls, file_system_client=LocalFileSystemClient(tmp_path)
         )
 
-        assert repo.load("empty.json") == []
+        assert repo.load_list("empty.json") == []
 
 
 # ---------------------------------------------------------------------------
@@ -158,7 +158,7 @@ def test_write_preserves_utf8_characters(tmp_path: Path) -> None:
     repo = JsonRepository.get_instance(
         CleanedArticleModel, file_system_client=LocalFileSystemClient(tmp_path)
     )
-    repo.write(articles, "cleaned.json")
+    repo.write_list(articles, "cleaned.json")
 
     raw = json.loads((tmp_path / "cleaned.json").read_text(encoding="utf-8"))
     assert raw[0]["commas"][0]["text"] == "È obbligatorio indossare le cinture."
@@ -173,7 +173,7 @@ def test_article_load_from_cds_sample() -> None:
     repo = JsonRepository.get_instance(
         ParsedArticleModel, file_system_client=LocalFileSystemClient(FIXTURES_DIR)
     )
-    articles = repo.load("cds_sample.json")
+    articles = repo.load_list("cds_sample.json")
 
     article_1 = next(a for a in articles if a.number == "1")
     assert article_1.title == "Principi generali"
@@ -187,7 +187,7 @@ def test_article_load_from_cap_sample_repealed() -> None:
     repo = JsonRepository.get_instance(
         ParsedArticleModel, file_system_client=LocalFileSystemClient(FIXTURES_DIR)
     )
-    articles = repo.load("cap_sample.json")
+    articles = repo.load_list("cap_sample.json")
 
     article_118 = articles[0]
     assert article_118.number == "118"
@@ -204,7 +204,7 @@ def test_parsed_quiz_load_from_sample() -> None:
     repo = JsonRepository.get_instance(
         ParsedQuizModel, file_system_client=LocalFileSystemClient(FIXTURES_DIR)
     )
-    main_questions = repo.load("quiz_bank_sample.json")
+    main_questions = repo.load_list("quiz_bank_sample.json")
 
     assert len(main_questions) == 2
 
@@ -237,8 +237,8 @@ def test_enriched_quiz_round_trip_none_image_description(tmp_path: Path) -> None
     repo = JsonRepository.get_instance(
         EnrichedQuizModel, file_system_client=LocalFileSystemClient(tmp_path)
     )
-    repo.write(questions, "quiz.json")
-    loaded = repo.load("quiz.json")
+    repo.write_list(questions, "quiz.json")
+    loaded = repo.load_list("quiz.json")
 
     assert loaded[0].image_description is None
 
@@ -264,7 +264,7 @@ def test_enriched_quiz_round_trip_with_image_analysis(tmp_path: Path) -> None:
     repo = JsonRepository.get_instance(
         EnrichedQuizModel, file_system_client=LocalFileSystemClient(tmp_path)
     )
-    repo.write(questions, "quiz.json")
-    loaded = repo.load("quiz.json")
+    repo.write_list(questions, "quiz.json")
+    loaded = repo.load_list("quiz.json")
 
     assert loaded[0].image_analysis == analysis

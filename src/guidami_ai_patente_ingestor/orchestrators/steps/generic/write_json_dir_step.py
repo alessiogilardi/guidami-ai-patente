@@ -55,7 +55,7 @@ class WriteJsonDirStep[T](Step):
         for item in items:
             file_path = directory / f"{self._id_of(item)}.json"
             logger.debug("Writing element to '%s'", file_path)
-            self._repository.write(item, file_path)
+            self._repository.write_one(item, file_path)
 
         logger.info("Wrote %d files to '%s'", len(items), directory)
 

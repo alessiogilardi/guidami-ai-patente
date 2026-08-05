@@ -4,7 +4,6 @@ Domain-agnostic: parametrized by model type and context key.
 """
 
 import logging
-from typing import cast
 
 from flowstep import FlowContext, Step
 
@@ -46,7 +45,7 @@ class LoadJsonStep[T](Step):
     def execute(self, context: FlowContext) -> None:
         """Resolves the path, loads the list, and writes it to the context."""
         path = self._layer_resolver.path(self._input_layer, self._source)
-        items = cast(list[T], self._repository.load(path))
+        items = self._repository.load_list(path)
         logger.info("Loaded %d items for source '%s' via LoadJsonStep", len(items), self._source)
 
         context.put(self._output_key, items)

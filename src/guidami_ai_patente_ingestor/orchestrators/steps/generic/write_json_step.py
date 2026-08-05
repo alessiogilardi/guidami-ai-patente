@@ -47,7 +47,7 @@ class WriteJsonStep[T](Step):
         """Reads the list from the context and writes it to the resolved path."""
         items = cast(list[T], context.get(self._input_key))
         path = self._layer_resolver.path(self._output_layer, self._source)
-        self._repository.write(items, path)
+        self._repository.write_list(items, path)
 
         logger.info(
             "WriteJsonStep: wrote %d items for source '%s'",

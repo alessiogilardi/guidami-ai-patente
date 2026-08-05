@@ -37,20 +37,20 @@ def test_execute_loads_all_items_and_puts_list_under_output_key() -> None:
     items = [{"a": 1}, {"b": 2}]
     resolver = _make_layer_resolver()
     repository = _make_repository()
-    repository.load_all.return_value = items
+    repository.load_dir.return_value = items
 
     step = LoadJsonDirStep("load", "cleaned", "cds", "my_key", resolver, repository)
     context = FlowContext()
     step.execute(context)
 
     assert context.get("my_key") is items
-    repository.load_all.assert_called_once_with(Path("/fake/cleaned/cds"))
+    repository.load_dir.assert_called_once_with(Path("/fake/cleaned/cds"))
 
 
 def test_execute_resolves_dir_with_configured_layer_and_source() -> None:
     resolver = _make_layer_resolver()
     repository = _make_repository()
-    repository.load_all.return_value = []
+    repository.load_dir.return_value = []
 
     step = LoadJsonDirStep("load", "enriched", "cap", "my_key", resolver, repository)
     step.execute(FlowContext())
@@ -59,10 +59,10 @@ def test_execute_resolves_dir_with_configured_layer_and_source() -> None:
 
 
 def test_missing_dir_yields_empty_list() -> None:
-    """A missing directory (repository.load_all returns []) does not fail the step."""
+    """A missing directory (repository.load_dir returns []) does not fail the step."""
     resolver = _make_layer_resolver()
     repository = _make_repository()
-    repository.load_all.return_value = []
+    repository.load_dir.return_value = []
 
     step = LoadJsonDirStep("load", "cleaned", "cds", "my_key", resolver, repository)
     context = FlowContext()

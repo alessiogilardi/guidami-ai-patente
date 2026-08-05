@@ -32,47 +32,49 @@ class BaseFileRepository[T](ABC):
         """Create an instance mapped to a model class without requiring a subclass."""
         return cls(model_class, file_system_client=file_system_client)
 
-    def load(self, file_name: str | Path) -> T | Sequence[T]:
-        """Load and deserialize objects from a file.
+    def load_one(self, file_name: str | Path) -> T:
+        """Load and deserialize a single object from a file.
 
         Args:
             file_name: Path (relative to the file system client's base directory) or
                 absolute path to the file.
 
         Returns:
-            A single deserialized object if the file contains a dict,
-            or a list of objects if it contains an array.
+            The deserialized object.
 
         Raises:
             FileNotFoundError: If the file does not exist.
-            ValueError: If the file content is neither a dict nor a list.
+            ValueError: If the file content is not a dict.
         """
         raw_data = self._read_raw(file_name)
+        if not isinstance(raw_data, dict):
+            raise ValueError(
+                f"Expected a single object in '{file_name}', found {type(raw_data).__name__}"
+            )
+        return self._deserialize_item(raw_data)
 
-        match raw_data:
-            case list():
-                return [self._deserialize_item(item) for item in raw_data]
-            case dict():
-                return self._deserialize_item(raw_data)
-            case _:
-                raise ValueError("File content must be a dict or a list.")
-
-    def write(self, data: T | Sequence[T], file_name: str | Path) -> None:
-        """Serialize and write one object or a sequence to a file.
+    def load_list(self, file_name: str | Path) -> list[T]:
+        """Load and deserialize a list of objects from a file.
 
         Args:
-            data: Single object or sequence of objects to serialize.
             file_name: Path (relative to the file system client's base directory) or
                 absolute path to the file.
+
+        Returns:
+            The deserialized objects, in file order.
+
+        Raises:
+            FileNotFoundError: If the file does not exist.
+            ValueError: If the file content is not a list.
         """
-        if isinstance(data, Sequence) and not isinstance(data, (str, bytes, dict)):
-            raw_data = [self._serialize_item(item) for item in data]
-        else:
-            raw_data = self._serialize_item(data)  # type: ignore
+        raw_data = self._read_raw(file_name)
+        if not isinstance(raw_data, list):
+            raise ValueError(
+                f"Expected an array in '{file_name}', found {type(raw_data).__name__}"
+            )
+        return [self._deserialize_item(item) for item in raw_data]
 
-        self._write_raw(raw_data, file_name)
-
-    def load_all(self, dir_path: str | Path) -> list[T]:
+    def load_dir(self, dir_path: str | Path) -> list[T]:
         """Load every file of a directory as ONE object each, ordered by filename.
 
         Args:
@@ -95,6 +97,26 @@ class BaseFileRepository[T](ABC):
                 )
             items.append(self._deserialize_item(raw_data))
         return items
+
+    def write_one(self, item: T, file_name: str | Path) -> None:
+        """Serialize and write a single object to a file.
+
+        Args:
+            item: Object to serialize.
+            file_name: Path (relative to the file system client's base directory) or
+                absolute path to the file.
+        """
+        self._write_raw(self._serialize_item(item), file_name)
+
+    def write_list(self, items: Sequence[T], file_name: str | Path) -> None:
+        """Serialize and write a sequence of objects to a file.
+
+        Args:
+            items: Objects to serialize.
+            file_name: Path (relative to the file system client's base directory) or
+                absolute path to the file.
+        """
+        self._write_raw([self._serialize_item(item) for item in items], file_name)
 
     @abstractmethod
     def _read_raw(self, file_name: str | Path) -> dict | list: ...

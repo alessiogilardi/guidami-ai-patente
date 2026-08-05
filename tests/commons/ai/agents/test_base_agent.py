@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from pathlib import Path
-from typing import cast
 
 import pytest
 import yaml
@@ -43,14 +42,14 @@ def test_yaml_repository_raises_file_not_found_for_missing_yaml(tmp_path: Path) 
     agents_dir.mkdir()
     repo = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
     with pytest.raises(FileNotFoundError, match="nonexistent.yaml"):
-        repo.load("nonexistent.yaml")
+        repo.load_one("nonexistent.yaml")
 
 
 def test_yaml_repository_parses_yaml_into_agent_config(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     repo = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
-    config = repo.load("test_agent.yaml")
+    config = repo.load_one("test_agent.yaml")
     assert isinstance(config, AgentConfig)
     assert config.model_name == "openrouter/google/gemini-2.5-flash-lite"
 
@@ -103,7 +102,7 @@ def test_base_agent_created_from_valid_config(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     repo = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
-    config = cast(AgentConfig, repo.load("test_agent.yaml"))
+    config = repo.load_one("test_agent.yaml")
     agent = _StrAgent(config, _PROVIDER)
     assert agent is not None
 
@@ -212,7 +211,7 @@ def _load_agent(tmp_path: Path, tracker: _ListTracker | None = None) -> BaseAgen
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     repo = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
-    config = cast(AgentConfig, repo.load("test_agent.yaml"))
+    config = repo.load_one("test_agent.yaml")
     return _StrAgent(config, _PROVIDER, tracker=tracker)
 
 
@@ -274,7 +273,7 @@ def test_repr(tmp_path: Path) -> None:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", {**MINIMAL_CONFIG, "name": "custom_name"})
     repo = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
-    config = cast(AgentConfig, repo.load("test_agent.yaml"))
+    config = repo.load_one("test_agent.yaml")
 
     agent = _StrAgent(config, _PROVIDER)
 

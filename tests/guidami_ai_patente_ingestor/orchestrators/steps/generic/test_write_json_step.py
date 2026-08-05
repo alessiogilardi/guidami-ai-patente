@@ -43,7 +43,7 @@ def test_execute_writes_items_to_resolved_path() -> None:
 
     expected_path = Path("/fake/enriched/cap/data.json")
     resolver.path.assert_called_once_with("enriched", "cap")
-    repository.write.assert_called_once_with(items, expected_path)
+    repository.write_list.assert_called_once_with(items, expected_path)
 
 
 def test_execute_resolves_path_for_configured_layer_and_source() -> None:

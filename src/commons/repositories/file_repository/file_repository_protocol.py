@@ -9,14 +9,22 @@ class FileRepository[T](Protocol):
     The domain depends on this protocol, not on a concrete format implementation.
     """
 
-    def load(self, file_name: str | Path) -> T | Sequence[T]:
-        """Load and deserialize one or more objects from a file."""
+    def load_one(self, file_name: str | Path) -> T:
+        """Load and deserialize a single object from a file."""
         ...
 
-    def write(self, data: T | Sequence[T], file_name: str | Path) -> None:
-        """Serialize and write one object or a sequence to a file."""
+    def load_list(self, file_name: str | Path) -> list[T]:
+        """Load and deserialize a list of objects from a file."""
         ...
 
-    def load_all(self, dir_path: str | Path) -> list[T]:
+    def load_dir(self, dir_path: str | Path) -> list[T]:
         """Load every file of a directory as one object each, ordered by filename."""
+        ...
+
+    def write_one(self, item: T, file_name: str | Path) -> None:
+        """Serialize and write a single object to a file."""
+        ...
+
+    def write_list(self, items: Sequence[T], file_name: str | Path) -> None:
+        """Serialize and write a sequence of objects to a file."""
         ...

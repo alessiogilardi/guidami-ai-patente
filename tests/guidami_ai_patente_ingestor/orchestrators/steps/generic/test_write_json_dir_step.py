@@ -54,7 +54,7 @@ def test_writes_one_file_per_element() -> None:
     step = WriteJsonDirStep("write", "enriched", "cds", "my_items", _id_of, resolver, repository)
     step.execute(FlowContext({"my_items": items}))
 
-    assert repository.write.call_count == 3
+    assert repository.write_one.call_count == 3
 
 
 def test_filenames_match_id_of() -> None:
@@ -65,7 +65,7 @@ def test_filenames_match_id_of() -> None:
     step = WriteJsonDirStep("write", "enriched", "cds", "my_items", _id_of, resolver, repository)
     step.execute(FlowContext({"my_items": items}))
 
-    written_paths = [call.args[1] for call in repository.write.call_args_list]
+    written_paths = [call.args[1] for call in repository.write_one.call_args_list]
     assert Path("/fake/enriched/cds/abc.json") in written_paths
     assert Path("/fake/enriched/cds/def.json") in written_paths
 

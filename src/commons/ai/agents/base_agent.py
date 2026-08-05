@@ -83,7 +83,7 @@ class BaseAgent[T_In, T_Out]:
         Raises:
             FileNotFoundError: If the YAML file does not exist.
         """
-        config = cast(AgentConfig, repository.load(f"{name}.yaml"))
+        config = repository.load_one(f"{name}.yaml")
         return cls(
             config=config,
             provider=provider,
