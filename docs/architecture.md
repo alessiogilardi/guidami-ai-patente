@@ -428,8 +428,12 @@ already attributed to T-7/FR-5 above). A live re-scrape against normattiva.it is
 once, to regenerate the committed JSON file itself with this corrected content — the offline
 check only confirms the *code* behaves correctly against already-fetched HTML.
 
-**Quiz bank** (`orchestrators/quiz_flows.py`):
-1. *Cleaning*: `LoadJsonStep` → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` → `WriteJsonStep` (parsed → cleaned; dedup on normalized-text + correct_answer + image identity).
+**Quiz bank** (`orchestrators/quiz_flows.py`). Since spec 0005, `cleaned`
+is a **per-element** layer for quiz too (one JSON file per cleaned
+sub-question, named by `commons.utils.element_id("quiz", item.number)`,
+`_quiz_id` in `quiz_flows.py`; `enriched` stays monolithic for now,
+`parsed` stays a single monolithic file, same as knowledge):
+1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` (unnest + corpus-wide dedup on normalized-text + correct_answer + image identity — the id depends on `number`, which only exists after this flatten, so the filter can't run any earlier) → `FilterAlreadyDoneStep` (drops items already present in `cleaned/`) → `WriteJsonDirStep` (one file per surviving item).
 2. *Enrichment*: `LoadJsonStep` → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched))` → `AsyncApplyStep(ImageDescriptionEnricher(road_sign_describer_concurrency, RoadSignDescriberAgent), NormReferenceEnricher(NormReferenceDescriberAgent))` → `WriteJsonStep` (cleaned → enriched). The mapping runs in a synchronous `ApplyStep`; both enrichers run in a separate `AsyncApplyStep` (concurrent LLM calls). `ImageDescriptionEnricher` groups quizzes by image filename and issues one concurrent vision call per image (see `patterns.md`), writing both the flat `image_description` (downstream/embedding field) and the structured `image_analysis` (full LLM output, debug-only) onto every quiz sharing that image.
 3. *Indexing*: `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embedded))` → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(ForEach(QuizMapper.from_embedded_to_quiz_question))` → `DbStoreStep` (full truncate + bulk insert). `EmbedQuizMetadata` extracts `quiz_metadata` (itself `Embeddable`) from each item and calls `EmbeddingService` on that list directly — not on the `EmbeddedQuizModel` items themselves, which no longer implement `Embeddable`/`Embedded`. Items without `quiz_metadata` end up with `embedding=None`. `QuizMetadata` stays a cohesive nested object through the ingestion models (`EnrichedQuizModel`/`EmbeddedQuizModel`) and is flattened onto the `QuizQuestionEntity` entity columns **only** at the boundary, inside `from_embedded_to_quiz_question`.
 

@@ -17,6 +17,7 @@ from pydantic import SecretStr
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.configs import PostgresConnectionConfig
+from commons.utils import element_id
 from guidami_ai_patente_ingestor.agents import NormReferenceDescriberAgent, RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.agents.dto.norm_reference_describer import (
     NormReferenceDescriberResponse,
@@ -96,8 +97,8 @@ def test_cleaning_flow_build_with_validate_true_does_not_raise() -> None:
     assert isinstance(flow, Flow)
 
 
-def test_cleaning_flow_has_three_steps_in_order() -> None:
-    """The chain is LoadParsedQuiz -> FlatMap+DeduplicateQuizItems -> WriteCleanedQuiz."""
+def test_cleaning_flow_has_four_steps_in_order() -> None:
+    """The chain is LoadParsedQuiz -> FlatMap+Dedup -> Filter -> WriteCleanedQuiz."""
     flow = build_quiz_cleaning_flow(
         config=_base_config(),
         layer_resolver=_make_layer_resolver(),
@@ -106,8 +107,60 @@ def test_cleaning_flow_has_three_steps_in_order() -> None:
     assert [step.name for step in steps] == [
         "load_parsed_quiz",
         "flatten_quiz",
+        "filter_cleaned_quiz",
         "write_cleaned_quiz",
     ]
+
+
+def test_cleaning_flow_force_false_skips_already_cleaned_item(tmp_path: Path) -> None:
+    """FR-1: an item already present in `cleaned/` is not rewritten."""
+    resolver = _quiz_resolver(tmp_path, {"parsed": "", "cleaned": ""})
+    parsed_path = resolver.path("parsed", "quiz")
+    parsed_path.parent.mkdir(parents=True)
+    parsed_path.write_text(
+        json.dumps(
+            [
+                {
+                    "question_id": 1,
+                    "topic": "Segnaletica",
+                    "sub_questions": [
+                        {
+                            "number": "1",
+                            "text": "Domanda uno.",
+                            "correct_answer": True,
+                            "image": None,
+                        },
+                        {
+                            "number": "2",
+                            "text": "Domanda due.",
+                            "correct_answer": False,
+                            "image": None,
+                        },
+                    ],
+                }
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    cleaned_dir = resolver.dir("cleaned", "quiz")
+    cleaned_dir.mkdir(parents=True)
+    already_done_id = element_id("quiz", "1")
+    sentinel_path = cleaned_dir / f"{already_done_id}.json"
+    sentinel_path.write_text(json.dumps({"sentinel": True}), encoding="utf-8")
+
+    config = IngestorConfig(
+        postgres=PostgresConnectionConfig(
+            host="localhost", user="unused", password="unused", dbname="unused"
+        ),
+        project_root=tmp_path,
+    )
+
+    build_quiz_cleaning_flow(config=config, layer_resolver=resolver, force=False).run()
+
+    files = sorted(cleaned_dir.glob("*.json"))
+    assert len(files) == 2
+    assert json.loads(sentinel_path.read_text())["sentinel"] is True
 
 
 # ---------------------------------------------------------------------------
@@ -220,9 +273,9 @@ def test_cleaning_flow_reports_step_progress(
 
     begin_steps = [args for name, args in progress_recorder.calls if name == "begin_step"]
     end_steps = [args for name, args in progress_recorder.calls if name == "end_step"]
-    assert len(begin_steps) == 3
-    assert len(end_steps) == 3
-    assert [args[1] for args in begin_steps] == [1, 2, 3]
+    assert len(begin_steps) == 4
+    assert len(end_steps) == 4
+    assert [args[1] for args in begin_steps] == [1, 2, 3, 4]
 
 
 def test_enrichment_flow_reports_step_and_item_progress(

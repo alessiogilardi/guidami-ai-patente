@@ -12,6 +12,7 @@ from commons.clients.file_system import LocalFileSystemClient
 from commons.observability import NullProgressReporter, ProgressReporter
 from commons.repositories import JsonRepository, YamlRepository
 from commons.use_cases import FlatMap, ForEach
+from commons.utils import element_id
 from guidami_ai_patente_ingestor.agents import NormReferenceDescriberAgent, RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.mappers import QuizMapper
@@ -23,7 +24,9 @@ from guidami_ai_patente_ingestor.models.quiz import (
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
     DbStoreStep,
+    FilterAlreadyDoneStep,
     LoadJsonStep,
+    WriteJsonDirStep,
     WriteJsonStep,
 )
 from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
@@ -39,6 +42,11 @@ from .progress_flow_observer import ProgressFlowObserver
 # Intermediate layer shared by the two preparation factories (clean/enrich):
 # not expressed in PipelineLayerConfig (see the layer decision in SP05, replicated by SP09).
 _CLEANED_LAYER = "cleaned"
+
+
+def _quiz_id(item: CleanedQuizModel | EnrichedQuizModel) -> str:
+    """Stable per-element id, derived from the item's own natural key."""
+    return element_id("quiz", item.number)
 
 
 def build_quiz_indexing_flow(
@@ -146,6 +154,7 @@ def build_quiz_indexing_flow(
 def build_quiz_cleaning_flow(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
+    force: bool = False,
     validate: bool = False,
     progress: ProgressReporter | None = None,
 ) -> Flow:
@@ -153,12 +162,13 @@ def build_quiz_cleaning_flow(
 
     No embed/store: this flow belongs to the preparation stage. The quiz bank
     has a single source (`"quiz"`), derived from
-    `config.quiz_preparation.sources[0]`.
+    `config.quiz_preparation.sources[0]`. `cleaned` is a per-element layer: one
+    file per cleaned item, filtered by `FilterAlreadyDoneStep` (skipped entirely
+    with `force=True`) before being written by `WriteJsonDirStep`.
 
     Step mapping:
-      `LoadJsonStep`
-      → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems)`
-      → `WriteJsonStep`
+      `LoadJsonStep` → `ApplyStep(FlatMap(...), DeduplicateQuizItems)` →
+      `FilterAlreadyDoneStep` → `WriteJsonDirStep`
 
     The `flatten_quiz` step chains two transforms: unnest+map parsed→cleaned via
     `FlatMap(QuizMapper.from_parsed_to_cleaned_all)`, then dedup on the triple
@@ -167,7 +177,8 @@ def build_quiz_cleaning_flow(
 
     Args:
         config: Full ingestor configuration (already loaded at the entry point).
-        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        layer_resolver: Resolver mapping (layer, source) → container directory.
+        force: If True, re-cleans every item even if already present in `cleaned/`.
         validate: If True, runs structural validation of the flow before returning it.
             Raises `FlowValidationError` on ERROR.
         progress: Optional reporter driving the step/flow bars via a registered
@@ -180,6 +191,7 @@ def build_quiz_cleaning_flow(
     prep = config.quiz_preparation
     source = prep.sources[0]
     reporter: ProgressReporter = progress if progress is not None else NullProgressReporter()
+    file_system_client = LocalFileSystemClient(config.project_root)
 
     load_step = LoadJsonStep(
         "load_parsed_quiz",
@@ -187,9 +199,7 @@ def build_quiz_cleaning_flow(
         source,
         context_keys.PARSED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(
-            ParsedQuizModel, file_system_client=LocalFileSystemClient(config.project_root)
-        ),
+        JsonRepository.get_instance(ParsedQuizModel, file_system_client=file_system_client),
     )
     flatten_step = ApplyStep(
         "flatten_quiz",
@@ -198,21 +208,32 @@ def build_quiz_cleaning_flow(
         input_key=context_keys.PARSED_QUIZ,
         output_key=context_keys.CLEANED_QUIZ,
     )
-    write_step = WriteJsonStep(
+    filter_step = FilterAlreadyDoneStep(
+        "filter_cleaned_quiz",
+        context_keys.CLEANED_QUIZ,
+        context_keys.FILTERED_QUIZ,
+        _CLEANED_LAYER,
+        source,
+        force,
+        _quiz_id,
+        layer_resolver,
+        file_system_client,
+    )
+    write_step = WriteJsonDirStep(
         "write_cleaned_quiz",
         _CLEANED_LAYER,
         source,
-        context_keys.CLEANED_QUIZ,
+        context_keys.FILTERED_QUIZ,
+        _quiz_id,
         layer_resolver,
-        JsonRepository.get_instance(
-            CleanedQuizModel, file_system_client=LocalFileSystemClient(config.project_root)
-        ),
+        JsonRepository.get_instance(CleanedQuizModel, file_system_client=file_system_client),
     )
 
     flow: Flow = (
         FlowBuilder("quiz_cleaning")
         .add_step(load_step)
         .add_step(flatten_step)
+        .add_step(filter_step)
         .add_step(write_step)
         .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)

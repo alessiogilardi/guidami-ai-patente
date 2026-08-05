@@ -32,9 +32,11 @@ EMBEDDED_QUIZ = "embedded_quiz"  # intermediate models → embed
 QUIZ_ENTITIES = "quiz_entities"  # final entities → store
 
 # --- Quiz preparation (SP06, extended by SP09) ---
-# Cleaning flow: LoadJsonStep → ApplyStep(flatten_quiz) → WriteJsonStep.
-# Enrichment flow: LoadJsonStep → ApplyStep(map_cleaned_quiz) → AsyncApplyStep(enrich_quiz)
-#   → WriteJsonStep.
+# Cleaning flow: LoadJsonStep → ApplyStep(flatten_quiz) → FilterAlreadyDoneStep →
+#   WriteJsonDirStep.
+# Enrichment flow: LoadJsonDirStep → FilterAlreadyDoneStep → ApplyStep(map_cleaned_quiz)
+#   → AsyncApplyStep(enrich_quiz) → WriteJsonDirStep.
 PARSED_QUIZ = "parsed_quiz"  # input: nested quiz bank loaded from the "parsed" layer
 CLEANED_QUIZ = "cleaned_quiz"  # cleaning output / enrichment input: list[CleanedQuizModel] flat
+FILTERED_QUIZ = "filtered_quiz"  # FilterAlreadyDoneStep output: elements still to process
 MAPPED_QUIZ = "mapped_quiz"  # cleaned→enriched map output; async-enrichment input
