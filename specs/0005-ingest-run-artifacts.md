@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0005 |
-| **Status** | in-progress |
+| **Status** | implemented |
 | **Date** | 2026-08-05 |
 | **Discussion log** | `specs/discussions/ingest-run-artifacts.md` |
 | **Supersedes / superseded by** | — |
@@ -369,3 +369,35 @@ contain or when they are written, for the scraper.
 - **Feasibility asserted:** by write-spec on 2026-08-04 (AD-1 through AD-7,
   FR-1 through FR-6); AD-8 evidence added and verified 2026-08-05, based on
   Feasibility Evidence above
+
+## Changelog
+
+### 2026-08-05 — plan executed: plans/0005-ingest-run-artifacts-plan.md
+
+- **DoD result:** all items verified mechanically — 97 per-task tests pass
+  (T-1..T-10), full suite 551 passed, `ruff check`/`ruff format --check`/
+  `pyright` clean (one pre-existing, unrelated `ruff` issue in an untouched
+  file), file-discipline check clean against baseline `52cc03e`,
+  `second-brain:update` run (docs/architecture.md, patterns.md, layout.md;
+  ADR 0009 added).
+- **Deviations from plan:** (1) a real FR-6 violation was found and fixed
+  during review — `ScrapeManifest` had a custom `field_serializer` forcing
+  `output_path` to POSIX-style forward slashes, changing `manifest.json`'s
+  actual content on Windows versus today's `str(path)` output; root cause
+  was this plan's own T-3 failing-test spec wrongly assuming Pydantic
+  normalizes `Path` JSON encoding to forward slashes — fixed by removing the
+  serializer and correcting the test to `str(Path(...))`. (2) T-5's cosmetic
+  `writer`→`manifest` rename in `tests/scrapers/test_normattiva.py` was
+  initially skipped (no test enforced it) and applied afterward. (3) the
+  implementing agent was interrupted mid-verification by an API session
+  limit; the remaining verification and the Second Brain docs update were
+  completed directly rather than via a re-run agent.
+- **Learnings:** don't hardcode OS-dependent serialization literals (e.g.
+  `Path` → JSON) into a failing-test spec without checking actual host
+  behavior first — Pydantic's default `Path` JSON encoding matches
+  `str(path)` (OS-native separators), not POSIX-normalized. Also confirmed:
+  `cli/commands/reset.py` needed zero code changes for FR-1/FR-3 —
+  `ResetManifest`'s single field is fully satisfied by `configure_logging`'s
+  `_build_manifest` factory alone, exactly as the plan's Context predicted.
+- **Status change:** in-progress → implemented — confirmed by Alessio
+  Gilardi, 2026-08-05.
