@@ -445,6 +445,11 @@ knowledge):
 cleaning and enrichment flows directly on every invocation — no coarse
 whole-file skip — mirroring the `knowledge` branch; `--force` threads into
 both flow factories and bypasses their respective `FilterAlreadyDoneStep`s.
+The stale monolithic `data/cleaned/quiz-patente-ab/quiz-patente-ab.json` and
+`data/enriched/quiz-patente-ab/quiz-patente-ab.json` (pre-spec-0005 layout)
+were deleted as a one-time manual prerequisite — an un-deleted monolith sitting
+inside what is now a per-element container directory would make `load_all`
+raise a loud `ValueError`, not silently corrupt data.
 
 ## Relevant architectural decisions
 
