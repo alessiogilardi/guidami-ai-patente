@@ -50,8 +50,14 @@ only** — f-strings remain the default everywhere else in the codebase.
 ## Reference implementation
 
 `src/commons/ai/agents/base_agent.py::BaseAgent.run`/`run_sync` — `debug` before
-dispatch (agent name + model, useful to reconstruct call ordering when multiple
-agents/enrichers interleave in the same pipeline run), `info` after a successful
-call (operational visibility). No log on the exception path: `run`/`run_sync` don't
-catch, so the exception propagates to whichever call site logs it once (e.g.
-`NormReferenceEnricher._call_agent`, `ImageDescriptionEnricher._describe_image`).
+dispatch (agent name, model, image count, prompt char length — summarized, not the
+payload itself; useful to reconstruct call ordering when multiple agents/enrichers
+interleave in the same pipeline run), `info` after a successful call via the shared
+`_log_call_completed` helper (latency, input/output/total tokens, cost — operational
+visibility, read once off `capture.log` and passed to a single log call rather than
+re-derived per field). `_log_call_completed` also emits a `warning` when
+`capture.log.cost_usd` is `None` (OpenRouter reported no cost for an otherwise
+successful call — a degraded-but-recoverable condition, not a failure). No log on the
+exception path: `run`/`run_sync` don't catch, so the exception propagates to whichever
+call site logs it once (e.g. `NormReferenceEnricher._call_agent`,
+`ImageDescriptionEnricher._describe_image`).

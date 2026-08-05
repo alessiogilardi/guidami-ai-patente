@@ -94,21 +94,35 @@ class BaseAgent[T_In, T_Out]:
     async def run(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
         """Run the agent asynchronously."""
         prompt_content = self._renderer.render(cast(PromptInput, request), images)
-        logger.debug("Calling agent %r (model=%s) asynchronously", self._name, self._model_name)
-        with self._tracked(_prompt_text(prompt_content)) as capture:
+        prompt_text = _prompt_text(prompt_content)
+        logger.debug(
+            "Calling agent %r (model=%s, images=%d, prompt_chars=%d) asynchronously",
+            self._name,
+            self._model_name,
+            len(images),
+            len(prompt_text),
+        )
+        with self._tracked(prompt_text) as capture:
             result = await self._agent.run(prompt_content)
             capture.record(result)
-        logger.info("Agent %r call completed", self._name)
+        self._log_call_completed(capture)
         return result.output
 
     def run_sync(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
         """Run the agent synchronously, blocking the current thread."""
         prompt_content = self._renderer.render(cast(PromptInput, request), images)
-        logger.debug("Calling agent %r (model=%s) synchronously", self._name, self._model_name)
-        with self._tracked(_prompt_text(prompt_content)) as capture:
+        prompt_text = _prompt_text(prompt_content)
+        logger.debug(
+            "Calling agent %r (model=%s, images=%d, prompt_chars=%d) synchronously",
+            self._name,
+            self._model_name,
+            len(images),
+            len(prompt_text),
+        )
+        with self._tracked(prompt_text) as capture:
             result = self._agent.run_sync(prompt_content)
             capture.record(result)
-        logger.info("Agent %r call completed", self._name)
+        self._log_call_completed(capture)
         return result.output
 
     def __call__(self, request: T_In, images: tuple[Path, ...] = ()) -> T_Out:
@@ -134,6 +148,30 @@ class BaseAgent[T_In, T_Out]:
         return PydanticAILlmCallCapture.tracked(
             self._name, self._model_name, prompt, self._system_prompt, self._tracker
         )
+
+    def _log_call_completed(self, capture: PydanticAILlmCallCapture) -> None:
+        """Logs a successful call's timing/usage; warns if OpenRouter reported no cost.
+
+        Reads `capture.log` once: it rebuilds the `LlmCallLogEntity` on every access,
+        so the fields used here are captured in a local instead of re-read per field.
+        """
+        log_entry = capture.log
+        logger.info(
+            "Agent %r call completed (latency_ms=%d, tokens=%s in / %s out / %s total, "
+            "cost_usd=%s)",
+            self._name,
+            log_entry.latency_ms,
+            log_entry.input_tokens,
+            log_entry.output_tokens,
+            log_entry.total_tokens,
+            log_entry.cost_usd,
+        )
+        if log_entry.cost_usd is None:
+            logger.warning(
+                "Agent %r call succeeded but OpenRouter reported no cost (model=%s)",
+                self._name,
+                self._model_name,
+            )
 
     def _create_model(self) -> OpenRouterModel:
         return OpenRouterModel(
