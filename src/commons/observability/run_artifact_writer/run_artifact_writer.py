@@ -7,6 +7,8 @@ from pathlib import Path
 
 from .models import RunManifest
 
+RUN_DIR_DATETIME_FORMAT = "%Y%m%d%H%M"
+RUN_DIR_NAME_TEMPLATE = "{prefix}_{datetime}"
 LOG_FORMAT = "%(asctime)s %(levelname)s %(name)s: %(message)s"
 # Force every log record's asctime onto UTC, matching the datetime.now(UTC) timestamps
 # used everywhere else (manifest.json, DB TIMESTAMPTZ columns). Global logging.Formatter
@@ -15,6 +17,19 @@ LOG_FORMAT = "%(asctime)s %(levelname)s %(name)s: %(message)s"
 # cli/logging_setup.py and scrapers/normattiva.py, both of which import LOG_FORMAT from
 # this module (see ADR on UTC timestamp convention).
 logging.Formatter.converter = time.gmtime
+
+
+def _make_dir(logs_root: Path, base_name: str) -> Path:
+    run_dir = logs_root / base_name
+    suffix = 2
+    while True:
+        try:
+            run_dir.mkdir(parents=True, exist_ok=False)
+        except FileExistsError:
+            run_dir = logs_root / f"{base_name}_{suffix}"
+            suffix += 1
+        else:
+            return run_dir
 
 
 class RunArtifactWriter:
@@ -39,17 +54,10 @@ class RunArtifactWriter:
 
         Falls back to a numeric suffix (`_2`, `_3`, ...) on a same-minute collision.
         """
-        base_name = f"{prefix}_{datetime.now(UTC).strftime('%Y%m%d%H%M')}"
-        run_dir = logs_root / base_name
-        suffix = 2
-        while True:
-            try:
-                run_dir.mkdir(parents=True, exist_ok=False)
-            except FileExistsError:
-                run_dir = logs_root / f"{base_name}_{suffix}"
-                suffix += 1
-            else:
-                return run_dir
+        base_name = RUN_DIR_NAME_TEMPLATE.format(
+            prefix=prefix, datetime=datetime.now(UTC).strftime(RUN_DIR_DATETIME_FORMAT)
+        )
+        return _make_dir(logs_root, base_name)
 
     @property
     def run_dir(self) -> Path:
@@ -66,6 +74,16 @@ class RunArtifactWriter:
         """The manifest instance this writer finalizes on `__exit__`."""
         return self._manifest
 
+    @property
+    def manifest_file(self) -> Path:
+        """The `manifest.json` path inside `run_dir`."""
+        return self._run_dir / "manifest.json"
+
+    @property
+    def report_file(self) -> Path:
+        """The `report.md` path inside `run_dir`."""
+        return self._run_dir / "report.md"
+
     def __enter__(self) -> "RunArtifactWriter":
         """Attaches the `run.log` file handler to the root logger."""
         logging.getLogger().addHandler(self._file_handler)
@@ -80,11 +98,9 @@ class RunArtifactWriter:
         self._file_handler.close()
 
     def _write_manifest(self) -> None:
-        (self._run_dir / "manifest.json").write_text(
+        self.manifest_file.write_text(
             self._manifest.model_dump_json(exclude_none=True, indent=2), encoding="utf-8"
         )
 
     def _write_report(self) -> None:
-        (self._run_dir / "report.md").write_text(
-            "\n".join(self._manifest.to_report_lines()), encoding="utf-8"
-        )
+        self.report_file.write_text("\n".join(self._manifest.to_report_lines()), encoding="utf-8")
