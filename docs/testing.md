@@ -72,13 +72,16 @@ or `tests/`), so it has no local test mirror here — see
 No `__init__.py` in any test directory — see
 `.claude/rules/code-conventions.md` for the rule and rationale.
 
-**There is no `conftest.py` anywhere in the project.**
-`tests/guidami_ai_patente_ingestor/fixtures/` is not pytest fixtures —
-it holds static JSON sample files (`cds_sample.json`, `cap_sample.json`,
-`quiz_bank_sample.json`) used as real input data by
-`test_json_repository.py`'s `ParsedArticleModel` field-mapping tests. Don't
-go looking for a `conftest.py`-based fixture registry; this directory is the
-fixture mechanism in this project.
+**`tests/conftest.py` is the single, root-level fixture registry for the
+suite** — there is no other `conftest.py` anywhere else in the project. It
+defines `RecordingProgressReporter`, a test double for the `ProgressReporter`
+protocol that records every call `(method_name, args)` in order (with a
+`count(method)` helper), and the `progress_recorder` fixture that hands out a
+fresh instance per test.
+`tests/guidami_ai_patente_ingestor/fixtures/` is a separate mechanism, not
+pytest fixtures — it holds static JSON sample files (`cds_sample.json`,
+`cap_sample.json`, `quiz_bank_sample.json`) used as real input data by
+`test_json_repository.py`'s `ParsedArticleModel` field-mapping tests.
 
 `test_article_cleaner.py` constructs its `ParsedArticleModel` instances
 inline rather than via the shared JSON fixtures (spec 0001 T-5/T-6): once
@@ -91,7 +94,6 @@ T-15, after `EnrichedArticleModel` was deleted).
 Naming: `test_*.py`, generally one test file per source file/class (e.g.
 `test_article_cleaner.py` for `article_cleaner.py`).
 
-*Last updated: 2026-08-03 — verified against commit `600b4be`; spec 0004 added
-network-free `main()`/`_process_article` coverage (T-4) and a `cli_main` test replacing
-the removed `main_cds`/`main_cap`/`main_reg` precedent (T-5), and noted the five new
-`_parse_article`-orchestration helpers extracted for the `C901` complexity split (T-6).*
+*Last updated: 2026-08-05 — verified against commit `7d96727`; corrected the
+false "no conftest.py" claim — `tests/conftest.py` exists and provides the
+`RecordingProgressReporter` double plus the `progress_recorder` fixture.*
