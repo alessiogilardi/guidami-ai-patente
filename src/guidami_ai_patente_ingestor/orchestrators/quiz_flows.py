@@ -64,7 +64,7 @@ def build_quiz_indexing_flow(
     `quiz_questions` table (truncate + bulk_insert) via the generic `DbStoreStep`.
 
     Step mapping:
-      `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems, map_to_embedded)`
+      `LoadJsonDirStep` → `ApplyStep(DeduplicateQuizItems, map_to_embedded)`
       → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(map_to_quiz_entity)` → `DbStoreStep`
 
     The `map_to_embedded` step chains two transforms: dedup on the triple
@@ -94,7 +94,7 @@ def build_quiz_indexing_flow(
     source = indexing_config.sources[0]
     reporter: ProgressReporter = progress if progress is not None else NullProgressReporter()
 
-    load_step = LoadJsonStep(
+    load_step = LoadJsonDirStep(
         "load_enriched_quiz",
         indexing_config.input_layer,
         source,

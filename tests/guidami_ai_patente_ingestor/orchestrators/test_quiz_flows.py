@@ -13,8 +13,11 @@ from pydantic import SecretStr
 from commons.ai.embedding import EmbeddingClient
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
+from commons.utils import element_id
 from guidami_ai_patente_ingestor.configs import IngestorConfig, SourceConfig
+from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 from guidami_ai_patente_ingestor.orchestrators import build_quiz_indexing_flow
+from guidami_ai_patente_ingestor.orchestrators.steps.generic import LoadJsonDirStep
 from guidami_ai_patente_ingestor.services import LayerResolver
 
 if TYPE_CHECKING:
@@ -123,9 +126,11 @@ def test_indexing_flow_reports_step_progress(
         layers={"enriched": str(tmp_path / "enriched")},
         sources={"quiz": SourceConfig(dir="quiz", file="quiz.json")},
     )
-    enriched_path = resolver.path("enriched", "quiz")
-    enriched_path.parent.mkdir(parents=True)
-    enriched_path.write_text(json.dumps([_enriched_quiz_payload(1)]), encoding="utf-8")
+    enriched_dir = resolver.dir("enriched", "quiz")
+    enriched_dir.mkdir(parents=True)
+    (enriched_dir / f"{element_id('quiz', '1')}.json").write_text(
+        json.dumps(_enriched_quiz_payload(1)), encoding="utf-8"
+    )
 
     config = IngestorConfig(
         embedding_batch_size=4,
@@ -150,3 +155,12 @@ def test_indexing_flow_reports_step_progress(
     assert [args[1] for args in begin_steps] == [1, 2, 3, 4, 5]
     # Proves the reporter reached the injected EmbeddingService (via EmbedQuizMetadata).
     assert ("begin_items", ("batches", 1)) in progress_recorder.calls
+
+
+def test_build_quiz_indexing_flow_reads_enriched_directory_layer() -> None:
+    """T-3: the flow's first step reads EnrichedQuizModel from a per-element directory."""
+    load_step = _build().get_steps()[0]
+    assert isinstance(load_step, LoadJsonDirStep)
+    assert (
+        load_step._repository._model_class is EnrichedQuizModel  # type: ignore[attr-defined]  # noqa: SLF001
+    )
