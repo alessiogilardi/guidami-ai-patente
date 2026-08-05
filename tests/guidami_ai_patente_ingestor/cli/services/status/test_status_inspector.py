@@ -129,25 +129,20 @@ def test_default_config_reports_reg_readiness_for_prepare_and_index(tmp_path: Pa
     assert any(s.source == "reg" for s in index_knowledge.sources)
 
 
-def test_quiz_prepare_still_uses_skip_and_blocked_signals(tmp_path: Path) -> None:
-    """Quiz is unaffected by the per-element rework (Decision 15 scopes it to knowledge only)."""
-    (tmp_path / "enriched" / "skip_src").mkdir(parents=True)
-    (tmp_path / "enriched" / "skip_src" / "f.json").write_text("{}")
-    (tmp_path / "parsed" / "run_src").mkdir(parents=True)
-    (tmp_path / "parsed" / "run_src" / "f.json").write_text("{}")
-    # block_src: neither parsed nor enriched exist.
+def test_quiz_prepare_never_skips_even_when_enriched_populated(tmp_path: Path) -> None:
+    """FR-5: quiz's cleaned/enriched layers are now per-element too, no honest SKIP signal."""
+    (tmp_path / "enriched" / "quiz").mkdir(parents=True)
+    (tmp_path / "enriched" / "quiz" / "f.json").write_text("{}")
+    (tmp_path / "parsed" / "quiz").mkdir(parents=True)
+    (tmp_path / "parsed" / "quiz" / "f.json").write_text("{}")
 
     config = _build_config(
         tmp_path,
-        sources={
-            "skip_src": SourceConfig(dir="skip_src", file="f.json"),
-            "block_src": SourceConfig(dir="block_src", file="f.json"),
-            "run_src": SourceConfig(dir="run_src", file="f.json"),
-        },
+        sources={"quiz": SourceConfig(dir="quiz", file="f.json")},
         quiz_preparation=PipelineLayerConfig(
             input_layer="parsed",
             output_layer="enriched",
-            sources=["skip_src", "block_src", "run_src"],
+            sources=["quiz"],
         ),
     )
     layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
@@ -157,6 +152,45 @@ def test_quiz_prepare_still_uses_skip_and_blocked_signals(tmp_path: Path) -> Non
 
     prepare_quiz = _entity_readiness(readiness, "prepare", "quiz")
     states_by_source = {s.source: s.state for s in prepare_quiz.sources}
-    assert states_by_source["skip_src"] == ReadinessState.SKIP
-    assert states_by_source["block_src"] == ReadinessState.BLOCKED
-    assert states_by_source["run_src"] == ReadinessState.RUNNABLE
+    assert states_by_source["quiz"] == ReadinessState.RUNNABLE
+    assert ReadinessState.SKIP not in states_by_source.values()
+
+
+def test_quiz_prepare_blocked_when_parsed_input_missing(tmp_path: Path) -> None:
+    """FR-5: prepare's input is still a single file, so BLOCKED is preserved for quiz."""
+    config = _build_config(
+        tmp_path,
+        sources={"quiz": SourceConfig(dir="quiz", file="f.json")},
+        quiz_preparation=PipelineLayerConfig(
+            input_layer="parsed",
+            output_layer="enriched",
+            sources=["quiz"],
+        ),
+    )
+    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    inspector = StatusInspector(config, layer_resolver)
+
+    readiness = inspector.evaluate_readiness()
+
+    prepare_quiz = _entity_readiness(readiness, "prepare", "quiz")
+    states_by_source = {s.source: s.state for s in prepare_quiz.sources}
+    assert states_by_source["quiz"] == ReadinessState.BLOCKED
+
+
+def test_quiz_index_always_runnable_even_when_enriched_input_missing(tmp_path: Path) -> None:
+    """FR-5: quiz's enriched input is now a directory, so no BLOCKED signal either."""
+    config = _build_config(
+        tmp_path,
+        sources={"quiz": SourceConfig(dir="quiz", file="f.json")},
+        quiz_indexing=PipelineLayerConfig(input_layer="enriched", sources=["quiz"]),
+    )
+    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    inspector = StatusInspector(config, layer_resolver)
+
+    readiness = inspector.evaluate_readiness()
+
+    index_quiz = _entity_readiness(readiness, "index", "quiz")
+    states_by_source = {s.source: s.state for s in index_quiz.sources}
+    assert states_by_source["quiz"] == ReadinessState.RUNNABLE
+    assert ReadinessState.SKIP not in states_by_source.values()
+    assert ReadinessState.BLOCKED not in states_by_source.values()

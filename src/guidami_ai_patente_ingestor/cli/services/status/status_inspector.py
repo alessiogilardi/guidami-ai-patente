@@ -12,11 +12,12 @@ class StatusInspector:
     no filesystem signal of its own (its cost is only knowable online, see
     `TableHealthChecker`), so it is always reported `RUNNABLE` offline.
 
-    Knowledge's `cleaned`/`enriched` layers are per-element directories (see
-    `docs/plans/2026-07-17--per-element-knowledge-layers.md`): a directory can be
-    partially populated, so there is no honest binary "already done" signal for it.
-    `per_element` is passed in by the caller (never inferred from the entity name),
-    so this class stays free of hardcoded domain strings.
+    Both knowledge's and quiz's `cleaned`/`enriched` layers are per-element
+    directories (see `docs/plans/2026-07-17--per-element-knowledge-layers.md` and
+    spec 0005): a directory can be partially populated, so there is no honest
+    binary "already done" signal for either. `per_element` is passed in by the
+    caller (never inferred from the entity name), so this class stays free of
+    hardcoded domain strings.
     """
 
     def __init__(self, config: IngestorConfig, layer_resolver: LayerResolver) -> None:
@@ -28,9 +29,9 @@ class StatusInspector:
         """Returns one `CommandReadiness` per (command, entity) pair."""
         return [
             self._prepare_readiness("knowledge", self._config.knowledge_preparation, True),
-            self._prepare_readiness("quiz", self._config.quiz_preparation, False),
+            self._prepare_readiness("quiz", self._config.quiz_preparation, True),
             self._index_readiness("knowledge", self._config.knowledge_indexing, True),
-            self._index_readiness("quiz", self._config.quiz_indexing, False),
+            self._index_readiness("quiz", self._config.quiz_indexing, True),
             self._reset_readiness("knowledge"),
             self._reset_readiness("quiz"),
         ]

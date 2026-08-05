@@ -313,20 +313,18 @@ raises, always exits 0): `cli/services/status/status_inspector.py:
 StatusInspector.evaluate_readiness()` computes a per-(command, entity)
 readiness matrix (`RUNNABLE`/`SKIP`/`BLOCKED`) purely from
 `Path.exists()` checks via `LayerResolver` — no DB, no network, by default.
-For **quiz** (still monolithic single-file layers): `prepare` is `SKIP` when
-its enriched output already exists, `BLOCKED` when its parsed input is
-missing, else `RUNNABLE`; `index` has no filesystem signal for its output (a
-DB table), so it is only `RUNNABLE`/`BLOCKED` depending on whether its
-enriched input exists. For **knowledge** (per-element `cleaned`/`enriched`
-directories — see the flow description above): `prepare` is **never** `SKIP`
-(a directory can be partially populated, so there is no honest binary
-"already done" signal), only `BLOCKED` when its `parsed` input file is
-missing (that layer is still a single file) or `RUNNABLE`; `index`'s input is
-now a directory too, so it drops the `BLOCKED` signal as well and is always
-`RUNNABLE`. `StatusInspector` takes this `per_element` flag from the caller
-rather than inferring it from the entity name, so the readiness logic itself
-stays free of hardcoded domain strings. `reset` is always `RUNNABLE` offline
-for both entities (a single synthetic entry per entity, no source
+Both **knowledge** and, since spec 0005, **quiz** have per-element
+`cleaned`/`enriched` directories (see the flow descriptions above): `prepare`
+is **never** `SKIP` for either (a directory can be partially populated, so
+there is no honest binary "already done" signal), only `BLOCKED` when the
+`parsed` input file is missing (that layer is still a single file for both
+entities) or `RUNNABLE`; `index`'s input is a directory for both too, so it
+drops the `BLOCKED` signal as well and is always `RUNNABLE`. `StatusInspector`
+takes this `per_element` flag from the caller (`True` for both `knowledge` and
+`quiz` in `evaluate_readiness()`) rather than inferring it from the entity
+name, so the readiness logic itself stays free of hardcoded domain strings.
+`reset` is always `RUNNABLE` offline for both entities (a single synthetic
+entry per entity, no source
 dimension). With `--online`, `run_status` best-effort opens a
 `PostgresClient` (catching `psycopg.Error` → `db_reachable=False,
 tables=None`, still exits 0) and, if reachable, runs
