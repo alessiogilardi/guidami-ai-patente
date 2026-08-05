@@ -38,13 +38,10 @@ def test_dispatch_prepare_knowledge_runs_directly_without_run_preparation() -> N
     clean_flow_mock = MagicMock()
     manifest = PrepareManifest(entity="knowledge", source="cds", force=False)
 
-    with (
-        patch(
-            "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
-            return_value=clean_flow_mock,
-        ) as build_clean,
-        patch("guidami_ai_patente_ingestor.cli.commands.prepare.run_preparation") as run_prep,
-    ):
+    with patch(
+        "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
+        return_value=clean_flow_mock,
+    ) as build_clean:
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
 
         dispatch_prepare(
@@ -59,7 +56,6 @@ def test_dispatch_prepare_knowledge_runs_directly_without_run_preparation() -> N
 
     build_clean.assert_called_once()
     clean_flow_mock.run.assert_called_once()
-    run_prep.assert_not_called()
 
 
 def test_dispatch_prepare_knowledge_passes_source_to_factory() -> None:
@@ -67,13 +63,10 @@ def test_dispatch_prepare_knowledge_passes_source_to_factory() -> None:
     config_mock = _make_config_mock()
     manifest = PrepareManifest(entity="knowledge", source="cap", force=False)
 
-    with (
-        patch(
-            "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
-            return_value=MagicMock(),
-        ) as build_clean,
-        patch("guidami_ai_patente_ingestor.cli.commands.prepare.run_preparation"),
-    ):
+    with patch(
+        "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
+        return_value=MagicMock(),
+    ) as build_clean:
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
 
         dispatch_prepare(
@@ -95,13 +88,10 @@ def test_dispatch_prepare_knowledge_with_force_passes_force_to_the_flow_factory(
     config_mock = _make_config_mock()
     manifest = PrepareManifest(entity="knowledge", source="cds", force=True)
 
-    with (
-        patch(
-            "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
-            return_value=MagicMock(),
-        ) as build_clean,
-        patch("guidami_ai_patente_ingestor.cli.commands.prepare.run_preparation"),
-    ):
+    with patch(
+        "guidami_ai_patente_ingestor.cli.commands.prepare.build_knowledge_cleaning_flow",
+        return_value=MagicMock(),
+    ) as build_clean:
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
 
         dispatch_prepare(
@@ -148,21 +138,23 @@ def test_dispatch_prepare_knowledge_runs_only_cleaning() -> None:
     assert not hasattr(prepare_module, "build_knowledge_enrichment_flow")
 
 
-def test_dispatch_prepare_quiz_runs_both_preparation_flows() -> None:
+def test_dispatch_prepare_quiz_runs_both_preparation_flows_directly() -> None:
+    """FR-4: the quiz branch always runs both flows directly; no coarse run_preparation skip."""
     args = argparse.Namespace(entity="quiz", force=False)
     config_mock = _make_config_mock()
     manifest = PrepareManifest(entity="quiz", force=False)
+    clean_flow_mock = MagicMock()
+    enrich_flow_mock = MagicMock()
 
     with (
         patch(
             "guidami_ai_patente_ingestor.cli.commands.prepare.build_quiz_cleaning_flow",
-            return_value=MagicMock(),
+            return_value=clean_flow_mock,
         ) as build_clean,
         patch(
             "guidami_ai_patente_ingestor.cli.commands.prepare.build_quiz_enrichment_flow",
-            return_value=MagicMock(),
+            return_value=enrich_flow_mock,
         ) as build_enrich,
-        patch("guidami_ai_patente_ingestor.cli.commands.prepare.run_preparation") as run_prep,
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
 
@@ -178,7 +170,55 @@ def test_dispatch_prepare_quiz_runs_both_preparation_flows() -> None:
 
     build_clean.assert_called_once()
     build_enrich.assert_called_once()
-    assert run_prep.call_count == 2
+    clean_flow_mock.run.assert_called_once()
+    enrich_flow_mock.run.assert_called_once()
+
+
+def test_dispatch_prepare_quiz_with_force_passes_force_to_both_factories() -> None:
+    args = argparse.Namespace(entity="quiz", force=True)
+    config_mock = _make_config_mock()
+    manifest = PrepareManifest(entity="quiz", force=True)
+
+    with (
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.prepare.build_quiz_cleaning_flow",
+            return_value=MagicMock(),
+        ) as build_clean,
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.prepare.build_quiz_enrichment_flow",
+            return_value=MagicMock(),
+        ) as build_enrich,
+    ):
+        from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
+
+        dispatch_prepare(
+            config_mock,
+            MagicMock(),
+            MagicMock(),
+            args,
+            tracker=None,
+            manifest=manifest,
+            progress=MagicMock(),
+        )
+
+    assert build_clean.call_args.kwargs["force"] is True
+    assert build_enrich.call_args.kwargs["force"] is True
+
+
+def test_dry_run_quiz_describes_per_element_filter_and_write_steps() -> None:
+    args = argparse.Namespace(entity="quiz", force=False, dry_run=True)
+    config_mock = _make_config_mock()
+
+    with patch("guidami_ai_patente_ingestor.cli.commands.prepare.render_dry_run") as render_mock:
+        from guidami_ai_patente_ingestor.cli.commands.prepare import run_prepare
+
+        run_prepare(config_mock, MagicMock(), MagicMock(), args, None, progress=MagicMock())
+
+    steps = render_mock.call_args.args[2]
+    assert any("FilterAlreadyDoneStep" in s for s in steps)
+    assert any("WriteJsonDirStep(cleaned/quiz)" in s for s in steps)
+    assert any("WriteJsonDirStep(enriched/quiz)" in s for s in steps)
+    assert not any("skipped entirely" in s for s in steps)
 
 
 def test_knowledge_branch_records_flow_on_manifest() -> None:
@@ -221,7 +261,6 @@ def test_quiz_branch_records_both_flows_in_order() -> None:
             "guidami_ai_patente_ingestor.cli.commands.prepare.build_quiz_enrichment_flow",
             return_value=MagicMock(),
         ),
-        patch("guidami_ai_patente_ingestor.cli.commands.prepare.run_preparation"),
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
 

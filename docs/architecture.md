@@ -122,9 +122,13 @@ dispatches by subcommand to `cli/commands/{prepare,index,reset,status}.py`;
 `cli/wiring.py` holds the lazy DI builders (`build_layer_resolver`,
 `build_open_router_provider`, `build_postgres_client`, `build_tracker`,
 `build_health_repositories`) so each command only builds the
-clients/providers it actually needs. `run_preparation` wraps every
-preparation flow with idempotency (skips a stage if its output file already
-exists, unless `--force`).
+clients/providers it actually needs. Both `dispatch_prepare` branches
+(`knowledge` and, since spec 0005, `quiz`) run their flow(s) directly, with
+no coarse per-source-file skip: idempotency lives entirely inside each
+flow's `FilterAlreadyDoneStep`, which drops elements already present in the
+per-element destination layer before the (possibly expensive) transform
+runs. The `run_preparation` helper (`orchestrators/preparation_runner.py`)
+still exists at this point but has no remaining caller.
 
 **`--dry-run`** (`prepare`/`index` only, every entity; `status` has
 none — it never mutates anything): each `run_*` command function checks
@@ -436,6 +440,11 @@ knowledge):
 1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` (unnest + corpus-wide dedup on normalized-text + correct_answer + image identity — the id depends on `number`, which only exists after this flatten, so the filter can't run any earlier) → `FilterAlreadyDoneStep` (drops items already present in `cleaned/`) → `WriteJsonDirStep` (one file per surviving item).
 2. *Enrichment*: `LoadJsonDirStep` (cleaned, per-element) → `FilterAlreadyDoneStep` (drops items already present in `enriched/`, **before** the mapping/LLM transform — the filter runs pre-transform here since enrichment, unlike cleaning, *is* the expensive step) → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched))` → `AsyncApplyStep(ImageDescriptionEnricher(road_sign_describer_concurrency, RoadSignDescriberAgent), NormReferenceEnricher(NormReferenceDescriberAgent))` → `WriteJsonDirStep` (one file per enriched item). The mapping runs in a synchronous `ApplyStep`; both enrichers run in a separate `AsyncApplyStep` (concurrent LLM calls) over whatever subset the filter left — `ImageDescriptionEnricher` groups the *not-yet-done* quizzes by image filename and issues one concurrent vision call per image (see `patterns.md`), writing both the flat `image_description` (downstream/embedding field) and the structured `image_analysis` (full LLM output, debug-only) onto every quiz sharing that image. Corpus-wide dedup already happened at cleaning, so no duplicate-image concern arises across runs.
 3. *Indexing*: `LoadJsonDirStep` (enriched, per-element) → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embedded))` → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(ForEach(QuizMapper.from_embedded_to_quiz_question))` → `DbStoreStep` (full truncate + bulk insert, unaffected by the per-element load). `EmbedQuizMetadata` extracts `quiz_metadata` (itself `Embeddable`) from each item and calls `EmbeddingService` on that list directly — not on the `EmbeddedQuizModel` items themselves, which no longer implement `Embeddable`/`Embedded`. Items without `quiz_metadata` end up with `embedding=None`. `QuizMetadata` stays a cohesive nested object through the ingestion models (`EnrichedQuizModel`/`EmbeddedQuizModel`) and is flattened onto the `QuizQuestionEntity` entity columns **only** at the boundary, inside `from_embedded_to_quiz_question`.
+
+`dispatch_prepare`'s `quiz` branch (`cli/commands/prepare.py`) runs both the
+cleaning and enrichment flows directly on every invocation — no coarse
+whole-file skip — mirroring the `knowledge` branch; `--force` threads into
+both flow factories and bypasses their respective `FilterAlreadyDoneStep`s.
 
 ## Relevant architectural decisions
 

@@ -14,7 +14,6 @@ from guidami_ai_patente_ingestor.orchestrators import (
     build_knowledge_cleaning_flow,
     build_quiz_cleaning_flow,
     build_quiz_enrichment_flow,
-    run_preparation,
 )
 from guidami_ai_patente_ingestor.services import LayerResolver
 
@@ -23,9 +22,6 @@ from ..models.run_artifacts import PrepareManifest
 from ..rendering import render_dry_run
 
 logger = logging.getLogger(__name__)
-
-# Shared intermediate layer used by both preparation factory pairs.
-_CLEANED_LAYER = "cleaned"
 
 
 def _render_prepare_dry_run(args: argparse.Namespace) -> None:
@@ -42,13 +38,13 @@ def _render_prepare_dry_run(args: argparse.Namespace) -> None:
             ]
             render_dry_run(console, f"prepare {args.entity}", steps)
         case "quiz":
-            skip_note = f"(skipped entirely if already present, force={force})"
             steps = [
-                f"quiz_cleaning: LoadJsonStep(parsed/quiz) -> flatten + dedup -> "
-                f"WriteJsonStep(cleaned/quiz) {skip_note}",
-                "quiz_enrichment: LoadJsonStep(cleaned/quiz) -> map -> "
+                "quiz_cleaning: LoadJsonStep(parsed/quiz) -> flatten + dedup -> "
+                f"FilterAlreadyDoneStep(force={force}) -> WriteJsonDirStep(cleaned/quiz)",
+                "quiz_enrichment: LoadJsonDirStep(cleaned/quiz) -> "
+                f"FilterAlreadyDoneStep(force={force}) -> map -> "
                 "LLM enrich (RoadSignDescriberAgent, NormReferenceDescriberAgent) -> "
-                f"WriteJsonStep(enriched/quiz) {skip_note}",
+                "WriteJsonDirStep(enriched/quiz)",
             ]
             render_dry_run(console, f"prepare {args.entity}", steps)
 
@@ -84,37 +80,29 @@ def dispatch_prepare(
             progress.end_flow()
         case "quiz":
             progress.begin_run(2)
-            quiz_source: str = config.quiz_preparation.sources[0]
-            quiz_enrich_layer = config.quiz_preparation.output_layer
-            if quiz_enrich_layer is None:
-                raise ValueError("quiz_preparation.output_layer is not configured")
             clean_flow = build_quiz_cleaning_flow(
                 config=config,
                 layer_resolver=layer_resolver,
+                force=force,
                 progress=progress,
             )
             enrich_flow = build_quiz_enrichment_flow(
                 config=config,
                 layer_resolver=layer_resolver,
                 open_router_provider=open_router_provider,
+                force=force,
                 tracker=tracker,
                 progress=progress,
             )
+            # No run_preparation: per-element skipping lives in FilterAlreadyDoneStep,
+            # mirroring the knowledge branch.
             manifest.record_flow("quiz_cleaning")
             progress.begin_flow("quiz_cleaning")
-            run_preparation(
-                clean_flow,
-                layer_resolver.path(_CLEANED_LAYER, quiz_source),
-                force=force,
-            )
+            clean_flow.run()
             progress.end_flow()
             manifest.record_flow("quiz_enrichment")
             progress.begin_flow("quiz_enrichment")
-            run_preparation(
-                enrich_flow,
-                layer_resolver.path(quiz_enrich_layer, quiz_source),
-                force=force,
-            )
+            enrich_flow.run()
             progress.end_flow()
 
 
