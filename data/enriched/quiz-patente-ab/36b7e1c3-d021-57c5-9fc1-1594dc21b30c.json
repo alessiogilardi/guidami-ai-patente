@@ -1,0 +1,33 @@
+{
+  "question_id": 4351,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22031",
+  "text": "Il segnale raffigurato indica che il clacson può essere usato dalle ore 7.30 alle ore 19.00",
+  "correct_answer": false,
+  "image": "f4628956579aaaef2b161b3c6f237a5e.jpeg",
+  "image_description": "Divieto di segnalazione acustica con pannello integrativo di orario. Il segnale vieta l'uso del clacson dalle ore 7:30 alle ore 19:00.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di segnalazione acustica (un clacson barrato da una croce rossa su sfondo bianco) posto sopra un pannello integrativo rettangolare che indica un orario: 7,30-19,00. Il segnale principale è il divieto di usare il clacson, mentre il pannello integrativo specifica l'orario in cui tale divieto è valido.",
+    "name": "Divieto di segnalazione acustica con pannello integrativo di orario",
+    "description": "Il segnale vieta l'uso del clacson dalle ore 7:30 alle ore 19:00."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione acustica",
+      "Divieto di uso del clacson",
+      "Pannelli integrativi di orario"
+    ],
+    "exact_keywords": [
+      "divieto di segnalazione acustica",
+      "pannello integrativo",
+      "orario",
+      "clacson"
+    ],
+    "vector_search_queries": [
+      "divieto di segnalazione acustica con pannello integrativo di orario",
+      "uso del clacson in orari specifici",
+      "limitazioni all'uso del clacson per fasce orarie"
+    ],
+    "rule_explanation": "Il pannello integrativo di orario, se abbinato a un divieto di segnalazione acustica, specifica le fasce orarie in cui il divieto è valido. In questo caso, il divieto è attivo dalle 7:30 alle 19:00."
+  }
+}

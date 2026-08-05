@@ -1,0 +1,27 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24633",
+  "text": "La sospensione della patente può essere disposta quando si circola senza avere con sè la patente di guida",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di esibizione dei documenti di circolazione",
+      "Sanzioni amministrative per la circolazione senza patente"
+    ],
+    "exact_keywords": [
+      "sospensione patente",
+      "circolare senza patente",
+      "esibizione patente",
+      "funzionari o agenti"
+    ],
+    "vector_search_queries": [
+      "sanzione per circolazione senza patente al seguito",
+      "conseguenze della mancata esibizione della patente di guida agli agenti"
+    ],
+    "rule_explanation": "La sospensione della patente non è prevista per la sola circolazione senza averla con sé; tale violazione comporta una sanzione pecuniaria e la decurtazione di punti, salvo che il conducente non la esibisca entro i termini stabiliti."
+  }
+}

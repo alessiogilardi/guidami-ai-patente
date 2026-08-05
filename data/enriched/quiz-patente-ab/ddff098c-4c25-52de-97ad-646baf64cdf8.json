@@ -1,0 +1,31 @@
+{
+  "question_id": 4133,
+  "topic": "Segnali di divieto",
+  "number": "19845",
+  "text": "Il segnale raffigurato obbliga i veicoli aventi massa per asse superiore a 2,5 tonnellate a procedere a passo d'uomo",
+  "correct_answer": false,
+  "image": "1fa023cb06b46333946e7cff49f17f9e.jpeg",
+  "image_description": "Divieto di transito per massa effettiva per asse superiore a 2,5 t. Il segnale vieta il transito ai veicoli la cui massa effettiva sull'asse più caricato supera le 2,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è presente un'icona stilizzata di un asse di un veicolo con due ruote, sovrastata dalla dicitura \"2,5 t\" con una freccia che indica verso il basso, puntando sull'asse. Questo indica un limite di massa per asse.",
+    "name": "Divieto di transito per massa effettiva per asse superiore a 2,5 t",
+    "description": "Il segnale vieta il transito ai veicoli la cui massa effettiva sull'asse più caricato supera le 2,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Massa per asse"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "massa per asse",
+      "superiore a 2,5 t",
+      "asse più caricato"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per massa per asse superiore a 2,5 tonnellate",
+      "segnali di prescrizione che limitano il transito in base alla massa per asse"
+    ],
+    "rule_explanation": "Il segnale di divieto raffigurato vieta il transito ai veicoli con massa effettiva sull'asse più caricato superiore a 2,5 tonnellate, non impone di procedere a passo d'uomo."
+  }
+}

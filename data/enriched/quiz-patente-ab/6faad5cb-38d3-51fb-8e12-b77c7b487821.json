@@ -1,0 +1,34 @@
+{
+  "question_id": 4137,
+  "topic": "Segnali di divieto",
+  "number": "19892",
+  "text": "In presenza del segnale raffigurato le autovetture devono sorpassare gli autocarri sulla corsia di destra",
+  "correct_answer": false,
+  "image": "28ff9501e70957cfba029d212ffefb79.jpeg",
+  "image_description": "Fine divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Indica la fine del divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Non vieta il sorpasso per le autovetture.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una banda diagonale nera che va dall'angolo in alto a sinistra all'angolo in basso a destra. Alla sinistra della banda nera è raffigurato un autotreno, mentre alla destra è raffigurata un'autovettura. Il segnale è di tipo \"fine prescrizione\".",
+    "name": "Fine divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati",
+    "description": "Indica la fine del divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Non vieta il sorpasso per le autovetture."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fine divieto di sorpasso",
+      "Segnaletica stradale di prescrizione",
+      "Sorpasso vietato"
+    ],
+    "exact_keywords": [
+      "fine divieto di sorpasso",
+      "autocarri",
+      "autovetture",
+      "corsia di destra",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "regole sorpasso autocarri autovetture",
+      "interpretazione segnale fine divieto di sorpasso per autoveicoli",
+      "obblighi sorpasso in presenza di segnali di prescrizione"
+    ],
+    "rule_explanation": "Il segnale di 'fine divieto di sorpasso' per autoveicoli non vieta il sorpasso delle autovetture sugli autocarri, né impone di usare la corsia di destra per tale manovra."
+  }
+}

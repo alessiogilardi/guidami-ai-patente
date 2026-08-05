@@ -1,0 +1,27 @@
+{
+  "question_id": 4038,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18704",
+  "text": "E' punito con la reclusione il conducente che gareggia in velocità su strade pubbliche",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Competizione di velocità su strada pubblica",
+      "Reati legati alla circolazione stradale"
+    ],
+    "exact_keywords": [
+      "gareggiare in velocità",
+      "strade pubbliche",
+      "reato",
+      "reclusione"
+    ],
+    "vector_search_queries": [
+      "competizione di velocità su strada pubblica non autorizzata",
+      "sanzioni per gare di velocità su strade pubbliche"
+    ],
+    "rule_explanation": "È punito con la reclusione il conducente che, su strada pubblica o affollata, si impegna in competizioni di velocità non autorizzate."
+  }
+}

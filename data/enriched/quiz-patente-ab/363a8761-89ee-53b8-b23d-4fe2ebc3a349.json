@@ -1,0 +1,27 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23577",
+  "text": "Nella fase di sorpasso, il conducente è tenuto a segnalare continuamente con l'avvisatore acustico l'effettuazione della manovra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione acustica in fase di sorpasso",
+      "Obblighi del conducente durante il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "avvisatore acustico",
+      "segnalare la manovra",
+      "continuamente"
+    ],
+    "vector_search_queries": [
+      "uso dell'avvisatore acustico durante il sorpasso",
+      "obbligo di segnalazione acustica continua in fase di sorpasso"
+    ],
+    "rule_explanation": "La segnalazione acustica durante il sorpasso va effettuata solo se necessario per avvertire un pericolo, non in modo continuativo."
+  }
+}

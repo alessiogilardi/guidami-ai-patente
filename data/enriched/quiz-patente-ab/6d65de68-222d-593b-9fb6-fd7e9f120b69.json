@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22290",
+  "text": "E' obbligatorio regolare la velocità nei tratti di strada a visibilità limitata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Visibilità limitata",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "visibilità limitata",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in tratti a visibilità limitata",
+      "adeguamento della velocità in condizioni di scarsa visibilità per prevenire pericoli"
+    ],
+    "rule_explanation": "Nei tratti di strada a visibilità limitata è obbligatorio regolare la velocità per evitare pericolo o intralcio alla circolazione."
+  }
+}

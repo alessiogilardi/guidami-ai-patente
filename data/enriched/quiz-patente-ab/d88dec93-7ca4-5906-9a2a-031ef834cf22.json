@@ -1,0 +1,27 @@
+{
+  "question_id": 4630,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24780",
+  "text": "Quando si deve far salire o scendere un passeggero dal veicolo, bisogna aprire la portiera solamente quando non si causa pericolo agli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento sicuro alla fermata del veicolo",
+      "Prevenzione del pericolo per la circolazione"
+    ],
+    "exact_keywords": [
+      "aprire la portiera",
+      "pericolo agli altri utenti",
+      "manovra vietata",
+      "fermato"
+    ],
+    "vector_search_queries": [
+      "apertura portiere veicolo in sosta e pericolo circolazione",
+      "comportamento conducente apertura portiera passeggero"
+    ],
+    "rule_explanation": "È vietato aprire le portiere di un veicolo fermato se ciò costituisce pericolo o intralcio per gli altri utenti della strada, specialmente durante la salita o discesa di passeggeri."
+  }
+}

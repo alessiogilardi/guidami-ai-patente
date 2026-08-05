@@ -1,0 +1,27 @@
+{
+  "question_id": 4673,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25087",
+  "text": "Il rumore prodotto dai veicoli a motore si può diminuire con una guida corretta, che eviti brusche frenate o forti accelerazioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Riduzione dell'inquinamento acustico",
+      "Guida ecologica e consapevole"
+    ],
+    "exact_keywords": [
+      "rumore dei veicoli a motore",
+      "guida corretta",
+      "brusche frenate",
+      "forti accelerazioni"
+    ],
+    "vector_search_queries": [
+      "diminuzione rumore veicoli a motore guida corretta",
+      "impatto guida su inquinamento acustico"
+    ],
+    "rule_explanation": "La guida corretta, evitando manovre brusche come frenate o accelerazioni improvvise, contribuisce a ridurre il rumore generato dai veicoli a motore, limitando l'inquinamento acustico."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4069,
+  "topic": "Segnali di pericolo",
+  "number": "19078",
+  "text": "Il segnale raffigurato indica che la sede ferroviaria ha un solo binario",
+  "correct_answer": true,
+  "image": "dfaf4fe7c7231e7f821a2cecea6f1ecb.jpeg",
+  "image_description": "Croce di Sant'Andrea (segnalazione di passaggio a livello senza barriere). Il segnale preannuncia un passaggio a livello senza barriere. Obbliga i conducenti a fermarsi prima di impegnare la sede ferroviaria se transita un treno.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una Croce di Sant'Andrea, un segnale stradale di pericolo. È di forma a X, con i bracci bordati di rosso e una striscia bianca al centro. Questo segnale preannuncia un passaggio a livello senza barriere.",
+    "name": "Croce di Sant'Andrea (segnalazione di passaggio a livello senza barriere)",
+    "description": "Il segnale preannuncia un passaggio a livello senza barriere. Obbliga i conducenti a fermarsi prima di impegnare la sede ferroviaria se transita un treno."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Passaggio a livello senza barriere"
+    ],
+    "exact_keywords": [
+      "passaggio a livello senza barriere",
+      "Croce di Sant'Andrea",
+      "preavviso",
+      "sola binario"
+    ],
+    "vector_search_queries": [
+      "segnalazione passaggio a livello senza barriere singolo binario",
+      "preavviso di passaggio a livello con Croce di Sant'Andrea"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante la Croce di Sant'Andrea preannuncia un passaggio a livello senza barriere, che può avere un solo binario."
+  }
+}

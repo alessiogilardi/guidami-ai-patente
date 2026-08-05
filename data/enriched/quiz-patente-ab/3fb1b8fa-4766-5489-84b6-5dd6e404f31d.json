@@ -1,0 +1,33 @@
+{
+  "question_id": 4111,
+  "topic": "Segnali di divieto",
+  "number": "19598",
+  "text": "Il segnale raffigurato impone di mantenere una distanza di sicurezza di almeno 80 metri",
+  "correct_answer": false,
+  "image": "fa617b370db24cae54893424af1fe4fa.jpeg",
+  "image_description": "Segnale di limite di velocità. Il segnale impone un limite massimo di velocità di 80 km/h. È vietato superare tale velocità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente il numero '80' in nero. Questo è il segnale di limite di velocità massima.",
+    "name": "Segnale di limite di velocità",
+    "description": "Il segnale impone un limite massimo di velocità di 80 km/h. È vietato superare tale velocità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Limiti di velocità",
+      "Distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "limite di velocità",
+      "segnale di divieto",
+      "distanza minima",
+      "80 km/h"
+    ],
+    "vector_search_queries": [
+      "differenza tra limite di velocità e distanza di sicurezza",
+      "obblighi imposti dal segnale di limite di velocità",
+      "calcolo della distanza di sicurezza tra veicoli"
+    ],
+    "rule_explanation": "Il segnale di limite di velocità (80 km/h) impone una velocità massima, non una distanza minima di sicurezza. La distanza di sicurezza va commisurata alle condizioni di traffico e ambientali."
+  }
+}

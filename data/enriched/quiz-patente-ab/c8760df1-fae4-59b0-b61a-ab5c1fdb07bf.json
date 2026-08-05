@@ -1,0 +1,28 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23459",
+  "text": "Il conducente che intende sorpassare deve accertarsi che il conducente che lo precede nella stessa corsia non abbia segnalato di voler compiere analoga manovra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza nel sorpasso",
+      "Segnalazione delle manovre"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "segnalazione",
+      "manovra",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "obbligo di accertamento manovra di sorpasso",
+      "precedenza nelle manovre di sorpasso",
+      "segnalazione manovra di sorpasso"
+    ],
+    "rule_explanation": "Prima di iniziare un sorpasso, il conducente deve accertarsi che il veicolo che lo precede non abbia già segnalato l'intenzione di effettuare la stessa manovra."
+  }
+}

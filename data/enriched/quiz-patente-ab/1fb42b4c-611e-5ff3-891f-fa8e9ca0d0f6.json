@@ -1,0 +1,28 @@
+{
+  "question_id": 4567,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24097",
+  "text": "Nelle autostrade con carreggiate a tre o più corsie, ai conducenti di complessi di veicoli di lunghezza totale superiore a 7 metri, è vietato impegnare altre corsie all'infuori delle due più vicine al bordo destro della carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della circolazione in autostrada",
+      "Limitazioni di corsia per veicoli lunghi"
+    ],
+    "exact_keywords": [
+      "autostrade",
+      "carreggiate a tre o più corsie",
+      "complessi di veicoli",
+      "lunghezza totale superiore a 7 metri",
+      "corsie più vicine al bordo destro"
+    ],
+    "vector_search_queries": [
+      "divieto di impegnare corsie diverse dalle due di destra per veicoli lunghi in autostrada",
+      "regolamentazione corsie autostradali per complessi di veicoli oltre 7 metri"
+    ],
+    "rule_explanation": "In autostrade con 3+ corsie, i veicoli lunghi oltre 7m possono usare solo le 2 corsie a destra. Vietato impegnare le altre."
+  }
+}

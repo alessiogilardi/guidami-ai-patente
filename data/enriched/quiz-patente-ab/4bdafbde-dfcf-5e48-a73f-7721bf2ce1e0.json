@@ -1,0 +1,31 @@
+{
+  "question_id": 4246,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21034",
+  "text": "Il semaforo in figura vale per i veicoli con targa militare",
+  "correct_answer": false,
+  "image": "f826d5e22ebafa7ff4a643fb2cebeb7f.jpeg",
+  "image_description": "Semaforo per veicoli di trasporto pubblico. Il segnale raffigura un semaforo verticale con tre luci: in alto una barra orizzontale bianca su fondo nero, al centro un triangolo giallo su fondo nero, in basso una barra verticale bianca su fondo nero. Questo tipo di semaforo è utilizzato per regolare la circolazione dei veicoli di trasporto pubblico, come tram o autobus. La barra orizzontale bianca indica l'arresto, il triangolo giallo indica di prestare attenzione o prepararsi a fermarsi, e la barra verticale bianca indica di procedere.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale semaforico verticale. La sequenza delle luci, dall'alto verso il basso, è: barra orizzontale bianca, triangolo giallo, barra verticale bianca. Tutti i simboli sono su sfondo nero e racchiusi in cerchi, tranne il triangolo che è un triangolo giallo. L'intero complesso è inserito in un rettangolo bianco. Questo è un segnale semaforico specifico per i veicoli di trasporto pubblico.",
+    "name": "Semaforo per veicoli di trasporto pubblico",
+    "description": "Il segnale raffigura un semaforo verticale con tre luci: in alto una barra orizzontale bianca su fondo nero, al centro un triangolo giallo su fondo nero, in basso una barra verticale bianca su fondo nero. Questo tipo di semaforo è utilizzato per regolare la circolazione dei veicoli di trasporto pubblico, come tram o autobus. La barra orizzontale bianca indica l'arresto, il triangolo giallo indica di prestare attenzione o prepararsi a fermarsi, e la barra verticale bianca indica di procedere."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni semaforiche",
+      "Validità delle segnalazioni stradali"
+    ],
+    "exact_keywords": [
+      "semaforo per veicoli a trasporto pubblico",
+      "barra orizzontale bianca",
+      "barra verticale bianca",
+      "targa militare"
+    ],
+    "vector_search_queries": [
+      "validità semafori per veicoli trasporto pubblico",
+      "segnalazioni semaforiche specifiche per categorie di veicoli"
+    ],
+    "rule_explanation": "I semafori specifici per veicoli di trasporto pubblico non sono validi per i veicoli con targa militare, ma solo per le categorie di veicoli a cui sono destinati."
+  }
+}

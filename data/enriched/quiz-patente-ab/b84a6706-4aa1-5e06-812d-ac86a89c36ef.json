@@ -1,0 +1,32 @@
+{
+  "question_id": 4591,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24305",
+  "text": "Una spia di colore rosso contrassegnata dal simbolo di figura, se accesa durante la marcia, comporta di provvedere rapidamente a una manutenzione o riparazione dell'impianto frenante",
+  "correct_answer": true,
+  "image": "7ddd91f6c3fc7ef9f36722f849d5a624.jpeg",
+  "image_description": "Spia del sistema frenante (simbolo punto esclamativo all'interno di cerchio con parentesi). La spia indica un malfunzionamento dell'impianto frenante. Può segnalare un livello insufficiente del liquido dei freni o un problema più generale al sistema. È necessario fermarsi e controllare l'impianto frenante.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una spia luminosa con un simbolo al suo interno. Il simbolo è un punto esclamativo (!) posto al centro di un cerchio, a sua volta circondato da due parentesi curve aperte verso l'esterno. Questo simbolo è universalmente riconosciuto come indicatore di un problema al sistema frenante del veicolo. La spia è tipicamente di colore rosso, segnalando un'avaria grave che richiede attenzione immediata.",
+    "name": "Spia del sistema frenante (simbolo punto esclamativo all'interno di cerchio con parentesi)",
+    "description": "La spia indica un malfunzionamento dell'impianto frenante. Può segnalare un livello insufficiente del liquido dei freni o un problema più generale al sistema. È necessario fermarsi e controllare l'impianto frenante."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di malfunzionamento dell'impianto frenante",
+      "Obbligo di manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "spia rossa",
+      "impianto frenante",
+      "manutenzione",
+      "riparazione"
+    ],
+    "vector_search_queries": [
+      "significato spie rosse veicolo",
+      "allarme spia freni auto",
+      "manutenzione impianto frenante obbligatoria"
+    ],
+    "rule_explanation": "Le spie rosse indicano un malfunzionamento grave che richiede un intervento immediato di manutenzione o riparazione per garantire la sicurezza."
+  }
+}

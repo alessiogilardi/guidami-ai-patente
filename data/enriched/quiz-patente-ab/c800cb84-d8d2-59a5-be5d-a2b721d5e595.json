@@ -1,0 +1,28 @@
+{
+  "question_id": 4528,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23791",
+  "text": "La sosta di emergenza è l'interruzione della marcia nel caso in cui il veicolo deve arrestarsi per malessere fisico del conducente o di un passeggero",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta di emergenza",
+      "Interruzione della marcia per cause di forza maggiore"
+    ],
+    "exact_keywords": [
+      "sosta di emergenza",
+      "interruzione della marcia",
+      "malessere fisico",
+      "conducente",
+      "passeggero"
+    ],
+    "vector_search_queries": [
+      "definizione di sosta di emergenza per malessere fisico",
+      "cause di forza maggiore per interruzione della marcia del veicolo"
+    ],
+    "rule_explanation": "La sosta di emergenza è l'arresto del veicolo dovuto a malessere fisico del conducente o di un passeggero, o per altre cause di forza maggiore che rendono necessaria l'interruzione della marcia."
+  }
+}

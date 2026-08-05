@@ -1,0 +1,26 @@
+{
+  "question_id": 4007,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18392",
+  "text": "L'intersezione a livelli sfalsati è un incrocio a raso fra una strada e i binari del treno",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Intersezioni stradali",
+      "Definizioni di infrastrutture stradali"
+    ],
+    "exact_keywords": [
+      "intersezione a livelli sfalsati",
+      "incrocio a raso",
+      "linea ferroviaria"
+    ],
+    "vector_search_queries": [
+      "definizione di intersezione a livelli sfalsati nel CdS",
+      "differenza tra incrocio a raso e intersezione a livelli sfalsati"
+    ],
+    "rule_explanation": "Un'intersezione a livelli sfalsati non è un incrocio a raso, ma un punto in cui le strade si sovrappongono o sottopongono senza interferire tra loro. L'incrocio a raso avviene sullo stesso piano."
+  }
+}

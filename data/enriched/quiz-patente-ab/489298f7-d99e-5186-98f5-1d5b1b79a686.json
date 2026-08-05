@@ -1,0 +1,31 @@
+{
+  "question_id": 4196,
+  "topic": "Segnali di precedenza",
+  "number": "20559",
+  "text": "Il segnale raffigurato si trova su strade a senso unico di circolazione",
+  "correct_answer": false,
+  "image": "cae815558b9cac8a475d91fb6e32c36e.jpeg",
+  "image_description": "Segnale di dare precedenza ai veicoli provenienti dal senso opposto. Il segnale impone di dare la precedenza ai veicoli provenienti dal senso opposto. Viene solitamente preposto a preannunciare uno strettoio in cui il transito è consentito a una sola fila di veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro sono presenti due frecce, una rossa rivolta verso l'alto e una nera rivolta verso il basso. La freccia rossa è più spessa e posizionata leggermente più avanti rispetto alla freccia nera. Questo è il segnale di \"dare precedenza ai veicoli provenienti dal senso opposto\".",
+    "name": "Segnale di dare precedenza ai veicoli provenienti dal senso opposto",
+    "description": "Il segnale impone di dare la precedenza ai veicoli provenienti dal senso opposto. Viene solitamente preposto a preannunciare uno strettoio in cui il transito è consentito a una sola fila di veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Strade a senso unico"
+    ],
+    "exact_keywords": [
+      "dare precedenza",
+      "senso opposto",
+      "strada a senso unico",
+      "strettoio"
+    ],
+    "vector_search_queries": [
+      "segnali di precedenza su strade a senso unico",
+      "preavviso di strettoio e obbligo di dare precedenza"
+    ],
+    "rule_explanation": "Il segnale di 'dare precedenza' impone di cedere il passo ai veicoli provenienti dal senso opposto e non è specifico per le strade a senso unico, potendo trovarsi anche in altre situazioni di circolazione."
+  }
+}

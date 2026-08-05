@@ -1,0 +1,28 @@
+{
+  "question_id": 4570,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24140",
+  "text": "Quando si traina un rimorchio, la pressione di gonfiaggio degli pneumatici del veicolo trainante deve essere la stessa degli pneumatici del rimorchio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pressione pneumatici veicolo trainante e rimorchio",
+      "Carico e traino veicoli"
+    ],
+    "exact_keywords": [
+      "pressione di gonfiaggio",
+      "pneumatici",
+      "veicolo trainante",
+      "rimorchio",
+      "carico eccezionale"
+    ],
+    "vector_search_queries": [
+      "pressione pneumatici veicolo trainante con rimorchio",
+      "adeguamento pressione pneumatici al traino di rimorchio"
+    ],
+    "rule_explanation": "La pressione degli pneumatici del veicolo trainante non deve necessariamente essere la stessa di quella del rimorchio, ma deve essere adeguata al carico complessivo e alle specifiche del costruttore."
+  }
+}

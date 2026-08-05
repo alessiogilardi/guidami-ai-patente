@@ -1,0 +1,28 @@
+{
+  "question_id": 4704,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25303",
+  "text": "Per migliorare il raffreddamento degli pneumatici, bisogna diminuire la pressione di gonfiaggio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pressione pneumatici",
+      "Raffreddamento pneumatici",
+      "Manutenzione veicolo"
+    ],
+    "exact_keywords": [
+      "pressione di gonfiaggio",
+      "pneumatici",
+      "raffreddamento",
+      "temperatura"
+    ],
+    "vector_search_queries": [
+      "effetti della pressione di gonfiaggio degli pneumatici sulla temperatura e sicurezza",
+      "corretta pressione pneumatici per stabilità e tenuta di strada"
+    ],
+    "rule_explanation": "La pressione corretta degli pneumatici è fondamentale per la sicurezza e la tenuta di strada; diminuirla non migliora il raffreddamento ma compromette la stabilità e aumenta il consumo."
+  }
+}

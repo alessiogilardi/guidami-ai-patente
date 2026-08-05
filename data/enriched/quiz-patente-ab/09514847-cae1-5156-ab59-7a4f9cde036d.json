@@ -1,0 +1,31 @@
+{
+  "question_id": 4131,
+  "topic": "Segnali di divieto",
+  "number": "19823",
+  "text": "Il segnale raffigurato deve essere rispettato solo dai conducenti di veicoli adibiti al trasporto di cose",
+  "correct_answer": false,
+  "image": "ccc2a316fd9a2a3cb2ed8e5c89134371.jpeg",
+  "image_description": "Divieto di transito per veicoli di lunghezza superiore a 10 metri. Il segnale vieta il transito ai veicoli di lunghezza superiore a 10 metri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il profilo di un autocarro in nero. Sotto l'autocarro, una freccia bidirezionale indica la lunghezza di 10 metri. Questo segnale indica un divieto basato sulla lunghezza del veicolo.",
+    "name": "Divieto di transito per veicoli di lunghezza superiore a 10 metri",
+    "description": "Il segnale vieta il transito ai veicoli di lunghezza superiore a 10 metri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Divieto di transito per determinate categorie di veicoli"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "veicoli di lunghezza superiore",
+      "transito",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per lunghezza veicolo",
+      "interpretazione segnali di divieto sagoma veicolo"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito per veicoli di lunghezza superiore a 10 metri vieta la circolazione a tutti i veicoli che eccedono tale sagoma, indipendentemente dalla loro destinazione d'uso."
+  }
+}

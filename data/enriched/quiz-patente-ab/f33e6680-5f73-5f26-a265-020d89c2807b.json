@@ -1,0 +1,31 @@
+{
+  "question_id": 4050,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18845",
+  "text": "Quando un pedone che spinge una carrozzina per bambini attraversa la carreggiata bisogna tenere presente che, di solito, attraversa rapidamente",
+  "correct_answer": false,
+  "image": "b43758bb9d85546a58f1d0a67f5b3b45.jpeg",
+  "image_description": "Striscia bianca continua di delimitazione carreggiata. La striscia bianca continua delimita la carreggiata, separando i sensi di marcia o le corsie. Non può essere superata se continua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una rappresentazione di segnaletica orizzontale. Si tratta di due strisce bianche continue parallele, separate da uno spazio più ampio, che delimitano una carreggiata. Non sono presenti altri elementi visivi o segnali stradali. La striscia bianca continua, secondo il Codice della Strada, indica la separazione dei sensi di marcia o delle corsie e non può essere superata.",
+    "name": "Striscia bianca continua di delimitazione carreggiata",
+    "description": "La striscia bianca continua delimita la carreggiata, separando i sensi di marcia o le corsie. Non può essere superata se continua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela dei pedoni e utenti deboli",
+      "Comportamento dei conducenti verso i pedoni"
+    ],
+    "exact_keywords": [
+      "pedone",
+      "carrozzina con bambini",
+      "attraversamento carreggiata",
+      "condotta dei conducenti"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente verso pedoni con carrozzine",
+      "condotta di guida in prossimità di pedoni che attraversano la carreggiata"
+    ],
+    "rule_explanation": "I conducenti devono moderare la velocità e prestare particolare attenzione ai pedoni, specialmente se spingono carrozzine, poiché questi ultimi potrebbero attraversare con minore rapidità."
+  }
+}

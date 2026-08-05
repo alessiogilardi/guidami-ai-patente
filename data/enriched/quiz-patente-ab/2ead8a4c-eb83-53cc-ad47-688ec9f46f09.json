@@ -1,0 +1,31 @@
+{
+  "question_id": 4189,
+  "topic": "Segnali di obbligo",
+  "number": "20460",
+  "text": "Il segnale raffigurato preannuncia un posto di rifornimento per autocarri",
+  "correct_answer": false,
+  "image": "38e3612532b4986f50ce99ba5b621ad4.jpeg",
+  "image_description": "Obbligo di svolta a destra per autocarri con massa superiore a 3,5 t. Il segnale impone l'obbligo di svoltare a destra per gli autocarri di massa superiore a 3,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale composto da due parti. La parte superiore è un segnale di obbligo di direzione a destra, rappresentato da un disco blu con bordo bianco e una freccia bianca che indica una svolta a destra. La parte inferiore è un pannello integrativo che raffigura un autocarro stilizzato in nero su sfondo bianco. Il segnale nel suo complesso indica un obbligo specifico per gli autocarri.",
+    "name": "Obbligo di svolta a destra per autocarri con massa superiore a 3,5 t",
+    "description": "Il segnale impone l'obbligo di svoltare a destra per gli autocarri di massa superiore a 3,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico per categoria di veicolo",
+      "Segnaletica stradale di indicazione e prescrizione"
+    ],
+    "exact_keywords": [
+      "obbligo di svolta",
+      "autocarri",
+      "massa superiore a 3,5 t",
+      "segnali di obbligo"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo di svolta per autocarri con massa superiore a 3,5 tonnellate",
+      "interpretazione segnali stradali di obbligo specifico per categoria di veicolo"
+    ],
+    "rule_explanation": "Il segnale raffigurato impone un obbligo di svolta a destra per autocarri con massa superiore a 3,5 tonnellate, non preannuncia un posto di rifornimento."
+  }
+}

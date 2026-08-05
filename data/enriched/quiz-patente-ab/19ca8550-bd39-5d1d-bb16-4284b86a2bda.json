@@ -1,0 +1,29 @@
+{
+  "question_id": 4708,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25354",
+  "text": "Un veicolo con sospensioni inefficienti aumenta l'affaticamento alla guida del conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Manutenzione del veicolo",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "affaticamento alla guida",
+      "tenuta di strada",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "impatto delle sospensioni sulla stabilità del veicolo",
+      "manutenzione sospensioni e sicurezza di guida",
+      "veicolo con sospensioni inefficienti e affaticamento conducente"
+    ],
+    "rule_explanation": "Le sospensioni sono fondamentali per la stabilità e la tenuta di strada del veicolo; un loro malfunzionamento aumenta l'affaticamento del conducente e riduce la sicurezza."
+  }
+}

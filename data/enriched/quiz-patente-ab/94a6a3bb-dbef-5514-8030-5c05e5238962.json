@@ -1,0 +1,30 @@
+{
+  "question_id": 4536,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23848",
+  "text": "Per effettuare le operazioni di presegnalazione con il segnale mobile di pericolo è vietato al conducente scendere dal veicolo e circolare sulla strada senza indossare il giubbotto ad alta visibilità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di indossare il giubbotto ad alta visibilità",
+      "Segnalazione di veicolo fermo in emergenza",
+      "Presegnalazione di pericolo con segnale mobile"
+    ],
+    "exact_keywords": [
+      "giubbotto ad alta visibilità",
+      "segnalazione mobile di pericolo",
+      "veicolo fermo",
+      "operazioni di presegnalazione",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "obbligo giubbotto alta visibilità per presegnalazione veicolo fermo",
+      "uso del segnale mobile di pericolo e indumenti ad alta visibilità",
+      "norme per la sicurezza del conducente in caso di veicolo fermo in carreggiata"
+    ],
+    "rule_explanation": "È obbligatorio indossare il giubbotto ad alta visibilità per scendere dal veicolo e circolare sulla strada durante le operazioni di presegnalazione con il segnale mobile di pericolo."
+  }
+}

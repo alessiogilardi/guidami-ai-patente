@@ -1,0 +1,33 @@
+{
+  "question_id": 4185,
+  "topic": "Segnali di obbligo",
+  "number": "20423",
+  "text": "Il segnale raffigurato vieta il transito ai veicoli a trazione animale",
+  "correct_answer": false,
+  "image": "fffa855fdfdaf3051f1d40f32f5783ad.jpeg",
+  "image_description": "Fine di percorso per cavalli. Il segnale indica la fine di un percorso riservato ai cavalli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro è raffigurato un cavallo con cavaliere, sovrapposto da una barra diagonale rossa che va dall'angolo in alto a sinistra all'angolo in basso a destra. Questo è il segnale di \"Fine di percorso per cavalli\".",
+    "name": "Fine di percorso per cavalli",
+    "description": "Il segnale indica la fine di un percorso riservato ai cavalli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di prescrizione",
+      "Segnali di obbligo"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "segnali di prescrizione",
+      "transito vietato",
+      "veicoli a trazione animale"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un obbligo specifico",
+      "interpretazione segnali di prescrizione di fine percorso riservato",
+      "segnali di obbligo e divieto per veicoli a trazione animale"
+    ],
+    "rule_explanation": "Il segnale di 'fine obbligo' indica la cessazione di un obbligo precedentemente imposto, non un divieto specifico per veicoli a trazione animale."
+  }
+}

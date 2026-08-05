@@ -1,0 +1,27 @@
+{
+  "question_id": 4682,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25147",
+  "text": "In caso di arresto prolungato in galleria, per la formazione di una fila di veicoli, è dannoso per la salute azionare il comando del ricircolo dell'aria all'interno del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Qualità dell'aria nell'abitacolo",
+      "Ventilazione del veicolo in caso di sosta in galleria"
+    ],
+    "exact_keywords": [
+      "ricircolo dell'aria",
+      "galleria",
+      "arresto prolungato",
+      "qualità dell'aria"
+    ],
+    "vector_search_queries": [
+      "effetti del ricircolo dell'aria in galleria con arresto prolungato",
+      "qualità dell'aria interna al veicolo durante la sosta in galleria"
+    ],
+    "rule_explanation": "In caso di arresto prolungato in galleria, è consigliabile attivare il ricircolo dell'aria per evitare l'ingresso di gas nocivi dall'esterno, ma è necessario aerare periodicamente l'abitacolo."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4553,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23975",
+  "text": "Il conducente di autoveicolo deve evitare deviazioni trasversali, anche modeste, del proprio veicolo soprattutto in presenza di ciclomotoristi o ciclisti per evitarne la possibile caduta a terra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Principio di prudenza nella guida",
+      "Distinta protezione degli utenti vulnerabili della strada",
+      "Regolazione della manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "deviazioni trasversali",
+      "ciclomotori",
+      "ciclisti",
+      "condotta di guida",
+      "sicurezza stradale"
+    ],
+    "vector_search_queries": [
+      "obbligo di evitare manovre pericolose per ciclisti e motociclisti",
+      "condotta di guida prudente in presenza di utenti vulnerabili",
+      "sorpasso sicuro di ciclomotori e ciclisti"
+    ],
+    "rule_explanation": "Il conducente deve evitare manovre che possano mettere in pericolo altri utenti della strada, specialmente i più vulnerabili come ciclisti e motociclisti, mantenendo una distanza di sicurezza adeguata."
+  }
+}

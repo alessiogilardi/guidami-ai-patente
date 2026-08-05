@@ -1,0 +1,31 @@
+{
+  "question_id": 4155,
+  "topic": "Segnali di obbligo",
+  "number": "20113",
+  "text": "Il segnale raffigurato indica di passare a destra dell'ostacolo",
+  "correct_answer": false,
+  "image": "d68ea45a3261ce3eb86cf26c76df3f6d.jpeg",
+  "image_description": "Obbligo di proseguire diritto o svoltare a destra. Il segnale impone di proseguire diritto o di svoltare a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca rivolta verso destra. Questo segnale appartiene alla categoria dei segnali di obbligo.",
+    "name": "Obbligo di proseguire diritto o svoltare a destra",
+    "description": "Il segnale impone di proseguire diritto o di svoltare a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Direzione obbligatoria"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "direzione obbligatoria",
+      "passare a destra",
+      "ostacolo"
+    ],
+    "vector_search_queries": [
+      "segnali di direzione obbligatoria e loro significato",
+      "obbligo di passare a destra di un ostacolo secondo il CdS"
+    ],
+    "rule_explanation": "Il segnale di obbligo di direzione impone di seguire le direzioni indicate; se indica di passare a destra, non si può passare a sinistra o a diritto."
+  }
+}

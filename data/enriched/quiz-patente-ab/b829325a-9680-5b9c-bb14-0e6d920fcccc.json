@@ -1,0 +1,28 @@
+{
+  "question_id": 4406,
+  "topic": "Distanza di sicurezza",
+  "number": "22646",
+  "text": "La distanza di sicurezza dipende dall'attenzione e concentrazione del conducente durante la guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condotta di guida sicura"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "conducente",
+      "condizioni della strada",
+      "velocità",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di mantenere la distanza di sicurezza in base alle condizioni di traffico e stradali",
+      "fattori che influenzano la determinazione della distanza di sicurezza tra veicoli"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare pericoli, tenendo conto delle condizioni della strada, del traffico, del veicolo e delle condizioni atmosferiche."
+  }
+}

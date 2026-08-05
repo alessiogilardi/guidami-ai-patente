@@ -1,0 +1,32 @@
+{
+  "question_id": 4368,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22214",
+  "text": "Il segnale raffigurato indica che il veicolo può essere spostato in una depositeria comunale",
+  "correct_answer": true,
+  "image": "861e35448f35862a69f181c4507bbfae.jpeg",
+  "image_description": "Divieto di sosta con rimozione forzata. Il segnale indica che è vietata la sosta e che i veicoli in sosta saranno rimossi con carro attrezzi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali. Il segnale superiore è un segnale di divieto di sosta, rappresentato da un disco rosso con bordo rosso e una barra diagonale rossa su sfondo blu. Sotto questo segnale, vi è un pannello integrativo rettangolare che raffigura un carro attrezzi che solleva un'automobile, indicando la rimozione forzata del veicolo.",
+    "name": "Divieto di sosta con rimozione forzata",
+    "description": "Il segnale indica che è vietata la sosta e che i veicoli in sosta saranno rimossi con carro attrezzi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rimozione forzata",
+      "Divieto di sosta",
+      "Depositeria comunale"
+    ],
+    "exact_keywords": [
+      "rimozione forzata",
+      "depositeria comunale",
+      "divieto di sosta",
+      "segnali integrativi"
+    ],
+    "vector_search_queries": [
+      "rimozione forzata veicolo depositeria comunale",
+      "segnaletica divieto di sosta rimozione forzata"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta con rimozione forzata indica che il veicolo sarà rimosso e trasportato in una depositeria comunale."
+  }
+}

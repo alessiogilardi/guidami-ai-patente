@@ -1,0 +1,28 @@
+{
+  "question_id": 4381,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22390",
+  "text": "La velocità deve essere moderata nei tratti di strada a visuale non libera",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di visibilità",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "velocità moderata",
+      "visuale non libera",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in caso di visuale non libera",
+      "adeguamento della velocità in presenza di ostacoli o curve che limitano la visibilità"
+    ],
+    "rule_explanation": "La velocità deve essere sempre moderata, in particolare nei tratti di strada con visibilità limitata, per evitare situazioni di pericolo o intralcio alla circolazione."
+  }
+}

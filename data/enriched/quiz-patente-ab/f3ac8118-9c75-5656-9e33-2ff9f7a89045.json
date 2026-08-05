@@ -1,0 +1,27 @@
+{
+  "question_id": 4441,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22974",
+  "text": "Il conducente che intende immettersi nel flusso della circolazione può evitare di azionare l'indicatore di direzione se non sopraggiungono altri veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione manovra",
+      "Immissione nel flusso di circolazione"
+    ],
+    "exact_keywords": [
+      "indicatore di direzione",
+      "flusso della circolazione",
+      "altri veicoli",
+      "manovra di immissione"
+    ],
+    "vector_search_queries": [
+      "obbligo di usare l'indicatore di direzione per immettersi nella circolazione",
+      "segnalazione di manovra di immissione nel flusso stradale"
+    ],
+    "rule_explanation": "L'indicatore di direzione deve essere azionato per segnalare l'intenzione di immettersi nel flusso di circolazione, anche se non sopraggiungono altri veicoli, per informare preventivamente."
+  }
+}

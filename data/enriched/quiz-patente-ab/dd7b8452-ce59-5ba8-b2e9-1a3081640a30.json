@@ -1,0 +1,32 @@
+{
+  "question_id": 4123,
+  "topic": "Segnali di divieto",
+  "number": "19737",
+  "text": "In presenza del segnale raffigurato è consentito il transito agli autobus",
+  "correct_answer": true,
+  "image": "18e06d9f8487ade1e7d992ff03920d19.jpeg",
+  "image_description": "Divieto di transito agli autoveicoli di massa superiore a 6,5 t. Il segnale vieta il transito ai veicoli, non adibiti al trasporto di cose, con massa a pieno carico superiore a 6,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di un autocarro con la dicitura \"6,5 t\" sovrapposta. Il segnale è isolato e non presenta pannelli integrativi. Si tratta di un segnale di prescrizione (divieto).",
+    "name": "Divieto di transito agli autoveicoli di massa superiore a 6,5 t",
+    "description": "Il segnale vieta il transito ai veicoli, non adibiti al trasporto di cose, con massa a pieno carico superiore a 6,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Massa a pieno carico",
+      "Classificazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "autoveicoli",
+      "massa a pieno carico",
+      "6,5 t"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per massa a pieno carico superiore a 6,5 t",
+      "segnaletica stradale di divieto per autoveicoli con massa superiore a 6,5 tonnellate"
+    ],
+    "rule_explanation": "Il segnale di divieto raffigurato vieta il transito agli autoveicoli con massa a pieno carico superiore a 6,5 tonnellate, ad eccezione di quelli adibiti al trasporto di cose. Gli autobus non rientrano in questa categoria di esclusione."
+  }
+}

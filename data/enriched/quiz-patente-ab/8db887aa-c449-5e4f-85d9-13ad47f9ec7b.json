@@ -1,0 +1,33 @@
+{
+  "question_id": 4236,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20943",
+  "text": "La striscia bianca laterale discontinua in figura delimita l'accesso ad una pista ciclabile",
+  "correct_answer": false,
+  "image": "5069a289ee1ddac1f49549ffb5a533af.jpeg",
+  "image_description": "Striscia bianca laterale discontinua. La striscia bianca laterale discontinua, in questo contesto, indica il limite di una corsia o di una carreggiata. Non delimita l'accesso a una pista ciclabile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una segnaletica orizzontale che rappresenta un incrocio a T. La strada principale è caratterizzata da due strisce bianche continue ai bordi e una striscia bianca discontinua al centro, che delimita le corsie di marcia. Dalla strada principale si dirama una strada secondaria, anch'essa con strisce bianche continue ai bordi. In corrispondenza dell'innesto della strada secondaria sulla principale, sono presenti delle strisce bianche discontinue che delimitano le corsie, e una striscia di arresto. La domanda del quiz fa riferimento alla striscia bianca laterale discontinua, che in questo caso delimita l'incrocio e le corsie di immissione/svincolo. Non ci sono elementi che indichino una pista ciclabile.",
+    "name": "Striscia bianca laterale discontinua",
+    "description": "La striscia bianca laterale discontinua, in questo contesto, indica il limite di una corsia o di una carreggiata. Non delimita l'accesso a una pista ciclabile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Marcatura stradale",
+      "Piste ciclabili"
+    ],
+    "exact_keywords": [
+      "striscia bianca laterale discontinua",
+      "limite della carreggiata",
+      "pista ciclabile",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "funzione della striscia bianca laterale discontinua",
+      "segnaletica orizzontale per piste ciclabili",
+      "delimitazione carreggiata con striscia discontinua"
+    ],
+    "rule_explanation": "La striscia bianca laterale discontinua indica il margine della carreggiata o della corsia, non l'accesso a una pista ciclabile."
+  }
+}

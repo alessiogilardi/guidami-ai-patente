@@ -1,0 +1,27 @@
+{
+  "question_id": 4264,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21206",
+  "text": "Avvicinandosi ad un passaggio a livello con luci rosse accese e semibarriera ancora alzata, bisogna fermarsi in corrispondenza del terzo pannello distanziometrico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo ai passaggi a livello",
+      "Obbligo di arresto in presenza di segnali semaforici di pericolo"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "luci rosse",
+      "semibarriera",
+      "fermarsi"
+    ],
+    "vector_search_queries": [
+      "arresto veicolo passaggio a livello luci rosse",
+      "obbligo fermarsi semaforo rosso passaggio a livello"
+    ],
+    "rule_explanation": "Ai passaggi a livello, le luci rosse accese impongono l'arresto immediato del veicolo, indipendentemente dalla posizione della semibarriera."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4507,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23620",
+  "text": "In una zona in cui la sosta è regolamentata con parchimetro, non occorre utilizzare il parchimetro se si effettua una breve sosta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della sosta nei centri abitati",
+      "Obbligo di utilizzo del parchimetro"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "parchimetro",
+      "sosta breve",
+      "regolamentazione della sosta"
+    ],
+    "vector_search_queries": [
+      "obbligo di utilizzo del parchimetro per la sosta regolamentata",
+      "durata della sosta in aree con parchimetro"
+    ],
+    "rule_explanation": "Nelle aree con sosta regolamentata da parchimetro, l'obbligo di esposizione del ticket è valido per qualsiasi durata della sosta, anche se breve."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24416",
+  "text": "Il casco integrale non può essere utilizzato quando si circola nei centri urbani ad alta densità di circolazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Casco integrale",
+      "Circolazione nei centri urbani"
+    ],
+    "exact_keywords": [
+      "casco integrale",
+      "centri urbani",
+      "circolazione",
+      "obbligo di casco"
+    ],
+    "vector_search_queries": [
+      "uso del casco integrale nei centri urbani",
+      "tipologie di caschi omologati per la circolazione stradale",
+      "normativa sull'uso del casco protettivo motociclistico"
+    ],
+    "rule_explanation": "Il casco integrale è consentito e raccomandato in tutti i contesti di circolazione, inclusi i centri urbani, per garantire la massima protezione."
+  }
+}

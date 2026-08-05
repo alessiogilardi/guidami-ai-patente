@@ -1,0 +1,30 @@
+{
+  "question_id": 4715,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25447",
+  "text": "Sui motocicli è necessario verificare periodicamente i livelli di olio motore e liquido freni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Veicoli a motore"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "olio motore",
+      "liquido freni",
+      "manutenzione",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "controllo periodico livelli olio motore motocicli",
+      "verifica liquido freni motocicli",
+      "manutenzione essenziale per sicurezza motocicli"
+    ],
+    "rule_explanation": "La corretta manutenzione dei motocicli, inclusi i livelli di olio motore e liquido freni, è essenziale per garantire la sicurezza di marcia e la tenuta di strada."
+  }
+}

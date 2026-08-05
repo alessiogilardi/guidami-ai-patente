@@ -1,0 +1,27 @@
+{
+  "question_id": 4586,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24260",
+  "text": "E' consentito l'uso intermittente dei proiettori di profondità (a luce abbagliante), soltanto sulle strade extraurbane",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di profondità",
+      "Segnalazioni luminose vietate"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "luce abbagliante",
+      "uso intermittente",
+      "strade extraurbane"
+    ],
+    "vector_search_queries": [
+      "divieto uso intermittente proiettori di profondità",
+      "segnalazione di sorpasso con proiettori di profondità"
+    ],
+    "rule_explanation": "L'uso intermittente dei proiettori di profondità è vietato sia sulle strade urbane che extraurbane, salvo per segnalare il sorpasso."
+  }
+}

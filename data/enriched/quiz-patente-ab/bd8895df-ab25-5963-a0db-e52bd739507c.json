@@ -1,0 +1,34 @@
+{
+  "question_id": 4580,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24208",
+  "text": "Il simbolo raffigurato segnala l'accensione delle luci di posizione",
+  "correct_answer": false,
+  "image": "7933bbf13cf37ce45fa8d0d5361fce93.jpeg",
+  "image_description": "Spia fendinebbia anteriori. Il simbolo raffigurato indica l'accensione delle luci fendinebbia anteriori. Si tratta di una spia luminosa che si accende per segnalare l'attivazione di tale dispositivo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un simbolo stilizzato che rappresenta un fascio di luce diretto verso sinistra, con quattro linee orizzontali che indicano la direzione del fascio. Accanto a questo, vi è un contorno a forma di semicerchio aperto verso destra, che simboleggia un proiettore. L'insieme del simbolo è comunemente utilizzato per indicare la spia di accensione dei fendinebbia anteriori su un veicolo. Non ci sono elementi stradali o altri segnali visibili.",
+    "name": "Spia fendinebbia anteriori",
+    "description": "Il simbolo raffigurato indica l'accensione delle luci fendinebbia anteriori. Si tratta di una spia luminosa che si accende per segnalare l'attivazione di tale dispositivo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione visiva di dispositivi del veicolo",
+      "Spie luminose del cruscotto",
+      "Uso dei dispositivi di illuminazione"
+    ],
+    "exact_keywords": [
+      "spia fendinebbia anteriori",
+      "simbolo",
+      "accensione",
+      "luci fendinebbia",
+      "dispositivo"
+    ],
+    "vector_search_queries": [
+      "simbolo spia fendinebbia anteriori",
+      "differenza spie luminose luci posizione e fendinebbia",
+      "segnalazione accensione dispositivi veicolo"
+    ],
+    "rule_explanation": "La spia raffigurata indica l'accensione dei fendinebbia anteriori, non delle luci di posizione. Le spie luminose segnalano l'attivazione di specifici dispositivi del veicolo."
+  }
+}

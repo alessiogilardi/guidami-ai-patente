@@ -1,0 +1,30 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22490",
+  "text": "Per una maggiore sicurezza, è conveniente percorrere le lunghe discese con il cambio in folle e a motore spento, risparmiando così anche carburante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Comportamento in discesa",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "motore spento",
+      "cambio in folle",
+      "discese lunghe",
+      "sicurezza",
+      "risparmio carburante"
+    ],
+    "vector_search_queries": [
+      "pericoli di marcia in discesa con cambio in folle o motore spento",
+      "controllo del veicolo in discesa",
+      "adeguatezza della velocità in discesa"
+    ],
+    "rule_explanation": "Percorrere lunghe discese con il cambio in folle o a motore spento è pericoloso perché riduce il controllo del veicolo e aumenta lo spazio di frenata, non è una pratica conveniente."
+  }
+}

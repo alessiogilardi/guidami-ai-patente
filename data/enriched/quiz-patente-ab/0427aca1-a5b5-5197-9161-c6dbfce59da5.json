@@ -1,0 +1,27 @@
+{
+  "question_id": 4658,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24978",
+  "text": "Chi è penalmente e civilmente responsabile di un sinistro stradale può incorrere nella revoca della patente di guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile e penale nei sinistri stradali",
+      "Revoca della patente di guida"
+    ],
+    "exact_keywords": [
+      "responsabilità penale",
+      "responsabilità civile",
+      "sinistro stradale",
+      "revoca della patente"
+    ],
+    "vector_search_queries": [
+      "conseguenze della responsabilità penale e civile nei sinistri stradali sulla patente",
+      "revoca patente per chi è responsabile penalmente e civilmente di un sinistro"
+    ],
+    "rule_explanation": "La responsabilità penale e civile derivante da un sinistro stradale può comportare la revoca della patente di guida ai sensi del Codice della Strada."
+  }
+}

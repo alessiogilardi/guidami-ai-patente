@@ -1,0 +1,33 @@
+{
+  "question_id": 4153,
+  "topic": "Segnali di obbligo",
+  "number": "20089",
+  "text": "Il segnale raffigurato significa preavviso di curva a sinistra",
+  "correct_answer": false,
+  "image": "fece8907377910340f0aecbc53ef2a9b.jpeg",
+  "image_description": "Segnale di direzione obbligatoria sinistra. Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e un bordo bianco. Al centro del segnale è presente una freccia bianca rivolta verso sinistra. Questo è un segnale di obbligo che indica la direzione da seguire.",
+    "name": "Segnale di direzione obbligatoria sinistra",
+    "description": "Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di prescrizione",
+      "Direzione imposta"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "direzione obbligatoria sinistra",
+      "preavviso di curva",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di obbligo e segnali di pericolo",
+      "significato segnale direzione obbligatoria sinistra",
+      "funzione segnali di prescrizione e preavviso"
+    ],
+    "rule_explanation": "Il segnale di 'direzione obbligatoria sinistra' impone di seguire quella direzione, non preannuncia una curva. Il preavviso di curva è un segnale di pericolo."
+  }
+}

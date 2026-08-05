@@ -1,0 +1,26 @@
+{
+  "question_id": 4030,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18626",
+  "text": "I motocicli sono veicoli a due ruote",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di motociclo",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "veicoli a motore",
+      "due ruote"
+    ],
+    "vector_search_queries": [
+      "definizione di motociclo nel codice della strada",
+      "classificazione dei veicoli a due ruote"
+    ],
+    "rule_explanation": "I motocicli sono veicoli a motore a due ruote, come definiti dal Codice della Strada."
+  }
+}

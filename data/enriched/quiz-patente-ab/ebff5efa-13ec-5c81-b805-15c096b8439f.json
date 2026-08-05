@@ -1,0 +1,27 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24635",
+  "text": "La sospensione della patente è disposta quando, a richiesta degli agenti, non si è in grado di esibire il segnale mobile di pericolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di esibizione documenti e dispositivi di sicurezza",
+      "Sanzioni amministrative accessorie"
+    ],
+    "exact_keywords": [
+      "sospensione patente",
+      "esibire segnale mobile di pericolo",
+      "agenti di polizia",
+      "sanzione amministrativa accessoria"
+    ],
+    "vector_search_queries": [
+      "conseguenze mancata esibizione segnale mobile di pericolo",
+      "sospensione patente per violazioni al CdS"
+    ],
+    "rule_explanation": "La sospensione della patente non è una sanzione automatica per la mancata esibizione del segnale mobile di pericolo, ma consegue a violazioni specifiche previste dal CdS."
+  }
+}

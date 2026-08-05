@@ -1,0 +1,28 @@
+{
+  "question_id": 4557,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23995",
+  "text": "Alla guida di un'autovettura è opportuno valutare costantemente la potenziale pericolosità dei veicoli industriali e degli autobus, a causa della loro massa notevolmente maggiore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Valutazione del rischio alla guida",
+      "Comportamento prudente in relazione ai veicoli pesanti"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "veicoli industriali",
+      "autobus",
+      "massa maggiore",
+      "potenziale pericolosità"
+    ],
+    "vector_search_queries": [
+      "valutazione pericolosità veicoli pesanti per autovetture",
+      "massa maggiore veicoli industriali e autobus e sicurezza stradale"
+    ],
+    "rule_explanation": "Il conducente di un'autovettura deve sempre considerare la maggiore massa e ingombro dei veicoli industriali e degli autobus, valutandone la potenziale pericolosità per la sicurezza stradale."
+  }
+}

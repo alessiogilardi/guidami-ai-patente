@@ -1,0 +1,29 @@
+{
+  "question_id": 4710,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25378",
+  "text": "In un veicolo a motore, gli ammortizzatori scarichi provocano una diminuzione del comfort di marcia dei passeggeri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Manutenzione del veicolo",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "ammortizzatori",
+      "tenuta di strada",
+      "stabilità",
+      "comfort di marcia"
+    ],
+    "vector_search_queries": [
+      "funzione degli ammortizzatori sulla tenuta di strada",
+      "conseguenze di ammortizzatori scarichi sulla stabilità del veicolo",
+      "impatto degli ammortizzatori sul comfort e sulla sicurezza"
+    ],
+    "rule_explanation": "Ammortizzatori scarichi compromettono la tenuta di strada e la stabilità del veicolo, riducendo il comfort di marcia e aumentando lo spazio di frenata."
+  }
+}

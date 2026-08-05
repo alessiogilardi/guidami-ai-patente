@@ -1,0 +1,29 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24819",
+  "text": "Circolando su un veicolo a due ruote con fondo stradale bagnato, la frenata è particolarmente pericolosa se le ruote del veicolo sono su rotaie del tram, strisce pedonali o tombini",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti",
+      "Comportamento alla guida su fondi scivolosi",
+      "Guida di motocicli"
+    ],
+    "exact_keywords": [
+      "veicolo a due ruote",
+      "fondo stradale bagnato",
+      "frenata pericolosa",
+      "rotaie del tram",
+      "strisce pedonali"
+    ],
+    "vector_search_queries": [
+      "pericolosità frenata veicolo a due ruote su fondo bagnato con superfici a bassa aderenza",
+      "rischio incidenti motocicli su rotaie, strisce pedonali o tombini con strada bagnata"
+    ],
+    "rule_explanation": "La frenata su fondi bagnati è più pericolosa per i veicoli a due ruote in presenza di superfici a bassa aderenza come rotaie, strisce pedonali o tombini."
+  }
+}

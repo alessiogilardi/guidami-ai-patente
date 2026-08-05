@@ -1,0 +1,29 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18732",
+  "text": "Il conducente di un veicolo non deve fare sempre affidamento sul comportamento degli altri, che può non essere corretto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Principio di cautela nella guida",
+      "Responsabilità del conducente",
+      "Comportamento prudente degli utenti della strada"
+    ],
+    "exact_keywords": [
+      "comportamento degli altri utenti",
+      "regola generale di prudenza",
+      "condotta di guida",
+      "affidamento"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza del conducente verso gli altri utenti della strada",
+      "affidamento sul comportamento altrui nella guida",
+      "responsabilità del conducente per comportamenti scorretti degli altri"
+    ],
+    "rule_explanation": "Il conducente deve sempre mantenere un comportamento prudente, senza fare esclusivo affidamento sulla correttezza del comportamento altrui, poiché gli altri utenti della strada potrebbero non rispettare le regole."
+  }
+}

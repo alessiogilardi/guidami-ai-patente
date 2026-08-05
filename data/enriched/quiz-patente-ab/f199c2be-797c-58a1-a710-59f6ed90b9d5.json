@@ -1,0 +1,32 @@
+{
+  "question_id": 4360,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22128",
+  "text": "Il pannello integrativo è abbinato al segnale ALTRI PERICOLI",
+  "correct_answer": true,
+  "image": "88aca3d15be8173f5220bcce38e88d5e.jpeg",
+  "image_description": "Pannello integrativo - Numero di binari. Il pannello integrativo indica la presenza di un passaggio a livello con due binari.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Al suo interno sono raffigurati due segnali identici di locomotiva a vapore, uno accanto all'altro. Questo pannello è utilizzato per integrare segnali di pericolo, come il segnale di passaggio a livello, indicando il numero di binari presenti. In questo caso, la presenza di due locomotive suggerisce due binari.",
+    "name": "Pannello integrativo - Numero di binari",
+    "description": "Il pannello integrativo indica la presenza di un passaggio a livello con due binari."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "altri pericoli",
+      "passaggio a livello",
+      "segnali stradali"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo con segnale 'altri pericoli'",
+      "funzione dei pannelli integrativi con segnali di pericolo",
+      "pannello integrativo per passaggio a livello"
+    ],
+    "rule_explanation": "I pannelli integrativi forniscono informazioni aggiuntive ai segnali stradali, come la distanza o la natura specifica del pericolo, e possono essere abbinati a segnali di pericolo generici come 'altri pericoli'."
+  }
+}

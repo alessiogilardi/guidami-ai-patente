@@ -1,0 +1,27 @@
+{
+  "question_id": 4584,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24237",
+  "text": "L'uso degli indicatori di direzione è necessario per segnalare che si vuole effettuare un cambio di corsia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovre",
+      "Obbligo di uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "cambio di corsia",
+      "segnalazione di manovra",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnalazione obbligatoria cambio di corsia con indicatori di direzione",
+      "preavviso manovra di cambio corsia"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare con adeguato preavviso l'intenzione di effettuare un cambio di corsia, al fine di avvisare gli altri utenti della strada."
+  }
+}

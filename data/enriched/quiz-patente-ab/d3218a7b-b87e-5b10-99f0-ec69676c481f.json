@@ -1,0 +1,27 @@
+{
+  "question_id": 4525,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23769",
+  "text": "La sosta è vietata nelle zone a traffico limitato per i veicoli non autorizzati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in ZTL",
+      "Accesso e circolazione in zone a traffico limitato"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "zona a traffico limitato",
+      "veicoli non autorizzati",
+      "accesso vietato"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta per veicoli non autorizzati in ZTL",
+      "regolamentazione della sosta nelle zone a traffico limitato"
+    ],
+    "rule_explanation": "La sosta è vietata in ogni caso nelle zone a traffico limitato per i veicoli sprovvisti di autorizzazione specifica."
+  }
+}

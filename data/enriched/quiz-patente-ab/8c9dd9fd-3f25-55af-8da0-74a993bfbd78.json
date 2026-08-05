@@ -1,0 +1,28 @@
+{
+  "question_id": 4672,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25085",
+  "text": "Per evitare rumori fastidiosi durante la guida, occorre sostituire il clacson con le luci ad intermittenza, ma solamente di notte",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Uso corretto dei dispositivi segnalatori acustici"
+    ],
+    "exact_keywords": [
+      "clacson",
+      "dispositivi di segnalazione acustica",
+      "rumori fastidiosi",
+      "segnalazione visiva"
+    ],
+    "vector_search_queries": [
+      "uso del clacson e segnalazioni acustiche vietate",
+      "sostituzione del clacson con segnalazioni luminose",
+      "norme sull'inquinamento acustico da veicoli a motore"
+    ],
+    "rule_explanation": "Il clacson non va sostituito con segnalazioni visive, ma usato con parsimonia e solo quando necessario per evitare pericoli, indipendentemente dall'orario."
+  }
+}

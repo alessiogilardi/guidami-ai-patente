@@ -1,0 +1,27 @@
+{
+  "question_id": 4024,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18556",
+  "text": "I tricicli a motore sono veicoli con motore di cilindrata superiore a 50 cm3",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di triciclo a motore",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "tricicli a motore",
+      "veicoli a motore",
+      "cilindrata",
+      "potenza"
+    ],
+    "vector_search_queries": [
+      "definizione tricicli a motore cilindrata",
+      "classificazione veicoli a motore tricicli potenza"
+    ],
+    "rule_explanation": "I tricicli a motore sono veicoli a motore con tre ruote, con motore di cilindrata superiore a 50 cm3 o di potenza non superiore a 15 kW."
+  }
+}

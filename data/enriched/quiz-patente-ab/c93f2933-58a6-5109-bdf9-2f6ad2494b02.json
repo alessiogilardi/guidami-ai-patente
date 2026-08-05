@@ -1,0 +1,29 @@
+{
+  "question_id": 4634,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24804",
+  "text": "Durante il sorpasso di un veicolo a motore a due ruote, soprattutto se ad elevata velocità, si deve mantenere una buona distanza laterale di sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza laterale",
+      "Sorpasso di veicoli a due ruote",
+      "Prevenzione degli incidenti"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo a motore a due ruote",
+      "distanza laterale di sicurezza",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "mantenimento distanza laterale sicurezza durante sorpasso motociclo",
+      "comportamento prudente in fase di sorpasso di veicoli a due ruote",
+      "rischio sorpasso ad alta velocità di motocicli"
+    ],
+    "rule_explanation": "Durante il sorpasso di un veicolo a due ruote, è necessario mantenere un'adeguata distanza laterale di sicurezza, specialmente se procede ad alta velocità, per garantire la stabilità e prevenire incidenti."
+  }
+}

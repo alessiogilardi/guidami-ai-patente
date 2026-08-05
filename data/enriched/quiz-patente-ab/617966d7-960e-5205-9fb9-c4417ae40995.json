@@ -1,0 +1,28 @@
+{
+  "question_id": 4506,
+  "topic": "Norme sul sorpasso",
+  "number": "23607",
+  "text": "Durante un sorpasso in autostrada, l'insufficiente distanza di sicurezza può essere causa di incidente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Manovra di sorpasso",
+      "Responsabilità in caso di incidente"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "distanza di sicurezza",
+      "incidente stradale",
+      "autostrada"
+    ],
+    "vector_search_queries": [
+      "rischio di incidente per insufficiente distanza di sicurezza durante sorpasso in autostrada",
+      "obbligo di mantenere la distanza di sicurezza nella manovra di sorpasso"
+    ],
+    "rule_explanation": "Durante il sorpasso, mantenere una distanza di sicurezza adeguata è fondamentale per prevenire incidenti, specialmente in autostrada dove le velocità sono elevate."
+  }
+}

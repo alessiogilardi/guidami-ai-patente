@@ -1,0 +1,31 @@
+{
+  "question_id": 4192,
+  "topic": "Segnali di precedenza",
+  "number": "20507",
+  "text": "Il segnale raffigurato preannuncia l'obbligo di arresto ad un posto di blocco istituito dagli organi di polizia",
+  "correct_answer": false,
+  "image": "38d290655bf8f8975e6c77db50f3154c.jpeg",
+  "image_description": "Segnale di STOP (Arresto obbligatorio). Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia trasversale di arresto e di dare la precedenza a tutti i veicoli che circolano sulla strada in cui si sta per immettersi. Se non è presente la striscia di arresto, l'arresto deve avvenire comunque prima di impegnare l'incrocio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma ottagonale, con sfondo rosso e bordo bianco. Al centro del segnale è presente la scritta \"STOP\" in lettere maiuscole bianche. Questo è il segnale di arresto obbligatorio.",
+    "name": "Segnale di STOP (Arresto obbligatorio)",
+    "description": "Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia trasversale di arresto e di dare la precedenza a tutti i veicoli che circolano sulla strada in cui si sta per immettersi. Se non è presente la striscia di arresto, l'arresto deve avvenire comunque prima di impegnare l'incrocio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di STOP",
+      "Obbligo di arresto e precedenza"
+    ],
+    "exact_keywords": [
+      "segnale di arresto",
+      "dare la precedenza",
+      "obbligo di arrestarsi",
+      "posti di blocco"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnale di STOP e posto di blocco stradale",
+      "obblighi imposti dal segnale di arresto (STOP)"
+    ],
+    "rule_explanation": "Il segnale di STOP impone l'obbligo di arrestarsi e dare la precedenza ai veicoli circolanti sulla strada in cui ci si immette, non di fermarsi a posti di blocco della polizia."
+  }
+}

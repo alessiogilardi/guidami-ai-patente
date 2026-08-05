@@ -1,0 +1,28 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18726",
+  "text": "Il conducente di un veicolo, oltre a rispettare le norme specifiche della circolazione, deve tenere un rapporto corretto e tollerante verso gli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri generali del conducente",
+      "Convivenza civile e rispetto reciproco tra utenti della strada",
+      "Tutela degli utenti deboli"
+    ],
+    "exact_keywords": [
+      "rapporto corretto",
+      "tollerante",
+      "altri utenti della strada",
+      "norme specifiche della circolazione"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente verso gli altri utenti della strada",
+      "doveri di correttezza e tolleranza nella circolazione stradale"
+    ],
+    "rule_explanation": "Il conducente deve non solo rispettare le norme di circolazione, ma anche mantenere un comportamento corretto e tollerante verso tutti gli altri utenti della strada, specialmente i più vulnerabili."
+  }
+}

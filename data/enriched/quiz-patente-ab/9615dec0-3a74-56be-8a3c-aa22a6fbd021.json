@@ -1,0 +1,26 @@
+{
+  "question_id": 4525,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23768",
+  "text": "La sosta è vietata nelle aree pedonali urbane",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Aree pedonali"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "aree pedonali",
+      "divieto di fermata"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta nelle aree pedonali",
+      "regolamentazione della sosta nelle zone pedonali"
+    ],
+    "rule_explanation": "La sosta è vietata nelle aree pedonali, salvo diversa segnalazione, per garantire la fruibilità esclusiva degli spazi ai pedoni."
+  }
+}

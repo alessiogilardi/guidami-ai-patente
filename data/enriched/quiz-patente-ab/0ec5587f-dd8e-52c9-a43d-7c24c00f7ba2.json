@@ -1,0 +1,27 @@
+{
+  "question_id": 4584,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24238",
+  "text": "L'uso degli indicatori di direzione è necessario per segnalare l'intenzione di effettuare una manovra di sorpasso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "sorpasso",
+      "manovra",
+      "segnalazione"
+    ],
+    "vector_search_queries": [
+      "segnalazione obbligatoria dell\\'intenzione di sorpasso con indicatori di direzione",
+      "obbligo di usare gli indicatori di direzione prima di una manovra di sorpasso"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare con anticipo l'intenzione di cambiare corsia o di effettuare qualsiasi altra manovra che possa influire sulla circolazione altrui, compreso il sorpasso."
+  }
+}

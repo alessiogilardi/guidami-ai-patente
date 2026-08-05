@@ -1,0 +1,27 @@
+{
+  "question_id": 4551,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23954",
+  "text": "Il traino per situazione di emergenza di un veicolo da parte di un altro deve avvenire attraverso un solido collegamento, come fune, catena, cavo, barra rigida, purché idoneamente segnalati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rimozione di veicoli in avaria",
+      "Norme sul traino dei veicoli"
+    ],
+    "exact_keywords": [
+      "traino veicoli in avaria",
+      "collegamento idoneo",
+      "segnalazione",
+      "solido collegamento"
+    ],
+    "vector_search_queries": [
+      "modalità di traino di veicoli in avaria con collegamento solido e segnalazione",
+      "requisiti per il traino di veicoli in emergenza con fune, catena o barra rigida"
+    ],
+    "rule_explanation": "Il traino di veicoli in avaria deve essere effettuato con un solido collegamento, opportunamente segnalato, tra i due veicoli."
+  }
+}

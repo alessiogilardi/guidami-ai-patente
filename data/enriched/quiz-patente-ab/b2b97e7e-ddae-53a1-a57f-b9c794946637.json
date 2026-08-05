@@ -1,0 +1,28 @@
+{
+  "question_id": 4036,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18694",
+  "text": "In un centro abitato è sempre consentita la marcia per file parallele",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione in centri abitati",
+      "Marcia per file parallele",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "marcia per file parallele",
+      "divieto",
+      "regolamentazione della circolazione"
+    ],
+    "vector_search_queries": [
+      "divieto di marcia per file parallele nei centri abitati",
+      "condizioni per la marcia per file parallele in aree urbane"
+    ],
+    "rule_explanation": "La marcia per file parallele nei centri abitati è generalmente vietata, salvo specifiche segnalazioni o regolamentazioni che ne autorizzino l'uso in determinate circostanze."
+  }
+}

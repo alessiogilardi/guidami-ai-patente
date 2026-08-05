@@ -1,0 +1,27 @@
+{
+  "question_id": 4381,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22393",
+  "text": "Si deve tenere una velocità adeguata alle proprie condizioni psicofisiche",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Adeguamento della velocità alle condizioni del conducente",
+      "Responsabilità del conducente nella gestione della velocità"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni psicofisiche",
+      "pericolo per la sicurezza",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di adeguare la velocità alle proprie condizioni psicofisiche",
+      "moderazione della velocità in relazione allo stato del conducente"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in base alle proprie condizioni psicofisiche per garantire la sicurezza e non creare pericolo o intralcio alla circolazione."
+  }
+}

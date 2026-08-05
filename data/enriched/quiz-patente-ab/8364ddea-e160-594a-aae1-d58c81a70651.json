@@ -1,0 +1,31 @@
+{
+  "question_id": 4371,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22246",
+  "text": "Il pannello integrativo in figura, posto sotto il segnale DIVIETO DI SOSTA, indica che la sosta è vietata solo in alcune ore dei giorni indicati",
+  "correct_answer": true,
+  "image": "0dd8fa7010618380bfb0908223d8f2ba.jpeg",
+  "image_description": "Pannello integrativo: orario e giorni di pulizia stradale. Il pannello integrativo indica che le limitazioni o i divieti a cui è abbinato sono validi nei giorni dal lunedì al venerdì, dalle ore 21:00 alle ore 4:00, per operazioni di pulizia stradale con autospazzatrici.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. In alto, sono indicati i giorni \"lun - ven\". Sotto, sono indicate le ore \"21,00 - 4,00\". Nella parte inferiore del pannello è raffigurato un autospazzatrice. Questo pannello è tipicamente posto sotto un segnale di divieto o obbligo per specificarne le modalità di applicazione temporale e/o per indicare il motivo della limitazione. In questo caso specifico, l'icona dell'autospazzatrice suggerisce che le restrizioni si applicano durante le operazioni di pulizia stradale.",
+    "name": "Pannello integrativo: orario e giorni di pulizia stradale",
+    "description": "Il pannello integrativo indica che le limitazioni o i divieti a cui è abbinato sono validi nei giorni dal lunedì al venerdì, dalle ore 21:00 alle ore 4:00, per operazioni di pulizia stradale con autospazzatrici."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limitazioni temporali ai divieti di sosta",
+      "Pannelli integrativi di orario e giorni"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "divieto di sosta",
+      "giorni feriali",
+      "ore"
+    ],
+    "vector_search_queries": [
+      "validità oraria e giornaliera dei segnali di divieto di sosta",
+      "pannelli integrativi che specificano giorni e orari di operatività dei divieti"
+    ],
+    "rule_explanation": "Il pannello integrativo che indica giorni e orari specifica che il segnale principale è valido solo nel periodo indicato, permettendo la sosta al di fuori di esso."
+  }
+}

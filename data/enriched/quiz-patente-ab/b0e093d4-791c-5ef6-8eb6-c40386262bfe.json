@@ -1,0 +1,28 @@
+{
+  "question_id": 4015,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18475",
+  "text": "Fanno parte della carreggiata le corsie di emergenza delle autostrade",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Carreggiata",
+      "Corsia di emergenza",
+      "Struttura della strada"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "corsia di emergenza",
+      "autostrada",
+      "sede stradale"
+    ],
+    "vector_search_queries": [
+      "definizione di carreggiata e corsia di emergenza",
+      "distinzione tra carreggiata e corsia di emergenza in autostrada"
+    ],
+    "rule_explanation": "La carreggiata è la parte della strada destinata ai veicoli; le corsie di emergenza, pur facendone parte della piattaforma stradale, non sono considerate parte della carreggiata."
+  }
+}

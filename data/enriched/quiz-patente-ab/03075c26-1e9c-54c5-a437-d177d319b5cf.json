@@ -1,0 +1,31 @@
+{
+  "question_id": 4124,
+  "topic": "Segnali di divieto",
+  "number": "19752",
+  "text": "Il segnale raffigurato vale soltanto per i veicoli adibiti al trasporto di merci",
+  "correct_answer": false,
+  "image": "a6d36b4c47763e1eb809947d732f7d7d.jpeg",
+  "image_description": "Divieto di transito ai veicoli a motore trainanti un rimorchio. Il segnale vieta il transito ai veicoli a motore trainanti un rimorchio. Non si applica agli autotreni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di un veicolo a motore trainante un rimorchio. Questo segnale è il segnale di 'Divieto di transito ai veicoli a motore trainanti un rimorchio'. Non sono presenti pannelli integrativi.",
+    "name": "Divieto di transito ai veicoli a motore trainanti un rimorchio",
+    "description": "Il segnale vieta il transito ai veicoli a motore trainanti un rimorchio. Non si applica agli autotreni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Ambito di applicazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "veicoli a motore trainanti un rimorchio",
+      "autotreni",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per veicoli con rimorchio",
+      "estensione dei divieti di transito ai veicoli specifici"
+    ],
+    "rule_explanation": "Il segnale di 'divieto di transito ai veicoli a motore trainanti un rimorchio' si applica a tutti i veicoli a motore che trainano un rimorchio, ad eccezione degli autotreni."
+  }
+}

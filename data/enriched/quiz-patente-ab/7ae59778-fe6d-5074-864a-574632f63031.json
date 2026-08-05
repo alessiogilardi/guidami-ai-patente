@@ -1,0 +1,29 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25333",
+  "text": "Una frenatura poco efficiente o squilibrata può essere causata da pneumatici invernali montati su tutte e quattro le ruote",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza del sistema frenante",
+      "Manutenzione del veicolo",
+      "Caratteristiche degli pneumatici"
+    ],
+    "exact_keywords": [
+      "frenatura",
+      "pneumatici invernali",
+      "tenuta di strada",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "cause di inefficienza del sistema frenante",
+      "effetti del montaggio di pneumatici invernali sul sistema frenante",
+      "manutenzione e sicurezza del veicolo"
+    ],
+    "rule_explanation": "Una frenatura inefficiente o squilibrata non è causata dal montaggio di pneumatici invernali su tutte e quattro le ruote, ma da altri fattori legati all'usura o a difetti del sistema frenante o degli pneumatici stessi."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4044,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18785",
+  "text": "Il conducente deve prevedere che un pedone non vedente con il bastone bianco che attraversa la strada fuori dalle strisce pedonali camminerà rapidamente e senza incertezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Attraversamento della strada da parte dei pedoni",
+      "Principio di prudenza e prevedibilità nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "pedone",
+      "non vedente",
+      "bastone bianco",
+      "strisce pedonali",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "prevedibilità del comportamento dei pedoni non vedenti",
+      "doveri del conducente verso pedoni con bastone bianco fuori dalle strisce",
+      "obbligo di prudenza del conducente in presenza di pedoni inattesi"
+    ],
+    "rule_explanation": "Il conducente deve sempre prevedere la possibile presenza e l'attraversamento di pedoni, anche in modo imprevedibile, prestando particolare attenzione agli utenti deboli come i non vedenti."
+  }
+}

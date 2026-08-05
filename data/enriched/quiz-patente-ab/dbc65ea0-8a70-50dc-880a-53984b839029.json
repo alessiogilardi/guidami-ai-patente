@@ -1,0 +1,30 @@
+{
+  "question_id": 4684,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25152",
+  "text": "E' vietato scaricare nella fognatura il liquido antigelo del circuito di raffreddamento del veicolo, poiché potrebbe non essere biodegradabile",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela ambientale",
+      "Smaltimento rifiuti pericolosi",
+      "Inquinamento idrico"
+    ],
+    "exact_keywords": [
+      "liquido antigelo",
+      "circuito di raffreddamento",
+      "fognatura",
+      "biodegradabile",
+      "rifiuti speciali"
+    ],
+    "vector_search_queries": [
+      "divieto scarico antigelo in fognatura",
+      "smaltimento liquido refrigerante veicoli inquinamento",
+      "normativa scarico reflui industriali in fognatura"
+    ],
+    "rule_explanation": "È vietato lo scarico di liquidi non biodegradabili, come l'antigelo, nella fognatura per prevenire l'inquinamento delle acque."
+  }
+}

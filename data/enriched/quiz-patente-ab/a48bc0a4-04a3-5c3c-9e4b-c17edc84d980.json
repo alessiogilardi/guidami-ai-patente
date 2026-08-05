@@ -1,0 +1,27 @@
+{
+  "question_id": 4606,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24468",
+  "text": "Un'autovettura per poter circolare deve avere la polizza assicurativa del tipo \"kasko\"",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione obbligatoria per la circolazione dei veicoli",
+      "Copertura assicurativa R.C.A."
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "circolare",
+      "polizza assicurativa",
+      "R.C.A."
+    ],
+    "vector_search_queries": [
+      "obbligo assicurazione R.C.A. per autovetture",
+      "copertura assicurativa minima per la circolazione dei veicoli"
+    ],
+    "rule_explanation": "Per la circolazione in Italia, l'autovettura deve obbligatoriamente avere la polizza assicurativa per la Responsabilità Civile Auto (R.C.A.), non è richiesta la polizza \"kasko\"."
+  }
+}

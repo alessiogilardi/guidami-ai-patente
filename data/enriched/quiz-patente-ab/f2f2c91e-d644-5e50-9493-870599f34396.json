@@ -1,0 +1,31 @@
+{
+  "question_id": 4549,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23944",
+  "text": "Il pannello in figura segnala carichi indivisibili che sporgono dalla parte posteriore destra",
+  "correct_answer": false,
+  "image": "da5d3e67a29eb505cdd61ed330cdea4c.jpeg",
+  "image_description": "Segnale di obbligo, percorso da seguire (freccia verso il basso). Il segnale impone di circolare attenendosi al lato destro dell'ostacolo o dell'area delimitata dalla segnalazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale quadrato con sfondo a bande diagonali alternate rosse e bianche. Al centro, è presente un disco blu con un bordo bianco, contenente una freccia bianca obliqua che punta verso il basso e verso destra. Questo tipo di segnaletica indica un obbligo di percorso.",
+    "name": "Segnale di obbligo, percorso da seguire (freccia verso il basso)",
+    "description": "Il segnale impone di circolare attenendosi al lato destro dell'ostacolo o dell'area delimitata dalla segnalazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di ostacoli e carichi sporgenti",
+      "Norme sul carico dei veicoli"
+    ],
+    "exact_keywords": [
+      "pannello posteriore",
+      "carico sporgente",
+      "parte posteriore",
+      "veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "segnalazione pannello bianco-rosso carico sporgente posteriore",
+      "obblighi veicolo con carico sporgente posteriore"
+    ],
+    "rule_explanation": "Il pannello bianco-rosso a strisce diagonali segnala un ostacolo o un carico sporgente dalla parte posteriore del veicolo, non specificamente da destra."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22339",
+  "text": "Il limite massimo di velocità per un'autovettura in caso di precipitazioni atmosferiche su strade extraurbane principali è di 90 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane principali",
+      "Condizioni atmosferiche e velocità"
+    ],
+    "exact_keywords": [
+      "velocità massima",
+      "autovettura",
+      "strade extraurbane principali",
+      "precipitazioni atmosferiche"
+    ],
+    "vector_search_queries": [
+      "limite velocità autovettura strade extraurbane principali con pioggia",
+      "velocità massima consentita su strade extraurbane principali in caso di precipitazioni"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per un'autovettura su strade extraurbane principali è di 90 km/h, anche in caso di precipitazioni atmosferiche."
+  }
+}

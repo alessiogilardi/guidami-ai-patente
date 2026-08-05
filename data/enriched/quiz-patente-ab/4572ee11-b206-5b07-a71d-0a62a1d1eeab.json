@@ -1,0 +1,34 @@
+{
+  "question_id": 4060,
+  "topic": "Segnali di pericolo",
+  "number": "18972",
+  "text": "In presenza del segnale raffigurato è consentito, su strada a doppio senso di circolazione a due corsie, sorpassare i motocicli senza invadere la corsia opposta",
+  "correct_answer": false,
+  "image": "20d1949582fe2500af34cafef3f9167c.jpeg",
+  "image_description": "Segnale di curva pericolo a sinistra. Il segnale preannuncia una curva pericolosa verso sinistra. È necessario moderare la velocità e prestare attenzione, soprattutto in caso di strada bagnata o scarsa visibilità, per potersi arrestare in caso di ostacolo improvviso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una curva che volge verso sinistra. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una curva a sinistra.",
+    "name": "Segnale di curva pericolo a sinistra",
+    "description": "Il segnale preannuncia una curva pericolosa verso sinistra. È necessario moderare la velocità e prestare attenzione, soprattutto in caso di strada bagnata o scarsa visibilità, per potersi arrestare in caso di ostacolo improvviso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo: curva a sinistra",
+      "Regole di sorpasso",
+      "Comportamento in presenza di curve pericolose"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "curva pericolosa",
+      "sorpasso",
+      "strada a doppio senso di circolazione",
+      "corsia di marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in curva pericolo",
+      "sorpasso motocicli in curva a sinistra su strada a doppio senso",
+      "regolamentazione sorpasso in presenza di segnali di pericolo curve"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in prossimità o in presenza di curve pericolose, indipendentemente dal tipo di veicolo da sorpassare o dalla presenza di corsie opposte."
+  }
+}

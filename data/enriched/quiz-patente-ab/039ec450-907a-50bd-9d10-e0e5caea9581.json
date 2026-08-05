@@ -1,0 +1,27 @@
+{
+  "question_id": 4043,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18772",
+  "text": "Quando le persone anziane attraversano la carreggiata bisogna tenere presente che, avendo più esperienza e un campo visivo maggiore, intuiscono meglio le situazioni di pericolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Doveri di prudenza e attenzione verso pedoni anziani"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "attraversamento carreggiata",
+      "condizioni di vulnerabilità",
+      "utente debole"
+    ],
+    "vector_search_queries": [
+      "doveri di attenzione verso pedoni anziani che attraversano la strada",
+      "condotta di guida in prossimità di utenti deboli come gli anziani"
+    ],
+    "rule_explanation": "Non è vero che gli anziani intuiscono meglio i pericoli; al contrario, la loro ridotta mobilità e percezione impone maggiore prudenza da parte dei conducenti."
+  }
+}

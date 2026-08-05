@@ -1,0 +1,27 @@
+{
+  "question_id": 4515,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23693",
+  "text": "La fermata è consentita sugli attraversamenti pedonali per far scendere un passeggero",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di fermata e sosta",
+      "Attraversamenti pedonali"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "attraversamento pedonale",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata e sosta su attraversamenti pedonali",
+      "regole per la fermata e la sosta in prossimità degli attraversamenti pedonali"
+    ],
+    "rule_explanation": "La fermata e la sosta sono vietate sugli attraversamenti pedonali, salvo diversa segnalazione o per consentire la discesa/salita di persone invalide."
+  }
+}

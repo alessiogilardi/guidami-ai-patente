@@ -1,0 +1,28 @@
+{
+  "question_id": 4679,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25125",
+  "text": "L'inquinamento dell'aria prodotto dai veicoli a motore può essere ridotto, evitando di usare il veicolo per brevi percorsi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Riduzione dell'inquinamento atmosferico",
+      "Mobilità sostenibile",
+      "Impatto ambientale dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "veicoli a motore",
+      "brevi percorsi",
+      "riduzione delle emissioni"
+    ],
+    "vector_search_queries": [
+      "riduzione inquinamento aria veicoli a motore brevi tragitti",
+      "impatto ambientale uso veicoli percorsi brevi"
+    ],
+    "rule_explanation": "L'inquinamento atmosferico da veicoli a motore si riduce evitando l'uso del mezzo per tragitti brevi, privilegiando alternative più ecologiche."
+  }
+}

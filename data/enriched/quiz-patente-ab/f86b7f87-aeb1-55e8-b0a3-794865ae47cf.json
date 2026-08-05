@@ -1,0 +1,31 @@
+{
+  "question_id": 4315,
+  "topic": "Segnali di indicazione",
+  "number": "21699",
+  "text": "Il segnale raffigurato indica un'area di campeggio",
+  "correct_answer": false,
+  "image": "f18ba4966ff5723564b62ec08c5c30bf.jpeg",
+  "image_description": "Piazzola di sosta. Il segnale indica una piazzola di sosta a lato della carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale è presente un pittogramma bianco che rappresenta una piazzola di sosta a lato della carreggiata. La piazzola è indicata da una linea tratteggiata che si stacca dalla linea continua della carreggiata e si allarga verso destra, formando uno spazio di sosta.",
+    "name": "Piazzola di sosta",
+    "description": "Il segnale indica una piazzola di sosta a lato della carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di servizio"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "area di campeggio",
+      "piazzola di sosta",
+      "segnali di servizio"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnale di piazzola di sosta e area di campeggio",
+      "segnali di servizio per aree di sosta e campeggio"
+    ],
+    "rule_explanation": "Il segnale di piazzola di sosta indica un luogo attrezzato per la sosta dei veicoli, non un'area di campeggio."
+  }
+}

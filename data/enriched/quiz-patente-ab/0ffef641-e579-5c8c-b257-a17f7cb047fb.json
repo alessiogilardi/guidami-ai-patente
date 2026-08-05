@@ -1,0 +1,27 @@
+{
+  "question_id": 4585,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24255",
+  "text": "L'uso dei proiettori a luce abbagliante è necessario, di giorno, se si circola su un'autostrada viaggiando controsole",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di luce abbagliante",
+      "Condizioni di visibilità e sicurezza nella guida diurna"
+    ],
+    "exact_keywords": [
+      "proiettori a luce abbagliante",
+      "circolazione diurna",
+      "autostrada",
+      "condizioni di abbagliamento"
+    ],
+    "vector_search_queries": [
+      "uso proiettori abbaglianti di giorno autostrada",
+      "condizioni di utilizzo luci abbaglianti in autostrada di giorno"
+    ],
+    "rule_explanation": "I proiettori a luce abbagliante sono vietati di giorno, salvo eccezioni specifiche, e non sono necessari per contrastare il sole in autostrada."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4170,
+  "topic": "Segnali di obbligo",
+  "number": "20280",
+  "text": "Il segnale raffigurato è collocato sulla colonnina luminosa posta al centro di una rotatoria",
+  "correct_answer": false,
+  "image": "16c5adb5b0bfafc6c7b0777ae5eec32d.jpeg",
+  "image_description": "Segnale di circolazione rotatoria. Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo blu e sfondo blu. Al centro, tre frecce bianche a punta di freccia sono disposte in modo da formare un cerchio, indicando un movimento rotatorio in senso antiorario. Questo è il segnale di obbligo di circolazione rotatoria.",
+    "name": "Segnale di circolazione rotatoria",
+    "description": "Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Segnali di obbligo",
+      "Rotatoria"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "circolazione nelle rotatorie",
+      "senso di marcia obbligato",
+      "isola centrale"
+    ],
+    "vector_search_queries": [
+      "obbligo di circolazione nelle rotatorie",
+      "segnali stradali di senso di marcia obbligato nelle rotatorie",
+      "interpretazione segnale rotatoria"
+    ],
+    "rule_explanation": "Il segnale di rotatoria impone l'obbligo di circolare nel senso antiorario attorno all'isola centrale, non è un segnale di obbligo generico ma specifico per le rotatorie."
+  }
+}

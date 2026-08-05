@@ -1,0 +1,33 @@
+{
+  "question_id": 4224,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20830",
+  "text": "In presenza della segnaletica in figura è consentito cambiare corsia fino a che le strisce sono ancora discontinue(tratteggiate)",
+  "correct_answer": true,
+  "image": "05769e683b8d63d64a3afd4606167fab.jpeg",
+  "image_description": "Segnaletica orizzontale di corsia con indicazioni direzionali. La corsia A consente di svoltare a sinistra, la corsia B consente di proseguire diritto, la corsia C consente di svoltare a destra. Le frecce indicano le direzioni consentite per ciascuna corsia. Le strisce sono discontinue, indicando la possibilità di cambiare corsia. La strada si immette in un incrocio a raso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una carreggiata con tre corsie, identificate dalle lettere A, B e C. La corsia A presenta frecce che indicano la direzione sinistra. La corsia B presenta frecce che indicano la direzione dritto. La corsia C presenta frecce che indicano la direzione destra. Le corsie sono delimitate da strisce bianche discontinue. La carreggiata si dirige verso un incrocio a raso, visibile nella parte destra dell'immagine.",
+    "name": "Segnaletica orizzontale di corsia con indicazioni direzionali",
+    "description": "La corsia A consente di svoltare a sinistra, la corsia B consente di proseguire diritto, la corsia C consente di svoltare a destra. Le frecce indicano le direzioni consentite per ciascuna corsia. Le strisce sono discontinue, indicando la possibilità di cambiare corsia. La strada si immette in un incrocio a raso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Modifica di corsia",
+      "Norme di circolazione in prossimità di incroci"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "strisce discontinue",
+      "cambiare corsia",
+      "corsia di marcia"
+    ],
+    "vector_search_queries": [
+      "possibilità di cambiare corsia con strisce discontinue",
+      "segnaletica orizzontale che indica cambio di corsia",
+      "regole per il cambio di corsia in prossimità di incroci"
+    ],
+    "rule_explanation": "È consentito cambiare corsia di marcia in presenza di strisce discontinue, purché ciò non costituisca pericolo o intralcio per gli altri utenti della strada."
+  }
+}

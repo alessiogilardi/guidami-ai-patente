@@ -1,0 +1,27 @@
+{
+  "question_id": 4701,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25278",
+  "text": "Dopo un incidente, se c'è un principio d'incendio del veicolo, in mancanza di estintore si può utilizzare una coperta bagnata per spegnere le fiamme",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione delle emergenze in caso di incendio del veicolo",
+      "Utilizzo di mezzi alternativi per l'estinzione delle fiamme"
+    ],
+    "exact_keywords": [
+      "principio d'incendio",
+      "estintore",
+      "coperta bagnata",
+      "spegnere le fiamme"
+    ],
+    "vector_search_queries": [
+      "mezzi alternativi all'estintore per spegnere principio d'incendio veicolo",
+      "uso coperta bagnata in caso di incendio auto"
+    ],
+    "rule_explanation": "In caso di principio d'incendio del veicolo, se non si dispone di un estintore, è possibile utilizzare una coperta bagnata per tentare di soffocare le fiamme."
+  }
+}

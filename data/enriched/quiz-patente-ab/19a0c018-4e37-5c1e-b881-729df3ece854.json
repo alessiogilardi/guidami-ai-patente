@@ -1,0 +1,27 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18365",
+  "text": "Nelle strade extraurbane principali non vi sono curve né dossi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Caratteristiche delle strade extraurbane principali",
+      "Normativa sulla sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "strade extraurbane principali",
+      "curve",
+      "dossi",
+      "segnaletica stradale"
+    ],
+    "vector_search_queries": [
+      "presenza di curve e dossi su strade extraurbane principali",
+      "caratteristiche geometriche delle strade extraurbane principali"
+    ],
+    "rule_explanation": "Le strade extraurbane principali possono presentare curve e dossi, la cui presenza è segnalata dalla segnaletica appropriata."
+  }
+}

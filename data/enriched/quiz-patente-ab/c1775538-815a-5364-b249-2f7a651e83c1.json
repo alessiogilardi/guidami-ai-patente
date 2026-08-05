@@ -1,0 +1,29 @@
+{
+  "question_id": 4696,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25230",
+  "text": "La pressione di gonfiaggio degli pneumatici va adeguata alle condizioni di peso del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pressione pneumatici",
+      "Adeguamento carico veicolo",
+      "Manutenzione pneumatici"
+    ],
+    "exact_keywords": [
+      "pressione di gonfiaggio",
+      "pneumatici",
+      "veicolo",
+      "carico",
+      "condizioni di peso"
+    ],
+    "vector_search_queries": [
+      "regolazione pressione pneumatici in base al carico del veicolo",
+      "influenza del peso del veicolo sulla pressione degli pneumatici"
+    ],
+    "rule_explanation": "La pressione degli pneumatici deve essere regolata in base al carico del veicolo per garantire stabilità e sicurezza di marcia."
+  }
+}

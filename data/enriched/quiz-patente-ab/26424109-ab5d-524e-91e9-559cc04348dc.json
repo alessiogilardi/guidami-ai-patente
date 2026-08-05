@@ -1,0 +1,30 @@
+{
+  "question_id": 4559,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24009",
+  "text": "Un pedone può attraversare la strada in tutta sicurezza passando a distanza ravvicinata rispetto alla parte frontale di un autocarro fermo in colonna che sta per ripartire, in quanto sicuramente avvistabile dal conducente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di attraversamento della carreggiata",
+      "Comportamento dei pedoni in relazione ai veicoli fermi",
+      "Obbligo di prudenza per i pedoni"
+    ],
+    "exact_keywords": [
+      "pedone",
+      "autocarro fermo",
+      "colonna in movimento",
+      "avvistabile",
+      "attraversare la strada"
+    ],
+    "vector_search_queries": [
+      "attraversamento della carreggiata da parte di pedoni in prossimità di veicoli fermi",
+      "obblighi di prudenza per i pedoni in relazione a veicoli in colonna",
+      "sicurezza dell'attraversamento stradale per i pedoni in presenza di autocarri fermi"
+    ],
+    "rule_explanation": "Il pedone non può attraversare la strada in prossimità di un veicolo fermo, specie se in procinto di ripartire, in quanto non è garantita l'avvistabilità e la sicurezza dell'attraversamento."
+  }
+}

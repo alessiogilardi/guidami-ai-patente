@@ -1,0 +1,32 @@
+{
+  "question_id": 4084,
+  "topic": "Segnali di pericolo",
+  "number": "19269",
+  "text": "Il segnale raffigurato impone di dare la precedenza ai veicoli provenienti dal senso opposto",
+  "correct_answer": false,
+  "image": "d4c7c0853cebe7987cda4a4b7f7c96e8.jpeg",
+  "image_description": "Segnale di pericolo: ponte mobile. Il segnale preannuncia la presenza di un ponte mobile. I conducenti devono prestare attenzione e moderare la velocità, preparandosi a fermarsi se il ponte è in movimento o se le luci rosse lampeggianti sono attive.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un ponte mobile, con una sezione sollevata che permette il passaggio di imbarcazioni sotto di esso. Le due sponde del ponte sono visibili, così come le onde che indicano la presenza di acqua. Il segnale è isolato, senza altri elementi di contesto stradale o pannelli integrativi visibili.",
+    "name": "Segnale di pericolo: ponte mobile",
+    "description": "Il segnale preannuncia la presenza di un ponte mobile. I conducenti devono prestare attenzione e moderare la velocità, preparandosi a fermarsi se il ponte è in movimento o se le luci rosse lampeggianti sono attive."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Obblighi ai segnali di pericolo"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "ponte mobile",
+      "preavviso",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo ponte mobile",
+      "obblighi conducente segnale ponte mobile",
+      "significato segnale pericolo ponte mobile"
+    ],
+    "rule_explanation": "Il segnale di pericolo \"ponte mobile\" preavvisa una situazione di potenziale pericolo, non impone la precedenza ai veicoli provenienti dal senso opposto."
+  }
+}

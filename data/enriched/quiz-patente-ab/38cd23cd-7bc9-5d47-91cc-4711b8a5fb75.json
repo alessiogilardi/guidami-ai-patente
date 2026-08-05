@@ -1,0 +1,32 @@
+{
+  "question_id": 4201,
+  "topic": "Segnali di precedenza",
+  "number": "20613",
+  "text": "Il segnale raffigurato è posto sulle autostrade",
+  "correct_answer": false,
+  "image": "7f30c2092cbae8a33505fdc2297bb6a3.jpeg",
+  "image_description": "Incrocio con strada senza diritto di precedenza. Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta un incrocio a T, con la strada principale orizzontale e la strada secondaria che si immette da destra e da sinistra. La forma del pittogramma indica che la strada su cui si sta viaggiando si immette in una strada trasversale.",
+    "name": "Incrocio con strada senza diritto di precedenza",
+    "description": "Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "autostrada",
+      "strada extraurbana secondaria",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "segnali di precedenza autostradali",
+      "uso del segnale di dare precedenza su strade extraurbane",
+      "tipologia segnali autostradali e di precedenza"
+    ],
+    "rule_explanation": "Il segnale di 'dare precedenza' (triangolo rovesciato) si usa sulle strade extraurbane secondarie, non sulle autostrade dove vige la regola generale di precedenza a destra o segnali specifici."
+  }
+}

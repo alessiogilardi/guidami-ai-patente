@@ -1,0 +1,32 @@
+{
+  "question_id": 4364,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22170",
+  "text": "Il pannello integrativo raffigurato indica la presenza di cantieri stradali con escavatori e pale meccaniche in azione",
+  "correct_answer": true,
+  "image": "42349cc7d2b70fecebc00008b2c4441e.jpeg",
+  "image_description": "Pannello integrativo di pericolo - Macchine operatrici. Il pannello integrativo indica la possibile presenza di macchine operatrici in movimento sulla carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare di colore bianco con bordo nero. Al suo interno è raffigurato, in nero, il pittogramma di una macchina operatrice cingolata, simile a un escavatore o una pala meccanica, con un conducente seduto al posto di guida e la benna estesa. Questo pannello è un'integrazione a segnali di pericolo o prescrizione, e in questo caso specifico informa sulla potenziale presenza di tali mezzi in movimento sulla strada.",
+    "name": "Pannello integrativo di pericolo - Macchine operatrici",
+    "description": "Il pannello integrativo indica la possibile presenza di macchine operatrici in movimento sulla carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi",
+      "Macchine operatrici"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "macchine operatrici",
+      "cantiere stradale",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo macchine operatrici cantiere",
+      "segnalazione di pericolo macchine operatrici in movimento"
+    ],
+    "rule_explanation": "Il pannello integrativo con il simbolo delle macchine operatrici indica la possibile presenza di tali mezzi in movimento sulla carreggiata, prefigurando un potenziale pericolo per la circolazione."
+  }
+}

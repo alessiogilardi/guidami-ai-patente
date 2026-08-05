@@ -1,0 +1,32 @@
+{
+  "question_id": 4190,
+  "topic": "Segnali di precedenza",
+  "number": "20471",
+  "text": "Il segnale raffigurato su strade extraurbane è preceduto dal segnale PREAVVISO DI DARE PRECEDENZA",
+  "correct_answer": true,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Preavviso di segnale di pericolo",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "dare precedenza",
+      "preavviso",
+      "strade extraurbane",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "preavviso segnale dare precedenza strade extraurbane",
+      "obbligo di dare precedenza e segnale di preavviso"
+    ],
+    "rule_explanation": "Sulle strade extraurbane, il segnale di 'Dare precedenza' è sempre preceduto dal segnale di preavviso, che informa dell'imminente obbligo di dare la precedenza."
+  }
+}

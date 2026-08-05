@@ -1,0 +1,32 @@
+{
+  "question_id": 4058,
+  "topic": "Segnali di pericolo",
+  "number": "18939",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada in cui è necessario regolare la velocità in relazione alla visibilità e al raggio della curva",
+  "correct_answer": true,
+  "image": "34d83af03310c64d51078b75499c7efd.jpeg",
+  "image_description": "Segnale di curva pericolosa a destra. Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurata una freccia nera curva che indica una svolta a destra. Questo è il segnale di \"Curva pericolosa a destra\".",
+    "name": "Segnale di curva pericolosa a destra",
+    "description": "Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Curva pericolosa",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "curva pericolosa",
+      "moderare la velocità",
+      "raggio di curvatura"
+    ],
+    "vector_search_queries": [
+      "preavviso di curva pericolosa e obbligo di moderare la velocità",
+      "segnali di pericolo per curve con raggio ridotto e visibilità limitata"
+    ],
+    "rule_explanation": "I segnali di pericolo, come quello di curva pericolosa, impongono al conducente di moderare la velocità in base al raggio della curva e alle condizioni di visibilità per garantire la sicurezza."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23033",
+  "text": "Prima di immettere il veicolo nel flusso della circolazione, è necessario controllare lo specchio retrovisore laterale sinistro nonché verificare con un controllo visivo diretto che la strada sia sufficientemente libera dietro e a fianco del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Immissione nel flusso di circolazione",
+      "Verifica della sicurezza prima di manovre"
+    ],
+    "exact_keywords": [
+      "flusso della circolazione",
+      "specchio retrovisore laterale sinistro",
+      "controllo visivo diretto",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "manovra di immissione nel flusso di circolazione",
+      "verifica della sicurezza prima di immettersi nella circolazione"
+    ],
+    "rule_explanation": "Prima di immettersi nel flusso di circolazione, è obbligatorio controllare gli specchietti retrovisori e la presenza di ostacoli con un controllo visivo diretto per garantire la sicurezza."
+  }
+}

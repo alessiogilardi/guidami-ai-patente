@@ -1,0 +1,30 @@
+{
+  "question_id": 4674,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25097",
+  "text": "Per diminuire il rumore emesso dai veicoli a motore basta eliminare la parte finale della marmitta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Normativa sui veicoli a motore",
+      "Dispositivi di scarico dei gas"
+    ],
+    "exact_keywords": [
+      "rumore",
+      "veicoli a motore",
+      "marmitta",
+      "dispositivi di scarico",
+      "inquinamento acustico"
+    ],
+    "vector_search_queries": [
+      "riduzione rumore veicoli a motore dispositivi scarico",
+      "limiti emissione acustica veicoli",
+      "normativa inquinamento acustico veicoli a motore"
+    ],
+    "rule_explanation": "La sola eliminazione della parte finale della marmitta non è sufficiente a diminuire il rumore emesso dai veicoli a motore, essendo necessari interventi più complessi sui dispositivi di scarico per rispettare i limiti di emissione acustica."
+  }
+}

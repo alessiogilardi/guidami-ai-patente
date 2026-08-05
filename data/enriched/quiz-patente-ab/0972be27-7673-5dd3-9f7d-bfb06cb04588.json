@@ -1,0 +1,29 @@
+{
+  "question_id": 4401,
+  "topic": "Distanza di sicurezza",
+  "number": "22606",
+  "text": "Lo spazio di frenatura è indipendente dalla velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Velocità del veicolo"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "velocità",
+      "distanza di sicurezza",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "relazione tra spazio di frenatura e velocità",
+      "fattori che influenzano la distanza di arresto",
+      "calcolo spazio di frenatura in base alla velocità"
+    ],
+    "rule_explanation": "Lo spazio di frenatura aumenta con il quadrato della velocità ed è influenzato anche dalle condizioni della strada e del veicolo."
+  }
+}

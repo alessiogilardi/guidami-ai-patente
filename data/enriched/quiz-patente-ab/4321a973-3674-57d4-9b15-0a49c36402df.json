@@ -1,0 +1,32 @@
+{
+  "question_id": 4451,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23080",
+  "text": "E' consentito attraversare l'incrocio in figura secondo l'ordine il veicolo H, il veicolo C, il veicolo L",
+  "correct_answer": false,
+  "image": "c30bdae3c2537fc8ccbdcdbf293eb0ef.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. Il veicolo L si trova alla sinistra del veicolo H. Il veicolo C si trova alla destra del veicolo L e alla sinistra del veicolo H. Non sono presenti segnali stradali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo L ha la precedenza sul veicolo C. Il veicolo H ha la precedenza sul veicolo L. Il veicolo C ha la precedenza sul veicolo H. L'ordine di precedenza corretto è: L, C, H.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con tre veicoli: L (blu), C (giallo) e H (rosso). Non sono presenti segnali stradali che regolano la precedenza. Il veicolo L si trova sulla strada inferiore, in procinto di svoltare a destra. Il veicolo C si trova sulla strada superiore, in procinto di svoltare a sinistra. Il veicolo H si trova sulla strada di destra, in procinto di svoltare a sinistra. Secondo la regola generale della precedenza a destra, il veicolo L deve dare la precedenza al veicolo C, e il veicolo C deve dare la precedenza al veicolo H. Di conseguenza, il veicolo H ha la precedenza su entrambi gli altri veicoli. Il veicolo L ha la precedenza sul veicolo C. L'ordine di precedenza è quindi L, C, H.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. Il veicolo L si trova alla sinistra del veicolo H. Il veicolo C si trova alla destra del veicolo L e alla sinistra del veicolo H. Non sono presenti segnali stradali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo L ha la precedenza sul veicolo C. Il veicolo H ha la precedenza sul veicolo L. Il veicolo C ha la precedenza sul veicolo H. L'ordine di precedenza corretto è: L, C, H."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza ai incroci non regolamentati"
+    ],
+    "exact_keywords": [
+      "precedenza a destra",
+      "incrocio non regolamentato",
+      "veicolo a destra",
+      "ordine di marcia"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio non regolamentato",
+      "regola generale della precedenza a destra",
+      "ordine di attraversamento incrocio con regola della destra"
+    ],
+    "rule_explanation": "Negli incroci non regolamentati da segnali, vige la regola generale della precedenza a destra. Il veicolo che si avvicina da destra ha la precedenza."
+  }
+}

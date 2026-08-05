@@ -1,0 +1,31 @@
+{
+  "question_id": 4352,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22042",
+  "text": "Il pannello integrativo raffigurato indica l'orario di apertura delle chiese",
+  "correct_answer": false,
+  "image": "0f24c014d528bea16102a306adcdc3f0.jpeg",
+  "image_description": "Pannello integrativo - Giorni festivi e orario. Il pannello integrativo indica che il segnale a cui è abbinato è valido nei giorni festivi e nella fascia oraria dalle 8:00 alle 20:00.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Al suo interno, a sinistra, è presente il simbolo di una croce (simbolo religioso). A destra della croce, è indicata una fascia oraria: 8,00 - 20,00. Questo pannello è tipicamente posto sotto un segnale di prescrizione per limitarne la validità temporale e/o a specifici giorni. In questo caso, la croce suggerisce che la limitazione si applica ai giorni festivi.",
+    "name": "Pannello integrativo - Giorni festivi e orario",
+    "description": "Il pannello integrativo indica che il segnale a cui è abbinato è valido nei giorni festivi e nella fascia oraria dalle 8:00 alle 20:00."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pannelli integrativi",
+      "Validità temporale dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "giorni festivi",
+      "orario",
+      "validità del segnale"
+    ],
+    "vector_search_queries": [
+      "pannelli integrativi che indicano validità oraria e giorni festivi",
+      "specificazione della validità dei segnali stradali tramite pannelli integrativi"
+    ],
+    "rule_explanation": "I pannelli integrativi specificano le modalità di applicazione dei segnali stradali, indicando ad esempio giorni festivi o fasce orarie di validità."
+  }
+}

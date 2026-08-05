@@ -1,0 +1,30 @@
+{
+  "question_id": 4156,
+  "topic": "Segnali di obbligo",
+  "number": "20122",
+  "text": "Il segnale raffigurato è un segnale d'obbligo",
+  "correct_answer": true,
+  "image": "f11adbce174cb84be85861f037d85fb6.jpeg",
+  "image_description": "Obbligo di svolta a destra. Il segnale impone di svoltare obbligatoriamente a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca che parte dal basso a sinistra, curva verso destra e punta verso l'alto a destra. Questo segnale appartiene alla categoria dei segnali di obbligo.",
+    "name": "Obbligo di svolta a destra",
+    "description": "Il segnale impone di svoltare obbligatoriamente a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali d'obbligo",
+      "segnali di prescrizione",
+      "svolta a destra"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di obbligo di svolta",
+      "interpretazione segnali di prescrizione viaria"
+    ],
+    "rule_explanation": "I segnali di obbligo, detti anche di prescrizione, impongono un comportamento specifico al conducente, come ad esempio una svolta obbligatoria."
+  }
+}

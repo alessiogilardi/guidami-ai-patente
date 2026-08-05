@@ -1,0 +1,27 @@
+{
+  "question_id": 4636,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24827",
+  "text": "E' opportuno, per il conducente che accusa segni di stanchezza, raggiungere la più vicina piazzola di sosta e riposare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza alla guida",
+      "Gestione della stanchezza del conducente"
+    ],
+    "exact_keywords": [
+      "stanchezza",
+      "conducente",
+      "riposare",
+      "piazzola di sosta"
+    ],
+    "vector_search_queries": [
+      "conducente che accusa stanchezza deve riposare",
+      "fermata per riposo in caso di stanchezza del conducente"
+    ],
+    "rule_explanation": "Il conducente che avverte stanchezza deve fermarsi in un luogo idoneo, come una piazzola di sosta, per riposare ed evitare rischi per la sicurezza."
+  }
+}

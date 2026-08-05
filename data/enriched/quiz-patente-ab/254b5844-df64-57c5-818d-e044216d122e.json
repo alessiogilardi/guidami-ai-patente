@@ -1,0 +1,29 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22555",
+  "text": "Il valore della distanza di sicurezza deve essere stabilito anche in base alla marcia innestata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regolazione della velocità",
+      "Condizioni di marcia"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "velocità",
+      "condizioni della strada",
+      "veicolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "determinazione della distanza di sicurezza in base a velocità e condizioni di marcia",
+      "fattori che influenzano la distanza di sicurezza tra veicoli"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere stabilita in base alla velocità, alle condizioni della strada, del traffico, del veicolo e atmosferiche, non alla marcia innestata."
+  }
+}

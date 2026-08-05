@@ -1,0 +1,29 @@
+{
+  "question_id": 4527,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23785",
+  "text": "La sosta negli spazi riservati allo stazionamento e alla fermata di autobus, filobus e veicoli circolanti su rotaia, è consentita se si utilizza il disco orario",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata in aree riservate",
+      "Utilizzo del disco orario"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "spazi riservati",
+      "autobus",
+      "fermata",
+      "disco orario"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in aree di fermata autobus",
+      "utilizzo disco orario in spazi riservati a mezzi pubblici",
+      "sosta in fermata autobus vietata"
+    ],
+    "rule_explanation": "La sosta negli spazi riservati a fermata o stazionamento di autobus, filobus o veicoli su rotaia è vietata, indipendentemente dall'uso del disco orario."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "question_id": 4054,
+  "topic": "Segnali di pericolo",
+  "number": "18894",
+  "text": "In presenza del segnale raffigurato sono vietate la sosta e la fermata sia sul tratto in salita che su quello in discesa",
+  "correct_answer": true,
+  "image": "77a40e39cc4b726c3f05d1759479cd9e.jpeg",
+  "image_description": "Segnale di dosso. Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un pannello a forma di triangolo con bordo rosso e sfondo bianco. Al centro del pannello è raffigurato un pittogramma nero che rappresenta un dosso.",
+    "name": "Segnale di dosso",
+    "description": "Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Divieto di sosta e fermata",
+      "Regolazione della circolazione in presenza di dossi"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "dosso",
+      "sosta",
+      "fermata",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "effetti del segnale di pericolo 'dosso' sulla circolazione",
+      "prescrizioni per il segnale di dosso",
+      "divieto di sosta e fermata in presenza di dossi"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'dosso' non impone di per sé divieti di sosta o fermata, ma impone di moderare la velocità per superare il dosso in sicurezza."
+  }
+}

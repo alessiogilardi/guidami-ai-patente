@@ -1,0 +1,28 @@
+{
+  "question_id": 4627,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24743",
+  "text": "In presenza di tratti di strada ghiacciati è opportuno usare maggiore attenzione nel transito su zone in ombra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Massima prudenza su tratti ghiacciati",
+      "Prevenzione incidenti stradali"
+    ],
+    "exact_keywords": [
+      "strada ghiacciata",
+      "maggiore attenzione",
+      "zone in ombra",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "comportamento di guida su strade ghiacciate",
+      "pericoli derivanti da zone in ombra su strade ghiacciate",
+      "precauzioni per la sicurezza stradale in presenza di ghiaccio"
+    ],
+    "rule_explanation": "Su tratti di strada ghiacciati è necessario usare la massima prudenza, prestando particolare attenzione alle zone in ombra dove il ghiaccio persiste più a lungo."
+  }
+}

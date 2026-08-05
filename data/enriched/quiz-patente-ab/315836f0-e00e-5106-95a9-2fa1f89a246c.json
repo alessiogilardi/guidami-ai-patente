@@ -1,0 +1,29 @@
+{
+  "question_id": 4634,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24801",
+  "text": "I conducenti degli autoveicoli, nell'aprire le portiere, devono prestare particolare attenzione ai veicoli a motore a due ruote, in quanto meno visibili",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti",
+      "Comportamento alla guida",
+      "Visibilità dei veicoli"
+    ],
+    "exact_keywords": [
+      "aprire le portiere",
+      "particolare attenzione",
+      "veicoli a motore a due ruote",
+      "meno visibili"
+    ],
+    "vector_search_queries": [
+      "attenzione nell'aprire le portiere ai veicoli a due ruote",
+      "prevenzione incidenti apertura portiere autoveicoli",
+      "visibilità ridotta motocicli e ciclomotori"
+    ],
+    "rule_explanation": "Nell'aprire le portiere, i conducenti di autoveicoli devono prestare attenzione ai veicoli a due ruote, data la loro minore visibilità e vulnerabilità."
+  }
+}

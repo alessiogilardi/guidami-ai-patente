@@ -1,0 +1,27 @@
+{
+  "question_id": 4510,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23642",
+  "text": "L'arresto è l'interruzione della marcia del veicolo dovuta ad esigenze della circolazione, come ad esempio ad un semaforo rosso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Arresto del veicolo",
+      "Interruzione della marcia per esigenze della circolazione"
+    ],
+    "exact_keywords": [
+      "arresto",
+      "interruzione della marcia",
+      "esigenze della circolazione",
+      "semaforo rosso"
+    ],
+    "vector_search_queries": [
+      "definizione di arresto del veicolo nel CdS",
+      "differenza tra arresto e fermata per esigenze della circolazione"
+    ],
+    "rule_explanation": "L'arresto è l'interruzione della marcia di un veicolo causata da necessità della circolazione, quali ad esempio un semaforo rosso, un segnale di stop o un ingorgo."
+  }
+}

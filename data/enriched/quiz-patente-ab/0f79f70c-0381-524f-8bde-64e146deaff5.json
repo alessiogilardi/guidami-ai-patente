@@ -1,0 +1,29 @@
+{
+  "question_id": 4662,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25013",
+  "text": "L'assicurazione obbligatoria copre i danni subiti solo da terzi trasportati sui taxi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione obbligatoria R.C.A.",
+      "Copertura danni a terzi",
+      "Danni ai trasportati"
+    ],
+    "exact_keywords": [
+      "assicurazione obbligatoria",
+      "responsabilità civile auto",
+      "danni a terzi trasportati",
+      "veicoli a noleggio con conducente"
+    ],
+    "vector_search_queries": [
+      "copertura assicurazione R.C.A. per terzi trasportati",
+      "risarcimento danni a passeggeri su taxi e NCC",
+      "esclusioni e limiti assicurazione obbligatoria R.C.A."
+    ],
+    "rule_explanation": "L'assicurazione obbligatoria R.C.A. copre i danni ai terzi trasportati, indipendentemente dal tipo di veicolo (incluso taxi e NCC), purché non trasportati a titolo di risarcimento o come tali trasportati per esclusiva responsabilità del vettore."
+  }
+}

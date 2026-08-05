@@ -1,0 +1,30 @@
+{
+  "question_id": 4392,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22515",
+  "text": "In un centro abitato, se si vede un pallone rotolare sulla carreggiata, bisogna prevedere anche il possibile attraversamento della strada da parte di un bambino",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Previsione del comportamento altrui",
+      "Comportamento prudente alla guida",
+      "Centri abitati"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "prevedere",
+      "attraversamento",
+      "bambino",
+      "pallone"
+    ],
+    "vector_search_queries": [
+      "obbligo di prevedere l'attraversamento di bambini in centro abitato",
+      "comportamento del conducente in presenza di bambini e palloni sulla carreggiata",
+      "prudenza alla guida in centri abitati per evitare incidenti con pedoni"
+    ],
+    "rule_explanation": "Nei centri abitati, il conducente deve prevedere possibili pericoli, come l'attraversamento improvviso della strada da parte di bambini, anche innescato da eventi come un pallone che rotola sulla carreggiata."
+  }
+}

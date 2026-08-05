@@ -1,0 +1,27 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24769",
+  "text": "Dopo un incidente stradale è obbligatorio, solo di notte, apporre il segnale mobile di pericolo in prossimità del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi in caso di incidente stradale",
+      "Segnalazione di pericolo"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "segnalazione mobile di pericolo",
+      "veicolo fermo",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "obbligo apposizione segnale mobile di pericolo dopo incidente",
+      "segnalazione veicolo fermo per incidente di notte e di giorno"
+    ],
+    "rule_explanation": "Il segnale mobile di pericolo va apposto in prossimità del veicolo fermo in caso di incidente, indipendentemente dall'ora, se la sua posizione crea pericolo per la circolazione."
+  }
+}

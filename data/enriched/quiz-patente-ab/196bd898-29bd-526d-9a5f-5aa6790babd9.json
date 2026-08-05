@@ -1,0 +1,28 @@
+{
+  "question_id": 4571,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24141",
+  "text": "Nelle autostrade e strade extraurbane, è obbligatorio accendere i fari anabbaglianti anche di giorno o, in alternativa, le luci di marcia diurna",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di accensione luci di marcia",
+      "Uso dei dispositivi di illuminazione su autostrade e strade extraurbane"
+    ],
+    "exact_keywords": [
+      "fari anabbaglianti",
+      "luci di marcia diurna",
+      "autostrade",
+      "strade extraurbane",
+      "obbligo di accensione"
+    ],
+    "vector_search_queries": [
+      "obbligo fari anabbaglianti autostrada giorno",
+      "uso luci di marcia diurna su strade extraurbane"
+    ],
+    "rule_explanation": "Su autostrade e strade extraurbane, è obbligatorio tenere accesi i fari anabbaglianti o le luci di marcia diurna anche durante il giorno per migliorare la visibilità."
+  }
+}

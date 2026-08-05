@@ -1,0 +1,27 @@
+{
+  "question_id": 4669,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25054",
+  "text": "L'assicurazione per la responsabilità civile auto (R.C.A.) copre solo la responsabilità del conducente, ma non quella del proprietario del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile del proprietario del veicolo",
+      "Assicurazione obbligatoria R.C.A."
+    ],
+    "exact_keywords": [
+      "responsabilità civile auto",
+      "conducente",
+      "proprietario del veicolo",
+      "polizza R.C.A."
+    ],
+    "vector_search_queries": [
+      "copertura assicurativa R.C.A. per responsabilità del proprietario del veicolo",
+      "responsabilità solidale conducente e proprietario nella R.C.A."
+    ],
+    "rule_explanation": "L'assicurazione R.C.A. copre sia la responsabilità civile del conducente sia quella del proprietario del veicolo, se diverso dal conducente."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4244,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21014",
+  "text": "La luce circolare gialla lampeggiante (tipo A di figura) può essere posta prima di un ponte mobile",
+  "correct_answer": false,
+  "image": "72f9b60b915b838de4c89ca613cfd8f8.jpeg",
+  "image_description": "Semaforo giallo lampeggiante, attraversamento pedonale, corsia ciclabile. La luce gialla circolare lampeggiante invita a procedere con particolare prudenza. Le luci B e C, con le figure stilizzate di un pedone e di una bicicletta, indicano rispettivamente un attraversamento pedonale e una corsia riservata ai ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre simboli luminosi distinti, etichettati come A, B e C. Il simbolo A è una luce circolare gialla lampeggiante. Il simbolo B è un disco nero con la figura stilizzata di un pedone in giallo. Il simbolo C è un disco nero con la figura stilizzata di una bicicletta in giallo. Questi simboli rappresentano diverse segnalazioni semaforiche o di corsia.",
+    "name": "Semaforo giallo lampeggiante, attraversamento pedonale, corsia ciclabile",
+    "description": "La luce gialla circolare lampeggiante invita a procedere con particolare prudenza. Le luci B e C, con le figure stilizzate di un pedone e di una bicicletta, indicano rispettivamente un attraversamento pedonale e una corsia riservata ai ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale luminosa",
+      "Preavviso di pericolo",
+      "Dispositivi di protezione e preavviso"
+    ],
+    "exact_keywords": [
+      "luce gialla lampeggiante",
+      "semaforo di preavviso",
+      "ponte mobile",
+      "dispositivi di preavviso"
+    ],
+    "vector_search_queries": [
+      "uso della luce gialla lampeggiante prima di ponti mobili",
+      "segnalazione semaforica di pericolo prima di ponti mobili",
+      "dispositivi di preavviso per ponti mobili"
+    ],
+    "rule_explanation": "La luce gialla lampeggiante è un segnale di preavviso di pericolo, non specifica per i ponti mobili. Per questi ultimi si usano segnali specifici."
+  }
+}

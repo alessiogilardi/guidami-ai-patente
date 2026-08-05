@@ -1,0 +1,26 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23533",
+  "text": "E' vietato il sorpasso nelle strade a senso unico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Strade a senso unico"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "strada a senso unico",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "sorpasso su strada a senso unico",
+      "condizioni di divieto di sorpasso"
+    ],
+    "rule_explanation": "Il sorpasso è vietato solo se espressamente indicato, non è un divieto assoluto sulle strade a senso unico."
+  }
+}

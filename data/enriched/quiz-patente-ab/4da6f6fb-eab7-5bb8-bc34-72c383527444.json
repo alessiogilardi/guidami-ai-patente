@@ -1,0 +1,30 @@
+{
+  "question_id": 4017,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18504",
+  "text": "La corsia di accelerazione serve per abbandonare la carreggiata dell'autostrada ed entrare in un'area di sosta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Corsia di accelerazione",
+      "Corsia di decelerazione",
+      "Manovre di immissione e uscita dalla carreggiata"
+    ],
+    "exact_keywords": [
+      "corsia di accelerazione",
+      "carreggiata",
+      "area di sosta",
+      "immissione",
+      "uscita"
+    ],
+    "vector_search_queries": [
+      "funzione corsia di accelerazione autostradale",
+      "differenza corsia accelerazione e decelerazione",
+      "accesso aree di sosta da autostrada"
+    ],
+    "rule_explanation": "La corsia di accelerazione serve per immettersi sulla carreggiata, non per uscire o accedere ad aree di sosta. L'uscita avviene tramite corsia di decelerazione."
+  }
+}

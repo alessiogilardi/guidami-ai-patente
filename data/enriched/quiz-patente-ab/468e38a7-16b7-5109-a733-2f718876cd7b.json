@@ -1,0 +1,27 @@
+{
+  "question_id": 4505,
+  "topic": "Norme sul sorpasso",
+  "number": "23597",
+  "text": "E' consentito sorpassare un'auto della Polizia, se non è in servizio di emergenza e non vi sono altri tipi di impedimenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di veicoli di emergenza",
+      "Regole generali di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicoli di polizia",
+      "servizio di emergenza",
+      "impedimenti"
+    ],
+    "vector_search_queries": [
+      "sorpasso veicoli di polizia in servizio di emergenza",
+      "condizioni per il sorpasso di veicoli di polizia non in emergenza"
+    ],
+    "rule_explanation": "Il sorpasso di un veicolo di polizia non in servizio di emergenza è consentito, purché non vi siano altri impedimenti alla manovra."
+  }
+}

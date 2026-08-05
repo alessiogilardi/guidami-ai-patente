@@ -1,0 +1,29 @@
+{
+  "question_id": 4698,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25255",
+  "text": "I veicoli muniti di pneumatici invernali devono rispettare limiti di velocità massima inferiori a quelli ordinari",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pneumatici invernali",
+      "Limiti di velocità",
+      "Condizioni di marcia"
+    ],
+    "exact_keywords": [
+      "pneumatici invernali",
+      "limiti di velocità",
+      "condizioni di marcia",
+      "velocità massima"
+    ],
+    "vector_search_queries": [
+      "obblighi di velocità con pneumatici invernali",
+      "adeguamento velocità pneumatici invernali",
+      "limiti di velocità ordinari e invernali"
+    ],
+    "rule_explanation": "L'uso di pneumatici invernali non impone di per sé limiti di velocità inferiori a quelli ordinari, ma il conducente deve sempre adeguare la velocità alle condizioni della strada e del traffico."
+  }
+}

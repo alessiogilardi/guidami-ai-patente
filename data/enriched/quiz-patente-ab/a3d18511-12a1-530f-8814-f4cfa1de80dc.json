@@ -1,0 +1,30 @@
+{
+  "question_id": 4556,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23989",
+  "text": "Il conducente di un fuoristrada (Suv) deve guidare con la massima prudenza, consapevole che l'altezza e la massa del proprio veicolo costituiscono un potenziale pericolo per pedoni, ciclisti e autovetture di modeste dimensioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in base alle caratteristiche del veicolo",
+      "Obbligo di prudenza e attenzione del conducente",
+      "Pericolo derivante da veicoli ingombranti"
+    ],
+    "exact_keywords": [
+      "massima prudenza",
+      "altezza del veicolo",
+      "massa del veicolo",
+      "potenziale pericolo",
+      "altri utenti della strada"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza per veicoli di grandi dimensioni",
+      "adeguamento della velocità in base a massa e altezza del veicolo",
+      "prevenzione del pericolo per pedoni e ciclisti da parte di SUV"
+    ],
+    "rule_explanation": "Il conducente deve guidare con la massima prudenza, adattando la velocità e la condotta alle dimensioni e massa del proprio veicolo per non costituire pericolo per gli altri utenti della strada."
+  }
+}

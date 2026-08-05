@@ -1,0 +1,29 @@
+{
+  "question_id": 4006,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18383",
+  "text": "L'isola di traffico serve per la fermata dei veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Isola di traffico",
+      "Funzione della segnaletica stradale",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "isola di traffico",
+      "fermata dei veicoli",
+      "segnaletica orizzontale",
+      "delimitare zone della carreggiata"
+    ],
+    "vector_search_queries": [
+      "definizione e scopo dell'isola di traffico",
+      "segnaletica orizzontale per isole di traffico",
+      "divieto di fermata o sosta sulle isole di traffico"
+    ],
+    "rule_explanation": "L'isola di traffico è una parte della strada, delimitata da segnaletica orizzontale, destinata a regolare il traffico e non a fermata o sosta di veicoli."
+  }
+}

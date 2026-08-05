@@ -1,0 +1,31 @@
+{
+  "question_id": 4095,
+  "topic": "Segnali di pericolo",
+  "number": "19397",
+  "text": "Il segnale raffigurato preannuncia il pericolo di caduta di pietre dalla parete rocciosa",
+  "correct_answer": true,
+  "image": "a50e795242bbca87bdb941fb2715f989.jpeg",
+  "image_description": "Segnale di pericolo di caduta massi. Il segnale preannuncia un pericolo di caduta massi dalla parete rocciosa. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo stradale. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un profilo di montagna stilizzato da cui cadono dei massi, rappresentati da esagoni neri. Il pittogramma indica un pericolo di caduta massi o pietre dalla parete rocciosa. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di pericolo di caduta massi",
+    "description": "Il segnale preannuncia un pericolo di caduta massi dalla parete rocciosa. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di pericolo specifico"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "caduta di pietre",
+      "parete rocciosa",
+      "segnali di pericolo"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo caduta massi",
+      "preavviso pericolo caduta pietre da parete rocciosa"
+    ],
+    "rule_explanation": "Il segnale di pericolo di caduta massi preannuncia il rischio di sassi che cadono da una parete rocciosa, richiedendo prudenza e moderazione della velocità."
+  }
+}

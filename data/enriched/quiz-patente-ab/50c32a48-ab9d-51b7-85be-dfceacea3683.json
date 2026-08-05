@@ -1,0 +1,28 @@
+{
+  "question_id": 4011,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18432",
+  "text": "Nelle aree pedonali possono transitare i trattori stradali, con velocità non superiore a 30 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree pedonali",
+      "Divieto di transito ai veicoli a motore",
+      "Utenti vulnerabili della strada"
+    ],
+    "exact_keywords": [
+      "area pedonale",
+      "trattori stradali",
+      "divieto di transito",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "divieto di transito dei trattori stradali nelle aree pedonali",
+      "accesso dei veicoli a motore nelle zone a traffico limitato e aree pedonali"
+    ],
+    "rule_explanation": "Nelle aree pedonali è vietato il transito a tutti i veicoli a motore, salvo eccezioni specifiche non applicabili ai trattori stradali."
+  }
+}

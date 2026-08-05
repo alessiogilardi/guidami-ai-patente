@@ -1,0 +1,31 @@
+{
+  "question_id": 4126,
+  "topic": "Segnali di divieto",
+  "number": "19774",
+  "text": "Il segnale raffigurato vieta il transito agli autocarri telonati",
+  "correct_answer": false,
+  "image": "ae9d3c1c3182ac8d92642820f51ecbfe.jpeg",
+  "image_description": "Divieto di transito agli autocarri. Il segnale vieta il transito a tutti gli autocarri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato il pittogramma di un autocarro, con la parte posteriore (cassone) di colore arancione e la parte inferiore (telaio e ruote) di colore nero. Il segnale è isolato, senza altri elementi di contesto stradale o pannelli integrativi.",
+    "name": "Divieto di transito agli autocarri",
+    "description": "Il segnale vieta il transito a tutti gli autocarri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Divieto di transito"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "autocarri",
+      "veicoli a motore",
+      "divieto specifico"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito per autocarri",
+      "interpretazione segnale divieto transito autocarri"
+    ],
+    "rule_explanation": "Il segnale di 'Divieto di transito agli autocarri' vieta la circolazione a tutti gli autocarri, indipendentemente dal tipo di telonatura."
+  }
+}

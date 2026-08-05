@@ -1,0 +1,27 @@
+{
+  "question_id": 4380,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22385",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi negli incroci, per far passare i veicoli cui spetti la precedenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di dare precedenza",
+      "Regolazione della velocità in prossimità degli incroci"
+    ],
+    "exact_keywords": [
+      "incroci",
+      "dare la precedenza",
+      "ridurre la velocità",
+      "fermarsi"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità e fermarsi agli incroci per dare precedenza",
+      "condotta di guida ai incroci con obbligo di precedenza"
+    ],
+    "rule_explanation": "Nei incroci, è obbligatorio ridurre la velocità e, se necessario, fermarsi per consentire il passaggio ai veicoli aventi diritto di precedenza."
+  }
+}

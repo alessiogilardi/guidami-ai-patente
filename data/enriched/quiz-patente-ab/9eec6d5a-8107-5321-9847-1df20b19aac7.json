@@ -1,0 +1,28 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18731",
+  "text": "Il conducente di un veicolo deve essere paziente e tollerante anche in caso di rallentamento della circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente",
+      "Convivenza civile sulla strada",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "pazienza",
+      "tolleranza",
+      "circolazione stradale",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "obbligo di pazienza e tolleranza del conducente in caso di traffico rallentato",
+      "principio di convivenza civile e uso responsabile della strada"
+    ],
+    "rule_explanation": "Il conducente deve mostrare pazienza e tolleranza, specialmente in situazioni di traffico rallentato, per garantire una convivenza civile e sicura."
+  }
+}

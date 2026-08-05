@@ -1,0 +1,31 @@
+{
+  "question_id": 4002,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18328",
+  "text": "La strada rappresentata è composta da due carreggiate",
+  "correct_answer": false,
+  "image": "a55112f8aa2ffee4f82537f5b38f7b9b.jpeg",
+  "image_description": "Carreggiata a due sensi di marcia con tre corsie per senso di marcia. La strada è rappresentata come una carreggiata a due sensi di marcia, ciascuno con tre corsie separate da strisce bianche discontinue. Ogni senso di marcia è ulteriormente separato da una doppia striscia bianca continua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada. La strada è divisa in due sezioni da una doppia linea bianca continua, indicando due sensi di marcia opposti. Ogni senso di marcia è ulteriormente suddiviso in tre corsie da linee bianche discontinue. Pertanto, la strada presenta un totale di sei corsie, tre per ogni senso di marcia. Non sono presenti segnali stradali, veicoli o altri elementi che possano alterare la interpretazione della geometria della strada.",
+    "name": "Carreggiata a due sensi di marcia con tre corsie per senso di marcia",
+    "description": "La strada è rappresentata come una carreggiata a due sensi di marcia, ciascuno con tre corsie separate da strisce bianche discontinue. Ogni senso di marcia è ulteriormente separato da una doppia striscia bianca continua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di carreggiata",
+      "Struttura della strada"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "strada",
+      "senso di marcia",
+      "corsia"
+    ],
+    "vector_search_queries": [
+      "differenza tra strada e carreggiata",
+      "definizione di carreggiata e strada con sensi di marcia multipli"
+    ],
+    "rule_explanation": "Una strada con due carreggiate separate da spartitraffico è composta da due carreggiate distinte, ciascuna con uno o più sensi di marcia. La descrizione dell'immagine non corrisponde a questa definizione."
+  }
+}

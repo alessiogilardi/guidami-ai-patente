@@ -1,0 +1,29 @@
+{
+  "question_id": 4616,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24583",
+  "text": "La patente di guida viene immediatamente ritirata, durante la circolazione, quando il conducente trasporta un passeggero in stato di ebbrezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sanzioni amministrative accessorie",
+      "Revoca della patente",
+      "Guida in stato di ebbrezza"
+    ],
+    "exact_keywords": [
+      "ritiro patente",
+      "circolazione",
+      "stato di ebbrezza",
+      "conducente",
+      "passeggero"
+    ],
+    "vector_search_queries": [
+      "conseguenze del trasporto di passeggero in stato di ebbrezza per la patente del conducente",
+      "sanzioni per conducente che trasporta persona in stato di ebbrezza"
+    ],
+    "rule_explanation": "Il ritiro della patente non è previsto per il solo fatto di trasportare un passeggero in stato di ebbrezza, ma solo se il conducente stesso è in tale stato."
+  }
+}

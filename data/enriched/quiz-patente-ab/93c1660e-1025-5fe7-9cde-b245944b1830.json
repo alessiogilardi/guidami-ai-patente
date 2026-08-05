@@ -1,0 +1,27 @@
+{
+  "question_id": 4584,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24246",
+  "text": "L'uso degli indicatori di direzione è necessario quando ci si arresta ad un semaforo rosso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "arresto",
+      "semaforo rosso",
+      "manovra di svolta"
+    ],
+    "vector_search_queries": [
+      "obbligo di uso degli indicatori di direzione per svolta o cambio corsia",
+      "segnalazione manovre con indicatori di direzione"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare l'intenzione di cambiare direzione o corsia, non per segnalare l'arresto a un semaforo rosso."
+  }
+}

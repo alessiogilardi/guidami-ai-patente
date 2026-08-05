@@ -1,0 +1,28 @@
+{
+  "question_id": 4616,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24585",
+  "text": "La patente di guida viene immediatamente ritirata, durante la circolazione, se si circola con pneumatici di dimensioni diverse da quelle riportate sulla carta di circolazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Documenti di circolazione",
+      "Uso di pneumatici non conformi",
+      "Sanzioni amministrative pecuniarie"
+    ],
+    "exact_keywords": [
+      "carta di circolazione",
+      "pneumatici di dimensioni non corrette",
+      "sanzione amministrativa pecuniaria",
+      "ritiro del documento di circolazione"
+    ],
+    "vector_search_queries": [
+      "sanzioni per pneumatici non conformi alle dimensioni indicate nella carta di circolazione",
+      "conseguenze della circolazione con pneumatici di dimensioni diverse da quelle prescritte"
+    ],
+    "rule_explanation": "La sanzione per l'uso di pneumatici di dimensioni diverse da quelle indicate nella carta di circolazione è una sanzione amministrativa pecuniaria, non il ritiro della patente."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4408,
+  "topic": "Distanza di sicurezza",
+  "number": "22661",
+  "text": "Se il veicolo che precede è un autocarro, si deve diminuire la distanza di sicurezza, in quanto i veicoli pesanti hanno uno spazio di frenatura molto più lungo rispetto agli altri veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza tra veicoli",
+      "Comportamento alla guida in relazione ai veicoli pesanti"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "autocarro",
+      "spazio di frenatura",
+      "veicoli pesanti"
+    ],
+    "vector_search_queries": [
+      "aumento della distanza di sicurezza per veicoli pesanti",
+      "distanza di sicurezza rispetto agli autocarri"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere aumentata, non diminuita, se il veicolo che precede è un autocarro, a causa del suo maggiore spazio di frenatura."
+  }
+}

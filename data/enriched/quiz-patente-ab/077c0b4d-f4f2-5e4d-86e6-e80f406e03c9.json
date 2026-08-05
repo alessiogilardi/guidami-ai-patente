@@ -1,0 +1,31 @@
+{
+  "question_id": 4262,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21192",
+  "text": "Il vigile disposto con le braccia ad angolo retto come in figura consente di proseguire diritto ai veicoli che arrivano dalla sua destra",
+  "correct_answer": false,
+  "image": "d610e27fa096d71115e187fa059bcac1.jpeg",
+  "image_description": "Segnale di agente del traffico (braccia orizzontali). L'agente della polizia si trova al centro dell'incrocio con le braccia tese orizzontalmente. Questa posizione indica che i veicoli che si avvicinano da davanti e da dietro devono fermarsi, mentre quelli che si avvicinano da destra e da sinistra possono proseguire.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una figura stilizzata di un agente di polizia in uniforme, in piedi al centro di un incrocio. L'agente ha le braccia tese orizzontalmente, perpendicolarmente al suo corpo. Ci sono delle linee stilizzate che suggeriscono le direzioni delle strade che convergono nell'incrocio. L'agente è rivolto verso l'osservatore, con il braccio destro leggermente più avanti del sinistro. Le linee a forma di V suggeriscono le direzioni di provenienza dei veicoli. In particolare, si vedono delle linee che indicano direzioni che si intersecano, formando un incrocio. La posizione delle braccia dell'agente è la chiave per interpretare il segnale.",
+    "name": "Segnale di agente del traffico (braccia orizzontali)",
+    "description": "L'agente della polizia si trova al centro dell'incrocio con le braccia tese orizzontalmente. Questa posizione indica che i veicoli che si avvicinano da davanti e da dietro devono fermarsi, mentre quelli che si avvicinano da destra e da sinistra possono proseguire."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni degli agenti del traffico",
+      "Interpretazione dei segnali degli agenti del traffico"
+    ],
+    "exact_keywords": [
+      "agente del traffico",
+      "braccia orizzontali",
+      "fermarsi",
+      "proseguire"
+    ],
+    "vector_search_queries": [
+      "segnali degli agenti del traffico con braccia orizzontali",
+      "interpretazione delle indicazioni degli agenti del traffico in prossimità di incroci"
+    ],
+    "rule_explanation": "Quando un agente del traffico ha le braccia orizzontali, i veicoli che provengono da davanti e da dietro devono fermarsi, mentre quelli che provengono dai lati possono proseguire."
+  }
+}

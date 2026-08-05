@@ -1,0 +1,27 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22527",
+  "text": "Il rispetto della distanza di sicurezza evita la collisione con il veicolo che precede",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Prevenzione degli incidenti"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo che precede",
+      "collisione",
+      "manovra brusca"
+    ],
+    "vector_search_queries": [
+      "funzione della distanza di sicurezza per evitare collisioni",
+      "obbligo di mantenere la distanza di sicurezza dal veicolo che precede"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare collisioni con il veicolo che precede, anche in caso di manovre improvvise."
+  }
+}

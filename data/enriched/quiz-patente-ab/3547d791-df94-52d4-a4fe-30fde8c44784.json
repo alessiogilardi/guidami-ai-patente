@@ -1,0 +1,27 @@
+{
+  "question_id": 4674,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25091",
+  "text": "Per diminuire il rumore non si deve accelerare quando il veicolo è fermo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Comportamento alla guida per la riduzione del rumore"
+    ],
+    "exact_keywords": [
+      "rumore",
+      "accelerare",
+      "veicolo fermo",
+      "inquinamento acustico"
+    ],
+    "vector_search_queries": [
+      "riduzione del rumore del veicolo in fase di arresto",
+      "divieto di accelerazione a veicolo fermo per inquinamento acustico"
+    ],
+    "rule_explanation": "Per ridurre l'inquinamento acustico, è vietato accelerare inutilmente quando il veicolo è fermo, al fine di limitare le emissioni sonore."
+  }
+}

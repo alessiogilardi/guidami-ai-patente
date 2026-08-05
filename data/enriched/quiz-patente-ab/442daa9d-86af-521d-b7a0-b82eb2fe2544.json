@@ -1,0 +1,27 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24677",
+  "text": "La patente di guida è confermata se il titolare della stessa è ancora in possesso dei requisiti fisici e psichici prescritti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti per il mantenimento della patente",
+      "Validità della patente di guida"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "requisiti fisici",
+      "requisiti psichici",
+      "conferma di validità"
+    ],
+    "vector_search_queries": [
+      "mantenimento requisiti fisici e psichici per patente",
+      "validità patente di guida e requisiti di idoneità"
+    ],
+    "rule_explanation": "La patente di guida è confermata se il titolare mantiene i requisiti fisici e psichici prescritti per il rilascio."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23584",
+  "text": "Nella fase di rientro dal sorpasso il conducente deve segnalare acusticamente la manovra al veicolo sorpassato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione acustica di manovra",
+      "Sorpasso e rientro"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo sorpassato",
+      "segnalazione acustica",
+      "rientro"
+    ],
+    "vector_search_queries": [
+      "segnalazione acustica obbligatoria durante il sorpasso e il rientro",
+      "obblighi del conducente durante la manovra di sorpasso e rientro"
+    ],
+    "rule_explanation": "Il rientro dopo un sorpasso non richiede segnalazione acustica al veicolo sorpassato, ma solo la verifica della possibilità di effettuarlo senza pericolo."
+  }
+}

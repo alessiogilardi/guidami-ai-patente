@@ -1,0 +1,33 @@
+{
+  "question_id": 4227,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20855",
+  "text": "In una strada a senso unico di circolazione con la segnaletica indicata in figura si può sorpassare anche in curva",
+  "correct_answer": true,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Sorpasso",
+      "Strade a senso unico"
+    ],
+    "exact_keywords": [
+      "striscia bianca discontinua",
+      "senso unico di circolazione",
+      "sorpasso",
+      "inversione di marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso segnaletica orizzontale",
+      "sorpasso in curva su strada a senso unico",
+      "segnaletica orizzontale striscia bianca discontinua"
+    ],
+    "rule_explanation": "La striscia bianca discontinua su strada a senso unico consente il sorpasso e l'inversione di marcia, anche in curva, se le condizioni di traffico e visibilità lo permettono."
+  }
+}

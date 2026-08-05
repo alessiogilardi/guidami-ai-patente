@@ -1,0 +1,28 @@
+{
+  "question_id": 4682,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25149",
+  "text": "Trainare un rimorchio non comporta un aumento dei consumi di carburante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Impatto ambientale dei veicoli",
+      "Consumo di carburante",
+      "Efficienza energetica"
+    ],
+    "exact_keywords": [
+      "rimorchio",
+      "consumo di carburante",
+      "aumento dei consumi",
+      "efficienza energetica"
+    ],
+    "vector_search_queries": [
+      "impatto del traino di un rimorchio sui consumi di carburante",
+      "aumento dei consumi di carburante dovuto al peso e alla resistenza aerodinamica di un rimorchio"
+    ],
+    "rule_explanation": "Trainare un rimorchio aumenta inevitabilmente i consumi di carburante a causa del maggior peso e dell'aumentata resistenza aerodinamica del veicolo."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18722",
+  "text": "E' consentito lanciare la carta dal finestrino",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente",
+      "Comportamento scorretto alla guida",
+      "Tutela dell'ambiente stradale"
+    ],
+    "exact_keywords": [
+      "gettare rifiuti dalla finestra",
+      "violazione del Codice della Strada",
+      "sanzioni amministrative pecuniarie",
+      "degradare il suolo e l'ambiente"
+    ],
+    "vector_search_queries": [
+      "divieto di gettare rifiuti dal veicolo in movimento",
+      "sanzioni per chi getta rifiuti dal finestrino dell'auto",
+      "comportamenti vietati alla guida e tutela ambientale"
+    ],
+    "rule_explanation": "È vietato gettare rifiuti dal finestrino del veicolo in circolazione, poiché costituisce un illecito amministrativo che comporta sanzioni pecuniarie e la decurtazione di punti patente."
+  }
+}

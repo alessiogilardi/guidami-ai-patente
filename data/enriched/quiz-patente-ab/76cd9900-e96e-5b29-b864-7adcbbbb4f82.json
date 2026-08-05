@@ -1,0 +1,31 @@
+{
+  "question_id": 4092,
+  "topic": "Segnali di pericolo",
+  "number": "19354",
+  "text": "Il segnale raffigurato preannuncia lo sbocco della strada su un molo",
+  "correct_answer": true,
+  "image": "a8ad5623eb1559f20081cc1263908b79.jpeg",
+  "image_description": "Segnale di pericolo di caduta in acqua. Il segnale preannuncia lo sbocco della strada su un molo o un argine, con pericolo di caduta in acqua. È un segnale di pericolo che impone particolare prudenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un'automobile che sta per cadere da una banchina (rappresentata da una linea verticale nera) in acqua (rappresentata da linee ondulate blu). Il pittogramma indica chiaramente il pericolo di sbocco della strada su un luogo che termina bruscamente in acqua, come un molo, un argine o una banchina portuale.",
+    "name": "Segnale di pericolo di caduta in acqua",
+    "description": "Il segnale preannuncia lo sbocco della strada su un molo o un argine, con pericolo di caduta in acqua. È un segnale di pericolo che impone particolare prudenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di sbocco su molo o argine"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "sbocco su molo",
+      "caduta in acqua",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "preavviso sbocco su molo con pericolo di caduta in acqua",
+      "segnali stradali di pericolo caduta in acqua"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante lo sbocco su un molo preannuncia la possibile caduta in acqua e impone di procedere con particolare prudenza."
+  }
+}

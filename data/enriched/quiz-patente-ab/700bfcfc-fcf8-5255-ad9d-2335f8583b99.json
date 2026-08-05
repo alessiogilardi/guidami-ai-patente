@@ -1,0 +1,33 @@
+{
+  "question_id": 4235,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20923",
+  "text": "L'elemento in figura è un rallentatore di velocità installato sulla strada",
+  "correct_answer": true,
+  "image": "ac5ddd4530b130b2ab0247b0f810e20b.jpeg",
+  "image_description": "Segnale di ostacolo (rallentatore di velocità). L'elemento raffigurato è un segnale di ostacolo, costituito da strisce bianche e nere alternate, posto trasversalmente sulla carreggiata per segnalare la presenza di un ostacolo o di un restringimento pericoloso. In questo caso, si tratta di due elementi identici posti uno di seguito all'altro, che indicano un rallentatore di velocità o un dosso artificiale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi stradali posti trasversalmente sulla carreggiata. Ciascun elemento è composto da strisce orizzontali alternate di colore giallo e nero. Questi elementi sono posizionati su un tratto di strada asfaltata, delimitato da strisce bianche laterali. La disposizione e la colorazione indicano che si tratta di segnali di ostacolo, comunemente utilizzati per segnalare dossi artificiali o rallentatori di velocità. La presenza di due elementi consecutivi rafforza l'indicazione di una riduzione della velocità.",
+    "name": "Segnale di ostacolo (rallentatore di velocità)",
+    "description": "L'elemento raffigurato è un segnale di ostacolo, costituito da strisce bianche e nere alternate, posto trasversalmente sulla carreggiata per segnalare la presenza di un ostacolo o di un restringimento pericoloso. In questo caso, si tratta di due elementi identici posti uno di seguito all'altro, che indicano un rallentatore di velocità o un dosso artificiale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segnali sugli ostacoli",
+      "Dispositivi di rallentamento della velocità"
+    ],
+    "exact_keywords": [
+      "rallentatore di velocità",
+      "segnali sugli ostacoli",
+      "strisce bianche e nere alternate",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per rallentatori di velocità",
+      "segnali di ostacolo con strisce bianche e nere alternate",
+      "dosso artificiale come segnale orizzontale"
+    ],
+    "rule_explanation": "I rallentatori di velocità, o dossi artificiali, sono segnali orizzontali posti sulla carreggiata con strisce bianche e nere alternate per segnalare un ostacolo o un restringimento pericoloso."
+  }
+}

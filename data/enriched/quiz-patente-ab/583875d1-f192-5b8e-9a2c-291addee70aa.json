@@ -1,0 +1,29 @@
+{
+  "question_id": 4637,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24831",
+  "text": "Un conducente che ha assunto una quantità eccessiva di bevande alcoliche può recuperare velocemente l'idoneità alla guida se assume cibi piuttosto salati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in stato di ebbrezza",
+      "Effetti dell'alcool sulla capacità di guida",
+      "Recupero dell'idoneità alla guida"
+    ],
+    "exact_keywords": [
+      "stato di ebbrezza",
+      "conducente",
+      "idoneità alla guida",
+      "bevande alcoliche"
+    ],
+    "vector_search_queries": [
+      "effetti dell'alcool sulla capacità di guida",
+      "recupero idoneità alla guida dopo assunzione alcolici",
+      "rimedi per smaltire l'alcool e guidare in sicurezza"
+    ],
+    "rule_explanation": "L'assunzione di cibi salati non è in grado di annullare gli effetti dell'alcool e far recuperare l'idoneità alla guida. L'unico modo per smaltire l'alcool è attendere il suo metabolismo."
+  }
+}

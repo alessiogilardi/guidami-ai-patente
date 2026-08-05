@@ -1,0 +1,27 @@
+{
+  "question_id": 4600,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24388",
+  "text": "L'airbag non può essere montato su vetture con meno di 4 porte",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza attiva",
+      "Installazione di airbag"
+    ],
+    "exact_keywords": [
+      "airbag",
+      "porte",
+      "omologazione",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "installazione airbag su veicoli con meno di 4 porte",
+      "requisiti per montaggio airbag su autovetture"
+    ],
+    "rule_explanation": "L'airbag è un dispositivo di sicurezza complementare che può essere installato su veicoli con un numero di porte variabile, purché omologato."
+  }
+}

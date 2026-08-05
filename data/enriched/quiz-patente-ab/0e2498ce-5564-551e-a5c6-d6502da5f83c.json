@@ -1,0 +1,27 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22507",
+  "text": "I passaggi a livello vanno affrontati a velocità molto elevata per essere in grado di sfondare le barriere se non si è in grado di fermarsi per tempo a barriere abbassate",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento ai passaggi a livello",
+      "Pericolo per la circolazione"
+    ],
+    "exact_keywords": [
+      "passaggi a livello",
+      "barriere abbassate",
+      "velocità ridotta",
+      "arrestarsi"
+    ],
+    "vector_search_queries": [
+      "comportamento ai passaggi a livello con barriere abbassate",
+      "obbligo di arresto o rallentamento ai passaggi a livello"
+    ],
+    "rule_explanation": "Ai passaggi a livello con barriere abbassate è obbligatorio arrestarsi. Se non è possibile fermarsi, si deve rallentare e attendere il loro rialzamento, mai tentare di sfondarle."
+  }
+}

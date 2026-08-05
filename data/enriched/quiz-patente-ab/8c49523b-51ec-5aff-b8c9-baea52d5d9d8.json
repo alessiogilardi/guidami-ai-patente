@@ -1,0 +1,30 @@
+{
+  "question_id": 4537,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23856",
+  "text": "Sulle autostrade e strade extraurbane principali è vietata la circolazione di veicoli a tenuta non stagna e con carico scoperto, se trasportano materiali che possono disperdersi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di circolazione per veicoli non idonei",
+      "Trasporto di materiali pericolosi o facilmente disperdibili",
+      "Norme specifiche per autostrade e strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "autostrade",
+      "strade extraurbane principali",
+      "veicoli a tenuta non stagna",
+      "carico scoperto",
+      "materiali che possono disperdersi"
+    ],
+    "vector_search_queries": [
+      "divieto circolazione veicoli carico scoperto autostrada",
+      "norme trasporto materiali disperdibili su strade extraurbane principali",
+      "requisiti tenuta stagna veicoli trasporto materiali autostrada"
+    ],
+    "rule_explanation": "Sulle autostrade e strade extraurbane principali è vietato il transito di veicoli con carico scoperto o non a tenuta stagna, qualora trasportino materiali suscettibili di dispersione."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4380,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22388",
+  "text": "Si è tenuti a regolare la velocità in funzione della velocità dei veicoli che seguono",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Sicurezza stradale",
+      "Comportamento del conducente"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "intralcio alla circolazione",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alle condizioni di traffico e della strada",
+      "moderare la velocità per non creare pericolo o intralcio alla circolazione"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in base alle condizioni di traffico, della strada e del veicolo, non solo in funzione dei veicoli che seguono, per evitare pericoli o intralci."
+  }
+}

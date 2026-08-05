@@ -1,0 +1,28 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25388",
+  "text": "Al fine di garantire la sicurezza della circolazione occorre verificare periodicamente l'assenza di giochi anomali allo sterzo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "gioco anomalo",
+      "sterzo",
+      "sicurezza della circolazione",
+      "verifica periodica"
+    ],
+    "vector_search_queries": [
+      "controllo gioco sterzo sicurezza circolazione",
+      "manutenzione sterzo veicolo stabilità"
+    ],
+    "rule_explanation": "La verifica periodica dell'assenza di giochi anomali allo sterzo è essenziale per garantire la stabilità del veicolo e la sicurezza della circolazione."
+  }
+}

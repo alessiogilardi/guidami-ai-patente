@@ -1,0 +1,29 @@
+{
+  "question_id": 4508,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23624",
+  "text": "E' opportuno che il conducente di un autoveicolo in sosta sul lato sinistro in una strada urbana a senso unico, ricordi al passeggero di prestare particolare attenzione ai veicoli che sopraggiungono, prima di aprire la portiera",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole di comportamento durante la sosta",
+      "Apertura delle portiere dei veicoli",
+      "Sicurezza nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "strada urbana a senso unico",
+      "aprire la portiera",
+      "veicoli in sopraggiunta"
+    ],
+    "vector_search_queries": [
+      "comportamento conducente apertura portiera in sosta",
+      "pericolo apertura portiera veicoli in sopraggiunta",
+      "regole sosta su strada urbana a senso unico"
+    ],
+    "rule_explanation": "Il conducente deve assicurarsi che l'apertura della portiera non costituisca pericolo per gli altri utenti della strada, in particolare per i veicoli in sopraggiunta."
+  }
+}

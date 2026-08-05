@@ -1,0 +1,32 @@
+{
+  "question_id": 4368,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22216",
+  "text": "Il pannello integrativo raffigurato indica una zona di divieto di sosta con rimozione del veicolo",
+  "correct_answer": true,
+  "image": "53f94e0cb22dad42d625b1ea9596dd83.jpeg",
+  "image_description": "Pannello integrativo - Rimozione forzata. Il pannello integrativo indica che i veicoli in sosta possono essere rimossi forzatamente (es. con carro attrezzi).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare con bordo nero su sfondo bianco. Al suo interno, in nero, è raffigurato un carro attrezzi che solleva la parte posteriore di un'automobile. Questo pittogramma è comunemente associato al divieto di sosta con rimozione forzata del veicolo.",
+    "name": "Pannello integrativo - Rimozione forzata",
+    "description": "Il pannello integrativo indica che i veicoli in sosta possono essere rimossi forzatamente (es. con carro attrezzi)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Rimozione forzata del veicolo",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "divieto di sosta",
+      "rimozione forzata",
+      "rimozione del veicolo"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo che indica rimozione forzata per divieto di sosta",
+      "significato pannello rimozione forzata veicolo in divieto di sosta"
+    ],
+    "rule_explanation": "Il pannello integrativo, quando abbinato al segnale di divieto di sosta, specifica che i veicoli parcheggiati in violazione saranno rimossi forzatamente."
+  }
+}

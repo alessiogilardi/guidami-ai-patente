@@ -1,0 +1,27 @@
+{
+  "question_id": 4396,
+  "topic": "Distanza di sicurezza",
+  "number": "22568",
+  "text": "La distanza di sicurezza deve essere di almeno 100 metri in caso di nevicata in atto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condizioni atmosferiche avverse"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "nevicata",
+      "condizioni della strada",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "adeguamento della distanza di sicurezza alle condizioni di visibilità e della strada",
+      "distanza minima di sicurezza in caso di precipitazioni nevose"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere adeguata alle condizioni di visibilità e della strada, non è fissata a 100 metri in caso di nevicata."
+  }
+}

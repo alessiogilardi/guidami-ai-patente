@@ -1,0 +1,32 @@
+{
+  "question_id": 4356,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22082",
+  "text": "Il segnale raffigurato conferma la continuazione del divieto di sorpasso",
+  "correct_answer": true,
+  "image": "434788d9f15303500c6a41c25d1381d9.jpeg",
+  "image_description": "Segnale di divieto di sorpasso con pannello integrativo di limitazione (veicoli pesanti). Il segnale di divieto di sorpasso si applica a tutti i veicoli, eccetto quelli a due ruote senza motore. Il pannello integrativo indica che il divieto si applica ai veicoli pesanti. Pertanto, il divieto di sorpasso è valido per i veicoli pesanti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di sorpasso, rappresentato da un disco rosso con bordo rosso e sfondo bianco, con due automobili stilizzate (una rossa e una nera) al centro. Sotto questo segnale, vi è un pannello integrativo rettangolare bianco con due frecce nere, una rivolta verso l'alto e una verso il basso, che indicano la direzione del traffico. Il pannello integrativo, secondo la normativa, specifica che il divieto di sorpasso si applica ai veicoli pesanti.",
+    "name": "Segnale di divieto di sorpasso con pannello integrativo di limitazione (veicoli pesanti)",
+    "description": "Il segnale di divieto di sorpasso si applica a tutti i veicoli, eccetto quelli a due ruote senza motore. Il pannello integrativo indica che il divieto si applica ai veicoli pesanti. Pertanto, il divieto di sorpasso è valido per i veicoli pesanti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Divieto di sorpasso",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "segnali integrativi",
+      "divieto di sorpasso",
+      "veicoli pesanti",
+      "continuazione del divieto"
+    ],
+    "vector_search_queries": [
+      "pannelli integrativi che specificano il divieto di sorpasso per determinate categorie di veicoli",
+      "interpretazione dei segnali di divieto con pannelli integrativi di limitazione"
+    ],
+    "rule_explanation": "I pannelli integrativi possono specificare o limitare l'applicazione di un segnale di prescrizione, come il divieto di sorpasso, indicando a quali veicoli o in quali circostanze si applica."
+  }
+}

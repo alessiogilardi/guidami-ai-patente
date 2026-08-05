@@ -1,0 +1,29 @@
+{
+  "question_id": 4691,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25197",
+  "text": "La forza aderente diminuisce se la strada è sporca di olio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Forza di aderenza pneumatico-strada",
+      "Fattori che influenzano l'aderenza",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "forza aderente",
+      "strada sporca",
+      "olio",
+      "aderenza"
+    ],
+    "vector_search_queries": [
+      "riduzione forza aderente su strada con olio",
+      "impatto olio sull'aderenza stradale",
+      "condizioni strada e tenuta di strada"
+    ],
+    "rule_explanation": "La forza aderente tra pneumatici e strada è ridotta dalla presenza di sostanze scivolose come l'olio, diminuendo la tenuta di strada e aumentando il rischio di sbandamento."
+  }
+}

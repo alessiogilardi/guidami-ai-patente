@@ -1,0 +1,32 @@
+{
+  "question_id": 4547,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23925",
+  "text": "Il carico dei veicoli deve essere sistemato in modo da non diminuire la visibilità al conducente né impedirgli la libertà dei movimenti nella guida",
+  "correct_answer": true,
+  "image": "87fd4191b69ff4e1eee00e1990b00418.jpeg",
+  "image_description": "Pannello delineatore di ostacolo (o restringimento). Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bande diagonali alternate di colore rosso e giallo. Questo tipo di segnale è comunemente utilizzato per segnalare ostacoli o restringimenti della carreggiata. Le bande rosse e gialle alternate servono a catturare l'attenzione del conducente e a indicare un pericolo.",
+    "name": "Pannello delineatore di ostacolo (o restringimento)",
+    "description": "Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema di ritenzione del carico",
+      "Visibilità del conducente",
+      "Libertà di movimento del conducente"
+    ],
+    "exact_keywords": [
+      "carico dei veicoli",
+      "visibilità",
+      "libertà dei movimenti",
+      "guida"
+    ],
+    "vector_search_queries": [
+      "sistemazione del carico per garantire la visibilità del conducente",
+      "influenza del carico sulla libertà di movimento del conducente"
+    ],
+    "rule_explanation": "Il carico deve essere sistemato in modo da non ridurre la visibilità del conducente né limitarne i movimenti durante la guida."
+  }
+}

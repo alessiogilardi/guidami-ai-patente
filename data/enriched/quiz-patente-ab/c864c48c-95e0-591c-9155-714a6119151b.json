@@ -1,0 +1,28 @@
+{
+  "question_id": 4011,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18434",
+  "text": "Nelle aree pedonali possono transitare tutti gli autoveicoli, ma con prudenza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree pedonali",
+      "Accesso e circolazione dei veicoli",
+      "Utenti vulnerabili della strada"
+    ],
+    "exact_keywords": [
+      "area pedonale",
+      "divieto di transito",
+      "autoveicoli",
+      "accesso consentito"
+    ],
+    "vector_search_queries": [
+      "divieto di transito autoveicoli in area pedonale",
+      "regole di accesso e circolazione nelle aree pedonali"
+    ],
+    "rule_explanation": "Nelle aree pedonali è vietato il transito a tutti gli autoveicoli, salvo specifiche eccezioni previste dalla segnaletica o da specifiche autorizzazioni."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25400",
+  "text": "Il volante non può essere regolato in altezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione del volante",
+      "Sicurezza alla guida",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "volante",
+      "regolazione in altezza",
+      "dispositivo di guida",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "regolazione volante altezza",
+      "dispositivi di sicurezza veicolo volante",
+      "posizione di guida sicura volante"
+    ],
+    "rule_explanation": "Il volante deve essere regolabile in altezza per consentire al conducente di trovare una posizione di guida sicura e confortevole, garantendo il controllo del veicolo."
+  }
+}

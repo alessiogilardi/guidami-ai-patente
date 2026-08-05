@@ -1,0 +1,27 @@
+{
+  "question_id": 4551,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23958",
+  "text": "Il traino per incombente situazione di emergenza di un veicolo in avaria deve avvenire attraverso un solido collegamento, anche se non è possibile segnalarlo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo in avaria",
+      "Traino di veicoli in emergenza"
+    ],
+    "exact_keywords": [
+      "veicolo in avaria",
+      "solido collegamento",
+      "segnalazione",
+      "traino"
+    ],
+    "vector_search_queries": [
+      "segnalazione obbligatoria per veicolo in avaria in traino",
+      "requisiti per il traino di veicoli in avaria in emergenza"
+    ],
+    "rule_explanation": "Il traino di un veicolo in avaria per emergenza deve avvenire con solido collegamento e adeguata segnalazione, anche se non è possibile segnalarlo con i dispositivi di emergenza."
+  }
+}

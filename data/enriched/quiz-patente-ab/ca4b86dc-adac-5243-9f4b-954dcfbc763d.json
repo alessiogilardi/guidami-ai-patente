@@ -1,0 +1,32 @@
+{
+  "question_id": 4140,
+  "topic": "Segnali di divieto",
+  "number": "19929",
+  "text": "Il segnale raffigurato vieta l'abbandono prolungato nel tempo del veicolo",
+  "correct_answer": true,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Divieto di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "sosta vietata",
+      "fermata consentita",
+      "segnali di divieto"
+    ],
+    "vector_search_queries": [
+      "differenza tra divieto di sosta e fermata vietata",
+      "segnali stradali di divieto di sosta e loro significato",
+      "disciplina della sosta e della fermata dei veicoli"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta vieta ai conducenti di lasciare il proprio veicolo in sosta per un tempo prolungato, ma consente la fermata per brevi periodi."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "question_id": 4025,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18566",
+  "text": "I quadricicli sono veicoli a motore a quattro ruote",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di quadriciclo",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "quadricicli",
+      "veicoli a motore",
+      "quattro ruote"
+    ],
+    "vector_search_queries": [
+      "definizione di quadriciclo nel CdS",
+      "classificazione veicoli a motore a quattro ruote"
+    ],
+    "rule_explanation": "I quadricicli sono veicoli a motore dotati di quattro ruote, conformemente alle definizioni del Codice della Strada."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24672",
+  "text": "La perdita di punti sulla patente per infrazione al codice della strada è raddoppiata se effettuata alla guida di autovettura di potenza superiore a 115 kW",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Decadenza della patente",
+      "Sistema sanzionatorio della patente a punti"
+    ],
+    "exact_keywords": [
+      "punti patente",
+      "infrazione al codice della strada",
+      "raddoppio decurtazione",
+      "potenza motore"
+    ],
+    "vector_search_queries": [
+      "raddoppio decurtazione punti patente per potenza veicolo",
+      "sanzioni accessorie patente a punti per infrazioni stradali"
+    ],
+    "rule_explanation": "La decurtazione dei punti per infrazioni al Codice della Strada non è raddoppiata in base alla potenza del veicolo, ma solo in casi specifici previsti dalla legge."
+  }
+}

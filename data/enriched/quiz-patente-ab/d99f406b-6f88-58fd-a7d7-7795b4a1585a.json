@@ -1,0 +1,27 @@
+{
+  "question_id": 4604,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24453",
+  "text": "Gli indumenti ad uso motociclistico omologati sono sottoposti a prove di resistenza al lavaggio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Omologazione dei dispositivi di protezione per motociclisti",
+      "Requisiti di sicurezza per l'abbigliamento tecnico motociclistico"
+    ],
+    "exact_keywords": [
+      "indumenti tecnici",
+      "omologati",
+      "resistenza all'abrasione",
+      "resistenza all'impatto"
+    ],
+    "vector_search_queries": [
+      "requisiti di omologazione indumenti motociclistici",
+      "prove di resistenza per abbigliamento tecnico motociclistico"
+    ],
+    "rule_explanation": "Gli indumenti motociclistici omologati devono superare prove di resistenza all'abrasione e all'impatto, non al lavaggio."
+  }
+}

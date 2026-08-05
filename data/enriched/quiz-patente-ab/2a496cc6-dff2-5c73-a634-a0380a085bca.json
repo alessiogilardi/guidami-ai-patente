@@ -1,0 +1,28 @@
+{
+  "question_id": 4553,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23972",
+  "text": "Il conducente di autoveicolo deve valutare con prudenza, in relazione alla propria velocità, la distanza che lo separa da un ciclomotorista che si accinge a svoltare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Comportamento in prossimità di utenti vulnerabili",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "velocità",
+      "ciclista",
+      "svolta"
+    ],
+    "vector_search_queries": [
+      "mantenimento distanza di sicurezza da ciclista in manovra di svolta",
+      "adeguamento velocità in prossimità di ciclomotorista che svolta"
+    ],
+    "rule_explanation": "Il conducente deve mantenere una distanza di sicurezza adeguata, modulando la velocità in base alla presenza di altri utenti della strada, specialmente i più vulnerabili come i ciclisti, e alle manovre che questi si apprestano a compiere."
+  }
+}

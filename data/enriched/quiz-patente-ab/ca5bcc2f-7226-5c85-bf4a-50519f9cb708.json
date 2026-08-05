@@ -1,0 +1,31 @@
+{
+  "question_id": 4294,
+  "topic": "Segnali di indicazione",
+  "number": "21508",
+  "text": "Il segnale raffigurato consiglia di montare le catene",
+  "correct_answer": false,
+  "image": "0d8a80138e9ac22a0fe1adb369bd70ad.jpeg",
+  "image_description": "Indicazione stradale generica (Passo dello Stelvio aperto). Il segnale indica che il passo dello Stelvio è aperto. Le scritte in diverse lingue confermano la transitabilità. Il simbolo al centro e gli spazi vuoti sottostanti suggeriscono che potrebbero esserci informazioni aggiuntive, come condizioni meteo o obblighi specifici, ma non sono visibili in questa immagine.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu scuro con bordi bianchi. Nella parte superiore, in lettere maiuscole bianche, è scritto \"STELVIO\". Sotto questa scritta, vi è un riquadro verde con scritte in diverse lingue: \"aperto\", \"ouvert\", \"open\", \"geöffnet\". Al di sotto di questo riquadro, vi è un simbolo circolare con delle linee all'interno, simile a un sigillo o un emblema, seguito da due riquadri bianchi vuoti, uno sotto l'altro. Il segnale sembra indicare l'apertura di una località o di un passo, in questo caso lo Stelvio, e la sua transitabilità, come confermato dalle traduzioni della parola \"aperto\".",
+    "name": "Indicazione stradale generica (Passo dello Stelvio aperto)",
+    "description": "Il segnale indica che il passo dello Stelvio è aperto. Le scritte in diverse lingue confermano la transitabilità. Il simbolo al centro e gli spazi vuoti sottostanti suggeriscono che potrebbero esserci informazioni aggiuntive, come condizioni meteo o obblighi specifici, ma non sono visibili in questa immagine."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Obblighi e raccomandazioni stagionali"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "catene da neve",
+      "obbligo di pneumatici invernali",
+      "transito vietato"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale e obblighi associati",
+      "differenza tra segnali di indicazione e segnali di obbligo per catene da neve"
+    ],
+    "rule_explanation": "I segnali di indicazione forniscono informazioni utili, ma non impongono obblighi specifici come il montaggio delle catene, che è segnalato da specifici segnali di obbligo."
+  }
+}

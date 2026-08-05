@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22299",
+  "text": "E' obbligatorio regolare la velocità nei tratti di strada fiancheggiati da edifici",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di circolazione",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "strada fiancheggiata da edifici",
+      "regolare la velocità",
+      "pericolo o intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di regolare la velocità in presenza di edifici",
+      "adeguamento della velocità in tratti urbani o con fabbricati"
+    ],
+    "rule_explanation": "Il conducente deve sempre regolare la velocità in base alle condizioni di circolazione, inclusi i tratti di strada con edifici, per evitare pericoli o intralci."
+  }
+}

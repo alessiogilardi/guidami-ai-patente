@@ -1,0 +1,27 @@
+{
+  "question_id": 4660,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24992",
+  "text": "La responsabilità penale connessa al sinistro stradale sorge allorché vengano violate norme contemplate dal Codice Penale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità penale da reato stradale",
+      "Applicazione del Codice Penale"
+    ],
+    "exact_keywords": [
+      "responsabilità penale",
+      "sinistro stradale",
+      "Codice Penale",
+      "reato"
+    ],
+    "vector_search_queries": [
+      "reati previsti dal Codice Penale in materia di circolazione stradale",
+      "responsabilità penale del conducente per violazione del Codice Penale in caso di sinistro"
+    ],
+    "rule_explanation": "La responsabilità penale per un sinistro stradale sorge quando la condotta del conducente integra una fattispecie di reato prevista dal Codice Penale."
+  }
+}

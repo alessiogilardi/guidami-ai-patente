@@ -1,0 +1,27 @@
+{
+  "question_id": 4609,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24491",
+  "text": "La patente di categoria A1 può essere conseguita da chi ha almeno 16 anni di età",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti anagrafici per il conseguimento della patente",
+      "Età minima per la patente A1"
+    ],
+    "exact_keywords": [
+      "patente di categoria A1",
+      "conseguita",
+      "età minima",
+      "16 anni"
+    ],
+    "vector_search_queries": [
+      "età minima per conseguire patente A1",
+      "requisiti età patente A1"
+    ],
+    "rule_explanation": "La patente di categoria A1 può essere conseguita da chi ha compiuto almeno 16 anni di età e soddisfa gli altri requisiti previsti dal Codice della Strada."
+  }
+}

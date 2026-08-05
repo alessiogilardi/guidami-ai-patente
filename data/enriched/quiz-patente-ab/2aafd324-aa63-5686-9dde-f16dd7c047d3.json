@@ -1,0 +1,27 @@
+{
+  "question_id": 4679,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25128",
+  "text": "L'inquinamento dell'aria prodotto dai veicoli a motore può diminuire se si circola sempre con marce basse",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico da veicoli a motore",
+      "Efficienza dei consumi e emissioni"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "veicoli a motore",
+      "emissioni inquinanti",
+      "consumi di carburante"
+    ],
+    "vector_search_queries": [
+      "riduzione emissioni inquinanti veicoli a motore",
+      "impatto del regime del motore sull'inquinamento atmosferico"
+    ],
+    "rule_explanation": "La marcia del veicolo, a parità di altre condizioni, non è il fattore determinante per la diminuzione delle emissioni inquinanti prodotte dai veicoli a motore."
+  }
+}

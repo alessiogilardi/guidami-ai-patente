@@ -1,0 +1,33 @@
+{
+  "question_id": 4078,
+  "topic": "Segnali di pericolo",
+  "number": "19194",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada pericoloso per il fondo dissestato",
+  "correct_answer": false,
+  "image": "f765bd82ad5ae48ffb2e5ed4434c16a8.jpeg",
+  "image_description": "Segnale di pericolo - Discesa pericolosa con pendenza specificata. Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata una rampa nera inclinata verso il basso, con la dicitura \"10%\" sovrapposta. Questo indica una discesa con una pendenza specificata.",
+    "name": "Segnale di pericolo - Discesa pericolosa con pendenza specificata",
+    "description": "Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnale di discesa pericolosa",
+      "Fondo stradale dissestato"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "discesa pericolosa",
+      "fondo stradale dissestato",
+      "pendenza"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per discesa pericolosa",
+      "differenza tra segnale discesa e fondo dissestato",
+      "preavviso di discesa con pendenza"
+    ],
+    "rule_explanation": "Il segnale raffigurato preannuncia una discesa pericolosa con pendenza specificata, non un fondo stradale genericamente dissestato."
+  }
+}

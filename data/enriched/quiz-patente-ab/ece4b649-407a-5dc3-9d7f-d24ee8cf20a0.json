@@ -1,0 +1,28 @@
+{
+  "question_id": 4510,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23643",
+  "text": "La fermata di un veicolo è la temporanea sospensione della marcia per consentire la salita o la discesa delle persone",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Sosta del veicolo"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "arresto",
+      "partenza",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "definizione di fermata veicolo",
+      "differenza tra fermata e sosta nel CdS"
+    ],
+    "rule_explanation": "La fermata è la temporanea sospensione della marcia per permettere la salita o la discesa delle persone, distinguendosi dalla sosta che ha una durata maggiore."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4350,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22024",
+  "text": "Il segnale raffigurato indica la distanza tra il segnale e l'inizio della strada in cattivo stato",
+  "correct_answer": false,
+  "image": "46aa2805f9f3e38a0b40da1c5aa8ea8d.jpeg",
+  "image_description": "Segnale di pericolo - Carreggiata deformata con pannello integrativo di distanza. Il segnale indica un tratto di strada con avvallamenti o dossi per una lunghezza di 380 metri. Il pannello integrativo specifica la distanza dall'inizio del pericolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di avvallamenti o dossi sulla carreggiata. Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare bianco con bordo nero. Su questo pannello sono indicate due frecce verticali rivolte verso l'alto, una a sinistra e una a destra della scritta '380m'. Questo pannello integrativo specifica la distanza dall'inizio del tratto di strada con carreggiata deformata.",
+    "name": "Segnale di pericolo - Carreggiata deformata con pannello integrativo di distanza",
+    "description": "Il segnale indica un tratto di strada con avvallamenti o dossi per una lunghezza di 380 metri. Il pannello integrativo specifica la distanza dall'inizio del pericolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione stradale di pericolo",
+      "Pannelli integrativi",
+      "Distanza dall'inizio del pericolo"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "pannello integrativo",
+      "distanza dall'inizio del pericolo",
+      "carreggiata deformata"
+    ],
+    "vector_search_queries": [
+      "funzione pannello integrativo di distanza segnali di pericolo",
+      "interpretazione segnale carreggiata deformata con pannello integrativo"
+    ],
+    "rule_explanation": "Il pannello integrativo indica la distanza tra il segnale e l'inizio del pericolo, non la lunghezza della strada in cattivo stato."
+  }
+}

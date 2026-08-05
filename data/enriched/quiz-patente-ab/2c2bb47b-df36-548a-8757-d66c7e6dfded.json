@@ -1,0 +1,27 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22293",
+  "text": "E' obbligatorio regolare la velocità in prossimità di luoghi frequentati dai bambini",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in prossimità di aree sensibili",
+      "Obbligo di prudenza e attenzione in presenza di bambini"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "luoghi frequentati da bambini",
+      "obbligo",
+      "regolare la velocità"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità in prossimità di scuole e parchi",
+      "obbligo di moderare la velocità in aree frequentate da bambini"
+    ],
+    "rule_explanation": "È obbligatorio moderare la velocità in prossimità di scuole, parchi e altri luoghi dove è prevedibile la presenza di bambini, per garantire la loro sicurezza."
+  }
+}

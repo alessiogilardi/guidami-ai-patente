@@ -1,0 +1,29 @@
+{
+  "question_id": 4715,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25451",
+  "text": "Sui veicoli a motore a due ruote, non vi sono liquidi di cui occorre fare un controllo dei livelli perché i serbatoi sono sigillati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Controllo livelli liquidi",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "veicoli a motore a due ruote",
+      "controllo dei livelli",
+      "serbatoi",
+      "liquidi"
+    ],
+    "vector_search_queries": [
+      "controllo livelli liquidi veicoli a due ruote",
+      "manutenzione obbligatoria motocicli e scooter",
+      "sicurezza veicoli a due ruote livelli liquidi"
+    ],
+    "rule_explanation": "Sui veicoli a due ruote è necessario controllare i livelli di liquidi essenziali come olio motore e liquido freni, anche se i serbatoi non sono a vista."
+  }
+}

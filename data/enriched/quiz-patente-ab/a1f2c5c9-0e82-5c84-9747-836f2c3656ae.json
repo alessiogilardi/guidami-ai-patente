@@ -1,0 +1,27 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24549",
+  "text": "La patente di categoria B abilita a guidare gli autocarri di massa massima autorizzata superiore a 3,5 tonnellate ma non superiore a 7,5 tonnellate",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria B",
+      "Massa massima autorizzata"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "autocarri",
+      "massa massima autorizzata",
+      "7,5 tonnellate"
+    ],
+    "vector_search_queries": [
+      "limiti massa massima autorizzata per patente B",
+      "categoria patente B per autocarri con massa superiore a 3,5 tonnellate"
+    ],
+    "rule_explanation": "La patente B abilita alla guida di autoveicoli con massa massima autorizzata non superiore a 3,5 tonnellate, esclusi gli autocarri di massa superiore a 3,5 tonnellate."
+  }
+}

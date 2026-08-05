@@ -1,0 +1,29 @@
+{
+  "question_id": 4679,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25127",
+  "text": "L'inquinamento dell'aria prodotto dai veicoli a motore può diminuire se si sistemano i bagagli sul tetto dell'autovettura",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico",
+      "Efficienza energetica dei veicoli",
+      "Aerodinamica"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "veicoli a motore",
+      "bagagli sul tetto",
+      "autovettura",
+      "consumo di carburante"
+    ],
+    "vector_search_queries": [
+      "impatto del carico sul tetto sull'aerodinamica e sui consumi dei veicoli",
+      "relazione tra resistenza aerodinamica e emissioni inquinanti dei veicoli a motore"
+    ],
+    "rule_explanation": "L'inquinamento atmosferico da veicoli a motore aumenta con l'aumentare del consumo di carburante, che è peggiorato dal posizionamento di bagagli sul tetto dell'auto a causa dell'aumento della resistenza aerodinamica."
+  }
+}

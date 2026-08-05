@@ -1,0 +1,27 @@
+{
+  "question_id": 4669,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25055",
+  "text": "L'assicurazione per la responsabilità civile auto (R.C.A.) copre solo i danni arrecati alle persone, perché per i danni alle cose occorre un altro tipo di contratto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile auto (R.C.A.)",
+      "Copertura assicurativa per danni a persone e cose"
+    ],
+    "exact_keywords": [
+      "assicurazione R.C.A.",
+      "danni alle persone",
+      "danni alle cose",
+      "contratto assicurativo"
+    ],
+    "vector_search_queries": [
+      "copertura danni a persone e cose assicurazione R.C.A.",
+      "differenza copertura danni persone e cose polizza RCA"
+    ],
+    "rule_explanation": "L'assicurazione R.C.A. copre sia i danni arrecati alle persone sia quelli arrecati alle cose, nei limiti dei massimali previsti."
+  }
+}

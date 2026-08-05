@@ -1,0 +1,28 @@
+{
+  "question_id": 4524,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23760",
+  "text": "La sosta è vietata sulle aree destinate al mercato e ai veicoli per il carico e lo scarico di cose, nelle ore stabilite",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Aree di mercato",
+      "Operazioni di carico/scarico"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "aree di mercato",
+      "carico e scarico",
+      "ore stabilite"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in aree di mercato",
+      "sosta vietata per carico e scarico merci in orari specifici"
+    ],
+    "rule_explanation": "La sosta è vietata nelle aree di mercato e nelle zone dedicate al carico/scarico, durante gli orari specificati dal regolamento."
+  }
+}

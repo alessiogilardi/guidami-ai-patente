@@ -1,0 +1,27 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24547",
+  "text": "La patente di categoria B abilita anche alla guida dei veicoli che si possono condurre con le patenti A2 e A",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità delle patenti di guida",
+      "Classificazione delle patenti di guida"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "patente A2",
+      "patente A",
+      "conduzione di veicoli"
+    ],
+    "vector_search_queries": [
+      "categorie di patenti di guida e veicoli conducibili",
+      "equivalenza o sovrapposizione tra patenti A, A2 e B"
+    ],
+    "rule_explanation": "La patente B abilita alla guida di autoveicoli e non include le categorie A2 e A, che sono specifiche per motocicli di diversa cilindrata e potenza."
+  }
+}

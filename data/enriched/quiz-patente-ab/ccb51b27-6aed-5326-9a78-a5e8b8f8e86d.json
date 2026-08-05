@@ -1,0 +1,31 @@
+{
+  "question_id": 4082,
+  "topic": "Segnali di pericolo",
+  "number": "19238",
+  "text": "Il segnale raffigurato è un segnale di pericolo",
+  "correct_answer": true,
+  "image": "6a22104defc75f1e908cb883a771b8bc.jpeg",
+  "image_description": "Segnale di pericolo - Restringimento carreggiata. Il segnale preannuncia un restringimento della carreggiata sul lato sinistro.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un pittogramma nero che rappresenta un restringimento della carreggiata sul lato sinistro. Le due linee verticali nere, che simboleggiano i margini della strada, sono di lunghezza uguale all'inizio, ma quella di sinistra si interrompe e si avvicina a quella di destra, indicando una riduzione della larghezza della strada da quel lato.",
+    "name": "Segnale di pericolo - Restringimento carreggiata",
+    "description": "Il segnale preannuncia un restringimento della carreggiata sul lato sinistro."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di deviazione obbligatoria"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "restringimento carreggiata",
+      "preavviso",
+      "direzione obbligatoria"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo che preannunciano restringimento carreggiata",
+      "obbligo di deviazione a seguito di segnale di pericolo per restringimento carreggiata"
+    ],
+    "rule_explanation": "Il segnale raffigurato preannuncia un pericolo costituito da un restringimento della carreggiata, richiedendo una manovra di deviazione obbligatoria verso destra."
+  }
+}

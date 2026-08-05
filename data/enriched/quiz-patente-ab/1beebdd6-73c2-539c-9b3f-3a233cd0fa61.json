@@ -1,0 +1,29 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24404",
+  "text": "Il casco deve essere indossato anche a bordo dei quadricicli a motore privi di carrozzeria (Quad)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Veicoli a motore a tre o quattro ruote",
+      "Dispositivi di protezione individuale"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "quadricicli a motore",
+      "senza carrozzeria",
+      "uso"
+    ],
+    "vector_search_queries": [
+      "obbligo casco quadricicli a motore senza carrozzeria",
+      "uso del casco protettivo su quad",
+      "normativa equipaggiamenti quadricicli a motore"
+    ],
+    "rule_explanation": "Il casco protettivo è obbligatorio per i conducenti e i passeggeri di quadricicli a motore, anche se privi di carrozzeria, se non sono dotati di cinture di sicurezza."
+  }
+}

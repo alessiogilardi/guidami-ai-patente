@@ -1,0 +1,27 @@
+{
+  "question_id": 4576,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24182",
+  "text": "I catadiottri possono sostituire gli indicatori di direzione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di illuminazione e segnalazione balneare",
+      "Funzioni dei dispositivi di segnalazione visiva"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "indicatori di direzione",
+      "dispositivi di segnalazione visiva",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "funzione dei catadiottri rispetto agli indicatori di direzione",
+      "differenza tra catadiottri e indicatori di direzione"
+    ],
+    "rule_explanation": "I catadiottri non possono sostituire gli indicatori di direzione, poiché hanno funzioni diverse: i primi servono a rendere il veicolo visibile posteriormente, i secondi a segnalare le svolte."
+  }
+}

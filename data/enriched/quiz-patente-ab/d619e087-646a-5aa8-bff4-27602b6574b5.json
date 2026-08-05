@@ -1,0 +1,28 @@
+{
+  "question_id": 4682,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25146",
+  "text": "Viaggiare a forte velocità con il tettuccio del veicolo aperto comporta un aumento dei consumi di carburante",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aerodinamica del veicolo",
+      "Efficienza energetica",
+      "Consumo di carburante"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "tettuccio apribile",
+      "consumo di carburante",
+      "resistenza aerodinamica"
+    ],
+    "vector_search_queries": [
+      "impatto della velocità e configurazione del veicolo sui consumi",
+      "aumento dei consumi di carburante con tettuccio aperto ad alta velocità"
+    ],
+    "rule_explanation": "Viaggiare a velocità elevate con il tettuccio aperto aumenta la resistenza aerodinamica, incrementando così il consumo di carburante e l'inquinamento."
+  }
+}

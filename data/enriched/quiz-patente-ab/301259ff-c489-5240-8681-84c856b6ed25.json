@@ -1,0 +1,33 @@
+{
+  "question_id": 4085,
+  "topic": "Segnali di pericolo",
+  "number": "19282",
+  "text": "Il segnale raffigurato invita a diminuire la distanza di sicurezza",
+  "correct_answer": false,
+  "image": "9557ea08889ddcf8ba229d0cbe9160eb.jpeg",
+  "image_description": "Segnale di pericolo - Sdrucciolevolezza. Il segnale preannuncia un tratto di strada dove la superficie può diventare particolarmente sdrucciolevole, a causa di ghiaccio, pioggia o altre cause. È necessario moderare la velocità e prestare attenzione a possibili variazioni dell'aderenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un'automobile stilizzata che sta sbandando su una superficie stradale resa tortuosa da delle curve. Le ruote posteriori dell'auto sono visibilmente inclinate, indicando una perdita di aderenza. Il pittogramma rappresenta chiaramente il rischio di sbandamento dovuto a una superficie stradale sdrucciolevole.",
+    "name": "Segnale di pericolo - Sdrucciolevolezza",
+    "description": "Il segnale preannuncia un tratto di strada dove la superficie può diventare particolarmente sdrucciolevole, a causa di ghiaccio, pioggia o altre cause. È necessario moderare la velocità e prestare attenzione a possibili variazioni dell'aderenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Distanza di sicurezza",
+      "Comportamento in presenza di segnali di pericolo"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "sdrucciolevolezza",
+      "distanza di sicurezza",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "comportamento da tenere in presenza di segnali di pericolo di sdrucciolevolezza",
+      "obblighi del conducente di fronte a un segnale di pericolo specifico",
+      "influenza dei segnali di pericolo sulla distanza di sicurezza"
+    ],
+    "rule_explanation": "I segnali di pericolo impongono di adottare un comportamento prudente e di moderare la velocità, non di diminuire la distanza di sicurezza."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4575,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24171",
+  "text": "I catadiottri vengono applicati anche sui rimorchi e sui carrelli-appendice",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di illuminazione e segnalazione balneare",
+      "Dispositivi di protezione e sicurezza dei veicoli"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "rimorchi",
+      "carrelli appendice",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "obbligo catadiottri su rimorchi e carrelli appendice",
+      "applicazione catadiottri su veicoli trainati"
+    ],
+    "rule_explanation": "I catadiottri, dispositivi di segnalazione visiva, devono essere presenti sui rimorchi e sui carrelli-appendice per aumentarne la visibilità e la sicurezza."
+  }
+}

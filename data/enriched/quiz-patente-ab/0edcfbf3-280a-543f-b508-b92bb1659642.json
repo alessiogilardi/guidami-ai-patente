@@ -1,0 +1,28 @@
+{
+  "question_id": 4522,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23748",
+  "text": "La sosta ma non la fermata è vietata sugli attraversamenti pedonali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Divieto di fermata",
+      "Regole di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fermata",
+      "attraversamento pedonale",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata su attraversamenti pedonali",
+      "regole di sosta e fermata in prossimità di attraversamenti pedonali"
+    ],
+    "rule_explanation": "Sia la sosta che la fermata sono vietate sugli attraversamenti pedonali per garantire la sicurezza dei pedoni."
+  }
+}

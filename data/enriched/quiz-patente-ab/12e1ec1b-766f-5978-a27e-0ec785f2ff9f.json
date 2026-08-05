@@ -1,0 +1,29 @@
+{
+  "question_id": 4612,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24533",
+  "text": "Con la patente di categoria B1 si possono condurre tutti i tricicli a motore, ma solo se il conducente ha già compiuto i 18 anni di età",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria B1",
+      "Veicoli conducibili con patente B1",
+      "Età minima per la patente B1"
+    ],
+    "exact_keywords": [
+      "patente di categoria B1",
+      "tricicli a motore",
+      "età minima",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "limiti di età per la patente B1",
+      "veicoli conducibili con patente B1 e età minima",
+      "tricicli a motore conducibili con patente B1"
+    ],
+    "rule_explanation": "La patente B1 abilita alla conduzione di tricicli a motore con potenza superiore a 15 kW, ma solo a partire dai 16 anni di età, non dai 18."
+  }
+}

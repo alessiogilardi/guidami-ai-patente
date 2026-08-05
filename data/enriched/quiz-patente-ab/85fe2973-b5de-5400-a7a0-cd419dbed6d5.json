@@ -1,0 +1,32 @@
+{
+  "question_id": 4051,
+  "topic": "Segnali di pericolo",
+  "number": "18864",
+  "text": "Il segnale raffigurato preannuncia una doppia curva",
+  "correct_answer": false,
+  "image": "4232f21e2893d81ba19d77d4285f18fe.jpeg",
+  "image_description": "Segnale di pericolo - Serie di dossi. Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di dossi o una cunetta. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una irregolarità del manto stradale.",
+    "name": "Segnale di pericolo - Serie di dossi",
+    "description": "Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di pericoli stradali"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "serie di dossi",
+      "cunetta",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo stradale che preannunciano dossi o cunette",
+      "significato del segnale di pericolo raffigurante una serie di dossi",
+      "obblighi del conducente in presenza di segnali di pericolo per dossi o cunette"
+    ],
+    "rule_explanation": "Il segnale raffigurante una serie di dossi o una cunetta impone di moderare la velocità per preservare l'integrità del veicolo e garantire il controllo, non preannuncia una doppia curva."
+  }
+}

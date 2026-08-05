@@ -1,0 +1,27 @@
+{
+  "question_id": 4387,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22452",
+  "text": "La velocità deve essere diminuita in caso di forte vento laterale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità adeguata alle condizioni di guida",
+      "Condizioni atmosferiche e sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "condizioni della strada",
+      "vento laterale",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità in presenza di vento laterale forte",
+      "moderazione della velocità per condizioni atmosferiche avverse"
+    ],
+    "rule_explanation": "Il conducente deve sempre moderare la velocità in base alle condizioni di guida, inclusi i fenomeni atmosferici avversi come il forte vento laterale, per evitare pericoli."
+  }
+}

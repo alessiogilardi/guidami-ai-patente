@@ -1,0 +1,33 @@
+{
+  "question_id": 4001,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18321",
+  "text": "In una carreggiata del tipo rappresentato possiamo iniziare un sorpasso anche se il conducente che sta dietro ha già iniziato la stessa manovra",
+  "correct_answer": false,
+  "image": "637129125cd2305679f68e11751ad483.jpeg",
+  "image_description": "Carreggiata a doppio senso di circolazione con quattro corsie. La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale. Si osservano due carreggiate separate da una linea bianca continua. Ogni carreggiata è a sua volta suddivisa in due corsie da strisce bianche discontinue. Questo schema indica una strada con due corsie per senso di marcia, per un totale di quattro corsie. La linea continua centrale separa i due sensi di marcia. Le strisce discontinue all'interno di ciascuna carreggiata indicano la possibilità di superamento o cambio di corsia all'interno dello stesso senso di marcia. Pertanto, la scena rappresenta una carreggiata a doppio senso di circolazione con quattro corsie totali.",
+    "name": "Carreggiata a doppio senso di circolazione con quattro corsie",
+    "description": "La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso vietato",
+      "Manovre pericolose",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "doppio senso di circolazione",
+      "linea continua",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in presenza di linea continua",
+      "sorpasso in doppio senso di circolazione con manovra iniziata dal veicolo posteriore",
+      "regole di precedenza e divieti durante il sorpasso"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in presenza di linea continua e quando il conducente che segue ha già iniziato la manovra. Non è consentito invadere la corsia opposta in queste condizioni."
+  }
+}

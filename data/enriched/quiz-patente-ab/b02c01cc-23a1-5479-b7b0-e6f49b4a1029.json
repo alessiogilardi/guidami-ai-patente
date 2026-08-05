@@ -1,0 +1,29 @@
+{
+  "question_id": 4576,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24177",
+  "text": "I catadiottri di colore bianco hanno la funzione di evidenziare la parte davanti dei rimorchi e semirimorchi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di illuminazione e segnalazione dei veicoli",
+      "Catadiottri",
+      "Segnalazione visiva dei rimorchi"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "rimorchi",
+      "semirimorchi",
+      "luci bianche",
+      "anteriore"
+    ],
+    "vector_search_queries": [
+      "funzione catadiottri bianchi rimorchi",
+      "segnalazione anteriore rimorchi e semirimorchi con catadiottri"
+    ],
+    "rule_explanation": "I catadiottri bianchi sui rimorchi e semirimorchi servono a segnalare la loro presenza e ingombro nella parte anteriore del veicolo."
+  }
+}

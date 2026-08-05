@@ -1,0 +1,29 @@
+{
+  "question_id": 4410,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22672",
+  "text": "E' vietato, in quanto costituisce pericolo o intralcio per la circolazione, tenersi sul margine sinistro della carreggiata per svoltare in una strada a destra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento del veicolo sulla carreggiata",
+      "Manovre di svolta a destra",
+      "Pericolo e intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "margine sinistro",
+      "carreggiata",
+      "svoltare a destra",
+      "pericolo o intralcio"
+    ],
+    "vector_search_queries": [
+      "posizione del veicolo per la svolta a destra",
+      "divieto di occupare il margine sinistro per svoltare a destra",
+      "pericolo e intralcio causati da errato posizionamento per svolta"
+    ],
+    "rule_explanation": "È vietato tenersi sul margine sinistro della carreggiata per svoltare a destra, poiché tale posizione costituisce pericolo o intralcio alla circolazione."
+  }
+}

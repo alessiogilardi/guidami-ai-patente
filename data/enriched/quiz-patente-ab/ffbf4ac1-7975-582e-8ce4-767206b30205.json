@@ -1,0 +1,27 @@
+{
+  "question_id": 4528,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23792",
+  "text": "La sosta di emergenza è l'interruzione della marcia dovuta ad esigenze della circolazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Arresto del veicolo",
+      "Sosta di emergenza"
+    ],
+    "exact_keywords": [
+      "sosta di emergenza",
+      "arresto del veicolo",
+      "esigenze della circolazione",
+      "condizioni di emergenza"
+    ],
+    "vector_search_queries": [
+      "differenza tra sosta di emergenza ed esigenze della circolazione",
+      "definizione di sosta di emergenza per veicoli fermi per avaria o incidente"
+    ],
+    "rule_explanation": "La sosta di emergenza è l'arresto del veicolo dovuto a un'improvvisa e improrogabile necessità, non a esigenze della circolazione."
+  }
+}

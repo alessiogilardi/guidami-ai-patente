@@ -1,0 +1,33 @@
+{
+  "question_id": 4064,
+  "topic": "Segnali di pericolo",
+  "number": "19016",
+  "text": "In presenza del segnale raffigurato è necessario regolare la velocità in relazione alla visibilità e al raggio delle curve",
+  "correct_answer": true,
+  "image": "f3d65cdd3174f51dcbbc55dcae2aec01.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta una doppia curva, con la prima curva a sinistra e la seconda a destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Regolazione della velocità",
+      "Condizioni di visibilità e raggio delle curve"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "velocità",
+      "visibilità",
+      "raggio delle curve",
+      "curva"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità ai segnali di pericolo per curve",
+      "influenza del raggio di curvatura e della visibilità sulla velocità di percorrenza"
+    ],
+    "rule_explanation": "Il segnale di pericolo impone di moderare la velocità in base alla visibilità e al raggio delle curve per garantire la sicurezza."
+  }
+}

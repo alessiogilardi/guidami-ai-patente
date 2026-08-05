@@ -1,0 +1,33 @@
+{
+  "question_id": 4333,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21864",
+  "text": "La barriera raffigurata segnala una curva pericolosa",
+  "correct_answer": false,
+  "image": "14d2108f6b028cd2d01929a738bf0b94.jpeg",
+  "image_description": "Barriera di cantiere. La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una barriera di cantiere, composta da una traversa orizzontale a strisce diagonali bianche e rosse, sostenuta da due montanti verticali. La barriera è posta su una linea orizzontale che rappresenta il suolo. Le strisce rosse e bianche alternate indicano un pericolo o un ostacolo temporaneo.",
+    "name": "Barriera di cantiere",
+    "description": "La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica di cantiere",
+      "Segnali temporanei",
+      "Pericolo stradale"
+    ],
+    "exact_keywords": [
+      "barriera di cantiere",
+      "ostacolo temporaneo",
+      "segnalazione stradale",
+      "area di cantiere"
+    ],
+    "vector_search_queries": [
+      "funzione delle barriere di cantiere stradale",
+      "segnalazione di ostacoli temporanei e aree di cantiere",
+      "differenza tra segnali di pericolo e barriere di cantiere"
+    ],
+    "rule_explanation": "Le barriere di cantiere delimitano aree di lavoro o ostacoli temporanei, non segnalano specificamente curve pericolose che sono indicate da altri segnali specifici."
+  }
+}

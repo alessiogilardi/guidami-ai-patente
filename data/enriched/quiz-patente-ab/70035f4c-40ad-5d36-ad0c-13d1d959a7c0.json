@@ -1,0 +1,29 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22321",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi quando si rimane abbagliati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Comportamento in caso di abbagliamento",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "abbagliamento",
+      "pericolo per la sicurezza",
+      "fermarsi"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità in caso di abbagliamento",
+      "comportamento del conducente in caso di abbagliamento improvviso",
+      "adeguamento della velocità per evitare pericoli da abbagliamento"
+    ],
+    "rule_explanation": "Il conducente deve ridurre la velocità o fermarsi se viene abbagliato, per evitare di creare un pericolo per la circolazione."
+  }
+}

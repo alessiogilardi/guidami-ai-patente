@@ -1,0 +1,27 @@
+{
+  "question_id": 4658,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24977",
+  "text": "Chi è penalmente e civilmente responsabile di un sinistro stradale può incorrere nella sospensione della patente di guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile e penale in caso di sinistro stradale",
+      "Sospensione della patente di guida"
+    ],
+    "exact_keywords": [
+      "responsabilità civile",
+      "responsabilità penale",
+      "sospensione patente",
+      "sinistro stradale"
+    ],
+    "vector_search_queries": [
+      "conseguenze della responsabilità penale e civile in caso di sinistro stradale",
+      "sospensione patente per chi causa sinistro stradale con responsabilità penale e civile"
+    ],
+    "rule_explanation": "In caso di sinistro stradale, chi è penalmente e civilmente responsabile può subire la sospensione della patente di guida come sanzione accessoria."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4572,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24151",
+  "text": "Durante la marcia, in caso di scarsa visibilità per condizioni atmosferiche (neve, pioggia, nebbia), è obbligatorio tenere accese le luci di posizione e quelle anabbaglianti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di accensione luci in condizioni di scarsa visibilità",
+      "Uso delle luci di posizione e anabbaglianti"
+    ],
+    "exact_keywords": [
+      "luci di posizione",
+      "luci anabbaglianti",
+      "scarsa visibilità",
+      "condizioni atmosferiche",
+      "marcia"
+    ],
+    "vector_search_queries": [
+      "obbligo luci di posizione e anabbaglianti in caso di scarsa visibilità per nebbia, pioggia o neve",
+      "uso delle luci durante la marcia in condizioni atmosferiche avverse"
+    ],
+    "rule_explanation": "In caso di scarsa visibilità dovuta a condizioni atmosferiche avverse (neve, pioggia, nebbia), è obbligatorio durante la marcia tenere accese le luci di posizione e quelle anabbaglianti."
+  }
+}

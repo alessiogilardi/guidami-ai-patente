@@ -1,0 +1,29 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24774",
+  "text": "Il corretto funzionamento del motore è garantito dal fatto che la spia rossa dell'olio di lubrificazione rimane costantemente accesa",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori di malfunzionamento del veicolo",
+      "Manutenzione del motore",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "spia dell'olio",
+      "motore",
+      "lubrificazione",
+      "malfunzionamento"
+    ],
+    "vector_search_queries": [
+      "significato spia rossa olio motore",
+      "conseguenze mancata lubrificazione motore",
+      "arresto veicolo in caso di spia olio accesa"
+    ],
+    "rule_explanation": "La spia rossa dell'olio indica una pressione insufficiente o assente nel sistema di lubrificazione, segnalando un grave malfunzionamento che richiede l'arresto immediato del veicolo per evitare danni al motore."
+  }
+}

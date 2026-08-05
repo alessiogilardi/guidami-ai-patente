@@ -1,0 +1,30 @@
+{
+  "question_id": 4695,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25221",
+  "text": "L'A.B.S. agisce anche quando gli pneumatici sono usurati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema antibloccaggio (ABS)",
+      "Stato di usura degli pneumatici",
+      "Sicurezza attiva del veicolo"
+    ],
+    "exact_keywords": [
+      "ABS",
+      "pneumatici usurati",
+      "sistema antibloccaggio",
+      "stabilità",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "funzionamento ABS con pneumatici usurati",
+      "efficacia sistema antibloccaggio in relazione all'usura degli pneumatici",
+      "ABS e sicurezza di guida con pneumatici non ottimali"
+    ],
+    "rule_explanation": "L'ABS è un sistema di sicurezza attiva che previene il bloccaggio delle ruote in frenata, mantenendo la stabilità e la direzionalità del veicolo anche con pneumatici usurati."
+  }
+}

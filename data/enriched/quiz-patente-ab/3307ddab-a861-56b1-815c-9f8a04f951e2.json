@@ -1,0 +1,31 @@
+{
+  "question_id": 4138,
+  "topic": "Segnali di divieto",
+  "number": "19903",
+  "text": "Il segnale raffigurato, se posto sul lato sinistro di una strada a senso unico, vieta la sosta anche sul lato destro",
+  "correct_answer": false,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Applicazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale di divieto di sosta",
+      "lato sinistro",
+      "strada a senso unico",
+      "sosta vietata"
+    ],
+    "vector_search_queries": [
+      "ambito di applicazione segnale divieto di sosta",
+      "posizionamento segnale divieto di sosta su strada a senso unico"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta vieta la sosta solo sul lato della strada in cui è installato, indipendentemente dal senso di marcia."
+  }
+}

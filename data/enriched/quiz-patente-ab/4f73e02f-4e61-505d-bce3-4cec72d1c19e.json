@@ -1,0 +1,29 @@
+{
+  "question_id": 4684,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25153",
+  "text": "L'abbandono di una batteria per auto, sulla strada o sul terreno, può arrecare gravi danni all'ambiente e alle falde acquifere sottostanti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento ambientale",
+      "Gestione dei rifiuti pericolosi",
+      "Tutela delle risorse idriche"
+    ],
+    "exact_keywords": [
+      "abbandono di rifiuti",
+      "batterie esauste",
+      "danno ambientale",
+      "inquinamento falde acquifere"
+    ],
+    "vector_search_queries": [
+      "conseguenze ambientali abbandono batterie auto",
+      "rischi inquinamento falde acquifere da rifiuti pericolosi",
+      "normativa smaltimento batterie esauste"
+    ],
+    "rule_explanation": "L'abbandono di batterie per auto, in quanto rifiuti pericolosi, è vietato perché può causare gravi danni all'ambiente e contaminare le falde acquifere."
+  }
+}

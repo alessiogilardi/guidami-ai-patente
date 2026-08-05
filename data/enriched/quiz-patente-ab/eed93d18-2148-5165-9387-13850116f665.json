@@ -1,0 +1,28 @@
+{
+  "question_id": 4562,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24035",
+  "text": "Prima di trainare un rimorchio, è opportuno accertarsi che gli impianti di illuminazione e di segnalazione funzionino regolarmente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rimorchio",
+      "Impianti di illuminazione e segnalazione",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "trainare un rimorchio",
+      "impianti di illuminazione",
+      "segnalazione",
+      "funzionino regolarmente"
+    ],
+    "vector_search_queries": [
+      "verifica funzionamento impianti illuminazione rimorchio prima di traino",
+      "norme sicurezza traino rimorchi dispositivi segnalazione"
+    ],
+    "rule_explanation": "Prima di trainare un rimorchio, è necessario verificare il corretto funzionamento dei dispositivi di illuminazione e segnalazione per garantire la sicurezza della circolazione."
+  }
+}

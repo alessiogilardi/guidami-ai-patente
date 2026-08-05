@@ -1,0 +1,29 @@
+{
+  "question_id": 4434,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22913",
+  "text": "Giungendo ad un incrocio, bisogna essere prudenti e tolleranti nei confronti di chi, pur non avendo la precedenza, passa ugualmente per primo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prudenza alla guida",
+      "Comportamento ai passaggi con segnali di precedenza",
+      "Solidarietà stradale"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "prudenza",
+      "precedenza",
+      "tolleranza"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente ai passaggi con segnali di precedenza",
+      "obbligo di prudenza e tolleranza ai crocevia",
+      "rispetto delle regole di precedenza e tolleranza verso chi non le rispetta"
+    ],
+    "rule_explanation": "Nei passaggi con segnali di precedenza, i conducenti devono usare particolare prudenza e tolleranza, anche se altri utenti della strada non rispettano le regole di precedenza."
+  }
+}

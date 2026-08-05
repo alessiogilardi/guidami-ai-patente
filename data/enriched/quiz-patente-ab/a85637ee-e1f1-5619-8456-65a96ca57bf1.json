@@ -1,0 +1,28 @@
+{
+  "question_id": 4418,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22758",
+  "text": "Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre rallentare adeguatamente ed eventualmente fermarsi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Comportamento in caso di abbagliamento",
+      "Uso dei fari in guida notturna"
+    ],
+    "exact_keywords": [
+      "fari ad abbaglianti accesi",
+      "strada extraurbana",
+      "rallentare adeguatamente",
+      "fermarsi"
+    ],
+    "vector_search_queries": [
+      "comportamento in caso di abbagliamento da fari di veicoli incrocianti su strade extraurbane di notte",
+      "obbligo di rallentare o fermarsi in presenza di fari abbaglianti accesi su strade extraurbane di notte"
+    ],
+    "rule_explanation": "Di notte, su strade extraurbane, in caso di incrocio con veicoli con fari abbaglianti accesi, è necessario moderare la velocità fino a fermarsi se necessario per non essere abbagliati."
+  }
+}

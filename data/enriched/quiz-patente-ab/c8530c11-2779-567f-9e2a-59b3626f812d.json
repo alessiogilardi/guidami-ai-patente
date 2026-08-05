@@ -1,0 +1,27 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24551",
+  "text": "La patente di categoria B abilita a condurre le macchine operatrici eccezionali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categorie",
+      "Macchine operatrici eccezionali"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "macchine operatrici eccezionali",
+      "autorizzazione alla guida",
+      "abilitazione"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente B",
+      "abilitazione alla guida di macchine operatrici eccezionali"
+    ],
+    "rule_explanation": "La patente di categoria B abilita alla guida di autoveicoli di massa complessiva non superiore a 3,5 tonnellate, non consente la guida di macchine operatrici eccezionali."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4634,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24808",
+  "text": "Sulle strade in cui vige l'obbligo di catene, in caso di nevicata, ai conducenti dei veicoli a due ruote è comunque concesso di circolare",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di pneumatici invernali o catene da neve",
+      "Circolazione dei veicoli a due ruote in condizioni invernali"
+    ],
+    "exact_keywords": [
+      "catene da neve",
+      "veicoli a due ruote",
+      "nevicata",
+      "circolare"
+    ],
+    "vector_search_queries": [
+      "circolazione veicoli a due ruote obbligo catene da neve nevicata",
+      "limitazioni alla circolazione per motocicli in caso di neve"
+    ],
+    "rule_explanation": "Sulle strade soggette a obbligo di catene da neve, i conducenti di veicoli a due ruote non possono circolare in caso di nevicata in atto, salvo che abbiano pneumatici invernali omologati."
+  }
+}

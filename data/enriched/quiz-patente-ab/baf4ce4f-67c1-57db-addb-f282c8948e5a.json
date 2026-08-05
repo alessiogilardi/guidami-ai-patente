@@ -1,0 +1,29 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24395",
+  "text": "Il casco integrale protegge anche il viso da traumi e lesioni in caso di incidente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Protezione del casco motociclistico",
+      "Casco integrale",
+      "Sicurezza del conducente"
+    ],
+    "exact_keywords": [
+      "casco integrale",
+      "protezione del viso",
+      "traumi",
+      "lesioni",
+      "incidente"
+    ],
+    "vector_search_queries": [
+      "protezione offerta dal casco integrale in caso di incidente",
+      "funzione protettiva del casco integrale per il viso"
+    ],
+    "rule_explanation": "Il casco integrale offre una protezione completa, inclusa quella del viso, da traumi e lesioni in caso di incidente stradale."
+  }
+}

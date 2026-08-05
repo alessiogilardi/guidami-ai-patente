@@ -1,0 +1,29 @@
+{
+  "question_id": 4404,
+  "topic": "Distanza di sicurezza",
+  "number": "22632",
+  "text": "Lo spazio totale di arresto aumenta se diminuisce la velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di arresto",
+      "Velocità di guida"
+    ],
+    "exact_keywords": [
+      "spazio totale di arresto",
+      "velocità",
+      "distanza di reazione",
+      "distanza di frenatura"
+    ],
+    "vector_search_queries": [
+      "relazione tra velocità e spazio totale di arresto",
+      "influenza della velocità sulla distanza di arresto del veicolo",
+      "calcolo spazio di arresto in funzione della velocità"
+    ],
+    "rule_explanation": "Lo spazio totale di arresto è la somma dello spazio di reazione e di quello di frenatura. Diminuendo la velocità, diminuiscono entrambi, quindi lo spazio totale di arresto si riduce."
+  }
+}

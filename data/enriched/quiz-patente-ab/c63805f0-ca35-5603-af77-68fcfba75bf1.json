@@ -1,0 +1,33 @@
+{
+  "question_id": 4064,
+  "topic": "Segnali di pericolo",
+  "number": "19015",
+  "text": "In presenza del segnale raffigurato si deve circolare il più vicino possibile al margine destro della carreggiata, su strada a due sole corsie e a doppio senso di circolazione",
+  "correct_answer": true,
+  "image": "f3d65cdd3174f51dcbbc55dcae2aec01.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta una doppia curva, con la prima curva a sinistra e la seconda a destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Regolazione della velocità",
+      "Posizionamento sulla carreggiata"
+    ],
+    "exact_keywords": [
+      "doppia curva pericolosa",
+      "margine destro",
+      "carreggiata",
+      "senso di circolazione"
+    ],
+    "vector_search_queries": [
+      "obblighi in presenza di segnale di doppia curva pericolosa",
+      "circolazione al margine destro in presenza di curve pericolose",
+      "adeguamento della velocità ai segnali di pericolo per curve"
+    ],
+    "rule_explanation": "In presenza di una doppia curva pericolosa, la prima a sinistra, è necessario circolare il più vicino possibile al margine destro della carreggiata, regolando la velocità in base alla visibilità e al raggio delle curve."
+  }
+}

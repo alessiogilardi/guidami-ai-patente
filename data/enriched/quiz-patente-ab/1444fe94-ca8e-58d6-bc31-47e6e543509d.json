@@ -1,0 +1,27 @@
+{
+  "question_id": 4512,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23660",
+  "text": "Fuori dei centri abitati, il conducente, in caso di fermata, deve collocare, se possibile, il veicolo fuori della carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Posizionamento del veicolo fuori dalla carreggiata"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "fuori dei centri abitati",
+      "carreggiata",
+      "sosta"
+    ],
+    "vector_search_queries": [
+      "collocazione veicolo fuori carreggiata in caso di fermata fuori dai centri abitati",
+      "obblighi del conducente in caso di fermata del veicolo in aree extraurbane"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, in caso di fermata, il veicolo deve essere collocato, ove possibile, fuori dalla carreggiata per non intralciare il traffico."
+  }
+}

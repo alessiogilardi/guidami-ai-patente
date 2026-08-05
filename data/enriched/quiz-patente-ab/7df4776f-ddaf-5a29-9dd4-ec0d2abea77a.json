@@ -1,0 +1,28 @@
+{
+  "question_id": 4677,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25111",
+  "text": "L'inquinamento atmosferico prodotto dai veicoli può essere ridotto, controllando che il filtro dell'aria non sia sporco o intasato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo delle emissioni inquinanti",
+      "Manutenzione del veicolo per la riduzione dell'inquinamento",
+      "Inquinamento atmosferico da veicoli a motore"
+    ],
+    "exact_keywords": [
+      "inquinamento atmosferico",
+      "filtro dell'aria",
+      "veicoli",
+      "riduzione"
+    ],
+    "vector_search_queries": [
+      "riduzione inquinamento atmosferico veicoli filtro aria",
+      "manutenzione filtro aria impatto emissioni"
+    ],
+    "rule_explanation": "La corretta manutenzione del filtro dell'aria del veicolo è essenziale per ridurre l'inquinamento atmosferico causato dalle emissioni inquinanti."
+  }
+}

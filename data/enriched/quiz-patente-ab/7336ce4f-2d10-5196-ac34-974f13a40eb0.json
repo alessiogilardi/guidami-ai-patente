@@ -1,0 +1,33 @@
+{
+  "question_id": 4081,
+  "topic": "Segnali di pericolo",
+  "number": "19230",
+  "text": "Il segnale raffigurato è un segnale di prescrizione",
+  "correct_answer": false,
+  "image": "935e0fb53dc5ade5d74efa55184c4022.jpeg",
+  "image_description": "Segnale di pericolo di restringimento carreggiata. Il segnale preannuncia un restringimento della carreggiata su entrambi i lati. È un segnale di pericolo che impone di moderare la velocità e, se necessario, di dare la precedenza ai veicoli provenienti dal senso opposto in caso di incrocio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è presente un pittogramma nero che raffigura due linee parallele che si avvicinano progressivamente verso il centro, simboleggiando un restringimento della carreggiata. Le linee nere sono interrotte da due brevi segmenti verticali che indicano l'inizio del restringimento. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di pericolo di restringimento carreggiata",
+    "description": "Il segnale preannuncia un restringimento della carreggiata su entrambi i lati. È un segnale di pericolo che impone di moderare la velocità e, se necessario, di dare la precedenza ai veicoli provenienti dal senso opposto in caso di incrocio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione",
+      "Classificazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "segnali di prescrizione",
+      "segnali stradali",
+      "preavviso di restringimento carreggiata"
+    ],
+    "vector_search_queries": [
+      "distinzione tra segnali di pericolo e segnali di prescrizione",
+      "funzione dei segnali di pericolo nella segnaletica stradale",
+      "caratteristiche dei segnali di prescrizione"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano una situazione di potenziale pericolo, mentre i segnali di prescrizione impongono un obbligo o un divieto. L'affermazione che un segnale di pericolo sia di prescrizione è errata."
+  }
+}

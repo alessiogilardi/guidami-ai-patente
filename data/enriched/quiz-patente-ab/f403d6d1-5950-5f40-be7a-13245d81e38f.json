@@ -1,0 +1,29 @@
+{
+  "question_id": 4708,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25358",
+  "text": "Le sospensioni del veicolo devono essere sostituite all'incirca ogni trentamila chilometri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Componenti del veicolo"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "manutenzione",
+      "usura",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "manutenzione sospensioni veicolo",
+      "usura componenti veicolo e sicurezza",
+      "controllo tenuta di strada"
+    ],
+    "rule_explanation": "La sostituzione delle sospensioni non è legata a un chilometraggio fisso, ma alla loro effettiva usura e al mantenimento della tenuta di strada e sicurezza del veicolo."
+  }
+}

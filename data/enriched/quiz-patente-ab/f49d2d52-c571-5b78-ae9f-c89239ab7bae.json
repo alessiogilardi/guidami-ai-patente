@@ -1,0 +1,28 @@
+{
+  "question_id": 4655,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24955",
+  "text": "L'assunzione di alcool rende più sicura la guida, perché annulla la stanchezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Alterazione delle capacità psicofisiche dovuta ad alcool",
+      "Guida in stato di ebbrezza"
+    ],
+    "exact_keywords": [
+      "alcool",
+      "guida",
+      "alterazione delle capacità",
+      "pericolosità"
+    ],
+    "vector_search_queries": [
+      "effetti dell'alcool sulla capacità di guida",
+      "pericolosità della guida in stato di ebbrezza",
+      "alterazione capacità psicofisiche da alcool e guida"
+    ],
+    "rule_explanation": "L'assunzione di alcool altera le capacità psicofisiche, compromettendo la sicurezza alla guida e aumentando la pericolosità. Non annulla la stanchezza ma la maschera, aumentando i rischi."
+  }
+}

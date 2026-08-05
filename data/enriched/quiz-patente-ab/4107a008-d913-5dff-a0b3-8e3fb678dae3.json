@@ -1,0 +1,30 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22540",
+  "text": "Il valore della distanza di sicurezza deve essere stabilito anche in base alla condizione dei pneumatici",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Manutenzione del veicolo",
+      "Condizioni di marcia"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "pneumatici",
+      "condizioni del veicolo",
+      "velocità",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "adeguamento della distanza di sicurezza alle condizioni dei pneumatici",
+      "influenza dello stato dei pneumatici sulla distanza di sicurezza da mantenere",
+      "obbligo di considerare lo stato dei pneumatici per la distanza di sicurezza"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere sempre adeguata alle condizioni del veicolo, inclusi i pneumatici, alla velocità e alle condizioni della strada per garantire la sicurezza."
+  }
+}

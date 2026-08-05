@@ -1,0 +1,29 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25328",
+  "text": "Una frenatura poco efficiente o squilibrata può essere causata dal consumo eccessivo dei meccanismi del freno di stazionamento",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza del sistema frenante",
+      "Manutenzione del veicolo",
+      "Freno di stazionamento"
+    ],
+    "exact_keywords": [
+      "frenatura inefficiente",
+      "freno di stazionamento",
+      "meccanismi del freno",
+      "manutenzione"
+    ],
+    "vector_search_queries": [
+      "cause di frenatura inefficiente o squilibrata",
+      "funzionamento e manutenzione dei freni di servizio",
+      "ruolo del freno di stazionamento nel sistema frenante"
+    ],
+    "rule_explanation": "Una frenatura poco efficiente o squilibrata è causata da problemi ai freni di servizio (idraulici o pneumatici), non a quelli di stazionamento che hanno funzione secondaria."
+  }
+}

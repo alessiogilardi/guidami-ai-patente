@@ -1,0 +1,30 @@
+{
+  "question_id": 4558,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24002",
+  "text": "Il conducente può limitarsi ad un controllo visivo affrettato dell'area immediatamente antistante il veicolo poiché il suo mezzo dispone per costruzione di un adeguato campo di visibilità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Campo visivo del conducente",
+      "Obbligo di prudenza e diligenza",
+      "Visibilità e sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "campo di visibilità",
+      "manovre",
+      "pericolo",
+      "ostacolo",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "obbligo di assicurarsi dell'assenza di pericoli prima di manovrare",
+      "responsabilità del conducente nella verifica delle condizioni di sicurezza alla guida",
+      "campo visivo e manovre in sicurezza"
+    ],
+    "rule_explanation": "Il conducente deve assicurarsi che non vi siano ostacoli o pericoli, anche se il veicolo dispone di un adeguato campo visivo, poiché la prudenza impone una verifica approfondita prima di ogni manovra."
+  }
+}

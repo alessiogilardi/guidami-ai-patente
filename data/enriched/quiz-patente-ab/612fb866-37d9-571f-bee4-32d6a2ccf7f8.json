@@ -1,0 +1,27 @@
+{
+  "question_id": 4263,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21194",
+  "text": "Il suono prolungato del fischietto da parte dell'agente preposto al traffico significa che tutti i veicoli si devono arrestare, in condizioni di sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni acustiche degli agenti del traffico",
+      "Obbligo di arresto dei veicoli"
+    ],
+    "exact_keywords": [
+      "agente preposto al traffico",
+      "fischietto",
+      "segnale di arresto",
+      "condizioni di sicurezza"
+    ],
+    "vector_search_queries": [
+      "segnali acustici degli agenti del traffico e obbligo di arresto",
+      "interpretazione del suono prolungato del fischietto da parte della polizia stradale"
+    ],
+    "rule_explanation": "Il suono prolungato del fischietto da parte dell'agente del traffico impone l'arresto immediato dei veicoli, compatibilmente con le condizioni di sicurezza."
+  }
+}

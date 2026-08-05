@@ -1,0 +1,30 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24682",
+  "text": "La patente di guida di categoria B, salvo diversa limitazione riportata sul documento stesso o salvo allineamento alla data del compleanno del titolare, ha validità di tre anni se rilasciata o confermata a chi ha una età compresa fra i 70 e gli 80 anni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Durata della patente per fasce d'età",
+      "Documenti di circolazione"
+    ],
+    "exact_keywords": [
+      "patente di guida categoria B",
+      "validità",
+      "confermata",
+      "età compresa",
+      "limitazione"
+    ],
+    "vector_search_queries": [
+      "validità patente B per over 70",
+      "durata patente di guida per età",
+      "rinnovo patente dopo i 70 anni"
+    ],
+    "rule_explanation": "La patente B ha validità triennale per i titolari tra 70 e 80 anni, salvo diverse indicazioni sul documento o allineamento alla data di compleanno."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4681,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25140",
+  "text": "Per salvaguardare l'ambiente dall'inquinamento atmosferico, bisogna premere più volte il pedale dell'acceleratore quando il veicolo è freddo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico",
+      "Comportamento alla guida ecologico",
+      "Efficienza del motore"
+    ],
+    "exact_keywords": [
+      "inquinamento atmosferico",
+      "veicolo freddo",
+      "motore",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "impatto del regime motore sulle emissioni inquinanti",
+      "comportamenti di guida per ridurre l'inquinamento atmosferico",
+      "effetti dell'accelerazione a freddo sulle emissioni"
+    ],
+    "rule_explanation": "Per salvaguardare l'ambiente dall'inquinamento atmosferico, non bisogna premere più volte il pedale dell'acceleratore quando il veicolo è freddo, poiché ciò aumenta le emissioni inquinanti."
+  }
+}

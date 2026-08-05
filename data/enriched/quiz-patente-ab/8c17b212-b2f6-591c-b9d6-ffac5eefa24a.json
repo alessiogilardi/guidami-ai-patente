@@ -1,0 +1,28 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18485",
+  "text": "L'ente proprietario della strada può imporre che su una corsia i veicoli transitino ad una velocità minima obbligatoria",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi dei gestori stradali",
+      "Regolamentazione della circolazione stradale",
+      "Velocità minima obbligatoria"
+    ],
+    "exact_keywords": [
+      "ente proprietario della strada",
+      "corsia di emergenza",
+      "velocità minima obbligatoria",
+      "segnalazione stradale"
+    ],
+    "vector_search_queries": [
+      "imposizione di velocità minima obbligatoria su corsie specifiche",
+      "poteri dell'ente proprietario della strada nella regolamentazione della velocità"
+    ],
+    "rule_explanation": "L'ente proprietario della strada può imporre una velocità minima obbligatoria su determinate corsie, segnalandola adeguatamente."
+  }
+}

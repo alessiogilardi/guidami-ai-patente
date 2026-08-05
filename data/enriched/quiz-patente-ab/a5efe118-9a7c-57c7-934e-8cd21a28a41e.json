@@ -1,0 +1,28 @@
+{
+  "question_id": 4520,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23728",
+  "text": "La sosta è vietata sui binari di linee ferroviarie o tranviarie o così vicino ad essi da intralciare la marcia dei veicoli su rotaia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Ostacolo alla circolazione ferroviaria"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "binari",
+      "linee ferroviarie",
+      "linee tranviarie",
+      "intralcio alla marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in prossimità di binari ferroviari o tranviari",
+      "sosta che intralcia la marcia dei veicoli su rotaia"
+    ],
+    "rule_explanation": "La sosta è vietata in prossimità dei binari di linee ferroviarie o tranviarie se può intralciare la marcia dei veicoli su rotaia."
+  }
+}

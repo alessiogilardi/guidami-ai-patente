@@ -1,0 +1,29 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24703",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere strada suddivisa in carreggiate",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti stradali",
+      "Cause di incidenti stradali",
+      "Struttura della strada"
+    ],
+    "exact_keywords": [
+      "incidenti stradali",
+      "struttura della strada",
+      "carreggiate",
+      "pericolosità"
+    ],
+    "vector_search_queries": [
+      "cause di incidentalità legate alla struttura stradale",
+      "pericolosità della strada e suddivisione in carreggiate",
+      "fattori di rischio per incidenti stradali dovuti alla conformazione della strada"
+    ],
+    "rule_explanation": "La suddivisione in carreggiate non è di per sé causa probabile di incidenti, ma la sua inadeguatezza o la segnaletica carente possono esserlo."
+  }
+}

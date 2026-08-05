@@ -1,0 +1,31 @@
+{
+  "question_id": 4172,
+  "topic": "Segnali di obbligo",
+  "number": "20303",
+  "text": "Il segnale raffigurato prescrive di marciare alla velocità costante di 30 km/h",
+  "correct_answer": false,
+  "image": "d975ef356f24d077b82e83106e5db105.jpeg",
+  "image_description": "Segnale di obbligo di velocità minima. Il segnale prescrive di mantenere una velocità non inferiore a 30 km/h.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu scuro. Al centro del segnale è presente il numero '30' in bianco. Questo è un segnale di obbligo che indica la velocità minima da rispettare.",
+    "name": "Segnale di obbligo di velocità minima",
+    "description": "Il segnale prescrive di mantenere una velocità non inferiore a 30 km/h."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Velocità minima obbligatoria"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "velocità minima",
+      "mantenere la velocità",
+      "non inferiore a"
+    ],
+    "vector_search_queries": [
+      "obbligo di velocità minima imposto da segnale stradale",
+      "differenza tra velocità minima e velocità costante imposta da segnale"
+    ],
+    "rule_explanation": "Il segnale di velocità minima impone di non procedere a una velocità inferiore a quella indicata, non di mantenerla costante."
+  }
+}

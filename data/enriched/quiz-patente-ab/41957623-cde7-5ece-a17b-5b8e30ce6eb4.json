@@ -1,0 +1,28 @@
+{
+  "question_id": 4712,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25412",
+  "text": "L'impianto di scarico dei veicoli elettrici necessita di manutenzione più frequente rispetto a quello dei veicoli con motore a scoppio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Veicoli elettrici",
+      "Veicoli a motore a combustione interna"
+    ],
+    "exact_keywords": [
+      "impianto di scarico",
+      "veicoli elettrici",
+      "motore a scoppio",
+      "manutenzione"
+    ],
+    "vector_search_queries": [
+      "manutenzione impianto di scarico veicoli elettrici",
+      "differenze manutenzione scarico veicoli elettrici e a combustione interna"
+    ],
+    "rule_explanation": "I veicoli elettrici non hanno un impianto di scarico e quindi non richiedono la manutenzione tipica dei veicoli con motore a combustione interna."
+  }
+}

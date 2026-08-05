@@ -1,0 +1,28 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24752",
+  "text": "In caso di nebbia fitta è opportuno se costretti a fermarsi sulla carreggiata, usare la segnalazione luminosa di pericolo (quattro frecce lampeggianti simultaneamente)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo fermo in carreggiata",
+      "Utilizzo delle luci di emergenza",
+      "Comportamento in caso di nebbia"
+    ],
+    "exact_keywords": [
+      "nebbia fitta",
+      "fermarsi sulla carreggiata",
+      "segnalazione luminosa di pericolo",
+      "quattro frecce"
+    ],
+    "vector_search_queries": [
+      "uso delle quattro frecce in caso di fermata per nebbia fitta",
+      "segnalazione di pericolo per veicolo fermo in carreggiata con scarsa visibilità"
+    ],
+    "rule_explanation": "In caso di nebbia fitta, se si è costretti a fermarsi sulla carreggiata, è obbligatorio usare la segnalazione luminosa di pericolo (quattro frecce lampeggianti simultaneamente) per avvisare gli altri utenti della strada."
+  }
+}

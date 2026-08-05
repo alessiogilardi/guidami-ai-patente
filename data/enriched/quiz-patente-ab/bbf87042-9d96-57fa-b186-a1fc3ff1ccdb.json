@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22341",
+  "text": "Il limite massimo di velocità per i quadricicli non leggeri, fuori dai centri urbani, è di 80 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per quadricicli",
+      "Regolamentazione della velocità extraurbana"
+    ],
+    "exact_keywords": [
+      "quadricicli non leggeri",
+      "limite massimo di velocità",
+      "fuori dai centri abitati",
+      "80 km/h"
+    ],
+    "vector_search_queries": [
+      "limite velocità quadricicli non leggeri fuori dai centri abitati",
+      "velocità massima consentita per quadricicli non leggeri su strade extraurbane"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per i quadricicli non leggeri, quando circolano fuori dai centri urbani, è fissato a 80 km/h."
+  }
+}

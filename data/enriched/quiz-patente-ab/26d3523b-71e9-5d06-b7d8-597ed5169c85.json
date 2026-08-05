@@ -1,0 +1,33 @@
+{
+  "question_id": 4231,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20894",
+  "text": "Nella carreggiata a doppio senso di circolazione la striscia di mezzo in figura, può essere superata con le sole ruote di sinistra",
+  "correct_answer": false,
+  "image": "b1f7c9db23bcf69fe980d193a79d3c86.jpeg",
+  "image_description": "Segnaletica orizzontale di delimitazione ostacoli. La segnaletica orizzontale raffigura due serie di due strisce bianche continue parallele, separate da una striscia grigia. La serie superiore è più lunga e larga, mentre quella inferiore è più corta e stretta. Queste strisce delimitano una zona della carreggiata, probabilmente un ostacolo o una corsia non percorribile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi di segnaletica orizzontale. L'elemento superiore è una striscia grigia larga con due strisce bianche continue parallele al suo interno, una superiore e una inferiore. L'elemento inferiore è simile ma più piccolo, anch'esso una striscia grigia con due strisce bianche continue parallele. Entrambi gli elementi rappresentano la segnaletica orizzontale utilizzata per delimitare ostacoli o zone non percorribili sulla carreggiata. Non ci sono veicoli o altri segnali presenti.",
+    "name": "Segnaletica orizzontale di delimitazione ostacoli",
+    "description": "La segnaletica orizzontale raffigura due serie di due strisce bianche continue parallele, separate da una striscia grigia. La serie superiore è più lunga e larga, mentre quella inferiore è più corta e stretta. Queste strisce delimitano una zona della carreggiata, probabilmente un ostacolo o una corsia non percorribile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Delimitazione ostacoli",
+      "Superamento striscia continua"
+    ],
+    "exact_keywords": [
+      "striscia bianca continua",
+      "carreggiata a doppio senso di circolazione",
+      "segni sugli ostacoli",
+      "superamento vietato"
+    ],
+    "vector_search_queries": [
+      "divieto di superamento striscia bianca continua",
+      "segnaletica orizzontale delimitazione ostacoli vietato superare",
+      "carreggiata doppio senso striscia continua divieto di lambire"
+    ],
+    "rule_explanation": "Le strisce bianche continue, incluse quelle di delimitazione ostacoli, non possono essere superate né lambite, salvo eccezioni specifiche non applicabili in questo contesto."
+  }
+}

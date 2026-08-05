@@ -1,0 +1,28 @@
+{
+  "question_id": 4517,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23707",
+  "text": "Durante la sosta il conducente deve lasciare il veicolo con il motore spento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo",
+      "Arresto del veicolo",
+      "Partenza del veicolo"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "motore spento",
+      "veicolo fermo",
+      "partenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di spegnere il motore durante la sosta",
+      "condizioni per la sosta del veicolo"
+    ],
+    "rule_explanation": "Durante la sosta, il veicolo deve essere lasciato con il motore spento, salvo eccezioni previste per particolari tipi di veicoli o situazioni di emergenza."
+  }
+}

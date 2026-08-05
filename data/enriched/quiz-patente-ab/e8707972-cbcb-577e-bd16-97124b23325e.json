@@ -1,0 +1,32 @@
+{
+  "question_id": 4191,
+  "topic": "Segnali di precedenza",
+  "number": "20483",
+  "text": "Il segnale raffigurato obbliga a dare precedenza ai veicoli che circolano sulla strada su cui ci si immette",
+  "correct_answer": true,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di dare precedenza",
+      "Segnali di precedenza"
+    ],
+    "exact_keywords": [
+      "dare precedenza",
+      "immissione",
+      "strada su cui ci si immette",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "obbligo di dare precedenza ai veicoli sulla strada di immissione",
+      "interpretazione segnale di dare precedenza (triangolo rovesciato)",
+      "regole di precedenza in fase di immissione su una strada principale"
+    ],
+    "rule_explanation": "Il segnale di 'dare precedenza' impone al conducente di far transitare per primi i veicoli che circolano sulla strada in cui ci si immette, arrestandosi solo se necessario per non costituire pericolo o intralcio."
+  }
+}

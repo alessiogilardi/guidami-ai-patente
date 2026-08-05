@@ -1,0 +1,28 @@
+{
+  "question_id": 4436,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22932",
+  "text": "Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso deve azionare la segnalazione luminosa di pericolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inversione di marcia",
+      "Segnalazione delle manovre",
+      "Strada a doppio senso di circolazione"
+    ],
+    "exact_keywords": [
+      "inversione di marcia",
+      "strada a doppio senso",
+      "segnalazione luminosa di pericolo",
+      "svolta"
+    ],
+    "vector_search_queries": [
+      "segnalazione obbligatoria per inversione di marcia su strada a doppio senso",
+      "uso delle luci di emergenza durante le manovre di inversione di marcia"
+    ],
+    "rule_explanation": "Per l'inversione di marcia su strada a doppio senso, il conducente deve usare la freccia, non le luci di emergenza, e assicurarsi che la manovra sia sicura."
+  }
+}

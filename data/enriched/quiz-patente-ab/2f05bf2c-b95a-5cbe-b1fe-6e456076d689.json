@@ -1,0 +1,27 @@
+{
+  "question_id": 4593,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24321",
+  "text": "Le cinture di sicurezza vanno agganciate solo se si circola a velocità uguale o superiore a 30 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Sistemi di ritenuta per bambini"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "sistemi di ritenuta per bambini",
+      "obbligo di utilizzo",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "obbligo uso cinture di sicurezza a prescindere dalla velocità",
+      "utilizzo sistemi di ritenuta per bambini in autoveicoli"
+    ],
+    "rule_explanation": "L'obbligo di utilizzare le cinture di sicurezza e i sistemi di ritenuta per bambini sussiste sempre, indipendentemente dalla velocità di marcia."
+  }
+}

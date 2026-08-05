@@ -1,0 +1,28 @@
+{
+  "question_id": 4676,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25104",
+  "text": "Per diminuire l'inquinamento dell'aria provocato dai veicoli, bisogna controllare spesso gli organi di sospensione (ammortizzatori)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo delle emissioni inquinanti",
+      "Manutenzione del veicolo per la sicurezza e l'ambiente"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "veicoli",
+      "organi di sospensione",
+      "ammortizzatori"
+    ],
+    "vector_search_queries": [
+      "controllo emissioni inquinanti veicoli",
+      "manutenzione veicolo impatto ambientale",
+      "componenti veicolo e inquinamento atmosferico"
+    ],
+    "rule_explanation": "Il controllo degli organi di sospensione (ammortizzatori) non incide direttamente sull'inquinamento dell'aria provocato dai veicoli, ma sulla tenuta di strada e sicurezza."
+  }
+}

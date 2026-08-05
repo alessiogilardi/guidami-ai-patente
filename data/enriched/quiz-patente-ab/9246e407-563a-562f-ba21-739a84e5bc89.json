@@ -1,0 +1,28 @@
+{
+  "question_id": 4700,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25270",
+  "text": "Percorrendo lunghe e ripide discese è necessario inserire una marcia bassa per evitare di surriscaldare i freni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso del freno motore",
+      "Sicurezza nella guida in discesa"
+    ],
+    "exact_keywords": [
+      "freno motore",
+      "marcia bassa",
+      "surriscaldamento freni",
+      "discese ripide"
+    ],
+    "vector_search_queries": [
+      "uso del freno motore in discesa",
+      "prevenzione surriscaldamento freni in discesa ripida",
+      "tecniche di guida sicura in discesa"
+    ],
+    "rule_explanation": "Nelle lunghe e ripide discese, l'uso di una marcia bassa (freno motore) è essenziale per rallentare il veicolo e prevenire il surriscaldamento dell'impianto frenante."
+  }
+}

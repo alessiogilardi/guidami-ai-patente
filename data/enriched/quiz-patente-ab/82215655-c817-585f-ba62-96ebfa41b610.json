@@ -1,0 +1,27 @@
+{
+  "question_id": 4263,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21197",
+  "text": "Il suono prolungato del fischietto da parte dell'agente preposto al traffico indica che occorre arrestarsi, se non si è ancora occupato l'incrocio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni acustiche degli agenti del traffico",
+      "Obblighi dei conducenti in presenza di agenti Ivesciatori"
+    ],
+    "exact_keywords": [
+      "agente Ivescatore",
+      "fischietto",
+      "arrestarsi",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "segnalazione acustica fischietto agente Ivescatore arresto incrocio",
+      "obbligo di arresto suono prolungato fischietto agente Ivescatore"
+    ],
+    "rule_explanation": "Il suono prolungato del fischietto da parte dell'agente Ivescatore impone l'arresto, a meno che l'incrocio non sia già stato occupato."
+  }
+}

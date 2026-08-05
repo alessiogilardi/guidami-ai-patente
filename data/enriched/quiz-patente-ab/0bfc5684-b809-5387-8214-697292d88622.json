@@ -1,0 +1,27 @@
+{
+  "question_id": 4698,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25249",
+  "text": "Gli pneumatici chiodati possono essere usati limitatamente ad un predeterminato periodo dell'anno",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso di pneumatici chiodati",
+      "Periodo di utilizzo pneumatici invernali"
+    ],
+    "exact_keywords": [
+      "pneumatici chiodati",
+      "periodo dell'anno",
+      "stagione invernale",
+      "catene da neve"
+    ],
+    "vector_search_queries": [
+      "utilizzo pneumatici chiodati periodo limitato",
+      "normativa pneumatici chiodati stagione invernale"
+    ],
+    "rule_explanation": "Gli pneumatici chiodati possono essere utilizzati solo in un periodo limitato dell'anno, generalmente durante la stagione invernale, per garantire la sicurezza su strade ghiacciate o innevate."
+  }
+}

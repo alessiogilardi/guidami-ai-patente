@@ -1,0 +1,29 @@
+{
+  "question_id": 4032,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18656",
+  "text": "Vengono definite autovetture tutti i veicoli con motore anteriore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autovettura",
+      "Classificazione dei veicoli",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "autovetture",
+      "veicoli a motore",
+      "motore anteriore",
+      "definizione di legge"
+    ],
+    "vector_search_queries": [
+      "definizione legale di autovettura nel CdS",
+      "classificazione dei veicoli a motore per destinazione d'uso",
+      "caratteristiche tecniche che definiscono un'autovettura"
+    ],
+    "rule_explanation": "La definizione di autovettura non è legata alla posizione del motore, ma alla sua destinazione d'uso e ad altre caratteristiche tecniche definite dal Codice della Strada."
+  }
+}

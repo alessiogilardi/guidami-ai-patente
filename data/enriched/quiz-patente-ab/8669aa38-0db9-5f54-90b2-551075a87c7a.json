@@ -1,0 +1,27 @@
+{
+  "question_id": 4421,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22787",
+  "text": "La svolta a destra si effettua girando attorno alla colonnina luminosa eventualmente posta al centro dell'incrocio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di svolta a destra",
+      "Regole di circolazione negli incroci"
+    ],
+    "exact_keywords": [
+      "svolta a destra",
+      "incrocio",
+      "regola generale di marcia",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "effettuare svolta a destra in prossimità del margine destro",
+      "posizione del veicolo per la svolta a destra in un incrocio"
+    ],
+    "rule_explanation": "La svolta a destra deve essere effettuata il più vicino possibile al margine destro della carreggiata, non girando attorno a ostacoli centrali."
+  }
+}

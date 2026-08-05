@@ -1,0 +1,27 @@
+{
+  "question_id": 4508,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23622",
+  "text": "Il conducente di un autoveicolo in sosta sul lato destro di una strada urbana, prima di aprire la portiera, deve fare particolare attenzione ai veicoli che sopraggiungono",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di prudenza alla partenza o apertura portiere",
+      "Manovre di immissione nella circolazione e apertura portiere"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "aprire la portiera",
+      "veicoli in arrivo",
+      "strada urbana"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente prima di aprire la portiera in sosta",
+      "precedenza e attenzione ai veicoli in arrivo durante la sosta"
+    ],
+    "rule_explanation": "Prima di aprire la portiera, il conducente in sosta deve assicurarsi che ciò non costituisca pericolo o intralcio per i veicoli in arrivo, prestando particolare attenzione."
+  }
+}

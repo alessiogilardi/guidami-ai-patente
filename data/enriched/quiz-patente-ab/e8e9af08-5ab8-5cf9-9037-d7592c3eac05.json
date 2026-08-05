@@ -1,0 +1,28 @@
+{
+  "question_id": 4499,
+  "topic": "Norme sul sorpasso",
+  "number": "23485",
+  "text": "La manovra di sorpasso deve essere eseguita a destra se, su strada a senso unico, il conducente del veicolo da sorpassare ha segnalato l'intenzione di voler accostare a sinistra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Regole di esecuzione del sorpasso",
+      "Segnalazione di manovra"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "strada a senso unico",
+      "accostare a sinistra",
+      "segnalazione di manovra"
+    ],
+    "vector_search_queries": [
+      "sorpasso su strada a senso unico",
+      "esecuzione sorpasso con veicolo che accosta a sinistra"
+    ],
+    "rule_explanation": "Il sorpasso su strada a senso unico si esegue a destra quando il veicolo da superare segnala l'intenzione di accostare a sinistra."
+  }
+}

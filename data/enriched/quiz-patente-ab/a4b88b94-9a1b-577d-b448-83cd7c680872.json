@@ -1,0 +1,32 @@
+{
+  "question_id": 4307,
+  "topic": "Segnali di indicazione",
+  "number": "21618",
+  "text": "Il segnale raffigurato fa parte dei segnali di indicazione",
+  "correct_answer": true,
+  "image": "ba0e3bf8bcbf65be03198270e1e8b821.jpeg",
+  "image_description": "Segnale di strada senza uscita. Il segnale indica che la strada che si sta percorrendo termina in una strada senza uscita. La parte bianca rappresenta la strada che si sta percorrendo, mentre la parte rossa indica la strada senza uscita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con angoli arrotondati. Il fondo del segnale è blu scuro. Al centro del segnale è presente una figura bianca a forma di 'T' rovesciata, con la traversa orizzontale che si estende verso destra. All'estremità destra della traversa orizzontale, vi è un rettangolo verticale di colore rosso, che rappresenta la parte finale della strada. La parte bianca della 'T' rappresenta la strada che prosegue, mentre la parte rossa indica la fine della strada.",
+    "name": "Segnale di strada senza uscita",
+    "description": "Il segnale indica che la strada che si sta percorrendo termina in una strada senza uscita. La parte bianca rappresenta la strada che si sta percorrendo, mentre la parte rossa indica la strada senza uscita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione stradale",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "strada senza uscita",
+      "segnali di prescrizione",
+      "segnali di pericolo"
+    ],
+    "vector_search_queries": [
+      "classificazione segnali stradali di indicazione",
+      "segnali di pericolo e loro significato",
+      "segnali di prescrizione e loro funzione"
+    ],
+    "rule_explanation": "Il segnale di 'strada senza uscita' è un segnale di pericolo (fig. II.51) che indica la fine della strada che si sta percorrendo, preavvisando la presenza di una strada senza sbocco."
+  }
+}

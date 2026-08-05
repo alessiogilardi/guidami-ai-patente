@@ -1,0 +1,31 @@
+{
+  "question_id": 4272,
+  "topic": "Segnali di indicazione",
+  "number": "21278",
+  "text": "Il segnale raffigurato indica un posto di blocco della polizia",
+  "correct_answer": false,
+  "image": "5da3cc8d78e4bff5e79f129fb811fc6e.jpeg",
+  "image_description": "Indicazione stradale per comando di Polizia Stradale. Il segnale indica la località, l'indirizzo e i numeri telefonici del più vicino comando di Polizia Stradale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bordo nero e sfondo bianco. Nella parte superiore, in lettere maiuscole nere, è scritto \"POLIZIA STRADALE\". Sotto questa intestazione, ci sono tre righe di testo: \"localita'\", \"indirizzo\" e \"telefoni\". Accanto a ciascuna di queste etichette, ci sono delle barre grigie che rappresentano i campi da compilare con le informazioni specifiche. Il segnale è di tipo informativo e non di prescrizione o pericolo.",
+    "name": "Indicazione stradale per comando di Polizia Stradale",
+    "description": "Il segnale indica la località, l'indirizzo e i numeri telefonici del più vicino comando di Polizia Stradale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Comando di Polizia Stradale"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "posto di blocco",
+      "Polizia Stradale",
+      "comando"
+    ],
+    "vector_search_queries": [
+      "segnaletica indicazione comando Polizia Stradale",
+      "differenza tra posto di blocco e comando Polizia Stradale segnale"
+    ],
+    "rule_explanation": "Il segnale di indicazione raffigurato non indica un posto di blocco, ma la localizzazione del più vicino comando di Polizia Stradale con relativi recapiti."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4647,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24894",
+  "text": "Lo stato di shock si manifesta con pelle molto pallida, sudorazione fredda, frequenti battiti del cuore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di shock",
+      "Primo soccorso",
+      "Sintomatologia medica"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "pelle pallida",
+      "sudorazione fredda",
+      "frequenza cardiaca"
+    ],
+    "vector_search_queries": [
+      "sintomi dello stato di shock in primo soccorso",
+      "manifestazioni cliniche dello shock e intervento immediato"
+    ],
+    "rule_explanation": "Lo stato di shock è una condizione medica acuta caratterizzata da pallore cutaneo, sudorazione fredda e tachicardia, che richiede un intervento di primo soccorso."
+  }
+}

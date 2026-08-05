@@ -1,0 +1,28 @@
+{
+  "question_id": 4435,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22922",
+  "text": "Se un autotreno intende svoltare a destra in una strada stretta, non bisogna stargli troppo vicino, per non essere d'intralcio, in caso sia necessaria la manovra di retromarcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento prudente in prossimità di veicoli lunghi",
+      "Distacco di sicurezza dalla manovra di autotreni"
+    ],
+    "exact_keywords": [
+      "autotreno",
+      "svolta a destra",
+      "strada stretta",
+      "manovra di retromarcia",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "distanza di sicurezza autotreno svolta strada stretta",
+      "pericolo intralcio manovra retromarcia autotreno"
+    ],
+    "rule_explanation": "È necessario mantenere una distanza di sicurezza da un autotreno che svolta a destra in strada stretta per evitare intralci dovuti a eventuali manovre di retromarcia."
+  }
+}

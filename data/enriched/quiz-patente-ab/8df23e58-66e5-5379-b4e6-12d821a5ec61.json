@@ -1,0 +1,27 @@
+{
+  "question_id": 4544,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23904",
+  "text": "In autostrada è vietato dare un passaggio ad un automobilista fermo per avaria del veicolo sulla corsia di emergenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata in autostrada",
+      "Regolamentazione della corsia di emergenza"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "corsia di emergenza",
+      "sosta vietata",
+      "fermata vietata"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata e sosta in autostrada e corsia di emergenza",
+      "norme di comportamento in autostrada per veicoli in avaria"
+    ],
+    "rule_explanation": "In autostrada è vietato sostare o fermarsi in carreggiata, comprese le corsie di emergenza, salvo casi di effettiva necessità e per il tempo strettamente indispensabile."
+  }
+}

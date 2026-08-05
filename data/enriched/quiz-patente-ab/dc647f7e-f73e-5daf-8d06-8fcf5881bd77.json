@@ -1,0 +1,28 @@
+{
+  "question_id": 4545,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23913",
+  "text": "Il numero delle persone trasportabili sulle autovetture indicato sulla carta di circolazione non comprende il conducente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Numero di persone trasportabili",
+      "Carta di circolazione",
+      "Autovetture"
+    ],
+    "exact_keywords": [
+      "numero di persone trasportabili",
+      "carta di circolazione",
+      "autovettura",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "numero massimo di persone trasportabili su autovettura secondo carta di circolazione",
+      "inclusione del conducente nel numero di persone trasportabili"
+    ],
+    "rule_explanation": "Il numero di persone trasportabili indicato sulla carta di circolazione comprende anche il conducente."
+  }
+}

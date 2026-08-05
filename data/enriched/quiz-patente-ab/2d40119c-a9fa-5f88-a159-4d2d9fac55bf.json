@@ -1,0 +1,32 @@
+{
+  "question_id": 4029,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18618",
+  "text": "Il conducente che vede i pannelli in figura sta seguendo un rimorchio o semirimorchio per trasporto di cose con massa a pieno carico superiore a 3,5 tonnellate",
+  "correct_answer": true,
+  "image": "be0079414cd418f3e275dd374130b3c6.jpeg",
+  "image_description": "Pannello retroriflettente di pericolo. Il pannello in figura è un pannello retroriflettente di colore giallo con bordo rosso, di forma rettangolare, utilizzato per segnalare la presenza di un veicolo o di un carico che sporge posteriormente. La sua funzione è quella di aumentare la visibilità del veicolo o del carico, specialmente in condizioni di scarsa illuminazione o di notte, per prevenire incidenti. Viene applicato sui veicoli che trasportano carichi sporgenti o su rimorchi e semirimorchi di massa superiore a 3,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello rettangolare di colore giallo con un bordo rosso. Questo pannello è un segnale di pericolo utilizzato per segnalare la presenza di un veicolo o di un carico che sporge posteriormente. È un pannello retroriflettente, il che significa che riflette la luce, aumentando la visibilità del veicolo o del carico in condizioni di scarsa illuminazione. Il pannello è vuoto, senza alcun pittogramma o scritta, e la sua forma e colore sono standardizzati dal Codice della Strada italiano per questo tipo di segnalazione.",
+    "name": "Pannello retroriflettente di pericolo",
+    "description": "Il pannello in figura è un pannello retroriflettente di colore giallo con bordo rosso, di forma rettangolare, utilizzato per segnalare la presenza di un veicolo o di un carico che sporge posteriormente. La sua funzione è quella di aumentare la visibilità del veicolo o del carico, specialmente in condizioni di scarsa illuminazione o di notte, per prevenire incidenti. Viene applicato sui veicoli che trasportano carichi sporgenti o su rimorchi e semirimorchi di massa superiore a 3,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicoli eccezionali o con caratteristiche particolari",
+      "Obblighi di segnalazione per rimorchi e semirimorchi"
+    ],
+    "exact_keywords": [
+      "pannello retroriflettente",
+      "rimorchio",
+      "semirimorchio",
+      "massa a pieno carico",
+      "trasporto di cose"
+    ],
+    "vector_search_queries": [
+      "segnalazione posteriore rimorchi e semirimorchi superiore a 3,5 tonnellate",
+      "obbligo pannello retroriflettente per veicoli da trasporto merci pesanti"
+    ],
+    "rule_explanation": "I rimorchi o semirimorchi per trasporto di cose con massa a pieno carico superiore a 3,5 tonnellate devono essere dotati di pannelli retroriflettenti posteriori."
+  }
+}

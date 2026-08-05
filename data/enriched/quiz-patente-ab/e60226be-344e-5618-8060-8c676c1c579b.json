@@ -1,0 +1,28 @@
+{
+  "question_id": 4571,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24144",
+  "text": "Pur avendo acceso le luci anabbaglianti, si corre il rischio di abbagliare gli altri se le lampade sono montate in maniera errata o non sono omologate",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei dispositivi di illuminazione",
+      "Conformità tecnica dei dispositivi di illuminazione"
+    ],
+    "exact_keywords": [
+      "luci anabbaglianti",
+      "abbagliare",
+      "lampade",
+      "montate in maniera errata",
+      "non omologate"
+    ],
+    "vector_search_queries": [
+      "rischio abbagliamento per errato montaggio o non omologazione lampade anabbaglianti",
+      "conseguenze di lampade non conformi o mal installate sui fari anabbaglianti"
+    ],
+    "rule_explanation": "L'uso improprio o la non conformità delle lampade dei fari anabbaglianti possono causare abbagliamento, anche se accesi correttamente."
+  }
+}

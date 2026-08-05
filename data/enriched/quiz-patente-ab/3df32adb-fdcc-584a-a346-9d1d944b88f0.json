@@ -1,0 +1,29 @@
+{
+  "question_id": 4704,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25300",
+  "text": "La pressione di gonfiaggio troppo bassa degli pneumatici ne provoca l'anomalo consumo ai bordi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Usura anomala degli pneumatici",
+      "Manutenzione del veicolo",
+      "Pressione di gonfiaggio degli pneumatici"
+    ],
+    "exact_keywords": [
+      "pressione di gonfiaggio",
+      "pneumatici",
+      "consumo anomalo",
+      "bordi"
+    ],
+    "vector_search_queries": [
+      "usura pneumatici per pressione bassa",
+      "conseguenze pressione insufficiente pneumatici",
+      "anomalo consumo pneumatici bordi"
+    ],
+    "rule_explanation": "Una pressione di gonfiaggio insufficiente degli pneumatici causa un'usura accelerata e irregolare, concentrata sui bordi esterni del battistrada."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4011,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18426",
+  "text": "Nelle aree pedonali possono transitare i pedoni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree pedonali",
+      "Utenti deboli della strada",
+      "Pedoni"
+    ],
+    "exact_keywords": [
+      "aree pedonali",
+      "pedoni",
+      "transito",
+      "accesso"
+    ],
+    "vector_search_queries": [
+      "definizione e disciplina delle aree pedonali",
+      "diritti di transito dei pedoni nelle aree pedonali"
+    ],
+    "rule_explanation": "Le aree pedonali sono riservate alla circolazione dei pedoni, salvo specifiche eccezioni per l'accesso e il transito di veicoli autorizzati."
+  }
+}

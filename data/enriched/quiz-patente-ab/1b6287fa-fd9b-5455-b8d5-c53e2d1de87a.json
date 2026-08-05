@@ -1,0 +1,27 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23457",
+  "text": "Il conducente che intende sorpassare deve accertarsi che la visibilità sia tale da consentire la manovra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza nel sorpasso",
+      "Verifica delle condizioni di sicurezza per il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "visibilità",
+      "manovra",
+      "condizioni di sicurezza"
+    ],
+    "vector_search_queries": [
+      "condizioni di visibilità per il sorpasso",
+      "obbligo di accertamento della sicurezza prima di sorpassare"
+    ],
+    "rule_explanation": "Il conducente che effettua un sorpasso deve assicurarsi che la visibilità sia sufficiente a garantire la sicurezza della manovra, senza creare pericolo per gli altri utenti della strada."
+  }
+}

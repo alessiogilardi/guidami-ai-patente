@@ -1,0 +1,28 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22531",
+  "text": "Il valore della distanza di sicurezza deve essere stabilito anche in base all'andamento planoaltimetrico della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condizioni della strada",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "andamento planoaltimetrico",
+      "condizioni della strada",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "determinazione della distanza di sicurezza in base all'andamento planoaltimetrico della strada",
+      "influenza della pendenza e delle curve sulla distanza di sicurezza"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare pericoli, tenendo conto anche dell'andamento planoaltimetrico della strada."
+  }
+}

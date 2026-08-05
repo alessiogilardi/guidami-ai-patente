@@ -1,0 +1,30 @@
+{
+  "question_id": 4704,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25298",
+  "text": "Per una maggiore sicurezza, bisogna controllare le condizioni dei pneumatici anche sui lati, per prevenire improvvisi scoppi o sgonfiamenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Stato degli pneumatici"
+    ],
+    "exact_keywords": [
+      "pneumatici",
+      "sicurezza",
+      "controllo",
+      "lati",
+      "scoppio"
+    ],
+    "vector_search_queries": [
+      "controllo pneumatici per sicurezza stradale",
+      "manutenzione pneumatici prevenzione scoppio",
+      "verifica fianchi pneumatici"
+    ],
+    "rule_explanation": "Il controllo periodico degli pneumatici, inclusi i fianchi, è essenziale per la sicurezza stradale al fine di prevenire cedimenti improvvisi come scoppi o sgonfiamenti."
+  }
+}

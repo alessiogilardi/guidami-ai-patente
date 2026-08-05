@@ -1,0 +1,28 @@
+{
+  "question_id": 4013,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18455",
+  "text": "Nelle autostrade possono circolare tutti i tipi di motocicli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione stradale",
+      "Classificazione dei veicoli",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "autostrade",
+      "motocicli",
+      "veicoli a motore",
+      "circolare"
+    ],
+    "vector_search_queries": [
+      "tipi di motocicli ammessi in autostrada",
+      "limitazioni alla circolazione dei motocicli sulle autostrade"
+    ],
+    "rule_explanation": "Sulle autostrade è vietata la circolazione ai motocicli di cilindrata inferiore a 175 cc se a due tempi, o 250 cc se a quattro tempi."
+  }
+}

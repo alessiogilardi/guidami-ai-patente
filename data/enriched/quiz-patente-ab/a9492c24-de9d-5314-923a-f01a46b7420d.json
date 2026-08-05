@@ -1,0 +1,30 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24665",
+  "text": "Gareggiare in velocità su piste private, avendo meno di 24 anni e la sola patente B, comporta una perdita di punti sulla patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gareggiare in velocità",
+      "Uso della patente B",
+      "Sistema sanzionatorio della patente a punti"
+    ],
+    "exact_keywords": [
+      "gareggiare in velocità",
+      "piste private",
+      "patente B",
+      "perdita di punti",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "sanzioni per gare di velocità su piste private",
+      "perdita di punti patente per competizioni non autorizzate",
+      "uso della patente B in competizioni sportive"
+    ],
+    "rule_explanation": "La gara di velocità su piste private non è soggetta alla perdita di punti della patente, ma a sanzioni amministrative pecuniarie e alla sospensione della patente, indipendentemente dall'età del conducente o dalla categoria di patente posseduta."
+  }
+}

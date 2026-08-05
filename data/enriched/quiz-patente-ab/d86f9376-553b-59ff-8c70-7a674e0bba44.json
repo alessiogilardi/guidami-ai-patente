@@ -1,0 +1,28 @@
+{
+  "question_id": 4674,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25092",
+  "text": "Per diminuire il rumore prodotto dai veicoli a motore è necessario far controllare i freni se emettono rumore durante le frenate, sostituendoli se necessario",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Manutenzione del veicolo",
+      "Rumorosità dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "rumore",
+      "veicoli a motore",
+      "frenata",
+      "sostituzione"
+    ],
+    "vector_search_queries": [
+      "controllo e sostituzione freni per ridurre rumore in frenata",
+      "manutenzione veicoli a motore per limitare inquinamento acustico"
+    ],
+    "rule_explanation": "La manutenzione dei freni è essenziale per prevenire rumori anomali durante la frenata, contribuendo alla riduzione dell'inquinamento acustico generato dai veicoli a motore."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4434,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22912",
+  "text": "Se ad un incrocio giungono contemporaneamente da strade diverse due veicoli, entrambi hanno l'obbligo di moderare la velocità, per evitare incidenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza agli incroci",
+      "Obbligo di moderare la velocità in prossimità degli incroci"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "veicoli",
+      "moderare la velocità",
+      "evitare incidenti"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità agli incroci",
+      "comportamento dei veicoli in arrivo contemporaneamente ad un incrocio"
+    ],
+    "rule_explanation": "Agli incroci, tutti i veicoli devono moderare la velocità per evitare incidenti, indipendentemente dalla regola di precedenza."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4632,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24787",
+  "text": "I tamponamenti stradali avvengono principalmente per la forte velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Causa degli incidenti stradali",
+      "Tamponamento",
+      "Velocità di guida"
+    ],
+    "exact_keywords": [
+      "tamponamento",
+      "velocità",
+      "distanza di sicurezza",
+      "condizioni di traffico"
+    ],
+    "vector_search_queries": [
+      "cause principali dei tamponamenti stradali",
+      "rischio di tamponamento legato alla velocità e alla distanza di sicurezza"
+    ],
+    "rule_explanation": "I tamponamenti sono spesso causati da velocità eccessiva, mancato rispetto della distanza di sicurezza o distrazione del conducente."
+  }
+}

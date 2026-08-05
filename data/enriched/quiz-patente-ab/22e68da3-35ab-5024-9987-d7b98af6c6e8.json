@@ -1,0 +1,27 @@
+{
+  "question_id": 4639,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24844",
+  "text": "L'assunzione di LSD o l'anfetamina non compromette la facoltà di guida",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida sotto l'effetto di sostanze stupefacenti",
+      "Alterazione delle capacità psicofisiche alla guida"
+    ],
+    "exact_keywords": [
+      "sostanze stupefacenti",
+      "anfetamina",
+      "LSD",
+      "facoltà di guida"
+    ],
+    "vector_search_queries": [
+      "effetti di LSD e anfetamine sulla capacità di guida",
+      "divieto di condurre veicoli in stato di alterazione da droghe"
+    ],
+    "rule_explanation": "È vietato guidare in stato di alterazione psicofisica dovuto all'assunzione di sostanze stupefacenti, tra cui LSD e anfetamine, che compromettono gravemente la capacità di guida."
+  }
+}

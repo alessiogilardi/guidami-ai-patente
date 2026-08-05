@@ -1,0 +1,29 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18727",
+  "text": "Quando si avvicina ad un incrocio, il conducente deve sempre usare la massima prudenza, anche quando gli altri conducenti devono dargli la precedenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Massima prudenza agli incroci",
+      "Regola generale di prudenza nella circolazione",
+      "Doveri del conducente verso gli altri utenti"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "massima prudenza",
+      "dare la precedenza",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza del conducente agli incroci",
+      "regola di precedenza e dovere di prudenza",
+      "comportamento del conducente in prossimità di incroci stradali"
+    ],
+    "rule_explanation": "Anche quando si ha la precedenza, il conducente deve usare la massima prudenza in prossimità degli incroci per prevenire incidenti."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24701",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere fondo stradale scivoloso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Condizioni della strada",
+      "Prevenzione degli incidenti",
+      "Fattori di rischio stradale"
+    ],
+    "exact_keywords": [
+      "fondo stradale scivoloso",
+      "struttura della strada",
+      "causa di incidenti",
+      "condizioni di sicurezza"
+    ],
+    "vector_search_queries": [
+      "pericolosità del fondo stradale scivoloso come causa di incidenti",
+      "impatto delle condizioni del manto stradale sulla sicurezza della circolazione"
+    ],
+    "rule_explanation": "Un fondo stradale scivoloso, dovuto a cause come olio, ghiaccio o detriti, costituisce un pericolo per la circolazione e può essere causa di incidenti stradali."
+  }
+}

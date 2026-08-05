@@ -1,0 +1,27 @@
+{
+  "question_id": 4024,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18561",
+  "text": "I tricicli a motore sono veicoli con motore di cilindrata inferiore a 50 cm3 e aventi velocità massima per costruzione fino a 45 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di tricicli a motore",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "tricicli a motore",
+      "ciclomotori",
+      "cilindrata",
+      "velocità massima"
+    ],
+    "vector_search_queries": [
+      "definizione tricicli a motore codice della strada",
+      "differenza tra tricicli a motore e ciclomotori"
+    ],
+    "rule_explanation": "I tricicli a motore sono veicoli a tre ruote con motore di cilindrata superiore a 50 cm3 o velocità superiore a 45 km/h; i ciclomotori hanno cilindrata fino a 50 cm3 e velocità fino a 45 km/h."
+  }
+}

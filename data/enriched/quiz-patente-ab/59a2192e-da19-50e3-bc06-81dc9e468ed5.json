@@ -1,0 +1,28 @@
+{
+  "question_id": 4654,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24947",
+  "text": "Lo stato di shock non si verifica mai nelle persone che hanno avuto un trauma",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di shock",
+      "Trauma fisico",
+      "Primo soccorso"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "trauma",
+      "lesioni",
+      "sintomi"
+    ],
+    "vector_search_queries": [
+      "cause e sintomi dello stato di shock post-traumatico",
+      "shock da trauma e primo soccorso"
+    ],
+    "rule_explanation": "Lo stato di shock può verificarsi anche in seguito a traumi, indipendentemente dalla gravità delle lesioni visibili, a causa della risposta del corpo a un evento stressante."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4180,
+  "topic": "Segnali di obbligo",
+  "number": "20378",
+  "text": "Il segnale raffigurato è posto in corrispondenza dell'inizio di un percorso ciclabile accanto ad un percorso pedonale",
+  "correct_answer": true,
+  "image": "744d9382091f6c49f84423af54940f5f.jpeg",
+  "image_description": "Pista ciclabile e percorso pedonale Groves. Il segnale indica un percorso misto, dove pedoni e ciclisti devono procedere in direzioni separate ma all'interno dello stesso percorso. La parte sinistra è riservata ai pedoni e la parte destra ai ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro del segnale, una linea bianca verticale divide lo spazio in due sezioni. Nella sezione di sinistra è raffigurata la sagoma stilizzata di un pedone in bianco, mentre nella sezione di destra è raffigurata una bicicletta in bianco. Il segnale è un segnale di obbligo.",
+    "name": "Pista ciclabile e percorso pedonale Groves",
+    "description": "Il segnale indica un percorso misto, dove pedoni e ciclisti devono procedere in direzioni separate ma all'interno dello stesso percorso. La parte sinistra è riservata ai pedoni e la parte destra ai ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di obbligo",
+      "Percorsi pedonali e ciclabili"
+    ],
+    "exact_keywords": [
+      "percorso ciclabile",
+      "percorso pedonale",
+      "segnali di obbligo",
+      "segnaletica verticale"
+    ],
+    "vector_search_queries": [
+      "segnaletica obbligo percorso ciclabile e pedonale",
+      "inizio percorso ciclabile accanto a percorso pedonale",
+      "obbligo di circolazione su percorsi separati pedoni e ciclisti"
+    ],
+    "rule_explanation": "Il segnale di inizio percorso misto pedonale e ciclabile impone l'obbligo di utilizzare la corsia separata per pedoni e ciclisti, secondo le indicazioni della segnaletica orizzontale."
+  }
+}

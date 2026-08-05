@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23512",
+  "text": "E' vietato sorpassare sulle corsie di accelerazione o di decelerazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Corsie di accelerazione e decelerazione"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "corsia di accelerazione",
+      "corsia di decelerazione",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in corsia di accelerazione",
+      "sorpasso vietato in corsia di decelerazione"
+    ],
+    "rule_explanation": "È vietato effettuare il sorpasso nelle corsie di accelerazione e di decelerazione per garantire la fluidità e la sicurezza della manovra."
+  }
+}

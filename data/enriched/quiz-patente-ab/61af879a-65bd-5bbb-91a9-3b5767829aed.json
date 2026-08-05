@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22329",
+  "text": "Il limite massimo di velocità per un'autovettura sulle strade extraurbane principali è ordinariamente di 110 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane principali",
+      "Velocità massima consentita per autovetture"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "autovettura",
+      "strade extraurbane principali",
+      "110 km/h"
+    ],
+    "vector_search_queries": [
+      "limite velocità autovettura strada extraurbana principale",
+      "velocità massima ordinaria strade extraurbane principali per autovetture"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per le autovetture sulle strade extraurbane principali è di 110 km/h, salvo diversa segnalazione."
+  }
+}

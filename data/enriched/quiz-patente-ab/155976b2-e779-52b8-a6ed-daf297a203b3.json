@@ -1,0 +1,27 @@
+{
+  "question_id": 4408,
+  "topic": "Distanza di sicurezza",
+  "number": "22660",
+  "text": "Quando si circola in autostrada, è possibile diminuire la distanza di sicurezza, in quanto non ci si aspetta una frenata improvvisa dal veicolo che precede",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Principio di prudenza nella circolazione autostradale"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "autostrada",
+      "veicolo che precede",
+      "condizioni di marcia"
+    ],
+    "vector_search_queries": [
+      "mantenimento della distanza di sicurezza in autostrada",
+      "obbligo di prudenza e distanziamento tra veicoli in autostrada"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere sempre mantenuta, anche in autostrada, per poter evitare ostacoli o frenate improvvise del veicolo che precede."
+  }
+}

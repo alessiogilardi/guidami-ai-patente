@@ -1,0 +1,29 @@
+{
+  "question_id": 4033,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18668",
+  "text": "I semirimorchi sono rimorchi privi di impianto frenante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di semirimorchio",
+      "Caratteristiche tecniche dei veicoli",
+      "Normativa sui rimorchi"
+    ],
+    "exact_keywords": [
+      "semirimorchio",
+      "rimorchio",
+      "impianto frenante",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "definizione di semirimorchio nel codice della strada",
+      "requisiti tecnici dei rimorchi e semirimorchi",
+      "obbligo impianto frenante per semirimorchi"
+    ],
+    "rule_explanation": "I semirimorchi sono rimorchi dotati di impianto frenante, che si differenziano dai rimorchi per il fatto di essere progettati per essere accoppiati ad un trattore stradale."
+  }
+}

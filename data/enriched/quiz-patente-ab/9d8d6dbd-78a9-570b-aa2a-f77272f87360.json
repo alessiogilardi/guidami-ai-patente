@@ -1,0 +1,32 @@
+{
+  "question_id": 4514,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23681",
+  "text": "Nei centri abitati, la fermata e la sosta sono vietate in corrispondenza delle aree di intersezione e in prossimità di esse a meno di 5 metri, salvo diversa segnalazione.",
+  "correct_answer": true,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata in prossimità di incroci",
+      "Regolamentazione della sosta nei centri abitati"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "aree di intersezione",
+      "5 metri",
+      "segnalazione diversa"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata e sosta in corrispondenza e prossimità di incroci",
+      "distanza minima dal incrocio per sosta e fermata nei centri abitati"
+    ],
+    "rule_explanation": "La fermata e la sosta sono vietate nelle aree di intersezione e entro 5 metri da esse nei centri abitati, a meno che non vi sia diversa segnalazione."
+  }
+}

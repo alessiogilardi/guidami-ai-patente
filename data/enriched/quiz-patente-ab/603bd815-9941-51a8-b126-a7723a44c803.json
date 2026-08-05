@@ -1,0 +1,28 @@
+{
+  "question_id": 4538,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23867",
+  "text": "In autostrada, il traino di veicoli in avaria su carreggiate, rampe, svincoli, aree di servizio o di parcheggio è consentito solo ai veicoli di soccorso autorizzati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Soccorso stradale in autostrada",
+      "Veicoli autorizzati al traino",
+      "Norme di circolazione autostradale"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "veicolo in avaria",
+      "soccorso stradale autorizzato",
+      "traino"
+    ],
+    "vector_search_queries": [
+      "traino veicoli in avaria in autostrada",
+      "soccorso stradale autorizzato su autostrade"
+    ],
+    "rule_explanation": "In autostrada, solo i veicoli specificamente autorizzati per il soccorso stradale possono effettuare il traino di veicoli in avaria su qualsiasi tratto della sede stradale."
+  }
+}

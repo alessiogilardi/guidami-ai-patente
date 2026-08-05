@@ -1,0 +1,28 @@
+{
+  "question_id": 4418,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22760",
+  "text": "Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre evitare brusche manovre e cambi di corsia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Abbagliamento da fari",
+      "Comportamento in caso di incrocio con veicoli in senso opposto",
+      "Sicurezza stradale in condizioni di scarsa visibilità"
+    ],
+    "exact_keywords": [
+      "fari a luce abbagliante",
+      "strada extraurbana",
+      "manovre brusche",
+      "cambi di corsia"
+    ],
+    "vector_search_queries": [
+      "comportamento in caso di abbagliamento da fari su strade extraurbane di notte",
+      "evitare manovre brusche e cambi di corsia in presenza di fari abbaglianti"
+    ],
+    "rule_explanation": "In caso di incrocio notturno su strada extraurbana con veicoli che utilizzano fari abbaglianti, è necessario moderare la velocità ed evitare manovre improvvise per garantire la sicurezza."
+  }
+}

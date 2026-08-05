@@ -1,0 +1,33 @@
+{
+  "question_id": 4134,
+  "topic": "Segnali di divieto",
+  "number": "19851",
+  "text": "Il segnale raffigurato indica la fine di divieti precedentemente imposti",
+  "correct_answer": true,
+  "image": "d8dce2d1c8f09a52c75de4be9144dd48.jpeg",
+  "image_description": "Segnale di fine divieti o prescrizioni. Indica la fine di tutti i divieti precedentemente imposti, ad eccezione di quelli relativi alla sosta e al fermata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro è presente una banda nera diagonale, che va dall'angolo in alto a sinistra all'angolo in basso a destra. Questo è il segnale di fine divieti o prescrizioni.",
+    "name": "Segnale di fine divieti o prescrizioni",
+    "description": "Indica la fine di tutti i divieti precedentemente imposti, ad eccezione di quelli relativi alla sosta e al fermata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di fine divieto",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "fine dei divieti o delle prescrizioni",
+      "segnali di divieto",
+      "segnali di prescrizione",
+      "sosta",
+      "fermata"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine dei divieti imposti",
+      "interpretazione del segnale di fine divieti o prescrizioni",
+      "eccezioni al segnale di fine divieto (sosta e fermata)"
+    ],
+    "rule_explanation": "Il segnale di fine divieti o prescrizioni indica la cessazione di tutti i divieti o prescrizioni precedentemente segnalati, eccetto quelli relativi alla sosta e alla fermata."
+  }
+}

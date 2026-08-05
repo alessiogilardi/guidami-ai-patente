@@ -1,0 +1,28 @@
+{
+  "question_id": 4534,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23840",
+  "text": "Il segnale mobile triangolare di pericolo deve essere posto sulla carreggiata in modo che sia visibile ad una distanza di almeno 50 metri dai veicoli sopraggiungenti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo fermo",
+      "Obblighi del conducente in caso di arresto forzato",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "segnale mobile triangolare di pericolo",
+      "distanza di visibilità",
+      "carreggiata",
+      "veicoli in arrivo"
+    ],
+    "vector_search_queries": [
+      "posizionamento segnale mobile triangolare di pericolo",
+      "distanza di visibilità del segnale di pericolo per veicoli in arrivo"
+    ],
+    "rule_explanation": "Il segnale mobile di pericolo deve essere posizionato ad almeno 100 metri dall'ostacolo e visibile da 100 metri, non 50."
+  }
+}

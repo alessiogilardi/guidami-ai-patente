@@ -1,0 +1,27 @@
+{
+  "question_id": 4544,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23906",
+  "text": "Qualora il conducente veda un automobilista fermo per avaria del veicolo in autostrada, si deve fermare a prestare soccorso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Soccorso stradale in autostrada",
+      "Obblighi del conducente in caso di avaria"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "avaria",
+      "soccorso",
+      "fermarsi"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata per soccorso in autostrada",
+      "obblighi del conducente in caso di veicolo in avaria in autostrada"
+    ],
+    "rule_explanation": "In autostrada, in caso di avaria, non ci si deve fermare a prestare soccorso ma segnalare la situazione alle autorità competenti tramite i mezzi disponibili."
+  }
+}

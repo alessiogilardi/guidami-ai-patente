@@ -1,0 +1,28 @@
+{
+  "question_id": 4417,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22747",
+  "text": "Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, è opportuno attendere pazientemente la ripresa della marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento ai incroci",
+      "Ripresa della marcia dopo l'arresto",
+      "Obbligo di prudenza e pazienza"
+    ],
+    "exact_keywords": [
+      "incrocio urbano",
+      "via libera",
+      "riprendere la marcia",
+      "attendere pazientemente"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente in caso di ritardo nella ripresa della marcia a un incrocio con via libera",
+      "obbligo di pazienza del conducente quando il veicolo che precede non riprende la marcia all'incrocio"
+    ],
+    "rule_explanation": "Ai incroci urbani con segnale di via libera, se il veicolo che precede ritarda la ripresa della marcia, è necessario attendere con pazienza senza suonare il clacson o sollecitare in altro modo."
+  }
+}

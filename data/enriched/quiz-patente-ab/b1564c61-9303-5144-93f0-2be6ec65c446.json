@@ -1,0 +1,28 @@
+{
+  "question_id": 4386,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22443",
+  "text": "La velocità deve essere particolarmente moderata quando, in mancanza di marciapiedi, i pedoni occupano la carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Moderazione della velocità",
+      "Pericolo per i pedoni",
+      "Occupazione della carreggiata"
+    ],
+    "exact_keywords": [
+      "velocità moderata",
+      "pedoni",
+      "carreggiata",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di pedoni sulla carreggiata",
+      "condizioni di pericolo per pedoni che occupano la carreggiata e necessità di moderare la velocità"
+    ],
+    "rule_explanation": "La velocità deve essere particolarmente moderata in presenza di pedoni che occupano la carreggiata, per evitare ogni situazione di pericolo."
+  }
+}

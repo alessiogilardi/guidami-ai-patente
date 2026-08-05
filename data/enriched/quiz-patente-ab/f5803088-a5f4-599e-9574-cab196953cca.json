@@ -1,0 +1,28 @@
+{
+  "question_id": 4626,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24732",
+  "text": "Su strade coperte di neve occorre evitare brusche manovre",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Prevenzione degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "strade innevate",
+      "brusche manovre",
+      "condizioni di scarsa aderenza",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "comportamento di guida su strade innevate",
+      "evitare manovre brusche in condizioni di scarsa aderenza",
+      "prevenzione incidenti su strade con neve"
+    ],
+    "rule_explanation": "Su strade innevate, caratterizzate da scarsa aderenza, è necessario evitare accelerazioni, frenate o sterzate improvvise per mantenere il controllo del veicolo e prevenire incidenti."
+  }
+}

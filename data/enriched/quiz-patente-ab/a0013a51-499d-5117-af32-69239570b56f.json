@@ -1,0 +1,31 @@
+{
+  "question_id": 4300,
+  "topic": "Segnali di indicazione",
+  "number": "21562",
+  "text": "Il segnale raffigurato indica un posto di confine con la Svizzera",
+  "correct_answer": false,
+  "image": "48c50da3b91a82e86891d676bf735005.jpeg",
+  "image_description": "Segnale di indicazione per pronto soccorso medico con direzione obbligatoria a destra. Il segnale indica la direzione da seguire per raggiungere un pronto soccorso medico. La freccia indica che la direzione da prendere è verso destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare verticale, con bordo bianco e sfondo bianco. Nella parte superiore è presente un riquadro bianco con all'interno una croce greca rossa, simbolo di pronto soccorso medico. Sotto questo riquadro, vi è una freccia nera orizzontale che punta verso destra. L'insieme dei simboli indica la direzione da seguire per raggiungere un pronto soccorso medico.",
+    "name": "Segnale di indicazione per pronto soccorso medico con direzione obbligatoria a destra",
+    "description": "Il segnale indica la direzione da seguire per raggiungere un pronto soccorso medico. La freccia indica che la direzione da prendere è verso destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "posto di confine",
+      "Svizzera",
+      "pronto soccorso"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale di pronto soccorso",
+      "differenza tra segnale di confine e segnale di pronto soccorso"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica un pronto soccorso medico con direzione obbligatoria a destra, non un posto di confine con la Svizzera."
+  }
+}

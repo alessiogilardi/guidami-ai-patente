@@ -1,0 +1,28 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18739",
+  "text": "Il conducente di un veicolo può fare a meno di usare la massima prudenza quando si avvicina ad un incrocio in cui ha il diritto di precedenza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Principio di massima prudenza alla guida",
+      "Regola di condotta agli incroci",
+      "Diritto di precedenza"
+    ],
+    "exact_keywords": [
+      "massima prudenza",
+      "incrocio",
+      "diritto di precedenza",
+      "condotta da adottare"
+    ],
+    "vector_search_queries": [
+      "obbligo di massima prudenza agli incroci anche con diritto di precedenza",
+      "condotta del conducente in prossimità di incroci con precedenza garantita"
+    ],
+    "rule_explanation": "Anche in presenza del diritto di precedenza, il conducente deve sempre usare la massima prudenza per evitare incidenti, specialmente agli incroci."
+  }
+}

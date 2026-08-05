@@ -1,0 +1,28 @@
+{
+  "question_id": 4519,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23721",
+  "text": "Nelle zone predisposte per la sosta, il conducente deve collocare il veicolo nel modo prescritto dalla segnaletica",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta dei veicoli",
+      "Segnaletica stradale di indicazione",
+      "Parcheggio"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "veicolo",
+      "segnaletica",
+      "parcheggio"
+    ],
+    "vector_search_queries": [
+      "posizionamento del veicolo nelle aree di sosta designate",
+      "obblighi del conducente nelle zone di parcheggio regolamentate dalla segnaletica"
+    ],
+    "rule_explanation": "Nelle aree attrezzate per la sosta, il veicolo deve essere posizionato conformemente alle indicazioni della segnaletica stradale che disciplina il parcheggio."
+  }
+}

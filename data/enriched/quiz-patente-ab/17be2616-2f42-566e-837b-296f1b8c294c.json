@@ -1,0 +1,28 @@
+{
+  "question_id": 4664,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25025",
+  "text": "Quando l'assicurazione per la responsabilità civile auto è scaduta di validità, il veicolo deve essere sottoposto a collaudo tecnico prima di essere rimesso in circolazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione obbligatoria R.C.A.",
+      "Rimessa in circolazione di veicolo non assicurato",
+      "Obblighi assicurativi"
+    ],
+    "exact_keywords": [
+      "assicurazione R.C.A. scaduta",
+      "veicolo non assicurato",
+      "rimesso in circolazione",
+      "collaudo tecnico"
+    ],
+    "vector_search_queries": [
+      "circolazione veicolo senza assicurazione R.C.A. obbligatoria",
+      "conseguenze circolazione veicolo non assicurato"
+    ],
+    "rule_explanation": "La circolazione di un veicolo non coperto da assicurazione R.C.A. obbligatoria comporta sanzioni e la confisca amministrativa, non un obbligo di collaudo tecnico per la rimessa in circolazione."
+  }
+}

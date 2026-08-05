@@ -1,0 +1,33 @@
+{
+  "question_id": 4311,
+  "topic": "Segnali di indicazione",
+  "number": "21656",
+  "text": "Il segnale raffigurato si può trovare all'inizio di un ponte, di un viadotto o di un cavalcavia",
+  "correct_answer": true,
+  "image": "8e024d9a123799792079a51d1bb306f5.jpeg",
+  "image_description": "Preavviso di ponte, viadotto o cavalcavia. Il segnale indica che si sta per transitare sotto un ponte, un viadotto o un cavalcavia. Può essere abbinato a un pannello integrativo che ne indica la lunghezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore verde con bordo bianco. Al centro del segnale è raffigurato un pittogramma bianco che rappresenta una struttura simile a un ponte o un cavalcavia, con una parte superiore orizzontale e una parte inferiore arcuata. Il segnale è di forma quadrata con angoli arrotondati. Non sono presenti altri elementi visivi o segnali aggiuntivi. Il segnale è isolato.",
+    "name": "Preavviso di ponte, viadotto o cavalcavia",
+    "description": "Il segnale indica che si sta per transitare sotto un ponte, un viadotto o un cavalcavia. Può essere abbinato a un pannello integrativo che ne indica la lunghezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Preavviso di pericolo",
+      "Infrastrutture stradali"
+    ],
+    "exact_keywords": [
+      "segnali di preavviso",
+      "ponte",
+      "viadotto",
+      "cavalcavia",
+      "segnali stradali"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di preavviso di ponte, viadotto o cavalcavia",
+      "ubicazione segnale di preavviso di ponte, viadotto o cavalcavia"
+    ],
+    "rule_explanation": "Il segnale di preavviso di ponte, viadotto o cavalcavia indica la prossimità di tali strutture stradali, prefigurando la necessità di un'adeguata attenzione."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4417,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22751",
+  "text": "Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, non si deve superarlo con manovre pericolose",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento ai incroci",
+      "Manovre pericolose",
+      "Obblighi verso altri veicoli"
+    ],
+    "exact_keywords": [
+      "incrocio urbano",
+      "via libera",
+      "riprendere la marcia",
+      "manovre pericolose",
+      "superamento"
+    ],
+    "vector_search_queries": [
+      "comportamento veicolo che precede tarda a riprendere marcia incrocio urbano",
+      "divieto manovre pericolose per superamento veicolo fermo incrocio"
+    ],
+    "rule_explanation": "Agli incroci, anche con via libera, non si deve superare un veicolo che tarda a ripartire se ciò comporta manovre pericolose, per garantire la sicurezza della circolazione."
+  }
+}

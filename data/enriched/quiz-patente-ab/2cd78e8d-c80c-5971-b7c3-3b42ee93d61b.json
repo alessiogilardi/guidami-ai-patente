@@ -1,0 +1,29 @@
+{
+  "question_id": 4032,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18660",
+  "text": "L'autovettura può avere, al massimo, cinque posti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autovettura",
+      "Capacità di trasporto passeggeri",
+      "Normativa sui veicoli a motore"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "posti",
+      "targata",
+      "uso proprio"
+    ],
+    "vector_search_queries": [
+      "numero massimo posti autovettura",
+      "definizione autovettura codice della strada",
+      "capacità trasporto passeggeri veicolo privato"
+    ],
+    "rule_explanation": "L'autovettura è un veicolo a motore con più di quattro posti a sedere, escluso il conducente, destinato al trasporto di persone. Non esiste un limite massimo di posti imposto dalla legge, purché sia omologata per tale uso."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4522,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23749",
+  "text": "La sosta è vietata sulle piste ciclabili, ma non agli sbocchi di esse nel caso sia di breve durata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Piste ciclabili",
+      "Regole di circolazione per veicoli a motore"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "piste ciclabili",
+      "sbocchi di esse",
+      "breve durata"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta su piste ciclabili",
+      "sosta vietata agli sbocchi delle piste ciclabili"
+    ],
+    "rule_explanation": "La sosta è vietata sulle piste ciclabili e anche agli sbocchi di esse, indipendentemente dalla durata."
+  }
+}

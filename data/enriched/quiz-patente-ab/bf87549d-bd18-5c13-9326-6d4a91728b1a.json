@@ -1,0 +1,28 @@
+{
+  "question_id": 4668,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25048",
+  "text": "Nell'assicurazione per la responsabilità civile auto (R.C.A.), il contratto con la formula \"bonus malus\" viene automaticamente annullato se si provocano più di due incidenti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione R.C.A.",
+      "Formula Bonus-Malus",
+      "Cessazione del contratto assicurativo"
+    ],
+    "exact_keywords": [
+      "assicurazione R.C.A.",
+      "bonus malus",
+      "sinistro",
+      "annullamento del contratto"
+    ],
+    "vector_search_queries": [
+      "modifica classe di merito bonus-malus per sinistri R.C.A.",
+      "conseguenze sinistri su contratto assicurativo R.C.A. con bonus malus"
+    ],
+    "rule_explanation": "L'assicurazione R.C.A. con bonus-malus non viene automaticamente annullata in caso di sinistri; la classe di merito viene modificata secondo le regole stabilite."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4620,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24644",
+  "text": "Se si commettono contemporaneamente più violazioni che comportano perdita di punti sulla patente, possono essere decurtati al massimo 15 punti, salvo che si tratti di infrazioni che comportano la sospensione della patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Decurtazione punti patente",
+      "Cumulo di infrazioni",
+      "Sospensione patente"
+    ],
+    "exact_keywords": [
+      "punti patente",
+      "sospensione patente",
+      "decadenza patente",
+      "violazioni",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "massimo decurtamento punti patente per cumulo infrazioni",
+      "decadenza patente per più violazioni contemporanee",
+      "sospensione patente per infrazioni gravi"
+    ],
+    "rule_explanation": "In caso di più violazioni contestate contemporaneamente, la decurtazione massima di punti è di 15, a meno che una delle infrazioni non comporti la sospensione o la revoca della patente."
+  }
+}

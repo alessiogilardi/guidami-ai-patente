@@ -1,0 +1,31 @@
+{
+  "question_id": 4136,
+  "topic": "Segnali di divieto",
+  "number": "19879",
+  "text": "Il segnale raffigurato indica la fine del divieto di sorpasso tra le sole autovetture",
+  "correct_answer": false,
+  "image": "cfd537fd007a42c41805523666d78953.jpeg",
+  "image_description": "Fine divieto di sorpasso. Indica la fine del divieto di sorpasso per tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso. All'interno del cerchio, una banda diagonale nera parte dall'angolo in alto a sinistra e arriva all'angolo in basso a destra, attraversando il centro del segnale. Ai lati della banda nera, su sfondo bianco, sono raffigurati due veicoli stilizzati, uno a sinistra e uno a destra, visti frontalmente. Il segnale è posizionato isolatamente.",
+    "name": "Fine divieto di sorpasso",
+    "description": "Indica la fine del divieto di sorpasso per tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di fine divieto",
+      "Divieto di sorpasso"
+    ],
+    "exact_keywords": [
+      "fine del divieto di sorpasso",
+      "segnali di pericolo",
+      "segnali di prescrizione",
+      "autovetture"
+    ],
+    "vector_search_queries": [
+      "fine divieto di sorpasso per tutti i veicoli",
+      "segnali che indicano la fine di una prescrizione vietante il sorpasso"
+    ],
+    "rule_explanation": "Il segnale di 'fine divieto di sorpasso' indica la cessazione del divieto per tutti i veicoli, non solo per le autovetture."
+  }
+}

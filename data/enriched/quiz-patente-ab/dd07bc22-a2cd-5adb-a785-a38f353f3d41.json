@@ -1,0 +1,31 @@
+{
+  "question_id": 4071,
+  "topic": "Segnali di pericolo",
+  "number": "19111",
+  "text": "I pannelli raffigurati si possono trovare solo se il passaggio a livello è con barriere",
+  "correct_answer": false,
+  "image": "763ca110cf7b142f789b6577eb5719b4.jpeg",
+  "image_description": "Pannelli distanziometrici per passaggio a livello. I pannelli raffigurati sono pannelli distanziometrici che indicano l'avvicinamento a un passaggio a livello. Il pannello con tre barre oblique rosse indica che ci si trova a 150 metri dal passaggio a livello, quello con due barre a 100 metri e quello con una barra a 50 metri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre pannelli rettangolari verticali, disposti uno accanto all'altro. Ciascun pannello presenta delle barre oblique rosse su sfondo bianco. Il pannello più a sinistra ha tre barre oblique, quello centrale ne ha due e quello più a destra ne ha una. Questi pannelli sono noti come pannelli distanziometrici e vengono utilizzati per segnalare la distanza da un pericolo, in questo caso un passaggio a livello. La sequenza e il numero di barre indicano la progressiva vicinanza al passaggio a livello.",
+    "name": "Pannelli distanziometrici per passaggio a livello",
+    "description": "I pannelli raffigurati sono pannelli distanziometrici che indicano l'avvicinamento a un passaggio a livello. Il pannello con tre barre oblique rosse indica che ci si trova a 150 metri dal passaggio a livello, quello con due barre a 100 metri e quello con una barra a 50 metri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica di pericolo per passaggi a livello",
+      "Segnali distanziometrici"
+    ],
+    "exact_keywords": [
+      "pannelli distanziometrici",
+      "passaggio a livello",
+      "senza barriere",
+      "con barriere"
+    ],
+    "vector_search_queries": [
+      "pannelli distanziometrici per passaggi a livello con e senza barriere",
+      "segnalazione di pericolo per avvicinamento a passaggio a livello"
+    ],
+    "rule_explanation": "I pannelli distanziometrici per passaggi a livello si usano sia per quelli con che senza barriere, indicando la distanza residua."
+  }
+}

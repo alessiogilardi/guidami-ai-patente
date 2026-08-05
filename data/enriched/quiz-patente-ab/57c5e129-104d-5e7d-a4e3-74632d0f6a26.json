@@ -1,0 +1,27 @@
+{
+  "question_id": 4586,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24263",
+  "text": "E' consentito l'uso intermittente dei proiettori di profondità (a luce abbagliante), purché l'illuminazione esterna manchi o sia insufficiente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di profondità",
+      "Condizioni di visibilità e uso dei fari"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "luce abbagliante",
+      "illuminazione esterna",
+      "uso intermittente"
+    ],
+    "vector_search_queries": [
+      "uso intermittente proiettori di profondità segnalazione",
+      "limitazioni uso luce abbagliante segnalazione presenza"
+    ],
+    "rule_explanation": "L'uso intermittente dei proiettori di profondità è consentito solo per segnalare la propria presenza o l'intenzione di sorpassare, non in base alla visibilità."
+  }
+}

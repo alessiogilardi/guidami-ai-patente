@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23497",
+  "text": "Il sorpasso è consentito in curva se la strada è a due carreggiate separate con almeno due corsie per ogni senso di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso in curva",
+      "Norme di circolazione su strade a più carreggiate"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "curva",
+      "carreggiate separate",
+      "corsie per senso di marcia"
+    ],
+    "vector_search_queries": [
+      "sorpasso in curva su strade con carreggiate separate",
+      "condizioni per il sorpasso in curva su strade a più corsie per senso di marcia"
+    ],
+    "rule_explanation": "Il sorpasso è consentito in curva su strade a due carreggiate separate con almeno due corsie per senso di marcia, purché la visibilità sia garantita."
+  }
+}

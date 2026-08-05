@@ -1,0 +1,30 @@
+{
+  "question_id": 4012,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18444",
+  "text": "La strada non comprende i marciapiedi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di strada",
+      "Inclusione dei marciapiedi nella carreggiata",
+      "Uso della strada e delle sue pertinenze"
+    ],
+    "exact_keywords": [
+      "strada",
+      "marciapiede",
+      "carreggiata",
+      "ciclabile",
+      "area pedonale"
+    ],
+    "vector_search_queries": [
+      "definizione di strada nel Codice della Strada",
+      "componenti della strada e loro destinazione d'uso",
+      "inclusione dei marciapiedi nella definizione di strada pubblica"
+    ],
+    "rule_explanation": "La strada è costituita da carreggiata, banchina, marciapiede, area pedonale, ciclabile e banchina. Non sono considerate strade le aree private."
+  }
+}

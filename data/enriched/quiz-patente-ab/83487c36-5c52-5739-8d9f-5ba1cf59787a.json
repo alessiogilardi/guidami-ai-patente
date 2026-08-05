@@ -1,0 +1,32 @@
+{
+  "question_id": 4482,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23360",
+  "text": "Nell'intersezione di figura il veicolo B deve dare la precedenza al veicolo S",
+  "correct_answer": true,
+  "image": "c40c420633640f7ca8c88bc651e67830.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. Il veicolo D (verde) si trova sulla strada che si immette nell'incrocio da sinistra. Il veicolo L (blu) si trova sulla strada che si immette nell'incrocio da destra. Il veicolo B (giallo) si trova sulla strada che proviene da destra e si immette nell'incrocio. Il veicolo S (rosso) si trova sulla strada che proviene dall'alto e si immette nell'incrocio. Non sono presenti segnali stradali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo D deve dare la precedenza ai veicoli B e S. Il veicolo L deve dare la precedenza ai veicoli B e S. Il veicolo B deve dare la precedenza al veicolo S. L'ordine di transito corretto è S, B, L, D.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con quattro veicoli: D (verde), L (blu), B (giallo) e S (rosso). Non sono presenti segnali stradali che regolano la circolazione o la precedenza. I veicoli D e L si trovano su strade che immettono nell'incrocio da sinistra e destra rispettivamente. I veicoli B e S si trovano su strade che attraversano l'incrocio. Le frecce tratteggiate indicano le traiettorie dei veicoli. In assenza di segnaletica specifica, si applica la regola generale della precedenza a destra. Il veicolo D deve dare la precedenza a B e S. Il veicolo L deve dare la precedenza a B e S. Il veicolo B deve dare la precedenza a S. Pertanto, il veicolo S transita per primo, seguito da B, poi L e infine D.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. Il veicolo D (verde) si trova sulla strada che si immette nell'incrocio da sinistra. Il veicolo L (blu) si trova sulla strada che si immette nell'incrocio da destra. Il veicolo B (giallo) si trova sulla strada che proviene da destra e si immette nell'incrocio. Il veicolo S (rosso) si trova sulla strada che proviene dall'alto e si immette nell'incrocio. Non sono presenti segnali stradali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo D deve dare la precedenza ai veicoli B e S. Il veicolo L deve dare la precedenza ai veicoli B e S. Il veicolo B deve dare la precedenza al veicolo S. L'ordine di transito corretto è S, B, L, D."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza agli incroci non segnalati"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "veicolo proveniente da destra",
+      "veicolo da immettere"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio non segnalato",
+      "regola generale precedenza a destra",
+      "ordine di transito incrocio senza segnaletica"
+    ],
+    "rule_explanation": "Negli incroci non segnalati, vige la regola generale della precedenza a destra: il veicolo che si immette nell'incrocio deve dare la precedenza ai veicoli provenienti da destra."
+  }
+}

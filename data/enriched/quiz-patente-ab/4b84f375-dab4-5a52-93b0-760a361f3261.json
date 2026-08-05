@@ -1,0 +1,29 @@
+{
+  "question_id": 4401,
+  "topic": "Distanza di sicurezza",
+  "number": "22603",
+  "text": "Lo spazio di frenatura si quadruplica se la velocità si raddoppia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Relazione tra velocità e spazio di frenatura"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "velocità",
+      "raddoppia",
+      "quadruplica"
+    ],
+    "vector_search_queries": [
+      "spazio di frenatura e velocità",
+      "relazione matematica tra spazio di frenatura e velocità",
+      "effetto del raddoppio della velocità sullo spazio di frenatura"
+    ],
+    "rule_explanation": "Lo spazio di frenatura è proporzionale al quadrato della velocità; raddoppiando la velocità, lo spazio di frenatura si quadruplica."
+  }
+}

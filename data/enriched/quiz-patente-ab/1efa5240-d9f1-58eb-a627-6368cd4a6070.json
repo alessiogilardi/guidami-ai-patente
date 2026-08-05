@@ -1,0 +1,27 @@
+{
+  "question_id": 4398,
+  "topic": "Distanza di sicurezza",
+  "number": "22586",
+  "text": "La distanza minima di sicurezza se si viaggia a 130 km/h deve essere di circa 20 metri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza tra veicoli",
+      "Adeguamento della velocità alle condizioni di marcia"
+    ],
+    "exact_keywords": [
+      "distanza minima di sicurezza",
+      "velocità",
+      "condizioni della strada",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "calcolo distanza di sicurezza in base alla velocità",
+      "distanza minima di sicurezza tra veicoli in marcia"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere sempre adeguata alle condizioni di marcia, non è un valore fisso ma variabile in base alla velocità e ad altri fattori."
+  }
+}

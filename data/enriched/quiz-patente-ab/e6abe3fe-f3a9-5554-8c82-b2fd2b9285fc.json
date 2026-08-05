@@ -1,0 +1,27 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23471",
+  "text": "La manovra di sorpasso si effettua, di norma, a sinistra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Posizione sul manto stradale durante il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "manto stradale",
+      "sinistra",
+      "regola generale"
+    ],
+    "vector_search_queries": [
+      "regola generale per la manovra di sorpasso",
+      "effettuare il sorpasso a sinistra"
+    ],
+    "rule_explanation": "La manovra di sorpasso si esegue normalmente a sinistra del veicolo che si intende superare, salvo eccezioni previste dal Codice della Strada."
+  }
+}

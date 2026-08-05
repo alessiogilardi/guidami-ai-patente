@@ -1,0 +1,32 @@
+{
+  "question_id": 4474,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23306",
+  "text": "Nell'incrocio rappresentato nella figura il conducente del veicolo D passa per terzo",
+  "correct_answer": false,
+  "image": "c46da7a48b0a4850b97168a753b937bf.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso e non sono presenti segnali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo D si trova alla destra del veicolo A, il veicolo E si trova alla destra del veicolo D, e il veicolo S si trova alla destra del veicolo E. Il veicolo A si trova alla destra del veicolo S. L'ordine di precedenza è quindi D, E, S, A.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con quattro vie di accesso. Non sono presenti segnali di preavviso o di diramazione, né segnali di STOP o di dare precedenza. Sono presenti quattro veicoli: A (blu), D (rosso), E (verde) e S (giallo). Il veicolo A si trova sulla strada in alto a destra e intende svoltare a sinistra. Il veicolo D si trova sulla strada a sinistra e intende proseguire diritto. I veicoli E e S si trovano sulla strada in alto e intendono svoltare rispettivamente a sinistra e a destra. Poiché non ci sono segnali che regolano la precedenza, si applica la regola generale della precedenza a destra. Il veicolo D ha la precedenza sul veicolo A perché D è alla destra di A. Il veicolo E ha la precedenza sul veicolo D perché E è alla destra di D. Il veicolo S ha la precedenza sul veicolo E perché S è alla destra di E. Il veicolo A ha la precedenza sul veicolo S perché A è alla destra di S. Pertanto, l'ordine di precedenza è D, E, S, A.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso e non sono presenti segnali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo D si trova alla destra del veicolo A, il veicolo E si trova alla destra del veicolo D, e il veicolo S si trova alla destra del veicolo E. Il veicolo A si trova alla destra del veicolo S. L'ordine di precedenza è quindi D, E, S, A."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza a destra",
+      "Ordine di precedenza ai incroci non regolamentati"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "regola generale",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio non regolamentato",
+      "regola generale di precedenza a destra",
+      "ordine di passaggio tra veicoli in assenza di segnali di precedenza"
+    ],
+    "rule_explanation": "Negli incroci a raso non regolamentati da segnaletica, vige la regola generale della precedenza a destra. Il veicolo D, trovandosi alla destra di A, passa per primo."
+  }
+}

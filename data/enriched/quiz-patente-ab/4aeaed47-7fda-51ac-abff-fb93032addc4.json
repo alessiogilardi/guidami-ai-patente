@@ -1,0 +1,28 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31021",
+  "text": "La presenza di passeggeri che schiamazzano a bordo del veicolo può influenzare la concentrazione del conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Concentrazione alla guida",
+      "Fattori di distrazione alla guida",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "concentrazione",
+      "passeggeri",
+      "distrazione"
+    ],
+    "vector_search_queries": [
+      "influenza dei passeggeri sulla concentrazione del conducente",
+      "fattori di distrazione alla guida legati ai passeggeri"
+    ],
+    "rule_explanation": "Il conducente deve mantenere la massima concentrazione alla guida, evitando qualsiasi fattore di distrazione, inclusi i comportamenti dei passeggeri che possono compromettere la sicurezza."
+  }
+}

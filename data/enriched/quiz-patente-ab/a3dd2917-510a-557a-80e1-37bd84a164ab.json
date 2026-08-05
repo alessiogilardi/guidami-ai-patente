@@ -1,0 +1,27 @@
+{
+  "question_id": 4653,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24938",
+  "text": "Chi è coinvolto in un incidente stradale deve allontanarsi sempre e subito dal luogo in cui si è verificato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi in caso di incidente stradale",
+      "Responsabilità del conducente dopo un sinistro"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "luogo del sinistro",
+      "allontanarsi",
+      "soccorso"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente coinvolto in incidente stradale",
+      "divieto di allontanamento dal luogo del sinistro senza prestare soccorso"
+    ],
+    "rule_explanation": "Chi è coinvolto in un incidente stradale non deve allontanarsi dal luogo se non dopo aver prestato o se è stato prestato soccorso, e sempre dopo aver ottemperato agli obblighi di legge."
+  }
+}

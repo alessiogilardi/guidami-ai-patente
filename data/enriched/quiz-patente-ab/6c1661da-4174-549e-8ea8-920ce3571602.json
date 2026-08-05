@@ -1,0 +1,32 @@
+{
+  "question_id": 4088,
+  "topic": "Segnali di pericolo",
+  "number": "19313",
+  "text": "In presenza del segnale raffigurato è vietato sorpassare i veicoli che si sono fermati per lasciare attraversare i bambini",
+  "correct_answer": true,
+  "image": "cdbe4aad6e6d605fc94a507ecba3869c.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento di bambini. Il segnale preannuncia la possibile presenza di bambini in prossimità della carreggiata, invitando alla massima prudenza e a moderare la velocità. Può essere installato in prossimità di scuole, parchi giochi o altri luoghi frequentati da bambini.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una silhouette nera di un adulto che tiene per mano un bambino, entrambi con uno zaino in spalla e in movimento. Questo pittogramma indica la possibile presenza di bambini sulla carreggiata.",
+    "name": "Segnale di pericolo - Attraversamento di bambini",
+    "description": "Il segnale preannuncia la possibile presenza di bambini in prossimità della carreggiata, invitando alla massima prudenza e a moderare la velocità. Può essere installato in prossimità di scuole, parchi giochi o altri luoghi frequentati da bambini."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo specifico",
+      "Comportamento ai passaggi pedonali",
+      "Divieto di sorpasso in condizioni particolari"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento bambini",
+      "divieto di sorpasso",
+      "veicoli fermi"
+    ],
+    "vector_search_queries": [
+      "comportamento in presenza del segnale di pericolo di attraversamento bambini",
+      "divieto di sorpasso di veicoli fermi per attraversamento pedonale di bambini"
+    ],
+    "rule_explanation": "In presenza del segnale di pericolo 'attraversamento bambini', è vietato sorpassare i veicoli che si sono fermati per consentire l'attraversamento dei bambini."
+  }
+}

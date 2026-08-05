@@ -1,0 +1,27 @@
+{
+  "question_id": 4543,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23898",
+  "text": "Sulle carreggiate, sulle rampe e sugli svincoli delle autostrade è consentito, nel caso di malessere di un passeggero, fermarsi sulla corsia per la sosta di emergenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata di emergenza in autostrada",
+      "Norme di comportamento in autostrada"
+    ],
+    "exact_keywords": [
+      "corsia per la sosta di emergenza",
+      "autostrade",
+      "fermata di emergenza",
+      "malessere di un passeggero"
+    ],
+    "vector_search_queries": [
+      "sosta di emergenza in autostrada per malessere passeggero",
+      "fermarsi in autostrada per emergenza medica passeggero"
+    ],
+    "rule_explanation": "In caso di malessere di un passeggero, è consentito fermarsi sulla corsia per la sosta di emergenza in autostrada, rampe e svincoli."
+  }
+}

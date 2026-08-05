@@ -1,0 +1,29 @@
+{
+  "question_id": 4700,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25274",
+  "text": "Il freno di stazionamento si utilizza durante la marcia, per frenare o arrestare il veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Freno di stazionamento",
+      "Uso del freno di emergenza",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "freno di stazionamento",
+      "freno di servizio",
+      "arrestare il veicolo",
+      "marcia"
+    ],
+    "vector_search_queries": [
+      "uso del freno di stazionamento in marcia",
+      "differenza tra freno di stazionamento e freno di servizio",
+      "funzione del freno di stazionamento del veicolo"
+    ],
+    "rule_explanation": "Il freno di stazionamento serve a mantenere il veicolo fermo quando è in sosta, non a frenare o arrestare il veicolo durante la marcia, per cui si usa il freno di servizio."
+  }
+}

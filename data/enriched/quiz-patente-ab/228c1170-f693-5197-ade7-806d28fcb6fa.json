@@ -1,0 +1,33 @@
+{
+  "question_id": 4026,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18592",
+  "text": "Con la patente di categoria A si possono guidare tutte le macchine agricole",
+  "correct_answer": false,
+  "image": "87fd4191b69ff4e1eee00e1990b00418.jpeg",
+  "image_description": "Pannello delineatore di ostacolo (o restringimento). Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bande diagonali alternate di colore rosso e giallo. Questo tipo di segnale è comunemente utilizzato per segnalare ostacoli o restringimenti della carreggiata. Le bande rosse e gialle alternate servono a catturare l'attenzione del conducente e a indicare un pericolo.",
+    "name": "Pannello delineatore di ostacolo (o restringimento)",
+    "description": "Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categorie",
+      "Veicoli conducibili con patente A",
+      "Macchine agricole"
+    ],
+    "exact_keywords": [
+      "patente di categoria A",
+      "macchine agricole",
+      "macchine operatrici",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente A",
+      "differenza tra macchine agricole e macchine operatrici",
+      "requisiti per la guida di macchine agricole"
+    ],
+    "rule_explanation": "La patente di categoria A abilita alla guida di motocicli. Le macchine agricole e operatrici richiedono patenti specifiche (es. Patente B o C, o certificazioni dedicate)."
+  }
+}

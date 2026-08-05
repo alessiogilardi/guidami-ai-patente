@@ -1,0 +1,31 @@
+{
+  "question_id": 4210,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20718",
+  "text": "La striscia bianca discontinua in figura può essere sostituita da una serie di \"chiodi\" per segnaletica stradale",
+  "correct_answer": false,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segnaletica degli ostacoli"
+    ],
+    "exact_keywords": [
+      "striscia bianca discontinua",
+      "chiodi stradali",
+      "segnaletica orizzontale",
+      "segnaletica degli ostacoli"
+    ],
+    "vector_search_queries": [
+      "sostituzione striscia bianca discontinua con chiodi stradali",
+      "funzione e tipologia di chiodi stradali nella segnaletica orizzontale"
+    ],
+    "rule_explanation": "Le strisce bianche discontinue non possono essere sostituite da chiodi stradali, i quali sono specifici per la segnalazione di ostacoli o per delimitare aree pericolose."
+  }
+}

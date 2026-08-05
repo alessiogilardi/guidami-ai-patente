@@ -1,0 +1,33 @@
+{
+  "question_id": 4050,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18843",
+  "text": "Quando una donna in stato di gravidanza attraversa la carreggiata non bisogna avvicinarsi troppo con il veicolo, per evitare di spaventarla",
+  "correct_answer": true,
+  "image": "b43758bb9d85546a58f1d0a67f5b3b45.jpeg",
+  "image_description": "Striscia bianca continua di delimitazione carreggiata. La striscia bianca continua delimita la carreggiata, separando i sensi di marcia o le corsie. Non può essere superata se continua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una rappresentazione di segnaletica orizzontale. Si tratta di due strisce bianche continue parallele, separate da uno spazio più ampio, che delimitano una carreggiata. Non sono presenti altri elementi visivi o segnali stradali. La striscia bianca continua, secondo il Codice della Strada, indica la separazione dei sensi di marcia o delle corsie e non può essere superata.",
+    "name": "Striscia bianca continua di delimitazione carreggiata",
+    "description": "La striscia bianca continua delimita la carreggiata, separando i sensi di marcia o le corsie. Non può essere superata se continua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela dei soggetti vulnerabili",
+      "Comportamento prudente del conducente",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "donne in stato di gravidanza",
+      "condotta del conducente",
+      "avvicinamento al pedone",
+      "sicurezza stradale"
+    ],
+    "vector_search_queries": [
+      "doveri del conducente verso pedoni vulnerabili",
+      "distanza di sicurezza dal pedone in stato di gravidanza",
+      "comportamento del veicolo in prossimità di attraversamento pedonale con soggetti deboli"
+    ],
+    "rule_explanation": "Il conducente deve moderare la velocità e mantenere una distanza di sicurezza adeguata, specialmente in prossimità di pedoni vulnerabili come le donne incinte, per non cagionare loro spavento o pericolo."
+  }
+}

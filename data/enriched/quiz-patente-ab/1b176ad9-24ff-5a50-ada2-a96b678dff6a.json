@@ -1,0 +1,29 @@
+{
+  "question_id": 4525,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23773",
+  "text": "La sosta, ed anche la fermata, sono vietate negli spazi destinati a servizi di emergenza o di igiene pubblica indicati dalla apposita segnaletica",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Segnaletica stradale di prescrizione",
+      "Spazi riservati a servizi pubblici"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fermata",
+      "spazi destinati a servizi di emergenza",
+      "spazi destinati a servizi di igiene pubblica",
+      "segnaletica di prescrizione"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata in spazi riservati a servizi di emergenza o igiene pubblica",
+      "segnaletica che vieta sosta e fermata in aree di servizio pubblico"
+    ],
+    "rule_explanation": "La sosta e la fermata sono vietate negli spazi espressamente riservati a determinati servizi (es. emergenza, igiene pubblica) se così indicato dalla segnaletica di prescrizione."
+  }
+}

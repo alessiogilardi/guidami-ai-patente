@@ -1,0 +1,27 @@
+{
+  "question_id": 4379,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22367",
+  "text": "Il limite massimo di velocità sulle autostrade è di 80 km/h per le autovetture con rimorchio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità in autostrada",
+      "Veicoli con rimorchio"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "autostrade",
+      "autovetture con rimorchio",
+      "80 km/h"
+    ],
+    "vector_search_queries": [
+      "limite velocità autostrada autovettura con rimorchio",
+      "velocità massima autocaravan con rimorchio in autostrada"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per le autovetture trainanti un rimorchio in autostrada è di 80 km/h."
+  }
+}

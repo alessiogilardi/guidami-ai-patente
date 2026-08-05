@@ -1,0 +1,30 @@
+{
+  "question_id": 4561,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24018",
+  "text": "Circolando dietro ad un veicolo che trasporta un carico in pericolo di cadere, è opportuno aumentare la distanza di sicurezza, specie se si è in salita",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Carico sporgente o pericoloso",
+      "Comportamento in caso di pericolo nella circolazione"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "carico sporgente",
+      "veicolo in avaria",
+      "pericolo di caduta",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "obbligo di mantenere la distanza di sicurezza da veicoli con carico pericoloso",
+      "comportamento del conducente in presenza di carico a rischio di caduta",
+      "prevenzione incidenti dovuti a carico instabile su veicoli in transito"
+    ],
+    "rule_explanation": "Il conducente deve mantenere una distanza di sicurezza adeguata dal veicolo che precede, specialmente se il carico è in pericolo di caduta, per prevenire incidenti."
+  }
+}

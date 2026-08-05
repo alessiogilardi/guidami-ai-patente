@@ -1,0 +1,32 @@
+{
+  "question_id": 4430,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22866",
+  "text": "E' consentita la marcia per file parallele su strade a due corsie per senso di marcia ad un incrocio regolato da semaforo",
+  "correct_answer": true,
+  "image": "637129125cd2305679f68e11751ad483.jpeg",
+  "image_description": "Carreggiata a doppio senso di circolazione con quattro corsie. La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale. Si osservano due carreggiate separate da una linea bianca continua. Ogni carreggiata è a sua volta suddivisa in due corsie da strisce bianche discontinue. Questo schema indica una strada con due corsie per senso di marcia, per un totale di quattro corsie. La linea continua centrale separa i due sensi di marcia. Le strisce discontinue all'interno di ciascuna carreggiata indicano la possibilità di superamento o cambio di corsia all'interno dello stesso senso di marcia. Pertanto, la scena rappresenta una carreggiata a doppio senso di circolazione con quattro corsie totali.",
+    "name": "Carreggiata a doppio senso di circolazione con quattro corsie",
+    "description": "La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Marcia per file parallele",
+      "Regolamentazione della circolazione agli incroci",
+      "Corsie di marcia"
+    ],
+    "exact_keywords": [
+      "marcia per file parallele",
+      "incrocio regolato da semaforo",
+      "doppio senso di marcia",
+      "corsie per senso di marcia"
+    ],
+    "vector_search_queries": [
+      "condizioni per la marcia per file parallele",
+      "circolazione su strade con più corsie per senso di marcia agli incroci"
+    ],
+    "rule_explanation": "La marcia per file parallele è consentita su strade a due o più corsie per senso di marcia, anche in prossimità di incroci semaforici, purché non espressamente vietata."
+  }
+}

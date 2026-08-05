@@ -1,0 +1,28 @@
+{
+  "question_id": 4021,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18526",
+  "text": "Il salvagente, posto in corrispondenza di attraversamenti pedonali, serve anche al riparo o alla sosta dei pedoni che attraversano la strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza stradale",
+      "Doveri dei pedoni durante l'attraversamento",
+      "Uso delle aree pedonali designate"
+    ],
+    "exact_keywords": [
+      "salvagente",
+      "attraversamento pedonale",
+      "riparo dei pedoni",
+      "sosta dei pedoni"
+    ],
+    "vector_search_queries": [
+      "funzione del salvagente stradale per i pedoni",
+      "utilizzo delle aree di sosta e riparo per pedoni agli attraversamenti pedonali"
+    ],
+    "rule_explanation": "Il salvagente, installato agli attraversamenti pedonali, è una struttura destinata al riparo e alla sosta dei pedoni durante l'attraversamento della carreggiata."
+  }
+}

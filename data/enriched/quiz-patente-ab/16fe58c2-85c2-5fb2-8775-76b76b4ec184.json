@@ -1,0 +1,33 @@
+{
+  "question_id": 4210,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20716",
+  "text": "La striscia bianca discontinua in figura divide la strada da una pista ciclabile",
+  "correct_answer": false,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Divisione della carreggiata",
+      "Pista ciclabile"
+    ],
+    "exact_keywords": [
+      "striscia bianca discontinua",
+      "carreggiata",
+      "pista ciclabile",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "funzione della striscia bianca discontinua",
+      "segnaletica orizzontale che delimita corsie e sensi di marcia",
+      "differenza tra corsia di marcia e pista ciclabile nella segnaletica"
+    ],
+    "rule_explanation": "La striscia bianca discontinua divide le corsie di marcia o i sensi di marcia, non la carreggiata da una pista ciclabile."
+  }
+}

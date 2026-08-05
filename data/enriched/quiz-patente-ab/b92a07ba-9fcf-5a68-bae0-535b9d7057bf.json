@@ -1,0 +1,30 @@
+{
+  "question_id": 4662,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25012",
+  "text": "In caso di sinistro con danni al veicolo, la richiesta di risarcimento diretto deve essere obbligatoriamente corredata di fotografie",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Risarcimento diretto",
+      "Assicurazione R.C.A.",
+      "Documentazione sinistro"
+    ],
+    "exact_keywords": [
+      "risarcimento diretto",
+      "sinistro",
+      "danni al veicolo",
+      "fotografie",
+      "documentazione"
+    ],
+    "vector_search_queries": [
+      "documentazione necessaria per il risarcimento diretto",
+      "obbligatorietà fotografie nel risarcimento diretto per danni al veicolo",
+      "procedure di risarcimento diretto sinistri R.C.A."
+    ],
+    "rule_explanation": "La procedura di risarcimento diretto non richiede obbligatoriamente la produzione di fotografie dei danni al veicolo, ma una documentazione completa del sinistro."
+  }
+}

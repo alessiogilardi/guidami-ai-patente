@@ -1,0 +1,27 @@
+{
+  "question_id": 4670,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25059",
+  "text": "L'assicurazione per la responsabilità civile auto (R.C.A.) è obbligatoria per legge",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione obbligatoria R.C.A.",
+      "Responsabilità civile auto"
+    ],
+    "exact_keywords": [
+      "assicurazione R.C.A.",
+      "obbligatoria per legge",
+      "veicoli a motore",
+      "assicurazione obbligatoria"
+    ],
+    "vector_search_queries": [
+      "obbligo assicurazione R.C.A.",
+      "assicurazione responsabilità civile auto obbligatoria per legge"
+    ],
+    "rule_explanation": "L'assicurazione per la responsabilità civile derivante dalla circolazione dei veicoli a motore è obbligatoria per legge."
+  }
+}

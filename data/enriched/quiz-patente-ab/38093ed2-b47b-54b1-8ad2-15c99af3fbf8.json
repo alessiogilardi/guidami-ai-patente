@@ -1,0 +1,27 @@
+{
+  "question_id": 4571,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24145",
+  "text": "Su un veicolo a motore non è consentito utilizzare lampade non omologate",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Omologazione dei dispositivi luminosi",
+      "Dispositivi di equipaggiamento dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "lampade non omologate",
+      "veicolo a motore",
+      "dispositivi di illuminazione",
+      "equipaggiamento"
+    ],
+    "vector_search_queries": [
+      "uso di lampade non omologate su veicoli a motore",
+      "requisiti di omologazione per i dispositivi di illuminazione dei veicoli"
+    ],
+    "rule_explanation": "È vietato l'uso su un veicolo a motore di qualsiasi lampada o dispositivo di illuminazione non conforme alle norme di omologazione vigenti."
+  }
+}

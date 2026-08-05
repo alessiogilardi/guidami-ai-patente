@@ -1,0 +1,29 @@
+{
+  "question_id": 4398,
+  "topic": "Distanza di sicurezza",
+  "number": "22581",
+  "text": "La distanza minima di sicurezza se si viaggia a 150 km/h deve essere di circa 42 metri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Velocità di percorrenza",
+      "Condizioni di marcia"
+    ],
+    "exact_keywords": [
+      "distanza minima di sicurezza",
+      "velocità",
+      "veicolo che precede",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "calcolo distanza di sicurezza in base alla velocità",
+      "distanza di arresto e distanza di sicurezza",
+      "adeguamento della distanza di sicurezza alle condizioni di marcia"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare collisioni, tenendo conto della velocità, delle condizioni della strada e del traffico."
+  }
+}

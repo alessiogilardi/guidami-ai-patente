@@ -1,0 +1,31 @@
+{
+  "question_id": 4142,
+  "topic": "Segnali di divieto",
+  "number": "19951",
+  "text": "Il segnale (A), se integrato con il pannello (B), vieta la fermata nel tratto precedente",
+  "correct_answer": true,
+  "image": "a78c3fc8bd11b52b0578f570be94d621.jpeg",
+  "image_description": "Segnale di divieto di sosta e fermata con pannello integrativo di indicazione del tratto precedente. Il segnale A è un segnale di divieto di sosta e fermata. Il pannello B, di forma rettangolare e sfondo bianco con bordo nero, contiene un'icona nera a forma di freccia che punta verso il basso. Quando integrato con il segnale A, indica che il divieto di sosta e fermata si applica nel tratto di strada immediatamente precedente al segnale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi distinti, etichettati come A e B. L'elemento A è un segnale stradale circolare con bordo rosso e sfondo bianco, barrato da una croce blu. Questo è il segnale di divieto di sosta e fermata. L'elemento B è un pannello integrativo rettangolare, bianco con bordo nero, contenente una freccia nera che punta verso il basso. I due elementi sono presentati in modo da suggerire una possibile integrazione, tipica dei segnali stradali italiani. La freccia verso il basso sul pannello B indica che il divieto segnalato dal segnale A si applica al tratto di strada che precede il segnale stesso.",
+    "name": "Segnale di divieto di sosta e fermata con pannello integrativo di indicazione del tratto precedente",
+    "description": "Il segnale A è un segnale di divieto di sosta e fermata. Il pannello B, di forma rettangolare e sfondo bianco con bordo nero, contiene un'icona nera a forma di freccia che punta verso il basso. Quando integrato con il segnale A, indica che il divieto di sosta e fermata si applica nel tratto di strada immediatamente precedente al segnale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta e fermata",
+      "Pannelli integrativi di estensione del divieto"
+    ],
+    "exact_keywords": [
+      "segnale di divieto di sosta e fermata",
+      "pannello integrativo",
+      "divieto di fermata",
+      "tratto precedente"
+    ],
+    "vector_search_queries": [
+      "efficacia temporale e spaziale dei segnali di divieto di sosta e fermata con pannelli integrativi",
+      "interpretazione dei segnali di divieto con pannelli che indicano il tratto precedente"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta e fermata, se accompagnato da pannello integrativo con freccia verso il basso, vieta la sosta e la fermata nel tratto di strada che precede il segnale."
+  }
+}

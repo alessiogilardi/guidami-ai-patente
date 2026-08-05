@@ -1,0 +1,27 @@
+{
+  "question_id": 4605,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24460",
+  "text": "E' vietato circolare sulle strade pubbliche con un autoveicolo dotato della targa prova",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso della targa prova",
+      "Circolazione stradale con veicoli non immatricolati"
+    ],
+    "exact_keywords": [
+      "targa prova",
+      "circolare",
+      "autoveicolo",
+      "strade pubbliche"
+    ],
+    "vector_search_queries": [
+      "condizioni di utilizzo della targa prova per la circolazione stradale",
+      "deroghe al divieto di circolazione per veicoli con targa prova"
+    ],
+    "rule_explanation": "La circolazione con targa prova è consentita in determinate condizioni e per specifici scopi, non è generalmente vietata."
+  }
+}

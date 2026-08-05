@@ -1,0 +1,27 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23468",
+  "text": "Il conducente che intende sorpassare ha come unico obbligo quello di azionare l'indicatore di direzione (frecce)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente in fase di sorpasso",
+      "Manovra di sorpasso sicura"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "indicatore di direzione",
+      "segnalazione acustica",
+      "manovra sicura"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente prima di effettuare un sorpasso",
+      "segnalazione e sicurezza nella manovra di sorpasso"
+    ],
+    "rule_explanation": "Il conducente che sorpassa deve usare la freccia e, se necessario, il clacson, assicurandosi che la manovra sia sicura e non intralci altri veicoli."
+  }
+}

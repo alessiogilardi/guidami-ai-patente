@@ -1,0 +1,31 @@
+{
+  "question_id": 4422,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22789",
+  "text": "Su una strada a tre corsie a doppio senso di marcia, in figura, si deve impegnare quella centrale solo per il sorpasso",
+  "correct_answer": true,
+  "image": "8a325a8eb1ae48ab171483c979921459.jpeg",
+  "image_description": "Carreggiata a più corsie e carreggiata a singola corsia. La carreggiata superiore è divisa in tre corsie per senso di marcia, contrassegnate dalle lettere A, B e C. La corsia A è la più a destra, la corsia B è quella centrale e la corsia C è la più a sinistra. Tutte le corsie sono delimitate da strisce bianche continue all'esterno e tratteggiate all'interno. La carreggiata inferiore mostra una strada a una sola corsia per senso di marcia, anch'essa delimitata da strisce bianche continue all'esterno e tratteggiate all'interno.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine presenta due rappresentazioni di carreggiate stradali. La carreggiata superiore è una strada a tre corsie per senso di marcia, chiaramente indicate dalle lettere A, B e C. La corsia A è la corsia di destra, la B è quella centrale e la C è quella di sinistra. Le corsie sono separate da strisce bianche tratteggiate, mentre i bordi esterni della carreggiata sono delimitati da strisce bianche continue. La carreggiata inferiore mostra una strada a singola corsia per senso di marcia, anch'essa con strisce bianche tratteggiate a separare le corsie (in questo caso, solo una per senso) e strisce continue ai bordi. Non sono presenti segnali stradali verticali o orizzontali specifici che regolino la circolazione, né veicoli. L'analisi si concentra sulla geometria delle carreggiate e sulla loro suddivisione in corsie.",
+    "name": "Carreggiata a più corsie e carreggiata a singola corsia",
+    "description": "La carreggiata superiore è divisa in tre corsie per senso di marcia, contrassegnate dalle lettere A, B e C. La corsia A è la più a destra, la corsia B è quella centrale e la corsia C è la più a sinistra. Tutte le corsie sono delimitate da strisce bianche continue all'esterno e tratteggiate all'interno. La carreggiata inferiore mostra una strada a una sola corsia per senso di marcia, anch'essa delimitata da strisce bianche continue all'esterno e tratteggiate all'interno."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento dei veicoli sulla carreggiata",
+      "Utilizzo delle corsie di marcia"
+    ],
+    "exact_keywords": [
+      "strada a tre corsie",
+      "doppio senso di marcia",
+      "corsia centrale",
+      "sorpasso"
+    ],
+    "vector_search_queries": [
+      "uso corsia centrale strada a tre corsie doppio senso di marcia",
+      "regole posizionamento veicoli su carreggiata a più corsie per senso di marcia"
+    ],
+    "rule_explanation": "Su strade a tre o più corsie per senso di marcia, la corsia centrale è riservata al sorpasso e al transito dei veicoli che devono svoltare a sinistra."
+  }
+}

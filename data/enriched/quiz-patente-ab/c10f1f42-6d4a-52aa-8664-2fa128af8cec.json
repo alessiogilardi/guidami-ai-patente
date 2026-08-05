@@ -1,0 +1,28 @@
+{
+  "question_id": 4510,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23649",
+  "text": "La fermata di un veicolo è vietata se i passeggeri che scendono sono più di uno",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Divieto di fermata"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "arresto",
+      "partenza",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata per più passeggeri in discesa",
+      "regole per la fermata del veicolo in relazione ai passeggeri"
+    ],
+    "rule_explanation": "La fermata non è vietata se scendono più passeggeri, purché non si crei intralcio o pericolo. Il divieto riguarda la sosta e l'arresto in determinate aree."
+  }
+}

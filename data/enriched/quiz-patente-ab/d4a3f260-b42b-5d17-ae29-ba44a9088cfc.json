@@ -1,0 +1,29 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24707",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere presenza di barriere laterali ad assorbimento d'urto (guardrails)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti stradali",
+      "Sicurezza stradale",
+      "Cause di incidentalità"
+    ],
+    "exact_keywords": [
+      "struttura della strada",
+      "barriere laterali",
+      "guardrail",
+      "incidente stradale"
+    ],
+    "vector_search_queries": [
+      "ruolo delle barriere stradali nella prevenzione degli incidenti",
+      "impatto dei guardrail sulla sicurezza stradale",
+      "cause strutturali di incidenti stradali"
+    ],
+    "rule_explanation": "La presenza di guardrail, sebbene possa causare lesioni in caso di impatto, è una misura di sicurezza volta a prevenire incidenti più gravi, non una causa probabile di incidenti in sé."
+  }
+}

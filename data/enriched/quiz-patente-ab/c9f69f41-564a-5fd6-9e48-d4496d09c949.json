@@ -1,0 +1,28 @@
+{
+  "question_id": 4545,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23909",
+  "text": "Tutti i passeggeri dei veicoli a motore devono prendere posto in modo da non limitare la libertà del conducente e da non impedirgli la visibilità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Occupanti del veicolo",
+      "Libertà di manovra del conducente",
+      "Visibilità del conducente"
+    ],
+    "exact_keywords": [
+      "passeggeri",
+      "veicoli a motore",
+      "libertà del conducente",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "posizione dei passeggeri per non limitare il conducente",
+      "obblighi dei passeggeri per la visibilità del conducente"
+    ],
+    "rule_explanation": "I passeggeri devono sedersi in modo da non ostacolare i movimenti del conducente o impedirne la visuale, garantendo la sicurezza della guida."
+  }
+}

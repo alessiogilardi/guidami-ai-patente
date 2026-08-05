@@ -1,0 +1,27 @@
+{
+  "question_id": 4513,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23665",
+  "text": "La fermata è vietata in corrispondenza o in prossimità dei passaggi a livello",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di fermata",
+      "Passaggi a livello"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "vietata",
+      "passaggi a livello",
+      "in prossimità"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata in prossimità dei passaggi a livello",
+      "regole di sosta e fermata ai passaggi a livello"
+    ],
+    "rule_explanation": "La fermata del veicolo è vietata in corrispondenza o in prossimità dei passaggi a livello per garantire la sicurezza della circolazione."
+  }
+}

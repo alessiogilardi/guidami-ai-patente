@@ -1,0 +1,31 @@
+{
+  "question_id": 4026,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18591",
+  "text": "Sulle macchine agricole e sui loro rimorchi è consentito il trasporto di persone in piedi",
+  "correct_answer": false,
+  "image": "87fd4191b69ff4e1eee00e1990b00418.jpeg",
+  "image_description": "Pannello delineatore di ostacolo (o restringimento). Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bande diagonali alternate di colore rosso e giallo. Questo tipo di segnale è comunemente utilizzato per segnalare ostacoli o restringimenti della carreggiata. Le bande rosse e gialle alternate servono a catturare l'attenzione del conducente e a indicare un pericolo.",
+    "name": "Pannello delineatore di ostacolo (o restringimento)",
+    "description": "Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto persone su macchine agricole",
+      "Sicurezza stradale e trasporto persone"
+    ],
+    "exact_keywords": [
+      "macchine agricole",
+      "rimorchi",
+      "trasporto persone",
+      "in piedi"
+    ],
+    "vector_search_queries": [
+      "normativa trasporto persone su macchine agricole e rimorchi",
+      "divieto di trasporto persone in piedi su macchine agricole"
+    ],
+    "rule_explanation": "Il trasporto di persone in piedi su macchine agricole e sui loro rimorchi non è consentito per motivi di sicurezza. La normativa prevede specifiche disposizioni per il trasporto di persone su tali mezzi."
+  }
+}

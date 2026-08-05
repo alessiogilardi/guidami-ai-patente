@@ -1,0 +1,28 @@
+{
+  "question_id": 4444,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22990",
+  "text": "Il conducente che intende fermarsi sul margine destro della carreggiata deve effettuare la manovra senza creare pericolo o intralcio agli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di sicurezza nella circolazione",
+      "Posizionamento del veicolo sulla carreggiata",
+      "Manovra di fermata"
+    ],
+    "exact_keywords": [
+      "fermarsi sul margine destro",
+      "pericolo o intralcio",
+      "altri utenti della strada",
+      "condizioni di sicurezza"
+    ],
+    "vector_search_queries": [
+      "manovra di fermata sul margine destro della carreggiata",
+      "obbligo di non creare pericolo o intralcio durante la fermata"
+    ],
+    "rule_explanation": "Il conducente che si ferma sul margine destro deve farlo in condizioni di sicurezza, senza creare pericolo o intralcio alla circolazione degli altri utenti."
+  }
+}

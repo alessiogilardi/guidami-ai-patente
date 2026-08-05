@@ -1,0 +1,27 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24670",
+  "text": "Guidare un veicolo di altro proprietario senza autorizzazione della Motorizzazione Civile comporta una perdita di punti sulla patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida di veicolo non autorizzato",
+      "Documenti di circolazione e autorizzazioni"
+    ],
+    "exact_keywords": [
+      "veicolo altrui",
+      "autorizzazione",
+      "Motorizzazione Civile",
+      "sanzioni"
+    ],
+    "vector_search_queries": [
+      "sanzioni per guida di veicolo di proprietà altrui senza autorizzazione",
+      "conseguenze della guida di veicolo non autorizzato"
+    ],
+    "rule_explanation": "La guida di un veicolo di proprietà altrui senza la prescritta autorizzazione non comporta decurtazione di punti, ma sanzioni amministrative pecuniarie."
+  }
+}

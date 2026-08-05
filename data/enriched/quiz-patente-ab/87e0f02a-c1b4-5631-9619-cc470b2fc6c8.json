@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22296",
+  "text": "E' obbligatorio regolare la velocità nei passaggi ingombrati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Pericolo alla circolazione",
+      "Passaggi ingombrati"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "passaggi ingombrati",
+      "regolare",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di regolare la velocità nei passaggi ingombrati",
+      "condotta di guida in presenza di ostacoli o ingombri stradali"
+    ],
+    "rule_explanation": "Nei passaggi ingombrati, il conducente ha l'obbligo di regolare la velocità per evitare di creare pericolo o intralcio alla circolazione."
+  }
+}

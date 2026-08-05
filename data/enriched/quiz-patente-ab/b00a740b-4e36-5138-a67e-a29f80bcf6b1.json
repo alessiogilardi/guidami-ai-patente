@@ -1,0 +1,28 @@
+{
+  "question_id": 4626,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24733",
+  "text": "Su strade coperte di neve occorre evitare brusche accelerazioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Prevenzione degli incidenti stradali",
+      "Comportamento prudente"
+    ],
+    "exact_keywords": [
+      "strade innevate",
+      "brusche accelerazioni",
+      "perdita di aderenza",
+      "manovre dolci"
+    ],
+    "vector_search_queries": [
+      "guida su strade innevate e rischio di sbandamento",
+      "necessità di manovre dolci su fondi scivolosi per mantenere il controllo del veicolo"
+    ],
+    "rule_explanation": "Su strade innevate, per evitare la perdita di aderenza e garantire la stabilità del veicolo, è necessario evitare accelerazioni, frenate e sterzate brusche, privilegiando manovre dolci."
+  }
+}

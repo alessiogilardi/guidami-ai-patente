@@ -1,0 +1,31 @@
+{
+  "question_id": 4098,
+  "topic": "Segnali di pericolo",
+  "number": "19436",
+  "text": "Il segnale raffigurato preannuncia la presenza di aeroplani a bassa quota",
+  "correct_answer": false,
+  "image": "b6cd263ac2e3188386f2814949cbc505.jpeg",
+  "image_description": "Segnale di pericolo per vento laterale. Il segnale preannuncia un tratto di strada soggetto a forti raffiche di vento laterale. È necessario procedere con prudenza, tenendo saldamente il volante per mantenere la stabilità del veicolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un palo verticale con attaccato un manica a vento, orientata verso destra, con delle strisce che indicano la direzione e l'intensità del vento. Il pittogramma rappresenta un vento laterale.",
+    "name": "Segnale di pericolo per vento laterale",
+    "description": "Il segnale preannuncia un tratto di strada soggetto a forti raffiche di vento laterale. È necessario procedere con prudenza, tenendo saldamente il volante per mantenere la stabilità del veicolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnale di vento laterale"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "vento laterale",
+      "aeroplani",
+      "bassa quota"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per vento laterale",
+      "significato segnale di pericolo aeroplani bassa quota"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante vento laterale preannuncia raffiche di vento e non la presenza di aeroplani a bassa quota."
+  }
+}

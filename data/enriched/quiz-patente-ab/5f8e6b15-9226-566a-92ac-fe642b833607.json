@@ -1,0 +1,29 @@
+{
+  "question_id": 4521,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23741",
+  "text": "La sosta e la fermata sono vietate in corrispondenza dei segnali orizzontali di preselezione e lungo le corsie di canalizzazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Segnaletica orizzontale e verticale",
+      "Corsie di canalizzazione"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fermata",
+      "segnali orizzontali di preselezione",
+      "corsie di canalizzazione",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata in corrispondenza di segnali orizzontali di preselezione",
+      "divieto di sosta e fermata lungo le corsie di canalizzazione"
+    ],
+    "rule_explanation": "La sosta e la fermata sono vietate in corrispondenza dei segnali orizzontali di preselezione e lungo le corsie di canalizzazione per garantire la fluidità e la sicurezza del traffico."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4528,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23793",
+  "text": "La sosta di emergenza è la temporanea sospensione della marcia per consentire la discesa di persona invalida",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta di emergenza",
+      "Definizione di sosta",
+      "Parcheggio per persone con disabilità"
+    ],
+    "exact_keywords": [
+      "sosta di emergenza",
+      "sosta vietata",
+      "disabili",
+      "fermata",
+      "sosta"
+    ],
+    "vector_search_queries": [
+      "definizione di sosta di emergenza nel CdS",
+      "differenza tra sosta di emergenza e fermata per disabili",
+      "parcheggio per persone invalide e sosta di emergenza"
+    ],
+    "rule_explanation": "La sosta di emergenza è la sospensione della marcia solo per cause di forza maggiore, non per far scendere persone invalide, per cui esistono altre disposizioni."
+  }
+}

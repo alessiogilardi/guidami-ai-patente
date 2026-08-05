@@ -1,0 +1,27 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24761",
+  "text": "In caso di nebbia fitta è opportuno suonare continuativamente il clacson",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione acustica in condizioni di scarsa visibilità",
+      "Comportamento in caso di nebbia"
+    ],
+    "exact_keywords": [
+      "nebbia fitta",
+      "clacson",
+      "segnalazione acustica",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "uso del clacson in condizioni di scarsa visibilità come la nebbia",
+      "segnalazioni acustiche per avvertire di un pericolo in condizioni di scarsa visibilità"
+    ],
+    "rule_explanation": "In caso di nebbia fitta, il clacson non va suonato continuativamente, ma solo per richiamare l'attenzione in caso di pericolo imminente, per evitare di creare confusione o panico."
+  }
+}

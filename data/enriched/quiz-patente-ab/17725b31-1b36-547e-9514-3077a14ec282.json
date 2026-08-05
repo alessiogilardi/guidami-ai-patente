@@ -1,0 +1,33 @@
+{
+  "question_id": 4465,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23208",
+  "text": "Secondo le norme di precedenza nell'incrocio rappresentato in figura il veicolo O transita per ultimo",
+  "correct_answer": true,
+  "image": "0e93540270dbf4671427f83f823d1ce4.jpeg",
+  "image_description": "Incrocio a raso con segnali di STOP e precedenza a destra. L'incrocio è regolato dalla segnaletica di preavviso del segnale di STOP (fig. II.39) e dal segnale di STOP (fig. II.40) che impone l'obbligo di fermarsi prima della striscia di arresto e di dare la precedenza ai veicoli in transito. Il veicolo B si trova in una strada che non presenta segnali di precedenza, quindi deve dare la precedenza ai veicoli provenienti da destra (veicolo L). Il veicolo H si trova in una strada che presenta il segnale di STOP, quindi deve fermarsi e dare la precedenza ai veicoli provenienti dalla sua destra (veicolo O) e da sinistra (veicolo L). Il veicolo O si trova in una strada che presenta il segnale di STOP, quindi deve fermarsi e dare la precedenza ai veicoli provenienti dalla sua destra (veicolo L) e da sinistra (veicolo H). Il veicolo L si trova in una strada che non presenta segnali di precedenza, quindi ha la precedenza sui veicoli che si immettono nella sua carreggiata. L'ordine di transito corretto è: L, O, H, B.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con quattro veicoli: B (rosso), H (giallo), L (blu) e O (verde). Sono presenti segnali di preavviso del segnale di STOP (triangolo rovesciato con bordo rosso) e segnali di STOP (ottagono rosso con bordo bianco) sulle strade che immettono nell'incrocio da cui provengono i veicoli H e O. Il veicolo B si trova sulla strada che immette nell'incrocio da nord, senza segnali di precedenza visibili. Il veicolo L si trova sulla strada che immette nell'incrocio da est, anch'essa senza segnali di precedenza visibili. Il veicolo H si trova sulla strada che immette nell'incrocio da ovest, con un segnale di STOP. Il veicolo O si trova sulla strada che immette nell'incrocio da sud, anch'essa con un segnale di STOP. Le frecce tratteggiate indicano le traiettorie dei veicoli. Il veicolo L ha la precedenza sui veicoli B e O. Il veicolo O deve dare la precedenza a L e H. Il veicolo H deve dare la precedenza a L e O. Il veicolo B deve dare la precedenza a L. Pertanto, l'ordine di transito è L, O, H, B.",
+    "name": "Incrocio a raso con segnali di STOP e precedenza a destra",
+    "description": "L'incrocio è regolato dalla segnaletica di preavviso del segnale di STOP (fig. II.39) e dal segnale di STOP (fig. II.40) che impone l'obbligo di fermarsi prima della striscia di arresto e di dare la precedenza ai veicoli in transito. Il veicolo B si trova in una strada che non presenta segnali di precedenza, quindi deve dare la precedenza ai veicoli provenienti da destra (veicolo L). Il veicolo H si trova in una strada che presenta il segnale di STOP, quindi deve fermarsi e dare la precedenza ai veicoli provenienti dalla sua destra (veicolo O) e da sinistra (veicolo L). Il veicolo O si trova in una strada che presenta il segnale di STOP, quindi deve fermarsi e dare la precedenza ai veicoli provenienti dalla sua destra (veicolo L) e da sinistra (veicolo H). Il veicolo L si trova in una strada che non presenta segnali di precedenza, quindi ha la precedenza sui veicoli che si immettono nella sua carreggiata. L'ordine di transito corretto è: L, O, H, B."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ordine di precedenza agli incroci",
+      "Segnale di STOP",
+      "Precedenza dei veicoli in arrivo"
+    ],
+    "exact_keywords": [
+      "segnale di STOP",
+      "dare la precedenza",
+      "veicoli in transito",
+      "ordine di transito"
+    ],
+    "vector_search_queries": [
+      "ordine di precedenza incrocio con segnale di STOP",
+      "obbligo di fermarsi e dare precedenza al segnale di STOP",
+      "precedenza veicoli in transito incrocio stradale"
+    ],
+    "rule_explanation": "Ai segnali di STOP, i veicoli devono fermarsi e dare la precedenza ai veicoli in transito, sia da destra che da sinistra, secondo le regole generali di precedenza."
+  }
+}

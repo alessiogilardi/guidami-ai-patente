@@ -1,0 +1,28 @@
+{
+  "question_id": 4558,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24000",
+  "text": "Per consentire una adeguata visibilità è vietato applicare pellicole adesive sul parabrezza e sui vetri laterali anteriori dei veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità del conducente",
+      "Norme sull'applicazione di pellicole sui vetri",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "parabrezza",
+      "vetri laterali anteriori",
+      "pellicole adesive",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "divieto di applicazione pellicole adesive sui vetri anteriori",
+      "normativa sulla visibilità del conducente e pellicole sui vetri"
+    ],
+    "rule_explanation": "È vietato applicare pellicole adesive sui vetri laterali anteriori e sul parabrezza per garantire la visibilità del conducente e la sicurezza della circolazione."
+  }
+}

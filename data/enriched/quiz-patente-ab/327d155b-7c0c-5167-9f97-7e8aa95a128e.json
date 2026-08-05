@@ -1,0 +1,27 @@
+{
+  "question_id": 4611,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24516",
+  "text": "La patente di categoria A può essere conseguita, con accesso diretto, da chi non è già titolare di patente A2 da almeno 2 anni, solo se ha compiuto 24 anni di età",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti per il conseguimento della patente A",
+      "Accesso graduale alle patenti motociclistiche"
+    ],
+    "exact_keywords": [
+      "patente A2",
+      "patente A",
+      "accesso diretto",
+      "requisiti di età"
+    ],
+    "vector_search_queries": [
+      "requisiti età patente A accesso diretto",
+      "conseguimento patente A da A2 con meno di 2 anni di esperienza"
+    ],
+    "rule_explanation": "Per conseguire la patente A con accesso diretto, è necessario aver compiuto 24 anni e non essere già titolari di patente A2 da almeno 2 anni."
+  }
+}

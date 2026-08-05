@@ -1,0 +1,32 @@
+{
+  "question_id": 4140,
+  "topic": "Segnali di divieto",
+  "number": "19931",
+  "text": "Il segnale (A), integrato con il pannello (B), consente la sosta agli autobus",
+  "correct_answer": true,
+  "image": "9a5b0958c6c44f82610ce3d20ac0f41d.jpeg",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo eccezione autobus. Il segnale A è un segnale di divieto di sosta. Il pannello integrativo B indica un'eccezione per gli autobus. Pertanto, la sosta è vietata a tutti i veicoli, eccetto gli autobus.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi: un segnale stradale (A) e un pannello integrativo (B). Il segnale A è un segnale di divieto di sosta, caratterizzato da un disco rosso con bordo rosso, sfondo blu e una barra diagonale rossa. Il pannello B è rettangolare, bianco, con la scritta \"eccetto\" in alto e un'immagine stilizzata di un autobus snodato in basso. I due elementi sono presentati in modo tale da suggerire che il pannello B sia un'integrazione al segnale A.",
+    "name": "Segnale di divieto di sosta con pannello integrativo eccezione autobus",
+    "description": "Il segnale A è un segnale di divieto di sosta. Il pannello integrativo B indica un'eccezione per gli autobus. Pertanto, la sosta è vietata a tutti i veicoli, eccetto gli autobus."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Pannelli integrativi",
+      "Eccezioni ai divieti di sosta"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "pannello integrativo",
+      "autobus",
+      "sosta vietata"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di sosta con pannelli integrativi che indicano eccezioni",
+      "interpretazione segnale divieto di sosta con eccezione per autobus"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta, se integrato da pannello integrativo che specifica un'eccezione, consente la sosta ai veicoli indicati nel pannello stesso."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4615,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24573",
+  "text": "La patente di categoria BE abilita a condurre complessi di veicoli composti da un minibus che traina un rimorchio di massa fino a 1.500 chilogrammi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida cat. BE",
+      "Composizione complessi veicolari"
+    ],
+    "exact_keywords": [
+      "patente BE",
+      "minibus",
+      "rimorchio",
+      "massa massima autorizzata"
+    ],
+    "vector_search_queries": [
+      "requisiti patente BE per guida complessi veicolari",
+      "definizione complessi veicolari conducibili con patente BE"
+    ],
+    "rule_explanation": "La patente BE abilita alla guida di complessi veicolari composti da motrice non superiore a 3.500 kg e rimorchio non superiore a 3.500 kg."
+  }
+}

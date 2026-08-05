@@ -1,0 +1,29 @@
+{
+  "question_id": 4411,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22689",
+  "text": "Chi guida un veicolo può montare trombe bitonali per essere sentito più agevolmente, usandole però solo fuori dei centri abitati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione acustica",
+      "Uso del clacson",
+      "Dispositivi acustici dei veicoli"
+    ],
+    "exact_keywords": [
+      "trombe bitonali",
+      "segnalazioni acustiche",
+      "centri abitati",
+      "fuori dei centri abitati",
+      "uso consentito"
+    ],
+    "vector_search_queries": [
+      "divieto di uso delle trombe bitonali nei centri abitati e fuori",
+      "segnalazioni acustiche consentite per i veicoli a motore"
+    ],
+    "rule_explanation": "L'uso delle trombe bitonali è vietato sia nei centri abitati che fuori, salvo casi di emergenza o per evitare incidenti."
+  }
+}

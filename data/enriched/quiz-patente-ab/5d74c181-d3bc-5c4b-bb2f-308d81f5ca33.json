@@ -1,0 +1,31 @@
+{
+  "question_id": 4125,
+  "topic": "Segnali di divieto",
+  "number": "19756",
+  "text": "Il segnale raffigurato vieta il transito alle trattrici agricole",
+  "correct_answer": true,
+  "image": "8a2144c790c2fb4700376c9bb49c6a0b.jpeg",
+  "image_description": "Divieto di transito alle macchine agricole. Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di una macchina agricola (trattore) in nero. Questo segnale indica un divieto di transito specifico per questo tipo di veicoli.",
+    "name": "Divieto di transito alle macchine agricole",
+    "description": "Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Divieto di transito per macchine agricole"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "macchine agricole",
+      "trattrici agricole",
+      "macchine operatrici"
+    ],
+    "vector_search_queries": [
+      "Segnale di divieto di transito per macchine agricole",
+      "Interpretazione segnale divieto macchine agricole e trattrici"
+    ],
+    "rule_explanation": "Il segnale di divieto raffigurato vieta il transito alle macchine agricole e operatrici, comprese le trattrici agricole, salvo eccezioni specifiche."
+  }
+}

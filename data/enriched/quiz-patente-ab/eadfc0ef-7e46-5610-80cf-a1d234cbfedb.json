@@ -1,0 +1,27 @@
+{
+  "question_id": 4656,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24966",
+  "text": "Durante la guida, si devono usare gli occhiali da vista o le lenti a contatto soltanto in caso di scarsa visibilità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di correzione visiva alla guida",
+      "Uso di occhiali o lenti a contatto per la guida"
+    ],
+    "exact_keywords": [
+      "occhiali da vista",
+      "lenti a contatto",
+      "esame della vista",
+      "patente di guida"
+    ],
+    "vector_search_queries": [
+      "obbligo di correzione visiva per conducenti con difetti visivi",
+      "uso di occhiali o lenti a contatto come prescrizione sulla patente"
+    ],
+    "rule_explanation": "L'uso di occhiali o lenti a contatto è obbligatorio per chi ha difetti visivi accertati, indipendentemente dalle condizioni di visibilità, se prescritto sulla patente."
+  }
+}

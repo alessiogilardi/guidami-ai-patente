@@ -1,0 +1,27 @@
+{
+  "question_id": 4583,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24235",
+  "text": "Si devono usare gli indicatori di direzione quando si effettua una svolta a sinistra, ma non quando si svolta a destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione delle manovre",
+      "Uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "svolta a sinistra",
+      "svolta a destra",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "obbligo di usare indicatori di direzione per svolte a destra e sinistra",
+      "segnalazione delle manovre di svolta con indicatori di direzione"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare sia le svolte a sinistra sia quelle a destra, per preavvisare le proprie intenzioni agli altri utenti della strada."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4052,
+  "topic": "Segnali di pericolo",
+  "number": "18878",
+  "text": "In presenza del segnale raffigurato è necessario rallentare solo se provengono veicoli dal senso opposto",
+  "correct_answer": false,
+  "image": "4232f21e2893d81ba19d77d4285f18fe.jpeg",
+  "image_description": "Segnale di pericolo - Serie di dossi. Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di dossi o una cunetta. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una irregolarità del manto stradale.",
+    "name": "Segnale di pericolo - Serie di dossi",
+    "description": "Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Moderazione della velocità",
+      "Condizioni della strada"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "serie di dossi",
+      "velocità adeguata",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di segnali di pericolo per dossi",
+      "adeguamento della velocità ai segnali stradali di pericolo per dossi"
+    ],
+    "rule_explanation": "Il segnale di 'serie di dossi' impone di moderare la velocità per preservare il veicolo e la sicurezza, indipendentemente dal traffico in senso opposto."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4152,
+  "topic": "Segnali di obbligo",
+  "number": "20075",
+  "text": "Il segnale raffigurato consente di svoltare a destra all'incrocio",
+  "correct_answer": false,
+  "image": "fece8907377910340f0aecbc53ef2a9b.jpeg",
+  "image_description": "Segnale di direzione obbligatoria sinistra. Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e un bordo bianco. Al centro del segnale è presente una freccia bianca rivolta verso sinistra. Questo è un segnale di obbligo che indica la direzione da seguire.",
+    "name": "Segnale di direzione obbligatoria sinistra",
+    "description": "Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico di direzione",
+      "Interpretazione della segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "direzione obbligatoria sinistra",
+      "svoltare a destra",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "segnali stradali che impongono una direzione specifica",
+      "interpretazione segnale di direzione obbligatoria sinistra",
+      "divieto di svolta a destra in presenza di segnale di direzione obbligatoria"
+    ],
+    "rule_explanation": "I segnali di obbligo di direzione impongono di seguire la direzione indicata (es. sinistra). Svoltare a destra è vietato se non espressamente consentito da altri segnali."
+  }
+}

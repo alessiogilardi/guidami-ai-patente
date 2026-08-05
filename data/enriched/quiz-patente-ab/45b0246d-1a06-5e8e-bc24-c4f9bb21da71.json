@@ -1,0 +1,31 @@
+{
+  "question_id": 4354,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22059",
+  "text": "Il segnale raffigurato vieta il transito ai soli veicoli indicati",
+  "correct_answer": true,
+  "image": "7c73102d05c7e23b7a50fae6fd1a7e24.jpeg",
+  "image_description": "Divieto di transito agli autoarticolati. Il segnale di divieto di transito (cerchio rosso con sfondo bianco) è integrato da un pannello che raffigura un autoarticolato. Pertanto, il divieto di transito si applica specificamente ai veicoli di tale tipologia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di transito, caratterizzato da un cerchio rosso con bordo rosso e sfondo bianco. Sotto questo segnale, vi è un pannello integrativo rettangolare con sfondo bianco e bordo nero. All'interno del pannello integrativo è raffigurato il pittogramma di un autoarticolato in nero. L'insieme dei due elementi costituisce un segnale stradale unico che specifica una limitazione per una particolare categoria di veicoli.",
+    "name": "Divieto di transito agli autoarticolati",
+    "description": "Il segnale di divieto di transito (cerchio rosso con sfondo bianco) è integrato da un pannello che raffigura un autoarticolato. Pertanto, il divieto di transito si applica specificamente ai veicoli di tale tipologia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Integrazione dei segnali verticali"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "segnali di divieto",
+      "veicoli sagomati",
+      "divieto di transito"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo che limita il divieto di transito a specifici veicoli",
+      "segnali di divieto con pannelli integrativi che indicano veicoli sagomati"
+    ],
+    "rule_explanation": "I pannelli integrativi specificano o limitano la portata dei segnali verticali cui si riferiscono. Nel caso di specie, il divieto di transito si applica solo ai veicoli indicati dal pannello."
+  }
+}

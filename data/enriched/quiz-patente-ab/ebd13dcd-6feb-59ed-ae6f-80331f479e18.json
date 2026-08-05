@@ -1,0 +1,32 @@
+{
+  "question_id": 4296,
+  "topic": "Segnali di indicazione",
+  "number": "21527",
+  "text": "Il segnale raffigurato indica che la strada è interrotta",
+  "correct_answer": false,
+  "image": "131c02a6503976f36bd837f783165e1e.jpeg",
+  "image_description": "Inizio strada extraurbana principale. Il segnale indica l'inizio di una strada extraurbana principale. Le carreggiate sono separate e non è consentito l'accesso ai pedoni, ai ciclisti e ai veicoli a motore non in grado di sviluppare una velocità di almeno 80 km/h.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con sfondo blu e bordi bianchi. Al centro del segnale è raffigurato un pittogramma bianco che rappresenta una strada a carreggiate separate, con un cavalcavia stilizzato che le attraversa. Le due carreggiate sono delimitate da strisce bianche continue. Questo segnale è il segnale di inizio strada extraurbana principale.",
+    "name": "Inizio strada extraurbana principale",
+    "description": "Il segnale indica l'inizio di una strada extraurbana principale. Le carreggiate sono separate e non è consentito l'accesso ai pedoni, ai ciclisti e ai veicoli a motore non in grado di sviluppare una velocità di almeno 80 km/h."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di inizio strada extraurbana principale",
+      "Segnaletica stradale di indicazione"
+    ],
+    "exact_keywords": [
+      "strada extraurbana principale",
+      "segnale di inizio",
+      "divieto di accesso",
+      "carreggiate separate"
+    ],
+    "vector_search_queries": [
+      "segnali di inizio strada extraurbana principale",
+      "interpretazione segnale inizio strada extraurbana principale",
+      "divieti di accesso su strada extraurbana principale"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica l'inizio di una strada extraurbana principale, non un'interruzione della strada. Vieta l'accesso a pedoni, ciclisti e veicoli lenti."
+  }
+}

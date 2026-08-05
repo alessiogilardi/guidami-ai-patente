@@ -1,0 +1,27 @@
+{
+  "question_id": 4521,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23743",
+  "text": "La sosta è vietata nelle curve ma, fuori dei centri abitati e sulle strade di scorrimento, non è vietata in loro prossimità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in prossimità di curve",
+      "Regolamentazione della sosta fuori dai centri abitati"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "curve",
+      "prossimità",
+      "strade di scorrimento"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in prossimità di curve",
+      "sosta vietata fuori dai centri abitati e strade di scorrimento"
+    ],
+    "rule_explanation": "La sosta è vietata nelle curve e, salvo diversa segnalazione, anche in loro prossimità. Il divieto si applica anche fuori dai centri abitati e sulle strade di scorrimento."
+  }
+}

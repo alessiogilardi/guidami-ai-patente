@@ -1,0 +1,32 @@
+{
+  "question_id": 4132,
+  "topic": "Segnali di divieto",
+  "number": "19833",
+  "text": "In presenza del segnale raffigurato è consentito il transito di una macchina agricola di massa a pieno carico pari a 7 tonnellate",
+  "correct_answer": true,
+  "image": "41d170b88f8596eef6889b041c2516cc.jpeg",
+  "image_description": "Divieto di transito per i veicoli di massa superiore a 7 t. Il segnale vieta il transito ai veicoli che superano il peso indicato, ovvero 7 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la dicitura \"7,00 t\" in nero, con la \"t\" in apice. Questo indica un limite di massa per i veicoli.",
+    "name": "Divieto di transito per i veicoli di massa superiore a 7 t",
+    "description": "Il segnale vieta il transito ai veicoli che superano il peso indicato, ovvero 7 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Massa a pieno carico",
+      "Limitazioni di massa per i veicoli"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "massa a pieno carico",
+      "macchina agricola",
+      "transito vietato"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per massa a pieno carico superiore a 7 tonnellate",
+      "limitazioni di massa per macchine agricole e veicoli in aree con segnali di divieto"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito per massa superiore a 7 tonnellate vieta la circolazione ai veicoli con massa a pieno carico che eccede tale limite, incluse le macchine agricole."
+  }
+}

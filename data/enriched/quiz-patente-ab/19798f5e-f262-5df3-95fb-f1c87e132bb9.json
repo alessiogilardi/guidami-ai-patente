@@ -1,0 +1,27 @@
+{
+  "question_id": 4502,
+  "topic": "Norme sul sorpasso",
+  "number": "23559",
+  "text": "Il sorpasso in prossimità di un dosso è consentito sulle strade a due carreggiate separate",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso in condizioni di scarsa visibilità",
+      "Regole specifiche per il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "dosso",
+      "carreggiate separate",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "sorpasso in prossimità di dossi su strade a carreggiate separate",
+      "divieto di sorpasso in condizioni di scarsa visibilità e eccezioni"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in prossimità di dossi o curve con visibilità limitata, ma è consentito sulle strade a due carreggiate separate anche in tali punti."
+  }
+}

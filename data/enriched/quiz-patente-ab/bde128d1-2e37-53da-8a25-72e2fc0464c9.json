@@ -1,0 +1,29 @@
+{
+  "question_id": 4021,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18529",
+  "text": "Il salvagente serve a dividere i sensi di marcia in una strada a doppio senso di circolazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Dispositivi di traffico",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "salvagente",
+      "segnaletica orizzontale",
+      "divisione dei sensi di marcia",
+      "strada a doppio senso"
+    ],
+    "vector_search_queries": [
+      "funzione del salvagente stradale",
+      "uso dei salvagenti per la sicurezza dei pedoni",
+      "differenza tra salvagente e spartitraffico"
+    ],
+    "rule_explanation": "Il salvagente è un'isola artificiale o delimitata, posta sulla carreggiata, destinata al riparo e all'attraversamento dei pedoni, non alla divisione dei sensi di marcia."
+  }
+}

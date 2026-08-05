@@ -1,0 +1,32 @@
+{
+  "question_id": 4057,
+  "topic": "Segnali di pericolo",
+  "number": "18927",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada pericoloso per ridotta visibilità",
+  "correct_answer": true,
+  "image": "34d83af03310c64d51078b75499c7efd.jpeg",
+  "image_description": "Segnale di curva pericolosa a destra. Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurata una freccia nera curva che indica una svolta a destra. Questo è il segnale di \"Curva pericolosa a destra\".",
+    "name": "Segnale di curva pericolosa a destra",
+    "description": "Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Visibilità ridotta",
+      "Preavviso di pericolo"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "strada pericolosa",
+      "visibilità ridotta",
+      "curva pericolosa"
+    ],
+    "vector_search_queries": [
+      "preavviso di pericolo per ridotta visibilità",
+      "segnali stradali che indicano tratto di strada pericoloso per scarsa visibilità"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano una situazione di potenziale rischio per la sicurezza stradale, come una ridotta visibilità, richiedendo al conducente di adottare misure precauzionali."
+  }
+}

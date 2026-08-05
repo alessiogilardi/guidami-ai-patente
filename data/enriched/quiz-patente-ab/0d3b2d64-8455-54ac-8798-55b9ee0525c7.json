@@ -1,0 +1,33 @@
+{
+  "question_id": 4236,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20944",
+  "text": "La striscia bianca laterale discontinua in figura, delimita una piazzola di sosta",
+  "correct_answer": false,
+  "image": "6922a0846a7e2f1de95f99bec47f1772.jpeg",
+  "image_description": "Segnaletica orizzontale di corsia di decelerazione e area di ostacolo. La striscia bianca discontinua, unita a una continua, delimita la corsia di decelerazione per l'uscita dalla carreggiata principale. Le aree a strisce diagonali bianche e nere indicano un ostacolo o una zona che non deve essere occupata. La linea tratteggiata verticale indica il limite di un'area di intersezione o di un punto di arresto.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una carreggiata stradale con segnaletica orizzontale. Si osserva una corsia di decelerazione che si stacca dalla carreggiata principale, delimitata da una linea bianca continua e una discontinua. Sono presenti aree con strisce diagonali bianche e nere, tipiche di zone di ostacolo o di pericolo. Inoltre, una linea tratteggiata verticale attraversa la carreggiata principale, indicando un limite o un punto di arresto. Non sono presenti segnali verticali o altri veicoli. L'immagine rappresenta una configurazione stradale con segnaletica orizzontale specifica.",
+    "name": "Segnaletica orizzontale di corsia di decelerazione e area di ostacolo",
+    "description": "La striscia bianca discontinua, unita a una continua, delimita la corsia di decelerazione per l'uscita dalla carreggiata principale. Le aree a strisce diagonali bianche e nere indicano un ostacolo o una zona che non deve essere occupata. La linea tratteggiata verticale indica il limite di un'area di intersezione o di un punto di arresto."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segni sugli ostacoli",
+      "Piazzole di sosta"
+    ],
+    "exact_keywords": [
+      "striscia bianca laterale discontinua",
+      "piazzola di sosta",
+      "segni sugli ostacoli",
+      "corsia di decelerazione"
+    ],
+    "vector_search_queries": [
+      "funzione della striscia bianca laterale discontinua nella segnaletica orizzontale",
+      "segnaletica di ostacolo con strisce bianche e nere",
+      "differenza tra piazzola di sosta e corsia di decelerazione nella segnaletica stradale"
+    ],
+    "rule_explanation": "La striscia bianca laterale discontinua non delimita una piazzola di sosta, ma può indicare il margine della carreggiata o la corsia di decelerazione. Le aree a strisce bianche e nere diagonali segnalano ostacoli."
+  }
+}

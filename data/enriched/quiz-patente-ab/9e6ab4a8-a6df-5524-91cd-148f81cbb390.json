@@ -1,0 +1,29 @@
+{
+  "question_id": 4006,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18375",
+  "text": "L'isola di traffico serve a separare la carreggiata dalla banchina",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Isola di traffico",
+      "Separazione delle correnti di traffico",
+      "Funzioni della segnaletica orizzontale"
+    ],
+    "exact_keywords": [
+      "isola di traffico",
+      "carreggiata",
+      "banchina",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "definizione e funzione dell'isola di traffico",
+      "differenza tra isola di traffico, carreggiata e banchina",
+      "segnaletica orizzontale per isole di traffico"
+    ],
+    "rule_explanation": "L'isola di traffico è una zona della strada, delimitata da segnaletica orizzontale, destinata a separare correnti di traffico o a incanalare i veicoli. Non separa la carreggiata dalla banchina."
+  }
+}

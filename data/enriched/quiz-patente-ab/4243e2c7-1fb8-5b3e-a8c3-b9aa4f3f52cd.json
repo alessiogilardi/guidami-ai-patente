@@ -1,0 +1,27 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22283",
+  "text": "Il conducente deve regolare la velocità in relazione alla propria abilità alla guida",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Adeguamento della velocità alle condizioni di guida",
+      "Responsabilità del conducente nella gestione della velocità"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "stato del veicolo",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di adeguare la velocità alle condizioni di guida, strada, traffico e veicolo",
+      "moderazione della velocità in base a fattori personali e ambientali"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità non solo in base alla propria abilità, ma anche alle condizioni del veicolo, della strada, del traffico e atmosferiche, per non creare pericolo o intralcio."
+  }
+}

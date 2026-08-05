@@ -1,0 +1,28 @@
+{
+  "question_id": 4705,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25315",
+  "text": "Il servofreno a depressione può funzionare anche a motore spento, purché sia inserita la chiave di accensione nel quadro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Servofreno a depressione",
+      "Funzionamento del servofreno",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "servofreno a depressione",
+      "motore spento",
+      "chiave di accensione",
+      "quadro"
+    ],
+    "vector_search_queries": [
+      "funzionamento servofreno a depressione con motore spento",
+      "assistenza frenata motore spento"
+    ],
+    "rule_explanation": "Il servofreno a depressione necessita del funzionamento del motore per creare il vuoto necessario all'assistenza della frenata; a motore spento non può funzionare efficacemente."
+  }
+}

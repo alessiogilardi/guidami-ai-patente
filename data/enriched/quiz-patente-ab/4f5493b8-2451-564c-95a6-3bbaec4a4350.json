@@ -1,0 +1,28 @@
+{
+  "question_id": 4607,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24474",
+  "text": "Le targhe dei veicoli possono essere piegate per adattarle meglio al loro supporto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi relativi alle targhe di immatricolazione",
+      "Divieto di alterazione dei documenti di circolazione"
+    ],
+    "exact_keywords": [
+      "targa",
+      "veicolo",
+      "supporto",
+      "alterazione",
+      "funzionari o agenti"
+    ],
+    "vector_search_queries": [
+      "divieto di alterazione delle targhe di immatricolazione",
+      "obbligo di esposizione delle targhe in modo leggibile"
+    ],
+    "rule_explanation": "Le targhe devono essere sempre leggibili e non alterate; la loro piegatura è vietata e sanzionata."
+  }
+}

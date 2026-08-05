@@ -1,0 +1,29 @@
+{
+  "question_id": 4026,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18581",
+  "text": "Le macchine agricole a ruote o a cingoli possono circolare su strada per il trasporto di prodotti agricoli per conto delle aziende agricole e forestali",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione di macchine agricole",
+      "Trasporto di prodotti agricoli",
+      "Uso stradale dei veicoli agrari"
+    ],
+    "exact_keywords": [
+      "macchine agricole",
+      "circolare su strada",
+      "trasporto di prodotti agricoli",
+      "aziende agricole",
+      "aziende forestali"
+    ],
+    "vector_search_queries": [
+      "circolazione stradale macchine agricole trasporto prodotti agricoli",
+      "uso delle macchine agricole su strada per conto terzi in ambito agrario e forestale"
+    ],
+    "rule_explanation": "Le macchine agricole, sia a ruote che a cingoli, sono autorizzate alla circolazione stradale per il trasporto di prodotti derivanti dalle attività agricole e forestali."
+  }
+}

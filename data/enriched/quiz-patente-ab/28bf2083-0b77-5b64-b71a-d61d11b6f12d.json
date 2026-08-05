@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23505",
+  "text": "E' consentito il sorpasso a destra nelle intersezioni regolate da semaforo, se il veicolo da sorpassare ha indicato di voler svoltare a sinistra ed ha iniziato la manovra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso a destra",
+      "Regole di precedenza nelle intersezioni",
+      "Manovre di svolta"
+    ],
+    "exact_keywords": [
+      "sorpasso a destra",
+      "intersezioni semaforizzate",
+      "svolta a sinistra",
+      "inizio manovra"
+    ],
+    "vector_search_queries": [
+      "sorpasso a destra in intersezione semaforizzata con svolta a sinistra iniziata",
+      "condizioni per sorpasso a destra in incrocio regolato da semaforo"
+    ],
+    "rule_explanation": "Il sorpasso a destra è consentito nelle intersezioni semaforizzate se il veicolo da superare ha segnalato la svolta a sinistra e ha iniziato la manovra."
+  }
+}

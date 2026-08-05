@@ -1,0 +1,29 @@
+{
+  "question_id": 4576,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24179",
+  "text": "I catadiottri rendono più visibile un veicolo guasto, nel caso in cui non funzionino le luci di posizione posteriori",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità dei veicoli fermi",
+      "Dispositivi di illuminazione e segnalazione",
+      "Obblighi in caso di avaria"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "luci di posizione posteriori",
+      "veicolo fermo",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "funzione dei catadiottri per veicoli fermi",
+      "visibilità veicolo guasto senza luci posteriori",
+      "obbligo catadiottri per veicoli fermi in carreggiata"
+    ],
+    "rule_explanation": "I catadiottri, riflettendo la luce dei veicoli in arrivo, aumentano la visibilità del veicolo fermo in condizioni di scarsa illuminazione, anche in assenza delle luci di posizione posteriori."
+  }
+}

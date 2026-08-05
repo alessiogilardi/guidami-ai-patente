@@ -1,0 +1,27 @@
+{
+  "question_id": 4672,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25079",
+  "text": "L'inquinamento acustico aumenta se si usano in modo eccessivo i dispositivi di segnalazione acustica (clacson, trombe)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Uso improprio dei dispositivi acustici"
+    ],
+    "exact_keywords": [
+      "inquinamento acustico",
+      "dispositivi di segnalazione acustica",
+      "clacson",
+      "trombe"
+    ],
+    "vector_search_queries": [
+      "cause dell'inquinamento acustico da veicoli a motore",
+      "uso improprio dei clacson e trombe e inquinamento acustico"
+    ],
+    "rule_explanation": "L'inquinamento acustico è causato dall'uso smodato e non necessario dei dispositivi sonori del veicolo, come clacson e trombe."
+  }
+}

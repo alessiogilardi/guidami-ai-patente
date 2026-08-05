@@ -1,0 +1,28 @@
+{
+  "question_id": 4043,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18768",
+  "text": "Le persone anziane che attraversano la carreggiata sono esposte a maggiori pericoli, perché le loro capacità visive e uditive non sono più eccellenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Principio di prudenza e attenzione verso soggetti vulnerabili"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "attraversamento carreggiata",
+      "maggiori pericoli",
+      "capacità visive",
+      "capacità uditive"
+    ],
+    "vector_search_queries": [
+      "maggiori pericoli per anziani nell'attraversamento stradale",
+      "riduzione capacità visive e uditive negli anziani e sicurezza stradale"
+    ],
+    "rule_explanation": "Le persone anziane, a causa di ridotte capacità visive e uditive, sono più esposte a pericoli durante l'attraversamento della carreggiata, richiedendo maggiore attenzione da parte degli altri utenti."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4287,
+  "topic": "Segnali di indicazione",
+  "number": "21439",
+  "text": "Il segnale raffigurato indica un parcheggio riservato ai medici",
+  "correct_answer": false,
+  "image": "d91415c6609877cdc30749d99d46c248.jpeg",
+  "image_description": "Preavviso di ospedale. Il segnale indica la direzione da seguire per raggiungere un ospedale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale di preavviso. Il segnale ha uno sfondo bianco con un bordo nero. Nella parte superiore, su uno sfondo blu scuro, è presente un pittogramma raffigurante un letto ospedaliero bianco e una croce rossa. Sotto il pittogramma, una freccia nera indica la direzione sinistra.",
+    "name": "Preavviso di ospedale",
+    "description": "Il segnale indica la direzione da seguire per raggiungere un ospedale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di preavviso",
+      "Servizi per la sosta"
+    ],
+    "exact_keywords": [
+      "parcheggio",
+      "medico",
+      "ospedale",
+      "segnali di preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di ospedale",
+      "segnali che indicano parcheggi riservati",
+      "differenza tra segnale di ospedale e parcheggio riservato"
+    ],
+    "rule_explanation": "Il segnale di preavviso di ospedale indica la direzione per raggiungere una struttura ospedaliera, non un parcheggio riservato ai medici."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4599,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24364",
+  "text": "I bambini di età inferiore a 3 anni non possono viaggiare su autovetture sprovviste degli idonei sistemi di ritenuta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistemi di ritenuta per bambini",
+      "Trasporto di minori",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "bambini",
+      "sistemi di ritenuta",
+      "autovetture",
+      "viaggiare"
+    ],
+    "vector_search_queries": [
+      "obbligo sistemi di ritenuta per bambini sotto i 3 anni in autovettura",
+      "trasporto bambini < 3 anni su autovetture con sistemi di ritenuta"
+    ],
+    "rule_explanation": "I bambini di età inferiore a 3 anni devono essere trasportati in autovetture utilizzando gli appositi sistemi di ritenuta omologati."
+  }
+}

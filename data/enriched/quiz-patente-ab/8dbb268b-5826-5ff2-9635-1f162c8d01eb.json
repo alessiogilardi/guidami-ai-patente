@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23506",
+  "text": "E' consentito il sorpasso nelle intersezioni se la strada è a precedenza purché a due carreggiate separate e le corsie siano delimitate dall'apposita segnaletica orizzontale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso nelle intersezioni",
+      "Regole di circolazione stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "intersezioni",
+      "strada a precedenza",
+      "carreggiate separate",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "sorpasso consentito in intersezioni su strade a precedenza con carreggiate separate",
+      "condizioni per il sorpasso in corrispondenza di intersezioni stradali"
+    ],
+    "rule_explanation": "Il sorpasso è permesso nelle intersezioni su strade a precedenza con carreggiate separate e corsie delimitate, se non vietato da apposita segnaletica verticale."
+  }
+}

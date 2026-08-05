@@ -1,0 +1,31 @@
+{
+  "question_id": 4211,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20719",
+  "text": "Le strisce lungo il centro della carreggiata possono essere superate se discontinue (tratteggiate)",
+  "correct_answer": true,
+  "image": "b43758bb9d85546a58f1d0a67f5b3b45.jpeg",
+  "image_description": "Striscia bianca continua di delimitazione carreggiata. La striscia bianca continua delimita la carreggiata, separando i sensi di marcia o le corsie. Non può essere superata se continua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una rappresentazione di segnaletica orizzontale. Si tratta di due strisce bianche continue parallele, separate da uno spazio più ampio, che delimitano una carreggiata. Non sono presenti altri elementi visivi o segnali stradali. La striscia bianca continua, secondo il Codice della Strada, indica la separazione dei sensi di marcia o delle corsie e non può essere superata.",
+    "name": "Striscia bianca continua di delimitazione carreggiata",
+    "description": "La striscia bianca continua delimita la carreggiata, separando i sensi di marcia o le corsie. Non può essere superata se continua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Superamento di linee di demarcazione carreggiata"
+    ],
+    "exact_keywords": [
+      "strisce discontinue",
+      "linea bianca",
+      "centro della carreggiata",
+      "superamento"
+    ],
+    "vector_search_queries": [
+      "superamento striscia bianca discontinua al centro della carreggiata",
+      "segnaletica orizzontale linee di delimitazione carreggiata"
+    ],
+    "rule_explanation": "Le strisce bianche discontinue al centro della carreggiata possono essere superate per cambiare corsia o sorpassare, a differenza di quelle continue."
+  }
+}

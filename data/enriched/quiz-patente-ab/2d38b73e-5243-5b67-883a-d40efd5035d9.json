@@ -1,0 +1,32 @@
+{
+  "question_id": 4354,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22060",
+  "text": "Il segnale raffigurato vieta la sosta ai veicoli indicati",
+  "correct_answer": true,
+  "image": "b9680da84cee76bf297978d3353758da.jpeg",
+  "image_description": "Divieto di sosta con pannello integrativo (autocarri). Il segnale principale è un segnale di divieto di sosta. Il pannello integrativo specifica che il divieto si applica ai veicoli di massa a pieno carico superiore a 3,5 t.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di sosta, caratterizzato da un disco rosso con una croce blu all'interno. Sotto questo segnale, è presente un pannello integrativo rettangolare bianco con un bordo nero. Il pannello raffigura la sagoma nera di un autocarro con tre assi.",
+    "name": "Divieto di sosta con pannello integrativo (autocarri)",
+    "description": "Il segnale principale è un segnale di divieto di sosta. Il pannello integrativo specifica che il divieto si applica ai veicoli di massa a pieno carico superiore a 3,5 t."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Divieto di sosta",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "segnale di divieto di sosta",
+      "pannello integrativo",
+      "autocarri",
+      "massa a pieno carico"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta con pannello integrativo per autocarri",
+      "applicazione del divieto di sosta a specifici veicoli tramite pannelli integrativi"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta, integrato da pannello, vieta la sosta ai veicoli specificati nel pannello stesso (es. autocarri con massa a pieno carico superiore a 3,5 t)."
+  }
+}

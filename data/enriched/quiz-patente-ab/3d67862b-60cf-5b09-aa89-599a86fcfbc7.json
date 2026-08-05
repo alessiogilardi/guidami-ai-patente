@@ -1,0 +1,28 @@
+{
+  "question_id": 4387,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22454",
+  "text": "Sulle autostrade e sulle strade extraurbane principali, in caso di nebbia fitta, con visibilità inferiore a 100 m, possono essere imposti limiti massimi temporanei di velocità, non superiori a 50 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in condizioni di scarsa visibilità",
+      "Limiti di velocità temporanei e specifici"
+    ],
+    "exact_keywords": [
+      "nebbia fitta",
+      "visibilità inferiore a 100 m",
+      "limiti massimi temporanei di velocità",
+      "autostrade",
+      "strade extraurbane principali"
+    ],
+    "vector_search_queries": [
+      "limiti di velocità in caso di nebbia fitta su autostrade e strade extraurbane principali",
+      "disposizioni per la velocità con visibilità inferiore a 100 metri"
+    ],
+    "rule_explanation": "In caso di nebbia fitta con visibilità inferiore a 100 m su autostrade e strade extraurbane principali, possono essere istituiti limiti massimi temporanei di velocità non superiori a 50 km/h."
+  }
+}

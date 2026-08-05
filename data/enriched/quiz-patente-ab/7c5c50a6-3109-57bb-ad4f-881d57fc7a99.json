@@ -1,0 +1,28 @@
+{
+  "question_id": 4516,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23698",
+  "text": "La sosta è la sospensione della marcia del veicolo protratta nel tempo, con possibilità del conducente di allontanarsi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo",
+      "Definizione di sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "sospensione della marcia",
+      "allontanarsi dal veicolo",
+      "manovra di sosta"
+    ],
+    "vector_search_queries": [
+      "definizione di sosta del veicolo nel CdS",
+      "differenza tra fermata e sosta",
+      "condizioni per effettuare una sosta vietata"
+    ],
+    "rule_explanation": "La sosta è la sospensione della marcia del veicolo, volontaria e prolungata nel tempo, che consente al conducente di allontanarsi dal veicolo."
+  }
+}

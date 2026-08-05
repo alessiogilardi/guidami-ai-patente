@@ -1,0 +1,29 @@
+{
+  "question_id": 4567,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24105",
+  "text": "Nel rispetto della larghezza massima stabilita per i rimorchi T.A.T.S., le imbarcazioni trasportate possono sporgere fino a 50 centimetri per ogni lato rispetto ai bordi esterni delle luci di posizione posteriori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sporgenza del carico",
+      "Dimensioni massime dei veicoli e del carico",
+      "Trasporto di cose su veicoli a motore"
+    ],
+    "exact_keywords": [
+      "larghezza massima",
+      "rimorchi T.A.T.S.",
+      "sporgere",
+      "luci di posizione posteriori"
+    ],
+    "vector_search_queries": [
+      "sporgenza laterale carico rimorchio TATS",
+      "limiti dimensionali trasporto imbarcazioni su rimorchi",
+      "normativa sporgenza carico veicoli a motore"
+    ],
+    "rule_explanation": "La sporgenza laterale del carico, anche se costituita da imbarcazioni su rimorchi T.A.T.S., non può eccedere la sagoma limite del veicolo e deve rispettare specifiche normative per la sicurezza."
+  }
+}

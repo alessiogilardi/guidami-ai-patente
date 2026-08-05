@@ -1,0 +1,28 @@
+{
+  "question_id": 4513,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23669",
+  "text": "La fermata è vietata sui dossi.",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di fermata",
+      "Manovre di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "arresto",
+      "partenza",
+      "dossi"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata sui dossi",
+      "regole per la fermata del veicolo in prossimità di dossi"
+    ],
+    "rule_explanation": "La fermata del veicolo è vietata in corrispondenza o in prossimità dei dossi, in quanto costituisce un pericolo per la circolazione."
+  }
+}

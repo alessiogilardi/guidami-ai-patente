@@ -1,0 +1,31 @@
+{
+  "question_id": 4072,
+  "topic": "Segnali di pericolo",
+  "number": "19130",
+  "text": "Il segnale raffigurato preannuncia una zona in cui possono circolare solo i veicoli in servizio pubblico",
+  "correct_answer": false,
+  "image": "bb981f286218063a29cc9f7bf6f71389.jpeg",
+  "image_description": "Segnale di pericolo - Passaggio di tram. Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato il pittogramma di un tram. Questo segnale indica la presenza di una linea tranviaria che interseca la carreggiata.",
+    "name": "Segnale di pericolo - Passaggio di tram",
+    "description": "Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio di tram",
+      "zona a traffico limitato",
+      "veicoli in servizio pubblico"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo che indicano limitazioni alla circolazione",
+      "differenza tra segnali di pericolo e segnali di prescrizione vietanti l'accesso"
+    ],
+    "rule_explanation": "Il segnale di pericolo di passaggio di tram preannuncia la presenza di binari e la possibile circolazione di tram, non una zona a traffico limitato per veicoli in servizio pubblico."
+  }
+}

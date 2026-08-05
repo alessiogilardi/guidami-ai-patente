@@ -1,0 +1,29 @@
+{
+  "question_id": 4562,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24032",
+  "text": "Per una maggiore sicurezza, è consigliabile che nel rimorchio il carico venga sistemato in modo che gli oggetti pesanti si trovino il più vicino possibile al suo asse",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del carico",
+      "Principi di sicurezza nel trasporto merci",
+      "Caratteristiche del rimorchio"
+    ],
+    "exact_keywords": [
+      "rimorchio",
+      "carico",
+      "stabilità",
+      "asse del rimorchio"
+    ],
+    "vector_search_queries": [
+      "posizionamento carico pesante nel rimorchio per stabilità",
+      "sistemazione merci su rimorchio vicino all'asse",
+      "sicurezza trasporto carico su rimorchio"
+    ],
+    "rule_explanation": "Per garantire la stabilità e la sicurezza, il carico su un rimorchio deve essere posizionato con gli oggetti più pesanti il più vicino possibile all'asse, per mantenere il baricentro basso e ridurre i rischi in marcia."
+  }
+}

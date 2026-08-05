@@ -1,0 +1,27 @@
+{
+  "question_id": 4640,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24847",
+  "text": "L'alimentazione con cibi di difficile digestione può provocare una diminuzione dell'attenzione e un aumento dei tempi di reazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato psico-fisico del conducente",
+      "Fattori di distrazione alla guida"
+    ],
+    "exact_keywords": [
+      "condizioni fisiche",
+      "attenzione",
+      "tempi di reazione",
+      "alimentazione"
+    ],
+    "vector_search_queries": [
+      "influenza dell'alimentazione sulla capacità di guida",
+      "effetti di cibi indigesti su attenzione e tempi di reazione del conducente"
+    ],
+    "rule_explanation": "Il conducente deve essere in perfette condizioni fisiche e psichiche per garantire la sicurezza alla guida, evitando fattori che possano diminuire l'attenzione o aumentare i tempi di reazione."
+  }
+}

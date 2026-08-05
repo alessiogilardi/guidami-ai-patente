@@ -1,0 +1,31 @@
+{
+  "question_id": 4242,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "20993",
+  "text": "Nei semafori in figura le frecce rosse accese indicano che non si può proseguire nelle direzioni indicate",
+  "correct_answer": true,
+  "image": "e1cf603fd1bc443bd8928a050562f802.jpeg",
+  "image_description": "Semafori di corsia. I segnali luminosi raffigurati sono semafori di corsia. Il primo semaforo mostra una freccia rossa verso l'alto, una freccia gialla verso l'alto e una freccia verde verso l'alto. Il secondo semaforo mostra una freccia rossa verso destra, una freccia gialla verso destra e una freccia verde verso destra. Il terzo semaforo mostra una freccia rossa con deviazione a sinistra, una freccia gialla con deviazione a sinistra e una freccia verde con deviazione a sinistra. Le frecce rosse indicano l'arresto, le frecce gialle indicano cautela e le frecce verdi indicano il via libera.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre semafori verticali affiancati, ciascuno con tre luci a forma di freccia. Il primo semaforo ha una freccia rossa verso l'alto in alto, una freccia gialla verso l'alto al centro e una freccia verde verso l'alto in basso. Il secondo semaforo ha una freccia rossa verso destra in alto, una freccia gialla verso destra al centro e una freccia verde verso destra in basso. Il terzo semaforo ha una freccia rossa con deviazione a sinistra in alto, una freccia gialla con deviazione a sinistra al centro e una freccia verde con deviazione a sinistra in basso. Questi sono semafori di corsia, che regolano il traffico per specifiche corsie di marcia. Le frecce indicano le direzioni consentite o vietate.",
+    "name": "Semafori di corsia",
+    "description": "I segnali luminosi raffigurati sono semafori di corsia. Il primo semaforo mostra una freccia rossa verso l'alto, una freccia gialla verso l'alto e una freccia verde verso l'alto. Il secondo semaforo mostra una freccia rossa verso destra, una freccia gialla verso destra e una freccia verde verso destra. Il terzo semaforo mostra una freccia rossa con deviazione a sinistra, una freccia gialla con deviazione a sinistra e una freccia verde con deviazione a sinistra. Le frecce rosse indicano l'arresto, le frecce gialle indicano cautela e le frecce verdi indicano il via libera."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni semaforiche di corsia",
+      "Interpretazione delle frecce semaforiche"
+    ],
+    "exact_keywords": [
+      "semafori di corsia",
+      "frecce rosse",
+      "divieto di proseguire",
+      "direzione indicata"
+    ],
+    "vector_search_queries": [
+      "significato frecce rosse semafori di corsia",
+      "interpretazione segnali luminosi semaforici di corsia"
+    ],
+    "rule_explanation": "Le frecce rosse accese nei semafori di corsia impongono l'arresto e vietano di proseguire nella direzione indicata dalla freccia stessa."
+  }
+}

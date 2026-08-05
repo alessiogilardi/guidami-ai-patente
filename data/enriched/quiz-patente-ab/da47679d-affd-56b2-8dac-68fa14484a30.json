@@ -1,0 +1,26 @@
+{
+  "question_id": 4608,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24476",
+  "text": "Con la patente di categoria AM si possono condurre i ciclomotori a due ruote",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria AM",
+      "Ciclomotori"
+    ],
+    "exact_keywords": [
+      "patente AM",
+      "ciclomotori a due ruote",
+      "condurre"
+    ],
+    "vector_search_queries": [
+      "conduzione ciclomotori con patente AM",
+      "requisiti patente AM per ciclomotori a due ruote"
+    ],
+    "rule_explanation": "La patente di categoria AM abilita alla conduzione dei ciclomotori a due ruote, come specificato dal Codice della Strada."
+  }
+}

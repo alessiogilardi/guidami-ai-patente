@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31014",
+  "text": "Per prevenire il rischio di incidenti, il conducente dovrà valutare attentamente il comportamento degli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Valutazione del comportamento altrui",
+      "Guida prudente e difensiva",
+      "Prevenzione del rischio stradale"
+    ],
+    "exact_keywords": [
+      "comportamento degli altri utenti",
+      "prevenzione del rischio",
+      "condizioni di traffico",
+      "guida prudente"
+    ],
+    "vector_search_queries": [
+      "valutazione del comportamento degli altri utenti della strada per prevenire incidenti",
+      "adeguamento della condotta di guida in base al comportamento altrui",
+      "principio della guida difensiva e della prudenza"
+    ],
+    "rule_explanation": "Il conducente deve costantemente valutare il comportamento degli altri utenti della strada per adattare la propria condotta e prevenire il rischio di incidenti."
+  }
+}

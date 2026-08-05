@@ -1,0 +1,28 @@
+{
+  "question_id": 4578,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24196",
+  "text": "La spia del dispositivo per sbrinare o disappannare il parabrezza è di colore rosso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori luminosi del veicolo",
+      "Dispositivi di sbrinamento/disappannamento"
+    ],
+    "exact_keywords": [
+      "spia",
+      "dispositivo sbrinamento parabrezza",
+      "colore",
+      "dispositivo disappannamento"
+    ],
+    "vector_search_queries": [
+      "colore spia sbrinamento parabrezza",
+      "significato spie cruscotto veicolo",
+      "simbolo disappannamento parabrezza"
+    ],
+    "rule_explanation": "La spia del dispositivo per sbrinare o disappannare il parabrezza è di colore ambra o gialla, non rossa."
+  }
+}

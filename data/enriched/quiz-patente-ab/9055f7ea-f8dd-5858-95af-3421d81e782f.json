@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23514",
+  "text": "Lo spazio necessario al sorpasso aumenta se il veicolo da sorpassare accelera",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Distanza di sicurezza",
+      "Comportamento dei veicoli durante il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo da sorpassare",
+      "accelerazione",
+      "spazio di manovra"
+    ],
+    "vector_search_queries": [
+      "spazio necessario per il sorpasso in relazione all'accelerazione del veicolo da superare",
+      "aumento dello spazio di sorpasso in caso di accelerazione del veicolo da sorpassare"
+    ],
+    "rule_explanation": "Lo spazio necessario per il sorpasso aumenta se il veicolo da sorpassare aumenta la propria velocità, richiedendo una maggiore differenza di velocità tra i due veicoli."
+  }
+}

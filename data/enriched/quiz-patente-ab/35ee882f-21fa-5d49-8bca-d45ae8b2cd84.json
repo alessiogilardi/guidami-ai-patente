@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22303",
+  "text": "E' obbligatorio regolare la velocità nei tratti di strada coperti da ghiaccio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di pericolo per la circolazione",
+      "Obbligo di prudenza"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "ghiaccio",
+      "pericolo",
+      "strada"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità in presenza di ghiaccio sulla strada",
+      "obbligo di moderare la velocità per condizioni avverse della pavimentazione"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di regolare la velocità in base alle condizioni della strada, specialmente in presenza di ghiaccio, per evitare pericoli."
+  }
+}

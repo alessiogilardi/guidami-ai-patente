@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22347",
+  "text": "Il limite massimo di velocità dei quadricicli fuori dai centri abitati è di 70 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per quadricicli",
+      "Regolamentazione della velocità fuori dai centri abitati"
+    ],
+    "exact_keywords": [
+      "quadricicli",
+      "velocità massima",
+      "fuori dai centri abitati",
+      "limite di velocità"
+    ],
+    "vector_search_queries": [
+      "limite velocità quadricicli fuori centro abitato",
+      "velocità massima consentita per quadricicli su strade extraurbane"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per i quadricicli fuori dai centri abitati è di 80 km/h, non 70 km/h."
+  }
+}

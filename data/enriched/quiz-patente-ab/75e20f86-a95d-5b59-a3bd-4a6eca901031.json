@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23540",
+  "text": "Il sorpasso è vietato sulle curve e sui dossi delle strade a senso unico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Condizioni di visibilità ridotta",
+      "Sorpasso in strade a senso unico"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "curve",
+      "dossi",
+      "strade a senso unico"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in curva e in prossimità dei dossi",
+      "sorpasso su strade a senso unico con visibilità limitata"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in curva e in prossimità dei dossi, anche su strade a senso unico, se la visibilità è insufficiente."
+  }
+}

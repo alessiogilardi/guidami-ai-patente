@@ -1,0 +1,30 @@
+{
+  "question_id": 4041,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18745",
+  "text": "I montanti interni degli autoveicoli riducono la possibilità di vedere un ciclista o un motociclista",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità del conducente",
+      "Interazione tra veicoli e utenti vulnerabili",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "montanti interni",
+      "visibilità",
+      "ciclista",
+      "motociclista",
+      "autoveicolo"
+    ],
+    "vector_search_queries": [
+      "ostacolo alla visibilità causato dai montanti dell'auto",
+      "pericolo per ciclisti e motociclisti dovuto ai montanti interni degli autoveicoli",
+      "riduzione della visibilità del conducente verso utenti vulnerabili"
+    ],
+    "rule_explanation": "I montanti interni degli autoveicoli possono ostacolare la visibilità del conducente, riducendo la percezione di utenti vulnerabili come ciclisti e motociclisti."
+  }
+}

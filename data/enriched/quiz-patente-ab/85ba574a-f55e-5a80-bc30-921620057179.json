@@ -1,0 +1,32 @@
+{
+  "question_id": 4116,
+  "topic": "Segnali di divieto",
+  "number": "19659",
+  "text": "Il segnale raffigurato consente il transito ai quadricicli a motore",
+  "correct_answer": true,
+  "image": "7d5994527a6ccfadd7ecf69f4ac79bee.jpeg",
+  "image_description": "Segnale di divieto di transito ai pedoni. Il segnale vieta il transito ai pedoni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la figura stilizzata di un pedone di colore nero. Questo è il segnale di divieto di transito ai pedoni.",
+    "name": "Segnale di divieto di transito ai pedoni",
+    "description": "Il segnale vieta il transito ai pedoni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "pedoni",
+      "quadricicli a motore",
+      "segnali stradali"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito specifici per categoria di utente",
+      "interpretazione segnale divieto transito pedoni",
+      "transito quadricicli a motore in presenza di segnali di divieto"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito ai pedoni vieta l'accesso ai soli pedoni, non anche ai quadricicli a motore che, non essendo espressamente vietati, possono transitare."
+  }
+}

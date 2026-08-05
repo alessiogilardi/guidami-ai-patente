@@ -1,0 +1,27 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23018",
+  "text": "Lo specchio retrovisore centrale di un autoveicolo può essere rimosso se il veicolo è dotato di specchio laterale sinistro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità e sicurezza alla guida",
+      "Dotazioni obbligatorie del veicolo"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore centrale",
+      "specchio laterale sinistro",
+      "autoveicolo",
+      "visibilità posteriore"
+    ],
+    "vector_search_queries": [
+      "obbligo specchietto retrovisore centrale autoveicoli",
+      "visibilità posteriore veicolo con specchietti laterali"
+    ],
+    "rule_explanation": "Lo specchio retrovisore centrale è obbligatorio per tutti gli autoveicoli, anche se sono presenti specchietti laterali, per garantire la visibilità posteriore"
+  }
+}

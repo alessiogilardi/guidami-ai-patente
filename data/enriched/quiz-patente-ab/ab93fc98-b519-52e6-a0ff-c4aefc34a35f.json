@@ -1,0 +1,30 @@
+{
+  "question_id": 4105,
+  "topic": "Segnali di divieto",
+  "number": "19512",
+  "text": "Il segnale raffigurato vieta la circolazione nei due sensi",
+  "correct_answer": true,
+  "image": "fbde6a78154edc681ee7715bad203441.jpeg",
+  "image_description": "Segnale di divieto di transito. Il segnale vieta il transito a tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Questo è il segnale di divieto di transito, che indica che il transito è vietato a tutti i veicoli.",
+    "name": "Segnale di divieto di transito",
+    "description": "Il segnale vieta il transito a tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di divieto di transito",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "circolazione nei due sensi",
+      "segnali di divieto"
+    ],
+    "vector_search_queries": [
+      "segnale divieto di transito significato",
+      "divieto di circolazione bidirezionale"
+    ],
+    "rule_explanation": "Il segnale di 'Divieto di transito' vieta la circolazione a tutti i veicoli in entrambe le direzioni di marcia."
+  }
+}

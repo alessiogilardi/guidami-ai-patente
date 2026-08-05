@@ -1,0 +1,28 @@
+{
+  "question_id": 4004,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18344",
+  "text": "L'attraversamento pedonale è una parte della carreggiata destinata al transito dei pedoni che attraversano",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attraversamento pedonale",
+      "Uso della carreggiata",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "carreggiata",
+      "transito dei pedoni",
+      "segnalato"
+    ],
+    "vector_search_queries": [
+      "definizione di attraversamento pedonale e sua funzione",
+      "regole di utilizzo della carreggiata per pedoni"
+    ],
+    "rule_explanation": "L'attraversamento pedonale è la porzione di carreggiata, opportunamente segnalata, riservata al transito dei pedoni per l'attraversamento della strada."
+  }
+}

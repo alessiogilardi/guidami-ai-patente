@@ -1,0 +1,31 @@
+{
+  "question_id": 4356,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22085",
+  "text": "Il segnale raffigurato indica che la fermata è vietata sia prima che dopo il segnale",
+  "correct_answer": true,
+  "image": "b1c7c7c5175adac5edf013eea5dd21ef.jpeg",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo di estensione. Il segnale di divieto di sosta, abbinato al pannello integrativo che indica l'estensione del divieto (in questo caso, sia prima che dopo il segnale), vieta la sosta in quel tratto di strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu, recante una croce di Sant'Andrea rossa al suo interno. Questo è il segnale di divieto di sosta. Sotto di esso, è presente un pannello integrativo rettangolare di colore bianco con bordo nero, contenente due frecce nere, una rivolta verso l'alto e una verso il basso, poste in verticale. Questo pannello indica l'estensione del divieto di sosta sia prima che dopo il segnale.",
+    "name": "Segnale di divieto di sosta con pannello integrativo di estensione",
+    "description": "Il segnale di divieto di sosta, abbinato al pannello integrativo che indica l'estensione del divieto (in questo caso, sia prima che dopo il segnale), vieta la sosta in quel tratto di strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Segnaletica stradale integrativa"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "pannello integrativo",
+      "estensione del divieto",
+      "prima e dopo il segnale"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta con pannello integrativo di estensione prima e dopo",
+      "interpretazione segnale divieto di sosta con pannello di estensione"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta, se integrato con pannello indicante l'estensione, vieta la sosta sia nel tratto precedente che in quello successivo al segnale stesso."
+  }
+}

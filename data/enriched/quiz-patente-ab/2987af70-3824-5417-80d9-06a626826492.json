@@ -1,0 +1,31 @@
+{
+  "question_id": 4154,
+  "topic": "Segnali di obbligo",
+  "number": "20104",
+  "text": "Il segnale raffigurato indica che la strada che si incrocia è a senso unico verso destra",
+  "correct_answer": false,
+  "image": "d68ea45a3261ce3eb86cf26c76df3f6d.jpeg",
+  "image_description": "Obbligo di proseguire diritto o svoltare a destra. Il segnale impone di proseguire diritto o di svoltare a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca rivolta verso destra. Questo segnale appartiene alla categoria dei segnali di obbligo.",
+    "name": "Obbligo di proseguire diritto o svoltare a destra",
+    "description": "Il segnale impone di proseguire diritto o di svoltare a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo, indicazioni stradali",
+      "Interpretazione dei segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "proseguire diritto",
+      "svoltare a destra",
+      "strada a senso unico"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo di direzione",
+      "interpretazione segnale di obbligo di proseguire o svoltare"
+    ],
+    "rule_explanation": "Il segnale di obbligo di proseguire diritto o svoltare a destra non indica che la strada che si incrocia sia a senso unico verso destra, ma impone una direzione di marcia."
+  }
+}

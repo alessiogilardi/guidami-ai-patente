@@ -1,0 +1,28 @@
+{
+  "question_id": 4615,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24571",
+  "text": "Per condurre un autoveicolo di massa massima autorizzata pari a 3.500 chilogrammi che traina un rimorchio di massa massima autorizzata di 1.000 chilogrammi è necessario aver conseguito la patente di categoria BE",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida per complessi veicolari",
+      "Categoria BE patente",
+      "Massa massima autorizzata (M.A.M.)"
+    ],
+    "exact_keywords": [
+      "autoveicolo",
+      "rimorchio",
+      "massa massima autorizzata",
+      "patente di categoria BE"
+    ],
+    "vector_search_queries": [
+      "requisiti patente BE per traino rimorchio con massa autorizzata superiore a 1000 kg",
+      "conseguimento patente BE per autoveicoli con rimorchio di massa massima autorizzata specifica"
+    ],
+    "rule_explanation": "La patente BE è necessaria per condurre complessi veicolari composti da motrice di massa massima autorizzata non superiore a 3.500 kg e rimorchio di massa massima autorizzata superiore a 1.000 kg."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4518,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23712",
+  "text": "Fuori dei centri abitati, il conducente che deve sostare ha l'obbligo di collocare il veicolo, ove possibile, fuori della carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo fuori dai centri abitati",
+      "Posizionamento del veicolo in sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fuori dei centri abitati",
+      "carreggiata",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di sosta fuori dalla carreggiata fuori dai centri abitati",
+      "posizionamento del veicolo in sosta fuori dai centri abitati"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, in caso di sosta, il veicolo va posizionato, se possibile, fuori dalla carreggiata per non intralciare il traffico."
+  }
+}

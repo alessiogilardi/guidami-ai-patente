@@ -1,0 +1,27 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23481",
+  "text": "Il conducente del veicolo sorpassato può gareggiare in velocità con il conducente del veicolo che lo sta sorpassando",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola del sorpasso",
+      "Comportamento del conducente sorpassato"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo sorpassato",
+      "gareggiare in velocità",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "divieto di gareggiare in velocità durante il sorpasso",
+      "obblighi del conducente del veicolo sorpassato"
+    ],
+    "rule_explanation": "Il conducente del veicolo sorpassato non deve gareggiare in velocità con chi effettua il sorpasso, ma deve agevolare la manovra mantenendo una velocità costante."
+  }
+}

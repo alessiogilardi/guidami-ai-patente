@@ -1,0 +1,32 @@
+{
+  "question_id": 4237,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20949",
+  "text": "In presenza della segnaletica rappresentata in figura i conducenti devono prestare attenzione all'eventuale sopraggiungere di treni",
+  "correct_answer": true,
+  "image": "fc0562d273c757ef1a5227f0960f40b7.jpeg",
+  "image_description": "Segnaletica di ostacolo (striscia bianca e rossa). La segnaletica orizzontale raffigurata delimita un ostacolo o una zona pericolosa sulla carreggiata. I conducenti devono prestare attenzione e procedere con cautela, evitando di impegnare la zona segnalata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata con segnaletica orizzontale. È presente una striscia di arresto e, più avanti, una segnaletica di ostacolo costituita da una figura a forma di X racchiusa in un quadrato, con due frecce che indicano di aggirare l'ostacolo ai lati. La segnaletica è posta sulla destra della carreggiata, in prossimità di una deviazione o di un ostacolo fisso.",
+    "name": "Segnaletica di ostacolo (striscia bianca e rossa)",
+    "description": "La segnaletica orizzontale raffigurata delimita un ostacolo o una zona pericolosa sulla carreggiata. I conducenti devono prestare attenzione e procedere con cautela, evitando di impegnare la zona segnalata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica di ostacolo",
+      "Attraversamento di linee ferroviarie"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "segni degli ostacoli",
+      "passaggio a livello",
+      "prestare attenzione"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per ostacoli e pericoli stradali",
+      "obblighi dei conducenti in presenza di segnaletica di ostacolo",
+      "segnali degli ostacoli e loro significato per la circolazione"
+    ],
+    "rule_explanation": "La segnaletica orizzontale di ostacolo impone ai conducenti di prestare attenzione e moderare la velocità, specialmente in prossimità di passaggi a livello o altri pericoli fissi."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4543,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23897",
+  "text": "Sulle carreggiate, sulle rampe e sugli svincoli delle autostrade è consentito sostare solo in situazioni di emergenza dovute a malessere del conducente o dei passeggeri oppure ad inefficienza del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta di emergenza su autostrade",
+      "Divieto di fermata e sosta su carreggiate autostradali"
+    ],
+    "exact_keywords": [
+      "sostare",
+      "autostrade",
+      "rampe",
+      "svincoli",
+      "inefficienza del veicolo"
+    ],
+    "vector_search_queries": [
+      "sosta di emergenza su autostrade per malessere o avaria",
+      "divieto di sosta su carreggiate, rampe e svincoli autostradali"
+    ],
+    "rule_explanation": "Sulle autostrade, rampe e svincoli è vietata la sosta, tranne in caso di emergenza per malessere o avaria del veicolo."
+  }
+}

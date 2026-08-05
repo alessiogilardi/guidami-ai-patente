@@ -1,0 +1,32 @@
+{
+  "question_id": 4056,
+  "topic": "Segnali di pericolo",
+  "number": "18922",
+  "text": "In presenza del segnale raffigurato è vietato il sorpasso se si circola in una strada a senso unico",
+  "correct_answer": false,
+  "image": "f1d28ec1aa4add69b5be2109e97aeb85.jpeg",
+  "image_description": "Segnale di cunetta. Il segnale preannuncia un tratto di strada con una cunetta, che può causare accumulo di acqua o fango in caso di pioggia o scarsa manutenzione. È necessario moderare la velocità per mantenere il controllo del veicolo e prevenire danni alle sospensioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una cunetta, ovvero un avvallamento della strada. Il segnale è isolato e non sono presenti altri elementi contestuali come pannelli integrativi o elementi della strada.",
+    "name": "Segnale di cunetta",
+    "description": "Il segnale preannuncia un tratto di strada con una cunetta, che può causare accumulo di acqua o fango in caso di pioggia o scarsa manutenzione. È necessario moderare la velocità per mantenere il controllo del veicolo e prevenire danni alle sospensioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Divieto di sorpasso",
+      "Strada a senso unico"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "cunetta",
+      "sorpasso",
+      "strada a senso unico"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo che non comportano divieto di sorpasso",
+      "sorpasso su strada a senso unico in presenza di segnali di pericolo"
+    ],
+    "rule_explanation": "Il segnale di pericolo di cunetta non vieta il sorpasso, nemmeno su strada a senso unico. Il divieto di sorpasso è indicato da altri segnali specifici."
+  }
+}

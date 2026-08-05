@@ -1,0 +1,28 @@
+{
+  "question_id": 4434,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22916",
+  "text": "Uscendo con un veicolo da una proprietà privata, bisogna procedere lentamente, specie se in retromarcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uscita da proprietà privata",
+      "Manovra di retromarcia",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "proprietà privata",
+      "manovra di retromarcia",
+      "procedere lentamente",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "manovra di uscita da proprietà privata",
+      "velocità e prudenza nella retromarcia per immettersi nella circolazione"
+    ],
+    "rule_explanation": "Uscendo da una proprietà privata, anche in retromarcia, è necessario procedere con estrema prudenza e a velocità ridotta per evitare pericoli per la circolazione."
+  }
+}

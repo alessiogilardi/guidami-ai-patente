@@ -1,0 +1,27 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23628",
+  "text": "Prima di iniziare a guidare un autoveicolo è opportuno regolare il sedile e il poggiatesta, secondo la propria statura",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione del posto di guida",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "regolazione sedile",
+      "poggiatesta",
+      "posizione di guida",
+      "statura"
+    ],
+    "vector_search_queries": [
+      "adeguamento sedile e poggiatesta prima di iniziare la guida",
+      "importanza della corretta posizione di guida per la sicurezza"
+    ],
+    "rule_explanation": "Prima di iniziare la marcia, il conducente deve regolare il sedile e il poggiatesta in base alla propria statura per garantire una posizione di guida corretta e sicura."
+  }
+}

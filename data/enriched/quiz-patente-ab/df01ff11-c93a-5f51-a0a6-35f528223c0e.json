@@ -1,0 +1,28 @@
+{
+  "question_id": 4676,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25106",
+  "text": "Per diminuire l'inquinamento dell'aria provocato dai veicoli, bisogna accelerare ripetutamente da fermo, per tenere caldo il motore e migliorarne il rendimento",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico",
+      "Comportamento alla guida ecologico",
+      "Efficienza del motore"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "accelerare da fermo",
+      "motore",
+      "rendimento"
+    ],
+    "vector_search_queries": [
+      "impatto delle accelerazioni da fermo sull'inquinamento atmosferico",
+      "comportamenti di guida per ridurre le emissioni inquinanti dei veicoli"
+    ],
+    "rule_explanation": "Accelerare ripetutamente da fermo non diminuisce l'inquinamento atmosferico, anzi, aumenta le emissioni nocive e lo spreco di carburante, peggiorando il rendimento del motore."
+  }
+}

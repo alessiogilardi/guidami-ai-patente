@@ -1,0 +1,27 @@
+{
+  "question_id": 4611,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24521",
+  "text": "Con la patente di categoria A si possono guidare i quadricicli non leggeri, qualunque sia l'età del conducente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti per la guida di quadricicli non leggeri",
+      "Età minima per la conduzione di veicoli a motore"
+    ],
+    "exact_keywords": [
+      "patente di categoria A",
+      "quadricicli non leggeri",
+      "età del conducente",
+      "requisiti soggettivi"
+    ],
+    "vector_search_queries": [
+      "guida quadricicli non leggeri con patente A e età minima",
+      "requisiti per la conduzione di quadricicli non leggeri con patente A"
+    ],
+    "rule_explanation": "La patente A abilita alla guida di quadricicli non leggeri solo se il conducente ha compiuto 16 anni. Non è sufficiente la sola titolarità della patente A."
+  }
+}

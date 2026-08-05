@@ -1,0 +1,29 @@
+{
+  "question_id": 4610,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24512",
+  "text": "La patente di categoria A2 non consente di condurre alcun tipo di triciclo a motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria A2",
+      "Tricicli a motore",
+      "Requisiti di ammissione e categorie di patenti"
+    ],
+    "exact_keywords": [
+      "patente A2",
+      "triciclo a motore",
+      "categoria",
+      "potenza",
+      "cilindrata"
+    ],
+    "vector_search_queries": [
+      "conduzione tricicli a motore con patente A2",
+      "limiti di potenza e cilindrata per tricicli a motore con patente A2"
+    ],
+    "rule_explanation": "La patente A2 abilita alla conduzione di tricicli a motore con potenza non superiore a 15 kW, purché non eccedano la cilindrata di 50 cm³ se ad accensione comandata."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4041,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18743",
+  "text": "Il conducente, dopo aver posteggiato il veicolo al lato della carreggiata, prima di aprire lo sportello deve controllare che non sopraggiungano ciclisti o motociclisti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente alla fermata",
+      "Sicurezza nella ripartenza e apertura sportelli",
+      "Tutela degli utenti deboli della strada"
+    ],
+    "exact_keywords": [
+      "aprire lo sportello",
+      "veicolo fermato",
+      "ciclisti",
+      "motociclisti",
+      "condotta da adottare"
+    ],
+    "vector_search_queries": [
+      "condotta del conducente all'apertura dello sportello di veicolo fermato",
+      "obbligo di controllo prima di aprire lo sportello per evitare pericolo a ciclisti e motociclisti"
+    ],
+    "rule_explanation": "Prima di aprire lo sportello di un veicolo fermato, il conducente deve assicurarsi che ciò non costituisca pericolo o impedimento per gli altri utenti della strada, in particolare ciclisti e motociclisti."
+  }
+}

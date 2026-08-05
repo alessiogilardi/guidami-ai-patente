@@ -1,0 +1,28 @@
+{
+  "question_id": 4575,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24175",
+  "text": "I catadiottri sostituiscono le luci di posizione durante la circolazione nelle strade urbane",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di illuminazione e segnalazione visiva",
+      "Obblighi di segnalazione visiva dei veicoli"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "luci di posizione",
+      "veicoli a motore",
+      "rimorchi",
+      "strade urbane"
+    ],
+    "vector_search_queries": [
+      "funzione dei catadiottri rispetto alle luci di posizione",
+      "obbligo luci di posizione e catadiottri per veicoli a motore e rimorchi"
+    ],
+    "rule_explanation": "I catadiottri non sostituiscono le luci di posizione, ma sono dispositivi aggiuntivi di segnalazione visiva che rendono il veicolo più visibile in condizioni di scarsa illuminazione."
+  }
+}

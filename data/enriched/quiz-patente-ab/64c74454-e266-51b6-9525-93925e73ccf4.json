@@ -1,0 +1,28 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18734",
+  "text": "Il diritto di precedenza non autorizza il conducente ad attraversare l'incrocio senza usare prudenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di prudenza alla guida",
+      "Diritto di precedenza",
+      "Intersezioni stradali"
+    ],
+    "exact_keywords": [
+      "diritto di precedenza",
+      "prudenza",
+      "incrocio",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza all'incrocio anche con diritto di precedenza",
+      "condotta di guida sicura in prossimità di incroci"
+    ],
+    "rule_explanation": "Il diritto di precedenza non esonera il conducente dall'obbligo di usare la massima prudenza durante l'attraversamento di un incrocio, per evitare incidenti."
+  }
+}

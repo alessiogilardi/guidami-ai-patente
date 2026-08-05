@@ -1,0 +1,27 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24361",
+  "text": "Non è obbligatorio utilizzare le cinture di sicurezza su una autovettura quando si effettuano tragitti di lunghezza inferiore a un chilometro all'interno dei centri abitati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Eccezioni all'obbligo di cintura"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "autovettura",
+      "centri abitati",
+      "obbligo"
+    ],
+    "vector_search_queries": [
+      "obbligo cinture sicurezza autovettura centri abitati",
+      "uso cinture sicurezza tragitti brevi"
+    ],
+    "rule_explanation": "L'uso delle cinture di sicurezza è obbligatorio su tutte le autovetture, anche nei centri abitati e per tragitti brevi, salvo specifiche eccezioni non applicabili in questo caso."
+  }
+}

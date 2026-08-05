@@ -1,0 +1,27 @@
+{
+  "question_id": 4593,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24318",
+  "text": "Sono previste sanzioni per chi, pur facendo uso della cintura di sicurezza, ne alteri o ostacoli il normale funzionamento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso corretto dei dispositivi di sicurezza",
+      "Sanzioni per alterazione dei dispositivi di sicurezza"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "sistemi di ritenuta",
+      "normale funzionamento",
+      "sanzioni"
+    ],
+    "vector_search_queries": [
+      "sanzioni per alterazione del funzionamento delle cinture di sicurezza",
+      "uso improprio dei sistemi di ritenuta per bambini e adulti"
+    ],
+    "rule_explanation": "È vietato alterare o ostacolare il normale funzionamento delle cinture di sicurezza e dei sistemi di ritenuta, pena l'applicazione di sanzioni."
+  }
+}

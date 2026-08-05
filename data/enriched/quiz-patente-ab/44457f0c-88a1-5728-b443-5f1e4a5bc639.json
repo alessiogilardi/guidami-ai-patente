@@ -1,0 +1,28 @@
+{
+  "question_id": 4436,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22927",
+  "text": "Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso deve dare la precedenza ai veicoli che sopraggiungono",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inversione di marcia",
+      "Precedenza in caso di manovra",
+      "Strada a doppio senso di circolazione"
+    ],
+    "exact_keywords": [
+      "inversione di marcia",
+      "strada a doppio senso",
+      "dare la precedenza",
+      "veicoli in sopraggiunzione"
+    ],
+    "vector_search_queries": [
+      "precedenza durante l'inversione di marcia su strada a doppio senso",
+      "obblighi del conducente che esegue l'inversione di marcia"
+    ],
+    "rule_explanation": "Chi effettua l'inversione di marcia su strada a doppio senso deve dare la precedenza ai veicoli che sopraggiungono da entrambi i sensi di marcia."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4506,
+  "topic": "Norme sul sorpasso",
+  "number": "23610",
+  "text": "Il sorpasso in autostrada può essere motivo di incidente, se viene effettuato accodandosi ad un veicolo che sta sorpassando",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso in autostrada",
+      "Comportamento pericoloso al sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "autostrada",
+      "incidente",
+      "veicolo in sorpasso"
+    ],
+    "vector_search_queries": [
+      "manovra di sorpasso in autostrada e rischio incidente",
+      "pericolo di accodarsi a veicolo in sorpasso in autostrada"
+    ],
+    "rule_explanation": "Il sorpasso in autostrada è pericoloso se si effettua accodandosi a un altro veicolo già in fase di sorpasso, aumentando il rischio di collisione."
+  }
+}

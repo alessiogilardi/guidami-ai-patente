@@ -1,0 +1,27 @@
+{
+  "question_id": 4696,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25233",
+  "text": "La pressione di gonfiaggio dei pneumatici deve essere controllata quando la gomma è fredda",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione pneumatici",
+      "Controllo pressione pneumatici"
+    ],
+    "exact_keywords": [
+      "pressione di gonfiaggio",
+      "pneumatici",
+      "a freddo",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "controllo pressione pneumatici a freddo",
+      "corretta pressione di gonfiaggio pneumatici"
+    ],
+    "rule_explanation": "La pressione dei pneumatici va verificata a gomma fredda per garantire l'accuratezza della misurazione e la sicurezza del veicolo."
+  }
+}

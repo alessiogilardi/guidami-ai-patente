@@ -1,0 +1,28 @@
+{
+  "question_id": 4575,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24168",
+  "text": "I catadiottri sono dispositivi che riflettono la luce",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di illuminazione e segnalazione",
+      "Catadiottri"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "dispositivi riflettenti",
+      "luce",
+      "segnalazione visiva"
+    ],
+    "vector_search_queries": [
+      "funzione dei catadiottri",
+      "dispositivi di segnalazione visiva notturna",
+      "principio di funzionamento dei catadiottri"
+    ],
+    "rule_explanation": "I catadiottri sono dispositivi che, sfruttando il fenomeno della riflessione, rendono visibili i veicoli durante la notte o in condizioni di scarsa illuminazione, segnalando la loro presenza."
+  }
+}

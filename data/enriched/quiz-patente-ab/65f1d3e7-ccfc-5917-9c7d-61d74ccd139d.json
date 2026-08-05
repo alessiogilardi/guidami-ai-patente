@@ -1,0 +1,26 @@
+{
+  "question_id": 4499,
+  "topic": "Norme sul sorpasso",
+  "number": "23493",
+  "text": "E' vietato effettuare un secondo sorpasso senza prima essersi riportati a destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola del sorpasso",
+      "Posizionamento del veicolo dopo il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "riportarsi a destra",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso multiplo senza rientro a destra",
+      "obbligo di rientrare a destra dopo aver effettuato un sorpasso"
+    ],
+    "rule_explanation": "È vietato effettuare un sorpasso se non si è certi di poterlo fare senza pericolo e di non costringere altri veicoli a modifiche della loro traiettoria o velocità. Dopo un sorpasso, ci si deve riportare a destra appena possibile."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4171,
+  "topic": "Segnali di obbligo",
+  "number": "20287",
+  "text": "Il segnale di figura (A) su strade extraurbane è preceduto dal segnale di pericolo di CIRCOLAZIONE ROTATORIA in figura (B)",
+  "correct_answer": true,
+  "image": "a546518b46a865bad2855488f37ddc55.jpeg",
+  "image_description": "Segnale di obbligo di circolazione (A) e segnale di pericolo di circolazione rotatoria (B). Il segnale A è un segnale di obbligo di circolazione, che impone di circolare nel senso indicato dalle frecce (senso rotatorio antiorario). Il segnale B è un segnale di pericolo che preavvisa un'intersezione con circolazione rotatoria. Il segnale A, di norma, si trova all'interno dell'area della rotatoria o immediatamente prima dell'ingresso, mentre il segnale B si trova a monte per preavvisare il conducente della presenza della rotatoria.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali, etichettati A e B. Il segnale A è circolare con sfondo blu e tre frecce bianche che indicano un senso di rotazione antiorario. Questo è un segnale di obbligo. Il segnale B è triangolare con bordo rosso e sfondo bianco, raffigurante al centro un pittogramma nero di tre frecce che indicano un senso di rotazione antiorario. Questo è un segnale di pericolo. I due segnali sono presentati in sequenza, con il segnale di pericolo (B) che solitamente precede il segnale di obbligo (A).",
+    "name": "Segnale di obbligo di circolazione (A) e segnale di pericolo di circolazione rotatoria (B)",
+    "description": "Il segnale A è un segnale di obbligo di circolazione, che impone di circolare nel senso indicato dalle frecce (senso rotatorio antiorario). Il segnale B è un segnale di pericolo che preavvisa un'intersezione con circolazione rotatoria. Il segnale A, di norma, si trova all'interno dell'area della rotatoria o immediatamente prima dell'ingresso, mentre il segnale B si trova a monte per preavvisare il conducente della presenza della rotatoria."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo di circolazione",
+      "Segnali di pericolo di circolazione rotatoria",
+      "Preavviso di intersezione"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "segnali di pericolo",
+      "circolazione rotatoria",
+      "strade extraurbane"
+    ],
+    "vector_search_queries": [
+      "precedenza segnale obbligo circolazione rotatoria",
+      "preavviso segnale pericolo rotatoria su strade extraurbane"
+    ],
+    "rule_explanation": "Il segnale di obbligo di circolazione (A) in una rotatoria è preceduto dal segnale di pericolo di circolazione rotatoria (B) su strade extraurbane per preavvisare l'utente."
+  }
+}

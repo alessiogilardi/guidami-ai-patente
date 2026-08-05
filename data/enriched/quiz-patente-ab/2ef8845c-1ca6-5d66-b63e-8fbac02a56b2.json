@@ -1,0 +1,32 @@
+{
+  "question_id": 4069,
+  "topic": "Segnali di pericolo",
+  "number": "19082",
+  "text": "La figura rappresenta un segnale di pericolo",
+  "correct_answer": true,
+  "image": "dfaf4fe7c7231e7f821a2cecea6f1ecb.jpeg",
+  "image_description": "Croce di Sant'Andrea (segnalazione di passaggio a livello senza barriere). Il segnale preannuncia un passaggio a livello senza barriere. Obbliga i conducenti a fermarsi prima di impegnare la sede ferroviaria se transita un treno.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una Croce di Sant'Andrea, un segnale stradale di pericolo. È di forma a X, con i bracci bordati di rosso e una striscia bianca al centro. Questo segnale preannuncia un passaggio a livello senza barriere.",
+    "name": "Croce di Sant'Andrea (segnalazione di passaggio a livello senza barriere)",
+    "description": "Il segnale preannuncia un passaggio a livello senza barriere. Obbliga i conducenti a fermarsi prima di impegnare la sede ferroviaria se transita un treno."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Passaggio a livello senza barriere"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "croce di Sant'Andrea",
+      "passaggio a livello senza barriere",
+      "fermarsi"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo stradale",
+      "preavviso passaggio a livello senza barriere",
+      "obblighi al passaggio a livello senza barriere"
+    ],
+    "rule_explanation": "Il segnale di pericolo preannuncia una situazione di potenziale rischio per la circolazione, come un passaggio a livello senza barriere, richiedendo specifiche cautele."
+  }
+}

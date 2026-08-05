@@ -1,0 +1,32 @@
+{
+  "question_id": 4357,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22093",
+  "text": "Il segnale raffigurato indica il punto nel quale termina il divieto di sosta",
+  "correct_answer": true,
+  "image": "9c63d382551cd03c133efd52af0fcf19.jpeg",
+  "image_description": "Divieto di sosta con pannello integrativo di indicazione di tratto (freccia verso il basso). Il segnale indica il divieto di sosta e il pannello integrativo con la freccia verso il basso indica che il divieto vige nel tratto successivo al segnale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di sosta, rappresentato da un disco rosso con bordo rosso, sfondo blu e una barra rossa diagonale. Sotto questo segnale, vi è un pannello integrativo rettangolare bianco con una freccia nera rivolta verso il basso. L'insieme dei due elementi costituisce un unico segnale stradale.",
+    "name": "Divieto di sosta con pannello integrativo di indicazione di tratto (freccia verso il basso)",
+    "description": "Il segnale indica il divieto di sosta e il pannello integrativo con la freccia verso il basso indica che il divieto vige nel tratto successivo al segnale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Divieto di sosta",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "pannello integrativo",
+      "freccia verso il basso",
+      "termine del divieto"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo con freccia verso il basso per divieto di sosta",
+      "indicazione del termine del divieto di sosta con pannello integrativo"
+    ],
+    "rule_explanation": "Il pannello integrativo con freccia verso il basso, abbinato al segnale di divieto di sosta, indica che il divieto vige nel tratto successivo al segnale stesso, terminando al punto indicato."
+  }
+}

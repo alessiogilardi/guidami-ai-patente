@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23513",
+  "text": "E' vietato il sorpasso se si deve valicare la striscia longitudinale bianca continua semplice o doppia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Segnaletica orizzontale",
+      "Validità della segnaletica stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "striscia longitudinale continua",
+      "segnaletica orizzontale",
+      "divieto di sorpasso"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso su striscia continua",
+      "sorpasso vietato in presenza di segnaletica orizzontale continua"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in presenza di strisce longitudinali continue, semplici o doppie, che delimitano le corsie di marcia."
+  }
+}

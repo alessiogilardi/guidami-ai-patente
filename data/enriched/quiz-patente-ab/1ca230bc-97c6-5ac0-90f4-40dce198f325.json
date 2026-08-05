@@ -1,0 +1,27 @@
+{
+  "question_id": 4444,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22994",
+  "text": "Il conducente che intende fermarsi sul margine destro della carreggiata deve evitare brusche frenate, per garantire la sicurezza degli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di condotta per la fermata su strada",
+      "Sicurezza stradale e manovre di arresto"
+    ],
+    "exact_keywords": [
+      "fermarsi sul margine destro",
+      "evitare brusche frenate",
+      "sicurezza degli altri utenti",
+      "manovra di arresto"
+    ],
+    "vector_search_queries": [
+      "condotta del conducente per fermarsi sul margine destro della carreggiata",
+      "obbligo di evitare frenate brusche durante la fermata per garantire la sicurezza altrui"
+    ],
+    "rule_explanation": "Chi si ferma sul margine destro deve farlo senza brusche frenate, per non mettere in pericolo gli altri utenti della strada."
+  }
+}

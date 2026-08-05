@@ -1,0 +1,28 @@
+{
+  "question_id": 4023,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18548",
+  "text": "I ciclomotori sono soggetti a revisione dopo quattro anni dalla prima immatricolazione, successivamente ogni due anni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione periodica dei veicoli a motore",
+      "Ciclomotori: definizioni e obblighi",
+      "Normativa sulla circolazione dei ciclomotori"
+    ],
+    "exact_keywords": [
+      "ciclomotori",
+      "revisione",
+      "immatricolazione",
+      "periodicità"
+    ],
+    "vector_search_queries": [
+      "periodicità revisione ciclomotori",
+      "obblighi di revisione per ciclomotori dopo immatricolazione"
+    ],
+    "rule_explanation": "I ciclomotori sono soggetti a revisione dopo quattro anni dalla prima immatricolazione e successivamente ogni due anni."
+  }
+}

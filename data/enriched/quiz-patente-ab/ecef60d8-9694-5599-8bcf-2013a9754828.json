@@ -1,0 +1,28 @@
+{
+  "question_id": 4611,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24525",
+  "text": "La patente di categoria A conseguita per accesso diretto ad almeno 24 anni di età, consente di condurre tutti i motocicli ma solo in Italia, per guidare all'estero è necessario sostenere un ulteriore esame",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida italiana all'estero",
+      "Requisiti per la guida di motocicli con patente A"
+    ],
+    "exact_keywords": [
+      "patente A",
+      "motocicli",
+      "guida all'estero",
+      "esame aggiuntivo",
+      "validità territoriale"
+    ],
+    "vector_search_queries": [
+      "validità patente A per condurre motocicli in Italia e all'estero",
+      "requisiti patente A conseguita a 24 anni per guida internazionale"
+    ],
+    "rule_explanation": "La patente A, conseguita con accesso diretto a 24 anni, abilita alla guida di tutti i motocicli sia in Italia che all'estero, senza necessità di ulteriori esami o limitazioni territoriali."
+  }
+}

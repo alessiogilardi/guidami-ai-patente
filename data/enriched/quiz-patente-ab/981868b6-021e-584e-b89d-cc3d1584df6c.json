@@ -1,0 +1,27 @@
+{
+  "question_id": 4023,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18544",
+  "text": "I veicoli a due ruote, con motore termico fino a 50 cm3 di cilindrata e velocità massima di 45 km/h sono ciclomotori",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di ciclomotore",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "ciclomotore",
+      "motore termico",
+      "cilindrata",
+      "velocità massima"
+    ],
+    "vector_search_queries": [
+      "definizione di ciclomotore secondo il CdS",
+      "caratteristiche tecniche dei ciclomotori (cilindrata, velocità)"
+    ],
+    "rule_explanation": "I ciclomotori sono veicoli a due ruote con motore termico fino a 50 cm3 di cilindrata e velocità massima di 45 km/h."
+  }
+}

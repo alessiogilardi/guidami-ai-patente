@@ -1,0 +1,28 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24537",
+  "text": "La patente di categoria B abilita a condurre gli autoveicoli di massa massima autorizzata non superiore a 3,5 tonnellate destinati al trasporto di non più di otto persone oltre al conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria B",
+      "Massa massima autorizzata",
+      "Trasporto persone"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "autoveicoli",
+      "massa massima autorizzata",
+      "non più di otto persone oltre al conducente"
+    ],
+    "vector_search_queries": [
+      "requisiti patente B per massa veicolo e numero passeggeri",
+      "categoria B veicoli conducibili massa e persone"
+    ],
+    "rule_explanation": "La patente B abilita alla guida di autoveicoli con massa massima autorizzata fino a 3,5 tonnellate e capaci di trasportare al massimo otto persone oltre al conducente."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4611,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24514",
+  "text": "Con la patente di categoria A si possono condurre tutti i tricicli a motore, ma solo se il conducente ha almeno 21 anni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria A",
+      "Veicoli conducibili con patente A",
+      "Requisiti di età per tricicli a motore"
+    ],
+    "exact_keywords": [
+      "patente di categoria A",
+      "tricicli a motore",
+      "età minima",
+      "conducibili"
+    ],
+    "vector_search_queries": [
+      "tricicli a motore conducibili con patente A e età minima",
+      "requisiti patente A per tricicli a motore"
+    ],
+    "rule_explanation": "La patente di categoria A abilita alla conduzione di tutti i tricicli a motore, a condizione che il titolare abbia compiuto almeno 21 anni."
+  }
+}

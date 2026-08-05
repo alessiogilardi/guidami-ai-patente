@@ -1,0 +1,27 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18716",
+  "text": "Il conducente di veicolo a due ruote può circolare portando con sé un animale domestico, se custodito in apposita gabbia, purché non sia sporgente di oltre 50 centimetri.",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto animali domestici su veicoli a due ruote",
+      "Regole di circolazione per motocicli e ciclomotori"
+    ],
+    "exact_keywords": [
+      "animale domestico",
+      "gabbia",
+      "veicolo a due ruote",
+      "sporgente"
+    ],
+    "vector_search_queries": [
+      "trasporto animali domestici su motocicli e ciclomotori",
+      "condizioni per il trasporto di animali su veicoli a due ruote"
+    ],
+    "rule_explanation": "È consentito trasportare animali domestici su veicoli a due ruote se custoditi in gabbia, a condizione che questa non sporga oltre i 50 cm dal veicolo."
+  }
+}

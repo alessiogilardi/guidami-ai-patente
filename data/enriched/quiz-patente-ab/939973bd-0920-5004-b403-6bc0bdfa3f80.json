@@ -1,0 +1,28 @@
+{
+  "question_id": 4679,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25124",
+  "text": "L'inquinamento dell'aria prodotto dai veicoli a motore può diminuire se si spegne il motore, in caso di arresto prolungato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Riduzione delle emissioni inquinanti",
+      "Spegnimento del motore in caso di sosta prolungata",
+      "Tutela dell'ambiente e della qualità dell'aria"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "veicoli a motore",
+      "spegnimento del motore",
+      "arresto prolungato"
+    ],
+    "vector_search_queries": [
+      "riduzione inquinamento aria veicoli a motore spegnimento motore soste prolungate",
+      "impatto ambientale spegnimento motore arresto prolungato inquinamento atmosferico"
+    ],
+    "rule_explanation": "Lo spegnimento del motore durante le soste prolungate riduce le emissioni inquinanti dei veicoli a motore, contribuendo a migliorare la qualità dell'aria."
+  }
+}

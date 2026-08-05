@@ -1,0 +1,29 @@
+{
+  "question_id": 4009,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18410",
+  "text": "Una zona a traffico limitato è un'area nella quale è consentito solo il transito di ciclomotori e biciclette",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Zone a traffico limitato (ZTL)",
+      "Regolamentazione della circolazione veicolare",
+      "Utenti vulnerabili della strada"
+    ],
+    "exact_keywords": [
+      "zona a traffico limitato",
+      "transito veicolare",
+      "limitazioni di accesso",
+      "disposizioni specifiche"
+    ],
+    "vector_search_queries": [
+      "definizione e scopo delle zone a traffico limitato (ZTL)",
+      "regolamentazione accesso e transito nelle ZTL",
+      "tipologie di veicoli ammessi nelle aree a traffico limitato"
+    ],
+    "rule_explanation": "Le ZTL sono aree con restrizioni di accesso e transito veicolare, non necessariamente limitate a ciclomotori e biciclette, ma definite da specifiche disposizioni."
+  }
+}

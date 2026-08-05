@@ -1,0 +1,30 @@
+{
+  "question_id": 4680,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25132",
+  "text": "Per diminuire l'inquinamento dell'aria provocato dai veicoli con motore diesel, bisogna far controllare periodicamente il sistema di alimentazione (pompa di iniezione ed iniettori)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo delle emissioni inquinanti",
+      "Manutenzione del motore diesel",
+      "Prevenzione dell'inquinamento atmosferico"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "motore diesel",
+      "sistema di alimentazione",
+      "pompa di iniezione",
+      "iniettori"
+    ],
+    "vector_search_queries": [
+      "manutenzione sistema alimentazione motore diesel per ridurre inquinamento aria",
+      "controllo periodico pompa iniezione e iniettori per emissioni diesel",
+      "normativa antinquinamento veicoli diesel e manutenzione motore"
+    ],
+    "rule_explanation": "Il controllo periodico del sistema di alimentazione dei motori diesel (pompa e iniettori) è essenziale per ridurre le emissioni inquinanti e l'inquinamento atmosferico."
+  }
+}

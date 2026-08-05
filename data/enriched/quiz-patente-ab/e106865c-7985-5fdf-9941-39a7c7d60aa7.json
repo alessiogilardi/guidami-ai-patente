@@ -1,0 +1,28 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24631",
+  "text": "La sospensione della patente è disposta contestualmente alla comunicazione di azzeramento dei punti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente a punti",
+      "Sospensione della patente",
+      "Procedimento sanzionatorio"
+    ],
+    "exact_keywords": [
+      "sospensione della patente",
+      "azzeramento dei punti",
+      "comunicazione di decurtazione",
+      "procedimento di revisione della patente"
+    ],
+    "vector_search_queries": [
+      "sospensione patente per azzeramento punti",
+      "procedura di revisione patente dopo decurtazione punti"
+    ],
+    "rule_explanation": "La sospensione della patente non è disposta contestualmente all'azzeramento dei punti, ma a seguito di un procedimento di revisione della patente che può includere anche la revisione medica, psicofisica o il recupero dei punti."
+  }
+}

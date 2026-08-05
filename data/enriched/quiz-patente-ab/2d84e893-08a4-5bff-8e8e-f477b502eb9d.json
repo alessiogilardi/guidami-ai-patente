@@ -1,0 +1,31 @@
+{
+  "question_id": 4493,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23430",
+  "text": "Giungendo all'incrocio rappresentato in figura i veicoli devono passare nel seguente ordine: P, D, B, L",
+  "correct_answer": true,
+  "image": "7c6f6d3b3ddc0fa7fae92f2ec4023639.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. I veicoli si trovano nelle seguenti posizioni e con le seguenti intenzioni di manovra: il veicolo P (rosso) si trova in basso e intende svoltare a sinistra; il veicolo D (giallo) si trova a sinistra e intende proseguire dritto; il veicolo B (verde) si trova in alto e intende svoltare a sinistra; il veicolo L (blu) si trova a destra e intende svoltare a sinistra. Non sono presenti segnali stradali verticali o orizzontali che regolino la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo P deve dare la precedenza a D. Il veicolo D deve dare la precedenza a B. Il veicolo B deve dare la precedenza a L. Il veicolo L deve dare la precedenza a P. L'ordine di passaggio corretto è: L, P, D, B.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una scena di guida raffigurante un incrocio a raso senza segnaletica specifica che ne regoli la precedenza. Sono presenti quattro veicoli: P (rosso), D (giallo), B (verde) e L (blu). Il veicolo P è posizionato in basso e si appresta a svoltare a sinistra. Il veicolo D è posizionato a sinistra e intende proseguire dritto. Il veicolo B è posizionato in alto e intende svoltare a sinistra. Il veicolo L è posizionato a destra e intende svoltare a sinistra. Poiché non ci sono segnali di precedenza, si applica la regola generale della precedenza a destra. Analizzando le precedenze: P deve dare la precedenza a D (alla sua destra). D deve dare la precedenza a B (alla sua destra). B deve dare la precedenza a L (alla sua destra). L deve dare la precedenza a P (alla sua destra). Di conseguenza, l'ordine di transito corretto è L, P, D, B.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. I veicoli si trovano nelle seguenti posizioni e con le seguenti intenzioni di manovra: il veicolo P (rosso) si trova in basso e intende svoltare a sinistra; il veicolo D (giallo) si trova a sinistra e intende proseguire dritto; il veicolo B (verde) si trova in alto e intende svoltare a sinistra; il veicolo L (blu) si trova a destra e intende svoltare a sinistra. Non sono presenti segnali stradali verticali o orizzontali che regolino la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo P deve dare la precedenza a D. Il veicolo D deve dare la precedenza a B. Il veicolo B deve dare la precedenza a L. Il veicolo L deve dare la precedenza a P. L'ordine di passaggio corretto è: L, P, D, B."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza agli incroci non segnalati"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "regola generale",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "ordine di precedenza a destra agli incroci non segnalati",
+      "applicazione regola generale precedenza incrocio"
+    ],
+    "rule_explanation": "Agli incroci non segnalati vige la regola generale della precedenza a destra; i veicoli devono transitare rispettando tale ordine per evitare conflitti."
+  }
+}

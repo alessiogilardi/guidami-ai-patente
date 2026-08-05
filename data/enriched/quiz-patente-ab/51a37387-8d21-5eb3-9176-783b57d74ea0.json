@@ -1,0 +1,32 @@
+{
+  "question_id": 4589,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24288",
+  "text": "Una spia di colore rosso contrassegnata dal simbolo di figura, se accesa durante la marcia, indica di sostituire subito la batteria",
+  "correct_answer": false,
+  "image": "7f50dfe61c766b2f46b9bdeb73ea68a1.jpeg",
+  "image_description": "Spia della batteria (sistema di ricarica). La spia indica un problema relativo al sistema di ricarica della batteria, specificamente che l'alternatore non sta ricaricando la batteria come dovrebbe. Non indica un guasto della batteria stessa o la necessità di invertire i cavi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra il simbolo di una batteria stilizzata, con i poli positivo (+) e negativo (-) chiaramente indicati. Questo simbolo è comunemente utilizzato nei veicoli per indicare spie relative al sistema di ricarica della batteria. La domanda del quiz fa riferimento a una spia di colore rosso con questo simbolo, accesa durante la marcia. Questo contesto suggerisce che la spia segnala un malfunzionamento nel sistema di ricarica della batteria, probabilmente legato all'alternatore. Le opzioni di risposta nel quiz suggeriscono diverse interpretazioni del malfunzionamento, ma il simbolo di per sé rappresenta il componente batteria e il suo circuito di ricarica. L'interpretazione più comune e corretta di questa spia accesa è che l'alternatore non sta ricaricando la batteria.",
+    "name": "Spia della batteria (sistema di ricarica)",
+    "description": "La spia indica un problema relativo al sistema di ricarica della batteria, specificamente che l'alternatore non sta ricaricando la batteria come dovrebbe. Non indica un guasto della batteria stessa o la necessità di invertire i cavi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Spie di segnalazione del veicolo",
+      "Sistema di ricarica della batteria"
+    ],
+    "exact_keywords": [
+      "spia rossa",
+      "simbolo batteria",
+      "sistema di ricarica",
+      "alternatore"
+    ],
+    "vector_search_queries": [
+      "funzionamento spie di segnalazione rossa veicolo",
+      "significato spia batteria accesa in marcia",
+      "indicazioni spie di avaria del veicolo"
+    ],
+    "rule_explanation": "La spia rossa con simbolo di batteria indica un malfunzionamento del sistema di ricarica (alternatore), non un guasto della batteria o la necessità di sostituirla immediatamente."
+  }
+}

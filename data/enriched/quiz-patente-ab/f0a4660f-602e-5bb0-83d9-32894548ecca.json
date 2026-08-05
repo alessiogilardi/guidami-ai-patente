@@ -1,0 +1,32 @@
+{
+  "question_id": 4216,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20770",
+  "text": "Il veicolo in figura può effettuare un sorpasso anche superando la striscia continua centrale",
+  "correct_answer": false,
+  "image": "2a8cb20b2ed164c9a0b9677bc5fd1320.jpeg",
+  "image_description": "Segnaletica orizzontale: striscia bianca continua e tratteggiata. La striscia bianca continua al centro della carreggiata, se presente, indica la separazione delle corsie in opposti sensi di marcia e non può essere superata. In questo caso, la striscia è tratteggiata, indicando che la manovra di sorpasso è consentita. Il veicolo si trova nella corsia di destra, con una freccia che indica la direzione di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada con due corsie per senso di marcia, separate da una linea bianca. La linea al centro della carreggiata è tratteggiata, indicando che è consentito il sorpasso. Un veicolo nero si trova nella corsia di destra, con una freccia tratteggiata che indica la sua direzione di marcia. Non sono presenti segnali verticali o altre indicazioni stradali.",
+    "name": "Segnaletica orizzontale: striscia bianca continua e tratteggiata",
+    "description": "La striscia bianca continua al centro della carreggiata, se presente, indica la separazione delle corsie in opposti sensi di marcia e non può essere superata. In questo caso, la striscia è tratteggiata, indicando che la manovra di sorpasso è consentita. Il veicolo si trova nella corsia di destra, con una freccia che indica la direzione di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Sorpasso",
+      "Divieto di superamento"
+    ],
+    "exact_keywords": [
+      "striscia continua",
+      "sorpasso",
+      "separazione delle corsie",
+      "senso di marcia"
+    ],
+    "vector_search_queries": [
+      "superamento striscia continua centrale",
+      "divieto di sorpasso su striscia continua"
+    ],
+    "rule_explanation": "La striscia bianca continua al centro della carreggiata non può essere superata per effettuare il sorpasso, in quanto delimita i sensi di marcia opposti."
+  }
+}

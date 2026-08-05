@@ -1,0 +1,31 @@
+{
+  "question_id": 4350,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22020",
+  "text": "Il segnale raffigurato indica la lunghezza di un tratto stradale con curve pericolose in successione",
+  "correct_answer": true,
+  "image": "2cf2b55d5e7067094399adb2e3e64b0c.jpeg",
+  "image_description": "Doppio salvagente (direzione altalenante) con pannello integrativo di distanza. Il segnale indica una sequenza di due curve pericolose, la prima a sinistra e la seconda a destra, che si estendono per una lunghezza di 380 metri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero raffigurante una doppia curva, la prima verso sinistra e la seconda verso destra. Sotto il segnale principale è presente un pannello integrativo rettangolare bianco con bordo nero. Su questo pannello sono raffigurate due frecce verticali nere, una sopra e una sotto la dicitura \"380m\", anch'esse in nero. Le frecce indicano l'inizio e la fine del tratto stradale interessato dal pericolo segnalato dal segnale principale.",
+    "name": "Doppio salvagente (direzione altalenante) con pannello integrativo di distanza",
+    "description": "Il segnale indica una sequenza di due curve pericolose, la prima a sinistra e la seconda a destra, che si estendono per una lunghezza di 380 metri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "curve pericolose",
+      "lunghezza del tratto",
+      "pannello integrativo"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo che indica la lunghezza di un tratto con curve pericolose",
+      "segnali di pericolo con indicazione della estensione del tratto interessato"
+    ],
+    "rule_explanation": "Il pannello integrativo indica la lunghezza di un tratto stradale interessato dal pericolo segnalato dal segnale principale, in questo caso curve pericolose in successione."
+  }
+}

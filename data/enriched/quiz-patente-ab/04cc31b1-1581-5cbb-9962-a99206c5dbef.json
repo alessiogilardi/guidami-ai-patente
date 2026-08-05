@@ -1,0 +1,32 @@
+{
+  "question_id": 4238,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20959",
+  "text": "Nella segnaletica in figura la striscia bianca continua che delimita la corsia di emergenza, (corsia A), può essere sempre superata in caso di intenso traffico",
+  "correct_answer": false,
+  "image": "6d5ad99cc02b45c5e56cc97fa2cb3bad.jpeg",
+  "image_description": "Segnaletica orizzontale: delimitazione di corsie con strisce continue e discontinue. La corsia A è delimitata da una striscia bianca continua, che indica l'impossibilità di superarla se non per le manovre consentite. Le corsie B e C sono delimitate da strisce bianche discontinue, che indicano la possibilità di superarle.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre sezioni di carreggiata stradale, ciascuna con tre corsie etichettate A, B e C. Tutte le corsie sono delimitate da strisce bianche. La corsia A, in tutte e tre le sezioni, è delimitata da una striscia bianca continua. Le corsie B e C, in tutte e tre le sezioni, sono delimitate da strisce bianche discontinue. Le corsie B e C sono separate da una striscia bianca discontinua. La corsia A è separata dalla corsia B da una striscia bianca continua.",
+    "name": "Segnaletica orizzontale: delimitazione di corsie con strisce continue e discontinue",
+    "description": "La corsia A è delimitata da una striscia bianca continua, che indica l'impossibilità di superarla se non per le manovre consentite. Le corsie B e C sono delimitate da strisce bianche discontinue, che indicano la possibilità di superarle."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Delimitazione delle corsie di marcia",
+      "Corsia di emergenza"
+    ],
+    "exact_keywords": [
+      "striscia bianca continua",
+      "corsia di emergenza",
+      "superamento vietato",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "divieto di superamento striscia bianca continua delimitante corsia di emergenza",
+      "segnaletica orizzontale divieto di occupazione corsia di emergenza"
+    ],
+    "rule_explanation": "La striscia bianca continua che delimita la corsia di emergenza vieta la sua temporanea occupazione e il suo superamento, salvo eccezioni specifiche non legate all'intenso traffico."
+  }
+}

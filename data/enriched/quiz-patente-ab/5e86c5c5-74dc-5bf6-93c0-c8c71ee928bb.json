@@ -1,0 +1,27 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22311",
+  "text": "E' obbligatorio ridurre la velocità solo in presenza degli agenti del traffico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Obbligo di moderazione della velocità"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "agenti del traffico",
+      "condizioni di traffico",
+      "condizioni atmosferiche"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità in base alle condizioni di traffico e atmosferiche",
+      "moderazione della velocità oltre alla presenza di agenti del traffico"
+    ],
+    "rule_explanation": "Il conducente deve ridurre la velocità non solo in presenza di agenti del traffico, ma anche in base alle condizioni di traffico, atmosferiche, della strada e del veicolo."
+  }
+}

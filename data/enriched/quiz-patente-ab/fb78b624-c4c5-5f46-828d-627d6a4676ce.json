@@ -1,0 +1,27 @@
+{
+  "question_id": 4574,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24164",
+  "text": "Durante la marcia nelle ore notturne, l'uso delle luci anabbaglianti è obbligatorio anche se l'illuminazione pubblica è sufficiente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di illuminazione dei veicoli",
+      "Uso delle luci in marcia"
+    ],
+    "exact_keywords": [
+      "luci anabbaglianti",
+      "marcia in ore notturne",
+      "illuminazione pubblica",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "obbligo luci anabbaglianti marcia notturna",
+      "uso luci veicolo in presenza di illuminazione pubblica"
+    ],
+    "rule_explanation": "Nelle ore notturne, le luci anabbaglianti devono essere sempre accese, indipendentemente dalla presenza e dall'efficacia dell'illuminazione pubblica, per garantire la visibilità del veicolo."
+  }
+}

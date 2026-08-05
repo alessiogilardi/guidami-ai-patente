@@ -1,0 +1,27 @@
+{
+  "question_id": 4699,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25259",
+  "text": "Durante le operazioni di sostituzione di una ruota tramite il martinetto (cric), bisogna evitare di mettersi sotto il veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza durante la manutenzione del veicolo",
+      "Uso corretto degli attrezzi per la sostituzione ruota"
+    ],
+    "exact_keywords": [
+      "sostituzione ruota",
+      "martinetto",
+      "veicolo",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "rischio di schiacciamento durante sostituzione ruota con martinetto",
+      "precauzioni di sicurezza per sollevamento veicolo con cric"
+    ],
+    "rule_explanation": "Durante la sostituzione di una ruota con il martinetto, è fondamentale non posizionarsi sotto il veicolo per prevenire incidenti dovuti a cedimenti strutturali o errato posizionamento del cric."
+  }
+}

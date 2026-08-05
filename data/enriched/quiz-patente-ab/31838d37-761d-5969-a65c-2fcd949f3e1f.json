@@ -1,0 +1,28 @@
+{
+  "question_id": 4006,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18372",
+  "text": "L'isola di traffico a raso è costituita da zebrature di colore bianco",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Isole di traffico",
+      "Dispositivi di presegnalazione e segnalazione stradale"
+    ],
+    "exact_keywords": [
+      "isola di traffico a raso",
+      "zebrature bianche",
+      "segnaletica orizzontale",
+      "delimitare zone di traffico"
+    ],
+    "vector_search_queries": [
+      "definizione isola di traffico a raso segnaletica orizzontale",
+      "caratteristiche zebrature bianche delimitazione traffico"
+    ],
+    "rule_explanation": "Le isole di traffico a raso sono delimitate da zebrature bianche, che ne indicano la presenza e la funzione di separazione dei flussi veicolari."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4190,
+  "topic": "Segnali di precedenza",
+  "number": "20477",
+  "text": "Il segnale raffigurato, lungo le autostrade, viene posto a distanza maggiore di 150 m",
+  "correct_answer": false,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Distanza dei segnali autostradali"
+    ],
+    "exact_keywords": [
+      "segnale di dare precedenza",
+      "autostrade",
+      "distanza",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "distanza preavviso segnale dare precedenza autostrada",
+      "segnali di prescrizione autostradali e loro posizionamento"
+    ],
+    "rule_explanation": "Il segnale di 'dare precedenza' è preavvisato nelle autostrade da segnali specifici posti a 150m e 250m, non a distanza maggiore."
+  }
+}

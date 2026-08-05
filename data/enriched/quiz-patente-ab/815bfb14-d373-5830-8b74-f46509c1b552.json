@@ -1,0 +1,30 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24420",
+  "text": "La visiera del casco peggiora notevolmente la visibilità e quindi va usata il meno possibile",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso del casco protettivo",
+      "Dispositivi di protezione individuale",
+      "Visibilità del conducente"
+    ],
+    "exact_keywords": [
+      "visiera",
+      "casco protettivo",
+      "visibilità",
+      "condizioni di luce",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "uso corretto della visiera del casco protettivo",
+      "funzione della visiera del casco per la sicurezza del motociclista",
+      "visibilità con visiera del casco in diverse condizioni"
+    ],
+    "rule_explanation": "La visiera del casco, se conforme alle norme, non peggiora la visibilità ma la migliora proteggendo da agenti esterni. Va usata quando necessario per la sicurezza."
+  }
+}

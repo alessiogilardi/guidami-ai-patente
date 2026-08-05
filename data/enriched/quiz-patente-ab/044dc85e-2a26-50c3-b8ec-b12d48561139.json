@@ -1,0 +1,28 @@
+{
+  "question_id": 4567,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24093",
+  "text": "Il massimo rapporto di traino per un rimorchio sprovvisto di qualsiasi dispositivo di frenatura è di 0,5",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rapporto di traino",
+      "Rimorchio sprovvisto di freni",
+      "Massa massima a rimorchio"
+    ],
+    "exact_keywords": [
+      "rapporto di traino",
+      "rimorchio sprovvisto di dispositivo di frenatura",
+      "massa massima a rimorchio",
+      "massa a vuoto del veicolo trainante"
+    ],
+    "vector_search_queries": [
+      "limite rapporto di traino rimorchio senza freni",
+      "calcolo massa massima rimorchiabile per veicoli senza sistema frenante"
+    ],
+    "rule_explanation": "Il rapporto di traino, per un rimorchio che non ha freni, non può superare 0,5. Questo rapporto è dato dalla massa massima a rimorchio divisa per la massa a vuoto del veicolo trainante."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4135,
+  "topic": "Segnali di divieto",
+  "number": "19861",
+  "text": "Il segnale raffigurato indica la fine del limite massimo di velocità",
+  "correct_answer": true,
+  "image": "b0f757139def7519417e65cf9072bf86.jpeg",
+  "image_description": "Fine del divieto di superare i 50 km/h. Indica la fine del divieto di superare i 50 km/h.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una banda diagonale nera che divide il numero \"5\" a sinistra dal numero \"0\" a destra. Questo segnale indica la fine di un divieto. In questo caso specifico, indica la fine del divieto di superare i 50 km/h.",
+    "name": "Fine del divieto di superare i 50 km/h",
+    "description": "Indica la fine del divieto di superare i 50 km/h."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fine dei divieti",
+      "Segnali di indicazione"
+    ],
+    "exact_keywords": [
+      "fine del divieto",
+      "limite massimo di velocità",
+      "segnali di indicazione",
+      "pannello integrativo"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un divieto specifico",
+      "segnali di fine limite di velocità"
+    ],
+    "rule_explanation": "Il segnale di fine divieto, spesso integrato con l'indicazione del limite precedente, segnala la cessazione di un obbligo o di un divieto imposto precedentemente."
+  }
+}

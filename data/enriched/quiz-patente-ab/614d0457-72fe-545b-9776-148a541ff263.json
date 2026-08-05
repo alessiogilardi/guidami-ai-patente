@@ -1,0 +1,26 @@
+{
+  "question_id": 4015,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18472",
+  "text": "Fanno parte della carreggiata gli attraversamenti ciclabili",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Carreggiata",
+      "Attraversamenti ciclabili"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "attraversamenti ciclabili",
+      "parte della carreggiata"
+    ],
+    "vector_search_queries": [
+      "definizione di carreggiata nel CdS",
+      "inclusione degli attraversamenti ciclabili nella carreggiata"
+    ],
+    "rule_explanation": "La carreggiata è la parte della strada destinata ai veicoli; gli attraversamenti ciclabili, pur essendo aree dedicate ai ciclisti, sono considerati parte integrante della carreggiata in termini di infrastruttura stradale."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4207,
+  "topic": "Segnali di precedenza",
+  "number": "20680",
+  "text": "Il segnale raffigurato comporta la presenza sulle strade che si incrociano del segnale DARE PRECEDENZA o STOP",
+  "correct_answer": true,
+  "image": "ae0a5db589f248f6cde41a1db1f0fe3f.jpeg",
+  "image_description": "Segnale di Diritto di Precedenza. Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con i vertici disposti in modo da formare un rombo. Il bordo esterno del segnale è bianco, seguito da un bordo nero più sottile. All'interno, su sfondo bianco, vi è un rombo più piccolo di colore arancione. Questo è il segnale di Diritto di Precedenza.",
+    "name": "Segnale di Diritto di Precedenza",
+    "description": "Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Obbligo di dare precedenza"
+    ],
+    "exact_keywords": [
+      "segnale DARE PRECEDENZA",
+      "segnale STOP",
+      "strade che si incrociano",
+      "diritto di precedenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di dare precedenza ai segnali DARE PRECEDENZA o STOP sulle strade che si incrociano",
+      "interpretazione segnale Diritto di Precedenza e incrocio con altre strade"
+    ],
+    "rule_explanation": "Il segnale di Diritto di Precedenza impone ai conducenti di dare la precedenza ai veicoli provenienti dalle strade laterali che si incrociano."
+  }
+}

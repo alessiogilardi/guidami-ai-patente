@@ -1,0 +1,28 @@
+{
+  "question_id": 4624,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24712",
+  "text": "In caso di pioggia occorre aumentare la distanza di sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condizioni atmosferiche avverse",
+      "Prevenzione degli incidenti"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "pioggia",
+      "condizioni della strada",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "aumento distanza di sicurezza con pioggia",
+      "adeguamento distanza di sicurezza a condizioni meteo avverse"
+    ],
+    "rule_explanation": "In caso di pioggia, la distanza di sicurezza deve essere aumentata per compensare lo spazio di frenata maggiore dovuto alla ridotta aderenza del manto stradale."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22336",
+  "text": "Il limite massimo di velocità per un'autovettura, in presenza di apposito segnale in tratti di autostrade con particolari caratteristiche, è di 150 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità in autostrada",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "autovettura",
+      "autostrada",
+      "segnale di prescrizione",
+      "150 km/h"
+    ],
+    "vector_search_queries": [
+      "limite di velocità autostrada 150 km/h autovettura segnale",
+      "elevazione limite velocità autostrada per autovetture con segnaletica specifica"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per le autovetture in autostrada è di 130 km/h, ma può essere elevato a 150 km/h in presenza di appositi segnali in tratti specifici."
+  }
+}

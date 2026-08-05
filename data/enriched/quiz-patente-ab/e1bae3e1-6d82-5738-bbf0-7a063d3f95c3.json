@@ -1,0 +1,29 @@
+{
+  "question_id": 4666,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25034",
+  "text": "Nella polizza assicurativa contro il rischio di furto o incendio, il risarcimento dovuto non può essere superiore al valore che il veicolo aveva al momento in cui è stato rubato o ha preso fuoco",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indennizzo assicurativo",
+      "Assicurazione contro i danni",
+      "Valore del bene assicurato"
+    ],
+    "exact_keywords": [
+      "polizza assicurativa",
+      "rischio di furto o incendio",
+      "risarcimento dovuto",
+      "valore del veicolo"
+    ],
+    "vector_search_queries": [
+      "limite risarcimento polizza furto incendio",
+      "valore veicolo al momento del sinistro per furto o incendio",
+      "principio indennitario assicurazione danni"
+    ],
+    "rule_explanation": "L'indennizzo per furto o incendio non può superare il valore del veicolo al momento del sinistro, secondo il principio indennitario."
+  }
+}

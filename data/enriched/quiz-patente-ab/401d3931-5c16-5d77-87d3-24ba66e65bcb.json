@@ -1,0 +1,27 @@
+{
+  "question_id": 4604,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24454",
+  "text": "Le giacche ad uso motociclistico non sono previste per utilizzo estivo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Abbigliamento tecnico per motociclisti",
+      "Dispositivi di protezione individuale (DPI) per la guida di motoveicoli"
+    ],
+    "exact_keywords": [
+      "giacche motociclistiche",
+      "abbigliamento tecnico",
+      "uso estivo",
+      "protezione"
+    ],
+    "vector_search_queries": [
+      "giacche per motociclisti adatte all'uso estivo",
+      "abbigliamento tecnico motociclistico per stagioni calde"
+    ],
+    "rule_explanation": "Non esiste una previsione normativa che vieti l'uso di giacche motociclistiche in versione estiva, purché garantiscano adeguata protezione."
+  }
+}

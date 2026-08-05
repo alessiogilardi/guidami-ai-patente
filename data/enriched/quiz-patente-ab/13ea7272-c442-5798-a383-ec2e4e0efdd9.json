@@ -1,0 +1,29 @@
+{
+  "question_id": 4634,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24811",
+  "text": "I conducenti di veicoli a due ruote, essendo meno facilmente visibili in distanza, durante le ore notturne devono in ogni caso circolare coi proiettori abbaglianti accesi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità dei veicoli a due ruote",
+      "Uso dei proiettori in orario notturno",
+      "Prevenzione degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "veicoli a due ruote",
+      "visibilità",
+      "proiettori abbaglianti",
+      "circolazione notturna"
+    ],
+    "vector_search_queries": [
+      "obbligo uso proiettori abbaglianti veicoli a due ruote notte",
+      "visibilità conducenti motocicli e uso luci abbaglianti",
+      "regolamentazione uso proiettori in circolazione notturna"
+    ],
+    "rule_explanation": "I conducenti di veicoli a due ruote, pur dovendo curare la propria visibilità, non devono circolare con i proiettori abbaglianti accesi in ogni caso durante le ore notturne, ma solo quando non recano disturbo agli altri utenti della strada."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18790",
+  "text": "In vicinanza di un attraversamento pedonale, il conducente deve considerare che i bambini potrebbero avanzare sulle strisce, per poi tornare indietro improvvisamente, senza motivo apparente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attraversamento pedonale",
+      "Comportamento dei pedoni minorenni",
+      "Dovere di prudenza del conducente"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "conducente",
+      "bambini",
+      "prudenza",
+      "avanzare"
+    ],
+    "vector_search_queries": [
+      "comportamento dei bambini agli attraversamenti pedonali",
+      "dovere di prudenza del conducente in presenza di attraversamenti pedonali e bambini",
+      "prevedibilità dei pedoni minorenni in prossimità delle strisce"
+    ],
+    "rule_explanation": "In prossimità delle strisce pedonali, il conducente deve prevedere comportamenti imprevedibili dei bambini, moderando la velocità e prestando la massima attenzione."
+  }
+}

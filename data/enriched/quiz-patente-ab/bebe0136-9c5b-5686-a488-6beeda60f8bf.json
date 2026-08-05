@@ -1,0 +1,27 @@
+{
+  "question_id": 4038,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18706",
+  "text": "Le competizioni sportive con veicoli su aree pubbliche sono consentite senza autorizzazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Competizioni sportive su aree pubbliche",
+      "Autorizzazione per eventi stradali"
+    ],
+    "exact_keywords": [
+      "competizioni sportive",
+      "veicoli",
+      "aree pubbliche",
+      "autorizzazione"
+    ],
+    "vector_search_queries": [
+      "autorizzazione per competizioni sportive su strade pubbliche",
+      "divieto di competizioni non autorizzate su aree pubbliche"
+    ],
+    "rule_explanation": "Le competizioni sportive con veicoli su aree pubbliche sono vietate se non preventivamente autorizzate dall'ente proprietario della strada."
+  }
+}

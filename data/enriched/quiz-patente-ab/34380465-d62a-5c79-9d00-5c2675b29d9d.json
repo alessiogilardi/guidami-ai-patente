@@ -1,0 +1,33 @@
+{
+  "question_id": 4072,
+  "topic": "Segnali di pericolo",
+  "number": "19126",
+  "text": "Il segnale raffigurato può essere integrato con un dispositivo a due luci rosse che si accendono alternativamente",
+  "correct_answer": false,
+  "image": "bb981f286218063a29cc9f7bf6f71389.jpeg",
+  "image_description": "Segnale di pericolo - Passaggio di tram. Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato il pittogramma di un tram. Questo segnale indica la presenza di una linea tranviaria che interseca la carreggiata.",
+    "name": "Segnale di pericolo - Passaggio di tram",
+    "description": "Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali complementari",
+      "Dispositivi luminosi di segnalazione"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio di tram",
+      "luci rosse alternativamente",
+      "dispositivo supplementare"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo integrati con luci rosse alternativamente",
+      "segnalazione luminosa per passaggio tram",
+      "differenza tra segnaletica pericolo tram e passaggio a livello"
+    ],
+    "rule_explanation": "Il segnale di pericolo di passaggio di tram non può essere integrato con luci rosse lampeggianti alternativamente, che sono tipiche dei passaggi a livello ferroviari o tranviari con barriere."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4651,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24921",
+  "text": "Se un infortunato della strada ha riportato fratture agli arti, bisogna bloccarglieli, senza procedere ad altre manovre",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Gestione delle fratture",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "infortunato",
+      "fratture agli arti",
+      "immobilizzazione",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "immobilizzazione arti fratturati primo soccorso",
+      "gestione fratture infortunati stradali"
+    ],
+    "rule_explanation": "In caso di fratture agli arti di un infortunato, è fondamentale immobilizzare l'arto colpito per prevenire ulteriori danni, ma non si devono trascurare altre manovre di primo soccorso vitali."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4352,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22039",
+  "text": "Il segnale raffigurato consente il transito dalle ore 8.00 alle ore 20.00 dei giorni festivi ai soli ciclisti",
+  "correct_answer": true,
+  "image": "1db0bf882ccbcc2f233d3146a5f5d003.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. Il segnale indica una corsia o percorso riservato ai ciclisti, con limitazioni orarie nei giorni festivi. L'orario indicato (8:00-20:00) si riferisce ai giorni festivi, durante i quali la corsia è riservata ai ciclisti. Negli altri orari e nei giorni feriali, la corsia potrebbe essere aperta ad altri veicoli o avere una diversa regolamentazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di prescrizione, rappresentato da un disco blu con bordo bianco, al cui interno è raffigurata una bicicletta bianca. Sotto questo segnale, vi è un pannello integrativo rettangolare bianco con bordo nero, che riporta il simbolo di un giorno festivo (una croce) seguito dall'orario '8,00 - 20,00'. Il segnale principale indica una via o corsia riservata ai velocipedi. Il pannello integrativo specifica che tale riservatezza è valida solo nei giorni festivi, nell'intervallo orario dalle 8:00 alle 20:00.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "Il segnale indica una corsia o percorso riservato ai ciclisti, con limitazioni orarie nei giorni festivi. L'orario indicato (8:00-20:00) si riferisce ai giorni festivi, durante i quali la corsia è riservata ai ciclisti. Negli altri orari e nei giorni feriali, la corsia potrebbe essere aperta ad altri veicoli o avere una diversa regolamentazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Percorsi ciclabili riservati",
+      "Limitazioni orarie al transito"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "corsia riservata",
+      "ciclisti",
+      "giorni festivi",
+      "ore 8,00 - 20,00"
+    ],
+    "vector_search_queries": [
+      "segnaletica stradale pannello integrativo orario giorni festivi ciclisti",
+      "corsia riservata ai ciclisti con limitazioni orarie e giorni specifici"
+    ],
+    "rule_explanation": "Il segnale raffigurato, con pannello integrativo, indica una corsia riservata ai ciclisti esclusivamente nei giorni festivi, dalle ore 8:00 alle 20:00."
+  }
+}

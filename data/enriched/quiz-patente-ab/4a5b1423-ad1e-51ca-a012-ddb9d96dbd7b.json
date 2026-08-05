@@ -1,0 +1,32 @@
+{
+  "question_id": 4091,
+  "topic": "Segnali di pericolo",
+  "number": "19344",
+  "text": "Il segnale raffigurato, se a fondo giallo, è posto in presenza di lavori in corso",
+  "correct_answer": true,
+  "image": "d74486cedaf64b4708047a7c8d23f672.jpeg",
+  "image_description": "Segnale di pericolo - doppio senso di circolazione. Il segnale preannuncia che la circolazione avviene in doppio senso. Il segnale è di pericolo e impone di usare maggiore prudenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale sono presenti due frecce nere, una rivolta verso l'alto e una verso il basso, che indicano un doppio senso di circolazione.",
+    "name": "Segnale di pericolo - doppio senso di circolazione",
+    "description": "Il segnale preannuncia che la circolazione avviene in doppio senso. Il segnale è di pericolo e impone di usare maggiore prudenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Lavori in corso",
+      "Segnaletica stradale temporanea"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "lavori in corso",
+      "fondo giallo",
+      "presegnalazione"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo con fondo giallo e lavori in corso",
+      "segnaletica temporanea di pericolo per lavori in corso"
+    ],
+    "rule_explanation": "I segnali di pericolo con fondo giallo sono di solito temporanei e preannunciano situazioni particolari come i lavori in corso, imponendo maggiore prudenza."
+  }
+}

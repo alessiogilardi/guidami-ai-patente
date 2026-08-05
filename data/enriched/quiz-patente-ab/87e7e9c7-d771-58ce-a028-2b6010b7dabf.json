@@ -1,0 +1,28 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23463",
+  "text": "Il conducente che intende sorpassare deve tener conto di eventuali veicoli che provengono dalla direzione opposta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza nel sorpasso",
+      "Sorpasso con provenienza opposta"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "veicoli provenienti dalla direzione opposta",
+      "prudenza",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "condizioni di sicurezza per il sorpasso",
+      "obblighi del conducente prima di sorpassare",
+      "sorpasso e traffico in senso opposto"
+    ],
+    "rule_explanation": "Chi effettua un sorpasso deve assicurarsi che non vi siano veicoli provenienti dalla direzione opposta, valutando la manovra per evitare pericoli."
+  }
+}

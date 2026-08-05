@@ -1,0 +1,28 @@
+{
+  "question_id": 4013,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18457",
+  "text": "Nelle autostrade possono circolare i ciclomotori e i motocicli con cilindrata fino a 125 cm3",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autostrada",
+      "Classificazione dei veicoli a motore",
+      "Divieto di circolazione per determinate categorie di veicoli"
+    ],
+    "exact_keywords": [
+      "autostrade",
+      "ciclomotori",
+      "motocicli",
+      "cilindrata"
+    ],
+    "vector_search_queries": [
+      "veicoli ammessi alla circolazione in autostrada",
+      "divieto di circolazione per motocicli di bassa cilindrata su autostrade"
+    ],
+    "rule_explanation": "Sulle autostrade è vietata la circolazione dei ciclomotori e dei motocicli di cilindrata inferiore a 150 cm³ (se a due ruote) o 250 cm³ (se a tre ruote)."
+  }
+}

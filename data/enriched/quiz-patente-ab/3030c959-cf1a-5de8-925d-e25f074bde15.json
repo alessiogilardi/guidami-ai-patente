@@ -1,0 +1,27 @@
+{
+  "question_id": 4615,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24569",
+  "text": "La patente di categoria BE abilita a condurre autotreni composti da un autoveicolo di massa massima autorizzata fino a 3.500 chilogrammi e da un rimorchio di massa fino a 3.500 chilogrammi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida cat. BE",
+      "Massa massima autorizzata del veicolo e del rimorchio"
+    ],
+    "exact_keywords": [
+      "patente BE",
+      "autotreno",
+      "massa massima autorizzata",
+      "rimorchio"
+    ],
+    "vector_search_queries": [
+      "requisiti patente BE per guida autotreni con rimorchio fino a 3.500 kg",
+      "massa massima autorizzata veicolo e rimorchio per patente BE"
+    ],
+    "rule_explanation": "La patente BE abilita alla guida di complessi veicolari composti da motrice fino a 3.500 kg e rimorchio fino a 3.500 kg, non autotreni."
+  }
+}

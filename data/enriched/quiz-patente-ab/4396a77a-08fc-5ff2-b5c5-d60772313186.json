@@ -1,0 +1,32 @@
+{
+  "question_id": 4339,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21918",
+  "text": "Il segnale raffigurato obbliga gli autocarri a circolare per file parallele",
+  "correct_answer": false,
+  "image": "ccb30857f4fbd40dd9ab759d241453b3.jpeg",
+  "image_description": "Segnale di uso delle corsie (indicazione). Il segnale indica che la carreggiata si sta per restringere e che i veicoli, compresi gli autocarri, dovranno circolare su due corsie affiancate. La corsia di destra è riservata agli autocarri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con sfondo giallo e bordo nero. Al suo interno sono presenti tre pittogrammi neri su sfondo giallo: due frecce nere verticali che indicano la direzione di marcia, affiancate da due sagome di autovetture, una sotto ciascuna freccia. Sotto la freccia di destra e la corrispondente autovettura, è presente la sagoma di un autocarro. Le frecce indicano che la carreggiata si sta per restringere e che i veicoli dovranno circolare su due corsie affiancate. La presenza dell'autocarro nella corsia di destra indica che tale corsia è riservata agli autocarri.",
+    "name": "Segnale di uso delle corsie (indicazione)",
+    "description": "Il segnale indica che la carreggiata si sta per restringere e che i veicoli, compresi gli autocarri, dovranno circolare su due corsie affiancate. La corsia di destra è riservata agli autocarri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Utilizzo delle corsie di marcia"
+    ],
+    "exact_keywords": [
+      "segnali complementari",
+      "segnali temporanei",
+      "uso delle corsie",
+      "autocarri",
+      "circolare per file parallele"
+    ],
+    "vector_search_queries": [
+      "obbligo di circolare per file parallele segnale uso corsie",
+      "segnaletica indicazione uso corsie autocarri"
+    ],
+    "rule_explanation": "Il segnale di uso delle corsie indica come devono essere utilizzate le corsie disponibili, ma non impone la circolazione per file parallele se non esplicitamente indicato."
+  }
+}

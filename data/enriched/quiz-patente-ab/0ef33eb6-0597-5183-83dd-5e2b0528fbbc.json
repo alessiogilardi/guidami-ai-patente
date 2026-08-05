@@ -1,0 +1,28 @@
+{
+  "question_id": 4396,
+  "topic": "Distanza di sicurezza",
+  "number": "22571",
+  "text": "La distanza di sicurezza deve essere uguale allo spazio di frenatura aumentato di 20 metri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "spazio di frenatura",
+      "velocità",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "calcolo distanza di sicurezza rispetto allo spazio di frenatura",
+      "requisiti per mantenere la distanza di sicurezza tra veicoli"
+    ],
+    "rule_explanation": "La distanza di sicurezza è la distanza minima dal veicolo che precede, necessaria per evitare collisioni in caso di arresto improvviso, e deve essere adeguata alle condizioni di traffico, della strada e del veicolo."
+  }
+}

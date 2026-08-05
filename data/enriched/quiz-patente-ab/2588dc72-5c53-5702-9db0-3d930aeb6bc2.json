@@ -1,0 +1,30 @@
+{
+  "question_id": 4647,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24898",
+  "text": "Lo stato di shock si manifesta con comparsa di colorito rosso della pelle e forti vampate di calore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di shock",
+      "Pronto soccorso",
+      "Sintomatologia"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "colorito della pelle",
+      "vampate di calore",
+      "ipotensione",
+      "vasodilatazione periferica"
+    ],
+    "vector_search_queries": [
+      "sintomi dello stato di shock in primo soccorso",
+      "differenza tra shock e vampate di calore",
+      "manifestazioni cutanee dello shock"
+    ],
+    "rule_explanation": "Lo stato di shock è caratterizzato da pallore, cute fredda e umida, tachicardia e ipotensione, non da rossore e calore."
+  }
+}

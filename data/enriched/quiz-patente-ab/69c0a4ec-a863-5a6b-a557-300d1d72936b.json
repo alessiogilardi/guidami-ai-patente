@@ -1,0 +1,31 @@
+{
+  "question_id": 4063,
+  "topic": "Segnali di pericolo",
+  "number": "19003",
+  "text": "Il segnale raffigurato preannuncia una doppia curva pericolosa, la prima a sinistra",
+  "correct_answer": true,
+  "image": "f3d65cdd3174f51dcbbc55dcae2aec01.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta una doppia curva, con la prima curva a sinistra e la seconda a destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di curve pericolose"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "doppia curva",
+      "prima a sinistra",
+      "presegnalamento"
+    ],
+    "vector_search_queries": [
+      "preavviso di doppia curva pericolosa, prima a sinistra",
+      "interpretazione segnale di pericolo per curve pericolose consecutive"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante una doppia curva, con la prima a sinistra, preannuncia tale sequenza di curve pericolose e impone di moderare la velocità."
+  }
+}

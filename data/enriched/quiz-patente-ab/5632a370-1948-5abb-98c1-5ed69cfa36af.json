@@ -1,0 +1,27 @@
+{
+  "question_id": 4021,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18531",
+  "text": "Il salvagente è una persona preposta al primo soccorso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di \"salvagente\" nel contesto stradale",
+      "Uso responsabile della strada e convivenza civile"
+    ],
+    "exact_keywords": [
+      "salvagente",
+      "dispositivo di protezione",
+      "area pedonale",
+      "isola di traffico"
+    ],
+    "vector_search_queries": [
+      "definizione di salvagente stradale",
+      "funzione del salvagente come isola di traffico o protezione pedonale"
+    ],
+    "rule_explanation": "Il salvagente è un'isola artificiale o un'area delimitata destinata a proteggere i pedoni o a incanalare il traffico, non una persona addetta al primo soccorso."
+  }
+}

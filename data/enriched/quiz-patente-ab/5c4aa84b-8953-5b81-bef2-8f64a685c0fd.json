@@ -1,0 +1,27 @@
+{
+  "question_id": 4529,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23797",
+  "text": "Prima di aprire lo sportello di un veicolo dal lato rivolto verso il marciapiede bisogna assicurarsi che non sopraggiungano pedoni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di prudenza nella manovra di apertura sportello",
+      "Precedenza dei pedoni e degli altri utenti della strada"
+    ],
+    "exact_keywords": [
+      "aprire lo sportello",
+      "veicolo",
+      "pedoni",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "manovra di apertura sportello veicolo e sicurezza pedoni",
+      "obbligo di accertamento prima di aprire lo sportello lato marciapiede"
+    ],
+    "rule_explanation": "Prima di aprire lo sportello, il conducente deve assicurarsi che ciò non costituisca pericolo o intralcio per gli altri utenti della strada, in particolare i pedoni."
+  }
+}

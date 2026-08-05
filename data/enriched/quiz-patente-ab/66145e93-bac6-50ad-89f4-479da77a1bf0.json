@@ -1,0 +1,27 @@
+{
+  "question_id": 4033,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18664",
+  "text": "L'autosnodato non è classificato rimorchio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli",
+      "Definizioni di veicoli e rimorchi"
+    ],
+    "exact_keywords": [
+      "autosnodato",
+      "autoveicolo",
+      "rimorchio",
+      "semirimorchio"
+    ],
+    "vector_search_queries": [
+      "definizione di autosnodato nel codice della strada",
+      "distinzione tra autoveicolo e rimorchio"
+    ],
+    "rule_explanation": "L'autosnodato è un autoveicolo, non un rimorchio o semirimorchio, composto da due tronconi rigidi collegati da un perno."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4602,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24433",
+  "text": "Gli stivali ad uso motociclistico coprono la gamba fin sopra il ginocchio per proteggere meglio il conducente in caso di caduta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di protezione individuale per motociclisti",
+      "Abbigliamento tecnico per la guida di motoveicoli"
+    ],
+    "exact_keywords": [
+      "stivali motociclistici",
+      "protezione gamba",
+      "sistemi di ritenuta",
+      "abbigliamento di sicurezza"
+    ],
+    "vector_search_queries": [
+      "requisiti di protezione calzature motociclistiche",
+      "normativa abbigliamento tecnico motociclista",
+      "funzione protettiva stivali da moto"
+    ],
+    "rule_explanation": "Gli stivali da motociclista devono proteggere la caviglia e il piede, ma non necessariamente coprire la gamba fin sopra il ginocchio. La protezione estesa è demandata ad altri indumenti specifici."
+  }
+}

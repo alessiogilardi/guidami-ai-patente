@@ -1,0 +1,32 @@
+{
+  "question_id": 4130,
+  "topic": "Segnali di divieto",
+  "number": "19813",
+  "text": "Il segnale raffigurato indica un passaggio alto 3,50 metri",
+  "correct_answer": false,
+  "image": "016a0bbce288af6879bd8c8e41bea0bf.jpeg",
+  "image_description": "Segnale di altezza massima. Il segnale indica l'altezza massima dei veicoli ammessi al transito, misurata dal piano stradale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente un numero \"3\" grande, seguito da \",50\" in apice, e due frecce nere verticali, una rivolta verso l'alto e una verso il basso, che delimitano il numero. Questo è il segnale di \"altezza massima\".",
+    "name": "Segnale di altezza massima",
+    "description": "Il segnale indica l'altezza massima dei veicoli ammessi al transito, misurata dal piano stradale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Segnali di pericolo",
+      "Limitazioni dimensionali dei veicoli"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "altezza massima",
+      "passaggio",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano limitazioni di altezza per i veicoli",
+      "interpretazione segnale di pericolo altezza massima consentita"
+    ],
+    "rule_explanation": "Il segnale di pericolo indica un ostacolo o una situazione che limita l'altezza dei veicoli in transito, specificando la misura massima consentita."
+  }
+}

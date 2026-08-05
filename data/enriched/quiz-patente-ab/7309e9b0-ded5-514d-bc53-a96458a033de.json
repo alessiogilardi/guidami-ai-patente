@@ -1,0 +1,32 @@
+{
+  "question_id": 4236,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20940",
+  "text": "La striscia bianca laterale discontinua separa la carreggiata dalla corsia di emergenza",
+  "correct_answer": false,
+  "image": "519a36d3976654cc912dc34eb00da219.jpeg",
+  "image_description": "Segnaletica orizzontale di corsia di accelerazione/decelerazione e corsie di svolta in incrocio. La segnaletica orizzontale raffigura una corsia di accelerazione o di decelerazione, evidenziata da una striscia bianca laterale discontinua che delimita la corsia di emergenza o la banchina. La parte superiore dell'immagine mostra una corsia che si allarga gradualmente, mentre la parte inferiore illustra un incrocio con corsie che si dividono e si ricongiungono, con segnaletica orizzontale che indica le traiettorie consentite.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine presenta due distinti scenari di segnaletica orizzontale. Nella parte superiore, si osserva una carreggiata con una corsia che si allarga gradualmente verso destra, delimitata da una striscia bianca laterale discontinua. Questa configurazione suggerisce una corsia di accelerazione o decelerazione. La carreggiata è divisa in due corsie da una linea bianca continua al centro, con una striscia bianca discontinua che separa ulteriormente le corsie. Nella parte inferiore, è rappresentato un incrocio a raso con quattro bracci. La carreggiata principale è a doppio senso di marcia, con due corsie per senso di marcia. Le corsie si dividono e si ricongiungono per consentire le svolte. La segnaletica orizzontale include linee bianche continue e discontinue che delimitano le corsie e indicano le traiettorie consentite per le svolte a sinistra e a destra. Non sono presenti segnali verticali o veicoli.",
+    "name": "Segnaletica orizzontale di corsia di accelerazione/decelerazione e corsie di svolta in incrocio",
+    "description": "La segnaletica orizzontale raffigura una corsia di accelerazione o di decelerazione, evidenziata da una striscia bianca laterale discontinua che delimita la corsia di emergenza o la banchina. La parte superiore dell'immagine mostra una corsia che si allarga gradualmente, mentre la parte inferiore illustra un incrocio con corsie che si dividono e si ricongiungono, con segnaletica orizzontale che indica le traiettorie consentite."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Delimitazione delle corsie",
+      "Corsia di emergenza"
+    ],
+    "exact_keywords": [
+      "striscia bianca laterale discontinua",
+      "carreggiata",
+      "corsia di emergenza",
+      "banchina"
+    ],
+    "vector_search_queries": [
+      "funzione striscia bianca laterale discontinua segnaletica orizzontale",
+      "delimitazione carreggiata banchina o corsia emergenza"
+    ],
+    "rule_explanation": "La striscia bianca laterale discontinua delimita la carreggiata dalla banchina o dalla corsia di emergenza, non la separa dalla corsia di emergenza in senso stretto."
+  }
+}

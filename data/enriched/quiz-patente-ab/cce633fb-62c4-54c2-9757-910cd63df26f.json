@@ -1,0 +1,30 @@
+{
+  "question_id": 4708,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25350",
+  "text": "Il sovraccarico del veicolo può comportare la rottura delle sospensioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sovraccarico del veicolo",
+      "Manutenzione del veicolo",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "sovraccarico",
+      "veicolo",
+      "sospensioni",
+      "stabilità",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "effetti del sovraccarico sulla meccanica del veicolo",
+      "impatto del sovraccarico su sospensioni e stabilità",
+      "conseguenze del sovraccarico sulla sicurezza stradale"
+    ],
+    "rule_explanation": "Il sovraccarico di un veicolo ne compromette la stabilità e può causare danni a componenti meccaniche essenziali come le sospensioni, influendo negativamente sulla tenuta di strada."
+  }
+}

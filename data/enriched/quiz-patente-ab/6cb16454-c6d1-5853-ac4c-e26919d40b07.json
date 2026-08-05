@@ -1,0 +1,32 @@
+{
+  "question_id": 4236,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20939",
+  "text": "La striscia bianca laterale discontinua in figura significa che la sosta non è possibile",
+  "correct_answer": false,
+  "image": "fd1997a1ea96e882b2e719adfaff646a.jpeg",
+  "image_description": "Dossi artificiali (ripetuti). La segnaletica orizzontale raffigura due dossi artificiali consecutivi, segnalati da strisce bianche discontinue che delimitano la carreggiata e strisce bianche continue che delimitano il dosso stesso. Questi dossi sono progettati per ridurre la velocità dei veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due dossi artificiali consecutivi sulla carreggiata. Ogni dosso è delimitato da strisce bianche continue sui lati e da strisce bianche discontinue che separano le corsie di marcia. La forma dei dossi è trapezoidale, con una pendenza in salita e una in discesa. La segnaletica orizzontale indica la presenza di ostacoli o variazioni del piano stradale che impongono una riduzione della velocità.",
+    "name": "Dossi artificiali (ripetuti)",
+    "description": "La segnaletica orizzontale raffigura due dossi artificiali consecutivi, segnalati da strisce bianche discontinue che delimitano la carreggiata e strisce bianche continue che delimitano il dosso stesso. Questi dossi sono progettati per ridurre la velocità dei veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segnalazione di ostacoli e pericoli"
+    ],
+    "exact_keywords": [
+      "striscia laterale discontinua",
+      "sosta vietata",
+      "segni sugli ostacoli",
+      "dossi artificiali"
+    ],
+    "vector_search_queries": [
+      "significato striscia bianca laterale discontinua",
+      "divieto di sosta segnaletica orizzontale",
+      "segnalazione dossi artificiali carreggiata"
+    ],
+    "rule_explanation": "La striscia bianca laterale discontinua non vieta la sosta; essa delimita la carreggiata e indica che è possibile superarla per fermarsi o sostare se consentito."
+  }
+}

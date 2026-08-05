@@ -1,0 +1,33 @@
+{
+  "question_id": 4073,
+  "topic": "Segnali di pericolo",
+  "number": "19133",
+  "text": "In presenza del segnale raffigurato si può sorpassare a destra il tram fermo al centro della strada per la salita e discesa dei passeggeri, solo se esiste l'apposito salvagente",
+  "correct_answer": true,
+  "image": "bb981f286218063a29cc9f7bf6f71389.jpeg",
+  "image_description": "Segnale di pericolo - Passaggio di tram. Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato il pittogramma di un tram. Questo segnale indica la presenza di una linea tranviaria che interseca la carreggiata.",
+    "name": "Segnale di pericolo - Passaggio di tram",
+    "description": "Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo tram",
+      "Sorpasso a destra di veicoli fermi",
+      "Salvagente come area di sicurezza"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio di tram",
+      "sorpassare a destra",
+      "tram fermo",
+      "salvagente"
+    ],
+    "vector_search_queries": [
+      "regola sorpasso a destra tram fermo con salvagente",
+      "condizioni per sorpassare a destra tram fermo in presenza di segnale di pericolo"
+    ],
+    "rule_explanation": "In presenza del segnale di pericolo 'Passaggio di tram', è consentito sorpassare a destra un tram fermo solo se è presente un salvagente e se ciò non crea pericolo o intralcio alla discesa/salita dei passeggeri."
+  }
+}

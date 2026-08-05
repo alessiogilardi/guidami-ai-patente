@@ -1,0 +1,31 @@
+{
+  "question_id": 4063,
+  "topic": "Segnali di pericolo",
+  "number": "19006",
+  "text": "La figura rappresenta un segnale di pericolo",
+  "correct_answer": true,
+  "image": "f3d65cdd3174f51dcbbc55dcae2aec01.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta una doppia curva, con la prima curva a sinistra e la seconda a destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Presegnalazione di curve"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "doppia curva",
+      "visibilità",
+      "raggio di curvatura"
+    ],
+    "vector_search_queries": [
+      "funzione dei segnali di pericolo stradale",
+      "presegnalazione di curve pericolose e obblighi del conducente"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano una situazione di potenziale pericolo per la circolazione stradale, richiedendo al conducente di moderare la velocità e prestare attenzione."
+  }
+}

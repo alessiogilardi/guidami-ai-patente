@@ -1,0 +1,32 @@
+{
+  "question_id": 4076,
+  "topic": "Segnali di pericolo",
+  "number": "19174",
+  "text": "Il segnale raffigurato comporta di moderare la velocità in modo da non costituire pericolo per la sicurezza dei ciclisti",
+  "correct_answer": true,
+  "image": "307718ad8143b32f43530c57270b75ee.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento ciclisti. Il segnale preannuncia la presenza di ciclisti sulla carreggiata o nelle immediate vicinanze, come in un attraversamento ciclabile o una pista ciclabile adiacente. Impone al conducente di moderare la velocità e di prestare attenzione per non costituire pericolo o intralcio per i ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una figura stilizzata di un ciclista in movimento. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
+    "name": "Segnale di pericolo - Attraversamento ciclisti",
+    "description": "Il segnale preannuncia la presenza di ciclisti sulla carreggiata o nelle immediate vicinanze, come in un attraversamento ciclabile o una pista ciclabile adiacente. Impone al conducente di moderare la velocità e di prestare attenzione per non costituire pericolo o intralcio per i ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Attraversamento ciclisti",
+      "Moderazione della velocità"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "attraversamento ciclisti",
+      "moderare la velocità",
+      "sicurezza dei ciclisti"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in presenza di segnale di pericolo per attraversamento ciclisti",
+      "moderazione della velocità per garantire sicurezza ai ciclisti"
+    ],
+    "rule_explanation": "Il segnale di pericolo di 'attraversamento ciclisti' impone al conducente di moderare la velocità per garantire la sicurezza dei ciclisti che attraversano la carreggiata o transitano nelle vicinanze."
+  }
+}

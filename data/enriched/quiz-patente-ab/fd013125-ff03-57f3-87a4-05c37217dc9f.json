@@ -1,0 +1,29 @@
+{
+  "question_id": 4043,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18765",
+  "text": "Quando le persone anziane attraversano la carreggiata bisogna tenere presente che potrebbero non guardare né a destra, né a sinistra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Attraversamento stradale da parte di pedoni anziani",
+      "Principio di prudenza e attenzione nella guida"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "attraversano la carreggiata",
+      "prudenza",
+      "attenzione"
+    ],
+    "vector_search_queries": [
+      "doveri del conducente verso pedoni anziani che attraversano la strada",
+      "obbligo di prudenza in prossimità di attraversamenti pedonali con anziani",
+      "previsione del comportamento di pedoni anziani durante l'attraversamento"
+    ],
+    "rule_explanation": "Il conducente deve prestare particolare attenzione e prudenza quando persone anziane attraversano la carreggiata, prevedendo possibili disattenzioni o incertezze nei loro movimenti."
+  }
+}

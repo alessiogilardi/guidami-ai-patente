@@ -1,0 +1,27 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23003",
+  "text": "Gli specchi retrovisori centrali e laterali di un autoveicolo, devono essere regolati dopo che è stata regolata la posizione del sedile di guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione degli specchi retrovisori",
+      "Posizione di guida e visibilità"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "sedile di guida",
+      "regolazione",
+      "campo visivo"
+    ],
+    "vector_search_queries": [
+      "regolazione specchi retrovisori autoveicolo in relazione al sedile",
+      "importanza della posizione del sedile per la regolazione degli specchi"
+    ],
+    "rule_explanation": "Gli specchi retrovisori devono essere regolati dopo aver trovato la posizione ottimale del sedile di guida per garantire la massima visibilità e sicurezza."
+  }
+}

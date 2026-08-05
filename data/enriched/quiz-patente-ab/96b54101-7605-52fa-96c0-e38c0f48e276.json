@@ -1,0 +1,27 @@
+{
+  "question_id": 4523,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23753",
+  "text": "La sosta è vietata in seconda fila, salvo che si tratti di veicoli a due ruote",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in seconda fila",
+      "Eccezioni al divieto di sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "seconda fila",
+      "veicoli a due ruote",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in seconda fila per autoveicoli",
+      "sosta consentita in seconda fila per motoveicoli"
+    ],
+    "rule_explanation": "La sosta in seconda fila è generalmente vietata, con l'eccezione dei veicoli a due ruote che possono sostare in tale posizione se non arrecano intralcio."
+  }
+}

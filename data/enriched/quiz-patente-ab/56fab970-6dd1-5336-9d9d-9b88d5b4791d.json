@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22294",
+  "text": "E' obbligatorio regolare la velocità nelle forti discese",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di marcia",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "discese",
+      "regolare",
+      "condizioni di marcia"
+    ],
+    "vector_search_queries": [
+      "obbligo di regolare la velocità in forte discesa",
+      "adeguamento della velocità alle condizioni di marcia in discesa"
+    ],
+    "rule_explanation": "Il conducente deve sempre adeguare la velocità alle condizioni di marcia, specialmente in forte discesa, per garantire la sicurezza e prevenire pericoli."
+  }
+}

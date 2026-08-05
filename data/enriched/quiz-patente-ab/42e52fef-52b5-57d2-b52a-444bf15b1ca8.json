@@ -1,0 +1,28 @@
+{
+  "question_id": 4035,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18682",
+  "text": "Per una maggiore sicurezza, quando si viaggia in fila con altri veicoli, è opportuno non avvicinarsi troppo al veicolo che precede",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza tra veicoli",
+      "Comportamento prudente alla guida"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo che precede",
+      "condizioni di marcia",
+      "manovra brusca"
+    ],
+    "vector_search_queries": [
+      "mantenimento della distanza di sicurezza tra veicoli in marcia",
+      "obbligo di non tamponare il veicolo che precede",
+      "distanza minima da mantenere dal veicolo antistante"
+    ],
+    "rule_explanation": "Il conducente deve mantenere una distanza di sicurezza adeguata dal veicolo che precede per evitare collisioni in caso di frenate improvvise o manovre impreviste."
+  }
+}

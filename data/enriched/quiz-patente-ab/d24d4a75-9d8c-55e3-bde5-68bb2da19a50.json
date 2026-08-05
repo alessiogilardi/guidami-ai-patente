@@ -1,0 +1,27 @@
+{
+  "question_id": 4575,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24169",
+  "text": "I catadiottri installati nella parte posteriore dei veicoli sono di colore rosso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di illuminazione e segnalazione visiva",
+      "Catadiottri posteriori"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "dispositivi di illuminazione",
+      "veicoli",
+      "colore rosso"
+    ],
+    "vector_search_queries": [
+      "colore dei catadiottri posteriori dei veicoli",
+      "normativa sui catadiottri rossi posteriori"
+    ],
+    "rule_explanation": "I catadiottri posteriori dei veicoli devono essere di colore rosso per aumentare la visibilità e la sicurezza durante la marcia, specialmente in condizioni di scarsa illuminazione."
+  }
+}

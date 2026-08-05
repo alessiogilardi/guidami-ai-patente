@@ -1,0 +1,33 @@
+{
+  "question_id": 4316,
+  "topic": "Segnali di indicazione",
+  "number": "21705",
+  "text": "Il segnale raffigurato indica che la corsia di sinistra è vietata agli autocarri che superano la massa a pieno carico di 3,5 tonnellate",
+  "correct_answer": true,
+  "image": "7a0d4616a0410274021c7e94c7ead252.jpeg",
+  "image_description": "Indicazioni sulla corsia per autocarri. Il segnale indica che la corsia di sinistra è riservata ai veicoli che non superano le 3,5 tonnellate, mentre la corsia di destra è per tutti i veicoli. Pertanto, gli autocarri con massa a pieno carico superiore a 3,5 tonnellate possono circolare solo sulla corsia di destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di tipo normativo, di colore blu con bordo bianco, raffigurante due frecce bianche verticali che indicano la direzione consentita per due corsie di marcia. Sulla freccia di sinistra è sovrapposto un segnale di divieto di transito per autocarri (cerchio rosso con barra orizzontale, raffigurante un camion nero all'interno). La freccia di destra è libera. Questo indica una prescrizione specifica per l'utilizzo delle corsie in relazione alla massa dei veicoli.",
+    "name": "Indicazioni sulla corsia per autocarri",
+    "description": "Il segnale indica che la corsia di sinistra è riservata ai veicoli che non superano le 3,5 tonnellate, mentre la corsia di destra è per tutti i veicoli. Pertanto, gli autocarri con massa a pieno carico superiore a 3,5 tonnellate possono circolare solo sulla corsia di destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Restrizioni di circolazione per categorie di veicoli",
+      "Massa a pieno carico"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "corsia vietata",
+      "autocarri",
+      "massa a pieno carico",
+      "3,5 tonnellate"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale per corsie riservate a veicoli con massa specifica",
+      "divieto di circolazione per autocarri oltre 3,5 tonnellate su corsia di sinistra"
+    ],
+    "rule_explanation": "Il segnale di indicazione specifica le destinazioni o le regole di circolazione per determinate corsie, inclusi i divieti basati sulla massa a pieno carico per specifiche categorie di veicoli come gli autocarri."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4435,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22925",
+  "text": "Se un autotreno intende svoltare a destra in una strada stretta, i conducenti dei veicoli che seguono devono sorpassarlo appena aziona l'indicatore di direzione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza e attenzione",
+      "Divieto di sorpasso in prossimità di incroci e svolte",
+      "Comportamento dei veicoli in coda"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "svolta a destra",
+      "indicatore di direzione",
+      "autotreno",
+      "strada stretta"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in prossimità di svolta a destra",
+      "comportamento dei veicoli che seguono un autotreno in manovra di svolta su strada stretta",
+      "obblighi dei conducenti in presenza di veicoli in svolta e con indicatore di direzione azionato"
+    ],
+    "rule_explanation": "È vietato il sorpasso dei veicoli in svolta, specie se l'autotreno, e in prossimità di incroci, anche se aziona l'indicatore di direzione."
+  }
+}

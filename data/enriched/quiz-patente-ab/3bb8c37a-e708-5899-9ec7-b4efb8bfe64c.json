@@ -1,0 +1,31 @@
+{
+  "question_id": 4335,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21881",
+  "text": "Il segnale raffigurato indica di svoltare subito a destra",
+  "correct_answer": false,
+  "image": "da5d3e67a29eb505cdd61ed330cdea4c.jpeg",
+  "image_description": "Segnale di obbligo, percorso da seguire (freccia verso il basso). Il segnale impone di circolare attenendosi al lato destro dell'ostacolo o dell'area delimitata dalla segnalazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale quadrato con sfondo a bande diagonali alternate rosse e bianche. Al centro, è presente un disco blu con un bordo bianco, contenente una freccia bianca obliqua che punta verso il basso e verso destra. Questo tipo di segnaletica indica un obbligo di percorso.",
+    "name": "Segnale di obbligo, percorso da seguire (freccia verso il basso)",
+    "description": "Il segnale impone di circolare attenendosi al lato destro dell'ostacolo o dell'area delimitata dalla segnalazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di seguire un percorso specifico",
+      "Segnaletica di cantiere e deviazioni"
+    ],
+    "exact_keywords": [
+      "segnali complementari",
+      "percorso da seguire",
+      "obbligo di circolare",
+      "lato destro"
+    ],
+    "vector_search_queries": [
+      "obbligo di circolare lato destro ostacolo segnalato",
+      "segnaletica stradale percorso da seguire"
+    ],
+    "rule_explanation": "Il segnale di percorso da seguire impone di circolare attenendosi al lato destro dell'ostacolo o dell'area delimitata, non di svoltare subito a destra."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4008,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18400",
+  "text": "L'intersezione (incrocio) a raso è un incrocio fra una strada statale e un passo carrabile",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di intersezione stradale",
+      "Classificazione delle intersezioni"
+    ],
+    "exact_keywords": [
+      "intersezione a raso",
+      "passo carrabile",
+      "strada statale",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "definizione di intersezione a raso nel CdS",
+      "differenza tra intersezione a raso e passo carrabile"
+    ],
+    "rule_explanation": "L'intersezione a raso è il punto in cui due o più strade si incrociano allo stesso livello, non include i passi carrabili che sono accessi privati a proprietà laterali."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4353,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22048",
+  "text": "Il segnale raffigurato vieta il transito nella fascia oraria indicata, dei giorni lavorativi",
+  "correct_answer": true,
+  "image": "31aa0305f3629a75a7d1e6cc5e62a683.jpeg",
+  "image_description": "Divieto di transito con pannello integrativo di orario e categoria (lavoratori). Il segnale di divieto di transito è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle 8:00 alle 20:00. Il pittogramma del pannello raffigura un piccone e un martello, indicando che il divieto si applica ai veicoli che trasportano materiali o che sono impiegati in lavori.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di transito (cerchio rosso con sfondo bianco) posto sopra un pannello rettangolare. Il pannello integrativo contiene un pittogramma che rappresenta un piccone e un martello incrociati, seguito dall'indicazione oraria \"8,00 - 20,00\". Questo pannello specifica le condizioni di applicazione del segnale di divieto.",
+    "name": "Divieto di transito con pannello integrativo di orario e categoria (lavoratori)",
+    "description": "Il segnale di divieto di transito è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle 8:00 alle 20:00. Il pittogramma del pannello raffigura un piccone e un martello, indicando che il divieto si applica ai veicoli che trasportano materiali o che sono impiegati in lavori."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Limitazioni temporali di validità dei segnali",
+      "Segnaletica integrativa"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "fascia oraria",
+      "giorni lavorativi",
+      "divieto di transito"
+    ],
+    "vector_search_queries": [
+      "validità oraria e giorni lavorativi dei segnali di divieto",
+      "pannelli integrativi che specificano orari e categorie di utenti per i divieti di transito"
+    ],
+    "rule_explanation": "I pannelli integrativi possono specificare limitazioni temporali (fascia oraria, giorni) e/o categorie di utenti a cui si applica il segnale principale."
+  }
+}

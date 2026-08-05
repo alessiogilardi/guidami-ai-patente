@@ -1,0 +1,27 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22284",
+  "text": "Il conducente deve regolare la velocità in relazione alla marca dei pneumatici",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità adeguata alle condizioni",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "stato del veicolo",
+      "pneumatici"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità allo stato del veicolo e degli pneumatici",
+      "influenza degli pneumatici sulla velocità di marcia sicura"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in base alle condizioni del veicolo, inclusi gli pneumatici, e non solo in relazione alla loro marca."
+  }
+}

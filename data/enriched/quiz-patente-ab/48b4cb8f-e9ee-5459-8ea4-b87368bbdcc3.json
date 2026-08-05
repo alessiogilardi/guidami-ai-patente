@@ -1,0 +1,31 @@
+{
+  "question_id": 4235,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20927",
+  "text": "In presenza dell'iscrizione in figura non è consentito il transito di veicoli con massa a pieno carico superiore a 50 quintali",
+  "correct_answer": false,
+  "image": "235cb5fa6b810a31b0a08d6123a60c43.jpeg",
+  "image_description": "Indicazione di limite di velocità (50 km/h). L'iscrizione indica la velocità massima consentita in quel tratto di strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale rettangolare grigio con il numero \"50\" in bianco al centro. Questo è un segnale di prescrizione che indica un limite di velocità. Non ci sono altri segnali o elementi della scena di guida visibili.",
+    "name": "Indicazione di limite di velocità (50 km/h)",
+    "description": "L'iscrizione indica la velocità massima consentita in quel tratto di strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale verticale",
+      "Limitazioni di massa a pieno carico"
+    ],
+    "exact_keywords": [
+      "segnaletica verticale",
+      "massa a pieno carico",
+      "divieto di transito",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "segnaletica verticale di indicazione e prescrizione",
+      "limitazioni di massa a pieno carico per transito veicoli"
+    ],
+    "rule_explanation": "La segnaletica verticale di indicazione (come quella di limite di velocità) non impone divieti di transito basati sulla massa dei veicoli. Tali limitazioni sono indicate da apposita segnaletica verticale di prescrizione."
+  }
+}

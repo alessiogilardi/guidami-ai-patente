@@ -1,0 +1,32 @@
+{
+  "question_id": 4061,
+  "topic": "Segnali di pericolo",
+  "number": "18982",
+  "text": "Il segnale raffigurato preannuncia, di norma a 150 metri, una doppia curva pericolosa",
+  "correct_answer": true,
+  "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Presegnalazione di pericolo",
+      "Segnali di pericolo e prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "doppia curva",
+      "preavviso",
+      "distanza di preavviso"
+    ],
+    "vector_search_queries": [
+      "preavviso segnale pericolo doppia curva",
+      "distanza di preavviso segnali di pericolo",
+      "moderazione della velocità in presenza di segnali di pericolo"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante una doppia curva preannuncia tale pericolo, di norma, a 150 metri, imponendo di moderare la velocità."
+  }
+}

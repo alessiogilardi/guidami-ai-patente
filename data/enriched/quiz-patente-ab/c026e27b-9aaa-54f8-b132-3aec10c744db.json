@@ -1,0 +1,33 @@
+{
+  "question_id": 4125,
+  "topic": "Segnali di divieto",
+  "number": "19767",
+  "text": "Il segnale raffigurato è obbligatorio in corrispondenza degli accessi privati",
+  "correct_answer": false,
+  "image": "8a2144c790c2fb4700376c9bb49c6a0b.jpeg",
+  "image_description": "Divieto di transito alle macchine agricole. Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di una macchina agricola (trattore) in nero. Questo segnale indica un divieto di transito specifico per questo tipo di veicoli.",
+    "name": "Divieto di transito alle macchine agricole",
+    "description": "Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Segnali di prescrizione",
+      "Accessi privati"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "macchine agricole",
+      "accessi privati",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "applicabilità dei segnali di divieto agli accessi privati",
+      "obbligatorietà dei segnali di prescrizione per macchine agricole",
+      "segnaletica stradale di divieto e accessi privati"
+    ],
+    "rule_explanation": "I segnali di divieto, come il 'divieto di transito per macchine agricole', non sono obbligatori agli accessi privati ma indicano un divieto specifico per quella categoria di veicoli su quella strada."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4176,
+  "topic": "Segnali di obbligo",
+  "number": "20346",
+  "text": "Il segnale raffigurato indica un attraversamento pedonale",
+  "correct_answer": false,
+  "image": "87d38e63be1b1961effb1381017feb47.jpeg",
+  "image_description": "Sentiero pedonale. Il segnale indica un percorso pedonale. Obbliga i pedoni a utilizzare il percorso indicato e vieta il transito ai veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è raffigurata la figura stilizzata di una persona che cammina, di colore bianco. Questo è il segnale di 'Sentiero pedonale'.",
+    "name": "Sentiero pedonale",
+    "description": "Il segnale indica un percorso pedonale. Obbliga i pedoni a utilizzare il percorso indicato e vieta il transito ai veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico per pedoni",
+      "Segnaletica verticale di indicazione"
+    ],
+    "exact_keywords": [
+      "percorso pedonale",
+      "segnali di obbligo",
+      "divieto di transito ai veicoli",
+      "segnali di indicazione"
+    ],
+    "vector_search_queries": [
+      "differenza tra percorso pedonale e attraversamento pedonale segnalato",
+      "segnali di obbligo per pedoni e divieto per veicoli"
+    ],
+    "rule_explanation": "Il segnale raffigurante un sentiero pedonale indica un percorso obbligatorio per i pedoni e vieta il transito ai veicoli, non un attraversamento pedonale generico."
+  }
+}

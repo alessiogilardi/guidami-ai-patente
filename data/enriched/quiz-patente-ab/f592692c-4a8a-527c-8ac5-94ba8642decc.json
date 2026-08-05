@@ -1,0 +1,32 @@
+{
+  "question_id": 4345,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21980",
+  "text": "Il delineatore raffigurato indica l'ingresso di una galleria",
+  "correct_answer": false,
+  "image": "2798bde9cff903c926ecfd6da1c46c9e.jpeg",
+  "image_description": "Delineatore di pericolo (deviazione). Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore di pericolo di forma rettangolare, con bande diagonali bianche e nere alternate. Al centro è presente un rombo bianco. Il delineatore è montato su due supporti verticali. Le frecce bianche su sfondo nero indicano la direzione della deviazione, che può essere a destra o a sinistra.",
+    "name": "Delineatore di pericolo (deviazione)",
+    "description": "Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Segnaletica temporanea e di cantiere"
+    ],
+    "exact_keywords": [
+      "delineatore di pericolo",
+      "deviazione",
+      "galleria",
+      "segnali complementari"
+    ],
+    "vector_search_queries": [
+      "funzione del delineatore di pericolo",
+      "segnaletica di deviazione e galleria",
+      "differenza tra delineatore di pericolo e segnale di galleria"
+    ],
+    "rule_explanation": "Il delineatore di pericolo indica una deviazione e non l'ingresso di una galleria. Le frecce indicano la direzione da seguire per la deviazione."
+  }
+}

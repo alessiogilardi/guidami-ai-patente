@@ -1,0 +1,27 @@
+{
+  "question_id": 4583,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24227",
+  "text": "Si devono usare gli indicatori di direzione quando, partendo dal margine della carreggiata, ci si vuole immettere nella circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Immissione nella circolazione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "partenza dal margine della carreggiata",
+      "immissione nella circolazione",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "uso degli indicatori di direzione per immissione nella circolazione da fermo",
+      "obbligo di preavviso con frecce per partenza da fermo e immissione traffico"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare con preavviso l'intenzione di partire dal margine della carreggiata e immettersi nella circolazione."
+  }
+}

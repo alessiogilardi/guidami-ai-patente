@@ -1,0 +1,30 @@
+{
+  "question_id": 4608,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24486",
+  "text": "La patente AM conseguita da almeno 3 anni abilita alla guida dei motocicli di potenza fino a 11 kW",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente AM",
+      "Potenza massima motocicli",
+      "Requisiti di età e patente per la guida"
+    ],
+    "exact_keywords": [
+      "patente AM",
+      "motocicli",
+      "potenza",
+      "11 kW",
+      "categoria A"
+    ],
+    "vector_search_queries": [
+      "requisiti patente AM per guida motocicli",
+      "differenza tra patente AM e patente A per potenza motocicli",
+      "limiti di potenza per ciclomotori con patente AM"
+    ],
+    "rule_explanation": "La patente AM abilita alla guida di ciclomotori e tricicli a motore di cilindrata non superiore a 50 cc e potenza massima di 4 kW, non motocicli."
+  }
+}

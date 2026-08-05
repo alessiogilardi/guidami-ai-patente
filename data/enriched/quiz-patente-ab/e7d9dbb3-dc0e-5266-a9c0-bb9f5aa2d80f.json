@@ -1,0 +1,27 @@
+{
+  "question_id": 4682,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25145",
+  "text": "Viaggiare con uno spesso strato di neve sul tetto del veicolo, comporta un aumento dei consumi di carburante",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Impatto delle condizioni esterne sui consumi",
+      "Efficienza energetica dei veicoli"
+    ],
+    "exact_keywords": [
+      "consumo di carburante",
+      "strato di neve",
+      "tetto del veicolo",
+      "aerodinamica"
+    ],
+    "vector_search_queries": [
+      "aumento consumi carburante per neve sul tetto veicolo",
+      "impatto aerodinamica su consumi veicolo con neve sul tetto"
+    ],
+    "rule_explanation": "Uno strato di neve sul tetto del veicolo altera l'aerodinamica, aumentando la resistenza all'aria e, di conseguenza, i consumi di carburante."
+  }
+}

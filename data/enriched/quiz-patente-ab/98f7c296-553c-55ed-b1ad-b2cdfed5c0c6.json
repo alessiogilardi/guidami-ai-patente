@@ -1,0 +1,29 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24356",
+  "text": "Non è obbligatorio l'uso delle cinture di sicurezza sui veicoli muniti di air- bag",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Sistemi di ritenuta per bambini",
+      "Airbag come dispositivo di sicurezza supplementare"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "airbag",
+      "obbligo",
+      "sistemi di ritenuta"
+    ],
+    "vector_search_queries": [
+      "obbligo cinture di sicurezza con airbag",
+      "funzione airbag e cinture di sicurezza",
+      "uso sistemi di ritenuta per bambini e airbag"
+    ],
+    "rule_explanation": "L'airbag è un sistema di sicurezza supplementare e non sostituisce l'obbligo di indossare le cinture di sicurezza, anche per i bambini con sistemi di ritenuta omologati."
+  }
+}

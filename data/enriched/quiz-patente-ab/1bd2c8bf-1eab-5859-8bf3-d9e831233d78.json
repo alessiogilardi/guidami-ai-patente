@@ -1,0 +1,33 @@
+{
+  "question_id": 4590,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24295",
+  "text": "Una spia di colore rosso contrassegnata dal simbolo di figura, se accesa durante la marcia, indica di arrestare subito il motore per evitare gravi danni",
+  "correct_answer": true,
+  "image": "36779cfc84d87c2307160ac1333d689e.jpeg",
+  "image_description": "Spia della pressione dell'olio motore. La spia indica una bassa pressione dell'olio motore. Se accesa, impone di arrestare immediatamente il veicolo per evitare danni gravi al motore. Può essere di colore rosso o giallo ambra, a seconda del costruttore e della gravità del problema.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra il simbolo di una lattina d'olio stilizzata, con una goccia che cade da un beccuccio. Questo simbolo è comunemente utilizzato come spia luminosa nel cruscotto dei veicoli per indicare un problema relativo alla pressione dell'olio motore. La domanda del quiz fa riferimento a una spia di colore rosso o giallo ambra con questo simbolo.",
+    "name": "Spia della pressione dell'olio motore",
+    "description": "La spia indica una bassa pressione dell'olio motore. Se accesa, impone di arrestare immediatamente il veicolo per evitare danni gravi al motore. Può essere di colore rosso o giallo ambra, a seconda del costruttore e della gravità del problema."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori di avaria del veicolo",
+      "Spie di segnalazione luminosa",
+      "Manutenzione del motore"
+    ],
+    "exact_keywords": [
+      "spia rossa",
+      "pressione dell'olio motore",
+      "arrestare il motore",
+      "gravi danni"
+    ],
+    "vector_search_queries": [
+      "significato spia pressione olio motore rossa",
+      "conseguenze mancato arresto motore bassa pressione olio",
+      "obbligo arresto veicolo spia avaria motore"
+    ],
+    "rule_explanation": "Una spia rossa di pressione dell'olio motore accesa impone l'immediata interruzione del funzionamento del motore per prevenire danni meccanici seri."
+  }
+}

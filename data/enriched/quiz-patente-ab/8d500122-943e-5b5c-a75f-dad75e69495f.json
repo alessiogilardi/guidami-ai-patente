@@ -1,0 +1,32 @@
+{
+  "question_id": 4123,
+  "topic": "Segnali di divieto",
+  "number": "19736",
+  "text": "In presenza del segnale raffigurato è consentito il transito alle autocaravan",
+  "correct_answer": true,
+  "image": "18e06d9f8487ade1e7d992ff03920d19.jpeg",
+  "image_description": "Divieto di transito agli autoveicoli di massa superiore a 6,5 t. Il segnale vieta il transito ai veicoli, non adibiti al trasporto di cose, con massa a pieno carico superiore a 6,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di un autocarro con la dicitura \"6,5 t\" sovrapposta. Il segnale è isolato e non presenta pannelli integrativi. Si tratta di un segnale di prescrizione (divieto).",
+    "name": "Divieto di transito agli autoveicoli di massa superiore a 6,5 t",
+    "description": "Il segnale vieta il transito ai veicoli, non adibiti al trasporto di cose, con massa a pieno carico superiore a 6,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Massa a pieno carico",
+      "Classificazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "autocaravan",
+      "massa a pieno carico",
+      "autoveicoli"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per massa superiore a 6,5 tonnellate",
+      "classificazione autocaravan e autoveicoli per trasporto cose"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito per autoveicoli con massa superiore a 6,5 t non si applica alle autocaravan, in quanto non sono classificate come autoveicoli per trasporto di cose."
+  }
+}

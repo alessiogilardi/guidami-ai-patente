@@ -1,0 +1,28 @@
+{
+  "question_id": 4626,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24736",
+  "text": "Su strade coperte di neve occorre sterzare bruscamente per evitare di urtare veicoli fermi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Manovre di emergenza e prevenzione incidenti"
+    ],
+    "exact_keywords": [
+      "strade innevate",
+      "sterzare bruscamente",
+      "veicoli fermi",
+      "pericolo di sbandamento"
+    ],
+    "vector_search_queries": [
+      "comportamento di guida su strade innevate",
+      "rischio di sbandamento con sterzate brusche su neve",
+      "prevenzione incidenti su superfici a bassa aderenza"
+    ],
+    "rule_explanation": "Su strade innevate, sterzare bruscamente aumenta il rischio di sbandamento e perdita di controllo del veicolo, rendendo più probabile l'urto con ostacoli o altri veicoli."
+  }
+}

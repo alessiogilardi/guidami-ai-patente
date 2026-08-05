@@ -1,0 +1,31 @@
+{
+  "question_id": 4238,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20962",
+  "text": "La corsia di emergenza (corsia A) è vietata al transito degli autoveicoli ma non al transito dei motocicli",
+  "correct_answer": false,
+  "image": "1aa201eab2b6944166cbcabd2ac7abdd.jpeg",
+  "image_description": "Corsia di emergenza e corsie di marcia. La corsia A è una corsia di emergenza, delimitata da una linea bianca continua. Le corsie B e C sono corsie di marcia, delimitate da linee bianche tratteggiate. L'immagine mostra due sezioni di strada identiche, ciascuna con tre corsie etichettate A, B e C. La corsia A è la più a destra in entrambe le sezioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine presenta due sezioni di una carreggiata stradale, entrambe con tre corsie chiaramente delimitate da segnaletica orizzontale. Le corsie sono etichettate con le lettere A, B e C, procedendo da destra verso sinistra. La corsia A, la più a destra, è separata dalla corsia B da una linea bianca continua. Le corsie B e C sono separate da linee bianche tratteggiate. Questa configurazione indica che la corsia A è una corsia di emergenza o di servizio, mentre le corsie B e C sono corsie di marcia. Le due sezioni mostrate sono identiche, suggerendo che si tratta di una rappresentazione generale di questo tipo di configurazione stradale. Non sono presenti segnali verticali, veicoli o altri elementi che possano alterare l'interpretazione della segnaletica orizzontale.",
+    "name": "Corsia di emergenza e corsie di marcia",
+    "description": "La corsia A è una corsia di emergenza, delimitata da una linea bianca continua. Le corsie B e C sono corsie di marcia, delimitate da linee bianche tratteggiate. L'immagine mostra due sezioni di strada identiche, ciascuna con tre corsie etichettate A, B e C. La corsia A è la più a destra in entrambe le sezioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di transito in corsia di emergenza",
+      "Utilizzo della corsia di emergenza"
+    ],
+    "exact_keywords": [
+      "corsia di emergenza",
+      "divieto di transito",
+      "autoveicoli",
+      "motocicli"
+    ],
+    "vector_search_queries": [
+      "divieto di transito in corsia di emergenza per autoveicoli e motocicli",
+      "uso della corsia di emergenza vietato a tutti i veicoli a motore"
+    ],
+    "rule_explanation": "La corsia di emergenza è vietata al transito di tutti i veicoli, eccetto in casi specifici previsti dal Codice della Strada."
+  }
+}

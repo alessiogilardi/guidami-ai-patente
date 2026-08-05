@@ -1,0 +1,27 @@
+{
+  "question_id": 4572,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24150",
+  "text": "Durante la marcia nei centri abitati, è obbligatorio tenere accese le luci anabbaglianti da mezz'ora dopo il tramonto del sole a mezz'ora prima del suo sorgere",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di accensione luci",
+      "Utilizzo luci in centro abitato"
+    ],
+    "exact_keywords": [
+      "luci anabbaglianti",
+      "centri abitati",
+      "mezz'ora dopo il tramonto",
+      "mezz'ora prima del sorgere del sole"
+    ],
+    "vector_search_queries": [
+      "obbligo luci anabbaglianti nei centri abitati durante le ore notturne",
+      "accensione luci veicoli in aree urbane in condizioni di scarsa visibilità"
+    ],
+    "rule_explanation": "Nei centri abitati, le luci anabbaglianti devono essere accese da mezz'ora dopo il tramonto a mezz'ora prima del sorgere del sole, salvo eccezioni."
+  }
+}

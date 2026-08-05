@@ -1,0 +1,29 @@
+{
+  "question_id": 4624,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24713",
+  "text": "In caso di pioggia occorre evitare l'appannamento dei vetri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti stradali",
+      "Manutenzione del veicolo",
+      "Condizioni atmosferiche avverse"
+    ],
+    "exact_keywords": [
+      "appannamento dei vetri",
+      "pioggia",
+      "visibilità",
+      "manutenzione del veicolo"
+    ],
+    "vector_search_queries": [
+      "prevenzione appannamento vetri in caso di pioggia",
+      "importanza della visibilità per la sicurezza stradale",
+      "manutenzione veicolo per condizioni meteo avverse"
+    ],
+    "rule_explanation": "In caso di pioggia, è fondamentale prevenire l'appannamento dei vetri per garantire la visibilità e la sicurezza alla guida."
+  }
+}

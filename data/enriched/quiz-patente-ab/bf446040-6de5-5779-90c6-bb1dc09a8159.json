@@ -1,0 +1,29 @@
+{
+  "question_id": 4671,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25069",
+  "text": "Per consumare meno carburante è opportuno tenere i finestrini chiusi, specie quando si viaggia ad alta velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza energetica dei veicoli",
+      "Aerodinamica",
+      "Consumo di carburante"
+    ],
+    "exact_keywords": [
+      "consumo di carburante",
+      "finestrini chiusi",
+      "alta velocità",
+      "aerodinamica"
+    ],
+    "vector_search_queries": [
+      "impatto della resistenza aerodinamica sul consumo di carburante",
+      "correlazione tra finestrini aperti/chiusi e consumo di carburante ad alta velocità",
+      "tecniche di guida per ridurre il consumo di carburante e l'inquinamento"
+    ],
+    "rule_explanation": "Tenere i finestrini chiusi a velocità elevate riduce la resistenza aerodinamica, diminuendo il consumo di carburante e le emissioni inquinanti."
+  }
+}

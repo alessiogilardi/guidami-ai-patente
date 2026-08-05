@@ -1,0 +1,31 @@
+{
+  "question_id": 4065,
+  "topic": "Segnali di pericolo",
+  "number": "19042",
+  "text": "Il segnale raffigurato si trova prima del segnale verticale DOPPIA CROCE DI S. ANDREA",
+  "correct_answer": false,
+  "image": "accabdc7809596ef95d9e34d4b33d06b.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere o semibarriere. Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un simbolo nero che rappresenta un passaggio a livello con barriere, costituito da due elementi verticali collegati da tre elementi orizzontali. Il segnale è isolato, non inserito in una scena di guida o in sequenza con altri segnali.",
+    "name": "Segnale di passaggio a livello con barriere o semibarriere",
+    "description": "Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Preavviso di pericolo",
+      "Segnali di pericolo per passaggi a livello"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello con barriere",
+      "doppia croce di S. Andrea",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "distanza di preavviso segnali di pericolo per passaggi a livello",
+      "posizionamento segnali di pericolo prima di passaggi a livello con barriere"
+    ],
+    "rule_explanation": "I segnali di pericolo che preannunciano un passaggio a livello con barriere sono posizionati a una distanza prestabilita prima del passaggio stesso, non prima della croce di S. Andrea che si trova in corrispondenza."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4637,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24830",
+  "text": "Un conducente che ha assunto una quantità eccessiva di bevande alcoliche non può recuperare velocemente l'idoneità alla guida, specie se ha assunto anche dei farmaci",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di ebbrezza",
+      "Effetti combinati di alcol e farmaci",
+      "Idoneità alla guida"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "bevande alcoliche",
+      "farmaci",
+      "idoneità alla guida"
+    ],
+    "vector_search_queries": [
+      "effetti dell'alcol e dei farmaci sulla capacità di guida",
+      "recupero idoneità alla guida dopo assunzione di alcol e farmaci"
+    ],
+    "rule_explanation": "L'assunzione di alcolici e farmaci può compromettere gravemente l'idoneità alla guida, rendendo il recupero delle capacità psicofisiche più lento e complesso."
+  }
+}

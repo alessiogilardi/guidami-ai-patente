@@ -1,0 +1,30 @@
+{
+  "question_id": 4555,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23985",
+  "text": "Guidando una piccola autovettura è necessario valutare i maggiori rischi derivanti da possibili tamponamenti o collisioni con autovettura di massa superiore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Principio di prudenza nella guida",
+      "Valutazione dei rischi legati alle dimensioni e massa dei veicoli",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "massa",
+      "rischio",
+      "tamponamento",
+      "collisione"
+    ],
+    "vector_search_queries": [
+      "valutazione rischi collisione autovetture di diversa massa",
+      "principio di prudenza e valutazione dei rischi nella guida",
+      "conseguenze di tamponamento tra veicoli di massa differente"
+    ],
+    "rule_explanation": "Il conducente deve sempre adeguare la propria condotta di guida, valutando i rischi derivanti dalle diverse masse dei veicoli e dalle potenziali conseguenze di tamponamenti o collisioni."
+  }
+}

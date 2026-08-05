@@ -1,0 +1,27 @@
+{
+  "question_id": 4642,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24859",
+  "text": "Non è obbligatorio soccorrere un ferito della strada, se per farlo, si crea intralcio alla circolazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di soccorso stradale",
+      "Circonstanzie che escludono l'obbligo di soccorso"
+    ],
+    "exact_keywords": [
+      "soccorrere un ferito",
+      "obbligo di prestare soccorso",
+      "intralcio alla circolazione",
+      "pericolo per la sicurezza"
+    ],
+    "vector_search_queries": [
+      "obbligo di prestare soccorso ai feriti del strada anche in caso di intralcio alla circolazione",
+      "condizioni per l'esenzione dall'obbligo di soccorso stradale"
+    ],
+    "rule_explanation": "L'obbligo di soccorrere un ferito della strada sussiste anche se ciò può causare un temporaneo intralcio alla circolazione, purché non si creino pericoli per la sicurezza pubblica."
+  }
+}

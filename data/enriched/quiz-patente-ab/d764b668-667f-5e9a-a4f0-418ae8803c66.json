@@ -1,0 +1,28 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18363",
+  "text": "Le strade extraurbane principali hanno una sola corsia per ogni senso di marcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Strade extraurbane principali",
+      "Classificazione delle strade",
+      "Caratteristiche delle corsie di marcia"
+    ],
+    "exact_keywords": [
+      "strade extraurbane principali",
+      "corsia per ogni senso di marcia",
+      "carreggiata",
+      "corsie di marcia"
+    ],
+    "vector_search_queries": [
+      "caratteristiche delle strade extraurbane principali",
+      "numero di corsie per senso di marcia su strade extraurbane principali"
+    ],
+    "rule_explanation": "Le strade extraurbane principali sono caratterizzate da almeno due corsie per ogni senso di marcia, separate da spartitraffico, e non sono accessibili a pedoni, ciclisti e veicoli a motore di bassa cilindrata."
+  }
+}

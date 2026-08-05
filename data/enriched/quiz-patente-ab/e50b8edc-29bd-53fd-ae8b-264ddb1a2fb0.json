@@ -1,0 +1,27 @@
+{
+  "question_id": 4587,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24270",
+  "text": "Fuori dei centri abitati, i conducenti devono spegnere i proiettori di profondità procedendo con quelli anabbaglianti, dopo un loro uso prolungato, per evitare di scaricare la batteria",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di profondità",
+      "Obbligo di adeguare l'illuminazione alle condizioni di visibilità"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "proiettori anabbaglianti",
+      "centri abitati",
+      "scaricare la batteria"
+    ],
+    "vector_search_queries": [
+      "uso dei proiettori di profondità in relazione ad altri veicoli",
+      "obbligo di spegnimento dei proiettori di profondità fuori dai centri abitati"
+    ],
+    "rule_explanation": "I proiettori di profondità vanno spenti quando si incrocia un altro veicolo o si segue un veicolo, non per evitare di scaricare la batteria. L'uso prolungato non è il criterio per lo spegnimento."
+  }
+}

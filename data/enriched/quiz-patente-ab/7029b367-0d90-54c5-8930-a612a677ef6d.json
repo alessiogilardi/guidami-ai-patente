@@ -1,0 +1,28 @@
+{
+  "question_id": 4545,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23914",
+  "text": "Il numero delle persone trasportabili sulle autovetture può raggiungere il massimo di dieci",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Numero massimo di persone trasportabili",
+      "Autovettura",
+      "Trasporto persone"
+    ],
+    "exact_keywords": [
+      "numero massimo di persone",
+      "autovettura",
+      "trasportabili",
+      "carta di circolazione"
+    ],
+    "vector_search_queries": [
+      "numero massimo passeggeri autovettura",
+      "limite persone trasportabili su autovettura secondo carta di circolazione"
+    ],
+    "rule_explanation": "Il numero massimo di persone trasportabili su un'autovettura è indicato nella carta di circolazione e non può eccedere le nove, compreso il conducente."
+  }
+}

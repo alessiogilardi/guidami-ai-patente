@@ -1,0 +1,32 @@
+{
+  "question_id": 4117,
+  "topic": "Segnali di divieto",
+  "number": "19673",
+  "text": "Il segnale raffigurato vale dalle ore 8.00 alle ore 20.00",
+  "correct_answer": false,
+  "image": "d62b58e41fee347a25ca241f48772c05.jpeg",
+  "image_description": "Segnale di divieto di transito ai velocipedi. Il segnale vieta il transito ai velocipedi (biciclette).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una bicicletta di colore nero. Si tratta di un segnale di divieto.",
+    "name": "Segnale di divieto di transito ai velocipedi",
+    "description": "Il segnale vieta il transito ai velocipedi (biciclette)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di circolazione",
+      "Limitazioni temporali ai divieti di circolazione"
+    ],
+    "exact_keywords": [
+      "segnale di divieto",
+      "divieto di transito",
+      "velocipedi",
+      "ore 8,00",
+      "ore 20,00"
+    ],
+    "vector_search_queries": [
+      "validità temporale dei segnali di divieto di circolazione",
+      "segnali di divieto con limitazioni orarie o giornaliere"
+    ],
+    "rule_explanation": "I segnali di divieto valgono permanentemente, salvo diversa indicazione esplicita (es. pannelli integrativi che ne specifichino gli orari o i giorni di validità)."
+  }
+}

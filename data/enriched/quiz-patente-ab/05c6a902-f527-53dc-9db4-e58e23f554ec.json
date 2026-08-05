@@ -1,0 +1,28 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22492",
+  "text": "Nei veicoli dotati di servofreno a depressione, se si percorre una lunga discesa con il cambio in folle e a motore spento, si ottiene la stessa forza frenante che si ha con il motore acceso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzionamento del servofreno a depressione",
+      "Sicurezza nella guida in discesa"
+    ],
+    "exact_keywords": [
+      "servofreno a depressione",
+      "lunga discesa",
+      "cambio in folle",
+      "motore spento",
+      "forza frenante"
+    ],
+    "vector_search_queries": [
+      "funzionamento servofreno a depressione motore spento",
+      "riduzione forza frenante in discesa con motore spento"
+    ],
+    "rule_explanation": "Il servofreno a depressione richiede il funzionamento del motore per creare la depressione necessaria all'assistenza alla frenata; a motore spento, la forza frenante è notevolmente ridotta."
+  }
+}

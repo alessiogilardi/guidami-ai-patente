@@ -1,0 +1,28 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22532",
+  "text": "Il valore della distanza di sicurezza deve essere stabilito anche in base alle condizioni atmosferiche",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condizioni di marcia",
+      "Previsione del pericolo"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni atmosferiche",
+      "condizioni della strada",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "adeguamento della distanza di sicurezza alle condizioni atmosferiche",
+      "calcolo della distanza di sicurezza in base a meteo e strada"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere sempre adeguata alle condizioni di marcia, includendo quelle atmosferiche, per garantire la possibilità di fermarsi in sicurezza."
+  }
+}

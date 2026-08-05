@@ -1,0 +1,29 @@
+{
+  "question_id": 4036,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18693",
+  "text": "Entrando in un centro abitato, bisogna considerare che è possibile sostare in corrispondenza di incroci non regolati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Centri abitati",
+      "Regole di circolazione stradale"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "incrocio",
+      "centro abitato",
+      "sosta vietata"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in prossimità degli incroci",
+      "sosta vietata negli incroci non regolati",
+      "regole di sosta nei centri abitati"
+    ],
+    "rule_explanation": "La sosta è vietata in corrispondenza o in prossimità degli incroci, indipendentemente dal fatto che siano regolati o meno, e nei centri abitati."
+  }
+}

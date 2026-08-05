@@ -1,0 +1,32 @@
+{
+  "question_id": 4122,
+  "topic": "Segnali di divieto",
+  "number": "19730",
+  "text": "Il segnale raffigurato può essere munito di pannello integrativo con un diverso valore della massa ammessa al transito",
+  "correct_answer": true,
+  "image": "772cef27599e5536c2638e76e38a056d.jpeg",
+  "image_description": "Divieto di transito ai veicoli di massa superiore a 3,5 t. Il segnale vieta il transito ai veicoli di massa superiore a 3,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di transito. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di un autocarro di colore nero. Sotto il pittogramma dell'autocarro, è presente una indicazione di massa pari a 3,5 t. Non sono presenti pannelli integrativi.",
+    "name": "Divieto di transito ai veicoli di massa superiore a 3,5 t",
+    "description": "Il segnale vieta il transito ai veicoli di massa superiore a 3,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Massa a pieno carico",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "massa a pieno carico",
+      "pannello integrativo",
+      "valore della massa ammessa"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito per massa a pieno carico e pannelli integrativi",
+      "modifica del valore di massa ammessa tramite pannello integrativo al segnale di divieto"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito per massa a pieno carico può essere integrato da pannelli che specificano un diverso valore di massa ammessa al transito."
+  }
+}

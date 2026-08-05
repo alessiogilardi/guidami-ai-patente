@@ -1,0 +1,28 @@
+{
+  "question_id": 4044,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18779",
+  "text": "Il conducente deve dare la precedenza al pedone con il bastone bianco o bianco-rosso che attraversa la strada, anche se è fuori dalle strisce di un attraversamento pedonale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela dei pedoni in condizioni di fragilità",
+      "Obbligo di precedenza verso i pedoni"
+    ],
+    "exact_keywords": [
+      "pedone",
+      "bastone bianco",
+      "bastone bianco-rosso",
+      "attraversamento pedonale",
+      "dare la precedenza"
+    ],
+    "vector_search_queries": [
+      "precedenza pedoni con bastone bianco o bianco-rosso fuori dalle strisce",
+      "obbligo di dare precedenza a pedoni in condizioni di fragilità"
+    ],
+    "rule_explanation": "Il conducente deve dare la precedenza ai pedoni, in particolare a quelli in stato di fragilità (come chi usa bastone bianco o bianco-rosso), anche se non si trovano sulle strisce pedonali."
+  }
+}

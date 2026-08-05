@@ -1,0 +1,32 @@
+{
+  "question_id": 4094,
+  "topic": "Segnali di pericolo",
+  "number": "19388",
+  "text": "In presenza del segnale raffigurato è opportuno moderare la velocità per evitare di urtare eventuali massi caduti sulla carreggiata",
+  "correct_answer": true,
+  "image": "ddcc6610d88743a87ab49dda7f0f69be.jpeg",
+  "image_description": "Segnale di pericolo di caduta massi. Il segnale preannuncia un pericolo di caduta massi sulla carreggiata. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta un versante di montagna da cui cadono dei massi. Il pittogramma indica il pericolo di caduta massi.",
+    "name": "Segnale di pericolo di caduta massi",
+    "description": "Il segnale preannuncia un pericolo di caduta massi sulla carreggiata. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Moderazione della velocità",
+      "Prevenzione del rischio"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "caduta massi",
+      "moderare la velocità",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di segnali di pericolo di caduta massi",
+      "precauzioni da adottare in caso di segnale di pericolo caduta massi"
+    ],
+    "rule_explanation": "Il segnale di pericolo di caduta massi impone al conducente di moderare la velocità per evitare incidenti dovuti a possibili ostacoli sulla carreggiata."
+  }
+}

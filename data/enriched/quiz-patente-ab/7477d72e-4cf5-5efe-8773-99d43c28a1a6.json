@@ -1,0 +1,29 @@
+{
+  "question_id": 4388,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22463",
+  "text": "Lungo le corsie di canalizzazione, è possibile che nella corsia di destra si circoli ad una velocità superiore a quella di sinistra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Corsie di canalizzazione",
+      "Velocità differenziata tra corsie",
+      "Regolazione della velocità in base alla corsia di canalizzazione"
+    ],
+    "exact_keywords": [
+      "corsie di canalizzazione",
+      "velocità superiore",
+      "corsia di destra",
+      "corsia di sinistra"
+    ],
+    "vector_search_queries": [
+      "velocità corsie di canalizzazione",
+      "differenza di velocità tra corsie di canalizzazione",
+      "regolazione velocità corsia destra e sinistra canalizzazione"
+    ],
+    "rule_explanation": "Nelle corsie di canalizzazione, è consentito circolare ad una velocità superiore nella corsia di destra rispetto a quella di sinistra, purché non si creino intralci o pericoli."
+  }
+}

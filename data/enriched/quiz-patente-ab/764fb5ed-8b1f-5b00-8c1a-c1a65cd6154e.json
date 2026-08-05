@@ -1,0 +1,29 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25336",
+  "text": "Con freni squilibrati si manifesta in genere un surriscaldamento del liquido refrigerante del motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Squilibrio dei freni",
+      "Surriscaldamento del motore",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "freni squilibrati",
+      "liquido refrigerante",
+      "surriscaldamento",
+      "motore"
+    ],
+    "vector_search_queries": [
+      "conseguenze freni squilibrati",
+      "cause surriscaldamento liquido refrigerante motore",
+      "manutenzione freni e sistema raffreddamento"
+    ],
+    "rule_explanation": "I freni squilibrati causano una maggiore resistenza alla rotazione delle ruote, non un aumento della temperatura del liquido refrigerante del motore. Il surriscaldamento del liquido refrigerante è legato al sistema di raffreddamento del motore."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4607,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24473",
+  "text": "Gli autoveicoli usati per le esercitazioni di guida devono essere muniti, sia anteriormente che posteriormente, di appositi pannelli retroriflettenti recanti la lettera \"P\" (principiante)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Esercitazioni di guida",
+      "Segnalazione veicoli per principianti"
+    ],
+    "exact_keywords": [
+      "autoveicoli per esercitazioni",
+      "pannelli retroriflettenti",
+      "lettera P",
+      "principiante"
+    ],
+    "vector_search_queries": [
+      "segnalazione veicoli per esercitazioni di guida con pannelli 'P'",
+      "obbligo pannelli anteriori e posteriori con lettera 'P' per principianti"
+    ],
+    "rule_explanation": "Gli autoveicoli usati per le esercitazioni di guida devono esporre pannelli posteriori e anteriori con la lettera 'P' per segnalare la presenza di un principiante."
+  }
+}

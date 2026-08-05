@@ -1,0 +1,33 @@
+{
+  "question_id": 4324,
+  "topic": "Segnali di indicazione",
+  "number": "21781",
+  "text": "Il segnale raffigurato indica la possibilità di restare in auto durante il suo trasporto in treno",
+  "correct_answer": false,
+  "image": "5b1a54c826611831c1b407905d13972c.jpeg",
+  "image_description": "Stazione ferroviaria con possibilità di trasporto autovetture e pernottamento. Il segnale indica la possibilità di trasportare autovetture su un treno, con possibilità di pernottamento a bordo. Si trova in prossimità dell'accesso per le autovetture da caricare sul treno.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di tipo \"indicazione\" (rettangolare con bordo blu e sfondo bianco all'interno). Il pittogramma al centro raffigura un carro ferroviario con sopra un'autovettura e un letto. Questo indica la presenza di una stazione ferroviaria che offre il servizio di trasporto autovetture con possibilità di pernottamento. Il segnale è isolato, non fa parte di una scena di guida complessa o di una sequenza di segnali.",
+    "name": "Stazione ferroviaria con possibilità di trasporto autovetture e pernottamento",
+    "description": "Il segnale indica la possibilità di trasportare autovetture su un treno, con possibilità di pernottamento a bordo. Si trova in prossimità dell'accesso per le autovetture da caricare sul treno."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Trasporto intermodale",
+      "Servizi per l'automobilista"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "stazione ferroviaria",
+      "trasporto autovetture",
+      "pernottamento"
+    ],
+    "vector_search_queries": [
+      "segnali stradali per trasporto veicoli su treno",
+      "servizi stazione ferroviaria per trasporto autovetture",
+      "divieto di permanenza nel veicolo durante trasporto su treno"
+    ],
+    "rule_explanation": "Il segnale indica la possibilità di trasportare veicoli su un treno, con servizi accessori come il pernottamento, ma non autorizza a rimanere nel veicolo durante il trasporto."
+  }
+}

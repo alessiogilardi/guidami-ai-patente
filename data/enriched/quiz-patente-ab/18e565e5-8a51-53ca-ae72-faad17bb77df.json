@@ -1,0 +1,27 @@
+{
+  "question_id": 4525,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23774",
+  "text": "La sosta così come la fermata sono vietate davanti ai cassonetti dei rifiuti urbani",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Segnaletica stradale di divieto"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fermata",
+      "cassonetti di rifiuti urbani",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata in prossimità di cassonetti rifiuti urbani",
+      "regolamentazione sosta e fermata vicino ai cassonetti"
+    ],
+    "rule_explanation": "La sosta è vietata in corrispondenza o in prossimità dei cassonetti di rifiuti urbani solo se espressamente indicato dalla segnaletica stradale verticale."
+  }
+}

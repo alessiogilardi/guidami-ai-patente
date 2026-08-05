@@ -1,0 +1,32 @@
+{
+  "question_id": 4113,
+  "topic": "Segnali di divieto",
+  "number": "19623",
+  "text": "Il segnale raffigurato deve essere rispettato soltanto dalle ore 20.00 alle ore 8.00",
+  "correct_answer": false,
+  "image": "ca7a6476170f347036d9ae3447b28bba.jpeg",
+  "image_description": "Divieto di segnalazioni acustiche. Il segnale vieta l'uso del clacson.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è presente il pittogramma di un clacson stilizzato, barrato da una linea diagonale rossa che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di 'Divieto di segnalazioni acustiche'.",
+    "name": "Divieto di segnalazioni acustiche",
+    "description": "Il segnale vieta l'uso del clacson."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Limitazioni temporali ai divieti"
+    ],
+    "exact_keywords": [
+      "divieto di segnalazioni acustiche",
+      "uso del clacson",
+      "orario di validità",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "validità temporale dei segnali di divieto di circolazione",
+      "segnali di prescrizione con limitazioni orarie",
+      "divieto di segnalazioni acustiche senza limitazioni orarie"
+    ],
+    "rule_explanation": "I segnali di divieto valgono permanentemente, salvo diversa indicazione esplicita (es. orario, giorni). Il divieto di usare il clacson è generale e non limitato a fasce orarie specifiche."
+  }
+}

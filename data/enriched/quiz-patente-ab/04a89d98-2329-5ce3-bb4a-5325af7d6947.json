@@ -1,0 +1,28 @@
+{
+  "question_id": 4583,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24228",
+  "text": "Si devono usare gli indicatori di direzione per segnalare l'intenzione di spostarsi nella corsia di decelerazione di uno svincolo autostradale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovre",
+      "Uso degli indicatori di direzione",
+      "Manovre in autostrada"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "corsia di decelerazione",
+      "svincolo autostradale",
+      "manovra di immissione o uscita"
+    ],
+    "vector_search_queries": [
+      "segnalazione manovra di uscita autostradale con indicatori di direzione",
+      "obbligo uso indicatori di direzione per corsia di decelerazione"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare ogni manovra che influenzi la circolazione, inclusi i movimenti verso le corsie di decelerazione o di accelerazione."
+  }
+}

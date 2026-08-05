@@ -1,0 +1,28 @@
+{
+  "question_id": 4578,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24191",
+  "text": "La spia del freno a mano è di colore rosso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori luminosi del cruscotto",
+      "Spie di segnalazione del veicolo",
+      "Sistema frenante"
+    ],
+    "exact_keywords": [
+      "spia",
+      "freno a mano",
+      "colore rosso",
+      "dispositivi di controllo"
+    ],
+    "vector_search_queries": [
+      "significato spia rossa freno a mano",
+      "colore spie cruscotto sistema frenante"
+    ],
+    "rule_explanation": "La spia rossa del freno a mano indica che il freno di stazionamento è inserito o che vi è un malfunzionamento nel sistema frenante."
+  }
+}

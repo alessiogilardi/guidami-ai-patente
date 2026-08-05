@@ -1,0 +1,29 @@
+{
+  "question_id": 4004,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18343",
+  "text": "L'attraversamento pedonale è una parte della carreggiata, in cui i veicoli devono dare la precedenza ai pedoni, che attraversano sulle apposite strisce",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attraversamento pedonale",
+      "Obbligo di precedenza ai pedoni",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "precedenza",
+      "pedoni",
+      "strisce pedonali",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "precedenza pedoni su attraversamenti pedonali",
+      "obbligo di dare precedenza ai pedoni che attraversano la carreggiata"
+    ],
+    "rule_explanation": "Nei segnali di attraversamento pedonale, i veicoli devono dare la precedenza ai pedoni che li attraversano, anche se non sono sulle strisce pedonali."
+  }
+}

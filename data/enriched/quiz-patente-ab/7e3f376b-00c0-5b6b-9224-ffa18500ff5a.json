@@ -1,0 +1,27 @@
+{
+  "question_id": 4264,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21202",
+  "text": "Avvicinandosi ad un passaggio a livello con luci rosse accese e semibarriera ancora alzata, è necessario fermarsi sulla linea d'arresto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni semaforiche ai passaggi a livello",
+      "Obbligo di arresto al passaggio a livello"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "luci rosse",
+      "semibarriera",
+      "linea d'arresto"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto al passaggio a livello con luci rosse accese",
+      "segnalazione semaforica di pericolo al passaggio a livello"
+    ],
+    "rule_explanation": "Ai passaggi a livello, le luci rosse accese impongono l'arresto sulla linea d'arresto anche se la semibarriera è ancora alzata."
+  }
+}

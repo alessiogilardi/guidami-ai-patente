@@ -1,0 +1,27 @@
+{
+  "question_id": 4611,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24513",
+  "text": "Con la patente di categoria A si possono condurre tutti i motocicli (con o senza carrozzetta)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di categoria A",
+      "Veicoli conducibili con patente A"
+    ],
+    "exact_keywords": [
+      "patente di categoria A",
+      "motocicli",
+      "senza carrozzetta",
+      "con carrozzetta"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente A",
+      "definizione di motociclo per patente A"
+    ],
+    "rule_explanation": "La patente di categoria A abilita alla conduzione di tutti i motocicli, sia con che senza carrozzetta."
+  }
+}

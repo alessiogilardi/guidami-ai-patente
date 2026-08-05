@@ -1,0 +1,28 @@
+{
+  "question_id": 4630,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24782",
+  "text": "Quando si deve far salire o scendere un bambino dal veicolo, è opportuno che vi sia il controllo di un adulto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza dei bambini nel traffico",
+      "Responsabilità dell'adulto alla guida",
+      "Prevenzione degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "bambino",
+      "veicolo",
+      "adulto",
+      "supervisione"
+    ],
+    "vector_search_queries": [
+      "supervisione adulta per salita e discesa bambini dal veicolo",
+      "misure di sicurezza per il trasporto di bambini in auto"
+    ],
+    "rule_explanation": "È necessario che un adulto supervisioni la salita e la discesa dei bambini dai veicoli per prevenire incidenti."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4162,
+  "topic": "Segnali di obbligo",
+  "number": "20199",
+  "text": "Il segnale raffigurato indica che è obbligatorio proseguire solo diritto",
+  "correct_answer": false,
+  "image": "6b00ed1114aae01dd9a254e2e5ff9432.jpeg",
+  "image_description": "Presegnalazione di direzione obbligatoria (solo diritto o a destra). Il segnale impone di proseguire diritto o di svoltare a destra. Non è consentito svoltare a sinistra né andare in altre direzioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro sono presenti due frecce bianche: una punta verso l'alto (proseguire diritto) e una piega verso destra (svoltare a destra). Le frecce indicano le uniche direzioni consentite.",
+    "name": "Presegnalazione di direzione obbligatoria (solo diritto o a destra)",
+    "description": "Il segnale impone di proseguire diritto o di svoltare a destra. Non è consentito svoltare a sinistra né andare in altre direzioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo di direzione",
+      "Interpretazione dei segnali stradali di indicazione"
+    ],
+    "exact_keywords": [
+      "presegnalazione",
+      "direzione obbligatoria",
+      "proseguire diritto",
+      "svoltare a destra"
+    ],
+    "vector_search_queries": [
+      "obbligo di seguire le direzioni indicate dai segnali di presegnalazione",
+      "interpretazione segnale di direzione obbligatoria (diritto o destra)"
+    ],
+    "rule_explanation": "Il segnale di presegnalazione di direzione obbligatoria impone di seguire una delle direzioni indicate, non solo diritto."
+  }
+}

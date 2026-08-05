@@ -1,0 +1,27 @@
+{
+  "question_id": 4569,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24131",
+  "text": "Il carico verticale massimo che può gravare sul gancio della motrice è indicato in un' apposita targhetta applicata sul gancio di traino",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Carico massimo sul gancio di traino",
+      "Omologazione e marcatura dei ganci di traino"
+    ],
+    "exact_keywords": [
+      "carico verticale massimo",
+      "gancio della motrice",
+      "targhetta apposita",
+      "omologazione"
+    ],
+    "vector_search_queries": [
+      "indicazione carico verticale massimo gancio traino motrice",
+      "targhetta omologazione gancio di traino carico ammissibile"
+    ],
+    "rule_explanation": "Il carico verticale massimo ammissibile sul gancio di traino è indicato dal costruttore su una targhetta applicata sul gancio stesso, secondo le normative di omologazione."
+  }
+}

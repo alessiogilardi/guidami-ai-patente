@@ -1,0 +1,27 @@
+{
+  "question_id": 4041,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18747",
+  "text": "Il conducente che scende da un veicolo in sosta non deve controllare se sopraggiungono ciclisti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente in sosta",
+      "Protezione degli utenti deboli della strada"
+    ],
+    "exact_keywords": [
+      "aprire la portiera",
+      "ciclisti",
+      "veicolo in sosta",
+      "condizioni di sicurezza"
+    ],
+    "vector_search_queries": [
+      "apertura portiera veicolo in sosta e sicurezza ciclisti",
+      "doveri del conducente alla discesa dal veicolo in sosta"
+    ],
+    "rule_explanation": "Il conducente che apre la portiera di un veicolo in sosta deve assicurarsi che ciò non costituisca pericolo o intralcio per gli altri utenti della strada, in particolare per i ciclisti."
+  }
+}

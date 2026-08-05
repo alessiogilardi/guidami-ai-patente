@@ -1,0 +1,27 @@
+{
+  "question_id": 4440,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22966",
+  "text": "Quando si vede sul tetto dell'auto della polizia un display con la scritta luminosa \"INCIDENTE\", bisogna diminuire la velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Segnalazioni di pericolo o emergenza"
+    ],
+    "exact_keywords": [
+      "veicolo di polizia",
+      "display luminoso",
+      "incidente",
+      "diminuire la velocità"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di veicoli di polizia con segnalazione di incidente",
+      "comportamento da tenere in caso di segnalazione luminosa di 'incidente' da parte di un veicolo di polizia"
+    ],
+    "rule_explanation": "La presenza di un veicolo di polizia con segnalazione luminosa di 'incidente' impone al conducente di moderare la velocità per garantire la sicurezza e agevolare le operazioni di soccorso."
+  }
+}

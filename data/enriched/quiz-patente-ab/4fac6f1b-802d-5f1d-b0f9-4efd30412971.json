@@ -1,0 +1,28 @@
+{
+  "question_id": 4553,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23976",
+  "text": "Il conducente di autoveicolo deve rispettare le norme della circolazione, ma non è tenuto a prevedere le possibili imprudenze del ciclomotorista che lo affianca sulla strada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza alla guida",
+      "Prevedibilità del comportamento altrui",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "norme di circolazione",
+      "prevedere",
+      "imprudenze",
+      "ciclomotorista"
+    ],
+    "vector_search_queries": [
+      "obbligo di prevedere le imprudenze altrui alla guida",
+      "condotta di guida prudente e prevedibilità degli errori degli altri utenti della strada"
+    ],
+    "rule_explanation": "Il conducente deve sempre prevedere le possibili imprudenze altrui, adattando la propria condotta per evitare incidenti, anche se non è tenuto a prevedere ogni singolo comportamento errato."
+  }
+}

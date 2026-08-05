@@ -1,0 +1,30 @@
+{
+  "question_id": 4244,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21010",
+  "text": "La luce circolare gialla lampeggiante (tipo A di figura) è un segnale di pericolo generico",
+  "correct_answer": true,
+  "image": "72f9b60b915b838de4c89ca613cfd8f8.jpeg",
+  "image_description": "Semaforo giallo lampeggiante, attraversamento pedonale, corsia ciclabile. La luce gialla circolare lampeggiante invita a procedere con particolare prudenza. Le luci B e C, con le figure stilizzate di un pedone e di una bicicletta, indicano rispettivamente un attraversamento pedonale e una corsia riservata ai ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre simboli luminosi distinti, etichettati come A, B e C. Il simbolo A è una luce circolare gialla lampeggiante. Il simbolo B è un disco nero con la figura stilizzata di un pedone in giallo. Il simbolo C è un disco nero con la figura stilizzata di una bicicletta in giallo. Questi simboli rappresentano diverse segnalazioni semaforiche o di corsia.",
+    "name": "Semaforo giallo lampeggiante, attraversamento pedonale, corsia ciclabile",
+    "description": "La luce gialla circolare lampeggiante invita a procedere con particolare prudenza. Le luci B e C, con le figure stilizzate di un pedone e di una bicicletta, indicano rispettivamente un attraversamento pedonale e una corsia riservata ai ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo generico",
+      "Segnalazione semaforica a luce gialla lampeggiante"
+    ],
+    "exact_keywords": [
+      "luce circolare gialla lampeggiante",
+      "segnale di pericolo generico",
+      "procedere con particolare prudenza"
+    ],
+    "vector_search_queries": [
+      "funzione del segnale semaforico a luce gialla lampeggiante",
+      "significato di pericolo generico della luce gialla lampeggiante del semaforo"
+    ],
+    "rule_explanation": "La luce gialla circolare lampeggiante, pur non imponendo un arresto, presegnala un pericolo generico invitando alla massima prudenza."
+  }
+}

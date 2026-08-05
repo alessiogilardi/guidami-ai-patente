@@ -1,0 +1,28 @@
+{
+  "question_id": 4386,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22446",
+  "text": "La velocità deve essere particolarmente moderata subito dopo un incrocio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di circolazione",
+      "Pericolo per la circolazione"
+    ],
+    "exact_keywords": [
+      "velocità moderata",
+      "incrocio",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in prossimità di incroci",
+      "adeguamento della velocità alle condizioni di visibilità e traffico in prossimità di incroci"
+    ],
+    "rule_explanation": "La velocità va moderata in presenza di incroci, non necessariamente subito dopo, per garantire la sicurezza e prevenire pericoli o intralci."
+  }
+}

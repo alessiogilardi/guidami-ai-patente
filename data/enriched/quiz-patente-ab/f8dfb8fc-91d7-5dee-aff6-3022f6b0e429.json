@@ -1,0 +1,27 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23546",
+  "text": "Per eseguire la manovra di sorpasso nei centri urbani si possono momentaneamente superare i limiti di velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Limiti di velocità nei centri urbani"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "centri abitati",
+      "limiti di velocità",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "sorpasso nei centri abitati e limiti di velocità",
+      "divieto di superare i limiti di velocità durante il sorpasso in città"
+    ],
+    "rule_explanation": "Nei centri abitati è vietato superare i limiti di velocità anche per eseguire la manovra di sorpasso."
+  }
+}

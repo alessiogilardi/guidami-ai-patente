@@ -1,0 +1,32 @@
+{
+  "question_id": 4325,
+  "topic": "Segnali di indicazione",
+  "number": "21791",
+  "text": "Il segnale raffigurato avverte di fare attenzione alle buche sulla carreggiata",
+  "correct_answer": false,
+  "image": "9c797083d3d0057384d311515773b958.jpeg",
+  "image_description": "Area di scarico per veicoli ricreazionali. Il segnale indica un'area attrezzata per lo scarico dei residui organici e delle acque bianche e nere dei veicoli che hanno servizi igienico-sanitari.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un'icona bianca al suo interno. L'icona rappresenta un veicolo ricreazionale (camper o roulotte) con una freccia che punta verso un'area sottostante, raffigurata come una griglia o un tombino. Sotto l'icona principale, vi è uno spazio vuoto, tipico per un pannello integrativo che potrebbe fornire ulteriori dettagli. Il segnale è di tipo \"indicazione\".",
+    "name": "Area di scarico per veicoli ricreazionali",
+    "description": "Il segnale indica un'area attrezzata per lo scarico dei residui organici e delle acque bianche e nere dei veicoli che hanno servizi igienico-sanitari."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Segnali di indicazione",
+      "Funzione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale raffigurato",
+      "area di scarico",
+      "veicoli ricreazionali",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "funzione segnale area di scarico veicoli ricreazionali",
+      "differenza segnale area di scarico e segnale di pericolo buche"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica un'area attrezzata per lo scarico dei residui dei veicoli ricreazionali, non buche sulla carreggiata."
+  }
+}

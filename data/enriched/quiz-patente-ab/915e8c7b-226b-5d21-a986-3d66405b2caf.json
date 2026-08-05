@@ -1,0 +1,31 @@
+{
+  "question_id": 4428,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22851",
+  "text": "Su strada a senso unico per svoltare a sinistra bisogna tenersi sul margine sinistro",
+  "correct_answer": true,
+  "image": "f4ce89521572a4dca9a4b6b901316d1a.jpeg",
+  "image_description": "Incrocio a raso senza segnaletica di preavviso o prescrizione. L'incrocio è a raso e non sono presenti segnali di prescrizione o preavviso che regolino la circolazione. La strada principale è a senso unico con due corsie, mentre la strada secondaria è a doppio senso. La corsia più a destra della strada principale termina all'incrocio. Un veicolo si trova sulla corsia di destra della strada principale, in procinto di svoltare a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di un incrocio stradale. La strada principale, che proviene da sinistra e si estende verso destra, è a senso unico e presenta due corsie di marcia, delimitate da strisce bianche continue e tratteggiate. La corsia di destra termina all'incrocio. La strada secondaria, che proviene dal basso e sale verso l'alto, è a doppio senso di circolazione. Non sono presenti segnali di pericolo, prescrizione o indicazione che regolino la circolazione all'incrocio. Un veicolo (un'automobile) si trova sulla corsia di destra della strada principale, in prossimità dell'incrocio, e sembra essere in procinto di svoltare a destra. Le altre corsie della strada principale sono vuote. L'incrocio è a raso, senza dislivelli.",
+    "name": "Incrocio a raso senza segnaletica di preavviso o prescrizione",
+    "description": "L'incrocio è a raso e non sono presenti segnali di prescrizione o preavviso che regolino la circolazione. La strada principale è a senso unico con due corsie, mentre la strada secondaria è a doppio senso. La corsia più a destra della strada principale termina all'incrocio. Un veicolo si trova sulla corsia di destra della strada principale, in procinto di svoltare a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento del veicolo per la svolta",
+      "Norme di circolazione sulle strade a senso unico"
+    ],
+    "exact_keywords": [
+      "svolta a sinistra",
+      "strada a senso unico",
+      "margine sinistro",
+      "posizione del veicolo"
+    ],
+    "vector_search_queries": [
+      "posizione del veicolo per la svolta a sinistra su strada a senso unico",
+      "obbligo di tenersi sul margine sinistro per svoltare a sinistra"
+    ],
+    "rule_explanation": "Per svoltare a sinistra su strada a senso unico, il veicolo deve posizionarsi sul margine sinistro della carreggiata."
+  }
+}

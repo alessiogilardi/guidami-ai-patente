@@ -1,0 +1,33 @@
+{
+  "question_id": 4292,
+  "topic": "Segnali di indicazione",
+  "number": "21489",
+  "text": "Il segnale raffigurato indica un'area riservata solo alle persone diversamente abili",
+  "correct_answer": false,
+  "image": "6c96f2c8ec875853432c7e8fe4db1e41.jpeg",
+  "image_description": "Inizio di area pedonale con pannello integrativo. Il segnale indica l'inizio di un'area pedonale. Il pannello integrativo specifica le categorie di utenti autorizzati a circolare: persone con disabilità, polizia in servizio urgente di emergenza, veicoli per carico/scarico merci in determinati orari (14:00-16:00 e 24:00-06:00), e veicoli a motore residenti autorizzati per accesso e sosta.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali sovrapposti verticalmente. Il segnale superiore è un segnale di prescrizione, di forma quadrata con bordo bianco, sfondo bianco e la scritta \"area pedonale\" in nero. Sotto la scritta, è presente un segnale rotondo con bordo blu e pittogramma bianco di un pedone che cammina, indicando appunto un'area pedonale. Il segnale inferiore è un pannello integrativo rettangolare, anch'esso con bordo bianco e sfondo bianco. Questo pannello contiene diverse icone e testi esplicativi. In alto a sinistra, un'icona di una sedia a rotelle con la dicitura \"veicoli autorizzati a servizio di persone invalide\". Sotto, un'icona di un agente di polizia con la dicitura \"polizia, artiglieria, egli fuochi (e solo in servizio urgente d'emergenza)\". Ancora più in basso, un'icona di un carrello della spesa con la dicitura \"veicoli merci autorizzati orari: 14,00-16,00 24,00-06,00\". Infine, in basso, la dicitura \"auto e motoveicoli residenti autorizzati, solo per accesso in cortili ed autorimesse\". L'insieme dei segnali indica l'inizio di un'area pedonale con specifiche eccezioni per determinati veicoli e categorie di utenti.",
+    "name": "Inizio di area pedonale con pannello integrativo",
+    "description": "Il segnale indica l'inizio di un'area pedonale. Il pannello integrativo specifica le categorie di utenti autorizzati a circolare: persone con disabilità, polizia in servizio urgente di emergenza, veicoli per carico/scarico merci in determinati orari (14:00-16:00 e 24:00-06:00), e veicoli a motore residenti autorizzati per accesso e sosta."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Area pedonale",
+      "Accesso veicolare regolamentato"
+    ],
+    "exact_keywords": [
+      "area pedonale",
+      "pannello integrativo",
+      "accesso consentito",
+      "persone con disabilità"
+    ],
+    "vector_search_queries": [
+      "regolamentazione accesso area pedonale con pannelli integrativi",
+      "segnaletica inizio area pedonale e condizioni di accesso",
+      "deroga al divieto di circolazione in area pedonale per categorie specifiche"
+    ],
+    "rule_explanation": "L'area pedonale è un'area in cui la circolazione è vietata a tutti i veicoli, salvo specifiche eccezioni indicate da segnali aggiuntivi. L'accesso è consentito anche a residenti, polizia, e per carico/scarico merci in orari specifici, oltre che a persone con disabilità."
+  }
+}

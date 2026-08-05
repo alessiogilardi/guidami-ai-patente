@@ -1,0 +1,29 @@
+{
+  "question_id": 4041,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18741",
+  "text": "Un incidente, anche a bassa velocità, potrebbe creare gravi problemi fisici a pedoni, ciclisti e motociclisti, se coinvolti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Principio di prudenza nella guida",
+      "Conseguenze degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "pedoni",
+      "ciclisti",
+      "motociclisti",
+      "lesioni fisiche"
+    ],
+    "vector_search_queries": [
+      "rischio di lesioni per utenti vulnerabili in caso di incidente stradale",
+      "doveri di prudenza del conducente verso pedoni, ciclisti e motociclisti"
+    ],
+    "rule_explanation": "Anche a bassa velocità, un incidente può causare gravi lesioni a pedoni, ciclisti e motociclisti, imponendo al conducente di prestare massima prudenza."
+  }
+}

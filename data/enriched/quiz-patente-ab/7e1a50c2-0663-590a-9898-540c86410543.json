@@ -1,0 +1,30 @@
+{
+  "question_id": 4025,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18577",
+  "text": "E' consentito sostituire il motore del quadriciclo leggero per aumentare la velocità massima oltre i 45 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Modifica dei veicoli a motore",
+      "Omologazione e caratteristiche tecniche dei quadricicli leggeri",
+      "Sicurezza stradale e rispetto delle normative tecniche"
+    ],
+    "exact_keywords": [
+      "quadriciclo leggero",
+      "velocità massima",
+      "modifica del motore",
+      "omologazione",
+      "45 km/h"
+    ],
+    "vector_search_queries": [
+      "modifica caratteristiche tecniche quadriciclo leggero vietata",
+      "limiti di velocità quadricicli leggeri omologati",
+      "alterazione motore per aumento velocità quadriciclo"
+    ],
+    "rule_explanation": "La modifica del motore di un quadriciclo leggero per superare i 45 km/h è vietata, poiché tale veicolo deve rispettare le caratteristiche tecniche previste per la sua omologazione."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31024",
+  "text": "Il conducente non deve mai sopravvalutare la propria abilità di guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Principio di prudenza alla guida",
+      "Autovalutazione delle capacità di guida",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "abilità di guida",
+      "prudenza",
+      "condotta di guida",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza per i conducenti",
+      "autovalutazione delle capacità di guida e sicurezza stradale",
+      "conseguenze della sopravvalutazione delle proprie abilità alla guida"
+    ],
+    "rule_explanation": "Il conducente deve sempre agire con prudenza, evitando di sopravvalutare le proprie capacità per non creare situazioni di pericolo per sé e per gli altri."
+  }
+}

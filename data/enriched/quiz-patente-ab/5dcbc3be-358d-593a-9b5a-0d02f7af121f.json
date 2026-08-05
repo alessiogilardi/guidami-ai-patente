@@ -1,0 +1,27 @@
+{
+  "question_id": 4624,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24716",
+  "text": "In caso di pioggia occorre coprire il radiatore con l'apposita mascherina",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti stradali",
+      "Adattamento della guida alle condizioni atmosferiche"
+    ],
+    "exact_keywords": [
+      "pioggia",
+      "radiatore",
+      "mascherina",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "comportamento di guida in caso di pioggia",
+      "adeguamento della velocità e della distanza di sicurezza in condizioni di scarsa aderenza"
+    ],
+    "rule_explanation": "In caso di pioggia, non è necessario coprire il radiatore con una mascherina; è invece fondamentale moderare la velocità e aumentare la distanza di sicurezza."
+  }
+}

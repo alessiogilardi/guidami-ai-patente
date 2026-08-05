@@ -1,0 +1,29 @@
+{
+  "question_id": 4386,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22445",
+  "text": "La velocità deve essere particolarmente moderata subito dopo il tramonto del sole",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di visibilità",
+      "Pericolo per la circolazione"
+    ],
+    "exact_keywords": [
+      "velocità moderata",
+      "condizioni di visibilità",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità alle condizioni di visibilità",
+      "moderazione della velocità in condizioni di scarsa illuminazione",
+      "obbligo di ridurre la velocità in presenza di pericolo o intralcio alla circolazione"
+    ],
+    "rule_explanation": "La velocità va sempre adeguata alle condizioni di visibilità, non solo dopo il tramonto, ma in ogni situazione di scarsa illuminazione o visibilità ridotta per evitare pericoli."
+  }
+}

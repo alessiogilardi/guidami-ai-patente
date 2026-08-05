@@ -1,0 +1,32 @@
+{
+  "question_id": 4137,
+  "topic": "Segnali di divieto",
+  "number": "19895",
+  "text": "Il segnale raffigurato non vale per gli autocarri di massa complessiva pari a 7 tonnellate",
+  "correct_answer": false,
+  "image": "28ff9501e70957cfba029d212ffefb79.jpeg",
+  "image_description": "Fine divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Indica la fine del divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Non vieta il sorpasso per le autovetture.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una banda diagonale nera che va dall'angolo in alto a sinistra all'angolo in basso a destra. Alla sinistra della banda nera è raffigurato un autotreno, mentre alla destra è raffigurata un'autovettura. Il segnale è di tipo \"fine prescrizione\".",
+    "name": "Fine divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati",
+    "description": "Indica la fine del divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Non vieta il sorpasso per le autovetture."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Eccezioni ai divieti di circolazione"
+    ],
+    "exact_keywords": [
+      "divieto di sorpasso",
+      "autocarri",
+      "massa complessiva",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "ambito di applicazione dei segnali di divieto di sorpasso",
+      "eccezioni ai divieti di sorpasso per autocarri",
+      "segnali stradali di fine divieto di sorpasso e loro validità"
+    ],
+    "rule_explanation": "Il segnale di fine divieto di sorpasso si applica a tutti i veicoli indicati, a meno che non siano specificate eccezioni. Gli autocarri con massa complessiva di 7 tonnellate sono inclusi nel divieto se questo è generale."
+  }
+}

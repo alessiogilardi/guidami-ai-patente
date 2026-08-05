@@ -1,0 +1,28 @@
+{
+  "question_id": 4643,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24865",
+  "text": "Nelle operazioni di primo soccorso bisogna evitare che al ferito vengano praticati interventi sbagliati o dannosi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Doveri del soccorritore",
+      "Principio di non nuocere"
+    ],
+    "exact_keywords": [
+      "primo soccorso",
+      "ferito",
+      "interventi sbagliati",
+      "dannosi"
+    ],
+    "vector_search_queries": [
+      "divieto di arrecare danno al ferito durante il primo soccorso",
+      "correttezza degli interventi di primo soccorso"
+    ],
+    "rule_explanation": "Nelle operazioni di primo soccorso è fondamentale evitare di arrecare ulteriori danni al ferito, praticando solo interventi corretti e necessari."
+  }
+}

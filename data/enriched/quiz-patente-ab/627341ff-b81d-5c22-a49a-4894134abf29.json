@@ -1,0 +1,28 @@
+{
+  "question_id": 4014,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18462",
+  "text": "La carreggiata può essere suddivisa in corsie",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Carreggiata",
+      "Corsia di marcia",
+      "Suddivisione della carreggiata"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "corsia",
+      "suddivisione",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "suddivisione della carreggiata in corsie di marcia",
+      "definizione di carreggiata e corsia di marcia"
+    ],
+    "rule_explanation": "La carreggiata, la parte della strada destinata ai veicoli, può essere suddivisa in una o più corsie di marcia, delimitate da segnaletica orizzontale."
+  }
+}

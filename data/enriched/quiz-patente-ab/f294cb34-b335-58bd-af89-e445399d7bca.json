@@ -1,0 +1,28 @@
+{
+  "question_id": 4407,
+  "topic": "Distanza di sicurezza",
+  "number": "22655",
+  "text": "La distanza di sicurezza deve essere almeno uguale ai metri che il veicolo percorre durante il tempo di reazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Tempo di reazione",
+      "Distanza di frenata"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "tempo di reazione",
+      "distanza di frenata",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "calcolo distanza di sicurezza veicolo",
+      "componenti della distanza di arresto: tempo di reazione e frenata"
+    ],
+    "rule_explanation": "La distanza di sicurezza è la somma della distanza percorsa durante il tempo di reazione e della distanza di frenata, garantendo la possibilità di arresto in caso di imprevisti."
+  }
+}

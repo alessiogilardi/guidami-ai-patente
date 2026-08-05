@@ -1,0 +1,28 @@
+{
+  "question_id": 4505,
+  "topic": "Norme sul sorpasso",
+  "number": "23604",
+  "text": "Se si viene sorpassati mentre sopraggiunge un veicolo dal senso opposto, si ha l'obbligo di mantenere la stessa velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di mantenere la corsia di marcia",
+      "Comportamento in caso di sorpasso subito",
+      "Distanza di sicurezza dal veicolo sorpassante"
+    ],
+    "exact_keywords": [
+      "sorpasso da tergo",
+      "veicolo dal senso opposto",
+      "mantenere la corsia di marcia",
+      "non accelerare"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente che viene sorpassato con traffico in senso contrario",
+      "comportamento in caso di sorpasso subito e veicolo in arrivo dal senso opposto"
+    ],
+    "rule_explanation": "In caso di sorpasso da tergo, se sopraggiunge un veicolo dal senso opposto, il conducente che viene sorpassato deve mantenere la propria destra e non accelerare, per agevolare il sorpasso."
+  }
+}

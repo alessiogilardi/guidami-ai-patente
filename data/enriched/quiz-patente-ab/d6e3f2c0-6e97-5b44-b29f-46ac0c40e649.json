@@ -1,0 +1,32 @@
+{
+  "question_id": 4110,
+  "topic": "Segnali di divieto",
+  "number": "19589",
+  "text": "Il segnale raffigurato preavvisa che a 70 metri inizia il divieto di transito per le autovetture",
+  "correct_answer": false,
+  "image": "1be58ec74bcd0d03bb415339bccad9e3.jpeg",
+  "image_description": "Distanza minima tra veicoli. Il segnale impone di mantenere una distanza di almeno 70 metri dal veicolo che precede.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro sono raffigurati due veicoli stilizzati (presumibilmente autovetture) visti di lato, uno dietro l'altro, con una freccia che indica la distanza tra di essi. Sopra i veicoli, in un riquadro bianco, è indicato il valore \"70 m\". Il segnale è un segnale di prescrizione che impone una distanza minima.",
+    "name": "Distanza minima tra veicoli",
+    "description": "Il segnale impone di mantenere una distanza di almeno 70 metri dal veicolo che precede."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Distanza minima tra veicoli"
+    ],
+    "exact_keywords": [
+      "segnale raffigurato",
+      "distanza minima",
+      "veicolo che precede",
+      "divieto di transito"
+    ],
+    "vector_search_queries": [
+      "segnali che impongono distanza minima tra veicoli",
+      "interpretazione segnale di distanza minima 70 metri",
+      "differenza tra segnale di prescrizione e divieto di transito"
+    ],
+    "rule_explanation": "Il segnale raffigurato impone una distanza minima di 70 metri dal veicolo che precede, non preavvisa un divieto di transito per autovetture."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4571,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24142",
+  "text": "L'errata impostazione dell'orientamento dei proiettori può ridurre la visibilità del conducente o abbagliare gli altri utenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso corretto dei proiettori",
+      "Sicurezza nella guida notturna"
+    ],
+    "exact_keywords": [
+      "orientamento proiettori",
+      "visibilità del conducente",
+      "abbagliamento",
+      "altri utenti della strada"
+    ],
+    "vector_search_queries": [
+      "regolazione proiettori e visibilità",
+      "pericoli dell'abbagliamento da errata impostazione dei fari"
+    ],
+    "rule_explanation": "L'errata regolazione dei proiettori compromette la visibilità del conducente e può causare abbagliamento agli altri utenti della strada, violando le norme di sicurezza."
+  }
+}

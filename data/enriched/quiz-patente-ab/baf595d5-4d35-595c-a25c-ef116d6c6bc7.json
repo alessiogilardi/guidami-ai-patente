@@ -1,0 +1,33 @@
+{
+  "question_id": 4221,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20807",
+  "text": "In presenza delle strisce di guida in figura il veicolo A può andare in qualsiasi direzione",
+  "correct_answer": true,
+  "image": "d12587ece8be5fe2dee2c4814a97332d.jpeg",
+  "image_description": "Incrocio a T rovesciata con precedenza a destra. L'incrocio è a forma di T rovesciata, con una strada che si immette da sinistra e una che prosegue dritto e si immette da destra. Non sono presenti segnali verticali di prescrizione o obbligo. La segnaletica orizzontale indica le direzioni consentite dalle corsie. Il veicolo C si trova sulla strada che immette da sinistra e si appresta a immettersi sulla strada principale. Il veicolo A si trova sulla strada principale, proveniente da destra, e si appresta a proseguire dritto. Il veicolo B si trova sulla strada principale, proveniente da sinistra, e si appresta a svoltare a sinistra. In assenza di segnali verticali, si applica la regola generale della precedenza a destra. Pertanto, il veicolo B, che proviene da sinistra e si immette sulla strada principale, deve dare la precedenza al veicolo A, che proviene da destra e prosegue dritto. Il veicolo C, immettendosi da sinistra, deve dare la precedenza sia al veicolo A che al veicolo B.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una scena di guida con un incrocio a forma di T rovesciata. Una strada proveniente da sinistra si immette su una strada principale che proviene da destra e prosegue verso l'alto. Sono presenti tre veicoli: A (giallo) sulla strada principale proveniente da destra, B (rosso) sulla strada principale proveniente da sinistra, e C (nero) sulla strada che si immette da sinistra. La segnaletica orizzontale indica le direzioni consentite: la strada principale permette di proseguire dritto o svoltare a sinistra (percorsa da A e B), mentre la strada che si immette da sinistra permette di svoltare a destra (percorsa da C). Non sono presenti segnali verticali. Si applica la regola della precedenza a destra. Il veicolo B deve dare la precedenza al veicolo A. Il veicolo C deve dare la precedenza sia al veicolo A che al veicolo B.",
+    "name": "Incrocio a T rovesciata con precedenza a destra",
+    "description": "L'incrocio è a forma di T rovesciata, con una strada che si immette da sinistra e una che prosegue dritto e si immette da destra. Non sono presenti segnali verticali di prescrizione o obbligo. La segnaletica orizzontale indica le direzioni consentite dalle corsie. Il veicolo C si trova sulla strada che immette da sinistra e si appresta a immettersi sulla strada principale. Il veicolo A si trova sulla strada principale, proveniente da destra, e si appresta a proseguire dritto. Il veicolo B si trova sulla strada principale, proveniente da sinistra, e si appresta a svoltare a sinistra. In assenza di segnali verticali, si applica la regola generale della precedenza a destra. Pertanto, il veicolo B, che proviene da sinistra e si immette sulla strada principale, deve dare la precedenza al veicolo A, che proviene da destra e prosegue dritto. Il veicolo C, immettendosi da sinistra, deve dare la precedenza sia al veicolo A che al veicolo B."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Direzioni consentite",
+      "Regole di circolazione in assenza di segnaletica verticale"
+    ],
+    "exact_keywords": [
+      "strisce di guida",
+      "direzioni consentite",
+      "segnaletica orizzontale",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "indicazioni delle strisce di guida sulla carreggiata",
+      "interpretazione della segnaletica orizzontale per le direzioni consentite",
+      "regole di circolazione in presenza di strisce di guida"
+    ],
+    "rule_explanation": "Le strisce di guida sulla carreggiata indicano le direzioni consentite per ciascuna corsia, guidando la manovra dei veicoli."
+  }
+}

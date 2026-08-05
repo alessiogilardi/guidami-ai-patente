@@ -1,0 +1,29 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25321",
+  "text": "Una frenatura poco efficiente o squilibrata può essere causata dalla differente pressione di gonfiaggio dei pneumatici dello stesso asse",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza del sistema frenante",
+      "Manutenzione dei pneumatici",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "frenatura inefficiente",
+      "pressione di gonfiaggio",
+      "pneumatici dello stesso asse",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "causa di frenatura inefficiente o squilibrata",
+      "influenza della pressione pneumatici sulla frenata",
+      "effetti della pressione differenziale dei pneumatici sull'asse"
+    ],
+    "rule_explanation": "Una pressione non uniforme dei pneumatici sullo stesso asse compromette l'efficacia e l'equilibrio della frenata, influenzando la stabilità del veicolo."
+  }
+}

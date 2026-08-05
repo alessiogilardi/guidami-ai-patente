@@ -1,0 +1,29 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24544",
+  "text": "La patente di categoria B consente di guidare, solo sul territorio nazionale (Italia) e se il conducente ha almeno 21 anni, i tricicli a motore di potenza superiore a 15 kW",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria B",
+      "Veicoli conducibili con patente B",
+      "Limitazioni territoriali e anagrafiche"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "tricicli a motore",
+      "potenza superiore a 15 kW",
+      "territorio nazionale",
+      "età minima"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente B in Italia",
+      "tricicli a motore potenza 15 kW patente B"
+    ],
+    "rule_explanation": "La patente B abilita alla guida dei tricicli a motore di potenza superiore a 15 kW, senza limiti di età, ma solo sul territorio nazionale."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4331,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21840",
+  "text": "Il segnale raffigurato si trova in vicinanza di un incrocio che precede un cantiere stradale",
+  "correct_answer": true,
+  "image": "95f306d30190f8232c642442bc2380bf.jpeg",
+  "image_description": "Indicazione stradale di direzione consigliata per autocarri. Il segnale indica la direzione consigliata per gli autocarri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore giallo con bordo nero. Nella parte superiore è presente una freccia nera orizzontale che punta verso destra. Sotto la freccia, è raffigurato un autocarro nero. Il segnale è di tipo complementare, con funzione di preavviso o indicazione.",
+    "name": "Indicazione stradale di direzione consigliata per autocarri",
+    "description": "Il segnale indica la direzione consigliata per gli autocarri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali complementari",
+      "Segnali temporanei e di cantiere",
+      "Preavviso di incrocio"
+    ],
+    "exact_keywords": [
+      "segnali complementari",
+      "cantiere stradale",
+      "incrocio",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali complementari di cantiere stradale e incrocio",
+      "preavviso di cantiere stradale con indicazioni aggiuntive"
+    ],
+    "rule_explanation": "I segnali complementari, come quello di preavviso di cantiere, possono essere integrati con altri segnali (es. direzione consigliata) e preannunciano la presenza di un cantiere stradale prima di un incrocio."
+  }
+}

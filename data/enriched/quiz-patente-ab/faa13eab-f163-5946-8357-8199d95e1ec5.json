@@ -1,0 +1,31 @@
+{
+  "question_id": 4431,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22888",
+  "text": "E' obbligatorio dare la precedenza a tutti i veicoli circolanti quando si svolta a sinistra",
+  "correct_answer": false,
+  "image": "7f30c2092cbae8a33505fdc2297bb6a3.jpeg",
+  "image_description": "Incrocio con strada senza diritto di precedenza. Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta un incrocio a T, con la strada principale orizzontale e la strada secondaria che si immette da destra e da sinistra. La forma del pittogramma indica che la strada su cui si sta viaggiando si immette in una strada trasversale.",
+    "name": "Incrocio con strada senza diritto di precedenza",
+    "description": "Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di precedenza in fase di svolta",
+      "Regole di circolazione agli incroci"
+    ],
+    "exact_keywords": [
+      "svolta a sinistra",
+      "dare la precedenza",
+      "incrocio",
+      "veicoli partecipanti alla manovra"
+    ],
+    "vector_search_queries": [
+      "precedenza durante la svolta a sinistra in un incrocio",
+      "obbligo di dare precedenza ai veicoli provenienti dalla direzione opposta in caso di svolta a sinistra"
+    ],
+    "rule_explanation": "In una svolta a sinistra, si deve dare la precedenza ai veicoli provenienti dalla direzione opposta, a meno che non si immettano in una strada senza diritto di precedenza."
+  }
+}

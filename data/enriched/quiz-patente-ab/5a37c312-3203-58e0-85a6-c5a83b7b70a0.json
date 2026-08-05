@@ -1,0 +1,27 @@
+{
+  "question_id": 4649,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24907",
+  "text": "Se un ferito della strada è in stato di incoscienza, può essere mosso solo se si è certi che non abbia traumi alla colonna vertebrale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di incidente stradale",
+      "Gestione del trauma spinale"
+    ],
+    "exact_keywords": [
+      "stato di incoscienza",
+      "trauma vertebrale",
+      "colonna vertebrale",
+      "movimento del ferito"
+    ],
+    "vector_search_queries": [
+      "movimentazione ferito incosciente con sospetto trauma spinale",
+      "primo soccorso trauma colonna vertebrale incoscienza"
+    ],
+    "rule_explanation": "In caso di incoscienza del ferito, il movimento è consentito solo se strettamente necessario e con la certezza dell'assenza di traumi alla colonna vertebrale per evitare aggravamenti."
+  }
+}

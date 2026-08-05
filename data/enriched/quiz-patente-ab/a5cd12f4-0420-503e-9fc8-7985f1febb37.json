@@ -1,0 +1,28 @@
+{
+  "question_id": 4007,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18393",
+  "text": "Nell'intersezione (incrocio) a livelli sfalsati non valgono i limiti massimi generali di velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità",
+      "Intersezioni stradali",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "intersezione a livelli sfalsati",
+      "limiti massimi di velocità",
+      "velocità adeguata",
+      "condizioni di traffico"
+    ],
+    "vector_search_queries": [
+      "limiti di velocità nelle intersezioni a livelli sfalsati",
+      "obbligo di adeguare la velocità anche in presenza di limiti massimi in intersezioni stradali"
+    ],
+    "rule_explanation": "I limiti massimi generali di velocità valgono anche nelle intersezioni a livelli sfalsati, ma il conducente deve sempre adeguare la velocità alle condizioni specifiche per garantire la sicurezza."
+  }
+}

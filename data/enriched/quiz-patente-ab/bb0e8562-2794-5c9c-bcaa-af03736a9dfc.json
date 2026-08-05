@@ -1,0 +1,28 @@
+{
+  "question_id": 4011,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18429",
+  "text": "Nelle aree pedonali possono transitare i veicoli della polizia, con sirena e luce lampeggiante blu in funzione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree pedonali",
+      "Deroghe ai divieti di transito",
+      "Veicoli di emergenza"
+    ],
+    "exact_keywords": [
+      "area pedonale",
+      "veicoli al servizio di polizia",
+      "dispositivi acustici e luminosi",
+      "transito"
+    ],
+    "vector_search_queries": [
+      "accesso veicoli polizia in area pedonale con sirena e lampeggiante blu",
+      "deroga al divieto di transito in area pedonale per polizia"
+    ],
+    "rule_explanation": "Nelle aree pedonali è consentito il transito ai veicoli della polizia, qualora abbiano in funzione i dispositivi acustici e luminosi specifici."
+  }
+}

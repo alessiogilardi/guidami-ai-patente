@@ -1,0 +1,29 @@
+{
+  "question_id": 4671,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25068",
+  "text": "Diminuendo opportunamente la velocità diminuisce il consumo di carburante",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Efficienza energetica dei veicoli",
+      "Impatto ambientale della guida"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "consumo di carburante",
+      "riduzione dei consumi",
+      "guida ecologica"
+    ],
+    "vector_search_queries": [
+      "relazione tra velocità e consumo di carburante",
+      "impatto della velocità sui consumi e sull'inquinamento",
+      "guida a velocità ridotta per minor consumo di carburante"
+    ],
+    "rule_explanation": "La riduzione della velocità di marcia comporta una diminuzione dei consumi di carburante e, di conseguenza, una minore emissione di gas inquinanti nell'atmosfera."
+  }
+}

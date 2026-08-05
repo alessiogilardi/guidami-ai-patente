@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23504",
+  "text": "E' consentito il sorpasso in prossimità o in corrispondenza delle intersezioni se regolate dai semafori",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole di sorpasso",
+      "Intersezioni stradali",
+      "Segnaletica luminosa"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "intersezioni",
+      "semafori",
+      "regolate"
+    ],
+    "vector_search_queries": [
+      "sorpasso in prossimità di intersezioni semaforizzate",
+      "condizioni di consentito sorpasso in corrispondenza di incroci con semafori"
+    ],
+    "rule_explanation": "Il sorpasso è consentito in prossimità o in corrispondenza delle intersezioni semaforizzate, salvo diversa segnalazione."
+  }
+}

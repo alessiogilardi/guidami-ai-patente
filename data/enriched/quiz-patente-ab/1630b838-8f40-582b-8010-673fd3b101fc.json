@@ -1,0 +1,27 @@
+{
+  "question_id": 4573,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24157",
+  "text": "E' obbligatorio accendere i proiettori anabbaglianti, anche di giorno, quando si transita in galleria",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di accensione luci in galleria",
+      "Uso dei proiettori anabbaglianti"
+    ],
+    "exact_keywords": [
+      "proiettori anabbaglianti",
+      "galleria",
+      "obbligo",
+      "luci a basso impatto luminoso"
+    ],
+    "vector_search_queries": [
+      "accensione luci in galleria",
+      "uso proiettori anabbaglianti in galleria"
+    ],
+    "rule_explanation": "È obbligatorio l'uso dei proiettori anabbaglianti, o delle luci a basso impatto luminoso, durante la marcia in galleria, indipendentemente dalla presenza di illuminazione artificiale."
+  }
+}

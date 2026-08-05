@@ -1,0 +1,29 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24777",
+  "text": "Su strada sdrucciolevole, per garantire le migliori condizioni di aderenza in frenata, è opportuno premere a fondo il pedale del freno",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Frenata su fondi sdrucciolevoli",
+      "Aderenza pneumatici",
+      "Controllo del veicolo in frenata"
+    ],
+    "exact_keywords": [
+      "strada sdrucciolevole",
+      "aderenza",
+      "frenata",
+      "pedale del freno"
+    ],
+    "vector_search_queries": [
+      "tecnica di frenata su strada bagnata o sdrucciolevole",
+      "mantenimento dell'aderenza in frenata su fondi a bassa aderenza",
+      "rischio bloccaggio ruote in frenata su asfalto sdrucciolevole"
+    ],
+    "rule_explanation": "Su strada sdrucciolevole, per evitare il bloccaggio delle ruote e mantenere l'aderenza, è consigliabile una frenata modulata e non a fondo, specialmente sui veicoli non dotati di ABS."
+  }
+}

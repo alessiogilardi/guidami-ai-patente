@@ -1,0 +1,27 @@
+{
+  "question_id": 4434,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22918",
+  "text": "Uscendo con un veicolo da una proprietà privata, è obbligatorio suonare il clacson",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uscita da proprietà privata",
+      "Segnalazione acustica"
+    ],
+    "exact_keywords": [
+      "proprietà privata",
+      "clacson",
+      "segnalazione acustica",
+      "manovra di uscita"
+    ],
+    "vector_search_queries": [
+      "uso del clacson per segnalare manovra di uscita da proprietà privata",
+      "obbligo di segnalazione acustica all'uscita da aree private"
+    ],
+    "rule_explanation": "L'uso del clacson è consentito solo per motivi di sicurezza e non è obbligatorio né consentito per segnalare l'uscita da una proprietà privata."
+  }
+}

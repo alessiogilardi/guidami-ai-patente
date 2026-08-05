@@ -1,0 +1,28 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18794",
+  "text": "In vicinanza di un attraversamento pedonale, il conducente deve aspettarsi dai bambini una reazione rapida e un comportamento corretto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Comportamento dei conducenti in prossimità di attraversamenti pedonali"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "conducente",
+      "bambini",
+      "comportamento",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in prossimità di attraversamenti pedonali con bambini",
+      "condotta da tenere in presenza di bambini a un attraversamento pedonale"
+    ],
+    "rule_explanation": "Il conducente deve moderare la velocità e prestare massima prudenza in prossimità degli attraversamenti pedonali, in particolare quando vi sono bambini, poiché questi potrebbero avere reazioni imprevedibili."
+  }
+}

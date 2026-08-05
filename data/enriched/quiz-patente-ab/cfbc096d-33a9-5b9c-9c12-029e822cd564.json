@@ -1,0 +1,27 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23474",
+  "text": "Il conducente del veicolo che viene sorpassato deve agevolare la manovra di sorpasso e non accelerare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di agevolare il sorpasso",
+      "Comportamento del veicolo sorpassato"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo sorpassato",
+      "agevolare la manovra",
+      "non accelerare"
+    ],
+    "vector_search_queries": [
+      "obbligo del conducente sorpassato di agevolare il sorpasso",
+      "divieto di accelerazione per il veicolo sorpassato"
+    ],
+    "rule_explanation": "Il conducente del veicolo sorpassato ha l'obbligo di agevolare la manovra di sorpasso, astenendosi dall'accelerare per non ostacolare il veicolo sorpassante."
+  }
+}

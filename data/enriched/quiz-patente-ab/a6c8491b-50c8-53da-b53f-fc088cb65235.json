@@ -1,0 +1,28 @@
+{
+  "question_id": 4627,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24738",
+  "text": "In presenza di tratti di strada ghiacciati è opportuno procedere a velocità moderata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di pericolo della strada",
+      "Guida prudente"
+    ],
+    "exact_keywords": [
+      "velocità moderata",
+      "strada ghiacciata",
+      "condizioni di pericolo",
+      "prevenzione degli incidenti"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità a condizioni stradali di pericolo come il ghiaccio",
+      "obbligo di moderare la velocità in presenza di ghiaccio per prevenire incidenti"
+    ],
+    "rule_explanation": "In presenza di ghiaccio o altre condizioni di pericolo, il conducente ha l'obbligo di moderare la velocità per garantire la sicurezza e prevenire incidenti."
+  }
+}

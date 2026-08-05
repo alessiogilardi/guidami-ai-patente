@@ -1,0 +1,27 @@
+{
+  "question_id": 4440,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22969",
+  "text": "Se sul tetto di un'auto della polizia è presente un display con la scritta luminosa \"RALLENTARE\", l'obbligo è rivolto ai soli veicoli pesanti.",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di rallentamento per veicoli di polizia",
+      "Segnalazione luminosa di pericolo o prescrizione"
+    ],
+    "exact_keywords": [
+      "veicolo di polizia",
+      "display con scritta luminosa",
+      "rallentare",
+      "obbligo di rallentamento"
+    ],
+    "vector_search_queries": [
+      "obbligo di rallentamento per veicoli in presenza di segnalazioni luminose di polizia",
+      "interpretazione delle scritte luminose sui veicoli di polizia per la sicurezza stradale"
+    ],
+    "rule_explanation": "L'obbligo di rallentare imposto da un display luminoso su un veicolo di polizia è rivolto a tutti i veicoli, non solo a quelli pesanti."
+  }
+}

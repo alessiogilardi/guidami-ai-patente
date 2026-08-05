@@ -1,0 +1,32 @@
+{
+  "question_id": 4487,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23385",
+  "text": "Nell'incrocio rappresentato in figura i veicoli transitano nel seguente ordine: D, A, R",
+  "correct_answer": false,
+  "image": "04bd7988c0d0d205a7d4dabac821215c.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. Il veicolo A si trova in una carreggiata che si immette in quella principale. I veicoli D e R si trovano sulla carreggiata principale. Il veicolo D è un veicolo eccezionale. Non sono presenti segnali stradali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo R ha la precedenza sul veicolo D perché si trova alla sua destra. Il veicolo A deve dare la precedenza ai veicoli che transitano sulla carreggiata principale, quindi deve dare la precedenza sia al veicolo R che al veicolo D. L'ordine di passaggio corretto è: R, D, A.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso tra due strade. Sulla carreggiata di destra, proveniente dall'alto, si trova il veicolo A (un'auto gialla). Sulla carreggiata principale, che attraversa l'incrocio da sinistra verso destra, si trovano due veicoli: il veicolo R (un'auto blu) che proviene da sinistra e il veicolo D (due camion rossi) che proviene da destra. Sulla fiancata del veicolo D è indicata la scritta \"VEICOLO ECCEZIONALE\". Non sono presenti segnali stradali di precedenza (come STOP, dare precedenza, o segnali di diritto di precedenza) né semafori. Le linee tratteggiate indicano le traiettorie dei veicoli. Il veicolo R si trova alla destra del veicolo D. Il veicolo A si immette nella carreggiata principale e ha quindi il veicolo R e il veicolo D alla sua sinistra. In assenza di segnali specifici, si applica la regola generale della precedenza a destra. Pertanto, il veicolo R ha la precedenza sul veicolo D. Entrambi i veicoli R e D hanno la precedenza sul veicolo A, in quanto si trovano sulla strada principale che si immette. L'ordine di transito corretto è: R, D, A.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. Il veicolo A si trova in una carreggiata che si immette in quella principale. I veicoli D e R si trovano sulla carreggiata principale. Il veicolo D è un veicolo eccezionale. Non sono presenti segnali stradali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo R ha la precedenza sul veicolo D perché si trova alla sua destra. Il veicolo A deve dare la precedenza ai veicoli che transitano sulla carreggiata principale, quindi deve dare la precedenza sia al veicolo R che al veicolo D. L'ordine di passaggio corretto è: R, D, A."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza ai incroci non regolamentati"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "veicolo eccezionale",
+      "regola generale"
+    ],
+    "vector_search_queries": [
+      "ordine di precedenza incrocio non regolamentato",
+      "precedenza a destra tra veicoli in un incrocio",
+      "condotta dei veicoli in prossimità di incroci stradali"
+    ],
+    "rule_explanation": "Negli incroci non regolamentati, si applica la regola della precedenza a destra. I veicoli eccezionali non hanno precedenza di per sé, ma devono rispettarla come gli altri."
+  }
+}

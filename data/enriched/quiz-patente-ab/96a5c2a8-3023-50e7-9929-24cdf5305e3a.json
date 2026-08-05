@@ -1,0 +1,27 @@
+{
+  "question_id": 4707,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25340",
+  "text": "Le sospensioni di un veicolo a motore servono a garantire un buon confort di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzione delle sospensioni veicolo",
+      "Manutenzione e sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "confort di marcia",
+      "stabilità",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "ruolo delle sospensioni nel comfort e nella stabilità del veicolo",
+      "funzione delle sospensioni per la tenuta di strada"
+    ],
+    "rule_explanation": "Le sospensioni di un veicolo a motore hanno la duplice funzione di garantire il comfort dei passeggeri e di assicurare la stabilità e la tenuta di strada del veicolo."
+  }
+}

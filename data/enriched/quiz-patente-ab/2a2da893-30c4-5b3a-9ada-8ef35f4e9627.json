@@ -1,0 +1,27 @@
+{
+  "question_id": 4527,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23789",
+  "text": "La sosta nelle corsie o carreggiate riservate ai mezzi pubblici, è consentita, nei centri abitati, dalle ore 22.00 alle ore 8.00",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta su corsie riservate a mezzi pubblici",
+      "Divieto di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "corsie riservate ai mezzi pubblici",
+      "centri abitati",
+      "divieto di sosta"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta su corsie riservate ai mezzi pubblici",
+      "regolamentazione della sosta in aree dedicate ai trasporti pubblici"
+    ],
+    "rule_explanation": "La sosta nelle corsie riservate ai mezzi pubblici è vietata, anche nei centri abitati e negli orari indicati, salvo diversa segnalazione."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4013,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18448",
+  "text": "L'autostrada è a carreggiate indipendenti o separate da spartitraffico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autostrada",
+      "Caratteristiche costruttive delle autostrade"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "carreggiate indipendenti",
+      "spartitraffico",
+      "definizione"
+    ],
+    "vector_search_queries": [
+      "definizione stradale di autostrada",
+      "caratteristiche costruttive autostrada carreggiate separate"
+    ],
+    "rule_explanation": "L'autostrada è una strada extraurbana speciale, caratterizzata da carreggiate separate o indipendenti, accessi controllati e assenza di intersezioni a raso."
+  }
+}

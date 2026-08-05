@@ -1,0 +1,28 @@
+{
+  "question_id": 4624,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24719",
+  "text": "In caso di pioggia occorre procedere, di norma, con il pedale della frizione abbassato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Comportamento prudente in caso di pioggia"
+    ],
+    "exact_keywords": [
+      "condizioni di scarsa aderenza",
+      "velocità ridotta",
+      "frenata",
+      "freno motore"
+    ],
+    "vector_search_queries": [
+      "guida in condizioni di scarsa aderenza con pioggia",
+      "uso del freno motore in caso di pioggia",
+      "comportamento di guida sicuro in caso di precipitazioni"
+    ],
+    "rule_explanation": "In caso di pioggia, l'aderenza diminuisce. Non si deve procedere con la frizione abbassata, ma usare il freno motore e una velocità ridotta per mantenere il controllo del veicolo."
+  }
+}

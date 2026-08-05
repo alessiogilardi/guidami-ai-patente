@@ -1,0 +1,27 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23629",
+  "text": "Prima di iniziare a guidare un autoveicolo è opportuno regolare gli specchi retrovisori interni ed esterni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione dei dispositivi di controllo della visibilità",
+      "Manovre di partenza e guida sicura"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "regolazione",
+      "partenza",
+      "autoveicolo"
+    ],
+    "vector_search_queries": [
+      "regolazione specchi retrovisori prima di partire",
+      "importanza specchietti retrovisori per la sicurezza di guida"
+    ],
+    "rule_explanation": "Prima di iniziare a guidare, è fondamentale regolare gli specchi retrovisori interni ed esterni per garantire una corretta visibilità e sicurezza durante la marcia."
+  }
+}

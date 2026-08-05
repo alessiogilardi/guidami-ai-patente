@@ -1,0 +1,33 @@
+{
+  "question_id": 4307,
+  "topic": "Segnali di indicazione",
+  "number": "21619",
+  "text": "Il segnale raffigurato vieta la manovra di inversione di marcia",
+  "correct_answer": false,
+  "image": "ba0e3bf8bcbf65be03198270e1e8b821.jpeg",
+  "image_description": "Segnale di strada senza uscita. Il segnale indica che la strada che si sta percorrendo termina in una strada senza uscita. La parte bianca rappresenta la strada che si sta percorrendo, mentre la parte rossa indica la strada senza uscita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con angoli arrotondati. Il fondo del segnale è blu scuro. Al centro del segnale è presente una figura bianca a forma di 'T' rovesciata, con la traversa orizzontale che si estende verso destra. All'estremità destra della traversa orizzontale, vi è un rettangolo verticale di colore rosso, che rappresenta la parte finale della strada. La parte bianca della 'T' rappresenta la strada che prosegue, mentre la parte rossa indica la fine della strada.",
+    "name": "Segnale di strada senza uscita",
+    "description": "Il segnale indica che la strada che si sta percorrendo termina in una strada senza uscita. La parte bianca rappresenta la strada che si sta percorrendo, mentre la parte rossa indica la strada senza uscita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Segnali di indicazione",
+      "Manovra di inversione di marcia"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "inversione di marcia",
+      "strada senza uscita",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale e loro significato",
+      "divieto di inversione di marcia e segnali associati",
+      "differenza tra segnali di indicazione e segnali di divieto"
+    ],
+    "rule_explanation": "Il segnale di 'strada senza uscita' è un segnale di indicazione che non vieta alcuna manovra, ma informa che la strada termina. L'inversione di marcia è vietata da specifici segnali di divieto."
+  }
+}

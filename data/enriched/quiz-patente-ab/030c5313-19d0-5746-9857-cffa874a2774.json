@@ -1,0 +1,30 @@
+{
+  "question_id": 4616,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24580",
+  "text": "La patente di guida viene immediatamente ritirata, durante la circolazione, se il conducente non sistema correttamente il carico mal disposto, dopo invito degli organi di polizia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente verso gli agenti",
+      "Sanzioni amministrative accessorie",
+      "Corretto posizionamento del carico"
+    ],
+    "exact_keywords": [
+      "ritiro patente",
+      "circolazione",
+      "carico mal disposto",
+      "organi di polizia",
+      "invito"
+    ],
+    "vector_search_queries": [
+      "sanzioni per carico mal disposto e mancato ripristino",
+      "ritiro patente per inosservanza ordini polizia stradale",
+      "obblighi conducente in caso di carico non conforme e invito al ripristino"
+    ],
+    "rule_explanation": "Il ritiro immediato della patente durante la circolazione è previsto in caso di mancato rispetto dell'invito degli organi di polizia a sistemare correttamente un carico mal disposto."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4624,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24711",
+  "text": "In caso di pioggia occorre tenere in funzione i tergicristalli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Condizioni atmosferiche e sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "tergicristalli",
+      "pioggia",
+      "visibilità",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "obbligo funzionamento tergicristalli in caso di pioggia",
+      "visibilità del conducente con pioggia"
+    ],
+    "rule_explanation": "In caso di pioggia, è obbligatorio tenere in funzione i tergicristalli per garantire la visibilità del conducente e la sicurezza della circolazione."
+  }
+}

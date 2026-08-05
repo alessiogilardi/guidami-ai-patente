@@ -1,0 +1,30 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23007",
+  "text": "Gli specchi retrovisori devono essere utilizzati dal conducente per controllare, prima di svoltare, che non sopraggiungano veicoli da dietro",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di controllo visivo prima di manovre",
+      "Uso degli specchi retrovisori",
+      "Sicurezza nella manovra di svolta"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "sorpasso",
+      "sorpassare",
+      "manovra",
+      "svolta"
+    ],
+    "vector_search_queries": [
+      "controllo specchi retrovisori prima di svoltare",
+      "verifica sopraggiunta veicoli da dietro prima di manovra",
+      "obbligo di uso specchietti per sorpasso e svolta"
+    ],
+    "rule_explanation": "Prima di effettuare una manovra, specialmente una svolta, il conducente deve utilizzare gli specchi retrovisori per accertarsi che non vi siano veicoli in fase di sorpasso o che sopraggiungano da dietro."
+  }
+}

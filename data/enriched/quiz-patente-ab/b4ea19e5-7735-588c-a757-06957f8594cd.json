@@ -1,0 +1,34 @@
+{
+  "question_id": 4333,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21860",
+  "text": "La barriera raffigurata può essere integrata da lanterna a luce rossa fissa in caso di scarsa visibilità",
+  "correct_answer": true,
+  "image": "14d2108f6b028cd2d01929a738bf0b94.jpeg",
+  "image_description": "Barriera di cantiere. La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una barriera di cantiere, composta da una traversa orizzontale a strisce diagonali bianche e rosse, sostenuta da due montanti verticali. La barriera è posta su una linea orizzontale che rappresenta il suolo. Le strisce rosse e bianche alternate indicano un pericolo o un ostacolo temporaneo.",
+    "name": "Barriera di cantiere",
+    "description": "La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica temporanea di cantiere",
+      "Dispositivi di protezione e preavviso",
+      "Condizioni di scarsa visibilità"
+    ],
+    "exact_keywords": [
+      "barriera di cantiere",
+      "lanterna fissa",
+      "luce rossa",
+      "scarsa visibilità",
+      "segnalamento complementare"
+    ],
+    "vector_search_queries": [
+      "integrazione segnaletica di cantiere con luci rosse fisse",
+      "uso di lanterne a luce rossa su barriere stradali temporanee",
+      "segnalamento complementare per cantieri in condizioni di scarsa visibilità"
+    ],
+    "rule_explanation": "Le barriere di cantiere possono essere integrate con lanterne a luce rossa fissa per migliorare la visibilità in condizioni di scarsa illuminazione o meteorologica avversa."
+  }
+}

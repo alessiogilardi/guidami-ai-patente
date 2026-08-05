@@ -1,0 +1,29 @@
+{
+  "question_id": 4602,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24432",
+  "text": "Gli stivali ad uso motociclistico hanno la suola in acciaio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Equipaggiamento motociclistico",
+      "Dispositivi di protezione individuale (DPI)",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "stivali motociclistici",
+      "suola in acciaio",
+      "calzature protettive",
+      "normativa DPI"
+    ],
+    "vector_search_queries": [
+      "requisiti calzature motociclistiche",
+      "funzione protettiva stivali da moto",
+      "normativa suola stivali motociclisti"
+    ],
+    "rule_explanation": "Gli stivali da motociclista devono essere calzature protettive, ma la suola in acciaio non è un requisito né una caratteristica tipica o necessaria."
+  }
+}

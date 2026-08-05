@@ -1,0 +1,27 @@
+{
+  "question_id": 4013,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18450",
+  "text": "Le macchine agricole non possono circolare in autostrada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione dei veicoli in autostrada",
+      "Classificazione dei veicoli e loro ammissione alla circolazione"
+    ],
+    "exact_keywords": [
+      "macchine agricole",
+      "autostrada",
+      "divieto di circolazione",
+      "veicoli ammessi"
+    ],
+    "vector_search_queries": [
+      "divieto di circolazione per macchine agricole in autostrada",
+      "veicoli non ammessi in autostrada"
+    ],
+    "rule_explanation": "Le macchine agricole, per loro natura e caratteristiche, non sono ammesse alla circolazione in autostrada, salvo specifiche deroghe previste dalla legge."
+  }
+}

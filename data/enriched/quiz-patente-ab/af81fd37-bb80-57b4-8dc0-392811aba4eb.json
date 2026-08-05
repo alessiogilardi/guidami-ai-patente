@@ -1,0 +1,27 @@
+{
+  "question_id": 4511,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23654",
+  "text": "Durante la fermata il conducente deve sempre adottare le opportune cautele atte ad evitare incidenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Precauzioni durante la sosta"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "conducente",
+      "cautele",
+      "evitare incidenti"
+    ],
+    "vector_search_queries": [
+      "precauzioni da adottare durante la fermata del veicolo",
+      "obblighi del conducente durante la fermata per evitare incidenti"
+    ],
+    "rule_explanation": "Durante la fermata, il conducente deve adottare tutte le precauzioni necessarie per garantire la sicurezza della circolazione e prevenire incidenti."
+  }
+}

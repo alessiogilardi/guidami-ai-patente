@@ -1,0 +1,27 @@
+{
+  "question_id": 4545,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23915",
+  "text": "Sui veicoli è consentito il trasporto di cani anche in numero superiore ad uno, purché adeguatamente trattenuti al guinzaglio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto di animali domestici",
+      "Norme sul trasporto di animali sui veicoli"
+    ],
+    "exact_keywords": [
+      "trasporto di animali",
+      "veicoli",
+      "cani",
+      "adeguatamente trattenuti"
+    ],
+    "vector_search_queries": [
+      "trasporto animali domestici su veicoli codice della strada",
+      "norme trasporto cani in auto"
+    ],
+    "rule_explanation": "Il trasporto di animali sui veicoli è consentito solo se le dimensioni del veicolo lo permettono e se gli animali sono custoditi in apposite gabbie o contenitori, non se semplicemente legati al guinzaglio."
+  }
+}

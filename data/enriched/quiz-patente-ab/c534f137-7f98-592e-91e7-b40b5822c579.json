@@ -1,0 +1,28 @@
+{
+  "question_id": 4047,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18818",
+  "text": "Alla guida di un veicolo, in vicinanza di una piazzola di fermata di autobus per scolari, occorre suonare per invitare i bambini che attraversano sulle strisce a dare la precedenza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Protezione degli utenti deboli della strada",
+      "Comportamento dei conducenti in prossimità di fermate di autobus scolastici"
+    ],
+    "exact_keywords": [
+      "fermata di autobus per scolari",
+      "segnale di pericolo",
+      "precedenza ai pedoni",
+      "uso del clacson"
+    ],
+    "vector_search_queries": [
+      "obbligo di dare precedenza ai pedoni in prossimità di fermate scolastiche",
+      "divieto di uso del clacson in prossimità di fermate di autobus per scolari",
+      "comportamento del conducente verso bambini che attraversano la strada"
+    ],
+    "rule_explanation": "In prossimità delle fermate di autobus per scolari, il conducente deve usare prudenza e dare la precedenza ai pedoni, specialmente bambini, senza usare il clacson."
+  }
+}

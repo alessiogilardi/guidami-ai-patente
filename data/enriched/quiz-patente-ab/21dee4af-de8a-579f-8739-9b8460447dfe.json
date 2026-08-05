@@ -1,0 +1,32 @@
+{
+  "question_id": 4108,
+  "topic": "Segnali di divieto",
+  "number": "19563",
+  "text": "Il segnale raffigurato si trova solo sulle strade extraurbane principali",
+  "correct_answer": false,
+  "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg",
+  "image_description": "Segnale di divieto di sorpasso. Il segnale vieta il sorpasso a tutti i veicoli, ad eccezione di quelli a due ruote senza carrozzella, dei quadricicli a motore e dei quadricicli non leggeri. Il divieto si applica anche quando la manovra può essere compiuta sorpassando la striscia continua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale sono raffigurati due automobili, una rossa e una nera, affiancate. La presenza delle due automobili, una che precede l'altra, indica un divieto di sorpasso.",
+    "name": "Segnale di divieto di sorpasso",
+    "description": "Il segnale vieta il sorpasso a tutti i veicoli, ad eccezione di quelli a due ruote senza carrozzella, dei quadricicli a motore e dei quadricicli non leggeri. Il divieto si applica anche quando la manovra può essere compiuta sorpassando la striscia continua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Applicabilità dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "divieto di sorpasso",
+      "strade extraurbane principali",
+      "segnali di prescrizione",
+      "divieto valgono anche su altre strade"
+    ],
+    "vector_search_queries": [
+      "applicabilità territoriale segnale divieto di sorpasso",
+      "segnali di prescrizione divieto sorpasso strade extraurbane",
+      "estensione divieto sorpasso segnale specifico"
+    ],
+    "rule_explanation": "Il segnale di divieto di sorpasso non si applica esclusivamente alle strade extraurbane principali, ma può essere presente anche su altre tipologie di strade ove necessario."
+  }
+}

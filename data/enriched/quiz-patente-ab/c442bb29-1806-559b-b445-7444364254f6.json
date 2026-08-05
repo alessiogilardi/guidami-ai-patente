@@ -1,0 +1,33 @@
+{
+  "question_id": 4186,
+  "topic": "Segnali di obbligo",
+  "number": "20429",
+  "text": "Il segnale raffigurato segnala un varco doganale al quale è obbligatorio fermarsi",
+  "correct_answer": true,
+  "image": "a6d6b9350877f6a3d941348f790b1ca6.jpeg",
+  "image_description": "Segnale di fermarsi e dare precedenza (Dogana). Il segnale impone l'obbligo di fermarsi al varco doganale per i controlli previsti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro, su una linea orizzontale nera, sono scritte le parole \"DOGANA\" in alto e \"DOUANE\" in basso. Questo è un segnale di prescrizione che indica un punto di controllo doganale.",
+    "name": "Segnale di fermarsi e dare precedenza (Dogana)",
+    "description": "Il segnale impone l'obbligo di fermarsi al varco doganale per i controlli previsti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Varco doganale",
+      "Obbligo di fermarsi"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "varco doganale",
+      "fermarsi",
+      "dare precedenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di fermarsi al varco doganale",
+      "segnaletica stradale per dogana",
+      "segnali di obbligo di fermarsi e dare precedenza"
+    ],
+    "rule_explanation": "Il segnale raffigurato impone l'obbligo di fermarsi al varco doganale per i controlli previsti, integrando la funzione del segnale di 'fermarsi e dare precedenza'."
+  }
+}

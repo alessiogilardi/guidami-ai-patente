@@ -1,0 +1,29 @@
+{
+  "question_id": 4709,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25371",
+  "text": "Se il veicolo è sovraccarico, per evitare problemi agli ammortizzatori è sufficiente aumentare la pressione dei pneumatici di mezzo bar",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sovraccarico del veicolo",
+      "Manutenzione dei pneumatici",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "sovraccarico",
+      "ammortizzatori",
+      "pressione dei pneumatici",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "effetti del sovraccarico sulla tenuta di strada",
+      "corretta pressione pneumatici in relazione al carico",
+      "manutenzione ammortizzatori e pneumatici in condizioni di sovraccarico"
+    ],
+    "rule_explanation": "Il sovraccarico del veicolo può compromettere la tenuta di strada e la stabilità; aumentare la sola pressione dei pneumatici non è sufficiente a compensare gli effetti negativi sugli ammortizzatori e sulla sicurezza."
+  }
+}

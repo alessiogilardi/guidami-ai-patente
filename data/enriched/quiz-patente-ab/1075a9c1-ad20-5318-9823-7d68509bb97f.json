@@ -1,0 +1,28 @@
+{
+  "question_id": 4654,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24949",
+  "text": "Lo stato di shock non rappresenta un pericolo per la salute",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di shock",
+      "Pericolo per la salute",
+      "Primo soccorso"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "pericolo per la salute",
+      "primo soccorso",
+      "condizioni fisiche"
+    ],
+    "vector_search_queries": [
+      "conseguenze dello stato di shock sulla salute",
+      "pericolosità dello stato di shock e necessità di primo soccorso"
+    ],
+    "rule_explanation": "Lo stato di shock, caratterizzato da una grave compromissione della circolazione sanguigna, rappresenta un pericolo immediato per la salute e richiede un intervento di primo soccorso tempestivo."
+  }
+}

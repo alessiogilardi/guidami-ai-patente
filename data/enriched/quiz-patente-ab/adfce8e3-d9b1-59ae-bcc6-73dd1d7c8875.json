@@ -1,0 +1,32 @@
+{
+  "question_id": 4591,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24309",
+  "text": "Il simbolo raffigurato individua il luogo ove è riposto l'estintore di bordo",
+  "correct_answer": false,
+  "image": "7ddd91f6c3fc7ef9f36722f849d5a624.jpeg",
+  "image_description": "Spia del sistema frenante (simbolo punto esclamativo all'interno di cerchio con parentesi). La spia indica un malfunzionamento dell'impianto frenante. Può segnalare un livello insufficiente del liquido dei freni o un problema più generale al sistema. È necessario fermarsi e controllare l'impianto frenante.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una spia luminosa con un simbolo al suo interno. Il simbolo è un punto esclamativo (!) posto al centro di un cerchio, a sua volta circondato da due parentesi curve aperte verso l'esterno. Questo simbolo è universalmente riconosciuto come indicatore di un problema al sistema frenante del veicolo. La spia è tipicamente di colore rosso, segnalando un'avaria grave che richiede attenzione immediata.",
+    "name": "Spia del sistema frenante (simbolo punto esclamativo all'interno di cerchio con parentesi)",
+    "description": "La spia indica un malfunzionamento dell'impianto frenante. Può segnalare un livello insufficiente del liquido dei freni o un problema più generale al sistema. È necessario fermarsi e controllare l'impianto frenante."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori di avaria del veicolo",
+      "Segnalazione di malfunzionamenti dell'impianto frenante"
+    ],
+    "exact_keywords": [
+      "spia",
+      "simbolo",
+      "impianto frenante",
+      "liquido dei freni"
+    ],
+    "vector_search_queries": [
+      "spia malfunzionamento impianto frenante",
+      "simbolo indicatore livello liquido freni",
+      "avaria freni spia punto esclamativo"
+    ],
+    "rule_explanation": "La spia con punto esclamativo indica un malfunzionamento dell'impianto frenante, non la presenza dell'estintore. È necessario fermarsi e controllare i freni."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4708,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25348",
+  "text": "Le sospensioni possono diventare inefficienti per usura o per aver subito urti troppo forti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Componenti del veicolo"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "usura",
+      "urti",
+      "efficienza",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "funzionamento sospensioni veicolo",
+      "manutenzione sospensioni e sicurezza",
+      "usura componenti veicolo e tenuta di strada"
+    ],
+    "rule_explanation": "Le sospensioni sono componenti essenziali per la tenuta di strada e la sicurezza; la loro efficienza può diminuire a causa di usura o urti violenti."
+  }
+}

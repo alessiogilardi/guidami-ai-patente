@@ -1,0 +1,27 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31039",
+  "text": "Il conducente che intende passare per primo in un incrocio deve sopraggiungervi più velocemente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza in incrocio",
+      "Principio di prudenza nella circolazione"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "velocità di avvicinamento",
+      "regola generale di precedenza",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "precedenza in incrocio velocità di avvicinamento",
+      "condotta di guida in prossimità di incroci"
+    ],
+    "rule_explanation": "In un incrocio, chi intende passare per primo non deve sopraggiungere più velocemente, ma deve moderare la velocità per garantire la sicurezza e rispettare le regole di precedenza."
+  }
+}

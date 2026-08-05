@@ -1,0 +1,27 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23015",
+  "text": "Gli specchi retrovisori devono essere utilizzati per un controllo della strada dietro al veicolo, ogni volta che a un incrocio si intende proseguire diritto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso degli specchi retrovisori",
+      "Controllo della strada in prossimità degli incroci"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "controllo della strada dietro al veicolo",
+      "incrocio",
+      "proseguire diritto"
+    ],
+    "vector_search_queries": [
+      "uso degli specchi retrovisori per controllo strada dietro al veicolo",
+      "obbligo di controllo posteriore con specchi retrovisori in prossimità di incroci"
+    ],
+    "rule_explanation": "Gli specchi retrovisori vanno usati per controllare la strada dietro al veicolo in ogni circostanza, non solo quando si svolta ma anche quando si prosegue diritto all'incrocio."
+  }
+}

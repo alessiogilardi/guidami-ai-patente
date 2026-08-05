@@ -1,0 +1,28 @@
+{
+  "question_id": 4025,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18578",
+  "text": "I quadricicli non sono soggetti a revisione periodica",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione periodica dei veicoli",
+      "Classificazione dei veicoli",
+      "Obblighi del conducente"
+    ],
+    "exact_keywords": [
+      "quadricicli",
+      "revisione periodica",
+      "veicoli a motore",
+      "documenti di circolazione"
+    ],
+    "vector_search_queries": [
+      "revisione periodica obbligatoria per quadricicli",
+      "soggezione dei quadricicli alla revisione tecnica"
+    ],
+    "rule_explanation": "I quadricicli, come altri veicoli a motore, sono soggetti a revisione periodica per verificarne l'efficienza e la sicurezza stradale."
+  }
+}

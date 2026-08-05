@@ -1,0 +1,30 @@
+{
+  "question_id": 4671,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25075",
+  "text": "I veicoli ibridi (con due motori, a scoppio ed elettrico) inquinano di più perché azionati da due motori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Veicoli a propulsione ibrida",
+      "Inquinamento atmosferico",
+      "Efficienza energetica"
+    ],
+    "exact_keywords": [
+      "veicolo ibrido",
+      "motore a scoppio",
+      "motore elettrico",
+      "inquinamento",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "riduzione emissioni veicoli ibridi rispetto a veicoli tradizionali",
+      "impatto ambientale veicoli con motore a scoppio ed elettrico",
+      "vantaggi ambientali della tecnologia ibrida"
+    ],
+    "rule_explanation": "I veicoli ibridi, grazie all'integrazione tra motore a scoppio ed elettrico, tendono ad avere minori emissioni inquinanti rispetto ai veicoli tradizionali con solo motore a combustione interna."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4657,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24970",
+  "text": "Chi è civilmente obbligato a risarcire i danni provocati da un sinistro stradale può far riparare il proprio autoveicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile per fatto altrui",
+      "Risarcimento del danno da circolazione stradale"
+    ],
+    "exact_keywords": [
+      "civilmente obbligato",
+      "risarcire i danni",
+      "sinistro stradale",
+      "riparazione del veicolo"
+    ],
+    "vector_search_queries": [
+      "responsabilità civile risarcimento danni sinistro stradale riparazione veicolo",
+      "obbligato civile al risarcimento danni autoveicolo"
+    ],
+    "rule_explanation": "Chi è civilmente obbligato al risarcimento dei danni causati da un sinistro stradale ha diritto a far riparare il proprio veicolo, purché ciò non pregiudichi il diritto al risarcimento del danneggiato."
+  }
+}

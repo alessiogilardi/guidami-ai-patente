@@ -1,0 +1,28 @@
+{
+  "question_id": 4438,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22948",
+  "text": "In un incrocio regolato con circolazione rotatoria, l'obbligo di dare la precedenza può essere imposto ai veicoli che stanno per immettersi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione rotatoria",
+      "Obbligo di precedenza",
+      "Immissione nella rotatoria"
+    ],
+    "exact_keywords": [
+      "incrocio a circolazione rotatoria",
+      "immissione nella rotatoria",
+      "dare la precedenza",
+      "veicoli in circolazione"
+    ],
+    "vector_search_queries": [
+      "precedenza ai veicoli in rotatoria",
+      "obbligo di dare precedenza all'immissione in una rotatoria"
+    ],
+    "rule_explanation": "Negli incroci a circolazione rotatoria, i veicoli che si immettono devono dare la precedenza ai veicoli già circolanti all'interno della rotatoria."
+  }
+}

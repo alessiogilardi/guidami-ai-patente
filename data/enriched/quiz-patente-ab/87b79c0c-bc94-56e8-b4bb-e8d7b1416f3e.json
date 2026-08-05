@@ -1,0 +1,29 @@
+{
+  "question_id": 4674,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25090",
+  "text": "Per diminuire il rumore è necessario far sostituire la marmitta rovinata con una approvata per quel tipo di veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Manutenzione del veicolo",
+      "Dispositivi di scarico"
+    ],
+    "exact_keywords": [
+      "rumore",
+      "marmitta",
+      "veicolo",
+      "dispositivi di scarico"
+    ],
+    "vector_search_queries": [
+      "sostituzione marmitta per riduzione rumore veicolo",
+      "omologazione marmitta e inquinamento acustico",
+      "manutenzione sistema di scarico per contenimento emissioni sonore"
+    ],
+    "rule_explanation": "La marmitta, parte del sistema di scarico, deve essere efficiente e omologata per ridurre le emissioni sonore del veicolo, prevenendo l'inquinamento acustico."
+  }
+}

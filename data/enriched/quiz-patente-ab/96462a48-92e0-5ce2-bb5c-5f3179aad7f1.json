@@ -1,0 +1,30 @@
+{
+  "question_id": 4536,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23846",
+  "text": "Il giubbotto o le bretelle retroriflettenti ad alta visibilità da usare durante le operazioni di presegnalazione con il segnale mobile di pericolo devono essere di tipo approvato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza per veicoli fermi",
+      "Obblighi del conducente in caso di emergenza",
+      "Normativa sui dispositivi di protezione individuale"
+    ],
+    "exact_keywords": [
+      "giubbotto o bretelle retroriflettenti",
+      "alta visibilità",
+      "tipo approvato",
+      "segnalazione di veicolo fermo",
+      "segnali delle yaptıklarar"
+    ],
+    "vector_search_queries": [
+      "requisiti dei giubbotti retroriflettenti per la presegnalazione di veicoli fermi",
+      "obbligo di indossare dispositivi di alta visibilità approvati in caso di emergenza stradale",
+      "omologazione dei dispositivi di sicurezza per la segnalazione di pericolo su strada"
+    ],
+    "rule_explanation": "I dispositivi di protezione individuale, come giubbotti o bretelle retroriflettenti ad alta visibilità, devono essere di tipo omologato per garantire la sicurezza durante le operazioni di presegnalazione di un veicolo fermo."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4004,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18341",
+  "text": "L'attraversamento pedonale viene segnalato con strisce bianche parallele",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Attraversamento pedonale"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "strisce bianche",
+      "segnaletica orizzontale",
+      "dispositivi di preavviso"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per attraversamenti pedonali",
+      "caratteristiche delle strisce pedonali",
+      "definizione e segnaletica dell'attraversamento pedonale"
+    ],
+    "rule_explanation": "L'attraversamento pedonale è una porzione della carreggiata stradale opportunamente delimitata e segnalata per consentire ai pedoni di attraversare in sicurezza."
+  }
+}

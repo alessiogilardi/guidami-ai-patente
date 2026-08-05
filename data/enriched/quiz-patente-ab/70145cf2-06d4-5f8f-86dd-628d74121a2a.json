@@ -1,0 +1,28 @@
+{
+  "question_id": 4607,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24472",
+  "text": "Le targhe dei veicoli non devono essere manomesse o contraffatte",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inalterabilità delle targhe di immatricolazione",
+      "Divieto di manomissione e contraffazione delle targhe"
+    ],
+    "exact_keywords": [
+      "targhe",
+      "veicoli",
+      "manomesse",
+      "contraffatte"
+    ],
+    "vector_search_queries": [
+      "divieto di manomissione delle targhe di immatricolazione",
+      "obbligo di conservare le targhe dei veicoli in stato originale",
+      "sanzioni per la contraffazione delle targhe di riconoscimento"
+    ],
+    "rule_explanation": "Le targhe dei veicoli devono essere sempre leggibili e non devono essere alterate, manomesse o contraffatte per garantirne l'identificazione univoca."
+  }
+}

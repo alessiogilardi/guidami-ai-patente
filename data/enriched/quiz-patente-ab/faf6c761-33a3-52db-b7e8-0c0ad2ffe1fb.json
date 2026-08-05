@@ -1,0 +1,31 @@
+{
+  "question_id": 4461,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23174",
+  "text": "Nell'incrocio rappresentato nella figura i veicoli passano nel seguente ordine: S, N, C",
+  "correct_answer": true,
+  "image": "56a61f413809c6c01929e42680d021f0.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. Il veicolo S, proveniente da sinistra, deve dare precedenza ai veicoli provenienti dalla sua destra, in particolare al veicolo N. Il veicolo N, proveniente dalla strada principale, deve dare precedenza al veicolo C, che proviene dalla sua destra. Il veicolo C, proveniente dalla strada principale, deve dare precedenza ai veicoli provenienti dalla sua sinistra, in particolare al veicolo S. In assenza di segnali specifici, si applica la regola generale della precedenza a destra. Pertanto, l'ordine di transito corretto è: S (dà precedenza a N), N (dà precedenza a C), C (dà precedenza a S). L'ordine di transito è quindi S, N, C.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con tre veicoli: S (blu), N (rosso) e C (bianco). Il veicolo S si trova in basso a sinistra e intende svoltare a sinistra. Il veicolo N si trova a sinistra e intende proseguire dritto. Il veicolo C si trova in alto e intende svoltare a sinistra. Non sono presenti segnali stradali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo S deve dare precedenza al veicolo N. Il veicolo N deve dare precedenza al veicolo C. Il veicolo C deve dare precedenza al veicolo S. L'ordine di transito corretto è S, N, C.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. Il veicolo S, proveniente da sinistra, deve dare precedenza ai veicoli provenienti dalla sua destra, in particolare al veicolo N. Il veicolo N, proveniente dalla strada principale, deve dare precedenza al veicolo C, che proviene dalla sua destra. Il veicolo C, proveniente dalla strada principale, deve dare precedenza ai veicoli provenienti dalla sua sinistra, in particolare al veicolo S. In assenza di segnali specifici, si applica la regola generale della precedenza a destra. Pertanto, l'ordine di transito corretto è: S (dà precedenza a N), N (dà precedenza a C), C (dà precedenza a S). L'ordine di transito è quindi S, N, C."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza ai incroci"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "precedenza a destra",
+      "ordine di transito",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "ordine di precedenza incrocio senza segnaletica",
+      "regola della precedenza a destra tra veicoli"
+    ],
+    "rule_explanation": "Negli incroci senza segnaletica, si applica la regola della precedenza a destra. L'ordine di transito è determinato da chi ha la destra libera."
+  }
+}

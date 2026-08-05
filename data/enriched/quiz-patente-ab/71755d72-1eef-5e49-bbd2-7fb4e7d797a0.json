@@ -1,0 +1,29 @@
+{
+  "question_id": 4700,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25272",
+  "text": "In caso di frenata di emergenza, con entrata in azione dell'ABS, bisogna immediatamente diminuire la pressione esercitata sul pedale del freno",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema antibloccaggio (ABS)",
+      "Frenata di emergenza",
+      "Comportamento del conducente"
+    ],
+    "exact_keywords": [
+      "ABS",
+      "frenata di emergenza",
+      "pressione sul pedale",
+      "bloccaggio delle ruote"
+    ],
+    "vector_search_queries": [
+      "funzionamento ABS in frenata d'emergenza",
+      "corretto uso del pedale del freno con ABS attivo",
+      "mantenimento pressione pedale freno con ABS"
+    ],
+    "rule_explanation": "In frenata d'emergenza con ABS, il conducente deve mantenere la pressione costante sul pedale, senza modularla, per permettere al sistema di gestire il bloccaggio delle ruote."
+  }
+}

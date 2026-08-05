@@ -1,0 +1,31 @@
+{
+  "question_id": 4426,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22825",
+  "text": "Chi conduce gli animali li deve tenere il più possibile vicino al margine destro della carreggiata",
+  "correct_answer": true,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento dei veicoli sulla carreggiata",
+      "Conduzione di animali"
+    ],
+    "exact_keywords": [
+      "animali",
+      "margine destro",
+      "carreggiata",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "posizione degli animali sulla carreggiata",
+      "obblighi del conducente di animali sulla strada"
+    ],
+    "rule_explanation": "Chi conduce animali deve tenerli il più vicino possibile al margine destro della carreggiata per non intralciare la circolazione."
+  }
+}

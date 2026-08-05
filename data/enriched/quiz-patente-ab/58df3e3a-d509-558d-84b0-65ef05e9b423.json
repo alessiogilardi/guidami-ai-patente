@@ -1,0 +1,32 @@
+{
+  "question_id": 4275,
+  "topic": "Segnali di indicazione",
+  "number": "21312",
+  "text": "Il segnale raffigurato indica l'inizio di un centro abitato",
+  "correct_answer": false,
+  "image": "de2e34baaf50dc90e8fa8061dcec1f85.jpeg",
+  "image_description": "Indicazione autostradale e di distanza. Il segnale indica che si sta percorrendo l'autostrada n. 54 e che la località Piacenza si trova a 4 chilometri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale composto da due parti. La parte sinistra è un pannello quadrato bianco con un bordo nero, contenente il numero \"54\" in nero. La parte destra è un pannello rettangolare verde con bordo bianco, contenente la scritta \"PIACENZA\" in bianco e il numero \"4\" in bianco. Il segnale nel suo complesso è un segnale di indicazione stradale. La parte sinistra indica il numero dell'autostrada, mentre la parte destra indica la località di destinazione (Piacenza) e la distanza in chilometri (4) da essa.",
+    "name": "Indicazione autostradale e di distanza",
+    "description": "Il segnale indica che si sta percorrendo l'autostrada n. 54 e che la località Piacenza si trova a 4 chilometri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di inizio centro abitato",
+      "Segnali di indicazione autostradale"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "inizio autostrada",
+      "località",
+      "distanza"
+    ],
+    "vector_search_queries": [
+      "differenza segnale inizio centro abitato e segnale autostradale",
+      "segnaletica stradale inizio centro abitato",
+      "segnali autostradali di località e distanza"
+    ],
+    "rule_explanation": "Il segnale di inizio centro abitato ha una forma specifica e indica l'entrata in un agglomerato urbano, non un'autostrada o una località distante."
+  }
+}

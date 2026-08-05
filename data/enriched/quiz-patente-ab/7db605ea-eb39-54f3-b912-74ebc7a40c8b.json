@@ -1,0 +1,29 @@
+{
+  "question_id": 4035,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18686",
+  "text": "Quando si viaggia in fila con altri veicoli, è opportuno spostarsi al centro della carreggiata, per controllare la situazione del traffico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento del veicolo nella corsia",
+      "Comportamento in colonna",
+      "Sicurezza stradale e convivenza civile"
+    ],
+    "exact_keywords": [
+      "fila di veicoli",
+      "carreggiata",
+      "controllo del traffico",
+      "manovra di spostamento"
+    ],
+    "vector_search_queries": [
+      "posizionamento del veicolo in colonna nella carreggiata",
+      "comportamento del conducente in fila di veicoli",
+      "divieto di spostamenti laterali in colonna per controllo traffico"
+    ],
+    "rule_explanation": "In colonna, il conducente deve mantenere il proprio veicolo al centro della corsia di marcia, senza effettuare spostamenti laterali non necessari che potrebbero intralciare o creare pericolo."
+  }
+}

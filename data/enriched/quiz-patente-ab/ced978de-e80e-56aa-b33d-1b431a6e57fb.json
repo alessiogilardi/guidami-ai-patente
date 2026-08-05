@@ -1,0 +1,28 @@
+{
+  "question_id": 4513,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23666",
+  "text": "La fermata è vietata sui binari di linee ferroviarie o tranviarie o così vicino ad essi da intralciare la marcia dei veicoli su rotaia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di fermata",
+      "Ostacolo alla circolazione su rotaia"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "vietata",
+      "binari",
+      "linee ferroviarie",
+      "linee tranviarie"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata in prossimità di binari ferroviari o tranviari",
+      "intralcio alla marcia dei veicoli su rotaia"
+    ],
+    "rule_explanation": "La fermata è vietata sui binari di linee ferroviarie o tranviarie, o in loro prossimità se si intralcia la marcia dei veicoli su rotaia."
+  }
+}

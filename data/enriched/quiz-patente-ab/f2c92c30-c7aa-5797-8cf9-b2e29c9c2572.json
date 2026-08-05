@@ -1,0 +1,30 @@
+{
+  "question_id": 4594,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24325",
+  "text": "Se un veicolo è dotato di air-bag, non vi è l'obbligo di indossare le cinture di sicurezza durante la marcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Sistemi di ritenuta per bambini",
+      "Airbag come sistema complementare"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "airbag",
+      "veicolo",
+      "obbligo",
+      "marcia"
+    ],
+    "vector_search_queries": [
+      "obbligo uso cinture sicurezza con airbag",
+      "funzione airbag e cinture di sicurezza",
+      "sistemi di ritenuta obbligatori in marcia"
+    ],
+    "rule_explanation": "L'airbag è un sistema di sicurezza complementare e non sostituisce l'obbligo di indossare le cinture di sicurezza, anche se il veicolo ne è dotato."
+  }
+}

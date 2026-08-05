@@ -1,0 +1,28 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18713",
+  "text": "E' vietato spargere fango o detriti sulle strade con le ruote sporche dei veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri dei conducenti",
+      "Uso responsabile della strada",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "spargere fango",
+      "detriti",
+      "ruote sporche",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di spargere fango o detriti dalla ruote del veicolo",
+      "obbligo di mantenere pulite le ruote per non sporcare la strada"
+    ],
+    "rule_explanation": "È vietato per i conducenti spargere fango o detriti sulla carreggiata a causa delle ruote del veicolo non pulite, per garantire la sicurezza e la pulizia stradale."
+  }
+}

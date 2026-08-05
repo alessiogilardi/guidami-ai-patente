@@ -1,0 +1,29 @@
+{
+  "question_id": 4650,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24914",
+  "text": "Se un infortunato della strada è cosciente, ma ha avuto un trauma della gabbia toracica, bisogna cercare di facilitargli la respirazione mettendolo semi-seduto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di trauma toracico",
+      "Posizionamento del traumatizzato per facilitare la respirazione"
+    ],
+    "exact_keywords": [
+      "infortunato della strada",
+      "cosciente",
+      "trauma della gabbia toracica",
+      "semi-seduto",
+      "respirazione"
+    ],
+    "vector_search_queries": [
+      "posizione semi-seduta per trauma toracico",
+      "primo soccorso infortunato cosciente con trauma toracico",
+      "facilitare la respirazione in caso di trauma alla gabbia toracica"
+    ],
+    "rule_explanation": "In caso di trauma toracico con infortunato cosciente, la posizione semi-seduta facilita la respirazione e riduce il rischio di complicazioni respiratorie."
+  }
+}

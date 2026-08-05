@@ -1,0 +1,27 @@
+{
+  "question_id": 4648,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24903",
+  "text": "Un ferito in stato di shock va messo in posizione seduta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione dello shock in primo soccorso",
+      "Posizionamento del paziente in caso di shock"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "posizione seduta",
+      "posizione supina",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "posizione corretta del ferito in stato di shock",
+      "primo soccorso: gestione dello shock e posizionamento del paziente"
+    ],
+    "rule_explanation": "In caso di stato di shock, il ferito va posizionato in posizione supina con arti inferiori sollevati, non seduta, per favorire il ritorno venoso al cuore."
+  }
+}

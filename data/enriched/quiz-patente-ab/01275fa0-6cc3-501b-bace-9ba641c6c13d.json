@@ -1,0 +1,33 @@
+{
+  "question_id": 4341,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21933",
+  "text": "I delineatori raffigurati sono posti ai margini di una strada a doppio senso",
+  "correct_answer": true,
+  "image": "34b768de9091a2ab398379195567246a.jpeg",
+  "image_description": "Delineatori divisori di carreggiata. I delineatori raffigurati sono elementi di segnaletica complementare posti ai margini della carreggiata per evidenziare il suo andamento, particolarmente utili in condizioni di scarsa visibilità o di notte. Quello a sinistra indica il lato destro della carreggiata, mentre quello a destra indica il lato sinistro.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due delineatori posti uno accanto all'altro. Entrambi sono composti da un palo grigio con una parte superiore inclinata. Il delineatore di sinistra ha una banda bianca sulla parte inclinata, mentre quello di destra ha una banda rossa. Sono posizionati su una linea orizzontale che rappresenta il suolo. Questi delineatori sono tipicamente utilizzati per delimitare la carreggiata o le corsie, specialmente in presenza di curve, ostacoli o in condizioni di scarsa visibilità. La loro funzione è quella di guidare e rendere più visibile il percorso stradale.",
+    "name": "Delineatori divisori di carreggiata",
+    "description": "I delineatori raffigurati sono elementi di segnaletica complementare posti ai margini della carreggiata per evidenziare il suo andamento, particolarmente utili in condizioni di scarsa visibilità o di notte. Quello a sinistra indica il lato destro della carreggiata, mentre quello a destra indica il lato sinistro."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica complementare",
+      "Delineatori stradali",
+      "Segnaletica di cantiere"
+    ],
+    "exact_keywords": [
+      "delineatori stradali",
+      "segnaletica complementare",
+      "margine della carreggiata",
+      "strada a doppio senso"
+    ],
+    "vector_search_queries": [
+      "funzione dei delineatori divisori di carreggiata",
+      "utilizzo dei delineatori stradali in strade a doppio senso",
+      "segnaletica complementare per evidenziare il margine della carreggiata"
+    ],
+    "rule_explanation": "I delineatori divisori di carreggiata sono segnali complementari posti ai margini della carreggiata per evidenziarne l'andamento, specialmente in condizioni di scarsa visibilità o di notte."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4150,
+  "topic": "Segnali di obbligo",
+  "number": "20041",
+  "text": "Il segnale raffigurato indica che è obbligatorio passare a sinistra dell'ostacolo",
+  "correct_answer": false,
+  "image": "b23552307304d167fe185d4c6fe5181f.jpeg",
+  "image_description": "Obbligo di svolta a sinistra. Il segnale impone l'obbligo di svoltare a sinistra. Non è consentito proseguire diritto o svoltare a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca che indica una svolta a sinistra, con una prima parte orizzontale che poi curva verso l'alto e a sinistra. Questo è un segnale di obbligo.",
+    "name": "Obbligo di svolta a sinistra",
+    "description": "Il segnale impone l'obbligo di svoltare a sinistra. Non è consentito proseguire diritto o svoltare a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Direzione imposta dalla segnaletica"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "preavviso di deviazione obbligatoria",
+      "direzione obbligatoria a sinistra"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo di direzione a sinistra",
+      "obbligo di passaggio a sinistra dell'ostacolo"
+    ],
+    "rule_explanation": "Il segnale di obbligo di deviazione impone di passare a sinistra dell'ostacolo, non di svoltare a sinistra."
+  }
+}

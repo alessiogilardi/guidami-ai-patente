@@ -1,0 +1,30 @@
+{
+  "question_id": 4606,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24464",
+  "text": "Un autoveicolo per poter circolare deve essere munito delle targhe identificative, affinché sia possibile risalire all'intestatario del mezzo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Identificazione del veicolo",
+      "Obblighi del conducente",
+      "Documenti di circolazione"
+    ],
+    "exact_keywords": [
+      "targa identificativa",
+      "circolare",
+      "autoveicolo",
+      "intestatario",
+      "documenti di circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di targhe identificative per la circolazione degli autoveicoli",
+      "funzione delle targhe per l'identificazione del proprietario del veicolo",
+      "requisiti per la circolazione di un autoveicolo: targhe"
+    ],
+    "rule_explanation": "Per circolare, ogni autoveicolo deve essere munito di targhe identificative che ne consentano l'identificazione e la risalita all'intestatario, come previsto dal Codice della Strada."
+  }
+}

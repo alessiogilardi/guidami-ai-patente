@@ -1,0 +1,31 @@
+{
+  "question_id": 4152,
+  "topic": "Segnali di obbligo",
+  "number": "20070",
+  "text": "Il segnale raffigurato indica l'unica direzione consentita",
+  "correct_answer": true,
+  "image": "fece8907377910340f0aecbc53ef2a9b.jpeg",
+  "image_description": "Segnale di direzione obbligatoria sinistra. Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e un bordo bianco. Al centro del segnale è presente una freccia bianca rivolta verso sinistra. Questo è un segnale di obbligo che indica la direzione da seguire.",
+    "name": "Segnale di direzione obbligatoria sinistra",
+    "description": "Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico di direzione",
+      "Obbligo di seguire la direzione imposta dal segnale"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo specifico di direzione",
+      "direzione consentita",
+      "freccia",
+      "imporre la direzione"
+    ],
+    "vector_search_queries": [
+      "segnali che impongono la direzione da seguire",
+      "obbligo di rispettare la direzione indicata dal segnale di obbligo specifico"
+    ],
+    "rule_explanation": "Il segnale di obbligo specifico di direzione impone al conducente di seguire la direzione indicata dalla freccia, non essendo consentito proseguire in altre direzioni."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4069,
+  "topic": "Segnali di pericolo",
+  "number": "19088",
+  "text": "Il segnale raffigurato è posto prima del segnale PASSAGGIO A LIVELLO SENZA BARRIERE",
+  "correct_answer": false,
+  "image": "dfaf4fe7c7231e7f821a2cecea6f1ecb.jpeg",
+  "image_description": "Croce di Sant'Andrea (segnalazione di passaggio a livello senza barriere). Il segnale preannuncia un passaggio a livello senza barriere. Obbliga i conducenti a fermarsi prima di impegnare la sede ferroviaria se transita un treno.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una Croce di Sant'Andrea, un segnale stradale di pericolo. È di forma a X, con i bracci bordati di rosso e una striscia bianca al centro. Questo segnale preannuncia un passaggio a livello senza barriere.",
+    "name": "Croce di Sant'Andrea (segnalazione di passaggio a livello senza barriere)",
+    "description": "Il segnale preannuncia un passaggio a livello senza barriere. Obbliga i conducenti a fermarsi prima di impegnare la sede ferroviaria se transita un treno."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di passaggio a livello",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "passaggio a livello senza barriere",
+      "preavviso",
+      "cartello di pericolo",
+      "croce di Sant'Andrea"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per passaggio a livello senza barriere",
+      "funzione del segnale di preavviso di passaggio a livello senza barriere",
+      "differenza tra segnale di pericolo e segnale di prescrizione per passaggio a livello"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante la croce di Sant'Andrea preannuncia un passaggio a livello senza barriere, ma non impone l'obbligo di fermarsi prima di esso."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4505,
+  "topic": "Norme sul sorpasso",
+  "number": "23598",
+  "text": "Se si viene sorpassati mentre sopraggiunge un veicolo dal senso opposto, è consigliabile ridurre la velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Comportamento in caso di sorpasso incrociato",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo dal senso opposto",
+      "ridurre la velocità",
+      "manovra pericolosa"
+    ],
+    "vector_search_queries": [
+      "comportamento in caso di sorpasso con traffico in senso opposto",
+      "obbligo di moderare la velocità durante un sorpasso incrociato"
+    ],
+    "rule_explanation": "In caso di sorpasso con veicolo proveniente dal senso di marcia opposto, è necessario ridurre la velocità per facilitare la manovra del sorpassante e garantire la sicurezza."
+  }
+}

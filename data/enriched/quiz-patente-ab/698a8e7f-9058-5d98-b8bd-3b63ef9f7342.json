@@ -1,0 +1,29 @@
+{
+  "question_id": 4389,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22477",
+  "text": "Se si attraversa un incrocio con diritto di precedenza, non si ha alcun obbligo di rallentare",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Diritto di precedenza",
+      "Regolazione della velocità",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "diritto di precedenza",
+      "rallentare",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in prossimità degli incroci anche con diritto di precedenza",
+      "condotta di guida prudente in incrocio per evitare pericolo o intralcio"
+    ],
+    "rule_explanation": "Anche in presenza di diritto di precedenza, il conducente deve moderare la velocità per non creare pericolo o intralcio agli altri utenti della strada."
+  }
+}

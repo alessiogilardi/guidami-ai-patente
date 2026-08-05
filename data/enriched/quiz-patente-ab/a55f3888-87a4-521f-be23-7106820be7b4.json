@@ -1,0 +1,27 @@
+{
+  "question_id": 4571,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24148",
+  "text": "L'uso delle luci di posizione è obbligatorio di notte durante la sosta fuori della carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi relativi alle luci dei veicoli",
+      "Sosta fuori dalla carreggiata"
+    ],
+    "exact_keywords": [
+      "luci di posizione",
+      "sosta fuori della carreggiata",
+      "sosta notturna",
+      "illuminazione pubblica"
+    ],
+    "vector_search_queries": [
+      "obbligo luci di posizione in sosta fuori carreggiata di notte",
+      "dispensa dall'uso delle luci di posizione in sosta notturna se illuminata"
+    ],
+    "rule_explanation": "Le luci di posizione non sono obbligatorie in sosta fuori carreggiata se vi è illuminazione pubblica sufficiente, anche di notte."
+  }
+}

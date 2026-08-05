@@ -1,0 +1,33 @@
+{
+  "question_id": 4590,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24292",
+  "text": "Il simbolo raffigurato può essere posto su una spia a luce rossa",
+  "correct_answer": true,
+  "image": "36779cfc84d87c2307160ac1333d689e.jpeg",
+  "image_description": "Spia della pressione dell'olio motore. La spia indica una bassa pressione dell'olio motore. Se accesa, impone di arrestare immediatamente il veicolo per evitare danni gravi al motore. Può essere di colore rosso o giallo ambra, a seconda del costruttore e della gravità del problema.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra il simbolo di una lattina d'olio stilizzata, con una goccia che cade da un beccuccio. Questo simbolo è comunemente utilizzato come spia luminosa nel cruscotto dei veicoli per indicare un problema relativo alla pressione dell'olio motore. La domanda del quiz fa riferimento a una spia di colore rosso o giallo ambra con questo simbolo.",
+    "name": "Spia della pressione dell'olio motore",
+    "description": "La spia indica una bassa pressione dell'olio motore. Se accesa, impone di arrestare immediatamente il veicolo per evitare danni gravi al motore. Può essere di colore rosso o giallo ambra, a seconda del costruttore e della gravità del problema."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori luminosi di avvertimento",
+      "Spie del cruscotto",
+      "Segnalazione di anomalie del veicolo"
+    ],
+    "exact_keywords": [
+      "spia",
+      "luce rossa",
+      "pressione dell'olio motore",
+      "arrestare il veicolo"
+    ],
+    "vector_search_queries": [
+      "significato spie cruscotto colore rosso",
+      "obbligo arresto veicolo spia pressione olio motore",
+      "funzione spie di segnalazione avaria"
+    ],
+    "rule_explanation": "Le spie rosse sul cruscotto segnalano anomalie gravi che richiedono l'arresto immediato del veicolo per evitare danni. La spia della pressione dell'olio motore è una di queste."
+  }
+}

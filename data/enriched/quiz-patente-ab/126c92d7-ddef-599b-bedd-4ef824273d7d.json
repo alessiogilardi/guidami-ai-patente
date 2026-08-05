@@ -1,0 +1,27 @@
+{
+  "question_id": 4023,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18549",
+  "text": "I ciclomotori non hanno più di due ruote",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di ciclomotore",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "ciclomotore",
+      "due ruote",
+      "tre ruote",
+      "quattro ruote"
+    ],
+    "vector_search_queries": [
+      "definizione ciclomotore numero ruote",
+      "classificazione ciclomotori a due, tre o quattro ruote"
+    ],
+    "rule_explanation": "I ciclomotori sono veicoli a motore a due o tre ruote, o quattro ruote se a motore di cilindrata non superiore a 50 cm³ e con velocità massima di fabbricazione non superiore a 45 km/h."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4268,
+  "topic": "Segnali di indicazione",
+  "number": "21237",
+  "text": "Il segnale raffigurato è posto su strade di importanza internazionale",
+  "correct_answer": true,
+  "image": "d7cc4dc22ac0caca9adce872f7ee58a4.jpeg",
+  "image_description": "Segnale di itinerario internazionale. Il segnale indica un itinerario di strada internazionale, specificamente la E55.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare di colore verde scuro con bordo bianco. Al suo interno, in lettere e numeri bianchi, è riportata la sigla \"E 55\". Questo tipo di segnale identifica un itinerario di strada di interesse internazionale.",
+    "name": "Segnale di itinerario internazionale",
+    "description": "Il segnale indica un itinerario di strada internazionale, specificamente la E55."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di itinerario internazionale",
+      "Segnaletica stradale di indicazione"
+    ],
+    "exact_keywords": [
+      "segnali di itinerario internazionale",
+      "strade di importanza internazionale",
+      "segnaletica di indicazione",
+      "codice della strada"
+    ],
+    "vector_search_queries": [
+      "segnali stradali per itinerari internazionali",
+      "collocazione dei segnali di itinerario internazionale",
+      "definizione di strada di importanza internazionale per la segnaletica"
+    ],
+    "rule_explanation": "I segnali di itinerario internazionale sono posti su strade di importanza internazionale per indicare il percorso da seguire per raggiungere una destinazione estera."
+  }
+}

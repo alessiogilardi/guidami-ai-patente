@@ -1,0 +1,32 @@
+{
+  "question_id": 4052,
+  "topic": "Segnali di pericolo",
+  "number": "18869",
+  "text": "In presenza del segnale raffigurato è importante prevedere eventuali sbandamenti dei veicoli provenienti dal senso opposto",
+  "correct_answer": true,
+  "image": "4232f21e2893d81ba19d77d4285f18fe.jpeg",
+  "image_description": "Segnale di pericolo - Serie di dossi. Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di dossi o una cunetta. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una irregolarità del manto stradale.",
+    "name": "Segnale di pericolo - Serie di dossi",
+    "description": "Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Pericolo di sbandamento",
+      "Moderazione della velocità"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "serie di dossi",
+      "sbandamento",
+      "prevedere"
+    ],
+    "vector_search_queries": [
+      "prevedere sbandamenti veicoli in presenza di segnale serie di dossi",
+      "adeguare velocità a segnali di pericolo per evitare sbandamenti"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'serie di dossi' impone di prevedere possibili sbandamenti dei veicoli, moderando la velocità per mantenere il controllo del mezzo."
+  }
+}

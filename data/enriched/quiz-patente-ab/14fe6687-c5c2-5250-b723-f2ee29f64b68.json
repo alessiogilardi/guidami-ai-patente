@@ -1,0 +1,29 @@
+{
+  "question_id": 4610,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24500",
+  "text": "Con la patente di categoria A2 si possono condurre i motocicli (con o senza carrozzetta) di potenza fino a 35 kW, rapporto potenza/peso non superiore a 0,2 kW/kg purché non siano derivati da una versione dello stesso modello che sviluppi oltre il doppio della potenza massima",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria A2",
+      "Potenza massima motocicli guidabili",
+      "Rapporto potenza/peso"
+    ],
+    "exact_keywords": [
+      "categoria A2",
+      "motocicli",
+      "potenza",
+      "rapporto potenza/peso",
+      "0,2 kW/kg"
+    ],
+    "vector_search_queries": [
+      "requisiti patente A2 potenza motocicli",
+      "limiti potenza/peso motocicli per patente A2"
+    ],
+    "rule_explanation": "La patente A2 abilita alla guida di motocicli con potenza massima di 35 kW e rapporto potenza/peso non superiore a 0,2 kW/kg, non derivati da versioni con potenza doppia."
+  }
+}

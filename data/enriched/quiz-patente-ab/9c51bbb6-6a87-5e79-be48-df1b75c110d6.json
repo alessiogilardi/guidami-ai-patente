@@ -1,0 +1,30 @@
+{
+  "question_id": 4674,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25096",
+  "text": "Per diminuire il rumore emesso dai veicoli a motore si deve sostituire il tubo di scarico, usandone uno di diametro più piccolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Normativa sui veicoli a motore",
+      "Dispositivi di scarico"
+    ],
+    "exact_keywords": [
+      "rumore",
+      "veicoli a motore",
+      "tubo di scarico",
+      "diametro",
+      "inquinamento acustico"
+    ],
+    "vector_search_queries": [
+      "riduzione rumore veicoli a motore dispositivi scarico",
+      "normativa inquinamento acustico veicoli",
+      "sostituzione tubo scarico veicolo a motore"
+    ],
+    "rule_explanation": "La riduzione del rumore dei veicoli a motore non si ottiene con la sostituzione del tubo di scarico con uno di diametro minore, ma con il rispetto delle norme tecniche sui dispositivi di scarico e la loro manutenzione."
+  }
+}

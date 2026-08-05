@@ -1,0 +1,29 @@
+{
+  "question_id": 4576,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24178",
+  "text": "I catadiottri, se illuminati, hanno la funzione di rendere più visibili, specialmente di notte, i veicoli e i rimorchi in sosta sulla strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di illuminazione e segnalazione, Catadiottri, Visibilità dei veicoli fermi",
+      "Segnalazione di veicoli in sosta, Sicurezza stradale notturna"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "veicoli in sosta",
+      "rimorchi in sosta",
+      "visibilità notturna",
+      "illuminazione"
+    ],
+    "vector_search_queries": [
+      "funzione dei catadiottri per veicoli in sosta",
+      "visibilità notturna dei rimorchi con catadiottri",
+      "normativa sull'uso dei catadiottri per segnalare la sosta"
+    ],
+    "rule_explanation": "I catadiottri, se illuminati da un faro, rendono più visibili i veicoli e i rimorchi in sosta, soprattutto durante la notte, aumentando la sicurezza stradale."
+  }
+}

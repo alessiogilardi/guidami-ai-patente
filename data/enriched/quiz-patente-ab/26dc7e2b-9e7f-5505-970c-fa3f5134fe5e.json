@@ -1,0 +1,33 @@
+{
+  "question_id": 4079,
+  "topic": "Segnali di pericolo",
+  "number": "19200",
+  "text": "In presenza del segnale raffigurato, l'inserimento di una marcia bassa consente di sfruttare adeguatamente l'azione frenante del motore",
+  "correct_answer": true,
+  "image": "f765bd82ad5ae48ffb2e5ed4434c16a8.jpeg",
+  "image_description": "Segnale di pericolo - Discesa pericolosa con pendenza specificata. Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata una rampa nera inclinata verso il basso, con la dicitura \"10%\" sovrapposta. Questo indica una discesa con una pendenza specificata.",
+    "name": "Segnale di pericolo - Discesa pericolosa con pendenza specificata",
+    "description": "Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Discesa pericolosa",
+      "Uso del freno motore"
+    ],
+    "exact_keywords": [
+      "discesa pericolosa",
+      "freno motore",
+      "moderare la velocità",
+      "marcia bassa"
+    ],
+    "vector_search_queries": [
+      "uso del freno motore in discesa pericolosa",
+      "segnali di pericolo discesa con pendenza e marcia bassa",
+      "moderazione della velocità e azione frenante del motore in discesa"
+    ],
+    "rule_explanation": "Il segnale di 'discesa pericolosa' impone di moderare la velocità e utilizzare la marcia bassa per sfruttare l'azione frenante del motore e prevenire il surriscaldamento dei freni."
+  }
+}

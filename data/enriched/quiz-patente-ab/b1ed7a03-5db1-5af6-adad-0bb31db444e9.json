@@ -1,0 +1,30 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24817",
+  "text": "Le strisce pedonali dipinte sulla carreggiata sono particolarmente pericolose per la circolazione dei veicoli a due ruote quando il fondo stradale è bagnato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Condizioni di aderenza stradale",
+      "Pericolosità delle strisce pedonali",
+      "Guida di veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "strisce pedonali",
+      "veicoli a due ruote",
+      "fondo bagnato",
+      "aderenza",
+      "pericolosità"
+    ],
+    "vector_search_queries": [
+      "riduzione aderenza strisce pedonali su fondo bagnato",
+      "pericolosità strisce pedonali per motocicli con strada bagnata",
+      "comportamento veicoli a due ruote su strisce pedonali bagnate"
+    ],
+    "rule_explanation": "Le strisce pedonali, specialmente su fondo bagnato, riducono l'aderenza dei pneumatici, aumentando il rischio di sbandamento per i veicoli a due ruote."
+  }
+}

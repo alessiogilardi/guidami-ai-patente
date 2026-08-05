@@ -1,0 +1,28 @@
+{
+  "question_id": 4026,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18585",
+  "text": "Le macchine operatrici possono essere veicoli sgombraneve",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli",
+      "Macchine operatrici",
+      "Uso della strada"
+    ],
+    "exact_keywords": [
+      "macchine operatrici",
+      "veicoli sgombraneve",
+      "mezzi d\\'opera",
+      "uso della strada"
+    ],
+    "vector_search_queries": [
+      "definizione e classificazione macchine operatrici come veicoli sgombraneve",
+      "utilizzo macchine operatrici per sgombero neve in strada"
+    ],
+    "rule_explanation": "Le macchine operatrici, se dotate di attrezzature specifiche come quelle per lo sgombero della neve, possono essere considerate veicoli sgombraneve ai fini dell'uso della strada."
+  }
+}

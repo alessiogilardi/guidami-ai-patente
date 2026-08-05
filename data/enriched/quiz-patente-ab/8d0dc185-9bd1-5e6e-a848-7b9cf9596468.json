@@ -1,0 +1,27 @@
+{
+  "question_id": 4438,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22946",
+  "text": "Negli incroci regolati con circolazione rotatoria, in assenza di specifico segnale, vale la regola generale di dare la precedenza a destra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza agli incroci",
+      "Circolazione rotatoria"
+    ],
+    "exact_keywords": [
+      "incroci regolati",
+      "circolazione rotatoria",
+      "dare la precedenza a destra",
+      "segnale specifico"
+    ],
+    "vector_search_queries": [
+      "precedenza incroci rotatoria senza segnale",
+      "regola generale precedenza a destra in rotatoria"
+    ],
+    "rule_explanation": "Negli incroci a circolazione rotatoria, in assenza di segnali specifici, vige la regola generale di dare la precedenza ai veicoli provenienti da destra."
+  }
+}

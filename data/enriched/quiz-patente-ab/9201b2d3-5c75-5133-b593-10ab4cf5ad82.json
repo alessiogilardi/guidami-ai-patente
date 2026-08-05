@@ -1,0 +1,29 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24349",
+  "text": "Le cinture di sicurezza hanno lo scopo di evitare che il conducente o i passeggeri siano proiettati all'esterno della autovettura in caso di urto violento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza passiva",
+      "Uso delle cinture di sicurezza"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "conducente",
+      "passeggeri",
+      "urto violento",
+      "proiezione all'esterno"
+    ],
+    "vector_search_queries": [
+      "funzione delle cinture di sicurezza in caso di incidente",
+      "obbligo di uso delle cinture per conducente e passeggeri",
+      "prevenzione della proiezione fuori dal veicolo con cinture di sicurezza"
+    ],
+    "rule_explanation": "Le cinture di sicurezza sono dispositivi di ritenuta obbligatori che impediscono la proiezione all'esterno del veicolo in caso di urto, riducendo il rischio di lesioni gravi."
+  }
+}

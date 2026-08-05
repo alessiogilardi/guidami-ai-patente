@@ -1,0 +1,29 @@
+{
+  "question_id": 4627,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24744",
+  "text": "In presenza di tratti di strada ghiacciati è opportuno innestare la doppia trazione, se il veicolo ne è provvisto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Utilizzo di sistemi di trazione integrale",
+      "Prevenzione degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "strada ghiacciata",
+      "doppia trazione",
+      "veicolo",
+      "condizioni di aderenza"
+    ],
+    "vector_search_queries": [
+      "comportamento su strada ghiacciata con doppia trazione",
+      "uso della trazione integrale su superfici a bassa aderenza",
+      "prevenzione incidenti su ghiaccio con veicoli 4x4"
+    ],
+    "rule_explanation": "Su strade ghiacciate, l'uso della doppia trazione, se disponibile, migliora l'aderenza e la stabilità del veicolo, riducendo il rischio di sbandamento."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4311,
+  "topic": "Segnali di indicazione",
+  "number": "21660",
+  "text": "Il segnale raffigurato prescrive il divieto di sorpasso tra autoveicoli",
+  "correct_answer": false,
+  "image": "8e024d9a123799792079a51d1bb306f5.jpeg",
+  "image_description": "Preavviso di ponte, viadotto o cavalcavia. Il segnale indica che si sta per transitare sotto un ponte, un viadotto o un cavalcavia. Può essere abbinato a un pannello integrativo che ne indica la lunghezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore verde con bordo bianco. Al centro del segnale è raffigurato un pittogramma bianco che rappresenta una struttura simile a un ponte o un cavalcavia, con una parte superiore orizzontale e una parte inferiore arcuata. Il segnale è di forma quadrata con angoli arrotondati. Non sono presenti altri elementi visivi o segnali aggiuntivi. Il segnale è isolato.",
+    "name": "Preavviso di ponte, viadotto o cavalcavia",
+    "description": "Il segnale indica che si sta per transitare sotto un ponte, un viadotto o un cavalcavia. Può essere abbinato a un pannello integrativo che ne indica la lunghezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di prescrizione",
+      "Divieto di sorpasso"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "segnali di prescrizione",
+      "divieto di sorpasso",
+      "autoveicoli"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di indicazione e prescrizione",
+      "segnali stradali che impongono divieti",
+      "segnali di preavviso di ponte o viadotto"
+    ],
+    "rule_explanation": "Il segnale di preavviso di ponte, viadotto o cavalcavia è un segnale di indicazione e non impone alcun divieto di sorpasso. Il divieto di sorpasso è invece un segnale di prescrizione."
+  }
+}

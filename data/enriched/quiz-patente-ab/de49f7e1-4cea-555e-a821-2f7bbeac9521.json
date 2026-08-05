@@ -1,0 +1,31 @@
+{
+  "question_id": 4029,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18611",
+  "text": "Durante la circolazione, gli autocarri ed i rimorchi con massa massima a pieno carico superiore a 3,5 t devono essere segnalati con strisce posteriori e laterali retroriflettenti",
+  "correct_answer": true,
+  "image": "87fd4191b69ff4e1eee00e1990b00418.jpeg",
+  "image_description": "Pannello delineatore di ostacolo (o restringimento). Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bande diagonali alternate di colore rosso e giallo. Questo tipo di segnale è comunemente utilizzato per segnalare ostacoli o restringimenti della carreggiata. Le bande rosse e gialle alternate servono a catturare l'attenzione del conducente e a indicare un pericolo.",
+    "name": "Pannello delineatore di ostacolo (o restringimento)",
+    "description": "Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica di sicurezza per veicoli pesanti",
+      "Obblighi di equipaggiamento dei veicoli commerciali"
+    ],
+    "exact_keywords": [
+      "autocarri",
+      "rimorchi",
+      "massa massima a pieno carico",
+      "strisce retroriflettenti"
+    ],
+    "vector_search_queries": [
+      "segnaletica retroriflettente per autocarri e rimorchi di massa superiore a 3,5 tonnellate",
+      "obbligo di strisce retroriflettenti posteriori e laterali per veicoli commerciali pesanti"
+    ],
+    "rule_explanation": "Gli autocarri e i rimorchi con massa massima a pieno carico superiore a 3,5 t devono essere dotati di segnaletica retroriflettente posteriore e laterale per aumentare la visibilità."
+  }
+}

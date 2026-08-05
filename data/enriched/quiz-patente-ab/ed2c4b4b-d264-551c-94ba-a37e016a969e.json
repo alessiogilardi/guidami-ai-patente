@@ -1,0 +1,32 @@
+{
+  "question_id": 4364,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22174",
+  "text": "Il pannello integrativo raffigurato indica una strada riservata alle sole macchine operatrici",
+  "correct_answer": false,
+  "image": "42349cc7d2b70fecebc00008b2c4441e.jpeg",
+  "image_description": "Pannello integrativo di pericolo - Macchine operatrici. Il pannello integrativo indica la possibile presenza di macchine operatrici in movimento sulla carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare di colore bianco con bordo nero. Al suo interno è raffigurato, in nero, il pittogramma di una macchina operatrice cingolata, simile a un escavatore o una pala meccanica, con un conducente seduto al posto di guida e la benna estesa. Questo pannello è un'integrazione a segnali di pericolo o prescrizione, e in questo caso specifico informa sulla potenziale presenza di tali mezzi in movimento sulla strada.",
+    "name": "Pannello integrativo di pericolo - Macchine operatrici",
+    "description": "Il pannello integrativo indica la possibile presenza di macchine operatrici in movimento sulla carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale integrativa",
+      "Divieto di transito per determinate categorie di veicoli"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "macchine operatrici",
+      "strada riservata",
+      "divieto di transito"
+    ],
+    "vector_search_queries": [
+      "significato pannello integrativo macchine operatrici",
+      "indicazione di strada riservata a macchine operatrici",
+      "pannelli integrativi divieto di transito"
+    ],
+    "rule_explanation": "Il pannello integrativo con le macchine operatrici indica la possibile presenza di tali mezzi, non una strada a loro riservata. Il transito è consentito agli altri veicoli con prudenza."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4542,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23889",
+  "text": "Sulle autostrade e sulle strade extraurbane principali il conducente che percorre la corsia di accelerazione deve dare la precedenza ai veicoli in circolazione sulle corsie di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Immissione in autostrada",
+      "Regola della precedenza in immissione"
+    ],
+    "exact_keywords": [
+      "corsia di accelerazione",
+      "corsia di marcia",
+      "dare la precedenza",
+      "veicoli in circolazione"
+    ],
+    "vector_search_queries": [
+      "precedenza immissione autostrada corsia accelerazione",
+      "obbligo di dare precedenza ai veicoli in corsia di marcia per chi percorre la corsia di accelerazione"
+    ],
+    "rule_explanation": "Chi impegna una corsia di accelerazione per immettersi in autostrada o strada extraurbana principale deve dare la precedenza ai veicoli già in marcia sulle corsie di destra."
+  }
+}

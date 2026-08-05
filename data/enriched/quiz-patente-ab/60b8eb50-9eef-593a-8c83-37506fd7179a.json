@@ -1,0 +1,28 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24599",
+  "text": "La revisione della patente di guida può essere disposta quando il titolare perde permanentemente (per sempre) i requisiti fisici richiesti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti per la titolarità della patente",
+      "Revisione della patente di guida"
+    ],
+    "exact_keywords": [
+      "revisione patente",
+      "requisiti fisici",
+      "idoneità alla guida",
+      "perdita permanente"
+    ],
+    "vector_search_queries": [
+      "sospensione o revoca patente per perdita requisiti fisici",
+      "procedura di revisione della patente di guida",
+      "verifica idoneità alla guida dopo infrazioni"
+    ],
+    "rule_explanation": "La revisione della patente è disposta in caso di dubbi sull'idoneità alla guida, non solo per perdita permanente dei requisiti fisici, ma anche per violazioni del CdS."
+  }
+}

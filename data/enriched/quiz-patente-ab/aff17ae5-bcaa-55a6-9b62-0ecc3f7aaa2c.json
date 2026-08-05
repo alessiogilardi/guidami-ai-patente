@@ -1,0 +1,29 @@
+{
+  "question_id": 4395,
+  "topic": "Distanza di sicurezza",
+  "number": "22561",
+  "text": "La distanza di sicurezza è commisurata anche al tipo di veicolo che segue",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regolazione della velocità",
+      "Comportamento del conducente"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo che precede",
+      "veicolo che segue",
+      "condizioni della strada",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "requisiti della distanza di sicurezza tra veicoli in marcia",
+      "fattori che determinano la distanza di sicurezza dal veicolo che precede"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere commisurata alle condizioni della strada, del traffico, atmosferiche e del veicolo che precede, non a quello che segue."
+  }
+}

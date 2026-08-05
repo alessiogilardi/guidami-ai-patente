@@ -1,0 +1,28 @@
+{
+  "question_id": 4714,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25435",
+  "text": "Ai fini della sicurezza, nei veicoli a motore a due ruote, è opportuno verificare periodicamente che la catena di trasmissione sia ben lubrificata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "catena di trasmissione",
+      "lubrificazione",
+      "veicoli a motore a due ruote",
+      "manutenzione periodica"
+    ],
+    "vector_search_queries": [
+      "manutenzione catena trasmissione moto",
+      "sicurezza veicoli a due ruote lubrificazione catena"
+    ],
+    "rule_explanation": "La corretta lubrificazione della catena di trasmissione nei veicoli a due ruote è essenziale per garantire la sicurezza e l'efficienza del veicolo."
+  }
+}

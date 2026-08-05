@@ -1,0 +1,30 @@
+{
+  "question_id": 4616,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24588",
+  "text": "La patente di guida viene immediatamente ritirata, durante la circolazione, quando il conducente circola senza avere con sé il certificato di proprietà del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente durante la circolazione",
+      "Documenti di circolazione obbligatori",
+      "Sanzioni amministrative per violazioni al CdS"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "certificato di proprietà",
+      "ritiro patente",
+      "circolazione",
+      "sanzione amministrativa"
+    ],
+    "vector_search_queries": [
+      "conseguenze della circolazione senza certificato di proprietà",
+      "sanzioni per mancata esibizione documenti veicolo",
+      "ritiro patente per assenza certificato di proprietà"
+    ],
+    "rule_explanation": "La mancata esibizione del certificato di proprietà durante la circolazione comporta una sanzione amministrativa, non il ritiro immediato della patente di guida."
+  }
+}

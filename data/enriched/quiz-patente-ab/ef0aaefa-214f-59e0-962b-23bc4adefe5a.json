@@ -1,0 +1,27 @@
+{
+  "question_id": 4641,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24850",
+  "text": "Chi guida in stato di ebbrezza alcolica rischia l'arresto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di ebbrezza alcolica",
+      "Sanzioni penali per guida in stato di ebbrezza"
+    ],
+    "exact_keywords": [
+      "stato di ebbrezza",
+      "arresto",
+      "sanzioni",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "sanzioni penali per guida in stato di ebbrezza alcolica",
+      "conseguenze giuridiche della guida in stato di ebbrezza"
+    ],
+    "rule_explanation": "La guida in stato di ebbrezza alcolica comporta l'arresto penale, oltre a sanzioni amministrative pecuniarie e la sospensione della patente."
+  }
+}

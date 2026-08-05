@@ -1,0 +1,28 @@
+{
+  "question_id": 4627,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24741",
+  "text": "In presenza di tratti di strada ghiacciati è opportuno, in discesa, procedere con marce basse",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Utilizzo del freno motore",
+      "Sicurezza stradale in discesa"
+    ],
+    "exact_keywords": [
+      "strada ghiacciata",
+      "marce basse",
+      "freno motore",
+      "discesa"
+    ],
+    "vector_search_queries": [
+      "uso del freno motore su strade ghiacciate in discesa",
+      "controllo della velocità con marce basse in condizioni di scarsa aderenza"
+    ],
+    "rule_explanation": "In presenza di ghiaccio, specialmente in discesa, l'uso di marce basse sfrutta il freno motore per controllare la velocità e aumentare la stabilità del veicolo, riducendo il rischio di sbandate."
+  }
+}

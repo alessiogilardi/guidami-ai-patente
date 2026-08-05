@@ -1,0 +1,27 @@
+{
+  "question_id": 4699,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25263",
+  "text": "Per smontare una ruota da sostituire bisogna fissare il martinetto (cric) in un punto qualsiasi del longherone del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Utilizzo del cric per la sostituzione della ruota",
+      "Punti di sollevamento del veicolo"
+    ],
+    "exact_keywords": [
+      "cric",
+      "longherone",
+      "punto di sollevamento",
+      "telaio"
+    ],
+    "vector_search_queries": [
+      "corretto posizionamento del cric sul telaio del veicolo",
+      "punti di sollevamento sicuri per la sostituzione della ruota"
+    ],
+    "rule_explanation": "Il cric deve essere posizionato esclusivamente nei punti di sollevamento designati dal costruttore del veicolo, non in un punto qualsiasi del longherone."
+  }
+}

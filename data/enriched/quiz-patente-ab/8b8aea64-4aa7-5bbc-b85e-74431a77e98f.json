@@ -1,0 +1,33 @@
+{
+  "question_id": 4230,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20885",
+  "text": "In una strada a doppio senso di circolazione con la segnaletica indicata in figura si può sorpassare con qualsiasi condizione di visibilità e di traffico",
+  "correct_answer": false,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Sorpasso in strade a doppio senso",
+      "Condizioni di visibilità e traffico"
+    ],
+    "exact_keywords": [
+      "striscia bianca discontinua",
+      "doppio senso di circolazione",
+      "sorpasso",
+      "visibilità",
+      "traffico"
+    ],
+    "vector_search_queries": [
+      "sorpasso con striscia bianca discontinua in strade a doppio senso",
+      "condizioni per il sorpasso in presenza di segnaletica orizzontale"
+    ],
+    "rule_explanation": "La striscia bianca discontinua consente il sorpasso in strade a doppio senso solo se le condizioni di visibilità e traffico lo permettono e non creano pericolo."
+  }
+}

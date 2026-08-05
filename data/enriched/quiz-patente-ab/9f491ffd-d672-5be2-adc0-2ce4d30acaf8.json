@@ -1,0 +1,28 @@
+{
+  "question_id": 4044,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18780",
+  "text": "Il conducente deve fermarsi quando un pedone non vedente con il bastone bianco si accinge ad attraversare la strada, evitando di frenare bruscamente per non spaventarlo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Regola di precedenza per pedoni non vedenti"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "pedone non vedente",
+      "bastone bianco",
+      "attraversare la strada",
+      "fermarsi"
+    ],
+    "vector_search_queries": [
+      "obbligo di fermarsi per pedone non vedente con bastone bianco",
+      "condotta del conducente verso pedoni vulnerabili durante l'attraversamento"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di fermarsi per consentire l'attraversamento a un pedone non vedente munito di bastone bianco, evitando manovre brusche che possano spaventarlo."
+  }
+}

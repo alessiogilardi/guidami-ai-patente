@@ -1,0 +1,33 @@
+{
+  "question_id": 4450,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23070",
+  "text": "Secondo le norme di precedenza nell'incrocio rappresentato in figura il veicolo A deve passare per ultimo",
+  "correct_answer": false,
+  "image": "dff6c2da1167ac92f2211d345cec14f7.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra e obblighi di precedenza specifici. L'incrocio è a raso. Il veicolo blu (C) si trova sulla strada che si immette a destra, con l'obbligo di dare precedenza ai veicoli provenienti dalla strada principale (da sinistra e da destra). Il veicolo rosso (R) si trova sulla strada principale e deve svoltare a sinistra, dovendo dare precedenza ai veicoli provenienti dalla sua destra (veicolo A). Il veicolo giallo (A) si trova sulla strada principale e prosegue dritto, avendo la precedenza sui veicoli che si immettono (veicolo C) e su quelli che svoltano a sinistra (veicolo R). Pertanto, l'ordine di passaggio corretto è: A, R, C.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con tre veicoli: un veicolo blu (C), un veicolo rosso (R) e un veicolo giallo (A). Il veicolo C si trova sulla strada secondaria che si immette nell'incrocio da sinistra e deve svoltare a destra. Il veicolo R si trova sulla strada principale e deve svoltare a sinistra. Il veicolo A si trova sulla strada principale e prosegue dritto. Non sono presenti segnali stradali che regolano la precedenza, quindi si applica la regola generale della precedenza a destra. Tuttavia, la configurazione dell'incrocio e le direzioni di marcia dei veicoli implicano un ordine di precedenza specifico. Il veicolo C, immettendosi da una strada secondaria, deve dare precedenza a tutti i veicoli provenienti dalla strada principale. Il veicolo R, svoltando a sinistra, deve dare precedenza ai veicoli provenienti dalla sua destra (veicolo A). Il veicolo A, proseguendo dritto sulla strada principale, ha la precedenza sia sul veicolo C che sul veicolo R. Pertanto, l'ordine di passaggio è A, poi R, infine C.",
+    "name": "Incrocio a raso con precedenza a destra e obblighi di precedenza specifici",
+    "description": "L'incrocio è a raso. Il veicolo blu (C) si trova sulla strada che si immette a destra, con l'obbligo di dare precedenza ai veicoli provenienti dalla strada principale (da sinistra e da destra). Il veicolo rosso (R) si trova sulla strada principale e deve svoltare a sinistra, dovendo dare precedenza ai veicoli provenienti dalla sua destra (veicolo A). Il veicolo giallo (A) si trova sulla strada principale e prosegue dritto, avendo la precedenza sui veicoli che si immettono (veicolo C) e su quelli che svoltano a sinistra (veicolo R). Pertanto, l'ordine di passaggio corretto è: A, R, C."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ordine di precedenza agli incroci",
+      "Regola della precedenza a destra",
+      "Precedenza dei veicoli in marcia rettilinea"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "dare precedenza",
+      "svoltare a sinistra",
+      "proseguire dritto"
+    ],
+    "vector_search_queries": [
+      "ordine di precedenza negli incroci stradali",
+      "precedenza veicolo che svolta a sinistra rispetto a chi prosegue dritto",
+      "precedenza veicolo in marcia rettilinea in incrocio"
+    ],
+    "rule_explanation": "Nei incroci a raso, chi svolta a sinistra deve dare precedenza a chi prosegue dritto e a chi svolta a destra. Chi prosegue dritto ha la precedenza su chi si immette da destra o sinistra."
+  }
+}

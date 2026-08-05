@@ -1,0 +1,28 @@
+{
+  "question_id": 4639,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24841",
+  "text": "L'assunzione di hashish o di marijuana può compromettere la facoltà di guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Alterazione psicofisica da stupefacenti",
+      "Guida in stato di alterazione"
+    ],
+    "exact_keywords": [
+      "hashish",
+      "marijuana",
+      "alterazione delle capacità psichiche",
+      "guida in stato di alterazione"
+    ],
+    "vector_search_queries": [
+      "effetti di hashish e marijuana sulla guida",
+      "guida sotto effetto di stupefacenti",
+      "sostanze stupefacenti e capacità di guida"
+    ],
+    "rule_explanation": "L'assunzione di sostanze stupefacenti come hashish o marijuana altera le capacità psichiche e compromette la facoltà di guida, rendendo pericoloso l'uso del veicolo."
+  }
+}

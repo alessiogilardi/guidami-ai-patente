@@ -1,0 +1,28 @@
+{
+  "question_id": 4393,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22524",
+  "text": "Passare molto vicino ad un'auto parcheggiata, a bordo della quale si trovano ancora persone, è pericoloso solo se una delle portiere risulta già aperta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo per la circolazione",
+      "Comportamento prudente alla guida",
+      "Distanza di sicurezza dai veicoli parcheggiati"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "veicolo fermo",
+      "manovra inconsueta",
+      "portiera"
+    ],
+    "vector_search_queries": [
+      "pericolo nel sorpasso di veicoli fermi con persone a bordo",
+      "distanza di sicurezza da auto parcheggiate con occupanti"
+    ],
+    "rule_explanation": "Il pericolo non sussiste solo se la portiera è aperta, ma anche se si passa troppo vicino a un veicolo fermo con persone a bordo, potendo queste scendere improvvisamente."
+  }
+}

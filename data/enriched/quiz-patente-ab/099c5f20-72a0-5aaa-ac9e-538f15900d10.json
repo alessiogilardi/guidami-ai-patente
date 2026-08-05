@@ -1,0 +1,29 @@
+{
+  "question_id": 4638,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24834",
+  "text": "L'idoneità alla guida può essere compromessa se si fa uso di farmaci antidepressivi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Idoneità alla guida",
+      "Effetti dei farmaci sulla capacità di condurre un veicolo",
+      "Guida sotto l'influenza di sostanze"
+    ],
+    "exact_keywords": [
+      "idoneità alla guida",
+      "farmaci antidepressivi",
+      "effetti sulla capacità di reazione",
+      "alterazione psicofisica"
+    ],
+    "vector_search_queries": [
+      "idoneità alla guida e assunzione di farmaci antidepressivi",
+      "effetti dei farmaci psicotropi sulla capacità di guida",
+      "sostanze che alterano la capacità di condurre un veicolo"
+    ],
+    "rule_explanation": "L'assunzione di farmaci, anche se da banco o prescritti come gli antidepressivi, può compromettere l'idoneità alla guida alterando le capacità psicofisiche necessarie per la sicurezza stradale."
+  }
+}

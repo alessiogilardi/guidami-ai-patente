@@ -1,0 +1,32 @@
+{
+  "question_id": 4069,
+  "topic": "Segnali di pericolo",
+  "number": "19090",
+  "text": "Il segnale raffigurato si trova, di norma, a 150 metri dai binari",
+  "correct_answer": false,
+  "image": "dfaf4fe7c7231e7f821a2cecea6f1ecb.jpeg",
+  "image_description": "Croce di Sant'Andrea (segnalazione di passaggio a livello senza barriere). Il segnale preannuncia un passaggio a livello senza barriere. Obbliga i conducenti a fermarsi prima di impegnare la sede ferroviaria se transita un treno.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una Croce di Sant'Andrea, un segnale stradale di pericolo. È di forma a X, con i bracci bordati di rosso e una striscia bianca al centro. Questo segnale preannuncia un passaggio a livello senza barriere.",
+    "name": "Croce di Sant'Andrea (segnalazione di passaggio a livello senza barriere)",
+    "description": "Il segnale preannuncia un passaggio a livello senza barriere. Obbliga i conducenti a fermarsi prima di impegnare la sede ferroviaria se transita un treno."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica di pericolo",
+      "Passaggio a livello senza barriere",
+      "Distanza di preavviso dei segnali"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello senza barriere",
+      "preavviso",
+      "distanza"
+    ],
+    "vector_search_queries": [
+      "distanza di preavviso segnali di pericolo passaggio a livello senza barriere",
+      "posizionamento segnali di pericolo per passaggi a livello senza barriere"
+    ],
+    "rule_explanation": "I segnali di pericolo di passaggio a livello senza barriere sono posti a 150 metri, 75 metri e 25 metri dalla sede ferroviaria, non solo a 150 metri."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23022",
+  "text": "La regolazione degli specchi retrovisori deve di norma essere effettuata con il veicolo in marcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione dei dispositivi di guida",
+      "Sicurezza nella manovra di regolazione degli specchietti"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "regolazione",
+      "veicolo in marcia",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "regolazione specchietti retrovisori veicolo fermo",
+      "divieto di regolare specchietti durante la marcia"
+    ],
+    "rule_explanation": "La regolazione degli specchi retrovisori deve essere effettuata con il veicolo fermo, per garantire la sicurezza ed evitare manovre pericolose durante la marcia."
+  }
+}

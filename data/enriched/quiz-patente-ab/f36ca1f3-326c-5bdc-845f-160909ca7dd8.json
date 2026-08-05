@@ -1,0 +1,27 @@
+{
+  "question_id": 4574,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24165",
+  "text": "Durante la marcia, l'uso delle luci anabbaglianti non è consentito nelle gallerie illuminate",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso delle luci nei veicoli",
+      "Obblighi di illuminazione e segnalazione visiva"
+    ],
+    "exact_keywords": [
+      "luci anabbaglianti",
+      "gallerie illuminate",
+      "marcia",
+      "dispositivi di illuminazione"
+    ],
+    "vector_search_queries": [
+      "obbligo uso luci anabbaglianti in galleria illuminata",
+      "visibilità veicolo in galleria stradale"
+    ],
+    "rule_explanation": "Nelle gallerie stradali, anche se illuminate, è obbligatorio l'uso dei dispositivi di illuminazione del veicolo, compresi gli anabbaglianti, per garantire la visibilità."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22332",
+  "text": "Il limite massimo di velocità per un autoveicolo fino a 3,5 tonnellate sulle autostrade è ordinariamente di 130 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità autostradali",
+      "Velocità massima per autoveicoli"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "autostrade",
+      "autoveicoli",
+      "3,5 tonnellate"
+    ],
+    "vector_search_queries": [
+      "limite di velocità autostradale per autoveicoli fino a 3,5 tonnellate",
+      "velocità massima ordinaria autostrade per autoveicoli"
+    ],
+    "rule_explanation": "Il limite massimo di velocità ordinario per gli autoveicoli fino a 3,5 tonnellate sulle autostrade è di 130 km/h, salvo diversa segnalazione."
+  }
+}

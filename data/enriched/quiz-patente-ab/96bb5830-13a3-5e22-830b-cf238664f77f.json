@@ -1,0 +1,28 @@
+{
+  "question_id": 4410,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22674",
+  "text": "E' vietato, in quanto costituisce pericolo o intralcio per la circolazione, effettuare un cambiamento di direzione senza segnalare la manovra con sufficiente anticipo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione delle manovre",
+      "Obbligo di prudenza e cautela",
+      "Pericolo o intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "cambiamento di direzione",
+      "segnalare la manovra",
+      "anticipo",
+      "pericolo o intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalare in anticipo il cambiamento di direzione o corsia",
+      "divieto di creare pericolo o intralcio segnalando tardivamente le manovre"
+    ],
+    "rule_explanation": "È vietato cambiare direzione di marcia o corsia senza segnalare con sufficiente anticipo la manovra, per evitare di creare pericolo o intralcio alla circolazione."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4591,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24304",
+  "text": "Una spia di colore rosso contrassegnata dal simbolo di figura, se accesa durante la marcia, può segnalare lo scarso livello del liquido idraulico dei freni",
+  "correct_answer": true,
+  "image": "7ddd91f6c3fc7ef9f36722f849d5a624.jpeg",
+  "image_description": "Spia del sistema frenante (simbolo punto esclamativo all'interno di cerchio con parentesi). La spia indica un malfunzionamento dell'impianto frenante. Può segnalare un livello insufficiente del liquido dei freni o un problema più generale al sistema. È necessario fermarsi e controllare l'impianto frenante.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una spia luminosa con un simbolo al suo interno. Il simbolo è un punto esclamativo (!) posto al centro di un cerchio, a sua volta circondato da due parentesi curve aperte verso l'esterno. Questo simbolo è universalmente riconosciuto come indicatore di un problema al sistema frenante del veicolo. La spia è tipicamente di colore rosso, segnalando un'avaria grave che richiede attenzione immediata.",
+    "name": "Spia del sistema frenante (simbolo punto esclamativo all'interno di cerchio con parentesi)",
+    "description": "La spia indica un malfunzionamento dell'impianto frenante. Può segnalare un livello insufficiente del liquido dei freni o un problema più generale al sistema. È necessario fermarsi e controllare l'impianto frenante."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori di avaria del veicolo",
+      "Sistema frenante",
+      "Spie di segnalazione luminosa"
+    ],
+    "exact_keywords": [
+      "spia rossa",
+      "liquido idraulico dei freni",
+      "sistema frenante",
+      "malfunzionamento dell'impianto frenante"
+    ],
+    "vector_search_queries": [
+      "spia rossa livello liquido freni",
+      "segnalazione malfunzionamento impianto frenante",
+      "indicatore di avaria sistema frenante"
+    ],
+    "rule_explanation": "Una spia rossa con il simbolo di un punto esclamativo indica un malfunzionamento del sistema frenante, che può includere un basso livello del liquido idraulico. È necessario fermarsi immediatamente."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4712,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25416",
+  "text": "E' possibile modificare l'impianto di scarico, purché si autocertifichi che ciò non comporta aumenti del consumo di carburante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Modifiche ai veicoli",
+      "Impianto di scarico",
+      "Omologazione"
+    ],
+    "exact_keywords": [
+      "modifica impianto di scarico",
+      "aumento emissioni inquinanti",
+      "rumorosità",
+      "certificazione",
+      "omologazione"
+    ],
+    "vector_search_queries": [
+      "modifiche all'impianto di scarico veicoli a motore",
+      "requisiti tecnici per la sostituzione del silenziatore",
+      "omologazione modifiche scarico auto"
+    ],
+    "rule_explanation": "Le modifiche all'impianto di scarico sono soggette a specifiche normative tecniche e non è sufficiente l'autocertificazione per garantirne la conformità, specialmente riguardo a emissioni e rumorosità."
+  }
+}

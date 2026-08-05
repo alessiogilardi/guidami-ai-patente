@@ -1,0 +1,30 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24554",
+  "text": "La patente di categoria B consente di guidare un'autovettura che traina un rimorchio, con massa del complesso veicolare pari a 4.500 chilogrammi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria B",
+      "Massa del complesso veicolare",
+      "Traino con rimorchio"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "autovettura",
+      "rimorchio",
+      "massa del complesso veicolare",
+      "4.500 kg"
+    ],
+    "vector_search_queries": [
+      "limiti massa complesso veicolare patente B",
+      "requisiti patente B per traino rimorchio con massa complessa superiore a 3500 kg",
+      "differenza patente B e BE per rimorchi"
+    ],
+    "rule_explanation": "La patente B consente di trainare rimorchi solo se la massa del complesso veicolare non supera i 3.500 kg; per masse superiori è necessaria la patente BE."
+  }
+}

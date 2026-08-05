@@ -1,0 +1,32 @@
+{
+  "question_id": 4102,
+  "topic": "Segnali di pericolo",
+  "number": "19479",
+  "text": "Il segnale (A), integrato con il pannello (B), preannuncia la possibile presenza di macchine sgombraneve al lavoro sulla strada",
+  "correct_answer": true,
+  "image": "c4353e11dd208717c3442642cdd8fe2b.jpeg",
+  "image_description": "Segnale di pericolo generico con pannello integrativo di macchine sgombraneve al lavoro. Il segnale A è un segnale di pericolo generico (punto esclamativo). Il pannello integrativo B, posto sotto il segnale A, raffigura un fiocco di neve e un mezzo sgombraneve. Indica la possibile presenza di macchine sgombraneve al lavoro.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi distinti, etichettati come A e B. L'elemento A è un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco, al cui interno è presente un punto esclamativo nero. L'elemento B è un pannello rettangolare integrativo, posto sotto il segnale A. Il pannello B contiene due pittogrammi: a sinistra un fiocco di neve stilizzato, a destra la sagoma di un mezzo sgombraneve con una lama anteriore e un lampeggiante blu sul tetto della cabina. L'insieme dei due elementi indica un pericolo generico preannunciato dal segnale A, specificato dal pannello B come la possibile presenza di macchine sgombraneve al lavoro.",
+    "name": "Segnale di pericolo generico con pannello integrativo di macchine sgombraneve al lavoro",
+    "description": "Il segnale A è un segnale di pericolo generico (punto esclamativo). Il pannello integrativo B, posto sotto il segnale A, raffigura un fiocco di neve e un mezzo sgombraneve. Indica la possibile presenza di macchine sgombraneve al lavoro."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo generici",
+      "Pannelli integrativi di completamento",
+      "Segnaletica stradale di pericolo"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo generico",
+      "pannello integrativo di completamento",
+      "macchine sgombraneve al lavoro",
+      "preavviso di pericolo"
+    ],
+    "vector_search_queries": [
+      "preavviso presenza macchine sgombraneve con segnale generico e pannello integrativo",
+      "funzione pannello integrativo con fiocco di neve e sgombraneve"
+    ],
+    "rule_explanation": "Il segnale di pericolo generico, integrato dal pannello che raffigura macchine sgombraneve, preannuncia la possibile presenza di tali mezzi in attività sulla strada."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4579,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24201",
+  "text": "Il simbolo raffigurato segnala l'accensione della luce posteriore per nebbia",
+  "correct_answer": false,
+  "image": "ec7b0a5e371554e07a50c02a6506b43d.jpeg",
+  "image_description": "Spia delle luci di profondità. Questo simbolo indica l'accensione delle luci di profondità (abbaglianti). Si tratta di una spia luminosa di colore blu.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra il simbolo di una spia luminosa. Il simbolo è composto da una forma stilizzata che rappresenta un fascio di luce emesso da un proiettore, con delle linee orizzontali a sinistra che indicano la direzione del fascio. Questo simbolo è universalmente riconosciuto come indicatore dell'accensione dei proiettori di profondità (abbaglianti) e la sua spia è di colore blu.",
+    "name": "Spia delle luci di profondità",
+    "description": "Questo simbolo indica l'accensione delle luci di profondità (abbaglianti). Si tratta di una spia luminosa di colore blu."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori luminosi del cruscotto",
+      "Segnalazione luminosa di pericolo"
+    ],
+    "exact_keywords": [
+      "spia",
+      "luci di profondità",
+      "abbaglianti",
+      "luce posteriore per nebbia"
+    ],
+    "vector_search_queries": [
+      "simbolo spia luci di profondità",
+      "differenza spia abbaglianti e fendinebbia posteriore"
+    ],
+    "rule_explanation": "La spia delle luci di profondità (abbaglianti) è blu e segnala l'accensione di tali luci, non della luce posteriore per nebbia che ha un simbolo differente."
+  }
+}

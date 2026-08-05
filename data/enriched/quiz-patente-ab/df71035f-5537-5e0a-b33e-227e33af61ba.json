@@ -1,0 +1,27 @@
+{
+  "question_id": 4653,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24937",
+  "text": "Dopo un incidente stradale, il soccorritore che interviene deve prestare assistenza agli infortunati, secondo le proprie possibilità e conoscenze",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di assistenza in caso di incidente",
+      "Primo soccorso e dovere di solidarietà"
+    ],
+    "exact_keywords": [
+      "soccorritore",
+      "assistenza agli infortunati",
+      "incidente stradale",
+      "possibilità e conoscenze"
+    ],
+    "vector_search_queries": [
+      "obbligo di prestare soccorso agli infortunati in caso di incidente stradale",
+      "dovere di assistenza da parte di chi interviene su un sinistro stradale"
+    ],
+    "rule_explanation": "Chiunque sia in grado di prestare soccorso a seguito di un incidente stradale ha l'obbligo di fornire assistenza agli infortunati, nei limiti delle proprie capacità e conoscenze."
+  }
+}

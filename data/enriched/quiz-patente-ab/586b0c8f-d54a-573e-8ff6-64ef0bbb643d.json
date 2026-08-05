@@ -1,0 +1,27 @@
+{
+  "question_id": 4018,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18506",
+  "text": "La corsia di decelerazione serve per uscire correttamente da una strada extraurbana principale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Corsie di decelerazione",
+      "Uscita da strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "corsia di decelerazione",
+      "strada extraurbana principale",
+      "uscita",
+      "manovra di immissione"
+    ],
+    "vector_search_queries": [
+      "funzione della corsia di decelerazione per l'uscita da strade extraurbane principali",
+      "manovra di uscita da strada extraurbana principale tramite corsia di decelerazione"
+    ],
+    "rule_explanation": "La corsia di decelerazione è una corsia speciale destinata a permettere ai veicoli di ridurre la velocità per uscire da una strada extraurbana principale senza intralciare il traffico."
+  }
+}

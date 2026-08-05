@@ -1,0 +1,28 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23553",
+  "text": "È vietato il sorpasso in corrispondenza dei passi carrabili",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Passi carrabili",
+      "Manovre pericolose"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "passi carrabili",
+      "divieto",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "sorpasso in corrispondenza di passi carrabili vietato per pericolo",
+      "manovra di sorpasso in prossimità di accessi stradali"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in corrispondenza di passi carrabili solo se questi creano un pericolo o un intralcio alla circolazione, non in via assoluta."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4050,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18847",
+  "text": "Quando una donna in stato di gravidanza attraversa la carreggiata bisogna darle la precedenza solo se attraversa da sinistra a destra",
+  "correct_answer": false,
+  "image": "b43758bb9d85546a58f1d0a67f5b3b45.jpeg",
+  "image_description": "Striscia bianca continua di delimitazione carreggiata. La striscia bianca continua delimita la carreggiata, separando i sensi di marcia o le corsie. Non può essere superata se continua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una rappresentazione di segnaletica orizzontale. Si tratta di due strisce bianche continue parallele, separate da uno spazio più ampio, che delimitano una carreggiata. Non sono presenti altri elementi visivi o segnali stradali. La striscia bianca continua, secondo il Codice della Strada, indica la separazione dei sensi di marcia o delle corsie e non può essere superata.",
+    "name": "Striscia bianca continua di delimitazione carreggiata",
+    "description": "La striscia bianca continua delimita la carreggiata, separando i sensi di marcia o le corsie. Non può essere superata se continua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Obbligo di precedenza verso pedoni in attraversamento"
+    ],
+    "exact_keywords": [
+      "donne in stato di gravidanza",
+      "attraversamento carreggiata",
+      "precedenza",
+      "utente debole"
+    ],
+    "vector_search_queries": [
+      "precedenza pedoni in stato di gravidanza in attraversamento",
+      "obbligo di dare precedenza ai pedoni in attraversamento carreggiata"
+    ],
+    "rule_explanation": "La precedenza va data ai pedoni in attraversamento, inclusi quelli in stato di gravidanza, indipendentemente dalla direzione di provenienza o dall'attraversamento della carreggiata."
+  }
+}

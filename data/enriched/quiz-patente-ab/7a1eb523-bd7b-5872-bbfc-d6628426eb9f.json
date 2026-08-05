@@ -1,0 +1,27 @@
+{
+  "question_id": 4008,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18399",
+  "text": "L'intersezione (incrocio) a raso è un incrocio fra una strada statale e i binari del tram",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di intersezione stradale",
+      "Classificazione delle intersezioni"
+    ],
+    "exact_keywords": [
+      "intersezione a raso",
+      "strada statale",
+      "linea tranviaria",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "definizione di intersezione a raso nel CdS",
+      "differenza tra incrocio stradale e linea tranviaria"
+    ],
+    "rule_explanation": "L'intersezione a raso è il punto in cui due o più strade si incrociano allo stesso livello, non necessariamente coinvolgendo una strada statale o una linea tranviaria."
+  }
+}

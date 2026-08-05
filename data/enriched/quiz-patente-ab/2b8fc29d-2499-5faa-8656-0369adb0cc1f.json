@@ -1,0 +1,32 @@
+{
+  "question_id": 4333,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21857",
+  "text": "La barriera raffigurata delimita un'area dove si stanno svolgendo lavori stradali",
+  "correct_answer": true,
+  "image": "14d2108f6b028cd2d01929a738bf0b94.jpeg",
+  "image_description": "Barriera di cantiere. La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una barriera di cantiere, composta da una traversa orizzontale a strisce diagonali bianche e rosse, sostenuta da due montanti verticali. La barriera è posta su una linea orizzontale che rappresenta il suolo. Le strisce rosse e bianche alternate indicano un pericolo o un ostacolo temporaneo.",
+    "name": "Barriera di cantiere",
+    "description": "La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica di cantiere",
+      "Delimitazione aree di lavoro stradale"
+    ],
+    "exact_keywords": [
+      "barriera di cantiere",
+      "lavori stradali",
+      "segnalazione temporanea",
+      "area di cantiere"
+    ],
+    "vector_search_queries": [
+      "funzione delle barriere di cantiere stradale",
+      "segnalazione di aree con lavori in corso",
+      "uso di barriere per delimitare cantieri stradali"
+    ],
+    "rule_explanation": "Le barriere di cantiere sono segnali temporanei utilizzati per delimitare fisicamente le aree in cui si svolgono lavori stradali, garantendo la sicurezza dei lavoratori e degli utenti della strada."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4624,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24710",
+  "text": "In caso di pioggia occorre ridurre la velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Adeguamento della velocità alle condizioni di visibilità e aderenza",
+      "Principio di prudenza nella guida"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "pioggia",
+      "condizioni atmosferiche",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità in caso di pioggia",
+      "riduzione della velocità per condizioni atmosferiche avverse",
+      "comportamento di guida sicuro in caso di pioggia"
+    ],
+    "rule_explanation": "In caso di pioggia, è necessario ridurre la velocità per mantenere il controllo del veicolo e garantire la sicurezza, data la ridotta aderenza del manto stradale."
+  }
+}

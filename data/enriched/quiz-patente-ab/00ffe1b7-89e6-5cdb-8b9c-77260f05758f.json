@@ -1,0 +1,27 @@
+{
+  "question_id": 4442,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22981",
+  "text": "Il conducente che parte dal margine della carreggiata e si immette nel flusso della circolazione può allacciare la cintura di sicurezza dopo avere concluso tale manovra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di allacciare la cintura di sicurezza",
+      "Manovra di immissione nel flusso di circolazione"
+    ],
+    "exact_keywords": [
+      "allacciare la cintura di sicurezza",
+      "flusso della circolazione",
+      "partenza dal margine",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "obbligo cintura sicurezza durante immissione nel flusso di circolazione",
+      "quando si deve allacciare la cintura di sicurezza in auto"
+    ],
+    "rule_explanation": "L'obbligo di allacciare la cintura di sicurezza sussiste per conducente e passeggeri fin dal momento in cui si occupano i sedili e per tutta la durata della marcia, compresa la fase di immissione nel traffico."
+  }
+}

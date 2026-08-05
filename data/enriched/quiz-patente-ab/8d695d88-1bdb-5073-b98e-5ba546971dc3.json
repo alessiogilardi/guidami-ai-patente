@@ -1,0 +1,32 @@
+{
+  "question_id": 4070,
+  "topic": "Segnali di pericolo",
+  "number": "19097",
+  "text": "Il segnale (A) può essere abbinato al segnale (B)",
+  "correct_answer": true,
+  "image": "71d81d8235f817af32013250464acc0b.jpeg",
+  "image_description": "Segnale di passaggio a livello con due o più binari (A) e segnale di STOP (B). Il segnale A è un segnale di pericolo che indica un passaggio a livello con due o più binari. Il segnale B è un segnale diSTOP, che impone l'obbligo di arrestarsi prima di impegnare l'incrocio. Non è possibile abbinare i due segnali in quanto hanno significati e prescrizioni differenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali distinti, etichettati come A e B. Il segnale A è un segnale di pericolo a forma di croce di Sant'Andrea con un rombo al centro, su sfondo bianco e bordi rossi, che indica un passaggio a livello con più binari. Il segnale B è un segnale diSTOP, di forma ottagonale, con sfondo rosso e la scritta \"STOP\" in bianco. I due segnali sono presentati separatamente, uno sopra l'altro, con le rispettive etichette.",
+    "name": "Segnale di passaggio a livello con due o più binari (A) e segnale di STOP (B)",
+    "description": "Il segnale A è un segnale di pericolo che indica un passaggio a livello con due o più binari. Il segnale B è un segnale diSTOP, che impone l'obbligo di arrestarsi prima di impegnare l'incrocio. Non è possibile abbinare i due segnali in quanto hanno significati e prescrizioni differenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di obbligo",
+      "Combinazione di segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "segnali di obbligo",
+      "passaggio a livello",
+      "segnali di STOP"
+    ],
+    "vector_search_queries": [
+      "abbinamento segnali di pericolo e obbligo",
+      "combinazione segnali stradali con funzioni diverse"
+    ],
+    "rule_explanation": "I segnali di pericolo (come il passaggio a livello) non possono essere abbinati a segnali di obbligo (come lo STOP) in quanto hanno funzioni e prescrizioni diverse."
+  }
+}

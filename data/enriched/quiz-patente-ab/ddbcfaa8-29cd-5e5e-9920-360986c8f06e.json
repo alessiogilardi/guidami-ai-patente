@@ -1,0 +1,28 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22541",
+  "text": "Su strada extraurbana a una corsia per senso di marcia, la distanza fra veicoli adibiti al trasporto di merci di massa complessiva superiore a 3,5 tonnellate, cui sia stato imposto il divieto di sorpasso, deve essere di almeno 100 metri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza tra veicoli pesanti",
+      "Divieto di sorpasso per veicoli da trasporto merci"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicoli da trasporto merci",
+      "massa complessiva superiore a 3,5 tonnellate",
+      "divieto di sorpasso",
+      "100 metri"
+    ],
+    "vector_search_queries": [
+      "distanza minima tra veicoli pesanti con divieto di sorpasso su strade extraurbane a corsia singola",
+      "regolamentazione distanza di sicurezza per autocarri > 3,5 tonnellate su strade extraurbane"
+    ],
+    "rule_explanation": "Su strada extraurbana a una corsia per senso di marcia, la distanza minima tra veicoli da trasporto merci di massa > 3,5 t, con divieto di sorpasso, è di 100 metri."
+  }
+}

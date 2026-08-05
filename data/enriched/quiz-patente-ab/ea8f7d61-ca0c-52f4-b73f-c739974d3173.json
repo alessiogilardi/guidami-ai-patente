@@ -1,0 +1,28 @@
+{
+  "question_id": 4414,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22721",
+  "text": "Giungendo ad un incrocio, se non si è in grado di capire subito chi ha la precedenza, bisogna procedere con prudenza e accortezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza agli incroci",
+      "Comportamento in caso di incertezza sulla precedenza"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "precedenza",
+      "procedere con prudenza",
+      "accortezza"
+    ],
+    "vector_search_queries": [
+      "regola generale di precedenza negli incroci stradali",
+      "comportamento del conducente in caso di incertezza sulla precedenza",
+      "obbligo di prudenza e accortezza agli incroci stradali"
+    ],
+    "rule_explanation": "In caso di incertezza sulla precedenza in un incrocio, è obbligatorio procedere con la massima prudenza e accortezza per evitare incidenti."
+  }
+}

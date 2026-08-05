@@ -1,0 +1,28 @@
+{
+  "question_id": 4408,
+  "topic": "Distanza di sicurezza",
+  "number": "22657",
+  "text": "La distanza di sicurezza deve essere aumentata quando il veicolo che precede trasporta un carico sporgente, poco stabile",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Carico sporgente",
+      "Stabilità del carico"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo che precede",
+      "carico sporgente",
+      "instabilità"
+    ],
+    "vector_search_queries": [
+      "aumento distanza di sicurezza veicolo con carico sporgente",
+      "condizioni che impongono incremento della distanza di sicurezza"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere aumentata in presenza di veicoli che trasportano carichi sporgenti o instabili, per prevenire incidenti in caso di caduta del carico."
+  }
+}

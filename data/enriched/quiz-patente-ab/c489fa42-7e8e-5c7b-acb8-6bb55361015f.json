@@ -1,0 +1,31 @@
+{
+  "question_id": 4362,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22154",
+  "text": "Il pannello integrativo raffigurato preavvisa la presenza di cordoli trasversali di rallentamento (dossi artificiali)",
+  "correct_answer": false,
+  "image": "9ea7baee038e71d7ed8d2fdd50cc4646.jpeg",
+  "image_description": "Pericolo di allagamento. Il segnale indica un pericolo di allagamento della carreggiata in caso di pioggia o forte mareggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare, di colore bianco con bordo nero. Al suo interno sono raffigurate tre linee ondulate orizzontali, di colore blu. Questo pannello è un segnale di pericolo che preavvisa una condizione specifica della strada. Le linee ondulate sono comunemente usate per rappresentare l'acqua. Pertanto, il segnale indica un pericolo legato all'acqua. Tra le opzioni fornite, quella che meglio descrive questo scenario è il pericolo di allagamento della carreggiata.",
+    "name": "Pericolo di allagamento",
+    "description": "Il segnale indica un pericolo di allagamento della carreggiata in caso di pioggia o forte mareggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "pericolo di allagamento",
+      "dossi artificiali",
+      "cordoli trasversali"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo pericolo allagamento carreggiata",
+      "differenza tra segnale di allagamento e dosso artificiale"
+    ],
+    "rule_explanation": "Il pannello integrativo raffigurante un'onda indica il pericolo di allagamento della carreggiata, non la presenza di dossi artificiali o cordoli trasversali."
+  }
+}

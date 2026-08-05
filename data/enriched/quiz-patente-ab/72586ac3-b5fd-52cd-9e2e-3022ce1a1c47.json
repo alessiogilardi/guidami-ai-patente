@@ -1,0 +1,27 @@
+{
+  "question_id": 4031,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18641",
+  "text": "I quadricicli non sono autoveicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli",
+      "Definizioni di autoveicolo"
+    ],
+    "exact_keywords": [
+      "quadricicli",
+      "autoveicoli",
+      "veicoli a motore",
+      "definizione di autoveicolo"
+    ],
+    "vector_search_queries": [
+      "distinzione tra quadricicli e autoveicoli nel CdS",
+      "definizione legale di autoveicolo e classificazione dei quadricicli"
+    ],
+    "rule_explanation": "I quadricicli, pur essendo veicoli a motore, non rientrano nella definizione di autoveicoli secondo il Codice della Strada."
+  }
+}

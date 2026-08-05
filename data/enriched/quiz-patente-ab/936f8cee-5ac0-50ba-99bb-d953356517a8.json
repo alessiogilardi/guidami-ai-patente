@@ -1,0 +1,29 @@
+{
+  "question_id": 4403,
+  "topic": "Distanza di sicurezza",
+  "number": "22622",
+  "text": "Lo spazio totale di arresto è indipendente dall'usura dei pneumatici",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di arresto",
+      "Fattori che influenzano lo spazio di arresto"
+    ],
+    "exact_keywords": [
+      "spazio totale di arresto",
+      "usura dei pneumatici",
+      "condizioni del veicolo",
+      "distanza di frenata"
+    ],
+    "vector_search_queries": [
+      "influenza dell'usura dei pneumatici sullo spazio di arresto",
+      "fattori che incidono sulla distanza di frenata del veicolo",
+      "spazio di arresto e condizioni del veicolo"
+    ],
+    "rule_explanation": "Lo spazio totale di arresto dipende da vari fattori, tra cui lo spazio di reazione e la distanza di frenata, influenzati anche dall'usura dei pneumatici e dalle condizioni del veicolo."
+  }
+}

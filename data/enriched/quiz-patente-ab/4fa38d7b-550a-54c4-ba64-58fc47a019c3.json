@@ -1,0 +1,31 @@
+{
+  "question_id": 4139,
+  "topic": "Segnali di divieto",
+  "number": "19912",
+  "text": "Il segnale raffigurato contraddistingue le aree dove è proibito lasciare in sosta un veicolo",
+  "correct_answer": true,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Definizione di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "sosta",
+      "fermata",
+      "segnale stradale"
+    ],
+    "vector_search_queries": [
+      "differenza tra sosta e fermata segnale divieto",
+      "segnali stradali di divieto di sosta e fermata"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta vieta di lasciare il veicolo in sosta, ma non in fermata, sul lato della strada dove è esposto."
+  }
+}

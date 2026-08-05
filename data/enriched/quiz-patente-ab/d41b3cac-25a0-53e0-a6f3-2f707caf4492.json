@@ -1,0 +1,28 @@
+{
+  "question_id": 4047,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18811",
+  "text": "Alla guida di un veicolo, in vicinanza di una piazzola per la fermata di autobus per scolari, occorre fare attenzione ai bambini, che potrebbero attraversare di corsa la strada per salire sullo scuolabus",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Sicurezza stradale in prossimità di fermate scolastiche"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "fermata di autobus per scolari",
+      "bambini",
+      "scuolabus",
+      "attraversare la strada"
+    ],
+    "vector_search_queries": [
+      "precauzioni alla guida in prossimità di fermate scuolabus",
+      "obbligo di attenzione verso i bambini che attraversano la strada per salire sullo scuolabus"
+    ],
+    "rule_explanation": "In prossimità di fermate di scuolabus, il conducente deve prestare particolare attenzione ai bambini che potrebbero attraversare improvvisamente la strada."
+  }
+}

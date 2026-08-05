@@ -1,0 +1,28 @@
+{
+  "question_id": 4046,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18807",
+  "text": "I bambini, al semaforo, possono attraversare la strada solo dopo aver ricevuto un gesto di consenso da parte degli automobilisti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela dei pedoni e utenti deboli",
+      "Regole di attraversamento stradale"
+    ],
+    "exact_keywords": [
+      "bambini",
+      "attraversamento stradale",
+      "semáforo",
+      "consenso automobilisti"
+    ],
+    "vector_search_queries": [
+      "precedenza pedoni al semaforo",
+      "regole attraversamento stradale per bambini",
+      "diritti dei pedoni in attraversamento con semaforo"
+    ],
+    "rule_explanation": "I pedoni, inclusi i bambini, hanno la precedenza ai semafori e non necessitano di gesti di consenso dagli automobilisti per attraversare. L'attraversamento è regolato dalla segnaletica luminosa."
+  }
+}

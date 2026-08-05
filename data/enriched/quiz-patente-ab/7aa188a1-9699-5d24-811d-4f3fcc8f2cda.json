@@ -1,0 +1,28 @@
+{
+  "question_id": 4021,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18532",
+  "text": "Il salvagente è un itinerario ciclopedonale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di salvagente",
+      "Definizione di itinerario ciclopedonale",
+      "Uso della strada e convivenza civile"
+    ],
+    "exact_keywords": [
+      "salvagente",
+      "itinerario ciclopedonale",
+      "area pedonale",
+      "pista ciclabile"
+    ],
+    "vector_search_queries": [
+      "differenza tra salvagente e itinerario ciclopedonale",
+      "definizione normativa di salvagente e itinerario ciclopedonale"
+    ],
+    "rule_explanation": "Il salvagente è un'area destinata ai pedoni per l'attraversamento della carreggiata, non un itinerario ciclopedonale che è un percorso riservato a ciclisti e pedoni."
+  }
+}

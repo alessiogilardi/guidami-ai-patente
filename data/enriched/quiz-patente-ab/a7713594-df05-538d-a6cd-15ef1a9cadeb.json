@@ -1,0 +1,34 @@
+{
+  "question_id": 4312,
+  "topic": "Segnali di indicazione",
+  "number": "21667",
+  "text": "Il segnale raffigurato invita ad usare prudenza perché possiamo trovare ciclisti che attraversano la carreggiata",
+  "correct_answer": true,
+  "image": "2faf7752ddcc6087bffff0ee81a28eaf.jpeg",
+  "image_description": "Pista ciclabile. Il segnale indica una pista ciclabile. Obbliga i ciclisti a utilizzare la pista e segnala la loro presenza agli altri utenti della strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale è raffigurata, in bianco, una figura stilizzata di un ciclista su una bicicletta. Il segnale è di forma quadrata con angoli arrotondati. Questo segnale è un segnale di indicazione.",
+    "name": "Pista ciclabile",
+    "description": "Il segnale indica una pista ciclabile. Obbliga i ciclisti a utilizzare la pista e segnala la loro presenza agli altri utenti della strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Presenza di ciclisti",
+      "Intersezione con piste ciclabili"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "pista ciclabile",
+      "prudenza",
+      "ciclisti",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di pericolo per presenza ciclisti",
+      "obbligo di usare la pista ciclabile e avviso agli automobilisti",
+      "prudenza necessaria in presenza di piste ciclabili e attraversamenti di ciclisti"
+    ],
+    "rule_explanation": "Il segnale di pista ciclabile impone ai ciclisti di usarla e avvisa gli altri utenti della possibile presenza di ciclisti che attraversano la carreggiata, richiedendo prudenza."
+  }
+}

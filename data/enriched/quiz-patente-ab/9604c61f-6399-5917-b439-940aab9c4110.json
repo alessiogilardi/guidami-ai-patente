@@ -1,0 +1,27 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31046",
+  "text": "Il conducente deve concentrarsi prevalentemente sul tratto di strada non superiore a tre metri antistante il suo veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di attenzione alla guida",
+      "Campo visivo del conducente"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "attenzione",
+      "campo visivo",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di attenzione alla guida e al campo visivo",
+      "doveri del conducente in materia di sicurezza stradale"
+    ],
+    "rule_explanation": "Il conducente deve prestare attenzione alla strada e a tutto ciò che può costituire pericolo, non solo a un tratto limitato antistante il veicolo."
+  }
+}

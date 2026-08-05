@@ -1,0 +1,29 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18793",
+  "text": "In vicinanza di un attraversamento pedonale, il conducente deve considerare che i veicoli parcheggiati in prossimità delle strisce impediscono la visuale dei pedoni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di prossimità agli attraversamenti pedonali",
+      "Doveri del conducente verso gli utenti deboli",
+      "Prevenzione del rischio per i pedoni"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "veicoli parcheggiati",
+      "visuale dei pedoni",
+      "condizioni di visibilità"
+    ],
+    "vector_search_queries": [
+      "obbligo di attenzione del conducente in prossimità di attraversamenti pedonali",
+      "prevenzione del rischio per i pedoni ostacolati da veicoli parcheggiati",
+      "visibilità ridotta per pedoni a causa di parcheggi vicino alle strisce"
+    ],
+    "rule_explanation": "In prossimità di un attraversamento pedonale, il conducente deve moderare la velocità e prestare particolare attenzione, considerando che veicoli parcheggiati possono ostacolare la visibilità dei pedoni."
+  }
+}

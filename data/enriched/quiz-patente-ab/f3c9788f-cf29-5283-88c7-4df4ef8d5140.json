@@ -1,0 +1,27 @@
+{
+  "question_id": 4010,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18417",
+  "text": "In un passaggio a livello si può trovare la croce di S. Andrea",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Passaggi a livello"
+    ],
+    "exact_keywords": [
+      "croce di Sant'Andrea",
+      "passaggio a livello",
+      "segnali di pericolo",
+      "segnaletica stradale"
+    ],
+    "vector_search_queries": [
+      "segnaletica di pericolo per passaggi a livello",
+      "croce di Sant'Andrea come segnale di pericolo per passaggi a livello"
+    ],
+    "rule_explanation": "La croce di Sant'Andrea è un segnale di pericolo che indica la presenza di un passaggio a livello, da sola o con una o più croci per indicare più binari."
+  }
+}

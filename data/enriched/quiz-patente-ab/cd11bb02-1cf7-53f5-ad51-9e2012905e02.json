@@ -1,0 +1,28 @@
+{
+  "question_id": 4651,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24923",
+  "text": "Se un infortunato della strada ha riportato fratture agli arti, bisogna bloccarglieli e subito dopo, se necessario, attuare le normali misure anti- shock",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di incidente stradale",
+      "Gestione delle fratture",
+      "Misure anti-shock"
+    ],
+    "exact_keywords": [
+      "infortunato della strada",
+      "fratture agli arti",
+      "immobilizzazione",
+      "misure anti-shock"
+    ],
+    "vector_search_queries": [
+      "primo soccorso fratture arti immobilizzazione",
+      "gestione infortunato stradale con fratture e shock"
+    ],
+    "rule_explanation": "In caso di fratture agli arti di un infortunato, è necessario immobilizzarli e successivamente, se indicato, applicare le appropriate misure anti-shock per stabilizzare il paziente."
+  }
+}

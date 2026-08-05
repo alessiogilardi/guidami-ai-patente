@@ -1,0 +1,27 @@
+{
+  "question_id": 4008,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18401",
+  "text": "L'intersezione (incrocio) a raso è un passaggio a livello dotato di barriere o semibarriere",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di intersezione a raso",
+      "Definizione di passaggio a livello"
+    ],
+    "exact_keywords": [
+      "intersezione a raso",
+      "passaggio a livello",
+      "barriere",
+      "semibarriere"
+    ],
+    "vector_search_queries": [
+      "differenza tra intersezione a raso e passaggio a livello",
+      "definizione di passaggio a livello con barriere o semibarriere"
+    ],
+    "rule_explanation": "L'intersezione a raso è il punto in cui due o più strade si incrociano allo stesso livello, mentre il passaggio a livello è un incrocio tra una strada e una linea ferroviaria."
+  }
+}

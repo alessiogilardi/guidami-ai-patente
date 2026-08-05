@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22305",
+  "text": "E' obbligatorio ridurre la velocità fuori dai centri abitati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di guida"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "ridurre la velocità",
+      "fuori dai centri abitati",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità fuori dai centri abitati",
+      "adeguamento della velocità alle condizioni di traffico e strada"
+    ],
+    "rule_explanation": "Non è sempre obbligatorio ridurre la velocità fuori dai centri abitati; la velocità va adeguata alle condizioni specifiche per evitare pericoli o intralci."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4653,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24936",
+  "text": "Dopo un incidente stradale, il soccorritore che interviene deve assistere gli infortunati al meglio delle sue possibilità, senza però prendere iniziative di specifica competenza medica",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del soccorritore in caso di incidente",
+      "Assistenza agli infortunati",
+      "Limiti di intervento del soccorritore non sanitario"
+    ],
+    "exact_keywords": [
+      "soccorritore",
+      "assistenza agli infortunati",
+      "specifica competenza medica",
+      "incidente stradale"
+    ],
+    "vector_search_queries": [
+      "obblighi del soccorritore in caso di incidente stradale",
+      "assistenza agli infortunati senza eccedere la competenza medica"
+    ],
+    "rule_explanation": "Il soccorritore deve prestare la massima assistenza possibile agli infortunati dopo un incidente, senza però eccedere nell'ambito delle proprie competenze, evitando iniziative riservate al personale medico."
+  }
+}

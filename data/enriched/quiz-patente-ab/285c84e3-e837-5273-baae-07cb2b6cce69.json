@@ -1,0 +1,29 @@
+{
+  "question_id": 4553,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23971",
+  "text": "La manovra di svolta a sinistra è particolarmente pericolosa per un ciclomotore che deve interferire con la traiettoria di una o più colonne di veicoli più veloci sopraggiungenti nella stessa direzione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di svolta a sinistra",
+      "Pericolosità per ciclomotori",
+      "Interferenza con la circolazione"
+    ],
+    "exact_keywords": [
+      "svolta a sinistra",
+      "ciclomotore",
+      "traiettoria",
+      "veicoli più veloci",
+      "stessa direzione"
+    ],
+    "vector_search_queries": [
+      "pericolosità svolta a sinistra ciclomotore traffico veicoli veloci",
+      "rischio interferenza traiettoria ciclomotore veicoli sopraggiungenti"
+    ],
+    "rule_explanation": "La svolta a sinistra per un ciclomotore è pericolosa se interferisce con la traiettoria di veicoli più veloci provenienti dalla stessa direzione."
+  }
+}

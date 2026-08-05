@@ -1,0 +1,33 @@
+{
+  "question_id": 4101,
+  "topic": "Segnali di pericolo",
+  "number": "19470",
+  "text": "Il segnale raffigurato può essere usato anche nei centri abitati",
+  "correct_answer": true,
+  "image": "2b12fe96d3f0c9af53ce60483de34e8b.jpeg",
+  "image_description": "Segnale di pericolo: intersezione con circolazione a rotatoria. Preannuncia un'intersezione regolata da circolazione rotatoria. I veicoli che circolano nella rotatoria hanno la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero composto da tre frecce curve che indicano un movimento circolare in senso antiorario, tipico di una rotatoria. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
+    "name": "Segnale di pericolo: intersezione con circolazione a rotatoria",
+    "description": "Preannuncia un'intersezione regolata da circolazione rotatoria. I veicoli che circolano nella rotatoria hanno la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnaletica stradale di prescrizione",
+      "Circolazione stradale"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "intersezione con circolazione a rotatoria",
+      "centri abitati",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "uso dei segnali di pericolo nei centri abitati",
+      "segnaletica di preavviso di rotatoria in ambito urbano",
+      "installazione segnali di pericolo per rotatorie in centri abitati"
+    ],
+    "rule_explanation": "I segnali di pericolo, come quello che preannuncia una rotatoria, possono essere installati sia fuori che dentro i centri abitati per avvisare i conducenti di pericoli imminenti."
+  }
+}

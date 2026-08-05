@@ -1,0 +1,33 @@
+{
+  "question_id": 4351,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22032",
+  "text": "Il segnale raffigurato indica l'orario di apertura di una zona a traffico limitato",
+  "correct_answer": false,
+  "image": "114c9931e895cc500d8176d5c9541ebc.jpeg",
+  "image_description": "Preavviso di percorso pedonale con pannello integrativo di orario. Il segnale indica un percorso pedonale riservato ai pedoni, con l'aggiunta di un pannello integrativo che specifica gli orari in cui tale riserva è valida: dalle 8:00 alle 20:00. Al di fuori di questi orari, il percorso non è esclusivamente pedonale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di prescrizione circolare blu con bordo bianco, raffigurante la figura stilizzata di un pedone in bianco. Sotto questo segnale, è presente un pannello integrativo rettangolare bianco con bordo nero. Il pannello contiene un simbolo di croce (+) seguito dagli orari \"8,00 - 20,00\". Il segnale principale indica un percorso pedonale. Il pannello integrativo specifica che la prescrizione è valida solo negli orari indicati.",
+    "name": "Preavviso di percorso pedonale con pannello integrativo di orario",
+    "description": "Il segnale indica un percorso pedonale riservato ai pedoni, con l'aggiunta di un pannello integrativo che specifica gli orari in cui tale riserva è valida: dalle 8:00 alle 20:00. Al di fuori di questi orari, il percorso non è esclusivamente pedonale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Zone a traffico limitato (ZTL)",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "orario di validità",
+      "percorso pedonale",
+      "zona a traffico limitato"
+    ],
+    "vector_search_queries": [
+      "funzione dei pannelli integrativi di orario",
+      "differenza tra percorso pedonale con orario e ZTL",
+      "segnaletica stradale che indica orari di validità di prescrizioni"
+    ],
+    "rule_explanation": "Il pannello integrativo indica gli orari di validità di un segnale o di una prescrizione, non istituisce una ZTL. Il segnale raffigurato indica un percorso pedonale con orario di validità."
+  }
+}

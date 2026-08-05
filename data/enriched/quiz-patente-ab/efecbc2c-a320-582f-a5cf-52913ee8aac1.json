@@ -1,0 +1,27 @@
+{
+  "question_id": 4382,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22406",
+  "text": "Salvo diversa segnalazione, il limite massimo di velocità consentito sulle strade urbane è di 80 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità urbani",
+      "Regolamentazione della velocità su strade urbane"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "strade urbane",
+      "velocità consentita",
+      "segnalazione stradale"
+    ],
+    "vector_search_queries": [
+      "limite di velocità strade urbane",
+      "velocità massima consentita su strade urbane senza segnalazione"
+    ],
+    "rule_explanation": "Il limite massimo di velocità sulle strade urbane è di 50 km/h, salvo diversa segnalazione. Oltre tale limite, si applicano le sanzioni previste."
+  }
+}

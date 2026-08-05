@@ -1,0 +1,31 @@
+{
+  "question_id": 4269,
+  "topic": "Segnali di indicazione",
+  "number": "21246",
+  "text": "Il segnale raffigurato indica il tipo ed il numero di strada percorsa",
+  "correct_answer": true,
+  "image": "9476acfee4cb476566d2aa68a47dcb6e.jpeg",
+  "image_description": "Indicazione di numero e tipo di strada (SS). Il segnale indica che la strada che si sta percorrendo è la strada statale numero 2.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale rettangolare di colore blu scuro con bordi arrotondati e un bordo bianco sottile. Al centro del segnale, in lettere bianche maiuscole, sono riportate le sigle \"SS\" seguite dal numero \"2\". Questo tipo di segnale viene utilizzato per indicare il numero e il tipo di strada che si sta percorrendo.",
+    "name": "Indicazione di numero e tipo di strada (SS)",
+    "description": "Il segnale indica che la strada che si sta percorrendo è la strada statale numero 2."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Identificazione delle strade"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "tipo di strada",
+      "numero di strada",
+      "strada statale"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di indicazione del tipo e numero di strada",
+      "denominazione delle strade statali, provinciali e comunali"
+    ],
+    "rule_explanation": "I segnali di tipo ed numero di strada indicano la denominazione della strada che si sta percorrendo, sia essa statale, provinciale, comunale o altro."
+  }
+}

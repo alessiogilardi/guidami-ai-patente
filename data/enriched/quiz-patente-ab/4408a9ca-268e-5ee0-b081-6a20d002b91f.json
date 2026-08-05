@@ -1,0 +1,28 @@
+{
+  "question_id": 4653,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24935",
+  "text": "Dopo un incidente stradale, il soccorritore che interviene deve valutare bene la situazione, per proteggere gli infortunati da altri pericoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del soccorritore in caso di incidente",
+      "Sicurezza nella gestione degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "soccorritore",
+      "incidente stradale",
+      "infortunati",
+      "altri pericoli",
+      "valutare la situazione"
+    ],
+    "vector_search_queries": [
+      "obblighi di sicurezza del soccorritore in caso di incidente stradale",
+      "protezione degli infortunati da pericoli aggiuntivi dopo un sinistro"
+    ],
+    "rule_explanation": "Chi interviene in soccorso a seguito di un incidente deve prima mettere in sicurezza l'area e proteggere i feriti da ulteriori pericoli, valutando attentamente la situazione."
+  }
+}

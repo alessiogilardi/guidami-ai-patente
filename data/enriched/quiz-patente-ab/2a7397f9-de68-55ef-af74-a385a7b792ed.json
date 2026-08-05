@@ -1,0 +1,29 @@
+{
+  "question_id": 4709,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25370",
+  "text": "Il sovraccarico non causa problemi agli ammortizzatori di un veicolo a motore se il conducente adotta uno stile di guida prudente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sovraccarico del veicolo",
+      "Manutenzione del veicolo",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "sovraccarico",
+      "ammortizzatori",
+      "veicolo a motore",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "effetti del sovraccarico sugli ammortizzatori",
+      "impatto del sovraccarico sulla stabilità del veicolo",
+      "conseguenze del sovraccarico sulla tenuta di strada"
+    ],
+    "rule_explanation": "Il sovraccarico di un veicolo a motore sollecita eccessivamente gli ammortizzatori e compromette la tenuta di strada, indipendentemente dallo stile di guida."
+  }
+}

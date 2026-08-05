@@ -1,0 +1,30 @@
+{
+  "question_id": 4151,
+  "topic": "Segnali di obbligo",
+  "number": "20052",
+  "text": "Il segnale raffigurato è un segnale di obbligo",
+  "correct_answer": true,
+  "image": "6ff794188d5d8731f3360ac40409b437.jpeg",
+  "image_description": "Senso unico frontale. Il segnale impone di proseguire diritto.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca rivolta verso l'alto, indicando la direzione obbligatoria da seguire. Si tratta di un segnale di prescrizione, specificamente un segnale di direzione obbligatoria.",
+    "name": "Senso unico frontale",
+    "description": "Il segnale impone di proseguire diritto."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "proseguire diritto",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di obbligo di direzione",
+      "interpretazione segnali di prescrizione di proseguire diritto"
+    ],
+    "rule_explanation": "I segnali di obbligo, detti anche di prescrizione, impongono un comportamento specifico ai conducenti, come ad esempio l'obbligo di proseguire diritto."
+  }
+}

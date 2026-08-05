@@ -1,0 +1,27 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23013",
+  "text": "La posizione antiriflesso dello specchio retrovisore centrale di un autoveicolo non deve essere utilizzata di notte",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di protezione e sicurezza del veicolo",
+      "Utilizzo dei retrovisori"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore centrale",
+      "posizione antiriflesso",
+      "guida notturna",
+      "abbagliamento"
+    ],
+    "vector_search_queries": [
+      "funzione posizione antiriflesso specchietto retrovisore centrale notte",
+      "uso specchietto retrovisore centrale antiabbagliamento guida notturna"
+    ],
+    "rule_explanation": "La posizione antiriflesso dello specchio retrovisore centrale va usata di notte per evitare l'abbagliamento dei fari posteriori dei veicoli che seguono."
+  }
+}

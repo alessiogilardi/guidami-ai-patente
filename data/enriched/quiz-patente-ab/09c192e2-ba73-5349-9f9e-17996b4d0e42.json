@@ -1,0 +1,27 @@
+{
+  "question_id": 4574,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24160",
+  "text": "Durante la marcia, in caso di pioggia intensa, oltre alle luci anabbaglianti bisogna tenere accesa la luce posteriore per nebbia, se il veicolo ne è dotato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso delle luci per visibilità ridotta",
+      "Dispositivi di illuminazione obbligatori"
+    ],
+    "exact_keywords": [
+      "luci anabbaglianti",
+      "luce posteriore per nebbia",
+      "pioggia intensa",
+      "visibilità limitata"
+    ],
+    "vector_search_queries": [
+      "obbligo luci anabbaglianti e posteriori per nebbia in caso di pioggia intensa",
+      "uso luci per condizioni di scarsa visibilità dovuta a precipitazioni atmosferiche"
+    ],
+    "rule_explanation": "In caso di pioggia intensa, che limita la visibilità, è obbligatorio l'uso delle luci anabbaglianti e, se presente, della luce posteriore per nebbia."
+  }
+}

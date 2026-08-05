@@ -1,0 +1,31 @@
+{
+  "question_id": 4514,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23679",
+  "text": "La fermata è vietata in corrispondenza dei segnali orizzontali di preselezione e lungo le corsie di canalizzazione",
+  "correct_answer": true,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata e sosta vietate",
+      "Segnaletica orizzontale e verticale"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "corsie di canalizzazione",
+      "segnali orizzontali di preselezione"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata in corrispondenza di segnali orizzontali di preselezione",
+      "divieto di fermata lungo le corsie di canalizzazione"
+    ],
+    "rule_explanation": "La fermata è vietata lungo le corsie di canalizzazione e in corrispondenza dei segnali orizzontali di preselezione, a differenza della sosta che è generalmente vietata in tali punti."
+  }
+}

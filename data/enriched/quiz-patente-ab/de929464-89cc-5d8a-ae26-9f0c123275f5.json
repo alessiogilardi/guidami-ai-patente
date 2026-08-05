@@ -1,0 +1,27 @@
+{
+  "question_id": 4516,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23701",
+  "text": "Durante la sosta il conducente deve impedire l'uso del veicolo senza il suo consenso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente durante la sosta",
+      "Divieto di uso non autorizzato del veicolo"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "conducente",
+      "impedire l'uso del veicolo",
+      "consenso"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente durante la sosta del veicolo",
+      "impedire l'uso non autorizzato del veicolo fermo"
+    ],
+    "rule_explanation": "Durante la sosta, il conducente ha l'obbligo di adottare tutte le misure necessarie per impedire l'utilizzo del veicolo da parte di persone non autorizzate."
+  }
+}

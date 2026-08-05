@@ -1,0 +1,28 @@
+{
+  "question_id": 4656,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24963",
+  "text": "Durante la guida, si devono usare gli occhiali da vista o le lenti a contatto quando è indicato sulla patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso di lenti/occhiali per guida",
+      "Validità della patente e prescrizioni"
+    ],
+    "exact_keywords": [
+      "occhiali da vista",
+      "lenti a contatto",
+      "patente",
+      "codice della strada",
+      "prescrizione"
+    ],
+    "vector_search_queries": [
+      "obbligo di indossare occhiali o lenti a contatto per guidare se riportato sulla patente",
+      "prescrizioni sulla patente relative all'uso di lenti correttive durante la guida"
+    ],
+    "rule_explanation": "L'uso di occhiali da vista o lenti a contatto è obbligatorio durante la guida se prescritto sulla patente, per garantire la sicurezza stradale."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4556,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23992",
+  "text": "La guida di un fuoristrada (Suv), dotato di massa notevole e di altezza superiore alle autovetture, garantisce la massima sicurezza per gli occupanti del veicolo stesso e per gli altri utenti della strada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza stradale",
+      "Comportamento alla guida",
+      "Caratteristiche del veicolo"
+    ],
+    "exact_keywords": [
+      "massa notevole",
+      "altezza superiore",
+      "sicurezza degli occupanti",
+      "altri utenti della strada"
+    ],
+    "vector_search_queries": [
+      "fattori che influenzano la sicurezza di un veicolo",
+      "valutazione della sicurezza per occupanti e terzi in relazione alle caratteristiche del veicolo"
+    ],
+    "rule_explanation": "La sicurezza di un veicolo dipende da molteplici fattori, non solo dalla massa e dall'altezza, ma anche da sistemi di sicurezza attiva e passiva, e dal comportamento del conducente."
+  }
+}

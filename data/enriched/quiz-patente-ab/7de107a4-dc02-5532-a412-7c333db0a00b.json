@@ -1,0 +1,33 @@
+{
+  "question_id": 4318,
+  "topic": "Segnali di indicazione",
+  "number": "21728",
+  "text": "Il segnale raffigurato si può trovare sulle autostrade",
+  "correct_answer": false,
+  "image": "0573c2af5262ded64a42122fe33ee273.jpeg",
+  "image_description": "Indicazione di corsie riservate agli autobus. Il segnale indica che la corsia di destra è riservata agli autobus dei servizi pubblici urbani, mentre le altre due corsie sono per il transito normale di tutti i veicoli. La linea gialla verticale indica la separazione tra le corsie.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare bianco con bordi neri. Al suo interno sono presenti tre frecce nere rivolte verso l'alto, indicanti la direzione di marcia. La freccia più a sinistra e quella centrale sono di dimensioni standard. La freccia più a destra è leggermente più piccola e posizionata sopra un simbolo circolare blu con la scritta \"Only buses\" in bianco. Tra la seconda e la terza freccia è presente una linea gialla verticale. Le frecce indicano la disposizione delle corsie e la loro destinazione. Il segnale è di tipo \"indicazione\".",
+    "name": "Indicazione di corsie riservate agli autobus",
+    "description": "Il segnale indica che la corsia di destra è riservata agli autobus dei servizi pubblici urbani, mentre le altre due corsie sono per il transito normale di tutti i veicoli. La linea gialla verticale indica la separazione tra le corsie."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Segnali di corsia",
+      "Uso delle autostrade"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "corsia riservata",
+      "autostrada",
+      "servizi pubblici urbani"
+    ],
+    "vector_search_queries": [
+      "segnali di corsia riservata agli autobus urbani",
+      "divieto di transito per determinate categorie di veicoli su autostrade",
+      "segnaletica di indicazione stradale e sue prescrizioni"
+    ],
+    "rule_explanation": "I segnali di corsia riservata ai bus urbani non si possono trovare sulle autostrade, ma solo su strade urbane o extraurbane principali."
+  }
+}

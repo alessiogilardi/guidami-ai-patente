@@ -1,0 +1,28 @@
+{
+  "question_id": 4713,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25427",
+  "text": "Nei veicoli a motore a due ruote, l'interruttore d'emergenza permette il blocco istantaneo delle ruote",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza dei veicoli a motore",
+      "Funzionamento dei freni"
+    ],
+    "exact_keywords": [
+      "interruttore d'emergenza",
+      "blocco istantaneo delle ruote",
+      "veicoli a motore a due ruote",
+      "freno di stazionamento"
+    ],
+    "vector_search_queries": [
+      "funzione interruttore d'emergenza motocicli",
+      "differenza tra interruttore d'emergenza e freni motocicli",
+      "dispositivi di sicurezza veicoli a due ruote"
+    ],
+    "rule_explanation": "L'interruttore d'emergenza sui veicoli a due ruote non causa il blocco istantaneo delle ruote, ma serve a spegnere il motore in caso di pericolo. Il blocco delle ruote è funzione dei freni."
+  }
+}

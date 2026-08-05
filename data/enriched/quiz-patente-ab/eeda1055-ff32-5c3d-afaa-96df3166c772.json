@@ -1,0 +1,27 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24418",
+  "text": "L'obbligo dell'uso del casco non riguarda i maggiorenni con più di tre anni di esperienza di guida",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Utilizzo dei sistemi di ritenuta"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "uso del casco",
+      "maggiorenni",
+      "veicoli a due ruote"
+    ],
+    "vector_search_queries": [
+      "obbligo casco maggiorenni motocicli",
+      "uso casco protettivo conducenti e passeggeri veicoli a due ruote"
+    ],
+    "rule_explanation": "L'obbligo di indossare il casco protettivo per la guida di veicoli a due ruote si applica a tutti i conducenti e passeggeri maggiorenni, indipendentemente dall'anzianità della patente."
+  }
+}

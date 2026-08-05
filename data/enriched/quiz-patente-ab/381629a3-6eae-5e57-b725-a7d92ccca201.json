@@ -1,0 +1,27 @@
+{
+  "question_id": 4587,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24271",
+  "text": "Fuori dei centri abitati, i conducenti devono spegnere i proiettori di profondità procedendo con quelli anabbaglianti, solo quando il veicolo che li precede a breve distanza è un'autovettura",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di profondità",
+      "Obbligo di adeguare l'illuminazione alle condizioni di visibilità e traffico"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "proiettori anabbaglianti",
+      "centri abitati",
+      "veicolo che precede"
+    ],
+    "vector_search_queries": [
+      "obbligo spegnimento proiettori di profondità in presenza di altri veicoli",
+      "uso luci anabbaglianti in autostrada e fuori dai centri abitati"
+    ],
+    "rule_explanation": "I proiettori di profondità vanno spenti non solo se precede un'autovettura, ma anche altri veicoli, o se si incrociano altri veicoli, per non abbagliare."
+  }
+}

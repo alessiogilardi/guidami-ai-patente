@@ -1,0 +1,29 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24823",
+  "text": "Quando, in un giorno di pioggia, si deve transitare su rotaie del tram o su tombini presenti sulla carreggiata stradale a bordo di un veicolo a due ruote, è bene alzarsi in piedi sulle pedivelle prima di transitarvi sopra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti",
+      "Comportamento sicuro su veicoli a due ruote",
+      "Guida in condizioni di scarsa aderenza"
+    ],
+    "exact_keywords": [
+      "veicolo a due ruote",
+      "rotaie",
+      "tombini",
+      "condizioni di aderenza",
+      "manovre pericolose"
+    ],
+    "vector_search_queries": [
+      "pericolosità di alzarsi in piedi sulle pedivelle su veicoli a due ruote in caso di pioggia su rotaie o tombini",
+      "manovre da evitare per veicoli a due ruote su superfici scivolose come rotaie e tombini"
+    ],
+    "rule_explanation": "Su veicoli a due ruote, è pericoloso alzarsi in piedi sulle pedivelle in caso di pioggia su rotaie o tombini, poiché ciò riduce il controllo e aumenta il rischio di scivolamento."
+  }
+}

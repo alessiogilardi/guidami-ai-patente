@@ -1,0 +1,32 @@
+{
+  "question_id": 4130,
+  "topic": "Segnali di divieto",
+  "number": "19810",
+  "text": "Il segnale raffigurato può trovarsi sia nei centri abitati che fuori",
+  "correct_answer": true,
+  "image": "016a0bbce288af6879bd8c8e41bea0bf.jpeg",
+  "image_description": "Segnale di altezza massima. Il segnale indica l'altezza massima dei veicoli ammessi al transito, misurata dal piano stradale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente un numero \"3\" grande, seguito da \",50\" in apice, e due frecce nere verticali, una rivolta verso l'alto e una verso il basso, che delimitano il numero. Questo è il segnale di \"altezza massima\".",
+    "name": "Segnale di altezza massima",
+    "description": "Il segnale indica l'altezza massima dei veicoli ammessi al transito, misurata dal piano stradale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione verticale",
+      "Segnali di indicazione di pericolo",
+      "Segnali di obbligo o divieto specifico"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "altezza massima",
+      "centri abitati",
+      "fuori dai centri abitati"
+    ],
+    "vector_search_queries": [
+      "installazione segnale di altezza massima nei centri abitati e fuori",
+      "segnali di prescrizione verticale altezza massima validità territoriale"
+    ],
+    "rule_explanation": "Il segnale di 'altezza massima' è un segnale di prescrizione che può essere installato sia nei centri abitati che fuori, per indicare il limite di altezza dei veicoli ammessi al transito."
+  }
+}

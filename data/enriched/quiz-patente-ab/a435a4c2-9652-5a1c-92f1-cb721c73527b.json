@@ -1,0 +1,29 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25338",
+  "text": "Il cambio delle pastiglie dei freni è un'operazione di manutenzione ordinaria che può essere svolta da qualunque conducente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Competenza tecnica"
+    ],
+    "exact_keywords": [
+      "manutenzione ordinaria",
+      "pastiglie dei freni",
+      "sistema frenante",
+      "manutenzione straordinaria"
+    ],
+    "vector_search_queries": [
+      "manutenzione ordinaria e straordinaria del veicolo",
+      "sostituzione pastiglie freni e sicurezza",
+      "competenze tecniche per manutenzione veicolo"
+    ],
+    "rule_explanation": "La sostituzione delle pastiglie dei freni, componente essenziale per la sicurezza, richiede competenze tecniche specifiche e non rientra nella manutenzione ordinaria eseguibile da qualunque conducente."
+  }
+}

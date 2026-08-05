@@ -1,0 +1,29 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24660",
+  "text": "Il mancato utilizzo o l'uso improprio delle luci durante la guida, comporta una perdita di punti sulla patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente durante la guida",
+      "Uso dei dispositivi di illuminazione",
+      "Sistema sanzionatorio della patente a punti"
+    ],
+    "exact_keywords": [
+      "luci durante la guida",
+      "uso improprio",
+      "perdita di punti",
+      "patente di guida"
+    ],
+    "vector_search_queries": [
+      "sanzioni per mancato uso luci veicolo",
+      "decadenza punti patente per uso improprio dispositivi illuminazione",
+      "obblighi conducente luci veicolo"
+    ],
+    "rule_explanation": "Il mancato uso o l'uso improprio dei dispositivi di illuminazione del veicolo comporta la decurtazione di punti dalla patente di guida."
+  }
+}

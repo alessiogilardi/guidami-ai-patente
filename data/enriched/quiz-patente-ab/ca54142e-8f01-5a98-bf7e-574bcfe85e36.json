@@ -1,0 +1,28 @@
+{
+  "question_id": 4680,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25134",
+  "text": "Per diminuire l'inquinamento dell'aria non bisogna accelerare e frenare spesso durante la marcia del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida ecologica",
+      "Riduzione delle emissioni inquinanti",
+      "Efficienza del carburante"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "accelerare e frenare spesso",
+      "marcia del veicolo",
+      "consumo di carburante"
+    ],
+    "vector_search_queries": [
+      "impatto di accelerazioni e frenate frequenti sulle emissioni inquinanti",
+      "tecniche di guida per ridurre l'inquinamento atmosferico da veicoli a motore"
+    ],
+    "rule_explanation": "Una guida fluida, evitando accelerazioni e frenate brusche, riduce il consumo di carburante e, di conseguenza, le emissioni inquinanti nell'aria."
+  }
+}

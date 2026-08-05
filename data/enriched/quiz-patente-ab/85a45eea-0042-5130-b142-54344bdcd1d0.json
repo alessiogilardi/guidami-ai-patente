@@ -1,0 +1,32 @@
+{
+  "question_id": 4002,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18324",
+  "text": "Nella strada rappresentata, per ogni senso di marcia, le corsie di centro e di sinistra sono dedicate, di norma, al sorpasso",
+  "correct_answer": true,
+  "image": "a55112f8aa2ffee4f82537f5b38f7b9b.jpeg",
+  "image_description": "Carreggiata a due sensi di marcia con tre corsie per senso di marcia. La strada è rappresentata come una carreggiata a due sensi di marcia, ciascuno con tre corsie separate da strisce bianche discontinue. Ogni senso di marcia è ulteriormente separato da una doppia striscia bianca continua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada. La strada è divisa in due sezioni da una doppia linea bianca continua, indicando due sensi di marcia opposti. Ogni senso di marcia è ulteriormente suddiviso in tre corsie da linee bianche discontinue. Pertanto, la strada presenta un totale di sei corsie, tre per ogni senso di marcia. Non sono presenti segnali stradali, veicoli o altri elementi che possano alterare la interpretazione della geometria della strada.",
+    "name": "Carreggiata a due sensi di marcia con tre corsie per senso di marcia",
+    "description": "La strada è rappresentata come una carreggiata a due sensi di marcia, ciascuno con tre corsie separate da strisce bianche discontinue. Ogni senso di marcia è ulteriormente separato da una doppia striscia bianca continua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole di circolazione sulle autostrade e strade extraurbane principali",
+      "Utilizzo delle corsie di marcia"
+    ],
+    "exact_keywords": [
+      "corsie di centro e di sinistra",
+      "sorpasso",
+      "senso di marcia",
+      "strade extraurbane principali",
+      "autostrade"
+    ],
+    "vector_search_queries": [
+      "utilizzo corsie per sorpasso su autostrade e strade extraurbane principali",
+      "regola generale per corsie di sorpasso in autostrada"
+    ],
+    "rule_explanation": "Sulle autostrade e strade extraurbane principali, le corsie di centro e di sinistra sono normalmente riservate al sorpasso."
+  }
+}

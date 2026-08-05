@@ -1,0 +1,33 @@
+{
+  "question_id": 4320,
+  "topic": "Segnali di indicazione",
+  "number": "21748",
+  "text": "Il segnale raffigurato indica che bisogna dare la precedenza ai veicoli che entrano in autostrada",
+  "correct_answer": false,
+  "image": "e6b9eb6127f2b9813aff7b5e3ea59026.jpeg",
+  "image_description": "Preavviso di corsie di preselezione. Il segnale indica che le due corsie di sinistra proseguono dritto, mentre la corsia di destra consente di svoltare a sinistra. Preavvisa una riduzione del numero di corsie disponibili.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di corsie di preselezione. Il segnale è di colore verde con bordo bianco e presenta tre frecce bianche. Le due frecce a sinistra sono dritte e puntano verso l'alto, indicando che le corsie corrispondenti proseguono dritte. La freccia a destra è curva e indica una svolta a sinistra, suggerendo che la corsia corrispondente consente solo la svolta a sinistra. Il segnale è di forma rettangolare.",
+    "name": "Preavviso di corsie di preselezione",
+    "description": "Il segnale indica che le due corsie di sinistra proseguono dritto, mentre la corsia di destra consente di svoltare a sinistra. Preavvisa una riduzione del numero di corsie disponibili."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso",
+      "Segnali di corsia",
+      "Obbligo di dare la precedenza"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "corsie di preselezione",
+      "dare la precedenza",
+      "immissione in autostrada"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di corsie di preselezione",
+      "segnali che indicano disposizione delle corsie",
+      "differenza tra segnali di corsia e obblighi di precedenza in autostrada"
+    ],
+    "rule_explanation": "Il segnale di preavviso di corsie di preselezione indica la disposizione delle corsie e non un obbligo di dare la precedenza ai veicoli in immissione in autostrada."
+  }
+}

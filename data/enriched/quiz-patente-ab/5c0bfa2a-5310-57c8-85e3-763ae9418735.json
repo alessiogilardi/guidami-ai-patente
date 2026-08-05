@@ -1,0 +1,28 @@
+{
+  "question_id": 4566,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24081",
+  "text": "Quando si lascia un rimorchio in sosta occorre azionare la leva del freno di stazionamento e, in caso di strada in pendenza, è opportuno applicare dei cunei di arresto alle ruote",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo",
+      "Freno di stazionamento",
+      "Dispositivi antisbandamento"
+    ],
+    "exact_keywords": [
+      "rimorchio in sosta",
+      "freno di stazionamento",
+      "cunei di arresto",
+      "strada in pendenza"
+    ],
+    "vector_search_queries": [
+      "norme per la sosta del rimorchio",
+      "uso del freno di stazionamento e cunei di arresto per rimorchi in pendenza"
+    ],
+    "rule_explanation": "In caso di sosta del rimorchio, è obbligatorio azionare il freno di stazionamento e, se la strada è in pendenza, è necessario bloccare le ruote con cunei di arresto."
+  }
+}

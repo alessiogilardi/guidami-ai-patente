@@ -1,0 +1,28 @@
+{
+  "question_id": 4420,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22778",
+  "text": "In caso di traffico intenso il conducente deve fare uso del lampeggio simultaneo di tutti gli indicatori di direzione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Uso delle luci di emergenza",
+      "Traffico intenso"
+    ],
+    "exact_keywords": [
+      "lampeggio simultaneo",
+      "indicatori di direzione",
+      "traffico intenso",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "uso del lampeggio simultaneo degli indicatori di direzione per segnalare il pericolo",
+      "segnalazione delle manovre in caso di traffico intenso"
+    ],
+    "rule_explanation": "Il lampeggio simultaneo degli indicatori di direzione è riservato alle situazioni di pericolo, non al traffico intenso. In caso di traffico intenso, è necessario segnalare le manovre con gli indicatori di direzione singolarmente."
+  }
+}

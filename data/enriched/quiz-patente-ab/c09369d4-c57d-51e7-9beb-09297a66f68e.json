@@ -1,0 +1,27 @@
+{
+  "question_id": 4669,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25050",
+  "text": "L'assicurazione per la responsabilità civile auto (R.C.A.) è valida anche per gli incidenti avvenuti nei Paesi dell'Unione Europea",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità territoriale assicurazione R.C.A.",
+      "Copertura assicurativa UE"
+    ],
+    "exact_keywords": [
+      "assicurazione R.C.A.",
+      "Paesi dell'Unione Europea",
+      "validità territoriale",
+      "convenzione di Ginevra"
+    ],
+    "vector_search_queries": [
+      "validità assicurazione RCA nei paesi UE",
+      "copertura territoriale polizza auto responsabilità civile Unione Europea"
+    ],
+    "rule_explanation": "La polizza R.C.A. italiana ha validità territoriale in tutti i Paesi dell'Unione Europea, garantendo la copertura per gli incidenti avvenuti al loro interno."
+  }
+}

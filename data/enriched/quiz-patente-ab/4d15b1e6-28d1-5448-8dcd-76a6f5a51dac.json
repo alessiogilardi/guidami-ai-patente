@@ -1,0 +1,30 @@
+{
+  "question_id": 4534,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23835",
+  "text": "Il triangolo mobile di pericolo deve essere obbligatoriamente usato per segnalare il veicolo fermo per avaria di notte, se l'ostacolo non è visibile ad almeno 150 metri di distanza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo fermo",
+      "Obbligo di segnalazione visiva di pericolo",
+      "Uso del segnale triangolare di pericolo"
+    ],
+    "exact_keywords": [
+      "triangolo mobile di pericolo",
+      "veicolo fermo",
+      "avaria",
+      "visibilità",
+      "segnalazione di pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo uso triangolo mobile di pericolo per veicolo fermo per avaria",
+      "distanza visibilità segnale triangolare di pericolo",
+      "condizioni di impiego del segnale di pericolo"
+    ],
+    "rule_explanation": "Il triangolo mobile di pericolo va usato quando il veicolo è fermo per avaria e non è visibile a 100 metri, non 150, e sempre se causa pericolo o intralcio."
+  }
+}

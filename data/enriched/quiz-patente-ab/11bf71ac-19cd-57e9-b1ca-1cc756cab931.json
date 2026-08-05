@@ -1,0 +1,32 @@
+{
+  "question_id": 4358,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22113",
+  "text": "Il pannello integrativo raffigurato indica che non è consentito superare la linea continua",
+  "correct_answer": false,
+  "image": "16e3a6f5e999c723e882a57b9dde5584.jpeg",
+  "image_description": "Pannello integrativo - Lavori in corso (pulizia strada). Il segnale raffigura una scopa che spazza una superficie, indicando la presenza di lavori in corso per la pulizia o la manutenzione della strada, o la rimozione di detriti. Questo pannello integrativo viene solitamente posto sotto il segnale di 'Altri Pericoli' (triangolo con bordo rosso e sfondo bianco, con un simbolo di pericolo al centro) per specificare la natura del pericolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo di forma quadrata con bordo nero e sfondo grigio scuro. Al centro è raffigurato, in bianco, un simbolo che rappresenta una scopa con manico, in procinto di spazzare una superficie. La scopa è inclinata verso destra e la sua azione di spazzare è evidenziata da un'area bianca che simula la polvere o i detriti rimossi. Questo pannello è un pannello integrativo che solitamente accompagna altri segnali, come quello di 'Altri Pericoli', per fornire informazioni aggiuntive sulla natura del pericolo o della situazione stradale.",
+    "name": "Pannello integrativo - Lavori in corso (pulizia strada)",
+    "description": "Il segnale raffigura una scopa che spazza una superficie, indicando la presenza di lavori in corso per la pulizia o la manutenzione della strada, o la rimozione di detriti. Questo pannello integrativo viene solitamente posto sotto il segnale di 'Altri Pericoli' (triangolo con bordo rosso e sfondo bianco, con un simbolo di pericolo al centro) per specificare la natura del pericolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale integrativa",
+      "Divieti di sorpasso"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "linea continua",
+      "divieto di sorpasso",
+      "lavori in corso"
+    ],
+    "vector_search_queries": [
+      "funzione dei pannelli integrativi dei segnali stradali",
+      "segnalazione di lavori in corso e divieto di sorpasso",
+      "interpretazione pannello integrativo con scopa"
+    ],
+    "rule_explanation": "Il pannello integrativo 'Lavori in corso' non impone un divieto di sorpasso, ma segnala la presenza di operai o mezzi al lavoro sulla carreggiata. Il divieto di sorpasso è indicato da segnali specifici."
+  }
+}

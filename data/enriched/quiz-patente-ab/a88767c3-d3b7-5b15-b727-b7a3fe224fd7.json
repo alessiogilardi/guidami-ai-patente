@@ -1,0 +1,27 @@
+{
+  "question_id": 4655,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24956",
+  "text": "L'assunzione di alcool facilita la guida, perché fa aumentare la capacità di concentrazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Effetti dell'alcool sulla guida",
+      "Alterazione delle capacità psicofisiche"
+    ],
+    "exact_keywords": [
+      "alcool",
+      "guida",
+      "capacità di concentrazione",
+      "alterazione"
+    ],
+    "vector_search_queries": [
+      "effetti negativi dell'alcool sulla guida e sulla concentrazione",
+      "alterazione delle capacità psicofisiche dovuta all'assunzione di alcool"
+    ],
+    "rule_explanation": "L'assunzione di alcool non facilita la guida, ma ne altera negativamente le capacità psicofisiche, inclusa la concentrazione."
+  }
+}

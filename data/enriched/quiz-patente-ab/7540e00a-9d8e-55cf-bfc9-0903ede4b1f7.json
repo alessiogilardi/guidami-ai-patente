@@ -1,0 +1,29 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18740",
+  "text": "Il conducente deve dare segni di impazienza, se il veicolo che sta davanti procede troppo lentamente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente",
+      "Uso responsabile della strada",
+      "Convivenza civile"
+    ],
+    "exact_keywords": [
+      "segnali di impazienza",
+      "condotta del conducente",
+      "veicolo che precede",
+      "velocità eccessivamente ridotta"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente in caso di lentezza del veicolo che precede",
+      "divieto di manifestare impazienza alla guida",
+      "doveri di prudenza e rispetto tra conducenti"
+    ],
+    "rule_explanation": "Il conducente non deve manifestare impazienza verso chi lo precede, ma deve mantenere un comportamento prudente e rispettoso, adeguando la propria condotta alle circostanze di traffico."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4626,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24737",
+  "text": "Su strade coperte di neve occorre frenare a fondo in caso di sbandamento del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Comportamento in caso di sbandamento",
+      "Prevenzione degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "strade innevate",
+      "sbandamento del veicolo",
+      "frenare a fondo",
+      "perdita di controllo"
+    ],
+    "vector_search_queries": [
+      "comportamento corretto su strade innevate in caso di sbandamento",
+      "tecniche di guida per recuperare il controllo del veicolo su fondi scivolosi",
+      "evitare frenate brusche su neve per prevenire incidenti"
+    ],
+    "rule_explanation": "Su strade innevate, in caso di sbandamento, è necessario evitare frenate brusche e sterzate improvvise per non perdere il controllo del veicolo, ma agire con delicatezza sul volante e sui pedali."
+  }
+}

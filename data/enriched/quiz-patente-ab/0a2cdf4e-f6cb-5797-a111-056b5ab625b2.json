@@ -1,0 +1,27 @@
+{
+  "question_id": 4013,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18452",
+  "text": "L'uscita dei veicoli dalle autostrade avviene tramite corsie di decelerazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uscita da autostrada",
+      "Corsia di decelerazione"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "uscita",
+      "corsia di decelerazione",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "corsie di decelerazione per l'uscita da autostrade",
+      "modalità di uscita dalle autostrade tramite corsie dedicate"
+    ],
+    "rule_explanation": "Le manovre di uscita dalle autostrade devono essere effettuate tramite le apposite corsie di decelerazione, che consentono di ridurre la velocità in sicurezza."
+  }
+}

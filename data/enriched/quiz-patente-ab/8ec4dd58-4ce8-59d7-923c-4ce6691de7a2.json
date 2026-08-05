@@ -1,0 +1,30 @@
+{
+  "question_id": 4569,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24135",
+  "text": "In caso di rottura degli organi di traino di un veicolo, gli stessi possono essere riparati tramite saldatura presso officina specializzata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Riproduzione di organi di sicurezza",
+      "Norme sul traino di veicoli in avaria",
+      "Manutenzione e riparazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "rottura",
+      "organi di traino",
+      "riparazione",
+      "saldatura",
+      "officina specializzata"
+    ],
+    "vector_search_queries": [
+      "riparazione organi di traino veicolo in avaria",
+      "sostituzione organi di traino rotti",
+      "sicurezza traino veicolo saldatura"
+    ],
+    "rule_explanation": "La rottura degli organi di traino di un veicolo non consente la riparazione tramite saldatura, ma impone la sostituzione dell'intero organo per garantire la sicurezza."
+  }
+}

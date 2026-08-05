@@ -1,0 +1,33 @@
+{
+  "question_id": 4340,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21923",
+  "text": "I delineatori raffigurati sono posti ai margini di una strada o di una carreggiata a senso unico",
+  "correct_answer": true,
+  "image": "d4afb64225dd08c9fdb3cf55c3940bdf.jpeg",
+  "image_description": "Delineatori di margine. I delineatori raffigurati sono segnali complementari posti ai lati della carreggiata per visualizzare meglio l'andamento della strada, specialmente in curva o in presenza di ostacoli. Quello a sinistra indica la presenza di due ostacoli o la vicinanza di un'area pericolosa, mentre quello a destra indica un singolo ostacolo o un pericolo. Non sono visibili solo di notte e non dividono la carreggiata in corsie.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due delineatori di margine, che sono segnali complementari. Il delineatore di sinistra ha una parte superiore nera con due cerchi gialli e una parte inferiore grigia. Il delineatore di destra ha una parte superiore nera con un rettangolo giallo verticale e una parte inferiore grigia. Entrambi sono pali verticali che si estendono dalla base. Questi segnali sono utilizzati per indicare il bordo della carreggiata o la presenza di ostacoli. Il numero e la disposizione dei simboli gialli indicano la natura del pericolo o dell'ostacolo.",
+    "name": "Delineatori di margine",
+    "description": "I delineatori raffigurati sono segnali complementari posti ai lati della carreggiata per visualizzare meglio l'andamento della strada, specialmente in curva o in presenza di ostacoli. Quello a sinistra indica la presenza di due ostacoli o la vicinanza di un'area pericolosa, mentre quello a destra indica un singolo ostacolo o un pericolo. Non sono visibili solo di notte e non dividono la carreggiata in corsie."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali complementari",
+      "Delineatori di margine",
+      "Segnaletica stradale verticale"
+    ],
+    "exact_keywords": [
+      "delineatori",
+      "segnali complementari",
+      "margine della carreggiata",
+      "strada a senso unico"
+    ],
+    "vector_search_queries": [
+      "funzione dei delineatori di margine",
+      "collocazione dei delineatori complementari lungo la carreggiata",
+      "segnaletica complementare per indicare il margine della carreggiata"
+    ],
+    "rule_explanation": "I delineatori di margine sono segnali complementari posti ai lati della carreggiata per evidenziarne il percorso, specialmente in curva o in presenza di ostacoli, e sono visibili anche di giorno."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4554,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23982",
+  "text": "La presenza di veicoli che possono raggiungere velocità molto diverse tra loro, soprattutto su strada extraurbana, costituisce un fattore di sicurezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza stradale",
+      "Gestione del traffico eterogeneo",
+      "Circolazione su strade extraurbane"
+    ],
+    "exact_keywords": [
+      "velocità diverse",
+      "strada extraurbana",
+      "fattore di sicurezza",
+      "ingombro della carreggiata"
+    ],
+    "vector_search_queries": [
+      "pericoli derivanti da traffico a velocità eterogenea su strade extraurbane",
+      "gestione della sicurezza stradale in presenza di veicoli a velocità differenti"
+    ],
+    "rule_explanation": "La coesistenza di veicoli a velocità molto diverse su strade extraurbane non costituisce un fattore di sicurezza, ma un potenziale pericolo che richiede adeguamento della condotta di guida."
+  }
+}

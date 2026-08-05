@@ -1,0 +1,31 @@
+{
+  "question_id": 4179,
+  "topic": "Segnali di obbligo",
+  "number": "20372",
+  "text": "Il segnale raffigurato è posto in corrispondenza della fine del percorso pedonale e ciclabile",
+  "correct_answer": false,
+  "image": "491bca6436888e48f2030aee1772b5fd.jpeg",
+  "image_description": "Fine pista ciclabile. Indica la fine di una pista ciclabile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu. Al centro è presente il pittogramma di una bicicletta stilizzata, di colore bianco. Una barra rossa diagonale attraversa il pittogramma da sinistra a destra, indicando la fine di un divieto o di una prescrizione. In questo caso specifico, il segnale indica la fine di una pista ciclabile.",
+    "name": "Fine pista ciclabile",
+    "description": "Indica la fine di una pista ciclabile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di fine percorso obbligatorio",
+      "Segnaletica stradale di indicazione"
+    ],
+    "exact_keywords": [
+      "fine percorso pedonale e ciclabile",
+      "segnali di obbligo",
+      "segnali di indicazione",
+      "pista ciclabile"
+    ],
+    "vector_search_queries": [
+      "segnali di fine percorso pedonale e ciclabile",
+      "interpretazione segnali di obbligo e indicazione fine percorso"
+    ],
+    "rule_explanation": "Il segnale di 'fine percorso pedonale e ciclabile' indica la cessazione dell'obbligo di percorrere la pista dedicata, non la fine di un percorso pedonale e ciclabile in sé."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4551,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23960",
+  "text": "Qualora, in situazione di emergenza, il conducente traini con il suo veicolo un altro veicolo senza rispettare le prescrizioni relative alla solidità del collegamento è punito con la sottrazione di 4 punti dalla patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rimozione di veicoli in avaria",
+      "Solidità del collegamento per il traino",
+      "Sanzioni per violazioni delle norme di circolazione"
+    ],
+    "exact_keywords": [
+      "veicolo in avaria",
+      "collegamento solido",
+      "sottrazione di punti",
+      "prescrizioni tecniche"
+    ],
+    "vector_search_queries": [
+      "sanzioni per traino veicolo in avaria con collegamento non conforme",
+      "normativa su rimozione veicoli in panne e punti patente"
+    ],
+    "rule_explanation": "Il traino di un veicolo in avaria deve avvenire con un collegamento solido e a norma; la violazione comporta sanzioni pecuniarie e la sottrazione di punti, ma la specifica quantificazione dei punti può variare."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4713,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25423",
+  "text": "L'interruttore di emergenza di cui sono muniti i veicoli a motore a due ruote, se guasto, deve essere riparato al più presto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Componenti essenziali del veicolo"
+    ],
+    "exact_keywords": [
+      "interruttore di emergenza",
+      "veicoli a motore a due ruote",
+      "riparazione",
+      "difettoso"
+    ],
+    "vector_search_queries": [
+      "obbligo di riparazione interruttore di emergenza veicoli a due ruote",
+      "manutenzione dispositivi sicurezza motocicli"
+    ],
+    "rule_explanation": "I dispositivi di emergenza dei veicoli a motore a due ruote, se guasti, devono essere riparati tempestivamente per garantire la sicurezza."
+  }
+}

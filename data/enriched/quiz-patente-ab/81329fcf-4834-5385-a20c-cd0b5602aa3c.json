@@ -1,0 +1,31 @@
+{
+  "question_id": 4285,
+  "topic": "Segnali di indicazione",
+  "number": "21416",
+  "text": "Il segnale raffigurato indica l'obbligo di sorpassare a destra",
+  "correct_answer": false,
+  "image": "99ca3fb32d6f71b7fc248b75bb160140.jpeg",
+  "image_description": "Preselezione di corsia. Il segnale indica una preselezione di corsia. La corsia di sinistra è destinata ai veicoli diretti a Bari, mentre la corsia di destra è destinata ai veicoli diretti a Pescara. I veicoli devono posizionarsi sulla corsia appropriata in base alla loro destinazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preselezione di corsia di colore blu con scritte bianche e frecce bianche. Il segnale è diviso verticalmente da una linea tratteggiata. A sinistra, una freccia curva indica la direzione sinistra con la scritta \"BARI\". A destra, una freccia dritta indica la direzione dritta con la scritta \"PESCARA\". Il segnale indica le direzioni consentite per ciascuna corsia.",
+    "name": "Preselezione di corsia",
+    "description": "Il segnale indica una preselezione di corsia. La corsia di sinistra è destinata ai veicoli diretti a Bari, mentre la corsia di destra è destinata ai veicoli diretti a Pescara. I veicoli devono posizionarsi sulla corsia appropriata in base alla loro destinazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preselezione di corsia",
+      "Posizionamento del veicolo in relazione alla destinazione"
+    ],
+    "exact_keywords": [
+      "preselezione di corsia",
+      "destinazione",
+      "corsia",
+      "posizionamento"
+    ],
+    "vector_search_queries": [
+      "segnali di preselezione di corsia e posizionamento del veicolo",
+      "obblighi del conducente in presenza di segnali di preselezione di corsia"
+    ],
+    "rule_explanation": "I segnali di preselezione di corsia indicano le corsie disponibili e la destinazione di ciascuna, imponendo ai conducenti di posizionarsi sulla corsia corretta in base alla propria meta."
+  }
+}

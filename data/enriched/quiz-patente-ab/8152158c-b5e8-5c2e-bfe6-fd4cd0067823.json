@@ -1,0 +1,31 @@
+{
+  "question_id": 4409,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22665",
+  "text": "Il veicolo S, muovendosi in retromarcia per immettersi nella circolazione, deve dare la precedenza a tutti i veicoli in transito",
+  "correct_answer": true,
+  "image": "40d3c6c83dd93c0c3f7c6eb643e38533.jpeg",
+  "image_description": "Manovra in retromarcia per immettersi nella circolazione. Il veicolo S, che si sta immettendo nella circolazione in retromarcia, deve dare la precedenza a tutti i veicoli provenienti sia da destra che da sinistra. Deve inoltre assicurarsi che la strada sia libera e manovrare con particolare prudenza. Non è richiesto l'uso della segnalazione luminosa di pericolo né del clacson.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una scena di guida con tre veicoli (identificati dalle lettere B, E, S) parcheggiati in retromarcia lungo un marciapiede o area di sosta delimitata da strisce diagonali bianche. Il veicolo S (verde) è quello che si sta immettendo nella circolazione. I veicoli E (rosso) e B (blu) sono anch'essi in fase di manovra o parcheggio. La strada presenta una linea bianca tratteggiata che delimita la corsia di marcia. Non sono presenti segnali stradali verticali o orizzontali che indichino regole di precedenza specifiche, ad eccezione delle strisce di delimitazione dell'area di sosta. La manovra di immissione nella circolazione in retromarcia richiede la massima attenzione e la precedenza a tutti i veicoli in transito.",
+    "name": "Manovra in retromarcia per immettersi nella circolazione",
+    "description": "Il veicolo S, che si sta immettendo nella circolazione in retromarcia, deve dare la precedenza a tutti i veicoli provenienti sia da destra che da sinistra. Deve inoltre assicurarsi che la strada sia libera e manovrare con particolare prudenza. Non è richiesto l'uso della segnalazione luminosa di pericolo né del clacson."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di precedenza in manovra di retromarcia",
+      "Immissione nella circolazione"
+    ],
+    "exact_keywords": [
+      "retromarcia",
+      "immissione nella circolazione",
+      "dare la precedenza",
+      "veicoli in transito"
+    ],
+    "vector_search_queries": [
+      "precedenza manovra retromarcia immissione circolazione",
+      "obblighi conducente retromarcia su strada pubblica"
+    ],
+    "rule_explanation": "Chi esegue una manovra in retromarcia per immettersi nella circolazione deve dare la precedenza a tutti i veicoli in transito, assicurandosi che la strada sia libera e manovrando con prudenza."
+  }
+}

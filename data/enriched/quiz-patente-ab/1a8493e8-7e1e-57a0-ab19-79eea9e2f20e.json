@@ -1,0 +1,28 @@
+{
+  "question_id": 4676,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25107",
+  "text": "Nei veicoli dotati di marmitta catalitica, l'inquinamento dell'aria è minore subito dopo l'accensione del motore, quando la temperatura è ancora bassa",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico da veicoli a motore",
+      "Funzionamento marmitta catalitica",
+      "Emissioni inquinanti"
+    ],
+    "exact_keywords": [
+      "marmitta catalitica",
+      "inquinamento atmosferico",
+      "emissioni inquinanti",
+      "temperatura di esercizio"
+    ],
+    "vector_search_queries": [
+      "efficacia marmitta catalitica a freddo",
+      "emissioni inquinanti veicoli con catalizzatore a bassa temperatura"
+    ],
+    "rule_explanation": "La marmitta catalitica è efficiente solo a temperature elevate; a freddo, le emissioni inquinanti sono maggiori perché il catalizzatore non ha ancora raggiunto la temperatura ottimale di funzionamento."
+  }
+}

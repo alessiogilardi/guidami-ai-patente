@@ -1,0 +1,30 @@
+{
+  "question_id": 4019,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18517",
+  "text": "La banchina è parte della carreggiata, destinata alla sosta dei veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di banchina",
+      "Carreggiata e sue pertinenze",
+      "Uso della banchina"
+    ],
+    "exact_keywords": [
+      "banchina",
+      "carreggiata",
+      "sosta",
+      "veicoli",
+      "percorribile"
+    ],
+    "vector_search_queries": [
+      "definizione di banchina stradale",
+      "differenza tra banchina e carreggiata",
+      "uso della banchina per sosta o fermata"
+    ],
+    "rule_explanation": "La banchina è la parte della strada esterna alla carreggiata, non destinata alla circolazione ma, se non interdetta, alla sosta o fermata dei veicoli."
+  }
+}

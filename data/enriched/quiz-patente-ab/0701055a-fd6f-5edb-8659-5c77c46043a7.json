@@ -1,0 +1,27 @@
+{
+  "question_id": 4442,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22978",
+  "text": "Il conducente di un autoveicolo che parte dal margine della carreggiata e si immette nel flusso della circolazione deve allacciare la cintura di sicurezza salvo che non sia esentato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Immissione nel flusso della circolazione"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "flusso della circolazione",
+      "partenza dal margine",
+      "obbligo di allacciare"
+    ],
+    "vector_search_queries": [
+      "obbligo cinture sicurezza autoveicoli immissione traffico",
+      "esenzioni uso cinture sicurezza conducente"
+    ],
+    "rule_explanation": "L'obbligo di allacciare le cinture di sicurezza sussiste per tutti i conducenti e passeggeri di autoveicoli, salvo specifiche esenzioni, anche durante le manovre di immissione nel flusso della circolazione."
+  }
+}

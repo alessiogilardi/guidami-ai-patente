@@ -1,0 +1,28 @@
+{
+  "question_id": 4038,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18705",
+  "text": "E' punito con la reclusione chi scommette su veicoli che partecipano a gare di velocità non autorizzate su strade pubbliche",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Corse clandestine",
+      "Scommesse su competizioni non autorizzate",
+      "Responsabilità penale"
+    ],
+    "exact_keywords": [
+      "gare di velocità non autorizzate",
+      "strade pubbliche",
+      "scommesse",
+      "reclusione"
+    ],
+    "vector_search_queries": [
+      "scommesse su gare di velocità non autorizzate su strade pubbliche",
+      "partecipazione a scommesse su competizioni clandestine su strada"
+    ],
+    "rule_explanation": "È punito con la reclusione chiunque effettua scommesse su gare di velocità non autorizzate che si svolgono su strade pubbliche."
+  }
+}

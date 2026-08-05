@@ -1,0 +1,27 @@
+{
+  "question_id": 4033,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18666",
+  "text": "Il caravan non è un rimorchio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli, Rimorchi, Caravan",
+      "Definizione di rimorchio e sue tipologie"
+    ],
+    "exact_keywords": [
+      "caravan",
+      "rimorchio",
+      "veicolo",
+      "strada"
+    ],
+    "vector_search_queries": [
+      "definizione di caravan come rimorchio",
+      "classificazione dei rimorchi leggeri per il campeggio"
+    ],
+    "rule_explanation": "Il caravan è un tipo di rimorchio destinato al campeggio o al tempo libero, e come tale è soggetto alle normative sui rimorchi."
+  }
+}

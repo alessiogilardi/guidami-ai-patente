@@ -1,0 +1,32 @@
+{
+  "question_id": 4424,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22805",
+  "text": "In una carreggiata a doppio senso di circolazione per svoltare a sinistra bisogna girare intorno al centro dell'incrocio come il veicolo H in figura, se c'è il segnale di rotatoria",
+  "correct_answer": true,
+  "image": "fc3a97abfe3d5e14bb7cb50733df8b33.jpeg",
+  "image_description": "Rotatoria (Segnale di Direzione Obbligatoria a Sinistra). L'incrocio è regolato da due segnali di rotatoria, uno per ogni immissione laterale. Il veicolo H si trova sulla strada trasversale e deve dare la precedenza ai veicoli che entrano nella rotatoria. Il veicolo S si trova sull'immissione inferiore e deve dare la precedenza ai veicoli che entrano nella rotatoria. Entrambi i veicoli, se intendono proseguire dritto o svoltare a destra, devono seguire il flusso della rotatoria. Per svoltare a sinistra, il veicolo S deve circolare intorno al centro dell'incrocio, dando la precedenza ai veicoli provenienti dalla sua destra (veicolo H) e a quelli che entrano nella rotatoria.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a quattro vie con due segnali di rotatoria posizionati sulle immissioni laterali. Un veicolo rosso (S) si trova sull'immissione inferiore, e un veicolo nero (H) si trova sull'immissione destra. Entrambi i segnali indicano una rotatoria, con frecce che mostrano il senso di marcia obbligatorio all'interno della rotatoria (in senso antiorario). Il veicolo S ha una traiettoria tratteggiata che indica una svolta a sinistra, passando per il centro dell'incrocio. Il veicolo H ha una traiettoria tratteggiata che indica la continuazione del percorso all'interno della rotatoria. Le strisce di arresto sono presenti su tutte le immissioni.",
+    "name": "Rotatoria (Segnale di Direzione Obbligatoria a Sinistra)",
+    "description": "L'incrocio è regolato da due segnali di rotatoria, uno per ogni immissione laterale. Il veicolo H si trova sulla strada trasversale e deve dare la precedenza ai veicoli che entrano nella rotatoria. Il veicolo S si trova sull'immissione inferiore e deve dare la precedenza ai veicoli che entrano nella rotatoria. Entrambi i veicoli, se intendono proseguire dritto o svoltare a destra, devono seguire il flusso della rotatoria. Per svoltare a sinistra, il veicolo S deve circolare intorno al centro dell'incrocio, dando la precedenza ai veicoli provenienti dalla sua destra (veicolo H) e a quelli che entrano nella rotatoria."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della circolazione nelle rotatorie",
+      "Obblighi di precedenza nelle rotatorie"
+    ],
+    "exact_keywords": [
+      "rotatoria",
+      "svoltare a sinistra",
+      "centro dell'incrocio",
+      "dare la precedenza"
+    ],
+    "vector_search_queries": [
+      "circolazione nelle rotatorie per svolta a sinistra",
+      "precedenza nelle rotatorie",
+      "obblighi del conducente in una rotatoria"
+    ],
+    "rule_explanation": "Nelle rotatorie, per svoltare a sinistra, è necessario circolare intorno al centro dell'incrocio, dando la precedenza ai veicoli che entrano nella rotatoria e a quelli provenienti dalla propria destra."
+  }
+}

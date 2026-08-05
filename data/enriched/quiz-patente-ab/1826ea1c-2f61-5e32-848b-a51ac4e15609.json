@@ -1,0 +1,28 @@
+{
+  "question_id": 4416,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22737",
+  "text": "È opportuno che il conducente di un veicolo, quando in un centro abitato si imbatte in un corteo, imbocchi, se possibile, una strada laterale, purché la manovra possa essere fatta in maniera corretta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione in presenza di cortei",
+      "Comportamento dei conducenti in centri abitati",
+      "Manovre di svolta e cambio di corsia"
+    ],
+    "exact_keywords": [
+      "corteo",
+      "centro abitato",
+      "strada laterale",
+      "manovra corretta"
+    ],
+    "vector_search_queries": [
+      "comportamento conducente in presenza di corteo in centro abitato",
+      "imboccare strada laterale per aggirare corteo in centro abitato"
+    ],
+    "rule_explanation": "In centro abitato, in presenza di un corteo, è opportuno imboccare una strada laterale se la manovra può essere eseguita correttamente e in sicurezza."
+  }
+}

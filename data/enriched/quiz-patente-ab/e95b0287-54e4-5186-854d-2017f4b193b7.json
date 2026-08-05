@@ -1,0 +1,28 @@
+{
+  "question_id": 4542,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23892",
+  "text": "In caso di ingorgo su strade extraurbane principali o autostrade, se la corsia di emergenza manca o non è sufficiente alla circolazione dei veicoli di polizia o di soccorso, il conducente del veicolo che occupa la prima corsia di destra deve disporsi il più vicino possibile alla striscia di sinistra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione del traffico in caso di ingorgo",
+      "Circolazione su autostrade e strade extraurbane principali",
+      "Priorità ai veicoli di soccorso"
+    ],
+    "exact_keywords": [
+      "ingorgo",
+      "corsia di emergenza",
+      "veicoli di polizia o soccorso",
+      "striscia di sinistra"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in caso di ingorgo su autostrada per agevolare veicoli di soccorso",
+      "disposizione del veicolo in prima corsia durante ingorgo per consentire transito di emergenza"
+    ],
+    "rule_explanation": "In caso di ingorgo su autostrade/strade extraurbane principali, se la corsia di emergenza è insufficiente, il conducente in prima corsia deve accostarsi alla striscia di sinistra per agevolare il transito dei mezzi di soccorso."
+  }
+}

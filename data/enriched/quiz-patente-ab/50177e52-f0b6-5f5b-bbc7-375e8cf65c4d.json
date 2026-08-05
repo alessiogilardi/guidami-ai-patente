@@ -1,0 +1,31 @@
+{
+  "question_id": 4239,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20965",
+  "text": "La striscia trasversale continua in figura indica il punto dove occorre arrestarsi",
+  "correct_answer": true,
+  "image": "8255d00faa2a803b831c82bee08a4aeb.jpeg",
+  "image_description": "Strisce di arresto con segnale di STOP. La striscia trasversale continua bianca, denominata strisce di arresto, indica il punto in cui i veicoli devono fermarsi prima di immettersi nella strada principale. La scritta \"STOP\" sull'asfalto rafforza l'obbligo di arresto. La strada principale presenta una corsia di immissione separata da una linea bianca continua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una intersezione stradale con segnaletica orizzontale. È presente una striscia trasversale continua bianca sull'asfalto, che delimita una zona di arresto. Sopra questa striscia, è dipinta la scritta \"STOP\" in bianco. La strada che si immette è una strada secondaria che termina su una strada principale, la quale presenta una corsia di immissione separata da una linea bianca continua. Sulla destra della corsia di immissione, si nota un piccolo segnale verticale di pericolo (triangolo con bordo rosso e sfondo bianco, con un simbolo all'interno, non chiaramente visibile).",
+    "name": "Strisce di arresto con segnale di STOP",
+    "description": "La striscia trasversale continua bianca, denominata strisce di arresto, indica il punto in cui i veicoli devono fermarsi prima di immettersi nella strada principale. La scritta \"STOP\" sull'asfalto rafforza l'obbligo di arresto. La strada principale presenta una corsia di immissione separata da una linea bianca continua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Obbligo di arresto al segnale di STOP"
+    ],
+    "exact_keywords": [
+      "striscia trasversale continua",
+      "arrestarsi",
+      "segnale di STOP",
+      "strisce di arresto"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto alla striscia trasversale continua",
+      "funzione delle strisce di arresto prima di un incrocio con STOP"
+    ],
+    "rule_explanation": "La striscia trasversale continua, detta striscia di arresto, indica il punto in cui i veicoli devono fermarsi prima di immettersi nella strada principale, specialmente in presenza del segnale di STOP."
+  }
+}

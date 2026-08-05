@@ -1,0 +1,27 @@
+{
+  "question_id": 4584,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24244",
+  "text": "L'uso degli indicatori di direzione è necessario quando si inizia una manovra di sorpasso, ma non quando la si termina rientrando nella corsia di marcia normale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione delle manovre",
+      "Obbligo di uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "manovra di sorpasso",
+      "rientro nella corsia di marcia",
+      "segnalazione acustica"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalare il rientro nella corsia di marcia con indicatori di direzione",
+      "uso degli indicatori di direzione durante le manovre di sorpasso e rientro"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati sia per iniziare la manovra di sorpasso, sia per segnalare il rientro nella corsia di marcia, al fine di avvisare gli altri utenti della strada."
+  }
+}

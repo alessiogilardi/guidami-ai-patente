@@ -1,0 +1,27 @@
+{
+  "question_id": 4644,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24871",
+  "text": "Durante un intervento di primo soccorso, se l'infortunato ha una ferita sanguinante, con presenza di corpi estranei conficcati , non bisogna toglierli dalla ferita",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di ferite gravi",
+      "Gestione di corpi estranei in ferite aperte"
+    ],
+    "exact_keywords": [
+      "primo soccorso",
+      "ferita sanguinante",
+      "corpi estranei conficcati",
+      "non rimuovere"
+    ],
+    "vector_search_queries": [
+      "gestione corpi estranei conficcati in ferite aperte primo soccorso",
+      "procedure primo soccorso ferite con emorragia e corpi estranei"
+    ],
+    "rule_explanation": "In presenza di corpi estranei conficcati in una ferita, non vanno rimossi per evitare emorragie più gravi e ulteriori danni ai tessuti. Si deve intervenire solo sul sanguinamento."
+  }
+}

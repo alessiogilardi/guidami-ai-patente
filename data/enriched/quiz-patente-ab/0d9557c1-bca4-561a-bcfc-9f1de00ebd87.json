@@ -1,0 +1,27 @@
+{
+  "question_id": 4418,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22762",
+  "text": "Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre procedere a nostra volta con i fari abbaglianti, per veder meglio la strada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei fari in condizioni di scarsa visibilità",
+      "Obblighi di comportamento in caso di incrocio con altri veicoli"
+    ],
+    "exact_keywords": [
+      "fari a luce abbagliante",
+      "strada extraurbana",
+      "abbagliamento",
+      "ridurre la velocità"
+    ],
+    "vector_search_queries": [
+      "uso dei fari in caso di incrocio notturno su strada extraurbana",
+      "comportamento del conducente in presenza di fari abbaglianti del veicolo incrociante"
+    ],
+    "rule_explanation": "Di notte, su strada extraurbana, incrociando un veicolo con fari abbaglianti accesi, è obbligatorio passare a luci anabbaglianti per non abbagliare l'altro conducente e ridurre la velocità."
+  }
+}

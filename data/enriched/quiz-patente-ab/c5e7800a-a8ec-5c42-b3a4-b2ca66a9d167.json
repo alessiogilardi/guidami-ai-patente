@@ -1,0 +1,32 @@
+{
+  "question_id": 4187,
+  "topic": "Segnali di obbligo",
+  "number": "20436",
+  "text": "Il segnale raffigurato indica l'obbligo di arresto ad un posto di blocco stradale istituito dagli organi di polizia",
+  "correct_answer": true,
+  "image": "c8e37cfaa71b956ea33833537189d4a6.jpeg",
+  "image_description": "Segnale di fermarsi e dare precedenza a Polizia. Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia di arresto, per consentire il passaggio dei veicoli di polizia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale, sopra una linea orizzontale nera, vi è la scritta \"ALT\" e sotto la scritta \"POLIZIA\". Questo è un segnale di obbligo specifico per i veicoli di polizia.",
+    "name": "Segnale di fermarsi e dare precedenza a Polizia",
+    "description": "Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia di arresto, per consentire il passaggio dei veicoli di polizia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Posto di blocco stradale",
+      "Obbligo di arresto"
+    ],
+    "exact_keywords": [
+      "segnale raffigurato",
+      "obbligo di arresto",
+      "posto di blocco stradale",
+      "organi di polizia"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto a posto di blocco stradale con segnale specifico",
+      "segnali che impongono l'arresto per controlli di polizia"
+    ],
+    "rule_explanation": "Il segnale di \"fermarsi e dare precedenza a Polizia\" impone l'obbligo di arrestarsi in corrispondenza della linea di arresto per permettere il transito dei veicoli di polizia."
+  }
+}

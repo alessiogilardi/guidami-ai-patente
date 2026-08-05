@@ -1,0 +1,27 @@
+{
+  "question_id": 4529,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23801",
+  "text": "L'apertura di uno sportello del veicolo dal lato del marciapiede comporta l'obbligo di attivare l'indicatore di direzione da quel lato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovre di immissione nella circolazione",
+      "Comportamento alla fermata e sosta"
+    ],
+    "exact_keywords": [
+      "apertura sportello",
+      "veicolo fermato",
+      "indicatore di direzione",
+      "pericolo per la circolazione"
+    ],
+    "vector_search_queries": [
+      "apertura sportello veicolo fermato su strada",
+      "obblighi del conducente durante l\\'apertura dello sportello"
+    ],
+    "rule_explanation": "L'apertura dello sportello di un veicolo fermato sul lato del marciapiede non richiede l'attivazione dell'indicatore di direzione, ma deve avvenire con prudenza per non creare pericolo."
+  }
+}

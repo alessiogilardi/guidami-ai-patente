@@ -1,0 +1,34 @@
+{
+  "question_id": 4339,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21912",
+  "text": "Il segnale raffigurato, posto in presenza di lavori stradali, indica alle categorie di veicoli quali corsie possono occupare",
+  "correct_answer": true,
+  "image": "ccb30857f4fbd40dd9ab759d241453b3.jpeg",
+  "image_description": "Segnale di uso delle corsie (indicazione). Il segnale indica che la carreggiata si sta per restringere e che i veicoli, compresi gli autocarri, dovranno circolare su due corsie affiancate. La corsia di destra è riservata agli autocarri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con sfondo giallo e bordo nero. Al suo interno sono presenti tre pittogrammi neri su sfondo giallo: due frecce nere verticali che indicano la direzione di marcia, affiancate da due sagome di autovetture, una sotto ciascuna freccia. Sotto la freccia di destra e la corrispondente autovettura, è presente la sagoma di un autocarro. Le frecce indicano che la carreggiata si sta per restringere e che i veicoli dovranno circolare su due corsie affiancate. La presenza dell'autocarro nella corsia di destra indica che tale corsia è riservata agli autocarri.",
+    "name": "Segnale di uso delle corsie (indicazione)",
+    "description": "Il segnale indica che la carreggiata si sta per restringere e che i veicoli, compresi gli autocarri, dovranno circolare su due corsie affiancate. La corsia di destra è riservata agli autocarri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali complementari",
+      "Segnali di cantiere",
+      "Uso delle corsie"
+    ],
+    "exact_keywords": [
+      "segnali complementari",
+      "lavori stradali",
+      "uso delle corsie",
+      "veicoli",
+      "autocarri"
+    ],
+    "vector_search_queries": [
+      "indicazioni sull'uso delle corsie in presenza di lavori stradali",
+      "segnali complementari che specificano le corsie per categorie di veicoli",
+      "segnali di cantiere e loro significato per la circolazione dei veicoli"
+    ],
+    "rule_explanation": "I segnali complementari, come quelli di cantiere, possono indicare alle categorie di veicoli quali corsie sono loro consentite, anche in presenza di lavori stradali."
+  }
+}

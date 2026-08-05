@@ -1,0 +1,28 @@
+{
+  "question_id": 4699,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25260",
+  "text": "Per sostituire una ruota, dopo aver sollevato il veicolo e inserito la ruota di scorta, bisogna stringere leggermente i bulloni a veicolo sollevato e completarne il bloccaggio solo dopo averlo abbassato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sostituzione ruota",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "ruota di scorta",
+      "bulloni",
+      "veicolo sollevato",
+      "serraggio"
+    ],
+    "vector_search_queries": [
+      "serraggio bulloni ruota veicolo sollevato",
+      "corretto serraggio bulloni dopo sostituzione ruota"
+    ],
+    "rule_explanation": "Dopo aver sostituito una ruota, i bulloni vanno serrati leggermente a veicolo sollevato e poi serrati completamente una volta che il veicolo è a terra."
+  }
+}

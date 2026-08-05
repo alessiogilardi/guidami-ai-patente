@@ -1,0 +1,33 @@
+{
+  "question_id": 4054,
+  "topic": "Segnali di pericolo",
+  "number": "18901",
+  "text": "In presenza del segnale raffigurato è possibile effettuare l'inversione di marcia nel tratto in discesa",
+  "correct_answer": false,
+  "image": "77a40e39cc4b726c3f05d1759479cd9e.jpeg",
+  "image_description": "Segnale di dosso. Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un pannello a forma di triangolo con bordo rosso e sfondo bianco. Al centro del pannello è raffigurato un pittogramma nero che rappresenta un dosso.",
+    "name": "Segnale di dosso",
+    "description": "Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Divieto di inversione di marcia",
+      "Comportamento ai dossi"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "dosso",
+      "inversione di marcia",
+      "tratto in discesa"
+    ],
+    "vector_search_queries": [
+      "pericolo dosso e inversione di marcia",
+      "segnali di pericolo e manovre vietate",
+      "comportamento in presenza di dosso in discesa"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'dosso' impone di moderare la velocità e non consente l'inversione di marcia in presenza del dosso, specialmente in discesa per ragioni di sicurezza."
+  }
+}

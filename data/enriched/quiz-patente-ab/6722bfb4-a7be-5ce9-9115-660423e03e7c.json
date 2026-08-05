@@ -1,0 +1,28 @@
+{
+  "question_id": 4386,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22441",
+  "text": "La velocità deve essere particolarmente moderata quando risulta difficoltoso l'incrocio con altri veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di visibilità e incrocio",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "velocità moderata",
+      "incrocio con altri veicoli",
+      "difficoltà di manovra",
+      "pericolo per la circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in caso di incrocio difficile",
+      "adeguamento della velocità per garantire manovre sicure in presenza di altri veicoli"
+    ],
+    "rule_explanation": "La velocità va sempre moderata in modo da consentire, anche in caso di incrocio con altri veicoli, ogni manovra necessaria in sicurezza e senza creare pericolo o intralcio."
+  }
+}

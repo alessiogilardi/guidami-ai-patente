@@ -1,0 +1,27 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24595",
+  "text": "La revisione della patente di guida è disposta a seguito di azzeramento dei \"punti\" della patente di guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione della patente di guida",
+      "Sistema sanzionatorio della patente a punti"
+    ],
+    "exact_keywords": [
+      "revisione della patente",
+      "azzeramento dei punti",
+      "patente di guida",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "conseguenze azzeramento punti patente guida",
+      "procedura revisione patente per perdita punteggio"
+    ],
+    "rule_explanation": "La revisione della patente di guida è disposta quando si verifica la perdita totale del punteggio, comportando la necessità di sostenere nuovamente gli esami di idoneità."
+  }
+}

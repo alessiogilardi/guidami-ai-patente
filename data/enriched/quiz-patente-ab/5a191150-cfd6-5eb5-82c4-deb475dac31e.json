@@ -1,0 +1,27 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22503",
+  "text": "Nel caso in cui, a un passaggio a livello, ci si trova ancora sui binari col proprio veicolo quando le barriere cominciano a chiudersi, se si sta trainando un rimorchio occorre sganciarlo rapidamente e abbandonarlo sui binari per salvare almeno la motrice",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento ai passaggi a livello",
+      "Pericolo per la circolazione ferroviaria"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "barriere chiuse",
+      "rimorchio",
+      "abbandonare il veicolo"
+    ],
+    "vector_search_queries": [
+      "comportamento ai passaggi a livello con barriere in chiusura",
+      "divieto di abbandonare veicoli o rimorchi sui binari"
+    ],
+    "rule_explanation": "È vietato abbandonare un veicolo o un rimorchio sui binari di un passaggio a livello, anche se le barriere si stanno chiudendo. Bisogna attendere il loro completo sollevamento."
+  }
+}

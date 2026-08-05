@@ -1,0 +1,28 @@
+{
+  "question_id": 4594,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24322",
+  "text": "Nei veicoli dotati di airbag con comando di disabilitazione, prima di sistemare sul sedile anteriore un seggiolino per bambini (schienale rivolto verso il parabrezza), bisogna disattivare l'airbag",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Utilizzo dei sistemi di ritenuta per bambini",
+      "Sicurezza dei passeggeri",
+      "Airbag e seggiolini auto"
+    ],
+    "exact_keywords": [
+      "airbag",
+      "dispositivo di disattivazione",
+      "seggiolino per bambini",
+      "sedile anteriore"
+    ],
+    "vector_search_queries": [
+      "disattivazione airbag per seggiolino bambini fronte strada",
+      "installazione seggiolino bambini su sedile anteriore con airbag"
+    ],
+    "rule_explanation": "Nei veicoli con airbag disattivabile, è obbligatorio disattivare l'airbag frontale prima di installare un seggiolino per bambini rivolto all'indietro sul sedile anteriore."
+  }
+}

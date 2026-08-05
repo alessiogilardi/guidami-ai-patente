@@ -1,0 +1,30 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23635",
+  "text": "Prima di iniziare a guidare un veicolo, bisogna controllare che non sia compromessa la visibilità posteriore e laterale, per la presenza di passeggeri o per il carico mal posizionato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità posteriore e laterale",
+      "Partenza del veicolo",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "visibilità posteriore",
+      "visibilità laterale",
+      "partenza",
+      "carico",
+      "passeggeri"
+    ],
+    "vector_search_queries": [
+      "controllo visibilità posteriore e laterale prima della partenza",
+      "condizioni di visibilità per la partenza del veicolo",
+      "effetti del carico e dei passeggeri sulla visibilità posteriore"
+    ],
+    "rule_explanation": "Prima di partire, il conducente deve assicurarsi che la visibilità posteriore e laterale non sia compromessa da passeggeri o carico, garantendo la sicurezza della manovra."
+  }
+}

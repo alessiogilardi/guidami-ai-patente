@@ -1,0 +1,33 @@
+{
+  "question_id": 4588,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24276",
+  "text": "Il simbolo raffigurato è posto su una spia che, se accesa, indica che la temperatura del liquido di raffreddamento supera i limiti stabiliti dal costruttore",
+  "correct_answer": true,
+  "image": "14a02317e39ba75bcbf1188df815c4cd.jpeg",
+  "image_description": "Spia di temperatura liquido refrigerante motore. La spia indica un eccessivo riscaldamento del liquido di raffreddamento del motore. Se accesa, segnala una temperatura del liquido di raffreddamento superiore ai limiti stabiliti dal costruttore. Si tratta di una spia di colore rosso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra il simbolo di una spia luminosa. Il simbolo è composto da un termometro stilizzato immerso in due onde, che rappresentano un liquido. Il termometro ha delle tacche che indicano un aumento di temperatura. Questo simbolo è comunemente associato alla spia che segnala l'eccessiva temperatura del liquido di raffreddamento del motore. Le domande del quiz suggeriscono che la spia sia di colore rosso e che indichi un problema di surriscaldamento del motore.",
+    "name": "Spia di temperatura liquido refrigerante motore",
+    "description": "La spia indica un eccessivo riscaldamento del liquido di raffreddamento del motore. Se accesa, segnala una temperatura del liquido di raffreddamento superiore ai limiti stabiliti dal costruttore. Si tratta di una spia di colore rosso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori di pericolo",
+      "Spie del cruscotto",
+      "Sistema di raffreddamento motore"
+    ],
+    "exact_keywords": [
+      "spia",
+      "liquido di raffreddamento",
+      "temperatura",
+      "limiti stabiliti dal costruttore"
+    ],
+    "vector_search_queries": [
+      "funzione spia temperatura liquido raffreddamento motore",
+      "significato spia rossa surriscaldamento motore",
+      "indicatore superamento temperatura liquido refrigerante"
+    ],
+    "rule_explanation": "La spia della temperatura del liquido di raffreddamento, se accesa, segnala che tale temperatura ha superato i limiti stabiliti dal costruttore, indicando un rischio di surriscaldamento del motore."
+  }
+}

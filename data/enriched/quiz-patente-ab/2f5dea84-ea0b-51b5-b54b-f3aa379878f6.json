@@ -1,0 +1,27 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18359",
+  "text": "Le strade extraurbane principali sono contraddistinte da segnaletica verde",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale verticale",
+      "Classificazione delle strade"
+    ],
+    "exact_keywords": [
+      "strade extraurbane principali",
+      "segnaletica verde",
+      "segnaletica blu",
+      "pannelli a fondo bianco"
+    ],
+    "vector_search_queries": [
+      "segnaletica stradale per strade extraurbane principali",
+      "differenza segnaletica autostrade e strade extraurbane principali"
+    ],
+    "rule_explanation": "Le strade extraurbane principali sono identificate da pannelli a fondo bianco con la scritta nera, non da segnaletica verde. La segnaletica verde contraddistingue le autostrade."
+  }
+}

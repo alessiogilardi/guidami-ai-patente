@@ -1,0 +1,28 @@
+{
+  "question_id": 4402,
+  "topic": "Distanza di sicurezza",
+  "number": "22614",
+  "text": "Lo spazio di frenatura diminuisce se le ruote si bloccano",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Bloccaggio delle ruote"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "bloccaggio delle ruote",
+      "distanza di arresto",
+      "aderenza"
+    ],
+    "vector_search_queries": [
+      "aumento spazio di frenatura con bloccaggio ruote",
+      "effetto bloccaggio ruote su distanza di arresto"
+    ],
+    "rule_explanation": "Lo spazio di frenatura aumenta se le ruote si bloccano a causa della perdita di aderenza, prolungando la distanza totale di arresto."
+  }
+}

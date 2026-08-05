@@ -1,0 +1,28 @@
+{
+  "question_id": 4024,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18559",
+  "text": "I tricicli a motore sono veicoli a motore che possono essere condotti senza patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di triciclo a motore",
+      "Requisiti per la conduzione di veicoli a motore",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "tricicli a motore",
+      "veicoli a motore",
+      "conducente",
+      "patente di guida"
+    ],
+    "vector_search_queries": [
+      "requisiti per la guida di tricicli a motore",
+      "obbligo di patente per veicoli a motore a tre ruote"
+    ],
+    "rule_explanation": "I tricicli a motore sono veicoli a motore e, come tali, la loro conduzione richiede il possesso di una patente di guida idonea."
+  }
+}

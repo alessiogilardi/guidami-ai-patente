@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31016",
+  "text": "L’ansia può ridurre la capacità di prestare attenzione ai pericoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato psicofisico del conducente",
+      "Capacità di attenzione e reazione",
+      "Guida in condizioni di alterazione psichica"
+    ],
+    "exact_keywords": [
+      "stato di ansia",
+      "capacità di attenzione",
+      "pericoli per la circolazione",
+      "idoneità alla guida"
+    ],
+    "vector_search_queries": [
+      "impatto dell'ansia sulla capacità di attenzione alla guida",
+      "condizioni psicofisiche che compromettono la guida sicura",
+      "ripercussioni dello stato emotivo sulla percezione dei pericoli stradali"
+    ],
+    "rule_explanation": "Lo stato di ansia, influenzando negativamente la capacità di attenzione e la prontezza di reazione, può compromettere l'idoneità alla guida, rendendo il conducente meno consapevole dei pericoli."
+  }
+}

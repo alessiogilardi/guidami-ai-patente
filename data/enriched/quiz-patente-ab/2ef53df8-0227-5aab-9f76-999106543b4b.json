@@ -1,0 +1,27 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24683",
+  "text": "La patente di guida di categoria B, salvo diversa limitazione riportata sul documento stesso o salvo allineamento alla data del compleanno del titolare, ha validità di due anni se rilasciata o confermata a chi ha superato gli 80 anni di età",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Revisione della patente per età"
+    ],
+    "exact_keywords": [
+      "patente di guida categoria B",
+      "validità",
+      "superamento degli 80 anni",
+      "conferma di validità"
+    ],
+    "vector_search_queries": [
+      "validità patente B dopo 80 anni",
+      "conferma validità patente di guida per età"
+    ],
+    "rule_explanation": "La patente di categoria B, se rilasciata o confermata a chi ha superato gli 80 anni, ha validità di due anni, salvo diverse limitazioni o allineamenti alla data del compleanno."
+  }
+}

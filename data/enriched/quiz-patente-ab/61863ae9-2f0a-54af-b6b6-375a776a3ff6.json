@@ -1,0 +1,32 @@
+{
+  "question_id": 4306,
+  "topic": "Segnali di indicazione",
+  "number": "21606",
+  "text": "Il segnale raffigurato vale anche per i motocicli",
+  "correct_answer": true,
+  "image": "200351bc67f1cbc394aea09991968512.jpeg",
+  "image_description": "Segnale di strada senza uscita per veicoli. Il segnale indica che la strada che si sta percorrendo termina senza possibilità di proseguire per i veicoli. Non vieta l'accesso ai pedoni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con sfondo blu scuro e bordi arrotondati. Al centro del segnale è presente un pittogramma bianco a forma di T, con la barra orizzontale rossa. Questo è il segnale di \"strada senza uscita per veicoli\".",
+    "name": "Segnale di strada senza uscita per veicoli",
+    "description": "Il segnale indica che la strada che si sta percorrendo termina senza possibilità di proseguire per i veicoli. Non vieta l'accesso ai pedoni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Strada senza uscita",
+      "Validità dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "strada senza uscita",
+      "divieto di prosecuzione",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "validità segnale 'strada senza uscita' per motocicli",
+      "segnali di indicazione che vietano la prosecuzione ai veicoli"
+    ],
+    "rule_explanation": "Il segnale di 'strada senza uscita' indica che la strada termina e vieta la prosecuzione ai veicoli, ma non ai pedoni. Vale per tutti i veicoli, inclusi i motocicli."
+  }
+}

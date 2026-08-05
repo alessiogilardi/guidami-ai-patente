@@ -1,0 +1,32 @@
+{
+  "question_id": 4310,
+  "topic": "Segnali di indicazione",
+  "number": "21655",
+  "text": "Il segnale raffigurato vieta il sorpasso",
+  "correct_answer": false,
+  "image": "d8edc21a26e5bf4c54780acbfda0797b.jpeg",
+  "image_description": "Preavviso di galleria. Il segnale preavvisa l'inizio di una galleria.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo verde. Al centro è presente un pittogramma nero che rappresenta l'ingresso di una galleria, con una porzione di strada che entra nell'oscurità. Il pittogramma è stilizzato e mostra una forma ad arco che simboleggia la volta della galleria e una linea orizzontale che rappresenta il piano stradale. Non ci sono altri elementi visivi o segnali associati. Si tratta di un segnale di indicazione.",
+    "name": "Preavviso di galleria",
+    "description": "Il segnale preavvisa l'inizio di una galleria."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Divieti di sorpasso"
+    ],
+    "exact_keywords": [
+      "preavviso di galleria",
+      "segnali di indicazione",
+      "divieto di sorpasso",
+      "condizioni di visibilità"
+    ],
+    "vector_search_queries": [
+      "segnali che preavvisano galleria e le relative prescrizioni",
+      "differenza tra segnali di indicazione e segnali di divieto specifico per il sorpasso",
+      "divieto di sorpasso in galleria e segnali preavviso galleria"
+    ],
+    "rule_explanation": "Il segnale di preavviso di galleria indica l'approssimarsi di una galleria e non vieta il sorpasso, che è invece vietato in galleria se non diversamente indicato."
+  }
+}

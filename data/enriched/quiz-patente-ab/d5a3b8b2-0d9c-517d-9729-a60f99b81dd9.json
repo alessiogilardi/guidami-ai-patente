@@ -1,0 +1,32 @@
+{
+  "question_id": 4207,
+  "topic": "Segnali di precedenza",
+  "number": "20681",
+  "text": "In presenza del segnale raffigurato è comunque necessario moderare la velocità in prossimità degli incroci",
+  "correct_answer": true,
+  "image": "ae0a5db589f248f6cde41a1db1f0fe3f.jpeg",
+  "image_description": "Segnale di Diritto di Precedenza. Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con i vertici disposti in modo da formare un rombo. Il bordo esterno del segnale è bianco, seguito da un bordo nero più sottile. All'interno, su sfondo bianco, vi è un rombo più piccolo di colore arancione. Questo è il segnale di Diritto di Precedenza.",
+    "name": "Segnale di Diritto di Precedenza",
+    "description": "Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Regolazione della velocità",
+      "Prudenza nella guida"
+    ],
+    "exact_keywords": [
+      "segnale di diritto di precedenza",
+      "moderare la velocità",
+      "incroci",
+      "dare la precedenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in prossimità degli incroci anche con segnale di diritto di precedenza",
+      "regolazione della velocità in prossimità di incroci con segnali di precedenza"
+    ],
+    "rule_explanation": "Il segnale di diritto di precedenza impone di dare la precedenza ai veicoli provenienti dalle strade laterali, ma impone comunque di moderare la velocità in prossimità degli incroci."
+  }
+}

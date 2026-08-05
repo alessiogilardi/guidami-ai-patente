@@ -1,0 +1,29 @@
+{
+  "question_id": 4511,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23651",
+  "text": "Durante la fermata il conducente non deve impedire con il proprio autoveicolo il normale flusso del traffico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Obblighi del conducente durante la fermata",
+      "Regolazione della circolazione"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "conducente",
+      "flusso del traffico",
+      "arresto",
+      "sosta"
+    ],
+    "vector_search_queries": [
+      "divieto di ostacolo al traffico durante la fermata",
+      "obblighi del conducente in caso di fermata del veicolo"
+    ],
+    "rule_explanation": "Durante la fermata, il conducente deve assicurarsi che il veicolo non ostacoli il normale transito degli altri utenti della strada."
+  }
+}

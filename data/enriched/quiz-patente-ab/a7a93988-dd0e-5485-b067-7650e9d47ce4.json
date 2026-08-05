@@ -1,0 +1,27 @@
+{
+  "question_id": 4702,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25285",
+  "text": "Il climatizzatore può essere utilmente impiegato anche nel periodo invernale, per sbrinare velocemente il parabrezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzionamento del climatizzatore veicolo",
+      "Sbrinamento parabrezza invernale"
+    ],
+    "exact_keywords": [
+      "climatizzatore",
+      "sbrinare",
+      "parabrezza",
+      "funzione antiappannante"
+    ],
+    "vector_search_queries": [
+      "impiego climatizzatore in inverno per sbrinamento parabrezza",
+      "funzione deumidificante climatizzatore per disappannamento vetri"
+    ],
+    "rule_explanation": "Il climatizzatore, tramite la funzione deumidificante e di aria calda, può essere usato in inverno per sbrinare e disappannare rapidamente il parabrezza."
+  }
+}

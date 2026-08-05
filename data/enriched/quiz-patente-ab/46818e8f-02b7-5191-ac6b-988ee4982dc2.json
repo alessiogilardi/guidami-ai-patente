@@ -1,0 +1,27 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22279",
+  "text": "Il conducente deve regolare la velocità entro i limiti massimi consentiti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "velocità massima",
+      "limiti massimi consentiti",
+      "conducente",
+      "regolare la velocità"
+    ],
+    "vector_search_queries": [
+      "rispetto dei limiti massimi di velocità imposti dalla segnaletica",
+      "obbligo del conducente di moderare la velocità entro i limiti consentiti"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di regolare la propria velocità, mantenendola entro i limiti massimi stabiliti dalla segnaletica stradale o dalle norme di comportamento."
+  }
+}

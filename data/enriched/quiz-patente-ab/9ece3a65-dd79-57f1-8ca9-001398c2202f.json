@@ -1,0 +1,27 @@
+{
+  "question_id": 4609,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24489",
+  "text": "Con la patente di categoria A1 si possono condurre i tricicli a motore di potenza non superiore a 15 kW",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria A1",
+      "Veicoli conducibili con patente A1",
+      "Tricicli a motore"
+    ],
+    "exact_keywords": [
+      "patente di categoria A1",
+      "tricicli a motore",
+      "potenza non superiore a 15 kW"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente A1",
+      "limiti di potenza tricicli a motore per patente A1"
+    ],
+    "rule_explanation": "La patente di categoria A1 abilita alla conduzione di tricicli a motore con potenza massima di 15 kW, purché non siano limitati da norme specifiche."
+  }
+}

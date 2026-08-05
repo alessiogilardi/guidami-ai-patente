@@ -1,0 +1,30 @@
+{
+  "question_id": 4019,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18515",
+  "text": "Sulle banchine la sosta dei veicoli è consentita per un massimo di 5 ore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta dei veicoli",
+      "Uso delle banchine",
+      "Divieto di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "banchina",
+      "sosta",
+      "veicolo",
+      "divieto di sosta",
+      "divieto di fermata"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta sulle banchine stradali",
+      "uso delle banchine per la sosta dei veicoli",
+      "regolamentazione della sosta in aree non carreggiabili"
+    ],
+    "rule_explanation": "La sosta dei veicoli sulle banchine è generalmente vietata, salvo specifiche eccezioni segnalate. Non è prevista una durata massima consentita."
+  }
+}

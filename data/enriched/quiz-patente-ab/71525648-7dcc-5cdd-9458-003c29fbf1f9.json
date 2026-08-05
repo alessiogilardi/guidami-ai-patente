@@ -1,0 +1,32 @@
+{
+  "question_id": 4145,
+  "topic": "Segnali di divieto",
+  "number": "19986",
+  "text": "Il segnale raffigurato, per essere valido, deve contenere l'indicazione dell'ente che ha concesso l'autorizzazione, il numero e l'anno del rilascio",
+  "correct_answer": true,
+  "image": "4bf90ba530475a309c5ec86a96590f9d.jpeg",
+  "image_description": "Segnale di divieto di sosta per passo carrabile. Il segnale indica che l'area è un passo carrabile e vieta la sosta. Il numero e l'anno sotto la scritta \"passo carrabile\" si riferiscono all'autorizzazione del passo carrabile stesso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale di forma rettangolare con sfondo bianco. Al centro, è presente un segnale di divieto di sosta (cerchio rosso con banda diagonale rossa su sfondo blu). Sotto questo segnale, vi è la scritta \"passo carrabile\" in stampatello nero, seguita da un numero e un anno (2488/1994) anch'essi in nero. In alto, è presente la dicitura \"COMUNE DI ROMA\". Il segnale combina un segnale di divieto di sosta con un pannello integrativo che specifica la natura dell'area come passo carrabile e riporta gli estremi dell'autorizzazione.",
+    "name": "Segnale di divieto di sosta per passo carrabile",
+    "description": "Il segnale indica che l'area è un passo carrabile e vieta la sosta. Il numero e l'anno sotto la scritta \"passo carrabile\" si riferiscono all'autorizzazione del passo carrabile stesso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta per passo carrabile",
+      "Autorizzazione al passo carrabile"
+    ],
+    "exact_keywords": [
+      "segnale di passo carrabile",
+      "autorizzazione",
+      "ente proprietario",
+      "numero e anno di rilascio"
+    ],
+    "vector_search_queries": [
+      "requisiti validità segnale passo carrabile",
+      "indicazione ente autorizzazione passo carrabile",
+      "validità autorizzazione passo carrabile segnale"
+    ],
+    "rule_explanation": "Il segnale di passo carrabile deve indicare l'ente che ha rilasciato l'autorizzazione, il numero e l'anno di rilascio per essere valido."
+  }
+}

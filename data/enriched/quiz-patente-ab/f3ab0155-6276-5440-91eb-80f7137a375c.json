@@ -1,0 +1,28 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18710",
+  "text": "E' vietato lanciare dal finestrino mozziconi di sigaretta accesi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento alla guida",
+      "Tutela ambientale",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "lanciare dal finestrino",
+      "mozziconi di sigaretta accesi",
+      "divieto",
+      "rifiuti"
+    ],
+    "vector_search_queries": [
+      "divieto di gettare rifiuti dal finestrino del veicolo",
+      "obbligo di non inquinare la strada con mozziconi di sigaretta"
+    ],
+    "rule_explanation": "È vietato gettare dal finestrino del veicolo in movimento rifiuti, in particolare mozziconi di sigaretta accesi, per ragioni di sicurezza e tutela ambientale."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4630,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24779",
+  "text": "Quando bisogna far salire o scendere un passeggero, è opportuno che ciò avvenga dal lato del marciapiede o, in mancanza, dal lato opposto al traffico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza nella salita/discesa passeggeri",
+      "Comportamento in prossimità di veicoli in sosta"
+    ],
+    "exact_keywords": [
+      "salire o scendere passeggero",
+      "lato del marciapiede",
+      "lato opposto al traffico",
+      "prevenire incidenti"
+    ],
+    "vector_search_queries": [
+      "modalità di salita e discesa passeggeri per sicurezza",
+      "comportamento per far salire/scendere passeggeri in sicurezza"
+    ],
+    "rule_explanation": "La salita e la discesa dei passeggeri devono avvenire dal lato del marciapiede o, in sua assenza, dal lato opposto al traffico per evitare incidenti."
+  }
+}

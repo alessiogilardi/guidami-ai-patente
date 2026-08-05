@@ -1,0 +1,27 @@
+{
+  "question_id": 4502,
+  "topic": "Norme sul sorpasso",
+  "number": "23566",
+  "text": "Non si può sorpassare un veicolo che abbia segnalato l'intenzione di accostarsi al margine destro della carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di sorpasso",
+      "Comportamento dei veicoli in marcia"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "accostarsi al margine destro",
+      "segnalazione di manovra",
+      "veicolo in marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso per veicoli che si accostano al margine destro",
+      "sorpasso di veicoli fermi o in manovra di accostamento"
+    ],
+    "rule_explanation": "È vietato sorpassare un veicolo che, per accostarsi al margine destro, abbia segnalato la propria manovra. Il sorpasso è consentito solo se non crea pericolo o intralcio."
+  }
+}

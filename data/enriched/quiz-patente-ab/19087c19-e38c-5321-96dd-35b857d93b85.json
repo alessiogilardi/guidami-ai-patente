@@ -1,0 +1,29 @@
+{
+  "question_id": 4389,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22475",
+  "text": "Se si attraversa un incrocio a forte velocità avendo il diritto di precedenza, in caso di incidente si è completamente privi di responsabilità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità del conducente in caso di incidente",
+      "Principio di prudenza nella guida",
+      "Diritto di precedenza e responsabilità"
+    ],
+    "exact_keywords": [
+      "incidente",
+      "responsabilità",
+      "diritto di precedenza",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "responsabilità del conducente con diritto di precedenza in caso di incidente",
+      "obbligo di moderare la velocità anche in presenza di diritto di precedenza",
+      "concorso di colpa in caso di incidente nonostante il diritto di precedenza"
+    ],
+    "rule_explanation": "Anche chi ha il diritto di precedenza deve guidare con prudenza e a velocità adeguata, per non creare pericolo o intralcio e per evitare incidenti."
+  }
+}

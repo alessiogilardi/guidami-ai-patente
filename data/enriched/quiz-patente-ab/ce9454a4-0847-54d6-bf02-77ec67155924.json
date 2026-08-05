@@ -1,0 +1,27 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23550",
+  "text": "È vietato il sorpasso degli autobus in servizio pubblico di linea",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di autobus in servizio pubblico",
+      "Regole di circolazione stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "autobus in servizio pubblico di linea",
+      "divieto di sorpasso",
+      "fermata"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso autobus fermi in fermata",
+      "sorpasso autobus di linea in servizio pubblico"
+    ],
+    "rule_explanation": "Il sorpasso degli autobus in servizio pubblico di linea è vietato solo se si trovano in una fermata, segnalata da apposito segnale, e se gli autobus sono fermi per la salita e discesa dei passeggeri."
+  }
+}

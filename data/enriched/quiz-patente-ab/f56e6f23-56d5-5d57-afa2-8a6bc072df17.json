@@ -1,0 +1,31 @@
+{
+  "question_id": 4096,
+  "topic": "Segnali di pericolo",
+  "number": "19410",
+  "text": "Il segnale raffigurato è a fondo giallo se posto prima di un cantiere stradale",
+  "correct_answer": true,
+  "image": "d8e896832ed7d2a8dc221808fd0ed0c1.jpeg",
+  "image_description": "Segnale di pericolo: semaforo. Il segnale preannuncia la presenza di un impianto semaforico. I conducenti devono moderare la velocità e essere pronti a fermarsi se necessario.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un semaforo stilizzato con tre luci disposte verticalmente: rossa in alto, gialla al centro e verde in basso.",
+    "name": "Segnale di pericolo: semaforo",
+    "description": "Il segnale preannuncia la presenza di un impianto semaforico. I conducenti devono moderare la velocità e essere pronti a fermarsi se necessario."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo generici",
+      "Segnali stradali di cantiere"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "fondo giallo",
+      "cantiere stradale",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo con fondo giallo per cantieri stradali",
+      "preavviso di cantiere stradale con segnale giallo"
+    ],
+    "rule_explanation": "I segnali di pericolo di cantiere stradale sono di colore giallo e preannunciano la presenza di lavori in corso, richiedendo prudenza."
+  }
+}

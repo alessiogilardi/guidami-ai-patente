@@ -1,0 +1,33 @@
+{
+  "question_id": 4362,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22147",
+  "text": "Il segnale raffigurato indica che la strada si può allagare in caso di forte pioggia",
+  "correct_answer": true,
+  "image": "70eea77a9125bb7d608304c1d2e29606.jpeg",
+  "image_description": "Preavviso di depressione del piano stradale con pannello integrativo di possibile allagamento. Il segnale indica la presenza di una depressione del manto stradale, che può causare allagamenti in caso di forte pioggia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata una gobba o depressione del manto stradale in nero. Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare di colore bianco con bordo nero. Su questo pannello sono disegnate tre linee ondulate di colore blu, che rappresentano l'acqua.",
+    "name": "Preavviso di depressione del piano stradale con pannello integrativo di possibile allagamento",
+    "description": "Il segnale indica la presenza di una depressione del manto stradale, che può causare allagamenti in caso di forte pioggia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi",
+      "Condizioni meteorologiche avverse"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "depressione del piano stradale",
+      "allagamento",
+      "forte pioggia"
+    ],
+    "vector_search_queries": [
+      "segnaletica di pericolo depressione stradale allagamento",
+      "pannello integrativo preavviso allagamento per forte pioggia",
+      "indicazione stradale rischio allagamento per depressione del piano stradale"
+    ],
+    "rule_explanation": "Il pannello integrativo, abbinato al segnale di pericolo, preannuncia la possibile formazione di allagamenti dovuti a depressioni del piano stradale in caso di forte pioggia."
+  }
+}

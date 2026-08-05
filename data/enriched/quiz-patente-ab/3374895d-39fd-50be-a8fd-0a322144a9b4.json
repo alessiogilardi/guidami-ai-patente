@@ -1,0 +1,33 @@
+{
+  "question_id": 4342,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21949",
+  "text": "Il delineatore raffigurato ha luce propria",
+  "correct_answer": false,
+  "image": "828953d4a6ad4ef2943269b0191873fa.jpeg",
+  "image_description": "Delineatore (segnale complementare). Il delineatore raffigurato è un segnale complementare di colore giallo, di forma rettangolare verticale, posto su un supporto. Viene utilizzato per delimitare o evidenziare pericoli, deviazioni, strettoie o ostacoli fissi lungo la carreggiata. Non ha luce propria ma è rifrangente.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore stradale di colore giallo, di forma rettangolare verticale. È montato su un palo sottile che a sua volta è fissato a una base a terra, che sembra essere un marciapiede o un cordolo rialzato. Il delineatore è un segnale complementare, utilizzato per segnalare pericoli o variazioni della strada. Non è possibile determinare dalla sola immagine se abbia luce propria o se sia posizionato in una galleria, su una carreggiata o per indicare un ostacolo specifico, ma la sua funzione generale è quella di delimitare e rendere più visibile un tratto di strada o un ostacolo.",
+    "name": "Delineatore (segnale complementare)",
+    "description": "Il delineatore raffigurato è un segnale complementare di colore giallo, di forma rettangolare verticale, posto su un supporto. Viene utilizzato per delimitare o evidenziare pericoli, deviazioni, strettoie o ostacoli fissi lungo la carreggiata. Non ha luce propria ma è rifrangente."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali complementari",
+      "Segnaletica stradale temporanea",
+      "Caratteristiche dei delineatori stradali"
+    ],
+    "exact_keywords": [
+      "delineatore",
+      "segnale complementare",
+      "luce propria",
+      "pannello retroriflettente"
+    ],
+    "vector_search_queries": [
+      "funzionamento delineatori stradali complementari",
+      "caratteristiche pannelli retroriflettenti segnaletica stradale",
+      "segnali complementari con luce propria o retroriflettenti"
+    ],
+    "rule_explanation": "I delineatori stradali, pur essendo segnali complementari, non hanno luce propria ma sono dotati di materiale retroriflettente per migliorare la visibilità notturna."
+  }
+}

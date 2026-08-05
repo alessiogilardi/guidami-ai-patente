@@ -1,0 +1,31 @@
+{
+  "question_id": 4592,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24315",
+  "text": "La spia rossa contraddistinta dal simbolo in figura può essere disattivata con apposito comando posto sul cruscotto",
+  "correct_answer": false,
+  "image": "44cc0960ffd04ad122e74bb2362c2915.jpeg",
+  "image_description": "Spia cinture di sicurezza. Simbolo che indica l'obbligo di allacciare le cinture di sicurezza. Viene utilizzato come spia luminosa sul cruscotto per segnalare che le cinture non sono allacciate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pittogramma stilizzato di una persona seduta, con una cintura di sicurezza che le attraversa il busto e il bacino. Il pittogramma è nero su sfondo bianco. Questo simbolo è comunemente utilizzato come spia luminosa sui cruscotti dei veicoli per indicare l'obbligo di allacciare le cinture di sicurezza o per segnalare che non sono state allacciate. Non si tratta di un segnale stradale verticale, ma di un simbolo di avvertimento o informazione all'interno del veicolo.",
+    "name": "Spia cinture di sicurezza",
+    "description": "Simbolo che indica l'obbligo di allacciare le cinture di sicurezza. Viene utilizzato come spia luminosa sul cruscotto per segnalare che le cinture non sono allacciate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione acustica e visiva di anomalie",
+      "Dispositivi di segnalazione luminosa sul cruscotto"
+    ],
+    "exact_keywords": [
+      "spia rossa",
+      "simbolo",
+      "cruscotto",
+      "cinture di sicurezza"
+    ],
+    "vector_search_queries": [
+      "spia rossa cinture di sicurezza cruscotto",
+      "funzionamento spia cinture non allacciate"
+    ],
+    "rule_explanation": "La spia rossa delle cinture di sicurezza non può essere disattivata manualmente dal conducente, ma si spegne solo a seguito dell'allacciamento delle stesse."
+  }
+}

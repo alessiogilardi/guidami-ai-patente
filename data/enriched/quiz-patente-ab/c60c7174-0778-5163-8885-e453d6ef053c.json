@@ -1,0 +1,29 @@
+{
+  "question_id": 4011,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18431",
+  "text": "Nelle aree pedonali possono transitare tutti i motocicli, purché diano la precedenza ai pedoni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree pedonali",
+      "Accesso e circolazione dei veicoli",
+      "Tutela dei pedoni"
+    ],
+    "exact_keywords": [
+      "area pedonale",
+      "motocicli",
+      "divieto di transito",
+      "consenso del pedone"
+    ],
+    "vector_search_queries": [
+      "accesso motocicli aree pedonali",
+      "regole di circolazione aree pedonali",
+      "priorità pedoni in aree pedonali"
+    ],
+    "rule_explanation": "Nelle aree pedonali è vietato il transito a tutti i motocicli, salvo specifiche autorizzazioni, e non è mai consentito in presenza di pedoni."
+  }
+}

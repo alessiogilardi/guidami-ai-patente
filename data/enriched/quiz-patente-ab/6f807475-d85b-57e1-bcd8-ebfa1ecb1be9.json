@@ -1,0 +1,32 @@
+{
+  "question_id": 4341,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21931",
+  "text": "I delineatori raffigurati sono utili soprattutto nei casi di scarsa visibilità",
+  "correct_answer": true,
+  "image": "34b768de9091a2ab398379195567246a.jpeg",
+  "image_description": "Delineatori divisori di carreggiata. I delineatori raffigurati sono elementi di segnaletica complementare posti ai margini della carreggiata per evidenziare il suo andamento, particolarmente utili in condizioni di scarsa visibilità o di notte. Quello a sinistra indica il lato destro della carreggiata, mentre quello a destra indica il lato sinistro.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due delineatori posti uno accanto all'altro. Entrambi sono composti da un palo grigio con una parte superiore inclinata. Il delineatore di sinistra ha una banda bianca sulla parte inclinata, mentre quello di destra ha una banda rossa. Sono posizionati su una linea orizzontale che rappresenta il suolo. Questi delineatori sono tipicamente utilizzati per delimitare la carreggiata o le corsie, specialmente in presenza di curve, ostacoli o in condizioni di scarsa visibilità. La loro funzione è quella di guidare e rendere più visibile il percorso stradale.",
+    "name": "Delineatori divisori di carreggiata",
+    "description": "I delineatori raffigurati sono elementi di segnaletica complementare posti ai margini della carreggiata per evidenziare il suo andamento, particolarmente utili in condizioni di scarsa visibilità o di notte. Quello a sinistra indica il lato destro della carreggiata, mentre quello a destra indica il lato sinistro."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica complementare",
+      "Delineatori stradali",
+      "Visibilità notturna e in condizioni avverse"
+    ],
+    "exact_keywords": [
+      "delineatori",
+      "scarsa visibilità",
+      "segnaletica complementare",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "funzione dei delineatori stradali in condizioni di scarsa visibilità",
+      "segnaletica complementare per la delimitazione della carreggiata in notturna"
+    ],
+    "rule_explanation": "I delineatori stradali, quali elementi di segnaletica complementare, sono progettati per evidenziare il margine della carreggiata, migliorando la visibilità in condizioni di scarsa illuminazione o atmosferica."
+  }
+}

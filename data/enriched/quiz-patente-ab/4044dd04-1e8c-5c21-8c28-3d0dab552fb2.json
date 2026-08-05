@@ -1,0 +1,30 @@
+{
+  "question_id": 4709,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25369",
+  "text": "Gli ammortizzatori di un veicolo a motore non necessitano di verifiche e manutenzioni fino a quando dura la garanzia del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Componenti essenziali del veicolo"
+    ],
+    "exact_keywords": [
+      "ammortizzatori",
+      "manutenzione",
+      "sicurezza",
+      "veicolo a motore",
+      "garanzia"
+    ],
+    "vector_search_queries": [
+      "manutenzione ammortizzatori veicolo a motore",
+      "verifica efficienza ammortizzatori sicurezza stradale",
+      "obblighi manutenzione componenti veicolo oltre garanzia"
+    ],
+    "rule_explanation": "Gli ammortizzatori richiedono verifiche e manutenzione periodica indipendentemente dalla durata della garanzia del veicolo, per garantirne la sicurezza e la tenuta di strada."
+  }
+}

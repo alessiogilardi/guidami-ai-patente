@@ -1,0 +1,27 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24770",
+  "text": "Dopo un incidente stradale è obbligatorio collocare subito il veicolo sul marciapiede",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi in caso di incidente stradale",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "soccorso stradale",
+      "veicolo fermo",
+      "segnalazione degli incidenti"
+    ],
+    "vector_search_queries": [
+      "comportamento veicolo dopo incidente stradale",
+      "obblighi conducente in caso di incidente senza feriti"
+    ],
+    "rule_explanation": "In caso di incidente, il veicolo non va spostato se causa intralcio o pericolo, ma segnalato. Se non causa problemi, può essere spostato per ripristinare la circolazione."
+  }
+}

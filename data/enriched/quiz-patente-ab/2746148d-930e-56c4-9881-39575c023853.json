@@ -1,0 +1,28 @@
+{
+  "question_id": 4541,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23886",
+  "text": "Sulle carreggiate, sulle rampe e sugli svincoli di autostrade e strade extraurbane principali il conducente può invertire il senso di marcia in casi di particolare emergenza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di inversione di marcia in autostrada e strade extraurbane principali",
+      "Regolamentazione della circolazione in carreggiate, rampe e svincoli autostradali"
+    ],
+    "exact_keywords": [
+      "invertire il senso di marcia",
+      "autostrade",
+      "strade extraurbane principali",
+      "rampe",
+      "svincoli"
+    ],
+    "vector_search_queries": [
+      "divieto di inversione di marcia in autostrada e strade extraurbane principali",
+      "normativa su inversioni di marcia in rampe e svincoli autostradali"
+    ],
+    "rule_explanation": "È vietato invertire il senso di marcia sulle carreggiate, rampe e svincoli di autostrade e strade extraurbane principali, anche in situazioni di emergenza."
+  }
+}

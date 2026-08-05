@@ -1,0 +1,28 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24604",
+  "text": "Il conducente che non supera l'esame di revisione della patente, può ripeterlo altre due volte entro un anno, continuando a guidare con uno speciale permesso rilasciato dalla Motorizzazione Civile",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione della patente di guida",
+      "Esame di revisione patente",
+      "Permesso di guida provvisorio"
+    ],
+    "exact_keywords": [
+      "esame di revisione",
+      "ripetere l'esame",
+      "Motorizzazione Civile",
+      "permesso di guida"
+    ],
+    "vector_search_queries": [
+      "ripetizione esame di revisione patente mancato superamento",
+      "conseguenze mancato superamento revisione patente guida"
+    ],
+    "rule_explanation": "In caso di mancato superamento dell'esame di revisione della patente, non è previsto il rilascio di alcun permesso di guida provvisorio per continuare a circolare."
+  }
+}

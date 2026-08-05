@@ -1,0 +1,26 @@
+{
+  "question_id": 4014,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18465",
+  "text": "La carreggiata è la parte della strada destinata normalmente alla circolazione dei veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di carreggiata",
+      "Uso della strada"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "strada",
+      "circolazione dei veicoli"
+    ],
+    "vector_search_queries": [
+      "definizione di carreggiata nel codice della strada",
+      "parte della strada destinata alla circolazione veicolare"
+    ],
+    "rule_explanation": "La carreggiata è la porzione della strada adibita alla circolazione dei veicoli, escludendo marciapiedi, banchine e ogni altra area non specificamente destinata al transito veicolare."
+  }
+}

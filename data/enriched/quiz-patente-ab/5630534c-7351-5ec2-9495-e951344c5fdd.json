@@ -1,0 +1,31 @@
+{
+  "question_id": 4277,
+  "topic": "Segnali di indicazione",
+  "number": "21326",
+  "text": "Il segnale raffigurato indica un apparecchio telefonico pubblico posto su strade extraurbane",
+  "correct_answer": true,
+  "image": "7c465c7946a16a29d37008033e2616f0.jpeg",
+  "image_description": "Preavviso di telefono pubblico. Il segnale indica la presenza di un telefono pubblico nelle vicinanze.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di tipo integrativo, di colore blu con bordo bianco. Al centro, su sfondo bianco, è raffigurato il pittogramma stilizzato di una cornetta telefonica in nero. Sotto il pittogramma, vi è un pannello rettangolare blu, anch'esso con bordo bianco, che solitamente serve per indicare la distanza o altre informazioni aggiuntive, ma in questo caso è vuoto. Il segnale nel suo complesso preannuncia la presenza di un telefono pubblico.",
+    "name": "Preavviso di telefono pubblico",
+    "description": "Il segnale indica la presenza di un telefono pubblico nelle vicinanze."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Servizi a disposizione degli utenti della strada"
+    ],
+    "exact_keywords": [
+      "preavviso di telefono",
+      "telefono pubblico",
+      "strade extraurbane",
+      "segnali di servizio"
+    ],
+    "vector_search_queries": [
+      "segnaletica di preavviso di telefono pubblico",
+      "ubicazione telefono pubblico su strade extraurbane"
+    ],
+    "rule_explanation": "Il segnale di preavviso di telefono pubblico indica la presenza di un apparecchio telefonico nelle immediate vicinanze, anche su strade extraurbane."
+  }
+}

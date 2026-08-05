@@ -1,0 +1,29 @@
+{
+  "question_id": 4710,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25375",
+  "text": "Gli ammortizzatori scarichi provocano un comportamento anomalo del veicolo, particolarmente in curva",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Manutenzione del veicolo",
+      "Tenuta di strada"
+    ],
+    "exact_keywords": [
+      "ammortizzatori scarichi",
+      "comportamento anomalo",
+      "tenuta di strada",
+      "stabilità del veicolo"
+    ],
+    "vector_search_queries": [
+      "effetti degli ammortizzatori scarichi sulla stabilità del veicolo",
+      "influenza degli ammortizzatori sulla tenuta di strada in curva",
+      "comportamento del veicolo con ammortizzatori inefficienti"
+    ],
+    "rule_explanation": "Gli ammortizzatori sono fondamentali per la stabilità e la tenuta di strada; ammortizzatori scarichi causano un comportamento anomalo del veicolo, specialmente in curva, compromettendo la sicurezza."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22333",
+  "text": "Il limite massimo di velocità per un autocarro fino a 3,5 tonnellate sulle strade extraurbane principali è di 110 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per autocarri",
+      "Strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "autocarro",
+      "strade extraurbane principali",
+      "110 km/h"
+    ],
+    "vector_search_queries": [
+      "limite velocità autocarri fino a 3,5 tonnellate strade extraurbane principali",
+      "velocità massima autocarri 110 km/h su strade extraurbane principali"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per gli autocarri fino a 3,5 tonnellate sulle strade extraurbane principali è di 110 km/h."
+  }
+}

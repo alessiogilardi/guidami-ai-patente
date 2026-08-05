@@ -1,0 +1,31 @@
+{
+  "question_id": 4250,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21065",
+  "text": "La luce verde accesa del semaforo in figura permette ai pedoni l'attraversamento",
+  "correct_answer": true,
+  "image": "2129f648b286c6c53769eb3846a537af.jpeg",
+  "image_description": "Semaforo pedonale. Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un semaforo pedonale verticale. Le luci sono disposte dall'alto verso il basso: rossa, gialla e verde. Ogni luce contiene la sagoma stilizzata di una figura umana. La luce rossa mostra una figura ferma, la luce gialla una figura ferma, e la luce verde una figura in movimento. Il semaforo è montato su un palo o struttura simile, ma solo il semaforo stesso è visibile chiaramente. Non ci sono altri elementi stradali o veicoli nell'immagine.",
+    "name": "Semaforo pedonale",
+    "description": "Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica semaforica pedonale",
+      "Regole di attraversamento per i pedoni"
+    ],
+    "exact_keywords": [
+      "semaforo pedonale",
+      "luce verde",
+      "attraversamento",
+      "pedoni"
+    ],
+    "vector_search_queries": [
+      "significato luce verde semaforo pedonale",
+      "condizioni per l'attraversamento pedonale con semaforo verde"
+    ],
+    "rule_explanation": "La luce verde del semaforo pedonale indica ai pedoni che è consentito l'attraversamento della carreggiata."
+  }
+}

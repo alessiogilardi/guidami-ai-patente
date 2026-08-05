@@ -1,0 +1,31 @@
+{
+  "question_id": 4468,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23241",
+  "text": "Secondo le norme di precedenza nell'incrocio rappresentato in figura il veicolo A deve attendere il transito del veicolo O",
+  "correct_answer": true,
+  "image": "83fcde709e461e41f3023ba91044d095.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. Il tram (T) si trova sulla sua linea ferrata che attraversa l'incrocio. Il veicolo A è un camion che si trova sulla destra del tram, fermo in attesa di svoltare a sinistra. Il veicolo O è un'auto che si trova sulla sinistra del tram, ferma in attesa di svoltare a sinistra. Non sono presenti segnali di prescrizione o preavviso che regolino la precedenza. Si applica la regola generale della precedenza a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con tre veicoli: un tram (T), un camion (A) e un'automobile (O). Il tram si sta avvicinando all'incrocio provenendo da sinistra e proseguendo dritto. Il camion (A) si trova alla destra del tram, fermo in attesa di svoltare a sinistra. L'automobile (O) si trova alla sinistra del tram, anch'essa ferma in attesa di svoltare a sinistra. Non sono presenti segnali stradali che regolino la precedenza in questo incrocio. Pertanto, si applica la regola generale della precedenza a destra.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. Il tram (T) si trova sulla sua linea ferrata che attraversa l'incrocio. Il veicolo A è un camion che si trova sulla destra del tram, fermo in attesa di svoltare a sinistra. Il veicolo O è un'auto che si trova sulla sinistra del tram, ferma in attesa di svoltare a sinistra. Non sono presenti segnali di prescrizione o preavviso che regolino la precedenza. Si applica la regola generale della precedenza a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza ai incroci non segnalati"
+    ],
+    "exact_keywords": [
+      "precedenza a destra",
+      "incrocio non segnalato",
+      "veicolo",
+      "transito"
+    ],
+    "vector_search_queries": [
+      "precedenza a destra incrocio non segnalato",
+      "ordine di precedenza tra veicoli in assenza di segnaletica"
+    ],
+    "rule_explanation": "Negli incroci non segnalati, si applica la regola generale della precedenza a destra. Il veicolo A, trovandosi alla destra del veicolo O, deve attendere il suo transito."
+  }
+}

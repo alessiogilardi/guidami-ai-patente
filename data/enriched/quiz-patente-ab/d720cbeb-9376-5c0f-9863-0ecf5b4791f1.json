@@ -1,0 +1,27 @@
+{
+  "question_id": 4264,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21204",
+  "text": "Avvicinandosi ad un passaggio a livello con luci rosse accese e semibarriera ancora alzata, si può passare velocemente, se non si vede sopraggiungere il treno",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni semaforiche ai passaggi a livello",
+      "Obbligo di arresto al passaggio a livello"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "luci rosse",
+      "semibarriera",
+      "arrestarsi"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto al passaggio a livello con luci rosse accese",
+      "condotta da tenere al passaggio a livello con semibarriera alzata e luci rosse"
+    ],
+    "rule_explanation": "Ai passaggi a livello con luci rosse accese e semibarriera alzata, è obbligatorio arrestarsi anche se non si vede sopraggiungere il treno, per evitare incidenti."
+  }
+}

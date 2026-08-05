@@ -1,0 +1,28 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18714",
+  "text": "Il conducente che si accorge che il suo veicolo perde olio deve compiere tutte le azioni necessarie per evitare pericoli per altri utenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente in caso di perdita di olio",
+      "Prevenzione di pericoli per la circolazione"
+    ],
+    "exact_keywords": [
+      "perdita di olio",
+      "veicolo",
+      "pericolo",
+      "altri utenti",
+      "azioni necessarie"
+    ],
+    "vector_search_queries": [
+      "obbligo del conducente di prevenire pericoli derivanti da perdita di olio dal veicolo",
+      "azioni necessarie per evitare pericoli per la circolazione causati da perdita di olio"
+    ],
+    "rule_explanation": "Il conducente è tenuto ad adottare tutte le misure necessarie per evitare che la perdita di olio dal veicolo costituisca un pericolo per la circolazione e gli altri utenti della strada."
+  }
+}

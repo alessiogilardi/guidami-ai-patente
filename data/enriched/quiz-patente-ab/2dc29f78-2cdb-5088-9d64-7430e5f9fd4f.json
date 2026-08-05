@@ -1,0 +1,33 @@
+{
+  "question_id": 4060,
+  "topic": "Segnali di pericolo",
+  "number": "18970",
+  "text": "In presenza del segnale raffigurato, su strada a senso unico di circolazione si deve marciare il più possibile vicino al margine destro della carreggiata",
+  "correct_answer": false,
+  "image": "20d1949582fe2500af34cafef3f9167c.jpeg",
+  "image_description": "Segnale di curva pericolo a sinistra. Il segnale preannuncia una curva pericolosa verso sinistra. È necessario moderare la velocità e prestare attenzione, soprattutto in caso di strada bagnata o scarsa visibilità, per potersi arrestare in caso di ostacolo improvviso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una curva che volge verso sinistra. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una curva a sinistra.",
+    "name": "Segnale di curva pericolo a sinistra",
+    "description": "Il segnale preannuncia una curva pericolosa verso sinistra. È necessario moderare la velocità e prestare attenzione, soprattutto in caso di strada bagnata o scarsa visibilità, per potersi arrestare in caso di ostacolo improvviso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Comportamento in presenza di curve",
+      "Posizionamento sulla carreggiata"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "curva pericolosa",
+      "carreggiata",
+      "margine destro"
+    ],
+    "vector_search_queries": [
+      "comportamento in presenza di segnale di curva pericolosa",
+      "posizionamento sulla carreggiata in presenza di pericoli",
+      "obblighi del conducente in caso di curva pericolosa"
+    ],
+    "rule_explanation": "Il segnale di curva pericolosa preannuncia un pericolo e impone di moderare la velocità, non di marciare necessariamente a destra. Su strada a senso unico, ci si tiene a destra se non diversamente indicato."
+  }
+}

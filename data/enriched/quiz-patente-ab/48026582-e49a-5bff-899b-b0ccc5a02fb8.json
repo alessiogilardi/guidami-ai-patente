@@ -1,0 +1,26 @@
+{
+  "question_id": 4033,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18667",
+  "text": "I rimorchi leggeri sono quelli di massa massima a pieno carico fino a 500 kg",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di rimorchio leggero",
+      "Massa massima a pieno carico"
+    ],
+    "exact_keywords": [
+      "rimorchi leggeri",
+      "massa massima a pieno carico",
+      "3,5 tonnellate"
+    ],
+    "vector_search_queries": [
+      "definizione di rimorchio leggero nel CdS",
+      "limiti di massa per rimorchi leggeri"
+    ],
+    "rule_explanation": "I rimorchi leggeri sono quelli con massa massima a pieno carico superiore a 750 kg e fino a 3,5 tonnellate."
+  }
+}

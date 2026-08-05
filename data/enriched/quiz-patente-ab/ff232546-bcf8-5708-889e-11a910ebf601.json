@@ -1,0 +1,30 @@
+{
+  "question_id": 4677,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25112",
+  "text": "L'inquinamento atmosferico prodotto dai veicoli scompare del tutto accelerando a fondo, perché l'alta temperatura fa consumare in fretta il carburante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico da veicoli a motore",
+      "Combustione e emissioni inquinanti",
+      "Efficienza del motore e consumi"
+    ],
+    "exact_keywords": [
+      "inquinamento atmosferico",
+      "veicoli",
+      "combustione",
+      "emissioni",
+      "temperatura"
+    ],
+    "vector_search_queries": [
+      "impatto dell'accelerazione sulle emissioni inquinanti dei veicoli",
+      "relazione tra combustione, temperatura e inquinamento atmosferico da veicoli",
+      "effetti dell'accelerazione brusca sui consumi e sulle emissioni inquinanti"
+    ],
+    "rule_explanation": "L'accelerazione a fondo non elimina l'inquinamento atmosferico, ma aumenta le emissioni inquinanti e il consumo di carburante a causa di una combustione incompleta o inefficiente."
+  }
+}

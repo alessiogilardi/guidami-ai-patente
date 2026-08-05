@@ -1,0 +1,29 @@
+{
+  "question_id": 4537,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23855",
+  "text": "Sulle autostrade e strade extraurbane principali è vietata la circolazione di veicoli con carico disordinato e non solidamente assicurato o sporgente oltre i limiti consentiti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione del carico sui veicoli",
+      "Norme di circolazione su autostrade e strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "carico disordinato",
+      "non solidamente assicurato",
+      "sporgente",
+      "autostrade",
+      "strade extraurbane principali"
+    ],
+    "vector_search_queries": [
+      "divieto di circolazione con carico disordinato o sporgente su autostrade",
+      "norme sul carico dei veicoli su strade extraurbane principali",
+      "assicurazione e posizionamento del carico per la sicurezza stradale"
+    ],
+    "rule_explanation": "È vietato circolare con un carico disordinato, non assicurato o che sporge oltre i limiti consentiti, specialmente su autostrade e strade extraurbane principali."
+  }
+}

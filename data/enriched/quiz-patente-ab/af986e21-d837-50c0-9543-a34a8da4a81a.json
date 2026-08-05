@@ -1,0 +1,30 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22496",
+  "text": "Nel caso in cui, per un guasto alla propria autovettura, si rimane bloccati sulla sede ferroviaria di un passaggio a livello, occorre adoperarsi per rimuovere il veicolo al più presto, ad esempio facendosi aiutare da altri utenti a spingere il veicolo fuori dalla linea ferroviaria",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo alla circolazione ferroviaria",
+      "Obbligo di rimozione del veicolo in panne",
+      "Assistenza da parte di terzi in caso di emergenza"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "veicolo in panne",
+      "rimozione del veicolo",
+      "linea ferroviaria",
+      "pericolo per la circolazione"
+    ],
+    "vector_search_queries": [
+      "rimozione veicolo in panne su passaggio a livello",
+      "obbligo di sgomberare la linea ferroviaria in caso di guasto autovettura",
+      "pericolo circolazione ferroviaria per veicolo bloccato"
+    ],
+    "rule_explanation": "In caso di arresto del veicolo su un passaggio a livello per avaria, è necessario rimuoverlo tempestivamente, anche con l'aiuto di terzi, per evitare pericoli alla circolazione ferroviaria."
+  }
+}

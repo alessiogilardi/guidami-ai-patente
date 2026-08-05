@@ -1,0 +1,32 @@
+{
+  "question_id": 4171,
+  "topic": "Segnali di obbligo",
+  "number": "20288",
+  "text": "Il segnale raffigurato prescrive un obbligo di ROTATORIA solo per le autovetture",
+  "correct_answer": false,
+  "image": "16c5adb5b0bfafc6c7b0777ae5eec32d.jpeg",
+  "image_description": "Segnale di circolazione rotatoria. Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo blu e sfondo blu. Al centro, tre frecce bianche a punta di freccia sono disposte in modo da formare un cerchio, indicando un movimento rotatorio in senso antiorario. Questo è il segnale di obbligo di circolazione rotatoria.",
+    "name": "Segnale di circolazione rotatoria",
+    "description": "Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di obbligo di circolazione",
+      "Rotatoria",
+      "Destinatari dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "rotatoria",
+      "circolare nel senso indicato",
+      "isola centrale"
+    ],
+    "vector_search_queries": [
+      "obbligo di circolazione in rotatoria per tutti i veicoli",
+      "applicazione dei segnali di obbligo di rotatoria"
+    ],
+    "rule_explanation": "I segnali di obbligo, come quello di rotatoria, si applicano a tutti i veicoli, non solo alle autovetture, salvo diversa specifica indicazione."
+  }
+}

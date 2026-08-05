@@ -1,0 +1,31 @@
+{
+  "question_id": 4249,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21062",
+  "text": "Il semaforo in figura vale anche per i pedoni",
+  "correct_answer": false,
+  "image": "80179c5962ca8a0999f5eb5f23ac5157.jpeg",
+  "image_description": "Semafori per corsie reversibili. I segnali luminosi A e B sono semafori per corsie reversibili. Il segnale A mostra una X rossa, una freccia verde verso il basso e una freccia gialla obliqua verso destra. Il segnale B mostra una sequenza di semafori per corsie reversibili, con una luce rossa accesa in alcuni e una luce gialla accesa in altri. Le luci rosse a forma di X indicano che la corsia è chiusa e non può essere utilizzata. Le frecce verdi indicano che la corsia è aperta e può essere utilizzata. Le frecce gialle indicano che la corsia sta per essere chiusa e i conducenti devono prepararsi a spostarsi in un'altra corsia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due serie di segnali luminosi, etichettati A e B. Il segnale A è un semaforo a tre luci, con una luce rossa a forma di X, una luce verde a forma di freccia verso il basso e una luce gialla a forma di freccia obliqua verso destra. Il segnale B è una serie di quattro semafori, ciascuno con una singola luce circolare, disposti sopra quelle che sembrano essere corsie di traffico. Alcune luci in B sono rosse e altre sono gialle. Questi segnali sono comunemente noti come semafori per corsie reversibili, utilizzati per regolare il flusso del traffico su strade con corsie che possono essere utilizzate in direzioni opposte in momenti diversi. La luce rossa a forma di X indica che la corsia è chiusa. La freccia verde indica che la corsia è aperta e il transito è consentito. La freccia gialla indica che la corsia sta per essere chiusa e i conducenti devono spostarsi in un'altra corsia.",
+    "name": "Semafori per corsie reversibili",
+    "description": "I segnali luminosi A e B sono semafori per corsie reversibili. Il segnale A mostra una X rossa, una freccia verde verso il basso e una freccia gialla obliqua verso destra. Il segnale B mostra una sequenza di semafori per corsie reversibili, con una luce rossa accesa in alcuni e una luce gialla accesa in altri. Le luci rosse a forma di X indicano che la corsia è chiusa e non può essere utilizzata. Le frecce verdi indicano che la corsia è aperta e può essere utilizzata. Le frecce gialle indicano che la corsia sta per essere chiusa e i conducenti devono prepararsi a spostarsi in un'altra corsia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica semaforica pedonale",
+      "Segnaletica semaforica per corsie reversibili"
+    ],
+    "exact_keywords": [
+      "semaforo pedonale",
+      "corsie reversibili",
+      "segnali luminosi",
+      "divieto di transito"
+    ],
+    "vector_search_queries": [
+      "differenza tra semafori per corsie reversibili e semafori pedonali",
+      "validità dei segnali semaforici per corsie reversibili rispetto ai pedoni"
+    ],
+    "rule_explanation": "I semafori per corsie reversibili regolano la circolazione dei veicoli e non hanno valore per i pedoni, per i quali vige una segnaletica specifica."
+  }
+}

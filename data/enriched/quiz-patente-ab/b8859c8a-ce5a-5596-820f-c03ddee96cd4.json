@@ -1,0 +1,28 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24417",
+  "text": "Il casco integrale è inutile se si circola a bordo di un ciclomotore a due ruote",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Sicurezza alla guida di ciclomotori"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "ciclomotore",
+      "casco integrale",
+      "normativa di sicurezza"
+    ],
+    "vector_search_queries": [
+      "obbligo casco ciclomotore",
+      "normativa sicurezza motocicli e ciclomotori",
+      "requisiti casco per ciclomotori"
+    ],
+    "rule_explanation": "L'uso del casco protettivo, anche integrale, è obbligatorio per tutti i conducenti e passeggeri di ciclomotori, indipendentemente dal tipo di casco."
+  }
+}

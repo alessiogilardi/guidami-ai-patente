@@ -1,0 +1,28 @@
+{
+  "question_id": 4654,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24944",
+  "text": "Lo stato di shock può essere causato da una forte perdita di sangue",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di shock",
+      "Primo soccorso",
+      "Traumatologia"
+    ],
+    "exact_keywords": [
+      "shock",
+      "perdita di sangue",
+      "ipotensione",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "cause dello stato di shock in primo soccorso",
+      "gestione della perdita di sangue e shock"
+    ],
+    "rule_explanation": "Lo stato di shock è una condizione di grave pericolo per la vita, caratterizzata da una circolazione sanguigna insufficiente a mantenere le funzioni vitali, che può essere causata anche da una forte perdita di sangue."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23580",
+  "text": "Il sorpasso è vietato di notte, nei centri urbani con pubblica illuminazione insufficiente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole sul sorpasso",
+      "Condizioni di visibilità e sicurezza"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "divieto di sorpasso",
+      "visibilità",
+      "centro abitato",
+      "illuminazione pubblica"
+    ],
+    "vector_search_queries": [
+      "sorpasso in condizioni di scarsa visibilità",
+      "divieto di sorpasso in centro abitato con illuminazione insufficiente"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in condizioni di scarsa visibilità, ma non specificamente di notte nei centri urbani se l'illuminazione è sufficiente."
+  }
+}

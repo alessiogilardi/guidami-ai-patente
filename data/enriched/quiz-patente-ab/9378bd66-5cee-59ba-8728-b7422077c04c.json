@@ -1,0 +1,29 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22487",
+  "text": "Nei veicoli dotati di servofreno, se si percorre una lunga discesa con il cambio in folle e a motore spento, diventa sempre più difficoltoso arrestare il veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzionamento del servofreno",
+      "Sicurezza nella guida in discesa",
+      "Pericoli della marcia a motore spento"
+    ],
+    "exact_keywords": [
+      "servofreno",
+      "discesa",
+      "motore spento",
+      "cambio in folle",
+      "arrestare il veicolo"
+    ],
+    "vector_search_queries": [
+      "funzionamento servofreno in discesa a motore spento",
+      "rischio arresto veicolo con servofreno in folle e motore spento"
+    ],
+    "rule_explanation": "Nei veicoli con servofreno, la marcia in discesa a motore spento e con cambio in folle riduce l'efficacia del servofreno, rendendo più difficile l'arresto del veicolo."
+  }
+}

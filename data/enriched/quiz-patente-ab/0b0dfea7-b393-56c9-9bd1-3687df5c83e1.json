@@ -1,0 +1,31 @@
+{
+  "question_id": 4463,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23189",
+  "text": "Dovendo attraversare l'incrocio rappresentato in figura il veicolo E deve dare la precedenza al veicolo A",
+  "correct_answer": false,
+  "image": "57254c46fba07f75685a8ed30c84cf10.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. I veicoli si trovano in posizioni diverse e devono rispettare le regole di precedenza. Il veicolo C si trova alla destra del veicolo A, il veicolo L si trova alla destra del veicolo E, e il veicolo R si trova alla destra del veicolo C. Non sono presenti segnali stradali che regolano la precedenza in questo incrocio, quindi si applica la regola generale della precedenza a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con cinque veicoli (identificati dalle lettere A, C, E, L, R) in diverse posizioni. Non sono presenti segnali stradali di prescrizione o obbligo che regolano la precedenza. Le frecce tratteggiate indicano le possibili traiettorie dei veicoli. Si osserva la disposizione dei veicoli rispetto agli altri per determinare le precedenze: il veicolo C è alla destra del veicolo A; il veicolo L è alla destra del veicolo E; il veicolo R è alla destra del veicolo C. Poiché non ci sono segnali specifici, si applica la regola generale della precedenza a destra.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. I veicoli si trovano in posizioni diverse e devono rispettare le regole di precedenza. Il veicolo C si trova alla destra del veicolo A, il veicolo L si trova alla destra del veicolo E, e il veicolo R si trova alla destra del veicolo C. Non sono presenti segnali stradali che regolano la precedenza in questo incrocio, quindi si applica la regola generale della precedenza a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza a destra",
+      "Ordine di precedenza negli incroci non segnalati"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "veicolo",
+      "regola generale"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio non segnalato",
+      "regola generale precedenza a destra"
+    ],
+    "rule_explanation": "Negli incroci a raso non segnalati, vige la regola generale della precedenza a destra. Il veicolo E non deve dare la precedenza al veicolo A, ma al veicolo L che si trova alla sua destra."
+  }
+}

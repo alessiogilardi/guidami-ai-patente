@@ -1,0 +1,29 @@
+{
+  "question_id": 4387,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22457",
+  "text": "Si deve diminuire la velocità ogni qualvolta si incontra un segnale stradale di indicazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Segnaletica stradale di indicazione",
+      "Obbligo di moderazione della velocità"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "segnale stradale di indicazione",
+      "diminuire la velocità",
+      "pericolo o intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di diminuire la velocità ai segnali di indicazione stradale",
+      "adeguamento della velocità in presenza di segnali stradali di indicazione",
+      "condizioni che impongono la diminuzione della velocità ai segnali stradali"
+    ],
+    "rule_explanation": "Non è obbligatorio diminuire la velocità ai segnali di indicazione, ma solo se questi creano un pericolo o intralcio alla circolazione. La velocità va sempre adeguata alle condizioni."
+  }
+}

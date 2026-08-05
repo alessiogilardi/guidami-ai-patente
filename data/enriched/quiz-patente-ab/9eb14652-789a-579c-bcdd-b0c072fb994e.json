@@ -1,0 +1,27 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23465",
+  "text": "Il conducente che intende sorpassare deve accertarsi che la larghezza della carreggiata consenta la manovra in condizioni di sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Condizioni di sicurezza nella guida"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "larghezza della carreggiata",
+      "condizioni di sicurezza",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente prima di effettuare un sorpasso",
+      "valutazione della sicurezza per la manovra di sorpasso in relazione alla larghezza della carreggiata"
+    ],
+    "rule_explanation": "Il conducente che effettua un sorpasso deve verificare che la larghezza della strada sia sufficiente per completare la manovra in sicurezza, senza creare pericolo per sé o per gli altri."
+  }
+}

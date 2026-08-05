@@ -1,0 +1,27 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24593",
+  "text": "La revisione della patente di guida può essere disposta con l'obbligo di sottoporsi a visita medica e/o ad esame di idoneità tecnica",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione della patente di guida",
+      "Accertamento idoneità alla guida"
+    ],
+    "exact_keywords": [
+      "revisione patente di guida",
+      "visita medica",
+      "esame di idoneità tecnica",
+      "sottoporsi"
+    ],
+    "vector_search_queries": [
+      "disposizione di revisione della patente di guida",
+      "obblighi del titolare di patente in fase di revisione"
+    ],
+    "rule_explanation": "La revisione della patente di guida, disposta dall'autorità competente, può comportare l'obbligo per il titolare di sottoporsi a visita medica o ad esame di idoneità tecnica."
+  }
+}

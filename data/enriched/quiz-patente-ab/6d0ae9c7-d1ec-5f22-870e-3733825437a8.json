@@ -1,0 +1,28 @@
+{
+  "question_id": 4023,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18550",
+  "text": "Le biciclette con pedalata assistita, dotate di motore elettrico ausiliario di potenza massima fino a 0,25 kW, sono definite ciclomotori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di ciclomotore",
+      "Classificazione dei veicoli a propulsione elettrica",
+      "Normativa sui veicoli a pedalata assistita"
+    ],
+    "exact_keywords": [
+      "biciclette a pedalata assistita",
+      "motore elettrico ausiliario",
+      "ciclomotori",
+      "potenza nominale continua massima"
+    ],
+    "vector_search_queries": [
+      "differenza tra bicicletta a pedalata assistita e ciclomotore",
+      "definizione normativa di ciclomotore e bicicletta elettrica"
+    ],
+    "rule_explanation": "Le biciclette con pedalata assistita (e-bike) non sono ciclomotori, ma biciclette, anche se dotate di motore elettrico fino a 250W di potenza nominale continua massima che funge da assistenza alla pedalata."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31063",
+  "text": "In condizioni di traffico intenso lo stress può aiutare il conducente a mantenersi vigile",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di alterazione psicofisica del conducente",
+      "Fattori di distrazione alla guida",
+      "Guida in condizioni di traffico intenso"
+    ],
+    "exact_keywords": [
+      "stress",
+      "vigile",
+      "conducente",
+      "traffico intenso"
+    ],
+    "vector_search_queries": [
+      "effetti dello stress sulla capacità di guida",
+      "impatto del traffico intenso sulla concentrazione del conducente",
+      "condizioni psicofisiche del conducente e sicurezza stradale"
+    ],
+    "rule_explanation": "Lo stress, specialmente in condizioni di traffico intenso, non aiuta il conducente a mantenersi vigile, ma può compromettere la lucidità mentale e i tempi di reazione."
+  }
+}

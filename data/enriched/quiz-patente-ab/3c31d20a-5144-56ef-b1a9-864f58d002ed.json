@@ -1,0 +1,27 @@
+{
+  "question_id": 4433,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22903",
+  "text": "In corrispondenza di incroci extraurbani non è consentito effettuare la fermata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata e sosta nei centri abitati e fuori dai centri abitati",
+      "Divieto di fermata e sosta in corrispondenza di incroci"
+    ],
+    "exact_keywords": [
+      "incroci extraurbani",
+      "fermata",
+      "sosta",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata in corrispondenza di incroci extraurbani",
+      "differenza tra fermata e sosta in prossimità di incroci"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, la fermata è vietata in corrispondenza degli incroci. La sosta è sempre vietata in corrispondenza degli incroci."
+  }
+}

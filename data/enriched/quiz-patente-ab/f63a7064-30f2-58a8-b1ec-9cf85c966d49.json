@@ -1,0 +1,28 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18355",
+  "text": "Nelle strade extraurbane principali possono circolare solo alcune categorie di veicoli a motore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione delle strade",
+      "Categorie di veicoli ammessi alla circolazione",
+      "Strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "strade extraurbane principali",
+      "veicoli a motore",
+      "categorie di veicoli",
+      "circolazione stradale"
+    ],
+    "vector_search_queries": [
+      "categorie di veicoli ammessi sulle strade extraurbane principali",
+      "limitazioni alla circolazione per alcune categorie di veicoli a motore su strade extraurbane principali"
+    ],
+    "rule_explanation": "Le strade extraurbane principali sono riservate alla circolazione di veicoli a motore, con esclusione di ciclomotori, taluni veicoli a due ruote non adatti alla velocità, e altri veicoli non a motore."
+  }
+}

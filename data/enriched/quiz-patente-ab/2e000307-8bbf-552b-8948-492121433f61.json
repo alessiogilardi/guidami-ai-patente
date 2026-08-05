@@ -1,0 +1,32 @@
+{
+  "question_id": 4476,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23326",
+  "text": "Nell'incrocio rappresentato nella figura il veicolo T transita prima degli altri veicoli",
+  "correct_answer": false,
+  "image": "3a2a9f33095139a6bb1c46e732457df7.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. Il veicolo T, provenendo da destra rispetto all'incrocio, deve dare la precedenza ai veicoli A e R che si trovano alla sua sinistra. Il veicolo R, trovandosi alla destra del veicolo A, ha la precedenza su A. Pertanto, l'ordine di transito corretto è R, A, T.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso tra tre veicoli: A (giallo), R (blu) e T (rosso). Il veicolo A si trova in una strada che immette nell'incrocio da sinistra. Il veicolo R si trova in una strada che immette nell'incrocio frontalmente rispetto ad A. Il veicolo T si trova in una strada che immette nell'incrocio da destra rispetto a R e A. Non sono presenti segnali stradali che regolano la precedenza. In assenza di segnaletica specifica, si applica la regola generale della precedenza a destra. Il veicolo T si trova alla destra di R e A, quindi deve dare loro la precedenza. Tra A e R, R si trova alla destra di A, quindi A deve dare la precedenza a R. L'ordine di transito corretto è quindi R, poi A, infine T.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "Il veicolo T, provenendo da destra rispetto all'incrocio, deve dare la precedenza ai veicoli A e R che si trovano alla sua sinistra. Il veicolo R, trovandosi alla destra del veicolo A, ha la precedenza su A. Pertanto, l'ordine di transito corretto è R, A, T."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di transito ai incroci non regolamentati"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "precedenza a destra",
+      "veicolo",
+      "transito"
+    ],
+    "vector_search_queries": [
+      "precedenza veicoli incrocio non regolamentato",
+      "regola generale della precedenza a destra",
+      "ordine di transito ai incroci"
+    ],
+    "rule_explanation": "Negli incroci non regolamentati, la precedenza è data ai veicoli provenienti da destra. Il veicolo T, trovandosi a destra degli altri, deve dare loro la precedenza."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4625,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24722",
+  "text": "Il fenomeno dell'aquaplaning si verifica più facilmente nei veicoli più leggeri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aquaplaning",
+      "Fattori di rischio per l'aquaplaning",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "aquaplaning",
+      "veicoli leggeri",
+      "aderenza",
+      "pneumatici"
+    ],
+    "vector_search_queries": [
+      "fenomeno dell'aquaplaning e veicoli leggeri",
+      "aderenza degli pneumatici su bagnato e peso del veicolo",
+      "condizioni che favoriscono l'aquaplaning"
+    ],
+    "rule_explanation": "L'aquaplaning si verifica quando uno strato d'acqua si interpone tra pneumatico e asfalto, riducendo l'aderenza. I veicoli più leggeri sono più suscettibili a questo fenomeno."
+  }
+}

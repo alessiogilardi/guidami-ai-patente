@@ -1,0 +1,31 @@
+{
+  "question_id": 4239,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20963",
+  "text": "La striscia trasversale continua in figura indica il punto in cui bisogna arrestarsi ad un incrocio, se regolato da semaforo a luce rossa",
+  "correct_answer": true,
+  "image": "af4cddba8bbf3ea3411e0c054b6f313f.jpeg",
+  "image_description": "Striscia trasversale di arresto. La striscia bianca trasversale continua indica il punto in cui i conducenti devono arrestarsi in presenza di un segnale di STOP o di un semaforo rosso. Non indica un attraversamento pedonale o ciclabile, né l'inizio di un divieto di sosta. Non può essere superata se non dopo essersi fermati e aver dato la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una striscia bianca trasversale continua sulla pavimentazione stradale, che attraversa una carreggiata. La striscia è posta in prossimità di un incrocio a raso, dove una strada secondaria si immette in una strada principale. La striscia bianca trasversale continua è un elemento della segnaletica orizzontale.",
+    "name": "Striscia trasversale di arresto",
+    "description": "La striscia bianca trasversale continua indica il punto in cui i conducenti devono arrestarsi in presenza di un segnale di STOP o di un semaforo rosso. Non indica un attraversamento pedonale o ciclabile, né l'inizio di un divieto di sosta. Non può essere superata se non dopo essersi fermati e aver dato la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di arresto al semaforo rosso",
+      "Segnaletica orizzontale di arresto"
+    ],
+    "exact_keywords": [
+      "striscia trasversale continua",
+      "arrestarsi",
+      "semaforo a luce rossa",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto alla striscia trasversale continua con semaforo rosso",
+      "funzione della striscia di arresto all'incrocio"
+    ],
+    "rule_explanation": "La striscia trasversale continua impone l'arresto del veicolo prima di essa, in presenza di un semaforo rosso o di un segnale di STOP."
+  }
+}

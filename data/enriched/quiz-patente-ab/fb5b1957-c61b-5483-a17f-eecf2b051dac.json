@@ -1,0 +1,31 @@
+{
+  "question_id": 4167,
+  "topic": "Segnali di obbligo",
+  "number": "20252",
+  "text": "Il segnale raffigurato preannuncia l'obbligo di svoltare a destra",
+  "correct_answer": false,
+  "image": "f99d748827631a70c04e5d9aeac6183d.jpeg",
+  "image_description": "Presegnalazione di passaggio obbligatorio a destra. Il segnale impone di circolare in modo da lasciare l'ostacolo o l'isola salvagente alla propria destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e fondo blu. Al centro del segnale è presente una freccia bianca che punta in basso a destra, con un'inclinazione di circa 45 gradi rispetto all'orizzontale. Questo tipo di segnale rientra nella categoria dei segnali di obbligo. La freccia indica la direzione da seguire, specificando che l'ostacolo o l'area da aggirare deve essere lasciata sulla destra.",
+    "name": "Presegnalazione di passaggio obbligatorio a destra",
+    "description": "Il segnale impone di circolare in modo da lasciare l'ostacolo o l'isola salvagente alla propria destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Passaggio obbligatorio"
+    ],
+    "exact_keywords": [
+      "presegnalazione",
+      "passaggio obbligatorio",
+      "ostacolo",
+      "isola salvagente"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di passaggio obbligatorio",
+      "obbligo di circolare lasciando ostacolo a destra"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica un passaggio obbligatorio a destra, imponendo di lasciare l'ostacolo o l'isola salvagente alla propria destra. Non impone di svoltare."
+  }
+}

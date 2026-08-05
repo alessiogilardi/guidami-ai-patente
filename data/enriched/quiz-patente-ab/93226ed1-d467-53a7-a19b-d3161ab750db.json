@@ -1,0 +1,27 @@
+{
+  "question_id": 4583,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24224",
+  "text": "Si devono usare gli indicatori di direzione se, marciando su strada a senso unico, ci si sposta sulla corsia di sinistra provenendo da quella di destra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Cambio di corsia su strada a senso unico"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "strada a senso unico",
+      "corsia di destra",
+      "corsia di sinistra"
+    ],
+    "vector_search_queries": [
+      "obbligo di usare indicatori di direzione per cambio corsia su strada a senso unico",
+      "segnalazione manovra di spostamento laterale su corsia di sinistra da corsia di destra"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare ogni manovra di spostamento laterale, anche su strada a senso unico, per avvisare gli altri utenti della strada."
+  }
+}

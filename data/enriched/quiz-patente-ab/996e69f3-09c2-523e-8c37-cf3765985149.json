@@ -1,0 +1,29 @@
+{
+  "question_id": 4019,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18516",
+  "text": "La banchina divide la carreggiata in due corsie",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Elementi della carreggiata",
+      "Definizione di banchina",
+      "Funzione della banchina"
+    ],
+    "exact_keywords": [
+      "banchina",
+      "carreggiata",
+      "corsia di marcia",
+      "parte carrabile"
+    ],
+    "vector_search_queries": [
+      "definizione e funzione della banchina stradale",
+      "differenza tra banchina e corsia di marcia",
+      "parti costitutive della strada e loro destinazione d'uso"
+    ],
+    "rule_explanation": "La banchina è la parte della strada esterna alla carreggiata, non destinata alla circolazione dei veicoli. Non divide la carreggiata."
+  }
+}

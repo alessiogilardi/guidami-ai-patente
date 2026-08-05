@@ -1,0 +1,33 @@
+{
+  "question_id": 4231,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20889",
+  "text": "In una carreggiata a doppio senso di circolazione la striscia di mezzo può essere continua o discontinua (tratteggiata)",
+  "correct_answer": true,
+  "image": "9452b305a54d3ce933cf84b3ec81361b.jpeg",
+  "image_description": "Striscia bianca continua. La striscia bianca continua delimita le corsie di marcia. Non è consentito superarla né attraversarla.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata con due strisce bianche continue parallele, che delimitano una o più corsie di marcia. Non sono presenti altri segnali o elementi di contesto. Le strisce sono di colore bianco e appaiono continue, senza interruzioni. La loro presenza indica la separazione delle corsie e il divieto di superamento o attraversamento.",
+    "name": "Striscia bianca continua",
+    "description": "La striscia bianca continua delimita le corsie di marcia. Non è consentito superarla né attraversarla."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Divisione delle corsie di marcia",
+      "Carreggiata a doppio senso di circolazione"
+    ],
+    "exact_keywords": [
+      "striscia bianca continua",
+      "striscia bianca discontinua",
+      "carreggiata",
+      "doppio senso di circolazione"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale striscia continua o discontinua carreggiata doppio senso",
+      "divieto di superamento striscia continua",
+      "regole di circolazione carreggiata doppio senso"
+    ],
+    "rule_explanation": "La striscia di separazione tra le corsie in una carreggiata a doppio senso può essere continua, se non è consentito il sorpasso, o discontinua, se il sorpasso è consentito."
+  }
+}

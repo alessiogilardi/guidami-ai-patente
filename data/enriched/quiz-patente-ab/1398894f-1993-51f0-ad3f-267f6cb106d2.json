@@ -1,0 +1,28 @@
+{
+  "question_id": 4557,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23997",
+  "text": "Autocarri, autotreni e autoarticolati, per la loro massa notevole, non costituiscono, per un'autovettura o per un motociclo, rischi potenziali maggiori rispetto a qualsiasi altro veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rischio intrinseco dei veicoli pesanti",
+      "Sicurezza stradale e differenze di massa"
+    ],
+    "exact_keywords": [
+      "autocarri",
+      "autotreni",
+      "autoarticolati",
+      "autovettura",
+      "motociclo"
+    ],
+    "vector_search_queries": [
+      "rischio maggiore autocarri rispetto a autovetture",
+      "differenza di rischio tra veicoli pesanti e leggeri in circolazione"
+    ],
+    "rule_explanation": "Autocarri, autotreni e autoarticolati, a causa della loro massa e dimensioni, presentano rischi maggiori per le autovetture e i motocicli in caso di incidente o manovra errata."
+  }
+}

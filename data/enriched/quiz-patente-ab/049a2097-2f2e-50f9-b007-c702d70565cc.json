@@ -1,0 +1,28 @@
+{
+  "question_id": 4715,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25449",
+  "text": "In alcuni motori di motocicli, il livello dell'olio motore può essere controllato da un'apposita finestrella posta sulla coppa motore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo livello olio motore motociclo",
+      "Manutenzione veicolo a motore",
+      "Componenti motore motociclo"
+    ],
+    "exact_keywords": [
+      "livello olio motore",
+      "finestrella di ispezione",
+      "coppa motore",
+      "motocicli"
+    ],
+    "vector_search_queries": [
+      "controllo livello olio motore motociclo finestrella coppa",
+      "verifica livello olio motore tramite finestrella"
+    ],
+    "rule_explanation": "In alcuni motocicli, il livello dell'olio motore è verificabile tramite un'apposita finestrella situata sulla coppa motore, facilitando la manutenzione."
+  }
+}

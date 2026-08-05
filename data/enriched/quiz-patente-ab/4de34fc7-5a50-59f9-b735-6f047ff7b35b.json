@@ -1,0 +1,29 @@
+{
+  "question_id": 4625,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24720",
+  "text": "Il fenomeno dell'aquaplaning fa scivolare le ruote sullo strato di acqua",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fenomeno dell'aquaplaning",
+      "Perdita di aderenza degli pneumatici",
+      "Sicurezza stradale in condizioni di bagnato"
+    ],
+    "exact_keywords": [
+      "aquaplaning",
+      "scivolamento",
+      "strato d'acqua",
+      "pneumatici"
+    ],
+    "vector_search_queries": [
+      "fenomeno dell'aquaplaning e perdita di aderenza",
+      "effetti dell'aquaplaning sulla tenuta di strada",
+      "rischio di scivolamento su acqua per pneumatici"
+    ],
+    "rule_explanation": "L'aquaplaning si verifica quando gli pneumatici perdono il contatto con la superficie stradale a causa di uno strato d'acqua, causando uno scivolamento incontrollato."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4439,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22962",
+  "text": "In vicinanza di un incrocio semaforizzato è consentito arrestarsi sulle strisce pedonali, se il semaforo per i pedoni è disposto al rosso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di arresto su attraversamenti pedonali",
+      "Regole di comportamento agli incroci semaforizzati"
+    ],
+    "exact_keywords": [
+      "arrestarsi",
+      "strisce pedonali",
+      "semaforo rosso per i pedoni",
+      "incrocio semaforizzato"
+    ],
+    "vector_search_queries": [
+      "divieto di arresto su attraversamenti pedonali in incroci semaforizzati",
+      "comportamento dei veicoli in prossimità di incroci con semaforo pedonale rosso"
+    ],
+    "rule_explanation": "È vietato arrestarsi sulle strisce pedonali, anche se il semaforo pedonale è rosso. L'arresto è consentito solo se necessario per non costituire pericolo o intralcio."
+  }
+}

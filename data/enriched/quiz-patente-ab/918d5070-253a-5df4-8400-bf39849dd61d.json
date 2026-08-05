@@ -1,0 +1,32 @@
+{
+  "question_id": 4284,
+  "topic": "Segnali di indicazione",
+  "number": "21405",
+  "text": "Il segnale raffigurato preannuncia un pericolo per chi svolta a destra per il possibile attraversamento di treni",
+  "correct_answer": true,
+  "image": "fa19a50da37f716b072eca8b6ecdf6e5.jpeg",
+  "image_description": "Preavviso di direzione e percorso - Località turistica e passaggio a livello. Il segnale indica le direzioni per Porto Torres (proseguire diritto), S. Giovanni (svoltare a sinistra) e \"nuraghe Speranza\" (svoltare a sinistra). È presente anche un segnale di pericolo che preavvisa un passaggio a livello senza barriere, con la direzione di svolta a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale blu rettangolare con indicazioni di direzione. In alto, la freccia indica dritto per \"PORTO TORRES\". A destra, una freccia indica la svolta a destra per \"S. GIOVANNI\", accompagnata da un segnale di pericolo triangolare con bordo rosso e pittogramma di un passaggio a livello senza barriere. A sinistra, una freccia indica la svolta a sinistra, con un pannello marrone integrato che riporta la scritta \"nuraghe Speranza\".",
+    "name": "Preavviso di direzione e percorso - Località turistica e passaggio a livello",
+    "description": "Il segnale indica le direzioni per Porto Torres (proseguire diritto), S. Giovanni (svoltare a sinistra) e \"nuraghe Speranza\" (svoltare a sinistra). È presente anche un segnale di pericolo che preavvisa un passaggio a livello senza barriere, con la direzione di svolta a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Passaggio a livello",
+      "Preavviso di direzione"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello senza barriere",
+      "svolta a destra",
+      "preavviso di direzione"
+    ],
+    "vector_search_queries": [
+      "preavviso di direzione con segnale di pericolo per passaggio a livello senza barriere",
+      "interpretazione segnale raffigurante direzione e passaggio a livello senza barriere"
+    ],
+    "rule_explanation": "Il segnale raffigurato preannuncia un passaggio a livello senza barriere, con la direzione di svolta a destra che indica il percorso per raggiungere la località indicata, ma non un pericolo specifico per chi svolta."
+  }
+}

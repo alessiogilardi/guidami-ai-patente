@@ -1,0 +1,27 @@
+{
+  "question_id": 4577,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24186",
+  "text": "La luce della targa di un autoveicolo deve rimanere accesa se si sosta fuori dalla strada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi relativi alle luci dei veicoli",
+      "Illuminazione della targa posteriore"
+    ],
+    "exact_keywords": [
+      "luce targa",
+      "sosta fuori strada",
+      "autoveicolo",
+      "illuminazione"
+    ],
+    "vector_search_queries": [
+      "obbligo accensione luce targa autoveicolo in marcia",
+      "illuminazione targa posteriore durante la sosta"
+    ],
+    "rule_explanation": "La luce della targa deve essere accesa solo durante la marcia, non durante la sosta, anche se fuori strada."
+  }
+}

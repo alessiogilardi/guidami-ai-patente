@@ -1,0 +1,27 @@
+{
+  "question_id": 4603,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24440",
+  "text": "I guanti da motociclisti possono avere imbottiture diverse a seconde della stagione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Equipaggiamento di sicurezza per motociclisti",
+      "Abbigliamento tecnico per la guida motociclistica"
+    ],
+    "exact_keywords": [
+      "guanti da motociclista",
+      "abbigliamento tecnico",
+      "stagione",
+      "protezione"
+    ],
+    "vector_search_queries": [
+      "tipologia guanti motociclista per stagione",
+      "caratteristiche guanti moto protezione invernale estiva"
+    ],
+    "rule_explanation": "I guanti da motociclista devono offrire adeguata protezione e comfort, con imbottiture variabili in base alla stagione per garantire sicurezza e funzionalità."
+  }
+}

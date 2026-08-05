@@ -1,0 +1,31 @@
+{
+  "question_id": 4422,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22791",
+  "text": "Sulle strade extraurbane principali la sosta è consentita solo nelle apposite aree",
+  "correct_answer": true,
+  "image": "e00e36976523c1531ef87cc81ab30238.jpeg",
+  "image_description": "Strada a carreggiate separate con spartitraffico centrale. La carreggiata è divisa in due direzioni da una corsia spartitraffico centrale, verde e rialzata, delimitata da strisce bianche continue. Ogni carreggiata presenta due corsie di marcia, separate da strisce bianche discontinue. Non sono presenti segnali stradali verticali o orizzontali che indichino regole di precedenza o divieti specifici, ad eccezione della segnaletica orizzontale che delimita le corsie e la carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada a carreggiate separate. Al centro della strada è presente una corsia spartitraffico, di colore verde e rialzata, che separa le due direzioni di marcia. Ogni carreggiata è composta da due corsie di marcia, delimitate da strisce bianche discontinue. Le corsie sono delimitate ai bordi da strisce bianche continue. Non sono presenti altri segnali stradali o elementi di traffico visibili. La geometria della strada suggerisce una strada extraurbana principale o un'autostrada.",
+    "name": "Strada a carreggiate separate con spartitraffico centrale",
+    "description": "La carreggiata è divisa in due direzioni da una corsia spartitraffico centrale, verde e rialzata, delimitata da strisce bianche continue. Ogni carreggiata presenta due corsie di marcia, separate da strisce bianche discontinue. Non sono presenti segnali stradali verticali o orizzontali che indichino regole di precedenza o divieti specifici, ad eccezione della segnaletica orizzontale che delimita le corsie e la carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta su strade extraurbane principali",
+      "Divieto di sosta al di fuori delle aree attrezzate"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "strade extraurbane principali",
+      "aree attrezzate",
+      "divieto di sosta"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta su strade extraurbane principali",
+      "sosta consentita solo in aree attrezzate su strade extraurbane principali"
+    ],
+    "rule_explanation": "Su strade extraurbane principali, la sosta è vietata, salvo che sia effettuata in apposite aree attrezzate a tal scopo."
+  }
+}

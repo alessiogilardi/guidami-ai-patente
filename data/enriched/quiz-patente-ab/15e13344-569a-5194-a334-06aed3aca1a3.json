@@ -1,0 +1,28 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23031",
+  "text": "Lo specchio retrovisore laterale sinistro ha un angolo cieco molto ampio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Campo visivo del conducente",
+      "Angoli ciechi",
+      "Manovre di cambio corsia"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore laterale",
+      "angolo cieco",
+      "campo visivo",
+      "manovra di cambiamento di corsia"
+    ],
+    "vector_search_queries": [
+      "ampiezza angolo cieco specchietto retrovisore laterale sinistro",
+      "compensazione campo visivo ridotto specchietti auto"
+    ],
+    "rule_explanation": "Lo specchio retrovisore laterale sinistro, come altri specchietti, presenta un angolo cieco che il conducente deve conoscere e compensare con opportuni movimenti del capo prima di effettuare manovre."
+  }
+}

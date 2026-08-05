@@ -1,0 +1,27 @@
+{
+  "question_id": 4578,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24187",
+  "text": "La spia di accensione della segnalazione luminosa di pericolo è di colore rosso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione luminosa di pericolo",
+      "Dispositivi di segnalazione visiva"
+    ],
+    "exact_keywords": [
+      "spia di accensione",
+      "segnalazione luminosa di pericolo",
+      "colore rosso",
+      "lampeggiante"
+    ],
+    "vector_search_queries": [
+      "colore spia segnalazione luminosa di pericolo",
+      "accensione dispositivo di segnalazione luminosa di pericolo"
+    ],
+    "rule_explanation": "La spia che segnala l'accensione del dispositivo di segnalazione luminosa di pericolo (lampeggiante) è di colore rosso."
+  }
+}

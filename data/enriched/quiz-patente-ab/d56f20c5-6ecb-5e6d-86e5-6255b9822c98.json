@@ -1,0 +1,29 @@
+{
+  "question_id": 4573,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24158",
+  "text": "E' obbligatorio accendere le luci del veicolo in caso di scarsa visibilità per le condizioni del tempo (nebbia, neve, pioggia)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di accensione luci",
+      "Condizioni di scarsa visibilità"
+    ],
+    "exact_keywords": [
+      "luci del veicolo",
+      "scarsa visibilità",
+      "nebbia",
+      "neve",
+      "pioggia"
+    ],
+    "vector_search_queries": [
+      "obbligo luci in caso di nebbia",
+      "accensione luci per scarsa visibilità dovuta a precipitazioni atmosferiche",
+      "uso luci in condizioni di tempo avverso"
+    ],
+    "rule_explanation": "L'accensione delle luci è obbligatoria in caso di scarsa visibilità dovuta a nebbia, neve, pioggia o altre condizioni atmosferiche avverse."
+  }
+}

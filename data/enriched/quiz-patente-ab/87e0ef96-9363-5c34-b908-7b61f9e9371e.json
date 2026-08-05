@@ -1,0 +1,32 @@
+{
+  "question_id": 4181,
+  "topic": "Segnali di obbligo",
+  "number": "20389",
+  "text": "Il segnale raffigurato è posto in corrispondenza di una pista ciclabile a fianco del marciapiede",
+  "correct_answer": false,
+  "image": "8664a169f7eec06d02bef3a1c5053e42.jpeg",
+  "image_description": "Pista o corsia ciclopedonale. Il segnale indica un percorso ciclopedonale, ovvero un percorso comune a pedoni e ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro del segnale sono presenti due pittogrammi: in alto una figura stilizzata di un pedone in cammino e, sotto di essa, una bicicletta. I due pittogrammi sono disposti verticalmente, uno sopra l'altro, all'interno del disco blu. Questo segnale appartiene ai segnali di indicazione e, nello specifico, indica un percorso ciclopedonale.",
+    "name": "Pista o corsia ciclopedonale",
+    "description": "Il segnale indica un percorso ciclopedonale, ovvero un percorso comune a pedoni e ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di obbligo",
+      "Percorso ciclopedonale"
+    ],
+    "exact_keywords": [
+      "pista ciclabile",
+      "percorso ciclopedonale",
+      "segnali di obbligo",
+      "segnaletica verticale"
+    ],
+    "vector_search_queries": [
+      "differenza tra pista ciclabile e percorso ciclopedonale",
+      "segnaletica percorsi ciclopedonali",
+      "obbligo di utilizzo percorsi ciclopedonali"
+    ],
+    "rule_explanation": "Il segnale di percorso ciclopedonale indica una via riservata a pedoni e ciclisti, non una pista ciclabile separata dal marciapiede."
+  }
+}

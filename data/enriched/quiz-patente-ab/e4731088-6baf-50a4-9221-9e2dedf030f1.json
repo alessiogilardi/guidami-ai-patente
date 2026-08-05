@@ -1,0 +1,26 @@
+{
+  "question_id": 4025,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18568",
+  "text": "La potenza dei quadricicli non leggeri è sempre inferiore o uguale a 15 kW",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di quadricicli non leggeri",
+      "Potenza massima dei quadricicli non leggeri"
+    ],
+    "exact_keywords": [
+      "quadricicli non leggeri",
+      "potenza",
+      "15 kW"
+    ],
+    "vector_search_queries": [
+      "potenza massima quadricicli non leggeri",
+      "definizione quadricicli non leggeri potenza"
+    ],
+    "rule_explanation": "La potenza massima dei quadricicli non leggeri è stabilita per legge in 15 kW, pertanto è sempre inferiore o uguale a tale valore."
+  }
+}

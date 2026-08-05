@@ -1,0 +1,27 @@
+{
+  "question_id": 4562,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24038",
+  "text": "I rimorchi trainati da autovetture sono muniti, in genere, di freno ad inerzia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Freni dei rimorchi",
+      "Normativa sui rimorchi leggeri"
+    ],
+    "exact_keywords": [
+      "rimorchi leggeri",
+      "freno ad inerzia",
+      "autovetture",
+      "dispositivi di frenatura"
+    ],
+    "vector_search_queries": [
+      "requisiti freni rimorchi leggeri trainati da autovetture",
+      "freno ad inerzia obbligatorio per rimorchi leggeri"
+    ],
+    "rule_explanation": "I rimorchi leggeri, se trainati da autovetture, devono essere dotati di un freno ad inerzia per garantire la sicurezza in caso di arresto del veicolo trainante."
+  }
+}

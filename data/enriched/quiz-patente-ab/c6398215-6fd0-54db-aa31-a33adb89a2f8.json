@@ -1,0 +1,27 @@
+{
+  "question_id": 4672,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25084",
+  "text": "Per evitare rumori fastidiosi, occorre chiudere con forza le portiere dell'autovettura, in modo da non doverle richiudere",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Comportamento corretto alla guida e in sosta"
+    ],
+    "exact_keywords": [
+      "rumori fastidiosi",
+      "portiere dell'autovettura",
+      "chiudere con forza",
+      "inquinamento acustico"
+    ],
+    "vector_search_queries": [
+      "prevenzione inquinamento acustico da veicoli a motore",
+      "comportamento per evitare rumori molesti con le portiere dell'auto"
+    ],
+    "rule_explanation": "Per evitare rumori molesti, le portiere dell'autovettura devono essere chiuse normalmente, senza sbatterle, per prevenire l'inquinamento acustico."
+  }
+}

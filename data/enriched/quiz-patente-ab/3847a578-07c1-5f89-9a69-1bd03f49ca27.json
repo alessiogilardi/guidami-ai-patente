@@ -1,0 +1,33 @@
+{
+  "question_id": 4200,
+  "topic": "Segnali di precedenza",
+  "number": "20601",
+  "text": "Il segnale raffigurato indica la fine di tutti i divieti",
+  "correct_answer": false,
+  "image": "459c93f6feb9d5a601c34e1088b16155.jpeg",
+  "image_description": "Fine del diritto di precedenza. Indica la fine del diritto di precedenza su una strada che precedentemente lo garantiva. Il conducente dovrà quindi adeguare la propria condotta alle norme generali di precedenza, prestando particolare attenzione ai veicoli provenienti da destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale a forma di rombo con bordo bianco e sfondo bianco. Al centro, un quadrato arancione è attraversato da una barra nera diagonale, che va dall'angolo in alto a sinistra all'angolo in basso a destra. Questo è il segnale di 'Fine del diritto di precedenza'.",
+    "name": "Fine del diritto di precedenza",
+    "description": "Indica la fine del diritto di precedenza su una strada che precedentemente lo garantiva. Il conducente dovrà quindi adeguare la propria condotta alle norme generali di precedenza, prestando particolare attenzione ai veicoli provenienti da destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizioneDivieto di sorpasso",
+      "Segnali di fine prescrizione"
+    ],
+    "exact_keywords": [
+      "fine dei divieti",
+      "segnali di fine prescrizione",
+      "diritto di precedenza",
+      "strada secondaria",
+      "strada principale"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine dei divieti di circolazione",
+      "interpretazione del segnale di fine di tutti i divieti",
+      "differenza tra fine dei divieti e fine del diritto di precedenza"
+    ],
+    "rule_explanation": "Il segnale di fine di tutti i divieti indica la cessazione di tutti i divieti precedentemente imposti, non la fine del diritto di precedenza."
+  }
+}

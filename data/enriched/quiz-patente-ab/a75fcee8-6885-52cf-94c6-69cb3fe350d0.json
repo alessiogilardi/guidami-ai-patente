@@ -1,0 +1,27 @@
+{
+  "question_id": 4649,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24910",
+  "text": "Se un ferito della strada è in stato di incoscienza, bisogna somministrargli bevande alcooliche",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso; stato di incoscienza; divieto di somministrazione di sostanze a feriti",
+      "Gestione emergenze sanitarie stradali"
+    ],
+    "exact_keywords": [
+      "ferito",
+      "stato di incoscienza",
+      "soccorso stradale",
+      "bevande alcoliche"
+    ],
+    "vector_search_queries": [
+      "condotta da tenere in caso di ferito incosciente",
+      "divieto somministrazione alcolici a persone in stato di incoscienza in seguito a incidente stradale"
+    ],
+    "rule_explanation": "In caso di incoscienza di un ferito, è vietato somministrare bevande alcoliche o altre sostanze, ma è necessario attendere l'arrivo dei soccorsi qualificati."
+  }
+}

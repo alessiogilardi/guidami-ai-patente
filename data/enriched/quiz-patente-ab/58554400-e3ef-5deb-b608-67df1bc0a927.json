@@ -1,0 +1,27 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23482",
+  "text": "La manovra di sorpasso si effettua anche se lo spazio visibile risulta insufficiente per completarla in sicurezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Visibilità e sicurezza nella manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "spazio visibile",
+      "manovra completata in sicurezza",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "condizioni di visibilità per il sorpasso sicuro",
+      "sorpasso vietato per spazio insufficiente"
+    ],
+    "rule_explanation": "Il sorpasso è vietato quando lo spazio visibile non consente di completare la manovra in sicurezza, evitando ogni pericolo per la circolazione."
+  }
+}

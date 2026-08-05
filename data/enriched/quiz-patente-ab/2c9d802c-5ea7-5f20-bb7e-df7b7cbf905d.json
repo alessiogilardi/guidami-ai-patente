@@ -1,0 +1,31 @@
+{
+  "question_id": 4113,
+  "topic": "Segnali di divieto",
+  "number": "19621",
+  "text": "In presenza del segnale raffigurato si può utilizzare il clacson se si trasportano feriti o ammalati gravi",
+  "correct_answer": true,
+  "image": "ca7a6476170f347036d9ae3447b28bba.jpeg",
+  "image_description": "Divieto di segnalazioni acustiche. Il segnale vieta l'uso del clacson.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è presente il pittogramma di un clacson stilizzato, barrato da una linea diagonale rossa che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di 'Divieto di segnalazioni acustiche'.",
+    "name": "Divieto di segnalazioni acustiche",
+    "description": "Il segnale vieta l'uso del clacson."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di divieto di segnalazioni acustiche",
+      "Uso del clacson in caso di emergenza"
+    ],
+    "exact_keywords": [
+      "divieto di segnalazioni acustiche",
+      "clacson",
+      "feriti",
+      "ammalati gravi"
+    ],
+    "vector_search_queries": [
+      "divieto di segnalazioni acustiche e eccezioni",
+      "uso del clacson per trasporto feriti gravi"
+    ],
+    "rule_explanation": "Il segnale di divieto di segnalazioni acustiche vieta l'uso del clacson, salvo che sia indispensabile per evitare incidenti o per situazioni di emergenza come il trasporto di feriti o ammalati gravi."
+  }
+}

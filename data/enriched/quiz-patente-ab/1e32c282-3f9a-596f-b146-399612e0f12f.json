@@ -1,0 +1,31 @@
+{
+  "question_id": 4484,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23368",
+  "text": "Nell'intersezione di figura il veicolo T passa per ultimo",
+  "correct_answer": true,
+  "image": "79b7903cd0abd8b6b2ffcd57f6dc90be.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. I veicoli T (blu), D (nero) e B (giallo) si trovano in prossimità dell'incrocio. Il veicolo R (rosso) si trova su una strada che immette nell'incrocio. Non sono presenti segnali stradali che regolano la precedenza. Si applica la regola generale della precedenza a destra. Il veicolo D ha il veicolo B alla sua destra, quindi D deve dare precedenza a B. Il veicolo T ha il veicolo D alla sua destra, quindi T deve dare precedenza a D. Il veicolo R ha il veicolo T alla sua destra, quindi R deve dare precedenza a T. L'ordine di passaggio corretto è: B, D, T, R.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una scena di guida raffigurante un incrocio a raso con quattro veicoli: T (blu), D (nero), B (giallo) e R (rosso). Non sono presenti segnali stradali di prescrizione o preavviso che regolino la circolazione nell'incrocio. I veicoli T, D e B sono posizionati in modo da impegnare l'incrocio, mentre il veicolo R si trova su una strada che immette nell'incrocio. Le frecce tratteggiate indicano le traiettorie di svolta dei veicoli T e D. In assenza di segnaletica specifica, si applica la regola generale della precedenza a destra. Il veicolo D si trova alla destra del veicolo T. Il veicolo B si trova alla destra del veicolo D. Il veicolo R si trova alla destra del veicolo T. Pertanto, l'ordine di precedenza è: B precede D, D precede T, e T precede R. L'ordine di transito corretto è B, D, T, R.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. I veicoli T (blu), D (nero) e B (giallo) si trovano in prossimità dell'incrocio. Il veicolo R (rosso) si trova su una strada che immette nell'incrocio. Non sono presenti segnali stradali che regolano la precedenza. Si applica la regola generale della precedenza a destra. Il veicolo D ha il veicolo B alla sua destra, quindi D deve dare precedenza a B. Il veicolo T ha il veicolo D alla sua destra, quindi T deve dare precedenza a D. Il veicolo R ha il veicolo T alla sua destra, quindi R deve dare precedenza a T. L'ordine di passaggio corretto è: B, D, T, R."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza ai incroci"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "ordine di passaggio",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "regola generale della precedenza a destra negli incroci",
+      "ordine di precedenza tra veicoli in assenza di segnaletica"
+    ],
+    "rule_explanation": "Negli incroci a raso senza segnaletica, si applica la regola della precedenza a destra. Il veicolo che si avvicina da destra ha la precedenza."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24637",
+  "text": "La sospensione della patente è disposta quando si lascia il veicolo in sosta negli spazi destinati ai disabili",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta in aree riservate ai disabili",
+      "Sospensione della patente di guida"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "stalli riservati",
+      "disabili",
+      "sospensione patente",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "sanzioni per sosta in parcheggio disabili",
+      "conseguenze della sosta in stallo riservato ai disabili"
+    ],
+    "rule_explanation": "La sosta negli spazi riservati ai disabili comporta una sanzione amministrativa pecuniaria e la rimozione del veicolo, non la sospensione della patente."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4236,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20933",
+  "text": "La striscia bianca laterale discontinua in figura separa la carreggiata da una piazzola di sosta",
+  "correct_answer": true,
+  "image": "c01d917d5f6d8913504e241aeb7605f1.jpeg",
+  "image_description": "Segnaletica orizzontale: carreggiata con rampa e incrocio a T. La figura mostra due esempi di segnaletica orizzontale. Il primo esempio raffigura una strada con una corsia per senso di marcia, delimitata da strisce bianche continue esterne e una striscia bianca discontinua al centro. La carreggiata si allarga superiormente con una rampa inclinata. Il secondo esempio mostra un incrocio a T, con la strada principale a due corsie per senso di marcia, delimitate da strisce bianche continue esterne e una striscia bianca discontinua al centro. La strada secondaria si innesta sulla destra, anch'essa delimitata da strisce bianche continue esterne e una striscia bianca discontinua che la separa dalla carreggiata principale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine presenta due rappresentazioni di segnaletica orizzontale su asfalto.\nLa prima immagine in alto mostra una carreggiata con due corsie per senso di marcia, delimitate da strisce bianche continue ai bordi esterni e una striscia bianca discontinua al centro. La carreggiata si allarga superiormente con una superficie piana che termina con una rampa inclinata.\nLa seconda immagine in basso mostra un incrocio a T. La strada principale è a due corsie per senso di marcia, delimitate da strisce bianche continue ai bordi esterni e una striscia bianca discontinua al centro. La strada secondaria si innesta sulla destra, anch'essa delimitata da strisce bianche continue ai bordi esterni e una striscia bianca discontinua che la separa dalla carreggiata principale. La parte centrale della strada secondaria che si immette sulla principale è evidenziata da due strisce bianche continue parallele.",
+    "name": "Segnaletica orizzontale: carreggiata con rampa e incrocio a T",
+    "description": "La figura mostra due esempi di segnaletica orizzontale. Il primo esempio raffigura una strada con una corsia per senso di marcia, delimitata da strisce bianche continue esterne e una striscia bianca discontinua al centro. La carreggiata si allarga superiormente con una rampa inclinata. Il secondo esempio mostra un incrocio a T, con la strada principale a due corsie per senso di marcia, delimitate da strisce bianche continue esterne e una striscia bianca discontinua al centro. La strada secondaria si innesta sulla destra, anch'essa delimitata da strisce bianche continue esterne e una striscia bianca discontinua che la separa dalla carreggiata principale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segni sugli ostacoli",
+      "Piazzole di sosta"
+    ],
+    "exact_keywords": [
+      "striscia bianca laterale discontinua",
+      "carreggiata",
+      "piazzola di sosta",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "funzione della striscia bianca laterale discontinua nella segnaletica orizzontale",
+      "separazione tra carreggiata e piazzola di sosta con striscia discontinua"
+    ],
+    "rule_explanation": "La striscia bianca laterale discontinua delimita la carreggiata e può separarla da piazzole di sosta o banchine."
+  }
+}

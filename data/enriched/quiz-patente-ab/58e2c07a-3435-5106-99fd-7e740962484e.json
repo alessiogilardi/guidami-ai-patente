@@ -1,0 +1,27 @@
+{
+  "question_id": 4583,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24236",
+  "text": "Si devono usare gli indicatori di direzione sinistri quando si deve percorrere un tornante verso sinistra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovre",
+      "Uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "manovra",
+      "preavviso",
+      "cambio di corsia"
+    ],
+    "vector_search_queries": [
+      "obbligo di usare indicatori di direzione per le manovre",
+      "segnalazione di cambiamento di direzione con indicatori di direzione"
+    ],
+    "rule_explanation": "Gli indicatori di direzione vanno usati per segnalare ogni manovra cheImposti un cambiamento di direzione o corsia, inclusi i tornanti."
+  }
+}

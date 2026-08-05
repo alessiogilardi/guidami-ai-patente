@@ -1,0 +1,32 @@
+{
+  "question_id": 4342,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21940",
+  "text": "Il delineatore raffigurato è posto ai lati delle gallerie a senso unico",
+  "correct_answer": true,
+  "image": "828953d4a6ad4ef2943269b0191873fa.jpeg",
+  "image_description": "Delineatore (segnale complementare). Il delineatore raffigurato è un segnale complementare di colore giallo, di forma rettangolare verticale, posto su un supporto. Viene utilizzato per delimitare o evidenziare pericoli, deviazioni, strettoie o ostacoli fissi lungo la carreggiata. Non ha luce propria ma è rifrangente.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore stradale di colore giallo, di forma rettangolare verticale. È montato su un palo sottile che a sua volta è fissato a una base a terra, che sembra essere un marciapiede o un cordolo rialzato. Il delineatore è un segnale complementare, utilizzato per segnalare pericoli o variazioni della strada. Non è possibile determinare dalla sola immagine se abbia luce propria o se sia posizionato in una galleria, su una carreggiata o per indicare un ostacolo specifico, ma la sua funzione generale è quella di delimitare e rendere più visibile un tratto di strada o un ostacolo.",
+    "name": "Delineatore (segnale complementare)",
+    "description": "Il delineatore raffigurato è un segnale complementare di colore giallo, di forma rettangolare verticale, posto su un supporto. Viene utilizzato per delimitare o evidenziare pericoli, deviazioni, strettoie o ostacoli fissi lungo la carreggiata. Non ha luce propria ma è rifrangente."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali complementari",
+      "Delineatori stradali",
+      "Segnaletica di cantiere"
+    ],
+    "exact_keywords": [
+      "delineatore",
+      "galleria",
+      "senso unico",
+      "segnali complementari"
+    ],
+    "vector_search_queries": [
+      "uso dei delineatori gialli nelle gallerie a senso unico",
+      "segnaletica complementare per delimitare gallerie"
+    ],
+    "rule_explanation": "Il delineatore giallo, segnale complementare, è usato per evidenziare pericoli o ostacoli fissi, come le gallerie a senso unico, lungo la carreggiata."
+  }
+}

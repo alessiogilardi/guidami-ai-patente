@@ -1,0 +1,29 @@
+{
+  "question_id": 4006,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18374",
+  "text": "L'isola di traffico è una parte della strada sulla quale è vietato il transito dei veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Isola di traffico",
+      "Segnaletica orizzontale e verticale",
+      "Divieto di transito"
+    ],
+    "exact_keywords": [
+      "isola di traffico",
+      "segnali orizzontali",
+      "segnali verticali",
+      "divieto di transito",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "definizione e funzione dell'isola di traffico",
+      "segnaletica che delimita le isole di traffico e divieto di transito"
+    ],
+    "rule_explanation": "L'isola di traffico è una parte della carreggiata, delimitata da segnaletica orizzontale o verticale, che non può essere oltrepassata o impegnata dai veicoli, salvo specifiche indicazioni."
+  }
+}

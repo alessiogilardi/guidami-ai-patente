@@ -1,0 +1,28 @@
+{
+  "question_id": 4696,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25231",
+  "text": "La corretta pressione di gonfiaggio degli pneumatici dipende dal carico del veicolo e dal numero dei passeggeri trasportati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pressione pneumatici",
+      "Carico del veicolo",
+      "Sicurezza di guida"
+    ],
+    "exact_keywords": [
+      "pressione di gonfiaggio",
+      "pneumatici",
+      "carico del veicolo",
+      "numero dei passeggeri"
+    ],
+    "vector_search_queries": [
+      "influenza del carico e dei passeggeri sulla pressione degli pneumatici",
+      "adeguamento della pressione degli pneumatici al carico e all'uso"
+    ],
+    "rule_explanation": "La pressione degli pneumatici deve essere adeguata al carico del veicolo e al numero di passeggeri per garantire la stabilità e la tenuta di strada."
+  }
+}

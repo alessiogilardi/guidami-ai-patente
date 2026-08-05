@@ -1,0 +1,31 @@
+{
+  "question_id": 4271,
+  "topic": "Segnali di indicazione",
+  "number": "21270",
+  "text": "Il segnale raffigurato indica una zona panoramica",
+  "correct_answer": false,
+  "image": "6bf2f66e80435e1fde57046fdd066280.jpeg",
+  "image_description": "Area per campeggio. Il segnale indica la presenza di un'area attrezzata per il campeggio, con possibilità di sosta per tende, caravan e autocaravan.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore marrone con un riquadro bianco al centro. All'interno del riquadro bianco sono presenti due pittogrammi: nella parte superiore, una tenda stilizzata; nella parte inferiore, una roulotte (caravan) con un'auto collegata. Sotto il riquadro bianco, vi è un pannello integrativo di colore marrone, vuoto. Il segnale è di tipo \"indicazione\" e si riferisce a un'area attrezzata per il campeggio.",
+    "name": "Area per campeggio",
+    "description": "Il segnale indica la presenza di un'area attrezzata per il campeggio, con possibilità di sosta per tende, caravan e autocaravan."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Segnali di servizio"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "zona panoramica",
+      "area attrezzata",
+      "campeggio"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnale di zona panoramica e area attrezzata per campeggio",
+      "segnali stradali che indicano aree di sosta per campeggio"
+    ],
+    "rule_explanation": "Il segnale di \\\"area attrezzata\\\" indica la presenza di un luogo deputato alla sosta di tende, caravan e autocaravan, non una zona panoramica."
+  }
+}

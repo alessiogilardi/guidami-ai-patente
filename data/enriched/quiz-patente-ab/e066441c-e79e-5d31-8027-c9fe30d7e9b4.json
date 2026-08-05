@@ -1,0 +1,34 @@
+{
+  "question_id": 4085,
+  "topic": "Segnali di pericolo",
+  "number": "19275",
+  "text": "Il segnale (A), se abbinato con il pannello (B), preannuncia un tratto di strada sul quale, in particolari condizioni meteorologiche, è probabile la presenza di ghiaccio",
+  "correct_answer": true,
+  "image": "07789eec031ca160a567e18b66929fac.jpeg",
+  "image_description": "Segnale di pericolo (A) con pannello integrativo di prescrizione (B). Il segnale A è un segnale di pericolo che preannuncia un tratto di strada con possibile scarsa aderenza. Il pannello B, integrativo, specifica che la causa della possibile scarsa aderenza è la presenza di ghiaccio, verosimilmente in particolari condizioni meteorologiche.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi distinti, etichettati come A e B. L'elemento A è un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al suo interno è raffigurato un veicolo che sbanda a causa della scarsa aderenza della strada, evidenziata da delle curve sotto le ruote. L'elemento B è un pannello rettangolare di colore blu scuro, con due simboli di fiocco di neve bianchi stilizzati, disposti orizzontalmente. I due elementi sono presentati in modo tale da suggerire una possibile integrazione tra loro, con il pannello B che fornisce un'ulteriore specificazione al segnale A.",
+    "name": "Segnale di pericolo (A) con pannello integrativo di prescrizione (B)",
+    "description": "Il segnale A è un segnale di pericolo che preannuncia un tratto di strada con possibile scarsa aderenza. Il pannello B, integrativo, specifica che la causa della possibile scarsa aderenza è la presenza di ghiaccio, verosimilmente in particolari condizioni meteorologiche."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Condizioni meteorologiche avverse",
+      "Scarsa aderenza stradale"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "pannello integrativo",
+      "ghiaccio",
+      "scarsa aderenza",
+      "condizioni meteorologiche"
+    ],
+    "vector_search_queries": [
+      "preavviso di pericolo ghiaccio su strada",
+      "segnalazione di tratto stradale con possibile scarsa aderenza per ghiaccio",
+      "interpretazione segnale pericolo con pannello integrativo ghiaccio"
+    ],
+    "rule_explanation": "Il segnale di pericolo, integrato dal pannello che indica 'ghiaccio', preannuncia un tratto di strada dove, in particolari condizioni meteo, è probabile la formazione di ghiaccio con conseguente scarsa aderenza."
+  }
+}

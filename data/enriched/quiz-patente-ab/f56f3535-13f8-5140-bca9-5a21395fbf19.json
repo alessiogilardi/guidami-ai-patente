@@ -1,0 +1,31 @@
+{
+  "question_id": 4124,
+  "topic": "Segnali di divieto",
+  "number": "19750",
+  "text": "In presenza del segnale raffigurato è consentito il transito agli autosnodati",
+  "correct_answer": true,
+  "image": "a6d36b4c47763e1eb809947d732f7d7d.jpeg",
+  "image_description": "Divieto di transito ai veicoli a motore trainanti un rimorchio. Il segnale vieta il transito ai veicoli a motore trainanti un rimorchio. Non si applica agli autotreni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di un veicolo a motore trainante un rimorchio. Questo segnale è il segnale di 'Divieto di transito ai veicoli a motore trainanti un rimorchio'. Non sono presenti pannelli integrativi.",
+    "name": "Divieto di transito ai veicoli a motore trainanti un rimorchio",
+    "description": "Il segnale vieta il transito ai veicoli a motore trainanti un rimorchio. Non si applica agli autotreni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Divieto di transito per specifiche categorie di veicoli"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "veicoli a motore trainanti un rimorchio",
+      "autosnodati",
+      "autotreni"
+    ],
+    "vector_search_queries": [
+      "divieto di transito veicoli con rimorchio e autosnodati",
+      "interpretazione segnale divieto transito veicoli a motore trainanti rimorchio"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito ai veicoli a motore trainanti un rimorchio non vieta la circolazione agli autosnodati, in quanto non sono considerati tali."
+  }
+}

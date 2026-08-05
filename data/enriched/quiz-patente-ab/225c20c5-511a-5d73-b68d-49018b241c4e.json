@@ -1,0 +1,27 @@
+{
+  "question_id": 4539,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23875",
+  "text": "Sulle aree di servizio delle autostrade o di parcheggio è consentito chiedere e concedere passaggi.",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree di servizio autostradali",
+      "Divieto di intermediazione commerciale e di richiesta di passaggi"
+    ],
+    "exact_keywords": [
+      "aree di servizio",
+      "parcheggio",
+      "chiedere e concedere passaggi",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di chiedere e concedere passaggi nelle aree di servizio autostradali",
+      "regolamentazione delle aree di servizio e di parcheggio in autostrada"
+    ],
+    "rule_explanation": "Nelle aree di servizio e di parcheggio autostradali è vietato chiedere e concedere passaggi, in quanto tali aree non sono equiparate alle strade normali per questo tipo di attività."
+  }
+}

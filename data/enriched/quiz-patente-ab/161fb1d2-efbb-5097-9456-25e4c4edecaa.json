@@ -1,0 +1,29 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24775",
+  "text": "È consentito migliorare le prestazioni del proprio veicolo aumentando la cilindrata del motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Modifiche ai veicoli",
+      "Omologazione e caratteristiche tecniche",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "modifica delle caratteristiche tecniche",
+      "aumento di cilindrata",
+      "veicolo in circolazione",
+      "omologazione"
+    ],
+    "vector_search_queries": [
+      "modifica cilindrata motore veicolo circolazione",
+      "alterazione caratteristiche tecniche veicolo omologazione",
+      "requisiti tecnici veicoli a motore per la circolazione"
+    ],
+    "rule_explanation": "È vietato modificare le caratteristiche tecniche del veicolo, come la cilindrata del motore, senza sottoporlo a revisione e ottenere una nuova omologazione."
+  }
+}

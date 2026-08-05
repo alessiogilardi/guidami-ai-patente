@@ -1,0 +1,30 @@
+{
+  "question_id": 4704,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25302",
+  "text": "Per garantire l'aderenza e la stabilità del veicolo, bisogna controllare solo la pressione di gonfiaggio degli pneumatici delle ruote motrici",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Stabilità e tenuta di strada",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "aderenza",
+      "stabilità",
+      "pneumatici",
+      "pressione di gonfiaggio",
+      "ruote motrici"
+    ],
+    "vector_search_queries": [
+      "controllo pressione pneumatici per stabilità veicolo",
+      "manutenzione pneumatici e sicurezza di guida",
+      "influenza pressione pneumatici su aderenza e tenuta di strada"
+    ],
+    "rule_explanation": "Per garantire aderenza e stabilità, è necessario controllare la pressione di tutti gli pneumatici, non solo quelli delle ruote motrici, e verificare anche il loro stato generale."
+  }
+}

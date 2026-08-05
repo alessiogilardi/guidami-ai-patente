@@ -1,0 +1,32 @@
+{
+  "question_id": 4063,
+  "topic": "Segnali di pericolo",
+  "number": "19008",
+  "text": "Il segnale raffigurato richiede di moderare la velocità",
+  "correct_answer": true,
+  "image": "f3d65cdd3174f51dcbbc55dcae2aec01.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta una doppia curva, con la prima curva a sinistra e la seconda a destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Moderazione della velocità",
+      "Preavviso di curve"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "doppia curva",
+      "moderare la velocità",
+      "raggio di curvatura"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità ai segnali di pericolo per curve",
+      "adeguamento della velocità in presenza di segnali di preavviso di curve pericolose"
+    ],
+    "rule_explanation": "I segnali di pericolo, come quello di doppia curva, impongono di moderare la velocità in base alla visibilità, al raggio delle curve e alle condizioni della strada per garantire la sicurezza."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24627",
+  "text": "La sospensione della patente può essere disposta nei confronti di chi abbia falsificato o contraffatto i documenti relativi all'assicurazione del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sanzioni amministrative pecuniarie e accessorie",
+      "Falsificazione di documenti assicurativi"
+    ],
+    "exact_keywords": [
+      "sospensione patente",
+      "falsificazione documenti",
+      "assicurazione del veicolo",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "sospensione patente per falsificazione documenti assicurazione",
+      "sanzioni per falsificazione documenti veicolo"
+    ],
+    "rule_explanation": "La sospensione della patente è una sanzione accessoria che può essere disposta anche in caso di falsificazione o contraffazione dei documenti relativi all'assicurazione del veicolo."
+  }
+}

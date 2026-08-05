@@ -1,0 +1,27 @@
+{
+  "question_id": 4535,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23843",
+  "text": "Nel caso di carreggiata a più corsie, il segnale mobile triangolare di pericolo deve essere posto sulla corsia immediatamente a sinistra del veicolo fermo o del carico caduto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo fermo",
+      "Obblighi in caso di arresto o emergenza su strade extraurbane"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "veicolo fermo",
+      "carreggiata a più corsie",
+      "pannello di pericolo"
+    ],
+    "vector_search_queries": [
+      "posizionamento segnale di pericolo veicolo fermo autostrada",
+      "distanza e modalità di posizionamento del pannello di pericolo per veicolo arrestato su carreggiata pluricorsia"
+    ],
+    "rule_explanation": "Il segnale mobile di pericolo va posizionato a una distanza adeguata dal veicolo fermo, non necessariamente sulla corsia a sinistra, per garantire la visibilità e la sicurezza."
+  }
+}

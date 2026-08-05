@@ -1,0 +1,30 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22486",
+  "text": "Nei veicoli dotati di servofreno, se si percorre una lunga discesa con il cambio in folle e a motore spento, aumenta pericolosamente lo spazio di frenatura",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Spazio di frenatura",
+      "Funzionamento del servofreno",
+      "Guida in discesa"
+    ],
+    "exact_keywords": [
+      "servofreno",
+      "discesa",
+      "cambio in folle",
+      "motore spento",
+      "spazio di frenatura"
+    ],
+    "vector_search_queries": [
+      "effetti del motore spento sullo spazio di frenatura in discesa con servofreno",
+      "aumento dello spazio di frenatura con cambio in folle e motore spento in discesa",
+      "funzionamento servofreno e frenata in discesa a motore spento"
+    ],
+    "rule_explanation": "Nei veicoli con servofreno, la discesa a motore spento e cambio in folle aumenta lo spazio di frenatura perché il servofreno non è alimentato e la frenata diventa più lunga."
+  }
+}

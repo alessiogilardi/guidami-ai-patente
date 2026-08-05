@@ -1,0 +1,29 @@
+{
+  "question_id": 4689,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25188",
+  "text": "Il coefficiente di aderenza basso rende pericolose le frenate brusche",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aderenza pneumatico-strada",
+      "Fattori di rischio nella guida",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "coefficiente di aderenza",
+      "frenata brusca",
+      "tenuta di strada",
+      "stabilità del veicolo"
+    ],
+    "vector_search_queries": [
+      "influenza del coefficiente di aderenza sulla frenata",
+      "rischi delle frenate brusche con scarsa aderenza",
+      "sicurezza di guida e coefficiente di aderenza"
+    ],
+    "rule_explanation": "Un basso coefficiente di aderenza tra pneumatici e manto stradale riduce la capacità di frenata e di mantenimento della traiettoria, rendendo pericolose le manovre improvvise come le frenate brusche."
+  }
+}

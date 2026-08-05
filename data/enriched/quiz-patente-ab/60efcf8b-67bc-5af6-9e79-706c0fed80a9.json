@@ -1,0 +1,33 @@
+{
+  "question_id": 4345,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21971",
+  "text": "Il delineatore raffigurato indica di svoltare a destra o a sinistra",
+  "correct_answer": true,
+  "image": "2798bde9cff903c926ecfd6da1c46c9e.jpeg",
+  "image_description": "Delineatore di pericolo (deviazione). Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore di pericolo di forma rettangolare, con bande diagonali bianche e nere alternate. Al centro è presente un rombo bianco. Il delineatore è montato su due supporti verticali. Le frecce bianche su sfondo nero indicano la direzione della deviazione, che può essere a destra o a sinistra.",
+    "name": "Delineatore di pericolo (deviazione)",
+    "description": "Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Segnali complementari",
+      "Delineatori stradali"
+    ],
+    "exact_keywords": [
+      "delineatore di pericolo",
+      "deviazione",
+      "direzione da seguire",
+      "svoltare a destra",
+      "svoltare a sinistra"
+    ],
+    "vector_search_queries": [
+      "funzione del delineatore di pericolo con frecce",
+      "obbligo di svolta a destra o sinistra indicato da delineatore di deviazione"
+    ],
+    "rule_explanation": "Il delineatore di pericolo indica una deviazione e prescrive di svoltare a destra o a sinistra seguendo le indicazioni delle frecce."
+  }
+}

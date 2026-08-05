@@ -1,0 +1,31 @@
+{
+  "question_id": 4369,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22224",
+  "text": "Il pannello integrativo in figura, posto in alto sulla carreggiata insieme ad un segnale indicante una località, segnala la corsia da prendere per raggiungere detta località",
+  "correct_answer": true,
+  "image": "17ee991baa0dcfceca8168648682d660.jpeg",
+  "image_description": "Indicazione di corsia o corsie di preavviso (pannello integrativo). Il segnale indica che la corsia di pertinenza è solo quella di destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli rettangolari affiancati, uno sopra l'altro. Entrambi i pannelli sono di colore bianco con un bordo nero. Al centro di ciascun pannello è presente una freccia nera rivolta verso il basso, leggermente inclinata verso destra. Questi pannelli sono pannelli integrativi che accompagnano un segnale stradale principale, fornendo informazioni aggiuntive. In questo caso specifico, la presenza di due frecce identiche indica che la corsia di pertinenza è quella di destra.",
+    "name": "Indicazione di corsia o corsie di preavviso (pannello integrativo)",
+    "description": "Il segnale indica che la corsia di pertinenza è solo quella di destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicazione di corsia per destinazione",
+      "Pannelli integrativi dei segnali di indicazione"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "corsia di pertinenza",
+      "località",
+      "segnali di indicazione"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo per indicazione di corsia per località",
+      "segnaletica stradale indicante corsia di pertinenza per destinazione"
+    ],
+    "rule_explanation": "Il pannello integrativo posto in alto sulla carreggiata, unitamente a un segnale di indicazione di località, specifica la corsia da utilizzare per raggiungere la destinazione indicata."
+  }
+}

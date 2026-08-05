@@ -1,0 +1,29 @@
+{
+  "question_id": 4656,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24961",
+  "text": "Durante la guida, si devono usare gli occhiali da vista o le lenti a contatto se nella patente è stato inserito il codice armonizzato \"01\"",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente",
+      "Prescrizioni relative ai veicoli",
+      "Uso di lenti o occhiali"
+    ],
+    "exact_keywords": [
+      "codice armonizzato 01",
+      "occhiali da vista",
+      "lenti a contatto",
+      "patente di guida"
+    ],
+    "vector_search_queries": [
+      "obbligo uso occhiali o lenti a contatto per correzione visiva patente",
+      "codice armonizzato 01 patente guida",
+      "prescrizioni patente correzione vista"
+    ],
+    "rule_explanation": "L'uso di occhiali o lenti a contatto è obbligatorio durante la guida se la patente riporta il codice armonizzato '01', indicante la necessità di correzione visiva."
+  }
+}

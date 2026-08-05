@@ -1,0 +1,27 @@
+{
+  "question_id": 4030,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18628",
+  "text": "I ciclomotori non rientrano nella categoria dei motocicli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli a motore",
+      "Definizioni di ciclomotore e motociclo"
+    ],
+    "exact_keywords": [
+      "ciclomotori",
+      "motocicli",
+      "veicoli a motore",
+      "categoria"
+    ],
+    "vector_search_queries": [
+      "distinzione tra ciclomotori e motocicli nel codice della strada",
+      "definizione giuridica di ciclomotore e motociclo"
+    ],
+    "rule_explanation": "I ciclomotori sono veicoli a motore con cilindrata o potenza specifica inferiori a determinate soglie, distinti dai motocicli che hanno caratteristiche diverse."
+  }
+}

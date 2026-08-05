@@ -1,0 +1,27 @@
+{
+  "question_id": 4416,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22741",
+  "text": "Quando, in un centro abitato, il conducente di un veicolo si imbatte in un corteo, deve suonare discretamente onde avvertire il corteo di far cessare al più presto l'ingombro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento in presenza di cortei",
+      "Obblighi del conducente in caso di cortei o funerali"
+    ],
+    "exact_keywords": [
+      "corteo",
+      "centro abitato",
+      "avvertire",
+      "ingombro"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente in presenza di cortei in centro abitato",
+      "obbligo di fermarsi o moderare la velocità in caso di corteo o funerale"
+    ],
+    "rule_explanation": "In presenza di un corteo in un centro abitato, il conducente non deve suonare il clacson, ma deve moderare la velocità e, se necessario, fermarsi per non intralciare o creare pericolo."
+  }
+}

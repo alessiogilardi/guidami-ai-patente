@@ -1,0 +1,27 @@
+{
+  "question_id": 4578,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24188",
+  "text": "La spia della temperatura dell'acqua di raffreddamento è di colore rosso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori luminosi del cruscotto",
+      "Spie di segnalazione del veicolo"
+    ],
+    "exact_keywords": [
+      "spia",
+      "temperatura dell'acqua",
+      "colore rosso",
+      "cruscotto"
+    ],
+    "vector_search_queries": [
+      "significato spia rossa temperatura acqua raffreddamento",
+      "colori spie cruscotto veicolo"
+    ],
+    "rule_explanation": "La spia che segnala una temperatura eccessiva del liquido di raffreddamento del motore è di colore rosso, indicando un pericolo imminente o un guasto grave."
+  }
+}

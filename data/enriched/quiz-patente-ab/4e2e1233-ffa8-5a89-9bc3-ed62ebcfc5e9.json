@@ -1,0 +1,32 @@
+{
+  "question_id": 4067,
+  "topic": "Segnali di pericolo",
+  "number": "19067",
+  "text": "La figura rappresenta un segnale di precedenza",
+  "correct_answer": false,
+  "image": "9ed0e8363c88fd8588f80faaf25082b2.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere. Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata una locomotiva a vapore nera, simbolo di un attraversamento ferroviario. Non sono presenti pannelli integrativi né altri elementi di contesto stradale. Si tratta quindi di un segnale isolato. Il segnale raffigurato è il segnale di pericolo 'Passaggio a livello con barriere'.",
+    "name": "Segnale di passaggio a livello con barriere",
+    "description": "Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello con barriere",
+      "segnali di prescrizione",
+      "segnali di precedenza"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di pericolo e segnali di precedenza",
+      "funzione dei segnali di pericolo specifici come il passaggio a livello con barriere",
+      "classificazione dei segnali stradali di prescrizione e pericolo"
+    ],
+    "rule_explanation": "Il segnale raffigurato è un segnale di pericolo (passaggio a livello con barriere), non un segnale di precedenza. I segnali di pericolo preannunciano una situazione di rischio, mentre quelli di precedenza impongono obblighi specifici di dare o avere la precedenza."
+  }
+}

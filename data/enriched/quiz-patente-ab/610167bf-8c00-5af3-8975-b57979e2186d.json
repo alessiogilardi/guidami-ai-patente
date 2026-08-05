@@ -1,0 +1,34 @@
+{
+  "question_id": 4184,
+  "topic": "Segnali di obbligo",
+  "number": "20418",
+  "text": "Il segnale raffigurato preannuncia l'obbligo di dare precedenza agli animali che attraversano",
+  "correct_answer": false,
+  "image": "db7b1ca650c36ef47e9904be21287943.jpeg",
+  "image_description": "Percorso per cavalli. Il segnale impone l'obbligo di transito per i cavalli e i cavalieri, indicando un percorso a loro riservato. Vietato il transito ai veicoli a motore.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro del segnale è presente un pittogramma bianco raffigurante un cavallo con un cavaliere in sella. Questo è un segnale di obbligo.",
+    "name": "Percorso per cavalli",
+    "description": "Il segnale impone l'obbligo di transito per i cavalli e i cavalieri, indicando un percorso a loro riservato. Vietato il transito ai veicoli a motore."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di pericolo",
+      "Divieti di transito"
+    ],
+    "exact_keywords": [
+      "obbligo",
+      "precedenza",
+      "animali",
+      "segnale",
+      "percorso per cavalli"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo di transito per cavalli",
+      "differenza tra segnale di obbligo e segnale di pericolo",
+      "interpretazione segnale percorso per cavalli"
+    ],
+    "rule_explanation": "Il segnale raffigurato impone l'obbligo di transito per cavalli e cavalieri, non preannuncia l'obbligo di dare precedenza agli animali che attraversano."
+  }
+}

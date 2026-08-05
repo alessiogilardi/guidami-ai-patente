@@ -1,0 +1,31 @@
+{
+  "question_id": 4514,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23680",
+  "text": "Fuori dei centri abitati, la fermata è vietata in corrispondenza e in prossimità delle aree di intersezione",
+  "correct_answer": true,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata e sosta vietate",
+      "Regole di circolazione fuori dai centri abitati"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "intersezione",
+      "centri abitati"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata in prossimità delle intersezioni fuori dai centri abitati",
+      "regole per la fermata e la sosta in corrispondenza delle aree di intersezione fuori dai centri abitati"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, la fermata è vietata in corrispondenza o prossimità delle intersezioni, a differenza della sosta che è sempre vietata in tali punti."
+  }
+}

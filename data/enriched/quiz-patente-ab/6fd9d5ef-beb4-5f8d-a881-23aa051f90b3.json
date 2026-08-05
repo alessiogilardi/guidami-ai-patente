@@ -1,0 +1,28 @@
+{
+  "question_id": 4658,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24983",
+  "text": "Chi è penalmente e civilmente responsabile di un sinistro stradale non è assoggettato alle sanzioni del codice della strada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile e penale",
+      "Sanzioni amministrative nel Codice della Strada",
+      "Autonomia delle responsabilità"
+    ],
+    "exact_keywords": [
+      "responsabilità penale",
+      "responsabilità civile",
+      "sanzioni del codice della strada",
+      "illecito amministrativo"
+    ],
+    "vector_search_queries": [
+      "autonomia delle responsabilità in caso di sinistro stradale",
+      "cumulo delle sanzioni penali, civili e amministrative per violazioni al CdS"
+    ],
+    "rule_explanation": "La responsabilità penale, civile e amministrativa per un sinistro stradale sono autonome. L'accertamento di una non esclude l'applicazione delle altre."
+  }
+}

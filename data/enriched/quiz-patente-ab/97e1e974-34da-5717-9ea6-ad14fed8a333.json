@@ -1,0 +1,31 @@
+{
+  "question_id": 4479,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23345",
+  "text": "Nell'incrocio rappresentato nella figura il conducente del veicolo B deve dare la precedenza al veicolo R che prosegue diritto",
+  "correct_answer": false,
+  "image": "b4f9554c6c474e02b95799677292f4a7.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. I veicoli D e N si trovano sulla strada inferiore, con il veicolo D alla sinistra del veicolo N. Entrambi i veicoli D e N intendono svoltare a sinistra. Il veicolo B si trova sulla strada superiore e intende svoltare a sinistra. Il veicolo R si trova sulla strada di destra e intende proseguire dritto. Non sono presenti segnali stradali che regolano la precedenza, quindi si applica la regola generale della precedenza a destra. Il veicolo R ha la destra libera e può proseguire dritto. Il veicolo B ha il veicolo R alla sua destra, quindi deve dare la precedenza a R. I veicoli D e N hanno il veicolo B alla loro destra, quindi devono dare la precedenza a B. Tra D e N, D ha la destra libera rispetto a N, quindi D ha la precedenza su N. L'ordine di passaggio corretto è: R, poi B, poi D, poi N.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso senza segnaletica verticale o orizzontale che indichi regole di precedenza specifiche. Sono presenti quattro veicoli: B (nero) in alto, R (giallo) a destra, D (blu) e N (rosso) in basso. Il veicolo B intende svoltare a sinistra. Il veicolo R intende proseguire dritto. I veicoli D e N intendono svoltare a sinistra. Secondo la regola generale della precedenza, chi proviene da destra ha la precedenza. Il veicolo R, provenendo da destra rispetto al veicolo B, ha la precedenza su B. Il veicolo B, provenendo da destra rispetto ai veicoli D e N, ha la precedenza su entrambi. Tra i veicoli D e N, il veicolo D si trova alla sinistra del veicolo N, quindi D ha la precedenza su N. Pertanto, l'ordine di transito corretto è: R, poi B, poi D, poi N.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. I veicoli D e N si trovano sulla strada inferiore, con il veicolo D alla sinistra del veicolo N. Entrambi i veicoli D e N intendono svoltare a sinistra. Il veicolo B si trova sulla strada superiore e intende svoltare a sinistra. Il veicolo R si trova sulla strada di destra e intende proseguire dritto. Non sono presenti segnali stradali che regolano la precedenza, quindi si applica la regola generale della precedenza a destra. Il veicolo R ha la destra libera e può proseguire dritto. Il veicolo B ha il veicolo R alla sua destra, quindi deve dare la precedenza a R. I veicoli D e N hanno il veicolo B alla loro destra, quindi devono dare la precedenza a B. Tra D e N, D ha la destra libera rispetto a N, quindi D ha la precedenza su N. L'ordine di passaggio corretto è: R, poi B, poi D, poi N."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza ai incroci non segnalati"
+    ],
+    "exact_keywords": [
+      "precedenza a destra",
+      "incrocio a raso",
+      "veicolo convenzionale",
+      "proseguire dritto"
+    ],
+    "vector_search_queries": [
+      "regola generale della precedenza a destra negli incroci",
+      "ordine di precedenza tra veicoli in assenza di segnaletica specifica"
+    ],
+    "rule_explanation": "Negli incroci non segnalati, la precedenza è regolata dalla regola generale della 'precedenza a destra'. Il veicolo R, avendo la destra libera, ha la precedenza sul veicolo B."
+  }
+}

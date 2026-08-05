@@ -1,0 +1,27 @@
+{
+  "question_id": 4532,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23817",
+  "text": "Nel caso di ingombro della carreggiata per avaria del veicolo che non è possibile spostare , il conducente deve informare l'organo di polizia, senza dover opportunamente presegnalare la zona.",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo/ostacolo",
+      "Obblighi in caso di avaria del veicolo"
+    ],
+    "exact_keywords": [
+      "ingombro della carreggiata",
+      "avaria del veicolo",
+      "presegnalare la zona",
+      "organo di polizia"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in caso di avaria con ingombro della carreggiata",
+      "presegnalazione di veicolo fermo per avaria su strade extraurbane"
+    ],
+    "rule_explanation": "In caso di avaria che renda impossibile spostare il veicolo, il conducente deve informare la polizia e presegnalare la zona per evitare pericoli per la circolazione."
+  }
+}

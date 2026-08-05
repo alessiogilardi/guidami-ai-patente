@@ -1,0 +1,28 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31036",
+  "text": "A volte ci si espone a situazioni più rischiose di quelle che si è in grado di gestire",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione del rischio",
+      "Valutazione della prudenza",
+      "Comportamento alla guida"
+    ],
+    "exact_keywords": [
+      "situazioni rischiose",
+      "gestione del rischio",
+      "prudenza",
+      "comportamento consapevole"
+    ],
+    "vector_search_queries": [
+      "valutazione delle proprie capacità di gestione del rischio alla guida",
+      "comportamento prudente e consapevolezza dei limiti personali e del veicolo"
+    ],
+    "rule_explanation": "È fondamentale che il conducente valuti realisticamente le proprie capacità e quelle del veicolo, evitando di esporsi a situazioni che superano il controllo per garantire la sicurezza propria e altrui."
+  }
+}

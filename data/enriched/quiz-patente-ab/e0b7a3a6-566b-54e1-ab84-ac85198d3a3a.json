@@ -1,0 +1,30 @@
+{
+  "question_id": 4568,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24115",
+  "text": "Alla guida di un veicolo con rimorchio, nello svoltare a destra, bisogna fare particolare attenzione a non investire, con la ruota posteriore destra, eventuali pedoni che si trovino vicino al marciapiede",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di svolta a destra",
+      "Veicolo con rimorchio",
+      "Sicurezza nella circolazione"
+    ],
+    "exact_keywords": [
+      "svolta a destra",
+      "veicolo con rimorchio",
+      "ruota posteriore",
+      "pedoni",
+      "marciapiede"
+    ],
+    "vector_search_queries": [
+      "manovra di svolta a destra con rimorchio",
+      "attenzione alla ruota posteriore destra in fase di svolta con rimorchio",
+      "rischio investimento pedoni durante svolta a destra con veicolo trainante rimorchio"
+    ],
+    "rule_explanation": "Nella svolta a destra con un veicolo trainante un rimorchio, è necessario prestare particolare attenzione alla traiettoria della ruota posteriore destra per evitare di investire pedoni sul marciapiede."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4625,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24728",
+  "text": "Il fenomeno dell'aquaplaning non dipende dallo spessore e dal disegno del battistrada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aquaplaning",
+      "Battistrada pneumatici",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "aquaplaning",
+      "battistrada",
+      "disegno del battistrada",
+      "pneumatico"
+    ],
+    "vector_search_queries": [
+      "influenza del battistrada sull'aquaplaning",
+      "rapporto tra disegno battistrada e aderenza sul bagnato",
+      "condizioni che causano l'aquaplaning"
+    ],
+    "rule_explanation": "L'aquaplaning è causato dall'incapacità del battistrada di espellere l'acqua, fenomeno influenzato dallo spessore del battistrada e dal suo disegno."
+  }
+}

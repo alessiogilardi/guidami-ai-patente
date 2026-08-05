@@ -1,0 +1,32 @@
+{
+  "question_id": 4368,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22215",
+  "text": "In presenza del segnale raffigurato i veicoli al servizio di persone diversamente abili, muniti di apposito contrassegno, non possono essere portati nella depositeria comunale, né bloccati con le ganasce",
+  "correct_answer": true,
+  "image": "861e35448f35862a69f181c4507bbfae.jpeg",
+  "image_description": "Divieto di sosta con rimozione forzata. Il segnale indica che è vietata la sosta e che i veicoli in sosta saranno rimossi con carro attrezzi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali. Il segnale superiore è un segnale di divieto di sosta, rappresentato da un disco rosso con bordo rosso e una barra diagonale rossa su sfondo blu. Sotto questo segnale, vi è un pannello integrativo rettangolare che raffigura un carro attrezzi che solleva un'automobile, indicando la rimozione forzata del veicolo.",
+    "name": "Divieto di sosta con rimozione forzata",
+    "description": "Il segnale indica che è vietata la sosta e che i veicoli in sosta saranno rimossi con carro attrezzi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di divieto",
+      "Disposizioni speciali per veicoli al servizio di persone con disabilità"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "rimozione forzata",
+      "contrassegno disabili",
+      "veicoli al servizio di persone diversamente abili"
+    ],
+    "vector_search_queries": [
+      "deroga divieto di sosta per veicoli con contrassegno disabili",
+      "rimozione forzata veicoli disabili",
+      "segnaletica di divieto di sosta e contrassegno invalidi"
+    ],
+    "rule_explanation": "I veicoli muniti di contrassegno per disabili sono esentati dai divieti di sosta e fermata, salvo eccezioni specifiche, e non sono soggetti a rimozione forzata o blocco con ganasce."
+  }
+}

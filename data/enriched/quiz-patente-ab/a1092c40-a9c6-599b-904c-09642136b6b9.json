@@ -1,0 +1,32 @@
+{
+  "question_id": 4346,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21985",
+  "text": "Il delineatore raffigurato indica una curva pericolosa a sinistra",
+  "correct_answer": false,
+  "image": "2712e2c5f793df075327b6dc83e26e53.jpeg",
+  "image_description": "Segnale di curva pericolo a destra. Il segnale indica una curva pericolosa a destra. Può essere installato isolatamente o in serie per evidenziare il pericolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, specificamente un segnale quadrato con il vertice in basso, con un bordo nero e un'area interna bianca. All'interno dell'area bianca è presente una freccia a V nera che punta verso destra. Il segnale è montato su un palo verticale, che a sua volta poggia su una base a forma di croce. Questo segnale è un segnale di pericolo che indica una curva pericolosa a destra.",
+    "name": "Segnale di curva pericolo a destra",
+    "description": "Il segnale indica una curva pericolosa a destra. Può essere installato isolatamente o in serie per evidenziare il pericolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Segnali complementari"
+    ],
+    "exact_keywords": [
+      "delineatore stradale",
+      "curva pericolosa",
+      "presegnalazione",
+      "preavviso di curva"
+    ],
+    "vector_search_queries": [
+      "funzione del delineatore stradale di presegnalazione curva pericolosa",
+      "segnalazione di curva pericolosa a sinistra con delineatore",
+      "interpretazione segnali complementari di pericolo"
+    ],
+    "rule_explanation": "Il delineatore raffigurato, sebbene indichi una curva pericolosa, è specifico per la direzione indicata dalla freccia (destra o sinistra). L'affermazione è falsa se la freccia indica la direzione opposta a quella menzionata."
+  }
+}

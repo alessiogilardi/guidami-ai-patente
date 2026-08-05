@@ -1,0 +1,31 @@
+{
+  "question_id": 4428,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22852",
+  "text": "Durante l'effettuazione dell'inversione di marcia l'indicatore di direzione deve rimanere in funzione per l'intera durata della manovra",
+  "correct_answer": true,
+  "image": "f4ce89521572a4dca9a4b6b901316d1a.jpeg",
+  "image_description": "Incrocio a raso senza segnaletica di preavviso o prescrizione. L'incrocio è a raso e non sono presenti segnali di prescrizione o preavviso che regolino la circolazione. La strada principale è a senso unico con due corsie, mentre la strada secondaria è a doppio senso. La corsia più a destra della strada principale termina all'incrocio. Un veicolo si trova sulla corsia di destra della strada principale, in procinto di svoltare a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di un incrocio stradale. La strada principale, che proviene da sinistra e si estende verso destra, è a senso unico e presenta due corsie di marcia, delimitate da strisce bianche continue e tratteggiate. La corsia di destra termina all'incrocio. La strada secondaria, che proviene dal basso e sale verso l'alto, è a doppio senso di circolazione. Non sono presenti segnali di pericolo, prescrizione o indicazione che regolino la circolazione all'incrocio. Un veicolo (un'automobile) si trova sulla corsia di destra della strada principale, in prossimità dell'incrocio, e sembra essere in procinto di svoltare a destra. Le altre corsie della strada principale sono vuote. L'incrocio è a raso, senza dislivelli.",
+    "name": "Incrocio a raso senza segnaletica di preavviso o prescrizione",
+    "description": "L'incrocio è a raso e non sono presenti segnali di prescrizione o preavviso che regolino la circolazione. La strada principale è a senso unico con due corsie, mentre la strada secondaria è a doppio senso. La corsia più a destra della strada principale termina all'incrocio. Un veicolo si trova sulla corsia di destra della strada principale, in procinto di svoltare a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione delle manovre",
+      "Inversione di marcia"
+    ],
+    "exact_keywords": [
+      "indicatore di direzione",
+      "inversione di marcia",
+      "durata della manovra",
+      "segnalazione acustica e luminosa"
+    ],
+    "vector_search_queries": [
+      "obbligo di uso indicatori di direzione per inversione di marcia",
+      "durata attivazione freccia durante manovra di inversione"
+    ],
+    "rule_explanation": "Durante l'inversione di marcia, l'indicatore di direzione deve essere attivato per tutta la durata della manovra per segnalare tempestivamente la propria intenzione agli altri utenti della strada."
+  }
+}

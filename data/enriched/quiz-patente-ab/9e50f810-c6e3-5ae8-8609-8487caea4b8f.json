@@ -1,0 +1,28 @@
+{
+  "question_id": 4521,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23738",
+  "text": "La sosta e la fermata sono vietate nelle curve e, fuori dei centri abitati e sulle strade urbane di scorrimento, anche in loro prossimità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Condizioni di visibilità e sicurezza nella circolazione"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fermata",
+      "curve",
+      "prossimità",
+      "centri abitati"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata in prossimità di curve",
+      "regole di sosta e fermata fuori dai centri abitati e su strade urbane di scorrimento"
+    ],
+    "rule_explanation": "La sosta e la fermata sono vietate nelle curve e in loro prossimità, nonché fuori dei centri abitati e sulle strade urbane di scorrimento per garantire la sicurezza."
+  }
+}

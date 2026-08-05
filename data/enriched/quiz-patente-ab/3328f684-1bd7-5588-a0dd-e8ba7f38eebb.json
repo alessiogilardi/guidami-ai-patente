@@ -1,0 +1,28 @@
+{
+  "question_id": 4515,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23691",
+  "text": "La fermata è consentita allo sbocco dei passi carrabili",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata di veicoli",
+      "Divieto di fermata e sosta",
+      "Accessi e uscite carrai"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "passi carrabili",
+      "sbocco",
+      "divieto di sosta"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata allo sbocco dei passi carrabili",
+      "regole per la fermata in corrispondenza dei passi carrabili"
+    ],
+    "rule_explanation": "La fermata è vietata in corrispondenza o neiimmediately adiacenti allo sbocco dei passi carrabili, salvo diversa segnalazione."
+  }
+}

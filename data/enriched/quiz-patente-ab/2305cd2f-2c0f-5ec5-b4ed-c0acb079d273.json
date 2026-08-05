@@ -1,0 +1,29 @@
+{
+  "question_id": 4651,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24927",
+  "text": "Se un infortunato della strada ha riportato fratture agli arti bisogna dargli da bere una bevanda superalcolica",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Gestione infortunati",
+      "Controindicazioni farmaceutiche"
+    ],
+    "exact_keywords": [
+      "infortunato",
+      "fratture",
+      "primo soccorso",
+      "bevande alcoliche"
+    ],
+    "vector_search_queries": [
+      "primo soccorso infortunati con fratture",
+      "controindicazioni somministrazione alcolici a infortunati",
+      "gestione emergenze stradali con fratture"
+    ],
+    "rule_explanation": "In caso di fratture agli arti, non bisogna somministrare bevande alcoliche all'infortunato, in quanto potrebbero aggravare la situazione o interferire con eventuali cure mediche."
+  }
+}

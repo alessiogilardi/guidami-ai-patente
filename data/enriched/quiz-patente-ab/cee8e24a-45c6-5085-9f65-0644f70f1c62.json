@@ -1,0 +1,33 @@
+{
+  "question_id": 4062,
+  "topic": "Segnali di pericolo",
+  "number": "18999",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada in cui è consentita la manovra di retromarcia",
+  "correct_answer": false,
+  "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione",
+      "Manovre vietate"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "doppia curva",
+      "velocità에 adeguata",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "funzione dei segnali di pericolo nella segnaletica stradale",
+      "interpretazione segnale di pericolo doppia curva",
+      "segnali stradali che indicano pericoli e prescrizioni"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano un pericolo specifico e non autorizzano né vietano manovre, ma impongono prudenza e adeguamento della velocità."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4329,
+  "topic": "Segnali di indicazione",
+  "number": "21820",
+  "text": "Il segnale raffigurato preavvisa la direzione obbligatoria per autotreni ed autoarticolati",
+  "correct_answer": true,
+  "image": "630cebb8d08ae99d4eecba26193b0e23.jpeg",
+  "image_description": "Direzione obbligatoria per autotreni e autoarticolati. Il segnale indica che la direzione obbligatoria è diritto, ed è specifico per autotreni e autoarticolati.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con sfondo giallo e bordo nero. Nella parte superiore, un disco blu con bordo bianco contiene una freccia bianca rivolta verso l'alto, indicando la direzione obbligatoria \"diritto\". Sotto questo disco, sono raffigurati due tipi di veicoli pesanti: un autotreno (motrice con rimorchio) e un autoarticolato (motrice con semirimorchio). Entrambi i veicoli sono rappresentati in nero. Il segnale è un segnale di prescrizione, specificamente una direzione obbligatoria, con un'indicazione aggiuntiva per determinate categorie di veicoli.",
+    "name": "Direzione obbligatoria per autotreni e autoarticolati",
+    "description": "Il segnale indica che la direzione obbligatoria è diritto, ed è specifico per autotreni e autoarticolati."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Direzione obbligatoria",
+      "Veicoli specifici"
+    ],
+    "exact_keywords": [
+      "segnali di direzione obbligatoria",
+      "autotreni",
+      "autoarticolati",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di direzione obbligatoria per autotreni e autoarticolati",
+      "indicazioni stradali specifiche per veicoli lunghi"
+    ],
+    "rule_explanation": "Il segnale di preavviso di direzione obbligatoria indica che autotreni e autoarticolati devono seguire la direzione prescritta."
+  }
+}

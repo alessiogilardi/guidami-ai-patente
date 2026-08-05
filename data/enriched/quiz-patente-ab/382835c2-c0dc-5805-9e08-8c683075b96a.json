@@ -1,0 +1,28 @@
+{
+  "question_id": 4533,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23820",
+  "text": "Su strada extraurbana, chiunque non abbia potuto evitare la caduta o lo spargimento di materie viscide, infiammabili o comunque pericolose deve, tra l'altro, presegnalare la zona con il segnale mobile di pericolo posto anche in mezzo alla carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo",
+      "Obblighi in caso di caduta di materie pericolose",
+      "Circolazione su strade extraurbane"
+    ],
+    "exact_keywords": [
+      "caduta di materie pericolose",
+      "presegnalare la zona",
+      "segnale mobile di pericolo",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "obbligo di presegnalazione per caduta di materie pericolose su strade extraurbane",
+      "posizionamento segnale mobile di pericolo per spargimento di sostanze pericolose"
+    ],
+    "rule_explanation": "In caso di caduta di materie pericolose su strada extraurbana, è obbligatorio presegnalare la zona con il segnale mobile di pericolo, posizionato in modo da garantirne la massima visibilità e sicurezza."
+  }
+}

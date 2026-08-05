@@ -1,0 +1,27 @@
+{
+  "question_id": 4578,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24193",
+  "text": "La spia di accensione delle luci anabbaglianti è di colore rosso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori luminosi del cruscotto",
+      "Segnalazioni visive del veicolo"
+    ],
+    "exact_keywords": [
+      "spia",
+      "luci anabbaglianti",
+      "cruscotto",
+      "simbolo"
+    ],
+    "vector_search_queries": [
+      "colore spia luci anabbaglianti",
+      "significato spie cruscotto veicolo"
+    ],
+    "rule_explanation": "La spia che segnala l'accensione delle luci anabbaglianti è di colore verde, non rosso. Le spie rosse indicano generalmente un pericolo o un malfunzionamento grave."
+  }
+}

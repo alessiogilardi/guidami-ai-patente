@@ -1,0 +1,31 @@
+{
+  "question_id": 4073,
+  "topic": "Segnali di pericolo",
+  "number": "19142",
+  "text": "In presenza del segnale raffigurato, il tram fermo per la salita e la discesa dei passeggeri può essere sorpassato a destra quando non esiste il salvagente",
+  "correct_answer": false,
+  "image": "bb981f286218063a29cc9f7bf6f71389.jpeg",
+  "image_description": "Segnale di pericolo - Passaggio di tram. Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato il pittogramma di un tram. Questo segnale indica la presenza di una linea tranviaria che interseca la carreggiata.",
+    "name": "Segnale di pericolo - Passaggio di tram",
+    "description": "Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo - Passaggio di tram",
+      "Divieto di sorpasso in prossimità di fermate tranviarie"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio di tram",
+      "sorpasso a destra",
+      "salvagente"
+    ],
+    "vector_search_queries": [
+      "regole di sorpasso in presenza di fermate tranviarie",
+      "divieto di sorpasso a destra in prossimità di binari o fermate tram"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'Passaggio di tram' impone di moderare la velocità e prestare attenzione. Il sorpasso a destra è vietato in prossimità di fermate tranviarie, indipendentemente dalla presenza di salvagenti."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4106,
+  "topic": "Segnali di divieto",
+  "number": "19529",
+  "text": "Il segnale raffigurato vieta di entrare in una strada accessibile invece dall'altra parte",
+  "correct_answer": true,
+  "image": "3eca137357d840256e2c019f597a7575.jpeg",
+  "image_description": "Segnale di divieto di transito. Il segnale impone il divieto di transito a tutti i veicoli, indipendentemente dalla loro direzione. Vieta l'accesso in una strada o area.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una barra orizzontale bianca. Questo è il segnale di divieto di transito.",
+    "name": "Segnale di divieto di transito",
+    "description": "Il segnale impone il divieto di transito a tutti i veicoli, indipendentemente dalla loro direzione. Vieta l'accesso in una strada o area."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di divieto di transito",
+      "Accesso vietato"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "segnali di divieto",
+      "veicoli",
+      "accesso vietato"
+    ],
+    "vector_search_queries": [
+      "significato segnale divieto di transito",
+      "divieto di accesso stradale"
+    ],
+    "rule_explanation": "Il segnale di 'Divieto di transito' vieta a tutti i veicoli l'accesso in una strada o area, indipendentemente dalla direzione di provenienza."
+  }
+}

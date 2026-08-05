@@ -1,0 +1,27 @@
+{
+  "question_id": 4609,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24498",
+  "text": "La patente di categoria A1 consente al conducente che ha meno di 18 anni di trasportare un passeggero, ma solo se lo stesso è maggiorenne",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Età minima per il trasporto passeggeri",
+      "Requisiti per il trasporto passeggeri con patente A1"
+    ],
+    "exact_keywords": [
+      "patente A1",
+      "conducente minorenne",
+      "trasporto passeggero",
+      "età del passeggero"
+    ],
+    "vector_search_queries": [
+      "trasporto passeggeri con patente A1 minorenni",
+      "requisiti età conducente e passeggero patente A1"
+    ],
+    "rule_explanation": "La patente A1 non consente il trasporto di passeggeri a chi ha meno di 18 anni, indipendentemente dall'età del passeggero."
+  }
+}

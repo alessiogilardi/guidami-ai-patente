@@ -1,0 +1,28 @@
+{
+  "question_id": 4438,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22952",
+  "text": "Giungendo ad un incrocio in cui la circolazione è regolata con rotatoria, è obbligatorio dare la precedenza ai veicoli provenienti da sinistra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della circolazione in rotatoria",
+      "Obbligo di precedenza nelle rotatorie"
+    ],
+    "exact_keywords": [
+      "rotatoria",
+      "incrocio",
+      "dare la precedenza",
+      "veicoli provenienti da sinistra"
+    ],
+    "vector_search_queries": [
+      "precedenza nelle rotatorie",
+      "regolamentazione circolazione rotatorie",
+      "obbligo precedenza incrocio a rotatoria"
+    ],
+    "rule_explanation": "Nelle rotatorie, la precedenza va data ai veicoli che già circolano al loro interno, indipendentemente dalla provenienza."
+  }
+}

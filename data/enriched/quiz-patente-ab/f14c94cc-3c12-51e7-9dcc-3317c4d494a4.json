@@ -1,0 +1,31 @@
+{
+  "question_id": 4347,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21991",
+  "text": "Il segnale raffigurato si può trovare sia su strade urbane che extraurbane",
+  "correct_answer": true,
+  "image": "3ae8e9032b1862626732488b8365520d.jpeg",
+  "image_description": "Segnale di preavviso di impianto semaforico. Il segnale preavvisa un impianto semaforico. Il disco centrale, di colore giallo, può essere a luce fissa o lampeggiante.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e fondo giallo. Al centro del triangolo è raffigurato un impianto semaforico stilizzato, con tre luci disposte verticalmente: rossa in alto, gialla al centro e verde in basso.",
+    "name": "Segnale di preavviso di impianto semaforico",
+    "description": "Il segnale preavvisa un impianto semaforico. Il disco centrale, di colore giallo, può essere a luce fissa o lampeggiante."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale complementare",
+      "Segnaletica temporanea e di cantiere"
+    ],
+    "exact_keywords": [
+      "preavviso di impianto semaforico",
+      "strade urbane",
+      "strade extraurbane",
+      "segnali complementari"
+    ],
+    "vector_search_queries": [
+      "impiego segnale preavviso semaforo su strade urbane ed extraurbane",
+      "segnaletica complementare: preavviso impianto semaforico"
+    ],
+    "rule_explanation": "Il segnale di preavviso di impianto semaforico, pur essendo un segnale complementare, può essere impiegato sia su strade urbane che extraurbane per avvisare della presenza di un semaforo."
+  }
+}

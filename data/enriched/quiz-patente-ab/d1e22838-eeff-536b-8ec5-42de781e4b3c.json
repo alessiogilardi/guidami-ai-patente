@@ -1,0 +1,32 @@
+{
+  "question_id": 4425,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22823",
+  "text": "In caso di intenso traffico è consentito circolare per file parallele, utilizzando le corsie riservate agli autobus e ai veicoli in servizio pubblico",
+  "correct_answer": false,
+  "image": "a688b13a965ab6551c0ba93d5ad44db1.jpeg",
+  "image_description": "Strada a carreggiate separate con spartitraffico centrale. La carreggiata è divisa in due direzioni da una zona verde spartitraffico. Ogni carreggiata è a sua volta suddivisa in due corsie di marcia, delimitate da strisce bianche discontinue. Le corsie sono etichettate con le lettere A e B, dove le corsie più esterne sono A e quelle più interne sono B. I veicoli devono circolare sulla carreggiata di destra rispetto alla propria direzione di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada a carreggiate separate. Al centro della strada è presente una zona verde che funge da spartitraffico. Ogni carreggiata è divisa in due corsie di marcia, indicate dalle lettere A e B. Le corsie più esterne sono etichettate come A, mentre quelle più interne sono etichettate come B. Le corsie sono delimitate da strisce bianche discontinue. Non sono presenti segnali stradali verticali o orizzontali che indichino regole di precedenza specifiche o divieti, ad eccezione della delimitazione delle corsie e dello spartitraffico. La configurazione suggerisce che i veicoli debbano circolare sulla carreggiata di destra rispetto alla loro direzione di marcia.",
+    "name": "Strada a carreggiate separate con spartitraffico centrale",
+    "description": "La carreggiata è divisa in due direzioni da una zona verde spartitraffico. Ogni carreggiata è a sua volta suddivisa in due corsie di marcia, delimitate da strisce bianche discontinue. Le corsie sono etichettate con le lettere A e B, dove le corsie più esterne sono A e quelle più interne sono B. I veicoli devono circolare sulla carreggiata di destra rispetto alla propria direzione di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione in file parallele",
+      "Uso delle corsie riservate"
+    ],
+    "exact_keywords": [
+      "file parallele",
+      "corsie riservate",
+      "autobus",
+      "veicoli in servizio pubblico",
+      "intenso traffico"
+    ],
+    "vector_search_queries": [
+      "divieto di circolare in file parallele su corsie riservate",
+      "utilizzo corsie dedicate a bus e servizi pubblici in caso di traffico intenso"
+    ],
+    "rule_explanation": "La circolazione in file parallele è consentita solo se espressamente indicato. Non è permesso utilizzare corsie riservate a specifici veicoli, nemmeno in caso di traffico intenso."
+  }
+}

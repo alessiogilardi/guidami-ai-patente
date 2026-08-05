@@ -1,0 +1,28 @@
+{
+  "question_id": 4407,
+  "topic": "Distanza di sicurezza",
+  "number": "22653",
+  "text": "La distanza di sicurezza deve essere aumentata qualora sia difficile valutare il comportamento del conducente che precede",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Comportamento del conducente precedente",
+      "Valutazione del rischio"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "conducente che precede",
+      "valutare il comportamento",
+      "aumentata"
+    ],
+    "vector_search_queries": [
+      "aumento della distanza di sicurezza in base alla prevedibilità del conducente precedente",
+      "criteri per l\\'adeguamento della distanza di sicurezza"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere aumentata se è difficile prevedere le azioni del veicolo che precede, per garantire una reazione adeguata e prevenire incidenti."
+  }
+}

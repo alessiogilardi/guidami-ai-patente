@@ -1,0 +1,30 @@
+{
+  "question_id": 4695,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25226",
+  "text": "L'A.B.S. impedisce di utilizzare la massima forza aderente , in frenata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema antibloccaggio (ABS)",
+      "Frenata sicura",
+      "Controllo della stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "ABS",
+      "forza aderente",
+      "frenata",
+      "bloccaggio delle ruote",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "funzionamento dell'ABS in frenata",
+      "ABS e aderenza al suolo",
+      "prevenzione del bloccaggio ruote con ABS"
+    ],
+    "rule_explanation": "L'ABS previene il bloccaggio delle ruote in frenata, permettendo al conducente di mantenere il controllo direzionale e di sfruttare al meglio la forza aderente disponibile, senza impedire l'uso della massima aderenza."
+  }
+}

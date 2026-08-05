@@ -1,0 +1,32 @@
+{
+  "question_id": 4128,
+  "topic": "Segnali di divieto",
+  "number": "19786",
+  "text": "In presenza del segnale raffigurato è consentito il transito di autoveicoli che trasportano prodotti che non contaminano l'acqua",
+  "correct_answer": true,
+  "image": "3cd3237239447d165e9ae7dc3bb8b97a.jpeg",
+  "image_description": "Divieto di transito ai veicoli che trasportano merci pericolose per l'acqua. Il segnale vieta il transito ai veicoli che trasportano merci pericolose per l'acqua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è raffigurato un camion cisterna stilizzato, con la cisterna di colore arancione e la parte inferiore del camion che si estende su delle onde blu, a simboleggiare l'acqua. Il pittogramma indica un veicolo che trasporta sostanze che possono contaminare l'acqua.",
+    "name": "Divieto di transito ai veicoli che trasportano merci pericolose per l'acqua",
+    "description": "Il segnale vieta il transito ai veicoli che trasportano merci pericolose per l'acqua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Merci pericolose",
+      "Protezione ambientale"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "veicoli che trasportano merci pericolose",
+      "inquinamento delle acque",
+      "segnali di pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per veicoli trasportanti merci pericolose per l'acqua",
+      "segnaletica stradale di divieto per inquinamento idrico"
+    ],
+    "rule_explanation": "Il segnale di divieto raffigurato vieta il transito ai veicoli che trasportano merci pericolose per l'ambiente acquatico, indipendentemente dalla loro natura specifica."
+  }
+}

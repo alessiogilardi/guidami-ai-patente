@@ -1,0 +1,32 @@
+{
+  "question_id": 4355,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22080",
+  "text": "Il pannello raffigurato (A), posto sotto un segnale di pericolo, evidenzia il punto dove finisce il pericolo",
+  "correct_answer": false,
+  "image": "33212ce9941b32683cb07828adcf3260.jpeg",
+  "image_description": "Pannelli integrativi di estensione e inizio/fine. Il pannello A indica che la prescrizione o il pericolo indicato dal segnale principale terminano nel punto in cui è posizionato il pannello. Il pannello B indica che la prescrizione o il pericolo indicato dal segnale principale iniziano nel punto in cui è posizionato il pannello.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli integrativi, etichettati A e B. Il pannello A è verticale e presenta una freccia nera rivolta verso l'alto su sfondo bianco, con una linea orizzontale che attraversa la freccia nella parte superiore. Il pannello B è orizzontale e presenta una freccia nera rivolta verso sinistra su sfondo bianco. Entrambi i pannelli sono rettangolari con bordi neri. Il pannello A è posizionato sopra e leggermente a destra del pannello B. Questi pannelli sono comunemente usati per integrare segnali stradali verticali, fornendo informazioni aggiuntive sulla loro applicazione spaziale. Il pannello A, con la freccia che indica la direzione del traffico e la linea orizzontale, solitamente indica la fine di un pericolo o di una prescrizione. Il pannello B, con la freccia che indica una direzione, solitamente indica l'inizio di un pericolo o di una prescrizione in quella direzione.",
+    "name": "Pannelli integrativi di estensione e inizio/fine",
+    "description": "Il pannello A indica che la prescrizione o il pericolo indicato dal segnale principale terminano nel punto in cui è posizionato il pannello. Il pannello B indica che la prescrizione o il pericolo indicato dal segnale principale iniziano nel punto in cui è posizionato il pannello."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pannelli integrativi",
+      "Segnaletica stradale di pericolo",
+      "Estensione della validità dei segnali"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "segnale di pericolo",
+      "fine del pericolo",
+      "estensione"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo che indica la fine del pericolo o della prescrizione",
+      "segnaletica stradale pannelli integrativi di estensione"
+    ],
+    "rule_explanation": "Il pannello integrativo di estensione (A) indica la fine del pericolo o della prescrizione del segnale principale, non il punto in cui il pericolo finisce."
+  }
+}

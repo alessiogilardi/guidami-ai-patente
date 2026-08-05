@@ -1,0 +1,34 @@
+{
+  "question_id": 4062,
+  "topic": "Segnali di pericolo",
+  "number": "18995",
+  "text": "Nella curve pericolose preannunciate dal segnale raffigurato è vietato il sorpasso se la carreggiata è a due corsie e a doppio senso di circolazione",
+  "correct_answer": true,
+  "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo curva",
+      "Divieto di sorpasso in curve pericolose",
+      "Regolamentazione della circolazione in presenza di curve"
+    ],
+    "exact_keywords": [
+      "curve pericolose",
+      "segnali di pericolo",
+      "divieto di sorpasso",
+      "doppio senso di circolazione",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in curve pericolose con carreggiata a doppio senso",
+      "regolamentazione sorpasso in presenza di segnali di pericolo per curve",
+      "limitazioni alla manovra di sorpasso in curve strette su strade a doppio senso"
+    ],
+    "rule_explanation": "Nelle curve pericolose preannunciate da appositi segnali, il sorpasso è vietato se la carreggiata è a due corsie e a doppio senso di circolazione."
+  }
+}

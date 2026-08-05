@@ -1,0 +1,31 @@
+{
+  "question_id": 4176,
+  "topic": "Segnali di obbligo",
+  "number": "20342",
+  "text": "Il segnale raffigurato vale anche di giorno",
+  "correct_answer": true,
+  "image": "87d38e63be1b1961effb1381017feb47.jpeg",
+  "image_description": "Sentiero pedonale. Il segnale indica un percorso pedonale. Obbliga i pedoni a utilizzare il percorso indicato e vieta il transito ai veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è raffigurata la figura stilizzata di una persona che cammina, di colore bianco. Questo è il segnale di 'Sentiero pedonale'.",
+    "name": "Sentiero pedonale",
+    "description": "Il segnale indica un percorso pedonale. Obbliga i pedoni a utilizzare il percorso indicato e vieta il transito ai veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo di percorso",
+      "Validità dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "percorso pedonale",
+      "validità",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "validità dei segnali di obbligo di percorso",
+      "segnali stradali di prescrizione validi giorno e notte"
+    ],
+    "rule_explanation": "I segnali di obbligo, come quello di percorso pedonale, sono prescrittivi e la loro validità non è limitata a specifiche condizioni di luce, applicandosi sia di giorno che di notte."
+  }
+}

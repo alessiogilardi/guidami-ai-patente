@@ -1,0 +1,31 @@
+{
+  "question_id": 4106,
+  "topic": "Segnali di divieto",
+  "number": "19541",
+  "text": "Il segnale raffigurato vieta il sorpasso",
+  "correct_answer": false,
+  "image": "3eca137357d840256e2c019f597a7575.jpeg",
+  "image_description": "Segnale di divieto di transito. Il segnale impone il divieto di transito a tutti i veicoli, indipendentemente dalla loro direzione. Vieta l'accesso in una strada o area.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una barra orizzontale bianca. Questo è il segnale di divieto di transito.",
+    "name": "Segnale di divieto di transito",
+    "description": "Il segnale impone il divieto di transito a tutti i veicoli, indipendentemente dalla loro direzione. Vieta l'accesso in una strada o area."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale di divieto di transito",
+      "divieto di accesso",
+      "veicoli",
+      "strada"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnale di divieto di transito e divieto di sorpasso",
+      "significato del segnale di divieto di transito"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito vieta a tutti i veicoli l'accesso a una strada o area, non il sorpasso. Il divieto di sorpasso è indicato da un segnale specifico."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4620,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24648",
+  "text": "Il punteggio sulla patente diminuisce quando si commette una qualunque infrazione al codice della strada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Decurtazione punti patente",
+      "Infrazioni al Codice della Strada"
+    ],
+    "exact_keywords": [
+      "punteggio patente",
+      "infrazione",
+      "sottrazione di punti",
+      "Codice della Strada"
+    ],
+    "vector_search_queries": [
+      "infrazioni che comportano la decurtazione di punti dalla patente",
+      "sottrazione punti patente per violazioni al Codice della Strada"
+    ],
+    "rule_explanation": "La sottrazione di punti dalla patente non avviene per ogni infrazione, ma solo per quelle espressamente previste dal Codice della Strada che comportano tale sanzione accessoria."
+  }
+}

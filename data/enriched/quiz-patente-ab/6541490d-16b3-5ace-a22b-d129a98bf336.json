@@ -1,0 +1,28 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18720",
+  "text": "Uscendo da un sentiero fangoso o da un cantiere, bisogna assicurarsi che durante la marcia non cada terriccio che possa sporcare la strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente",
+      "Uso responsabile della strada",
+      "Prevenzione dell'inquinamento stradale"
+    ],
+    "exact_keywords": [
+      "terriccio",
+      "strada",
+      "veicolo",
+      "marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di caduta di materiali dalla veicolo sulla strada",
+      "obbligo di pulizia della strada da detriti del veicolo"
+    ],
+    "rule_explanation": "Il conducente deve assicurarsi che dal proprio veicolo non si stacchino o cadano materiali che possano sporcare o danneggiare la strada, specialmente se si proviene da cantieri o aree non asfaltate."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31049",
+  "text": "Gli specchi retrovisori devono essere regolati mentre il veicolo è in movimento",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione dei dispositivi di guida",
+      "Sicurezza alla guida",
+      "Uso degli specchi retrovisori"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "regolazione",
+      "veicolo in movimento",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "regolazione specchi retrovisori prima della partenza",
+      "divieto di regolare gli specchi retrovisori durante la marcia"
+    ],
+    "rule_explanation": "La regolazione degli specchi retrovisori deve essere effettuata dal conducente prima di iniziare la marcia o durante una manovra di arresto, non durante la guida attiva."
+  }
+}

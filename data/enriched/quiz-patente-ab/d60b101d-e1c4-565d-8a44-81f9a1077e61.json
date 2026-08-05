@@ -1,0 +1,29 @@
+{
+  "question_id": 4046,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18804",
+  "text": "Quando vi sono bambini fermi al semaforo bisogna usare prudenza, perché potrebbero scendere dal marciapiede, invadendo la carreggiata, quando ancora per loro il semaforo è disposto al rosso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Regolazione della velocità in prossimità di bambini",
+      "Comportamento ai semafori"
+    ],
+    "exact_keywords": [
+      "bambini",
+      "prudenza",
+      "marciapiede",
+      "carreggiata",
+      "semaforo rosso"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza in presenza di bambini fermi al semaforo",
+      "rischio di invasione della carreggiata da parte di bambini in prossimità di semafori"
+    ],
+    "rule_explanation": "Il conducente deve prestare particolare prudenza in prossimità di bambini, anche se fermi al semaforo, poiché potrebbero improvvisamente invadere la carreggiata."
+  }
+}

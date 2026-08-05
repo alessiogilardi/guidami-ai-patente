@@ -1,0 +1,28 @@
+{
+  "question_id": 4599,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24369",
+  "text": "I sistemi di ritenuta per bambini sono di un unico tipo e sono tutti utilizzabili per trasportare bambini fino a 1,50 metri di altezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistemi di ritenuta per bambini",
+      "Omologazione e uso dei seggiolini auto"
+    ],
+    "exact_keywords": [
+      "sistemi di ritenuta per bambini",
+      "omologazione",
+      "altezza",
+      "peso",
+      "tipologia"
+    ],
+    "vector_search_queries": [
+      "tipologie di seggiolini per bambini omologati per il trasporto in auto",
+      "requisiti di omologazione e utilizzo dei sistemi di ritenuta per bambini in base a peso e altezza"
+    ],
+    "rule_explanation": "I sistemi di ritenuta per bambini devono essere omologati e adatti al peso e all'altezza del bambino, non esiste un unico tipo universale."
+  }
+}

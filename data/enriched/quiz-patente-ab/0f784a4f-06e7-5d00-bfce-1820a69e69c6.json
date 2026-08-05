@@ -1,0 +1,33 @@
+{
+  "question_id": 4078,
+  "topic": "Segnali di pericolo",
+  "number": "19199",
+  "text": "In presenza del segnale raffigurato il pericolo è minore in caso di pioggia",
+  "correct_answer": false,
+  "image": "f765bd82ad5ae48ffb2e5ed4434c16a8.jpeg",
+  "image_description": "Segnale di pericolo - Discesa pericolosa con pendenza specificata. Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata una rampa nera inclinata verso il basso, con la dicitura \"10%\" sovrapposta. Questo indica una discesa con una pendenza specificata.",
+    "name": "Segnale di pericolo - Discesa pericolosa con pendenza specificata",
+    "description": "Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Discesa pericolosa",
+      "Condizioni di aderenza stradale"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "discesa pericolosa",
+      "pendenza",
+      "condizioni atmosferiche"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo discesa pericolosa cause aggravanti",
+      "impatto della pioggia sui segnali di pericolo stradale",
+      "moderazione della velocità in discesa con pioggia"
+    ],
+    "rule_explanation": "Il segnale di 'discesa pericolosa' indica un pericolo che si aggrava in condizioni di scarsa aderenza, come la pioggia, non diminuisce."
+  }
+}

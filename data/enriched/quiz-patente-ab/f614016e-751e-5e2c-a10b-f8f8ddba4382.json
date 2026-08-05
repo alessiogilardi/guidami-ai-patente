@@ -1,0 +1,27 @@
+{
+  "question_id": 4408,
+  "topic": "Distanza di sicurezza",
+  "number": "22659",
+  "text": "La distanza di sicurezza può essere diminuita nelle gallerie",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regole di circolazione in galleria"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "galleria",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "mantenimento distanza di sicurezza in galleria",
+      "obbligo distanza di sicurezza in galleria autostradale"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere sempre mantenuta, anche in galleria, per evitare collisioni e garantire la fluidità del traffico."
+  }
+}

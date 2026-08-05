@@ -1,0 +1,32 @@
+{
+  "question_id": 4231,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20890",
+  "text": "In una carreggiata a doppio senso di circolazione la striscia di mezzo, se discontinua (tratteggiata), può essere superata durante un sorpasso",
+  "correct_answer": true,
+  "image": "9452b305a54d3ce933cf84b3ec81361b.jpeg",
+  "image_description": "Striscia bianca continua. La striscia bianca continua delimita le corsie di marcia. Non è consentito superarla né attraversarla.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata con due strisce bianche continue parallele, che delimitano una o più corsie di marcia. Non sono presenti altri segnali o elementi di contesto. Le strisce sono di colore bianco e appaiono continue, senza interruzioni. La loro presenza indica la separazione delle corsie e il divieto di superamento o attraversamento.",
+    "name": "Striscia bianca continua",
+    "description": "La striscia bianca continua delimita le corsie di marcia. Non è consentito superarla né attraversarla."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Superamento dei veicoli",
+      "Carreggiata a doppio senso di circolazione"
+    ],
+    "exact_keywords": [
+      "striscia discontinua",
+      "doppio senso di circolazione",
+      "superamento",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "superamento striscia bianca discontinua doppio senso di circolazione",
+      "segnaletica orizzontale striscia discontinua e sorpasso"
+    ],
+    "rule_explanation": "La striscia bianca discontinua, posta al centro di una carreggiata a doppio senso di circolazione, indica la possibilità di superamento durante le manovre di sorpasso."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4308,
+  "topic": "Segnali di indicazione",
+  "number": "21625",
+  "text": "Il segnale raffigurato consente di viaggiare a 50 km/h",
+  "correct_answer": true,
+  "image": "971e98d0321dab35827073bdfb4eb51a.jpeg",
+  "image_description": "Segnale di limite minimo di velocità. Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è presente il numero '60' in bianco. Questo è un segnale di prescrizione che indica un limite minimo di velocità.",
+    "name": "Segnale di limite minimo di velocità",
+    "description": "Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di limite minimo di velocità",
+      "Obbligo di rispettare la velocità minima"
+    ],
+    "exact_keywords": [
+      "limite minimo di velocità",
+      "segnale stradale",
+      "velocità minima",
+      "divieto di procedere a velocità inferiore"
+    ],
+    "vector_search_queries": [
+      "significato del segnale di limite minimo di velocità",
+      "obbligo di rispettare la velocità minima imposta dal segnale stradale"
+    ],
+    "rule_explanation": "Il segnale raffigurato impone di non procedere a una velocità inferiore a quella indicata, consentendo di viaggiare a tale velocità o a una superiore."
+  }
+}

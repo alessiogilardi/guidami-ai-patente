@@ -1,0 +1,30 @@
+{
+  "question_id": 4603,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24442",
+  "text": "I guanti ad uso motociclistico hanno speciali sistemi di aggancio per impedire il loro sfilamento in caso di caduta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di protezione individuale per motociclisti",
+      "Sicurezza attiva e passiva",
+      "Equipaggiamento motociclistico"
+    ],
+    "exact_keywords": [
+      "guanti motociclistici",
+      "sistemi di aggancio",
+      "sfilamento",
+      "caduta",
+      "protezione"
+    ],
+    "vector_search_queries": [
+      "funzione dei guanti motociclistici con sistemi di aggancio",
+      "prevenzione sfilamento guanti in caso di caduta motociclista",
+      "requisiti di sicurezza per guanti da moto"
+    ],
+    "rule_explanation": "I guanti da motociclista devono possedere sistemi di aggancio che ne prevengano lo sfilamento durante la caduta, garantendo protezione al conducente."
+  }
+}

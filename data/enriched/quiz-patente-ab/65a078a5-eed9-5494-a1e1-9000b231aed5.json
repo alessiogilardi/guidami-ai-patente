@@ -1,0 +1,27 @@
+{
+  "question_id": 4030,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18627",
+  "text": "I motocicli hanno cilindrata superiore a 50 cm3",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di motociclo",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "ciclomotori",
+      "cilindrata",
+      "50 cm3"
+    ],
+    "vector_search_queries": [
+      "definizione di motociclo secondo il CdS",
+      "differenza tra motociclo e ciclomotore per cilindrata"
+    ],
+    "rule_explanation": "I motocicli sono veicoli a motore con cilindrata superiore a 50 cm3 e velocità massima superiore a 45 km/h, distinti dai ciclomotori."
+  }
+}

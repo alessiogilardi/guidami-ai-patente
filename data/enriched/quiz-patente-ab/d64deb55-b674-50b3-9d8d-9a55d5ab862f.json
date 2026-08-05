@@ -1,0 +1,30 @@
+{
+  "question_id": 4710,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25382",
+  "text": "In un veicolo a motore, gli ammortizzatori scarichi, abbassando l'altezza da terra del telaio, migliorano la tenuta di strada del veicolo, specie in curva",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Manutenzione degli ammortizzatori",
+      "Tenuta di strada"
+    ],
+    "exact_keywords": [
+      "ammortizzatori scarichi",
+      "tenuta di strada",
+      "altezza da terra",
+      "telaio",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "effetti degli ammortizzatori scarichi sulla tenuta di strada",
+      "impatto della manutenzione degli ammortizzatori sulla stabilità del veicolo",
+      "conseguenze di ammortizzatori inefficienti sulla sicurezza di guida"
+    ],
+    "rule_explanation": "Gli ammortizzatori scarichi riducono la tenuta di strada e la stabilità del veicolo, in quanto non svolgono più la loro funzione di smorzamento delle oscillazioni, compromettendo la sicurezza."
+  }
+}

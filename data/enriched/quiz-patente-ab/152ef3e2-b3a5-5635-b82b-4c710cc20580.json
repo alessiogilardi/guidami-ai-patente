@@ -1,0 +1,33 @@
+{
+  "question_id": 4210,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20715",
+  "text": "La striscia bianca discontinua in figura consente di circolare stando a cavallo di essa",
+  "correct_answer": false,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Marcatura di corsia",
+      "Divieto di sorpasso"
+    ],
+    "exact_keywords": [
+      "striscia bianca discontinua",
+      "circolare stando a cavallo",
+      "segnaletica orizzontale",
+      "corsia di marcia"
+    ],
+    "vector_search_queries": [
+      "significato striscia bianca discontinua su carreggiata",
+      "circolazione su linea di corsia",
+      "sorpasso e inversione marcia con striscia discontinua"
+    ],
+    "rule_explanation": "La striscia bianca discontinua indica la separazione delle corsie di marcia e consente il sorpasso e l'inversione di marcia, ma non la circolazione \"a cavallo\" della linea stessa."
+  }
+}

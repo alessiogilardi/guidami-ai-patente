@@ -1,0 +1,27 @@
+{
+  "question_id": 4713,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25428",
+  "text": "L'interruttore di emergenza posto sul cavalletto laterale, serve per spegnere il motore del motociclo sulle strade in pendenza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza del veicolo",
+      "Funzionamento dei sistemi di spegnimento motore"
+    ],
+    "exact_keywords": [
+      "interruttore di emergenza",
+      "cavalletto laterale",
+      "spegnimento motore",
+      "motociclo"
+    ],
+    "vector_search_queries": [
+      "funzione interruttore di emergenza cavalletto laterale motociclo",
+      "sistema di sicurezza spegnimento motore motociclo"
+    ],
+    "rule_explanation": "L'interruttore di emergenza sul cavalletto laterale impedisce l'avviamento o spegne il motore se il cavalletto è abbassato, non è specifico per le strade in pendenza."
+  }
+}

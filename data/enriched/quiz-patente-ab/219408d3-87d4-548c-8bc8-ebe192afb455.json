@@ -1,0 +1,31 @@
+{
+  "question_id": 4351,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22030",
+  "text": "Il segnale raffigurato consente il transito ai motocicli nelle sole ore indicate",
+  "correct_answer": false,
+  "image": "45783f41bee064304c769ef6cebaec60.jpeg",
+  "image_description": "Divieto di transito ai motocicli con pannello integrativo di orario. Il segnale vieta il transito ai motocicli dalle ore 7:30 alle 19:00. Al di fuori di questa fascia oraria, il transito è consentito.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di transito per motocicli, rappresentato da un cerchio rosso con bordo rosso e sfondo bianco, con la silhouette di un motociclista al centro. Sotto questo segnale, vi è un pannello integrativo rettangolare con sfondo bianco e bordo nero, riportante l'indicazione oraria '7,30-19,00'. Questo pannello specifica l'orario in cui vige il divieto imposto dal segnale sovrastante.",
+    "name": "Divieto di transito ai motocicli con pannello integrativo di orario",
+    "description": "Il segnale vieta il transito ai motocicli dalle ore 7:30 alle 19:00. Al di fuori di questa fascia oraria, il transito è consentito."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Limitazioni orarie al transito"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "divieto di transito",
+      "motocicli",
+      "orario"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto con pannelli integrativi di orario",
+      "limitazioni orarie alla circolazione per categorie di veicoli"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito ai motocicli con pannello integrativo orario vieta la circolazione solo nelle ore indicate, non consente il transito."
+  }
+}

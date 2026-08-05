@@ -1,0 +1,34 @@
+{
+  "question_id": 4192,
+  "topic": "Segnali di precedenza",
+  "number": "20494",
+  "text": "Il segnale raffigurato impone di fermarsi all'incrocio anche in presenza di semaforo a luce lampeggiante gialla",
+  "correct_answer": true,
+  "image": "38d290655bf8f8975e6c77db50f3154c.jpeg",
+  "image_description": "Segnale di STOP (Arresto obbligatorio). Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia trasversale di arresto e di dare la precedenza a tutti i veicoli che circolano sulla strada in cui si sta per immettersi. Se non è presente la striscia di arresto, l'arresto deve avvenire comunque prima di impegnare l'incrocio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma ottagonale, con sfondo rosso e bordo bianco. Al centro del segnale è presente la scritta \"STOP\" in lettere maiuscole bianche. Questo è il segnale di arresto obbligatorio.",
+    "name": "Segnale di STOP (Arresto obbligatorio)",
+    "description": "Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia trasversale di arresto e di dare la precedenza a tutti i veicoli che circolano sulla strada in cui si sta per immettersi. Se non è presente la striscia di arresto, l'arresto deve avvenire comunque prima di impegnare l'incrocio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di arresto al segnale di STOP",
+      "Precedenza dei veicoli in arrivo",
+      "Interazione tra segnali di prescrizione e semafori"
+    ],
+    "exact_keywords": [
+      "segnale di STOP",
+      "arrestarsi",
+      "dare la precedenza",
+      "semaforo a luce lampeggiante gialla",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto al segnale di STOP in presenza di semaforo giallo lampeggiante",
+      "precedenza dovuta ai veicoli in arrivo al segnale di STOP",
+      "interpretazione combinata di segnale di STOP e semaforo giallo lampeggiante"
+    ],
+    "rule_explanation": "Il segnale di STOP impone l'obbligo di arrestarsi e dare la precedenza, anche se è presente un semaforo a luce gialla lampeggiante. L'arresto è dovuto prima della striscia di arresto o dell'incrocio."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24673",
+  "text": "Circolare con un'autovettura dotata di otto posti compreso il conducente con patente di categoria C comporta una perdita di punti sulla patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida per autoveicoli pesanti",
+      "Classificazione delle patenti di guida",
+      "Veicoli adibiti al trasporto di persone"
+    ],
+    "exact_keywords": [
+      "patente di categoria C",
+      "autovettura con otto posti compreso il conducente",
+      "sanzione pecuniaria",
+      "sospensione della patente"
+    ],
+    "vector_search_queries": [
+      "requisiti patente categoria C per trasporto persone",
+      "differenza patente C e D per numero di posti",
+      "sanzioni per guida con patente non idonea al tipo di veicolo"
+    ],
+    "rule_explanation": "La patente di categoria C abilita alla guida di autoveicoli con massa massima superiore a 3,5 tonnellate, non di autovetture con 8 posti passeggeri. Per tali veicoli è necessaria la patente D."
+  }
+}

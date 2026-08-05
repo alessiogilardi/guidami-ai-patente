@@ -1,0 +1,30 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18787",
+  "text": "In vicinanza di un attraversamento pedonale, il conducente deve considerare che il pedone, nell'attraversare la strada, può diventare insicuro e ritornare improvvisamente indietro",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso i pedoni",
+      "Attraversamenti pedonali",
+      "Comportamento prudente del conducente"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "attraversamento pedonale",
+      "pedone",
+      "condotta insicura",
+      "utente debole"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in prossimità di attraversamenti pedonali",
+      "comportamento del pedone in strada e doveri del conducente",
+      "prevedibilità del comportamento del pedone e prudenza del conducente"
+    ],
+    "rule_explanation": "In prossimità delle strisce pedonali, il conducente deve prevedere possibili esitazioni o cambi di direzione del pedone, moderando la velocità e mantenendo la massima prudenza."
+  }
+}

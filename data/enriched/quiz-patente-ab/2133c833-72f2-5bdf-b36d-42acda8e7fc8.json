@@ -1,0 +1,27 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24542",
+  "text": "La patente di categoria B consente di guidare, ma solo sul territorio nazionale (Italia), i veicoli che si possono condurre con la patente A1",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità territoriale della patente di guida",
+      "Equipollenza tra categorie di patenti"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "patente A1",
+      "validità sul territorio nazionale",
+      "conduzione di veicoli"
+    ],
+    "vector_search_queries": [
+      "validità patente B per veicoli patente A1 in Italia",
+      "equipollenza patente B e A1 per conduzione veicoli sul territorio nazionale"
+    ],
+    "rule_explanation": "La patente di categoria B abilita alla conduzione dei veicoli condducibili con patente A1, sia sul territorio nazionale che in altri Paesi UE/extra-UE con cui esistono accordi specifici."
+  }
+}

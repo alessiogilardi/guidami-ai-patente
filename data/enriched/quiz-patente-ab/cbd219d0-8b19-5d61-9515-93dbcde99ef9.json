@@ -1,0 +1,32 @@
+{
+  "question_id": 4111,
+  "topic": "Segnali di divieto",
+  "number": "19597",
+  "text": "Il segnale raffigurato è un segnale di prescrizione",
+  "correct_answer": true,
+  "image": "fa617b370db24cae54893424af1fe4fa.jpeg",
+  "image_description": "Segnale di limite di velocità. Il segnale impone un limite massimo di velocità di 80 km/h. È vietato superare tale velocità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente il numero '80' in nero. Questo è il segnale di limite di velocità massima.",
+    "name": "Segnale di limite di velocità",
+    "description": "Il segnale impone un limite massimo di velocità di 80 km/h. È vietato superare tale velocità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Segnali di divieto"
+    ],
+    "exact_keywords": [
+      "segnali di prescrizione",
+      "segnali di divieto",
+      "limite di velocità",
+      "segnale raffigurato"
+    ],
+    "vector_search_queries": [
+      "classificazione segnali stradali di prescrizione",
+      "segnali di divieto e loro significato",
+      "segnali di prescrizione con obblighi o divieti specifici"
+    ],
+    "rule_explanation": "I segnali di prescrizione impongono obblighi o divieti. Il segnale di limite di velocità è un segnale di prescrizione che vieta di superare la velocità indicata."
+  }
+}

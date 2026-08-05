@@ -1,0 +1,27 @@
+{
+  "question_id": 4507,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23617",
+  "text": "Nelle aree di parcheggio a tempo limitato, i veicoli al servizio di persone diversamente abili non sono obbligati a rispettare il limite di tempo stabilito per la sosta.",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Parcheggio per disabili",
+      "Sosta a tempo limitato"
+    ],
+    "exact_keywords": [
+      "area di parcheggio",
+      "persone diversamente abili",
+      "limite di tempo",
+      "sosta"
+    ],
+    "vector_search_queries": [
+      "parcheggio a tempo limitato per disabili",
+      "esenzione limite di sosta per veicoli al servizio di disabili"
+    ],
+    "rule_explanation": "I veicoli al servizio di persone con disabilità sono esentati dal rispetto dei limiti di tempo stabiliti per la sosta nelle aree di parcheggio designate."
+  }
+}

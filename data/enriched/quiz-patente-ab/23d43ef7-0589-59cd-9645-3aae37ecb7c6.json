@@ -1,0 +1,33 @@
+{
+  "question_id": 4054,
+  "topic": "Segnali di pericolo",
+  "number": "18899",
+  "text": "In presenza del segnale raffigurato è vietato il sorpasso nel tratto in discesa",
+  "correct_answer": false,
+  "image": "77a40e39cc4b726c3f05d1759479cd9e.jpeg",
+  "image_description": "Segnale di dosso. Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un pannello a forma di triangolo con bordo rosso e sfondo bianco. Al centro del pannello è raffigurato un pittogramma nero che rappresenta un dosso.",
+    "name": "Segnale di dosso",
+    "description": "Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo: dosso",
+      "Regolazione della velocità in presenza di dossi",
+      "Divieto di sorpasso"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "dosso",
+      "moderare la velocità",
+      "sorpasso"
+    ],
+    "vector_search_queries": [
+      "preavviso di dosso e obbligo di moderare la velocità",
+      "divieto di sorpasso in presenza di segnale di dosso",
+      "condizioni che impongono il divieto di sorpasso"
+    ],
+    "rule_explanation": "Il segnale di dosso preannuncia un pericolo e impone di moderare la velocità, ma non vieta automaticamente il sorpasso, a meno che non sia espressamente indicato da altro segnale."
+  }
+}

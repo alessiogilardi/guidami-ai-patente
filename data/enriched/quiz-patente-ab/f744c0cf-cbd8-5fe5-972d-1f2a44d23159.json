@@ -1,0 +1,31 @@
+{
+  "question_id": 4133,
+  "topic": "Segnali di divieto",
+  "number": "19843",
+  "text": "Il segnale raffigurato fa riferimento alla massa effettiva sull'asse al momento del transito",
+  "correct_answer": true,
+  "image": "1fa023cb06b46333946e7cff49f17f9e.jpeg",
+  "image_description": "Divieto di transito per massa effettiva per asse superiore a 2,5 t. Il segnale vieta il transito ai veicoli la cui massa effettiva sull'asse più caricato supera le 2,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è presente un'icona stilizzata di un asse di un veicolo con due ruote, sovrastata dalla dicitura \"2,5 t\" con una freccia che indica verso il basso, puntando sull'asse. Questo indica un limite di massa per asse.",
+    "name": "Divieto di transito per massa effettiva per asse superiore a 2,5 t",
+    "description": "Il segnale vieta il transito ai veicoli la cui massa effettiva sull'asse più caricato supera le 2,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Massa effettiva per asse"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "massa effettiva",
+      "asse più caricato",
+      "targa di pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per massa effettiva per asse",
+      "interpretazione segnale divieto massa per asse"
+    ],
+    "rule_explanation": "Il segnale di divieto raffigurante una massa per asse vieta il transito ai veicoli con massa effettiva sull'asse più caricato superiore a quella indicata."
+  }
+}

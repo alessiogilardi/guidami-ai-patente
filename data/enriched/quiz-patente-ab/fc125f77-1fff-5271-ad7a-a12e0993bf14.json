@@ -1,0 +1,28 @@
+{
+  "question_id": 4587,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24266",
+  "text": "Fuori dei centri abitati, i conducenti devono spegnere i proiettori di profondità procedendo con quelli anabbaglianti, qualora vi sia il pericolo di abbagliare i pedoni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di profondità",
+      "Obbligo di non abbagliare"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "proiettori anabbaglianti",
+      "pericolo di abbagliare",
+      "pedoni",
+      "centri abitati"
+    ],
+    "vector_search_queries": [
+      "obbligo spegnimento proiettori di profondità fuori centro abitato",
+      "uso proiettori anabbaglianti per evitare abbagliamento pedoni"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, i proiettori di profondità devono essere spenti se c'è pericolo di abbagliare altri utenti della strada, inclusi i pedoni, utilizzando invece i proiettori anabbaglianti."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22278",
+  "text": "Il conducente deve regolare la velocità in modo da non costituire disordine per la circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Sicurezza stradale",
+      "Divieto di intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "disordine per la circolazione",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di regolare la velocità per non creare disordine o intralcio alla circolazione",
+      "conducente deve moderare la velocità per garantire la sicurezza e l'ordine del traffico"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in modo da non creare pericolo o intralcio alla circolazione, garantendo un flusso ordinato del traffico."
+  }
+}

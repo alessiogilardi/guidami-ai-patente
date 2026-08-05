@@ -1,0 +1,32 @@
+{
+  "question_id": 4177,
+  "topic": "Segnali di obbligo",
+  "number": "20354",
+  "text": "Il segnale raffigurato vieta ai pedoni di attraversare la strada",
+  "correct_answer": false,
+  "image": "125d99c6c74db6e107a78ba4749257ab.jpeg",
+  "image_description": "Fine percorso pedonale. Indica la fine di un percorso pedonale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco. Il fondo del segnale è blu scuro. Al centro è presente la figura stilizzata di un pedone di colore bianco, in movimento da sinistra verso destra. Una barra rossa diagonale, che va dall'angolo in alto a sinistra all'angolo in basso a destra, attraversa la figura del pedone, indicando la fine di un obbligo o di un divieto. In questo caso specifico, il pittogramma del pedone indica che si tratta della fine di un percorso pedonale.",
+    "name": "Fine percorso pedonale",
+    "description": "Indica la fine di un percorso pedonale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo e prescrizione",
+      "Segnaletica stradale destinata ai pedoni"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "percorso pedonale",
+      "segnali di fine percorso",
+      "divieto di attraversamento"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un percorso pedonale",
+      "interpretazione segnale 'fine percorso pedonale'",
+      "obblighi e divieti per i pedoni in relazione ai segnali stradali"
+    ],
+    "rule_explanation": "Il segnale di 'fine percorso pedonale' indica la cessazione di un percorso riservato ai pedoni, non un divieto di attraversamento per essi."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4004,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18347",
+  "text": "L'attraversamento pedonale è una parte della carreggiata vietata al transito dei veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attraversamento pedonale",
+      "Regole di circolazione per i veicoli",
+      "Doveri dei conducenti verso i pedoni"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "carreggiata",
+      "divieto di transito",
+      "pedoni"
+    ],
+    "vector_search_queries": [
+      "definizione e funzione dell'attraversamento pedonale",
+      "obblighi dei veicoli in prossimità degli attraversamenti pedonali",
+      "precedenza ai pedoni sugli attraversamenti pedonali"
+    ],
+    "rule_explanation": "L'attraversamento pedonale è una zona della carreggiata destinata ai pedoni per l'attraversamento, sulla quale i veicoli devono dare la precedenza ai pedoni stessi. Non è vietato il transito ai veicoli, ma impone loro obblighi di cautela e precedenza."
+  }
+}

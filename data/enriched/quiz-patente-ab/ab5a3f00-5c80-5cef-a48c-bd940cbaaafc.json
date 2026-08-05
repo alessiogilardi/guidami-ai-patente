@@ -1,0 +1,28 @@
+{
+  "question_id": 4515,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23696",
+  "text": "La fermata è sempre vietata in seconda fila",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata e sosta nel Codice della Strada",
+      "Divieti di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "seconda fila",
+      "divieto",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata in seconda fila per veicoli a motore",
+      "eccezioni al divieto di fermata in seconda fila"
+    ],
+    "rule_explanation": "La fermata è vietata in seconda fila solo per i veicoli a motore, salvo eccezioni specifiche. Non è un divieto assoluto."
+  }
+}

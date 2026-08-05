@@ -1,0 +1,27 @@
+{
+  "question_id": 4050,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18840",
+  "text": "Bisogna usare maggiore prudenza nei confronti delle donne in stato di gravidanza che attraversano la strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Principio di prudenza e diligenza del conducente"
+    ],
+    "exact_keywords": [
+      "donne in stato di gravidanza",
+      "attraversamento della strada",
+      "utente debole",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "doveri di prudenza verso donne incinte che attraversano la strada",
+      "tutela degli utenti deboli della strada in fase di attraversamento"
+    ],
+    "rule_explanation": "Il conducente deve usare particolare prudenza e attenzione nei confronti delle donne in stato di gravidanza durante l'attraversamento della strada, in quanto considerate utenti deboli."
+  }
+}

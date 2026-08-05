@@ -1,0 +1,27 @@
+{
+  "question_id": 4519,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23725",
+  "text": "Nelle zone nelle quali gli spazi di sosta sono delimitati da segnaletica orizzontale, il conducente può sistemare il proprio veicolo anche fuori dall'apposito spazio (stallo) ad esso destinato, a condizione che la sosta sia di brevissima durata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole di sosta in aree delimitate",
+      "Delimitazione degli stalli di sosta"
+    ],
+    "exact_keywords": [
+      "spazi di sosta",
+      "segnaletica orizzontale",
+      "stallo",
+      "sosta"
+    ],
+    "vector_search_queries": [
+      "sosta in stalli delimitati da segnaletica orizzontale",
+      "posizionamento del veicolo negli stalli di sosta"
+    ],
+    "rule_explanation": "Nelle aree con stalli delimitati da segnaletica orizzontale, il veicolo deve essere posizionato all'interno dello stallo; la sosta, anche se di brevissima durata, non consente di occupare aree esterne."
+  }
+}

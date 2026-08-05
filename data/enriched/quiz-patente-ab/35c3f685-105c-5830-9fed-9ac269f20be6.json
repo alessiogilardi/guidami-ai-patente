@@ -1,0 +1,33 @@
+{
+  "question_id": 4058,
+  "topic": "Segnali di pericolo",
+  "number": "18947",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada in cui è consentito effettuare l'inversione di marcia",
+  "correct_answer": false,
+  "image": "34d83af03310c64d51078b75499c7efd.jpeg",
+  "image_description": "Segnale di curva pericolosa a destra. Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurata una freccia nera curva che indica una svolta a destra. Questo è il segnale di \"Curva pericolosa a destra\".",
+    "name": "Segnale di curva pericolosa a destra",
+    "description": "Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di curva pericolosa",
+      "Comportamento ai segnali di pericolo"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "curva pericolosa",
+      "presegnalazione",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "significato segnali di pericolo curva",
+      "comportamento alla vista di segnali di pericolo",
+      "segnali di pericolo e manovre consentite"
+    ],
+    "rule_explanation": "I segnali di pericolo, come quello di curva pericolosa, preannunciano un tratto di strada che richiede prudenza e moderazione della velocità, non autorizzano manovre specifiche come l'inversione di marcia."
+  }
+}

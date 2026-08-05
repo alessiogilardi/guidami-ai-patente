@@ -1,0 +1,29 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18736",
+  "text": "Il conducente di un veicolo può approfittare della potenza del proprio veicolo per non dare la precedenza a chi spetta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di precedenza",
+      "Comportamento prudente del conducente",
+      "Tutela degli utenti deboli della strada"
+    ],
+    "exact_keywords": [
+      "dare la precedenza",
+      "potenza del veicolo",
+      "condotta del conducente",
+      "regola generale di circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di dare la precedenza a chi spetta per diritto",
+      "divieto di usare la potenza del veicolo per imporre la precedenza",
+      "principio di rispetto della precedenza tra veicoli e pedoni"
+    ],
+    "rule_explanation": "Il conducente deve sempre dare la precedenza a chi ne ha diritto, indipendentemente dalla potenza del proprio veicolo, per garantire la sicurezza e la fluidità della circolazione."
+  }
+}

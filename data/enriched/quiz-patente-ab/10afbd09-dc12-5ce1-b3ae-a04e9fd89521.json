@@ -1,0 +1,27 @@
+{
+  "question_id": 4586,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24258",
+  "text": "E' consentito l'uso intermittente dei proiettori di profondità (a luce abbagliante) per segnalare al veicolo che precede, sia di giorno che di notte, l'intenzione di sorpassare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di sorpasso",
+      "Uso dei proiettori di profondità"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "luce abbagliante",
+      "sorpassare",
+      "segnalazione di manovra"
+    ],
+    "vector_search_queries": [
+      "segnalazione di sorpasso con proiettori di profondità",
+      "uso luce abbagliante per preavviso di sorpasso"
+    ],
+    "rule_explanation": "L'uso intermittente dei proiettori di profondità è consentito per segnalare l'intenzione di sorpassare, sia di giorno che di notte, al veicolo che precede."
+  }
+}

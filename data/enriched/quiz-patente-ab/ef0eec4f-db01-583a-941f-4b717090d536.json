@@ -1,0 +1,32 @@
+{
+  "question_id": 4001,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18318",
+  "text": "In una carreggiata del tipo rappresentato non si può effettuare l'inversione di marcia",
+  "correct_answer": true,
+  "image": "637129125cd2305679f68e11751ad483.jpeg",
+  "image_description": "Carreggiata a doppio senso di circolazione con quattro corsie. La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale. Si osservano due carreggiate separate da una linea bianca continua. Ogni carreggiata è a sua volta suddivisa in due corsie da strisce bianche discontinue. Questo schema indica una strada con due corsie per senso di marcia, per un totale di quattro corsie. La linea continua centrale separa i due sensi di marcia. Le strisce discontinue all'interno di ciascuna carreggiata indicano la possibilità di superamento o cambio di corsia all'interno dello stesso senso di marcia. Pertanto, la scena rappresenta una carreggiata a doppio senso di circolazione con quattro corsie totali.",
+    "name": "Carreggiata a doppio senso di circolazione con quattro corsie",
+    "description": "La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inversione di marcia",
+      "Divieto di inversione di marcia",
+      "Carreggiata a doppio senso di circolazione"
+    ],
+    "exact_keywords": [
+      "inversione di marcia",
+      "carreggiata a doppio senso di circolazione",
+      "linea continua",
+      "divieto di transito"
+    ],
+    "vector_search_queries": [
+      "divieto di inversione di marcia su strade a doppio senso con quattro corsie separate da linea continua",
+      "inversione di marcia in carreggiate con più di due corsie per senso di marcia"
+    ],
+    "rule_explanation": "L'inversione di marcia è vietata in carreggiate a doppio senso di circolazione con quattro corsie, separate da linea continua, in quanto equiparate alle strade a senso unico di marcia."
+  }
+}

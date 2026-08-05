@@ -1,0 +1,29 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23480",
+  "text": "Dopo il sorpasso il veicolo può immediatamente spostarsi a destra se taglia la strada a quello sorpassato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Comportamento dopo il sorpasso",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo sorpassato",
+      "manovra a destra",
+      "tagliare la strada"
+    ],
+    "vector_search_queries": [
+      "completamento manovra di sorpasso",
+      "rientro nella corsia dopo sorpasso",
+      "pericolo per veicolo sorpassato durante rientro"
+    ],
+    "rule_explanation": "Dopo il sorpasso, il veicolo deve rientrare nella corsia di marcia solo dopo aver assicurato di poterlo fare senza pericolo o intralcio per il veicolo sorpassato."
+  }
+}

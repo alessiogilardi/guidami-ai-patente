@@ -1,0 +1,32 @@
+{
+  "question_id": 4117,
+  "topic": "Segnali di divieto",
+  "number": "19677",
+  "text": "Il segnale raffigurato indica la presenza di una corsia riservata a biciclette e ciclomotori",
+  "correct_answer": false,
+  "image": "d62b58e41fee347a25ca241f48772c05.jpeg",
+  "image_description": "Segnale di divieto di transito ai velocipedi. Il segnale vieta il transito ai velocipedi (biciclette).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una bicicletta di colore nero. Si tratta di un segnale di divieto.",
+    "name": "Segnale di divieto di transito ai velocipedi",
+    "description": "Il segnale vieta il transito ai velocipedi (biciclette)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Segnaletica stradale di indicazione"
+    ],
+    "exact_keywords": [
+      "segnale di divieto",
+      "velocipedi",
+      "ciclomotori",
+      "corsia riservata"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito ai velocipedi",
+      "differenza tra divieto per velocipedi e corsia riservata",
+      "segnaletica stradale divieto biciclette"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito ai velocipedi vieta la circolazione alle biciclette, non ai ciclomotori, e non indica una corsia riservata."
+  }
+}

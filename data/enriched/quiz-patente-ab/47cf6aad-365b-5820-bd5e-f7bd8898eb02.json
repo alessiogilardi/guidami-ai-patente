@@ -1,0 +1,28 @@
+{
+  "question_id": 4502,
+  "topic": "Norme sul sorpasso",
+  "number": "23562",
+  "text": "Su carreggiate a due corsie e a doppio senso in prossimità di un dosso, è consentito sorpassare veicoli a trazione animale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso in prossimità di dossi",
+      "Regolamentazione della circolazione su strade a doppio senso"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "veicoli a trazione animale",
+      "dosso",
+      "doppio senso di marcia",
+      "carreggiata a due corsie"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in prossimità di dossi su strade a doppio senso",
+      "sorpasso veicoli a trazione animale in prossimità di dossi"
+    ],
+    "rule_explanation": "Il sorpasso di veicoli a trazione animale è vietato in prossimità dei dossi su carreggiate a due corsie e a doppio senso di marcia."
+  }
+}

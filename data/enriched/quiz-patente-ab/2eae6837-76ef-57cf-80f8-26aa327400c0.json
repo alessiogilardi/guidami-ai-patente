@@ -1,0 +1,28 @@
+{
+  "question_id": 4020,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18520",
+  "text": "Il marciapiede consente la sosta dei veicoli solo in presenza di apposite strisce di parcheggio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei marciapiedi",
+      "Sosta dei veicoli",
+      "Utenti deboli della strada"
+    ],
+    "exact_keywords": [
+      "marciapiede",
+      "sosta dei veicoli",
+      "strisce di parcheggio",
+      "divieto di sosta"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta sui marciapiedi",
+      "eccezioni al divieto di sosta sui marciapiedi per parcheggio"
+    ],
+    "rule_explanation": "Il marciapiede è riservato ai pedoni e non è consentita la sosta dei veicoli, salvo che sia espressamente indicato da appositi spazi o segnaletica."
+  }
+}

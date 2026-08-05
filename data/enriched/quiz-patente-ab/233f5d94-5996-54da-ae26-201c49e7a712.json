@@ -1,0 +1,34 @@
+{
+  "question_id": 4132,
+  "topic": "Segnali di divieto",
+  "number": "19836",
+  "text": "Il segnale raffigurato, nei centri abitati, vige dalle ore 8.00 alle ore 20.00",
+  "correct_answer": false,
+  "image": "41d170b88f8596eef6889b041c2516cc.jpeg",
+  "image_description": "Divieto di transito per i veicoli di massa superiore a 7 t. Il segnale vieta il transito ai veicoli che superano il peso indicato, ovvero 7 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la dicitura \"7,00 t\" in nero, con la \"t\" in apice. Questo indica un limite di massa per i veicoli.",
+    "name": "Divieto di transito per i veicoli di massa superiore a 7 t",
+    "description": "Il segnale vieta il transito ai veicoli che superano il peso indicato, ovvero 7 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Limitazioni di massa per veicoli",
+      "Orari di validità dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "centri abitati",
+      "transito vietato",
+      "massa a pieno carico",
+      "ore 8,00 e 20,00"
+    ],
+    "vector_search_queries": [
+      "validità dei segnali di divieto di transito per massa superiore a 7 tonnellate",
+      "limitazioni orarie ai divieti di transito per massa dei veicoli",
+      "segnali stradali di divieto con validità permanente"
+    ],
+    "rule_explanation": "I segnali di divieto, salvo diversa indicazione, hanno validità permanente e non sono soggetti a limitazioni orarie o a specifici ambiti territoriali come i centri abitati."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22314",
+  "text": "E' obbligatorio ridurre la velocità solo se l'autovettura è scarica",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di guida"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "stato del veicolo",
+      "carico"
+    ],
+    "vector_search_queries": [
+      "obbligo di adeguare la velocità alle condizioni del veicolo e del carico",
+      "moderazione della velocità in base allo stato del veicolo e al carico trasportato"
+    ],
+    "rule_explanation": "Il conducente deve adeguare la velocità alle condizioni del veicolo, del carico, della strada, del traffico e atmosferiche, non solo se l'autovettura è scarica."
+  }
+}

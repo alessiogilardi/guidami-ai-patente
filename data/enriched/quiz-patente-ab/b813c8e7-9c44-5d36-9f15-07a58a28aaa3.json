@@ -1,0 +1,27 @@
+{
+  "question_id": 4644,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24874",
+  "text": "Se un infortunato della strada ha una ferita sanguinante ed è incosciente, bisogna dargli da bere acqua o tè",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di incidente stradale",
+      "Condizioni di incoscienza e ferite"
+    ],
+    "exact_keywords": [
+      "infortunato",
+      "ferita sanguinante",
+      "incosciente",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "comportamento da tenere con infortunato incosciente e ferito",
+      "divieto di somministrare liquidi a persona incosciente con ferite"
+    ],
+    "rule_explanation": "In caso di ferita sanguinante e incoscienza, non somministrare liquidi per via orale per evitare il rischio di soffocamento o complicazioni."
+  }
+}

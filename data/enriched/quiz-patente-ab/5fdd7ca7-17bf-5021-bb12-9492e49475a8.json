@@ -1,0 +1,26 @@
+{
+  "question_id": 4401,
+  "topic": "Distanza di sicurezza",
+  "number": "22602",
+  "text": "Lo spazio di frenatura è quello percorso dall'inizio della frenata all'arresto del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "arresto del veicolo",
+      "inizio della frenata"
+    ],
+    "vector_search_queries": [
+      "definizione di spazio di frenatura",
+      "distanza percorsa durante la frenata"
+    ],
+    "rule_explanation": "Lo spazio di frenatura è la distanza percorsa dal veicolo dal momento in cui il conducente inizia a frenare fino al completo arresto."
+  }
+}

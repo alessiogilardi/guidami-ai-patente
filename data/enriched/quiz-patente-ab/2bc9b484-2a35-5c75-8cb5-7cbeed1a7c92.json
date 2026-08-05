@@ -1,0 +1,29 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22543",
+  "text": "Il valore della distanza di sicurezza deve essere stabilito anche in base alla cilindrata del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regolazione della velocità",
+      "Condizioni di marcia"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "velocità",
+      "veicolo",
+      "condizioni della strada",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "determinazione della distanza di sicurezza tra veicoli",
+      "fattori che influenzano la distanza di sicurezza da mantenere"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere stabilita in base alla velocità, alle condizioni della strada e del traffico, non alla cilindrata del veicolo."
+  }
+}

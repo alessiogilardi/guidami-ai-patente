@@ -1,0 +1,29 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24762",
+  "text": "In caso di nebbia fitta è opportuno tenere la cintura di sicurezza sganciata per essere più pronti ad abbandonare il veicolo in caso di incidente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza alla guida in condizioni di scarsa visibilità",
+      "Obbligo di uso dei dispositivi di sicurezza",
+      "Comportamento in caso di incidente stradale"
+    ],
+    "exact_keywords": [
+      "nebbia",
+      "cintura di sicurezza",
+      "dispositivi di ritenuta",
+      "incidente stradale"
+    ],
+    "vector_search_queries": [
+      "uso obbligatorio cinture di sicurezza in condizioni di scarsa visibilità",
+      "principio di sicurezza alla guida in caso di nebbia",
+      "obbligo di utilizzo dei dispositivi di ritenuta in caso di incidente"
+    ],
+    "rule_explanation": "In caso di nebbia fitta, è obbligatorio l'uso dei dispositivi di ritenuta (cinture di sicurezza) per la protezione dei passeggeri, non è consentito sganciarli in previsione di un incidente."
+  }
+}

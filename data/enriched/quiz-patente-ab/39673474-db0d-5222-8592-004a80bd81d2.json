@@ -1,0 +1,29 @@
+{
+  "question_id": 4442,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22982",
+  "text": "Il motociclista che parte dal margine della carreggiata e si immette nel flusso della circolazione può indossare il casco dopo avere concluso tale manovra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di indossare il casco motociclistico",
+      "Norme di comportamento per i motociclisti",
+      "Immissione nel flusso di circolazione"
+    ],
+    "exact_keywords": [
+      "motociclista",
+      "casco",
+      "obbligo",
+      "circolazione",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "obbligo casco motociclista durante immissione nel flusso di circolazione",
+      "quando va indossato il casco per i motociclisti"
+    ],
+    "rule_explanation": "L'obbligo di indossare il casco per i motociclisti sussiste durante tutta la circolazione stradale, compresa la fase di immissione nel flusso traffico."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4652,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24929",
+  "text": "Se un ferito della strada si è ustionato, è consigliabile non togliere i vestiti rimasti attaccati alla pelle bruciata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di ustioni",
+      "Gestione delle ferite da ustione"
+    ],
+    "exact_keywords": [
+      "ustione",
+      "vestiti attaccati alla pelle",
+      "primo soccorso",
+      "non rimuovere"
+    ],
+    "vector_search_queries": [
+      "trattamento primo soccorso ustioni gravi",
+      "gestione vestiti su cute ustionata"
+    ],
+    "rule_explanation": "In caso di ustioni, non si devono rimuovere i vestiti aderenti alla cute per evitare ulteriori danni ai tessuti e ridurre il rischio di infezione."
+  }
+}

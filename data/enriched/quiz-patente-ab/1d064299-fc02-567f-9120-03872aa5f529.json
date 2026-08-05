@@ -1,0 +1,28 @@
+{
+  "question_id": 4555,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23988",
+  "text": "Le grandi differenze di prestazioni e di masse fra le autovetture facilitano una buona sicurezza stradale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza stradale",
+      "Comportamento alla guida",
+      "Differenze prestazionali dei veicoli"
+    ],
+    "exact_keywords": [
+      "sicurezza stradale",
+      "differenze di prestazioni",
+      "masse",
+      "comportamento alla guida"
+    ],
+    "vector_search_queries": [
+      "impatto delle differenze di prestazioni e masse sulla sicurezza stradale",
+      "gestione della guida in presenza di veicoli con caratteristiche diverse"
+    ],
+    "rule_explanation": "Le differenze di prestazioni e masse tra veicoli possono compromettere la sicurezza stradale se non gestite con adeguata prudenza e attenzione da parte dei conducenti."
+  }
+}

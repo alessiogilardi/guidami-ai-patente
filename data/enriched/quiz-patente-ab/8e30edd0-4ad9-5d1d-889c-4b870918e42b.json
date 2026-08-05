@@ -1,0 +1,32 @@
+{
+  "question_id": 4191,
+  "topic": "Segnali di precedenza",
+  "number": "20489",
+  "text": "Il segnale raffigurato preannuncia di arrestarsi prima di impegnare l'incrocio",
+  "correct_answer": false,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di dare precedenza",
+      "Obbligo di dare precedenza in un incrocio"
+    ],
+    "exact_keywords": [
+      "dare precedenza",
+      "arrestarsi",
+      "impegnare l'incrocio",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "obbligo di dare precedenza al segnale specifico",
+      "differenza tra segnale di dare precedenza e segnale di stop",
+      "condizioni per l'arresto al segnale di dare precedenza"
+    ],
+    "rule_explanation": "Il segnale di 'dare precedenza' impone di far passare i veicoli che circolano sulla strada trasversale, ma non obbliga all'arresto, a meno che non sia necessario per non creare pericolo."
+  }
+}

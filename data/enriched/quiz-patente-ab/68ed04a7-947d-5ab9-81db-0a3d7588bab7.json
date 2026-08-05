@@ -1,0 +1,32 @@
+{
+  "question_id": 4177,
+  "topic": "Segnali di obbligo",
+  "number": "20350",
+  "text": "Il segnale raffigurato è posto in corrispondenza della fine del viale pedonale",
+  "correct_answer": true,
+  "image": "125d99c6c74db6e107a78ba4749257ab.jpeg",
+  "image_description": "Fine percorso pedonale. Indica la fine di un percorso pedonale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco. Il fondo del segnale è blu scuro. Al centro è presente la figura stilizzata di un pedone di colore bianco, in movimento da sinistra verso destra. Una barra rossa diagonale, che va dall'angolo in alto a sinistra all'angolo in basso a destra, attraversa la figura del pedone, indicando la fine di un obbligo o di un divieto. In questo caso specifico, il pittogramma del pedone indica che si tratta della fine di un percorso pedonale.",
+    "name": "Fine percorso pedonale",
+    "description": "Indica la fine di un percorso pedonale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di fine obbligo",
+      "Segnaletica stradale di indicazione"
+    ],
+    "exact_keywords": [
+      "fine percorso pedonale",
+      "segnali di obbligo",
+      "segnali di indicazione",
+      "viale pedonale"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un percorso pedonale",
+      "interpretazione segnale fine viale pedonale",
+      "segnaletica stradale di fine obbligo pedonale"
+    ],
+    "rule_explanation": "Il segnale di 'fine percorso pedonale' indica la cessazione dell'obbligo di circolazione esclusiva dei pedoni, segnalando la fine di un'area o viale pedonale."
+  }
+}

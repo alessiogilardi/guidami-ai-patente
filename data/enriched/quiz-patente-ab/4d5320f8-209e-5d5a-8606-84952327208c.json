@@ -1,0 +1,27 @@
+{
+  "question_id": 4442,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22980",
+  "text": "Il conducente che parte dal margine della carreggiata e si immette nel flusso della circolazione deve accertarsi che la strada sia libera, guardando anche negli specchietti retrovisori",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Immissione nel flusso di circolazione",
+      "Obbligo di prudenza e diligenza del conducente"
+    ],
+    "exact_keywords": [
+      "parte dal margine",
+      "flusso della circolazione",
+      "strada libera",
+      "specchietti retrovisori"
+    ],
+    "vector_search_queries": [
+      "manovra di immissione nel flusso di circolazione da fermo",
+      "obbligo di controllo visivo prima di immettersi nella carreggiata"
+    ],
+    "rule_explanation": "Chi si immette nella circolazione deve assicurarsi che la manovra sia sicura, verificando la presenza di altri veicoli tramite visione diretta e specchietti."
+  }
+}

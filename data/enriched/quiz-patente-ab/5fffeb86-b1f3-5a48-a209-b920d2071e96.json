@@ -1,0 +1,32 @@
+{
+  "question_id": 4204,
+  "topic": "Segnali di precedenza",
+  "number": "20641",
+  "text": "Il segnale raffigurato preannuncia una immissione da destra con corsia di accelerazione",
+  "correct_answer": true,
+  "image": "c3fbf607467f1dbb78f137f6e2ff37f8.jpeg",
+  "image_description": "Preavviso di confluenza (immissione) da destra. Il segnale preannuncia una confluenza sul lato destro. I veicoli provenienti dalla corsia di destra si immetteranno sulla strada principale, avendo la precedenza. Pertanto, chi percorre la strada principale deve moderare la velocità e, se necessario, fermarsi per consentire il congiungimento dei flussi di traffico.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta una strada principale (linea più spessa e diritta) e una strada secondaria che si immette da destra (linea più sottile che si congiunge alla principale con un'angolazione). La linea della strada secondaria si divide in due rami, uno dei quali si immette sulla principale da destra, mentre l'altro prosegue parallelamente. Questo indica una confluenza o immissione da destra.",
+    "name": "Preavviso di confluenza (immissione) da destra",
+    "description": "Il segnale preannuncia una confluenza sul lato destro. I veicoli provenienti dalla corsia di destra si immetteranno sulla strada principale, avendo la precedenza. Pertanto, chi percorre la strada principale deve moderare la velocità e, se necessario, fermarsi per consentire il congiungimento dei flussi di traffico."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Immissione di corsia",
+      "Preavviso di confluenza"
+    ],
+    "exact_keywords": [
+      "preavviso di immissione",
+      "confluenza",
+      "corsia di accelerazione",
+      "immissione da destra"
+    ],
+    "vector_search_queries": [
+      "preavviso di immissione da destra con corsia di accelerazione",
+      "segnale di preavviso di confluenza da destra"
+    ],
+    "rule_explanation": "Il segnale raffigurato preannuncia una immissione da destra, con una corsia di accelerazione che si congiunge alla corrente via di marcia."
+  }
+}

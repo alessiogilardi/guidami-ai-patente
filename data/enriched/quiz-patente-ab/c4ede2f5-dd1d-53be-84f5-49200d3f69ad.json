@@ -1,0 +1,32 @@
+{
+  "question_id": 4082,
+  "topic": "Segnali di pericolo",
+  "number": "19247",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada sdrucciolevole",
+  "correct_answer": false,
+  "image": "6a22104defc75f1e908cb883a771b8bc.jpeg",
+  "image_description": "Segnale di pericolo - Restringimento carreggiata. Il segnale preannuncia un restringimento della carreggiata sul lato sinistro.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un pittogramma nero che rappresenta un restringimento della carreggiata sul lato sinistro. Le due linee verticali nere, che simboleggiano i margini della strada, sono di lunghezza uguale all'inizio, ma quella di sinistra si interrompe e si avvicina a quella di destra, indicando una riduzione della larghezza della strada da quel lato.",
+    "name": "Segnale di pericolo - Restringimento carreggiata",
+    "description": "Il segnale preannuncia un restringimento della carreggiata sul lato sinistro."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnale di restringimento carreggiata"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "strada sdrucciolevole",
+      "restringimento carreggiata",
+      "presegnalamento"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo stradale e loro significato",
+      "differenza tra segnale di strada sdrucciolevole e restringimento carreggiata",
+      "presegnalamento di pericolo per restringimento carreggiata"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante un restringimento della carreggiata preannuncia tale pericolo, non una strada sdrucciolevole. Il segnale di strada sdrucciolevole ha un'iconografia differente."
+  }
+}

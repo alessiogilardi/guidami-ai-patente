@@ -1,0 +1,31 @@
+{
+  "question_id": 4464,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23194",
+  "text": "Nell'incrocio rappresentato in figura i veicoli disimpegnano l'incrocio nel seguente ordine: A, E, V, H, C",
+  "correct_answer": true,
+  "image": "6b1045c7f93b62635b8ac5457e884b11.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso e non sono presenti segnali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo C deve dare la precedenza al veicolo E. Il veicolo E deve dare la precedenza al veicolo V. Il veicolo V deve dare la precedenza al veicolo H. Il veicolo A deve dare la precedenza ai veicoli che provengono dalla sua destra (E e V). L'ordine di passaggio corretto è: C, E, V, H, A.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con cinque veicoli (A, C, E, V, H) in diverse posizioni. Non sono presenti segnali stradali di prescrizione o preavviso che regolano la circolazione nell'incrocio. I veicoli sono disposti come segue: A (giallo) si trova sulla strada di sinistra, pronto a svoltare a destra o proseguire dritto. C (nero) si trova sulla strada in basso a sinistra, pronto a svoltare a destra o proseguire dritto. E (rosso) si trova sulla strada in alto, pronto a svoltare a destra o proseguire dritto. V (blu) si trova sulla strada di destra, pronto a svoltare a sinistra o proseguire dritto. H (verde) si trova sulla strada in basso a destra, pronto a svoltare a sinistra o proseguire dritto. Le frecce tratteggiate indicano le possibili traiettorie dei veicoli. Poiché non ci sono segnali, si applica la regola generale della precedenza a destra. Pertanto, C deve dare la precedenza a E, E a V, V a H. A deve dare la precedenza a E e V. L'ordine di transito corretto è: C, E, V, H, A.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso e non sono presenti segnali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo C deve dare la precedenza al veicolo E. Il veicolo E deve dare la precedenza al veicolo V. Il veicolo V deve dare la precedenza al veicolo H. Il veicolo A deve dare la precedenza ai veicoli che provengono dalla sua destra (E e V). L'ordine di passaggio corretto è: C, E, V, H, A."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza ai incroci non regolamentati"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "ordine di passaggio",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "ordine di precedenza incrocio senza segnaletica",
+      "applicazione regola precedenza a destra"
+    ],
+    "rule_explanation": "Negli incroci non regolamentati da segnaletica, vige la regola generale della precedenza a destra. L'ordine di passaggio corretto è determinato dall'applicazione di tale regola."
+  }
+}

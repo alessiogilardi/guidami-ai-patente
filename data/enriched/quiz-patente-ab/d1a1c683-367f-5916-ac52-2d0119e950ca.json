@@ -1,0 +1,27 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31034",
+  "text": "I nostri sensi non riescono a cogliere tutti gli stimoli presenti nell’ambiente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Percezione sensoriale umana",
+      "Fattori ambientali e attenzione"
+    ],
+    "exact_keywords": [
+      "stimoli ambientali",
+      "percezione sensoriale",
+      "attenzione selettiva",
+      "elaborazione delle informazioni"
+    ],
+    "vector_search_queries": [
+      "limiti della percezione umana degli stimoli ambientali",
+      "capacità di elaborazione degli stimoli sensoriali"
+    ],
+    "rule_explanation": "La percezione umana è limitata e non in grado di elaborare tutti gli stimoli presenti nell'ambiente, rendendo necessaria l'attenzione selettiva."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4561,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24028",
+  "text": "Circolando dietro ad un veicolo che trasporta un carico instabile, bisogna diminuire la distanza di sicurezza, in modo che gli altri veicoli rinuncino al sorpasso, non essendovi spazio sufficiente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Carico dei veicoli",
+      "Comportamento in caso di trasporto di carichi instabili"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "carico instabile",
+      "veicolo in avaria",
+      "sorpasso"
+    ],
+    "vector_search_queries": [
+      "aumento della distanza di sicurezza per carichi instabili",
+      "norme di comportamento per veicoli con carico instabile",
+      "prevenzione del sorpasso con carico instabile"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere aumentata in presenza di carichi instabili, non diminuita, per garantire la sicurezza e prevenire manovre pericolose altrui."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4421,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22786",
+  "text": "La svolta a destra si effettua senza mai dare la precedenza ai pedoni, se il semaforo ha la luce verde accesa",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Precedenza ai pedoni",
+      "Svolta a destra",
+      "Segnaletica semaforica"
+    ],
+    "exact_keywords": [
+      "svolta a destra",
+      "precedenza ai pedoni",
+      "semaforo con luce verde",
+      "condotta da tenere"
+    ],
+    "vector_search_queries": [
+      "precedenza pedoni svolta a destra semaforo verde",
+      "obblighi del conducente in caso di svolta a destra con semaforo verde"
+    ],
+    "rule_explanation": "Anche con semaforo verde, chi svolta a destra deve dare la precedenza ai pedoni che attraversano la carreggiata, salvo diversa segnalazione."
+  }
+}

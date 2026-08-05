@@ -1,0 +1,28 @@
+{
+  "question_id": 4031,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18643",
+  "text": "Gli autoveicoli sono tutti i veicoli con almeno due ruote",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autoveicolo",
+      "Classificazione dei veicoli",
+      "Uso della strada"
+    ],
+    "exact_keywords": [
+      "autoveicoli",
+      "veicoli",
+      "ruote",
+      "definizione"
+    ],
+    "vector_search_queries": [
+      "definizione legale di autoveicolo nel CdS",
+      "classificazione dei veicoli a motore e numero di ruote"
+    ],
+    "rule_explanation": "Gli autoveicoli sono veicoli a motore con almeno quattro ruote, a differenza di altri veicoli come motocicli o biciclette."
+  }
+}

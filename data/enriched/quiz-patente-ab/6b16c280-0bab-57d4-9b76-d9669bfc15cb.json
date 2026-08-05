@@ -1,0 +1,28 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24704",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere strada suddivisa in corsie",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Cause di incidentalità stradale",
+      "Sicurezza stradale",
+      "Progettazione della strada"
+    ],
+    "exact_keywords": [
+      "strada suddivisa in corsie",
+      "struttura della strada",
+      "incidenti stradali",
+      "cause di incidenti"
+    ],
+    "vector_search_queries": [
+      "cause probabili di incidenti legate alla struttura stradale",
+      "ruolo della suddivisione in corsie nella prevenzione degli incidenti"
+    ],
+    "rule_explanation": "La suddivisione in corsie di una strada, se ben progettata e segnalata, non è una causa probabile di incidenti, ma anzi ne riduce il rischio."
+  }
+}

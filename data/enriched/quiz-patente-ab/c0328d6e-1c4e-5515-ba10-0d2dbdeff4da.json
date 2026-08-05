@@ -1,0 +1,27 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23637",
+  "text": "Prima di iniziare a guidare un'autovettura, bisogna controllare che i passeggeri abbiano regolarmente allacciato le cinture di sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di allacciamento delle cinture di sicurezza",
+      "Responsabilità del conducente per la sicurezza dei passeggeri"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "allacciate",
+      "trasporto di persone",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "obbligo conducente controllo cinture sicurezza passeggeri",
+      "responsabilità conducente allacciamento cinture di sicurezza prima di partire"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di assicurarsi che tutti i passeggeri abbiano regolarmente allacciato il dispositivo di ritenuta (cinture di sicurezza) prima di iniziare la marcia."
+  }
+}

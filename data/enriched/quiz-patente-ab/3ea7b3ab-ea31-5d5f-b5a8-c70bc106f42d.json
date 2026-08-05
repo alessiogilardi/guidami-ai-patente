@@ -1,0 +1,28 @@
+{
+  "question_id": 4692,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25205",
+  "text": "Quando il veicolo percorre una curva è assoggettato ad una forza che tende a spostarlo verso l'interno",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Forza centripeta e centrifuga",
+      "Dinamica della curva"
+    ],
+    "exact_keywords": [
+      "curva",
+      "forza centripeta",
+      "forza centrifuga",
+      "stabilità del veicolo"
+    ],
+    "vector_search_queries": [
+      "forza che agisce sul veicolo in curva",
+      "effetto della forza centrifuga in curva",
+      "dinamica veicolo durante la percorrenza di una curva"
+    ],
+    "rule_explanation": "In curva, un veicolo è soggetto alla forza centripeta (verso l'interno) e alla forza centrifuga (verso l'esterno), quest'ultima tende a spostarlo verso l'esterno della curva."
+  }
+}

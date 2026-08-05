@@ -1,0 +1,31 @@
+{
+  "question_id": 4412,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22704",
+  "text": "Sui motocicli è consentito trasportare sacchetti con la spesa anche se non saldamente assicurati",
+  "correct_answer": false,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto di persone e cose su motocicli",
+      "Sicurezza nella circolazione dei motocicli"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "trasporto di persone",
+      "trasporto di cose",
+      "saldamente assicurati"
+    ],
+    "vector_search_queries": [
+      "trasporto cose su motocicli vietato se non saldamente assicurato",
+      "norme per il trasporto su motocicli di oggetti e spesa"
+    ],
+    "rule_explanation": "Sui motocicli è vietato trasportare oggetti non saldamente assicurati che potrebbero causare pericolo o intralcio alla circolazione."
+  }
+}

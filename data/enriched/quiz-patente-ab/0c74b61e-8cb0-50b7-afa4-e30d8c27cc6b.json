@@ -1,0 +1,32 @@
+{
+  "question_id": 4549,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23943",
+  "text": "La sporgenza longitudinale del carico, fino ai 3/10 della lunghezza del veicolo, deve essere segnalata mediante uno o due pannelli in figura",
+  "correct_answer": false,
+  "image": "87fd4191b69ff4e1eee00e1990b00418.jpeg",
+  "image_description": "Pannello delineatore di ostacolo (o restringimento). Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bande diagonali alternate di colore rosso e giallo. Questo tipo di segnale è comunemente utilizzato per segnalare ostacoli o restringimenti della carreggiata. Le bande rosse e gialle alternate servono a catturare l'attenzione del conducente e a indicare un pericolo.",
+    "name": "Pannello delineatore di ostacolo (o restringimento)",
+    "description": "Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sporgenza del carico",
+      "Segnalazione di ostacoli e carichi sporgenti"
+    ],
+    "exact_keywords": [
+      "sporgenza longitudinale",
+      "pannello in figura",
+      "carico sporgente",
+      "veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "segnalazione sporgenza carico longitudinale superiore a 1/10",
+      "pannelli per segnalazione carico sporgente su veicoli",
+      "obblighi di segnalazione per carichi sporgenti longitudinalmente"
+    ],
+    "rule_explanation": "La sporgenza longitudinale del carico, se superiore a 1/10 della lunghezza del veicolo, deve essere segnalata con appositi pannelli a norma. Oltre i 2/10, è necessaria la segnalazione con una o due luci rosse fisse."
+  }
+}

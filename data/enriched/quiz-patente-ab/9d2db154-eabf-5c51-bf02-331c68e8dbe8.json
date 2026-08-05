@@ -1,0 +1,27 @@
+{
+  "question_id": 4611,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24515",
+  "text": "La patente di categoria A abilita a guidare i motocicli di cilindrata superiore a 50 cm3 anche se sviluppano una velocità superiore a 45 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria A",
+      "Requisiti di ammissione e veicoli conducibili"
+    ],
+    "exact_keywords": [
+      "patente A",
+      "motocicli",
+      "cilindrata",
+      "velocità massima"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente A",
+      "requisiti patente A per motocicli di cilindrata superiore a 50 cm3"
+    ],
+    "rule_explanation": "La patente di categoria A abilita alla guida di motocicli di qualsiasi cilindrata, indipendentemente dalla loro velocità massima."
+  }
+}

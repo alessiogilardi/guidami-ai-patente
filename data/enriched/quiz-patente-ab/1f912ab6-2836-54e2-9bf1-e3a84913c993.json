@@ -1,0 +1,31 @@
+{
+  "question_id": 4081,
+  "topic": "Segnali di pericolo",
+  "number": "19219",
+  "text": "Il segnale raffigurato preannuncia un restringimento sui due lati della carreggiata",
+  "correct_answer": true,
+  "image": "935e0fb53dc5ade5d74efa55184c4022.jpeg",
+  "image_description": "Segnale di pericolo di restringimento carreggiata. Il segnale preannuncia un restringimento della carreggiata su entrambi i lati. È un segnale di pericolo che impone di moderare la velocità e, se necessario, di dare la precedenza ai veicoli provenienti dal senso opposto in caso di incrocio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è presente un pittogramma nero che raffigura due linee parallele che si avvicinano progressivamente verso il centro, simboleggiando un restringimento della carreggiata. Le linee nere sono interrotte da due brevi segmenti verticali che indicano l'inizio del restringimento. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di pericolo di restringimento carreggiata",
+    "description": "Il segnale preannuncia un restringimento della carreggiata su entrambi i lati. È un segnale di pericolo che impone di moderare la velocità e, se necessario, di dare la precedenza ai veicoli provenienti dal senso opposto in caso di incrocio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Restringimento di carreggiata"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "restringimento carreggiata",
+      "entrambi i lati",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "preavviso segnale pericolo restringimento carreggiata ambo i lati",
+      "obblighi del conducente in presenza di segnale di restringimento carreggiata"
+    ],
+    "rule_explanation": "Il segnale di pericolo di restringimento carreggiata preannuncia una riduzione della larghezza della strada su entrambi i lati, imponendo di moderare la velocità e di dare la precedenza se necessario."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24625",
+  "text": "La sospensione della patente è disposta quando il conducente fugge senza prestare soccorso alla persona investita",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sospensione della patente",
+      "Obbligo di soccorso",
+      "Fuga dopo incidente con investimento"
+    ],
+    "exact_keywords": [
+      "sospensione patente",
+      "soccorso",
+      "persona investita",
+      "conducente",
+      "furto di identità"
+    ],
+    "vector_search_queries": [
+      "sospensione patente per omissione di soccorso a persona investita",
+      "conseguenze per conducente che fugge dopo incidente con feriti"
+    ],
+    "rule_explanation": "La sospensione della patente è una sanzione accessoria disposta in caso di fuga del conducente dopo aver investito una persona, configurando un grave illecito."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4520,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23735",
+  "text": "La sosta è consentita nelle gallerie illuminate",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in galleria",
+      "Regole di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "galleria",
+      "illuminata",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta nelle gallerie autostradali e non",
+      "regolamentazione della sosta in galleria illuminata e non"
+    ],
+    "rule_explanation": "La sosta è vietata nelle gallerie, indipendentemente dal fatto che siano illuminate o meno, per ragioni di sicurezza e fluidità del traffico."
+  }
+}

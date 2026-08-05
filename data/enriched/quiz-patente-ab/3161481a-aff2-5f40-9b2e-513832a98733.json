@@ -1,0 +1,28 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24693",
+  "text": "La patente di guida di categoria B, non può essere rinnovata a chi ha superato gli 80 anni di età",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rinnovo patente di guida",
+      "Limiti di età per la guida",
+      "Requisiti psicofisici per la guida"
+    ],
+    "exact_keywords": [
+      "patente di guida categoria B",
+      "rinnovo patente",
+      "superamento 80 anni",
+      "requisiti psicofisici"
+    ],
+    "vector_search_queries": [
+      "rinnovo patente B oltre 80 anni",
+      "requisiti sanitari per rinnovo patente anziani"
+    ],
+    "rule_explanation": "La patente di guida di categoria B può essere rinnovata anche dopo gli 80 anni, a condizione che vengano mantenuti i requisiti psicofisici necessari, con controlli sanitari più frequenti."
+  }
+}

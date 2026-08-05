@@ -1,0 +1,32 @@
+{
+  "question_id": 4090,
+  "topic": "Segnali di pericolo",
+  "number": "19330",
+  "text": "Il segnale raffigurato preannuncia la possibilità di trovare improvvisamente animali vaganti sulla carreggiata",
+  "correct_answer": true,
+  "image": "36afb52a10944b6e19c4dc97b73653d4.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento animali selvatici. Il segnale preannuncia la possibilità di attraversamento di animali selvatici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato, in nero, il pittogramma di un cervo in movimento, che simboleggia la possibile presenza o attraversamento di animali selvatici sulla carreggiata. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
+    "name": "Segnale di pericolo - Attraversamento animali selvatici",
+    "description": "Il segnale preannuncia la possibilità di attraversamento di animali selvatici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Animali vaganti",
+      "Attraversamento animali selvatici"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "animali vaganti",
+      "carreggiata",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo animali vaganti carreggiata",
+      "preavviso presenza animali selvatici su strada"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante animali vaganti preannuncia la possibile presenza di animali sulla carreggiata, richiedendo prudenza e moderazione della velocità."
+  }
+}

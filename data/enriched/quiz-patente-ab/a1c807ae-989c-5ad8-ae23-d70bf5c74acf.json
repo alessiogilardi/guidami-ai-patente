@@ -1,0 +1,32 @@
+{
+  "question_id": 4430,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22869",
+  "text": "In condizioni di traffico intenso su carreggiata a senso unico a tre corsie, come in figura, è consentito viaggiare per file parallele",
+  "correct_answer": true,
+  "image": "dff3b1affd4734796911036361dd8cdc.jpeg",
+  "image_description": "Carreggiata a tre corsie per senso di marcia. La carreggiata è divisa in tre corsie per senso di marcia, delimitate da segnaletica orizzontale. Le corsie sono identificate dalle lettere A, B e C. Le corsie A e C sono le corsie esterne, mentre la corsia B è quella centrale. Le linee tratteggiate indicano che è consentito il cambio di corsia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una carreggiata stradale. La carreggiata è divisa in tre corsie per senso di marcia, come indicato dalla segnaletica orizzontale. Le corsie sono etichettate con le lettere A, B e C, partendo dal basso verso l'alto. Le corsie A e C sono le corsie esterne, mentre la corsia B è la corsia centrale. Le linee bianche tratteggiate tra le corsie indicano che è consentito il cambio di corsia. Non sono presenti segnali verticali o altri elementi di traffico che possano influenzare la circolazione. La scena rappresenta una strada con più corsie per senso di marcia.",
+    "name": "Carreggiata a tre corsie per senso di marcia",
+    "description": "La carreggiata è divisa in tre corsie per senso di marcia, delimitate da segnaletica orizzontale. Le corsie sono identificate dalle lettere A, B e C. Le corsie A e C sono le corsie esterne, mentre la corsia B è quella centrale. Le linee tratteggiate indicano che è consentito il cambio di corsia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione per file parallele",
+      "Condizioni di traffico intenso",
+      "Carreggiata a senso unico"
+    ],
+    "exact_keywords": [
+      "file parallele",
+      "traffico intenso",
+      "carreggiata a senso unico",
+      "corsie"
+    ],
+    "vector_search_queries": [
+      "circolazione per file parallele su carreggiata a senso unico con traffico intenso",
+      "condizioni di traffico intenso e circolazione per file parallele"
+    ],
+    "rule_explanation": "In caso di traffico intenso su carreggiata a senso unico a tre o più corsie, è consentita la circolazione per file parallele, purché le corsie siano delimitate da segnaletica orizzontale."
+  }
+}

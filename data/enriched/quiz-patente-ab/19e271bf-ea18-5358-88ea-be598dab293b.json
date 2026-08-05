@@ -1,0 +1,28 @@
+{
+  "question_id": 4602,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24434",
+  "text": "Gli stivali ad uso motociclistico devono essere interamente realizzati in gomma ignifuga",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Equipaggiamento protettivo per motociclisti",
+      "Dispositivi di protezione individuale (DPI)"
+    ],
+    "exact_keywords": [
+      "stivali motociclistici",
+      "abbigliamento tecnico",
+      "dispositivi di protezione",
+      "omologazione"
+    ],
+    "vector_search_queries": [
+      "requisiti di sicurezza stivali motociclistici",
+      "omologazione DPI per motociclisti",
+      "normativa abbigliamento tecnico motociclista"
+    ],
+    "rule_explanation": "Gli stivali da motociclista devono essere conformi alle norme di sicurezza e omologati, non necessariamente realizzati in gomma ignifuga."
+  }
+}

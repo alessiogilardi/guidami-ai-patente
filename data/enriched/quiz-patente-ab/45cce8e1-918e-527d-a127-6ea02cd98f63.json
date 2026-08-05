@@ -1,0 +1,27 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24352",
+  "text": "Le cinture di sicurezza devono essere di tipo omologato e mantenute sempre efficienti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Requisiti tecnici dei dispositivi di ritenuta"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "tipo omologato",
+      "mantenute efficienti",
+      "dispositivi di ritenuta"
+    ],
+    "vector_search_queries": [
+      "requisiti di omologazione e efficienza delle cinture di sicurezza",
+      "obbligo di utilizzo di cinture di sicurezza omologate ed efficienti"
+    ],
+    "rule_explanation": "Le cinture di sicurezza, quali dispositivi di ritenuta, devono essere conformi alle norme di omologazione e garantire la loro piena efficienza durante l'uso."
+  }
+}

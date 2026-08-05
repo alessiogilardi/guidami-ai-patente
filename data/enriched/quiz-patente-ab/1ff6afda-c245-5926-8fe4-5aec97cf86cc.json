@@ -1,0 +1,31 @@
+{
+  "question_id": 4190,
+  "topic": "Segnali di precedenza",
+  "number": "20479",
+  "text": "Il segnale raffigurato si trova solo su strade urbane",
+  "correct_answer": false,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Applicabilità dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale di dare precedenza",
+      "strade urbane",
+      "strade extraurbane",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "ubicazione segnale di dare precedenza",
+      "segnali di precedenza su strade urbane ed extraurbane"
+    ],
+    "rule_explanation": "Il segnale di 'dare precedenza' non si applica esclusivamente alle strade urbane, ma anche a quelle extraurbane, ove sia necessario regolare la precedenza."
+  }
+}

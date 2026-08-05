@@ -1,0 +1,32 @@
+{
+  "question_id": 4112,
+  "topic": "Segnali di divieto",
+  "number": "19615",
+  "text": "Il segnale raffigurato vieta il transito agli autoveicoli con massa complessiva superiore al valore indicato",
+  "correct_answer": false,
+  "image": "fa617b370db24cae54893424af1fe4fa.jpeg",
+  "image_description": "Segnale di limite di velocità. Il segnale impone un limite massimo di velocità di 80 km/h. È vietato superare tale velocità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente il numero '80' in nero. Questo è il segnale di limite di velocità massima.",
+    "name": "Segnale di limite di velocità",
+    "description": "Il segnale impone un limite massimo di velocità di 80 km/h. È vietato superare tale velocità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Segnali di divieto di transito",
+      "Massa a pieno carico"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "massa a pieno carico",
+      "autoveicoli",
+      "valore indicato"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per massa a pieno carico superiore a valore indicato",
+      "interpretazione segnale divieto massa veicolo"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito per autoveicoli con massa superiore a un valore indicato si riferisce alla massa a pieno carico del veicolo, non al peso effettivo."
+  }
+}

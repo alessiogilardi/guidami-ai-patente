@@ -1,0 +1,32 @@
+{
+  "question_id": 4179,
+  "topic": "Segnali di obbligo",
+  "number": "20373",
+  "text": "Il segnale raffigurato preannuncia che non è più consentito il transito ai ciclisti e ai pedoni",
+  "correct_answer": false,
+  "image": "491bca6436888e48f2030aee1772b5fd.jpeg",
+  "image_description": "Fine pista ciclabile. Indica la fine di una pista ciclabile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu. Al centro è presente il pittogramma di una bicicletta stilizzata, di colore bianco. Una barra rossa diagonale attraversa il pittogramma da sinistra a destra, indicando la fine di un divieto o di una prescrizione. In questo caso specifico, il segnale indica la fine di una pista ciclabile.",
+    "name": "Fine pista ciclabile",
+    "description": "Indica la fine di una pista ciclabile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fine di prescrizione",
+      "Segnali di obbligo e prescrizione"
+    ],
+    "exact_keywords": [
+      "fine obbligo",
+      "pista ciclabile",
+      "segnali di indicazione",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un obbligo o prescrizione",
+      "interpretazione segnale 'fine pista ciclabile'",
+      "differenza tra segnali di obbligo e segnali di indicazione di fine prescrizione"
+    ],
+    "rule_explanation": "Il segnale di 'fine obbligo' indica la cessazione di un obbligo o di una prescrizione precedentemente imposta, non il divieto di transito per categorie specifiche."
+  }
+}

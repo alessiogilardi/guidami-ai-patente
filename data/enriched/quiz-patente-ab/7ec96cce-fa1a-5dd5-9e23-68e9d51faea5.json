@@ -1,0 +1,31 @@
+{
+  "question_id": 4176,
+  "topic": "Segnali di obbligo",
+  "number": "20347",
+  "text": "Il segnale raffigurato obbliga i conducenti di veicoli a dare la precedenza ai pedoni",
+  "correct_answer": false,
+  "image": "87d38e63be1b1961effb1381017feb47.jpeg",
+  "image_description": "Sentiero pedonale. Il segnale indica un percorso pedonale. Obbliga i pedoni a utilizzare il percorso indicato e vieta il transito ai veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è raffigurata la figura stilizzata di una persona che cammina, di colore bianco. Questo è il segnale di 'Sentiero pedonale'.",
+    "name": "Sentiero pedonale",
+    "description": "Il segnale indica un percorso pedonale. Obbliga i pedoni a utilizzare il percorso indicato e vieta il transito ai veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di percorso pedonale",
+      "Divieto di transito ai veicoli"
+    ],
+    "exact_keywords": [
+      "percorso pedonale",
+      "segnali di obbligo",
+      "divieto di transito",
+      "pedoni"
+    ],
+    "vector_search_queries": [
+      "obblighi dei segnali di percorso pedonale",
+      "segnali che impongono l'uso di percorsi pedonali e vietano il transito ai veicoli"
+    ],
+    "rule_explanation": "Il segnale di percorso pedonale impone ai pedoni di usarlo e vieta il transito ai veicoli, non obbliga i conducenti a dare precedenza ai pedoni."
+  }
+}

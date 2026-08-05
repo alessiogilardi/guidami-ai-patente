@@ -1,0 +1,29 @@
+{
+  "question_id": 4680,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25131",
+  "text": "Per diminuire l'inquinamento atmosferico provocato dai veicoli, bisogna far sostituire periodicamente il filtro dell'aria",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Prevenzione dell'inquinamento atmosferico",
+      "Emissioni inquinanti"
+    ],
+    "exact_keywords": [
+      "filtro dell'aria",
+      "inquinamento atmosferico",
+      "manutenzione del veicolo",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "manutenzione filtro aria e riduzione inquinamento atmosferico",
+      "impatto del filtro aria sulle emissioni dei veicoli",
+      "sostituzione filtro aria per limitare inquinamento"
+    ],
+    "rule_explanation": "La corretta e periodica manutenzione del filtro dell'aria del veicolo è essenziale per ridurre le emissioni inquinanti e l'inquinamento atmosferico."
+  }
+}

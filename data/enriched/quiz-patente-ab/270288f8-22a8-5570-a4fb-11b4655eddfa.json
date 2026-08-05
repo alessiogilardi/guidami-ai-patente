@@ -1,0 +1,27 @@
+{
+  "question_id": 4611,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24518",
+  "text": "La patente di categoria A abilita anche alla guida dei veicoli che si possono condurre con le patenti A1, A2 e AM",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida per motocicli",
+      "Classificazione delle patenti di guida"
+    ],
+    "exact_keywords": [
+      "patente A",
+      "patente A1",
+      "patente A2",
+      "patente AM"
+    ],
+    "vector_search_queries": [
+      "validità patente A per patenti inferiori A1, A2, AM",
+      "conduzione veicoli con patente A"
+    ],
+    "rule_explanation": "La patente di categoria A abilita alla guida di tutti i motocicli, incluse le sottocategorie A1, A2 e la categoria AM per ciclomotori."
+  }
+}

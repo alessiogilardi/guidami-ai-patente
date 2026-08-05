@@ -1,0 +1,28 @@
+{
+  "question_id": 4035,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18683",
+  "text": "Per una maggiore sicurezza, quando nei centri urbani si viaggia in fila con altri veicoli, è opportuno tenere sempre accese le luci di emergenza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso delle luci di emergenza",
+      "Sicurezza stradale nei centri urbani",
+      "Convivenza civile tra veicoli"
+    ],
+    "exact_keywords": [
+      "luci di emergenza",
+      "centri abitati",
+      "fila di veicoli",
+      "condizioni di traffico"
+    ],
+    "vector_search_queries": [
+      "uso delle luci di emergenza per indicare la marcia in coda",
+      "accensione delle quattro frecce in caso di traffico intenso in città"
+    ],
+    "rule_explanation": "Le luci di emergenza (quattro frecce) vanno usate solo in caso di arresto o pericolo imminente, non per indicare la marcia in coda nei centri urbani."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4595,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24326",
+  "text": "Il poggiatesta è utile per prevenire il \"colpo di frusta\"",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza passiva",
+      "Prevenzione del colpo di frusta",
+      "Sistemi di ritenuta per veicoli"
+    ],
+    "exact_keywords": [
+      "poggiatesta",
+      "colpo di frusta",
+      "sicurezza passiva",
+      "dispositivi di protezione"
+    ],
+    "vector_search_queries": [
+      "funzione del poggiatesta nella prevenzione del colpo di frusta",
+      "efficacia dei poggiatesta come dispositivo di sicurezza passiva"
+    ],
+    "rule_explanation": "Il poggiatesta, quale dispositivo di sicurezza passiva, è progettato per limitare i danni al rachide cervicale in caso di incidente, in particolare prevenendo il colpo di frusta."
+  }
+}

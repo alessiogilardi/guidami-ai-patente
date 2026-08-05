@@ -1,0 +1,28 @@
+{
+  "question_id": 4519,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23724",
+  "text": "E' vietato sostare con autoveicoli o motocicli nei centri abitati, quando non esistano le apposite strisce",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta nei centri abitati",
+      "Regolamentazione della sosta dei veicoli"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "centri abitati",
+      "divieto di sosta",
+      "strisce blu",
+      "strisce bianche"
+    ],
+    "vector_search_queries": [
+      "regolamentazione della sosta nei centri abitati",
+      "parcheggio in assenza di strisce blu o bianche nei centri abitati"
+    ],
+    "rule_explanation": "La sosta nei centri abitati è soggetta a specifiche regole di parcheggio, non è vietata in assenza di strisce, ma solo dove espressamente indicato."
+  }
+}

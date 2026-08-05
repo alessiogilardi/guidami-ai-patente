@@ -1,0 +1,27 @@
+{
+  "question_id": 4379,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22371",
+  "text": "Il limite massimo di velocità sulle strade extraurbane principali è ordinariamente di 110 km/h per i motocicli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane principali",
+      "Velocità massima per motocicli"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "strade extraurbane principali",
+      "motocicli",
+      "110 km/h"
+    ],
+    "vector_search_queries": [
+      "limite velocità motocicli strade extraurbane principali",
+      "velocità ordinaria motocicli 110 km/h su strade extraurbane principali"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per i motocicli sulle strade extraurbane principali è fissato a 110 km/h."
+  }
+}

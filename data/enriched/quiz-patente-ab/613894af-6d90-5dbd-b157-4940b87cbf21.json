@@ -1,0 +1,32 @@
+{
+  "question_id": 4136,
+  "topic": "Segnali di divieto",
+  "number": "19878",
+  "text": "Il segnale raffigurato ha validità per tutte le 24 ore",
+  "correct_answer": true,
+  "image": "cfd537fd007a42c41805523666d78953.jpeg",
+  "image_description": "Fine divieto di sorpasso. Indica la fine del divieto di sorpasso per tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso. All'interno del cerchio, una banda diagonale nera parte dall'angolo in alto a sinistra e arriva all'angolo in basso a destra, attraversando il centro del segnale. Ai lati della banda nera, su sfondo bianco, sono raffigurati due veicoli stilizzati, uno a sinistra e uno a destra, visti frontalmente. Il segnale è posizionato isolatamente.",
+    "name": "Fine divieto di sorpasso",
+    "description": "Indica la fine del divieto di sorpasso per tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta e fermata",
+      "Validità temporale dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "divieto di sorpasso",
+      "fine del divieto",
+      "validità oraria"
+    ],
+    "vector_search_queries": [
+      "validità dei segnali di divieto stradale",
+      "orari di validità dei segnali di prescrizione vietante",
+      "efficacia temporale dei segnali di fine divieto"
+    ],
+    "rule_explanation": "I segnali di divieto, salvo diversa indicazione, hanno validità permanente, 24 ore su 24, e su tutta la strada interessata dall'apposizione del segnale."
+  }
+}

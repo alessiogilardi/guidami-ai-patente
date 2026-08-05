@@ -1,0 +1,31 @@
+{
+  "question_id": 4132,
+  "topic": "Segnali di divieto",
+  "number": "19839",
+  "text": "Il segnale raffigurato vieta il transito ai veicoli di lunghezza superiore a 7 metri",
+  "correct_answer": false,
+  "image": "41d170b88f8596eef6889b041c2516cc.jpeg",
+  "image_description": "Divieto di transito per i veicoli di massa superiore a 7 t. Il segnale vieta il transito ai veicoli che superano il peso indicato, ovvero 7 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la dicitura \"7,00 t\" in nero, con la \"t\" in apice. Questo indica un limite di massa per i veicoli.",
+    "name": "Divieto di transito per i veicoli di massa superiore a 7 t",
+    "description": "Il segnale vieta il transito ai veicoli che superano il peso indicato, ovvero 7 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Massa a pieno carico"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "massa a pieno carico",
+      "tonnellate",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per massa a pieno carico superiore a 7 tonnellate",
+      "segnali stradali di divieto di transito per peso dei veicoli"
+    ],
+    "rule_explanation": "Il segnale raffigurato vieta il transito ai veicoli di massa superiore a 7 tonnellate, non di lunghezza superiore a 7 metri."
+  }
+}

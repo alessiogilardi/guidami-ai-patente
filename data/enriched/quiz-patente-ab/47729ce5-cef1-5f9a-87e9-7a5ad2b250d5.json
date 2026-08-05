@@ -1,0 +1,32 @@
+{
+  "question_id": 4192,
+  "topic": "Segnali di precedenza",
+  "number": "20496",
+  "text": "Il segnale raffigurato si trova, in genere, negli incroci con scarsa visibilità",
+  "correct_answer": true,
+  "image": "38d290655bf8f8975e6c77db50f3154c.jpeg",
+  "image_description": "Segnale di STOP (Arresto obbligatorio). Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia trasversale di arresto e di dare la precedenza a tutti i veicoli che circolano sulla strada in cui si sta per immettersi. Se non è presente la striscia di arresto, l'arresto deve avvenire comunque prima di impegnare l'incrocio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma ottagonale, con sfondo rosso e bordo bianco. Al centro del segnale è presente la scritta \"STOP\" in lettere maiuscole bianche. Questo è il segnale di arresto obbligatorio.",
+    "name": "Segnale di STOP (Arresto obbligatorio)",
+    "description": "Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia trasversale di arresto e di dare la precedenza a tutti i veicoli che circolano sulla strada in cui si sta per immettersi. Se non è presente la striscia di arresto, l'arresto deve avvenire comunque prima di impegnare l'incrocio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Obbligo di arresto e dare precedenza"
+    ],
+    "exact_keywords": [
+      "segnale di STOP",
+      "incrocio",
+      "visibilità",
+      "arresto obbligatorio",
+      "dare precedenza"
+    ],
+    "vector_search_queries": [
+      "posizionamento segnale STOP in incroci a visibilità ridotta",
+      "obbligo di arresto e precedenza in prossimità di incroci pericolosi"
+    ],
+    "rule_explanation": "Il segnale di STOP impone l'obbligo di arrestarsi e dare la precedenza, ed è spesso posizionato in incroci con visibilità limitata per garantire la sicurezza."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4521,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23744",
+  "text": "La sosta, ma non la fermata, è vietata in prossimità e in corrispondenza di segnali semaforici in modo da occultarne la vista",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Segnaletica stradale verticale",
+      "Visibilità dei segnali semaforici"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fermata",
+      "divieto",
+      "segnali semaforici",
+      "occultarne la vista"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata in corrispondenza di segnali semaforici",
+      "ostacolo alla visibilità della segnaletica semaforica"
+    ],
+    "rule_explanation": "La sosta e la fermata sono entrambe vietate in prossimità e corrispondenza dei segnali semaforici se ne impediscono la vista."
+  }
+}

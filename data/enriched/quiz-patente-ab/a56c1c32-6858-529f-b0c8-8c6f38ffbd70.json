@@ -1,0 +1,29 @@
+{
+  "question_id": 4710,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25376",
+  "text": "In un veicolo a motore, gli ammortizzatori scarichi provocano l'usura non uniforme del battistrada dei pneumatici",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Manutenzione dei pneumatici",
+      "Componenti essenziali per la sicurezza"
+    ],
+    "exact_keywords": [
+      "ammortizzatori scarichi",
+      "usura irregolare del battistrada",
+      "pneumatici",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "effetti ammortizzatori scarichi su pneumatici",
+      "usura battistrada da ammortizzatori difettosi",
+      "impatto ammortizzatori sulla tenuta di strada e usura pneumatici"
+    ],
+    "rule_explanation": "Ammortizzatori inefficienti compromettono la tenuta di strada, causando un'usura anomala e non uniforme del battistrada degli pneumatici."
+  }
+}

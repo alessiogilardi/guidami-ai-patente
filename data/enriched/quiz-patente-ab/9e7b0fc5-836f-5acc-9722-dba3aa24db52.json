@@ -1,0 +1,31 @@
+{
+  "question_id": 4272,
+  "topic": "Segnali di indicazione",
+  "number": "21274",
+  "text": "Il segnale raffigurato indica l'indirizzo ed i numeri telefonici del più vicino comando della polizia stradale",
+  "correct_answer": true,
+  "image": "5da3cc8d78e4bff5e79f129fb811fc6e.jpeg",
+  "image_description": "Indicazione stradale per comando di Polizia Stradale. Il segnale indica la località, l'indirizzo e i numeri telefonici del più vicino comando di Polizia Stradale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bordo nero e sfondo bianco. Nella parte superiore, in lettere maiuscole nere, è scritto \"POLIZIA STRADALE\". Sotto questa intestazione, ci sono tre righe di testo: \"localita'\", \"indirizzo\" e \"telefoni\". Accanto a ciascuna di queste etichette, ci sono delle barre grigie che rappresentano i campi da compilare con le informazioni specifiche. Il segnale è di tipo informativo e non di prescrizione o pericolo.",
+    "name": "Indicazione stradale per comando di Polizia Stradale",
+    "description": "Il segnale indica la località, l'indirizzo e i numeri telefonici del più vicino comando di Polizia Stradale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Servizi di polizia stradale"
+    ],
+    "exact_keywords": [
+      "segnale di indicazione",
+      "Polizia Stradale",
+      "indirizzo",
+      "numeri telefonici"
+    ],
+    "vector_search_queries": [
+      "segnaletica indicazione comando Polizia Stradale",
+      "indicazione indirizzo e numeri telefonici Polizia Stradale"
+    ],
+    "rule_explanation": "Il segnale di indicazione specifica la località, l'indirizzo e i numeri telefonici del più vicino comando di Polizia Stradale."
+  }
+}

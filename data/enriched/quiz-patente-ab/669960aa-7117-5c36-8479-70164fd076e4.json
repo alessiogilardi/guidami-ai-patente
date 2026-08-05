@@ -1,0 +1,28 @@
+{
+  "question_id": 4634,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24806",
+  "text": "Durante la circolazione nei centri abitati, i motociclisti possono in ogni caso utilizzare l'avvisatore acustico giungendo in prossimità degli incroci",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei dispositivi segnalatori acustici",
+      "Regole di circolazione nei centri abitati"
+    ],
+    "exact_keywords": [
+      "avvisatore acustico",
+      "centri abitati",
+      "incroci",
+      "motociclisti"
+    ],
+    "vector_search_queries": [
+      "uso del clacson nei centri abitati",
+      "segnalazioni acustiche in prossimità degli incroci",
+      "limitazioni all'uso dell'avvisatore acustico per i motociclisti"
+    ],
+    "rule_explanation": "L'uso dell'avvisatore acustico è consentito solo per giustificati motivi di sicurezza, non in modo generalizzato agli incroci nei centri abitati."
+  }
+}

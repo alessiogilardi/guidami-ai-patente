@@ -1,0 +1,31 @@
+{
+  "question_id": 4166,
+  "topic": "Segnali di obbligo",
+  "number": "20237",
+  "text": "Il segnale raffigurato indica obbligo di superare un cantiere stradale dalla parte sinistra",
+  "correct_answer": true,
+  "image": "2b73d96a20a9452074f1346816094569.jpeg",
+  "image_description": "Preavviso di passaggio a sinistra. Il segnale impone di passare a sinistra dell'ostacolo o della divisione di carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca che punta in diagonale verso il basso e verso sinistra. Questo segnale è un segnale di obbligo.",
+    "name": "Preavviso di passaggio a sinistra",
+    "description": "Il segnale impone di passare a sinistra dell'ostacolo o della divisione di carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico",
+      "Direzione obbligatoria a sinistra"
+    ],
+    "exact_keywords": [
+      "obbligo",
+      "superare",
+      "cantiere stradale",
+      "parte sinistra"
+    ],
+    "vector_search_queries": [
+      "obbligo di superamento ostacolo a sinistra",
+      "segnalazione di cantiere stradale con obbligo di passaggio a sinistra"
+    ],
+    "rule_explanation": "Il segnale di obbligo raffigurato impone di circolare a sinistra dell'ostacolo o della divisione della carreggiata, come un cantiere stradale."
+  }
+}

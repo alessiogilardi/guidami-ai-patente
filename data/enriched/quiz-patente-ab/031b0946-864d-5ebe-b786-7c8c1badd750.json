@@ -1,0 +1,28 @@
+{
+  "question_id": 4643,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24864",
+  "text": "Nell'intervento di primo soccorso bisogna evitare, per quanto possibile, che il ferito subisca ulteriori danni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Dovere di assistenza",
+      "Evitare aggravamento delle lesioni"
+    ],
+    "exact_keywords": [
+      "primo soccorso",
+      "ferito",
+      "danni ulteriori",
+      "condizioni di salute"
+    ],
+    "vector_search_queries": [
+      "principio di non aggravamento del danno nel primo soccorso",
+      "doveri del soccorritore per evitare ulteriori lesioni al ferito"
+    ],
+    "rule_explanation": "Chi presta primo soccorso deve agire con diligenza per evitare che il ferito subisca ulteriori lesioni o un aggravamento delle sue condizioni."
+  }
+}

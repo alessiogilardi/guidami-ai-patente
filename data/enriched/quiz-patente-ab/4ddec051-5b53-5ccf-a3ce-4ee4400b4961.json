@@ -1,0 +1,27 @@
+{
+  "question_id": 4713,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25422",
+  "text": "Nei veicoli a motore a due ruote, l'interruttore di emergenza, permette lo spegnimento del motore qualora ci si arresti su strade a forti pendenze avendo le mani occupate sulle leve di comando",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza dei veicoli a motore",
+      "Funzionamento dell'interruttore di emergenza"
+    ],
+    "exact_keywords": [
+      "interruttore di emergenza",
+      "veicoli a motore a due ruote",
+      "spegnimento del motore",
+      "leve di comando"
+    ],
+    "vector_search_queries": [
+      "funzione interruttore di emergenza motocicli spegnimento motore pendenza",
+      "dispositivi sicurezza veicoli a due ruote spegnimento automatico motore"
+    ],
+    "rule_explanation": "L'interruttore di emergenza sui veicoli a due ruote consente lo spegnimento automatico del motore in caso di arresto su forti pendenze, liberando le mani dalle leve di comando."
+  }
+}

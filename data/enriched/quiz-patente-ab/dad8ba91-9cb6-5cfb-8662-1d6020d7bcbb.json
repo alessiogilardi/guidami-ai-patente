@@ -1,0 +1,28 @@
+{
+  "question_id": 4388,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22467",
+  "text": "In autostrada, nella corsia riservata al sorpasso, non è consentito superare la velocità di 110 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità in autostrada",
+      "Corsia di sorpasso",
+      "Regolamentazione della velocità"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "corsia riservata al sorpasso",
+      "velocità massima",
+      "130 km/h"
+    ],
+    "vector_search_queries": [
+      "limite di velocità autostrada 130 km/h",
+      "velocità massima consentita in autostrada per la corsia di sorpasso"
+    ],
+    "rule_explanation": "Il limite di velocità in autostrada è di 130 km/h, salvo eccezioni. La corsia di sorpasso non ha un limite specifico inferiore, ma si applica il limite generale."
+  }
+}

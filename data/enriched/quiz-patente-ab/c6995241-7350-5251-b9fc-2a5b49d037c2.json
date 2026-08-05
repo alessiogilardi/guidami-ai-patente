@@ -1,0 +1,28 @@
+{
+  "question_id": 4627,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24745",
+  "text": "In presenza di tratti di strada ghiacciati è opportuno marciare molto vicino alla barriera laterale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti su strade ghiacciate",
+      "Comportamento alla guida in condizioni di scarsa aderenza"
+    ],
+    "exact_keywords": [
+      "strada ghiacciata",
+      "aderenza",
+      "velocità ridotta",
+      "barriera laterale"
+    ],
+    "vector_search_queries": [
+      "guida su strade ghiacciate e aderenza",
+      "comportamento in caso di scarsa aderenza stradale",
+      "rischio di sbandamento su ghiaccio vicino a barriere"
+    ],
+    "rule_explanation": "Su strade ghiacciate, dove l'aderenza è ridotta, è necessario moderare la velocità e mantenere una distanza di sicurezza adeguata, evitando di avvicinarsi eccessivamente alle barriere laterali per non compromettere la stabilità del veicolo."
+  }
+}

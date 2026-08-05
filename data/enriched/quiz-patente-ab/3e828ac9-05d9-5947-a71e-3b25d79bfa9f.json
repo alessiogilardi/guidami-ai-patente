@@ -1,0 +1,27 @@
+{
+  "question_id": 4395,
+  "topic": "Distanza di sicurezza",
+  "number": "22559",
+  "text": "La distanza di sicurezza è commisurata anche al numero di corsie della strada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni della strada",
+      "velocità",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "adeguamento della distanza di sicurezza alle condizioni di traffico e strada",
+      "fattori che determinano la distanza di sicurezza tra veicoli"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere commisurata alle condizioni della strada, del traffico, del veicolo e alle condizioni atmosferiche, non al numero di corsie."
+  }
+}

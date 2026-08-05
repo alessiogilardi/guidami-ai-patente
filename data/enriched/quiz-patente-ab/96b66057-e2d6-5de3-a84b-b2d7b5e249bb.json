@@ -1,0 +1,33 @@
+{
+  "question_id": 4236,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20937",
+  "text": "La striscia bianca laterale discontinua in figura individua il bordo della strada principale, separandolo da quello della strada secondaria",
+  "correct_answer": true,
+  "image": "e933e1741d3256170c6d6c9959337bdf.jpeg",
+  "image_description": "Segnaletica orizzontale di corsia e bordo carreggiata. La striscia bianca laterale discontinua delimita il bordo della carreggiata. Le frecce direzionali indicano che la corsia è riservata alla svolta a sinistra. Le aree a tratteggio diagonale indicano zone non carrabili.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre diverse rappresentazioni di segnaletica orizzontale.\nLa prima immagine in alto raffigura una strada con una corsia che si immette in un'altra. È presente una striscia bianca laterale discontinua che delimita il bordo della carreggiata. Vi sono anche delle aree tratteggiate diagonalmente, che indicano zone non carrabili. Una linea verticale tratteggiata indica un limite di corsia o un punto di arresto.\nLa seconda immagine mostra un incrocio a T con una corsia che curva a sinistra. Sono presenti due frecce nere, una sopra l'altra, che indicano la direzione consentita per la corsia, in questo caso, la svolta a sinistra. La corsia è delimitata da una linea bianca discontinua.\nLa terza immagine mostra un rialzo della carreggiata, ovvero un dosso artificiale, segnalato dalla forma del manto stradale e dalla presenza di una striscia bianca discontinua che delimita la corsia.",
+    "name": "Segnaletica orizzontale di corsia e bordo carreggiata",
+    "description": "La striscia bianca laterale discontinua delimita il bordo della carreggiata. Le frecce direzionali indicano che la corsia è riservata alla svolta a sinistra. Le aree a tratteggio diagonale indicano zone non carrabili."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Bordo della carreggiata",
+      "Strada principale e secondaria"
+    ],
+    "exact_keywords": [
+      "striscia bianca laterale discontinua",
+      "bordo della strada",
+      "strada principale",
+      "strada secondaria"
+    ],
+    "vector_search_queries": [
+      "funzione della striscia bianca laterale discontinua",
+      "delimitazione del bordo della carreggiata con striscia bianca discontinua",
+      "separazione tra strada principale e secondaria tramite segnaletica orizzontale"
+    ],
+    "rule_explanation": "La striscia bianca laterale discontinua delimita il bordo della carreggiata, separando la corsia di marcia dalla banchina o da un'altra carreggiata."
+  }
+}

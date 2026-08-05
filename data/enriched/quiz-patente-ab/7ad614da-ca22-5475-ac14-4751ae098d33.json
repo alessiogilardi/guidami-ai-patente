@@ -1,0 +1,27 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22274",
+  "text": "Il conducente deve regolare la velocità in relazione alle condizioni della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità adeguata alle condizioni di traffico",
+      "Regolazione della velocità per la sicurezza"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "stato del veicolo",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alle condizioni della strada",
+      "moderazione della velocità in base a fattori esterni"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in base alle condizioni della strada, del traffico, del veicolo e atmosferiche per garantire la sicurezza e non creare intralcio."
+  }
+}

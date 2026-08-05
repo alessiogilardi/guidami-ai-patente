@@ -1,0 +1,31 @@
+{
+  "question_id": 4354,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22062",
+  "text": "Il pannello integrativo raffigurato indica che il segnale al quale è abbinato vale solo per i veicoli rappresentati",
+  "correct_answer": true,
+  "image": "9176878fa4d26bd38e490c176920999a.jpeg",
+  "image_description": "Pannello integrativo: veicoli pesanti. Il pannello integrativo raffigurato indica che il segnale al quale è abbinato si applica ai veicoli pesanti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare con bordo nero su sfondo bianco. Al centro è raffigurato il pittogramma di un veicolo pesante (camion). Questo pannello è comunemente utilizzato per integrare segnali stradali, specificando che la loro prescrizione o indicazione si applica specificamente ai veicoli pesanti.",
+    "name": "Pannello integrativo: veicoli pesanti",
+    "description": "Il pannello integrativo raffigurato indica che il segnale al quale è abbinato si applica ai veicoli pesanti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pannelli integrativi",
+      "Applicazione specifica dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "veicoli pesanti",
+      "segnali stradali",
+      "limitazione"
+    ],
+    "vector_search_queries": [
+      "pannelli integrativi che specificano la categoria di veicoli interessati dal segnale stradale",
+      "segnali stradali con pannelli integrativi per veicoli pesanti"
+    ],
+    "rule_explanation": "I pannelli integrativi possono specificare a quali categorie di veicoli si applica un segnale stradale, come in questo caso ai veicoli pesanti."
+  }
+}

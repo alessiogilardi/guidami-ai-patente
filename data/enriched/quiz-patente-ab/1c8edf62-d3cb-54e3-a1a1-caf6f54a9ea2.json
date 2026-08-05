@@ -1,0 +1,28 @@
+{
+  "question_id": 4519,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23723",
+  "text": "Nelle strade urbane a senso unico di marcia, la sosta è sempre consentita anche lungo il margine sinistro della carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta dei veicoli",
+      "Regole di sosta in strade urbane",
+      "Strade a senso unico"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "strade urbane a senso unico",
+      "margine sinistro",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta sul margine sinistro in strade urbane a senso unico",
+      "regole generali per la sosta in strade urbane a senso unico"
+    ],
+    "rule_explanation": "La sosta lungo il margine sinistro nelle strade urbane a senso unico è consentita solo se espressamente segnalata, non è una regola generale."
+  }
+}

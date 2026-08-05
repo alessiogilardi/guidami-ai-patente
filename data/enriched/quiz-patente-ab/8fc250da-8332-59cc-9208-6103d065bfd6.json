@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31051",
+  "text": "Il rispetto delle norme di circolazione è importante per gli utenti deboli, ma non per i conducenti degli autoveicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile dei conducenti",
+      "Obblighi dei conducenti verso gli utenti deboli",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "norme di circolazione",
+      "conducenti di autoveicoli",
+      "utenti deboli",
+      "responsabilità"
+    ],
+    "vector_search_queries": [
+      "obblighi dei conducenti nel rispetto delle norme di circolazione",
+      "tutela degli utenti deboli della strada da parte dei conducenti di autoveicoli",
+      "responsabilità dei conducenti per la sicurezza stradale"
+    ],
+    "rule_explanation": "Il rispetto delle norme di circolazione è un obbligo per tutti i conducenti, inclusi quelli di autoveicoli, per garantire la sicurezza di tutti gli utenti della strada, specialmente i più vulnerabili."
+  }
+}

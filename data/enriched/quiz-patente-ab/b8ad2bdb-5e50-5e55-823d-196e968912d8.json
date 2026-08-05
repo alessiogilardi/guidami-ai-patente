@@ -1,0 +1,33 @@
+{
+  "question_id": 4319,
+  "topic": "Segnali di indicazione",
+  "number": "21731",
+  "text": "Il segnale raffigurato indica un aumento da una a due corsie",
+  "correct_answer": true,
+  "image": "cde48dcb8875c390a2c629a904b48266.jpeg",
+  "image_description": "Inizio di corsia o deviazione (preavviso). Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di colore blu con bordi arrotondati. Al suo interno sono presenti due frecce bianche su sfondo blu. La freccia di sinistra è dritta e indica la direzione in avanti. La freccia di destra parte dalla stessa origine della freccia di sinistra, ma curva verso destra, indicando una deviazione o una corsia che si separa. Questo tipo di segnale preannuncia una modifica nella configurazione delle corsie di marcia.",
+    "name": "Inizio di corsia o deviazione (preavviso)",
+    "description": "Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnaletica stradale di prescrizione",
+      "Corsie di marcia"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "corsia",
+      "aumento di corsia",
+      "deviazione"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale aumento corsie",
+      "segnale inizio corsia o deviazione",
+      "interpretazione segnale stradale aumento corsie"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica l'inizio di una corsia o una deviazione, preavvisando un cambiamento nel numero di corsie disponibili o una loro separazione."
+  }
+}

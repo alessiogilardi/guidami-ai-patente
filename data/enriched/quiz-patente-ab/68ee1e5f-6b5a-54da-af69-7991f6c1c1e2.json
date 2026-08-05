@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22289",
+  "text": "E' obbligatorio regolare la velocità nelle curve",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Guida in sicurezza",
+      "Condizioni di visibilità e strada"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "curve",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in curva",
+      "adeguamento della velocità alle caratteristiche della strada e alle condizioni di visibilità"
+    ],
+    "rule_explanation": "Il conducente deve sempre moderare la velocità in modo da conservare il controllo del veicolo in ogni situazione, specialmente in prossimità o in corrispondenza delle curve."
+  }
+}

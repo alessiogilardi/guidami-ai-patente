@@ -1,0 +1,28 @@
+{
+  "question_id": 4618,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24611",
+  "text": "La revoca della patente è disposta quando il conducente guida con patente scaduta di validità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revoca della patente",
+      "Guida con patente scaduta",
+      "Sanzioni amministrative pecuniarie"
+    ],
+    "exact_keywords": [
+      "revoca della patente",
+      "patente scaduta",
+      "sanzione amministrativa",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "conseguenze della guida con patente di guida scaduta di validità",
+      "differenza tra sanzione per patente scaduta e revoca della patente"
+    ],
+    "rule_explanation": "La guida con patente scaduta comporta una sanzione amministrativa pecuniaria, non la revoca della patente, che è una sanzione accessoria a violazioni più gravi."
+  }
+}

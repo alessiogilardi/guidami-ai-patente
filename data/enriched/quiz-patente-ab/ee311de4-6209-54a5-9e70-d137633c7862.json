@@ -1,0 +1,29 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24400",
+  "text": "La robustezza della calotta esterna del casco potrebbe essere compromessa da solventi presenti in vernici o colle",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del casco protettivo",
+      "Sicurezza dei motociclisti"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "calotta esterna",
+      "vernici",
+      "colle",
+      "solvente"
+    ],
+    "vector_search_queries": [
+      "danni alla calotta del casco da solventi",
+      "compatibilità materiali casco con vernici e colle",
+      "manutenzione e conservazione del casco protettivo"
+    ],
+    "rule_explanation": "La calotta esterna del casco protettivo può essere danneggiata da solventi contenuti in vernici o colle, compromettendone la robustezza e la funzione di sicurezza."
+  }
+}

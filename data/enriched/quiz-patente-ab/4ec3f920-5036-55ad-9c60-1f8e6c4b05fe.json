@@ -1,0 +1,29 @@
+{
+  "question_id": 4553,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23977",
+  "text": "Risulta facile al conducente di un autoveicolo valutare la distanza che lo separa da un ciclomotorista che rallenta bruscamente per svoltare in una strada non sufficientemente segnalata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Valutazione della distanza di sicurezza",
+      "Comportamento dei conducenti nei confronti degli utenti vulnerabili",
+      "Segnalazione delle manovre"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "ciclista",
+      "manovra di svolta",
+      "strada non sufficientemente segnalata"
+    ],
+    "vector_search_queries": [
+      "valutazione della distanza di sicurezza rispetto a ciclisti in manovra",
+      "obbligo di prevedere le reazioni dei ciclisti anche in condizioni di scarsa visibilità o segnalazione",
+      "comportamento del conducente in prossimità di ciclisti che effettuano svolte"
+    ],
+    "rule_explanation": "Il conducente deve sempre mantenere una distanza di sicurezza adeguata, specialmente nei confronti di utenti vulnerabili come i ciclisti, e prevedere le loro possibili reazioni anche in assenza di chiara segnalazione."
+  }
+}

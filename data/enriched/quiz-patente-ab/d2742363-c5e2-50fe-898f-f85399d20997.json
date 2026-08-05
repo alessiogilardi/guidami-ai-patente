@@ -1,0 +1,27 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23021",
+  "text": "Gli autocaravan possono non essere dotati di specchi retrovisori se li rendono troppo ingombranti in larghezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dotazioni obbligatorie dei veicoli",
+      "Dispositivi di visibilità e sicurezza"
+    ],
+    "exact_keywords": [
+      "autocaravan",
+      "specchi retrovisori",
+      "dispositivi di controllo e visione posteriore",
+      "larghezza del veicolo"
+    ],
+    "vector_search_queries": [
+      "obbligo specchi retrovisori autocaravan",
+      "requisiti dotazioni veicoli a motore per visibilità posteriore"
+    ],
+    "rule_explanation": "Gli autocaravan, come tutti i veicoli a motore, devono essere dotati di specchi retrovisori esterni conformi alle norme, indipendentemente dall'ingombro in larghezza."
+  }
+}

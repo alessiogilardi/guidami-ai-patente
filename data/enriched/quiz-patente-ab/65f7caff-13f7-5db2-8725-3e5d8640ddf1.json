@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23498",
+  "text": "Il sorpasso è consentito su dossi se la strada è a due carreggiate separate e a due corsie per senso di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso su dossi",
+      "Strade a carreggiate separate",
+      "Norme di circolazione"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "dossi",
+      "carreggiate separate",
+      "corsie per senso di marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso sui dossi",
+      "sorpasso in presenza di dossi su strade a carreggiate separate"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in prossimità o in presenza di dossi, salvo che la strada sia a carreggiate separate e a due corsie per senso di marcia."
+  }
+}

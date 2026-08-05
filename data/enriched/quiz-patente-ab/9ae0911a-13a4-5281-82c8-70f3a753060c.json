@@ -1,0 +1,29 @@
+{
+  "question_id": 4043,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18766",
+  "text": "Quando le persone anziane attraversano la carreggiata bisogna tenere presente che, data la loro età, non reagiscono prontamente alle situazioni di pericolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Doveri di prudenza e attenzione del conducente",
+      "Convivenza civile e rispetto reciproco"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "attraversamento carreggiata",
+      "situazioni di pericolo",
+      "reazione tempestiva"
+    ],
+    "vector_search_queries": [
+      "precauzioni per l'attraversamento di persone anziane",
+      "doveri del conducente verso gli utenti deboli della strada",
+      "adeguamento della condotta di guida in presenza di anziani che attraversano"
+    ],
+    "rule_explanation": "I conducenti devono prestare particolare attenzione e prudenza quando persone anziane attraversano la carreggiata, considerando la loro ridotta capacità di reazione ai pericoli."
+  }
+}

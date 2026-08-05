@@ -1,0 +1,33 @@
+{
+  "question_id": 4064,
+  "topic": "Segnali di pericolo",
+  "number": "19017",
+  "text": "In presenza del segnale raffigurato è necessario percorrere le curve con più attenzione in caso di pioggia",
+  "correct_answer": true,
+  "image": "f3d65cdd3174f51dcbbc55dcae2aec01.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta una doppia curva, con la prima curva a sinistra e la seconda a destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Adattamento della velocità alle condizioni di visibilità e della strada"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "doppia curva",
+      "velocità",
+      "visibilità",
+      "condizioni atmosferiche"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità in presenza di curve pericolose",
+      "influenza delle condizioni atmosferiche sulla velocità in curva",
+      "interpretazione segnale di pericolo doppia curva"
+    ],
+    "rule_explanation": "Il segnale di pericolo per curve impone di moderare la velocità in base al raggio delle curve, alla visibilità e alle condizioni della strada, specialmente in caso di pioggia."
+  }
+}

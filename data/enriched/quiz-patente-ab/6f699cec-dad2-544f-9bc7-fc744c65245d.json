@@ -1,0 +1,27 @@
+{
+  "question_id": 4006,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18381",
+  "text": "L'isola di traffico è una piazzola per effettuare l'inversione di marcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di isola di traffico",
+      "Manovre consentite in prossimità di isole di traffico"
+    ],
+    "exact_keywords": [
+      "isola di traffico",
+      "inversione di marcia",
+      "delimitare zone della carreggiata",
+      "direzione della circolazione"
+    ],
+    "vector_search_queries": [
+      "definizione e funzione dell'isola di traffico",
+      "divieto di inversione di marcia in corrispondenza di isole di traffico"
+    ],
+    "rule_explanation": "L'isola di traffico è una zona della carreggiata delimitata da segnaletica orizzontale o verticale, destinata a regolare il traffico o a proteggere i pedoni; non è un'area per l'inversione di marcia."
+  }
+}

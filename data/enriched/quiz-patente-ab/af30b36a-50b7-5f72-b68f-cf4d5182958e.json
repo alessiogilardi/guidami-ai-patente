@@ -1,0 +1,31 @@
+{
+  "question_id": 4268,
+  "topic": "Segnali di indicazione",
+  "number": "21244",
+  "text": "Il segnale raffigurato indica il numero del cavalcavia",
+  "correct_answer": false,
+  "image": "d7cc4dc22ac0caca9adce872f7ee58a4.jpeg",
+  "image_description": "Segnale di itinerario internazionale. Il segnale indica un itinerario di strada internazionale, specificamente la E55.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare di colore verde scuro con bordo bianco. Al suo interno, in lettere e numeri bianchi, è riportata la sigla \"E 55\". Questo tipo di segnale identifica un itinerario di strada di interesse internazionale.",
+    "name": "Segnale di itinerario internazionale",
+    "description": "Il segnale indica un itinerario di strada internazionale, specificamente la E55."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione stradale",
+      "Segnaletica turistica e di localizzazione"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "itinerario internazionale",
+      "cavalcavia",
+      "strada europea"
+    ],
+    "vector_search_queries": [
+      "segnali stradali che indicano itinerari internazionali",
+      "differenza tra segnale di itinerario internazionale e segnale di numero cavalcavia"
+    ],
+    "rule_explanation": "Il segnale di itinerario internazionale indica una strada europea, non il numero di un cavalcavia. I numeri dei cavalcavia sono indicati da altri segnali specifici."
+  }
+}

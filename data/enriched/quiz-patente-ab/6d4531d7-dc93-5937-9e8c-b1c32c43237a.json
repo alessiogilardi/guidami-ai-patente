@@ -1,0 +1,27 @@
+{
+  "question_id": 4563,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24052",
+  "text": "Il numero di persone trasportabili sui veicoli è indicato sulla carta di circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Numero di posti omologati",
+      "Documentazione del veicolo"
+    ],
+    "exact_keywords": [
+      "carta di circolazione",
+      "numero di persone trasportabili",
+      "posti omologati",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "numero massimo passeggeri autorizzati per veicolo riportato su carta di circolazione",
+      "posti omologati per il trasporto persone sul libretto di circolazione"
+    ],
+    "rule_explanation": "Il numero massimo di persone trasportabili su un veicolo, oltre al conducente, è quello indicato nella carta di circolazione come 'posti omologati'."
+  }
+}

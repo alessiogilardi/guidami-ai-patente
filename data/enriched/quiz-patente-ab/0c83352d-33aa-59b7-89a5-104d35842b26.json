@@ -1,0 +1,27 @@
+{
+  "question_id": 4523,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23754",
+  "text": "La sosta è vietata negli spazi riservati allo stazionamento e alla fermata degli autobus, dei filobus e dei veicoli circolanti su rotaia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Aree riservate alla fermata e al parcheggio degli autobus"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "spazi riservati",
+      "fermata degli autobus",
+      "stazionamento"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in aree riservate ai mezzi pubblici",
+      "sosta vietata negli spazi di fermata degli autobus"
+    ],
+    "rule_explanation": "La sosta è vietata negli spazi espressamente riservati alla fermata o al parcheggio dei veicoli di trasporto pubblico (autobus, filobus) e dei veicoli circolanti su rotaia."
+  }
+}

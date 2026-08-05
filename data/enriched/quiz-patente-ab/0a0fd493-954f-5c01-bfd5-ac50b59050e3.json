@@ -1,0 +1,27 @@
+{
+  "question_id": 4414,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22722",
+  "text": "Giungendo ad un incrocio, se non si è in grado di capire subito chi ha la precedenza, si può proseguire senza rallentare, se si sceglie di andare diritto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza agli incroci",
+      "Obbligo di moderare la velocità in prossimità degli incroci"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "precedenza",
+      "rallentare",
+      "diritto"
+    ],
+    "vector_search_queries": [
+      "comportamento da tenere in incrocio in caso di incertezza sulla precedenza",
+      "obbligo di rallentare e fermarsi in incrocio per dare la precedenza"
+    ],
+    "rule_explanation": "In caso di incertezza sulla precedenza, è obbligatorio rallentare e, se necessario, fermarsi per consentire il transito ai veicoli aventi la precedenza, anche se si intende proseguire diritto."
+  }
+}

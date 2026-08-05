@@ -1,0 +1,27 @@
+{
+  "question_id": 4677,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25114",
+  "text": "L'inquinamento atmosferico è nullo nei veicoli che rispettano la normativa antinquinamento \"Euro 0\"",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Normativa antinquinamento veicoli",
+      "Inquinamento atmosferico"
+    ],
+    "exact_keywords": [
+      "Euro 0",
+      "inquinamento atmosferico",
+      "normativa antinquinamento",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "veicoli Euro 0 e impatto ambientale",
+      "limiti emissioni inquinanti veicoli non Euro"
+    ],
+    "rule_explanation": "La classe 'Euro 0' non garantisce l'assenza di inquinamento atmosferico, ma solo il rispetto di limiti di emissione meno restrittivi rispetto alle classi successive."
+  }
+}

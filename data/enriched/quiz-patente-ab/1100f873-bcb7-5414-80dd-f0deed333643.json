@@ -1,0 +1,27 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22489",
+  "text": "Se si percorre una lunga discesa con il cambio in folle e a motore spento, si può avere un'anomalia al differenziale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida con marcia innestata",
+      "Funzionamento del motore e della trasmissione"
+    ],
+    "exact_keywords": [
+      "discesa",
+      "cambio in folle",
+      "motore spento",
+      "differenziale"
+    ],
+    "vector_search_queries": [
+      "rischi guida discesa marcia folle motore spento",
+      "conseguenze tecniche guida con motore spento in discesa"
+    ],
+    "rule_explanation": "Percorrere lunghe discese con cambio in folle e motore spento può causare surriscaldamento dei freni e usura del differenziale, non un'anomalia al differenziale stesso."
+  }
+}

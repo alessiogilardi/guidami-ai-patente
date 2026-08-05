@@ -1,0 +1,32 @@
+{
+  "question_id": 4349,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22009",
+  "text": "Il pannello integrativo raffigurato, posto sotto un segnale di indicazione, serve a precisare la distanza che manca per raggiungere il punto indicato dal segnale",
+  "correct_answer": true,
+  "image": "b0971c790847c0127280b6aa2f1fe29f.jpeg",
+  "image_description": "Pannelli integrativi di distanza. I pannelli integrativi raffigurati indicano, rispettivamente, una distanza di 320 metri (pannello A) e 3,8 chilometri (pannello B). Questi pannelli vengono solitamente posti sotto altri segnali (di pericolo, di prescrizione, di indicazione) per fornire informazioni aggiuntive sulla distanza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli rettangolari, uno sopra l'altro, entrambi di colore bianco con bordo nero. Il pannello superiore (etichettato A) riporta la dicitura \"320 m\" in nero. Il pannello inferiore (etichettato B) riporta la dicitura \"3,8 km\" in nero. Entrambi sono pannelli integrativi che specificano una distanza.",
+    "name": "Pannelli integrativi di distanza",
+    "description": "I pannelli integrativi raffigurati indicano, rispettivamente, una distanza di 320 metri (pannello A) e 3,8 chilometri (pannello B). Questi pannelli vengono solitamente posti sotto altri segnali (di pericolo, di prescrizione, di indicazione) per fornire informazioni aggiuntive sulla distanza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pannelli integrativi",
+      "Segnaletica stradale di indicazione",
+      "Distanza"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "segnale di indicazione",
+      "distanza",
+      "pannello di completamento di distanza"
+    ],
+    "vector_search_queries": [
+      "funzione pannelli integrativi di distanza sotto segnali di indicazione",
+      "pannelli che specificano la distanza per raggiungere un punto indicato da un segnale"
+    ],
+    "rule_explanation": "I pannelli integrativi di distanza, posti sotto un segnale, specificano la distanza residua al punto indicato dal segnale stesso."
+  }
+}

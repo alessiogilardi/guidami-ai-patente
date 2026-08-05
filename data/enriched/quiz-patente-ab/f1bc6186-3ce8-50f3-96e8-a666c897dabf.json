@@ -1,0 +1,31 @@
+{
+  "question_id": 4315,
+  "topic": "Segnali di indicazione",
+  "number": "21693",
+  "text": "Il segnale raffigurato indica una piazzola a lato della carreggiata per effettuare la fermata",
+  "correct_answer": true,
+  "image": "f18ba4966ff5723564b62ec08c5c30bf.jpeg",
+  "image_description": "Piazzola di sosta. Il segnale indica una piazzola di sosta a lato della carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale è presente un pittogramma bianco che rappresenta una piazzola di sosta a lato della carreggiata. La piazzola è indicata da una linea tratteggiata che si stacca dalla linea continua della carreggiata e si allarga verso destra, formando uno spazio di sosta.",
+    "name": "Piazzola di sosta",
+    "description": "Il segnale indica una piazzola di sosta a lato della carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Piazzola di sosta"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "piazzola di sosta",
+      "fermata",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione piazzola di sosta",
+      "definizione e scopo della piazzola di sosta"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica una piazzola di sosta laterale alla carreggiata, destinata alla fermata o alla sosta del veicolo."
+  }
+}

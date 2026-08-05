@@ -1,0 +1,27 @@
+{
+  "question_id": 4019,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18513",
+  "text": "La banchina è parte della strada, situata oltre la linea bianca continua di margine della carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di banchina",
+      "Elementi costitutivi della strada"
+    ],
+    "exact_keywords": [
+      "banchina",
+      "carreggiata",
+      "linea bianca continua",
+      "margine della carreggiata"
+    ],
+    "vector_search_queries": [
+      "definizione di banchina stradale",
+      "posizione della banchina rispetto alla carreggiata"
+    ],
+    "rule_explanation": "La banchina è la parte della strada esterna alla carreggiata, delimitata da una linea bianca continua di margine."
+  }
+}

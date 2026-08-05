@@ -1,0 +1,27 @@
+{
+  "question_id": 4542,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23890",
+  "text": "Sulle autostrade e sulle strade extraurbane principali, per uscire dalla carreggiata il conducente deve impegnare per tempo la corsia di destra, e quindi immettersi nella corsia di decelerazione dal suo inizio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uscita da autostrade e strade extraurbane principali",
+      "Manovre di immissione e uscita dalla carreggiata"
+    ],
+    "exact_keywords": [
+      "autostrade",
+      "strade extraurbane principali",
+      "corsia di decelerazione",
+      "uscire dalla carreggiata"
+    ],
+    "vector_search_queries": [
+      "manovra di uscita da autostrade e strade extraurbane principali",
+      "sequenza delle corsie per l'uscita dalla carreggiata autostradale"
+    ],
+    "rule_explanation": "Per uscire da autostrade e strade extraurbane principali, il conducente deve anticipare l'occupazione della corsia di destra e inserirsi nella corsia di decelerazione fin dal suo inizio."
+  }
+}

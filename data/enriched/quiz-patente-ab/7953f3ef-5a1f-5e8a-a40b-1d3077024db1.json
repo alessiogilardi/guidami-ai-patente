@@ -1,0 +1,27 @@
+{
+  "question_id": 4010,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18423",
+  "text": "Il passaggio a livello è un passo carrabile",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di passaggio a livello",
+      "Classificazione delle infrastrutture stradali"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "passo carrabile",
+      "intersezione a raso",
+      "linea ferroviaria"
+    ],
+    "vector_search_queries": [
+      "differenza tra passaggio a livello e passo carrabile",
+      "definizione normativa di passaggio a livello e sue caratteristiche"
+    ],
+    "rule_explanation": "Il passaggio a livello è un'intersezione a raso tra una strada e una linea ferroviaria, non un passo carrabile che è un accesso privato a un fondo."
+  }
+}

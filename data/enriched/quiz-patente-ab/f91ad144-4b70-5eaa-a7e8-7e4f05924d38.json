@@ -1,0 +1,32 @@
+{
+  "question_id": 4090,
+  "topic": "Segnali di pericolo",
+  "number": "19332",
+  "text": "Il segnale raffigurato richiede di rallentare per evitare urti con animali selvatici vaganti",
+  "correct_answer": true,
+  "image": "36afb52a10944b6e19c4dc97b73653d4.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento animali selvatici. Il segnale preannuncia la possibilità di attraversamento di animali selvatici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato, in nero, il pittogramma di un cervo in movimento, che simboleggia la possibile presenza o attraversamento di animali selvatici sulla carreggiata. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
+    "name": "Segnale di pericolo - Attraversamento animali selvatici",
+    "description": "Il segnale preannuncia la possibilità di attraversamento di animali selvatici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Attraversamento animali selvatici",
+      "Moderazione della velocità"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "animali selvatici",
+      "moderare la velocità",
+      "preavviso di pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di segnali di pericolo per animali selvatici",
+      "significato del segnale di pericolo di attraversamento animali selvatici"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante animali selvatici impone di moderare la velocità per prevenire collisioni con animali vaganti sulla carreggiata."
+  }
+}

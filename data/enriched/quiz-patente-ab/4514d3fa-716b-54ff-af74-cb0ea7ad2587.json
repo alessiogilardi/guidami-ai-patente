@@ -1,0 +1,27 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24636",
+  "text": "La sospensione della patente è disposta quando il titolare non è più in possesso dei requisiti morali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti di idoneità alla guida",
+      "Sospensione della patente di guida"
+    ],
+    "exact_keywords": [
+      "sospensione patente",
+      "requisiti morali",
+      "titolare di patente",
+      "sanzione amministrativa"
+    ],
+    "vector_search_queries": [
+      "sospensione patente per perdita requisiti morali",
+      "conseguenze della perdita dei requisiti morali per il titolare di patente"
+    ],
+    "rule_explanation": "La sospensione della patente non è disposta per la mancanza dei requisiti morali, ma per violazioni al CdS che comportano la perdita di punti o altre sanzioni specifiche."
+  }
+}

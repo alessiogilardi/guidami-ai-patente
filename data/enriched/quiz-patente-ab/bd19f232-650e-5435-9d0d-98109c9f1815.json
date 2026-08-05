@@ -1,0 +1,28 @@
+{
+  "question_id": 4697,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25246",
+  "text": "Gli pneumatici con camera d'aria, in caso di foratura, si sgonfiano lentamente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pneumatici con camera d'aria",
+      "Perdita di pressione degli pneumatici",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "pneumatici con camera d'aria",
+      "foratura",
+      "sgonfiarsi",
+      "perdita di pressione"
+    ],
+    "vector_search_queries": [
+      "comportamento pneumatici con camera d'aria in caso di foratura",
+      "rischio sgonfiaggio rapido pneumatici con camera d'aria"
+    ],
+    "rule_explanation": "Gli pneumatici con camera d'aria, a differenza di quelli tubeless, tendono a sgonfiarsi rapidamente in caso di foratura, perdendo quasi istantaneamente la pressione di gonfiaggio."
+  }
+}

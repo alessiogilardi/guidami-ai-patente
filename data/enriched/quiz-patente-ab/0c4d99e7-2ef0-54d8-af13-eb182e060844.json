@@ -1,0 +1,29 @@
+{
+  "question_id": 4048,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18823",
+  "text": "Il conducente, in vicinanza di un posteggio riservato ai taxi, deve rallentare ed eventualmente fermarsi se vi sono pedoni che attraversano la strada, senza guardare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di circolazione in prossimità di fermate/posteggi dedicati",
+      "Dovere di attenzione verso i pedoni in attraversamento",
+      "Priorità dei pedoni in attraversamento"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "rallentare",
+      "fermars",
+      "pedoni che attraversano",
+      "posteggio taxi"
+    ],
+    "vector_search_queries": [
+      "obbligo di rallentare e fermarsi in prossimità di posteggio taxi per pedoni in attraversamento",
+      "condotta del conducente in presenza di pedoni che attraversano la carreggiata in prossimità di fermate o posteggi dedicati"
+    ],
+    "rule_explanation": "Il conducente deve rallentare e, se necessario, fermarsi in prossimità di un posteggio taxi se vi sono pedoni che attraversano la strada, anche se non guardano."
+  }
+}

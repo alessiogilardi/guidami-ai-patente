@@ -1,0 +1,27 @@
+{
+  "question_id": 4226,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20842",
+  "text": "E' regolamentare, nelle zone destinate alla fermata degli autobus in servizio pubblico di linea, trovare sulla pavimentazione la scritta BUS di colore giallo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Fermata autobus"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "fermata di sosta",
+      "autobus di linea",
+      "vernice gialla"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per fermata autobus di linea",
+      "scritta BUS gialla su pavimentazione per fermata autobus"
+    ],
+    "rule_explanation": "Nelle zone di fermata degli autobus di linea, la scritta BUS di colore giallo sulla pavimentazione è un segnale regolamentare."
+  }
+}

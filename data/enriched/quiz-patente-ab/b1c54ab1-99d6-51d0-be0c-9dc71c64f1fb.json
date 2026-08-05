@@ -1,0 +1,32 @@
+{
+  "question_id": 4058,
+  "topic": "Segnali di pericolo",
+  "number": "18944",
+  "text": "In presenza del segnale raffigurato si deve circolare il più possibile vicino alla striscia bianca che separa i sensi di marcia",
+  "correct_answer": false,
+  "image": "34d83af03310c64d51078b75499c7efd.jpeg",
+  "image_description": "Segnale di curva pericolosa a destra. Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurata una freccia nera curva che indica una svolta a destra. Questo è il segnale di \"Curva pericolosa a destra\".",
+    "name": "Segnale di curva pericolosa a destra",
+    "description": "Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Comportamento in curva",
+      "Moderazione della velocità"
+    ],
+    "exact_keywords": [
+      "curva pericolosa",
+      "preavviso di curva",
+      "velocità moderata",
+      "prestare attenzione"
+    ],
+    "vector_search_queries": [
+      "comportamento alla guida in presenza di curva pericolosa",
+      "obblighi del conducente al segnale di pericolo curva"
+    ],
+    "rule_explanation": "Il segnale di curva pericolosa impone di moderare la velocità e prestare attenzione, non di tenersi vicini alla striscia bianca."
+  }
+}

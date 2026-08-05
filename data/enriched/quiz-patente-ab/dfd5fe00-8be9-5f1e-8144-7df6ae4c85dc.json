@@ -1,0 +1,29 @@
+{
+  "question_id": 4568,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24116",
+  "text": "Quando si traina un rimorchio, bisogna considerare che nelle curve la fascia di ingombro è maggiore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ingombro del veicolo in marcia",
+      "Dinamica del traino di rimorchi",
+      "Manovre di guida con rimorchio"
+    ],
+    "exact_keywords": [
+      "traino",
+      "rimorchio",
+      "curve",
+      "fascia di ingombro",
+      "veicolo in avaria"
+    ],
+    "vector_search_queries": [
+      "ingombro in curva durante il traino di un rimorchio",
+      "spazio di manovra necessario per veicoli con rimorchio in curva"
+    ],
+    "rule_explanation": "Durante il traino di un rimorchio, l'ingombro in curva aumenta a causa dell\\'angolo di articolazione tra motrice e rimorchio, richiedendo maggiore spazio di manovra."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18479",
+  "text": "La corsia è limitata da strisce continue o discontinue",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Delimitazione delle corsie di marcia",
+      "Segnaletica orizzontale"
+    ],
+    "exact_keywords": [
+      "corsia",
+      "strisce continue",
+      "strisce discontinue",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "definizione di corsia stradale e segnaletica orizzontale",
+      "uso di strisce continue e discontinue per delimitare le corsie"
+    ],
+    "rule_explanation": "Le corsie di marcia sono delimitate da segnaletica orizzontale, costituita da strisce continue o discontinue, che ne definisce la carreggiata e le direzioni di marcia consentite."
+  }
+}

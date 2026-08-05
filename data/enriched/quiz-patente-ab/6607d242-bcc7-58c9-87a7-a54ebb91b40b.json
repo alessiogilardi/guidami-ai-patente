@@ -1,0 +1,31 @@
+{
+  "question_id": 4105,
+  "topic": "Segnali di divieto",
+  "number": "19523",
+  "text": "Il segnale raffigurato consente, di norma, di entrare nella strada per effettuare la sosta e le operazioni di carico e scarico",
+  "correct_answer": false,
+  "image": "fbde6a78154edc681ee7715bad203441.jpeg",
+  "image_description": "Segnale di divieto di transito. Il segnale vieta il transito a tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Questo è il segnale di divieto di transito, che indica che il transito è vietato a tutti i veicoli.",
+    "name": "Segnale di divieto di transito",
+    "description": "Il segnale vieta il transito a tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Divieto di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "sosta",
+      "carico e scarico",
+      "operazioni di manovra"
+    ],
+    "vector_search_queries": [
+      "divieto di transito e sue implicazioni per sosta e carico/scarico",
+      "segnali di divieto che impediscono l'accesso e le manovre di sosta"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito vieta l'accesso a tutti i veicoli, non consentendo né la sosta né le operazioni di carico/scarico."
+  }
+}

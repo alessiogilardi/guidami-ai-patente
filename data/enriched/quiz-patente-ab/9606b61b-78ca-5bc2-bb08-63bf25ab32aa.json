@@ -1,0 +1,28 @@
+{
+  "question_id": 4026,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18588",
+  "text": "Le macchine operatrici semoventi possono trasportare fino a quattro passeggeri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto passeggeri su macchine operatrici",
+      "Definizione di macchina operatrice semovente",
+      "Uso stradale dei veicoli da lavoro"
+    ],
+    "exact_keywords": [
+      "macchine operatrici semoventi",
+      "trasporto passeggeri",
+      "numero massimo passeggeri",
+      "eccezioni"
+    ],
+    "vector_search_queries": [
+      "limiti trasporto passeggeri macchine operatrici semoventi",
+      "normativa trasporto persone su macchine operatrici"
+    ],
+    "rule_explanation": "Le macchine operatrici semoventi, per loro natura, non sono destinate al trasporto di persone se non nei casi specificamente previsti dalla normativa, che generalmente limita tale possibilità a un solo passeggero oltre al conducente."
+  }
+}

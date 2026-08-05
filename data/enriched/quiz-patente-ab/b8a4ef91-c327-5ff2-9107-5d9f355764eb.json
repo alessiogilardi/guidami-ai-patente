@@ -1,0 +1,32 @@
+{
+  "question_id": 4354,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22068",
+  "text": "Il segnale raffigurato prescrive che possono transitare gli autoarticolati",
+  "correct_answer": false,
+  "image": "7c73102d05c7e23b7a50fae6fd1a7e24.jpeg",
+  "image_description": "Divieto di transito agli autoarticolati. Il segnale di divieto di transito (cerchio rosso con sfondo bianco) è integrato da un pannello che raffigura un autoarticolato. Pertanto, il divieto di transito si applica specificamente ai veicoli di tale tipologia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di transito, caratterizzato da un cerchio rosso con bordo rosso e sfondo bianco. Sotto questo segnale, vi è un pannello integrativo rettangolare con sfondo bianco e bordo nero. All'interno del pannello integrativo è raffigurato il pittogramma di un autoarticolato in nero. L'insieme dei due elementi costituisce un segnale stradale unico che specifica una limitazione per una particolare categoria di veicoli.",
+    "name": "Divieto di transito agli autoarticolati",
+    "description": "Il segnale di divieto di transito (cerchio rosso con sfondo bianco) è integrato da un pannello che raffigura un autoarticolato. Pertanto, il divieto di transito si applica specificamente ai veicoli di tale tipologia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Divieto di transito",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "segnali di prescrizione",
+      "pannello integrativo",
+      "autoarticolati",
+      "divieto di transito"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo che limita il divieto di transito agli autoarticolati",
+      "interpretazione segnale di divieto con pannello integrativo raffigurante autoarticolato"
+    ],
+    "rule_explanation": "I pannelli integrativi specificano o limitano la portata del segnale verticale principale. In questo caso, il pannello chiarisce che il divieto di transito è rivolto agli autoarticolati."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4643,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24867",
+  "text": "Nell'intervento di primo soccorso bisogna allontanare in ogni caso il ferito dal posto in cui si trova",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Principio di non nuocere",
+      "Sicurezza del soccorritore e del ferito"
+    ],
+    "exact_keywords": [
+      "primo soccorso",
+      "ferito",
+      "allontanare dal posto",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "allontanamento ferito dal luogo dell'incidente primo soccorso",
+      "movimentazione ferito in condizioni di pericolo primo soccorso"
+    ],
+    "rule_explanation": "Nell'intervento di primo soccorso, il ferito va allontanato dal luogo dell'incidente solo se vi è un pericolo imminente per la sua incolumità o per quella dei soccorritori."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4566,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24084",
+  "text": "Alla guida di un veicolo con rimorchio, durante una frenata in marcia rettilinea, il carico trasportato tenderà a spostarsi all'indietro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dinamica del carico durante la frenata",
+      "Stabilità del convoglio stradale"
+    ],
+    "exact_keywords": [
+      "veicolo con rimorchio",
+      "frenata",
+      "carico trasportato",
+      "spostamento del carico"
+    ],
+    "vector_search_queries": [
+      "comportamento del carico durante la frenata di un veicolo con rimorchio",
+      "effetto dell'inerzia sul carico durante decelerazione"
+    ],
+    "rule_explanation": "Durante una frenata, il carico su un veicolo (anche con rimorchio) tende a spostarsi in avanti per inerzia, non all'indietro."
+  }
+}

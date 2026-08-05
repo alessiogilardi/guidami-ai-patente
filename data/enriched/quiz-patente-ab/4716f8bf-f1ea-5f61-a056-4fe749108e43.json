@@ -1,0 +1,28 @@
+{
+  "question_id": 4565,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24076",
+  "text": "Nei caravan, per ridurre il rischio di ribaltamento in curva, occorre sistemare il carico in modo il più possibile equilibrato tra lato destro e sinistro",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Bilanciamento del carico nel traino",
+      "Stabilità del veicolo trainato",
+      "Norme di circolazione per caravan"
+    ],
+    "exact_keywords": [
+      "caravan",
+      "carico equilibrato",
+      "rischio di ribaltamento",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "sistemazione del carico nei caravan per la stabilità in curva",
+      "distribuzione del peso per prevenire il ribaltamento di un caravan"
+    ],
+    "rule_explanation": "Per i caravan, il carico deve essere distribuito equamente tra i lati destro e sinistro per minimizzare il rischio di ribaltamento in curva e garantire la stabilità."
+  }
+}

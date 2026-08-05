@@ -1,0 +1,28 @@
+{
+  "question_id": 4538,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23866",
+  "text": "Lungo le corsie di emergenza delle autostrade i pedoni possono transitare solo per raggiungere i punti per le richieste di soccorso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di transito ai pedoni in autostrada",
+      "Uso della corsia di emergenza"
+    ],
+    "exact_keywords": [
+      "corsie di emergenza",
+      "autostrade",
+      "pedoni",
+      "transito vietato",
+      "soccorso"
+    ],
+    "vector_search_queries": [
+      "divieto di transito pedoni in autostrada e corsia di emergenza",
+      "eccezioni al divieto di transito pedonale in autostrada per richiesta di soccorso"
+    ],
+    "rule_explanation": "Il transito dei pedoni è vietato in autostrada, salvo che per raggiungere i punti di chiamata per richiedere soccorso."
+  }
+}

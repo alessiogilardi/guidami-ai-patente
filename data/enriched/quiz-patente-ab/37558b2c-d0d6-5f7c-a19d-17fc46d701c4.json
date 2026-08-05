@@ -1,0 +1,28 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22537",
+  "text": "Il valore della distanza di sicurezza da mantenere da una macchina spanditrice di sale in azione è di 20 metri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Veicoli speciali",
+      "Manutenzione stradale"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "macchina spanditrice di sale",
+      "20 metri",
+      "in azione"
+    ],
+    "vector_search_queries": [
+      "distanza di sicurezza da macchine operatrici per la manutenzione stradale",
+      "distanza minima da veicoli per la spargitura di sale in movimento"
+    ],
+    "rule_explanation": "La distanza di sicurezza da mantenere da una macchina spanditrice di sale in azione deve essere di almeno 20 metri."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4065,
+  "topic": "Segnali di pericolo",
+  "number": "19037",
+  "text": "Il segnale raffigurato preannuncia una strada senza uscita",
+  "correct_answer": false,
+  "image": "accabdc7809596ef95d9e34d4b33d06b.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere o semibarriere. Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un simbolo nero che rappresenta un passaggio a livello con barriere, costituito da due elementi verticali collegati da tre elementi orizzontali. Il segnale è isolato, non inserito in una scena di guida o in sequenza con altri segnali.",
+    "name": "Segnale di passaggio a livello con barriere o semibarriere",
+    "description": "Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di passaggio a livello"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello con barriere",
+      "passaggio a livello senza barriere",
+      "strada senza uscita"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo stradale e loro significato",
+      "differenza tra segnale di passaggio a livello e segnale di strada senza uscita",
+      "interpretazione segnali di pericolo specifici per passaggi a livello"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante un passaggio a livello con barriere o semibarriere non preannuncia una strada senza uscita, ma appunto un passaggio a livello con barriere o semibarriere."
+  }
+}

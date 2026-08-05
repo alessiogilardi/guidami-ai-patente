@@ -1,0 +1,27 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22310",
+  "text": "E' obbligatorio ridurre la velocità in presenza di qualunque segnale stradale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "segnali stradali",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità in presenza di segnali stradali specifici",
+      "moderazione della velocità per evitare pericolo o intralcio alla circolazione"
+    ],
+    "rule_explanation": "Non tutti i segnali stradali impongono una riduzione della velocità; tale obbligo sussiste solo in presenza di specifici segnali di prescrizione o in situazioni di potenziale pericolo o intralcio alla circolazione."
+  }
+}

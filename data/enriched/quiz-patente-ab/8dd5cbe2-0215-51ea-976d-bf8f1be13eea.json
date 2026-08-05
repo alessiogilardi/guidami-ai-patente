@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23520",
+  "text": "E' obbligatorio accertarsi prima di effettuare il sorpasso che non vi siano segnali che lo vietino",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Obblighi del conducente prima di sorpassare"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "divieto di sorpasso",
+      "segnali stradali",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso tramite segnaletica verticale",
+      "obbligo di verificare divieti di sorpasso prima di iniziare la manovra"
+    ],
+    "rule_explanation": "Prima di effettuare un sorpasso, il conducente ha l'obbligo di verificare l'assenza di segnali stradali che vietino tale manovra."
+  }
+}

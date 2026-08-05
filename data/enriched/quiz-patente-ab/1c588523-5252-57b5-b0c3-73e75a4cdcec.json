@@ -1,0 +1,32 @@
+{
+  "question_id": 4054,
+  "topic": "Segnali di pericolo",
+  "number": "18900",
+  "text": "Il segnale raffigurato è un segnale di obbligo",
+  "correct_answer": false,
+  "image": "77a40e39cc4b726c3f05d1759479cd9e.jpeg",
+  "image_description": "Segnale di dosso. Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un pannello a forma di triangolo con bordo rosso e sfondo bianco. Al centro del pannello è raffigurato un pittogramma nero che rappresenta un dosso.",
+    "name": "Segnale di dosso",
+    "description": "Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione (divieto/obbligo)"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "segnale di obbligo",
+      "dosso",
+      "presegnalazione"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di pericolo e segnali di obbligo",
+      "classificazione dei segnali stradali di pericolo",
+      "segnali di prescrizione e loro significato"
+    ],
+    "rule_explanation": "I segnali di pericolo preavvisano una situazione di potenziale rischio, mentre i segnali di obbligo impongono un comportamento specifico. Il segnale di dosso è di pericolo."
+  }
+}

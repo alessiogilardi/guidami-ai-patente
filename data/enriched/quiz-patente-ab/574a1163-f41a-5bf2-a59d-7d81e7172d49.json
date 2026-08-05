@@ -1,0 +1,28 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18724",
+  "text": "Su una strada ricoperta da brecciolino il conducente può circolare a velocità sostenuta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità adeguata alle condizioni stradali",
+      "Principio di prudenza e cautela alla guida"
+    ],
+    "exact_keywords": [
+      "velocità sostenuta",
+      "condizioni della strada",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alle condizioni del manto stradale",
+      "moderazione della velocità su strade con brecciolino",
+      "rischio di perdita di aderenza e controllo del veicolo su fondo sconnesso"
+    ],
+    "rule_explanation": "Il conducente deve moderare la velocità in base alle condizioni della strada, specialmente se ricoperta da brecciolino, per evitare di creare pericolo o intralcio alla circolazione."
+  }
+}

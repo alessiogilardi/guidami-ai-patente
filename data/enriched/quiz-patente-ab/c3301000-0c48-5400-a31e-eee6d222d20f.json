@@ -1,0 +1,31 @@
+{
+  "question_id": 4178,
+  "topic": "Segnali di obbligo",
+  "number": "20360",
+  "text": "Il segnale raffigurato è posto in corrispondenza di un attraversamento ciclabile regolato da semaforo",
+  "correct_answer": false,
+  "image": "470b57241e004a6998b51e09c8914b0b.jpeg",
+  "image_description": "Pista ciclabile. Il segnale impone l'obbligo di utilizzare la pista ciclabile. Vieta il transito ai veicoli a motore.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro è raffigurata la sagoma stilizzata di una bicicletta in bianco. Si tratta di un segnale di obbligo.",
+    "name": "Pista ciclabile",
+    "description": "Il segnale impone l'obbligo di utilizzare la pista ciclabile. Vieta il transito ai veicoli a motore."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico per ciclisti",
+      "Segnaletica stradale di indicazione e prescrizione"
+    ],
+    "exact_keywords": [
+      "pista ciclabile",
+      "segnali di obbligo",
+      "segnali di indicazione",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo e indicazione per piste ciclabili",
+      "divieto di transito ai veicoli a motore su piste ciclabili"
+    ],
+    "rule_explanation": "I segnali di obbligo impongono un comportamento, mentre quelli di indicazione forniscono informazioni. Il segnale di pista ciclabile indica un percorso riservato ai ciclisti e vieta il transito ai veicoli a motore."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23631",
+  "text": "Quando si guida un veicolo a motore, bisogna avere con sé tutti i documenti necessari per la guida (carta di circolazione, certificato di assicurazione, patente ecc.), e in corso di validità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente",
+      "Documentazione di bordo",
+      "Validità dei documenti di circolazione"
+    ],
+    "exact_keywords": [
+      "documenti necessari per la guida",
+      "carta di circolazione",
+      "certificato di assicurazione",
+      "patente",
+      "in corso di validità"
+    ],
+    "vector_search_queries": [
+      "obbligo di avere con sé documenti di circolazione validi",
+      "documentazione necessaria per la guida del veicolo a motore",
+      "validità patente carta circolazione certificato assicurazione"
+    ],
+    "rule_explanation": "Il conducente di un veicolo a motore deve sempre avere con sé i documenti di circolazione e di abilitazione alla guida in corso di validità."
+  }
+}

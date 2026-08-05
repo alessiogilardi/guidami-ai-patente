@@ -1,0 +1,27 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18478",
+  "text": "La corsia può essere destinata alla normale marcia dei veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di corsia di marcia",
+      "Uso della strada e convivenza civile"
+    ],
+    "exact_keywords": [
+      "corsia",
+      "normale marcia",
+      "veicoli",
+      "strada"
+    ],
+    "vector_search_queries": [
+      "definizione di corsia di marcia nel CdS",
+      "destinazione della corsia per la circolazione dei veicoli"
+    ],
+    "rule_explanation": "La corsia di marcia è la parte longitudinale della carreggiata destinata alla circolazione di correnti di traffico e, di norma, al passaggio dei veicoli."
+  }
+}

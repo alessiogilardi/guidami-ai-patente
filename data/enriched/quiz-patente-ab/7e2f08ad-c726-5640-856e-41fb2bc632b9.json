@@ -1,0 +1,27 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23641",
+  "text": "Prima di iniziare a guidare un veicolo, bisogna verificarne lo stato di efficienza solo se si deve intraprendere un lungo viaggio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di manutenzione del veicolo",
+      "Sicurezza nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "stato di efficienza",
+      "veicolo",
+      "manutenzione",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo verifica efficienza veicolo prima di mettersi in marcia",
+      "manutenzione veicolo per la sicurezza stradale"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di assicurarsi che il veicolo sia in stato di efficienza in ogni circostanza, non solo per i lunghi viaggi, per garantire la sicurezza propria e altrui."
+  }
+}

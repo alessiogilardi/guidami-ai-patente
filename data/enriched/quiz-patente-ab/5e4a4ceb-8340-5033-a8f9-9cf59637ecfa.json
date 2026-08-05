@@ -1,0 +1,33 @@
+{
+  "question_id": 4485,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23371",
+  "text": "Nell'intersezione di figura l'ordine di transito dei veicoli è: N, A, R",
+  "correct_answer": true,
+  "image": "64297c82b58553f35c10ada436091224.jpeg",
+  "image_description": "Incrocio a raso con segnali di 'Dare precedenza'. L'incrocio è regolato da segnali di 'Dare precedenza' posti sulle strade secondarie che immettono nell'incrocio principale. Il veicolo N, provenendo dalla strada secondaria in basso, deve dare precedenza ai veicoli che percorrono la strada principale. Il veicolo A, provenendo dalla strada principale da destra, ha la precedenza sul veicolo N. Il veicolo R, provenendo dalla strada secondaria a sinistra, deve anch'esso dare precedenza ai veicoli che percorrono la strada principale. Poiché il veicolo A si trova sulla strada principale e il veicolo R sulla strada secondaria, il veicolo A ha la precedenza sul veicolo R. Pertanto, l'ordine di transito corretto è prima il veicolo A, poi il veicolo N (che deve attendere il passaggio di A), e infine il veicolo R (che deve attendere il passaggio di A e N).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso tra due strade. Sulle due strade secondarie che si immettono nell'incrocio sono presenti segnali di 'Dare precedenza' (triangolo rosso con vertice verso il basso e bordo rosso). Un veicolo N (verde) si trova sulla strada secondaria in basso, in procinto di immettersi nell'incrocio. Un veicolo A (rosso) si trova sulla strada principale, proveniente da destra rispetto al veicolo N, e sta per attraversare l'incrocio. Un veicolo R (nero) si trova sulla strada secondaria a sinistra, anch'esso in procinto di immettersi nell'incrocio. Le frecce tratteggiate indicano le traiettorie di svolta dei veicoli N e R. Il veicolo N deve dare precedenza ai veicoli che provengono dalla sua destra (veicolo A) e dalla sua sinistra (veicolo R, sebbene R debba dare precedenza ad A). Il veicolo A, trovandosi sulla strada principale e non avendo segnali di stop o dare precedenza, ha la precedenza sui veicoli N e R che si immettono dalla strada secondaria. Il veicolo R deve dare precedenza sia al veicolo A (sulla strada principale) sia al veicolo N (che, pur provenendo da una secondaria, si immette prima di R e ha la precedenza su R in base alla regola generale della precedenza a destra, ma in questo caso A ha la precedenza su entrambi). L'ordine di precedenza corretto è quindi: A, poi N, poi R.",
+    "name": "Incrocio a raso con segnali di 'Dare precedenza'",
+    "description": "L'incrocio è regolato da segnali di 'Dare precedenza' posti sulle strade secondarie che immettono nell'incrocio principale. Il veicolo N, provenendo dalla strada secondaria in basso, deve dare precedenza ai veicoli che percorrono la strada principale. Il veicolo A, provenendo dalla strada principale da destra, ha la precedenza sul veicolo N. Il veicolo R, provenendo dalla strada secondaria a sinistra, deve anch'esso dare precedenza ai veicoli che percorrono la strada principale. Poiché il veicolo A si trova sulla strada principale e il veicolo R sulla strada secondaria, il veicolo A ha la precedenza sul veicolo R. Pertanto, l'ordine di transito corretto è prima il veicolo A, poi il veicolo N (che deve attendere il passaggio di A), e infine il veicolo R (che deve attendere il passaggio di A e N)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ordine di precedenza agli incroci",
+      "Segnaletica stradale di prescrizione (Dare precedenza)"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "ordine di transito",
+      "dare precedenza",
+      "strada principale",
+      "strada secondaria"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio con segnale di dare precedenza",
+      "ordine di transito veicoli incrocio segnale dare precedenza",
+      "regolamentazione precedenze incroci stradali segnali"
+    ],
+    "rule_explanation": "Ai incroci regolati da segnali di 'Dare precedenza', i veicoli devono cedere il passo ai veicoli che percorrono la strada principale e a quelli provenienti da destra se non diversamente indicato."
+  }
+}

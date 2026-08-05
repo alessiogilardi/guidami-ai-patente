@@ -1,0 +1,28 @@
+{
+  "question_id": 4676,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25101",
+  "text": "Per diminuire l'inquinamento, bisogna evitare di tenere inserita per troppo tempo una marcia bassa, se non è necessaria",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Riduzione dei consumi energetici",
+      "Prevenzione dell'inquinamento atmosferico",
+      "Guida ecologica"
+    ],
+    "exact_keywords": [
+      "inquinamento atmosferico",
+      "marcia bassa",
+      "consumi",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "impatto della marcia sulla riduzione dei consumi e dell'inquinamento atmosferico",
+      "guida ecologica per limitare le emissioni inquinanti"
+    ],
+    "rule_explanation": "La scelta della marcia adeguata, evitando inutili e prolungate marce basse, contribuisce a ridurre i consumi di carburante e, di conseguenza, le emissioni inquinanti."
+  }
+}

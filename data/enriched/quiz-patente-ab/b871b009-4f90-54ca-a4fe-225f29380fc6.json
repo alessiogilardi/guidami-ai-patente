@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23518",
+  "text": "La distanza di sicurezza va rispettata anche quando si inizia la manovra di sorpasso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "sorpasso",
+      "manovra di sorpasso",
+      "veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "rispetto della distanza di sicurezza durante il sorpasso",
+      "obbligo di mantenere la distanza di sicurezza prima di iniziare il sorpasso"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere mantenuta anche durante la fase di impostazione del sorpasso, garantendo spazio sufficiente dal veicolo che si intende superare."
+  }
+}

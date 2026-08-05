@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31041",
+  "text": "Il comportamento degli altri utenti della strada è ininfluente per una guida sicura",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida prudente",
+      "Responsabilità nella circolazione stradale",
+      "Interazione tra utenti della strada"
+    ],
+    "exact_keywords": [
+      "comportamento altrui",
+      "guida sicura",
+      "prevedibilità",
+      "condizioni di traffico"
+    ],
+    "vector_search_queries": [
+      "influenza del comportamento altrui sulla guida sicura",
+      "previsione delle azioni degli altri utenti per la sicurezza stradale",
+      "adeguamento della condotta in base al traffico e agli altri veicoli"
+    ],
+    "rule_explanation": "La guida sicura impone di prevedere e considerare il comportamento degli altri utenti della strada per adattare la propria condotta e prevenire incidenti."
+  }
+}

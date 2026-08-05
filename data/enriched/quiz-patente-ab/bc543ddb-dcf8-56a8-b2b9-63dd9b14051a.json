@@ -1,0 +1,29 @@
+{
+  "question_id": 4415,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22732",
+  "text": "In un centro abitato, quando un pedone, fuori delle strisce di attraversamento, non accenni a darci la precedenza, è opportuno nelle ore notturne, procedere con gli abbaglianti accesi così che possa accorgersi di noi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza verso i pedoni",
+      "Uso dei fari e dell'illuminazione del veicolo"
+    ],
+    "exact_keywords": [
+      "pedone",
+      "centro abitato",
+      " strisce di attraversamento",
+      " abbaglianti",
+      " prudenza"
+    ],
+    "vector_search_queries": [
+      "divieto uso abbaglianti nei centri abitati",
+      "obbligo di usare luci anabbaglianti in presenza di pedoni fuori dalle strisce",
+      "comportamento del conducente verso pedoni in caso di scarsa visibilità"
+    ],
+    "rule_explanation": "È vietato l'uso degli abbaglianti nei centri abitati e in presenza di altri utenti della strada, specialmente pedoni, per non abbagliarli e garantire la sicurezza."
+  }
+}

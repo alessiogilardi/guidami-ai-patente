@@ -1,0 +1,31 @@
+{
+  "question_id": 4360,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22125",
+  "text": "Il segnale raffigurato indica l'attraversamento di binari di manovra",
+  "correct_answer": true,
+  "image": "7b73407a471f375d27973395898cd5d7.jpeg",
+  "image_description": "Pericolo di attraversamento di binari di manovra con due binari. Il segnale di pericolo preavvisa un attraversamento di binari di manovra. Il pannello integrativo indica la presenza di due binari.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e fondo bianco, al cui interno è presente un punto esclamativo nero. Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare bianco con due pittogrammi neri raffiguranti un treno a vapore, uno accanto all'altro. Questo indica la presenza di due binari.",
+    "name": "Pericolo di attraversamento di binari di manovra con due binari",
+    "description": "Il segnale di pericolo preavvisa un attraversamento di binari di manovra. Il pannello integrativo indica la presenza di due binari."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo",
+      "Attraversamento di binari"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento di binari di manovra",
+      "pannello integrativo",
+      "binari"
+    ],
+    "vector_search_queries": [
+      "preavviso di attraversamento binari di manovra",
+      "pannello integrativo per binari di manovra"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante binari preavvisa un attraversamento di binari di manovra, con il pannello integrativo che ne specifica il numero."
+  }
+}

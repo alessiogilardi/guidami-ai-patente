@@ -1,0 +1,28 @@
+{
+  "question_id": 4659,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24986",
+  "text": "La responsabilità penale connessa al sinistro stradale è esclusa quando il fatto dipende da causa di forza maggiore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità penale del conducente",
+      "Causa di forza maggiore",
+      "Esclusione della colpa"
+    ],
+    "exact_keywords": [
+      "responsabilità penale",
+      "sinistro stradale",
+      "forza maggiore",
+      "nesso causale"
+    ],
+    "vector_search_queries": [
+      "esclusione responsabilità penale per forza maggiore in caso di sinistro stradale",
+      "effetto della forza maggiore sulla responsabilità penale del conducente"
+    ],
+    "rule_explanation": "La responsabilità penale per un sinistro stradale è esclusa se il fatto è dovuto a causa di forza maggiore, che interrompe il nesso causale tra la condotta del conducente e l'evento dannoso."
+  }
+}

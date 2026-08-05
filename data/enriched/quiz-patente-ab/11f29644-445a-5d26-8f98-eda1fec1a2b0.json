@@ -1,0 +1,28 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24540",
+  "text": "La patente di categoria B abilita a condurre le macchine agricole, comprese quelle definite eccezionali",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria B",
+      "Macchine agricole",
+      "Abilitazione alla guida"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "macchine agricole",
+      "macchine agricole eccezionali",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "conduzione macchine agricole con patente B",
+      "macchine agricole eccezionali patente B"
+    ],
+    "rule_explanation": "La patente di categoria B abilita alla conduzione di macchine agricole, incluse quelle definite eccezionali, purché rientrino nei limiti di massa e dimensioni stabiliti."
+  }
+}

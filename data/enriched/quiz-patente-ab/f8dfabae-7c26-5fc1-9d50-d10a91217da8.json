@@ -1,0 +1,28 @@
+{
+  "question_id": 4505,
+  "topic": "Norme sul sorpasso",
+  "number": "23602",
+  "text": "Sulle autostrade a tre corsie per senso di marcia è consentito sorpassare un'auto della polizia, anche se in servizio di emergenza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di veicoli di emergenza",
+      "Regole di sorpasso in autostrada"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo di polizia",
+      "servizio di emergenza",
+      "autostrada",
+      "corsia di marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso per veicoli di emergenza in autostrada",
+      "sorpasso di auto della polizia in servizio di emergenza su autostrade a tre corsie"
+    ],
+    "rule_explanation": "È vietato sorpassare i veicoli di emergenza, inclusi quelli della polizia, anche se in servizio, specialmente su autostrade a più corsie."
+  }
+}

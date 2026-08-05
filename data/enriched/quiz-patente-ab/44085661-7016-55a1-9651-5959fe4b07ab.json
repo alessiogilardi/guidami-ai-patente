@@ -1,0 +1,30 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24397",
+  "text": "La visiera del casco protegge il viso e gli occhi da impatti con insetti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Protezione del viso e degli occhi",
+      "Dispositivi di protezione individuale (DPI) per motociclisti",
+      "Funzione della visiera del casco"
+    ],
+    "exact_keywords": [
+      "visiera",
+      "casco protettivo",
+      "protezione",
+      "viso",
+      "occhi"
+    ],
+    "vector_search_queries": [
+      "funzione protettiva della visiera del casco",
+      "protezione occhi e viso da impatti con insetti e detriti",
+      "uso della visiera del casco motociclistico"
+    ],
+    "rule_explanation": "La visiera del casco motociclistico ha la funzione primaria di proteggere il viso e gli occhi da agenti esterni come insetti, detriti e agenti atmosferici."
+  }
+}

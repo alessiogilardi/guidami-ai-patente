@@ -1,0 +1,28 @@
+{
+  "question_id": 4392,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22519",
+  "text": "In un centro abitato, se si vede un pallone rotolare sulla carreggiata, non occorre rallentare, per evitare di essere tamponati dal veicolo che segue",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderare la velocità",
+      "Pericolo per la circolazione",
+      "Comportamento in centro abitato"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "rallentare",
+      "pericolo",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in centro abitato in presenza di ostacoli",
+      "condotta di guida per evitare pericolo o intralcio alla circolazione in centro abitato"
+    ],
+    "rule_explanation": "Il conducente deve sempre moderare la velocità in centro abitato e in presenza di ostacoli prevedibili, anche se ciò comporta rallentare, per garantire la sicurezza e prevenire incidenti."
+  }
+}

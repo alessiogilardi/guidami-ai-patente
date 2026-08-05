@@ -1,0 +1,28 @@
+{
+  "question_id": 4688,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25183",
+  "text": "Se il coefficiente di aderenza diminuisce lo spazio di frenatura si riduce",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Coefficiente di aderenza",
+      "Spazio di frenatura",
+      "Dinamica del veicolo"
+    ],
+    "exact_keywords": [
+      "aderenza",
+      "spazio di frenatura",
+      "coefficiente di attrito",
+      "condizioni del fondo stradale"
+    ],
+    "vector_search_queries": [
+      "relazione tra coefficiente di aderenza e spazio di frenatura",
+      "impatto della diminuzione dell'aderenza sulla distanza di arresto"
+    ],
+    "rule_explanation": "Se il coefficiente di aderenza diminuisce, lo spazio di frenatura aumenta perché la forza frenante è minore."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4602,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24430",
+  "text": "Al posto degli stivali ad uso motociclistico si possono utilizzare scarpe da trekking in alta montagna, perché sono di analoga concezione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di equipaggiamento protettivo per motociclisti",
+      "Dispositivi di protezione individuale (DPI) per la guida di veicoli a motore"
+    ],
+    "exact_keywords": [
+      "stivali ad uso motociclistico",
+      "casco protettivo",
+      "dispositivi di protezione",
+      "abbigliamento tecnico"
+    ],
+    "vector_search_queries": [
+      "requisiti calzature motociclisti",
+      "obbligo stivali motociclistici",
+      "dispositivi protezione individuale motociclo"
+    ],
+    "rule_explanation": "È obbligatorio l'uso di calzature specifiche per motociclisti (stivali), non sono ammesse alternative come scarpe da trekking, in quanto non offrono la medesima protezione."
+  }
+}

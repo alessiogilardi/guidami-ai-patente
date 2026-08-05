@@ -1,0 +1,31 @@
+{
+  "question_id": 4385,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22433",
+  "text": "I contrassegni rappresentati in figura sono applicati ad alcuni autobus",
+  "correct_answer": true,
+  "image": "061decd67e690416a4af3b7576e2a0ee.jpeg",
+  "image_description": "Segnale di limite di velocità (divieto). I segnali raffigurano tre limiti massimi di velocità: 60 km/h, 80 km/h e 100 km/h. Questi segnali sono di tipo \"divieto di superare la velocità indicata\" e sono posti in sequenza o in alternativa per indicare diversi limiti massimi consentiti in determinate tratte stradali o per diverse categorie di veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre segnali stradali circolari con bordo rosso e sfondo bianco, tipici dei segnali di divieto. Al centro di ciascun segnale è riportato un numero in nero, che indica un limite di velocità: 60, 80 e 100. Questi sono segnali di limite massimo di velocità. Sono disposti in modo da suggerire una sequenza o un'alternanza di limiti.",
+    "name": "Segnale di limite di velocità (divieto)",
+    "description": "I segnali raffigurano tre limiti massimi di velocità: 60 km/h, 80 km/h e 100 km/h. Questi segnali sono di tipo \"divieto di superare la velocità indicata\" e sono posti in sequenza o in alternativa per indicare diversi limiti massimi consentiti in determinate tratte stradali o per diverse categorie di veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Limiti di velocità per autobus"
+    ],
+    "exact_keywords": [
+      "contrassegni",
+      "autobus",
+      "limiti di velocità",
+      "divieto di superare"
+    ],
+    "vector_search_queries": [
+      "segnali di limite di velocità per autobus",
+      "divieto di superare la velocità indicata per autobus"
+    ],
+    "rule_explanation": "I contrassegni in figura indicano i limiti massimi di velocità prescritti per gli autobus, segnalando il divieto di superarli."
+  }
+}

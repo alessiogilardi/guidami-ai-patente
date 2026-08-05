@@ -1,0 +1,32 @@
+{
+  "question_id": 4231,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20892",
+  "text": "In una carreggiata a doppio senso di circolazione la linea di mezzo se costituita da strisce continue, come in figura, consente il sorpasso senza superare le linee",
+  "correct_answer": true,
+  "image": "338d599190b9dc78c4756a1702c2de44.jpeg",
+  "image_description": "Segnaletica orizzontale: doppia striscia continua. La segnaletica orizzontale raffigura una doppia striscia continua di colore bianco, che delimita le corsie di marcia. Questa segnaletica non consente il sorpasso né l'invasione della corsia opposta, né l'inversione del senso di marcia o la svolta a sinistra, a meno che non sia diversamente indicato da segnali verticali o dalla configurazione della strada. Non indica un punto di arresto per segnali di STOP né è di colore azzurro per parcheggi a pagamento.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una segnaletica orizzontale costituita da una serie di strisce bianche continue, disposte parallelamente. Si tratta di una doppia striscia continua, che separa le corsie di marcia. Non sono presenti altri segnali stradali verticali o elementi che modifichino la sua interpretazione. La domanda riguarda le implicazioni normative di questa segnaletica. La doppia striscia continua è una linea di mezzeria che non consente il sorpasso, l'inversione di marcia o la svolta a sinistra, a meno di specifiche eccezioni non presenti in questo contesto visivo. Le affermazioni relative al colore azzurro o all'indicazione di un punto di arresto per STOP sono errate in base alla sola immagine.",
+    "name": "Segnaletica orizzontale: doppia striscia continua",
+    "description": "La segnaletica orizzontale raffigura una doppia striscia continua di colore bianco, che delimita le corsie di marcia. Questa segnaletica non consente il sorpasso né l'invasione della corsia opposta, né l'inversione del senso di marcia o la svolta a sinistra, a meno che non sia diversamente indicato da segnali verticali o dalla configurazione della strada. Non indica un punto di arresto per segnali di STOP né è di colore azzurro per parcheggi a pagamento."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Divieto di sorpasso",
+      "Carreggiata a doppio senso di circolazione"
+    ],
+    "exact_keywords": [
+      "doppio senso di circolazione",
+      "linea continua",
+      "sorpasso",
+      "superare la linea"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso con doppia striscia continua",
+      "significato della linea continua centrale in carreggiata a doppio senso"
+    ],
+    "rule_explanation": "La doppia striscia continua al centro della carreggiata vieta il sorpasso e l'invasione della corsia opposta, salvo diversa segnalazione."
+  }
+}

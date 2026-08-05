@@ -1,0 +1,32 @@
+{
+  "question_id": 4056,
+  "topic": "Segnali di pericolo",
+  "number": "18915",
+  "text": "In presenza del segnale raffigurato è necessario moderare la velocità per evitare danni alle sospensioni",
+  "correct_answer": true,
+  "image": "f1d28ec1aa4add69b5be2109e97aeb85.jpeg",
+  "image_description": "Segnale di cunetta. Il segnale preannuncia un tratto di strada con una cunetta, che può causare accumulo di acqua o fango in caso di pioggia o scarsa manutenzione. È necessario moderare la velocità per mantenere il controllo del veicolo e prevenire danni alle sospensioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una cunetta, ovvero un avvallamento della strada. Il segnale è isolato e non sono presenti altri elementi contestuali come pannelli integrativi o elementi della strada.",
+    "name": "Segnale di cunetta",
+    "description": "Il segnale preannuncia un tratto di strada con una cunetta, che può causare accumulo di acqua o fango in caso di pioggia o scarsa manutenzione. È necessario moderare la velocità per mantenere il controllo del veicolo e prevenire danni alle sospensioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Moderazione della velocità",
+      "Condizioni della strada"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "moderare la velocità",
+      "cunetta",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di segnali di pericolo per cunetta",
+      "effetti della cunetta sulla stabilità del veicolo e necessità di ridurre la velocità"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'cunetta' impone di moderare la velocità per evitare danni alle sospensioni e mantenere il controllo del veicolo, specialmente in caso di pioggia o scarsa manutenzione."
+  }
+}

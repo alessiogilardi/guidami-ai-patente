@@ -1,0 +1,31 @@
+{
+  "question_id": 4243,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21000",
+  "text": "La luce gialla fissa obbliga chi ha già impegnato l'incrocio a liberarlo al più presto",
+  "correct_answer": true,
+  "image": "9ce1d0d0b1d24fbc9d01bd52aef5f7ab.jpeg",
+  "image_description": "Semaforo per veicoli (luce rossa accesa). Il segnale raffigurato è un semaforo per veicoli, installato in posizione verticale. Le luci sono, dall'alto verso il basso: rossa, gialla e verde. Al momento dell'osservazione, la luce rossa è accesa, mentre le altre due sono spente. Questo tipo di segnale regola il flusso dei veicoli in un incrocio o in un punto specifico della strada. L'accensione della luce rossa impone l'obbligo di arresto prima della striscia di arresto, se presente, o comunque prima dell'incrocio stesso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un semaforo per veicoli, installato in posizione verticale. Le tre luci circolari sono disposte una sopra l'altra. La luce superiore è rossa, quella centrale è gialla e quella inferiore è verde. Attualmente, la luce rossa è accesa, mentre le luci gialla e verde sono spente. Il semaforo è un segnale di regolazione del traffico. La luce rossa accesa indica che i veicoli devono fermarsi.",
+    "name": "Semaforo per veicoli (luce rossa accesa)",
+    "description": "Il segnale raffigurato è un semaforo per veicoli, installato in posizione verticale. Le luci sono, dall'alto verso il basso: rossa, gialla e verde. Al momento dell'osservazione, la luce rossa è accesa, mentre le altre due sono spente. Questo tipo di segnale regola il flusso dei veicoli in un incrocio o in un punto specifico della strada. L'accensione della luce rossa impone l'obbligo di arresto prima della striscia di arresto, se presente, o comunque prima dell'incrocio stesso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi all'incrocio con semaforo giallo",
+      "Segnalazioni semaforiche dinamiche"
+    ],
+    "exact_keywords": [
+      "luce gialla fissa",
+      "impegnato l'incrocio",
+      "liberare l'incrocio",
+      "semaforo per veicoli"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente con luce gialla fissa al semaforo",
+      "comportamento da tenere quando si è già impegnato un incrocio con semaforo giallo"
+    ],
+    "rule_explanation": "La luce gialla fissa del semaforo impone ai veicoli che hanno già impegnato l'incrocio di liberarlo il più rapidamente possibile, senza costituire pericolo per gli altri utenti."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4541,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23882",
+  "text": "Sulle carreggiate, sulle rampe e sugli svincoli di autostrade e strade extraurbane principali è vietato effettuare la retromarcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di retromarcia in autostrada e strade extraurbane principali",
+      "Norme di circolazione specifiche per autostrade e strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "retromarcia",
+      "autostrade",
+      "strade extraurbane principali",
+      "carreggiata",
+      "rampe"
+    ],
+    "vector_search_queries": [
+      "divieto di retromarcia su autostrade e strade extraurbane principali",
+      "normativa sulla circolazione in autostrada e strade extraurbane principali relative alle manovre vietate"
+    ],
+    "rule_explanation": "È vietato effettuare la retromarcia sulle carreggiate, rampe e svincoli di autostrade e strade extraurbane principali per ragioni di sicurezza."
+  }
+}

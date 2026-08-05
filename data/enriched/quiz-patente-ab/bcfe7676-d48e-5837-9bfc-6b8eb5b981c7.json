@@ -1,0 +1,28 @@
+{
+  "question_id": 4558,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23998",
+  "text": "Nonostante le caratteristiche costruttive del veicolo rendano possibile un adeguato campo di visibilità, durante la guida il conducente deve attentamente visualizzare l'area antistante e limitrofa",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di attenzione alla guida",
+      "Campo di visibilità del conducente"
+    ],
+    "exact_keywords": [
+      "campo di visibilità",
+      "conducente",
+      "visualizzare",
+      "area antistante",
+      "area limitrofa"
+    ],
+    "vector_search_queries": [
+      "obbligo di assicurare campo di visibilità durante la guida",
+      "controllo visivo dell'area antistante e limitrofa al veicolo"
+    ],
+    "rule_explanation": "Il conducente deve costantemente assicurarsi un adeguato campo di visibilità, controllando attivamente l'area antistante e circostante il veicolo, indipendentemente dalle caratteristiche costruttive del mezzo."
+  }
+}

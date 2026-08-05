@@ -1,0 +1,29 @@
+{
+  "question_id": 4533,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23819",
+  "text": "Chiunque non abbia potuto evitare la caduta o lo spargimento di materie viscide, infiammabili o comunque pericolose, deve, tra l'altro, presegnalare la zona con il segnale mobile di pericolo anche in mezzo alla carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione di pericolo",
+      "Responsabilità per caduta di carico",
+      "Presegnalazione di ostacoli in carreggiata"
+    ],
+    "exact_keywords": [
+      "caduta di materie pericolose",
+      "spargimento di materie pericolose",
+      "presegnalare la zona",
+      "segnale mobile di pericolo",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "obbligo di presegnalazione per caduta di materie pericolose",
+      "uso del segnale mobile di pericolo per spargimento di sostanze pericolose in carreggiata"
+    ],
+    "rule_explanation": "Chiunque causi la caduta o lo spargimento di materie pericolose deve presegnalare la zona con il segnale mobile di pericolo, anche se la materia si trova in mezzo alla carreggiata."
+  }
+}

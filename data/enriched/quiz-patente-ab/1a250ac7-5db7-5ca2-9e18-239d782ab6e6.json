@@ -1,0 +1,31 @@
+{
+  "question_id": 4138,
+  "topic": "Segnali di divieto",
+  "number": "19899",
+  "text": "Il segnale raffigurato cessa di validità dopo il primo incrocio, se non ripetuto",
+  "correct_answer": true,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Validità dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale di divieto di sosta",
+      "validità",
+      "incrocio",
+      "ripetuto"
+    ],
+    "vector_search_queries": [
+      "validità segnale divieto di sosta dopo incrocio",
+      "ripetizione segnali di divieto di sosta"
+    ],
+    "rule_explanation": "I segnali di divieto di sosta e di fermata valgono in modo continuativo, anche dopo incroci, fino al segnale di fine divieto o fino a un segnale di ripetizione."
+  }
+}

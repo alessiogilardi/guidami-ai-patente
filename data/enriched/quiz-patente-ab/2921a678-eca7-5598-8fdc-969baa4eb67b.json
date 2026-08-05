@@ -1,0 +1,27 @@
+{
+  "question_id": 4515,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23689",
+  "text": "La sosta e la fermata sono vietate in ogni caso sulle piste ciclabili e agli sbocchi di esse",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Piste ciclabili"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fermata",
+      "pista ciclabile",
+      "sbocchi di esse"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata su piste ciclabili",
+      "regolamentazione sosta e fermata agli sbocchi delle piste ciclabili"
+    ],
+    "rule_explanation": "La sosta e la fermata sono vietate in ogni caso sulle piste ciclabili e in corrispondenza dei loro sbocchi per garantire la sicurezza e la fluidità del traffico ciclistico e veicolare."
+  }
+}

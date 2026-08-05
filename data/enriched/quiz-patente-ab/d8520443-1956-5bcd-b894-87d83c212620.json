@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31047",
+  "text": "Mentre il veicolo è in marcia, il conducente può programmare il navigatore in qualsiasi momento",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distrazione alla guida",
+      "Uso del veicolo in movimento",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "veicolo in marcia",
+      "programmare il navigatore",
+      "distrazione alla guida",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "divieto di programmare il navigatore durante la marcia del veicolo",
+      "uso del navigatore e distrazione alla guida",
+      "responsabilità del conducente per uso di dispositivi durante la marcia"
+    ],
+    "rule_explanation": "Il conducente non può usare o programmare il navigatore durante la marcia del veicolo, in quanto ciò costituisce una distrazione vietata che compromette la sicurezza."
+  }
+}

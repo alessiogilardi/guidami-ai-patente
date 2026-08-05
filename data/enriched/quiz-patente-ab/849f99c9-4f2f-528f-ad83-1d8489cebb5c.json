@@ -1,0 +1,29 @@
+{
+  "question_id": 4708,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25360",
+  "text": "Le sospensioni di un veicolo a motore, essendo realizzate con materiali elastici, non subiscono danni per gli urti subiti durante la marcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Usura dei componenti del veicolo",
+      "Manutenzione del veicolo",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "materiali elastici",
+      "danni",
+      "marcia"
+    ],
+    "vector_search_queries": [
+      "danni alle sospensioni dovuti agli urti in marcia",
+      "manutenzione delle sospensioni per la sicurezza del veicolo",
+      "usura dei componenti elastici delle sospensioni"
+    ],
+    "rule_explanation": "Le sospensioni, pur realizzate con materiali elastici, sono soggette a usura e danni a causa degli urti durante la marcia, richiedendo manutenzione per garantire la tenuta di strada."
+  }
+}

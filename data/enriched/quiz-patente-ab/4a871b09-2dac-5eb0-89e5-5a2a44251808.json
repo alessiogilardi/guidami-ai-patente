@@ -1,0 +1,29 @@
+{
+  "question_id": 4037,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18701",
+  "text": "E' consentito spostare la segnaletica stradale, se si tratta delle barriere di delimitazione o dei coni stradali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale",
+      "Doveri dei conducenti",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "segnaletica stradale",
+      "divieto di rimozione",
+      "ostacolo alla circolazione",
+      "forze dell'ordine"
+    ],
+    "vector_search_queries": [
+      "divieto di spostamento o rimozione della segnaletica stradale",
+      "obblighi dei conducenti riguardo la segnaletica stradale",
+      "sanzioni per danneggiamento o rimozione di segnali stradali"
+    ],
+    "rule_explanation": "È vietato spostare o rimuovere la segnaletica stradale, inclusi coni e barriere, salvo autorizzazione o per motivi di sicurezza impellenti."
+  }
+}

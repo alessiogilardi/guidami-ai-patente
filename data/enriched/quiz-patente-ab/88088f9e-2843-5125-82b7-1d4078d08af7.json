@@ -1,0 +1,29 @@
+{
+  "question_id": 4715,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25453",
+  "text": "I motocicli non sono dotati di serbatoio del liquido freni perché la frenatura è di tipo puramente meccanico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema frenante dei motocicli",
+      "Tipologie di freni",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "freno",
+      "liquido freni",
+      "frenatura idraulica",
+      "frenatura meccanica"
+    ],
+    "vector_search_queries": [
+      "sistema frenante idraulico motocicli serbatoio liquido freni",
+      "differenza frenatura idraulica e meccanica motocicli"
+    ],
+    "rule_explanation": "I motocicli utilizzano un sistema frenante idraulico, che richiede un serbatoio per il liquido freni, non un sistema puramente meccanico."
+  }
+}

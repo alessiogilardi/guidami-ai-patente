@@ -1,0 +1,31 @@
+{
+  "question_id": 4093,
+  "topic": "Segnali di pericolo",
+  "number": "19377",
+  "text": "Il segnale raffigurato, se a fondo giallo, è posto in presenza di cantieri stradali",
+  "correct_answer": true,
+  "image": "27c80fcb1d0a01f3fc78105b05f2451a.jpeg",
+  "image_description": "Segnale di pericolo - Caduta di massi / Pietrisco. Il segnale preannuncia un tratto di strada su cui il manto stradale è sconnesso o in cattive condizioni, con possibile presenza di pietrisco o detriti che possono essere proiettati dal passaggio dei veicoli, causando potenziale pericolo di sbandamento o danni. È necessario procedere con cautela e moderare la velocità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo stradale. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un veicolo (un'automobile vista di lato) che transita su una superficie stradale da cui vengono proiettati detriti o pietrisco verso l'alto e all'indietro. Questo pittogramma indica un pericolo specifico legato alla condizione del manto stradale o alla presenza di materiale che può essere sollevato.",
+    "name": "Segnale di pericolo - Caduta di massi / Pietrisco",
+    "description": "Il segnale preannuncia un tratto di strada su cui il manto stradale è sconnesso o in cattive condizioni, con possibile presenza di pietrisco o detriti che possono essere proiettati dal passaggio dei veicoli, causando potenziale pericolo di sbandamento o danni. È necessario procedere con cautela e moderare la velocità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo generici",
+      "Segnali temporanei di cantiere"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "fondo giallo",
+      "cantieri stradali",
+      "presegnalazione"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo con pannello integrativo giallo per cantieri stradali",
+      "segnali temporanei di cantiere stradale con fondo giallo"
+    ],
+    "rule_explanation": "I segnali di pericolo con fondo giallo sono segnali temporanei di preavviso di cantiere stradale, che preannunciano deviazioni o lavori in corso."
+  }
+}

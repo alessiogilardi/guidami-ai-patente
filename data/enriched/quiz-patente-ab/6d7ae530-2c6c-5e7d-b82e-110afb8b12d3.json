@@ -1,0 +1,29 @@
+{
+  "question_id": 4552,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23967",
+  "text": "La presenza nel traffico extraurbano di bambini in bicicletta, anche se affiancati, non rappresenta un rischio per chi guida un autoveicolo, data la loro modesta velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rischio per la sicurezza stradale",
+      "Comportamento dei conducenti verso utenti vulnerabili",
+      "Circolazione su strade extraurbane"
+    ],
+    "exact_keywords": [
+      "bambini in bicicletta",
+      "rischio per la circolazione",
+      "autoveicolo",
+      "strade extraurbane",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "pericolo per la circolazione stradale causato da bambini in bicicletta su strade extraurbane",
+      "obbligo di prudenza dei conducenti di autoveicoli verso ciclisti vulnerabili su strade extraurbane"
+    ],
+    "rule_explanation": "La presenza di bambini in bicicletta, anche se affiancati e a modesta velocità, costituisce un potenziale rischio in ambito extraurbano che richiede la massima prudenza da parte dei conducenti di autoveicoli."
+  }
+}

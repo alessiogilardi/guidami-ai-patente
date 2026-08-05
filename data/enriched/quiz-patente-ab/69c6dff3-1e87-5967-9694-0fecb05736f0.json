@@ -1,0 +1,31 @@
+{
+  "question_id": 4308,
+  "topic": "Segnali di indicazione",
+  "number": "21628",
+  "text": "Il segnale raffigurato consente, sulle strade extraurbane, di viaggiare a 70 km/h",
+  "correct_answer": true,
+  "image": "971e98d0321dab35827073bdfb4eb51a.jpeg",
+  "image_description": "Segnale di limite minimo di velocità. Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è presente il numero '60' in bianco. Questo è un segnale di prescrizione che indica un limite minimo di velocità.",
+    "name": "Segnale di limite minimo di velocità",
+    "description": "Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di limite minimo di velocità",
+      "Obbligo di velocità minima"
+    ],
+    "exact_keywords": [
+      "limite minimo di velocità",
+      "segnali di indicazione",
+      "velocità inferiore",
+      "strade extraurbane"
+    ],
+    "vector_search_queries": [
+      "obbligo di rispettare la velocità minima indicata dai segnali di prescrizione su strade extraurbane",
+      "divieto di procedere a velocità inferiore al limite minimo imposto dalla segnaletica verticale"
+    ],
+    "rule_explanation": "Il segnale di limite minimo di velocità impone di non viaggiare a una velocità inferiore a quella indicata, specialmente su strade extraurbane ove tale prescrizione è più frequente."
+  }
+}

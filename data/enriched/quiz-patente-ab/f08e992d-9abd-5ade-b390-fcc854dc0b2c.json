@@ -1,0 +1,27 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23014",
+  "text": "La posizione antiriflesso dello specchio retrovisore centrale di un autoveicolo non può essere utilizzata quando si circola su autostrada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Utilizzo dello specchietto retrovisore interno",
+      "Norme di sicurezza nella guida autostradale"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore centrale",
+      "posizione antiriflesso",
+      "autostrada",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "uso specchietto retrovisore interno posizione antiriflesso autostrada",
+      "visibilità specchietto retrovisore centrale guida autostradale"
+    ],
+    "rule_explanation": "La posizione antiriflesso dello specchietto retrovisore interno può essere utilizzata anche in autostrada, purché garantisca una visibilità adeguata per le manovre."
+  }
+}

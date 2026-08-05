@@ -1,0 +1,32 @@
+{
+  "question_id": 4113,
+  "topic": "Segnali di divieto",
+  "number": "19627",
+  "text": "Il segnale raffigurato indica la fine del divieto di segnalazioni acustiche",
+  "correct_answer": false,
+  "image": "ca7a6476170f347036d9ae3447b28bba.jpeg",
+  "image_description": "Divieto di segnalazioni acustiche. Il segnale vieta l'uso del clacson.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è presente il pittogramma di un clacson stilizzato, barrato da una linea diagonale rossa che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di 'Divieto di segnalazioni acustiche'.",
+    "name": "Divieto di segnalazioni acustiche",
+    "description": "Il segnale vieta l'uso del clacson."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Segnali di indicazione",
+      "Divieto di segnalazioni acustiche"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "segnali di indicazione",
+      "divieto di segnalazioni acustiche",
+      "fine del divieto"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un divieto specifico",
+      "segnali di indicazione che terminano un divieto di segnalazioni acustiche"
+    ],
+    "rule_explanation": "Il segnale di 'fine divieto di segnalazioni acustiche' indica la cessazione del divieto di usare il clacson, non il divieto stesso."
+  }
+}

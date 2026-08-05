@@ -1,0 +1,28 @@
+{
+  "question_id": 4524,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23766",
+  "text": "La sosta è consentita negli spazi riservati alla fermata o alla sosta dei veicoli per persone invalide purché di breve durata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in aree riservate",
+      "Parcheggio per disabili"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fermata",
+      "spazi riservati",
+      "persone invalide",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in parcheggi per disabili",
+      "aree riservate alla sosta e fermata di persone invalide"
+    ],
+    "rule_explanation": "La sosta è vietata negli spazi riservati alla fermata o alla sosta dei veicoli per persone invalide, indipendentemente dalla durata."
+  }
+}

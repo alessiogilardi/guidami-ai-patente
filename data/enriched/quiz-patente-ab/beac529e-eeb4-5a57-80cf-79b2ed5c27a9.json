@@ -1,0 +1,28 @@
+{
+  "question_id": 4627,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24746",
+  "text": "In presenza di tratti di strada ghiacciati è opportuno non usare le catene, ma gomme chiodate sulle ruote anteriori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso di pneumatici invernali",
+      "Catene da neve",
+      "Guida in condizioni di scarsa aderenza"
+    ],
+    "exact_keywords": [
+      "pneumatici invernali",
+      "catene da neve",
+      "strada ghiacciata",
+      "dispositivi antisdrucciolevoli"
+    ],
+    "vector_search_queries": [
+      "obbligo pneumatici invernali o catene da neve su strada ghiacciata",
+      "uso corretto dei dispositivi antisdrucciolevoli su ghiaccio"
+    ],
+    "rule_explanation": "In presenza di ghiaccio, è obbligatorio l'uso di pneumatici invernali o catene da neve su tutte le ruote motrici, non solo anteriori."
+  }
+}

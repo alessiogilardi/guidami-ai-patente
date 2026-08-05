@@ -1,0 +1,33 @@
+{
+  "question_id": 4061,
+  "topic": "Segnali di pericolo",
+  "number": "18979",
+  "text": "Il segnale raffigurato richiede di moderare la velocità per potersi arrestare in caso di un ostacolo improvviso",
+  "correct_answer": true,
+  "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Moderazione della velocità",
+      "Preavviso di curva"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "doppia curva",
+      "moderare la velocità",
+      "arrestarsi"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di segnali di pericolo",
+      "adeguamento della velocità ai segnali di preavviso di pericolo",
+      "comportamento da tenere ai segnali di curva pericolosa"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano una situazione di potenziale pericolo e impongono al conducente di moderare la velocità per poter reagire prontamente, anche fermandosi, a ostacoli improvvisi."
+  }
+}

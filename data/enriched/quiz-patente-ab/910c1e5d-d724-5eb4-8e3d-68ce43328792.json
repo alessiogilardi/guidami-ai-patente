@@ -1,0 +1,27 @@
+{
+  "question_id": 4010,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18418",
+  "text": "In un passaggio a livello si può trovare un dispositivo di segnalazione acustica",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione acustica nei passaggi a livello",
+      "Dispositivi di sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "dispositivo di segnalazione acustica",
+      "segnale acustico",
+      "barriere"
+    ],
+    "vector_search_queries": [
+      "segnalazione acustica nei passaggi a livello",
+      "dispositivi di allarme sonoro ai passaggi a livello"
+    ],
+    "rule_explanation": "Nei passaggi a livello, oltre alle barriere, possono essere presenti dispositivi di segnalazione acustica per avvisare dell'imminente arrivo di un treno."
+  }
+}

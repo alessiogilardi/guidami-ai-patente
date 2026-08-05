@@ -1,0 +1,33 @@
+{
+  "question_id": 4334,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21870",
+  "text": "Il cono raffigurato si usa per indicare un parcheggio riservato",
+  "correct_answer": false,
+  "image": "61edff345204545bf7a2cc45613f1bca.jpeg",
+  "image_description": "Cono divisorio. Il segnale raffigurato è un cono, utilizzato per delimitare zone di lavoro, cantieri, ostacoli o per separare temporaneamente i flussi di traffico. Può essere impiegato per segnalare deviazioni provvisorie, aree interessate da incidenti o lavori stradali di durata variabile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un singolo cono stradale, di forma tronco-conica, con una base larga e nera. La superficie del cono è caratterizzata da bande orizzontali alternate di colore rosso e bianco, che servono a renderlo altamente visibile. Non sono presenti altri elementi o segnali nell'immagine.",
+    "name": "Cono divisorio",
+    "description": "Il segnale raffigurato è un cono, utilizzato per delimitare zone di lavoro, cantieri, ostacoli o per separare temporaneamente i flussi di traffico. Può essere impiegato per segnalare deviazioni provvisorie, aree interessate da incidenti o lavori stradali di durata variabile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica temporanea di cantiere",
+      "Uso dei coni stradali"
+    ],
+    "exact_keywords": [
+      "cono divisorio",
+      "segnalazione temporanea",
+      "lavori stradali",
+      "cantieri",
+      "delimitare zone"
+    ],
+    "vector_search_queries": [
+      "funzione del cono divisorio nella segnaletica stradale",
+      "utilizzo dei coni per delimitare aree di cantiere o ostacoli",
+      "segnalazione di lavori stradali con coni e delineatori stradali"
+    ],
+    "rule_explanation": "Il cono divisorio è un segnale complementare temporaneo utilizzato per delimitare zone di lavoro, cantieri, ostacoli o per separare flussi di traffico, non per indicare parcheggi riservati."
+  }
+}

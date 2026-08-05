@@ -1,0 +1,31 @@
+{
+  "question_id": 4097,
+  "topic": "Segnali di pericolo",
+  "number": "19424",
+  "text": "Il segnale raffigurato è posto in zone dove può avvenire il volo a bassa quota di aeroplani",
+  "correct_answer": true,
+  "image": "cf70cb24dd929f5727132a64153fad7a.jpeg",
+  "image_description": "Segnale di pericolo - Aeroporto. Il segnale preannuncia la vicinanza di un aeroporto, con possibile transito di aeroplani a bassa quota.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurato il pittogramma di un aeroplano stilizzato in nero, in fase di volo. Questo segnale indica la prossimità di un aeroporto o di aree dove possono verificarsi voli a bassa quota.",
+    "name": "Segnale di pericolo - Aeroporto",
+    "description": "Il segnale preannuncia la vicinanza di un aeroporto, con possibile transito di aeroplani a bassa quota."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnale di avvicinamento aeroporto"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "aeroporto",
+      "volo a bassa quota",
+      "aeroplani"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo vicinanza aeroporto",
+      "preavviso transito aeroplani bassa quota"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante aeroplani in volo preannuncia la vicinanza di un aeroporto e la possibile presenza di aeromobili a bassa quota."
+  }
+}

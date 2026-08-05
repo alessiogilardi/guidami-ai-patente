@@ -1,0 +1,28 @@
+{
+  "question_id": 4226,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20843",
+  "text": "E' regolamentare trovare sulla pavimentazione la scritta TAXI di colore giallo, per indicare zone riservate alla sosta dei taxi in servizio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segni sugli ostacoli",
+      "Zone riservate alla sosta"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "scritta TAXI",
+      "giallo",
+      "sosta taxi"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per aree taxi",
+      "indicazioni stradali gialle per sosta taxi"
+    ],
+    "rule_explanation": "La segnaletica orizzontale, inclusa la scritta gialla 'TAXI', può indicare aree riservate alla sosta dei taxi in servizio, secondo le disposizioni del Codice della Strada."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4664,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25024",
+  "text": "Quando l'assicurazione per la responsabilità civile auto è scaduta di validità è possibile lasciare il veicolo in sosta sulle strade pubbliche",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di assicurazione R.C.A.",
+      "Divieto di sosta per veicoli non assicurati"
+    ],
+    "exact_keywords": [
+      "assicurazione R.C.A. scaduta",
+      "sosta vietata",
+      "strade pubbliche",
+      "veicolo in circolazione"
+    ],
+    "vector_search_queries": [
+      "sosta veicolo non assicurato su strada pubblica",
+      "conseguenze circolazione veicolo con assicurazione R.C.A. scaduta"
+    ],
+    "rule_explanation": "Il veicolo a motore non può essere lasciato in sosta sulle strade pubbliche se la polizza R.C.A. è scaduta, anche se non è in circolazione."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4041,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18751",
+  "text": "Il conducente del motociclo può circolare sul marciapiede se il traffico sulla carreggiata è bloccato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di circolazione sui marciapiedi",
+      "Uso della carreggiata e delle aree pedonali"
+    ],
+    "exact_keywords": [
+      "motociclo",
+      "marciapiede",
+      "circolare",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "divieto di circolazione motocicli sui marciapiedi",
+      "uso dei marciapiedi da parte dei veicoli a motore"
+    ],
+    "rule_explanation": "I motocicli non possono circolare sui marciapiedi, anche in caso di traffico bloccato sulla carreggiata, in quanto i marciapiedi sono riservati ai pedoni."
+  }
+}

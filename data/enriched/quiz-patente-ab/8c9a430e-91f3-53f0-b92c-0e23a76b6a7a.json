@@ -1,0 +1,31 @@
+{
+  "question_id": 4057,
+  "topic": "Segnali di pericolo",
+  "number": "18930",
+  "text": "Il segnale raffigurato preannuncia una serie di curve pericolose di cui la prima a destra",
+  "correct_answer": false,
+  "image": "34d83af03310c64d51078b75499c7efd.jpeg",
+  "image_description": "Segnale di curva pericolosa a destra. Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurata una freccia nera curva che indica una svolta a destra. Questo è il segnale di \"Curva pericolosa a destra\".",
+    "name": "Segnale di curva pericolosa a destra",
+    "description": "Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di curve pericolose"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "curve pericolose",
+      "preavviso",
+      "direzione della prima curva"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per curve multiple",
+      "preavviso di serie di curve pericolose e direzione"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante curve pericolose preannuncia una serie di curve, ma non specifica la direzione della prima. La direzione è indicata da segnali aggiuntivi o dalla configurazione del segnale stesso."
+  }
+}

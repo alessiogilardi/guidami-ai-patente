@@ -1,0 +1,28 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23579",
+  "text": "La pericolosità del sorpasso è determinata dalla presenza, sulla strada, di delineatori normali di margine",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolosità della manovra di sorpasso",
+      "Valutazione delle condizioni di sicurezza per il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "pericolosità",
+      "delineatori normali di margine",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "valutazione pericolosità sorpasso",
+      "condizioni che rendono pericoloso il sorpasso",
+      "sorpasso in presenza di delineatori di margine"
+    ],
+    "rule_explanation": "La pericolosità del sorpasso non è determinata dalla presenza di delineatori normali di margine, ma dalla valutazione complessiva delle condizioni di traffico, visibilità e spazio disponibile."
+  }
+}

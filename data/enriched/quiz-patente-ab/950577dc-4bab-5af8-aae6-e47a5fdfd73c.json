@@ -1,0 +1,29 @@
+{
+  "question_id": 4707,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25341",
+  "text": "Le sospensioni di un veicolo a motore servono a garantire che le ruote rimangano aderenti al fondo stradale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Tenuta di strada",
+      "Funzionamento delle sospensioni"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "aderenza al fondo stradale",
+      "stabilità",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "ruolo delle sospensioni nella tenuta di strada",
+      "aderenza ruote-strada garantita dalle sospensioni",
+      "funzione delle sospensioni per la stabilità del veicolo"
+    ],
+    "rule_explanation": "Le sospensioni sono fondamentali per mantenere le ruote a contatto con il manto stradale, assicurando stabilità e tenuta di strada anche su fondi sconnessi."
+  }
+}

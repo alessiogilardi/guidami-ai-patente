@@ -1,0 +1,32 @@
+{
+  "question_id": 4471,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23281",
+  "text": "Secondo le norme di precedenza nell'incrocio in figura il veicolo H deve attendere il transito del veicolo F",
+  "correct_answer": false,
+  "image": "acd72e3422e7e315607989978ca9f3b4.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio non presenta segnali di preavviso o di direzionamento. Non sono presenti strisce di arresto o altre segnaletiche orizzontali che indichino una precedenza specifica. Si applica la regola generale della precedenza a destra. Il veicolo H, provenendo dalla strada secondaria di sinistra, si trova alla destra del veicolo A. Il veicolo F, un autobus, si trova alla destra del veicolo L. Il veicolo A si trova alla destra del veicolo L. Il veicolo H si trova alla destra del veicolo F. Pertanto, l'ordine di transito corretto è H, A, F, L.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso tra quattro strade. Sono presenti quattro veicoli: un'auto rossa (A) in procinto di svoltare a sinistra, un'auto gialla (H) in procinto di proseguire dritto, un autobus blu (F) in procinto di svoltare a destra e un'auto blu (L) in procinto di svoltare a sinistra. Non sono presenti segnali stradali verticali o orizzontali che regolino la precedenza. Le traiettorie dei veicoli sono indicate da linee tratteggiate. Si applica la regola generale della precedenza a destra. Il veicolo H è alla destra del veicolo A. Il veicolo A è alla destra del veicolo L. Il veicolo L è alla destra del veicolo F. Il veicolo F è alla destra del veicolo H. L'ordine di precedenza è quindi H, A, L, F. Tuttavia, analizzando le posizioni relative e le direzioni di marcia: H è alla destra di A; A è alla destra di L; L è alla destra di F; F è alla destra di H. L'ordine di transito corretto, applicando la regola della precedenza a destra, è: H (perché è a destra di A), poi A (perché è a destra di L), poi F (perché è a destra di L e H deve attendere A), poi L (perché deve attendere A e F). Riconsiderando: H è alla destra di A. A è alla destra di L. L è alla destra di F. F è alla destra di H. L'ordine corretto è H, A, F, L.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio non presenta segnali di preavviso o di direzionamento. Non sono presenti strisce di arresto o altre segnaletiche orizzontali che indichino una precedenza specifica. Si applica la regola generale della precedenza a destra. Il veicolo H, provenendo dalla strada secondaria di sinistra, si trova alla destra del veicolo A. Il veicolo F, un autobus, si trova alla destra del veicolo L. Il veicolo A si trova alla destra del veicolo L. Il veicolo H si trova alla destra del veicolo F. Pertanto, l'ordine di transito corretto è H, A, F, L."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza ai incroci non regolamentati"
+    ],
+    "exact_keywords": [
+      "precedenza a destra",
+      "incrocio non regolamentato",
+      "veicolo proveniente da destra",
+      "ordine di transito"
+    ],
+    "vector_search_queries": [
+      "precedenza veicoli incrocio non regolamentato",
+      "applicazione regola generale precedenza a destra",
+      "ordine di transito veicoli in assenza di segnaletica stradale"
+    ],
+    "rule_explanation": "Negli incroci non regolamentati da segnaletica, la precedenza spetta al veicolo che proviene da destra. L'affermazione è falsa perché H si trova alla destra di F, quindi F deve attendere H."
+  }
+}

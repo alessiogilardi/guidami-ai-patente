@@ -1,0 +1,29 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24816",
+  "text": "Le rotaie del tram sono particolarmente pericolose per la circolazione dei veicoli a due ruote quando il fondo stradale è bagnato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo derivante da ostacoli fissi",
+      "Adattamento della guida alle condizioni stradali",
+      "Sicurezza dei veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "rotaie del tram",
+      "pericolose",
+      "veicoli a due ruote",
+      "fondo stradale bagnato"
+    ],
+    "vector_search_queries": [
+      "pericolosità rotaie tram per moto su bagnato",
+      "aderenza pneumatici su rotaie tram con strada bagnata",
+      "rischio sbandamento veicoli a due ruote su tramvie"
+    ],
+    "rule_explanation": "Le rotaie del tram, specialmente su fondo bagnato, aumentano il rischio di sbandamento per i veicoli a due ruote a causa della ridotta aderenza."
+  }
+}

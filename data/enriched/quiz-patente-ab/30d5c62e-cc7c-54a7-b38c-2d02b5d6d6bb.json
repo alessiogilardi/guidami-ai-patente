@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22286",
+  "text": "Il conducente deve sempre mantenere il controllo del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo del veicolo",
+      "Guida prudente",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "controllo del veicolo",
+      "condizioni di marcia",
+      "manovre opportune",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di mantenere il controllo del veicolo in ogni circostanza",
+      "adeguamento della velocità e manovre per la sicurezza stradale"
+    ],
+    "rule_explanation": "Il conducente deve sempre mantenere il controllo del proprio veicolo, adattando la velocità e attuando le manovre necessarie per garantire la sicurezza e prevenire situazioni di pericolo."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4025,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18567",
+  "text": "I quadricicli leggeri, ai fini della circolazione, sono assimilati ai ciclomotori",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli a motore",
+      "Normativa sulla circolazione dei quadricicli leggeri"
+    ],
+    "exact_keywords": [
+      "quadricicli leggeri",
+      "ciclomotori",
+      "veicoli a motore",
+      "circolazione stradale"
+    ],
+    "vector_search_queries": [
+      "assimilazione quadricicli leggeri a ciclomotori per circolazione",
+      "normativa di circolazione per quadricicli leggeri e ciclomotori"
+    ],
+    "rule_explanation": "I quadricicli leggeri, per la circolazione stradale, sono equiparati ai ciclomotori per quanto riguarda le norme di comportamento e le caratteristiche tecniche."
+  }
+}

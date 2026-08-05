@@ -1,0 +1,29 @@
+{
+  "question_id": 4049,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18835",
+  "text": "Il conducente che intende sorpassare ciclisti o pedoni che occupano la carreggiata deve mantenere una distanza laterale di almeno 2 metri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza nel sorpasso",
+      "Tutela degli utenti deboli della strada",
+      "Sorpasso di pedoni e ciclisti"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "ciclisti",
+      "pedoni",
+      "distanza laterale",
+      "metri"
+    ],
+    "vector_search_queries": [
+      "distanza minima laterale per sorpasso ciclisti e pedoni",
+      "sorpasso utenti deboli della strada distanza di sicurezza"
+    ],
+    "rule_explanation": "Il sorpasso di ciclisti e pedoni deve avvenire con prudenza, mantenendo una distanza laterale adeguata e non inferiore a 1,5 metri, se le condizioni lo consentono."
+  }
+}

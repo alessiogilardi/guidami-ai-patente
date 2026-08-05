@@ -1,0 +1,28 @@
+{
+  "question_id": 4419,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22770",
+  "text": "Per non costituire pericolo o intralcio per la circolazione, è necessario procedere sempre a velocità costante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Sicurezza stradale",
+      "Pericolo e intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "intralcio alla circolazione",
+      "pericolo per la circolazione"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità per non creare pericolo o intralcio",
+      "moderazione della velocità in base alle condizioni di traffico e strada"
+    ],
+    "rule_explanation": "La velocità deve essere adeguata alle condizioni di traffico, della strada e del veicolo per non costituire pericolo o intralcio, non necessariamente costante."
+  }
+}

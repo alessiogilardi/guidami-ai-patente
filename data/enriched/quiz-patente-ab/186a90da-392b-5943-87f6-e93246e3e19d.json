@@ -1,0 +1,31 @@
+{
+  "question_id": 4355,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22073",
+  "text": "il segnale raffigurato evidenzia il punto d'inizio del divieto di fermata",
+  "correct_answer": true,
+  "image": "1915bff092d45578bf9662328b438921.jpeg",
+  "image_description": "Divieto di sosta con pannello integrativo di direzione (dritto). Il segnale di divieto di sosta, integrato dal pannello che indica la direzione \"dritto\", prescrive il divieto di sosta nel tratto di strada che prosegue dritto.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali posti in verticale. Il segnale superiore è un segnale di divieto di sosta, caratterizzato da un disco rosso con bordo rosso, sfondo blu e una croce di Sant'Andrea rossa al centro. Sotto questo segnale, vi è un pannello integrativo rettangolare di colore bianco con bordo nero, contenente una freccia nera rivolta verso l'alto, indicante la direzione \"dritto\".",
+    "name": "Divieto di sosta con pannello integrativo di direzione (dritto)",
+    "description": "Il segnale di divieto di sosta, integrato dal pannello che indica la direzione \"dritto\", prescrive il divieto di sosta nel tratto di strada che prosegue dritto."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Divieto di fermata e sosta"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "divieto di sosta",
+      "divieto di fermata",
+      "inizio del divieto"
+    ],
+    "vector_search_queries": [
+      "differenza tra divieto di sosta e divieto di fermata con pannelli integrativi",
+      "interpretazione segnale divieto di sosta con pannello di direzione dritto"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta, con pannello integrativo di direzione, indica l'inizio del divieto di sosta nel tratto di strada indicato, non di fermata."
+  }
+}

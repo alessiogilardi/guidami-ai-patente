@@ -1,0 +1,27 @@
+{
+  "question_id": 4560,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24011",
+  "text": "Il giubbotto o le bretelle retroriflettenti ad alta visibilità possono sostituire, in ogni caso, il triangolo mobile di pericolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo fermo",
+      "Dispositivi di sicurezza per veicoli fermi"
+    ],
+    "exact_keywords": [
+      "giubbotto retroriflettente",
+      "bretelle retroriflettenti",
+      "triangolo mobile di pericolo",
+      "alta visibilità"
+    ],
+    "vector_search_queries": [
+      "obbligo posizionamento triangolo mobile di pericolo",
+      "uso giubbotto alta visibilità veicolo fermo"
+    ],
+    "rule_explanation": "Il giubbotto o le bretelle retroriflettenti ad alta visibilità sono obbligatori per il conducente che scende dal veicolo fermo sulla carreggiata, ma non sostituiscono il triangolo mobile di pericolo."
+  }
+}

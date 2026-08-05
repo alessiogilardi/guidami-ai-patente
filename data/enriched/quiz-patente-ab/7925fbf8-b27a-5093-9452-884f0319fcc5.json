@@ -1,0 +1,28 @@
+{
+  "question_id": 4599,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24371",
+  "text": "E' consentito il trasporto di bambini senza che siano assicurati a sistemi di ritenuta, purché si circoli alla velocità massima di 40 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistemi di ritenuta per bambini",
+      "Obbligo di sicurezza nel trasporto di minori"
+    ],
+    "exact_keywords": [
+      "sistemi di ritenuta per bambini",
+      "trasporto di bambini",
+      "velocità massima",
+      "dispositivi di sicurezza"
+    ],
+    "vector_search_queries": [
+      "obbligo di sistemi di ritenuta per bambini a bordo di veicoli",
+      "normativa trasporto minori su autoveicoli",
+      "requisiti di sicurezza per bambini in auto"
+    ],
+    "rule_explanation": "Il trasporto di bambini su veicoli è consentito solo se sono adeguatamente assicurati a sistemi di ritenuta omologati, indipendentemente dalla velocità di marcia."
+  }
+}

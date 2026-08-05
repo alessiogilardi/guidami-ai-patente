@@ -1,0 +1,29 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24657",
+  "text": "L'uso di telefono cellulare senza auricolare o viva voce durante la guida comporta una perdita di punti sulla patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso di dispositivi durante la guida",
+      "Sanzioni per infrazioni al CdS",
+      "Sistema sanzionatorio della patente a punti"
+    ],
+    "exact_keywords": [
+      "cellulare",
+      "auricolare",
+      "viva voce",
+      "sanzioni amministrative pecuniarie",
+      "sospensione della patente"
+    ],
+    "vector_search_queries": [
+      "sanzioni per uso di telefono cellulare alla guida senza vivavoce o auricolare",
+      "decurtazione punti patente per uso improprio di dispositivi elettronici durante la marcia"
+    ],
+    "rule_explanation": "L'uso del telefono cellulare alla guida senza vivavoce o auricolare è sanzionato con una multa e la decurtazione di punti dalla patente."
+  }
+}

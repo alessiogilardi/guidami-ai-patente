@@ -1,0 +1,32 @@
+{
+  "question_id": 4095,
+  "topic": "Segnali di pericolo",
+  "number": "19403",
+  "text": "Il segnale raffigurato preannuncia banchine cedevoli",
+  "correct_answer": false,
+  "image": "a50e795242bbca87bdb941fb2715f989.jpeg",
+  "image_description": "Segnale di pericolo di caduta massi. Il segnale preannuncia un pericolo di caduta massi dalla parete rocciosa. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo stradale. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un profilo di montagna stilizzato da cui cadono dei massi, rappresentati da esagoni neri. Il pittogramma indica un pericolo di caduta massi o pietre dalla parete rocciosa. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di pericolo di caduta massi",
+    "description": "Il segnale preannuncia un pericolo di caduta massi dalla parete rocciosa. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Pericoli specifici della strada"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "caduta massi",
+      "banchine cedevoli",
+      "preavviso di pericolo"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo stradale caduta massi",
+      "differenza segnale caduta massi e banchine cedevoli",
+      "significato segnale pericolo banchine cedevoli"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurato preannuncia la caduta massi, non banchine cedevoli. È necessario moderare la velocità e prestare attenzione."
+  }
+}

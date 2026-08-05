@@ -1,0 +1,27 @@
+{
+  "question_id": 4023,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18551",
+  "text": "Si definiscono ciclomotori tutti i veicoli a due ruote di cilindrata superiore a 50 cm3",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di ciclomotore",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "ciclomotori",
+      "veicoli a due ruote",
+      "cilindrata",
+      "50 cm3"
+    ],
+    "vector_search_queries": [
+      "definizione normativa di ciclomotore",
+      "caratteristiche tecniche dei ciclomotori (cilindrata e ruote)"
+    ],
+    "rule_explanation": "I ciclomotori sono veicoli a due o tre ruote con motore di cilindrata non superiore a 50 cm3 e velocità massima di 45 km/h."
+  }
+}

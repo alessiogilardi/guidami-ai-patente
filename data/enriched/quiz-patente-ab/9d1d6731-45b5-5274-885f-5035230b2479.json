@@ -1,0 +1,27 @@
+{
+  "question_id": 4714,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25434",
+  "text": "Nei veicoli a motore a due ruote, la catena di trasmissione collega il pignone motore alla corona della ruota",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasmissione di potenza nelle motociclette",
+      "Componenti del sistema di trasmissione"
+    ],
+    "exact_keywords": [
+      "catena di trasmissione",
+      "pignone motore",
+      "corona",
+      "veicoli a motore a due ruote"
+    ],
+    "vector_search_queries": [
+      "funzionamento catena di trasmissione motocicli",
+      "collegamento pignone-corona su veicoli a due ruote"
+    ],
+    "rule_explanation": "La catena di trasmissione, collegando il pignone motore alla corona della ruota posteriore, è il componente fondamentale per trasferire il moto rotatorio nei veicoli a motore a due ruote."
+  }
+}

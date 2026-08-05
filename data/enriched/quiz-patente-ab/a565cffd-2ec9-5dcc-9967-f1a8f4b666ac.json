@@ -1,0 +1,30 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18797",
+  "text": "In vicinanza di un attraversamento pedonale, il conducente deve arrestarsi se il pedone che attraversa è munito di bastone bianco-rosso; deve solo rallentare se, invece, è munito di bastone bianco",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attraversamento pedonale",
+      "Doveri del conducente verso i pedoni",
+      "Utenti deboli della strada"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "conducente",
+      "pedone",
+      "rallentare",
+      "arrestarsi"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto del conducente in prossimità di attraversamenti pedonali",
+      "condotta del conducente verso pedoni con bastone bianco-rosso o bianco",
+      "precedenza dei pedoni in attraversamento"
+    ],
+    "rule_explanation": "Il conducente deve arrestarsi in presenza di qualsiasi pedone che attraversa la carreggiata o si accinga ad attraversarla, indipendentemente dal tipo di bastone che porta."
+  }
+}

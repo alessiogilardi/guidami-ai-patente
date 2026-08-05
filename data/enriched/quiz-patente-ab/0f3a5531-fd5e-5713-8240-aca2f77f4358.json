@@ -1,0 +1,27 @@
+{
+  "question_id": 4439,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22959",
+  "text": "In presenza del segnale DARE PRECEDENZA occorre usare prudenza e moderare la velocità, ma occorre arrestarsi solo in caso di necessità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di dare precedenza",
+      "Comportamento prudente ai segnali di pericolo o prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale DARE PRECEDENZA",
+      "prudenza",
+      "moderare la velocità",
+      "arrestarsi solo in caso di necessità"
+    ],
+    "vector_search_queries": [
+      "obbligo di dare precedenza al segnale DARE PRECEDENZA",
+      "comportamento del conducente al segnale DARE PRECEDENZA"
+    ],
+    "rule_explanation": "Al segnale DARE PRECEDENZA, il conducente deve usare prudenza e moderare la velocità, fermandosi solo se necessario per non creare pericolo o intralcio."
+  }
+}

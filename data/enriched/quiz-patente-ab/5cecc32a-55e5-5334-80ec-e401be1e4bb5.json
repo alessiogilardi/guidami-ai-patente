@@ -1,0 +1,27 @@
+{
+  "question_id": 4655,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24954",
+  "text": "L'assunzione di alcool può far diminuire il livello di attenzione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Effetti dell'alcool sulla capacità di guida",
+      "Alterazione delle capacità psicofisiche"
+    ],
+    "exact_keywords": [
+      "alcool",
+      "attenzione",
+      "capacità di guida",
+      "condizioni psicofisiche"
+    ],
+    "vector_search_queries": [
+      "effetti dell'alcool sulla capacità di attenzione alla guida",
+      "alterazione delle capacità psicofisiche dovuta all'assunzione di alcool"
+    ],
+    "rule_explanation": "L'assunzione di alcool compromette le capacità psicofisiche del conducente, inclusa la capacità di attenzione, rendendo la guida pericolosa."
+  }
+}

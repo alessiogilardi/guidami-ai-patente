@@ -1,0 +1,27 @@
+{
+  "question_id": 4671,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25072",
+  "text": "Collocare i bagagli sul tetto del veicolo comporta un maggior consumo di carburante",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aumento dei consumi per carico sul tetto",
+      "Impatto aerodinamico del carico esterno"
+    ],
+    "exact_keywords": [
+      "bagagli sul tetto",
+      "consumo di carburante",
+      "aerodinamica",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "impatto del carico sul tetto sull'aerodinamica e sui consumi di carburante",
+      "aumento del consumo di carburante dovuto a portabagagli o carichi esterni"
+    ],
+    "rule_explanation": "Il carico di bagagli sul tetto del veicolo altera l'aerodinamica, aumentando la resistenza all'aria e, di conseguenza, il consumo di carburante."
+  }
+}

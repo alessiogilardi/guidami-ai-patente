@@ -1,0 +1,29 @@
+{
+  "question_id": 4041,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18744",
+  "text": "I montanti interni degli autoveicoli condizionano la visibilità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità del conducente",
+      "Sicurezza stradale",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "montanti interni",
+      "visibilità",
+      "autoveicoli",
+      "campo visivo"
+    ],
+    "vector_search_queries": [
+      "influenza dei montanti sulla visibilità del conducente",
+      "limitazione del campo visivo dovuta alle strutture del veicolo",
+      "impatto dei montanti interni sulla sicurezza stradale"
+    ],
+    "rule_explanation": "I montanti interni degli autoveicoli possono limitare il campo visivo del conducente, influenzando la percezione dello spazio circostante e la sicurezza della guida."
+  }
+}

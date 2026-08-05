@@ -1,0 +1,31 @@
+{
+  "question_id": 4299,
+  "topic": "Segnali di indicazione",
+  "number": "21553",
+  "text": "Il segnale raffigurato è posto all'inizio del centro abitato, su tutte le strade d'ingresso alla località indicata",
+  "correct_answer": true,
+  "image": "8d8b81750ab04039526f6f401c0442b7.jpeg",
+  "image_description": "Segnale di inizio località (Taranto). Il segnale indica la località denominata Taranto. Se posto all'inizio del centro abitato, indica l'inizio dello stesso. Se barrato da una striscia rossa, indica la fine del centro abitato.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare, con sfondo bianco e bordo nero. Al centro del segnale è riportata la scritta \"TARANTO\" in lettere maiuscole nere. Questo segnale, secondo il Codice della Strada, è un segnale di inizio località.",
+    "name": "Segnale di inizio località (Taranto)",
+    "description": "Il segnale indica la località denominata Taranto. Se posto all'inizio del centro abitato, indica l'inizio dello stesso. Se barrato da una striscia rossa, indica la fine del centro abitato."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di inizio centro abitato",
+      "Segnali di indicazione stradale"
+    ],
+    "exact_keywords": [
+      "inizio centro abitato",
+      "località",
+      "segnale di inizio",
+      "strade d'ingresso"
+    ],
+    "vector_search_queries": [
+      "posizionamento segnale inizio centro abitato",
+      "segnaletica stradale inizio località"
+    ],
+    "rule_explanation": "Il segnale di inizio centro abitato va posto all'inizio di tutte le strade che immettono nella località, segnalandone l'inizio."
+  }
+}

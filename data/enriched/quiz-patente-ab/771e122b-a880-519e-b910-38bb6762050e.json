@@ -1,0 +1,27 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22494",
+  "text": "Nel caso in cui, a un passaggio a livello, ci si trova ancora sui binari col proprio veicolo quando le barriere cominciano a chiudersi, occorre sgomberare in qualunque modo la sede ferroviaria, se necessario anche sfondando le barriere",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Priorità ai passaggi a livello",
+      "Obbligo di sgombero della sede ferroviaria"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "barriere",
+      "sgomberare la sede ferroviaria",
+      "sfondare le barriere"
+    ],
+    "vector_search_queries": [
+      "obbligo di sgombero sede ferroviaria al passaggio a livello",
+      "comportamento in caso di chiusura barriere al passaggio a livello"
+    ],
+    "rule_explanation": "In caso di chiusura delle barriere a un passaggio a livello, occorre sgomberare la sede ferroviaria anche sfondando le barriere per evitare pericoli per la circolazione ferroviaria e stradale."
+  }
+}

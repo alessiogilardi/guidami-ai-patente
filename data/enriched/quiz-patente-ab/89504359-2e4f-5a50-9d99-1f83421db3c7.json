@@ -1,0 +1,27 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23632",
+  "text": "Prima di iniziare a guidare un veicolo a motore bisogna essere certi che la categoria di patente posseduta ne consenta la guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida",
+      "Idoneità alla guida"
+    ],
+    "exact_keywords": [
+      "categoria di patente",
+      "veicolo a motore",
+      "conducente",
+      "requisiti di guida"
+    ],
+    "vector_search_queries": [
+      "requisiti per la conduzione di veicoli a motore",
+      "corrispondenza tra patente posseduta e veicolo da guidare"
+    ],
+    "rule_explanation": "È obbligatorio possedere una patente di guida della categoria appropriata per il veicolo a motore che si intende condurre."
+  }
+}

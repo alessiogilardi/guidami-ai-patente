@@ -1,0 +1,28 @@
+{
+  "question_id": 4397,
+  "topic": "Distanza di sicurezza",
+  "number": "22572",
+  "text": "Lo spazio percorso nel tempo di reazione è quello percorso dal momento della percezione di una situazione di pericolo a quello di inizio della frenata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tempo di reazione",
+      "Distanza di sicurezza",
+      "Percezione del pericolo"
+    ],
+    "exact_keywords": [
+      "spazio percorso",
+      "tempo di reazione",
+      "percezione di pericolo",
+      "inizio della frenata"
+    ],
+    "vector_search_queries": [
+      "definizione spazio percorso nel tempo di reazione",
+      "distanza percorsa tra percezione pericolo e inizio frenata"
+    ],
+    "rule_explanation": "Lo spazio percorso durante il tempo di reazione è la distanza coperta dal veicolo dal momento in cui il conducente percepisce un pericolo fino all'inizio dell'azione di frenata."
+  }
+}

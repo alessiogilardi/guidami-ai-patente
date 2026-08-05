@@ -1,0 +1,31 @@
+{
+  "question_id": 4359,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22115",
+  "text": "Il pannello integrativo raffigurato indica veicoli incidentati sulla carreggiata",
+  "correct_answer": true,
+  "image": "e11f357a1c1fed89487195de187be943.jpeg",
+  "image_description": "Pericolo di incidente stradale. Il segnale raffigura due veicoli in fase di collisione, con delle linee che indicano il movimento o l'impatto. Si tratta di un segnale di pericolo che preavvisa la presenza di un incidente stradale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma quadrata con bordo rosso e sfondo bianco, contenente un pittogramma. Il pittogramma raffigura due automobili stilizzate di colore bianco, una delle quali sembra tamponare l'altra. Delle linee bianche, simili a raggi, partono dai punti di impatto o dalle parti anteriori dei veicoli, suggerendo un movimento o un urto. Il segnale è di colore rosso, tipico dei segnali di pericolo.",
+    "name": "Pericolo di incidente stradale",
+    "description": "Il segnale raffigura due veicoli in fase di collisione, con delle linee che indicano il movimento o l'impatto. Si tratta di un segnale di pericolo che preavvisa la presenza di un incidente stradale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "veicoli incidentati",
+      "pericolo di incidente",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo veicoli incidentati",
+      "segnalazione pericolo incidente stradale"
+    ],
+    "rule_explanation": "Il pannello integrativo raffigurante veicoli in collisione segnala un pericolo di incidente stradale sulla carreggiata."
+  }
+}

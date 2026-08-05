@@ -1,0 +1,29 @@
+{
+  "question_id": 4639,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24842",
+  "text": "L'assunzione di eroina o di cocaina può compromettere la facoltà di guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Alterazione psicofisica alla guida",
+      "Sostanze stupefacenti e psicotrope",
+      "Guida in stato di alterazione"
+    ],
+    "exact_keywords": [
+      "sostanze stupefacenti",
+      "psicotrope",
+      "alterazione delle facoltà psichiche",
+      "guida di veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "effetti di eroina e cocaina sulla guida",
+      "guida sotto effetto di sostanze stupefacenti e psicotrope",
+      "compromissione delle facoltà di guida da droghe"
+    ],
+    "rule_explanation": "L'assunzione di eroina, cocaina o altre sostanze stupefacenti o psicotrope compromette le capacità necessarie per una guida sicura, rendendola pericolosa."
+  }
+}

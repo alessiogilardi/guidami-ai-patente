@@ -1,0 +1,27 @@
+{
+  "question_id": 4516,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23700",
+  "text": "Durante la sosta il conducente deve adottare le opportune cautele atte ad evitare incidenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente durante la sosta",
+      "Precauzioni per evitare incidenti"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "conducente",
+      "cautele",
+      "incidenti"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente durante la sosta del veicolo",
+      "precauzioni da adottare per evitare incidenti durante la sosta"
+    ],
+    "rule_explanation": "Durante la sosta, il conducente deve adottare tutte le precauzioni necessarie per garantire la sicurezza e prevenire incidenti."
+  }
+}

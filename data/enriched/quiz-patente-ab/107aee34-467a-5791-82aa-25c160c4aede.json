@@ -1,0 +1,27 @@
+{
+  "question_id": 4007,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18389",
+  "text": "L'intersezione (incrocio) a livelli sfalsati facilita la circolazione, perché esclude l'incrocio diretto fra i veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Incroci a livelli sfalsati",
+      "Fluidità del traffico"
+    ],
+    "exact_keywords": [
+      "intersezione a livelli sfalsati",
+      "circolazione stradale",
+      "incrocio diretto",
+      "flusso veicolare"
+    ],
+    "vector_search_queries": [
+      "funzionamento delle intersezioni a livelli sfalsati per la circolazione",
+      "vantaggi delle intersezioni a livelli sfalsati nella fluidità del traffico"
+    ],
+    "rule_explanation": "Le intersezioni a livelli sfalsati, eliminando gli incroci diretti tra flussi veicolari confluenti, migliorano significativamente la fluidità e la sicurezza della circolazione stradale."
+  }
+}

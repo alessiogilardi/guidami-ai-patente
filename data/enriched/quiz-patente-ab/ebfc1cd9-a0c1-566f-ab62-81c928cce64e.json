@@ -1,0 +1,28 @@
+{
+  "question_id": 4396,
+  "topic": "Distanza di sicurezza",
+  "number": "22566",
+  "text": "La distanza di sicurezza dipende dallo spazio percorso nel tempo di reazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Tempo di reazione",
+      "Spazio di arresto"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "tempo di reazione",
+      "spazio di reazione",
+      "spazio di frenatura"
+    ],
+    "vector_search_queries": [
+      "componenti della distanza di sicurezza nel CdS",
+      "relazione tra distanza di sicurezza, tempo di reazione e spazio di frenatura"
+    ],
+    "rule_explanation": "La distanza di sicurezza è la somma dello spazio di reazione, spazio di frenatura e spazio di arresto, influenzata dal tempo di reazione del conducente."
+  }
+}

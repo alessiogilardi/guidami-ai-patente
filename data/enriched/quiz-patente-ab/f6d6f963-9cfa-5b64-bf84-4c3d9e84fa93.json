@@ -1,0 +1,28 @@
+{
+  "question_id": 4502,
+  "topic": "Norme sul sorpasso",
+  "number": "23564",
+  "text": "In prossimità di un dosso è consentito invadere l'opposta semicarreggiata, per sorpassare autobus di linea fermi per la salita e discesa dei passeggeri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso in prossimità di dossi",
+      "Regole di sorpasso in presenza di veicoli fermi"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "dosso",
+      "semicarreggiata",
+      "autobus di linea",
+      "salita e discesa passeggeri"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in prossimità di dossi",
+      "sorpasso di autobus fermi in prossimità di dossi"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in prossimità dei dossi, anche se si tratta di autobus di linea fermi per salita/discesa passeggeri, per garantire la sicurezza della circolazione."
+  }
+}

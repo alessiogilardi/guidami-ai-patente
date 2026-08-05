@@ -1,0 +1,31 @@
+{
+  "question_id": 4365,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22178",
+  "text": "Il pannello integrativo raffigurato indica la possibilità di trovare tratti di strada ghiacciati",
+  "correct_answer": true,
+  "image": "898befc05a5da69814999a6d3fa9fd5a.jpeg",
+  "image_description": "Pannello integrativo di pericolo ghiaccio. Il pannello integrativo indica la possibilità di trovare tratti di strada ghiacciati.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare di colore blu scuro con bordo bianco. Al suo interno sono presenti due pittogrammi bianchi a forma di fiocco di neve, disposti orizzontalmente. Questo pannello è un pannello integrativo di pericolo ghiaccio.",
+    "name": "Pannello integrativo di pericolo ghiaccio",
+    "description": "Il pannello integrativo indica la possibilità di trovare tratti di strada ghiacciati."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "pericolo ghiaccio",
+      "strada ghiacciata",
+      "segnali di pericolo"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo pericolo ghiaccio",
+      "segnalazione stradale di ghiaccio su strada"
+    ],
+    "rule_explanation": "Il pannello integrativo di pericolo ghiaccio presegnala la possibile presenza di tratti di strada soggetti a formazione di ghiaccio."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4018,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18508",
+  "text": "La corsia di decelerazione può essere utilizzata per la sosta dei veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di corsia di decelerazione",
+      "Divieto di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "corsia di decelerazione",
+      "sosta",
+      "veicoli",
+      "divieto di sosta"
+    ],
+    "vector_search_queries": [
+      "uso della corsia di decelerazione",
+      "divieto di sosta nelle corsie di decelerazione"
+    ],
+    "rule_explanation": "La corsia di decelerazione è una corsia speciale destinata a ridurre la velocità per uscire dalla corrente di traffico, non è un'area di sosta vietata ai veicoli."
+  }
+}

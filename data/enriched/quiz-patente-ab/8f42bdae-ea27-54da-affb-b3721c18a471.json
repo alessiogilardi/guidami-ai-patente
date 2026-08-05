@@ -1,0 +1,28 @@
+{
+  "question_id": 4009,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18406",
+  "text": "In una zona a traffico limitato possono circolare solo i veicoli autorizzati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Zona a traffico limitato (ZTL)",
+      "Accesso e circolazione veicolare",
+      "Veicoli autorizzati"
+    ],
+    "exact_keywords": [
+      "zona a traffico limitato",
+      "circolare",
+      "veicoli autorizzati",
+      "accesso"
+    ],
+    "vector_search_queries": [
+      "regolamentazione accesso zone a traffico limitato",
+      "veicoli autorizzati alla circolazione in ZTL"
+    ],
+    "rule_explanation": "L'accesso e la circolazione all'interno delle zone a traffico limitato sono consentiti esclusivamente ai veicoli espressamente autorizzati dall'ente proprietario della strada."
+  }
+}

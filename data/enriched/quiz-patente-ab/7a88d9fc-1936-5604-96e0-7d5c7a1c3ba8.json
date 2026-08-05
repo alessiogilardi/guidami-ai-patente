@@ -1,0 +1,30 @@
+{
+  "question_id": 4615,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24567",
+  "text": "La patente di categoria BE abilita a condurre complessi di veicoli composti da un autoveicolo di massa massima autorizzata fino a 3.500 chilogrammi e da un rimorchio di massa fino a 3.500 chilogrammi, anche se la massa del complesso veicolare è superiore a 4.250 chilogrammi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida cat. BE",
+      "Composizione del complesso veicolare trainante e rimorchio",
+      "Massa massima autorizzata"
+    ],
+    "exact_keywords": [
+      "patente BE",
+      "autoveicolo",
+      "rimorchio",
+      "massa massima autorizzata",
+      "complesso veicolare"
+    ],
+    "vector_search_queries": [
+      "requisiti patente BE per traino rimorchio",
+      "limiti massa complessi veicolari con patente BE",
+      "condotta complessi veicolari con autoveicolo e rimorchio"
+    ],
+    "rule_explanation": "La patente BE abilita alla guida di complessi veicolari composti da un autoveicolo fino a 3.500 kg e un rimorchio fino a 3.500 kg, indipendentemente dalla massa totale del complesso."
+  }
+}

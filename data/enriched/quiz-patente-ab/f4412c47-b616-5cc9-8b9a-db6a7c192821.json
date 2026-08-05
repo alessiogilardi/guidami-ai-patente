@@ -1,0 +1,28 @@
+{
+  "question_id": 4644,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24869",
+  "text": "Se un infortunato della strada ha una ferita sanguinante la si deve coprire con materiale sterile o quanto più possibile pulito, per bloccare il sanguinamento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di ferite",
+      "Gestione delle emorragie"
+    ],
+    "exact_keywords": [
+      "infortunato della strada",
+      "ferita sanguinante",
+      "materiale sterile",
+      "coprire la ferita"
+    ],
+    "vector_search_queries": [
+      "primo soccorso ferita sanguinante",
+      "gestione emorragia stradale",
+      "copertura ferita per arrestare sanguinamento"
+    ],
+    "rule_explanation": "In caso di ferita sanguinante, è necessario coprirla con materiale sterile o pulito per favorire l'arresto dell'emorragia e prevenire infezioni."
+  }
+}

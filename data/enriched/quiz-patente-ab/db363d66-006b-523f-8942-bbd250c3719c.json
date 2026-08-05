@@ -1,0 +1,27 @@
+{
+  "question_id": 4499,
+  "topic": "Norme sul sorpasso",
+  "number": "23492",
+  "text": "La manovra di sorpasso può effettuarsi a sinistra soltanto se il veicolo da sorpassare sta svoltando a destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Regole di precedenza e sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "manovra di sorpasso",
+      "svolta a destra",
+      "veicolo da sorpassare"
+    ],
+    "vector_search_queries": [
+      "sorpasso a sinistra quando il veicolo da sorpassare svolta a destra",
+      "regola generale del sorpasso a sinistra"
+    ],
+    "rule_explanation": "Il sorpasso si effettua a sinistra, salvo che il veicolo da sorpassare non si sia preventivamente disposto a svoltare a sinistra."
+  }
+}

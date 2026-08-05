@@ -1,0 +1,31 @@
+{
+  "question_id": 4303,
+  "topic": "Segnali di indicazione",
+  "number": "21583",
+  "text": "Il segnale raffigurato si trova direttamente in corrispondenza delle strisce dell'attraversamento pedonale",
+  "correct_answer": true,
+  "image": "abf3d7b3d288ff886b24a821cd872a9c.jpeg",
+  "image_description": "Segnale di attraversamento pedonale. Il segnale indica la presenza di un attraversamento pedonale. Preavvisa i conducenti della necessità di prestare attenzione ai pedoni che attraversano la strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo blu scuro. Al centro del segnale è presente un triangolo bianco con il vertice rivolto verso l'alto. All'interno del triangolo bianco, su uno sfondo nero che rappresenta le strisce pedonali, è raffigurata la sagoma stilizzata di una persona che cammina. Il segnale è un segnale di prescrizione o indicazione relativo agli attraversamenti pedonali.",
+    "name": "Segnale di attraversamento pedonale",
+    "description": "Il segnale indica la presenza di un attraversamento pedonale. Preavvisa i conducenti della necessità di prestare attenzione ai pedoni che attraversano la strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Attraversamento pedonale"
+    ],
+    "exact_keywords": [
+      "segnale raffigurato",
+      "attraversamento pedonale",
+      "strisce pedonali",
+      "posizione del segnale"
+    ],
+    "vector_search_queries": [
+      "posizionamento segnale attraversamento pedonale",
+      "segnali di indicazione stradale per pedoni"
+    ],
+    "rule_explanation": "Il segnale di attraversamento pedonale deve essere posizionato in modo da preavvisare efficacemente i conducenti della presenza delle strisce pedonali."
+  }
+}

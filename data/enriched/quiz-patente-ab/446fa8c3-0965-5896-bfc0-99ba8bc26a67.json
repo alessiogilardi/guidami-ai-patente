@@ -1,0 +1,27 @@
+{
+  "question_id": 4507,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23621",
+  "text": "Se si parcheggia in una zona regolamentata mediante disco orario, bisogna trascrivere su un foglio di carta l'ora di arrivo, senza indicare i minuti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della sosta con disco orario",
+      "Obblighi del conducente in caso di sosta in aree a tempo determinato"
+    ],
+    "exact_keywords": [
+      "disco orario",
+      "sosta",
+      "orario di arrivo",
+      "minuti"
+    ],
+    "vector_search_queries": [
+      "indicazione orario di arrivo disco orario",
+      "compilazione disco orario con minuti"
+    ],
+    "rule_explanation": "In caso di sosta in zona con disco orario, è obbligatorio indicare l'orario di arrivo, compresi i minuti, su un apposito disco o foglio, senza alcuna omissione."
+  }
+}

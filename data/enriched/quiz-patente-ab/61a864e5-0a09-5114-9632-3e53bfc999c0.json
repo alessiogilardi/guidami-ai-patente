@@ -1,0 +1,28 @@
+{
+  "question_id": 4698,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25253",
+  "text": "Nei veicoli a doppia trazione (cosiddetti 4x4), le catene da neve devono essere montate sulle ruote posteriori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Montaggio catene da neve",
+      "Veicoli a trazione integrale",
+      "Stabilità e tenuta di strada"
+    ],
+    "exact_keywords": [
+      "catene da neve",
+      "veicoli a doppia trazione",
+      "ruote motrici",
+      "trazione integrale"
+    ],
+    "vector_search_queries": [
+      "montaggio catene da neve su veicoli 4x4",
+      "posizione catene su ruote motrici trazione integrale"
+    ],
+    "rule_explanation": "Le catene da neve, su veicoli a trazione integrale, vanno montate sull'asse con la trazione, salvo diversa indicazione del costruttore."
+  }
+}

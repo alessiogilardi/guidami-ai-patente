@@ -1,0 +1,27 @@
+{
+  "question_id": 4433,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22899",
+  "text": "In vicinanza o in corrispondenza degli incroci non è consentito procedere a zig zag, anche se le corsie direzionali sono segnate da strisce discontinue (tratteggiate)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovre vietate negli incroci",
+      "Regole di circolazione negli incroci"
+    ],
+    "exact_keywords": [
+      "incroci",
+      "zig zag",
+      "corsie direzionali",
+      "strisce discontinue"
+    ],
+    "vector_search_queries": [
+      "divieto di manovra a zig zag negli incroci",
+      "comportamento vietato in prossimità di incroci con corsie tratteggiate"
+    ],
+    "rule_explanation": "Negli incroci, anche se le corsie sono delimitate da strisce discontinue, è vietato procedere a zig zag per garantire la sicurezza e l'ordine della circolazione."
+  }
+}

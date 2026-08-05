@@ -1,0 +1,27 @@
+{
+  "question_id": 4010,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18416",
+  "text": "In vicinanza di un passaggio a livello si trovano i pannelli distanziometrici",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prossimità",
+      "Passaggi a livello"
+    ],
+    "exact_keywords": [
+      "pannelli distanziometrici",
+      "passaggio a livello",
+      "segnaletica stradale",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "pannelli distanziometrici e loro funzione di preavviso del passaggio a livello",
+      "segnaletica di prossimità ai passaggi a livello"
+    ],
+    "rule_explanation": "I pannelli distanziometrici preannunciano la presenza di un passaggio a livello, indicando la distanza dal medesimo."
+  }
+}

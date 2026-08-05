@@ -1,0 +1,31 @@
+{
+  "question_id": 4115,
+  "topic": "Segnali di divieto",
+  "number": "19651",
+  "text": "Il segnale raffigurato vige, nei centri abitati, dalle ore 8.00 alle ore 20.00",
+  "correct_answer": false,
+  "image": "2c1662a4924d2164fcd5f9efc31f87ae.jpeg",
+  "image_description": "Segnale di divieto di transito per veicoli a trazione animale. Il segnale vieta il transito ai veicoli a trazione animale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è raffigurato un cavallo che traina una carrozza, con una persona seduta sulla carrozza. Il pittogramma è nero. Questo segnale indica un divieto specifico.",
+    "name": "Segnale di divieto di transito per veicoli a trazione animale",
+    "description": "Il segnale vieta il transito ai veicoli a trazione animale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Limitazioni temporali ai divieti di circolazione"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "veicoli a trazione animale",
+      "centri abitati",
+      "orario di validità"
+    ],
+    "vector_search_queries": [
+      "validità dei segnali di divieto di transito per veicoli a trazione animale",
+      "limitazioni orarie ai divieti di circolazione nei centri abitati"
+    ],
+    "rule_explanation": "I divieti di transito, salvo diversa indicazione, hanno validità permanente e non sono soggetti a limitazioni orarie, nemmeno nei centri abitati."
+  }
+}

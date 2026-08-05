@@ -1,0 +1,32 @@
+{
+  "question_id": 4190,
+  "topic": "Segnali di precedenza",
+  "number": "20469",
+  "text": "Il segnale raffigurato viene posto su strada secondaria che non ha il diritto di precedenza",
+  "correct_answer": true,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di dare precedenza",
+      "Strada secondaria",
+      "Obbligo di precedenza"
+    ],
+    "exact_keywords": [
+      "dare precedenza",
+      "strada secondaria",
+      "diritto di precedenza",
+      "immissione"
+    ],
+    "vector_search_queries": [
+      "segnali di precedenza su strada secondaria",
+      "obbligo di dare precedenza all'immissione da strada secondaria"
+    ],
+    "rule_explanation": "Il segnale di 'dare precedenza' si appone all'incrocio con una strada secondaria, imponendo al conducente di cedere il passo ai veicoli provenienti dalla strada principale."
+  }
+}

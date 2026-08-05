@@ -1,0 +1,28 @@
+{
+  "question_id": 4696,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25238",
+  "text": "Prima di iniziare un lungo viaggio, è opportuno aumentare la pressione di gonfiaggio degli pneumatici",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pressione pneumatici",
+      "Manutenzione del veicolo",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "pressione di gonfiaggio",
+      "pneumatici",
+      "lungo viaggio",
+      "carico del veicolo"
+    ],
+    "vector_search_queries": [
+      "pressione pneumatici carico veicolo",
+      "manutenzione pneumatici prima di un viaggio"
+    ],
+    "rule_explanation": "La pressione degli pneumatici deve essere adeguata al carico del veicolo e alle specifiche del costruttore, non aumentata genericamente per un lungo viaggio."
+  }
+}

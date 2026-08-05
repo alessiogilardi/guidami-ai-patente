@@ -1,0 +1,27 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22554",
+  "text": "La distanza di sicurezza non deve essere rispettata a velocità di marcia inferiori ai 50 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "velocità di marcia",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di mantenere la distanza di sicurezza",
+      "rispetto della distanza di sicurezza a qualsiasi velocità"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere sempre mantenuta, indipendentemente dalla velocità, per evitare pericoli o intralci alla circolazione."
+  }
+}

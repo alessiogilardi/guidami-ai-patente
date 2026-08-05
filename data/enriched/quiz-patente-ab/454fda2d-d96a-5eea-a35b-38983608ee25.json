@@ -1,0 +1,27 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24403",
+  "text": "Il casco deve essere indossato anche per spostamenti brevi e a bassa velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Sicurezza alla guida di ciclomotori e motocicli"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "ciclomotori",
+      "motocicli",
+      "obbligo di indossare"
+    ],
+    "vector_search_queries": [
+      "obbligo casco motocicli e ciclomotori",
+      "uso casco anche per brevi tragitti"
+    ],
+    "rule_explanation": "L'uso del casco protettivo è obbligatorio per conducenti e passeggeri di ciclomotori e motocicli, indipendentemente dalla durata o dalla velocità dello spostamento."
+  }
+}

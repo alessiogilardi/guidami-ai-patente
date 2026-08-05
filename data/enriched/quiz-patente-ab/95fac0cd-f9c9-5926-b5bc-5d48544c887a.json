@@ -1,0 +1,33 @@
+{
+  "question_id": 4356,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22083",
+  "text": "Il segnale raffigurato indica la continuazione del limite massimo di velocità",
+  "correct_answer": true,
+  "image": "06e72a91fa5bb15104a19ce8ae45cde9.jpeg",
+  "image_description": "Segnale di limite di velocità 80 km/h con pannello integrativo di prescrizione in entrambe le direzioni. Il segnale di limite di velocità indica che la velocità massima consentita è di 80 km/h. Il pannello integrativo indica che tale limite si applica in entrambe le direzioni di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali posti uno sopra l'altro. Il segnale superiore è un segnale di prescrizione circolare con bordo rosso e sfondo bianco, con il numero \"80\" in nero al centro. Questo è un segnale di limite di velocità. Sotto questo segnale, vi è un pannello integrativo rettangolare bianco con una cornice nera. All'interno del pannello ci sono due frecce nere, una rivolta verso l'alto e una verso il basso, disposte verticalmente. Questo pannello indica che la prescrizione si applica in entrambe le direzioni di marcia.",
+    "name": "Segnale di limite di velocità 80 km/h con pannello integrativo di prescrizione in entrambe le direzioni",
+    "description": "Il segnale di limite di velocità indica che la velocità massima consentita è di 80 km/h. Il pannello integrativo indica che tale limite si applica in entrambe le direzioni di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Pannelli integrativi",
+      "Limiti di velocità"
+    ],
+    "exact_keywords": [
+      "segnali integrativi",
+      "limite massimo di velocità",
+      "prescrizione",
+      "direzione di marcia"
+    ],
+    "vector_search_queries": [
+      "applicazione dei pannelli integrativi ai segnali di prescrizione",
+      "segnali di limite di velocità con pannelli integrativi di continuazione",
+      "pannelli integrativi che indicano la durata o l'estensione di un limite di velocità"
+    ],
+    "rule_explanation": "Il pannello integrativo, se presente, specifica le modalità di applicazione del segnale principale, come la continuazione o l'estensione di un limite di velocità in determinate direzioni."
+  }
+}

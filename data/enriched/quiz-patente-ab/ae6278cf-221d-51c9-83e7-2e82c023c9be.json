@@ -1,0 +1,30 @@
+{
+  "question_id": 4602,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24426",
+  "text": "Gli stivali ad uso motociclistico sono privi di nastri liberi o stringhe per evitarne l'aggancio alle pedivelle dei motocicli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Equipaggiamento motociclistico",
+      "Sicurezza alla guida",
+      "Dispositivi di protezione individuale"
+    ],
+    "exact_keywords": [
+      "stivali motociclistici",
+      "nastri liberi",
+      "stringhe",
+      "aggancio",
+      "pedivelle"
+    ],
+    "vector_search_queries": [
+      "requisiti di sicurezza calzature motociclistiche",
+      "pericolosità nastri e stringhe su stivali da moto",
+      "prevenzione aggancio pedivelle motocicli"
+    ],
+    "rule_explanation": "Gli stivali da motociclista devono essere privi di elementi esterni come nastri o stringhe che potrebbero impigliarsi nelle parti in movimento della moto, garantendo così la sicurezza."
+  }
+}

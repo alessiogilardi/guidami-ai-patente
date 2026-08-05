@@ -1,0 +1,31 @@
+{
+  "question_id": 4065,
+  "topic": "Segnali di pericolo",
+  "number": "19040",
+  "text": "Il segnale raffigurato permette di transitare tra una barra e l'altra se le semibarriere sono chiuse, dopo aver verificato che non ci sono treni in arrivo",
+  "correct_answer": false,
+  "image": "accabdc7809596ef95d9e34d4b33d06b.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere o semibarriere. Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un simbolo nero che rappresenta un passaggio a livello con barriere, costituito da due elementi verticali collegati da tre elementi orizzontali. Il segnale è isolato, non inserito in una scena di guida o in sequenza con altri segnali.",
+    "name": "Segnale di passaggio a livello con barriere o semibarriere",
+    "description": "Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo per passaggio a livello",
+      "Obblighi ai passaggi a livello con barriere"
+    ],
+    "exact_keywords": [
+      "passaggio a livello con barriere",
+      "semibarriere chiuse",
+      "transito vietato",
+      "segnali di pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di transito ai passaggi a livello con semibarriere chiuse",
+      "obblighi del conducente in presenza di segnale di passaggio a livello con barriere"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica un passaggio a livello con barriere o semibarriere; in caso di chiusura, il transito è assolutamente vietato anche se non vi sono treni in arrivo."
+  }
+}

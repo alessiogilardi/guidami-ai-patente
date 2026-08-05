@@ -1,0 +1,31 @@
+{
+  "question_id": 4422,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22792",
+  "text": "Su una strada a due carreggiate separate, in figura, si deve percorrere la carreggiata di destra per la marcia normale e quella di sinistra per il sorpasso",
+  "correct_answer": false,
+  "image": "e00e36976523c1531ef87cc81ab30238.jpeg",
+  "image_description": "Strada a carreggiate separate con spartitraffico centrale. La carreggiata è divisa in due direzioni da una corsia spartitraffico centrale, verde e rialzata, delimitata da strisce bianche continue. Ogni carreggiata presenta due corsie di marcia, separate da strisce bianche discontinue. Non sono presenti segnali stradali verticali o orizzontali che indichino regole di precedenza o divieti specifici, ad eccezione della segnaletica orizzontale che delimita le corsie e la carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada a carreggiate separate. Al centro della strada è presente una corsia spartitraffico, di colore verde e rialzata, che separa le due direzioni di marcia. Ogni carreggiata è composta da due corsie di marcia, delimitate da strisce bianche discontinue. Le corsie sono delimitate ai bordi da strisce bianche continue. Non sono presenti altri segnali stradali o elementi di traffico visibili. La geometria della strada suggerisce una strada extraurbana principale o un'autostrada.",
+    "name": "Strada a carreggiate separate con spartitraffico centrale",
+    "description": "La carreggiata è divisa in due direzioni da una corsia spartitraffico centrale, verde e rialzata, delimitata da strisce bianche continue. Ogni carreggiata presenta due corsie di marcia, separate da strisce bianche discontinue. Non sono presenti segnali stradali verticali o orizzontali che indichino regole di precedenza o divieti specifici, ad eccezione della segnaletica orizzontale che delimita le corsie e la carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento dei veicoli sulla carreggiata",
+      "Norme di circolazione su strade a carreggiate separate"
+    ],
+    "exact_keywords": [
+      "carreggiata di destra",
+      "carreggiata di sinistra",
+      "sorpasso",
+      "strada a due carreggiate separate"
+    ],
+    "vector_search_queries": [
+      "utilizzo delle carreggiate su strade a carreggiate separate",
+      "regole di circolazione per sorpasso su strade con carreggiate separate"
+    ],
+    "rule_explanation": "Su strade a carreggiate separate, la carreggiata di destra è destinata alla marcia normale e quella di sinistra ai sorpassi solo se espressamente consentito dalla segnaletica. Altrimenti, si applicano le regole generali di circolazione."
+  }
+}

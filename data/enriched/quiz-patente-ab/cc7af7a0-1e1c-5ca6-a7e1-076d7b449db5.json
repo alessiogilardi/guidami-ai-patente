@@ -1,0 +1,27 @@
+{
+  "question_id": 4561,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24020",
+  "text": "Circolando dietro ad un veicolo che trasporta un carico che sta per cadere, è opportuno avvertire il conducente del potenziale pericolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione di pericolo",
+      "Comportamento in caso di carico pericoloso"
+    ],
+    "exact_keywords": [
+      "carico",
+      "cadere",
+      "pericolo",
+      "avvertire"
+    ],
+    "vector_search_queries": [
+      "segnalazione di carico pericoloso in transito",
+      "obbligo di avvertire in caso di rischio caduta carico"
+    ],
+    "rule_explanation": "Se si nota che un carico trasportato da un altro veicolo sta per cadere, è necessario avvertire il conducente per prevenire un incidente."
+  }
+}

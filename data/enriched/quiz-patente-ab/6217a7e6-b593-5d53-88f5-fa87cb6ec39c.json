@@ -1,0 +1,29 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24421",
+  "text": "La calotta del casco può essere riparata con nastro adesivo di tipo speciale, se presenta una rottura inferiore ai tre centimetri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Integrità dei dispositivi di protezione individuale",
+      "Uso corretto del casco protettivo"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "calotta",
+      "rottura",
+      "riparazione",
+      "nastro adesivo"
+    ],
+    "vector_search_queries": [
+      "integrità strutturale del casco protettivo",
+      "divieto di riparazione della calotta del casco",
+      "condizioni di sicurezza del casco motociclistico"
+    ],
+    "rule_explanation": "La calotta del casco protettivo non deve presentare rotture e non può essere riparata, nemmeno con nastro adesivo speciale, in quanto ciò comprometterebbe la sua funzione di sicurezza."
+  }
+}

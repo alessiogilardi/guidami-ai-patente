@@ -1,0 +1,27 @@
+{
+  "question_id": 4649,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24908",
+  "text": "Se un ferito della strada è in stato di incoscienza e fa fatica a respirare, bisogna liberare subito il naso e la bocca da eventuali ostruzioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di incoscienza",
+      "Gestione delle vie aeree"
+    ],
+    "exact_keywords": [
+      "stato di incoscienza",
+      "vie aeree",
+      "ostruzioni",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "manovre di primo soccorso per liberare le vie aeree in caso di incoscienza",
+      "gestione delle ostruzioni di naso e bocca in un ferito incosciente"
+    ],
+    "rule_explanation": "In caso di incoscienza e difficoltà respiratorie, è fondamentale liberare immediatamente le vie aeree da ostruzioni per garantire la ventilazione."
+  }
+}

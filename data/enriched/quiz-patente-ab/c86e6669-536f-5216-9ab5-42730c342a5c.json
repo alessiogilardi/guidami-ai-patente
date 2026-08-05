@@ -1,0 +1,27 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24634",
+  "text": "La sospensione della patente è disposta quando si circola con patente illeggibile o deteriorata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sanzioni amministrative accessorie",
+      "Documenti di circolazione validi"
+    ],
+    "exact_keywords": [
+      "sospensione patente",
+      "patente deteriorata",
+      "patente illeggibile",
+      "sanzione amministrativa"
+    ],
+    "vector_search_queries": [
+      "sanzioni per guida con patente deteriorata o illeggibile",
+      "conseguenze della circolazione con patente non valida per deterioramento o illeggibilità"
+    ],
+    "rule_explanation": "La sospensione della patente non è prevista per la circolazione con patente illeggibile o deteriorata, ma si applica in casi specifici di violazioni gravi al CdS. In tali casi si applica una sanzione pecuniaria."
+  }
+}

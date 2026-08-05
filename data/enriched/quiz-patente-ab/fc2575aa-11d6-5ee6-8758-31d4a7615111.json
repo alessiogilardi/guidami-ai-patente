@@ -1,0 +1,27 @@
+{
+  "question_id": 4626,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24735",
+  "text": "Su strade coperte di neve occorre alla partenza, accelerare al massimo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Comportamento del conducente su strade innevate"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "strade innevate",
+      "partenza da fermo",
+      "aderenza"
+    ],
+    "vector_search_queries": [
+      "accelerazione in partenza su strade innevate",
+      "guida prudente su superfici a bassa aderenza"
+    ],
+    "rule_explanation": "Su strade innevate, per partire da fermo è necessario accelerare dolcemente per evitare slittamenti e mantenere il controllo del veicolo."
+  }
+}

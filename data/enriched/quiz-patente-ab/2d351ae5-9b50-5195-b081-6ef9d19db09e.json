@@ -1,0 +1,28 @@
+{
+  "question_id": 4664,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25021",
+  "text": "Quando l'assicurazione per la responsabilità civile auto è scaduta di validità si può incorrere nella confisca del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione obbligatoria R.C.A.",
+      "Sanzioni per la circolazione senza copertura assicurativa"
+    ],
+    "exact_keywords": [
+      "assicurazione R.C.A.",
+      "scaduta di validità",
+      "confisca del veicolo",
+      "sanzione amministrativa pecuniaria"
+    ],
+    "vector_search_queries": [
+      "conseguenze circolazione veicolo con assicurazione R.C.A. scaduta",
+      "sanzioni per mancata copertura assicurativa obbligatoria",
+      "confisca veicolo per assenza assicurazione valida"
+    ],
+    "rule_explanation": "La circolazione con polizza R.C.A. scaduta comporta una sanzione amministrativa pecuniaria e la confisca amministrativa del veicolo, salvo che non sia coperto da altra valida polizza."
+  }
+}

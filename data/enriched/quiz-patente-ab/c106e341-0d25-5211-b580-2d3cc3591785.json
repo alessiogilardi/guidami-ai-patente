@@ -1,0 +1,31 @@
+{
+  "question_id": 4337,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21894",
+  "text": "Il segnale raffigurato indica una limitazione di transito su un tratto di strada per i veicoli di massa effettiva superiore a 7 tonnellate",
+  "correct_answer": true,
+  "image": "a0f1ec2809886af786a7aab9b3e6de55.jpeg",
+  "image_description": "Indicazione stradale di preavviso con prescrizione/divieto per massa superiore a 7 tonnellate. Il segnale indica una prescrizione o un divieto per i veicoli con massa effettiva superiore a 7 tonnellate, che non possono proseguire diritto verso Lucca. Devono invece svoltare a destra per raggiungere S. Marcello Pistoiese e Pontepetri. Per La Lima e Le Piastre, la direzione è indicata a sinistra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di indicazione stradale di preavviso, di forma rettangolare e con fondo giallo. Al centro, una freccia nera indica la direzione Lucca in alto. Sulla destra della freccia, una deviazione a destra indica S. Marcello Pistoiese e Pontepetri. Sulla sinistra della freccia, sono indicate La Lima e Le Piastre. Sovrapposto alla freccia che indica Lucca, vi è un segnale di divieto circolare rosso con bordo bianco e sfondo bianco, barrato da una barra orizzontale rossa, con all'interno il numero \"7\" seguito dalla lettera \"t\" (tonnellate) in nero. Questo indica un divieto o una prescrizione per i veicoli con massa superiore a 7 tonnellate. La freccia che indica Lucca è interrotta dal segnale di divieto, suggerendo che i veicoli soggetti al divieto non possono proseguire in quella direzione. La deviazione a destra è l'unica opzione per i veicoli con massa superiore a 7 tonnellate diretti a Lucca, sebbene la destinazione finale non sia Lucca ma S. Marcello Pistoiese e Pontepetri.",
+    "name": "Indicazione stradale di preavviso con prescrizione/divieto per massa superiore a 7 tonnellate",
+    "description": "Il segnale indica una prescrizione o un divieto per i veicoli con massa effettiva superiore a 7 tonnellate, che non possono proseguire diritto verso Lucca. Devono invece svoltare a destra per raggiungere S. Marcello Pistoiese e Pontepetri. Per La Lima e Le Piastre, la direzione è indicata a sinistra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione/divieto",
+      "Limitazioni di massa per veicoli"
+    ],
+    "exact_keywords": [
+      "segnali complementari",
+      "massa effettiva",
+      "limitazione di transito",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "segnali di limitazione di transito per massa a pieno carico",
+      "prescrizioni per massa effettiva veicoli su strade"
+    ],
+    "rule_explanation": "Il segnale di prescrizione indica un divieto o una limitazione di transito per veicoli con massa effettiva superiore a quella indicata, imponendo percorsi alternativi."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4518,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23710",
+  "text": "Salvo diversa segnalazione il conducente, in caso di sosta nei centri abitati, deve collocare il veicolo il più vicino possibile al margine destro della carreggiata, parallelamente ad esso e secondo il senso di marcia, purché esista il marciapiede rialzato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta nei centri abitati",
+      "Posizionamento del veicolo in sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "centri abitati",
+      "margine destro della carreggiata",
+      "senso di marcia",
+      "marciapiede rialzato"
+    ],
+    "vector_search_queries": [
+      "regole per la sosta dei veicoli nei centri abitati",
+      "posizionamento del veicolo in sosta al margine destro della carreggiata"
+    ],
+    "rule_explanation": "Nei centri abitati, la sosta deve avvenire il più vicino possibile al margine destro, parallelamente ad esso e nel senso di marcia, se presente il marciapiede rialzato."
+  }
+}

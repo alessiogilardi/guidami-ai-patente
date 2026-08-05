@@ -1,0 +1,31 @@
+{
+  "question_id": 4251,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21074",
+  "text": "Il segnale luminoso in figura è un semaforo per i veicoli",
+  "correct_answer": true,
+  "image": "9ce1d0d0b1d24fbc9d01bd52aef5f7ab.jpeg",
+  "image_description": "Semaforo per veicoli (luce rossa accesa). Il segnale raffigurato è un semaforo per veicoli, installato in posizione verticale. Le luci sono, dall'alto verso il basso: rossa, gialla e verde. Al momento dell'osservazione, la luce rossa è accesa, mentre le altre due sono spente. Questo tipo di segnale regola il flusso dei veicoli in un incrocio o in un punto specifico della strada. L'accensione della luce rossa impone l'obbligo di arresto prima della striscia di arresto, se presente, o comunque prima dell'incrocio stesso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un semaforo per veicoli, installato in posizione verticale. Le tre luci circolari sono disposte una sopra l'altra. La luce superiore è rossa, quella centrale è gialla e quella inferiore è verde. Attualmente, la luce rossa è accesa, mentre le luci gialla e verde sono spente. Il semaforo è un segnale di regolazione del traffico. La luce rossa accesa indica che i veicoli devono fermarsi.",
+    "name": "Semaforo per veicoli (luce rossa accesa)",
+    "description": "Il segnale raffigurato è un semaforo per veicoli, installato in posizione verticale. Le luci sono, dall'alto verso il basso: rossa, gialla e verde. Al momento dell'osservazione, la luce rossa è accesa, mentre le altre due sono spente. Questo tipo di segnale regola il flusso dei veicoli in un incrocio o in un punto specifico della strada. L'accensione della luce rossa impone l'obbligo di arresto prima della striscia di arresto, se presente, o comunque prima dell'incrocio stesso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica semaforica",
+      "Semaforo per veicoli"
+    ],
+    "exact_keywords": [
+      "semaforo per veicoli",
+      "luci semaforiche",
+      "segnale luminoso",
+      "regolazione della circolazione"
+    ],
+    "vector_search_queries": [
+      "funzione del semaforo per veicoli",
+      "interpretazione dei segnali luminosi semaforici per autoveicoli"
+    ],
+    "rule_explanation": "Il segnale luminoso con luci rossa, gialla e verde è un semaforo destinato alla regolazione della circolazione dei veicoli, imponendo l'arresto con la luce rossa accesa."
+  }
+}

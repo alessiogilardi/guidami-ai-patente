@@ -1,0 +1,33 @@
+{
+  "question_id": 4319,
+  "topic": "Segnali di indicazione",
+  "number": "21733",
+  "text": "Il segnale raffigurato è posto sulle strade extraurbane",
+  "correct_answer": true,
+  "image": "cde48dcb8875c390a2c629a904b48266.jpeg",
+  "image_description": "Inizio di corsia o deviazione (preavviso). Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di colore blu con bordi arrotondati. Al suo interno sono presenti due frecce bianche su sfondo blu. La freccia di sinistra è dritta e indica la direzione in avanti. La freccia di destra parte dalla stessa origine della freccia di sinistra, ma curva verso destra, indicando una deviazione o una corsia che si separa. Questo tipo di segnale preannuncia una modifica nella configurazione delle corsie di marcia.",
+    "name": "Inizio di corsia o deviazione (preavviso)",
+    "description": "Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di preavviso",
+      "Ubicazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "strade extraurbane",
+      "preavviso di corsia o deviazione",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale su strade extraurbane",
+      "segnali di preavviso di corsia o deviazione e loro ubicazione",
+      "tipologia e posizionamento dei segnali di indicazione extraurbani"
+    ],
+    "rule_explanation": "I segnali di preavviso di corsia o deviazione sono segnali di indicazione posti sulle strade extraurbane per informare i conducenti di cambiamenti imminenti nella configurazione della carreggiata."
+  }
+}

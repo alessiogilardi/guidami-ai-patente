@@ -1,0 +1,27 @@
+{
+  "question_id": 4398,
+  "topic": "Distanza di sicurezza",
+  "number": "22582",
+  "text": "La distanza minima di sicurezza se si viaggia a 130 km/h deve essere di circa 36 metri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Velocità di percorrenza"
+    ],
+    "exact_keywords": [
+      "distanza minima di sicurezza",
+      "velocità",
+      "130 km/h",
+      "36 metri"
+    ],
+    "vector_search_queries": [
+      "distanza di sicurezza autostradale a 130 km/h",
+      "calcolo distanza minima sicurezza in base alla velocità"
+    ],
+    "rule_explanation": "La distanza minima di sicurezza da mantenere a 130 km/h è di 36 metri, calcolata dividendo la velocità per 3,6."
+  }
+}

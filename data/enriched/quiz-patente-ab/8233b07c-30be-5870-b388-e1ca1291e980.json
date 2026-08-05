@@ -1,0 +1,27 @@
+{
+  "question_id": 4606,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24465",
+  "text": "Un autoveicolo per poter circolare deve essere munito della carta di circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Documentazione del veicolo",
+      "Obbligo di circolazione"
+    ],
+    "exact_keywords": [
+      "autoveicolo",
+      "circolare",
+      "carta di circolazione",
+      "obbligatorio"
+    ],
+    "vector_search_queries": [
+      "documenti necessari per la circolazione dei veicoli",
+      "obbligo di avere la carta di circolazione per autoveicoli"
+    ],
+    "rule_explanation": "Per poter circolare, ogni autoveicolo deve essere munito della carta di circolazione, che ne attesta l'identificazione e le caratteristiche tecniche."
+  }
+}

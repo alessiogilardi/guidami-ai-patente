@@ -1,0 +1,26 @@
+{
+  "question_id": 4672,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25080",
+  "text": "Per evitare rumori fastidiosi durante la guida non si deve frenare bruscamente, se non è strettamente necessario",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Comportamento alla guida per la sicurezza e il comfort"
+    ],
+    "exact_keywords": [
+      "rumori fastidiosi",
+      "frenare bruscamente",
+      "circolazione stradale"
+    ],
+    "vector_search_queries": [
+      "evitare rumori molesti alla guida",
+      "comportamento alla guida per la riduzione dell'inquinamento acustico"
+    ],
+    "rule_explanation": "Il conducente deve evitare di produrre rumori molesti, quali quelli derivanti da frenate brusche non necessarie, per non arrecare disturbo alla quiete pubblica."
+  }
+}

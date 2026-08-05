@@ -1,0 +1,29 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24396",
+  "text": "E' bene che il casco sia dotato di visiera",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di protezione individuale",
+      "Casco protettivo",
+      "Sicurezza motociclistica"
+    ],
+    "exact_keywords": [
+      "casco",
+      "visiera",
+      "dispositivi di protezione",
+      "idoneo"
+    ],
+    "vector_search_queries": [
+      "funzione ed uso del casco protettivo",
+      "requisiti del casco motociclistico",
+      "obbligo di indossare il casco protettivo"
+    ],
+    "rule_explanation": "L'uso del casco protettivo è obbligatorio per legge. La presenza della visiera è raccomandata per una maggiore protezione del viso e degli occhi."
+  }
+}

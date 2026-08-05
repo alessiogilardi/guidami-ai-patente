@@ -1,0 +1,28 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22553",
+  "text": "Il valore della distanza di sicurezza deve essere almeno pari a quello della distanza di visibilità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Distanza di visibilità",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "distanza di visibilità",
+      "condizioni della strada",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "valore minimo della distanza di sicurezza rispetto alla distanza di visibilità",
+      "come determinare la distanza di sicurezza in base alle condizioni di guida"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare pericoli, tenendo conto delle condizioni della strada, del traffico, del veicolo e delle condizioni atmosferiche, non solo della visibilità."
+  }
+}

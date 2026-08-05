@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23538",
+  "text": "Lo spazio necessario per il sorpasso è indipendente dalla lunghezza dei veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo da superare",
+      "spazio necessario",
+      "lunghezza"
+    ],
+    "vector_search_queries": [
+      "spazio di sorpasso e lunghezza veicoli",
+      "manovra di sorpasso e distanze di sicurezza"
+    ],
+    "rule_explanation": "Lo spazio necessario per il sorpasso deve tenere conto della lunghezza del veicolo da superare, della sua velocità e della velocità del veicolo che effettua il sorpasso."
+  }
+}

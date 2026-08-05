@@ -1,0 +1,27 @@
+{
+  "question_id": 4410,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22673",
+  "text": "E' vietato, in quanto costituisce pericolo o intralcio per la circolazione, sostare sui binari tramviari",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Pericolo e intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "binari tramviari",
+      "pericolo",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta sui binari del tram",
+      "sosta pericolosa o di intralcio sui binari tramviari"
+    ],
+    "rule_explanation": "È vietato sostare sui binari tramviari poiché tale condotta costituisce pericolo o intralcio per la circolazione stradale e tranviaria."
+  }
+}

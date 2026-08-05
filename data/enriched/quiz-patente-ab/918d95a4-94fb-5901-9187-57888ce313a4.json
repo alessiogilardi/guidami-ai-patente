@@ -1,0 +1,27 @@
+{
+  "question_id": 4583,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24232",
+  "text": "Non si devono usare gli indicatori di direzione se, per effettuare una fermata fuori della carreggiata, ci si sposta sul margine sinistro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovre",
+      "Uso corretto degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "fermata fuori della carreggiata",
+      "margine sinistro",
+      "segnalazione di manovra"
+    ],
+    "vector_search_queries": [
+      "obbligo di usare indicatori di direzione per fermata sul margine sinistro",
+      "segnalazione manovra di arresto fuori carreggiata"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare ogni manovra, inclusa la fermata sul margine sinistro, per avvisare gli altri utenti della strada."
+  }
+}

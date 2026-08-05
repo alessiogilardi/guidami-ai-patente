@@ -1,0 +1,28 @@
+{
+  "question_id": 4603,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24437",
+  "text": "I guanti da motociclisti omologati proteggono in particolar modo il dorso della mano in caso di impatto con corpi duri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di protezione individuale per motociclisti",
+      "Omologazione dei guanti",
+      "Sicurezza attiva e passiva"
+    ],
+    "exact_keywords": [
+      "guanti da motociclista",
+      "omologati",
+      "protezione dorso della mano",
+      "impatto"
+    ],
+    "vector_search_queries": [
+      "funzione protettiva guanti motociclista omologati",
+      "requisiti di sicurezza guanti per moto dorso mano"
+    ],
+    "rule_explanation": "I guanti da motociclista omologati devono garantire un'adeguata protezione del dorso della mano contro urti e abrasioni, come previsto dalla normativa di omologazione."
+  }
+}

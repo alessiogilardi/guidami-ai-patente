@@ -1,0 +1,33 @@
+{
+  "question_id": 4319,
+  "topic": "Segnali di indicazione",
+  "number": "21739",
+  "text": "Il segnale raffigurato preannuncia una corsia di decelerazione",
+  "correct_answer": false,
+  "image": "cde48dcb8875c390a2c629a904b48266.jpeg",
+  "image_description": "Inizio di corsia o deviazione (preavviso). Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di colore blu con bordi arrotondati. Al suo interno sono presenti due frecce bianche su sfondo blu. La freccia di sinistra è dritta e indica la direzione in avanti. La freccia di destra parte dalla stessa origine della freccia di sinistra, ma curva verso destra, indicando una deviazione o una corsia che si separa. Questo tipo di segnale preannuncia una modifica nella configurazione delle corsie di marcia.",
+    "name": "Inizio di corsia o deviazione (preavviso)",
+    "description": "Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso",
+      "Corsie di decelerazione",
+      "Modifiche alla configurazione stradale"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "corsia di decelerazione",
+      "preavviso",
+      "deviazione"
+    ],
+    "vector_search_queries": [
+      "segnali che preannunciano corsia di deviazione",
+      "differenza tra corsia di decelerazione e corsia di deviazione segnali",
+      "segnali di preavviso di modifiche alla carreggiata"
+    ],
+    "rule_explanation": "Il segnale raffigurato preannuncia una corsia di deviazione o un cambiamento nel numero di corsie, non specificamente una corsia di decelerazione."
+  }
+}

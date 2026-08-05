@@ -1,0 +1,27 @@
+{
+  "question_id": 4612,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24534",
+  "text": "La patente di categoria B1 abilita a condurre le autovetture monoposto, o con un massimo di tre posti, compreso il conducente, purché si circoli senza passeggeri a bordo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida B1",
+      "Categoria di veicoli guidabili"
+    ],
+    "exact_keywords": [
+      "patente B1",
+      "autovetture monoposto",
+      "posti a sedere",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente B1",
+      "requisiti patente B1 per tricicli e quadricicli a motore"
+    ],
+    "rule_explanation": "La patente B1 abilita alla guida di tricicli e quadricicli a motore di potenza specifica non superiore a 15 kW. Non abilita alla guida di autovetture."
+  }
+}

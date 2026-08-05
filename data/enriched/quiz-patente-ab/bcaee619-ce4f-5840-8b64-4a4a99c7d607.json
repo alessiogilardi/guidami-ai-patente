@@ -1,0 +1,31 @@
+{
+  "question_id": 4235,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20924",
+  "text": "L'elemento in figura rappresenta un rallentatore di velocità",
+  "correct_answer": true,
+  "image": "9db35f612808786bb33946d94ce002fa.jpeg",
+  "image_description": "Segnale di ostacolo o pericolo (strisce). L'elemento in figura, costituito da strisce diagonali gialle e nere alternate, delimita un ostacolo o un pericolo stradale. La sua funzione è quella di segnalare visivamente la presenza di un pericolo, invitando alla massima prudenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi identici, ciascuno composto da una superficie grigia affiancata da una serie di strisce diagonali gialle e nere alternate. Questi elementi sono posizionati su quelle che sembrano essere delle barriere o dei muretti. In basso a sinistra, un'ulteriore immagine mostra una vista dall'alto di un'area di parcheggio con due auto, dove una zona è delimitata da strisce gialle e nere oblique, simile a quelle viste sopra, e da una linea gialla continua. Questa zona sembra indicare un'area di pericolo o un ostacolo, come un pilastro o un bordo. Le strisce gialle e nere alternate sono un dispositivo di segnalazione visiva utilizzato per indicare pericoli o ostacoli fissi sulla carreggiata o nelle sue immediate vicinanze.",
+    "name": "Segnale di ostacolo o pericolo (strisce)",
+    "description": "L'elemento in figura, costituito da strisce diagonali gialle e nere alternate, delimita un ostacolo o un pericolo stradale. La sua funzione è quella di segnalare visivamente la presenza di un pericolo, invitando alla massima prudenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica di ostacolo",
+      "Segnaletica orizzontale"
+    ],
+    "exact_keywords": [
+      "segno sugli ostacoli",
+      "strisce bianche e nere",
+      "rallentatore di velocità",
+      "pericolo stradale"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per ostacoli e pericoli",
+      "funzione delle strisce bianche e nere sugli ostacoli"
+    ],
+    "rule_explanation": "Le strisce diagonali bianche e nere alternate delimitano un ostacolo o un pericolo stradale, non un rallentatore di velocità."
+  }
+}

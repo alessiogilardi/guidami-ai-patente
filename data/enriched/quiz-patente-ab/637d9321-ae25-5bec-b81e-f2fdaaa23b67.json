@@ -1,0 +1,27 @@
+{
+  "question_id": 4651,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24924",
+  "text": "Se un infortunato della strada ha riportato fratture agli arti, bisogna cercare di farlo camminare, per diminuire il dolore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di incidente stradale",
+      "Gestione delle fratture"
+    ],
+    "exact_keywords": [
+      "infortunato",
+      "fratture agli arti",
+      "non mobilizzare",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "comportamento da tenere in caso di fratture agli arti primo soccorso",
+      "immobilizzazione infortunato con fratture agli arti"
+    ],
+    "rule_explanation": "In caso di fratture agli arti, non bisogna assolutamente far camminare l'infortunato, ma immobilizzarlo per evitare ulteriori lesioni e complicazioni."
+  }
+}

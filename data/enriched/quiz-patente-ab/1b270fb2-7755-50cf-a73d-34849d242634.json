@@ -1,0 +1,27 @@
+{
+  "question_id": 4599,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24374",
+  "text": "Si possono utilizzare le cinture di sicurezza al posto dei sistemi di ritenuta per trasportare un bambino, purché sia di altezza superiore a 1,30 metri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistemi di ritenuta per bambini",
+      "Uso corretto delle cinture di sicurezza"
+    ],
+    "exact_keywords": [
+      "sistemi di ritenuta per bambini",
+      "cinture di sicurezza",
+      "trasporto bambini",
+      "altezza"
+    ],
+    "vector_search_queries": [
+      "obbligo sistemi di ritenuta per bambini in auto",
+      "utilizzo cinture di sicurezza per bambini in base all'altezza"
+    ],
+    "rule_explanation": "I bambini di altezza inferiore a 1,50 metri devono essere assicurati con un sistema di ritenuta omologato, non con le cinture di sicurezza standard."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4692,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25204",
+  "text": "Quando il veicolo percorre una curva, la velocità eccessiva può provocarne il ribaltamento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Comportamenti di guida in curva",
+      "Fisica della dinamica veicolare"
+    ],
+    "exact_keywords": [
+      "curva",
+      "velocità eccessiva",
+      "ribaltamento",
+      "stabilità",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "effetti della velocità eccessiva in curva sulla stabilità del veicolo",
+      "rischio di ribaltamento per eccesso di velocità in curva",
+      "dinamica veicolare e forze in curva"
+    ],
+    "rule_explanation": "La velocità eccessiva in curva riduce la tenuta di strada e può causare il ribaltamento del veicolo a causa delle forze centrifughe agenti."
+  }
+}

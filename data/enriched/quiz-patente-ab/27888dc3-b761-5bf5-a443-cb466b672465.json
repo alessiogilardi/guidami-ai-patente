@@ -1,0 +1,28 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24825",
+  "text": "Le rotaie del tram o i tombini presenti sulla carreggiata stradale costituiscono un pericolo per un conducente di veicolo a due ruote, nella sola eventualità che il suo veicolo sia dotato di cambio automatico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo derivante da ostacoli sulla carreggiata",
+      "Comportamento di guida sicuro per veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "rotaie del tram",
+      "tombini",
+      "carreggiata",
+      "veicolo a due ruote"
+    ],
+    "vector_search_queries": [
+      "pericolo rotaie tram veicoli a due ruote",
+      "rischio tombini per motocicli",
+      "aderenza pneumatici su superfici scivolose"
+    ],
+    "rule_explanation": "Le rotaie del tram e i tombini rappresentano un pericolo per i veicoli a due ruote indipendentemente dal tipo di cambio (automatico o manuale), a causa del rischio di sbandamento."
+  }
+}

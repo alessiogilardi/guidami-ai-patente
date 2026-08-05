@@ -1,0 +1,29 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18490",
+  "text": "La corsia è destinata solo al transito dei pedoni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di corsia",
+      "Uso della strada e convivenza civile",
+      "Tutela degli utenti deboli"
+    ],
+    "exact_keywords": [
+      "corsia",
+      "transito",
+      "pedoni",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "definizione di corsia nel Codice della Strada",
+      "uso della corsia da parte dei pedoni",
+      "differenza tra corsia e marciapiede"
+    ],
+    "rule_explanation": "La corsia è una parte della carreggiata riservata al transito dei veicoli, non dei pedoni, salvo specifiche eccezioni previste dal Codice della Strada."
+  }
+}

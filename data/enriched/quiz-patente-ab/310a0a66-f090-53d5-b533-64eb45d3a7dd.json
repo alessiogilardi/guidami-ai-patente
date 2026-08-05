@@ -1,0 +1,34 @@
+{
+  "question_id": 4166,
+  "topic": "Segnali di obbligo",
+  "number": "20241",
+  "text": "Il segnale raffigurato indica direzione obbligatoria a sinistra",
+  "correct_answer": false,
+  "image": "2b73d96a20a9452074f1346816094569.jpeg",
+  "image_description": "Preavviso di passaggio a sinistra. Il segnale impone di passare a sinistra dell'ostacolo o della divisione di carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca che punta in diagonale verso il basso e verso sinistra. Questo segnale è un segnale di obbligo.",
+    "name": "Preavviso di passaggio a sinistra",
+    "description": "Il segnale impone di passare a sinistra dell'ostacolo o della divisione di carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di prescrizione",
+      "Direzione obbligatoria"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "direzione obbligatoria",
+      "preavviso di passaggio",
+      "ostacolo",
+      "divisione di carreggiata"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnale di obbligo di direzione e segnale di preavviso di passaggio",
+      "interpretazione segnale di preavviso di passaggio a sinistra",
+      "segnali che impongono di passare a sinistra di un ostacolo"
+    ],
+    "rule_explanation": "Il segnale di 'preavviso di passaggio' impone di passare a sinistra dell'ostacolo o della divisione di carreggiata, non indica una direzione obbligatoria a sinistra."
+  }
+}

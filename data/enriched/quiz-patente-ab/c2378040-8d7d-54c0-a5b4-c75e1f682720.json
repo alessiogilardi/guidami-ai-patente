@@ -1,0 +1,27 @@
+{
+  "question_id": 4386,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22448",
+  "text": "Si deve tenere una velocità adeguata solo alle nostre condizioni di salute",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità adeguata alle condizioni di guida",
+      "Obbligo di prudenza e sicurezza"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "stato del veicolo",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alle condizioni di salute, del veicolo, della strada e del traffico",
+      "moderazione della velocità per garantire la sicurezza e prevenire intralci"
+    ],
+    "rule_explanation": "La velocità deve essere adeguata non solo alle condizioni di salute del conducente, ma anche a quelle del veicolo, della strada, del traffico e atmosferiche, per evitare pericoli."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4534,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23827",
+  "text": "Fuori dei centri abitati, di notte, è obbligatorio presegnalare con il segnale triangolare mobile di pericolo ogni carico caduto accidentalmente dal veicolo sulla carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo",
+      "Obblighi in caso di carico caduto",
+      "Circolazione fuori dai centri abitati"
+    ],
+    "exact_keywords": [
+      "segnalazione di pericolo",
+      "carico caduto",
+      "strada extraurbana",
+      "pannello di protezione",
+      "segnali triangolari"
+    ],
+    "vector_search_queries": [
+      "obbligo di presegnalazione carico caduto su carreggiata fuori centro abitato",
+      "uso del segnale triangolare mobile per carico caduto di notte su strada extraurbana"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, è obbligatorio presegnalare con il segnale triangolare mobile di pericolo ogni carico caduto accidentalmente sulla carreggiata, anche di notte."
+  }
+}

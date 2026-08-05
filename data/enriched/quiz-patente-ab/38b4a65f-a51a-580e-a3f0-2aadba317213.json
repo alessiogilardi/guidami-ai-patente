@@ -1,0 +1,30 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18488",
+  "text": "La corsia può essere riservata ai veicoli che intendono svoltare (corsia specializzata)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Corsie specializzate",
+      "Segnaletica stradale di prescrizione",
+      "Utilizzo della corsia di marcia"
+    ],
+    "exact_keywords": [
+      "corsia specializzata",
+      "svolta",
+      "veicoli",
+      "segnali di indicazione",
+      "prescrizione"
+    ],
+    "vector_search_queries": [
+      "corsia riservata a manovre di svolta",
+      "corsie specializzate per svolta a destra o sinistra",
+      "segnaletica che impone l'uso di corsie specializzate"
+    ],
+    "rule_explanation": "Una corsia può essere designata come specializzata per determinate manovre, come la svolta, tramite apposita segnaletica di prescrizione."
+  }
+}

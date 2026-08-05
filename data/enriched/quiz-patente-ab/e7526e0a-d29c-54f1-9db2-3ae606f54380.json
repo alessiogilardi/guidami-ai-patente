@@ -1,0 +1,32 @@
+{
+  "question_id": 4269,
+  "topic": "Segnali di indicazione",
+  "number": "21251",
+  "text": "Il segnale raffigurato indica una strada sdrucciolevole per 2 chilometri",
+  "correct_answer": false,
+  "image": "9476acfee4cb476566d2aa68a47dcb6e.jpeg",
+  "image_description": "Indicazione di numero e tipo di strada (SS). Il segnale indica che la strada che si sta percorrendo è la strada statale numero 2.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale rettangolare di colore blu scuro con bordi arrotondati e un bordo bianco sottile. Al centro del segnale, in lettere bianche maiuscole, sono riportate le sigle \"SS\" seguite dal numero \"2\". Questo tipo di segnale viene utilizzato per indicare il numero e il tipo di strada che si sta percorrendo.",
+    "name": "Indicazione di numero e tipo di strada (SS)",
+    "description": "Il segnale indica che la strada che si sta percorrendo è la strada statale numero 2."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione stradale",
+      "Segnali di pericolo"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "strada statale",
+      "numero di strada",
+      "strada sdrucciolevole"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di pericolo e di indicazione",
+      "segnali che indicano il numero di strada statale",
+      "segnali di avvertimento di strada sdrucciolevole"
+    ],
+    "rule_explanation": "Il segnale di pericolo di strada sdrucciolevole preavvisa una condizione di ridotta aderenza del manto stradale, non indica il numero o il tipo di strada statale."
+  }
+}

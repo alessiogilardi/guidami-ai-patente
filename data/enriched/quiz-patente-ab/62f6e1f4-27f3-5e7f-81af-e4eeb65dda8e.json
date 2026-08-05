@@ -1,0 +1,27 @@
+{
+  "question_id": 4584,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24242",
+  "text": "L'uso degli indicatori di direzione è necessario nella marcia per file parallele, anche se non si effettuano cambiamenti di corsia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Obbligo di uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "cambiamento di corsia",
+      "marcia per file parallele",
+      "segnalazione acustica"
+    ],
+    "vector_search_queries": [
+      "obbligo di uso degli indicatori di direzione per manovre laterali",
+      "segnalazione di cambiamento di corsia nella marcia per file parallele"
+    ],
+    "rule_explanation": "Gli indicatori di direzione sono obbligatori per segnalare ogni manovra che comporta spostamento laterale, anche nella marcia per file parallele se si intende cambiare la propria posizione rispetto alle altre file."
+  }
+}

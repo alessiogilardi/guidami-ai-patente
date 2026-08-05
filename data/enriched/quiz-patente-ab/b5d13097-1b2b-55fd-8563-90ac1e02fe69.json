@@ -1,0 +1,27 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23035",
+  "text": "Lo specchio retrovisore laterale sinistro deve essere chiuso quando si circola su strade strette di montagna",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente in materia di specchi retrovisori",
+      "Sicurezza nella guida su strade strette"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore laterale sinistro",
+      "strade strette di montagna",
+      "chiusura specchietto",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "obbligo uso specchietto retrovisore laterale sinistro su strade strette",
+      "visibilità e sicurezza su strade di montagna con specchietti chiusi"
+    ],
+    "rule_explanation": "Lo specchio retrovisore laterale sinistro non deve essere chiuso su strade strette di montagna, in quanto garantisce la visibilità necessaria per la sicurezza della circolazione."
+  }
+}

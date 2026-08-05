@@ -1,0 +1,31 @@
+{
+  "question_id": 4255,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21119",
+  "text": "Il semaforo in figura, con luce gialla fissa accesa, impone ai conducenti di biciclette di liberare velocemente l'incrocio se lo hanno già impegnato",
+  "correct_answer": true,
+  "image": "c3c957780ed480a75899918470e54d50.jpeg",
+  "image_description": "Semaforo per biciclette. Il segnale raffigura un semaforo verticale con tre luci circolari sovrapposte: rossa in alto, gialla al centro e verde in basso. Ogni luce contiene la sagoma stilizzata di una bicicletta. Questo tipo di semaforo è specifico per regolare il traffico delle biciclette.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale semaforico verticale. Le luci sono disposte una sopra l'altra. La luce superiore è rossa e contiene il simbolo di una bicicletta. La luce centrale è gialla e contiene anch'essa il simbolo di una bicicletta. La luce inferiore è verde e contiene il simbolo di una bicicletta. Il segnale è chiaramente destinato a regolare il traffico ciclistico.",
+    "name": "Semaforo per biciclette",
+    "description": "Il segnale raffigura un semaforo verticale con tre luci circolari sovrapposte: rossa in alto, gialla al centro e verde in basso. Ogni luce contiene la sagoma stilizzata di una bicicletta. Questo tipo di semaforo è specifico per regolare il traffico delle biciclette."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica semaforica per ciclisti",
+      "Obblighi dei conducenti al segnale giallo fisso"
+    ],
+    "exact_keywords": [
+      "semaforo giallo fisso",
+      "biciclette",
+      "liberare l\\'incrocio",
+      "impegnare l\\'incrocio"
+    ],
+    "vector_search_queries": [
+      "obblighi ciclisti semaforo giallo fisso incrocio",
+      "significato luce gialla semaforo biciclette"
+    ],
+    "rule_explanation": "Il segnale giallo fisso del semaforo per biciclette impone ai ciclisti di liberare l'incrocio se lo hanno già impegnato, altrimenti di fermarsi prima della linea di arresto."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4678,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25121",
+  "text": "L'inquinamento atmosferico prodotto dai veicoli dipende principalmente dall'umidità presente nell'aria",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico da veicoli",
+      "Cause delle emissioni inquinanti"
+    ],
+    "exact_keywords": [
+      "inquinamento atmosferico",
+      "veicoli",
+      "emissioni inquinanti",
+      "combustione"
+    ],
+    "vector_search_queries": [
+      "cause inquinamento atmosferico veicoli",
+      "prodotti della combustione e inquinamento da veicoli"
+    ],
+    "rule_explanation": "L'inquinamento atmosferico da veicoli è causato principalmente dai prodotti della combustione incompleta del carburante, non dall'umidità dell'aria."
+  }
+}

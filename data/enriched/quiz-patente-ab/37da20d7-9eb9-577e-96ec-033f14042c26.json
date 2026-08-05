@@ -1,0 +1,27 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23552",
+  "text": "È vietato il sorpasso se nevica",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole sul sorpasso",
+      "Condizioni atmosferiche e sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "neve",
+      "visibilità",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "sorpasso in condizioni di scarsa visibilità per neve",
+      "divieto di sorpasso per precipitazioni nevose"
+    ],
+    "rule_explanation": "Il sorpasso non è vietato in caso di neve, ma solo se le condizioni di visibilità e della strada non consentono manovre sicure."
+  }
+}

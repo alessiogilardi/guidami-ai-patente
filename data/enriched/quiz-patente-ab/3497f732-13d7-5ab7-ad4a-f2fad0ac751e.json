@@ -1,0 +1,28 @@
+{
+  "question_id": 4049,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18837",
+  "text": "Il conducente, di notte, non deve dare la precedenza ai pedoni che attraversano sulle strisce pedonali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di precedenza dei pedoni",
+      "Attraversamento pedonale",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "strisce pedonali",
+      "pedoni",
+      "precedenza",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "precedenza pedoni strisce pedonali",
+      "obbligo di dare precedenza ai pedoni che attraversano la strada"
+    ],
+    "rule_explanation": "Il conducente deve dare la precedenza ai pedoni che attraversano la carreggiata sulle apposite strisce pedonali, anche di notte."
+  }
+}

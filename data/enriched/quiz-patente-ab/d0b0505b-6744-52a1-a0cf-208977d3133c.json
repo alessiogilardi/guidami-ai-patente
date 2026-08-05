@@ -1,0 +1,27 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18353",
+  "text": "La strada extraurbana principale non ha incroci a raso che l'attraversano",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione delle strade extraurbane principali",
+      "Caratteristiche delle strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "strada extraurbana principale",
+      "incroci a raso",
+      "carreggiata",
+      "svincoli"
+    ],
+    "vector_search_queries": [
+      "definizione di strada extraurbana principale nel CdS",
+      "caratteristiche delle strade extraurbane principali senza incroci a raso"
+    ],
+    "rule_explanation": "Le strade extraurbane principali sono classificate come tali in quanto non presentano intersezioni a raso, ma solo sovrappassi o sottopassi (svincoli)."
+  }
+}

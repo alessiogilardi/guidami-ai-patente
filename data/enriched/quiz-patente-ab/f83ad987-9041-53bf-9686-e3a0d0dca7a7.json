@@ -1,0 +1,29 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24686",
+  "text": "La patente di guida di categoria B SPECIALE (BS), salvo diversa limitazione riportata sul documento stesso o salvo allineamento alla data del compleanno del titolare, ha validità di cinque anni se rilasciata o confermata a chi non ha superato i 70 anni di età",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Patente speciale",
+      "Conferma di validità della patente"
+    ],
+    "exact_keywords": [
+      "patente di guida categoria B SPECIALE (BS)",
+      "validità",
+      "confermata",
+      "superato i 70 anni",
+      "cinque anni"
+    ],
+    "vector_search_queries": [
+      "validità patente B SPECIALE per conducenti sotto i 70 anni",
+      "durata validità patente di guida BS confermata"
+    ],
+    "rule_explanation": "La patente B SPECIALE ha validità quinquennale per i conducenti under 70, salvo diverse indicazioni sul documento o allineamento alla data di compleanno."
+  }
+}

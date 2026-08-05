@@ -1,0 +1,30 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25391",
+  "text": "Eccessivi giochi allo sterzo rendono imprecisa la traiettoria del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Stabilità e tenuta di strada",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "gioco dello sterzo",
+      "sterzo impreciso",
+      "traiettoria del veicolo",
+      "manutenzione",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "effetti del gioco eccessivo dello sterzo sulla traiettoria",
+      "manutenzione dello sterzo e sicurezza di guida",
+      "imprecisione di guida dovuta a gioco dello sterzo"
+    ],
+    "rule_explanation": "Un gioco eccessivo nel sistema di sterzo compromette la precisione della traiettoria del veicolo, incidendo negativamente sulla sicurezza e sulla tenuta di strada."
+  }
+}

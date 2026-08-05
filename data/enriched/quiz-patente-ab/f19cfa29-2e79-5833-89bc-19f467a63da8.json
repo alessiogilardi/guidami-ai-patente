@@ -1,0 +1,29 @@
+{
+  "question_id": 4644,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24870",
+  "text": "Se un infortunato della strada ha una ferita sanguinante, sporca di terra, bisogna lavarla quanto prima con acqua pulita",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di ferite",
+      "Gestione delle ferite sporche",
+      "Igiene nelle cure d'emergenza"
+    ],
+    "exact_keywords": [
+      "infortunato della strada",
+      "ferita sanguinante",
+      "acqua pulita",
+      "lavaggio ferita"
+    ],
+    "vector_search_queries": [
+      "cura delle ferite sporche in primo soccorso",
+      "importanza del lavaggio con acqua pulita per ferite sanguinanti",
+      "procedure di primo soccorso per ferite contaminate"
+    ],
+    "rule_explanation": "In caso di ferita sporca e sanguinante, è fondamentale procedere al lavaggio con acqua pulita il prima possibile per ridurre il rischio di infezione."
+  }
+}

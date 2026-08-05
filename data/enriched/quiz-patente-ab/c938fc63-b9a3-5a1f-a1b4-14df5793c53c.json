@@ -1,0 +1,29 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25318",
+  "text": "Una frenatura poco efficiente o squilibrata può essere causata dalla presenza d'aria o vapore nel circuito frenante idraulico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza del sistema frenante",
+      "Manutenzione del veicolo",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "frenatura inefficiente",
+      "circuito frenante idraulico",
+      "aria nel circuito",
+      "vapore nel circuito"
+    ],
+    "vector_search_queries": [
+      "cause di inefficienza del sistema frenante idraulico",
+      "effetti della presenza di aria o vapore nel circuito frenante",
+      "manutenzione del sistema frenante per garantire la sicurezza"
+    ],
+    "rule_explanation": "Una frenatura inefficiente o squilibrata può derivare da problemi nel circuito frenante idraulico, come la presenza di aria o vapore, che compromettono la trasmissione della forza frenante."
+  }
+}

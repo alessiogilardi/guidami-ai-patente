@@ -1,0 +1,27 @@
+{
+  "question_id": 4527,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23786",
+  "text": "La sosta a meno di 15 metri dal segnale di fermata autobus, qualora gli spazi di stazionamento non siano delimitati, è consentita azionando la segnalazione luminosa di pericolo (quattro frecce lampeggianti simultaneamente)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in prossimità di fermate autobus",
+      "Segnalazione di pericolo (quattro frecce)"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "segnale di fermata autobus",
+      "spazi di stazionamento",
+      "segnalazione luminosa di pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta vicino alle fermate degli autobus",
+      "distanza minima dal segnale di fermata autobus per la sosta"
+    ],
+    "rule_explanation": "La sosta è vietata a meno di 15 metri dal segnale di fermata autobus, indipendentemente dall'attivazione delle quattro frecce lampeggianti."
+  }
+}

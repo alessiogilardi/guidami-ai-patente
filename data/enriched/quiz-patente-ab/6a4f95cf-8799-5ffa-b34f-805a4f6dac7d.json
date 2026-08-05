@@ -1,0 +1,33 @@
+{
+  "question_id": 4206,
+  "topic": "Segnali di precedenza",
+  "number": "20669",
+  "text": "In presenza del segnale raffigurato bisogna comunque assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza",
+  "correct_answer": true,
+  "image": "ae0a5db589f248f6cde41a1db1f0fe3f.jpeg",
+  "image_description": "Segnale di Diritto di Precedenza. Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con i vertici disposti in modo da formare un rombo. Il bordo esterno del segnale è bianco, seguito da un bordo nero più sottile. All'interno, su sfondo bianco, vi è un rombo più piccolo di colore arancione. Questo è il segnale di Diritto di Precedenza.",
+    "name": "Segnale di Diritto di Precedenza",
+    "description": "Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di Diritto di Precedenza",
+      "Obbligo di prudenza all'incrocio"
+    ],
+    "exact_keywords": [
+      "segnali di precedenza",
+      "diritto di precedenza",
+      "assicurarsi",
+      "veicoli provenienti dalle strade laterali",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "obblighi del segnale di diritto di precedenza",
+      "regola di condotta in presenza del segnale di diritto di precedenza",
+      "precedenza incroci stradali segnale specifico"
+    ],
+    "rule_explanation": "Il segnale di Diritto di Precedenza impone di dare la precedenza ai veicoli provenienti dalle strade laterali solo se questi non rispettano la nostra precedenza, ma impone comunque di moderare la velocità e assicurarsi che gli altri si fermino."
+  }
+}

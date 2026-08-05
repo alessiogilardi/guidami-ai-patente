@@ -1,0 +1,29 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22276",
+  "text": "Il conducente deve regolare la velocità in modo da non costituire pericolo di danno alle cose",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Pericolo per la circolazione",
+      "Danneggiamento di cose"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "pericolo",
+      "cose",
+      "danno",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "obbligo di regolare la velocità per evitare danni alle cose",
+      "conducente obblighi di velocità per la sicurezza stradale"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in modo da non creare pericolo per le persone, per gli altri veicoli o per le cose, evitando ogni situazione di intralcio alla circolazione."
+  }
+}

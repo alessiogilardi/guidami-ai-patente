@@ -1,0 +1,27 @@
+{
+  "question_id": 4379,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22374",
+  "text": "Il limite massimo di velocità sulle strade extraurbane secondarie è di 90 km/h per i motocicli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane secondarie",
+      "Velocità massima per motocicli"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "strade extraurbane secondarie",
+      "motocicli",
+      "90 km/h"
+    ],
+    "vector_search_queries": [
+      "limite velocità motocicli strade extraurbane secondarie",
+      "velocità massima motocicli 90 km/h extraurbana secondaria"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per i motocicli sulle strade extraurbane secondarie è fissato a 90 km/h."
+  }
+}

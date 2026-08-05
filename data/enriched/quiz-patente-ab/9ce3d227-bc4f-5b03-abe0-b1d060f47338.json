@@ -1,0 +1,31 @@
+{
+  "question_id": 4183,
+  "topic": "Segnali di obbligo",
+  "number": "20402",
+  "text": "Il segnale raffigurato è posto in corrispondenza della fine del percorso unico pedonale e ciclabile",
+  "correct_answer": true,
+  "image": "9510aebd8012b8dbd573ed72e2ad9d54.jpeg",
+  "image_description": "Fine percorso pedonale e ciclabile. Il segnale indica la fine di un percorso pedonale e ciclabile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del segnale sono presenti le figure stilizzate di un pedone e di una bicicletta, sovrapposte. Una barra rossa diagonale attraversa il segnale da in alto a sinistra a in basso a destra, indicando la fine di un obbligo o di un percorso. Nello specifico, il segnale indica la fine di un percorso riservato sia ai pedoni che ai ciclisti.",
+    "name": "Fine percorso pedonale e ciclabile",
+    "description": "Il segnale indica la fine di un percorso pedonale e ciclabile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di fine percorso obbligato",
+      "Segnaletica stradale di indicazione"
+    ],
+    "exact_keywords": [
+      "fine percorso pedonale e ciclabile",
+      "segnali di obbligo",
+      "segnali di indicazione",
+      "percorso ciclopedonale"
+    ],
+    "vector_search_queries": [
+      "segnaletica fine percorso ciclopedonale obbligatorio",
+      "interpretazione segnale fine percorso pedonale e ciclabile"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la fine di un percorso pedonale e ciclabile obbligatorio, segnalando la conclusione del tratto dedicato a pedoni e ciclisti."
+  }
+}

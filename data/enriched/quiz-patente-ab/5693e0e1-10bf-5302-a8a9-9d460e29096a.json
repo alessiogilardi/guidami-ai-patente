@@ -1,0 +1,32 @@
+{
+  "question_id": 4172,
+  "topic": "Segnali di obbligo",
+  "number": "20301",
+  "text": "Il segnale raffigurato vieta di superare la velocità indicata",
+  "correct_answer": false,
+  "image": "d975ef356f24d077b82e83106e5db105.jpeg",
+  "image_description": "Segnale di obbligo di velocità minima. Il segnale prescrive di mantenere una velocità non inferiore a 30 km/h.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu scuro. Al centro del segnale è presente il numero '30' in bianco. Questo è un segnale di obbligo che indica la velocità minima da rispettare.",
+    "name": "Segnale di obbligo di velocità minima",
+    "description": "Il segnale prescrive di mantenere una velocità non inferiore a 30 km/h."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Velocità minima",
+      "Divieto di superamento"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "velocità minima",
+      "superare",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnale di velocità minima e divieto di superamento",
+      "interpretazione segnali di obbligo di velocità minima"
+    ],
+    "rule_explanation": "Il segnale di obbligo di velocità minima impone di non procedere a una velocità inferiore a quella indicata, non vieta di superare tale limite."
+  }
+}

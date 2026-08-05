@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23500",
+  "text": "E' vietato il sorpasso di veicoli fermi ai passaggi a livello, se bisogna impegnare la semicarreggiata opposta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Passaggi a livello",
+      "Regole di circolazione in prossimità di passaggi a livello"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "veicoli fermi",
+      "passaggi a livello",
+      "impegnare la semicarreggiata opposta"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso veicoli fermi ai passaggi a livello",
+      "sorpasso in prossimità di passaggi a livello con occupazione della corsia opposta"
+    ],
+    "rule_explanation": "È vietato sorpassare veicoli fermi ai passaggi a livello qualora ciò comporti l'occupazione della corsia opposta."
+  }
+}

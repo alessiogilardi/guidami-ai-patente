@@ -1,0 +1,29 @@
+{
+  "question_id": 4417,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22755",
+  "text": "Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, è opportuno cercare di sgombrare al più presto la carreggiata, anche invertendo il senso di marcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento agli incroci",
+      "Ripresa della marcia dopo l'arresto",
+      "Manovre pericolose"
+    ],
+    "exact_keywords": [
+      "incrocio urbano",
+      "via libera",
+      "riprendere la marcia",
+      "sgombrare la carreggiata",
+      "invertire il senso di marcia"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente in caso di ritardo nella ripresa della marcia all'incrocio",
+      "pericolosità dell'inversione di marcia per sgombrare la carreggiata in un incrocio urbano"
+    ],
+    "rule_explanation": "Agli incroci, dopo il via libera, se il veicolo che precede tarda a ripartire, non si deve invertire il senso di marcia per sgombrare la carreggiata, ma attendere o usare la massima prudenza."
+  }
+}

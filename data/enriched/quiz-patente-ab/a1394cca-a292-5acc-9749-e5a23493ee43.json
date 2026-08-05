@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31029",
+  "text": "Utilizzare il cellulare alla guida, anche se con impianto viva-voce, può ridurre l’attenzione alla strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distrazione alla guida",
+      "Uso di dispositivi elettronici alla guida",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "cellulare alla guida",
+      "dispositivi a vivavoce",
+      "distrazione sensoriale",
+      "attenzione alla guida"
+    ],
+    "vector_search_queries": [
+      "uso del cellulare alla guida e distrazione",
+      "conseguenze dell'uso del vivavoce durante la guida",
+      "obblighi del conducente in materia di attenzione alla circolazione"
+    ],
+    "rule_explanation": "L'uso del cellulare, anche con vivavoce, è vietato perché riduce la capacità di attenzione alla guida, costituendo una distrazione."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18788",
+  "text": "In vicinanza di un attraversamento pedonale, il conducente deve considerare che le persone anziane solitamente attraversano lentamente e con difficoltà",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Attraversamenti pedonali",
+      "Principio di prudenza e diligenza"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "attraversamento pedonale",
+      "persone anziane",
+      "attraversano lentamente"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in prossimità di attraversamenti pedonali",
+      "precauzioni per pedoni anziani agli attraversamenti pedonali",
+      "moderazione della velocità in prossimità di attraversamenti pedonali per utenti deboli"
+    ],
+    "rule_explanation": "Il conducente, in prossimità di un attraversamento pedonale, deve moderare la velocità e prestare particolare attenzione ai pedoni, specialmente se anziani, prevedendo la loro minore rapidità nell'attraversare."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4567,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24091",
+  "text": "Gli specchietti esterni montati sulla motrice non devono sporgere oltre 20 centimetri dalla sagoma del veicolo (motrice o rimorchio), con riferimento al punto di maggiore larghezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sagoma del veicolo",
+      "Dimensioni massime del veicolo",
+      "Trasporto di merci"
+    ],
+    "exact_keywords": [
+      "specchietti retrovisori",
+      "sagoma del veicolo",
+      "larghezza massima",
+      "motrice",
+      "rimorchio"
+    ],
+    "vector_search_queries": [
+      "sporgenza massima specchietti retrovisori esterni dalla sagoma del veicolo",
+      "limiti dimensionali laterali per specchietti di motrice e rimorchio"
+    ],
+    "rule_explanation": "Gli specchietti retrovisori esterni non devono eccedere i 20 cm di sporgenza laterale dalla sagoma del veicolo, calcolata nel suo punto di maggiore larghezza."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4054,
+  "topic": "Segnali di pericolo",
+  "number": "18898",
+  "text": "Il segnale raffigurato vieta il transito degli autobus",
+  "correct_answer": false,
+  "image": "77a40e39cc4b726c3f05d1759479cd9e.jpeg",
+  "image_description": "Segnale di dosso. Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un pannello a forma di triangolo con bordo rosso e sfondo bianco. Al centro del pannello è raffigurato un pittogramma nero che rappresenta un dosso.",
+    "name": "Segnale di dosso",
+    "description": "Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "dosso",
+      "transito vietato",
+      "autobus"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo che preannunciano ostacoli altimetrici",
+      "differenza tra segnali di pericolo e segnali di divieto",
+      "segnali stradali di divieto di transito per autobus"
+    ],
+    "rule_explanation": "Il segnale di dosso è un segnale di pericolo che preannuncia un ostacolo altimetrico, non un divieto di transito per una specifica categoria di veicoli."
+  }
+}

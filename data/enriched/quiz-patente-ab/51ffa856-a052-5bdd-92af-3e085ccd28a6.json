@@ -1,0 +1,32 @@
+{
+  "question_id": 4315,
+  "topic": "Segnali di indicazione",
+  "number": "21695",
+  "text": "Il segnale raffigurato si trova su strada extraurbana",
+  "correct_answer": true,
+  "image": "f18ba4966ff5723564b62ec08c5c30bf.jpeg",
+  "image_description": "Piazzola di sosta. Il segnale indica una piazzola di sosta a lato della carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale è presente un pittogramma bianco che rappresenta una piazzola di sosta a lato della carreggiata. La piazzola è indicata da una linea tratteggiata che si stacca dalla linea continua della carreggiata e si allarga verso destra, formando uno spazio di sosta.",
+    "name": "Piazzola di sosta",
+    "description": "Il segnale indica una piazzola di sosta a lato della carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnaletica stradale di servizio",
+      "Piazzola di sosta"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "piazzola di sosta",
+      "strada extraurbana",
+      "segnali di servizio"
+    ],
+    "vector_search_queries": [
+      "segnali di servizio per piazzole di sosta su strade extraurbane",
+      "ubicazione segnale piazzola di sosta su strade extraurbane"
+    ],
+    "rule_explanation": "Il segnale di piazzola di sosta è un segnale di servizio che indica una sosta a lato della carreggiata, spesso presente su strade extraurbane."
+  }
+}

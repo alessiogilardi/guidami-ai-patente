@@ -1,0 +1,32 @@
+{
+  "question_id": 4137,
+  "topic": "Segnali di divieto",
+  "number": "19893",
+  "text": "Il segnale raffigurato indica la fine del divieto di sorpasso per autobus di massa a pieno carico superiore a 3,5 tonnellate",
+  "correct_answer": false,
+  "image": "28ff9501e70957cfba029d212ffefb79.jpeg",
+  "image_description": "Fine divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Indica la fine del divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Non vieta il sorpasso per le autovetture.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una banda diagonale nera che va dall'angolo in alto a sinistra all'angolo in basso a destra. Alla sinistra della banda nera è raffigurato un autotreno, mentre alla destra è raffigurata un'autovettura. Il segnale è di tipo \"fine prescrizione\".",
+    "name": "Fine divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati",
+    "description": "Indica la fine del divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Non vieta il sorpasso per le autovetture."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sorpasso",
+      "Estensione dei divieti di sorpasso",
+      "Segnali di fine prescrizione"
+    ],
+    "exact_keywords": [
+      "fine del divieto di sorpasso",
+      "autobus",
+      "massa a pieno carico",
+      "tonnellate"
+    ],
+    "vector_search_queries": [
+      "fine divieto di sorpasso per autobus di massa superiore a 3,5 tonnellate",
+      "segnali di fine prescrizione che indicano la cessazione del divieto di sorpasso per specifiche categorie di veicoli"
+    ],
+    "rule_explanation": "Il segnale di fine divieto di sorpasso si applica a tutti i veicoli, non solo agli autobus con massa a pieno carico superiore a 3,5 tonnellate."
+  }
+}

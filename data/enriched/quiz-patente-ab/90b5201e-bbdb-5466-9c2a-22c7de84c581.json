@@ -1,0 +1,30 @@
+{
+  "question_id": 4712,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25405",
+  "text": "La marmitta deteriorata deve essere sostituita con altra di tipo approvato per quel tipo di veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Dispositivi di scarico",
+      "Omologazione dei componenti automobilistici"
+    ],
+    "exact_keywords": [
+      "marmitta",
+      "deteriorata",
+      "sostituita",
+      "tipo approvato",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "sostituzione marmitta deteriorata con tipo approvato",
+      "requisiti marmitta per veicolo",
+      "manutenzione sistema di scarico veicolo"
+    ],
+    "rule_explanation": "La marmitta, componente essenziale del sistema di scarico, se deteriorata, deve essere sostituita con un ricambio omologato e specifico per il modello di veicolo, per garantirne la sicurezza e la conformità normativa."
+  }
+}

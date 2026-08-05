@@ -1,0 +1,28 @@
+{
+  "question_id": 4507,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23614",
+  "text": "Se si parcheggia in una zona regolamentata con parchimetro, occorre esporre l'apposito tagliando, in modo che sia ben visibile",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Parcheggio in aree regolamentate",
+      "Esposizione del contrassegno di pagamento"
+    ],
+    "exact_keywords": [
+      "parcheggio",
+      "zona regolamentata",
+      "parchimetro",
+      "tagliando",
+      "esposizione"
+    ],
+    "vector_search_queries": [
+      "obbligo esposizione tagliando parchimetro zona regolamentata",
+      "regole parcheggio aree a pagamento con disco orario o ticket"
+    ],
+    "rule_explanation": "Nelle aree regolamentate con parchimetro, è obbligatorio esporre il contrassegno di pagamento in modo che sia chiaramente visibile per evitare sanzioni."
+  }
+}

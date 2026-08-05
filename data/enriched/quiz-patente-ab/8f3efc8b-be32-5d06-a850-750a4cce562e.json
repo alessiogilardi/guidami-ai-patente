@@ -1,0 +1,28 @@
+{
+  "question_id": 4418,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22756",
+  "text": "Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre procedere con prudenza, usando le luci anabbaglianti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei fari e delle luci",
+      "Norme di circolazione notturna",
+      "Comportamento in caso di abbagliamento"
+    ],
+    "exact_keywords": [
+      "fari a luce abbagliante",
+      "luci anabbaglianti",
+      "strada extraurbana",
+      "circolazione notturna"
+    ],
+    "vector_search_queries": [
+      "uso luci anabbaglianti in caso di incrocio con fari abbaglianti su strade extraurbane",
+      "obbligo di usare luci anabbaglianti di notte in presenza di traffico in senso opposto"
+    ],
+    "rule_explanation": "Di notte, su strade extraurbane, in caso di incrocio con veicolo con fari abbaglianti accesi, è obbligatorio usare le luci anabbaglianti e moderare la velocità per garantire la sicurezza."
+  }
+}

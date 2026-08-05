@@ -1,0 +1,29 @@
+{
+  "question_id": 4395,
+  "topic": "Distanza di sicurezza",
+  "number": "22558",
+  "text": "La distanza di sicurezza deve essere determinata in relazione alla larghezza del veicolo che precede",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regolazione della velocità",
+      "Pericolo per la circolazione"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo che precede",
+      "condizioni della strada",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "determinazione della distanza di sicurezza tra veicoli",
+      "fattori che influenzano la distanza di sicurezza",
+      "obbligo di mantenere la distanza di sicurezza per evitare collisioni"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da escludere ogni pericolo di collisione, tenendo conto della velocità, dello spazio di frenata e delle condizioni della strada, non solo della larghezza del veicolo che precede."
+  }
+}

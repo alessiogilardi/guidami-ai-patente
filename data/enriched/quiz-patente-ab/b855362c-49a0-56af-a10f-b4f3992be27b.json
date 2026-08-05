@@ -1,0 +1,28 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31011",
+  "text": "Distrarsi alla guida può causare incidenti stradali che possono comportare gravi conseguenze",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distrazione alla guida",
+      "Responsabilità del conducente",
+      "Conseguenze degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "distrazione alla guida",
+      "conducente",
+      "incidenti stradali",
+      "conseguenze"
+    ],
+    "vector_search_queries": [
+      "rischio di incidenti stradali dovuto a distrazione del conducente",
+      "conseguenze della disattenzione alla guida in termini di responsabilità"
+    ],
+    "rule_explanation": "La disattenzione alla guida aumenta significativamente il rischio di provocare incidenti stradali, con possibili implicazioni civili, penali e amministrative per il conducente."
+  }
+}

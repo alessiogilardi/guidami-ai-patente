@@ -1,0 +1,29 @@
+{
+  "question_id": 4563,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24059",
+  "text": "Il numero di persone trasportabili sugli autocarri è sempre di cinque, compreso il conducente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto persone su autocarri",
+      "Numero massimo di passeggeri",
+      "Normativa sul carico dei veicoli"
+    ],
+    "exact_keywords": [
+      "autocarro",
+      "persone trasportabili",
+      "conducente",
+      "numero massimo"
+    ],
+    "vector_search_queries": [
+      "numero massimo persone trasportabili su autocarro",
+      "omologazione autocarro numero passeggeri",
+      "trasporto persone su autocarri normativa"
+    ],
+    "rule_explanation": "Il numero di persone trasportabili su un autocarro non è fisso a cinque, ma dipende dalla sua omologazione e dalla destinazione d'uso del veicolo."
+  }
+}

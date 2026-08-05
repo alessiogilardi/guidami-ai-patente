@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31058",
+  "text": "Se si è stato di ebbrezza lieve, si riesce a guidare comunque in sicurezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di ebbrezza alla guida",
+      "Guida in sicurezza",
+      "Responsabilità alla guida"
+    ],
+    "exact_keywords": [
+      "stato di ebbrezza",
+      "guida in sicurezza",
+      "alterazione psicofisica",
+      "capacità di intendere e di volere"
+    ],
+    "vector_search_queries": [
+      "effetti dello stato di ebbrezza sulla capacità di guida",
+      "alterazione delle capacità psicofisiche dovuta all'assunzione di alcol",
+      "rischi della guida in stato di ebbrezza lieve"
+    ],
+    "rule_explanation": "Lo stato di ebbrezza, anche se lieve, altera le capacità psicofisiche del conducente, compromettendo la guida sicura e la capacità di intendere e volere."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "question_id": 4204,
+  "topic": "Segnali di precedenza",
+  "number": "20647",
+  "text": "Il segnale raffigurato è posto a non più di 25 metri dall'incrocio",
+  "correct_answer": false,
+  "image": "c3fbf607467f1dbb78f137f6e2ff37f8.jpeg",
+  "image_description": "Preavviso di confluenza (immissione) da destra. Il segnale preannuncia una confluenza sul lato destro. I veicoli provenienti dalla corsia di destra si immetteranno sulla strada principale, avendo la precedenza. Pertanto, chi percorre la strada principale deve moderare la velocità e, se necessario, fermarsi per consentire il congiungimento dei flussi di traffico.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta una strada principale (linea più spessa e diritta) e una strada secondaria che si immette da destra (linea più sottile che si congiunge alla principale con un'angolazione). La linea della strada secondaria si divide in due rami, uno dei quali si immette sulla principale da destra, mentre l'altro prosegue parallelamente. Questo indica una confluenza o immissione da destra.",
+    "name": "Preavviso di confluenza (immissione) da destra",
+    "description": "Il segnale preannuncia una confluenza sul lato destro. I veicoli provenienti dalla corsia di destra si immetteranno sulla strada principale, avendo la precedenza. Pertanto, chi percorre la strada principale deve moderare la velocità e, se necessario, fermarsi per consentire il congiungimento dei flussi di traffico."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso di incrocio",
+      "Distanza dei segnali stradali",
+      "Precedenza in caso di immissione"
+    ],
+    "exact_keywords": [
+      "segnale di preavviso",
+      "confluenza",
+      "immissione",
+      "strada principale",
+      "flussi di traffico"
+    ],
+    "vector_search_queries": [
+      "distanza segnali di preavviso incrocio",
+      "preavviso di confluenza segnale stradale",
+      "regolamentazione distanza segnali di immissione"
+    ],
+    "rule_explanation": "I segnali di preavviso di incrocio, come quello di confluenza, sono posti a una distanza stabilita dalla norma (di solito 150m nei centri abitati e 250m fuori) e non a 25m."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4644,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24876",
+  "text": "Se un infortunato della strada ha una ferita sanguinante si deve versarvi sopra acqua calda, per fermare il sanguinamento",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Gestione delle ferite",
+      "Comportamento in caso di incidente"
+    ],
+    "exact_keywords": [
+      "infortunato della strada",
+      "ferita sanguinante",
+      "primo soccorso",
+      "emorragia"
+    ],
+    "vector_search_queries": [
+      "trattamento ferita sanguinante primo soccorso",
+      "gestione emorragia infortunato strada",
+      "procedure corrette primo soccorso ferite"
+    ],
+    "rule_explanation": "In caso di ferita sanguinante, non si deve versare acqua calda, ma tamponare con garze sterili e, se necessario, comprimere l'arteria per arrestare l'emorragia."
+  }
+}

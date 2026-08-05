@@ -1,0 +1,33 @@
+{
+  "question_id": 4309,
+  "topic": "Segnali di indicazione",
+  "number": "21643",
+  "text": "Il segnale raffigurato consente ad una bicicletta di percorrere quella strada",
+  "correct_answer": false,
+  "image": "1ef915902f19c17ff26aaa2bff80ae9b.jpeg",
+  "image_description": "Parcheggio per autovetture. Il segnale indica un parcheggio riservato alle autovetture.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è raffigurata, in bianco, la sagoma stilizzata di un'autovettura vista frontalmente. Si tratta di un segnale di indicazione.",
+    "name": "Parcheggio per autovetture",
+    "description": "Il segnale indica un parcheggio riservato alle autovetture."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnaletica stradale di prescrizione",
+      "Utilizzo della carreggiata"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "parcheggio",
+      "autovetture",
+      "divieto di accesso"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale e loro significato",
+      "segnali di parcheggio e limitazioni alla circolazione",
+      "segnali di divieto di accesso e categorie di veicoli ammessi"
+    ],
+    "rule_explanation": "Il segnale di parcheggio per autovetture indica la possibilità di parcheggiare e non un divieto di accesso per altri veicoli, ma la sua presenza non autorizza la circolazione di biciclette se non espressamente consentito da altri segnali."
+  }
+}

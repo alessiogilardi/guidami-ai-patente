@@ -1,0 +1,29 @@
+{
+  "question_id": 4707,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25346",
+  "text": "Le sospensioni di un veicolo a motore servono a irrigidire il veicolo, in modo che il conducente percepisca chiaramente tutti i saltellamenti del veicolo dovuti ad irregolarità della strada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzione delle sospensioni veicolo",
+      "Stabilità e tenuta di strada"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "ammortizzatori",
+      "tenuta di strada",
+      "stabilità",
+      "irrigidire"
+    ],
+    "vector_search_queries": [
+      "funzione ammortizzatori veicolo",
+      "ruolo sospensioni su stabilità e tenuta di strada",
+      "effetto sospensioni su irregolarità stradali"
+    ],
+    "rule_explanation": "Le sospensioni, tramite gli ammortizzatori, hanno la funzione di assorbire gli urti e le vibrazioni, garantendo la tenuta di strada e la stabilità del veicolo, non di irrigidirlo."
+  }
+}

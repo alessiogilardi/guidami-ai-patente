@@ -1,0 +1,29 @@
+{
+  "question_id": 4659,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24987",
+  "text": "La responsabilità penale connessa al sinistro stradale è esclusa quando si sia prestato soccorso alla vittima",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità penale del conducente",
+      "Obbligo di soccorso",
+      "Nesso causale tra condotta e evento dannoso"
+    ],
+    "exact_keywords": [
+      "responsabilità penale",
+      "soccorso alla vittima",
+      "sinistro stradale",
+      "colpa"
+    ],
+    "vector_search_queries": [
+      "conseguenze penali della condotta di guida in caso di sinistro con vittima",
+      "obbligo di soccorso e responsabilità penale del conducente",
+      "nesso causale tra omissione di soccorso e responsabilità penale"
+    ],
+    "rule_explanation": "La prestazione di soccorso alla vittima di un sinistro stradale non esclude la responsabilità penale del conducente se questa deriva da una sua condotta colposa che ha causato l'evento."
+  }
+}

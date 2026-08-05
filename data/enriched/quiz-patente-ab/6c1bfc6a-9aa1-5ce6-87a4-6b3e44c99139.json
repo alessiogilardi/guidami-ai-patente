@@ -1,0 +1,28 @@
+{
+  "question_id": 4043,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18773",
+  "text": "Quando le persone anziane attraversano la carreggiata bisogna lampeggiare e suonare il clacson per farle attraversare rapidamente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Comportamento prudente e rispettoso in strada"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "attraversamento carreggiata",
+      "segnalazione acustica",
+      "clacson",
+      "lampeggiare"
+    ],
+    "vector_search_queries": [
+      "divieto di uso del clacson per sollecitare pedoni anziani durante l'attraversamento",
+      "comportamento da tenere verso pedoni anziani durante l'attraversamento della carreggiata"
+    ],
+    "rule_explanation": "È vietato l'uso del clacson e dei proiettori abbaglianti per richiamare l'attenzione degli utenti della strada, specialmente i pedoni anziani durante l'attraversamento."
+  }
+}

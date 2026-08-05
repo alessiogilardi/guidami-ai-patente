@@ -1,0 +1,29 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24705",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere carreggiata a senso unico di circolazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Cause di incidenti stradali",
+      "Struttura della strada",
+      "Carreggiata a senso unico"
+    ],
+    "exact_keywords": [
+      "incidenti stradali",
+      "struttura della strada",
+      "carreggiata",
+      "senso unico di circolazione"
+    ],
+    "vector_search_queries": [
+      "cause di incidenti stradali legate alla struttura della strada",
+      "pericolosità della carreggiata a senso unico",
+      "fattori che determinano la sicurezza stradale"
+    ],
+    "rule_explanation": "La carreggiata a senso unico non è di per sé causa di incidenti; le cause sono legate a errati comportamenti o a difetti della strada, non alla sua configurazione di base."
+  }
+}

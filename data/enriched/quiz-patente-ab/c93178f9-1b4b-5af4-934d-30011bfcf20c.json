@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22297",
+  "text": "E' obbligatorio regolare la velocità nelle ore notturne",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di visibilità",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "ore notturne",
+      "visibilità",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità in funzione delle ore notturne",
+      "obbligo di moderare la velocità in condizioni di scarsa visibilità notturna"
+    ],
+    "rule_explanation": "La velocità deve essere sempre adeguata alle condizioni di visibilità, specialmente durante le ore notturne, per garantire la sicurezza ed evitare pericoli."
+  }
+}

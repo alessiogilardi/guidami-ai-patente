@@ -1,0 +1,27 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22298",
+  "text": "E' obbligatorio regolare la velocità nell'attraversamento di abitati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità nei centri abitati",
+      "Obbligo di moderazione della velocità"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "attraversamento",
+      "abitati",
+      "obbligo"
+    ],
+    "vector_search_queries": [
+      "obbligo di regolare la velocità nei centri abitati",
+      "moderazione della velocità in attraversamento di abitati"
+    ],
+    "rule_explanation": "Nei centri abitati, la velocità deve essere sempre regolata in modo da non costituire pericolo o intralcio per la circolazione, con particolare prudenza."
+  }
+}

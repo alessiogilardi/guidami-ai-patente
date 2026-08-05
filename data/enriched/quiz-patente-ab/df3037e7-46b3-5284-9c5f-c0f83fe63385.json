@@ -1,0 +1,31 @@
+{
+  "question_id": 4373,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22261",
+  "text": "Il segnale in figura consente l'accesso solo agli autobus",
+  "correct_answer": true,
+  "image": "8f0111b381f8e798ce53a72e1cce2741.jpeg",
+  "image_description": "Divieto di transito con pannello integrativo (eccetto autobus). Il segnale principale è un segnale di divieto di transito, che vieta a tutti i veicoli l'accesso. Il pannello integrativo specifica che il divieto non si applica agli autobus.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di transito (cerchio rosso con barra orizzontale bianca) sovrastante un pannello integrativo rettangolare. Il pannello integrativo ha sfondo bianco e riporta la scritta \"eccetto\" in alto, seguita dal pittogramma di un autobus stilizzato. L'insieme dei due elementi indica una prescrizione specifica relativa al divieto di transito.",
+    "name": "Divieto di transito con pannello integrativo (eccetto autobus)",
+    "description": "Il segnale principale è un segnale di divieto di transito, che vieta a tutti i veicoli l'accesso. Il pannello integrativo specifica che il divieto non si applica agli autobus."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione e prescrizione",
+      "Eccezioni ai divieti di transito"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "segnali di indicazione",
+      "divieto di transito",
+      "eccetto autobus"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo che specifica eccezioni ai segnali di divieto",
+      "interpretazione segnale di divieto di transito con pannello eccetto autobus"
+    ],
+    "rule_explanation": "I pannelli integrativi possono modificare o specificare la portata di un segnale. In questo caso, l'eccezione per gli autobus chiarisce che il divieto di transito non si applica a loro."
+  }
+}

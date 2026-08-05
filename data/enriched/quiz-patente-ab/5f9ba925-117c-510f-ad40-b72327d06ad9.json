@@ -1,0 +1,28 @@
+{
+  "question_id": 4632,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24788",
+  "text": "I tamponamenti stradali avvengono maggiormente se non si rispetta la distanza di sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Prevenzione incidenti stradali",
+      "Tamponamento"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "tamponamento",
+      "condizioni di marcia",
+      "veicolo che precede"
+    ],
+    "vector_search_queries": [
+      "importanza della distanza di sicurezza per evitare tamponamenti",
+      "conseguenze del mancato rispetto della distanza di sicurezza tra veicoli"
+    ],
+    "rule_explanation": "Il mancato rispetto della distanza di sicurezza è una delle cause principali dei tamponamenti, poiché impedisce al conducente di arrestare tempestivamente il veicolo in caso di frenata improvvisa del veicolo che precede."
+  }
+}

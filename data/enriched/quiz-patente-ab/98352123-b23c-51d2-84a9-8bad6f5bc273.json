@@ -1,0 +1,33 @@
+{
+  "question_id": 4091,
+  "topic": "Segnali di pericolo",
+  "number": "19348",
+  "text": "Il segnale raffigurato impone di dare la precedenza ai veicoli provenienti in senso contrario",
+  "correct_answer": false,
+  "image": "d74486cedaf64b4708047a7c8d23f672.jpeg",
+  "image_description": "Segnale di pericolo - doppio senso di circolazione. Il segnale preannuncia che la circolazione avviene in doppio senso. Il segnale è di pericolo e impone di usare maggiore prudenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale sono presenti due frecce nere, una rivolta verso l'alto e una verso il basso, che indicano un doppio senso di circolazione.",
+    "name": "Segnale di pericolo - doppio senso di circolazione",
+    "description": "Il segnale preannuncia che la circolazione avviene in doppio senso. Il segnale è di pericolo e impone di usare maggiore prudenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Doppio senso di circolazione",
+      "Obbligo di prudenza"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "doppio senso di circolazione",
+      "maggiore prudenza",
+      "senso vietato"
+    ],
+    "vector_search_queries": [
+      "preavviso di doppio senso di circolazione e obbligo di prudenza",
+      "interpretazione segnale pericolo doppio senso circolazione",
+      "differenza tra segnale doppio senso e dare precedenza"
+    ],
+    "rule_explanation": "Il segnale di pericolo con doppio senso di circolazione non impone la precedenza ai veicoli provenienti dal senso opposto, ma richiede maggiore prudenza."
+  }
+}

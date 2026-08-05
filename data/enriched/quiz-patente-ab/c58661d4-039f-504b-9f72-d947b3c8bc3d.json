@@ -1,0 +1,33 @@
+{
+  "question_id": 4360,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22129",
+  "text": "Il pannello integrativo indica un'area attrezzata per gare di modellismo",
+  "correct_answer": false,
+  "image": "88aca3d15be8173f5220bcce38e88d5e.jpeg",
+  "image_description": "Pannello integrativo - Numero di binari. Il pannello integrativo indica la presenza di un passaggio a livello con due binari.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Al suo interno sono raffigurati due segnali identici di locomotiva a vapore, uno accanto all'altro. Questo pannello è utilizzato per integrare segnali di pericolo, come il segnale di passaggio a livello, indicando il numero di binari presenti. In questo caso, la presenza di due locomotive suggerisce due binari.",
+    "name": "Pannello integrativo - Numero di binari",
+    "description": "Il pannello integrativo indica la presenza di un passaggio a livello con due binari."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale integrativa",
+      "Interpretazione dei pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "area attrezzata",
+      "gare di modellismo",
+      "passaggio a livello",
+      "binari"
+    ],
+    "vector_search_queries": [
+      "funzione dei pannelli integrativi di integrazione ai segnali stradali",
+      "pannelli integrativi che specificano caratteristiche del pericolo o prescrizioni",
+      "segnalazione di passaggio a livello con più binari tramite pannello integrativo"
+    ],
+    "rule_explanation": "I pannelli integrativi forniscono informazioni aggiuntive ai segnali verticali, specificando ad esempio il numero di binari in un passaggio a livello, ma non indicano aree per attività ricreative come gare di modellismo."
+  }
+}

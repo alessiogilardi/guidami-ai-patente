@@ -1,0 +1,27 @@
+{
+  "question_id": 4614,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24563",
+  "text": "La patente di categoria B con codice armonizzato 96, abilita alla guida di motocicli di potenza fino a 35 kW",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida B con codice 96",
+      "Potenza massima dei motocicli guidabili"
+    ],
+    "exact_keywords": [
+      "patente B codice 96",
+      "motocicli",
+      "potenza massima",
+      "35 kW"
+    ],
+    "vector_search_queries": [
+      "requisiti patente B con codice 96 per guida motocicli",
+      "differenza tra patente A2 e B con codice 96 per potenza motocicli"
+    ],
+    "rule_explanation": "La patente B con codice 96 abilita alla guida di tricicli e quadricicli a motore, non di motocicli di potenza specifica. Per i motocicli fino a 35 kW è necessaria la patente A2."
+  }
+}

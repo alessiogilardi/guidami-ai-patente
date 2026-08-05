@@ -1,0 +1,29 @@
+{
+  "question_id": 4047,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18817",
+  "text": "Alla guida di un veicolo, in vicinanza di una piazzola di fermata di autobus per scolari, occorre passare per primi, avendo sempre la precedenza sui bambini che attraversano la strada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Obbligo di prudenza in prossimità di fermate di scuolabus",
+      "Precedenza dei pedoni in attraversamento"
+    ],
+    "exact_keywords": [
+      "scuolabus",
+      "fermata di sosta",
+      "bambini",
+      "attraversamento pedonale",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di precedenza pedoni in prossimità di fermate scuolabus",
+      "condotta del veicolo in prossimità di scuolabus e attraversamento bambini"
+    ],
+    "rule_explanation": "In prossimità di una fermata di scuolabus, il conducente deve moderare la velocità e, se necessario, fermarsi per consentire ai bambini di attraversare la strada in sicurezza, non avendo la precedenza."
+  }
+}

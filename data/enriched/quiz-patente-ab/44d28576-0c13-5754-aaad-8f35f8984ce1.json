@@ -1,0 +1,30 @@
+{
+  "question_id": 4406,
+  "topic": "Distanza di sicurezza",
+  "number": "22650",
+  "text": "La distanza di sicurezza dipende dalla presenza di veicoli che seguono",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regolazione della velocità",
+      "Prevenzione degli incidenti"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo che segue",
+      "condizioni della strada",
+      "velocità",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "obbligo di mantenere la distanza di sicurezza dal veicolo che precede",
+      "fattori che influenzano la determinazione della distanza di sicurezza",
+      "distanza di sicurezza in relazione alla velocità e alle condizioni di marcia"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire l'arresto del veicolo in condizioni di sicurezza, indipendentemente dalla presenza di veicoli che seguono."
+  }
+}

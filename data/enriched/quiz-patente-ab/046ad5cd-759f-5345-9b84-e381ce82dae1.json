@@ -1,0 +1,33 @@
+{
+  "question_id": 4313,
+  "topic": "Segnali di indicazione",
+  "number": "21679",
+  "text": "Il segnale raffigurato indica un parcheggio a sinistra",
+  "correct_answer": false,
+  "image": "668903331caeead72a084bb8ba238e53.jpeg",
+  "image_description": "Segnale di parcheggio con percorso obbligato. Il segnale indica la disposizione dei parcheggi e il percorso da seguire per immettersi in uno di essi, con una freccia che indica la direzione di svolta a sinistra per accedere al parcheggio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bordi neri. Al suo interno, su sfondo bianco, è rappresentata una disposizione di stalli di parcheggio, indicati da rettangoli grigi. Una freccia nera disegna un percorso a forma di 'P' rovesciata, che parte dal basso, sale, gira a destra e poi scende verso sinistra, terminando con una freccia che indica la direzione sinistra. Questo percorso suggerisce come immettersi in uno degli stalli di parcheggio. Non ci sono altri elementi visivi o segnali.",
+    "name": "Segnale di parcheggio con percorso obbligato",
+    "description": "Il segnale indica la disposizione dei parcheggi e il percorso da seguire per immettersi in uno di essi, con una freccia che indica la direzione di svolta a sinistra per accedere al parcheggio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di prescrizione",
+      "Parcheggio"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "parcheggio",
+      "percorso obbligato",
+      "direzione"
+    ],
+    "vector_search_queries": [
+      "segnali di parcheggio con percorso obbligato",
+      "interpretazione segnali di indicazione stradale parcheggio",
+      "segnali che indicano la direzione di accesso al parcheggio"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica un parcheggio con percorso obbligato, la cui direzione di accesso è specificata dalla freccia. Non indica semplicemente un parcheggio a sinistra."
+  }
+}

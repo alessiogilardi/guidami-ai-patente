@@ -1,0 +1,27 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24689",
+  "text": "La patente di guida è confermata a seguito di esito favorevole della prova tecnica di guida (esame di guida) periodica",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Revisione della patente"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "esame di guida",
+      "periodico",
+      "conferma"
+    ],
+    "vector_search_queries": [
+      "validità patente di guida e revisione",
+      "esame di guida periodico per conferma patente"
+    ],
+    "rule_explanation": "La patente di guida non è soggetta a conferma periodica tramite esame di guida, ma a revisione in casi specifici previsti dalla legge."
+  }
+}

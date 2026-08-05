@@ -1,0 +1,31 @@
+{
+  "question_id": 4184,
+  "topic": "Segnali di obbligo",
+  "number": "20414",
+  "text": "Il segnale raffigurato è posto nelle vicinanze di una scuola di equitazione",
+  "correct_answer": false,
+  "image": "db7b1ca650c36ef47e9904be21287943.jpeg",
+  "image_description": "Percorso per cavalli. Il segnale impone l'obbligo di transito per i cavalli e i cavalieri, indicando un percorso a loro riservato. Vietato il transito ai veicoli a motore.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro del segnale è presente un pittogramma bianco raffigurante un cavallo con un cavaliere in sella. Questo è un segnale di obbligo.",
+    "name": "Percorso per cavalli",
+    "description": "Il segnale impone l'obbligo di transito per i cavalli e i cavalieri, indicando un percorso a loro riservato. Vietato il transito ai veicoli a motore."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico per i cavalli",
+      "Segnaletica stradale di direzione obbligatoria"
+    ],
+    "exact_keywords": [
+      "segnale di obbligo",
+      "percorso per cavalli",
+      "riservato ai cavalli",
+      "divieto di transito ai veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo per percorsi riservati ai cavalli",
+      "interpretazione segnale di percorso per cavalli e cavalieri"
+    ],
+    "rule_explanation": "Il segnale raffigurato impone l'obbligo di transito per cavalli e cavalieri su un percorso a loro riservato, vietando il transito ai veicoli a motore. Non indica la vicinanza di una scuola di equitazione."
+  }
+}

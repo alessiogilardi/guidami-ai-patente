@@ -1,0 +1,27 @@
+{
+  "question_id": 4504,
+  "topic": "Norme sul sorpasso",
+  "number": "23594",
+  "text": "Il conducente del veicolo da sorpassare ha l'obbligo di ridurre sempre la propria velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di facilitare il sorpasso",
+      "Comportamento del conducente da sorpassare"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "ridurre la velocità",
+      "veicolo da sorpassare",
+      "facilitare il sorpasso"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente del veicolo da sorpassare",
+      "facilitazione del sorpasso da parte del veicolo che viene superato"
+    ],
+    "rule_explanation": "Il conducente da sorpassare deve facilitare il sorpasso, ma non ha l'obbligo di ridurre sempre la propria velocità, a meno che ciò non sia necessario per evitare un pericolo."
+  }
+}

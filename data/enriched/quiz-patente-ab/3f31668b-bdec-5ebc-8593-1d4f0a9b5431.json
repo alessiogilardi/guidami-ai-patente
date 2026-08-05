@@ -1,0 +1,33 @@
+{
+  "question_id": 4224,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20832",
+  "text": "In presenza della segnaletica in figura, la corsia A è l'unica che consente di svoltare a sinistra",
+  "correct_answer": false,
+  "image": "05769e683b8d63d64a3afd4606167fab.jpeg",
+  "image_description": "Segnaletica orizzontale di corsia con indicazioni direzionali. La corsia A consente di svoltare a sinistra, la corsia B consente di proseguire diritto, la corsia C consente di svoltare a destra. Le frecce indicano le direzioni consentite per ciascuna corsia. Le strisce sono discontinue, indicando la possibilità di cambiare corsia. La strada si immette in un incrocio a raso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una carreggiata con tre corsie, identificate dalle lettere A, B e C. La corsia A presenta frecce che indicano la direzione sinistra. La corsia B presenta frecce che indicano la direzione dritto. La corsia C presenta frecce che indicano la direzione destra. Le corsie sono delimitate da strisce bianche discontinue. La carreggiata si dirige verso un incrocio a raso, visibile nella parte destra dell'immagine.",
+    "name": "Segnaletica orizzontale di corsia con indicazioni direzionali",
+    "description": "La corsia A consente di svoltare a sinistra, la corsia B consente di proseguire diritto, la corsia C consente di svoltare a destra. Le frecce indicano le direzioni consentite per ciascuna corsia. Le strisce sono discontinue, indicando la possibilità di cambiare corsia. La strada si immette in un incrocio a raso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Indicazioni direzionali delle corsie",
+      "Modifica della corsia di marcia"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "corsia",
+      "direzione consentita",
+      "strisce discontinue"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale con frecce direzionali",
+      "modifica della corsia di marcia con strisce discontinue",
+      "interpretazione delle indicazioni direzionali delle corsie"
+    ],
+    "rule_explanation": "Le frecce direzionali sulle corsie indicano le uniche direzioni consentite per ciascuna corsia. Le strisce discontinue permettono il cambio di corsia."
+  }
+}

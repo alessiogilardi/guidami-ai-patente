@@ -1,0 +1,30 @@
+{
+  "question_id": 4602,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24429",
+  "text": "Le calzature omologate per l'uso motociclistico sono progettate per non scalzarsi in caso di caduta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Equipaggiamento motociclistico",
+      "Dispositivi di protezione individuale (DPI)",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "calzature motociclistiche",
+      "omologate",
+      "protezione",
+      "caduta",
+      "scalzarsi"
+    ],
+    "vector_search_queries": [
+      "requisiti calzature motociclistiche omologate",
+      "funzione protettiva calzature motociclistiche in caso di caduta",
+      "normativa DPI motociclisti calzature"
+    ],
+    "rule_explanation": "Le calzature omologate per l'uso motociclistico devono garantire la protezione del piede e la tenuta in caso di caduta, evitando di sfilarsi."
+  }
+}

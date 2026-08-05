@@ -1,0 +1,28 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24826",
+  "text": "Se si deve circolare con veicolo a due ruote su una carreggiata a circolazione promiscua veicoli/tram, è bene se possibile circolare con entrambe le ruote nel solco della rotaia del tram",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento dei veicoli a due ruote su carreggiate con tram",
+      "Prevenzione incidenti in presenza di rotaie tramviarie"
+    ],
+    "exact_keywords": [
+      "veicolo a due ruote",
+      "carreggiata a circolazione promiscua",
+      "rotaia del tram",
+      "solco della rotaia"
+    ],
+    "vector_search_queries": [
+      "circolazione veicoli a due ruote su carreggiate con tram",
+      "pericolo di caduta per motocicli su rotaie del tram",
+      "posizione delle ruote rispetto al solco delle rotaie del tram"
+    ],
+    "rule_explanation": "I veicoli a due ruote non devono circolare nel solco delle rotaie del tram, ma devono attraversarlo con un angolo di 90 gradi per evitare cadute."
+  }
+}

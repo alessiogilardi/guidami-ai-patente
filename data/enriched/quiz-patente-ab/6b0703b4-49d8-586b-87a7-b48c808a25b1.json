@@ -1,0 +1,27 @@
+{
+  "question_id": 4021,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18527",
+  "text": "Il salvagente facilita la salita e la discesa dei passeggeri da tram, filobus o autobus",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Salvagente stradale",
+      "Accessibilità e sicurezza per i passeggeri"
+    ],
+    "exact_keywords": [
+      "salvagente",
+      "salita e discesa passeggeri",
+      "mezzi di trasporto pubblico",
+      "fermata del veicolo"
+    ],
+    "vector_search_queries": [
+      "funzione del salvagente stradale per salita e discesa passeggeri",
+      "dispositivi di sicurezza per fermate di autobus e tram"
+    ],
+    "rule_explanation": "Il salvagente è un'area rialzata destinata a facilitare la salita e la discesa dei passeggeri dai tram, filobus o autobus, garantendo maggiore sicurezza."
+  }
+}

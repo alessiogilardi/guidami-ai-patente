@@ -1,0 +1,30 @@
+{
+  "question_id": 4300,
+  "topic": "Segnali di indicazione",
+  "number": "21565",
+  "text": "Il segnale raffigurato preavvisa un incrocio a quattro strade",
+  "correct_answer": false,
+  "image": "48c50da3b91a82e86891d676bf735005.jpeg",
+  "image_description": "Segnale di indicazione per pronto soccorso medico con direzione obbligatoria a destra. Il segnale indica la direzione da seguire per raggiungere un pronto soccorso medico. La freccia indica che la direzione da prendere è verso destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare verticale, con bordo bianco e sfondo bianco. Nella parte superiore è presente un riquadro bianco con all'interno una croce greca rossa, simbolo di pronto soccorso medico. Sotto questo riquadro, vi è una freccia nera orizzontale che punta verso destra. L'insieme dei simboli indica la direzione da seguire per raggiungere un pronto soccorso medico.",
+    "name": "Segnale di indicazione per pronto soccorso medico con direzione obbligatoria a destra",
+    "description": "Il segnale indica la direzione da seguire per raggiungere un pronto soccorso medico. La freccia indica che la direzione da prendere è verso destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali stradali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di preavviso",
+      "segnali di direzione obbligatoria",
+      "pronto soccorso"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale per pronto soccorso",
+      "differenza tra segnali di preavviso di incrocio e segnali di direzione obbligatoria"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la direzione obbligatoria per il pronto soccorso, non un incrocio a quattro strade. I segnali di preavviso di incrocio hanno forme e simboli specifici."
+  }
+}

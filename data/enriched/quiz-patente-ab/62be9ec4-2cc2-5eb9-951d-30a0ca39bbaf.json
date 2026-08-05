@@ -1,0 +1,27 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23479",
+  "text": "Il conducente che intende iniziare una manovra di sorpasso non ha l'obbligo di azionare l'indicatore di direzione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione manovre",
+      "Regole di sorpasso"
+    ],
+    "exact_keywords": [
+      "indicatore di direzione",
+      "sorpasso",
+      "segnalazione preventiva",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalazione manovra di sorpasso",
+      "uso dell'indicatore di direzione per sorpassare"
+    ],
+    "rule_explanation": "Il conducente che effettua un sorpasso ha l'obbligo di segnalare con anticipo la manovra azionando l'indicatore di direzione."
+  }
+}

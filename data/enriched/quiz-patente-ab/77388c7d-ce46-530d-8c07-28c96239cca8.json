@@ -1,0 +1,29 @@
+{
+  "question_id": 4402,
+  "topic": "Distanza di sicurezza",
+  "number": "22611",
+  "text": "Lo spazio di frenatura aumenta se la strada è in discesa",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Fattori che influenzano la frenata"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "discesa",
+      "aumenta",
+      "distanza di sicurezza"
+    ],
+    "vector_search_queries": [
+      "spazio di frenatura in discesa",
+      "influenza della pendenza sullo spazio di frenatura",
+      "aumento spazio di frenatura in discesa"
+    ],
+    "rule_explanation": "Lo spazio di frenatura è la distanza percorsa dal veicolo dal momento in cui il conducente inizia a frenare fino a quando il veicolo si ferma completamente. Esso aumenta in discesa a causa della forza di gravità che agisce sul veicolo."
+  }
+}

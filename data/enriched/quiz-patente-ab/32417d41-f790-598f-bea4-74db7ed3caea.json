@@ -1,0 +1,28 @@
+{
+  "question_id": 4627,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24740",
+  "text": "In presenza di tratti di strada ghiacciati è opportuno distanziarsi dalla traiettoria dei veicoli che si incrociano",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti su strade ghiacciate",
+      "Comportamento prudente in condizioni di scarsa aderenza"
+    ],
+    "exact_keywords": [
+      "strada ghiacciata",
+      "distanziarsi",
+      "veicoli che si incrociano",
+      "condizioni di scarsa aderenza"
+    ],
+    "vector_search_queries": [
+      "comportamento di guida su strade ghiacciate",
+      "aumento della distanza di sicurezza in condizioni di scarsa aderenza",
+      "prevenzione incidenti su superfici scivolose"
+    ],
+    "rule_explanation": "Su strade ghiacciate, è necessario aumentare la distanza di sicurezza e moderare la velocità per evitare incidenti dovuti alla ridotta aderenza."
+  }
+}

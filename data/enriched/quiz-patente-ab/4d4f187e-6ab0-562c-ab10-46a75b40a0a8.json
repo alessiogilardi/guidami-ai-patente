@@ -1,0 +1,27 @@
+{
+  "question_id": 4037,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18697",
+  "text": "È vietato rimuovere la segnaletica stradale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inviolabilità della segnaletica stradale",
+      "Doveri dei cittadini verso la segnaletica stradale"
+    ],
+    "exact_keywords": [
+      "segnaletica stradale",
+      "divieto di rimozione",
+      "danneggiamento",
+      "alterazione"
+    ],
+    "vector_search_queries": [
+      "divieto di rimozione o danneggiamento della segnaletica stradale",
+      "obblighi di rispetto e tutela della segnaletica stradale"
+    ],
+    "rule_explanation": "È vietato rimuovere, danneggiare, alterare o spostare la segnaletica stradale, poiché essa garantisce la sicurezza e la fluidità della circolazione."
+  }
+}

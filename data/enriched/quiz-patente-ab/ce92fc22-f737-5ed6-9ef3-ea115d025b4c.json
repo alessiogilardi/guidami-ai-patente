@@ -1,0 +1,27 @@
+{
+  "question_id": 4642,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24854",
+  "text": "Soccorrere un ferito della strada è obbligatorio per legge",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di assistenza a persone in pericolo",
+      "Soccorso stradale"
+    ],
+    "exact_keywords": [
+      "soccorrere",
+      "ferito della strada",
+      "obbligo di prestare assistenza",
+      "omissione di soccorso"
+    ],
+    "vector_search_queries": [
+      "obbligo di prestare soccorso a feriti della strada",
+      "sanzioni per omissione di soccorso stradale"
+    ],
+    "rule_explanation": "Chiunque ometta di prestare assistenza a una persona ferita della strada è punito dalla legge, configurando il reato di omissione di soccorso."
+  }
+}

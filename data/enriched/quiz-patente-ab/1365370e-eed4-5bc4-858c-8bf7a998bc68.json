@@ -1,0 +1,31 @@
+{
+  "question_id": 4312,
+  "topic": "Segnali di indicazione",
+  "number": "21666",
+  "text": "Il segnale raffigurato è abbinato alle strisce di attraversamento ciclabile",
+  "correct_answer": true,
+  "image": "2faf7752ddcc6087bffff0ee81a28eaf.jpeg",
+  "image_description": "Pista ciclabile. Il segnale indica una pista ciclabile. Obbliga i ciclisti a utilizzare la pista e segnala la loro presenza agli altri utenti della strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale è raffigurata, in bianco, una figura stilizzata di un ciclista su una bicicletta. Il segnale è di forma quadrata con angoli arrotondati. Questo segnale è un segnale di indicazione.",
+    "name": "Pista ciclabile",
+    "description": "Il segnale indica una pista ciclabile. Obbliga i ciclisti a utilizzare la pista e segnala la loro presenza agli altri utenti della strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Pista ciclabile"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "pista ciclabile",
+      "attraversamento ciclabile",
+      "obbligo"
+    ],
+    "vector_search_queries": [
+      "segnaletica stradale pista ciclabile obbligo",
+      "abbinamento segnale pista ciclabile strisce ciclabili"
+    ],
+    "rule_explanation": "Il segnale di pista ciclabile (fig. 57 CdS) indica un percorso riservato ai ciclisti e può essere abbinato alle strisce di attraversamento ciclabile, segnalando l'obbligo per i ciclisti di usarla."
+  }
+}

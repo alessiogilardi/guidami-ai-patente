@@ -1,0 +1,27 @@
+{
+  "question_id": 4685,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25165",
+  "text": "Su tutte le strade sono vietati gli avvisatori acustici (clacson, trombe)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei dispositivi acustici",
+      "Segnalazione acustica di pericolo"
+    ],
+    "exact_keywords": [
+      "avvisatori acustici",
+      "clacson",
+      "strade",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto uso avvisatori acustici su tutte le strade",
+      "uso consentito segnalazioni acustiche per pericolo"
+    ],
+    "rule_explanation": "L'uso degli avvisatori acustici è vietato solo in determinate situazioni, non su tutte le strade, per evitare disturbo alla quiete pubblica."
+  }
+}

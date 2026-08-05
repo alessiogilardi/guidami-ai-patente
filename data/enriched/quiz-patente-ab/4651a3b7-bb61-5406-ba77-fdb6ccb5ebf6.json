@@ -1,0 +1,28 @@
+{
+  "question_id": 4560,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24013",
+  "text": "Il giubbotto retroriflettente ad alta visibilità protegge il conducente anche da rischi chimici, calore, fuoco ed elettricità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di protezione individuale (DPI) per la sicurezza stradale",
+      "Obblighi del conducente in caso di arresto del veicolo"
+    ],
+    "exact_keywords": [
+      "giubbotto retroriflettente",
+      "alta visibilità",
+      "protezione",
+      "rischi chimici",
+      "fuoco"
+    ],
+    "vector_search_queries": [
+      "funzione del giubbotto ad alta visibilità",
+      "protezione offerta dai giubbotti retroriflettenti"
+    ],
+    "rule_explanation": "Il giubbotto retroriflettente ad alta visibilità serve a rendere il conducente visibile, non a proteggerlo da rischi chimici, calore, fuoco o elettricità."
+  }
+}

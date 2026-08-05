@@ -1,0 +1,27 @@
+{
+  "question_id": 4524,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23763",
+  "text": "La sosta è vietata in corrispondenza degli scivoli o dei raccordi tra i marciapiedi e la carreggiata utilizzati dai veicoli per persone invalide",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Accesso per disabili"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "scivoli per invalidi",
+      "raccordi marciapiede-carreggiata",
+      "accesso veicoli persone invalide"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in corrispondenza di scivoli per invalidi",
+      "sosta vietata su raccordi per accesso veicoli disabili"
+    ],
+    "rule_explanation": "La sosta è vietata in corrispondenza degli scivoli o raccordi tra marciapiede e carreggiata destinati all'accesso dei veicoli per persone invalide."
+  }
+}

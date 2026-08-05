@@ -1,0 +1,31 @@
+{
+  "question_id": 4237,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20947",
+  "text": "La segnaletica rappresentata in figura serve ad avvertire i conducenti che si è vicini ad un passaggio a livello con barriere",
+  "correct_answer": true,
+  "image": "fc0562d273c757ef1a5227f0960f40b7.jpeg",
+  "image_description": "Segnaletica di ostacolo (striscia bianca e rossa). La segnaletica orizzontale raffigurata delimita un ostacolo o una zona pericolosa sulla carreggiata. I conducenti devono prestare attenzione e procedere con cautela, evitando di impegnare la zona segnalata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata con segnaletica orizzontale. È presente una striscia di arresto e, più avanti, una segnaletica di ostacolo costituita da una figura a forma di X racchiusa in un quadrato, con due frecce che indicano di aggirare l'ostacolo ai lati. La segnaletica è posta sulla destra della carreggiata, in prossimità di una deviazione o di un ostacolo fisso.",
+    "name": "Segnaletica di ostacolo (striscia bianca e rossa)",
+    "description": "La segnaletica orizzontale raffigurata delimita un ostacolo o una zona pericolosa sulla carreggiata. I conducenti devono prestare attenzione e procedere con cautela, evitando di impegnare la zona segnalata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica di ostacolo",
+      "Passaggio a livello con barriere"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "ostacolo",
+      "passaggio a livello",
+      "barriere"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per ostacoli e passaggi a livello con barriere",
+      "avvertimento conducenti vicinanza passaggio a livello con barriere tramite segnaletica orizzontale"
+    ],
+    "rule_explanation": "La segnaletica orizzontale di ostacolo, con strisce bianche e rosse, avverte della presenza di un ostacolo o di una zona pericolosa, come un passaggio a livello con barriere."
+  }
+}

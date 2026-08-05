@@ -1,0 +1,27 @@
+{
+  "question_id": 4023,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18552",
+  "text": "I ciclomotori, per essere definiti tali, devono essere muniti di cambio manuale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di ciclomotore",
+      "Caratteristiche tecniche dei ciclomotori"
+    ],
+    "exact_keywords": [
+      "ciclomotore",
+      "cambio manuale",
+      "cambio automatico",
+      "normativa di omologazione"
+    ],
+    "vector_search_queries": [
+      "definizione normativa di ciclomotore",
+      "requisiti tecnici per la classificazione di ciclomotore"
+    ],
+    "rule_explanation": "I ciclomotori sono definiti dalla normativa di omologazione e non è richiesto il cambio manuale; possono avere anche cambio automatico."
+  }
+}

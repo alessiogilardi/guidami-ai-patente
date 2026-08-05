@@ -1,0 +1,29 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24751",
+  "text": "In caso di nebbia fitta è opportuno fermarsi, se necessario, fuori dalla carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Condizioni di scarsa visibilità",
+      "Comportamento in caso di emergenza o pericolo",
+      "Prevenzione degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "nebbia fitta",
+      "fermarsi",
+      "fuori dalla carreggiata",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "comportamento in caso di nebbia fitta e scarsa visibilità",
+      "fermarsi fuori dalla carreggiata per pericolo di circolazione",
+      "prevenzione incidenti in condizioni di scarsa visibilità"
+    ],
+    "rule_explanation": "In caso di nebbia fitta, se è necessario fermarsi, bisogna farlo fuori dalla carreggiata per evitare di costituire un pericolo per la circolazione."
+  }
+}

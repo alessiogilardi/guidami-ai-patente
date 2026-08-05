@@ -1,0 +1,31 @@
+{
+  "question_id": 4427,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22847",
+  "text": "In vicinanza degli incroci, come in figura si può sempre cambiare corsia fino alla striscia trasversale di arresto",
+  "correct_answer": false,
+  "image": "ace26137a49a674d82cd570c427d3f86.jpeg",
+  "image_description": "Incrocio a raso. L'incrocio è a raso. La strada in primo piano è divisa in due corsie per senso di marcia, con una corsia di svolta a sinistra segnalata da strisce bianche discontinue. La strada trasversale è anch'essa divisa in due corsie per senso di marcia. È presente una striscia di arresto trasversale alla corsia di destra della strada in primo piano, in prossimità dell'incrocio. Un veicolo blu si trova nella corsia di destra della strada in primo piano, in prossimità della striscia di arresto.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di un incrocio stradale. La strada principale è a quattro corsie, due per senso di marcia, con una corsia di svolta a sinistra segnalata da strisce bianche discontinue. La strada trasversale ha anch'essa due corsie per senso di marcia. È presente una striscia di arresto trasversale alla corsia di destra della strada principale, in prossimità dell'incrocio. Un veicolo blu è posizionato nella corsia di destra della strada principale, prima della striscia di arresto. Le linee di corsia sono ben visibili. L'incrocio è a raso, senza dislivelli.",
+    "name": "Incrocio a raso",
+    "description": "L'incrocio è a raso. La strada in primo piano è divisa in due corsie per senso di marcia, con una corsia di svolta a sinistra segnalata da strisce bianche discontinue. La strada trasversale è anch'essa divisa in due corsie per senso di marcia. È presente una striscia di arresto trasversale alla corsia di destra della strada in primo piano, in prossimità dell'incrocio. Un veicolo blu si trova nella corsia di destra della strada in primo piano, in prossimità della striscia di arresto."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della circolazione negli incroci",
+      "Divieto di cambio di corsia in prossimità degli incroci"
+    ],
+    "exact_keywords": [
+      "incroci",
+      "cambiare corsia",
+      "striscia trasversale di arresto",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "divieto di cambio corsia in prossimità degli incroci",
+      "manovre vietate agli incroci stradali"
+    ],
+    "rule_explanation": "È vietato cambiare corsia di marcia o spostarsi lateralmente in prossimità o in corrispondenza degli incroci, anche se le linee di corsia lo consentirebbero."
+  }
+}

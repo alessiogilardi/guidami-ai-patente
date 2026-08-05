@@ -1,0 +1,27 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24698",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere mancata segnalazione degli incroci",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Responsabilità nella manutenzione e sicurezza delle strade"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "strada",
+      "segnalazione",
+      "incroci"
+    ],
+    "vector_search_queries": [
+      "segnalazione di pericolo stradale per incroci",
+      "obblighi di segnalazione per la sicurezza stradale"
+    ],
+    "rule_explanation": "La mancata o inadeguata segnalazione di pericoli, come incroci stradali, costituisce una causa probabile di incidenti e una violazione degli obblighi di sicurezza."
+  }
+}

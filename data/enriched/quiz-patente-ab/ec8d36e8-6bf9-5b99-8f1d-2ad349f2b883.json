@@ -1,0 +1,33 @@
+{
+  "question_id": 4591,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24301",
+  "text": "Il simbolo raffigurato è posto su una spia di colore rosso",
+  "correct_answer": true,
+  "image": "7ddd91f6c3fc7ef9f36722f849d5a624.jpeg",
+  "image_description": "Spia del sistema frenante (simbolo punto esclamativo all'interno di cerchio con parentesi). La spia indica un malfunzionamento dell'impianto frenante. Può segnalare un livello insufficiente del liquido dei freni o un problema più generale al sistema. È necessario fermarsi e controllare l'impianto frenante.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una spia luminosa con un simbolo al suo interno. Il simbolo è un punto esclamativo (!) posto al centro di un cerchio, a sua volta circondato da due parentesi curve aperte verso l'esterno. Questo simbolo è universalmente riconosciuto come indicatore di un problema al sistema frenante del veicolo. La spia è tipicamente di colore rosso, segnalando un'avaria grave che richiede attenzione immediata.",
+    "name": "Spia del sistema frenante (simbolo punto esclamativo all'interno di cerchio con parentesi)",
+    "description": "La spia indica un malfunzionamento dell'impianto frenante. Può segnalare un livello insufficiente del liquido dei freni o un problema più generale al sistema. È necessario fermarsi e controllare l'impianto frenante."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori luminosi di pericolo",
+      "Spie del cruscotto",
+      "Sistema frenante"
+    ],
+    "exact_keywords": [
+      "spia",
+      "colore rosso",
+      "sistema frenante",
+      "malfunzionamento"
+    ],
+    "vector_search_queries": [
+      "significato spie rosse cruscotto",
+      "spia sistema frenante colore rosso",
+      "indicatori di pericolo veicolo"
+    ],
+    "rule_explanation": "Le spie di colore rosso sul cruscotto segnalano avarie o malfunzionamenti gravi che richiedono l'arresto immediato del veicolo per controlli."
+  }
+}

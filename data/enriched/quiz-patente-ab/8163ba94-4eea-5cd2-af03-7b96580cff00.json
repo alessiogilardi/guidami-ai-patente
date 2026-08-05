@@ -1,0 +1,27 @@
+{
+  "question_id": 4440,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22964",
+  "text": "Se un'auto della polizia, con sirena in funzione, vi sorpassa ponendosi davanti e sul tetto ha un display con la scritta luminosa \"ACCOSTARE\", avete l'obbligo di arrestarvi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di agevolare il passaggio dei veicoli di emergenza",
+      "Comportamento in presenza di veicoli di polizia in servizio di emergenza"
+    ],
+    "exact_keywords": [
+      "veicolo di polizia",
+      "dispositivo acustico supplementare di allarme",
+      "dispositivo di segnalazione visiva lampeggiante",
+      "obbligo di fermarsi"
+    ],
+    "vector_search_queries": [
+      "obbligo di fermarsi a seguito di segnalazione da parte di veicolo di polizia con sirena e lampeggianti blu",
+      "condotta da tenere in presenza di veicolo di polizia che impone l'arresto con segnalazione visiva e acustica"
+    ],
+    "rule_explanation": "I conducenti devono fermarsi quando un veicolo di polizia, con sirena e lampeggianti blu attivi, segnala l'ordine di accostare tramite display luminoso."
+  }
+}

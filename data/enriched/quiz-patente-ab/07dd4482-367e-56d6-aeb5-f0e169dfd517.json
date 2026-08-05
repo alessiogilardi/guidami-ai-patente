@@ -1,0 +1,28 @@
+{
+  "question_id": 4539,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23874",
+  "text": "Nelle autostrade è consentito concedere passaggi a persone invalide",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di fermata e di sosta in autostrada",
+      "Eccezioni al divieto di fermata in autostrada"
+    ],
+    "exact_keywords": [
+      "autostrade",
+      "fermata",
+      "sosta",
+      "persone invalide",
+      "concedere passaggi"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata e sosta in autostrada",
+      "eccezioni al divieto di fermata in autostrada per invalidi"
+    ],
+    "rule_explanation": "Nelle autostrade è vietata la fermata e la sosta, salvo in caso di emergenza o per prestare soccorso, non è consentito concedere passaggi a persone invalide."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4356,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22084",
+  "text": "Il segnale raffigurato indica la continuazione del tratto di strada sdrucciolevole",
+  "correct_answer": true,
+  "image": "a2ed9eb4293f800d6bc0421b5a03e6c0.jpeg",
+  "image_description": "Pericolo di sbandamento e pannello integrativo di estesa in entrambe le direzioni. Il segnale di pericolo indica un tratto di strada in cui è prevista la possibilità di sbandamento del veicolo, a causa di scarsa aderenza del manto stradale. Il pannello integrativo indica che tale condizione si estende per una certa lunghezza in entrambe le direzioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un veicolo stilizzato che sta sbandando su una strada con curve accentuate. Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare di colore bianco con due frecce nere contrapposte, una rivolta a sinistra e l'altra a destra, che indicano un'estesa in entrambe le direzioni.",
+    "name": "Pericolo di sbandamento e pannello integrativo di estesa in entrambe le direzioni",
+    "description": "Il segnale di pericolo indica un tratto di strada in cui è prevista la possibilità di sbandamento del veicolo, a causa di scarsa aderenza del manto stradale. Il pannello integrativo indica che tale condizione si estende per una certa lunghezza in entrambe le direzioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica di pericolo",
+      "Pannelli integrativi",
+      "Estensione del pericolo"
+    ],
+    "exact_keywords": [
+      "segnale raffigurato",
+      "strada sdrucciolevole",
+      "pannello integrativo",
+      "estesa"
+    ],
+    "vector_search_queries": [
+      "segnaletica stradale pericolo strada sdrucciolevole estesa",
+      "pannello integrativo continuazione tratto sdrucciolevole"
+    ],
+    "rule_explanation": "Il segnale di pericolo indica un tratto di strada con scarsa aderenza; il pannello integrativo specifica l'estensione del pericolo in entrambe le direzioni."
+  }
+}

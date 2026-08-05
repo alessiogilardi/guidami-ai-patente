@@ -1,0 +1,29 @@
+{
+  "question_id": 4676,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25100",
+  "text": "Per diminuire l'inquinamento provocato dai veicoli non bisogna accelerare bruscamente durante le partenze",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida ecologica",
+      "Prevenzione dell'inquinamento atmosferico",
+      "Comportamento alla guida per la riduzione delle emissioni"
+    ],
+    "exact_keywords": [
+      "accelerazione brusca",
+      "partenza",
+      "inquinamento atmosferico",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "impatto delle accelerazioni brusche sulle emissioni dei veicoli",
+      "guida ecologica per ridurre l'inquinamento da veicoli a motore",
+      "corretta gestione dell'acceleratore per limitare l'inquinamento atmosferico"
+    ],
+    "rule_explanation": "Evitare accelerazioni brusche in partenza riduce il consumo di carburante e le emissioni inquinanti, contribuendo alla tutela dell'ambiente."
+  }
+}

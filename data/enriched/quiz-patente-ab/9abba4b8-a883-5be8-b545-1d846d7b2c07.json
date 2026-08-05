@@ -1,0 +1,32 @@
+{
+  "question_id": 4308,
+  "topic": "Segnali di indicazione",
+  "number": "21627",
+  "text": "Il segnale raffigurato se barrato da una striscia rossa indica la fine della sua validità",
+  "correct_answer": true,
+  "image": "971e98d0321dab35827073bdfb4eb51a.jpeg",
+  "image_description": "Segnale di limite minimo di velocità. Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è presente il numero '60' in bianco. Questo è un segnale di prescrizione che indica un limite minimo di velocità.",
+    "name": "Segnale di limite minimo di velocità",
+    "description": "Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di prescrizione",
+      "Segnali di fine prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di prescrizione",
+      "fine validità",
+      "segnale raffigurato",
+      "strisce rosse"
+    ],
+    "vector_search_queries": [
+      "fine validità segnali di prescrizione barrati da striscia rossa",
+      "interpretazione segnali stradali con striscia rossa"
+    ],
+    "rule_explanation": "Il segnale di prescrizione, se barrato da una striscia rossa, indica la fine del divieto o dell'obbligo imposto."
+  }
+}

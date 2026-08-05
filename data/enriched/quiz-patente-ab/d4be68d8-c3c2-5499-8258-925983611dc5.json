@@ -1,0 +1,27 @@
+{
+  "question_id": 4518,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23717",
+  "text": "Fuori dei centri abitati, il conducente in caso di sosta deve collocare il veicolo fuori della carreggiata, eventualmente anche sulle piste ciclabili",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo fuori dai centri abitati",
+      "Posizionamento del veicolo in sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "carreggiata",
+      "centri abitati",
+      "pista ciclabile"
+    ],
+    "vector_search_queries": [
+      "collocazione del veicolo in sosta fuori dai centri abitati",
+      "divieto di sosta sulla carreggiata e piste ciclabili fuori dai centri abitati"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, la sosta deve avvenire il più vicino possibile al margine destro della carreggiata, senza invadere le piste ciclabili o altre aree destinate alla circolazione di altri veicoli."
+  }
+}

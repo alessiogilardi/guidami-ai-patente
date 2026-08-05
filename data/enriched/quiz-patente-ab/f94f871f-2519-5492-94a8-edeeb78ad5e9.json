@@ -1,0 +1,29 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24699",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere mancanza di segnaletica orizzontale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale",
+      "Sicurezza stradale",
+      "Prevenzione incidenti"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "struttura della strada",
+      "pericolo per la circolazione",
+      "causa di incidenti"
+    ],
+    "vector_search_queries": [
+      "ruolo della segnaletica orizzontale nella prevenzione degli incidenti",
+      "conseguenze della mancanza di segnaletica stradale sulla sicurezza",
+      "pericoli derivanti da carenze strutturali della strada e segnaletica"
+    ],
+    "rule_explanation": "La mancanza o inadeguatezza della segnaletica orizzontale può costituire un pericolo per la circolazione, aumentando il rischio di incidenti stradali."
+  }
+}

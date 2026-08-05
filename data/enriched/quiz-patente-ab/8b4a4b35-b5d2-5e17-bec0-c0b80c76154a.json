@@ -1,0 +1,31 @@
+{
+  "question_id": 4336,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21888",
+  "text": "Il segnale raffigurato può essere completato con luci gialle lampeggianti",
+  "correct_answer": true,
+  "image": "f1e5c1caead6c28fe5819c396791ed64.jpeg",
+  "image_description": "Preavviso di cantiere stradale e riduzione corsie. Il segnale di destra, di pericolo, preavvisa un cantiere stradale con operai al lavoro. Il pannello integrativo indica che il cantiere si trova a 500 metri. I due segnali gialli lampeggianti indicano la presenza di un cantiere. Il segnale di sinistra indica una riduzione delle corsie disponibili, con la corsia di sinistra che termina.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali affiancati. Il segnale di sinistra è un segnale di prescrizione che indica una riduzione delle corsie disponibili, con la corsia di sinistra che termina e le altre due che proseguono. Il segnale di destra è un segnale di pericolo di colore giallo con bordo rosso, raffigurante un operaio al lavoro, che preavvisa un cantiere stradale. Sopra il segnale di pericolo ci sono due luci gialle lampeggianti. Sotto il segnale di pericolo c'è un pannello integrativo rettangolare bianco con la scritta \"500 m\", che indica la distanza dal cantiere.",
+    "name": "Preavviso di cantiere stradale e riduzione corsie",
+    "description": "Il segnale di destra, di pericolo, preavvisa un cantiere stradale con operai al lavoro. Il pannello integrativo indica che il cantiere si trova a 500 metri. I due segnali gialli lampeggianti indicano la presenza di un cantiere. Il segnale di sinistra indica una riduzione delle corsie disponibili, con la corsia di sinistra che termina."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica temporanea di cantiere",
+      "Dispositivi luminosi di segnalazione dinamica"
+    ],
+    "exact_keywords": [
+      "segnali complementari",
+      "luci gialle lampeggianti",
+      "cantiere stradale",
+      "pannello integrativo"
+    ],
+    "vector_search_queries": [
+      "segnaletica di cantiere con luci gialle lampeggianti",
+      "integrazione segnali temporanei con dispositivi luminosi"
+    ],
+    "rule_explanation": "I segnali di cantiere stradale possono essere integrati con luci gialle lampeggianti per aumentarne la visibilità e l'efficacia, specialmente in condizioni di scarsa illuminazione o traffico intenso."
+  }
+}

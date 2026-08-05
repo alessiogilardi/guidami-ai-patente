@@ -1,0 +1,31 @@
+{
+  "question_id": 4460,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23168",
+  "text": "Nell'incrocio rappresentato in figura i veicoli passano nel seguente ordine: C, A, P",
+  "correct_answer": true,
+  "image": "4dc2aaee4b1a7bc0e43d626f282051a8.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. Il veicolo P proviene da sinistra e deve svoltare a sinistra. Il veicolo C proviene da destra e deve proseguire dritto. Il veicolo A proviene dalla strada in basso e deve svoltare a destra. Non sono presenti segnali stradali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo P ha il veicolo C alla sua destra, quindi deve dare la precedenza a C. Il veicolo C ha il veicolo A alla sua destra, quindi deve dare la precedenza ad A. Il veicolo A non ha veicoli alla sua destra. L'ordine di passaggio corretto è: A, C, P.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con tre veicoli: P (blu), C (rosso) e A (giallo). Il veicolo P si trova in basso a sinistra e intende svoltare a sinistra. Il veicolo C si trova in alto a destra e intende proseguire dritto. Il veicolo A si trova a destra e intende svoltare a destra. Non sono presenti segnali stradali di precedenza. Le frecce tratteggiate indicano le traiettorie previste dai veicoli. In assenza di segnaletica specifica, vige la regola generale della precedenza a destra. Il veicolo P deve dare la precedenza al veicolo C perché si trova alla sua destra. Il veicolo C deve dare la precedenza al veicolo A perché si trova alla sua destra. Il veicolo A non ha veicoli alla sua destra. Pertanto, il veicolo A passa per primo, seguito dal veicolo C, e infine dal veicolo P.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. Il veicolo P proviene da sinistra e deve svoltare a sinistra. Il veicolo C proviene da destra e deve proseguire dritto. Il veicolo A proviene dalla strada in basso e deve svoltare a destra. Non sono presenti segnali stradali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo P ha il veicolo C alla sua destra, quindi deve dare la precedenza a C. Il veicolo C ha il veicolo A alla sua destra, quindi deve dare la precedenza ad A. Il veicolo A non ha veicoli alla sua destra. L'ordine di passaggio corretto è: A, C, P."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza agli incroci non regolamentati"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "veicolo",
+      "ordine di passaggio"
+    ],
+    "vector_search_queries": [
+      "precedenza a destra negli incroci non regolamentati",
+      "ordine di passaggio dei veicoli in assenza di segnaletica di precedenza"
+    ],
+    "rule_explanation": "Negli incroci non regolamentati, la precedenza è data al veicolo proveniente da destra. L'ordine corretto è A, C, P."
+  }
+}

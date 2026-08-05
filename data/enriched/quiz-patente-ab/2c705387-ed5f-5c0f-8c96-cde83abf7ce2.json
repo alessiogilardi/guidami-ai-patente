@@ -1,0 +1,33 @@
+{
+  "question_id": 4135,
+  "topic": "Segnali di divieto",
+  "number": "19860",
+  "text": "Il segnale raffigurato indica la fine di una prescrizione",
+  "correct_answer": true,
+  "image": "b0f757139def7519417e65cf9072bf86.jpeg",
+  "image_description": "Fine del divieto di superare i 50 km/h. Indica la fine del divieto di superare i 50 km/h.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una banda diagonale nera che divide il numero \"5\" a sinistra dal numero \"0\" a destra. Questo segnale indica la fine di un divieto. In questo caso specifico, indica la fine del divieto di superare i 50 km/h.",
+    "name": "Fine del divieto di superare i 50 km/h",
+    "description": "Indica la fine del divieto di superare i 50 km/h."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione stradale",
+      "Segnali di prescrizione",
+      "Segnali di divieto"
+    ],
+    "exact_keywords": [
+      "fine del divieto",
+      "prescrizione",
+      "segnali di divieto",
+      "segnali di indicazione"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un divieto o di una prescrizione",
+      "interpretazione segnale fine divieto di sorpasso",
+      "segnali di fine prescrizione e divieto"
+    ],
+    "rule_explanation": "Il segnale di 'fine del divieto di sorpasso' indica la cessazione del divieto precedentemente imposto, ripristinando la normale disciplina della circolazione."
+  }
+}

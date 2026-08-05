@@ -1,0 +1,27 @@
+{
+  "question_id": 4420,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22777",
+  "text": "In caso di traffico intenso il conducente deve occupare le corsie riservate alla marcia dei veicoli in servizio pubblico, se libere",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di occupazione di corsie riservate",
+      "Regole di circolazione in caso di traffico intenso"
+    ],
+    "exact_keywords": [
+      "corsie riservate",
+      "servizio pubblico",
+      "traffico intenso",
+      "occupare"
+    ],
+    "vector_search_queries": [
+      "divieto di occupazione corsie riservate a veicoli di servizio pubblico",
+      "regole di circolazione per corsie riservate in caso di traffico intenso"
+    ],
+    "rule_explanation": "Le corsie riservate ai veicoli in servizio pubblico non possono essere occupate da altri veicoli, neanche in caso di traffico intenso e se appaiono libere."
+  }
+}

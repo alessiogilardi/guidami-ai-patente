@@ -1,0 +1,28 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24668",
+  "text": "Circolare senza avere con sé la carta di circolazione del veicolo di cui si è alla guida comporta una perdita di punti sulla patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente",
+      "Documenti di circolazione",
+      "Sanzioni amministrative"
+    ],
+    "exact_keywords": [
+      "carta di circolazione",
+      "obbligo di avere con sé",
+      "sanzione amministrativa pecuniaria",
+      "decurtazione punti"
+    ],
+    "vector_search_queries": [
+      "sanzione per mancata esibizione della carta di circolazione",
+      "conseguenze della circolazione senza carta di circolazione a bordo"
+    ],
+    "rule_explanation": "La violazione dell'obbligo di avere con sé la carta di circolazione comporta una sanzione amministrativa pecuniaria, ma non la decurtazione di punti dalla patente."
+  }
+}

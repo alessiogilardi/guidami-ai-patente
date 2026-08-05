@@ -1,0 +1,31 @@
+{
+  "question_id": 4513,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23673",
+  "text": "La fermata è vietata lungo il margine sinistro di una carreggiata a senso unico di circolazione",
+  "correct_answer": false,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata e sosta nel Codice della Strada",
+      "Divieto di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "divieto di sosta",
+      "carreggiata a senso unico"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata sul margine sinistro di carreggiata a senso unico",
+      "differenza tra fermata e sosta vietata"
+    ],
+    "rule_explanation": "La fermata è vietata lungo il margine sinistro di una carreggiata a senso unico solo se espressamente indicato da apposita segnaletica verticale od orizzontale. Il divieto di sosta non implica il divieto di fermata."
+  }
+}

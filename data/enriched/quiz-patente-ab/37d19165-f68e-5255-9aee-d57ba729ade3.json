@@ -1,0 +1,33 @@
+{
+  "question_id": 4081,
+  "topic": "Segnali di pericolo",
+  "number": "19221",
+  "text": "Dopo il segnale (A) si può trovare il segnale (B)",
+  "correct_answer": true,
+  "image": "8c3ca9b5032fdb24e6f2f92b15c2feb2.jpeg",
+  "image_description": "Segnale di pericolo di restringimento carreggiata (A) e segnale di divieto di sorpasso (B). Il segnale A è un segnale di pericolo che indica una riduzione della carreggiata. Il segnale B è un segnale di prescrizione che indica il divieto di sorpasso per tutti i veicoli, eccetto i veicoli a due ruote senza motore, in un tratto di strada con doppio senso di circolazione. Pertanto, il segnale A può essere seguito dal segnale B.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali, etichettati come A e B. Il segnale A è un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco, raffigurante due linee nere verticali che si avvicinano verso il basso, indicando un restringimento della carreggiata. Il segnale B è un segnale di prescrizione a forma quadrata con sfondo blu, raffigurante una freccia rossa rivolta verso il basso e una freccia bianca rivolta verso l'alto, che indica il divieto di sorpasso per tutti i veicoli tranne quelli a due ruote senza motore. La domanda del quiz chiede se il segnale A può essere seguito dal segnale B. Dal punto di vista della segnaletica stradale, un segnale di pericolo (A) può essere seguito da un segnale di prescrizione (B) se la situazione descritta dal segnale di pericolo rende necessaria la prescrizione indicata dal secondo segnale. In questo caso, un restringimento della carreggiata (A) può comportare la necessità di vietare il sorpasso (B) per garantire la sicurezza.",
+    "name": "Segnale di pericolo di restringimento carreggiata (A) e segnale di divieto di sorpasso (B)",
+    "description": "Il segnale A è un segnale di pericolo che indica una riduzione della carreggiata. Il segnale B è un segnale di prescrizione che indica il divieto di sorpasso per tutti i veicoli, eccetto i veicoli a due ruote senza motore, in un tratto di strada con doppio senso di circolazione. Pertanto, il segnale A può essere seguito dal segnale B."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione",
+      "Sequenza dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "segnale di prescrizione",
+      "restringimento carreggiata",
+      "divieto di sorpasso"
+    ],
+    "vector_search_queries": [
+      "precedenza segnale di pericolo su segnale di prescrizione",
+      "possibilità di trovare segnale di divieto dopo segnale di pericolo",
+      "combinazione segnale restringimento carreggiata e divieto di sorpasso"
+    ],
+    "rule_explanation": "Dopo un segnale di pericolo (come il restringimento di carreggiata) può essere presente un segnale di prescrizione (come il divieto di sorpasso) per imporre una regola specifica in quel tratto."
+  }
+}

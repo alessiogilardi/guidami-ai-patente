@@ -1,0 +1,33 @@
+{
+  "question_id": 4588,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24274",
+  "text": "Una spia accesa di colore rosso, contrassegnata dal simbolo di figura, indica un eccessivo riscaldamento del motore",
+  "correct_answer": true,
+  "image": "14a02317e39ba75bcbf1188df815c4cd.jpeg",
+  "image_description": "Spia di temperatura liquido refrigerante motore. La spia indica un eccessivo riscaldamento del liquido di raffreddamento del motore. Se accesa, segnala una temperatura del liquido di raffreddamento superiore ai limiti stabiliti dal costruttore. Si tratta di una spia di colore rosso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra il simbolo di una spia luminosa. Il simbolo è composto da un termometro stilizzato immerso in due onde, che rappresentano un liquido. Il termometro ha delle tacche che indicano un aumento di temperatura. Questo simbolo è comunemente associato alla spia che segnala l'eccessiva temperatura del liquido di raffreddamento del motore. Le domande del quiz suggeriscono che la spia sia di colore rosso e che indichi un problema di surriscaldamento del motore.",
+    "name": "Spia di temperatura liquido refrigerante motore",
+    "description": "La spia indica un eccessivo riscaldamento del liquido di raffreddamento del motore. Se accesa, segnala una temperatura del liquido di raffreddamento superiore ai limiti stabiliti dal costruttore. Si tratta di una spia di colore rosso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori luminosi di avvertimento",
+      "Segnalazioni di pericolo",
+      "Sistema di raffreddamento motore"
+    ],
+    "exact_keywords": [
+      "spia di colore rosso",
+      "eccessivo riscaldamento del motore",
+      "liquido refrigerante",
+      "spia di temperatura"
+    ],
+    "vector_search_queries": [
+      "significato spie di colore rosso",
+      "spia temperatura motore accesa cause",
+      "indicatore di pericolo surriscaldamento motore"
+    ],
+    "rule_explanation": "Le spie di colore rosso segnalano un pericolo imminente o un malfunzionamento grave del veicolo, richiedendo un intervento immediato. L'accensione della spia della temperatura indica un surriscaldamento del motore."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4504,
+  "topic": "Norme sul sorpasso",
+  "number": "23590",
+  "text": "Il conducente del veicolo da sorpassare ha l'obbligo di fermarsi appena possibile per far defluire il traffico se guida un veicolo molto lento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di agevolare il sorpasso",
+      "Comportamento dei veicoli lenti"
+    ],
+    "exact_keywords": [
+      "veicolo da sorpassare",
+      "veicolo molto lento",
+      "agevolare il sorpasso",
+      "fermarsi appena possibile"
+    ],
+    "vector_search_queries": [
+      "obbligo di agevolare il sorpasso per veicoli lenti",
+      "comportamento del conducente di veicolo molto lento in caso di sorpasso"
+    ],
+    "rule_explanation": "Il conducente di un veicolo molto lento, se guida su strade ove è possibile il sorpasso, deve agevolare quest'ultimo fermandosi appena possibile per consentire il transito degli altri veicoli."
+  }
+}

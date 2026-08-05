@@ -1,0 +1,28 @@
+{
+  "question_id": 4618,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24607",
+  "text": "La revoca della patente è disposta quando il titolare perde permanentemente (per sempre) i requisiti fisici richiesti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revoca della patente di guida",
+      "Requisiti fisici per la guida",
+      "Perdita permanente dei requisiti"
+    ],
+    "exact_keywords": [
+      "revoca della patente",
+      "requisiti fisici",
+      "titolare",
+      "permanente"
+    ],
+    "vector_search_queries": [
+      "revoca patente per perdita permanente requisiti fisici",
+      "condizioni per la revoca della patente di guida"
+    ],
+    "rule_explanation": "La revoca della patente è disposta quando il titolare perde in modo permanente i requisiti fisici o psichici prescritti per il rilascio della patente stessa."
+  }
+}

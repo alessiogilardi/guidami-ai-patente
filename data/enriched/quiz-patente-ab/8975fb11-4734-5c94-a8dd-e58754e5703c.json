@@ -1,0 +1,29 @@
+{
+  "question_id": 4532,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23816",
+  "text": "Su strada extraurbana, nel caso di incidente che provochi l'ingombro della carreggiata per la presenza di veicoli danneggiati che non è possibile rimuovere, il conducente o i passeggeri devono presegnalare la zona mediante il segnale triangolare mobile di pericolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo",
+      "Ingombro della carreggiata",
+      "Veicolo in avaria"
+    ],
+    "exact_keywords": [
+      "segnalazione di pericolo",
+      "triangolo mobile",
+      "veicolo danneggiato",
+      "ingombro della carreggiata",
+      "strada extraurbana"
+    ],
+    "vector_search_queries": [
+      "obbligo di presegnalazione con triangolo mobile per veicoli danneggiati su strade extraurbane",
+      "uso del segnale triangolare di pericolo in caso di ingombro carreggiata per incidente su strada extraurbana"
+    ],
+    "rule_explanation": "In caso di ingombro della carreggiata su strada extraurbana per veicoli danneggiati non rimovibili, è obbligatorio presegnalare il pericolo con il segnale triangolare mobile."
+  }
+}

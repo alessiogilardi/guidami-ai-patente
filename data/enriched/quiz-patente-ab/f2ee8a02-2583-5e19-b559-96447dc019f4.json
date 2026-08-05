@@ -1,0 +1,27 @@
+{
+  "question_id": 4025,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18563",
+  "text": "I quadricicli leggeri alimentati a benzina hanno cilindrata del motore inferiore o pari a 50 cm3",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di quadriciclo leggero",
+      "Caratteristiche tecniche dei ciclomotori e quadricicli leggeri"
+    ],
+    "exact_keywords": [
+      "quadricicli leggeri",
+      "cilindrata",
+      "50 cm3",
+      "alimentati a benzina"
+    ],
+    "vector_search_queries": [
+      "cilindrata massima quadricicli leggeri a benzina",
+      "definizione normativa quadricicli leggeri cilindrata"
+    ],
+    "rule_explanation": "I quadricicli leggeri, se alimentati a benzina, sono definiti da una cilindrata del motore non superiore a 50 cm3."
+  }
+}

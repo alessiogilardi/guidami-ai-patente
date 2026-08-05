@@ -1,0 +1,28 @@
+{
+  "question_id": 4609,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24496",
+  "text": "Con la patente di categoria A1 si possono condurre i tricicli di potenza superiore a 15 kW, ma solo se il conducente è maggiorenne",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti per la conduzione di tricicli a motore",
+      "Patente di categoria A1",
+      "Limiti di potenza per tricicli a motore"
+    ],
+    "exact_keywords": [
+      "patente di categoria A1",
+      "tricicli a motore",
+      "potenza massima",
+      "conducente maggiorenne"
+    ],
+    "vector_search_queries": [
+      "conduzione tricicli a motore con patente A1",
+      "limiti di potenza per tricicli a motore con patente A1"
+    ],
+    "rule_explanation": "La patente A1 abilita alla conduzione di tricicli a motore con potenza massima di 15 kW, indipendentemente dall'età del conducente (purché maggiorenne)."
+  }
+}

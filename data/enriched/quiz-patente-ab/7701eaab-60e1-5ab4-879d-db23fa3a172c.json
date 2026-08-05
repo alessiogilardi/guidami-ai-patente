@@ -1,0 +1,28 @@
+{
+  "question_id": 4682,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25144",
+  "text": "Per limitare i consumi di carburante non conviene fare uso del portapacchi, ma sistemare i bagagli all'interno del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Riduzione dei consumi di carburante",
+      "Aerodinamica del veicolo",
+      "Impatto ambientale dei trasporti"
+    ],
+    "exact_keywords": [
+      "consumo di carburante",
+      "portapacchi",
+      "bagagli",
+      "aerodinamica"
+    ],
+    "vector_search_queries": [
+      "impatto del portapacchi sui consumi di carburante",
+      "sistemazione bagagli per ridurre resistenza aerodinamica"
+    ],
+    "rule_explanation": "L'uso del portapacchi aumenta la resistenza aerodinamica, incrementando i consumi di carburante; è preferibile sistemare i bagagli all'interno del veicolo per limitare tali consumi."
+  }
+}

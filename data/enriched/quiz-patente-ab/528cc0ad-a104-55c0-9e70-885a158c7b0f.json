@@ -1,0 +1,30 @@
+{
+  "question_id": 4703,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25291",
+  "text": "La trasparenza e la pulizia dei vetri dei finestrini del veicolo garantiscono una migliore visibilità esterna",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità del conducente",
+      "Manutenzione del veicolo",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "visibilità esterna",
+      "vetri dei finestrini",
+      "pulizia",
+      "trasparenza",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "importanza della visibilità esterna per il conducente",
+      "manutenzione dei vetri per la sicurezza stradale",
+      "obblighi del conducente riguardo la visibilità"
+    ],
+    "rule_explanation": "La pulizia e la trasparenza dei vetri sono essenziali per garantire al conducente un'adeguata visibilità esterna, fondamentale per la sicurezza della circolazione."
+  }
+}

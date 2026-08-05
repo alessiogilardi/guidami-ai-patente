@@ -1,0 +1,32 @@
+{
+  "question_id": 4357,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22095",
+  "text": "Il segnale raffigurato indica la fine del cantiere stradale",
+  "correct_answer": true,
+  "image": "53281ecd5ad419143ba0d24051d559db.jpeg",
+  "image_description": "Segnale di pericolo - Lavori in corso con pannello integrativo di direzione. Il segnale di pericolo indica la presenza di un cantiere stradale. Il pannello integrativo, di forma rettangolare e sfondo bianco, con un simbolo di freccia nera rivolta verso il basso, indica che il cantiere si trova in corrispondenza o nelle immediate vicinanze del segnale, con la direzione indicata dalla freccia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e fondo giallo, raffigurante un operaio al lavoro con una pala su un cumulo di terra. Sotto questo segnale, è presente un pannello integrativo di forma rettangolare con sfondo bianco e un bordo nero. All'interno del pannello integrativo, vi è una freccia nera rivolta verso il basso. Il segnale principale è un segnale di pericolo di \"Lavori in corso\". Il pannello integrativo fornisce un'indicazione aggiuntiva sulla posizione del cantiere.",
+    "name": "Segnale di pericolo - Lavori in corso con pannello integrativo di direzione",
+    "description": "Il segnale di pericolo indica la presenza di un cantiere stradale. Il pannello integrativo, di forma rettangolare e sfondo bianco, con un simbolo di freccia nera rivolta verso il basso, indica che il cantiere si trova in corrispondenza o nelle immediate vicinanze del segnale, con la direzione indicata dalla freccia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi",
+      "Lavori in corso"
+    ],
+    "exact_keywords": [
+      "lavori in corso",
+      "cantiere stradale",
+      "pannello integrativo",
+      "direzione"
+    ],
+    "vector_search_queries": [
+      "segnaletica di pericolo lavori in corso e pannelli integrativi di direzione",
+      "indicazione della posizione del cantiere stradale tramite pannello integrativo"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'lavori in corso' indica la presenza di un cantiere stradale. Il pannello integrativo con freccia indica la posizione del cantiere rispetto al segnale."
+  }
+}

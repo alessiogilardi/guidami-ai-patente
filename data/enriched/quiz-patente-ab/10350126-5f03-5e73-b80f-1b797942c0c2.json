@@ -1,0 +1,32 @@
+{
+  "question_id": 4300,
+  "topic": "Segnali di indicazione",
+  "number": "21559",
+  "text": "Il segnale raffigurato indica l'ingresso di un pronto soccorso medico",
+  "correct_answer": true,
+  "image": "48c50da3b91a82e86891d676bf735005.jpeg",
+  "image_description": "Segnale di indicazione per pronto soccorso medico con direzione obbligatoria a destra. Il segnale indica la direzione da seguire per raggiungere un pronto soccorso medico. La freccia indica che la direzione da prendere è verso destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare verticale, con bordo bianco e sfondo bianco. Nella parte superiore è presente un riquadro bianco con all'interno una croce greca rossa, simbolo di pronto soccorso medico. Sotto questo riquadro, vi è una freccia nera orizzontale che punta verso destra. L'insieme dei simboli indica la direzione da seguire per raggiungere un pronto soccorso medico.",
+    "name": "Segnale di indicazione per pronto soccorso medico con direzione obbligatoria a destra",
+    "description": "Il segnale indica la direzione da seguire per raggiungere un pronto soccorso medico. La freccia indica che la direzione da prendere è verso destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Servizi di interesse pubblico",
+      "Pronto soccorso"
+    ],
+    "exact_keywords": [
+      "segnale di indicazione",
+      "pronto soccorso",
+      "servizi in sosta",
+      "direzione obbligatoria"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale per pronto soccorso medico",
+      "obbligo di seguire la direzione indicata per il pronto soccorso"
+    ],
+    "rule_explanation": "Il segnale di indicazione raffigurante un pronto soccorso medico, con freccia, impone di seguire la direzione indicata per raggiungere il servizio."
+  }
+}

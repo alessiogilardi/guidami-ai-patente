@@ -1,0 +1,33 @@
+{
+  "question_id": 4097,
+  "topic": "Segnali di pericolo",
+  "number": "19421",
+  "text": "Il segnale raffigurato preannuncia la possibilità di un improvviso e forte rumore dovuto ad aeroplani a bassa quota",
+  "correct_answer": true,
+  "image": "cf70cb24dd929f5727132a64153fad7a.jpeg",
+  "image_description": "Segnale di pericolo - Aeroporto. Il segnale preannuncia la vicinanza di un aeroporto, con possibile transito di aeroplani a bassa quota.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurato il pittogramma di un aeroplano stilizzato in nero, in fase di volo. Questo segnale indica la prossimità di un aeroporto o di aree dove possono verificarsi voli a bassa quota.",
+    "name": "Segnale di pericolo - Aeroporto",
+    "description": "Il segnale preannuncia la vicinanza di un aeroporto, con possibile transito di aeroplani a bassa quota."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Aeroporto",
+      "Rumore improvviso"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "aeroplani a bassa quota",
+      "rumore improvviso",
+      "aeroporto"
+    ],
+    "vector_search_queries": [
+      "preavviso segnale pericolo aeroplani bassa quota",
+      "possibilità di rumore improvviso dovuto ad aeroplani",
+      "segnali stradali di pericolo per aeroporti"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante un aeroplano preannuncia la vicinanza di un aeroporto e la possibile presenza di aeroplani a bassa quota, che possono causare rumori improvvisi."
+  }
+}

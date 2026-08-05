@@ -1,0 +1,28 @@
+{
+  "question_id": 4568,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24120",
+  "text": "Nelle curve il rimorchio tende a \"stringere\" perché percorre una traiettoria circolare con raggio inferiore alla motrice",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Traiettoria del rimorchio in curva",
+      "Dinamica del traino"
+    ],
+    "exact_keywords": [
+      "rimorchio",
+      "curva",
+      "traiettoria circolare",
+      "raggio inferiore",
+      "motrice"
+    ],
+    "vector_search_queries": [
+      "traiettoria del rimorchio in curva",
+      "fenomeno dello 'stringere' in curva del rimorchio"
+    ],
+    "rule_explanation": "In curva, il rimorchio segue una traiettoria con raggio minore rispetto alla motrice, fenomeno noto come 'stringere la curva', a causa dell'articolazione tra i due veicoli."
+  }
+}

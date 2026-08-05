@@ -1,0 +1,27 @@
+{
+  "question_id": 4597,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24337",
+  "text": "Il casco è obbligatorio per i conducenti di motocicli non dotati di cellula di sicurezza e di dispositivi di ritenuta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Dispositivi di sicurezza per motocicli"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "motocicli",
+      "cellula di sicurezza",
+      "dispositivi di ritenuta"
+    ],
+    "vector_search_queries": [
+      "obbligo casco motocicli senza cellula di sicurezza",
+      "requisiti di sicurezza motocicli e obbligo casco"
+    ],
+    "rule_explanation": "Il casco protettivo è obbligatorio per i conducenti di motocicli che non dispongono di una cellula di sicurezza o di altri sistemi di ritenuta."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4611,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24520",
+  "text": "Con la patente di categoria A si possono condurre i motocicli (con o senza carrozzetta) di qualsiasi cilindrata, purché abbiano una potenza inferiore a 35 kW per i primi 2 anni dal conseguimento",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di categoria A",
+      "Potenza massima motocicli",
+      "Limitazioni post-conseguimento patente"
+    ],
+    "exact_keywords": [
+      "patente A",
+      "motocicli",
+      "potenza",
+      "kW",
+      "conseguimento"
+    ],
+    "vector_search_queries": [
+      "requisiti patente A cilindrata potenza",
+      "differenza patente A e A2 potenza massima",
+      "limitazioni potenza motocicli patente A"
+    ],
+    "rule_explanation": "La patente A consente di condurre motocicli di qualsiasi cilindrata senza limiti di potenza, a differenza di quanto previsto per la patente A2 che ha un limite di 35 kW per i primi 2 anni."
+  }
+}

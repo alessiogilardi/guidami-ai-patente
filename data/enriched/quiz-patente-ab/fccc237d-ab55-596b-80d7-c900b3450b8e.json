@@ -1,0 +1,29 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22505",
+  "text": "Nel caso in cui, per un guasto alla propria autovettura, si rimane bloccati sulla sede ferroviaria di un passaggio a livello, occorre svuotare rapidamente il serbatoio per evitare incendi in caso di collisione col treno",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo e intralcio alla circolazione",
+      "Comportamento in caso di arresto del veicolo su sede ferroviaria",
+      "Prevenzione incendi"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "arresto del veicolo",
+      "pericolo di incendio",
+      "svuotare il serbatoio"
+    ],
+    "vector_search_queries": [
+      "comportamento veicolo bloccato su passaggio a livello",
+      "procedure di emergenza per arresto su linea ferroviaria",
+      "prevenzione incendi veicolo fermo su passaggio a livello"
+    ],
+    "rule_explanation": "In caso di arresto del veicolo su un passaggio a livello, occorre sgomberare la sede ferroviaria e segnalare il pericolo, non svuotare il serbatoio."
+  }
+}

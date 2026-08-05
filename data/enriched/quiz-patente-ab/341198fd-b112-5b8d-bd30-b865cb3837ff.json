@@ -1,0 +1,28 @@
+{
+  "question_id": 4534,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23828",
+  "text": "Fuori dei centri abitati, è obbligatorio anche di giorno presegnalare un veicolo fermo sulla carreggiata mediante il segnale triangolare di pericolo quando non può essere visto nettamente a 100 metri di distanza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo fermo",
+      "Obbligo di presegnalazione fuori dai centri abitati"
+    ],
+    "exact_keywords": [
+      "veicolo fermo",
+      "carreggiata",
+      "segnalazione di pericolo",
+      "centri abitati",
+      "visibilità a 100 metri"
+    ],
+    "vector_search_queries": [
+      "obbligo presegnalazione veicolo fermo fuori centro abitato",
+      "segnalazione di pericolo per veicolo fermo non visibile a 100 metri"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, un veicolo fermo sulla carreggiata deve essere presegnalato con il triangolo di pericolo se non visibile a 100 metri, anche di giorno."
+  }
+}

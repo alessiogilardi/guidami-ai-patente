@@ -1,0 +1,30 @@
+{
+  "question_id": 4556,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23990",
+  "text": "I conducenti dei fuoristrada (Suv) debbono considerare i gravi danni che i paraurti sporgenti e rafforzati del proprio mezzo possono determinare nel caso di impatto con veicoli più piccoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Principio di cautela nella circolazione",
+      "Responsabilità del conducente per i danni cagionati",
+      "Caratteristiche del veicolo e sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "paraureti sporgenti",
+      "rafforzati",
+      "danni",
+      "impatto",
+      "veicoli più piccoli"
+    ],
+    "vector_search_queries": [
+      "danni causati da paraurti modificati in caso di incidente",
+      "impatto tra veicoli di dimensioni diverse con paraurti rinforzati",
+      "adeguamento della guida in base alle caratteristiche del veicolo e potenziale danno ad altri"
+    ],
+    "rule_explanation": "I conducenti devono considerare che modifiche come paraurti sporgenti o rinforzati possono aumentare la gravità dei danni in caso di impatto con veicoli più piccoli, adattando la guida di conseguenza."
+  }
+}

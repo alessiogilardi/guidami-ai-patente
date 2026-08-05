@@ -1,0 +1,30 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18717",
+  "text": "Alla guida di un veicolo il conducente deve procedere a bassa velocità sopra le pozzanghere",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Comportamento in presenza di ostacoli stradali",
+      "Tutela degli utenti deboli"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "pericolo",
+      "intralcio alla circolazione",
+      "pozzanghere"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di pozzanghere",
+      "comportamento del conducente per evitare di schizzare acqua su pedoni e altri utenti della strada",
+      "prevenzione del pericolo e dell'intralcio causati da pozzanghere e schizzi d'acqua"
+    ],
+    "rule_explanation": "Il conducente deve moderare la velocità in presenza di pozzanghere per evitare di schizzare acqua sui pedoni o altri utenti della strada, creando pericolo o disagio."
+  }
+}

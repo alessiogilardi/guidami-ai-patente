@@ -1,0 +1,32 @@
+{
+  "question_id": 4319,
+  "topic": "Segnali di indicazione",
+  "number": "21732",
+  "text": "Il segnale raffigurato può essere abbinato ad un pannello che indica la distanza dal punto in cui si ha l'aumento di corsia",
+  "correct_answer": true,
+  "image": "cde48dcb8875c390a2c629a904b48266.jpeg",
+  "image_description": "Inizio di corsia o deviazione (preavviso). Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di colore blu con bordi arrotondati. Al suo interno sono presenti due frecce bianche su sfondo blu. La freccia di sinistra è dritta e indica la direzione in avanti. La freccia di destra parte dalla stessa origine della freccia di sinistra, ma curva verso destra, indicando una deviazione o una corsia che si separa. Questo tipo di segnale preannuncia una modifica nella configurazione delle corsie di marcia.",
+    "name": "Inizio di corsia o deviazione (preavviso)",
+    "description": "Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Pannelli integrativi",
+      "Segnaletica stradale di preavviso"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "pannello integrativo",
+      "aumento di corsia",
+      "distanza"
+    ],
+    "vector_search_queries": [
+      "abbinamento segnali di indicazione e pannelli integrativi di distanza",
+      "pannelli integrativi per segnali di aumento di corsia o deviazione"
+    ],
+    "rule_explanation": "I segnali di indicazione, come quello di inizio di corsia o deviazione, possono essere integrati da pannelli che ne specificano la distanza dal punto in cui si verifica il fenomeno preannunciato."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4552,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23961",
+  "text": "Il conducente di un'autovettura deve considerare i rischi che, sulla strada, sono legati alla presenza di velocipedi, mezzi dotati di massa modesta e caratterizzati da basse velocità e possibili oscillazioni trasversali",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Pericolo per la circolazione",
+      "Comportamento dei conducenti"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "intralcio alla circolazione",
+      "veicoli a due ruote"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità alla presenza di ciclisti",
+      "rischi derivanti dalla circolazione di velocipedi su strade extraurbane",
+      "obbligo di moderare la velocità in presenza di veicoli lenti"
+    ],
+    "rule_explanation": "Il conducente deve adeguare la velocità alle condizioni del traffico, della strada e del veicolo, tenendo conto della presenza di utenti vulnerabili come i ciclisti."
+  }
+}

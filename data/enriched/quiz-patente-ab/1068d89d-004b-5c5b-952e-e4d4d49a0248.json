@@ -1,0 +1,30 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22512",
+  "text": "In caso di tamponamento tra veicoli in corrispondenza di un passaggio a livello, non si devono spostare i veicoli dai binari qualora vi siano stati feriti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Soccorso stradale e gestione incidenti con feriti",
+      "Obblighi in caso di incidente con danni a persone",
+      "Sicurezza ai passaggi a livello"
+    ],
+    "exact_keywords": [
+      "tamponamento",
+      "passaggio a livello",
+      "feriti",
+      "veicoli",
+      "soccorso"
+    ],
+    "vector_search_queries": [
+      "gestione incidenti con feriti ai passaggi a livello",
+      "rimozione veicoli incidentati in presenza di feriti su passaggi a livello",
+      "obblighi in caso di tamponamento con feriti a un passaggio a livello"
+    ],
+    "rule_explanation": "In caso di incidente con feriti a un passaggio a livello, i veicoli non vanno spostati solo se le operazioni di soccorso o la loro rimozione possono aggravare il pericolo per le persone coinvolte."
+  }
+}

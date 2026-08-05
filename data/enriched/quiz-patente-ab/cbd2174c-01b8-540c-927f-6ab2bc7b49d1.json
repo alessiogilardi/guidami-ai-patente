@@ -1,0 +1,27 @@
+{
+  "question_id": 4600,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24378",
+  "text": "L'airbag può essere pericoloso se si attiva mentre non si indossa la cintura di sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Utilizzo dei sistemi di ritenuta",
+      "Sicurezza attiva e passiva dei veicoli"
+    ],
+    "exact_keywords": [
+      "airbag",
+      "cintura di sicurezza",
+      "sistemi di ritenuta",
+      "pericolosità"
+    ],
+    "vector_search_queries": [
+      "funzionamento airbag e cintura di sicurezza",
+      "rischi attivazione airbag senza cintura"
+    ],
+    "rule_explanation": "L'airbag, pur essendo un dispositivo di sicurezza passiva, può causare lesioni se si attiva in assenza della cintura di sicurezza che ne ottimizza l'efficacia."
+  }
+}

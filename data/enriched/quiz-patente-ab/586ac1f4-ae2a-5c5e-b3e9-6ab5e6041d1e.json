@@ -1,0 +1,28 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24539",
+  "text": "La patente di categoria B abilita a condurre gli autocaravan di massa massima autorizzata non superiore a 3,5 tonnellate",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria B",
+      "Massa massima autorizzata",
+      "Autocaravan"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "autocaravan",
+      "massa massima autorizzata",
+      "3,5 tonnellate"
+    ],
+    "vector_search_queries": [
+      "conduzione autocaravan con patente B",
+      "limiti massa massima autorizzata per patente B"
+    ],
+    "rule_explanation": "La patente di categoria B abilita alla conduzione di autocaravan con massa massima autorizzata non superiore a 3,5 tonnellate, a condizione che non siano adibiti al trasporto di persone in numero superiore a 8, esclusi il conducente."
+  }
+}

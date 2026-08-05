@@ -1,0 +1,32 @@
+{
+  "question_id": 4345,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21972",
+  "text": "Il delineatore raffigurato ha le punte delle frecce che segnalano le direzioni possibili",
+  "correct_answer": true,
+  "image": "2798bde9cff903c926ecfd6da1c46c9e.jpeg",
+  "image_description": "Delineatore di pericolo (deviazione). Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore di pericolo di forma rettangolare, con bande diagonali bianche e nere alternate. Al centro è presente un rombo bianco. Il delineatore è montato su due supporti verticali. Le frecce bianche su sfondo nero indicano la direzione della deviazione, che può essere a destra o a sinistra.",
+    "name": "Delineatore di pericolo (deviazione)",
+    "description": "Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di cantiere",
+      "Delineatori stradali"
+    ],
+    "exact_keywords": [
+      "delineatore stradale",
+      "segnali complementari",
+      "deviazione",
+      "direzione da seguire"
+    ],
+    "vector_search_queries": [
+      "funzione dei delineatori stradali di cantiere",
+      "segnalazione di deviazione con frecce direzionali",
+      "interpretazione dei delineatori con punte a freccia"
+    ],
+    "rule_explanation": "I delineatori stradali complementari, come quello raffigurato, indicano deviazioni e le frecce segnalano le direzioni obbligatorie da seguire per aggirare l'ostacolo."
+  }
+}

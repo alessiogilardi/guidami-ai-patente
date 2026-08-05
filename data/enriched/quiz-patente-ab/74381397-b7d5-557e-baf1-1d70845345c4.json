@@ -1,0 +1,31 @@
+{
+  "question_id": 4470,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23271",
+  "text": "Secondo le norme di precedenza nell'incrocio rappresentato in figura i veicoli transitano nell'ordine: R, L, E, N",
+  "correct_answer": false,
+  "image": "45932db5cadcb8898ba2ecf0e0be6390.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. I veicoli presenti sono un'autovettura (E), un filobus (R) e un autocarro (N). Il veicolo L è un'autovettura gialla. Non sono presenti segnali stradali verticali o orizzontali che regolino la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo E si trova alla sinistra del veicolo L, quindi L ha la precedenza su E. Il veicolo R si trova alla destra del veicolo E, quindi E ha la precedenza su R. Il veicolo N si trova alla destra del veicolo R, quindi R ha la precedenza su N. Il veicolo E si trova alla sinistra del veicolo N, quindi N ha la precedenza su E. Il veicolo L si trova alla sinistra del veicolo R, quindi R ha la precedenza su L. Il veicolo L si trova alla sinistra del veicolo N, quindi N ha la precedenza su L. L'ordine di precedenza corretto è: R, N, L, E.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una intersezione a raso tra quattro strade. Sono presenti quattro veicoli: un'autovettura bianca identificata con la lettera E, un'autovettura gialla identificata con la lettera L, un filobus blu identificato con la lettera R e un autocarro rosso identificato con la lettera N. Non sono visibili segnali stradali di prescrizione o preavviso che regolino la circolazione nell'incrocio. Le traiettorie dei veicoli E e L sono indicate da linee tratteggiata, suggerendo le loro intenzioni di svolta. Il veicolo E intende svoltare a sinistra. Il veicolo L intende svoltare a destra. Il veicolo R procede dritto. L'autocarro N procede dritto. In assenza di segnaletica specifica, si applica la regola generale della precedenza a destra.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. I veicoli presenti sono un'autovettura (E), un filobus (R) e un autocarro (N). Il veicolo L è un'autovettura gialla. Non sono presenti segnali stradali verticali o orizzontali che regolino la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo E si trova alla sinistra del veicolo L, quindi L ha la precedenza su E. Il veicolo R si trova alla destra del veicolo E, quindi E ha la precedenza su R. Il veicolo N si trova alla destra del veicolo R, quindi R ha la precedenza su N. Il veicolo E si trova alla sinistra del veicolo N, quindi N ha la precedenza su E. Il veicolo L si trova alla sinistra del veicolo R, quindi R ha la precedenza su L. Il veicolo L si trova alla sinistra del veicolo N, quindi N ha la precedenza su L. L'ordine di precedenza corretto è: R, N, L, E."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza in assenza di segnaletica specifica"
+    ],
+    "exact_keywords": [
+      "precedenza a destra",
+      "incrocio non segnalizzato",
+      "veicoli",
+      "ordine di transito"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio non segnalizzato",
+      "regola generale della precedenza a destra"
+    ],
+    "rule_explanation": "In assenza di segnaletica, si applica la regola della precedenza a destra. L'ordine di transito corretto è determinato da chi si trova alla destra degli altri veicoli."
+  }
+}

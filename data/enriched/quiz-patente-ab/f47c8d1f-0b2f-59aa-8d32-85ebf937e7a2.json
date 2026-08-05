@@ -1,0 +1,27 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18730",
+  "text": "Il conducente di un veicolo deve cercare di prevedere il comportamento degli altri utenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Principio di prevedibilità nella circolazione stradale",
+      "Dovere di prudenza del conducente"
+    ],
+    "exact_keywords": [
+      "prevedere il comportamento",
+      "altri utenti della strada",
+      "conducente",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di prevedere il comportamento degli altri utenti della strada",
+      "principio di prudenza e prevedibilità nella circolazione stradale"
+    ],
+    "rule_explanation": "Il conducente deve agire con prudenza, anticipando le possibili azioni degli altri utenti della strada per garantire la sicurezza della circolazione."
+  }
+}

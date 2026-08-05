@@ -1,0 +1,31 @@
+{
+  "question_id": 4120,
+  "topic": "Segnali di divieto",
+  "number": "19709",
+  "text": "In presenza del segnale raffigurato è permesso il transito ai quadricicli a motore",
+  "correct_answer": false,
+  "image": "754708f3f8526842e7686256fa594eef.jpeg",
+  "image_description": "Divieto di transito agli autoveicoli. Il segnale vieta il transito a tutti gli autoveicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata la sagoma stilizzata di un'autovettura di colore nero. Questo segnale indica un divieto di transito specifico per gli autoveicoli.",
+    "name": "Divieto di transito agli autoveicoli",
+    "description": "Il segnale vieta il transito a tutti gli autoveicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Classificazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "autoveicoli",
+      "quadricicli a motore",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per autoveicoli e categorie assimilate",
+      "classificazione dei quadricicli a motore rispetto agli autoveicoli per segnali stradali"
+    ],
+    "rule_explanation": "Il segnale di 'Divieto di transito agli autoveicoli' vieta la circolazione a tutti i veicoli a motore, inclusi i quadricicli a motore che sono una sottocategoria di autoveicoli."
+  }
+}

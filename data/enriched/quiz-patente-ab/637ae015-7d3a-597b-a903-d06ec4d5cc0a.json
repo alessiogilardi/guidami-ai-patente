@@ -1,0 +1,30 @@
+{
+  "question_id": 4699,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25261",
+  "text": "In caso di foratura, prima di procedere alla sostituzione della ruota, è opportuno far scendere dal veicolo tutti i passeggeri, facendoli sistemare, per ragioni di sicurezza, fuori dalla carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza stradale",
+      "Gestione emergenze su strada",
+      "Comportamento in caso di avaria"
+    ],
+    "exact_keywords": [
+      "foratura",
+      "sostituzione ruota",
+      "passeggeri",
+      "carreggiata",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "procedure di sicurezza in caso di foratura",
+      "posizionamento passeggeri durante sostituzione ruota su strada",
+      "norme di comportamento in caso di avaria del veicolo per garantire la sicurezza"
+    ],
+    "rule_explanation": "In caso di foratura, prima di sostituire la ruota, i passeggeri devono scendere dal veicolo e posizionarsi in un luogo sicuro, lontano dalla carreggiata, per garantire la loro incolumità."
+  }
+}

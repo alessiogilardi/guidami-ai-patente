@@ -1,0 +1,27 @@
+{
+  "question_id": 4522,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23747",
+  "text": "La sosta è vietata allo sbocco dei passi carrabili",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Passi carrabili"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "passo carrabile",
+      "sbocco",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta agli sbocchi dei passi carrabili",
+      "regolamentazione della sosta in prossimità dei passi carrabili"
+    ],
+    "rule_explanation": "La sosta è vietata in corrispondenza o in prossimità degli sbocchi dei passi carrabili, per garantire la libertà di accesso e di uscita dei veicoli."
+  }
+}

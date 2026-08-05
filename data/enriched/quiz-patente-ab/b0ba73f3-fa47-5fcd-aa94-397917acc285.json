@@ -1,0 +1,29 @@
+{
+  "question_id": 4435,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22921",
+  "text": "Se un autotreno intende svoltare a destra in una strada stretta, i conducenti degli altri veicoli debbono tener presente che nella manovra si sposti a sinistra(si allarghi)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di svolta a destra di veicoli lunghi",
+      "Obblighi degli altri conducenti in caso di manovre particolari"
+    ],
+    "exact_keywords": [
+      "autotreno",
+      "svolta a destra",
+      "strada stretta",
+      "allargarsi a sinistra",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "manovra di svolta a destra di autotreno in strada stretta",
+      "allargamento a sinistra per svolta a destra di veicoli lunghi",
+      "obblighi dei conducenti in presenza di manovre di svolta di autotreni"
+    ],
+    "rule_explanation": "In una strada stretta, un autotreno che svolta a destra deve allargarsi a sinistra per completare la manovra. Gli altri conducenti devono tenerne conto e agevolare il transito."
+  }
+}

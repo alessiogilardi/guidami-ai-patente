@@ -1,0 +1,32 @@
+{
+  "question_id": 4329,
+  "topic": "Segnali di indicazione",
+  "number": "21821",
+  "text": "Il segnale raffigurato viene installato per il periodo di durata dei lavori stradali",
+  "correct_answer": true,
+  "image": "630cebb8d08ae99d4eecba26193b0e23.jpeg",
+  "image_description": "Direzione obbligatoria per autotreni e autoarticolati. Il segnale indica che la direzione obbligatoria è diritto, ed è specifico per autotreni e autoarticolati.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con sfondo giallo e bordo nero. Nella parte superiore, un disco blu con bordo bianco contiene una freccia bianca rivolta verso l'alto, indicando la direzione obbligatoria \"diritto\". Sotto questo disco, sono raffigurati due tipi di veicoli pesanti: un autotreno (motrice con rimorchio) e un autoarticolato (motrice con semirimorchio). Entrambi i veicoli sono rappresentati in nero. Il segnale è un segnale di prescrizione, specificamente una direzione obbligatoria, con un'indicazione aggiuntiva per determinate categorie di veicoli.",
+    "name": "Direzione obbligatoria per autotreni e autoarticolati",
+    "description": "Il segnale indica che la direzione obbligatoria è diritto, ed è specifico per autotreni e autoarticolati."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Lavori stradali",
+      "Durata dei segnali temporanei"
+    ],
+    "exact_keywords": [
+      "segnali stradali",
+      "lavori in corso",
+      "durata dei lavori",
+      "segnali temporanei"
+    ],
+    "vector_search_queries": [
+      "segnali stradali temporanei per lavori in corso",
+      "durata di validità dei segnali di cantiere stradale"
+    ],
+    "rule_explanation": "I segnali di indicazione, come quelli di cantiere o lavori stradali, sono installati per tutta la durata dei lavori stessi e rimossi al loro termine."
+  }
+}

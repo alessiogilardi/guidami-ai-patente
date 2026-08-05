@@ -1,0 +1,28 @@
+{
+  "question_id": 4432,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22898",
+  "text": "Giungendo in vicinanza di un incrocio nei centri abitati occorre suonare il clacson",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso del clacson",
+      "Norme di comportamento agli incroci",
+      "Centri abitati"
+    ],
+    "exact_keywords": [
+      "clacson",
+      "incrocio",
+      "centro abitato",
+      "segnale acustico"
+    ],
+    "vector_search_queries": [
+      "divieto di uso del clacson nei centri abitati in prossimità degli incroci",
+      "uso del clacson per segnalare la propria presenza in prossimità di incroci in centro abitato"
+    ],
+    "rule_explanation": "Il clacson non va usato in prossimità degli incroci nei centri abitati, salvo eccezioni per evitare pericoli imminenti."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4117,
+  "topic": "Segnali di divieto",
+  "number": "19672",
+  "text": "Il segnale raffigurato vieta il transito ai tandem",
+  "correct_answer": true,
+  "image": "d62b58e41fee347a25ca241f48772c05.jpeg",
+  "image_description": "Segnale di divieto di transito ai velocipedi. Il segnale vieta il transito ai velocipedi (biciclette).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una bicicletta di colore nero. Si tratta di un segnale di divieto.",
+    "name": "Segnale di divieto di transito ai velocipedi",
+    "description": "Il segnale vieta il transito ai velocipedi (biciclette)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Divieto di transito",
+      "Definizione di velocipede"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "divieto di transito",
+      "velocipedi",
+      "tandem"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito ai velocipedi",
+      "definizione di velocipede nel codice della strada",
+      "divieto di transito per biciclette e tandem"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito ai velocipedi vieta la circolazione a tutti i tipi di biciclette, inclusi i tandem."
+  }
+}

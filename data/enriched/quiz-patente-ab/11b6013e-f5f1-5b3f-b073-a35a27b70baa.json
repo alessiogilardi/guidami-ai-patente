@@ -1,0 +1,28 @@
+{
+  "question_id": 4689,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25187",
+  "text": "Il coefficiente di aderenza basso aumenta lo spazio di frenatura",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Coefficiente di aderenza",
+      "Spazio di frenatura",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "coefficiente di aderenza",
+      "aderenza",
+      "spazio di frenatura",
+      "condizioni dell'aderenza"
+    ],
+    "vector_search_queries": [
+      "relazione tra coefficiente di aderenza e spazio di frenatura",
+      "impatto dell'aderenza sulla distanza di arresto"
+    ],
+    "rule_explanation": "Un basso coefficiente di aderenza tra pneumatici e manto stradale aumenta lo spazio necessario per arrestare il veicolo, influenzando negativamente la tenuta di strada."
+  }
+}

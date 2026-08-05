@@ -1,0 +1,27 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18738",
+  "text": "Il conducente di un veicolo deve rispettare gli agenti del traffico solo se sono in divisa",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi verso gli agenti del traffico",
+      "Segnali degli agenti del traffico"
+    ],
+    "exact_keywords": [
+      "agenti del traffico",
+      "divisa",
+      "segnali degli agenti",
+      "ordini degli agenti"
+    ],
+    "vector_search_queries": [
+      "obbligo di obbedire agli ordini degli agenti del traffico non in divisa",
+      "identificazione degli agenti del traffico e rispetto delle loro indicazioni"
+    ],
+    "rule_explanation": "I conducenti devono obbedire agli ordini degli agenti del traffico, indipendentemente dal fatto che indossino o meno la divisa, purché siano chiaramente identificabili come tali."
+  }
+}

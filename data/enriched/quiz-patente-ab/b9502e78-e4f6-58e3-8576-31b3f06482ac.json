@@ -1,0 +1,33 @@
+{
+  "question_id": 4315,
+  "topic": "Segnali di indicazione",
+  "number": "21696",
+  "text": "Il segnale raffigurato può essere abbinato ad un pannello che indica la distanza che c'è tra il segnale e la piazzola",
+  "correct_answer": true,
+  "image": "f18ba4966ff5723564b62ec08c5c30bf.jpeg",
+  "image_description": "Piazzola di sosta. Il segnale indica una piazzola di sosta a lato della carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale è presente un pittogramma bianco che rappresenta una piazzola di sosta a lato della carreggiata. La piazzola è indicata da una linea tratteggiata che si stacca dalla linea continua della carreggiata e si allarga verso destra, formando uno spazio di sosta.",
+    "name": "Piazzola di sosta",
+    "description": "Il segnale indica una piazzola di sosta a lato della carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Pannelli integrativi",
+      "Segnaletica stradale di prescrizione e indicazione"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "pannello integrativo",
+      "piazzola di sosta",
+      "distanza"
+    ],
+    "vector_search_queries": [
+      "pannelli integrativi di distanza per segnali di indicazione",
+      "abbinamento segnale piazzola di sosta e pannello di distanza",
+      "segnaletica stradale integrativa per piazzole di sosta"
+    ],
+    "rule_explanation": "I segnali di indicazione possono essere integrati con pannelli che ne specificano la distanza dal luogo cui si riferiscono, come nel caso della piazzola di sosta."
+  }
+}

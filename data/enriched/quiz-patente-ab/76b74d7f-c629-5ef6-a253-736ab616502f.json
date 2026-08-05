@@ -1,0 +1,29 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24757",
+  "text": "In caso di nebbia fitta è opportuno circolare con le sole luci di posizioni accese",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi di illuminazione dei veicoli",
+      "Condizioni di visibilità ridotta",
+      "Prevenzione degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "nebbia",
+      "luci di posizione",
+      "luci anabbaglianti",
+      "fendinebbia"
+    ],
+    "vector_search_queries": [
+      "uso delle luci in caso di nebbia fitta",
+      "illuminazione veicolo con scarsa visibilità per nebbia",
+      "obbligo luci anabbaglianti e fendinebbia con nebbia"
+    ],
+    "rule_explanation": "In caso di nebbia fitta è obbligatorio l'uso delle luci anabbaglianti e, se presenti, dei proiettori fendinebbia anteriori, non solo delle luci di posizione."
+  }
+}

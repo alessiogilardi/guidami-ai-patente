@@ -1,0 +1,27 @@
+{
+  "question_id": 4531,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23811",
+  "text": "In caso di ingombro della carreggiata per avaria del veicolo, il conducente deve spingere il veicolo stesso fuori della carreggiata o, se ciò non è possibile, collocarlo sul margine destro della carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione di veicoli in avaria su strada",
+      "Obblighi del conducente in caso di fermo per avaria"
+    ],
+    "exact_keywords": [
+      "ingombro della carreggiata",
+      "avaria del veicolo",
+      "spingere il veicolo fuori della carreggiata",
+      "collocare sul margine destro"
+    ],
+    "vector_search_queries": [
+      "obblighi conducente veicolo avariato carreggiata",
+      "rimozione veicolo in avaria dalla sede stradale"
+    ],
+    "rule_explanation": "In caso di avaria che causi ingombro della carreggiata, il conducente deve spostare il veicolo fuori dalla carreggiata o, se impossibile, sul margine destro."
+  }
+}

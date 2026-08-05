@@ -1,0 +1,32 @@
+{
+  "question_id": 4227,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20862",
+  "text": "In una strada a senso unico di circolazione con la segnaletica indicata in figura per svoltare a sinistra bisogna rimanere nella corsia di destra",
+  "correct_answer": false,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Corsie di circolazione",
+      "Direzione di marcia"
+    ],
+    "exact_keywords": [
+      "striscia bianca discontinua",
+      "corsia di destra",
+      "senso unico di circolazione",
+      "svolta a sinistra"
+    ],
+    "vector_search_queries": [
+      "cambio di corsia striscia bianca discontinua senso unico",
+      "svolta a sinistra corsia più a sinistra senso unico"
+    ],
+    "rule_explanation": "Nelle strade a senso unico, la striscia bianca discontinua consente il cambio di corsia e la svolta a sinistra dalla corsia più a sinistra, non da quella di destra."
+  }
+}

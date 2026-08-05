@@ -1,0 +1,27 @@
+{
+  "question_id": 4046,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18802",
+  "text": "Quando vi sono bambini fermi al semaforo bisogna usare prudenza, in quanto potrebbero attraversare velocemente la strada anche con il rosso, ritenendo che duri troppo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Regolazione della velocità e prudenza in prossimità di bambini"
+    ],
+    "exact_keywords": [
+      "bambini",
+      "prudenza",
+      "attraversamento",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "prudenza in prossimità di bambini che attraversano la strada",
+      "comportamento del conducente in presenza di bambini al semaforo"
+    ],
+    "rule_explanation": "Il conducente deve prestare particolare prudenza in presenza di bambini, che potrebbero attraversare improvvisamente la strada anche con il semaforo rosso, per cui è necessario moderare la velocità e prestare attenzione."
+  }
+}

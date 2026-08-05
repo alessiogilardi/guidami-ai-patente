@@ -1,0 +1,32 @@
+{
+  "question_id": 4209,
+  "topic": "Segnali di precedenza",
+  "number": "20702",
+  "text": "In presenza del segnale raffigurato e del semaforo a tre luci abbiamo la precedenza se il semaforo è a luce rossa, ma l'agente del traffico ci ordina di passare",
+  "correct_answer": true,
+  "image": "1d54595537d45c8248194c62b91d2222.jpeg",
+  "image_description": "Segnale di dare precedenza agli veicoli provenienti dal senso di marcia opposto. Il segnale indica che la circolazione avviene in doppio senso e che i veicoli che si avvicinano da senso opposto hanno la precedenza. Pertanto, è necessario dare la precedenza ai veicoli provenienti dalla direzione opposta.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco su sfondo blu scuro. All'interno del segnale sono presenti due frecce: una freccia rossa rivolta verso il basso e una freccia bianca rivolta verso l'alto. La freccia rossa indica la direzione da cui provengono i veicoli che devono dare la precedenza, mentre la freccia bianca indica la direzione da cui provengono i veicoli che hanno la precedenza. Questo segnale è comunemente noto come segnale di \"dare precedenza ai veicoli provenienti dal senso di marcia opposto\" o \"strettoia con doppio senso di circolazione\".",
+    "name": "Segnale di dare precedenza agli veicoli provenienti dal senso di marcia opposto",
+    "description": "Il segnale indica che la circolazione avviene in doppio senso e che i veicoli che si avvicinano da senso opposto hanno la precedenza. Pertanto, è necessario dare la precedenza ai veicoli provenienti dalla direzione opposta."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di dare precedenza",
+      "Ordine dell\\'agente del traffico",
+      "Precedenza in presenza di segnali e agenti del traffico"
+    ],
+    "exact_keywords": [
+      "segnale di dare precedenza",
+      "semaforo a tre luci",
+      "agente del traffico",
+      "ordine di via"
+    ],
+    "vector_search_queries": [
+      "precedenza ordini agente del traffico rispetto a segnali e semafori",
+      "interpretazione segnali stradali in presenza di agenti del traffico"
+    ],
+    "rule_explanation": "In presenza di segnali stradali, semafori ed agenti del traffico, prevalgono gli ordini impartiti dagli agenti, anche se in contrasto con le prescrizioni dei segnali o dei semafori."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4441,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22971",
+  "text": "Il conducente che intende immettersi nel flusso della circolazione deve tenere conto della posizione, distanza, direzione degli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Immissione nel flusso di traffico",
+      "Comportamento degli utenti della strada",
+      "Distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "immissione nel flusso della circolazione",
+      "posizione degli altri utenti",
+      "distanza degli altri utenti",
+      "direzione degli altri utenti"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente nell'immissione nel flusso di circolazione",
+      "valutazione degli altri utenti della strada prima di immettersi nel traffico"
+    ],
+    "rule_explanation": "Chi si immette nel flusso di circolazione deve valutare posizione, distanza e direzione degli altri veicoli per garantire la sicurezza e non creare intralcio."
+  }
+}

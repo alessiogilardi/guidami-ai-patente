@@ -1,0 +1,28 @@
+{
+  "question_id": 4714,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25432",
+  "text": "Ai fini della sicurezza della circolazione, nei veicoli a motore a due ruote è opportuno verificare periodicamente l'usura della catena di trasmissione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Veicoli a motore a due ruote"
+    ],
+    "exact_keywords": [
+      "usura",
+      "catena di trasmissione",
+      "veicoli a motore a due ruote",
+      "sicurezza della circolazione"
+    ],
+    "vector_search_queries": [
+      "verifica usura catena trasmissione motocicli sicurezza",
+      "manutenzione veicoli a due ruote obblighi sicurezza"
+    ],
+    "rule_explanation": "La manutenzione periodica, inclusa la verifica dell'usura della catena di trasmissione, è essenziale per garantire la sicurezza di circolazione dei veicoli a motore a due ruote."
+  }
+}

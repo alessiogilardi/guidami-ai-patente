@@ -1,0 +1,27 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24413",
+  "text": "Quando si circola nelle zone a velocità controllata inferiore a 30 km/h, non è obbligatorio l'uso del casco",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Zone a velocità controllata"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "ciclomotori",
+      "motocicli",
+      "zone a velocità controllata"
+    ],
+    "vector_search_queries": [
+      "obbligo casco motocicli e ciclomotori in zone a velocità controllata",
+      "uso del casco protettivo nei veicoli a due ruote in aree urbane a bassa velocità"
+    ],
+    "rule_explanation": "L'uso del casco protettivo è obbligatorio per conducenti e passeggeri di ciclomotori e motocicli, anche nelle zone a velocità controllata inferiori a 30 km/h."
+  }
+}

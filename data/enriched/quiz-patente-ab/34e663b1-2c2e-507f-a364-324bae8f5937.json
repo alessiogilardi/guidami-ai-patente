@@ -1,0 +1,31 @@
+{
+  "question_id": 4228,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20865",
+  "text": "La segnaletica in figura indica un attraversamento pedonale",
+  "correct_answer": true,
+  "image": "eb927982dff82215401678c15830cc6c.jpeg",
+  "image_description": "Segnale di attraversamento pedonale (orizzontale). La segnaletica orizzontale raffigura una serie di strisce bianche parallele, disposte trasversalmente alla direzione di marcia, che delimitano un'area specifica sulla carreggiata. Questa configurazione è comunemente nota come attraversamento pedonale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una segnaletica orizzontale costituita da sei strisce bianche parallele, di uguali dimensioni e spessore, disposte a intervalli regolari. Le strisce sono orientate trasversalmente rispetto a quella che si presume essere la direzione di marcia del traffico. La superficie su cui è tracciata la segnaletica appare grigia, tipica dell'asfalto o di una pavimentazione stradale. Non sono presenti altri segnali stradali verticali o elementi di contesto che possano alterare l'interpretazione di questa segnaletica orizzontale. La disposizione delle strisce è quella standard per un attraversamento pedonale.",
+    "name": "Segnale di attraversamento pedonale (orizzontale)",
+    "description": "La segnaletica orizzontale raffigura una serie di strisce bianche parallele, disposte trasversalmente alla direzione di marcia, che delimitano un'area specifica sulla carreggiata. Questa configurazione è comunemente nota come attraversamento pedonale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Attraversamento pedonale"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "attraversamento pedonale",
+      "strisce bianche",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per attraversamento pedonale",
+      "disegno stradale strisce bianche pedoni"
+    ],
+    "rule_explanation": "La segnaletica orizzontale, costituita da strisce bianche parallele sulla carreggiata, indica la presenza di un attraversamento pedonale."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4102,
+  "topic": "Segnali di pericolo",
+  "number": "19484",
+  "text": "Il segnale (A), integrato con il pannello (B), preannuncia la presenza di veicoli militari in manovra",
+  "correct_answer": false,
+  "image": "bff177cd20a852bebc08106403d13ee0.jpeg",
+  "image_description": "Segnale di pericolo generico con pannello integrativo di mezzo d'opera. Il segnale A è un segnale di pericolo generico (triangolo con bordo rosso e punto esclamativo nero al centro). Il pannello B, posto sotto il segnale A, è un pannello integrativo che specifica il tipo di pericolo, raffigurando un mezzo d'opera (una sorta di escavatore cingolato con operatore a bordo). Pertanto, il segnale A integrato con il pannello B preannuncia la presenza di mezzi d'opera in transito o in lavorazione sulla carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi distinti, etichettati come A e B. L'elemento A è un segnale stradale di pericolo, caratterizzato da una forma triangolare con bordo rosso e un punto esclamativo nero al centro. L'elemento B è un pannello rettangolare posto sotto il segnale A, che funge da pannello integrativo. Il pannello B contiene un'illustrazione in nero su sfondo bianco che rappresenta un mezzo d'opera, specificamente un escavatore cingolato con una persona alla guida. L'insieme dei due elementi indica un pericolo specifico legato alla presenza di tale mezzo.",
+    "name": "Segnale di pericolo generico con pannello integrativo di mezzo d'opera",
+    "description": "Il segnale A è un segnale di pericolo generico (triangolo con bordo rosso e punto esclamativo nero al centro). Il pannello B, posto sotto il segnale A, è un pannello integrativo che specifica il tipo di pericolo, raffigurando un mezzo d'opera (una sorta di escavatore cingolato con operatore a bordo). Pertanto, il segnale A integrato con il pannello B preannuncia la presenza di mezzi d'opera in transito o in lavorazione sulla carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo generici",
+      "Pannelli integrativi di completamento",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo generico",
+      "pannello integrativo di completamento",
+      "mezzo d'opera",
+      "veicoli militari"
+    ],
+    "vector_search_queries": [
+      "segnalazione di pericolo generico con pannello integrativo di mezzo d'opera",
+      "differenza tra segnale di mezzo d'opera e segnale di veicoli militari in manovra"
+    ],
+    "rule_explanation": "Il segnale di pericolo generico con pannello integrativo raffigurante un mezzo d'opera preannuncia la presenza di tali mezzi, non di veicoli militari in manovra."
+  }
+}

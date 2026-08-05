@@ -1,0 +1,26 @@
+{
+  "question_id": 4038,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18702",
+  "text": "Sulle strade è vietato gareggiare in velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di gare di velocità su strada pubblica",
+      "Sicurezza stradale e prevenzione del pericolo"
+    ],
+    "exact_keywords": [
+      "strade",
+      "gareggiare in velocità",
+      "vietato"
+    ],
+    "vector_search_queries": [
+      "divieto di gare di velocità su strade pubbliche",
+      "normativa su competizioni non autorizzate su strada"
+    ],
+    "rule_explanation": "È vietato gareggiare in velocità sulle strade per garantire la sicurezza di tutti gli utenti e prevenire incidenti."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4658,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24980",
+  "text": "Chi è penalmente e civilmente responsabile di un sinistro stradale è sempre soggetto all'arresto preventivo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile e penale nei sinistri stradali",
+      "Arresto preventivo",
+      "Assicurazione R.C.A."
+    ],
+    "exact_keywords": [
+      "responsabilità civile",
+      "responsabilità penale",
+      "sinistro stradale",
+      "arresto preventivo"
+    ],
+    "vector_search_queries": [
+      "presupposti per l'arresto preventivo in caso di sinistro stradale",
+      "differenza tra responsabilità civile e penale per incidente stradale",
+      "applicazione dell'arresto in materia di circolazione stradale"
+    ],
+    "rule_explanation": "La responsabilità penale e civile per un sinistro stradale non comporta automaticamente l'arresto preventivo, che è una misura cautelare disposta dall'autorità giudiziaria in casi specifici."
+  }
+}

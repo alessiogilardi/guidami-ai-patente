@@ -1,0 +1,34 @@
+{
+  "question_id": 4145,
+  "topic": "Segnali di divieto",
+  "number": "19985",
+  "text": "Il segnale raffigurato consente la fermata, purché il veicolo non sia di intralcio",
+  "correct_answer": true,
+  "image": "4bf90ba530475a309c5ec86a96590f9d.jpeg",
+  "image_description": "Segnale di divieto di sosta per passo carrabile. Il segnale indica che l'area è un passo carrabile e vieta la sosta. Il numero e l'anno sotto la scritta \"passo carrabile\" si riferiscono all'autorizzazione del passo carrabile stesso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale di forma rettangolare con sfondo bianco. Al centro, è presente un segnale di divieto di sosta (cerchio rosso con banda diagonale rossa su sfondo blu). Sotto questo segnale, vi è la scritta \"passo carrabile\" in stampatello nero, seguita da un numero e un anno (2488/1994) anch'essi in nero. In alto, è presente la dicitura \"COMUNE DI ROMA\". Il segnale combina un segnale di divieto di sosta con un pannello integrativo che specifica la natura dell'area come passo carrabile e riporta gli estremi dell'autorizzazione.",
+    "name": "Segnale di divieto di sosta per passo carrabile",
+    "description": "Il segnale indica che l'area è un passo carrabile e vieta la sosta. Il numero e l'anno sotto la scritta \"passo carrabile\" si riferiscono all'autorizzazione del passo carrabile stesso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di divieto di sosta",
+      "Passo carrabile",
+      "Fermata e sosta dei veicoli"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "passo carrabile",
+      "fermata",
+      "sosta",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "differenza tra fermata e sosta vietata",
+      "segnaletica stradale divieto di sosta passo carrabile",
+      "condizioni per la fermata in presenza di divieto di sosta"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta vieta la sosta, ma non la fermata. La fermata è comunque vietata se causa intralcio alla circolazione o in aree specifiche come i passi carrabili."
+  }
+}

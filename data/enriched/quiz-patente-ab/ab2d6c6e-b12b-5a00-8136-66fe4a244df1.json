@@ -1,0 +1,30 @@
+{
+  "question_id": 4158,
+  "topic": "Segnali di obbligo",
+  "number": "20155",
+  "text": "Il segnale raffigurato è un segnale di divieto",
+  "correct_answer": false,
+  "image": "b23552307304d167fe185d4c6fe5181f.jpeg",
+  "image_description": "Obbligo di svolta a sinistra. Il segnale impone l'obbligo di svoltare a sinistra. Non è consentito proseguire diritto o svoltare a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca che indica una svolta a sinistra, con una prima parte orizzontale che poi curva verso l'alto e a sinistra. Questo è un segnale di obbligo.",
+    "name": "Obbligo di svolta a sinistra",
+    "description": "Il segnale impone l'obbligo di svoltare a sinistra. Non è consentito proseguire diritto o svoltare a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di divieto"
+    ],
+    "exact_keywords": [
+      "segnale di obbligo",
+      "segnale di divieto",
+      "direzione obbligatoria"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di obbligo e divieto",
+      "riconoscimento segnali stradali di obbligo di direzione"
+    ],
+    "rule_explanation": "I segnali di obbligo impongono un comportamento, mentre quelli di divieto vietano un comportamento. Il segnale raffigurato impone una direzione obbligatoria, non un divieto."
+  }
+}

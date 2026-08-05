@@ -1,0 +1,32 @@
+{
+  "question_id": 4372,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22254",
+  "text": "I pannelli integrativi in figura possono trovarsi sotto il segnale INTERSEZIONE CON DIRITTO DI PRECEDENZA",
+  "correct_answer": true,
+  "image": "0e646f81a0593b99bf3e4e50cba2b60b.jpeg",
+  "image_description": "Pannello integrativo di direzione e crocevia. I pannelli integrativi raffigurano l'andamento delle strade in un incrocio. Il pannello A indica un incrocio con una strada secondaria che si immette da sinistra e una da destra, con la strada principale che prosegue dritta. Il pannello B indica un incrocio in cui la strada principale piega a destra, con una strada secondaria che si immette da sinistra e una da destra. Il pannello C indica un incrocio in cui la strada principale piega a destra, con una strada secondaria che si immette da sinistra con un'angolazione acuta. Questi pannelli servono a preavvisare la conformazione dell'incrocio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre pannelli integrativi, etichettati A, B e C. Tutti i pannelli sono di forma quadrata con bordo nero e sfondo bianco. Raffigurano schemi di incroci stradali con linee nere che rappresentano le strade.\nPannello A: Mostra un incrocio a T con una strada secondaria che si immette da sinistra e una da destra, mentre la strada principale prosegue dritta.\nPannello B: Mostra un incrocio in cui la strada principale curva a destra, con una strada secondaria che si immette da sinistra e una da destra.\nPannello C: Mostra un incrocio in cui la strada principale curva a destra, con una strada secondaria che si immette da sinistra con un'angolazione più stretta rispetto al pannello B.\nQuesti pannelli sono tipicamente utilizzati per integrare segnali di pericolo o di prescrizione, fornendo informazioni sull'andamento delle strade in un incrocio.",
+    "name": "Pannello integrativo di direzione e crocevia",
+    "description": "I pannelli integrativi raffigurano l'andamento delle strade in un incrocio. Il pannello A indica un incrocio con una strada secondaria che si immette da sinistra e una da destra, con la strada principale che prosegue dritta. Il pannello B indica un incrocio in cui la strada principale piega a destra, con una strada secondaria che si immette da sinistra e una da destra. Il pannello C indica un incrocio in cui la strada principale piega a destra, con una strada secondaria che si immette da sinistra con un'angolazione acuta. Questi pannelli servono a preavvisare la conformazione dell'incrocio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Pannelli integrativi",
+      "Intersezioni stradali"
+    ],
+    "exact_keywords": [
+      "pannelli integrativi",
+      "segnale di INTERSEZIONE CON DIRITTO DI PRECEDENZA",
+      "andamento delle strade",
+      "preavviso di incrocio"
+    ],
+    "vector_search_queries": [
+      "abbinamento pannelli integrativi con segnale di diritto di precedenza",
+      "pannelli che indicano l'andamento delle strade in un incrocio"
+    ],
+    "rule_explanation": "I pannelli integrativi che indicano l'andamento delle strade in un incrocio possono essere abbinati al segnale di 'Intersezione con diritto di precedenza' per fornire maggiori dettagli sulla conformazione dell'incrocio stesso."
+  }
+}

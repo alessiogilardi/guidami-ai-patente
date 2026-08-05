@@ -1,0 +1,29 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24776",
+  "text": "Non è necessario mettere a punto i freni squilibrati, se il conducente è in grado di correggere l'anomalo comportamento del veicolo agendo sullo sterzo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Efficienza dei freni"
+    ],
+    "exact_keywords": [
+      "freni squilibrati",
+      "comportamento anomalo del veicolo",
+      "manutenzione del veicolo",
+      "sicurezza stradale"
+    ],
+    "vector_search_queries": [
+      "obbligo di efficienza dei freni",
+      "manutenzione del veicolo per la sicurezza",
+      "freni non efficienti e sicurezza stradale"
+    ],
+    "rule_explanation": "È obbligatorio mantenere i freni in perfetta efficienza, anche se si è in grado di compensare un loro squilibrio agendo sullo sterzo, per garantire la sicurezza."
+  }
+}

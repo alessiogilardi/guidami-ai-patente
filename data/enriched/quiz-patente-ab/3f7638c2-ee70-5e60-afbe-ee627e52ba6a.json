@@ -1,0 +1,29 @@
+{
+  "question_id": 4614,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24560",
+  "text": "Il codice armonizzato 96, apposto sulla patente di categoria B, abilita alla guida di autoveicoli trainanti un rimorchio non leggero (oltre 750 chilogrammi), purché la massa massima autorizzata del complesso non sia superiore a 4.250 chilogrammi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Codice armonizzato patente",
+      "Guida con rimorchio",
+      "Massa massima autorizzata del complesso veicolare"
+    ],
+    "exact_keywords": [
+      "codice armonizzato 96",
+      "patente categoria B",
+      "rimorchio non leggero",
+      "massa massima autorizzata",
+      "complesso veicolare"
+    ],
+    "vector_search_queries": [
+      "guida autoveicoli con rimorchio non leggero con patente B e codice 96",
+      "limiti massa massima autorizzata complesso veicolare con rimorchio e patente B codice 96"
+    ],
+    "rule_explanation": "Il codice 96 sulla patente B consente di guidare complessi veicolari composti da motrice e rimorchio non leggero, con massa massima autorizzata fino a 4.250 kg."
+  }
+}

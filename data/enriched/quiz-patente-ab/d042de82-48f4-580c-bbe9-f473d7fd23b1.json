@@ -1,0 +1,27 @@
+{
+  "question_id": 4515,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23695",
+  "text": "La fermata è vietata allo sbocco dei passi carrabili",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di fermata",
+      "Passo carrabile"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "passo carrabile",
+      "vietata",
+      "sosta"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata allo sbocco dei passi carrabili",
+      "differenza tra fermata e sosta rispetto ai passi carrabili"
+    ],
+    "rule_explanation": "La fermata è vietata allo sbocco dei passi carrabili, mentre la sosta è sempre vietata."
+  }
+}

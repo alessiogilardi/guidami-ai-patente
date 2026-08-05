@@ -1,0 +1,28 @@
+{
+  "question_id": 4713,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25424",
+  "text": "Su un motociclo, per lo spegnimento del motore nelle situazioni ordinarie, è preferibile utilizzare la chiave di accensione anziché l'interruttore di emergenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Spegnimento motore motociclo",
+      "Uso interruttore di emergenza",
+      "Manutenzione veicolo"
+    ],
+    "exact_keywords": [
+      "motociclo",
+      "spegnimento motore",
+      "chiave di accensione",
+      "interruttore di emergenza"
+    ],
+    "vector_search_queries": [
+      "uso ordinario interruttore emergenza motociclo",
+      "modalità corrette spegnimento motore motociclo"
+    ],
+    "rule_explanation": "L'interruttore di emergenza sui motocicli è destinato a situazioni eccezionali, non all'uso ordinario per lo spegnimento del motore, che va effettuato con la chiave di accensione."
+  }
+}

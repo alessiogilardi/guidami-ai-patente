@@ -1,0 +1,29 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24822",
+  "text": "Quando, in un giorno di pioggia, si deve transitare su rotaie del tram o su tombini presenti sulla carreggiata stradale a bordo di un veicolo a due ruote, occorre accelerare decisamente prima di transitarvi sopra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti",
+      "Comportamento sicuro su veicoli a due ruote",
+      "Condizioni stradali avverse"
+    ],
+    "exact_keywords": [
+      "veicolo a due ruote",
+      "condizioni della strada",
+      "superficie sdrucciolevole",
+      "tombini",
+      "rotaie"
+    ],
+    "vector_search_queries": [
+      "comportamento veicoli a due ruote su superfici sdrucciolevoli come rotaie e tombini in caso di pioggia",
+      "precauzioni per motocicli su ostacoli stradali in condizioni di scarsa aderenza"
+    ],
+    "rule_explanation": "Su veicoli a due ruote, in caso di pioggia, è necessario rallentare e prestare massima attenzione nel superare ostacoli come rotaie o tombini, evitando accelerazioni brusche."
+  }
+}

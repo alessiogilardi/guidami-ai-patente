@@ -1,0 +1,28 @@
+{
+  "question_id": 4584,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24247",
+  "text": "L'uso degli indicatori di direzione destri è necessario quando ci si arresta per cause di interruzione della circolazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Arresto del veicolo",
+      "Uso dei dispositivi di illuminazione e segnalazione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "arresto del veicolo",
+      "interruzione della circolazione",
+      "segnalazione di manovra"
+    ],
+    "vector_search_queries": [
+      "segnalazione di arresto del veicolo per interruzione della circolazione",
+      "obbligo di uso degli indicatori di direzione per arresto del veicolo"
+    ],
+    "rule_explanation": "Gli indicatori di direzione servono a segnalare l'intenzione di cambiare direzione o corsia, non l'arresto del veicolo per cause di interruzione della circolazione."
+  }
+}

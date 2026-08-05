@@ -1,0 +1,28 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24773",
+  "text": "La distanza percorsa durante il tempo di reazione non varia con la velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di reazione",
+      "Tempo di reazione",
+      "Velocità di guida"
+    ],
+    "exact_keywords": [
+      "tempo di reazione",
+      "distanza percorsa",
+      "velocità",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "relazione tra velocità e distanza di reazione",
+      "calcolo distanza percorsa durante tempo di reazione"
+    ],
+    "rule_explanation": "La distanza percorsa durante il tempo di reazione è direttamente proporzionale alla velocità del veicolo; all'aumentare della velocità, aumenta anche tale distanza."
+  }
+}

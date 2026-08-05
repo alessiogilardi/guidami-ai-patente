@@ -1,0 +1,31 @@
+{
+  "question_id": 4317,
+  "topic": "Segnali di indicazione",
+  "number": "21716",
+  "text": "Il segnale raffigurato obbliga i veicoli che viaggiano alla velocità di 50 km/h di stare sulla prima corsia di destra",
+  "correct_answer": true,
+  "image": "47a3132fb25bc64ef9f5157432941f04.jpeg",
+  "image_description": "Segnale di prescrizione - Velocità minime obbligatorie per corsia. Il segnale indica le velocità minime obbligatorie da mantenere sulle corsie di pertinenza. La corsia di sinistra impone una velocità minima di 90 km/h, la corsia centrale una velocità minima di 60 km/h, mentre la corsia di destra non ha vincoli di velocità minima.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore verde con tre frecce bianche che indicano la direzione di marcia per tre corsie. Sotto le prime due frecce (da sinistra) sono presenti due dischi blu con numeri bianchi: il primo disco riporta il numero '90' e il secondo il numero '60'. La terza freccia (a destra) non ha alcun disco sottostante. Il segnale è rettangolare con bordi arrotondati. Si tratta di un segnale di prescrizione che indica le velocità minime obbligatorie per ciascuna corsia.",
+    "name": "Segnale di prescrizione - Velocità minime obbligatorie per corsia",
+    "description": "Il segnale indica le velocità minime obbligatorie da mantenere sulle corsie di pertinenza. La corsia di sinistra impone una velocità minima di 90 km/h, la corsia centrale una velocità minima di 60 km/h, mentre la corsia di destra non ha vincoli di velocità minima."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione relativa alle corsie di preselezione",
+      "Velocità minima obbligatoria per corsia"
+    ],
+    "exact_keywords": [
+      "velocità minima obbligatoria",
+      "corsia di pertinenza",
+      "segnali di prescrizione",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "obbligo di velocità minima per corsia di pertinenza",
+      "segnali che impongono velocità minime differenziate per corsia"
+    ],
+    "rule_explanation": "I segnali di prescrizione indicano le velocità minime obbligatorie da rispettare per ciascuna corsia di pertinenza, al fine di garantire un flusso scorrevole del traffico."
+  }
+}

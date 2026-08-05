@@ -1,0 +1,31 @@
+{
+  "question_id": 4365,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22187",
+  "text": "Il pannello integrativo raffigurato invita a non usare i fari abbaglianti",
+  "correct_answer": false,
+  "image": "898befc05a5da69814999a6d3fa9fd5a.jpeg",
+  "image_description": "Pannello integrativo di pericolo ghiaccio. Il pannello integrativo indica la possibilità di trovare tratti di strada ghiacciati.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare di colore blu scuro con bordo bianco. Al suo interno sono presenti due pittogrammi bianchi a forma di fiocco di neve, disposti orizzontalmente. Questo pannello è un pannello integrativo di pericolo ghiaccio.",
+    "name": "Pannello integrativo di pericolo ghiaccio",
+    "description": "Il pannello integrativo indica la possibilità di trovare tratti di strada ghiacciati."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "pericolo ghiaccio",
+      "ghiaccio",
+      "fari abbaglianti"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo pericolo ghiaccio significato",
+      "uso fari abbaglianti in presenza di ghiaccio"
+    ],
+    "rule_explanation": "Il pannello integrativo di pericolo ghiaccio indica la possibile presenza di ghiaccio sulla carreggiata, non impone il divieto di usare i fari abbaglianti."
+  }
+}

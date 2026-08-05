@@ -1,0 +1,31 @@
+{
+  "question_id": 4070,
+  "topic": "Segnali di pericolo",
+  "number": "19093",
+  "text": "Il segnale raffigurato indica che la linea ferroviaria ha più di un binario",
+  "correct_answer": true,
+  "image": "ed53c457115b11eace8f91dc5d803a42.jpeg",
+  "image_description": "Croce di Sant'Andrea (ripetuta) - Passaggio a livello con più di un binario. Il segnale indica la presenza di un attraversamento ferroviario con più di un binario. Preannuncia un pericolo e impone di moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una croce di Sant'Andrea, che è un segnale di pericolo. Questo segnale è di forma quadrata con la punta rivolta verso l'alto, bordato di rosso e con una croce bianca al centro. In questo caso, la croce è formata da due elementi a forma di X sovrapposti, con un rombo al centro, e le estremità sono a forma di freccia. Questo specifico disegno indica un passaggio a livello con più di un binario. Non ci sono pannelli integrativi visibili. L'immagine è isolata e non fa parte di una scena di guida più ampia.",
+    "name": "Croce di Sant'Andrea (ripetuta) - Passaggio a livello con più di un binario",
+    "description": "Il segnale indica la presenza di un attraversamento ferroviario con più di un binario. Preannuncia un pericolo e impone di moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Passaggio a livello con più binari"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "linea ferroviaria",
+      "più di un binario",
+      "Croce di Sant'Andrea"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per passaggio a livello con più binari",
+      "indicazione di più binari ferroviari tramite segnale di pericolo"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante la Croce di Sant'Andrea, se ripetuto, indica un passaggio a livello con più di un binario, preannunciando un pericolo."
+  }
+}

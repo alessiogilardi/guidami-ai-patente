@@ -1,0 +1,33 @@
+{
+  "question_id": 4080,
+  "topic": "Segnali di pericolo",
+  "number": "19213",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada da percorrere con il pedale della frizione abbassato",
+  "correct_answer": false,
+  "image": "e00977c30f7df673be7ffea068667309.jpeg",
+  "image_description": "Segnale di pericolo di salita con pendenza specificata. Il segnale preannuncia una salita e ne specifica la pendenza (10%). È un segnale di pericolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata una rampa inclinata di colore nero, che simboleggia una salita. Sulla rampa è indicato il valore \"10%\" con un numero nero, che rappresenta la pendenza.",
+    "name": "Segnale di pericolo di salita con pendenza specificata",
+    "description": "Il segnale preannuncia una salita e ne specifica la pendenza (10%). È un segnale di pericolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "salita",
+      "pendenza",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di pericolo e prescrizione",
+      "funzione dei segnali di pericolo di salita",
+      "interpretazione segnale di pericolo pendenza"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano un pericolo specifico, mentre i segnali di prescrizione impongono un comportamento. Il segnale di salita indica una pendenza, non un'azione specifica come abbassare la frizione."
+  }
+}

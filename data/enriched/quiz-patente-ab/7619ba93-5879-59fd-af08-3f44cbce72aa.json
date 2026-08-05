@@ -1,0 +1,29 @@
+{
+  "question_id": 4565,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24077",
+  "text": "Il caravan non è considerato un rimorchio perché può essere adibito ad alloggio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di rimorchio",
+      "Classificazione dei veicoli",
+      "Normativa sul traino"
+    ],
+    "exact_keywords": [
+      "caravan",
+      "rimorchio",
+      "veicolo adibito ad alloggio",
+      "trasporto persone"
+    ],
+    "vector_search_queries": [
+      "definizione legale di rimorchio nel CdS",
+      "classificazione del caravan come rimorchio",
+      "normativa sul traino di caravan e rimorchi"
+    ],
+    "rule_explanation": "Il caravan, anche se adibito ad alloggio, è legalmente classificato come rimorchio se trainato da un altro veicolo."
+  }
+}

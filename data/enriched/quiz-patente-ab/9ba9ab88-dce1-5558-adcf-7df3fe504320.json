@@ -1,0 +1,27 @@
+{
+  "question_id": 4008,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18397",
+  "text": "L'intersezione (incrocio) a raso è un'intersezione di due o più strade poste allo stesso livello",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di intersezione a raso",
+      "Classificazione delle intersezioni stradali"
+    ],
+    "exact_keywords": [
+      "intersezione a raso",
+      "incrocio",
+      "strade sullo stesso piano",
+      "livello"
+    ],
+    "vector_search_queries": [
+      "definizione di intersezione a raso nel CdS",
+      "caratteristiche incrocio stradale stesso livello"
+    ],
+    "rule_explanation": "L'intersezione a raso è il punto in cui due o più strade si incrociano allo stesso livello, senza sovrapposizioni o dislivelli."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4134,
+  "topic": "Segnali di divieto",
+  "number": "19856",
+  "text": "Il segnale raffigurato riguarda soltanto i veicoli in servizio pubblico",
+  "correct_answer": false,
+  "image": "d8dce2d1c8f09a52c75de4be9144dd48.jpeg",
+  "image_description": "Segnale di fine divieti o prescrizioni. Indica la fine di tutti i divieti precedentemente imposti, ad eccezione di quelli relativi alla sosta e al fermata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro è presente una banda nera diagonale, che va dall'angolo in alto a sinistra all'angolo in basso a destra. Questo è il segnale di fine divieti o prescrizioni.",
+    "name": "Segnale di fine divieti o prescrizioni",
+    "description": "Indica la fine di tutti i divieti precedentemente imposti, ad eccezione di quelli relativi alla sosta e al fermata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Estensione dei divieti"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "fine dei divieti",
+      "veicoli in servizio pubblico",
+      "divieto di sosta",
+      "divieto di fermata"
+    ],
+    "vector_search_queries": [
+      "ambito di applicazione dei segnali di divieto",
+      "segnali di fine divieto e loro eccezioni",
+      "divieti specifici per veicoli in servizio pubblico"
+    ],
+    "rule_explanation": "Il segnale di fine divieti non si applica ai veicoli in servizio pubblico se il divieto originale era specifico per essi. La fine dei divieti generali non include quelli di sosta o fermata."
+  }
+}

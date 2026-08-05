@@ -1,0 +1,33 @@
+{
+  "question_id": 4204,
+  "topic": "Segnali di precedenza",
+  "number": "20650",
+  "text": "Il segnale raffigurato può precedere il segnale DARE PRECEDENZA",
+  "correct_answer": false,
+  "image": "c3fbf607467f1dbb78f137f6e2ff37f8.jpeg",
+  "image_description": "Preavviso di confluenza (immissione) da destra. Il segnale preannuncia una confluenza sul lato destro. I veicoli provenienti dalla corsia di destra si immetteranno sulla strada principale, avendo la precedenza. Pertanto, chi percorre la strada principale deve moderare la velocità e, se necessario, fermarsi per consentire il congiungimento dei flussi di traffico.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta una strada principale (linea più spessa e diritta) e una strada secondaria che si immette da destra (linea più sottile che si congiunge alla principale con un'angolazione). La linea della strada secondaria si divide in due rami, uno dei quali si immette sulla principale da destra, mentre l'altro prosegue parallelamente. Questo indica una confluenza o immissione da destra.",
+    "name": "Preavviso di confluenza (immissione) da destra",
+    "description": "Il segnale preannuncia una confluenza sul lato destro. I veicoli provenienti dalla corsia di destra si immetteranno sulla strada principale, avendo la precedenza. Pertanto, chi percorre la strada principale deve moderare la velocità e, se necessario, fermarsi per consentire il congiungimento dei flussi di traffico."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Preavviso di immissione",
+      "Regole di precedenza in caso di immissione"
+    ],
+    "exact_keywords": [
+      "preavviso di confluenza",
+      "immissione da destra",
+      "dare precedenza",
+      "strada principale"
+    ],
+    "vector_search_queries": [
+      "preavviso di immissione da destra e obbligo di dare precedenza",
+      "regola di precedenza in caso di confluenza di flussi di traffico",
+      "interpretazione segnale preavviso di confluenza"
+    ],
+    "rule_explanation": "Il segnale di preavviso di immissione da destra non impone di dare precedenza, ma preannuncia l'immissione di veicoli che hanno la precedenza. Chi percorre la strada principale deve moderare la velocità e fermarsi se necessario."
+  }
+}

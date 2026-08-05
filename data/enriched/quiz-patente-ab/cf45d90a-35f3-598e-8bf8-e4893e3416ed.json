@@ -1,0 +1,27 @@
+{
+  "question_id": 4024,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18557",
+  "text": "I tricicli a motore sono veicoli a motore aventi una velocità massima per costruzione superiore a 45 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di triciclo a motore",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "tricicli a motore",
+      "veicoli a motore",
+      "velocità massima per costruzione",
+      "45 km/h"
+    ],
+    "vector_search_queries": [
+      "definizione tricicli a motore velocità massima costruzione",
+      "classificazione veicoli a motore tricicli"
+    ],
+    "rule_explanation": "I tricicli a motore sono veicoli a motore con tre ruote, la cui velocità massima per costruzione è superiore a 45 km/h e la cui cilindrata è superiore a 50 cm³ se a combustione interna."
+  }
+}

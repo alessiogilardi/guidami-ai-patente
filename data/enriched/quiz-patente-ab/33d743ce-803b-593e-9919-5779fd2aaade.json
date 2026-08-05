@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23534",
+  "text": "E' vietato il sorpasso di veicoli della polizia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di veicoli di emergenza",
+      "Divieto di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicoli di polizia",
+      "divieto",
+      "condotta dei conducenti"
+    ],
+    "vector_search_queries": [
+      "sorpasso veicoli di polizia vietato",
+      "norme sorpasso veicoli in servizio di emergenza"
+    ],
+    "rule_explanation": "Il sorpasso di veicoli di polizia non è di per sé vietato, ma richiede prudenza e rispetto delle norme generali di sorpasso."
+  }
+}

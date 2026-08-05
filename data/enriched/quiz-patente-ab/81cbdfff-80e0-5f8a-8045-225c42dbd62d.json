@@ -1,0 +1,27 @@
+{
+  "question_id": 4608,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24478",
+  "text": "La patente AM si può conseguire a 14 anni di età",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Età minima per il conseguimento della patente AM",
+      "Requisiti per il rilascio della patente di categoria AM"
+    ],
+    "exact_keywords": [
+      "patente AM",
+      "conseguire",
+      "14 anni",
+      "età minima"
+    ],
+    "vector_search_queries": [
+      "età minima per conseguire patente AM",
+      "requisiti età patente ciclomotori"
+    ],
+    "rule_explanation": "La patente di categoria AM, che abilita alla guida dei ciclomotori, può essere conseguita a partire dal compimento dei 14 anni di età."
+  }
+}

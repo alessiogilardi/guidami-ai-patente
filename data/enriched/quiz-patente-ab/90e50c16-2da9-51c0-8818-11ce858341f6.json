@@ -1,0 +1,34 @@
+{
+  "question_id": 4326,
+  "topic": "Segnali di indicazione",
+  "number": "21800",
+  "text": "Il segnale raffigurato indica cantonieri al lavoro sulla strada",
+  "correct_answer": false,
+  "image": "fd528a3d19f2433f95aea3a08e620b90.jpeg",
+  "image_description": "Officina per veicoli. Il segnale indica la presenza di un'officina meccanica per veicoli nelle vicinanze.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare verticale, con bordo blu scuro e sfondo bianco all'interno. Al centro dello sfondo bianco è presente un pittogramma nero raffigurante una chiave inglese e un cacciavite incrociati, simbolo di un'officina meccanica. Sotto il pittogramma, vi è un pannello integrativo di colore blu scuro, anch'esso rettangolare. Questo segnale appartiene alla categoria dei segnali di indicazione.",
+    "name": "Officina per veicoli",
+    "description": "Il segnale indica la presenza di un'officina meccanica per veicoli nelle vicinanze."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione",
+      "Segnali di indicazione"
+    ],
+    "exact_keywords": [
+      "segnali stradali",
+      "cantonieri",
+      "officina",
+      "manutenzione",
+      "segnali di pericolo"
+    ],
+    "vector_search_queries": [
+      "segnali stradali che indicano presenza di officina",
+      "differenza tra segnale di officina e segnale di cantonieri al lavoro",
+      "segnali di pericolo per lavori stradali"
+    ],
+    "rule_explanation": "Il segnale raffigurante un'officina indica la presenza di un'officina per veicoli, non cantonieri al lavoro. I cantonieri sono segnalati da specifici segnali di pericolo."
+  }
+}

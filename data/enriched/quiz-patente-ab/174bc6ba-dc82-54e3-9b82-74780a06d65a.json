@@ -1,0 +1,29 @@
+{
+  "question_id": 4702,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25284",
+  "text": "Quando si trasportano bambini è consigliabile inserire il dispositivo di sicurezza che impedisce l'apertura delle portiere dall'interno del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza dei bambini a bordo",
+      "Dispositivi di sicurezza per bambini",
+      "Trasporto di minori"
+    ],
+    "exact_keywords": [
+      "bambini",
+      "dispositivo di sicurezza",
+      "blocco portiere bambini",
+      "portiere dall'interno"
+    ],
+    "vector_search_queries": [
+      "dispositivi di sicurezza per il trasporto di bambini in auto",
+      "blocco di sicurezza per portiere bambini",
+      "norme per il trasporto di minori su veicoli"
+    ],
+    "rule_explanation": "Per il trasporto di bambini è raccomandato l'uso del blocco di sicurezza per impedire l'apertura accidentale delle portiere dall'interno del veicolo, garantendo la loro incolumità."
+  }
+}

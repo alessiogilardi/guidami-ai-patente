@@ -1,0 +1,31 @@
+{
+  "question_id": 4195,
+  "topic": "Segnali di precedenza",
+  "number": "20542",
+  "text": "Il segnale raffigurato precede il segnale DARE PRECEDENZA",
+  "correct_answer": false,
+  "image": "1ae0a5f9e3fc82a6a91480e94779a5a7.jpeg",
+  "image_description": "Croce di Sant'Andrea (preavviso di incrocio). Il segnale preannuncia un incrocio in cui si deve dare la precedenza a destra, secondo la regola generale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è presente un pittogramma nero a forma di croce a quattro bracci uguali (tipo X), che rappresenta un incrocio. Questo è il segnale di preavviso di incrocio.",
+    "name": "Croce di Sant'Andrea (preavviso di incrocio)",
+    "description": "Il segnale preannuncia un incrocio in cui si deve dare la precedenza a destra, secondo la regola generale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Preavviso di incrocio"
+    ],
+    "exact_keywords": [
+      "preavviso di incrocio",
+      "dare precedenza",
+      "incrocio",
+      "regola generale"
+    ],
+    "vector_search_queries": [
+      "funzione del segnale di preavviso di incrocio",
+      "differenza tra segnale di preavviso e segnale di obbligo di dare precedenza"
+    ],
+    "rule_explanation": "Il segnale di preavviso di incrocio (Croce di Sant'Andrea) non impone di dare la precedenza, ma preannuncia un incrocio in cui si applica la regola generale di dare la precedenza a destra."
+  }
+}

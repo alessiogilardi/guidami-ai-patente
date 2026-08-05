@@ -1,0 +1,31 @@
+{
+  "question_id": 4202,
+  "topic": "Segnali di precedenza",
+  "number": "20618",
+  "text": "Il segnale raffigurato preannuncia un incrocio con una strada secondaria che si immette da destra",
+  "correct_answer": true,
+  "image": "b90ff4c558b4de38c3dd24fc8d62a327.jpeg",
+  "image_description": "Preavviso di incrocio con immissione laterale da destra. Il segnale preannuncia un incrocio con una strada secondaria che si immette da destra. Il conducente deve prestare attenzione e moderare la velocità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una strada principale con una strada secondaria che si immette da destra. La strada principale è rappresentata da una linea a forma di freccia che indica la direzione di marcia in avanti, mentre la strada secondaria è una linea più corta che si innesta perpendicolarmente sulla destra della strada principale. Questo tipo di segnale preannuncia un incrocio.",
+    "name": "Preavviso di incrocio con immissione laterale da destra",
+    "description": "Il segnale preannuncia un incrocio con una strada secondaria che si immette da destra. Il conducente deve prestare attenzione e moderare la velocità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso di incrocio",
+      "Precedenza nelle intersezioni"
+    ],
+    "exact_keywords": [
+      "preavviso di incrocio",
+      "strada secondaria",
+      "immissione laterale",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di incrocio con immissione da destra",
+      "obblighi del conducente in presenza di segnale di immissione laterale da destra"
+    ],
+    "rule_explanation": "Il segnale di preavviso di incrocio con immissione laterale da destra indica che una strada secondaria si immette sulla strada principale da destra, richiedendo attenzione e moderazione della velocità."
+  }
+}

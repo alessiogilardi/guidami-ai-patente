@@ -1,0 +1,28 @@
+{
+  "question_id": 4044,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18777",
+  "text": "Il conducente deve dare la precedenza al pedone non vedente con il bastone bianco che attraversa la strada fuori dalle strisce pedonali, anche se non è accompagnato da un cane guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela dei pedoni non vedenti",
+      "Regola di precedenza per utenti deboli",
+      "Attraversamento della carreggiata"
+    ],
+    "exact_keywords": [
+      "pedone non vedente",
+      "bastone bianco",
+      "attraversamento della carreggiata",
+      "dare la precedenza"
+    ],
+    "vector_search_queries": [
+      "precedenza pedone non vedente bastone bianco fuori strisce",
+      "obbligo di dare precedenza a pedoni in stato di bisogno"
+    ],
+    "rule_explanation": "Il conducente deve dare la precedenza al pedone non vedente, anche se privo di cane guida e se attraversa fuori dalle strisce, purché sia in procinto di attraversare la carreggiata."
+  }
+}

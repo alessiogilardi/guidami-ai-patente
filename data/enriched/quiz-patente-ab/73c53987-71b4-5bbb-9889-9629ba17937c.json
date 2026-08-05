@@ -1,0 +1,32 @@
+{
+  "question_id": 4102,
+  "topic": "Segnali di pericolo",
+  "number": "19476",
+  "text": "Il segnale (A), integrato con il pannello (B), preannuncia la possibilità di formazione del ghiaccio",
+  "correct_answer": true,
+  "image": "ebf9ee4405481ca1df0dda96df4649bc.jpeg",
+  "image_description": "Segnale di pericolo generico con pannello integrativo di ghiaccio. Il segnale A è un segnale di pericolo generico, che preannuncia un pericolo non specificato da altri segnali. Il pannello integrativo B, di colore blu con due pittogrammi di fiocchi di neve, specifica che il pericolo è rappresentato dalla possibile formazione di ghiaccio sulla carreggiata. Pertanto, il segnale combinato preannuncia il pericolo di ghiaccio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi distinti, etichettati come A e B. L'elemento A è un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco, raffigurante un punto esclamativo nero al centro. L'elemento B è un pannello integrativo, di forma rettangolare e colore blu scuro, con due pittogrammi di fiocchi di neve bianchi stilizzati, disposti orizzontalmente. I due elementi sono presentati in modo tale da suggerire che il pannello B integri il segnale A.",
+    "name": "Segnale di pericolo generico con pannello integrativo di ghiaccio",
+    "description": "Il segnale A è un segnale di pericolo generico, che preannuncia un pericolo non specificato da altri segnali. Il pannello integrativo B, di colore blu con due pittogrammi di fiocchi di neve, specifica che il pericolo è rappresentato dalla possibile formazione di ghiaccio sulla carreggiata. Pertanto, il segnale combinato preannuncia il pericolo di ghiaccio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Pannelli integrativi",
+      "Pericolo di ghiaccio"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo generico",
+      "pannello integrativo",
+      "formazione di ghiaccio",
+      "ghiaccio sulla carreggiata"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo con pannelli integrativi per ghiaccio",
+      "preavviso di formazione di ghiaccio sulla carreggiata tramite segnale e pannello integrativo"
+    ],
+    "rule_explanation": "Il segnale di pericolo generico, se integrato con il pannello che indica la formazione di ghiaccio, preannuncia tale specifico pericolo per la circolazione."
+  }
+}

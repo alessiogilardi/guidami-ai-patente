@@ -1,0 +1,28 @@
+{
+  "question_id": 4545,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23912",
+  "text": "Sui veicoli è consentito il trasporto di animali domestici anche in numero superiore ad uno, purché custoditi in gabbia o nel vano posteriore, appositamente diviso da rete",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto di animali domestici",
+      "Norme sul trasporto di animali",
+      "Veicoli a motore"
+    ],
+    "exact_keywords": [
+      "animali domestici",
+      "gabbia",
+      "rete divisoria",
+      "vano posteriore"
+    ],
+    "vector_search_queries": [
+      "trasporto animali domestici su veicoli a motore",
+      "condizioni trasporto animali domestici in auto"
+    ],
+    "rule_explanation": "È consentito il trasporto di animali domestici in numero superiore a uno, se custoditi in gabbia o nel vano posteriore separato da rete."
+  }
+}

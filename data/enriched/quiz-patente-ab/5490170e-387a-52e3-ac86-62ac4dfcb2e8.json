@@ -1,0 +1,27 @@
+{
+  "question_id": 4508,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23627",
+  "text": "Il conducente di un autoveicolo in sosta su una strada stretta, prima di scendere deve preoccuparsi dei veicoli che sopraggiungono da dietro, ma non di quelli di fronte",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente durante la sosta",
+      "Manovre di partenza dal bordo della strada"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "partenza",
+      "condizioni della strada",
+      "altri utenti della strada"
+    ],
+    "vector_search_queries": [
+      "manovra di sosta e partenza dal bordo della strada",
+      "obblighi del conducente prima di scendere dal veicolo in sosta"
+    ],
+    "rule_explanation": "Prima di scendere dal veicolo in sosta, il conducente deve assicurarsi che ciò non costituisca pericolo o intralcio per gli altri utenti della strada, sia in arrivo che in partenza."
+  }
+}

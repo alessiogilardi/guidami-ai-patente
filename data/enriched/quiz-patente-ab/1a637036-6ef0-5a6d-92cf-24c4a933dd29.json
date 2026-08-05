@@ -1,0 +1,27 @@
+{
+  "question_id": 4440,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22963",
+  "text": "I conducenti devono attenersi alle segnalazioni di pericolo o alle prescrizioni che appaiono, con scritte luminose, sui veicoli della polizia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni dei veicoli di polizia",
+      "Obblighi dei conducenti verso i veicoli di emergenza"
+    ],
+    "exact_keywords": [
+      "veicoli di polizia",
+      "segnalazioni luminose",
+      "prescrizioni",
+      "conducenti"
+    ],
+    "vector_search_queries": [
+      "obbligo di attenersi alle segnalazioni dei veicoli di polizia con scritte luminose",
+      "rispetto delle prescrizioni dei veicoli di polizia in movimento"
+    ],
+    "rule_explanation": "I conducenti devono rispettare le segnalazioni di pericolo e le prescrizioni impartite dai veicoli di polizia, anche se queste appaiono tramite scritte luminose."
+  }
+}

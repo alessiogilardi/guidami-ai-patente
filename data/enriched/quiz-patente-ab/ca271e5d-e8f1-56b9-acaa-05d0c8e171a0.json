@@ -1,0 +1,28 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23041",
+  "text": "Lo specchio retrovisore centrale può essere utilizzato come schermo per il navigatore satellitare",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Utilizzo degli specchietti retrovisori",
+      "Dispositivi di sicurezza del veicolo",
+      "Distrazione del conducente"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore centrale",
+      "navigatore satellitare",
+      "schermo",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "divieto di alterare la funzione degli specchietti retrovisori",
+      "utilizzo dello specchio retrovisore centrale per dispositivi di navigazione"
+    ],
+    "rule_explanation": "Lo specchio retrovisore centrale non può essere utilizzato come schermo per dispositivi elettronici, in quanto la sua funzione è quella di garantire la visibilità posteriore e non deve essere alterata."
+  }
+}

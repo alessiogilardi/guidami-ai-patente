@@ -1,0 +1,27 @@
+{
+  "question_id": 4410,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22679",
+  "text": "E' vietato, in quanto costituisce pericolo o intralcio per la circolazione, fermare momentaneamente un veicolo lungo il margine destro di una carreggiata a senso unico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Pericolo e intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "fermare momentaneamente",
+      "margine destro",
+      "carreggiata a senso unico",
+      "pericolo o intralcio"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata momentanea lungo il margine destro di una carreggiata a senso unico",
+      "condizioni che rendono vietata la fermata del veicolo per pericolo o intralcio"
+    ],
+    "rule_explanation": "La fermata momentanea lungo il margine destro di una carreggiata a senso unico non è vietata se non costituisce pericolo o intralcio alla circolazione."
+  }
+}

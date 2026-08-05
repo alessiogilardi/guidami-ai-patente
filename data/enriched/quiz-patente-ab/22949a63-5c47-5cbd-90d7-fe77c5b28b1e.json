@@ -1,0 +1,29 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24638",
+  "text": "La sospensione della patente è disposta quando non si è pagato nei termini il bollo dell'auto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sospensione della patente",
+      "Obblighi del conducente",
+      "Sanzioni amministrative"
+    ],
+    "exact_keywords": [
+      "sospensione patente",
+      "bollo auto",
+      "sanzione amministrativa",
+      "omesso pagamento"
+    ],
+    "vector_search_queries": [
+      "cause di sospensione della patente di guida",
+      "conseguenze del mancato pagamento del bollo auto",
+      "sanzioni per violazioni del Codice della Strada"
+    ],
+    "rule_explanation": "La sospensione della patente non è una sanzione prevista per il mancato pagamento del bollo auto, bensì per violazioni specifiche del Codice della Strada."
+  }
+}

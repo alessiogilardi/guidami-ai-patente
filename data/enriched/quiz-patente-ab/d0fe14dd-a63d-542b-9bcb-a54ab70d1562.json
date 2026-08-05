@@ -1,0 +1,27 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23574",
+  "text": "La pericolosità del sorpasso è determinata dal rischio di urto frontale con un veicolo che provenga dal senso contrario",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo nel sorpasso",
+      "Norme di circolazione"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "pericolosità",
+      "urto frontale",
+      "veicolo proveniente dal senso di marcia opposto"
+    ],
+    "vector_search_queries": [
+      "rischio di urto frontale nel sorpasso",
+      "pericolo derivante dal sorpasso di veicoli in senso contrario"
+    ],
+    "rule_explanation": "Il sorpasso è intrinsecamente pericoloso a causa del rischio di collisione frontale con veicoli provenienti dalla direzione opposta."
+  }
+}

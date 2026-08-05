@@ -1,0 +1,27 @@
+{
+  "question_id": 4712,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25409",
+  "text": "L'impianto di scarico ha lo scopo di ridurre la rumorosità del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzionamento impianto di scarico",
+      "Riduzione emissioni sonore"
+    ],
+    "exact_keywords": [
+      "impianto di scarico",
+      "riduzione rumorosità",
+      "veicolo",
+      "emissioni sonore"
+    ],
+    "vector_search_queries": [
+      "funzione silenziatore impianto di scarico veicolo",
+      "riduzione emissioni sonore impianto di scarico"
+    ],
+    "rule_explanation": "L'impianto di scarico di un veicolo ha la funzione principale di convogliare i gas combusti all'esterno e, tramite il silenziatore, di ridurre la rumorosità prodotta dal motore."
+  }
+}

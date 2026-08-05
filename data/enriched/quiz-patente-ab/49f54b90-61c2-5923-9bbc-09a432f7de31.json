@@ -1,0 +1,27 @@
+{
+  "question_id": 4504,
+  "topic": "Norme sul sorpasso",
+  "number": "23589",
+  "text": "Il conducente del veicolo da sorpassare ha l'obbligo di non accelerare la propria andatura",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di non accelerare durante il sorpasso",
+      "Comportamento del veicolo da sorpassare"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "non accelerare",
+      "andatura",
+      "veicolo da sorpassare"
+    ],
+    "vector_search_queries": [
+      "obbligo del conducente di non accelerare durante il sorpasso",
+      "comportamento del veicolo da sorpassare: divieto di accelerazione"
+    ],
+    "rule_explanation": "Il conducente del veicolo che si sta per essere sorpassato non deve aumentare la velocità, al fine di agevolare il sorpasso e garantire la sicurezza."
+  }
+}

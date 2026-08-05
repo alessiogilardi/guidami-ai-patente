@@ -1,0 +1,32 @@
+{
+  "question_id": 4236,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20936",
+  "text": "La striscia bianca laterale discontinua in figura divide la carreggiata da una corsia di accelerazione",
+  "correct_answer": true,
+  "image": "61b98257a39c9985c8e7404a184115e8.jpeg",
+  "image_description": "Corsia di accelerazione. La striscia bianca laterale discontinua delimita la corsia di accelerazione. Le frecce indicano il senso di marcia delle corsie.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due scene stradali. La prima, in alto, raffigura una corsia di accelerazione che si immette in una carreggiata principale. È presente una striscia bianca laterale discontinua che delimita la corsia di accelerazione. La seconda scena, in basso, mostra un incrocio con due corsie in una direzione e una in un'altra. Le frecce indicano il senso di marcia delle corsie. La striscia bianca laterale discontinua in figura delimita la corsia di accelerazione.",
+    "name": "Corsia di accelerazione",
+    "description": "La striscia bianca laterale discontinua delimita la corsia di accelerazione. Le frecce indicano il senso di marcia delle corsie."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Corsia di accelerazione"
+    ],
+    "exact_keywords": [
+      "striscia bianca laterale discontinua",
+      "carreggiata",
+      "corsia di accelerazione",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "funzione della striscia bianca laterale discontinua",
+      "segnaletica orizzontale corsia di accelerazione",
+      "delimitazione carreggiata corsia di accelerazione"
+    ],
+    "rule_explanation": "La striscia bianca laterale discontinua delimita la corsia di accelerazione dalla carreggiata, consentendo l'immissione graduale nel flusso veicolare."
+  }
+}

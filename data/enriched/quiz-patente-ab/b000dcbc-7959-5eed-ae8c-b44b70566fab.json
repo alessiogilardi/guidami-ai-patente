@@ -1,0 +1,29 @@
+{
+  "question_id": 4561,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24024",
+  "text": "Circolando dietro ad un veicolo che trasporta un carico che sta per cadere, conviene stringersi il più vicino possibile al margine sinistro della carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di mantenere la distanza di sicurezza",
+      "Comportamento in caso di pericolo o ostacolo alla circolazione",
+      "Carico dei veicoli"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "carico che cade",
+      "margine sinistro",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "mantenimento distanza di sicurezza da veicolo con carico pericoloso",
+      "comportamento in caso di carico che cade dal veicolo precedente",
+      "pericolo derivante da carico instabile e manovre evasive"
+    ],
+    "rule_explanation": "È obbligatorio mantenere la distanza di sicurezza da un veicolo che trasporta un carico instabile o che rischia di cadere, per evitare pericoli. Non ci si deve avvicinare al margine sinistro."
+  }
+}

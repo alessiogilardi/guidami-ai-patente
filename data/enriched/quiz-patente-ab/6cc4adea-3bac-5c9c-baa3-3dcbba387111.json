@@ -1,0 +1,27 @@
+{
+  "question_id": 4678,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25117",
+  "text": "L'inquinamento dell'aria prodotto dai veicoli è maggiore se il fumo di scarico presenta colore scuro",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico da veicoli",
+      "Emissioni inquinanti"
+    ],
+    "exact_keywords": [
+      "fumo di scarico",
+      "colore scuro",
+      "inquinamento dell'aria",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "emissione di particolato da fumo di scarico scuro",
+      "correlazione tra colore del fumo di scarico e inquinamento atmosferico"
+    ],
+    "rule_explanation": "Un fumo di scarico di colore scuro indica una combustione incompleta e una maggiore emissione di particolato inquinante nell'aria, peggiorando l'inquinamento atmosferico."
+  }
+}

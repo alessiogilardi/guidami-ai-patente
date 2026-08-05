@@ -1,0 +1,32 @@
+{
+  "question_id": 4309,
+  "topic": "Segnali di indicazione",
+  "number": "21640",
+  "text": "Il segnale raffigurato se barrato da una striscia rossa indica la fine della sua validità",
+  "correct_answer": true,
+  "image": "1ef915902f19c17ff26aaa2bff80ae9b.jpeg",
+  "image_description": "Parcheggio per autovetture. Il segnale indica un parcheggio riservato alle autovetture.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è raffigurata, in bianco, la sagoma stilizzata di un'autovettura vista frontalmente. Si tratta di un segnale di indicazione.",
+    "name": "Parcheggio per autovetture",
+    "description": "Il segnale indica un parcheggio riservato alle autovetture."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di prescrizione",
+      "Validità dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale di parcheggio",
+      "barrato da striscia rossa",
+      "fine validità",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "fine validità segnale di parcheggio barrato da striscia rossa",
+      "interpretazione segnale di parcheggio con striscia rossa"
+    ],
+    "rule_explanation": "Il segnale di parcheggio, se barrato da una striscia rossa, indica la fine del divieto o dell'obbligo imposto dal segnale stesso, non la fine della sua validità generale."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22280",
+  "text": "Il conducente deve regolare la velocità in modo da rispettare le limitazioni imposte",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Limiti di velocità legali"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "limitazioni legali",
+      "conducente",
+      "rispetto dei limiti"
+    ],
+    "vector_search_queries": [
+      "obbligo di rispettare i limiti di velocità imposti",
+      "regolazione della velocità entro i limiti legali"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di regolare la propria velocità in modo da rispettare sempre i limiti massimi imposti dalla segnaletica stradale o dalle norme di comportamento."
+  }
+}

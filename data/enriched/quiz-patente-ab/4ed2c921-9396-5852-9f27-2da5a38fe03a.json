@@ -1,0 +1,27 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23462",
+  "text": "Il conducente che intende sorpassare deve valutare lo spazio necessario per la manovra anche in relazione alla differenza di velocità tra il proprio veicolo e quello da sorpassare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Valutazione della sicurezza del sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "spazio necessario",
+      "differenza di velocità",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "valutazione spazio manovra di sorpasso",
+      "sicurezza sorpasso differenza velocità"
+    ],
+    "rule_explanation": "Il conducente che sorpassa deve calcolare lo spazio necessario, considerando la velocità propria e altrui, per eseguire la manovra in sicurezza."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4386,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22442",
+  "text": "La velocità deve essere particolarmente moderata nei tratti di strada in cui manca la visibilità (curve, dossi)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Visibilità ridotta",
+      "Pericolo per la circolazione"
+    ],
+    "exact_keywords": [
+      "velocità moderata",
+      "visibilità",
+      "curve",
+      "dossi",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in caso di scarsa visibilità",
+      "adeguamento della velocità in curve e dossi per evitare pericoli"
+    ],
+    "rule_explanation": "La velocità deve essere moderata in presenza di scarsa visibilità, come in curve o dossi, per prevenire pericoli e garantire la sicurezza."
+  }
+}

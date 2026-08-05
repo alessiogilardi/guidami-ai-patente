@@ -1,0 +1,33 @@
+{
+  "question_id": 4073,
+  "topic": "Segnali di pericolo",
+  "number": "19131",
+  "text": "In presenza del segnale raffigurato si può sorpassare a destra il tram in marcia se vi è lo spazio necessario",
+  "correct_answer": true,
+  "image": "bb981f286218063a29cc9f7bf6f71389.jpeg",
+  "image_description": "Segnale di pericolo - Passaggio di tram. Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato il pittogramma di un tram. Questo segnale indica la presenza di una linea tranviaria che interseca la carreggiata.",
+    "name": "Segnale di pericolo - Passaggio di tram",
+    "description": "Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo tram",
+      "Sorpasso a destra",
+      "Regole di circolazione dei tram"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio di tram",
+      "sorpassare a destra",
+      "linea tranviaria",
+      "circolazione dei tram"
+    ],
+    "vector_search_queries": [
+      "sorpasso a destra tram in marcia con segnale di pericolo",
+      "regole di circolazione in presenza di passaggio tram"
+    ],
+    "rule_explanation": "In presenza del segnale di pericolo di passaggio di tram, è consentito il sorpasso a destra del tram in marcia se vi è lo spazio necessario e non si intralcia la circolazione."
+  }
+}

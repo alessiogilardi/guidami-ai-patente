@@ -1,0 +1,27 @@
+{
+  "question_id": 4412,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22691",
+  "text": "Il carico deve essere sistemato sui motocicli in modo da non sporgere lateralmente di oltre 50 cm",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Carico sui veicoli a due ruote",
+      "Sporgenza laterale del carico"
+    ],
+    "exact_keywords": [
+      "carico",
+      "motocicli",
+      "sporgere lateralmente",
+      "50 cm"
+    ],
+    "vector_search_queries": [
+      "limiti sporgenza laterale carico motocicli",
+      "dimensioni massime carico motociclo"
+    ],
+    "rule_explanation": "Il carico sui motocicli non deve sporgere lateralmente oltre i 50 cm, misurati dal piano longitudinale mediano del veicolo."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4676,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25103",
+  "text": "Per diminuire l'inquinamento dell'aria provocato dai veicoli, bisogna controllare spesso la frizione e il differenziale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo delle emissioni inquinanti",
+      "Manutenzione del veicolo per la tutela ambientale"
+    ],
+    "exact_keywords": [
+      "inquinamento atmosferico",
+      "emissioni inquinanti",
+      "veicoli a motore",
+      "manutenzione"
+    ],
+    "vector_search_queries": [
+      "controllo emissioni veicoli per inquinamento atmosferico",
+      "manutenzione veicoli impatto ambientale"
+    ],
+    "rule_explanation": "Per ridurre l'inquinamento atmosferico da veicoli, è necessario controllare i sistemi di scarico e alimentazione, non frizione e differenziale."
+  }
+}

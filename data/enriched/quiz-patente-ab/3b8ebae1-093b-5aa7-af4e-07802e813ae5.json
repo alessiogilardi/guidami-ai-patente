@@ -1,0 +1,30 @@
+{
+  "question_id": 4393,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22522",
+  "text": "Può essere pericoloso circolare troppo vicino alle auto parcheggiate, perché potrebbero impedire la vista di un disabile in carrozzella o di un pedone che spinge un passeggino per bambini, che sono in procinto di attraversare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo per la circolazione",
+      "Comportamento prudente alla guida",
+      "Attraversamento pedonale"
+    ],
+    "exact_keywords": [
+      "circolare troppo vicino",
+      "auto parcheggiate",
+      "impedire la vista",
+      "pedone",
+      "attraversare"
+    ],
+    "vector_search_queries": [
+      "pericolo circolazione vicino auto parcheggiate",
+      "ostacolo visivo pedoni in attraversamento",
+      "moderazione velocità in prossimità di ostacoli visivi"
+    ],
+    "rule_explanation": "È pericoloso circolare vicino ad auto parcheggiate in quanto potrebbero occultare la vista di pedoni in procinto di attraversare, creando una situazione di pericolo."
+  }
+}

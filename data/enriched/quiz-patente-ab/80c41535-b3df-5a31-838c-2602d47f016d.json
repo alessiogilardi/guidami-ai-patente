@@ -1,0 +1,29 @@
+{
+  "question_id": 4600,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24380",
+  "text": "L'airbag può essere talvolta disattivabile",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza attiva e passiva",
+      "Sistemi di ritenuta supplementari",
+      "Airbag"
+    ],
+    "exact_keywords": [
+      "airbag",
+      "dispositivo di sicurezza",
+      "disattivabile",
+      "sistema di ritenuta supplementare"
+    ],
+    "vector_search_queries": [
+      "disattivazione airbag passeggero",
+      "condizioni di disattivazione airbag",
+      "sistemi di ritenuta airbag e bambini"
+    ],
+    "rule_explanation": "L\\'airbag è un dispositivo di sicurezza supplementare che può essere disattivato in determinate condizioni, come in presenza di seggiolini per bambini rivolti all\\'indietro sul sedile anteriore."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4541,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23881",
+  "text": "Sulle carreggiate, sulle rampe e sugli svincoli di autostrade e strade extraurbane principali è vietato percorrere la carreggiata o parte di essa nel senso di marcia opposto a quello consentito",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di contromano",
+      "Norme di circolazione specifiche per autostrade e strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "rampe",
+      "svincoli",
+      "senso di marcia opposto",
+      "vietato"
+    ],
+    "vector_search_queries": [
+      "divieto di percorrere carreggiate, rampe e svincoli in senso contrario",
+      "normativa circolazione autostrade e strade extraurbane principali senso di marcia vietato"
+    ],
+    "rule_explanation": "È vietato percorrere in senso opposto a quello consentito le carreggiate, le rampe e gli svincoli delle autostrade e delle strade extraurbane principali."
+  }
+}

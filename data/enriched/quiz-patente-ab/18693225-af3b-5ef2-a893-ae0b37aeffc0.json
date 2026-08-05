@@ -1,0 +1,28 @@
+{
+  "question_id": 4702,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25288",
+  "text": "I pannelli a messaggio variabile forniscono indicazioni di pericolo ma non possono avere valore prescrittivo (di obbligo, di divieto)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale a messaggio variabile",
+      "Valore prescrittivo della segnaletica"
+    ],
+    "exact_keywords": [
+      "pannelli a messaggio variabile",
+      "indicazioni di pericolo",
+      "valore prescrittivo",
+      "obbligo",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "funzione prescrittiva dei pannelli a messaggio variabile",
+      "segnaletica a messaggio variabile con valore di obbligo o divieto"
+    ],
+    "rule_explanation": "I pannelli a messaggio variabile possono fornire sia indicazioni di pericolo sia prescrizioni (obblighi o divieti), integrando la segnaletica statica."
+  }
+}

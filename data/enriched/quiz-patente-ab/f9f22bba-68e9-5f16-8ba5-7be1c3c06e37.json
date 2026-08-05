@@ -1,0 +1,27 @@
+{
+  "question_id": 4572,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24155",
+  "text": "Di notte, in caso di sosta fuori dalla carreggiata, è obbligatorio tenere accese le luci anabbaglianti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi in caso di sosta o fermata fuori dalla carreggiata",
+      "Uso delle luci per la segnalazione del veicolo fermo"
+    ],
+    "exact_keywords": [
+      "sosta fuori carreggiata",
+      "luci anabbaglianti",
+      "segnalazione luminosa",
+      "veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "segnalazione veicolo fermo fuori carreggiata di notte",
+      "obbligo luci sosta fuori carreggiata"
+    ],
+    "rule_explanation": "Di notte, in caso di sosta fuori dalla carreggiata, non è obbligatorio tenere accese le luci anabbaglianti, ma è necessario segnalare la presenza del veicolo fermo con le luci di posizione o altri dispositivi di illuminazione consentiti."
+  }
+}

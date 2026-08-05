@@ -1,0 +1,27 @@
+{
+  "question_id": 4608,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24484",
+  "text": "La patente AM abilita alla guida di motocicli, purché dotati di motore elettrico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida AM",
+      "Veicoli conducibili con patente AM"
+    ],
+    "exact_keywords": [
+      "patente AM",
+      "motocicli",
+      "ciclomotori",
+      "motore elettrico"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente AM",
+      "differenza tra ciclomotore e motociclo per patente AM"
+    ],
+    "rule_explanation": "La patente AM abilita alla guida dei ciclomotori, non dei motocicli, indipendentemente dalla tipologia di motore."
+  }
+}

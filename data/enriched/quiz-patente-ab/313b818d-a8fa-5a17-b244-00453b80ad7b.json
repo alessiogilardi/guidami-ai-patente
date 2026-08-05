@@ -1,0 +1,28 @@
+{
+  "question_id": 4407,
+  "topic": "Distanza di sicurezza",
+  "number": "22656",
+  "text": "La distanza di sicurezza deve essere sempre uguale allo spazio di frenatura del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "spazio di frenatura",
+      "veicolo fermo",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "distanza di sicurezza rispetto allo spazio di frenatura",
+      "obbligo di mantenere la distanza di sicurezza in base a spazio di frenatura e condizioni di traffico"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di fermarsi in sicurezza, tenendo conto dello spazio di frenatura, delle condizioni della strada e del traffico, e non è sempre uguale allo spazio di frenatura."
+  }
+}

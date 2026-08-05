@@ -1,0 +1,29 @@
+{
+  "question_id": 4226,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20845",
+  "text": "E' regolamentare trovare sulla pavimentazione la scritta P L, con croce di S. Andrea, per segnalare un passaggio a livello",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Passaggio a livello",
+      "Segnalazione ostacoli"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "passaggio a livello",
+      "croce di S. Andrea",
+      "segni sugli ostacoli"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per passaggio a livello",
+      "segni sugli ostacoli con croce di S. Andrea",
+      "indicazione stradale 'P L' su pavimentazione"
+    ],
+    "rule_explanation": "La scritta 'P L' con croce di S. Andrea sulla pavimentazione è un segnale orizzontale regolamentare per indicare la presenza di un passaggio a livello."
+  }
+}

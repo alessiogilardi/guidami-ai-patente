@@ -1,0 +1,31 @@
+{
+  "question_id": 4186,
+  "topic": "Segnali di obbligo",
+  "number": "20431",
+  "text": "Il segnale raffigurato obbliga a rallentare fermandosi al varco doganale solo se si hanno oggetti o merci da dichiarare",
+  "correct_answer": false,
+  "image": "a6d6b9350877f6a3d941348f790b1ca6.jpeg",
+  "image_description": "Segnale di fermarsi e dare precedenza (Dogana). Il segnale impone l'obbligo di fermarsi al varco doganale per i controlli previsti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro, su una linea orizzontale nera, sono scritte le parole \"DOGANA\" in alto e \"DOUANE\" in basso. Questo è un segnale di prescrizione che indica un punto di controllo doganale.",
+    "name": "Segnale di fermarsi e dare precedenza (Dogana)",
+    "description": "Il segnale impone l'obbligo di fermarsi al varco doganale per i controlli previsti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di fermarsi alla dogana",
+      "Segnaletica stradale di obbligo"
+    ],
+    "exact_keywords": [
+      "segnaletica di obbligo",
+      "varco doganale",
+      "fermarsi e dare precedenza",
+      "controlli doganali"
+    ],
+    "vector_search_queries": [
+      "obbligo di fermarsi al varco doganale per controlli",
+      "segnaletica stradale che impone l'arresto al confine di stato"
+    ],
+    "rule_explanation": "Il segnale di 'fermarsi e dare precedenza' impone l'obbligo di arrestarsi al varco doganale per i controlli, indipendentemente dalla presenza di oggetti da dichiarare."
+  }
+}

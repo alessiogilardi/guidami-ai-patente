@@ -1,0 +1,28 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24706",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere strada a percorso pianeggiante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Cause di incidentalità stradale",
+      "Sicurezza stradale",
+      "Caratteristiche della strada"
+    ],
+    "exact_keywords": [
+      "incidenti stradali",
+      "struttura della strada",
+      "percorso pianeggiante",
+      "pericolosità"
+    ],
+    "vector_search_queries": [
+      "fattori di rischio per la sicurezza stradale legati alla conformazione della strada",
+      "analisi delle cause di incidentalità stradale connesse alla struttura del manto stradale e al tracciato"
+    ],
+    "rule_explanation": "La pericolosità di una strada non è legata alla sua conformazione pianeggiante, ma a fattori come pendenze, curve, manto stradale e segnaletica inadeguata."
+  }
+}

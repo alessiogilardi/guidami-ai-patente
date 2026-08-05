@@ -1,0 +1,29 @@
+{
+  "question_id": 4036,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18692",
+  "text": "Entrando in un centro abitato, bisogna continuare a mantenere la concentrazione alla guida anche se potrebbero aumentare i motivi per distrarsi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Concentrazione alla guida",
+      "Guida in centri abitati",
+      "Attenzione verso utenti deboli"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "concentrazione",
+      "distrazione",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "obbligo di mantenere la concentrazione alla guida in centro abitato",
+      "rischi di distrazione alla guida nei centri abitati",
+      "doveri del conducente all'ingresso in un centro abitato"
+    ],
+    "rule_explanation": "L'ingresso in un centro abitato richiede maggiore attenzione a causa dei potenziali pericoli e distrazioni, imponendo al conducente di mantenere alta la concentrazione."
+  }
+}

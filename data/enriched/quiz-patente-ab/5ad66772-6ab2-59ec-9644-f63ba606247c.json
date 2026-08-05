@@ -1,0 +1,33 @@
+{
+  "question_id": 4187,
+  "topic": "Segnali di obbligo",
+  "number": "20442",
+  "text": "Il segnale raffigurato impone di fermarsi e dare precedenza ai mezzi della polizia",
+  "correct_answer": false,
+  "image": "c8e37cfaa71b956ea33833537189d4a6.jpeg",
+  "image_description": "Segnale di fermarsi e dare precedenza a Polizia. Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia di arresto, per consentire il passaggio dei veicoli di polizia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale, sopra una linea orizzontale nera, vi è la scritta \"ALT\" e sotto la scritta \"POLIZIA\". Questo è un segnale di obbligo specifico per i veicoli di polizia.",
+    "name": "Segnale di fermarsi e dare precedenza a Polizia",
+    "description": "Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia di arresto, per consentire il passaggio dei veicoli di polizia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di prescrizione",
+      "Segnali di fermarsi e dare precedenza"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "segnali di prescrizione",
+      "fermarsi e dare precedenza",
+      "veicoli di polizia"
+    ],
+    "vector_search_queries": [
+      "obbligo di fermarsi e dare precedenza segnale",
+      "segnali di prescrizione con obbligo di arresto",
+      "precedenza ai veicoli di polizia segnale di fermarsi"
+    ],
+    "rule_explanation": "Il segnale di fermarsi e dare precedenza impone l'obbligo di arrestarsi in corrispondenza della striscia di arresto, senza eccezioni per veicoli di polizia."
+  }
+}

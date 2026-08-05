@@ -1,0 +1,28 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23010",
+  "text": "Gli specchi retrovisori devono essere utilizzati per un controllo della strada dietro al veicolo, prima di iniziare una manovra di parcheggio in retromarcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Utilizzo degli specchietti retrovisori",
+      "Manovra di parcheggio in retromarcia",
+      "Controllo della sicurezza durante le manovre"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "controllo della strada",
+      "manovra di parcheggio",
+      "retromarcia"
+    ],
+    "vector_search_queries": [
+      "uso degli specchietti retrovisori per controllo strada in retromarcia",
+      "sicurezza manovra parcheggio in retromarcia con specchi retrovisori"
+    ],
+    "rule_explanation": "Gli specchi retrovisori sono essenziali per controllare la strada dietro al veicolo, specialmente prima di manovre come il parcheggio in retromarcia, garantendo la sicurezza."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "question_id": 4114,
+  "topic": "Segnali di divieto",
+  "number": "19641",
+  "text": "Il segnale raffigurato vieta ad un'autocaravan di massa complessiva pari a 6 tonnellate di effettuare manovre di sorpasso",
+  "correct_answer": false,
+  "image": "eaaecf86824ebcf4fd1a7c67061c5dad.jpeg",
+  "image_description": "Divieto di sorpasso per autocarri. Il segnale vieta il sorpasso a tutti i veicoli a motore, ad eccezione di quelli che non devono superare i 3,5 tonnellate di massa a pieno carico, di veicoli a motore diversi dagli autoveicoli, motoveicoli e ciclomotori. In sintesi, vieta il sorpasso agli autocarri con massa a pieno carico superiore a 3,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale sono raffigurati due veicoli: un camion (autocarro) di colore rosso sulla sinistra e un'automobile (autovettura) di colore nero sulla destra. Il camion è posizionato leggermente più avanti dell'automobile, suggerendo un divieto di sorpasso specifico per questo tipo di veicolo. Il segnale è il segnale di divieto di sorpasso per autocarri.",
+    "name": "Divieto di sorpasso per autocarri",
+    "description": "Il segnale vieta il sorpasso a tutti i veicoli a motore, ad eccezione di quelli che non devono superare i 3,5 tonnellate di massa a pieno carico, di veicoli a motore diversi dagli autoveicoli, motoveicoli e ciclomotori. In sintesi, vieta il sorpasso agli autocarri con massa a pieno carico superiore a 3,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sorpasso",
+      "Massa del veicolo",
+      "Classificazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "divieto di sorpasso",
+      "autocaravan",
+      "massa complessiva",
+      "autocarri",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso per autocarri e massa a pieno carico",
+      "segnali di divieto di sorpasso per veicoli con massa superiore a 3,5 tonnellate",
+      "limitazioni al sorpasso per autocaravan in base alla massa"
+    ],
+    "rule_explanation": "Il segnale di divieto di sorpasso per autocarri vieta il sorpasso ai veicoli a motore con massa superiore a 3,5 tonnellate, non specificamente alle autocaravan."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4661,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25004",
+  "text": "La responsabilità civile connessa al sinistro stradale è esclusa per danni di lieve entità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile da circolazione stradale",
+      "Danno risarcibile"
+    ],
+    "exact_keywords": [
+      "responsabilità civile",
+      "sinistro stradale",
+      "danno di lieve entità",
+      "risarcimento"
+    ],
+    "vector_search_queries": [
+      "risarcimento danni sinistro stradale lieve entità",
+      "esclusione responsabilità civile danni lievi"
+    ],
+    "rule_explanation": "La responsabilità civile per i danni derivanti da un sinistro stradale non è esclusa per i danni di lieve entità, ma questi devono essere comunque risarciti."
+  }
+}

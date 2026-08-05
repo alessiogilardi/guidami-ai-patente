@@ -1,0 +1,28 @@
+{
+  "question_id": 4010,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18421",
+  "text": "Il passaggio a livello è caratterizzato dalla presenza di un attraversamento autostradale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Passaggio a livello",
+      "Attraversamento stradale",
+      "Definizioni stradali"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "attraversamento stradale",
+      "linea ferroviaria",
+      "strada"
+    ],
+    "vector_search_queries": [
+      "definizione di passaggio a livello nel CdS",
+      "differenza tra passaggio a livello e attraversamento autostradale"
+    ],
+    "rule_explanation": "Il passaggio a livello è un incrocio tra una strada e una linea ferroviaria, non un attraversamento autostradale."
+  }
+}

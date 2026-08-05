@@ -1,0 +1,31 @@
+{
+  "question_id": 4201,
+  "topic": "Segnali di precedenza",
+  "number": "20605",
+  "text": "Il segnale raffigurato, all'incrocio, ci dà la precedenza sui veicoli provenienti sia da destra che da sinistra",
+  "correct_answer": true,
+  "image": "7f30c2092cbae8a33505fdc2297bb6a3.jpeg",
+  "image_description": "Incrocio con strada senza diritto di precedenza. Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta un incrocio a T, con la strada principale orizzontale e la strada secondaria che si immette da destra e da sinistra. La forma del pittogramma indica che la strada su cui si sta viaggiando si immette in una strada trasversale.",
+    "name": "Incrocio con strada senza diritto di precedenza",
+    "description": "Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di dare precedenza",
+      "Precedenza in incrocio"
+    ],
+    "exact_keywords": [
+      "dare precedenza",
+      "incrocio",
+      "strada trasversale",
+      "precedenza vietata"
+    ],
+    "vector_search_queries": [
+      "obbligo di dare precedenza ai veicoli provenienti dalle strade laterali",
+      "segnali di prescrizione che impongono la precedenza"
+    ],
+    "rule_explanation": "Il segnale di dare precedenza impone di cedere il passo ai veicoli provenienti dalla strada trasversale, sia da destra che da sinistra, in assenza di diversa segnalazione."
+  }
+}

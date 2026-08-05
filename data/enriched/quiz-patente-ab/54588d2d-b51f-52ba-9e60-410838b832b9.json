@@ -1,0 +1,33 @@
+{
+  "question_id": 4125,
+  "topic": "Segnali di divieto",
+  "number": "19760",
+  "text": "Il segnale raffigurato vale sia per le macchine agricole gommate, sia per quelle cingolate",
+  "correct_answer": true,
+  "image": "8a2144c790c2fb4700376c9bb49c6a0b.jpeg",
+  "image_description": "Divieto di transito alle macchine agricole. Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di una macchina agricola (trattore) in nero. Questo segnale indica un divieto di transito specifico per questo tipo di veicoli.",
+    "name": "Divieto di transito alle macchine agricole",
+    "description": "Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Applicabilità dei segnali di divieto",
+      "Macchine agricole"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "macchine agricole",
+      "macchine operatrici",
+      "macchine agricole gommate",
+      "macchine agricole cingolate"
+    ],
+    "vector_search_queries": [
+      "ambito di applicazione segnale divieto macchine agricole",
+      "segnali di divieto per macchine agricole gommate e cingolate"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito alle macchine agricole si applica sia a quelle gommate che a quelle cingolate, salvo eccezioni specifiche."
+  }
+}

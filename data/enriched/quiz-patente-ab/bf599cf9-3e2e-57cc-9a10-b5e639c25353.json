@@ -1,0 +1,28 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23545",
+  "text": "Nell'eseguire la manovra di sorpasso occorre regolare la velocità in relazione a quella del veicolo da sorpassare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Regolazione della velocità",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "velocità",
+      "veicolo da sorpassare",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "adeguamento velocità sorpasso veicolo da superare",
+      "norme di sicurezza manovra di sorpasso"
+    ],
+    "rule_explanation": "Durante il sorpasso, la velocità deve essere adeguata a quella del veicolo da superare per garantire la sicurezza e la fluidità della manovra."
+  }
+}

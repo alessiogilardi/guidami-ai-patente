@@ -1,0 +1,27 @@
+{
+  "question_id": 4010,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18415",
+  "text": "In un passaggio a livello si possono trovare le luci rosse",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica luminosa nei passaggi a livello",
+      "Dispositivi di sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "luci rosse",
+      "semaforo",
+      "barriere"
+    ],
+    "vector_search_queries": [
+      "segnaletica luminosa passaggi a livello",
+      "significato luci rosse semaforo passaggi a livello"
+    ],
+    "rule_explanation": "Nei passaggi a livello, le luci rosse lampeggianti, spesso associate alle barriere abbassate, indicano l'imminente arrivo di un treno e impongono l'arresto dei veicoli."
+  }
+}

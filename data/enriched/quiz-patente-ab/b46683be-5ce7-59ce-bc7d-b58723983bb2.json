@@ -1,0 +1,31 @@
+{
+  "question_id": 4426,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22829",
+  "text": "Su strada a senso unico i veicoli che percorrono una curva a sinistra devono tenersi in prossimità del margine sinistro della carreggiata",
+  "correct_answer": false,
+  "image": "2067ae1eb6c6d45d08b9ab52c99c1985.jpeg",
+  "image_description": "Corsia spartitraffico con vegetazione. La carreggiata è divisa in due sensi di marcia da una corsia spartitraffico, rappresentata da una striscia di vegetazione. Ogni senso di marcia è composto da due corsie, delimitate da strisce bianche continue e discontinue. Le corsie sono inoltre etichettate con le lettere A e B per indicare la loro funzione o disposizione. La corsia più esterna è etichettata A, mentre quella più interna è etichettata B. La corsia spartitraffico centrale impedisce l'attraversamento da un senso di marcia all'altro.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una carreggiata divisa in due sensi di marcia da una corsia spartitraffico centrale, costituita da una striscia di vegetazione. Ogni senso di marcia è composto da due corsie. Le corsie sono delimitate da segnaletica orizzontale, con strisce bianche continue e discontinue. Le corsie sono etichettate con le lettere A e B. Nel senso di marcia superiore, la corsia più esterna è etichettata A e quella più interna B. Nel senso di marcia inferiore, la corsia più interna è etichettata B e quella più esterna A. La corsia spartitraffico centrale è chiaramente visibile e impedisce il passaggio tra i due sensi di marcia. La segnaletica orizzontale indica la possibilità di cambiare corsia all'interno di ciascun senso di marcia, come suggerito dalla presenza di strisce discontinue.",
+    "name": "Corsia spartitraffico con vegetazione",
+    "description": "La carreggiata è divisa in due sensi di marcia da una corsia spartitraffico, rappresentata da una striscia di vegetazione. Ogni senso di marcia è composto da due corsie, delimitate da strisce bianche continue e discontinue. Le corsie sono inoltre etichettate con le lettere A e B per indicare la loro funzione o disposizione. La corsia più esterna è etichettata A, mentre quella più interna è etichettata B. La corsia spartitraffico centrale impedisce l'attraversamento da un senso di marcia all'altro."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento dei veicoli sulla carreggiata",
+      "Norme di circolazione in curva"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "curva a sinistra",
+      "margine destro",
+      "strada a senso unico"
+    ],
+    "vector_search_queries": [
+      "posizionamento veicoli in curva a sinistra su strada a senso unico",
+      "obbligo di tenersi al margine destro in prossimità di curve a sinistra"
+    ],
+    "rule_explanation": "Su strada a senso unico, i veicoli in curva a sinistra devono tenersi in prossimità del margine destro della carreggiata, non del sinistro."
+  }
+}

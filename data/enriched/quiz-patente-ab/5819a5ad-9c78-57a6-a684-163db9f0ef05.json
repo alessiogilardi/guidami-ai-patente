@@ -1,0 +1,30 @@
+{
+  "question_id": 4044,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18782",
+  "text": "Il conducente deve passare per primo, in quanto ha la precedenza, quando un pedone non vedente con il bastone bianco attraversa la strada fuori dalle strisce pedonali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Regola generale di precedenza e eccezioni",
+      "Attraversamento della carreggiata"
+    ],
+    "exact_keywords": [
+      "precedenza",
+      "pedone",
+      "strisce pedonali",
+      "conducente",
+      "bastone bianco"
+    ],
+    "vector_search_queries": [
+      "precedenza pedonale non vedente fuori dalle strisce",
+      "doveri del conducente verso pedoni con bastone bianco",
+      "attraversamento pedonale in assenza di strisce"
+    ],
+    "rule_explanation": "Il conducente deve dare la precedenza ai pedoni, specialmente se non vedenti, anche se attraversano fuori dalle strisce pedonali, per garantire la sicurezza degli utenti deboli della strada."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22348",
+  "text": "Il limite massimo di velocità degli autocarri nei centri abitati è di 40 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per autocarri",
+      "Centri abitati"
+    ],
+    "exact_keywords": [
+      "autocarri",
+      "centri abitati",
+      "limite massimo di velocità",
+      "40 km/h"
+    ],
+    "vector_search_queries": [
+      "limite velocità autocarri centri abitati",
+      "velocità massima autocarri in centro abitato"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per gli autocarri nei centri abitati è di 50 km/h, non 40 km/h."
+  }
+}

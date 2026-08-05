@@ -1,0 +1,28 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24694",
+  "text": "La patente di guida di categoria B, salvo diversa limitazione riportata sul documento stesso o salvo allineamento alla data del compleanno del titolare, vale cinque anni se rilasciata o confermata a chi non ha superato i 50 anni di età",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Durata della validità della patente B",
+      "Conferma di validità della patente"
+    ],
+    "exact_keywords": [
+      "patente di guida categoria B",
+      "validità patente",
+      "conferma di validità",
+      "superamento dei 50 anni"
+    ],
+    "vector_search_queries": [
+      "durata validità patente B per età del titolare",
+      "periodicità della conferma di validità della patente di guida B"
+    ],
+    "rule_explanation": "La patente di categoria B, salvo diversa limitazione, è valida per dieci anni fino a 50 anni di età, poi per cinque anni fino a 70 anni, e infine ogni due anni dopo i 70 anni."
+  }
+}

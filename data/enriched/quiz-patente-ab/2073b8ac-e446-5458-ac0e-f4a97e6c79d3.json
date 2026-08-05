@@ -1,0 +1,31 @@
+{
+  "question_id": 4056,
+  "topic": "Segnali di pericolo",
+  "number": "18919",
+  "text": "In presenza del segnale raffigurato è necessario prevedere la possibilità di accumulo di fango e detriti nella cunetta",
+  "correct_answer": true,
+  "image": "f1d28ec1aa4add69b5be2109e97aeb85.jpeg",
+  "image_description": "Segnale di cunetta. Il segnale preannuncia un tratto di strada con una cunetta, che può causare accumulo di acqua o fango in caso di pioggia o scarsa manutenzione. È necessario moderare la velocità per mantenere il controllo del veicolo e prevenire danni alle sospensioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una cunetta, ovvero un avvallamento della strada. Il segnale è isolato e non sono presenti altri elementi contestuali come pannelli integrativi o elementi della strada.",
+    "name": "Segnale di cunetta",
+    "description": "Il segnale preannuncia un tratto di strada con una cunetta, che può causare accumulo di acqua o fango in caso di pioggia o scarsa manutenzione. È necessario moderare la velocità per mantenere il controllo del veicolo e prevenire danni alle sospensioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di condizioni stradali particolari"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "cunetta",
+      "fango",
+      "detriti"
+    ],
+    "vector_search_queries": [
+      "preavviso di cunetta e possibile accumulo di fango o detriti",
+      "obbligo di moderare la velocità in presenza di segnale di cunetta"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'cunetta' preannuncia la possibile presenza di acqua, fango o detriti, imponendo al conducente di moderare la velocità per garantire la sicurezza."
+  }
+}

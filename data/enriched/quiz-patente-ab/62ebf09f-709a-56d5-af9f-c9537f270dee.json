@@ -1,0 +1,29 @@
+{
+  "question_id": 4511,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23658",
+  "text": "Durante la fermata il conducente, se si allontana, deve lasciare il veicolo con il motore acceso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Arresto del veicolo",
+      "Partenza del veicolo"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "arresto",
+      "partenza",
+      "motore acceso"
+    ],
+    "vector_search_queries": [
+      "obbligo spegnimento motore durante fermata o sosta con allontanamento del conducente",
+      "condizioni per lasciare il veicolo con motore acceso durante fermata, sosta o arresto"
+    ],
+    "rule_explanation": "Durante la fermata o la sosta, se il conducente si allontana dal veicolo, deve spegnere il motore. L'obbligo di spegnere il motore non sussiste durante l'arresto."
+  }
+}

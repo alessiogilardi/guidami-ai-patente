@@ -1,0 +1,31 @@
+{
+  "question_id": 4351,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22033",
+  "text": "Il pannello integrativo rappresentato in figura B indica in quali ore si può circolare a fari spenti",
+  "correct_answer": false,
+  "image": "eda4d1f7326a3a3837cc27640333d724.jpeg",
+  "image_description": "Pannello integrativo di prescrizione oraria (figura B). Il pannello integrativo B indica le fasce orarie (dalle 7:30 alle 19:00) durante le quali si applica la prescrizione del segnale principale a cui è abbinato.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli integrativi rettangolari, uno sopra l'altro, con bordi neri e sfondo bianco. Entrambi i pannelli contengono numeri che indicano fasce orarie. Il pannello superiore (etichettato A) mostra '0-24'. Il pannello inferiore (etichettato B) mostra '7,30-19,00'. Questi pannelli sono tipicamente usati per integrare segnali stradali, specificando le fasce orarie in cui la prescrizione del segnale principale è valida. La domanda si concentra sul pannello B.",
+    "name": "Pannello integrativo di prescrizione oraria (figura B)",
+    "description": "Il pannello integrativo B indica le fasce orarie (dalle 7:30 alle 19:00) durante le quali si applica la prescrizione del segnale principale a cui è abbinato."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pannelli integrativi di prescrizione oraria",
+      "Applicazione temporale dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "pannello integrativo di prescrizione oraria",
+      "fasce orarie",
+      "segnali stradali",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo orario validità segnale",
+      "prescrizione oraria segnali stradali"
+    ],
+    "rule_explanation": "Il pannello integrativo orario indica le fasce orarie di validità del segnale principale, non la possibilità di circolare a fari spenti."
+  }
+}

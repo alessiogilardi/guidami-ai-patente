@@ -1,0 +1,27 @@
+{
+  "question_id": 4575,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24173",
+  "text": "I catadiottri vanno accesi mezz'ora dopo il tramonto del sole",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di illuminazione e segnalazione",
+      "Obblighi di segnalazione visiva dei veicoli"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "luci posteriori",
+      "veicoli a motore",
+      "rimorchi"
+    ],
+    "vector_search_queries": [
+      "funzionamento catadiottri posteriori veicoli a motore e rimorchi",
+      "obbligo dispositivi illuminazione e segnalazione visiva veicoli"
+    ],
+    "rule_explanation": "I catadiottri, dispositivi di segnalazione visiva posteriori, non si accendono ma devono essere sempre in funzione per aumentare la visibilità del veicolo durante la notte o in condizioni di scarsa illuminazione."
+  }
+}

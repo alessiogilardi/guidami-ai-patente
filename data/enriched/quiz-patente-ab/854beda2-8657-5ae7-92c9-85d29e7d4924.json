@@ -1,0 +1,30 @@
+{
+  "question_id": 4036,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18691",
+  "text": "In un centro abitato bisogna essere più attenti, prudenti e tolleranti, a causa del maggior numero di utenti che interagiscono nell'ambiente urbano",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Principio di prudenza e attenzione nella guida",
+      "Interazione tra utenti della strada in ambiente urbano",
+      "Doveri di tolleranza e riguardo verso gli utenti deboli"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "attenti",
+      "prudenti",
+      "tolleranti",
+      "utenti della strada"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente nei centri abitati",
+      "doveri di attenzione e prudenza in aree urbane con alta interazione di utenti",
+      "tolleranza e riguardo verso gli utenti deboli in città"
+    ],
+    "rule_explanation": "Nei centri abitati, la maggiore densità di traffico e la presenza di utenti vulnerabili impongono al conducente un comportamento più attento, prudente e tollerante."
+  }
+}

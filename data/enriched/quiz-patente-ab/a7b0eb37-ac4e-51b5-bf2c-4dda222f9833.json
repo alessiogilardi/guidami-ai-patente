@@ -1,0 +1,27 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23458",
+  "text": "Il conducente che intende sorpassare deve accertarsi che la manovra possa compiersi senza costituire intralcio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza nel sorpasso",
+      "Sicurezza nella manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "manovra",
+      "intralcio",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "sorpasso senza intralcio o pericolo",
+      "obblighi del conducente prima di sorpassare"
+    ],
+    "rule_explanation": "Il conducente che effettua un sorpasso deve assicurarsi che la manovra non crei pericolo o intralcio alla circolazione, tenendo conto della posizione e dei movimenti degli altri utenti della strada."
+  }
+}

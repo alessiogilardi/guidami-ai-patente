@@ -1,0 +1,27 @@
+{
+  "question_id": 4612,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24530",
+  "text": "La patente di categoria B1 abilita a condurre alcuni tipi di quadricicli non leggeri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida di categoria B1",
+      "Abilitazione alla conduzione di quadricicli"
+    ],
+    "exact_keywords": [
+      "patente di categoria B1",
+      "quadricicli non leggeri",
+      "veicoli a motore",
+      "massa a vuoto"
+    ],
+    "vector_search_queries": [
+      "requisiti patente B1 quadricicli non leggeri",
+      "categoria B1 massa a vuoto potenza netta motore"
+    ],
+    "rule_explanation": "La patente di categoria B1 abilita alla conduzione di quadricicli non leggeri, con massa a vuoto non superiore a 400 kg (550 kg per i veicoli destinati al trasporto merci) e potenza massima netta del motore non superiore a 15 kW."
+  }
+}

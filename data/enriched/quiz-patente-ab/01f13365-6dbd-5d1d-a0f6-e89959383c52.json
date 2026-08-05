@@ -1,0 +1,33 @@
+{
+  "question_id": 4101,
+  "topic": "Segnali di pericolo",
+  "number": "19472",
+  "text": "Il segnale raffigurato preannuncia una strada senza uscita, per cui bisogna tornare indietro",
+  "correct_answer": false,
+  "image": "2b12fe96d3f0c9af53ce60483de34e8b.jpeg",
+  "image_description": "Segnale di pericolo: intersezione con circolazione a rotatoria. Preannuncia un'intersezione regolata da circolazione rotatoria. I veicoli che circolano nella rotatoria hanno la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero composto da tre frecce curve che indicano un movimento circolare in senso antiorario, tipico di una rotatoria. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
+    "name": "Segnale di pericolo: intersezione con circolazione a rotatoria",
+    "description": "Preannuncia un'intersezione regolata da circolazione rotatoria. I veicoli che circolano nella rotatoria hanno la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Circolazione rotatoria",
+      "Precedenza nelle rotatorie"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "intersezione con circolazione a rotatoria",
+      "strada senza uscita",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo stradale e loro significato",
+      "regolamentazione della circolazione nelle rotatorie",
+      "differenza tra segnale di strada senza uscita e segnale di rotatoria"
+    ],
+    "rule_explanation": "Il segnale raffigurato preannuncia una intersezione con circolazione a rotatoria, non una strada senza uscita. I veicoli nella rotatoria hanno la precedenza."
+  }
+}

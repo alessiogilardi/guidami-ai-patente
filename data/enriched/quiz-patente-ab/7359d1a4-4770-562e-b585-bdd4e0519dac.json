@@ -1,0 +1,33 @@
+{
+  "question_id": 4334,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21874",
+  "text": "Il cono raffigurato indica un ostacolo posto fuori della carreggiata",
+  "correct_answer": false,
+  "image": "61edff345204545bf7a2cc45613f1bca.jpeg",
+  "image_description": "Cono divisorio. Il segnale raffigurato è un cono, utilizzato per delimitare zone di lavoro, cantieri, ostacoli o per separare temporaneamente i flussi di traffico. Può essere impiegato per segnalare deviazioni provvisorie, aree interessate da incidenti o lavori stradali di durata variabile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un singolo cono stradale, di forma tronco-conica, con una base larga e nera. La superficie del cono è caratterizzata da bande orizzontali alternate di colore rosso e bianco, che servono a renderlo altamente visibile. Non sono presenti altri elementi o segnali nell'immagine.",
+    "name": "Cono divisorio",
+    "description": "Il segnale raffigurato è un cono, utilizzato per delimitare zone di lavoro, cantieri, ostacoli o per separare temporaneamente i flussi di traffico. Può essere impiegato per segnalare deviazioni provvisorie, aree interessate da incidenti o lavori stradali di durata variabile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica temporanea di cantiere",
+      "Segnalazione di ostacoli e pericoli temporanei"
+    ],
+    "exact_keywords": [
+      "cono divisorio",
+      "ostacolo",
+      "carreggiata",
+      "segnalazione temporanea",
+      "lavori stradali"
+    ],
+    "vector_search_queries": [
+      "segnalazione ostacoli con coni stradali",
+      "uso dei coni divisori per delimitare aree di cantiere o pericoli sulla carreggiata",
+      "posizione dei coni stradali rispetto alla carreggiata e significato della segnalazione"
+    ],
+    "rule_explanation": "Il cono divisorio, se posto sulla carreggiata, indica un ostacolo o un pericolo temporaneo che richiede prudenza. Se posto fuori carreggiata, delimita un'area specifica."
+  }
+}

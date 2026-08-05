@@ -1,0 +1,29 @@
+{
+  "question_id": 4596,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24333",
+  "text": "Il postino, durante l'attività lavorativa, non ha l'obbligo di agganciare la cintura di sicurezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Eccezioni all'obbligo di cintura",
+      "Uso dei sistemi di ritenuta in ambito lavorativo"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "sistemi di ritenuta",
+      "attività lavorativa",
+      "veicoli a motore",
+      "esenzione"
+    ],
+    "vector_search_queries": [
+      "obbligo uso cinture sicurezza conducente attività lavorativa",
+      "esenzioni uso sistemi di ritenuta veicoli a motore"
+    ],
+    "rule_explanation": "L'obbligo di usare le cinture di sicurezza o altri sistemi di ritenuta si applica a tutti i conducenti e passeggeri di veicoli a motore, salvo specifiche esenzioni non applicabili al postino durante l'attività lavorativa."
+  }
+}

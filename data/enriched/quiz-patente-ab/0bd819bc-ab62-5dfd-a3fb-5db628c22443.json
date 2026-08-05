@@ -1,0 +1,27 @@
+{
+  "question_id": 4531,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23812",
+  "text": "In caso di ingombro della carreggiata per caduta del carico o per qualsiasi altra causa, il conducente deve rimuovere l'ingombro, per quanto possibile",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ingombro della carreggiata",
+      "Rimozione di ostacoli alla circolazione"
+    ],
+    "exact_keywords": [
+      "ingombro della carreggiata",
+      "caduta del carico",
+      "rimuovere l'ingombro",
+      "veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "obbligo rimozione ingombro carreggiata per caduta carico",
+      "gestione veicolo fermo per ostacolo alla circolazione"
+    ],
+    "rule_explanation": "In caso di ingombro della carreggiata, il conducente deve provvedere alla rimozione, per quanto possibile, per garantire la sicurezza della circolazione."
+  }
+}

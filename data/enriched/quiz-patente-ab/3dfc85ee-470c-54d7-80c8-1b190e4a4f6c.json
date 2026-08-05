@@ -1,0 +1,33 @@
+{
+  "question_id": 4051,
+  "topic": "Segnali di pericolo",
+  "number": "18868",
+  "text": "Il segnale raffigurato indica un tratto di strada deformata lungo 320 metri",
+  "correct_answer": false,
+  "image": "fcaab86759120527e96bca9226f61cc5.jpeg",
+  "image_description": "Segnale di pericolo - Carreggiata sconnessa con pannello integrativo di distanza. Il segnale indica la presenza di una carreggiata sconnessa o con dossi a 320 metri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di dossi o una carreggiata sconnessa. Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare di colore bianco con la scritta \"320m\" in nero, indicante la distanza.",
+    "name": "Segnale di pericolo - Carreggiata sconnessa con pannello integrativo di distanza",
+    "description": "Il segnale indica la presenza di una carreggiata sconnessa o con dossi a 320 metri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Carreggiata sconnessa",
+      "Distanza del pericolo"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "carreggiata sconnessa",
+      "pannello integrativo di distanza",
+      "dossi"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per carreggiata sconnessa o con dossi",
+      "pannello integrativo di distanza per pericoli stradali",
+      "interpretazione segnale di pericolo carreggiata deformata"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante la carreggiata sconnessa indica la presenza di tale condizione a 320 metri, non che il tratto deformato sia lungo 320 metri."
+  }
+}

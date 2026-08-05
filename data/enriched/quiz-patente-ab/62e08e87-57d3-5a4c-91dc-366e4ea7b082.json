@@ -1,0 +1,28 @@
+{
+  "question_id": 4015,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18477",
+  "text": "Fanno parte della carreggiata i marciapiedi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Elementi della strada",
+      "Carreggiata",
+      "Marciapiede"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "marciapiede",
+      "parte della strada",
+      "definizione di carreggiata"
+    ],
+    "vector_search_queries": [
+      "definizione di carreggiata e marciapiede nel CdS",
+      "distinzione tra carreggiata e marciapiede"
+    ],
+    "rule_explanation": "La carreggiata è la parte della strada destinata allo scorrimento dei veicoli; i marciapiedi sono superfici separate dalla carreggiata, destinate ai pedoni."
+  }
+}

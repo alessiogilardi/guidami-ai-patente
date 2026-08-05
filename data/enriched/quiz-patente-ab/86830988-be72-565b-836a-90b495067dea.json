@@ -1,0 +1,28 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18360",
+  "text": "Le strade extraurbane principali possono essere ad un'unica carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Strade extraurbane principali",
+      "Carreggiata",
+      "Classificazione delle strade"
+    ],
+    "exact_keywords": [
+      "strade extraurbane principali",
+      "carreggiata",
+      "separazione fisica",
+      "divisori inerti"
+    ],
+    "vector_search_queries": [
+      "caratteristiche delle strade extraurbane principali",
+      "definizione di strada extraurbana principale con carreggiate separate"
+    ],
+    "rule_explanation": "Le strade extraurbane principali sono caratterizzate da carreggiate separate fisicamente da spartitraffico o divisori inerti, non potendo quindi avere un'unica carreggiata."
+  }
+}

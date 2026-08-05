@@ -1,0 +1,30 @@
+{
+  "question_id": 4714,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25445",
+  "text": "Nei veicoli a motore a due ruote, è possibile sostituire il pignone motore e la corona della ruota in modo da modificare il rapporto di trasmissione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Modifica del rapporto di trasmissione",
+      "Omologazione del veicolo",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "pignone motore",
+      "corona della ruota",
+      "rapporto di trasmissione",
+      "modifica",
+      "veicoli a motore a due ruote"
+    ],
+    "vector_search_queries": [
+      "modifica rapporto trasmissione veicoli a due ruote vietata",
+      "sostituzione pignone e corona veicoli a motore vietata",
+      "alterazione caratteristiche originali veicolo a due ruote"
+    ],
+    "rule_explanation": "La modifica del rapporto di trasmissione originale di un veicolo a motore a due ruote, tramite la sostituzione di pignone e corona, è vietata se non omologata, in quanto può alterare le caratteristiche di sicurezza e prestazioni."
+  }
+}

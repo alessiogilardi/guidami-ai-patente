@@ -1,0 +1,31 @@
+{
+  "question_id": 4140,
+  "topic": "Segnali di divieto",
+  "number": "19930",
+  "text": "Il segnale raffigurato, posto nei centri abitati, vieta, di norma, la sosta dalle ore 8.00 alle 20.00",
+  "correct_answer": true,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di divieto di sosta",
+      "Regolamentazione della sosta nei centri abitati"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "centri abitati",
+      "ore 8,00 alle 20,00",
+      "sosta vietata"
+    ],
+    "vector_search_queries": [
+      "regolamentazione oraria del divieto di sosta nei centri abitati",
+      "segnali di divieto di sosta e orari di validità"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta, nei centri abitati, vieta la sosta dalle 8 alle 20, eccetto i giorni festivi. La fermata è consentita."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23523",
+  "text": "E' pericoloso effettuare il rientro dopo il sorpasso se la manovra costringe i veicoli sorpassati a frenare bruscamente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Norme sul sorpasso",
+      "Manovra di rientro dopo il sorpasso",
+      "Comportamento prudente alla guida"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "rientro dopo il sorpasso",
+      "frenare bruscamente",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "pericolosità del rientro dopo sorpasso",
+      "obblighi del conducente durante il sorpasso e il rientro",
+      "frenata di emergenza causata da manovra di rientro vietata"
+    ],
+    "rule_explanation": "Il rientro dopo un sorpasso non deve costringere i veicoli sorpassati a frenare bruscamente, altrimenti la manovra è considerata pericolosa."
+  }
+}

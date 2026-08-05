@@ -1,0 +1,27 @@
+{
+  "question_id": 4608,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24479",
+  "text": "La patente AM abilita alla guida di ciclomotori con motore termico non superiore a 50 cm3",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida AM",
+      "Ciclomotori"
+    ],
+    "exact_keywords": [
+      "patente AM",
+      "ciclomotori",
+      "motore termico",
+      "cilindrata"
+    ],
+    "vector_search_queries": [
+      "requisiti patente AM per ciclomotori",
+      "definizione ciclomotori guidabili con patente AM"
+    ],
+    "rule_explanation": "La patente AM è il documento necessario per la guida dei ciclomotori, inclusi quelli con motore termico di cilindrata non superiore a 50 cm³."
+  }
+}

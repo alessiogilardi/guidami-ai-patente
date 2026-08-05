@@ -1,0 +1,27 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18358",
+  "text": "Sulle strade extraurbane principali è consentito circolare alla velocità massima di 130 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane principali",
+      "Regolamentazione della circolazione stradale"
+    ],
+    "exact_keywords": [
+      "strade extraurbane principali",
+      "velocità massima",
+      "limiti di velocità",
+      "pannelli di indicazione"
+    ],
+    "vector_search_queries": [
+      "limite di velocità su strade extraurbane principali",
+      "velocità massima consentita su autostrade e strade extraurbane principali"
+    ],
+    "rule_explanation": "Su strade extraurbane principali, la velocità massima consentita è di 110 km/h, salvo diversa segnalazione."
+  }
+}

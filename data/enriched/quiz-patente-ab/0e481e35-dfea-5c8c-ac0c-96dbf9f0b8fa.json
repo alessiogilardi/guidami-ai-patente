@@ -1,0 +1,29 @@
+{
+  "question_id": 4403,
+  "topic": "Distanza di sicurezza",
+  "number": "22619",
+  "text": "Lo spazio totale di arresto dipende dalla velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di arresto",
+      "Velocità di guida"
+    ],
+    "exact_keywords": [
+      "spazio totale di arresto",
+      "velocità",
+      "distanza di reazione",
+      "spazio di frenatura"
+    ],
+    "vector_search_queries": [
+      "componenti dello spazio di arresto",
+      "relazione tra velocità e spazio di arresto del veicolo",
+      "influenza della velocità sulla distanza di arresto"
+    ],
+    "rule_explanation": "Lo spazio totale di arresto è la somma dello spazio di reazione e dello spazio di frenatura, entrambi dipendenti dalla velocità del veicolo."
+  }
+}

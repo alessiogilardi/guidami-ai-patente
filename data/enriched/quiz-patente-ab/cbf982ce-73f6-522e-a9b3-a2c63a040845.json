@@ -1,0 +1,27 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23575",
+  "text": "La pericolosità del sorpasso è determinata dalla ridotta larghezza della carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolosità del sorpasso",
+      "Condizioni di sicurezza per il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "carreggiata",
+      "larghezza",
+      "pericolosità"
+    ],
+    "vector_search_queries": [
+      "fattori di pericolosità del sorpasso in relazione alla larghezza della carreggiata",
+      "valutazione del rischio nel sorpasso su strade strette"
+    ],
+    "rule_explanation": "La ridotta larghezza della carreggiata è uno dei fattori che determinano la pericolosità del sorpasso, richiedendo maggiore prudenza."
+  }
+}

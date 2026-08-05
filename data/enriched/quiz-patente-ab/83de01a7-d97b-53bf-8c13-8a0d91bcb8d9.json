@@ -1,0 +1,29 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24409",
+  "text": "Sul casco possono essere applicati adesivi di qualunque tipo, purché non coprano la visiera",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei dispositivi di protezione individuale",
+      "Casco protettivo per motocicli e ciclomotori"
+    ],
+    "exact_keywords": [
+      "casco",
+      "adesivi",
+      "visiera",
+      "omologazione",
+      "modifiche"
+    ],
+    "vector_search_queries": [
+      "divieto di applicare adesivi sul casco protettivo",
+      "modifiche al casco protettivo e sicurezza",
+      "requisiti di omologazione del casco e personalizzazione"
+    ],
+    "rule_explanation": "Sul casco protettivo è vietato applicare adesivi o qualsiasi altro elemento che ne alteri le caratteristiche originali o ne comprometta la sicurezza, anche se non coprono la visiera."
+  }
+}

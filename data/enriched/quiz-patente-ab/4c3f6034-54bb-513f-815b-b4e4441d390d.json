@@ -1,0 +1,28 @@
+{
+  "question_id": 4696,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25235",
+  "text": "Se si misura la pressione di gonfiaggio degli pneumatici quando la gomma è calda, si ha una corretta lettura dei valori di pressione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pressione pneumatici",
+      "Manutenzione veicolo",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "pressione di gonfiaggio",
+      "pneumatici",
+      "a freddo",
+      "a caldo"
+    ],
+    "vector_search_queries": [
+      "misurazione pressione pneumatici a freddo",
+      "corretta pressione di gonfiaggio pneumatici"
+    ],
+    "rule_explanation": "La pressione degli pneumatici va misurata a gomma fredda per ottenere una lettura veritiera dei valori di gonfiaggio, in quanto la temperatura influisce sulla pressione stessa."
+  }
+}

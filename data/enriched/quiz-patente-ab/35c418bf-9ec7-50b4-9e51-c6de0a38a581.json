@@ -1,0 +1,31 @@
+{
+  "question_id": 4309,
+  "topic": "Segnali di indicazione",
+  "number": "21637",
+  "text": "Il segnale raffigurato viene posto all'inizio di una strada riservata alla circolazione dei veicoli a motore",
+  "correct_answer": true,
+  "image": "1ef915902f19c17ff26aaa2bff80ae9b.jpeg",
+  "image_description": "Parcheggio per autovetture. Il segnale indica un parcheggio riservato alle autovetture.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è raffigurata, in bianco, la sagoma stilizzata di un'autovettura vista frontalmente. Si tratta di un segnale di indicazione.",
+    "name": "Parcheggio per autovetture",
+    "description": "Il segnale indica un parcheggio riservato alle autovetture."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Strade riservate ai veicoli a motore"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "strada riservata",
+      "veicoli a motore",
+      "parcheggio"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale per veicoli a motore",
+      "inizio strada riservata a veicoli a motore con segnale di parcheggio"
+    ],
+    "rule_explanation": "Il segnale raffigurante un parcheggio per autovetture indica l'inizio di una strada o area destinata esclusivamente alla circolazione dei veicoli a motore."
+  }
+}

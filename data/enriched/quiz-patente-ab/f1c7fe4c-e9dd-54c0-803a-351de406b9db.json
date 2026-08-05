@@ -1,0 +1,32 @@
+{
+  "question_id": 4072,
+  "topic": "Segnali di pericolo",
+  "number": "19125",
+  "text": "Il segnale raffigurato preannuncia un eventuale transito di filobus",
+  "correct_answer": false,
+  "image": "bb981f286218063a29cc9f7bf6f71389.jpeg",
+  "image_description": "Segnale di pericolo - Passaggio di tram. Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato il pittogramma di un tram. Questo segnale indica la presenza di una linea tranviaria che interseca la carreggiata.",
+    "name": "Segnale di pericolo - Passaggio di tram",
+    "description": "Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio di tram",
+      "linea tranviaria",
+      "transito di filobus"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per linee tranviarie",
+      "differenza tra segnale di pericolo tram e filobus",
+      "segnaletica stradale per veicoli su rotaia"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante il passaggio di tram preannuncia specificamente la presenza di una linea tranviaria e non il transito di filobus, che sono veicoli diversi."
+  }
+}

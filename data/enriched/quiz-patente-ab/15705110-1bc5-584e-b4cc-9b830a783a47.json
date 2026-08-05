@@ -1,0 +1,31 @@
+{
+  "question_id": 4169,
+  "topic": "Segnali di obbligo",
+  "number": "20263",
+  "text": "Il segnale raffigurato indica al conducente gli unici passaggi consentiti",
+  "correct_answer": true,
+  "image": "94ee44bd2e4002b88727289cf2acb43a.jpeg",
+  "image_description": "Preavviso di ostacolo con percorsi alternativi. Il segnale indica che è consentito il passaggio sia a destra che a sinistra di un ostacolo, come un'isola di traffico o uno spartitraffico.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e un bordo bianco. Al centro del segnale sono presenti due frecce bianche, una rivolta verso sinistra e una verso destra, che partono da un punto comune e si allargano verso l'esterno, indicando due percorsi possibili attorno a un ostacolo centrale. Questo segnale è classificato come segnale di obbligo, specificamente un preavviso di ostacolo con percorsi alternativi.",
+    "name": "Preavviso di ostacolo con percorsi alternativi",
+    "description": "Il segnale indica che è consentito il passaggio sia a destra che a sinistra di un ostacolo, come un'isola di traffico o uno spartitraffico."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo di direzione",
+      "Indicazioni stradali obbligatorie"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "percorsi consentiti",
+      "ostacolo",
+      "direzione vietata"
+    ],
+    "vector_search_queries": [
+      "segnali che impongono percorsi obbligatori per superare ostacoli",
+      "obbligo di seguire determinate direzioni per aggirare ostacoli fisici sulla carreggiata"
+    ],
+    "rule_explanation": "I segnali di obbligo di direzione indicano i soli percorsi che il conducente ha l'obbligo di seguire per superare un ostacolo, vietando le altre direzioni."
+  }
+}

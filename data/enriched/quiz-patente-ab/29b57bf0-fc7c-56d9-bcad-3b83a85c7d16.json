@@ -1,0 +1,30 @@
+{
+  "question_id": 4603,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24447",
+  "text": "I guanti ad uso motociclistico coprono anche il gomito per proteggere meglio in caso di caduta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di protezione individuale per motociclisti",
+      "Equipaggiamento di sicurezza",
+      "Protezione in caso di caduta"
+    ],
+    "exact_keywords": [
+      "guanti motociclistici",
+      "dispositivi di protezione",
+      "abbigliamento tecnico",
+      "casco",
+      "protezione aggiuntiva"
+    ],
+    "vector_search_queries": [
+      "funzione ed uso dei guanti motociclistici",
+      "dispositivi di protezione per motociclisti",
+      "abbigliamento tecnico per la sicurezza in moto"
+    ],
+    "rule_explanation": "I guanti motociclistici sono dispositivi di protezione individuale che coprono la mano e il polso, ma non il gomito. La protezione del gomito è demandata ad altri indumenti specifici."
+  }
+}

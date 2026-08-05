@@ -1,0 +1,30 @@
+{
+  "question_id": 4714,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25443",
+  "text": "Nei veicoli a motore a due ruote non è necessario il periodico controllo della tensione della catena di trasmissione, perché la stessa è dotata di tenditore automatico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Componenti del veicolo"
+    ],
+    "exact_keywords": [
+      "veicoli a motore a due ruote",
+      "catena di trasmissione",
+      "tensione della catena",
+      "tenditore automatico",
+      "controllo periodico"
+    ],
+    "vector_search_queries": [
+      "controllo periodico tensione catena trasmissione motocicli",
+      "manutenzione catena trasmissione veicoli a due ruote con tenditore automatico",
+      "sicurezza motocicli tenditore catena"
+    ],
+    "rule_explanation": "Anche i veicoli a due ruote con tenditore automatico della catena di trasmissione necessitano di controlli periodici per verificarne la corretta tensione e prevenire rischi per la sicurezza."
+  }
+}

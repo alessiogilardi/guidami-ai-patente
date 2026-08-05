@@ -1,0 +1,29 @@
+{
+  "question_id": 4709,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25372",
+  "text": "Il conducente può in ogni caso regolare la rigidità degli ammortizzatori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Stabilità del veicolo",
+      "Dispositivi di sicurezza del veicolo"
+    ],
+    "exact_keywords": [
+      "ammortizzatori",
+      "rigidità",
+      "manutenzione",
+      "alterazione"
+    ],
+    "vector_search_queries": [
+      "modifica rigidità ammortizzatori veicolo",
+      "manutenzione e alterazione ammortizzatori",
+      "stabilità veicolo e ammortizzatori"
+    ],
+    "rule_explanation": "La rigidità degli ammortizzatori non può essere alterata dal conducente, in quanto componente essenziale per la stabilità e la tenuta di strada del veicolo."
+  }
+}

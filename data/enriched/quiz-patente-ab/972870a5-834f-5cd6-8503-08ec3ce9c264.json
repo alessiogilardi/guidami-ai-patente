@@ -1,0 +1,31 @@
+{
+  "question_id": 4369,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22226",
+  "text": "Il pannello integrativo in figura indica che il segnale posto sopra vale per la sola corsia indicata dalla freccia",
+  "correct_answer": true,
+  "image": "ff24131c9b9b8ee22f0d639eec2db1e9.jpeg",
+  "image_description": "Pannello integrativo di corsia con frecce verso il basso. Il pannello integrativo indica che il segnale sovrastante si riferisce alla corsia di destra. La presenza di tre frecce indica che il segnale si applica alle tre corsie di marcia, con la freccia che punta verso il basso per ciascuna corsia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre pannelli rettangolari bianchi, disposti verticalmente uno sopra l'altro. Ciascun pannello contiene un'unica freccia nera rivolta verso il basso. I pannelli sono separati da una linea nera orizzontale. Questo tipo di pannello è un pannello integrativo che, in abbinamento con un segnale stradale (non visibile nell'immagine), ne specifica l'ambito di applicazione a una o più corsie di marcia. In questo caso, le tre frecce verso il basso indicano che il segnale sovrastante si applica a tutte e tre le corsie di marcia.",
+    "name": "Pannello integrativo di corsia con frecce verso il basso",
+    "description": "Il pannello integrativo indica che il segnale sovrastante si riferisce alla corsia di destra. La presenza di tre frecce indica che il segnale si applica alle tre corsie di marcia, con la freccia che punta verso il basso per ciascuna corsia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pannelli integrativi di prescrizione",
+      "Applicazione dei segnali stradali a specifiche corsie"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "segnali stradali",
+      "corsia",
+      "freccia"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo di corsia con frecce",
+      "applicazione segnale stradale a corsia specifica"
+    ],
+    "rule_explanation": "I pannelli integrativi con frecce indicano che la prescrizione del segnale sovrastante si applica solo alla corsia o alle corsie specificate dalla freccia."
+  }
+}

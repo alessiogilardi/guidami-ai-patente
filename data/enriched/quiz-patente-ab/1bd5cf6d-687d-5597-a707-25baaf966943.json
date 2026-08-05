@@ -1,0 +1,28 @@
+{
+  "question_id": 4567,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24092",
+  "text": "Il rapporto di traino, entro i limiti di quello tecnicamente ammesso per il veicolo, non deve superare il valore di 1, nel caso di rimorchi muniti di freno di servizio e di massa fino a 3,5 tonnellate",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rapporto di traino",
+      "Massa massima ammissibile",
+      "Rimorchi con freno di servizio"
+    ],
+    "exact_keywords": [
+      "rapporto di traino",
+      "massa tecnicamente ammessa",
+      "rimorchi muniti di freno di servizio",
+      "massa fino a 3,5 tonnellate"
+    ],
+    "vector_search_queries": [
+      "limite del rapporto di traino per rimorchi con freno di servizio",
+      "massa massima del rimorchio in rapporto al veicolo trainante"
+    ],
+    "rule_explanation": "Il rapporto di traino, se il rimorchio è munito di freno di servizio e ha massa fino a 3,5 tonnellate, non deve superare 1, nei limiti della massa tecnicamente ammessa per il veicolo trainante."
+  }
+}

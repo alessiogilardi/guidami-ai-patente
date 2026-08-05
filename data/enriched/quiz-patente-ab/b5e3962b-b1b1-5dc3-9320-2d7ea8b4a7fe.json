@@ -1,0 +1,28 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22529",
+  "text": "Il conducente deve commisurare la distanza di sicurezza anche in base alla propria prontezza di riflessi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Prudenza nella guida",
+      "Adeguamento della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni del traffico",
+      "velocità",
+      "veicolo che precede"
+    ],
+    "vector_search_queries": [
+      "commisurare la distanza di sicurezza in base alla prontezza di riflessi",
+      "adeguamento della distanza di sicurezza alle condizioni di guida e alle capacità del conducente"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare collisioni, tenendo conto di tutte le circostanze, inclusa la propria prontezza di riflessi."
+  }
+}

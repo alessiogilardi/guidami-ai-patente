@@ -1,0 +1,32 @@
+{
+  "question_id": 4094,
+  "topic": "Segnali di pericolo",
+  "number": "19394",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada in cui è vietato il sorpasso",
+  "correct_answer": false,
+  "image": "ddcc6610d88743a87ab49dda7f0f69be.jpeg",
+  "image_description": "Segnale di pericolo di caduta massi. Il segnale preannuncia un pericolo di caduta massi sulla carreggiata. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta un versante di montagna da cui cadono dei massi. Il pittogramma indica il pericolo di caduta massi.",
+    "name": "Segnale di pericolo di caduta massi",
+    "description": "Il segnale preannuncia un pericolo di caduta massi sulla carreggiata. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Divieto di sorpasso"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "caduta massi",
+      "divieto di sorpasso",
+      "preavviso di pericolo"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di pericolo e segnali di divieto",
+      "segnali che preannunciano caduta massi",
+      "segnali che indicano divieto di sorpasso"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano un pericolo specifico (es. caduta massi) e non un divieto (es. di sorpasso). Per il divieto di sorpasso esistono segnali specifici."
+  }
+}

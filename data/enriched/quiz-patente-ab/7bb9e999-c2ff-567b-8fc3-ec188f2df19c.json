@@ -1,0 +1,27 @@
+{
+  "question_id": 4502,
+  "topic": "Norme sul sorpasso",
+  "number": "23563",
+  "text": "Su carreggiate a due corsie a doppio senso di marcia in prossimità di un dosso, è consentito sorpassare nella scia del veicolo che precede",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso in prossimità di dossi",
+      "Regole di circolazione in presenza di dossi"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "dosso",
+      "carreggiata a doppio senso di marcia",
+      "scia del veicolo"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in prossimità di dossi",
+      "sorpasso vietato in condizioni di scarsa visibilità su strade a doppio senso"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in prossimità dei dossi, anche se si procede nella scia del veicolo che precede, per garantire la visibilità e la sicurezza."
+  }
+}

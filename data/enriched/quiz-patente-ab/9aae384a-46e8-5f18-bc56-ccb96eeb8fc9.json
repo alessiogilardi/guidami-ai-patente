@@ -1,0 +1,27 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24678",
+  "text": "La patente di guida è confermata a seguito di esito favorevole dell'apposito accertamento sanitario eseguito da medico autorizzato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Accertamento sanitario per la conferma della patente"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "accertamento sanitario",
+      "medico autorizzato",
+      "conferma della validità"
+    ],
+    "vector_search_queries": [
+      "requisiti sanitari per la conferma della patente di guida",
+      "idoneità alla guida accertamento medico"
+    ],
+    "rule_explanation": "La patente di guida è confermata se l'accertamento sanitario, effettuato da un medico autorizzato, ha esito favorevole, attestando l'idoneità alla guida."
+  }
+}

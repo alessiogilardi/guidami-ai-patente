@@ -1,0 +1,29 @@
+{
+  "question_id": 4405,
+  "topic": "Distanza di sicurezza",
+  "number": "22637",
+  "text": "Sulla distanza di sicurezza influiscono l'aderenza e le condizioni dei pneumatici",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Aderenza del veicolo",
+      "Condizioni degli pneumatici"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "aderenza",
+      "pneumatici",
+      "condizioni",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "fattori che influenzano la distanza di sicurezza",
+      "adeguamento della distanza di sicurezza in base all'aderenza e agli pneumatici"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere commisurata anche all'aderenza del veicolo e allo stato di usura dei pneumatici per garantire una frenata efficace."
+  }
+}

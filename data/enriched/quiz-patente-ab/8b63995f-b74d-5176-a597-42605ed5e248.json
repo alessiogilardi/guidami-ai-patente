@@ -1,0 +1,27 @@
+{
+  "question_id": 4517,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23704",
+  "text": "Durante la sosta è opportuno che il conducente azioni il freno di stazionamento ed inserisca il rapporto più basso del cambio di velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Freno di stazionamento",
+      "Arresto e sosta del veicolo"
+    ],
+    "exact_keywords": [
+      "freno di stazionamento",
+      "sosta",
+      "partenza",
+      "cambio di velocità"
+    ],
+    "vector_search_queries": [
+      "uso del freno di stazionamento durante la sosta",
+      "misure di sicurezza per la sosta del veicolo"
+    ],
+    "rule_explanation": "Durante la sosta, è buona norma inserire il freno di stazionamento e, se il veicolo è in pendenza, innestare la marcia più bassa o la retromarcia per garantire la stabilità."
+  }
+}

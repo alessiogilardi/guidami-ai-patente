@@ -1,0 +1,28 @@
+{
+  "question_id": 4420,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22775",
+  "text": "In caso di traffico intenso il conducente deve evitare di suonare il clacson per invitare i veicoli che lo precedono ad accelerare l'andatura",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso del clacson",
+      "Comportamento in caso di traffico intenso",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "clacson",
+      "traffico intenso",
+      "invitare a accelerare",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di uso del clacson in caso di traffico intenso",
+      "uso improprio del clacson per sollecitare manovra di accelerazione"
+    ],
+    "rule_explanation": "L'uso del clacson è vietato in caso di traffico intenso per evitare di creare intralcio o pericolo, non per sollecitare i veicoli che precedono ad accelerare."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31057",
+  "text": "Sintonizzare manualmente l’autoradio non comporta perdita di attenzione alla strada, perché è un compito che si è abituati a svolgere",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distrazione alla guida",
+      "Obbligo di attenzione alla circolazione"
+    ],
+    "exact_keywords": [
+      "attenzione alla strada",
+      "distrazione alla guida",
+      "manovra involontaria",
+      "condizioni di sicurezza"
+    ],
+    "vector_search_queries": [
+      "perdita di attenzione alla guida per attività diverse dalla guida",
+      "distrazione alla guida per uso di dispositivi o manovre"
+    ],
+    "rule_explanation": "Qualsiasi attività che riduca l'attenzione alla guida, anche se abituale, è vietata in quanto può compromettere la sicurezza stradale."
+  }
+}

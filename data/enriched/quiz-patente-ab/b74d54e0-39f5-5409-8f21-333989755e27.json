@@ -1,0 +1,33 @@
+{
+  "question_id": 4219,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20794",
+  "text": "La segnaletica in figura non consente alle autovetture di circolare all'interno dell'area segnata",
+  "correct_answer": false,
+  "image": "f7a805a7af03a395c2febfe9abef85dc.jpeg",
+  "image_description": "Segnaletica orizzontale di area di fermata per autobus e filobus con striscia di arresto e zona a zig-zag gialla. La segnaletica orizzontale raffigura una striscia di arresto, interrotta da una zona a zig-zag gialla, che delimita un'area di fermata per autobus o filobus. La striscia a zig-zag gialla indica un'area in cui è vietata la sosta e la fermata, riservata ai veicoli di linea per consentire loro manovre di accostamento e ripartenza. La striscia di arresto, invece, indica il punto in cui i veicoli devono fermarsi in presenza di un segnale di stop o di un semaforo rosso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un tratto di strada con segnaletica orizzontale. Sono presenti due strisce gialle a zig-zag parallele, che delimitano uno spazio centrale. All'interno di questo spazio, vi è una striscia bianca continua che funge da striscia di arresto. Tra le due strisce a zig-zag, e prima della striscia di arresto, è presente un piccolo quadrato giallo con un simbolo al suo interno (probabilmente un autobus stilizzato, ma non chiaramente visibile). Le strisce a zig-zag gialle sono tipiche delle aree di fermata degli autobus. La striscia di arresto indica il punto in cui i veicoli devono fermarsi. La combinazione di questi elementi suggerisce un'area riservata alla fermata dei mezzi pubblici di linea.",
+    "name": "Segnaletica orizzontale di area di fermata per autobus e filobus con striscia di arresto e zona a zig-zag gialla",
+    "description": "La segnaletica orizzontale raffigura una striscia di arresto, interrotta da una zona a zig-zag gialla, che delimita un'area di fermata per autobus o filobus. La striscia a zig-zag gialla indica un'area in cui è vietata la sosta e la fermata, riservata ai veicoli di linea per consentire loro manovre di accostamento e ripartenza. La striscia di arresto, invece, indica il punto in cui i veicoli devono fermarsi in presenza di un segnale di stop o di un semaforo rosso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Area di fermata autobus",
+      "Divieto di fermata e sosta"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "area di fermata",
+      "zig-zag gialla",
+      "divieto di sosta",
+      "divieto di fermata"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale area di fermata autobus zig-zag gialla",
+      "divieto di sosta e fermata segnaletica orizzontale"
+    ],
+    "rule_explanation": "La segnaletica orizzontale con striscia a zig-zag gialla delimita un'area dove è vietata la sosta e la fermata, ma non impedisce la circolazione delle autovetture al di fuori di tale area specifica."
+  }
+}

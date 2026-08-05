@@ -1,0 +1,32 @@
+{
+  "question_id": 4106,
+  "topic": "Segnali di divieto",
+  "number": "19532",
+  "text": "I quadricicli a motore devono rispettare il divieto imposto dal segnale rappresentato",
+  "correct_answer": true,
+  "image": "3eca137357d840256e2c019f597a7575.jpeg",
+  "image_description": "Segnale di divieto di transito. Il segnale impone il divieto di transito a tutti i veicoli, indipendentemente dalla loro direzione. Vieta l'accesso in una strada o area.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una barra orizzontale bianca. Questo è il segnale di divieto di transito.",
+    "name": "Segnale di divieto di transito",
+    "description": "Il segnale impone il divieto di transito a tutti i veicoli, indipendentemente dalla loro direzione. Vieta l'accesso in una strada o area."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Obblighi dei conducenti",
+      "Classificazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "quadricicli a motore",
+      "veicoli",
+      "segnali stradali di divieto"
+    ],
+    "vector_search_queries": [
+      "obbligo di rispettare il segnale di divieto di transito per quadricicli a motore",
+      "divieto di transito a tutti i veicoli e sua applicabilità ai quadricicli a motore"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito impone a tutti i veicoli, inclusi i quadricicli a motore, di non accedere alla strada o area segnalata."
+  }
+}

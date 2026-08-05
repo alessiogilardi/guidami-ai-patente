@@ -1,0 +1,28 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25392",
+  "text": "La convergenza delle ruote ha influenza sulla precisione della sterzata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Geometria delle sospensioni",
+      "Stabilità del veicolo",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "convergenza delle ruote",
+      "sterzata",
+      "tenuta di strada",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "influenza della convergenza ruote sulla precisione di sterzata",
+      "impatto della geometria delle sospensioni sulla tenuta di strada"
+    ],
+    "rule_explanation": "La convergenza delle ruote, componente della geometria delle sospensioni, influisce sulla precisione della sterzata e sulla stabilità del veicolo."
+  }
+}

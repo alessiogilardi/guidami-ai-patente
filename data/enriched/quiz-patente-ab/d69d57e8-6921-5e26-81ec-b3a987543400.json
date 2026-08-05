@@ -1,0 +1,27 @@
+{
+  "question_id": 4551,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23959",
+  "text": "Durante le operazioni di traino di un veicolo in avaria, il veicolo trainato deve mantenere accese le luci posteriori in mancanza di altra idonea segnalazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo in avaria",
+      "Operazioni di traino"
+    ],
+    "exact_keywords": [
+      "veicolo in avaria",
+      "traino",
+      "luci posteriori",
+      "segnalazione di pericolo"
+    ],
+    "vector_search_queries": [
+      "segnalazione veicolo in avaria durante traino",
+      "obblighi illuminazione veicolo trainato in avaria"
+    ],
+    "rule_explanation": "Durante il traino di un veicolo in avaria, questo deve essere segnalato con il segnale mobile di pericolo e, se non vi sono altre segnalazioni idonee, devono essere accese le luci di posizione e di posizione posteriore."
+  }
+}

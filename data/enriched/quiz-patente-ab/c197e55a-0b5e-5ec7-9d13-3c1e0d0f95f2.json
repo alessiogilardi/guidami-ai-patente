@@ -1,0 +1,29 @@
+{
+  "question_id": 4620,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24654",
+  "text": "Quando ha esaurito la sua dotazione di punti sulla patente, al conducente viene revocata la patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Perdita dei punti della patente",
+      "Revoca della patente",
+      "Sanzioni amministrative pecuniarie e accessorie"
+    ],
+    "exact_keywords": [
+      "punti patente",
+      "revoca della patente",
+      "sospensione della patente",
+      "neopatentati"
+    ],
+    "vector_search_queries": [
+      "conseguenze esaurimento punti patente",
+      "differenza tra sospensione e revoca patente per perdita punti",
+      "procedura in caso di azzeramento punti patente"
+    ],
+    "rule_explanation": "L'esaurimento dei punti della patente comporta la sospensione della patente e l'obbligo di sottoporsi a revisione, non la revoca immediata. La revoca è una sanzione più grave."
+  }
+}

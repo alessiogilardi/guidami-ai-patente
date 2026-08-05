@@ -1,0 +1,33 @@
+{
+  "question_id": 4239,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20964",
+  "text": "La striscia trasversale continua in figura indica il punto in cui dobbiamo sempre arrestarci ad un incrocio, se il vigile lo impone",
+  "correct_answer": true,
+  "image": "913d1c94c8744bf9a2003585522e9980.jpeg",
+  "image_description": "Striscia di arresto (segnaletica orizzontale). La striscia trasversale continua bianca, detta anche linea di arresto, indica il punto in cui i veicoli devono fermarsi prima di immettersi in un incrocio, qualora sia presente un segnale di STOP o un agente del traffico che imponga l'arresto. Non impone l'arresto in assenza di tali prescrizioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una scena di guida che include una carreggiata con due corsie per senso di marcia, delimitate da strisce bianche continue e discontinue. Sulla carreggiata di sinistra, in basso, è visibile un'automobile. La carreggiata si interseca con un'altra strada, formando un incrocio a raso. Sulla carreggiata principale, prima dell'incrocio, è presente una striscia trasversale continua bianca, che rappresenta la linea di arresto. Non sono presenti segnali verticali o altre indicazioni specifiche sull'incrocio.",
+    "name": "Striscia di arresto (segnaletica orizzontale)",
+    "description": "La striscia trasversale continua bianca, detta anche linea di arresto, indica il punto in cui i veicoli devono fermarsi prima di immettersi in un incrocio, qualora sia presente un segnale di STOP o un agente del traffico che imponga l'arresto. Non impone l'arresto in assenza di tali prescrizioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Linea di arresto",
+      "Obbligo di arresto in presenza di agente del traffico"
+    ],
+    "exact_keywords": [
+      "striscia trasversale continua",
+      "linea di arresto",
+      "incrocio",
+      "agente del traffico",
+      "arrestarsi"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto alla linea di arresto in presenza di agente del traffico",
+      "funzione della striscia trasversale continua come linea di arresto"
+    ],
+    "rule_explanation": "La linea di arresto impone l'obbligo di fermarsi prima dell'incrocio solo se prescritta da un segnale di STOP o da un agente del traffico."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4015,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18474",
+  "text": "Fanno parte della carreggiata le corsie di sorpasso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Carreggiata",
+      "Corsia di sorpasso",
+      "Elementi della strada"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "corsia di sorpasso",
+      "definizione di carreggiata",
+      "parte della carreggiata"
+    ],
+    "vector_search_queries": [
+      "definizione di carreggiata nel CdS",
+      "inclusione delle corsie di sorpasso nella carreggiata"
+    ],
+    "rule_explanation": "La carreggiata è la parte della strada compresa tra i bordi e destinata alla circolazione dei veicoli; le corsie di sorpasso ne fanno parte integrante."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23501",
+  "text": "E' vietato il sorpasso di veicoli in lento movimento ai passaggi a livello quando, a tal fine è necessario spostarsi sul lato riservato all'altro senso di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Condizioni di sicurezza nella manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicoli in lento movimento",
+      "passaggi a livello",
+      "senso di marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso ai passaggi a livello per veicoli in lento movimento",
+      "sorpasso in prossimità di passaggi a livello con occupazione della corsia opposta"
+    ],
+    "rule_explanation": "È vietato sorpassare veicoli in lento movimento ai passaggi a livello se ciò richiede di impegnare la corsia opposta."
+  }
+}

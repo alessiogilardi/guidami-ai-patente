@@ -1,0 +1,28 @@
+{
+  "question_id": 4009,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18411",
+  "text": "Una zona a traffico limitato è un'area sempre vietata al transito dei veicoli a motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Zone a traffico limitato (ZTL)",
+      "Regolamentazione della circolazione veicolare",
+      "Accesso e transito nei centri urbani"
+    ],
+    "exact_keywords": [
+      "zona a traffico limitato",
+      "divieto di transito",
+      "veicoli a motore",
+      "accesso regolamentato"
+    ],
+    "vector_search_queries": [
+      "definizione e scopo delle zone a traffico limitato (ZTL)",
+      "condizioni di accesso e transito nelle ZTL per i veicoli a motore"
+    ],
+    "rule_explanation": "Le ZTL non sono sempre vietate ai veicoli a motore; l'accesso e il transito sono consentiti a determinate categorie di veicoli o in determinate fasce orarie, secondo le specifiche disposizioni locali."
+  }
+}

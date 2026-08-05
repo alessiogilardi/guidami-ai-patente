@@ -1,0 +1,28 @@
+{
+  "question_id": 4677,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25110",
+  "text": "Adottando uno stile di guida che limiti i consumi di carburante, è possibile ridurre l'inquinamento dell'aria",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Riduzione dei consumi di carburante",
+      "Tutela ambientale",
+      "Prevenzione dell'inquinamento atmosferico"
+    ],
+    "exact_keywords": [
+      "stile di guida",
+      "consumi di carburante",
+      "inquinamento dell'aria",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "impatto della guida sui consumi e sull'inquinamento atmosferico",
+      "correlazione tra stile di guida ecologico e riduzione delle emissioni inquinanti"
+    ],
+    "rule_explanation": "Uno stile di guida volto a limitare i consumi di carburante riduce le emissioni inquinanti, contribuendo alla diminuzione dell'inquinamento atmosferico."
+  }
+}

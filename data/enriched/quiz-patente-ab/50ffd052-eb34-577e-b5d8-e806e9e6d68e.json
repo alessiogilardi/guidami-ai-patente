@@ -1,0 +1,27 @@
+{
+  "question_id": 4406,
+  "topic": "Distanza di sicurezza",
+  "number": "22649",
+  "text": "La distanza di sicurezza dipende dall'efficienza del freno a mano",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Fattori che influenzano la distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni della strada",
+      "velocità",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "fattori che determinano la distanza di sicurezza tra veicoli",
+      "adeguamento della distanza di sicurezza in base a velocità e condizioni operative"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare collisioni, tenendo conto di velocità, condizioni della strada, traffico e veicolo, non solo del freno a mano."
+  }
+}

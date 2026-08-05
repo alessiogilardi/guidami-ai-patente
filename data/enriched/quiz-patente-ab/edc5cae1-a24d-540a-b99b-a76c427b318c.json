@@ -1,0 +1,27 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24620",
+  "text": "La sospensione della patente è disposta quando si superano di oltre 40 km/h i limiti massimi di velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sospensione della patente",
+      "Violazione dei limiti di velocità"
+    ],
+    "exact_keywords": [
+      "sospensione della patente",
+      "superamento dei limiti di velocità",
+      "40 km/h",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "sospensione patente per eccesso di velocità superiore a 40 km/h",
+      "conseguenze del superamento dei limiti di velocità di oltre 40 km/h"
+    ],
+    "rule_explanation": "La patente è sospesa in via automatica quando si supera di oltre 40 km/h il limite massimo di velocità."
+  }
+}

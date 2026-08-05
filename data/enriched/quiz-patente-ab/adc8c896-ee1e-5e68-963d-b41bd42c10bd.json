@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23535",
+  "text": "In autostrada si può sorpassare indifferentemente a destra e a sinistra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di sorpasso",
+      "Sorpasso in autostrada"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "autostrada",
+      "manovra",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "sorpasso a destra in autostrada",
+      "regolamentazione sorpasso autostradale"
+    ],
+    "rule_explanation": "In autostrada il sorpasso si effettua a sinistra, salvo eccezioni specifiche per corsie dedicate o veicoli lenti."
+  }
+}

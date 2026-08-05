@@ -1,0 +1,32 @@
+{
+  "question_id": 4412,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22703",
+  "text": "Sui motocicli in nessun caso è consentito trasportare un carico",
+  "correct_answer": false,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto di carichi sui motocicli",
+      "Normativa sui motocicli"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "trasporto di carico",
+      "eccezionale",
+      "dimensioni",
+      "peso"
+    ],
+    "vector_search_queries": [
+      "trasporto carico motocicli dimensioni peso",
+      "normativa trasporto eccezionale motocicli"
+    ],
+    "rule_explanation": "Sui motocicli è consentito il trasporto di un carico, purché non ecceda le dimensioni e il peso stabiliti e non costituisca pericolo per la circolazione."
+  }
+}

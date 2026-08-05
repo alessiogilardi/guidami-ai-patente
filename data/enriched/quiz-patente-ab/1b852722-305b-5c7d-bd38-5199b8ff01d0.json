@@ -1,0 +1,29 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24692",
+  "text": "La patente di guida di categoria BE, salvo diversa limitazione riportata sul documento stesso o salvo allineamento alla data del compleanno del titolare, vale cinque anni se rilasciata o confermata a chi non ha superato i 50 anni di età",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Durata della patente per fasce d'età",
+      "Conferma di validità della patente"
+    ],
+    "exact_keywords": [
+      "patente di guida categoria BE",
+      "confermata",
+      "superato i 50 anni di età",
+      "validità"
+    ],
+    "vector_search_queries": [
+      "validità patente BE per età del titolare",
+      "durata patente di guida dopo i 50 anni",
+      "conferma validità patente di guida BE"
+    ],
+    "rule_explanation": "La patente di categoria BE, se rilasciata o confermata a chi non ha superato i 50 anni, ha una validità di 10 anni, non 5. Oltre i 50 anni la validità si riduce a 5 anni."
+  }
+}

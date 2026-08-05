@@ -1,0 +1,32 @@
+{
+  "question_id": 4284,
+  "topic": "Segnali di indicazione",
+  "number": "21403",
+  "text": "Il segnale raffigurato preavvisa di svoltare a sinistra per una località turistica",
+  "correct_answer": true,
+  "image": "fa19a50da37f716b072eca8b6ecdf6e5.jpeg",
+  "image_description": "Preavviso di direzione e percorso - Località turistica e passaggio a livello. Il segnale indica le direzioni per Porto Torres (proseguire diritto), S. Giovanni (svoltare a sinistra) e \"nuraghe Speranza\" (svoltare a sinistra). È presente anche un segnale di pericolo che preavvisa un passaggio a livello senza barriere, con la direzione di svolta a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale blu rettangolare con indicazioni di direzione. In alto, la freccia indica dritto per \"PORTO TORRES\". A destra, una freccia indica la svolta a destra per \"S. GIOVANNI\", accompagnata da un segnale di pericolo triangolare con bordo rosso e pittogramma di un passaggio a livello senza barriere. A sinistra, una freccia indica la svolta a sinistra, con un pannello marrone integrato che riporta la scritta \"nuraghe Speranza\".",
+    "name": "Preavviso di direzione e percorso - Località turistica e passaggio a livello",
+    "description": "Il segnale indica le direzioni per Porto Torres (proseguire diritto), S. Giovanni (svoltare a sinistra) e \"nuraghe Speranza\" (svoltare a sinistra). È presente anche un segnale di pericolo che preavvisa un passaggio a livello senza barriere, con la direzione di svolta a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso di direzione",
+      "Segnali di località turistica"
+    ],
+    "exact_keywords": [
+      "preavviso di direzione",
+      "località turistica",
+      "svolta a sinistra",
+      "segnali turistici"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di direzione per località turistiche",
+      "indicazioni stradali per destinazioni turistiche",
+      "segnali che preannunciano svolta a sinistra per località turistiche"
+    ],
+    "rule_explanation": "I segnali di preavviso indicano le direzioni per raggiungere determinate località, incluse quelle turistiche, e possono richiedere svolte a sinistra o altre manovre."
+  }
+}

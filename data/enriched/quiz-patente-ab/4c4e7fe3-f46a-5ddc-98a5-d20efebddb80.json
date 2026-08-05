@@ -1,0 +1,30 @@
+{
+  "question_id": 4510,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23646",
+  "text": "L'arresto è la temporanea sospensione della marcia per esigenze del conducente o dei passeggeri di un veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Arresto del veicolo",
+      "Sosta del veicolo",
+      "Fermata del veicolo"
+    ],
+    "exact_keywords": [
+      "arresto",
+      "sosta",
+      "fermata",
+      "veicolo",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "differenza tra arresto e sosta del veicolo",
+      "definizione di arresto del veicolo per norme di circolazione",
+      "definizione di sosta del veicolo per esigenze di carico/scarico o passeggeri"
+    ],
+    "rule_explanation": "L'arresto è la sospensione della marcia imposta da norme di circolazione (es. segnali), la sosta è la sospensione volontaria per esigenze di carico/scarico o passeggeri."
+  }
+}

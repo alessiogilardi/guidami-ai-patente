@@ -1,0 +1,30 @@
+{
+  "question_id": 4392,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22516",
+  "text": "In un centro abitato, se si vede un pallone rotolare sulla carreggiata, bisogna rallentare progressivamente, per evitare di essere tamponati dal veicolo che segue",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in centro abitato",
+      "Comportamento in presenza di ostacoli imprevedibili",
+      "Prevenzione del rischio di tamponamento"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "rallentare progressivamente",
+      "ostacolo improvviso",
+      "veicolo che segue",
+      "tamponamento"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità in centro abitato in presenza di ostacoli improvvisi",
+      "manovra di rallentamento per evitare tamponamento a seguito di ostacolo imprevedibile",
+      "comportamento del conducente in caso di ostacolo sulla carreggiata in centro abitato"
+    ],
+    "rule_explanation": "In centro abitato, di fronte a un ostacolo improvviso come un pallone, occorre rallentare progressivamente per consentire al veicolo posteriore di adeguarsi ed evitare il tamponamento."
+  }
+}

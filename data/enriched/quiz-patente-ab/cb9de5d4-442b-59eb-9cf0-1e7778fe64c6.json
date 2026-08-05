@@ -1,0 +1,27 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22547",
+  "text": "Il conducente ha l'obbligo di controllare che il veicolo che lo segue rispetti la distanza di sicurezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza tra veicoli",
+      "Obblighi del conducente in materia di sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo che segue",
+      "controllo",
+      "obbligo"
+    ],
+    "vector_search_queries": [
+      "obbligo di mantenere la distanza di sicurezza dal veicolo che precede",
+      "responsabilità del conducente per la distanza di sicurezza posteriore"
+    ],
+    "rule_explanation": "Il conducente deve mantenere la distanza di sicurezza dal veicolo che precede, non da quello che segue."
+  }
+}

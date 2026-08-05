@@ -1,0 +1,33 @@
+{
+  "question_id": 4071,
+  "topic": "Segnali di pericolo",
+  "number": "19107",
+  "text": "I pannelli raffigurati servono ad indicare che ci si sta avvicinando al passaggio a livello",
+  "correct_answer": true,
+  "image": "763ca110cf7b142f789b6577eb5719b4.jpeg",
+  "image_description": "Pannelli distanziometrici per passaggio a livello. I pannelli raffigurati sono pannelli distanziometrici che indicano l'avvicinamento a un passaggio a livello. Il pannello con tre barre oblique rosse indica che ci si trova a 150 metri dal passaggio a livello, quello con due barre a 100 metri e quello con una barra a 50 metri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre pannelli rettangolari verticali, disposti uno accanto all'altro. Ciascun pannello presenta delle barre oblique rosse su sfondo bianco. Il pannello più a sinistra ha tre barre oblique, quello centrale ne ha due e quello più a destra ne ha una. Questi pannelli sono noti come pannelli distanziometrici e vengono utilizzati per segnalare la distanza da un pericolo, in questo caso un passaggio a livello. La sequenza e il numero di barre indicano la progressiva vicinanza al passaggio a livello.",
+    "name": "Pannelli distanziometrici per passaggio a livello",
+    "description": "I pannelli raffigurati sono pannelli distanziometrici che indicano l'avvicinamento a un passaggio a livello. Il pannello con tre barre oblique rosse indica che ci si trova a 150 metri dal passaggio a livello, quello con due barre a 100 metri e quello con una barra a 50 metri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Passaggio a livello",
+      "Preavviso di pericolo"
+    ],
+    "exact_keywords": [
+      "pannelli distanziometrici",
+      "passaggio a livello",
+      "segnali di pericolo",
+      "avvicinamento"
+    ],
+    "vector_search_queries": [
+      "pannelli distanziometrici per passaggio a livello",
+      "segnalazione di pericolo per passaggio a livello",
+      "preavviso di avvicinamento a passaggio a livello con segnali stradali"
+    ],
+    "rule_explanation": "I pannelli distanziometrici presegnalano l'avvicinamento a un passaggio a livello, indicando la progressiva vicinanza con barre oblique rosse."
+  }
+}

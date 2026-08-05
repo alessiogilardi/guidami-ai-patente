@@ -1,0 +1,34 @@
+{
+  "question_id": 4067,
+  "topic": "Segnali di pericolo",
+  "number": "19065",
+  "text": "Il segnale raffigurato indica la presenza di una stazione ferroviaria a 150 metri",
+  "correct_answer": false,
+  "image": "9ed0e8363c88fd8588f80faaf25082b2.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere. Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata una locomotiva a vapore nera, simbolo di un attraversamento ferroviario. Non sono presenti pannelli integrativi né altri elementi di contesto stradale. Si tratta quindi di un segnale isolato. Il segnale raffigurato è il segnale di pericolo 'Passaggio a livello con barriere'.",
+    "name": "Segnale di passaggio a livello con barriere",
+    "description": "Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Passaggio a livello",
+      "Preavviso di pericolo"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "stazione ferroviaria",
+      "passaggio a livello",
+      "barriere",
+      "distanza"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per passaggio a livello con barriere",
+      "differenza tra segnale di stazione ferroviaria e passaggio a livello",
+      "preavviso di attraversamento ferroviario a livello"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante un passaggio a livello con barriere preannuncia un attraversamento ferroviario a livello, non una stazione, e impone prudenza e rallentamento."
+  }
+}

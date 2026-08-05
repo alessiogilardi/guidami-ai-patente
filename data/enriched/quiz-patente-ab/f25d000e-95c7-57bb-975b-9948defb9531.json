@@ -1,0 +1,32 @@
+{
+  "question_id": 4354,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22063",
+  "text": "Il pannello integrativo raffigurato può essere abbinato ad un segnale di obbligo",
+  "correct_answer": true,
+  "image": "9176878fa4d26bd38e490c176920999a.jpeg",
+  "image_description": "Pannello integrativo: veicoli pesanti. Il pannello integrativo raffigurato indica che il segnale al quale è abbinato si applica ai veicoli pesanti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare con bordo nero su sfondo bianco. Al centro è raffigurato il pittogramma di un veicolo pesante (camion). Questo pannello è comunemente utilizzato per integrare segnali stradali, specificando che la loro prescrizione o indicazione si applica specificamente ai veicoli pesanti.",
+    "name": "Pannello integrativo: veicoli pesanti",
+    "description": "Il pannello integrativo raffigurato indica che il segnale al quale è abbinato si applica ai veicoli pesanti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pannelli integrativi",
+      "Segnaletica stradale di obbligo",
+      "Destinatari specifici del segnale"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "segnali di obbligo",
+      "veicoli pesanti",
+      "abbinato"
+    ],
+    "vector_search_queries": [
+      "pannelli integrativi che specificano categorie di veicoli per segnali di obbligo",
+      "abbinamento pannello veicoli pesanti a segnali di obbligo"
+    ],
+    "rule_explanation": "I pannelli integrativi possono specificare a quali categorie di veicoli si applica un segnale, inclusi i segnali di obbligo, come in questo caso per i veicoli pesanti."
+  }
+}

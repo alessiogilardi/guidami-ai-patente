@@ -1,0 +1,28 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22510",
+  "text": "Nel caso in cui un veicolo rimanga fermo tra le barriere chiuse del passaggio a livello, unico obbligo del conducente è quello di spegnere il motore e invitare eventuali passeggeri a scendere dal veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente ai passaggi a livello",
+      "Sicurezza stradale in caso di arresto involontario"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "barriere chiuse",
+      "veicolo fermo",
+      "spegnere il motore",
+      "invitare i passeggeri a scendere"
+    ],
+    "vector_search_queries": [
+      "obblighi conducente veicolo fermo passaggio a livello con barriere chiuse",
+      "condotta da tenere in caso di arresto involontario tra le barriere di un passaggio a livello"
+    ],
+    "rule_explanation": "In caso di arresto tra le barriere di un passaggio a livello, il conducente deve spegnere il motore, invitare i passeggeri a scendere e, se possibile, spingere il veicolo fuori dal passaggio a livello."
+  }
+}

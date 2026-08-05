@@ -1,0 +1,28 @@
+{
+  "question_id": 4614,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24566",
+  "text": "Il codice armonizzato 96, apposto sulla patente di categoria B, indica che il titolare può condurre un'autovettura che traina un rimorchio solo in Italia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Codice armonizzato patente",
+      "Restrizioni alla guida",
+      "Validità territoriale patente"
+    ],
+    "exact_keywords": [
+      "codice armonizzato 96",
+      "patente categoria B",
+      "rimorchio",
+      "validità territoriale"
+    ],
+    "vector_search_queries": [
+      "codice armonizzato 96 patente B rimorchio validità Italia",
+      "limitazioni territoriali patente B con codice 96 per traino rimorchio"
+    ],
+    "rule_explanation": "Il codice armonizzato 96 sulla patente B abilita alla guida di complessi veicolari con motrice di cat. B e rimorchio, senza limiti territoriali in Italia."
+  }
+}

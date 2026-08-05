@@ -1,0 +1,29 @@
+{
+  "question_id": 4380,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22386",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi da mezz'ora prima del tramonto a mezz'ora dopo il sorgere del sole",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della velocità in galleria",
+      "Obblighi di comportamento in galleria"
+    ],
+    "exact_keywords": [
+      "galleria",
+      "ridurre la velocità",
+      "fermarsi",
+      "mezzo minuto prima del tramonto",
+      "mezzo minuto dopo il sorgere del sole"
+    ],
+    "vector_search_queries": [
+      "obblighi di comportamento nelle gallerie stradali",
+      "riduzione della velocità e fermata in galleria",
+      "condizioni di visibilità e velocità in galleria"
+    ],
+    "rule_explanation": "Non esiste un obbligo generale di ridurre la velocità o fermarsi in galleria in determinati orari. La velocità va adeguata alle condizioni, ma non ci sono fasce orarie specifiche per la riduzione o l'arresto."
+  }
+}

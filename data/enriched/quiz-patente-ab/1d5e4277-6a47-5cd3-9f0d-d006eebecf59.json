@@ -1,0 +1,33 @@
+{
+  "question_id": 4316,
+  "topic": "Segnali di indicazione",
+  "number": "21704",
+  "text": "Il segnale raffigurato consente la circolazione dei motocicli su tutte e due le corsie",
+  "correct_answer": true,
+  "image": "7a0d4616a0410274021c7e94c7ead252.jpeg",
+  "image_description": "Indicazioni sulla corsia per autocarri. Il segnale indica che la corsia di sinistra è riservata ai veicoli che non superano le 3,5 tonnellate, mentre la corsia di destra è per tutti i veicoli. Pertanto, gli autocarri con massa a pieno carico superiore a 3,5 tonnellate possono circolare solo sulla corsia di destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di tipo normativo, di colore blu con bordo bianco, raffigurante due frecce bianche verticali che indicano la direzione consentita per due corsie di marcia. Sulla freccia di sinistra è sovrapposto un segnale di divieto di transito per autocarri (cerchio rosso con barra orizzontale, raffigurante un camion nero all'interno). La freccia di destra è libera. Questo indica una prescrizione specifica per l'utilizzo delle corsie in relazione alla massa dei veicoli.",
+    "name": "Indicazioni sulla corsia per autocarri",
+    "description": "Il segnale indica che la corsia di sinistra è riservata ai veicoli che non superano le 3,5 tonnellate, mentre la corsia di destra è per tutti i veicoli. Pertanto, gli autocarri con massa a pieno carico superiore a 3,5 tonnellate possono circolare solo sulla corsia di destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale e verticale",
+      "Regolamentazione della circolazione per tipo di veicolo",
+      "Utilizzo delle corsie di marcia"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "corsia riservata",
+      "massa a pieno carico",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione che regolano l'uso delle corsie per massa a pieno carico",
+      "circolazione di veicoli su corsie riservate in base a massa a pieno carico",
+      "interpretazione segnali di corsia per autocarri e massa massima consentita"
+    ],
+    "rule_explanation": "I segnali di indicazione stradale possono prescrivere o consentire la circolazione di determinate categorie di veicoli su specifiche corsie di marcia, in base a criteri come la massa a pieno carico."
+  }
+}

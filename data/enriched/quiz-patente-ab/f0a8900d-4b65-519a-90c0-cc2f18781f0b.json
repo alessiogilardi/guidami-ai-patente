@@ -1,0 +1,32 @@
+{
+  "question_id": 4001,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18315",
+  "text": "In una carreggiata del tipo rappresentato si può sorpassare anche in curva",
+  "correct_answer": true,
+  "image": "637129125cd2305679f68e11751ad483.jpeg",
+  "image_description": "Carreggiata a doppio senso di circolazione con quattro corsie. La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale. Si osservano due carreggiate separate da una linea bianca continua. Ogni carreggiata è a sua volta suddivisa in due corsie da strisce bianche discontinue. Questo schema indica una strada con due corsie per senso di marcia, per un totale di quattro corsie. La linea continua centrale separa i due sensi di marcia. Le strisce discontinue all'interno di ciascuna carreggiata indicano la possibilità di superamento o cambio di corsia all'interno dello stesso senso di marcia. Pertanto, la scena rappresenta una carreggiata a doppio senso di circolazione con quattro corsie totali.",
+    "name": "Carreggiata a doppio senso di circolazione con quattro corsie",
+    "description": "La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso in curva",
+      "Regole di circolazione",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "curva",
+      "carreggiata",
+      "doppio senso di circolazione"
+    ],
+    "vector_search_queries": [
+      "sorpasso in curva con visibilità sufficiente",
+      "divieto di sorpasso in curva e regole di circolazione"
+    ],
+    "rule_explanation": "Il sorpasso è consentito in curva solo se la visibilità della strada è sufficiente a garantire la sicurezza, indipendentemente dal numero di corsie o dal tipo di carreggiata."
+  }
+}

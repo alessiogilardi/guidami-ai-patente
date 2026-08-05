@@ -1,0 +1,31 @@
+{
+  "question_id": 4322,
+  "topic": "Segnali di indicazione",
+  "number": "21760",
+  "text": "Il segnale raffigurato indica una fermata di autobus di pubblico trasporto extraurbano",
+  "correct_answer": true,
+  "image": "6a522dfdeecbf56ec4b02389fb3b040e.jpeg",
+  "image_description": "Fermata di autobus. Il segnale indica una fermata di autobus. Può essere integrato da un pannello integrativo che riporta gli orari di partenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare verticale, con bordo blu e sfondo bianco all'interno di un riquadro centrale. Al centro del riquadro bianco è presente il pittogramma stilizzato di un autobus. Sotto il riquadro bianco, la parte inferiore del segnale è di colore blu uniforme. Si tratta di un segnale di indicazione.",
+    "name": "Fermata di autobus",
+    "description": "Il segnale indica una fermata di autobus. Può essere integrato da un pannello integrativo che riporta gli orari di partenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Fermata di trasporto pubblico extraurbano"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "fermata di autobus",
+      "trasporto pubblico extraurbano",
+      "pannello integrativo"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di fermata autobus extraurbano",
+      "indicazione fermata trasporto pubblico su gomma fuori dai centri abitati"
+    ],
+    "rule_explanation": "Il segnale di fermata di autobus di linea extraurbana indica il luogo dove i passeggeri possono salire o scendere dai mezzi di trasporto pubblico su percorsi extraurbani."
+  }
+}

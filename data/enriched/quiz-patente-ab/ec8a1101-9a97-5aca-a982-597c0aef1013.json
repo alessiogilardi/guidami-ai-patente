@@ -1,0 +1,33 @@
+{
+  "question_id": 4283,
+  "topic": "Segnali di indicazione",
+  "number": "21391",
+  "text": "Il segnale raffigurato vieta agli autocarri di massa a pieno carico superiore a 3,5 tonnellate di proseguire diritto per Avezzano",
+  "correct_answer": true,
+  "image": "1012b152b1a239de54a0afecec9d77e0.jpeg",
+  "image_description": "Segnale di preavviso di deviazione con indicazioni di località e segnale di divieto. Il segnale indica che per raggiungere Pescara è necessario svoltare a sinistra, mentre per Avezzano e il centro è necessario proseguire diritto. È presente anche un segnale di divieto di transito per autocarri che indica che questi veicoli non possono proseguire diritto. L'autostrada Roma-L'Aquila è indicata a sinistra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di deviazione. In alto a destra, su sfondo blu, è indicata la destinazione \"PESCARA\" con una freccia che punta a sinistra. Sotto, su sfondo bianco, sono indicate le destinazioni \"AVEZZANO\" e \"centro\" con una freccia che punta verso l'alto. A destra, una freccia a tre rami indica le direzioni: sinistra per Pescara, dritto per Avezzano e centro. Sul ramo che indica dritto, è presente un segnale di divieto di transito per autocarri (cerchio rosso con barra orizzontale rossa e un'immagine di un camion all'interno). In basso a sinistra, su sfondo verde, è indicata la destinazione \"ROMA - L'AQUILA\" con il simbolo dell'autostrada A24/A25.",
+    "name": "Segnale di preavviso di deviazione con indicazioni di località e segnale di divieto",
+    "description": "Il segnale indica che per raggiungere Pescara è necessario svoltare a sinistra, mentre per Avezzano e il centro è necessario proseguire diritto. È presente anche un segnale di divieto di transito per autocarri che indica che questi veicoli non possono proseguire diritto. L'autostrada Roma-L'Aquila è indicata a sinistra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto specifico per categoria di veicoli",
+      "Indicazioni stradali per destinazioni specifiche"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "autocarri",
+      "massa a pieno carico",
+      "divieto di transito",
+      "destinazione"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto per autocarri con massa a pieno carico superiore a 3,5 tonnellate",
+      "indicazioni stradali per autocarri e destinazioni specifiche",
+      "interpretazione segnali di preavviso con divieto per categorie di veicoli"
+    ],
+    "rule_explanation": "Il segnale raffigurato vieta il proseguimento diritto agli autocarri con massa a pieno carico superiore a 3,5 tonnellate, indicando una destinazione alternativa per tali veicoli."
+  }
+}

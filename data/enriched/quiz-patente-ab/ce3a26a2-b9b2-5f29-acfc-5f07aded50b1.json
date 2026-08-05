@@ -1,0 +1,27 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22316",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi quando riesce malagevole l'incrocio con altri veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in base alle condizioni di traffico",
+      "Obbligo di moderare la velocità per garantire la sicurezza"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "incrocio con altri veicoli",
+      "malagevolezza",
+      "pericolo alla circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità in caso di incrocio difficoltoso",
+      "moderazione della velocità per evitare pericolo o intralcio alla circolazione"
+    ],
+    "rule_explanation": "Il conducente deve ridurre la velocità e fermarsi se l'incrocio con altri veicoli crea difficoltà o pericolo, anche se non vi sono limiti specifici da rispettare."
+  }
+}

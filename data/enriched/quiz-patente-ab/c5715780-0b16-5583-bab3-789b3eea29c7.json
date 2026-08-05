@@ -1,0 +1,33 @@
+{
+  "question_id": 4313,
+  "topic": "Segnali di indicazione",
+  "number": "21673",
+  "text": "Il segnale raffigurato indica il percorso da fare per prendere la strada di sinistra",
+  "correct_answer": true,
+  "image": "668903331caeead72a084bb8ba238e53.jpeg",
+  "image_description": "Segnale di parcheggio con percorso obbligato. Il segnale indica la disposizione dei parcheggi e il percorso da seguire per immettersi in uno di essi, con una freccia che indica la direzione di svolta a sinistra per accedere al parcheggio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bordi neri. Al suo interno, su sfondo bianco, è rappresentata una disposizione di stalli di parcheggio, indicati da rettangoli grigi. Una freccia nera disegna un percorso a forma di 'P' rovesciata, che parte dal basso, sale, gira a destra e poi scende verso sinistra, terminando con una freccia che indica la direzione sinistra. Questo percorso suggerisce come immettersi in uno degli stalli di parcheggio. Non ci sono altri elementi visivi o segnali.",
+    "name": "Segnale di parcheggio con percorso obbligato",
+    "description": "Il segnale indica la disposizione dei parcheggi e il percorso da seguire per immettersi in uno di essi, con una freccia che indica la direzione di svolta a sinistra per accedere al parcheggio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione stradale",
+      "Percorso obbligato",
+      "Segnali di preavviso e di direzione"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "percorso obbligato",
+      "direzione",
+      "svolta a sinistra"
+    ],
+    "vector_search_queries": [
+      "segnali stradali che indicano il percorso obbligato",
+      "interpretazione segnali di direzione e percorso obbligato",
+      "segnali di indicazione con freccia direzionale"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la direzione da seguire per immettersi in una determinata strada o area, in questo caso la svolta a sinistra per accedere al parcheggio."
+  }
+}

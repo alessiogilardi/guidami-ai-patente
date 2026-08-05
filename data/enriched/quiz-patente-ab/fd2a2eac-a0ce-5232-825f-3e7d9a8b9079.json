@@ -1,0 +1,28 @@
+{
+  "question_id": 4559,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24010",
+  "text": "Quando stanno per riprendere la marcia dopo un arresto al semaforo, i conducenti di autocarri possono facilmente avvistare pedoni o ciclisti che affiancano e sfiorano la parte anteriore dei propri veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità e punti ciechi dei veicoli pesanti",
+      "Sicurezza stradale e prevenzione incidenti"
+    ],
+    "exact_keywords": [
+      "autocarri",
+      "visibilità",
+      "pedoni",
+      "ciclisti",
+      "punti ciechi"
+    ],
+    "vector_search_queries": [
+      "visibilità anteriore e laterale degli autocarri per pedoni e ciclisti",
+      "punti ciechi dei veicoli pesanti e sicurezza dei vulnerabili"
+    ],
+    "rule_explanation": "I conducenti di autocarri devono prestare particolare attenzione ai punti ciechi anteriori e laterali, dove pedoni e ciclisti possono essere non visibili, specialmente durante manovre come la ripresa della marcia."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4130,
+  "topic": "Segnali di divieto",
+  "number": "19808",
+  "text": "Il segnale raffigurato indica l'altezza massima dei veicoli ammessi al transito",
+  "correct_answer": true,
+  "image": "016a0bbce288af6879bd8c8e41bea0bf.jpeg",
+  "image_description": "Segnale di altezza massima. Il segnale indica l'altezza massima dei veicoli ammessi al transito, misurata dal piano stradale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente un numero \"3\" grande, seguito da \",50\" in apice, e due frecce nere verticali, una rivolta verso l'alto e una verso il basso, che delimitano il numero. Questo è il segnale di \"altezza massima\".",
+    "name": "Segnale di altezza massima",
+    "description": "Il segnale indica l'altezza massima dei veicoli ammessi al transito, misurata dal piano stradale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Segnali di pericolo",
+      "Limitazioni dimensionali dei veicoli"
+    ],
+    "exact_keywords": [
+      "altezza massima",
+      "veicoli ammessi",
+      "transito",
+      "piano stradale"
+    ],
+    "vector_search_queries": [
+      "segnale divieto altezza massima veicoli",
+      "limitazione altezza transito veicoli",
+      "altezza massima consentita dal piano stradale"
+    ],
+    "rule_explanation": "Il segnale di 'altezza massima' indica la quota da terra oltre la quale i veicoli non possono procedere per evitare collisioni con ostacoli fissi."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4387,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22451",
+  "text": "Si deve regolare la velocità in base allo stato di manutenzione e pulizia della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità adeguata alle condizioni di guida",
+      "Obbligo di prudenza e diligenza del conducente"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "condizioni della strada",
+      "manutenzione",
+      "pulizia",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità allo stato di manutenzione e pulizia della strada",
+      "obbligo di regolare la velocità in base alle condizioni del manto stradale"
+    ],
+    "rule_explanation": "Il conducente deve adeguare la velocità alle condizioni della strada, inclusi lo stato di manutenzione e pulizia, per evitare pericoli o intralci alla circolazione."
+  }
+}

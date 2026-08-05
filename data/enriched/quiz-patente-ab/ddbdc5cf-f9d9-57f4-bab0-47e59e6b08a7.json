@@ -1,0 +1,32 @@
+{
+  "question_id": 4216,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20769",
+  "text": "Rispetto al veicolo che procede nel senso della freccia, la striscia continua centrale in figura consente l'inversione del senso di marcia",
+  "correct_answer": false,
+  "image": "2a8cb20b2ed164c9a0b9677bc5fd1320.jpeg",
+  "image_description": "Segnaletica orizzontale: striscia bianca continua e tratteggiata. La striscia bianca continua al centro della carreggiata, se presente, indica la separazione delle corsie in opposti sensi di marcia e non può essere superata. In questo caso, la striscia è tratteggiata, indicando che la manovra di sorpasso è consentita. Il veicolo si trova nella corsia di destra, con una freccia che indica la direzione di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada con due corsie per senso di marcia, separate da una linea bianca. La linea al centro della carreggiata è tratteggiata, indicando che è consentito il sorpasso. Un veicolo nero si trova nella corsia di destra, con una freccia tratteggiata che indica la sua direzione di marcia. Non sono presenti segnali verticali o altre indicazioni stradali.",
+    "name": "Segnaletica orizzontale: striscia bianca continua e tratteggiata",
+    "description": "La striscia bianca continua al centro della carreggiata, se presente, indica la separazione delle corsie in opposti sensi di marcia e non può essere superata. In questo caso, la striscia è tratteggiata, indicando che la manovra di sorpasso è consentita. Il veicolo si trova nella corsia di destra, con una freccia che indica la direzione di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Divisione della carreggiata",
+      "Inversione del senso di marcia"
+    ],
+    "exact_keywords": [
+      "striscia continua centrale",
+      "inversione del senso di marcia",
+      "superamento",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "divieto di inversione del senso di marcia con striscia continua centrale",
+      "segnaletica orizzontale che vieta il superamento e l'inversione di marcia"
+    ],
+    "rule_explanation": "La striscia continua centrale vieta il superamento e l'inversione del senso di marcia, separando i sensi di marcia opposti. La manovra è consentita solo con striscia tratteggiata."
+  }
+}

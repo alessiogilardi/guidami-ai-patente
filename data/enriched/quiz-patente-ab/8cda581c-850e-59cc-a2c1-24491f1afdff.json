@@ -1,0 +1,27 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23548",
+  "text": "Nell'eseguire la manovra di sorpasso non bisogna accelerare",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Comportamento del conducente durante il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "accelerare",
+      "manovra",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "sorpasso e accelerazione vietata",
+      "regole di condotta durante il sorpasso"
+    ],
+    "rule_explanation": "Durante il sorpasso è consentito accelerare per completare la manovra in sicurezza, purché non si superino i limiti di velocità e si garantisca la sicurezza."
+  }
+}

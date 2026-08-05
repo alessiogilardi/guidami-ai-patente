@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23542",
+  "text": "E' consentito il sorpasso a destra dei motocicli se vi è spazio sufficiente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale del sorpasso",
+      "Sorpasso a destra"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "motocicli",
+      "manovra vietata",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso a destra",
+      "sorpasso motocicli corsie"
+    ],
+    "rule_explanation": "Il sorpasso a destra è generalmente vietato, salvo eccezioni specifiche per i motocicli in determinate condizioni di traffico e carreggiata."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4389,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22473",
+  "text": "Se si attraversa ad alta velocità un incrocio avendo diritto di precedenza, in caso di incidente, non può escludersi un concorso di colpa",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di prudenza alla guida",
+      "Concorso di colpa in caso di incidente",
+      "Diritto di precedenza e responsabilità"
+    ],
+    "exact_keywords": [
+      "incidente",
+      "concorso di colpa",
+      "diritto di precedenza",
+      "velocità elevata"
+    ],
+    "vector_search_queries": [
+      "concorso di colpa incidente incrocio alta velocità",
+      "responsabilità conducente diritto di precedenza velocità elevata",
+      "obbligo di prudenza anche con precedenza incrocio"
+    ],
+    "rule_explanation": "Anche chi ha il diritto di precedenza deve moderare la velocità in prossimità degli incroci per evitare incidenti, potendo altrimenti concorrere nella colpa."
+  }
+}

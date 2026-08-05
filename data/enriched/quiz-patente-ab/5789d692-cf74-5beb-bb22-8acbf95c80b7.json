@@ -1,0 +1,32 @@
+{
+  "question_id": 4115,
+  "topic": "Segnali di divieto",
+  "number": "19645",
+  "text": "Il segnale raffigurato vieta il transito ai veicoli trainati da cavalli",
+  "correct_answer": true,
+  "image": "2c1662a4924d2164fcd5f9efc31f87ae.jpeg",
+  "image_description": "Segnale di divieto di transito per veicoli a trazione animale. Il segnale vieta il transito ai veicoli a trazione animale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è raffigurato un cavallo che traina una carrozza, con una persona seduta sulla carrozza. Il pittogramma è nero. Questo segnale indica un divieto specifico.",
+    "name": "Segnale di divieto di transito per veicoli a trazione animale",
+    "description": "Il segnale vieta il transito ai veicoli a trazione animale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Divieto di transito",
+      "Veicoli a trazione animale"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "transito",
+      "veicoli a trazione animale",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di divieto di transito per veicoli a trazione animale",
+      "interpretazione segnale divieto veicoli trainati da cavalli"
+    ],
+    "rule_explanation": "Il segnale di divieto raffigurato vieta specificamente il transito ai veicoli a trazione animale, come da sua denominazione ufficiale."
+  }
+}

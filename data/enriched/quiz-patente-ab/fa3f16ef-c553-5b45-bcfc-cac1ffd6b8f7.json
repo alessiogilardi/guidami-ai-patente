@@ -1,0 +1,28 @@
+{
+  "question_id": 4022,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18535",
+  "text": "Il passo carrabile deve essere corredato da apposito segnale, che riporti l'ente e il numero di autorizzazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Passo carrabile",
+      "Segnalazione di passo carrabile",
+      "Autorizzazione di passo carrabile"
+    ],
+    "exact_keywords": [
+      "passo carrabile",
+      "segnale di passo carrabile",
+      "ente proprietario",
+      "numero di autorizzazione"
+    ],
+    "vector_search_queries": [
+      "segnalazione obbligatoria passo carrabile",
+      "requisiti cartello passo carrabile autorizzato"
+    ],
+    "rule_explanation": "Il passo carrabile, per essere tale, deve essere segnalato con apposito cartello indicante l'ente che ha rilasciato l'autorizzazione e il relativo numero."
+  }
+}

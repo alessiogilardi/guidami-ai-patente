@@ -1,0 +1,31 @@
+{
+  "question_id": 4425,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22822",
+  "text": "In una strada a doppio senso di marcia con due corsie, come in figura, i veicoli possono circolare per file parallele",
+  "correct_answer": false,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento dei veicoli sulla carreggiata",
+      "Circolazione su strade a doppio senso di marcia"
+    ],
+    "exact_keywords": [
+      "strada a doppio senso di marcia",
+      "corsie",
+      "file parallele",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "circolazione veicoli su strada a doppio senso di marcia con più corsie",
+      "divieto di circolare in file parallele su strade a doppio senso"
+    ],
+    "rule_explanation": "Su una strada a doppio senso di marcia, le corsie sono destinate alla circolazione dei veicoli in sensi opposti e non possono essere percorse in file parallele."
+  }
+}

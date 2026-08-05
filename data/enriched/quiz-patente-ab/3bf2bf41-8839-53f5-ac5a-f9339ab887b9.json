@@ -1,0 +1,27 @@
+{
+  "question_id": 4604,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24451",
+  "text": "Le giacche ad uso motociclistico hanno inserti rigidi protettivi in corrispondenza delle articolazioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Equipaggiamento protettivo per motociclisti",
+      "Dispositivi di protezione individuale (DPI)"
+    ],
+    "exact_keywords": [
+      "giacche per motociclisti",
+      "inserti rigidi",
+      "protezioni per le articolazioni",
+      "abbigliamento tecnico"
+    ],
+    "vector_search_queries": [
+      "giacche motociclistiche con protezioni rigide per articolazioni",
+      "requisiti di sicurezza abbigliamento motociclistico DPI"
+    ],
+    "rule_explanation": "Le giacche da motociclista devono essere dotate di protezioni rigide o semi-rigide nelle zone delle articolazioni per garantire la sicurezza del conducente."
+  }
+}

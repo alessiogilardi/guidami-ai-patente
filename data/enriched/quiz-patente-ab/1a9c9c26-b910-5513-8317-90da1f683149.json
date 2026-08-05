@@ -1,0 +1,29 @@
+{
+  "question_id": 4714,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25444",
+  "text": "Nei veicoli a motore a due ruote, la catena di trasmissione deve essere pulita con detergente sgrassante, ma assolutamente non lubrificata per non far slittare il cambio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Trasmissione a catena",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "catena di trasmissione",
+      "veicoli a motore a due ruote",
+      "lubrificazione",
+      "detergente sgrassante"
+    ],
+    "vector_search_queries": [
+      "manutenzione catena trasmissione moto",
+      "pulizia e lubrificazione catena moto",
+      "funzionamento cambio moto"
+    ],
+    "rule_explanation": "La catena di trasmissione dei veicoli a due ruote deve essere regolarmente pulita e lubrificata per garantire il corretto funzionamento e la sicurezza, non solo pulita con sgrassatore."
+  }
+}

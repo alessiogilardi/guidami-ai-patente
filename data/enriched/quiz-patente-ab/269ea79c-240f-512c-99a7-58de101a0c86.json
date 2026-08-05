@@ -1,0 +1,33 @@
+{
+  "question_id": 4159,
+  "topic": "Segnali di obbligo",
+  "number": "20172",
+  "text": "Il segnale raffigurato indica l'inizio della circolazione per file parallele",
+  "correct_answer": false,
+  "image": "abdee1e67c3ce68915d63029b1eb9b71.jpeg",
+  "image_description": "Direzioni consentite. Il segnale indica che è obbligatorio proseguire diritto, svoltare a destra o svoltare a sinistra. Le frecce indicano le uniche direzioni consentite.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e un bordo bianco. Al centro del segnale sono presenti due frecce bianche su sfondo blu. Una freccia punta verso sinistra e l'altra verso destra, partendo da un punto comune che indica la direzione dritta. Il segnale è un segnale di obbligo.",
+    "name": "Direzioni consentite",
+    "description": "Il segnale indica che è obbligatorio proseguire diritto, svoltare a destra o svoltare a sinistra. Le frecce indicano le uniche direzioni consentite."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo di direzione",
+      "Direzioni consentite"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "direzioni consentite",
+      "circolazione per file parallele",
+      "obbligo di proseguire diritto",
+      "svoltare a destra"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo delle direzioni consentite",
+      "interpretazione segnale di obbligo di direzione con frecce multiple",
+      "differenza tra segnale di obbligo di direzione e inizio circolazione per file parallele"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica le uniche direzioni imposte, non l'inizio della circolazione per file parallele. Le frecce specificano le manovre permesse."
+  }
+}

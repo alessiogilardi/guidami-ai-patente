@@ -1,0 +1,27 @@
+{
+  "question_id": 4533,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23822",
+  "text": "Chiunque non abbia potuto evitare la caduta o lo spargimento di materie viscide, infiammabili o pericolose, deve, tra l'altro, rimuoverle o spargere sul terreno, se possibile, sabbia, terra, segatura o altro materiale idoneo a ripristinare l'aderenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione di materiali pericolosi sulla carreggiata",
+      "Obblighi in caso di caduta di materie pericolose"
+    ],
+    "exact_keywords": [
+      "caduta di materie",
+      "rimozione di materie pericolose",
+      "ripristino dell'aderenza",
+      "materiale idoneo"
+    ],
+    "vector_search_queries": [
+      "obblighi in caso di caduta di materie pericolose sulla strada",
+      "rimozione e neutralizzazione di sostanze pericolose per la circolazione"
+    ],
+    "rule_explanation": "In caso di caduta di materie pericolose, chiunque non possa evitarla deve rimuoverle o renderle innocue, ripristinando l'aderenza con materiale idoneo."
+  }
+}

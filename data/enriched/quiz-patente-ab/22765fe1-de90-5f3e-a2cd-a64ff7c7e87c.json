@@ -1,0 +1,28 @@
+{
+  "question_id": 4715,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25450",
+  "text": "Sui motocicli, il livello del lubrificante va controllato con il veicolo in piano e dopo aver spento il motore da alcuni minuti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo livello lubrificante motociclo",
+      "Manutenzione veicolo",
+      "Stabilità e tenuta di strada"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "livello del lubrificante",
+      "veicolo in piano",
+      "spegnere il motore"
+    ],
+    "vector_search_queries": [
+      "controllo livello olio motociclo con motore spento e veicolo in piano",
+      "corretta misurazione lubrificante motociclo"
+    ],
+    "rule_explanation": "Il controllo del livello dell'olio nei motocicli deve avvenire a veicolo in piano e dopo un congruo intervallo dallo spegnimento del motore per garantire una misurazione accurata."
+  }
+}

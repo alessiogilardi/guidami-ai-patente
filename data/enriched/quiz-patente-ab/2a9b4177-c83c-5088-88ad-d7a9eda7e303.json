@@ -1,0 +1,27 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18715",
+  "text": "Il conducente che si accorga che il suo veicolo ha forti perdite di olio o carburante, deve immediatamente avvisare l'ente proprietario della strada o gli organi di polizia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente in caso di avaria del veicolo",
+      "Segnalazione di pericolo o intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "perdite di olio",
+      "perdite di carburante",
+      "avvisare l'ente proprietario della strada",
+      "organi di polizia"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalazione perdite olio carburante veicolo",
+      "avviso a ente proprietario strada o polizia per avaria veicolo"
+    ],
+    "rule_explanation": "Il conducente è tenuto a segnalare tempestivamente agli enti proprietari della strada o alle forze dell'ordine eventuali perdite di olio o carburante dal veicolo per evitare pericoli."
+  }
+}

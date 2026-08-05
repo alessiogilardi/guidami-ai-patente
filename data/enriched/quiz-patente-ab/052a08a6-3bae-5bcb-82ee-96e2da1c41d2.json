@@ -1,0 +1,28 @@
+{
+  "question_id": 4555,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23987",
+  "text": "I veicoli sono tanto più sicuri, nella circolazione, quanto più le loro masse sono differenziate",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza stradale",
+      "Caratteristiche tecniche dei veicoli",
+      "Massa del veicolo"
+    ],
+    "exact_keywords": [
+      "masse differenziate",
+      "sicurezza nella circolazione",
+      "veicoli",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "sicurezza veicoli circolazione stradale masse",
+      "influenza massa veicolo sulla sicurezza stradale"
+    ],
+    "rule_explanation": "La sicurezza dei veicoli non dipende dalla differenziazione delle loro masse, ma da altri fattori come la stabilità, i sistemi frenanti e la corretta manutenzione."
+  }
+}

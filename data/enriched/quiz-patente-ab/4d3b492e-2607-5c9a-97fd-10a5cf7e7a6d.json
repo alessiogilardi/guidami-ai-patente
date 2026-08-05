@@ -1,0 +1,32 @@
+{
+  "question_id": 4344,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21970",
+  "text": "Il delineatore raffigurato viene posto solo su strade extraurbane principali",
+  "correct_answer": false,
+  "image": "5107aff1b4409bb9b04911c612214719.jpeg",
+  "image_description": "Delineatore di ostacolo o deviazione. Il delineatore raffigurato, con le sue chevron bianche e nere alternate su sfondo nero, indica la presenza di un ostacolo o di una deviazione sulla carreggiata, invitando il conducente a prestare attenzione e a moderare la velocità. Viene comunemente utilizzato per segnalare curve pericolose, restringimenti o cantieri stradali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore di ostacolo o deviazione. È composto da una traversa orizzontale rettangolare, divisa in sezioni alternate di colore nero e bianco a forma di V (chevron), che puntano nella direzione della deviazione o dell'ostacolo. La traversa è sostenuta da due montanti verticali, posizionati su una linea orizzontale che rappresenta il suolo. Il delineatore è posizionato centralmente rispetto alla linea del suolo. Le chevron bianche sono disposte in modo da indicare una direzione, in questo caso, verso sinistra e poi verso destra, suggerendo una curva o una deviazione.",
+    "name": "Delineatore di ostacolo o deviazione",
+    "description": "Il delineatore raffigurato, con le sue chevron bianche e nere alternate su sfondo nero, indica la presenza di un ostacolo o di una deviazione sulla carreggiata, invitando il conducente a prestare attenzione e a moderare la velocità. Viene comunemente utilizzato per segnalare curve pericolose, restringimenti o cantieri stradali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Segnaletica temporanea e di cantiere"
+    ],
+    "exact_keywords": [
+      "delineatore di ostacolo",
+      "segnaletica temporanea",
+      "strade extraurbane principali",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "impiego dei delineatori di ostacolo o deviazione",
+      "segnaletica complementare per ostacoli e deviazioni",
+      "utilizzo dei delineatori su diverse tipologie di strade"
+    ],
+    "rule_explanation": "Il delineatore di ostacolo o deviazione non è limitato alle sole strade extraurbane principali, ma può essere impiegato ovunque sia necessario segnalare ostacoli o deviazioni sulla carreggiata."
+  }
+}

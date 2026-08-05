@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23522",
+  "text": "E' vietato il sorpasso se il veicolo da superare si è fermato per dare precedenza ai pedoni, anche fuori dagli attraversamenti pedonali",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di precedenza ai pedoni",
+      "Divieto di sorpasso in prossimità di pedoni"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "dare precedenza ai pedoni",
+      "attraversamenti pedonali",
+      "veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso veicolo fermo per pedoni",
+      "precedenza pedoni anche fuori attraversamento pedonale"
+    ],
+    "rule_explanation": "Il sorpasso è vietato se il veicolo da superare è fermo per dare precedenza ai pedoni, anche se non si trovano sulle strisce pedonali."
+  }
+}

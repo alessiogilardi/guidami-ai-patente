@@ -1,0 +1,28 @@
+{
+  "question_id": 4042,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18758",
+  "text": "Bisogna usare particolare prudenza nei confronti dei conducenti che hanno conseguito la patente di guida in uno Stato estero",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri di prudenza nella circolazione",
+      "Tutela degli utenti vulnerabili",
+      "Principio di reciprocità e parità di trattamento tra conducenti"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "patente di guida estera",
+      "prudenza",
+      "stranieri"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza verso conducenti con patente estera",
+      "trattamento equiparato per conducenti con patente di guida estera e nazionale"
+    ],
+    "rule_explanation": "Non è richiesto un dovere di prudenza specifico verso i conducenti con patente estera; la prudenza è dovuta verso tutti gli utenti della strada, in particolare i più vulnerabili."
+  }
+}

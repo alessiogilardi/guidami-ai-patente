@@ -1,0 +1,31 @@
+{
+  "question_id": 4352,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22038",
+  "text": "Il segnale raffigurato vieta la sosta nella fascia oraria indicata, dei giorni festivi",
+  "correct_answer": true,
+  "image": "552b91f80d03ee3b705c437e85d5ff3a.jpeg",
+  "image_description": "Divieto di sosta con indicazione oraria e giorni festivi. Il segnale vieta la sosta, ma solo nella fascia oraria dalle 8:00 alle 20:00. Al di fuori di questa fascia oraria, la sosta è permessa. Il simbolo della croce indica i giorni festivi. Pertanto, il divieto di sosta si applica nei giorni festivi, dalle 8:00 alle 20:00.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di sosta (cerchio rosso con barra diagonale rossa su sfondo blu) sovrastato da un pannello integrativo rettangolare bianco. Il pannello integrativo contiene il simbolo di una croce (+) seguito dall'indicazione oraria '8,00 - 20,00'. Il segnale principale è il segnale di divieto di sosta, mentre il pannello integrativo ne specifica le limitazioni temporali e i giorni di applicazione. La croce indica i giorni festivi.",
+    "name": "Divieto di sosta con indicazione oraria e giorni festivi",
+    "description": "Il segnale vieta la sosta, ma solo nella fascia oraria dalle 8:00 alle 20:00. Al di fuori di questa fascia oraria, la sosta è permessa. Il simbolo della croce indica i giorni festivi. Pertanto, il divieto di sosta si applica nei giorni festivi, dalle 8:00 alle 20:00."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di divieto, sosta e fermata",
+      "Limitazioni temporali e spaziali alla sosta"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "fascia oraria",
+      "giorni festivi",
+      "pannelli integrativi"
+    ],
+    "vector_search_queries": [
+      "applicazione del divieto di sosta con pannelli integrativi di orario e giorni festivi",
+      "divieto di sosta limitato a fascia oraria e giorni festivi"
+    ],
+    "rule_explanation": "Il pannello integrativo specifica le modalità di applicazione del segnale di divieto di sosta, indicando la fascia oraria e i giorni (festivi) in cui il divieto è valido."
+  }
+}

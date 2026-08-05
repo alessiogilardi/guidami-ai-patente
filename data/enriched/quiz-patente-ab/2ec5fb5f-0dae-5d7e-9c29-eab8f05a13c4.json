@@ -1,0 +1,29 @@
+{
+  "question_id": 4681,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25141",
+  "text": "Per salvaguardare l'ambiente dall'inquinamento atmosferico, bisogna premere diverse volte e a fondo il pedale dell'acceleratore, affinché il veicolo raggiunga in fretta la temperatura di esercizio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela ambientale",
+      "Prevenzione dell'inquinamento atmosferico",
+      "Efficienza energetica dei veicoli"
+    ],
+    "exact_keywords": [
+      "inquinamento atmosferico",
+      "emissioni inquinanti",
+      "temperatura di esercizio",
+      "consumi di carburante"
+    ],
+    "vector_search_queries": [
+      "comportamenti di guida per ridurre l'inquinamento atmosferico",
+      "impatto delle accelerazioni sui consumi e sulle emissioni inquinanti",
+      "guida ecologica per la tutela ambientale"
+    ],
+    "rule_explanation": "Per salvaguardare l'ambiente, è necessario evitare accelerazioni brusche e continue che aumentano i consumi e le emissioni inquinanti, non raggiungere rapidamente la temperatura di esercizio."
+  }
+}

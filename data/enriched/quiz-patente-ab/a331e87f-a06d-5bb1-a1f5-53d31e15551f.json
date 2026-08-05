@@ -1,0 +1,28 @@
+{
+  "question_id": 4634,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24802",
+  "text": "Nell'attraversamento degli incroci si deve sempre considerare la possibilità che sopraggiunga, senza che sia visibile a distanza, un veicolo a motore a due ruote che ha sorpassato i veicoli fermi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti stradali",
+      "Comportamento ai incroci",
+      "Visibilità dei veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "incroci",
+      "veicolo a motore a due ruote",
+      "sorpasso dei veicoli fermi",
+      "condotta prudente"
+    ],
+    "vector_search_queries": [
+      "prevedere l'arrivo di veicoli a due ruote non visibili agli incroci",
+      "comportamento di prudenza in incrocio riguardo ai motocicli che sorpassano veicoli fermi"
+    ],
+    "rule_explanation": "Nei incroci, è necessario prevedere l'eventuale sopraggiungere di veicoli a due ruote che sorpassano i veicoli fermi, anche se non immediatamente visibili, per garantire la sicurezza."
+  }
+}

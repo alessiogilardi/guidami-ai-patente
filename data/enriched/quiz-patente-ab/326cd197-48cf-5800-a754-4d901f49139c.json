@@ -1,0 +1,32 @@
+{
+  "question_id": 4274,
+  "topic": "Segnali di indicazione",
+  "number": "21296",
+  "text": "Il segnale raffigurato indica che nel tratto di strada in cui è posto si deve sorpassare a destra",
+  "correct_answer": false,
+  "image": "916b7fab3c873dcafeae5ee6534775b7.jpeg",
+  "image_description": "Segnale di direzione obbligatoria (sinistra e destra). Il segnale A indica che la strada è a senso unico con direzione obbligatoria a sinistra. Il segnale B indica che la strada è a senso unico con direzione obbligatoria a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali rettangolari, entrambi con sfondo blu e bordo bianco. Il segnale A presenta una freccia bianca che punta verso sinistra. Il segnale B presenta una freccia bianca che punta verso destra. Entrambi i segnali sono etichettati con una lettera maiuscola (A e B) sopra di essi. Questi segnali sono segnali di prescrizione che indicano la direzione obbligatoria da seguire.",
+    "name": "Segnale di direzione obbligatoria (sinistra e destra)",
+    "description": "Il segnale A indica che la strada è a senso unico con direzione obbligatoria a sinistra. Il segnale B indica che la strada è a senso unico con direzione obbligatoria a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di direzione obbligatoria",
+      "Obblighi dei conducenti ai segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "direzione obbligatoria",
+      "senso unico",
+      "strada",
+      "sorpassare"
+    ],
+    "vector_search_queries": [
+      "obbligo di seguire la direzione indicata dai segnali di prescrizione",
+      "divieto di sorpasso se non a destra",
+      "interpretazione segnali di direzione obbligatoria"
+    ],
+    "rule_explanation": "I segnali di direzione obbligatoria indicano la sola direzione o una delle direzioni che i veicoli possono percorrere, non impongono il sorpasso a destra."
+  }
+}

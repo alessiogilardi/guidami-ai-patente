@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22349",
+  "text": "Il limite massimo di velocità per un autocarro di massa complessiva fino a 3,5 tonnellate sulle autostrade è di 120 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per autocarri",
+      "Normativa autostradale"
+    ],
+    "exact_keywords": [
+      "autocarro",
+      "massa complessiva",
+      "autostrada",
+      "limite massimo di velocità"
+    ],
+    "vector_search_queries": [
+      "limite velocità autocarro fino a 3,5 tonnellate autostrada",
+      "velocità massima autocarri massa complessiva inferiore a 3,5 tonnellate su autostrada"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per un autocarro con massa complessiva fino a 3,5 tonnellate su autostrada è di 110 km/h, non 120 km/h."
+  }
+}

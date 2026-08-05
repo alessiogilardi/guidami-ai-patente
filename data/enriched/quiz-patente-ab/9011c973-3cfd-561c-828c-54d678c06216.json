@@ -1,0 +1,32 @@
+{
+  "question_id": 4207,
+  "topic": "Segnali di precedenza",
+  "number": "20683",
+  "text": "Il segnale raffigurato si trova all'inizio di un'autostrada",
+  "correct_answer": false,
+  "image": "ae0a5db589f248f6cde41a1db1f0fe3f.jpeg",
+  "image_description": "Segnale di Diritto di Precedenza. Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con i vertici disposti in modo da formare un rombo. Il bordo esterno del segnale è bianco, seguito da un bordo nero più sottile. All'interno, su sfondo bianco, vi è un rombo più piccolo di colore arancione. Questo è il segnale di Diritto di Precedenza.",
+    "name": "Segnale di Diritto di Precedenza",
+    "description": "Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Segnali di indicazione"
+    ],
+    "exact_keywords": [
+      "segnale di diritto di precedenza",
+      "strada laterale",
+      "autostrada",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "segnali di precedenza autostrada",
+      "segnale di diritto di precedenza e incrocio",
+      "uso dei segnali di precedenza in autostrada"
+    ],
+    "rule_explanation": "Il segnale di diritto di precedenza indica che si ha la precedenza sugli incroci con strade laterali, ma non si applica all'inizio di un'autostrada."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4325,
+  "topic": "Segnali di indicazione",
+  "number": "21784",
+  "text": "Il segnale raffigurato indica un'area attrezzata con impianti di scarico per i veicoli che hanno i servizi igienico-sanitari",
+  "correct_answer": true,
+  "image": "9c797083d3d0057384d311515773b958.jpeg",
+  "image_description": "Area di scarico per veicoli ricreazionali. Il segnale indica un'area attrezzata per lo scarico dei residui organici e delle acque bianche e nere dei veicoli che hanno servizi igienico-sanitari.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un'icona bianca al suo interno. L'icona rappresenta un veicolo ricreazionale (camper o roulotte) con una freccia che punta verso un'area sottostante, raffigurata come una griglia o un tombino. Sotto l'icona principale, vi è uno spazio vuoto, tipico per un pannello integrativo che potrebbe fornire ulteriori dettagli. Il segnale è di tipo \"indicazione\".",
+    "name": "Area di scarico per veicoli ricreazionali",
+    "description": "Il segnale indica un'area attrezzata per lo scarico dei residui organici e delle acque bianche e nere dei veicoli che hanno servizi igienico-sanitari."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di servizio",
+      "Area di sosta attrezzata"
+    ],
+    "exact_keywords": [
+      "area attrezzata",
+      "impianti di scarico",
+      "servizi igienico-sanitari",
+      "veicoli ricreazionali"
+    ],
+    "vector_search_queries": [
+      "segnaletica area attrezzata per scarico veicoli ricreazionali",
+      "indicazione impianti scarico servizi igienico-sanitari"
+    ],
+    "rule_explanation": "Il segnale indica un'area attrezzata per lo scarico di residui organici e acque dei veicoli dotati di servizi igienico-sanitari, come i veicoli ricreazionali."
+  }
+}

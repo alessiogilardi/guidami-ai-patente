@@ -1,0 +1,29 @@
+{
+  "question_id": 4684,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25158",
+  "text": "L'abbandono sul terreno di rifiuti pericolosi o tossici (olii, liquidi, residui di riparazioni o di sostituzioni) non viene sanzionato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione dei rifiuti pericolosi",
+      "Tutela ambientale",
+      "Sanzioni per inquinamento"
+    ],
+    "exact_keywords": [
+      "rifiuti pericolosi",
+      "rifiuti tossici",
+      "abbandono di rifiuti",
+      "sanzione amministrativa pecuniaria"
+    ],
+    "vector_search_queries": [
+      "sanzioni per abbandono di rifiuti pericolosi e tossici",
+      "disciplina dei rifiuti pericolosi e tutela ambientale",
+      "illecito amministrativo per smaltimento illecito di rifiuti inquinanti"
+    ],
+    "rule_explanation": "L'abbandono di rifiuti pericolosi o tossici sul terreno è sanzionato amministrativamente, in quanto costituisce un illecito ambientale volto a tutelare la salute pubblica e l'ecosistema."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24390",
+  "text": "Il casco subisce un processo di invecchiamento dovuto a luce e calore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Degrado dei materiali protettivi",
+      "Manutenzione dei dispositivi di sicurezza"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "invecchiamento",
+      "luce",
+      "calore"
+    ],
+    "vector_search_queries": [
+      "degrado del casco protettivo per esposizione a luce e calore",
+      "invecchiamento dei materiali del casco motociclistico e sua sicurezza"
+    ],
+    "rule_explanation": "Il casco protettivo è soggetto a invecchiamento causato da agenti esterni come luce e calore, che ne compromettono le caratteristiche di sicurezza."
+  }
+}

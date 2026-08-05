@@ -1,0 +1,28 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23467",
+  "text": "Il conducente che intende sorpassare deve accertarsi semplicemente che nessun veicolo provenga dalla direzione opposta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Obblighi del conducente in fase di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo proveniente dalla direzione opposta",
+      "ostacolo",
+      "manovra non pericolosa"
+    ],
+    "vector_search_queries": [
+      "condizioni per effettuare un sorpasso sicuro",
+      "obblighi del conducente prima di iniziare un sorpasso",
+      "sorpasso: accertamenti preliminari del conducente"
+    ],
+    "rule_explanation": "Per sorpassare, il conducente deve assicurarsi che la visibilità sia sufficiente, che non vi siano veicoli provenienti dalla direzione opposta o che questi non costituiscano un ostacolo, e che la manovra non sia pericolosa."
+  }
+}

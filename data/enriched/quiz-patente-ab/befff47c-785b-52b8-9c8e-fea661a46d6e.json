@@ -1,0 +1,27 @@
+{
+  "question_id": 4382,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22397",
+  "text": "In presenza di apposito segnale, il limite massimo di velocità consentito può essere di 150 km/h su tratti di autostrade con particolari caratteristiche",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità in autostrada",
+      "Condizioni di percorribilità autostradale"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "autostrada",
+      "particolari caratteristiche",
+      "segnalazione di prescrizione"
+    ],
+    "vector_search_queries": [
+      "limiti di velocità massimi consentiti in autostrada con segnalazione specifica",
+      "possibilità di superare i 130 km/h in autostrada in presenza di particolari caratteristiche e segnali"
+    ],
+    "rule_explanation": "Su tratti autostradali specifici, segnalati con appositi cartelli, il limite massimo di velocità può essere elevato a 150 km/h se le condizioni lo consentono."
+  }
+}

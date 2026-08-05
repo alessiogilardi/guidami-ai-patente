@@ -1,0 +1,29 @@
+{
+  "question_id": 4529,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23804",
+  "text": "Prima di scendere dal veicolo in sosta, il conducente deve azionare il freno a mano del veicolo, su tutte le strade in discesa ma non in quelle in salita",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Arresto del veicolo",
+      "Freno di stazionamento",
+      "Manovre di sosta"
+    ],
+    "exact_keywords": [
+      "freno a mano",
+      "sosta",
+      "partenza",
+      "arresto",
+      "discesa"
+    ],
+    "vector_search_queries": [
+      "obbligo di azionare il freno a mano in caso di sosta del veicolo",
+      "uso del freno di stazionamento in sosta su strade in pendenza"
+    ],
+    "rule_explanation": "Il freno di stazionamento va sempre azionato in caso di sosta del veicolo, indipendentemente dal fatto che la strada sia in salita o in discesa, per prevenire movimenti accidentali."
+  }
+}

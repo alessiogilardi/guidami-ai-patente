@@ -1,0 +1,27 @@
+{
+  "question_id": 4571,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24143",
+  "text": "Proiettori anabbaglianti male orientati possono abbagliare gli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di luce",
+      "Abbagliamento degli altri utenti"
+    ],
+    "exact_keywords": [
+      "proiettori anabbaglianti",
+      "orientamento",
+      "abbagliare",
+      "altri utenti della strada"
+    ],
+    "vector_search_queries": [
+      "orientamento proiettori anabbaglianti e abbagliamento",
+      "effetti del malfunzionamento dei fari sulla visibilità altrui"
+    ],
+    "rule_explanation": "I proiettori anabbaglianti devono essere correttamente orientati per evitare di abbagliare gli altri conducenti, garantendo la sicurezza stradale."
+  }
+}

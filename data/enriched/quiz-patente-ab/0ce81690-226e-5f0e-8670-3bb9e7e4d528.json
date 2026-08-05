@@ -1,0 +1,29 @@
+{
+  "question_id": 4012,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18442",
+  "text": "La strada è riservata alla circolazione dei soli autoveicoli e motocicli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso della strada",
+      "Classificazione delle strade",
+      "Utenza stradale"
+    ],
+    "exact_keywords": [
+      "strada",
+      "circolazione",
+      "autoveicoli",
+      "motocicli",
+      "altri utenti"
+    ],
+    "vector_search_queries": [
+      "destinazione della strada alla circolazione pubblica",
+      "diritto di uso della strada per tutti i veicoli e pedoni"
+    ],
+    "rule_explanation": "La strada è destinata alla circolazione di tutti gli utenti, non solo autoveicoli e motocicli, nel rispetto delle norme di comportamento e della precedenza."
+  }
+}

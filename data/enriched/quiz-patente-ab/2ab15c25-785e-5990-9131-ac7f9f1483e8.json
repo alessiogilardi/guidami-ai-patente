@@ -1,0 +1,30 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24618",
+  "text": "La sospensione della patente è disposta, ad esempio, quando il neopatentato circola senza rispettare le limitazioni sui veicoli e sulle velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sospensione della patente di guida",
+      "Neopatentati",
+      "Violazioni specifiche"
+    ],
+    "exact_keywords": [
+      "sospensione patente",
+      "neopatentato",
+      "limitazioni di velocità",
+      "veicoli ammessi",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "sospensione patente neopatentato per violazione limiti velocità",
+      "sanzioni per neopatentati che guidano veicoli non autorizzati",
+      "conseguenze della violazione delle limitazioni per neopatentati"
+    ],
+    "rule_explanation": "La sospensione della patente è una sanzione accessoria che può essere disposta per violazioni specifiche commesse dai neopatentati, come la guida di veicoli non consentiti o il superamento dei limiti di velocità."
+  }
+}

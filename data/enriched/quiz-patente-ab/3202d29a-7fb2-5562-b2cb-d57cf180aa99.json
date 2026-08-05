@@ -1,0 +1,32 @@
+{
+  "question_id": 4051,
+  "topic": "Segnali di pericolo",
+  "number": "18852",
+  "text": "Il segnale raffigurato indica un tratto di strada deformata lungo 380 metri",
+  "correct_answer": true,
+  "image": "46aa2805f9f3e38a0b40da1c5aa8ea8d.jpeg",
+  "image_description": "Segnale di pericolo - Carreggiata deformata con pannello integrativo di distanza. Il segnale indica un tratto di strada con avvallamenti o dossi per una lunghezza di 380 metri. Il pannello integrativo specifica la distanza dall'inizio del pericolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di avvallamenti o dossi sulla carreggiata. Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare bianco con bordo nero. Su questo pannello sono indicate due frecce verticali rivolte verso l'alto, una a sinistra e una a destra della scritta '380m'. Questo pannello integrativo specifica la distanza dall'inizio del tratto di strada con carreggiata deformata.",
+    "name": "Segnale di pericolo - Carreggiata deformata con pannello integrativo di distanza",
+    "description": "Il segnale indica un tratto di strada con avvallamenti o dossi per una lunghezza di 380 metri. Il pannello integrativo specifica la distanza dall'inizio del pericolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Carreggiata deformata"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "carreggiata deformata",
+      "pannello integrativo",
+      "distanza"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per carreggiata deformata",
+      "pannello integrativo di distanza per segnali di pericolo",
+      "interpretazione segnale di pericolo carreggiata deformata con pannello integrativo"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante la carreggiata deformata indica un tratto di strada con anomalie altimetriche per una lunghezza specificata dal pannello integrativo, che può indicare la distanza dall'inizio del pericolo."
+  }
+}

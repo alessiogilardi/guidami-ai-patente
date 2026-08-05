@@ -1,0 +1,27 @@
+{
+  "question_id": 4521,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23746",
+  "text": "Fuori dei centri abitati, la sosta è vietata in corrispondenza delle aree di intersezione ma non in loro prossimità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in prossimità delle intersezioni",
+      "Regolamentazione della sosta fuori dai centri abitati"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "centri abitati",
+      "aree di intersezione",
+      "prossimità"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in corrispondenza e prossimità delle intersezioni fuori dai centri abitati",
+      "regolamentazione della sosta nei pressi delle intersezioni stradali in aree extraurbane"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, la sosta è vietata sia in corrispondenza sia in prossimità delle aree di intersezione."
+  }
+}

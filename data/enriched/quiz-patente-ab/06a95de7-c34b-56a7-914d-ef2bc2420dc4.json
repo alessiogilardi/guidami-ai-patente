@@ -1,0 +1,31 @@
+{
+  "question_id": 4452,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23087",
+  "text": "Nell'incrocio rappresentato in figura il veicolo E passa prima di quello B, ma dopo il veicolo A",
+  "correct_answer": true,
+  "image": "711031c72d1a97742250f86e946b883f.jpeg",
+  "image_description": "Incrocio a raso senza segnaletica di precedenza (precedenza a destra). L'incrocio è a raso e non sono presenti segnali stradali che regolano la precedenza. I veicoli A e B si trovano in posizioni che, secondo la regola generale della precedenza a destra, dovrebbero dare la precedenza ai veicoli che si immettono da destra. Il veicolo E si trova in una posizione che gli impone di dare la precedenza ai veicoli che si immettono da destra. In assenza di segnali specifici, si applica la regola generale della precedenza a destra. Pertanto, il veicolo A deve dare la precedenza al veicolo B, e il veicolo E deve dare la precedenza al veicolo A. Il veicolo B deve dare la precedenza al veicolo che si immette dalla sua destra (non presente nell'immagine). Il veicolo A deve dare la precedenza al veicolo B. Il veicolo E deve dare la precedenza al veicolo A. Di conseguenza, l'ordine di passaggio corretto è: B, A, E.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con tre veicoli: un'auto blu (A) proveniente da sinistra, un'auto gialla (B) proveniente da destra e un'auto rossa (E) proveniente dall'alto. Non sono presenti segnali stradali che regolano la precedenza. Le frecce tratteggiate indicano le traiettorie di svolta dei veicoli. Il veicolo A intende svoltare a sinistra, il veicolo B intende svoltare a destra e il veicolo E intende svoltare a sinistra. Secondo la regola generale della precedenza, chi proviene da destra ha la precedenza. Pertanto, il veicolo A deve dare la precedenza al veicolo B. Il veicolo E deve dare la precedenza al veicolo A. Il veicolo B deve dare la precedenza al veicolo che si immette dalla sua destra (non presente). L'ordine di passaggio corretto è quindi: B, A, E.",
+    "name": "Incrocio a raso senza segnaletica di precedenza (precedenza a destra)",
+    "description": "L'incrocio è a raso e non sono presenti segnali stradali che regolano la precedenza. I veicoli A e B si trovano in posizioni che, secondo la regola generale della precedenza a destra, dovrebbero dare la precedenza ai veicoli che si immettono da destra. Il veicolo E si trova in una posizione che gli impone di dare la precedenza ai veicoli che si immettono da destra. In assenza di segnali specifici, si applica la regola generale della precedenza a destra. Pertanto, il veicolo A deve dare la precedenza al veicolo B, e il veicolo E deve dare la precedenza al veicolo A. Il veicolo B deve dare la precedenza al veicolo che si immette dalla sua destra (non presente nell'immagine). Il veicolo A deve dare la precedenza al veicolo B. Il veicolo E deve dare la precedenza al veicolo A. Di conseguenza, l'ordine di passaggio corretto è: B, A, E."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza ai incroci senza segnaletica"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "ordine di passaggio",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "precedenza a destra incrocio senza segnaletica",
+      "ordine di precedenza veicoli in assenza di segnali stradali"
+    ],
+    "rule_explanation": "Negli incroci senza segnaletica, si applica la regola della precedenza a destra. L'ordine di passaggio è determinato da chi si immette da destra rispetto a ciascun veicolo."
+  }
+}

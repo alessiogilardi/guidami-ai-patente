@@ -1,0 +1,27 @@
+{
+  "question_id": 4610,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24503",
+  "text": "La patente di categoria A2 consente al titolare di trasportare un passeggero solo se il posto del passeggero è previsto sulla carta di circolazione del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto passeggeri con patente A2",
+      "Requisiti del veicolo per il trasporto passeggeri"
+    ],
+    "exact_keywords": [
+      "patente A2",
+      "trasporto passeggero",
+      "carta di circolazione",
+      "posto passeggero"
+    ],
+    "vector_search_queries": [
+      "trasporto passeggero con patente A2 e carta di circolazione",
+      "requisiti veicolo per trasporto passeggero con patente A2"
+    ],
+    "rule_explanation": "La patente A2 abilita al trasporto di passeggeri se il veicolo, omologato per due persone, lo prevede espressamente in carta di circolazione."
+  }
+}

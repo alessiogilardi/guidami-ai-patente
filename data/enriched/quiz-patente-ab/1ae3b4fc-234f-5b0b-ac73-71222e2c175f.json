@@ -1,0 +1,28 @@
+{
+  "question_id": 4049,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18836",
+  "text": "E' vietato sorpassare ciclisti o pedoni che occupano la carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di utenti deboli",
+      "Regole di circolazione per la sicurezza"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "ciclisti",
+      "pedoni",
+      "carreggiata",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "sorpasso di ciclisti e pedoni sulla carreggiata",
+      "distanza laterale di sicurezza dal sorpasso di utenti deboli"
+    ],
+    "rule_explanation": "È vietato sorpassare i ciclisti e i pedoni che occupano la carreggiata solo se non è possibile mantenere la distanza laterale di sicurezza."
+  }
+}

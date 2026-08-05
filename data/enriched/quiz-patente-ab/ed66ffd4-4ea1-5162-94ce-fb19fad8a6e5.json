@@ -1,0 +1,27 @@
+{
+  "question_id": 4382,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22402",
+  "text": "Salvo diversa segnalazione, il limite massimo di velocità consentito sulle autostrade è di 110 km/h in caso di pioggia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità in autostrada",
+      "Condizioni atmosferiche e velocità"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "autostrade",
+      "pioggia",
+      "110 km/h"
+    ],
+    "vector_search_queries": [
+      "limite velocità autostrada pioggia",
+      "velocità consentita in autostrada con precipitazioni atmosferiche"
+    ],
+    "rule_explanation": "Il limite massimo di velocità in autostrada è di 130 km/h, ridotto a 110 km/h in caso di pioggia, salvo diversa segnalazione."
+  }
+}

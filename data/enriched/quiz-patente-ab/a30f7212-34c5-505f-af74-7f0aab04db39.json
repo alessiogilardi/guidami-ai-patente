@@ -1,0 +1,28 @@
+{
+  "question_id": 4562,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24049",
+  "text": "Per trainare un rimorchio leggero non occorre effettuare il collegamento elettrico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rimorchio leggero",
+      "Collegamento elettrico tra motrice e rimorchio",
+      "Normativa sul traino"
+    ],
+    "exact_keywords": [
+      "rimorchio leggero",
+      "collegamento elettrico",
+      "traino",
+      "dispositivi di illuminazione e segnalazione"
+    ],
+    "vector_search_queries": [
+      "obbligo collegamento elettrico rimorchio leggero",
+      "funzionamento luci rimorchio trainato"
+    ],
+    "rule_explanation": "Per trainare un rimorchio leggero è obbligatorio il collegamento elettrico per garantire il funzionamento dei dispositivi di illuminazione e segnalazione."
+  }
+}

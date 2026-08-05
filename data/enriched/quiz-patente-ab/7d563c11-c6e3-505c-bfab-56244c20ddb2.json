@@ -1,0 +1,28 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23573",
+  "text": "La pericolosità del sorpasso è determinata dal rischio di collisione, in fase di rientro in corsia, con il veicolo sorpassato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Norme sul sorpasso",
+      "Manovra di rientro in corsia",
+      "Pericolo di collisione"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo sorpassato",
+      "collisione",
+      "rientro in corsia"
+    ],
+    "vector_search_queries": [
+      "rischio collisione rientro in corsia sorpasso",
+      "pericolosità sorpasso e collisione con veicolo sorpassato"
+    ],
+    "rule_explanation": "Il sorpasso è pericoloso se il rientro in corsia comporta il rischio di collisione con il veicolo che si stava superando."
+  }
+}

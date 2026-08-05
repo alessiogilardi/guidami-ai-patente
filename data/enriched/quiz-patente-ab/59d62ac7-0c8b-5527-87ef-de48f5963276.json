@@ -1,0 +1,33 @@
+{
+  "question_id": 4028,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18600",
+  "text": "Le autocaravan (camper) sono veicoli aventi una speciale carrozzeria per essere adibiti al trasporto ed all'alloggio di persone",
+  "correct_answer": true,
+  "image": "87fd4191b69ff4e1eee00e1990b00418.jpeg",
+  "image_description": "Pannello delineatore di ostacolo (o restringimento). Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bande diagonali alternate di colore rosso e giallo. Questo tipo di segnale è comunemente utilizzato per segnalare ostacoli o restringimenti della carreggiata. Le bande rosse e gialle alternate servono a catturare l'attenzione del conducente e a indicare un pericolo.",
+    "name": "Pannello delineatore di ostacolo (o restringimento)",
+    "description": "Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autocaravan",
+      "Classificazione dei veicoli",
+      "Uso della strada"
+    ],
+    "exact_keywords": [
+      "autocaravan",
+      "camper",
+      "veicoli",
+      "carrozzeria",
+      "trasporto ed alloggio"
+    ],
+    "vector_search_queries": [
+      "definizione di autocaravan nel codice della strada",
+      "caratteristiche dei veicoli per trasporto ed alloggio persone"
+    ],
+    "rule_explanation": "Le autocaravan, comunemente dette camper, sono definite come veicoli con carrozzeria speciale destinata al trasporto e all'alloggio di persone."
+  }
+}

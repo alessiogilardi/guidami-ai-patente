@@ -1,0 +1,27 @@
+{
+  "question_id": 4539,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23873",
+  "text": "Nelle aree di servizio delle autostrade, il conducente non deve lasciare in sosta il veicolo per più di 24 ore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo",
+      "Aree di servizio autostradali"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "area di servizio",
+      "autostrada",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "limite di tempo per la sosta nelle aree di servizio autostradali",
+      "regolamentazione della sosta dei veicoli nelle aree di servizio autostradali"
+    ],
+    "rule_explanation": "Nelle aree di servizio autostradali è consentita la sosta del veicolo per un massimo di 24 ore, salvo diversa segnalazione."
+  }
+}

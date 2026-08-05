@@ -1,0 +1,29 @@
+{
+  "question_id": 4683,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25151",
+  "text": "E' consentito modificare liberamente il motore e la marmitta di un veicolo per diminuire l'inquinamento atmosferico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo delle emissioni inquinanti",
+      "Modifiche ai veicoli a motore",
+      "Normativa ambientale e veicoli"
+    ],
+    "exact_keywords": [
+      "modifica del motore",
+      "dispositivi di scarico",
+      "inquinamento atmosferico",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "modifiche consentite a motore e marmitta per ridurre l'inquinamento",
+      "normativa su emissioni inquinanti veicoli a motore",
+      "omologazione dispositivi di scarico e controllo emissioni"
+    ],
+    "rule_explanation": "Le modifiche ai motori e ai dispositivi di scarico dei veicoli sono soggette ad autorizzazione e devono rispettare le normative anti-inquinamento vigenti."
+  }
+}

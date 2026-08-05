@@ -1,0 +1,27 @@
+{
+  "question_id": 4610,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24501",
+  "text": "La patente di categoria A2 abilita anche alla guida dei veicoli che si possono condurre con le patenti A1 e AM",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida per motocicli",
+      "Equipollenza tra patenti di categoria inferiore e superiore"
+    ],
+    "exact_keywords": [
+      "patente A2",
+      "patente A1",
+      "patente AM",
+      "conduzione di veicoli"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente A2",
+      "equipollenza patenti A2, A1, AM"
+    ],
+    "rule_explanation": "La patente A2 abilita alla guida dei veicoli condducibili con patente A1 e AM, oltre a quelli specifici della categoria A2."
+  }
+}

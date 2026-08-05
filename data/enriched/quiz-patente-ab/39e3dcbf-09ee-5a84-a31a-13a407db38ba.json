@@ -1,0 +1,30 @@
+{
+  "question_id": 4404,
+  "topic": "Distanza di sicurezza",
+  "number": "22633",
+  "text": "Lo spazio totale di arresto aumenta se l'asfalto è ruvido",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di arresto",
+      "Condizioni del manto stradale"
+    ],
+    "exact_keywords": [
+      "spazio totale di arresto",
+      "distanza di reazione",
+      "distanza di frenatura",
+      "aderenza",
+      "asfalto"
+    ],
+    "vector_search_queries": [
+      "fattori che influenzano lo spazio di arresto",
+      "rapporto tra aderenza e spazio di frenatura",
+      "condizioni del manto stradale e distanza di sicurezza"
+    ],
+    "rule_explanation": "Lo spazio totale di arresto è dato dalla somma dello spazio di reazione e di quello di frenatura. L'aumento dell'aderenza (asfalto ruvido) riduce lo spazio di frenatura, e quindi lo spazio totale di arresto."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4014,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18469",
+  "text": "La carreggiata è la traccia lasciata dalle ruote dei veicoli sulle strade innevate",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di carreggiata",
+      "Condizioni di percorribilità stradale"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "strada innevata",
+      "traccia delle ruote",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "definizione di carreggiata stradale",
+      "differenza tra carreggiata e traccia di pneumatici su neve"
+    ],
+    "rule_explanation": "La carreggiata è la parte della strada destinata ai veicoli, non la traccia lasciata dalle ruote su strade innevate."
+  }
+}

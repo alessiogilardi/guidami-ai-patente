@@ -1,0 +1,27 @@
+{
+  "question_id": 4030,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18630",
+  "text": "I motocicli sono soggetti a revisione dopo quattro anni dalla prima immatricolazione, successivamente ogni due anni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione periodica dei veicoli a motore",
+      "Requisiti tecnici per la circolazione dei motocicli"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "revisione",
+      "prima immatricolazione",
+      "periodicità"
+    ],
+    "vector_search_queries": [
+      "periodicità revisione motocicli",
+      "revisione periodica motocicli dopo prima immatricolazione"
+    ],
+    "rule_explanation": "I motocicli devono essere sottoposti a revisione dopo quattro anni dalla prima immatricolazione e successivamente ogni due anni per garantirne la sicurezza e la conformità alle norme."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4671,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25076",
+  "text": "Per consumare meno carburante è opportuno collocare i bagagli sul tetto del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aerodinamica del veicolo",
+      "Efficienza energetica",
+      "Consumo di carburante"
+    ],
+    "exact_keywords": [
+      "bagagli sul tetto",
+      "consumo di carburante",
+      "aerodinamica",
+      "resistenza all'aria"
+    ],
+    "vector_search_queries": [
+      "impatto del carico sul tetto sul consumo di carburante",
+      "effetti dell'aerodinamica sul consumo di carburante del veicolo",
+      "riduzione dei consumi di carburante tramite miglioramento dell'aerodinamica"
+    ],
+    "rule_explanation": "Collocare bagagli sul tetto aumenta la resistenza aerodinamica, incrementando il consumo di carburante e quindi l'inquinamento."
+  }
+}

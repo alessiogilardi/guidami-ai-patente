@@ -1,0 +1,29 @@
+{
+  "question_id": 4020,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18522",
+  "text": "Il marciapiede è una parte della carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di carreggiata",
+      "Definizione di marciapiede",
+      "Uso della strada e convivenza civile"
+    ],
+    "exact_keywords": [
+      "marciapiede",
+      "carreggiata",
+      "area pedonale",
+      "struttura della strada"
+    ],
+    "vector_search_queries": [
+      "differenza tra marciapiede e carreggiata",
+      "definizione di marciapiede e sua funzione",
+      "parti della strada e loro destinazione d'uso"
+    ],
+    "rule_explanation": "Il marciapiede è una parte della strada separata dalla carreggiata, riservata ai pedoni. Non fa parte della carreggiata destinata ai veicoli."
+  }
+}

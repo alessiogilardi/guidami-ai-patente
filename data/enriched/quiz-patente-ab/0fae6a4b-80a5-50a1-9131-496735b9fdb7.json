@@ -1,0 +1,31 @@
+{
+  "question_id": 4151,
+  "topic": "Segnali di obbligo",
+  "number": "20063",
+  "text": "Il segnale raffigurato obbliga a svoltare a destra o a sinistra",
+  "correct_answer": false,
+  "image": "6ff794188d5d8731f3360ac40409b437.jpeg",
+  "image_description": "Senso unico frontale. Il segnale impone di proseguire diritto.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca rivolta verso l'alto, indicando la direzione obbligatoria da seguire. Si tratta di un segnale di prescrizione, specificamente un segnale di direzione obbligatoria.",
+    "name": "Senso unico frontale",
+    "description": "Il segnale impone di proseguire diritto."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico",
+      "Direzione imposta dalla segnaletica"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "svoltare a destra",
+      "svoltare a sinistra",
+      "proseguire diritto"
+    ],
+    "vector_search_queries": [
+      "obbligo di seguire la direzione indicata dai segnali di obbligo",
+      "interpretazione segnali di obbligo con freccia o senza"
+    ],
+    "rule_explanation": "I segnali di obbligo indicano un comportamento da seguire; se raffigurano una freccia, impongono la direzione indicata, altrimenti impongono di proseguire diritto."
+  }
+}

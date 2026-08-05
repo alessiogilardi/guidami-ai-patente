@@ -1,0 +1,33 @@
+{
+  "question_id": 4231,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20895",
+  "text": "Nella carreggiata a doppio senso di circolazione come in figura la striscia di mezzo divide la strada in due carreggiate, ognuna a due corsie",
+  "correct_answer": false,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Divisione della carreggiata",
+      "Strade a doppio senso di circolazione"
+    ],
+    "exact_keywords": [
+      "striscia bianca discontinua",
+      "carreggiata",
+      "senso di circolazione",
+      "corsia"
+    ],
+    "vector_search_queries": [
+      "funzione della striscia bianca discontinua in carreggiata a doppio senso",
+      "differenza tra carreggiata e corsia nella segnaletica orizzontale",
+      "segnaletica orizzontale per divisione sensi di marcia"
+    ],
+    "rule_explanation": "La striscia bianca discontinua divide i sensi di marcia nelle strade a doppio senso, non le corsie di una stessa carreggiata. Ogni carreggiata ha una sola direzione di marcia."
+  }
+}

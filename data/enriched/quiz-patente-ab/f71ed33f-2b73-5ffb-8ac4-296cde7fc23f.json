@@ -1,0 +1,31 @@
+{
+  "question_id": 4194,
+  "topic": "Segnali di precedenza",
+  "number": "20523",
+  "text": "Il segnale raffigurato preannuncia un segnale di STOP a 320 metri",
+  "correct_answer": true,
+  "image": "0336dc776dc65daa553e91a1af9068c5.jpeg",
+  "image_description": "Segnale di dare precedenza con pannello integrativo di prescrizione (STOP a 320 m). Il segnale di dare precedenza, abbinato a un pannello integrativo che indica \"STOP 320 m\", prescrive di dare la precedenza ai veicoli provenienti da destra e da sinistra e di fermarsi obbligatoriamente 320 metri dopo il segnale, dove è presente un segnale di STOP.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice verso il basso, bordato di rosso e con fondo bianco. Questo è il segnale di \"Dare precedenza\". Sopra di esso, è presente un pannello rettangolare bianco con la scritta in nero \"STOP 320 m\". Questo pannello integrativo specifica che, nonostante il segnale principale sia \"Dare precedenza\", l'obbligo di fermarsi (STOP) si concretizzerà a 320 metri di distanza dal segnale stesso. Pertanto, si tratta di una combinazione di segnali che preannuncia uno STOP a una certa distanza.",
+    "name": "Segnale di dare precedenza con pannello integrativo di prescrizione (STOP a 320 m)",
+    "description": "Il segnale di dare precedenza, abbinato a un pannello integrativo che indica \"STOP 320 m\", prescrive di dare la precedenza ai veicoli provenienti da destra e da sinistra e di fermarsi obbligatoriamente 320 metri dopo il segnale, dove è presente un segnale di STOP."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Preavviso di prescrizioni"
+    ],
+    "exact_keywords": [
+      "dare precedenza",
+      "pannello integrativo",
+      "STOP",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "preavviso segnale di STOP con pannello integrativo di distanza",
+      "obbligo di dare precedenza e fermarsi in corrispondenza di segnale di STOP preannunciato"
+    ],
+    "rule_explanation": "Il segnale di dare precedenza, con pannello integrativo che indica la distanza, preannuncia l'obbligo di fermarsi in corrispondenza del segnale di STOP situato alla distanza indicata."
+  }
+}

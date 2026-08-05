@@ -1,0 +1,28 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31043",
+  "text": "Durante la guida, la percezione di un pericolo e la conseguente reazione del conducente non sono influenzate dalle condizioni ambientali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Condizioni ambientali e di traffico",
+      "Reazione del conducente",
+      "Pericolo alla circolazione"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "conducente",
+      "condizioni ambientali",
+      "reazione"
+    ],
+    "vector_search_queries": [
+      "influenza delle condizioni ambientali sulla percezione del pericolo alla guida",
+      "adeguamento della reazione del conducente alle condizioni esterne"
+    ],
+    "rule_explanation": "La percezione del pericolo e la reazione del conducente sono influenzate dalle condizioni ambientali, dalla visibilità, dallo stato della strada e dal traffico, richiedendo una guida prudente."
+  }
+}

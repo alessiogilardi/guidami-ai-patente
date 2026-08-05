@@ -1,0 +1,33 @@
+{
+  "question_id": 4172,
+  "topic": "Segnali di obbligo",
+  "number": "20300",
+  "text": "Il segnale raffigurato indica la fine del limite massimo di velocità",
+  "correct_answer": false,
+  "image": "d975ef356f24d077b82e83106e5db105.jpeg",
+  "image_description": "Segnale di obbligo di velocità minima. Il segnale prescrive di mantenere una velocità non inferiore a 30 km/h.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu scuro. Al centro del segnale è presente il numero '30' in bianco. Questo è un segnale di obbligo che indica la velocità minima da rispettare.",
+    "name": "Segnale di obbligo di velocità minima",
+    "description": "Il segnale prescrive di mantenere una velocità non inferiore a 30 km/h."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Velocità minima",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "velocità minima",
+      "fine del divieto",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo di velocità minima",
+      "differenza tra segnale di velocità minima e fine limite massimo di velocità",
+      "interpretazione segnali di prescrizione velocità"
+    ],
+    "rule_explanation": "Il segnale di obbligo di velocità minima indica la velocità alla quale è obbligatorio viaggiare, non la fine di un limite massimo."
+  }
+}

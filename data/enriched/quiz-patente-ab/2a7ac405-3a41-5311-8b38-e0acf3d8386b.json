@@ -1,0 +1,28 @@
+{
+  "question_id": 4378,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22360",
+  "text": "Brusche variazioni di velocità comportano maggior consumo di carburante",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida ecologica",
+      "Efficienza del carburante",
+      "Stile di guida"
+    ],
+    "exact_keywords": [
+      "brusche variazioni di velocità",
+      "consumo di carburante",
+      "guida ecologica",
+      "stile di guida"
+    ],
+    "vector_search_queries": [
+      "impatto delle variazioni di velocità sul consumo di carburante",
+      "tecniche di guida per ridurre il consumo di carburante"
+    ],
+    "rule_explanation": "Le brusche accelerazioni e frenate aumentano il consumo di carburante rispetto a una guida fluida e costante, ottimizzando l'efficienza del motore."
+  }
+}

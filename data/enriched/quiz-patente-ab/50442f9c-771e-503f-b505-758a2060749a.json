@@ -1,0 +1,28 @@
+{
+  "question_id": 4432,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22896",
+  "text": "Giungendo in vicinanza di un incrocio bisogna passare sempre prima dei veicoli che arrivano da destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza negli incroci",
+      "Eccezioni alla regola generale di precedenza"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "precedenza",
+      "veicoli provenienti da destra",
+      "segnaletica stradale"
+    ],
+    "vector_search_queries": [
+      "precedenza nei incroci stradali",
+      "regola generale di precedenza a destra",
+      "precedenza veicoli incrocio con segnaletica"
+    ],
+    "rule_explanation": "Negli incroci, la precedenza è generalmente a destra, ma va sempre data ai veicoli che provengono da destra, a meno che la segnaletica non disponga diversamente."
+  }
+}

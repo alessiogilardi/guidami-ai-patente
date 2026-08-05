@@ -1,0 +1,30 @@
+{
+  "question_id": 4532,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23818",
+  "text": "Nel caso di ingombro della carreggiata per caduta del carico non removibile, il conducente può evitare di informare un organo di polizia se presegnala la zona con efficaci segnali manuali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di ostacolo sulla carreggiata",
+      "Obbligo di presegnalazione di veicolo fermo o in sosta di emergenza",
+      "Rimozione di ostacoli dalla carreggiata"
+    ],
+    "exact_keywords": [
+      "ingombro della carreggiata",
+      "caduta del carico",
+      "organo di polizia",
+      "presegnalazione",
+      "segnali manuali"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalazione di ingombro carreggiata per caduta carico",
+      "procedure per rimozione ostacoli causati da veicoli in avaria o carico caduto",
+      "responsabilità del conducente in caso di caduta del carico e ingombro stradale"
+    ],
+    "rule_explanation": "In caso di caduta del carico che ingombra la carreggiata, il conducente deve informare un organo di polizia e adottare misure di presegnalazione, non potendo limitarsi ai soli segnali manuali."
+  }
+}

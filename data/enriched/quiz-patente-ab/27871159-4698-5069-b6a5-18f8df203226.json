@@ -1,0 +1,27 @@
+{
+  "question_id": 4024,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18560",
+  "text": "I tricicli a motore sono costituiti da un motociclo e un sidecar",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di triciclo a motore",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "tricicli a motore",
+      "motociclo",
+      "sidecar",
+      "veicolo a motore"
+    ],
+    "vector_search_queries": [
+      "definizione di triciclo a motore nel CdS",
+      "differenza tra triciclo a motore e motociclo con sidecar"
+    ],
+    "rule_explanation": "I tricicli a motore sono veicoli a tre ruote, non un motociclo con sidecar. Il sidecar è un accessorio aggiunto a un motociclo."
+  }
+}

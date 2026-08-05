@@ -1,0 +1,27 @@
+{
+  "question_id": 4546,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23917",
+  "text": "Sui motocicli è vietato il trasporto di minori di anni 5",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto di persone su motocicli",
+      "Età minima per il trasporto su motocicli"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "trasporto di persone",
+      "minori di anni 5",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "età minima passeggero motociclo",
+      "trasporto minori su motocicli"
+    ],
+    "rule_explanation": "Sui motocicli è vietato il trasporto di bambini di età inferiore ai 5 anni, salvo che siano accompagnati da un adulto e che il motociclo sia dotato di un apposito seggiolino."
+  }
+}

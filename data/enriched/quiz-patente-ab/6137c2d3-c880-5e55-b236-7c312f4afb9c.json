@@ -1,0 +1,31 @@
+{
+  "question_id": 4060,
+  "topic": "Segnali di pericolo",
+  "number": "18971",
+  "text": "In presenza del segnale raffigurato è consentita la fermata ma non la sosta",
+  "correct_answer": false,
+  "image": "20d1949582fe2500af34cafef3f9167c.jpeg",
+  "image_description": "Segnale di curva pericolo a sinistra. Il segnale preannuncia una curva pericolosa verso sinistra. È necessario moderare la velocità e prestare attenzione, soprattutto in caso di strada bagnata o scarsa visibilità, per potersi arrestare in caso di ostacolo improvviso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una curva che volge verso sinistra. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una curva a sinistra.",
+    "name": "Segnale di curva pericolo a sinistra",
+    "description": "Il segnale preannuncia una curva pericolosa verso sinistra. È necessario moderare la velocità e prestare attenzione, soprattutto in caso di strada bagnata o scarsa visibilità, per potersi arrestare in caso di ostacolo improvviso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Regolamentazione della sosta e della fermata"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "curva pericolosa",
+      "fermarsi",
+      "sosta"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata in presenza di segnali di pericolo",
+      "regolamentazione della sosta in prossimità di curve pericolose"
+    ],
+    "rule_explanation": "Il segnale di pericolo curva indica una curva pericolosa; non vieta né la fermata né la sosta, ma impone prudenza e moderazione della velocità."
+  }
+}

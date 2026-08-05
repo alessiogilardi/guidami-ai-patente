@@ -1,0 +1,27 @@
+{
+  "question_id": 4520,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23729",
+  "text": "La sosta è vietata nelle gallerie, salvo diversa segnalazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in galleria",
+      "Segnalazione di divieto di sosta"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "galleria",
+      "segnalazione",
+      "divieto di sosta"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta nelle gallerie autostradali e non",
+      "regole per la sosta in galleria e eccezioni segnaletiche"
+    ],
+    "rule_explanation": "La sosta è vietata nelle gallerie, a meno che non sia espressamente consentita da apposita segnalazione stradale."
+  }
+}

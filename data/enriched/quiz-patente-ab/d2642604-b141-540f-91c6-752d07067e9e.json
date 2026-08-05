@@ -1,0 +1,28 @@
+{
+  "question_id": 4412,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22700",
+  "text": "Il carico deve essere sistemato sugli autoveicoli in modo da sporgere dalla parte anteriore del veicolo di più dei tre decimi della sua lunghezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Carico sporgente",
+      "Dimensioni massime del carico",
+      "Sicurezza della circolazione"
+    ],
+    "exact_keywords": [
+      "carico",
+      "autoveicoli",
+      "sporgere",
+      "lunghezza"
+    ],
+    "vector_search_queries": [
+      "sporgenza anteriore del carico su autoveicoli",
+      "limiti di sporgenza del carico da autoveicoli"
+    ],
+    "rule_explanation": "Il carico non deve sporgere dalla parte anteriore del veicolo oltre la sagoma dello stesso, né da quella posteriore oltre i 3/10 della lunghezza del veicolo stesso."
+  }
+}

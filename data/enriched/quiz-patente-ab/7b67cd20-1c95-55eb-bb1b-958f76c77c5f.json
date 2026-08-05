@@ -1,0 +1,31 @@
+{
+  "question_id": 4274,
+  "topic": "Segnali di indicazione",
+  "number": "21297",
+  "text": "Il segnale A di figura indica che è obbligatorio svoltare a sinistra",
+  "correct_answer": false,
+  "image": "916b7fab3c873dcafeae5ee6534775b7.jpeg",
+  "image_description": "Segnale di direzione obbligatoria (sinistra e destra). Il segnale A indica che la strada è a senso unico con direzione obbligatoria a sinistra. Il segnale B indica che la strada è a senso unico con direzione obbligatoria a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali rettangolari, entrambi con sfondo blu e bordo bianco. Il segnale A presenta una freccia bianca che punta verso sinistra. Il segnale B presenta una freccia bianca che punta verso destra. Entrambi i segnali sono etichettati con una lettera maiuscola (A e B) sopra di essi. Questi segnali sono segnali di prescrizione che indicano la direzione obbligatoria da seguire.",
+    "name": "Segnale di direzione obbligatoria (sinistra e destra)",
+    "description": "Il segnale A indica che la strada è a senso unico con direzione obbligatoria a sinistra. Il segnale B indica che la strada è a senso unico con direzione obbligatoria a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo di direzione",
+      "Segnali di senso unico"
+    ],
+    "exact_keywords": [
+      "segnali di direzione obbligatoria",
+      "senso unico",
+      "svolta a sinistra",
+      "svolta a destra"
+    ],
+    "vector_search_queries": [
+      "obbligo di svolta a sinistra o a destra imposto dai segnali di direzione obbligatoria",
+      "interpretazione segnali di senso unico con frecce di direzione obbligatoria"
+    ],
+    "rule_explanation": "I segnali di direzione obbligatoria indicano che è obbligatorio proseguire nella direzione indicata dalla freccia. Il segnale A impone la svolta a sinistra, non la rende obbligatoria in generale."
+  }
+}

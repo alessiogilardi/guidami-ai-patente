@@ -1,0 +1,32 @@
+{
+  "question_id": 4255,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21117",
+  "text": "Il segnale luminoso in figura è un semaforo riservato ai conducenti di biciclette",
+  "correct_answer": true,
+  "image": "c3c957780ed480a75899918470e54d50.jpeg",
+  "image_description": "Semaforo per biciclette. Il segnale raffigura un semaforo verticale con tre luci circolari sovrapposte: rossa in alto, gialla al centro e verde in basso. Ogni luce contiene la sagoma stilizzata di una bicicletta. Questo tipo di semaforo è specifico per regolare il traffico delle biciclette.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale semaforico verticale. Le luci sono disposte una sopra l'altra. La luce superiore è rossa e contiene il simbolo di una bicicletta. La luce centrale è gialla e contiene anch'essa il simbolo di una bicicletta. La luce inferiore è verde e contiene il simbolo di una bicicletta. Il segnale è chiaramente destinato a regolare il traffico ciclistico.",
+    "name": "Semaforo per biciclette",
+    "description": "Il segnale raffigura un semaforo verticale con tre luci circolari sovrapposte: rossa in alto, gialla al centro e verde in basso. Ogni luce contiene la sagoma stilizzata di una bicicletta. Questo tipo di semaforo è specifico per regolare il traffico delle biciclette."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica semaforica per ciclisti",
+      "Norme di circolazione per biciclette"
+    ],
+    "exact_keywords": [
+      "semaforo",
+      "biciclette",
+      "segnali luminosi",
+      "conducenti"
+    ],
+    "vector_search_queries": [
+      "semafori specifici per biciclette",
+      "segnaletica semaforica ciclisti",
+      "regolazione traffico ciclisti con semafori"
+    ],
+    "rule_explanation": "Esistono semafori specifici per i ciclisti, che regolano la circolazione delle biciclette con segnali luminosi dedicati raffiguranti la sagoma del ciclista."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4398,
+  "topic": "Distanza di sicurezza",
+  "number": "22578",
+  "text": "La distanza minima di sicurezza se si viaggia a 30 km/h è di circa 9 metri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza tra veicoli",
+      "Regolazione della velocità in base alla distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "distanza minima di sicurezza",
+      "velocità",
+      "veicolo che precede",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "calcolo distanza di sicurezza in base alla velocità",
+      "distanza minima tra veicoli in marcia"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare collisioni, tenendo conto della velocità, delle condizioni della strada e del veicolo che precede."
+  }
+}

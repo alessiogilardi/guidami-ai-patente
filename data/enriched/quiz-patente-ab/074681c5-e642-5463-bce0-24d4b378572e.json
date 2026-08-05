@@ -1,0 +1,28 @@
+{
+  "question_id": 4642,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24861",
+  "text": "Non è obbligatorio soccorrere un ferito della strada, per non mettere a repentaglio la propria sicurezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di soccorso stradale",
+      "Condotta del conducente in caso di incidente"
+    ],
+    "exact_keywords": [
+      "soccorso stradale",
+      "ferito della strada",
+      "omissione di soccorso",
+      "pericolo per la sicurezza"
+    ],
+    "vector_search_queries": [
+      "obbligo di prestare soccorso a feriti della strada",
+      "conseguenze omissione di soccorso stradale",
+      "dovere di assistenza in caso di incidente stradale"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di prestare soccorso a chiunque si trovi in pericolo, senza che la propria sicurezza possa essere un pretesto per l'omissione."
+  }
+}

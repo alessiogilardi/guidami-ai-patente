@@ -1,0 +1,27 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24401",
+  "text": "Durante la marcia, il casco deve essere sempre correttamente allacciato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso del casco protettivo",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "allacciato",
+      "marcia",
+      "dispositivi di protezione"
+    ],
+    "vector_search_queries": [
+      "obbligo di allacciare il casco protettivo durante la marcia",
+      "corretto allacciamento del casco motociclistico"
+    ],
+    "rule_explanation": "Il casco protettivo, durante la marcia del veicolo, deve essere sempre indossato e correttamente allacciato per garantire la sicurezza del conducente e del passeggero."
+  }
+}

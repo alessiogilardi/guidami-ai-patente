@@ -1,0 +1,28 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24538",
+  "text": "La patente di categoria B abilita a condurre le autovetture, anche se trainanti un rimorchio leggero (massa fino a 750 chilogrammi)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria B",
+      "Veicoli conducibili con patente B",
+      "Traino di rimorchi leggeri"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "autovetture",
+      "rimorchio leggero",
+      "massa massima a pieno carico"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente B con rimorchio leggero",
+      "limiti massa rimorchio per patente B"
+    ],
+    "rule_explanation": "La patente di categoria B abilita alla guida di autovetture e di complessi veicolari composti da motrice e rimorchio leggero (fino a 750 kg di massa massima a pieno carico)."
+  }
+}

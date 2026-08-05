@@ -1,0 +1,28 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24679",
+  "text": "La patente di guida è confermata dal Ministero delle infrastrutture e dei trasporti a seguito di accertamento di idoneità psicofisica svolto da un medico autorizzato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Idoneità psicofisica alla guida",
+      "Emissione della patente di guida",
+      "Ruolo del medico autorizzato"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "accertamento di idoneità psicofisica",
+      "medico autorizzato",
+      "Ministero delle infrastrutture e dei trasporti"
+    ],
+    "vector_search_queries": [
+      "requisiti medici per il rilascio della patente di guida",
+      "procedura di accertamento dell'idoneità psicofisica per la patente"
+    ],
+    "rule_explanation": "La patente di guida è rilasciata dal Ministero delle Infrastrutture e dei Trasporti previa verifica dell'idoneità psicofisica da parte di un medico abilitato."
+  }
+}

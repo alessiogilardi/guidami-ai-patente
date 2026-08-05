@@ -1,0 +1,27 @@
+{
+  "question_id": 4395,
+  "topic": "Distanza di sicurezza",
+  "number": "22563",
+  "text": "La distanza di sicurezza è una distanza fissa",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Adeguamento della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "velocità",
+      "condizioni della strada",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "requisiti della distanza di sicurezza tra veicoli",
+      "obbligo di mantenere una distanza di sicurezza adeguata per evitare incidenti"
+    ],
+    "rule_explanation": "La distanza di sicurezza non è fissa, ma deve essere tale da consentire al conducente di evitare collisioni, tenendo conto della velocità, delle condizioni della strada e del traffico."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4392,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22514",
+  "text": "In un centro abitato, se si vede un pallone rotolare sulla carreggiata, bisogna rallentare per potersi fermare, se necessario",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in centro abitato",
+      "Obbligo di prudenza e arresto in caso di ostacoli imprevedibili"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "rallentare",
+      "fermarsi",
+      "ostacolo improvviso"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità in centro abitato per ostacoli improvvisi",
+      "obbligo di rallentare e fermarsi per evitare incidenti in presenza di bambini o animali"
+    ],
+    "rule_explanation": "Nei centri abitati, il conducente deve moderare la velocità per essere in grado di fermarsi in caso di ostacoli improvvisi come un pallone che rotola sulla carreggiata."
+  }
+}

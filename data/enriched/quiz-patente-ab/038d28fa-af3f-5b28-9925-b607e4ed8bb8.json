@@ -1,0 +1,30 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22483",
+  "text": "Se si percorre una lunga discesa con il cambio in folle e a motore spento, diventa difficoltoso frenare se il veicolo è dotato di servofreno",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzionamento del servofreno",
+      "Guida in discesa",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "servofreno",
+      "discesa",
+      "motore spento",
+      "cambio in folle",
+      "frenata"
+    ],
+    "vector_search_queries": [
+      "funzionamento servofreno con motore spento",
+      "effetti del cambio in folle sulla frenata in discesa",
+      "rischi della guida con motore spento in discesa"
+    ],
+    "rule_explanation": "La frenata è difficoltosa con servofreno a motore spento e cambio in folle in discesa, poiché il servofreno necessita del motore per funzionare e assistere la frenata."
+  }
+}

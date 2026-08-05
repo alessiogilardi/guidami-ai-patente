@@ -1,0 +1,30 @@
+{
+  "question_id": 4435,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22926",
+  "text": "Se un autotreno intende svoltare a destra in una strada stretta, i conducenti dei veicoli che seguono debbono azionare la segnalazione luminosa di pericolo.",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Comportamento dei veicoli in colonna",
+      "Precedenza e manovre di svolta"
+    ],
+    "exact_keywords": [
+      "autotreno",
+      "svolta a destra",
+      "strada stretta",
+      "segnalazione luminosa di pericolo",
+      "veicoli che seguono"
+    ],
+    "vector_search_queries": [
+      "uso della segnalazione luminosa di pericolo per manovre di svolta",
+      "obblighi dei veicoli in colonna durante le svolte",
+      "segnalazione di svolta per autotreni in strade strette"
+    ],
+    "rule_explanation": "La segnalazione luminosa di pericolo (quattro frecce) va usata per avvertire di un pericolo improvviso o di una sosta di emergenza, non per presegnalare una manovra di svolta."
+  }
+}

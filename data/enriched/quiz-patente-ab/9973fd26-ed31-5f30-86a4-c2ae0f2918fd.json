@@ -1,0 +1,27 @@
+{
+  "question_id": 4382,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22407",
+  "text": "Salvo diversa segnalazione, il limite massimo di velocità consentito per i quadricicli non leggeri è di 70 km/h.",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per categorie di veicoli",
+      "Normativa sui quadricicli a motore"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "quadricicli non leggeri",
+      "strade extraurbane principali",
+      "autostrade"
+    ],
+    "vector_search_queries": [
+      "limiti di velocità per quadricicli non leggeri su strade extraurbane principali e autostrade",
+      "velocità massima consentita per quadricicli non leggeri in Italia"
+    ],
+    "rule_explanation": "Il limite di velocità per i quadricicli non leggeri è di 70 km/h sulle strade extraurbane secondarie, 80 km/h sulle extraurbane principali e 120 km/h in autostrada."
+  }
+}

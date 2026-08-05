@@ -1,0 +1,32 @@
+{
+  "question_id": 4314,
+  "topic": "Segnali di indicazione",
+  "number": "21684",
+  "text": "Il segnale raffigurato indica, su strade a carreggiate separate, un sottopassaggio per invertire il senso di marcia",
+  "correct_answer": true,
+  "image": "7206f36808a5ee18e9b5163635a54363.jpeg",
+  "image_description": "Inversione di marcia consentita con cavalcavia o sottopassaggio. Il segnale indica la possibilità di effettuare un'inversione di marcia tramite un cavalcavia o un sottopassaggio, su strade a carreggiate separate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale sono rappresentate due carreggiate separate da una linea bianca continua. Una freccia bianca parte dalla carreggiata di sinistra, compie un'ansa verso l'alto e poi verso destra, per poi scendere e indicare un'inversione di marcia verso sinistra, suggerendo il passaggio sopra o sotto la carreggiata principale. Questo tipo di segnale è un segnale di indicazione.",
+    "name": "Inversione di marcia consentita con cavalcavia o sottopassaggio",
+    "description": "Il segnale indica la possibilità di effettuare un'inversione di marcia tramite un cavalcavia o un sottopassaggio, su strade a carreggiate separate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Inversione di marcia",
+      "Strade a carreggiate separate"
+    ],
+    "exact_keywords": [
+      "sottopassaggio",
+      "inversione di marcia",
+      "carreggiate separate",
+      "segnale di indicazione"
+    ],
+    "vector_search_queries": [
+      "segnale inversione marcia sottopassaggio carreggiate separate",
+      "indicazione stradale per inversione di marcia in sottopasso su strade divise"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la possibilità di invertire il senso di marcia tramite sottopassaggio, specificamente su strade a carreggiate separate."
+  }
+}

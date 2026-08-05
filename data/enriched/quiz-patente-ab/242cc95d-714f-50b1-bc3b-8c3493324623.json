@@ -1,0 +1,27 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22320",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi quando gli animali che si trovano sulla strada danno segni di spavento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Comportamento in presenza di animali sulla strada"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "animale",
+      "segni di spavento",
+      "pericolo per la circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di animali sulla strada",
+      "comportamento del conducente in caso di animali che manifestano spavento"
+    ],
+    "rule_explanation": "Il conducente deve ridurre la velocità o fermarsi se animali sulla strada mostrano segni di spavento per evitare pericoli o intralci alla circolazione."
+  }
+}

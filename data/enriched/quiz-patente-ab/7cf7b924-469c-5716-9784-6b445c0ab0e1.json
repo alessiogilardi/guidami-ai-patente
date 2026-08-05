@@ -1,0 +1,29 @@
+{
+  "question_id": 4659,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24989",
+  "text": "La responsabilità penale connessa al sinistro stradale è esclusa qualora intervenga l'impresa di assicurazione che risarcisca adeguatamente il danneggiato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità penale del conducente",
+      "Natura autonoma della responsabilità penale",
+      "Assicurazione R.C.A."
+    ],
+    "exact_keywords": [
+      "responsabilità penale",
+      "impresa di assicurazione",
+      "risarcimento del danno",
+      "sinistro stradale"
+    ],
+    "vector_search_queries": [
+      "autonomia della responsabilità penale rispetto al risarcimento civile",
+      "effetti dell'assicurazione R.C.A. sulla responsabilità penale del conducente",
+      "risarcimento del danno e responsabilità penale in caso di sinistro stradale"
+    ],
+    "rule_explanation": "La responsabilità penale del conducente per un sinistro stradale non è esclusa dal mero risarcimento del danno da parte dell'impresa di assicurazione, in quanto le due sfere di responsabilità sono autonome."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4453,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23101",
+  "text": "Secondo le norme di precedenza nell'incrocio rappresentato in figura il veicolo R passa per ultimo",
+  "correct_answer": false,
+  "image": "e2b9fb579ecb08ada9ee4d8e7c3a5ef7.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. Il veicolo R si trova sulla strada che immette nell'incrocio da destra. Il veicolo A si trova sulla strada che immette nell'incrocio da destra, ma più in basso rispetto a R. Il veicolo C si trova sulla strada che immette nell'incrocio da sinistra. Non sono presenti segnali di prescrizione o preavviso che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo R ha la precedenza su A e C perché si trova alla loro destra. Il veicolo A ha la precedenza su C perché si trova alla sua destra. L'ordine di passaggio è R, A, C.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con tre veicoli: R (giallo), A (blu) e C (rosso). Non sono presenti segnali stradali che regolano la precedenza. Il veicolo R si trova sulla strada che proviene da destra rispetto all'incrocio. Il veicolo A si trova sulla strada che proviene da destra, ma è posizionato più in basso rispetto a R. Il veicolo C si trova sulla strada che proviene da sinistra. Le frecce tratteggiate indicano le traiettorie di svolta dei veicoli A e C. Poiché non ci sono segnali, si applica la regola generale della precedenza a destra. Il veicolo R, trovandosi alla destra di A e C, ha la precedenza. Il veicolo A, trovandosi alla destra di C, ha la precedenza su C. Pertanto, l'ordine di passaggio corretto è R, poi A, poi C.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. Il veicolo R si trova sulla strada che immette nell'incrocio da destra. Il veicolo A si trova sulla strada che immette nell'incrocio da destra, ma più in basso rispetto a R. Il veicolo C si trova sulla strada che immette nell'incrocio da sinistra. Non sono presenti segnali di prescrizione o preavviso che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo R ha la precedenza su A e C perché si trova alla loro destra. Il veicolo A ha la precedenza su C perché si trova alla sua destra. L'ordine di passaggio è R, A, C."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza ai incroci non regolamentati"
+    ],
+    "exact_keywords": [
+      "precedenza a destra",
+      "incrocio non segnalato",
+      "veicolo",
+      "ordine di passaggio"
+    ],
+    "vector_search_queries": [
+      "precedenza veicoli incrocio non segnalato",
+      "regola generale precedenza a destra",
+      "ordine di passaggio veicoli in assenza di segnaletica"
+    ],
+    "rule_explanation": "Negli incroci non segnalati, la precedenza spetta al veicolo che proviene da destra. L'affermazione che il veicolo R passi per ultimo è errata perché R ha la precedenza sugli altri veicoli."
+  }
+}

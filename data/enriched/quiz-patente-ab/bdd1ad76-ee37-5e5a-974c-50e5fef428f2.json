@@ -1,0 +1,27 @@
+{
+  "question_id": 4387,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22456",
+  "text": "Salvo diversa segnalazione, il limite massimo di velocità nei centri abitati è di 60 km/h, valido fino ad un chilometro dopo l'uscita del paese",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità nei centri abitati",
+      "Regolamentazione della velocità"
+    ],
+    "exact_keywords": [
+      "centri abitati",
+      "limite massimo di velocità",
+      "sinalbergo di inizio e fine",
+      "50 km/h"
+    ],
+    "vector_search_queries": [
+      "limite di velocità nei centri abitati",
+      "velocità massima consentita nei centri abitati senza segnaletica specifica"
+    ],
+    "rule_explanation": "Nei centri abitati il limite massimo di velocità è di 50 km/h, salvo diversa segnalazione. Il limite è valido fino al segnale di fine centro abitato."
+  }
+}

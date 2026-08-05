@@ -1,0 +1,29 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23524",
+  "text": "Prima di rientrare nella corsia di destra dopo il sorpasso, occorre controllare la posizione del veicolo sorpassato attraverso gli specchietti retrovisori",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Sicurezza nella manovra di sorpasso",
+      "Controllo della posizione del veicolo sorpassato"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "rientro nella corsia di destra",
+      "specchietti retrovisori",
+      "posizione del veicolo sorpassato"
+    ],
+    "vector_search_queries": [
+      "controllo posizione veicolo sorpassato prima del rientro in corsia",
+      "obblighi del conducente durante la manovra di sorpasso",
+      "sicurezza nel rientro in corsia dopo il sorpasso"
+    ],
+    "rule_explanation": "Prima di rientrare nella corsia di destra dopo un sorpasso, il conducente deve assicurarsi, tramite gli specchietti retrovisori, che il veicolo sorpassato si trovi a una distanza di sicurezza adeguata."
+  }
+}

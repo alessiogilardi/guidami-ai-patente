@@ -1,0 +1,29 @@
+{
+  "question_id": 4436,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22935",
+  "text": "Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso può compiere la manovra anche con scarsa visibilità, se la linea di mezzeria è tratteggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inversione di marcia",
+      "Visibilità e sicurezza",
+      "Segnaletica orizzontale"
+    ],
+    "exact_keywords": [
+      "inversione di marcia",
+      "scarsa visibilità",
+      "linea di mezzeria tratteggiata",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di inversione di marcia con scarsa visibilità",
+      "condizioni di sicurezza per l'inversione di marcia",
+      "segnaletica orizzontale e manovra di inversione di marcia"
+    ],
+    "rule_explanation": "L'inversione di marcia è vietata in condizioni di scarsa visibilità, anche se la linea di mezzeria è tratteggiata, per evitare di creare pericolo per la circolazione."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4473,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23302",
+  "text": "Nell'incrocio rappresentato nella figura il veicolo B deve dare la precedenza al veicolo A",
+  "correct_answer": false,
+  "image": "aae9fa7595cdb3bcddda3f83333fb049.jpeg",
+  "image_description": "Incrocio a raso con tram e precedenza a destra. In assenza di segnali specifici, ai veicoli che si immettono da destra si deve dare la precedenza. I tram hanno la precedenza sui veicoli stradali quando si trovano sul loro percorso. Il veicolo B, trovandosi alla destra del veicolo A, ha la precedenza su A. Il tram T ha la precedenza su tutti i veicoli stradali. Il veicolo C, trovandosi dietro il tram, deve attendere che il tram passi e che la carreggiata sia libera.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso tra una strada con due carreggiate separate da una linea discontinua e una linea tranviaria che attraversa la strada. Sono presenti tre veicoli: un'autovettura (A) ferma in attesa di svoltare a sinistra, un'autovettura (B) ferma in attesa di proseguire dritto, e un tram (T) che si trova sulla sua linea e sta attraversando l'incrocio. Un'altra autovettura (C) è ferma dietro il tram, sulla stessa linea di quest'ultimo, in attesa di proseguire dritto. Le linee di arresto sono visibili per i veicoli A e B. Non sono presenti segnali di precedenza verticali o orizzontali che regolino l'incrocio, pertanto si applica la regola generale della precedenza a destra e la precedenza dei tram sui veicoli stradali.",
+    "name": "Incrocio a raso con tram e precedenza a destra",
+    "description": "In assenza di segnali specifici, ai veicoli che si immettono da destra si deve dare la precedenza. I tram hanno la precedenza sui veicoli stradali quando si trovano sul loro percorso. Il veicolo B, trovandosi alla destra del veicolo A, ha la precedenza su A. Il tram T ha la precedenza su tutti i veicoli stradali. Il veicolo C, trovandosi dietro il tram, deve attendere che il tram passi e che la carreggiata sia libera."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza a destra",
+      "Precedenza dei tram"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "tram",
+      "veicoli stradali"
+    ],
+    "vector_search_queries": [
+      "precedenza dei tram negli incroci",
+      "regola generale di precedenza a destra negli incroci",
+      "ordine di precedenza tra tram e veicoli stradali"
+    ],
+    "rule_explanation": "Ai tram si deve dare la precedenza quando si trovano sul loro percorso, anche se si immettono da sinistra. Negli incroci senza segnaletica, vige la regola generale della precedenza a destra."
+  }
+}

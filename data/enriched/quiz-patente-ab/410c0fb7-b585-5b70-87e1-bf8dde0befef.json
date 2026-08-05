@@ -1,0 +1,33 @@
+{
+  "question_id": 4204,
+  "topic": "Segnali di precedenza",
+  "number": "20644",
+  "text": "Il segnale raffigurato invita ad usare la massima prudenza al fine di evitare incidenti",
+  "correct_answer": true,
+  "image": "c3fbf607467f1dbb78f137f6e2ff37f8.jpeg",
+  "image_description": "Preavviso di confluenza (immissione) da destra. Il segnale preannuncia una confluenza sul lato destro. I veicoli provenienti dalla corsia di destra si immetteranno sulla strada principale, avendo la precedenza. Pertanto, chi percorre la strada principale deve moderare la velocità e, se necessario, fermarsi per consentire il congiungimento dei flussi di traffico.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta una strada principale (linea più spessa e diritta) e una strada secondaria che si immette da destra (linea più sottile che si congiunge alla principale con un'angolazione). La linea della strada secondaria si divide in due rami, uno dei quali si immette sulla principale da destra, mentre l'altro prosegue parallelamente. Questo indica una confluenza o immissione da destra.",
+    "name": "Preavviso di confluenza (immissione) da destra",
+    "description": "Il segnale preannuncia una confluenza sul lato destro. I veicoli provenienti dalla corsia di destra si immetteranno sulla strada principale, avendo la precedenza. Pertanto, chi percorre la strada principale deve moderare la velocità e, se necessario, fermarsi per consentire il congiungimento dei flussi di traffico."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Preavviso di immissione",
+      "Regolazione della circolazione"
+    ],
+    "exact_keywords": [
+      "segnali di prescrizione",
+      "preavviso di immissione",
+      "confluenza",
+      "moderare la velocità",
+      "fermarsi"
+    ],
+    "vector_search_queries": [
+      "obbligo di usare prudenza in presenza di segnali di immissione laterale",
+      "regolazione della velocità e arresto per consentire la confluenza di flussi di traffico"
+    ],
+    "rule_explanation": "Il segnale di preavviso di immissione (confluenza) impone di usare la massima prudenza, moderando la velocità e fermandosi se necessario, per consentire l'immissione dei veicoli provenienti dalla corsia laterale."
+  }
+}

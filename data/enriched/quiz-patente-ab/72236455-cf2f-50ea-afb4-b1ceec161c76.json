@@ -1,0 +1,33 @@
+{
+  "question_id": 4064,
+  "topic": "Segnali di pericolo",
+  "number": "19024",
+  "text": "In presenza del segnale raffigurato è necessario tenere una velocità moderata esclusivamente nella prima curva",
+  "correct_answer": false,
+  "image": "f3d65cdd3174f51dcbbc55dcae2aec01.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta una doppia curva, con la prima curva a sinistra e la seconda a destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Regolazione della velocità",
+      "Condizioni di visibilità e raggio di curvatura"
+    ],
+    "exact_keywords": [
+      "doppia curva pericolosa",
+      "velocità moderata",
+      "visibilità",
+      "raggio delle curve"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di curve pericolose",
+      "adeguamento della velocità al raggio e alla visibilità delle curve",
+      "segnali di pericolo per curve e obblighi del conducente"
+    ],
+    "rule_explanation": "Il segnale di doppia curva pericolosa impone di moderare la velocità in relazione alla visibilità e al raggio di TUTTE le curve, non solo della prima."
+  }
+}

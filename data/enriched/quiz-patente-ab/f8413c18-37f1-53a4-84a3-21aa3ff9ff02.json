@@ -1,0 +1,28 @@
+{
+  "question_id": 4661,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24998",
+  "text": "La responsabilità civile connessa al sinistro stradale grava sul proprietario e sul conducente del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile del proprietario del veicolo",
+      "Responsabilità civile del conducente",
+      "Assicurazione R.C.A."
+    ],
+    "exact_keywords": [
+      "responsabilità civile",
+      "sinistro stradale",
+      "proprietario del veicolo",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "responsabilità civile proprietario e conducente per sinistro stradale",
+      "danni causati da veicolo in circolazione responsabilità civile"
+    ],
+    "rule_explanation": "La responsabilità civile per i danni causati da un sinistro stradale grava sia sul proprietario del veicolo sia sul conducente, salvo che questi non sia una persona diversa dal proprietario e il veicolo sia stato sottratto alla sua disponibilità contro la sua volontà."
+  }
+}

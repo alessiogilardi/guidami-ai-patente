@@ -1,0 +1,32 @@
+{
+  "question_id": 4099,
+  "topic": "Segnali di pericolo",
+  "number": "19443",
+  "text": "Il segnale raffigurato preannuncia, in caso di forte vento laterale, un pericolo che è maggiore per i veicoli a due ruote",
+  "correct_answer": true,
+  "image": "b6cd263ac2e3188386f2814949cbc505.jpeg",
+  "image_description": "Segnale di pericolo per vento laterale. Il segnale preannuncia un tratto di strada soggetto a forti raffiche di vento laterale. È necessario procedere con prudenza, tenendo saldamente il volante per mantenere la stabilità del veicolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un palo verticale con attaccato un manica a vento, orientata verso destra, con delle strisce che indicano la direzione e l'intensità del vento. Il pittogramma rappresenta un vento laterale.",
+    "name": "Segnale di pericolo per vento laterale",
+    "description": "Il segnale preannuncia un tratto di strada soggetto a forti raffiche di vento laterale. È necessario procedere con prudenza, tenendo saldamente il volante per mantenere la stabilità del veicolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Vento laterale",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "vento laterale",
+      "veicoli a due ruote",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "pericolo per vento laterale e veicoli a due ruote",
+      "segnali di pericolo per vento laterale e stabilità del veicolo"
+    ],
+    "rule_explanation": "Il segnale di pericolo per vento laterale preannuncia un rischio maggiore per i veicoli a due ruote, che sono più esposti alle raffiche e richiedono maggiore prudenza."
+  }
+}

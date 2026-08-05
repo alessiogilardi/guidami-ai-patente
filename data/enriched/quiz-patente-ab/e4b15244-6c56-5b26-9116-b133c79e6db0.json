@@ -1,0 +1,29 @@
+{
+  "question_id": 4705,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25313",
+  "text": "Il circuito frenante dei veicoli leggeri è di tipo a circuito sigillato, pertanto non è necessario un periodico controllo del livello del liquido idraulico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del sistema frenante",
+      "Controllo del livello del liquido freni",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "circuito frenante",
+      "liquido idraulico",
+      "controllo periodico",
+      "livello"
+    ],
+    "vector_search_queries": [
+      "manutenzione circuito frenante veicoli leggeri",
+      "controllo livello liquido freni obbligatorio",
+      "sicurezza sistema frenante e liquido idraulico"
+    ],
+    "rule_explanation": "Il circuito frenante, anche se sigillato, richiede un controllo periodico del livello del liquido idraulico per garantirne l'efficienza e la sicurezza."
+  }
+}

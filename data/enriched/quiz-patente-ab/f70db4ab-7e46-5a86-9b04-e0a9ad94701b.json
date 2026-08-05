@@ -1,0 +1,27 @@
+{
+  "question_id": 4421,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22788",
+  "text": "Quando si vuole svoltare a destra è necessario portarsi in vicinanza del centro dell'incrocio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento del veicolo per la svolta a destra",
+      "Norme di comportamento agli incroci"
+    ],
+    "exact_keywords": [
+      "svolta a destra",
+      "centro della carreggiata",
+      "incrocio",
+      "corsia di destra"
+    ],
+    "vector_search_queries": [
+      "posizionamento veicolo per svolta a destra all'incrocio",
+      "avvicinamento al margine destro per svolta a destra"
+    ],
+    "rule_explanation": "Per svoltare a destra, ci si deve avvicinare al margine destro della carreggiata, non al centro dell'incrocio."
+  }
+}

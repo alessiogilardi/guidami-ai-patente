@@ -1,0 +1,27 @@
+{
+  "question_id": 4602,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24431",
+  "text": "Gli stivali ad uso motociclistico sono dotati di doppie stringhe per evitare scalzamenti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di protezione individuale per motociclisti",
+      "Requisiti di abbigliamento tecnico per la guida motociclistica"
+    ],
+    "exact_keywords": [
+      "stivali motociclistici",
+      "calzature chiuse",
+      "protezione caviglia",
+      "sistemi di allacciatura"
+    ],
+    "vector_search_queries": [
+      "requisiti calzature motociclisti protezione scalzamento",
+      "caratteristiche stivali motociclistici sicurezza"
+    ],
+    "rule_explanation": "Gli stivali da motociclista devono essere calzature chiuse, alte almeno fino alla caviglia, con suole resistenti e sistemi di allacciatura sicuri per prevenire lo scalzamento."
+  }
+}

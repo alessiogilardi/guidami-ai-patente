@@ -1,0 +1,30 @@
+{
+  "question_id": 4041,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18742",
+  "text": "Bisogna controllare frequentemente nello specchietto retrovisore se sopraggiunge un ciclista o un motociclista",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente",
+      "Uso responsabile della strada",
+      "Attenzione verso utenti vulnerabili"
+    ],
+    "exact_keywords": [
+      "specchietto retrovisore",
+      "ciclista",
+      "motociclista",
+      "sorpasso",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "controllo specchietto retrovisore per ciclisti e motociclisti",
+      "obbligo di vigilanza su utenti vulnerabili della strada",
+      "precedenza e sicurezza in presenza di ciclisti e motociclisti"
+    ],
+    "rule_explanation": "Il conducente deve controllare frequentemente gli specchietti retrovisori per monitorare la presenza di ciclisti e motociclisti, specialmente prima di effettuare manovre."
+  }
+}

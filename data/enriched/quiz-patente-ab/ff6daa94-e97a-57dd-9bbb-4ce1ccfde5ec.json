@@ -1,0 +1,28 @@
+{
+  "question_id": 4542,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23891",
+  "text": "Sulle autostrade e sulle strade extraurbane principali il conducente deve segnalare tempestivamente il cambiamento di corsia servendosi degli indicatori di direzione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovre",
+      "Obblighi del conducente in autostrada e strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "cambiamento di corsia",
+      "indicatori di direzione",
+      "autostrade",
+      "strade extraurbane principali",
+      "tempestivamente"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalazione cambiamento corsia autostrada",
+      "uso degli indicatori di direzione per cambio corsia su strade extraurbane principali"
+    ],
+    "rule_explanation": "Il conducente deve segnalare con anticipo l'intenzione di cambiare corsia, utilizzando gli indicatori di direzione, specialmente su autostrade e strade extraurbane principali."
+  }
+}

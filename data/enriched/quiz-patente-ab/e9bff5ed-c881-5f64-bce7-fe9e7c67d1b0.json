@@ -1,0 +1,32 @@
+{
+  "question_id": 4123,
+  "topic": "Segnali di divieto",
+  "number": "19740",
+  "text": "In presenza del segnale raffigurato è vietato il transito di autocarri se sulla carta di circolazione è indicata una massa a pieno carico superiore a 6,5 tonnellate",
+  "correct_answer": true,
+  "image": "18e06d9f8487ade1e7d992ff03920d19.jpeg",
+  "image_description": "Divieto di transito agli autoveicoli di massa superiore a 6,5 t. Il segnale vieta il transito ai veicoli, non adibiti al trasporto di cose, con massa a pieno carico superiore a 6,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di un autocarro con la dicitura \"6,5 t\" sovrapposta. Il segnale è isolato e non presenta pannelli integrativi. Si tratta di un segnale di prescrizione (divieto).",
+    "name": "Divieto di transito agli autoveicoli di massa superiore a 6,5 t",
+    "description": "Il segnale vieta il transito ai veicoli, non adibiti al trasporto di cose, con massa a pieno carico superiore a 6,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Massa a pieno carico",
+      "Restrizioni alla circolazione per massa"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "massa a pieno carico",
+      "carta di circolazione",
+      "autocarri"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per autocarri con massa a pieno carico superiore a 6,5 t",
+      "interpretazione segnale divieto massa veicolo 6,5 tonnellate"
+    ],
+    "rule_explanation": "Il segnale di divieto raffigurato vieta il transito agli autocarri con massa a pieno carico superiore a 6,5 tonnellate, come indicato sulla carta di circolazione."
+  }
+}

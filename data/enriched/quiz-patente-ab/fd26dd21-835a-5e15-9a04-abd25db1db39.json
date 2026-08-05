@@ -1,0 +1,27 @@
+{
+  "question_id": 4412,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22697",
+  "text": "Il carico deve essere sistemato sugli autoveicoli in modo da evitare la sporgenza laterale dello stesso per più di tre decimi della lunghezza del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sporgenza del carico",
+      "Dimensioni massime del carico sugli autoveicoli"
+    ],
+    "exact_keywords": [
+      "carico",
+      "autoveicoli",
+      "sporgenza laterale",
+      "lunghezza del veicolo"
+    ],
+    "vector_search_queries": [
+      "limiti sporgenza laterale carico autoveicoli",
+      "normativa carico sporgente longitudinalmente e lateralmente"
+    ],
+    "rule_explanation": "Il carico non deve sporgere lateralmente oltre la sagoma del veicolo, salvo eccezioni specifiche e con particolari modalità di segnalazione."
+  }
+}

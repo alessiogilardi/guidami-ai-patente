@@ -1,0 +1,33 @@
+{
+  "question_id": 4366,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22192",
+  "text": "Il pannello integrativo raffigurato indica che in caso di pioggia si può trovare del fango sulla strada",
+  "correct_answer": true,
+  "image": "5e3d380eb55b1ad0a83fbadf71431a7e.jpeg",
+  "image_description": "Pannello integrativo di pericolo per pioggia. Il pannello integrativo indica che il segnale principale a cui è abbinato si applica in caso di pioggia, preavvisando che la strada può diventare sdrucciolevole.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Nella parte sinistra del pannello, delle linee oblique nere rappresentano la pioggia. Nella parte destra, una nuvola nera stilizzata indica la presenza di maltempo. L'insieme suggerisce una condizione di pioggia o maltempo che influisce sulla strada.",
+    "name": "Pannello integrativo di pericolo per pioggia",
+    "description": "Il pannello integrativo indica che il segnale principale a cui è abbinato si applica in caso di pioggia, preavvisando che la strada può diventare sdrucciolevole."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi",
+      "Condizioni atmosferiche e adeguatezza della velocità"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "pericolo",
+      "pioggia",
+      "strada sdrucciolevole"
+    ],
+    "vector_search_queries": [
+      "funzione dei pannelli integrativi di pericolo",
+      "segnalazione di strada sdrucciolevole per pioggia",
+      "pannello integrativo che indica condizioni di ridotta aderenza per precipitazioni atmosferiche"
+    ],
+    "rule_explanation": "I pannelli integrativi specificano le modalità di applicazione o il significato dei segnali principali, come il preavviso di strada sdrucciolevole in caso di pioggia."
+  }
+}

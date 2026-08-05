@@ -1,0 +1,29 @@
+{
+  "question_id": 4566,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24086",
+  "text": "Nelle autovetture dotate di A.B.S. non è possibile agganciare un rimorchio privo di impianto frenante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto di persone e cose",
+      "Traino di rimorchi",
+      "Dispositivi di sicurezza dei veicoli"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "A.B.S.",
+      "rimorchio",
+      "impianto frenante",
+      "traino"
+    ],
+    "vector_search_queries": [
+      "traino rimorchio senza freni con autovettura ABS",
+      "limiti massa rimorchio non frenato per autovetture"
+    ],
+    "rule_explanation": "È consentito il traino di rimorchi privi di impianto frenante se la massa a pieno carico del rimorchio non supera la massa a vuoto dell'autovettura motrice e, in ogni caso, se la massa a pieno carico del rimorchio non supera 0,75 tonnellate. L'ABS dell'autovettura non è un fattore ostativo."
+  }
+}

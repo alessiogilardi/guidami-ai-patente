@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23499",
+  "text": "E' vietato il sorpasso di un veicolo che ne stia superando un altro se ciò impone di spostarsi sul lato riservato all'altro senso di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Manovra di sorpasso in sicurezza"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "veicolo in sorpasso",
+      "senso di marcia",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso su veicolo già in fase di sorpasso",
+      "sorpasso in condizioni di pericolo o intralcio alla circolazione"
+    ],
+    "rule_explanation": "È vietato il sorpasso di un veicolo che sta già effettuando una manovra di sorpasso, specialmente se ciò comporta l'invasione dell'area destinata al senso opposto di marcia."
+  }
+}

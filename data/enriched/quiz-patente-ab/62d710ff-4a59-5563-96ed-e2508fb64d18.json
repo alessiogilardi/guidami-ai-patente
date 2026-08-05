@@ -1,0 +1,31 @@
+{
+  "question_id": 4132,
+  "topic": "Segnali di divieto",
+  "number": "19831",
+  "text": "Il segnale raffigurato, integrato con pannello, può vietare il transito contemporaneo di più veicoli",
+  "correct_answer": true,
+  "image": "41d170b88f8596eef6889b041c2516cc.jpeg",
+  "image_description": "Divieto di transito per i veicoli di massa superiore a 7 t. Il segnale vieta il transito ai veicoli che superano il peso indicato, ovvero 7 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la dicitura \"7,00 t\" in nero, con la \"t\" in apice. Questo indica un limite di massa per i veicoli.",
+    "name": "Divieto di transito per i veicoli di massa superiore a 7 t",
+    "description": "Il segnale vieta il transito ai veicoli che superano il peso indicato, ovvero 7 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Limitazioni di transito basate sulla massa"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "pannello integrativo",
+      "transito contemporaneo",
+      "massa a pieno carico"
+    ],
+    "vector_search_queries": [
+      "divieto di transito con pannello integrativo per massa veicolo",
+      "limitazione transito veicoli per peso con segnale di divieto"
+    ],
+    "rule_explanation": "Il segnale di divieto, se integrato con pannello, può limitare il transito contemporaneo di più veicoli, ad esempio in base alla loro massa a pieno carico."
+  }
+}

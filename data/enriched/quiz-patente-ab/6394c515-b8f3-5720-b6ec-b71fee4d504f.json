@@ -1,0 +1,28 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22504",
+  "text": "Nel caso in cui, per un guasto al veicolo, si rimane bloccati sulla sede ferroviaria di un passaggio a livello, occorre scaricare rapidamente il veicolo per salvare almeno il carico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo e intralcio alla circolazione su passaggi a livello",
+      "Comportamento in caso di arresto del veicolo su sede ferroviaria"
+    ],
+    "exact_keywords": [
+      "guasto al veicolo",
+      "sede ferroviaria",
+      "passaggio a livello",
+      "salvare il carico",
+      "pericolo per la circolazione ferroviaria"
+    ],
+    "vector_search_queries": [
+      "obblighi in caso di arresto del veicolo su passaggio a livello per guasto",
+      "priorità di intervento per rimozione veicolo bloccato su sede ferroviaria"
+    ],
+    "rule_explanation": "In caso di guasto su un passaggio a livello, la priorità è segnalare il pericolo e rimuovere il veicolo, non scaricare il carico."
+  }
+}

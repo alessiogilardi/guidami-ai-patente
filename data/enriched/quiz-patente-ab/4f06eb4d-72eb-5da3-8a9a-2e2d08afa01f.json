@@ -1,0 +1,27 @@
+{
+  "question_id": 4047,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18812",
+  "text": "Alla guida di un veicolo, in vicinanza di una piazzola di fermata di autobus per scolari, occorre prepararsi a frenare, nel caso in cui dei bambini attraversino improvvisamente la strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Regolazione della velocità in prossimità di aree sensibili"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "piazzola di fermata autobus scolari",
+      "bambini",
+      "attraversamento improvviso"
+    ],
+    "vector_search_queries": [
+      "precauzioni alla guida in prossimità di fermate scuolabus",
+      "obbligo di moderare la velocità per attraversamento improvviso di bambini da fermate scuolabus"
+    ],
+    "rule_explanation": "Il conducente deve moderare la velocità in prossimità delle fermate degli scuolabus, per essere pronto a fermarsi in caso di attraversamento improvviso della strada da parte di bambini."
+  }
+}

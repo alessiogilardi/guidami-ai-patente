@@ -1,0 +1,29 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24601",
+  "text": "La revisione della patente di guida può essere disposta quando il titolare circola su un'auto storica senza la prescritta documentazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione della patente",
+      "Documentazione di circolazione",
+      "Obblighi del conducente"
+    ],
+    "exact_keywords": [
+      "revisione della patente",
+      "documentazione di circolazione",
+      "veicolo storico",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "disposizione della revisione della patente di guida",
+      "conseguenze della circolazione senza documenti del veicolo",
+      "sanzioni per veicoli storici sprovvisti di documentazione"
+    ],
+    "rule_explanation": "La revisione della patente è disposta per infrazioni gravi o per perdita dei requisiti, non per la circolazione di un veicolo storico senza documentazione, per cui sono previste altre sanzioni."
+  }
+}

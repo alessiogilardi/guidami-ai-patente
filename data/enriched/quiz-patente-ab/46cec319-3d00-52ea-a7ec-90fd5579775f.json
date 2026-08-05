@@ -1,0 +1,27 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31022",
+  "text": "Durante la guida il conducente deve prestare attenzione, sia a gli utenti che si trovano davanti al proprio veicolo, sia a coloro che si trovano ai bordi della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di attenzione alla circolazione",
+      "Comportamento prudente del conducente"
+    ],
+    "exact_keywords": [
+      "attenzione",
+      "utenti della strada",
+      "bordi della strada",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "obbligo di attenzione alla circolazione stradale",
+      "dovere di vigilanza del conducente verso utenti e contesto stradale"
+    ],
+    "rule_explanation": "Il conducente deve prestare attenzione costante alla circolazione, sia ai veicoli che lo precedono, sia agli altri utenti presenti sulla strada e ai suoi margini."
+  }
+}

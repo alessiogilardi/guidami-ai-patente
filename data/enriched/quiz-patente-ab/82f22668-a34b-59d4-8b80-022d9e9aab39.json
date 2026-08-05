@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23510",
+  "text": "E' vietato il sorpasso di un veicolo che si sia arrestato in corrispondenza di un passaggio pedonale per consentire l'attraversamento di pedoni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Regola di circolazione in prossimità di attraversamenti pedonali"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "veicolo arrestato",
+      "passaggio pedonale",
+      "attraversamento pedoni"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in corrispondenza di attraversamenti pedonali",
+      "obbligo di arresto del veicolo in prossimità di un passaggio pedonale con pedoni in attraversamento"
+    ],
+    "rule_explanation": "È vietato sorpassare un veicolo che si sia fermato in un attraversamento pedonale per far passare i pedoni."
+  }
+}

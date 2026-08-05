@@ -1,0 +1,32 @@
+{
+  "question_id": 4241,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "20985",
+  "text": "Avvicinandosi ad un semaforo, che già da molto tempo ha la luce verde accesa, occorre proseguire con prudenza, pronti eventualmente a fermarsi se, quando si accende la luce gialla, non si è ancora impegnato l'incrocio",
+  "correct_answer": true,
+  "image": "9ce1d0d0b1d24fbc9d01bd52aef5f7ab.jpeg",
+  "image_description": "Semaforo per veicoli (luce rossa accesa). Il segnale raffigurato è un semaforo per veicoli, installato in posizione verticale. Le luci sono, dall'alto verso il basso: rossa, gialla e verde. Al momento dell'osservazione, la luce rossa è accesa, mentre le altre due sono spente. Questo tipo di segnale regola il flusso dei veicoli in un incrocio o in un punto specifico della strada. L'accensione della luce rossa impone l'obbligo di arresto prima della striscia di arresto, se presente, o comunque prima dell'incrocio stesso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un semaforo per veicoli, installato in posizione verticale. Le tre luci circolari sono disposte una sopra l'altra. La luce superiore è rossa, quella centrale è gialla e quella inferiore è verde. Attualmente, la luce rossa è accesa, mentre le luci gialla e verde sono spente. Il semaforo è un segnale di regolazione del traffico. La luce rossa accesa indica che i veicoli devono fermarsi.",
+    "name": "Semaforo per veicoli (luce rossa accesa)",
+    "description": "Il segnale raffigurato è un semaforo per veicoli, installato in posizione verticale. Le luci sono, dall'alto verso il basso: rossa, gialla e verde. Al momento dell'osservazione, la luce rossa è accesa, mentre le altre due sono spente. Questo tipo di segnale regola il flusso dei veicoli in un incrocio o in un punto specifico della strada. L'accensione della luce rossa impone l'obbligo di arresto prima della striscia di arresto, se presente, o comunque prima dell'incrocio stesso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della circolazione semaforica",
+      "Obbligo di prudenza all'incrocio"
+    ],
+    "exact_keywords": [
+      "semaforo",
+      "luce verde accesa",
+      "proseguire con prudenza",
+      "luce gialla",
+      "impegnare l'incrocio"
+    ],
+    "vector_search_queries": [
+      "comportamento all'avvicinamento di un semaforo con luce verde accesa da tempo",
+      "obbligo di fermarsi al semaforo con luce gialla se non si è impegnato l'incrocio"
+    ],
+    "rule_explanation": "Anche con luce verde accesa da tempo, occorre prudenza e pronti a fermarsi se non si è ancora impegnato l'incrocio all'accensione della luce gialla."
+  }
+}

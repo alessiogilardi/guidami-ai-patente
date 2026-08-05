@@ -1,0 +1,27 @@
+{
+  "question_id": 4536,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23849",
+  "text": "Durante le operazioni di presegnalazione con il segnale mobile di pericolo è facoltativo l'uso del giubbotto o delle bretelle retroriflettenti ad alta visibilità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione di veicolo fermo",
+      "Dispositivi di protezione individuale (DPI) per la sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "segnalazione di veicolo fermo",
+      "segnali delle yaptıklarınızı, segnale mobile di pericolo",
+      "giubbotto o bretelle retroriflettenti",
+      "obbligo"
+    ],
+    "vector_search_queries": [
+      "obbligo giubbotto alta visibilità fuori dal veicolo fermo",
+      "segnalazione di veicolo fermo e DPI obbligatori"
+    ],
+    "rule_explanation": "L'uso del giubbotto o delle bretelle retroriflettenti ad alta visibilità è obbligatorio durante le operazioni di presegnalazione con il segnale mobile di pericolo, non è facoltativo."
+  }
+}

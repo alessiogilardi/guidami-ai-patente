@@ -1,0 +1,27 @@
+{
+  "question_id": 4525,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23772",
+  "text": "Brevi soste sono consentite nelle aree pedonali urbane",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree pedonali",
+      "Divieto di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "area pedonale",
+      "sosta",
+      "fermata",
+      "divieto di circolazione"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata nelle aree pedonali",
+      "regolamentazione della circolazione nelle aree pedonali"
+    ],
+    "rule_explanation": "Nelle aree pedonali è vietata la circolazione a tutti i veicoli, salvo specifiche autorizzazioni, e quindi anche la sosta e la fermata."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4079,
+  "topic": "Segnali di pericolo",
+  "number": "19208",
+  "text": "In presenza del segnale raffigurato il conducente deve diminuire la distanza di sicurezza dal veicolo che lo precede",
+  "correct_answer": false,
+  "image": "f765bd82ad5ae48ffb2e5ed4434c16a8.jpeg",
+  "image_description": "Segnale di pericolo - Discesa pericolosa con pendenza specificata. Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata una rampa nera inclinata verso il basso, con la dicitura \"10%\" sovrapposta. Questo indica una discesa con una pendenza specificata.",
+    "name": "Segnale di pericolo - Discesa pericolosa con pendenza specificata",
+    "description": "Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Distanza di sicurezza",
+      "Comportamento in discesa"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "discesa pericolosa",
+      "distanza di sicurezza",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in presenza del segnale di discesa pericolosa",
+      "adeguamento della distanza di sicurezza in base ai segnali stradali",
+      "comportamento alla guida in discesa con pendenza superiore al 10%"
+    ],
+    "rule_explanation": "Il segnale di 'discesa pericolosa' impone di moderare la velocità e di usare la marcia bassa, non di diminuire la distanza di sicurezza dal veicolo che precede."
+  }
+}

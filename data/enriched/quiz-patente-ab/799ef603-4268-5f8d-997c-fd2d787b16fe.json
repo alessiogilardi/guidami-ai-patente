@@ -1,0 +1,31 @@
+{
+  "question_id": 4298,
+  "topic": "Segnali di indicazione",
+  "number": "21548",
+  "text": "Il segnale raffigurato indica un centro di assistenza a 25 chilometri",
+  "correct_answer": false,
+  "image": "4407c6de338d7872782c9fce7ad59812.jpeg",
+  "image_description": "Segnale di numero di autostrada. Il segnale indica il numero dell'autostrada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma ottagonale con sfondo verde e bordo bianco. Al centro del segnale, in bianco, è riportata la sigla \"A 25\". Questo tipo di segnale viene utilizzato per identificare il numero di un'autostrada.",
+    "name": "Segnale di numero di autostrada",
+    "description": "Il segnale indica il numero dell'autostrada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Segnali di preavviso"
+    ],
+    "exact_keywords": [
+      "segnali di preavviso",
+      "località",
+      "distanza",
+      "centro di assistenza"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso per servizi con indicazione di distanza",
+      "segnali stradali che indicano centri di assistenza e la loro distanza"
+    ],
+    "rule_explanation": "I segnali di preavviso indicano una località o un servizio con la relativa distanza, ma il segnale raffigurato indica il numero di un'autostrada, non un centro di assistenza."
+  }
+}

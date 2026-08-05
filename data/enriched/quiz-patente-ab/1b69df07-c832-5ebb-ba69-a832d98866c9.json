@@ -1,0 +1,29 @@
+{
+  "question_id": 4585,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24253",
+  "text": "L'uso dei proiettori a luce abbagliante è necessario nelle gallerie urbane a senso unico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori",
+      "Illuminazione stradale",
+      "Dispositivi di segnalazione visiva"
+    ],
+    "exact_keywords": [
+      "proiettori a luce abbagliante",
+      "gallerie",
+      "luci a basso 반경",
+      "condizioni di visibilità"
+    ],
+    "vector_search_queries": [
+      "uso luci abbaglianti gallerie urbane",
+      "obbligo luci anabbaglianti in galleria",
+      "illuminazione veicoli in galleria"
+    ],
+    "rule_explanation": "Nelle gallerie, anche urbane a senso unico, è vietato l'uso dei proiettori a luce abbagliante; si devono invece utilizzare le luci anabbaglianti o luci di posizione a seconda delle condizioni di visibilità."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4647,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24895",
+  "text": "Lo stato di shock può manifestarsi con improvvisa pronuncia di frasi e parole senza senso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di shock",
+      "Sintomatologia neurologica"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "alterazione psichica",
+      "confusione mentale",
+      "disorientamento"
+    ],
+    "vector_search_queries": [
+      "sintomi neurologici dello stato di shock",
+      "alterazioni psichiche e del linguaggio in caso di shock"
+    ],
+    "rule_explanation": "Lo stato di shock, condizione di grave compromissione delle funzioni vitali, può causare sintomi neurologici quali confusione mentale, disorientamento e, in casi gravi, alterazioni del linguaggio come frasi sconnesse."
+  }
+}

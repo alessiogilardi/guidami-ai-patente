@@ -1,0 +1,28 @@
+{
+  "question_id": 4023,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18546",
+  "text": "Non tutti i veicoli a motore a due ruote vengono classificati ciclomotori",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli a motore",
+      "Definizione di ciclomotore",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "veicoli a motore a due ruote",
+      "ciclomotori",
+      "classificazione",
+      "definizione"
+    ],
+    "vector_search_queries": [
+      "distinzione tra ciclomotori e altri veicoli a motore a due ruote",
+      "criteri di classificazione dei veicoli a motore a due ruote"
+    ],
+    "rule_explanation": "Non tutti i veicoli a motore a due ruote sono classificati come ciclomotori; la classificazione dipende da specifiche caratteristiche tecniche definite dal Codice della Strada."
+  }
+}

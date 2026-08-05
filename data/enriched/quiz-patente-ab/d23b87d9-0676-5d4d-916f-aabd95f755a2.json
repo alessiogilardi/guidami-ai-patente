@@ -1,0 +1,33 @@
+{
+  "question_id": 4081,
+  "topic": "Segnali di pericolo",
+  "number": "19218",
+  "text": "Il segnale raffigurato preannuncia una strettoia con probabili difficoltà di incrocio con i veicoli provenienti dal senso opposto",
+  "correct_answer": true,
+  "image": "935e0fb53dc5ade5d74efa55184c4022.jpeg",
+  "image_description": "Segnale di pericolo di restringimento carreggiata. Il segnale preannuncia un restringimento della carreggiata su entrambi i lati. È un segnale di pericolo che impone di moderare la velocità e, se necessario, di dare la precedenza ai veicoli provenienti dal senso opposto in caso di incrocio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è presente un pittogramma nero che raffigura due linee parallele che si avvicinano progressivamente verso il centro, simboleggiando un restringimento della carreggiata. Le linee nere sono interrotte da due brevi segmenti verticali che indicano l'inizio del restringimento. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di pericolo di restringimento carreggiata",
+    "description": "Il segnale preannuncia un restringimento della carreggiata su entrambi i lati. È un segnale di pericolo che impone di moderare la velocità e, se necessario, di dare la precedenza ai veicoli provenienti dal senso opposto in caso di incrocio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Restringimento carreggiata",
+      "Regolazione della velocità e della precedenza in caso di incrocio"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "strettoia",
+      "difficoltà di incrocio",
+      "veicoli provenienti dal senso opposto",
+      "restringimento carreggiata"
+    ],
+    "vector_search_queries": [
+      "preavviso di restringimento carreggiata e difficoltà di incrocio",
+      "segnali di pericolo per strettoie e incrocio con veicoli opposti"
+    ],
+    "rule_explanation": "Il segnale di pericolo di restringimento carreggiata preannuncia una strettoia dove possono verificarsi difficoltà di incrocio con veicoli provenienti dalla direzione opposta, imponendo di moderare la velocità e dare la precedenza se necessario."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4632,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24791",
+  "text": "I tamponamenti stradali avvengono principalmente tra autoveicoli dotati di servosterzo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Cause degli incidenti stradali",
+      "Dinamica dei tamponamenti",
+      "Fattori di rischio nella guida"
+    ],
+    "exact_keywords": [
+      "tamponamento",
+      "autoveicolo",
+      "servosterzo",
+      "distanza di sicurezza"
+    ],
+    "vector_search_queries": [
+      "cause principali dei tamponamenti stradali",
+      "fattori determinanti nei tamponamenti tra veicoli",
+      "importanza della distanza di sicurezza per evitare tamponamenti"
+    ],
+    "rule_explanation": "I tamponamenti sono causati principalmente da mancata osservanza della distanza di sicurezza, distrazione o velocità inadeguata, non dal servosterzo."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4602,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24424",
+  "text": "Gli stivali ad uso motociclistico permettono una giusta protezione di piedi e caviglie quando si è alla guida di veicolo a due ruote",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Equipaggiamento protettivo per motociclisti",
+      "Sicurezza alla guida di veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "stivali ad uso motociclistico",
+      "protezione piedi",
+      "protezione caviglie",
+      "veicolo a due ruote"
+    ],
+    "vector_search_queries": [
+      "protezione piedi e caviglie motociclista",
+      "requisiti calzature per guida motociclo"
+    ],
+    "rule_explanation": "Gli stivali specifici per l'uso motociclistico sono progettati per offrire un'adeguata protezione a piedi e caviglie durante la guida di veicoli a due ruote."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31033",
+  "text": "Si può \"allenare\" l’attenzione alla guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attenzione alla guida",
+      "Capacità di guida",
+      "Formazione del conducente"
+    ],
+    "exact_keywords": [
+      "attenzione",
+      "guida",
+      "condotta di guida",
+      "capacità psichiche e fisiche"
+    ],
+    "vector_search_queries": [
+      "allenamento dell'attenzione alla guida",
+      "miglioramento delle capacità di guida",
+      "mantenimento delle capacità psichiche e fisiche per la guida"
+    ],
+    "rule_explanation": "L'attenzione e la capacità di guida possono essere allenate e migliorate attraverso la formazione e l'esercizio, mantenendo le capacità psichiche e fisiche necessarie per una guida sicura."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4607,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24470",
+  "text": "Le targhe dei veicoli devono essere sempre ben leggibili",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente",
+      "Documenti di circolazione",
+      "Visibilità delle targhe"
+    ],
+    "exact_keywords": [
+      "targa",
+      "leggibile",
+      "veicolo",
+      "funzionari o agenti"
+    ],
+    "vector_search_queries": [
+      "obbligo di leggibilità delle targhe del veicolo",
+      "visibilità delle targhe per identificazione del veicolo"
+    ],
+    "rule_explanation": "Le targhe dei veicoli devono essere tenute in modo da essere sempre chiaramente leggibili, per consentire l'identificazione del mezzo da parte delle autorità competenti."
+  }
+}

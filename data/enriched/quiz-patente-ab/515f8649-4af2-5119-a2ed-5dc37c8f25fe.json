@@ -1,0 +1,27 @@
+{
+  "question_id": 4666,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25038",
+  "text": "Per poter stipulare una polizza assicurativa contro il rischio di furto, occorre che il veicolo sia dotato di antifurto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione facoltativa contro il furto",
+      "Requisiti per la stipula di polizze assicurative"
+    ],
+    "exact_keywords": [
+      "polizza assicurativa furto",
+      "requisiti di legge",
+      "antifurto omologato",
+      "veicolo in circolazione"
+    ],
+    "vector_search_queries": [
+      "stipula polizza furto veicolo requisiti",
+      "obbligo antifurto per assicurazione furto"
+    ],
+    "rule_explanation": "Non è obbligatorio che un veicolo sia dotato di antifurto per poter stipulare una polizza assicurativa contro il rischio di furto, salvo diverse disposizioni contrattuali."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4006,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18386",
+  "text": "L'isola di traffico è un'area pedonale urbana",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di isola di traffico",
+      "Area pedonale urbana",
+      "Distinzione tra aree pedonali e isole di traffico"
+    ],
+    "exact_keywords": [
+      "isola di traffico",
+      "area pedonale urbana",
+      "segnale orizzontale",
+      "segnaletica stradale"
+    ],
+    "vector_search_queries": [
+      "definizione di isola di traffico nel CdS",
+      "differenza tra isola di traffico e area pedonale",
+      "caratteristiche delle isole di traffico e loro funzione"
+    ],
+    "rule_explanation": "L'isola di traffico è una zona della strada, delimitata da segnaletica orizzontale, destinata a regolare il traffico veicolare, non un'area pedonale urbana."
+  }
+}

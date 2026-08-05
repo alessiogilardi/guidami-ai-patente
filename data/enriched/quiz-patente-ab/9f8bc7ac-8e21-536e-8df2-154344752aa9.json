@@ -1,0 +1,27 @@
+{
+  "question_id": 4522,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23750",
+  "text": "La sosta è consentita sui marciapiedi, solo se di breve durata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta sui marciapiedi",
+      "Regole di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "marciapiede",
+      "divieto di sosta",
+      "veicoli a due ruote"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta sui marciapiedi",
+      "regole per la sosta dei veicoli a due ruote sui marciapiedi"
+    ],
+    "rule_explanation": "La sosta è vietata sui marciapiedi, salvo che si tratti di veicoli a due ruote, purché non arrechino intralcio o pericolo."
+  }
+}

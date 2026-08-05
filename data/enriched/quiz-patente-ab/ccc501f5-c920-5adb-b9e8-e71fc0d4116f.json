@@ -1,0 +1,31 @@
+{
+  "question_id": 4105,
+  "topic": "Segnali di divieto",
+  "number": "19521",
+  "text": "Il segnale raffigurato consente il transito alle biciclette",
+  "correct_answer": false,
+  "image": "fbde6a78154edc681ee7715bad203441.jpeg",
+  "image_description": "Segnale di divieto di transito. Il segnale vieta il transito a tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Questo è il segnale di divieto di transito, che indica che il transito è vietato a tutti i veicoli.",
+    "name": "Segnale di divieto di transito",
+    "description": "Il segnale vieta il transito a tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Divieto di transito"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "divieto di transito",
+      "veicoli",
+      "biciclette"
+    ],
+    "vector_search_queries": [
+      "segnali che impongono un divieto di transito a tutti i veicoli",
+      "interpretazione segnale divieto di transito specifico per biciclette"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito vieta la circolazione a tutti i veicoli, comprese le biciclette, salvo diversa specifica indicazione."
+  }
+}

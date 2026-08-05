@@ -1,0 +1,30 @@
+{
+  "question_id": 4631,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24784",
+  "text": "In caso di infossamento su neve o sabbia, non riuscendo a spostare il veicolo, è consigliabile inserire sotto la ruota che slitta qualcosa che faccia attrito (pezzi di legno, tappeti del veicolo, ecc.)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti",
+      "Comportamento in caso di difficoltà del veicolo",
+      "Aderenza e trazione"
+    ],
+    "exact_keywords": [
+      "infossamento",
+      "neve",
+      "sabbia",
+      "attrito",
+      "trazione"
+    ],
+    "vector_search_queries": [
+      "tecniche per superare infossamento su neve o sabbia",
+      "aumentare attrito ruota veicolo bloccato",
+      "rimedi per slittamento ruote su fondi cedevoli"
+    ],
+    "rule_explanation": "In caso di infossamento su neve o sabbia, per superare il problema di slittamento della ruota, è utile inserire materiale che aumenti l'attrito e la trazione del veicolo."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4408,
+  "topic": "Distanza di sicurezza",
+  "number": "22658",
+  "text": "La distanza di sicurezza deve essere di almeno 100 metri, in caso di forte pioggia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condizioni atmosferiche avverse",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "forte pioggia",
+      "condizioni della strada",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "adeguamento della distanza di sicurezza alle condizioni atmosferiche e stradali",
+      "obbligo di mantenere una distanza di sicurezza commisurata al pericolo concreto"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere adeguata alle condizioni di traffico, visibilità e fondo stradale, non è un valore fisso di 100 metri in caso di forte pioggia."
+  }
+}

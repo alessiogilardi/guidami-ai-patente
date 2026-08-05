@@ -1,0 +1,28 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25387",
+  "text": "In caso di foratura di un pneumatico, lo sterzo tira nella direzione della ruota forata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Manutenzione dei pneumatici",
+      "Comportamento del veicolo in marcia"
+    ],
+    "exact_keywords": [
+      "pneumatico forato",
+      "sterzo",
+      "tenuta di strada",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "effetto della foratura di un pneumatico sulla direzionalità del veicolo",
+      "perdita di stabilità e trazione dovuta a pneumatico danneggiato"
+    ],
+    "rule_explanation": "La foratura di un pneumatico causa una perdita di aderenza e stabilità, provocando uno spostamento dello sterzo verso la ruota danneggiata."
+  }
+}

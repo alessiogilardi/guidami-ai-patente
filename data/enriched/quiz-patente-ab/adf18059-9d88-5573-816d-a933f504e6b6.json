@@ -1,0 +1,32 @@
+{
+  "question_id": 4116,
+  "topic": "Segnali di divieto",
+  "number": "19662",
+  "text": "Il segnale raffigurato vale dalle ore 8.00 alle ore 20.00",
+  "correct_answer": false,
+  "image": "7d5994527a6ccfadd7ecf69f4ac79bee.jpeg",
+  "image_description": "Segnale di divieto di transito ai pedoni. Il segnale vieta il transito ai pedoni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la figura stilizzata di un pedone di colore nero. Questo è il segnale di divieto di transito ai pedoni.",
+    "name": "Segnale di divieto di transito ai pedoni",
+    "description": "Il segnale vieta il transito ai pedoni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Limitazioni temporali ai divieti di circolazione"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "segnali di indicazione",
+      "divieto orario",
+      "limitazione temporale"
+    ],
+    "vector_search_queries": [
+      "validità temporale segnali di divieto di transito",
+      "segnali di divieto con limitazioni orarie",
+      "interpretazione segnali di divieto di transito ai pedoni"
+    ],
+    "rule_explanation": "I segnali di divieto valgono permanentemente, salvo diversa indicazione esplicita (es. pannello integrativo con orario). Il segnale di divieto di transito ai pedoni non ha limitazioni orarie intrinseche."
+  }
+}

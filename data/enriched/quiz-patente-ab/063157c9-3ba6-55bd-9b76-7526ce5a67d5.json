@@ -1,0 +1,29 @@
+{
+  "question_id": 4020,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18525",
+  "text": "Il marciapiede è una parte della strada dove, di norma, è consentita la sosta dei ciclomotori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei marciapiedi",
+      "Definizione di marciapiede",
+      "Divieto di sosta per ciclomotori"
+    ],
+    "exact_keywords": [
+      "marciapiede",
+      "ciclomotori",
+      "sosta",
+      "strada",
+      "uso proprio"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta ciclomotori su marciapiede",
+      "uso del marciapiede riservato ai pedoni"
+    ],
+    "rule_explanation": "Il marciapiede è riservato ai pedoni e non è consentita la sosta dei ciclomotori, salvo che sia espressamente indicato."
+  }
+}

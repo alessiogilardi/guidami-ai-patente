@@ -1,0 +1,27 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23034",
+  "text": "Lo specchio retrovisore laterale sinistro deve essere regolato in modo da poter controllare il comportamento di eventuali bambini seduti nella parte posteriore del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Campo visivo del conducente",
+      "Dispositivi di controllo del veicolo"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore laterale sinistro",
+      "regolazione specchietto",
+      "campo visivo",
+      "manovre"
+    ],
+    "vector_search_queries": [
+      "funzione specchietto retrovisore laterale sinistro",
+      "regolazione specchi retrovisori per controllo circolazione"
+    ],
+    "rule_explanation": "Lo specchio retrovisore laterale sinistro serve a controllare la circolazione stradale, non l'interno del veicolo. Per i bambini si usano specchietti interni o sistemi di sorveglianza."
+  }
+}

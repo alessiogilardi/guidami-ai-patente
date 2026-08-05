@@ -1,0 +1,27 @@
+{
+  "question_id": 4705,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25316",
+  "text": "In caso di frenata di emergenza, il conducente deve inserire rapidamente la retromarcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamenti di guida in emergenza",
+      "Manovre di emergenza"
+    ],
+    "exact_keywords": [
+      "frenata di emergenza",
+      "retromarcia",
+      "manovra vietata",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "inserimento retromarcia durante frenata di emergenza",
+      "manovra di retromarcia in condizioni di emergenza al volante"
+    ],
+    "rule_explanation": "In caso di frenata di emergenza, il conducente non deve inserire la retromarcia, poiché tale manovra è vietata e pericolosa."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4148,
+  "topic": "Segnali di divieto",
+  "number": "20019",
+  "text": "Il segnale raffigurato segnala che nelle ore indicate vige il DIVIETO DI SOSTA per i veicoli rappresentati in figura",
+  "correct_answer": false,
+  "image": "289fc7de638eec152da2ea0755f83fd9.jpeg",
+  "image_description": "Divieto di sosta con indicazioni orarie e giornaliere (pulizia strade). Il segnale indica il divieto di sosta nei giorni dal lunedì al venerdì, dalle ore 21:00 alle ore 4:00, per consentire le operazioni di pulizia meccanica della strada, come rappresentato dal pittogramma di un mezzo per la pulizia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale di forma rettangolare con bordo nero. Nella parte superiore è presente un segnale di divieto di sosta (cerchio rosso con barra trasversale rossa su fondo blu). Sotto questo segnale, vi è un pannello integrativo che indica i giorni \"Lun - ven\" e gli orari \"21.00 - 4.00\". Ancora più in basso, un pittogramma raffigura un mezzo per la pulizia stradale con spazzole. L'insieme dei simboli indica un divieto di sosta temporaneo, legato a specifiche fasce orarie e giorni, e motivato da esigenze di pulizia della strada.",
+    "name": "Divieto di sosta con indicazioni orarie e giornaliere (pulizia strade)",
+    "description": "Il segnale indica il divieto di sosta nei giorni dal lunedì al venerdì, dalle ore 21:00 alle ore 4:00, per consentire le operazioni di pulizia meccanica della strada, come rappresentato dal pittogramma di un mezzo per la pulizia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Limitazioni temporali alla sosta",
+      "Pulizia strade"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "ore indicate",
+      "pulizia meccanica della strada",
+      "segnaletica orizzontale e verticale"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta orario per pulizia strade",
+      "segnaletica indicante divieto di sosta in giorni e orari specifici"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta con indicazioni orarie e giornaliere specifica i periodi in cui la sosta è vietata per consentire la pulizia delle strade, non per altri motivi generici."
+  }
+}

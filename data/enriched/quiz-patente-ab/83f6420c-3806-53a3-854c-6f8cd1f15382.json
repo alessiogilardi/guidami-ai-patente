@@ -1,0 +1,27 @@
+{
+  "question_id": 4713,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25429",
+  "text": "Per facilitare lo spegnimento del motore, i veicoli a motore a due ruote sono equipaggiati di un interruttore d'emergenza azionabile con la pressione del piede destro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza dei veicoli a motore",
+      "Funzionalità dei comandi di guida"
+    ],
+    "exact_keywords": [
+      "interruttore d'emergenza",
+      "veicoli a motore a due ruote",
+      "spegnimento del motore",
+      "azionabile con il piede"
+    ],
+    "vector_search_queries": [
+      "dispositivi di spegnimento motore motocicli",
+      "funzionamento interruttore emergenza veicoli a due ruote"
+    ],
+    "rule_explanation": "Non esiste un interruttore d'emergenza sui veicoli a due ruote azionabile con il piede destro per spegnere il motore; lo spegnimento avviene tramite chiave o pulsante dedicato."
+  }
+}

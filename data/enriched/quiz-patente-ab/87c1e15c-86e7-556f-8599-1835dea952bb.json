@@ -1,0 +1,31 @@
+{
+  "question_id": 4136,
+  "topic": "Segnali di divieto",
+  "number": "19876",
+  "text": "Il segnale raffigurato può essere posto sia nei centri urbani che fuori",
+  "correct_answer": true,
+  "image": "cfd537fd007a42c41805523666d78953.jpeg",
+  "image_description": "Fine divieto di sorpasso. Indica la fine del divieto di sorpasso per tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso. All'interno del cerchio, una banda diagonale nera parte dall'angolo in alto a sinistra e arriva all'angolo in basso a destra, attraversando il centro del segnale. Ai lati della banda nera, su sfondo bianco, sono raffigurati due veicoli stilizzati, uno a sinistra e uno a destra, visti frontalmente. Il segnale è posizionato isolatamente.",
+    "name": "Fine divieto di sorpasso",
+    "description": "Indica la fine del divieto di sorpasso per tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di circolazione",
+      "Segnali di fine divieto"
+    ],
+    "exact_keywords": [
+      "fine divieto di sorpasso",
+      "segnali stradali di prescrizione",
+      "centri abitati",
+      "strade extraurbane"
+    ],
+    "vector_search_queries": [
+      "installazione segnale fine divieto sorpasso centri urbani ed extraurbani",
+      "ambito di applicazione segnale fine divieto di sorpasso"
+    ],
+    "rule_explanation": "Il segnale di 'fine divieto di sorpasso' può essere installato sia nei centri abitati che fuori, indicando la cessazione del divieto precedentemente imposto."
+  }
+}

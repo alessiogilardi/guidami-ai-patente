@@ -1,0 +1,28 @@
+{
+  "question_id": 4661,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25005",
+  "text": "La responsabilità civile connessa al sinistro stradale è aggravata dalla mancata copertura assicurativa",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile auto",
+      "Assicurazione obbligatoria R.C.A.",
+      "Conseguenze della mancanza di copertura assicurativa"
+    ],
+    "exact_keywords": [
+      "responsabilità civile",
+      "sinistro stradale",
+      "mancata copertura assicurativa",
+      "aggravata"
+    ],
+    "vector_search_queries": [
+      "conseguenze della mancata assicurazione R.C.A.",
+      "responsabilità civile in caso di sinistro senza assicurazione"
+    ],
+    "rule_explanation": "La responsabilità civile derivante da un sinistro stradale non è aggravata dalla mancata copertura assicurativa R.C.A., ma comporta sanzioni amministrative e, in alcuni casi, penali per il responsabile."
+  }
+}

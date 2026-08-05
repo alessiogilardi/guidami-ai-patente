@@ -1,0 +1,28 @@
+{
+  "question_id": 4653,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24941",
+  "text": "In caso di incidente stradale, il soccorritore deve somministrare farmaci alla vittima, se la stessa non ha specifica competenza medica",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Competenza medica",
+      "Somministrazione farmaci"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "soccorritore",
+      "somministrare farmaci",
+      "competenza medica"
+    ],
+    "vector_search_queries": [
+      "divieto somministrazione farmaci da parte di soccorritore non medico",
+      "compiti del soccorritore in caso di incidente stradale"
+    ],
+    "rule_explanation": "Il soccorritore non sanitario non deve somministrare farmaci alla vittima di un incidente stradale, salvo specifica competenza medica o indicazione contraria."
+  }
+}

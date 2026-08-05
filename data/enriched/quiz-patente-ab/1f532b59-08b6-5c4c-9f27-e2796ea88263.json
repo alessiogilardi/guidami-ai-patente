@@ -1,0 +1,29 @@
+{
+  "question_id": 4561,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24026",
+  "text": "Circolando dietro ad un veicolo che trasporta un carico che sta per cadere, conviene sorpassarlo subito, anche se in curva",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza e cautela",
+      "Gestione del rischio nella circolazione stradale",
+      "Divieto di sorpasso in curva"
+    ],
+    "exact_keywords": [
+      "carico che cade",
+      "sorpasso vietato",
+      "pericolo per la circolazione",
+      "curva"
+    ],
+    "vector_search_queries": [
+      "sorpasso in curva con visibilità limitata",
+      "condizioni di pericolo per carico sporgente o in caduta",
+      "obblighi del conducente in presenza di carico pericolante"
+    ],
+    "rule_explanation": "È vietato il sorpasso in curva quando non si ha visibilità sufficiente; inoltre, in caso di carico pericolante, bisogna evitare manovre azzardate e segnalare il pericolo."
+  }
+}

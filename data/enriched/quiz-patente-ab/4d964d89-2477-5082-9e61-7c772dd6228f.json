@@ -1,0 +1,27 @@
+{
+  "question_id": 4713,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25421",
+  "text": "Nei veicoli a motore a due ruote, l'interruttore di emergenza permette lo spegnimento del motore senza staccare le mani dal manubrio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza per motocicli",
+      "Comandi di guida per veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "interruttore di emergenza",
+      "veicoli a motore a due ruote",
+      "manubrio",
+      "spegnimento motore"
+    ],
+    "vector_search_queries": [
+      "funzione interruttore di emergenza motocicli",
+      "dispositivi di sicurezza veicoli a due ruote comando spegnimento motore"
+    ],
+    "rule_explanation": "L'interruttore di emergenza sui veicoli a due ruote consente al conducente di spegnere il motore rapidamente senza rimuovere le mani dal manubrio, garantendo maggiore sicurezza."
+  }
+}

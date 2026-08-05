@@ -1,0 +1,32 @@
+{
+  "question_id": 4321,
+  "topic": "Segnali di indicazione",
+  "number": "21751",
+  "text": "Il segnale raffigurato consiglia di svoltare a destra alle categorie dei veicoli rappresentati",
+  "correct_answer": true,
+  "image": "113476552ab7edd34941547cee9a5ba7.jpeg",
+  "image_description": "Preavviso di deviazione per autotreni ed autoarticolati. Il segnale indica una direzione obbligatoria a destra per gli autotreni e gli autoarticolati.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare bianco con bordo nero. Nella parte superiore, una freccia nera curva indica una svolta a destra. Sotto la freccia, sono rappresentati due tipi di veicoli pesanti: un autoarticolato (motrice con semirimorchio) e un autotreno (motrice con rimorchio). Entrambi i veicoli sono raffigurati sopra la linea di arresto, suggerendo che la direzione indicata dalla freccia è specifica per queste categorie di veicoli. Non ci sono altri elementi visivi o segnali.",
+    "name": "Preavviso di deviazione per autotreni ed autoarticolati",
+    "description": "Il segnale indica una direzione obbligatoria a destra per gli autotreni e gli autoarticolati."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Direzione obbligatoria",
+      "Veicoli speciali"
+    ],
+    "exact_keywords": [
+      "segnali di preavviso",
+      "autotreni",
+      "autoarticolati",
+      "direzione obbligatoria"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di deviazione per autotreni e autoarticolati",
+      "obbligo di seguire la direzione indicata per veicoli speciali"
+    ],
+    "rule_explanation": "Il segnale di preavviso indica una direzione obbligatoria a destra per autotreni e autoarticolati, consigliando loro di seguire tale percorso."
+  }
+}

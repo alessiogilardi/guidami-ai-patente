@@ -1,0 +1,29 @@
+{
+  "question_id": 4510,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23647",
+  "text": "La fermata è l'interruzione della marcia del veicolo dovuta ad esigenze della circolazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Interruzione della marcia per esigenze della circolazione"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "interruzione della marcia",
+      "esigenze della circolazione",
+      "sosta",
+      "arresto"
+    ],
+    "vector_search_queries": [
+      "differenza tra fermata e arresto del veicolo",
+      "definizione di fermata ai sensi del CdS",
+      "interruzione della marcia per salita/discesa persone o discesa/carico cose"
+    ],
+    "rule_explanation": "La fermata è l'interruzione della marcia solo per consentire la salita/discesa delle persone o la discesa/carico delle cose, mentre l'arresto è dovuto a esigenze della circolazione."
+  }
+}

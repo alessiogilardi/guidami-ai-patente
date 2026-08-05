@@ -1,0 +1,34 @@
+{
+  "question_id": 4226,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20848",
+  "text": "E' regolamentare trovare sulla pavimentazione la scritta STOP, per completare il segnale verticale di DARE PRECEDENZA",
+  "correct_answer": false,
+  "image": "e21cc580f432a80d30445dd1cfdf0ccf.jpeg",
+  "image_description": "Attraversamento pedonale. La segnaletica orizzontale raffigura una sequenza di strisce bianche parallele, intervallate da strisce grigie, che attraversano la carreggiata. Sono presenti due frecce nere su sfondo grigio, una in alto e una in basso, che indicano il senso di marcia. Questa segnaletica indica un attraversamento pedonale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra della segnaletica orizzontale su una carreggiata grigia. Sono presenti diverse strisce bianche parallele, di larghezza variabile, disposte trasversalmente alla direzione del traffico. Tra le strisce bianche ci sono spazi grigi. In alto e in basso, al centro della carreggiata, sono visibili due frecce nere che indicano il senso di marcia. La configurazione delle strisce bianche è tipica di un attraversamento pedonale.",
+    "name": "Attraversamento pedonale",
+    "description": "La segnaletica orizzontale raffigura una sequenza di strisce bianche parallele, intervallate da strisce grigie, che attraversano la carreggiata. Sono presenti due frecce nere su sfondo grigio, una in alto e una in basso, che indicano il senso di marcia. Questa segnaletica indica un attraversamento pedonale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segnaletica verticale",
+      "Obblighi ai segnali di DARE PRECEDENZA e STOP"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "segnaletica verticale",
+      "STOP",
+      "DARE PRECEDENZA",
+      "pavimentazione"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnaletica orizzontale e verticale STOP e DARE PRECEDENZA",
+      "corrispondenza tra segnaletica orizzontale e verticale",
+      "significato della scritta STOP sulla pavimentazione"
+    ],
+    "rule_explanation": "La scritta 'STOP' sulla pavimentazione non completa il segnale verticale di 'DARE PRECEDENZA', ma è associata al segnale di 'STOP' (art. 126 CdS)."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4634,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24800",
+  "text": "I conducenti degli autoveicoli devono, in generale, prestare particolare attenzione ai veicoli a motore a due ruote, in quanto meno facilmente visibili",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità dei veicoli a motore a due ruote",
+      "Comportamento prudente dei conducenti",
+      "Prevenzione degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "autoveicoli",
+      "veicoli a motore a due ruote",
+      "visibilità",
+      "particolare attenzione"
+    ],
+    "vector_search_queries": [
+      "particolare attenzione ai motocicli per scarsa visibilità",
+      "obbligo di attenzione verso i veicoli a due ruote"
+    ],
+    "rule_explanation": "I conducenti di autoveicoli devono prestare particolare attenzione ai motocicli, poiché questi ultimi sono meno visibili e più vulnerabili in caso di incidente."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23544",
+  "text": "Quando si inizia il sorpasso è consentito segnalare la manovra ai veicoli che precedono lampeggiando con i proiettori abbaglianti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione manovra di sorpasso",
+      "Uso dei proiettori abbaglianti"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "segnalazione vietata",
+      "lampeggiando con i proiettori abbaglianti",
+      "veicoli che precedono"
+    ],
+    "vector_search_queries": [
+      "segnalazione manovra di sorpasso con proiettori abbaglianti vietata",
+      "divieto di segnalare il sorpasso ai veicoli che precedono"
+    ],
+    "rule_explanation": "È vietato segnalare la manovra di sorpasso ai veicoli che precedono, anche lampeggiando con i proiettori abbaglianti. La segnalazione è riservata ai veicoli che seguono."
+  }
+}

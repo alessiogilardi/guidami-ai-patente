@@ -1,0 +1,28 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24760",
+  "text": "In caso di nebbia fitta è opportuno accodarsi al veicolo che precede quanto più vicino possibile",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Guida in condizioni di scarsa visibilità"
+    ],
+    "exact_keywords": [
+      "nebbia fitta",
+      "distanza di sicurezza",
+      "veicolo che precede",
+      "pericolo di tamponamento"
+    ],
+    "vector_search_queries": [
+      "mantenere la distanza di sicurezza in caso di nebbia",
+      "comportamento di guida in condizioni di nebbia fitta",
+      "rischio di tamponamento per mancata distanza di sicurezza"
+    ],
+    "rule_explanation": "In caso di nebbia fitta, è obbligatorio aumentare la distanza di sicurezza dal veicolo che precede per evitare il rischio di tamponamento e garantire la sicurezza."
+  }
+}

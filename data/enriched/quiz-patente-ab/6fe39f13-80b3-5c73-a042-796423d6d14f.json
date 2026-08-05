@@ -1,0 +1,30 @@
+{
+  "question_id": 4389,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22478",
+  "text": "Se si attraversa ad alta velocità un incrocio con precedenza, in caso di incidente la responsabilità sarà del conducente del veicolo che ha impegnato per primo l'incrocio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di responsabilità in caso di incidente",
+      "Priorità di passaggio in incrocio",
+      "Velocità adeguata alle circostanze"
+    ],
+    "exact_keywords": [
+      "incidente",
+      "responsabilità",
+      "precedenza",
+      "incrocio",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "determinazione della responsabilità in caso di incidente stradale all'incrocio",
+      "concorso di colpa per violazione della precedenza e velocità eccessiva",
+      "responsabilità del conducente che impegna per primo un incrocio in caso di incidente"
+    ],
+    "rule_explanation": "La responsabilità in caso di incidente non è determinata solo da chi impegna per primo l'incrocio, ma dalla violazione delle norme di circolazione, inclusa la velocità eccessiva."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4709,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25373",
+  "text": "La rigidità degli ammortizzatori di un veicolo a motore può essere controllata dal proprietario del veicolo, senza ricorrere ad un'officina specializzata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Componenti del veicolo"
+    ],
+    "exact_keywords": [
+      "ammortizzatori",
+      "veicolo a motore",
+      "manutenzione",
+      "officina specializzata"
+    ],
+    "vector_search_queries": [
+      "controllo efficienza ammortizzatori veicolo a motore",
+      "manutenzione ammortizzatori e sicurezza stradale",
+      "verifica componenti veicolo da officina specializzata"
+    ],
+    "rule_explanation": "La verifica dell'efficienza degli ammortizzatori, componente essenziale per la stabilità e la tenuta di strada, richiede competenze tecniche e attrezzature specifiche, pertanto deve essere effettuata da personale qualificato in officine specializzate."
+  }
+}

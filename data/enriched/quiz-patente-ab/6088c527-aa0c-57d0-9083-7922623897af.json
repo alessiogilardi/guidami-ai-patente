@@ -1,0 +1,27 @@
+{
+  "question_id": 4614,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24564",
+  "text": "La patente di categoria B con codice armonizzato 96, può essere conseguita solo se si è già in possesso della patente A",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti per il conseguimento della patente B96",
+      "Relazione tra patenti di categorie diverse"
+    ],
+    "exact_keywords": [
+      "patente B96",
+      "conseguimento",
+      "codice armonizzato",
+      "patente A"
+    ],
+    "vector_search_queries": [
+      "requisiti patente B96 senza patente A",
+      "possibilità di conseguire patente B96 senza possedere patente A"
+    ],
+    "rule_explanation": "La patente B96 può essere conseguita anche da chi non possiede la patente A, purché si abbiano i requisiti per la patente B."
+  }
+}

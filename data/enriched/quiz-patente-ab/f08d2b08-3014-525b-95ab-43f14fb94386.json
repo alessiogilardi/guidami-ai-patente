@@ -1,0 +1,31 @@
+{
+  "question_id": 4298,
+  "topic": "Segnali di indicazione",
+  "number": "21550",
+  "text": "Il segnale raffigurato indica il limite minimo di velocità che si consiglia di non superare",
+  "correct_answer": false,
+  "image": "4407c6de338d7872782c9fce7ad59812.jpeg",
+  "image_description": "Segnale di numero di autostrada. Il segnale indica il numero dell'autostrada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma ottagonale con sfondo verde e bordo bianco. Al centro del segnale, in bianco, è riportata la sigla \"A 25\". Questo tipo di segnale viene utilizzato per identificare il numero di un'autostrada.",
+    "name": "Segnale di numero di autostrada",
+    "description": "Il segnale indica il numero dell'autostrada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali stradali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "limite minimo di velocità",
+      "segnali di prescrizione",
+      "velocità minima"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di indicazione e prescrizione",
+      "segnali che impongono limiti minimi di velocità"
+    ],
+    "rule_explanation": "I segnali di indicazione forniscono informazioni utili, mentre i segnali di prescrizione impongono obblighi o divieti, come il limite minimo di velocità."
+  }
+}

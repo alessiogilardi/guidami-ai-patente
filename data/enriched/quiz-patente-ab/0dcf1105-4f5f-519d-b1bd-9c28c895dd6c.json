@@ -1,0 +1,29 @@
+{
+  "question_id": 4012,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18445",
+  "text": "La strada è qualsiasi area asfaltata, limitata lateralmente dagli attraversamenti pedonali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di strada",
+      "Uso della strada e convivenza civile"
+    ],
+    "exact_keywords": [
+      "strada",
+      "area carrabile",
+      "area pedonale",
+      "pista ciclabile",
+      "marciapiede"
+    ],
+    "vector_search_queries": [
+      "definizione di strada pubblica e privata",
+      "elementi costitutivi della sede stradale",
+      "classificazione delle aree stradali"
+    ],
+    "rule_explanation": "La strada è una sede stradale che comprende l'area carrabile, le aree pedonali, le piste ciclabili e gli eventuali marciapiedi, non solo le aree asfaltate delimitate da attraversamenti pedonali."
+  }
+}

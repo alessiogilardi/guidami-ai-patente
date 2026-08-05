@@ -1,0 +1,28 @@
+{
+  "question_id": 4433,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22904",
+  "text": "In vicinanza o in corrispondenza degli incroci non è consentito sorpassare una bicicletta, se si deve occupare la corsia opposta di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di ciclisti",
+      "Norme di comportamento agli incroci",
+      "Occupazione della corsia di marcia opposta"
+    ],
+    "exact_keywords": [
+      "incroci",
+      "sorpassare",
+      "bicicletta",
+      "corsia opposta"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso biciclette in prossimità di incroci con occupazione corsia opposta",
+      "comportamento in incrocio: sorpasso ciclisti e corsia opposta"
+    ],
+    "rule_explanation": "Negli incroci, il sorpasso di una bicicletta è vietato se richiede l'occupazione della corsia di marcia opposta."
+  }
+}

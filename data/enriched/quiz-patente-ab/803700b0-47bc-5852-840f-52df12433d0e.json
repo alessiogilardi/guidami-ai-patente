@@ -1,0 +1,28 @@
+{
+  "question_id": 4523,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23755",
+  "text": "La sosta è vietata a meno di 15 metri dal segnale di fermata di autobus, filobus e veicoli circolanti su rotaia, qualora gli spazi di stazionamento non siano delimitati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Fermata di linea",
+      "Distanze di sicurezza"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "fermata di autobus",
+      "spazi di stazionamento",
+      "segnale di fermata"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta presso fermate di linea",
+      "distanza minima dal segnale di fermata per la sosta"
+    ],
+    "rule_explanation": "La sosta è vietata a 15 metri dal segnale di fermata di autobus, filobus o tram, se gli spazi non sono delimitati."
+  }
+}

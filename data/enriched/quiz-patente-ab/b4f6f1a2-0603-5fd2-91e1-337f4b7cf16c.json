@@ -1,0 +1,27 @@
+{
+  "question_id": 4018,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18510",
+  "text": "La corsia di decelerazione serve ad entrare in autostrada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Corsie di accelerazione e decelerazione",
+      "Manovre di immissione e uscita dall'autostrada"
+    ],
+    "exact_keywords": [
+      "corsia di decelerazione",
+      "corsia di accelerazione",
+      "uscita dall'autostrada",
+      "immissione in autostrada"
+    ],
+    "vector_search_queries": [
+      "funzione corsia di decelerazione autostrada",
+      "differenza corsia accelerazione e decelerazione autostradale"
+    ],
+    "rule_explanation": "La corsia di decelerazione è una corsia speciale che permette di uscire dall'autostrada, mentre la corsia di accelerazione serve per immettersi."
+  }
+}

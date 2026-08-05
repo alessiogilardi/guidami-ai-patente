@@ -1,0 +1,32 @@
+{
+  "question_id": 4257,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21142",
+  "text": "Il semaforo in figura impone al conducente di mantenere dal veicolo che lo precede la distanza indicata",
+  "correct_answer": false,
+  "image": "db2b7fa24f44cf45dd290c6dc7291cb9.jpeg",
+  "image_description": "Pannello integrativo con indicazione di velocità massime. Il segnale raffigura tre cerchi neri con bordo bianco, contenenti i numeri 50, 40 e 30, disposti verticalmente all'interno di un rettangolo bianco. Questi indicano i limiti di velocità massimi consentiti in determinate condizioni o per specifici veicoli, ma non sono semafori né indicano velocità obbligatorie.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello rettangolare bianco con tre cerchi neri, ciascuno con un bordo bianco e un numero al suo interno: 50, 40 e 30. I numeri sono disposti in colonna, dal più alto al più basso, dall'alto verso il basso. Questo pannello è un pannello integrativo che accompagna un segnale di prescrizione (come un limite di velocità) o un segnale luminoso (come un semaforo). In questo caso specifico, i numeri indicano limiti di velocità massimi. Non si tratta di un semaforo, poiché non ha le luci tipiche (rosso, giallo, verde) né la forma di un semaforo. I numeri rappresentano velocità massime consentite, non velocità obbligatorie o consigliate.",
+    "name": "Pannello integrativo con indicazione di velocità massime",
+    "description": "Il segnale raffigura tre cerchi neri con bordo bianco, contenenti i numeri 50, 40 e 30, disposti verticalmente all'interno di un rettangolo bianco. Questi indicano i limiti di velocità massimi consentiti in determinate condizioni o per specifici veicoli, ma non sono semafori né indicano velocità obbligatorie."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale verticale",
+      "Limiti di velocità"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "limiti massimi di velocità",
+      "velocità da mantenere",
+      "distanza dal veicolo precedente"
+    ],
+    "vector_search_queries": [
+      "pannelli integrativi con limiti di velocità massimi",
+      "distanza di sicurezza dal veicolo che precede",
+      "obblighi del conducente in presenza di limiti di velocità massimi"
+    ],
+    "rule_explanation": "I pannelli integrativi che indicano limiti di velocità massimi non impongono una distanza minima dal veicolo che precede, né una velocità obbligatoria."
+  }
+}

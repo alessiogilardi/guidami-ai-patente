@@ -1,0 +1,28 @@
+{
+  "question_id": 4414,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22725",
+  "text": "Quando, giunti in prossimità di un incrocio, ci accorgiamo di aver sbagliato la corsia di preselezione dobbiamo azionare l'accensione simultanea di tutti gli indicatori di direzione, quale segnale di pericolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra errata",
+      "Comportamento agli incroci",
+      "Uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "corsia di preselezione",
+      "indicatori di direzione",
+      "segnalazione di pericolo"
+    ],
+    "vector_search_queries": [
+      "segnalazione di errore nella corsia di preselezione all'incrocio",
+      "uso corretto degli indicatori di direzione in caso di manovra errata all'incrocio"
+    ],
+    "rule_explanation": "In caso di errore nella corsia di preselezione, non si devono azionare tutti gli indicatori di direzione come segnale di pericolo, ma si deve attendere il momento opportuno per immettersi nella corsia corretta senza creare intralcio o pericolo."
+  }
+}

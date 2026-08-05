@@ -1,0 +1,28 @@
+{
+  "question_id": 4567,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24114",
+  "text": "I rimorchi per il trasporto di cavalli (van) non possono circolare in autostrada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione di veicoli speciali",
+      "Trasporto di animali",
+      "Normative autostradali"
+    ],
+    "exact_keywords": [
+      "rimorchio per trasporto cavalli",
+      "autostrada",
+      "divieto di circolazione",
+      "veicoli eccezionali"
+    ],
+    "vector_search_queries": [
+      "circolazione rimorchi trasporto cavalli in autostrada",
+      "condizioni ammissione van per cavalli su autostrade"
+    ],
+    "rule_explanation": "I rimorchi per il trasporto di cavalli (van) possono circolare in autostrada se rispettano i limiti di massa, sagoma e se sono conformi alle norme sul trasporto di animali."
+  }
+}

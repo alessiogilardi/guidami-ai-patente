@@ -1,0 +1,28 @@
+{
+  "question_id": 4534,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23836",
+  "text": "Fuori dei centri abitati, è facoltativo presegnalare, anche di giorno, un carico accidentalmente caduto sulla carreggiata mediante il segnale di pericolo, quando non può essere visto nettamente a 100 metri di distanza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo su strada",
+      "Obblighi in caso di carico caduto sulla carreggiata"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "segnalazione di pericolo",
+      "carreggiata",
+      "pannello divisorio",
+      "veicolo in avaria"
+    ],
+    "vector_search_queries": [
+      "obbligo di presegnalazione carico caduto su carreggiata fuori centro abitato",
+      "visibilità segnale di pericolo per carico caduto su strada"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, è obbligatorio presegnalare un carico caduto sulla carreggiata con il segnale di pericolo se non visibile a 100 metri, anche di giorno."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4133,
+  "topic": "Segnali di divieto",
+  "number": "19841",
+  "text": "In presenza del segnale raffigurato è consentito il transito di autocarri aventi massa effettiva per asse di 2,5 tonnellate",
+  "correct_answer": true,
+  "image": "1fa023cb06b46333946e7cff49f17f9e.jpeg",
+  "image_description": "Divieto di transito per massa effettiva per asse superiore a 2,5 t. Il segnale vieta il transito ai veicoli la cui massa effettiva sull'asse più caricato supera le 2,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è presente un'icona stilizzata di un asse di un veicolo con due ruote, sovrastata dalla dicitura \"2,5 t\" con una freccia che indica verso il basso, puntando sull'asse. Questo indica un limite di massa per asse.",
+    "name": "Divieto di transito per massa effettiva per asse superiore a 2,5 t",
+    "description": "Il segnale vieta il transito ai veicoli la cui massa effettiva sull'asse più caricato supera le 2,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Massa per asse"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "massa effettiva per asse",
+      "transito vietato",
+      "limite di massa per asse"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per massa per asse superiore a 2,5 tonnellate",
+      "interpretazione segnale divieto massa effettiva per asse"
+    ],
+    "rule_explanation": "Il segnale di divieto indica il limite massimo di massa effettiva per asse consentito per il transito. Superare tale limite è vietato."
+  }
+}

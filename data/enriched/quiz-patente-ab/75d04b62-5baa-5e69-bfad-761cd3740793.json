@@ -1,0 +1,31 @@
+{
+  "question_id": 4072,
+  "topic": "Segnali di pericolo",
+  "number": "19118",
+  "text": "Il segnale raffigurato posto fuori dei centri abitati, preannuncia una linea tranviaria non regolata da semafori",
+  "correct_answer": true,
+  "image": "bb981f286218063a29cc9f7bf6f71389.jpeg",
+  "image_description": "Segnale di pericolo - Passaggio di tram. Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato il pittogramma di un tram. Questo segnale indica la presenza di una linea tranviaria che interseca la carreggiata.",
+    "name": "Segnale di pericolo - Passaggio di tram",
+    "description": "Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di attraversamento tranviario"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "linea tranviaria",
+      "centri abitati",
+      "passaggio tram"
+    ],
+    "vector_search_queries": [
+      "preavviso segnale pericolo linea tranviaria fuori centri abitati",
+      "segnalazione stradale di attraversamento tram non semaforizzato"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante un tram preannuncia, fuori dai centri abitati, l'incrocio con una linea tranviaria non regolata da semafori."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22356",
+  "text": "Il limite massimo di velocità per una macchina operatrice gommata è di 40 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per macchine operatrici",
+      "Velocità massima consentita per veicoli speciali"
+    ],
+    "exact_keywords": [
+      "macchina operatrice gommata",
+      "limite massimo di velocità",
+      "40 km/h"
+    ],
+    "vector_search_queries": [
+      "velocità massima macchine operatrici gommate",
+      "limite di velocità specifico per macchine operatrici"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per le macchine operatrici, incluse quelle gommate, è fissato a 40 km/h."
+  }
+}

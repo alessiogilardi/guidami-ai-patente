@@ -1,0 +1,28 @@
+{
+  "question_id": 4634,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24799",
+  "text": "I motocicli, avendo una ridotta sagoma frontale, sono meno visibili in distanza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità dei veicoli a motore",
+      "Sicurezza stradale",
+      "Comportamento dei conducenti"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "sagoma frontale",
+      "visibilità",
+      "distanza"
+    ],
+    "vector_search_queries": [
+      "visibilità ridotta dei motocicli in relazione alla sagoma frontale",
+      "pericolosità legata alla scarsa visibilità dei motocicli"
+    ],
+    "rule_explanation": "I motocicli, a causa della loro ridotta sagoma frontale, risultano meno visibili rispetto ad altri veicoli, specialmente in condizioni di traffico intenso o a lunga distanza."
+  }
+}

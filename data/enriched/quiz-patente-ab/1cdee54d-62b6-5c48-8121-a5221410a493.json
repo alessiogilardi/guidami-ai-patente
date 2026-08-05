@@ -1,0 +1,31 @@
+{
+  "question_id": 4080,
+  "topic": "Segnali di pericolo",
+  "number": "19209",
+  "text": "Il segnale raffigurato è posto prima di una salita ripida",
+  "correct_answer": true,
+  "image": "e00977c30f7df673be7ffea068667309.jpeg",
+  "image_description": "Segnale di pericolo di salita con pendenza specificata. Il segnale preannuncia una salita e ne specifica la pendenza (10%). È un segnale di pericolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata una rampa inclinata di colore nero, che simboleggia una salita. Sulla rampa è indicato il valore \"10%\" con un numero nero, che rappresenta la pendenza.",
+    "name": "Segnale di pericolo di salita con pendenza specificata",
+    "description": "Il segnale preannuncia una salita e ne specifica la pendenza (10%). È un segnale di pericolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di prescrizioni/indicazioni radiometriche"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "salita ripida",
+      "pendenza",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo che preannunciano salite ripide",
+      "interpretazione segnale di pericolo salita con pendenza"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante una salita con pendenza specifica preannuncia una salita ripida prima del tratto interessato."
+  }
+}

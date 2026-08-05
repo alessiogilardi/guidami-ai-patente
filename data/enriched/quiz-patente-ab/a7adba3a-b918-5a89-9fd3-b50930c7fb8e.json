@@ -1,0 +1,28 @@
+{
+  "question_id": 4712,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25408",
+  "text": "L'impianto di scarico ha lo scopo di convogliare i gas di scarico verso l'esterno dopo averne abbassato la temperatura",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Impianto di scarico veicolo",
+      "Funzionamento e sicurezza del veicolo"
+    ],
+    "exact_keywords": [
+      "impianto di scarico",
+      "gas di scarico",
+      "abbassamento temperatura",
+      "convogliare all#39;esterno"
+    ],
+    "vector_search_queries": [
+      "funzione impianto di scarico veicolo",
+      "composizione e scopo impianto di scarico auto",
+      "normativa su gas di scarico e temperatura"
+    ],
+    "rule_explanation": "L'impianto di scarico ha la funzione di espellere i gas combusti all'esterno del veicolo, dopo averne ridotto la temperatura e la rumorosità."
+  }
+}

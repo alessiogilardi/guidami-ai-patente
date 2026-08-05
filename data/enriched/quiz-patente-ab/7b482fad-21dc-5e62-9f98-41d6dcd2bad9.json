@@ -1,0 +1,28 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25327",
+  "text": "Con freni squilibrati si manifesta, in genere, un'usura irregolare e non omogenea dei battistrada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Stabilità e tenuta di strada",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "freni squilibrati",
+      "usura irregolare del battistrada",
+      "pneumatici",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "usura irregolare battistrada freni squilibrati",
+      "effetti freni non equilibrati su pneumatici e tenuta di strada"
+    ],
+    "rule_explanation": "I freni squilibrati causano un'usura anomala e non uniforme del battistrada degli pneumatici, compromettendo la tenuta di strada del veicolo."
+  }
+}

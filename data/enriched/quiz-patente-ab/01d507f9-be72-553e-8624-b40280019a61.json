@@ -1,0 +1,29 @@
+{
+  "question_id": 4559,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24006",
+  "text": "Il conducente di un autocarro fermo al semaforo deve prevedere la presenza di pedoni e ciclisti il cui avvistamento è precluso dalla sagoma del proprio veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza del conducente",
+      "Prevenzione dei pericoli nella circolazione",
+      "Visibilità e avvistamento ostacolati"
+    ],
+    "exact_keywords": [
+      "autocarro fermo",
+      "avvistamento ostacolato",
+      "pedoni",
+      "ciclisti",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza per autocarri con visibilità ridotta",
+      "prevenzione pericoli da pedoni e ciclisti ostacolati dalla sagoma del veicolo fermo"
+    ],
+    "rule_explanation": "Il conducente di un autocarro, anche se fermo al semaforo, deve usare la massima prudenza per prevenire pericoli derivanti da pedoni o ciclisti non visibili a causa della sagoma del veicolo."
+  }
+}

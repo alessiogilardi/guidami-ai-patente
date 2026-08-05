@@ -1,0 +1,30 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25320",
+  "text": "Una frenatura poco efficiente o squilibrata può essere causata dal consumo irregolare dei tamburi o dei dischi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza del sistema frenante",
+      "Manutenzione del veicolo",
+      "Stabilità e tenuta di strada"
+    ],
+    "exact_keywords": [
+      "frenatura inefficiente",
+      "frenatura squilibrata",
+      "tamburi",
+      "dischi",
+      "usura irregolare"
+    ],
+    "vector_search_queries": [
+      "cause di frenatura inefficiente o squilibrata",
+      "impatto dell'usura di tamburi e dischi sul sistema frenante",
+      "manutenzione del sistema frenante e sicurezza stradale"
+    ],
+    "rule_explanation": "Un'usura irregolare di tamburi o dischi compromette l'efficienza e l'equilibrio del sistema frenante, influenzando negativamente la tenuta di strada."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4370,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22236",
+  "text": "La presenza di uno dei due pannelli integrativi in figura può indicare uno o più tornanti",
+  "correct_answer": true,
+  "image": "2093c48d10e144197dd00ef236af2368.jpeg",
+  "image_description": "Pannello integrativo di pericolo (tornanti). Il pannello integrativo A indica la presenza di uno o più tornanti. Il pannello integrativo B indica la presenza di 3 tornanti. Entrambi sono pannelli integrativi che specificano la natura del pericolo segnalato dal segnale principale a cui sono abbinati.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli integrativi rettangolari, etichettati A e B. Il pannello A contiene la scritta \"tornante\" in nero su sfondo bianco. Il pannello B contiene la scritta \"3 tornanti\" in nero su sfondo bianco. Entrambi i pannelli sono bordati di nero. Questi pannelli sono comunemente usati per integrare segnali di pericolo, specificando la natura del pericolo stesso. In questo caso, indicano la presenza di tornanti. Il pannello A indica genericamente la presenza di tornanti, mentre il pannello B specifica che ce ne sono tre.",
+    "name": "Pannello integrativo di pericolo (tornanti)",
+    "description": "Il pannello integrativo A indica la presenza di uno o più tornanti. Il pannello integrativo B indica la presenza di 3 tornanti. Entrambi sono pannelli integrativi che specificano la natura del pericolo segnalato dal segnale principale a cui sono abbinati."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pannelli integrativi di pericolo",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "pannelli integrativi",
+      "tornanti",
+      "pericolo",
+      "segnali stradali"
+    ],
+    "vector_search_queries": [
+      "funzione dei pannelli integrativi di pericolo",
+      "pannelli integrativi che specificano la natura del pericolo",
+      "segnaletica stradale pannelli integrativi tornanti"
+    ],
+    "rule_explanation": "I pannelli integrativi, come quelli che indicano i tornanti, specificano la natura del pericolo o della prescrizione indicata dal segnale principale a cui sono abbinati."
+  }
+}

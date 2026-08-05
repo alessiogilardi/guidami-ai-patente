@@ -1,0 +1,28 @@
+{
+  "question_id": 4524,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23762",
+  "text": "La sosta è vietata negli spazi riservati alla fermata o alla sosta dei veicoli per persone invalide",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Spazi riservati a persone invalide"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "spazi riservati",
+      "fermata",
+      "sosta",
+      "persone invalide"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in spazi riservati a invalidi",
+      "aree di sosta e fermata per invalidi vietate alla sosta"
+    ],
+    "rule_explanation": "La sosta è vietata negli spazi espressamente riservati alla fermata o alla sosta dei veicoli a servizio di persone invalide."
+  }
+}

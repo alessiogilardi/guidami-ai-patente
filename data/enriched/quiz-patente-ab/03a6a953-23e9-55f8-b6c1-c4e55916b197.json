@@ -1,0 +1,28 @@
+{
+  "question_id": 4680,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25138",
+  "text": "Per diminuire l'inquinamento dell'aria provocato dai veicoli, bisogna sostituire il filtro dell'olio ad ogni cambio di stagione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione dell'inquinamento atmosferico",
+      "Manutenzione del veicolo per la tutela ambientale"
+    ],
+    "exact_keywords": [
+      "inquinamento atmosferico",
+      "filtro dell'olio",
+      "manutenzione del veicolo",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "manutenzione veicolo e impatto ambientale",
+      "emissioni inquinanti e filtro olio",
+      "normativa prevenzione inquinamento atmosferico da veicoli"
+    ],
+    "rule_explanation": "La sostituzione del filtro dell'olio non è legata alla stagionalità né direttamente alla diminuzione dell'inquinamento atmosferico, ma alla manutenzione ordinaria del veicolo per garantirne il corretto funzionamento e limitare le emissioni."
+  }
+}

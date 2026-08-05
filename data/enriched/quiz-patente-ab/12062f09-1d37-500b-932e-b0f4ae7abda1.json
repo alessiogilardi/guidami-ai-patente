@@ -1,0 +1,29 @@
+{
+  "question_id": 4263,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21201",
+  "text": "Il suono prolungato del fischietto da parte dell'agente preposto al traffico impone ai soli veicoli pesanti di arrestarsi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni degli agenti del traffico",
+      "Obblighi dei conducenti verso gli agenti"
+    ],
+    "exact_keywords": [
+      "agente preposto al traffico",
+      "segnali acustici",
+      "fischietto",
+      "arrestarsi",
+      "condotta dei conducenti"
+    ],
+    "vector_search_queries": [
+      "obblighi dei conducenti ai segnali degli agenti del traffico",
+      "effetti dei segnali acustici degli agenti del traffico sulla circolazione",
+      "interpretazione dei segnali del vigile urbano per la fermata dei veicoli"
+    ],
+    "rule_explanation": "I segnali acustici degli agenti del traffico, come il suono prolungato del fischietto, impongono l'arresto a tutti i conducenti, non solo a quelli di veicoli pesanti."
+  }
+}

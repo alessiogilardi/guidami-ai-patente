@@ -1,0 +1,32 @@
+{
+  "question_id": 4100,
+  "topic": "Segnali di pericolo",
+  "number": "19457",
+  "text": "Il segnale raffigurato preannuncia la vicinanza di zone ad alto rischio d'incendio",
+  "correct_answer": true,
+  "image": "4e35a23fa5e62af4861ff27076a91a69.jpeg",
+  "image_description": "Segnale di pericolo di incendio. Il segnale preannuncia un pericolo di incendio, indicando la possibilità che la vegetazione ai lati della strada possa incendiarsi. È un segnale di pericolo che richiede prudenza da parte dei conducenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del segnale è raffigurato un pittogramma che rappresenta un albero stilizzato che brucia, con una fiamma alla base e un fiammifero acceso. Questo pittogramma indica un pericolo di incendio. Non sono presenti pannelli integrativi. L'immagine è focalizzata unicamente sul segnale.",
+    "name": "Segnale di pericolo di incendio",
+    "description": "Il segnale preannuncia un pericolo di incendio, indicando la possibilità che la vegetazione ai lati della strada possa incendiarsi. È un segnale di pericolo che richiede prudenza da parte dei conducenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Presegnalazione di pericolo specifico"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "incendio",
+      "preavviso",
+      "zona a rischio"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo stradale che preannunciano rischio incendio",
+      "significato segnale di pericolo incendio autostrade",
+      "preavviso zone ad alto rischio d'incendio"
+    ],
+    "rule_explanation": "Il segnale di pericolo di incendio preannuncia la vicinanza di zone in cui sussiste un elevato rischio di incendi, richiedendo maggiore prudenza."
+  }
+}

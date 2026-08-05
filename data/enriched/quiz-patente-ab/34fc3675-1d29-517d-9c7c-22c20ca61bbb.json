@@ -1,0 +1,29 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24759",
+  "text": "In caso di nebbia fitta è opportuno procedere a zig zag per far meglio notare la propria presenza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Condotta di guida in condizioni di scarsa visibilità",
+      "Prevenzione degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "nebbia",
+      "visibilità ridotta",
+      "velocità moderata",
+      "luci anabbaglianti",
+      "fendinebbia"
+    ],
+    "vector_search_queries": [
+      "comportamento di guida in caso di nebbia fitta",
+      "uso delle luci e velocità in condizioni di scarsa visibilità",
+      "prevenzione incidenti stradali per nebbia"
+    ],
+    "rule_explanation": "In caso di nebbia fitta, è necessario procedere a velocità moderata, utilizzando le luci anabbaglianti o fendinebbia, e non a zig zag, per garantire la sicurezza e la visibilità."
+  }
+}

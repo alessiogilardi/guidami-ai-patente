@@ -1,0 +1,32 @@
+{
+  "question_id": 4203,
+  "topic": "Segnali di precedenza",
+  "number": "20635",
+  "text": "Il segnale raffigurato preannuncia sulla sinistra una strada senza uscita",
+  "correct_answer": false,
+  "image": "5c17bf965a93fa39910d1868d73061a2.jpeg",
+  "image_description": "Preavviso di confluenza a destra. Il segnale preannuncia una confluenza a destra, indicando che la strada che si sta percorrendo si immette in un'altra strada da destra. I veicoli provenienti dalla strada di immissione hanno la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è presente un pittogramma nero che rappresenta una strada principale che prosegue dritta e una strada secondaria che si immette da destra. La forma del pittogramma indica una confluenza, con la strada principale più spessa e la strada secondaria più sottile che si unisce ad essa. La freccia nera più grande indica la direzione principale, mentre la freccia più piccola a sinistra indica la strada che si immette.",
+    "name": "Preavviso di confluenza a destra",
+    "description": "Il segnale preannuncia una confluenza a destra, indicando che la strada che si sta percorrendo si immette in un'altra strada da destra. I veicoli provenienti dalla strada di immissione hanno la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione stradale",
+      "Preavviso di confluenza"
+    ],
+    "exact_keywords": [
+      "preavviso di confluenza",
+      "strada di immissione",
+      "precedenza",
+      "segnali di pericolo"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di confluenza a destra",
+      "interpretazione segnale stradale confluenza a destra",
+      "obbligo di precedenza in caso di confluenza stradale"
+    ],
+    "rule_explanation": "Il segnale raffigurato preannuncia una confluenza a destra, non una strada senza uscita a sinistra. I veicoli dalla strada di immissione hanno la precedenza."
+  }
+}

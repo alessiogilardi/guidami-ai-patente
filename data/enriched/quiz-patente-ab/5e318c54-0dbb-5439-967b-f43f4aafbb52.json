@@ -1,0 +1,27 @@
+{
+  "question_id": 4008,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18398",
+  "text": "L'intersezione (incrocio) a raso richiede di fare attenzione ai veicoli provenienti dalle strade che si incrociano",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di prudenza agli incroci",
+      "Attenzione alla circolazione proveniente dalle altre strade"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "attenzione",
+      "veicoli provenienti",
+      "strade che si incrociano"
+    ],
+    "vector_search_queries": [
+      "obbligo di attenzione ai veicoli provenienti dalle strade che si incrociano in un incrocio a raso",
+      "condotta di guida prudente in prossimità di intersezioni stradali"
+    ],
+    "rule_explanation": "Agli incroci a raso, il conducente deve prestare attenzione ai veicoli che sopraggiungono dalle strade che si intersecano per garantire la sicurezza della circolazione."
+  }
+}

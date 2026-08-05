@@ -1,0 +1,28 @@
+{
+  "question_id": 4525,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23770",
+  "text": "La sosta è vietata negli spazi destinati a servizi di emergenza o di igiene pubblica indicati dalla apposita segnaletica",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Segnaletica stradale di divieto",
+      "Aree riservate a servizi pubblici"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "spazi destinati a servizi di emergenza",
+      "spazi destinati a servizi di igiene pubblica",
+      "segnaletica specifica"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in aree riservate a servizi di emergenza o igiene pubblica",
+      "interpretazione della segnaletica che indica aree di sosta vietata per servizi specifici"
+    ],
+    "rule_explanation": "La sosta è vietata negli spazi espressamente riservati a servizi di emergenza o igiene pubblica, come segnalato dalla apposita segnaletica."
+  }
+}

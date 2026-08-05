@@ -1,0 +1,30 @@
+{
+  "question_id": 4703,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25290",
+  "text": "Adesivi, ciondoli o altri oggetti applicati sui vetri del veicolo possono ridurre la visibilità del conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità del conducente",
+      "Sicurezza alla guida",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "visibilità",
+      "conducente",
+      "vetri",
+      "oggetti applicati",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "ostruzione della visibilità tramite oggetti sui vetri",
+      "effetti di adesivi e ciondoli sulla visibilità del conducente",
+      "sicurezza stradale e visibilità del conducente"
+    ],
+    "rule_explanation": "Qualsiasi oggetto applicato sui vetri che riduca la visibilità del conducente compromette la sicurezza della circolazione e la tenuta di strada."
+  }
+}

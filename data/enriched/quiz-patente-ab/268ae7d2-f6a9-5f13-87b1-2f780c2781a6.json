@@ -1,0 +1,29 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23038",
+  "text": "Gli specchi retrovisori dei veicoli a due ruote sono fissi e senza possibilità di regolazione a causa delle vibrazioni del veicolo che tendono a spostarli dalla posizione originale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di controllo della visibilità",
+      "Norme di equipaggiamento dei veicoli a motore",
+      "Specchi retrovisori"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "regolazione",
+      "veicoli a due ruote",
+      "vibrazioni",
+      "posizione originale"
+    ],
+    "vector_search_queries": [
+      "regolazione specchi retrovisori motocicli",
+      "obbligo di specchietti regolabili per veicoli a due ruote"
+    ],
+    "rule_explanation": "Gli specchi retrovisori dei veicoli a due ruote devono essere regolabili e mantenuti in posizione per garantire la visibilità, nonostante le vibrazioni."
+  }
+}

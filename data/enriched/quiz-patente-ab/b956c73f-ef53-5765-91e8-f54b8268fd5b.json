@@ -1,0 +1,29 @@
+{
+  "question_id": 4616,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24577",
+  "text": "La patente di guida viene immediatamente ritirata, durante la circolazione, a seguito di violazione che comporti le sanzioni accessorie della sospensione della patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sospensione della patente",
+      "Ritiro del documento di guida",
+      "Sanzioni accessorie"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "ritirata",
+      "sospensione della patente",
+      "sanzioni accessorie",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "ritiro immediato della patente in caso di sospensione",
+      "sanzioni accessorie della sospensione della patente di guida"
+    ],
+    "rule_explanation": "In caso di violazione che comporti la sospensione della patente, questa viene immediatamente ritirata dall'organo accertatore durante la circolazione."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22482",
+  "text": "Se si percorre una lunga discesa con il cambio in folle e a motore spento, diventa difficoltoso muovere lo sterzo se il veicolo è dotato di servosterzo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzionamento del servosterzo",
+      "Sicurezza alla guida in discesa"
+    ],
+    "exact_keywords": [
+      "servosterzo",
+      "cambio in folle",
+      "motore spento",
+      "discesa"
+    ],
+    "vector_search_queries": [
+      "funzionamento servosterzo con motore spento",
+      "difficoltà di sterzata in discesa con cambio in folle"
+    ],
+    "rule_explanation": "Il servosterzo richiede il funzionamento del motore per assistere la sterzata; a motore spento e in folle, la sterzata diventa più difficoltosa, specialmente in discesa."
+  }
+}

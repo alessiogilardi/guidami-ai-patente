@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23528",
+  "text": "E' consentito il sorpasso di veicoli fermi ai passaggi a livello senza barriere se il treno è distante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso ai passaggi a livello",
+      "Regole di circolazione ai passaggi a livello con o senza barriere"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicoli fermi",
+      "passaggi a livello",
+      "senza barriere",
+      "treno"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso ai passaggi a livello senza barriere",
+      "regole di circolazione per veicoli fermi ai passaggi a livello"
+    ],
+    "rule_explanation": "Il sorpasso è vietato ai passaggi a livello senza barriere, indipendentemente dalla distanza del treno, per garantire la sicurezza."
+  }
+}

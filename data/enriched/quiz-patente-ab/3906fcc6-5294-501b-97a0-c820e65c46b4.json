@@ -1,0 +1,26 @@
+{
+  "question_id": 4671,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25067",
+  "text": "Il consumo di carburante aumenta con l'aumentare del peso del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Impatto del peso sul consumo di carburante",
+      "Efficienza energetica dei veicoli"
+    ],
+    "exact_keywords": [
+      "consumo di carburante",
+      "peso del veicolo",
+      "efficienza energetica"
+    ],
+    "vector_search_queries": [
+      "relazione tra peso del veicolo e consumo di carburante",
+      "impatto del carico sul consumo di carburante"
+    ],
+    "rule_explanation": "Il peso del veicolo è un fattore determinante per il consumo di carburante: maggiore è il peso, maggiore sarà l'energia necessaria per la propulsione, con conseguente aumento dei consumi."
+  }
+}

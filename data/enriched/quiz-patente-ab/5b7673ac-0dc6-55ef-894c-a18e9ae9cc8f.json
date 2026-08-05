@@ -1,0 +1,27 @@
+{
+  "question_id": 4518,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23718",
+  "text": "Fuori dei centri abitati, in caso di impossibilità di collocare il veicolo fuori della carreggiata, il conducente non deve effettuare la sosta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo fuori dai centri abitati",
+      "Arresto e sosta in condizioni di emergenza"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "carreggiata",
+      "centri abitati",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "sosta del veicolo fuori dalla carreggiata in assenza di centri abitati",
+      "condizioni di sosta in emergenza fuori dai centri abitati"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, se non è possibile collocare il veicolo fuori della carreggiata, il conducente deve effettuare la sosta, segnalando l'intralcio alla circolazione."
+  }
+}

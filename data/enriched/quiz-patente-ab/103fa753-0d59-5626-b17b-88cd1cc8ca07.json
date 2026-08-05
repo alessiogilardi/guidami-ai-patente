@@ -1,0 +1,27 @@
+{
+  "question_id": 4652,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24930",
+  "text": "Per diminuire il dolore delle ustioni si deve, se possibile, fare uso di acqua fredda",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso per ustioni",
+      "Gestione delle ustioni cutanee"
+    ],
+    "exact_keywords": [
+      "ustioni",
+      "acqua fredda",
+      "primo soccorso",
+      "raffreddamento locale"
+    ],
+    "vector_search_queries": [
+      "trattamento primo soccorso ustioni con acqua fredda",
+      "raffreddamento ustioni cutanee per alleviare dolore"
+    ],
+    "rule_explanation": "In caso di ustioni, è fondamentale applicare acqua corrente fredda (non gelata) per almeno 10-15 minuti per ridurre il dolore e il danno tissutale."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4714,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25440",
+  "text": "Nei veicoli a motore a due ruote, la rottura della catena di trasmissione pregiudica la velocità di marcia, ma non la sicurezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza alla guida",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "rottura catena di trasmissione",
+      "veicoli a motore a due ruote",
+      "sicurezza",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "impatto rottura catena trasmissione su sicurezza veicoli a due ruote",
+      "conseguenze rottura catena su stabilità e guida motocicli"
+    ],
+    "rule_explanation": "La rottura della catena di trasmissione su veicoli a due ruote non solo riduce la velocità, ma compromette anche la stabilità e la sicurezza di marcia."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23555",
+  "text": "È vietato il sorpasso in prossimità delle stazioni di servizio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Manovre pericolose",
+      "Prossimità di incroci e stazioni"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "stazioni di servizio",
+      "divieto",
+      "pericoloso"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in prossimità di stazioni di servizio",
+      "sorpasso pericoloso in corrispondenza di stazioni di servizio"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in prossimità o in corrispondenza di incroci, rotatorie e stazioni di servizio, ove possa costituire pericolo."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4403,
+  "topic": "Distanza di sicurezza",
+  "number": "22618",
+  "text": "Lo spazio totale di arresto è pari allo spazio percorso nel tempo di reazione più quello percorso durante la frenata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Spazio di arresto",
+      "Distanza di sicurezza",
+      "Tempo di reazione"
+    ],
+    "exact_keywords": [
+      "spazio totale di arresto",
+      "tempo di reazione",
+      "spazio di frenata",
+      "distanza di sicurezza"
+    ],
+    "vector_search_queries": [
+      "definizione di spazio totale di arresto",
+      "componenti dello spazio di arresto: tempo di reazione e spazio di frenata"
+    ],
+    "rule_explanation": "Lo spazio totale di arresto è la somma dello spazio percorso dal veicolo durante il tempo di reazione del conducente e dello spazio necessario per la frenata."
+  }
+}

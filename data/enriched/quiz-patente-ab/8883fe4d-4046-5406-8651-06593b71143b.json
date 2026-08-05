@@ -1,0 +1,27 @@
+{
+  "question_id": 4577,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24183",
+  "text": "La targa posteriore di un autoveicolo è illuminata per consentire una facile lettura dei caratteri che la compongono",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Illuminazione targa posteriore",
+      "Obblighi di leggibilità della targa"
+    ],
+    "exact_keywords": [
+      "targa posteriore",
+      "autoveicolo",
+      "illuminazione",
+      "leggibilità"
+    ],
+    "vector_search_queries": [
+      "illuminazione targa posteriore autoveicolo",
+      "obbligo leggibilità targa posteriore"
+    ],
+    "rule_explanation": "La targa posteriore deve essere illuminata per garantirne la leggibilità in condizioni di scarsa visibilità, come prescritto dal Codice della Strada."
+  }
+}

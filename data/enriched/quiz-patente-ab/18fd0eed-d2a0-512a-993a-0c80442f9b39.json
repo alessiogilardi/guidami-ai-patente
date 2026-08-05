@@ -1,0 +1,27 @@
+{
+  "question_id": 4600,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24386",
+  "text": "L'airbag è utile soltanto nei percorsi extraurbani",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza passiva dei veicoli",
+      "Sistemi di ritenuta automobilistica"
+    ],
+    "exact_keywords": [
+      "airbag",
+      "sistemi di ritenuta",
+      "sicurezza",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "funzionamento airbag in relazione al tipo di percorso",
+      "efficacia airbag nei percorsi urbani ed extraurbani"
+    ],
+    "rule_explanation": "L'airbag è un dispositivo di sicurezza passiva che si attiva in caso di urto, indipendentemente dal tipo di percorso (urbano o extraurbano), aumentando la protezione degli occupanti."
+  }
+}

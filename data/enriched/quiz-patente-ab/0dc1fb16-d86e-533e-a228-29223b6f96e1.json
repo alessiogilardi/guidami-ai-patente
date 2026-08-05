@@ -1,0 +1,30 @@
+{
+  "question_id": 4695,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25222",
+  "text": "L'A.B.S. agisce anche quando l'asfalto è bagnato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema antibloccaggio (ABS)",
+      "Sicurezza attiva del veicolo",
+      "Condizioni di aderenza stradale"
+    ],
+    "exact_keywords": [
+      "ABS",
+      "frenata",
+      "asfalto bagnato",
+      "sistema antibloccaggio",
+      "aderenza"
+    ],
+    "vector_search_queries": [
+      "funzionamento ABS su asfalto bagnato",
+      "efficacia sistema antibloccaggio in condizioni di scarsa aderenza",
+      "ABS e frenata su superfici umide"
+    ],
+    "rule_explanation": "L'ABS è un sistema di sicurezza attiva che previene il bloccaggio delle ruote durante la frenata, migliorando la stabilità e la direzionalità anche su fondi scivolosi come l'asfalto bagnato."
+  }
+}

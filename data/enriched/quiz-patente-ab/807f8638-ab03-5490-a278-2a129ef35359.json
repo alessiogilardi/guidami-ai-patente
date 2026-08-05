@@ -1,0 +1,31 @@
+{
+  "question_id": 4170,
+  "topic": "Segnali di obbligo",
+  "number": "20281",
+  "text": "Il segnale raffigurato è integrato con un segnale di PASSAGGIO OBBLIGATORIO A SINISTRA",
+  "correct_answer": false,
+  "image": "16c5adb5b0bfafc6c7b0777ae5eec32d.jpeg",
+  "image_description": "Segnale di circolazione rotatoria. Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo blu e sfondo blu. Al centro, tre frecce bianche a punta di freccia sono disposte in modo da formare un cerchio, indicando un movimento rotatorio in senso antiorario. Questo è il segnale di obbligo di circolazione rotatoria.",
+    "name": "Segnale di circolazione rotatoria",
+    "description": "Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di prescrizione diversiva"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "circolazione",
+      "senso vietato",
+      "passaggio obbligatorio"
+    ],
+    "vector_search_queries": [
+      "obbligo di circolazione in senso antiorario in rotatoria",
+      "differenza tra segnale di rotatoria e segnale di passaggio obbligatorio"
+    ],
+    "rule_explanation": "Il segnale di rotatoria impone di circolare nel senso indicato dalle frecce (antiorario), non di effettuare un passaggio obbligatorio a sinistra."
+  }
+}

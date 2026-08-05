@@ -1,0 +1,28 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24662",
+  "text": "L'omesso uso di lenti durante la guida, se prescritte, comporta una perdita di punti sulla patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prescrizioni per la guida",
+      "Uso di lenti correttive per la guida",
+      "Sistema sanzionatorio della patente a punti"
+    ],
+    "exact_keywords": [
+      "omessa uso di lenti",
+      "prescritte",
+      "perdita di punti",
+      "patente di guida"
+    ],
+    "vector_search_queries": [
+      "sanzioni per omessa osservanza prescrizioni patente lenti",
+      "perdita punti patente per mancato uso occhiali guida"
+    ],
+    "rule_explanation": "L'omessa osservanza delle prescrizioni relative all'uso di lenti correttive durante la guida comporta la decurtazione di punti dalla patente."
+  }
+}

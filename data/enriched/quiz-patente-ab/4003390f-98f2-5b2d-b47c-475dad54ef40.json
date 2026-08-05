@@ -1,0 +1,27 @@
+{
+  "question_id": 4529,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23796",
+  "text": "Prima di aprire lo sportello di un veicolo dal lato rivolto verso il centro della strada bisogna assicurarsi che non sopraggiungano altri veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di apertura sportello",
+      "Sicurezza nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "aprire lo sportello",
+      "centro della strada",
+      "altri veicoli",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "apertura sportello veicolo e sicurezza circolazione",
+      "manovra di apertura sportello e pericolo per veicoli in arrivo"
+    ],
+    "rule_explanation": "Prima di aprire uno sportello dal lato della strada, il conducente deve assicurarsi che ciò non costituisca pericolo o intralcio per gli altri utenti della strada, in particolare per i veicoli in arrivo."
+  }
+}

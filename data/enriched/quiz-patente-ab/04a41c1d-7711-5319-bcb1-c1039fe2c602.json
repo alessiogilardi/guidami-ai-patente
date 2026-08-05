@@ -1,0 +1,29 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22325",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi in prossimità degli autovelox",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Obbligo di moderazione della velocità",
+      "Dispositivi di controllo della velocità"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "autovelox",
+      "fermarsi",
+      "pericolo o intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità in prossimità di autovelox",
+      "moderazione della velocità in presenza di dispositivi di controllo elettronico",
+      "fermarsi in prossimità di autovelox per evitare pericoli"
+    ],
+    "rule_explanation": "Non è obbligatorio ridurre la velocità o fermarsi in prossimità degli autovelox, ma solo se le condizioni del traffico o della strada lo impongono per evitare pericoli."
+  }
+}

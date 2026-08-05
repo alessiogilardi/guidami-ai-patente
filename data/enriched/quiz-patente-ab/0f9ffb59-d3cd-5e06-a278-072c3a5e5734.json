@@ -1,0 +1,28 @@
+{
+  "question_id": 4388,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22465",
+  "text": "Sulle autostrade a quattro corsie è consentito viaggiare fino a 170 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità in autostrada",
+      "Condizioni di percorribilità autostradale"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "limite di velocità",
+      "130 km/h",
+      "150 km/h"
+    ],
+    "vector_search_queries": [
+      "limite di velocità autostradale 130 km/h",
+      "condizioni per elevare il limite di velocità in autostrada a 150 km/h",
+      "velocità massima consentita in autostrada"
+    ],
+    "rule_explanation": "Il limite di velocità ordinario in autostrada è di 130 km/h, elevabile a 150 km/h in presenza di specifiche condizioni tecniche e di traffico. Non è mai consentito superare i 170 km/h."
+  }
+}

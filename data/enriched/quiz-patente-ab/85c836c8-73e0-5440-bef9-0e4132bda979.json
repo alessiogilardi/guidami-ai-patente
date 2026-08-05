@@ -1,0 +1,31 @@
+{
+  "question_id": 4211,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20723",
+  "text": "Le strisce lungo il centro della carreggiata possono essere bianche o azzurre",
+  "correct_answer": false,
+  "image": "269c723abe13bc35127d78a20870bcfa.jpeg",
+  "image_description": "Segnaletica orizzontale: strisce di corsia. Le strisce bianche continue delimitano le corsie di marcia e indicano la loro separazione. Le strisce bianche tratteggiate indicano la possibilità di superamento e di cambio di corsia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due esempi di segnaletica orizzontale su un manto stradale grigio. La parte superiore presenta una carreggiata con due strisce bianche continue per ogni lato, che delimitano le corsie di marcia. La parte inferiore mostra un tratto di strada con una singola striscia bianca tratteggiata al centro, che separa le due direzioni di marcia.",
+    "name": "Segnaletica orizzontale: strisce di corsia",
+    "description": "Le strisce bianche continue delimitano le corsie di marcia e indicano la loro separazione. Le strisce bianche tratteggiate indicano la possibilità di superamento e di cambio di corsia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Delimitazione delle corsie di marcia"
+    ],
+    "exact_keywords": [
+      "strisce bianche",
+      "delimitano le corsie",
+      "carreggiata",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "colore delle strisce di delimitazione delle corsie",
+      "segnaletica orizzontale strisce bianche carreggiata"
+    ],
+    "rule_explanation": "Le strisce che delimitano le corsie lungo il centro della carreggiata sono esclusivamente di colore bianco. Le strisce azzurre non sono previste per tale funzione."
+  }
+}

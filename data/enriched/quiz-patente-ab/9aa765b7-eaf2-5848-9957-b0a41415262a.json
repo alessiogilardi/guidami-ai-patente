@@ -1,0 +1,27 @@
+{
+  "question_id": 4386,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22447",
+  "text": "Si deve regolare la velocità in base alla fretta del conducente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di guida sicura"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "intralcio alla circolazione",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alle condizioni di guida",
+      "velocità non in base alla fretta ma alle condizioni esterne"
+    ],
+    "rule_explanation": "La velocità deve essere adeguata alle condizioni di traffico, della strada e del veicolo, non alla fretta del conducente, per evitare pericoli o intralci."
+  }
+}

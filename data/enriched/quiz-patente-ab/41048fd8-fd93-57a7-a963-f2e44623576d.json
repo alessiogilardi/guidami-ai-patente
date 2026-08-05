@@ -1,0 +1,32 @@
+{
+  "question_id": 4486,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23376",
+  "text": "Nell'intersezione in figura il veicolo T transita per primo",
+  "correct_answer": true,
+  "image": "987f3c2361b3dd48cc27d5570701e901.jpeg",
+  "image_description": "Incrocio a T con precedenza a destra. L'incrocio è a T. Il tram (T) proviene da sinistra e deve svoltare a destra. L'autobus (M) proviene dal basso e deve proseguire dritto. Il veicolo P (un'auto) proviene da destra e deve svoltare a sinistra. Non sono presenti segnali stradali che regolano la precedenza. In assenza di segnali, si applica la regola generale della precedenza a destra. L'autobus (M) ha la precedenza sull'auto (P) perché si trova alla sua destra. Il tram (T) deve dare la precedenza sia all'autobus (M) sia all'auto (P) perché questi si trovano alla sua destra rispetto alla sua manovra di svolta a destra. Pertanto, l'ordine di transito corretto è: prima l'autobus (M), poi l'auto (P), infine il tram (T).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a forma di T visto dall'alto. Sono presenti tre veicoli: un tram (identificato con la lettera T e la scritta \"TRAM\"), un autobus (identificato con la lettera M e la scritta \"AUTOBUS\") e un'autovettura (identificata con la lettera P). Il tram T proviene da sinistra e ha una traiettoria tratteggiata che indica una svolta a destra. L'autobus M proviene dal basso e ha una traiettoria tratteggiata che indica la prosecuzione dritta. L'autovettura P proviene da destra e ha una traiettoria tratteggiata che indica una svolta a sinistra. Non sono visibili segnali stradali che regolano la precedenza nell'incrocio. L'incrocio è a raso, senza semafori o segnaletica orizzontale specifica (come strisce di arresto o frecce direzionali). La strada su cui si trova il tram T e l'autovettura P è una strada principale, mentre quella da cui proviene l'autobus M è una strada secondaria che si immette nell'incrocio. Tuttavia, in assenza di segnali specifici, si applica la regola generale della precedenza a destra. L'autobus M si trova alla destra del tram T (considerando la direzione di marcia del tram che svolta a destra) e alla destra dell'autovettura P (considerando la direzione di marcia dell'autovettura che svolta a sinistra). L'autovettura P si trova alla destra del tram T (considerando la direzione di marcia del tram che svolta a destra). Il tram T si trova alla sinistra dell'autobus M e dell'autovettura P. Pertanto, l'autobus M ha la precedenza sul tram T e sull'autovettura P. L'autovettura P ha la precedenza sul tram T. L'ordine di transito è quindi: M, P, T.",
+    "name": "Incrocio a T con precedenza a destra",
+    "description": "L'incrocio è a T. Il tram (T) proviene da sinistra e deve svoltare a destra. L'autobus (M) proviene dal basso e deve proseguire dritto. Il veicolo P (un'auto) proviene da destra e deve svoltare a sinistra. Non sono presenti segnali stradali che regolano la precedenza. In assenza di segnali, si applica la regola generale della precedenza a destra. L'autobus (M) ha la precedenza sull'auto (P) perché si trova alla sua destra. Il tram (T) deve dare la precedenza sia all'autobus (M) sia all'auto (P) perché questi si trovano alla sua destra rispetto alla sua manovra di svolta a destra. Pertanto, l'ordine di transito corretto è: prima l'autobus (M), poi l'auto (P), infine il tram (T)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza a destra",
+      "Ordine di precedenza agli incroci in assenza di segnaletica"
+    ],
+    "exact_keywords": [
+      "incrocio a T",
+      "precedenza a destra",
+      "assenza di segnali stradali",
+      "ordine di transito"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio senza segnali stradali",
+      "regola generale di precedenza a destra",
+      "ordine di transito dei veicoli in assenza di segnaletica di precedenza"
+    ],
+    "rule_explanation": "In assenza di segnaletica, ai sensi dell'art. 145 CdS, vige la regola generale della precedenza a destra. Il veicolo T, svoltando a destra, deve dare la precedenza ai veicoli provenienti dalla sua destra."
+  }
+}

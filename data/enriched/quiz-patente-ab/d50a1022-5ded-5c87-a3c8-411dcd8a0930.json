@@ -1,0 +1,31 @@
+{
+  "question_id": 4279,
+  "topic": "Segnali di indicazione",
+  "number": "21348",
+  "text": "Il segnale raffigurato indica che non è assolutamente possibile raggiungere Novara",
+  "correct_answer": false,
+  "image": "dfd8664988fdf17095257111dc0cf53c.jpeg",
+  "image_description": "Preavviso di deviazione temporanea con indicazione di destinazione e pannello integrativo di distanza. Il segnale indica una deviazione per lavori in corso. La destinazione Novara è indicata a sinistra, con un percorso che si snoda a destra e poi a sinistra. Il segnale di pericolo di lavori in corso è posizionato sulla deviazione. Il pannello integrativo indica che la deviazione inizia tra 2 km.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di deviazione temporanea. Il segnale ha uno sfondo giallo e un bordo nero. In alto a sinistra, una freccia nera indica la direzione principale, che si biforca poi a destra e a sinistra. La destinazione \"NOVARA\" è indicata sulla parte sinistra del percorso deviato. Sulla deviazione, è presente un segnale di pericolo di lavori in corso (triangolo con bordo rosso e pittogramma di operai al lavoro). Sotto il segnale principale, un pannello integrativo bianco con bordo nero indica \"2 km\" con due frecce verticali che puntano verso l'alto, indicando la distanza dall'inizio della deviazione.",
+    "name": "Preavviso di deviazione temporanea con indicazione di destinazione e pannello integrativo di distanza",
+    "description": "Il segnale indica una deviazione per lavori in corso. La destinazione Novara è indicata a sinistra, con un percorso che si snoda a destra e poi a sinistra. Il segnale di pericolo di lavori in corso è posizionato sulla deviazione. Il pannello integrativo indica che la deviazione inizia tra 2 km."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso di deviazione",
+      "Indicazione stradale per lavori in corso"
+    ],
+    "exact_keywords": [
+      "preavviso di deviazione",
+      "lavori in corso",
+      "destinazione",
+      "pannello integrativo"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso deviazione per lavori in corso",
+      "indicazioni stradali per raggiungere una destinazione tramite deviazione temporanea"
+    ],
+    "rule_explanation": "I segnali di preavviso di deviazione indicano un percorso alternativo temporaneo, non l'impossibilità assoluta di raggiungere una destinazione."
+  }
+}

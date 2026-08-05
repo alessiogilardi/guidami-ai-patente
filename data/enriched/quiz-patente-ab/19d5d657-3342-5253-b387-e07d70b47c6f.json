@@ -1,0 +1,28 @@
+{
+  "question_id": 4041,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18746",
+  "text": "Un incidente a bassa velocità non crea problemi di incolumità ai conducenti coinvolti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza stradale",
+      "Comportamento dei conducenti",
+      "Utenti vulnerabili della strada"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "velocità",
+      "incolumità",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "rischio di lesioni in incidenti a bassa velocità",
+      "conseguenze di incidenti stradali anche a bassa velocità"
+    ],
+    "rule_explanation": "Anche a bassa velocità, un incidente può causare lesioni ai conducenti e danni ai veicoli, specialmente se coinvolge utenti vulnerabili."
+  }
+}

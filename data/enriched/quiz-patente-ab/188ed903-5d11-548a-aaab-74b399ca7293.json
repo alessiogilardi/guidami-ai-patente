@@ -1,0 +1,32 @@
+{
+  "question_id": 4328,
+  "topic": "Segnali di indicazione",
+  "number": "21816",
+  "text": "Il segnale raffigurato è posto dietro al veicolo, per indicare che esso appartiene ad un cittadino dell'Unione Europea",
+  "correct_answer": false,
+  "image": "5a226c55de66377f9dae0a004c51f57f.jpeg",
+  "image_description": "Preavviso di confine UE (Francia). Il segnale raffigura il logo dell'Unione Europea con la scritta \"FRANCE\" al centro, indicando l'ingresso nel territorio francese. Il pannello integrativo sottostante specifica che tale confine si trova a 1 km di distanza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali. Il segnale superiore è un cartello quadrato con sfondo blu scuro, circondato da 12 stelle gialle disposte in cerchio, rappresentanti l'Unione Europea. Al centro, in lettere bianche, è riportata la scritta \"FRANCE\". Questo segnale indica l'appartenenza al territorio francese e, implicitamente, l'avvicinamento a un confine di Stato con un paese membro dell'UE. Sotto questo segnale, vi è un pannello rettangolare bianco con la scritta \"1 km\" in nero. Questo pannello integrativo indica la distanza in chilometri dal punto in cui si applica il segnale sovrastante, ovvero il confine. Pertanto, il segnale nel suo complesso preavvisa che il confine con la Francia si trova a 1 km di distanza.",
+    "name": "Preavviso di confine UE (Francia)",
+    "description": "Il segnale raffigura il logo dell'Unione Europea con la scritta \"FRANCE\" al centro, indicando l'ingresso nel territorio francese. Il pannello integrativo sottostante specifica che tale confine si trova a 1 km di distanza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Appartenenza nazionale del veicolo"
+    ],
+    "exact_keywords": [
+      "segnali di preavviso",
+      "confine UE",
+      "appartenenza del veicolo",
+      "nazionalità del conducente"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di preavviso di confine UE",
+      "significato pannello integrativo con logo UE e scritta nazionale",
+      "indicazione appartenenza veicolo a cittadino UE"
+    ],
+    "rule_explanation": "Il segnale di preavviso di confine UE non indica l'appartenenza del veicolo a un cittadino UE, ma segnala l'imminente ingresso nel territorio di uno Stato membro."
+  }
+}

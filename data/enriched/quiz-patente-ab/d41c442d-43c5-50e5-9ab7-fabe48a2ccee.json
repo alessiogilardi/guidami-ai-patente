@@ -1,0 +1,28 @@
+{
+  "question_id": 4558,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23999",
+  "text": "Per il conducente il campo di visibilità può essere ridotto sia da uno dei poggiatesta sia da elementi della carrozzeria della propria autovettura che possono impedire accidentalmente l'avvistamento di altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità del conducente",
+      "Campo visivo del conducente",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "campo di visibilità",
+      "poggiatesta",
+      "elementi della carrozzeria",
+      "avvistamento altri utenti"
+    ],
+    "vector_search_queries": [
+      "limitazione campo visivo conducente per poggiatesta o carrozzeria",
+      "ostacolo visibilità conducente e avvistamento utenti"
+    ],
+    "rule_explanation": "Il campo di visibilità del conducente non deve essere limitato da poggiatesta o elementi della carrozzeria che possano impedire l'avvistamento di altri utenti della strada."
+  }
+}

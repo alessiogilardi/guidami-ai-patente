@@ -1,0 +1,28 @@
+{
+  "question_id": 4611,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24517",
+  "text": "La patente di categoria A può essere conseguita a 20 anni di età, con accesso graduale, da chi è titolare di patente A2 da almeno 2 anni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti per il conseguimento della patente di categoria A",
+      "Accesso graduale alle patenti motociclistiche"
+    ],
+    "exact_keywords": [
+      "patente A",
+      "patente A2",
+      "conseguimento",
+      "età minima",
+      "accesso graduale"
+    ],
+    "vector_search_queries": [
+      "requisiti età patente A con A2",
+      "accesso graduale patente motociclistica A"
+    ],
+    "rule_explanation": "La patente A può essere conseguita a 20 anni, se si possiede la patente A2 da almeno 2 anni, applicando il principio dell'accesso graduale."
+  }
+}

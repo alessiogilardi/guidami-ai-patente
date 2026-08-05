@@ -1,0 +1,27 @@
+{
+  "question_id": 4699,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25265",
+  "text": "L'applicazione del \"ruotino\" (ruota di scorta di ridotte dimensioni), consente di raggiungere la velocità di 120 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso del ruotino di scorta",
+      "Limiti di velocità per ruotino"
+    ],
+    "exact_keywords": [
+      "ruotino di scorta",
+      "ridotte dimensioni",
+      "velocità massima",
+      "limitazioni d'uso"
+    ],
+    "vector_search_queries": [
+      "velocità massima consentita con ruotino di scorta",
+      "limitazioni d'uso del ruotino di scorta"
+    ],
+    "rule_explanation": "Il ruotino di scorta, per le sue ridotte dimensioni, impone limitazioni di velocità e di percorrenza, non potendo superare i 130 km/h."
+  }
+}

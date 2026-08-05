@@ -1,0 +1,27 @@
+{
+  "question_id": 4399,
+  "topic": "Distanza di sicurezza",
+  "number": "22590",
+  "text": "La distrazione del conducente può essere causata dalla accensione di una sigaretta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distrazione alla guida",
+      "Comportamento del conducente"
+    ],
+    "exact_keywords": [
+      "distrazione",
+      "conducente",
+      "accensione sigaretta",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "cause di distrazione alla guida e mantenimento distanza sicurezza",
+      "impatto dell'accensione sigaretta sulla concentrazione del conducente e distanza di sicurezza"
+    ],
+    "rule_explanation": "La distrazione alla guida, anche per azioni apparentemente banali come accendere una sigaretta, impone al conducente di mantenere una distanza di sicurezza adeguata per prevenire incidenti."
+  }
+}

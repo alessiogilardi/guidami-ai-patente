@@ -1,0 +1,29 @@
+{
+  "question_id": 4411,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22683",
+  "text": "Chi guida un veicolo, anche se ad elevate prestazioni, deve guardare nello specchietto retrovisore prima di segnalare l'intenzione di cambiare corsia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione manovra",
+      "Controllo dello specchietto retrovisore",
+      "Cambio di corsia"
+    ],
+    "exact_keywords": [
+      "segnalare l'intenzione",
+      "cambiare corsia",
+      "specchietto retrovisore",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalare cambio di corsia",
+      "controllo specchietto retrovisore prima di manovra",
+      "sicurezza nel cambio di corsia"
+    ],
+    "rule_explanation": "Prima di effettuare una manovra, specialmente un cambio di corsia, il conducente deve sempre segnalare con anticipo la propria intenzione e controllare gli specchietti retrovisori per assicurarsi che la manovra sia sicura."
+  }
+}

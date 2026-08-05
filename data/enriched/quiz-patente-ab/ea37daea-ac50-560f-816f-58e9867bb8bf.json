@@ -1,0 +1,30 @@
+{
+  "question_id": 4438,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22947",
+  "text": "Negli incroci regolati con rotatoria, la circolazione può essere disciplinata in modo che i veicoli in entrata diano la precedenza a quelli già circolanti nell'anello",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rotatorie",
+      "Regolamentazione della circolazione negli incroci",
+      "Precedenza nei nodi stradali"
+    ],
+    "exact_keywords": [
+      "rotatoria",
+      "incrocio",
+      "precedenza",
+      "veicoli in entrata",
+      "veicoli circolanti"
+    ],
+    "vector_search_queries": [
+      "regolamentazione precedenza rotatorie",
+      "obbligo precedenza veicoli in entrata in rotatoria",
+      "disciplinamento circolazione incroci con rotatoria"
+    ],
+    "rule_explanation": "Nelle rotatorie, la circolazione può essere organizzata con regole specifiche, tra cui l'obbligo per i veicoli in entrata di dare la precedenza a quelli già presenti nell'anello."
+  }
+}

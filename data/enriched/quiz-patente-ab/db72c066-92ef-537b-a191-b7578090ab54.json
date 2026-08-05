@@ -1,0 +1,27 @@
+{
+  "question_id": 4612,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24536",
+  "text": "Il titolare della patente di categoria B1 che intende conseguire la patente di categoria B dovrà sostenere solo un esame teorico integrativo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Conseguimento patente di categoria B",
+      "Esame di guida per patenti superiori"
+    ],
+    "exact_keywords": [
+      "patente di categoria B1",
+      "patente di categoria B",
+      "esame teorico integrativo",
+      "esame pratico"
+    ],
+    "vector_search_queries": [
+      "esame patente B da B1",
+      "requisiti per conseguire patente B con patente B1"
+    ],
+    "rule_explanation": "Per conseguire la patente di categoria B partendo dalla B1, è necessario sostenere sia l'esame teorico integrativo sia l'esame pratico di guida."
+  }
+}

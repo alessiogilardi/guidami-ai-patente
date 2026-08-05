@@ -1,0 +1,29 @@
+{
+  "question_id": 4660,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24990",
+  "text": "La responsabilità penale connessa al sinistro stradale sorge qualora esso provochi lesioni gravi a persone",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità penale per lesioni stradali",
+      "Reati colposi di danno",
+      "Elementi costitutivi del reato"
+    ],
+    "exact_keywords": [
+      "responsabilità penale",
+      "lesioni gravi",
+      "sinistro stradale",
+      "colpa"
+    ],
+    "vector_search_queries": [
+      "sorgere responsabilità penale per lesioni gravi in sinistro stradale",
+      "lesioni personali stradali colpose gravi",
+      "elemento soggettivo del reato di lesioni stradali"
+    ],
+    "rule_explanation": "La responsabilità penale per lesioni stradali sorge quando la condotta del conducente, violando norme di prudenza, cagiona colposamente lesioni gravi o gravissime a persone."
+  }
+}

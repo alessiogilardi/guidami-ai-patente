@@ -1,0 +1,32 @@
+{
+  "question_id": 4466,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23220",
+  "text": "Secondo le norme di precedenza nell'incrocio rappresentato in figura il veicolo A deve dare la precedenza al veicolo S",
+  "correct_answer": true,
+  "image": "b0fc2d5d697962b26d4ab29cfe603c28.jpeg",
+  "image_description": "Incrocio a raso con segnali di \"Dare precedenza\". L'incrocio è regolato da segnali di \"Dare precedenza\" posti sulle strade secondarie che immettono nella strada principale. Il veicolo E, provenendo dalla strada secondaria di sinistra, deve dare la precedenza ai veicoli che percorrono la strada principale (in questo caso, il veicolo R). Il veicolo S, provenendo dalla strada secondaria di fronte, deve anch'esso dare la precedenza ai veicoli che percorrono la strada principale (il veicolo A). Il veicolo A, provenendo dalla strada principale, ha la precedenza sui veicoli E e S. Il veicolo R, provenendo dalla strada principale, ha la precedenza sul veicolo E. La precedenza tra A e R non è definita dai segnali visibili, ma dalla regola generale della precedenza a destra o dalla direzione di marcia. In questo caso, A e R si incrociano, ma A è sulla strada principale e R sta svoltando da una strada secondaria. La regola generale della precedenza a destra non si applica direttamente tra A e R in quanto provengono da direzioni diverse e uno è sulla strada principale. Tuttavia, il segnale di \"Dare precedenza\" impone a E e S di cedere il passo ai veicoli che provengono dalla strada principale. Pertanto, A ha la precedenza su E e S, e R ha la precedenza su E. La precedenza tra A e R è determinata dalla loro posizione e direzione. A sta andando dritto, R sta svoltando a destra. In un incrocio, chi va dritto ha generalmente la precedenza su chi svolta, a meno di segnaletica specifica. In questo caso, A ha la precedenza su R. L'ordine di transito corretto è quindi A, R, E, S.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso tra due strade. Sulla strada orizzontale, provenendo da sinistra, vi è il veicolo E, e sulla strada opposta, provenendo da destra, vi è il veicolo R. Sulla strada verticale, provenendo da nord, vi è il veicolo A (blu), e provenendo da sud vi sono due veicoli S (un furgone bianco e un rimorchio). Alle immissioni delle strade secondarie (quelle da cui provengono E e S) sono presenti segnali di \"Dare precedenza\" (triangolo rovesciato con bordo rosso). Il veicolo A sta percorrendo la strada principale e si dirige verso sud. Il veicolo R sta percorrendo la strada principale e si dirige verso ovest (svolta a destra). Il veicolo E sta percorrendo la strada secondaria e si dirige verso est (svolta a destra). I veicoli S stanno percorrendo la strada secondaria e si dirigono verso nord (vanno dritti). Le frecce tratteggiate indicano le traiettorie dei veicoli. Il veicolo A ha la precedenza su E e S. Il veicolo R ha la precedenza su E. La precedenza tra A e R è determinata dal fatto che A procede dritto sulla strada principale mentre R svolta a destra dalla strada principale. Pertanto, A ha la precedenza su R. L'ordine di transito è A, R, E, S.",
+    "name": "Incrocio a raso con segnali di \"Dare precedenza\"",
+    "description": "L'incrocio è regolato da segnali di \"Dare precedenza\" posti sulle strade secondarie che immettono nella strada principale. Il veicolo E, provenendo dalla strada secondaria di sinistra, deve dare la precedenza ai veicoli che percorrono la strada principale (in questo caso, il veicolo R). Il veicolo S, provenendo dalla strada secondaria di fronte, deve anch'esso dare la precedenza ai veicoli che percorrono la strada principale (il veicolo A). Il veicolo A, provenendo dalla strada principale, ha la precedenza sui veicoli E e S. Il veicolo R, provenendo dalla strada principale, ha la precedenza sul veicolo E. La precedenza tra A e R non è definita dai segnali visibili, ma dalla regola generale della precedenza a destra o dalla direzione di marcia. In questo caso, A e R si incrociano, ma A è sulla strada principale e R sta svoltando da una strada secondaria. La regola generale della precedenza a destra non si applica direttamente tra A e R in quanto provengono da direzioni diverse e uno è sulla strada principale. Tuttavia, il segnale di \"Dare precedenza\" impone a E e S di cedere il passo ai veicoli che provengono dalla strada principale. Pertanto, A ha la precedenza su E e S, e R ha la precedenza su E. La precedenza tra A e R è determinata dalla loro posizione e direzione. A sta andando dritto, R sta svoltando a destra. In un incrocio, chi va dritto ha generalmente la precedenza su chi svolta, a meno di segnaletica specifica. In questo caso, A ha la precedenza su R. L'ordine di transito corretto è quindi A, R, E, S."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole di precedenza agli incroci",
+      "Segnaletica stradale di precedenza"
+    ],
+    "exact_keywords": [
+      "dare la precedenza",
+      "incrocio regolato",
+      "veicolo",
+      "strada principale",
+      "strada secondaria"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio segnale dare precedenza",
+      "obbligo di dare precedenza a veicoli su strada principale"
+    ],
+    "rule_explanation": "Negli incroci regolati da segnali di 'Dare precedenza', i veicoli provenienti dalle strade secondarie devono cedere il passo ai veicoli che circolano sulla strada principale."
+  }
+}

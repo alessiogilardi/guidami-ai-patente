@@ -1,0 +1,28 @@
+{
+  "question_id": 4388,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22469",
+  "text": "Sulle strade extraurbane principali, che abbiano particolari caratteristiche costruttive e di sicurezza, è possibile che il limite massimo di velocità sia di 130 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane principali",
+      "Condizioni per l'innalzamento dei limiti di velocità"
+    ],
+    "exact_keywords": [
+      "strade extraurbane principali",
+      "limite massimo di velocità",
+      "130 km/h",
+      "caratteristiche costruttive",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "limite di velocità 130 km/h strade extraurbane principali",
+      "condizioni per l'innalzamento del limite di velocità su strade extraurbane principali"
+    ],
+    "rule_explanation": "Il limite massimo di 130 km/h sulle strade extraurbane principali è applicabile solo se presentano specifiche caratteristiche costruttive, di sicurezza e funzionalità, non genericamente."
+  }
+}

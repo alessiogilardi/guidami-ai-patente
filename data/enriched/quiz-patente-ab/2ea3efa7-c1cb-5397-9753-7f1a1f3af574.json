@@ -1,0 +1,29 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24602",
+  "text": "La revisione della patente di guida può essere disposta quando il titolare circola su un veicolo che non è di sua proprietà e non ha un'autorizzazione scritta del proprietario",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione della patente di guida",
+      "Obblighi del conducente",
+      "Documenti di circolazione"
+    ],
+    "exact_keywords": [
+      "revisione della patente",
+      "titolare della patente",
+      "veicolo non di proprietà",
+      "autorizzazione scritta",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "condizioni per la revisione della patente di guida",
+      "conseguenze della circolazione con veicolo non di proprietà senza autorizzazione"
+    ],
+    "rule_explanation": "La revisione della patente non è legata alla proprietà del veicolo, ma a infrazioni gravi o alla perdita dei requisiti fisici/psichici. La circolazione con veicolo altrui senza autorizzazione è un'infrazione a sé stante."
+  }
+}

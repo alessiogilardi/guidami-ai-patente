@@ -1,0 +1,29 @@
+{
+  "question_id": 4568,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24121",
+  "text": "I movimenti del liquido che si verificano all'interno di un serbatoio vincolato ad un rimorchio durante i cambiamenti di direzione, in frenata e in accelerazione, sono le maggiori cause di instabilità dei complessi di veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Trasporto di liquidi",
+      "Dinamica del veicolo in movimento"
+    ],
+    "exact_keywords": [
+      "liquido nei serbatoi",
+      "instabilità del veicolo",
+      "cambiamenti di direzione",
+      "frenata",
+      "accelerazione"
+    ],
+    "vector_search_queries": [
+      "effetti del movimento dei liquidi nei serbatoi sulla stabilità del veicolo",
+      "instabilità dei complessi veicolari dovuta al carico liquido in movimento"
+    ],
+    "rule_explanation": "I movimenti del liquido nei serbatoi dei rimorchi durante le manovre (sterzo, frenata, accelerazione) possono causare instabilità del complesso veicolare."
+  }
+}

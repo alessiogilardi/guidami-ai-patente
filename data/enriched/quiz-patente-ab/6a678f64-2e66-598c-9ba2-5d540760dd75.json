@@ -1,0 +1,28 @@
+{
+  "question_id": 4031,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18645",
+  "text": "Il triciclo a motore è un autoveicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli a motore",
+      "Definizioni di autoveicolo"
+    ],
+    "exact_keywords": [
+      "triciclo a motore",
+      "autoveicolo",
+      "veicolo a motore",
+      "definizione di autoveicolo"
+    ],
+    "vector_search_queries": [
+      "definizione di autoveicolo nel CdS",
+      "classificazione triciclo a motore",
+      "differenza tra autoveicolo e triciclo a motore"
+    ],
+    "rule_explanation": "Il triciclo a motore, pur essendo un veicolo a motore, non rientra nella definizione di autoveicolo secondo il Codice della Strada."
+  }
+}

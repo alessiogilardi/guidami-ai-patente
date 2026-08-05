@@ -1,0 +1,33 @@
+{
+  "question_id": 4072,
+  "topic": "Segnali di pericolo",
+  "number": "19129",
+  "text": "Il segnale raffigurato preannuncia un passaggio a livello ferroviario senza barriere",
+  "correct_answer": false,
+  "image": "bb981f286218063a29cc9f7bf6f71389.jpeg",
+  "image_description": "Segnale di pericolo - Passaggio di tram. Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato il pittogramma di un tram. Questo segnale indica la presenza di una linea tranviaria che interseca la carreggiata.",
+    "name": "Segnale di pericolo - Passaggio di tram",
+    "description": "Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Passaggi a livello",
+      "Segnaletica stradale"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello",
+      "senza barriere",
+      "linea tranviaria"
+    ],
+    "vector_search_queries": [
+      "differenza segnale pericolo passaggio a livello e linea tranviaria",
+      "segnali di pericolo per passaggi a livello senza barriere",
+      "interpretazione segnale di pericolo linea tranviaria"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante una linea tranviaria preannuncia l'incrocio con una linea tranviaria, non un passaggio a livello ferroviario senza barriere."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4525,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23771",
+  "text": "La sosta è vietata davanti ai cassonetti dei rifiuti urbani",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Parcheggio in prossimità di cassonetti per rifiuti urbani"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "cassonetti di rifiuti urbani",
+      "veicoli in sosta",
+      "ostacolo alla raccolta"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta vicino ai cassonetti dei rifiuti",
+      "ostacolo alla raccolta dei rifiuti da parte dei veicoli in sosta"
+    ],
+    "rule_explanation": "La sosta è vietata in prossimità dei cassonetti dei rifiuti urbani per non ostacolare le operazioni di raccolta e smaltimento."
+  }
+}

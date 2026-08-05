@@ -1,0 +1,28 @@
+{
+  "question_id": 4538,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23868",
+  "text": "Sulle autostrade e strade extraurbane principali è vietata la circolazione di pedoni e animali, anche nelle aree di servizio e nelle aree di sosta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di circolazione per pedoni e animali",
+      "Aree di servizio e sosta su autostrade e strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "autostrade",
+      "strade extraurbane principali",
+      "aree di servizio",
+      "aree di sosta",
+      "divieto di circolazione"
+    ],
+    "vector_search_queries": [
+      "circolazione pedoni e animali su autostrade e strade extraurbane principali",
+      "accesso aree di servizio e sosta per pedoni e animali"
+    ],
+    "rule_explanation": "Il divieto di circolazione per pedoni e animali sulle autostrade e strade extraurbane principali non si estende alle aree di servizio e di sosta."
+  }
+}

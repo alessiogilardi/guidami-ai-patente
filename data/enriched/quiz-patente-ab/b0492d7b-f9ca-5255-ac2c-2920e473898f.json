@@ -1,0 +1,28 @@
+{
+  "question_id": 4035,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18681",
+  "text": "Quando si viaggia in fila con altri veicoli, bisogna mantenere ugualmente la distanza di sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Comportamento in colonna",
+      "Prudenza nella guida"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicoli in colonna",
+      "condotta di guida",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "mantenimento distanza di sicurezza tra veicoli in colonna",
+      "obbligo di prudenza e distanza di sicurezza nella guida in colonna"
+    ],
+    "rule_explanation": "Anche quando si viaggia in colonna, il conducente deve mantenere una distanza di sicurezza adeguata per garantire la propria sicurezza e quella degli altri utenti della strada."
+  }
+}

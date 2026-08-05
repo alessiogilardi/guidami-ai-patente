@@ -1,0 +1,27 @@
+{
+  "question_id": 4042,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18753",
+  "text": "Bisogna usare maggiore prudenza nei confronti delle persone anziane",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Principio di prudenza e diligenza del conducente"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "conducente",
+      "prudenza",
+      "utente debole"
+    ],
+    "vector_search_queries": [
+      "doveri del conducente verso gli utenti deboli della strada",
+      "uso della strada e prudenza nei confronti delle persone anziane"
+    ],
+    "rule_explanation": "Il conducente deve usare particolare prudenza e diligenza nei confronti degli utenti deboli della strada, tra cui le persone anziane, per garantire la sicurezza della circolazione."
+  }
+}

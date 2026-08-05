@@ -1,0 +1,27 @@
+{
+  "question_id": 4562,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24034",
+  "text": "Quando un veicolo guasto, munito di servosterzo, viene trainato, può risultare faticoso manovrare lo sterzo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manegevolezza del veicolo in avaria durante il traino",
+      "Funzionamento del servosterzo"
+    ],
+    "exact_keywords": [
+      "veicolo in avaria",
+      "traino",
+      "servosterzo",
+      "manovrare lo sterzo"
+    ],
+    "vector_search_queries": [
+      "manovrabilità sterzo veicolo trainato con servosterzo guasto",
+      "sforzo sterzo durante il traino di veicolo in avaria con servosterzo"
+    ],
+    "rule_explanation": "Anche con il servosterzo funzionante, il traino di un veicolo in avaria può richiedere uno sforzo maggiore per la manovra dello sterzo a causa dell'assenza di assistenza attiva."
+  }
+}

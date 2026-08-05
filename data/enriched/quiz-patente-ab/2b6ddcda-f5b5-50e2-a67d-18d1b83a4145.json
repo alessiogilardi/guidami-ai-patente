@@ -1,0 +1,28 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18711",
+  "text": "Gettare mozziconi di sigaretta accesi dai finestrini è molto pericoloso soprattutto se sopraggiungono veicoli a due ruote",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento scorretto alla guida",
+      "Doveri del conducente",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "gettare",
+      "finestrini",
+      "pericolo",
+      "veicoli a due ruote"
+    ],
+    "vector_search_queries": [
+      "pericolosità del gettare oggetti dai finestrini in strada",
+      "comportamenti vietati alla guida e sicurezza degli utenti deboli"
+    ],
+    "rule_explanation": "Gettare oggetti dai finestrini, come mozziconi accesi, è pericoloso per tutti gli utenti della strada, in particolare per i motociclisti e ciclisti, e costituisce un comportamento vietato."
+  }
+}

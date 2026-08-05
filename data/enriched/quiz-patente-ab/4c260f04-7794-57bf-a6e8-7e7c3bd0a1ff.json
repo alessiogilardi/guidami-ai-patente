@@ -1,0 +1,28 @@
+{
+  "question_id": 4616,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24584",
+  "text": "La patente di guida viene immediatamente ritirata, durante la circolazione, quando il conducente circola in Italia con patente rilasciata da uno stato estero in cui è residente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida estera",
+      "Residenza in Italia",
+      "Obblighi del conducente"
+    ],
+    "exact_keywords": [
+      "patente di guida estera",
+      "residente",
+      "ritiro patente",
+      "circolazione in Italia"
+    ],
+    "vector_search_queries": [
+      "circolazione con patente estera in Italia per residenti",
+      "conversione patente estera per residenti in Italia"
+    ],
+    "rule_explanation": "La patente di guida rilasciata da uno stato estero non è soggetta a ritiro se il titolare è residente in Italia, ma deve essere convertita entro un anno dall'acquisizione della residenza."
+  }
+}

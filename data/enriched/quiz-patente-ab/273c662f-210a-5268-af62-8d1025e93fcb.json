@@ -1,0 +1,27 @@
+{
+  "question_id": 4563,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24053",
+  "text": "Il numero dei posti di un veicolo è indicato sulla carta di circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dati di omologazione del veicolo",
+      "Carta di circolazione"
+    ],
+    "exact_keywords": [
+      "numero di posti",
+      "carta di circolazione",
+      "veicolo",
+      "omologazione"
+    ],
+    "vector_search_queries": [
+      "numero di posti a sedere indicati sulla carta di circolazione",
+      "dati tecnici del veicolo sulla carta di circolazione"
+    ],
+    "rule_explanation": "Il numero di posti omologati per la circolazione del veicolo è un dato riportato sulla carta di circolazione."
+  }
+}

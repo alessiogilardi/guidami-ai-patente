@@ -1,0 +1,33 @@
+{
+  "question_id": 4365,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22182",
+  "text": "Il segnale raffigurato indica strada sdrucciolevole per ghiaccio, in caso di bassa temperatura",
+  "correct_answer": true,
+  "image": "23a95ffef271c8d6321e665c24380b3a.jpeg",
+  "image_description": "Segnale di pericolo - Strada sdrucciolevole con pannello integrativo (ghiaccio). Il segnale indica che la carreggiata può essere sdrucciolevole a causa della presenza di ghiaccio. Il pannello integrativo specifica che il pericolo è legato alla formazione di ghiaccio, tipicamente in condizioni di bassa temperatura.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata un'automobile in fase di sbandata su una strada sinuosa. Sotto il segnale principale è presente un pannello integrativo rettangolare di colore blu con due simboli di fiocco di neve stilizzati, uno per lato. Il segnale principale indica genericamente una strada sdrucciolevole, mentre il pannello integrativo specifica che la causa della sdrucciolevolezza è il ghiaccio.",
+    "name": "Segnale di pericolo - Strada sdrucciolevole con pannello integrativo (ghiaccio)",
+    "description": "Il segnale indica che la carreggiata può essere sdrucciolevole a causa della presenza di ghiaccio. Il pannello integrativo specifica che il pericolo è legato alla formazione di ghiaccio, tipicamente in condizioni di bassa temperatura."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Pannelli integrativi",
+      "Condizioni di aderenza stradale"
+    ],
+    "exact_keywords": [
+      "strada sdrucciolevole",
+      "ghiaccio",
+      "pannello integrativo",
+      "temperatura"
+    ],
+    "vector_search_queries": [
+      "segnalazione stradale di strada sdrucciolevole per ghiaccio",
+      "pannello integrativo che specifica il pericolo di ghiaccio per bassa temperatura",
+      "interpretazione segnale pericolo strada sdrucciolevole con pannello integrativo ghiaccio"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'strada sdrucciolevole' integrato con pannello 'ghiaccio' indica che la carreggiata può essere scivolosa a causa di ghiaccio, specialmente a basse temperature."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4117,
+  "topic": "Segnali di divieto",
+  "number": "19669",
+  "text": "Il segnale raffigurato consente il transito ai pedoni",
+  "correct_answer": true,
+  "image": "d62b58e41fee347a25ca241f48772c05.jpeg",
+  "image_description": "Segnale di divieto di transito ai velocipedi. Il segnale vieta il transito ai velocipedi (biciclette).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una bicicletta di colore nero. Si tratta di un segnale di divieto.",
+    "name": "Segnale di divieto di transito ai velocipedi",
+    "description": "Il segnale vieta il transito ai velocipedi (biciclette)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "velocipedi",
+      "pedoni",
+      "segnali stradali"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito ai velocipedi e ammissione pedoni",
+      "interpretazione segnale divieto biciclette e pedoni"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito ai velocipedi non vieta il transito ai pedoni, i quali sono soggetti a regole specifiche e non sono inclusi nel divieto per le biciclette."
+  }
+}

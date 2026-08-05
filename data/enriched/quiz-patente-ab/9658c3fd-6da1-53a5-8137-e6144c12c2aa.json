@@ -1,0 +1,33 @@
+{
+  "question_id": 4078,
+  "topic": "Segnali di pericolo",
+  "number": "19191",
+  "text": "Il segnale raffigurato comporta di moderare la velocità",
+  "correct_answer": true,
+  "image": "f765bd82ad5ae48ffb2e5ed4434c16a8.jpeg",
+  "image_description": "Segnale di pericolo - Discesa pericolosa con pendenza specificata. Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata una rampa nera inclinata verso il basso, con la dicitura \"10%\" sovrapposta. Questo indica una discesa con una pendenza specificata.",
+    "name": "Segnale di pericolo - Discesa pericolosa con pendenza specificata",
+    "description": "Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Discesa pericolosa",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "discesa pericolosa",
+      "moderare la velocità",
+      "pendenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di segnali di pericolo",
+      "significato del segnale di discesa pericolosa e necessità di adeguare la velocità",
+      "precauzioni da adottare in caso di discesa con pendenza specificata"
+    ],
+    "rule_explanation": "I segnali di pericolo, come quello di discesa pericolosa, impongono al conducente di moderare la velocità e adottare le opportune misure di sicurezza per affrontare la situazione stradale preannunciata."
+  }
+}

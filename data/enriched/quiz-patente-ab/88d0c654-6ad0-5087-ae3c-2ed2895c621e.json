@@ -1,0 +1,32 @@
+{
+  "question_id": 4158,
+  "topic": "Segnali di obbligo",
+  "number": "20154",
+  "text": "Il segnale raffigurato presegnala il senso unico di circolazione nella svolta a sinistra",
+  "correct_answer": false,
+  "image": "b23552307304d167fe185d4c6fe5181f.jpeg",
+  "image_description": "Obbligo di svolta a sinistra. Il segnale impone l'obbligo di svoltare a sinistra. Non è consentito proseguire diritto o svoltare a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca che indica una svolta a sinistra, con una prima parte orizzontale che poi curva verso l'alto e a sinistra. Questo è un segnale di obbligo.",
+    "name": "Obbligo di svolta a sinistra",
+    "description": "Il segnale impone l'obbligo di svoltare a sinistra. Non è consentito proseguire diritto o svoltare a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Direzione imposta dalla segnaletica"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "direzione imposta",
+      "senso unico",
+      "svolta a sinistra"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di obbligo di direzione",
+      "interpretazione segnale obbligo svolta a sinistra",
+      "differenza tra segnale di obbligo e preavviso di senso unico"
+    ],
+    "rule_explanation": "Il segnale di obbligo di svolta a sinistra impone di seguire quella direzione, non presegnala un senso unico."
+  }
+}

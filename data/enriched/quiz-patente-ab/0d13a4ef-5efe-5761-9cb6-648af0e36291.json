@@ -1,0 +1,29 @@
+{
+  "question_id": 4618,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24616",
+  "text": "La revoca della patente può essere disposta quando il conducente guida un veicolo intestato ad altra persona senza avere apposita dichiarazione scritta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revoca della patente",
+      "Obblighi del conducente",
+      "Documenti di circolazione"
+    ],
+    "exact_keywords": [
+      "revoca della patente",
+      "conducente",
+      "veicolo intestato ad altra persona",
+      "dichiarazione scritta"
+    ],
+    "vector_search_queries": [
+      "condizioni per la revoca della patente di guida",
+      "obbligo di avere dichiarazione scritta per veicolo altrui",
+      "sanzioni per guida veicolo intestato ad altra persona"
+    ],
+    "rule_explanation": "La revoca della patente non è una sanzione diretta per la guida di un veicolo intestato ad altri senza dichiarazione, ma consegue a violazioni più gravi o alla perdita dei requisiti psicofisici."
+  }
+}

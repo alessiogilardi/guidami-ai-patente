@@ -1,0 +1,32 @@
+{
+  "question_id": 4118,
+  "topic": "Segnali di divieto",
+  "number": "19682",
+  "text": "Il segnale raffigurato consente il transito alle biciclette",
+  "correct_answer": true,
+  "image": "cbbad650c84e12d67b5be2d99b7fddff.jpeg",
+  "image_description": "Segnale di divieto di transito ai motocicli. Il segnale vieta il transito ai motocicli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata la silhouette stilizzata di un motociclista in sella a una motocicletta. Questo è il simbolo standard per il divieto di transito ai motocicli. Non ci sono pannelli integrativi né altri elementi visivi che modifichino o completino il significato del segnale. L'immagine rappresenta un singolo segnale stradale isolato.",
+    "name": "Segnale di divieto di transito ai motocicli",
+    "description": "Il segnale vieta il transito ai motocicli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Interpretazione dei segnali di divieto"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "motocicli",
+      "biciclette",
+      "segnali stradali"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito specifici per categoria di veicolo",
+      "interpretazione segnale divieto transito motocicli",
+      "segnaletica stradale divieto motocicli validità"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito ai motocicli non vieta il transito alle biciclette, che sono soggette a regole e segnali specifici."
+  }
+}

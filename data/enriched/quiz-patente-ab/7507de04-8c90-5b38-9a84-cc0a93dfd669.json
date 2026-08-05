@@ -1,0 +1,29 @@
+{
+  "question_id": 4674,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25093",
+  "text": "Il controllo dei freni che producono rumore, oltre ad aumentare la sicurezza può ridurre la rumorosità del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo dei sistemi frenanti",
+      "Riduzione dell'inquinamento acustico",
+      "Manutenzione del veicolo per la sicurezza e l'ambiente"
+    ],
+    "exact_keywords": [
+      "freni rumorosi",
+      "sicurezza stradale",
+      "inquinamento acustico",
+      "manutenzione del veicolo"
+    ],
+    "vector_search_queries": [
+      "manutenzione freni e sicurezza stradale",
+      "rumorosità veicolo e sistemi frenanti",
+      "impatto acustico dei freni del veicolo"
+    ],
+    "rule_explanation": "Un corretto controllo dei freni, oltre a garantire la sicurezza, contribuisce a ridurre l'inquinamento acustico derivante da un malfunzionamento o usura degli stessi."
+  }
+}

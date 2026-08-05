@@ -1,0 +1,28 @@
+{
+  "question_id": 4421,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22785",
+  "text": "Per svoltare a destra bisogna tenersi sulla corsia di sinistra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di svolta a destra",
+      "Posizionamento del veicolo sulla carreggiata",
+      "Regole di circolazione"
+    ],
+    "exact_keywords": [
+      "svolta a destra",
+      "corsia di destra",
+      "posizione del veicolo",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "posizione del veicolo per la svolta a destra",
+      "obblighi di posizionamento sulla carreggiata per svoltare a destra"
+    ],
+    "rule_explanation": "Per svoltare a destra è necessario posizionarsi sulla corsia di destra, salvo diversa segnalazione."
+  }
+}

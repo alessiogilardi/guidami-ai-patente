@@ -1,0 +1,31 @@
+{
+  "question_id": 4426,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22837",
+  "text": "In caso di traffico intenso, i motocicli possono circolare sulle corsie di emergenza",
+  "correct_answer": false,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di circolazione sulle corsie di emergenza",
+      "Utilizzo delle corsie di emergenza"
+    ],
+    "exact_keywords": [
+      "corsia di emergenza",
+      "traffico intenso",
+      "motocicli",
+      "divieto di circolazione"
+    ],
+    "vector_search_queries": [
+      "divieto di circolazione motocicli corsia di emergenza traffico intenso",
+      "uso corsie di emergenza per motocicli in caso di traffico elevato"
+    ],
+    "rule_explanation": "Le corsie di emergenza sono riservate a situazioni di emergenza e non possono essere utilizzate dai motocicli, neanche in caso di traffico intenso."
+  }
+}

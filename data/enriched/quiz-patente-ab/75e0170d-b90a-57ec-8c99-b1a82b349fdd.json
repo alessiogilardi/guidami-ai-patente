@@ -1,0 +1,32 @@
+{
+  "question_id": 4365,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22184",
+  "text": "Il pannello integrativo raffigurato indica la strada da prendere per raggiungere le alpi",
+  "correct_answer": false,
+  "image": "898befc05a5da69814999a6d3fa9fd5a.jpeg",
+  "image_description": "Pannello integrativo di pericolo ghiaccio. Il pannello integrativo indica la possibilità di trovare tratti di strada ghiacciati.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare di colore blu scuro con bordo bianco. Al suo interno sono presenti due pittogrammi bianchi a forma di fiocco di neve, disposti orizzontalmente. Questo pannello è un pannello integrativo di pericolo ghiaccio.",
+    "name": "Pannello integrativo di pericolo ghiaccio",
+    "description": "Il pannello integrativo indica la possibilità di trovare tratti di strada ghiacciati."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "indicazione stradale",
+      "pericolo ghiaccio",
+      "strada ghiacciata"
+    ],
+    "vector_search_queries": [
+      "funzione dei pannelli integrativi di pericolo",
+      "segnaletica stradale per indicare percorsi turistici",
+      "pannelli integrativi che specificano la natura del pericolo"
+    ],
+    "rule_explanation": "I pannelli integrativi forniscono informazioni aggiuntive ai segnali verticali, specificando ad esempio la natura del pericolo o la distanza. Non indicano percorsi turistici."
+  }
+}

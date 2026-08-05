@@ -1,0 +1,32 @@
+{
+  "question_id": 4196,
+  "topic": "Segnali di precedenza",
+  "number": "20550",
+  "text": "Il segnale raffigurato obbliga a dare la precedenza ai veicoli provenienti dal senso contrario",
+  "correct_answer": true,
+  "image": "cae815558b9cac8a475d91fb6e32c36e.jpeg",
+  "image_description": "Segnale di dare precedenza ai veicoli provenienti dal senso opposto. Il segnale impone di dare la precedenza ai veicoli provenienti dal senso opposto. Viene solitamente preposto a preannunciare uno strettoio in cui il transito è consentito a una sola fila di veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro sono presenti due frecce, una rossa rivolta verso l'alto e una nera rivolta verso il basso. La freccia rossa è più spessa e posizionata leggermente più avanti rispetto alla freccia nera. Questo è il segnale di \"dare precedenza ai veicoli provenienti dal senso opposto\".",
+    "name": "Segnale di dare precedenza ai veicoli provenienti dal senso opposto",
+    "description": "Il segnale impone di dare la precedenza ai veicoli provenienti dal senso opposto. Viene solitamente preposto a preannunciare uno strettoio in cui il transito è consentito a una sola fila di veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di dare precedenza",
+      "Precedenza in caso di incroci e strettoie"
+    ],
+    "exact_keywords": [
+      "dare la precedenza",
+      "senso contrario",
+      "strettoia",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "obbligo di dare precedenza ai veicoli provenienti dal senso di marcia opposto",
+      "segnaletica stradale di precedenza in caso di incrocio con veicoli dal senso contrario",
+      "regolamentazione della precedenza in strettoie stradali"
+    ],
+    "rule_explanation": "Il segnale di 'dare precedenza' impone di far passare i veicoli che provengono dalla direzione opposta, specialmente in caso di strettoie che consentono il transito a una sola fila di veicoli."
+  }
+}

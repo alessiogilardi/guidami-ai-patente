@@ -1,0 +1,29 @@
+{
+  "question_id": 4714,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25433",
+  "text": "La catena di trasmissione dei veicoli a motore a due ruote, se non lubrificata, può essere soggetta a rottura",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Componenti meccaniche",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "catena di trasmissione",
+      "lubrificazione",
+      "rottura",
+      "veicoli a motore a due ruote"
+    ],
+    "vector_search_queries": [
+      "manutenzione catena trasmissione moto",
+      "conseguenze mancata lubrificazione catena moto",
+      "rischio rottura catena per scarsa lubrificazione"
+    ],
+    "rule_explanation": "La corretta lubrificazione della catena di trasmissione è essenziale per prevenire l'usura precoce e il rischio di rottura, garantendo la sicurezza del veicolo a due ruote."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4183,
+  "topic": "Segnali di obbligo",
+  "number": "20405",
+  "text": "Il segnale raffigurato è posto in corrispondenza di un percorso riservato ai pedoni e alle biciclette",
+  "correct_answer": false,
+  "image": "9510aebd8012b8dbd573ed72e2ad9d54.jpeg",
+  "image_description": "Fine percorso pedonale e ciclabile. Il segnale indica la fine di un percorso pedonale e ciclabile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del segnale sono presenti le figure stilizzate di un pedone e di una bicicletta, sovrapposte. Una barra rossa diagonale attraversa il segnale da in alto a sinistra a in basso a destra, indicando la fine di un obbligo o di un percorso. Nello specifico, il segnale indica la fine di un percorso riservato sia ai pedoni che ai ciclisti.",
+    "name": "Fine percorso pedonale e ciclabile",
+    "description": "Il segnale indica la fine di un percorso pedonale e ciclabile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di inizio e fine percorso ciclabile/pedonale",
+      "Segnali di prescrizione vietante"
+    ],
+    "exact_keywords": [
+      "percorso pedonale e ciclabile",
+      "segnali di prescrizione",
+      "segnali di fine percorso",
+      "segnali di obbligo"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un percorso pedonale e ciclabile",
+      "interpretazione segnale 'fine percorso pedonale e ciclabile'",
+      "differenza tra segnali di obbligo e segnali di fine prescrizione"
+    ],
+    "rule_explanation": "Il segnale di 'fine percorso pedonale e ciclabile' indica la cessazione dell'obbligo di utilizzare tale percorso, non l'inizio di un percorso riservato."
+  }
+}

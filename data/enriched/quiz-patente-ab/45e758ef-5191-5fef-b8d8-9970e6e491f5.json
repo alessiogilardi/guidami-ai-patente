@@ -1,0 +1,27 @@
+{
+  "question_id": 4499,
+  "topic": "Norme sul sorpasso",
+  "number": "23491",
+  "text": "La manovra di sorpasso può, di norma, effettuarsi a destra sulle autostrade",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Regole di circolazione in autostrada"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "a destra",
+      "autostrade",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "sorpasso a destra in autostrada",
+      "regola generale del sorpasso"
+    ],
+    "rule_explanation": "Il sorpasso si esegue normalmente a sinistra; il sorpasso a destra è vietato in autostrada salvo eccezioni specifiche."
+  }
+}

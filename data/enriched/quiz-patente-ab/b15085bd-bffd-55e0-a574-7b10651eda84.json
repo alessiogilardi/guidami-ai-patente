@@ -1,0 +1,27 @@
+{
+  "question_id": 4400,
+  "topic": "Distanza di sicurezza",
+  "number": "22598",
+  "text": "In un secondo, si percorrono circa m 20 se si viaggia a 150 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Velocità di percorrenza"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "velocità",
+      "condizioni della strada",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "calcolo distanza di sicurezza in base alla velocità",
+      "distanza di arresto del veicolo in relazione alla velocità"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare pericoli, tenendo conto della velocità, delle condizioni della strada, del veicolo e del traffico."
+  }
+}

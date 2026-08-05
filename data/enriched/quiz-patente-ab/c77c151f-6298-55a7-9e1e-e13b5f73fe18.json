@@ -1,0 +1,27 @@
+{
+  "question_id": 4642,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24858",
+  "text": "Bisogna soccorrere un ferito della strada solo se si considera grave l'incidente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di assistenza ai feriti",
+      "Primo soccorso stradale"
+    ],
+    "exact_keywords": [
+      "soccorrere",
+      "ferito",
+      "incidente stradale",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "obbligo di prestare soccorso in caso di incidente stradale",
+      "assistenza ai feriti della strada"
+    ],
+    "rule_explanation": "L'obbligo di prestare soccorso ai feriti sussiste sempre in caso di incidente stradale, indipendentemente dalla gravità presunta dell'evento."
+  }
+}

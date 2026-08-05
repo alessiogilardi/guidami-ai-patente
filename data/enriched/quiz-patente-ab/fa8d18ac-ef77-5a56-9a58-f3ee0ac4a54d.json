@@ -1,0 +1,27 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24763",
+  "text": "Il conducente coinvolto in un incidente stradale ha l'obbligo di fermarsi e di prestare assistenza agli eventuali feriti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di fermarsi in caso di incidente",
+      "Assistenza ai feriti in caso di incidente stradale"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "prestare assistenza",
+      "soccorso",
+      "feriti"
+    ],
+    "vector_search_queries": [
+      "obbligo di fermarsi e prestare soccorso in caso di incidente stradale",
+      "condotta del conducente coinvolto in sinistro con feriti"
+    ],
+    "rule_explanation": "Chiunque sia coinvolto in un incidente stradale è obbligato a fermarsi e a prestare soccorso agli infortunati, senza pregiudizio per l'incolumità e la sicurezza degli altri utenti della strada."
+  }
+}

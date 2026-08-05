@@ -1,0 +1,27 @@
+{
+  "question_id": 4381,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22396",
+  "text": "La velocità deve essere moderata fuori dai centri abitati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di sicurezza della circolazione"
+    ],
+    "exact_keywords": [
+      "velocità moderata",
+      "pericolo o intralcio",
+      "condizioni di marcia",
+      "fuori dai centri abitati"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in base alle condizioni di marcia",
+      "adeguamento della velocità per evitare pericolo o intralcio alla circolazione"
+    ],
+    "rule_explanation": "La velocità va sempre moderata in base alle condizioni di marcia, non solo fuori dai centri abitati, per evitare pericolo o intralcio."
+  }
+}

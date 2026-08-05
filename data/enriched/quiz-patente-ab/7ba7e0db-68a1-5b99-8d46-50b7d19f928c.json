@@ -1,0 +1,32 @@
+{
+  "question_id": 4277,
+  "topic": "Segnali di indicazione",
+  "number": "21329",
+  "text": "Il segnale raffigurato indica la possibilità di ricaricare i telefoni cellulari",
+  "correct_answer": false,
+  "image": "7c465c7946a16a29d37008033e2616f0.jpeg",
+  "image_description": "Preavviso di telefono pubblico. Il segnale indica la presenza di un telefono pubblico nelle vicinanze.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di tipo integrativo, di colore blu con bordo bianco. Al centro, su sfondo bianco, è raffigurato il pittogramma stilizzato di una cornetta telefonica in nero. Sotto il pittogramma, vi è un pannello rettangolare blu, anch'esso con bordo bianco, che solitamente serve per indicare la distanza o altre informazioni aggiuntive, ma in questo caso è vuoto. Il segnale nel suo complesso preannuncia la presenza di un telefono pubblico.",
+    "name": "Preavviso di telefono pubblico",
+    "description": "Il segnale indica la presenza di un telefono pubblico nelle vicinanze."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Servizi a disposizione degli utenti della strada"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "telefono pubblico",
+      "ricaricare telefoni cellulari",
+      "servizi"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione per servizi disponibili",
+      "significato segnale preavviso telefono pubblico",
+      "servizi a disposizione degli utenti stradali"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la presenza di un telefono pubblico, non la possibilità di ricaricare i telefoni cellulari."
+  }
+}

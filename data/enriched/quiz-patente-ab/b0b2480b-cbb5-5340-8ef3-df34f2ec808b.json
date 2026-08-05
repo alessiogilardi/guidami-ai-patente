@@ -1,0 +1,27 @@
+{
+  "question_id": 4610,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24509",
+  "text": "Il titolare di patente di categoria A2 non può condurre motocicli di cilindrata superiore a 150 cm3 e di potenza superiore a 25 kW",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limitazioni di potenza per patenti motociclistiche",
+      "Requisiti di accesso alle patenti per motocicli"
+    ],
+    "exact_keywords": [
+      "patente A2",
+      "motocicli",
+      "cilindrata",
+      "potenza"
+    ],
+    "vector_search_queries": [
+      "limiti di potenza e cilindrata patente A2",
+      "requisiti patente A2 per motocicli"
+    ],
+    "rule_explanation": "La patente A2 abilita alla guida di motocicli con potenza massima di 35 kW e rapporto potenza/peso non superiore a 0,2 kW/kg, senza limitazioni di cilindrata."
+  }
+}

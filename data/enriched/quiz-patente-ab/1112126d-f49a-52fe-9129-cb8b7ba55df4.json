@@ -1,0 +1,29 @@
+{
+  "question_id": 4012,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18440",
+  "text": "La strada è aperta alla circolazione dei pedoni, degli animali e dei veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di strada pubblica",
+      "Accesso alla circolazione",
+      "Uso della strada da parte di pedoni e veicoli"
+    ],
+    "exact_keywords": [
+      "strada",
+      "circolazione",
+      "pedoni",
+      "veicoli",
+      "animali"
+    ],
+    "vector_search_queries": [
+      "definizione di strada e sua destinazione alla circolazione",
+      "accesso alla strada per pedoni, animali e veicoli"
+    ],
+    "rule_explanation": "La strada è un'infrastruttura aperta alla circolazione di pedoni, animali e veicoli, secondo le norme del Codice della Strada."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4413,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22713",
+  "text": "L'uso corretto della strada comporta che si usino in ogni caso i proiettori a luce abbagliante",
+  "correct_answer": false,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di emergenza",
+      "Obbligo di usare i proiettori a luce abbagliante"
+    ],
+    "exact_keywords": [
+      "proiettori a luce abbagliante",
+      "strada",
+      "condizioni di visibilità",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "uso dei proiettori a luce abbagliante in presenza di altri veicoli",
+      "condizioni che vietano l'uso dei fari abbaglianti"
+    ],
+    "rule_explanation": "I proiettori a luce abbagliante sono vietati in presenza di altri veicoli, sia pure a distanza, per non abbagliare i conducenti e creare pericolo."
+  }
+}

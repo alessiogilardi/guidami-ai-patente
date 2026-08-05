@@ -1,0 +1,28 @@
+{
+  "question_id": 4552,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23962",
+  "text": "Il conducente di un'autovettura o di un motociclo deve adattare la propria guida anche ai rischi legati alla presenza di velocipedi nel traffico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Adattamento della velocità alle condizioni di traffico",
+      "Presenza di utenti vulnerabili della strada"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "condizioni di traffico",
+      "velocipedi",
+      "autovettura",
+      "motociclo"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità alla presenza di velocipedi",
+      "rischi legati ai velocipedi nel traffico per autovetture e motocicli"
+    ],
+    "rule_explanation": "Il conducente deve adeguare la velocità alle condizioni di traffico, tenendo conto anche della potenziale presenza di velocipedi e dei rischi connessi."
+  }
+}

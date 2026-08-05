@@ -1,0 +1,30 @@
+{
+  "question_id": 4702,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25286",
+  "text": "Durante la guida è consentito utilizzare il cellulare per comporre sms",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di uso del cellulare alla guida",
+      "Distrazione alla guida",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "cellulare",
+      "dispositivi portatili",
+      "guida",
+      "sanzioni",
+      "comporre messaggi"
+    ],
+    "vector_search_queries": [
+      "divieto uso cellulare durante la guida",
+      "sanzioni per uso di dispositivi portatili alla guida",
+      "uso del cellulare per comporre SMS durante la marcia"
+    ],
+    "rule_explanation": "È vietato l'uso di telefoni cellulari o altri dispositivi portatili durante la guida, inclusa la composizione di messaggi, per garantire la sicurezza stradale."
+  }
+}

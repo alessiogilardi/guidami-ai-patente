@@ -1,0 +1,30 @@
+{
+  "question_id": 4404,
+  "topic": "Distanza di sicurezza",
+  "number": "22629",
+  "text": "Lo spazio totale di arresto aumenta se la strada è coperta di fango",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di arresto",
+      "Condizioni di aderenza stradale"
+    ],
+    "exact_keywords": [
+      "spazio totale di arresto",
+      "distanza di frenatura",
+      "aderenza",
+      "strada bagnata",
+      "fango"
+    ],
+    "vector_search_queries": [
+      "aumento spazio di arresto su strada con fango",
+      "influenza aderenza stradale su spazio di frenatura",
+      "calcolo spazio totale di arresto con fondo scivoloso"
+    ],
+    "rule_explanation": "Lo spazio totale di arresto è la somma dello spazio di reazione e dello spazio di frenatura. L'aumento dello spazio di frenatura, dovuto alla ridotta aderenza su fondi scivolosi come il fango, incrementa lo spazio totale di arresto."
+  }
+}

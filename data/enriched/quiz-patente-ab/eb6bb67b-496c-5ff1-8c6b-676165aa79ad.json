@@ -1,0 +1,28 @@
+{
+  "question_id": 4693,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25213",
+  "text": "Il ribaltamento in curva del veicolo è favorito da un carico posto in basso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Centro di gravità",
+      "Carico del veicolo"
+    ],
+    "exact_keywords": [
+      "ribaltamento",
+      "curva",
+      "carico",
+      "centro di gravità"
+    ],
+    "vector_search_queries": [
+      "effetti del carico sul centro di gravità e stabilità del veicolo",
+      "condizioni che favoriscono il ribaltamento del veicolo in curva"
+    ],
+    "rule_explanation": "Il ribaltamento in curva è favorito da un carico posto in alto, che alza il centro di gravità, non da un carico posto in basso."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4382,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22399",
+  "text": "Salvo diversa segnalazione, il limite massimo di velocità consentito è di 50 km/h nei centri abitati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità nei centri abitati",
+      "Regolamentazione della velocità"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "centri abitati",
+      "salvo diversa segnalazione",
+      "50 km/h"
+    ],
+    "vector_search_queries": [
+      "limite di velocità nei centri abitati",
+      "velocità massima consentita nei centri urbani senza segnalazione specifica"
+    ],
+    "rule_explanation": "Nei centri abitati il limite massimo di velocità è di 50 km/h, a meno che non sia diversamente indicato da apposita segnaletica stradale."
+  }
+}

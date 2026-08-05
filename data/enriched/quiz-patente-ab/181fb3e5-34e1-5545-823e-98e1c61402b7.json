@@ -1,0 +1,32 @@
+{
+  "question_id": 4330,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21828",
+  "text": "Il pannello raffigurato indica il primo di una serie di tornanti (curve a raggio ridotto)",
+  "correct_answer": true,
+  "image": "bacab78176dc95f719635f109766d036.jpeg",
+  "image_description": "Cartello indicatore del numero progressivo di un tornante. Il segnale indica il numero progressivo di un tornante, segnalando che si tratta del primo di una serie.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo nero e sfondo bianco. Al centro, in alto, è presente il numero '1' con un piccolo cerchio in apice (indicante 'primo'). Sotto il numero, in lettere maiuscole, è scritta la parola 'tornante'. Il segnale è un pannello integrativo che fornisce informazioni aggiuntive su un segnale preesistente (non visibile nell'immagine).",
+    "name": "Cartello indicatore del numero progressivo di un tornante",
+    "description": "Il segnale indica il numero progressivo di un tornante, segnalando che si tratta del primo di una serie."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali complementari",
+      "Segnali di pericolo dinamico",
+      "Serie di tornanti"
+    ],
+    "exact_keywords": [
+      "pannello complementare",
+      "tornante",
+      "numero progressivo",
+      "curva a raggio ridotto"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo numero progressivo tornante",
+      "indicazione serie di curve a raggio ridotto"
+    ],
+    "rule_explanation": "Il pannello integrativo che indica il numero progressivo di una curva a raggio ridotto (tornante) segnala che si tratta del primo di una serie di tali curve."
+  }
+}

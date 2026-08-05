@@ -1,0 +1,28 @@
+{
+  "question_id": 4650,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24916",
+  "text": "Se un infortunato della strada ha avuto un trauma della gabbia toracica, bisogna assisterlo fino all'arrivo del soccorso medico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Assistenza a infortunati",
+      "Trauma toracico"
+    ],
+    "exact_keywords": [
+      "infortunato della strada",
+      "trauma della gabbia toracica",
+      "soccorso medico",
+      "assistenza"
+    ],
+    "vector_search_queries": [
+      "assistenza infortunato trauma toracico primo soccorso",
+      "obblighi soccorritore privato infortunato stradale"
+    ],
+    "rule_explanation": "In caso di trauma toracico, è fondamentale prestare assistenza all'infortunato fino all'arrivo dei soccorsi qualificati, mantenendo la calma e monitorando le condizioni vitali."
+  }
+}

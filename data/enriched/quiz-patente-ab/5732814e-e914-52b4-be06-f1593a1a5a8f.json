@@ -1,0 +1,27 @@
+{
+  "question_id": 4536,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23845",
+  "text": "Durante le operazioni di presegnalazione con il segnale mobile di pericolo il conducente deve rendersi visibile indossando il giubbotto o le bretelle retroriflettenti ad alta visibilità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione di veicolo fermo",
+      "Dispositivi di protezione individuale (DPI) per la sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "segnalazione con dispositivo di protezione di emergenza",
+      "giubbotto retroriflettente",
+      "alta visibilità",
+      "veicolo fermo in emergenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di indossare giubbotto retroriflettente per chi opera la presegnalazione di veicolo fermo",
+      "visibilità del conducente durante la segnalazione di emergenza con dispositivo mobile"
+    ],
+    "rule_explanation": "Il conducente che opera la presegnalazione di un veicolo fermo in emergenza deve indossare un giubbotto o bretelle retroriflettenti ad alta visibilità per essere chiaramente visibile."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4592,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24316",
+  "text": "Il simbolo raffigurato è posto su una spia di colore giallo",
+  "correct_answer": false,
+  "image": "44cc0960ffd04ad122e74bb2362c2915.jpeg",
+  "image_description": "Spia cinture di sicurezza. Simbolo che indica l'obbligo di allacciare le cinture di sicurezza. Viene utilizzato come spia luminosa sul cruscotto per segnalare che le cinture non sono allacciate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pittogramma stilizzato di una persona seduta, con una cintura di sicurezza che le attraversa il busto e il bacino. Il pittogramma è nero su sfondo bianco. Questo simbolo è comunemente utilizzato come spia luminosa sui cruscotti dei veicoli per indicare l'obbligo di allacciare le cinture di sicurezza o per segnalare che non sono state allacciate. Non si tratta di un segnale stradale verticale, ma di un simbolo di avvertimento o informazione all'interno del veicolo.",
+    "name": "Spia cinture di sicurezza",
+    "description": "Simbolo che indica l'obbligo di allacciare le cinture di sicurezza. Viene utilizzato come spia luminosa sul cruscotto per segnalare che le cinture non sono allacciate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Spie luminose del cruscotto",
+      "Colori delle spie di segnalazione"
+    ],
+    "exact_keywords": [
+      "spia luminosa",
+      "cruscotto",
+      "simbolo",
+      "cinture di sicurezza"
+    ],
+    "vector_search_queries": [
+      "colori spie cruscotto segnalazione pericolo",
+      "significato spie luminose veicolo cinture sicurezza"
+    ],
+    "rule_explanation": "Le spie di segnalazione rossa indicano un pericolo o un guasto, mentre quelle gialle segnalano una condizione anomala o la necessità di un controllo. La spia delle cinture è solitamente rossa."
+  }
+}

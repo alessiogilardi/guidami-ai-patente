@@ -1,0 +1,31 @@
+{
+  "question_id": 4189,
+  "topic": "Segnali di obbligo",
+  "number": "20455",
+  "text": "Il segnale raffigurato vieta agli autocarri di massa superiore a 3,5 t di proseguire diritto",
+  "correct_answer": true,
+  "image": "38e3612532b4986f50ce99ba5b621ad4.jpeg",
+  "image_description": "Obbligo di svolta a destra per autocarri con massa superiore a 3,5 t. Il segnale impone l'obbligo di svoltare a destra per gli autocarri di massa superiore a 3,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale composto da due parti. La parte superiore è un segnale di obbligo di direzione a destra, rappresentato da un disco blu con bordo bianco e una freccia bianca che indica una svolta a destra. La parte inferiore è un pannello integrativo che raffigura un autocarro stilizzato in nero su sfondo bianco. Il segnale nel suo complesso indica un obbligo specifico per gli autocarri.",
+    "name": "Obbligo di svolta a destra per autocarri con massa superiore a 3,5 t",
+    "description": "Il segnale impone l'obbligo di svoltare a destra per gli autocarri di massa superiore a 3,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico per categoria di veicolo",
+      "Prescrizioni per autocarri"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "autocarri",
+      "massa superiore a 3,5 t",
+      "svolta a destra"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo di svolta per autocarri con massa a pieno carico superiore a 3,5 t",
+      "indicazioni specifiche per autocarri riguardo la direzione di marcia"
+    ],
+    "rule_explanation": "Il segnale di obbligo di svolta a destra per autocarri con massa superiore a 3,5 t impone tale manovra a tale specifica categoria di veicoli, non vieta di proseguire diritto."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4504,
+  "topic": "Norme sul sorpasso",
+  "number": "23596",
+  "text": "Per effettuare il sorpasso bisogna considerare che un veicolo trainante un caravan non può mai essere superato in una discesa a forte pendenza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole sul sorpasso",
+      "Manovre in discesa",
+      "Veicoli speciali"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "discesa a forte pendenza",
+      "veicolo trainante caravan",
+      "divieto di sorpasso"
+    ],
+    "vector_search_queries": [
+      "sorpasso di veicolo con caravan in discesa",
+      "divieto di sorpasso per veicoli speciali in discesa a forte pendenza"
+    ],
+    "rule_explanation": "Il divieto di sorpasso in discesa a forte pendenza si applica a tutti i veicoli, indipendentemente dal fatto che ne stiano o meno trainando un altro."
+  }
+}

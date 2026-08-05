@@ -1,0 +1,28 @@
+{
+  "question_id": 4441,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22976",
+  "text": "Il conducente che si immette nel flusso della circolazione deve dare la precedenza ai veicoli in transito ad eccezione delle biciclette",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Immissione nel flusso di circolazione",
+      "Obbligo di precedenza",
+      "Veicoli in transito"
+    ],
+    "exact_keywords": [
+      "immissione nel flusso di circolazione",
+      "dare la precedenza",
+      "veicoli in transito",
+      "biciclette"
+    ],
+    "vector_search_queries": [
+      "precedenza all'immissione nel flusso di circolazione",
+      "obbligo di precedenza verso biciclette in transito"
+    ],
+    "rule_explanation": "Chi si immette nel flusso di circolazione deve dare la precedenza a tutti i veicoli in transito, comprese le biciclette, salvo diversa segnalazione."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4240,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "20974",
+  "text": "Durante il periodo di accensione della luce rossa i veicoli non devono superare la striscia di arresto",
+  "correct_answer": true,
+  "image": "9ce1d0d0b1d24fbc9d01bd52aef5f7ab.jpeg",
+  "image_description": "Semaforo per veicoli (luce rossa accesa). Il segnale raffigurato è un semaforo per veicoli, installato in posizione verticale. Le luci sono, dall'alto verso il basso: rossa, gialla e verde. Al momento dell'osservazione, la luce rossa è accesa, mentre le altre due sono spente. Questo tipo di segnale regola il flusso dei veicoli in un incrocio o in un punto specifico della strada. L'accensione della luce rossa impone l'obbligo di arresto prima della striscia di arresto, se presente, o comunque prima dell'incrocio stesso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un semaforo per veicoli, installato in posizione verticale. Le tre luci circolari sono disposte una sopra l'altra. La luce superiore è rossa, quella centrale è gialla e quella inferiore è verde. Attualmente, la luce rossa è accesa, mentre le luci gialla e verde sono spente. Il semaforo è un segnale di regolazione del traffico. La luce rossa accesa indica che i veicoli devono fermarsi.",
+    "name": "Semaforo per veicoli (luce rossa accesa)",
+    "description": "Il segnale raffigurato è un semaforo per veicoli, installato in posizione verticale. Le luci sono, dall'alto verso il basso: rossa, gialla e verde. Al momento dell'osservazione, la luce rossa è accesa, mentre le altre due sono spente. Questo tipo di segnale regola il flusso dei veicoli in un incrocio o in un punto specifico della strada. L'accensione della luce rossa impone l'obbligo di arresto prima della striscia di arresto, se presente, o comunque prima dell'incrocio stesso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di arresto al semaforo rosso",
+      "Segnalazioni semaforiche e strisce di arresto"
+    ],
+    "exact_keywords": [
+      "luce rossa",
+      "striscia di arresto",
+      "arresto",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto semaforo rosso",
+      "divieto di superamento striscia di arresto con luce rossa accesa"
+    ],
+    "rule_explanation": "Durante l'accensione della luce rossa del semaforo, i veicoli hanno l'obbligo di fermarsi prima della striscia di arresto o, in sua assenza, prima dell'area di intersezione."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4499,
+  "topic": "Norme sul sorpasso",
+  "number": "23488",
+  "text": "Se il tram o il filobus sono fermi la manovra di sorpasso non può effettuarsi a destra se manca il salvagente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di tram e filobus",
+      "Manovra di sorpasso a destra"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "tram",
+      "filobus",
+      "salvagente",
+      "manovra a destra"
+    ],
+    "vector_search_queries": [
+      "sorpasso tram fermo a destra vietato senza salvagente",
+      "manovra di sorpasso a destra filobus fermo"
+    ],
+    "rule_explanation": "Il sorpasso a destra di tram o filobus fermi è vietato se manca il salvagente o un'area di sicurezza equivalente."
+  }
+}

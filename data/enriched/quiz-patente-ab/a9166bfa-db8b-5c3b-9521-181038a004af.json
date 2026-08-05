@@ -1,0 +1,29 @@
+{
+  "question_id": 4700,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25275",
+  "text": "Percorrendo lunghe e ripide discese è opportuno marciare con il cambio in folle per risparmiare carburante e freni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in discesa",
+      "Uso del freno motore",
+      "Sicurezza nella guida"
+    ],
+    "exact_keywords": [
+      "discesa ripida",
+      "cambio in folle",
+      "freno motore",
+      "rischio di perdita di controllo"
+    ],
+    "vector_search_queries": [
+      "uso del freno motore in discesa ripida",
+      "pericoli di marciare in folle in discesa",
+      "controllo del veicolo in discesa con marcia inserita"
+    ],
+    "rule_explanation": "In lunghe e ripide discese è necessario usare il freno motore inserendo un rapporto adeguato, non marciare in folle, per mantenere il controllo del veicolo e preservare i freni."
+  }
+}

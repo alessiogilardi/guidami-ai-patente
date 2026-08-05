@@ -1,0 +1,31 @@
+{
+  "question_id": 4245,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21020",
+  "text": "Le luci rosse accese lampeggianti in figura obbligano ad arrestarsi all'accesso di un ponte mobile",
+  "correct_answer": true,
+  "image": "af67ba8e23b21e89a984be46b50086f0.jpeg",
+  "image_description": "Passaggio a livello con semibarriere (luci lampeggianti). Il segnale raffigura due luci rosse lampeggianti alternativamente, poste su un palo verticale. Questo tipo di segnalazione è tipica dei passaggi a livello ferroviari senza barriere o con semibarriere, e indica l'imminente arrivo di un treno. Le luci rosse lampeggianti alternativamente impongono l'arresto del veicolo prima della striscia di arresto o, in sua assenza, prima dell'incrocio. Il segnale è integrato da un dispositivo acustico che avvisa dell'arrivo del treno.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale costituito da due luci circolari, una a sinistra e una a destra, montate su un palo verticale. La luce di sinistra è rossa e accesa, mentre la luce di destra è spenta o oscurata. Entrambe le luci hanno un anello nero esterno e un disco interno parzialmente coperto da un arco bianco. La configurazione delle luci rosse lampeggianti alternativamente è caratteristica dei passaggi a livello ferroviari. La presenza di un palo verticale suggerisce un'installazione stradale. Non ci sono altri elementi visivi che possano fornire un contesto aggiuntivo.",
+    "name": "Passaggio a livello con semibarriere (luci lampeggianti)",
+    "description": "Il segnale raffigura due luci rosse lampeggianti alternativamente, poste su un palo verticale. Questo tipo di segnalazione è tipica dei passaggi a livello ferroviari senza barriere o con semibarriere, e indica l'imminente arrivo di un treno. Le luci rosse lampeggianti alternativamente impongono l'arresto del veicolo prima della striscia di arresto o, in sua assenza, prima dell'incrocio. Il segnale è integrato da un dispositivo acustico che avvisa dell'arrivo del treno."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo dinamico",
+      "Obbligo di arresto a segnali semaforici specifici"
+    ],
+    "exact_keywords": [
+      "luci rosse lampeggianti alternativamente",
+      "passaggio a livello",
+      "arrestarsi",
+      "accesso"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto a luci rosse lampeggianti alternativamente al passaggio a livello",
+      "segnalazione semaforica di pericolo con luci rosse lampeggianti"
+    ],
+    "rule_explanation": "Le luci rosse lampeggianti alternativamente impongono l'arresto del veicolo prima della striscia di arresto o dell'incrocio, in presenza di un passaggio a livello o ponte mobile."
+  }
+}

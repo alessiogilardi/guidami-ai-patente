@@ -1,0 +1,29 @@
+{
+  "question_id": 4627,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24742",
+  "text": "In presenza di tratti di strada ghiacciati è opportuno evitare brusche accelerazioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Prevenzione degli incidenti stradali",
+      "Comportamento prudente al volante"
+    ],
+    "exact_keywords": [
+      "strada ghiacciata",
+      "brusche accelerazioni",
+      "manovre errate",
+      "perdita di aderenza"
+    ],
+    "vector_search_queries": [
+      "guida su strada ghiacciata e manovre da evitare",
+      "prevenzione della perdita di aderenza su superfici scivolose",
+      "comportamento di guida sicuro su ghiaccio"
+    ],
+    "rule_explanation": "Su tratti di strada ghiacciati, è fondamentale evitare accelerazioni, frenate o sterzate brusche per prevenire la perdita di aderenza e mantenere il controllo del veicolo."
+  }
+}

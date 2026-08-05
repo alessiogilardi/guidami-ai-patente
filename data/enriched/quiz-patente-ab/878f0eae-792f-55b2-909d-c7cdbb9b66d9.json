@@ -1,0 +1,28 @@
+{
+  "question_id": 4541,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23888",
+  "text": "Sulle autostrade e strade extraurbane principali il conducente può utilizzare la corsia di emergenza se il traffico è intenso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso della corsia di emergenza",
+      "Divieto di circolazione in corsia di emergenza"
+    ],
+    "exact_keywords": [
+      "corsia di emergenza",
+      "autostrade",
+      "strade extraurbane principali",
+      "veicolo in avaria",
+      "soccorso stradale"
+    ],
+    "vector_search_queries": [
+      "divieto di circolazione in corsia di emergenza per traffico intenso",
+      "uso consentito della corsia di emergenza su autostrade e strade extraurbane principali"
+    ],
+    "rule_explanation": "La corsia di emergenza su autostrade e strade extraurbane principali è riservata ai veicoli in avaria o per operazioni di soccorso stradale, non al traffico intenso."
+  }
+}

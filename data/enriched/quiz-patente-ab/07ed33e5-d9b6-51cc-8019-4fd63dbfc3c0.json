@@ -1,0 +1,33 @@
+{
+  "question_id": 4236,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20938",
+  "text": "La striscia bianca laterale discontinua in figura può essere superata solo in caso di emergenza",
+  "correct_answer": false,
+  "image": "26494b439793343fd69530a0ea9f2b39.jpeg",
+  "image_description": "Striscia bianca laterale discontinua. La striscia bianca laterale discontinua delimita la carreggiata e può essere superata per cambiare corsia o per svoltare. Le frecce indicano il senso di marcia consentito.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una carreggiata con segnaletica orizzontale. Nella parte superiore, una strada si biforca, con una corsia che curva a sinistra e un'altra che prosegue dritta. Entrambe le corsie sono delimitate da una striscia bianca laterale discontinua. Sulla corsia che prosegue dritta, sono presenti due frecce nere che indicano il senso di marcia consentito, ovvero dritto. Nelle parti centrali e inferiori dell'immagine, sono rappresentate due sezioni di strada rettilinea con la stessa segnaletica orizzontale: una striscia bianca laterale discontinua che delimita la carreggiata e una striscia bianca continua al centro, che separa le due direzioni di marcia. Sono presenti anche strisce bianche discontinue che delimitano le corsie di marcia. La domanda fa riferimento alla striscia bianca laterale discontinua.",
+    "name": "Striscia bianca laterale discontinua",
+    "description": "La striscia bianca laterale discontinua delimita la carreggiata e può essere superata per cambiare corsia o per svoltare. Le frecce indicano il senso di marcia consentito."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Fascia di pertinenza della carreggiata",
+      "Superamento di strisce discontinue"
+    ],
+    "exact_keywords": [
+      "striscia bianca laterale discontinua",
+      "carreggiata",
+      "cambiare corsia",
+      "svoltare"
+    ],
+    "vector_search_queries": [
+      "superamento striscia bianca laterale discontinua",
+      "significato striscia bianca laterale discontinua delimitante carreggiata",
+      "manovre consentite in presenza di striscia bianca laterale discontinua"
+    ],
+    "rule_explanation": "La striscia bianca laterale discontinua delimita la carreggiata e può essere superata per cambiare corsia o svoltare, non solo in caso di emergenza."
+  }
+}

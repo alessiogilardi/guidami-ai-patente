@@ -1,0 +1,32 @@
+{
+  "question_id": 4357,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22097",
+  "text": "Il segnale raffigurato indica la fine della strada deformata",
+  "correct_answer": true,
+  "image": "f8fb0b9bccaefbad36bb9654b9997d85.jpeg",
+  "image_description": "Segnale di pericolo: strada deformata con pannello integrativo di direzione dritta. Il segnale indica la presenza di una strada deformata (avvallamenti) e il pannello integrativo indica che tale deformazione si trova in corrispondenza del segnale, in direzione dritta.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è presente un pittogramma nero raffigurante una serie di avvallamenti (strada deformata). Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare bianco con un bordo nero. All'interno del pannello integrativo è raffigurata una freccia nera rivolta verso il basso, indicando la direzione dritta.",
+    "name": "Segnale di pericolo: strada deformata con pannello integrativo di direzione dritta",
+    "description": "Il segnale indica la presenza di una strada deformata (avvallamenti) e il pannello integrativo indica che tale deformazione si trova in corrispondenza del segnale, in direzione dritta."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Pannelli integrativi",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "strada deformata",
+      "pannello integrativo",
+      "direzione dritta",
+      "fine della strada deformata"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo strada deformata con pannello integrativo di direzione",
+      "interpretazione pannello integrativo che indica fine strada deformata"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'strada deformata' indica la presenza di avvallamenti. Il pannello integrativo di direzione dritta specifica che la deformazione si trova in corrispondenza del segnale e prosegue dritto."
+  }
+}

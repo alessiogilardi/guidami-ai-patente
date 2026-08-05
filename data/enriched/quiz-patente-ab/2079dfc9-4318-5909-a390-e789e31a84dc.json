@@ -1,0 +1,31 @@
+{
+  "question_id": 4066,
+  "topic": "Segnali di pericolo",
+  "number": "19052",
+  "text": "In presenza del segnale raffigurato è possibile attraversare i binari se sbarrati da cavalletti a strisce bianche e rosse",
+  "correct_answer": false,
+  "image": "accabdc7809596ef95d9e34d4b33d06b.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere o semibarriere. Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un simbolo nero che rappresenta un passaggio a livello con barriere, costituito da due elementi verticali collegati da tre elementi orizzontali. Il segnale è isolato, non inserito in una scena di guida o in sequenza con altri segnali.",
+    "name": "Segnale di passaggio a livello con barriere o semibarriere",
+    "description": "Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo per passaggio a livello",
+      "Obbligo di arresto al passaggio a livello"
+    ],
+    "exact_keywords": [
+      "passaggio a livello con barriere",
+      "segnali di pericolo",
+      "cavalletti",
+      "sbarrati"
+    ],
+    "vector_search_queries": [
+      "pericolo passaggio a livello con barriere chiuse",
+      "obbligo di arresto al passaggio a livello con cavalletti sbarrati"
+    ],
+    "rule_explanation": "Il segnale di pericolo per passaggio a livello con barriere impone di moderare la velocità e fermarsi se le barriere sono chiuse o in procinto di chiudersi."
+  }
+}

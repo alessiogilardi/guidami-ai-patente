@@ -1,0 +1,32 @@
+{
+  "question_id": 4003,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18337",
+  "text": "La strada rappresentata, di norma, ha due carreggiate a doppio senso di circolazione",
+  "correct_answer": false,
+  "image": "6304fecd8e8f669b1a9c7c007bdab67d.jpeg",
+  "image_description": "Strada divisa in carreggiate separate. La strada è divisa in due carreggiate separate da una banchina spartitraffico. Ogni carreggiata è a senso unico e presenta due corsie di marcia, delimitate da strisce bianche continue e discontinue.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada. La strada è chiaramente divisa in due carreggiate separate da una banchina spartitraffico di colore verde scuro. Ogni carreggiata è a senso unico di marcia e presenta due corsie di marcia. Le corsie sono delimitate da segnaletica orizzontale: strisce bianche discontinue che separano le corsie all'interno di ciascuna carreggiata, e strisce bianche continue che delimitano il bordo esterno di ciascuna carreggiata. Non sono presenti segnali verticali o altri veicoli. La struttura suggerisce una strada a scorrimento veloce o autostrada con carreggiate separate.",
+    "name": "Strada divisa in carreggiate separate",
+    "description": "La strada è divisa in due carreggiate separate da una banchina spartitraffico. Ogni carreggiata è a senso unico e presenta due corsie di marcia, delimitate da strisce bianche continue e discontinue."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Strada, carreggiata e corsia di marcia",
+      "Classificazione delle strade e delle loro pertinenze"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "doppio senso di circolazione",
+      "strada extraurbana principale",
+      "strada urbana di scorrimento"
+    ],
+    "vector_search_queries": [
+      "definizione di carreggiata e corsia di marcia",
+      "differenza tra strada a senso unico e doppio senso di circolazione",
+      "caratteristiche delle strade extraurbane principali e urbane di scorrimento"
+    ],
+    "rule_explanation": "Una strada con due carreggiate separate da uno spartitraffico è generalmente a senso unico di marcia per ogni carreggiata, non a doppio senso di circolazione."
+  }
+}

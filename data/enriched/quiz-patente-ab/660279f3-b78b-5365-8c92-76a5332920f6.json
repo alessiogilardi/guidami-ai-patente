@@ -1,0 +1,32 @@
+{
+  "question_id": 4193,
+  "topic": "Segnali di precedenza",
+  "number": "20513",
+  "text": "Il segnale raffigurato preannuncia di rallentare per potersi fermare se ci sono veicoli cui bisogna dare precedenza",
+  "correct_answer": true,
+  "image": "1a690d53490cc07a880e1a228dd9681b.jpeg",
+  "image_description": "Segnale di DARE PRECEDENZA con pannello integrativo di distanza. Il segnale raffigurato è un segnale di DARE PRECEDENZA, posto su una strada che non ha diritto di precedenza. Il pannello integrativo indica la distanza di 320 metri dall'incrocio in cui vige tale prescrizione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di DARE PRECEDENZA, riconoscibile dalla sua forma triangolare con il vertice verso il basso e il bordo rosso su sfondo bianco. Sopra questo segnale, è presente un pannello integrativo rettangolare di colore bianco con la scritta \"320 m\" in nero, che indica una distanza in metri. Questo pannello specifica la distanza dall'incrocio o dal punto in cui si applica la prescrizione del segnale di DARE PRECEDENZA.",
+    "name": "Segnale di DARE PRECEDENZA con pannello integrativo di distanza",
+    "description": "Il segnale raffigurato è un segnale di DARE PRECEDENZA, posto su una strada che non ha diritto di precedenza. Il pannello integrativo indica la distanza di 320 metri dall'incrocio in cui vige tale prescrizione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Obbligo di dare precedenza",
+      "Regolazione della velocità in prossimità di incroci"
+    ],
+    "exact_keywords": [
+      "segnale DARE PRECEDENZA",
+      "pannello integrativo di distanza",
+      "rallentare",
+      "dare precedenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di rallentare e fermarsi al segnale DARE PRECEDENZA",
+      "significato segnale DARE PRECEDENZA con pannello di distanza"
+    ],
+    "rule_explanation": "Il segnale di DARE PRECEDENZA impone di rallentare per poter eventualmente fermarsi e dare precedenza ai veicoli provenienti dalla strada intersecante, specialmente se è presente un pannello di distanza."
+  }
+}

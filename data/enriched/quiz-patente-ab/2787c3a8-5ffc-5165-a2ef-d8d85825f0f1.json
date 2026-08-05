@@ -1,0 +1,31 @@
+{
+  "question_id": 4301,
+  "topic": "Segnali di indicazione",
+  "number": "21571",
+  "text": "Il segnale raffigurato indica il pericolo di mareggiate",
+  "correct_answer": false,
+  "image": "44dba945109a45f9fb4444b61104ef3a.jpeg",
+  "image_description": "Pannello integrativo di nome di località (fiume). Il segnale indica la presenza del fiume Arno. Il pannello integrativo, posto sotto un segnale di pericolo generico (non visibile in questo estratto), fornisce informazioni specifiche sul nome del fiume che si sta per attraversare con un ponte.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli rettangolari sovrapposti. Il pannello superiore ha uno sfondo marrone e raffigura un pittogramma stilizzato di onde blu su sfondo bianco, che rappresenta un corso d'acqua. Il pannello inferiore è bianco con scritte nere che recitano \"fiume Arno\". Questo secondo pannello è un pannello integrativo che fornisce una specificazione al segnale principale (non visibile) a cui è abbinato. In questo caso, specifica che il corso d'acqua rappresentato dal pittogramma è il fiume Arno.",
+    "name": "Pannello integrativo di nome di località (fiume)",
+    "description": "Il segnale indica la presenza del fiume Arno. Il pannello integrativo, posto sotto un segnale di pericolo generico (non visibile in questo estratto), fornisce informazioni specifiche sul nome del fiume che si sta per attraversare con un ponte."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo generici",
+      "Segnali integrativi di pannelli complementari"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "pericolo generico",
+      "nome di località",
+      "fiume"
+    ],
+    "vector_search_queries": [
+      "funzione dei pannelli integrativi con nome di località",
+      "segnali di pericolo generico con pannelli complementari"
+    ],
+    "rule_explanation": "I pannelli integrativi forniscono informazioni aggiuntive ai segnali verticali, specificando la natura del pericolo o la località. Non indicano direttamente eventi atmosferici come le mareggiate."
+  }
+}

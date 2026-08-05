@@ -1,0 +1,30 @@
+{
+  "question_id": 4697,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25241",
+  "text": "E' consigliabile sostituire gli pneumatici dopo alcuni anni, anche se non sono consumati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Stato degli pneumatici"
+    ],
+    "exact_keywords": [
+      "pneumatici",
+      "usura",
+      "invecchiamento",
+      "sicurezza",
+      "manutenzione"
+    ],
+    "vector_search_queries": [
+      "sostituzione pneumatici per invecchiamento e sicurezza",
+      "manutenzione pneumatici veicolo e scadenza temporale",
+      "rischio pneumatici non usurati ma invecchiati"
+    ],
+    "rule_explanation": "È consigliabile sostituire gli pneumatici dopo alcuni anni, indipendentemente dal loro effettivo consumo, a causa del naturale invecchiamento del materiale che ne compromette la sicurezza."
+  }
+}

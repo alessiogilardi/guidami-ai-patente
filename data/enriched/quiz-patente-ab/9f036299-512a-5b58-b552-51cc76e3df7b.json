@@ -1,0 +1,31 @@
+{
+  "question_id": 4105,
+  "topic": "Segnali di divieto",
+  "number": "19513",
+  "text": "Il segnale raffigurato vieta il transito a tutti i veicoli",
+  "correct_answer": true,
+  "image": "fbde6a78154edc681ee7715bad203441.jpeg",
+  "image_description": "Segnale di divieto di transito. Il segnale vieta il transito a tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Questo è il segnale di divieto di transito, che indica che il transito è vietato a tutti i veicoli.",
+    "name": "Segnale di divieto di transito",
+    "description": "Il segnale vieta il transito a tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale di divieto di transito",
+      "veicoli",
+      "transito",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di transito a tutti i veicoli segnale",
+      "interpretazione segnale divieto di transito"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito impone il divieto di immettersi in una strada o in un tratto di strada, salvo eccezioni previste dal regolamento."
+  }
+}

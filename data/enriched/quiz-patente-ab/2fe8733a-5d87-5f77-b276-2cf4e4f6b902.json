@@ -1,0 +1,27 @@
+{
+  "question_id": 4412,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22693",
+  "text": "Il carico deve essere sistemato sugli autoveicoli in modo da non impedire la libertà di movimenti nella guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema di ritenuta del carico",
+      "Sicurezza nella guida"
+    ],
+    "exact_keywords": [
+      "carico",
+      "autoveicoli",
+      "libertà di movimento",
+      "guida"
+    ],
+    "vector_search_queries": [
+      "sistema di fissaggio del carico su autoveicoli",
+      "condizioni di sicurezza per il trasporto del carico"
+    ],
+    "rule_explanation": "Il carico sui veicoli deve essere sistemato in modo da non limitare la visibilità del conducente né ostacolare i suoi movimenti durante la guida."
+  }
+}

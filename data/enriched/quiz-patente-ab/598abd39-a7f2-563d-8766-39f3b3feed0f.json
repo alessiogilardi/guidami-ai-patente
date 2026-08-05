@@ -1,0 +1,27 @@
+{
+  "question_id": 4034,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18676",
+  "text": "Bisogna lasciare libere le gallerie in caso di formazione di code di veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di mantenere libere le intersezioni",
+      "Comportamento in caso di code stradali"
+    ],
+    "exact_keywords": [
+      "galleria",
+      "code di veicoli",
+      "intersezione",
+      "ostruzione"
+    ],
+    "vector_search_queries": [
+      "divieto di ostruire gallerie in caso di code",
+      "obbligo di mantenere libere le gallerie dal traffico in colonna"
+    ],
+    "rule_explanation": "È vietato obstruire le gallerie in caso di code, analogamente a quanto previsto per le intersezioni, per garantire la fluidità del traffico e la sicurezza."
+  }
+}

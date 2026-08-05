@@ -1,0 +1,27 @@
+{
+  "question_id": 4041,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18750",
+  "text": "Il conducente del motociclo può parcheggiare sul marciapiede anche se non vi sono appositi spazi di posteggio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata sui marciapiedi",
+      "Tutela dei pedoni e degli utenti deboli"
+    ],
+    "exact_keywords": [
+      "parcheggiare",
+      "marciapiede",
+      "divieto di sosta",
+      "uso della strada"
+    ],
+    "vector_search_queries": [
+      "divieto di parcheggio sui marciapiedi per motocicli",
+      "regole di sosta per motocicli su marciapiedi vietata"
+    ],
+    "rule_explanation": "Il divieto di sosta sui marciapiedi è assoluto, salvo diversa segnalazione, per garantire la sicurezza e la fruibilità degli spazi pedonali."
+  }
+}

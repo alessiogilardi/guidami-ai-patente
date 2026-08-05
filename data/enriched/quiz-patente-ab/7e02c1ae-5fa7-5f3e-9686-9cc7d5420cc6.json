@@ -1,0 +1,31 @@
+{
+  "question_id": 4310,
+  "topic": "Segnali di indicazione",
+  "number": "21653",
+  "text": "Il segnale raffigurato vieta il transito ai veicoli che superano 3,5 metri di altezza",
+  "correct_answer": false,
+  "image": "d8edc21a26e5bf4c54780acbfda0797b.jpeg",
+  "image_description": "Preavviso di galleria. Il segnale preavvisa l'inizio di una galleria.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo verde. Al centro è presente un pittogramma nero che rappresenta l'ingresso di una galleria, con una porzione di strada che entra nell'oscurità. Il pittogramma è stilizzato e mostra una forma ad arco che simboleggia la volta della galleria e una linea orizzontale che rappresenta il piano stradale. Non ci sono altri elementi visivi o segnali associati. Si tratta di un segnale di indicazione.",
+    "name": "Preavviso di galleria",
+    "description": "Il segnale preavvisa l'inizio di una galleria."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Limitazioni di altezza dei veicoli"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "altezza massima",
+      "preavviso di galleria",
+      "veicoli in transito"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo che indicano limitazioni di altezza per i veicoli",
+      "differenza tra segnale di preavviso galleria e segnale di limitazione di altezza"
+    ],
+    "rule_explanation": "Il segnale di 'Preavviso di galleria' indica un pericolo generico e non una limitazione specifica di altezza per i veicoli. Le limitazioni di altezza sono segnalate da segnali specifici."
+  }
+}

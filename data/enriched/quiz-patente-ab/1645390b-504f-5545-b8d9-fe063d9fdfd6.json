@@ -1,0 +1,27 @@
+{
+  "question_id": 4504,
+  "topic": "Norme sul sorpasso",
+  "number": "23588",
+  "text": "Il conducente del veicolo da sorpassare ha l'obbligo di non gareggiare in velocità con il veicolo sorpassante",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di non gareggiare in velocità",
+      "Comportamento del conducente da sorpassare"
+    ],
+    "exact_keywords": [
+      "veicolo da sorpassare",
+      "non gareggiare",
+      "velocità",
+      "sorpassante"
+    ],
+    "vector_search_queries": [
+      "obbligo del conducente da sorpassare di non aumentare la velocità",
+      "divieto di gareggiare in velocità con il veicolo sorpassante"
+    ],
+    "rule_explanation": "Il conducente del veicolo che sta per essere sorpassato non deve aumentare la velocità e non deve gareggiare con il veicolo sorpassante."
+  }
+}

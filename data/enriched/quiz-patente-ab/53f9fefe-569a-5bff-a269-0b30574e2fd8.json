@@ -1,0 +1,29 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24820",
+  "text": "Il passaggio in velocità su tombini o rotaie del tram a bordo di un veicolo a due ruote può far perdere tenuta di strada e dirigibilità al veicolo, causando sbandamenti o cadute",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti",
+      "Comportamento alla guida",
+      "Veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "perdita di tenuta di strada",
+      "dirigibilità del veicolo",
+      "sbandamenti",
+      "cadute",
+      "veicolo a due ruote"
+    ],
+    "vector_search_queries": [
+      "rischio di perdita di controllo veicolo a due ruote su tombini o rotaie",
+      "pericolo di sbandamento e caduta per motocicli su ostacoli stradali"
+    ],
+    "rule_explanation": "Il superamento di tombini o rotaie a velocità elevata su veicoli a due ruote può compromettere la stabilità e il controllo del mezzo, provocando sbandamenti o cadute."
+  }
+}

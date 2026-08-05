@@ -1,0 +1,29 @@
+{
+  "question_id": 4401,
+  "topic": "Distanza di sicurezza",
+  "number": "22607",
+  "text": "Lo spazio di frenatura si raddoppia se la velocità si raddoppia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Relazione tra velocità e spazio di frenatura"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "velocità",
+      "distanza di sicurezza",
+      "raddoppio"
+    ],
+    "vector_search_queries": [
+      "spazio di frenatura in funzione della velocità",
+      "relazione matematica tra spazio di frenatura e velocità",
+      "aumento spazio di frenatura al raddoppio della velocità"
+    ],
+    "rule_explanation": "Lo spazio di frenatura non raddoppia se la velocità si raddoppia, ma aumenta con il quadrato della velocità."
+  }
+}

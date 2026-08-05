@@ -1,0 +1,27 @@
+{
+  "question_id": 4026,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18586",
+  "text": "Le macchine operatrici possono circolare ad una velocità superiore a 50 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità massima per macchine operatrici",
+      "Circolazione di veicoli speciali"
+    ],
+    "exact_keywords": [
+      "macchine operatrici",
+      "velocità massima",
+      "circolare",
+      "strada"
+    ],
+    "vector_search_queries": [
+      "velocità massima macchine operatrici su strade extraurbane",
+      "limiti di velocità per macchine operatrici in centri abitati"
+    ],
+    "rule_explanation": "Le macchine operatrici non possono superare la velocità di 40 km/h su strade extraurbane e 15 km/h nei centri abitati."
+  }
+}

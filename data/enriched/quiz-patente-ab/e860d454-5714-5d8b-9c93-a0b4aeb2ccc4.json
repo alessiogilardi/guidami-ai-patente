@@ -1,0 +1,30 @@
+{
+  "question_id": 4658,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24981",
+  "text": "Chi è penalmente e civilmente responsabile di un sinistro stradale non può continuare a guidare veicoli della stessa categoria, ma solo di categoria inferiore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità per sinistro stradale",
+      "Sanzioni amministrative accessorie",
+      "Revoca della patente"
+    ],
+    "exact_keywords": [
+      "responsabilità penale",
+      "responsabilità civile",
+      "sospensione della patente",
+      "revoca della patente",
+      "categoria di veicoli"
+    ],
+    "vector_search_queries": [
+      "conseguenze della responsabilità civile e penale per sinistro stradale sulla patente di guida",
+      "sospensione e revoca della patente a seguito di violazioni del CdS",
+      "sanzioni accessorie alla guida dopo un sinistro stradale con responsabilità accertata"
+    ],
+    "rule_explanation": "La responsabilità penale o civile per un sinistro stradale può comportare la sospensione o la revoca della patente, non la limitazione alla guida di veicoli di categoria inferiore."
+  }
+}

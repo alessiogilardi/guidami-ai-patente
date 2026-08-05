@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23537",
+  "text": "Lo spazio necessario per il sorpasso aumenta se il veicolo da sorpassare rallenta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Comportamento dei conducenti durante il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo da sorpassare",
+      "rallentamento",
+      "spazio di manovra"
+    ],
+    "vector_search_queries": [
+      "spazio necessario per il sorpasso in relazione alla velocità del veicolo da superare",
+      "effetti del rallentamento del veicolo da superare sulla manovra di sorpasso"
+    ],
+    "rule_explanation": "Il conducente che effettua il sorpasso deve calcolare lo spazio necessario in base alla velocità del veicolo da superare e alla propria. Un rallentamento del veicolo da superare riduce lo spazio necessario, non lo aumenta."
+  }
+}

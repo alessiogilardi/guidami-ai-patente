@@ -1,0 +1,31 @@
+{
+  "question_id": 4548,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23936",
+  "text": "Il carico deve essere sistemato sul veicolo in modo da segnalarne la sporgenza posteriore con il pannello retroriflettente in figura",
+  "correct_answer": false,
+  "image": "87fd4191b69ff4e1eee00e1990b00418.jpeg",
+  "image_description": "Pannello delineatore di ostacolo (o restringimento). Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bande diagonali alternate di colore rosso e giallo. Questo tipo di segnale è comunemente utilizzato per segnalare ostacoli o restringimenti della carreggiata. Le bande rosse e gialle alternate servono a catturare l'attenzione del conducente e a indicare un pericolo.",
+    "name": "Pannello delineatore di ostacolo (o restringimento)",
+    "description": "Il pannello in figura è un segnale di pericolo che indica un ostacolo o un restringimento della carreggiata. Deve essere posizionato in modo da essere ben visibile dagli utenti della strada e segnalare la presenza di un pericolo imminente."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di carico sporgente",
+      "Norme sul trasporto del carico"
+    ],
+    "exact_keywords": [
+      "carico sporgente",
+      "pannello posteriore",
+      "veicolo fermo",
+      "dispositivo di protezione"
+    ],
+    "vector_search_queries": [
+      "segnalazione sporgenza carico posteriore veicolo",
+      "pannello per carico sporgente posteriore"
+    ],
+    "rule_explanation": "La sporgenza posteriore del carico deve essere segnalata con un pannello a strisce bianche e rosse, non con un pannello di pericolo per ostacolo."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4583,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24226",
+  "text": "Si devono usare gli indicatori di direzione se si intende uscire dalla carreggiata per effettuare una fermata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Uso degli indicatori di direzione",
+      "Manovre di arresto e partenza"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "uscire dalla carreggiata",
+      "fermata",
+      "segnalazione di cambiamento di direzione"
+    ],
+    "vector_search_queries": [
+      "obbligo di usare indicatori di direzione per uscire dalla carreggiata",
+      "segnalazione di fermata con indicatori di direzione",
+      "uso delle luci di svolta per manovre di arresto fuori dalla carreggiata"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare ogni manovra che comporti un cambiamento di direzione o corsia, inclusa l'uscita dalla carreggiata per una fermata."
+  }
+}

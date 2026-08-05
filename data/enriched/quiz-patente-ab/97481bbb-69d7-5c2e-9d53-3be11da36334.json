@@ -1,0 +1,31 @@
+{
+  "question_id": 4319,
+  "topic": "Segnali di indicazione",
+  "number": "21736",
+  "text": "Il segnale raffigurato indica la possibilità di passare a destra o a sinistra di un ostacolo",
+  "correct_answer": false,
+  "image": "cde48dcb8875c390a2c629a904b48266.jpeg",
+  "image_description": "Inizio di corsia o deviazione (preavviso). Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di colore blu con bordi arrotondati. Al suo interno sono presenti due frecce bianche su sfondo blu. La freccia di sinistra è dritta e indica la direzione in avanti. La freccia di destra parte dalla stessa origine della freccia di sinistra, ma curva verso destra, indicando una deviazione o una corsia che si separa. Questo tipo di segnale preannuncia una modifica nella configurazione delle corsie di marcia.",
+    "name": "Inizio di corsia o deviazione (preavviso)",
+    "description": "Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso di deviazione",
+      "Segnali di inizio corsia o deviazione"
+    ],
+    "exact_keywords": [
+      "segnale di inizio corsia",
+      "deviazione",
+      "ostacolo",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di deviazione o inizio corsia",
+      "interpretazione segnale inizio corsia o deviazione"
+    ],
+    "rule_explanation": "Il segnale di preavviso di deviazione indica che una corsia si separa e prosegue verso una direzione, mentre l'altra prosegue in un'altra, non che si può passare a destra o sinistra di un ostacolo."
+  }
+}

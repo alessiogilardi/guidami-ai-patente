@@ -1,0 +1,26 @@
+{
+  "question_id": 4032,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18649",
+  "text": "L'autovettura fa parte degli autoveicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli",
+      "Definizioni stradali"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "autoveicolo",
+      "veicolo a motore"
+    ],
+    "vector_search_queries": [
+      "definizione di autoveicolo nel CdS",
+      "classificazione dei veicoli a motore"
+    ],
+    "rule_explanation": "L'autovettura è un tipo di autoveicolo destinato al trasporto di persone, con un numero di posti a sedere non superiore a nove, compreso quello del conducente."
+  }
+}

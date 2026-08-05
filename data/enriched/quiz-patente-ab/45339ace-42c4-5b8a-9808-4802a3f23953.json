@@ -1,0 +1,28 @@
+{
+  "question_id": 4585,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24254",
+  "text": "L'uso dei proiettori a luce abbagliante è sempre ammesso quando si trasportano feriti o ammalati gravi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori abbaglianti",
+      "Situazioni di emergenza medica",
+      "Regole di circolazione per veicoli di soccorso"
+    ],
+    "exact_keywords": [
+      "proiettori a luce abbagliante",
+      "trasporto feriti",
+      "malati gravi",
+      "divieto di uso"
+    ],
+    "vector_search_queries": [
+      "divieto uso proiettori abbaglianti trasporto feriti gravi",
+      "regole uso luci veicoli soccorso"
+    ],
+    "rule_explanation": "L'uso dei proiettori abbaglianti è vietato in presenza di altri veicoli, anche durante il trasporto di feriti o malati gravi, per non abbagliare gli altri conducenti."
+  }
+}

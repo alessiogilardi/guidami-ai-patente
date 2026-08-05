@@ -1,0 +1,26 @@
+{
+  "question_id": 4433,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22900",
+  "text": "In vicinanza o in corrispondenza degli incroci non è consentito cambiare improvvisamente la direzione di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole di precedenza agli incroci",
+      "Comportamento alla guida in prossimità degli incroci"
+    ],
+    "exact_keywords": [
+      "incroci",
+      "cambiare direzione di marcia",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "divieto di cambiare direzione di marcia negli incroci",
+      "manovre vietate in prossimità degli incroci stradali"
+    ],
+    "rule_explanation": "Negli incroci è vietato cambiare improvvisamente la direzione di marcia per garantire la sicurezza e la fluidità del traffico."
+  }
+}

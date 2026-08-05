@@ -1,0 +1,27 @@
+{
+  "question_id": 4030,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18631",
+  "text": "Tutti i veicoli a motore con tre ruote sono dei motocicli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli",
+      "Definizione di motociclo"
+    ],
+    "exact_keywords": [
+      "veicoli a motore",
+      "motocicli",
+      "tricicli a motore",
+      "quadricicli a motore"
+    ],
+    "vector_search_queries": [
+      "definizione di motociclo e triciclo a motore nel CdS",
+      "classificazione dei veicoli a tre ruote"
+    ],
+    "rule_explanation": "Non tutti i veicoli a motore a tre ruote sono classificati come motocicli; alcuni rientrano nella categoria dei tricicli a motore."
+  }
+}

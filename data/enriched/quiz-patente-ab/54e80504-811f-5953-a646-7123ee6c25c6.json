@@ -1,0 +1,28 @@
+{
+  "question_id": 4689,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25185",
+  "text": "Il coefficiente di aderenza basso limita la velocità alla quale è possibile percorrere una curva in sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Coefficiente di aderenza",
+      "Stabilità del veicolo in curva",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "coefficiente di aderenza",
+      "velocità di percorrenza",
+      "curva",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "influenza del coefficiente di aderenza sulla velocità in curva",
+      "sicurezza di percorrenza delle curve con aderenza ridotta"
+    ],
+    "rule_explanation": "Un basso coefficiente di aderenza tra pneumatici e manto stradale riduce la forza centripeta disponibile, richiedendo una riduzione della velocità per mantenere la stabilità in curva."
+  }
+}

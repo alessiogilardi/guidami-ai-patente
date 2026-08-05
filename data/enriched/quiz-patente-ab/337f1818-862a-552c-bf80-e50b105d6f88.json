@@ -1,0 +1,28 @@
+{
+  "question_id": 4506,
+  "topic": "Norme sul sorpasso",
+  "number": "23606",
+  "text": "Durante un sorpasso in autostrada, la scarsa attenzione posta ai veicoli che seguono può essere causa di incidente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Sicurezza stradale",
+      "Comportamento del conducente"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "attenzione",
+      "veicoli al seguito",
+      "incidente stradale"
+    ],
+    "vector_search_queries": [
+      "manovra di sorpasso e attenzione ai veicoli posteriori",
+      "rischi del sorpasso in autostrada per mancata attenzione"
+    ],
+    "rule_explanation": "Durante il sorpasso, il conducente deve prestare attenzione ai veicoli che seguono per evitare incidenti, specialmente in autostrada."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4529,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23798",
+  "text": "Quando si scende da un veicolo bisogna assicurarsi che ciò non costituisca pericolo o intralcio per gli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza nella discesa dal veicolo",
+      "Prevenzione di pericolo e intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "scendere dal veicolo",
+      "pericolo",
+      "intralcio",
+      "altri utenti della strada"
+    ],
+    "vector_search_queries": [
+      "manovra di discesa dal veicolo e sicurezza stradale",
+      "obblighi del conducente durante la discesa dal veicolo"
+    ],
+    "rule_explanation": "Chiunque scende da un veicolo deve assicurarsi che la manovra non costituisca pericolo o intralcio per gli altri utenti della strada."
+  }
+}

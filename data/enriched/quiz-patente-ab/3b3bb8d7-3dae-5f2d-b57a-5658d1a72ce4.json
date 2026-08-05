@@ -1,0 +1,27 @@
+{
+  "question_id": 4685,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25163",
+  "text": "E' vietato immettersi sulle strade con le ruote del veicolo sporche di fango",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento stradale",
+      "Comportamento del conducente per la sicurezza e la pulizia delle strade"
+    ],
+    "exact_keywords": [
+      "divieto",
+      "strade",
+      "ruote sporche",
+      "fango"
+    ],
+    "vector_search_queries": [
+      "divieto di imbrattare la strada con fango o detriti dalle ruote",
+      "obbligo di mantenere pulite le ruote del veicolo per non inquinare la strada"
+    ],
+    "rule_explanation": "È vietato circolare con ruote che imbrattano la strada di fango o detriti, per prevenire l'inquinamento e garantire la sicurezza stradale."
+  }
+}

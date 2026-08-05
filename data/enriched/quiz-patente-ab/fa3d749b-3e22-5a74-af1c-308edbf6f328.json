@@ -1,0 +1,31 @@
+{
+  "question_id": 4367,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22210",
+  "text": "Il pannello integrativo raffigurato indica di proseguire con le luci accese",
+  "correct_answer": false,
+  "image": "80b32469db27add1894749dfd3f41c8a.jpeg",
+  "image_description": "Preavviso di pericolo specifico (autocarri in lento movimento). Il segnale indica un tratto di strada in pendenza con probabile presenza di autocarri che, a causa della pendenza, potrebbero rallentare o effettuare manovre impreviste. È necessario prestare attenzione e moderare la velocità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma quadrata con bordo nero e fondo bianco. Al suo interno è raffigurata una scena dinamica: un autocarro (camion) si trova su una strada in pendenza discendente, mentre un'autovettura lo segue a breve distanza. L'autocarro è disegnato in modo da suggerire un movimento lento o una difficoltà, evidenziata da una linea a zig-zag tra il retro dell'autocarro e la parte anteriore dell'autovettura, che potrebbe indicare una frenata o un rallentamento improvviso. La pendenza della strada è indicata dalla linea diagonale su cui poggiano i veicoli. Il segnale non è integrato da pannelli aggiuntivi. L'interpretazione visiva suggerisce un pericolo legato alla presenza di autocarri in un tratto di strada con pendenza, che potrebbero causare rallentamenti o situazioni di pericolo per i veicoli che li seguono.",
+    "name": "Preavviso di pericolo specifico (autocarri in lento movimento)",
+    "description": "Il segnale indica un tratto di strada in pendenza con probabile presenza di autocarri che, a causa della pendenza, potrebbero rallentare o effettuare manovre impreviste. È necessario prestare attenzione e moderare la velocità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "preavviso di pericolo",
+      "autocarri in lento movimento",
+      "pendenza"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo autocarri in lento movimento pendenza",
+      "significato pannello pericolo specifico autocarri"
+    ],
+    "rule_explanation": "Il pannello integrativo raffigurato indica la possibile presenza di autocarri in lento movimento in un tratto di strada in pendenza, non l'obbligo di accendere le luci."
+  }
+}

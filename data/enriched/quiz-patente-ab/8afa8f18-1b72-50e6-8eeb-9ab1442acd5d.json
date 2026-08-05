@@ -1,0 +1,27 @@
+{
+  "question_id": 4508,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23625",
+  "text": "E' opportuno che il conducente di un autoveicolo, in sosta sul lato destro di una strada urbana, ricordi al passeggero che apre la portiera di destra di fare attenzione ai pedoni in transito",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di prudenza nella circolazione",
+      "Comportamento alla fermata e in sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "portiera",
+      "pedoni",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "apertura portiera veicolo in sosta e pericolo pedoni",
+      "obbligo conducente di vigilanza manovra apertura portiera"
+    ],
+    "rule_explanation": "Il conducente deve assicurarsi che la manovra di apertura della portiera non costituisca pericolo per i pedoni, avvisando il passeggero."
+  }
+}

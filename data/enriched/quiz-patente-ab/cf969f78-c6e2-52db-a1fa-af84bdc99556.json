@@ -1,0 +1,27 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24345",
+  "text": "Le cinture di sicurezza richiedono un periodico controllo del loro stato di usura e di efficienza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione dei dispositivi di sicurezza",
+      "Cinture di sicurezza e sistemi di ritenuta"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "stato di usura",
+      "efficienza",
+      "controllo periodico"
+    ],
+    "vector_search_queries": [
+      "controllo periodico efficienza cinture di sicurezza",
+      "manutenzione e verifica stato di usura cinture di sicurezza"
+    ],
+    "rule_explanation": "Le cinture di sicurezza devono essere sottoposte a controlli periodici per verificarne lo stato di usura e la generale efficienza, garantendone la funzionalità in caso di necessità."
+  }
+}

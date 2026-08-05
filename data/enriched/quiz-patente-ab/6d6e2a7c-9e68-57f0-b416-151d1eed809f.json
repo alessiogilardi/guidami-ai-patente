@@ -1,0 +1,29 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24410",
+  "text": "Il casco deve essere periodicamente pulito con benzina o acquaragia per sgrassarlo ed eliminare resti di insetti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione dei dispositivi di sicurezza",
+      "Uso corretto del casco protettivo"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "pulizia",
+      "benzina",
+      "acquaragia",
+      "sgrassare"
+    ],
+    "vector_search_queries": [
+      "manutenzione e pulizia del casco protettivo motociclisti",
+      "prodotti idonei alla pulizia del casco integrale",
+      "danneggiamento calotta casco per uso di solventi"
+    ],
+    "rule_explanation": "La pulizia del casco non deve mai avvenire con benzina o acquaragia, in quanto queste sostanze possono danneggiare la calotta esterna, compromettendone la sicurezza."
+  }
+}

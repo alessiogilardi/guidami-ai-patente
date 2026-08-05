@@ -1,0 +1,28 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22509",
+  "text": "Attraversare un passaggio a livello con manovra azzardata per guadagnare tempo, può essere pericoloso solo nelle ore notturne",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo per la circolazione",
+      "Comportamento ai passaggi a livello",
+      "Manovre azzardate"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "manovra azzardata",
+      "pericolo per la circolazione",
+      "regola generale di prudenza"
+    ],
+    "vector_search_queries": [
+      "pericolosità manovre azzardate ai passaggi a livello",
+      "rischio circolazione attraversamento passaggi a livello"
+    ],
+    "rule_explanation": "Attraversare un passaggio a livello con manovre azzardate è pericoloso a prescindere dall'ora, in quanto espone a gravi rischi per l'incolumità propria e altrui."
+  }
+}

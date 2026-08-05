@@ -1,0 +1,28 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24358",
+  "text": "Le persone obese possono utilizzare appositi strumenti che evitano che la cintura di sicurezza stia aderente al corpo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso corretto dei dispositivi di sicurezza",
+      "Obbligo di cintura di sicurezza"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "sistemi di ritenuta",
+      "dispositivi di protezione",
+      "obbligo di allacciamento"
+    ],
+    "vector_search_queries": [
+      "obbligo di allacciare le cinture di sicurezza per tutti i passeggeri",
+      "uso dei sistemi di ritenuta per bambini e adulti",
+      "dispositivi di sicurezza per veicoli a motore"
+    ],
+    "rule_explanation": "L'uso di cinture di sicurezza e sistemi di ritenuta è obbligatorio per tutti i passeggeri, indipendentemente dalla corporatura. Non sono ammessi strumenti che ne impediscano la corretta aderenza al corpo."
+  }
+}

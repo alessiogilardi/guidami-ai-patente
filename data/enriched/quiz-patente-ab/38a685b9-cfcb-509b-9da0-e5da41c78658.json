@@ -1,0 +1,27 @@
+{
+  "question_id": 4584,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24245",
+  "text": "L'uso degli indicatori di direzione non è necessario se si deve parcheggiare il veicolo spostandosi verso il margine destro della carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione delle manovre",
+      "Uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "manovra di parcheggio",
+      "margine destro della carreggiata",
+      "segnalazione acustica"
+    ],
+    "vector_search_queries": [
+      "obbligo di usare indicatori di direzione per parcheggio",
+      "segnalazione manovra di arresto e parcheggio"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare ogni manovra, inclusa quella di parcheggio, anche se non vi è pericolo o intralcio per altri utenti della strada."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4657,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24969",
+  "text": "Chi è civilmente obbligato a risarcire i danni provocati da un sinistro stradale può accordarsi con il danneggiato circa il valore del risarcimento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile per fatto illecito",
+      "Risarcimento del danno da sinistro stradale",
+      "Accordo transattivo tra le parti"
+    ],
+    "exact_keywords": [
+      "responsabile civile",
+      "risarcimento del danno",
+      "sinistro stradale",
+      "accordo tra le parti"
+    ],
+    "vector_search_queries": [
+      "accordo sul risarcimento del danno tra responsabile civile e danneggiato",
+      "quantificazione del danno da sinistro stradale per accordo tra le parti"
+    ],
+    "rule_explanation": "Il soggetto civilmente obbligato per un sinistro può concordare con il danneggiato la quantificazione del risarcimento dovuto, fermo restando il diritto di quest'ultimo a ottenere l'integrale ristoro."
+  }
+}

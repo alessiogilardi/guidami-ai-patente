@@ -1,0 +1,31 @@
+{
+  "question_id": 4304,
+  "topic": "Segnali di indicazione",
+  "number": "21596",
+  "text": "Il segnale raffigurato indica la presenza di giardini pubblici",
+  "correct_answer": false,
+  "image": "ad3996df5149158644a0a874afd15c93.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento di bambini. Il segnale indica la possibile presenza di bambini che attraversano la strada, invitando alla massima prudenza. Non impone obblighi di precedenza specifici, né vieta il transito. Non è un segnale di fermata scuolabus né di giardini pubblici.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo di forma quadrata con angoli arrotondati e sfondo arancione. Al centro del segnale è raffigurato un pittogramma nero stilizzato di due figure umane, un adulto e un bambino, che corrono tenendosi per mano e portano entrambi delle cartelle. Questo pittogramma è tipico dei segnali di pericolo che preannunciano la possibile presenza di bambini sulla carreggiata. Il contesto del quiz suggerisce che si tratti di un segnale di pericolo relativo ai bambini.",
+    "name": "Segnale di pericolo - Attraversamento di bambini",
+    "description": "Il segnale indica la possibile presenza di bambini che attraversano la strada, invitando alla massima prudenza. Non impone obblighi di precedenza specifici, né vieta il transito. Non è un segnale di fermata scuolabus né di giardini pubblici."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "attraversamento bambini",
+      "giardini pubblici",
+      "segnali di indicazione"
+    ],
+    "vector_search_queries": [
+      "significato segnale pericolo attraversamento bambini",
+      "differenza segnale pericolo bambini e giardini pubblici"
+    ],
+    "rule_explanation": "Il segnale raffigurato è un segnale di pericolo che indica la possibile presenza di bambini che attraversano la strada, non la presenza di giardini pubblici."
+  }
+}

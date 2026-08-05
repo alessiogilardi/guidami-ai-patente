@@ -1,0 +1,31 @@
+{
+  "question_id": 4287,
+  "topic": "Segnali di indicazione",
+  "number": "21433",
+  "text": "Il segnale raffigurato indica l'ingresso di un ospedale",
+  "correct_answer": true,
+  "image": "d91415c6609877cdc30749d99d46c248.jpeg",
+  "image_description": "Preavviso di ospedale. Il segnale indica la direzione da seguire per raggiungere un ospedale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale di preavviso. Il segnale ha uno sfondo bianco con un bordo nero. Nella parte superiore, su uno sfondo blu scuro, è presente un pittogramma raffigurante un letto ospedaliero bianco e una croce rossa. Sotto il pittogramma, una freccia nera indica la direzione sinistra.",
+    "name": "Preavviso di ospedale",
+    "description": "Il segnale indica la direzione da seguire per raggiungere un ospedale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Servizi di interesse pubblico"
+    ],
+    "exact_keywords": [
+      "preavviso di ospedale",
+      "segnali di indicazione",
+      "strada",
+      "ospedale"
+    ],
+    "vector_search_queries": [
+      "segnali stradali che indicano la presenza di ospedali",
+      "preavviso di ospedale con indicazione di direzione"
+    ],
+    "rule_explanation": "Il segnale di preavviso di ospedale indica la direzione da seguire per raggiungere una struttura ospedaliera."
+  }
+}

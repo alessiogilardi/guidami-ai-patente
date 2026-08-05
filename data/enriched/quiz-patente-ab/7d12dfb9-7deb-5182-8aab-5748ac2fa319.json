@@ -1,0 +1,27 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23630",
+  "text": "Prima di iniziare a guidare un motociclo è opportuno regolare gli specchi secondo la propria statura",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione dei dispositivi di guida",
+      "Visibilità e sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "motociclo",
+      "specchi retrovisori",
+      "regolazione",
+      "posizione di guida"
+    ],
+    "vector_search_queries": [
+      "regolazione specchietti retrovisori motociclo prima di partire",
+      "importanza di regolare gli specchi del motociclo in base alla statura"
+    ],
+    "rule_explanation": "Prima di mettersi in marcia, è fondamentale regolare gli specchi retrovisori del motociclo in base alla statura del conducente per garantire la massima visibilità e sicurezza."
+  }
+}

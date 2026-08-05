@@ -1,0 +1,27 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23032",
+  "text": "Il controllo dello specchio retrovisore laterale sinistro deve essere integrato con un rapido controllo visivo laterale diretto, prima di iniziare un sorpasso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo visivo prima del sorpasso",
+      "Obbligo di verifica della sicurezza della manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore laterale",
+      "controllo visivo laterale diretto",
+      "sorpasso",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "verifica sicurezza sorpasso con specchietto e controllo visivo laterale",
+      "obbligo controllo visivo diretto prima di cambiare corsia per sorpasso"
+    ],
+    "rule_explanation": "Prima di iniziare un sorpasso, il conducente deve integrare il controllo dello specchio retrovisore con un rapido controllo visivo laterale diretto per accertare la sicurezza della manovra."
+  }
+}

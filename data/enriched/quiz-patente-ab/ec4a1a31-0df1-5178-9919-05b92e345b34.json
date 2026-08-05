@@ -1,0 +1,30 @@
+{
+  "question_id": 4406,
+  "topic": "Distanza di sicurezza",
+  "number": "22645",
+  "text": "La distanza di sicurezza dipende dalle condizioni di salute del conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condizioni di marcia",
+      "Fattori che influenzano la distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni ambientali",
+      "velocità",
+      "visibilità",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "adeguamento della distanza di sicurezza alle condizioni di marcia",
+      "fattori che influenzano la distanza di sicurezza tra veicoli",
+      "obblighi del conducente riguardo la distanza di sicurezza"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere adeguata alle condizioni di marcia, includendo quelle del veicolo, della strada, del traffico, atmosferiche e del conducente, per garantire la sicurezza."
+  }
+}

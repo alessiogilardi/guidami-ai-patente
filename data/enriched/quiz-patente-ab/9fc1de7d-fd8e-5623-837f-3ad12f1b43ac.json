@@ -1,0 +1,27 @@
+{
+  "question_id": 4023,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18553",
+  "text": "I ciclomotori possono circolare alla velocità di 60 km/h fuori dai centri urbani",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per ciclomotori",
+      "Circolazione extraurbana"
+    ],
+    "exact_keywords": [
+      "ciclomotori",
+      "velocità massima",
+      "fuori dai centri abitati",
+      "strade extraurbane"
+    ],
+    "vector_search_queries": [
+      "limite di velocità ciclomotori fuori dai centri urbani",
+      "velocità massima consentita per ciclomotori su strade extraurbane"
+    ],
+    "rule_explanation": "I ciclomotori non possono superare i 45 km/h, sia nei centri urbani che fuori."
+  }
+}

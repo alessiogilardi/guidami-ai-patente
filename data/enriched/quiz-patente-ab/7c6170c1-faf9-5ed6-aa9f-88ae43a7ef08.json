@@ -1,0 +1,27 @@
+{
+  "question_id": 4680,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25135",
+  "text": "Per diminuire l'inquinamento dell'aria provocato dai veicoli, bisogna dare un breve colpo di acceleratore, prima di abbassare la frizione per cambiare marcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Riduzione delle emissioni inquinanti",
+      "Tecniche di guida ecologica"
+    ],
+    "exact_keywords": [
+      "inquinamento atmosferico",
+      "emissioni inquinanti",
+      "cambio marcia",
+      "colpo di acceleratore"
+    ],
+    "vector_search_queries": [
+      "guida ecologica per ridurre emissioni inquinanti",
+      "tecniche di guida per limitare l'inquinamento atmosferico da veicoli"
+    ],
+    "rule_explanation": "Per ridurre l'inquinamento atmosferico, la tecnica corretta non prevede un colpo di acceleratore prima di abbassare la frizione, ma una guida fluida e a basso regime."
+  }
+}

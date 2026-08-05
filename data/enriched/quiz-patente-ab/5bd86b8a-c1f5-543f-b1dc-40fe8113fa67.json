@@ -1,0 +1,32 @@
+{
+  "question_id": 4216,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20763",
+  "text": "Rispetto al veicolo che procede nel senso della freccia, la striscia continua centrale in figura si trova sul tratto in salita di un dosso",
+  "correct_answer": true,
+  "image": "2a8cb20b2ed164c9a0b9677bc5fd1320.jpeg",
+  "image_description": "Segnaletica orizzontale: striscia bianca continua e tratteggiata. La striscia bianca continua al centro della carreggiata, se presente, indica la separazione delle corsie in opposti sensi di marcia e non può essere superata. In questo caso, la striscia è tratteggiata, indicando che la manovra di sorpasso è consentita. Il veicolo si trova nella corsia di destra, con una freccia che indica la direzione di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada con due corsie per senso di marcia, separate da una linea bianca. La linea al centro della carreggiata è tratteggiata, indicando che è consentito il sorpasso. Un veicolo nero si trova nella corsia di destra, con una freccia tratteggiata che indica la sua direzione di marcia. Non sono presenti segnali verticali o altre indicazioni stradali.",
+    "name": "Segnaletica orizzontale: striscia bianca continua e tratteggiata",
+    "description": "La striscia bianca continua al centro della carreggiata, se presente, indica la separazione delle corsie in opposti sensi di marcia e non può essere superata. In questo caso, la striscia è tratteggiata, indicando che la manovra di sorpasso è consentita. Il veicolo si trova nella corsia di destra, con una freccia che indica la direzione di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Divisione delle corsie di marcia",
+      "Sorpasso vietato"
+    ],
+    "exact_keywords": [
+      "striscia continua",
+      "dosso",
+      "sorpasso",
+      "senso di marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso su dosso con striscia continua",
+      "segnaletica orizzontale striscia continua divisoria di corsie opposte"
+    ],
+    "rule_explanation": "La striscia bianca continua al centro della carreggiata, posta sul tratto in salita di un dosso, vieta il sorpasso in quanto delimita sensi di marcia opposti e non può essere superata."
+  }
+}

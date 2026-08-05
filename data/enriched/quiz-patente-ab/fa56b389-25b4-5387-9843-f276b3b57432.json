@@ -1,0 +1,28 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31060",
+  "text": "Con 0,5 grammi per litro di alcool nel sangue si riesce a concentrarsi meglio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Alterazione delle capacità psicofisiche dovuta all'alcool",
+      "Guida in stato di ebbrezza"
+    ],
+    "exact_keywords": [
+      "alcool nel sangue",
+      "alterazione delle capacità",
+      "concentrazione",
+      "pericolosità"
+    ],
+    "vector_search_queries": [
+      "effetti dell'alcool sulla capacità di concentrazione alla guida",
+      "limiti di alcool nel sangue per la guida sicura",
+      "conducente in stato di ebbrezza e alterazione delle capacità"
+    ],
+    "rule_explanation": "L'assunzione di alcool, anche in quantità moderate come 0,5 g/l, altera le capacità psicofisiche del conducente, riducendo la concentrazione e aumentando la pericolosità della guida."
+  }
+}

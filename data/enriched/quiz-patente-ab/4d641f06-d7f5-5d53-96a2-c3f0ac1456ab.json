@@ -1,0 +1,29 @@
+{
+  "question_id": 4634,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24803",
+  "text": "In caso di intenso traffico con incolonnamento di veicoli, prima di aprire le portiere per scendere dal proprio veicolo in sosta, si deve sempre considerare la possibilità che sopraggiunga un veicolo a motore a due ruote che sta sorpassando a destra i veicoli fermi in coda",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento in caso di sosta e manovre di apertura portiere",
+      "Prevenzione incidenti con veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "aprire le portiere",
+      "veicolo in sosta",
+      "sorpasso a destra",
+      "veicolo a motore a due ruote",
+      "incolonnamento"
+    ],
+    "vector_search_queries": [
+      "apertura portiere veicolo in sosta in incolonnamento traffico",
+      "sorpasso a destra motocicli in coda",
+      "precauzioni apertura portiere per evitare impatto con motocicli in sorpasso"
+    ],
+    "rule_explanation": "Prima di aprire le portiere, il conducente deve assicurarsi che ciò non costituisca pericolo, considerando anche il possibile sorpasso a destra da parte di veicoli a due ruote in caso di incolonnamento."
+  }
+}

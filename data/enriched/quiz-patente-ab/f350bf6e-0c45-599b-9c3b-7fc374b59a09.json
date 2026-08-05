@@ -1,0 +1,28 @@
+{
+  "question_id": 4651,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24920",
+  "text": "Se un infortunato della strada ha riportato fratture agli arti non bisogna muovere gli arti fratturati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di fratture",
+      "Gestione degli infortunati stradali",
+      "Immobilizzazione degli arti fratturati"
+    ],
+    "exact_keywords": [
+      "infortunato della strada",
+      "fratture agli arti",
+      "non muovere",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "primo soccorso fratture arti infortunato strada",
+      "immobilizzazione arti fratturati in caso di incidente stradale"
+    ],
+    "rule_explanation": "In caso di fratture agli arti di un infortunato della strada, è fondamentale non muovere gli arti interessati per evitare ulteriori danni e complicazioni."
+  }
+}

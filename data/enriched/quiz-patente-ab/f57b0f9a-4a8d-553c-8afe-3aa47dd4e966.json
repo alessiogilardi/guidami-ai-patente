@@ -1,0 +1,29 @@
+{
+  "question_id": 4710,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25383",
+  "text": "In un veicolo a motore, gli ammortizzatori possono essere sostituiti con una sospensione rinforzata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Componenti del veicolo"
+    ],
+    "exact_keywords": [
+      "ammortizzatori",
+      "sospensione rinforzata",
+      "alterazione",
+      "dispositivi di sospensione"
+    ],
+    "vector_search_queries": [
+      "sostituzione ammortizzatori con sospensioni rinforzate vietata",
+      "alterazione dispositivi di sospensione veicolo a motore",
+      "omologazione modifiche sospensioni veicolo"
+    ],
+    "rule_explanation": "La sostituzione degli ammortizzatori con una sospensione rinforzata è vietata se non omologata, in quanto altera le caratteristiche di stabilità e tenuta di strada del veicolo."
+  }
+}

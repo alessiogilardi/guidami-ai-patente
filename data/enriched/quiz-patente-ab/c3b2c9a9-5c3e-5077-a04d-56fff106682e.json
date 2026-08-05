@@ -1,0 +1,27 @@
+{
+  "question_id": 4679,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25126",
+  "text": "Guidando un veicolo che emette troppi gas di scarico inquinanti si può essere puniti con una sanzione amministrativa e il ritiro della carta di circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo delle emissioni inquinanti",
+      "Sanzioni per veicoli inquinanti"
+    ],
+    "exact_keywords": [
+      "gas di scarico",
+      "sanzione amministrativa",
+      "ritiro della carta di circolazione",
+      "veicolo inquinante"
+    ],
+    "vector_search_queries": [
+      "sanzioni per veicoli con emissioni inquinanti eccessive",
+      "conseguenze del superamento dei limiti di emissione dei gas di scarico"
+    ],
+    "rule_explanation": "Un veicolo che emette gas di scarico inquinanti oltre i limiti può essere soggetto a sanzione amministrativa pecuniaria e al ritiro del documento di circolazione."
+  }
+}

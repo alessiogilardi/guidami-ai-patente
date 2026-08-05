@@ -1,0 +1,27 @@
+{
+  "question_id": 4512,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23661",
+  "text": "Fuori dei centri abitati, il conducente, in caso di fermata, deve collocare il veicolo fuori della carreggiata, ma non sulle piste ciclabili",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo fuori dai centri abitati",
+      "Posizionamento del veicolo in sosta o fermata"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "fuori dei centri abitati",
+      "carreggiata",
+      "piste ciclabili"
+    ],
+    "vector_search_queries": [
+      "collocazione veicolo in fermata fuori dai centri abitati",
+      "divieto di fermata sulle piste ciclabili fuori dai centri abitati"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, la fermata deve avvenire fuori dalla carreggiata, ma non sulle piste ciclabili, ove presenti."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4586,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24256",
+  "text": "E' consentito l'uso intermittente dei proiettori di profondità (a luce abbagliante), sia di giorno che di notte, per dare avvertimenti utili al fine di evitare incidenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di profondità",
+      "Segnalazioni acustiche e visive per la sicurezza"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "luce abbagliante",
+      "uso intermittente",
+      "avvertimenti utili",
+      "evitare incidenti"
+    ],
+    "vector_search_queries": [
+      "uso intermittente proiettori di profondità per avvertimenti di pericolo",
+      "segnalazioni visive con abbaglianti per prevenire incidenti"
+    ],
+    "rule_explanation": "È permesso usare i proiettori di profondità (abbaglianti) in modo intermittente, sia di giorno che di notte, per segnalare la propria presenza o per avvertire di un pericolo al fine di prevenire incidenti."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24755",
+  "text": "In caso di nebbia fitta è opportuno accendere la luce posteriore per nebbia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Utilizzo delle luci in condizioni di scarsa visibilità",
+      "Prevenzione degli incidenti stradali",
+      "Segnalazione del veicolo"
+    ],
+    "exact_keywords": [
+      "nebbia fitta",
+      "luce posteriore per nebbia",
+      "visibilità",
+      "condizioni atmosferiche"
+    ],
+    "vector_search_queries": [
+      "uso luce posteriore nebbia fitta",
+      "segnalazione veicolo in condizioni di scarsa visibilità per nebbia",
+      "obbligo luci posteriori per nebbia"
+    ],
+    "rule_explanation": "In caso di nebbia fitta, è obbligatorio accendere la luce posteriore per nebbia per segnalare la propria presenza e aumentare la visibilità del veicolo agli altri utenti della strada."
+  }
+}

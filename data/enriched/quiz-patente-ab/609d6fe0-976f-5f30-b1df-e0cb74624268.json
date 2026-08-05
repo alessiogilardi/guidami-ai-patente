@@ -1,0 +1,31 @@
+{
+  "question_id": 4131,
+  "topic": "Segnali di divieto",
+  "number": "19821",
+  "text": "Il segnale raffigurato vige anche di notte",
+  "correct_answer": true,
+  "image": "ccc2a316fd9a2a3cb2ed8e5c89134371.jpeg",
+  "image_description": "Divieto di transito per veicoli di lunghezza superiore a 10 metri. Il segnale vieta il transito ai veicoli di lunghezza superiore a 10 metri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il profilo di un autocarro in nero. Sotto l'autocarro, una freccia bidirezionale indica la lunghezza di 10 metri. Questo segnale indica un divieto basato sulla lunghezza del veicolo.",
+    "name": "Divieto di transito per veicoli di lunghezza superiore a 10 metri",
+    "description": "Il segnale vieta il transito ai veicoli di lunghezza superiore a 10 metri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto d'accesso",
+      "Validità temporale dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "lunghezza superiore a 10 metri",
+      "transito vietato",
+      "validità permanente"
+    ],
+    "vector_search_queries": [
+      "validità dei segnali di divieto di transito per lunghezza veicolo",
+      "efficacia dei segnali stradali di divieto durante le ore notturne"
+    ],
+    "rule_explanation": "I segnali di divieto, salvo diversa indicazione, hanno validità permanente e si applicano sia di giorno che di notte."
+  }
+}

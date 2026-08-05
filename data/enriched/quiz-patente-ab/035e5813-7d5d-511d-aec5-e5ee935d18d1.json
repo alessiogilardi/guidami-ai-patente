@@ -1,0 +1,33 @@
+{
+  "question_id": 4514,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23684",
+  "text": "La fermata è vietata in prossimità dei segnali stradali, anche se il veicolo non ne occulta la vista",
+  "correct_answer": false,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di fermata",
+      "Segnaletica stradale di divieto",
+      "Eccezioni al divieto di fermata"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "segnali stradali",
+      "divieto",
+      "occultare la vista"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata in prossimità di segnali stradali che occulta la vista",
+      "differenza tra fermata e sosta vietata in prossimità dei segnali stradali"
+    ],
+    "rule_explanation": "La fermata è vietata in corrispondenza o in prossimità dei segnali stradali solo se il veicolo ne occulta la vista, a differenza della sosta che è sempre vietata in tali casi."
+  }
+}

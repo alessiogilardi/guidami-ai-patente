@@ -1,0 +1,32 @@
+{
+  "question_id": 4315,
+  "topic": "Segnali di indicazione",
+  "number": "21698",
+  "text": "Il segnale raffigurato indica che la sosta è consentita solo per 3 ore",
+  "correct_answer": false,
+  "image": "f18ba4966ff5723564b62ec08c5c30bf.jpeg",
+  "image_description": "Piazzola di sosta. Il segnale indica una piazzola di sosta a lato della carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale è presente un pittogramma bianco che rappresenta una piazzola di sosta a lato della carreggiata. La piazzola è indicata da una linea tratteggiata che si stacca dalla linea continua della carreggiata e si allarga verso destra, formando uno spazio di sosta.",
+    "name": "Piazzola di sosta",
+    "description": "Il segnale indica una piazzola di sosta a lato della carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di indicazione di piazzola di sosta",
+      "Regolamentazione della sosta"
+    ],
+    "exact_keywords": [
+      "piazzola di sosta",
+      "sosta vietata",
+      "sosta consentita",
+      "segnali di indicazione"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano aree di sosta vietata o consentita",
+      "regolamentazione della durata della sosta nei piazzali",
+      "segnali di indicazione stradale per aree di sosta"
+    ],
+    "rule_explanation": "Il segnale di piazzola di sosta indica un'area attrezzata per la sosta, non ne limita la durata. La durata della sosta è regolata da altri segnali o norme specifiche."
+  }
+}

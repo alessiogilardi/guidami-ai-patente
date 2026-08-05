@@ -1,0 +1,27 @@
+{
+  "question_id": 4578,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24194",
+  "text": "La spia di accensione delle luci abbaglianti è di colore rosso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori luminosi del veicolo",
+      "Segnalazioni visive di pericolo"
+    ],
+    "exact_keywords": [
+      "spia luminosa",
+      "luci abbaglianti",
+      "colore",
+      "dispositivi di illuminazione"
+    ],
+    "vector_search_queries": [
+      "colore spia luci abbaglianti",
+      "significato spie luminose cruscotto"
+    ],
+    "rule_explanation": "La spia di accensione delle luci abbaglianti è di colore blu, non rosso. Il rosso indica solitamente spie di pericolo grave."
+  }
+}

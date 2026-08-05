@@ -1,0 +1,29 @@
+{
+  "question_id": 4645,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24879",
+  "text": "Se un infortunato della strada ha un'abbondante emorragia esterna, bisogna cercare di arrestare la fuoriuscita del sangue",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Gestione delle emorragie esterne",
+      "Obblighi del soccorritore"
+    ],
+    "exact_keywords": [
+      "infortunato della strada",
+      "emorragia esterna",
+      "arrestare la fuoriuscita del sangue",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "tecniche di primo soccorso per emorragie esterne",
+      "gestione delle emorragie esterne in incidenti stradali",
+      "obblighi di soccorso in caso di emorragia grave"
+    ],
+    "rule_explanation": "In caso di emorragia esterna di un infortunato, è fondamentale intervenire tempestivamente per arrestare la fuoriuscita di sangue, applicando le appropriate tecniche di primo soccorso."
+  }
+}

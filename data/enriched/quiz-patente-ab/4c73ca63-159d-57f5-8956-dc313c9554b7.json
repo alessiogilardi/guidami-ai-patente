@@ -1,0 +1,32 @@
+{
+  "question_id": 4352,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22040",
+  "text": "Il segnale raffigurato vieta il transito dalle ore 8.00 alle ore 20.00 dei giorni festivi",
+  "correct_answer": true,
+  "image": "87078b9138df6b52168bc5170c531079.jpeg",
+  "image_description": "Divieto di transito con pannello integrativo di orario e giorni festivi. Il segnale di divieto di transito è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle ore 8:00 alle ore 20:00. Il simbolo della croce indica i giorni festivi. Pertanto, il transito è vietato nei giorni festivi dalle 8:00 alle 20:00.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di transito, rappresentato da un cerchio rosso con sfondo bianco e una barra trasversale rossa. Sotto questo segnale, vi è un pannello integrativo rettangolare di colore bianco con scritte nere. Il pannello contiene il simbolo di una croce (+) seguito dagli orari \"8,00 - 20,00\". La croce, in combinazione con gli orari, indica che il divieto di transito è in vigore nei giorni festivi, dalle 8:00 alle 20:00.",
+    "name": "Divieto di transito con pannello integrativo di orario e giorni festivi",
+    "description": "Il segnale di divieto di transito è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle ore 8:00 alle ore 20:00. Il simbolo della croce indica i giorni festivi. Pertanto, il transito è vietato nei giorni festivi dalle 8:00 alle 20:00."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Integrazione dei segnali stradali",
+      "Limitazioni temporali e di giorni alla circolazione"
+    ],
+    "exact_keywords": [
+      "segnali integrativi",
+      "divieto di transito",
+      "giorni festivi",
+      "orario"
+    ],
+    "vector_search_queries": [
+      "divieto di transito con pannello integrativo di orario e giorni festivi",
+      "interpretazione segnali stradali con pannelli integrativi di limitazione oraria e di giorni festivi"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito, se integrato da pannello con indicazione di orario e giorni festivi, vieta la circolazione nei giorni festivi nell'intervallo orario specificato."
+  }
+}

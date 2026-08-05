@@ -1,0 +1,31 @@
+{
+  "question_id": 4184,
+  "topic": "Segnali di obbligo",
+  "number": "20410",
+  "text": "Il segnale raffigurato non consente il transito alle biciclette",
+  "correct_answer": true,
+  "image": "db7b1ca650c36ef47e9904be21287943.jpeg",
+  "image_description": "Percorso per cavalli. Il segnale impone l'obbligo di transito per i cavalli e i cavalieri, indicando un percorso a loro riservato. Vietato il transito ai veicoli a motore.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro del segnale è presente un pittogramma bianco raffigurante un cavallo con un cavaliere in sella. Questo è un segnale di obbligo.",
+    "name": "Percorso per cavalli",
+    "description": "Il segnale impone l'obbligo di transito per i cavalli e i cavalieri, indicando un percorso a loro riservato. Vietato il transito ai veicoli a motore."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico per determinate categorie di utenti",
+      "Segnaletica stradale di indicazione e prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "percorso per cavalli",
+      "transito vietato",
+      "biciclette"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo percorsi specifici per categorie di utenti",
+      "divieto di transito per biciclette su percorsi riservati a cavalli"
+    ],
+    "rule_explanation": "I segnali di obbligo indicano prescrizioni specifiche per determinate categorie di utenti della strada, come in questo caso il percorso riservato ai cavalli, escludendo altri veicoli come le biciclette."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4156,
+  "topic": "Segnali di obbligo",
+  "number": "20126",
+  "text": "Il segnale raffigurato prescrive l'obbligo di passare a destra di un ostacolo",
+  "correct_answer": false,
+  "image": "f11adbce174cb84be85861f037d85fb6.jpeg",
+  "image_description": "Obbligo di svolta a destra. Il segnale impone di svoltare obbligatoriamente a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca che parte dal basso a sinistra, curva verso destra e punta verso l'alto a destra. Questo segnale appartiene alla categoria dei segnali di obbligo.",
+    "name": "Obbligo di svolta a destra",
+    "description": "Il segnale impone di svoltare obbligatoriamente a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Direzione imposta dalla segnaletica"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "direzione vietata",
+      "direzione obbligatoria",
+      "ostacolo"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo di direzione",
+      "interpretazione segnali di obbligo di passaggio a destra di ostacolo"
+    ],
+    "rule_explanation": "Il segnale di obbligo di direzione impone di seguire la direzione indicata, non di passare a destra di un ostacolo. Il segnale di passaggio a destra di un ostacolo è di prescrizione."
+  }
+}

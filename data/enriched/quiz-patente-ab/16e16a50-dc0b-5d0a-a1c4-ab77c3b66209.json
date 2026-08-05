@@ -1,0 +1,27 @@
+{
+  "question_id": 4534,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23830",
+  "text": "Il segnale mobile triangolare di pericolo fa parte dell'equipaggiamento obbligatorio degli autoveicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Equipaggiamento obbligatorio dei veicoli",
+      "Segnalazione di pericolo"
+    ],
+    "exact_keywords": [
+      "segnale mobile triangolare di pericolo",
+      "autoveicoli",
+      "equipaggiamento obbligatorio",
+      "dispositivo di protezione"
+    ],
+    "vector_search_queries": [
+      "obbligo di avere il segnale mobile triangolare di pericolo a bordo degli autoveicoli",
+      "requisiti di equipaggiamento obbligatorio per autoveicoli in materia di segnalazione di pericolo"
+    ],
+    "rule_explanation": "Il segnale mobile triangolare di pericolo è parte dell'equipaggiamento obbligatorio degli autoveicoli per segnalare la presenza di un veicolo fermo in condizioni di pericolo."
+  }
+}

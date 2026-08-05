@@ -1,0 +1,31 @@
+{
+  "question_id": 4207,
+  "topic": "Segnali di precedenza",
+  "number": "20682",
+  "text": "Il segnale raffigurato si trova all'inizio di una strada senza diritto di precedenza",
+  "correct_answer": false,
+  "image": "ae0a5db589f248f6cde41a1db1f0fe3f.jpeg",
+  "image_description": "Segnale di Diritto di Precedenza. Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con i vertici disposti in modo da formare un rombo. Il bordo esterno del segnale è bianco, seguito da un bordo nero più sottile. All'interno, su sfondo bianco, vi è un rombo più piccolo di colore arancione. Questo è il segnale di Diritto di Precedenza.",
+    "name": "Segnale di Diritto di Precedenza",
+    "description": "Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di Diritto di Precedenza",
+      "Obbligo di dare precedenza"
+    ],
+    "exact_keywords": [
+      "segnale Diritto di Precedenza",
+      "strada senza diritto di precedenza",
+      "incrocio",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "funzione segnale Diritto di Precedenza",
+      "obbligo di dare precedenza agli incroci con segnale Diritto di Precedenza"
+    ],
+    "rule_explanation": "Il segnale di Diritto di Precedenza indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali, non che ci si trova all'inizio di una strada senza diritto di precedenza."
+  }
+}

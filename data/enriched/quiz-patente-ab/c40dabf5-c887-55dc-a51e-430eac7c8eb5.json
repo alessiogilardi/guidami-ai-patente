@@ -1,0 +1,29 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25324",
+  "text": "Una frenatura poco efficiente può essere causata da eccessive e ripetute frenate",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza del sistema frenante",
+      "Manutenzione del veicolo",
+      "Uso corretto dei freni"
+    ],
+    "exact_keywords": [
+      "frenatura inefficiente",
+      "frenate ripetute",
+      "surriscaldamento",
+      "componenti del freno"
+    ],
+    "vector_search_queries": [
+      "cause di inefficienza del sistema frenante",
+      "effetti delle frenate ripetute sull'efficienza dei freni",
+      "manutenzione e uso corretto dei freni del veicolo"
+    ],
+    "rule_explanation": "Un uso eccessivo e ripetuto dei freni può causare surriscaldamento, riducendone l'efficienza a causa dell'usura dei componenti."
+  }
+}

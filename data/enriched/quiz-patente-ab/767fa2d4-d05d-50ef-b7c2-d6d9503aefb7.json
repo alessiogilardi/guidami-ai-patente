@@ -1,0 +1,28 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22497",
+  "text": "Ai passaggi a livello occorre usare la massima prudenza e moderare la velocità, per evitare situazioni di pericolo che comportino il danneggiamento delle attrezzature",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Massima prudenza ai passaggi a livello",
+      "Regolazione della velocità per evitare pericoli"
+    ],
+    "exact_keywords": [
+      "passaggi a livello",
+      "massima prudenza",
+      "moderare la velocità",
+      "situazioni di pericolo"
+    ],
+    "vector_search_queries": [
+      "comportamento ai passaggi a livello",
+      "obbligo di moderare la velocità ai passaggi a livello",
+      "pericolo ai passaggi a livello"
+    ],
+    "rule_explanation": "Ai passaggi a livello è imposto l'obbligo di usare la massima prudenza e moderare la velocità per prevenire danni alle attrezzature e garantire la sicurezza."
+  }
+}

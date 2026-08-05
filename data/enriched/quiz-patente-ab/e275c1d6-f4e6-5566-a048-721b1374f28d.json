@@ -1,0 +1,27 @@
+{
+  "question_id": 4680,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25133",
+  "text": "Per diminuire l'inquinamento dell'aria provocato dai veicoli, bisogna far controllare il motore, se il fumo dello scarico risulta troppo scuro",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo emissioni inquinanti",
+      "Manutenzione del veicolo per la tutela ambientale"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "motore",
+      "fumo dello scarico",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "controllo emissioni fumi veicoli",
+      "manutenzione motore per ridurre inquinamento aria"
+    ],
+    "rule_explanation": "Per ridurre l'inquinamento atmosferico causato dai veicoli, è necessario sottoporre il motore a controlli se il fumo di scarico è eccessivamente scuro, indice di combustione incompleta."
+  }
+}

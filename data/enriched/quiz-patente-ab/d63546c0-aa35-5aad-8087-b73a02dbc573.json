@@ -1,0 +1,31 @@
+{
+  "question_id": 4085,
+  "topic": "Segnali di pericolo",
+  "number": "19272",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada che può diventare pericoloso in particolari condizioni climatiche specificate nei pannelli integrativi",
+  "correct_answer": true,
+  "image": "9557ea08889ddcf8ba229d0cbe9160eb.jpeg",
+  "image_description": "Segnale di pericolo - Sdrucciolevolezza. Il segnale preannuncia un tratto di strada dove la superficie può diventare particolarmente sdrucciolevole, a causa di ghiaccio, pioggia o altre cause. È necessario moderare la velocità e prestare attenzione a possibili variazioni dell'aderenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un'automobile stilizzata che sta sbandando su una superficie stradale resa tortuosa da delle curve. Le ruote posteriori dell'auto sono visibilmente inclinate, indicando una perdita di aderenza. Il pittogramma rappresenta chiaramente il rischio di sbandamento dovuto a una superficie stradale sdrucciolevole.",
+    "name": "Segnale di pericolo - Sdrucciolevolezza",
+    "description": "Il segnale preannuncia un tratto di strada dove la superficie può diventare particolarmente sdrucciolevole, a causa di ghiaccio, pioggia o altre cause. È necessario moderare la velocità e prestare attenzione a possibili variazioni dell'aderenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Condizioni climatiche e aderenza stradale"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "sdrucciolevolezza",
+      "pannelli integrativi",
+      "condizioni climatiche"
+    ],
+    "vector_search_queries": [
+      "preavviso di pericolo per sdrucciolevolezza con pannelli integrativi",
+      "segnali stradali di pericolo per condizioni climatiche avverse"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano un tratto di strada che può diventare pericoloso in determinate condizioni climatiche, come specificato nei pannelli integrativi."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22551",
+  "text": "Sulle strade extraurbane , il valore della distanza di sicurezza è sempre pari a 70 metri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "strade extraurbane",
+      "condizioni della strada",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "valore della distanza di sicurezza sulle strade extraurbane",
+      "adeguamento della distanza di sicurezza alle condizioni di marcia"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere adeguata alle condizioni della strada, del traffico e del veicolo, non è un valore fisso di 70 metri sulle strade extraurbane."
+  }
+}

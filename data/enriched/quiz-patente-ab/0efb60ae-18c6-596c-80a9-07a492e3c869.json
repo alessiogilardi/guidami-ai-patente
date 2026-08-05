@@ -1,0 +1,27 @@
+{
+  "question_id": 4620,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24640",
+  "text": "Il punteggio sulla patente diminuisce quando si commettono particolari infrazioni al codice della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema sanzionatorio della patente a punti",
+      "Perdita di punteggio per infrazioni al CdS"
+    ],
+    "exact_keywords": [
+      "punteggio patente",
+      "infrazioni al codice della strada",
+      "sottrazione di punteggio",
+      "patente a punti"
+    ],
+    "vector_search_queries": [
+      "perdita di punteggio sulla patente a seguito di infrazioni al CdS",
+      "meccanismo di decurtazione punti dalla patente per violazioni del Codice della Strada"
+    ],
+    "rule_explanation": "Il sistema della patente a punti prevede la sottrazione di un determinato punteggio a seguito della commissione di specifiche infrazioni al Codice della Strada."
+  }
+}

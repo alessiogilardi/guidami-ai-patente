@@ -1,0 +1,27 @@
+{
+  "question_id": 4520,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23734",
+  "text": "La sosta è vietata sui binari delle linee ferroviarie ma non di quelle tranviarie",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Linee ferroviarie e tranviarie"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "linee ferroviarie",
+      "linee tranviarie",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta sui binari delle linee tranviarie",
+      "differenza divieto sosta binari ferroviari e tranviari"
+    ],
+    "rule_explanation": "La sosta è vietata sia sui binari delle linee ferroviarie sia su quelli delle linee tranviarie, in quanto costituiscono un pericolo per la circolazione."
+  }
+}

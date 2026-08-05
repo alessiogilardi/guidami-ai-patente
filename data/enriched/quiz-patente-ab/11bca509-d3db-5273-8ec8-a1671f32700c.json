@@ -1,0 +1,29 @@
+{
+  "question_id": 4403,
+  "topic": "Distanza di sicurezza",
+  "number": "22621",
+  "text": "Lo spazio totale di arresto dipende dalle condizioni dell'asfalto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di arresto",
+      "Condizioni della strada"
+    ],
+    "exact_keywords": [
+      "spazio totale di arresto",
+      "distanza di reazione",
+      "distanza di frenatura",
+      "condizioni del manto stradale"
+    ],
+    "vector_search_queries": [
+      "fattori che influenzano lo spazio totale di arresto",
+      "condizioni del manto stradale e spazio di arresto",
+      "distanza di reazione e frenatura in relazione all'asfalto"
+    ],
+    "rule_explanation": "Lo spazio totale di arresto è la somma della distanza di reazione e di quella di frenatura, entrambe influenzate dalle condizioni del fondo stradale."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4048,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18829",
+  "text": "Il conducente di un veicolo diverso dai taxi può sostare nei posteggi riservati ai taxi dalle ore 20.00 alle ore 8.00",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in aree riservate",
+      "Utilizzo di parcheggi dedicati"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "parcheggi riservati",
+      "taxi",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in parcheggi riservati ai taxi",
+      "uso esclusivo dei posteggi taxi per i veicoli autorizzati"
+    ],
+    "rule_explanation": "I parcheggi riservati ai taxi sono ad uso esclusivo dei taxi, anche al di fuori degli orari di servizio, salvo diversa segnalazione."
+  }
+}

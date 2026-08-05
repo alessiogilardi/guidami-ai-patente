@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31044",
+  "text": "Un conducente deve sempre sottostimare le situazioni di pericolo per non farsi travolgere dall’ansia durante la guida",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Valutazione del rischio",
+      "Guida prudente",
+      "Gestione dell'ansia alla guida"
+    ],
+    "exact_keywords": [
+      "situazioni di pericolo",
+      "sottovalutare",
+      "guida",
+      "ansia"
+    ],
+    "vector_search_queries": [
+      "valutazione delle situazioni di pericolo nella guida",
+      "obbligo di prudenza e percezione del rischio alla guida",
+      "gestione dell'ansia e della sottovalutazione del pericolo in ambito di circolazione stradale"
+    ],
+    "rule_explanation": "Il conducente deve valutare attentamente le situazioni di pericolo, evitando di sottovalutarle per garantire la sicurezza propria e altrui, gestendo l'ansia in modo appropriato."
+  }
+}

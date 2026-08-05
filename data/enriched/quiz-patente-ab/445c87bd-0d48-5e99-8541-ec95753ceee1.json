@@ -1,0 +1,32 @@
+{
+  "question_id": 4223,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20824",
+  "text": "Le corsie A,B e C rappresentate in figura sono a doppio senso di circolazione",
+  "correct_answer": false,
+  "image": "327707c84ac30c00c4217e11a2da9cb5.jpeg",
+  "image_description": "Segnaletica orizzontale di corsie con direzioni obbligatorie e linee discontinue. La segnaletica orizzontale indica tre corsie di marcia (A, B, C) che convergono verso un incrocio. Le corsie A e C presentano frecce direzionali che consentono solo di svoltare a sinistra. La corsia B, situata al centro, presenta frecce direzionali che consentono sia di proseguire dritto sia di svoltare a sinistra. Le linee di corsia sono discontinue, indicando la possibilità di cambio corsia. L'incrocio è a raso e non presenta segnaletica verticale di preavviso o di direzionamento.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una carreggiata con tre corsie di marcia, identificate come A, B e C, che si avvicinano a un incrocio. La corsia A, la più a sinistra, presenta una freccia che indica la direzione obbligatoria di svolta a sinistra. La corsia B, quella centrale, presenta una freccia che indica la possibilità di proseguire dritto o di svoltare a sinistra. La corsia C, la più a destra, presenta una freccia che indica la direzione obbligatoria di svolta a sinistra. Tutte le corsie sono delimitate da strisce bianche discontinue, che permettono il cambio di corsia. L'incrocio è a raso e non vi è alcuna segnaletica verticale visibile.",
+    "name": "Segnaletica orizzontale di corsie con direzioni obbligatorie e linee discontinue",
+    "description": "La segnaletica orizzontale indica tre corsie di marcia (A, B, C) che convergono verso un incrocio. Le corsie A e C presentano frecce direzionali che consentono solo di svoltare a sinistra. La corsia B, situata al centro, presenta frecce direzionali che consentono sia di proseguire dritto sia di svoltare a sinistra. Le linee di corsia sono discontinue, indicando la possibilità di cambio corsia. L'incrocio è a raso e non presenta segnaletica verticale di preavviso o di direzionamento."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Direzioni obbligatorie",
+      "Corsie di marcia"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "direzione obbligatoria",
+      "corsia di marcia",
+      "doppio senso di circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di seguire la direzione imposta dalla freccia segnaletica",
+      "divieto di circolazione in doppio senso su corsie con segnaletica direzionale"
+    ],
+    "rule_explanation": "Le frecce direzionali sulla segnaletica orizzontale impongono una specifica direzione di marcia, escludendo il doppio senso di circolazione."
+  }
+}

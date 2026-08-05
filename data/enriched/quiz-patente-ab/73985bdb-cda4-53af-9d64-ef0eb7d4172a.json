@@ -1,0 +1,27 @@
+{
+  "question_id": 4416,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22742",
+  "text": "Quando, in un centro abitato, il conducente di un veicolo si imbatte in un corteo, deve cercare di farsi strada interrompendo il corteo, ma con estrema prudenza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi verso cortei e cortei funebri",
+      "Comportamento dei veicoli in presenza di cortei"
+    ],
+    "exact_keywords": [
+      "corteo",
+      "centro abitato",
+      "interrompere il corteo",
+      "farsi strada"
+    ],
+    "vector_search_queries": [
+      "comportamento veicolo in presenza di corteo in centro abitato",
+      "obbligo di fermarsi in presenza di corteo funebre o simile"
+    ],
+    "rule_explanation": "Il conducente, in presenza di un corteo in un centro abitato, deve fermarsi e attendere il suo passaggio, senza cercare di farsi strada o interromperlo."
+  }
+}

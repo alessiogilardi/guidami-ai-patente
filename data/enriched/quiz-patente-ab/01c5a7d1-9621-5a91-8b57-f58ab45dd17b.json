@@ -1,0 +1,29 @@
+{
+  "question_id": 4552,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23966",
+  "text": "Il conducente deve esercitare particolare prudenza guidando in presenza di ciclista anziano che, per ispezionare la strada alle proprie spalle, esegue con difficoltà e lentezza la torsione del busto a causa dell'età avanzata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza e cautela",
+      "Regolazione della velocità in base alle condizioni di traffico e ai comportamenti altrui",
+      "Tutela dei soggetti vulnerabili nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "prudenza",
+      "ciclista anziano",
+      "torsione del busto",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza in presenza di ciclisti anziani",
+      "adeguamento della velocità ai comportamenti dei ciclisti",
+      "precauzioni nella guida con utenti vulnerabili"
+    ],
+    "rule_explanation": "Il conducente deve sempre moderare la velocità e porre particolare attenzione in presenza di utenti vulnerabili come ciclisti anziani, adattando la guida ai loro movimenti e alle condizioni della strada."
+  }
+}

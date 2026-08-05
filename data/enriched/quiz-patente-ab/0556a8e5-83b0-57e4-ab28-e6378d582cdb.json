@@ -1,0 +1,33 @@
+{
+  "question_id": 4320,
+  "topic": "Segnali di indicazione",
+  "number": "21746",
+  "text": "Il segnale raffigurato preavvisa l'obbligo di svoltare a sinistra",
+  "correct_answer": false,
+  "image": "e6b9eb6127f2b9813aff7b5e3ea59026.jpeg",
+  "image_description": "Preavviso di corsie di preselezione. Il segnale indica che le due corsie di sinistra proseguono dritto, mentre la corsia di destra consente di svoltare a sinistra. Preavvisa una riduzione del numero di corsie disponibili.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di corsie di preselezione. Il segnale è di colore verde con bordo bianco e presenta tre frecce bianche. Le due frecce a sinistra sono dritte e puntano verso l'alto, indicando che le corsie corrispondenti proseguono dritte. La freccia a destra è curva e indica una svolta a sinistra, suggerendo che la corsia corrispondente consente solo la svolta a sinistra. Il segnale è di forma rettangolare.",
+    "name": "Preavviso di corsie di preselezione",
+    "description": "Il segnale indica che le due corsie di sinistra proseguono dritto, mentre la corsia di destra consente di svoltare a sinistra. Preavvisa una riduzione del numero di corsie disponibili."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso",
+      "Segnali di prescrizione",
+      "Obblighi di direzione"
+    ],
+    "exact_keywords": [
+      "preavviso di corsie di preselezione",
+      "obbligo di svolta",
+      "direzione consentita",
+      "riduzione delle corsie"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di corsie di preselezione e direzioni consentite",
+      "differenza tra segnali di preavviso e segnali di prescrizione di direzione",
+      "interpretazione segnale preavviso corsie di preselezione"
+    ],
+    "rule_explanation": "Il segnale di preavviso di corsie di preselezione indica le direzioni consentite dalle corsie, non un obbligo di svolta. L'obbligo di svolta è imposto da segnali di prescrizione (es. freccia circolare blu)."
+  }
+}

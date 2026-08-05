@@ -1,0 +1,29 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22322",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi in corrispondenza dei passi carrabili",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Comportamento ai passi carrabili",
+      "Pericolo per la circolazione"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "passi carrabili",
+      "fermarsi",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in prossimità di passi carrabili",
+      "condotta da tenere ai passi carrabili per evitare pericolo o intralcio"
+    ],
+    "rule_explanation": "Non è obbligatorio ridurre la velocità o fermarsi ai passi carrabili, a meno che non vi sia un pericolo o un intralcio alla circolazione."
+  }
+}

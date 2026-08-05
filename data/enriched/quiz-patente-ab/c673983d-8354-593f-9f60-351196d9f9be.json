@@ -1,0 +1,28 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24771",
+  "text": "Dopo un incidente stradale, è obbligatorio segnalare il veicolo fermo con il segnale mobile di pericolo anche nei centri abitati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione del veicolo fermo",
+      "Segnale mobile di pericolo",
+      "Comportamento in caso di incidente"
+    ],
+    "exact_keywords": [
+      "segnale mobile di pericolo",
+      "centro abitato",
+      "veicolo fermo",
+      "incidente stradale"
+    ],
+    "vector_search_queries": [
+      "obbligo posizionamento segnale mobile di pericolo in centro abitato dopo incidente",
+      "segnalazione veicolo fermo per incidente nei centri abitati"
+    ],
+    "rule_explanation": "Nei centri abitati, l'obbligo di posizionare il segnale mobile di pericolo per un veicolo fermo a causa di incidente sussiste solo se questo costituisce pericolo o intralcio alla circolazione."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4537,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23861",
+  "text": "Sono ammessi a circolare su autostrade e strade extraurbane principali i ciclomotori che sviluppano una velocità di almeno 50 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di circolazione per ciclomotori su autostrade e strade extraurbane principali",
+      "Condizioni di ammissione alla circolazione per determinate categorie di veicoli"
+    ],
+    "exact_keywords": [
+      "ciclomotori",
+      "autostrade",
+      "strade extraurbane principali",
+      "velocità minima"
+    ],
+    "vector_search_queries": [
+      "divieto di circolazione ciclomotori su autostrade",
+      "categorie di veicoli ammesse su strade extraurbane principali"
+    ],
+    "rule_explanation": "I ciclomotori non possono circolare su autostrade e strade extraurbane principali, indipendentemente dalla loro velocità massima o minima."
+  }
+}

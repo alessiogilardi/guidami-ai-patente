@@ -1,0 +1,28 @@
+{
+  "question_id": 4513,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23668",
+  "text": "La fermata è vietata nei sottovia, sotto i sovrapassaggi, sotto i fornici e i portici, salvo diversa segnalazione.",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieti di fermata in tratti specifici della strada",
+      "Regole di sosta e fermata in gallerie e sottovia"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "sottovia",
+      "fornici",
+      "portici"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata in sottovia e portici",
+      "regolamentazione della sosta nei tratti coperti della strada"
+    ],
+    "rule_explanation": "La fermata è vietata nei sottovia, sotto i sovrapassaggi, nei fornici e nei portici, a meno che non sia diversamente indicato da apposita segnaletica stradale."
+  }
+}

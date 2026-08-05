@@ -1,0 +1,30 @@
+{
+  "question_id": 4048,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18826",
+  "text": "Il conducente, in vicinanza di un posteggio riservato ai taxi, deve fare attenzione ai pedoni, che possono attraversare improvvisamente la strada senza le dovute precauzioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attraversamento pedonale in prossimità di aree di sosta per taxi",
+      "Dovere di attenzione verso i pedoni",
+      "Utenti deboli della strada"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "posteggio riservato ai taxi",
+      "pedoni",
+      "attraversare la strada",
+      "precauzioni"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente in prossimità di posteggi taxi",
+      "attenzione ai pedoni che attraversano improvvisamente",
+      "rischio pedoni in aree di sosta taxi"
+    ],
+    "rule_explanation": "Il conducente deve prestare particolare attenzione in prossimità di aree di sosta per taxi, poiché i pedoni potrebbero attraversare improvvisamente la carreggiata senza le dovute cautele."
+  }
+}

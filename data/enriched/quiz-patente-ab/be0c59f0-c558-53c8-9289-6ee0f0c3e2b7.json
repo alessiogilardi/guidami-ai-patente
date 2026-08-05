@@ -1,0 +1,29 @@
+{
+  "question_id": 4499,
+  "topic": "Norme sul sorpasso",
+  "number": "23486",
+  "text": "La manovra di sorpasso del tram può effettuarsi su ambo i lati se la strada è a senso unico e la larghezza della carreggiata lo consente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Sorpasso di tram",
+      "Regole di circolazione su strada a senso unico"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "tram",
+      "senso unico",
+      "carreggiata",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "sorpasso tram su strada a senso unico",
+      "condizioni per sorpasso tram su ambo i lati"
+    ],
+    "rule_explanation": "Il sorpasso del tram è consentito su entrambi i lati se la strada è a senso unico e la larghezza della carreggiata lo permette, salvo diversa segnalazione."
+  }
+}

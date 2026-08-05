@@ -1,0 +1,27 @@
+{
+  "question_id": 4669,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25053",
+  "text": "L'assicurazione per la responsabilità civile auto (R.C.A.) copre ogni danno causato, anche se superiore al massimale stabilito",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Massimale di garanzia assicurativa",
+      "Assicurazione obbligatoria della responsabilità civile auto"
+    ],
+    "exact_keywords": [
+      "massimale",
+      "polizza R.C.A.",
+      "risarcimento del danno",
+      "limite di copertura"
+    ],
+    "vector_search_queries": [
+      "limite di risarcimento assicurazione RCA",
+      "copertura danni oltre il massimale R.C.A."
+    ],
+    "rule_explanation": "L'assicurazione R.C.A. copre i danni entro il limite del massimale stabilito in polizza; l'eccedenza non è coperta dall'assicurazione obbligatoria."
+  }
+}

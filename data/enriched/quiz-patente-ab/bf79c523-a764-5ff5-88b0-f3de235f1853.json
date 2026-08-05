@@ -1,0 +1,31 @@
+{
+  "question_id": 4147,
+  "topic": "Segnali di divieto",
+  "number": "20005",
+  "text": "Il segnale raffigurato vieta la sosta dalle ore 17.00 alle 20.00",
+  "correct_answer": true,
+  "image": "000b9ec4803628ffc83403efb710b16e.jpeg",
+  "image_description": "Segnale di divieto di sosta con orario e parcheggio con orario. Il segnale indica che la sosta è vietata dalle ore 7.00 alle 9.00 e dalle 17.00 alle 20.00. La sosta è invece consentita dalle ore 9.00 alle 17.00 e dalle 20.00 alle 7.00 del giorno successivo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale composto da due parti. La parte superiore contiene un segnale di divieto di sosta (cerchio rosso con barra diagonale rossa su sfondo blu) accompagnato da due fasce orarie: 7.00-9.00 e 17.00-20.00. La parte inferiore mostra un segnale di parcheggio (P blu su sfondo bianco) anch'esso accompagnato da due fasce orarie: 9.00-17.00 e 20.00-7.00. L'insieme dei due pannelli indica una regolamentazione della sosta e del parcheggio basata sugli orari specificati.",
+    "name": "Segnale di divieto di sosta con orario e parcheggio con orario",
+    "description": "Il segnale indica che la sosta è vietata dalle ore 7.00 alle 9.00 e dalle 17.00 alle 20.00. La sosta è invece consentita dalle ore 9.00 alle 17.00 e dalle 20.00 alle 7.00 del giorno successivo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta orario",
+      "Regolamentazione della sosta nei giorni feriali e festivi"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "ore",
+      "sosta consentita",
+      "sosta vietata"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta orario specifico",
+      "regolamentazione della sosta tramite segnale con indicazione di orario"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta con indicazione oraria specifica vieta la sosta nei periodi indicati, mentre la consente negli altri intervalli temporali."
+  }
+}

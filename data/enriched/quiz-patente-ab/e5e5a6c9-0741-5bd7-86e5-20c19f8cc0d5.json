@@ -1,0 +1,30 @@
+{
+  "question_id": 4414,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22723",
+  "text": "Quando, giunti in prossimità di un incrocio, ci accorgiamo di aver sbagliato la corsia di preselezione dobbiamo effettuare la manovra di svolta che intendevamo fare, dando però precedenza a tutti i veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Errore di corsia in prossimità di incrocio",
+      "Obbligo di precedenza in caso di manovra errata",
+      "Comportamento ai incroci"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "corsia di preselezione",
+      "svolta",
+      "precedenza",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "comportamento corretto in caso di errore nella corsia di preselezione all'incrocio",
+      "obbligo di precedenza dopo aver sbagliato corsia di preselezione",
+      "manovra di svolta errata in incrocio e precedenza"
+    ],
+    "rule_explanation": "In caso di errore nella scelta della corsia di preselezione, non si deve proseguire la manovra di svolta intrapresa, ma si deve attendere che la circolazione sia libera e rientrare nella corsia corretta, dando sempre precedenza a tutti i veicoli."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4157,
+  "topic": "Segnali di obbligo",
+  "number": "20140",
+  "text": "Il segnale raffigurato obbliga a svoltare subito a destra",
+  "correct_answer": false,
+  "image": "f11adbce174cb84be85861f037d85fb6.jpeg",
+  "image_description": "Obbligo di svolta a destra. Il segnale impone di svoltare obbligatoriamente a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca che parte dal basso a sinistra, curva verso destra e punta verso l'alto a destra. Questo segnale appartiene alla categoria dei segnali di obbligo.",
+    "name": "Obbligo di svolta a destra",
+    "description": "Il segnale impone di svoltare obbligatoriamente a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo di direzione",
+      "Interpretazione dei segnali stradali di obbligo"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "svolta a destra",
+      "direzione obbligatoria",
+      "imporre la direzione"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di obbligo di direzione piè dx",
+      "interpretazione segnale di obbligo di svolta a destra"
+    ],
+    "rule_explanation": "I segnali di obbligo di direzione impongono di seguire la direzione indicata dalla freccia; questo segnale impone la svolta a destra, non la vieta."
+  }
+}

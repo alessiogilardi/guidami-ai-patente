@@ -1,0 +1,27 @@
+{
+  "question_id": 4380,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22387",
+  "text": "Si è tenuti a regolare la velocità in funzione del tipo di alimentazione del motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di sicurezza della circolazione"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "stato del veicolo",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità alle condizioni di marcia",
+      "fattori che influenzano la regolazione della velocità del veicolo"
+    ],
+    "rule_explanation": "La velocità va regolata in base a molteplici fattori, tra cui le condizioni del veicolo, della strada e del traffico, non solo in funzione del tipo di alimentazione del motore."
+  }
+}

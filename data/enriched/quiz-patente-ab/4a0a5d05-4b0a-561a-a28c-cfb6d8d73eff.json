@@ -1,0 +1,31 @@
+{
+  "question_id": 4286,
+  "topic": "Segnali di indicazione",
+  "number": "21432",
+  "text": "Il segnale raffigurato indica che non è più possibile cambiare corsia",
+  "correct_answer": false,
+  "image": "1785d35606f4576c5fb085d53abb920e.jpeg",
+  "image_description": "Segnale di preavviso di direzione multipla. Il segnale indica le direzioni per raggiungere Terni, il centro città, la SS4 Salaria e Terminillo. Le frecce indicano le corsie da utilizzare per ciascuna destinazione: la corsia di sinistra per viale Maraini (Terni), la corsia centrale per Terminillo, e la corsia di destra per via Cinta (centro città). La SS4 Salaria è indicata come proseguimento dritto dalla corsia centrale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di direzione multipla. Il segnale è rettangolare, con sfondo bianco e testo nero. In alto a sinistra, è indicata la destinazione \"TERNI\" con una freccia che punta a sinistra, suggerendo l'uso della corsia di sinistra. Al centro, è indicata la destinazione \"Terminillo\" con una freccia che punta verso l'alto, suggerendo l'uso della corsia centrale. Sopra \"Terminillo\", è indicata la \"SS4 Salaria\" con una freccia verso l'alto, anch'essa associata alla corsia centrale. A destra, è indicata la destinazione \"centro\" con una freccia che punta a destra, suggerendo l'uso della corsia di destra, e la via \"Cintia\". Le corsie sono delimitate da linee tratteggiate.",
+    "name": "Segnale di preavviso di direzione multipla",
+    "description": "Il segnale indica le direzioni per raggiungere Terni, il centro città, la SS4 Salaria e Terminillo. Le frecce indicano le corsie da utilizzare per ciascuna destinazione: la corsia di sinistra per viale Maraini (Terni), la corsia centrale per Terminillo, e la corsia di destra per via Cinta (centro città). La SS4 Salaria è indicata come proseguimento dritto dalla corsia centrale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso di direzione multipla",
+      "Utilizzo delle corsie per direzioni specifiche"
+    ],
+    "exact_keywords": [
+      "segnali di preavviso di direzione multipla",
+      "corsie",
+      "direzione",
+      "destinazione"
+    ],
+    "vector_search_queries": [
+      "segnali indicanti l'uso delle corsie per direzioni multiple",
+      "interpretazione segnali di preavviso di direzione multipla"
+    ],
+    "rule_explanation": "I segnali di preavviso di direzione multipla indicano le corsie da utilizzare per le diverse destinazioni, non vietano il cambio di corsia."
+  }
+}

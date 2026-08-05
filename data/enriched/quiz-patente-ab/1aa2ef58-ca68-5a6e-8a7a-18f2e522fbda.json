@@ -1,0 +1,28 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24626",
+  "text": "La sospensione della patente è disposta quando il conducente circola abusivamente con veicolo sottoposto a sequestro",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sospensione della patente",
+      "Circolazione di veicoli sottoposti a sequestro",
+      "Uso del veicolo in violazione dei provvedimenti amministrativi"
+    ],
+    "exact_keywords": [
+      "sospensione della patente",
+      "circolazione abusiva",
+      "veicolo sottoposto a sequestro",
+      "provvedimenti dell\\'autorità"
+    ],
+    "vector_search_queries": [
+      "sospensione patente per circolazione veicolo sequestrato",
+      "conseguenze della circolazione con veicolo sottoposto a sequestro"
+    ],
+    "rule_explanation": "La sospensione della patente è una sanzione accessoria disposta in caso di circolazione con un veicolo sottoposto a sequestro amministrativo o penale."
+  }
+}

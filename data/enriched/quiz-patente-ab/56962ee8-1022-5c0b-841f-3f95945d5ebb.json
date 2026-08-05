@@ -1,0 +1,27 @@
+{
+  "question_id": 4533,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23825",
+  "text": "Chiunque non abbia potuto evitare la caduta di materie viscide, deve deviare il traffico in attesa che l'ente proprietario della strada intervenga per ripristinare le condizioni ottimali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo o intralcio alla circolazione",
+      "Obblighi in caso di caduta di materie pericolose o viscide sulla carreggiata"
+    ],
+    "exact_keywords": [
+      "caduta di materie viscide",
+      "segnalare il pericolo",
+      "ente proprietario della strada",
+      "ripristinare le condizioni ottimali"
+    ],
+    "vector_search_queries": [
+      "obblighi in caso di caduta di materie viscide sulla carreggiata",
+      "segnalazione di pericolo per caduta di sostanze viscide"
+    ],
+    "rule_explanation": "In caso di caduta di materie viscide, chiunque non abbia potuto evitarla deve immediatamente segnalare il pericolo e non è tenuto a deviare il traffico in attesa dell'intervento dell'ente proprietario."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24343",
+  "text": "Le cinture di sicurezza hanno lo scopo di limitare i danni al conducente e ai passeggeri in caso di incidente stradale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza passiva",
+      "Cinture di sicurezza",
+      "Protezione degli occupanti"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "occupanti",
+      "lesioni",
+      "incidente stradale",
+      "ridurre il rischio"
+    ],
+    "vector_search_queries": [
+      "funzione delle cinture di sicurezza per la protezione degli occupanti",
+      "scopo delle cinture di sicurezza nel ridurre i danni da incidente",
+      "obbligo di uso delle cinture di sicurezza e loro efficacia"
+    ],
+    "rule_explanation": "Le cinture di sicurezza sono dispositivi di ritenuta obbligatori che riducono il rischio di lesioni per conducenti e passeggeri in caso di incidente stradale."
+  }
+}

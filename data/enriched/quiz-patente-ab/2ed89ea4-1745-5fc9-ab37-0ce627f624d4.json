@@ -1,0 +1,33 @@
+{
+  "question_id": 4201,
+  "topic": "Segnali di precedenza",
+  "number": "20606",
+  "text": "Il segnale raffigurato perde la sua efficacia in presenza di agente che regola il traffico",
+  "correct_answer": true,
+  "image": "7f30c2092cbae8a33505fdc2297bb6a3.jpeg",
+  "image_description": "Incrocio con strada senza diritto di precedenza. Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta un incrocio a T, con la strada principale orizzontale e la strada secondaria che si immette da destra e da sinistra. La forma del pittogramma indica che la strada su cui si sta viaggiando si immette in una strada trasversale.",
+    "name": "Incrocio con strada senza diritto di precedenza",
+    "description": "Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Agenti di polizia stradale",
+      "Gerarchia dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di precedenza",
+      "agente che regola il traffico",
+      "effetti dei segnali di prescrizione",
+      "segnali di pericolo"
+    ],
+    "vector_search_queries": [
+      "precedenza segnali stradali agente traffico",
+      "efficacia segnali prescrizione agente polizia stradale",
+      "gerarchia comandi agente segnale stradale"
+    ],
+    "rule_explanation": "I segnali di prescrizione e pericolo perdono la loro efficacia se un agente di polizia stradale dirige il traffico in modo difforme da essi."
+  }
+}

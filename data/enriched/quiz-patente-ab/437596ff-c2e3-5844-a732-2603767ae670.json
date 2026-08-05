@@ -1,0 +1,29 @@
+{
+  "question_id": 4600,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24377",
+  "text": "L'airbag entra in funzione in caso di incidente stradale con urto violento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Airbag",
+      "Sistemi di sicurezza passiva",
+      "Incidenti stradali"
+    ],
+    "exact_keywords": [
+      "airbag",
+      "urto violento",
+      "incidente stradale",
+      "sistema di sicurezza"
+    ],
+    "vector_search_queries": [
+      "funzionamento airbag in caso di incidente",
+      "attivazione airbag urto violento",
+      "sistemi di sicurezza passiva airbag"
+    ],
+    "rule_explanation": "L'airbag è un dispositivo di sicurezza passiva che si attiva in caso di urto violento durante un incidente stradale per proteggere gli occupanti del veicolo."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4512,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23662",
+  "text": "Fuori dei centri abitati, se non è possibile collocare il veicolo fuori della carreggiata, il conducente deve effettuare la fermata il più vicino possibile al margine destro della carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Posizionamento del veicolo fuori dalla carreggiata",
+      "Regole di sosta e fermata fuori dai centri abitati"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "fuori dei centri abitati",
+      "carreggiata",
+      "margine destro"
+    ],
+    "vector_search_queries": [
+      "collocazione veicolo al margine destro della carreggiata per fermata fuori dai centri abitati",
+      "effettuare la fermata vicino al margine destro se non è possibile uscire dalla carreggiata"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, la fermata deve avvenire il più vicino possibile al margine destro della carreggiata, se non è possibile collocare il veicolo fuori di essa."
+  }
+}

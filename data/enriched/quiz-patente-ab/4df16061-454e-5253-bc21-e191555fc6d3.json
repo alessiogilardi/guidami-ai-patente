@@ -1,0 +1,27 @@
+{
+  "question_id": 4539,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23877",
+  "text": "Nelle aree di servizio e di parcheggio delle autostrade la durata massima per la sosta di un veicolo è di tre ore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta in aree di servizio autostradali",
+      "Durata della sosta in parcheggi autostradali"
+    ],
+    "exact_keywords": [
+      "aree di servizio",
+      "parcheggio",
+      "sosta",
+      "autostrade"
+    ],
+    "vector_search_queries": [
+      "durata massima sosta aree servizio autostradali",
+      "limiti di tempo per parcheggio autostradale"
+    ],
+    "rule_explanation": "Nelle aree di servizio e di parcheggio delle autostrade la sosta è consentita per un tempo massimo di 24 ore, salvo diversa segnalazione."
+  }
+}

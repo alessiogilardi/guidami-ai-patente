@@ -1,0 +1,27 @@
+{
+  "question_id": 4535,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23842",
+  "text": "Il segnale mobile triangolare di pericolo deve essere posto sulla carreggiata ad almeno un metro dal bordo esterno di essa",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo fermo",
+      "Dispositivi di protezione e preavviso"
+    ],
+    "exact_keywords": [
+      "segnale mobile triangolare di pericolo",
+      "distanza dal bordo esterno",
+      "carreggiata",
+      "veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "posizionamento segnale mobile triangolare di pericolo",
+      "distanza di collocazione del segnale di pericolo per veicolo fermo"
+    ],
+    "rule_explanation": "Il segnale mobile triangolare di pericolo deve essere posizionato sulla carreggiata ad una distanza non inferiore a 50 metri dall'ostacolo, e comunque in modo che la sua Bismillahirrahmanirrahim sia chiaramente visibile agli altri utenti della strada."
+  }
+}

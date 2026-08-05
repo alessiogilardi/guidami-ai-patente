@@ -1,0 +1,28 @@
+{
+  "question_id": 4512,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23663",
+  "text": "In caso di fermata su strada urbana in cui non esiste il marciapiede rialzato, il conducente deve collocare il veicolo il più vicino possibile al margine destro della carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata e sosta su strade urbane",
+      "Posizionamento del veicolo in assenza di marciapiede"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "margine destro della carreggiata",
+      "strada urbana",
+      "marciapiede"
+    ],
+    "vector_search_queries": [
+      "posizionamento veicolo fermata strada urbana senza marciapiede",
+      "distanza dal margine destro per sosta su strada urbana"
+    ],
+    "rule_explanation": "In assenza di marciapiede rialzato, la fermata o sosta su strada urbana deve avvenire il più vicino possibile al margine destro, ma senza intralciare la circolazione."
+  }
+}

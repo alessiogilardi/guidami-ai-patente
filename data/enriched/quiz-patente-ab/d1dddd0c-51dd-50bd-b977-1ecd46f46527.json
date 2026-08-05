@@ -1,0 +1,31 @@
+{
+  "question_id": 4254,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21112",
+  "text": "Nelle aree di servizio autostradali il semaforo in figura indica i sottopassaggi pedonali",
+  "correct_answer": false,
+  "image": "2129f648b286c6c53769eb3846a537af.jpeg",
+  "image_description": "Semaforo pedonale. Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un semaforo pedonale verticale. Le luci sono disposte dall'alto verso il basso: rossa, gialla e verde. Ogni luce contiene la sagoma stilizzata di una figura umana. La luce rossa mostra una figura ferma, la luce gialla una figura ferma, e la luce verde una figura in movimento. Il semaforo è montato su un palo o struttura simile, ma solo il semaforo stesso è visibile chiaramente. Non ci sono altri elementi stradali o veicoli nell'immagine.",
+    "name": "Semaforo pedonale",
+    "description": "Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica semaforica pedonale",
+      "Uso dei semafori nelle aree di servizio"
+    ],
+    "exact_keywords": [
+      "semaforo pedonale",
+      "sottopassaggi pedonali",
+      "aree di servizio",
+      "semaforo in figura"
+    ],
+    "vector_search_queries": [
+      "funzione del semaforo pedonale",
+      "segnaletica semaforica nelle aree di servizio autostradali"
+    ],
+    "rule_explanation": "Il semaforo pedonale indica la possibilità di attraversare la strada, non la presenza di sottopassaggi pedonali, né è specifico per le aree di servizio autostradali."
+  }
+}

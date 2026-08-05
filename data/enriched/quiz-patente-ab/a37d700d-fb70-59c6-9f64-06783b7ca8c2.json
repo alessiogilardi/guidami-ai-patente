@@ -1,0 +1,31 @@
+{
+  "question_id": 4430,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22874",
+  "text": "Nei centri urbani è consentito marciare per file parallele in qualunque condizione di traffico",
+  "correct_answer": false,
+  "image": "a55112f8aa2ffee4f82537f5b38f7b9b.jpeg",
+  "image_description": "Carreggiata a due sensi di marcia con tre corsie per senso di marcia. La strada è rappresentata come una carreggiata a due sensi di marcia, ciascuno con tre corsie separate da strisce bianche discontinue. Ogni senso di marcia è ulteriormente separato da una doppia striscia bianca continua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada. La strada è divisa in due sezioni da una doppia linea bianca continua, indicando due sensi di marcia opposti. Ogni senso di marcia è ulteriormente suddiviso in tre corsie da linee bianche discontinue. Pertanto, la strada presenta un totale di sei corsie, tre per ogni senso di marcia. Non sono presenti segnali stradali, veicoli o altri elementi che possano alterare la interpretazione della geometria della strada.",
+    "name": "Carreggiata a due sensi di marcia con tre corsie per senso di marcia",
+    "description": "La strada è rappresentata come una carreggiata a due sensi di marcia, ciascuno con tre corsie separate da strisce bianche discontinue. Ogni senso di marcia è ulteriormente separato da una doppia striscia bianca continua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione per file parallele",
+      "Condizioni di traffico e sicurezza"
+    ],
+    "exact_keywords": [
+      "file parallele",
+      "centri urbani",
+      "condizioni di traffico",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di marcia per file parallele nei centri abitati",
+      "condizioni di traffico e marcia per file parallele"
+    ],
+    "rule_explanation": "La marcia per file parallele nei centri urbani è vietata in ogni condizione di traffico per garantire la sicurezza e fluidità della circolazione."
+  }
+}

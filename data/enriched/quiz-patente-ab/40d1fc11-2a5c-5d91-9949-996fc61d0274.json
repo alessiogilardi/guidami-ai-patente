@@ -1,0 +1,32 @@
+{
+  "question_id": 4066,
+  "topic": "Segnali di pericolo",
+  "number": "19046",
+  "text": "In presenza del segnale raffigurato non è consentito impegnare il passaggio a livello se il traffico intenso impedisce di sgomberarlo",
+  "correct_answer": true,
+  "image": "accabdc7809596ef95d9e34d4b33d06b.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere o semibarriere. Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un simbolo nero che rappresenta un passaggio a livello con barriere, costituito da due elementi verticali collegati da tre elementi orizzontali. Il segnale è isolato, non inserito in una scena di guida o in sequenza con altri segnali.",
+    "name": "Segnale di passaggio a livello con barriere o semibarriere",
+    "description": "Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Passaggio a livello",
+      "Regola di condotta al passaggio a livello"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "barriere",
+      "sgomberare la intersezione",
+      "traffico intenso"
+    ],
+    "vector_search_queries": [
+      "obbligo di non impegnare passaggio a livello con traffico intenso",
+      "condotta da tenere in presenza di passaggio a livello con barriere"
+    ],
+    "rule_explanation": "Il segnale di pericolo per passaggio a livello impone di non impegnare l'area se il traffico impedisce di liberarla prontamente, per evitare di rimanere bloccati sui binari."
+  }
+}

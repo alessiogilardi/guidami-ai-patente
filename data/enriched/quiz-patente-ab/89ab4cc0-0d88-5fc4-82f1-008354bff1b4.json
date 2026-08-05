@@ -1,0 +1,27 @@
+{
+  "question_id": 4010,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18420",
+  "text": "In un passaggio a livello si possono trovare le luci gialle lampeggianti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica luminosa ai passaggi a livello",
+      "Dispositivi di sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "luci gialle lampeggianti",
+      "semaforo",
+      "barriere"
+    ],
+    "vector_search_queries": [
+      "segnaletica luminosa ai passaggi a livello",
+      "funzionamento luci gialle lampeggianti passaggio a livello"
+    ],
+    "rule_explanation": "Ai passaggi a livello, le luci gialle lampeggianti sono utilizzate per presegnalare l'imminente chiusura delle barriere e l'arresto dei veicoli, non per indicare che si possono attraversare."
+  }
+}

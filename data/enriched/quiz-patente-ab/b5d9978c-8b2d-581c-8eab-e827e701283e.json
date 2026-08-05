@@ -1,0 +1,29 @@
+{
+  "question_id": 4009,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18407",
+  "text": "Una zona a traffico limitato è un'area nella quale può essere limitata la circolazione solo a particolari categorie di utenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Zone a traffico limitato (ZTL)",
+      "Limitazioni alla circolazione",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "zona a traffico limitato",
+      "circolazione",
+      "limitazione",
+      "categorie di utenti"
+    ],
+    "vector_search_queries": [
+      "definizione e scopo delle zone a traffico limitato (ZTL)",
+      "tipologie di limitazioni alla circolazione nelle ZTL",
+      "regolamentazione accesso veicoli in aree a traffico limitato"
+    ],
+    "rule_explanation": "Le zone a traffico limitato (ZTL) sono aree in cui la circolazione può essere soggetta a restrizioni per specifiche categorie di utenti o veicoli, al fine di migliorare la qualità dell'aria e la vivibilità."
+  }
+}

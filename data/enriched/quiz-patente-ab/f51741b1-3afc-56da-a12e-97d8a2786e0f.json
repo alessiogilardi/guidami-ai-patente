@@ -1,0 +1,27 @@
+{
+  "question_id": 4650,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24919",
+  "text": "Se un infortunato della strada ha avuto un trauma della gabbia toracica, bisogna farlo stare alzato, per diminuire la fuoriuscita di sangue",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di trauma toracico",
+      "Gestione dell'ipotermia e dello shock"
+    ],
+    "exact_keywords": [
+      "trauma toracico",
+      "posizione dell'infortunato",
+      "ipotermia",
+      "shock"
+    ],
+    "vector_search_queries": [
+      "posizione corretta infortunato trauma toracico primo soccorso",
+      "gestione shock e ipotermia in caso di trauma toracico"
+    ],
+    "rule_explanation": "In caso di trauma toracico, l'infortunato va fatto sdraiare in posizione semi-seduta o supina con le gambe flesse per ridurre lo shock e prevenire l'ipotermia, non tenuto in posizione eretta."
+  }
+}

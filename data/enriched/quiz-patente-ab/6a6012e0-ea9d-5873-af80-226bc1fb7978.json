@@ -1,0 +1,30 @@
+{
+  "question_id": 4556,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23993",
+  "text": "Nel caso di collisione o di tamponamento, i paraurti sporgenti e rafforzati (bull bars) rendono i fuoristrada meno pericolosi per gli altri veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza stradale",
+      "Responsabilità in caso di incidente",
+      "Modifiche ai veicoli"
+    ],
+    "exact_keywords": [
+      "paraureti sporgenti",
+      "bull bars",
+      "veicoli a motore",
+      "idoneità alla circolazione",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "modifiche strutturali dei veicoli che aumentano la pericolosità",
+      "idoneità alla circolazione di veicoli con bull bars o paraurti modificati",
+      "normativa su accessori che alterano la sicurezza dei veicoli"
+    ],
+    "rule_explanation": "I dispositivi come i bull bars, che rendono i fuoristrada più pericolosi in caso di collisione, non sono ammessi se compromettono la sicurezza o l'integrità strutturale del veicolo."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4085,
+  "topic": "Segnali di pericolo",
+  "number": "19278",
+  "text": "Il segnale raffigurato preannuncia una strettoia",
+  "correct_answer": false,
+  "image": "9557ea08889ddcf8ba229d0cbe9160eb.jpeg",
+  "image_description": "Segnale di pericolo - Sdrucciolevolezza. Il segnale preannuncia un tratto di strada dove la superficie può diventare particolarmente sdrucciolevole, a causa di ghiaccio, pioggia o altre cause. È necessario moderare la velocità e prestare attenzione a possibili variazioni dell'aderenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un'automobile stilizzata che sta sbandando su una superficie stradale resa tortuosa da delle curve. Le ruote posteriori dell'auto sono visibilmente inclinate, indicando una perdita di aderenza. Il pittogramma rappresenta chiaramente il rischio di sbandamento dovuto a una superficie stradale sdrucciolevole.",
+    "name": "Segnale di pericolo - Sdrucciolevolezza",
+    "description": "Il segnale preannuncia un tratto di strada dove la superficie può diventare particolarmente sdrucciolevole, a causa di ghiaccio, pioggia o altre cause. È necessario moderare la velocità e prestare attenzione a possibili variazioni dell'aderenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di condizioni stradali anomale"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "sdrucciolevolezza",
+      "strada sdrucciolevole",
+      "aderenza"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo che preannunciano condizioni della strada non ordinarie",
+      "significato del segnale di pericolo di sdrucciolevolezza",
+      "differenza tra segnale di strettoia e segnale di sdrucciolevolezza"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante la sdrucciolevolezza preannuncia un tratto di strada con ridotta aderenza, non una strettoia. È necessario moderare la velocità."
+  }
+}

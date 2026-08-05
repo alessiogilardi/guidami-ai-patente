@@ -1,0 +1,30 @@
+{
+  "question_id": 4530,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23808",
+  "text": "Nel caso di ingombro della carreggiata per caduta accidentale del carico il conducente deve presegnalare l'ostacolo mediante il segnale di STOP",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di ostacolo imprevisto",
+      "Obblighi in caso di caduta del carico",
+      "Presegnalazione di pericolo temporaneo"
+    ],
+    "exact_keywords": [
+      "ingombro della carreggiata",
+      "caduta del carico",
+      "presegnalare l'ostacolo",
+      "segnali di pericolo",
+      "veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in caso di caduta del carico che ingombra la carreggiata",
+      "presegnalazione di ostacolo improvviso causato da carico caduto",
+      "uso dei segnali di pericolo per veicolo fermo o ostacolo improvviso"
+    ],
+    "rule_explanation": "In caso di ingombro della carreggiata per caduta del carico, il conducente deve presegnalare l'ostacolo con i segnali di pericolo, non con il segnale di STOP."
+  }
+}

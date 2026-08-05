@@ -1,0 +1,28 @@
+{
+  "question_id": 4673,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25088",
+  "text": "Il rumore prodotto dai veicoli a motore è causato solo dal motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Fonti di rumore dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "rumore",
+      "veicoli a motore",
+      "motore",
+      "dispositivi di scarico",
+      "pneumatici"
+    ],
+    "vector_search_queries": [
+      "fonti di rumore dei veicoli a motore",
+      "componenti responsabili dell'inquinamento acustico da veicoli"
+    ],
+    "rule_explanation": "Il rumore prodotto dai veicoli a motore non deriva solo dal motore, ma anche da altri componenti come il sistema di scarico e gli pneumatici."
+  }
+}

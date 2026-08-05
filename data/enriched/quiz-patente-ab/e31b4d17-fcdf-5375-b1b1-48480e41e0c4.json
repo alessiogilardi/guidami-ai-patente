@@ -1,0 +1,27 @@
+{
+  "question_id": 4638,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24840",
+  "text": "L'idoneità alla guida può essere compromessa se si fa uso di integratori alimentari",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Idoneità alla guida",
+      "Effetti di sostanze sulla capacità di condurre un veicolo"
+    ],
+    "exact_keywords": [
+      "idoneità alla guida",
+      "integratori alimentari",
+      "effetti sulla capacità di reazione",
+      "sostanze che alterano la capacità di guida"
+    ],
+    "vector_search_queries": [
+      "sostanze che compromettono l'idoneità alla guida",
+      "effetti degli integratori alimentari sulla capacità di guida"
+    ],
+    "rule_explanation": "L'idoneità alla guida non è compromessa dall'uso di integratori alimentari, a meno che questi non contengano sostanze farmacologicamente attive che alterano la capacità di reazione."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4404,
+  "topic": "Distanza di sicurezza",
+  "number": "22630",
+  "text": "Lo spazio totale di arresto aumenta se i pneumatici sono usurati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di arresto",
+      "Condizioni dei pneumatici"
+    ],
+    "exact_keywords": [
+      "spazio totale di arresto",
+      "pneumatici usurati",
+      "aderenza al fondo stradale",
+      "distanza di frenata"
+    ],
+    "vector_search_queries": [
+      "impatto dell'usura dei pneumatici sullo spazio di arresto",
+      "relazione tra aderenza pneumatici e distanza di frenata",
+      "aumento spazio totale di arresto con pneumatici usurati"
+    ],
+    "rule_explanation": "Lo spazio totale di arresto, che include lo spazio di reazione e la distanza di frenata, aumenta con l'usura dei pneumatici a causa della ridotta aderenza al fondo stradale."
+  }
+}

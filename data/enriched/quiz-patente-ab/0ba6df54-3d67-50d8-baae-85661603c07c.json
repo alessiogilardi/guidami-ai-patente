@@ -1,0 +1,32 @@
+{
+  "question_id": 4191,
+  "topic": "Segnali di precedenza",
+  "number": "20484",
+  "text": "La prescrizione del segnale raffigurato, se abbinato ad un semaforo, vale quando il semaforo funziona a luce gialla lampeggiante",
+  "correct_answer": true,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Intersezione stradale",
+      "Funzionamento semaforico"
+    ],
+    "exact_keywords": [
+      "segnale di dare precedenza",
+      "semaforo a luce gialla lampeggiante",
+      "intersezione",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "prescrizione segnale dare precedenza con semaforo giallo lampeggiante",
+      "obbligo di dare precedenza in intersezione con semaforo giallo lampeggiante"
+    ],
+    "rule_explanation": "La prescrizione del segnale di 'dare precedenza' è valida anche quando il semaforo, abbinato, funziona a luce gialla lampeggiante, imponendo di cedere il passo ai veicoli circolanti sulla strada da impegnare."
+  }
+}

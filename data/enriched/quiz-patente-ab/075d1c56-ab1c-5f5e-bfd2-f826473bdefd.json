@@ -1,0 +1,27 @@
+{
+  "question_id": 4574,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24167",
+  "text": "L'uso delle luci anabbaglianti è obbligatorio quando si sorpassa un'auto della polizia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei dispositivi di illuminazione",
+      "Obblighi durante il sorpasso"
+    ],
+    "exact_keywords": [
+      "luci anabbaglianti",
+      "sorpasso",
+      "veicolo di polizia",
+      "segnali luminosi"
+    ],
+    "vector_search_queries": [
+      "obbligo luci anabbaglianti durante sorpasso veicolo di polizia",
+      "uso luci durante sorpasso di veicoli speciali"
+    ],
+    "rule_explanation": "L'uso delle luci anabbaglianti non è obbligatorio durante il sorpasso di un veicolo di polizia, ma è richiesto in specifiche condizioni di visibilità o orarie."
+  }
+}

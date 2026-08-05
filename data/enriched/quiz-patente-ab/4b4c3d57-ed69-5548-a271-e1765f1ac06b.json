@@ -1,0 +1,34 @@
+{
+  "question_id": 4077,
+  "topic": "Segnali di pericolo",
+  "number": "19183",
+  "text": "In presenza del segnale raffigurato non è consentito sorpassare i veicoli che si sono arrestati per far attraversare la carreggiata ai ciclisti",
+  "correct_answer": true,
+  "image": "307718ad8143b32f43530c57270b75ee.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento ciclisti. Il segnale preannuncia la presenza di ciclisti sulla carreggiata o nelle immediate vicinanze, come in un attraversamento ciclabile o una pista ciclabile adiacente. Impone al conducente di moderare la velocità e di prestare attenzione per non costituire pericolo o intralcio per i ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una figura stilizzata di un ciclista in movimento. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
+    "name": "Segnale di pericolo - Attraversamento ciclisti",
+    "description": "Il segnale preannuncia la presenza di ciclisti sulla carreggiata o nelle immediate vicinanze, come in un attraversamento ciclabile o una pista ciclabile adiacente. Impone al conducente di moderare la velocità e di prestare attenzione per non costituire pericolo o intralcio per i ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo specifico",
+      "Attraversamento ciclisti",
+      "Obblighi del conducente in presenza di segnali di pericolo"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento ciclisti",
+      "sorpasso vietato",
+      "ciclisti",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "regole di sorpasso in presenza di segnale di attraversamento ciclisti",
+      "obblighi del conducente al segnale di pericolo per ciclisti",
+      "divieto di sorpasso per far attraversare ciclisti"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'attraversamento ciclisti' impone al conducente di moderare la velocità e di prestare attenzione, non consentendo il sorpasso di veicoli fermi per far attraversare i ciclisti."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4437,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22937",
+  "text": "Nelle strade a doppio senso di circolazione non è consentito effettuare l'inversione del senso di marcia in vicinanza o in corrispondenza di curve",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inversione del senso di marcia",
+      "Divieti di manovra",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "inversione del senso di marcia",
+      "strade a doppio senso di circolazione",
+      "curve",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "divieto di inversione del senso di marcia in curva",
+      "manovra di inversione del senso di marcia in strade a doppio senso con visibilità limitata"
+    ],
+    "rule_explanation": "È vietato invertire il senso di marcia in prossimità o in corrispondenza di curve dove la visibilità è limitata, per prevenire incidenti."
+  }
+}

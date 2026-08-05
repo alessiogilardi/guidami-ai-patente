@@ -1,0 +1,27 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24753",
+  "text": "In caso di nebbia fitta è opportuno evitare di fermarsi sulla carreggiata, se non per cause di forza maggiore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti in condizioni di scarsa visibilità",
+      "Comportamento in caso di arresto del veicolo su strade extraurbane"
+    ],
+    "exact_keywords": [
+      "nebbia fitta",
+      "fermarsi sulla carreggiata",
+      "forza maggiore",
+      "segnalazione del veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "divieto di fermarsi sulla carreggiata in caso di nebbia",
+      "obblighi del conducente in caso di arresto del veicolo per nebbia fitta"
+    ],
+    "rule_explanation": "In caso di nebbia fitta, è vietato fermarsi sulla carreggiata, salvo cause di forza maggiore, e occorre segnalare adeguatamente il veicolo fermo."
+  }
+}

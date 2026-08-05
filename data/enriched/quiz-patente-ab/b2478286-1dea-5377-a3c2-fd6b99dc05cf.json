@@ -1,0 +1,28 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24603",
+  "text": "La revisione della patente di guida è disposta quando si accerti che il conducente è alla guida senza aver con sé la patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di avere con sé la patente",
+      "Sanzioni per la guida senza patente"
+    ],
+    "exact_keywords": [
+      "revisione patente",
+      "conducente",
+      "senza aver con sé la patente",
+      "sanzione amministrativa"
+    ],
+    "vector_search_queries": [
+      "conseguenze guida senza patente cartacea",
+      "sanzione per mancata esibizione patente di guida",
+      "differenza tra sanzione e revisione patente"
+    ],
+    "rule_explanation": "La guida senza aver con sé la patente comporta una sanzione amministrativa, non la revisione della patente. La revisione è disposta per accertamenti sull'idoneità alla guida."
+  }
+}

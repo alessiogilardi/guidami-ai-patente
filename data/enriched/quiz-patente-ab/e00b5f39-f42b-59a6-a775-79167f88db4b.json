@@ -1,0 +1,28 @@
+{
+  "question_id": 4041,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18748",
+  "text": "Nello specchietto retrovisore il conducente deve controllare solo se sopraggiungono autocarri o autobus",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo della visuale posteriore",
+      "Doveri del conducente",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "specchietto retrovisore",
+      "controllo",
+      "conducente",
+      "veicoli in arrivo"
+    ],
+    "vector_search_queries": [
+      "controllo specchietto retrovisore per veicoli in arrivo",
+      "obbligo conducente di controllare tutti i veicoli dietro di sé"
+    ],
+    "rule_explanation": "Il conducente, usando lo specchietto retrovisore, deve controllare tutti i veicoli in arrivo, non solo autocarri o autobus, per garantire la sicurezza della manovra."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4432,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22895",
+  "text": "Giungendo in vicinanza di un incrocio si deve usare la massima prudenza per evitare incidenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di prudenza alla guida",
+      "Comportamento ai incroci"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "massima prudenza",
+      "evitare incidenti",
+      "regola generale di prudenza"
+    ],
+    "vector_search_queries": [
+      "prudenza alla guida in prossimità di incroci",
+      "obbligo di usare la massima prudenza per evitare incidenti agli incroci"
+    ],
+    "rule_explanation": "Avvicinandosi a un incrocio, il conducente deve usare la massima prudenza per prevenire incidenti, indipendentemente dalle regole di precedenza."
+  }
+}

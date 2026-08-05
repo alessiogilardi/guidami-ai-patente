@@ -1,0 +1,27 @@
+{
+  "question_id": 4553,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23973",
+  "text": "Il conducente di autoveicolo deve prevedere manovre improvvise altrui, come il procedere a zig-zag di un ciclomotore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza alla guida",
+      "Prevedibilità delle azioni altrui"
+    ],
+    "exact_keywords": [
+      "manovre improvvise altrui",
+      "conducente",
+      "autoveicolo",
+      "ciclo-motore"
+    ],
+    "vector_search_queries": [
+      "previsione manovre improvvise altrui",
+      "obbligo di prudenza del conducente verso altri utenti della strada"
+    ],
+    "rule_explanation": "Il conducente deve prevedere le altrui manovre improvvise, anche quelle di veicoli più piccoli come i ciclomotori, per garantire la sicurezza della circolazione."
+  }
+}

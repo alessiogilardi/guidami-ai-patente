@@ -1,0 +1,29 @@
+{
+  "question_id": 4603,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24438",
+  "text": "I guanti da motociclisti proteggono il palmo della mano in caso di caduta con strisciamento sull'asfalto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di protezione individuale per motociclisti",
+      "Sicurezza attiva e passiva nella guida motociclistica"
+    ],
+    "exact_keywords": [
+      "guanti",
+      "motociclisti",
+      "protezione",
+      "caduta",
+      "asfalto"
+    ],
+    "vector_search_queries": [
+      "funzione protettiva dei guanti per motociclisti in caso di caduta",
+      "obbligo di indossare guanti omologati per motociclisti",
+      "protezione del palmo della mano in caso di strisciamento sull'asfalto per motociclisti"
+    ],
+    "rule_explanation": "I guanti sono dispositivi di protezione individuale obbligatori per i motociclisti, progettati per proteggere le mani in caso di caduta, specialmente durante lo strisciamento sull'asfalto."
+  }
+}

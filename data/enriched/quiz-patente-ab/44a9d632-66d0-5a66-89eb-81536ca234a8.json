@@ -1,0 +1,32 @@
+{
+  "question_id": 4335,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21883",
+  "text": "Il segnale raffigurato obbliga a sostare a destra",
+  "correct_answer": false,
+  "image": "da5d3e67a29eb505cdd61ed330cdea4c.jpeg",
+  "image_description": "Segnale di obbligo, percorso da seguire (freccia verso il basso). Il segnale impone di circolare attenendosi al lato destro dell'ostacolo o dell'area delimitata dalla segnalazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale quadrato con sfondo a bande diagonali alternate rosse e bianche. Al centro, è presente un disco blu con un bordo bianco, contenente una freccia bianca obliqua che punta verso il basso e verso destra. Questo tipo di segnaletica indica un obbligo di percorso.",
+    "name": "Segnale di obbligo, percorso da seguire (freccia verso il basso)",
+    "description": "Il segnale impone di circolare attenendosi al lato destro dell'ostacolo o dell'area delimitata dalla segnalazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di circolazione a destra",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali complementari",
+      "segnali temporanei",
+      "obbligo di sosta",
+      "percorso da seguire"
+    ],
+    "vector_search_queries": [
+      "obbligo di attenersi al lato destro di un ostacolo con segnaletica temporanea",
+      "interpretazione segnale percorso da seguire (freccia verso il basso)",
+      "differenza tra obbligo di sosta e obbligo di percorso a destra"
+    ],
+    "rule_explanation": "Il segnale di 'percorso da seguire' (freccia verso il basso) impone di circolare attenendosi al lato destro dell'ostacolo o dell'area segnalata, non di sostare."
+  }
+}

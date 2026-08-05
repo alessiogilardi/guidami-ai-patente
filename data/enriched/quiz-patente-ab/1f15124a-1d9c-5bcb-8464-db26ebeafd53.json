@@ -1,0 +1,29 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25402",
+  "text": "La precisione della sterzata è influenzata dalla scarsa pressione dell'olio di lubrificazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Componenti meccaniche del veicolo"
+    ],
+    "exact_keywords": [
+      "sterzata",
+      "pressione dell'olio",
+      "lubrificazione",
+      "componenti meccaniche"
+    ],
+    "vector_search_queries": [
+      "influenza della pressione olio sterzo",
+      "manutenzione sistema sterzo",
+      "componenti critiche per precisione sterzata"
+    ],
+    "rule_explanation": "La precisione della sterzata è influenzata principalmente dal sistema di sterzo e dalla pressione degli pneumatici, non dalla pressione dell'olio di lubrificazione."
+  }
+}

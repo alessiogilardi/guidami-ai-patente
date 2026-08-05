@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22315",
+  "text": "E' obbligatorio ridurre la velocità in prossimità degli autovelox",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Limiti di velocità",
+      "Autovelox"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "autovelox",
+      "riduzione di velocità",
+      "limiti massimi di velocità"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità in prossimità degli autovelox",
+      "rispetto dei limiti di velocità imposti dagli autovelox"
+    ],
+    "rule_explanation": "Non sussiste un obbligo generale di ridurre la velocità in prossimità degli autovelox, ma solo l'obbligo di rispettare i limiti massimi di velocità imposti."
+  }
+}

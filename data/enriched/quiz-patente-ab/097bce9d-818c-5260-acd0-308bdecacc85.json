@@ -1,0 +1,30 @@
+{
+  "question_id": 4672,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25082",
+  "text": "Per evitare rumori fastidiosi durante la guida, si deve usare il clacson solamente per motivi di sicurezza stradale (trasporto feriti o ammalati, pericolo immediato)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso del clacson",
+      "Sicurezza stradale",
+      "Inquinamento acustico"
+    ],
+    "exact_keywords": [
+      "clacson",
+      "uso improprio",
+      "sicurezza stradale",
+      "pericolo immediato",
+      "rumori fastidiosi"
+    ],
+    "vector_search_queries": [
+      "uso del clacson per motivi di sicurezza stradale",
+      "divieto di uso improprio del clacson per evitare rumori fastidiosi",
+      "quando è consentito l'uso del clacson"
+    ],
+    "rule_explanation": "Il clacson non va usato per richiamare l'attenzione o per motivi di disturbo, ma solo in caso di reale necessità per la sicurezza stradale o per trasportare feriti/ammalati."
+  }
+}

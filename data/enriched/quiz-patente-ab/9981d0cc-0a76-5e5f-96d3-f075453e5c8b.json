@@ -1,0 +1,29 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24821",
+  "text": "Le rotaie del tram o i tombini presenti sulla carreggiata stradale non costituiscono un pericolo per un conducente di veicolo a due ruote",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo derivante da ostacoli sulla carreggiata",
+      "Comportamento alla guida per la sicurezza"
+    ],
+    "exact_keywords": [
+      "rotaie del tram",
+      "tombini",
+      "carreggiata",
+      "pericolo",
+      "veicolo a due ruote"
+    ],
+    "vector_search_queries": [
+      "pericolo rotaie tram veicoli a due ruote",
+      "rischio tombini carreggiata motocicli",
+      "condotta di guida sicura in presenza di ostacoli fissi"
+    ],
+    "rule_explanation": "Le rotaie del tram e i tombini sulla carreggiata possono costituire un pericolo per i veicoli a due ruote, richiedendo particolare prudenza."
+  }
+}

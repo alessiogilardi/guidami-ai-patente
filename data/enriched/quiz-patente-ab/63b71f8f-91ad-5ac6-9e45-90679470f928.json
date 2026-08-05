@@ -1,0 +1,34 @@
+{
+  "question_id": 4001,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18319",
+  "text": "In una carreggiata extraurbana del tipo rappresentato si può sorpassare indifferentemente sia da destra che da sinistra",
+  "correct_answer": false,
+  "image": "637129125cd2305679f68e11751ad483.jpeg",
+  "image_description": "Carreggiata a doppio senso di circolazione con quattro corsie. La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale. Si osservano due carreggiate separate da una linea bianca continua. Ogni carreggiata è a sua volta suddivisa in due corsie da strisce bianche discontinue. Questo schema indica una strada con due corsie per senso di marcia, per un totale di quattro corsie. La linea continua centrale separa i due sensi di marcia. Le strisce discontinue all'interno di ciascuna carreggiata indicano la possibilità di superamento o cambio di corsia all'interno dello stesso senso di marcia. Pertanto, la scena rappresenta una carreggiata a doppio senso di circolazione con quattro corsie totali.",
+    "name": "Carreggiata a doppio senso di circolazione con quattro corsie",
+    "description": "La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso",
+      "Regole di circolazione su strade extraurbane",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "carreggiata extraurbana",
+      "doppio senso di circolazione",
+      "linea continua",
+      "linea discontinua"
+    ],
+    "vector_search_queries": [
+      "regola generale del sorpasso a sinistra su strade extraurbane a doppio senso",
+      "divieto di sorpasso a destra su carreggiate extraurbane con linea continua",
+      "sorpasso su strade extraurbane con più corsie per senso di marcia"
+    ],
+    "rule_explanation": "Il sorpasso su carreggiate extraurbane a doppio senso di circolazione deve avvenire a sinistra del veicolo sorpassato, salvo eccezioni specifiche. La manovra da destra è vietata se non in casi particolari e mai in presenza di linea continua."
+  }
+}

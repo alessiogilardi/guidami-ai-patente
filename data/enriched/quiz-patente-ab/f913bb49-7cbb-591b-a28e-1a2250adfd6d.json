@@ -1,0 +1,30 @@
+{
+  "question_id": 4674,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25095",
+  "text": "Per diminuire il rumore emesso dai veicoli a motore è opportuno praticare dei fori nel dispositivo silenziatore (marmitta)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Manutenzione del veicolo",
+      "Dispositivi di scarico dei gas"
+    ],
+    "exact_keywords": [
+      "rumore",
+      "veicoli a motore",
+      "dispositivo silenziatore",
+      "marmitta",
+      "inquinamento acustico"
+    ],
+    "vector_search_queries": [
+      "modifica dispositivo silenziatore per aumentare rumore",
+      "divieto di aumentare il rumore dei veicoli a motore",
+      "normativa inquinamento acustico da veicoli"
+    ],
+    "rule_explanation": "La modifica del dispositivo silenziatore per aumentarne il rumore è vietata in quanto costituisce inquinamento acustico e non è una pratica consentita per la riduzione del rumore."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4013,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18446",
+  "text": "L'autostrada non ha incroci a raso che l'attraversano",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Caratteristiche delle autostrade",
+      "Infrastrutture stradali"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "incroci a raso",
+      "strade intersecanti",
+      "svincoli"
+    ],
+    "vector_search_queries": [
+      "definizione di autostrada nel CdS",
+      "caratteristiche costruttive delle autostrade",
+      "assenza di incroci a raso sulle autostrade"
+    ],
+    "rule_explanation": "Le autostrade sono strade a carreggiate indipendenti, senza intersezioni a raso, accessibili tramite rampe di entrata e uscita (svincoli)."
+  }
+}

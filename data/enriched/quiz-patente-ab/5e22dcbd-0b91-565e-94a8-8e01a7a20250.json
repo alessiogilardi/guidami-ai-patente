@@ -1,0 +1,27 @@
+{
+  "question_id": 4577,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24185",
+  "text": "La luce della targa di un autoveicolo si deve accendere solo di notte",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi di illuminazione dei veicoli",
+      "Uso delle luci per la visibilità targa"
+    ],
+    "exact_keywords": [
+      "luce targa",
+      "autoveicolo",
+      "visibilità",
+      "condizioni di luce avverse"
+    ],
+    "vector_search_queries": [
+      "obbligo accensione luce targa autoveicolo condizioni di scarsa visibilità",
+      "quando si deve accendere la luce targa di un veicolo"
+    ],
+    "rule_explanation": "La luce della targa deve essere accesa sempre quando la visibilità è ridotta, non solo di notte."
+  }
+}

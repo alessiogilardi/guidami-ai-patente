@@ -1,0 +1,29 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23585",
+  "text": "Il sorpasso a destra è consentito quando il filobus è fermo per la salita e la discesa dei passeggeri, anche se non esiste salvagente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale del sorpasso",
+      "Sorpasso a destra",
+      "Veicoli in sosta o fermi per servizio pubblico"
+    ],
+    "exact_keywords": [
+      "sorpasso a destra",
+      "filobus",
+      "salita e discesa passeggeri",
+      "salvagente"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso a destra",
+      "sorpasso filobus fermo per salita/discesa passeggeri",
+      "sorpasso a destra in presenza di salvagente"
+    ],
+    "rule_explanation": "Il sorpasso a destra è vietato, salvo eccezioni specifiche non applicabili in questo caso. I filobus in fermata per salita/discesa passeggeri non rientrano tra le eccezioni che consentono il sorpasso a destra."
+  }
+}

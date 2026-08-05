@@ -1,0 +1,31 @@
+{
+  "question_id": 4308,
+  "topic": "Segnali di indicazione",
+  "number": "21629",
+  "text": "Il segnale raffigurato vieta il transito ai veicoli che superano a pieno carico 60 tonnellate",
+  "correct_answer": false,
+  "image": "971e98d0321dab35827073bdfb4eb51a.jpeg",
+  "image_description": "Segnale di limite minimo di velocità. Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è presente il numero '60' in bianco. Questo è un segnale di prescrizione che indica un limite minimo di velocità.",
+    "name": "Segnale di limite minimo di velocità",
+    "description": "Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Limiti di velocità"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "limite minimo di velocità",
+      "divieto di transito",
+      "veicoli a pieno carico"
+    ],
+    "vector_search_queries": [
+      "segnali che impongono limite minimo di velocità",
+      "differenza tra segnale di limite minimo di velocità e divieto di transito per peso"
+    ],
+    "rule_explanation": "Il segnale raffigurato impone un limite minimo di velocità, non un divieto di transito per veicoli a pieno carico oltre un certo peso."
+  }
+}

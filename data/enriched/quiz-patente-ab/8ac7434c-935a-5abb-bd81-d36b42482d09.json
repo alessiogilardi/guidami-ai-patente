@@ -1,0 +1,30 @@
+{
+  "question_id": 4043,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18764",
+  "text": "Quando le persone anziane attraversano la carreggiata bisogna tenere presente che potrebbero fermarsi improvvisamente al centro della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Attraversamento stradale da parte di pedoni anziani",
+      "Guida prudente e attenzione alla circolazione"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "attraversano la carreggiata",
+      "fermarsi improvvisamente",
+      "centro della strada",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente verso pedoni anziani che attraversano la strada",
+      "prevedere possibili fermate improvvise di anziani al centro della carreggiata",
+      "dovere di attenzione verso utenti deboli della strada"
+    ],
+    "rule_explanation": "Il conducente deve prestare particolare attenzione ai pedoni anziani che attraversano la carreggiata, prevedendo la possibilità che possano fermarsi improvvisamente al centro della strada."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4044,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18786",
+  "text": "Se un pedone con bastone bianco attraversa la strada fuori dalle strisce pedonali, bisogna suonare il clacson per sollecitarlo ad attraversare rapidamente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela dei pedoni e utenti deboli",
+      "Comportamento prudente alla guida"
+    ],
+    "exact_keywords": [
+      "pedone",
+      "bastone bianco",
+      "strisce pedonali",
+      "clacson",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "uso del clacson per segnalare pericolo o evitare incidenti",
+      "obbligo di riguardo verso i pedoni in difficoltà"
+    ],
+    "rule_explanation": "Il clacson non va usato per sollecitare i pedoni, specialmente se in difficoltà, ma solo per segnalare un pericolo imminente o per evitare incidenti."
+  }
+}

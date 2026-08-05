@@ -1,0 +1,32 @@
+{
+  "question_id": 4268,
+  "topic": "Segnali di indicazione",
+  "number": "21239",
+  "text": "Il segnale raffigurato si può trovare all'interno di un segnale di preavviso di bivio stradale",
+  "correct_answer": true,
+  "image": "d7cc4dc22ac0caca9adce872f7ee58a4.jpeg",
+  "image_description": "Segnale di itinerario internazionale. Il segnale indica un itinerario di strada internazionale, specificamente la E55.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare di colore verde scuro con bordo bianco. Al suo interno, in lettere e numeri bianchi, è riportata la sigla \"E 55\". Questo tipo di segnale identifica un itinerario di strada di interesse internazionale.",
+    "name": "Segnale di itinerario internazionale",
+    "description": "Il segnale indica un itinerario di strada internazionale, specificamente la E55."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di preavviso",
+      "Segnali di itinerario"
+    ],
+    "exact_keywords": [
+      "segnali di preavviso",
+      "segnali di itinerario",
+      "strada europea",
+      "bivio"
+    ],
+    "vector_search_queries": [
+      "preavviso di bivio stradale per itinerario internazionale",
+      "segnaletica di itinerario europeo e segnali di preavviso"
+    ],
+    "rule_explanation": "I segnali di itinerario, come la E55, possono essere preannunciati da segnali di preavviso di bivio stradale che indicano la direzione da seguire per l'itinerario."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4614,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24562",
+  "text": "La patente di categoria B con codice armonizzato 96, abilita alla guida di autosnodati con massa massima autorizzata superiore a 4.250 chilogrammi, ma non superiore a 7.500 chilogrammi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria B con codice 96",
+      "Massa massima autorizzata del veicolo",
+      "Autosnodati"
+    ],
+    "exact_keywords": [
+      "patente B codice 96",
+      "autosnodati",
+      "massa massima autorizzata",
+      "7.500 kg"
+    ],
+    "vector_search_queries": [
+      "limiti massa massima autorizzata per patente B con codice 96",
+      "categoria patente B codice 96 e guida autosnodati"
+    ],
+    "rule_explanation": "La patente B con codice 96 abilita alla guida di complessi veicolari con motrice di categoria B e massa massima autorizzata fino a 4.250 kg, non di autosnodati con massa superiore."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4439,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22960",
+  "text": "In presenza del segnale di STOP non occorre arrestarsi, se non vi è la linea trasversale di arresto e non si vedono sopraggiungere veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di arresto al segnale di STOP",
+      "Segnaletica stradale di pericolo e obbligo",
+      "Precedenza ai segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale di STOP",
+      "arrestarsi",
+      "linea trasversale di arresto",
+      "veicoli in avvicinamento"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto al segnale di STOP anche senza linea di arresto",
+      "rispetto della precedenza al segnale di STOP",
+      "funzione del segnale di STOP e della linea di arresto"
+    ],
+    "rule_explanation": "Al segnale di STOP è sempre obbligatorio arrestarsi, anche in assenza della linea di arresto e di veicoli in avvicinamento, per rispettare la precedenza."
+  }
+}

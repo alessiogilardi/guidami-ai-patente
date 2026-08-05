@@ -1,0 +1,29 @@
+{
+  "question_id": 4044,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18778",
+  "text": "Il conducente deve fermarsi per concedere la precedenza al pedone sordocieco che, con il bastone bianco-rosso, attraversa la strada fuori dalle strisce pedonali",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dovere di prudenza e attenzione",
+      "Tutela dei pedoni e utenti deboli",
+      "Attraversamento della carreggiata"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "pedone",
+      "sordocieco",
+      "bastone bianco-rosso",
+      "attraversamento della carreggiata"
+    ],
+    "vector_search_queries": [
+      "precedenza pedone sordocieco fuori dalle strisce",
+      "obbligo di fermarsi per pedone con bastone bianco-rosso"
+    ],
+    "rule_explanation": "Il conducente deve fermarsi per dare la precedenza al pedone sordocieco, anche se attraversa fuori dalle strisce pedonali, riconoscibile dal bastone bianco-rosso."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24767",
+  "text": "Dopo un incidente stradale è obbligatorio apporre il segnale mobile di pericolo sul lunotto posteriore del veicolo, prima di andar via",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi in caso di incidente stradale",
+      "Segnalazione di pericolo dinamico"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "segnalazione mobile di pericolo",
+      "veicolo fermo",
+      "dispositivo di protezione"
+    ],
+    "vector_search_queries": [
+      "posizionamento segnale mobile di pericolo dopo incidente",
+      "obblighi conducente in caso di incidente stradale",
+      "segnalazione di veicolo fermo in carreggiata"
+    ],
+    "rule_explanation": "Dopo un incidente, il segnale mobile di pericolo va posizionato dietro il veicolo fermo, non sul lunotto posteriore, e solo se le condizioni lo richiedono."
+  }
+}

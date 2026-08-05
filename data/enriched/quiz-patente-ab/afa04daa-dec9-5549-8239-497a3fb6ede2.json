@@ -1,0 +1,28 @@
+{
+  "question_id": 4531,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23813",
+  "text": "In caso di ingombro della carreggiata per avaria del veicolo, il conducente non è tenuto a spostarlo, in attesa dei soccorsi, se il traffico è scarso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ingombro della carreggiata",
+      "Obbligo di rimozione del veicolo in avaria",
+      "Sicurezza della circolazione"
+    ],
+    "exact_keywords": [
+      "avaria",
+      "ingombro della carreggiata",
+      "rimozione del veicolo",
+      "soccorsi stradali"
+    ],
+    "vector_search_queries": [
+      "obbligo rimozione veicolo in avaria dalla carreggiata",
+      "condizioni per la rimozione di un veicolo che ingombra la strada"
+    ],
+    "rule_explanation": "Il conducente è sempre tenuto a rimuovere il veicolo in avaria dalla carreggiata, se possibile, anche in caso di traffico scarso, per non costituire pericolo o intralcio."
+  }
+}

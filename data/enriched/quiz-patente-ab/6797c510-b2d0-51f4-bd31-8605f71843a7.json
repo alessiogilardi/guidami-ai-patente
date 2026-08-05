@@ -1,0 +1,27 @@
+{
+  "question_id": 4686,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25168",
+  "text": "La forza aderente consente il movimento del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Forza di aderenza pneumatico-strada",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "forza aderente",
+      "movimento del veicolo",
+      "aderenza",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "ruolo della forza aderente nel movimento del veicolo",
+      "importanza dell'aderenza per accelerazione, decelerazione e sterzata"
+    ],
+    "rule_explanation": "La forza aderente, generata dall'attrito tra pneumatici e strada, è fondamentale per imprimere al veicolo le accelerazioni, le decelerazioni e le variazioni di direzione necessarie al movimento."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4254,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21107",
+  "text": "Il segnale luminoso in figura è un semaforo per i pedoni",
+  "correct_answer": true,
+  "image": "2129f648b286c6c53769eb3846a537af.jpeg",
+  "image_description": "Semaforo pedonale. Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un semaforo pedonale verticale. Le luci sono disposte dall'alto verso il basso: rossa, gialla e verde. Ogni luce contiene la sagoma stilizzata di una figura umana. La luce rossa mostra una figura ferma, la luce gialla una figura ferma, e la luce verde una figura in movimento. Il semaforo è montato su un palo o struttura simile, ma solo il semaforo stesso è visibile chiaramente. Non ci sono altri elementi stradali o veicoli nell'immagine.",
+    "name": "Semaforo pedonale",
+    "description": "Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica semaforica pedonale",
+      "Disposizioni specifiche per i pedoni"
+    ],
+    "exact_keywords": [
+      "semaforo pedonale",
+      "luce rossa",
+      "luce gialla",
+      "luce verde",
+      "attraversamento"
+    ],
+    "vector_search_queries": [
+      "funzionamento semaforo pedonale e significato luci",
+      "disciplina semaforica per l'attraversamento pedonale"
+    ],
+    "rule_explanation": "Il segnale semaforico pedonale, con le sue luci rossa, gialla e verde raffiguranti figure umane, regola l'attraversamento dei pedoni, indicando quando fermarsi, liberare la carreggiata o attraversare."
+  }
+}

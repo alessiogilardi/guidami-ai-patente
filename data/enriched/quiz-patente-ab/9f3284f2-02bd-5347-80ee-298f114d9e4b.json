@@ -1,0 +1,30 @@
+{
+  "question_id": 4273,
+  "topic": "Segnali di indicazione",
+  "number": "21283",
+  "text": "Il segnale raffigurato indica un senso unico frontale",
+  "correct_answer": true,
+  "image": "0130e542b3c053fd7dab618a819d645c.jpeg",
+  "image_description": "Senso unico frontale. Il segnale indica che la circolazione è consentita solo in direzione rettilinea.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con sfondo blu e un bordo bianco. Al centro del segnale è presente una freccia bianca rivolta verso l'alto, indicando la direzione rettilinea. Questo segnale appartiene alla categoria dei segnali di obbligo o indicazione.",
+    "name": "Senso unico frontale",
+    "description": "Il segnale indica che la circolazione è consentita solo in direzione rettilinea."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Senso unico"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "senso unico frontale",
+      "circolazione consentita"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di senso unico frontale",
+      "indicazione di circolazione consentita in un'unica direzione rettilinea"
+    ],
+    "rule_explanation": "Il segnale di senso unico frontale indica che la circolazione è permessa solo in direzione rettilinea."
+  }
+}

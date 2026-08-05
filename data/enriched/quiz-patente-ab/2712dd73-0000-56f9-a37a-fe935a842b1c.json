@@ -1,0 +1,30 @@
+{
+  "question_id": 4654,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24943",
+  "text": "Lo stato di shock può essere causato da una forte emozione (gioia, rabbia)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di shock",
+      "Cause psicogene dello shock",
+      "Risposta emotiva a stimoli forti"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "forte emozione",
+      "gioia",
+      "rabbia",
+      "stimoli psicologici"
+    ],
+    "vector_search_queries": [
+      "cause dello stato di shock psicogeno",
+      "shock emotivo da forti emozioni",
+      "effetti delle emozioni intense sulle funzioni vitali"
+    ],
+    "rule_explanation": "Lo stato di shock può essere indotto non solo da cause fisiche, ma anche da intense reazioni emotive come gioia o rabbia, che alterano le funzioni vitali."
+  }
+}

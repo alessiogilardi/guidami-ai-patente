@@ -1,0 +1,28 @@
+{
+  "question_id": 4568,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24126",
+  "text": "Trainare un rimorchio non comporta un aumento dei consumi di carburante se si marcia a velocità moderata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Consumo di carburante",
+      "Traino di rimorchi",
+      "Efficienza energetica"
+    ],
+    "exact_keywords": [
+      "rimorchio",
+      "consumo di carburante",
+      "velocità",
+      "traino"
+    ],
+    "vector_search_queries": [
+      "impatto del traino di rimorchi sui consumi di carburante",
+      "aumento dei consumi di carburante con rimorchio in relazione alla velocità"
+    ],
+    "rule_explanation": "Il traino di un rimorchio, anche a velocità moderata, comporta un aumento dei consumi di carburante a causa dell'incremento di peso e resistenza aerodinamica."
+  }
+}

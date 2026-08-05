@@ -1,0 +1,29 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23020",
+  "text": "Gli specchi retrovisori, nel loro complesso, consentono al conducente di vedere l'intera area di strada dietro e intorno al veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Campo visivo del conducente",
+      "Funzionalità degli specchi retrovisori",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "campo visivo",
+      "area di strada",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "limiti del campo visivo garantito dagli specchi retrovisori",
+      "area non visibile dagli specchi retrovisori",
+      "necessità di controllo diretto per aree non coperte dagli specchi"
+    ],
+    "rule_explanation": "Gli specchi retrovisori sono ausili alla visione, ma non garantiscono la visione completa dell'area circostante il veicolo, rendendo necessaria la verifica diretta."
+  }
+}

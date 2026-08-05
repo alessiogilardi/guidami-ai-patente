@@ -1,0 +1,30 @@
+{
+  "question_id": 4007,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18391",
+  "text": "L'intersezione (incrocio) a livelli sfalsati è munita di infrastrutture (rampe, sovrappassi, sottopassi) per il collegamento fra strade poste a livelli diversi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Intersezioni stradali",
+      "Infrastrutture stradali",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "intersezione a livelli sfalsati",
+      "rampe",
+      "sovrappassi",
+      "sottopassi",
+      "collegamento tra strade"
+    ],
+    "vector_search_queries": [
+      "definizione di intersezione a livelli sfalsati nel CdS",
+      "funzione di rampe, sovrappassi e sottopassi nelle intersezioni stradali",
+      "collegamento tra strade a livelli diversi tramite infrastrutture specifiche"
+    ],
+    "rule_explanation": "Le intersezioni a livelli sfalsati sono incroci dotati di rampe, sovrappassi o sottopassi che collegano strade poste a quote differenti, migliorando la fluidità e la sicurezza del traffico."
+  }
+}

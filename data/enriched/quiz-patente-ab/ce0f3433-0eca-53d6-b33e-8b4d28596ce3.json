@@ -1,0 +1,28 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25393",
+  "text": "Se lo sterzo vibra è bene far controllare la bilanciatura delle ruote anteriori",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Stabilità e tenuta di strada",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "sterzo",
+      "vibrazione",
+      "bilanciatura ruote",
+      "manutenzione"
+    ],
+    "vector_search_queries": [
+      "controllo bilanciatura ruote anteriori per vibrazioni sterzo",
+      "manutenzione veicolo per garantire tenuta di strada"
+    ],
+    "rule_explanation": "La vibrazione dello sterzo può indicare un problema di bilanciatura delle ruote anteriori, che richiede un controllo per garantire la stabilità e la sicurezza del veicolo."
+  }
+}

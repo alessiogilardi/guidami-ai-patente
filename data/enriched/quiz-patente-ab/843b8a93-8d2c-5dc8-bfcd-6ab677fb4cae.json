@@ -1,0 +1,28 @@
+{
+  "question_id": 4585,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24248",
+  "text": "L'uso dei proiettori a luce abbagliante è vietato, di norma, durante la marcia nei centri abitati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori a luce abbagliante",
+      "Centri abitati",
+      "Regole di circolazione notturna"
+    ],
+    "exact_keywords": [
+      "proiettori a luce abbagliante",
+      "centri abitati",
+      "marcia",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto uso luci abbaglianti nei centri abitati",
+      "condizioni di utilizzo dei proiettori a luce abbagliante in marcia"
+    ],
+    "rule_explanation": "L'uso dei proiettori a luce abbagliante è vietato nei centri abitati, salvo eccezioni specifiche, per non abbagliare gli altri utenti della strada."
+  }
+}

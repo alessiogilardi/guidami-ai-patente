@@ -1,0 +1,28 @@
+{
+  "question_id": 4508,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23623",
+  "text": "Il conducente di un autoveicolo in sosta su una strada stretta, prima di scendere deve controllare che non sopraggiungano veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di apertura sportello",
+      "Regole di condotta durante la sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "apertura sportello",
+      "manovra",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "condotta del conducente durante la sosta",
+      "apertura sportelli veicolo in sosta",
+      "prevenzione pericolo manovra di apertura portiera"
+    ],
+    "rule_explanation": "Prima di aprire la portiera del veicolo in sosta, il conducente deve assicurarsi che la manovra non costituisca pericolo o intralcio per gli altri utenti della strada."
+  }
+}

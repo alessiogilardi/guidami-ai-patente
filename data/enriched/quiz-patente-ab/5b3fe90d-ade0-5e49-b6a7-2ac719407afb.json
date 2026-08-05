@@ -1,0 +1,29 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24600",
+  "text": "La revisione della patente di guida può essere disposta quando il titolare circola con la revisione del veicolo scaduta da oltre un anno",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione della patente di guida",
+      "Revisione del veicolo",
+      "Sanzioni amministrative"
+    ],
+    "exact_keywords": [
+      "revisione della patente",
+      "revisione del veicolo",
+      "circolazione con revisione scaduta",
+      "sanzioni"
+    ],
+    "vector_search_queries": [
+      "conseguenze della circolazione con revisione del veicolo scaduta",
+      "differenza tra revisione patente e revisione veicolo",
+      "sanzioni per mancata revisione del veicolo"
+    ],
+    "rule_explanation": "La revisione della patente non è legata alla scadenza della revisione del veicolo. La circolazione con revisione del veicolo scaduta comporta sanzioni specifiche, ma non la revisione della patente."
+  }
+}

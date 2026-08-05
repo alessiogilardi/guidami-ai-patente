@@ -1,0 +1,28 @@
+{
+  "question_id": 4597,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24340",
+  "text": "Il casco è obbligatorio per i conducenti di ciclomotori a due ruote, solo se minorenni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Sistemi di ritenuta per conducenti e passeggeri"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "ciclomotori",
+      "conducenti",
+      "passeggeri",
+      "obbligatorio"
+    ],
+    "vector_search_queries": [
+      "obbligo casco ciclomotori minorenni e maggiorenni",
+      "uso del casco protettivo su ciclomotori per conducenti e passeggeri"
+    ],
+    "rule_explanation": "Il casco protettivo è obbligatorio per conducenti e passeggeri di ciclomotori, indipendentemente dall'età."
+  }
+}

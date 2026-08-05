@@ -1,0 +1,27 @@
+{
+  "question_id": 4499,
+  "topic": "Norme sul sorpasso",
+  "number": "23483",
+  "text": "Dopo aver eseguito una prima manovra di sorpasso, in strade ad almeno due corsie per senso di marcia, è possibile eseguirne un' altra senza rientrare a destra, se non si crea intralcio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso multiplo",
+      "Regole di circolazione sulle autostrade e strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "corsie per senso di marcia",
+      "rientrare a destra",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "sorpasso multiplo in strade con più corsie per senso di marcia",
+      "sorpasso senza rientrare a destra in presenza di più corsie per senso di marcia"
+    ],
+    "rule_explanation": "È consentito il sorpasso multiplo in strade con almeno due corsie per senso di marcia, purché non si crei intralcio e si rientri a destra appena possibile."
+  }
+}

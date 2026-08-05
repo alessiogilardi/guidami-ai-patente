@@ -1,0 +1,27 @@
+{
+  "question_id": 4680,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25137",
+  "text": "Per diminuire l'inquinamento dell'aria provocato dai gas di scarico del veicolo, bisogna sostituire periodicamente il filtro antipolline",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo delle emissioni inquinanti",
+      "Manutenzione del veicolo per la tutela ambientale"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "gas di scarico",
+      "filtro abitacolo",
+      "manutenzione del veicolo"
+    ],
+    "vector_search_queries": [
+      "riduzione inquinamento aria gas scarico veicolo",
+      "funzione filtro abitacolo e impatto ambientale"
+    ],
+    "rule_explanation": "La sostituzione periodica del filtro antipolline (o filtro abitacolo) serve a migliorare la qualità dell'aria all'interno dell'abitacolo, non a ridurre le emissioni inquinanti dei gas di scarico del veicolo."
+  }
+}

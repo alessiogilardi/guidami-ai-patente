@@ -1,0 +1,29 @@
+{
+  "question_id": 4043,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18770",
+  "text": "Quando le persone anziane attraversano la carreggiata bisogna tenere presente che hanno i riflessi più rapidi e quindi attraversano con più accortezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Comportamento prudente del conducente",
+      "Attraversamento stradale da parte di pedoni anziani"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "attraversamento carreggiata",
+      "condizioni di vulnerabilità",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "doveri del conducente verso pedoni anziani in attraversamento",
+      "adeguamento della velocità in presenza di utenti vulnerabili della strada",
+      "norme di comportamento in prossimità di attraversamenti pedonali con persone anziane"
+    ],
+    "rule_explanation": "I conducenti devono prestare particolare attenzione e moderare la velocità in prossimità di persone anziane che attraversano la carreggiata, poiché queste ultime hanno riflessi più lenti e necessitano di maggiore cautela."
+  }
+}

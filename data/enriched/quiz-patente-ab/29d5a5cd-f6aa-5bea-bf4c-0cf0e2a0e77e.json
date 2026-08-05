@@ -1,0 +1,27 @@
+{
+  "question_id": 4551,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23952",
+  "text": "Nessun veicolo può trainare o essere trainato da più di un veicolo (salvo il caso di trasporti eccezionali)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Traino di veicoli in avaria",
+      "Eccezioni al divieto di traino multiplo"
+    ],
+    "exact_keywords": [
+      "trainare",
+      "essere trainato",
+      "trasporto eccezionale",
+      "veicolo in avaria"
+    ],
+    "vector_search_queries": [
+      "divieto di traino multiplo per veicoli in avaria",
+      "condizioni per il traino di più veicoli contemporaneamente"
+    ],
+    "rule_explanation": "È vietato trainare o essere trainati da più di un veicolo, a meno che non si tratti di trasporti eccezionali autorizzati."
+  }
+}

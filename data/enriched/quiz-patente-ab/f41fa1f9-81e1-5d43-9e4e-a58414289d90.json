@@ -1,0 +1,29 @@
+{
+  "question_id": 4418,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22757",
+  "text": "Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre distogliere lo sguardo dal fascio luminoso per non essere abbagliati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Abbagliamento da fari",
+      "Norme di comportamento in caso di incrocio con veicoli in senso opposto",
+      "Uso dei fari e delle luci su strada extraurbana"
+    ],
+    "exact_keywords": [
+      "fari a luce abbagliante",
+      "distogliere lo sguardo",
+      "fascio luminoso",
+      "strada extraurbana",
+      "notte"
+    ],
+    "vector_search_queries": [
+      "comportamento in caso di incrocio con fari abbaglianti su strada extraurbana di notte",
+      "evitare l'abbagliamento da fari accesi in senso opposto"
+    ],
+    "rule_explanation": "Di notte, su strada extraurbana, in caso di incrocio con veicolo con fari abbaglianti accesi, è necessario distogliere lo sguardo dal fascio luminoso per evitare l'abbagliamento e mantenere il controllo del veicolo."
+  }
+}

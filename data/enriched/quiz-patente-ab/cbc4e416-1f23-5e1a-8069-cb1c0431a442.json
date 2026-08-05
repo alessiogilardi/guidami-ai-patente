@@ -1,0 +1,27 @@
+{
+  "question_id": 4421,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22780",
+  "text": "Per effettuare la svolta a destra bisogna segnalare in anticipo la manovra da compiere, azionando l'indicatore di direzione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Svolta a destra"
+    ],
+    "exact_keywords": [
+      "svolta a destra",
+      "indicatore di direzione",
+      "segnalare la manovra",
+      "anticipo"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalare la svolta a destra con indicatori di direzione",
+      "preavviso manovra di svolta a destra"
+    ],
+    "rule_explanation": "Per effettuare una svolta, sia a destra che a sinistra, è obbligatorio segnalare con anticipo la manovra azionando gli appositi indicatori di direzione."
+  }
+}

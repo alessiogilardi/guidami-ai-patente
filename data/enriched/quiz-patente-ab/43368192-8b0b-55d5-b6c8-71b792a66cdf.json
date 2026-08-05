@@ -1,0 +1,31 @@
+{
+  "question_id": 4282,
+  "topic": "Segnali di indicazione",
+  "number": "21385",
+  "text": "Il segnale raffigurato indica una strada interrotta",
+  "correct_answer": false,
+  "image": "ad2b98705bca9ce6b8bd0d6a5cc6a2c1.jpeg",
+  "image_description": "Preavviso di rotatoria con direzioni multiple. Il segnale preavvisa una rotatoria e indica le direzioni per le località raggiungibili: tangenziale/autostrade (A1, A3) in alto, quartiere Mazzini/Bologna/centro a sinistra, S. Lazzaro/Forlì a destra. La freccia centrale indica la direzione della rotatoria.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di rotatoria. Al centro è presente il simbolo di una rotatoria con quattro frecce che indicano le direzioni. In alto, su sfondo verde, è indicata la direzione \"tangenziale autostrade A1 A3\". A sinistra, su sfondo bianco, sono indicati \"quartiere Mazzini\", \"BOLOGNA\" e \"centro\". A destra, su sfondo blu, sono indicati \"S.LAZZARO\" e \"FORLI'\". Il segnale è di colore bianco con riquadri colorati per le diverse destinazioni.",
+    "name": "Preavviso di rotatoria con direzioni multiple",
+    "description": "Il segnale preavvisa una rotatoria e indica le direzioni per le località raggiungibili: tangenziale/autostrade (A1, A3) in alto, quartiere Mazzini/Bologna/centro a sinistra, S. Lazzaro/Forlì a destra. La freccia centrale indica la direzione della rotatoria."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso di pericolo",
+      "Segnali di direzione obbligatoria"
+    ],
+    "exact_keywords": [
+      "preavviso di rotatoria",
+      "direzione obbligatoria",
+      "strada interrotta",
+      "segnali di indicazione"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnale di preavviso di rotatoria e segnale di strada interrotta",
+      "funzione dei segnali di preavviso di direzione e destinazione"
+    ],
+    "rule_explanation": "Il segnale di preavviso di rotatoria indica la presenza di una circolazione rotatoria e le direzioni da seguire, non una strada interrotta."
+  }
+}

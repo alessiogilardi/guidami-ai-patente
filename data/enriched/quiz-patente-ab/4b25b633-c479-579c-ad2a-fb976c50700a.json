@@ -1,0 +1,29 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18719",
+  "text": "Per evitare di sporcare la carreggiata, bisogna pulire le ruote del veicolo, prima di uscire da un sentiero fangoso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente",
+      "Uso responsabile della strada",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sporcare la carreggiata",
+      "pulire le ruote",
+      "sentiero fangoso",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di non sporcare la carreggiata con detriti o fango",
+      "doveri del conducente nel mantenere pulita la strada",
+      "prevenzione dell'inquinamento stradale da parte dei veicoli"
+    ],
+    "rule_explanation": "Il conducente ha il dovere di mantenere la carreggiata libera da detriti e sporco, pulendo le ruote del veicolo prima di immettersi nella circolazione dopo aver percorso strade non asfaltate o fangose."
+  }
+}

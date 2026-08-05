@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22307",
+  "text": "E' obbligatorio regolare la velocità nelle ore diurne ma non in quelle notturne",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di visibilità",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "condizioni di visibilità",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di regolare la velocità in base alle condizioni di visibilità",
+      "adeguamento della velocità diurna e notturna per la sicurezza"
+    ],
+    "rule_explanation": "La velocità deve essere sempre regolata in base alle condizioni di visibilità, al traffico, alla strada e al veicolo, sia di giorno che di notte, per evitare pericoli o intralci."
+  }
+}

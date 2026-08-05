@@ -1,0 +1,27 @@
+{
+  "question_id": 4600,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24387",
+  "text": "L'airbag non va usato insieme alle cinture di sicurezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Utilizzo combinato di airbag e cinture di sicurezza",
+      "Sistemi di ritenuta per bambini e adulti"
+    ],
+    "exact_keywords": [
+      "airbag",
+      "cinture di sicurezza",
+      "sistemi di ritenuta",
+      "dispositivi di sicurezza"
+    ],
+    "vector_search_queries": [
+      "funzionamento congiunto di airbag e cinture di sicurezza",
+      "integrazione tra airbag e sistemi di ritenuta"
+    ],
+    "rule_explanation": "L'airbag è un dispositivo supplementare di sicurezza che non sostituisce, ma integra la funzione delle cinture di sicurezza, le quali devono essere sempre allacciate."
+  }
+}

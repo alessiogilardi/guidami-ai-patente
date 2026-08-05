@@ -1,0 +1,27 @@
+{
+  "question_id": 4624,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24714",
+  "text": "In caso di pioggia occorre manovrare con prudenza lo sterzo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Comportamento prudente alla guida"
+    ],
+    "exact_keywords": [
+      "pioggia",
+      "manovrare con prudenza",
+      "sterzo",
+      "condizioni di aderenza"
+    ],
+    "vector_search_queries": [
+      "guida con pioggia e aderenza stradale",
+      "manovre di sterzo in condizioni di scarsa aderenza"
+    ],
+    "rule_explanation": "In caso di pioggia, l'aderenza degli pneumatici diminuisce, rendendo necessario manovrare lo sterzo con maggiore prudenza per mantenere il controllo del veicolo."
+  }
+}

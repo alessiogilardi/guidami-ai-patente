@@ -1,0 +1,27 @@
+{
+  "question_id": 4600,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24385",
+  "text": "L'airbag deve essere gonfiato periodicamente per verificarne l'efficienza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza attiva",
+      "Sistema di ritenuta airbag"
+    ],
+    "exact_keywords": [
+      "airbag",
+      "efficienza",
+      "manutenzione",
+      "gonfiaggio periodico"
+    ],
+    "vector_search_queries": [
+      "funzionamento airbag veicolo",
+      "manutenzione dispositivi sicurezza auto"
+    ],
+    "rule_explanation": "L'airbag è un dispositivo di sicurezza che si attiva in caso di urto, non richiede gonfiaggi periodici per verificarne l'efficienza."
+  }
+}

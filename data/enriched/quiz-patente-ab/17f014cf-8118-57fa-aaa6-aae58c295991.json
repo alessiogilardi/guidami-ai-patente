@@ -1,0 +1,28 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24708",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere regolamentazione semaforica",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Cause di incidenti stradali",
+      "Sicurezza stradale",
+      "Manutenzione della strada"
+    ],
+    "exact_keywords": [
+      "struttura della strada",
+      "regolamentazione semaforica",
+      "pericolo per la circolazione",
+      "causa di incidenti"
+    ],
+    "vector_search_queries": [
+      "cause di incidenti stradali legate alla struttura della strada",
+      "differenza tra cause strutturali e di segnalazione negli incidenti stradali"
+    ],
+    "rule_explanation": "La causa probabile di incidenti legati alla struttura della strada non è la regolamentazione semaforica, ma elementi fisici come manto stradale dissestato, segnaletica inadeguata o errata progettazione."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25326",
+  "text": "Con freni squilibrati può avvenire che, in frenata, il veicolo sbandi, dirigendosi verso il lato della ruota che si blocca per prima",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Manutenzione dei freni",
+      "Comportamento del veicolo in frenata"
+    ],
+    "exact_keywords": [
+      "freni squilibrati",
+      "sbandare",
+      "bloccaggio ruota",
+      "frenata"
+    ],
+    "vector_search_queries": [
+      "effetti dei freni squilibrati sulla stabilità del veicolo",
+      "rischio di sbandamento per bloccaggio ruota in frenata"
+    ],
+    "rule_explanation": "Un impianto frenante con freni squilibrati può causare lo sbandamento del veicolo durante la frenata, a causa del bloccaggio asimmetrico delle ruote."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22530",
+  "text": "Il valore della distanza di sicurezza deve essere stabilito anche in base alle condizioni del traffico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condizioni di traffico",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni del traffico",
+      "velocità",
+      "veicolo che precede"
+    ],
+    "vector_search_queries": [
+      "determinazione della distanza di sicurezza in base al traffico",
+      "obbligo di mantenere la distanza di sicurezza adeguata alle condizioni di circolazione"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare collisioni, tenendo conto di tutte le condizioni, incluse quelle del traffico e del veicolo che precede."
+  }
+}

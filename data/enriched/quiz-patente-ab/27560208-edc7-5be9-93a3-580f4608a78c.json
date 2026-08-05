@@ -1,0 +1,31 @@
+{
+  "question_id": 4175,
+  "topic": "Segnali di obbligo",
+  "number": "20338",
+  "text": "Il segnale raffigurato obbliga a togliere le catene per non rovinare l'asfalto",
+  "correct_answer": false,
+  "image": "a985afd3ac1c765e157fe601c5667c56.jpeg",
+  "image_description": "Obbligo di catene da neve. Obbligo di circolare con catene da neve o pneumatici invernali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro del segnale è raffigurato un pneumatico con catene da neve montate. Il pittogramma è bianco su sfondo blu. Si tratta di un segnale di obbligo.",
+    "name": "Obbligo di catene da neve",
+    "description": "Obbligo di circolare con catene da neve o pneumatici invernali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Uso di catene da neve"
+    ],
+    "exact_keywords": [
+      "obbligo catene da neve",
+      "pneumatici invernali",
+      "segnali di prescrizione",
+      "circolare con catene"
+    ],
+    "vector_search_queries": [
+      "obbligo di montare catene da neve o pneumatici invernali",
+      "segnali che impongono l'uso di catene da neve"
+    ],
+    "rule_explanation": "Il segnale di obbligo di catene da neve impone di circolare con tali dispositivi o pneumatici invernali, non di toglierli."
+  }
+}

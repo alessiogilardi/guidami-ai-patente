@@ -1,0 +1,30 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18792",
+  "text": "In vicinanza di un attraversamento pedonale, il conducente deve considerare che i pedoni, in special modo i bambini, possono sbucare all'improvviso tra i veicoli parcheggiati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Comportamento in prossimità di attraversamenti pedonali",
+      "Prevenzione del rischio per pedoni imprevedibili"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "pedoni",
+      "bambini",
+      "veicoli parcheggiati",
+      "comportamento del conducente"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente in prossimità di attraversamenti pedonali",
+      "obbligo di prudenza verso pedoni e bambini in prossimità di attraversamenti pedonali",
+      "rischio di sbucare all'improvviso tra veicoli parcheggiati per pedoni e bambini"
+    ],
+    "rule_explanation": "Il conducente deve moderare la velocità in prossimità degli attraversamenti pedonali, prevedendo la possibile improvvisa comparsa di pedoni, specialmente bambini, tra veicoli fermi."
+  }
+}

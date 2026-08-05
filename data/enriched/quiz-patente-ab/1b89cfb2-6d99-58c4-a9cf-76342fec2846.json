@@ -1,0 +1,31 @@
+{
+  "question_id": 4264,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21208",
+  "text": "Avvicinandosi ad un passaggio a livello con luci rosse accese e semibarriera ancora alzata, è possibile attraversare i binari se non si sente ancora il fischio del treno",
+  "correct_answer": false,
+  "image": "b0971c790847c0127280b6aa2f1fe29f.jpeg",
+  "image_description": "Pannelli integrativi di distanza. I pannelli integrativi raffigurati indicano, rispettivamente, una distanza di 320 metri (pannello A) e 3,8 chilometri (pannello B). Questi pannelli vengono solitamente posti sotto altri segnali (di pericolo, di prescrizione, di indicazione) per fornire informazioni aggiuntive sulla distanza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli rettangolari, uno sopra l'altro, entrambi di colore bianco con bordo nero. Il pannello superiore (etichettato A) riporta la dicitura \"320 m\" in nero. Il pannello inferiore (etichettato B) riporta la dicitura \"3,8 km\" in nero. Entrambi sono pannelli integrativi che specificano una distanza.",
+    "name": "Pannelli integrativi di distanza",
+    "description": "I pannelli integrativi raffigurati indicano, rispettivamente, una distanza di 320 metri (pannello A) e 3,8 chilometri (pannello B). Questi pannelli vengono solitamente posti sotto altri segnali (di pericolo, di prescrizione, di indicazione) per fornire informazioni aggiuntive sulla distanza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni semaforiche ai passaggi a livello",
+      "Obbligo di arresto al passaggio a livello"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "luci rosse",
+      "semibarriera",
+      "arresto"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto al passaggio a livello con luci rosse accese",
+      "condizioni per l'attraversamento dei binari al passaggio a livello"
+    ],
+    "rule_explanation": "Ai passaggi a livello con luci rosse accese e semibarriera in movimento, l'arresto è obbligatorio anche se non si percepisce il treno in arrivo."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4073,
+  "topic": "Segnali di pericolo",
+  "number": "19137",
+  "text": "In presenza del segnale raffigurato si ha l'obbligo di dare la precedenza ai filobus",
+  "correct_answer": false,
+  "image": "bb981f286218063a29cc9f7bf6f71389.jpeg",
+  "image_description": "Segnale di pericolo - Passaggio di tram. Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato il pittogramma di un tram. Questo segnale indica la presenza di una linea tranviaria che interseca la carreggiata.",
+    "name": "Segnale di pericolo - Passaggio di tram",
+    "description": "Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo generico",
+      "Obbligo di precedenza"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio di tram",
+      "dare la precedenza",
+      "filobus"
+    ],
+    "vector_search_queries": [
+      "obbligo di dare precedenza ai tram",
+      "interpretazione segnale pericolo passaggio tram",
+      "differenza precedenza tram e filobus"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'Passaggio di tram' impone di moderare la velocità e prestare attenzione ai tram, non di dare la precedenza ai filobus."
+  }
+}

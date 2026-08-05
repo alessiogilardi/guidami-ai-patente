@@ -1,0 +1,30 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18718",
+  "text": "Se, uscendo da un sentiero fangoso, si sporca notevolmente la strada, si può incorrere in una sanzione amministrativa",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Deterioramento della sede stradale",
+      "Responsabilità del conducente per danni alla strada",
+      "Sanzioni amministrative per violazioni del Codice della Strada"
+    ],
+    "exact_keywords": [
+      "sporcare la strada",
+      "sentiero fangoso",
+      "sanzione amministrativa",
+      "veicolo",
+      "uso della strada"
+    ],
+    "vector_search_queries": [
+      "sanzione per chi sporca la strada con veicolo",
+      "responsabilità del conducente per deterioramento della sede stradale",
+      "obbligo di ripristino decoro stradale dopo aver sporcato con veicolo"
+    ],
+    "rule_explanation": "Chiunque, con un veicolo, sporca o deteriora la strada è soggetto a sanzione amministrativa pecuniaria, salvo che provveda a ripristinare la condizioni di decoro e sicurezza."
+  }
+}

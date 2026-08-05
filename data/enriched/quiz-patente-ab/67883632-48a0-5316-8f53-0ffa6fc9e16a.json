@@ -1,0 +1,27 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22326",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi in corrispondenza di qualunque segnale stradale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di fermarsi ai segnali stradali",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "fermarsi",
+      "segnale stradale",
+      "obbligo"
+    ],
+    "vector_search_queries": [
+      "obbligo di fermarsi ai segnali stradali di prescrizione",
+      "riduzione della velocità in presenza di segnali stradali specifici"
+    ],
+    "rule_explanation": "Non tutti i segnali stradali impongono l'obbligo di ridurre la velocità o di fermarsi; solo quelli specifici di prescrizione (es. STOP, dare precedenza) lo richiedono."
+  }
+}

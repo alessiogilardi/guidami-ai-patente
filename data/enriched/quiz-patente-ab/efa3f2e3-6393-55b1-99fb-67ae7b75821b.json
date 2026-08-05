@@ -1,0 +1,27 @@
+{
+  "question_id": 4648,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24902",
+  "text": "In presenza di un ferito in stato di shock, occorre farlo camminare, per riattivargli la circolazione del sangue",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione dello shock in primo soccorso",
+      "Principi di assistenza al traumatizzato"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "primo soccorso",
+      "assistenza al ferito",
+      "immobilizzazione"
+    ],
+    "vector_search_queries": [
+      "condotta da tenere in caso di shock in primo soccorso",
+      "assistenza al ferito in stato di shock e immobilizzazione"
+    ],
+    "rule_explanation": "In presenza di shock, il ferito deve essere mantenuto in posizione supina con arti inferiori sollevati, e non deve camminare, per favorire il ritorno venoso al cuore e la perfusione degli organi vitali."
+  }
+}

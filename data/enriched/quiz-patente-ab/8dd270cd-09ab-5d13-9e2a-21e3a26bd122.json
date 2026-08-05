@@ -1,0 +1,32 @@
+{
+  "question_id": 4355,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22074",
+  "text": "Il segnale raffigurato evidenzia il punto d'inizio del viale pedonale",
+  "correct_answer": true,
+  "image": "bc784ca837ec863fae7360b12eb8e1c6.jpeg",
+  "image_description": "Senso unico pedonale con obbligo di proseguire dritto. Il segnale di prescrizione indica che è consentito il transito ai pedoni e che questi devono procedere diritto.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali. Il segnale superiore è un segnale di prescrizione (circolare con sfondo blu e bordo bianco) raffigurante una figura stilizzata di pedone in bianco. Il segnale inferiore è un pannello integrativo rettangolare (bianco con bordo nero) con una freccia nera rivolta verso l'alto, indicando la direzione da seguire. L'insieme dei due segnali indica un senso unico pedonale con obbligo di proseguire dritto.",
+    "name": "Senso unico pedonale con obbligo di proseguire dritto",
+    "description": "Il segnale di prescrizione indica che è consentito il transito ai pedoni e che questi devono procedere diritto."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di inizio viale pedonale",
+      "Segnaletica di prescrizione per pedoni"
+    ],
+    "exact_keywords": [
+      "viale pedonale",
+      "segnale di prescrizione",
+      "obbligo di proseguire dritto",
+      "transito consentito ai pedoni"
+    ],
+    "vector_search_queries": [
+      "inizio viale pedonale segnale",
+      "segnali di prescrizione per pedoni viale",
+      "obbligo di proseguire dritto pedoni segnale"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica l'inizio di un viale pedonale dove è consentito il transito ai soli pedoni, con l'obbligo di procedere in una determinata direzione (in questo caso, dritto)."
+  }
+}

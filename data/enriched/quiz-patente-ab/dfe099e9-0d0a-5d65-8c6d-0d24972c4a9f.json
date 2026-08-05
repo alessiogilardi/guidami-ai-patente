@@ -1,0 +1,34 @@
+{
+  "question_id": 4095,
+  "topic": "Segnali di pericolo",
+  "number": "19399",
+  "text": "In presenza del segnale raffigurato bisogna far attenzione a possibili brusche frenate da parte dei veicoli che precedono",
+  "correct_answer": true,
+  "image": "a50e795242bbca87bdb941fb2715f989.jpeg",
+  "image_description": "Segnale di pericolo di caduta massi. Il segnale preannuncia un pericolo di caduta massi dalla parete rocciosa. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo stradale. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un profilo di montagna stilizzato da cui cadono dei massi, rappresentati da esagoni neri. Il pittogramma indica un pericolo di caduta massi o pietre dalla parete rocciosa. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di pericolo di caduta massi",
+    "description": "Il segnale preannuncia un pericolo di caduta massi dalla parete rocciosa. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Pericolo di caduta massi",
+      "Moderazione della velocità"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "caduta massi",
+      "preavviso",
+      "moderare la velocità",
+      "prestare attenzione"
+    ],
+    "vector_search_queries": [
+      "pericolo caduta massi segnale stradale",
+      "obblighi in presenza di segnale di pericolo caduta massi",
+      "adeguamento velocità segnali di pericolo"
+    ],
+    "rule_explanation": "Il segnale di pericolo di caduta massi impone di moderare la velocità e prestare attenzione per evitare ostacoli improvvisi dovuti a possibili massi sulla carreggiata."
+  }
+}

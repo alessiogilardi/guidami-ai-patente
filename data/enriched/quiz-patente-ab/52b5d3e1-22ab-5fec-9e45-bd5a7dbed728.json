@@ -1,0 +1,27 @@
+{
+  "question_id": 4395,
+  "topic": "Distanza di sicurezza",
+  "number": "22560",
+  "text": "La distanza di sicurezza è commisurata anche alla presenza del servosterzo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Fattori che influenzano la distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni della strada",
+      "velocità",
+      "manovrabilità del veicolo"
+    ],
+    "vector_search_queries": [
+      "requisiti per la determinazione della distanza di sicurezza tra veicoli",
+      "fattori che influenzano la distanza di sicurezza nella circolazione stradale"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere commisurata alle condizioni della strada, della velocità e del traffico, non alla presenza del servosterzo."
+  }
+}

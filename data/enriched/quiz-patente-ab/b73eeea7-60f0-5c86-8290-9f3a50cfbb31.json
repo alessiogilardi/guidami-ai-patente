@@ -1,0 +1,27 @@
+{
+  "question_id": 4571,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24149",
+  "text": "Per le luci di posizione è possibile utilizzare lampade di qualsiasi colore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso delle luci dei veicoli",
+      "Dispositivi di illuminazione e segnalazione visiva"
+    ],
+    "exact_keywords": [
+      "luci di posizione",
+      "lampade",
+      "colore",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "colore consentito per le luci di posizione anteriori e posteriori",
+      "requisiti tecnici per le luci di posizione dei veicoli"
+    ],
+    "rule_explanation": "Le luci di posizione devono essere di colore bianco o giallo ambra anteriormente e rosso posteriormente. Non è possibile utilizzare lampade di qualsiasi colore."
+  }
+}

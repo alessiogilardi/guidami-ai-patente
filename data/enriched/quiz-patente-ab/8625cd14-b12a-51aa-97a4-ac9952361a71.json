@@ -1,0 +1,31 @@
+{
+  "question_id": 4353,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22056",
+  "text": "Il segnale raffigurato è riservato ai veicoli per il soccorso stradale",
+  "correct_answer": false,
+  "image": "29acadb77c667940662516cd04d76da0.jpeg",
+  "image_description": "Parcheggio con orario e simbolo di officina. Il segnale indica un parcheggio a pagamento, attivo dalle ore 8:00 alle 20:00. Il pittogramma della \"P\" indica la sosta, mentre il pannello integrativo specifica l'orario di validità e il simbolo di una chiave inglese (che indica la presenza di un'officina o un servizio correlato) suggerisce che potrebbe essere un parcheggio per clienti o con servizi specifici.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali sovrapposti. Il segnale superiore è un segnale di indicazione blu con la lettera \"P\" bianca al centro, che indica un parcheggio. Sotto questo segnale, vi è un pannello integrativo rettangolare bianco con bordo nero. Questo pannello contiene un simbolo che assomiglia a una chiave inglese o a un attrezzo da lavoro, seguito dall'indicazione oraria \"8,00 - 20,00\". Il simbolo della chiave inglese, in combinazione con l'orario, suggerisce che il parcheggio è a pagamento o soggetto a restrizioni orarie specifiche, potenzialmente legate a un'attività commerciale o di servizio nelle vicinanze.",
+    "name": "Parcheggio con orario e simbolo di officina",
+    "description": "Il segnale indica un parcheggio a pagamento, attivo dalle ore 8:00 alle 20:00. Il pittogramma della \"P\" indica la sosta, mentre il pannello integrativo specifica l'orario di validità e il simbolo di una chiave inglese (che indica la presenza di un'officina o un servizio correlato) suggerisce che potrebbe essere un parcheggio per clienti o con servizi specifici."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Parcheggio e sosta"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "parcheggio",
+      "officina",
+      "orario"
+    ],
+    "vector_search_queries": [
+      "segnaletica parcheggio con orario e officina",
+      "pannello integrativo orario e simbolo officina"
+    ],
+    "rule_explanation": "Il segnale di parcheggio con orario e simbolo di officina indica un'area di sosta regolamentata, non riservata esclusivamente ai veicoli di soccorso stradale."
+  }
+}

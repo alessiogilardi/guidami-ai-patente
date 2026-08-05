@@ -1,0 +1,32 @@
+{
+  "question_id": 4304,
+  "topic": "Segnali di indicazione",
+  "number": "21592",
+  "text": "Il segnale raffigurato può indicare la fermata di un autobus per trasporto scolari",
+  "correct_answer": true,
+  "image": "ad3996df5149158644a0a874afd15c93.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento di bambini. Il segnale indica la possibile presenza di bambini che attraversano la strada, invitando alla massima prudenza. Non impone obblighi di precedenza specifici, né vieta il transito. Non è un segnale di fermata scuolabus né di giardini pubblici.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo di forma quadrata con angoli arrotondati e sfondo arancione. Al centro del segnale è raffigurato un pittogramma nero stilizzato di due figure umane, un adulto e un bambino, che corrono tenendosi per mano e portano entrambi delle cartelle. Questo pittogramma è tipico dei segnali di pericolo che preannunciano la possibile presenza di bambini sulla carreggiata. Il contesto del quiz suggerisce che si tratti di un segnale di pericolo relativo ai bambini.",
+    "name": "Segnale di pericolo - Attraversamento di bambini",
+    "description": "Il segnale indica la possibile presenza di bambini che attraversano la strada, invitando alla massima prudenza. Non impone obblighi di precedenza specifici, né vieta il transito. Non è un segnale di fermata scuolabus né di giardini pubblici."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento bambini",
+      "prudenza",
+      "fermata scuolabus"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo e loro significato specifico",
+      "differenza tra segnali di pericolo e segnali di prescrizione",
+      "segnali stradali di fermata scuolabus"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante l'attraversamento di bambini impone prudenza ma non indica la fermata di autobus per trasporto scolari."
+  }
+}

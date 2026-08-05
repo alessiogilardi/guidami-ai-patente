@@ -1,0 +1,27 @@
+{
+  "question_id": 4386,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22439",
+  "text": "La velocità deve essere particolarmente moderata in prossimità di un incrocio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in prossimità di incroci",
+      "Obbligo di moderazione della velocità per la sicurezza"
+    ],
+    "exact_keywords": [
+      "velocità moderata",
+      "incrocio",
+      "pericolo",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "moderazione della velocità in prossimità di incroci",
+      "adeguamento della velocità ai pericoli derivanti da incroci stradali"
+    ],
+    "rule_explanation": "La velocità va sempre moderata in prossimità degli incroci per evitare pericoli o intralci alla circolazione, indipendentemente dai limiti massimi imposti."
+  }
+}

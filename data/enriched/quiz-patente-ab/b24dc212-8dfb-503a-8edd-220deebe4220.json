@@ -1,0 +1,27 @@
+{
+  "question_id": 4537,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23858",
+  "text": "Sulle autostrade e strade extraurbane principali è vietata la circolazione di autobus per trasporto di studenti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione di autobus per trasporto studenti",
+      "Divieti di circolazione su autostrade e strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "autobus per trasporto studenti",
+      "autostrade",
+      "strade extraurbane principali",
+      "circolazione vietata"
+    ],
+    "vector_search_queries": [
+      "circolazione autobus scolastici su autostrade e strade extraurbane principali",
+      "divieto di transito per scuolabus su strade a scorrimento veloce"
+    ],
+    "rule_explanation": "Sulle autostrade e strade extraurbane principali è consentita la circolazione degli autobus adibiti al trasporto di studenti, purché rispettino le norme di circolazione vigenti."
+  }
+}

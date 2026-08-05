@@ -1,0 +1,27 @@
+{
+  "question_id": 4578,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24192",
+  "text": "La spia di accensione degli indicatori di direzione è di colore rosso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori di direzione",
+      "Spie luminose di segnalazione"
+    ],
+    "exact_keywords": [
+      "spia luminosa",
+      "indicatori di direzione",
+      "colore rosso",
+      "lampeggiante"
+    ],
+    "vector_search_queries": [
+      "colore spia indicatori di direzione",
+      "significato spie luminose cruscotto"
+    ],
+    "rule_explanation": "La spia di accensione degli indicatori di direzione è di colore verde o blu, non rosso. Le spie rosse indicano anomalie o pericoli."
+  }
+}

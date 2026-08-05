@@ -1,0 +1,28 @@
+{
+  "question_id": 4660,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24991",
+  "text": "La responsabilità penale connessa al sinistro stradale sorge anche in caso di omicidio colposo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità penale per reati stradali",
+      "Omicidio colposo aggravato dalla violazione delle norme sulla circolazione"
+    ],
+    "exact_keywords": [
+      "responsabilità penale",
+      "sinistro stradale",
+      "omicidio colposo",
+      "colpa"
+    ],
+    "vector_search_queries": [
+      "responsabilità penale per omicidio colposo in caso di sinistro stradale",
+      "reati stradali e colpa",
+      "conseguenze penali della violazione del Codice della Strada"
+    ],
+    "rule_explanation": "La responsabilità penale per omicidio colposo sorge quando la morte di una persona è causata dalla violazione di norme cautelari, come quelle del Codice della Strada."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4152,
+  "topic": "Segnali di obbligo",
+  "number": "20080",
+  "text": "Il segnale raffigurato è un segnale di divieto",
+  "correct_answer": false,
+  "image": "fece8907377910340f0aecbc53ef2a9b.jpeg",
+  "image_description": "Segnale di direzione obbligatoria sinistra. Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e un bordo bianco. Al centro del segnale è presente una freccia bianca rivolta verso sinistra. Questo è un segnale di obbligo che indica la direzione da seguire.",
+    "name": "Segnale di direzione obbligatoria sinistra",
+    "description": "Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "segnali di divieto",
+      "direzione obbligatoria"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di obbligo e segnali di divieto",
+      "funzione dei segnali di direzione obbligatoria"
+    ],
+    "rule_explanation": "I segnali di obbligo impongono un comportamento, mentre i segnali di divieto vietano un comportamento. Il segnale raffigurato impone la direzione sinistra, non vieta alcunché."
+  }
+}

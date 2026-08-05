@@ -1,0 +1,32 @@
+{
+  "question_id": 4061,
+  "topic": "Segnali di pericolo",
+  "number": "18989",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada con pavimentazione irregolare",
+  "correct_answer": false,
+  "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione",
+      "Segnali di pericolo: pavimentazione irregolare"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "pavimentazione irregolare",
+      "doppia curva",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo pavimentazione irregolare",
+      "differenza segnale pavimentazione irregolare e doppia curva"
+    ],
+    "rule_explanation": "Il segnale di pavimentazione irregolare preannuncia un tratto di strada con irregolarità del manto stradale, non una doppia curva."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24423",
+  "text": "I caschi da utilizzare alla guida dei ciclomotori non necessitano di omologazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di omologazione dei caschi motociclistici",
+      "Dispositivi di protezione individuale per la guida di ciclomotori"
+    ],
+    "exact_keywords": [
+      "casco",
+      "ciclomotore",
+      "omologazione",
+      "dispositivo di protezione"
+    ],
+    "vector_search_queries": [
+      "requisiti di omologazione per caschi da ciclomotore",
+      "obbligo di indossare casco omologato su ciclomotore"
+    ],
+    "rule_explanation": "I caschi indossati dai conducenti e dai passeggeri di ciclomotori devono essere conformi alle normative di omologazione vigenti."
+  }
+}

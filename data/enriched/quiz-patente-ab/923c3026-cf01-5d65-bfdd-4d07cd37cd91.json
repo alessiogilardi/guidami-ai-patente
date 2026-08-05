@@ -1,0 +1,29 @@
+{
+  "question_id": 4712,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25404",
+  "text": "La marmitta deteriorata aumenta l'inquinamento acustico prodotto dai veicoli a motore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Manutenzione del veicolo",
+      "Dispositivi di scarico"
+    ],
+    "exact_keywords": [
+      "marmitta",
+      "veicoli a motore",
+      "inquinamento acustico",
+      "dispositivi di scarico"
+    ],
+    "vector_search_queries": [
+      "effetti della marmitta deteriorata sull'inquinamento acustico",
+      "normativa su emissioni sonore veicoli a motore",
+      "manutenzione dispositivi di scarico e rumore"
+    ],
+    "rule_explanation": "Una marmitta efficiente è fondamentale per ridurre le emissioni sonore dei veicoli a motore; il suo deterioramento ne aumenta l'inquinamento acustico."
+  }
+}

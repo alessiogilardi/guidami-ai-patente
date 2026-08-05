@@ -1,0 +1,27 @@
+{
+  "question_id": 4034,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18675",
+  "text": "Bisogna lasciare liberi i cavalcavia in caso di traffico intenso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di occupazione di incroci e sovrappassi",
+      "Obbligo di fluidità della circolazione"
+    ],
+    "exact_keywords": [
+      "cavalcavia",
+      "incrocio",
+      "circolazione stradale",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "divieto di occupazione cavalcavia in caso di traffico",
+      "obbligo di liberare incroci e cavalcavia per non creare intralcio"
+    ],
+    "rule_explanation": "È vietato occupare un cavalcavia o un incrocio se non si può liberare celermente, al fine di non intralciare la circolazione."
+  }
+}

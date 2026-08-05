@@ -1,0 +1,28 @@
+{
+  "question_id": 4543,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23900",
+  "text": "Sulle carreggiate, sulle rampe e sugli svincoli delle autostrade la sosta di emergenza non deve superare il tempo strettamente necessario e non deve protrarsi comunque oltre tre ore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta di emergenza in autostrada",
+      "Regole di circolazione in autostrada"
+    ],
+    "exact_keywords": [
+      "sosta di emergenza",
+      "autostrada",
+      "rampe",
+      "svincoli",
+      "tempo strettamente necessario"
+    ],
+    "vector_search_queries": [
+      "durata massima sosta di emergenza in autostrada",
+      "regole per la sosta di emergenza su rampe e svincoli autostradali"
+    ],
+    "rule_explanation": "La sosta di emergenza in autostrada, sulle rampe e svincoli è consentita solo per il tempo strettamente necessario e comunque non oltre le tre ore."
+  }
+}

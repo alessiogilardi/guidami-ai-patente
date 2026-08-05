@@ -1,0 +1,28 @@
+{
+  "question_id": 4707,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25343",
+  "text": "Le sospensioni di un veicolo a motore collaborano a rendere più confortevole e sicura la guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzione delle sospensioni",
+      "Sicurezza e comfort di marcia",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "veicolo a motore",
+      "guida confortevole",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "ruolo delle sospensioni nel comfort e sicurezza di guida",
+      "impatto delle sospensioni sulla tenuta di strada del veicolo"
+    ],
+    "rule_explanation": "Le sospensioni migliorano il comfort e la sicurezza di guida assorbendo le asperità del terreno e mantenendo il contatto delle ruote con la strada."
+  }
+}

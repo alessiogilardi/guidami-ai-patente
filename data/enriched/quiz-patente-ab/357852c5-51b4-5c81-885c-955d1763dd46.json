@@ -1,0 +1,27 @@
+{
+  "question_id": 4655,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24953",
+  "text": "L'assunzione di alcool rende meno sicura la guida, perché può modificare pericolosamente la capacità di concentrazione e attenzione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Alterazione psicofisica da alcol alla guida",
+      "Guida in stato di ebbrezza"
+    ],
+    "exact_keywords": [
+      "alcool",
+      "guida",
+      "capacità di concentrazione",
+      "attenzione"
+    ],
+    "vector_search_queries": [
+      "effetti dell'alcool sulla capacità di guida",
+      "alterazione della concentrazione e attenzione dovuta all'alcool"
+    ],
+    "rule_explanation": "L'assunzione di alcool compromette le capacità psicofisiche necessarie per una guida sicura, in particolare la concentrazione e l'attenzione."
+  }
+}

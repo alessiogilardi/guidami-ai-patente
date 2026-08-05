@@ -1,0 +1,33 @@
+{
+  "question_id": 4211,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20724",
+  "text": "La striscia discontinua in figura può essere sostituita con alcuni \"chiodi\" o catadiottri, messi a distanza di 50 centimetri",
+  "correct_answer": false,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segnaletica di pericolo",
+      "Dispositivi di ritenuta e segnalazione ostacoli"
+    ],
+    "exact_keywords": [
+      "striscia bianca discontinua",
+      "catadiottri",
+      "segnalazione orizzontale",
+      "ostacoli"
+    ],
+    "vector_search_queries": [
+      "segnalazione ostacoli con catadiottri",
+      "sostituzione striscia discontinua con chiodi",
+      "norme per la segnaletica orizzontale e i catadiottri"
+    ],
+    "rule_explanation": "Le strisce discontinue bianche non possono essere sostituite da chiodi o catadiottri; questi ultimi sono usati per segnalare ostacoli fissi o mobili in carreggiata."
+  }
+}

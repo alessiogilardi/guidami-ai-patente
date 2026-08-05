@@ -1,0 +1,32 @@
+{
+  "question_id": 4312,
+  "topic": "Segnali di indicazione",
+  "number": "21671",
+  "text": "Il segnale raffigurato indica ai ciclisti di svoltare a sinistra",
+  "correct_answer": false,
+  "image": "2faf7752ddcc6087bffff0ee81a28eaf.jpeg",
+  "image_description": "Pista ciclabile. Il segnale indica una pista ciclabile. Obbliga i ciclisti a utilizzare la pista e segnala la loro presenza agli altri utenti della strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale è raffigurata, in bianco, una figura stilizzata di un ciclista su una bicicletta. Il segnale è di forma quadrata con angoli arrotondati. Questo segnale è un segnale di indicazione.",
+    "name": "Pista ciclabile",
+    "description": "Il segnale indica una pista ciclabile. Obbliga i ciclisti a utilizzare la pista e segnala la loro presenza agli altri utenti della strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di obbligo per ciclisti",
+      "Pista ciclabile"
+    ],
+    "exact_keywords": [
+      "pista ciclabile",
+      "obbligo",
+      "ciclisti",
+      "segnalazione"
+    ],
+    "vector_search_queries": [
+      "segnaletica per piste ciclabili",
+      "obbligo di percorrenza pista ciclabile",
+      "segnali di indicazione per ciclisti"
+    ],
+    "rule_explanation": "Il segnale di pista ciclabile indica un percorso riservato ai ciclisti, obbligandoli ad usarlo e segnalandone la presenza agli altri utenti. Non impone una direzione specifica."
+  }
+}

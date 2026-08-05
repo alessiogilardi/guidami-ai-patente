@@ -1,0 +1,29 @@
+{
+  "question_id": 4585,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24252",
+  "text": "L'uso dei proiettori a luce abbagliante è di norma consentito in città, in caso di nebbia fitta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di profondità (abbaglianti)",
+      "Condizioni di visibilità ridotta",
+      "Norme di utilizzo dei dispositivi di illuminazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "proiettori a luce abbagliante",
+      "nebbia fitta",
+      "visibilità limitata",
+      "uso consentito"
+    ],
+    "vector_search_queries": [
+      "divieto uso proiettori abbaglianti in città",
+      "uso luci abbaglianti in condizioni di nebbia fitta",
+      "regolamentazione uso proiettori di profondità"
+    ],
+    "rule_explanation": "I proiettori a luce abbagliante sono vietati in città e in caso di nebbia fitta o comunque quando la visibilità è limitata, per non abbagliare gli altri utenti della strada."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23536",
+  "text": "Il sorpasso tra motocicli si può effettuare sia a destra che a sinistra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale del sorpasso",
+      "Posizione del veicolo durante il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "motocicli",
+      "manovra",
+      "destra",
+      "sinistra"
+    ],
+    "vector_search_queries": [
+      "sorpasso motocicli a destra o sinistra",
+      "regola generale del sorpasso per motocicli"
+    ],
+    "rule_explanation": "Il sorpasso deve essere effettuato a sinistra del veicolo sorpassato, salvo eccezioni specifiche per i motocicli in determinate condizioni di traffico."
+  }
+}

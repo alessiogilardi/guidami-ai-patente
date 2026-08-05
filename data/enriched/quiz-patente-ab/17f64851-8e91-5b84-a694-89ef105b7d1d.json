@@ -1,0 +1,31 @@
+{
+  "question_id": 4350,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22022",
+  "text": "Il pannello integrativo rappresentato in figura A indica la distanza di sicurezza da mantenere in caso di pioggia",
+  "correct_answer": false,
+  "image": "581efb5bb17d61ce1f06789924aee4e2.jpeg",
+  "image_description": "Pannello integrativo di lunghezza (figura A: 380 m; figura B: 2,8 km). I pannelli integrativi raffigurati indicano la lunghezza di un tratto stradale. Il pannello A indica 380 metri, mentre il pannello B indica 2,8 chilometri. Entrambi sono posti sotto un segnale di pericolo e indicano la lunghezza del tratto di strada pericoloso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli integrativi rettangolari, identificati come A e B. Entrambi i pannelli presentano un pittogramma di una freccia verticale rivolta verso l'alto, un numero seguito da un'unità di misura (metri per A, chilometri per B) e un altro pittogramma di freccia verticale verso l'alto. Il pannello A indica \"380m\", mentre il pannello B indica \"2,8 km\". Questi pannelli sono comunemente usati per integrare segnali di pericolo, indicando la lunghezza del tratto di strada interessato dal pericolo.",
+    "name": "Pannello integrativo di lunghezza (figura A: 380 m; figura B: 2,8 km)",
+    "description": "I pannelli integrativi raffigurati indicano la lunghezza di un tratto stradale. Il pannello A indica 380 metri, mentre il pannello B indica 2,8 chilometri. Entrambi sono posti sotto un segnale di pericolo e indicano la lunghezza del tratto di strada pericoloso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pannelli integrativi",
+      "Segnaletica stradale di pericolo"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "distanza di sicurezza",
+      "lunghezza del tratto",
+      "segnali di pericolo"
+    ],
+    "vector_search_queries": [
+      "funzione dei pannelli integrativi di lunghezza",
+      "pannelli integrativi che specificano la estensione di un pericolo stradale"
+    ],
+    "rule_explanation": "I pannelli integrativi di lunghezza indicano la estensione del tratto stradale interessato dal pericolo segnalato dal segnale principale, non la distanza di sicurezza da mantenere in caso di pioggia."
+  }
+}

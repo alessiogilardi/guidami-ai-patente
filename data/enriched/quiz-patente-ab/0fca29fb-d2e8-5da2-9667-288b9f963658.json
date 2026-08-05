@@ -1,0 +1,31 @@
+{
+  "question_id": 4226,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20852",
+  "text": "E' regolamentare trovare sulla pavimentazione la scritta TAXI, di colore bianco, nei parcheggi per taxi",
+  "correct_answer": false,
+  "image": "e21cc580f432a80d30445dd1cfdf0ccf.jpeg",
+  "image_description": "Attraversamento pedonale. La segnaletica orizzontale raffigura una sequenza di strisce bianche parallele, intervallate da strisce grigie, che attraversano la carreggiata. Sono presenti due frecce nere su sfondo grigio, una in alto e una in basso, che indicano il senso di marcia. Questa segnaletica indica un attraversamento pedonale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra della segnaletica orizzontale su una carreggiata grigia. Sono presenti diverse strisce bianche parallele, di larghezza variabile, disposte trasversalmente alla direzione del traffico. Tra le strisce bianche ci sono spazi grigi. In alto e in basso, al centro della carreggiata, sono visibili due frecce nere che indicano il senso di marcia. La configurazione delle strisce bianche è tipica di un attraversamento pedonale.",
+    "name": "Attraversamento pedonale",
+    "description": "La segnaletica orizzontale raffigura una sequenza di strisce bianche parallele, intervallate da strisce grigie, che attraversano la carreggiata. Sono presenti due frecce nere su sfondo grigio, una in alto e una in basso, che indicano il senso di marcia. Questa segnaletica indica un attraversamento pedonale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segnaletica di preavviso e deviazione"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "parcheggio",
+      "taxi",
+      "segni sugli ostacoli"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale colore giallo taxi",
+      "segni sugli ostacoli parcheggio taxi"
+    ],
+    "rule_explanation": "La scritta TAXI, se presente sulla pavimentazione, deve essere di colore giallo primario e non bianco, e indica un'area destinata ai taxi."
+  }
+}

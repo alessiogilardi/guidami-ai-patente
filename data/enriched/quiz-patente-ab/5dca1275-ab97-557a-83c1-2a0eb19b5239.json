@@ -1,0 +1,28 @@
+{
+  "question_id": 4639,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24843",
+  "text": "Nei farmaci sedativi sono presenti alcune sostanze che possono compromettere la facoltà di guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Effetti dei farmaci sulla capacità di guida",
+      "Sostanze psicoattive e sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "farmaci sedativi",
+      "facoltà di guida",
+      "sostanze attive",
+      "alterazione"
+    ],
+    "vector_search_queries": [
+      "effetti dei farmaci sedativi sulla capacità di guida",
+      "sostanze farmacologiche che compromettono la guida sicura",
+      "alterazione delle facoltà psicofisiche dovuta a farmaci"
+    ],
+    "rule_explanation": "Alcuni farmaci, in particolare quelli sedativi, contengono sostanze che possono alterare le capacità necessarie per una guida sicura, compromettendo la facoltà di guida."
+  }
+}

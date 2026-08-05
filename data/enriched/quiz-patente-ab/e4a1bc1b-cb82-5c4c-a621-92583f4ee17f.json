@@ -1,0 +1,27 @@
+{
+  "question_id": 4393,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22525",
+  "text": "Passare molto vicino ad un'auto parcheggiata, a bordo della quale si trovano ancora persone, è pericoloso solo se il conducente ed alcuni passeggeri sono già scesi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo per la circolazione",
+      "Comportamento prudente del conducente"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "manovra",
+      "veicolo fermo",
+      "ostacolo"
+    ],
+    "vector_search_queries": [
+      "manovra di sorpasso di veicolo fermo con persone a bordo",
+      "pericolo nella vicinanza a veicoli parcheggiati con occupanti"
+    ],
+    "rule_explanation": "Il superamento di un veicolo fermo, specialmente se occupato, richiede particolare prudenza per evitare pericoli, indipendentemente dalla discesa dei passeggeri."
+  }
+}

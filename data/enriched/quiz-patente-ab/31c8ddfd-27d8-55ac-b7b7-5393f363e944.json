@@ -1,0 +1,31 @@
+{
+  "question_id": 4129,
+  "topic": "Segnali di divieto",
+  "number": "19804",
+  "text": "Il segnale raffigurato è relativo al rimorchio, ma non alla motrice",
+  "correct_answer": false,
+  "image": "fc210680f70df08dec3a4c059858f5fe.jpeg",
+  "image_description": "Segnale di larghezza massima. Il segnale indica la larghezza massima dei veicoli ammessi al transito. La larghezza massima consentita è di 2,30 metri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la cifra '2' seguita da ',30' e dalla lettera 'm' in apice, con due frecce nere rivolte verso l'interno, una sopra il '2' e una sotto il ',30'. Questo è il segnale di larghezza massima consentita.",
+    "name": "Segnale di larghezza massima",
+    "description": "Il segnale indica la larghezza massima dei veicoli ammessi al transito. La larghezza massima consentita è di 2,30 metri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizioneDivieto di transito per veicoli di massa a pieno carico superiore a 3,5 t",
+      "Segnali di divieto di transito per autotreni, autoarticolati, autobus e caravan"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "rimorchio",
+      "motrice",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "applicazione segnali di divieto a motrice e rimorchio",
+      "divieto di transito per rimorchio e motrice"
+    ],
+    "rule_explanation": "I segnali di divieto che riguardano una categoria di veicoli si applicano sia alla motrice sia all'eventuale rimorchio, salvo diversa specifica indicazione."
+  }
+}

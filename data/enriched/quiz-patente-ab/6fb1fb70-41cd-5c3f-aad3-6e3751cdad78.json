@@ -1,0 +1,28 @@
+{
+  "question_id": 4562,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24033",
+  "text": "Alla guida di un veicolo con rimorchio, nello svoltare a destra, bisogna fare particolare attenzione a non salire con la ruota posteriore sul marciapiede",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovre di svolta",
+      "Regole di circolazione per veicoli con rimorchio",
+      "Rispetto dei marciapiedi"
+    ],
+    "exact_keywords": [
+      "svolta a destra",
+      "veicolo con rimorchio",
+      "marciapiede",
+      "ruota posteriore"
+    ],
+    "vector_search_queries": [
+      "manovra di svolta a destra con rimorchio",
+      "divieto di salire sul marciapiede con le ruote del veicolo e del rimorchio"
+    ],
+    "rule_explanation": "Durante le manovre di svolta, specialmente con un veicolo agganciato a un rimorchio, è necessario prestare attenzione a non salire con le ruote sul marciapiede per evitare danni e pericoli."
+  }
+}

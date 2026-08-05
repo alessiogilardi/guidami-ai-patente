@@ -1,0 +1,30 @@
+{
+  "question_id": 4695,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25218",
+  "text": "L'A.B.S. consente di correggere la traiettoria del veicolo anche durante una frenata di emergenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema antibloccaggio (ABS)",
+      "Frenata di emergenza",
+      "Controllo della traiettoria"
+    ],
+    "exact_keywords": [
+      "ABS",
+      "frenata di emergenza",
+      "traiettoria del veicolo",
+      "stabilità",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "funzionamento dell'ABS in frenata di emergenza",
+      "capacità dell'ABS di mantenere il controllo direzionale durante la frenata",
+      "ABS e correzione della traiettoria in condizioni critiche"
+    ],
+    "rule_explanation": "L'ABS previene il bloccaggio delle ruote durante la frenata, permettendo al conducente di mantenere il controllo direzionale e correggere la traiettoria anche in situazioni di emergenza."
+  }
+}

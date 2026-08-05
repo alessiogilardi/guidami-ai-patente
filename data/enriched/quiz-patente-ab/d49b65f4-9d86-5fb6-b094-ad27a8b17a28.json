@@ -1,0 +1,30 @@
+{
+  "question_id": 4684,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25159",
+  "text": "Per demolire o rottamare un veicolo, lo si deve consegnare esclusivamente al concessionario della casa costruttrice",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione dei veicoli fuori uso (VFU)",
+      "Smaltimento ecologico dei veicoli",
+      "Normativa sui rifiuti automobilistici"
+    ],
+    "exact_keywords": [
+      "demolizione veicolo",
+      "rottamazione veicolo",
+      "veicolo fuori uso (VFU)",
+      "centro di raccolta autorizzato",
+      "concessionario"
+    ],
+    "vector_search_queries": [
+      "procedure per la rottamazione di veicoli fuori uso (VFU)",
+      "requisiti per i centri di demolizione autorizzati per veicoli",
+      "normativa sullo smaltimento dei veicoli a motore"
+    ],
+    "rule_explanation": "La demolizione o rottamazione di un veicolo deve avvenire presso centri di raccolta autorizzati, non esclusivamente presso i concessionari della casa costruttrice."
+  }
+}

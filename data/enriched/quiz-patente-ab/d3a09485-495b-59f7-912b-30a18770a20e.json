@@ -1,0 +1,31 @@
+{
+  "question_id": 4149,
+  "topic": "Segnali di divieto",
+  "number": "20028",
+  "text": "Il segnale raffigurato preannuncia un parcheggio per autocarri ed autotreni",
+  "correct_answer": false,
+  "image": "3ee5cbf2115bf21c580617c75914fcf3.jpeg",
+  "image_description": "Divieto di transito per autotreni e autoarticolati. Il segnale vieta il transito agli autotreni e agli autoarticolati.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale di forma rettangolare con bordo nero. Nella parte superiore è presente un segnale di divieto di transito (cerchio rosso con bordo rosso e sfondo bianco). Sotto questo segnale, su sfondo bianco, sono raffigurati due veicoli: il primo è un autoarticolato (motrice con semirimorchio) e il secondo è un autotreno (motrice con rimorchio). Entrambi i veicoli sono rappresentati in nero. Il segnale indica quindi un divieto specifico per queste due categorie di veicoli.",
+    "name": "Divieto di transito per autotreni e autoarticolati",
+    "description": "Il segnale vieta il transito agli autotreni e agli autoarticolati."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Segnaletica stradale verticale"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "autotreni",
+      "autoarticolati",
+      "segnali verticali"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito per autotreni e autoarticolati",
+      "interpretazione segnale divieto circolazione autotreni autoarticolati"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito per autotreni e autoarticolati vieta la circolazione a tali veicoli, non preannuncia un parcheggio."
+  }
+}

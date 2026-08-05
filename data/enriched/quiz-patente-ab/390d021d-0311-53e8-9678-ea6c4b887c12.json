@@ -1,0 +1,31 @@
+{
+  "question_id": 4275,
+  "topic": "Segnali di indicazione",
+  "number": "21305",
+  "text": "Il segnale raffigurato nella parte sinistra indica la distanza progressiva dal luogo di origine dell'autostrada",
+  "correct_answer": true,
+  "image": "de2e34baaf50dc90e8fa8061dcec1f85.jpeg",
+  "image_description": "Indicazione autostradale e di distanza. Il segnale indica che si sta percorrendo l'autostrada n. 54 e che la località Piacenza si trova a 4 chilometri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale composto da due parti. La parte sinistra è un pannello quadrato bianco con un bordo nero, contenente il numero \"54\" in nero. La parte destra è un pannello rettangolare verde con bordo bianco, contenente la scritta \"PIACENZA\" in bianco e il numero \"4\" in bianco. Il segnale nel suo complesso è un segnale di indicazione stradale. La parte sinistra indica il numero dell'autostrada, mentre la parte destra indica la località di destinazione (Piacenza) e la distanza in chilometri (4) da essa.",
+    "name": "Indicazione autostradale e di distanza",
+    "description": "Il segnale indica che si sta percorrendo l'autostrada n. 54 e che la località Piacenza si trova a 4 chilometri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione autostradale",
+      "Distanza progressiva"
+    ],
+    "exact_keywords": [
+      "segnali autostradali",
+      "distanza progressiva",
+      "luogo di origine",
+      "autostrada"
+    ],
+    "vector_search_queries": [
+      "segnali autostradali di distanza progressiva",
+      "significato dei segnali di progressiva chilometrica in autostrada"
+    ],
+    "rule_explanation": "I segnali di distanza progressiva indicano la distanza dal luogo di origine dell'autostrada o dal suo inizio, riportando anche la progressiva chilometrica."
+  }
+}

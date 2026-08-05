@@ -1,0 +1,32 @@
+{
+  "question_id": 4230,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20887",
+  "text": "In una strada a doppio senso di circolazione con la segnaletica indicata in figura si può fare l'inversione di marcia, ma senza occupare l'altra corsia",
+  "correct_answer": false,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Inversione di marcia",
+      "Strade a doppio senso di circolazione"
+    ],
+    "exact_keywords": [
+      "striscia bianca discontinua",
+      "inversione di marcia",
+      "doppio senso di circolazione",
+      "occupare l'altra corsia"
+    ],
+    "vector_search_queries": [
+      "divieto di inversione di marcia in presenza di striscia bianca discontinua su strade a doppio senso",
+      "regole per l'inversione di marcia su strade a doppio senso con striscia bianca discontinua"
+    ],
+    "rule_explanation": "Nelle strade a doppio senso di circolazione, la striscia bianca discontinua non vieta l'inversione di marcia, ma questa non deve mai comportare l'occupazione dell'altra corsia di marcia, se non per un breve istante e se le condizioni di traffico lo consentono."
+  }
+}

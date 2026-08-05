@@ -1,0 +1,28 @@
+{
+  "question_id": 4401,
+  "topic": "Distanza di sicurezza",
+  "number": "22605",
+  "text": "Lo spazio di frenatura diventa sedici volte maggiore se la velocità si quadruplica",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Relazione tra velocità e spazio di frenatura"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "velocità",
+      "distanza di sicurezza",
+      "quadruplicare"
+    ],
+    "vector_search_queries": [
+      "relazione spazio di frenatura velocità quadruplicata",
+      "aumento spazio frenata con incremento velocità"
+    ],
+    "rule_explanation": "Lo spazio di frenatura aumenta con il quadrato della velocità; quadruplicando la velocità, lo spazio di frenatura diventa sedici volte maggiore."
+  }
+}

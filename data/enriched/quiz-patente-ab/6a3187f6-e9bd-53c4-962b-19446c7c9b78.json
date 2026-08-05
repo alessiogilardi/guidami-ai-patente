@@ -1,0 +1,33 @@
+{
+  "question_id": 4330,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21831",
+  "text": "Il pannello raffigurato indica che fra un chilometro troveremo un tornante",
+  "correct_answer": false,
+  "image": "bacab78176dc95f719635f109766d036.jpeg",
+  "image_description": "Cartello indicatore del numero progressivo di un tornante. Il segnale indica il numero progressivo di un tornante, segnalando che si tratta del primo di una serie.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo nero e sfondo bianco. Al centro, in alto, è presente il numero '1' con un piccolo cerchio in apice (indicante 'primo'). Sotto il numero, in lettere maiuscole, è scritta la parola 'tornante'. Il segnale è un pannello integrativo che fornisce informazioni aggiuntive su un segnale preesistente (non visibile nell'immagine).",
+    "name": "Cartello indicatore del numero progressivo di un tornante",
+    "description": "Il segnale indica il numero progressivo di un tornante, segnalando che si tratta del primo di una serie."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali complementari",
+      "Segnali di pericolo temporanei",
+      "Preavviso di pericolo specifico"
+    ],
+    "exact_keywords": [
+      "pannello complementareएफसी11",
+      "tornante",
+      "numero progressivo",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo FC11 significato",
+      "segnalazione progressiva dei tornanti",
+      "differenza tra preavviso di pericolo e numero progressivo tornante"
+    ],
+    "rule_explanation": "Il pannello complementare FC11 indica il numero progressivo di un tornante, non un preavviso di un tornante che si troverà a un chilometro."
+  }
+}

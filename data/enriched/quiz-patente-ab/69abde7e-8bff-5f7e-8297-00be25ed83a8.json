@@ -1,0 +1,28 @@
+{
+  "question_id": 4499,
+  "topic": "Norme sul sorpasso",
+  "number": "23489",
+  "text": "Se il tram o il filobus sono fermi per la salita e la discesa dei passeggeri, la manovra di sorpasso può sempre effettuarsi a destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di tram e filobus",
+      "Regole di circolazione per i mezzi pubblici"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "tram",
+      "filobus",
+      "fermi",
+      "salita e discesa passeggeri"
+    ],
+    "vector_search_queries": [
+      "sorpasso tram fermo salita discesa passeggeri",
+      "manovra di sorpasso a destra mezzi pubblici fermi"
+    ],
+    "rule_explanation": "Il sorpasso a destra di tram o filobus fermi per salita/discesa passeggeri è vietato se ciò crea pericolo o intralcio alla circolazione."
+  }
+}

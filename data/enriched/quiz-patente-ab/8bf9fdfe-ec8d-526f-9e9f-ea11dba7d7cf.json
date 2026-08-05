@@ -1,0 +1,29 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24681",
+  "text": "La patente di guida di categoria B, salvo diversa limitazione riportata sul documento stesso o salvo allineamento alla data del compleanno del titolare, ha validità di cinque anni se rilasciata o confermata a chi ha una età compresa fra i 50 e i 70 anni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Rinnovo patente per età",
+      "Documenti di circolazione"
+    ],
+    "exact_keywords": [
+      "patente di guida categoria B",
+      "validità",
+      "confermata",
+      "limiti di età",
+      "cinque anni"
+    ],
+    "vector_search_queries": [
+      "validità patente B per età tra 50 e 70 anni",
+      "rinnovo patente B ogni 5 anni per over 50"
+    ],
+    "rule_explanation": "La patente B ha validità quinquennale per i titolari tra 50 e 70 anni, salvo diverse indicazioni o allineamento alla data di compleanno."
+  }
+}

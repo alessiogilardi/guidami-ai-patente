@@ -1,0 +1,33 @@
+{
+  "question_id": 4345,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21977",
+  "text": "Il delineatore raffigurato indica una strada chiusa per lavori in corso",
+  "correct_answer": false,
+  "image": "2798bde9cff903c926ecfd6da1c46c9e.jpeg",
+  "image_description": "Delineatore di pericolo (deviazione). Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore di pericolo di forma rettangolare, con bande diagonali bianche e nere alternate. Al centro è presente un rombo bianco. Il delineatore è montato su due supporti verticali. Le frecce bianche su sfondo nero indicano la direzione della deviazione, che può essere a destra o a sinistra.",
+    "name": "Delineatore di pericolo (deviazione)",
+    "description": "Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di cantiere",
+      "Segnaletica di pericolo",
+      "Obblighi del conducente in presenza di deviazioni"
+    ],
+    "exact_keywords": [
+      "delineatore di pericolo",
+      "strada chiusa",
+      "lavori in corso",
+      "deviazione"
+    ],
+    "vector_search_queries": [
+      "funzione del delineatore di pericolo con frecce",
+      "segnaletica di deviazione per lavori in corso",
+      "differenza tra strada chiusa e deviazione per cantiere"
+    ],
+    "rule_explanation": "Il delineatore di pericolo indica una deviazione, non una strada chiusa per lavori in corso. Impone di seguire la direzione indicata dalle frecce."
+  }
+}

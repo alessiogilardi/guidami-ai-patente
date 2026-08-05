@@ -1,0 +1,28 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23024",
+  "text": "Si può circolare con un autoveicolo in cui mancano temporaneamente gli specchi retrovisori, purché a velocità non superiore a 50 km/h e tenendo in azione la segnalazione luminosa di pericolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dotazione obbligatoria del veicolo",
+      "Sicurezza stradale",
+      "Visibilità e segnalazione"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "autoveicolo",
+      "segnalazione luminosa di pericolo",
+      "velocità massima"
+    ],
+    "vector_search_queries": [
+      "obbligo di avere specchi retrovisori funzionanti su autoveicoli",
+      "circolazione con veicoli sprovvisti di specchi retrovisori"
+    ],
+    "rule_explanation": "La circolazione con un autoveicolo è vietata in assenza anche temporanea degli specchi retrovisori prescritti, indipendentemente dalla velocità e dall'uso delle luci di emergenza."
+  }
+}

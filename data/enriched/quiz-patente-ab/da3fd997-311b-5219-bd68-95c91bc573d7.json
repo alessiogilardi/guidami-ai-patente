@@ -1,0 +1,29 @@
+{
+  "question_id": 4402,
+  "topic": "Distanza di sicurezza",
+  "number": "22613",
+  "text": "Lo spazio di frenatura diminuisce Se il conducente ha i riflessi pronti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Fattori che influenzano la frenata"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "distanza di sicurezza",
+      "riflessi del conducente",
+      "condizioni del veicolo"
+    ],
+    "vector_search_queries": [
+      "fattori che determinano lo spazio di frenatura",
+      "influenza dei riflessi del conducente sullo spazio di frenatura",
+      "calcolo della distanza di sicurezza e spazio di frenatura"
+    ],
+    "rule_explanation": "Lo spazio di frenatura dipende dalla velocità, dalle condizioni del veicolo e della strada, non dai riflessi pronti del conducente."
+  }
+}

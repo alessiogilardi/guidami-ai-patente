@@ -1,0 +1,32 @@
+{
+  "question_id": 4059,
+  "topic": "Segnali di pericolo",
+  "number": "18952",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada non rettilineo, che limita la visibilità",
+  "correct_answer": true,
+  "image": "20d1949582fe2500af34cafef3f9167c.jpeg",
+  "image_description": "Segnale di curva pericolo a sinistra. Il segnale preannuncia una curva pericolosa verso sinistra. È necessario moderare la velocità e prestare attenzione, soprattutto in caso di strada bagnata o scarsa visibilità, per potersi arrestare in caso di ostacolo improvviso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una curva che volge verso sinistra. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una curva a sinistra.",
+    "name": "Segnale di curva pericolo a sinistra",
+    "description": "Il segnale preannuncia una curva pericolosa verso sinistra. È necessario moderare la velocità e prestare attenzione, soprattutto in caso di strada bagnata o scarsa visibilità, per potersi arrestare in caso di ostacolo improvviso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di curva",
+      "Visibilità stradale"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "curva",
+      "visibilità",
+      "strada non rettilinea"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo che preannunciano curve e limitazioni di visibilità",
+      "significato del segnale di curva pericolosa e visibilità ridotta"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante una curva preannuncia un tratto di strada non rettilineo che può limitare la visibilità, richiedendo prudenza."
+  }
+}

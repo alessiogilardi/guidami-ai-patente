@@ -1,0 +1,27 @@
+{
+  "question_id": 4397,
+  "topic": "Distanza di sicurezza",
+  "number": "22575",
+  "text": "La distanza di sicurezza deve essere mantenuta per evitare lo scontro frontale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Prevenzione incidenti"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo che precede",
+      "scontro",
+      "manovre di emergenza"
+    ],
+    "vector_search_queries": [
+      "scopo della distanza di sicurezza tra veicoli",
+      "mantenimento della distanza di sicurezza per evitare collisioni"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare collisioni, anche in caso di arresto improvviso del veicolo che precede, e di effettuare manovre di emergenza."
+  }
+}

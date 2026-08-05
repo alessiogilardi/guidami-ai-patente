@@ -1,0 +1,32 @@
+{
+  "question_id": 4309,
+  "topic": "Segnali di indicazione",
+  "number": "21642",
+  "text": "Il segnale raffigurato indica un parcheggio per le sole autovetture",
+  "correct_answer": false,
+  "image": "1ef915902f19c17ff26aaa2bff80ae9b.jpeg",
+  "image_description": "Parcheggio per autovetture. Il segnale indica un parcheggio riservato alle autovetture.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è raffigurata, in bianco, la sagoma stilizzata di un'autovettura vista frontalmente. Si tratta di un segnale di indicazione.",
+    "name": "Parcheggio per autovetture",
+    "description": "Il segnale indica un parcheggio riservato alle autovetture."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Parcheggio riservato"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "parcheggio",
+      "autovetture",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "segnali di parcheggio per autovetture",
+      "indicazione di parcheggio riservato alle autovetture",
+      "interpretazione segnale parcheggio autovetture"
+    ],
+    "rule_explanation": "Il segnale di parcheggio per autovetture indica una zona di parcheggio consentita a tali veicoli, ma non vieta la sosta ad altri tipi di veicoli se non espressamente indicato da altri segnali."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4360,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22131",
+  "text": "Il pannello integrativo raffigurato va rispettato dai conducenti dei treni",
+  "correct_answer": false,
+  "image": "88aca3d15be8173f5220bcce38e88d5e.jpeg",
+  "image_description": "Pannello integrativo - Numero di binari. Il pannello integrativo indica la presenza di un passaggio a livello con due binari.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Al suo interno sono raffigurati due segnali identici di locomotiva a vapore, uno accanto all'altro. Questo pannello è utilizzato per integrare segnali di pericolo, come il segnale di passaggio a livello, indicando il numero di binari presenti. In questo caso, la presenza di due locomotive suggerisce due binari.",
+    "name": "Pannello integrativo - Numero di binari",
+    "description": "Il pannello integrativo indica la presenza di un passaggio a livello con due binari."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale integrativa",
+      "Destinatari dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "passaggio a livello",
+      "segnali stradali",
+      "conducenti di treni"
+    ],
+    "vector_search_queries": [
+      "pannelli integrativi destinatari conducenti veicoli stradali",
+      "applicabilità segnali stradali conducenti di treni"
+    ],
+    "rule_explanation": "I pannelli integrativi dei segnali stradali forniscono informazioni aggiuntive ai conducenti dei veicoli stradali, non ai conducenti di treni."
+  }
+}

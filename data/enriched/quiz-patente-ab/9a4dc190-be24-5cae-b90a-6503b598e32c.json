@@ -1,0 +1,29 @@
+{
+  "question_id": 4397,
+  "topic": "Distanza di sicurezza",
+  "number": "22577",
+  "text": "La distanza di sicurezza può essere inferiore allo spazio percorso nel tempo di reazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Tempo di reazione",
+      "Prevenzione del pericolo"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "tempo di reazione",
+      "spazio di frenatura",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "distanza di sicurezza rispetto allo spazio di reazione",
+      "obbligo di mantenere una distanza di sicurezza adeguata",
+      "componenti della distanza totale di arresto"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere sempre superiore allo spazio percorso nel tempo di reazione, per garantire la possibilità di arresto del veicolo in caso di necessità."
+  }
+}

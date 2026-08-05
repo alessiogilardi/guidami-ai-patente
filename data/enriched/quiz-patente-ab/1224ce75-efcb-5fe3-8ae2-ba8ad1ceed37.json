@@ -1,0 +1,31 @@
+{
+  "question_id": 4136,
+  "topic": "Segnali di divieto",
+  "number": "19877",
+  "text": "Il segnale raffigurato è un segnale di fine prescrizione",
+  "correct_answer": true,
+  "image": "cfd537fd007a42c41805523666d78953.jpeg",
+  "image_description": "Fine divieto di sorpasso. Indica la fine del divieto di sorpasso per tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso. All'interno del cerchio, una banda diagonale nera parte dall'angolo in alto a sinistra e arriva all'angolo in basso a destra, attraversando il centro del segnale. Ai lati della banda nera, su sfondo bianco, sono raffigurati due veicoli stilizzati, uno a sinistra e uno a destra, visti frontalmente. Il segnale è posizionato isolatamente.",
+    "name": "Fine divieto di sorpasso",
+    "description": "Indica la fine del divieto di sorpasso per tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Segnali di fine prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "fine prescrizione",
+      "divieto di sorpasso",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un divieto o obbligo",
+      "segnale di fine divieto di sorpasso"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la cessazione di un obbligo o divieto precedentemente imposto, come il divieto di sorpasso per tutti i veicoli."
+  }
+}

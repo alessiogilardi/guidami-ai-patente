@@ -1,0 +1,29 @@
+{
+  "question_id": 4010,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18422",
+  "text": "In un passaggio a livello si possono trovare le corsie di accelerazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Passaggi a livello",
+      "Corsie di accelerazione",
+      "Infrastrutture stradali"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "corsia di accelerazione",
+      "infrastruttura stradale",
+      "circolazione ferroviaria"
+    ],
+    "vector_search_queries": [
+      "definizione e caratteristiche corsie di accelerazione",
+      "normativa sui passaggi a livello e infrastrutture correlate",
+      "elementi costruttivi delle intersezioni stradali e ferroviarie"
+    ],
+    "rule_explanation": "Le corsie di accelerazione sono elementi tipici delle autostrade e delle strade extraurbane principali, non sono previste nei passaggi a livello, che sono incroci tra strada e ferrovia."
+  }
+}

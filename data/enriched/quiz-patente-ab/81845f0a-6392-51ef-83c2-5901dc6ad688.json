@@ -1,0 +1,34 @@
+{
+  "question_id": 4342,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21948",
+  "text": "Il delineatore raffigurato è un pannello distanziometrico posto vicino ad un passaggio a livello",
+  "correct_answer": false,
+  "image": "828953d4a6ad4ef2943269b0191873fa.jpeg",
+  "image_description": "Delineatore (segnale complementare). Il delineatore raffigurato è un segnale complementare di colore giallo, di forma rettangolare verticale, posto su un supporto. Viene utilizzato per delimitare o evidenziare pericoli, deviazioni, strettoie o ostacoli fissi lungo la carreggiata. Non ha luce propria ma è rifrangente.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore stradale di colore giallo, di forma rettangolare verticale. È montato su un palo sottile che a sua volta è fissato a una base a terra, che sembra essere un marciapiede o un cordolo rialzato. Il delineatore è un segnale complementare, utilizzato per segnalare pericoli o variazioni della strada. Non è possibile determinare dalla sola immagine se abbia luce propria o se sia posizionato in una galleria, su una carreggiata o per indicare un ostacolo specifico, ma la sua funzione generale è quella di delimitare e rendere più visibile un tratto di strada o un ostacolo.",
+    "name": "Delineatore (segnale complementare)",
+    "description": "Il delineatore raffigurato è un segnale complementare di colore giallo, di forma rettangolare verticale, posto su un supporto. Viene utilizzato per delimitare o evidenziare pericoli, deviazioni, strettoie o ostacoli fissi lungo la carreggiata. Non ha luce propria ma è rifrangente."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali complementari",
+      "Segnaletica stradale di cantiere",
+      "Delineatori stradali"
+    ],
+    "exact_keywords": [
+      "delineatore",
+      "pannello distanziometrico",
+      "passaggio a livello",
+      "segnali complementari",
+      "segnali di cantiere"
+    ],
+    "vector_search_queries": [
+      "funzione e tipologia dei delineatori stradali",
+      "segnaletica specifica per i passaggi a livello",
+      "differenza tra delineatori e segnali di cantiere"
+    ],
+    "rule_explanation": "Il delineatore è un segnale complementare, spesso giallo e rifrangente, usato per evidenziare pericoli o ostacoli fissi, non è specificamente associato ai passaggi a livello che hanno segnaletica dedicata."
+  }
+}

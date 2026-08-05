@@ -1,0 +1,28 @@
+{
+  "question_id": 4678,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25118",
+  "text": "L'inquinamento dell'aria prodotto dai veicoli può causare danni alle vie respiratorie e irritazione agli occhi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico da veicoli",
+      "Danni alla salute pubblica"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "veicoli",
+      "vie respiratorie",
+      "irritazione oculare"
+    ],
+    "vector_search_queries": [
+      "effetti dell'inquinamento atmosferico da veicoli sulla salute",
+      "danni alle vie respiratorie causati da emissioni veicolari",
+      "irritazione oculare da inquinamento dell'aria"
+    ],
+    "rule_explanation": "L'emissione di inquinanti atmosferici da parte dei veicoli può provocare patologie respiratorie e irritazioni agli occhi, incidendo sulla salute pubblica."
+  }
+}

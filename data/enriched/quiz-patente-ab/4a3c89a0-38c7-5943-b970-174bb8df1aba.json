@@ -1,0 +1,27 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18362",
+  "text": "Sulle strade extraurbane principali i quadricicli leggeri possono transitare",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di circolazione per quadricicli leggeri",
+      "Strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "quadricicli leggeri",
+      "strade extraurbane principali",
+      "divieto di transito",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "divieto di circolazione quadricicli leggeri su strade extraurbane principali",
+      "classificazione strade extraurbane principali e ammessi alla circolazione"
+    ],
+    "rule_explanation": "I quadricicli leggeri non possono circolare sulle strade extraurbane principali, in quanto considerate strade per veicoli a motore."
+  }
+}

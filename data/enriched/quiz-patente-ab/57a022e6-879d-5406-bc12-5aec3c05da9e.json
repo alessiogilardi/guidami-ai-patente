@@ -1,0 +1,32 @@
+{
+  "question_id": 4227,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20856",
+  "text": "In una strada a senso unico di circolazione con la segnaletica indicata in figura la carreggiata è divisa in due corsie",
+  "correct_answer": true,
+  "image": "f9768f4e7a236b03cb9ce9c2772d247f.jpeg",
+  "image_description": "Striscia bianca discontinua. La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale con segnaletica orizzontale. Sono presenti due strisce bianche continue ai bordi esterni della carreggiata e una striscia bianca discontinua al centro, che divide la carreggiata in due corsie. La carreggiata appare a senso unico o a doppio senso con due corsie.",
+    "name": "Striscia bianca discontinua",
+    "description": "La striscia bianca discontinua divide la carreggiata in due corsie. È consentito il sorpasso e l'inversione di marcia se le condizioni di traffico e visibilità lo permettono, e se la strada è a senso unico. Nelle strade a doppio senso, divide i sensi di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Divisione della carreggiata",
+      "Corsie di marcia"
+    ],
+    "exact_keywords": [
+      "striscia bianca discontinua",
+      "carreggiata",
+      "corsie",
+      "senso unico"
+    ],
+    "vector_search_queries": [
+      "divisione della carreggiata con striscia bianca discontinua",
+      "funzione della striscia bianca discontinua nelle strade a senso unico"
+    ],
+    "rule_explanation": "La striscia bianca discontinua divide la carreggiata in corsie e, in una strada a senso unico, indica la possibilità di superamento e inversione di marcia se le condizioni lo consentono."
+  }
+}

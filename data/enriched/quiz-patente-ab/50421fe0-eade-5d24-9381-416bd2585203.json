@@ -1,0 +1,30 @@
+{
+  "question_id": 4704,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25299",
+  "text": "Per garantire l'aderenza e la stabilità del veicolo, bisogna controllare che la pressione di gonfiaggio degli pneumatici sia quella consigliata dalla casa costruttrice",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Pneumatici"
+    ],
+    "exact_keywords": [
+      "pressione di gonfiaggio",
+      "pneumatici",
+      "casa costruttrice",
+      "aderenza",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "controllo pressione pneumatici per aderenza e stabilità",
+      "indicazioni casa costruttrice pressione pneumatici",
+      "manutenzione pneumatici e sicurezza di guida"
+    ],
+    "rule_explanation": "La corretta pressione degli pneumatici, secondo le indicazioni del costruttore, è fondamentale per garantire l'aderenza al manto stradale e la stabilità del veicolo."
+  }
+}

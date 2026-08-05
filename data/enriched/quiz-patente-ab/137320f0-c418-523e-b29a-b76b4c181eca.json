@@ -1,0 +1,31 @@
+{
+  "question_id": 4289,
+  "topic": "Segnali di indicazione",
+  "number": "21453",
+  "text": "Il segnale raffigurato indica due determinate destinazioni",
+  "correct_answer": true,
+  "image": "6e5435838d3626718724832f871812e2.jpeg",
+  "image_description": "Preavviso di deviazione con destinazioni multiple. Il segnale indica che per raggiungere Milano è necessario proseguire diritto, mentre per raggiungere il centro è necessario svoltare a destra. Il simbolo circolare con un punto al centro indica un centro abitato.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di deviazione rettangolare bianco con bordo nero. A sinistra, una freccia nera indica di proseguire diritto per raggiungere MILANO. A destra, una freccia nera curva indica di svoltare a destra per raggiungere il 'centro'. Accanto alla parola 'centro' è presente un piccolo simbolo circolare con un punto al centro, che solitamente indica un centro abitato. Non ci sono altri elementi visivi o segnali.",
+    "name": "Preavviso di deviazione con destinazioni multiple",
+    "description": "Il segnale indica che per raggiungere Milano è necessario proseguire diritto, mentre per raggiungere il centro è necessario svoltare a destra. Il simbolo circolare con un punto al centro indica un centro abitato."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso di deviazione",
+      "Indicazione di destinazioni multiple"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "preavviso di deviazione",
+      "destinazioni multiple",
+      "centro abitato"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di preavviso di deviazione con destinazioni multiple",
+      "indicazione di percorsi alternativi e destinazioni specifiche tramite segnali stradali"
+    ],
+    "rule_explanation": "Il segnale di preavviso di deviazione indica le destinazioni raggiungibili proseguendo diritto o svoltando, specificando anche la direzione per il centro abitato."
+  }
+}

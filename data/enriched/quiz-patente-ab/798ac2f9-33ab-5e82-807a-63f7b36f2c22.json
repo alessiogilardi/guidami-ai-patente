@@ -1,0 +1,27 @@
+{
+  "question_id": 4630,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24781",
+  "text": "Quando si deve far salire o scendere un passeggero dal veicolo, bisogna farlo attendere fino a che il veicolo sia completamente fermo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza nella salita/discesa passeggeri",
+      "Comportamento del conducente in sosta"
+    ],
+    "exact_keywords": [
+      "salire",
+      "scendere",
+      "passeggero",
+      "veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "modalità di salita e discesa passeggeri da veicolo in sosta",
+      "obblighi del conducente per la sicurezza dei passeggeri in salita/discesa"
+    ],
+    "rule_explanation": "Per far salire o scendere un passeggero, il conducente deve assicurarsi che il veicolo sia completamente fermo per prevenire incidenti."
+  }
+}

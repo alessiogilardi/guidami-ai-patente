@@ -1,0 +1,27 @@
+{
+  "question_id": 4608,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24485",
+  "text": "La patente AM può essere rilasciata senza dover sostenere gli esami teorici e pratici, purché il richiedente sia maggiorenne",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti per il rilascio della patente AM",
+      "Obbligo di esami per il conseguimento della patente"
+    ],
+    "exact_keywords": [
+      "patente AM",
+      "esami teorici",
+      "esami pratici",
+      "maggiorenne"
+    ],
+    "vector_search_queries": [
+      "requisiti per conseguire la patente AM",
+      "esami obbligatori per patente AM"
+    ],
+    "rule_explanation": "Il rilascio della patente AM, indipendentemente dall'età del richiedente, è subordinato al superamento degli esami teorici e pratici previsti."
+  }
+}

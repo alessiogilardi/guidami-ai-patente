@@ -1,0 +1,27 @@
+{
+  "question_id": 4508,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23626",
+  "text": "Il conducente di un autoveicolo può lasciare il motore acceso se sosta per poco tempo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Arresto del veicolo",
+      "Divieto di lasciare il motore acceso durante la sosta"
+    ],
+    "exact_keywords": [
+      "motore acceso",
+      "sosta",
+      "arresto",
+      "partenza"
+    ],
+    "vector_search_queries": [
+      "divieto di lasciare il motore acceso durante la sosta",
+      "obblighi del conducente durante la sosta del veicolo"
+    ],
+    "rule_explanation": "È vietato lasciare il motore del veicolo acceso durante la sosta, anche se di breve durata, salvo eccezioni specifiche."
+  }
+}

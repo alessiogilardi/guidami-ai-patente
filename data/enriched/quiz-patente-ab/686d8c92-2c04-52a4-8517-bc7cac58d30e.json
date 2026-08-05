@@ -1,0 +1,29 @@
+{
+  "question_id": 4631,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24785",
+  "text": "In caso di infossamento su neve o sabbia, non riuscendo a partire con la prima marcia è opportuno innestare una marcia superiore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tecnica di guida su fondi a bassa aderenza",
+      "Partenza su neve o sabbia",
+      "Uso del cambio per la trazione"
+    ],
+    "exact_keywords": [
+      "infossamento",
+      "neve",
+      "sabbia",
+      "marcia superiore",
+      "partenza"
+    ],
+    "vector_search_queries": [
+      "partenza veicolo su neve o sabbia con marcia superiore",
+      "tecnica di guida per superare infossamento su fondi scivolosi"
+    ],
+    "rule_explanation": "Su fondi a bassa aderenza come neve o sabbia, se la prima marcia non consente la partenza, è utile innestare una marcia superiore per ridurre la coppia motrice e aumentare l'aderenza."
+  }
+}

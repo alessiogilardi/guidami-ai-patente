@@ -1,0 +1,28 @@
+{
+  "question_id": 4511,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23653",
+  "text": "Durante la fermata il conducente deve essere sempre presente e pronto a riprendere la marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Presenza e vigilanza del conducente"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "conducente",
+      "arresto",
+      "sosta",
+      "vigilanza"
+    ],
+    "vector_search_queries": [
+      "definizione di fermata del veicolo",
+      "obblighi del conducente durante la fermata"
+    ],
+    "rule_explanation": "Durante la fermata, il conducente deve rimanere in prossimità del veicolo per poter riprendere la marcia immediatamente in caso di necessità."
+  }
+}

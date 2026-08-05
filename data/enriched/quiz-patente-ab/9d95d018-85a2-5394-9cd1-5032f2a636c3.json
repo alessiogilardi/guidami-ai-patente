@@ -1,0 +1,27 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24598",
+  "text": "La revisione della patente di guida può essere disposta quando il titolare incorre, per due volte in un anno, in una infrazione che comporta la perdita di almeno 5 punti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione della patente di guida",
+      "Sistema sanzionatorio per infrazioni al CdS"
+    ],
+    "exact_keywords": [
+      "revisione della patente",
+      "infrazione",
+      "perdita di punti",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "condizioni per la revisione della patente di guida",
+      "infrazioni che comportano la revisione della patente"
+    ],
+    "rule_explanation": "La revisione della patente può essere disposta in casi specifici, non solo al verificarsi di due infrazioni in un anno con perdita di 5 punti, ma anche per altre violazioni gravi o reiterate."
+  }
+}

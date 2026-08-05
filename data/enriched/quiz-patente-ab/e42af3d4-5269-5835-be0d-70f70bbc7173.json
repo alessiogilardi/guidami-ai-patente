@@ -1,0 +1,33 @@
+{
+  "question_id": 4496,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23454",
+  "text": "Nell'incrocio rappresentato in figura il veicolo E deve passare per ultimo",
+  "correct_answer": false,
+  "image": "68333fa101ad1127badc272d4e99f23e.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. Il veicolo E, proveniente da sinistra, deve svoltare a sinistra. Il veicolo L, proveniente dal basso, deve svoltare a destra. Il veicolo C, proveniente da destra, deve proseguire dritto. Non sono presenti segnali stradali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo L deve dare la precedenza al veicolo C. Il veicolo C deve dare la precedenza al veicolo E. Il veicolo E deve dare la precedenza al veicolo L. L'ordine di transito corretto è: E, C, L.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con tre veicoli: un'auto rossa (E), un'auto blu (L) e un'auto gialla (C). Il veicolo E si trova in alto a sinistra e intende svoltare a sinistra. Il veicolo L si trova in basso a destra e intende svoltare a destra. Il veicolo C si trova in alto a destra e intende proseguire dritto. Non sono presenti segnali stradali che regolano la precedenza. In assenza di segnali, si applica la regola generale della precedenza a destra. Il veicolo L deve dare la precedenza al veicolo C (alla sua destra). Il veicolo C deve dare la precedenza al veicolo E (alla sua destra). Il veicolo E deve dare la precedenza al veicolo L (alla sua destra). Pertanto, l'ordine di transito corretto è E, poi C, poi L.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. Il veicolo E, proveniente da sinistra, deve svoltare a sinistra. Il veicolo L, proveniente dal basso, deve svoltare a destra. Il veicolo C, proveniente da destra, deve proseguire dritto. Non sono presenti segnali stradali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo L deve dare la precedenza al veicolo C. Il veicolo C deve dare la precedenza al veicolo E. Il veicolo E deve dare la precedenza al veicolo L. L'ordine di transito corretto è: E, C, L."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza ai incroci non regolamentati"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "veicolo",
+      "svoltare a sinistra",
+      "proseguire dritto"
+    ],
+    "vector_search_queries": [
+      "ordine di precedenza incrocio non segnalato",
+      "regola generale della precedenza a destra tra veicoli",
+      "precedenza veicolo che svolta a sinistra in incrocio non regolamentato"
+    ],
+    "rule_explanation": "Negli incroci non regolamentati da segnaletica, la precedenza è data al veicolo proveniente da destra. Se più veicoli convergono, si applica la regola della precedenza a destra tra loro."
+  }
+}

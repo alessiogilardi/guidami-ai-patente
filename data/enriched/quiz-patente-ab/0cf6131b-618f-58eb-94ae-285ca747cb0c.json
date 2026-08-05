@@ -1,0 +1,27 @@
+{
+  "question_id": 4023,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18547",
+  "text": "I ciclomotori a due ruote non possono avere un motore termico di cilindrata superiore a 50 cm3",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di ciclomotore",
+      "Caratteristiche tecniche dei ciclomotori"
+    ],
+    "exact_keywords": [
+      "ciclomotore",
+      "motore termico",
+      "cilindrata",
+      "50 cm3"
+    ],
+    "vector_search_queries": [
+      "cilindrata massima motore ciclomotore 50 cm3",
+      "definizione ciclomotore caratteristiche tecniche"
+    ],
+    "rule_explanation": "I ciclomotori a due o tre ruote, o a quattro ruote con massa a vuoto non superiore a 350 kg, non possono essere dotati di un motore termico con cilindrata superiore a 50 cm3."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4367,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22204",
+  "text": "Il presenza del segnale raffigurato il conducente deve moderare la velocità per la possibile presenza di autocarri in lento movimento",
+  "correct_answer": true,
+  "image": "8945e05f4fc8cb2c350bb19965468f51.jpeg",
+  "image_description": "Preavviso di forte pendenza discendente con pannello integrativo di pericolo traffico in discesa. Il segnale principale indica una forte pendenza discendente con una percentuale del 10%. Il pannello integrativo mostra un camion che sta superando un'auto su una discesa, suggerendo un potenziale pericolo legato al traffico in condizioni di pendenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali. Il segnale superiore è un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al suo interno, una figura nera rappresenta una rampa in pendenza con la percentuale \"10%\" indicata in alto a sinistra. Questo è un segnale di preavviso di forte pendenza discendente. Sotto questo segnale, c'è un pannello integrativo rettangolare con sfondo bianco e bordo nero. Il pannello raffigura un camion che sta superando un'auto su una strada in pendenza discendente. Questo pannello integrativo specifica il tipo di pericolo associato alla pendenza, indicando la possibilità di traffico intenso o di manovre di sorpasso da parte di veicoli pesanti in discesa.",
+    "name": "Preavviso di forte pendenza discendente con pannello integrativo di pericolo traffico in discesa",
+    "description": "Il segnale principale indica una forte pendenza discendente con una percentuale del 10%. Il pannello integrativo mostra un camion che sta superando un'auto su una discesa, suggerendo un potenziale pericolo legato al traffico in condizioni di pendenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in base ai segnali integrativi",
+      "Pericolo da traffico in discesa"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "forte pendenza discendente",
+      "autocarri in lento movimento",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di pannello integrativo per traffico in discesa",
+      "pericolo causato da autocarri in lento movimento su forte pendenza discendente"
+    ],
+    "rule_explanation": "Il pannello integrativo di 'traffico in discesa' impone di moderare la velocità per la possibile presenza di veicoli lenti, come gli autocarri, in forte pendenza."
+  }
+}

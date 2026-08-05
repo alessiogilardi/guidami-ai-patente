@@ -1,0 +1,28 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24818",
+  "text": "I tombini presenti sulla carreggiata sono particolarmente pericolosi per la circolazione dei veicoli a due ruote quando il fondo stradale è bagnato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolosità dei tombini",
+      "Condizioni del fondo stradale",
+      "Veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "tombini",
+      "carreggiata",
+      "veicoli a due ruote",
+      "fondo stradale bagnato"
+    ],
+    "vector_search_queries": [
+      "pericolosità tombini su carreggiata per veicoli a due ruote con fondo bagnato",
+      "rischio scivolamento motocicli su tombini in condizioni di bagnato"
+    ],
+    "rule_explanation": "I tombini rappresentano un pericolo per i veicoli a due ruote, specialmente su fondi stradali bagnati, a causa della ridotta aderenza e del rischio di scivolamento."
+  }
+}

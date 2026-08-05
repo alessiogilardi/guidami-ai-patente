@@ -1,0 +1,28 @@
+{
+  "question_id": 4586,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24261",
+  "text": "E' consentito l'uso intermittente dei proiettori di profondità (a luce abbagliante), anche all'interno dei centri urbani, ma unicamente di giorno",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di profondità",
+      "Segnalazioni luminose vietate o consentite",
+      "Uso delle luci nei centri abitati"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "luce abbagliante",
+      "centri urbani",
+      "uso intermittente"
+    ],
+    "vector_search_queries": [
+      "uso intermittente proiettori di profondità di giorno e di notte",
+      "segnalazione con luci abbaglianti nei centri abitati"
+    ],
+    "rule_explanation": "L'uso intermittente dei proiettori di profondità è consentito sia di giorno che di notte, anche nei centri urbani, per segnalare il sorpasso o per avvertire un pericolo."
+  }
+}

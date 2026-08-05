@@ -1,0 +1,28 @@
+{
+  "question_id": 4646,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24884",
+  "text": "Se ad un infortunato della strada è entrato un corpo estraneo in un occhio (scheggia di vetro, legno o altro), bisogna bendarglielo, senza procedere ad altre manovre",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso oculare",
+      "Gestione corpi estranei nell'occhio",
+      "Sicurezza in caso di infortunio stradale"
+    ],
+    "exact_keywords": [
+      "corpo estraneo nell'occhio",
+      "bendare l'occhio",
+      "infortunato della strada",
+      "manovre di primo soccorso"
+    ],
+    "vector_search_queries": [
+      "primo soccorso per corpo estraneo nell'occhio",
+      "gestione infortunio oculare da corpo estraneo"
+    ],
+    "rule_explanation": "In caso di corpo estraneo nell'occhio di un infortunato, è necessario bendare l'occhio senza altre manovre per evitare ulteriori danni."
+  }
+}

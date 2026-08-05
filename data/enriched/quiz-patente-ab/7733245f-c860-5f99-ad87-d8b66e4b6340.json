@@ -1,0 +1,32 @@
+{
+  "question_id": 4256,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21132",
+  "text": "La luce gialla lampeggiante, del tipo B in figura, indica la presenza di un viale pedonale",
+  "correct_answer": false,
+  "image": "72f9b60b915b838de4c89ca613cfd8f8.jpeg",
+  "image_description": "Semaforo giallo lampeggiante, attraversamento pedonale, corsia ciclabile. La luce gialla circolare lampeggiante invita a procedere con particolare prudenza. Le luci B e C, con le figure stilizzate di un pedone e di una bicicletta, indicano rispettivamente un attraversamento pedonale e una corsia riservata ai ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre simboli luminosi distinti, etichettati come A, B e C. Il simbolo A è una luce circolare gialla lampeggiante. Il simbolo B è un disco nero con la figura stilizzata di un pedone in giallo. Il simbolo C è un disco nero con la figura stilizzata di una bicicletta in giallo. Questi simboli rappresentano diverse segnalazioni semaforiche o di corsia.",
+    "name": "Semaforo giallo lampeggiante, attraversamento pedonale, corsia ciclabile",
+    "description": "La luce gialla circolare lampeggiante invita a procedere con particolare prudenza. Le luci B e C, con le figure stilizzate di un pedone e di una bicicletta, indicano rispettivamente un attraversamento pedonale e una corsia riservata ai ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale luminosa",
+      "Preavviso di pericolo o prescrizione"
+    ],
+    "exact_keywords": [
+      "luce gialla lampeggiante",
+      "procedere con particolare prudenza",
+      "viale pedonale",
+      "attraversamento pedonale"
+    ],
+    "vector_search_queries": [
+      "significato luce gialla lampeggiante semaforo",
+      "differenza tra viale pedonale e attraversamento pedonale",
+      "segnalazione luminosa di pericolo o prescrizione"
+    ],
+    "rule_explanation": "La luce gialla lampeggiante impone di procedere con prudenza, non indica un viale pedonale. Le luci B e C indicano rispettivamente attraversamento pedonale e corsia ciclabile."
+  }
+}

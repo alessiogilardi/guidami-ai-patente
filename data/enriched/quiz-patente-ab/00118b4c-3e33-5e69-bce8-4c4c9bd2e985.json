@@ -1,0 +1,34 @@
+{
+  "question_id": 4235,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20931",
+  "text": "Le strisce gialle in figura delimitano un'area di parcheggio riservata ai taxi",
+  "correct_answer": false,
+  "image": "ef1970af345dc4da1319e85d3c8877c1.jpeg",
+  "image_description": "Segnaletica orizzontale di delimitazione area parcheggio e segnaletica di ostacolo. Le strisce gialle a delimitare un'area indicano un parcheggio riservato, ma il tipo di riserva non è specificato dal solo segnale orizzontale. Le strisce gialle e nere a strisce orizzontali indicano un ostacolo o una zona pericolosa.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi di segnaletica orizzontale. Il primo, in alto, è una serie di strisce gialle e nere alternate, disposte orizzontalmente, che sembrano delimitare un ostacolo o una zona pericolosa sulla carreggiata. Il secondo elemento, in basso e a sinistra, mostra un'area delimitata da strisce gialle a zig-zag, che indica un'area di parcheggio riservato. Non è possibile determinare da questa sola segnaletica orizzontale se il parcheggio sia riservato a persone invalide o a taxi, come suggerito dai testi dei quiz.",
+    "name": "Segnaletica orizzontale di delimitazione area parcheggio e segnaletica di ostacolo",
+    "description": "Le strisce gialle a delimitare un'area indicano un parcheggio riservato, ma il tipo di riserva non è specificato dal solo segnale orizzontale. Le strisce gialle e nere a strisce orizzontali indicano un ostacolo o una zona pericolosa."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segnaletica di ostacolo",
+      "Parcheggi riservati"
+    ],
+    "exact_keywords": [
+      "strisce gialle",
+      "area di parcheggio",
+      "taxi",
+      "ostacolo",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "significato strisce gialle parcheggio riservato",
+      "segnaletica orizzontale ostacolo strisce gialle e nere",
+      "area parcheggio taxi segnaletica orizzontale"
+    ],
+    "rule_explanation": "Le strisce gialle delimitano aree di parcheggio riservate, ma non specificano a quale categoria di veicoli (es. taxi). Le strisce gialle e nere indicano ostacoli o zone pericolose."
+  }
+}

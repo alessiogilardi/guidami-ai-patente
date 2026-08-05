@@ -1,0 +1,29 @@
+{
+  "question_id": 4505,
+  "topic": "Norme sul sorpasso",
+  "number": "23605",
+  "text": "Se si viene sorpassati mentre sopraggiunge un veicolo dal senso opposto, occorre azionare l'indicatore di direzione destro, come segnale di pericolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Comportamento in caso di sorpasso negato",
+      "Segnalazione di pericolo dinamico"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo dal senso opposto",
+      "indicatore di direzione destro",
+      "segnale di pericolo"
+    ],
+    "vector_search_queries": [
+      "sorpasso con veicolo dal senso opposto vietato",
+      "comportamento in caso di sorpasso durante incrocio con veicolo da senso opposto",
+      "uso indicatori di direzione durante manovra di sorpasso vietata"
+    ],
+    "rule_explanation": "In caso di sorpasso con veicolo dal senso opposto, non si usa l'indicatore destro come segnale di pericolo; la manovra è vietata e si deve rallentare o fermarsi se necessario."
+  }
+}

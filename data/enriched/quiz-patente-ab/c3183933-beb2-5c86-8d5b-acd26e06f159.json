@@ -1,0 +1,28 @@
+{
+  "question_id": 4642,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24855",
+  "text": "Soccorrere un ferito della strada può significare salvargli la vita",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di assistenza ai feriti",
+      "Primo soccorso stradale"
+    ],
+    "exact_keywords": [
+      "soccorrere",
+      "ferito della strada",
+      "salvare la vita",
+      "omissione di soccorso"
+    ],
+    "vector_search_queries": [
+      "obbligo di prestare soccorso ai feriti della strada",
+      "conseguenze omissione di soccorso stradale",
+      "importanza del primo soccorso per salvare vite umane in incidenti stradali"
+    ],
+    "rule_explanation": "L'obbligo di prestare assistenza a chiunque si trovi in pericolo è un dovere civico e morale, rafforzato dall'obbligo di legge di soccorrere i feriti della strada per potenziale salvataggio di vite."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4616,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24578",
+  "text": "La patente di guida viene immediatamente ritirata, durante la circolazione, quando si accerti che il conducente guida con patente la cui validità è scaduta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Obblighi del conducente verso le autorità",
+      "Sanzioni per guida con patente scaduta"
+    ],
+    "exact_keywords": [
+      "ritiro patente",
+      "circolazione",
+      "validità scaduta",
+      "conducente",
+      "funzionari o agenti"
+    ],
+    "vector_search_queries": [
+      "conseguenze guida con patente di guida scaduta",
+      "procedura di ritiro patente per scadenza validità",
+      "obbligo di verifica validità patente durante la circolazione"
+    ],
+    "rule_explanation": "La patente di guida è soggetta a visita medica per la verifica della persistenza dei requisiti fisici e psichici. La guida con patente scaduta comporta il ritiiro del documento e sanzioni pecuniarie."
+  }
+}

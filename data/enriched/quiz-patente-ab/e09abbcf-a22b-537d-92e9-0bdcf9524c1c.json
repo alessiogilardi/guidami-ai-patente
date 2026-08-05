@@ -1,0 +1,34 @@
+{
+  "question_id": 4190,
+  "topic": "Segnali di precedenza",
+  "number": "20473",
+  "text": "In presenza del segnale raffigurato non occorre fermarsi all'incrocio se, rallentando, si ha modo di vedere che non vi sono veicoli in arrivo, sia da destra che da sinistra",
+  "correct_answer": true,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di dare precedenza",
+      "Obbligo di dare la precedenza",
+      "Regolazione della circolazione agli incroci"
+    ],
+    "exact_keywords": [
+      "segnale dare precedenza",
+      "rallentare",
+      "fermarsi",
+      "veicoli in arrivo",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "obbligo di dare precedenza al segnale specifico",
+      "condizioni per la fermata al segnale di dare precedenza",
+      "interpretazione del segnale di dare precedenza e obblighi del conducente"
+    ],
+    "rule_explanation": "Il segnale di dare precedenza impone di rallentare e, se necessario, fermarsi per lasciar passare i veicoli provenienti dalle direzioni indicate, senza creare pericolo o intralcio."
+  }
+}

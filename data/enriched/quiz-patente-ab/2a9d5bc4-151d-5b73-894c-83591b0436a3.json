@@ -1,0 +1,28 @@
+{
+  "question_id": 4516,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23699",
+  "text": "Durante la sosta il conducente può allontanarsi dal veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo",
+      "Obblighi del conducente durante la sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "allontanarsi dal veicolo",
+      "vigilanza",
+      "condizioni di sicurezza"
+    ],
+    "vector_search_queries": [
+      "distinzione tra fermata, sosta e arresto",
+      "obblighi del conducente durante la sosta del veicolo",
+      "allontanamento dal veicolo in sosta"
+    ],
+    "rule_explanation": "Durante la sosta, il conducente può allontanarsi dal veicolo solo se questo rimane in condizioni di sicurezza e sotto il suo controllo visivo."
+  }
+}

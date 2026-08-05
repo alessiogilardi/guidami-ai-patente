@@ -1,0 +1,30 @@
+{
+  "question_id": 4709,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25367",
+  "text": "Il sovraccarico del veicolo può rendere inefficienti gli ammortizzatori",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sovraccarico del veicolo",
+      "Manutenzione e sicurezza del veicolo",
+      "Componenti del veicolo"
+    ],
+    "exact_keywords": [
+      "sovraccarico",
+      "veicolo",
+      "ammortizzatori",
+      "efficienza",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "impatto del sovraccarico sull'efficienza degli ammortizzatori",
+      "effetti del sovraccarico sulla tenuta di strada e stabilità del veicolo",
+      "conseguenze del sovraccarico sui componenti meccanici del veicolo"
+    ],
+    "rule_explanation": "Il sovraccarico di un veicolo incide negativamente sulla sua stabilità e può compromettere il corretto funzionamento dei sistemi di ammortizzazione, riducendone l'efficienza."
+  }
+}

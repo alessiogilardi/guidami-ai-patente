@@ -1,0 +1,28 @@
+{
+  "question_id": 4599,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24368",
+  "text": "I sistemi di ritenuta per bambini devono essere di tipo omologato e mantenuti sempre efficienti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistemi di ritenuta per bambini",
+      "Omologazione dei dispositivi di sicurezza",
+      "Manutenzione dei dispositivi di sicurezza"
+    ],
+    "exact_keywords": [
+      "sistemi di ritenuta per bambini",
+      "tipo omologato",
+      "mantenuti efficienti",
+      "dispositivi di sicurezza"
+    ],
+    "vector_search_queries": [
+      "requisiti di omologazione per sistemi di ritenuta per bambini",
+      "obbligo di efficienza e omologazione per seggiolini auto"
+    ],
+    "rule_explanation": "I sistemi di ritenuta per bambini devono essere conformi alle normative di omologazione vigenti e garantire la loro piena efficienza per un uso sicuro."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4025,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18573",
+  "text": "E' consentito sostituire il dispositivo di scarico dei quadricicli leggeri per aumentare la velocità massima, purché non si aumenti la cilindrata del motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Modifiche ai veicoli",
+      "Dispositivi di scarico",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "quadricicli leggeri",
+      "dispositivo di scarico",
+      "cilindrata",
+      "velocità massima"
+    ],
+    "vector_search_queries": [
+      "modifica dispositivo scarico quadriciclo leggero velocità massima",
+      "alterazione caratteristiche tecniche veicolo per aumento prestazioni"
+    ],
+    "rule_explanation": "È vietato modificare i veicoli per aumentarne la velocità massima, anche se non si interviene sulla cilindrata del motore. Le modifiche ai dispositivi di scarico sono soggette a specifiche normative."
+  }
+}

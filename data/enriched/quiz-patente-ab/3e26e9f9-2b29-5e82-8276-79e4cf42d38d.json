@@ -1,0 +1,29 @@
+{
+  "question_id": 4442,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22977",
+  "text": "Il conducente di un motociclo che parte dal margine della carreggiata e si immette nel flusso della circolazione deve indossare ed allacciare il casco",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di casco motociclistico",
+      "Uso corretto dei dispositivi di protezione",
+      "Norme di comportamento per la circolazione dei motocicli"
+    ],
+    "exact_keywords": [
+      "casco",
+      "indossare",
+      "allacciare",
+      "motociclo",
+      "flusso della circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di indossare e allacciare il casco per i motociclisti",
+      "uso del casco protettivo durante la guida di motocicli"
+    ],
+    "rule_explanation": "Il conducente di motociclo ha l'obbligo di indossare e allacciare il casco protettivo durante la marcia, indipendentemente dalla manovra effettuata o dal punto in cui si trova sulla carreggiata."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4507,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23618",
+  "text": "Per parcheggiare in una zona regolamentata mediante disco orario, bisogna indicare sul disco l'orario di fine della sosta, oppure trascriverlo su un foglio di carta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della sosta con disco orario",
+      "Obblighi del conducente in caso di sosta in aree a tempo determinato"
+    ],
+    "exact_keywords": [
+      "disco orario",
+      "orario di inizio sosta",
+      "parcheggio in zona regolamentata",
+      "annotazione orario"
+    ],
+    "vector_search_queries": [
+      "indicazione orario inizio sosta disco orario",
+      "modalità di compilazione disco orario per parcheggio regolamentato"
+    ],
+    "rule_explanation": "Nelle aree con disco orario, è obbligatorio indicare l'orario di INIZIO della sosta, non quello di fine. L'annotazione deve essere fatta sul disco stesso."
+  }
+}

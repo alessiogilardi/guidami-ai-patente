@@ -1,0 +1,30 @@
+{
+  "question_id": 4612,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24532",
+  "text": "La patente di categoria B1 abilita a condurre i motocicli (con o senza carrozzetta) di cilindrata fino a 125 cm3, di potenza non superiore a 11 kW e con rapporto potenza/peso non superiore a 0,1kW/kg",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida B1",
+      "Veicoli conducibili con patente B1",
+      "Definizione di motociclo"
+    ],
+    "exact_keywords": [
+      "patente di categoria B1",
+      "motocicli",
+      "cilindrata",
+      "potenza",
+      "rapporto potenza/peso"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente B1",
+      "definizione di motociclo per patente di guida",
+      "requisiti di potenza e cilindrata per motocicli"
+    ],
+    "rule_explanation": "La patente B1 abilita alla conduzione di tricicli e quadricicli a motore, non di motocicli. I motocicli sono definiti da cilindrata, potenza e rapporto potenza/peso specifici."
+  }
+}

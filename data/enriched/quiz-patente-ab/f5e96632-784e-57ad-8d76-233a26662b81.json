@@ -1,0 +1,27 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23004",
+  "text": "Lo specchio retrovisore centrale di un autoveicolo deve essere regolato in modo da garantire la visione dell'intero lunotto posteriore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Campo visivo del conducente",
+      "Dispositivi di visione del veicolo"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore centrale",
+      "autoveicolo",
+      "visione",
+      "lunotto posteriore"
+    ],
+    "vector_search_queries": [
+      "regolazione specchietto retrovisore centrale autoveicolo",
+      "campo visivo posteriore tramite specchio centrale"
+    ],
+    "rule_explanation": "Lo specchio retrovisore centrale deve essere regolato per consentire al conducente la visione completa del lunotto posteriore, garantendo così un adeguato campo visivo posteriore."
+  }
+}

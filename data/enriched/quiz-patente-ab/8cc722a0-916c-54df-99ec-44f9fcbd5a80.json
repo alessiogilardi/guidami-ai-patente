@@ -1,0 +1,32 @@
+{
+  "question_id": 4194,
+  "topic": "Segnali di precedenza",
+  "number": "20529",
+  "text": "Il segnale raffigurato è posto a 320 metri dal segnale DARE PRECEDENZA",
+  "correct_answer": false,
+  "image": "0336dc776dc65daa553e91a1af9068c5.jpeg",
+  "image_description": "Segnale di dare precedenza con pannello integrativo di prescrizione (STOP a 320 m). Il segnale di dare precedenza, abbinato a un pannello integrativo che indica \"STOP 320 m\", prescrive di dare la precedenza ai veicoli provenienti da destra e da sinistra e di fermarsi obbligatoriamente 320 metri dopo il segnale, dove è presente un segnale di STOP.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice verso il basso, bordato di rosso e con fondo bianco. Questo è il segnale di \"Dare precedenza\". Sopra di esso, è presente un pannello rettangolare bianco con la scritta in nero \"STOP 320 m\". Questo pannello integrativo specifica che, nonostante il segnale principale sia \"Dare precedenza\", l'obbligo di fermarsi (STOP) si concretizzerà a 320 metri di distanza dal segnale stesso. Pertanto, si tratta di una combinazione di segnali che preannuncia uno STOP a una certa distanza.",
+    "name": "Segnale di dare precedenza con pannello integrativo di prescrizione (STOP a 320 m)",
+    "description": "Il segnale di dare precedenza, abbinato a un pannello integrativo che indica \"STOP 320 m\", prescrive di dare la precedenza ai veicoli provenienti da destra e da sinistra e di fermarsi obbligatoriamente 320 metri dopo il segnale, dove è presente un segnale di STOP."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Distanza di applicazione dei segnali",
+      "Segnale di STOP"
+    ],
+    "exact_keywords": [
+      "segnali di precedenza",
+      "pannello integrativo",
+      "dare precedenza",
+      "STOP"
+    ],
+    "vector_search_queries": [
+      "distanza indicata dal pannello integrativo del segnale DARE PRECEDENZA",
+      "prescrizione di fermarsi in presenza del segnale STOP"
+    ],
+    "rule_explanation": "Il pannello integrativo posto sotto il segnale di DARE PRECEDENZA indica la distanza dal segnale di STOP, non dal segnale di DARE PRECEDENZA stesso."
+  }
+}

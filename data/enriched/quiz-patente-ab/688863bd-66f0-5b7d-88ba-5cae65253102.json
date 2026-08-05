@@ -1,0 +1,28 @@
+{
+  "question_id": 4411,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22682",
+  "text": "Chi guida un veicolo, anche se ad elevate prestazioni, deve evitare di costituire pericolo per gli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Principio di prudenza nella guida",
+      "Responsabilità del conducente",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "altri utenti della strada",
+      "veicolo",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "obbligo di evitare pericoli per la circolazione",
+      "condotta di guida sicura per tutti gli utenti della strada"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di guidare in modo da non costituire pericolo o intralcio per la circolazione, indipendentemente dalle prestazioni del veicolo."
+  }
+}

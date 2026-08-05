@@ -1,0 +1,30 @@
+{
+  "question_id": 4710,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25385",
+  "text": "Gli ammortizzatori di un veicolo, se sono del tipo a circuito sigillato, non necessitano di manutenzione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Componenti del veicolo"
+    ],
+    "exact_keywords": [
+      "ammortizzatori",
+      "manutenzione",
+      "circuito sigillato",
+      "sicurezza",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "manutenzione ammortizzatori circuito sigillato",
+      "controllo efficienza ammortizzatori veicolo",
+      "impatto usura ammortizzatori su tenuta di strada"
+    ],
+    "rule_explanation": "Anche gli ammortizzatori a circuito sigillato richiedono controlli periodici per garantirne l'efficienza e la sicurezza di marcia, in quanto la loro usura influisce sulla tenuta di strada."
+  }
+}

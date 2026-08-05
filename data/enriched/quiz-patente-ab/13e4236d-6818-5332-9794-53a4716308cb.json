@@ -1,0 +1,31 @@
+{
+  "question_id": 4076,
+  "topic": "Segnali di pericolo",
+  "number": "19170",
+  "text": "Il segnale raffigurato è un segnale di pericolo",
+  "correct_answer": true,
+  "image": "307718ad8143b32f43530c57270b75ee.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento ciclisti. Il segnale preannuncia la presenza di ciclisti sulla carreggiata o nelle immediate vicinanze, come in un attraversamento ciclabile o una pista ciclabile adiacente. Impone al conducente di moderare la velocità e di prestare attenzione per non costituire pericolo o intralcio per i ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una figura stilizzata di un ciclista in movimento. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
+    "name": "Segnale di pericolo - Attraversamento ciclisti",
+    "description": "Il segnale preannuncia la presenza di ciclisti sulla carreggiata o nelle immediate vicinanze, come in un attraversamento ciclabile o una pista ciclabile adiacente. Impone al conducente di moderare la velocità e di prestare attenzione per non costituire pericolo o intralcio per i ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di pericoli specifici"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento ciclisti",
+      "preavviso",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "funzione dei segnali di pericolo nella segnaletica stradale",
+      "significato e impatto dei segnali di pericolo sulla condotta di guida"
+    ],
+    "rule_explanation": "I segnali di pericolo preavvisano la presenza di pericoli specifici sulla strada, imponendo al conducente di adottare una condotta di guida adeguata per la sicurezza."
+  }
+}

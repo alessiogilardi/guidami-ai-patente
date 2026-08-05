@@ -1,0 +1,27 @@
+{
+  "question_id": 4609,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24494",
+  "text": "La patente di categoria A1 può essere conseguita solo da chi è già in possesso della patente AM",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti per il conseguimento delle patenti di guida",
+      "Età minima per il conseguimento delle patenti"
+    ],
+    "exact_keywords": [
+      "patente A1",
+      "patente AM",
+      "conseguire",
+      "requisiti di età"
+    ],
+    "vector_search_queries": [
+      "requisiti per conseguire patente A1 età",
+      "possesso patente AM necessario per patente A1"
+    ],
+    "rule_explanation": "La patente A1 può essere conseguita da chi ha compiuto 16 anni, non è necessario possedere la patente AM."
+  }
+}

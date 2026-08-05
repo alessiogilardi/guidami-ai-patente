@@ -1,0 +1,28 @@
+{
+  "question_id": 4049,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18834",
+  "text": "Poiché la marcia dei ciclisti a volte avviene con leggeri sbandamenti, il conducente di un veicolo deve tener conto di tale particolarità, in caso di sorpasso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza nel sorpasso",
+      "Tutela degli utenti deboli della strada"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "ciclisti",
+      "sbandamenti",
+      "veicolo",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "distanza di sicurezza sorpasso ciclisti",
+      "comportamento conducente sorpasso biciclette"
+    ],
+    "rule_explanation": "Il conducente deve mantenere una distanza di sicurezza adeguata durante il sorpasso di ciclisti, tenendo conto della loro potenziale instabilità e dei loro movimenti imprevedibili."
+  }
+}

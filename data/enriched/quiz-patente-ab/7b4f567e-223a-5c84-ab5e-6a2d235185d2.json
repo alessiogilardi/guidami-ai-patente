@@ -1,0 +1,33 @@
+{
+  "question_id": 4100,
+  "topic": "Segnali di pericolo",
+  "number": "19461",
+  "text": "In presenza del segnale se il conducente o gli eventuali passeggeri non rispettano il divieto di gettare sigarette accese dal finestrino, può verificarsi un incendio",
+  "correct_answer": true,
+  "image": "4e35a23fa5e62af4861ff27076a91a69.jpeg",
+  "image_description": "Segnale di pericolo di incendio. Il segnale preannuncia un pericolo di incendio, indicando la possibilità che la vegetazione ai lati della strada possa incendiarsi. È un segnale di pericolo che richiede prudenza da parte dei conducenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del segnale è raffigurato un pittogramma che rappresenta un albero stilizzato che brucia, con una fiamma alla base e un fiammifero acceso. Questo pittogramma indica un pericolo di incendio. Non sono presenti pannelli integrativi. L'immagine è focalizzata unicamente sul segnale.",
+    "name": "Segnale di pericolo di incendio",
+    "description": "Il segnale preannuncia un pericolo di incendio, indicando la possibilità che la vegetazione ai lati della strada possa incendiarsi. È un segnale di pericolo che richiede prudenza da parte dei conducenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Comportamento in caso di pericolo specifico",
+      "Prevenzione incendi stradali"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "incendio",
+      "gettare sigarette accese",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "pericolo di incendio dovuto a sigarette accese",
+      "comportamento alla guida in presenza di segnale di pericolo incendio",
+      "rischio incendio per lancio di oggetti fiammeggianti dal veicolo"
+    ],
+    "rule_explanation": "Il segnale di pericolo di incendio impone al conducente la massima prudenza, in quanto il lancio di sigarette accese dal finestrino può innescare incendi, specialmente in presenza di vegetazione secca."
+  }
+}

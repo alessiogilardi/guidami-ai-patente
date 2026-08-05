@@ -1,0 +1,31 @@
+{
+  "question_id": 4426,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22836",
+  "text": "In una carreggiata come in figura in caso di intenso traffico, ciclomotori e motocicli possono circolare sulla pista ciclabile se non superano la velocità di 20 km/h",
+  "correct_answer": false,
+  "image": "a95b434389fbd1ea44ace0c442b64915.jpeg",
+  "image_description": "Pista ciclabile delimitata da striscia gialla continua. La carreggiata è divisa in due corsie per senso di marcia, delimitate da strisce bianche continue e tratteggiate. Ai lati della carreggiata, in corrispondenza dei bordi esterni, sono presenti due strisce gialle continue che delimitano una pista ciclabile. Sulla pista ciclabile è raffigurato il simbolo del ciclista.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una carreggiata stradale. La carreggiata è suddivisa in due corsie per senso di marcia, con una linea bianca tratteggiata che separa le corsie dello stesso senso e una linea bianca continua che separa i sensi di marcia. Ai lati esterni della carreggiata, sia a sinistra che a destra, sono presenti delle strisce gialle continue che delimitano delle piste ciclabili. Su ciascuna pista ciclabile è presente il simbolo di un ciclista stilizzato. Non sono presenti altri segnali stradali o veicoli.",
+    "name": "Pista ciclabile delimitata da striscia gialla continua",
+    "description": "La carreggiata è divisa in due corsie per senso di marcia, delimitate da strisce bianche continue e tratteggiate. Ai lati della carreggiata, in corrispondenza dei bordi esterni, sono presenti due strisce gialle continue che delimitano una pista ciclabile. Sulla pista ciclabile è raffigurato il simbolo del ciclista."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Utilizzo delle piste ciclabili",
+      "Divieto di circolazione per determinate categorie di veicoli"
+    ],
+    "exact_keywords": [
+      "pista ciclabile",
+      "ciclomotori",
+      "motocicli",
+      "divieto di circolazione"
+    ],
+    "vector_search_queries": [
+      "circolazione di ciclomotori e motocicli su piste ciclabili",
+      "uso delle piste ciclabili da parte di veicoli a motore"
+    ],
+    "rule_explanation": "I ciclomotori e i motocicli non possono mai circolare sulle piste ciclabili, indipendentemente dalla velocità e dall'intensità del traffico."
+  }
+}

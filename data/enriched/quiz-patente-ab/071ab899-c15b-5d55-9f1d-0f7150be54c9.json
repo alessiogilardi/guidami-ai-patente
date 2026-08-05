@@ -1,0 +1,32 @@
+{
+  "question_id": 4054,
+  "topic": "Segnali di pericolo",
+  "number": "18895",
+  "text": "In presenza del segnale raffigurato è vietato il sorpasso sul tratto in salita, se la strada è a doppio senso di circolazione con due sole corsie",
+  "correct_answer": true,
+  "image": "77a40e39cc4b726c3f05d1759479cd9e.jpeg",
+  "image_description": "Segnale di dosso. Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un pannello a forma di triangolo con bordo rosso e sfondo bianco. Al centro del pannello è raffigurato un pittogramma nero che rappresenta un dosso.",
+    "name": "Segnale di dosso",
+    "description": "Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo: dosso",
+      "Divieto di sorpasso in salita",
+      "Regolazione della velocità in presenza di dossi"
+    ],
+    "exact_keywords": [
+      "segnale di dosso",
+      "divieto di sorpasso",
+      "strada a doppio senso di circolazione",
+      "salita"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in presenza di segnale di dosso su strada a doppio senso",
+      "regolazione della velocità e sorpasso in corrispondenza di dossi stradali"
+    ],
+    "rule_explanation": "Il segnale di dosso preannuncia un pericolo e impone di moderare la velocità; in presenza di un dosso su strada a doppio senso con due sole corsie, il sorpasso è vietato."
+  }
+}

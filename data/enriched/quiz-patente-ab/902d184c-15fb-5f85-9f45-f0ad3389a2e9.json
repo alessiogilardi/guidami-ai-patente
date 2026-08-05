@@ -1,0 +1,28 @@
+{
+  "question_id": 4597,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24341",
+  "text": "Il casco non è obbligatorio per i conducenti di ciclomotori a due ruote, titolari di patente della categoria B",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Sistemi di ritenuta per conducenti e passeggeri"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "ciclomotore a due ruote",
+      "conducente",
+      "passeggero",
+      "obbligatorio"
+    ],
+    "vector_search_queries": [
+      "obbligo casco ciclomotore conducente e passeggero",
+      "requisiti casco per ciclomotori a due ruote"
+    ],
+    "rule_explanation": "Il casco protettivo è obbligatorio per conducenti e passeggeri di ciclomotori a due ruote, indipendentemente dalla categoria di patente posseduta."
+  }
+}

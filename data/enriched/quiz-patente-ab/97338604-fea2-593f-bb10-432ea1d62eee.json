@@ -1,0 +1,29 @@
+{
+  "question_id": 4407,
+  "topic": "Distanza di sicurezza",
+  "number": "22654",
+  "text": "La distanza di sicurezza deve essere tale da riuscire a fermare in tempo il veicolo, in caso di pericolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Pericolo improvviso",
+      "Arresto tempestivo del veicolo"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "fermarsi in tempo",
+      "pericolo improvviso",
+      "veicolo che precede"
+    ],
+    "vector_search_queries": [
+      "requisiti della distanza di sicurezza tra veicoli",
+      "obbligo di mantenere distanza di sicurezza per evitare collisioni",
+      "distanza minima per arresto tempestivo in caso di pericolo"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve garantire l'arresto del veicolo in condizioni di sicurezza, prevenendo collisioni con il veicolo che precede in caso di arresto o rallentamento improvviso."
+  }
+}

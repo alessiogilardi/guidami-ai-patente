@@ -1,0 +1,29 @@
+{
+  "question_id": 4568,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24119",
+  "text": "Prima di effettuare qualsiasi manovra con il rimorchio agganciato è bene accertarsi che non vi siano cose e/o persone nel raggio di manovra del complesso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra con rimorchio",
+      "Sicurezza nella circolazione",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "rimorchio agganciato",
+      "manovra",
+      "cose e/o persone",
+      "raggio di manovra",
+      "complesso veicolare"
+    ],
+    "vector_search_queries": [
+      "manovra con rimorchio agganciato e sicurezza",
+      "accertamento ostacoli nel raggio di manovra del complesso veicolare"
+    ],
+    "rule_explanation": "Prima di ogni manovra con un rimorchio agganciato, il conducente deve assicurarsi che non vi siano persone o cose nel raggio d'azione del complesso veicolare per prevenire incidenti."
+  }
+}

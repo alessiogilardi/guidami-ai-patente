@@ -1,0 +1,27 @@
+{
+  "question_id": 4661,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25001",
+  "text": "La responsabilità civile connessa al sinistro stradale è basata sul principio che ogni danno causato deve essere risarcito",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile per fatto illecito",
+      "Obbligo di risarcimento del danno"
+    ],
+    "exact_keywords": [
+      "responsabilità civile",
+      "sinistro stradale",
+      "risarcimento del danno",
+      "nesso di causalità"
+    ],
+    "vector_search_queries": [
+      "risarcimento danni responsabilità civile stradale",
+      "principio del risarcimento per fatto illecito stradale"
+    ],
+    "rule_explanation": "La responsabilità civile impone l'obbligo di risarcire il danno causato da un proprio fatto illecito, purché sussista il nesso di causalità tra il comportamento e l'evento dannoso."
+  }
+}

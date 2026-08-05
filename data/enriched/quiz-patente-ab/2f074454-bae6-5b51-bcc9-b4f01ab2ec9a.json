@@ -1,0 +1,32 @@
+{
+  "question_id": 4053,
+  "topic": "Segnali di pericolo",
+  "number": "18884",
+  "text": "Il segnale raffigurato preannuncia una variazione di pendenza della strada con limitata visibilità",
+  "correct_answer": true,
+  "image": "77a40e39cc4b726c3f05d1759479cd9e.jpeg",
+  "image_description": "Segnale di dosso. Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un pannello a forma di triangolo con bordo rosso e sfondo bianco. Al centro del pannello è raffigurato un pittogramma nero che rappresenta un dosso.",
+    "name": "Segnale di dosso",
+    "description": "Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Dosso",
+      "Visibilità ridotta"
+    ],
+    "exact_keywords": [
+      "variazione di pendenza",
+      "limitata visibilità",
+      "dosso",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo che preannunciano variazioni di pendenza con visibilità limitata",
+      "significato del segnale di dosso e obblighi del conducente"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante un dosso preannuncia una variazione altimetrica della strada che può comportare una limitata visibilità, richiedendo una riduzione della velocità."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23461",
+  "text": "Il conducente che intende sorpassare deve accertarsi che la strada sia libera per consentire la completa esecuzione del sorpasso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza nel sorpasso",
+      "Regola generale di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "strada libera",
+      "eseguire il sorpasso",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "condizioni per effettuare un sorpasso sicuro",
+      "obbligo di accertarsi della strada libera prima di sorpassare"
+    ],
+    "rule_explanation": "Il conducente che effettua un sorpasso deve assicurarsi che la visibilità e lo spazio siano sufficienti per completare la manovra in sicurezza, senza creare pericolo."
+  }
+}

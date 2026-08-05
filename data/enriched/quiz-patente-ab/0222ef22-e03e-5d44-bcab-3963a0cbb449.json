@@ -1,0 +1,31 @@
+{
+  "question_id": 4356,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22089",
+  "text": "Il pannello integrativo raffigurato (A) indica un senso unico alternato",
+  "correct_answer": false,
+  "image": "ad3b1bf6ded9b192f1c739df850f6eba.jpeg",
+  "image_description": "Pannello integrativo di direzione (A e B). Il pannello integrativo A indica che il senso di marcia è consentito in entrambe le direzioni. Il pannello integrativo B indica che il senso di marcia è consentito in entrambe le direzioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli integrativi rettangolari, etichettati A e B. Il pannello A presenta due frecce nere su sfondo bianco: una freccia rivolta verso l'alto e una freccia rivolta verso il basso, entrambe puntate al centro. Il pannello B presenta due frecce nere su sfondo bianco: una freccia rivolta verso sinistra e una freccia rivolta verso destra, entrambe puntate al centro. Entrambi i pannelli sono pannelli integrativi di direzione.",
+    "name": "Pannello integrativo di direzione (A e B)",
+    "description": "Il pannello integrativo A indica che il senso di marcia è consentito in entrambe le direzioni. Il pannello integrativo B indica che il senso di marcia è consentito in entrambe le direzioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "senso unico alternato",
+      "senso di marcia",
+      "direzione consentita"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo senso di marcia bidirezionale",
+      "significato pannello integrativo A direzione consentita"
+    ],
+    "rule_explanation": "Il pannello integrativo raffigurato (A) non indica un senso unico alternato, ma che il senso di marcia è consentito in entrambe le direzioni."
+  }
+}

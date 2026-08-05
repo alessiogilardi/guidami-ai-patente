@@ -1,0 +1,28 @@
+{
+  "question_id": 4576,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24181",
+  "text": "I catadiottri di colore bianco sono installati negli autoveicoli che trasportano materiale infiammabile",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di equipaggiamento dei veicoli per il trasporto di merci pericolose",
+      "Segnalazione di pericolo per veicoli speciali"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "materiale infiammabile",
+      "veicoli a motore",
+      "dispositivi di segnalazione visiva"
+    ],
+    "vector_search_queries": [
+      "segnalazione veicoli trasporto merci pericolose infiammabili",
+      "dispositivi di equipaggiamento veicoli trasporto infiammabili",
+      "obblighi segnalazione veicoli trasporto sostanze pericolose"
+    ],
+    "rule_explanation": "I veicoli che trasportano materiale infiammabile devono essere dotati di dispositivi di segnalazione specifici, ma i catadiottri non sono di colore bianco e la loro funzione è diversa dalla segnalazione di pericolo per merci pericolose."
+  }
+}

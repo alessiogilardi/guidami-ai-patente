@@ -1,0 +1,30 @@
+{
+  "question_id": 4554,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23979",
+  "text": "Il conducente di autovettura deve conoscere i rischi derivanti dalla presenza, soprattutto su strade extraurbane, di mezzi particolarmente lenti, come ciclomotori a tre ruote",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Pericolo derivante da traffico lento",
+      "Obblighi del conducente su strade extraurbane"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "mezzi lenti",
+      "strade extraurbane",
+      "pericolo",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alla presenza di veicoli lenti su strade extraurbane",
+      "rischi derivanti dalla circolazione di mezzi lenti in autostrada e strade extraurbane principali",
+      "obbligo di prudenza per il conducente in presenza di ciclomotori e altri veicoli a bassa velocità"
+    ],
+    "rule_explanation": "Il conducente deve moderare la velocità e prestare attenzione ai veicoli lenti, specialmente su strade extraurbane, per prevenire i rischi connessi alla differenza di velocità."
+  }
+}

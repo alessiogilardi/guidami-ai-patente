@@ -1,0 +1,30 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18723",
+  "text": "Il conducente può lanciare oggetti dal finestrino sulla banchina",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente",
+      "Sicurezza stradale",
+      "Comportamento responsabile sulla strada"
+    ],
+    "exact_keywords": [
+      "lanciare oggetti",
+      "banchina",
+      "danneggiare il manto stradale",
+      "inquinamento",
+      "rifiuti"
+    ],
+    "vector_search_queries": [
+      "divieto di lanciare oggetti dal veicolo in movimento",
+      "obbligo di non imbrattare la strada e la banchina",
+      "responsabilità del conducente per oggetti lanciati dal veicolo"
+    ],
+    "rule_explanation": "È vietato lanciare o abbandonare oggetti, rifiuti o materiale dalla banchina che possano costituire pericolo o intralcio alla circolazione, o imbrattare il manto stradale."
+  }
+}

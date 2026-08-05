@@ -1,0 +1,28 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18725",
+  "text": "Il conducente può superare i veicoli in coda accelerando bruscamente e cambiando ripetutamente corsia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento in caso di coda",
+      "Manovre di sorpasso vietate",
+      "Sicurezza stradale e convivenza civile"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicoli in coda",
+      "manovra pericolosa",
+      "cambio di corsia"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso per veicoli in coda con manovre pericolose",
+      "regole di condotta per il sorpasso in presenza di traffico fermo o a rallentatore"
+    ],
+    "rule_explanation": "Il sorpasso di veicoli in coda è vietato se richiede accelerazioni brusche o cambi di corsia ripetuti, in quanto manovre pericolose che compromettono la sicurezza."
+  }
+}

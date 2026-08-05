@@ -1,0 +1,27 @@
+{
+  "question_id": 4433,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22908",
+  "text": "In vicinanza o in corrispondenza degli incroci regolati da semaforo non è consentito il sorpasso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso negli incroci regolati da semaforo",
+      "Regole di circolazione negli incroci"
+    ],
+    "exact_keywords": [
+      "incroci regolati da semaforo",
+      "sorpasso",
+      "divieto di sorpasso",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in prossimità di incroci semaforizzati",
+      "condizioni per il sorpasso negli incroci con semaforo"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in corrispondenza degli incroci regolati da semaforo solo se questo impone l'arresto, altrimenti è consentito se non crea pericolo."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4280,
+  "topic": "Segnali di indicazione",
+  "number": "21363",
+  "text": "Il segnale raffigurato indica che per raggiungere il centro della città bisogna tornare indietro",
+  "correct_answer": false,
+  "image": "065f8ea171c65c6cd1eeda6f2fdaf8d0.jpeg",
+  "image_description": "Segnale di preavviso di immissione su strada urbana. Il segnale indica che per raggiungere Sora e Napoli è necessario proseguire diritto. Per raggiungere il centro o la stazione è necessario svoltare a destra. Il segnale è di preavviso di immissione su strada urbana.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare bianco con bordo nero. In alto a sinistra, su sfondo blu scuro, sono riportati i nomi \"SORA\" e \"NAPOLI\", con simboli di autostrada e strada statale. Al centro, una freccia indica la direzione \"diritto\" per queste destinazioni. Sulla destra, in nero, sono indicati \"centro\" e \"stazione\", con una freccia che punta verso destra, indicando la svolta. Accanto a \"stazione\" è presente il simbolo di una stazione ferroviaria. Il segnale preavvisa un'immissione su strada urbana.",
+    "name": "Segnale di preavviso di immissione su strada urbana",
+    "description": "Il segnale indica che per raggiungere Sora e Napoli è necessario proseguire diritto. Per raggiungere il centro o la stazione è necessario svoltare a destra. Il segnale è di preavviso di immissione su strada urbana."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso",
+      "Indicazioni stradali"
+    ],
+    "exact_keywords": [
+      "preavviso di immissione",
+      "strada urbana",
+      "centro",
+      "stazione"
+    ],
+    "vector_search_queries": [
+      "significato segnale preavviso immissione strada urbana",
+      "direzioni per centro e stazione con segnali di preavviso"
+    ],
+    "rule_explanation": "Il segnale di preavviso di immissione su strada urbana indica le direzioni per raggiungere località specifiche o il centro/stazione, non impone un'inversione di marcia."
+  }
+}

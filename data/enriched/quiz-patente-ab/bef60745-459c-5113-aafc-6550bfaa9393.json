@@ -1,0 +1,29 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24658",
+  "text": "Circolare senza casco durante la guida quando previsto, o con casco mal allacciato, comporta una perdita di punti sulla patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di indossare il casco",
+      "Uso corretto dei dispositivi di protezione individuale",
+      "Sanzioni per violazione delle norme di sicurezza"
+    ],
+    "exact_keywords": [
+      "casco",
+      "mal allacciato",
+      "sanzioni amministrative pecuniarie",
+      "sospensione patente",
+      "perdita di punteggio"
+    ],
+    "vector_search_queries": [
+      "sanzioni per guida senza casco o con casco mal allacciato",
+      "decadenza di punti dalla patente per mancato uso del casco motociclistico"
+    ],
+    "rule_explanation": "La violazione dell'obbligo di indossare il casco o di allacciarlo correttamente comporta sanzioni amministrative pecuniarie e la decurtazione di punti dalla patente."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4324,
+  "topic": "Segnali di indicazione",
+  "number": "21782",
+  "text": "Il segnale raffigurato indica che la zona è coperta dal segnale per antifurti satellitari",
+  "correct_answer": false,
+  "image": "5b1a54c826611831c1b407905d13972c.jpeg",
+  "image_description": "Stazione ferroviaria con possibilità di trasporto autovetture e pernottamento. Il segnale indica la possibilità di trasportare autovetture su un treno, con possibilità di pernottamento a bordo. Si trova in prossimità dell'accesso per le autovetture da caricare sul treno.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di tipo \"indicazione\" (rettangolare con bordo blu e sfondo bianco all'interno). Il pittogramma al centro raffigura un carro ferroviario con sopra un'autovettura e un letto. Questo indica la presenza di una stazione ferroviaria che offre il servizio di trasporto autovetture con possibilità di pernottamento. Il segnale è isolato, non fa parte di una scena di guida complessa o di una sequenza di segnali.",
+    "name": "Stazione ferroviaria con possibilità di trasporto autovetture e pernottamento",
+    "description": "Il segnale indica la possibilità di trasportare autovetture su un treno, con possibilità di pernottamento a bordo. Si trova in prossimità dell'accesso per le autovetture da caricare sul treno."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Servizi per l'automobilista"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "stazione ferroviaria",
+      "trasporto autovetture",
+      "pernottamento"
+    ],
+    "vector_search_queries": [
+      "segnali stradali che indicano servizi per autovetture",
+      "significato segnale stazione ferroviaria trasporto autovetture",
+      "segnaletica indicante servizi di trasporto e pernottamento"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la presenza di una stazione ferroviaria con servizio di trasporto autovetture e possibilità di pernottamento, non un'area coperta da segnale per antifurti satellitari."
+  }
+}

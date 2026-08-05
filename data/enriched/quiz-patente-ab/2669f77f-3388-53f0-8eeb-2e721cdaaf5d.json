@@ -1,0 +1,27 @@
+{
+  "question_id": 4600,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24381",
+  "text": "L'airbag si gonfia automaticamente grazie al comando di un sensore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema di ritenuta supplementare",
+      "Dispositivi di sicurezza attiva"
+    ],
+    "exact_keywords": [
+      "airbag",
+      "sensore",
+      "attivazione",
+      "automatico"
+    ],
+    "vector_search_queries": [
+      "funzionamento airbag e sensori di attivazione",
+      "sistemi di ritenuta airbag e attivazione automatica"
+    ],
+    "rule_explanation": "L'airbag è un dispositivo di sicurezza supplementare che si attiva automaticamente in caso di urto, grazie all'impulso di sensori specifici."
+  }
+}

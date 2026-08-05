@@ -1,0 +1,27 @@
+{
+  "question_id": 4575,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24174",
+  "text": "I catadiottri vanno accesi insieme alle luci di posizione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di illuminazione e segnalazione visiva",
+      "Obblighi di segnalazione visiva dei veicoli"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "luci di posizione",
+      "dispositivi di illuminazione",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "funzionamento catadiottri e luci di posizione",
+      "differenza tra catadiottri e luci di illuminazione"
+    ],
+    "rule_explanation": "I catadiottri sono dispositivi di segnalazione passivi e non si accendono, a differenza delle luci di posizione che sono dispositivi attivi di illuminazione."
+  }
+}

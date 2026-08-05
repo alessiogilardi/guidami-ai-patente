@@ -1,0 +1,34 @@
+{
+  "question_id": 4062,
+  "topic": "Segnali di pericolo",
+  "number": "18997",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada in cui è consentita l'inversione di marcia",
+  "correct_answer": false,
+  "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di curve",
+      "Comportamento ai segnali di pericolo"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "doppia curva",
+      "inversione di marcia",
+      "velocità",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "significato segnali di pericolo generici",
+      "divieto di inversione di marcia in prossimità di curve",
+      "obblighi del conducente in presenza di segnali di pericolo"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano pericoli specifici come curve, non autorizzazioni alla manovra di inversione di marcia, per la quale occorre valutare la sicurezza e la segnaletica orizzontale/verticale."
+  }
+}

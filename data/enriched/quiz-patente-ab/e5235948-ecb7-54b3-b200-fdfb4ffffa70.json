@@ -1,0 +1,28 @@
+{
+  "question_id": 4004,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18342",
+  "text": "L'attraversamento pedonale è una parte della carreggiata sulla quale è vietata la fermata dei veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attraversamento pedonale",
+      "Divieto di fermata",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "carreggiata",
+      "divieto di fermata",
+      "sosta vietata"
+    ],
+    "vector_search_queries": [
+      "definizione e disciplina dell'attraversamento pedonale",
+      "divieto di fermata e sosta in corrispondenza degli attraversamenti pedonali"
+    ],
+    "rule_explanation": "L'attraversamento pedonale, pur essendo parte della carreggiata, è soggetto a specifiche limitazioni per garantire la sicurezza dei pedoni, inclusa la sosta e la fermata dei veicoli."
+  }
+}

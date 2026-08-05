@@ -1,0 +1,27 @@
+{
+  "question_id": 4007,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18388",
+  "text": "L'intersezione (incrocio) a livelli sfalsati comprende strade situate ad altezze diverse",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Intersezioni stradali",
+      "Infrastrutture stradali"
+    ],
+    "exact_keywords": [
+      "intersezione a livelli sfalsati",
+      "strade a livelli diversi",
+      "cavalcavia",
+      "sottopasso"
+    ],
+    "vector_search_queries": [
+      "definizione di intersezione a livelli sfalsati nel CdS",
+      "caratteristiche delle intersezioni stradali a quote diverse"
+    ],
+    "rule_explanation": "Le intersezioni a livelli sfalsati sono quelle in cui le strade si sovrappongono o si incrociano tramite cavalcavia o sottopassi, evitando il congiungimento allo stesso piano."
+  }
+}

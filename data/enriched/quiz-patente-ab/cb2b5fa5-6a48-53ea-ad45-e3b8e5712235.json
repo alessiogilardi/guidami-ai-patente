@@ -1,0 +1,32 @@
+{
+  "question_id": 4289,
+  "topic": "Segnali di indicazione",
+  "number": "21455",
+  "text": "Il segnale raffigurato si può trovare su strade urbane",
+  "correct_answer": true,
+  "image": "6e5435838d3626718724832f871812e2.jpeg",
+  "image_description": "Preavviso di deviazione con destinazioni multiple. Il segnale indica che per raggiungere Milano è necessario proseguire diritto, mentre per raggiungere il centro è necessario svoltare a destra. Il simbolo circolare con un punto al centro indica un centro abitato.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di deviazione rettangolare bianco con bordo nero. A sinistra, una freccia nera indica di proseguire diritto per raggiungere MILANO. A destra, una freccia nera curva indica di svoltare a destra per raggiungere il 'centro'. Accanto alla parola 'centro' è presente un piccolo simbolo circolare con un punto al centro, che solitamente indica un centro abitato. Non ci sono altri elementi visivi o segnali.",
+    "name": "Preavviso di deviazione con destinazioni multiple",
+    "description": "Il segnale indica che per raggiungere Milano è necessario proseguire diritto, mentre per raggiungere il centro è necessario svoltare a destra. Il simbolo circolare con un punto al centro indica un centro abitato."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso",
+      "Segnali di indicazione stradale",
+      "Ubicazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "preavviso di deviazione",
+      "strade urbane",
+      "centro abitato",
+      "destinazioni multiple"
+    ],
+    "vector_search_queries": [
+      "installazione segnali di preavviso deviazione su strade urbane",
+      "segnali di indicazione per destinazioni multiple in ambito urbano"
+    ],
+    "rule_explanation": "I segnali di preavviso di deviazione con destinazioni multiple possono essere installati anche su strade urbane per indicare percorsi alternativi e destinazioni specifiche."
+  }
+}

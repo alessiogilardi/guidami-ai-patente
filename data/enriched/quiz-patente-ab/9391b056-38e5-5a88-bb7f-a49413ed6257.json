@@ -1,0 +1,33 @@
+{
+  "question_id": 4061,
+  "topic": "Segnali di pericolo",
+  "number": "18984",
+  "text": "Il segnale raffigurato preannuncia una deviazione per lavori in corso",
+  "correct_answer": false,
+  "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione",
+      "Lavori in corso"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "doppia curva",
+      "lavori in corso",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "differenza segnale pericolo doppia curva e segnale lavori in corso",
+      "segnali stradali di pericolo e prescrizione",
+      "preavviso di deviazione per lavori in corso"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante una doppia curva (la prima a sinistra) preannuncia tale pericolo stradale, non una deviazione per lavori in corso che è segnalata da un diverso segnale."
+  }
+}

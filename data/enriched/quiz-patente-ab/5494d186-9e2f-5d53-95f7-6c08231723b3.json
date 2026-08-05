@@ -1,0 +1,27 @@
+{
+  "question_id": 4021,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18528",
+  "text": "Il salvagente può essere segnalato da colonnine luminose a luce gialla fissa",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di ostacoli stradali",
+      "Dispositivi di protezione e preavviso"
+    ],
+    "exact_keywords": [
+      "salvagente",
+      "colonnine luminose",
+      "luce gialla fissa",
+      "segnalazione luminosa"
+    ],
+    "vector_search_queries": [
+      "segnalazione luminosa dei salvagenti stradali",
+      "uso della luce gialla fissa per colonnine di salvagente"
+    ],
+    "rule_explanation": "Il salvagente, isola di traffico, può essere segnalato da colonnine a luce gialla fissa per garantirne la visibilità e la sicurezza."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4264,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21203",
+  "text": "Avvicinandosi ad un passaggio a livello con luci rosse accese e semibarriera ancora alzata, non si deve accelerare per attraversare prima che si abbassi la semibarriera",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni semaforiche ai passaggi a livello",
+      "Obbligo di arresto al passaggio a livello"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "luci rosse",
+      "semibarriera",
+      "arrestarsi"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto al passaggio a livello con luci rosse accese",
+      "condotta da tenere al passaggio a livello con semibarriera alzata e luci rosse"
+    ],
+    "rule_explanation": "Ai passaggi a livello, le luci rosse accese impongono l'arresto anche se la semibarriera è ancora alzata, per evitare incidenti."
+  }
+}

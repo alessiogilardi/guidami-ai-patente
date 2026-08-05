@@ -1,0 +1,31 @@
+{
+  "question_id": 4151,
+  "topic": "Segnali di obbligo",
+  "number": "20058",
+  "text": "Il segnale raffigurato impone la marcia in unica fila",
+  "correct_answer": false,
+  "image": "6ff794188d5d8731f3360ac40409b437.jpeg",
+  "image_description": "Senso unico frontale. Il segnale impone di proseguire diritto.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca rivolta verso l'alto, indicando la direzione obbligatoria da seguire. Si tratta di un segnale di prescrizione, specificamente un segnale di direzione obbligatoria.",
+    "name": "Senso unico frontale",
+    "description": "Il segnale impone di proseguire diritto."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico",
+      "Direzione imposta dalla segnaletica"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "direzione da seguire",
+      "proseguire diritto",
+      "marcia in unica fila"
+    ],
+    "vector_search_queries": [
+      "obbligo di proseguire diritto imposto dal segnale di senso unico",
+      "differenza tra segnale di senso unico e obbligo di marcia in unica fila"
+    ],
+    "rule_explanation": "Il segnale di 'senso unico' impone di proseguire diritto, non la marcia in unica fila che è un obbligo diverso."
+  }
+}

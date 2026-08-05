@@ -1,0 +1,32 @@
+{
+  "question_id": 4067,
+  "topic": "Segnali di pericolo",
+  "number": "19063",
+  "text": "Il segnale raffigurato è posto sul secondo pannello distanziometrico a barre rosse",
+  "correct_answer": false,
+  "image": "9ed0e8363c88fd8588f80faaf25082b2.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere. Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata una locomotiva a vapore nera, simbolo di un attraversamento ferroviario. Non sono presenti pannelli integrativi né altri elementi di contesto stradale. Si tratta quindi di un segnale isolato. Il segnale raffigurato è il segnale di pericolo 'Passaggio a livello con barriere'.",
+    "name": "Segnale di passaggio a livello con barriere",
+    "description": "Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di passaggio a livello con barriere",
+      "Divieto di sorpasso in prossimità di segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "pannello distanziometrico",
+      "passaggio a livello con barriere",
+      "divieto di sorpasso"
+    ],
+    "vector_search_queries": [
+      "preavviso segnali di pericolo con pannelli distanziometrici",
+      "regolamentazione sorpasso in prossimità di passaggio a livello con barriere"
+    ],
+    "rule_explanation": "I segnali di pericolo, come il passaggio a livello con barriere, sono presegnalati da pannelli distanziometrici. Il sorpasso è vietato in prossimità di tali segnali."
+  }
+}

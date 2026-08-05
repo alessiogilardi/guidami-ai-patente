@@ -1,0 +1,33 @@
+{
+  "question_id": 4283,
+  "topic": "Segnali di indicazione",
+  "number": "21395",
+  "text": "Il segnale raffigurato vieta anche agli autobus di raggiungere Avezzano",
+  "correct_answer": false,
+  "image": "1012b152b1a239de54a0afecec9d77e0.jpeg",
+  "image_description": "Segnale di preavviso di deviazione con indicazioni di località e segnale di divieto. Il segnale indica che per raggiungere Pescara è necessario svoltare a sinistra, mentre per Avezzano e il centro è necessario proseguire diritto. È presente anche un segnale di divieto di transito per autocarri che indica che questi veicoli non possono proseguire diritto. L'autostrada Roma-L'Aquila è indicata a sinistra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di deviazione. In alto a destra, su sfondo blu, è indicata la destinazione \"PESCARA\" con una freccia che punta a sinistra. Sotto, su sfondo bianco, sono indicate le destinazioni \"AVEZZANO\" e \"centro\" con una freccia che punta verso l'alto. A destra, una freccia a tre rami indica le direzioni: sinistra per Pescara, dritto per Avezzano e centro. Sul ramo che indica dritto, è presente un segnale di divieto di transito per autocarri (cerchio rosso con barra orizzontale rossa e un'immagine di un camion all'interno). In basso a sinistra, su sfondo verde, è indicata la destinazione \"ROMA - L'AQUILA\" con il simbolo dell'autostrada A24/A25.",
+    "name": "Segnale di preavviso di deviazione con indicazioni di località e segnale di divieto",
+    "description": "Il segnale indica che per raggiungere Pescara è necessario svoltare a sinistra, mentre per Avezzano e il centro è necessario proseguire diritto. È presente anche un segnale di divieto di transito per autocarri che indica che questi veicoli non possono proseguire diritto. L'autostrada Roma-L'Aquila è indicata a sinistra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione e preavviso",
+      "Segnali di divieto",
+      "Destinazione stradale"
+    ],
+    "exact_keywords": [
+      "segnali di preavviso di deviazione",
+      "divieto di transito",
+      "autocarri",
+      "autobus"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di preavviso e divieto di transito",
+      "segnaletica stradale per direzioni e divieti specifici per categorie di veicoli",
+      "interpretazione segnali di indicazione stradale per autobus e autocarri"
+    ],
+    "rule_explanation": "Il segnale di preavviso indica le direzioni per le località, mentre il segnale di divieto di transito per autocarri non riguarda gli autobus. Gli autobus possono proseguire diritto per Avezzano."
+  }
+}

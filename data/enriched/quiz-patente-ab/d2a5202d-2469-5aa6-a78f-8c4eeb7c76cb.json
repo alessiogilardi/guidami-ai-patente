@@ -1,0 +1,27 @@
+{
+  "question_id": 4433,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22907",
+  "text": "In corrispondenza degli incroci urbani è consentito non azionare l'indicatore di direzione per svoltare a destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione manovre",
+      "Regola generale di svolta a destra"
+    ],
+    "exact_keywords": [
+      "incroci urbani",
+      "indicatore di direzione",
+      "svolta a destra",
+      "segnalazione preventiva"
+    ],
+    "vector_search_queries": [
+      "obbligo di usare indicatori di direzione per svolta a destra in incrocio",
+      "segnalazione preventiva di svolta a destra in ambito urbano"
+    ],
+    "rule_explanation": "Nelle manovre di svolta, anche a destra in incroci urbani, è obbligatorio azionare l'indicatore di direzione per segnalare preventivamente la propria intenzione."
+  }
+}

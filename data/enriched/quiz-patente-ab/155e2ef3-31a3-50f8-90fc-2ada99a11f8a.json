@@ -1,0 +1,27 @@
+{
+  "question_id": 4583,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24230",
+  "text": "Non si devono usare gli indicatori di direzione quando si cambia corsia mentre si circola su strada a senso unico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione di manovra",
+      "Uso corretto degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "cambio di corsia",
+      "strada a senso unico",
+      "segnalazione di manovra"
+    ],
+    "vector_search_queries": [
+      "obbligo di usare indicatori di direzione per cambio corsia su strada a senso unico",
+      "segnalazione manovra di cambio corsia su strade a senso unico"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare ogni cambio di corsia, anche su strada a senso unico, per avvisare gli altri utenti della strada."
+  }
+}

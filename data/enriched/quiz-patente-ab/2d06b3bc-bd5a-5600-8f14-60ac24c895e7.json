@@ -1,0 +1,31 @@
+{
+  "question_id": 4182,
+  "topic": "Segnali di obbligo",
+  "number": "20399",
+  "text": "Il segnale raffigurato vieta il transito di biciclette condotte a mano",
+  "correct_answer": false,
+  "image": "5cdcaa7804e7570e6161fc25649f1b29.jpeg",
+  "image_description": "Fine percorso pedonale e ciclabile. Il segnale indica la fine di un percorso pedonale e di una pista ciclabile. La barra rossa diagonale che attraversa entrambi i percorsi indica la fine della loro validità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con sfondo blu. Il segnale è diviso verticalmente da una linea bianca. Nella metà sinistra, su sfondo blu, è raffigurata la sagoma stilizzata di un pedone che cammina. Nella metà destra, su sfondo blu, è raffigurata la sagoma stilizzata di una bicicletta. Una barra rossa diagonale attraversa il segnale da in alto a sinistra a in basso a destra, sovrapponendosi sia al pedone che alla bicicletta. Questo tipo di segnale indica la fine di un percorso pedonale e di una pista ciclabile.",
+    "name": "Fine percorso pedonale e ciclabile",
+    "description": "Il segnale indica la fine di un percorso pedonale e di una pista ciclabile. La barra rossa diagonale che attraversa entrambi i percorsi indica la fine della loro validità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di fine prescrizione"
+    ],
+    "exact_keywords": [
+      "fine percorso pedonale",
+      "fine pista ciclabile",
+      "segnali di indicazione",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di percorsi pedonali e ciclabili",
+      "interpretazione segnale fine percorso pedonale e ciclabile"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la fine di un percorso pedonale e di una pista ciclabile, non un divieto di transito per biciclette condotte a mano."
+  }
+}

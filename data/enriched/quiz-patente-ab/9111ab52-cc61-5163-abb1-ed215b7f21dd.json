@@ -1,0 +1,30 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25401",
+  "text": "La precisione della sterzata non è influenzata dalle cattive condizioni delle sospensioni e degli ammortizzatori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Stabilità e tenuta di strada",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "sterzata",
+      "sospensioni",
+      "ammortizzatori",
+      "tenuta di strada",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "influenza delle sospensioni e degli ammortizzatori sulla precisione di sterzata",
+      "impatto delle condizioni di ammortizzatori e sospensioni sulla tenuta di strada",
+      "manutenzione sospensioni e ammortizzatori per la stabilità del veicolo"
+    ],
+    "rule_explanation": "Le sospensioni e gli ammortizzatori sono cruciali per la tenuta di strada e la stabilità del veicolo, influenzando direttamente la precisione della sterzata e la sicurezza."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4667,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25040",
+  "text": "I massimali della polizza di assicurazione R.C.A. (responsabilità civile auto) sono gli importi massimi che l'impresa assicuratrice si impegna a pagare, in caso di incidente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Massimale di garanzia assicurativa",
+      "Assicurazione obbligatoria della responsabilità civile auto"
+    ],
+    "exact_keywords": [
+      "massimale",
+      "polizza R.C.A.",
+      "impresa di assicurazione",
+      "risarcimento del danno"
+    ],
+    "vector_search_queries": [
+      "importo massimo garantito dalla polizza RCA in caso di sinistro",
+      "limite di risarcimento a carico dell'assicuratore per responsabilità civile auto"
+    ],
+    "rule_explanation": "Il massimale è la somma massima che l'impresa di assicurazione si obbliga a corrispondere per il risarcimento dei danni derivanti da un sinistro coperto dalla polizza R.C.A."
+  }
+}

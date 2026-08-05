@@ -1,0 +1,27 @@
+{
+  "question_id": 4444,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22992",
+  "text": "Il conducente che intende fermarsi sul margine destro della carreggiata deve evitare di creare pericolo ai conducenti di veicoli a due ruote sopraggiungenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza nella sosta",
+      "Sicurezza nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "fermarsi sul margine destro",
+      "pericolo",
+      "veicoli a due ruote",
+      "sopraggiungenti"
+    ],
+    "vector_search_queries": [
+      "condotta del conducente in fase di arresto sul margine stradale",
+      "obbligo di evitare pericoli per veicoli in transito durante la sosta"
+    ],
+    "rule_explanation": "Il conducente che si ferma sul margine destro deve assicurarsi di non costituire pericolo per la circolazione, in particolare per i veicoli a due ruote che sopraggiungono."
+  }
+}

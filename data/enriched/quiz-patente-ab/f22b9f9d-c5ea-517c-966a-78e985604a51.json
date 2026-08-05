@@ -1,0 +1,27 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23554",
+  "text": "È vietato il sorpasso in prossimità degli ospedali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Norme di circolazione in prossimità di strutture sanitarie"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "ospedali",
+      "strutture sanitarie",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in prossimità di ospedali o strutture sanitarie",
+      "sorpasso vietato in prossimità di ospedali e scuole"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in prossimità degli ospedali solo se vi è pericolo o intralcio alla circolazione, non in via assoluta."
+  }
+}

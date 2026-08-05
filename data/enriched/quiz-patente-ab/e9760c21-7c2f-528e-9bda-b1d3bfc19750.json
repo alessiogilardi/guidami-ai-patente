@@ -1,0 +1,27 @@
+{
+  "question_id": 4585,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24249",
+  "text": "L'uso dei proiettori a luce abbagliante è necessario, fuori dei centri abitati, quando l'illuminazione pubblica è insufficiente e non si incrociano altri veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di profondità",
+      "Condizioni di utilizzo dei fari abbaglianti"
+    ],
+    "exact_keywords": [
+      "proiettori a luce abbagliante",
+      "centri abitati",
+      "illuminazione pubblica",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "uso dei proiettori a luce abbagliante fuori dai centri abitati",
+      "condizioni per l'impiego dei fari abbaglianti in assenza di illuminazione pubblica"
+    ],
+    "rule_explanation": "I proiettori a luce abbagliante sono obbligatori fuori dai centri abitati se l'illuminazione pubblica è insufficiente e non si incrociano altri veicoli, per garantire la visibilità."
+  }
+}

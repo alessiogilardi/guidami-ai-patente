@@ -1,0 +1,33 @@
+{
+  "question_id": 4088,
+  "topic": "Segnali di pericolo",
+  "number": "19314",
+  "text": "In presenza del segnale raffigurato è necessario fare attenzione ai bambini sulla carreggiata e non a quelli sul marciapiede",
+  "correct_answer": false,
+  "image": "cdbe4aad6e6d605fc94a507ecba3869c.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento di bambini. Il segnale preannuncia la possibile presenza di bambini in prossimità della carreggiata, invitando alla massima prudenza e a moderare la velocità. Può essere installato in prossimità di scuole, parchi giochi o altri luoghi frequentati da bambini.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una silhouette nera di un adulto che tiene per mano un bambino, entrambi con uno zaino in spalla e in movimento. Questo pittogramma indica la possibile presenza di bambini sulla carreggiata.",
+    "name": "Segnale di pericolo - Attraversamento di bambini",
+    "description": "Il segnale preannuncia la possibile presenza di bambini in prossimità della carreggiata, invitando alla massima prudenza e a moderare la velocità. Può essere installato in prossimità di scuole, parchi giochi o altri luoghi frequentati da bambini."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Attraversamento pedonale di bambini",
+      "Massima prudenza in prossimità di scuole o parchi giochi"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento di bambini",
+      "massima prudenza",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "pericolo attraversamento bambini segnale stradale",
+      "obbligo prudenza bambini in prossimità carreggiata",
+      "moderazione velocità in presenza di bambini"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'attraversamento di bambini' impone di prestare attenzione ai bambini sia sulla carreggiata sia nelle immediate vicinanze, moderando la velocità per garantire la loro sicurezza."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4515,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23692",
+  "text": "La fermata è consentita davanti ai cassonetti dei rifiuti urbani",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata di veicoli",
+      "Divieti di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "cassonetti dei rifiuti urbani",
+      "divieto di sosta",
+      "divieto di fermata"
+    ],
+    "vector_search_queries": [
+      "dove è consentita la fermata dei veicoli",
+      "divieto di fermata in prossimità di cassonetti ecologici"
+    ],
+    "rule_explanation": "La fermata è la temporanea sospensione della marcia per consentire la discesa o la salita di persone, ed è permessa anche in prossimità dei cassonetti, salvo diversa segnalazione."
+  }
+}

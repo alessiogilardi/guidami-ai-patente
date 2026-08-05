@@ -1,0 +1,31 @@
+{
+  "question_id": 4206,
+  "topic": "Segnali di precedenza",
+  "number": "20673",
+  "text": "Il segnale raffigurato è posto esclusivamente su strade extraurbane ad intenso traffico",
+  "correct_answer": false,
+  "image": "ae0a5db589f248f6cde41a1db1f0fe3f.jpeg",
+  "image_description": "Segnale di Diritto di Precedenza. Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con i vertici disposti in modo da formare un rombo. Il bordo esterno del segnale è bianco, seguito da un bordo nero più sottile. All'interno, su sfondo bianco, vi è un rombo più piccolo di colore arancione. Questo è il segnale di Diritto di Precedenza.",
+    "name": "Segnale di Diritto di Precedenza",
+    "description": "Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Applicazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di precedenza",
+      "strade extraurbane",
+      "strade urbane",
+      "diritto di precedenza"
+    ],
+    "vector_search_queries": [
+      "segnali di diritto di precedenza applicazione strade urbane ed extraurbane",
+      "utilizzo segnale Diritto di Precedenza su strade extraurbane e urbane"
+    ],
+    "rule_explanation": "Il segnale di diritto di precedenza non è esclusivo delle strade extraurbane, ma può essere impiegato anche su strade urbane ove sia necessario regolare la circolazione negli incroci."
+  }
+}

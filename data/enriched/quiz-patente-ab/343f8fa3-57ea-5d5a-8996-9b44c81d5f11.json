@@ -1,0 +1,28 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22548",
+  "text": "Il valore della distanza di sicurezza da mantenere da una macchina sgombraneve in azione è di 10 metri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Veicoli eccezionali e di rimozione",
+      "Comportamento in caso di neve"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "macchina sgombraneve",
+      "in azione",
+      "50 metri"
+    ],
+    "vector_search_queries": [
+      "distanza di sicurezza da macchine sgombraneve in azione",
+      "regole di circolazione per mezzi sgombraneve"
+    ],
+    "rule_explanation": "La distanza di sicurezza da mantenere da una macchina sgombraneve in azione è di 50 metri, non 10."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4664,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25026",
+  "text": "Quando l'assicurazione per la responsabilità civile auto è scaduta di validità è possibile continuare ad usare il veicolo, solo se si è disposti a pagare personalmente gli eventuali danni arrecati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione obbligatoria R.C.A.",
+      "Responsabilità civile derivante dalla circolazione dei veicoli",
+      "Obbligo di copertura assicurativa"
+    ],
+    "exact_keywords": [
+      "assicurazione R.C.A.",
+      "responsabilità civile auto",
+      "validità",
+      "danni arrecati",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "obbligo assicurazione R.C.A. per la circolazione del veicolo",
+      "conseguenze circolazione veicolo con assicurazione scaduta",
+      "divieto di utilizzo veicolo privo di copertura assicurativa obbligatoria"
+    ],
+    "rule_explanation": "L'assicurazione R.C.A. è obbligatoria per la circolazione del veicolo; la sua scadenza non consente l'uso del mezzo, nemmeno con disponibilità al pagamento personale dei danni."
+  }
+}

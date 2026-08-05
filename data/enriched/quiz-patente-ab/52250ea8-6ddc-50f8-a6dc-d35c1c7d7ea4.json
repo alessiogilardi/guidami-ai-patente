@@ -1,0 +1,27 @@
+{
+  "question_id": 4519,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23722",
+  "text": "Nelle zone nelle quali gli spazi di sosta sono delimitati da segnaletica orizzontale, il conducente deve sempre sistemare il proprio veicolo entro uno degli appositi spazi(stalli), senza invadere quelli contigui",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Disposizione del veicolo negli spazi di sosta delimitati",
+      "Obblighi del conducente nella sosta"
+    ],
+    "exact_keywords": [
+      "spazi di sosta",
+      "segnaletica orizzontale",
+      "stalli",
+      "sistemare il veicolo"
+    ],
+    "vector_search_queries": [
+      "posizionamento del veicolo negli stalli di sosta delimitati",
+      "sosta in spazi delimitati da segnaletica orizzontale"
+    ],
+    "rule_explanation": "Nelle aree con stalli delimitati da segnaletica orizzontale, il veicolo deve essere posizionato interamente all'interno di uno stallo, senza occupare quelli adiacenti."
+  }
+}

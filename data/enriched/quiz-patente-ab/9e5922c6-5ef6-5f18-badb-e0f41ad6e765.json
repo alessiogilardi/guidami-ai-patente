@@ -1,0 +1,27 @@
+{
+  "question_id": 4583,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24223",
+  "text": "Si devono usare gli indicatori di direzione prima di ogni cambio di corsia, quando si viaggia su strada suddivisa in corsie",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Cambio di corsia su strada divisa in carreggiate"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "cambio di corsia",
+      "strada suddivisa in corsie",
+      "manovra di immissione"
+    ],
+    "vector_search_queries": [
+      "uso degli indicatori di direzione prima del cambio di corsia su strada divisa in corsie",
+      "obbligo di segnalazione manovra di cambio corsia su strade con più corsie"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati prima di ogni cambio di corsia su strade divise in più corsie per segnalare la manovra agli altri utenti della strada."
+  }
+}

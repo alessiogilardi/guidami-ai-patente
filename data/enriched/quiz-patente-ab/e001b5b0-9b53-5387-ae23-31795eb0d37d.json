@@ -1,0 +1,28 @@
+{
+  "question_id": 4616,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24582",
+  "text": "La patente di guida viene immediatamente ritirata, durante la circolazione, quando il conducente, obbligato a sostenere un esame di revisione, non vi si è sottoposto nei termini prescritti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione della patente",
+      "Obblighi del conducente",
+      "Sanzioni amministrative"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "esame di revisione",
+      "sottoposto nei termini prescritti",
+      "ritirata"
+    ],
+    "vector_search_queries": [
+      "conseguenze del mancato superamento dell'esame di revisione della patente",
+      "procedura di revisione della patente di guida e sanzioni per inadempienza"
+    ],
+    "rule_explanation": "La patente di guida è soggetta a revisione quando vi sono dubbi sulla persistenza dei requisiti fisici, psichici o morali. Il mancato superamento dell'esame di revisione comporta il ritiro della patente."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4690,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25193",
+  "text": "Chi conduce un motociclo deve considerare che l'aderenza diminuisce sulle rotaie specialmente in caso di pioggia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aderenza del veicolo",
+      "Condizioni di guida sicura",
+      "Manutenzione e sicurezza del motociclo"
+    ],
+    "exact_keywords": [
+      "aderenza",
+      "motociclo",
+      "rotaie",
+      "pioggia",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "aderenza motociclo su rotaie",
+      "influenza della pioggia sull'aderenza",
+      "sicurezza di guida motociclo su superfici scivolose"
+    ],
+    "rule_explanation": "La tenuta di strada del motociclo è influenzata negativamente dalle rotaie, specialmente in condizioni di bagnato, riducendo l'aderenza."
+  }
+}

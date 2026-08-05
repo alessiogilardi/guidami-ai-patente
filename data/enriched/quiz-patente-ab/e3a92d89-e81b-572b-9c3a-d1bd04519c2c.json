@@ -1,0 +1,31 @@
+{
+  "question_id": 4351,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22027",
+  "text": "Il segnale raffigurato vieta il transito dalle ore 7.30 alle 19.00",
+  "correct_answer": true,
+  "image": "399bff49a2b9a2024683aa38ac6bc5cd.jpeg",
+  "image_description": "Divieto di transito con pannello integrativo di orario. Il segnale di divieto di transito è valido solo nella fascia oraria specificata dal pannello integrativo, ovvero dalle 7:30 alle 19:00. Al di fuori di questi orari, il divieto non è attivo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di transito, rappresentato da un cerchio rosso con una barra orizzontale rossa su sfondo bianco. Sotto questo segnale, è presente un pannello integrativo rettangolare con la dicitura '7,30-19,00' in nero su sfondo bianco. Questo pannello specifica l'orario di validità del segnale sovrastante.",
+    "name": "Divieto di transito con pannello integrativo di orario",
+    "description": "Il segnale di divieto di transito è valido solo nella fascia oraria specificata dal pannello integrativo, ovvero dalle 7:30 alle 19:00. Al di fuori di questi orari, il divieto non è attivo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Limitazioni temporali di validità dei segnali"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "divieto di transito",
+      "orario",
+      "fascia oraria"
+    ],
+    "vector_search_queries": [
+      "validità oraria dei segnali stradali",
+      "pannelli integrativi che indicano fasce orarie di divieto"
+    ],
+    "rule_explanation": "I pannelli integrativi possono limitare la validità di un segnale a specifiche fasce orarie, rendendolo applicabile solo in quei periodi."
+  }
+}

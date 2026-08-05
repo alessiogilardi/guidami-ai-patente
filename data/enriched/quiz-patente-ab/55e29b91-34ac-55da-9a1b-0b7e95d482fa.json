@@ -1,0 +1,31 @@
+{
+  "question_id": 4167,
+  "topic": "Segnali di obbligo",
+  "number": "20244",
+  "text": "Il segnale raffigurato obbliga i conducenti a passare a destra di un ostacolo",
+  "correct_answer": true,
+  "image": "f99d748827631a70c04e5d9aeac6183d.jpeg",
+  "image_description": "Presegnalazione di passaggio obbligatorio a destra. Il segnale impone di circolare in modo da lasciare l'ostacolo o l'isola salvagente alla propria destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e fondo blu. Al centro del segnale è presente una freccia bianca che punta in basso a destra, con un'inclinazione di circa 45 gradi rispetto all'orizzontale. Questo tipo di segnale rientra nella categoria dei segnali di obbligo. La freccia indica la direzione da seguire, specificando che l'ostacolo o l'area da aggirare deve essere lasciata sulla destra.",
+    "name": "Presegnalazione di passaggio obbligatorio a destra",
+    "description": "Il segnale impone di circolare in modo da lasciare l'ostacolo o l'isola salvagente alla propria destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo di direzione",
+      "Obbligo di circolazione a destra di ostacoli"
+    ],
+    "exact_keywords": [
+      "passaggio obbligatorio",
+      "ostacolo",
+      "isola salvagente",
+      "circolare"
+    ],
+    "vector_search_queries": [
+      "obbligo di circolare a destra di un ostacolo imposto da segnale",
+      "segnali di obbligo di direzione: passaggio a destra di ostacoli"
+    ],
+    "rule_explanation": "Il segnale di 'passaggio obbligatorio a destra' impone ai conducenti di circolare lasciando l'ostacolo o l'isola salvagente alla propria destra."
+  }
+}

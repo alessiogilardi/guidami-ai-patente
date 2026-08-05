@@ -1,0 +1,28 @@
+{
+  "question_id": 4410,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22677",
+  "text": "E' vietato, in quanto costituisce pericolo o intralcio per la circolazione, immettersi nel flusso della circolazione provenendo da strade laterali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Immissione nella circolazione",
+      "Pericolo e intralcio alla circolazione",
+      "Strade laterali"
+    ],
+    "exact_keywords": [
+      "immettersi nel flusso della circolazione",
+      "strade laterali",
+      "pericolo o intralcio",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "immissione nel flusso di circolazione da strade laterali vietata se pericolosa o di intralcio",
+      "obbligo di non creare pericolo o intralcio durante l'immissione nella circolazione da strade secondarie"
+    ],
+    "rule_explanation": "Non è vietato immettersi nel flusso della circolazione da strade laterali, purché non si crei pericolo o intralcio alla circolazione stessa."
+  }
+}

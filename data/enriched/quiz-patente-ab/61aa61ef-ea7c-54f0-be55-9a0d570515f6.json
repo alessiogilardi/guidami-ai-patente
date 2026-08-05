@@ -1,0 +1,29 @@
+{
+  "question_id": 4030,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18633",
+  "text": "Il motociclo è un qualunque veicolo a due ruote",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di motociclo",
+      "Classificazione dei veicoli a motore",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "motociclo",
+      "veicolo a motore",
+      "due ruote",
+      "senza carrozzetta"
+    ],
+    "vector_search_queries": [
+      "definizione di motociclo secondo il CdS",
+      "differenza tra motociclo e ciclomotore",
+      "caratteristiche dei veicoli a due ruote a motore"
+    ],
+    "rule_explanation": "Il motociclo è un veicolo a motore a due ruote, senza carrozzetta, avente cilindrata superiore a 50 cm³ o, se a propulsione elettrica, di potenza superiore a 4 kW."
+  }
+}

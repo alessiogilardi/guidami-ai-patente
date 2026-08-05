@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23496",
+  "text": "Il sorpasso è vietato in caso di scarsa visibilità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Condizioni di scarsa visibilità",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "scarsa visibilità",
+      "pericolo",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "sorpasso in condizioni di scarsa visibilità vietato",
+      "manovra di sorpasso pericolosa per scarsa visibilità"
+    ],
+    "rule_explanation": "Il sorpasso è vietato quando le condizioni di visibilità non consentono una manovra sicura, al fine di evitare pericoli per la circolazione."
+  }
+}

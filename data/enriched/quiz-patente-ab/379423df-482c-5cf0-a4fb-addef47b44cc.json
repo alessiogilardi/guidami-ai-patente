@@ -1,0 +1,33 @@
+{
+  "question_id": 4333,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21865",
+  "text": "La barriere segnalano un percorso ciclabile",
+  "correct_answer": false,
+  "image": "14d2108f6b028cd2d01929a738bf0b94.jpeg",
+  "image_description": "Barriera di cantiere. La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una barriera di cantiere, composta da una traversa orizzontale a strisce diagonali bianche e rosse, sostenuta da due montanti verticali. La barriera è posta su una linea orizzontale che rappresenta il suolo. Le strisce rosse e bianche alternate indicano un pericolo o un ostacolo temporaneo.",
+    "name": "Barriera di cantiere",
+    "description": "La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale complementare",
+      "Segnaletica di cantiere",
+      "Delimitazione di aree vietate"
+    ],
+    "exact_keywords": [
+      "barriere segnaletiche",
+      "percorso ciclabile",
+      "segnali complementari",
+      "cantiere stradale"
+    ],
+    "vector_search_queries": [
+      "funzione delle barriere segnaletiche stradali",
+      "segnaletica di cantiere e percorsi ciclabili",
+      "uso delle barriere per delimitare aree vietate al transito"
+    ],
+    "rule_explanation": "Le barriere segnaletiche sono utilizzate per delimitare cantieri stradali o ostacoli temporanei, non per indicare percorsi ciclabili."
+  }
+}

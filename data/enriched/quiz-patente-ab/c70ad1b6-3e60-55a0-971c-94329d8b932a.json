@@ -1,0 +1,28 @@
+{
+  "question_id": 4388,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22458",
+  "text": "Sulle autostrade, il limite massimo di velocità è di 80 km/h per le autovetture che trainano un rimorchio per il trasporto di cavalli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su autostrade",
+      "Veicoli in transito con rimorchio",
+      "Autovetture con rimorchio per trasporto cavalli"
+    ],
+    "exact_keywords": [
+      "autostrade",
+      "limite massimo di velocità",
+      "autovetture",
+      "rimorchio per trasporto cavalli"
+    ],
+    "vector_search_queries": [
+      "limite velocità autovettura con rimorchio cavalli autostrada",
+      "velocità massima autovetture che trainano rimorchi per cavalli su autostrade"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per le autovetture che trainano un rimorchio per il trasporto di cavalli sulle autostrade è di 80 km/h."
+  }
+}

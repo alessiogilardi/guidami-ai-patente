@@ -1,0 +1,27 @@
+{
+  "question_id": 4033,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18662",
+  "text": "I rimorchi o i semirimorchi sono veicoli privi di motore, destinati ad essere trainati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di rimorchio/semirimorchio",
+      "Classificazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "rimorchio",
+      "semirimorchio",
+      "veicolo privo di motore",
+      "destinato ad essere trainato"
+    ],
+    "vector_search_queries": [
+      "definizione di rimorchio e semirimorchio nel CdS",
+      "classificazione dei veicoli: rimorchi e semirimorchi"
+    ],
+    "rule_explanation": "I rimorchi e i semirimorchi sono classificati come veicoli privi di motore, la cui funzione è quella di essere trainati da un altro veicolo."
+  }
+}

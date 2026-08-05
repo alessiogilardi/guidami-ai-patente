@@ -1,0 +1,27 @@
+{
+  "question_id": 4031,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18640",
+  "text": "L'autocarro è un autoveicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli",
+      "Definizioni stradali"
+    ],
+    "exact_keywords": [
+      "autocarro",
+      "autoveicolo",
+      "veicolo a motore",
+      "destinazione d\\'uso"
+    ],
+    "vector_search_queries": [
+      "definizione di autocarro nel codice della strada",
+      "classificazione degli autoveicoli e degli autocarri"
+    ],
+    "rule_explanation": "L\\'autocarro è un autoveicolo destinato al trasporto di cose, ma che può essere adibito anche al trasporto di persone."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4019,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18511",
+  "text": "La banchina non consente, di norma, il transito ai veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Banchina stradale",
+      "Uso della banchina",
+      "Transito veicolare"
+    ],
+    "exact_keywords": [
+      "banchina",
+      "transito",
+      "veicoli",
+      "eccezionalmente"
+    ],
+    "vector_search_queries": [
+      "definizione e uso della banchina stradale",
+      "divieto di transito per veicoli sulla banchina"
+    ],
+    "rule_explanation": "La banchina è una parte della strada non destinata alla circolazione dei veicoli, il cui uso è consentito solo in via eccezionale e per specifiche finalità."
+  }
+}

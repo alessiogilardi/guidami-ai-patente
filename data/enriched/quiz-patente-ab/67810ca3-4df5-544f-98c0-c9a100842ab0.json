@@ -1,0 +1,28 @@
+{
+  "question_id": 4013,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18451",
+  "text": "Non tutti i tipi di veicoli possono circolare in autostrada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della circolazione stradale",
+      "Classificazione dei veicoli",
+      "Uso delle autostrade"
+    ],
+    "exact_keywords": [
+      "veicoli",
+      "autostrada",
+      "circolare",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "tipologie di veicoli ammessi in autostrada",
+      "limitazioni alla circolazione dei veicoli in autostrada"
+    ],
+    "rule_explanation": "Non tutti i veicoli, in base alla loro tipologia e caratteristiche, sono ammessi alla circolazione in autostrada, salvo specifiche deroghe."
+  }
+}

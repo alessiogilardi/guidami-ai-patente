@@ -1,0 +1,27 @@
+{
+  "question_id": 4606,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24467",
+  "text": "Un autoveicolo per poter circolare deve essere munito del segnale mobile di pericolo (triangolo)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dotazione obbligatoria del veicolo",
+      "Segnalazione di pericolo"
+    ],
+    "exact_keywords": [
+      "autoveicolo",
+      "circolare",
+      "segnale mobile di pericolo",
+      "triangolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di avere il segnale mobile di pericolo a bordo per la circolazione degli autoveicoli",
+      "uso del triangolo per la segnalazione di arresto di emergenza degli autoveicoli"
+    ],
+    "rule_explanation": "Per poter circolare, gli autoveicoli devono essere equipaggiati con il segnale mobile di pericolo (triangolo) per segnalare tempestivamente la propria posizione in caso di arresto di emergenza."
+  }
+}

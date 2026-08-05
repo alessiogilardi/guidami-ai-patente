@@ -1,0 +1,28 @@
+{
+  "question_id": 4558,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24004",
+  "text": "I veicoli fuoristrada presentano un'altezza tale da permettere al conducente una adeguata visibilità di tutti i possibili ostacoli in basso (ad esempio, bambini)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità del conducente",
+      "Sicurezza stradale",
+      "Caratteristiche dei veicoli"
+    ],
+    "exact_keywords": [
+      "veicoli fuoristrada",
+      "altezza del veicolo",
+      "visibilità ostacoli",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "visibilità ostacoli bassi da veicoli fuoristrada",
+      "requisiti di visibilità per conducenti di veicoli fuoristrada"
+    ],
+    "rule_explanation": "L'altezza dei veicoli fuoristrada non garantisce di per sé una visibilità adeguata di ostacoli bassi; la visibilità dipende da altri fattori progettuali e di utilizzo."
+  }
+}

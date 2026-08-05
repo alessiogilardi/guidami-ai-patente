@@ -1,0 +1,30 @@
+{
+  "question_id": 4646,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24889",
+  "text": "Se ad un infortunato della strada è entrato un corpo estraneo in un occhio, bisogna massaggiargli delicatamente la palpebra, per favorire la lacrimazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso oculare",
+      "Gestione corpi estranei nell'occhio",
+      "Procedure di emergenza in caso di infortunio stradale"
+    ],
+    "exact_keywords": [
+      "corpo estraneo",
+      "occhio",
+      "palpebra",
+      "lacrimazione",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "rimozione corpo estraneo occhio primo soccorso",
+      "cosa fare in caso di corpo estraneo nell'occhio infortunato",
+      "procedure corrette per lesioni oculari da corpo estraneo"
+    ],
+    "rule_explanation": "In presenza di un corpo estraneo nell'occhio, non bisogna massaggiare la palpebra, ma sciacquare abbondantemente con acqua o soluzione fisiologica per favorire l'espulsione."
+  }
+}

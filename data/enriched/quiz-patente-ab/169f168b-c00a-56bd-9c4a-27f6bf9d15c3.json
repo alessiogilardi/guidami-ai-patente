@@ -1,0 +1,30 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22317",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi in prossimità degli attraversamenti pedonali",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Attraversamenti pedonali",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "fermarsi",
+      "attraversamenti pedonali",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità e fermarsi agli attraversamenti pedonali",
+      "condotta del conducente in prossimità di attraversamenti pedonali",
+      "precedenza ai pedoni sugli attraversamenti"
+    ],
+    "rule_explanation": "Il conducente deve ridurre la velocità e, se necessario, fermarsi in prossimità degli attraversamenti pedonali per garantire la sicurezza dei pedoni."
+  }
+}

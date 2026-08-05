@@ -1,0 +1,32 @@
+{
+  "question_id": 4332,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21853",
+  "text": "Il segnale raffigurato obbliga a invertire il senso di marcia nelle ore di lavoro degli operai",
+  "correct_answer": false,
+  "image": "7ac609bcedd29bef7a7c883f0abbcf0c.jpeg",
+  "image_description": "Segnale di lavori in corso. Il segnale preavvisa la presenza di lavori in corso sulla carreggiata o nelle immediate vicinanze. Può essere integrato da pannelli che ne specificano la durata o la natura.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e fondo giallo. Al centro del segnale è raffigurata la silhouette di una persona china che sta scavando con una pala, con un cumulo di terra accanto. Questo è il segnale di \"lavori in corso\". Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di lavori in corso",
+    "description": "Il segnale preavvisa la presenza di lavori in corso sulla carreggiata o nelle immediate vicinanze. Può essere integrato da pannelli che ne specificano la durata o la natura."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali temporanei di cantiere",
+      "Obblighi dei conducenti in presenza di segnali di pericolo"
+    ],
+    "exact_keywords": [
+      "lavori in corso",
+      "segnali temporanei",
+      "preavviso di cantiere",
+      "inversione di marcia"
+    ],
+    "vector_search_queries": [
+      "funzione del segnale di lavori in corso",
+      "obblighi del conducente di fronte a segnali temporanei di cantiere",
+      "segnali di pericolo e loro significato"
+    ],
+    "rule_explanation": "Il segnale di 'lavori in corso' è un segnale di pericolo che preavvisa la presenza di un cantiere, non impone l'inversione del senso di marcia."
+  }
+}

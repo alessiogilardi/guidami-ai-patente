@@ -1,0 +1,28 @@
+{
+  "question_id": 4678,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25115",
+  "text": "L'inquinamento dell'aria prodotto dai veicoli aumenta se gli iniettori sono difettosi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico da veicoli a motore",
+      "Manutenzione del veicolo e emissioni"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "veicoli",
+      "iniettori",
+      "combustione",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "impatto dei difetti degli iniettori sull'inquinamento atmosferico da veicoli",
+      "relazione tra iniettori e aumento delle emissioni inquinanti"
+    ],
+    "rule_explanation": "Un malfunzionamento degli iniettori compromette la corretta combustione del carburante, aumentando le emissioni inquinanti e quindi l'inquinamento dell'aria."
+  }
+}

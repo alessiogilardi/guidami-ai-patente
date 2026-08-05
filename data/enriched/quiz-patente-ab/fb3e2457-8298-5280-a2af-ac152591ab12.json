@@ -1,0 +1,32 @@
+{
+  "question_id": 4051,
+  "topic": "Segnali di pericolo",
+  "number": "18851",
+  "text": "Il segnale raffigurato può essere associato con un segnale di limite massimo di velocità",
+  "correct_answer": true,
+  "image": "4232f21e2893d81ba19d77d4285f18fe.jpeg",
+  "image_description": "Segnale di pericolo - Serie di dossi. Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di dossi o una cunetta. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una irregolarità del manto stradale.",
+    "name": "Segnale di pericolo - Serie di dossi",
+    "description": "Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Associazione di segnali stradali",
+      "Regolazione della velocità in base ai segnali"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "serie di dossi",
+      "limite massimo di velocità",
+      "pannello integrativo"
+    ],
+    "vector_search_queries": [
+      "associazione segnale di pericolo con pannello integrativo di limite di velocità",
+      "pannelli integrativi ai segnali di pericolo che indicano prescrizioni come la velocità massima consentita"
+    ],
+    "rule_explanation": "I segnali di pericolo possono essere integrati con pannelli che indicano prescrizioni, come un limite massimo di velocità, per fornire informazioni aggiuntive al conducente."
+  }
+}

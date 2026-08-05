@@ -1,0 +1,34 @@
+{
+  "question_id": 4216,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20765",
+  "text": "Il veicolo in figura non può superare la striscia continua centrale",
+  "correct_answer": true,
+  "image": "2a8cb20b2ed164c9a0b9677bc5fd1320.jpeg",
+  "image_description": "Segnaletica orizzontale: striscia bianca continua e tratteggiata. La striscia bianca continua al centro della carreggiata, se presente, indica la separazione delle corsie in opposti sensi di marcia e non può essere superata. In questo caso, la striscia è tratteggiata, indicando che la manovra di sorpasso è consentita. Il veicolo si trova nella corsia di destra, con una freccia che indica la direzione di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada con due corsie per senso di marcia, separate da una linea bianca. La linea al centro della carreggiata è tratteggiata, indicando che è consentito il sorpasso. Un veicolo nero si trova nella corsia di destra, con una freccia tratteggiata che indica la sua direzione di marcia. Non sono presenti segnali verticali o altre indicazioni stradali.",
+    "name": "Segnaletica orizzontale: striscia bianca continua e tratteggiata",
+    "description": "La striscia bianca continua al centro della carreggiata, se presente, indica la separazione delle corsie in opposti sensi di marcia e non può essere superata. In questo caso, la striscia è tratteggiata, indicando che la manovra di sorpasso è consentita. Il veicolo si trova nella corsia di destra, con una freccia che indica la direzione di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Divieto di superamento",
+      "Separazione dei sensi di marcia"
+    ],
+    "exact_keywords": [
+      "striscia bianca continua",
+      "striscia bianca tratteggiata",
+      "superamento",
+      "carreggiata",
+      "sensi di marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di superamento striscia continua",
+      "differenza striscia continua e tratteggiata",
+      "segnaletica orizzontale separazione sensi di marcia"
+    ],
+    "rule_explanation": "Le strisce continue, sia al centro della carreggiata che a delimitazione delle corsie, indicano la separazione dei sensi di marcia e non possono essere superate. Le strisce tratteggiate consentono il sorpasso."
+  }
+}

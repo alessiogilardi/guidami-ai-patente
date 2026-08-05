@@ -1,0 +1,32 @@
+{
+  "question_id": 4081,
+  "topic": "Segnali di pericolo",
+  "number": "19225",
+  "text": "Il segnale raffigurato preannuncia un senso unico alternato con l'obbligo di dare la precedenza ai veicoli provenienti dall'altro senso",
+  "correct_answer": false,
+  "image": "935e0fb53dc5ade5d74efa55184c4022.jpeg",
+  "image_description": "Segnale di pericolo di restringimento carreggiata. Il segnale preannuncia un restringimento della carreggiata su entrambi i lati. È un segnale di pericolo che impone di moderare la velocità e, se necessario, di dare la precedenza ai veicoli provenienti dal senso opposto in caso di incrocio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è presente un pittogramma nero che raffigura due linee parallele che si avvicinano progressivamente verso il centro, simboleggiando un restringimento della carreggiata. Le linee nere sono interrotte da due brevi segmenti verticali che indicano l'inizio del restringimento. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di pericolo di restringimento carreggiata",
+    "description": "Il segnale preannuncia un restringimento della carreggiata su entrambi i lati. È un segnale di pericolo che impone di moderare la velocità e, se necessario, di dare la precedenza ai veicoli provenienti dal senso opposto in caso di incrocio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Senso unico alternato",
+      "Dare la precedenza"
+    ],
+    "exact_keywords": [
+      "senso unico alternato",
+      "dare la precedenza",
+      "segnali di pericolo",
+      "restringimento carreggiata"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnale di pericolo di restringimento carreggiata e segnale di senso unico alternato",
+      "obblighi del conducente al segnale di restringimento carreggiata"
+    ],
+    "rule_explanation": "Il segnale di pericolo di restringimento carreggiata impone di moderare la velocità e, se necessario, di dare la precedenza ai veicoli provenienti dal senso opposto in caso di incrocio, non preannuncia un senso unico alternato."
+  }
+}

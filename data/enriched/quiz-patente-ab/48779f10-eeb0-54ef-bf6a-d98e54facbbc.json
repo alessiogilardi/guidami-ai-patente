@@ -1,0 +1,28 @@
+{
+  "question_id": 4559,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24005",
+  "text": "Prima di riprendere la marcia, il conducente di un autocarro deve prestare particolare attenzione alla possibile presenza di un pedone o di un ciclista nella zona immediatamente antistante il proprio veicolo fermo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza alla ripartenza",
+      "Sicurezza nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "autocarro",
+      "riprendere la marcia",
+      "pedone",
+      "ciclista",
+      "veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente di autocarro prima di riprendere la marcia",
+      "attenzione a pedoni e ciclisti prima di muovere un veicolo fermo"
+    ],
+    "rule_explanation": "Prima di ripartire, il conducente di un autocarro deve assicurarsi che non vi siano pedoni o ciclisti nell'area antistante il veicolo per evitare incidenti."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4395,
+  "topic": "Distanza di sicurezza",
+  "number": "22556",
+  "text": "La distanza di sicurezza è commisurata anche alle condizioni psicofisiche del conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condizioni di guida",
+      "Fattori di sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni psicofisiche",
+      "conducente",
+      "veicolo",
+      "strada"
+    ],
+    "vector_search_queries": [
+      "adeguamento della distanza di sicurezza alle condizioni del conducente",
+      "influenza delle condizioni psicofisiche sulla distanza di sicurezza da mantenere"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere adeguata alle condizioni del veicolo, della strada, del traffico, atmosferiche e alle condizioni psicofisiche del conducente."
+  }
+}

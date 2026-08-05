@@ -1,0 +1,28 @@
+{
+  "question_id": 4565,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24078",
+  "text": "E' possibile alloggiare nei caravan (roulotte) durante la circolazione, purché tutti i passeggeri allaccino le cinture di sicurezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto persone in veicoli in movimento",
+      "Norme di sicurezza per i passeggeri"
+    ],
+    "exact_keywords": [
+      "caravan",
+      "roulotte",
+      "circolazione",
+      "passeggeri",
+      "cinture di sicurezza"
+    ],
+    "vector_search_queries": [
+      "divieto di trasporto persone in roulotte durante la marcia",
+      "normativa sicurezza trasporto passeggeri in caravan in circolazione"
+    ],
+    "rule_explanation": "È vietato trasportare persone in caravan o roulotte durante la circolazione del veicolo trainante, indipendentemente dall'uso delle cinture di sicurezza."
+  }
+}

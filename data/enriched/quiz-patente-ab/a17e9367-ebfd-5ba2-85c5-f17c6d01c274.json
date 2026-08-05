@@ -1,0 +1,32 @@
+{
+  "question_id": 4187,
+  "topic": "Segnali di obbligo",
+  "number": "20438",
+  "text": "Il segnale raffigurato, situato a distanza opportuna dal posto di blocco, è ripetuto all'altezza del punto di arresto",
+  "correct_answer": true,
+  "image": "c8e37cfaa71b956ea33833537189d4a6.jpeg",
+  "image_description": "Segnale di fermarsi e dare precedenza a Polizia. Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia di arresto, per consentire il passaggio dei veicoli di polizia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale, sopra una linea orizzontale nera, vi è la scritta \"ALT\" e sotto la scritta \"POLIZIA\". Questo è un segnale di obbligo specifico per i veicoli di polizia.",
+    "name": "Segnale di fermarsi e dare precedenza a Polizia",
+    "description": "Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia di arresto, per consentire il passaggio dei veicoli di polizia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Ripetizione dei segnali di prescrizione",
+      "Segnale di fermarsi e dare precedenza"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "ripetuti",
+      "posto di blocco",
+      "punto di arresto"
+    ],
+    "vector_search_queries": [
+      "ripetizione segnali di prescrizione a distanza",
+      "obbligo di arresto al punto di blocco e ripetizione segnale"
+    ],
+    "rule_explanation": "I segnali di prescrizione, come quello di fermarsi e dare precedenza, se posti a distanza dal luogo dove vige la prescrizione, devono essere ripetuti all'altezza del punto di arresto o dell'inizio della prescrizione."
+  }
+}

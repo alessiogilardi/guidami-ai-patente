@@ -1,0 +1,30 @@
+{
+  "question_id": 4666,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25035",
+  "text": "Nel caso in cui il veicolo venga rubato in uno Stato estero, per poter attivare l'assicurazione bisogna ripetere la denuncia nello Stato italiano",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Denuncia di furto all'estero",
+      "Copertura assicurativa per furto del veicolo",
+      "Adempimenti per l'attivazione dell'assicurazione"
+    ],
+    "exact_keywords": [
+      "furto",
+      "veicolo rubato",
+      "Stato estero",
+      "denuncia",
+      "assicurazione"
+    ],
+    "vector_search_queries": [
+      "denuncia di furto veicolo all'estero per attivazione assicurazione",
+      "obbligo di ripetere denuncia in Italia per furto all'estero",
+      "assicurazione veicolo rubato all'estero denuncia"
+    ],
+    "rule_explanation": "In caso di furto del veicolo all'estero, la denuncia va ripetuta in Italia per poter attivare la copertura assicurativa, salvo diverse disposizioni contrattuali."
+  }
+}

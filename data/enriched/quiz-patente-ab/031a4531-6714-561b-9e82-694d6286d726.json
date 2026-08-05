@@ -1,0 +1,32 @@
+{
+  "question_id": 4213,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20737",
+  "text": "Le strisce di guida in figura, di norma, si trovano dove la svolta a sinistra si effettua lasciando alla nostra destra il centro dell'incrocio",
+  "correct_answer": true,
+  "image": "4bd471ec7c86ed37c5b8e5529e140f70.jpeg",
+  "image_description": "Incrocio a raso con isola di traffico delimitata da strisce discontinue. L'immagine mostra un incrocio a raso con quattro accessi. Sono presenti strisce pedonali su tutti gli accessi all'incrocio. All'interno dell'incrocio, sono disegnate delle strisce bianche discontinue che delimitano un'area a forma di rombo, con quattro punti di tangenza che corrispondono agli ingressi delle strade. Queste strisce indicano un percorso obbligato per i veicoli che intendono svoltare, impedendo loro di tagliare l'incrocio e di invadere le corsie opposte. Non sono presenti segnali verticali o altri veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine raffigura una intersezione stradale vista dall'alto. L'incrocio è a raso, senza dislivelli. Ci sono quattro strade che convergono sull'incrocio. Su ciascuna delle quattro strade, prima di raggiungere l'incrocio, sono presenti delle strisce pedonali bianche e parallele tra loro. All'interno dell'area dell'incrocio, sono disegnate delle linee bianche tratteggiate che formano una figura a rombo, con i vertici che puntano verso gli ingressi delle strade. Queste linee tratteggiate delimitano un'area centrale che funge da isola di traffico virtuale, guidando i veicoli che effettuano le svolte. Non sono presenti segnali verticali di prescrizione o pericolo, né segnali di indicazione. Non ci sono veicoli o pedoni visibili nell'immagine. La segnaletica orizzontale è l'elemento predominante. Le strade che immettono nell'incrocio presentano anche delle corsie delimitate da strisce bianche continue e discontinue.",
+    "name": "Incrocio a raso con isola di traffico delimitata da strisce discontinue",
+    "description": "L'immagine mostra un incrocio a raso con quattro accessi. Sono presenti strisce pedonali su tutti gli accessi all'incrocio. All'interno dell'incrocio, sono disegnate delle strisce bianche discontinue che delimitano un'area a forma di rombo, con quattro punti di tangenza che corrispondono agli ingressi delle strade. Queste strisce indicano un percorso obbligato per i veicoli che intendono svoltare, impedendo loro di tagliare l'incrocio e di invadere le corsie opposte. Non sono presenti segnali verticali o altri veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Isole di traffico",
+      "Percorsi obbligati"
+    ],
+    "exact_keywords": [
+      "strisce di guida",
+      "centro dell'incrocio",
+      "svolta a sinistra",
+      "isola di traffico"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per isole di traffico e percorsi obbligati",
+      "disciplinamento della circolazione negli incroci con isole di traffico"
+    ],
+    "rule_explanation": "Le strisce di guida delimitano un'isola di traffico e impongono un percorso obbligato per le svolte, impedendo di tagliare l'incrocio."
+  }
+}

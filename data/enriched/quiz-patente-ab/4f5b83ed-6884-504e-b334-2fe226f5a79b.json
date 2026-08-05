@@ -1,0 +1,32 @@
+{
+  "question_id": 4125,
+  "topic": "Segnali di divieto",
+  "number": "19761",
+  "text": "In presenza del segnale raffigurato è consentito il transito ai motocicli",
+  "correct_answer": true,
+  "image": "8a2144c790c2fb4700376c9bb49c6a0b.jpeg",
+  "image_description": "Divieto di transito alle macchine agricole. Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di una macchina agricola (trattore) in nero. Questo segnale indica un divieto di transito specifico per questo tipo di veicoli.",
+    "name": "Divieto di transito alle macchine agricole",
+    "description": "Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Classificazione dei veicoli soggetti a divieto"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "macchine agricole",
+      "macchine operatrici",
+      "motocicli"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito specifici per categorie di veicoli",
+      "interpretazione segnale divieto macchine agricole e operatrici",
+      "circolazione motocicli in presenza di divieto per macchine agricole"
+    ],
+    "rule_explanation": "Il segnale di 'Divieto di transito alle macchine agricole' vieta la circolazione a tali veicoli, ma non ai motocicli che, non essendo macchine agricole, possono transitare."
+  }
+}

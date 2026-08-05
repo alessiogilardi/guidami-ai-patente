@@ -1,0 +1,28 @@
+{
+  "question_id": 4444,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22997",
+  "text": "Il conducente che intende fermarsi sul margine destro della carreggiata può evitare di segnalare la sua intenzione di effettuare tale manovra se il traffico è scarso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovre",
+      "Obbligo di fermata",
+      "Posizionamento del veicolo"
+    ],
+    "exact_keywords": [
+      "segnalare l'intenzione",
+      "fermata sul margine destro",
+      "carreggiata",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalazione manovra di fermata sul margine destro",
+      "segnalazione manovra di arresto in carreggiata con traffico scarso"
+    ],
+    "rule_explanation": "La manovra di fermata sul margine destro della carreggiata deve essere sempre segnalata, indipendentemente dalle condizioni del traffico, per avvisare gli altri utenti della strada."
+  }
+}

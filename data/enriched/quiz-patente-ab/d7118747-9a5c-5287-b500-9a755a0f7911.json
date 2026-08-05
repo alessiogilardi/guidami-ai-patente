@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23503",
+  "text": "E' vietato il sorpasso di veicoli in lento movimento a causa di congestione della circolazione quando, a tal fine è necessario spostarsi sul lato riservato all'altro senso di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso in congestione traffico",
+      "Sorpasso in carreggiate a senso unico"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicoli in lento movimento",
+      "congestione della circolazione",
+      "senso di marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in coda o congestione traffico",
+      "sorpasso di veicoli lenti in carreggiata a doppio senso di marcia"
+    ],
+    "rule_explanation": "Il sorpasso di veicoli in lento movimento a causa di congestione è vietato se richiede l'invasione dell'altro senso di marcia."
+  }
+}

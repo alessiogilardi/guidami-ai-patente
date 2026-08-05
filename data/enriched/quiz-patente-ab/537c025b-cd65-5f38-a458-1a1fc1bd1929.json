@@ -1,0 +1,27 @@
+{
+  "question_id": 4620,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24639",
+  "text": "Ogni patente di guida ha un'attribuzione iniziale di 20 punti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente a punti",
+      "Attribuzione iniziale dei punti"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "punti",
+      "attribuzione iniziale",
+      "20 punti"
+    ],
+    "vector_search_queries": [
+      "punti patente a punti attribuzione iniziale",
+      "conducente 20 punti patente di guida"
+    ],
+    "rule_explanation": "Ad ogni conducente, al momento del rilascio della patente, vengono assegnati 20 punti, che possono aumentare o diminuire in base alle infrazioni commesse."
+  }
+}

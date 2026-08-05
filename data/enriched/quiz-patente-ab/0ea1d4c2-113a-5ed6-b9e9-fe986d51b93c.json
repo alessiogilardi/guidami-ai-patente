@@ -1,0 +1,31 @@
+{
+  "question_id": 4483,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23365",
+  "text": "Nell'intersezione di figura l'ordine di transito dei veicoli è: R, D, F",
+  "correct_answer": true,
+  "image": "3b88044c417a19ad75146524c38ad06c.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. Il veicolo R (autovettura) si trova sulla strada orizzontale e deve svoltare a sinistra. Il veicolo D (autocarro) si trova sulla strada verticale e deve proseguire dritto. Il veicolo F (filobus) si trova sulla strada orizzontale, alla destra del veicolo R, e deve svoltare a destra. In assenza di segnali specifici, vige la regola generale della precedenza a destra. Pertanto, il veicolo F ha la precedenza sul veicolo R. Il veicolo D, provenendo da destra rispetto all'incrocio, ha la precedenza sul veicolo R. Tra F e D, F è alla destra di D se D dovesse svoltare a sinistra, ma D prosegue dritto. D è alla destra di F. La precedenza va a D su F. L'ordine di transito corretto è D, F, R.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una scena di guida raffigurante un incrocio a raso. Sono presenti tre veicoli: un'autovettura gialla (R) sulla sinistra, un autocarro rosso (D) in alto e un filobus blu (F) sulla destra. L'autovettura R intende svoltare a sinistra. L'autocarro D intende proseguire dritto. Il filobus F intende svoltare a destra. Non sono presenti segnali stradali che regolano la circolazione nell'incrocio. Si applica quindi la regola generale della precedenza a destra. Il veicolo D si trova alla destra del filobus F, quindi D ha la precedenza su F. Il veicolo F si trova alla destra dell'autovettura R, quindi F ha la precedenza su R. L'autocarro D si trova alla destra dell'autovettura R, quindi D ha la precedenza su R. L'ordine di transito è quindi D, poi F, poi R.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. Il veicolo R (autovettura) si trova sulla strada orizzontale e deve svoltare a sinistra. Il veicolo D (autocarro) si trova sulla strada verticale e deve proseguire dritto. Il veicolo F (filobus) si trova sulla strada orizzontale, alla destra del veicolo R, e deve svoltare a destra. In assenza di segnali specifici, vige la regola generale della precedenza a destra. Pertanto, il veicolo F ha la precedenza sul veicolo R. Il veicolo D, provenendo da destra rispetto all'incrocio, ha la precedenza sul veicolo R. Tra F e D, F è alla destra di D se D dovesse svoltare a sinistra, ma D prosegue dritto. D è alla destra di F. La precedenza va a D su F. L'ordine di transito corretto è D, F, R."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di transito ai incroci"
+    ],
+    "exact_keywords": [
+      "precedenza a destra",
+      "incrocio",
+      "ordine di transito",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "ordine di precedenza ai incroci senza segnaletica specifica",
+      "applicazione della regola della precedenza a destra tra veicoli in un incrocio"
+    ],
+    "rule_explanation": "Negli incroci in cui vige la regola della precedenza a destra, i veicoli devono transitare secondo l'ordine stabilito dalla presenza dei veicoli provenienti da destra."
+  }
+}

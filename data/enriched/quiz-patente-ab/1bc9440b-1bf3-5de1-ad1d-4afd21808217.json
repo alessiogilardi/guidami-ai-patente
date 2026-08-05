@@ -1,0 +1,27 @@
+{
+  "question_id": 4656,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24964",
+  "text": "Durante la guida, si deve fare uso di occhiali da vista o di lenti a contatto solo quando la miopia supera 6 diottrie",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di correzione visiva per la guida",
+      "Uso di lenti correttive per la sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "occhiali da vista",
+      "lenti a contatto",
+      "idoneità alla guida",
+      "patente di guida"
+    ],
+    "vector_search_queries": [
+      "obbligo di correzione visiva per la guida con occhiali o lenti a contatto",
+      "requisiti visivi per il conseguimento e il mantenimento della patente"
+    ],
+    "rule_explanation": "L'uso di occhiali o lenti a contatto è obbligatorio per correggere difetti visivi che potrebbero compromettere la sicurezza alla guida, indipendentemente dal valore specifico delle diottrie."
+  }
+}

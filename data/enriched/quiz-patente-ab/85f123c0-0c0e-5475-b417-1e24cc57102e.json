@@ -1,0 +1,30 @@
+{
+  "question_id": 4615,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24574",
+  "text": "La patente di categoria BE abilita anche alla guida dei veicoli che si possono condurre con le patenti di categoria A, B e C1",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità delle patenti di guida",
+      "Classificazione delle categorie di patenti",
+      "Estensione delle abilitazioni alla guida"
+    ],
+    "exact_keywords": [
+      "patente BE",
+      "categoria A",
+      "categoria B",
+      "categoria C1",
+      "abilitazione alla guida"
+    ],
+    "vector_search_queries": [
+      "categorie di patenti di guida e relative abilitazioni",
+      "validità patente BE per altre categorie di veicoli",
+      "requisiti e estensione delle patenti A, B, C1 e BE"
+    ],
+    "rule_explanation": "La patente BE abilita alla guida di complessi veicolari con motrice di categoria B e rimorchio/semirimorchio non superiore a 3.500 kg, non estendendo l'abilitazione alle categorie A, B e C1."
+  }
+}

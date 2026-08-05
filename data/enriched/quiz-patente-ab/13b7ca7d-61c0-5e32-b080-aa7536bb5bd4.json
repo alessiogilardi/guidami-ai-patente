@@ -1,0 +1,29 @@
+{
+  "question_id": 4671,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25077",
+  "text": "Per consumare meno carburante conviene accelerare e frenare energicamente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida ecologica",
+      "Efficienza del consumo di carburante",
+      "Tecniche di guida per ridurre le emissioni"
+    ],
+    "exact_keywords": [
+      "accelerare energicamente",
+      "frenare energicamente",
+      "consumo di carburante",
+      "guida ecologica"
+    ],
+    "vector_search_queries": [
+      "tecniche di guida per ridurre il consumo di carburante",
+      "impatto di accelerazioni e frenate brusche sui consumi di carburante",
+      "guida ecologica per minimizzare l'uso di carburante"
+    ],
+    "rule_explanation": "Per ridurre il consumo di carburante è necessario adottare uno stile di guida fluido, evitando accelerazioni e frenate brusche che aumentano inutilmente i consumi e l'usura del veicolo."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4567,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24104",
+  "text": "Gli specchietti esterni montati sulla motrice possono sporgere fino a 50 centimetri dalla sagoma del veicolo di maggiore ingombro, qualora siano posizionati ad un'altezza da terra non superiore a 1 metro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ingombro laterale dei veicoli",
+      "Norme sul traino di veicoli in avaria"
+    ],
+    "exact_keywords": [
+      "specchietti retrovisori",
+      "sporgere",
+      "sagoma del veicolo",
+      "veicolo in avaria"
+    ],
+    "vector_search_queries": [
+      "limiti di sporgenza degli specchietti retrovisori dalla sagoma del veicolo",
+      "normativa sull'ingombro laterale dei veicoli e degli specchietti"
+    ],
+    "rule_explanation": "Gli specchietti retrovisori esterni non devono sporgere oltre la sagoma del veicolo, né costituire pericolo o intralcio alla circolazione, indipendentemente dall'altezza da terra o dal fatto che il veicolo sia in avaria."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23526",
+  "text": "Il sorpasso è vietato in curva anche se la strada è a due carreggiate separate",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso in curva",
+      "Regole di sorpasso su strade a carreggiate separate"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "curva",
+      "carreggiate separate",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "sorpasso in curva con visibilità limitata",
+      "sorpasso su strade con carreggiate separate"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in curva solo se la visibilità è insufficiente. Su strade a carreggiate separate, il sorpasso è generalmente consentito se non vi sono altri divieti specifici."
+  }
+}

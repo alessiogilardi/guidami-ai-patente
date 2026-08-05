@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23509",
+  "text": "E' consentito il sorpasso in prossimità o in corrispondenza di passaggi a livello senza barriere se la circolazione è regolata da semafori",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso in prossimità di passaggi a livello",
+      "Regolazione semaforica della circolazione"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "passaggi a livello senza barriere",
+      "circolazione regolata da semafori",
+      "divieto di sorpasso"
+    ],
+    "vector_search_queries": [
+      "sorpasso in prossimità di passaggi a livello con semaforo",
+      "condizioni per il sorpasso ai passaggi a livello senza barriere"
+    ],
+    "rule_explanation": "Il sorpasso è consentito in prossimità o in corrispondenza di passaggi a livello senza barriere solo se la circolazione è regolata da semafori, salvo diversa segnalazione."
+  }
+}

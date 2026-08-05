@@ -1,0 +1,28 @@
+{
+  "question_id": 4511,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23650",
+  "text": "La fermata non deve arrecare intralcio alla circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Divieto di intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "intralcio alla circolazione",
+      "manovra",
+      "veicolo fermo"
+    ],
+    "vector_search_queries": [
+      "definizione e disciplina della fermata del veicolo",
+      "divieto di fermata che intralci la circolazione",
+      "obblighi del conducente durante la fermata del veicolo"
+    ],
+    "rule_explanation": "La fermata, consistente in una temporanea sospensione della marcia per consentire la discesa o salita di persone, non deve costituire intralcio o pericolo per gli altri utenti della strada."
+  }
+}

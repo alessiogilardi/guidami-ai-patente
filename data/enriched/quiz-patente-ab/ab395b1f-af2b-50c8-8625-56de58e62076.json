@@ -1,0 +1,28 @@
+{
+  "question_id": 4670,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25062",
+  "text": "Dopo la firma del contratto di assicurazione R.C.A. (responsabilità civile auto), l'impresa assicuratrice deve rilasciare al cliente un libretto sulle nozioni di pronto soccorso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi dell'impresa assicuratrice dopo la stipula del contratto R.C.A.",
+      "Documentazione informativa per l'assicurato"
+    ],
+    "exact_keywords": [
+      "contratto di assicurazione R.C.A.",
+      "impresa assicuratrice",
+      "rilascio",
+      "libretto di istruzioni",
+      "pronto soccorso"
+    ],
+    "vector_search_queries": [
+      "obblighi post-stipula contratto R.C.A. impresa assicuratrice",
+      "documentazione da rilasciare al contraente polizza auto"
+    ],
+    "rule_explanation": "L'impresa assicuratrice, dopo la stipula del contratto R.C.A., deve rilasciare al contraente la Carta Verde e il Fascicolo Informativo, non un libretto sul pronto soccorso."
+  }
+}

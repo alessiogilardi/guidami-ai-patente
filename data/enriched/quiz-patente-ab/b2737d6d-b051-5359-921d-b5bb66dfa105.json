@@ -1,0 +1,29 @@
+{
+  "question_id": 4662,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25011",
+  "text": "Il risarcimento diretto è escluso se nel sinistro è coinvolto un motociclo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Risarcimento diretto",
+      "Assicurazione R.C.A.",
+      "Veicoli a motore"
+    ],
+    "exact_keywords": [
+      "risarcimento diretto",
+      "sinistro",
+      "motociclo",
+      "veicolo a motore",
+      "impresa di assicurazione"
+    ],
+    "vector_search_queries": [
+      "esclusione risarcimento diretto per motocicli",
+      "applicabilità risarcimento diretto a sinistri con motocicli"
+    ],
+    "rule_explanation": "Il risarcimento diretto è applicabile anche ai sinistri che coinvolgono i motocicli, purché sussistano le condizioni previste dalla normativa."
+  }
+}

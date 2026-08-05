@@ -1,0 +1,28 @@
+{
+  "question_id": 4432,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22897",
+  "text": "Giungendo in vicinanza di un incrocio bisogna sorpassare velocemente a sinistra se si vuole svoltare a destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole di precedenza agli incroci",
+      "Manovre di svolta a destra",
+      "Comportamento in prossimità degli incroci"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "svolta a destra",
+      "sorpassare",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "comportamento corretto in prossimità di un incrocio per svoltare a destra",
+      "divieto di sorpasso in corrispondenza di un incrocio per chi intende svoltare a destra"
+    ],
+    "rule_explanation": "Agli incroci, per svoltare a destra non si deve sorpassare, ma ci si deve posizionare a destra e rallentare, dando la precedenza a chi proviene da sinistra."
+  }
+}

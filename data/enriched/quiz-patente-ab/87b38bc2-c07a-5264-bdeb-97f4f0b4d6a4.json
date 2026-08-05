@@ -1,0 +1,29 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24362",
+  "text": "L'uso delle cinture di sicurezza consente il trasporto di bambini sui sedili anteriori in braccio a un adulto, senza pericoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto di bambini sui veicoli",
+      "Sistemi di ritenuta per bambini",
+      "Uso delle cinture di sicurezza"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "sistemi di ritenuta per bambini",
+      "sedile anteriore",
+      "trasporto bambini"
+    ],
+    "vector_search_queries": [
+      "trasporto bambini su sedile anteriore con cinture di sicurezza",
+      "idoneità delle cinture di sicurezza per il trasporto di bambini",
+      "obbligo sistemi di ritenuta per bambini"
+    ],
+    "rule_explanation": "Le cinture di sicurezza non sono un sistema di ritenuta idoneo per i bambini; questi ultimi devono essere trasportati su appositi sistemi di ritenuta omologati, anche sui sedili anteriori."
+  }
+}

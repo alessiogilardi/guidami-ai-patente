@@ -1,0 +1,27 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22281",
+  "text": "Il conducente deve regolare la velocità in relazione alle condizioni atmosferiche",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di guida sicura"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni atmosferiche",
+      "pericolo o intralcio",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità alle condizioni atmosferiche",
+      "moderazione della velocità in base al meteo per la sicurezza stradale"
+    ],
+    "rule_explanation": "Il conducente deve adeguare la velocità alle condizioni atmosferiche per evitare di creare pericolo o intralcio alla circolazione."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4309,
+  "topic": "Segnali di indicazione",
+  "number": "21636",
+  "text": "Il segnale raffigurato vieta il transito alle biciclette",
+  "correct_answer": true,
+  "image": "1ef915902f19c17ff26aaa2bff80ae9b.jpeg",
+  "image_description": "Parcheggio per autovetture. Il segnale indica un parcheggio riservato alle autovetture.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è raffigurata, in bianco, la sagoma stilizzata di un'autovettura vista frontalmente. Si tratta di un segnale di indicazione.",
+    "name": "Parcheggio per autovetture",
+    "description": "Il segnale indica un parcheggio riservato alle autovetture."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Segnali di indicazione",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "divieto di transito",
+      "biciclette",
+      "parcheggio riservato"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di divieto di transito per biciclette",
+      "interpretazione segnali di indicazione parcheggio riservato",
+      "segnali di prescrizione che vietano il transito a determinate categorie di veicoli"
+    ],
+    "rule_explanation": "Il segnale raffigurato, che indica un parcheggio riservato alle autovetture, non vieta il transito alle biciclette. Esso indica una prescrizione specifica per le autovetture."
+  }
+}

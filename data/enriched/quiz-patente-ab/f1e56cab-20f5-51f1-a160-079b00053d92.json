@@ -1,0 +1,29 @@
+{
+  "question_id": 4633,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24793",
+  "text": "Percorrendo un lungo tunnel o traforo, in caso d'incendio, bisogna abbandonare velocemente il veicolo, seguendo la segnaletica che porta alle vie di fuga o ai luoghi sicuri protetti da porte tagliafuoco",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento in caso di incendio nel tunnel",
+      "Vie di fuga e sicurezza nei tunnel"
+    ],
+    "exact_keywords": [
+      "tunnel",
+      "incendio",
+      "vie di fuga",
+      "luoghi sicuri",
+      "porte tagliafuoco"
+    ],
+    "vector_search_queries": [
+      "comportamento da tenere in caso di incendio in galleria o tunnel",
+      "abbandono del veicolo e utilizzo delle vie di fuga in caso di incendio in tunnel",
+      "sicurezza nei tunnel in presenza di incendio e porte tagliafuoco"
+    ],
+    "rule_explanation": "In caso di incendio in un tunnel, è necessario abbandonare rapidamente il veicolo seguendo la segnaletica per le vie di fuga o i luoghi sicuri protetti da porte tagliafuoco."
+  }
+}

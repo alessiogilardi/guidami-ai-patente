@@ -1,0 +1,29 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23019",
+  "text": "Durante una manovra di parcheggio in retromarcia, non è necessario utilizzare gli specchi retrovisori se il veicolo è dotato di sensori di parcheggio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza nella guida",
+      "Utilizzo dei dispositivi di assistenza alla guida",
+      "Manovre di parcheggio"
+    ],
+    "exact_keywords": [
+      "manovra di parcheggio",
+      "retromarcia",
+      "specchi retrovisori",
+      "sensori di parcheggio",
+      "dispositivi di assistenza alla guida"
+    ],
+    "vector_search_queries": [
+      "obbligo uso specchi retrovisori durante parcheggio in retromarcia",
+      "utilizzo dispositivi assistenza alla guida e obblighi del conducente"
+    ],
+    "rule_explanation": "Anche con i sensori di parcheggio, è obbligatorio utilizzare gli specchi retrovisori durante le manovre per garantire la sicurezza e la corretta percezione dello spazio circostante."
+  }
+}

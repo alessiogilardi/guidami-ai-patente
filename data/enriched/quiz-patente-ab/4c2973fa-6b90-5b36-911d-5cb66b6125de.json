@@ -1,0 +1,27 @@
+{
+  "question_id": 4651,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24925",
+  "text": "Se un infortunato della strada ha riportato fratture agli arti, bisogna chiedergli di muoverli, per valutare il tipo di lesione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di incidente stradale",
+      "Valutazione delle lesioni fisiche"
+    ],
+    "exact_keywords": [
+      "infortunato",
+      "fratture",
+      "movimento degli arti",
+      "valutazione delle lesioni"
+    ],
+    "vector_search_queries": [
+      "primo soccorso fratture arti incidenti stradali",
+      "movimentazione arti infortunati con sospette fratture"
+    ],
+    "rule_explanation": "In caso di sospetta frattura, non bisogna assolutamente muovere l'arto interessato per non aggravare la lesione, ma immobilizzarlo e attendere i soccorsi qualificati."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4708,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25351",
+  "text": "Il sovraccarico del veicolo può comportare la temporanea inefficienza delle sospensioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sovraccarico del veicolo",
+      "Manutenzione del veicolo",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "sovraccarico",
+      "veicolo",
+      "sospensioni",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "effetti del sovraccarico sulla stabilità del veicolo",
+      "impatto del sovraccarico sulle sospensioni e sulla tenuta di strada"
+    ],
+    "rule_explanation": "Il sovraccarico di un veicolo incide negativamente sulla sua stabilità e sulla tenuta di strada, potendo compromettere l'efficienza di componenti meccaniche essenziali come le sospensioni."
+  }
+}

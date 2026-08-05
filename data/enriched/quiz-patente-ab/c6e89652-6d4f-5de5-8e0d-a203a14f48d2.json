@@ -1,0 +1,31 @@
+{
+  "question_id": 4185,
+  "topic": "Segnali di obbligo",
+  "number": "20420",
+  "text": "Il segnale raffigurato è posto in corrispondenza della fine di un percorso per gli animali da sella",
+  "correct_answer": true,
+  "image": "fffa855fdfdaf3051f1d40f32f5783ad.jpeg",
+  "image_description": "Fine di percorso per cavalli. Il segnale indica la fine di un percorso riservato ai cavalli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro è raffigurato un cavallo con cavaliere, sovrapposto da una barra diagonale rossa che va dall'angolo in alto a sinistra all'angolo in basso a destra. Questo è il segnale di \"Fine di percorso per cavalli\".",
+    "name": "Fine di percorso per cavalli",
+    "description": "Il segnale indica la fine di un percorso riservato ai cavalli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di fine percorso obbligatorio",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "fine percorso obbligatorio",
+      "animali da sella",
+      "segnali stradali",
+      "prescrizione"
+    ],
+    "vector_search_queries": [
+      "fine percorso obbligatorio per animali da sella",
+      "segnaletica stradale di fine prescrizione per cavalli"
+    ],
+    "rule_explanation": "Il segnale di 'fine percorso obbligatorio' per animali da sella indica la cessazione dell'obbligo di utilizzare quella specifica via."
+  }
+}

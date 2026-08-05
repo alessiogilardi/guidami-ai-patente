@@ -1,0 +1,31 @@
+{
+  "question_id": 4105,
+  "topic": "Segnali di divieto",
+  "number": "19526",
+  "text": "Il segnale raffigurato consente il transito alle autovetture con motore elettrico",
+  "correct_answer": false,
+  "image": "fbde6a78154edc681ee7715bad203441.jpeg",
+  "image_description": "Segnale di divieto di transito. Il segnale vieta il transito a tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Questo è il segnale di divieto di transito, che indica che il transito è vietato a tutti i veicoli.",
+    "name": "Segnale di divieto di transito",
+    "description": "Il segnale vieta il transito a tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Classificazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "autovetture",
+      "motore elettrico",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "divieto di transito a tutti i veicoli",
+      "segnali di divieto che impongono limitazioni alla circolazione per tipologia di veicolo"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito vieta la circolazione a tutti i veicoli, indipendentemente dalla loro motorizzazione o alimentazione."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4630,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24783",
+  "text": "Quando si deve far scendere un passeggero, bisogna tenere presente che l'apertura della portiera di destra è priva di qualsiasi rischio e pericolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza nella salita/discesa passeggeri",
+      "Prevenzione pericoli nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "apertura portiera",
+      "rischio",
+      "pericolo",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "pericolo apertura portiera veicolo fermo",
+      "comportamento conducente apertura portiera passeggero"
+    ],
+    "rule_explanation": "L'apertura delle portiere di un veicolo in sosta, specialmente sul lato destro, costituisce un pericolo per la circolazione e deve essere effettuata con la massima cautela, solo quando non si crea intralcio o pericolo."
+  }
+}

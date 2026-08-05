@@ -1,0 +1,32 @@
+{
+  "question_id": 4140,
+  "topic": "Segnali di divieto",
+  "number": "19932",
+  "text": "Il segnale (A), integrato con il pannello (B), vieta la sosta soltanto nei giorni festivi",
+  "correct_answer": true,
+  "image": "d768224469a122fc09a78b44058a5095.jpeg",
+  "image_description": "Divieto di sosta con indicazione oraria e giorni festivi. Il segnale A, integrato dal pannello B, indica il divieto di sosta nei giorni festivi dalle ore 8:00 alle 20:00.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi: un segnale stradale (A) e un pannello integrativo (B). Il segnale A è un segnale di divieto, di forma circolare con bordo rosso, sfondo blu e una barra rossa diagonale. Questo è il segnale di 'Divieto di fermata'. Il pannello B è rettangolare e contiene il simbolo di una croce (che indica i giorni festivi) seguito dall'indicazione oraria '8.00 - 20.00'. L'insieme dei due elementi indica una limitazione specifica per la sosta nei giorni festivi e in un determinato intervallo orario. Pertanto, il segnale A, combinato con il pannello B, vieta la sosta nei giorni festivi dalle 8:00 alle 20:00.",
+    "name": "Divieto di sosta con indicazione oraria e giorni festivi",
+    "description": "Il segnale A, integrato dal pannello B, indica il divieto di sosta nei giorni festivi dalle ore 8:00 alle 20:00."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Integrazione dei segnali con pannelli di completamento",
+      "Limitazioni temporali dei divieti di sosta"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "giorni festivi",
+      "pannello integrativo",
+      "ore 8:00 alle 20:00"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta giorni festivi orario specifico",
+      "interpretazione segnale divieto sosta con pannello integrativo giorni festivi"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta, se integrato con pannello che indica giorni festivi e orario, limita il divieto di sosta a tali specifici giorni e fasce orarie."
+  }
+}

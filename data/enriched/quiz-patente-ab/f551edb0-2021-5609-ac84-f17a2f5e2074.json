@@ -1,0 +1,31 @@
+{
+  "question_id": 4281,
+  "topic": "Segnali di indicazione",
+  "number": "21376",
+  "text": "Il segnale raffigurato indica ai veicoli diretti in Austria di tornare indietro",
+  "correct_answer": false,
+  "image": "7d0ed64e87149994b3984d8f04688e2c.jpeg",
+  "image_description": "Segnale di direzione obbligatoria con indicazioni turistiche e per località specifiche. Il segnale indica le direzioni per diverse località. A sinistra, si trovano le indicazioni per AUSTRIA, TARVISIO e TOLMEZZO. A destra, le indicazioni sono per TRIESTE, GRADO e CIVIDALE. Sotto queste indicazioni, ci sono frecce che mostrano le direzioni da prendere: una freccia indica la direzione per l'ospedale (a sinistra), un'altra indica la direzione per il centro (diritta), e una terza indica la direzione per via Gemona (a destra). È presente anche un segnale di divieto di accesso (cerchio rosso con barra orizzontale bianca) posizionato in modo da indicare che la direzione di marcia per l'ospedale è vietata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di tipo \"preavviso di direzione\" o \"direzione obbligatoria\" con pannelli integrativi. Il segnale è rettangolare, con sfondo bianco e riquadri blu che indicano le destinazioni. Nella parte superiore sinistra, ci sono le destinazioni AUSTRIA, TARVISIO, TOLMEZZO. Nella parte superiore destra, ci sono le destinazioni TRIESTE, GRADO, CIVIDALE. Sotto questi pannelli, sono presenti delle frecce che indicano le direzioni da seguire per raggiungere determinate località o servizi. Una freccia nera indica la direzione sinistra per \"ospedale\", con un simbolo di pronto soccorso associato. Un'altra freccia nera indica la direzione dritta per \"centro\", con il simbolo del centro abitato. Una terza freccia nera indica la direzione destra per \"via Gemona\". Inoltre, è presente un segnale di divieto di accesso (cerchio rosso con barra bianca orizzontale) posizionato sulla freccia che indica la direzione sinistra per l'ospedale, suggerendo che tale direzione è vietata.",
+    "name": "Segnale di direzione obbligatoria con indicazioni turistiche e per località specifiche",
+    "description": "Il segnale indica le direzioni per diverse località. A sinistra, si trovano le indicazioni per AUSTRIA, TARVISIO e TOLMEZZO. A destra, le indicazioni sono per TRIESTE, GRADO e CIVIDALE. Sotto queste indicazioni, ci sono frecce che mostrano le direzioni da prendere: una freccia indica la direzione per l'ospedale (a sinistra), un'altra indica la direzione per il centro (diritta), e una terza indica la direzione per via Gemona (a destra). È presente anche un segnale di divieto di accesso (cerchio rosso con barra orizzontale bianca) posizionato in modo da indicare che la direzione di marcia per l'ospedale è vietata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di direzione obbligatoria",
+      "Segnaletica turistica"
+    ],
+    "exact_keywords": [
+      "segnali di direzione obbligatoria",
+      "località turistiche",
+      "direzione obbligatoria a sinistra",
+      "direzione obbligatoria a destra"
+    ],
+    "vector_search_queries": [
+      "obbligo di seguire le direzioni indicate dai segnali stradali",
+      "segnali di direzione obbligatoria e loro significato"
+    ],
+    "rule_explanation": "I segnali di direzione obbligatoria indicano la sola direzione o le sole direzioni che i veicoli hanno l'obbligo di seguire, non impongono un obbligo di tornare indietro."
+  }
+}

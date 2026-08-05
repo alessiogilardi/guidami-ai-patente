@@ -1,0 +1,28 @@
+{
+  "question_id": 4049,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18838",
+  "text": "Quando la carreggiata è occupata da ciclisti o pedoni, si devono sorpassare senza superare la velocità di 30 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di utenti deboli",
+      "Velocità di sicurezza"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "ciclisti",
+      "pedoni",
+      "velocità massima",
+      "30 km/h"
+    ],
+    "vector_search_queries": [
+      "sorpasso ciclisti e pedoni velocità massima 30 km/h",
+      "regolamentazione sorpasso utenti deboli della strada"
+    ],
+    "rule_explanation": "Il sorpasso di ciclisti e pedoni deve avvenire a velocità non superiore a 30 km/h, se le condizioni della strada lo consentono e non creano pericolo."
+  }
+}

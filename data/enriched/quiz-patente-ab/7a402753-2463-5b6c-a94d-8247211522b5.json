@@ -1,0 +1,28 @@
+{
+  "question_id": 4393,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22526",
+  "text": "Passare molto vicino ad un'auto parcheggiata, a bordo della quale si trovano ancora persone, può essere pericoloso, solo se si viaggia ad alta velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Pericolo per la circolazione",
+      "Comportamento prudente"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "pericolo",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità per evitare pericoli e intralci",
+      "rischio di creare pericolo per la circolazione stradale"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in base alle condizioni, anche se non elevate, per evitare pericoli o intralci, indipendentemente dalla velocità tenuta."
+  }
+}

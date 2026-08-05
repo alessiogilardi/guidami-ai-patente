@@ -1,0 +1,28 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23571",
+  "text": "La pericolosità del sorpasso è determinata dal rischio di urtare altri veicoli che manifestano l'intenzione di compiere la stessa manovra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Valutazione del rischio nella manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "pericolosità",
+      "urtare altri veicoli",
+      "intenzione di compiere la stessa manovra"
+    ],
+    "vector_search_queries": [
+      "rischio di collisione tra veicoli durante il sorpasso",
+      "sorpasso contemporaneo di più veicoli",
+      "valutazione della pericolosità del sorpasso"
+    ],
+    "rule_explanation": "La pericolosità del sorpasso è accertata anche dal rischio di collisione con veicoli che intendono effettuare la medesima manovra contemporaneamente."
+  }
+}

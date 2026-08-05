@@ -1,0 +1,28 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24666",
+  "text": "Lasciare in sosta l'auto davanti a un passo carrabile comporta una perdita di punti sulla patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Violazioni del Codice della Strada",
+      "Sanzioni amministrative pecuniarie e accessorie"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "passo carrabile",
+      "sanzione amministrativa",
+      "decurtazione punti"
+    ],
+    "vector_search_queries": [
+      "sanzioni per sosta davanti a passo carrabile",
+      "violazione divieto di sosta e decurtazione punti"
+    ],
+    "rule_explanation": "La sosta davanti a un passo carrabile è vietata e sanzionata con una multa, ma non comporta la perdita di punti sulla patente."
+  }
+}

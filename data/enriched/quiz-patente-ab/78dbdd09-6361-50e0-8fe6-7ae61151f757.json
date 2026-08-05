@@ -1,0 +1,29 @@
+{
+  "question_id": 4631,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24786",
+  "text": "Su una strada innevata l'aderenza del veicolo è minore che su una strada ghiacciata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aderenza del veicolo",
+      "Condizioni stradali avverse",
+      "Prevenzione incidenti stradali"
+    ],
+    "exact_keywords": [
+      "aderenza",
+      "strada innevata",
+      "strada ghiacciata",
+      "condizioni di aderenza"
+    ],
+    "vector_search_queries": [
+      "aderenza pneumatici su strada ghiacciata",
+      "differenza aderenza strada innevata e ghiacciata",
+      "riduzione aderenza veicolo su superfici scivolose"
+    ],
+    "rule_explanation": "L'aderenza su strada ghiacciata è generalmente inferiore a quella su strada innevata, richiedendo maggiore prudenza e velocità ridotta per evitare il pattinamento."
+  }
+}

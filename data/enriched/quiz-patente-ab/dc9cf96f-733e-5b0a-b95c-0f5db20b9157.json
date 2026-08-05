@@ -1,0 +1,28 @@
+{
+  "question_id": 4379,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22380",
+  "text": "Il limite massimo di velocità sulle autostrade è di 120 km/h per autovettura con carrello appendice in caso di pioggia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità in autostrada",
+      "Condizioni atmosferiche e velocità",
+      "Veicoli con rimorchio"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "autostrada",
+      "autovettura con carrello appendice",
+      "pioggia"
+    ],
+    "vector_search_queries": [
+      "limite velocità autostrada autovettura con carrello appendice pioggia",
+      "riduzione velocità autostrada per condizioni meteo avverse con rimorchio"
+    ],
+    "rule_explanation": "Il limite di 120 km/h in autostrada per autovetture con carrello appendice è ridotto in caso di pioggia, ma non è l'unico fattore da considerare per la velocità adeguata."
+  }
+}

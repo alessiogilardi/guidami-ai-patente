@@ -1,0 +1,27 @@
+{
+  "question_id": 4047,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18815",
+  "text": "Alla guida di un veicolo, in vicinanza di una piazzola di fermata di autobus per scolari, bisogna rallentare particolarmente se vi è lo scuolabus",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di vicinanza agli scuolabus",
+      "Dovere di prudenza e rallentamento in prossimità di fermate scolastiche"
+    ],
+    "exact_keywords": [
+      "scuolabus",
+      "fermata di autobus per scolari",
+      "rallentare",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "rallentamento in prossimità di fermata scuolabus",
+      "obbligo di prudenza in vicinanza di scuolabus fermi"
+    ],
+    "rule_explanation": "In prossimità di una piazzola di fermata di autobus adibiti al trasporto scolastico, è necessario rallentare con particolare prudenza se è presente uno scuolabus."
+  }
+}

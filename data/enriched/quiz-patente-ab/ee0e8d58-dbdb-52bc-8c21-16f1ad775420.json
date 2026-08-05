@@ -1,0 +1,29 @@
+{
+  "question_id": 4680,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25136",
+  "text": "Per diminuire l'inquinamento atmosferico provocato dai veicoli, bisogna utilizzare il motore al massimo numero di giri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico",
+      "Efficienza del motore",
+      "Comportamento di guida ecocompatibile"
+    ],
+    "exact_keywords": [
+      "inquinamento atmosferico",
+      "motore",
+      "emissioni inquinanti",
+      "regime di rotazione"
+    ],
+    "vector_search_queries": [
+      "riduzione emissioni inquinanti veicoli",
+      "impatto regime motore su inquinamento atmosferico",
+      "guida ecologica per limitare inquinamento da veicoli"
+    ],
+    "rule_explanation": "Per ridurre l'inquinamento atmosferico, è necessario guidare in modo da mantenere il motore a un regime di rotazione ottimale, evitando di portarlo al massimo dei giri."
+  }
+}

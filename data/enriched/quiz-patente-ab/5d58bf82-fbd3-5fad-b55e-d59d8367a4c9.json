@@ -1,0 +1,27 @@
+{
+  "question_id": 4705,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25310",
+  "text": "Il freno di stazionamento deve essere in grado di tenere bloccato il veicolo in sosta anche su strade in pendenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzionamento del freno di stazionamento",
+      "Sicurezza del veicolo in sosta"
+    ],
+    "exact_keywords": [
+      "freno di stazionamento",
+      "veicolo in sosta",
+      "strade in pendenza",
+      "blocco"
+    ],
+    "vector_search_queries": [
+      "funzionamento freno di stazionamento su pendenze",
+      "requisiti freno di stazionamento per sosta sicura"
+    ],
+    "rule_explanation": "Il freno di stazionamento deve garantire il blocco del veicolo fermo, anche su superfici inclinate, assicurando la stabilità e prevenendo movimenti accidentali."
+  }
+}

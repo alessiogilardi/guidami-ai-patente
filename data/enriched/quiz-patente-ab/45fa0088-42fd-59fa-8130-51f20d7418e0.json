@@ -1,0 +1,27 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22288",
+  "text": "Il conducente deve poter arrestare il veicolo nel campo di visibilità e in condizioni di sicurezza.",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di condurre il veicolo in condizioni di sicurezza",
+      "Adeguamento della velocità alla visibilità e allo spazio di arresto"
+    ],
+    "exact_keywords": [
+      "arrestare il veicolo",
+      "campo di visibilità",
+      "condizioni di sicurezza",
+      "velocità adeguata"
+    ],
+    "vector_search_queries": [
+      "arresto del veicolo entro il campo visivo e in sicurezza",
+      "obbligo di moderare la velocità in base alla visibilità per garantire l'arresto sicuro"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in modo da poter arrestare il veicolo entro lo spazio libero visibile dinanzi a sé, garantendo la sicurezza."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4031,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18646",
+  "text": "L'autoveicolo è un qualunque veicolo a motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autoveicolo",
+      "Classificazione dei veicoli",
+      "Veicoli a motore"
+    ],
+    "exact_keywords": [
+      "autoveicolo",
+      "veicolo a motore",
+      "definizione",
+      "classificazione"
+    ],
+    "vector_search_queries": [
+      "definizione di autoveicolo nel codice della strada",
+      "differenza tra autoveicolo e veicolo a motore"
+    ],
+    "rule_explanation": "L'autoveicolo è un veicolo a motore con almeno quattro ruote, non tramviario, destinato al trasporto di persone o cose. Non tutti i veicoli a motore sono autoveicoli."
+  }
+}

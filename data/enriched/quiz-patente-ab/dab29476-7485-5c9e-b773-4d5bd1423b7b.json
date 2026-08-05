@@ -1,0 +1,31 @@
+{
+  "question_id": 4413,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22711",
+  "text": "L'uso corretto della strada comporta che i veicoli impegnino sempre la carreggiata il più rapidamente possibile",
+  "correct_answer": false,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento del veicolo sulla carreggiata",
+      "Regole di circolazione e comportamento sulla strada"
+    ],
+    "exact_keywords": [
+      "uso della strada",
+      "carreggiata",
+      "velocità di marcia",
+      "pericolo o intralcio"
+    ],
+    "vector_search_queries": [
+      "comportamento corretto sulla carreggiata per evitare intralcio",
+      "obbligo di regolare la velocità in base alle condizioni di traffico e sicurezza"
+    ],
+    "rule_explanation": "L'uso della strada impone di impegnare la carreggiata in modo da non creare pericolo o intralcio, regolando la velocità in base alle circostanze e non necessariamente il più rapidamente possibile."
+  }
+}

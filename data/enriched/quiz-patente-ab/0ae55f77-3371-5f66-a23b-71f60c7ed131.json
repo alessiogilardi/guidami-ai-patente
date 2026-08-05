@@ -1,0 +1,29 @@
+{
+  "question_id": 4712,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25411",
+  "text": "L'impianto di scarico deve essere integralmente sostituito a ogni cambio di lubrificante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Impianto di scarico",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "impianto di scarico",
+      "sostituzione",
+      "manutenzione",
+      "lubrificante"
+    ],
+    "vector_search_queries": [
+      "manutenzione impianto di scarico veicolo",
+      "sostituzione impianto di scarico per usura",
+      "norme manutenzione veicolo e emissioni sonore/inquinanti"
+    ],
+    "rule_explanation": "La sostituzione dell'impianto di scarico non è legata al cambio dell'olio lubrificante, ma alla sua usura o malfunzionamento per garantire la sicurezza e ridurre le emissioni."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4044,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18776",
+  "text": "Il conducente deve fermarsi e facilitare l'attraversamento al pedone non vedente con il bastone bianco che attraversa la strada fuori dalle strisce pedonali",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso i pedoni",
+      "Uso responsabile della strada",
+      "Tutela degli utenti deboli"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "pedone",
+      "attraversamento",
+      "strisce pedonali",
+      "non vedente"
+    ],
+    "vector_search_queries": [
+      "obbligo di fermarsi per pedone non vedente fuori dalle strisce",
+      "facilitare attraversamento pedonale a persone con disabilità visiva",
+      "condotta del conducente verso pedoni in difficoltà"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di fermarsi e agevolare l'attraversamento ai pedoni, specialmente se non vedenti o in condizioni di fragilità, anche se non si trovano sulle strisce pedonali."
+  }
+}

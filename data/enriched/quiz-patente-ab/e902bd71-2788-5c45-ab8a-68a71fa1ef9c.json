@@ -1,0 +1,27 @@
+{
+  "question_id": 4432,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22894",
+  "text": "Giungendo ad un incrocio è consentito impegnarlo solo se si ha la possibilità di proseguire e liberarlo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di avanzamento agli incroci",
+      "Divieto di occupazione degli incroci"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "impegnare l'incrocio",
+      "liberare l'incrocio",
+      "possibilità di proseguire"
+    ],
+    "vector_search_queries": [
+      "divieto di impegnare incroci senza possibilità di liberarlo",
+      "condizioni per impegnare un incrocio stradale"
+    ],
+    "rule_explanation": "È vietato impegnare un incrocio se non si ha la possibilità di liberarlo completamente senza creare intralcio alla circolazione trasversale."
+  }
+}

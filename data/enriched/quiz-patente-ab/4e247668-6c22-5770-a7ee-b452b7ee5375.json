@@ -1,0 +1,30 @@
+{
+  "question_id": 4025,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18576",
+  "text": "E' consentito aumentare la cilindrata dei quadricicli leggeri purché non si aumenti la velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Modifiche ai veicoli a motore",
+      "Omologazione e caratteristiche tecniche",
+      "Quadricicli leggeri"
+    ],
+    "exact_keywords": [
+      "quadricicli leggeri",
+      "cilindrata",
+      "velocità massima",
+      "modifiche tecniche",
+      "omologazione"
+    ],
+    "vector_search_queries": [
+      "modifica cilindrata quadricicli leggeri",
+      "alterazione caratteristiche tecniche veicoli a motore",
+      "requisiti di omologazione quadricicli"
+    ],
+    "rule_explanation": "Le modifiche alle caratteristiche tecniche di un quadriciclo leggero, inclusa la cilindrata, non sono consentite se alterano le condizioni di omologazione e la sicurezza, indipendentemente dalla velocità."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22302",
+  "text": "E' obbligatorio regolare la velocità nei tratti di strada coperti da neve",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in condizioni particolari",
+      "Obbligo di moderazione della velocità"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "neve",
+      "strada",
+      "condizioni particolari"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità in presenza di neve sulla strada",
+      "obbligo di moderare la velocità in condizioni di scarsa aderenza per neve"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di regolare la velocità in modo da evitare pericoli, specialmente in presenza di neve sulla strada."
+  }
+}

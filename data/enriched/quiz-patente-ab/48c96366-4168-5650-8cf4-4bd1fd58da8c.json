@@ -1,0 +1,28 @@
+{
+  "question_id": 4671,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25065",
+  "text": "Gli apparecchi e i dispositivi che funzionano a corrente elettrica (radio, luci, lunotto termico, ecc.) fanno aumentare i consumi di carburante del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Consumo di carburante",
+      "Efficienza energetica del veicolo",
+      "Impatto ambientale dei veicoli"
+    ],
+    "exact_keywords": [
+      "consumo di carburante",
+      "apparecchi elettrici",
+      "dispositivi elettrici",
+      "lunotto termico"
+    ],
+    "vector_search_queries": [
+      "aumento consumo carburante per uso dispositivi elettrici veicolo",
+      "impatto apparecchi elettrici su efficienza consumi autoveicoli"
+    ],
+    "rule_explanation": "L'utilizzo di apparecchi e dispositivi elettrici su un veicolo aumenta il carico sul motore, incrementando di conseguenza il consumo di carburante."
+  }
+}

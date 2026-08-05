@@ -1,0 +1,28 @@
+{
+  "question_id": 4699,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25258",
+  "text": "Prima di sollevare il veicolo per la sostituzione di una ruota, è conveniente allentare leggermente i bulloni di fissaggio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Procedure di emergenza"
+    ],
+    "exact_keywords": [
+      "allentare bulloni",
+      "sostituzione ruota",
+      "sollevare veicolo",
+      "attrezzi"
+    ],
+    "vector_search_queries": [
+      "procedura sostituzione ruota veicolo",
+      "allentamento bulloni prima del sollevamento"
+    ],
+    "rule_explanation": "Prima di sollevare il veicolo per sostituire una ruota, è necessario allentare leggermente i bulloni per facilitare l'operazione una volta che la ruota non è più a terra."
+  }
+}

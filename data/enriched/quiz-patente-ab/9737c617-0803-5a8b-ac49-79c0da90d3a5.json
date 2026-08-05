@@ -1,0 +1,32 @@
+{
+  "question_id": 4094,
+  "topic": "Segnali di pericolo",
+  "number": "19393",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada deformata",
+  "correct_answer": false,
+  "image": "ddcc6610d88743a87ab49dda7f0f69be.jpeg",
+  "image_description": "Segnale di pericolo di caduta massi. Il segnale preannuncia un pericolo di caduta massi sulla carreggiata. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta un versante di montagna da cui cadono dei massi. Il pittogramma indica il pericolo di caduta massi.",
+    "name": "Segnale di pericolo di caduta massi",
+    "description": "Il segnale preannuncia un pericolo di caduta massi sulla carreggiata. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di pericolo specifico"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "caduta massi",
+      "strada deformata",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo stradale e loro significato specifico",
+      "differenza tra segnale di caduta massi e segnale di strada deformata",
+      "interpretazione dei segnali di pericolo stradale"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurato preannuncia la caduta massi, non una strada deformata. La corretta interpretazione dei segnali è fondamentale per la sicurezza."
+  }
+}

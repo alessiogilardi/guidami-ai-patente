@@ -1,0 +1,28 @@
+{
+  "question_id": 4699,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25256",
+  "text": "Per la sostituzione di una ruota conviene stazionare il veicolo su un terreno orizzontale e stabile",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "sostituzione ruota",
+      "terreno orizzontale",
+      "terreno stabile",
+      "stazionare il veicolo"
+    ],
+    "vector_search_queries": [
+      "condizioni per la sostituzione di una ruota del veicolo",
+      "stazionamento sicuro del veicolo per manutenzione"
+    ],
+    "rule_explanation": "Per la sostituzione di una ruota è necessario stazionare il veicolo su un terreno orizzontale e stabile per garantire la sicurezza e la stabilità durante l'operazione."
+  }
+}

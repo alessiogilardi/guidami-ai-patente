@@ -1,0 +1,31 @@
+{
+  "question_id": 4254,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21109",
+  "text": "Il semaforo in figura, con luce rossa accesa impone ai pedoni di non attraversare",
+  "correct_answer": true,
+  "image": "2129f648b286c6c53769eb3846a537af.jpeg",
+  "image_description": "Semaforo pedonale. Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un semaforo pedonale verticale. Le luci sono disposte dall'alto verso il basso: rossa, gialla e verde. Ogni luce contiene la sagoma stilizzata di una figura umana. La luce rossa mostra una figura ferma, la luce gialla una figura ferma, e la luce verde una figura in movimento. Il semaforo è montato su un palo o struttura simile, ma solo il semaforo stesso è visibile chiaramente. Non ci sono altri elementi stradali o veicoli nell'immagine.",
+    "name": "Semaforo pedonale",
+    "description": "Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica semaforica pedonale",
+      "Obblighi dei pedoni al semaforo"
+    ],
+    "exact_keywords": [
+      "semaforo pedonale",
+      "luce rossa",
+      "non attraversare",
+      "attraversamento pedonale"
+    ],
+    "vector_search_queries": [
+      "significato luce rossa semaforo pedonale",
+      "obblighi pedoni semaforo rosso"
+    ],
+    "rule_explanation": "La luce rossa del semaforo pedonale impone ai pedoni l'obbligo di fermarsi e di non iniziare l'attraversamento della carreggiata."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4684,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25156",
+  "text": "Al momento dello smaltimento dell'olio del motore, bisogna evitare che venga a contatto con la pelle per un tempo prolungato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela ambientale",
+      "Gestione dei rifiuti pericolosi",
+      "Salute del conducente"
+    ],
+    "exact_keywords": [
+      "smaltimento olio motore",
+      "contatto con la pelle",
+      "rifiuti speciali",
+      "inquinamento ambientale"
+    ],
+    "vector_search_queries": [
+      "normativa smaltimento olio motore esausto",
+      "rischi contatto olio motore con pelle",
+      "gestione rifiuti speciali pericolosi autoveicoli"
+    ],
+    "rule_explanation": "L'olio motore esausto è un rifiuto speciale pericoloso; il contatto prolungato con la pelle può causare danni alla salute e all'ambiente, pertanto va smaltito correttamente."
+  }
+}

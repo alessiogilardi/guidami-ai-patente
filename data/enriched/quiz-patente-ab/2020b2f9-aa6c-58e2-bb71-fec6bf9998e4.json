@@ -1,0 +1,27 @@
+{
+  "question_id": 4048,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18827",
+  "text": "Il conducente, in vicinanza di un posteggio riservato ai taxi, deve dare la precedenza ai taxi che s'immettono sulla strada",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di precedenza",
+      "Uso della strada e convivenza civile"
+    ],
+    "exact_keywords": [
+      "precedenza",
+      "taxi",
+      "posteggio riservato",
+      "immissione nella circolazione"
+    ],
+    "vector_search_queries": [
+      "precedenza all'uscita da posteggio riservato taxi",
+      "obbligo di precedenza verso i taxi in fase di immissione da fermata dedicata"
+    ],
+    "rule_explanation": "I taxi non hanno una precedenza speciale all'uscita da un posteggio riservato; la precedenza va data secondo le regole generali, a chi già circola sulla strada."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4261,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21180",
+  "text": "Se il vigile ha un braccio alzato come in figura bisogna in ogni caso arrestarsi",
+  "correct_answer": false,
+  "image": "125f03bc48cba25667c0be2257dd80e3.jpeg",
+  "image_description": "Segnale del vigile: braccio destro alzato e braccio sinistro lungo il corpo. La posizione del vigile con un braccio alzato indica l'arresto per tutti i veicoli che provengono dalla direzione del vigile. Equivalente al segnale semaforico rosso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra la silhouette di un vigile in uniforme, in piedi al centro di un incrocio stilizzato. Il vigile ha il braccio destro sollevato verticalmente con la mano aperta, mentre il braccio sinistro è lungo il corpo. La testa è rivolta verso lo spettatore. Ai quattro angoli dell'incrocio sono disegnate delle linee che rappresentano le direzioni di marcia, suggerendo un incrocio a raso. Non sono presenti altri segnali stradali o veicoli. La scena rappresenta una segnalazione da parte di un agente del traffico.",
+    "name": "Segnale del vigile: braccio destro alzato e braccio sinistro lungo il corpo",
+    "description": "La posizione del vigile con un braccio alzato indica l'arresto per tutti i veicoli che provengono dalla direzione del vigile. Equivalente al segnale semaforico rosso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni degli agenti del traffico",
+      "Obbligo di arresto al segnale del vigile"
+    ],
+    "exact_keywords": [
+      "segnale del vigile",
+      "braccio alzato",
+      "arrestarsi",
+      "circolazione",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto al segnale del vigile con braccio alzato",
+      "interpretazione segnali degli agenti del traffico",
+      "equivalenza segnale vigile rosso semaforico"
+    ],
+    "rule_explanation": "Il segnale del vigile con un braccio alzato impone l'arresto ai veicoli provenienti dalla direzione del vigile, equivalente al rosso semaforico."
+  }
+}

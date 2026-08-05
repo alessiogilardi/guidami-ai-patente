@@ -1,0 +1,32 @@
+{
+  "question_id": 4334,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21867",
+  "text": "Il cono raffigurato si può usare per segnalare deviazioni provvisorie",
+  "correct_answer": true,
+  "image": "61edff345204545bf7a2cc45613f1bca.jpeg",
+  "image_description": "Cono divisorio. Il segnale raffigurato è un cono, utilizzato per delimitare zone di lavoro, cantieri, ostacoli o per separare temporaneamente i flussi di traffico. Può essere impiegato per segnalare deviazioni provvisorie, aree interessate da incidenti o lavori stradali di durata variabile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un singolo cono stradale, di forma tronco-conica, con una base larga e nera. La superficie del cono è caratterizzata da bande orizzontali alternate di colore rosso e bianco, che servono a renderlo altamente visibile. Non sono presenti altri elementi o segnali nell'immagine.",
+    "name": "Cono divisorio",
+    "description": "Il segnale raffigurato è un cono, utilizzato per delimitare zone di lavoro, cantieri, ostacoli o per separare temporaneamente i flussi di traffico. Può essere impiegato per segnalare deviazioni provvisorie, aree interessate da incidenti o lavori stradali di durata variabile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione temporanea di cantiere",
+      "Utilizzo dei coni stradali"
+    ],
+    "exact_keywords": [
+      "cono divisorio",
+      "segnalare deviazioni provvisorie",
+      "cantieri stradali",
+      "lavori stradali"
+    ],
+    "vector_search_queries": [
+      "uso del cono divisorio per segnalare deviazioni provvisorie",
+      "segnalazione di cantiere con coni stradali",
+      "funzione dei coni nella delimitazione di aree di lavoro stradale"
+    ],
+    "rule_explanation": "Il cono divisorio è un segnale complementare impiegato per delimitare aree di cantiere, lavori stradali o incidenti, e può essere usato per indicare deviazioni temporanee del traffico."
+  }
+}

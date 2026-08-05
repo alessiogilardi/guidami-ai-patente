@@ -1,0 +1,27 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31056",
+  "text": "Bere un liquore ad alta gradazione alcolica permette di migliorare l’attenzione dopo circa 10 minuti dall’ingestione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Effetti dell'alcol sulla capacità di guida",
+      "Alterazione delle capacità psicofisiche"
+    ],
+    "exact_keywords": [
+      "sostanze stupefacenti o psicotrope",
+      "alterazione delle condizioni psicofisiche",
+      "guida in stato di ebbrezza"
+    ],
+    "vector_search_queries": [
+      "effetti dell'alcol sulla guida",
+      "guida sotto influenza di alcolici",
+      "alterazione capacità psicofisiche da alcol"
+    ],
+    "rule_explanation": "L'ingestione di alcolici, anche in piccole quantità, altera le capacità psicofisiche necessarie per la guida sicura, diminuendo l'attenzione e i riflessi."
+  }
+}

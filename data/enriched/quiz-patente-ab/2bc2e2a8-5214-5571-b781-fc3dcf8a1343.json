@@ -1,0 +1,27 @@
+{
+  "question_id": 4382,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22403",
+  "text": "Salvo diversa segnalazione, il limite massimo di velocità consentito su strade extraurbane principali è di 90 km/h in caso di grandine",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane principali",
+      "Condizioni atmosferiche avverse e velocità"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "strade extraurbane principali",
+      "grandine",
+      "condizioni atmosferiche"
+    ],
+    "vector_search_queries": [
+      "limite velocità strade extraurbane principali con grandine",
+      "adeguamento velocità a condizioni atmosferiche avverse su strade extraurbane principali"
+    ],
+    "rule_explanation": "Su strade extraurbane principali, il limite massimo di velocità è di 90 km/h, ridotto in caso di precipitazioni atmosferiche come la grandine."
+  }
+}

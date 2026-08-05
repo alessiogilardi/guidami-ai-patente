@@ -1,0 +1,27 @@
+{
+  "question_id": 4520,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23732",
+  "text": "Fuori dai centri abitati e sulle strade urbane di scorrimento, la sosta è vietata in prossimità dei dossi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Condizioni di visibilità e sicurezza"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "prossimità dei dossi",
+      "strade urbane di scorrimento",
+      "centri abitati"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in prossimità dei dossi",
+      "sosta vietata su strade urbane di scorrimento e fuori dai centri abitati in prossimità di dossi"
+    ],
+    "rule_explanation": "La sosta è vietata in prossimità dei dossi, sia fuori dai centri abitati che sulle strade urbane di scorrimento, per garantire la visibilità e la sicurezza."
+  }
+}

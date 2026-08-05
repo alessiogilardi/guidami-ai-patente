@@ -1,0 +1,29 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24360",
+  "text": "Le cinture di sicurezza sono di utilità trascurabile nella circolazione urbana",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Sicurezza stradale",
+      "Prevenzione degli infortuni"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "sistemi di ritenuta",
+      "circolazione urbana",
+      "rischio di lesioni"
+    ],
+    "vector_search_queries": [
+      "efficacia delle cinture di sicurezza nella circolazione urbana",
+      "importanza dei sistemi di ritenuta per la riduzione dei traumi",
+      "obbligo di uso delle cinture di sicurezza in città"
+    ],
+    "rule_explanation": "Le cinture di sicurezza sono fondamentali anche in ambito urbano per ridurre il rischio di lesioni in caso di incidente, indipendentemente dalla velocità."
+  }
+}

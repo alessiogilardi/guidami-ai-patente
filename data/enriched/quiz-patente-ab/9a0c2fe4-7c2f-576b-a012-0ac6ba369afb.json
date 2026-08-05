@@ -1,0 +1,32 @@
+{
+  "question_id": 4212,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20733",
+  "text": "La doppia striscia continua in figura indica il punto in cui i conducenti si debbono arrestare per la presenza del segnale di STOP",
+  "correct_answer": false,
+  "image": "338d599190b9dc78c4756a1702c2de44.jpeg",
+  "image_description": "Segnaletica orizzontale: doppia striscia continua. La segnaletica orizzontale raffigura una doppia striscia continua di colore bianco, che delimita le corsie di marcia. Questa segnaletica non consente il sorpasso né l'invasione della corsia opposta, né l'inversione del senso di marcia o la svolta a sinistra, a meno che non sia diversamente indicato da segnali verticali o dalla configurazione della strada. Non indica un punto di arresto per segnali di STOP né è di colore azzurro per parcheggi a pagamento.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una segnaletica orizzontale costituita da una serie di strisce bianche continue, disposte parallelamente. Si tratta di una doppia striscia continua, che separa le corsie di marcia. Non sono presenti altri segnali stradali verticali o elementi che modifichino la sua interpretazione. La domanda riguarda le implicazioni normative di questa segnaletica. La doppia striscia continua è una linea di mezzeria che non consente il sorpasso, l'inversione di marcia o la svolta a sinistra, a meno di specifiche eccezioni non presenti in questo contesto visivo. Le affermazioni relative al colore azzurro o all'indicazione di un punto di arresto per STOP sono errate in base alla sola immagine.",
+    "name": "Segnaletica orizzontale: doppia striscia continua",
+    "description": "La segnaletica orizzontale raffigura una doppia striscia continua di colore bianco, che delimita le corsie di marcia. Questa segnaletica non consente il sorpasso né l'invasione della corsia opposta, né l'inversione del senso di marcia o la svolta a sinistra, a meno che non sia diversamente indicato da segnali verticali o dalla configurazione della strada. Non indica un punto di arresto per segnali di STOP né è di colore azzurro per parcheggi a pagamento."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Doppia striscia continua",
+      "Obblighi dei conducenti"
+    ],
+    "exact_keywords": [
+      "doppia striscia continua",
+      "segnali orizzontali",
+      "arrestarsi",
+      "segnale di STOP"
+    ],
+    "vector_search_queries": [
+      "funzione della doppia striscia continua nella segnaletica orizzontale",
+      "differenza tra doppia striscia continua e linea di arresto per STOP"
+    ],
+    "rule_explanation": "La doppia striscia continua orizzontale non indica un punto di arresto per il segnale di STOP, ma una linea che vieta il superamento e l'invasione della corsia opposta."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24596",
+  "text": "Il conducente che non supera l'esame di revisione della patente, subisce la revoca della patente stessa",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione della patente",
+      "Revoca della patente",
+      "Esame di idoneità tecnica"
+    ],
+    "exact_keywords": [
+      "revisione della patente",
+      "esame di revisione",
+      "revoca della patente",
+      "idoneità tecnica"
+    ],
+    "vector_search_queries": [
+      "conseguenze mancato superamento esame revisione patente",
+      "procedura revoca patente per esame di revisione fallito"
+    ],
+    "rule_explanation": "Il mancato superamento dell'esame di revisione della patente comporta la revoca del documento di guida."
+  }
+}

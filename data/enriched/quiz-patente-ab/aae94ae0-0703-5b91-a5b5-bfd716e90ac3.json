@@ -1,0 +1,28 @@
+{
+  "question_id": 4708,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25357",
+  "text": "Se il veicolo è sovraccarico, per evitare problemi per le sospensioni è sufficiente aumentare la pressione dei pneumatici di un bar",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sovraccarico del veicolo",
+      "Manutenzione dei pneumatici",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "sovraccarico",
+      "pressione dei pneumatici",
+      "sospensioni",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "effetti del sovraccarico sulle sospensioni e sulla tenuta di strada",
+      "adeguamento della pressione pneumatici in relazione al carico del veicolo"
+    ],
+    "rule_explanation": "L'aumento della pressione dei pneumatici non compensa il sovraccarico del veicolo, che compromette le sospensioni e la tenuta di strada."
+  }
+}

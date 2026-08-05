@@ -1,0 +1,27 @@
+{
+  "question_id": 4009,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18408",
+  "text": "Una zona a traffico limitato è delimitata da appositi segnali stradali di inizio e di fine",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di Zona a Traffico Limitato (ZTL)",
+      "Segnaletica stradale di inizio e fine ZTL"
+    ],
+    "exact_keywords": [
+      "zona a traffico limitato",
+      "segnali stradali",
+      "inizio",
+      "fine"
+    ],
+    "vector_search_queries": [
+      "delimitazione di una zona a traffico limitato con segnali stradali",
+      "segnaletica di inizio e fine ZTL"
+    ],
+    "rule_explanation": "Una Zona a Traffico Limitato (ZTL) è un'area chiaramente delimitata da segnali stradali che indicano sia l'inizio che la fine della sua estensione."
+  }
+}

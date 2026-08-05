@@ -1,0 +1,32 @@
+{
+  "question_id": 4133,
+  "topic": "Segnali di divieto",
+  "number": "19849",
+  "text": "Il segnale raffigurato vieta il transito a tutti i veicoli con massa complessiva a pieno carico superiore a 2,5 tonnellate",
+  "correct_answer": false,
+  "image": "1fa023cb06b46333946e7cff49f17f9e.jpeg",
+  "image_description": "Divieto di transito per massa effettiva per asse superiore a 2,5 t. Il segnale vieta il transito ai veicoli la cui massa effettiva sull'asse più caricato supera le 2,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è presente un'icona stilizzata di un asse di un veicolo con due ruote, sovrastata dalla dicitura \"2,5 t\" con una freccia che indica verso il basso, puntando sull'asse. Questo indica un limite di massa per asse.",
+    "name": "Divieto di transito per massa effettiva per asse superiore a 2,5 t",
+    "description": "Il segnale vieta il transito ai veicoli la cui massa effettiva sull'asse più caricato supera le 2,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Massa per asse",
+      "Massa complessiva a pieno carico"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "massa effettiva per asse",
+      "massa complessiva a pieno carico",
+      "tonnellate"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per massa per asse superiore a 2,5 tonnellate",
+      "differenza tra massa effettiva per asse e massa complessiva a pieno carico nei segnali di divieto"
+    ],
+    "rule_explanation": "Il segnale raffigurato vieta il transito ai veicoli con massa effettiva sull'asse più caricato superiore a 2,5 tonnellate, non a quelli con massa complessiva a pieno carico superiore a tale limite."
+  }
+}

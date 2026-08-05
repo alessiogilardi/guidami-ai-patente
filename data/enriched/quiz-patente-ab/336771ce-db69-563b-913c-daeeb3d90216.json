@@ -1,0 +1,29 @@
+{
+  "question_id": 4378,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22363",
+  "text": "I tratti di strada in curva debbono essere percorsi con il pedale della frizione abbassato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità di percorrenza in curva",
+      "Controllo del veicolo",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "curva",
+      "frizione",
+      "controllo del veicolo"
+    ],
+    "vector_search_queries": [
+      "percorrenza di curve con marcia inserita",
+      "uso della frizione in curva per il controllo del veicolo",
+      "velocità e manovrabilità in curva"
+    ],
+    "rule_explanation": "La marcia in curva deve essere affrontata con un rapporto adeguato inserito, per mantenere il controllo del veicolo e la stabilità, evitando l'uso del pedale della frizione che riduce la capacità di manovra."
+  }
+}

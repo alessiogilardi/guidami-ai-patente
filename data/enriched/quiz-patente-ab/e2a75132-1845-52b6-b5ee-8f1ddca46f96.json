@@ -1,0 +1,27 @@
+{
+  "question_id": 4689,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25186",
+  "text": "Il coefficiente di aderenza basso favorisce lo slittamento in curva",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aderenza pneumatico-strada",
+      "Stabilità del veicolo in curva"
+    ],
+    "exact_keywords": [
+      "coefficiente di aderenza",
+      "slittamento",
+      "tenuta di strada",
+      "curva"
+    ],
+    "vector_search_queries": [
+      "aderenza pneumatico-strada e slittamento in curva",
+      "coefficiente di aderenza basso e tenuta di strada"
+    ],
+    "rule_explanation": "Un basso coefficiente di aderenza tra pneumatici e manto stradale riduce la forza centripeta disponibile, favorendo lo slittamento del veicolo in curva."
+  }
+}

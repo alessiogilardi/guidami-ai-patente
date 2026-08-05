@@ -1,0 +1,28 @@
+{
+  "question_id": 4674,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25094",
+  "text": "Per diminuire il rumore emesso dai veicoli a motore si deve suonare il clacson il meno possibile",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Uso corretto dei dispositivi segnalatori acustici"
+    ],
+    "exact_keywords": [
+      "rumore",
+      "clacson",
+      "dispositivi acustici",
+      "art. 157 CdS"
+    ],
+    "vector_search_queries": [
+      "uso del clacson per ridurre l'inquinamento acustico",
+      "limitazione dell'inquinamento acustico da veicoli a motore",
+      "segnalazioni acustiche consentite per evitare disturbo alla quiete pubblica"
+    ],
+    "rule_explanation": "Il clacson deve essere usato con parsimonia per evitare l'inquinamento acustico, solo per brevi segnalazioni acustiche di pericolo o per richieste di attenzione."
+  }
+}

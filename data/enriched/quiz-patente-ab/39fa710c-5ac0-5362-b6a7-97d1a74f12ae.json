@@ -1,0 +1,27 @@
+{
+  "question_id": 4526,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23776",
+  "text": "Nei centri abitati il conducente non deve lasciare in sosta un rimorchio staccato dalla motrice, salvo diversa segnalazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta di veicoli isolati",
+      "Divieto di sosta nei centri abitati"
+    ],
+    "exact_keywords": [
+      "rimorchio staccato",
+      "sosta",
+      "centri abitati",
+      "segnalazione diversa"
+    ],
+    "vector_search_queries": [
+      "sosta rimorchio staccato centro abitato",
+      "divieto sosta rimorchio isolato in centro abitato salvo segnalazione"
+    ],
+    "rule_explanation": "Nei centri abitati è vietata la sosta dei rimorchi staccati dalla motrice, a meno che non sia diversamente indicato dalla segnaletica stradale."
+  }
+}

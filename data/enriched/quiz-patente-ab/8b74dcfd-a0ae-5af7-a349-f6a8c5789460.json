@@ -1,0 +1,29 @@
+{
+  "question_id": 4672,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25078",
+  "text": "Per evitare rumori fastidiosi durante la guida, occorre far controllare che il dispositivo silenziatore (marmitta) sia in buone condizioni di efficienza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Manutenzione del veicolo",
+      "Dispositivi di scarico"
+    ],
+    "exact_keywords": [
+      "rumori fastidiosi",
+      "dispositivo silenziatore",
+      "marmitta",
+      "buone condizioni di efficienza"
+    ],
+    "vector_search_queries": [
+      "normativa su inquinamento acustico veicoli a motore",
+      "efficienza del dispositivo silenziatore e livelli di rumore",
+      "obblighi del conducente per la riduzione dei rumori molesti da scarico"
+    ],
+    "rule_explanation": "Il conducente deve assicurarsi che il silenziatore (marmitta) sia efficiente per prevenire rumori molesti e rispettare le norme sull'inquinamento acustico."
+  }
+}

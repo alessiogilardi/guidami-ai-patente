@@ -1,0 +1,27 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24350",
+  "text": "Le cinture di sicurezza devono essere utilizzate in qualsiasi situazione di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Sistemi di ritenuta per bambini"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "sistemi di ritenuta per bambini",
+      "veicoli a motore",
+      "trasporto"
+    ],
+    "vector_search_queries": [
+      "obbligo uso cinture di sicurezza su tutti i veicoli a motore",
+      "utilizzo sistemi di ritenuta per bambini in base a età e peso"
+    ],
+    "rule_explanation": "L'uso delle cinture di sicurezza è obbligatorio per tutti gli occupanti dei veicoli a motore, salvo eccezioni specifiche, e i sistemi di ritenuta per bambini devono essere usati in base all'età e alla taglia."
+  }
+}

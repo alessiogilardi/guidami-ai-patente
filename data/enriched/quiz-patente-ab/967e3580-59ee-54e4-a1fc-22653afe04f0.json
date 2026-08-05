@@ -1,0 +1,28 @@
+{
+  "question_id": 4607,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24471",
+  "text": "Le targhe dei veicoli non devono essere sporche",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità delle targhe di immatricolazione",
+      "Obblighi del conducente verso le autorità"
+    ],
+    "exact_keywords": [
+      "targa",
+      "veicolo",
+      "pulizia",
+      "visibilità",
+      "funzionari o agenti"
+    ],
+    "vector_search_queries": [
+      "obbligo di pulizia e visibilità delle targhe di immatricolazione",
+      "sanzioni per targhe non leggibili o sporche"
+    ],
+    "rule_explanation": "Le targhe dei veicoli devono essere sempre tenute in condizioni tali da garantirne la leggibilità e la visibilità, per consentire il riconoscimento del mezzo da parte delle autorità competenti."
+  }
+}

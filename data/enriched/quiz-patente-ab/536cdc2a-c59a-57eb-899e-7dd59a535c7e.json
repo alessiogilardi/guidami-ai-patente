@@ -1,0 +1,28 @@
+{
+  "question_id": 4648,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24899",
+  "text": "Un ferito in stato di shock va messo a terra e, se possibile, con le gambe sollevate",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Stato di shock",
+      "Posizionamento del ferito"
+    ],
+    "exact_keywords": [
+      "ferito",
+      "stato di shock",
+      "posizione prona",
+      "arti inferiori sollevati"
+    ],
+    "vector_search_queries": [
+      "posizione del ferito in stato di shock",
+      "primo soccorso: gestione dello shock e posizionamento del paziente"
+    ],
+    "rule_explanation": "In caso di stato di shock, il ferito va posizionato sdraiato a terra, possibilmente con gli arti inferiori sollevati per favorire il ritorno venoso al cuore."
+  }
+}

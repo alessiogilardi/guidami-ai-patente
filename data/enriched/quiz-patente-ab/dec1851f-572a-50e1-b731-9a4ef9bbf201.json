@@ -1,0 +1,31 @@
+{
+  "question_id": 4152,
+  "topic": "Segnali di obbligo",
+  "number": "20066",
+  "text": "Il segnale raffigurato indica l'obbligo di svoltare a sinistra",
+  "correct_answer": true,
+  "image": "fece8907377910340f0aecbc53ef2a9b.jpeg",
+  "image_description": "Segnale di direzione obbligatoria sinistra. Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e un bordo bianco. Al centro del segnale è presente una freccia bianca rivolta verso sinistra. Questo è un segnale di obbligo che indica la direzione da seguire.",
+    "name": "Segnale di direzione obbligatoria sinistra",
+    "description": "Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo di direzione",
+      "Segnali di prescrizione (obbligo)"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "svoltare a sinistra",
+      "direzione obbligatoria",
+      "freccia"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di obbligo di direzione sinistra",
+      "interpretazione segnale di prescrizione direzione obbligatoria sinistra"
+    ],
+    "rule_explanation": "Il segnale raffigurante una freccia che indica la direzione sinistra impone l'obbligo di seguire quella direzione."
+  }
+}

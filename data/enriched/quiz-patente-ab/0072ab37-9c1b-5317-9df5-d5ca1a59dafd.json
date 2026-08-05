@@ -1,0 +1,33 @@
+{
+  "question_id": 4303,
+  "topic": "Segnali di indicazione",
+  "number": "21587",
+  "text": "Il segnale raffigurato se di colore verde è posto in autostrada",
+  "correct_answer": false,
+  "image": "abf3d7b3d288ff886b24a821cd872a9c.jpeg",
+  "image_description": "Segnale di attraversamento pedonale. Il segnale indica la presenza di un attraversamento pedonale. Preavvisa i conducenti della necessità di prestare attenzione ai pedoni che attraversano la strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo blu scuro. Al centro del segnale è presente un triangolo bianco con il vertice rivolto verso l'alto. All'interno del triangolo bianco, su uno sfondo nero che rappresenta le strisce pedonali, è raffigurata la sagoma stilizzata di una persona che cammina. Il segnale è un segnale di prescrizione o indicazione relativo agli attraversamenti pedonali.",
+    "name": "Segnale di attraversamento pedonale",
+    "description": "Il segnale indica la presenza di un attraversamento pedonale. Preavvisa i conducenti della necessità di prestare attenzione ai pedoni che attraversano la strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali stradali di pericolo",
+      "Uso dei colori nei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "colore verde",
+      "autostrada",
+      "attraversamento pedonale"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo autostradali",
+      "segnali di indicazione stradale colore verde autostrada",
+      "segnali di attraversamento pedonale e autostrada"
+    ],
+    "rule_explanation": "I segnali di pericolo, anche se raffigurano un attraversamento pedonale, non sono posti in autostrada e non sono di colore verde. I segnali verdi indicano le direzioni in autostrada."
+  }
+}

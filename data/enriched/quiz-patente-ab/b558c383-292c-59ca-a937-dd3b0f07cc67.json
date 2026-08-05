@@ -1,0 +1,27 @@
+{
+  "question_id": 4388,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22462",
+  "text": "Quando si viaggia per file parallele, è possibile che nella corsia di destra si circoli ad una velocità superiore a quella di sinistra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione in formazione compatta",
+      "Regolazione della velocità in base alla corsia"
+    ],
+    "exact_keywords": [
+      "file parallele",
+      "velocità superiore",
+      "corsia di destra",
+      "corsia di sinistra"
+    ],
+    "vector_search_queries": [
+      "velocità corsie file parallele",
+      "differenza velocità corsia destra e sinistra in formazione compatta"
+    ],
+    "rule_explanation": "Nella circolazione in formazione compatta (file parallele), la velocità della corsia di destra può essere superiore a quella della corsia di sinistra."
+  }
+}

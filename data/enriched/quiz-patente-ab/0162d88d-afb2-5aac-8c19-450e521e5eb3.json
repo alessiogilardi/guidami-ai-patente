@@ -1,0 +1,27 @@
+{
+  "question_id": 4578,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24190",
+  "text": "La spia della cintura di sicurezza è di colore rosso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Spie di segnalazione acustica e visiva",
+      "Dispositivi di segnalazione acustica e visiva"
+    ],
+    "exact_keywords": [
+      "spia cintura di sicurezza",
+      "dispositivi di segnalazione",
+      "colore rosso",
+      "avvertimento"
+    ],
+    "vector_search_queries": [
+      "significato spie di segnalazione rossa",
+      "colore spie avvertimento cintura di sicurezza"
+    ],
+    "rule_explanation": "La spia della cintura di sicurezza, che segnala la mancata allacciatura, è di colore rosso e rientra tra i dispositivi di segnalazione visiva del veicolo."
+  }
+}

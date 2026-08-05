@@ -1,0 +1,32 @@
+{
+  "question_id": 4338,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21907",
+  "text": "Il segnale raffigurato preannuncia uno svincolo che consente l'inversione di marcia",
+  "correct_answer": false,
+  "image": "49403f634e5caa3742f951ca3f76507c.jpeg",
+  "image_description": "Preavviso di restringimento di carreggiata. Il segnale preannuncia un restringimento della carreggiata, con la corsia di destra che termina. I veicoli in entrambe le corsie devono confluire nella corsia di sinistra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo di forma rettangolare con sfondo giallo e bordo nero. Il segnale raffigura due frecce nere su sfondo giallo, una che indica la direzione rettilinea e un'altra che parte da sinistra e si dirige verso l'alto e verso destra, terminando in una linea rossa obliqua che indica la fine della corsia di destra. Le frecce nere rappresentano le corsie di marcia disponibili. La freccia più lunga e a sinistra indica la corsia che prosegue dritta, mentre la freccia più corta e a destra indica una corsia che termina. La linea rossa evidenzia il punto in cui la corsia di destra si interrompe.",
+    "name": "Preavviso di restringimento di carreggiata",
+    "description": "Il segnale preannuncia un restringimento della carreggiata, con la corsia di destra che termina. I veicoli in entrambe le corsie devono confluire nella corsia di sinistra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali temporanei e di cantiere",
+      "Segnali di preavviso di pericolo"
+    ],
+    "exact_keywords": [
+      "preavviso di restringimento di carreggiata",
+      "segnali complementari",
+      "segnali temporanei",
+      "cantiere"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di restringimento carreggiata",
+      "significato dei segnali temporanei di cantiere",
+      "preavviso di pericolo per restringimento carreggiata"
+    ],
+    "rule_explanation": "Il segnale di preavviso di restringimento carreggiata indica che una corsia di marcia sta per terminare e che i veicoli dovranno confluire in quelle rimanenti."
+  }
+}

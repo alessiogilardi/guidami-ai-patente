@@ -1,0 +1,29 @@
+{
+  "question_id": 4653,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24940",
+  "text": "In caso di incidente stradale, la prima cosa che deve fare il soccorritore è identificare l'infortunato, chiedendogli nome e cognome",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Soccorso stradale",
+      "Gestione emergenze sanitarie",
+      "Priorità di intervento in caso di incidente"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "soccorritore",
+      "primo soccorso",
+      "infortunato"
+    ],
+    "vector_search_queries": [
+      "priorità intervento primo soccorso incidente stradale",
+      "valutazione condizioni vitali infortunato soccorso stradale",
+      "procedure soccorritore in caso di incidente stradale"
+    ],
+    "rule_explanation": "In caso di incidente, la priorità del soccorritore è garantire la sicurezza dell'area e valutare le condizioni vitali dell'infortunato, non raccogliere dati anagrafici."
+  }
+}

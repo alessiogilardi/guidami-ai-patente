@@ -1,0 +1,34 @@
+{
+  "question_id": 4235,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20932",
+  "text": "Le strisce gialle in figura delimitano un'area riservata al carico e allo scarico di merci",
+  "correct_answer": false,
+  "image": "3c4dace65cc36e37309b263ce5ea5b1b.jpeg",
+  "image_description": "Strisce di delimitazione per aree riservate a persone invalide. Le strisce gialle diagonali delimitano un'area che non deve essere occupata dai veicoli, in quanto destinata a facilitare l'accesso e l'uscita dei veicoli per persone invalide.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di uno spazio di parcheggio con due auto. Sulla sinistra, adiacente a un marciapiede o area pedonale, è presente un'area delimitata da strisce gialle diagonali. Queste strisce sono posizionate in modo da indicare che l'area non deve essere occupata da veicoli. Le due auto sono parcheggiate in spazi adiacenti, uno dei quali è parzialmente coperto dalle strisce gialle. L'area con le strisce gialle è adiacente a un'apertura che potrebbe indicare un accesso o un'uscita.",
+    "name": "Strisce di delimitazione per aree riservate a persone invalide",
+    "description": "Le strisce gialle diagonali delimitano un'area che non deve essere occupata dai veicoli, in quanto destinata a facilitare l'accesso e l'uscita dei veicoli per persone invalide."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segnalazione di aree riservate",
+      "Divieto di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "strisce bianche e rosse",
+      "area riservata",
+      "persone invalide",
+      "segnaletica orizzontale",
+      "divieto di occupazione"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per aree riservate a persone invalide",
+      "significato strisce gialle diagonali su strada",
+      "aree riservate a invalido e divieto di occupazione"
+    ],
+    "rule_explanation": "Le strisce gialle diagonali delimitano aree riservate a persone invalide, non aree per carico/scarico merci. La loro occupazione è vietata."
+  }
+}

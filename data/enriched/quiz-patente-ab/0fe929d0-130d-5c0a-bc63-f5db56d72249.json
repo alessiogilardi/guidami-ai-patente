@@ -1,0 +1,28 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22327",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi all'uscita dei centri abitati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Comportamento ai passaggi a livello",
+      "Uscita dai centri abitati"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "fermarsi",
+      "uscita dai centri abitati",
+      "pericolo o intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità all'uscita dei centri abitati",
+      "condizioni che impongono la riduzione della velocità oltre i limiti massimi"
+    ],
+    "rule_explanation": "Non è obbligatorio ridurre la velocità o fermarsi all'uscita dei centri abitati, ma solo se le condizioni del traffico, della strada o del veicolo lo richiedono per evitare pericoli."
+  }
+}

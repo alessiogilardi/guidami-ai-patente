@@ -1,0 +1,27 @@
+{
+  "question_id": 4627,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24748",
+  "text": "In presenza di tratti di strada ghiacciati è opportuno procedere con il cambio in folle",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Sicurezza stradale su fondi ghiacciati"
+    ],
+    "exact_keywords": [
+      "strada ghiacciata",
+      "marcia innestata",
+      "freni",
+      "motore"
+    ],
+    "vector_search_queries": [
+      "guida su strada ghiacciata con marcia innestata",
+      "uso dei freni e del motore su fondi scivolosi"
+    ],
+    "rule_explanation": "Su strada ghiacciata è necessario procedere con marcia innestata per avere un maggiore controllo del veicolo, utilizzando i freni motore e i freni di servizio con estrema cautela."
+  }
+}

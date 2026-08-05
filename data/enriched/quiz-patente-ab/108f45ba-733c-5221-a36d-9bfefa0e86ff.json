@@ -1,0 +1,31 @@
+{
+  "question_id": 4085,
+  "topic": "Segnali di pericolo",
+  "number": "19284",
+  "text": "Il segnale raffigurato preannuncia una pista per la prova di tenuta degli pneumatici",
+  "correct_answer": false,
+  "image": "9557ea08889ddcf8ba229d0cbe9160eb.jpeg",
+  "image_description": "Segnale di pericolo - Sdrucciolevolezza. Il segnale preannuncia un tratto di strada dove la superficie può diventare particolarmente sdrucciolevole, a causa di ghiaccio, pioggia o altre cause. È necessario moderare la velocità e prestare attenzione a possibili variazioni dell'aderenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un'automobile stilizzata che sta sbandando su una superficie stradale resa tortuosa da delle curve. Le ruote posteriori dell'auto sono visibilmente inclinate, indicando una perdita di aderenza. Il pittogramma rappresenta chiaramente il rischio di sbandamento dovuto a una superficie stradale sdrucciolevole.",
+    "name": "Segnale di pericolo - Sdrucciolevolezza",
+    "description": "Il segnale preannuncia un tratto di strada dove la superficie può diventare particolarmente sdrucciolevole, a causa di ghiaccio, pioggia o altre cause. È necessario moderare la velocità e prestare attenzione a possibili variazioni dell'aderenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Sdrucciolevolezza della carreggiata"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "sdrucciolevolezza",
+      "aderenza",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "significato segnale pericolo sdrucciolevolezza",
+      "preavviso di tratto stradale sdrucciolevole"
+    ],
+    "rule_explanation": "Il segnale di pericolo di sdrucciolevolezza preannuncia un tratto di strada con scarsa aderenza, non una pista per la prova di tenuta degli pneumatici."
+  }
+}

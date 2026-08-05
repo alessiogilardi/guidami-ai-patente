@@ -1,0 +1,27 @@
+{
+  "question_id": 4397,
+  "topic": "Distanza di sicurezza",
+  "number": "22576",
+  "text": "La distanza di sicurezza deve essere mantenuta per evitare lo scontro laterale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Prevenzione incidenti"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "scontro laterale",
+      "manovre di emergenza",
+      "veicolo che precede"
+    ],
+    "vector_search_queries": [
+      "scopo della distanza di sicurezza tra veicoli",
+      "mantenimento della distanza di sicurezza per evitare tamponamenti"
+    ],
+    "rule_explanation": "La distanza di sicurezza serve a garantire la possibilità di compiere manovre di emergenza o di arresto senza incorrere in collisione con il veicolo che precede."
+  }
+}

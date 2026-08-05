@@ -1,0 +1,30 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31059",
+  "text": "La quantità di attenzione che si può prestare alla strada mentre si guida è illimitata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attenzione alla guida",
+      "Diligenza del conducente",
+      "Responsabilità per colpa"
+    ],
+    "exact_keywords": [
+      "attenzione",
+      "conducente",
+      "strada",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di prestare attenzione alla guida",
+      "condotta di guida prudente e attenta",
+      "responsabilità del conducente per disattenzione"
+    ],
+    "rule_explanation": "L'attenzione alla guida non è illimitata ma deve essere commisurata alle condizioni di traffico e della strada per evitare pericoli o intralci."
+  }
+}

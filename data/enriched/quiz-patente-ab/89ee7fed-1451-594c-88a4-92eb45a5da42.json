@@ -1,0 +1,27 @@
+{
+  "question_id": 4650,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24918",
+  "text": "Se un infortunato della strada ha avuto un trauma della gabbia toracica, bisogna metterlo in posizione distesa, con le gambe sollevate",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di trauma toracico",
+      "Posizionamento dell'infortunato"
+    ],
+    "exact_keywords": [
+      "trauma toracico",
+      "posizione distesa",
+      "gambe sollevate",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "posizione corretta infortunato trauma toracico primo soccorso",
+      "gestione emergenza trauma toracico"
+    ],
+    "rule_explanation": "In caso di trauma toracico, l'infortunato non va messo in posizione distesa con le gambe sollevate, ma in posizione semi-seduta o seduta per facilitare la respirazione."
+  }
+}

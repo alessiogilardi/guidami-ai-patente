@@ -1,0 +1,27 @@
+{
+  "question_id": 4605,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24463",
+  "text": "E' vietato utilizzare un autoveicolo sulle strade pubbliche quando non si ha con sé il certificato di proprietà",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente",
+      "Documenti di circolazione obbligatori"
+    ],
+    "exact_keywords": [
+      "certificato di proprietà",
+      "documenti di circolazione",
+      "obbligo di esibizione",
+      "funzionari o agenti"
+    ],
+    "vector_search_queries": [
+      "obbligo di avere con sé il certificato di proprietà per la circolazione stradale",
+      "documenti necessari per la circolazione di autoveicoli"
+    ],
+    "rule_explanation": "Non è obbligatorio avere con sé il certificato di proprietà per circolare, ma è necessario avere con sé i documenti di circolazione e la patente, da esibire su richiesta degli agenti."
+  }
+}

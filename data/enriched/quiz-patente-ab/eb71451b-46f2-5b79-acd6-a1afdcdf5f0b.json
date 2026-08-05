@@ -1,0 +1,28 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25398",
+  "text": "La rottura del servosterzo si manifesta con un'eccessiva facilità di manovra dello sterzo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida sicura",
+      "Manutenzione del veicolo",
+      "Sistemi di sicurezza del veicolo"
+    ],
+    "exact_keywords": [
+      "servosterzo",
+      "manovra dello sterzo",
+      "eccessiva resistenza",
+      "rottura"
+    ],
+    "vector_search_queries": [
+      "malfunzionamento servosterzo resistenza sterzo",
+      "conseguenze rottura servosterzo guida"
+    ],
+    "rule_explanation": "La rottura del servosterzo causa un'eccessiva resistenza alla manovra dello sterzo, non una facilità."
+  }
+}

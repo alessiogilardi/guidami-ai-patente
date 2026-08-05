@@ -1,0 +1,29 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25319",
+  "text": "Una frenatura poco efficiente o squilibrata può essere causata dal consumo eccessivo delle guarnizioni frenanti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza del sistema frenante",
+      "Manutenzione del veicolo",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "frenatura inefficiente",
+      "guarnizioni frenanti",
+      "consumo eccessivo",
+      "manutenzione del veicolo"
+    ],
+    "vector_search_queries": [
+      "cause di inefficienza del sistema frenante",
+      "manutenzione delle guarnizioni dei freni",
+      "impatto del consumo delle guarnizioni sull'efficacia della frenata"
+    ],
+    "rule_explanation": "Una frenatura poco efficiente o squilibrata può derivare dal consumo eccessivo delle guarnizioni dei freni, componente essenziale per la sicurezza del veicolo."
+  }
+}

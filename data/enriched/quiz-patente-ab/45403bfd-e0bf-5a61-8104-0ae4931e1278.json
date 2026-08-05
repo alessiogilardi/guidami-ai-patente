@@ -1,0 +1,31 @@
+{
+  "question_id": 4332,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21854",
+  "text": "Il segnale raffigurato obbliga a dare la precedenza agli addetti ai lavori",
+  "correct_answer": false,
+  "image": "7ac609bcedd29bef7a7c883f0abbcf0c.jpeg",
+  "image_description": "Segnale di lavori in corso. Il segnale preavvisa la presenza di lavori in corso sulla carreggiata o nelle immediate vicinanze. Può essere integrato da pannelli che ne specificano la durata o la natura.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e fondo giallo. Al centro del segnale è raffigurata la silhouette di una persona china che sta scavando con una pala, con un cumulo di terra accanto. Questo è il segnale di \"lavori in corso\". Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di lavori in corso",
+    "description": "Il segnale preavvisa la presenza di lavori in corso sulla carreggiata o nelle immediate vicinanze. Può essere integrato da pannelli che ne specificano la durata o la natura."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica temporanea di cantiere",
+      "Obblighi di comportamento nei cantieri stradali"
+    ],
+    "exact_keywords": [
+      "segnali temporanei",
+      "lavori in corso",
+      "precedenza",
+      "addetti ai lavori"
+    ],
+    "vector_search_queries": [
+      "obblighi di precedenza in presenza di segnali di lavori in corso",
+      "segnaletica di cantiere e regole di circolazione"
+    ],
+    "rule_explanation": "Il segnale di 'lavori in corso' non impone l'obbligo di dare la precedenza agli addetti, ma segnala la presenza di un cantiere e la potenziale presenza di ostacoli o pericoli."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4026,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18579",
+  "text": "Le macchine agricole possono circolare su strada per il proprio trasferimento se immatricolate",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione di macchine agricole",
+      "Immatricolazione e circolazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "macchine agricole",
+      "circolare su strada",
+      "immatricolazione",
+      "trasferimento su strada"
+    ],
+    "vector_search_queries": [
+      "circolazione stradale macchine agricole immatricolate",
+      "condizioni per il trasferimento su strada di macchine agricole"
+    ],
+    "rule_explanation": "Le macchine agricole, se immatricolate, possono circolare sulle strade per il loro trasferimento, nel rispetto delle norme di circolazione."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24624",
+  "text": "La sospensione della patente è disposta quando il conducente rifiuta di sottoporsi agli accertamenti sul suo eventuale stato di ebbrezza alcolica",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rifiuto di sottoporsi ad accertamenti sanitari",
+      "Sospensione della patente di guida"
+    ],
+    "exact_keywords": [
+      "sospensione patente",
+      "accertamenti sanitari",
+      "stato di ebbrezza",
+      "rifiuto"
+    ],
+    "vector_search_queries": [
+      "conseguenze del rifiuto di accertamenti sullo stato di ebbrezza alcolica",
+      "sospensione patente per rifiuto test alcolimetrico"
+    ],
+    "rule_explanation": "Il rifiuto del conducente di sottoporsi agli accertamenti per l'eventuale stato di ebbrezza alcolica comporta la sospensione della patente di guida."
+  }
+}

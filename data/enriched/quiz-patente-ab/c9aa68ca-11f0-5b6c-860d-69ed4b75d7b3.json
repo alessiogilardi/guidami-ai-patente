@@ -1,0 +1,27 @@
+{
+  "question_id": 4502,
+  "topic": "Norme sul sorpasso",
+  "number": "23567",
+  "text": "Non si può sorpassare in corrispondenza dell'uscita di un pubblico parcheggio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso in prossimità di accessi a proprietà private",
+      "Regole di circolazione per il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "uscita di un pubblico parcheggio",
+      "divieto di sorpasso",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in prossimità di uscite di parcheggi",
+      "sorpasso vietato in corrispondenza di accessi a proprietà private"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in corrispondenza di ogni intersezione, anche se non segnalata, e in prossimità delle uscite di parcheggi o di aree private che immettono sulla strada."
+  }
+}

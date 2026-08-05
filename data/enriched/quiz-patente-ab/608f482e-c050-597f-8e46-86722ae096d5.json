@@ -1,0 +1,28 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23027",
+  "text": "Lo specchio retrovisore laterale sinistro falsa la percezione della distanza e della velocità dei veicoli sopraggiungenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Utilizzo degli specchi retrovisori",
+      "Percezione della distanza e velocità",
+      "Sicurezza nella guida"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore laterale sinistro",
+      "percezione della distanza",
+      "velocità dei veicoli",
+      "veicoli sopraggiungenti"
+    ],
+    "vector_search_queries": [
+      "influenza specchi retrovisori sulla percezione di distanza e velocità",
+      "affidabilità specchi retrovisori per valutazione veicoli sopraggiungenti"
+    ],
+    "rule_explanation": "Lo specchio retrovisore laterale sinistro, come tutti gli specchi retrovisori, può alterare la percezione della distanza e della velocità dei veicoli in avvicinamento, richiedendo attenzione da parte del conducente."
+  }
+}

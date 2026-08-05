@@ -1,0 +1,28 @@
+{
+  "question_id": 4393,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22521",
+  "text": "Passare molto vicino ad un'auto parcheggiata, a bordo della quale si trovano ancora persone, può essere pericoloso, per la possibile apertura imprudente delle portiere",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di vicinanza ai veicoli fermi",
+      "Comportamento prudente nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "veicolo fermo",
+      "apertura delle portiere",
+      "pericolo per la circolazione",
+      "distanza di sicurezza"
+    ],
+    "vector_search_queries": [
+      "distanza di sicurezza da veicoli parcheggiati con persone a bordo",
+      "rischio apertura portiere auto parcheggiata",
+      "comportamento di avvicinamento a veicoli fermi in sosta"
+    ],
+    "rule_explanation": "È necessario mantenere una distanza di sicurezza dai veicoli fermi, specialmente se occupati, per prevenire incidenti dovuti all'apertura improvvisa delle portiere."
+  }
+}

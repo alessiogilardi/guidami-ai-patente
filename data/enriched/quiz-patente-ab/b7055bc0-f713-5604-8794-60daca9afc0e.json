@@ -1,0 +1,28 @@
+{
+  "question_id": 4653,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24939",
+  "text": "In caso di incidente stradale, bisogna aspettare solo l'arrivo dei soccorsi, senza fare nulla",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi in caso di incidente stradale",
+      "Soccorso stradale e primo soccorso"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "soccorsi sanitari",
+      "primo soccorso",
+      "altruismo"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in caso di incidente stradale con feriti",
+      "dovere di prestare primo soccorso dopo un sinistro",
+      "condotta da tenere in attesa dei soccorsi sanitari dopo un incidente"
+    ],
+    "rule_explanation": "In caso di incidente, non ci si deve limitare ad attendere i soccorsi, ma si deve prestare soccorso alle persone ferite, se possibile, e salvaguardare la propria sicurezza e quella degli altri."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4414,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22718",
+  "text": "Quando, giunti in prossimità di un incrocio, ci accorgiamo di aver sbagliato la corsia di preselezione non ci dobbiamo arrestare bruscamente, per evitare tamponamenti e confusione nella circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione della corsia di preselezione",
+      "Comportamento in prossimità degli incroci",
+      "Prevenzione dei tamponamenti"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "corsia di preselezione",
+      "arrestarsi bruscamente",
+      "tamponamento",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "comportamento corretto in caso di errore nella corsia di preselezione all'incrocio",
+      "evitare arresto improvviso in prossimità di incrocio per errore di corsia"
+    ],
+    "rule_explanation": "In prossimità di un incrocio, se si sbaglia la corsia di preselezione, non ci si deve arrestare bruscamente per evitare tamponamenti e garantire la fluidità della circolazione."
+  }
+}

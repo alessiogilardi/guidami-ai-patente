@@ -1,0 +1,28 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22318",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi quando i pedoni, che sono sul percorso, tardano a scansarsi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Regola di prudenza verso i pedoni"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "pedoni",
+      "fermarsi",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità in presenza di pedoni sul percorso",
+      "condotta del conducente verso i pedoni in strada"
+    ],
+    "rule_explanation": "Il conducente deve moderare la velocità e, se necessario, fermarsi per non costituire pericolo o intralcio ai pedoni che si trovino sul percorso."
+  }
+}

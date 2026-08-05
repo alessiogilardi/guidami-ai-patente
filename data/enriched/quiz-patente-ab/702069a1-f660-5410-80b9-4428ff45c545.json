@@ -1,0 +1,28 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31030",
+  "text": "La distrazione durante la guida è una delle principali cause di incidenti stradali",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distrazione alla guida",
+      "Causa di incidenti stradali",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "distrazione",
+      "conducente",
+      "incidenti stradali",
+      "causa"
+    ],
+    "vector_search_queries": [
+      "cause principali di incidenti stradali per distrazione del conducente",
+      "impatto della disattenzione sulla sicurezza stradale"
+    ],
+    "rule_explanation": "La distrazione alla guida, intesa come disattenzione o mancata concentrazione sul traffico, è riconosciuta come una delle cause primarie di sinistri stradali."
+  }
+}

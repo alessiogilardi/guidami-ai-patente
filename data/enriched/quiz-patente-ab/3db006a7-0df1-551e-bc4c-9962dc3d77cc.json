@@ -1,0 +1,28 @@
+{
+  "question_id": 4552,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23969",
+  "text": "La velocità di avvicinamento di un'autovettura, soprattutto su strade extraurbane, è facilmente valutabile a distanza da parte di un ciclista che procede lentamente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Valutazione della velocità di avvicinamento",
+      "Percezione del rischio per i ciclisti",
+      "Distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "velocità di avvicinamento",
+      "strade extraurbane",
+      "ciclista",
+      "autovettura"
+    ],
+    "vector_search_queries": [
+      "difficoltà di valutazione della velocità di un'autovettura da parte di un ciclista su strade extraurbane",
+      "percezione della velocità dei veicoli a motore da parte dei ciclisti"
+    ],
+    "rule_explanation": "La velocità di un'autovettura è difficile da valutare per un ciclista, specialmente su strade extraurbane, a causa della differenza di velocità e delle condizioni di visibilità."
+  }
+}

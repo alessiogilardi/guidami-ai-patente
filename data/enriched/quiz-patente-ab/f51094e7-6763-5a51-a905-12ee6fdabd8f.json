@@ -1,0 +1,27 @@
+{
+  "question_id": 4518,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23711",
+  "text": "In caso di sosta ove non esista marciapiede rialzato, il conducente deve lasciare uno spazio non inferiore ad un metro per il transito dei pedoni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta dei veicoli",
+      "Spazi per il transito pedonale"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "transito pedonale",
+      "spazio minimo",
+      "marciapiede rialzato"
+    ],
+    "vector_search_queries": [
+      "spazio minimo per pedoni durante la sosta in assenza di marciapiede",
+      "requisiti di sosta per garantire il transito pedonale"
+    ],
+    "rule_explanation": "In assenza di marciapiede rialzato, la sosta deve consentire uno spazio minimo di un metro per il transito dei pedoni."
+  }
+}

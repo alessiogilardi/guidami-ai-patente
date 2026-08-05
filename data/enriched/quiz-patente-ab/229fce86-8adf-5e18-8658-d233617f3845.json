@@ -1,0 +1,28 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24414",
+  "text": "L'uso del casco è obbligatorio su qualunque quadriciclo a motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Utilizzo dei quadricicli a motore"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "quadriciclo a motore",
+      "obbligatorio",
+      "conducente",
+      "passeggero"
+    ],
+    "vector_search_queries": [
+      "obbligo casco quadriciclo a motore non omologato",
+      "normativa uso casco su quadricicli a motore"
+    ],
+    "rule_explanation": "L'uso del casco protettivo è obbligatorio per conducente e passeggero solo sui quadricicli a motore non omologati secondo le normative vigenti prima del 1995."
+  }
+}

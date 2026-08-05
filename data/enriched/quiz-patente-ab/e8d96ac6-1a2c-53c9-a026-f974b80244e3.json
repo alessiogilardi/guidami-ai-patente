@@ -1,0 +1,28 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22285",
+  "text": "Il conducente deve regolare la velocità in relazione alla distanza del luogo da raggiungere",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di guida",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "intralcio alla circolazione",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alle condizioni di marcia",
+      "moderare la velocità per evitare pericolo o intralcio"
+    ],
+    "rule_explanation": "La velocità va regolata in base alle condizioni di marcia, visibilità, traffico e caratteristiche del veicolo, non alla distanza da raggiungere."
+  }
+}

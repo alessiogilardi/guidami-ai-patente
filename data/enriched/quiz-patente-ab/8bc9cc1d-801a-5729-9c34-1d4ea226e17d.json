@@ -1,0 +1,28 @@
+{
+  "question_id": 4014,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18470",
+  "text": "La carreggiata comprende le piazzole di sosta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di carreggiata",
+      "Elementi costitutivi della strada",
+      "Piazzole di sosta"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "piazzola di sosta",
+      "sede stradale",
+      "infrastruttura stradale"
+    ],
+    "vector_search_queries": [
+      "definizione di carreggiata e sue parti escluse",
+      "differenza tra carreggiata e piazzola di sosta"
+    ],
+    "rule_explanation": "La carreggiata è la parte della strada destinata ai veicoli, escludendo marciapiedi, banchine e piazzole di sosta."
+  }
+}

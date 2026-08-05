@@ -1,0 +1,28 @@
+{
+  "question_id": 4671,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25070",
+  "text": "Per consumare meno carburante conviene scegliere, per quanto possibile, strade pianeggianti e più scorrevoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ottimizzazione dei consumi di carburante",
+      "Guida ecologica e sostenibile"
+    ],
+    "exact_keywords": [
+      "consumo di carburante",
+      "strade pianeggianti",
+      "strade scorrevoli",
+      "efficienza energetica"
+    ],
+    "vector_search_queries": [
+      "strategie per ridurre il consumo di carburante",
+      "impatto del tipo di strada sui consumi auto",
+      "guida ecologica per minor consumo di carburante"
+    ],
+    "rule_explanation": "La scelta di percorsi pianeggianti e scorrevoli favorisce una guida più fluida, riducendo il consumo di carburante e le emissioni inquinanti."
+  }
+}

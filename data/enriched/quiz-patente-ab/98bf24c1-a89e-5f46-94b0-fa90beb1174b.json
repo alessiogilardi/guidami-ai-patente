@@ -1,0 +1,32 @@
+{
+  "question_id": 4072,
+  "topic": "Segnali di pericolo",
+  "number": "19122",
+  "text": "Il segnale raffigurato preannuncia una linea tranviaria che riduce lo spazio utile per la circolazione dei veicoli",
+  "correct_answer": true,
+  "image": "bb981f286218063a29cc9f7bf6f71389.jpeg",
+  "image_description": "Segnale di pericolo - Passaggio di tram. Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato il pittogramma di un tram. Questo segnale indica la presenza di una linea tranviaria che interseca la carreggiata.",
+    "name": "Segnale di pericolo - Passaggio di tram",
+    "description": "Il segnale preannuncia una linea tranviaria che incrocia la carreggiata. Preavvisa la possibile presenza di binari stradali e la necessità di prestare attenzione alla circolazione dei tram."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di intersezione con linea tranviaria"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "linea tranviaria",
+      "spazio utile",
+      "circolazione dei veicoli"
+    ],
+    "vector_search_queries": [
+      "preavviso di pericolo per linea tranviaria",
+      "segnali stradali di pericolo per tram",
+      "riduzione dello spazio utile per circolazione a causa di binari tramviari"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante una linea tranviaria preannuncia la presenza di binari che possono ridurre lo spazio utile per la circolazione, richiedendo prudenza."
+  }
+}

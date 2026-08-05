@@ -1,0 +1,27 @@
+{
+  "question_id": 4715,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25454",
+  "text": "Sui motocicli raffreddati ad aria, il livello del liquido di raffreddamento può essere controllato da un'apposita finestrella posta tra le alettature del motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema di raffreddamento dei motocicli",
+      "Manutenzione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "raffreddati ad aria",
+      "liquido di raffreddamento",
+      "alettature del motore"
+    ],
+    "vector_search_queries": [
+      "controllo livello liquido raffreddamento motocicli raffreddati ad aria",
+      "sistema raffreddamento motocicli alettature motore"
+    ],
+    "rule_explanation": "I motocicli raffreddati ad aria non utilizzano liquido di raffreddamento; il controllo del livello è pertinente solo per i motori raffreddati a liquido."
+  }
+}

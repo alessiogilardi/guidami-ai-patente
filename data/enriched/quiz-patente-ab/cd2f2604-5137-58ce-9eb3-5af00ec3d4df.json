@@ -1,0 +1,28 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24406",
+  "text": "La visiera del casco deve garantire la perfetta visione con qualunque condizione di luce o illuminazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità del conducente",
+      "Dispositivi di protezione individuale",
+      "Casco protettivo"
+    ],
+    "exact_keywords": [
+      "visiera",
+      "casco",
+      "perfetta visione",
+      "condizioni di luce"
+    ],
+    "vector_search_queries": [
+      "requisiti visiera casco motociclo",
+      "obblighi visiera per visibilità conducente"
+    ],
+    "rule_explanation": "La visiera del casco deve assicurare una visione chiara e senza impedimenti in ogni condizione di luce, garantendo la sicurezza del conducente."
+  }
+}

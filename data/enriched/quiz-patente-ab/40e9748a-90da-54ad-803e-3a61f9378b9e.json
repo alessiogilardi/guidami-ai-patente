@@ -1,0 +1,28 @@
+{
+  "question_id": 4649,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24909",
+  "text": "Se un ferito della strada è in stato di incoscienza, bisogna controllare spesso le sue condizioni di salute fino all'arrivo dell'ambulanza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Gestione del ferito incosciente",
+      "Assistenza sanitaria d'urgenza"
+    ],
+    "exact_keywords": [
+      "ferito",
+      "stato di incoscienza",
+      "condizioni di salute",
+      "arrivo dei soccorsi"
+    ],
+    "vector_search_queries": [
+      "monitoraggio condizioni ferito incosciente in attesa ambulanza",
+      "procedure primo soccorso per persona priva di sensi su strada"
+    ],
+    "rule_explanation": "In caso di incoscienza del ferito, è fondamentale monitorarne costantemente le condizioni vitali in attesa dell'intervento qualificato del personale sanitario."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4567,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24107",
+  "text": "Per i complessi di veicoli con rimorchi fino a 3,5 tonnellate di massa, non vige l'obbligo di apporre nella parte posteriore i contrassegni indicanti i limiti massimi di velocità specifici loro imposti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi di segnalazione per veicoli speciali",
+      "Limiti di velocità per complessi di veicoli"
+    ],
+    "exact_keywords": [
+      "complessi di veicoli",
+      "rimorchi",
+      "limiti massimi di velocità",
+      "contrassegni di velocità"
+    ],
+    "vector_search_queries": [
+      "obbligo di apporre contrassegni di velocità per complessi di veicoli con rimorchi",
+      "segnalazione limiti velocità posteriori per veicoli trainanti rimorchi"
+    ],
+    "rule_explanation": "I complessi di veicoli, inclusi quelli con rimorchi fino a 3,5 tonnellate, devono esporre i contrassegni posteriori con i limiti di velocità specifici imposti."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4412,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22696",
+  "text": "Il carico sugli autoveicoli non deve superare la portata indicata nella carta di circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Portata del veicolo",
+      "Carico massimo ammissibile",
+      "Documentazione del veicolo"
+    ],
+    "exact_keywords": [
+      "carico",
+      "autoveicoli",
+      "portata",
+      "carta di circolazione"
+    ],
+    "vector_search_queries": [
+      "limite di carico per autoveicoli basato sulla carta di circolazione",
+      "portata massima consentita per il trasporto di carichi su autoveicoli"
+    ],
+    "rule_explanation": "Il carico trasportato da un autoveicolo non deve eccedere la sua massa a pieno carico ammessa, specificata nella carta di circolazione."
+  }
+}

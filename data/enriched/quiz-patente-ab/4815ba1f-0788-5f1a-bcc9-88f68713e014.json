@@ -1,0 +1,31 @@
+{
+  "question_id": 4265,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21217",
+  "text": "Chi guida autoveicoli o motocicli deve mostrare, a richiesta degli agenti, l'attestazione di pagamento della tassa di possesso (bollo)",
+  "correct_answer": false,
+  "image": "b0971c790847c0127280b6aa2f1fe29f.jpeg",
+  "image_description": "Pannelli integrativi di distanza. I pannelli integrativi raffigurati indicano, rispettivamente, una distanza di 320 metri (pannello A) e 3,8 chilometri (pannello B). Questi pannelli vengono solitamente posti sotto altri segnali (di pericolo, di prescrizione, di indicazione) per fornire informazioni aggiuntive sulla distanza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli rettangolari, uno sopra l'altro, entrambi di colore bianco con bordo nero. Il pannello superiore (etichettato A) riporta la dicitura \"320 m\" in nero. Il pannello inferiore (etichettato B) riporta la dicitura \"3,8 km\" in nero. Entrambi sono pannelli integrativi che specificano una distanza.",
+    "name": "Pannelli integrativi di distanza",
+    "description": "I pannelli integrativi raffigurati indicano, rispettivamente, una distanza di 320 metri (pannello A) e 3,8 chilometri (pannello B). Questi pannelli vengono solitamente posti sotto altri segnali (di pericolo, di prescrizione, di indicazione) per fornire informazioni aggiuntive sulla distanza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente in caso di controllo da parte delle forze dell'ordine",
+      "Documenti di circolazione e possesso del veicolo"
+    ],
+    "exact_keywords": [
+      "attestazione di pagamento",
+      "tassa di possesso",
+      "bollo auto",
+      "agenti accertatori"
+    ],
+    "vector_search_queries": [
+      "documenti da esibire a richiesta degli agenti",
+      "obbligo esibizione bollo auto"
+    ],
+    "rule_explanation": "Non è previsto l'obbligo di esibire agli agenti l'attestazione di pagamento della tassa di possesso (bollo) durante un controllo su strada."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23636",
+  "text": "Prima di iniziare a guidare un autoveicolo, bisogna individuare i comandi (leve e pulsanti) necessari per la guida e comprenderne bene il funzionamento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comandi del veicolo",
+      "Guida sicura",
+      "Preparazione alla guida"
+    ],
+    "exact_keywords": [
+      "comandi",
+      "funzionamento",
+      "autoveicolo",
+      "guida"
+    ],
+    "vector_search_queries": [
+      "conoscenza comandi veicolo prima di iniziare a guidare",
+      "comprensione funzionamento leve e pulsanti autoveicolo"
+    ],
+    "rule_explanation": "Prima di mettersi alla guida, è fondamentale conoscere e comprendere il funzionamento di tutti i comandi del veicolo per garantire una condotta sicura."
+  }
+}

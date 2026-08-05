@@ -1,0 +1,30 @@
+{
+  "question_id": 4700,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25269",
+  "text": "L'uso prolungato e ripetuto dei freni, provocandone il surriscaldamento, comporta la diminuzione dell'efficienza frenante",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza del sistema frenante",
+      "Manutenzione del veicolo",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "freni",
+      "surriscaldamento",
+      "efficienza frenante",
+      "uso prolungato",
+      "manutenzione"
+    ],
+    "vector_search_queries": [
+      "effetto del surriscaldamento sull'efficienza dei freni",
+      "conseguenze dell'uso prolungato dei freni sulla capacità di arresto",
+      "manutenzione del sistema frenante e sicurezza stradale"
+    ],
+    "rule_explanation": "L'uso intensivo e prolungato dei freni può causarne il surriscaldamento, riducendo temporaneamente la loro efficacia e richiedendo maggiore attenzione nella guida."
+  }
+}

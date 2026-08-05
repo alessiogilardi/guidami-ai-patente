@@ -1,0 +1,27 @@
+{
+  "question_id": 4685,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25161",
+  "text": "E' vietato gettare oggetti e rifiuti dai veicoli in movimento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di abbandono di rifiuti dal veicolo",
+      "Comportamento alla guida e rispetto dell'ambiente"
+    ],
+    "exact_keywords": [
+      "rifiuti",
+      "veicolo in movimento",
+      "divieto di gettare",
+      "inquinamento ambientale"
+    ],
+    "vector_search_queries": [
+      "divieto di abbandono rifiuti dal veicolo in movimento",
+      "normativa su oggetti e rifiuti gettati dai veicoli in circolazione"
+    ],
+    "rule_explanation": "È vietato gettare dai veicoli in movimento qualsiasi oggetto o rifiuto al fine di preservare l'ambiente e prevenire pericoli per la circolazione."
+  }
+}

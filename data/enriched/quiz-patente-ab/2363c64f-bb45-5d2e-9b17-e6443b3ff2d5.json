@@ -1,0 +1,33 @@
+{
+  "question_id": 4364,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22173",
+  "text": "Il pannello integrativo raffigurato si trova prima di un ponte, per vietare il transito alle macchine operatrici",
+  "correct_answer": false,
+  "image": "42349cc7d2b70fecebc00008b2c4441e.jpeg",
+  "image_description": "Pannello integrativo di pericolo - Macchine operatrici. Il pannello integrativo indica la possibile presenza di macchine operatrici in movimento sulla carreggiata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare di colore bianco con bordo nero. Al suo interno è raffigurato, in nero, il pittogramma di una macchina operatrice cingolata, simile a un escavatore o una pala meccanica, con un conducente seduto al posto di guida e la benna estesa. Questo pannello è un'integrazione a segnali di pericolo o prescrizione, e in questo caso specifico informa sulla potenziale presenza di tali mezzi in movimento sulla strada.",
+    "name": "Pannello integrativo di pericolo - Macchine operatrici",
+    "description": "Il pannello integrativo indica la possibile presenza di macchine operatrici in movimento sulla carreggiata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Pannelli integrativi",
+      "Prescrizioni e divieti specifici"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "macchine operatrici",
+      "pericolo",
+      "transito vietato"
+    ],
+    "vector_search_queries": [
+      "funzione pannello integrativo macchine operatrici",
+      "differenza tra pannello di pericolo e pannello di divieto specifico",
+      "segnalazione presenza macchine operatrici su strada"
+    ],
+    "rule_explanation": "Il pannello integrativo con il simbolo delle macchine operatrici indica la possibile presenza di tali macchine, non un divieto di transito. Il divieto di transito è segnalato da altri segnali."
+  }
+}

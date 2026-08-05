@@ -1,0 +1,27 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24813",
+  "text": "Le rotaie del tram sono un elemento stradale che può essere pericoloso per la circolazione dei veicoli a due ruote",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo derivante da elementi stradali specifici",
+      "Sicurezza nella circolazione dei veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "rotaie del tram",
+      "pericolo",
+      "veicoli a due ruote",
+      "circolazione stradale"
+    ],
+    "vector_search_queries": [
+      "pericolosità delle rotaie del tram per motocicli",
+      "rischio di caduta per veicoli a due ruote su rotaie tramviarie"
+    ],
+    "rule_explanation": "Le rotaie del tram, specialmente se bagnate o in determinate angolazioni, rappresentano un pericolo per i veicoli a due ruote a causa del rischio di sbandamento."
+  }
+}

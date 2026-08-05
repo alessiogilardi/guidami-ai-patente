@@ -1,0 +1,28 @@
+{
+  "question_id": 4444,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22993",
+  "text": "Il conducente che intende fermarsi sul margine destro della carreggiata deve segnalare con sufficiente anticipo la sua intenzione di effettuare tale manovra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione manovre",
+      "Obblighi del conducente",
+      "Posizionamento del veicolo"
+    ],
+    "exact_keywords": [
+      "fermarsul margine destro",
+      "segnalare con sufficiente anticipo",
+      "manovra",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalare la fermata sul margine destro della carreggiata",
+      "preavviso manovra di arresto sul lato destro della strada"
+    ],
+    "rule_explanation": "Il conducente che intende fermarsi sul margine destro della carreggiata ha l'obbligo di segnalare con congruo anticipo la propria intenzione."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4305,
+  "topic": "Segnali di indicazione",
+  "number": "21600",
+  "text": "Il segnale raffigurato indica la presenza di un apparecchio per chiamare il soccorso stradale",
+  "correct_answer": true,
+  "image": "917fd8b243dd1ff3cbbf6bd08550a3da.jpeg",
+  "image_description": "Segnale di SOS (soccorso stradale). Il segnale indica la presenza di un dispositivo di chiamata per emergenze stradali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con angoli arrotondati, su sfondo rosso. Al centro del segnale, in bianco, è riportata la scritta \"SOS\". Questo segnale appartiene alla categoria dei segnali di indicazione e segnala la presenza di un mezzo di comunicazione per richiedere assistenza in caso di emergenza stradale.",
+    "name": "Segnale di SOS (soccorso stradale)",
+    "description": "Il segnale indica la presenza di un dispositivo di chiamata per emergenze stradali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Servizi di equipaggiamento",
+      "Chiamata di emergenza"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "apparecchio di chiamata",
+      "soccorso stradale",
+      "SOS"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione per servizi di equipaggiamento",
+      "segnale SOS per chiamata di soccorso stradale"
+    ],
+    "rule_explanation": "Il segnale di SOS indica la presenza di un apparecchio di chiamata per richiedere il soccorso stradale."
+  }
+}

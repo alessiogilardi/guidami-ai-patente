@@ -1,0 +1,29 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22500",
+  "text": "Attraversare un passaggio a livello con manovra azzardata per guadagnare tempo, può essere un pericolo per molti individui, oltre che per il conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo per la circolazione",
+      "Comportamento ai passaggi a livello",
+      "Manovre azzardate"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "manovra azzardata",
+      "pericolo",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "pericolo circolazione passaggio a livello",
+      "manovra azzardata al passaggio a livello",
+      "condotta pericolosa ai passaggi a livello"
+    ],
+    "rule_explanation": "Attraversare un passaggio a livello con manovre azzardate per risparmiare tempo costituisce un grave pericolo per sé e per gli altri utenti della strada."
+  }
+}

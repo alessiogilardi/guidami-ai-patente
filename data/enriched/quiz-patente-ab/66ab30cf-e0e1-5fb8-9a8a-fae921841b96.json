@@ -1,0 +1,28 @@
+{
+  "question_id": 4697,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25240",
+  "text": "Lo spessore minimo del battistrada degli pneumatici di un autoveicolo deve essere di 1,6 millimetri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Spessore minimo del battistrada",
+      "Pneumatici legali",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "spessore minimo battistrada",
+      "pneumatici",
+      "autoveicolo",
+      "1,6 millimetri"
+    ],
+    "vector_search_queries": [
+      "spessore minimo battistrada pneumatici autoveicolo",
+      "requisiti pneumatici veicoli a motore"
+    ],
+    "rule_explanation": "Lo spessore minimo del battistrada degli pneumatici di un autoveicolo deve essere di 1,6 millimetri per garantire l'aderenza e la sicurezza su strada."
+  }
+}

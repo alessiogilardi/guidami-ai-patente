@@ -1,0 +1,28 @@
+{
+  "question_id": 4545,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23911",
+  "text": "Sui veicoli è consentito il trasporto di un animale domestico, comunque in condizione da non costituire impedimento o pericolo per la guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Trasporto di animali domestici",
+      "Sicurezza alla guida",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "animale domestico",
+      "impedimento alla guida",
+      "pericolo per la guida",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "trasporto animali domestici su veicoli",
+      "condizioni di trasporto animali per non creare pericolo alla guida"
+    ],
+    "rule_explanation": "È consentito trasportare animali domestici sui veicoli, purché siano sistemati in modo da non ostacolare o mettere in pericolo la guida del conducente."
+  }
+}

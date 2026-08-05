@@ -1,0 +1,29 @@
+{
+  "question_id": 4406,
+  "topic": "Distanza di sicurezza",
+  "number": "22648",
+  "text": "La distanza di sicurezza dipende dalla potenza del veicolo che precede",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regolazione della velocità",
+      "Condizioni di marcia"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "velocità",
+      "veicolo che precede",
+      "condizioni della strada",
+      "condizioni atmosferiche"
+    ],
+    "vector_search_queries": [
+      "fattori che determinano la distanza di sicurezza tra veicoli",
+      "obbligo di mantenere una distanza di sicurezza adeguata per evitare collisioni"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare collisioni, tenendo conto della velocità, delle condizioni della strada, atmosferiche e del traffico, non della potenza del veicolo che precede."
+  }
+}

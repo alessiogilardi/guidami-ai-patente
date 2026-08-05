@@ -1,0 +1,30 @@
+{
+  "question_id": 4704,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25301",
+  "text": "Non bisogna mai invertire la posizione degli pneumatici, per permettere loro di adattarsi meglio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione pneumatici",
+      "Adattamento pneumatici",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "pneumatici",
+      "inversione",
+      "usura",
+      "aderenza",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "inversione pneumatici per usura uniforme",
+      "manutenzione pneumatici per migliorare aderenza e tenuta di strada",
+      "rotazione pneumatici per ottimizzare durata e sicurezza"
+    ],
+    "rule_explanation": "L'inversione degli pneumatici è una pratica di manutenzione consigliata per uniformare l'usura e ottimizzare l'aderenza, migliorando la tenuta di strada."
+  }
+}

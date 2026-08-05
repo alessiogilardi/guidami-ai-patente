@@ -1,0 +1,27 @@
+{
+  "question_id": 4685,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25164",
+  "text": "Su tutte le strade è vietato esercitarsi alla guida",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Esercitazione alla guida",
+      "Strade soggette a divieto di esercitazione"
+    ],
+    "exact_keywords": [
+      "esercitarsi alla guida",
+      "strade soggette a divieto",
+      "art. 121 CdS",
+      "regolamento di attuazione"
+    ],
+    "vector_search_queries": [
+      "divieto di esercitazione alla guida su determinate strade",
+      "condizioni per l'esercitazione alla guida su strada pubblica"
+    ],
+    "rule_explanation": "L'esercitazione alla guida è vietata solo su specifiche strade indicate dal regolamento, non su tutte le strade."
+  }
+}

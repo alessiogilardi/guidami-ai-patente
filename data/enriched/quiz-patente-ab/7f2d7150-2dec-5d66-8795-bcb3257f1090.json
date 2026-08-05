@@ -1,0 +1,31 @@
+{
+  "question_id": 4074,
+  "topic": "Segnali di pericolo",
+  "number": "19145",
+  "text": "Il segnale raffigurato preannuncia un attraversamento pedonale",
+  "correct_answer": true,
+  "image": "d28d2b64a1ad2efdcae7f4db0146e644.jpeg",
+  "image_description": "Segnale di pericolo: Attraversamento pedonale. Il segnale preannuncia un attraversamento pedonale. I conducenti devono prestare attenzione e moderare la velocità, essendo pronti a fermarsi se necessario per consentire l'attraversamento dei pedoni. È vietato sorpassare veicoli che si siano fermati per far attraversare i pedoni. Non è consentita la sosta o fermata sopra le strisce pedonali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata una figura stilizzata di un pedone che attraversa una carreggiata, rappresentata da quattro strisce nere parallele. Questo è il segnale di \"Attraversamento pedonale\".",
+    "name": "Segnale di pericolo: Attraversamento pedonale",
+    "description": "Il segnale preannuncia un attraversamento pedonale. I conducenti devono prestare attenzione e moderare la velocità, essendo pronti a fermarsi se necessario per consentire l'attraversamento dei pedoni. È vietato sorpassare veicoli che si siano fermati per far attraversare i pedoni. Non è consentita la sosta o fermata sopra le strisce pedonali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Attraversamento pedonale"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento pedonale",
+      "preavviso",
+      "conduttori"
+    ],
+    "vector_search_queries": [
+      "preavviso di attraversamento pedonale con segnale di pericolo",
+      "obblighi dei conducenti in presenza di segnale di attraversamento pedonale"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante l'attraversamento pedonale preannuncia la presenza di strisce pedonali, imponendo ai conducenti di moderare la velocità e prestare attenzione."
+  }
+}

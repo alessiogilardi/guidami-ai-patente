@@ -1,0 +1,27 @@
+{
+  "question_id": 4666,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25039",
+  "text": "Le polizze assicurative contro il rischio d'incendio del veicolo coprono, normalmente, solo i danni causati da incendi dolosi (intenzionali) e non quelli provocati da incendi accidentali (casuali)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Copertura assicurativa contro incendi",
+      "Natura dei sinistri coperti da polizza"
+    ],
+    "exact_keywords": [
+      "polizza assicurativa",
+      "rischio d'incendio",
+      "danni dolosi",
+      "danni accidentali"
+    ],
+    "vector_search_queries": [
+      "copertura assicurativa incendio veicolo danni dolosi e accidentali",
+      "differenza tra incendi dolosi e accidentali nelle polizze auto"
+    ],
+    "rule_explanation": "Le polizze contro il rischio d'incendio del veicolo coprono sia i danni da incendi dolosi che quelli da incendi accidentali, salvo specifiche esclusioni contrattuali."
+  }
+}

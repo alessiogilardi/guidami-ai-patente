@@ -1,0 +1,29 @@
+{
+  "question_id": 4681,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25139",
+  "text": "Per risparmiare carburante e salvaguardare l'ambiente dall'inquinamento atmosferico, è consigliabile azionare il climatizzatore il meno possibile e soltanto quando serve effettivamente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Risparmio energetico",
+      "Tutela ambientale",
+      "Inquinamento atmosferico"
+    ],
+    "exact_keywords": [
+      "climatizzatore",
+      "risparmio di carburante",
+      "inquinamento atmosferico",
+      "salvaguardia dell'ambiente"
+    ],
+    "vector_search_queries": [
+      "uso del climatizzatore e impatto ambientale",
+      "risparmio carburante e riduzione emissioni inquinanti",
+      "consigli per limitare l'inquinamento atmosferico da veicoli"
+    ],
+    "rule_explanation": "L'uso moderato del climatizzatore contribuisce al risparmio di carburante e alla riduzione dell'inquinamento atmosferico, tutelando l'ambiente."
+  }
+}

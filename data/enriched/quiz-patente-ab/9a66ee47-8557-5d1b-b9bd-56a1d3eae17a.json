@@ -1,0 +1,29 @@
+{
+  "question_id": 4015,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18473",
+  "text": "Fanno parte della carreggiata gli attraversamenti pedonali",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Carreggiata",
+      "Attraversamento pedonale",
+      "Infrastruttura stradale"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "attraversamenti pedonali",
+      "sede stradale",
+      "parte della carreggiata"
+    ],
+    "vector_search_queries": [
+      "definizione di carreggiata nel CdS",
+      "infrastrutture stradali e carreggiata",
+      "attraversamenti pedonali e carreggiata"
+    ],
+    "rule_explanation": "La carreggiata è la parte della strada destinata ai veicoli; gli attraversamenti pedonali, pur essendo parte dell'infrastruttura stradale, non sono tecnicamente parte della carreggiata."
+  }
+}

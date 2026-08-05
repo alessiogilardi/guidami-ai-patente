@@ -1,0 +1,29 @@
+{
+  "question_id": 4695,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25228",
+  "text": "L'A.B.S. non si attiva se gli pneumatici sono usurati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema antibloccaggio (ABS)",
+      "Usura degli pneumatici",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "ABS",
+      "pneumatici usurati",
+      "sistema antibloccaggio",
+      "efficacia frenata"
+    ],
+    "vector_search_queries": [
+      "funzionamento ABS con pneumatici usurati",
+      "efficacia sistema antibloccaggio e usura pneumatici",
+      "condizioni pneumatici e attivazione ABS"
+    ],
+    "rule_explanation": "L'ABS è un sistema di sicurezza che previene il bloccaggio delle ruote in frenata, la sua efficacia può essere ridotta da pneumatici usurati, ma non viene disattivato da tale condizione."
+  }
+}

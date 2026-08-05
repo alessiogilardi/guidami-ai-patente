@@ -1,0 +1,27 @@
+{
+  "question_id": 4650,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24917",
+  "text": "Se un infortunato della strada ha avuto un trauma della gabbia toracica, bisogna fargli fare profondi respiri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di trauma toracico",
+      "Gestione delle vie aeree e della respirazione"
+    ],
+    "exact_keywords": [
+      "trauma toracico",
+      "frattura costale",
+      "respirazione",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "primo soccorso trauma toracico respirazione",
+      "gestione emergenza frattura costale"
+    ],
+    "rule_explanation": "In caso di trauma toracico con sospetta frattura costale, non si devono indurre respiri profondi per evitare pneumotorace o altre complicazioni."
+  }
+}

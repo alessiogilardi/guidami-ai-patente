@@ -1,0 +1,32 @@
+{
+  "question_id": 4351,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22028",
+  "text": "Il pannello integrativo (A), posto sotto il segnale (B), vieta il transito ai pedoni nelle sole ore indicate",
+  "correct_answer": true,
+  "image": "260d1ab9fde17a642f7d3d4e1ccc964e.jpeg",
+  "image_description": "Segnale di divieto di transito ai pedoni con pannello integrativo di orario. Il segnale B è un segnale di divieto di transito ai pedoni. Il pannello integrativo A, posto sotto il segnale B, specifica gli orari in cui vige il divieto: dalle 7:30 alle 19:00. Pertanto, il transito ai pedoni è vietato solo durante queste fasce orarie.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi: un segnale stradale (B) e un pannello integrativo (A). Il segnale B è un segnale di divieto, rappresentato da un cerchio rosso con bordo rosso e sfondo bianco, barrato da una linea orizzontale rossa. Al centro del segnale è raffigurata la sagoma stilizzata di un pedone in nero. Il pannello integrativo A è un rettangolo bianco con bordi neri, contenente la dicitura '7,30-19,00' in nero. Il pannello A è posizionato sopra il segnale B. La domanda del quiz fa riferimento a entrambi gli elementi, indicando che il pannello (A) è posto sotto il segnale (B) e che vieta il transito ai pedoni nelle ore indicate. L'analisi visiva deve descrivere la conformazione dei due elementi e la loro relazione spaziale, come indicato dall'etichetta A e B nell'immagine.",
+    "name": "Segnale di divieto di transito ai pedoni con pannello integrativo di orario",
+    "description": "Il segnale B è un segnale di divieto di transito ai pedoni. Il pannello integrativo A, posto sotto il segnale B, specifica gli orari in cui vige il divieto: dalle 7:30 alle 19:00. Pertanto, il transito ai pedoni è vietato solo durante queste fasce orarie."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale verticale",
+      "Pannelli integrativi",
+      "Divieto di transito"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "segnali di indicazione",
+      "divieto di transito ai pedoni",
+      "orario"
+    ],
+    "vector_search_queries": [
+      "funzione dei pannelli integrativi sui segnali di divieto",
+      "limitazione oraria dei divieti di transito tramite pannelli integrativi"
+    ],
+    "rule_explanation": "I pannelli integrativi, se posti sotto un segnale, ne specificano o limitano la portata, come nel caso di divieti validi solo in determinati orari."
+  }
+}

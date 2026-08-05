@@ -1,0 +1,28 @@
+{
+  "question_id": 4620,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24651",
+  "text": "La frequenza di apposito corso e il superamento di uno specifico esame consentono al titolare di patente A o B di recuperare 9 punti, arrivando al massimo a 30 punti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Recupero punti patente",
+      "Sistema sanzionatorio patente a punti"
+    ],
+    "exact_keywords": [
+      "corso di recupero punti",
+      "esame di revisione patente",
+      "patente A",
+      "patente B",
+      "punti patente"
+    ],
+    "vector_search_queries": [
+      "recupero punti patente A e B con corso e esame",
+      "limite massimo punti patente e condizioni di recupero"
+    ],
+    "rule_explanation": "Il recupero di 9 punti patente tramite corso e esame è possibile solo se il punteggio è inferiore a 20; il limite massimo è 30 punti, ma il recupero non può eccedere tale soglia."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4562,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24036",
+  "text": "Prima di iniziare a trainare un rimorchio, bisogna controllare dagli specchi retrovisori che la visibilità sia adeguata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo visibilità prima del traino",
+      "Norme sul traino di rimorchi"
+    ],
+    "exact_keywords": [
+      "trainare un rimorchio",
+      "specchi retrovisori",
+      "visibilità adeguata",
+      "manovra di aggancio"
+    ],
+    "vector_search_queries": [
+      "controllo visibilità specchi retrovisori prima di trainare rimorchio",
+      "requisiti visibilità per manovra di traino rimorchio"
+    ],
+    "rule_explanation": "Prima di iniziare a trainare un rimorchio, il conducente deve assicurarsi, tramite gli specchi retrovisori, che la visibilità sia sufficiente per effettuare la manovra in sicurezza."
+  }
+}

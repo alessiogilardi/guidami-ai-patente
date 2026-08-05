@@ -1,0 +1,32 @@
+{
+  "question_id": 4285,
+  "topic": "Segnali di indicazione",
+  "number": "21412",
+  "text": "Il segnale raffigurato preavvisa una zona di preselezione con due destinazioni",
+  "correct_answer": true,
+  "image": "99ca3fb32d6f71b7fc248b75bb160140.jpeg",
+  "image_description": "Preselezione di corsia. Il segnale indica una preselezione di corsia. La corsia di sinistra è destinata ai veicoli diretti a Bari, mentre la corsia di destra è destinata ai veicoli diretti a Pescara. I veicoli devono posizionarsi sulla corsia appropriata in base alla loro destinazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preselezione di corsia di colore blu con scritte bianche e frecce bianche. Il segnale è diviso verticalmente da una linea tratteggiata. A sinistra, una freccia curva indica la direzione sinistra con la scritta \"BARI\". A destra, una freccia dritta indica la direzione dritta con la scritta \"PESCARA\". Il segnale indica le direzioni consentite per ciascuna corsia.",
+    "name": "Preselezione di corsia",
+    "description": "Il segnale indica una preselezione di corsia. La corsia di sinistra è destinata ai veicoli diretti a Bari, mentre la corsia di destra è destinata ai veicoli diretti a Pescara. I veicoli devono posizionarsi sulla corsia appropriata in base alla loro destinazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso",
+      "Preselezione di corsia",
+      "Destinazioni stradali"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "preavviso",
+      "zona di preselezione",
+      "destinazioni"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di preavviso per preselezione di corsia",
+      "indicazioni stradali per scelta di corsia in base alla destinazione"
+    ],
+    "rule_explanation": "Il segnale di preavviso indica una zona di preselezione, specificando le destinazioni raggiungibili da ciascuna corsia di marcia."
+  }
+}

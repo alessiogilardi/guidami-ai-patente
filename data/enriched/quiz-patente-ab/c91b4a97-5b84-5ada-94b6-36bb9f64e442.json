@@ -1,0 +1,27 @@
+{
+  "question_id": 4033,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18665",
+  "text": "L'autocaravan non è un rimorchio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli",
+      "Definizioni stradali"
+    ],
+    "exact_keywords": [
+      "autocaravan",
+      "rimorchio",
+      "veicolo",
+      "definizione di autocaravan"
+    ],
+    "vector_search_queries": [
+      "distinzione tra autocaravan e rimorchio nel codice della strada",
+      "definizione di autocaravan come veicolo autonomo"
+    ],
+    "rule_explanation": "L'autocaravan è un veicolo, definito come una 'caravan' o 'camper', avente una propria motorizzazione e non un rimorchio che necessita di un veicolo trainante."
+  }
+}

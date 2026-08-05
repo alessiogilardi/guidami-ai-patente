@@ -1,0 +1,27 @@
+{
+  "question_id": 4008,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18402",
+  "text": "L'intersezione (incrocio) a raso è un'intersezione a livelli sfalsati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di intersezione a raso",
+      "Classificazione delle intersezioni stradali"
+    ],
+    "exact_keywords": [
+      "intersezione a raso",
+      "intersezione a livelli sfalsati",
+      "strade",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "differenza tra intersezione a raso e a livelli sfalsati",
+      "definizione di incrocio a raso nel CdS"
+    ],
+    "rule_explanation": "L'intersezione a raso avviene quando le strade si incrociano allo stesso livello, a differenza di quelle a livelli sfalsati (es. cavalcavia, sottopassi)."
+  }
+}

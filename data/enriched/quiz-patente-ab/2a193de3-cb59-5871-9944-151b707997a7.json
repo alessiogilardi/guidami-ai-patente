@@ -1,0 +1,27 @@
+{
+  "question_id": 4585,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24251",
+  "text": "L'uso dei proiettori a luce abbagliante va sostituito con quello dei proiettori a luce anabbagliante quando si incrociano altri veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di luce abbagliante",
+      "Obbligo di uso dei proiettori anabbaglianti"
+    ],
+    "exact_keywords": [
+      "proiettori a luce abbagliante",
+      "proiettori a luce anabbagliante",
+      "incrocio di altri veicoli",
+      "sostituzione"
+    ],
+    "vector_search_queries": [
+      "obbligo sostituzione proiettori abbaglianti con anabbaglianti in caso di incrocio",
+      "uso luci anabbaglianti in presenza di altri veicoli"
+    ],
+    "rule_explanation": "I proiettori a luce abbagliante devono essere sostituiti da quelli anabbaglianti quando si incrociano altri veicoli, per non abbagliarli."
+  }
+}

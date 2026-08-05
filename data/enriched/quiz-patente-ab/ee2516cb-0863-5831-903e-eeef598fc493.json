@@ -1,0 +1,29 @@
+{
+  "question_id": 4395,
+  "topic": "Distanza di sicurezza",
+  "number": "22562",
+  "text": "La distanza di sicurezza è commisurata anche al limite di velocità riportato sul retro del veicolo che ci precede",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Adeguamento della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo che precede",
+      "limiti di velocità",
+      "condizioni della strada",
+      "velocità di marcia"
+    ],
+    "vector_search_queries": [
+      "calcolo della distanza di sicurezza in base alla velocità di marcia",
+      "fattori che determinano la distanza di sicurezza tra veicoli",
+      "distanza di sicurezza e limiti di velocità del veicolo che precede"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere commisurata alla velocità effettiva di marcia, alle condizioni della strada e del traffico, non al limite di velocità del veicolo che precede."
+  }
+}

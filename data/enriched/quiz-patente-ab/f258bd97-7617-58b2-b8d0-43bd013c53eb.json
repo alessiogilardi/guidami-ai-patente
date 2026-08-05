@@ -1,0 +1,27 @@
+{
+  "question_id": 4551,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23953",
+  "text": "Un autoveicolo può trainare un veicolo che non sia un rimorchio se questo non può più circolare per avaria o per mancanza di organi essenziali",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Traino di veicoli in avaria",
+      "Circolazione di veicoli in avaria"
+    ],
+    "exact_keywords": [
+      "trainare",
+      "veicolo in avaria",
+      "mancanza di organi essenziali",
+      "autoveicolo"
+    ],
+    "vector_search_queries": [
+      "traino di veicoli in avaria su strada pubblica",
+      "condizioni per il traino di veicoli non rimorchi per avaria"
+    ],
+    "rule_explanation": "Un autoveicolo può trainare un altro veicolo che non sia un rimorchio solo se quest'ultimo non può più circolare per avaria o per mancanza di organi essenziali, purché vengano rispettate le norme specifiche per il traino."
+  }
+}

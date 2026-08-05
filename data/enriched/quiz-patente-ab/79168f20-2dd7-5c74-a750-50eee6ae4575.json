@@ -1,0 +1,27 @@
+{
+  "question_id": 4046,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18806",
+  "text": "Quando vi sono bambini fermi al semaforo, bisogna tenere presente che possono attraversare la strada solo se accompagnati da un adulto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela dei pedoni minorenni",
+      "Regole di attraversamento stradale per bambini"
+    ],
+    "exact_keywords": [
+      "bambini",
+      "attraversamento",
+      "accompagnati",
+      "adulto"
+    ],
+    "vector_search_queries": [
+      "attraversamento stradale da parte di bambini senza accompagnatore adulto",
+      "condizioni per l'attraversamento stradale dei minori"
+    ],
+    "rule_explanation": "I bambini possono attraversare la strada anche se non accompagnati da un adulto, purché lo facciano con prudenza e rispettando le regole di circolazione."
+  }
+}

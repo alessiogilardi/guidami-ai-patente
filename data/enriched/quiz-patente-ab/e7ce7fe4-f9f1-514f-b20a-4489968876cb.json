@@ -1,0 +1,32 @@
+{
+  "question_id": 4139,
+  "topic": "Segnali di divieto",
+  "number": "19917",
+  "text": "Il segnale (A) con il pannello (B) vieta la sosta solo nei giorni lavorativi",
+  "correct_answer": true,
+  "image": "b44a1aa5ea9941edcb30061b982b62c9.jpeg",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo di periodo e giorni feriali. Il segnale A è un segnale di divieto di sosta. Il pannello integrativo B, posto sotto il segnale A, indica che il divieto di sosta è valido solo nei giorni feriali (indicati dal simbolo di un piccone e una pala incrociati) e nell'intervallo orario dalle 8:00 alle 20:00. Al di fuori di questi orari e nei giorni festivi, la sosta è permessa.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi: un segnale stradale (A) e un pannello integrativo (B). Il segnale A è un segnale di divieto di sosta, caratterizzato da un disco rosso con bordo rosso, sfondo blu e una barra diagonale rossa. Il pannello B è rettangolare e contiene, sulla sinistra, un simbolo che rappresenta un piccone e una pala incrociati (simbolo dei giorni feriali), seguito da un intervallo orario \"8,00 - 20,00\". I due elementi sono presentati in modo tale da suggerire che il pannello B sia un pannello integrativo del segnale A, specificandone le modalità di applicazione.",
+    "name": "Segnale di divieto di sosta con pannello integrativo di periodo e giorni feriali",
+    "description": "Il segnale A è un segnale di divieto di sosta. Il pannello integrativo B, posto sotto il segnale A, indica che il divieto di sosta è valido solo nei giorni feriali (indicati dal simbolo di un piccone e una pala incrociati) e nell'intervallo orario dalle 8:00 alle 20:00. Al di fuori di questi orari e nei giorni festivi, la sosta è permessa."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizioneDivieto di sostaDivieto di fermata",
+      "Limitazioni temporali ai divieti di sosta",
+      "Interpretazione dei pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "segnali di divieto di sosta",
+      "pannello integrativo",
+      "giorni feriali",
+      "divieto di sosta"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta con pannello integrativo giorni feriali",
+      "limitazione temporale del divieto di sosta oraria"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta, se accompagnato da pannello integrativo indicante giorni feriali e orari specifici, limita il divieto a tali periodi."
+  }
+}

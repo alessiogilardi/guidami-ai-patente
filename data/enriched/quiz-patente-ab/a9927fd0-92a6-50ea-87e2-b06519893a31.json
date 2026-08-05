@@ -1,0 +1,31 @@
+{
+  "question_id": 4070,
+  "topic": "Segnali di pericolo",
+  "number": "19099",
+  "text": "Il segnale (A) si trova dopo il segnale (B)",
+  "correct_answer": false,
+  "image": "21380f33a31814dac6e4923376a47027.jpeg",
+  "image_description": "Passaggio a livello con più binari (A) e Passaggio a livello con un binario (B). Il segnale A indica un passaggio a livello con più binari, mentre il segnale B indica un passaggio a livello con un solo binario. Il segnale A si trova più vicino al passaggio a livello rispetto al segnale B.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali, etichettati come A e B. Il segnale A è un segnale di pericolo a forma di croce di Sant'Andrea con un rombo al centro, di colore rosso e bianco, che indica un passaggio a livello con più binari. Il segnale B è un segnale di pericolo di forma triangolare con bordo rosso e fondo bianco, raffigurante una traversina ferroviaria nera, che indica un passaggio a livello con un solo binario. I segnali sono disposti verticalmente, con A sopra B. La domanda del quiz suggerisce che il segnale A si trovi dopo il segnale B, il che è coerente con la loro funzione di preavviso di un passaggio a livello, dove il segnale più generico (passaggio a livello con un binario) precede quello più specifico (passaggio a livello con più binari).",
+    "name": "Passaggio a livello con più binari (A) e Passaggio a livello con un binario (B)",
+    "description": "Il segnale A indica un passaggio a livello con più binari, mentre il segnale B indica un passaggio a livello con un solo binario. Il segnale A si trova più vicino al passaggio a livello rispetto al segnale B."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di passaggio a livello"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello con più binari",
+      "passaggio a livello con un binario",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "distanza segnali di pericolo dal passaggio a livello",
+      "sequenza segnali preavviso passaggio a livello con uno o più binari"
+    ],
+    "rule_explanation": "I segnali di pericolo di passaggio a livello con più binari (A) o con un solo binario (B) preannunciano il pericolo e si trovano a una distanza prestabilita prima del passaggio a livello, non dopo."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "question_id": 4685,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25166",
+  "text": "Su tutte le strade è vietato il transito dei veicoli che superano 10 m di lunghezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limitazioni alla circolazione per dimensioni dei veicoli",
+      "Divieti di transito specifici"
+    ],
+    "exact_keywords": [
+      "veicoli di lunghezza superiore a 10 m",
+      "divieto di transito",
+      "strade"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per veicoli di lunghezza superiore a 10 metri",
+      "limitazioni dimensionali alla circolazione stradale"
+    ],
+    "rule_explanation": "Il divieto di transito per veicoli di lunghezza superiore a 10 metri non è assoluto su tutte le strade, ma è soggetto a specifiche segnalazioni o normative locali."
+  }
+}

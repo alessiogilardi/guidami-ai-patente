@@ -1,0 +1,27 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22544",
+  "text": "Il valore della distanza di sicurezza deve essere stabilito anche in base alla potenza del motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza tra veicoli",
+      "Regolazione della velocità in base alle condizioni di marcia"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni della strada",
+      "velocità",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "determinazione della distanza di sicurezza tra veicoli in marcia",
+      "fattori che influenzano la distanza di sicurezza dal veicolo che precede"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere stabilita in base alle condizioni della strada, del traffico, atmosferiche e del veicolo, non alla potenza del motore."
+  }
+}

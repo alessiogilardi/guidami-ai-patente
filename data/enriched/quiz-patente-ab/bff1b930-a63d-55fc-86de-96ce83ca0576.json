@@ -1,0 +1,27 @@
+{
+  "question_id": 4393,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22523",
+  "text": "Passare molto vicino ad un'auto parcheggiata, a bordo della quale si trovano ancora persone, non rappresenta un grave pericolo se avviene a bassa velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo per la circolazione",
+      "Comportamento alla guida sicuro"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "ostacolo",
+      "veicolo fermo",
+      "bassa velocità"
+    ],
+    "vector_search_queries": [
+      "pericolo derivante dal superamento di veicoli fermi",
+      "distanza laterale di sicurezza dal veicolo parcheggiato"
+    ],
+    "rule_explanation": "Il superamento di un veicolo fermo, anche a bassa velocità, può costituire pericolo o intralcio se non si mantiene una distanza laterale di sicurezza adeguata."
+  }
+}

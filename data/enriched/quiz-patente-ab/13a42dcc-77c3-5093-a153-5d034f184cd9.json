@@ -1,0 +1,27 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23640",
+  "text": "Prima di iniziare a guidare un autoveicolo, bisogna verificare che le cinture di sicurezza siano dotate di pretensionatore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza alla guida",
+      "Dispositivi di sicurezza del veicolo"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "pretensionatore",
+      "dispositivi di ritenuta",
+      "autoveicolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di verifica cinture di sicurezza prima di guidare",
+      "funzionamento pretensionatore cinture di sicurezza"
+    ],
+    "rule_explanation": "La verifica del corretto funzionamento delle cinture di sicurezza è un obbligo generale, ma non è specificamente richiesto di controllare la presenza del pretensionatore prima di ogni partenza."
+  }
+}

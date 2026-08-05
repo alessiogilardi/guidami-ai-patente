@@ -1,0 +1,27 @@
+{
+  "question_id": 4583,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24231",
+  "text": "Non è mai necessario usare gli indicatori di direzione quando si circola su strada a doppio senso ma con carreggiate separate da spartitraffico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione delle manovre",
+      "Uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "manovra di svolta",
+      "carreggiate separate",
+      "spartitraffico"
+    ],
+    "vector_search_queries": [
+      "obbligo uso indicatori di direzione svolta su strade a carreggiate separate",
+      "segnalazione manovra di svolta con spartitraffico tra le carreggiate"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare ogni manovra di svolta, anche su strade a doppio senso con carreggiate separate."
+  }
+}

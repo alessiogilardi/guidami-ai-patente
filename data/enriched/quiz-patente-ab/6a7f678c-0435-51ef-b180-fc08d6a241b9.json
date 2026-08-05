@@ -1,0 +1,30 @@
+{
+  "question_id": 4646,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24885",
+  "text": "Se ad un infortunato della strada è entrato un corpo estraneo in un occhio, bisogna consigliargli di non toccare l'occhio danneggiato, per evitare danni maggiori",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso oculare",
+      "Gestione corpi estranei nell'occhio",
+      "Sicurezza in caso di infortunio stradale"
+    ],
+    "exact_keywords": [
+      "corpo estraneo",
+      "occhio danneggiato",
+      "non toccare",
+      "primo soccorso",
+      "infortunato della strada"
+    ],
+    "vector_search_queries": [
+      "primo soccorso corpo estraneo occhio",
+      "gestione occhio ferito infortunato stradale",
+      "evitare di toccare occhio con corpo estraneo"
+    ],
+    "rule_explanation": "In caso di corpo estraneo nell'occhio di un infortunato, è fondamentale non toccare o strofinare l'occhio per prevenire ulteriori lesioni o danni."
+  }
+}

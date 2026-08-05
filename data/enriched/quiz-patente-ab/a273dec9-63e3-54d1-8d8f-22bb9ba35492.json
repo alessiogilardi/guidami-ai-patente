@@ -1,0 +1,28 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23464",
+  "text": "Il conducente che intende sorpassare deve valutare lo spazio necessario in relazione alla lunghezza del proprio veicolo e di quello da sorpassare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza nel sorpasso",
+      "Valutazione dello spazio di manovra"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "spazio necessario",
+      "lunghezza del veicolo",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "valutazione spazio necessario per sorpasso",
+      "distanza di sicurezza durante il sorpasso",
+      "condizioni per effettuare un sorpasso sicuro"
+    ],
+    "rule_explanation": "Il conducente che effettua un sorpasso deve calcolare attentamente lo spazio di manovra, considerando la lunghezza del proprio veicolo e di quello da superare, per garantire la sicurezza."
+  }
+}

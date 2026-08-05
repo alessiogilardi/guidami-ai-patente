@@ -1,0 +1,28 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23582",
+  "text": "Il sorpasso è vietato quando sulle strade di montagna si è preceduti da un autobus di linea",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Sorpasso in condizioni particolari",
+      "Manovre pericolose"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "strade di montagna",
+      "autobus di linea",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "sorpasso autobus di linea strade di montagna vietato",
+      "condizioni di divieto di sorpasso su strade di montagna"
+    ],
+    "rule_explanation": "Il sorpasso di un autobus di linea, anche su strade di montagna, non è di per sé vietato, a meno che non sussistano altre condizioni di pericolo o divieto specifico."
+  }
+}

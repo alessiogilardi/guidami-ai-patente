@@ -1,0 +1,28 @@
+{
+  "question_id": 4038,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18703",
+  "text": "Il conducente che partecipa a gare di velocità non autorizzate su aree pubbliche è punito con la reclusione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gare di velocità non autorizzate",
+      "Responsabilità penale del conducente",
+      "Uso di aree pubbliche per competizioni vietate"
+    ],
+    "exact_keywords": [
+      "gare di velocità non autorizzate",
+      "aree pubbliche",
+      "reclusione",
+      "sanzioni penali"
+    ],
+    "vector_search_queries": [
+      "sanzioni penali per gare di velocità non autorizzate su strade pubbliche",
+      "punibilità della partecipazione a competizioni clandestine su aree pubbliche"
+    ],
+    "rule_explanation": "La partecipazione a gare di velocità non autorizzate su aree pubbliche comporta sanzioni penali, inclusa la reclusione, ai sensi del Codice della Strada."
+  }
+}

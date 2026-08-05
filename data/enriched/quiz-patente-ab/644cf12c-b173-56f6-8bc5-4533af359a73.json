@@ -1,0 +1,32 @@
+{
+  "question_id": 4291,
+  "topic": "Segnali di indicazione",
+  "number": "21475",
+  "text": "Il segnale raffigurato nel pannello blu indica, per ogni località, la rispettiva distanza chilometrica",
+  "correct_answer": true,
+  "image": "3efaba666535392de0856070e5897178.jpeg",
+  "image_description": "Fine centro abitato e inizio pannello di preavviso di diramazione. Il segnale superiore indica la fine del centro abitato di Montecompatri. Il pannello sottostante indica le distanze chilometriche per le località di S. Cesareo (7 km), Frosinone (63 km) e Napoli (190 km).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali sovrapposti. Il segnale superiore è rettangolare con sfondo bianco e testo nero \"MONTECOMPATRI\", barrato da due strisce rosse diagonali che indicano la fine del centro abitato. Il segnale inferiore è rettangolare con sfondo blu e testo bianco. Contiene tre righe: \"S. CESAREO 7\", \"FROSINONE 63\", \"NAPOLI 190\". Queste righe indicano le destinazioni e le relative distanze in chilometri.",
+    "name": "Fine centro abitato e inizio pannello di preavviso di diramazione",
+    "description": "Il segnale superiore indica la fine del centro abitato di Montecompatri. Il pannello sottostante indica le distanze chilometriche per le località di S. Cesareo (7 km), Frosinone (63 km) e Napoli (190 km)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione stradale",
+      "Segnali di preavviso di diramazione",
+      "Distanze chilometriche"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "pannello di preavviso di diramazione",
+      "distanza chilometrica",
+      "centro abitato"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo con distanze chilometriche per località",
+      "segnali di indicazione stradale che mostrano la distanza per le destinazioni"
+    ],
+    "rule_explanation": "Il pannello integrativo posto sotto il segnale di fine centro abitato indica le distanze stradali in chilometri per le località raggiungibili dalla diramazione."
+  }
+}

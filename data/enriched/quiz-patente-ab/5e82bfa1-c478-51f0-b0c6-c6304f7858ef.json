@@ -1,0 +1,33 @@
+{
+  "question_id": 4211,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20722",
+  "text": "La doppia striscia in figura non può essere superata, ma si può circolare stando a cavallo di essa",
+  "correct_answer": false,
+  "image": "9452b305a54d3ce933cf84b3ec81361b.jpeg",
+  "image_description": "Striscia bianca continua. La striscia bianca continua delimita le corsie di marcia. Non è consentito superarla né attraversarla.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata con due strisce bianche continue parallele, che delimitano una o più corsie di marcia. Non sono presenti altri segnali o elementi di contesto. Le strisce sono di colore bianco e appaiono continue, senza interruzioni. La loro presenza indica la separazione delle corsie e il divieto di superamento o attraversamento.",
+    "name": "Striscia bianca continua",
+    "description": "La striscia bianca continua delimita le corsie di marcia. Non è consentito superarla né attraversarla."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Divieto di superamento",
+      "Delimitazione delle corsie di marcia"
+    ],
+    "exact_keywords": [
+      "striscia bianca continua",
+      "segnaletica orizzontale",
+      "superamento",
+      "corsie di marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di superamento striscia bianca continua",
+      "segnaletica orizzontale delimitazione corsie",
+      "obblighi del conducente in presenza di striscia continua"
+    ],
+    "rule_explanation": "La striscia bianca continua, che delimita le corsie, non può essere né superata né attraversata per nessun motivo."
+  }
+}

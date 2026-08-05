@@ -1,0 +1,29 @@
+{
+  "question_id": 4643,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24868",
+  "text": "Durante un intervento di primo soccorso non bisogna mai toccare il ferito se non è ancora arrivata la polizia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Soccorso stradale",
+      "Obblighi del soccorritore",
+      "Primo soccorso"
+    ],
+    "exact_keywords": [
+      "soccorso stradale",
+      "primo soccorso",
+      "ferito",
+      "intervento di soccorso"
+    ],
+    "vector_search_queries": [
+      "obbligo di primo soccorso in caso di incidente",
+      "intervento di soccorso senza attendere le forze dell'ordine",
+      "priorità del soccorso al ferito rispetto all'arrivo della polizia"
+    ],
+    "rule_explanation": "In caso di incidente, chiunque sia in grado di farlo ha l'obbligo di prestare il primo soccorso, senza attendere l'arrivo delle forze dell'ordine, a meno che non vi sia un pericolo imminente."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4433,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22901",
+  "text": "In vicinanza o in corrispondenza degli incroci non è consentito effettuare l'inversione di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di inversione di marcia in prossimità degli incroci",
+      "Regole di circolazione stradale negli incroci"
+    ],
+    "exact_keywords": [
+      "inversione di marcia",
+      "incrocio",
+      "divieto",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "divieto di inversione di marcia negli incroci stradali",
+      "manovre vietate in prossimità degli incroci"
+    ],
+    "rule_explanation": "È vietato effettuare l'inversione di marcia in prossimità o in corrispondenza degli incroci per garantire la sicurezza della circolazione."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24702",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere presenza di strettoie non segnalate",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolosità della strada",
+      "Segnaletica stradale di pericolo",
+      "Prevenzione incidenti stradali"
+    ],
+    "exact_keywords": [
+      "strettezza non segnalata",
+      "struttura della strada",
+      "pericolo per la circolazione",
+      "causa di incidenti"
+    ],
+    "vector_search_queries": [
+      "pericolo derivante da strettoie non segnalate sulla strada",
+      "segnalazione di strettoie stradali come misura di prevenzione incidenti"
+    ],
+    "rule_explanation": "La presenza di strettoie non adeguatamente segnalate sulla carreggiata costituisce un pericolo per la circolazione e una potenziale causa di incidenti stradali."
+  }
+}

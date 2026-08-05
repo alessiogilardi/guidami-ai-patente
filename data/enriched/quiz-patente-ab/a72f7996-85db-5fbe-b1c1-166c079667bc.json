@@ -1,0 +1,27 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23578",
+  "text": "Nella fase di sorpasso, il conducente è tenuto a mantenere una velocità almeno doppia di quella del veicolo sorpassato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione del sorpasso",
+      "Velocità nel sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "velocità",
+      "veicolo sorpassato",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "velocità da tenere durante il sorpasso",
+      "obblighi del conducente durante la manovra di sorpasso"
+    ],
+    "rule_explanation": "Durante il sorpasso, la velocità deve essere adeguata alle condizioni del traffico e della strada, non necessariamente il doppio di quella del veicolo sorpassato."
+  }
+}

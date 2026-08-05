@@ -1,0 +1,29 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24697",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere ristrettezza della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Cause di incidentalità stradale",
+      "Sicurezza stradale",
+      "Caratteristiche della strada"
+    ],
+    "exact_keywords": [
+      "incidenti stradali",
+      "struttura della strada",
+      "ristrettezza della strada",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "cause di incidenti legate alla struttura stradale",
+      "pericoli derivanti dalla ristrettezza della strada",
+      "fattori di rischio per la sicurezza stradale legati alla conformazione della carreggiata"
+    ],
+    "rule_explanation": "La ristrettezza della carreggiata è un fattore che può contribuire alla probabilità di incidenti stradali, richiedendo maggiore prudenza."
+  }
+}

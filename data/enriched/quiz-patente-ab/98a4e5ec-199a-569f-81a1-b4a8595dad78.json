@@ -1,0 +1,27 @@
+{
+  "question_id": 4263,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21199",
+  "text": "Il suono prolungato del fischietto da parte dell'agente preposto al traffico serve per arrestare o deviare solo i veicoli che arrivano dalla sua destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni acustiche degli agenti del traffico",
+      "Direttive degli agenti del traffico"
+    ],
+    "exact_keywords": [
+      "segnali acustici",
+      "agente preposto alla circolazione",
+      "arrestare il traffico",
+      "deviare il traffico"
+    ],
+    "vector_search_queries": [
+      "segnali acustici degli agenti del traffico per arrestare o deviare la circolazione",
+      "interpretazione dei segnali acustici degli agenti preposti alla viabilità"
+    ],
+    "rule_explanation": "Il segnale acustico prolungato del fischietto da parte dell'agente preposto alla circolazione serve per arrestare o deviare tutti i veicoli, non solo quelli provenienti da una direzione specifica."
+  }
+}

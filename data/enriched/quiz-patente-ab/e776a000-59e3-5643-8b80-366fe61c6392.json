@@ -1,0 +1,29 @@
+{
+  "question_id": 4517,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23706",
+  "text": "Durante la sosta nelle strade a forte pendenza, è opportuno che il conducente azioni il freno di stazionamento, inserisca il rapporto più basso del cambio di velocità e lasci il veicolo con le ruote sterzate verso il marciapiede",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Freno di stazionamento",
+      "Arresto e sosta in pendenza",
+      "Manovre di sicurezza in parcheggio"
+    ],
+    "exact_keywords": [
+      "freno di stazionamento",
+      "rapporto più basso",
+      "ruote sterzate",
+      "sosta in pendenza"
+    ],
+    "vector_search_queries": [
+      "uso del freno di stazionamento e del cambio in sosta in pendenza",
+      "manovre di sicurezza per parcheggiare in discesa o salita",
+      "prevenzione della fuga del veicolo in sosta su strade inclinate"
+    ],
+    "rule_explanation": "In sosta in forte pendenza, è obbligatorio usare il freno di stazionamento, inserire marcia bassa e sterzare le ruote verso il marciapiede per prevenire la fuga del veicolo."
+  }
+}

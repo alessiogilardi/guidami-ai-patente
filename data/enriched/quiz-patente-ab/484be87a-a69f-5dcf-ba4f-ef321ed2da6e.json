@@ -1,0 +1,31 @@
+{
+  "question_id": 4308,
+  "topic": "Segnali di indicazione",
+  "number": "21633",
+  "text": "Il segnale raffigurato indica che non è possibile viaggiare ad una velocità più bassa di quella indicata",
+  "correct_answer": false,
+  "image": "971e98d0321dab35827073bdfb4eb51a.jpeg",
+  "image_description": "Segnale di limite minimo di velocità. Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è presente il numero '60' in bianco. Questo è un segnale di prescrizione che indica un limite minimo di velocità.",
+    "name": "Segnale di limite minimo di velocità",
+    "description": "Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di prescrizione",
+      "Limite minimo di velocità"
+    ],
+    "exact_keywords": [
+      "segnale di limite minimo di velocità",
+      "velocità inferiore",
+      "divieto",
+      "obbligo"
+    ],
+    "vector_search_queries": [
+      "divieto di circolare a velocità inferiore al limite minimo imposto",
+      "interpretazione segnale di limite minimo di velocità"
+    ],
+    "rule_explanation": "Il segnale di limite minimo di velocità impone di non viaggiare a una velocità inferiore a quella indicata, non vieta di viaggiare a velocità inferiori."
+  }
+}

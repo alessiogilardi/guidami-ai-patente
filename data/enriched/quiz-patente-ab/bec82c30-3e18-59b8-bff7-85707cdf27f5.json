@@ -1,0 +1,27 @@
+{
+  "question_id": 4618,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24612",
+  "text": "La revoca della patente può essere disposta quando il conducente guida senza averla con sè",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di avere con sé i documenti di guida",
+      "Sanzioni amministrative per la circolazione senza documenti"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "conducente",
+      "sanzione amministrativa",
+      "esibizione dei documenti"
+    ],
+    "vector_search_queries": [
+      "sanzione per guida senza patente al seguito",
+      "conseguenze della mancata esibizione della patente di guida"
+    ],
+    "rule_explanation": "La sanzione per la guida senza avere con sé la patente è amministrativa e non comporta la revoca del documento, ma una multa e l'obbligo di presentarsi presso le autorità competenti."
+  }
+}

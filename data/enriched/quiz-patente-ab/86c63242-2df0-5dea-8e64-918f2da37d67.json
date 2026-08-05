@@ -1,0 +1,28 @@
+{
+  "question_id": 4536,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23850",
+  "text": "Durante le operazioni di presegnalazione con il segnale mobile di pericolo il conducente non deve indossare il giubbotto ad alta visibilità se si trova sulle corsie di emergenza o sulle piazzole di sosta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di indossare il giubbotto ad alta visibilità",
+      "Segnalazione di veicolo fermo in emergenza"
+    ],
+    "exact_keywords": [
+      "giubbotto ad alta visibilità",
+      "segnalazione di veicolo fermo",
+      "presegnalazione",
+      "carreggiata",
+      "emergenza"
+    ],
+    "vector_search_queries": [
+      "obbligo giubbotto alta visibilità fuori dal veicolo fermo in emergenza",
+      "uso del giubbotto ad alta visibilità in caso di arresto del veicolo in autostrada o strada extraurbana principale"
+    ],
+    "rule_explanation": "Il giubbotto ad alta visibilità deve essere indossato dal conducente ogni volta che scende dal veicolo in condizioni di emergenza o di pericolo, indipendentemente dal tipo di strada o corsia."
+  }
+}

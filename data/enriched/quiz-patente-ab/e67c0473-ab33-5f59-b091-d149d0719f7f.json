@@ -1,0 +1,27 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22272",
+  "text": "Il conducente deve regolare la velocità in relazione al carico del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Adeguamento della velocità al carico",
+      "Regolazione della velocità per la sicurezza"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "carico del veicolo",
+      "condizioni della strada",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità al carico del veicolo",
+      "moderazione della velocità in base al carico e alle condizioni di marcia"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in relazione al carico del veicolo, alle condizioni della strada, del traffico e atmosferiche, per evitare pericoli o intralcio alla circolazione."
+  }
+}

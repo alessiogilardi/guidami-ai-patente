@@ -1,0 +1,27 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23570",
+  "text": "Nella fase di sorpasso, il conducente è tenuto a evitare di stringere o di tagliare la strada al veicolo sorpassato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Comportamento del conducente durante il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "condizioni di sicurezza",
+      "veicolo sorpassato",
+      "tagliare la strada"
+    ],
+    "vector_search_queries": [
+      "condotta del conducente durante la manovra di sorpasso",
+      "obblighi del conducente che effettua un sorpasso"
+    ],
+    "rule_explanation": "Durante il sorpasso, il conducente deve mantenere una distanza di sicurezza adeguata ed evitare manovre che possano compromettere la sicurezza del veicolo sorpassato."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4580,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24205",
+  "text": "Il simbolo raffigurato è posto su una spia a luce blu",
+  "correct_answer": false,
+  "image": "7933bbf13cf37ce45fa8d0d5361fce93.jpeg",
+  "image_description": "Spia fendinebbia anteriori. Il simbolo raffigurato indica l'accensione delle luci fendinebbia anteriori. Si tratta di una spia luminosa che si accende per segnalare l'attivazione di tale dispositivo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un simbolo stilizzato che rappresenta un fascio di luce diretto verso sinistra, con quattro linee orizzontali che indicano la direzione del fascio. Accanto a questo, vi è un contorno a forma di semicerchio aperto verso destra, che simboleggia un proiettore. L'insieme del simbolo è comunemente utilizzato per indicare la spia di accensione dei fendinebbia anteriori su un veicolo. Non ci sono elementi stradali o altri segnali visibili.",
+    "name": "Spia fendinebbia anteriori",
+    "description": "Il simbolo raffigurato indica l'accensione delle luci fendinebbia anteriori. Si tratta di una spia luminosa che si accende per segnalare l'attivazione di tale dispositivo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori luminosi del veicolo",
+      "Segnalazione acustica e visiva"
+    ],
+    "exact_keywords": [
+      "spia luminosa",
+      "fendinebbia anteriori",
+      "simbolo",
+      "dispositivi di illuminazione"
+    ],
+    "vector_search_queries": [
+      "colore spia fendinebbia anteriori",
+      "significato spie luminose dispositivi illuminazione"
+    ],
+    "rule_explanation": "La spia dei fendinebbia anteriori è di colore verde, non blu. Il blu è riservato ai proiettori abbaglianti."
+  }
+}

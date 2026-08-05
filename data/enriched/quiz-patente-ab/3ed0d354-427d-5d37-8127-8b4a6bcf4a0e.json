@@ -1,0 +1,27 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18795",
+  "text": "In vicinanza di un attraversamento pedonale, i pedoni devono fare un cenno con la mano prima di iniziare l'attraversamento",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri dei pedoni agli attraversamenti carrai",
+      "Sicurezza stradale e utenti deboli"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "pedoni",
+      "segnale di via libera",
+      "condotta dei pedoni"
+    ],
+    "vector_search_queries": [
+      "condotta dei pedoni agli attraversamenti pedonali",
+      "obblighi dei pedoni prima di iniziare l'attraversamento di una strada"
+    ],
+    "rule_explanation": "I pedoni non devono attraversare la carreggiata senza essersi prima assicurati, da ambo le parti, di poterlo fare senza pericolo per sé o per gli altri. Non è richiesto alcun cenno con la mano."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4306,
+  "topic": "Segnali di indicazione",
+  "number": "21607",
+  "text": "Il segnale raffigurato indica una strada senza sbocco per i veicoli",
+  "correct_answer": true,
+  "image": "200351bc67f1cbc394aea09991968512.jpeg",
+  "image_description": "Segnale di strada senza uscita per veicoli. Il segnale indica che la strada che si sta percorrendo termina senza possibilità di proseguire per i veicoli. Non vieta l'accesso ai pedoni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con sfondo blu scuro e bordi arrotondati. Al centro del segnale è presente un pittogramma bianco a forma di T, con la barra orizzontale rossa. Questo è il segnale di \"strada senza uscita per veicoli\".",
+    "name": "Segnale di strada senza uscita per veicoli",
+    "description": "Il segnale indica che la strada che si sta percorrendo termina senza possibilità di proseguire per i veicoli. Non vieta l'accesso ai pedoni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Strada senza sbocco"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "strada senza sbocco",
+      "divieto di accesso",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "segnaletica stradale di strada senza sbocco per veicoli",
+      "significato del segnale di fine strada per autoveicoli"
+    ],
+    "rule_explanation": "Il segnale di strada senza sbocco indica che la strada termina e non è possibile proseguire per i veicoli."
+  }
+}

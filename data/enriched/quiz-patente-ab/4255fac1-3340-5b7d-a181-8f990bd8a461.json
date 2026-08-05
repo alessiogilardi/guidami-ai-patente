@@ -1,0 +1,31 @@
+{
+  "question_id": 4125,
+  "topic": "Segnali di divieto",
+  "number": "19758",
+  "text": "Il segnale raffigurato vale sia di giorno che di notte",
+  "correct_answer": true,
+  "image": "8a2144c790c2fb4700376c9bb49c6a0b.jpeg",
+  "image_description": "Divieto di transito alle macchine agricole. Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di una macchina agricola (trattore) in nero. Questo segnale indica un divieto di transito specifico per questo tipo di veicoli.",
+    "name": "Divieto di transito alle macchine agricole",
+    "description": "Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficacia dei segnali stradali",
+      "Segnali di divieto"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "validità oraria",
+      "validità notturna",
+      "macchine agricole"
+    ],
+    "vector_search_queries": [
+      "validità dei segnali di divieto di giorno e di notte",
+      "efficacia dei segnali stradali in assenza di limitazioni orarie"
+    ],
+    "rule_explanation": "I segnali di divieto, salvo diversa specifica indicazione, sono validi sia di giorno che di notte e si applicano a tutti i veicoli indicati dal segnale stesso."
+  }
+}

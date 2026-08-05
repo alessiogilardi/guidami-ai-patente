@@ -1,0 +1,27 @@
+{
+  "question_id": 4699,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25264",
+  "text": "Per smontare una ruota bisogna fissare il martinetto (cric) il più lontano possibile dalla ruota da sostituire",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso del cric per la sostituzione della ruota",
+      "Stabilità del veicolo durante la sostituzione della ruota"
+    ],
+    "exact_keywords": [
+      "cric",
+      "martinetto",
+      "ruota da sostituire",
+      "stabilità del veicolo"
+    ],
+    "vector_search_queries": [
+      "posizionamento corretto del cric per la sostituzione della ruota",
+      "stabilità del veicolo durante il cambio ruota con cric"
+    ],
+    "rule_explanation": "Il cric deve essere posizionato il più vicino possibile alla ruota da sostituire per garantire la stabilità del veicolo durante l'operazione."
+  }
+}

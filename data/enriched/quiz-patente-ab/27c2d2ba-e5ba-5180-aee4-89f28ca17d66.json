@@ -1,0 +1,26 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23470",
+  "text": "Prima di iniziare una manovra di sorpasso occorre azionare l'indicatore di direzione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione delle manovre",
+      "Regole di sorpasso"
+    ],
+    "exact_keywords": [
+      "manovra di sorpasso",
+      "indicatore di direzione",
+      "segnalare con anticipo"
+    ],
+    "vector_search_queries": [
+      "segnalazione manovra di sorpasso con indicatore di direzione",
+      "obbligo di preavviso del sorpasso tramite indicatori di direzione"
+    ],
+    "rule_explanation": "Prima di iniziare il sorpasso, il conducente deve segnalare la manovra con anticipo azionando l'indicatore di direzione per avvisare gli altri utenti della strada."
+  }
+}

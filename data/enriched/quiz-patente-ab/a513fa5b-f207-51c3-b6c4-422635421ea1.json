@@ -1,0 +1,29 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22488",
+  "text": "Se si percorre una lunga discesa con il cambio in folle e a motore spento, si ha un sovraccarico di corrente elettrica",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida con marcia innestata",
+      "Funzionamento del motore in discesa",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "discesa",
+      "cambio in folle",
+      "motore spento",
+      "sovraccarico di corrente"
+    ],
+    "vector_search_queries": [
+      "rischi guida discesa cambio folle motore spento",
+      "funzionamento motore discesa marcia innestata",
+      "pericoli guida con motore spento in discesa"
+    ],
+    "rule_explanation": "Percorrere una lunga discesa con il cambio in folle e a motore spento non causa un sovraccarico di corrente elettrica, ma comporta rischi per la sicurezza del veicolo e la stabilità."
+  }
+}

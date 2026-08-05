@@ -1,0 +1,28 @@
+{
+  "question_id": 4611,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24523",
+  "text": "Con la patente di categoria A si possono condurre anche i tricicli di potenza superiore a 15 kW, qualunque sia l'età del conducente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria A",
+      "Requisiti di età per la conduzione di veicoli a motore",
+      "Potenza massima dei motocicli e tricicli"
+    ],
+    "exact_keywords": [
+      "patente categoria A",
+      "tricicli a motore",
+      "potenza",
+      "età del conducente"
+    ],
+    "vector_search_queries": [
+      "conduzione tricicli a motore potenza superiore 15 kW con patente A",
+      "requisiti età patente A per tricicli a motore"
+    ],
+    "rule_explanation": "La patente A abilita alla conduzione di tricicli a motore di potenza superiore a 15 kW solo se il conducente ha compiuto 21 anni, o 24 se si tratta di tricicli specifici."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4276,
+  "topic": "Segnali di indicazione",
+  "number": "21319",
+  "text": "Il segnale raffigurato indica la presenza nelle vicinanze di un apparecchio per chiamare un taxi",
+  "correct_answer": false,
+  "image": "7db243423fe983741f896d4c4439ad3c.jpeg",
+  "image_description": "Parcheggio per taxi. Il segnale indica la presenza di un parcheggio o area di sosta riservata ai taxi in servizio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare di colore arancione con bordo nero. Al centro del segnale, in lettere nere maiuscole, è scritta la parola \"TAXI\". Non sono presenti altri elementi visivi o segnali. Si tratta di un segnale di indicazione.",
+    "name": "Parcheggio per taxi",
+    "description": "Il segnale indica la presenza di un parcheggio o area di sosta riservata ai taxi in servizio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnaletica stradale di servizio"
+    ],
+    "exact_keywords": [
+      "parcheggio taxi",
+      "sosta riservata",
+      "segnali di servizio",
+      "area taxi"
+    ],
+    "vector_search_queries": [
+      "segnali di servizio parcheggio taxi",
+      "area di sosta riservata ai taxi"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica un parcheggio o area di sosta riservata ai taxi in servizio, non un apparecchio per chiamarli."
+  }
+}

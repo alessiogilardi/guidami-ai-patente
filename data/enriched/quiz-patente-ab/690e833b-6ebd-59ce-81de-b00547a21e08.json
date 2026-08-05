@@ -1,0 +1,30 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24347",
+  "text": "Le cinture di sicurezza hanno lo scopo di mantenere il corpo attaccato al sedile in caso di urto violento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Cinture di sicurezza",
+      "Sistemi di ritenuta",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "fasce elastiche",
+      "mantenere il corpo",
+      "sedile",
+      "urto violento"
+    ],
+    "vector_search_queries": [
+      "funzione delle cinture di sicurezza in caso di urto",
+      "scopo dei sistemi di ritenuta per la sicurezza del conducente e dei passeggeri",
+      "utilizzo delle cinture di sicurezza per prevenire lesioni in caso di incidente"
+    ],
+    "rule_explanation": "Le cinture di sicurezza sono dispositivi progettati per trattenere il corpo al sedile in caso di impatto, riducendo il rischio di lesioni gravi."
+  }
+}

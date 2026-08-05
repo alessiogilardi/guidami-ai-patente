@@ -1,0 +1,27 @@
+{
+  "question_id": 4516,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23702",
+  "text": "Durante la sosta nelle ore notturne il conducente deve lasciare in ogni caso accese le luci di posizione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi durante la sosta notturna",
+      "Illuminazione dei veicoli in sosta"
+    ],
+    "exact_keywords": [
+      "sosta notturna",
+      "luci di posizione",
+      "veicolo in sosta",
+      "illuminazione obbligatoria"
+    ],
+    "vector_search_queries": [
+      "obbligo luci di posizione veicolo in sosta notturna in luogo non illuminato",
+      "illuminazione veicoli fermi in sosta notturna"
+    ],
+    "rule_explanation": "Durante la sosta notturna, le luci di posizione devono essere accese solo se il veicolo è in un luogo non illuminato o scarsamente illuminato, non in ogni caso."
+  }
+}

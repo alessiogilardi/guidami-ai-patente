@@ -1,0 +1,28 @@
+{
+  "question_id": 4536,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23851",
+  "text": "Il conducente deve indossare il giubbotto ad alta visibilità di notte, anche nei centri abitati, qualora debba fermarsi sulla carreggiata perché il suo veicolo ha un guasto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di indossare il giubbotto ad alta visibilità",
+      "Segnalazione di veicolo fermo per avaria"
+    ],
+    "exact_keywords": [
+      "giubbotto ad alta visibilità",
+      "veicolo in avaria",
+      "carreggiata",
+      "centro abitato",
+      "dispositivo di protezione individuale"
+    ],
+    "vector_search_queries": [
+      "obbligo giubbotto alta visibilità veicolo fermo carreggiata fuori centro abitato",
+      "uso dispositivo protezione individuale per veicolo in avaria su strada extraurbana"
+    ],
+    "rule_explanation": "Il giubbotto ad alta visibilità va indossato sempre, sia di giorno che di notte, quando si esce dal veicolo fermo sulla carreggiata fuori dai centri abitati, o in caso di emergenza anche all'interno degli stessi."
+  }
+}

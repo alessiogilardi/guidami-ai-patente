@@ -1,0 +1,27 @@
+{
+  "question_id": 4620,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24649",
+  "text": "Il punteggio sulla patente diminuisce esclusivamente quando si commette un'infrazione al codice della strada che comporta la sospensione o il ritiro della patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema sanzionatorio della patente a punti",
+      "Perdita di punteggio sulla patente"
+    ],
+    "exact_keywords": [
+      "punteggio patente",
+      "sospensione patente",
+      "ritiro patente",
+      "infrazione al codice della strada"
+    ],
+    "vector_search_queries": [
+      "decurtazione punti patente per infrazioni al codice della strada",
+      "perdita punteggio patente cause ed effetti"
+    ],
+    "rule_explanation": "La decurtazione del punteggio dalla patente avviene per ogni infrazione commessa, non solo per quelle che comportano sospensione o ritiro."
+  }
+}

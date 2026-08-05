@@ -1,0 +1,29 @@
+{
+  "question_id": 4692,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25202",
+  "text": "Quando il veicolo percorre una curva è assoggettato ad una forza che tende a spostarlo verso l'esterno",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Forza centrifuga",
+      "Dinamica della curva",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "curva",
+      "forza centrifuga",
+      "spostamento verso l'esterno",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "effetto della forza centrifuga in curva",
+      "spostamento laterale del veicolo in curva",
+      "forze agenti sul veicolo durante la percorrenza di una curva"
+    ],
+    "rule_explanation": "In una curva, il veicolo è soggetto alla forza centrifuga che tende a spostarlo verso l'esterno della traiettoria, richiedendo adeguata tenuta di strada."
+  }
+}

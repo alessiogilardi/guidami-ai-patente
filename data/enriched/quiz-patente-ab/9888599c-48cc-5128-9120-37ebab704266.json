@@ -1,0 +1,28 @@
+{
+  "question_id": 4019,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18514",
+  "text": "La banchina è riservata ai veicoli lenti, nelle strade in salita",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso della banchina",
+      "Regolamentazione della circolazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "banchina",
+      "veicoli lenti",
+      "strade in salita",
+      "sorpasso"
+    ],
+    "vector_search_queries": [
+      "definizione e uso della banchina stradale",
+      "circolazione dei veicoli sulla banchina in salita",
+      "divieto di transito sulla banchina per veicoli lenti"
+    ],
+    "rule_explanation": "La banchina non è una corsia di marcia riservata ai veicoli lenti in salita, ma una parte della strada non carrabile, utilizzabile solo in casi specifici e non per il normale transito."
+  }
+}

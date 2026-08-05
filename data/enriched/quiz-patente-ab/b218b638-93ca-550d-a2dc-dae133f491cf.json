@@ -1,0 +1,31 @@
+{
+  "question_id": 4384,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22424",
+  "text": "Il limite massimo di velocità su strade extraurbane secondarie è di 70 km/h per i ciclomotori",
+  "correct_answer": false,
+  "image": "061decd67e690416a4af3b7576e2a0ee.jpeg",
+  "image_description": "Segnale di limite di velocità (divieto). I segnali raffigurano tre limiti massimi di velocità: 60 km/h, 80 km/h e 100 km/h. Questi segnali sono di tipo \"divieto di superare la velocità indicata\" e sono posti in sequenza o in alternativa per indicare diversi limiti massimi consentiti in determinate tratte stradali o per diverse categorie di veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre segnali stradali circolari con bordo rosso e sfondo bianco, tipici dei segnali di divieto. Al centro di ciascun segnale è riportato un numero in nero, che indica un limite di velocità: 60, 80 e 100. Questi sono segnali di limite massimo di velocità. Sono disposti in modo da suggerire una sequenza o un'alternanza di limiti.",
+    "name": "Segnale di limite di velocità (divieto)",
+    "description": "I segnali raffigurano tre limiti massimi di velocità: 60 km/h, 80 km/h e 100 km/h. Questi segnali sono di tipo \"divieto di superare la velocità indicata\" e sono posti in sequenza o in alternativa per indicare diversi limiti massimi consentiti in determinate tratte stradali o per diverse categorie di veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per ciclomotori",
+      "Strade extraurbane secondarie"
+    ],
+    "exact_keywords": [
+      "ciclomotori",
+      "strade extraurbane secondarie",
+      "limite massimo di velocità",
+      "velocità massima"
+    ],
+    "vector_search_queries": [
+      "velocità massima ciclomotori strade extraurbane secondarie",
+      "limiti di velocità per ciclomotori su strade extraurbane"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per i ciclomotori su strade extraurbane secondarie è di 40 km/h, non 70 km/h."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4563,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24058",
+  "text": "Il numero di persone trasportabili sulle autovetture è al massimo di quattro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Numero massimo di persone trasportabili",
+      "Carreggiata autovettura",
+      "Normativa sul trasporto persone"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "numero massimo di persone",
+      "posti omologati",
+      "libretto di circolazione"
+    ],
+    "vector_search_queries": [
+      "numero massimo passeggeri trasportabili autovettura",
+      "posti omologati autovettura libretto circolazione",
+      "limite persone trasportabili veicolo"
+    ],
+    "rule_explanation": "Il numero di persone trasportabili su un'autovettura è determinato dai posti omologati, indicati sul libretto di circolazione, e non da un limite fisso di quattro."
+  }
+}

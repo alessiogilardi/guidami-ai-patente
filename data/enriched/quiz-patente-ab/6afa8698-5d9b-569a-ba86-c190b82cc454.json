@@ -1,0 +1,27 @@
+{
+  "question_id": 4603,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24446",
+  "text": "I guanti ad uso motociclistico si riconoscono perché di colore nero e con una sagoma di moto stampigliata sul polso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di protezione individuale per motociclisti",
+      "Equipaggiamento di sicurezza per la guida di veicoli a motore"
+    ],
+    "exact_keywords": [
+      "guanti motociclistici",
+      "dispositivi di protezione",
+      "abbigliamento tecnico",
+      "omologazione"
+    ],
+    "vector_search_queries": [
+      "requisiti di omologazione per guanti motociclistici",
+      "caratteristiche dei guanti protettivi per motociclisti"
+    ],
+    "rule_explanation": "I guanti motociclistici omologati devono riportare una marcatura che ne attesti la conformità alle norme di sicurezza, non un colore o una sagoma specifica."
+  }
+}

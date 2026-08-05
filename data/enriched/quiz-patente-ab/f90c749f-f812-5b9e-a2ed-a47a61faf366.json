@@ -1,0 +1,30 @@
+{
+  "question_id": 4697,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25247",
+  "text": "Se in uno pneumatico del tipo \"tubeless\" si è conficcato un chiodo, bisogna estrarlo subito, per evitare che il pneumatico possa esplodere",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione degli pneumatici",
+      "Sicurezza stradale",
+      "Riparazione pneumatici tubeless"
+    ],
+    "exact_keywords": [
+      "pneumatico tubeless",
+      "chiodo conficcato",
+      "estrarre subito",
+      "esplodere",
+      "perdita d'aria"
+    ],
+    "vector_search_queries": [
+      "gestione chiodo conficcato pneumatico tubeless",
+      "riparazione pneumatico tubeless con chiodo conficcato",
+      "conseguenze estrazione immediata chiodo da pneumatico tubeless"
+    ],
+    "rule_explanation": "In caso di chiodo conficcato in uno pneumatico tubeless, non bisogna estrarlo subito per evitare una rapida perdita d'aria, ma procedere alla riparazione."
+  }
+}

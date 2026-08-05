@@ -1,0 +1,33 @@
+{
+  "question_id": 4217,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20779",
+  "text": "Rispetto al veicolo che procede nel senso della freccia, la striscia discontinua in figura si trova prima di una curva",
+  "correct_answer": false,
+  "image": "baa788372c1b5dbe02e3d6585a546e14.jpeg",
+  "image_description": "Striscia di delimitazione di corsia (continua e discontinua). La striscia discontinua, detta anche \"linea di corsia\", delimita le corsie di marcia su strade a carreggiata multipla. La sua presenza indica che è consentito il sorpasso, a meno che non sia vietato da altri segnali. La freccia indica la direzione di marcia del veicolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada con due corsie di marcia, separate da una striscia bianca continua al centro e da una striscia bianca discontinua sul lato destro della corsia di sinistra. Un'automobile nera sta percorrendo la corsia di sinistra, seguendo la direzione indicata dalla freccia. La striscia discontinua indica che è possibile superare.",
+    "name": "Striscia di delimitazione di corsia (continua e discontinua)",
+    "description": "La striscia discontinua, detta anche \"linea di corsia\", delimita le corsie di marcia su strade a carreggiata multipla. La sua presenza indica che è consentito il sorpasso, a meno che non sia vietato da altri segnali. La freccia indica la direzione di marcia del veicolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Linee di corsia",
+      "Prescrizioni delle linee di corsia"
+    ],
+    "exact_keywords": [
+      "striscia discontinua",
+      "linea di corsia",
+      "sorpasso",
+      "direzione di marcia"
+    ],
+    "vector_search_queries": [
+      "funzione della striscia discontinua di corsia",
+      "segnaletica orizzontale e curve",
+      "divieto di sorpasso e strisce di corsia"
+    ],
+    "rule_explanation": "La striscia discontinua di corsia indica la possibilità di sorpasso, non la presenza di una curva. La sua posizione rispetto alla direzione di marcia è irrilevante per la segnalazione di curve."
+  }
+}

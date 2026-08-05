@@ -1,0 +1,32 @@
+{
+  "question_id": 4352,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22046",
+  "text": "Il segnale raffigurato consente il transito dei motocicli la domenica dalle ore 8.00 alle ore 20.00",
+  "correct_answer": false,
+  "image": "32da26fa8295978bfb4afbda2f15fb67.jpeg",
+  "image_description": "Divieto di transito per motocicli con pannello integrativo di orario. Il segnale di divieto di transito per i motocicli è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle ore 8:00 alle ore 20:00. Al di fuori di questi orari, i motocicli possono transitare.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco, raffigurante la sagoma stilizzata di un motociclista. Questo è un segnale di divieto. Sotto questo segnale, vi è un pannello rettangolare bianco con bordo nero. Il pannello contiene il simbolo di una croce (+) seguito dagli orari \"8,00 - 20,00\". Il segnale principale è un divieto di transito per i motocicli. Il pannello integrativo specifica che il divieto è valido solo durante gli orari indicati.",
+    "name": "Divieto di transito per motocicli con pannello integrativo di orario",
+    "description": "Il segnale di divieto di transito per i motocicli è integrato da un pannello che indica gli orari in cui il divieto è valido: dalle ore 8:00 alle ore 20:00. Al di fuori di questi orari, i motocicli possono transitare."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Limitazioni al transito per categorie di veicoli",
+      "Orari di validità delle prescrizioni viarie"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "divieto di transito",
+      "motocicli",
+      "orario"
+    ],
+    "vector_search_queries": [
+      "validità oraria dei segnali di divieto di transito per categorie di veicoli",
+      "interpretazione pannelli integrativi con orario per motocicli"
+    ],
+    "rule_explanation": "Il pannello integrativo specifica gli orari in cui vige il divieto di transito per i motocicli, rendendolo valido solo in tali fasce orarie."
+  }
+}

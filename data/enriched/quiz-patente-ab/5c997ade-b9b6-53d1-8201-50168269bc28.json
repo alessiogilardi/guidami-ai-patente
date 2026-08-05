@@ -1,0 +1,32 @@
+{
+  "question_id": 4236,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20935",
+  "text": "Le strisce bianche discontinue sull'intersezione in figura sono strisce di guida",
+  "correct_answer": true,
+  "image": "5a7b8a62df93005bdc8043e5b480dc80.jpeg",
+  "image_description": "Strisce di guida. Le strisce bianche discontinue, che si trovano sull'incrocio, sono strisce di guida. Queste strisce indicano il percorso da seguire per immettersi o attraversare l'incrocio, ma non hanno un valore di precedenza intrinseco. La loro funzione è quella di guidare il flusso dei veicoli, specialmente in incroci complessi o con corsie deviate. Non vietano né consentono esplicitamente la svolta, ma delineano il tracciato consentito.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di un incrocio stradale. Sono presenti segnaletica orizzontale, nello specifico strisce bianche discontinue che formano delle guide per la circolazione dei veicoli. Queste strisce sono posizionate in modo da indicare i percorsi da seguire per attraversare l'incrocio o per immettersi nelle strade laterali. Non sono presenti segnali verticali né altri veicoli. L'incrocio è a raso e presenta quattro bracci. Le corsie sono delimitate da strisce bianche continue e discontinue. Le strisce di guida sono formate da segmenti bianchi discontinui che si curvano per dirigere il traffico.",
+    "name": "Strisce di guida",
+    "description": "Le strisce bianche discontinue, che si trovano sull'incrocio, sono strisce di guida. Queste strisce indicano il percorso da seguire per immettersi o attraversare l'incrocio, ma non hanno un valore di precedenza intrinseco. La loro funzione è quella di guidare il flusso dei veicoli, specialmente in incroci complessi o con corsie deviate. Non vietano né consentono esplicitamente la svolta, ma delineano il tracciato consentito."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Strisce di guida",
+      "Intersezioni stradali"
+    ],
+    "exact_keywords": [
+      "strisce bianche discontinue",
+      "intersezione",
+      "strisce di guida",
+      "percorso da seguire"
+    ],
+    "vector_search_queries": [
+      "funzione delle strisce di guida bianche discontinue nelle intersezioni",
+      "segnaletica orizzontale per indicare il percorso negli incroci"
+    ],
+    "rule_explanation": "Le strisce bianche discontinue in un'intersezione sono definite strisce di guida e indicano il percorso da seguire per immettersi o attraversare l'incrocio, senza implicare regole di precedenza."
+  }
+}

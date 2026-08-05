@@ -1,0 +1,32 @@
+{
+  "question_id": 4208,
+  "topic": "Segnali di precedenza",
+  "number": "20698",
+  "text": "Il segnale raffigurato preannuncia il divieto d'inversione di marcia",
+  "correct_answer": false,
+  "image": "1d54595537d45c8248194c62b91d2222.jpeg",
+  "image_description": "Segnale di dare precedenza agli veicoli provenienti dal senso di marcia opposto. Il segnale indica che la circolazione avviene in doppio senso e che i veicoli che si avvicinano da senso opposto hanno la precedenza. Pertanto, è necessario dare la precedenza ai veicoli provenienti dalla direzione opposta.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco su sfondo blu scuro. All'interno del segnale sono presenti due frecce: una freccia rossa rivolta verso il basso e una freccia bianca rivolta verso l'alto. La freccia rossa indica la direzione da cui provengono i veicoli che devono dare la precedenza, mentre la freccia bianca indica la direzione da cui provengono i veicoli che hanno la precedenza. Questo segnale è comunemente noto come segnale di \"dare precedenza ai veicoli provenienti dal senso di marcia opposto\" o \"strettoia con doppio senso di circolazione\".",
+    "name": "Segnale di dare precedenza agli veicoli provenienti dal senso di marcia opposto",
+    "description": "Il segnale indica che la circolazione avviene in doppio senso e che i veicoli che si avvicinano da senso opposto hanno la precedenza. Pertanto, è necessario dare la precedenza ai veicoli provenienti dalla direzione opposta."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Divieto di inversione di marcia"
+    ],
+    "exact_keywords": [
+      "segnale di dare precedenza",
+      "senso unico alternato",
+      "divieto di inversione di marcia",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "obblighi imposti dal segnale di dare precedenza",
+      "differenza tra segnale di dare precedenza e divieto di inversione di marcia",
+      "segnali che indicano il divieto di inversione di marcia"
+    ],
+    "rule_explanation": "Il segnale raffigurato impone di dare la precedenza ai veicoli provenienti dal senso opposto, non vieta l'inversione di marcia. L'inversione di marcia è vietata da altri segnali specifici."
+  }
+}

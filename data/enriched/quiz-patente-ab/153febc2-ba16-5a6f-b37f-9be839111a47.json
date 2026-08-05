@@ -1,0 +1,28 @@
+{
+  "question_id": 4402,
+  "topic": "Distanza di sicurezza",
+  "number": "22617",
+  "text": "Lo spazio di frenatura diminuisce se la strada è in discesa",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Fattori che influenzano la frenata"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "discesa",
+      "aumento della velocità",
+      "forza di gravità"
+    ],
+    "vector_search_queries": [
+      "influenza della pendenza sulla distanza di frenatura",
+      "effetti della discesa sullo spazio di arresto del veicolo"
+    ],
+    "rule_explanation": "Lo spazio di frenatura aumenta in discesa a causa dell'incremento della velocità dovuto alla forza di gravità, non diminuisce."
+  }
+}

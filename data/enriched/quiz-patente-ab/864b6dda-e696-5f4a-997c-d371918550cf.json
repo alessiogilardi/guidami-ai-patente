@@ -1,0 +1,29 @@
+{
+  "question_id": 4708,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25359",
+  "text": "Il sovraccarico del veicolo comporta maggiori difficoltà di guida, mentre non comporta problemi per le sospensioni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sovraccarico del veicolo",
+      "Stabilità e tenuta di strada",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "sovraccarico",
+      "difficoltà di guida",
+      "sospensioni",
+      "tenuta di strada",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "effetti del sovraccarico sulla guida e sulle sospensioni",
+      "impatto del sovraccarico sulla stabilità e sulla meccanica del veicolo"
+    ],
+    "rule_explanation": "Il sovraccarico del veicolo non solo aumenta le difficoltà di guida e riduce la tenuta di strada, ma causa anche un'usura precoce e danni alle sospensioni e ad altri componenti meccanici."
+  }
+}

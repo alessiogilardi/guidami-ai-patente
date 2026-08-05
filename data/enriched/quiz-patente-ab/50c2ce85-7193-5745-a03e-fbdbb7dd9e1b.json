@@ -1,0 +1,27 @@
+{
+  "question_id": 4505,
+  "topic": "Norme sul sorpasso",
+  "number": "23601",
+  "text": "E' vietato sorpassare un'auto della Polizia, non in servizio di emergenza, per non ostacolarne la marcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di veicoli di emergenza",
+      "Ostacolo alla circolazione"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicoli di polizia",
+      "servizio di emergenza",
+      "ostacolare la marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso veicoli di emergenza in servizio di emergenza",
+      "sorpasso auto polizia non in emergenza"
+    ],
+    "rule_explanation": "Il divieto di sorpasso si applica ai veicoli di emergenza solo quando sono in servizio di emergenza con sirena e lampeggianti attivi. Non si applica a un'auto di polizia ferma o in normale servizio."
+  }
+}

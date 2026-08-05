@@ -1,0 +1,27 @@
+{
+  "question_id": 4402,
+  "topic": "Distanza di sicurezza",
+  "number": "22609",
+  "text": "Lo spazio di frenatura aumenta se la strada è innevata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condizioni di aderenza stradale"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "distanza di sicurezza",
+      "aderenza",
+      "neve"
+    ],
+    "vector_search_queries": [
+      "aumento spazio di frenatura su strada innevata",
+      "influenza dell'aderenza sulla distanza di sicurezza"
+    ],
+    "rule_explanation": "Lo spazio di frenatura, e di conseguenza la distanza di sicurezza, aumentano in condizioni di scarsa aderenza come strada innevata, ghiacciata o bagnata."
+  }
+}

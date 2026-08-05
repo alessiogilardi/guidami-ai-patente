@@ -1,0 +1,27 @@
+{
+  "question_id": 4537,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23854",
+  "text": "Sulle autostrade e strade extraurbane principali è vietata la circolazione di macchine agricole",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di circolazione per macchine agricole su autostrade e strade extraurbane principali",
+      "Classificazione delle strade e veicoli ammessi"
+    ],
+    "exact_keywords": [
+      "macchine agricole",
+      "autostrade",
+      "strade extraurbane principali",
+      "divieto di circolazione"
+    ],
+    "vector_search_queries": [
+      "divieto circolazione macchine agricole autostrade e strade extraurbane principali",
+      "veicoli non ammessi su autostrade e strade extraurbane principali"
+    ],
+    "rule_explanation": "È vietata la circolazione di macchine agricole sulle autostrade e sulle strade extraurbane principali, salvo specifiche deroghe previste dalla normativa."
+  }
+}

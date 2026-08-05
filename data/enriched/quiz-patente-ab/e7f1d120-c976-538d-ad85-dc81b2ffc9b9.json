@@ -1,0 +1,32 @@
+{
+  "question_id": 4259,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21161",
+  "text": "Quando il vigile si dispone con le braccia aperte verso la nostra direzione come in figura non si può svoltare a destra",
+  "correct_answer": true,
+  "image": "5dec4c1e652c85a82f5e3182e817c4f4.jpeg",
+  "image_description": "Segnale del vigile con braccia aperte verso la nostra direzione. La posizione del vigile con le braccia aperte verso la nostra direzione indica che è vietato il passaggio. Questa posizione è equivalente al segnale di rosso del semaforo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra la figura stilizzata di un vigile urbano in piedi al centro di un incrocio. Il vigile ha le braccia completamente aperte, perpendicolari al corpo, e il volto rivolto verso l'osservatore (e quindi verso la nostra direzione di marcia). Ai lati dell'incrocio sono visibili delle linee che rappresentano le corsie o i bordi della strada, con delle angolazioni che suggeriscono la presenza di un incrocio. Non sono presenti altri segnali stradali o veicoli. La posizione del vigile con le braccia aperte verso la nostra direzione è un segnale degli agenti del traffico che indica un divieto di passaggio.",
+    "name": "Segnale del vigile con braccia aperte verso la nostra direzione",
+    "description": "La posizione del vigile con le braccia aperte verso la nostra direzione indica che è vietato il passaggio. Questa posizione è equivalente al segnale di rosso del semaforo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni degli agenti del traffico",
+      "Interpretazione dei segnali degli agenti del traffico"
+    ],
+    "exact_keywords": [
+      "agente del traffico",
+      "braccia aperte",
+      "divieto di passaggio",
+      "segnale di rosso"
+    ],
+    "vector_search_queries": [
+      "interpretazione segnale agente traffico braccia aperte",
+      "divieto di passaggio agente del traffico con braccia aperte",
+      "equivalenza segnale semaforico rosso e agente del traffico con braccia aperte"
+    ],
+    "rule_explanation": "La posizione dell'agente del traffico con le braccia aperte verso la nostra direzione impone il divieto di passaggio, equivalente al segnale di rosso del semaforo."
+  }
+}

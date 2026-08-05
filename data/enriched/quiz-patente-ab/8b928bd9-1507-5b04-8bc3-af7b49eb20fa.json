@@ -1,0 +1,29 @@
+{
+  "question_id": 4605,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24459",
+  "text": "E' vietato utilizzare un autoveicolo sulle strade pubbliche quando non si ha con sé la ricevuta di avvenuto pagamento della tassa di possesso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente",
+      "Documenti di circolazione obbligatori",
+      "Tassa di possesso (bollo auto)"
+    ],
+    "exact_keywords": [
+      "ricevuta di pagamento",
+      "tassa di possesso",
+      "documenti di circolazione",
+      "funzionari o agenti"
+    ],
+    "vector_search_queries": [
+      "obbligo esibizione ricevuta tassa di possesso",
+      "documenti necessari per la circolazione stradale",
+      "sanzione per mancata esibizione documenti"
+    ],
+    "rule_explanation": "Non è obbligatorio avere con sé la ricevuta di pagamento della tassa di possesso per circolare; tale documento non rientra tra quelli da esibire su richiesta degli agenti."
+  }
+}

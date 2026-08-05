@@ -1,0 +1,27 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24415",
+  "text": "Il casco conserva invariate le sue caratteristiche protettive per periodi lunghissimi, di oltre venti anni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Durata e manutenzione dei dispositivi di sicurezza",
+      "Casco protettivo per motociclisti"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "caratteristiche protettive",
+      "durata",
+      "manutenzione"
+    ],
+    "vector_search_queries": [
+      "durata di validità del casco protettivo",
+      "sostituzione del casco dopo un incidente o per obsolescenza"
+    ],
+    "rule_explanation": "Il casco protettivo ha una durata limitata nel tempo e deve essere sostituito se danneggiato o dopo un periodo di utilizzo prolungato, per garantirne l'efficacia."
+  }
+}

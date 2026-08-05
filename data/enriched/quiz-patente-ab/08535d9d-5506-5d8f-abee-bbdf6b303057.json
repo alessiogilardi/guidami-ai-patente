@@ -1,0 +1,27 @@
+{
+  "question_id": 4572,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24152",
+  "text": "Durante la marcia, in caso di nebbia con visibilità inferiore a 50 metri, bisogna usare la luce posteriore per nebbia, se il veicolo ne è dotato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso delle luci in condizioni di scarsa visibilità",
+      "Dispositivi di illuminazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "luce posteriore per nebbia",
+      "visibilità inferiore a 50 metri",
+      "marcia",
+      "nebbia"
+    ],
+    "vector_search_queries": [
+      "uso luce posteriore per nebbia con visibilità inferiore a 50 metri",
+      "obbligo luci posteriori in caso di nebbia"
+    ],
+    "rule_explanation": "In caso di nebbia con visibilità inferiore a 50 metri, è obbligatorio l'uso della luce posteriore per nebbia, se il veicolo ne è equipaggiato."
+  }
+}

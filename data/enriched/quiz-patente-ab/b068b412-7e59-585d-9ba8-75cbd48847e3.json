@@ -1,0 +1,27 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23576",
+  "text": "Nella fase di sorpasso, il conducente è tenuto a mantenersi il più a lungo possibile nella corsia di sorpasso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Regole di comportamento durante il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "corsia di sorpasso",
+      "ritorno nella corsia di marcia",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di rientro nella corsia di marcia dopo il sorpasso",
+      "comportamento del conducente nella corsia di sorpasso"
+    ],
+    "rule_explanation": "Il conducente, dopo aver completato il sorpasso, deve rientrare nella corsia di marcia senza indugio e senza creare pericolo o intralcio."
+  }
+}

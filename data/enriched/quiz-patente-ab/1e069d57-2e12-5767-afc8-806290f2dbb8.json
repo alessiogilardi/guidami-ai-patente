@@ -1,0 +1,28 @@
+{
+  "question_id": 4388,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22471",
+  "text": "Il limite massimo di velocità sulle strade extraurbane secondarie è di 90 km/h per le autovetture che trainano un rimorchio per il trasporto di gommoni o alianti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane secondarie",
+      "Veicoli in transito con rimorchio"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "strade extraurbane secondarie",
+      "autovetture",
+      "trainare rimorchio",
+      "90 km/h"
+    ],
+    "vector_search_queries": [
+      "limite velocità autovettura con rimorchio su strada extraurbana secondaria",
+      "velocità massima consentita per veicoli trainanti rimorchio su strade extraurbane secondarie"
+    ],
+    "rule_explanation": "Il limite di velocità per le autovetture che trainano un rimorchio su strade extraurbane secondarie è di 80 km/h, non 90 km/h."
+  }
+}

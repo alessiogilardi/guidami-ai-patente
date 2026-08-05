@@ -1,0 +1,28 @@
+{
+  "question_id": 4438,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22951",
+  "text": "In presenza del segnale DARE PRECEDENZA, se occorre arrestarsi, bisogna che ciò avvenga in corrispondenza della striscia trasversale, formata da una serie di triangoli bianchi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di dare precedenza",
+      "Segnaletica stradale di prescrizione",
+      "Posizionamento del veicolo in prossimità di incroci"
+    ],
+    "exact_keywords": [
+      "segnale DARE PRECEDENZA",
+      "striscia trasversale",
+      "triangoli bianchi",
+      "arrestarsi"
+    ],
+    "vector_search_queries": [
+      "posizione veicolo segnale DARE PRECEDENZA",
+      "arresto veicolo su striscia trasversale con triangoli bianchi"
+    ],
+    "rule_explanation": "In presenza del segnale DARE PRECEDENZA, l'arresto del veicolo, se necessario, deve avvenire sulla striscia trasversale di arresto, costituita da triangoli bianchi."
+  }
+}

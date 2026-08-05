@@ -1,0 +1,27 @@
+{
+  "question_id": 4013,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18453",
+  "text": "L'autostrada deve essere lateralmente recintata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Caratteristiche delle autostrade",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "recintata",
+      "segnalazione",
+      "accesso"
+    ],
+    "vector_search_queries": [
+      "requisiti strutturali delle autostrade",
+      "norme di accesso e sicurezza autostradale"
+    ],
+    "rule_explanation": "Le autostrade devono essere dotate di recinzioni laterali per impedire l'accesso a veicoli non autorizzati e garantire la sicurezza della circolazione."
+  }
+}

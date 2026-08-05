@@ -1,0 +1,32 @@
+{
+  "question_id": 4065,
+  "topic": "Segnali di pericolo",
+  "number": "19029",
+  "text": "Il segnale raffigurato preannuncia un attraversamento ferroviario protetto da barriere o semibarriere, qualunque sia il numero dei binari",
+  "correct_answer": true,
+  "image": "accabdc7809596ef95d9e34d4b33d06b.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere o semibarriere. Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un simbolo nero che rappresenta un passaggio a livello con barriere, costituito da due elementi verticali collegati da tre elementi orizzontali. Il segnale è isolato, non inserito in una scena di guida o in sequenza con altri segnali.",
+    "name": "Segnale di passaggio a livello con barriere o semibarriere",
+    "description": "Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Passaggio a livello con barriere"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento ferroviario",
+      "barriere",
+      "semibarriere",
+      "passaggio a livello"
+    ],
+    "vector_search_queries": [
+      "preavviso passaggio a livello con barriere o semibarriere",
+      "segnalazione di pericolo per attraversamento ferroviario protetto"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante un passaggio a livello con barriere o semibarriere preannuncia tale attraversamento, indipendentemente dal numero di binari."
+  }
+}

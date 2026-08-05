@@ -1,0 +1,32 @@
+{
+  "question_id": 4193,
+  "topic": "Segnali di precedenza",
+  "number": "20519",
+  "text": "In presenza del segnale raffigurato è obbligatorio fermarsi al prossimo incrocio",
+  "correct_answer": false,
+  "image": "1a690d53490cc07a880e1a228dd9681b.jpeg",
+  "image_description": "Segnale di DARE PRECEDENZA con pannello integrativo di distanza. Il segnale raffigurato è un segnale di DARE PRECEDENZA, posto su una strada che non ha diritto di precedenza. Il pannello integrativo indica la distanza di 320 metri dall'incrocio in cui vige tale prescrizione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di DARE PRECEDENZA, riconoscibile dalla sua forma triangolare con il vertice verso il basso e il bordo rosso su sfondo bianco. Sopra questo segnale, è presente un pannello integrativo rettangolare di colore bianco con la scritta \"320 m\" in nero, che indica una distanza in metri. Questo pannello specifica la distanza dall'incrocio o dal punto in cui si applica la prescrizione del segnale di DARE PRECEDENZA.",
+    "name": "Segnale di DARE PRECEDENZA con pannello integrativo di distanza",
+    "description": "Il segnale raffigurato è un segnale di DARE PRECEDENZA, posto su una strada che non ha diritto di precedenza. Il pannello integrativo indica la distanza di 320 metri dall'incrocio in cui vige tale prescrizione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di DARE PRECEDENZA",
+      "Obbligo di fermarsi e dare precedenza",
+      "Distanza dall'incrocio"
+    ],
+    "exact_keywords": [
+      "segnale DARE PRECEDENZA",
+      "pannello integrativo di distanza",
+      "fermarsi",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "obbligo di fermarsi al segnale DARE PRECEDENZA con pannello di distanza",
+      "interpretazione segnale DARE PRECEDENZA e pannello integrativo di distanza"
+    ],
+    "rule_explanation": "Il segnale di DARE PRECEDENZA impone di dare precedenza ai veicoli provenienti da destra e da sinistra, ma non obbliga a fermarsi, a meno che non sia presente il segnale di STOP o un agente. Il pannello integrativo indica solo la distanza dall'incrocio in cui vige la prescrizione."
+  }
+}

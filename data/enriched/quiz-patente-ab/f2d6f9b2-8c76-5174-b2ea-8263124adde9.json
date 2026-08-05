@@ -1,0 +1,29 @@
+{
+  "question_id": 4388,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22472",
+  "text": "Sulle strade extraurbane secondarie il limite massimo di velocità per le macchine agricole e le macchine operatrici è di 70 km/h, se hanno in funzione il dispositivo a luce gialla lampeggiante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per macchine agricole e operatrici",
+      "Dispositivi luminosi di segnalazione",
+      "Strade extraurbane secondarie"
+    ],
+    "exact_keywords": [
+      "macchine agricole",
+      "macchine operatrici",
+      "strade extraurbane secondarie",
+      "dispositivo a luce gialla lampeggiante",
+      "velocità massima"
+    ],
+    "vector_search_queries": [
+      "limite velocità macchine agricole e operatrici strade extraurbane secondarie",
+      "velocità massima macchine agricole con lampeggiante giallo"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per macchine agricole e operatrici su strade extraurbane secondarie è di 40 km/h, indipendentemente dall'uso del lampeggiante giallo."
+  }
+}

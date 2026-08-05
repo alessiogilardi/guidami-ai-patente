@@ -1,0 +1,27 @@
+{
+  "question_id": 4661,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25003",
+  "text": "La responsabilità civile connessa al sinistro stradale si limita al risarcimento dei danni alle sole cose",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile da sinistro stradale",
+      "Risarcimento danni"
+    ],
+    "exact_keywords": [
+      "responsabilità civile",
+      "sinistro stradale",
+      "danni alle persone",
+      "danni a cose"
+    ],
+    "vector_search_queries": [
+      "risarcimento danni a persone e cose in caso di sinistro stradale",
+      "estensione della responsabilità civile per incidenti stradali"
+    ],
+    "rule_explanation": "La responsabilità civile derivante da un sinistro stradale non si limita al risarcimento dei soli danni materiali, ma include anche i danni alle persone."
+  }
+}

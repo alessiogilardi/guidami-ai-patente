@@ -1,0 +1,28 @@
+{
+  "question_id": 4541,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23880",
+  "text": "Sulle carreggiate, sulle rampe e sugli svincoli di autostrade e strade extraurbane principali è vietato invertire il senso di marcia e attraversare lo spartitraffico, anche all'altezza dei varchi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di inversioni di marcia su autostrade e strade extraurbane principali",
+      "Divieto di attraversamento dello spartitraffico"
+    ],
+    "exact_keywords": [
+      "invertire il senso di marcia",
+      "spartitraffico",
+      "varchi",
+      "autostrade",
+      "strade extraurbane principali"
+    ],
+    "vector_search_queries": [
+      "divieto di inversione di marcia su autostrade e strade extraurbane principali",
+      "divieto di attraversamento spartitraffico su autostrade e strade extraurbane principali"
+    ],
+    "rule_explanation": "Su autostrade e strade extraurbane principali è vietato invertire il senso di marcia e attraversare lo spartitraffico, anche in corrispondenza dei varchi, per garantire la sicurezza della circolazione."
+  }
+}

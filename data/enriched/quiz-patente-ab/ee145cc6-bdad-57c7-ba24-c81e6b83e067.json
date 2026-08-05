@@ -1,0 +1,29 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25389",
+  "text": "La \"durezza\" dello sterzo può essere indice di insufficiente pressione dei pneumatici",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pressione pneumatici",
+      "Manutenzione del veicolo",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "pressione dei pneumatici",
+      "sterzo",
+      "tenuta di strada",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "conseguenze della pressione insufficiente dei pneumatici sullo sterzo",
+      "rapporto tra pressione pneumatici e durezza dello sterzo",
+      "manutenzione pneumatici e sicurezza di guida"
+    ],
+    "rule_explanation": "La durezza dello sterzo può indicare una pressione insufficiente dei pneumatici, compromettendo la tenuta di strada e la sicurezza del veicolo."
+  }
+}

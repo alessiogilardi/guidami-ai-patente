@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23511",
+  "text": "E' vietato il sorpasso di un veicolo che abbia rallentato in corrispondenza di un passaggio pedonale per consentire l'attraversamento dei pedoni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso in prossimità di attraversamenti pedonali",
+      "Obbligo di dare precedenza ai pedoni"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "passaggio pedonale",
+      "attraversamento pedoni",
+      "dare precedenza"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in prossimità di attraversamenti pedonali",
+      "obbligo di precedenza ai pedoni in attraversamento",
+      "comportamento del conducente in presenza di pedoni che attraversano la strada"
+    ],
+    "rule_explanation": "È vietato sorpassare un veicolo che rallenta o si ferma in prossimità di un passaggio pedonale per far attraversare i pedoni, dovendo invece dare loro la precedenza."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4658,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24976",
+  "text": "Chi è penalmente e civilmente responsabile di un sinistro stradale qualora abbia violato norme del Codice della strada è anche soggetto alle relative sanzioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile e penale per violazione del CdS",
+      "Sanzioni amministrative e penali per sinistri stradali"
+    ],
+    "exact_keywords": [
+      "responsabilità civile",
+      "responsabilità penale",
+      "violazione del Codice della strada",
+      "sanzioni"
+    ],
+    "vector_search_queries": [
+      "conseguenze civili e penali della violazione del Codice della strada in caso di sinistro",
+      "sanzioni applicabili a chi commette infrazioni al CdS che causano incidenti"
+    ],
+    "rule_explanation": "La violazione di norme del Codice della strada che causi un sinistro comporta responsabilità civile, penale e sanzioni amministrative/penali, proporzionate alla gravità dell'infrazione e del danno."
+  }
+}

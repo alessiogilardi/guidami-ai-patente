@@ -1,0 +1,27 @@
+{
+  "question_id": 4587,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24269",
+  "text": "Fuori dei centri abitati, i conducenti devono spegnere i proiettori di profondità procedendo con quelli anabbaglianti, quando seguono un veicolo a breve distanza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di profondità",
+      "Distanza di sicurezza tra veicoli"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "fari anabbaglianti",
+      "seguire un veicolo",
+      "centri abitati"
+    ],
+    "vector_search_queries": [
+      "obbligo spegnimento proiettori di profondità in presenza di veicolo che precede",
+      "uso fari anabbaglianti in autostrada o fuori dai centri abitati"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, i proiettori di profondità vanno spenti se si segue un altro veicolo a breve distanza, per non abbagliare il conducente che precede."
+  }
+}

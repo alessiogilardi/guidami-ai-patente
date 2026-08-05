@@ -1,0 +1,28 @@
+{
+  "question_id": 4693,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25209",
+  "text": "Il ribaltamento in curva del veicolo è favorito dal carico non stabilmente fissato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Fissaggio del carico",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "ribaltamento",
+      "curva",
+      "carico non stabilmente fissato",
+      "baricentro"
+    ],
+    "vector_search_queries": [
+      "influenza del fissaggio del carico sulla stabilità del veicolo in curva",
+      "rischio di ribaltamento veicolo per carico instabile"
+    ],
+    "rule_explanation": "Un carico non adeguatamente fissato aumenta il rischio di ribaltamento del veicolo, specialmente in curva, a causa dello spostamento del baricentro e della minore stabilità."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23581",
+  "text": "Il sorpasso è vietato quando sulla carreggiata è tracciata la linea tratteggiata di mezzeria",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Regole di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "linea discontinua",
+      "linea continua",
+      "mezzeria"
+    ],
+    "vector_search_queries": [
+      "sorpasso su linea discontinua di mezzeria",
+      "divieto di sorpasso e segnaletica orizzontale"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in presenza di linea continua, non di linea tratteggiata. La linea tratteggiata consente il sorpasso se le condizioni di traffico lo permettono."
+  }
+}

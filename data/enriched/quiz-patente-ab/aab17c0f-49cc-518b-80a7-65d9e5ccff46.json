@@ -1,0 +1,28 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22481",
+  "text": "In caso di arresto forzato del veicolo sui binari ferroviari di un passaggio a livello, bisogna fare in modo che i conducenti dei veicoli su rotaie siano avvisati in tempo utile del pericolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo alla circolazione ferroviaria",
+      "Obblighi in caso di arresto sui binari"
+    ],
+    "exact_keywords": [
+      "arresto forzato",
+      "binari ferroviari",
+      "passaggio a livello",
+      "veicoli su rotaie",
+      "avvisare il pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalazione pericolo sui binari del passaggio a livello",
+      "condotta da tenere in caso di arresto del veicolo sui binari ferroviari"
+    ],
+    "rule_explanation": "In caso di arresto del veicolo sui binari di un passaggio a livello, è obbligatorio segnalare tempestivamente il pericolo ai conducenti dei treni per prevenire incidenti."
+  }
+}

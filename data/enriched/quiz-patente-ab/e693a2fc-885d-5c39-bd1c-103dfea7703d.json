@@ -1,0 +1,31 @@
+{
+  "question_id": 4156,
+  "topic": "Segnali di obbligo",
+  "number": "20123",
+  "text": "Il segnale raffigurato può essere integrato con un pannello che indica la distanza dal punto in cui vige l'obbligo",
+  "correct_answer": true,
+  "image": "f11adbce174cb84be85861f037d85fb6.jpeg",
+  "image_description": "Obbligo di svolta a destra. Il segnale impone di svoltare obbligatoriamente a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro del segnale è presente una freccia bianca che parte dal basso a sinistra, curva verso destra e punta verso l'alto a destra. Questo segnale appartiene alla categoria dei segnali di obbligo.",
+    "name": "Obbligo di svolta a destra",
+    "description": "Il segnale impone di svoltare obbligatoriamente a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Integrazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "pannello integrativo",
+      "distanza dall'inizio del divieto",
+      "obbligo di svolta"
+    ],
+    "vector_search_queries": [
+      "pannelli integrativi per segnali di obbligo con indicazione di distanza",
+      "segnali di obbligo con pannello di inizio validità"
+    ],
+    "rule_explanation": "I segnali di obbligo possono essere integrati con pannelli che ne indicano la distanza dal punto in cui l'obbligo vige, specificando l'inizio dell'efficacia della prescrizione."
+  }
+}

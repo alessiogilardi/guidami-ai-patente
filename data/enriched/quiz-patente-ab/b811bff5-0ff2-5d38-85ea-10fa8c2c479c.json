@@ -1,0 +1,34 @@
+{
+  "question_id": 4089,
+  "topic": "Segnali di pericolo",
+  "number": "19320",
+  "text": "Il segnale raffigurato preannuncia la possibilità di trovare sulla strada animali domestici vaganti",
+  "correct_answer": true,
+  "image": "2aca17bfb73a3edfb26066f1e3c34f9d.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento di animali domestici. Il segnale preannuncia la possibile presenza di animali domestici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata la sagoma nera di una mucca. Questo segnale indica la potenziale presenza di animali domestici sulla strada.",
+    "name": "Segnale di pericolo - Attraversamento di animali domestici",
+    "description": "Il segnale preannuncia la possibile presenza di animali domestici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Animali vaganti",
+      "Attraversamento animali domestici"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "animali domestici",
+      "vaganti",
+      "preavviso",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo animali domestici vaganti",
+      "preavviso presenza animali sulla carreggiata",
+      "obbligo moderazione velocità per animali domestici"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante animali domestici preannuncia la loro possibile presenza sulla carreggiata, imponendo al conducente di moderare la velocità e prestare attenzione."
+  }
+}

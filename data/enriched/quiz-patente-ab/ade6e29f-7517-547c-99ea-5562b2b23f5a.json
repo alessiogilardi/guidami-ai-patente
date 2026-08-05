@@ -1,0 +1,27 @@
+{
+  "question_id": 4020,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18521",
+  "text": "Il marciapiede è una parte della strada, al di fuori della carreggiata, destinata alla circolazione dei pedoni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di marciapiede",
+      "Uso della strada e circolazione pedonale"
+    ],
+    "exact_keywords": [
+      "marciapiede",
+      "strada",
+      "carreggiata",
+      "pedoni"
+    ],
+    "vector_search_queries": [
+      "definizione di marciapiede nel codice della strada",
+      "destinazione d'uso della carreggiata e del marciapiede"
+    ],
+    "rule_explanation": "Il marciapiede è una sezione della strada, distinta dalla carreggiata, riservata esclusivamente al transito dei pedoni."
+  }
+}

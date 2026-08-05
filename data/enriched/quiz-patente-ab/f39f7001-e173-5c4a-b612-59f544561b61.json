@@ -1,0 +1,29 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24695",
+  "text": "La patente di guida di categoria B, salvo diversa limitazione riportata sul documento stesso o salvo allineamento alla data del compleanno del titolare, vale dieci anni in ogni caso di rilascio o di conferma",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Conferma della patente",
+      "Durata della validità della patente B"
+    ],
+    "exact_keywords": [
+      "patente di guida categoria B",
+      "validità diecennale",
+      "conferma di validità",
+      "limitazioni"
+    ],
+    "vector_search_queries": [
+      "durata validità patente B",
+      "conferma validità patente di guida",
+      "validità patente B con limitazioni"
+    ],
+    "rule_explanation": "La patente B vale dieci anni, ma la sua validità è soggetta a conferma periodica e può essere limitata da diverse disposizioni normative o cliniche."
+  }
+}

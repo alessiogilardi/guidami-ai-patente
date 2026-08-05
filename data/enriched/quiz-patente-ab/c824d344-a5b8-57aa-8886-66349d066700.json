@@ -1,0 +1,31 @@
+{
+  "question_id": 4333,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21859",
+  "text": "La barriera raffigurata può utilizzarsi nei passaggi a livello quando le sbarre sono guaste",
+  "correct_answer": true,
+  "image": "14d2108f6b028cd2d01929a738bf0b94.jpeg",
+  "image_description": "Barriera di cantiere. La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una barriera di cantiere, composta da una traversa orizzontale a strisce diagonali bianche e rosse, sostenuta da due montanti verticali. La barriera è posta su una linea orizzontale che rappresenta il suolo. Le strisce rosse e bianche alternate indicano un pericolo o un ostacolo temporaneo.",
+    "name": "Barriera di cantiere",
+    "description": "La barriera è utilizzata per delimitare un'area di cantiere stradale o un ostacolo temporaneo. Può essere integrata con luci lampeggianti in condizioni di scarsa visibilità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica temporanea di cantiere",
+      "Utilizzo di barriere in sostituzione delle sbarre"
+    ],
+    "exact_keywords": [
+      "barriera di cantiere",
+      "passaggio a livello",
+      "sbarre guaste",
+      "segnalamento temporaneo"
+    ],
+    "vector_search_queries": [
+      "uso di barriere di cantiere in sostituzione delle sbarre dei passaggi a livello",
+      "segnalamento temporaneo per passaggi a livello con sbarre guaste"
+    ],
+    "rule_explanation": "Le barriere di cantiere possono essere impiegate nei passaggi a livello in caso di guasto delle sbarre, come forma di segnalamento temporaneo per regolare la circolazione."
+  }
+}

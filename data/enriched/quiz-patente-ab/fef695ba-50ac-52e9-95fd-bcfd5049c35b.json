@@ -1,0 +1,27 @@
+{
+  "question_id": 4600,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24376",
+  "text": "L'airbag è un cuscino gonfiabile di nylon o altro materiale sintetico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza passiva",
+      "Airbag come sistema di ritenuta"
+    ],
+    "exact_keywords": [
+      "airbag",
+      "cuscino gonfiabile",
+      "materiale sintetico",
+      "sistema di ritenuta"
+    ],
+    "vector_search_queries": [
+      "definizione e funzione dell'airbag",
+      "materiali e funzionamento dei cuscini gonfiabili di sicurezza"
+    ],
+    "rule_explanation": "L'airbag è un dispositivo di sicurezza passiva, costituito da un cuscino gonfiabile in materiale sintetico, che si attiva in caso di urto per proteggere gli occupanti del veicolo."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4049,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18831",
+  "text": "Quando la carreggiata è occupata da ciclisti o pedoni, non è prudente sorpassarli se non si può rispettare una distanza laterale sufficiente.",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza laterale",
+      "Tutela degli utenti deboli della strada",
+      "Comportamento del sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "distanza laterale sufficiente",
+      "ciclisti",
+      "pedoni"
+    ],
+    "vector_search_queries": [
+      "distanza laterale minima per sorpasso ciclisti e pedoni",
+      "sorpasso sicuro di utenti vulnerabili della strada"
+    ],
+    "rule_explanation": "Il sorpasso di ciclisti o pedoni è consentito solo garantendo una distanza laterale di sicurezza adeguata a non metterli in pericolo."
+  }
+}

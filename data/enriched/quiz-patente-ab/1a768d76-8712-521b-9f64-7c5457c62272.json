@@ -1,0 +1,27 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18482",
+  "text": "Le corsie possono essere vietate a taluni tipi di veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione delle corsie stradali",
+      "Limitazioni d'uso delle corsie per tipologia di veicolo"
+    ],
+    "exact_keywords": [
+      "corsie",
+      "divieto",
+      "veicoli",
+      "segnalazione"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per specifici veicoli su determinate corsie",
+      "segnaletica stradale che limita l'uso delle corsie per tipo di veicolo"
+    ],
+    "rule_explanation": "Le corsie stradali possono essere riservate o vietate a determinate categorie di veicoli, come indicato dalla segnaletica stradale."
+  }
+}

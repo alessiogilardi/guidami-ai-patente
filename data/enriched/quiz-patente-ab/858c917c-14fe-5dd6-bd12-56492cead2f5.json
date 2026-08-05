@@ -1,0 +1,28 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25390",
+  "text": "Il servosterzo idraulico non funziona se il motore è spento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Servosterzo idraulico",
+      "Funzionamento del servosterzo",
+      "Sicurezza del veicolo"
+    ],
+    "exact_keywords": [
+      "servosterzo idraulico",
+      "motore spento",
+      "funzionamento",
+      "pompa idraulica"
+    ],
+    "vector_search_queries": [
+      "funzionamento servosterzo idraulico con motore spento",
+      "assistenza idraulica allo sterzo e regime motore"
+    ],
+    "rule_explanation": "Il servosterzo idraulico richiede la pompa azionata dal motore per fornire assistenza allo sterzo; a motore spento, la pompa non gira e il servosterzo non funziona."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4456,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23128",
+  "text": "Nell'incrocio rappresentato in figura il veicolo D deve dare la precedenza a quello C",
+  "correct_answer": false,
+  "image": "40153f827235d3de50afcc449e219f40.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. In assenza di segnali specifici, la precedenza è data ai veicoli che si trovano alla destra dei conducenti. In questo incrocio, il veicolo A ha la precedenza su tutti gli altri veicoli perché non ha nessuno alla sua destra. Successivamente, il veicolo C ha la precedenza sul veicolo D perché D si trova alla sua destra. Infine, il veicolo H deve dare la precedenza al veicolo A.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a quattro vie con quattro veicoli: un camion rosso (C) in alto a sinistra, un'auto blu (D) in basso a sinistra, un'auto gialla (A) a destra e un'auto bianca (H) in basso. I veicoli C e D intendono svoltare a sinistra, mentre A e H intendono proseguire dritto. Non sono presenti segnali stradali che regolano la precedenza, quindi si applica la regola generale della precedenza a destra. Il veicolo D ha il veicolo C alla sua destra, quindi D deve dare la precedenza a C. Il veicolo H ha il veicolo A alla sua destra, quindi H deve dare la precedenza ad A. Il veicolo C ha il veicolo A alla sua destra, quindi C deve dare la precedenza ad A. Il veicolo A non ha veicoli alla sua destra. Pertanto, l'ordine di passaggio è: prima A, poi C, poi D, e infine H.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "In assenza di segnali specifici, la precedenza è data ai veicoli che si trovano alla destra dei conducenti. In questo incrocio, il veicolo A ha la precedenza su tutti gli altri veicoli perché non ha nessuno alla sua destra. Successivamente, il veicolo C ha la precedenza sul veicolo D perché D si trova alla sua destra. Infine, il veicolo H deve dare la precedenza al veicolo A."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza a destra",
+      "Ordine di precedenza ai incroci non segnalati"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "assenza di segnali specifici",
+      "ordine di precedenza"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio non segnalato",
+      "regola generale di precedenza a destra"
+    ],
+    "rule_explanation": "Negli incroci a raso senza segnaletica verticale od orizzontale, vige la regola generale della precedenza a destra. Il veicolo C ha la precedenza sul D perché D si trova alla sua destra."
+  }
+}

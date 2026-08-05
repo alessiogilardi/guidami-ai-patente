@@ -1,0 +1,34 @@
+{
+  "question_id": 4188,
+  "topic": "Segnali di obbligo",
+  "number": "20450",
+  "text": "Il segnale raffigurato preannuncia una stazione ferroviaria",
+  "correct_answer": false,
+  "image": "a76ae926b3d2617ac4d872f0b4addc24.jpeg",
+  "image_description": "Segnale di fermarsi e dare precedenza (ALT) - Stazione autostradale. Il segnale impone l'obbligo di arrestarsi in corrispondenza della linea di arresto per le operazioni di pedaggio autostradale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale sono presenti le scritte \"ALT\" in alto e \"STAZIONE\" in basso, separate da una linea orizzontale nera spessa. Questo è un segnale di obbligo di fermarsi in una stazione autostradale.",
+    "name": "Segnale di fermarsi e dare precedenza (ALT) - Stazione autostradale",
+    "description": "Il segnale impone l'obbligo di arrestarsi in corrispondenza della linea di arresto per le operazioni di pedaggio autostradale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di prescrizione",
+      "Segnali di indicazione"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "segnali di prescrizione",
+      "segnali di indicazione",
+      "stazione autostradale",
+      "stazione ferroviaria"
+    ],
+    "vector_search_queries": [
+      "differenza segnali di obbligo e preavviso",
+      "segnali di prescrizione autostradali",
+      "segnali di indicazione autostradali"
+    ],
+    "rule_explanation": "Il segnale di fermarsi e dare precedenza (ALT) impone l'obbligo di arrestarsi per le operazioni di pedaggio autostradale, non preannuncia una stazione ferroviaria."
+  }
+}

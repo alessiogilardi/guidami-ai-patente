@@ -1,0 +1,29 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23006",
+  "text": "Lo specchio retrovisore centrale di un autoveicolo è in genere realizzato in modo da ridurre al minimo la distorsione della distanza dei veicoli che seguono",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Specchi retrovisori",
+      "Campo visivo del conducente",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore centrale",
+      "autoveicolo",
+      "distorsione della distanza",
+      "veicoli che seguono"
+    ],
+    "vector_search_queries": [
+      "funzione specchietto retrovisore centrale autoveicolo",
+      "riduzione distorsione distanza specchietti retrovisori",
+      "importanza specchi retrovisori per la sicurezza di guida"
+    ],
+    "rule_explanation": "Lo specchio retrovisore centrale degli autoveicoli è progettato per minimizzare la distorsione delle distanze, garantendo una visione chiara dei veicoli sopraggiungenti e migliorando la sicurezza."
+  }
+}

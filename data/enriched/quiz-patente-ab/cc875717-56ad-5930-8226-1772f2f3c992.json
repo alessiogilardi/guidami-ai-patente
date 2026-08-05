@@ -1,0 +1,28 @@
+{
+  "question_id": 4418,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22759",
+  "text": "Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre tener conto della ridotta visibilità nel nostro comportamento di guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità notturna",
+      "Comportamento in caso di abbagliamento",
+      "Guida in sicurezza su strade extraurbane"
+    ],
+    "exact_keywords": [
+      "fari a luce abbagliante",
+      "strada extraurbana",
+      "ridotta visibilità",
+      "comportamento di guida"
+    ],
+    "vector_search_queries": [
+      "adeguamento della guida in caso di abbagliamento da fari su strade extraurbane notturne",
+      "impatto dell'abbagliamento sulla visibilità notturna e comportamento del conducente"
+    ],
+    "rule_explanation": "Di notte, su strade extraurbane, in caso di incrocio con veicoli con fari abbaglianti accesi, il conducente deve adeguare il proprio comportamento di guida tenendo conto della ridotta visibilità causata dall'abbagliamento."
+  }
+}

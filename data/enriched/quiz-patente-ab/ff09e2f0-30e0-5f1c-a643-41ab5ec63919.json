@@ -1,0 +1,27 @@
+{
+  "question_id": 4432,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22890",
+  "text": "Giungendo in vicinanza di un incrocio bisogna predisporsi ad osservare le norme di precedenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Norme di precedenza agli incroci",
+      "Comportamento ai crocevia"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "norme di precedenza",
+      "regolare la marcia",
+      "condotta da tenere"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in prossimità di un incrocio",
+      "applicazione delle norme di precedenza agli incroci stradali"
+    ],
+    "rule_explanation": "In prossimità di un incrocio, il conducente deve moderare la velocità e attenersi alle norme di precedenza per garantire la sicurezza della circolazione."
+  }
+}

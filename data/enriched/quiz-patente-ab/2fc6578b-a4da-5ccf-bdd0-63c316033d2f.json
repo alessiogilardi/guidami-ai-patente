@@ -1,0 +1,27 @@
+{
+  "question_id": 4035,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18680",
+  "text": "Per agevolare il traffico, è opportuno lasciare liberi gli sbocchi delle strade laterali quando si viaggia dietro ad una fila di veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di circolazione per fluidità del traffico",
+      "Doveri del conducente in relazione agli sbocchi stradali"
+    ],
+    "exact_keywords": [
+      "sbocchi delle strade laterali",
+      "fila di veicoli",
+      "agevolare il traffico",
+      "circolazione stradale"
+    ],
+    "vector_search_queries": [
+      "obbligo di non ostruire sbocchi stradali laterali",
+      "condotta di guida per agevolare il traffico in presenza di file di veicoli"
+    ],
+    "rule_explanation": "È opportuno non ostruire gli sbocchi delle strade laterali per agevolare la circolazione, specialmente quando si segue una colonna di veicoli."
+  }
+}

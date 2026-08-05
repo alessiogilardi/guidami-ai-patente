@@ -1,0 +1,27 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18733",
+  "text": "Il conducente di un veicolo non può pretendere di passare per primo quando sorge il dubbio che non gli venga concessa la precedenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di dare la precedenza",
+      "Regola di condotta in caso di dubbio sulla precedenza"
+    ],
+    "exact_keywords": [
+      "precedenza",
+      "dubbio",
+      "concedere la precedenza",
+      "regola di condotta"
+    ],
+    "vector_search_queries": [
+      "condotta del conducente in caso di dubbio sulla precedenza",
+      "obbligo di dare la precedenza quando non si è certi di averla"
+    ],
+    "rule_explanation": "In caso di dubbio sul diritto di precedenza, il conducente deve moderare la velocità e, se necessario, fermarsi per consentire il passaggio ai veicoli aventi la precedenza."
+  }
+}

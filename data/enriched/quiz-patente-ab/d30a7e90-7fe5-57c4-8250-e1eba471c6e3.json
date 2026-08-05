@@ -1,0 +1,27 @@
+{
+  "question_id": 4562,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24047",
+  "text": "Se si traina un veicolo guasto, munito di servosterzo, lo sterzo risulterà sempre bloccato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Traino di veicoli in avaria",
+      "Funzionamento del servosterzo"
+    ],
+    "exact_keywords": [
+      "veicolo in avaria",
+      "servosterzo",
+      "traino",
+      "bloccato"
+    ],
+    "vector_search_queries": [
+      "funzionamento servosterzo durante traino veicolo in avaria",
+      "sterzo bloccato traino veicolo guasto con servosterzo"
+    ],
+    "rule_explanation": "Il servosterzo, anche su un veicolo in avaria, non è necessariamente bloccato durante il traino; il suo funzionamento dipende dal sistema specifico e dalla velocità."
+  }
+}

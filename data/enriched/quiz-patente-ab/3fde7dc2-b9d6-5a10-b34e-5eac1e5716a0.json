@@ -1,0 +1,30 @@
+{
+  "question_id": 4561,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24027",
+  "text": "Circolando dietro ad un veicolo che trasporta un carico che sta per cadere, conviene arrestarsi bruscamente, ripartendo solo quando gli altri veicoli ci abbiano superato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di mantenere la distanza di sicurezza",
+      "Comportamento in caso di pericolo improvviso",
+      "Divieto di arresto improvviso"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo in avaria",
+      "carico pericoloso",
+      "arrestarsi bruscamente",
+      "pannello di형식"
+    ],
+    "vector_search_queries": [
+      "mantenimento della distanza di sicurezza da veicolo con carico instabile",
+      "comportamento da tenere in caso di carico che rischia di cadere dal veicolo che precede",
+      "pericolo di caduta carico e obblighi del conducente che segue"
+    ],
+    "rule_explanation": "Il conducente deve mantenere una distanza di sicurezza tale da evitare pericoli, non deve arrestarsi bruscamente ma segnalare il pericolo e, se necessario, fermarsi in modo sicuro."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4564,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24070",
+  "text": "Il pannello raffigurato identifica gli autocarri specializzati per il trasporto di materiali da costruzione",
+  "correct_answer": false,
+  "image": "cebd5604de2f733632998094cb590286.jpeg",
+  "image_description": "Pannello per veicoli con carico sporgente. Il pannello in figura, di forma quadrangolare con strisce diagonali rosse e bianche, viene utilizzato per segnalare carichi sporgenti dalla parte posteriore di un veicolo. Deve essere posizionato all'estremità del carico sporgente in modo da essere ben visibile. La sua presenza invita i conducenti che seguono a prestare maggiore attenzione e a mantenere una distanza di sicurezza adeguata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello quadrangolare con strisce diagonali alternate di colore rosso e bianco. Questo pannello è un segnale utilizzato per indicare la presenza di un carico che sporge dalla parte posteriore di un veicolo. Le strisce rosse e bianche servono a rendere il pannello ben visibile, specialmente in condizioni di scarsa illuminazione o in presenza di traffico. Il pannello è dotato di quattro fori agli angoli, presumibilmente per il fissaggio al veicolo o al carico. L'analisi si concentra sull'aspetto visivo del pannello e sulla sua funzione di segnalazione di un carico sporgente, come previsto dal Codice della Strada italiano.",
+    "name": "Pannello per veicoli con carico sporgente",
+    "description": "Il pannello in figura, di forma quadrangolare con strisce diagonali rosse e bianche, viene utilizzato per segnalare carichi sporgenti dalla parte posteriore di un veicolo. Deve essere posizionato all'estremità del carico sporgente in modo da essere ben visibile. La sua presenza invita i conducenti che seguono a prestare maggiore attenzione e a mantenere una distanza di sicurezza adeguata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di carichi sporgenti",
+      "Dispositivi di equipaggiamento dei veicoli"
+    ],
+    "exact_keywords": [
+      "pannello per veicoli",
+      "carico sporgente",
+      "strisce diagonali rosse e bianche",
+      "autocarri specializzati"
+    ],
+    "vector_search_queries": [
+      "segnalazione carico sporgente posteriore veicolo",
+      "pannello identificativo autocarri trasporto materiali da costruzione"
+    ],
+    "rule_explanation": "Il pannello a strisce diagonali rosse e bianche segnala un carico sporgente, non identifica autocarri per materiali da costruzione."
+  }
+}

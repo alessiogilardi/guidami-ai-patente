@@ -1,0 +1,29 @@
+{
+  "question_id": 4402,
+  "topic": "Distanza di sicurezza",
+  "number": "22612",
+  "text": "Lo spazio di frenatura diminuisce se la strada è in salita",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Fattori che influenzano la frenata"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "salita",
+      "discesa",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "spazio di frenatura in salita",
+      "influenza della pendenza sullo spazio di frenatura",
+      "distanza di arresto veicolo in relazione alla pendenza stradale"
+    ],
+    "rule_explanation": "Lo spazio di frenatura è la distanza percorsa dal veicolo dal momento in cui il conducente inizia a frenare fino a quando il veicolo si ferma completamente. Diminuisce in salita e aumenta in discesa."
+  }
+}

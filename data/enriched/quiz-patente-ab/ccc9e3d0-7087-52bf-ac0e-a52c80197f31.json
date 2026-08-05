@@ -1,0 +1,29 @@
+{
+  "question_id": 4695,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25217",
+  "text": "L'A.B.S. impedisce alle ruote di bloccarsi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema antibloccaggio (ABS)",
+      "Sicurezza attiva del veicolo",
+      "Manutenzione e caratteristiche tecniche del veicolo"
+    ],
+    "exact_keywords": [
+      "ABS",
+      "bloccaggio delle ruote",
+      "sistema frenante",
+      "stabilità",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "funzionamento dell'ABS e prevenzione del bloccaggio ruote",
+      "ruolo dell'ABS nella stabilità del veicolo in frenata"
+    ],
+    "rule_explanation": "L'ABS è un sistema di sicurezza attiva che previene il bloccaggio delle ruote durante la frenata, migliorando stabilità e tenuta di strada."
+  }
+}

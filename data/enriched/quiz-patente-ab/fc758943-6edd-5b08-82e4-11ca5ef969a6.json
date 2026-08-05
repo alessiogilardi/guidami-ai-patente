@@ -1,0 +1,31 @@
+{
+  "question_id": 4275,
+  "topic": "Segnali di indicazione",
+  "number": "21307",
+  "text": "Il segnale raffigurato fa parte dei segnali di indicazione",
+  "correct_answer": true,
+  "image": "de2e34baaf50dc90e8fa8061dcec1f85.jpeg",
+  "image_description": "Indicazione autostradale e di distanza. Il segnale indica che si sta percorrendo l'autostrada n. 54 e che la località Piacenza si trova a 4 chilometri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale composto da due parti. La parte sinistra è un pannello quadrato bianco con un bordo nero, contenente il numero \"54\" in nero. La parte destra è un pannello rettangolare verde con bordo bianco, contenente la scritta \"PIACENZA\" in bianco e il numero \"4\" in bianco. Il segnale nel suo complesso è un segnale di indicazione stradale. La parte sinistra indica il numero dell'autostrada, mentre la parte destra indica la località di destinazione (Piacenza) e la distanza in chilometri (4) da essa.",
+    "name": "Indicazione autostradale e di distanza",
+    "description": "Il segnale indica che si sta percorrendo l'autostrada n. 54 e che la località Piacenza si trova a 4 chilometri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione stradale",
+      "Classificazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "segnali di prescrizione",
+      "segnali di pericolo",
+      "segnali di obbligo"
+    ],
+    "vector_search_queries": [
+      "classificazione dei segnali stradali di indicazione",
+      "funzione dei segnali di indicazione stradale"
+    ],
+    "rule_explanation": "I segnali di indicazione forniscono informazioni utili per la circolazione, distinguendosi da quelli di prescrizione, pericolo o obbligo."
+  }
+}

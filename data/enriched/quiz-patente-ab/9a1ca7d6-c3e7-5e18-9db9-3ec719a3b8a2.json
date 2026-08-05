@@ -1,0 +1,27 @@
+{
+  "question_id": 4524,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23761",
+  "text": "La sosta è vietata sulle banchine, salvo diversa segnalazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Segnaletica stradale di divieto"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "banchine",
+      "divieto",
+      "segnalazione"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta sulle banchine",
+      "regolamentazione della sosta in relazione alla segnaletica verticale"
+    ],
+    "rule_explanation": "La sosta è vietata sulle banchine, a meno che un'apposita segnalazione non indichi diversamente."
+  }
+}

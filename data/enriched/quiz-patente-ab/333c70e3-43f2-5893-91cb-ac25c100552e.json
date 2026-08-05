@@ -1,0 +1,29 @@
+{
+  "question_id": 4610,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24505",
+  "text": "Il titolare di patente di categoria A2 può condurre anche le macchine agricole che rientrano nei limiti di sagoma e di massa dei motoveicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categorie",
+      "Veicoli conducibili con patente A2",
+      "Macchine agricole"
+    ],
+    "exact_keywords": [
+      "patente di categoria A2",
+      "macchine agricole",
+      "motoveicoli",
+      "limiti di sagoma",
+      "limiti di massa"
+    ],
+    "vector_search_queries": [
+      "conduzione macchine agricole con patente A2",
+      "limiti di massa e sagoma per macchine agricole conducibili con patente A2"
+    ],
+    "rule_explanation": "La patente A2 abilita alla conduzione di motoveicoli e, se rientrano nei limiti di sagoma e massa dei motoveicoli, anche delle macchine agricole."
+  }
+}

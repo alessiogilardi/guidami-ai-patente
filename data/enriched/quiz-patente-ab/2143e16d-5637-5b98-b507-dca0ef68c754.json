@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23521",
+  "text": "La pericolosità del sorpasso nasce dalla possibilità di urtare altri veicoli che, davanti o dietro, intendano compiere la stessa manovra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolosità del sorpasso",
+      "Manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "pericolosità",
+      "urtare altri veicoli",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "rischio collisione durante sorpasso",
+      "pericolo sorpasso per manovre concomitanti"
+    ],
+    "rule_explanation": "La manovra di sorpasso è intrinsecamente pericolosa a causa del rischio di collisione con altri veicoli che effettuano la medesima manovra contemporaneamente."
+  }
+}

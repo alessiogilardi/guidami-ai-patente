@@ -1,0 +1,28 @@
+{
+  "question_id": 4432,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22891",
+  "text": "Giungendo in vicinanza di un incrocio ci si deve spostare per tempo sulla corsia destinata alla direzione che si intende prendere",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento del veicolo sulla carreggiata",
+      "Manovre di svolta e cambio di corsia",
+      "Regole di circolazione agli incroci"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "corsia di pertinenza",
+      "cambio di corsia",
+      "direzione da prendere"
+    ],
+    "vector_search_queries": [
+      "posizionamento sulla corsia corretta prima di un incrocio",
+      "obbligo di segnalare e attuare il cambio di corsia per la direzione di svolta all'incrocio"
+    ],
+    "rule_explanation": "Avvicinandosi a un incrocio, il conducente deve posizionarsi tempestivamente sulla corsia corretta in base alla direzione di marcia prescelta."
+  }
+}

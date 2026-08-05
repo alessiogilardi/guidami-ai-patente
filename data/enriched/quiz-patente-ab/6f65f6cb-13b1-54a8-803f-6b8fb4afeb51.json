@@ -1,0 +1,27 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23639",
+  "text": "Prima di iniziare a guidare un veicolo a motore bisogna disinserire l'airbag del lato conducente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza alla guida",
+      "Dispositivi di sicurezza del veicolo"
+    ],
+    "exact_keywords": [
+      "airbag lato conducente",
+      "dispositivo di ritenuta",
+      "veicolo a motore",
+      "partenza"
+    ],
+    "vector_search_queries": [
+      "funzionamento airbag lato conducente",
+      "dispositivi di sicurezza attiva e passiva del veicolo"
+    ],
+    "rule_explanation": "L'airbag lato conducente è un dispositivo di sicurezza passiva che si attiva in caso di impatto, non deve essere disinserito prima di iniziare a guidare."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4703,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25293",
+  "text": "Occorre verificare che nel serbatoio del dispositivo lavacristallo sia sempre presente liquido per detergere i vetri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Visibilità del conducente",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "dispositivo lavacristallo",
+      "liquido detergente",
+      "pulizia dei vetri",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "obbligo di mantenere efficiente il dispositivo lavacristallo",
+      "assicurare la pulizia dei vetri per la visibilità",
+      "manutenzione del sistema lavavetri per la sicurezza"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di assicurare la costante efficienza del dispositivo lavacristallo per garantire la pulizia dei vetri e una visibilità ottimale."
+  }
+}

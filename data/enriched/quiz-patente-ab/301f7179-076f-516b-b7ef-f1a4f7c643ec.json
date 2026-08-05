@@ -1,0 +1,28 @@
+{
+  "question_id": 4575,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24172",
+  "text": "I catadiottri installati sulla parte davanti di rimorchi e carrelli-appendice sono di colore bianco",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di illuminazione e segnalazione dei veicoli",
+      "Catadiottri su rimorchi e carrelli appendice"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "rimorchi",
+      "carrelli appendice",
+      "colore bianco",
+      "parte anteriore"
+    ],
+    "vector_search_queries": [
+      "colore catadiottri anteriori rimorchi",
+      "obbligo catadiottri bianchi anteriori carrelli appendice"
+    ],
+    "rule_explanation": "I catadiottri anteriori su rimorchi e carrelli appendice devono essere di colore bianco per segnalare la loro presenza e ingombro durante la marcia."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4627,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24747",
+  "text": "In presenza di tratti di strada ghiacciati è opportuno frenare energicamente ogni volta che si incrocia un altro veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in condizioni di scarsa aderenza",
+      "Comportamento prudente in caso di ghiaccio",
+      "Frenata sicura"
+    ],
+    "exact_keywords": [
+      "strada ghiacciata",
+      "frenare energicamente",
+      "incrociare altro veicolo",
+      "perdita di aderenza"
+    ],
+    "vector_search_queries": [
+      "comportamento di guida su strada ghiacciata",
+      "rischio di perdita di aderenza in frenata su ghiaccio",
+      "evitare frenate brusche in presenza di altri veicoli su fondi scivolosi"
+    ],
+    "rule_explanation": "Su strada ghiacciata è necessario evitare frenate brusche e manovre improvvise per non perdere il controllo del veicolo, specialmente in presenza di altri utenti."
+  }
+}

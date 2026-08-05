@@ -1,0 +1,27 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24351",
+  "text": "Le cinture di sicurezza devono essere utilizzate anche dai passeggeri dei sedili posteriori delle autovetture",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Sicurezza dei passeggeri"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "passeggeri",
+      "autovetture",
+      "sedili posteriori"
+    ],
+    "vector_search_queries": [
+      "obbligo uso cinture sicurezza passeggeri posteriori autovetture",
+      "utilizzo sistemi di ritenuta per tutti i passeggeri"
+    ],
+    "rule_explanation": "L'obbligo di utilizzare le cinture di sicurezza si estende a tutti i passeggeri, compresi quelli sui sedili posteriori delle autovetture."
+  }
+}

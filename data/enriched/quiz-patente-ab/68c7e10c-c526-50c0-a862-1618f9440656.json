@@ -1,0 +1,27 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24391",
+  "text": "La pulizia del casco deve essere effettuata con detersivi non corrosivi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione dei dispositivi di sicurezza",
+      "Uso corretto del casco protettivo"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "pulizia",
+      "detersivi non corrosivi",
+      "dispositivi di protezione individuale"
+    ],
+    "vector_search_queries": [
+      "manutenzione e pulizia del casco protettivo",
+      "corretta conservazione dei dispositivi di protezione individuale"
+    ],
+    "rule_explanation": "La pulizia del casco protettivo deve avvenire con prodotti che non ne alterino le caratteristiche di sicurezza, escludendo quindi sostanze corrosive."
+  }
+}

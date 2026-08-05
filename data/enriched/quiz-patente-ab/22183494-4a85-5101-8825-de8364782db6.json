@@ -1,0 +1,29 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24758",
+  "text": "In caso di nebbia fitta è opportuno mantenere in funzione l'indicatore di direzione sinistro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovra",
+      "Condizioni di scarsa visibilità",
+      "Comportamento in caso di nebbia"
+    ],
+    "exact_keywords": [
+      "nebbia fitta",
+      "indicatore di direzione sinistro",
+      "preavviso di manovra",
+      "visibilità ridotta"
+    ],
+    "vector_search_queries": [
+      "uso indicatori di direzione in condizioni di nebbia",
+      "segnalazione di manovra in caso di scarsa visibilità",
+      "comportamento alla guida in nebbia fitta"
+    ],
+    "rule_explanation": "In caso di nebbia fitta, l'uso dell'indicatore di direzione sinistro non è obbligatorio né opportuno, ma occorre moderare la velocità e usare i fari anabbaglianti o fendinebbia."
+  }
+}

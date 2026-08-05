@@ -1,0 +1,28 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23002",
+  "text": "Lo specchio retrovisore centrale di un autoveicolo deve essere regolato in modo da garantire una buona visione posteriore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità posteriore",
+      "Uso degli specchietti retrovisori",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore centrale",
+      "autoveicolo",
+      "visione posteriore",
+      "regolazione"
+    ],
+    "vector_search_queries": [
+      "regolazione specchietto retrovisore centrale autoveicolo",
+      "obbligo visione posteriore tramite specchietto centrale"
+    ],
+    "rule_explanation": "Lo specchietto retrovisore centrale deve essere regolato per assicurare un'efficace visione della zona posteriore del veicolo, contribuendo alla sicurezza."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4347,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21996",
+  "text": "Il segnale raffigurato preavvisa l'accesso al pontile d'imbarco delle navi traghetto",
+  "correct_answer": false,
+  "image": "3ae8e9032b1862626732488b8365520d.jpeg",
+  "image_description": "Segnale di preavviso di impianto semaforico. Il segnale preavvisa un impianto semaforico. Il disco centrale, di colore giallo, può essere a luce fissa o lampeggiante.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e fondo giallo. Al centro del triangolo è raffigurato un impianto semaforico stilizzato, con tre luci disposte verticalmente: rossa in alto, gialla al centro e verde in basso.",
+    "name": "Segnale di preavviso di impianto semaforico",
+    "description": "Il segnale preavvisa un impianto semaforico. Il disco centrale, di colore giallo, può essere a luce fissa o lampeggiante."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Segnali complementari"
+    ],
+    "exact_keywords": [
+      "preavviso",
+      "impianto semaforico",
+      "segnali temporanei",
+      "cantiere"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di impianto semaforico",
+      "funzione dei segnali complementari e temporanei"
+    ],
+    "rule_explanation": "Il segnale di preavviso di impianto semaforico indica la prossimità di un impianto semaforico, non un pontile d'imbarco."
+  }
+}

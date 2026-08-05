@@ -1,0 +1,32 @@
+{
+  "question_id": 4055,
+  "topic": "Segnali di pericolo",
+  "number": "18910",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada in cattivo stato",
+  "correct_answer": false,
+  "image": "f1d28ec1aa4add69b5be2109e97aeb85.jpeg",
+  "image_description": "Segnale di cunetta. Il segnale preannuncia un tratto di strada con una cunetta, che può causare accumulo di acqua o fango in caso di pioggia o scarsa manutenzione. È necessario moderare la velocità per mantenere il controllo del veicolo e prevenire danni alle sospensioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una cunetta, ovvero un avvallamento della strada. Il segnale è isolato e non sono presenti altri elementi contestuali come pannelli integrativi o elementi della strada.",
+    "name": "Segnale di cunetta",
+    "description": "Il segnale preannuncia un tratto di strada con una cunetta, che può causare accumulo di acqua o fango in caso di pioggia o scarsa manutenzione. È necessario moderare la velocità per mantenere il controllo del veicolo e prevenire danni alle sospensioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Stato della carreggiata"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "cunetta",
+      "strada in cattivo stato",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo stradale che indicano cunetta",
+      "differenza tra segnale di cunetta e strada in cattivo stato",
+      "preavviso di pericolo per avvallamento della carreggiata"
+    ],
+    "rule_explanation": "Il segnale di cunetta preannuncia un avvallamento della strada, non genericamente uno stato di cattivo manto stradale. È necessario moderare la velocità."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4276,
+  "topic": "Segnali di indicazione",
+  "number": "21316",
+  "text": "Il segnale raffigurato indica un'area contrassegnata da strisce gialle con la scritta TAXI",
+  "correct_answer": true,
+  "image": "7db243423fe983741f896d4c4439ad3c.jpeg",
+  "image_description": "Parcheggio per taxi. Il segnale indica la presenza di un parcheggio o area di sosta riservata ai taxi in servizio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare di colore arancione con bordo nero. Al centro del segnale, in lettere nere maiuscole, è scritta la parola \"TAXI\". Non sono presenti altri elementi visivi o segnali. Si tratta di un segnale di indicazione.",
+    "name": "Parcheggio per taxi",
+    "description": "Il segnale indica la presenza di un parcheggio o area di sosta riservata ai taxi in servizio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Parcheggio riservato"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "parcheggio taxi",
+      "area di sosta",
+      "taxi in servizio"
+    ],
+    "vector_search_queries": [
+      "segnale indicante parcheggio taxi",
+      "area di sosta riservata ai taxi in servizio"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica un'area di sosta riservata ai taxi in servizio, contraddistinta da strisce gialle e dalla scritta TAXI."
+  }
+}

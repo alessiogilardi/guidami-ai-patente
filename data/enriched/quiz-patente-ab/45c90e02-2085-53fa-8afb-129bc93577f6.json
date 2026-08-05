@@ -1,0 +1,27 @@
+{
+  "question_id": 4595,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24329",
+  "text": "Il poggiatesta ha una funzione non di sicurezza, ma estetica",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza passiva",
+      "Funzione dei poggiatesta"
+    ],
+    "exact_keywords": [
+      "poggiatesta",
+      "sicurezza",
+      "riduzione delle lesioni",
+      "colpo di frusta"
+    ],
+    "vector_search_queries": [
+      "funzione di sicurezza del poggiatesta auto",
+      "poggiatesta e prevenzione del colpo di frusta"
+    ],
+    "rule_explanation": "Il poggiatesta è un dispositivo di sicurezza volto a ridurre il rischio di lesioni al collo in caso di incidente, in particolare il colpo di frusta."
+  }
+}

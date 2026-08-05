@@ -1,0 +1,28 @@
+{
+  "question_id": 4711,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25397",
+  "text": "Se lo sterzo vibra si deve far controllare la bilanciatura delle ruote posteriori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Stabilità e tenuta di strada",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "sterzo",
+      "vibrazione",
+      "bilanciatura delle ruote",
+      "assetto ruote"
+    ],
+    "vector_search_queries": [
+      "vibrazione sterzo bilanciatura ruote anteriori",
+      "causa vibrazione volante assetto ruote"
+    ],
+    "rule_explanation": "La vibrazione dello sterzo è solitamente causata da problemi di bilanciatura delle ruote anteriori o da problemi di convergenza/campanatura, non di quelle posteriori."
+  }
+}

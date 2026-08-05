@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23507",
+  "text": "E' consentito il sorpasso in corrispondenza delle intersezioni se si supera un veicolo a due ruote non a motore e non si invade il lato riservato al senso opposto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso in prossimità di intersezioni",
+      "Regole di circolazione stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "intersezioni",
+      "veicolo a due ruote non a motore",
+      "invasione del senso opposto"
+    ],
+    "vector_search_queries": [
+      "sorpasso di veicolo a due ruote non a motore in prossimità di intersezioni",
+      "condizioni per il sorpasso in intersezioni stradali"
+    ],
+    "rule_explanation": "Il sorpasso è consentito in corrispondenza delle intersezioni se si supera un veicolo a due ruote non a motore, senza invadere la corsia opposta."
+  }
+}

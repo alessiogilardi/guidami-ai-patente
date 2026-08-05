@@ -1,0 +1,29 @@
+{
+  "question_id": 4684,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25154",
+  "text": "Se si acquista una batteria per auto si può consegnare quella esausta (usata) al rivenditore, che provvederà a ritirarla, senza ulteriori costi aggiuntivi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione dei rifiuti speciali",
+      "Responsabilità del produttore e del distributore",
+      "Normativa sui RAEE"
+    ],
+    "exact_keywords": [
+      "batterie esauste",
+      "ritiro senza costi aggiuntivi",
+      "rivenditore",
+      "smaltimento"
+    ],
+    "vector_search_queries": [
+      "ritiro batterie esauste al rivenditore",
+      "smaltimento batterie auto usate senza costi aggiuntivi",
+      "obblighi del venditore per batterie esauste"
+    ],
+    "rule_explanation": "Il rivenditore è obbligato a ritirare gratuitamente le batterie esauste al momento dell'acquisto di una nuova, garantendone il corretto smaltimento."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4556,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23991",
+  "text": "Il conducente di fuoristrada (Suv) deve ricordare che la guida di tale veicolo è particolarmente impegnativa in città e che richiede particolari cautele soprattutto nelle manovre di emergenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida di veicoli ingombranti",
+      "Particolari cautele di guida",
+      "Veicoli a motore"
+    ],
+    "exact_keywords": [
+      "veicolo ingombrante",
+      "manovre di emergenza",
+      "particolari cautele",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "guida di veicoli ingombranti in città",
+      "cautele nella guida di SUV",
+      "manovre di emergenza con veicoli di grandi dimensioni"
+    ],
+    "rule_explanation": "La guida di veicoli ingombranti, come i SUV, richiede maggiore attenzione e cautele specifiche, specialmente in contesti urbani e durante le manovre di emergenza."
+  }
+}

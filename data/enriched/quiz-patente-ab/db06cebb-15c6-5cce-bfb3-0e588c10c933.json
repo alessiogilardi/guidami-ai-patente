@@ -1,0 +1,27 @@
+{
+  "question_id": 4568,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24124",
+  "text": "Durante la marcia, il rimorchio deve avere il ruotino pivottante di manovra abbassato (poggiato al suolo)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rimorchio in movimento",
+      "Dispositivi di manovra del rimorchio"
+    ],
+    "exact_keywords": [
+      "rimorchio",
+      "ruotino pivottante",
+      "abbassato",
+      "in marcia"
+    ],
+    "vector_search_queries": [
+      "posizione ruotino pivottante rimorchio in marcia",
+      "uso corretto ruotino manovra rimorchio su strada"
+    ],
+    "rule_explanation": "Durante la marcia, il ruotino di manovra del rimorchio deve essere sollevato e non a contatto con il suolo per evitare interferenze con la circolazione."
+  }
+}

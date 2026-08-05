@@ -1,0 +1,27 @@
+{
+  "question_id": 4047,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18813",
+  "text": "Alla guida di un veicolo, in vicinanza di una piazzola di fermata di autobus per scolari, occorre essere prudenti e tenere conto dei comportamenti imprevedibili dei bambini",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Precauzione in prossimità di fermate scuolabus",
+      "Doveri del conducente verso utenti deboli"
+    ],
+    "exact_keywords": [
+      "piazzola di fermata autobus scolari",
+      "comportamenti imprevedibili",
+      "bambini",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "prudenza in prossimità di fermate scuolabus",
+      "attenzione ai bambini e ai loro comportamenti imprevedibili in prossimità di fermate scolastiche"
+    ],
+    "rule_explanation": "In prossimità di fermate di autobus per scolari, il conducente deve prestare particolare prudenza a causa dei possibili comportamenti imprevedibili dei bambini."
+  }
+}

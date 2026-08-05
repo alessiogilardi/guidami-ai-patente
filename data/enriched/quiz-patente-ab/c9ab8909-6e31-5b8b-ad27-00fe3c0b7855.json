@@ -1,0 +1,27 @@
+{
+  "question_id": 4034,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18674",
+  "text": "Bisogna lasciare liberi solo gli incroci regolati da semaforo in caso di formazione di code di veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della circolazione negli incroci",
+      "Comportamento in caso di congestione del traffico"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "code di veicoli",
+      "circolazione",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di impegnare incroci congestionati",
+      "obbligo di sgomberare gli incroci in caso di code"
+    ],
+    "rule_explanation": "È vietato impegnare un incrocio se non si ha la certezza di poterlo sgomberare subito, indipendentemente dalla presenza di semafori, per evitare di creare intralcio alla circolazione."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4540,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23878",
+  "text": "Durante la marcia sulle autostrade e strade extraurbane principali è obbligatorio l'uso dei proiettori anabbaglianti anche di giorno",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di illuminazione dei veicoli",
+      "Circolazione sulle autostrade e strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "proiettori anabbaglianti",
+      "autostrade",
+      "strade extraurbane principali",
+      "durante la marcia",
+      "giorno"
+    ],
+    "vector_search_queries": [
+      "obbligo luci di marcia diurna autostrade",
+      "uso proiettori anabbaglianti strade extraurbane principali di giorno"
+    ],
+    "rule_explanation": "Sulle autostrade e strade extraurbane principali è obbligatorio l'uso dei proiettori anabbaglianti, o delle luci di marcia diurna, durante la marcia, anche di giorno."
+  }
+}

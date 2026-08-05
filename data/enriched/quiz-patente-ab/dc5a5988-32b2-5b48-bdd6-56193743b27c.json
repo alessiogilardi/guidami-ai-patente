@@ -1,0 +1,27 @@
+{
+  "question_id": 4008,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18396",
+  "text": "L'intersezione (incrocio) a raso può essere regolata da semaforo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione degli incroci",
+      "Segnaletica stradale luminosa"
+    ],
+    "exact_keywords": [
+      "intersezione a raso",
+      "incrocio",
+      "semaforo",
+      "regolazione del traffico"
+    ],
+    "vector_search_queries": [
+      "regolazione semaforica degli incroci a raso",
+      "uso dei semafori nelle intersezioni stradali"
+    ],
+    "rule_explanation": "Le intersezioni a raso, ovvero gli incroci allo stesso livello, possono essere regolate da impianti semaforici per disciplinare il flusso dei veicoli e garantire la sicurezza."
+  }
+}

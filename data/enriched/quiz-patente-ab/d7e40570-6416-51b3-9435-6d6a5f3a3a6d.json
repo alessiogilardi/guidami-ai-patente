@@ -1,0 +1,27 @@
+{
+  "question_id": 4672,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25083",
+  "text": "Per evitare rumori fastidiosi durante le fermate dovute al traffico, occorre mantenere il motore acceso, accelerando ripetutamente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Comportamento alla fermata traffico"
+    ],
+    "exact_keywords": [
+      "rumori fastidiosi",
+      "motore acceso",
+      "fermate traffico",
+      "inquinamento acustico"
+    ],
+    "vector_search_queries": [
+      "divieto di tenere il motore acceso alle fermate per evitare rumori molesti",
+      "prevenzione dell'inquinamento acustico durante le fermate del traffico"
+    ],
+    "rule_explanation": "Durante le fermate dovute al traffico, è vietato tenere il motore acceso accelerando ripetutamente per evitare rumori molesti e inquinamento acustico."
+  }
+}

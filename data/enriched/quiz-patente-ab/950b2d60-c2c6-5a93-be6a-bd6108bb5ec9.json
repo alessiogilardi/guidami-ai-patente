@@ -1,0 +1,29 @@
+{
+  "question_id": 4603,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24449",
+  "text": "I guanti ad uso motociclistico hanno come principale scopo quello di proteggere dal freddo, pertanto è inutile usarli l'estate",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di protezione individuale per motociclisti",
+      "Uso dei guanti motociclistici",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "guanti motociclistici",
+      "abbigliamento tecnico",
+      "protezione dall'abrasione",
+      "dispositivi di protezione"
+    ],
+    "vector_search_queries": [
+      "funzione protettiva dei guanti motociclistici",
+      "uso dei guanti per motociclisti in relazione alla sicurezza",
+      "obbligo di indossare guanti motociclistici per protezione dall'abrasione"
+    ],
+    "rule_explanation": "I guanti motociclistici sono dispositivi di protezione individuale che devono essere indossati sempre, non solo per proteggere dal freddo ma anche dall'abrasione in caso di caduta."
+  }
+}

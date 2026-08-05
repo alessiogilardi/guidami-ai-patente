@@ -1,0 +1,34 @@
+{
+  "question_id": 4186,
+  "topic": "Segnali di obbligo",
+  "number": "20430",
+  "text": "Il segnale raffigurato preannuncia la presenza di un commissariato di polizia",
+  "correct_answer": false,
+  "image": "a6d6b9350877f6a3d941348f790b1ca6.jpeg",
+  "image_description": "Segnale di fermarsi e dare precedenza (Dogana). Il segnale impone l'obbligo di fermarsi al varco doganale per i controlli previsti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro, su una linea orizzontale nera, sono scritte le parole \"DOGANA\" in alto e \"DOUANE\" in basso. Questo è un segnale di prescrizione che indica un punto di controllo doganale.",
+    "name": "Segnale di fermarsi e dare precedenza (Dogana)",
+    "description": "Il segnale impone l'obbligo di fermarsi al varco doganale per i controlli previsti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di prescrizione imperativa",
+      "Segnali di polizia"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "segnali di prescrizione imperativa",
+      "segnali di polizia",
+      "fermata obbligatoria",
+      "dogana"
+    ],
+    "vector_search_queries": [
+      "segnali che impongono una prescrizione imperativa di fermata per controlli doganali",
+      "differenza tra segnali di obbligo e segnali di polizia",
+      "segnali di prescrizione che indicano dogana"
+    ],
+    "rule_explanation": "Il segnale raffigurato impone l'obbligo di fermarsi al varco doganale, non preannuncia la presenza di un commissariato di polizia."
+  }
+}

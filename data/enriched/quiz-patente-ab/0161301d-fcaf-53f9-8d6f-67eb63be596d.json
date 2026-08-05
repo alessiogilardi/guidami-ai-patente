@@ -1,0 +1,30 @@
+{
+  "question_id": 4527,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23787",
+  "text": "La sosta negli spazi riservati alla fermata e alla sosta dei veicoli per persone invalide comporta una sanzione pecuniaria, ma non la sottrazione di punti dalla patente del conducente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Parcheggi riservati ai disabili",
+      "Sanzioni amministrative pecuniarie e accessorie"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fermata",
+      "veicoli al servizio di persone invalide",
+      "sottrazione di punti",
+      "sanzione pecuniaria"
+    ],
+    "vector_search_queries": [
+      "sanzioni per sosta in parcheggio disabili",
+      "conseguenze della sosta in aree riservate a persone invalide",
+      "punti patente per violazione parcheggio disabili"
+    ],
+    "rule_explanation": "La sosta negli spazi riservati ai veicoli per persone invalide comporta sia una sanzione pecuniaria sia la sottrazione di punti dalla patente."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4678,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25119",
+  "text": "L'inquinamento dell'aria prodotto dai veicoli fa aumentare lo smog, le piogge acide e l'effetto serra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico da veicoli",
+      "Effetti ambientali dei gas di scarico"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "veicoli",
+      "smog",
+      "piogge acide",
+      "effetto serra"
+    ],
+    "vector_search_queries": [
+      "impatto dei veicoli sull'inquinamento atmosferico e ambientale",
+      "conseguenze dell'inquinamento da gas di scarico: smog, piogge acide, effetto serra"
+    ],
+    "rule_explanation": "Le emissioni inquinanti dei veicoli contribuiscono all'aumento dello smog, delle piogge acide e dell'effetto serra, con gravi ripercussioni ambientali."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24617",
+  "text": "La sospensione della patente è una sanzione accessoria che deriva dalla violazione di alcuni articoli del codice della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sanzioni accessorie",
+      "Sospensione della patente",
+      "Violazione del Codice della Strada"
+    ],
+    "exact_keywords": [
+      "sospensione della patente",
+      "sanzione accessoria",
+      "violazione",
+      "Codice della Strada"
+    ],
+    "vector_search_queries": [
+      "conseguenze della violazione del Codice della Strada",
+      "sanzioni accessorie previste per i conducenti",
+      "ipotesi di sospensione della patente di guida"
+    ],
+    "rule_explanation": "La sospensione della patente è una sanzione accessoria prevista dal Codice della Strada, applicata in conseguenza di specifiche violazioni commesse dal conducente."
+  }
+}

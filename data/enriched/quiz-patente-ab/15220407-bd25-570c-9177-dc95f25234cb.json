@@ -1,0 +1,32 @@
+{
+  "question_id": 4232,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20898",
+  "text": "Un attraversamento pedonale può essere preceduto sulla destra da una striscia gialla a zig zag, come nella figura seguente",
+  "correct_answer": true,
+  "image": "fd5851d40abd7d0d720a3c771c4bfc36.jpeg",
+  "image_description": "Incrocio con attraversamento pedonale e aree di attesa segnalate da strisce a zig-zag. La segnaletica orizzontale raffigura un incrocio con attraversamento pedonale. Sulla carreggiata sono presenti le strisce bianche continue che delimitano l'attraversamento pedonale. Ai lati dell'attraversamento pedonale, sia a destra che a sinistra, sono presenti delle strisce gialle a zig-zag che delimitano le aree di attesa per i veicoli. La carreggiata è divisa da una linea tratteggiata bianca, indicando la possibilità di sorpasso. Sono presenti anche delle linee bianche continue che delimitano le corsie e le aree di parcheggio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di un incrocio stradale. Al centro dell'incrocio è presente un attraversamento pedonale, segnalato da una serie di strisce bianche parallele alla direzione di marcia delle auto. Ai lati dell'attraversamento pedonale, sia a sinistra che a destra, sono presenti delle marcature stradali gialle a zig-zag. Queste strisce gialle delimitano delle aree che, secondo la normativa, servono come aree di attesa per i veicoli. La carreggiata è divisa da una linea longitudinale tratteggiata bianca, che indica la separazione delle corsie di marcia e la possibilità di sorpasso. Sono presenti anche altre linee bianche, sia continue che discontinue, che delimitano le corsie, le aree di parcheggio e le direzioni di marcia. Non sono presenti segnali verticali o altri veicoli. L'immagine si concentra sulla segnaletica orizzontale.",
+    "name": "Incrocio con attraversamento pedonale e aree di attesa segnalate da strisce a zig-zag",
+    "description": "La segnaletica orizzontale raffigura un incrocio con attraversamento pedonale. Sulla carreggiata sono presenti le strisce bianche continue che delimitano l'attraversamento pedonale. Ai lati dell'attraversamento pedonale, sia a destra che a sinistra, sono presenti delle strisce gialle a zig-zag che delimitano le aree di attesa per i veicoli. La carreggiata è divisa da una linea tratteggiata bianca, indicando la possibilità di sorpasso. Sono presenti anche delle linee bianche continue che delimitano le corsie e le aree di parcheggio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Attraversamento pedonale",
+      "Aree di attesa per veicoli"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "attraversamento pedonale",
+      "striscia gialla a zig zag",
+      "area di attesa"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale strisce gialle zig zag prima di attraversamento pedonale",
+      "funzione delle aree di attesa delimitate da strisce gialle a zig zag"
+    ],
+    "rule_explanation": "Le strisce gialle a zig-zag delimitano le aree di attesa per i veicoli, che possono trovarsi prima di un attraversamento pedonale per garantire la visibilità e la sicurezza."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4061,
+  "topic": "Segnali di pericolo",
+  "number": "18980",
+  "text": "Il segnale raffigurato può essere integrato con il pannello in figura",
+  "correct_answer": true,
+  "image": "ac2593bb518516fed410c668f6aaa58d.jpeg",
+  "image_description": "Doppio pericolo (curva sinistra poi destra) con pannello di estesa. Il segnale indica una sequenza di due curve, la prima a sinistra e la seconda a destra. Il pannello integrativo specifica che tale sequenza di curve si estende per una lunghezza di 2,8 km.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e fondo bianco. Al centro è presente un pittogramma nero raffigurante una doppia curva, la prima verso sinistra e la seconda verso destra. Sotto il segnale di pericolo, è presente un pannello rettangolare bianco con bordo nero. Su questo pannello sono raffigurate due frecce verticali rivolte verso l'alto, ai lati di un'indicazione numerica \"2,8 km\". Questo pannello integrativo indica l'estesa del pericolo segnalato dal segnale principale.",
+    "name": "Doppio pericolo (curva sinistra poi destra) con pannello di estesa",
+    "description": "Il segnale indica una sequenza di due curve, la prima a sinistra e la seconda a destra. Il pannello integrativo specifica che tale sequenza di curve si estende per una lunghezza di 2,8 km."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Pannelli integrativi",
+      "Estesa di validità dei segnali"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "pannello integrativo",
+      "estesa",
+      "sequenza di pericoli"
+    ],
+    "vector_search_queries": [
+      "integrazione segnali di pericolo con pannelli integrativi",
+      "pannello di estesa per segnali di pericolo",
+      "uso dei pannelli integrativi per specificare la durata di un pericolo"
+    ],
+    "rule_explanation": "I segnali di pericolo possono essere integrati con pannelli integrativi che ne specificano l'estesa, la distanza, il tipo di pericolo o altre informazioni utili."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4656,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24967",
+  "text": "Durante la guida, si deve fare uso di occhiali da vista o di lenti a contatto soltanto sulle autostrade e sulle strade extraurbane principali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso di lenti o occhiali durante la guida",
+      "Obbligo di correzione visiva"
+    ],
+    "exact_keywords": [
+      "occhiali da vista",
+      "lenti a contatto",
+      "obbligo di correzione visiva",
+      "documenti di circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di correzione visiva per la guida su tutte le strade",
+      "uso di occhiali o lenti a contatto come prescritto nei documenti di circolazione"
+    ],
+    "rule_explanation": "L'obbligo di usare occhiali o lenti a contatto per la correzione della vista durante la guida si applica a tutte le strade, non solo autostrade e strade extraurbane principali, se prescritto nei documenti di circolazione."
+  }
+}

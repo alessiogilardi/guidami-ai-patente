@@ -1,0 +1,28 @@
+{
+  "question_id": 4575,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24170",
+  "text": "I catadiottri installati nella parte posteriore di rimorchi e carrelli-appendice sono di colore rosso e di forma triangolare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di illuminazione e segnalazione posteriore",
+      "Catadiottri su rimorchi e carrelli-appendice"
+    ],
+    "exact_keywords": [
+      "catadiottri",
+      "rimorchi",
+      "carrelli-appendice",
+      "posteriori",
+      "colore rosso"
+    ],
+    "vector_search_queries": [
+      "colore e forma dei catadiottri posteriori per rimorchi",
+      "requisiti dei catadiottri per carrelli-appendice"
+    ],
+    "rule_explanation": "I catadiottri posteriori dei rimorchi e carrelli-appendice devono essere di colore rosso e di forma triangolare, con il vertice verso l'alto."
+  }
+}

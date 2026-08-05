@@ -1,0 +1,26 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23029",
+  "text": "Lo specchio retrovisore laterale sinistro deve essere utilizzato prima di iniziare una manovra di sorpasso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente prima di una manovra",
+      "Uso degli specchietti retrovisori"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore laterale sinistro",
+      "manovra di sorpasso",
+      "controllo visivo"
+    ],
+    "vector_search_queries": [
+      "controllo specchietti retrovisori prima del sorpasso",
+      "obbligo di verifica della visuale per manovra di sorpasso"
+    ],
+    "rule_explanation": "Prima di ogni manovra, specialmente il sorpasso, il conducente deve controllare gli specchietti retrovisori e la visuale diretta per assicurarsi che la manovra sia sicura."
+  }
+}

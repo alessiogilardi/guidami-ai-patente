@@ -1,0 +1,27 @@
+{
+  "question_id": 4020,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18524",
+  "text": "Il marciapiede è riservato ai pedoni e ai veicoli in sosta, qualora non sia rialzato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso della strada e sua destinazione d'uso",
+      "Priorità dei pedoni sugli spazi dedicati"
+    ],
+    "exact_keywords": [
+      "marciapiede",
+      "pedoni",
+      "sosta vietata",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "destinazione d'uso del marciapiede",
+      "divieto di sosta sul marciapiede per i veicoli"
+    ],
+    "rule_explanation": "Il marciapiede è una zona esclusivamente riservata ai pedoni e non è consentita la sosta di alcun veicolo, nemmeno se non rialzato."
+  }
+}

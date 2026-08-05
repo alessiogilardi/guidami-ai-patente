@@ -1,0 +1,33 @@
+{
+  "question_id": 4268,
+  "topic": "Segnali di indicazione",
+  "number": "21236",
+  "text": "Il segnale raffigurato indica il numero della classificazione internazionale della strada",
+  "correct_answer": true,
+  "image": "d7cc4dc22ac0caca9adce872f7ee58a4.jpeg",
+  "image_description": "Segnale di itinerario internazionale. Il segnale indica un itinerario di strada internazionale, specificamente la E55.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare di colore verde scuro con bordo bianco. Al suo interno, in lettere e numeri bianchi, è riportata la sigla \"E 55\". Questo tipo di segnale identifica un itinerario di strada di interesse internazionale.",
+    "name": "Segnale di itinerario internazionale",
+    "description": "Il segnale indica un itinerario di strada internazionale, specificamente la E55."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione stradale",
+      "Classificazione delle strade",
+      "Segnaletica di itinerario"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "strada europea",
+      "classificazione internazionale",
+      "numero di itinerario"
+    ],
+    "vector_search_queries": [
+      "segnali stradali che indicano il numero di classificazione delle strade europee",
+      "significato del segnale di itinerario internazionale E55",
+      "identificazione delle strade europee tramite segnaletica stradale"
+    ],
+    "rule_explanation": "Il segnale di itinerario internazionale indica il numero di classificazione di una strada europea, facilitando la navigazione su percorsi internazionali."
+  }
+}

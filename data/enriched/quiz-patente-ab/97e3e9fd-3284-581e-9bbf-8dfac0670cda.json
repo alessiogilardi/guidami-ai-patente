@@ -1,0 +1,30 @@
+{
+  "question_id": 4695,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25220",
+  "text": "L'A.B.S. è in grado di agire su tutte le ruote, intervenendo di volta in volta su quelle che stanno per bloccarsi durante la frenata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema antibloccaggio (ABS)",
+      "Funzionamento dei freni",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "ABS",
+      "frenata",
+      "bloccaggio delle ruote",
+      "ruote",
+      "sistema antibloccaggio"
+    ],
+    "vector_search_queries": [
+      "funzionamento sistema antibloccaggio freni",
+      "ABS prevenzione bloccaggio ruote in frenata",
+      "interazione ABS con frenata e ruote"
+    ],
+    "rule_explanation": "L'ABS è un sistema di sicurezza che impedisce il bloccaggio delle ruote durante la frenata, modulando la pressione sui freni per mantenere il controllo del veicolo."
+  }
+}

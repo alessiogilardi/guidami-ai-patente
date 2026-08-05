@@ -1,0 +1,29 @@
+{
+  "question_id": 4690,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25195",
+  "text": "Il conducente di un motociclo deve considerare che l'aderenza non dipende dal tipo di pavimentazione stradale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aderenza pneumatico-strada",
+      "Fattori che influenzano l\\'aderenza",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "aderenza",
+      "pneumatico",
+      "pavimentazione stradale",
+      "condizioni della strada",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "influenza del tipo di pavimentazione sull\\'aderenza del motociclo",
+      "rapporto tra aderenza, pneumatici e condizioni stradali per i motocicli"
+    ],
+    "rule_explanation": "L\\'aderenza di un motociclo dipende significativamente dal tipo e dalle condizioni della pavimentazione stradale, oltre che dalla velocità e dallo stato degli pneumatici."
+  }
+}

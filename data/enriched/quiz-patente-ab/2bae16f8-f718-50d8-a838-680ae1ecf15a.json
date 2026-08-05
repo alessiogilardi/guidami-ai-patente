@@ -1,0 +1,28 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18798",
+  "text": "In vicinanza di un attraversamento pedonale, il conducente deve accelerare quel tanto che basta per passare davanti al pedone che attraversa",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di condotta in prossimità di attraversamenti pedonali",
+      "Dovere di cautela verso i pedoni"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "pedone",
+      "conducente",
+      "rallentare",
+      "fermarsi"
+    ],
+    "vector_search_queries": [
+      "obbligo di rallentare e fermarsi ai passaggi pedonali",
+      "condotta del conducente in presenza di pedoni che attraversano la strada"
+    ],
+    "rule_explanation": "In prossimità di un attraversamento pedonale, il conducente deve rallentare e, se necessario, fermarsi per consentire al pedone di attraversare in sicurezza."
+  }
+}

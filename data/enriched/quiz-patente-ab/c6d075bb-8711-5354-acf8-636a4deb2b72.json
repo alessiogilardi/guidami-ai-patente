@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23539",
+  "text": "E' vietato il sorpasso di un autobus fermo per la salita e la discesa dei passeggeri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di veicoli fermi",
+      "Regole di precedenza e sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "autobus fermo",
+      "salita e discesa passeggeri",
+      "divieto di sorpasso"
+    ],
+    "vector_search_queries": [
+      "sorpasso autobus fermo salita discesa passeggeri",
+      "precedenza pedoni in corrispondenza di fermate autobus"
+    ],
+    "rule_explanation": "Non è vietato il sorpasso di un autobus fermo per la salita e discesa dei passeggeri, purché si mantenga una velocità moderata e si dia la precedenza ai pedoni che attraversano la carreggiata."
+  }
+}

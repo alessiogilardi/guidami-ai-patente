@@ -1,0 +1,27 @@
+{
+  "question_id": 4620,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24653",
+  "text": "Se per due anni non commette infrazioni che comportano perdita di punti, il conducente che abbia meno di 20 punti entra in possesso di 30 punti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema della patente a punti",
+      "Recupero punti patente"
+    ],
+    "exact_keywords": [
+      "punti patente",
+      "infrazioni",
+      "recupero punti",
+      "sospensione patente"
+    ],
+    "vector_search_queries": [
+      "recupero punti patente per assenza di infrazioni",
+      "normativa recupero punti patente dopo due anni senza infrazioni"
+    ],
+    "rule_explanation": "Il recupero di 30 punti patente è possibile solo dopo la sospensione della patente per due anni, non per la semplice assenza di infrazioni."
+  }
+}

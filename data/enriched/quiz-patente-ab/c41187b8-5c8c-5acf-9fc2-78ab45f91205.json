@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22308",
+  "text": "E' obbligatorio regolare la velocità nei rettilinei e non in curva",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di guida"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "rettilinei",
+      "curve",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di regolare la velocità in ogni condizione di guida",
+      "adeguamento della velocità a rettilinei e curve per la sicurezza"
+    ],
+    "rule_explanation": "La velocità va sempre regolata in base alle condizioni di guida, sia nei rettilinei che in curva, per evitare pericoli o intralci."
+  }
+}

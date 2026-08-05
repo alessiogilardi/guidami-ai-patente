@@ -1,0 +1,27 @@
+{
+  "question_id": 4047,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18822",
+  "text": "Alla guida di un veicolo, in vicinanza di una piazzola di fermata di autobus per scolari, non è necessario rallentare se lo scuolabus è fermo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza in prossimità di fermate scolastiche",
+      "Regolazione della velocità in presenza di utenti vulnerabili"
+    ],
+    "exact_keywords": [
+      "scuolabus fermo",
+      "piazzola di fermata",
+      "rallentare",
+      "velocità adeguata"
+    ],
+    "vector_search_queries": [
+      "obbligo di rallentare in prossimità di fermate scuolabus",
+      "condotta di guida in vicinanza di scuolabus fermi per carico/scarico alunni"
+    ],
+    "rule_explanation": "In prossimità di una piazzola di fermata di uno scuolabus, è obbligatorio rallentare e, se necessario, fermarsi per consentire la discesa/salita dei bambini, anche se lo scuolabus è fermo."
+  }
+}

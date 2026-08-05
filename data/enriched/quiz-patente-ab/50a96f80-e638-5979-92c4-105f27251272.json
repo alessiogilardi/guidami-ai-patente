@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22345",
+  "text": "Il limite massimo di velocità per un'autovettura nei centri abitati è sempre di 70 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità nei centri abitati",
+      "Regolamentazione della velocità per la sicurezza"
+    ],
+    "exact_keywords": [
+      "centri abitati",
+      "limite massimo di velocità",
+      "autovettura",
+      "velocità ordinaria"
+    ],
+    "vector_search_queries": [
+      "limite di velocità autovetture centri abitati",
+      "velocità massima consentita nei centri abitati per autovetture"
+    ],
+    "rule_explanation": "Nei centri abitati, il limite di velocità ordinario per le autovetture è di 50 km/h, salvo diversa segnalazione. Non è mai di 70 km/h."
+  }
+}

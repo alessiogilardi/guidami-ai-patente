@@ -1,0 +1,31 @@
+{
+  "question_id": 4116,
+  "topic": "Segnali di divieto",
+  "number": "19664",
+  "text": "Il segnale raffigurato obbliga i pedoni a circolare sul margine sinistro della carreggiata",
+  "correct_answer": false,
+  "image": "7d5994527a6ccfadd7ecf69f4ac79bee.jpeg",
+  "image_description": "Segnale di divieto di transito ai pedoni. Il segnale vieta il transito ai pedoni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la figura stilizzata di un pedone di colore nero. Questo è il segnale di divieto di transito ai pedoni.",
+    "name": "Segnale di divieto di transito ai pedoni",
+    "description": "Il segnale vieta il transito ai pedoni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Obblighi dei pedoni"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "pedoni",
+      "carreggiata",
+      "margine destro"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito ai pedoni",
+      "obblighi dei pedoni in relazione ai segnali stradali"
+    ],
+    "rule_explanation": "Il segnale di 'divieto di transito ai pedoni' impone loro di non accedere alla carreggiata, non di circolare sul margine sinistro."
+  }
+}

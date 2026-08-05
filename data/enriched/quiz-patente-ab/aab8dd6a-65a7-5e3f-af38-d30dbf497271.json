@@ -1,0 +1,28 @@
+{
+  "question_id": 4419,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22766",
+  "text": "Per non costituire pericolo o intralcio per la circolazione, è necessario guidare in modo adeguato alle caratteristiche del veicolo, della strada e del traffico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Adeguamento della velocità alle condizioni di guida",
+      "Prevenzione di pericoli e intralci alla circolazione"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "caratteristiche del veicolo",
+      "caratteristiche della strada",
+      "caratteristiche del traffico",
+      "pericolo o intralcio"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alle caratteristiche del veicolo, della strada e del traffico",
+      "obbligo di moderare la velocità per non costituire pericolo o intralcio"
+    ],
+    "rule_explanation": "La velocità deve essere sempre adeguata alle specifiche del veicolo, della strada e del traffico per evitare di creare pericolo o intralcio alla circolazione."
+  }
+}

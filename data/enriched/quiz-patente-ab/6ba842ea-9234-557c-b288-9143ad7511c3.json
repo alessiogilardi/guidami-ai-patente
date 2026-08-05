@@ -1,0 +1,26 @@
+{
+  "question_id": 4012,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18439",
+  "text": "La strada può essere a doppio senso di circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Strade a doppio senso di circolazione",
+      "Classificazione delle strade"
+    ],
+    "exact_keywords": [
+      "strada",
+      "doppio senso di circolazione",
+      "circolazione stradale"
+    ],
+    "vector_search_queries": [
+      "definizione di strada a doppio senso di circolazione",
+      "tipologie di strade in base al senso di marcia"
+    ],
+    "rule_explanation": "Le strade si classificano in base al tipo di circolazione che consentono, inclusa la possibilità di essere a doppio senso."
+  }
+}

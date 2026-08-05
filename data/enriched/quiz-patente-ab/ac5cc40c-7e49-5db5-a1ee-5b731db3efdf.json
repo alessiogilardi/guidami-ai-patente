@@ -1,0 +1,27 @@
+{
+  "question_id": 4584,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24240",
+  "text": "L'uso degli indicatori di direzione è necessario ogni qualvolta si deve fare una manovra di svolta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione delle manovre",
+      "Uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "svolta",
+      "manovra",
+      "segnalazione"
+    ],
+    "vector_search_queries": [
+      "segnalazione obbligatoria delle svolte con indicatori di direzione",
+      "uso degli indicatori di direzione per le manovre di svolta"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare con sufficiente anticipo ogni manovra di svolta, al fine di avvisare gli altri utenti della strada."
+  }
+}

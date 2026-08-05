@@ -1,0 +1,33 @@
+{
+  "question_id": 4095,
+  "topic": "Segnali di pericolo",
+  "number": "19404",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada dove non si può circolare ad oltre 30 km/h",
+  "correct_answer": false,
+  "image": "a50e795242bbca87bdb941fb2715f989.jpeg",
+  "image_description": "Segnale di pericolo di caduta massi. Il segnale preannuncia un pericolo di caduta massi dalla parete rocciosa. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo stradale. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un profilo di montagna stilizzato da cui cadono dei massi, rappresentati da esagoni neri. Il pittogramma indica un pericolo di caduta massi o pietre dalla parete rocciosa. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di pericolo di caduta massi",
+    "description": "Il segnale preannuncia un pericolo di caduta massi dalla parete rocciosa. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di pericolo specifico",
+      "Regolazione della velocità in presenza di pericolo"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "caduta massi",
+      "strada",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo caduta massi significato",
+      "obblighi del conducente in presenza di segnali di pericolo specifico",
+      "moderazione della velocità ai segnali di pericolo"
+    ],
+    "rule_explanation": "Il segnale di pericolo di caduta massi preannuncia un rischio specifico, non impone un limite di velocità generale ma richiede prudenza e moderazione della stessa."
+  }
+}

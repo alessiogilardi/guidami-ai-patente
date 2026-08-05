@@ -1,0 +1,30 @@
+{
+  "question_id": 4009,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18409",
+  "text": "In una zona a traffico limitato non possono entrare più di un certo numero di veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Zone a traffico limitato (ZTL)",
+      "Accesso e circolazione veicolare",
+      "Regolamentazione della circolazione stradale"
+    ],
+    "exact_keywords": [
+      "zona a traffico limitato",
+      "accesso",
+      "veicoli",
+      "limitazione",
+      "regolamentazione"
+    ],
+    "vector_search_queries": [
+      "regolamentazione accesso zone a traffico limitato",
+      "limitazioni ingresso ZTL",
+      "condizioni accesso veicolare ZTL"
+    ],
+    "rule_explanation": "L'accesso alle ZTL non è limitato da un numero massimo di veicoli, ma da specifiche autorizzazioni e orari stabiliti dall'ente proprietario della strada."
+  }
+}

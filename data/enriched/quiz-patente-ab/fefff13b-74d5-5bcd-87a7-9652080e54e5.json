@@ -1,0 +1,32 @@
+{
+  "question_id": 4003,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18339",
+  "text": "Nella strada rappresentata, la corsia centrale è a doppio senso di circolazione",
+  "correct_answer": false,
+  "image": "6304fecd8e8f669b1a9c7c007bdab67d.jpeg",
+  "image_description": "Strada divisa in carreggiate separate. La strada è divisa in due carreggiate separate da una banchina spartitraffico. Ogni carreggiata è a senso unico e presenta due corsie di marcia, delimitate da strisce bianche continue e discontinue.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada. La strada è chiaramente divisa in due carreggiate separate da una banchina spartitraffico di colore verde scuro. Ogni carreggiata è a senso unico di marcia e presenta due corsie di marcia. Le corsie sono delimitate da segnaletica orizzontale: strisce bianche discontinue che separano le corsie all'interno di ciascuna carreggiata, e strisce bianche continue che delimitano il bordo esterno di ciascuna carreggiata. Non sono presenti segnali verticali o altri veicoli. La struttura suggerisce una strada a scorrimento veloce o autostrada con carreggiate separate.",
+    "name": "Strada divisa in carreggiate separate",
+    "description": "La strada è divisa in due carreggiate separate da una banchina spartitraffico. Ogni carreggiata è a senso unico e presenta due corsie di marcia, delimitate da strisce bianche continue e discontinue."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione delle strade",
+      "Senso di marcia delle corsie",
+      "Uso delle corsie di marcia"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "senso unico",
+      "corsia di marcia",
+      "doppio senso di circolazione"
+    ],
+    "vector_search_queries": [
+      "carreggiata a senso unico di circolazione",
+      "corsie di marcia su strade a carreggiate separate"
+    ],
+    "rule_explanation": "Nelle strade con carreggiate separate, ogni carreggiata è di norma a senso unico di circolazione, salvo diversa segnalazione. La corsia centrale, se presente, segue la stessa regola della carreggiata."
+  }
+}

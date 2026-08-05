@@ -1,0 +1,31 @@
+{
+  "question_id": 4127,
+  "topic": "Segnali di divieto",
+  "number": "19783",
+  "text": "In presenza del segnale raffigurato è consentito il transito ai veicoli che trasportano prodotti facilmente infiammabili, purché non esplosivi",
+  "correct_answer": false,
+  "image": "c8854dae262609ddc652757e5fa50bf2.jpeg",
+  "image_description": "Divieto di transito per veicoli che trasportano esplosivi. Il segnale vieta il transito ai veicoli che trasportano esplosivi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un'autovettura stilizzata con sopra un'esplosione simboleggiata da fiamme gialle e arancioni. Questo è il segnale di \"Divieto di transito per veicoli che trasportano esplosivi\".",
+    "name": "Divieto di transito per veicoli che trasportano esplosivi",
+    "description": "Il segnale vieta il transito ai veicoli che trasportano esplosivi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Merci pericolose"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "veicoli che trasportano esplosivi",
+      "prodotti infiammabili",
+      "segnali di pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per veicoli trasportanti esplosivi",
+      "segnali stradali di divieto per merci pericolose"
+    ],
+    "rule_explanation": "Il segnale di divieto raffigurato vieta il transito ai veicoli che trasportano esplosivi, non a quelli che trasportano solo prodotti infiammabili."
+  }
+}

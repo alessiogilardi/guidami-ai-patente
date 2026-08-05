@@ -1,0 +1,27 @@
+{
+  "question_id": 4672,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25081",
+  "text": "Per evitare rumori fastidiosi non bisogna accelerare inutilmente e ripetutamente se il veicolo è fermo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Comportamento alla guida per la sicurezza e il rispetto altrui"
+    ],
+    "exact_keywords": [
+      "rumori molesti",
+      "accelerare inutilmente",
+      "veicolo fermo",
+      "motore"
+    ],
+    "vector_search_queries": [
+      "divieto di produrre rumori molesti con il veicolo fermo",
+      "comportamento alla guida per evitare inquinamento acustico"
+    ],
+    "rule_explanation": "È vietato produrre rumori molesti, come accelerare inutilmente e ripetutamente con il veicolo fermo, per non arrecare disturbo alla quiete pubblica."
+  }
+}

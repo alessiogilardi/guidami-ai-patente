@@ -1,0 +1,32 @@
+{
+  "question_id": 4356,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22088",
+  "text": "Il segnale raffigurato indica la fine della zona destinata al parcheggio",
+  "correct_answer": false,
+  "image": "feec73a518738f6cbdf7869b0c52e6cc.jpeg",
+  "image_description": "Parcheggio con estensione laterale. Il segnale indica la presenza di un parcheggio e il pannello integrativo specifica che il parcheggio si estende in entrambe le direzioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di parcheggio (la lettera 'P' bianca su sfondo blu) sovrastato da un pannello integrativo rettangolare bianco con bordi neri. Il pannello integrativo contiene due frecce nere, una rivolta a sinistra e una a destra, che indicano un'estensione in entrambe le direzioni.",
+    "name": "Parcheggio con estensione laterale",
+    "description": "Il segnale indica la presenza di un parcheggio e il pannello integrativo specifica che il parcheggio si estende in entrambe le direzioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Pannelli integrativi",
+      "Parcheggio"
+    ],
+    "exact_keywords": [
+      "segnali integrativi",
+      "parcheggio",
+      "estesa",
+      "direzione"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo estesa parcheggio",
+      "segnaletica parcheggio esteso in entrambe le direzioni"
+    ],
+    "rule_explanation": "Il pannello integrativo indica che la zona di parcheggio ha un'estensione in entrambe le direzioni, non la fine della zona di parcheggio."
+  }
+}

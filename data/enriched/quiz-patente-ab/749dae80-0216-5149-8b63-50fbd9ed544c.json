@@ -1,0 +1,31 @@
+{
+  "question_id": 4089,
+  "topic": "Segnali di pericolo",
+  "number": "19325",
+  "text": "Il segnale raffigurato preannuncia la presenza di veicoli a trazione animale",
+  "correct_answer": false,
+  "image": "2aca17bfb73a3edfb26066f1e3c34f9d.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento di animali domestici. Il segnale preannuncia la possibile presenza di animali domestici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata la sagoma nera di una mucca. Questo segnale indica la potenziale presenza di animali domestici sulla strada.",
+    "name": "Segnale di pericolo - Attraversamento di animali domestici",
+    "description": "Il segnale preannuncia la possibile presenza di animali domestici sulla carreggiata. È necessario moderare la velocità e prestare attenzione per evitare incidenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Animali sulla carreggiata"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "veicoli a trazione animale",
+      "animali domestici",
+      "attraversamento"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per animali domestici",
+      "differenza segnale animali domestici e veicoli a trazione animale"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante animali domestici preannuncia la possibile presenza di questi sulla carreggiata, non di veicoli a trazione animale."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4510,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23648",
+  "text": "La fermata per esigenze del conducente può avere la durata massima di dieci minuti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata nel Codice della Strada",
+      "Durata della fermata"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "arresto",
+      "esigenze del conducente",
+      "durata massima"
+    ],
+    "vector_search_queries": [
+      "differenza tra fermata e sosta per esigenze del conducente",
+      "durata della fermata per far salire/scendere passeggeri"
+    ],
+    "rule_explanation": "La fermata, a differenza della sosta, non ha una durata prestabilita ma è consentita solo per il tempo necessario a far salire o scendere passeggeri, senza creare intralcio."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24766",
+  "text": "Il conducente coinvolto in un incidente stradale per la denunzia all'assicurazione può avvalersi degli appositi moduli prestampati forniti dalla propria assicurazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Denuncia di sinistro stradale",
+      "Modulo di constatazione amichevole di incidente (CID)",
+      "Assicurazione R.C.A."
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "denuncia all'assicurazione",
+      "moduli prestampati",
+      "constatazione amichevole"
+    ],
+    "vector_search_queries": [
+      "utilizzo moduli per denuncia sinistro stradale",
+      "procedura di constatazione amichevole d'incidente (CID)",
+      "denuncia di incidente stradale all'assicurazione con moduli prestampati"
+    ],
+    "rule_explanation": "In caso di incidente, i conducenti coinvolti possono utilizzare i moduli prestampati forniti dalle assicurazioni per facilitare la denuncia e la constatazione dei fatti."
+  }
+}

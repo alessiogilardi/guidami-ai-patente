@@ -1,0 +1,34 @@
+{
+  "question_id": 4088,
+  "topic": "Segnali di pericolo",
+  "number": "19312",
+  "text": "In presenza del segnale raffigurato occorre prestare particolare attenzione ai movimenti imprevedibili dei bambini",
+  "correct_answer": true,
+  "image": "cdbe4aad6e6d605fc94a507ecba3869c.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento di bambini. Il segnale preannuncia la possibile presenza di bambini in prossimità della carreggiata, invitando alla massima prudenza e a moderare la velocità. Può essere installato in prossimità di scuole, parchi giochi o altri luoghi frequentati da bambini.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una silhouette nera di un adulto che tiene per mano un bambino, entrambi con uno zaino in spalla e in movimento. Questo pittogramma indica la possibile presenza di bambini sulla carreggiata.",
+    "name": "Segnale di pericolo - Attraversamento di bambini",
+    "description": "Il segnale preannuncia la possibile presenza di bambini in prossimità della carreggiata, invitando alla massima prudenza e a moderare la velocità. Può essere installato in prossimità di scuole, parchi giochi o altri luoghi frequentati da bambini."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Attraversamento pedonale di bambini",
+      "Massima prudenza in prossimità di scuole o parchi giochi"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento di bambini",
+      "movimenti imprevedibili",
+      "massima prudenza",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "preavviso di pericolo per attraversamento bambini",
+      "obbligo di moderare la velocità in presenza di bambini",
+      "segnali stradali di pericolo per aree frequentate da bambini"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante l'attraversamento di bambini impone al conducente di prestare massima attenzione ai loro movimenti imprevedibili, moderando la velocità."
+  }
+}

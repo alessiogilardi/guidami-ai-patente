@@ -1,0 +1,27 @@
+{
+  "question_id": 4567,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24103",
+  "text": "Se si trainano caravan e rimorchi T.A.T.S. non è obbligatorio che il veicolo trainante sia munito di specchietto retrovisore destro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente per la sicurezza della circolazione",
+      "Norme sul traino di veicoli e rimorchi"
+    ],
+    "exact_keywords": [
+      "veicolo trainante",
+      "specchietto retrovisore destro",
+      "rimorchio T.A.T.S.",
+      "caravan"
+    ],
+    "vector_search_queries": [
+      "obbligo specchietto retrovisore destro veicolo trainante rimorchio",
+      "visibilità posteriore veicolo con rimorchio"
+    ],
+    "rule_explanation": "Il veicolo trainante, anche se traina caravan o rimorchi T.A.T.S., deve essere munito di specchietto retrovisore destro se il rimorchio impedisce la visione diretta posteriore."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4130,
+  "topic": "Segnali di divieto",
+  "number": "19814",
+  "text": "Il segnale raffigurato nei centri abitati vale soltanto dalle ore 8.00 alle ore 20.00",
+  "correct_answer": false,
+  "image": "016a0bbce288af6879bd8c8e41bea0bf.jpeg",
+  "image_description": "Segnale di altezza massima. Il segnale indica l'altezza massima dei veicoli ammessi al transito, misurata dal piano stradale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente un numero \"3\" grande, seguito da \",50\" in apice, e due frecce nere verticali, una rivolta verso l'alto e una verso il basso, che delimitano il numero. Questo è il segnale di \"altezza massima\".",
+    "name": "Segnale di altezza massima",
+    "description": "Il segnale indica l'altezza massima dei veicoli ammessi al transito, misurata dal piano stradale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito per specifiche categorie di veicoli",
+      "Limitazioni dimensionali dei veicoli"
+    ],
+    "exact_keywords": [
+      "segnale di divieto",
+      "altezza massima",
+      "centri abitati",
+      "divieto di transito"
+    ],
+    "vector_search_queries": [
+      "validità dei segnali di divieto di transito per altezza massima",
+      "limitazioni orarie ai segnali di divieto di transito in centri abitati"
+    ],
+    "rule_explanation": "I segnali di divieto, come quello di altezza massima, hanno validità permanente e non sono soggetti a limitazioni orarie, salvo diversa e specifica indicazione del segnale stesso."
+  }
+}

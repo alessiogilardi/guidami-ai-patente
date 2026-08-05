@@ -1,0 +1,31 @@
+{
+  "question_id": 4135,
+  "topic": "Segnali di divieto",
+  "number": "19862",
+  "text": "Il segnale raffigurato consente di circolare a velocità superiore a 50 km/h",
+  "correct_answer": true,
+  "image": "b0f757139def7519417e65cf9072bf86.jpeg",
+  "image_description": "Fine del divieto di superare i 50 km/h. Indica la fine del divieto di superare i 50 km/h.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una banda diagonale nera che divide il numero \"5\" a sinistra dal numero \"0\" a destra. Questo segnale indica la fine di un divieto. In questo caso specifico, indica la fine del divieto di superare i 50 km/h.",
+    "name": "Fine del divieto di superare i 50 km/h",
+    "description": "Indica la fine del divieto di superare i 50 km/h."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fine del divieto di velocità",
+      "Segnale di prescrizione (fine divieto)"
+    ],
+    "exact_keywords": [
+      "fine del divieto",
+      "superare i 50 km/h",
+      "segnale stradale",
+      "velocità massima"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un divieto di velocità",
+      "interpretazione segnale fine divieto di superare i 50 km/h"
+    ],
+    "rule_explanation": "Il segnale di 'Fine del divieto di superare i 50 km/h' indica che è consentito superare tale limite di velocità, non che sia obbligatorio circolare a una velocità superiore."
+  }
+}

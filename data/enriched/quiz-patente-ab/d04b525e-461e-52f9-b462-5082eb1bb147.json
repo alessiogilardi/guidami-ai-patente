@@ -1,0 +1,32 @@
+{
+  "question_id": 4081,
+  "topic": "Segnali di pericolo",
+  "number": "19222",
+  "text": "Dopo il segnale (A) si può trovare il segnale (B)",
+  "correct_answer": true,
+  "image": "2a0caaad4dffa7d4e796ed67e1c83b96.jpeg",
+  "image_description": "Segnale di pericolo di restringimento carreggiata (A) e segnale di divieto di sorpasso con diritto di precedenza (B). Il segnale A è un segnale di pericolo di restringimento della carreggiata. Il segnale B è un segnale di divieto che indica il divieto di sorpasso per i veicoli diretti verso il basso (freccia nera), mentre i veicoli diretti verso l'alto (freccia rossa) hanno la precedenza. Il segnale A preannuncia un restringimento della carreggiata, mentre il segnale B impone un divieto di sorpasso in una situazione in cui la circolazione è regolata da un senso unico alternato o da una situazione simile in cui una direzione ha la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali distinti, etichettati come A e B. Il segnale A è un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al suo interno, presenta un pittogramma nero che raffigura due linee parallele che si avvicinano, indicando un restringimento della carreggiata. Il segnale B è un segnale di prescrizione (divieto) a forma di disco con bordo rosso e sfondo bianco. Al suo interno, presenta due frecce, una nera rivolta verso il basso e una rossa rivolta verso l'alto, con una barra trasversale rossa che attraversa il disco. Questo segnale indica il divieto di sorpasso per i veicoli che procedono nella direzione indicata dalla freccia nera, mentre quelli che procedono nella direzione indicata dalla freccia rossa hanno la precedenza. I segnali sono presentati uno sopra l'altro, con la lettera A accanto al segnale superiore e la lettera B accanto al segnale inferiore.",
+    "name": "Segnale di pericolo di restringimento carreggiata (A) e segnale di divieto di sorpasso con diritto di precedenza (B)",
+    "description": "Il segnale A è un segnale di pericolo di restringimento della carreggiata. Il segnale B è un segnale di divieto che indica il divieto di sorpasso per i veicoli diretti verso il basso (freccia nera), mentre i veicoli diretti verso l'alto (freccia rossa) hanno la precedenza. Il segnale A preannuncia un restringimento della carreggiata, mentre il segnale B impone un divieto di sorpasso in una situazione in cui la circolazione è regolata da un senso unico alternato o da una situazione simile in cui una direzione ha la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di prescrizione",
+      "Precedenza in caso di restringimento carreggiata"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "restringimento carreggiata",
+      "segnale di divieto di sorpasso",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "sequenza segnali di pericolo e prescrizione",
+      "combinazione segnale restringimento carreggiata e divieto sorpasso con precedenza"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano una situazione che richiede prudenza, e possono essere seguiti da segnali di prescrizione che regolano la circolazione in quel tratto, come il divieto di sorpasso con diritto di precedenza."
+  }
+}

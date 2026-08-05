@@ -1,0 +1,28 @@
+{
+  "question_id": 4414,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22727",
+  "text": "Quando, giunti in prossimità di un incrocio, ci accorgiamo di aver sbagliato la corsia di preselezione cerchiamo di retrocedere, con prudenza, fino al punto in cui cessano le strisce continue di corsia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovre vietate in prossimità degli incroci",
+      "Divieto di inversioni di marcia e retromarcia in determinate situazioni"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "corsia di preselezione",
+      "strisce continue",
+      "inversione di marcia",
+      "retromarcia"
+    ],
+    "vector_search_queries": [
+      "divieto di retromarcia e inversione di marcia agli incroci",
+      "manovre vietate in corsia di preselezione"
+    ],
+    "rule_explanation": "È vietato invertire il senso di marcia o compiere retromarcia in prossimità o in corrispondenza degli incroci, anche se si è sbagliata la corsia di preselezione."
+  }
+}

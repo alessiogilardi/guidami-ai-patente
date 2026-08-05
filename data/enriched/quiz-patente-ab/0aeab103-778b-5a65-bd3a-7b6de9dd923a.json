@@ -1,0 +1,29 @@
+{
+  "question_id": 4714,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25441",
+  "text": "Nei veicoli a motore a due ruote, se la catena di trasmissione mostra segni di usura occorre rinforzarla con filo di ferro di tipo idoneo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Componenti del veicolo"
+    ],
+    "exact_keywords": [
+      "catena di trasmissione",
+      "usura",
+      "veicoli a motore a due ruote",
+      "manutenzione"
+    ],
+    "vector_search_queries": [
+      "manutenzione catena trasmissione veicoli a due ruote",
+      "sostituzione componenti usurati veicolo",
+      "sicurezza veicoli a motore a due ruote"
+    ],
+    "rule_explanation": "La catena di trasmissione usurata di un veicolo a due ruote deve essere sostituita, non rinforzata con fili di ferro, per garantire la sicurezza."
+  }
+}

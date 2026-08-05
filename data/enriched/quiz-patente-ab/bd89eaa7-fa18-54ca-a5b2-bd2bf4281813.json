@@ -1,0 +1,28 @@
+{
+  "question_id": 4626,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24730",
+  "text": "Su strade coperte di neve occorre moderare la velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Moderazione della velocità",
+      "Condizioni avverse della strada",
+      "Prevenzione degli incidenti"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "strade innevate",
+      "moderare",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità alle condizioni della strada innevata",
+      "obbligo di moderare la velocità in presenza di neve sulla carreggiata"
+    ],
+    "rule_explanation": "Su strade coperte di neve, il conducente ha l'obbligo di moderare la velocità per garantire la sicurezza e prevenire incidenti, adattandola alle condizioni specifiche."
+  }
+}

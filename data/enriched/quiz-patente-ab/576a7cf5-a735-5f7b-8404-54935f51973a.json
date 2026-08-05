@@ -1,0 +1,28 @@
+{
+  "question_id": 4543,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23899",
+  "text": "In caso di malessere di un passeggero durante la circolazione sulla carreggiata autostradale, è consentito fermarsi sulla corsia per la sosta di emergenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Soccorso stradale e gestione emergenze in autostrada",
+      "Fermata di emergenza in autostrada"
+    ],
+    "exact_keywords": [
+      "malessere",
+      "passeggero",
+      "autostrada",
+      "corsia per la sosta di emergenza",
+      "fermarsi"
+    ],
+    "vector_search_queries": [
+      "fermata di emergenza in autostrada per soccorso a passeggero con malessere",
+      "utilizzo della corsia di emergenza per assistenza a persona in difficoltà in autostrada"
+    ],
+    "rule_explanation": "In caso di malessere di un passeggero, è consentito fermarsi sulla corsia per la sosta di emergenza in autostrada per prestare soccorso."
+  }
+}

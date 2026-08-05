@@ -1,0 +1,30 @@
+{
+  "question_id": 4712,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25414",
+  "text": "Se il tubo di scarico del silenziatore si fora e non si intende sostituirlo a breve, lo si può riparare avvolgendolo con lana di vetro e nastro isolante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Efficienza del sistema di scarico"
+    ],
+    "exact_keywords": [
+      "tubo di scarico",
+      "silenziatore",
+      "riparazione",
+      "lana di vetro",
+      "nastro isolante"
+    ],
+    "vector_search_queries": [
+      "manutenzione sistema di scarico veicolo",
+      "riparazione silenziatore e tubo di scarico",
+      "sicurezza e efficienza impianto di scarico auto"
+    ],
+    "rule_explanation": "La riparazione di un tubo di scarico forato con lana di vetro e nastro isolante non è una soluzione idonea né sicura, potendo causare emissioni nocive e rumore eccessivo."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4373,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22268",
+  "text": "Il pannello integrativo in figura può trovarsi da solo",
+  "correct_answer": false,
+  "image": "fda8b4efac0220fb14dde65da7fdcecc.jpeg",
+  "image_description": "Pannello integrativo - Solo autobus urbani. Il pannello integrativo indica che la prescrizione o il divieto indicato dal segnale a cui è abbinato si applica solo agli autobus urbani.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Al centro, in alto, è riportata la scritta \"eccetto\" in nero. Sotto la scritta, è raffigurato il profilo stilizzato di un autobus urbano a due porte, anch'esso in nero. Questo pannello è un pannello integrativo di tipo 1, utilizzato per limitare l'applicazione di un segnale principale a una specifica categoria di veicoli. In questo caso, la categoria è \"autobus urbani\".",
+    "name": "Pannello integrativo - Solo autobus urbani",
+    "description": "Il pannello integrativo indica che la prescrizione o il divieto indicato dal segnale a cui è abbinato si applica solo agli autobus urbani."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale integrativa",
+      "Applicazione specifica di segnali stradali"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "segnali complementari",
+      "autobus urbani",
+      "prescrizione",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "funzione dei pannelli integrativi nella segnaletica stradale",
+      "installazione pannelli integrativi con segnali stradali",
+      "pannelli integrativi che specificano categorie di veicoli"
+    ],
+    "rule_explanation": "I pannelli integrativi, che specificano o limitano l\\'applicazione di un segnale, non possono essere installati isolatamente ma devono sempre accompagnare un segnale stradale principale."
+  }
+}

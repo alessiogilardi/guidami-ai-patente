@@ -1,0 +1,27 @@
+{
+  "question_id": 4574,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24162",
+  "text": "Durante la marcia fuori dai centri abitati, è obbligatorio fare uso delle luci anabbaglianti, sia di giorno che di notte",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di accensione luci di marcia",
+      "Uso delle luci in condizioni di scarsa visibilità"
+    ],
+    "exact_keywords": [
+      "luci anabbaglianti",
+      "marcia fuori dai centri abitati",
+      "giorno",
+      "notte"
+    ],
+    "vector_search_queries": [
+      "obbligo luci anabbaglianti marcia fuori centro abitato giorno e notte",
+      "accensione luci di marcia in autostrada e strade extraurbane"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, le luci anabbaglianti devono essere accese sia di giorno che di notte per garantire la visibilità del veicolo."
+  }
+}

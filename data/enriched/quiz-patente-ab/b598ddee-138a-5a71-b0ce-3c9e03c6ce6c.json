@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23516",
+  "text": "Lo spazio necessario alla manovra di sorpasso aumenta in relazione alla maggiore lunghezza del veicolo che sorpassa",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Distanza di sicurezza",
+      "Dimensioni del veicolo"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "spazio di manovra",
+      "lunghezza del veicolo",
+      "distanza di sicurezza"
+    ],
+    "vector_search_queries": [
+      "spazio necessario per il sorpasso in base alla lunghezza del veicolo",
+      "adeguamento della manovra di sorpasso alle dimensioni del veicolo che precede"
+    ],
+    "rule_explanation": "Lo spazio necessario per il sorpasso deve essere commisurato alla lunghezza del veicolo che si intende superare, garantendo la sicurezza della manovra."
+  }
+}

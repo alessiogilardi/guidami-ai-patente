@@ -1,0 +1,27 @@
+{
+  "question_id": 4416,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22746",
+  "text": "Quando, in un centro abitato, il conducente di un veicolo si imbatte in un corteo, deve retrocedere rapidamente fino al primo incrocio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento in presenza di cortei e cortei funebri",
+      "Obblighi del conducente in caso di cortei"
+    ],
+    "exact_keywords": [
+      "corteo",
+      "centro abitato",
+      "retrocedere",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente in presenza di cortei in centro abitato",
+      "obblighi del conducente rispetto ai cortei e cortei funebri"
+    ],
+    "rule_explanation": "In presenza di un corteo, il conducente deve fermarsi e attendere il suo passaggio, non retrocedere fino al primo incrocio."
+  }
+}

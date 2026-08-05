@@ -1,0 +1,28 @@
+{
+  "question_id": 4586,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24264",
+  "text": "E' consentito l'uso intermittente dei proiettori di profondità (a luce abbagliante), esclusivamente nei casi di pericolo immediato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione acustica e luminosa",
+      "Uso dei proiettori di profondità"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "luce abbagliante",
+      "uso intermittente",
+      "pericolo immediato"
+    ],
+    "vector_search_queries": [
+      "uso intermittente proiettori di profondità",
+      "segnalazione di pericolo con luci abbaglianti",
+      "quando usare i proiettori di profondità in modo intermittente"
+    ],
+    "rule_explanation": "L'uso intermittente dei proiettori di profondità è consentito per segnalare la propria presenza o per avvisare di un pericolo, non solo in caso di pericolo immediato."
+  }
+}

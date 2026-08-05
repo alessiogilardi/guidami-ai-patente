@@ -1,0 +1,29 @@
+{
+  "question_id": 4533,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23824",
+  "text": "Il conducente di un autoveicolo che non abbia potuto evitare lo spargimento di materie pericolose, può evitare di presegnalare la zona con il segnale mobile di pericolo se esegue segnali sonori per allontanare gli altri veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo",
+      "Obblighi in caso di trasporto di materie pericolose",
+      "Presegnalazione di ostacolo o pericolo imprevedibile"
+    ],
+    "exact_keywords": [
+      "spargimento di materie pericolose",
+      "segnali di pericolo",
+      "presegnalare la zona",
+      "segnali sonori",
+      "veicolo in avaria"
+    ],
+    "vector_search_queries": [
+      "obbligo di presegnalazione con segnale mobile di pericolo per spargimento materie pericolose",
+      "segnalazione di pericolo per trasporto materie pericolose in caso di incidente"
+    ],
+    "rule_explanation": "In caso di spargimento di materie pericolose, è sempre obbligatorio presegnalare la zona con il segnale mobile di pericolo, indipendentemente dall'uso di segnali sonori."
+  }
+}

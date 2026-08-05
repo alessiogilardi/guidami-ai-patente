@@ -1,0 +1,29 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24661",
+  "text": "Il trasporto in sovraccarico o in sovrannumero durante la guida, comporta una perdita di punti sulla patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sanzioni amministrative pecuniarie e accessorie",
+      "Trasporto in sovraccarico",
+      "Uso del veicolo"
+    ],
+    "exact_keywords": [
+      "sovraccarico",
+      "sovrannumero",
+      "perdita di punteggio",
+      "patente di guida"
+    ],
+    "vector_search_queries": [
+      "sanzioni per trasporto in sovraccarico o sovrannumero",
+      "decurtazione punti patente per sovraccarico",
+      "conseguenze del trasporto in sovrannumero"
+    ],
+    "rule_explanation": "Il trasporto in sovraccarico o in sovrannumero comporta una sanzione amministrativa pecuniaria e la decurtazione di punti dalla patente di guida."
+  }
+}

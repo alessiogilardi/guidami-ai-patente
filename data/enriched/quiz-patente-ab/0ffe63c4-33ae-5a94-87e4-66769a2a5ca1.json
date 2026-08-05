@@ -1,0 +1,29 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24556",
+  "text": "La patente di categoria B consente di guidare tutti gli autocaravan (camper)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria B",
+      "Massa a pieno carico del veicolo",
+      "Guida di autocaravan"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "autocaravan",
+      "massa complessiva a pieno carico",
+      "veicoli a motore diversi dagli autoveicoli"
+    ],
+    "vector_search_queries": [
+      "limiti di massa per autoveicoli guidabili con patente B",
+      "categoria B patente autocaravan massa massima",
+      "definizione autocaravan e patente di guida"
+    ],
+    "rule_explanation": "La patente B abilita alla guida di autoveicoli con massa complessiva a pieno carico non superiore a 3,5 tonnellate, e non tutti gli autocaravan."
+  }
+}

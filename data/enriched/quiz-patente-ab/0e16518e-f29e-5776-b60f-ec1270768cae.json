@@ -1,0 +1,28 @@
+{
+  "question_id": 4710,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25377",
+  "text": "In un veicolo a motore, gli ammortizzatori scarichi aumentano il rischio di rottura delle molle delle sospensioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Manutenzione del veicolo",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "ammortizzatori scarichi",
+      "molle delle sospensioni",
+      "tenuta di strada",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "funzionamento ammortizzatori e stabilità veicolo",
+      "conseguenze ammortizzatori scarichi su sospensioni e tenuta di strada"
+    ],
+    "rule_explanation": "Gli ammortizzatori scarichi compromettono la tenuta di strada e la stabilità del veicolo, aumentando il rischio di rottura delle molle delle sospensioni e di altri componenti dell'avantreno."
+  }
+}

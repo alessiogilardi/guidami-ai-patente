@@ -1,0 +1,29 @@
+{
+  "question_id": 4405,
+  "topic": "Distanza di sicurezza",
+  "number": "22636",
+  "text": "Sulla distanza di sicurezza influisce il carico trasportato dal veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Carico del veicolo",
+      "Fattori che influenzano la distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "carico trasportato",
+      "veicolo",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "influenza del carico sulla distanza di sicurezza tra veicoli",
+      "adeguamento della distanza di sicurezza in base al peso del carico",
+      "distanza di sicurezza e fattori che la influenzano"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere aumentata in base al carico trasportato, alle condizioni della strada, del traffico e atmosferiche per garantire una frenata sicura."
+  }
+}

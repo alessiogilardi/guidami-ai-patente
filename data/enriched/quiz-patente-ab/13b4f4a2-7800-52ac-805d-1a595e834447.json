@@ -1,0 +1,28 @@
+{
+  "question_id": 4604,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24450",
+  "text": "Le giacche ad uso motociclistico garantiscono un'adeguata protezione all'abrasione in caso di scivolamento sull'asfalto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Equipaggiamento protettivo per motociclisti",
+      "Protezione dall'abrasione",
+      "Dispositivi di sicurezza"
+    ],
+    "exact_keywords": [
+      "giacche motociclistiche",
+      "protezione dall'abrasione",
+      "scivolamento sull'asfalto",
+      "dispositivi di protezione individuale"
+    ],
+    "vector_search_queries": [
+      "protezione dall'abrasione giacche motociclistiche caduta",
+      "requisiti di sicurezza abbigliamento motociclista"
+    ],
+    "rule_explanation": "Le giacche per motociclisti devono offrire adeguata protezione dall'abrasione in caso di caduta e scivolamento, come previsto dalla normativa sui dispositivi di protezione individuale."
+  }
+}

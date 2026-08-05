@@ -1,0 +1,27 @@
+{
+  "question_id": 4595,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24328",
+  "text": "Il poggiatesta è particolarmente utile per rilassare la muscolatura durante la guida",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza passiva del veicolo",
+      "Dispositivi di protezione per il conducente e i passeggeri"
+    ],
+    "exact_keywords": [
+      "poggiatesta",
+      "riduzione del rischio di lesioni",
+      "colpo di frusta",
+      "sistema di sicurezza"
+    ],
+    "vector_search_queries": [
+      "funzione del poggiatesta nel prevenire il colpo di frusta",
+      "scopo del poggiatesta per la sicurezza del conducente"
+    ],
+    "rule_explanation": "Il poggiatesta serve a ridurre il rischio di lesioni al collo in caso di tamponamento (colpo di frusta), non a rilassare la muscolatura durante la guida."
+  }
+}

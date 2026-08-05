@@ -1,0 +1,27 @@
+{
+  "question_id": 4517,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23705",
+  "text": "Durante la sosta il conducente deve adottare accorgimenti atti a garantire l'immobilità del veicolo, indipendentemente dal grado di pendenza della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Immobilità del veicolo durante la sosta",
+      "Obblighi del conducente durante la sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "immobilità del veicolo",
+      "pendenza della strada",
+      "accorgimenti"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente durante la sosta",
+      "garantire l'immobilità del veicolo in sosta"
+    ],
+    "rule_explanation": "Durante la sosta, il conducente deve assicurare l'immobilità del veicolo adottando gli opportuni accorgimenti, indipendentemente dalla pendenza della strada."
+  }
+}

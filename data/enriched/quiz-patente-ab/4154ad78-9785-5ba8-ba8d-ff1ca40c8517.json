@@ -1,0 +1,26 @@
+{
+  "question_id": 4387,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22455",
+  "text": "Salvo diversa segnalazione, il limite massimo di velocità sulle strade extraurbane principali è di 100 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane principali",
+      "Regolamentazione della velocità"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "strade extraurbane principali",
+      "110 km/h"
+    ],
+    "vector_search_queries": [
+      "limite velocità strade extraurbane principali",
+      "velocità massima consentita su strade extraurbane principali"
+    ],
+    "rule_explanation": "Il limite massimo di velocità sulle strade extraurbane principali è di 110 km/h, salvo diversa segnalazione."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4431,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22887",
+  "text": "E' obbligatorio dare la precedenza a tutti i veicoli circolanti negli incroci regolati da semaforo a luce gialla lampeggiante",
+  "correct_answer": false,
+  "image": "7f30c2092cbae8a33505fdc2297bb6a3.jpeg",
+  "image_description": "Incrocio con strada senza diritto di precedenza. Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta un incrocio a T, con la strada principale orizzontale e la strada secondaria che si immette da destra e da sinistra. La forma del pittogramma indica che la strada su cui si sta viaggiando si immette in una strada trasversale.",
+    "name": "Incrocio con strada senza diritto di precedenza",
+    "description": "Il segnale preannuncia un incrocio in cui la strada che si sta percorrendo si immette in una strada con diritto di precedenza. Bisogna quindi dare la precedenza ai veicoli provenienti dalla strada trasversale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della circolazione stradale",
+      "Precedenza agli incroci",
+      "Segnaletica stradale luminosa"
+    ],
+    "exact_keywords": [
+      "incroci regolati",
+      "semaforo a luce gialla lampeggiante",
+      "dare la precedenza",
+      "altri veicoli"
+    ],
+    "vector_search_queries": [
+      "precedenza incroci semaforo giallo lampeggiante",
+      "obblighi del conducente con semaforo giallo lampeggiante"
+    ],
+    "rule_explanation": "La luce gialla lampeggiante impone di moderare la velocità e di dare la precedenza ai veicoli provenienti dalla strada con diritto di precedenza, non a tutti i veicoli."
+  }
+}

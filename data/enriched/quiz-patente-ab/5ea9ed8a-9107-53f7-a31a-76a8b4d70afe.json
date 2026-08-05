@@ -1,0 +1,28 @@
+{
+  "question_id": 4011,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18428",
+  "text": "Nelle aree pedonali possono transitare i veicoli al servizio di persone diversamente abili",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree pedonali",
+      "Accesso veicoli autorizzati",
+      "Utenti deboli della strada"
+    ],
+    "exact_keywords": [
+      "area pedonale",
+      "veicoli al servizio di persone diversamente abili",
+      "accesso consentito",
+      "autorizzazione"
+    ],
+    "vector_search_queries": [
+      "accesso aree pedonali per veicoli al servizio di disabili",
+      "deroga al divieto di transito nelle aree pedonali per persone con disabilità"
+    ],
+    "rule_explanation": "Nelle aree pedonali è consentito il transito ai veicoli al servizio di persone con disabilità, nel rispetto delle specifiche condizioni e autorizzazioni previste."
+  }
+}

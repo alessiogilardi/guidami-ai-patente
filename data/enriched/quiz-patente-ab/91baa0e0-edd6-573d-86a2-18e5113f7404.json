@@ -1,0 +1,27 @@
+{
+  "question_id": 4381,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22392",
+  "text": "Si deve tenere una velocità che consenta di intervenire con sicurezza in caso di imprevisti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità adeguata alle circostanze",
+      "Obbligo di prudenza alla guida"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "imprevisti",
+      "sicurezza",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alla possibilità di intervento in caso di imprevisti",
+      "velocità idonea a garantire la sicurezza e la manovra in situazioni impreviste"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in modo da poter intervenire con sicurezza in caso di imprevisti, garantendo una manovra sicura."
+  }
+}

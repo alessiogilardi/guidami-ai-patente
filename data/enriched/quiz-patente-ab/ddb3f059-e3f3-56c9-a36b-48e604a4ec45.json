@@ -1,0 +1,34 @@
+{
+  "question_id": 4065,
+  "topic": "Segnali di pericolo",
+  "number": "19044",
+  "text": "Il segnale raffigurato impone di dare la precedenza ai veicoli della polizia penitenziaria in uscita dalle carceri",
+  "correct_answer": false,
+  "image": "accabdc7809596ef95d9e34d4b33d06b.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere o semibarriere. Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un simbolo nero che rappresenta un passaggio a livello con barriere, costituito da due elementi verticali collegati da tre elementi orizzontali. Il segnale è isolato, non inserito in una scena di guida o in sequenza con altri segnali.",
+    "name": "Segnale di passaggio a livello con barriere o semibarriere",
+    "description": "Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Passaggio a livello con barriere",
+      "Obblighi ai passaggi a livello"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello con barriere",
+      "preavviso",
+      "moderare la velocità",
+      "pronto a fermarsi"
+    ],
+    "vector_search_queries": [
+      "obblighi del segnale di pericolo per passaggio a livello con barriere",
+      "significato del segnale di passaggio a livello con barriere e semibarriere",
+      "regole di comportamento ai passaggi a livello con barriere"
+    ],
+    "rule_explanation": "Il segnale raffigurante un passaggio a livello con barriere preannuncia un pericolo e impone di moderare la velocità e di essere pronti a fermarsi, non di dare precedenza a veicoli specifici."
+  }
+}

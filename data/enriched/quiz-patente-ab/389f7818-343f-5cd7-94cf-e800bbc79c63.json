@@ -1,0 +1,27 @@
+{
+  "question_id": 4541,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23884",
+  "text": "Sulle corsie per le soste di emergenza delle autostrade è vietato effettuare la retromarcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di retromarcia in autostrada",
+      "Utilizzo delle corsie di emergenza"
+    ],
+    "exact_keywords": [
+      "corsie di emergenza",
+      "autostrade",
+      "retromarcia",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di retromarcia in corsia di emergenza autostradale",
+      "manovre vietate sulle corsie di sosta di emergenza in autostrada"
+    ],
+    "rule_explanation": "Sulle corsie per le soste di emergenza delle autostrade è vietato effettuare la retromarcia, salvo che per la manovra di ingresso o uscita dall'autostrada stessa."
+  }
+}

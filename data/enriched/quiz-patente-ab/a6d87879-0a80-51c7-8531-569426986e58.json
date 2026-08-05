@@ -1,0 +1,27 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31050",
+  "text": "Il rispetto delle norme di circolazione è importante solo se la loro violazione comporta una sanzione economica elevata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di osservanza delle norme di circolazione",
+      "Finalità della normativa stradale"
+    ],
+    "exact_keywords": [
+      "norme di circolazione",
+      "sanzione economica",
+      "principio di legalità",
+      "sicurezza stradale"
+    ],
+    "vector_search_queries": [
+      "obbligo di rispettare le norme di circolazione per la sicurezza",
+      "finalità delle norme del codice della strada al di là delle sanzioni economiche"
+    ],
+    "rule_explanation": "Il rispetto delle norme di circolazione è un obbligo generale finalizzato alla sicurezza stradale, indipendentemente dall'entità della sanzione economica prevista per la violazione."
+  }
+}

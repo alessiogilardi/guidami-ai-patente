@@ -1,0 +1,28 @@
+{
+  "question_id": 4537,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23857",
+  "text": "Sulle autostrade e strade extraurbane principali è vietata la circolazione di veicoli le cui condizioni di uso, equipaggiamento e gommatura possono costituire pericolo per la circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Condizioni di sicurezza del veicolo",
+      "Circolazione su autostrade e strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "autostrade",
+      "strade extraurbane principali",
+      "condizioni di uso",
+      "equipaggiamento",
+      "gommatura"
+    ],
+    "vector_search_queries": [
+      "divieto di circolazione per veicoli inidonei su autostrade e strade extraurbane principali",
+      "requisiti di sicurezza per la circolazione stradale su arterie ad alta velocità"
+    ],
+    "rule_explanation": "È vietata la circolazione su autostrade e strade extraurbane principali di veicoli che, per le loro condizioni d'uso, equipaggiamento o gommatura, possano rappresentare un pericolo per la circolazione."
+  }
+}

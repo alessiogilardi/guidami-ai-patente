@@ -1,0 +1,27 @@
+{
+  "question_id": 4504,
+  "topic": "Norme sul sorpasso",
+  "number": "23591",
+  "text": "Il conducente del veicolo da sorpassare ha l'obbligo di tenersi il più possibile vicino al margine destro su strade ad unica corsia per senso di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente durante il sorpasso",
+      "Posizionamento del veicolo su strade a unica corsia"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "veicolo da sorpassare",
+      "margine destro",
+      "unica corsia per senso di marcia"
+    ],
+    "vector_search_queries": [
+      "obbligo conducente veicolo da sorpassare margine destro unica corsia",
+      "posizionamento veicolo durante sorpasso su strada a unica corsia"
+    ],
+    "rule_explanation": "Il conducente del veicolo che sta per essere sorpassato deve tenersi il più possibile vicino al margine destro, se la strada è a unica corsia per senso di marcia."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4462,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23180",
+  "text": "Nell'incrocio rappresentato nella figura il veicolo T transita per primo",
+  "correct_answer": true,
+  "image": "29a458e0725fe82fdf67ad533402e7c8.jpeg",
+  "image_description": "Incrocio a T con precedenza a destra e tram. L'incrocio è a T. Il veicolo L, proveniente da sinistra, deve dare precedenza ai veicoli che provengono dalla strada principale (inclusi i veicoli A e C). Il tram T, proveniente da destra sulla strada principale, ha la precedenza sui veicoli A e C. L'ordine di passaggio corretto è: T, poi L, infine A e C (che devono accordarsi per la precedenza reciproca, ma in questo caso A è bloccato da C).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a forma di T. Sulla strada principale, che attraversa orizzontalmente l'immagine, si trovano un tram (T) che proviene da destra e due veicoli (A e C) che provengono da sinistra. Il veicolo L si trova su una strada secondaria che immette sulla strada principale da sinistra. Le frecce tratteggiate indicano le traiettorie dei veicoli. Il tram T ha una corsia dedicata. Non sono presenti segnali stradali visibili che regolino la precedenza, quindi si applica la regola generale della precedenza a destra e la precedenza dei tram. Il veicolo L, immettendosi sulla strada principale, deve dare precedenza ai veicoli che provengono dalla sua destra (A e C) e da sinistra (T). Il tram T, essendo un tram, ha la precedenza sui veicoli A e C. Pertanto, l'ordine di passaggio è: T, poi L, e infine A e C.",
+    "name": "Incrocio a T con precedenza a destra e tram",
+    "description": "L'incrocio è a T. Il veicolo L, proveniente da sinistra, deve dare precedenza ai veicoli che provengono dalla strada principale (inclusi i veicoli A e C). Il tram T, proveniente da destra sulla strada principale, ha la precedenza sui veicoli A e C. L'ordine di passaggio corretto è: T, poi L, infine A e C (che devono accordarsi per la precedenza reciproca, ma in questo caso A è bloccato da C)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ordine di precedenza agli incroci",
+      "Precedenza dei tram"
+    ],
+    "exact_keywords": [
+      "incrocio a T",
+      "precedenza a destra",
+      "tram",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "precedenza dei tram negli incroci",
+      "ordine di precedenza in incrocio a T con tram"
+    ],
+    "rule_explanation": "Il tram, in un incrocio, ha la precedenza sui veicoli, salvo diversa segnalazione. Il veicolo T, essendo un tram, transita per primo."
+  }
+}

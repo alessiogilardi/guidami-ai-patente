@@ -1,0 +1,27 @@
+{
+  "question_id": 4534,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23832",
+  "text": "Nel caso di intersezione a distanza inferiore a 50 metri, il segnale mobile triangolare di pericolo deve essere posto dietro al veicolo nella posizione più idonea ad essere avvistato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo fermo per avaria",
+      "Obblighi del conducente in caso di arresto del veicolo"
+    ],
+    "exact_keywords": [
+      "segnale mobile triangolare di pericolo",
+      "distanza minima",
+      "veicolo fermo",
+      "avvistato"
+    ],
+    "vector_search_queries": [
+      "posizionamento segnale triangolare di pericolo veicolo fermo",
+      "distanza di posizionamento segnale di pericolo in prossimità di intersezioni"
+    ],
+    "rule_explanation": "Il segnale mobile triangolare di pericolo va posizionato a una distanza adeguata dal veicolo fermo per garantire l'avvistamento, specialmente in prossimità di intersezioni."
+  }
+}

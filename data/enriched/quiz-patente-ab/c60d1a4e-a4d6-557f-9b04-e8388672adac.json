@@ -1,0 +1,28 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18357",
+  "text": "Le strade extraurbane principali sono provviste di corsie di accelerazione per l'ingresso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Strade extraurbane principali",
+      "Corsie di accelerazione e decelerazione"
+    ],
+    "exact_keywords": [
+      "strade extraurbane principali",
+      "corsia di accelerazione",
+      "corsia di decelerazione",
+      "ingresso",
+      "uscita"
+    ],
+    "vector_search_queries": [
+      "caratteristiche delle strade extraurbane principali con corsie di accelerazione e decelerazione",
+      "funzione delle corsie di accelerazione nelle strade extraurbane principali"
+    ],
+    "rule_explanation": "Le strade extraurbane principali sono dotate di corsie di accelerazione per facilitare l'ingresso e corsie di decelerazione per l'uscita, separando i flussi di traffico."
+  }
+}

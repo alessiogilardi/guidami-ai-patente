@@ -1,0 +1,27 @@
+{
+  "question_id": 4702,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25289",
+  "text": "Quando la strada è bagnata, se il veicolo che mi precede solleva dell'acqua che mi sporca il parabrezza, devo sorpassarlo immediatamente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in base alle condizioni della strada",
+      "Comportamento prudente in caso di scarsa visibilità"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "visibilità",
+      "sorpasso"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità in caso di scarsa visibilità per spruzzi d'acqua",
+      "comportamento di guida in presenza di veicoli che sollevano acqua"
+    ],
+    "rule_explanation": "In caso di scarsa visibilità dovuta a spruzzi d'acqua sollevati dal veicolo che precede, è necessario rallentare e aumentare la distanza di sicurezza, non sorpassare immediatamente."
+  }
+}

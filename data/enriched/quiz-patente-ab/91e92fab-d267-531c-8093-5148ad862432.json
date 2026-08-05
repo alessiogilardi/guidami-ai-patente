@@ -1,0 +1,32 @@
+{
+  "question_id": 4354,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22065",
+  "text": "Il pannello integrativo raffigurato indica un'officina meccanica per autotreni",
+  "correct_answer": false,
+  "image": "9176878fa4d26bd38e490c176920999a.jpeg",
+  "image_description": "Pannello integrativo: veicoli pesanti. Il pannello integrativo raffigurato indica che il segnale al quale è abbinato si applica ai veicoli pesanti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare con bordo nero su sfondo bianco. Al centro è raffigurato il pittogramma di un veicolo pesante (camion). Questo pannello è comunemente utilizzato per integrare segnali stradali, specificando che la loro prescrizione o indicazione si applica specificamente ai veicoli pesanti.",
+    "name": "Pannello integrativo: veicoli pesanti",
+    "description": "Il pannello integrativo raffigurato indica che il segnale al quale è abbinato si applica ai veicoli pesanti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale integrativa",
+      "Destinatari dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "veicoli pesanti",
+      "officina meccanica",
+      "segnali stradali"
+    ],
+    "vector_search_queries": [
+      "funzione pannelli integrativi per veicoli pesanti",
+      "interpretazione pannello integrativo con sagome di veicoli pesanti",
+      "segnalazione officina meccanica con pannelli integrativi"
+    ],
+    "rule_explanation": "Il pannello integrativo con l'immagine di veicoli pesanti indica che il segnale si applica a tali veicoli, non che segnala la presenza di un'officina meccanica."
+  }
+}

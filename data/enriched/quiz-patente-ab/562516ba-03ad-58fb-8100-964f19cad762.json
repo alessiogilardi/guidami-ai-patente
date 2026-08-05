@@ -1,0 +1,30 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22533",
+  "text": "Il valore della distanza di sicurezza deve essere stabilito anche in base al tipo di veicolo di cui si è alla guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Adeguamento della velocità",
+      "Tipologia del veicolo"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo",
+      "velocità",
+      "condizioni della strada",
+      "tipo di veicolo"
+    ],
+    "vector_search_queries": [
+      "determinazione della distanza di sicurezza in base al tipo di veicolo",
+      "influenza del tipo di veicolo sulla distanza di sicurezza da mantenere",
+      "adeguamento della distanza di sicurezza in base alle caratteristiche del veicolo e alla velocità"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere sempre mantenuta, variando in base alla velocità, alle condizioni della strada e al tipo di veicolo per garantire la sicurezza."
+  }
+}

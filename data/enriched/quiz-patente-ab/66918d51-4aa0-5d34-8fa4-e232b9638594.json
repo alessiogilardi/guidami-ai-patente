@@ -1,0 +1,32 @@
+{
+  "question_id": 4062,
+  "topic": "Segnali di pericolo",
+  "number": "19000",
+  "text": "In presenza del segnale raffigurato è necessario tenere una velocità moderata esclusivamente nella prima curva",
+  "correct_answer": false,
+  "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo",
+      "Doppia curva pericolosa",
+      "Moderazione della velocità"
+    ],
+    "exact_keywords": [
+      "doppia curva pericolosa",
+      "preavviso",
+      "velocità moderata",
+      "prestare attenzione"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di doppia curva pericolosa",
+      "segnali di pericolo per curve multiple e adeguamento della condotta di guida"
+    ],
+    "rule_explanation": "Il segnale di doppia curva pericolosa impone di moderare la velocità e prestare attenzione per tutta la sequenza di curve, non solo nella prima."
+  }
+}

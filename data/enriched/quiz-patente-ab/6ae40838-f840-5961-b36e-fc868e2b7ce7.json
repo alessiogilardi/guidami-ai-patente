@@ -1,0 +1,27 @@
+{
+  "question_id": 4713,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25430",
+  "text": "Nei veicoli a motore a due ruote, l'interruttore d'emergenza ha la funzione di freno di stazionamento",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza dei veicoli a motore",
+      "Funzionalità dei comandi di bordo"
+    ],
+    "exact_keywords": [
+      "interruttore d'emergenza",
+      "veicoli a motore a due ruote",
+      "freno di stazionamento",
+      "dispositivi di protezione"
+    ],
+    "vector_search_queries": [
+      "funzione interruttore d'emergenza motocicli",
+      "differenza tra freno di stazionamento e interruttore d'emergenza"
+    ],
+    "rule_explanation": "L'interruttore d'emergenza sui veicoli a due ruote serve a spegnere il motore in caso di pericolo, non a frenare il veicolo. Il freno di stazionamento è un dispositivo distinto."
+  }
+}

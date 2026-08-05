@@ -1,0 +1,31 @@
+{
+  "question_id": 4068,
+  "topic": "Segnali di pericolo",
+  "number": "19071",
+  "text": "In presenza del segnale raffigurato è necessario, prima di attraversare, assicurarsi che non ci siano treni in arrivo sia da destra che da sinistra",
+  "correct_answer": true,
+  "image": "9ed0e8363c88fd8588f80faaf25082b2.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere. Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata una locomotiva a vapore nera, simbolo di un attraversamento ferroviario. Non sono presenti pannelli integrativi né altri elementi di contesto stradale. Si tratta quindi di un segnale isolato. Il segnale raffigurato è il segnale di pericolo 'Passaggio a livello con barriere'.",
+    "name": "Segnale di passaggio a livello con barriere",
+    "description": "Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo: passaggio a livello con barriere",
+      "Obbligo di prudenza e arresto al passaggio a livello"
+    ],
+    "exact_keywords": [
+      "passaggio a livello con barriere",
+      "massima prudenza",
+      "assicurarsi che non vi siano treni",
+      "arrestarsi prima dei binari"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente al segnale di passaggio a livello con barriere",
+      "regole di comportamento ai passaggi a livello con protezione"
+    ],
+    "rule_explanation": "Il segnale di passaggio a livello con barriere impone la massima prudenza, rallentamento e l'obbligo di assicurarsi che non vi siano treni in arrivo prima di attraversare, fermandosi se necessario."
+  }
+}

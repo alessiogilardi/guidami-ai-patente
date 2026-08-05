@@ -1,0 +1,27 @@
+{
+  "question_id": 4676,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25105",
+  "text": "Per diminuire l'inquinamento dell'aria provocato dai veicoli, bisogna ridurre la pressione di gonfiaggio dei pneumatici",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico veicolare",
+      "Manutenzione del veicolo per la sostenibilità ambientale"
+    ],
+    "exact_keywords": [
+      "pressione di gonfiaggio",
+      "pneumatici",
+      "inquinamento dell'aria",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "impatto della pressione pneumatici sui consumi e emissioni veicolari",
+      "corretta pressione pneumatici e riduzione inquinamento atmosferico da veicoli"
+    ],
+    "rule_explanation": "La riduzione della pressione di gonfiaggio dei pneumatici non diminuisce l'inquinamento dell'aria provocato dai veicoli, ma ne aumenta i consumi e l'usura."
+  }
+}

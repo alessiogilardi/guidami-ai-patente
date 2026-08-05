@@ -1,0 +1,29 @@
+{
+  "question_id": 4705,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25312",
+  "text": "Il freno di stazionamento non deve essere utilizzato per la frenatura di servizio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Freno di stazionamento",
+      "Frenatura di servizio",
+      "Uso improprio dei dispositivi di frenatura"
+    ],
+    "exact_keywords": [
+      "freno di stazionamento",
+      "frenatura di servizio",
+      "dispositivi di frenatura",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "funzione del freno di stazionamento",
+      "differenza tra freno di stazionamento e frenatura di servizio",
+      "uso corretto dei freni del veicolo"
+    ],
+    "rule_explanation": "Il freno di stazionamento serve a mantenere il veicolo fermo quando è in sosta, non per rallentare o fermare la marcia."
+  }
+}

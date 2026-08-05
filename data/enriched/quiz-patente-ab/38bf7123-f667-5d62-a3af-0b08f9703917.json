@@ -1,0 +1,28 @@
+{
+  "question_id": 4527,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23783",
+  "text": "La sosta in corrispondenza degli scivoli o dei raccordi tra i marciapiedi e la carreggiata utilizzati dai veicoli per persone invalide comporta, tra l'altro, la sottrazione di punti dalla patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Accesso per disabili",
+      "Sanzioni amministrative pecuniarie e accessorie"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "scivoli per invalidi",
+      "raccordi marciapiedi carreggiata",
+      "sottrazione di punti"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in corrispondenza di scivoli per disabili",
+      "sanzioni per sosta su scivoli o raccordi per persone invalide"
+    ],
+    "rule_explanation": "La sosta in corrispondenza degli scivoli o raccordi per persone invalide è vietata e comporta la sanzione pecuniaria e la sottrazione di punti dalla patente."
+  }
+}

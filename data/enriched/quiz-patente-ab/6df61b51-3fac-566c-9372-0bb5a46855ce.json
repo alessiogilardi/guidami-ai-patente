@@ -1,0 +1,27 @@
+{
+  "question_id": 4531,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23810",
+  "text": "In caso di ingombro della carreggiata per avaria del veicolo, il conducente deve sollecitamente rendere libero il transito per il traffico sopraggiungente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di sgombero della carreggiata",
+      "Gestione del veicolo in avaria"
+    ],
+    "exact_keywords": [
+      "ingombro della carreggiata",
+      "avaria del veicolo",
+      "rendere libero il transito",
+      "traffico sopraggiungente"
+    ],
+    "vector_search_queries": [
+      "obbligo di sgombero carreggiata per veicolo in avaria",
+      "gestione ingombro stradale per avaria e traffico sopraggiungente"
+    ],
+    "rule_explanation": "In caso di avaria, il conducente deve prontamente liberare la carreggiata per non ostacolare il traffico sopraggiungente."
+  }
+}

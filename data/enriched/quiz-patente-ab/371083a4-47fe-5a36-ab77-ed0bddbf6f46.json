@@ -1,0 +1,32 @@
+{
+  "question_id": 4077,
+  "topic": "Segnali di pericolo",
+  "number": "19184",
+  "text": "In presenza del segnale raffigurato si deve suonare il clacson se vi sono ciclisti che stanno attraversando sulle strisce",
+  "correct_answer": false,
+  "image": "307718ad8143b32f43530c57270b75ee.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento ciclisti. Il segnale preannuncia la presenza di ciclisti sulla carreggiata o nelle immediate vicinanze, come in un attraversamento ciclabile o una pista ciclabile adiacente. Impone al conducente di moderare la velocità e di prestare attenzione per non costituire pericolo o intralcio per i ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una figura stilizzata di un ciclista in movimento. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
+    "name": "Segnale di pericolo - Attraversamento ciclisti",
+    "description": "Il segnale preannuncia la presenza di ciclisti sulla carreggiata o nelle immediate vicinanze, come in un attraversamento ciclabile o una pista ciclabile adiacente. Impone al conducente di moderare la velocità e di prestare attenzione per non costituire pericolo o intralcio per i ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo",
+      "Attraversamento ciclisti",
+      "Uso del clacson"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento ciclisti",
+      "clacson",
+      "divieto di uso del clacson"
+    ],
+    "vector_search_queries": [
+      "uso del clacson in presenza di segnale di attraversamento ciclisti",
+      "divieto di segnalazione acustica in prossimità di ciclisti"
+    ],
+    "rule_explanation": "Il segnale di 'attraversamento ciclisti' impone prudenza e moderazione della velocità, ma non l'uso del clacson, il cui impiego è generalmente vietato in prossimità di ciclisti per non spaventarli."
+  }
+}

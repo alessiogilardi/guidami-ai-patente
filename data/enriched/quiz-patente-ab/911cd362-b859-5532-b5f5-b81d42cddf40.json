@@ -1,0 +1,32 @@
+{
+  "question_id": 4062,
+  "topic": "Segnali di pericolo",
+  "number": "18998",
+  "text": "In presenza del segnale raffigurato, posto su strada a due corsie e a doppio senso di circolazione, è consentito sorpassare nelle ore diurne",
+  "correct_answer": false,
+  "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo: doppia curva",
+      "Regolazione della velocità in presenza di curve",
+      "Divieto di sorpasso in condizioni di scarsa visibilità o pericolo"
+    ],
+    "exact_keywords": [
+      "doppia curva pericolosa",
+      "strada a doppio senso di circolazione",
+      "sorpasso",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in presenza di segnale di doppia curva pericolosa",
+      "obbligo di moderare la velocità in caso di curve pericolose su strade a doppio senso"
+    ],
+    "rule_explanation": "Il segnale di doppia curva pericolosa impone di moderare la velocità e non consente il sorpasso in condizioni di scarsa visibilità o pericolo, anche di giorno."
+  }
+}

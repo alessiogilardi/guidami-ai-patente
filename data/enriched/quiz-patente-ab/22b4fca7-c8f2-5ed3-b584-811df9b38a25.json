@@ -1,0 +1,27 @@
+{
+  "question_id": 4399,
+  "topic": "Distanza di sicurezza",
+  "number": "22588",
+  "text": "La distrazione del conducente può essere causa di incidenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distrazione alla guida",
+      "Causa di incidenti stradali"
+    ],
+    "exact_keywords": [
+      "distrazione",
+      "conducente",
+      "incidente",
+      "causa"
+    ],
+    "vector_search_queries": [
+      "impatto della distrazione del conducente sulla sicurezza stradale",
+      "conseguenze della disattenzione alla guida in termini di rischio incidenti"
+    ],
+    "rule_explanation": "La distrazione del conducente è un fattore che può contribuire al verificarsi di incidenti stradali, compromettendo l'attenzione necessaria per una guida sicura."
+  }
+}

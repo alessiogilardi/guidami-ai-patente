@@ -1,0 +1,27 @@
+{
+  "question_id": 4677,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25108",
+  "text": "L'inquinamento dell'aria prodotto dai veicoli può dipendere da un funzionamento irregolare del motore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico da veicoli a motore",
+      "Funzionamento del motore e emissioni"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "veicoli",
+      "funzionamento irregolare",
+      "motore"
+    ],
+    "vector_search_queries": [
+      "emissioni inquinanti veicoli malfunzionamento motore",
+      "cause inquinamento aria veicoli a motore"
+    ],
+    "rule_explanation": "L'inquinamento atmosferico causato dai veicoli può derivare da un malfunzionamento del motore, che aumenta le emissioni nocive."
+  }
+}

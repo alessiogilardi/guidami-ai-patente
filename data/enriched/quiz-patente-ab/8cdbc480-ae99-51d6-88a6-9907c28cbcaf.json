@@ -1,0 +1,28 @@
+{
+  "question_id": 4038,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18709",
+  "text": "Sulle strade pubbliche sono consentite le gare di velocità, anche se non autorizzate, tra motocicli e non tra autoveicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di gare su strada pubblica",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "gare di velocità",
+      "strade pubbliche",
+      "autorizzazione",
+      "motocicli",
+      "autoveicoli"
+    ],
+    "vector_search_queries": [
+      "divieto di gare di velocità su strade pubbliche",
+      "autorizzazione per competizioni su strada"
+    ],
+    "rule_explanation": "È vietato effettuare gare di velocità su strade pubbliche, sia con motocicli che con autoveicoli, anche se non autorizzate."
+  }
+}

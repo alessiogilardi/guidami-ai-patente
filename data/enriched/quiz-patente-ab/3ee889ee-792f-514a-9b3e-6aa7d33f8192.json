@@ -1,0 +1,27 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23587",
+  "text": "Il conducente che intende sorpassare deve assicurarsi che la potenza del motore del proprio veicolo sia maggiore di quella del veicolo da sorpassare",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Sicurezza nella manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "potenza del motore",
+      "veicolo da sorpassare",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "condizioni di sicurezza per il sorpasso",
+      "obblighi del conducente prima di iniziare un sorpasso"
+    ],
+    "rule_explanation": "Il conducente che intende sorpassare deve assicurarsi che la manovra possa essere completata in sicurezza, senza imporre al veicolo da superare brusche frenate o rallentamenti, indipendentemente dalla potenza dei motori."
+  }
+}

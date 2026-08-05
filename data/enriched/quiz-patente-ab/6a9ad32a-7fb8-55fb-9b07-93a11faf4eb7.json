@@ -1,0 +1,27 @@
+{
+  "question_id": 4440,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22965",
+  "text": "Se un'auto della polizia, con sirena in funzione, vi sorpassa ponendosi davanti e sul tetto ha un display con la scritta luminosa \"ALT POLIZIA\", solo voi avete l'obbligo di arrestarvi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di arresto verso veicoli di emergenza",
+      "Veicoli di polizia e di soccorso con dispositivo acustico e visivo in funzione"
+    ],
+    "exact_keywords": [
+      "veicolo di polizia",
+      "dispositivi acustici e visivi scintillanti",
+      "arrestarsi",
+      "dare la precedenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto per veicoli di polizia con sirena e lampeggianti attivi",
+      "precedenza dei veicoli di emergenza e di polizia in servizio di urgenza"
+    ],
+    "rule_explanation": "I veicoli di polizia, con i dispositivi acustici e visivi in funzione, hanno la precedenza e gli altri utenti della strada devono arrestarsi o comunque agevolare il transito."
+  }
+}

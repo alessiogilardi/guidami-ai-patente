@@ -1,0 +1,29 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23583",
+  "text": "Nella fase di rientro dal sorpasso in autostrada, il conducente deve distanziarsi di almeno 100 m dal veicolo sorpassato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso in autostrada",
+      "Distanza di sicurezza",
+      "Regole di rientro"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "autostrada",
+      "veicolo sorpassato",
+      "distanza di sicurezza",
+      "rientro"
+    ],
+    "vector_search_queries": [
+      "distanza di sicurezza dopo sorpasso in autostrada",
+      "regole per il rientro in corsia dopo sorpasso"
+    ],
+    "rule_explanation": "Il rientro nella corsia di marcia dopo un sorpasso in autostrada deve avvenire senza creare pericolo, mantenendo una adeguata distanza dal veicolo sorpassato, ma non è imposto un minimo di 100 metri."
+  }
+}

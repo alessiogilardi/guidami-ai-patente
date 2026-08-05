@@ -1,0 +1,32 @@
+{
+  "question_id": 4159,
+  "topic": "Segnali di obbligo",
+  "number": "20159",
+  "text": "Il segnale raffigurato obbliga a svoltare a destra o a sinistra al prossimo incrocio",
+  "correct_answer": true,
+  "image": "abdee1e67c3ce68915d63029b1eb9b71.jpeg",
+  "image_description": "Direzioni consentite. Il segnale indica che è obbligatorio proseguire diritto, svoltare a destra o svoltare a sinistra. Le frecce indicano le uniche direzioni consentite.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e un bordo bianco. Al centro del segnale sono presenti due frecce bianche su sfondo blu. Una freccia punta verso sinistra e l'altra verso destra, partendo da un punto comune che indica la direzione dritta. Il segnale è un segnale di obbligo.",
+    "name": "Direzioni consentite",
+    "description": "Il segnale indica che è obbligatorio proseguire diritto, svoltare a destra o svoltare a sinistra. Le frecce indicano le uniche direzioni consentite."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo di direzione",
+      "Direzioni consentite dalla segnaletica verticale"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "direzioni consentite",
+      "svoltare a destra",
+      "svoltare a sinistra",
+      "proseguire diritto"
+    ],
+    "vector_search_queries": [
+      "obbligo di seguire le direzioni indicate dai segnali di obbligo",
+      "interpretazione dei segnali di obbligo di direzione con frecce multiple"
+    ],
+    "rule_explanation": "I segnali di obbligo di direzione impongono di seguire le uniche direzioni consentite, indicate dalle frecce presenti sul segnale stesso."
+  }
+}

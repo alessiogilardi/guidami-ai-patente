@@ -1,0 +1,27 @@
+{
+  "question_id": 4687,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25178",
+  "text": "La forza aderente aumenta se l'asfalto è coperto di ghiaccio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attrito pneumatico-strada",
+      "Condizioni di aderenza stradale"
+    ],
+    "exact_keywords": [
+      "forza aderente",
+      "aderenza",
+      "ghiaccio",
+      "asfalto"
+    ],
+    "vector_search_queries": [
+      "riduzione forza aderente su asfalto ghiacciato",
+      "impatto del ghiaccio sull'aderenza stradale"
+    ],
+    "rule_explanation": "La forza aderente tra pneumatici e strada diminuisce drasticamente in presenza di ghiaccio, riducendo la tenuta di strada e aumentando il rischio di sbandamento."
+  }
+}

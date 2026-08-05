@@ -1,0 +1,27 @@
+{
+  "question_id": 4623,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24709",
+  "text": "Causa probabile di incidenti dovuti alla struttura della strada può essere mancanza di curve pericolose",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolosità della strada",
+      "Prevenzione incidenti stradali"
+    ],
+    "exact_keywords": [
+      "struttura della strada",
+      "pericolosità",
+      "incidente stradale",
+      "mancanza di curve pericolose"
+    ],
+    "vector_search_queries": [
+      "cause di incidentalità legate alla struttura stradale",
+      "pericolosità della strada e rischio di incidenti"
+    ],
+    "rule_explanation": "La mancanza di curve pericolose non è una causa probabile di incidenti; al contrario, la presenza di tratti stradali pericolosi, anche in assenza di curve, può esserlo."
+  }
+}

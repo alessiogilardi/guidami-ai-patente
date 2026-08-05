@@ -1,0 +1,30 @@
+{
+  "question_id": 4673,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25086",
+  "text": "Il rumore prodotto dai veicoli a motore aumenta man mano che si va rovinando il silenziatore (marmitta)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Manutenzione del veicolo",
+      "Rumorosità dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "rumore",
+      "veicoli a motore",
+      "silenziatore",
+      "marmitta",
+      "inquinamento acustico"
+    ],
+    "vector_search_queries": [
+      "funzionamento del silenziatore e impatto sulla rumorosità del veicolo",
+      "conseguenze del deterioramento della marmitta sulla produzione di rumore",
+      "normativa sull'inquinamento acustico da veicoli a motore"
+    ],
+    "rule_explanation": "Il silenziatore (marmitta) è progettato per ridurre il rumore del motore; il suo deterioramento causa un aumento della rumorosità del veicolo, contribuendo all'inquinamento acustico."
+  }
+}

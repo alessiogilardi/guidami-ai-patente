@@ -1,0 +1,32 @@
+{
+  "question_id": 4084,
+  "topic": "Segnali di pericolo",
+  "number": "19270",
+  "text": "Il segnale raffigurato vieta il sorpasso se posto sulla strada di accesso ad un'area portuale",
+  "correct_answer": false,
+  "image": "d4c7c0853cebe7987cda4a4b7f7c96e8.jpeg",
+  "image_description": "Segnale di pericolo: ponte mobile. Il segnale preannuncia la presenza di un ponte mobile. I conducenti devono prestare attenzione e moderare la velocità, preparandosi a fermarsi se il ponte è in movimento o se le luci rosse lampeggianti sono attive.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un ponte mobile, con una sezione sollevata che permette il passaggio di imbarcazioni sotto di esso. Le due sponde del ponte sono visibili, così come le onde che indicano la presenza di acqua. Il segnale è isolato, senza altri elementi di contesto stradale o pannelli integrativi visibili.",
+    "name": "Segnale di pericolo: ponte mobile",
+    "description": "Il segnale preannuncia la presenza di un ponte mobile. I conducenti devono prestare attenzione e moderare la velocità, preparandosi a fermarsi se il ponte è in movimento o se le luci rosse lampeggianti sono attive."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Divieto di sorpasso"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "ponte mobile",
+      "divieto di sorpasso",
+      "strada di accesso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo ponte mobile significato",
+      "divieto di sorpasso in prossimità di aree portuali",
+      "interpretazione segnali stradali di pericolo"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'ponte mobile' non vieta il sorpasso, ma preavvisa una condizione stradale particolare che richiede prudenza e moderazione della velocità."
+  }
+}

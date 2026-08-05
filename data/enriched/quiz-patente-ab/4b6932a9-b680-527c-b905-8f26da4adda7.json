@@ -1,0 +1,30 @@
+{
+  "question_id": 4105,
+  "topic": "Segnali di divieto",
+  "number": "19514",
+  "text": "Il segnale raffigurato vieta la circolazione ai quadricicli a motore",
+  "correct_answer": true,
+  "image": "fbde6a78154edc681ee7715bad203441.jpeg",
+  "image_description": "Segnale di divieto di transito. Il segnale vieta il transito a tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Questo è il segnale di divieto di transito, che indica che il transito è vietato a tutti i veicoli.",
+    "name": "Segnale di divieto di transito",
+    "description": "Il segnale vieta il transito a tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Classificazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "quadricicli a motore",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito e categorie di veicoli vietati",
+      "interpretazione segnale divieto di transito per quadricicli a motore"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito vieta la circolazione a tutti i veicoli, inclusi i quadricicli a motore."
+  }
+}

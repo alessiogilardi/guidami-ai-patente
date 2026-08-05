@@ -1,0 +1,27 @@
+{
+  "question_id": 4523,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23757",
+  "text": "La sosta degli autoveicoli in doppia fila è consentita purché rimanga spazio sufficiente per la circolazione di due file di veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in doppia fila",
+      "Regole di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "doppia fila",
+      "autoveicoli",
+      "spazio sufficiente"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in doppia fila per autoveicoli",
+      "regolamentazione della sosta in aree urbane"
+    ],
+    "rule_explanation": "La sosta in doppia fila è vietata, indipendentemente dallo spazio residuo per la circolazione, salvo eccezioni specifiche per determinate categorie di veicoli o in aree designate."
+  }
+}

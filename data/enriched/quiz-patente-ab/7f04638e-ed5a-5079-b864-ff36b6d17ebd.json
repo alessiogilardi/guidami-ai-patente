@@ -1,0 +1,32 @@
+{
+  "question_id": 4141,
+  "topic": "Segnali di divieto",
+  "number": "19944",
+  "text": "Il segnale raffigurato consente la fermata per far salire o scendere passeggeri",
+  "correct_answer": false,
+  "image": "2d9d175d5a8ebb46c59508905f6a8ae4.jpeg",
+  "image_description": "Segnale di divieto di fermata. Il segnale raffigurato vieta la fermata, sia volontaria che per la salita/discesa di passeggeri, per tutti i veicoli. Il divieto è valido 24 ore su 24, salvo diversa indicazione tramite pannelli integrativi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una croce diagonale rossa. Questo è il segnale di divieto di fermata. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di fermata",
+    "description": "Il segnale raffigurato vieta la fermata, sia volontaria che per la salita/discesa di passeggeri, per tutti i veicoli. Il divieto è valido 24 ore su 24, salvo diversa indicazione tramite pannelli integrativi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di divieto di fermata",
+      "Divieto di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "divieto di fermata",
+      "segnali di divieto",
+      "salita e discesa passeggeri",
+      "sosta vietata"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata segnale stradale",
+      "differenza tra divieto di sosta e divieto di fermata",
+      "fermarsi per far salire o scendere passeggeri vietato"
+    ],
+    "rule_explanation": "Il segnale di divieto di fermata vieta qualsiasi specie di sosta, inclusa quella per la salita o discesa di passeggeri."
+  }
+}

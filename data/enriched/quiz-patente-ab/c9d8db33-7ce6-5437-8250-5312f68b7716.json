@@ -1,0 +1,29 @@
+{
+  "question_id": 4708,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25353",
+  "text": "Un veicolo con sospensioni inefficienti riduce il confort di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Stabilità e tenuta di strada",
+      "Sicurezza alla guida"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "confort di marcia",
+      "tenuta di strada",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "impatto delle sospensioni sulla stabilità del veicolo",
+      "efficienza delle sospensioni e sicurezza di marcia",
+      "manutenzione sospensioni e tenuta di strada"
+    ],
+    "rule_explanation": "Le sospensioni sono fondamentali per la stabilità, la tenuta di strada e il comfort di marcia; un loro malfunzionamento compromette tali aspetti."
+  }
+}

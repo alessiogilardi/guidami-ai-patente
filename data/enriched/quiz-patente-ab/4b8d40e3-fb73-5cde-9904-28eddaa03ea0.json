@@ -1,0 +1,28 @@
+{
+  "question_id": 4037,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18699",
+  "text": "E' consentito spostare la segnaletica stradale, se non si tratta di segnali di pericolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inviolabilità della segnaletica stradale",
+      "Doveri dei conducenti e dei pedoni riguardo la segnaletica"
+    ],
+    "exact_keywords": [
+      "segnaletica stradale",
+      "divieto di rimozione",
+      "danneggiamento",
+      "alterazione",
+      "uso della strada"
+    ],
+    "vector_search_queries": [
+      "divieto di rimozione o alterazione della segnaletica stradale",
+      "obblighi dei conducenti e pedoni verso la segnaletica stradale"
+    ],
+    "rule_explanation": "È vietato spostare, danneggiare, alterare o rimuovere la segnaletica stradale, indipendentemente dalla sua tipologia (pericolo, prescrizione, indicazione)."
+  }
+}

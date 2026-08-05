@@ -1,0 +1,32 @@
+{
+  "question_id": 4057,
+  "topic": "Segnali di pericolo",
+  "number": "18925",
+  "text": "Il segnale raffigurato è posto, di norma, a 150 metri dal punto di inizio della curva",
+  "correct_answer": true,
+  "image": "34d83af03310c64d51078b75499c7efd.jpeg",
+  "image_description": "Segnale di curva pericolosa a destra. Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurata una freccia nera curva che indica una svolta a destra. Questo è il segnale di \"Curva pericolosa a destra\".",
+    "name": "Segnale di curva pericolosa a destra",
+    "description": "Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Distanza di preavviso dei segnali di pericolo",
+      "Curva pericolosa"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "curva pericolosa",
+      "distanza di preavviso",
+      "150 metri"
+    ],
+    "vector_search_queries": [
+      "distanza di preavviso segnali di pericolo curve",
+      "posizionamento segnale curva pericolosa"
+    ],
+    "rule_explanation": "I segnali di pericolo, come quello di curva pericolosa, sono solitamente posizionati a 150 metri dal punto di inizio del pericolo, salvo diversa segnalazione."
+  }
+}

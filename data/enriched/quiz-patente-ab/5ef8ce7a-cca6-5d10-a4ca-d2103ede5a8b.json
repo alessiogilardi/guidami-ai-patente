@@ -1,0 +1,27 @@
+{
+  "question_id": 4019,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18512",
+  "text": "La banchina è parte della strada, posta al di fuori della carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di banchina",
+      "Elementi costitutivi della strada"
+    ],
+    "exact_keywords": [
+      "banchina",
+      "carreggiata",
+      "strada",
+      "parte della strada"
+    ],
+    "vector_search_queries": [
+      "definizione di banchina stradale",
+      "distinzione tra banchina e carreggiata"
+    ],
+    "rule_explanation": "La banchina è la parte della strada esterna alla carreggiata, destinata alla sosta dei veicoli, al passaggio dei pedoni o all'uso da parte dei ciclisti."
+  }
+}

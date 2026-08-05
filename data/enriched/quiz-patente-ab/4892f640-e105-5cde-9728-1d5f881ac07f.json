@@ -1,0 +1,28 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23547",
+  "text": "Nell'eseguire la manovra di sorpasso bisogna mantenere strettamente la destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Posizionamento del veicolo durante il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "mantenere la destra",
+      "posizione del veicolo",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "posizione del veicolo per il sorpasso",
+      "regole per l'esecuzione del sorpasso",
+      "sorpasso a sinistra"
+    ],
+    "rule_explanation": "Il sorpasso si esegue a sinistra del veicolo da superare, mantenendo una posizione che non intralci la circolazione e garantisca la sicurezza."
+  }
+}

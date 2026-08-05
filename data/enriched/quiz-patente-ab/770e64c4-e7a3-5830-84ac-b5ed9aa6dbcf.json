@@ -1,0 +1,33 @@
+{
+  "question_id": 4087,
+  "topic": "Segnali di pericolo",
+  "number": "19309",
+  "text": "Il segnale raffigurato è posto sulla parte posteriore dello scuolabus",
+  "correct_answer": false,
+  "image": "cdbe4aad6e6d605fc94a507ecba3869c.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento di bambini. Il segnale preannuncia la possibile presenza di bambini in prossimità della carreggiata, invitando alla massima prudenza e a moderare la velocità. Può essere installato in prossimità di scuole, parchi giochi o altri luoghi frequentati da bambini.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una silhouette nera di un adulto che tiene per mano un bambino, entrambi con uno zaino in spalla e in movimento. Questo pittogramma indica la possibile presenza di bambini sulla carreggiata.",
+    "name": "Segnale di pericolo - Attraversamento di bambini",
+    "description": "Il segnale preannuncia la possibile presenza di bambini in prossimità della carreggiata, invitando alla massima prudenza e a moderare la velocità. Può essere installato in prossimità di scuole, parchi giochi o altri luoghi frequentati da bambini."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali stradali di indicazione",
+      "Dispositivi di protezione per bambini"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento bambini",
+      "scuolabus",
+      "parte posteriore",
+      "parte anteriore"
+    ],
+    "vector_search_queries": [
+      "posizione segnale di pericolo attraversamento bambini su scuolabus",
+      "segnali stradali di pericolo per scuolabus"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante l'attraversamento di bambini va posto sulla parte anteriore dello scuolabus, non su quella posteriore."
+  }
+}

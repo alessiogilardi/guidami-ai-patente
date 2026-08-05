@@ -1,0 +1,28 @@
+{
+  "question_id": 4647,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24896",
+  "text": "Lo stato di shock si manifesta sempre con un forte aumento della temperatura corporea",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di shock",
+      "Sintomatologia medica",
+      "Primo soccorso"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "temperatura corporea",
+      "ipotermia",
+      "vasocostrizione periferica"
+    ],
+    "vector_search_queries": [
+      "sintomi stato di shock e temperatura corporea",
+      "shock ipotermia e vasocostrizione"
+    ],
+    "rule_explanation": "Lo stato di shock non si manifesta sempre con aumento della temperatura corporea; può presentarsi con ipotermia dovuta a vasocostrizione periferica."
+  }
+}

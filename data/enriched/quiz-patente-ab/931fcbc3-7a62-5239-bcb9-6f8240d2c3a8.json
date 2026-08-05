@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23541",
+  "text": "Il sorpasso è vietato se si è costretti a superare la linea longitudinale tratteggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Segnaletica orizzontale",
+      "Manovre pericolose"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "linea longitudinale continua",
+      "linea longitudinale discontinua",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "sorpasso vietato linea longitudinale continua",
+      "superamento linea discontinua segnaletica orizzontale"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in presenza della linea longitudinale continua, non della linea tratteggiata. La linea discontinua consente il sorpasso."
+  }
+}

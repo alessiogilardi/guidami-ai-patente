@@ -1,0 +1,32 @@
+{
+  "question_id": 4323,
+  "topic": "Segnali di indicazione",
+  "number": "21774",
+  "text": "Il segnale raffigurato indica il numero massimo di autobus che possono parcheggiare",
+  "correct_answer": false,
+  "image": "da13b151d500f0dc7c2b8d13eeeaf14f.jpeg",
+  "image_description": "Parcheggio e fermata di autobus con indicazione linee e pronto soccorso. Il segnale indica la presenza di un parcheggio (simbolo P) e di una fermata di autobus (simbolo di autobus). I numeri 8 e 45 indicano le linee di autobus che servono la fermata. Il simbolo della croce nera indica la vicinanza di un pronto soccorso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale di colore bianco con bordo nero. Nella parte superiore, a sinistra, è presente un'area blu con la lettera \"P\" bianca, indicante un parcheggio. A destra della \"P\", vi è un simbolo di una croce nera su sfondo bianco, che solitamente indica un pronto soccorso o un ospedale. Nella parte inferiore del segnale, a sinistra, è presente un riquadro bianco con il pittogramma di un autobus, che indica una fermata di autobus. A destra del pittogramma dell'autobus, ci sono due cerchi rossi contenenti, rispettivamente, il numero \"8\" e il numero \"45\". Questi numeri indicano le linee di autobus che servono la fermata.",
+    "name": "Parcheggio e fermata di autobus con indicazione linee e pronto soccorso",
+    "description": "Il segnale indica la presenza di un parcheggio (simbolo P) e di una fermata di autobus (simbolo di autobus). I numeri 8 e 45 indicano le linee di autobus che servono la fermata. Il simbolo della croce nera indica la vicinanza di un pronto soccorso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di parcheggio",
+      "Segnali di fermata autobus"
+    ],
+    "exact_keywords": [
+      "segnale di parcheggio",
+      "fermata di autobus",
+      "linee di autobus",
+      "pronto soccorso"
+    ],
+    "vector_search_queries": [
+      "segnali stradali che indicano parcheggio e fermata autobus",
+      "interpretazione segnale P con simbolo autobus e numeri di linea"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la presenza di un parcheggio e di una fermata per autobus, con i numeri delle linee servite, non il numero massimo di autobus ammessi."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4414,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22719",
+  "text": "Quando, giunti in prossimità di un incrocio, ci accorgiamo di aver sbagliato la corsia di preselezione non ci dobbiamo fermare a chiedere informazioni, per non ostacolare il flusso della circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione degli incroci",
+      "Comportamento in caso di errore di corsia",
+      "Flusso della circolazione"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "corsia di preselezione",
+      "ostacolare il flusso della circolazione",
+      "richiedere informazioni"
+    ],
+    "vector_search_queries": [
+      "comportamento corretto in caso di errore nella corsia di preselezione all'incrocio",
+      "divieto di fermarsi a chiedere informazioni per non ostacolare il traffico in prossimità di incroci"
+    ],
+    "rule_explanation": "In prossimità di un incrocio, se si sbaglia la corsia di preselezione, non ci si deve fermare per chiedere informazioni al fine di non ostacolare la circolazione."
+  }
+}

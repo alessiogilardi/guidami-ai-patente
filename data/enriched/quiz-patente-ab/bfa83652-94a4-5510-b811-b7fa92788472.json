@@ -1,0 +1,27 @@
+{
+  "question_id": 4026,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18584",
+  "text": "Le macchine operatrici possono essere semoventi o trainate",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli",
+      "Macchine operatrici"
+    ],
+    "exact_keywords": [
+      "macchine operatrici",
+      "semoventi",
+      "trainate",
+      "macchine agricole"
+    ],
+    "vector_search_queries": [
+      "definizione di macchina operatrice semovente e trainata",
+      "classificazione delle macchine operatrici nel CdS"
+    ],
+    "rule_explanation": "Le macchine operatrici, che includono anche le macchine agricole, si distinguono in semoventi (con motore proprio) e trainate (da un altro veicolo)."
+  }
+}

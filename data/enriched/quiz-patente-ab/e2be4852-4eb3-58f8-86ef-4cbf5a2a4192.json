@@ -1,0 +1,31 @@
+{
+  "question_id": 4098,
+  "topic": "Segnali di pericolo",
+  "number": "19440",
+  "text": "Il segnale raffigurato preannuncia la presenza, nelle vicinanze, di un parco giochi",
+  "correct_answer": false,
+  "image": "b6cd263ac2e3188386f2814949cbc505.jpeg",
+  "image_description": "Segnale di pericolo per vento laterale. Il segnale preannuncia un tratto di strada soggetto a forti raffiche di vento laterale. È necessario procedere con prudenza, tenendo saldamente il volante per mantenere la stabilità del veicolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un palo verticale con attaccato un manica a vento, orientata verso destra, con delle strisce che indicano la direzione e l'intensità del vento. Il pittogramma rappresenta un vento laterale.",
+    "name": "Segnale di pericolo per vento laterale",
+    "description": "Il segnale preannuncia un tratto di strada soggetto a forti raffiche di vento laterale. È necessario procedere con prudenza, tenendo saldamente il volante per mantenere la stabilità del veicolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "parco giochi",
+      "vento laterale",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "significato segnale pericolo vento laterale",
+      "segnali stradali di pericolo e loro significato"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurato preannuncia vento laterale, non un parco giochi. È necessario procedere con prudenza e tenere saldamente il volante."
+  }
+}

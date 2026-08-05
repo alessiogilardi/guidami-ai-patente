@@ -1,0 +1,28 @@
+{
+  "question_id": 4499,
+  "topic": "Norme sul sorpasso",
+  "number": "23484",
+  "text": "La manovra di sorpasso deve essere eseguita a destra se il conducente del veicolo da sorpassare ha segnalato l'intenzione di voler svoltare a sinistra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Segnalazione di svolta a sinistra",
+      "Posizione di esecuzione del sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "svolta a sinistra",
+      "posizione di esecuzione",
+      "veicolo da sorpassare"
+    ],
+    "vector_search_queries": [
+      "sorpasso a destra per svolta a sinistra",
+      "esecuzione sorpasso veicolo che svolta a sinistra"
+    ],
+    "rule_explanation": "Il sorpasso si esegue a destra quando il veicolo da sorpassare ha segnalato l'intenzione di svoltare a sinistra, per evitare interferenze con la manovra di svolta."
+  }
+}

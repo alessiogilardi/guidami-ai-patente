@@ -1,0 +1,31 @@
+{
+  "question_id": 4360,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22132",
+  "text": "Il pannello integrativo raffigurato indica un passaggio a livello con due binari",
+  "correct_answer": false,
+  "image": "88aca3d15be8173f5220bcce38e88d5e.jpeg",
+  "image_description": "Pannello integrativo - Numero di binari. Il pannello integrativo indica la presenza di un passaggio a livello con due binari.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Al suo interno sono raffigurati due segnali identici di locomotiva a vapore, uno accanto all'altro. Questo pannello è utilizzato per integrare segnali di pericolo, come il segnale di passaggio a livello, indicando il numero di binari presenti. In questo caso, la presenza di due locomotive suggerisce due binari.",
+    "name": "Pannello integrativo - Numero di binari",
+    "description": "Il pannello integrativo indica la presenza di un passaggio a livello con due binari."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale integrativa",
+      "Passaggi a livello"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "passaggio a livello",
+      "binari",
+      "segnaletica verticale"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo numero binari passaggio a livello",
+      "segnaletica verticale passaggio a livello con più binari"
+    ],
+    "rule_explanation": "Il pannello integrativo con il numero di binari indica il numero esatto di binari presenti al passaggio a livello. Se raffigura due binari, significa che ci sono due binari."
+  }
+}

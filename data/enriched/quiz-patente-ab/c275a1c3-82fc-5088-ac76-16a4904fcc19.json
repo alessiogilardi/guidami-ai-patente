@@ -1,0 +1,28 @@
+{
+  "question_id": 4700,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25271",
+  "text": "Dopo il lavaggio del veicolo, è opportuno eseguire una prova di frenata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Verifica efficienza freni"
+    ],
+    "exact_keywords": [
+      "prova di frenata",
+      "lavaggio del veicolo",
+      "efficienza dei freni",
+      "sicurezza stradale"
+    ],
+    "vector_search_queries": [
+      "verifica efficienza freni dopo lavaggio veicolo",
+      "importanza prova frenata post-lavaggio"
+    ],
+    "rule_explanation": "Dopo il lavaggio, è consigliabile effettuare una prova di frenata per verificare l'efficienza del sistema frenante, specialmente se l'acqua ha potuto compromettere temporaneamente le prestazioni."
+  }
+}

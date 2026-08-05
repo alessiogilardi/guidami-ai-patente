@@ -1,0 +1,31 @@
+{
+  "question_id": 4148,
+  "topic": "Segnali di divieto",
+  "number": "20015",
+  "text": "Il segnale raffigurato è posto nei tratti di strada ove vengono effettuate operazioni di pulizia meccanica delle strade",
+  "correct_answer": true,
+  "image": "289fc7de638eec152da2ea0755f83fd9.jpeg",
+  "image_description": "Divieto di sosta con indicazioni orarie e giornaliere (pulizia strade). Il segnale indica il divieto di sosta nei giorni dal lunedì al venerdì, dalle ore 21:00 alle ore 4:00, per consentire le operazioni di pulizia meccanica della strada, come rappresentato dal pittogramma di un mezzo per la pulizia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale di forma rettangolare con bordo nero. Nella parte superiore è presente un segnale di divieto di sosta (cerchio rosso con barra trasversale rossa su fondo blu). Sotto questo segnale, vi è un pannello integrativo che indica i giorni \"Lun - ven\" e gli orari \"21.00 - 4.00\". Ancora più in basso, un pittogramma raffigura un mezzo per la pulizia stradale con spazzole. L'insieme dei simboli indica un divieto di sosta temporaneo, legato a specifiche fasce orarie e giorni, e motivato da esigenze di pulizia della strada.",
+    "name": "Divieto di sosta con indicazioni orarie e giornaliere (pulizia strade)",
+    "description": "Il segnale indica il divieto di sosta nei giorni dal lunedì al venerdì, dalle ore 21:00 alle ore 4:00, per consentire le operazioni di pulizia meccanica della strada, come rappresentato dal pittogramma di un mezzo per la pulizia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Operazioni di pulizia stradale"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "pulizia meccanica",
+      "segnali stradali",
+      "operazioni di pulizia"
+    ],
+    "vector_search_queries": [
+      "segnaletica stradale divieto di sosta per pulizia strade",
+      "divieto di sosta temporaneo per pulizia meccanica della carreggiata"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta con pittogramma di pulizia stradale viene apposto per indicare i giorni e gli orari in cui è vietata la sosta per consentire le operazioni di pulizia meccanica."
+  }
+}

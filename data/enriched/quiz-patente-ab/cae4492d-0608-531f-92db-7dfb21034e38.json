@@ -1,0 +1,29 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24778",
+  "text": "È consentito aumentare le prestazioni del proprio veicolo modificandone le impostazioni elettroniche della centralina che controlla l'iniezione di carburante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Modifiche ai veicoli",
+      "Omologazione e caratteristiche tecniche",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "centralina",
+      "iniezione di carburante",
+      "modifica delle impostazioni elettroniche",
+      "prestazioni del veicolo"
+    ],
+    "vector_search_queries": [
+      "modifiche alle centraline elettroniche dei veicoli",
+      "alterazione delle prestazioni del veicolo tramite centralina",
+      "conformità alle omologazioni per modifiche elettroniche"
+    ],
+    "rule_explanation": "Le modifiche alle impostazioni elettroniche del veicolo, come quelle relative all'iniezione di carburante, sono vietate se non autorizzate e non conformi alle specifiche di omologazione, per garantire la sicurezza e la conformità normativa."
+  }
+}

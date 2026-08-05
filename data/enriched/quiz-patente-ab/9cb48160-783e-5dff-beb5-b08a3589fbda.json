@@ -1,0 +1,30 @@
+{
+  "question_id": 4685,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25162",
+  "text": "E' vietato sporcare la carreggiata depositando rifiuti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di inquinamento ambientale",
+      "Corretta gestione dei rifiuti",
+      "Comportamento del conducente e dei pedoni"
+    ],
+    "exact_keywords": [
+      "rifiuti",
+      "carreggiata",
+      "sporcare",
+      "deposito",
+      "sanzioni amministrative pecuniarie"
+    ],
+    "vector_search_queries": [
+      "divieto di abbandono rifiuti su strada pubblica",
+      "obbligo di non sporcare la carreggiata con rifiuti",
+      "sanzioni per deposito di rifiuti sulla carreggiata"
+    ],
+    "rule_explanation": "È vietato depositare rifiuti o materiale di qualsiasi specie sulla carreggiata, pena sanzioni amministrative pecuniarie e l'obbligo di ripristino dello stato dei luoghi."
+  }
+}

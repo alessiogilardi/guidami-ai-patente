@@ -1,0 +1,31 @@
+{
+  "question_id": 4162,
+  "topic": "Segnali di obbligo",
+  "number": "20202",
+  "text": "Il segnale raffigurato indica che è prossima una biforcazione pericolosa",
+  "correct_answer": false,
+  "image": "6b00ed1114aae01dd9a254e2e5ff9432.jpeg",
+  "image_description": "Presegnalazione di direzione obbligatoria (solo diritto o a destra). Il segnale impone di proseguire diritto o di svoltare a destra. Non è consentito svoltare a sinistra né andare in altre direzioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo bianco e sfondo blu. Al centro sono presenti due frecce bianche: una punta verso l'alto (proseguire diritto) e una piega verso destra (svoltare a destra). Le frecce indicano le uniche direzioni consentite.",
+    "name": "Presegnalazione di direzione obbligatoria (solo diritto o a destra)",
+    "description": "Il segnale impone di proseguire diritto o di svoltare a destra. Non è consentito svoltare a sinistra né andare in altre direzioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico di direzione",
+      "Interpretazione dei segnali di preavviso e di prescrizione"
+    ],
+    "exact_keywords": [
+      "biforcazione pericolosa",
+      "direzione obbligatoria",
+      "segnali di preavviso",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di obbligo di direzione e segnali di pericolo di biforcazione",
+      "interpretazione segnale di direzione obbligatoria dritto o a destra"
+    ],
+    "rule_explanation": "Il segnale di 'direzione obbligatoria' indica le sole direzioni consentite, non una generica 'biforcazione pericolosa' che è segnalata da altri tipi di segnali."
+  }
+}

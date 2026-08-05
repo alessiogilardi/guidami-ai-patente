@@ -1,0 +1,32 @@
+{
+  "question_id": 4490,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23408",
+  "text": "Nell'incrocio rappresentato in figura nessuno dei veicoli deve moderare la velocità",
+  "correct_answer": false,
+  "image": "86cd179f86ceecb6c67b9294aa3d59f4.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. Il veicolo B si trova sulla strada che si immette a destra, mentre i veicoli T e S si trovano sulle strade che si incrociano. Non sono presenti segnali di preavviso o di obbligo di dare precedenza. Si applica la regola generale della precedenza a destra. Il veicolo B deve dare la precedenza al veicolo T perché T si trova alla sua destra. Il veicolo T deve dare la precedenza al veicolo S perché S si trova alla sua destra. Pertanto, l'ordine di transito corretto è T, S, B.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso tra tre strade. Sono presenti tre veicoli: un'auto blu (B) che proviene da sinistra e si immette nell'incrocio, un'auto gialla (T) che proviene da sinistra e si immette nell'incrocio, e un'auto rossa (S) che proviene da destra e si immette nell'incrocio. Non sono presenti segnali stradali che regolano la precedenza. Le traiettorie dei veicoli sono indicate da linee tratte tratteggiate. Il veicolo B deve svoltare a destra. Il veicolo T deve proseguire dritto. Il veicolo S deve proseguire dritto. Si applica la regola generale della precedenza a destra.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. Il veicolo B si trova sulla strada che si immette a destra, mentre i veicoli T e S si trovano sulle strade che si incrociano. Non sono presenti segnali di preavviso o di obbligo di dare precedenza. Si applica la regola generale della precedenza a destra. Il veicolo B deve dare la precedenza al veicolo T perché T si trova alla sua destra. Il veicolo T deve dare la precedenza al veicolo S perché S si trova alla sua destra. Pertanto, l'ordine di transito corretto è T, S, B."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Moderazione della velocità in prossimità degli incroci"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "moderare la velocità",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in prossimità degli incroci",
+      "regola generale della precedenza a destra",
+      "ordine di precedenza ai incroci senza segnaletica"
+    ],
+    "rule_explanation": "Negli incroci, anche in assenza di segnaletica, è obbligatorio moderare la velocità per poter cedere la precedenza ai veicoli provenienti da destra."
+  }
+}

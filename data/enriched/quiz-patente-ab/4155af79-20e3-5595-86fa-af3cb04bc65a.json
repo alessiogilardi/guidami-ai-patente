@@ -1,0 +1,27 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22282",
+  "text": "Il conducente deve regolare la velocità tenendo conto esclusivamente dei limiti massimi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di velocità adeguata alle condizioni",
+      "Regolazione prudente della velocità per la sicurezza della circolazione"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni della strada",
+      "stato del veicolo",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di adeguare la velocità alle condizioni di strada, traffico e veicolo",
+      "moderazione della velocità oltre al rispetto dei limiti massimi imposti"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità non solo entro i limiti massimi, ma anche in base alle condizioni del veicolo, del carico, della strada, del traffico e atmosferiche, per non creare pericolo o intralcio."
+  }
+}

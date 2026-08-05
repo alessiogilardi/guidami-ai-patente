@@ -1,0 +1,30 @@
+{
+  "question_id": 4402,
+  "topic": "Distanza di sicurezza",
+  "number": "22608",
+  "text": "Lo spazio di frenatura aumenta se l'aderenza tra pneumatico e asfalto è bassa",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Aderenza pneumatico-strada",
+      "Spazio di frenatura"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "aderenza",
+      "pneumatico",
+      "asfalto",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "fattori che influenzano lo spazio di frenatura",
+      "rapporto tra aderenza e spazio di frenatura",
+      "impatto della bassa aderenza sullo spazio di frenatura"
+    ],
+    "rule_explanation": "Lo spazio di frenatura è la distanza percorsa dal veicolo dal momento in cui il conducente inizia a frenare fino a quando il veicolo si ferma completamente. Esso aumenta all'aumentare della velocità e al diminuire dell'aderenza tra pneumatici e strada."
+  }
+}

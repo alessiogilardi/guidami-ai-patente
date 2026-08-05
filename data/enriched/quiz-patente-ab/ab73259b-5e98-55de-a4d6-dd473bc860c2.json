@@ -1,0 +1,29 @@
+{
+  "question_id": 4036,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18689",
+  "text": "Entrando in un centro abitato, bisogna tenere conto che il flusso della circolazione viene spesso intralciato o interrotto da veicoli che sono fermi, che partono o che cambiano direzione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Centri abitati",
+      "Gestione del traffico e della circolazione",
+      "Interazioni stradali tra veicoli e utenti vulnerabili"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "flusso della circolazione",
+      "veicoli fermi",
+      "veicoli in partenza",
+      "cambio di direzione"
+    ],
+    "vector_search_queries": [
+      "comportamento di guida nei centri abitati in presenza di veicoli fermi o in manovra",
+      "previsione di intralci alla circolazione in aree urbane a causa di veicoli in sosta o in movimento"
+    ],
+    "rule_explanation": "Nei centri abitati, il conducente deve prevedere possibili intralci alla circolazione causati da veicoli fermi, in partenza o in manovra, adattando la propria condotta di guida."
+  }
+}

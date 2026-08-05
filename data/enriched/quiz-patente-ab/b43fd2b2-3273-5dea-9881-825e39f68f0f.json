@@ -1,0 +1,29 @@
+{
+  "question_id": 4689,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25189",
+  "text": "Il coefficiente di aderenza basso non condiziona la velocità del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aderenza pneumatico-strada",
+      "Fattori che influenzano la tenuta di strada",
+      "Velocità di sicurezza"
+    ],
+    "exact_keywords": [
+      "coefficiente di aderenza",
+      "aderenza",
+      "velocità",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "influenza del coefficiente di aderenza sulla velocità di sicurezza",
+      "condizionamento della velocità da parte dell'aderenza stradale",
+      "rapporto tra aderenza, tenuta di strada e velocità del veicolo"
+    ],
+    "rule_explanation": "Un basso coefficiente di aderenza tra pneumatici e strada riduce la tenuta di strada e impone una riduzione della velocità per mantenere il controllo del veicolo."
+  }
+}

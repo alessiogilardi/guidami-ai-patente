@@ -1,0 +1,28 @@
+{
+  "question_id": 4634,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24810",
+  "text": "I conducenti di veicoli a due ruote, avendo una ridotta sagoma frontale, sono più visibili in distanza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità dei veicoli a due ruote",
+      "Prevenzione degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "veicoli a due ruote",
+      "visibilità",
+      "sagoma frontale",
+      "condizioni di visibilità"
+    ],
+    "vector_search_queries": [
+      "visibilità dei motocicli e veicoli a due ruote",
+      "comportamento dei conducenti di veicoli a due ruote per la sicurezza",
+      "prevenzione incidenti stradali per veicoli a due ruote"
+    ],
+    "rule_explanation": "I conducenti di veicoli a due ruote devono adottare cautele particolari per la loro minore visibilità, non potendo contare su una ridotta sagoma frontale per essere percepiti dagli altri utenti della strada."
+  }
+}

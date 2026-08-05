@@ -1,0 +1,29 @@
+{
+  "question_id": 4644,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24873",
+  "text": "Durante un intervento di primo soccorso, se l'infortunato ha una ferita sanguinante, si devono togliere subito gli eventuali corpi estranei in essa presenti e, successivamente, coprire la ferita",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione delle ferite in primo soccorso",
+      "Rimozione corpi estranei in ferite",
+      "Principi di medicazione delle ferite"
+    ],
+    "exact_keywords": [
+      "primo soccorso",
+      "ferita sanguinante",
+      "corpi estranei",
+      "medicazione"
+    ],
+    "vector_search_queries": [
+      "gestione ferite sanguinanti con corpi estranei primo soccorso",
+      "indicazioni rimozione corpi estranei in ferite primo soccorso",
+      "protocollo medicazione ferite con corpi estranei in sede"
+    ],
+    "rule_explanation": "In presenza di una ferita sanguinante con corpi estranei, questi non vanno rimossi ma lasciati in sede per limitare l'emorragia e tamponare la ferita attorno ad essi."
+  }
+}

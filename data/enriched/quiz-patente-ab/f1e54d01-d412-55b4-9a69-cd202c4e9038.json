@@ -1,0 +1,28 @@
+{
+  "question_id": 4561,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24023",
+  "text": "Circolando dietro ad un veicolo che ha un carico sporgente, può risultare difficile accorgersi che intende svoltare, se gli indicatori di direzione sono nascosti dalla merce penzolante",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità degli indicatori di direzione",
+      "Carico sporgente",
+      "Segnalazione di manovra"
+    ],
+    "exact_keywords": [
+      "carico sporgente",
+      "indicatori di direzione",
+      "merci pendenti",
+      "svolta"
+    ],
+    "vector_search_queries": [
+      "visibilità indicatori di direzione con carico sporgente",
+      "segnalazione svolta con merci pendenti"
+    ],
+    "rule_explanation": "Il carico sporgente non deve impedire la visibilità degli indicatori di direzione, al fine di garantire la sicurezza e la corretta segnalazione delle manovre."
+  }
+}

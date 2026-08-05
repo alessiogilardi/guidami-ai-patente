@@ -1,0 +1,28 @@
+{
+  "question_id": 4392,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22513",
+  "text": "In un centro abitato, se si vede un pallone rotolare sulla carreggiata, bisogna diminuire subito la velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in centro abitato",
+      "Obbligo di prudenza e attenzione",
+      "Pericolo per la circolazione"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "diminuire la velocità",
+      "veicolo fermo o in movimento",
+      "ostacolo imprevisto"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in centro abitato per ostacoli imprevisti",
+      "condotta di guida in presenza di un pallone sulla carreggiata in centro abitato"
+    ],
+    "rule_explanation": "Nei centri abitati, il conducente deve diminuire la velocità in presenza di un ostacolo imprevisto come un pallone, per garantire la sicurezza."
+  }
+}

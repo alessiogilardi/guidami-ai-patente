@@ -1,0 +1,27 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22304",
+  "text": "E' obbligatorio ridurre la velocità su strada a senso unico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di circolazione"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "strada a senso unico",
+      "pericolo o intralcio",
+      "condizioni di traffico"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità in base alle condizioni di traffico e visibilità",
+      "moderazione della velocità per evitare pericolo o intralcio alla circolazione"
+    ],
+    "rule_explanation": "Non è obbligatorio ridurre la velocità su strada a senso unico, ma solo quando le condizioni di traffico, la visibilità o altre circostanze richiedono una moderazione per evitare pericoli."
+  }
+}

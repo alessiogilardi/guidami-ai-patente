@@ -1,0 +1,31 @@
+{
+  "question_id": 4322,
+  "topic": "Segnali di indicazione",
+  "number": "21764",
+  "text": "Il segnale raffigurato indica una corsia riservata agli autobus",
+  "correct_answer": false,
+  "image": "6a522dfdeecbf56ec4b02389fb3b040e.jpeg",
+  "image_description": "Fermata di autobus. Il segnale indica una fermata di autobus. Può essere integrato da un pannello integrativo che riporta gli orari di partenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare verticale, con bordo blu e sfondo bianco all'interno di un riquadro centrale. Al centro del riquadro bianco è presente il pittogramma stilizzato di un autobus. Sotto il riquadro bianco, la parte inferiore del segnale è di colore blu uniforme. Si tratta di un segnale di indicazione.",
+    "name": "Fermata di autobus",
+    "description": "Il segnale indica una fermata di autobus. Può essere integrato da un pannello integrativo che riporta gli orari di partenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Fermata di autobus"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "corsia riservata",
+      "autobus",
+      "fermata"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale per fermata autobus",
+      "differenza tra fermata autobus e corsia riservata autobus"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica una fermata di autobus, non una corsia a loro esclusiva. La corsia riservata è segnalata da un segnale differente."
+  }
+}

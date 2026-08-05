@@ -1,0 +1,28 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23025",
+  "text": "Lo specchio retrovisore laterale sinistro deve essere regolato in modo da scorgere, nel suo terzo di destra, la coda del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione specchi retrovisori",
+      "Campo visivo del conducente",
+      "Manovre di cambio corsia"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore laterale sinistro",
+      "regolazione",
+      "terzo di destra",
+      "coda del veicolo"
+    ],
+    "vector_search_queries": [
+      "regolazione specchietto retrovisore laterale sinistro per visione coda veicolo",
+      "campo visivo specchio retrovisore sinistro e manovra di cambio corsia"
+    ],
+    "rule_explanation": "Lo specchio retrovisore esterno sinistro deve essere regolato in modo da permettere la visione della coda del proprio veicolo nel suo terzo di destra, per controllare la corsia di sorpasso."
+  }
+}

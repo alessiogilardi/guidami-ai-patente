@@ -1,0 +1,28 @@
+{
+  "question_id": 4544,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23908",
+  "text": "Qualora il conducente veda un automobilista fermo in autostrada per avaria del veicolo può trainare prudentemente il veicolo, fino al primo casello di uscita",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Soccorso stradale",
+      "Norme di comportamento in autostrada",
+      "Veicoli in avaria"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "veicolo in avaria",
+      "soccorso stradale",
+      "traino"
+    ],
+    "vector_search_queries": [
+      "divieto di traino veicoli in avaria in autostrada",
+      "modalità di rimozione veicoli in avaria su autostrade"
+    ],
+    "rule_explanation": "Il traino di veicoli in avaria in autostrada è vietato, salvo eccezioni per il soccorso stradale autorizzato. Il veicolo deve essere rimosso dall'apposito servizio."
+  }
+}

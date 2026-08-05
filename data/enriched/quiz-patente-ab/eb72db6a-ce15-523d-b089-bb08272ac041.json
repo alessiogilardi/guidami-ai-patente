@@ -1,0 +1,32 @@
+{
+  "question_id": 4255,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21123",
+  "text": "Il semaforo in figura indica che ci sono lavori in corso per la costruzione di una pista ciclabile",
+  "correct_answer": false,
+  "image": "c3c957780ed480a75899918470e54d50.jpeg",
+  "image_description": "Semaforo per biciclette. Il segnale raffigura un semaforo verticale con tre luci circolari sovrapposte: rossa in alto, gialla al centro e verde in basso. Ogni luce contiene la sagoma stilizzata di una bicicletta. Questo tipo di semaforo è specifico per regolare il traffico delle biciclette.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale semaforico verticale. Le luci sono disposte una sopra l'altra. La luce superiore è rossa e contiene il simbolo di una bicicletta. La luce centrale è gialla e contiene anch'essa il simbolo di una bicicletta. La luce inferiore è verde e contiene il simbolo di una bicicletta. Il segnale è chiaramente destinato a regolare il traffico ciclistico.",
+    "name": "Semaforo per biciclette",
+    "description": "Il segnale raffigura un semaforo verticale con tre luci circolari sovrapposte: rossa in alto, gialla al centro e verde in basso. Ogni luce contiene la sagoma stilizzata di una bicicletta. Questo tipo di semaforo è specifico per regolare il traffico delle biciclette."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica semaforica per ciclisti",
+      "Interpretazione dei segnali semaforici"
+    ],
+    "exact_keywords": [
+      "semaforo per biciclette",
+      "luci circolari",
+      "sagoma di bicicletta",
+      "regolazione del traffico ciclistico"
+    ],
+    "vector_search_queries": [
+      "semaforo con sagoma di bicicletta significato",
+      "segnaletica semaforica specifica per ciclisti",
+      "interpretazione semaforo biciclette"
+    ],
+    "rule_explanation": "I semafori con la sagoma di bicicletta regolano specificamente il traffico ciclistico e non indicano lavori in corso o la presenza di piste ciclabili."
+  }
+}

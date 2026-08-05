@@ -1,0 +1,27 @@
+{
+  "question_id": 4412,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22701",
+  "text": "Il carico deve essere segnalato, di giorno, con un panno rosso se sporge dalla parte posteriore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di carico sporgente",
+      "Obblighi di segnalazione per veicoli in circolazione"
+    ],
+    "exact_keywords": [
+      "carico",
+      "panno rosso",
+      "sporge",
+      "parte posteriore"
+    ],
+    "vector_search_queries": [
+      "segnalazione carico sporgente dal veicolo",
+      "obbligo di segnalare il carico che eccede le dimensioni del veicolo"
+    ],
+    "rule_explanation": "Il carico che sporge dalla parte posteriore di un veicolo deve essere segnalato con un pannello retroriflettente, non con un panno rosso."
+  }
+}

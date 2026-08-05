@@ -1,0 +1,30 @@
+{
+  "question_id": 4634,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24805",
+  "text": "Durante la circolazione su strada, per rendersi maggiormente visibili, i motocicli devono tenere accesi i proiettori anabbaglianti anche di giorno",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Visibilità dei veicoli a motore",
+      "Obbligo di circolazione con proiettori accesi",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "proiettori anabbaglianti",
+      "circolazione su strada",
+      "visibilità",
+      "durante il giorno"
+    ],
+    "vector_search_queries": [
+      "obbligo proiettori anabbaglianti accesi di giorno per motocicli",
+      "visibilità motocicli circolazione stradale",
+      "prevenzione incidenti motocicli accensione luci"
+    ],
+    "rule_explanation": "I motocicli hanno l'obbligo di tenere accesi i proiettori anabbaglianti durante la marcia, anche di giorno, per aumentare la propria visibilità e ridurre il rischio di incidenti."
+  }
+}

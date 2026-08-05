@@ -1,0 +1,32 @@
+{
+  "question_id": 4125,
+  "topic": "Segnali di divieto",
+  "number": "19759",
+  "text": "In presenza del segnale raffigurato è consentito il transito alle macchine operatrici destinate a lavori di manutenzione stradale",
+  "correct_answer": true,
+  "image": "8a2144c790c2fb4700376c9bb49c6a0b.jpeg",
+  "image_description": "Divieto di transito alle macchine agricole. Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurato il pittogramma di una macchina agricola (trattore) in nero. Questo segnale indica un divieto di transito specifico per questo tipo di veicoli.",
+    "name": "Divieto di transito alle macchine agricole",
+    "description": "Il segnale vieta il transito a macchine agricole e operatrici, eccetto quelle destinate a lavori stradali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Eccezioni ai divieti di transito",
+      "Macchine operatrici per manutenzione stradale"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "macchine agricole",
+      "macchine operatrici",
+      "lavori di manutenzione stradale"
+    ],
+    "vector_search_queries": [
+      "divieto transito macchine agricole e operatrici lavori manutenzione stradale",
+      "eccezioni segnali divieto transito macchine operatrici"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito a macchine agricole e operatrici non si applica a tali macchine se sono specificamente destinate a lavori di manutenzione stradale."
+  }
+}

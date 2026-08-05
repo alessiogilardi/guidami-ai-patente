@@ -1,0 +1,27 @@
+{
+  "question_id": 4518,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23715",
+  "text": "Fuori dei centri abitati, in caso di impossibilità a collocare il veicolo fuori della carreggiata, il conducente deve sostare il più vicino possibile al margine destro della carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo fuori dai centri abitati",
+      "Posizionamento del veicolo in caso di sosta obbligata"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "carreggiata",
+      "margine destro",
+      "fuori dei centri abitati"
+    ],
+    "vector_search_queries": [
+      "posizionamento veicolo in sosta fuori dai centri abitati",
+      "sosta veicolo vicino al margine destro della carreggiata fuori dai centri abitati"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, se non è possibile uscire dalla carreggiata, il veicolo in sosta deve essere il più vicino possibile al suo margine destro."
+  }
+}

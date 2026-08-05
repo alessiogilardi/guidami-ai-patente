@@ -1,0 +1,34 @@
+{
+  "question_id": 4261,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21177",
+  "text": "Se il vigile ha un braccio alzato come in figura bisogna liberare velocemente l'incrocio, se già è stato impegnato",
+  "correct_answer": true,
+  "image": "125f03bc48cba25667c0be2257dd80e3.jpeg",
+  "image_description": "Segnale del vigile: braccio destro alzato e braccio sinistro lungo il corpo. La posizione del vigile con un braccio alzato indica l'arresto per tutti i veicoli che provengono dalla direzione del vigile. Equivalente al segnale semaforico rosso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra la silhouette di un vigile in uniforme, in piedi al centro di un incrocio stilizzato. Il vigile ha il braccio destro sollevato verticalmente con la mano aperta, mentre il braccio sinistro è lungo il corpo. La testa è rivolta verso lo spettatore. Ai quattro angoli dell'incrocio sono disegnate delle linee che rappresentano le direzioni di marcia, suggerendo un incrocio a raso. Non sono presenti altri segnali stradali o veicoli. La scena rappresenta una segnalazione da parte di un agente del traffico.",
+    "name": "Segnale del vigile: braccio destro alzato e braccio sinistro lungo il corpo",
+    "description": "La posizione del vigile con un braccio alzato indica l'arresto per tutti i veicoli che provengono dalla direzione del vigile. Equivalente al segnale semaforico rosso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni degli agenti del traffico",
+      "Interpretazione dei segnali degli agenti del traffico",
+      "Obblighi dei conducenti in presenza di agenti del traffico"
+    ],
+    "exact_keywords": [
+      "segnale del vigile",
+      "braccio alzato",
+      "arresto",
+      "incrocio",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "interpretazione segnale vigile braccio alzato",
+      "obbligo di arresto veicoli segnale agente traffico",
+      "liberare incrocio segnale vigile"
+    ],
+    "rule_explanation": "Il segnale del vigile con un braccio alzato impone l'arresto a tutti i veicoli che provengono dalla sua direzione, equivalente al rosso semaforico. Bisogna liberare l'incrocio se già impegnato."
+  }
+}

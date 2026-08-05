@@ -1,0 +1,31 @@
+{
+  "question_id": 4135,
+  "topic": "Segnali di divieto",
+  "number": "19868",
+  "text": "Il segnale raffigurato indica la fine del limite minimo di velocità",
+  "correct_answer": false,
+  "image": "b0f757139def7519417e65cf9072bf86.jpeg",
+  "image_description": "Fine del divieto di superare i 50 km/h. Indica la fine del divieto di superare i 50 km/h.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una banda diagonale nera che divide il numero \"5\" a sinistra dal numero \"0\" a destra. Questo segnale indica la fine di un divieto. In questo caso specifico, indica la fine del divieto di superare i 50 km/h.",
+    "name": "Fine del divieto di superare i 50 km/h",
+    "description": "Indica la fine del divieto di superare i 50 km/h."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di velocità",
+      "Fine del divieto di velocità minima"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "fine del divieto",
+      "limite minimo di velocità",
+      "velocità massima"
+    ],
+    "vector_search_queries": [
+      "fine del divieto di superare la velocità massima consentita",
+      "segnali che indicano la fine dei divieti di velocità"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la fine del divieto di superare una certa velocità (es. 50 km/h), non la fine del limite minimo di velocità."
+  }
+}

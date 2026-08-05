@@ -1,0 +1,28 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24687",
+  "text": "La patente di guida di categoria B è confermata dal Prefetto a seguito di visita di accertamento dei requisiti morali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti per il rilascio della patente B",
+      "Accertamento dei requisiti di idoneità alla guida"
+    ],
+    "exact_keywords": [
+      "patente di guida categoria B",
+      "requisiti morali",
+      "accertamento dei requisiti fisici e psichici",
+      "commissione medica locale"
+    ],
+    "vector_search_queries": [
+      "requisiti per il rilascio della patente di guida B",
+      "accertamento idoneità psicofisica per patente B",
+      "ruolo del Prefetto e della commissione medica nella patente B"
+    ],
+    "rule_explanation": "La patente B non è confermata dal Prefetto, ma si ottiene dopo accertamento dei requisiti fisici e psichici da parte della commissione medica locale. I requisiti morali sono verificati in fase di rilascio."
+  }
+}

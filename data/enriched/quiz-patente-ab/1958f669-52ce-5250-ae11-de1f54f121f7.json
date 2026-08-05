@@ -1,0 +1,30 @@
+{
+  "question_id": 4693,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25212",
+  "text": "Il ribaltamento in curva del veicolo è favorito da una ampia distanza fra ruote dello stesso asse (carreggiata larga)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Dinamica del veicolo in curva",
+      "Carreggiata e baricentro"
+    ],
+    "exact_keywords": [
+      "ribaltamento",
+      "carreggiata",
+      "stabilità",
+      "baricentro",
+      "velocità di curva"
+    ],
+    "vector_search_queries": [
+      "fattori che favoriscono il ribaltamento del veicolo in curva",
+      "relazione tra carreggiata, baricentro e stabilità del veicolo",
+      "effetti della larghezza della carreggiata sulla stabilità in curva"
+    ],
+    "rule_explanation": "Il ribaltamento in curva è favorito da una ridotta distanza fra le ruote dello stesso asse (carreggiata stretta), un baricentro alto e un'eccessiva velocità."
+  }
+}

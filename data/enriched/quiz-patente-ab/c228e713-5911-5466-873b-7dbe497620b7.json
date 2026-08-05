@@ -1,0 +1,33 @@
+{
+  "question_id": 4101,
+  "topic": "Segnali di pericolo",
+  "number": "19471",
+  "text": "Il segnale raffigurato vieta la svolta a destra al primo incrocio",
+  "correct_answer": false,
+  "image": "2b12fe96d3f0c9af53ce60483de34e8b.jpeg",
+  "image_description": "Segnale di pericolo: intersezione con circolazione a rotatoria. Preannuncia un'intersezione regolata da circolazione rotatoria. I veicoli che circolano nella rotatoria hanno la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero composto da tre frecce curve che indicano un movimento circolare in senso antiorario, tipico di una rotatoria. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
+    "name": "Segnale di pericolo: intersezione con circolazione a rotatoria",
+    "description": "Preannuncia un'intersezione regolata da circolazione rotatoria. I veicoli che circolano nella rotatoria hanno la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Intersezioni stradali",
+      "Regole di precedenza nelle rotatorie"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "intersezione con circolazione a rotatoria",
+      "precedenza",
+      "svolta vietata"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo intersezione a rotatoria",
+      "regole di precedenza nelle rotatorie",
+      "divieto di svolta a destra in rotatoria"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante una rotatoria preannuncia un'intersezione con circolazione a rotatoria, dove i veicoli che vi circolano hanno la precedenza, ma non vieta la svolta a destra."
+  }
+}

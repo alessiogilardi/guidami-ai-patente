@@ -1,0 +1,30 @@
+{
+  "question_id": 4662,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25009",
+  "text": "Il risarcimento diretto nei sinistri stradali si applica se vi sono danni al veicolo e lesioni di lieve entità al conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Risarcimento diretto",
+      "Sinistro stradale",
+      "Danni al veicolo e lesioni fisiche"
+    ],
+    "exact_keywords": [
+      "risarcimento diretto",
+      "sinistro stradale",
+      "danni al veicolo",
+      "lesioni fisiche",
+      "lieve entità"
+    ],
+    "vector_search_queries": [
+      "condizioni per l'applicazione del risarcimento diretto",
+      "risarcimento diretto danni veicolo e lesioni lieve entità conducente",
+      "procedura risarcimento diretto sinistri stradali"
+    ],
+    "rule_explanation": "Il risarcimento diretto è una procedura applicabile ai sinistri stradali con soli danni al veicolo e lesioni fisiche di lieve entità al conducente, purché vi sia la responsabilità di un veicolo assicurato."
+  }
+}

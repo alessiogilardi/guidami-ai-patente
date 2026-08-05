@@ -1,0 +1,32 @@
+{
+  "question_id": 4121,
+  "topic": "Segnali di divieto",
+  "number": "19719",
+  "text": "In presenza del segnale raffigurato è consentito il transito alle autocaravan",
+  "correct_answer": true,
+  "image": "6504baec736639e82aff14bceb66791f.jpeg",
+  "image_description": "Divieto di transito agli autoveicoli di massa a pieno carico superiore a 3,5 t. Il segnale vieta il transito ai veicoli di massa a pieno carico superiore a 3,5 tonnellate, ad eccezione di quelli destinati al trasporto di persone.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di transito. Il segnale è circolare con bordo rosso e sfondo bianco. Al centro è presente la sagoma nera di un autobus. Il segnale è il segnale di divieto di transito agli autobus.",
+    "name": "Divieto di transito agli autoveicoli di massa a pieno carico superiore a 3,5 t",
+    "description": "Il segnale vieta il transito ai veicoli di massa a pieno carico superiore a 3,5 tonnellate, ad eccezione di quelli destinati al trasporto di persone."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Massa a pieno carico dei veicoli"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "autocaravan",
+      "massa a pieno carico",
+      "autoveicoli"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per massa a pieno carico superiore a 3,5 tonnellate",
+      "eccezioni al divieto di transito per massa a pieno carico",
+      "transito consentito agli autocaravan con massa a pieno carico superiore a 3,5 t"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito per massa a pieno carico superiore a 3,5 t non si applica agli autocaravan, in quanto destinati al trasporto di persone."
+  }
+}

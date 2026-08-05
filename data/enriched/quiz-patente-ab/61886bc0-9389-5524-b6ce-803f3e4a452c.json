@@ -1,0 +1,30 @@
+{
+  "question_id": 4435,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22924",
+  "text": "Se un autotreno intende svoltare a destra in una strada stretta, bisogna sorpassarlo subito a sinistra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso di veicoli lunghi",
+      "Manovra di svolta a destra",
+      "Comportamento in prossimità di incroci"
+    ],
+    "exact_keywords": [
+      "autotreno",
+      "svolta a destra",
+      "strada stretta",
+      "sorpassare",
+      "immediatamente a sinistra"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso per autotreni in svolta a destra su strade strette",
+      "comportamento del conducente durante la svolta a destra di un autotreno su carreggiata ristretta",
+      "distanza di sicurezza e manovre di sorpasso in prossimità di incroci con veicoli di grandi dimensioni"
+    ],
+    "rule_explanation": "Il sorpasso di un autotreno che intende svoltare a destra su strada stretta è vietato per evitare collisioni e garantire la sicurezza. Bisogna attendere che la manovra sia completata o che vi sia spazio sufficiente."
+  }
+}

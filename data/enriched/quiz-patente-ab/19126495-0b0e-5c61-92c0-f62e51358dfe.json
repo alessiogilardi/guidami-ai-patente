@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31023",
+  "text": "Concentrare la propria attenzione sulle indicazioni del navigatore satellitare può rappresentare un elemento di distrazione alla guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distrazione alla guida",
+      "Uso di dispositivi elettronici durante la guida",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "distrazione",
+      "guida",
+      "navigatore satellitare",
+      "dispositivi elettronici"
+    ],
+    "vector_search_queries": [
+      "distrazione alla guida causata da navigatori satellitari",
+      "uso di dispositivi elettronici durante la marcia e sicurezza stradale",
+      "conseguenze della distrazione da navigatore satellitare"
+    ],
+    "rule_explanation": "L'uso di dispositivi elettronici, inclusi i navigatori satellitari, può causare distrazione alla guida, aumentando il rischio di incidenti."
+  }
+}

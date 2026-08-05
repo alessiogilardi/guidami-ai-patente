@@ -1,0 +1,30 @@
+{
+  "question_id": 4529,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23800",
+  "text": "Prima di scendere dal veicolo in sosta, il conducente deve assicurarsi di avere spento il motore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Arresto del veicolo",
+      "Partenza del veicolo",
+      "Manovre di sosta"
+    ],
+    "exact_keywords": [
+      "arresto",
+      "sosta",
+      "partenza",
+      "motore",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente prima di effettuare una sosta",
+      "spegnimento del motore prima di scendere dal veicolo in sosta",
+      "manovra di arresto e sosta del veicolo"
+    ],
+    "rule_explanation": "Prima di effettuare la manovra di arresto o di sosta, il conducente deve assicurarsi che il veicolo non costituisca pericolo e, se necessario, spegnere il motore."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4341,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21937",
+  "text": "I delineatori raffigurati sono posti al centro della carreggiata",
+  "correct_answer": false,
+  "image": "34b768de9091a2ab398379195567246a.jpeg",
+  "image_description": "Delineatori divisori di carreggiata. I delineatori raffigurati sono elementi di segnaletica complementare posti ai margini della carreggiata per evidenziare il suo andamento, particolarmente utili in condizioni di scarsa visibilità o di notte. Quello a sinistra indica il lato destro della carreggiata, mentre quello a destra indica il lato sinistro.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due delineatori posti uno accanto all'altro. Entrambi sono composti da un palo grigio con una parte superiore inclinata. Il delineatore di sinistra ha una banda bianca sulla parte inclinata, mentre quello di destra ha una banda rossa. Sono posizionati su una linea orizzontale che rappresenta il suolo. Questi delineatori sono tipicamente utilizzati per delimitare la carreggiata o le corsie, specialmente in presenza di curve, ostacoli o in condizioni di scarsa visibilità. La loro funzione è quella di guidare e rendere più visibile il percorso stradale.",
+    "name": "Delineatori divisori di carreggiata",
+    "description": "I delineatori raffigurati sono elementi di segnaletica complementare posti ai margini della carreggiata per evidenziare il suo andamento, particolarmente utili in condizioni di scarsa visibilità o di notte. Quello a sinistra indica il lato destro della carreggiata, mentre quello a destra indica il lato sinistro."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica complementare",
+      "Delineatori stradali",
+      "Posizionamento della segnaletica"
+    ],
+    "exact_keywords": [
+      "delineatori",
+      "carreggiata",
+      "margine della carreggiata",
+      "segnaletica complementare"
+    ],
+    "vector_search_queries": [
+      "posizionamento delineatori stradali ai margini della carreggiata",
+      "funzione dei delineatori divisori di carreggiata"
+    ],
+    "rule_explanation": "I delineatori stradali, quali elementi di segnaletica complementare, sono installati ai margini della carreggiata per evidenziarne il percorso, non al suo centro."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4668,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25049",
+  "text": "Nell'assicurazione per la responsabilità civile auto (R.C.A.), il contratto con la formula \"bonus malus\" viene stabilito dal giudice",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione R.C.A.",
+      "Formula Bonus-Malus",
+      "Gestione contrattuale"
+    ],
+    "exact_keywords": [
+      "assicurazione R.C.A.",
+      "bonus malus",
+      "contratto assicurativo",
+      "imprese di assicurazione"
+    ],
+    "vector_search_queries": [
+      "clausola bonus malus polizza RCA",
+      "determinazione del premio assicurativo RCA con bonus malus",
+      "ruolo del giudice nella stipula di contratti assicurativi RCA"
+    ],
+    "rule_explanation": "La formula bonus-malus è una clausola contrattuale stabilita dall'impresa di assicurazione, non dal giudice, che adatta il premio in base alla sinistrosità dell'assicurato."
+  }
+}

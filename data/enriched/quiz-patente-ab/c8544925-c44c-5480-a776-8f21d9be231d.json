@@ -1,0 +1,29 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22319",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi quando i pedoni, che sono sul percorso, danno segni d'incertezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Comportamento in prossimità dei pedoni",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "pedoni",
+      "segni d'incertezza",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità in presenza di pedoni incerti",
+      "condotta del conducente verso pedoni che manifestano incertezza sul percorso",
+      "prevenzione del pericolo con pedoni sul percorso stradale"
+    ],
+    "rule_explanation": "Il conducente deve moderare la velocità e, se necessario, fermarsi in presenza di pedoni che mostrano incertezza sul loro attraversamento per evitare ogni pericolo."
+  }
+}

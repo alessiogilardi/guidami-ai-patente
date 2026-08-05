@@ -1,0 +1,32 @@
+{
+  "question_id": 4222,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20811",
+  "text": "Tutte e tre le corsie rappresentate in figura consentono al conducente di proseguire dritto",
+  "correct_answer": true,
+  "image": "475560f5610d3a1e85154d0183679cb5.jpeg",
+  "image_description": "Incrocio a raso con corsie a senso multiplo e frecce direzionali. L'incrocio è a raso. La strada in primo piano presenta una corsia di destra con frecce direzionali che indicano la possibilità di proseguire dritto o svoltare a destra. La corsia di sinistra presenta frecce che indicano la possibilità di proseguire dritto o svoltare a sinistra. La corsia centrale, invece, presenta solo frecce che indicano la possibilità di proseguire dritto. Le corsie sono delimitate da strisce bianche continue e discontinue. È presente una striscia di arresto prima dell'incrocio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di un incrocio stradale. La strada in primo piano è divisa in tre corsie. La corsia più a sinistra presenta una freccia che indica la possibilità di proseguire dritto o svoltare a sinistra. La corsia centrale presenta una freccia che indica solo la possibilità di proseguire dritto. La corsia più a destra presenta una freccia che indica la possibilità di proseguire dritto o svoltare a destra. Le corsie sono separate da strisce bianche, discontinue all'avvicinarsi dell'incrocio e continue più lontano. È presente una striscia di arresto prima dell'incrocio. Un'auto blu si trova nella corsia di sinistra. L'incrocio è a raso, senza dislivelli. Le strade laterali che si immettono nell'incrocio sono anch'esse a raso.",
+    "name": "Incrocio a raso con corsie a senso multiplo e frecce direzionali",
+    "description": "L'incrocio è a raso. La strada in primo piano presenta una corsia di destra con frecce direzionali che indicano la possibilità di proseguire dritto o svoltare a destra. La corsia di sinistra presenta frecce che indicano la possibilità di proseguire dritto o svoltare a sinistra. La corsia centrale, invece, presenta solo frecce che indicano la possibilità di proseguire dritto. Le corsie sono delimitate da strisce bianche continue e discontinue. È presente una striscia di arresto prima dell'incrocio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Frecce direzionali sulle corsie",
+      "Direzione di marcia consentita"
+    ],
+    "exact_keywords": [
+      "corsia",
+      "freccia direzionale",
+      "proseguire dritto",
+      "striscia di arresto"
+    ],
+    "vector_search_queries": [
+      "interpretazione frecce direzionali corsia di marcia",
+      "direzioni consentite dalla segnaletica orizzontale"
+    ],
+    "rule_explanation": "Le frecce direzionali sulle corsie indicano le uniche direzioni di marcia consentite per quella corsia. Se una corsia ha solo frecce per andare dritto, è vietato svoltare."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4316,
+  "topic": "Segnali di indicazione",
+  "number": "21709",
+  "text": "Il segnale raffigurato indica che gli autocarri che superano 3,5 tonnellate possono circolare solo sulla corsia di sinistra",
+  "correct_answer": false,
+  "image": "7a0d4616a0410274021c7e94c7ead252.jpeg",
+  "image_description": "Indicazioni sulla corsia per autocarri. Il segnale indica che la corsia di sinistra è riservata ai veicoli che non superano le 3,5 tonnellate, mentre la corsia di destra è per tutti i veicoli. Pertanto, gli autocarri con massa a pieno carico superiore a 3,5 tonnellate possono circolare solo sulla corsia di destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di tipo normativo, di colore blu con bordo bianco, raffigurante due frecce bianche verticali che indicano la direzione consentita per due corsie di marcia. Sulla freccia di sinistra è sovrapposto un segnale di divieto di transito per autocarri (cerchio rosso con barra orizzontale, raffigurante un camion nero all'interno). La freccia di destra è libera. Questo indica una prescrizione specifica per l'utilizzo delle corsie in relazione alla massa dei veicoli.",
+    "name": "Indicazioni sulla corsia per autocarri",
+    "description": "Il segnale indica che la corsia di sinistra è riservata ai veicoli che non superano le 3,5 tonnellate, mentre la corsia di destra è per tutti i veicoli. Pertanto, gli autocarri con massa a pieno carico superiore a 3,5 tonnellate possono circolare solo sulla corsia di destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Classificazione dei veicoli per massa",
+      "Utilizzo delle corsie di marcia"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "autocarri",
+      "3,5 tonnellate",
+      "corsia di sinistra",
+      "massa a pieno carico"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione stradale per autocarri e massa a pieno carico",
+      "regolamentazione corsie di marcia per veicoli oltre 3,5 tonnellate"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la corsia riservata ai veicoli con massa inferiore o uguale a 3,5 tonnellate; gli autocarri più pesanti devono utilizzare le altre corsie disponibili."
+  }
+}

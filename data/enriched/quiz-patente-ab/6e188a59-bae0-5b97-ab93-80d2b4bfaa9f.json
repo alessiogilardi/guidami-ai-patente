@@ -1,0 +1,29 @@
+{
+  "question_id": 4671,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25066",
+  "text": "Mantenendo il più possibile costante la velocità, si riduce il consumo di carburante",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza energetica alla guida",
+      "Riduzione dei consumi di carburante",
+      "Impatto ambientale della guida"
+    ],
+    "exact_keywords": [
+      "velocità costante",
+      "consumo di carburante",
+      "guida ecologica",
+      "efficienza energetica"
+    ],
+    "vector_search_queries": [
+      "influenza della velocità costante sui consumi di carburante",
+      "tecniche di guida per ridurre il consumo di carburante e l'inquinamento",
+      "rapporto tra stile di guida e emissioni inquinanti"
+    ],
+    "rule_explanation": "Mantenere una velocità costante, evitando accelerazioni e frenate brusche, ottimizza l'efficienza del motore riducendo il consumo di carburante e le emissioni inquinanti."
+  }
+}

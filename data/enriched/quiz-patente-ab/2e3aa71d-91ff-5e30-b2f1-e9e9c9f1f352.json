@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23517",
+  "text": "Lo spazio necessario al sorpasso è maggiore se vi è poca differenza di velocità tra i veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sorpasso",
+      "Velocità di crociera",
+      "Manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "differenza di velocità",
+      "veicoli in movimento",
+      "spazio necessario"
+    ],
+    "vector_search_queries": [
+      "spazio necessario per il sorpasso in relazione alla differenza di velocità",
+      "manovra di sorpasso e distanze di sicurezza tra veicoli"
+    ],
+    "rule_explanation": "La distanza di sorpasso aumenta all'aumentare della differenza di velocità tra il veicolo che sorpassa e quello che viene sorpassato, e viceversa."
+  }
+}

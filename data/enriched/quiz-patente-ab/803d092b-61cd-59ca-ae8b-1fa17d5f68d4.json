@@ -1,0 +1,28 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18366",
+  "text": "Le strade extraurbane principali devono essere dotate di pannelli a messaggio variabile",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale",
+      "Strade extraurbane principali",
+      "Pannelli a messaggio variabile"
+    ],
+    "exact_keywords": [
+      "strade extraurbane principali",
+      "pannelli a messaggio variabile",
+      "segnaletica a messaggio variabile",
+      "obbligo di installazione"
+    ],
+    "vector_search_queries": [
+      "obbligo installazione pannelli a messaggio variabile strade extraurbane principali",
+      "requisiti tecnici strade extraurbane principali segnaletica a messaggio variabile"
+    ],
+    "rule_explanation": "I pannelli a messaggio variabile non sono un requisito obbligatorio per tutte le strade extraurbane principali, ma la loro installazione dipende da specifiche valutazioni tecniche e di sicurezza."
+  }
+}

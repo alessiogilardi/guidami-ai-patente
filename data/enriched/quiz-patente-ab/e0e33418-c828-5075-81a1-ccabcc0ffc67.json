@@ -1,0 +1,31 @@
+{
+  "question_id": 4334,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21873",
+  "text": "Il cono raffigurato separa la carreggiata dalla pista ciclabile",
+  "correct_answer": false,
+  "image": "61edff345204545bf7a2cc45613f1bca.jpeg",
+  "image_description": "Cono divisorio. Il segnale raffigurato è un cono, utilizzato per delimitare zone di lavoro, cantieri, ostacoli o per separare temporaneamente i flussi di traffico. Può essere impiegato per segnalare deviazioni provvisorie, aree interessate da incidenti o lavori stradali di durata variabile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un singolo cono stradale, di forma tronco-conica, con una base larga e nera. La superficie del cono è caratterizzata da bande orizzontali alternate di colore rosso e bianco, che servono a renderlo altamente visibile. Non sono presenti altri elementi o segnali nell'immagine.",
+    "name": "Cono divisorio",
+    "description": "Il segnale raffigurato è un cono, utilizzato per delimitare zone di lavoro, cantieri, ostacoli o per separare temporaneamente i flussi di traffico. Può essere impiegato per segnalare deviazioni provvisorie, aree interessate da incidenti o lavori stradali di durata variabile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica temporanea di cantiere",
+      "Delimitazione di aree stradali"
+    ],
+    "exact_keywords": [
+      "cono divisorio",
+      "pista ciclabile",
+      "carreggiata",
+      "segnaletica complementare"
+    ],
+    "vector_search_queries": [
+      "uso del cono divisorio nella segnaletica stradale",
+      "delimitazione di piste ciclabili e carreggiate con segnali temporanei"
+    ],
+    "rule_explanation": "Il cono divisorio è un segnale complementare temporaneo usato per delimitare zone di lavoro, cantieri o ostacoli, non per separare carreggiata e pista ciclabile."
+  }
+}

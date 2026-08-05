@@ -1,0 +1,27 @@
+{
+  "question_id": 4031,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18642",
+  "text": "Gli autoveicoli sono tutti i veicoli a motore con quattro o più ruote, compresi i quadricicli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autoveicolo",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "autoveicoli",
+      "veicoli a motore",
+      "quadricicli",
+      "ruote"
+    ],
+    "vector_search_queries": [
+      "definizione di autoveicolo nel codice della strada",
+      "distinzione tra autoveicoli e quadricicli"
+    ],
+    "rule_explanation": "Gli autoveicoli sono veicoli a motore con almeno quattro ruote, ma i quadricicli sono una categoria distinta, non tutti gli autoveicoli sono quadricicli."
+  }
+}

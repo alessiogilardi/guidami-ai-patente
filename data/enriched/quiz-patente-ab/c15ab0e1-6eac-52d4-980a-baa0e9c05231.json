@@ -1,0 +1,29 @@
+{
+  "question_id": 4017,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18502",
+  "text": "La corsia di accelerazione può essere utilizzata per il sorpasso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Corsia di accelerazione",
+      "Manovra di sorpasso",
+      "Uso della strada"
+    ],
+    "exact_keywords": [
+      "corsia di accelerazione",
+      "sorpasso",
+      "veicolo",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "funzione della corsia di accelerazione",
+      "divieto di sorpasso in corsia di accelerazione",
+      "uso delle corsie di immissione e accelerazione"
+    ],
+    "rule_explanation": "La corsia di accelerazione serve per immettersi nel flusso di traffico e non per effettuare sorpassi, i quali devono essere eseguiti secondo le norme specifiche."
+  }
+}

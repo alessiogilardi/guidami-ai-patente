@@ -1,0 +1,31 @@
+{
+  "question_id": 4385,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22431",
+  "text": "I contrassegni rappresentati in figura sono applicati sulla parte posteriore di alcune categorie di veicoli",
+  "correct_answer": true,
+  "image": "061decd67e690416a4af3b7576e2a0ee.jpeg",
+  "image_description": "Segnale di limite di velocità (divieto). I segnali raffigurano tre limiti massimi di velocità: 60 km/h, 80 km/h e 100 km/h. Questi segnali sono di tipo \"divieto di superare la velocità indicata\" e sono posti in sequenza o in alternativa per indicare diversi limiti massimi consentiti in determinate tratte stradali o per diverse categorie di veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre segnali stradali circolari con bordo rosso e sfondo bianco, tipici dei segnali di divieto. Al centro di ciascun segnale è riportato un numero in nero, che indica un limite di velocità: 60, 80 e 100. Questi sono segnali di limite massimo di velocità. Sono disposti in modo da suggerire una sequenza o un'alternanza di limiti.",
+    "name": "Segnale di limite di velocità (divieto)",
+    "description": "I segnali raffigurano tre limiti massimi di velocità: 60 km/h, 80 km/h e 100 km/h. Questi segnali sono di tipo \"divieto di superare la velocità indicata\" e sono posti in sequenza o in alternativa per indicare diversi limiti massimi consentiti in determinate tratte stradali o per diverse categorie di veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Contrassegni di identificazione veicoli",
+      "Obblighi di esposizione di dispositivi di segnalazione"
+    ],
+    "exact_keywords": [
+      "contrassegni",
+      "parte posteriore",
+      "categorie di veicoli",
+      "dispositivi di segnalazione"
+    ],
+    "vector_search_queries": [
+      "veicoli che espongono contrassegni posteriori",
+      "obblighi di segnalazione posteriore per categorie di veicoli"
+    ],
+    "rule_explanation": "Alcune categorie di veicoli devono esporre contrassegni specifici sulla parte posteriore per l'identificazione o la segnalazione, come previsto dal Codice della Strada."
+  }
+}

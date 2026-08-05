@@ -1,0 +1,27 @@
+{
+  "question_id": 4042,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18754",
+  "text": "Bisogna usare maggiore prudenza nei confronti dei bambini che attraversano la strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Obbligo di prudenza e attenzione"
+    ],
+    "exact_keywords": [
+      "bambini",
+      "attraversamento della strada",
+      "prudenza",
+      "utente debole"
+    ],
+    "vector_search_queries": [
+      "doveri del conducente verso i bambini che attraversano la strada",
+      "uso prudente della strada nei confronti dei pedoni minorenni"
+    ],
+    "rule_explanation": "È necessario prestare particolare prudenza e attenzione nei confronti dei bambini durante l'attraversamento della strada, in quanto utenti vulnerabili della strada."
+  }
+}

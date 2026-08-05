@@ -1,0 +1,27 @@
+{
+  "question_id": 4537,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23863",
+  "text": "Sono ammessi a circolare su autostrade e strade extraurbane principali i veicoli non muniti di pneumatici, se assicurati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione su autostrade e strade extraurbane principali",
+      "Requisiti tecnici dei veicoli per autostrade"
+    ],
+    "exact_keywords": [
+      "autostrade",
+      "strade extraurbane principali",
+      "pneumatici",
+      "assicurati"
+    ],
+    "vector_search_queries": [
+      "requisiti pneumatici per circolazione autostradale",
+      "divieto circolazione veicoli senza pneumatici su strade extraurbane principali"
+    ],
+    "rule_explanation": "Su autostrade e strade extraurbane principali è vietata la circolazione ai veicoli non muniti di pneumatici, indipendentemente dalla loro assicurazione."
+  }
+}

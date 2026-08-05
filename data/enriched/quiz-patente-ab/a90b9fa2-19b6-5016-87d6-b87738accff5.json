@@ -1,0 +1,27 @@
+{
+  "question_id": 4263,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21195",
+  "text": "Il suono prolungato del fischietto da parte dell'agente preposto al traffico serve per consentire il passaggio di veicoli di soccorso in servizio di emergenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni degli agenti del traffico",
+      "Priorità dei veicoli di emergenza"
+    ],
+    "exact_keywords": [
+      "agente preposto al traffico",
+      "fischietto",
+      "veicoli di soccorso",
+      "servizio di emergenza"
+    ],
+    "vector_search_queries": [
+      "segnali acustici agenti del traffico veicoli emergenza",
+      "priorità veicoli soccorso agenti traffico fischietto"
+    ],
+    "rule_explanation": "Il segnale acustico prolungato del fischietto da parte dell'agente del traffico indica la necessità di consentire il passaggio ai veicoli di soccorso in emergenza."
+  }
+}

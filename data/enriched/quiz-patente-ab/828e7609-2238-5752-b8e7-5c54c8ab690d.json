@@ -1,0 +1,30 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24405",
+  "text": "La visiera del casco deve essere sostituita se rigata o danneggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione dei dispositivi di sicurezza",
+      "Casco protettivo",
+      "Visibilità del conducente"
+    ],
+    "exact_keywords": [
+      "visiera",
+      "casco",
+      "rigata",
+      "danneggiata",
+      "sostituita"
+    ],
+    "vector_search_queries": [
+      "manutenzione visiera casco protettivo",
+      "sostituzione visiera danneggiata o rigata",
+      "obblighi del conducente riguardo la visiera del casco"
+    ],
+    "rule_explanation": "La visiera del casco protettivo deve essere mantenuta in perfette condizioni, sostituendola se rigata o danneggiata per garantire la sicurezza e la visibilità del conducente."
+  }
+}

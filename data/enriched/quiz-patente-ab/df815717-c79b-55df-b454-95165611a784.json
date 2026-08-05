@@ -1,0 +1,29 @@
+{
+  "question_id": 4030,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18635",
+  "text": "I motocicli hanno motore di cilindrata fino a 50 cm3 e sviluppano una velocità fino a 45 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di motociclo",
+      "Classificazione dei veicoli a motore",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "cilindrata",
+      "velocità massima",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "definizione di motociclo secondo il CdS",
+      "differenza tra motocicli e ciclomotori",
+      "caratteristiche tecniche dei motocicli"
+    ],
+    "rule_explanation": "I motocicli sono veicoli a motore con cilindrata superiore a 50 cm3 e velocità massima superiore a 45 km/h. I ciclomotori hanno cilindrata fino a 50 cm3 e velocità fino a 45 km/h."
+  }
+}

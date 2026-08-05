@@ -1,0 +1,27 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22324",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi ogni volta che si percorre un cavalcavia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Pericolo per la circolazione"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "fermarsi",
+      "pericolo o intralcio",
+      "cavalcavia"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di pericolo o intralcio alla circolazione",
+      "condizioni che impongono la riduzione della velocità o l'arresto del veicolo"
+    ],
+    "rule_explanation": "Non è obbligatorio ridurre la velocità o fermarsi ai cavalcavia, ma solo se vi è un pericolo o intralcio alla circolazione."
+  }
+}

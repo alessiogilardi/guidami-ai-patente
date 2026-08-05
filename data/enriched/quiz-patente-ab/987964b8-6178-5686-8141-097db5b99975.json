@@ -1,0 +1,28 @@
+{
+  "question_id": 4618,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24606",
+  "text": "La revoca della patente può essere disposta quando il conducente, in autostrada, inverte il senso di marcia o percorre la carreggiata contro mano",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revoca della patente di guida",
+      "Infrazioni gravi alla circolazione in autostrada"
+    ],
+    "exact_keywords": [
+      "revoca della patente",
+      "inversione del senso di marcia",
+      "percorrenza contromano",
+      "autostrada"
+    ],
+    "vector_search_queries": [
+      "sanzioni per inversione del senso di marcia in autostrada",
+      "conseguenze della marcia contromano in autostrada",
+      "revoca patente per violazioni autostradali"
+    ],
+    "rule_explanation": "La revoca della patente è una sanzione accessoria che può essere disposta per gravi violazioni al CdS, tra cui l'inversione del senso di marcia o la marcia contromano in autostrada."
+  }
+}

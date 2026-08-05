@@ -1,0 +1,33 @@
+{
+  "question_id": 4105,
+  "topic": "Segnali di divieto",
+  "number": "19527",
+  "text": "Il segnale raffigurato è un segnale di pericolo",
+  "correct_answer": false,
+  "image": "fbde6a78154edc681ee7715bad203441.jpeg",
+  "image_description": "Segnale di divieto di transito. Il segnale vieta il transito a tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Questo è il segnale di divieto di transito, che indica che il transito è vietato a tutti i veicoli.",
+    "name": "Segnale di divieto di transito",
+    "description": "Il segnale vieta il transito a tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei segnali stradali",
+      "Segnali di divieto",
+      "Segnali di pericolo"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "segnali di pericolo",
+      "segnali di prescrizione",
+      "segnali di obbligo"
+    ],
+    "vector_search_queries": [
+      "distinzione tra segnali di divieto e segnali di pericolo",
+      "funzione dei segnali di divieto di transito",
+      "tipologie di segnali stradali di prescrizione"
+    ],
+    "rule_explanation": "I segnali di divieto hanno lo scopo di vietare qualcosa, mentre i segnali di pericolo avvertono di un pericolo imminente. Il segnale raffigurato è di divieto."
+  }
+}

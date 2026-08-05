@@ -1,0 +1,31 @@
+{
+  "question_id": 4110,
+  "topic": "Segnali di divieto",
+  "number": "19586",
+  "text": "Il segnale raffigurato obbliga i veicoli a marciare a meno di 70 metri di distanza l'uno dall'altro",
+  "correct_answer": false,
+  "image": "1be58ec74bcd0d03bb415339bccad9e3.jpeg",
+  "image_description": "Distanza minima tra veicoli. Il segnale impone di mantenere una distanza di almeno 70 metri dal veicolo che precede.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro sono raffigurati due veicoli stilizzati (presumibilmente autovetture) visti di lato, uno dietro l'altro, con una freccia che indica la distanza tra di essi. Sopra i veicoli, in un riquadro bianco, è indicato il valore \"70 m\". Il segnale è un segnale di prescrizione che impone una distanza minima.",
+    "name": "Distanza minima tra veicoli",
+    "description": "Il segnale impone di mantenere una distanza di almeno 70 metri dal veicolo che precede."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza tra veicoli",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "distanza minima",
+      "segnali di prescrizione",
+      "veicoli",
+      "mantenere la distanza"
+    ],
+    "vector_search_queries": [
+      "segnali che impongono distanza minima tra veicoli",
+      "obbligo di mantenere distanza di sicurezza tra veicoli in marcia"
+    ],
+    "rule_explanation": "Il segnale di distanza minima impone di mantenere una distanza pari o superiore a quella indicata dal veicolo che precede, non inferiore."
+  }
+}

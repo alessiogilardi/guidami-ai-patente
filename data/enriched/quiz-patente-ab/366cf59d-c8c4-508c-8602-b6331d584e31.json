@@ -1,0 +1,29 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22485",
+  "text": "Nei veicoli dotati di servosterzo, se si percorre una lunga discesa con il cambio in folle e a motore spento, diventa difficoltoso girare rapidamente lo sterzo per schivare un ostacolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzionamento del servosterzo",
+      "Sicurezza alla guida in discesa",
+      "Pericoli della marcia a folle e motore spento"
+    ],
+    "exact_keywords": [
+      "servosterzo",
+      "discesa",
+      "cambio in folle",
+      "motore spento",
+      "sterzo"
+    ],
+    "vector_search_queries": [
+      "difficoltà di sterzata con servosterzo a motore spento in discesa",
+      "effetti del cambio in folle e motore spento sulla manovrabilità dello sterzo"
+    ],
+    "rule_explanation": "Nei veicoli con servosterzo, a motore spento e cambio in folle, la servoassistenza viene meno, rendendo lo sterzo più duro e difficile da manovrare rapidamente in caso di ostacoli."
+  }
+}

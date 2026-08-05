@@ -1,0 +1,33 @@
+{
+  "question_id": 4117,
+  "topic": "Segnali di divieto",
+  "number": "19671",
+  "text": "Il segnale raffigurato vieta il transito ai quadricicli a pedale",
+  "correct_answer": true,
+  "image": "d62b58e41fee347a25ca241f48772c05.jpeg",
+  "image_description": "Segnale di divieto di transito ai velocipedi. Il segnale vieta il transito ai velocipedi (biciclette).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una bicicletta di colore nero. Si tratta di un segnale di divieto.",
+    "name": "Segnale di divieto di transito ai velocipedi",
+    "description": "Il segnale vieta il transito ai velocipedi (biciclette)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Divieto di transito",
+      "Definizione di velocipede"
+    ],
+    "exact_keywords": [
+      "segnale di divieto",
+      "velocipedi",
+      "quadricicli a pedale",
+      "transito"
+    ],
+    "vector_search_queries": [
+      "divieto di transito ai velocipedi",
+      "definizione di velocipede nel codice della strada",
+      "veicoli a propulsione prevalentemente muscolare"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito ai velocipedi vieta la circolazione a tutti i veicoli a propulsione prevalentemente muscolare, compresi i quadricicli a pedale."
+  }
+}

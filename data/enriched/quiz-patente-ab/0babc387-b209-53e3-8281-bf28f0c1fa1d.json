@@ -1,0 +1,27 @@
+{
+  "question_id": 4605,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24458",
+  "text": "E' di norma vietato condurre sulle strade pubbliche un autoveicolo non immatricolato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Immatricolazione dei veicoli a motore",
+      "Circolazione stradale"
+    ],
+    "exact_keywords": [
+      "autoveicolo",
+      "immatricolazione",
+      "strade pubbliche",
+      "divieto di circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di immatricolazione per autoveicoli in circolazione su strade pubbliche",
+      "requisiti per la circolazione di autoveicoli: immatricolazione"
+    ],
+    "rule_explanation": "È vietato condurre un autoveicolo non immatricolato sulle strade pubbliche, salvo eccezioni previste dalla legge. L'immatricolazione è un requisito fondamentale per la circolazione."
+  }
+}

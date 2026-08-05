@@ -1,0 +1,31 @@
+{
+  "question_id": 4308,
+  "topic": "Segnali di indicazione",
+  "number": "21626",
+  "text": "Il segnale raffigurato può essere abbinato con un pannello che indica la lunghezza del tratto di strada dove si consiglia di non superare la velocità indicata",
+  "correct_answer": true,
+  "image": "971e98d0321dab35827073bdfb4eb51a.jpeg",
+  "image_description": "Segnale di limite minimo di velocità. Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è presente il numero '60' in bianco. Questo è un segnale di prescrizione che indica un limite minimo di velocità.",
+    "name": "Segnale di limite minimo di velocità",
+    "description": "Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione (limiti di velocità)",
+      "Segnali complementari (pannelli integrativi)"
+    ],
+    "exact_keywords": [
+      "limite minimo di velocità",
+      "pannello integrativo",
+      "lunghezza del tratto",
+      "consenso di velocità"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo di lunghezza per limite minimo di velocità",
+      "abbinamento segnale limite minimo velocità con pannello di tratto"
+    ],
+    "rule_explanation": "Il segnale di limite minimo di velocità può essere integrato da un pannello che indica la lunghezza del tratto in cui tale limite è valido."
+  }
+}

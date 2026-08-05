@@ -1,0 +1,28 @@
+{
+  "question_id": 4542,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23895",
+  "text": "Sulle autostrade e sulle strade extraurbane principali se il traffico non è intenso il conducente non ha l'obbligo di servirsi degli indicatori di direzione per segnalare il cambiamento di corsia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione dei cambi di corsia",
+      "Norme di circolazione in autostrada e strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "cambiamento di corsia",
+      "autostrade",
+      "strade extraurbane principali",
+      "obbligo di segnalazione"
+    ],
+    "vector_search_queries": [
+      "obbligo uso indicatori di direzione cambio corsia autostrada",
+      "segnalazione manovre di cambiamento di corsia su strade extraurbane principali"
+    ],
+    "rule_explanation": "Il conducente ha sempre l'obbligo di usare gli indicatori di direzione per segnalare un cambiamento di corsia, indipendentemente dall'intensità del traffico."
+  }
+}

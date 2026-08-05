@@ -1,0 +1,33 @@
+{
+  "question_id": 4343,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21952",
+  "text": "Il delineatore raffigurato è posto ai lati della carreggiata su strade di montagna",
+  "correct_answer": true,
+  "image": "415ad58a6fd593c32edde2b4370f7ea0.jpeg",
+  "image_description": "Delineatore cilindrico o a palo. Il delineatore è un elemento verticale con bande alternate nere e gialle, utilizzato per delimitare i bordi della carreggiata, specialmente in condizioni di scarsa visibilità o innevamento. Non indica divieti né precedenze, ma serve a migliorare la percezione dei limiti della strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore cilindrico o a palo. È composto da un elemento verticale di colore nero con bande orizzontali alternate di colore giallo. La base del delineatore è fissata a terra tramite una piastra orizzontale. Non sono presenti altri elementi stradali o veicoli nell'immagine. Il delineatore è posizionato su uno sfondo bianco, suggerendo un'analisi isolata del segnale.",
+    "name": "Delineatore cilindrico o a palo",
+    "description": "Il delineatore è un elemento verticale con bande alternate nere e gialle, utilizzato per delimitare i bordi della carreggiata, specialmente in condizioni di scarsa visibilità o innevamento. Non indica divieti né precedenze, ma serve a migliorare la percezione dei limiti della strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale complementare",
+      "Delineatori stradali",
+      "Segnaletica di cantiere"
+    ],
+    "exact_keywords": [
+      "delineatore cilindrico",
+      "delineatore a palo",
+      "bande nere e gialle",
+      "delimitare i bordi della carreggiata"
+    ],
+    "vector_search_queries": [
+      "funzione dei delineatori stradali con bande nere e gialle",
+      "uso dei delineatori per delimitare la carreggiata in strade di montagna",
+      "segnaletica complementare per delimitazione stradale in condizioni di scarsa visibilità"
+    ],
+    "rule_explanation": "I delineatori, con bande alternate nere e gialle, sono posti ai lati della carreggiata per delimitare i bordi della strada, specialmente in tratti pericolosi, curve o zone con scarsa visibilità o innevamento."
+  }
+}

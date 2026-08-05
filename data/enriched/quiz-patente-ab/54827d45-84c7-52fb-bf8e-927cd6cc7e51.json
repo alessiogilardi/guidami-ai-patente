@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23531",
+  "text": "E' consentito il sorpasso sulle corsie d'accelerazione purché la manovra venga effettuata con attenzione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso in corsia di accelerazione",
+      "Manovre pericolose"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "corsia di accelerazione",
+      "divieto",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in corsia di accelerazione",
+      "sorpasso vietato in corsia di accelerazione per ragioni di sicurezza"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in corsia di accelerazione in quanto tale manovra crea un pericolo per la circolazione."
+  }
+}

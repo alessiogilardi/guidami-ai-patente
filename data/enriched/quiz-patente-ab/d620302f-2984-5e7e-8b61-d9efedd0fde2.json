@@ -1,0 +1,27 @@
+{
+  "question_id": 4382,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22398",
+  "text": "Salvo diversa segnalazione, il limite massimo di velocità consentito è di 130 km/h sulle autostrade",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su autostrade",
+      "Regolamentazione della velocità"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "autostrade",
+      "130 km/h",
+      "segnalazione"
+    ],
+    "vector_search_queries": [
+      "limite di velocità autostradale 130 km/h",
+      "velocità massima consentita in autostrada in assenza di segnalazioni specifiche"
+    ],
+    "rule_explanation": "Il limite massimo di velocità sulle autostrade è di 130 km/h, a meno che non sia diversamente indicato da segnaletica specifica."
+  }
+}

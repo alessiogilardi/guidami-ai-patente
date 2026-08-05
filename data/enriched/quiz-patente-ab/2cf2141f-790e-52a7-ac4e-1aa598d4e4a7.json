@@ -1,0 +1,28 @@
+{
+  "question_id": 4558,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24003",
+  "text": "E' consentito applicare sui vetri laterali anteriori e sul parabrezza pellicole adesive, a condizione che siano di materiale rimovibile",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Installazione di pellicole sui vetri dei veicoli",
+      "Norme sulla visibilità e sicurezza nella circolazione"
+    ],
+    "exact_keywords": [
+      "pellicole adesive",
+      "vetri laterali anteriori",
+      "parabrezza",
+      "materiale rimovibile",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "divieto di applicazione pellicole sui vetri anteriori auto",
+      "normativa su oscuramento vetri auto e visibilità conducente"
+    ],
+    "rule_explanation": "È vietato applicare pellicole adesive sui vetri laterali anteriori e sul parabrezza, indipendentemente dal materiale di cui sono composte o dalla loro rimovibilità, in quanto possono compromettere la visibilità del conducente."
+  }
+}

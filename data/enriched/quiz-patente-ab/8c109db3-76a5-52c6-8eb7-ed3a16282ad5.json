@@ -1,0 +1,28 @@
+{
+  "question_id": 4004,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18349",
+  "text": "L'attraversamento pedonale è posto al di fuori della carreggiata ed è destinato al transito dei pedoni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attraversamento pedonale",
+      "Uso della carreggiata",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "carreggiata",
+      "transito pedonale",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "definizione e collocazione dell'attraversamento pedonale",
+      "destinazione d'uso della carreggiata e degli attraversamenti pedonali"
+    ],
+    "rule_explanation": "L'attraversamento pedonale è parte della carreggiata, segnalato da apposita segnaletica orizzontale, ed è destinato al transito dei pedoni."
+  }
+}

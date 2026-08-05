@@ -1,0 +1,27 @@
+{
+  "question_id": 4652,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24933",
+  "text": "Se un ferito della strada si è ustionato, bisogna sempre togliere le parti dei vestiti che sono rimaste attaccate alla pelle",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di ustioni",
+      "Gestione delle ferite da ustione"
+    ],
+    "exact_keywords": [
+      "ustione",
+      "vestiti attaccati alla pelle",
+      "rimozione dei tessuti",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "trattamento delle ustioni cutanee primo soccorso",
+      "gestione dei vestiti aderenti alla pelle in caso di ustione"
+    ],
+    "rule_explanation": "In caso di ustione, non bisogna mai rimuovere i vestiti aderenti alla pelle, per evitare ulteriori lesioni e infezioni. Si copre la ferita con materiale sterile."
+  }
+}

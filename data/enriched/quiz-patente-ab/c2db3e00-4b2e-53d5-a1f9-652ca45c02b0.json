@@ -1,0 +1,27 @@
+{
+  "question_id": 4411,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22681",
+  "text": "Chi guida un veicolo, anche se ad elevate prestazioni, deve dare, di norma, la precedenza nei crocevia a tutti i veicoli, che provengono da destra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza a destra",
+      "Obbligo di dare la precedenza agli incroci"
+    ],
+    "exact_keywords": [
+      "precedenza",
+      "incroci",
+      "provenienti da destra",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "regola generale di precedenza a destra negli incroci",
+      "obbligo di dare la precedenza ai veicoli provenienti da destra nei crocevia"
+    ],
+    "rule_explanation": "Nei crocevia, salvo diversa segnalazione, la precedenza è dovuta ai veicoli provenienti da destra. Tale regola si applica anche ai veicoli ad elevate prestazioni."
+  }
+}

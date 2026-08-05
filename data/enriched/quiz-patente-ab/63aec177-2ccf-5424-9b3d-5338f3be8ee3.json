@@ -1,0 +1,32 @@
+{
+  "question_id": 4424,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22806",
+  "text": "In una carreggiata a doppio senso di circolazione per svoltare a sinistra bisogna dare la precedenza ai veicoli provenienti da destra, salvo diversa segnalazione",
+  "correct_answer": true,
+  "image": "7bdda2428f961b661219653bdcf69bf1.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. I veicoli che intendono svoltare a sinistra devono dare la precedenza ai veicoli provenienti dalla direzione opposta che proseguono dritto o svoltano a destra. I veicoli che intendono svoltare a destra devono dare la precedenza ai veicoli provenienti dalla direzione opposta che proseguono dritto o svoltano a sinistra. I veicoli che proseguono dritto devono dare la precedenza ai veicoli provenienti dalle direzioni di marcia che si immettono nella carreggiata da essi percorsa. In questo caso, il veicolo A, che svolta a destra, deve dare la precedenza al veicolo N, che prosegue dritto.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con due veicoli, identificati come 'N' e 'A'. Il veicolo 'N' si trova sulla strada orizzontale e intende proseguire dritto. Il veicolo 'A' si trova sulla strada verticale e intende svoltare a destra. Le frecce tratteggiate indicano le traiettorie previste dai veicoli. Non sono presenti segnali stradali che regolano la precedenza. L'incrocio è rappresentato con quattro bracci uguali. La geometria dell'incrocio e la posizione dei veicoli suggeriscono l'applicazione della regola generale di precedenza.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "I veicoli che intendono svoltare a sinistra devono dare la precedenza ai veicoli provenienti dalla direzione opposta che proseguono dritto o svoltano a destra. I veicoli che intendono svoltare a destra devono dare la precedenza ai veicoli provenienti dalla direzione opposta che proseguono dritto o svoltano a sinistra. I veicoli che proseguono dritto devono dare la precedenza ai veicoli provenienti dalle direzioni di marcia che si immettono nella carreggiata da essi percorsa. In questo caso, il veicolo A, che svolta a destra, deve dare la precedenza al veicolo N, che prosegue dritto."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza a destra",
+      "Svolta a sinistra in carreggiata a doppio senso"
+    ],
+    "exact_keywords": [
+      "svoltare a sinistra",
+      "doppio senso di circolazione",
+      "dare la precedenza",
+      "provenienti da destra",
+      "salvo diversa segnalazione"
+    ],
+    "vector_search_queries": [
+      "precedenza svolta a sinistra doppio senso di circolazione",
+      "regola generale di precedenza a destra in incrocio"
+    ],
+    "rule_explanation": "Nelle immissioni da strade laterali o in svolta a sinistra in carreggiata a doppio senso, si deve dare la precedenza ai veicoli provenienti da destra, a meno che non vi sia un segnale specifico che regoli diversamente."
+  }
+}

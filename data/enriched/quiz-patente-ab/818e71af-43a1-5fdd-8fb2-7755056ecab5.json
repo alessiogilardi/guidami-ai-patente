@@ -1,0 +1,27 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24768",
+  "text": "Dopo un incidente stradale è obbligatorio coprire il veicolo con un telo di plastica",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi in caso di incidente stradale",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "soccorso stradale",
+      "altrui danno",
+      "segnalazione incidenti"
+    ],
+    "vector_search_queries": [
+      "obblighi dei conducenti dopo un incidente stradale",
+      "comportamento da tenere in caso di sinistro stradale"
+    ],
+    "rule_explanation": "In caso di incidente, i conducenti devono fermarsi, prestare soccorso se necessario, segnalare l'incidente alle autorità competenti e non alterare lo stato dei luoghi se non per motivi di sicurezza. Non è previsto l'obbligo di coprire il veicolo con un telo."
+  }
+}

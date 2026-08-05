@@ -1,0 +1,32 @@
+{
+  "question_id": 4116,
+  "topic": "Segnali di divieto",
+  "number": "19657",
+  "text": "Il segnale raffigurato consente il transito agli autoveicoli",
+  "correct_answer": true,
+  "image": "7d5994527a6ccfadd7ecf69f4ac79bee.jpeg",
+  "image_description": "Segnale di divieto di transito ai pedoni. Il segnale vieta il transito ai pedoni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la figura stilizzata di un pedone di colore nero. Questo è il segnale di divieto di transito ai pedoni.",
+    "name": "Segnale di divieto di transito ai pedoni",
+    "description": "Il segnale vieta il transito ai pedoni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Segnale di divieto di transito"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "segnali di prescrizione",
+      "divieto specifico",
+      "autoveicoli"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito con indicazione specifica",
+      "interpretazione segnale divieto di transito pedoni",
+      "divieto di transito autoveicoli"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito vieta il passaggio a tutti i veicoli, salvo diversa indicazione specifica. Se il segnale raffigura un pedone, vieta il transito ai soli pedoni."
+  }
+}

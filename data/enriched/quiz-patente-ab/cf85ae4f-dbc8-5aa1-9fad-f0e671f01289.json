@@ -1,0 +1,27 @@
+{
+  "question_id": 4046,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18803",
+  "text": "Quando vi sono bambini fermi al semaforo bisogna usare prudenza, perché può accadere che si spingano a vicenda, finendo sulla carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Regolazione della velocità e prudenza in prossimità di aree sensibili"
+    ],
+    "exact_keywords": [
+      "bambini",
+      "prudenza",
+      "carreggiata",
+      "pedoni"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza in presenza di bambini in prossimità della carreggiata",
+      "comportamento del conducente in presenza di pedoni, specialmente bambini, in aree urbane"
+    ],
+    "rule_explanation": "Il conducente deve prestare particolare prudenza in prossimità di bambini, poiché potrebbero improvvisamente invadere la carreggiata, anche in prossimità di semafori."
+  }
+}

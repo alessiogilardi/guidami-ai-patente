@@ -1,0 +1,28 @@
+{
+  "question_id": 4612,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24531",
+  "text": "La patente di categoria B1 abilita a condurre i quadricicli non leggeri con manubrio (Quad)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida categoria B1",
+      "Veicoli conducibili con patente B1",
+      "Quadricicli non leggeri"
+    ],
+    "exact_keywords": [
+      "patente di categoria B1",
+      "quadricicli non leggeri",
+      "manubrio",
+      "Quad"
+    ],
+    "vector_search_queries": [
+      "veicoli conducibili con patente B1",
+      "requisiti patente B1 per quadricicli con manubrio"
+    ],
+    "rule_explanation": "La patente di categoria B1 abilita alla conduzione dei quadricicli non leggeri, purché dotati di manubrio (Quad)."
+  }
+}

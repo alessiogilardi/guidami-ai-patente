@@ -1,0 +1,27 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22511",
+  "text": "Nel caso in cui un veicolo rimanga fermo tra le barriere chiuse del passaggio a livello occorre allontanarsi di almeno cento metri il prima possibile",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento ai passaggi a livello",
+      "Pericolo e intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "barriere chiuse",
+      "veicolo fermo",
+      "allontanarsi"
+    ],
+    "vector_search_queries": [
+      "comportamento veicolo fermo passaggio a livello con barriere chiuse",
+      "segnalazione veicolo bloccato tra le barriere di un passaggio a livello"
+    ],
+    "rule_explanation": "In caso di veicolo fermo tra le barriere chiuse di un passaggio a livello, non è necessario allontanarsi di 100 metri, ma occorre segnalare immediatamente la situazione al gestore dell'impianto."
+  }
+}

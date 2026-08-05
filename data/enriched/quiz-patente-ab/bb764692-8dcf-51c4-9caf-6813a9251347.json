@@ -1,0 +1,33 @@
+{
+  "question_id": 4368,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22218",
+  "text": "Il pannello integrativo raffigurato indica la presenza di officine attrezzate per il soccorso stradale",
+  "correct_answer": false,
+  "image": "53f94e0cb22dad42d625b1ea9596dd83.jpeg",
+  "image_description": "Pannello integrativo - Rimozione forzata. Il pannello integrativo indica che i veicoli in sosta possono essere rimossi forzatamente (es. con carro attrezzi).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare con bordo nero su sfondo bianco. Al suo interno, in nero, è raffigurato un carro attrezzi che solleva la parte posteriore di un'automobile. Questo pittogramma è comunemente associato al divieto di sosta con rimozione forzata del veicolo.",
+    "name": "Pannello integrativo - Rimozione forzata",
+    "description": "Il pannello integrativo indica che i veicoli in sosta possono essere rimossi forzatamente (es. con carro attrezzi)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Pannelli integrativi",
+      "Rimozione forzata dei veicoli"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "rimozione forzata",
+      "soccorso stradale",
+      "officina"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo rimozione forzata veicoli",
+      "differenza tra pannello rimozione forzata e pannello officina soccorso stradale",
+      "segnaletica indicante rimozione forzata con carro attrezzi"
+    ],
+    "rule_explanation": "Il pannello integrativo di rimozione forzata indica la possibilità di rimozione del veicolo, non la presenza di officine per il soccorso stradale."
+  }
+}

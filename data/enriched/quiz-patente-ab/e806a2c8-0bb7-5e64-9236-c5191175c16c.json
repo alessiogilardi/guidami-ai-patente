@@ -1,0 +1,27 @@
+{
+  "question_id": 4034,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18678",
+  "text": "Bisogna lasciare liberi i sottovia in caso di traffico intenso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di non intralciare la circolazione",
+      "Doveri dei conducenti in caso di traffico intenso"
+    ],
+    "exact_keywords": [
+      "sottovia",
+      "traffico intenso",
+      "liberare la carreggiata",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "divieto di occupare sottovia in caso di traffico intenso",
+      "obbligo di mantenere libere le intersezioni stradali"
+    ],
+    "rule_explanation": "I conducenti non devono impegnare i sottovia se non possono liberarli celermente, per non creare intralcio alla circolazione, specialmente in caso di traffico intenso."
+  }
+}

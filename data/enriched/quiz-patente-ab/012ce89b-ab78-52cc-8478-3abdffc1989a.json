@@ -1,0 +1,29 @@
+{
+  "question_id": 4399,
+  "topic": "Distanza di sicurezza",
+  "number": "22593",
+  "text": "La distrazione del conducente non rappresenta un pericolo se si limita a pochi secondi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Pericolo per la circolazione",
+      "Distrazione del conducente"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "pericolo per la circolazione",
+      "distrazione del conducente",
+      "condizioni di marcia"
+    ],
+    "vector_search_queries": [
+      "pericolo derivante dalla distrazione del conducente",
+      "obbligo di mantenere la distanza di sicurezza anche in caso di brevi distrazioni",
+      "conseguenze della distrazione sulla sicurezza stradale"
+    ],
+    "rule_explanation": "La distrazione del conducente, anche se breve, può compromettere la capacità di mantenere la distanza di sicurezza e la prontezza di reazione, costituendo un pericolo per la circolazione."
+  }
+}

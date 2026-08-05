@@ -1,0 +1,28 @@
+{
+  "question_id": 4527,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23780",
+  "text": "La sosta negli spazi riservati allo stazionamento e alla fermata di autobus, filobus e veicoli circolanti su rotaia comporta, tra l'altro, la sottrazione di punti dalla patente.",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Sanzioni amministrative pecuniarie e accessorie"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "spazi riservati",
+      "autobus",
+      "fermata",
+      "sottrazione di punti"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in aree riservate a mezzi pubblici di trasporto",
+      "sanzioni per sosta in spazi destinati a fermata di autobus o veicoli su rotaia"
+    ],
+    "rule_explanation": "La sosta negli spazi riservati a fermata o stazionamento di autobus, filobus o veicoli su rotaia è vietata e comporta sanzioni, inclusa la sottrazione di punti dalla patente."
+  }
+}

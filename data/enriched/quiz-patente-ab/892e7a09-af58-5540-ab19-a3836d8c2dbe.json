@@ -1,0 +1,32 @@
+{
+  "question_id": 4309,
+  "topic": "Segnali di indicazione",
+  "number": "21639",
+  "text": "Il segnale raffigurato consente il transito agli autobus",
+  "correct_answer": true,
+  "image": "1ef915902f19c17ff26aaa2bff80ae9b.jpeg",
+  "image_description": "Parcheggio per autovetture. Il segnale indica un parcheggio riservato alle autovetture.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è raffigurata, in bianco, la sagoma stilizzata di un'autovettura vista frontalmente. Si tratta di un segnale di indicazione.",
+    "name": "Parcheggio per autovetture",
+    "description": "Il segnale indica un parcheggio riservato alle autovetture."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di prescrizione",
+      "Parcheggio riservato"
+    ],
+    "exact_keywords": [
+      "segnale raffigurato",
+      "parcheggio per autovetture",
+      "transito vietato",
+      "riservato"
+    ],
+    "vector_search_queries": [
+      "segnaletica stradale parcheggio autovetture vietato autobus",
+      "interpretazione segnale parcheggio riservato autovetture"
+    ],
+    "rule_explanation": "Il segnale di parcheggio per autovetture indica una sosta consentita solo a tali veicoli, escludendo gli autobus."
+  }
+}

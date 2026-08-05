@@ -1,0 +1,28 @@
+{
+  "question_id": 4502,
+  "topic": "Norme sul sorpasso",
+  "number": "23557",
+  "text": "Il sorpasso in prossimità di un dosso è consentito sulle carreggiate a senso unico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso",
+      "Visibilità e sicurezza",
+      "Carreggiate a senso unico"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "dosso",
+      "carreggiata a senso unico",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "sorpasso in prossimità di dossi su carreggiate a senso unico",
+      "condizioni di visibilità per il sorpasso in presenza di dossi"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in prossimità di dossi e curve quando la visibilità è limitata, ma è consentito sulle carreggiate a senso unico se la visibilità è garantita."
+  }
+}

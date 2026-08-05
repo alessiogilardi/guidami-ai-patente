@@ -1,0 +1,28 @@
+{
+  "question_id": 4707,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25342",
+  "text": "Le sospensioni di un veicolo a motore servono a smorzare gli urti trasmessi dalle asperità del terreno",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzione delle sospensioni veicolo",
+      "Manutenzione e sicurezza del veicolo"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "veicolo a motore",
+      "smorzare gli urti",
+      "asperità del terreno"
+    ],
+    "vector_search_queries": [
+      "funzione delle sospensioni nel veicolo a motore",
+      "ruolo delle sospensioni nel filtrare le asperità del terreno",
+      "impatto delle sospensioni sulla tenuta di strada"
+    ],
+    "rule_explanation": "Le sospensioni di un veicolo hanno la funzione primaria di assorbire e smorzare gli impatti derivanti dalle irregolarità del fondo stradale, garantendo stabilità e comfort."
+  }
+}

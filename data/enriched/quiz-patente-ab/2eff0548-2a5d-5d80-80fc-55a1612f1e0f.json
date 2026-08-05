@@ -1,0 +1,31 @@
+{
+  "question_id": 4235,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20921",
+  "text": "L'iscrizione in figura indica la velocità consigliata",
+  "correct_answer": true,
+  "image": "235cb5fa6b810a31b0a08d6123a60c43.jpeg",
+  "image_description": "Indicazione di limite di velocità (50 km/h). L'iscrizione indica la velocità massima consentita in quel tratto di strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale rettangolare grigio con il numero \"50\" in bianco al centro. Questo è un segnale di prescrizione che indica un limite di velocità. Non ci sono altri segnali o elementi della scena di guida visibili.",
+    "name": "Indicazione di limite di velocità (50 km/h)",
+    "description": "L'iscrizione indica la velocità massima consentita in quel tratto di strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Limiti di velocità"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "velocità consigliata",
+      "limite di velocità",
+      "segni sugli ostacoli"
+    ],
+    "vector_search_queries": [
+      "indicazione di velocità su ostacoli stradali",
+      "differenza tra velocità consigliata e limite di velocità imposto dalla segnaletica"
+    ],
+    "rule_explanation": "L'iscrizione su un ostacolo, se presente, indica la velocità massima consentita in quel tratto di strada, non quella consigliata."
+  }
+}

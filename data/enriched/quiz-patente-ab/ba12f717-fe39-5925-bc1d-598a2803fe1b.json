@@ -1,0 +1,27 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22506",
+  "text": "I passaggi a livello vanno affrontati a velocità molto elevata per evitare di rimanere bloccati sulla linea ferroviaria",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di condotta ai passaggi a livello",
+      "Sicurezza stradale e ferroviaria"
+    ],
+    "exact_keywords": [
+      "passaggi a livello",
+      "velocità ridotta",
+      "pericolo",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "condotta da tenere ai passaggi a livello",
+      "velocità ai passaggi a livello per evitare pericolo"
+    ],
+    "rule_explanation": "Ai passaggi a livello è imposto di ridurre la velocità per evitare di creare pericolo o intralcio alla circolazione ferroviaria e stradale."
+  }
+}

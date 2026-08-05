@@ -1,0 +1,31 @@
+{
+  "question_id": 4054,
+  "topic": "Segnali di pericolo",
+  "number": "18893",
+  "text": "In presenza del segnale raffigurato è vietata l'inversione di marcia",
+  "correct_answer": true,
+  "image": "77a40e39cc4b726c3f05d1759479cd9e.jpeg",
+  "image_description": "Segnale di dosso. Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un pannello a forma di triangolo con bordo rosso e sfondo bianco. Al centro del pannello è raffigurato un pittogramma nero che rappresenta un dosso.",
+    "name": "Segnale di dosso",
+    "description": "Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Divieto di inversione di marcia"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "dosso",
+      "inversione di marcia",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "divieto di inversione di marcia in presenza di segnali di pericolo",
+      "interpretazione segnale di dosso e manovre vietate"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'dosso' impone di moderare la velocità ma non vieta l'inversione di marcia. L'inversione è vietata da altri segnali specifici."
+  }
+}

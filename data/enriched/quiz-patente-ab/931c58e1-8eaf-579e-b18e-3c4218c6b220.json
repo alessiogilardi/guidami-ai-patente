@@ -1,0 +1,27 @@
+{
+  "question_id": 4649,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24906",
+  "text": "Se un ferito della strada è in stato di incoscienza, bisogna verificare se respira ancora, mettendo una mano sulla parte laterale bassa del torace o sull'addome",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di incidente stradale",
+      "Valutazione dello stato di coscienza e respirazione del ferito"
+    ],
+    "exact_keywords": [
+      "stato di incoscienza",
+      "verificare la respirazione",
+      "mano sul torace",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "valutazione respiro ferito incosciente primo soccorso",
+      "tecnica per verificare la respirazione in assenza di coscienza"
+    ],
+    "rule_explanation": "In caso di incoscienza del ferito, è fondamentale verificare la presenza di respiro appoggiando una mano sul torace o sull'addome per valutarne il movimento."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23466",
+  "text": "Il conducente che intende sorpassare deve accertarsi che nessun segnale verticale vieti la manovra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di accertamento prima del sorpasso",
+      "Divieto di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "segnale verticale",
+      "manovra",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "accertamento divieto di sorpasso segnali verticali",
+      "norme per il sorpasso divieto segnali stradali"
+    ],
+    "rule_explanation": "Prima di effettuare un sorpasso, il conducente ha l'obbligo di verificare l'assenza di segnali verticali che vietino tale manovra."
+  }
+}

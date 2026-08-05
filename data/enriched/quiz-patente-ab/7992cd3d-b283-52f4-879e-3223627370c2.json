@@ -1,0 +1,29 @@
+{
+  "question_id": 4647,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24897",
+  "text": "Lo stato di shock si manifesta con ampie macchie scure sulla pelle",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di shock",
+      "Pronto soccorso",
+      "Sintomatologia medica"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "sintomi",
+      "pallore",
+      "cute fredda",
+      "sudorazione"
+    ],
+    "vector_search_queries": [
+      "sintomi dello stato di shock in primo soccorso",
+      "manifestazioni cutanee dello shock e primo soccorso"
+    ],
+    "rule_explanation": "Lo stato di shock si manifesta con pallore, cute fredda e sudata, tachicardia e ipotensione, non con macchie scure sulla pelle."
+  }
+}

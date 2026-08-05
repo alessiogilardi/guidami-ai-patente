@@ -1,0 +1,31 @@
+{
+  "question_id": 4103,
+  "topic": "Segnali di pericolo",
+  "number": "19494",
+  "text": "Il segnale raffigurato preannuncia una strada dissestata",
+  "correct_answer": false,
+  "image": "23e99b9a1141edf7ea8cb1fe5e054ca1.jpeg",
+  "image_description": "Segnale di pericolo - Banchina pericolosa. Il segnale preannuncia un tratto di strada con banchina pericolosa o cedevole. È un segnale di pericolo che impone al conducente di moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un bordo rosso triangolare con sfondo bianco. Al centro del segnale è raffigurato un veicolo (un'automobile) la cui ruota posteriore destra sta scendendo da una banchina rialzata, finendo su un fondo irregolare composto da detriti o pietrisco. La ruota è inclinata, suggerendo un potenziale cedimento o instabilità della banchina.",
+    "name": "Segnale di pericolo - Banchina pericolosa",
+    "description": "Il segnale preannuncia un tratto di strada con banchina pericolosa o cedevole. È un segnale di pericolo che impone al conducente di moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Condizioni della strada"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "banchina pericolosa",
+      "strada dissestata",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per banchina pericolosa o cedevole",
+      "differenza tra banchina pericolosa e strada dissestata nei segnali di pericolo"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante la banchina pericolosa preannuncia un tratto di strada con banchina cedevole o in cattive condizioni, non genericamente una strada dissestata."
+  }
+}

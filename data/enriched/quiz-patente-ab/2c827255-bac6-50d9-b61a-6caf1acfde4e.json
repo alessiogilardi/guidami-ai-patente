@@ -1,0 +1,27 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22313",
+  "text": "E' obbligatorio regolare la velocità sulle strade extraurbane secondarie, ma non in quelle principali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Strade extraurbane principali e secondarie"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "strade extraurbane principali",
+      "strade extraurbane secondarie",
+      "obbligo"
+    ],
+    "vector_search_queries": [
+      "obbligo di regolare la velocità su tutte le strade",
+      "differenza obblighi velocità strade principali e secondarie"
+    ],
+    "rule_explanation": "Il conducente deve sempre regolare la velocità in base alle condizioni di traffico, della strada e del veicolo, indipendentemente dalla classificazione della strada."
+  }
+}

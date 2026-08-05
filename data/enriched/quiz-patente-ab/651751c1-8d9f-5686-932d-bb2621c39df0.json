@@ -1,0 +1,30 @@
+{
+  "question_id": 4646,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24887",
+  "text": "Se ad un infortunato della strada è entrato un corpo estraneo in un occhio, bisogna cercare sempre e comunque di toglierglielo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso oculare",
+      "Gestione corpi estranei nell'occhio",
+      "Sicurezza nelle operazioni di primo soccorso"
+    ],
+    "exact_keywords": [
+      "corpo estraneo",
+      "occhio",
+      "rimozione",
+      "infortunato",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "rimozione corpo estraneo occhio primo soccorso",
+      "gestione emergenza corpo estraneo oculare",
+      "primo soccorso occhio infortunato corpo estraneo"
+    ],
+    "rule_explanation": "In presenza di un corpo estraneo nell'occhio di un infortunato, la rimozione è consentita solo se non vi è penetrazione o perforazione della cornea e se l'oggetto non è saldato. In caso contrario, è necessario un intervento medico specializzato."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4507,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23615",
+  "text": "Per parcheggiare in una zona regolamentata mediante disco orario, bisogna esporre in modo ben visibile l'orario di arrivo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Parcheggio in aree regolamentate",
+      "Esposizione disco orario"
+    ],
+    "exact_keywords": [
+      "disco orario",
+      "orario di arrivo",
+      "esposizione",
+      "parcheggio"
+    ],
+    "vector_search_queries": [
+      "obbligo esposizione disco orario parcheggio",
+      "regolamentazione sosta disco orario"
+    ],
+    "rule_explanation": "Nelle aree soggette a disco orario, è obbligatorio esporre in modo ben visibile l'orario di arrivo per rispettare i limiti di sosta imposti."
+  }
+}

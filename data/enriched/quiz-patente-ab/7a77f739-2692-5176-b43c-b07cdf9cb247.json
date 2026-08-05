@@ -1,0 +1,27 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24655",
+  "text": "Il superamento dei limiti di velocità di oltre 10 km/h durante la guida comporta una perdita di punti sulla patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Decurtazione punti patente",
+      "Violazione limiti di velocità"
+    ],
+    "exact_keywords": [
+      "limiti di velocità",
+      "superamento",
+      "decurtazione punti",
+      "patente di guida"
+    ],
+    "vector_search_queries": [
+      "punti patente decurtati per superamento limiti velocità",
+      "sanzioni per eccesso di velocità e perdita punti patente"
+    ],
+    "rule_explanation": "Il superamento dei limiti di velocità comporta una decurtazione di punti dalla patente, variabile in base all'entità della violazione."
+  }
+}

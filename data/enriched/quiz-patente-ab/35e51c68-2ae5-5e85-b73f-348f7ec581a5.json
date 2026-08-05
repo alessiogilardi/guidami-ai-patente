@@ -1,0 +1,29 @@
+{
+  "question_id": 4017,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18503",
+  "text": "La corsia di accelerazione serve per uscire da una piazzola di sosta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Corsia di accelerazione",
+      "Piazzola di sosta",
+      "Manovre di immissione e uscita dalla carreggiata"
+    ],
+    "exact_keywords": [
+      "corsia di accelerazione",
+      "piazzola di sosta",
+      "immissione nella corrente di traffico",
+      "uscita dalla carreggiata"
+    ],
+    "vector_search_queries": [
+      "funzione della corsia di accelerazione per l'immissione nel flusso veicolare",
+      "differenza tra corsia di accelerazione e piazzola di sosta",
+      "manovre consentite nelle piazzole di sosta e nelle corsie di accelerazione"
+    ],
+    "rule_explanation": "La corsia di accelerazione serve per immettersi nella corrente di traffico, non per uscire da una piazzola di sosta. Le piazzole di sosta sono aree di sosta fuori dalla carreggiata."
+  }
+}

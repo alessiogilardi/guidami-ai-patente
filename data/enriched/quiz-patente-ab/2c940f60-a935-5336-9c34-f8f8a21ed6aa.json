@@ -1,0 +1,33 @@
+{
+  "question_id": 4104,
+  "topic": "Segnali di pericolo",
+  "number": "19506",
+  "text": "Il segnale raffigurato può avere il disco rosso sostituito da una luce rossa lampeggiante",
+  "correct_answer": false,
+  "image": "c4f549e09b93507609720c28ca762b12.jpeg",
+  "image_description": "Segnale di pericolo: impianto semaforico. Il segnale preannuncia la presenza di un impianto semaforico. Le luci sono disposte in verticale: rosso, giallo, verde.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo sono raffigurati tre cerchi disposti orizzontalmente, che rappresentano le luci di un semaforo: rosso a sinistra, giallo al centro e verde a destra.",
+    "name": "Segnale di pericolo: impianto semaforico",
+    "description": "Il segnale preannuncia la presenza di un impianto semaforico. Le luci sono disposte in verticale: rosso, giallo, verde."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Impianti semaforici",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "impianto semaforico",
+      "luce rossa",
+      "disco rosso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo raffiguranti impianti semaforici",
+      "differenza tra segnali di pericolo e segnali di prescrizione semaforici",
+      "uso della luce rossa lampeggiante nei segnali stradali"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano un impianto semaforico e non possono essere sostituiti da una luce rossa lampeggiante, che è un segnale di prescrizione."
+  }
+}

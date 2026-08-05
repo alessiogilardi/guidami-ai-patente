@@ -1,0 +1,27 @@
+{
+  "question_id": 4395,
+  "topic": "Distanza di sicurezza",
+  "number": "22557",
+  "text": "La distanza di sicurezza va rispettata per non tamponare il veicolo che ci precede",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Obbligo di mantenere la distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo che precede",
+      "tamponamento",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "mantenimento della distanza di sicurezza dal veicolo che precede",
+      "conseguenze del mancato rispetto della distanza di sicurezza"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere mantenuta per evitare collisioni con il veicolo che precede, garantendo una marcia sicura e fluida."
+  }
+}

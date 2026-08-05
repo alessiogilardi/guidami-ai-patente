@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23494",
+  "text": "Il sorpasso è vietato in prossimità delle curve su strade a due corsie a doppio senso di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Condizioni di visibilità ridotta",
+      "Sorpasso in curva"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "curve",
+      "strade a due corsie",
+      "doppio senso di marcia"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in curva su strade a doppio senso",
+      "sorpasso vietato in prossimità di curve su strade a due corsie con doppio senso di marcia"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in prossimità delle curve su strade a due corsie con doppio senso di marcia per garantire la sicurezza."
+  }
+}

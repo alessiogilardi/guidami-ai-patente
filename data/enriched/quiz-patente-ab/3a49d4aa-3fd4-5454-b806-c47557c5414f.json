@@ -1,0 +1,34 @@
+{
+  "question_id": 4424,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22808",
+  "text": "In una carreggiata a doppio senso di circolazione per svoltare a sinistra bisogna effettuare la manovra velocemente, per evitare i veicoli provenienti da destra e da sinistra",
+  "correct_answer": false,
+  "image": "8cb18c0726c08e5c24f0cde7f8628fcb.jpeg",
+  "image_description": "Incrocio a raso con veicoli in svolta a sinistra. I veicoli A e G si trovano in un incrocio a raso. Il veicolo A, proveniente da sinistra, intende svoltare a sinistra. Il veicolo G, proveniente da destra, intende svoltare a sinistra. Entrambi i veicoli devono percorrere il centro dell'incrocio per effettuare la manovra. La precedenza è regolata dalla norma generale di dare la precedenza a destra, ma in questo caso specifico, poiché entrambi i veicoli intendono svoltare a sinistra e si incrociano, devono percorrere il centro dell'incrocio mantenendo la destra degli altri veicoli che incrociano.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso visto dall'alto. Sono presenti due veicoli, identificati come A (nero) e G (rosso). Il veicolo A si trova sulla corsia di sinistra di una strada che si immette nell'incrocio dall'alto e intende svoltare a sinistra, come indicato dalla freccia tratteggiata che descrive la sua traiettoria. Il veicolo G si trova sulla corsia di destra di una strada che si immette nell'incrocio da destra e intende anch'esso svoltare a sinistra, come indicato dalla freccia tratteggiata. Entrambi i veicoli devono passare attorno al centro dell'incrocio (indicato da un punto bianco) per completare la manovra di svolta a sinistra. Non sono presenti segnali stradali verticali o orizzontali che regolino la precedenza in modo specifico, pertanto si applica la regola generale della precedenza. Tuttavia, la geometria dell'incrocio e le traiettorie indicate suggeriscono che i veicoli si incroceranno al centro.",
+    "name": "Incrocio a raso con veicoli in svolta a sinistra",
+    "description": "I veicoli A e G si trovano in un incrocio a raso. Il veicolo A, proveniente da sinistra, intende svoltare a sinistra. Il veicolo G, proveniente da destra, intende svoltare a sinistra. Entrambi i veicoli devono percorrere il centro dell'incrocio per effettuare la manovra. La precedenza è regolata dalla norma generale di dare la precedenza a destra, ma in questo caso specifico, poiché entrambi i veicoli intendono svoltare a sinistra e si incrociano, devono percorrere il centro dell'incrocio mantenendo la destra degli altri veicoli che incrociano."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Svolta a sinistra in incrocio",
+      "Regole di precedenza in manovra",
+      "Comportamento prudente alla guida"
+    ],
+    "exact_keywords": [
+      "svolta a sinistra",
+      "incrocio",
+      "dare la precedenza",
+      "centro dell'incrocio",
+      "mantenere la destra"
+    ],
+    "vector_search_queries": [
+      "precedenza nella svolta a sinistra in incrocio",
+      "comportamento corretto per svoltare a sinistra in carreggiata a doppio senso",
+      "regole di precedenza tra veicoli che svoltano a sinistra nello stesso incrocio"
+    ],
+    "rule_explanation": "Per svoltare a sinistra in un incrocio, bisogna dare la precedenza ai veicoli provenienti da destra e percorrere il centro dell'incrocio mantenendo la destra degli altri veicoli che incrociano, senza fretta."
+  }
+}

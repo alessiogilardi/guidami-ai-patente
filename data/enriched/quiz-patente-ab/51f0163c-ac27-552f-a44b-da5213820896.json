@@ -1,0 +1,31 @@
+{
+  "question_id": 4426,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22828",
+  "text": "Su strada a doppio senso di marcia con due corsie, come in figura, i veicoli che percorrono il tratto in salita di un dosso devono tenersi il più possibile vicino al margine destro della carreggiata",
+  "correct_answer": true,
+  "image": "5da3cff18ce435b8fffe68a9ec241495.jpeg",
+  "image_description": "Segnaletica orizzontale di corsia. La linea di corsia tratteggiata indica la possibilità di superamento o cambio di corsia. La linea continua, invece, indica il divieto di superamento o cambio di corsia. In questo caso, la linea di corsia è tratteggiata nella parte centrale e continua ai lati, indicando che il cambio di corsia è consentito solo nel tratto centrale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una carreggiata stradale con segnaletica orizzontale. Sono presenti due linee bianche continue ai bordi esterni della carreggiata, che delimitano la corsia di marcia. All'interno della carreggiata, la linea di corsia è inizialmente tratteggiata, poi diventa una serie di tratti discontinui più corti e ravvicinati, per poi tornare ad essere tratteggiata e infine continua verso destra. La parte centrale della segnaletica orizzontale presenta una doppia linea tratteggiata, che indica la possibilità di superamento o cambio di corsia. Le linee continue ai lati indicano il divieto di superamento o cambio di corsia.",
+    "name": "Segnaletica orizzontale di corsia",
+    "description": "La linea di corsia tratteggiata indica la possibilità di superamento o cambio di corsia. La linea continua, invece, indica il divieto di superamento o cambio di corsia. In questo caso, la linea di corsia è tratteggiata nella parte centrale e continua ai lati, indicando che il cambio di corsia è consentito solo nel tratto centrale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento dei veicoli sulla carreggiata",
+      "Guida in prossimità di dossi"
+    ],
+    "exact_keywords": [
+      "margine destro",
+      "dosso",
+      "strada a doppio senso di marcia",
+      "corsia di marcia"
+    ],
+    "vector_search_queries": [
+      "posizionamento veicoli in salita su dosso",
+      "obbligo di tenersi al margine destro su dossi stradali"
+    ],
+    "rule_explanation": "Nei tratti in salita di un dosso, i veicoli devono tenersi il più vicino possibile al margine destro della carreggiata per garantire la visibilità e la sicurezza."
+  }
+}

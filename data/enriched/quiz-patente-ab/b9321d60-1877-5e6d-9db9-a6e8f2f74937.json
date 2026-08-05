@@ -1,0 +1,28 @@
+{
+  "question_id": 4602,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24428",
+  "text": "Gli stivali ad uso motociclistico sono omologati secondo norme internazionali",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Equipaggiamento protettivo per motociclisti",
+      "Omologazione dei dispositivi di sicurezza"
+    ],
+    "exact_keywords": [
+      "stivali ad uso motociclistico",
+      "omologati",
+      "norme internazionali",
+      "dispositivi di protezione individuale"
+    ],
+    "vector_search_queries": [
+      "requisiti di omologazione per calzature motociclistiche",
+      "normative internazionali per dispositivi di protezione individuale dei motociclisti",
+      "omologazione stivali da moto"
+    ],
+    "rule_explanation": "Gli stivali destinati all'uso motociclistico devono essere conformi a norme tecniche specifiche, spesso internazionali, per garantire un adeguato livello di protezione al conducente."
+  }
+}

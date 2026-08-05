@@ -1,0 +1,28 @@
+{
+  "question_id": 4502,
+  "topic": "Norme sul sorpasso",
+  "number": "23558",
+  "text": "Il sorpasso in prossimità di un dosso è consentito sulle strade a due corsie per senso di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso in condizioni di scarsa visibilità",
+      "Regole di circolazione in prossimità di dossi"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "dosso",
+      "visibilità limitata",
+      "strade a due corsie per senso di marcia"
+    ],
+    "vector_search_queries": [
+      "sorpasso vietato in prossimità di dossi",
+      "condizioni di visibilità limitata per il sorpasso",
+      "sorpasso su strade a due corsie per senso di marcia"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in prossimità di dossi o in condizioni di limitata visibilità, salvo che su strade a due corsie per senso di marcia dove la manovra sia possibile senza pericolo."
+  }
+}

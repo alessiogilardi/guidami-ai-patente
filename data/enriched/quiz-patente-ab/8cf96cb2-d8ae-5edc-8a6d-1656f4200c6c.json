@@ -1,0 +1,32 @@
+{
+  "question_id": 4345,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21973",
+  "text": "Il delineatore raffigurato è installato ad un incrocio a forma di \"T\"",
+  "correct_answer": true,
+  "image": "2798bde9cff903c926ecfd6da1c46c9e.jpeg",
+  "image_description": "Delineatore di pericolo (deviazione). Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore di pericolo di forma rettangolare, con bande diagonali bianche e nere alternate. Al centro è presente un rombo bianco. Il delineatore è montato su due supporti verticali. Le frecce bianche su sfondo nero indicano la direzione della deviazione, che può essere a destra o a sinistra.",
+    "name": "Delineatore di pericolo (deviazione)",
+    "description": "Il segnale indica una deviazione che impone di svoltare a destra o a sinistra. Le frecce indicano la direzione da seguire."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di pericolo",
+      "Segnaletica temporanea e di cantiere"
+    ],
+    "exact_keywords": [
+      "delineatore di pericolo",
+      "incrocio a T",
+      "deviazione",
+      "direzione da seguire"
+    ],
+    "vector_search_queries": [
+      "funzione del delineatore di pericolo in prossimità di incroci",
+      "segnaletica di deviazione obbligatoria in incroci a T",
+      "uso dei delineatori con frecce per indicare la direzione di marcia in cantiere"
+    ],
+    "rule_explanation": "Il delineatore di pericolo, con frecce, indica una deviazione obbligatoria in corrispondenza di incroci, inclusi quelli a T, segnalando la direzione da seguire."
+  }
+}

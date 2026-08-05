@@ -1,0 +1,29 @@
+{
+  "question_id": 4613,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24553",
+  "text": "La patente di categoria B abilita a condurre le autovetture, anche se trainano rimorchi aventi massa superiore a 3.500 chilogrammi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida cat. B",
+      "Massa massima autorizzata del rimorchio",
+      "Veicoli conducibili con patente B"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "autovetture",
+      "rimorchi",
+      "massa massima autorizzata",
+      "3.500 kg"
+    ],
+    "vector_search_queries": [
+      "limiti massa rimorchio patente B",
+      "condurre autovetture con rimorchi di massa superiore a 3.500 kg con patente B"
+    ],
+    "rule_explanation": "La patente B abilita alla guida di autovetture con rimorchi leggeri (fino a 750 kg) o rimorchi di massa superiore se la massa massima autorizzata del complesso veicolare non supera i 3.500 kg."
+  }
+}

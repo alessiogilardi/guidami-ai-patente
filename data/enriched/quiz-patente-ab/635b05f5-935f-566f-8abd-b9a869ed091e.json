@@ -1,0 +1,30 @@
+{
+  "question_id": 4616,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24586",
+  "text": "La patente di guida viene immediatamente ritirata, durante la circolazione, tutte le volte che il conducente commette una violazione che comporta una decurtazione di punti dalla patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Decurtazione punti patente",
+      "Sospensione della patente",
+      "Obblighi del conducente verso le autorità"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "ritiro patente",
+      "decurtazione punti",
+      "violazione",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "sanzioni accessorie al ritiro della patente per decurtazione punti",
+      "ipotesi di ritiro immediato della patente di guida per violazioni al CdS",
+      "conseguenze della decurtazione punti patente durante la circolazione"
+    ],
+    "rule_explanation": "Il ritiro immediato della patente durante la circolazione non è una sanzione automatica per ogni violazione con decurtazione punti, ma è prevista per infrazioni specifiche o in casi di recidiva, secondo quanto stabilito dal CdS."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4032,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18648",
+  "text": "L'autovettura è un veicolo a motore con quattro ruote, destinato al trasporto di massimo nove persone, compreso il conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autovettura",
+      "Classificazione dei veicoli",
+      "Trasporto persone"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "veicolo a motore",
+      "quattro ruote",
+      "nove persone",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "definizione di autovettura codice della strada",
+      "veicolo a motore trasporto persone numero massimo"
+    ],
+    "rule_explanation": "L'autovettura è definita come veicolo a motore a quattro ruote, destinato al trasporto di un massimo di nove persone, conducente incluso."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4354,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22064",
+  "text": "Il pannello integrativo raffigurato può essere abbinato ad un segnale di divieto",
+  "correct_answer": true,
+  "image": "9176878fa4d26bd38e490c176920999a.jpeg",
+  "image_description": "Pannello integrativo: veicoli pesanti. Il pannello integrativo raffigurato indica che il segnale al quale è abbinato si applica ai veicoli pesanti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare con bordo nero su sfondo bianco. Al centro è raffigurato il pittogramma di un veicolo pesante (camion). Questo pannello è comunemente utilizzato per integrare segnali stradali, specificando che la loro prescrizione o indicazione si applica specificamente ai veicoli pesanti.",
+    "name": "Pannello integrativo: veicoli pesanti",
+    "description": "Il pannello integrativo raffigurato indica che il segnale al quale è abbinato si applica ai veicoli pesanti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pannelli integrativi",
+      "Segnaletica stradale di prescrizione",
+      "Applicazione di segnali stradali"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "segnali di divieto",
+      "veicoli pesanti",
+      "abbinato"
+    ],
+    "vector_search_queries": [
+      "abbinamento pannelli integrativi segnali di divieto",
+      "pannelli integrativi per veicoli pesanti e segnali di divieto"
+    ],
+    "rule_explanation": "I pannelli integrativi possono specificare o limitare l'applicazione dei segnali stradali, inclusi quelli di divieto, a determinate categorie di veicoli come i veicoli pesanti."
+  }
+}

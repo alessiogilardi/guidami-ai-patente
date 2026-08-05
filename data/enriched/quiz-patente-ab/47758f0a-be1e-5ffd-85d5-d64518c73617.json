@@ -1,0 +1,29 @@
+{
+  "question_id": 4638,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24837",
+  "text": "L'idoneità alla guida può essere compromessa se si fa uso di caffè amaro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato psico-fisico del conducente",
+      "Idoneità alla guida",
+      "Sostanze che alterano la capacità di guida"
+    ],
+    "exact_keywords": [
+      "idoneità alla guida",
+      "sostanze che determinano alterazione degli stati psico-fisici",
+      "capacità di reazione",
+      "condizioni di salute"
+    ],
+    "vector_search_queries": [
+      "sostanze che compromettono l'idoneità alla guida",
+      "effetti del caffè sulla capacità di guida",
+      "alterazione degli stati psico-fisici e guida"
+    ],
+    "rule_explanation": "L'idoneità alla guida è compromessa da sostanze che alterano gli stati psico-fisici, non dal caffè amaro che non rientra in tali sostanze."
+  }
+}

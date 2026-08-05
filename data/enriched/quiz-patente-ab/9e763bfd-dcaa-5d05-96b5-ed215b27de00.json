@@ -1,0 +1,29 @@
+{
+  "question_id": 4043,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18769",
+  "text": "Le persone anziane che attraversano la carreggiata sono esposte a maggiori pericoli, perché potrebbero valutare male la velocità dei veicoli che sopraggiungono",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Principio di prudenza e attenzione",
+      "Valutazione del rischio nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "attraversamento carreggiata",
+      "valutazione velocità veicoli",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "maggior rischio per anziani nell'attraversamento stradale",
+      "difficoltà di valutazione della velocità dei veicoli da parte degli anziani",
+      "doveri di attenzione verso gli utenti deboli della strada"
+    ],
+    "rule_explanation": "Le persone anziane, attraversando la carreggiata, sono più vulnerabili a causa della potenziale difficoltà nel valutare correttamente la velocità dei veicoli in arrivo, aumentando il rischio."
+  }
+}

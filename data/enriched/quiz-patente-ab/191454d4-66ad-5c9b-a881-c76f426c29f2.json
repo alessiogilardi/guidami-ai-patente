@@ -1,0 +1,32 @@
+{
+  "question_id": 4066,
+  "topic": "Segnali di pericolo",
+  "number": "19050",
+  "text": "In presenza del segnale raffigurato è consentito sostare in corrispondenza o in prossimità dei passaggi a livelli",
+  "correct_answer": false,
+  "image": "accabdc7809596ef95d9e34d4b33d06b.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere o semibarriere. Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un simbolo nero che rappresenta un passaggio a livello con barriere, costituito da due elementi verticali collegati da tre elementi orizzontali. Il segnale è isolato, non inserito in una scena di guida o in sequenza con altri segnali.",
+    "name": "Segnale di passaggio a livello con barriere o semibarriere",
+    "description": "Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Divieto di sosta e fermata in prossimità di passaggi a livello"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello",
+      "sosta",
+      "fermarsi",
+      "barriere"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata in prossimità dei passaggi a livello con barriere",
+      "obblighi del conducente in presenza del segnale di pericolo per passaggio a livello con barriere"
+    ],
+    "rule_explanation": "In presenza del segnale di pericolo di passaggio a livello con barriere è vietato sostare o fermarsi in corrispondenza o in prossimità delle stesse."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24675",
+  "text": "Circolare, in un giorno festivo, con un autocarro carico, di massa complessiva a pieno carico inferiore a 3,5 tonnellate, comporta una perdita di punti sulla patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente di veicoli a motore",
+      "Sanzioni amministrative pecuniarie e accessorie",
+      "Uso dei veicoli a motore per trasporto di cose"
+    ],
+    "exact_keywords": [
+      "autocarro carico",
+      "massa complessiva a pieno carico",
+      "sanzione amministrativa pecuniaria",
+      "sospensione della patente"
+    ],
+    "vector_search_queries": [
+      "sanzioni per circolazione con autocarro carico",
+      "decurtazione punti patente per massa complessiva veicolo",
+      "uso autocarro inferiore a 3,5 tonnellate sanzioni"
+    ],
+    "rule_explanation": "La circolazione con autocarro carico non comporta di per sé la decurtazione di punti, a meno che non sia prevista una specifica sanzione accessoria come la sospensione della patente per violazioni più gravi."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23551",
+  "text": "È vietato il sorpasso quando il veicolo che precede ha azionato l'indicatore di direzione destro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di sorpasso",
+      "Segnalazione di manovra"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "indicatore di direzione destro",
+      "veicolo che precede"
+    ],
+    "vector_search_queries": [
+      "sorpasso veicolo con indicatore di direzione destro azionato",
+      "divieto di sorpasso e segnalazione di svolta a destra"
+    ],
+    "rule_explanation": "Il divieto di sorpasso non sussiste se il veicolo che precede ha azionato l'indicatore di direzione destro, segnalando l'intenzione di svoltare o accostarsi."
+  }
+}

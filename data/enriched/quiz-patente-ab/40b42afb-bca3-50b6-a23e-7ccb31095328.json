@@ -1,0 +1,33 @@
+{
+  "question_id": 4170,
+  "topic": "Segnali di obbligo",
+  "number": "20282",
+  "text": "Il segnale raffigurato è un segnale di indicazione",
+  "correct_answer": false,
+  "image": "16c5adb5b0bfafc6c7b0777ae5eec32d.jpeg",
+  "image_description": "Segnale di circolazione rotatoria. Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo blu e sfondo blu. Al centro, tre frecce bianche a punta di freccia sono disposte in modo da formare un cerchio, indicando un movimento rotatorio in senso antiorario. Questo è il segnale di obbligo di circolazione rotatoria.",
+    "name": "Segnale di circolazione rotatoria",
+    "description": "Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di indicazione",
+      "Classificazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "segnali di indicazione",
+      "segnali stradali",
+      "circolazione in senso antiorario"
+    ],
+    "vector_search_queries": [
+      "distinzione tra segnali di obbligo e di indicazione",
+      "classificazione dei segnali stradali di obbligo e indicazione",
+      "segnali di obbligo di circolazione in senso antiorario"
+    ],
+    "rule_explanation": "I segnali di obbligo impongono un comportamento, mentre quelli di indicazione forniscono informazioni. Il segnale di rotatoria impone la circolazione in senso antiorario, configurandosi come segnale di obbligo."
+  }
+}

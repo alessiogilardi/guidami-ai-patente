@@ -1,0 +1,30 @@
+{
+  "question_id": 4129,
+  "topic": "Segnali di divieto",
+  "number": "19797",
+  "text": "Il segnale raffigurato indica la larghezza massima dei veicoli ammessi al transito",
+  "correct_answer": true,
+  "image": "fc210680f70df08dec3a4c059858f5fe.jpeg",
+  "image_description": "Segnale di larghezza massima. Il segnale indica la larghezza massima dei veicoli ammessi al transito. La larghezza massima consentita è di 2,30 metri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente la cifra '2' seguita da ',30' e dalla lettera 'm' in apice, con due frecce nere rivolte verso l'interno, una sopra il '2' e una sotto il ',30'. Questo è il segnale di larghezza massima consentita.",
+    "name": "Segnale di larghezza massima",
+    "description": "Il segnale indica la larghezza massima dei veicoli ammessi al transito. La larghezza massima consentita è di 2,30 metri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Segnali di limitazione dimensionale"
+    ],
+    "exact_keywords": [
+      "segnale di larghezza massima",
+      "veicoli ammessi al transito",
+      "limitazione dimensionale"
+    ],
+    "vector_search_queries": [
+      "segnale stradale larghezza massima veicoli",
+      "limitazione di larghezza per transito veicoli"
+    ],
+    "rule_explanation": "Il segnale di larghezza massima indica la larghezza massima dei veicoli ammessi al transito, impedendo il passaggio a quelli che eccedono tale limite."
+  }
+}

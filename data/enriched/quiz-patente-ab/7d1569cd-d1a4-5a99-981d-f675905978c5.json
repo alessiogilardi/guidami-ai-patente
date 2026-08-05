@@ -1,0 +1,27 @@
+{
+  "question_id": 4605,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24462",
+  "text": "Sulle strade pubbliche è vietato utilizzare un autoveicolo se la garanzia è scaduta di validità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione obbligatoria R.C.A.",
+      "Validità della copertura assicurativa"
+    ],
+    "exact_keywords": [
+      "garanzia scaduta",
+      "veicolo in circolazione",
+      "assicurazione obbligatoria",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "circolazione veicolo con assicurazione scaduta",
+      "conseguenze mancata copertura assicurativa obbligatoria"
+    ],
+    "rule_explanation": "La circolazione di un veicolo con garanzia assicurativa scaduta comporta l'applicazione di sanzioni amministrative pecuniarie e la decurtazione di punti dalla patente, ma non il sequestro del veicolo."
+  }
+}

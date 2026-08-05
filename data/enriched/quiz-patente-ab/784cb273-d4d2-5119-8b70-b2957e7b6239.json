@@ -1,0 +1,32 @@
+{
+  "question_id": 4347,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21997",
+  "text": "Il segnale raffigurato preavvisa un attraversamento ferroviario senza barriere",
+  "correct_answer": false,
+  "image": "3ae8e9032b1862626732488b8365520d.jpeg",
+  "image_description": "Segnale di preavviso di impianto semaforico. Il segnale preavvisa un impianto semaforico. Il disco centrale, di colore giallo, può essere a luce fissa o lampeggiante.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e fondo giallo. Al centro del triangolo è raffigurato un impianto semaforico stilizzato, con tre luci disposte verticalmente: rossa in alto, gialla al centro e verde in basso.",
+    "name": "Segnale di preavviso di impianto semaforico",
+    "description": "Il segnale preavvisa un impianto semaforico. Il disco centrale, di colore giallo, può essere a luce fissa o lampeggiante."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali stradali di pericolo",
+      "Segnali di preavviso",
+      "Segnali temporanei e di cantiere"
+    ],
+    "exact_keywords": [
+      "preavviso",
+      "impianto semaforico",
+      "segnali complementari",
+      "segnali temporanei"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di impianto semaforico",
+      "differenza tra segnale di semaforo e segnale di passaggio a livello"
+    ],
+    "rule_explanation": "Il segnale di preavviso di impianto semaforico non preavvisa un attraversamento ferroviario senza barriere, ma la presenza di un semaforo."
+  }
+}

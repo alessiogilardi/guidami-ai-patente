@@ -1,0 +1,30 @@
+{
+  "question_id": 4625,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24727",
+  "text": "Il fenomeno dell'aquaplaning rafforza il contatto fra pneumatici e asfalto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fenomeno dell'aquaplaning",
+      "Aderenza degli pneumatici",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "aquaplaning",
+      "pneumatici",
+      "asfalto",
+      "contatto",
+      "aderenza"
+    ],
+    "vector_search_queries": [
+      "effetti dell'aquaplaning sull'aderenza degli pneumatici",
+      "riduzione del contatto pneumatico-asfalto dovuta all'aquaplaning",
+      "conseguenze dell'aquaplaning sulla tenuta di strada"
+    ],
+    "rule_explanation": "L'aquaplaning riduce il contatto tra pneumatici e asfalto, diminuendo l'aderenza e aumentando il rischio di perdita di controllo del veicolo."
+  }
+}

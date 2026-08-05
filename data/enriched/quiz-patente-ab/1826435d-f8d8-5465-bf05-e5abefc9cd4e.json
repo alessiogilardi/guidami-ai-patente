@@ -1,0 +1,27 @@
+{
+  "question_id": 4505,
+  "topic": "Norme sul sorpasso",
+  "number": "23599",
+  "text": "Se si viene sorpassati mentre sopraggiunge un veicolo dal senso opposto, occorre spostarsi il più vicino possibile al margine destro della carreggiata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso in carreggiate a doppio senso di marcia",
+      "Posizionamento del veicolo in caso di sorpasso con traffico in senso opposto"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo dal senso opposto",
+      "margine destro",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "manovra di sorpasso con veicolo in senso opposto",
+      "posizionamento del veicolo durante sorpasso con traffico in arrivo"
+    ],
+    "rule_explanation": "In caso di sorpasso con un veicolo in arrivo dal senso opposto, il conducente che viene sorpassato deve tenersi il più vicino possibile al margine destro della carreggiata."
+  }
+}

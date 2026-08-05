@@ -1,0 +1,28 @@
+{
+  "question_id": 4507,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23616",
+  "text": "In una zona in cui la sosta è regolamentata con parchimetro, non occorre utilizzarlo se ci si ferma soltanto per far salire o scendere un passeggero",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta a pagamento",
+      "Fermata",
+      "Eccezioni alla sosta a pagamento"
+    ],
+    "exact_keywords": [
+      "sosta regolamentata",
+      "parchimetro",
+      "fermata",
+      "salita e discesa passeggeri"
+    ],
+    "vector_search_queries": [
+      "sosta regolamentata da parchimetro e fermata per salita/discesa passeggeri",
+      "eccezioni al pagamento del parcheggio per fermata"
+    ],
+    "rule_explanation": "Nelle zone con sosta regolamentata da parchimetro, non è necessario pagarla se la sosta è limitata alla salita o discesa di passeggeri, configurandosi come fermata."
+  }
+}

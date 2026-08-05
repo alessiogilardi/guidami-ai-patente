@@ -1,0 +1,33 @@
+{
+  "question_id": 4214,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20752",
+  "text": "Le frecce direzionali in figura ci consentono di cambiare corsia se le strisce sono continue",
+  "correct_answer": false,
+  "image": "2b001af183efcff01e22099f95f0c5d9.jpeg",
+  "image_description": "Frecce direzionali sulla pavimentazione. Le frecce direzionali sulla pavimentazione indicano le direzioni consentite per ciascuna corsia. La corsia più a sinistra permette di andare solo dritto. Le due corsie centrali permettono di andare dritto. La corsia più a destra permette di andare dritto o svoltare a destra. Le frecce sono bianche e si trovano all'interno delle corsie, prima di un incrocio o di una deviazione. Le frecce direzionali indicano le direzioni permesse.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una carreggiata con più corsie, vista dall'alto. Sulla carreggiata sono presenti delle frecce bianche disegnate sull'asfalto, che indicano le direzioni consentite per ciascuna corsia. Ci sono quattro corsie visibili. La corsia più a sinistra presenta una freccia che indica solo la direzione dritta. Le due corsie centrali presentano frecce che indicano solo la direzione dritta. La corsia più a destra presenta una freccia che indica sia la direzione dritta sia la direzione destra. Le frecce sono disposte in modo sequenziale lungo la corsia, suggerendo un avvicinamento a un incrocio o a una deviazione. Le linee di corsia sono tratteggiate, indicando la possibilità di cambiare corsia. A sinistra della carreggiata principale, si vede una corsia con linee tratteggiate che indica una possibile svolta a sinistra, ma questa corsia non ha frecce direzionali sulla pavimentazione. La strada sembra essere un'area urbana o extraurbana con più corsie di marcia.",
+    "name": "Frecce direzionali sulla pavimentazione",
+    "description": "Le frecce direzionali sulla pavimentazione indicano le direzioni consentite per ciascuna corsia. La corsia più a sinistra permette di andare solo dritto. Le due corsie centrali permettono di andare dritto. La corsia più a destra permette di andare dritto o svoltare a destra. Le frecce sono bianche e si trovano all'interno delle corsie, prima di un incrocio o di una deviazione. Le frecce direzionali indicano le direzioni permesse."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Frecce direzionali",
+      "Divieto di cambiare corsia"
+    ],
+    "exact_keywords": [
+      "freccia direzionale",
+      "strisce continue",
+      "cambiare corsia",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "significato frecce direzionali segnaletica orizzontale",
+      "divieto di cambiare corsia con strisce continue",
+      "interpretazione frecce direzionali e strisce longitudinali"
+    ],
+    "rule_explanation": "Le frecce direzionali indicano le uniche direzioni permesse; le strisce continue delimitano le corsie e non possono essere superate per cambiare corsia."
+  }
+}

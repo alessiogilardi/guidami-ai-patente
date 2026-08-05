@@ -1,0 +1,33 @@
+{
+  "question_id": 4297,
+  "topic": "Segnali di indicazione",
+  "number": "21533",
+  "text": "Il segnale raffigurato indica in 90 km/h il limite massimo di velocità su strade extraurbane secondarie",
+  "correct_answer": true,
+  "image": "9265cf5f4facbf1169d47366df95fb88.jpeg",
+  "image_description": "Segnale di inizio validità limiti di velocità in Italia. Il segnale indica i limiti massimi di velocità vigenti in Italia. Nel dettaglio: 50 km/h nei centri abitati, 90 km/h su strade extraurbane secondarie, 110 km/h su strade extraurbane principali e 130 km/h in autostrada. Il segnale è posto in prossimità della frontiera italiana, visibile dai conducenti provenienti dall'estero.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale di colore blu con bordo bianco. Nella parte superiore è presente la scritta \"ITALIA\" affiancata dalle bandiere italiana e tedesca (quest'ultima probabilmente per indicare che il segnale è visibile anche da chi proviene dalla Germania o per indicare i limiti vigenti in Italia per chi proviene da quel paese). Il segnale è suddiviso in quattro riquadri orizzontali.\nIl primo riquadro in alto contiene un segnale di limite di velocità di 50 km/h (cerchio rosso con bordo bianco e numero 50 al centro) e l'immagine stilizzata di una città con profili di edifici.\nIl secondo riquadro contiene un segnale di limite di velocità di 90 km/h e l'immagine stilizzata di una città con una linea rossa che la attraversa, indicando la fine di una prescrizione.\nIl terzo riquadro contiene un segnale di limite di velocità di 110 km/h e il simbolo di una strada extraurbana principale (un'autostrada stilizzata con due carreggiate separate).\nIl quarto riquadro contiene un segnale di limite di velocità di 130 km/h e il simbolo di un'autostrada (un'autostrada stilizzata con due carreggiate separate e un ponte).\nL'insieme dei riquadri indica i limiti di velocità generali che valgono in Italia.",
+    "name": "Segnale di inizio validità limiti di velocità in Italia",
+    "description": "Il segnale indica i limiti massimi di velocità vigenti in Italia. Nel dettaglio: 50 km/h nei centri abitati, 90 km/h su strade extraurbane secondarie, 110 km/h su strade extraurbane principali e 130 km/h in autostrada. Il segnale è posto in prossimità della frontiera italiana, visibile dai conducenti provenienti dall'estero."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Limiti di velocità",
+      "Strade extraurbane secondarie"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "strade extraurbane secondarie",
+      "segnali di inizio validità",
+      "centri abitati"
+    ],
+    "vector_search_queries": [
+      "limiti di velocità massimi per tipo di strada",
+      "segnale di inizio validità limiti di velocità",
+      "velocità consentita su strade extraurbane secondarie"
+    ],
+    "rule_explanation": "Il segnale di inizio validità dei limiti di velocità indica le velocità massime consentite: 50 km/h nei centri abitati, 90 km/h su strade extraurbane secondarie, 110 km/h su strade extraurbane principali e 130 km/h in autostrada."
+  }
+}

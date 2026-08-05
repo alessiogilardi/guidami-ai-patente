@@ -1,0 +1,28 @@
+{
+  "question_id": 4436,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22931",
+  "text": "Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso non deve creare pericolo o intralcio agli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inversione di marcia",
+      "Sicurezza stradale",
+      "Comportamento degli utenti della strada"
+    ],
+    "exact_keywords": [
+      "inversione di marcia",
+      "strada a doppio senso",
+      "pericolo o intralcio",
+      "altri utenti della strada"
+    ],
+    "vector_search_queries": [
+      "manovra di inversione di marcia su strada a doppio senso di marcia",
+      "obbligo di non creare pericolo o intralcio durante l'inversione di marcia"
+    ],
+    "rule_explanation": "L'inversione di marcia su strada a doppio senso è permessa solo se non crea pericolo o intralcio alla circolazione degli altri utenti."
+  }
+}

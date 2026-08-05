@@ -1,0 +1,27 @@
+{
+  "question_id": 4506,
+  "topic": "Norme sul sorpasso",
+  "number": "23609",
+  "text": "Durante un sorpasso in autostrada, mantenersi troppo a lungo sulla corsia di sorpasso può essere motivo di intralcio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di sgomberare la corsia di sorpasso",
+      "Comportamento del conducente durante il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "corsia di sorpasso",
+      "intralcio alla circolazione",
+      "autostrada"
+    ],
+    "vector_search_queries": [
+      "obbligo di liberare la corsia di sorpasso in autostrada",
+      "condotta del veicolo durante il sorpasso per evitare intralcio"
+    ],
+    "rule_explanation": "Il conducente che effettua un sorpasso in autostrada deve liberare la corsia di sorpasso appena possibile per non costituire intralcio alla circolazione."
+  }
+}

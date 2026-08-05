@@ -1,0 +1,28 @@
+{
+  "question_id": 4039,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18712",
+  "text": "Gettare mozziconi accesi dai finestrini in prossimità di boschi o aree verdi potrebbe causare incendi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento scorretto alla guida",
+      "Responsabilità del conducente",
+      "Prevenzione incendi stradali"
+    ],
+    "exact_keywords": [
+      "gettare",
+      "mozziconi accesi",
+      "incendi",
+      "aree verdi"
+    ],
+    "vector_search_queries": [
+      "pericolo di incendio per mozziconi gettati dal finestrino",
+      "responsabilità del conducente per danni ambientali da oggetti accesi"
+    ],
+    "rule_explanation": "Gettare mozziconi accesi dai finestrini, specialmente in prossimità di aree verdi, è un comportamento pericoloso che può causare incendi, configurandosi come una grave violazione del dovere di prudenza e rispetto dell'ambiente."
+  }
+}

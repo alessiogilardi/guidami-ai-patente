@@ -1,0 +1,28 @@
+{
+  "question_id": 4049,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18833",
+  "text": "Il conducente che intende sorpassare ciclisti o pedoni che occupano la carreggiata deve usare molta prudenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso utenti deboli",
+      "Regole di sorpasso di utenti vulnerabili"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "ciclisti",
+      "pedoni",
+      "prudenza",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "sorpasso di ciclisti e pedoni sulla carreggiata",
+      "obbligo di prudenza nel sorpassare utenti vulnerabili"
+    ],
+    "rule_explanation": "Il conducente deve sorpassare ciclisti e pedoni che occupano la carreggiata con estrema prudenza, garantendo la sicurezza e la distanza di sicurezza."
+  }
+}

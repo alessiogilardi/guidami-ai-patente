@@ -1,0 +1,33 @@
+{
+  "question_id": 4171,
+  "topic": "Segnali di obbligo",
+  "number": "20290",
+  "text": "Il segnale raffigurato è posto all'inizio di una strada senza uscita",
+  "correct_answer": false,
+  "image": "16c5adb5b0bfafc6c7b0777ae5eec32d.jpeg",
+  "image_description": "Segnale di circolazione rotatoria. Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo blu e sfondo blu. Al centro, tre frecce bianche a punta di freccia sono disposte in modo da formare un cerchio, indicando un movimento rotatorio in senso antiorario. Questo è il segnale di obbligo di circolazione rotatoria.",
+    "name": "Segnale di circolazione rotatoria",
+    "description": "Prescrive l'obbligo di circolare nel senso indicato dalle frecce, ovvero in senso antiorario attorno all'isola centrale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di prescrizione",
+      "Strada senza uscita"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "strada senza uscita",
+      "senso obbligatorio",
+      "circolazione rotatoria"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di obbligo di senso di marcia nelle rotatorie",
+      "differenza tra segnale di circolazione rotatoria e segnale di strada senza uscita",
+      "obblighi imposti dal segnale di circolazione rotatoria"
+    ],
+    "rule_explanation": "Il segnale di circolazione rotatoria impone l'obbligo di percorrere la rotatoria in senso antiorario, non indica una strada senza uscita."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4378,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22361",
+  "text": "La velocità in curva incide sulla tenuta di strada del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità di sicurezza",
+      "Stabilità del veicolo",
+      "Manovre di guida"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "curva",
+      "tenuta di strada",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "influenza della velocità in curva sulla tenuta di strada",
+      "effetti della velocità sulla stabilità del veicolo in curva"
+    ],
+    "rule_explanation": "La velocità adottata in curva è un fattore determinante per la tenuta di strada del veicolo, influenzando le forze centrifughe e l'aderenza degli pneumatici."
+  }
+}

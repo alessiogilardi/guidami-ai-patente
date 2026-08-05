@@ -1,0 +1,27 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24398",
+  "text": "Il casco deve essere di taglia corretta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Requisiti di sicurezza del casco"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "taglia corretta",
+      "idoneo",
+      "omologato"
+    ],
+    "vector_search_queries": [
+      "requisiti di omologazione e taglia del casco protettivo motociclistico",
+      "obbligo di indossare casco protettivo idoneo e della misura corretta"
+    ],
+    "rule_explanation": "Il casco protettivo, per essere conforme alla normativa, deve essere della taglia corretta e omologato per garantire la sicurezza del conducente e del passeggero."
+  }
+}

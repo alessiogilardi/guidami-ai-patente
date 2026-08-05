@@ -1,0 +1,27 @@
+{
+  "question_id": 4614,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24558",
+  "text": "La patente di categoria B con codice armonizzato 96, può essere conseguita anche successivamente al conseguimento della patente di categoria B, superando una prova di guida su specifico veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida B96",
+      "Requisiti per il conseguimento della patente B96"
+    ],
+    "exact_keywords": [
+      "patente B96",
+      "codice armonizzato 96",
+      "prova di guida",
+      "veicolo specifico"
+    ],
+    "vector_search_queries": [
+      "conseguimento patente B96 dopo patente B",
+      "requisiti patente B con codice 96"
+    ],
+    "rule_explanation": "La patente B96 si consegue con esame di guida su veicolo specifico, anche dopo aver ottenuto la patente B."
+  }
+}

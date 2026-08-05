@@ -1,0 +1,27 @@
+{
+  "question_id": 4439,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22958",
+  "text": "Qualora in una strada a forte pendenza il passaggio tra veicoli risulti difficoltoso, se uno dei due conducenti si trova in vicinanza di una piazzola di scambio, spetta a lui accostare e lasciar passare l'altro conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della circolazione in strade a pendenza",
+      "Obblighi di agevolare il transito"
+    ],
+    "exact_keywords": [
+      "strada a forte pendenza",
+      "piazzola di scambio",
+      "accostare",
+      "lasciar passare"
+    ],
+    "vector_search_queries": [
+      "precedenza in strade a forte pendenza con piazzole di scambio",
+      "obbligo di accostare per agevolare il transito su strade in pendenza"
+    ],
+    "rule_explanation": "In caso di difficoltoso passaggio su strade a forte pendenza, il conducente vicino a una piazzola di scambio deve accostare per agevolare il transito dell'altro veicolo."
+  }
+}

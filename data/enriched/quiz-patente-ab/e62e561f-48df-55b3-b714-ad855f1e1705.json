@@ -1,0 +1,31 @@
+{
+  "question_id": 4092,
+  "topic": "Segnali di pericolo",
+  "number": "19360",
+  "text": "Il segnale raffigurato è un segnale di pericolo",
+  "correct_answer": true,
+  "image": "a8ad5623eb1559f20081cc1263908b79.jpeg",
+  "image_description": "Segnale di pericolo di caduta in acqua. Il segnale preannuncia lo sbocco della strada su un molo o un argine, con pericolo di caduta in acqua. È un segnale di pericolo che impone particolare prudenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un'automobile che sta per cadere da una banchina (rappresentata da una linea verticale nera) in acqua (rappresentata da linee ondulate blu). Il pittogramma indica chiaramente il pericolo di sbocco della strada su un luogo che termina bruscamente in acqua, come un molo, un argine o una banchina portuale.",
+    "name": "Segnale di pericolo di caduta in acqua",
+    "description": "Il segnale preannuncia lo sbocco della strada su un molo o un argine, con pericolo di caduta in acqua. È un segnale di pericolo che impone particolare prudenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di pericolo"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "preavviso",
+      "prudenza",
+      "caduta in acqua"
+    ],
+    "vector_search_queries": [
+      "funzione dei segnali di pericolo nella segnaletica stradale",
+      "obbligo di prudenza in presenza di segnali di pericolo specifico"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano una situazione di potenziale pericolo per la circolazione, richiedendo al conducente di adottare una particolare prudenza."
+  }
+}

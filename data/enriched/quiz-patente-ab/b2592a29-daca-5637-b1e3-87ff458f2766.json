@@ -1,0 +1,29 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22484",
+  "text": "Nei veicoli dotati di servofreno, se si percorre una lunga discesa con il cambio in folle e a motore spento, aumenta il rischio di provocare incidenti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Controllo del veicolo in discesa",
+      "Funzionamento del servofreno",
+      "Sicurezza nella guida di veicoli a motore"
+    ],
+    "exact_keywords": [
+      "servofreno",
+      "lunga discesa",
+      "cambio in folle",
+      "motore spento",
+      "rischio incidenti"
+    ],
+    "vector_search_queries": [
+      "rischio incidenti con servofreno in discesa a motore spento e cambio in folle",
+      "conseguenze della guida in discesa con motore spento e cambio in folle su servofreno e freni"
+    ],
+    "rule_explanation": "Percorrere lunghe discese con servofreno, cambio in folle e motore spento riduce l'efficacia del servofreno e del sistema frenante, aumentando il rischio di incidenti."
+  }
+}

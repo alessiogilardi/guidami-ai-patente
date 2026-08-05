@@ -1,0 +1,28 @@
+{
+  "question_id": 4510,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23644",
+  "text": "La fermata di un veicolo è la temporanea sospensione della marcia per esigenze di brevissima durata, come ad esempio per chiedere informazioni agli agenti del traffico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Sosta del veicolo"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "sosta",
+      "arresto",
+      "partenza",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "definizione di fermata nel CdS",
+      "differenza tra fermata e sosta"
+    ],
+    "rule_explanation": "La fermata è la temporanea sospensione della marcia per consentire al conducente di restare seduto al posto di guida, a differenza della sosta che richiede l'abbandono del veicolo."
+  }
+}

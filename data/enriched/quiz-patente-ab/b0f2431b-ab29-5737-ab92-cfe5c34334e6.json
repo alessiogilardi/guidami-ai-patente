@@ -1,0 +1,32 @@
+{
+  "question_id": 4139,
+  "topic": "Segnali di divieto",
+  "number": "19925",
+  "text": "Il segnale (A), se integrato con il pannello (B), è divieto di sosta permanente",
+  "correct_answer": false,
+  "image": "07210b74746df1d1dafd49312674ebe3.jpeg",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo di estesa orizzontale. Il segnale A è un segnale di divieto di sosta. Il pannello integrativo B, con le due frecce contrapposte, indica che il divieto di sosta vige sia alla destra che alla sinistra del segnale. Pertanto, il divieto di sosta ha validità in entrambe le direzioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi: un segnale stradale (A) e un pannello integrativo (B). Il segnale A è un segnale di divieto di sosta, caratterizzato da un disco rosso con bordo rosso, sfondo blu e una barra diagonale rossa. Il pannello B è rettangolare, bianco con bordo nero, e presenta due frecce nere contrapposte che puntano rispettivamente a sinistra e a destra. Il pannello B è posizionato sotto il segnale A, indicando che si tratta di un pannello integrativo che ne estende o specifica il significato. Le frecce contrapposte sul pannello B indicano che il divieto di sosta si applica sia nella direzione indicata dalla freccia sinistra sia nella direzione indicata dalla freccia destra, ovvero lungo il tratto di strada in cui il segnale è posto.",
+    "name": "Segnale di divieto di sosta con pannello integrativo di estesa orizzontale",
+    "description": "Il segnale A è un segnale di divieto di sosta. Il pannello integrativo B, con le due frecce contrapposte, indica che il divieto di sosta vige sia alla destra che alla sinistra del segnale. Pertanto, il divieto di sosta ha validità in entrambe le direzioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Validità spaziale dei segnali stradali",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "pannello integrativo",
+      "estesa orizzontale",
+      "validità"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di sosta con pannelli integrativi di estesa",
+      "validità temporale e spaziale dei segnali di divieto di sosta"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta, se integrato con un pannello di estesa orizzontale, indica che il divieto vige in entrambe le direzioni (sia prima che dopo il segnale), non che sia permanente."
+  }
+}

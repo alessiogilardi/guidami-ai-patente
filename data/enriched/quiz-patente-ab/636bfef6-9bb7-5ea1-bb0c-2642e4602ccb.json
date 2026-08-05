@@ -1,0 +1,28 @@
+{
+  "question_id": 4501,
+  "topic": "Norme sul sorpasso",
+  "number": "23549",
+  "text": "Dopo il sorpasso bisogna rientrare immediatamente a destra, rallentando",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Regole di rientro dopo il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "rientrare a destra",
+      "condotta da tergo",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "completamento manovra di sorpasso",
+      "regole per il rientro a destra dopo il sorpasso",
+      "condotta del veicolo dopo aver effettuato un sorpasso"
+    ],
+    "rule_explanation": "Dopo il sorpasso, il conducente deve accertarsi di poter rientrare a destra senza creare pericolo o intralcio, e non necessariamente in modo immediato o rallentando."
+  }
+}

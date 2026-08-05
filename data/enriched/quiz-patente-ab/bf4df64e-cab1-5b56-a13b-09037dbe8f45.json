@@ -1,0 +1,27 @@
+{
+  "question_id": 4641,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24851",
+  "text": "E' sconsigliabile guidare quando si ha uno stato emotivo alterato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato emotivo e guida",
+      "Idoneità alla guida"
+    ],
+    "exact_keywords": [
+      "stato emotivo alterato",
+      "guida",
+      "condizioni psicofisiche",
+      "alterazione"
+    ],
+    "vector_search_queries": [
+      "impatto dello stato emotivo sulla capacità di guida",
+      "idoneità alla guida in condizioni psicofisiche alterate"
+    ],
+    "rule_explanation": "È sconsigliabile mettersi alla guida in presenza di uno stato emotivo alterato che possa compromettere la lucidità e la capacità di reazione."
+  }
+}

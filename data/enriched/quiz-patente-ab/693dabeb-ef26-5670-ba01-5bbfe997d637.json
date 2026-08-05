@@ -1,0 +1,27 @@
+{
+  "question_id": 4620,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24647",
+  "text": "Ogni patente di guida ha un'attribuzione iniziale di 30 punti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Attribuzione punti patente",
+      "Patente a crediti"
+    ],
+    "exact_keywords": [
+      "punti patente",
+      "attribuzione iniziale",
+      "decurtazione",
+      "sanzioni amministrative"
+    ],
+    "vector_search_queries": [
+      "punti iniziali patente di guida",
+      "attribuzione crediti patente codice della strada"
+    ],
+    "rule_explanation": "L'attribuzione iniziale di punti sulla patente è di 20 punti, non 30. I punti vengono decurtati in seguito a violazioni del Codice della Strada."
+  }
+}

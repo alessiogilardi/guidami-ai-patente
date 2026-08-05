@@ -1,0 +1,30 @@
+{
+  "question_id": 4600,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24379",
+  "text": "L'airbag serve a limitare i danni agli occupanti del veicolo per urti contro superfici interne del veicolo in caso di urto violento a seguito di incidente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza passiva",
+      "Sistema di ritenuta supplementare",
+      "Protezione degli occupanti in caso di incidente"
+    ],
+    "exact_keywords": [
+      "airbag",
+      "occupanti",
+      "urto violento",
+      "incidente",
+      "superfici interne"
+    ],
+    "vector_search_queries": [
+      "funzione dell'airbag come sistema di ritenuta supplementare",
+      "protezione degli occupanti in caso di incidente con airbag",
+      "attivazione airbag e urti contro superfici interne del veicolo"
+    ],
+    "rule_explanation": "L'airbag è un dispositivo di sicurezza passiva che si attiva in caso di urto violento, limitando i danni agli occupanti per impatto contro le parti interne dell'abitacolo."
+  }
+}

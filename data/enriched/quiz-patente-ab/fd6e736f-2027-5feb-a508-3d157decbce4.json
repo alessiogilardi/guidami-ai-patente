@@ -1,0 +1,27 @@
+{
+  "question_id": 4047,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18820",
+  "text": "Alla guida di un veicolo, in vicinanza di una piazzola di fermata di autobus per scolari, occorre fare attenzione allo scuolabus, che dopo la fermata farà sicuramente retromarcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento in prossimità di fermate di scuolabus",
+      "Doveri del conducente verso gli utenti deboli"
+    ],
+    "exact_keywords": [
+      "scuolabus",
+      "fermata di autobus per scolari",
+      "retromarcia",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "comportamento alla guida in prossimità di fermate scuolabus",
+      "obblighi del conducente in presenza di scuolabus e bambini"
+    ],
+    "rule_explanation": "In prossimità di una fermata di scuolabus, il conducente deve prestare la massima attenzione ai bambini che attraversano la strada, non alla manovra di retromarcia dello scuolabus."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4713,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25426",
+  "text": "Per facilitare lo spegnimento del motore, i veicoli a motore a due ruote sono equipaggiati di un interruttore d'emergenza posto sulla pedivella del cambio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza dei veicoli a motore",
+      "Funzionamento dei veicoli a due ruote"
+    ],
+    "exact_keywords": [
+      "interruttore d'emergenza",
+      "veicoli a motore a due ruote",
+      "pedivella del cambio",
+      "spegnimento del motore"
+    ],
+    "vector_search_queries": [
+      "funzione e posizionamento interruttore d'emergenza motocicli",
+      "dispositivi di sicurezza veicoli a due ruote"
+    ],
+    "rule_explanation": "L'interruttore d'emergenza, se presente, non è posizionato sulla pedivella del cambio e non ha la funzione di facilitare lo spegnimento del motore, ma di interrompere l'alimentazione in caso di emergenza."
+  }
+}

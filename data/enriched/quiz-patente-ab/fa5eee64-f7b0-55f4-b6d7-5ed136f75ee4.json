@@ -1,0 +1,28 @@
+{
+  "question_id": 4596,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24334",
+  "text": "Le persone con oltre 65 anni di età non sono obbligate ad agganciare la cintura di sicurezza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Eccezioni all'obbligo di cintura"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "obbligo",
+      "esenzione",
+      "sistemi di ritenuta"
+    ],
+    "vector_search_queries": [
+      "obbligo uso cinture sicurezza persone anziane",
+      "esenzioni uso cinture di sicurezza per età",
+      "normativa uso sistemi di ritenuta passeggeri"
+    ],
+    "rule_explanation": "L'obbligo di usare le cinture di sicurezza si applica a tutti i passeggeri, indipendentemente dall'età, salvo specifiche esenzioni mediche certificate."
+  }
+}

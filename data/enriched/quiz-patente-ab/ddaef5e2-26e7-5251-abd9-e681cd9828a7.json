@@ -1,0 +1,27 @@
+{
+  "question_id": 4666,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25037",
+  "text": "Per poter stipulare una polizza assicurativa contro il rischio d'incendio occorre che il veicolo sia munito di apposito meccanismo staccabatteria automatico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione contro il rischio d'incendio",
+      "Requisiti per la stipula di polizze assicurative"
+    ],
+    "exact_keywords": [
+      "polizza assicurativa",
+      "rischio d'incendio",
+      "meccanismo staccabatteria automatico",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "requisiti per polizza assicurativa rischio incendio veicolo",
+      "stipula assicurazione incendio auto senza staccabatteria"
+    ],
+    "rule_explanation": "Non è necessario che il veicolo sia munito di un meccanismo staccabatteria automatico per poter stipulare una polizza contro il rischio d'incendio."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4661,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "24999",
+  "text": "La responsabilità civile connessa al sinistro stradale obbliga il responsabile al risarcimento del danno",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile da sinistro stradale",
+      "Obbligo di risarcimento del danno"
+    ],
+    "exact_keywords": [
+      "responsabilità civile",
+      "sinistro stradale",
+      "risarcimento del danno",
+      "responsabile"
+    ],
+    "vector_search_queries": [
+      "obbligo di risarcimento per responsabilità civile da sinistro stradale",
+      "conseguenze civili del sinistro stradale: risarcimento del danno"
+    ],
+    "rule_explanation": "La responsabilità civile derivante da un sinistro stradale impone al soggetto responsabile l'obbligo di risarcire integralmente i danni causati a terzi."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23519",
+  "text": "E' consentito il sorpasso sul tratto discendente di un dosso in una strada a due corsie a doppio senso di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso",
+      "Visibilità",
+      "Strade a doppio senso di marcia"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "dosso",
+      "strada a due corsie a doppio senso di marcia",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "sorpasso consentito in discesa di dosso su strada a doppio senso",
+      "condizioni di visibilità per il sorpasso in dosso"
+    ],
+    "rule_explanation": "Il sorpasso è consentito in un tratto discendente di dosso su strada a due corsie a doppio senso di marcia, purché la visibilità sia sufficiente per effettuarlo in sicurezza."
+  }
+}

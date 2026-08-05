@@ -1,0 +1,27 @@
+{
+  "question_id": 4649,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24913",
+  "text": "Se un ferito della strada è in stato di incoscienza bisogna metterlo in posizione semiseduta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Posizione di sicurezza per incoscienti"
+    ],
+    "exact_keywords": [
+      "ferito",
+      "incoscienza",
+      "posizione laterale di sicurezza",
+      "manovre di primo soccorso"
+    ],
+    "vector_search_queries": [
+      "posizione laterale di sicurezza per incoscienti",
+      "manovre di primo soccorso per feriti incoscienti"
+    ],
+    "rule_explanation": "In caso di incoscienza, il ferito va posizionato in posizione laterale di sicurezza, non semiseduta, per garantire la pervietà delle vie aeree."
+  }
+}

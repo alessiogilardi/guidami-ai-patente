@@ -1,0 +1,27 @@
+{
+  "question_id": 4507,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23619",
+  "text": "In una zona in cui la sosta è regolamentata mediante disco orario, prima che scada il tempo di validità della sosta è consentito aggiornare l'orario, senza che il veicolo venga spostato",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della sosta con disco orario",
+      "Divieto di prolungamento della sosta vietata"
+    ],
+    "exact_keywords": [
+      "sosta con disco orario",
+      "aggiornare l'orario",
+      "spostamento del veicolo",
+      "tempo di sosta vietata"
+    ],
+    "vector_search_queries": [
+      "sosta con disco orario e obbligo di rimozione del veicolo",
+      "limiti temporali di sosta con disco orario e divieto di rinnovo"
+    ],
+    "rule_explanation": "Nelle aree con sosta regolamentata da disco orario, non è consentito aggiornare l'orario per prolungare la sosta oltre il limite consentito, né spostare il veicolo per eludere tale limitazione."
+  }
+}

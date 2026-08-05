@@ -1,0 +1,31 @@
+{
+  "question_id": 4330,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21827",
+  "text": "Il pannello raffigurato indica il numero progressivo di una curva pericolosa",
+  "correct_answer": true,
+  "image": "bacab78176dc95f719635f109766d036.jpeg",
+  "image_description": "Cartello indicatore del numero progressivo di un tornante. Il segnale indica il numero progressivo di un tornante, segnalando che si tratta del primo di una serie.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo nero e sfondo bianco. Al centro, in alto, è presente il numero '1' con un piccolo cerchio in apice (indicante 'primo'). Sotto il numero, in lettere maiuscole, è scritta la parola 'tornante'. Il segnale è un pannello integrativo che fornisce informazioni aggiuntive su un segnale preesistente (non visibile nell'immagine).",
+    "name": "Cartello indicatore del numero progressivo di un tornante",
+    "description": "Il segnale indica il numero progressivo di un tornante, segnalando che si tratta del primo di una serie."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali complementari",
+      "Segnali di pericolo temporanei"
+    ],
+    "exact_keywords": [
+      "numero progressivo",
+      "curva pericolosa",
+      "tornante",
+      "segnali complementari"
+    ],
+    "vector_search_queries": [
+      "pannello numero progressivo curva pericolosa",
+      "segnali complementari indicazione progressiva tornante"
+    ],
+    "rule_explanation": "Il pannello con il numero progressivo indica la distanza dal vertice di una curva o di un tornante pericoloso, aiutando il conducente a valutarne l'imminenza."
+  }
+}

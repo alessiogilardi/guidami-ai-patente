@@ -1,0 +1,33 @@
+{
+  "question_id": 4079,
+  "topic": "Segnali di pericolo",
+  "number": "19204",
+  "text": "In presenza del segnale raffigurato bisogna usare molta prudenza se la strada è bagnata",
+  "correct_answer": true,
+  "image": "f765bd82ad5ae48ffb2e5ed4434c16a8.jpeg",
+  "image_description": "Segnale di pericolo - Discesa pericolosa con pendenza specificata. Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata una rampa nera inclinata verso il basso, con la dicitura \"10%\" sovrapposta. Questo indica una discesa con una pendenza specificata.",
+    "name": "Segnale di pericolo - Discesa pericolosa con pendenza specificata",
+    "description": "Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Condizioni di aderenza stradale",
+      "Comportamento in caso di discesa"
+    ],
+    "exact_keywords": [
+      "discesa pericolosa",
+      "prudenza",
+      "strada bagnata",
+      "condizioni di aderenza"
+    ],
+    "vector_search_queries": [
+      "comportamento da tenere in presenza del segnale di discesa pericolosa",
+      "adeguamento della velocità e della prudenza in discesa con strada bagnata",
+      "effetti della pioggia sull'aderenza in discesa e sui freni"
+    ],
+    "rule_explanation": "Il segnale di 'discesa pericolosa' impone di usare particolare prudenza, specialmente in caso di strada bagnata, per mantenere il controllo del veicolo."
+  }
+}

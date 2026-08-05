@@ -1,0 +1,28 @@
+{
+  "question_id": 4417,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22754",
+  "text": "Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, è opportuno tirare il freno a mano e scendere per cercare un agente del traffico che prenda i dovuti provvedimenti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento ai incroci",
+      "Obblighi del conducente in caso di ingombro della carreggiata",
+      "Intervento delle forze dell'ordine"
+    ],
+    "exact_keywords": [
+      "incrocio urbano",
+      "via libera",
+      "agente del traffico",
+      "provvedimenti"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente in caso di ingombro della carreggiata ad un incrocio",
+      "segnalazione di ostacolo alla circolazione alle autorità competenti"
+    ],
+    "rule_explanation": "In caso di ingombro della carreggiata, il conducente deve segnalare la situazione alle autorità competenti, non intervenire autonomamente o in modo sproporzionato."
+  }
+}

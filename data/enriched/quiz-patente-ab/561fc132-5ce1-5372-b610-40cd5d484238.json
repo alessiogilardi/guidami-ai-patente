@@ -1,0 +1,30 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24685",
+  "text": "La patente di guida di categoria A, salvo diversa limitazione riportata sul documento stesso o salvo allineamento alla data del compleanno del titolare, ha validità di dieci anni se rilasciata o confermata a chi non ha superato i 50 anni di età",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Durata della validità della patente",
+      "Rinnovo della patente di guida"
+    ],
+    "exact_keywords": [
+      "patente di guida categoria A",
+      "validità diecennale",
+      "non ha superato i 50 anni",
+      "limitazione sul documento",
+      "data del compleanno"
+    ],
+    "vector_search_queries": [
+      "validità patente A per conducenti sotto i 50 anni",
+      "durata validità patente di guida categoria A",
+      "rinnovo patente A ogni 10 anni per under 50"
+    ],
+    "rule_explanation": "La patente A è valida 10 anni per i conducenti under 50, salvo diverse indicazioni sul documento o allineamento alla data di compleanno."
+  }
+}

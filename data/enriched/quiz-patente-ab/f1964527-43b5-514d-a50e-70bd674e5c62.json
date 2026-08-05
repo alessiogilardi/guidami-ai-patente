@@ -1,0 +1,33 @@
+{
+  "question_id": 4067,
+  "topic": "Segnali di pericolo",
+  "number": "19057",
+  "text": "La figura rappresenta un segnale di pericolo",
+  "correct_answer": true,
+  "image": "9ed0e8363c88fd8588f80faaf25082b2.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere. Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata una locomotiva a vapore nera, simbolo di un attraversamento ferroviario. Non sono presenti pannelli integrativi né altri elementi di contesto stradale. Si tratta quindi di un segnale isolato. Il segnale raffigurato è il segnale di pericolo 'Passaggio a livello con barriere'.",
+    "name": "Segnale di passaggio a livello con barriere",
+    "description": "Il segnale preannuncia un attraversamento ferroviario a livello. È necessario usare la massima prudenza e rallentare per potersi arrestare prima dei binari, qualora necessario. Non è consentito il sorpasso in prossimità del segnale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di attraversamento ferroviario",
+      "Segnali stradali di pericolo"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello con barriere",
+      "attraversamento ferroviario",
+      "massima prudenza"
+    ],
+    "vector_search_queries": [
+      "funzione dei segnali di pericolo stradale",
+      "segnali di pericolo per attraversamento ferroviario con barriere",
+      "obblighi del conducente in presenza di segnali di pericolo"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano una situazione di potenziale rischio per la circolazione, richiedendo al conducente di adottare le dovute cautele e moderare la velocità."
+  }
+}

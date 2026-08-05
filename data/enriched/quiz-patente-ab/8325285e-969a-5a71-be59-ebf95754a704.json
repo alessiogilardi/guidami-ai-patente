@@ -1,0 +1,27 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18729",
+  "text": "Il conducente di un veicolo deve rispettare gli agenti del traffico e collaborare con essi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente verso gli agenti del traffico",
+      "Collaborazione con le autorità di polizia stradale"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "agenti del traffico",
+      "collaborare",
+      "ordini"
+    ],
+    "vector_search_queries": [
+      "obbligo di rispettare gli agenti di polizia stradale",
+      "dovere di collaborazione del conducente con gli agenti del traffico"
+    ],
+    "rule_explanation": "Il conducente ha l'obbligo di rispettare gli agenti del traffico e di eseguire gli ordini impartiti per la disciplina della circolazione stradale."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4434,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22914",
+  "text": "Uscendo con un veicolo da una proprietà privata, bisogna procedere con prudenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza all'uscita da aree private",
+      "Regolazione della circolazione stradale"
+    ],
+    "exact_keywords": [
+      "uscita da proprietà privata",
+      "procedere con prudenza",
+      "circolazione stradale",
+      "regola generale di prudenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza all'uscita da aree private su strada pubblica",
+      "condotta da tenere per immettersi nella circolazione da una proprietà privata"
+    ],
+    "rule_explanation": "Chiunque esce da una proprietà privata deve usare la massima prudenza per non interferire con la circolazione stradale, arrestandosi se necessario."
+  }
+}

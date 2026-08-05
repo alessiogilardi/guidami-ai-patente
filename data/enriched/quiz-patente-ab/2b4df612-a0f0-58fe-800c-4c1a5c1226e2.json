@@ -1,0 +1,31 @@
+{
+  "question_id": 4425,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22816",
+  "text": "Su carreggiate a tre corsie per senso di marcia, come in figura, i veicoli a motore devono, di norma, percorrere la corsia più libera a destra",
+  "correct_answer": true,
+  "image": "a55112f8aa2ffee4f82537f5b38f7b9b.jpeg",
+  "image_description": "Carreggiata a due sensi di marcia con tre corsie per senso di marcia. La strada è rappresentata come una carreggiata a due sensi di marcia, ciascuno con tre corsie separate da strisce bianche discontinue. Ogni senso di marcia è ulteriormente separato da una doppia striscia bianca continua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada. La strada è divisa in due sezioni da una doppia linea bianca continua, indicando due sensi di marcia opposti. Ogni senso di marcia è ulteriormente suddiviso in tre corsie da linee bianche discontinue. Pertanto, la strada presenta un totale di sei corsie, tre per ogni senso di marcia. Non sono presenti segnali stradali, veicoli o altri elementi che possano alterare la interpretazione della geometria della strada.",
+    "name": "Carreggiata a due sensi di marcia con tre corsie per senso di marcia",
+    "description": "La strada è rappresentata come una carreggiata a due sensi di marcia, ciascuno con tre corsie separate da strisce bianche discontinue. Ogni senso di marcia è ulteriormente separato da una doppia striscia bianca continua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento dei veicoli sulla carreggiata",
+      "Regola della corsia più libera"
+    ],
+    "exact_keywords": [
+      "carreggiate a tre corsie",
+      "veicoli a motore",
+      "corsia più libera a destra",
+      "di norma"
+    ],
+    "vector_search_queries": [
+      "posizionamento veicoli su carreggiata a tre corsie per senso di marcia",
+      "regola della corsia più libera a destra per veicoli a motore"
+    ],
+    "rule_explanation": "Su carreggiate a tre o più corsie per senso di marcia, i veicoli a motore devono percorrere la corsia più libera a destra, salvo diverse segnalazioni."
+  }
+}

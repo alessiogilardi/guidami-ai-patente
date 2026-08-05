@@ -1,0 +1,31 @@
+{
+  "question_id": 4550,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23949",
+  "text": "Il pannello arancione retroriflettente riprodott0 in figura è collocato posteriormente per segnalare carichi sporgenti pericolosi",
+  "correct_answer": false,
+  "image": "37cb851778100bc1640d2dbd72c11d57.jpeg",
+  "image_description": "Pannello di segnalazione di pericolo per trasporto merci pericolose. Il pannello in figura è un pannello di segnalazione di pericolo per il trasporto di merci pericolose. Il numero in alto (33) indica il codice di pericolo, mentre il numero in basso (1203) indica il numero ONU della sostanza trasportata. In questo caso, 1203 identifica la benzina. Il codice 33 indica che la sostanza è altamente infiammabile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello rettangolare di colore arancione con un bordo nero. Il pannello è diviso orizzontalmente in due sezioni da una linea nera. Nella sezione superiore sono presenti due cifre, '33'. Nella sezione inferiore sono presenti quattro cifre, '1203'. Questo pannello è comunemente utilizzato per segnalare il trasporto di merci pericolose secondo le normative ADR (Accordo europeo relativo al trasporto internazionale su strada delle merci pericolose). Il numero superiore (33) è il codice di pericolo (Kemler code) che indica le proprietà di pericolo della sostanza, in questo caso indica un pericolo di infiammabilità elevato. Il numero inferiore (1203) è il numero ONU che identifica univocamente la sostanza pericolosa, in questo caso la benzina.",
+    "name": "Pannello di segnalazione di pericolo per trasporto merci pericolose",
+    "description": "Il pannello in figura è un pannello di segnalazione di pericolo per il trasporto di merci pericolose. Il numero in alto (33) indica il codice di pericolo, mentre il numero in basso (1203) indica il numero ONU della sostanza trasportata. In questo caso, 1203 identifica la benzina. Il codice 33 indica che la sostanza è altamente infiammabile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di carichi sporgenti",
+      "Trasporto di merci pericolose"
+    ],
+    "exact_keywords": [
+      "pannello arancione retroriflettente",
+      "carichi sporgenti",
+      "merci pericolose",
+      "dispositivo di segnalazione"
+    ],
+    "vector_search_queries": [
+      "segnalazione di merci pericolose con pannello arancione",
+      "differenza tra pannello merci pericolose e pannello carichi sporgenti"
+    ],
+    "rule_explanation": "Il pannello arancione con numeri identifica il trasporto di merci pericolose, non carichi sporgenti generici che richiedono un pannello bianco-rosso."
+  }
+}

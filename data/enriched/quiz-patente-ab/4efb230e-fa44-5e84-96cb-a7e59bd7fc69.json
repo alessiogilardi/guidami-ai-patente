@@ -1,0 +1,27 @@
+{
+  "question_id": 4586,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24259",
+  "text": "E' consentito l'uso intermittente dei proiettori di profondità (a luce abbagliante) per segnalare al veicolo che precede, anche all'interno dei centri abitati, l'intenzione di sorpassare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di sorpasso",
+      "Uso dei proiettori di profondità"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "luce abbagliante",
+      "sorpassare",
+      "centri abitati"
+    ],
+    "vector_search_queries": [
+      "uso intermittente proiettori di profondità per segnalare sorpasso",
+      "segnalazione di sorpasso con luci abbaglianti nei centri abitati"
+    ],
+    "rule_explanation": "È permesso usare i proiettori di profondità per segnalare l'intenzione di sorpasso, anche nei centri abitati, per avvisare il veicolo che precede."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4674,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25089",
+  "text": "Per diminuire il rumore emesso dai veicoli a motore è necessario che il dispositivo silenziatore (marmitta) sia efficiente e di tipo approvato",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Dispositivi di scarico dei veicoli a motore",
+      "Normativa sui livelli di rumore"
+    ],
+    "exact_keywords": [
+      "dispositivo silenziatore",
+      "marmitta",
+      "tipo approvato",
+      "rumore emesso",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "requisiti marmitta veicolo per contenimento rumore",
+      "efficienza dispositivo silenziatore e omologazione per ridurre inquinamento acustico",
+      "normativa su livelli di rumore veicoli a motore e dispositivi di scarico"
+    ],
+    "rule_explanation": "Il dispositivo silenziatore (marmitta) dei veicoli a motore deve essere efficiente e di tipo omologato per limitare l'inquinamento acustico."
+  }
+}

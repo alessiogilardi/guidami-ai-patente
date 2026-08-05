@@ -1,0 +1,32 @@
+{
+  "question_id": 4231,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20893",
+  "text": "Nella carreggiata a doppio senso di circolazione le strisce di mezzo in figura dividono i sensi di marcia",
+  "correct_answer": true,
+  "image": "1dd7b76e8b6de65a7490b0a98df0b13f.jpeg",
+  "image_description": "Strisce di delimitazione delle corsie. Le strisce bianche continue delimitano le corsie di marcia. La presenza di più coppie di strisce indica una carreggiata a più corsie.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una segnaletica orizzontale costituita da strisce bianche continue su fondo grigio, che simulano l'asfalto. Sono presenti due serie di strisce: una più lunga in alto e una più corta in basso. Entrambe le serie sono composte da due coppie di strisce bianche continue parallele, che delimitano delle corsie di marcia. La serie superiore presenta quattro strisce bianche continue, disposte a coppie, che suggeriscono la presenza di due corsie di marcia. La serie inferiore, più corta, presenta anch'essa due coppie di strisce bianche continue, indicando anch'essa una o più corsie. Non sono presenti segnali verticali o altri elementi di contesto stradale. L'immagine si concentra esclusivamente sulla segnaletica orizzontale di delimitazione delle corsie.",
+    "name": "Strisce di delimitazione delle corsie",
+    "description": "Le strisce bianche continue delimitano le corsie di marcia. La presenza di più coppie di strisce indica una carreggiata a più corsie."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Delimitazione delle corsie di marcia",
+      "Carreggiata a doppio senso di circolazione"
+    ],
+    "exact_keywords": [
+      "strisce di mezzo",
+      "doppio senso di circolazione",
+      "delimitano i sensi di marcia",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale strisce di mezzo doppio senso di circolazione",
+      "funzione delle strisce continue che delimitano i sensi di marcia"
+    ],
+    "rule_explanation": "Le strisce di mezzo continue, in una carreggiata a doppio senso di circolazione, separano i flussi di traffico opposti e delimitano le corsie di marcia."
+  }
+}

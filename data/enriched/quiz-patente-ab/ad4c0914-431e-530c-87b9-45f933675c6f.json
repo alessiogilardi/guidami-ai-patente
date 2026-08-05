@@ -1,0 +1,32 @@
+{
+  "question_id": 4357,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22098",
+  "text": "Il segnale raffigurato indica la fine della strada sdrucciolevole",
+  "correct_answer": true,
+  "image": "e9f546569e09115071eeeed6f2caa764.jpeg",
+  "image_description": "Pericolo di scivolamento (fondo stradale sdrucciolevole) con pannello integrativo di direzione destra. Il segnale di pericolo indica che la strada può essere sdrucciolevole. Il pannello integrativo indica che il pericolo si trova sulla destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurata un'automobile in fase di sbandata su una strada sinuosa. Sotto il segnale di pericolo, è presente un pannello integrativo rettangolare di colore bianco con un bordo nero, contenente una freccia nera rivolta verso destra.",
+    "name": "Pericolo di scivolamento (fondo stradale sdrucciolevole) con pannello integrativo di direzione destra",
+    "description": "Il segnale di pericolo indica che la strada può essere sdrucciolevole. Il pannello integrativo indica che il pericolo si trova sulla destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica di pericolo",
+      "Pannelli integrativi",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "strada sdrucciolevole",
+      "pannello integrativo di direzione",
+      "segnale di pericolo",
+      "fine del pericolo"
+    ],
+    "vector_search_queries": [
+      "interpretazione segnale pericolo strada sdrucciolevole con pannello integrativo di direzione",
+      "pannello integrativo di direzione e fine del pericolo specifico"
+    ],
+    "rule_explanation": "Il segnale di pericolo indica una situazione di rischio specifico; il pannello integrativo ne specifica la direzione o la durata, non la fine."
+  }
+}

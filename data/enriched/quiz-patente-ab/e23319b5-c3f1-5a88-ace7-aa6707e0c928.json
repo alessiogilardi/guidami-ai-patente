@@ -1,0 +1,29 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24592",
+  "text": "La revisione della patente di guida può essere disposta qualora sorgano dubbi che il conducente sia ancora in possesso dell'idoneità tecnica alla guida",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Idoneità tecnica alla guida",
+      "Revisione della patente",
+      "Obblighi del conducente"
+    ],
+    "exact_keywords": [
+      "revisione della patente",
+      "idoneità tecnica",
+      "conducente",
+      "dubbi",
+      "disposta"
+    ],
+    "vector_search_queries": [
+      "sospensione revisione patente per dubbi idoneità tecnica guida",
+      "verifica idoneità tecnica conducente revisione patente"
+    ],
+    "rule_explanation": "La revisione della patente può essere disposta dall'autorità competente quando sorgono dubbi sull'effettivo possesso dell'idoneità tecnica alla guida da parte del titolare."
+  }
+}

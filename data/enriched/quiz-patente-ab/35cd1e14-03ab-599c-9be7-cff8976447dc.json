@@ -1,0 +1,33 @@
+{
+  "question_id": 4071,
+  "topic": "Segnali di pericolo",
+  "number": "19109",
+  "text": "Nel caso di attraversamento ferroviario senza barriere, i pannelli (A) sono posti prima del segnale (B)",
+  "correct_answer": true,
+  "image": "34821b0c004e42a22fc772854779ce47.jpeg",
+  "image_description": "Pannelli di preavviso e segnale di passaggio a livello senza barriere. I pannelli (A) sono segnali di preavviso di passaggio a livello senza barriere o con barriere mobili. Il numero di pannelli indica la distanza dal passaggio a livello: tre pannelli indicano una distanza maggiore. Il segnale (B) è il segnale di passaggio a livello senza barriere. I pannelli (A) sono posti prima del segnale (B) per avvisare il conducente dell'avvicinamento al passaggio a livello.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due serie di segnali stradali. La serie superiore, etichettata come (A), è composta da tre pannelli verticali rettangolari, ciascuno con strisce diagonali rosse su sfondo bianco. Questi pannelli sono disposti uno accanto all'altro. La serie inferiore, etichettata come (B), mostra un segnale a forma di croce di Sant'Andrea, con due traverse rosse su sfondo bianco, bordato di rosso. Questo è il segnale di passaggio a livello senza barriere. I pannelli (A) sono segnali di preavviso che indicano la vicinanza di un passaggio a livello senza barriere (segnale B). Il numero di pannelli (A) indica la distanza dal passaggio a livello: tre pannelli indicano la maggiore distanza. Pertanto, i pannelli (A) sono posti prima del segnale (B).",
+    "name": "Pannelli di preavviso e segnale di passaggio a livello senza barriere",
+    "description": "I pannelli (A) sono segnali di preavviso di passaggio a livello senza barriere o con barriere mobili. Il numero di pannelli indica la distanza dal passaggio a livello: tre pannelli indicano una distanza maggiore. Il segnale (B) è il segnale di passaggio a livello senza barriere. I pannelli (A) sono posti prima del segnale (B) per avvisare il conducente dell'avvicinamento al passaggio a livello."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di passaggio a livello",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "pannelli di preavviso",
+      "passaggio a livello senza barriere",
+      "segnale di pericolo",
+      "avvicinamento al passaggio a livello"
+    ],
+    "vector_search_queries": [
+      "preavviso passaggio a livello senza barriere",
+      "sequenza pannelli preavviso e segnale passaggio a livello",
+      "distanza pannelli preavviso dal segnale di passaggio a livello"
+    ],
+    "rule_explanation": "I pannelli di preavviso (A) sono posizionati prima del segnale di passaggio a livello (B) per avvisare il conducente della prossimità del pericolo."
+  }
+}

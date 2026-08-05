@@ -1,0 +1,28 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22538",
+  "text": "Il conducente deve valutare la distanza di sicurezza con riferimento anche alla velocità del veicolo che lo precede",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regolazione della velocità",
+      "Comportamento del conducente"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "velocità del veicolo",
+      "precedere",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "valutazione della distanza di sicurezza in base alla velocità del veicolo che precede",
+      "obbligo di mantenere la distanza di sicurezza adeguata in relazione alla velocità di marcia"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare collisioni, tenendo conto della velocità del veicolo che precede e delle condizioni della strada."
+  }
+}

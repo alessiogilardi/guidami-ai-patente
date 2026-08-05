@@ -1,0 +1,33 @@
+{
+  "question_id": 4216,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20764",
+  "text": "Rispetto al veicolo che procede nel senso della freccia, la striscia continua centrale in figura si trova prima di un incrocio",
+  "correct_answer": true,
+  "image": "2a8cb20b2ed164c9a0b9677bc5fd1320.jpeg",
+  "image_description": "Segnaletica orizzontale: striscia bianca continua e tratteggiata. La striscia bianca continua al centro della carreggiata, se presente, indica la separazione delle corsie in opposti sensi di marcia e non può essere superata. In questo caso, la striscia è tratteggiata, indicando che la manovra di sorpasso è consentita. Il veicolo si trova nella corsia di destra, con una freccia che indica la direzione di marcia.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di una strada con due corsie per senso di marcia, separate da una linea bianca. La linea al centro della carreggiata è tratteggiata, indicando che è consentito il sorpasso. Un veicolo nero si trova nella corsia di destra, con una freccia tratteggiata che indica la sua direzione di marcia. Non sono presenti segnali verticali o altre indicazioni stradali.",
+    "name": "Segnaletica orizzontale: striscia bianca continua e tratteggiata",
+    "description": "La striscia bianca continua al centro della carreggiata, se presente, indica la separazione delle corsie in opposti sensi di marcia e non può essere superata. In questo caso, la striscia è tratteggiata, indicando che la manovra di sorpasso è consentita. Il veicolo si trova nella corsia di destra, con una freccia che indica la direzione di marcia."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Divisione delle corsie di marcia",
+      "Validità della segnaletica stradale"
+    ],
+    "exact_keywords": [
+      "striscia continua",
+      "separazione delle corsie",
+      "sensi di marcia",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "significato della striscia continua al centro della carreggiata",
+      "divieto di superamento per striscia continua longitudinale",
+      "interpretazione della segnaletica orizzontale in prossimità di incroci"
+    ],
+    "rule_explanation": "Le strisce continue, sia longitudinali che trasversali, hanno un significato preciso e devono essere rispettate. La striscia continua al centro della carreggiata separa i sensi di marcia e non può essere superata."
+  }
+}

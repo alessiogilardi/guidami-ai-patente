@@ -1,0 +1,27 @@
+{
+  "question_id": 4416,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22744",
+  "text": "È opportuno che il conducente di un veicolo, quando in un centro abitato si imbatte in un corteo, se proprio ha molta fretta, passi rapidamente usando il clacson in maniera continua",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento in presenza di cortei",
+      "Obblighi dei conducenti in caso di cortei o funerali"
+    ],
+    "exact_keywords": [
+      "corteo",
+      "centro abitato",
+      "clacson",
+      "passare rapidamente"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente in presenza di cortei in centro abitato",
+      "obbligo di fermarsi o dare precedenza ai cortei"
+    ],
+    "rule_explanation": "Il conducente deve fermarsi o comunque dare la precedenza ai cortei, senza usare il clacson o passare rapidamente, specialmente nei centri abitati."
+  }
+}

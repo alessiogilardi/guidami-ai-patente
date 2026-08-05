@@ -1,0 +1,27 @@
+{
+  "question_id": 4380,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22384",
+  "text": "La velocità dei veicoli deve essere regolata in modo da non causare intralcio alla circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Divieto di intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "veicoli",
+      "intralcio alla circolazione",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di regolare la velocità per non creare intralcio",
+      "moderazione della velocità per la sicurezza stradale"
+    ],
+    "rule_explanation": "La velocità deve essere sempre adeguata per evitare di costituire un pericolo o un intralcio per gli altri utenti della strada."
+  }
+}

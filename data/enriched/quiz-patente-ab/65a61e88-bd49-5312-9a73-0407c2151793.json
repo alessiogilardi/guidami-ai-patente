@@ -1,0 +1,27 @@
+{
+  "question_id": 4612,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24535",
+  "text": "La patente di categoria B1 abilita anche alla guida dei veicoli che si possono condurre con la patente A1",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione delle patenti di guida",
+      "Equipollenze tra categorie di patenti"
+    ],
+    "exact_keywords": [
+      "patente B1",
+      "patente A1",
+      "veicoli",
+      "conducibili"
+    ],
+    "vector_search_queries": [
+      "differenze tra patente B1 e A1",
+      "veicoli conducibili con patente B1 e A1"
+    ],
+    "rule_explanation": "La patente B1 abilita alla guida di tricicli e quadricicli di massa a vuoto superiore a 15 kg e con potenza massima superiore a 15 kW, non equipollenti alla patente A1."
+  }
+}

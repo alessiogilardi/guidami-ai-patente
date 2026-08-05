@@ -1,0 +1,27 @@
+{
+  "question_id": 4263,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21196",
+  "text": "Il suono prolungato del fischietto da parte dell'agente preposto al traffico impone a chi ha impegnato l'incrocio di liberarlo ed eventualmente di arrestarsi subito dopo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni degli agenti del traffico",
+      "Comportamento ai incroci"
+    ],
+    "exact_keywords": [
+      "agente preposto al traffico",
+      "fischietto",
+      "segnale acustico",
+      "libera l'area di incrocio"
+    ],
+    "vector_search_queries": [
+      "segnali acustici degli agenti del traffico e comportamento ai incroci",
+      "obblighi dei conducenti in presenza di segnali acustici degli agenti preposti alla viabilità"
+    ],
+    "rule_explanation": "Il segnale acustico prolungato del fischietto da parte dell'agente impone a chi ha impegnato l'incrocio di liberarlo, fermandosi subito dopo se necessario."
+  }
+}

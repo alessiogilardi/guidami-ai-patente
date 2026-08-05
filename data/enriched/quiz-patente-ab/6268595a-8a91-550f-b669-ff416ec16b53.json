@@ -1,0 +1,27 @@
+{
+  "question_id": 4615,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24576",
+  "text": "La patente di categoria BE si può conseguire anche contestualmente alla patente di categoria B, sostenendo la prova di guida su specifico veicolo, ma bisogna aver compiuto almeno 21 anni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti anagrafici per patenti speciali",
+      "Conseguimento patenti superiori"
+    ],
+    "exact_keywords": [
+      "patente BE",
+      "patente B",
+      "prova di guida",
+      "requisiti anagrafici"
+    ],
+    "vector_search_queries": [
+      "età minima per patente BE",
+      "conseguimento patente BE contestuale a patente B"
+    ],
+    "rule_explanation": "Per conseguire la patente BE non è necessario aver compiuto 21 anni, ma è sufficiente aver già conseguito la patente B e superare la prova di guida su veicolo specifico."
+  }
+}

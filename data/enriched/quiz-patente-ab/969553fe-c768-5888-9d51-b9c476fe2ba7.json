@@ -1,0 +1,29 @@
+{
+  "question_id": 4578,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24189",
+  "text": "La spia della pressione dell'olio è di colore rosso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori luminosi del cruscotto",
+      "Spie di segnalazione del veicolo",
+      "Sistema di lubrificazione del motore"
+    ],
+    "exact_keywords": [
+      "spia",
+      "pressione dell'olio",
+      "colore rosso",
+      "avvertimento"
+    ],
+    "vector_search_queries": [
+      "significato spia rossa pressione olio motore",
+      "funzione spia pressione olio auto",
+      "colore spie cruscotto avvertimento"
+    ],
+    "rule_explanation": "La spia rossa della pressione dell'olio indica un livello critico che richiede l'arresto immediato del veicolo per evitare danni gravi al motore."
+  }
+}

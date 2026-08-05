@@ -1,0 +1,31 @@
+{
+  "question_id": 4078,
+  "topic": "Segnali di pericolo",
+  "number": "19190",
+  "text": "Il segnale raffigurato preannuncia una discesa e ne specifica la pendenza",
+  "correct_answer": true,
+  "image": "f765bd82ad5ae48ffb2e5ed4434c16a8.jpeg",
+  "image_description": "Segnale di pericolo - Discesa pericolosa con pendenza specificata. Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurata una rampa nera inclinata verso il basso, con la dicitura \"10%\" sovrapposta. Questo indica una discesa con una pendenza specificata.",
+    "name": "Segnale di pericolo - Discesa pericolosa con pendenza specificata",
+    "description": "Il segnale preannuncia una discesa con una pendenza del 10%. È necessario moderare la velocità e usare la marcia bassa per controllare la discesa ed evitare il surriscaldamento dei freni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di discesa pericolosa"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "discesa pericolosa",
+      "pendenza",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di pericolo per discesa con pendenza specificata",
+      "significato del segnale di discesa pericolosa con indicazione della pendenza"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante una discesa con pendenza specifica preannuncia tale condizione stradale, invitando alla massima prudenza e all'adeguamento della velocità."
+  }
+}

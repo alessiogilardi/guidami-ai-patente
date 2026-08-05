@@ -1,0 +1,27 @@
+{
+  "question_id": 4420,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22773",
+  "text": "In caso di traffico intenso il conducente deve regolare la propria velocità uniformandola il più possibile a quella della corrente di traffico che scorre lungo la corsia occupata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Adeguamento della velocità al traffico",
+      "Regolazione della velocità in base alle condizioni di circolazione"
+    ],
+    "exact_keywords": [
+      "traffico intenso",
+      "regolare la velocità",
+      "corrente di traffico",
+      "corsia occupata"
+    ],
+    "vector_search_queries": [
+      "adeguamento velocità traffico intenso",
+      "velocità corrente di traffico in colonna"
+    ],
+    "rule_explanation": "In caso di traffico intenso, il conducente deve adeguare la propria velocità a quella della colonna di veicoli per garantire fluidità e sicurezza."
+  }
+}

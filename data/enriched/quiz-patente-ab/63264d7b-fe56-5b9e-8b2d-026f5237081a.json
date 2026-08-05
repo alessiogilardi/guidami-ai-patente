@@ -1,0 +1,27 @@
+{
+  "question_id": 4378,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22364",
+  "text": "Il limite di velocità sulle autostrade per coloro che hanno conseguito la patente da meno di tre anni è di 110 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per neopatentati",
+      "Periodo di prova per neopatentati"
+    ],
+    "exact_keywords": [
+      "neopatentati",
+      "limite di velocità",
+      "autostrada",
+      "patente da meno di tre anni"
+    ],
+    "vector_search_queries": [
+      "limiti di velocità per neopatentati in autostrada",
+      "velocità massima per conducenti con patente da meno di tre anni"
+    ],
+    "rule_explanation": "Per i primi tre anni dal conseguimento della patente, i neopatentati non possono superare i 100 km/h sulle autostrade e 90 km/h sulle strade extraurbane principali."
+  }
+}

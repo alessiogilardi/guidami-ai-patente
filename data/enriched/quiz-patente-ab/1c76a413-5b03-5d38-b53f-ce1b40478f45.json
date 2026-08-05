@@ -1,0 +1,27 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24676",
+  "text": "Circolare con veicolo che non sia stato sottoposto alla prescritta revisione periodica comporta una perdita di punti sulla patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di revisione periodica del veicolo",
+      "Sanzioni amministrative pecuniarie"
+    ],
+    "exact_keywords": [
+      "revisione periodica",
+      "sottoposto a revisione",
+      "sanzione amministrativa pecuniaria",
+      "documenti di circolazione"
+    ],
+    "vector_search_queries": [
+      "sanzioni per mancata revisione del veicolo",
+      "conseguenze della circolazione senza revisione periodica"
+    ],
+    "rule_explanation": "La circolazione con un veicolo non sottoposto a revisione comporta una sanzione amministrativa pecuniaria, ma non la decurtazione di punti dalla patente."
+  }
+}

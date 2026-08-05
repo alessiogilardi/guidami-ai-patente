@@ -1,0 +1,34 @@
+{
+  "question_id": 4052,
+  "topic": "Segnali di pericolo",
+  "number": "18872",
+  "text": "In presenza del segnale raffigurato è necessario moderare la velocità per evitare eccessive sollecitazioni e danni alle sospensioni",
+  "correct_answer": true,
+  "image": "4232f21e2893d81ba19d77d4285f18fe.jpeg",
+  "image_description": "Segnale di pericolo - Serie di dossi. Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di dossi o una cunetta. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una irregolarità del manto stradale.",
+    "name": "Segnale di pericolo - Serie di dossi",
+    "description": "Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Moderazione della velocità",
+      "Condizioni della strada"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "serie di dossi",
+      "moderare la velocità",
+      "sollecitazioni al veicolo",
+      "danni alle sospensioni"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di segnali di pericolo per dossi",
+      "effetti dei dossi sulla stabilità del veicolo e necessità di ridurre la velocità",
+      "preavviso di dossi e adeguatezza della velocità per evitare danni alle sospensioni"
+    ],
+    "rule_explanation": "Il segnale di pericolo 'serie di dossi' impone di moderare la velocità per preservare il veicolo da sollecitazioni e danni, mantenendo il controllo."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4570,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24139",
+  "text": "Nel caso in cui il rimorchio rimanga inattivo per lungo tempo è consigliabile, se possibile, mantenere gli pneumatici sollevati da terra, applicando appositi sostegni sotto al telaio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stoccaggio di veicoli rimorchiati",
+      "Manutenzione degli pneumatici"
+    ],
+    "exact_keywords": [
+      "rimorchio",
+      "pneumatici",
+      "sostegni",
+      "telaio",
+      "inattivo"
+    ],
+    "vector_search_queries": [
+      "stoccaggio rimorchio inattivo pneumatici a terra",
+      "manutenzione rimorchio fermo a lungo pneumatici sollevati"
+    ],
+    "rule_explanation": "Per prevenire deformazioni e danni agli pneumatici di un rimorchio inattivo per lungo tempo, è consigliabile sollevarli da terra con sostegni applicati al telaio."
+  }
+}

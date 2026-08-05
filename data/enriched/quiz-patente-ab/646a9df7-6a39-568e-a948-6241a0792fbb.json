@@ -1,0 +1,29 @@
+{
+  "question_id": 4627,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24739",
+  "text": "In presenza di tratti di strada ghiacciati è opportuno aumentare la distanza di sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condizioni avverse della strada",
+      "Prevenzione degli incidenti"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "strada ghiacciata",
+      "condizioni di marcia",
+      "manovre opportune"
+    ],
+    "vector_search_queries": [
+      "aumento distanza di sicurezza su strada ghiacciata",
+      "comportamento di guida su superfici scivolose",
+      "prevenzione incidenti con fondo stradale ghiacciato"
+    ],
+    "rule_explanation": "In presenza di ghiaccio o altre condizioni scivolose, è necessario aumentare la distanza di sicurezza per mantenere il controllo del veicolo e prevenire incidenti."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4668,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25046",
+  "text": "Nell'assicurazione per la responsabilità civile auto (R.C.A.), il contratto con la formula \"bonus malus\" comporta una variazione annuale del premio di assicurazione, in base al numero di incidenti causati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Assicurazione R.C.A.",
+      "Formula Bonus-Malus",
+      "Variazione del premio assicurativo"
+    ],
+    "exact_keywords": [
+      "bonus malus",
+      "premio assicurativo",
+      "responsabilità civile auto",
+      "sinistro causato"
+    ],
+    "vector_search_queries": [
+      "variazione premio assicurazione R.C.A. con bonus malus",
+      "meccanismo bonus malus assicurazione auto",
+      "impatto sinistri sul premio R.C.A."
+    ],
+    "rule_explanation": "La formula bonus-malus prevede una variazione annuale del premio R.C.A. in base alla sinistrosità dell'assicurato, premiando l'assenza di incidenti con uno sconto e penalizzando quelli causati con un aumento."
+  }
+}

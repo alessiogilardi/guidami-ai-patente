@@ -1,0 +1,33 @@
+{
+  "question_id": 4215,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20757",
+  "text": "L'isola di traffico in figura è realizzata con strisce bianche oblique",
+  "correct_answer": true,
+  "image": "80f7af983ab47f4a440f922cae6c345a.jpeg",
+  "image_description": "Isola di traffico e incrocio. L'isola di traffico è delimitata da strisce bianche oblique, indicando una parte della carreggiata che non deve essere percorsa. I veicoli A e C si trovano su una strada che si biforca, mentre il veicolo B si immette da una strada laterale. Il veicolo A si trova sulla corsia di destra della strada che si biforca, mentre il veicolo C si trova sulla corsia di sinistra. Il veicolo B si trova sulla strada laterale, pronto a immettersi. La segnaletica orizzontale indica che l'area tra le strisce oblique non è carrabile.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una scena di guida con un'isola di traffico disegnata sulla carreggiata. L'isola è delimitata da strisce bianche oblique, che indicano una zona non transitabile. Ci sono tre veicoli: A (giallo), B (rosso) e C (nero). Il veicolo A si trova sulla strada principale, in una corsia che prosegue dritta o svolta a destra. Il veicolo C si trova sulla stessa strada principale, ma in una corsia che si separa per andare a sinistra. Il veicolo B si trova su una strada secondaria che si immette nella strada principale, in prossimità della biforcazione e dell'isola di traffico. La geometria della strada suggerisce un incrocio o una deviazione. La presenza delle strisce oblique sull'isola di traffico indica che essa non deve essere impegnata dai veicoli.",
+    "name": "Isola di traffico e incrocio",
+    "description": "L'isola di traffico è delimitata da strisce bianche oblique, indicando una parte della carreggiata che non deve essere percorsa. I veicoli A e C si trovano su una strada che si biforca, mentre il veicolo B si immette da una strada laterale. Il veicolo A si trova sulla corsia di destra della strada che si biforca, mentre il veicolo C si trova sulla corsia di sinistra. Il veicolo B si trova sulla strada laterale, pronto a immettersi. La segnaletica orizzontale indica che l'area tra le strisce oblique non è carrabile."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Isole di traffico",
+      "Delimitazione aree interdette alla circolazione"
+    ],
+    "exact_keywords": [
+      "segnaletica orizzontale",
+      "isola di traffico",
+      "strisce bianche oblique",
+      "aree non carrabili"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per isole di traffico",
+      "strisce bianche oblique delimitanti aree non carrabili",
+      "isola di traffico e suo significato nella circolazione stradale"
+    ],
+    "rule_explanation": "Le isole di traffico sono delimitate da segnaletica orizzontale costituita da strisce bianche oblique, indicando le parti della carreggiata non interessate dal flusso della circolazione e che non devono essere occupate o attraversate."
+  }
+}

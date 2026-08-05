@@ -1,0 +1,27 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23028",
+  "text": "Lo specchio retrovisore laterale sinistro deve essere utilizzato prima di iniziare una manovra di cambio corsia verso sinistra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente prima di una manovra",
+      "Uso degli specchietti retrovisori"
+    ],
+    "exact_keywords": [
+      "specchio retrovisore laterale sinistro",
+      "cambio di corsia",
+      "manovra",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "uso specchietto retrovisore laterale sinistro prima di cambio corsia verso sinistra",
+      "obbligo di controllo visivo prima di manovra di cambio corsia"
+    ],
+    "rule_explanation": "Prima di ogni manovra, specialmente un cambio di corsia, il conducente deve assicurarsi, anche tramite l'uso degli specchietti retrovisori, che la manovra possa essere effettuata senza pericolo o intralcio per gli altri utenti della strada."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4302,
+  "topic": "Segnali di indicazione",
+  "number": "21577",
+  "text": "Il segnale raffigurato indica il numero di alberghi che si trovano nelle vicinanze",
+  "correct_answer": false,
+  "image": "24002cad8355d9a15b8b1fc9390b7788.jpeg",
+  "image_description": "Preavviso di indicazioni stradali (servizi alberghieri e informazioni turistiche). Il segnale indica la presenza di un ufficio informazioni turistico-alberghiere a 150 metri.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di preavviso di indicazioni stradali. Il segnale è di colore marrone con due riquadri bianchi al suo interno. Il riquadro di sinistra contiene il pittogramma di una 'i' minuscola in nero, che indica informazioni. Il riquadro di destra contiene il pittogramma di un letto, che indica un albergo o un alloggio. Sotto questi due riquadri, vi è un pannello integrativo rettangolare di colore bianco con il testo '150 m' in nero, che indica la distanza.",
+    "name": "Preavviso di indicazioni stradali (servizi alberghieri e informazioni turistiche)",
+    "description": "Il segnale indica la presenza di un ufficio informazioni turistico-alberghiere a 150 metri."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso di direzione e di inizio percorso per servizi",
+      "Segnaletica turistica e di servizio"
+    ],
+    "exact_keywords": [
+      "segnali di preavviso",
+      "ufficio informazioni turistiche",
+      "località turistica",
+      "servizi alberghieri"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di indicazioni stradali per servizi turistici e alberghieri",
+      "significato dei segnali di preavviso per uffici informazioni turistiche"
+    ],
+    "rule_explanation": "Il segnale di preavviso indica la presenza di un ufficio informazioni turistiche o di servizi alberghieri, non il numero di alberghi presenti."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4499,
+  "topic": "Norme sul sorpasso",
+  "number": "23490",
+  "text": "E' sempre vietato effettuare la manovra di sorpasso a destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Regole di precedenza",
+      "Divieti di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "vietato",
+      "destra",
+      "veicolo a due ruote",
+      "altri veicoli"
+    ],
+    "vector_search_queries": [
+      "sorpasso a destra vietato salvo eccezioni",
+      "superamento a destra di veicoli a due ruote",
+      "condizioni per sorpasso a destra"
+    ],
+    "rule_explanation": "Il sorpasso è vietato a destra, salvo che il veicolo da superare non si sia disposto a margine sinistro della carreggiata e si tratti di veicoli a due ruote."
+  }
+}

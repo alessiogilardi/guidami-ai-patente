@@ -1,0 +1,27 @@
+{
+  "question_id": 4395,
+  "topic": "Distanza di sicurezza",
+  "number": "22564",
+  "text": "La distanza di sicurezza si deve rispettare al di sopra di una certa velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Obbligo di mantenere la distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "pericolo",
+      "ostacolo",
+      "veicolo che precede"
+    ],
+    "vector_search_queries": [
+      "obbligo di mantenere la distanza di sicurezza tra veicoli",
+      "come calcolare la distanza di sicurezza dal veicolo che precede"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere sempre mantenuta per evitare pericoli, indipendentemente dalla velocità del veicolo."
+  }
+}

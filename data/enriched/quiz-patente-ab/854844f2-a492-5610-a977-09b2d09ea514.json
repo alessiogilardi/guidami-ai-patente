@@ -1,0 +1,27 @@
+{
+  "question_id": 4644,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24875",
+  "text": "Se un infortunato della strada ha una ferita sanguinante non bisogna coprirla, per facilitare l'arresto spontaneo del sangue",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di ferite",
+      "Gestione delle emorragie"
+    ],
+    "exact_keywords": [
+      "infortunato della strada",
+      "ferita sanguinante",
+      "coprire la ferita",
+      "arresto dell'emorragia"
+    ],
+    "vector_search_queries": [
+      "gestione ferite aperte primo soccorso",
+      "tecniche di medicazione emorragia stradale"
+    ],
+    "rule_explanation": "In caso di ferita sanguinante, è necessario coprirla con materiale sterile per favorire l'arresto dell'emorragia e prevenire infezioni."
+  }
+}

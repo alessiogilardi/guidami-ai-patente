@@ -1,0 +1,27 @@
+{
+  "question_id": 4410,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22676",
+  "text": "E' vietato, in quanto costituisce pericolo o intralcio per la circolazione, circolare a velocità troppo bassa senza giustificato motivo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità adeguata alle condizioni di traffico",
+      "Pericolo e intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "velocità troppo bassa",
+      "giustificato motivo",
+      "pericolo per la circolazione",
+      "intralcio alla circolazione"
+    ],
+    "vector_search_queries": [
+      "divieto di circolare a velocità troppo bassa senza giustificato motivo",
+      "obbligo di mantenere una velocità adeguata per non creare pericolo o intralcio"
+    ],
+    "rule_explanation": "È vietato circolare a velocità eccessivamente ridotta, se priva di giustificato motivo, in quanto ciò può costituire pericolo o intralcio per gli altri utenti della strada."
+  }
+}

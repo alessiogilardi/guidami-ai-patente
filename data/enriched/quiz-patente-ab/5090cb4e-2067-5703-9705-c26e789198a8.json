@@ -1,0 +1,29 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24696",
+  "text": "La patente di guida di categoria B, salvo diversa limitazione riportata sul documento stesso, non ha scadenza di validità fino al compimento dei 50 anni di età",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Revisione della patente",
+      "Limiti di età per la validità della patente"
+    ],
+    "exact_keywords": [
+      "patente di guida categoria B",
+      "validità",
+      "revisione della patente",
+      "limiti di età"
+    ],
+    "vector_search_queries": [
+      "validità patente B dopo i 50 anni",
+      "revisione patente di guida per età",
+      "scadenza patente B per limiti di età"
+    ],
+    "rule_explanation": "La patente di categoria B, dopo il compimento dei 50 anni, deve essere sottoposta a revisione periodica per verificarne la persistenza dei requisiti fisici e psichici, con scadenze che variano in base all'età."
+  }
+}

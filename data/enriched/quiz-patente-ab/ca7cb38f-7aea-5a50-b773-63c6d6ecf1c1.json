@@ -1,0 +1,29 @@
+{
+  "question_id": 4646,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24890",
+  "text": "Se ad un infortunato della strada è entrato un corpo estraneo in un occhio non bisogna mai bendargli l'occhio ferito",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso oculare",
+      "Gestione corpi estranei nell'occhio",
+      "Sicurezza in caso di infortunio stradale"
+    ],
+    "exact_keywords": [
+      "corpo estraneo",
+      "occhio ferito",
+      "bendare",
+      "infortunato della strada"
+    ],
+    "vector_search_queries": [
+      "rimozione corpo estraneo occhio primo soccorso",
+      "gestione occhio ferito corpo estraneo",
+      "primo soccorso infortunato occhio"
+    ],
+    "rule_explanation": "In caso di corpo estraneo nell'occhio di un infortunato, non si deve bendare l'occhio se il corpo estraneo è visibile e facilmente rimovibile; altrimenti, si deve coprire l'occhio per evitare ulteriori danni."
+  }
+}

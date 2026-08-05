@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23530",
+  "text": "E' consentito il sorpasso sulle intersezioni purché non provenga nessuno dalla destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso in intersezione",
+      "Regole di circolazione stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "intersezione",
+      "provenire dalla destra",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso nelle intersezioni stradali",
+      "sorpasso in prossimità di incroci stradali"
+    ],
+    "rule_explanation": "Il sorpasso è vietato nelle intersezioni stradali, indipendentemente da chi provenga da destra."
+  }
+}

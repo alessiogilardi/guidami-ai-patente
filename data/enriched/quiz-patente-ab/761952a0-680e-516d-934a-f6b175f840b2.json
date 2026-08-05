@@ -1,0 +1,27 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22491",
+  "text": "Se si percorre una lunga discesa con il cambio in folle e a motore spento, conviene estrarre la chiave di accensione del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida con marcia innestata in discesa",
+      "Spegnimento del motore durante la marcia"
+    ],
+    "exact_keywords": [
+      "discesa",
+      "cambio in folle",
+      "motore spento",
+      "chiave di accensione"
+    ],
+    "vector_search_queries": [
+      "pericolo di percorrere lunghe discese con cambio in folle e motore spento",
+      "obbligo di mantenere il motore acceso e marcia innestata in discesa"
+    ],
+    "rule_explanation": "In discesa, è obbligatorio mantenere il cambio in marcia e il motore acceso per avere un controllo efficace del veicolo, estrarre la chiave è pericoloso."
+  }
+}

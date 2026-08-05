@@ -1,0 +1,27 @@
+{
+  "question_id": 4416,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22743",
+  "text": "È opportuno che il conducente di un veicolo, quando in un centro abitato si imbatte in un corteo, accenda le luci di profondità per vedere meglio ed evitare incidenti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento in presenza di cortei",
+      "Uso dei dispositivi di illuminazione"
+    ],
+    "exact_keywords": [
+      "corteo",
+      "luci di profondità",
+      "centro abitato",
+      "condotta del conducente"
+    ],
+    "vector_search_queries": [
+      "divieto di uso luci di profondità in presenza di cortei in centro abitato",
+      "comportamento del conducente in presenza di cortei e uso dei fari"
+    ],
+    "rule_explanation": "È vietato usare le luci di profondità in presenza di altri veicoli o pedoni, anche se in un corteo, per non abbagliare e creare pericolo."
+  }
+}

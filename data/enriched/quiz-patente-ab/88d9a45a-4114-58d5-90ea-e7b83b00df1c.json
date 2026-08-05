@@ -1,0 +1,27 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24412",
+  "text": "Il casco deve essere completamente allacciato solo sui percorsi extraurbani",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso del casco protettivo",
+      "Sicurezza alla guida motociclistica e ciclomotoristica"
+    ],
+    "exact_keywords": [
+      "casco protettivo",
+      "cinture di sicurezza",
+      "sistemi di ritenuta per bambini",
+      "allacciato"
+    ],
+    "vector_search_queries": [
+      "obbligo di allacciare il casco protettivo",
+      "uso del casco nei percorsi urbani ed extraurbani"
+    ],
+    "rule_explanation": "Il casco protettivo deve essere sempre indossato e completamente allacciato, sia nei percorsi urbani che extraurbani, per garantire la sicurezza del conducente."
+  }
+}

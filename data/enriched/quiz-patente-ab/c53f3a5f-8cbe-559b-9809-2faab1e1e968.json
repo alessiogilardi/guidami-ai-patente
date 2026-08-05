@@ -1,0 +1,27 @@
+{
+  "question_id": 4551,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23957",
+  "text": "In autostrada, un autoveicolo può trainare un veicolo che non sia un rimorchio, se questo non può più circolare per qualsiasi grave motivo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rimozione di veicoli in avaria",
+      "Norme di circolazione in autostrada"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "veicolo in avaria",
+      "trainare",
+      "rimorchio"
+    ],
+    "vector_search_queries": [
+      "divieto di traino veicoli in avaria in autostrada",
+      "eccezioni al divieto di traino in autostrada"
+    ],
+    "rule_explanation": "In autostrada è vietato il soccorso o traino di veicoli in avaria da parte di altri veicoli, ad eccezione del traino di rimorchi o di veicoli che non possano più circolare per gravi motivi, purché effettuato da una ditta specializzata."
+  }
+}

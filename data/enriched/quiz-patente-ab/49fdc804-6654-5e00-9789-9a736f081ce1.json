@@ -1,0 +1,29 @@
+{
+  "question_id": 4402,
+  "topic": "Distanza di sicurezza",
+  "number": "22615",
+  "text": "Lo spazio di frenatura diminuisce sul tratto in discesa di un dosso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di frenatura",
+      "Fattori che influenzano la frenata"
+    ],
+    "exact_keywords": [
+      "spazio di frenatura",
+      "discesa",
+      "dosso",
+      "distanza di sicurezza"
+    ],
+    "vector_search_queries": [
+      "influenza della pendenza sullo spazio di frenatura",
+      "aumento dello spazio di frenatura in discesa",
+      "calcolo della distanza di sicurezza in relazione alla pendenza"
+    ],
+    "rule_explanation": "Lo spazio di frenatura aumenta in discesa a causa della forza di gravità, non diminuisce. La distanza di sicurezza deve essere adeguata."
+  }
+}

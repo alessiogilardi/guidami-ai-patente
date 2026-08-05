@@ -1,0 +1,32 @@
+{
+  "question_id": 4353,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22058",
+  "text": "Il pannello integrativo raffigurato, posto sotto il segnale PARCHEGGIO, indica che si può parcheggiare nei giorni festivi dalle ore 8.00 alle ore 20.00",
+  "correct_answer": false,
+  "image": "7f5b44078b4cf0428cc7a86d41145a29.jpeg",
+  "image_description": "Pannello integrativo - Giorni lavorativi e orario. Il pannello integrativo indica che la prescrizione del segnale a cui è abbinato è valida nei giorni lavorativi, dalle ore 8:00 alle ore 20:00.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare bianco con bordo nero. Sulla sinistra è presente il pittogramma di due martelli incrociati, che simboleggia le officine o i giorni lavorativi. Sulla destra, è indicata una fascia oraria: dalle 8:00 alle 20:00. Questo pannello è tipicamente posto sotto un altro segnale stradale per limitarne l'applicazione.",
+    "name": "Pannello integrativo - Giorni lavorativi e orario",
+    "description": "Il pannello integrativo indica che la prescrizione del segnale a cui è abbinato è valida nei giorni lavorativi, dalle ore 8:00 alle ore 20:00."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Pannelli integrativi",
+      "Limitazioni alla sosta e al parcheggio"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "giorni lavorativi",
+      "orario",
+      "segnali di indicazione"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo che limita la validità dei segnali ai giorni lavorativi e a un determinato orario",
+      "interpretazione pannelli integrativi con indicazione di giorni feriali e orario specifico"
+    ],
+    "rule_explanation": "Il pannello integrativo raffigurato, che indica i giorni lavorativi e l'orario, non si riferisce ai giorni festivi. La limitazione oraria si applica solo nei giorni feriali."
+  }
+}

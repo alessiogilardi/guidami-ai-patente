@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22351",
+  "text": "Il limite massimo di velocità per un autoveicolo fino a 3,5 tonnellate nei centri abitati è di 40 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità nei centri abitati",
+      "Regolamentazione della velocità per autoveicoli"
+    ],
+    "exact_keywords": [
+      "centri abitati",
+      "autoveicoli",
+      "limite massimo di velocità",
+      "tonnellate"
+    ],
+    "vector_search_queries": [
+      "limite velocità autoveicoli centri abitati 50 km/h",
+      "velocità massima consentita per autoveicoli fino a 3,5 tonnellate nei centri abitati"
+    ],
+    "rule_explanation": "Nei centri abitati, il limite massimo di velocità per gli autoveicoli fino a 3,5 tonnellate è di 50 km/h, non 40 km/h."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4020,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18519",
+  "text": "Il marciapiede è una parte della strada riservata, di norma, ai pedoni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso della strada",
+      "Pedoni",
+      "Infrastrutture stradali"
+    ],
+    "exact_keywords": [
+      "marciapiede",
+      "pedoni",
+      "strada",
+      "riservato"
+    ],
+    "vector_search_queries": [
+      "definizione e uso del marciapiede",
+      "destinazione d'uso del marciapiede per i pedoni"
+    ],
+    "rule_explanation": "Il marciapiede è una porzione della strada destinata prevalentemente alla circolazione dei pedoni, separata dalla carreggiata."
+  }
+}

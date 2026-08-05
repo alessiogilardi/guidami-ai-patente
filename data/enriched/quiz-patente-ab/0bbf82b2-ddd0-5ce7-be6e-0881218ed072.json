@@ -1,0 +1,29 @@
+{
+  "question_id": 4404,
+  "topic": "Distanza di sicurezza",
+  "number": "22628",
+  "text": "Lo spazio totale di arresto aumenta se la strada è innevata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Spazio di arresto",
+      "Condizioni avverse della strada"
+    ],
+    "exact_keywords": [
+      "spazio totale di arresto",
+      "distanza di reazione",
+      "distanza di frenatura",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "aumento spazio di arresto su strada innevata",
+      "influenza aderenza stradale su spazio di arresto",
+      "distanza di arresto in condizioni di scarsa aderenza"
+    ],
+    "rule_explanation": "Lo spazio totale di arresto è la somma della distanza di reazione e di frenatura; aumenta in condizioni di scarsa aderenza come strada innevata, richiedendo maggiore spazio per fermarsi."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4441,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22970",
+  "text": "Il conducente che intende immettersi nel flusso della circolazione deve assicurarsi di poter effettuare la manovra senza creare pericolo o intralcio agli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Immissione nel flusso di circolazione",
+      "Sicurezza stradale",
+      "Comportamento degli utenti della strada"
+    ],
+    "exact_keywords": [
+      "immissione nel flusso della circolazione",
+      "pericolo o intralcio",
+      "altri utenti della strada",
+      "manovra"
+    ],
+    "vector_search_queries": [
+      "obbligo di non creare pericolo o intralcio durante l'immissione nel flusso di circolazione",
+      "condotta da tenere per immettersi in sicurezza nella circolazione stradale"
+    ],
+    "rule_explanation": "Chi si immette nella circolazione deve garantire che la manovra non costituisca pericolo o intralcio per gli altri utenti, adeguando la propria condotta alle circostanze."
+  }
+}

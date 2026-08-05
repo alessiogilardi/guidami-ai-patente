@@ -1,0 +1,27 @@
+{
+  "question_id": 4024,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18555",
+  "text": "I tricicli a motore sono veicoli a motore a tre ruote simmetriche",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di triciclo a motore",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "tricicli a motore",
+      "veicoli a motore",
+      "tre ruote simmetriche",
+      "definizione di triciclo a motore"
+    ],
+    "vector_search_queries": [
+      "definizione di triciclo a motore secondo il CdS",
+      "caratteristiche dei tricicli a motore (tre ruote simmetriche)"
+    ],
+    "rule_explanation": "I tricicli a motore sono veicoli a motore caratterizzati da tre ruote disposte simmetricamente rispetto all'asse longitudinale mediano, e sono soggetti a specifiche normative di circolazione."
+  }
+}

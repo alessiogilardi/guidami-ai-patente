@@ -1,0 +1,29 @@
+{
+  "question_id": 4009,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18412",
+  "text": "Una zona a traffico limitato è un'area vietata al transito dei pedoni durante le ore notturne",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Zone a traffico limitato (ZTL)",
+      "Regolamentazione della circolazione stradale",
+      "Tutela dei pedoni"
+    ],
+    "exact_keywords": [
+      "zona a traffico limitato",
+      "divieto di transito",
+      "pedoni",
+      "ore notturne"
+    ],
+    "vector_search_queries": [
+      "definizione e scopo delle zone a traffico limitato (ZTL)",
+      "regolamentazione del transito pedonale nelle aree urbane",
+      "limitazioni di accesso veicolare nelle ZTL"
+    ],
+    "rule_explanation": "Le ZTL sono aree con restrizioni di accesso per veicoli, non per pedoni, e le limitazioni orarie riguardano la circolazione veicolare, non la presenza pedonale."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4006,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18384",
+  "text": "L'isola di traffico facilita la salita e la discesa di passeggeri da tram, filobus e autobus",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Isola di traffico",
+      "Fermata del trasporto pubblico",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "isola di traffico",
+      "salita e discesa passeggeri",
+      "fermata del veicolo",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "funzione dell'isola di traffico nella regolazione della circolazione",
+      "differenza tra isola di traffico e fermata del trasporto pubblico",
+      "segnaletica stradale per isole di traffico e fermate"
+    ],
+    "rule_explanation": "L'isola di traffico è una zona della strada, delimitata da segnaletica orizzontale o verticale, destinata a regolare il traffico. Non è una fermata per la salita/discesa passeggeri."
+  }
+}

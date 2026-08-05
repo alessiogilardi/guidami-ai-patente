@@ -1,0 +1,29 @@
+{
+  "question_id": 4705,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25311",
+  "text": "Il servofreno a depressione non può funzionare a motore spento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Servofreno a depressione",
+      "Funzionamento del servofreno",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "servofreno a depressione",
+      "motore spento",
+      "funzionamento",
+      "vuoto"
+    ],
+    "vector_search_queries": [
+      "principio di funzionamento servofreno a depressione",
+      "servofreno e motore spento",
+      "efficacia servofreno senza vuoto motore"
+    ],
+    "rule_explanation": "Il servofreno a depressione sfrutta il vuoto generato dal motore per assistere la frenata; a motore spento, tale vuoto non è disponibile, rendendo il servofreno inefficace."
+  }
+}

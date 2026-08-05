@@ -1,0 +1,27 @@
+{
+  "question_id": 4398,
+  "topic": "Distanza di sicurezza",
+  "number": "22580",
+  "text": "La distanza minima di sicurezza se si viaggia a 100 km/h deve essere di circa 28 metri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "distanza minima di sicurezza",
+      "velocità",
+      "veicolo che precede",
+      "100 km/h"
+    ],
+    "vector_search_queries": [
+      "calcolo distanza di sicurezza in base alla velocità",
+      "distanza minima tra veicoli in marcia a 100 km/h"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare collisioni, tenendo conto della velocità e delle condizioni di marcia. A 100 km/h, circa 28 metri è una stima ragionevole."
+  }
+}

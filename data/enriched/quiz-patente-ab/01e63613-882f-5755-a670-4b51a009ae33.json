@@ -1,0 +1,27 @@
+{
+  "question_id": 4678,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25116",
+  "text": "Una maggiore emissione di fumo dallo scarico è sintomo di maggior inquinamento causato dal motore",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico da veicoli a motore",
+      "Emissioni inquinanti"
+    ],
+    "exact_keywords": [
+      "emissione di fumo",
+      "motore",
+      "inquinamento atmosferico",
+      "gas di scarico"
+    ],
+    "vector_search_queries": [
+      "emissione fumo scarico motore inquinamento",
+      "causa inquinamento atmosferico fumo motore"
+    ],
+    "rule_explanation": "Un aumento delle emissioni di fumo dallo scarico indica una combustione incompleta o un malfunzionamento del motore, con conseguente maggiore inquinamento atmosferico."
+  }
+}

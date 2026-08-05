@@ -1,0 +1,29 @@
+{
+  "question_id": 4690,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25196",
+  "text": "Chi conduce un motociclo deve considerare che l'aderenza diminuisce quando trasporta un passeggero",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aderenza del veicolo",
+      "Stabilità del motociclo",
+      "Trasporto passeggero"
+    ],
+    "exact_keywords": [
+      "aderenza",
+      "motociclo",
+      "passeggero",
+      "stabilità",
+      "tenuta di strada"
+    ],
+    "vector_search_queries": [
+      "influenza del passeggero sull'aderenza del motociclo",
+      "aderenza e stabilità del motociclo con passeggero"
+    ],
+    "rule_explanation": "L'aderenza del motociclo non diminuisce necessariamente con il passeggero; anzi, un passeggero ben posizionato può migliorare la stabilità. La diminuzione dell'aderenza dipende da altri fattori."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4480,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23347",
+  "text": "Nell'incrocio rappresentato nella figura il conducente del veicolo P ha la precedenza sul veicolo B",
+  "correct_answer": true,
+  "image": "ef4c67192b45d45ffbddeb2ac385a3f6.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra e tram. L'incrocio è regolato dalla segnaletica di prescrizione che impone la precedenza a destra. Il tram (T) ha un percorso prestabilito e deve dare la precedenza ai veicoli che provengono dalla sua destra (veicolo B) e dalla sua sinistra (veicolo G). Il veicolo P, provenendo da sud, deve dare la precedenza ai veicoli che provengono dalla sua destra (veicolo G) e dalla sua sinistra (tram T). Il veicolo B, provenendo da nord, deve dare la precedenza ai veicoli che provengono dalla sua destra (tram T) e dalla sua sinistra (veicolo P). Il veicolo G, provenendo da ovest, deve dare la precedenza ai veicoli che provengono dalla sua destra (veicolo P) e dalla sua sinistra (tram T). L'ordine di transito corretto è: Tram T, Veicolo G, Veicolo P, Veicolo B.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con quattro vie di immissione. Sono presenti quattro veicoli: un tram (T) che percorre un binario che attraversa l'incrocio da est a ovest, un'autovettura blu (B) proveniente da nord, un'autovettura rossa (G) proveniente da ovest e un'autovettura nera (P) proveniente da sud. Sono presenti due segnali di pericolo di tipo triangolare con bordo rosso e sfondo bianco, con la punta verso il basso, che indicano \"dare precedenza\" (segnale di prescrizione). Uno è posizionato all'incrocio tra la via da cui proviene il veicolo P e la via principale, e l'altro è posizionato all'incrocio tra la via da cui proviene il veicolo B e la via principale. I binari del tram attraversano l'incrocio. Le linee tratte tratteggiate indicano le traiettorie dei veicoli. Il tram T ha la precedenza sui veicoli B e P, ma deve dare la precedenza al veicolo G. Il veicolo G ha la precedenza sul veicolo P e sul tram T, ma deve dare la precedenza al veicolo B. Il veicolo P deve dare la precedenza al tram T e al veicolo G. Il veicolo B deve dare la precedenza al tram T e al veicolo G. L'ordine di transito è: G, T, P, B.",
+    "name": "Incrocio a raso con precedenza a destra e tram",
+    "description": "L'incrocio è regolato dalla segnaletica di prescrizione che impone la precedenza a destra. Il tram (T) ha un percorso prestabilito e deve dare la precedenza ai veicoli che provengono dalla sua destra (veicolo B) e dalla sua sinistra (veicolo G). Il veicolo P, provenendo da sud, deve dare la precedenza ai veicoli che provengono dalla sua destra (veicolo G) e dalla sua sinistra (tram T). Il veicolo B, provenendo da nord, deve dare la precedenza ai veicoli che provengono dalla sua destra (tram T) e dalla sua sinistra (veicolo P). Il veicolo G, provenendo da ovest, deve dare la precedenza ai veicoli che provengono dalla sua destra (veicolo P) e dalla sua sinistra (tram T). L'ordine di transito corretto è: Tram T, Veicolo G, Veicolo P, Veicolo B."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Precedenza dei tram"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "precedenza a destra",
+      "tram",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio non regolato",
+      "precedenza tram rispetto ai veicoli"
+    ],
+    "rule_explanation": "Negli incroci non regolati, la precedenza è a destra. I tram, pur avendo un percorso, devono rispettare la precedenza a destra e sinistra, salvo diversa segnalazione."
+  }
+}

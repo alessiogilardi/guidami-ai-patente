@@ -1,0 +1,27 @@
+{
+  "question_id": 4263,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21198",
+  "text": "Il suono prolungato del fischietto da parte dell'agente preposto al traffico indica che occorre tornare indietro",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni acustiche degli agenti del traffico",
+      "Interpretazione dei segnali degli agenti del traffico"
+    ],
+    "exact_keywords": [
+      "fischietto",
+      "segnale acustico",
+      "agente preposto alla circolazione",
+      "direttive"
+    ],
+    "vector_search_queries": [
+      "significato suono prolungato fischietto agente traffico",
+      "segnali acustici agenti preposti alla circolazione stradale"
+    ],
+    "rule_explanation": "Il suono prolungato del fischietto da parte dell'agente del traffico indica di arrestarsi e attendere ulteriori istruzioni, non di tornare indietro."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4705,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25307",
+  "text": "Le parti dell'impianto frenante maggiormente sollecitate dalle alte temperature sono le guarnizioni di attrito",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Componenti dell'impianto frenante",
+      "Effetti del calore sui freni",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "impianto frenante",
+      "guarnizioni di attrito",
+      "alte temperature",
+      "usura"
+    ],
+    "vector_search_queries": [
+      "componenti impianto frenante soggetti a calore",
+      "usura guarnizioni freni per alte temperature",
+      "effetti termici su freni auto"
+    ],
+    "rule_explanation": "Le guarnizioni di attrito dell'impianto frenante sono soggette a un'intensa sollecitazione termica dovuta all'attrito durante la frenata, che ne accelera l'usura."
+  }
+}

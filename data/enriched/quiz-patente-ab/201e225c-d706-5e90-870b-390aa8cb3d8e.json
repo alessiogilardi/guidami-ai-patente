@@ -1,0 +1,28 @@
+{
+  "question_id": 4617,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24591",
+  "text": "La revisione della patente di guida può essere disposta a seguito di incidente stradale che ha procurato lesioni gravi a persone",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione della patente di guida",
+      "Incidente stradale con lesioni gravi",
+      "Sanzioni amministrative accessorie"
+    ],
+    "exact_keywords": [
+      "revisione patente",
+      "incidente stradale",
+      "lesioni gravi a persone",
+      "disposta dall'autorità competente"
+    ],
+    "vector_search_queries": [
+      "disposizione di revisione della patente a seguito di incidente con lesioni gravi",
+      "accertamento dei requisiti per la guida dopo sinistro con feriti gravi"
+    ],
+    "rule_explanation": "La revisione della patente può essere disposta dall'autorità competente quando un incidente stradale provoca lesioni gravi a persone, al fine di accertare la persistenza dei requisiti fisici, psichici e morali."
+  }
+}

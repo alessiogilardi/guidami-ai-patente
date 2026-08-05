@@ -1,0 +1,28 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22309",
+  "text": "E' obbligatorio ridurre la velocità nelle strade in salita",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità adeguata alle condizioni di guida",
+      "Obbligo di moderazione della velocità"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "strade in salita",
+      "condizioni di traffico",
+      "condizioni atmosferiche",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alle pendenze stradali",
+      "obbligo di moderare la velocità in relazione alle caratteristiche della strada e alle condizioni di traffico"
+    ],
+    "rule_explanation": "Non è obbligatorio ridurre la velocità solo perché la strada è in salita, ma occorre farlo in base alle condizioni di traffico, atmosferiche, visibilità e stato del veicolo per non creare pericolo."
+  }
+}

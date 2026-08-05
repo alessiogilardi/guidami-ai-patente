@@ -1,0 +1,29 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24357",
+  "text": "La spia che indica il mancato agganciamento delle cinture può essere disabilitata dal conducente con apposito comando posto sul cruscotto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di allacciare le cinture di sicurezza",
+      "Sistemi di allarme per cinture di sicurezza"
+    ],
+    "exact_keywords": [
+      "spia cinture di sicurezza",
+      "mancato agganciamento",
+      "disabilitare",
+      "comando",
+      "cruscotto"
+    ],
+    "vector_search_queries": [
+      "funzionamento spia cinture di sicurezza",
+      "disattivazione spia mancato agganciamento cinture",
+      "obbligo segnalazione cinture allacciate"
+    ],
+    "rule_explanation": "La spia che segnala il mancato allacciamento delle cinture di sicurezza non può essere disattivata dal conducente, in quanto garantisce la sicurezza durante la marcia."
+  }
+}

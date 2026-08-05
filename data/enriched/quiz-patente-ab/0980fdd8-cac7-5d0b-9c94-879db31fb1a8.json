@@ -1,0 +1,26 @@
+{
+  "question_id": 4516,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23703",
+  "text": "Durante la sosta il conducente non può allontanarsi dal veicolo per più di tre ore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo",
+      "Obblighi del conducente durante la sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "allontanarsi dal veicolo",
+      "vigilare sul veicolo"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente durante la sosta del veicolo",
+      "sorveglianza del veicolo durante la sosta"
+    ],
+    "rule_explanation": "Durante la sosta, il conducente deve rimanere in prossimità del veicolo per poterlo sorvegliare e spostare in caso di necessità, non potendo allontanarsi per un tempo indefinito."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23634",
+  "text": "Prima di iniziare a guidare un veicolo bisogna accertarsi che gli oggetti trasportati siano sistemati in modo da evitarne la caduta o dispersione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistemazione del carico",
+      "Sicurezza del trasporto",
+      "Prevenzione della caduta di oggetti"
+    ],
+    "exact_keywords": [
+      "oggetti trasportati",
+      "sistemati",
+      "caduta",
+      "dispersione",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "sistemazione oggetti trasportati per evitare caduta o dispersione",
+      "obblighi del conducente prima di iniziare la marcia riguardo al carico"
+    ],
+    "rule_explanation": "Prima di mettersi in marcia, il conducente deve assicurarsi che il carico sia ben fissato per prevenire cadute o dispersioni che potrebbero creare pericolo."
+  }
+}

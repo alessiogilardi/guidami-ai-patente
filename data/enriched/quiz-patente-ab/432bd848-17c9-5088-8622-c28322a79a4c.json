@@ -1,0 +1,28 @@
+{
+  "question_id": 4038,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18707",
+  "text": "Sulle strade pubbliche sono consentite le gare di velocità, anche se non autorizzate, dalle ore 23.00 alle ore 6.00",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di gare di velocità non autorizzate",
+      "Uso responsabile della strada",
+      "Tutela della quiete pubblica"
+    ],
+    "exact_keywords": [
+      "gare di velocità",
+      "strade pubbliche",
+      "autorizzazione",
+      "disturbo della quiete"
+    ],
+    "vector_search_queries": [
+      "divieto di gare di velocità su strade pubbliche non autorizzate",
+      "sanzioni per competizioni non autorizzate su strada pubblica"
+    ],
+    "rule_explanation": "Le gare di velocità su strade pubbliche sono vietate, anche se non autorizzate e indipendentemente dall'orario, in quanto costituiscono un pericolo e turbano la quiete pubblica."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4692,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25206",
+  "text": "Quando il veicolo percorre una curva si deve aumentare la velocità per evitare lo slittamento",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in curva",
+      "Stabilità del veicolo",
+      "Comportamenti di guida sicura"
+    ],
+    "exact_keywords": [
+      "velocità in curva",
+      "stabilità del veicolo",
+      "slittamento",
+      "manovre di guida"
+    ],
+    "vector_search_queries": [
+      "velocità da tenere in curva per garantire la stabilità",
+      "rischio di slittamento del veicolo in curva",
+      "comportamenti di guida in curva per la sicurezza"
+    ],
+    "rule_explanation": "In curva la velocità deve essere ridotta per mantenere la stabilità del veicolo ed evitare lo slittamento, non aumentata."
+  }
+}

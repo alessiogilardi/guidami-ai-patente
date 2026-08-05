@@ -1,0 +1,28 @@
+{
+  "question_id": 4682,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25148",
+  "text": "I veicoli che rispettano la normativa antinquinamento \"Euro 4\" emettono una quantità di gas inquinanti maggiore di quelli omologati secondo la normativa \"Euro 0\"",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Normative antinquinamento veicoli",
+      "Classi di emissione Euro",
+      "Tutela ambientale"
+    ],
+    "exact_keywords": [
+      "Euro 4",
+      "Euro 0",
+      "emissioni inquinanti",
+      "gas inquinanti"
+    ],
+    "vector_search_queries": [
+      "differenza emissioni veicoli Euro 4 e Euro 0",
+      "normativa antinquinamento veicoli classi di emissione"
+    ],
+    "rule_explanation": "Le normative Euro definiscono classi di emissione sempre più restrittive. Pertanto, un veicolo Euro 4 emette meno gas inquinanti di uno Euro 0."
+  }
+}

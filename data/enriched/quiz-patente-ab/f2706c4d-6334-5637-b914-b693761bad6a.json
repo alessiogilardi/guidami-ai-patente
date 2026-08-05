@@ -1,0 +1,28 @@
+{
+  "question_id": 4042,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18755",
+  "text": "Bisogna usare maggiore prudenza nei confronti dei conducenti che dimostrano una guida incerta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente",
+      "Uso responsabile della strada",
+      "Utenti deboli della strada"
+    ],
+    "exact_keywords": [
+      "prudenza",
+      "guida incerta",
+      "condotta di guida",
+      "altri utenti della strada"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza verso conducenti con guida incerta",
+      "doveri di cautela verso utenti in difficoltà sulla strada"
+    ],
+    "rule_explanation": "Il conducente deve usare particolare prudenza e cautela nei confronti di tutti gli altri utenti della strada, specialmente quelli che manifestano una condotta di guida incerta o in difficoltà."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4527,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23784",
+  "text": "La sosta nelle corsie o carreggiate riservate ai mezzi pubblici comporta, tra l'altro, la sottrazione di punti dalla patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta su corsie riservate a mezzi pubblici",
+      "Sanzioni per violazione delle norme di sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "corsie riservate",
+      "mezzi pubblici",
+      "sottrazione di punti"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta su corsie riservate a mezzi pubblici",
+      "sanzioni per sosta su corsie dedicate ai mezzi pubblici"
+    ],
+    "rule_explanation": "La sosta nelle corsie o carreggiate riservate ai mezzi pubblici è vietata e comporta la sanzione pecuniaria e la sottrazione di punti dalla patente."
+  }
+}

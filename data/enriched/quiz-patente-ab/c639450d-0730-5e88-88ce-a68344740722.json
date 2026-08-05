@@ -1,0 +1,28 @@
+{
+  "question_id": 4520,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23730",
+  "text": "La sosta è vietata nei sottovia, sotto i sovrapassaggi, sotto i fornici e i portici, salvo diversa segnalazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in specifici luoghi",
+      "Segnalazione di divieto o eccezione alla regola"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "sottovia",
+      "sovrapassaggi",
+      "fornici",
+      "portici"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in sottovia, sovrapassaggi, fornici e portici",
+      "eccezioni al divieto di sosta in gallerie artificiali e manufatti stradali"
+    ],
+    "rule_explanation": "La sosta è vietata nei sottovia, sotto i sovrapassaggi, nei fornici e sotto i portici, a meno che non sia indicato diversamente da apposita segnalazione."
+  }
+}

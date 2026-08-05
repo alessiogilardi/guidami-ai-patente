@@ -1,0 +1,28 @@
+{
+  "question_id": 4661,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25000",
+  "text": "La responsabilità civile connessa al sinistro stradale è indipendente dalla responsabilità penale e dalla responsabilità amministrativa",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Responsabilità civile auto (RCA)",
+      "Responsabilità penale",
+      "Responsabilità amministrativa"
+    ],
+    "exact_keywords": [
+      "responsabilità civile",
+      "responsabilità penale",
+      "responsabilità amministrativa",
+      "sinistro stradale"
+    ],
+    "vector_search_queries": [
+      "autonomia delle responsabilità civile, penale e amministrativa in materia di sinistri stradali",
+      "indipendenza della responsabilità civile RCA rispetto alle altre forme di responsabilità"
+    ],
+    "rule_explanation": "La responsabilità civile derivante da un sinistro stradale è autonoma e indipendente da quella penale o amministrativa, pur potendo concorrere con esse."
+  }
+}

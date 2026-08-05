@@ -1,0 +1,30 @@
+{
+  "question_id": 4327,
+  "topic": "Segnali di indicazione",
+  "number": "21802",
+  "text": "Il segnale raffigurato si trova al confine di Stato con un Paese dell'Unione Europea",
+  "correct_answer": true,
+  "image": "d22543169a5ea90cce3598ab6b8b5741.jpeg",
+  "image_description": "Confine di Stato con Paese UE. Il segnale indica che ci si trova al confine di Stato con un Paese membro dell'Unione Europea. Non impone un obbligo di arresto, ma segnala l'attraversamento di una frontiera interna all'UE.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con angoli arrotondati. Il fondo è blu scuro e presenta dodici stelle gialle disposte a cerchio, simbolo dell'Unione Europea. All'interno del cerchio delle stelle, è scritta la parola \"ITALIA\" in lettere bianche. Il segnale è bordato da una linea bianca sottile. Questo segnale è tipicamente posto ai confini di Stato con i Paesi membri dell'Unione Europea per indicare l'assenza di controlli doganali sistematici.",
+    "name": "Confine di Stato con Paese UE",
+    "description": "Il segnale indica che ci si trova al confine di Stato con un Paese membro dell'Unione Europea. Non impone un obbligo di arresto, ma segnala l'attraversamento di una frontiera interna all'UE."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di confine di Stato",
+      "Frontiera interna UE"
+    ],
+    "exact_keywords": [
+      "segnali di confine di Stato",
+      "Paese membro dell'Unione Europea",
+      "frontiera interna"
+    ],
+    "vector_search_queries": [
+      "segnaletica di confine di Stato con Paesi UE",
+      "significato segnale confine di Stato UE"
+    ],
+    "rule_explanation": "Il segnale di confine di Stato con un Paese UE non impone l'arresto, ma indica il superamento di una frontiera interna all'Unione Europea."
+  }
+}

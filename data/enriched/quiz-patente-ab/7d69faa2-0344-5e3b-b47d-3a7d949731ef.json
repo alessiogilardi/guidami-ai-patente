@@ -1,0 +1,29 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22508",
+  "text": "Attraversare un passaggio a livello senza rispettare tutte le norme previste, comporta esclusivamente una lieve sanzione amministrativa in quanto non comporta reali pericoli per gli altri utenti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo per la circolazione",
+      "Passaggio a livello",
+      "Sanzioni amministrative"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "norme previste",
+      "sanzione amministrativa",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "sanzioni per violazione norme ai passaggi a livello",
+      "pericolo circolazione attraversamento passaggio a livello",
+      "gravità violazioni ai passaggi a livello"
+    ],
+    "rule_explanation": "L'attraversamento di un passaggio a livello senza rispettare le norme integra una violazione grave, sanzionata amministrativamente, che può creare seri pericoli per la circolazione."
+  }
+}

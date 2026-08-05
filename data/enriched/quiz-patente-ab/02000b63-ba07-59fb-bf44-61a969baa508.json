@@ -1,0 +1,28 @@
+{
+  "question_id": 4036,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18695",
+  "text": "In un centro abitato, bisogna considerare che i pedoni e i diversamente abili devono sempre dare la precedenza ai veicoli a motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Regole di precedenza in ambito urbano"
+    ],
+    "exact_keywords": [
+      "centro abitato",
+      "pedoni",
+      "diversamente abili",
+      "precedenza",
+      "veicoli a motore"
+    ],
+    "vector_search_queries": [
+      "precedenza pedoni e diversamente abili nei centri abitati",
+      "obbligo di precedenza dei veicoli a motore verso pedoni e disabili in città"
+    ],
+    "rule_explanation": "Nei centri abitati, i pedoni e i diversamente abili hanno la precedenza sui veicoli a motore, salvo diversa segnalazione."
+  }
+}

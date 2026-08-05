@@ -1,0 +1,27 @@
+{
+  "question_id": 4388,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22461",
+  "text": "Si deve, in particolare, regolare la velocità se si incontra sulla strada il segnale di veicolo fermo (triangolo mobile di pericolo)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Segnalazione di pericolo temporaneo"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "veicolo fermo",
+      "triangolo mobile di pericolo",
+      "segnalazione di pericolo"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità alla presenza di segnali di pericolo temporaneo",
+      "obbligo di moderare la velocità in caso di veicolo fermo segnalato"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in modo da poter prevenire pericoli, anche in presenza di segnali di pericolo temporaneo come il triangolo di veicolo fermo."
+  }
+}

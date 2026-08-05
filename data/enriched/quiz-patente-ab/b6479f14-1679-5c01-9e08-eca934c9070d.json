@@ -1,0 +1,29 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24690",
+  "text": "Il titolare abilitato a condurre veicoli conducibili con patente della categoria A e della categoria B, per confermarne la validità, deve sostenere due specifiche visite mediche, ognuna abilitante alla singola categoria",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità patente di guida",
+      "Requisiti fisici e psichici per la guida",
+      "Categorie di patenti"
+    ],
+    "exact_keywords": [
+      "patente di categoria A",
+      "patente di categoria B",
+      "visite mediche",
+      "conferma validità"
+    ],
+    "vector_search_queries": [
+      "idoneità alla guida per patenti A e B",
+      "visita medica per conferma validità patente categorie A e B",
+      "requisiti sanitari per conduzione veicoli con patente A e B"
+    ],
+    "rule_explanation": "La validità della patente di categoria A e B è confermata da un'unica visita medica che ne attesti l'idoneità alla guida, non sono richieste visite separate per ciascuna categoria."
+  }
+}

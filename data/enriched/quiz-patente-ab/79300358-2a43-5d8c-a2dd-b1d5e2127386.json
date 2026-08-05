@@ -1,0 +1,32 @@
+{
+  "question_id": 4260,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21168",
+  "text": "Quando il vigile si dispone di profilo con le braccia aperte come in figura è consentito il passaggio delle correnti di traffico che scorrono parallele alle sue braccia",
+  "correct_answer": true,
+  "image": "1f358b9293d91e5635694298877f7be6.jpeg",
+  "image_description": "Segnale di agente del traffico (posizione di profilo con braccia aperte). La figura rappresenta un agente del traffico in posizione di profilo con le braccia aperte. Questa posizione indica che le correnti di traffico che si muovono parallelamente alle braccia dell'agente devono arrestarsi, mentre quelle che si muovono perpendicolarmente alle braccia possono procedere con cautela.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra la silhouette di un agente del traffico in uniforme, in piedi al centro di un incrocio stilizzato. L'agente è in posizione di profilo, con il volto rivolto verso sinistra (dalla prospettiva dell'osservatore). Entrambe le braccia sono aperte orizzontalmente, perpendicolarmente al suo corpo. Sono visibili delle linee che rappresentano le corsie o i flussi di traffico, che convergono verso l'incrocio. Alcune di queste linee sono interrotte da angoli che suggeriscono direzioni di svolta o la geometria dell'incrocio. Dalla prospettiva dell'agente, le sue braccia sono aperte verso destra e sinistra, mentre il suo corpo è rivolto in avanti (verso l'alto nell'immagine) e indietro (verso il basso nell'immagine). Le linee del traffico che scorrono da sinistra a destra e da destra a sinistra (parallele alle braccia dell'agente) sembrano dover fermarsi. Le linee del traffico che scorrono dall'alto verso il basso e dal basso verso l'alto (perpendicolari alle braccia dell'agente) sembrano poter procedere.",
+    "name": "Segnale di agente del traffico (posizione di profilo con braccia aperte)",
+    "description": "La figura rappresenta un agente del traffico in posizione di profilo con le braccia aperte. Questa posizione indica che le correnti di traffico che si muovono parallelamente alle braccia dell'agente devono arrestarsi, mentre quelle che si muovono perpendicolarmente alle braccia possono procedere con cautela."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazioni degli agenti del traffico",
+      "Interpretazione delle posizioni dell'agente del traffico"
+    ],
+    "exact_keywords": [
+      "agente del traffico",
+      "braccia aperte",
+      "correnti di traffico",
+      "arrestarsi",
+      "procedere"
+    ],
+    "vector_search_queries": [
+      "interpretazione delle posizioni dell\\'agente del traffico con braccia aperte",
+      "segnalazione di arresto e via dell\\'agente del traffico"
+    ],
+    "rule_explanation": "La posizione di profilo con braccia aperte dell\\'agente del traffico impone l\\'arresto alle correnti parallele alle braccia e consente la marcia alle correnti perpendicolari con cautela."
+  }
+}

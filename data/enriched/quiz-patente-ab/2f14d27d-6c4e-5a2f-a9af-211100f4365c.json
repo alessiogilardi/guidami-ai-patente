@@ -1,0 +1,27 @@
+{
+  "question_id": 4021,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18530",
+  "text": "Il salvagente serve a incanalare i veicoli in varie direzioni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di traffico stradale",
+      "Segnaletica stradale di preavviso e deviazione"
+    ],
+    "exact_keywords": [
+      "salvagente",
+      "incanalare i veicoli",
+      "direzioni",
+      "isola di traffico"
+    ],
+    "vector_search_queries": [
+      "funzione del salvagente stradale",
+      "definizione e scopo del salvagente come isola di traffico"
+    ],
+    "rule_explanation": "Il salvagente è un'isola di traffico destinata a proteggere i pedoni nell'attraversamento della carreggiata, non a incanalare i veicoli."
+  }
+}

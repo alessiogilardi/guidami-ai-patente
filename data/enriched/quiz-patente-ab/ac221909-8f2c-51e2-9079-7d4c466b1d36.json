@@ -1,0 +1,33 @@
+{
+  "question_id": 4343,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21959",
+  "text": "Il delineatore raffigurato indica un divieto di sosta",
+  "correct_answer": false,
+  "image": "415ad58a6fd593c32edde2b4370f7ea0.jpeg",
+  "image_description": "Delineatore cilindrico o a palo. Il delineatore è un elemento verticale con bande alternate nere e gialle, utilizzato per delimitare i bordi della carreggiata, specialmente in condizioni di scarsa visibilità o innevamento. Non indica divieti né precedenze, ma serve a migliorare la percezione dei limiti della strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore cilindrico o a palo. È composto da un elemento verticale di colore nero con bande orizzontali alternate di colore giallo. La base del delineatore è fissata a terra tramite una piastra orizzontale. Non sono presenti altri elementi stradali o veicoli nell'immagine. Il delineatore è posizionato su uno sfondo bianco, suggerendo un'analisi isolata del segnale.",
+    "name": "Delineatore cilindrico o a palo",
+    "description": "Il delineatore è un elemento verticale con bande alternate nere e gialle, utilizzato per delimitare i bordi della carreggiata, specialmente in condizioni di scarsa visibilità o innevamento. Non indica divieti né precedenze, ma serve a migliorare la percezione dei limiti della strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale complementare",
+      "Segnaletica di cantiere",
+      "Funzione dei delineatori stradali"
+    ],
+    "exact_keywords": [
+      "delineatore stradale",
+      "segnali complementari",
+      "segnali di cantiere",
+      "delimitare la carreggiata"
+    ],
+    "vector_search_queries": [
+      "funzione del delineatore stradale complementare",
+      "segnaletica di cantiere per delimitazione carreggiata",
+      "significato dei delineatori stradali con bande gialle e nere"
+    ],
+    "rule_explanation": "Il delineatore stradale, con bande gialle e nere, serve a delimitare la carreggiata e migliorare la visibilità dei margini della strada, non a imporre divieti."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4062,
+  "topic": "Segnali di pericolo",
+  "number": "18991",
+  "text": "Su strada a due sole corsie e a doppio senso di circolazione, in presenza del segnale raffigurato si deve marciare il più possibile vicino al margine destro",
+  "correct_answer": true,
+  "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Comportamento in presenza di curve",
+      "Posizionamento sulla carreggiata"
+    ],
+    "exact_keywords": [
+      "doppia curva pericolosa",
+      "strada a doppio senso di circolazione",
+      "margine destro",
+      "velocità moderata"
+    ],
+    "vector_search_queries": [
+      "comportamento in presenza di segnale di doppia curva pericolosa su strada a doppio senso",
+      "posizionamento del veicolo su strada a doppio senso con curve pericolose"
+    ],
+    "rule_explanation": "In presenza del segnale di doppia curva pericolosa, su strada a doppio senso, è necessario moderare la velocità e posizionarsi il più vicino possibile al margine destro per affrontare la prima curva a sinistra."
+  }
+}

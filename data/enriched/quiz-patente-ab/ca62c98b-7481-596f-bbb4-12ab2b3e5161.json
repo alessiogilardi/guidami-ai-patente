@@ -1,0 +1,32 @@
+{
+  "question_id": 4152,
+  "topic": "Segnali di obbligo",
+  "number": "20077",
+  "text": "Il segnale raffigurato indica la fine del doppio senso di circolazione dopo una svolta a destra",
+  "correct_answer": false,
+  "image": "fece8907377910340f0aecbc53ef2a9b.jpeg",
+  "image_description": "Segnale di direzione obbligatoria sinistra. Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e un bordo bianco. Al centro del segnale è presente una freccia bianca rivolta verso sinistra. Questo è un segnale di obbligo che indica la direzione da seguire.",
+    "name": "Segnale di direzione obbligatoria sinistra",
+    "description": "Il segnale impone di proseguire nella direzione indicata dalla freccia, ovvero a sinistra. Viene utilizzato per indicare la sola direzione consentita in un incrocio o per obbligare a passare a sinistra di un ostacolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo di direzione",
+      "Interpretazione della segnaletica stradale"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo di direzione",
+      "direzione consentita",
+      "svolta a sinistra",
+      "doppio senso di circolazione"
+    ],
+    "vector_search_queries": [
+      "segnali che impongono la direzione da seguire",
+      "significato segnale di direzione obbligatoria sinistra",
+      "segnaletica stradale di obbligo di direzione"
+    ],
+    "rule_explanation": "Il segnale di direzione obbligatoria sinistra impone di seguire quella direzione e non indica la fine del doppio senso di circolazione."
+  }
+}

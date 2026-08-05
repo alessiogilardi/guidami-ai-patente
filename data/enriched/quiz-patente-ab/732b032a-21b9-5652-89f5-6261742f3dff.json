@@ -1,0 +1,33 @@
+{
+  "question_id": 4065,
+  "topic": "Segnali di pericolo",
+  "number": "19031",
+  "text": "Dopo il segnale raffigurato si può trovare un dispositivo acustico che avverte della chiusura delle barriere o delle semibarriere",
+  "correct_answer": true,
+  "image": "accabdc7809596ef95d9e34d4b33d06b.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere o semibarriere. Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un simbolo nero che rappresenta un passaggio a livello con barriere, costituito da due elementi verticali collegati da tre elementi orizzontali. Il segnale è isolato, non inserito in una scena di guida o in sequenza con altri segnali.",
+    "name": "Segnale di passaggio a livello con barriere o semibarriere",
+    "description": "Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Passaggio a livello con barriere",
+      "Dispositivi di allarme sonoro"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello con barriere o semibarriere",
+      "dispositivo acustico",
+      "chiusura delle barriere"
+    ],
+    "vector_search_queries": [
+      "preavviso di passaggio a livello con barriere e segnale acustico",
+      "funzione dei segnali di pericolo per passaggi a livello con barriere",
+      "dispositivi di segnalazione acustica nei passaggi a livello"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante un passaggio a livello con barriere preannuncia la presenza di un tale attraversamento, che può essere segnalato anche da un dispositivo acustico di allarme."
+  }
+}

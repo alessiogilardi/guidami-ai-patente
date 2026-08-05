@@ -1,0 +1,32 @@
+{
+  "question_id": 4350,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22018",
+  "text": "Il pannello integrativo raffigurato può essere posto sotto un segnale di divieto",
+  "correct_answer": true,
+  "image": "581efb5bb17d61ce1f06789924aee4e2.jpeg",
+  "image_description": "Pannello integrativo di lunghezza (figura A: 380 m; figura B: 2,8 km). I pannelli integrativi raffigurati indicano la lunghezza di un tratto stradale. Il pannello A indica 380 metri, mentre il pannello B indica 2,8 chilometri. Entrambi sono posti sotto un segnale di pericolo e indicano la lunghezza del tratto di strada pericoloso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli integrativi rettangolari, identificati come A e B. Entrambi i pannelli presentano un pittogramma di una freccia verticale rivolta verso l'alto, un numero seguito da un'unità di misura (metri per A, chilometri per B) e un altro pittogramma di freccia verticale verso l'alto. Il pannello A indica \"380m\", mentre il pannello B indica \"2,8 km\". Questi pannelli sono comunemente usati per integrare segnali di pericolo, indicando la lunghezza del tratto di strada interessato dal pericolo.",
+    "name": "Pannello integrativo di lunghezza (figura A: 380 m; figura B: 2,8 km)",
+    "description": "I pannelli integrativi raffigurati indicano la lunghezza di un tratto stradale. Il pannello A indica 380 metri, mentre il pannello B indica 2,8 chilometri. Entrambi sono posti sotto un segnale di pericolo e indicano la lunghezza del tratto di strada pericoloso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pannelli integrativi",
+      "Segnaletica stradale di prescrizione",
+      "Segnaletica stradale di pericolo"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "segnali di divieto",
+      "segnali di pericolo",
+      "lunghezza del tratto"
+    ],
+    "vector_search_queries": [
+      "pannelli integrativi di lunghezza sotto segnali di divieto",
+      "uso dei pannelli integrativi con segnali di prescrizione e pericolo"
+    ],
+    "rule_explanation": "I pannelli integrativi di lunghezza possono essere posti sotto i segnali di divieto o di pericolo per specificarne la durata o l'estensione dell'obbligo o del pericolo."
+  }
+}

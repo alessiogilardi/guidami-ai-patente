@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22352",
+  "text": "Il limite massimo di velocità per qualsiasi veicolo nei centri abitati è di 60 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità nei centri abitati",
+      "Regolazione della velocità per la sicurezza"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "centri abitati",
+      "veicolo",
+      "60 km/h"
+    ],
+    "vector_search_queries": [
+      "limite di velocità nei centri abitati per autoveicoli",
+      "velocità massima consentita nei centri abitati"
+    ],
+    "rule_explanation": "Nei centri abitati, il limite massimo di velocità per autoveicoli è di 50 km/h, salvo diversa segnalazione. Non è 60 km/h per qualsiasi veicolo."
+  }
+}

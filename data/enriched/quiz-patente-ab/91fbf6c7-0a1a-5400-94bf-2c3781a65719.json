@@ -1,0 +1,29 @@
+{
+  "question_id": 4521,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23739",
+  "text": "La sosta e la fermata sono vietate in prossimità e in corrispondenza di segnali stradali verticali in modo da occultarne la vista",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Segnaletica stradale verticale",
+      "Visibilità della segnaletica"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fermata",
+      "divieto",
+      "segnali stradali verticali",
+      "occultare la vista"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata in prossimità di segnali stradali verticali che occultano la vista",
+      "obbligo di garantire la visibilità della segnaletica stradale verticale vietando sosta e fermata"
+    ],
+    "rule_explanation": "La sosta e la fermata sono vietate se impediscono la visibilità dei segnali stradali verticali, garantendo la loro piena riconoscibilità."
+  }
+}

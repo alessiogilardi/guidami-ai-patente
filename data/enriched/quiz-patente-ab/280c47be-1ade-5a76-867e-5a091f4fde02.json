@@ -1,0 +1,33 @@
+{
+  "question_id": 4137,
+  "topic": "Segnali di divieto",
+  "number": "19894",
+  "text": "Il segnale raffigurato è un segnale di pericolo",
+  "correct_answer": false,
+  "image": "28ff9501e70957cfba029d212ffefb79.jpeg",
+  "image_description": "Fine divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Indica la fine del divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Non vieta il sorpasso per le autovetture.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente una banda diagonale nera che va dall'angolo in alto a sinistra all'angolo in basso a destra. Alla sinistra della banda nera è raffigurato un autotreno, mentre alla destra è raffigurata un'autovettura. Il segnale è di tipo \"fine prescrizione\".",
+    "name": "Fine divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati",
+    "description": "Indica la fine del divieto di sorpasso per autoveicoli, autotreni, autoarticolati e autosnodati. Non vieta il sorpasso per le autovetture."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Segnali di divieto",
+      "Segnali di pericolo"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "segnali di pericolo",
+      "segnali di prescrizione",
+      "fine divieto di sorpasso"
+    ],
+    "vector_search_queries": [
+      "differenza tra segnali di pericolo e segnali di divieto",
+      "classificazione dei segnali stradali di prescrizione",
+      "segnali che indicano la fine di un divieto"
+    ],
+    "rule_explanation": "I segnali di pericolo preavvisano un rischio specifico, mentre i segnali di divieto impongono un obbligo di astensione. Il segnale in esame indica la fine di un divieto, non un pericolo."
+  }
+}

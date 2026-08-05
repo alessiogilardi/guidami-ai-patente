@@ -1,0 +1,32 @@
+{
+  "question_id": 4110,
+  "topic": "Segnali di divieto",
+  "number": "19581",
+  "text": "In presenza del segnale raffigurato è consentito ad un veicolo di circolare alla distanza di 80 metri da quello che lo precede",
+  "correct_answer": true,
+  "image": "1be58ec74bcd0d03bb415339bccad9e3.jpeg",
+  "image_description": "Distanza minima tra veicoli. Il segnale impone di mantenere una distanza di almeno 70 metri dal veicolo che precede.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro sono raffigurati due veicoli stilizzati (presumibilmente autovetture) visti di lato, uno dietro l'altro, con una freccia che indica la distanza tra di essi. Sopra i veicoli, in un riquadro bianco, è indicato il valore \"70 m\". Il segnale è un segnale di prescrizione che impone una distanza minima.",
+    "name": "Distanza minima tra veicoli",
+    "description": "Il segnale impone di mantenere una distanza di almeno 70 metri dal veicolo che precede."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza minima tra veicoli",
+      "Segnali di prescrizione (divieto/obbligo)"
+    ],
+    "exact_keywords": [
+      "segnali di prescrizione",
+      "distanza minima",
+      "veicolo che precede",
+      "circolare"
+    ],
+    "vector_search_queries": [
+      "distanza minima tra veicoli in marcia",
+      "segnali stradali di prescrizione che impongono distanza minima",
+      "obbligo di mantenere distanza di sicurezza dal veicolo che precede"
+    ],
+    "rule_explanation": "Il segnale di distanza minima impone di mantenere una distanza non inferiore a quella indicata (70 metri) dal veicolo che precede. L'affermazione è vera perché 80 metri sono maggiori di 70 metri."
+  }
+}

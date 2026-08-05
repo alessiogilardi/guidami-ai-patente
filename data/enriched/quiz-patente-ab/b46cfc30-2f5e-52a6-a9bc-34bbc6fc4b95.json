@@ -1,0 +1,34 @@
+{
+  "question_id": 4267,
+  "topic": "Segnali di indicazione",
+  "number": "21224",
+  "text": "Il segnale raffigurato riporta le località con le relative distanze in chilometri",
+  "correct_answer": true,
+  "image": "ef8cb3a578e39dd9dada579c94e61403.jpeg",
+  "image_description": "Segnale di preavviso di diramazione. Il segnale indica le località raggiungibili e le distanze in chilometri per raggiungerle. Le località sono Firenze (180 km), Bologna (285 km) e Milano (472 km). Il segnale è di colore verde, tipico delle autostrade o delle strade extraurbane principali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare di colore verde scuro con scritte bianche. Il segnale riporta tre nomi di città: FIRENZE, BOLOGNA, MILANO, ciascuno affiancato da un numero che indica una distanza in chilometri: 180 per Firenze, 285 per Bologna e 472 per Milano. Il segnale è bordato da una linea bianca sottile e presenta angoli arrotondati. La sua colorazione verde e il contenuto (località e distanze) sono tipici dei segnali di preavviso di diramazione o di indicazione stradale su autostrade o strade extraurbane principali.",
+    "name": "Segnale di preavviso di diramazione",
+    "description": "Il segnale indica le località raggiungibili e le distanze in chilometri per raggiungerle. Le località sono Firenze (180 km), Bologna (285 km) e Milano (472 km). Il segnale è di colore verde, tipico delle autostrade o delle strade extraurbane principali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione stradale",
+      "Segnali di preavviso di diramazione",
+      "Informazioni sulle destinazioni e distanze"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "preavviso di diramazione",
+      "località",
+      "distanze in chilometri",
+      "autostrade"
+    ],
+    "vector_search_queries": [
+      "segnali stradali che indicano località e distanze",
+      "funzione dei segnali di preavviso di diramazione autostradali",
+      "segnali verdi con indicazioni di località e chilometri"
+    ],
+    "rule_explanation": "Il segnale di preavviso di diramazione indica le destinazioni raggiungibili e le relative distanze in chilometri, con un colore che ne specifica la tipologia di strada."
+  }
+}

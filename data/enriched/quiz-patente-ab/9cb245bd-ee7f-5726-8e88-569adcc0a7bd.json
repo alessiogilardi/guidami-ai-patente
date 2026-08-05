@@ -1,0 +1,32 @@
+{
+  "question_id": 4139,
+  "topic": "Segnali di divieto",
+  "number": "19926",
+  "text": "Il segnale raffigurato, opportunamente integrato, può vietare la sosta in doppia fila",
+  "correct_answer": false,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di divieto di sosta",
+      "Divieto di sosta in doppia fila"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "sosta vietata",
+      "doppia fila",
+      "segnali integrativi"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta e fermata",
+      "segnaletica stradale di divieto di sosta",
+      "sosta in doppia fila vietata"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta vieta la sola sosta, non anche la fermata. Non può essere integrato per vietare la sosta in doppia fila."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31031",
+  "text": "L’attenzione alla guida diminuisce quando si è affaticati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di affaticamento del conducente",
+      "Condotta di guida sicura",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "attenzione",
+      "affaticamento",
+      "conducente",
+      "guida"
+    ],
+    "vector_search_queries": [
+      "impatto dell'affaticamento sulla capacità di attenzione alla guida",
+      "effetti della stanchezza sulla sicurezza stradale",
+      "obblighi del conducente in stato di affaticamento"
+    ],
+    "rule_explanation": "L'affaticamento riduce la capacità di attenzione e reazione del conducente, compromettendo la sicurezza alla guida."
+  }
+}

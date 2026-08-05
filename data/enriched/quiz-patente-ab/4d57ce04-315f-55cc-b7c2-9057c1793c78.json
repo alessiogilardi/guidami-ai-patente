@@ -1,0 +1,27 @@
+{
+  "question_id": 4382,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22400",
+  "text": "Salvo diversa segnalazione, per i ciclomotori il limite massimo di velocità consentito è di 45 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per ciclomotori",
+      "Normativa sulla circolazione dei ciclomotori"
+    ],
+    "exact_keywords": [
+      "ciclomotori",
+      "limite massimo di velocità",
+      "45 km/h",
+      "salvo diversa segnalazione"
+    ],
+    "vector_search_queries": [
+      "limite velocità ciclomotori 45 km/h",
+      "velocità massima consentita per ciclomotori senza segnalazione specifica"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per i ciclomotori è fissato a 45 km/h, a meno che non sia diversamente indicato dalla segnaletica stradale."
+  }
+}

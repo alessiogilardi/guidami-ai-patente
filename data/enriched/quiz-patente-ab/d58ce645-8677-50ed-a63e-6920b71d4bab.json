@@ -1,0 +1,29 @@
+{
+  "question_id": 4438,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22956",
+  "text": "Quando un incrocio è regolato con rotatoria, i veicoli circolanti all'interno dell'anello possono sorpassare sia a destra che a sinistra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Rotatorie",
+      "Sorpasso in rotatorie",
+      "Regole di circolazione nelle rotatorie"
+    ],
+    "exact_keywords": [
+      "rotatoria",
+      "sorpasso",
+      "anello",
+      "veicoli circolanti"
+    ],
+    "vector_search_queries": [
+      "sorpasso vietato nelle rotatorie",
+      "regole di circolazione all'interno delle rotatorie",
+      "manovre consentite e vietate nelle rotatorie"
+    ],
+    "rule_explanation": "Nelle rotatorie, il sorpasso è vietato sia a destra che a sinistra. I veicoli devono circolare mantenendo la destra e senza effettuare manovre pericolose."
+  }
+}

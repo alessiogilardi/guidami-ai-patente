@@ -1,0 +1,28 @@
+{
+  "question_id": 4534,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23837",
+  "text": "Di notte, quando mancano o sono insufficienti le luci posteriori di posizione o di emergenza, è obbligatorio presegnalare il veicolo fermo con il segnale triangolare mobile di pericolo anche nei centri abitati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo fermo",
+      "Obbligo di presegnalazione con triangolo mobile"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "veicolo fermo",
+      "luci posteriori di posizione",
+      "centri abitati",
+      "segnali luminosi"
+    ],
+    "vector_search_queries": [
+      "obbligo uso segnale mobile di pericolo per veicolo fermo senza luci fuori dai centri abitati",
+      "uso dei segnali luminosi per veicolo fermo nei centri abitati"
+    ],
+    "rule_explanation": "Il segnale mobile di pericolo va usato solo fuori dai centri abitati in caso di veicolo fermo senza luci, non anche nei centri abitati dove è sufficiente l'uso dei segnali luminosi."
+  }
+}

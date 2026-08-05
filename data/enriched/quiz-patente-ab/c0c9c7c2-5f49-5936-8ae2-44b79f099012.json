@@ -1,0 +1,29 @@
+{
+  "question_id": 4007,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18394",
+  "text": "L'intersezione (incrocio) a livelli sfalsati è, di norma, regolata da semafori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Intersezioni stradali",
+      "Regolazione della circolazione",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "intersezione a livelli sfalsati",
+      "regolata da semafori",
+      "regolazione della circolazione",
+      "segnaletica stradale"
+    ],
+    "vector_search_queries": [
+      "regolazione della circolazione nelle intersezioni a livelli sfalsati",
+      "uso dei semafori nelle intersezioni stradali",
+      "tipologie di intersezioni stradali e loro regolamentazione"
+    ],
+    "rule_explanation": "Le intersezioni a livelli sfalsati non sono di norma regolate da semafori, ma da altri tipi di segnaletica o dalla viabilità intrinseca del progetto infrastrutturale."
+  }
+}

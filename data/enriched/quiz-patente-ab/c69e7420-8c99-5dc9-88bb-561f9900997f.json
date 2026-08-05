@@ -1,0 +1,33 @@
+{
+  "question_id": 4332,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21848",
+  "text": "Il segnale raffigurato preavvisa eventuali depositi temporanei di materiali o macchinari",
+  "correct_answer": true,
+  "image": "7ac609bcedd29bef7a7c883f0abbcf0c.jpeg",
+  "image_description": "Segnale di lavori in corso. Il segnale preavvisa la presenza di lavori in corso sulla carreggiata o nelle immediate vicinanze. Può essere integrato da pannelli che ne specificano la durata o la natura.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e fondo giallo. Al centro del segnale è raffigurata la silhouette di una persona china che sta scavando con una pala, con un cumulo di terra accanto. Questo è il segnale di \"lavori in corso\". Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di lavori in corso",
+    "description": "Il segnale preavvisa la presenza di lavori in corso sulla carreggiata o nelle immediate vicinanze. Può essere integrato da pannelli che ne specificano la durata o la natura."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali temporanei di cantiere",
+      "Preavviso di lavori"
+    ],
+    "exact_keywords": [
+      "segnali complementari",
+      "segnali temporanei",
+      "lavori in corso",
+      "deposito materiali",
+      "macchinari"
+    ],
+    "vector_search_queries": [
+      "preavviso segnale lavori in corso",
+      "segnalazione temporanea cantiere stradale",
+      "segnali di cantiere e deposito materiali"
+    ],
+    "rule_explanation": "Il segnale di 'lavori in corso' preavvisa la presenza di cantieri stradali, che possono includere depositi temporanei di materiali o macchinari."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4308,
+  "topic": "Segnali di indicazione",
+  "number": "21634",
+  "text": "Il segnale raffigurato indica i chilometri già fatti dal punto di origine della strada",
+  "correct_answer": false,
+  "image": "971e98d0321dab35827073bdfb4eb51a.jpeg",
+  "image_description": "Segnale di limite minimo di velocità. Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è presente il numero '60' in bianco. Questo è un segnale di prescrizione che indica un limite minimo di velocità.",
+    "name": "Segnale di limite minimo di velocità",
+    "description": "Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di prescrizione",
+      "Limiti di velocità"
+    ],
+    "exact_keywords": [
+      "segnali di prescrizione",
+      "limite minimo di velocità",
+      "velocità inferiore",
+      "divieto di procedere"
+    ],
+    "vector_search_queries": [
+      "segnali che impongono un limite minimo di velocità",
+      "significato del segnale di limite minimo di velocità",
+      "divieto di viaggiare a velocità inferiore al limite minimo imposto"
+    ],
+    "rule_explanation": "Il segnale raffigurato impone un limite minimo di velocità, non indica i chilometri percorsi. Viaggiare a una velocità inferiore è vietato."
+  }
+}

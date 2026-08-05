@@ -1,0 +1,34 @@
+{
+  "question_id": 4206,
+  "topic": "Segnali di precedenza",
+  "number": "20671",
+  "text": "Il segnale raffigurato obbliga ad arrestarsi all'incrocio",
+  "correct_answer": false,
+  "image": "ae0a5db589f248f6cde41a1db1f0fe3f.jpeg",
+  "image_description": "Segnale di Diritto di Precedenza. Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con i vertici disposti in modo da formare un rombo. Il bordo esterno del segnale è bianco, seguito da un bordo nero più sottile. All'interno, su sfondo bianco, vi è un rombo più piccolo di colore arancione. Questo è il segnale di Diritto di Precedenza.",
+    "name": "Segnale di Diritto di Precedenza",
+    "description": "Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di Diritto di Precedenza",
+      "Obbligo di moderare la velocità in prossimità degli incroci",
+      "Regola generale di precedenza"
+    ],
+    "exact_keywords": [
+      "Diritto di precedenza",
+      "arrestarsi",
+      "incrocio",
+      "strade laterali",
+      "dare la precedenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto segnale Diritto di Precedenza",
+      "interpretazione segnale Diritto di Precedenza incrocio",
+      "precedenza veicoli provenienti da strade laterali"
+    ],
+    "rule_explanation": "Il segnale di Diritto di Precedenza non obbliga all'arresto, ma impone di dare la precedenza ai veicoli provenienti dalle strade laterali solo se questi non concedono la precedenza. Bisogna comunque moderare la velocità."
+  }
+}

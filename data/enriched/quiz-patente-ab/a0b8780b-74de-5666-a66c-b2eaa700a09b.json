@@ -1,0 +1,30 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25323",
+  "text": "Una frenatura poco efficiente o squilibrata può essere causata dal carico eccessivo o mal ripartito",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza del sistema frenante",
+      "Stabilità del veicolo",
+      "Carico del veicolo"
+    ],
+    "exact_keywords": [
+      "frenatura inefficiente",
+      "frenatura squilibrata",
+      "carico eccessivo",
+      "carico mal ripartito",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "cause di frenatura inefficiente o squilibrata",
+      "influenza del carico sulla frenata del veicolo",
+      "effetti del carico eccessivo o mal ripartito sul sistema frenante"
+    ],
+    "rule_explanation": "Una frenatura inefficiente o squilibrata può derivare da un carico eccessivo o non correttamente distribuito sul veicolo, compromettendo la stabilità e la tenuta di strada."
+  }
+}

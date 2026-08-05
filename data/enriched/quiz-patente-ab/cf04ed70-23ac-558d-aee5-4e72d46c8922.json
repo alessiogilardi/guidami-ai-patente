@@ -1,0 +1,32 @@
+{
+  "question_id": 4096,
+  "topic": "Segnali di pericolo",
+  "number": "19408",
+  "text": "Nel segnale raffigurato, il disco giallo può essere sostituito da una luce gialla lampeggiante",
+  "correct_answer": true,
+  "image": "d8e896832ed7d2a8dc221808fd0ed0c1.jpeg",
+  "image_description": "Segnale di pericolo: semaforo. Il segnale preannuncia la presenza di un impianto semaforico. I conducenti devono moderare la velocità e essere pronti a fermarsi se necessario.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un semaforo stilizzato con tre luci disposte verticalmente: rossa in alto, gialla al centro e verde in basso.",
+    "name": "Segnale di pericolo: semaforo",
+    "description": "Il segnale preannuncia la presenza di un impianto semaforico. I conducenti devono moderare la velocità e essere pronti a fermarsi se necessario."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Impianti semaforici",
+      "Dispositivi di segnalazione luminoso"
+    ],
+    "exact_keywords": [
+      "disco giallo",
+      "luce gialla lampeggiante",
+      "impianto semaforico",
+      "presegnalazione"
+    ],
+    "vector_search_queries": [
+      "sostituzione segnale pericolo disco giallo con luce gialla lampeggiante",
+      "presegnalazione impianto semaforico con luce gialla lampeggiante"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante un impianto semaforico (disco giallo) può essere sostituito da una luce gialla lampeggiante, che indica la presenza di un semaforo."
+  }
+}

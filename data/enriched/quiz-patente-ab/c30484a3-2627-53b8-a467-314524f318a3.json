@@ -1,0 +1,33 @@
+{
+  "question_id": 4051,
+  "topic": "Segnali di pericolo",
+  "number": "18856",
+  "text": "Il segnale raffigurato si trova, in genere, 150 metri prima di un tratto di strada con fondo irregolare",
+  "correct_answer": true,
+  "image": "4232f21e2893d81ba19d77d4285f18fe.jpeg",
+  "image_description": "Segnale di pericolo - Serie di dossi. Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di dossi o una cunetta. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una irregolarità del manto stradale.",
+    "name": "Segnale di pericolo - Serie di dossi",
+    "description": "Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Distanza di preavviso dei segnali stradali",
+      "Segnalazione di pericolo specifico"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "fondo irregolare",
+      "dossi",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "distanza di installazione segnali di pericolo per fondo stradale irregolare",
+      "preavviso segnale stradale dossi",
+      "posizionamento segnali di pericolo generico"
+    ],
+    "rule_explanation": "I segnali di pericolo, come quello che preannuncia dossi o fondo irregolare, si installano generalmente 150 metri prima del pericolo, salvo diversa segnalazione."
+  }
+}

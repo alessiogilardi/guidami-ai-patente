@@ -1,0 +1,27 @@
+{
+  "question_id": 4421,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22783",
+  "text": "La svolta a destra si effettua senza creare pericolo o intralcio agli altri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza nelle manovre",
+      "Regola generale di circolazione"
+    ],
+    "exact_keywords": [
+      "svolta a destra",
+      "pericolo",
+      "intralcio",
+      "altri utenti della strada"
+    ],
+    "vector_search_queries": [
+      "effettuare svolta senza creare pericolo o intralcio",
+      "obblighi durante la manovra di svolta"
+    ],
+    "rule_explanation": "Chi effettua una svolta, a destra o a sinistra, deve assicurarsi di poterla compiere senza creare pericolo o intralcio agli altri utenti della strada."
+  }
+}

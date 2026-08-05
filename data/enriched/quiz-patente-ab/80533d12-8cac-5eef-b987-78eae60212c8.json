@@ -1,0 +1,29 @@
+{
+  "question_id": 4020,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18523",
+  "text": "Il marciapiede è una parte della strada riservata anche alle biciclette",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di marciapiede",
+      "Uso della strada e utenti deboli",
+      "Regole di circolazione per ciclisti"
+    ],
+    "exact_keywords": [
+      "marciapiede",
+      "ciclabile",
+      "pedoni",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "definizione di marciapiede nel codice della strada",
+      "circolazione ciclisti su marciapiede vietata",
+      "uso del marciapiede da parte dei pedoni"
+    ],
+    "rule_explanation": "Il marciapiede è riservato ai pedoni e non alle biciclette, salvo che sia specificamente indicato come pista ciclabile."
+  }
+}

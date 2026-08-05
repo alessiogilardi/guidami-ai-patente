@@ -1,0 +1,27 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18799",
+  "text": "In vicinanza di un attraversamento pedonale, il conducente deve considerare che se il pedone si è fermato in mezzo alle strisce dell'attraversamento significa che ha rinunciato al suo diritto di passare",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Priorità pedonale all'attraversamento",
+      "Doveri del conducente verso i pedoni"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "pedone",
+      "condizioni di pericolo",
+      "condotta del conducente"
+    ],
+    "vector_search_queries": [
+      "precedenza pedonale all'attraversamento stradale",
+      "obblighi del conducente in prossimità di strisce pedonali"
+    ],
+    "rule_explanation": "Il conducente deve dare la precedenza ai pedoni che hanno iniziato l'attraversamento, indipendentemente dalla loro posizione sulle strisce, senza creare condizioni di pericolo."
+  }
+}

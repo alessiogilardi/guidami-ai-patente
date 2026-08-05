@@ -1,0 +1,27 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23478",
+  "text": "Il conducente che intende effettuare il sorpasso ha l'obbligo di azionare il segnale acustico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione acustica per sorpasso",
+      "Obbligo di segnalazione visiva per sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "segnale acustico",
+      "segnale di svolta",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalazione visiva per sorpasso",
+      "uso del segnale acustico durante il sorpasso"
+    ],
+    "rule_explanation": "Il sorpasso richiede la segnalazione di svolta a sinistra, non il segnale acustico, salvo casi specifici di pericolo imminente."
+  }
+}

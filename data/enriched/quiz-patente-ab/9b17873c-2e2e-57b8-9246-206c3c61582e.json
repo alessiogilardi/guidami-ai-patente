@@ -1,0 +1,31 @@
+{
+  "question_id": 4425,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22818",
+  "text": "Su strada a doppio senso di marcia con tre corsie, come in figura, i veicoli possono usare la corsia centrale per la marcia normale",
+  "correct_answer": false,
+  "image": "eede9168a7de191d47d5f0e6104ae582.jpeg",
+  "image_description": "Strada a doppio senso di marcia con tre corsie per senso di marcia. La strada è a doppio senso di marcia, con tre corsie per senso di marcia, delimitate da strisce bianche discontinue. Le corsie sono identificate dalle lettere A, B e C per ciascun senso di marcia. La corsia A è quella di destra, la B quella centrale e la C quella di sinistra. La corsia centrale (B) può essere utilizzata per il sorpasso o per la marcia normale in determinate condizioni, mentre le corsie esterne (A e C) sono destinate alla marcia normale. In questo caso, la corsia A è la corsia di marcia normale per un senso, mentre la corsia C è la corsia di marcia normale per l'altro senso. La corsia B è una corsia centrale che può essere utilizzata da entrambi i sensi per il sorpasso o per la marcia normale, a seconda delle condizioni del traffico e delle indicazioni presenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due sezioni di una strada a doppio senso di marcia. Ciascuna sezione presenta tre corsie di marcia, identificate dalle lettere A, B e C. Le corsie sono separate da strisce bianche discontinue. Le lettere A, B e C sono posizionate sul lato sinistro della carreggiata, indicando le corsie per un senso di marcia. Si presume che le corsie A, B e C rappresentino rispettivamente la corsia di destra, la corsia centrale e la corsia di sinistra per un senso di marcia. L'immagine suggerisce che la strada sia a quattro corsie totali, con due corsie per senso di marcia, più una corsia centrale che può essere utilizzata da entrambi i sensi. Tuttavia, la presenza delle lettere A, B, C su entrambi i lati della carreggiata, e la loro disposizione speculare, indica che si tratta di una strada con tre corsie per senso di marcia. La corsia A è la corsia di destra, la corsia B è la corsia centrale e la corsia C è la corsia di sinistra. La corsia centrale (B) può essere utilizzata per la marcia normale o per il sorpasso, a seconda delle condizioni del traffico e delle indicazioni presenti. Le corsie A e C sono corsie di marcia normale. La strada è a doppio senso di marcia, come indicato dalla presenza di corsie per entrambi i sensi.",
+    "name": "Strada a doppio senso di marcia con tre corsie per senso di marcia",
+    "description": "La strada è a doppio senso di marcia, con tre corsie per senso di marcia, delimitate da strisce bianche discontinue. Le corsie sono identificate dalle lettere A, B e C per ciascun senso di marcia. La corsia A è quella di destra, la B quella centrale e la C quella di sinistra. La corsia centrale (B) può essere utilizzata per il sorpasso o per la marcia normale in determinate condizioni, mentre le corsie esterne (A e C) sono destinate alla marcia normale. In questo caso, la corsia A è la corsia di marcia normale per un senso, mentre la corsia C è la corsia di marcia normale per l'altro senso. La corsia B è una corsia centrale che può essere utilizzata da entrambi i sensi per il sorpasso o per la marcia normale, a seconda delle condizioni del traffico e delle indicazioni presenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento dei veicoli sulla carreggiata",
+      "Utilizzo delle corsie di marcia"
+    ],
+    "exact_keywords": [
+      "doppio senso di marcia",
+      "corsia centrale",
+      "marcia normale",
+      "sorpasso"
+    ],
+    "vector_search_queries": [
+      "utilizzo corsia centrale doppio senso marcia 3 corsie",
+      "regole marcia normale corsia centrale"
+    ],
+    "rule_explanation": "Su strade a doppio senso con tre corsie per senso di marcia, la corsia centrale è riservata al sorpasso o alla marcia normale solo se necessario per ragioni di traffico o per effettuare manovre."
+  }
+}

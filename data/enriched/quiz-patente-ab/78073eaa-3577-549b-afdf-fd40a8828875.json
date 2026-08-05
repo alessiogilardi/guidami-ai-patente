@@ -1,0 +1,27 @@
+{
+  "question_id": 4638,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24839",
+  "text": "L'idoneità alla guida può essere compromessa se si fa uso di integratori di sali minerali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato psicofisico del conducente",
+      "Idoneità alla guida"
+    ],
+    "exact_keywords": [
+      "idoneità alla guida",
+      "sostanze che alterano la capacità di guida",
+      "integratori alimentari",
+      "effetti collaterali"
+    ],
+    "vector_search_queries": [
+      "condizioni che compromettono l'idoneità alla guida",
+      "uso di farmaci o sostanze che influenzano la capacità di condurre un veicolo"
+    ],
+    "rule_explanation": "L'idoneità alla guida non è compromessa dall'uso di integratori di sali minerali, a meno che non abbiano effetti collaterali che ne alterino le capacità."
+  }
+}

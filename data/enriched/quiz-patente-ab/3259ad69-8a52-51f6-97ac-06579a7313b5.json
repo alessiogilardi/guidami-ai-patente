@@ -1,0 +1,29 @@
+{
+  "question_id": 4436,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22934",
+  "text": "Il conducente che può effettuare l'inversione di marcia su una strada a doppio senso deve accertarsi se la linea di mezzeria è continua",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inversione di marcia",
+      "Segnaletica orizzontale",
+      "Divieto di superamento"
+    ],
+    "exact_keywords": [
+      "inversione di marcia",
+      "linea di mezzeria",
+      "continua",
+      "interrotta",
+      "divieto di sorpasso"
+    ],
+    "vector_search_queries": [
+      "divieto di inversione di marcia su linea continua",
+      "segnaletica orizzontale che vieta l'inversione di marcia"
+    ],
+    "rule_explanation": "L'inversione di marcia è vietata in corrispondenza di linee continue, sia continue che discontinue, in quanto la linea continua delimita il margine invalicabile della carreggiata e vieta il sorpasso."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4010,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18414",
+  "text": "In un passaggio a livello si possono trovare le semibarriere",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Passaggio a livello",
+      "Segnaletica stradale di passaggio a livello",
+      "Dispositivi di protezione del passaggio a livello"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "semibarriere",
+      "barriere",
+      "dispositivi di protezione"
+    ],
+    "vector_search_queries": [
+      "tipologie di barriere nei passaggi a livello",
+      "dispositivi di chiusura dei passaggi a livello ferroviari"
+    ],
+    "rule_explanation": "Nei passaggi a livello possono essere installate semibarriere o barriere, a seconda del tipo di linea ferroviaria e del traffico."
+  }
+}

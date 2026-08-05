@@ -1,0 +1,29 @@
+{
+  "question_id": 4043,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18763",
+  "text": "Quando le persone anziane attraversano la carreggiata bisogna tenere presente che potrebbero non fare adeguata attenzione ai veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso gli utenti deboli",
+      "Attraversamento stradale da parte di pedoni anziani",
+      "Principio di prudenza e attenzione nella guida"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "attraversano la carreggiata",
+      "adeguata attenzione",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "obbligo di attenzione verso pedoni anziani in fase di attraversamento",
+      "moderazione della velocità in presenza di utenti deboli della strada",
+      "doveri del conducente verso le persone anziane che attraversano la carreggiata"
+    ],
+    "rule_explanation": "Il conducente deve prestare particolare attenzione e moderare la velocità in prossimità di persone anziane che attraversano la carreggiata, poiché potrebbero non prestare adeguata attenzione ai veicoli."
+  }
+}

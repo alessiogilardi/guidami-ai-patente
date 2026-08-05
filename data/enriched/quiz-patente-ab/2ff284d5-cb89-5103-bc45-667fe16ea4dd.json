@@ -1,0 +1,28 @@
+{
+  "question_id": 4537,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23862",
+  "text": "Sono ammesse a circolare su autostrade e strade extraurbane principali le macchine agricole, non trainanti un rimorchio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione su autostrade e strade extraurbane principali",
+      "Macchine agricole",
+      "Limitazioni alla circolazione"
+    ],
+    "exact_keywords": [
+      "macchine agricole",
+      "autostrade",
+      "strade extraurbane principali",
+      "divieto di circolazione"
+    ],
+    "vector_search_queries": [
+      "divieto di circolazione per macchine agricole su autostrade e strade extraurbane principali",
+      "limitazioni alla circolazione di macchine agricole su strade a scorrimento veloce"
+    ],
+    "rule_explanation": "Le macchine agricole, anche se non trainanti un rimorchio, non sono ammesse alla circolazione su autostrade e strade extraurbane principali, salvo specifiche deroghe previste dalla legge."
+  }
+}

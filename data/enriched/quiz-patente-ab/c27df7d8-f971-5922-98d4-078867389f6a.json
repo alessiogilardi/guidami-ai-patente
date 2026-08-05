@@ -1,0 +1,33 @@
+{
+  "question_id": 4590,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24297",
+  "text": "Una spia di colore rosso contrassegnata dal simbolo di figura, se accesa durante la marcia, indica una temperatura troppo bassa dell'olio di lubrificazione del motore",
+  "correct_answer": false,
+  "image": "36779cfc84d87c2307160ac1333d689e.jpeg",
+  "image_description": "Spia della pressione dell'olio motore. La spia indica una bassa pressione dell'olio motore. Se accesa, impone di arrestare immediatamente il veicolo per evitare danni gravi al motore. Può essere di colore rosso o giallo ambra, a seconda del costruttore e della gravità del problema.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra il simbolo di una lattina d'olio stilizzata, con una goccia che cade da un beccuccio. Questo simbolo è comunemente utilizzato come spia luminosa nel cruscotto dei veicoli per indicare un problema relativo alla pressione dell'olio motore. La domanda del quiz fa riferimento a una spia di colore rosso o giallo ambra con questo simbolo.",
+    "name": "Spia della pressione dell'olio motore",
+    "description": "La spia indica una bassa pressione dell'olio motore. Se accesa, impone di arrestare immediatamente il veicolo per evitare danni gravi al motore. Può essere di colore rosso o giallo ambra, a seconda del costruttore e della gravità del problema."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori di avaria del veicolo",
+      "Spie di segnalazione luminosa",
+      "Manutenzione del motore"
+    ],
+    "exact_keywords": [
+      "spia rossa",
+      "temperatura olio motore",
+      "pressione olio motore",
+      "arrestare il veicolo"
+    ],
+    "vector_search_queries": [
+      "significato spia rossa pressione olio motore",
+      "conseguenze accensione spia pressione olio motore",
+      "differenza tra spia temperatura olio e spia pressione olio"
+    ],
+    "rule_explanation": "La spia rossa con il simbolo di figura indica una bassa pressione dell'olio motore, non una temperatura troppo bassa. Impone l'arresto immediato del veicolo."
+  }
+}

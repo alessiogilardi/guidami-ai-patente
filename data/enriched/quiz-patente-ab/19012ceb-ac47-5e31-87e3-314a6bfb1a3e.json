@@ -1,0 +1,32 @@
+{
+  "question_id": 4454,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23102",
+  "text": "Secondo le norme di precedenza possono impegnare l'incrocio rappresentato in figura il veicolo D dopo l'attraversamento del veicolo R",
+  "correct_answer": true,
+  "image": "8e82b775ecda8aff615e84d901ec3a50.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso e non sono presenti segnali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo B deve dare la precedenza ai veicoli che si trovano alla sua destra (veicolo L e veicolo R). Il veicolo D deve dare la precedenza ai veicoli che si trovano alla sua destra (veicolo R). Il veicolo R deve dare la precedenza al veicolo D. Il veicolo L deve dare la precedenza al veicolo B. In questo scenario, il veicolo B può impegnare l'incrocio per primo, poiché non ha veicoli alla sua destra che gli impediscano il passaggio. Successivamente, il veicolo R può procedere, dato che il veicolo L gli cede il passo. Infine, il veicolo D può attraversare, avendo la precedenza sul veicolo L ma dovendo attendere il veicolo R.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso visto dall'alto. Sono presenti quattro veicoli: un camion rosso (B) in arrivo da sinistra, un'auto verde (R) in arrivo dall'alto, un'auto nera (L) in arrivo da destra e un'auto blu (D) in arrivo dal basso. Non sono presenti segnali stradali di prescrizione o preavviso che regolino la precedenza nell'incrocio. Le linee tratte indicano le traiettorie dei veicoli all'interno dell'incrocio. Si applica la regola generale della precedenza a destra.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso e non sono presenti segnali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo B deve dare la precedenza ai veicoli che si trovano alla sua destra (veicolo L e veicolo R). Il veicolo D deve dare la precedenza ai veicoli che si trovano alla sua destra (veicolo R). Il veicolo R deve dare la precedenza al veicolo D. Il veicolo L deve dare la precedenza al veicolo B. In questo scenario, il veicolo B può impegnare l'incrocio per primo, poiché non ha veicoli alla sua destra che gli impediscano il passaggio. Successivamente, il veicolo R può procedere, dato che il veicolo L gli cede il passo. Infine, il veicolo D può attraversare, avendo la precedenza sul veicolo L ma dovendo attendere il veicolo R."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza a destra",
+      "Ordine di precedenza agli incroci non segnalati"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "regola generale",
+      "precedenza a destra",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio non segnalato",
+      "regola generale precedenza a destra",
+      "ordine di passaggio tra veicoli a un incrocio"
+    ],
+    "rule_explanation": "Negli incroci non segnalati, si applica la regola generale della precedenza a destra. Il veicolo D deve dare precedenza al veicolo R, quindi R impegna l'incrocio prima di D."
+  }
+}

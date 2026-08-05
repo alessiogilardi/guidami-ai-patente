@@ -1,0 +1,30 @@
+{
+  "question_id": 4011,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18430",
+  "text": "Nelle aree pedonali possono transitare gli autoveicoli dei vigili del fuoco, con luce lampeggiante blu e sirena in funzione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree pedonali",
+      "Deroghe ai divieti di transito",
+      "Uso di dispositivi luminosi e acustici di emergenza"
+    ],
+    "exact_keywords": [
+      "area pedonale",
+      "vigili del fuoco",
+      "luce lampeggiante blu",
+      "sirena",
+      "transito"
+    ],
+    "vector_search_queries": [
+      "transito veicoli di emergenza in area pedonale",
+      "deroga divieto di accesso area pedonale per vigili del fuoco",
+      "uso sirena e lampeggiante blu in aree pedonali"
+    ],
+    "rule_explanation": "Nelle aree pedonali è consentito il transito dei veicoli dei vigili del fuoco, purché utilizzino la luce blu lampeggiante e la sirena per segnalare la loro presenza e urgenza."
+  }
+}

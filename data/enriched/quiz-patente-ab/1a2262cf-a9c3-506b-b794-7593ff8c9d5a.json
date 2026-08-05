@@ -1,0 +1,27 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31020",
+  "text": "Se non si è certi di attraversare in tutta sicurezza un incrocio, è necessario arrestarsi ed aspettare che transitino tutti i veicoli con cui vi può essere un pericolo di collisione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di condotta agli incroci",
+      "Obbligo di prudenza e sicurezza nella circolazione"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "arrestarsi",
+      "pericolo di collisione",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "condotta da tenere in incrocio in condizioni di incertezza",
+      "obbligo di arrestarsi per evitare collisione in incrocio"
+    ],
+    "rule_explanation": "In caso di incertezza sulla sicurezza dell'attraversamento di un incrocio, il conducente deve fermarsi e attendere il transito dei veicoli che potrebbero costituire pericolo di collisione."
+  }
+}

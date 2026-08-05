@@ -1,0 +1,28 @@
+{
+  "question_id": 4024,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18558",
+  "text": "I tricicli a motore sono soggetti a revisione dopo quattro anni dalla prima immatricolazione, successivamente ogni due anni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione periodica dei veicoli a motore",
+      "Classificazione dei tricicli a motore",
+      "Obblighi di manutenzione e controllo dei veicoli"
+    ],
+    "exact_keywords": [
+      "tricicli a motore",
+      "revisione",
+      "immatricolazione",
+      "periodicità"
+    ],
+    "vector_search_queries": [
+      "periodicità revisione tricicli a motore",
+      "revisione periodica veicoli a motore con tre ruote"
+    ],
+    "rule_explanation": "I tricicli a motore devono essere sottoposti a revisione dopo quattro anni dalla prima immatricolazione e successivamente ogni due anni."
+  }
+}

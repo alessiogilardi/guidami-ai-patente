@@ -1,0 +1,29 @@
+{
+  "question_id": 4712,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25417",
+  "text": "La manomissione dell'impianto di scarico non comporta alcuna sanzione, purché si circoli solo nei centri urbani",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Alterazione del veicolo",
+      "Impianto di scarico",
+      "Sanzioni amministrative"
+    ],
+    "exact_keywords": [
+      "manomissione",
+      "impianto di scarico",
+      "sanzione amministrativa",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "sanzioni per manomissione impianto di scarico veicolo",
+      "alterazione impianto di scarico e circolazione vietata",
+      "conseguenze legali modifica scarico auto"
+    ],
+    "rule_explanation": "La manomissione dell'impianto di scarico è sanzionabile amministrativamente, indipendentemente dal luogo di circolazione, in quanto altera le emissioni sonore e inquinanti del veicolo."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23495",
+  "text": "Il sorpasso è vietato in prossimità dei dossi su strade a due corsie a doppio senso di marcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Condizioni di scarsa visibilità",
+      "Sorpasso in prossimità di dossi"
+    ],
+    "exact_keywords": [
+      "sorpasso vietato",
+      "dossi",
+      "strade a due corsie",
+      "doppio senso di marcia"
+    ],
+    "vector_search_queries": [
+      "sorpasso vietato in prossimità dei dossi",
+      "divieto di sorpasso su strade a doppio senso di marcia con due corsie in prossimità di dossi"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in prossimità dei dossi e in ogni altro caso di scarsa visibilità su strade a due corsie con doppio senso di marcia."
+  }
+}

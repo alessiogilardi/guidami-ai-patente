@@ -1,0 +1,28 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24765",
+  "text": "Il conducente coinvolto in un incidente stradale deve evitare che vengano modificate le tracce, se occorre ricostruire la dinamica dell'incidente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente in caso di incidente",
+      "Conservazione delle tracce e delle prove"
+    ],
+    "exact_keywords": [
+      "incidente stradale",
+      "modifica delle tracce",
+      "ricostruzione della dinamica",
+      "obbligo di conservazione"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente coinvolto in incidente stradale",
+      "divieto di alterazione delle tracce in caso di sinistro",
+      "conservazione delle prove per la ricostruzione della dinamica dell'incidente"
+    ],
+    "rule_explanation": "In caso di incidente stradale, il conducente ha l'obbligo di non alterare le tracce utili alla ricostruzione della dinamica per consentire gli accertamenti necessari."
+  }
+}

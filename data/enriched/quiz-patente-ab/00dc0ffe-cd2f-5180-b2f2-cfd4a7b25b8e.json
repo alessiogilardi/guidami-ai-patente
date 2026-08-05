@@ -1,0 +1,27 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23475",
+  "text": "Il conducente del veicolo che viene sorpassato, nelle strade ad una corsia per senso di marcia, deve tenersi il più vicino possibile al margine destro",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente sorpassato",
+      "Regole di circolazione sulle strade ad una corsia per senso di marcia"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "margine destro",
+      "veicolo che viene sorpassato",
+      "strade ad una corsia per senso di marcia"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente sorpassato su strade a una corsia per senso di marcia",
+      "posizione del veicolo sorpassato per agevolare il sorpasso"
+    ],
+    "rule_explanation": "Il conducente del veicolo sorpassato, su strade ad una corsia per senso di marcia, deve tenersi il più vicino possibile al margine destro per agevolare il sorpasso."
+  }
+}

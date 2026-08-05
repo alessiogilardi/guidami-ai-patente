@@ -1,0 +1,27 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23472",
+  "text": "Il sorpasso si effettua tenendo una adeguata distanza laterale dal veicolo che si sorpassa",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza laterale",
+      "Manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "distanza laterale",
+      "veicolo da sorpassare",
+      "sicurezza"
+    ],
+    "vector_search_queries": [
+      "distanza laterale di sicurezza nel sorpasso",
+      "obblighi del conducente durante il sorpasso"
+    ],
+    "rule_explanation": "Durante il sorpasso, è obbligatorio mantenere una distanza laterale di sicurezza dal veicolo che si sta superando per garantire la stabilità e prevenire collisioni."
+  }
+}

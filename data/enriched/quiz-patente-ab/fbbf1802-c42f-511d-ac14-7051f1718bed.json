@@ -1,0 +1,27 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22292",
+  "text": "E' obbligatorio regolare la velocità in prossimità delle scuole",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della velocità in aree specifiche",
+      "Sicurezza stradale in prossimità di scuole"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "scuole",
+      "obbligo",
+      "regolare la velocità"
+    ],
+    "vector_search_queries": [
+      "obbligo di ridurre la velocità in prossimità delle scuole",
+      "regolazione della velocità in aree pedonali e scolastiche"
+    ],
+    "rule_explanation": "In prossimità delle scuole, è obbligatorio moderare la velocità per garantire la sicurezza dei pedoni, in particolare dei bambini."
+  }
+}

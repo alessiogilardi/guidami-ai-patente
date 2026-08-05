@@ -1,0 +1,29 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23477",
+  "text": "La manovra di sorpasso non va effettuata se la carreggiata non è sufficientemente larga",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Larghezza della carreggiata",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "carreggiata",
+      "sufficientemente larga",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "condizioni per effettuare il sorpasso in sicurezza",
+      "sorpasso su carreggiata insufficientemente larga",
+      "divieto di sorpasso per pericolo o intralcio"
+    ],
+    "rule_explanation": "Il sorpasso è vietato se la carreggiata non offre spazio sufficiente a compierlo senza creare pericolo o intralcio agli altri utenti della strada."
+  }
+}

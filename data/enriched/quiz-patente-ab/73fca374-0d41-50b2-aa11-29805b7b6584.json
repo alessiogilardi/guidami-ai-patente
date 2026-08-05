@@ -1,0 +1,29 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25330",
+  "text": "Una frenatura poco efficiente o squilibrata può essere causata dall'eccessivo gioco del pedale della frizione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza del sistema frenante",
+      "Manutenzione del veicolo",
+      "Cause di malfunzionamento dei freni"
+    ],
+    "exact_keywords": [
+      "frenatura inefficiente",
+      "gioco del pedale",
+      "sistema frenante",
+      "manutenzione"
+    ],
+    "vector_search_queries": [
+      "cause di inefficienza del sistema frenante",
+      "malfunzionamenti del freno dovuti a manutenzione",
+      "effetti del gioco pedale frizione sulla frenata"
+    ],
+    "rule_explanation": "Una frenatura poco efficiente o squilibrata non è causata dal gioco del pedale della frizione, ma da problemi al sistema frenante stesso (es. pastiglie, dischi, pompa, ecc.)."
+  }
+}

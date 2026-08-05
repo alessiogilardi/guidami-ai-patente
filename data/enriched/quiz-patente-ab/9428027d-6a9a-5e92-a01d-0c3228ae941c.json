@@ -1,0 +1,33 @@
+{
+  "question_id": 4103,
+  "topic": "Segnali di pericolo",
+  "number": "19486",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada con banchina non praticabile",
+  "correct_answer": true,
+  "image": "23e99b9a1141edf7ea8cb1fe5e054ca1.jpeg",
+  "image_description": "Segnale di pericolo - Banchina pericolosa. Il segnale preannuncia un tratto di strada con banchina pericolosa o cedevole. È un segnale di pericolo che impone al conducente di moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un bordo rosso triangolare con sfondo bianco. Al centro del segnale è raffigurato un veicolo (un'automobile) la cui ruota posteriore destra sta scendendo da una banchina rialzata, finendo su un fondo irregolare composto da detriti o pietrisco. La ruota è inclinata, suggerendo un potenziale cedimento o instabilità della banchina.",
+    "name": "Segnale di pericolo - Banchina pericolosa",
+    "description": "Il segnale preannuncia un tratto di strada con banchina pericolosa o cedevole. È un segnale di pericolo che impone al conducente di moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Condizioni della banchina",
+      "Preavviso di pericolo specifico"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "banchina pericolosa",
+      "banchina non praticabile",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo banchina non praticabile",
+      "preavviso banchina pericolosa o cedevole",
+      "obblighi del conducente in presenza di banchina pericolosa"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante la banchina pericolosa preannuncia un tratto di strada con banchina non praticabile o cedevole, richiedendo prudenza e moderazione della velocità."
+  }
+}

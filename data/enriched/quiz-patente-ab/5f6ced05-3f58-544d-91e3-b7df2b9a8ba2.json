@@ -1,0 +1,27 @@
+{
+  "question_id": 4034,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18671",
+  "text": "Bisogna lasciare liberi i passaggi a livello e i binari del tram anche in caso di traffico intenso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di sgombero dei passaggi a livello e binari del tram",
+      "Regola di circolazione per evitare intralci"
+    ],
+    "exact_keywords": [
+      "passaggi a livello",
+      "binari del tram",
+      "traffico intenso",
+      "sgombero"
+    ],
+    "vector_search_queries": [
+      "obbligo di sgombero passaggi a livello e binari tram in caso di traffico intenso",
+      "divieto di occupare passaggi a livello e binari del tram"
+    ],
+    "rule_explanation": "È obbligatorio mantenere liberi i passaggi a livello e i binari del tram, anche in presenza di traffico intenso, per non ostacolare la circolazione dei treni o dei tram."
+  }
+}

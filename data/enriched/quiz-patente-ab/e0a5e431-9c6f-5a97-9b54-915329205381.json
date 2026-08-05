@@ -1,0 +1,26 @@
+{
+  "question_id": 4014,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18461",
+  "text": "La carreggiata può essere a doppio senso di circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Carreggiata",
+      "Senso di circolazione"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "doppio senso di circolazione",
+      "strada"
+    ],
+    "vector_search_queries": [
+      "definizione di carreggiata e sensi di circolazione",
+      "carreggiata a doppio senso di circolazione"
+    ],
+    "rule_explanation": "La carreggiata è la parte della strada destinata allo scorrimento dei veicoli e può essere a senso unico o a doppio senso di circolazione."
+  }
+}

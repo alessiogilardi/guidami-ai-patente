@@ -1,0 +1,32 @@
+{
+  "question_id": 4207,
+  "topic": "Segnali di precedenza",
+  "number": "20679",
+  "text": "Il segnale di figura (A) può essere ripetuto in formato piccolo e integrato con il pannello in figura (B)",
+  "correct_answer": true,
+  "image": "4501bf0abf57c09c1853a18bcf293161.jpeg",
+  "image_description": "Segnale di precedenza (A) con pannello integrativo di incrocio (B). Il segnale A è un segnale di precedenza che indica diritto di precedenza. Il segnale B è un pannello integrativo che indica la configurazione di un incrocio, mostrando che la strada principale (indicata dalla linea più spessa) prosegue dritto e che le strade secondarie si immettono da destra e da sinistra. Insieme, questi segnali indicano che si ha la precedenza in un incrocio dove la strada principale prosegue dritto e le strade secondarie si immettono lateralmente.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi, etichettati A e B. L'elemento A è un segnale stradale di forma romboidale con bordo bianco e interno arancione, che indica un segnale di precedenza. L'elemento B è un segnale rettangolare con un pittogramma nero su sfondo bianco che rappresenta una croce a T rovesciata, con una linea orizzontale più lunga al centro e due linee orizzontali più corte ai lati, collegata da una linea verticale. Questo pannello integrativo mostra la configurazione di un incrocio, con la strada principale rappresentata dalla linea più spessa che prosegue dritto e le strade secondarie che si immettono da destra e da sinistra. I due elementi sono presentati insieme, suggerendo che il pannello B integra il segnale A.",
+    "name": "Segnale di precedenza (A) con pannello integrativo di incrocio (B)",
+    "description": "Il segnale A è un segnale di precedenza che indica diritto di precedenza. Il segnale B è un pannello integrativo che indica la configurazione di un incrocio, mostrando che la strada principale (indicata dalla linea più spessa) prosegue dritto e che le strade secondarie si immettono da destra e da sinistra. Insieme, questi segnali indicano che si ha la precedenza in un incrocio dove la strada principale prosegue dritto e le strade secondarie si immettono lateralmente."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ripetizione dei segnali stradali",
+      "Segnali di precedenza",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "ripetuto in formato piccolo",
+      "pannello integrativo",
+      "segnali di precedenza",
+      "configurazione dell'incrocio"
+    ],
+    "vector_search_queries": [
+      "ripetizione segnali di precedenza con pannelli integrativi",
+      "uso pannelli integrativi per configurazione incrocio con segnali di precedenza"
+    ],
+    "rule_explanation": "I segnali di precedenza possono essere ripetuti in formato ridotto e integrati con pannelli che ne specificano la configurazione, come la geometria dell'incrocio."
+  }
+}

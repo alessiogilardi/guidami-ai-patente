@@ -1,0 +1,31 @@
+{
+  "question_id": 4112,
+  "topic": "Segnali di divieto",
+  "number": "19614",
+  "text": "Il limite di velocità indicato dal segnale raffigurato entra in vigore 150 metri dopo il segnale stesso",
+  "correct_answer": false,
+  "image": "fa617b370db24cae54893424af1fe4fa.jpeg",
+  "image_description": "Segnale di limite di velocità. Il segnale impone un limite massimo di velocità di 80 km/h. È vietato superare tale velocità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente il numero '80' in nero. Questo è il segnale di limite di velocità massima.",
+    "name": "Segnale di limite di velocità",
+    "description": "Il segnale impone un limite massimo di velocità di 80 km/h. È vietato superare tale velocità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione (divieto)",
+      "Entrata in vigore dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "limite di velocità",
+      "segnale di divieto",
+      "entrata in vigore",
+      "distanza dall'inizio del divieto"
+    ],
+    "vector_search_queries": [
+      "entrata in vigore segnale limite di velocità",
+      "efficacia temporale segnali di prescrizione"
+    ],
+    "rule_explanation": "I segnali di divieto, come quello di limite di velocità, entrano in vigore immediatamente dal punto in cui sono installati, salvo diversa indicazione."
+  }
+}

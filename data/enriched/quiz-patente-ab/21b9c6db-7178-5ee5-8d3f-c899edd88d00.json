@@ -1,0 +1,27 @@
+{
+  "question_id": 4642,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24857",
+  "text": "Soccorrere un ferito della strada non è un obbligo imposto dalla legge, ma solo un dovere morale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di assistenza ai feriti",
+      "Responsabilità del conducente in caso di incidente"
+    ],
+    "exact_keywords": [
+      "soccorrere i feriti",
+      "omissione di soccorso",
+      "veicolo fermo in banchina",
+      "luci di posizione"
+    ],
+    "vector_search_queries": [
+      "obbligo di prestare assistenza ai feriti in caso di incidente stradale",
+      "conseguenze giuridiche dell'omissione di soccorso stradale"
+    ],
+    "rule_explanation": "Il conducente che causa un incidente è obbligato a prestare assistenza ai feriti, pena il reato di omissione di soccorso. Non è un mero dovere morale."
+  }
+}

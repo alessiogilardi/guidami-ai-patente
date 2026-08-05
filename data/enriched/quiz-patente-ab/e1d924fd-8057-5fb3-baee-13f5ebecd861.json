@@ -1,0 +1,32 @@
+{
+  "question_id": 4361,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22135",
+  "text": "Il pannello integrativo raffigurato invita a diminuire la velocità per la presenza di macchine sgombraneve in funzione",
+  "correct_answer": true,
+  "image": "4bd336fcec7a7555807a6b1c56963183.jpeg",
+  "image_description": "Pannello integrativo - Macchine sgombraneve. Il pannello integrativo indica la presenza di macchine sgombraneve in funzione sulla strada, in particolare in condizioni di innevamento. Invita quindi a prestare attenzione e, implicitamente, a moderare la velocità e aumentare la distanza di sicurezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello integrativo rettangolare con bordo nero su sfondo bianco. Sulla sinistra è presente il pittogramma di un fiocco di neve, simbolo di condizioni invernali o innevamento. Sulla destra è raffigurato un mezzo sgombraneve in funzione, con la lama anteriore abbassata e un lampeggiante blu sul tetto della cabina. Il pannello è posto sotto un segnale di pericolo generico (altri pericoli), come suggerito dai contesti del quiz.",
+    "name": "Pannello integrativo - Macchine sgombraneve",
+    "description": "Il pannello integrativo indica la presenza di macchine sgombraneve in funzione sulla strada, in particolare in condizioni di innevamento. Invita quindi a prestare attenzione e, implicitamente, a moderare la velocità e aumentare la distanza di sicurezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Pannelli integrativi",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "macchine sgombraneve",
+      "velocità",
+      "funzione"
+    ],
+    "vector_search_queries": [
+      "pannello integrativo macchine sgombraneve in funzione",
+      "obbligo di moderare la velocità per presenza sgombraneve"
+    ],
+    "rule_explanation": "Il pannello integrativo con le macchine sgombraneve impone di moderare la velocità per la presenza di tali mezzi in funzione, specialmente in caso di neve."
+  }
+}

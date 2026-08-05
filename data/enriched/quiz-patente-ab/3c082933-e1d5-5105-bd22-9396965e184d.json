@@ -1,0 +1,28 @@
+{
+  "question_id": 4555,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23986",
+  "text": "Un'autovettura dotata di notevole massa costituisce, nella circolazione, una garanzia di sicurezza anche per gli altri veicoli di dimensioni e di massa inferiori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza stradale",
+      "Massa e dimensioni dei veicoli",
+      "Interazione tra veicoli di diverse dimensioni"
+    ],
+    "exact_keywords": [
+      "massa",
+      "dimensioni",
+      "sicurezza stradale",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "influenza della massa e delle dimensioni del veicolo sulla sicurezza stradale",
+      "interazione tra veicoli di diverse dimensioni e masse in circolazione"
+    ],
+    "rule_explanation": "La massa e le dimensioni di un veicolo non costituiscono di per sé una garanzia di sicurezza per gli altri utenti della strada; la sicurezza dipende da molteplici fattori, tra cui il comportamento del conducente e le condizioni di guida."
+  }
+}

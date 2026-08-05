@@ -1,0 +1,27 @@
+{
+  "question_id": 4529,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23803",
+  "text": "Il conducente può lasciare il veicolo in sosta con il motore acceso per consentire il funzionamento dell'aria condizionata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta con motore acceso",
+      "Arresto e sosta del veicolo"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "motore acceso",
+      "aria condizionata",
+      "divieto di sosta"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta con motore acceso per aria condizionata",
+      "regole per la sosta del veicolo con motore acceso"
+    ],
+    "rule_explanation": "È vietato lasciare il veicolo in sosta con il motore acceso, anche per far funzionare l'aria condizionata, salvo eccezioni specifiche come le operazioni di soccorso o emergenza."
+  }
+}

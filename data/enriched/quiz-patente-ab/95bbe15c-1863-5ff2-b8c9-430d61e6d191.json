@@ -1,0 +1,31 @@
+{
+  "question_id": 4102,
+  "topic": "Segnali di pericolo",
+  "number": "19475",
+  "text": "Il segnale raffigurato preannuncia che bisogna usare prudenza perché è vicino un pericolo",
+  "correct_answer": true,
+  "image": "8e8b109c5eb7cd5a4eec042b92f31e93.jpeg",
+  "image_description": "Segnale di pericolo generico (punto esclamativo). Il segnale preannuncia un pericolo generico, non specificato da altri segnali di pericolo specifici. Impone di usare particolare prudenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e fondo bianco. Al centro del triangolo è presente un punto esclamativo nero. Non sono presenti pannelli integrativi. Si tratta di un segnale di pericolo generico.",
+    "name": "Segnale di pericolo generico (punto esclamativo)",
+    "description": "Il segnale preannuncia un pericolo generico, non specificato da altri segnali di pericolo specifici. Impone di usare particolare prudenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo generico",
+      "Obbligo di prudenza alla guida"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "prudenza",
+      "pericolo generico",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "funzione dei segnali di pericolo generico",
+      "obbligo di prudenza in presenza di segnali di pericolo"
+    ],
+    "rule_explanation": "I segnali di pericolo generico impongono al conducente di usare particolare prudenza in quanto preannunciano un pericolo non specificato da altri segnali."
+  }
+}

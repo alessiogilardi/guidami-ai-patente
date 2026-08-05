@@ -1,0 +1,27 @@
+{
+  "question_id": 4505,
+  "topic": "Norme sul sorpasso",
+  "number": "23603",
+  "text": "Se si viene sorpassati mentre sopraggiunge un veicolo dal senso opposto, occorre tenere accesi i proiettori abbaglianti, come segnale di pericolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sorpasso in condizioni particolari",
+      "Segnalazione di pericolo tra veicoli"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo dal senso opposto",
+      "proiettori abbaglianti",
+      "segnale di pericolo"
+    ],
+    "vector_search_queries": [
+      "sorpasso con veicolo in senso opposto",
+      "uso dei proiettori abbaglianti durante il sorpasso"
+    ],
+    "rule_explanation": "In caso di sorpasso con veicolo dal senso di marcia opposto, non si devono accendere gli abbaglianti; tale manovra è vietata se non si può effettuare in sicurezza."
+  }
+}

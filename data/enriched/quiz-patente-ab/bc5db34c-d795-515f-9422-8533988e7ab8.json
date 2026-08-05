@@ -1,0 +1,27 @@
+{
+  "question_id": 4502,
+  "topic": "Norme sul sorpasso",
+  "number": "23565",
+  "text": "Non si può sorpassare in corrispondenza dei dossi su carreggiata a senso unico a due corsie",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso in condizioni di scarsa visibilità",
+      "Regole specifiche per il sorpasso su carreggiate a senso unico"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "dossi",
+      "carreggiata a senso unico",
+      "corsie"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso in prossimità dei dossi",
+      "sorpasso su carreggiata a senso unico con più corsie"
+    ],
+    "rule_explanation": "Il divieto di sorpasso in corrispondenza dei dossi si applica a tutte le carreggiate, indipendentemente dal numero di corsie o dal senso di marcia, per garantire la visibilità."
+  }
+}

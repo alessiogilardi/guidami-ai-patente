@@ -1,0 +1,28 @@
+{
+  "question_id": 4445,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23000",
+  "text": "In caso di fermata sul margine destro della carreggiata senza segnalare con sufficiente anticipo l'intenzione di effettuare tale manovra, è disposta la sottrazione di 4 punti dalla patente del conducente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione manovre",
+      "Fermata e sosta",
+      "Sanzioni amministrative pecuniarie e accessorie"
+    ],
+    "exact_keywords": [
+      "fermata sul margine destro",
+      "segnalare con sufficiente anticipo",
+      "sottrazione di punti",
+      "patente di guida"
+    ],
+    "vector_search_queries": [
+      "sanzione per mancata segnalazione di fermata sul margine destro",
+      "punti decurtati per mancata segnalazione manovra di fermata"
+    ],
+    "rule_explanation": "La mancata segnalazione con sufficiente anticipo dell'intenzione di fermarsi sul margine destro comporta la sottrazione di 2 punti dalla patente, non 4."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4355,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22072",
+  "text": "Il segnale raffigurato evidenzia l'inizio dell'area dove è possibile parcheggiare",
+  "correct_answer": true,
+  "image": "a604c9c33c10697f0bd241a921570d3b.jpeg",
+  "image_description": "Parcheggio con pannello integrativo di direzione obbligatoria dritta. Il segnale indica che l'area di parcheggio inizia in corrispondenza del segnale e prosegue diritto.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di parcheggio (la lettera 'P' bianca su sfondo blu) sovrastante un pannello integrativo rettangolare bianco con una freccia nera rivolta verso l'alto. Il pannello integrativo indica la direzione in cui si applica il segnale principale.",
+    "name": "Parcheggio con pannello integrativo di direzione obbligatoria dritta",
+    "description": "Il segnale indica che l'area di parcheggio inizia in corrispondenza del segnale e prosegue diritto."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Disposizione dei veicoli nei parcheggi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "segnali di parcheggio",
+      "direzione obbligatoria",
+      "area di parcheggio"
+    ],
+    "vector_search_queries": [
+      "inizio area di parcheggio con pannello integrativo di direzione dritta",
+      "interpretazione segnale parcheggio con pannello integrativo di direzione obbligatoria"
+    ],
+    "rule_explanation": "Il pannello integrativo, se indica la direzione dritta, specifica che l'area di parcheggio inizia in corrispondenza del segnale e prosegue in tale direzione."
+  }
+}

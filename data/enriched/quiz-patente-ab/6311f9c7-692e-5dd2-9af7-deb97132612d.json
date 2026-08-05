@@ -1,0 +1,32 @@
+{
+  "question_id": 4235,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20926",
+  "text": "Le strisce gialle diagonali in figura devono essere lasciate libere per consentire l'entrata e l'uscita dal veicolo delle persone invalide",
+  "correct_answer": true,
+  "image": "3c4dace65cc36e37309b263ce5ea5b1b.jpeg",
+  "image_description": "Strisce di delimitazione per aree riservate a persone invalide. Le strisce gialle diagonali delimitano un'area che non deve essere occupata dai veicoli, in quanto destinata a facilitare l'accesso e l'uscita dei veicoli per persone invalide.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una vista aerea di uno spazio di parcheggio con due auto. Sulla sinistra, adiacente a un marciapiede o area pedonale, è presente un'area delimitata da strisce gialle diagonali. Queste strisce sono posizionate in modo da indicare che l'area non deve essere occupata da veicoli. Le due auto sono parcheggiate in spazi adiacenti, uno dei quali è parzialmente coperto dalle strisce gialle. L'area con le strisce gialle è adiacente a un'apertura che potrebbe indicare un accesso o un'uscita.",
+    "name": "Strisce di delimitazione per aree riservate a persone invalide",
+    "description": "Le strisce gialle diagonali delimitano un'area che non deve essere occupata dai veicoli, in quanto destinata a facilitare l'accesso e l'uscita dei veicoli per persone invalide."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Accesso persone invalide",
+      "Occupazione aree riservate"
+    ],
+    "exact_keywords": [
+      "strisce gialle diagonali",
+      "area riservata",
+      "persone invalide",
+      "accesso e uscita"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale strisce gialle diagonali area riservata persone invalide",
+      "obbligo di lasciare libere aree per accesso veicoli persone invalide"
+    ],
+    "rule_explanation": "Le strisce gialle diagonali delimitano un'area riservata alle persone invalide, che deve essere lasciata libera per consentire l'accesso e l'uscita dei veicoli a loro servizio."
+  }
+}

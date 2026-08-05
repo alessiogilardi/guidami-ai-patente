@@ -1,0 +1,30 @@
+{
+  "question_id": 4257,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21139",
+  "text": "Delle tre luci del semaforo in figura se ne accende soltanto una, mentre le altre sono spente",
+  "correct_answer": true,
+  "image": "db2b7fa24f44cf45dd290c6dc7291cb9.jpeg",
+  "image_description": "Pannello integrativo con indicazione di velocità massime. Il segnale raffigura tre cerchi neri con bordo bianco, contenenti i numeri 50, 40 e 30, disposti verticalmente all'interno di un rettangolo bianco. Questi indicano i limiti di velocità massimi consentiti in determinate condizioni o per specifici veicoli, ma non sono semafori né indicano velocità obbligatorie.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello rettangolare bianco con tre cerchi neri, ciascuno con un bordo bianco e un numero al suo interno: 50, 40 e 30. I numeri sono disposti in colonna, dal più alto al più basso, dall'alto verso il basso. Questo pannello è un pannello integrativo che accompagna un segnale di prescrizione (come un limite di velocità) o un segnale luminoso (come un semaforo). In questo caso specifico, i numeri indicano limiti di velocità massimi. Non si tratta di un semaforo, poiché non ha le luci tipiche (rosso, giallo, verde) né la forma di un semaforo. I numeri rappresentano velocità massime consentite, non velocità obbligatorie o consigliate.",
+    "name": "Pannello integrativo con indicazione di velocità massime",
+    "description": "Il segnale raffigura tre cerchi neri con bordo bianco, contenenti i numeri 50, 40 e 30, disposti verticalmente all'interno di un rettangolo bianco. Questi indicano i limiti di velocità massimi consentiti in determinate condizioni o per specifici veicoli, ma non sono semafori né indicano velocità obbligatorie."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzionamento dei semafori",
+      "Segnalazioni semaforiche"
+    ],
+    "exact_keywords": [
+      "luci del semaforo",
+      "semaforo spento",
+      "semaforo funzionante"
+    ],
+    "vector_search_queries": [
+      "funzionamento delle luci semaforiche",
+      "principio di accensione singola delle luci del semaforo"
+    ],
+    "rule_explanation": "Un semaforo, per essere considerato funzionante, deve accendere una sola luce alla volta tra quelle previste (rosso, giallo, verde). Se più luci sono accese contemporaneamente o nessuna luce è accesa, il semaforo non è in funzione o è guasto."
+  }
+}

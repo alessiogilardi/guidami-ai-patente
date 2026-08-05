@@ -1,0 +1,33 @@
+{
+  "question_id": 4180,
+  "topic": "Segnali di obbligo",
+  "number": "20382",
+  "text": "Il segnale raffigurato è posto in corrispondenza della fine delle corsie riservate ai pedoni e alle biciclette",
+  "correct_answer": false,
+  "image": "744d9382091f6c49f84423af54940f5f.jpeg",
+  "image_description": "Pista ciclabile e percorso pedonale Groves. Il segnale indica un percorso misto, dove pedoni e ciclisti devono procedere in direzioni separate ma all'interno dello stesso percorso. La parte sinistra è riservata ai pedoni e la parte destra ai ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro del segnale, una linea bianca verticale divide lo spazio in due sezioni. Nella sezione di sinistra è raffigurata la sagoma stilizzata di un pedone in bianco, mentre nella sezione di destra è raffigurata una bicicletta in bianco. Il segnale è un segnale di obbligo.",
+    "name": "Pista ciclabile e percorso pedonale Groves",
+    "description": "Il segnale indica un percorso misto, dove pedoni e ciclisti devono procedere in direzioni separate ma all'interno dello stesso percorso. La parte sinistra è riservata ai pedoni e la parte destra ai ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnaletica stradale di indicazione",
+      "Uso promiscuo di corsie"
+    ],
+    "exact_keywords": [
+      "fine corsia riservata",
+      "percorso pedonale",
+      "pista ciclabile",
+      "segnali di obbligo"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di corsie riservate a pedoni e ciclisti",
+      "interpretazione segnali di obbligo per percorsi pedonali e ciclabili",
+      "segnaletica fine percorso pedonale e ciclabile"
+    ],
+    "rule_explanation": "Il segnale di fine corsia riservata indica la cessazione dell'obbligo di utilizzare una corsia specifica per determinate categorie di utenti. La descrizione dell'immagine non corrisponde a un segnale di fine corsia riservata."
+  }
+}

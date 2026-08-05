@@ -1,0 +1,27 @@
+{
+  "question_id": 4596,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24332",
+  "text": "Gli istruttori di guida nello svolgimento della loro professione non sono obbligati ad agganciare la cintura di sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Esenzioni dall'obbligo di cintura di sicurezza",
+      "Uso dei dispositivi di ritenuta per istruttori di guida"
+    ],
+    "exact_keywords": [
+      "istruttori di guida",
+      "cinture di sicurezza",
+      "veicoli adibiti a scuola guida",
+      "esenzione"
+    ],
+    "vector_search_queries": [
+      "esenzione obbligo cintura sicurezza istruttore guida",
+      "uso cinture sicurezza durante lezioni di guida"
+    ],
+    "rule_explanation": "Gli istruttori di guida, durante le esercitazioni alla guida con allievi a bordo, sono esentati dall'obbligo di indossare la cintura di sicurezza."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4348,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "22001",
+  "text": "Il delineatore raffigurato può segnalare l'inizio di un'isola di traffico",
+  "correct_answer": true,
+  "image": "fb41bff27ea2c08d511b116f6ce0eb77.jpeg",
+  "image_description": "Delineatore di ostacolo. Il segnale raffigurato è un delineatore di ostacolo. La sua funzione è quella di segnalare la presenza di un ostacolo sulla carreggiata, indicando la direzione da seguire per aggirarlo. È dotato di una luce propria o è rifrangente per garantire la visibilità anche in condizioni di scarsa illuminazione. Viene posizionato all'interno della carreggiata, in prossimità dell'ostacolo, o ai lati della strada per delimitare percorsi obbligatori o deviazioni. Può anche segnalare l'inizio di un'isola di traffico.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un delineatore di ostacolo. Si tratta di un dispositivo di segnalazione stradale composto da una base grigia di forma trapezoidale, un fusto bianco e un elemento giallo cilindrico posto a metà altezza. Sopra l'elemento giallo, è presente un segnale circolare blu con una freccia bianca obliqua rivolta verso il basso a destra. Questo tipo di segnale viene utilizzato per presegnalare ostacoli o deviazioni sulla carreggiata, indicando la direzione da seguire. Non è possibile determinare dalla sola immagine se sia dotato di luce propria o sia rifrangente, né se si trovi all'interno o all'esterno della carreggiata, o se delimiti una corsia riservata, una pista ciclabile o l'inizio di un'isola di traffico. L'immagine rappresenta il delineatore in modo isolato, senza contesto stradale specifico.",
+    "name": "Delineatore di ostacolo",
+    "description": "Il segnale raffigurato è un delineatore di ostacolo. La sua funzione è quella di segnalare la presenza di un ostacolo sulla carreggiata, indicando la direzione da seguire per aggirarlo. È dotato di una luce propria o è rifrangente per garantire la visibilità anche in condizioni di scarsa illuminazione. Viene posizionato all'interno della carreggiata, in prossimità dell'ostacolo, o ai lati della strada per delimitare percorsi obbligatori o deviazioni. Può anche segnalare l'inizio di un'isola di traffico."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale complementare",
+      "Delineatori di ostacolo",
+      "Isole di traffico"
+    ],
+    "exact_keywords": [
+      "delineatore di ostacolo",
+      "ostacolo sulla carreggiata",
+      "inizio di un'isola di traffico",
+      "percorso obbligatorio"
+    ],
+    "vector_search_queries": [
+      "funzione del delineatore di ostacolo",
+      "segnalazione di isole di traffico con delineatori",
+      "uso dei delineatori per percorsi obbligatori"
+    ],
+    "rule_explanation": "Il delineatore di ostacolo, posizionato sulla carreggiata o ai lati, segnala la presenza di un ostacolo o l'inizio di un'isola di traffico, indicando la direzione da seguire."
+  }
+}

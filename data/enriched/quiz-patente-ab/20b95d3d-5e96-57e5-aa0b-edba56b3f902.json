@@ -1,0 +1,28 @@
+{
+  "question_id": 4610,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24504",
+  "text": "Il titolare di patente di categoria A2 da almeno due anni, può conseguire la patente A che abilita alla guida di tutti i motocicli, anche se ha meno di 24 anni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Conversione patente motocicli",
+      "Requisiti di età e anzianità patente per categoria A"
+    ],
+    "exact_keywords": [
+      "patente A2",
+      "patente A",
+      "conseguire",
+      "motocicli",
+      "24 anni"
+    ],
+    "vector_search_queries": [
+      "conseguimento patente A da A2 con meno di 24 anni",
+      "requisiti patente A per titolari A2 con anzianità di 2 anni"
+    ],
+    "rule_explanation": "Chi è titolare di patente A2 da almeno 2 anni può conseguire la patente A (senza limiti di cilindrata) anche se ha meno di 24 anni, purché abbia compiuto 20 anni."
+  }
+}

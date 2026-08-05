@@ -1,0 +1,28 @@
+{
+  "question_id": 4642,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24860",
+  "text": "Soccorrere un ferito della strada è obbligatorio solo per i medici e il personale sanitario",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di assistenza a persona in pericolo",
+      "Primo soccorso stradale"
+    ],
+    "exact_keywords": [
+      "soccorrere",
+      "ferito della strada",
+      "primo soccorso",
+      "omissione di soccorso"
+    ],
+    "vector_search_queries": [
+      "obbligo di prestare primo soccorso a feriti della strada",
+      "dovere di assistenza a persona in pericolo in caso di incidente stradale",
+      "conseguenze dell'omissione di soccorso a vittima di sinistro stradale"
+    ],
+    "rule_explanation": "Il primo soccorso è un dovere civico per chiunque si imbatta in un incidente stradale, non è riservato solo al personale sanitario."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4380,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22389",
+  "text": "Si è tenuti a regolare la velocità in funzione del tipo di cambio di velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di guida"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "condizioni della strada",
+      "intralcio alla circolazione",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alle condizioni di guida",
+      "moderare la velocità per evitare pericoli o intralci"
+    ],
+    "rule_explanation": "La velocità va regolata in base alle condizioni della strada, del traffico, del veicolo e atmosferiche, non al tipo di cambio."
+  }
+}

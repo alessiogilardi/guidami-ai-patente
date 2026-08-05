@@ -1,0 +1,28 @@
+{
+  "question_id": 4618,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24615",
+  "text": "La revoca della patente può essere disposta dagli organi di polizia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revoca della patente di guida",
+      "Competenza amministrativa",
+      "Sanzioni accessorie"
+    ],
+    "exact_keywords": [
+      "revoca della patente",
+      "organi di polizia",
+      "Prefetto",
+      "sanzione amministrativa"
+    ],
+    "vector_search_queries": [
+      "competenza a disporre la revoca della patente di guida",
+      "differenza tra sanzione della polizia e provvedimento prefettizio di revoca patente"
+    ],
+    "rule_explanation": "La revoca della patente di guida è una sanzione amministrativa accessoria disposta dal Prefetto, non dagli organi di polizia che accertano l'infrazione."
+  }
+}

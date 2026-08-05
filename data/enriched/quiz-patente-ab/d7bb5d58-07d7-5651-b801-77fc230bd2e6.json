@@ -1,0 +1,32 @@
+{
+  "question_id": 4312,
+  "topic": "Segnali di indicazione",
+  "number": "21668",
+  "text": "Il segnale raffigurato vieta il transito ai veicoli senza motore",
+  "correct_answer": false,
+  "image": "2faf7752ddcc6087bffff0ee81a28eaf.jpeg",
+  "image_description": "Pista ciclabile. Il segnale indica una pista ciclabile. Obbliga i ciclisti a utilizzare la pista e segnala la loro presenza agli altri utenti della strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale è raffigurata, in bianco, una figura stilizzata di un ciclista su una bicicletta. Il segnale è di forma quadrata con angoli arrotondati. Questo segnale è un segnale di indicazione.",
+    "name": "Pista ciclabile",
+    "description": "Il segnale indica una pista ciclabile. Obbliga i ciclisti a utilizzare la pista e segnala la loro presenza agli altri utenti della strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pista ciclabile",
+      "Segnali di obbligo"
+    ],
+    "exact_keywords": [
+      "pista ciclabile",
+      "segnali di indicazione",
+      "divieto di transito",
+      "obbligo per ciclisti"
+    ],
+    "vector_search_queries": [
+      "segnaletica indicazione pista ciclabile",
+      "interpretazione segnale pista ciclabile obbligo",
+      "differenza segnale pista ciclabile e divieto di transito"
+    ],
+    "rule_explanation": "Il segnale di pista ciclabile indica una pista riservata ai ciclisti, non un divieto di transito per altri veicoli."
+  }
+}

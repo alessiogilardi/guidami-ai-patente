@@ -1,0 +1,31 @@
+{
+  "question_id": 4284,
+  "topic": "Segnali di indicazione",
+  "number": "21400",
+  "text": "Il segnale raffigurato preavvisa un incrocio su strada extraurbana",
+  "correct_answer": true,
+  "image": "fa19a50da37f716b072eca8b6ecdf6e5.jpeg",
+  "image_description": "Preavviso di direzione e percorso - Località turistica e passaggio a livello. Il segnale indica le direzioni per Porto Torres (proseguire diritto), S. Giovanni (svoltare a sinistra) e \"nuraghe Speranza\" (svoltare a sinistra). È presente anche un segnale di pericolo che preavvisa un passaggio a livello senza barriere, con la direzione di svolta a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale blu rettangolare con indicazioni di direzione. In alto, la freccia indica dritto per \"PORTO TORRES\". A destra, una freccia indica la svolta a destra per \"S. GIOVANNI\", accompagnata da un segnale di pericolo triangolare con bordo rosso e pittogramma di un passaggio a livello senza barriere. A sinistra, una freccia indica la svolta a sinistra, con un pannello marrone integrato che riporta la scritta \"nuraghe Speranza\".",
+    "name": "Preavviso di direzione e percorso - Località turistica e passaggio a livello",
+    "description": "Il segnale indica le direzioni per Porto Torres (proseguire diritto), S. Giovanni (svoltare a sinistra) e \"nuraghe Speranza\" (svoltare a sinistra). È presente anche un segnale di pericolo che preavvisa un passaggio a livello senza barriere, con la direzione di svolta a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso di direzione",
+      "Segnali di indicazione stradale"
+    ],
+    "exact_keywords": [
+      "preavviso di direzione",
+      "strada extraurbana",
+      "incrocio",
+      "località turistica"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di direzione su strade extraurbane",
+      "interpretazione segnali di indicazione stradale per incroci"
+    ],
+    "rule_explanation": "Il segnale di preavviso di direzione indica le direzioni da seguire per raggiungere determinate località o per percorsi specifici, anche su strade extraurbane."
+  }
+}

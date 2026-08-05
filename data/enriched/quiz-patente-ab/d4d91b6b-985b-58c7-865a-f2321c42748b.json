@@ -1,0 +1,27 @@
+{
+  "question_id": 4411,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22684",
+  "text": "Chi guida un veicolo, anche se ad elevate prestazioni, deve tenersi il più vicino possibile al margine destro della carreggiata, quando effettua una svolta a destra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento del veicolo sulla carreggiata",
+      "Norme di svolta a destra"
+    ],
+    "exact_keywords": [
+      "margine destro della carreggiata",
+      "svolta a destra",
+      "veicolo",
+      "conduttore"
+    ],
+    "vector_search_queries": [
+      "posizionamento del veicolo per la svolta a destra",
+      "obbligo di avvicinamento al margine destro in caso di svolta a destra"
+    ],
+    "rule_explanation": "In fase di svolta a destra, il conducente deve tenersi il più vicino possibile al margine destro della carreggiata, indipendentemente dalle prestazioni del veicolo."
+  }
+}

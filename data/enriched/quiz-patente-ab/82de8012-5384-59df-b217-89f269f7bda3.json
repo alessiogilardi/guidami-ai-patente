@@ -1,0 +1,32 @@
+{
+  "question_id": 4205,
+  "topic": "Segnali di precedenza",
+  "number": "20663",
+  "text": "Il segnale raffigurato, posto sulle autostrade, precede il segnale d'obbligo di svolta a sinistra",
+  "correct_answer": false,
+  "image": "0389a701f5e73e089b44b1c07f45d20b.jpeg",
+  "image_description": "Preavviso di confluenza con immissione laterale sinistra. Il segnale preannuncia una confluenza stradale con immissione da sinistra. I veicoli che si immettono hanno l'obbligo di dare la precedenza ai veicoli che circolano sulla strada principale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e fondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta una strada principale con una corsia che si immette da sinistra. La corsia di immissione è più stretta della strada principale e termina con una punta a freccia che indica la direzione di marcia. Questo segnale preannuncia una confluenza stradale con immissione da sinistra.",
+    "name": "Preavviso di confluenza con immissione laterale sinistra",
+    "description": "Il segnale preannuncia una confluenza stradale con immissione da sinistra. I veicoli che si immettono hanno l'obbligo di dare la precedenza ai veicoli che circolano sulla strada principale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Preavviso di confluenza",
+      "Obbligo di dare precedenza"
+    ],
+    "exact_keywords": [
+      "preavviso di confluenza",
+      "immissione laterale sinistra",
+      "dare la precedenza",
+      "strada principale"
+    ],
+    "vector_search_queries": [
+      "obbligo di precedenza dei veicoli in immissione su strada principale",
+      "segnali di preavviso di confluenza e regole di precedenza"
+    ],
+    "rule_explanation": "Il segnale di preavviso di confluenza con immissione da sinistra impone ai veicoli in immissione di dare precedenza a quelli sulla strada principale, non è un obbligo di svolta."
+  }
+}

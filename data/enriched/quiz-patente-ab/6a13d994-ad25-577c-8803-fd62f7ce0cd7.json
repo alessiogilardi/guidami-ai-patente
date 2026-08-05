@@ -1,0 +1,30 @@
+{
+  "question_id": 4599,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24373",
+  "text": "E' consentito il trasporto di bambini senza che siano assicurati a sistemi di ritenuta, purché sui sedili anteriori in braccio a persona maggiorenne",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistemi di ritenuta per bambini",
+      "Trasporto di minori",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sistemi di ritenuta",
+      "bambini",
+      "trasporto",
+      "sedili anteriori",
+      "persona maggiorenne"
+    ],
+    "vector_search_queries": [
+      "obbligo sistemi di ritenuta per bambini in auto",
+      "trasporto bambini senza seggiolino o adattatore",
+      "dispositivi di sicurezza per minori su autoveicoli"
+    ],
+    "rule_explanation": "Il trasporto di bambini su qualsiasi sedile del veicolo, compresi quelli anteriori, è consentito solo se sono assicurati a idonei sistemi di ritenuta omologati."
+  }
+}

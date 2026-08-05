@@ -1,0 +1,27 @@
+{
+  "question_id": 4379,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22373",
+  "text": "Il limite massimo di velocità sulle strade extraurbane principali è di 70 km/h per autovetture con rimorchio per trasporto imbarcazioni",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane principali",
+      "Veicoli con rimorchio"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "strade extraurbane principali",
+      "autovetture con rimorchio",
+      "70 km/h"
+    ],
+    "vector_search_queries": [
+      "limite velocità autovettura con rimorchio su strada extraurbana principale",
+      "velocità massima consentita per veicoli trainanti rimorchio su strade extraurbane principali"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per autovetture con rimorchio per trasporto imbarcazioni su strade extraurbane principali è di 70 km/h."
+  }
+}

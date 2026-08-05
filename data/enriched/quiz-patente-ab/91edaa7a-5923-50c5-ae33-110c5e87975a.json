@@ -1,0 +1,31 @@
+{
+  "question_id": 4163,
+  "topic": "Segnali di obbligo",
+  "number": "20210",
+  "text": "Il segnale raffigurato indica che è consentito soltanto svoltare a sinistra",
+  "correct_answer": false,
+  "image": "92d98106f0ae129dab0667c17a9e6a61.jpeg",
+  "image_description": "Preavviso di deviazione (obbligo di svolta a sinistra o proseguire diritto). Il segnale impone di proseguire diritto o di svoltare a sinistra. Non è consentita la svolta a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro sono presenti due frecce bianche: una punta verso l'alto (proseguire diritto) e l'altra piega verso sinistra (svoltare a sinistra). Le frecce indicano le direzioni consentite.",
+    "name": "Preavviso di deviazione (obbligo di svolta a sinistra o proseguire diritto)",
+    "description": "Il segnale impone di proseguire diritto o di svoltare a sinistra. Non è consentita la svolta a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo specifico di direzione",
+      "Interpretazione dei segnali di prescrizione valida per la circolazione"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "svoltare a sinistra",
+      "proseguire diritto",
+      "deviazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di proseguire diritto o svoltare a sinistra",
+      "interpretazione segnale di preavviso di deviazione"
+    ],
+    "rule_explanation": "Il segnale di preavviso di deviazione impone di proseguire diritto o di svoltare a sinistra, non solo di svoltare a sinistra."
+  }
+}

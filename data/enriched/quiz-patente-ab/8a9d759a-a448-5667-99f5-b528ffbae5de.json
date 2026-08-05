@@ -1,0 +1,33 @@
+{
+  "question_id": 4550,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23948",
+  "text": "Il pannello giallo in figura posto nella parte posteriore del rimorchio individua un autotreno o un autoarticolato",
+  "correct_answer": true,
+  "image": "be0079414cd418f3e275dd374130b3c6.jpeg",
+  "image_description": "Pannello retroriflettente di pericolo. Il pannello in figura è un pannello retroriflettente di colore giallo con bordo rosso, di forma rettangolare, utilizzato per segnalare la presenza di un veicolo o di un carico che sporge posteriormente. La sua funzione è quella di aumentare la visibilità del veicolo o del carico, specialmente in condizioni di scarsa illuminazione o di notte, per prevenire incidenti. Viene applicato sui veicoli che trasportano carichi sporgenti o su rimorchi e semirimorchi di massa superiore a 3,5 tonnellate.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un pannello rettangolare di colore giallo con un bordo rosso. Questo pannello è un segnale di pericolo utilizzato per segnalare la presenza di un veicolo o di un carico che sporge posteriormente. È un pannello retroriflettente, il che significa che riflette la luce, aumentando la visibilità del veicolo o del carico in condizioni di scarsa illuminazione. Il pannello è vuoto, senza alcun pittogramma o scritta, e la sua forma e colore sono standardizzati dal Codice della Strada italiano per questo tipo di segnalazione.",
+    "name": "Pannello retroriflettente di pericolo",
+    "description": "Il pannello in figura è un pannello retroriflettente di colore giallo con bordo rosso, di forma rettangolare, utilizzato per segnalare la presenza di un veicolo o di un carico che sporge posteriormente. La sua funzione è quella di aumentare la visibilità del veicolo o del carico, specialmente in condizioni di scarsa illuminazione o di notte, per prevenire incidenti. Viene applicato sui veicoli che trasportano carichi sporgenti o su rimorchi e semirimorchi di massa superiore a 3,5 tonnellate."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di veicolo fermo",
+      "Identificazione di complessi veicolari",
+      "Dispositivi di equipaggiamento dei veicoli"
+    ],
+    "exact_keywords": [
+      "pannello retroriflettente di pericolo",
+      "autotreno",
+      "autoarticolato",
+      "rimorchio",
+      "carico sporgente"
+    ],
+    "vector_search_queries": [
+      "pannello giallo retroriflettente posteriore autotreno autoarticolato",
+      "segnalazione veicolo o carico sporgente con pannello giallo"
+    ],
+    "rule_explanation": "Il pannello giallo retroriflettente con bordo rosso, posto posteriormente, identifica un autotreno o un autoarticolato, segnalando la presenza di un veicolo o carico sporgente per aumentare la visibilità."
+  }
+}

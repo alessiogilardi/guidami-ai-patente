@@ -1,0 +1,28 @@
+{
+  "question_id": 4684,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25157",
+  "text": "Lo scarico dei residui organici e delle acque sporche delle autocaravan deve avvenire negli appositi impianti di smaltimento igienico-sanitari",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Smaltimento rifiuti autocaravan",
+      "Impianti di scarico igienico-sanitari",
+      "Tutela ambientale"
+    ],
+    "exact_keywords": [
+      "residui organici",
+      "acque sporche",
+      "autocaravan",
+      "impianti di smaltimento igienico-sanitari"
+    ],
+    "vector_search_queries": [
+      "corretto smaltimento dei residui organici e acque sporche delle autocaravan",
+      "obbligo di utilizzo degli impianti igienico-sanitari per lo scarico da autocaravan"
+    ],
+    "rule_explanation": "Lo scarico dei residui organici e delle acque sporche delle autocaravan deve essere effettuato esclusivamente negli appositi impianti di smaltimento igienico-sanitari per tutelare l'ambiente."
+  }
+}

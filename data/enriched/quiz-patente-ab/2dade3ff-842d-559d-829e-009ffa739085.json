@@ -1,0 +1,27 @@
+{
+  "question_id": 4502,
+  "topic": "Norme sul sorpasso",
+  "number": "23560",
+  "text": "E'vietato sorpassare accodandosi ad un'ambulanza in servizio di emergenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento in prossimità di veicoli di emergenza",
+      "Divieto di sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpassare",
+      "ambulanza",
+      "servizio di emergenza",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso per veicoli di emergenza",
+      "comportamento da tenere nei confronti delle ambulanze in servizio di emergenza"
+    ],
+    "rule_explanation": "È vietato sorpassare un'ambulanza che si trovi in servizio di emergenza, per non intralciarne la missione."
+  }
+}

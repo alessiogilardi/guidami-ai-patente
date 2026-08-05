@@ -1,0 +1,30 @@
+{
+  "question_id": 4686,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25171",
+  "text": "La forza aderente si oppone allo slittamento dello pneumatico sull'asfalto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Forza di aderenza",
+      "Attrito radente",
+      "Stabilità del veicolo"
+    ],
+    "exact_keywords": [
+      "forza aderente",
+      "slittamento",
+      "pneumatico",
+      "asfalto",
+      "aderenza"
+    ],
+    "vector_search_queries": [
+      "forza che si oppone allo slittamento tra pneumatico e asfalto",
+      "ruolo della forza aderente nella tenuta di strada",
+      "attrito tra pneumatico e strada"
+    ],
+    "rule_explanation": "La forza aderente è la forza che si oppone allo slittamento relativo tra la superficie dello pneumatico e il manto stradale, garantendo la tenuta di strada."
+  }
+}

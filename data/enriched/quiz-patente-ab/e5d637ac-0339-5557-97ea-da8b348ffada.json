@@ -1,0 +1,27 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18352",
+  "text": "Le strade extraurbane principali sono dotate di apposite aree di sosta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree di sosta su strade extraurbane principali",
+      "Infrastrutture stradali e sicurezza"
+    ],
+    "exact_keywords": [
+      "strade extraurbane principali",
+      "aree di sosta",
+      "segnalazione",
+      "pannelli integrativi"
+    ],
+    "vector_search_queries": [
+      "presenza aree di sosta su strade extraurbane principali",
+      "segnalazione aree di sosta extraurbane"
+    ],
+    "rule_explanation": "Le strade extraurbane principali devono essere dotate di aree di sosta, segnalate da appositi pannelli integrativi che ne indicano la presenza e la distanza."
+  }
+}

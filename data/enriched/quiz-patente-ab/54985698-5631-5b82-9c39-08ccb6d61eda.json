@@ -1,0 +1,28 @@
+{
+  "question_id": 4497,
+  "topic": "Norme sul sorpasso",
+  "number": "23460",
+  "text": "Il conducente che intende sorpassare deve accertarsi che il conducente che lo segue sulla stessa carreggiata non abbia iniziato il sorpasso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza nel sorpasso",
+      "Verifica delle condizioni di sicurezza per il sorpasso"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "conducente che segue",
+      "iniziato il sorpasso",
+      "manovra di sorpasso"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente prima di iniziare un sorpasso",
+      "verifica del conducente che segue prima di sorpassare",
+      "condizioni di sicurezza per la manovra di sorpasso"
+    ],
+    "rule_explanation": "Prima di iniziare una manovra di sorpasso, il conducente deve accertarsi che nessun altro veicolo abbia già iniziato tale manovra, per evitare conflitti o collisioni."
+  }
+}

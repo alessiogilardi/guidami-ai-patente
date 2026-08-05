@@ -1,0 +1,28 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23037",
+  "text": "Se durante una manovra di inserimento nella circolazione si utilizza lo specchio retrovisore è bene non controllare anche con uno sguardo diretto per non distrarre l'attenzione dalla guida",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovre di immissione nella circolazione",
+      "Controllo visivo durante le manovre",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "immissione nella circolazione",
+      "specchio retrovisore",
+      "sguardo diretto",
+      "distrazione"
+    ],
+    "vector_search_queries": [
+      "controllo visivo durante immissione nella circolazione con specchietti e sguardo diretto",
+      "obbligo di controllo visivo completo per manovre di immissione nella circolazione"
+    ],
+    "rule_explanation": "Durante le manovre di immissione nella circolazione, è necessario controllare sia con lo specchio retrovisore sia con uno sguardo diretto per garantire la sicurezza, senza distrarsi dalla guida."
+  }
+}

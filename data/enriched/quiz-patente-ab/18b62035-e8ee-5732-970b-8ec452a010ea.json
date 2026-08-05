@@ -1,0 +1,29 @@
+{
+  "question_id": 4530,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23807",
+  "text": "Nel caso di ingombro della carreggiata per caduta accidentale del carico il conducente deve rendere sollecitamente libero, per quanto possibile, il transito",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ingombro della carreggiata",
+      "Obbligo di ripristino della sicurezza della circolazione",
+      "Gestione del carico e degli incidenti stradali"
+    ],
+    "exact_keywords": [
+      "ingombro della carreggiata",
+      "caduta del carico",
+      "rendere libero il transito",
+      "veicolo in avaria"
+    ],
+    "vector_search_queries": [
+      "rimozione ostacoli causati da caduta carico",
+      "obbligo conducente ripristino transito per ingombro carreggiata",
+      "gestione incidenti stradali con carico caduto"
+    ],
+    "rule_explanation": "In caso di ingombro della carreggiata per caduta accidentale del carico, il conducente deve ripristinare la sicurezza della circolazione rimuovendo l'ostacolo il prima possibile."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4255,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21121",
+  "text": "Il semaforo in figura indica una corsia riservata alle biciclette e ai ciclomotori",
+  "correct_answer": false,
+  "image": "c3c957780ed480a75899918470e54d50.jpeg",
+  "image_description": "Semaforo per biciclette. Il segnale raffigura un semaforo verticale con tre luci circolari sovrapposte: rossa in alto, gialla al centro e verde in basso. Ogni luce contiene la sagoma stilizzata di una bicicletta. Questo tipo di semaforo è specifico per regolare il traffico delle biciclette.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale semaforico verticale. Le luci sono disposte una sopra l'altra. La luce superiore è rossa e contiene il simbolo di una bicicletta. La luce centrale è gialla e contiene anch'essa il simbolo di una bicicletta. La luce inferiore è verde e contiene il simbolo di una bicicletta. Il segnale è chiaramente destinato a regolare il traffico ciclistico.",
+    "name": "Semaforo per biciclette",
+    "description": "Il segnale raffigura un semaforo verticale con tre luci circolari sovrapposte: rossa in alto, gialla al centro e verde in basso. Ogni luce contiene la sagoma stilizzata di una bicicletta. Questo tipo di semaforo è specifico per regolare il traffico delle biciclette."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica semaforica per corsie ciclabili",
+      "Segnali specifici per velocipedi"
+    ],
+    "exact_keywords": [
+      "semaforo per biciclette",
+      "corsia riservata",
+      "ciclomotori",
+      "velocipedi"
+    ],
+    "vector_search_queries": [
+      "semaforo ciclabile significato",
+      "segnaletica semaforica per velocipedi e ciclomotori"
+    ],
+    "rule_explanation": "Il semaforo con sagoma di bicicletta regola esclusivamente il transito dei velocipedi, non dei ciclomotori o di altre corsie."
+  }
+}

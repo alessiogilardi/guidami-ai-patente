@@ -1,0 +1,32 @@
+{
+  "question_id": 4309,
+  "topic": "Segnali di indicazione",
+  "number": "21638",
+  "text": "Il segnale raffigurato vieta il transito ai veicoli senza motore",
+  "correct_answer": true,
+  "image": "1ef915902f19c17ff26aaa2bff80ae9b.jpeg",
+  "image_description": "Parcheggio per autovetture. Il segnale indica un parcheggio riservato alle autovetture.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è raffigurata, in bianco, la sagoma stilizzata di un'autovettura vista frontalmente. Si tratta di un segnale di indicazione.",
+    "name": "Parcheggio per autovetture",
+    "description": "Il segnale indica un parcheggio riservato alle autovetture."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Segnali di prescrizione",
+      "Divieto di transito"
+    ],
+    "exact_keywords": [
+      "segnale",
+      "divieto di transito",
+      "veicoli a motore",
+      "parcheggio"
+    ],
+    "vector_search_queries": [
+      "segnale di parcheggio autovetture divieto transito altri veicoli",
+      "interpretazione segnale parcheggio riservato autovetture"
+    ],
+    "rule_explanation": "Il segnale di parcheggio per autovetture indica una zona in cui è consentita la sosta solo alle autovetture, vietando implicitamente il transito agli altri veicoli."
+  }
+}

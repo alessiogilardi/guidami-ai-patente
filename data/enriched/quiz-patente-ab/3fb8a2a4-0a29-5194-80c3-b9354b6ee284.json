@@ -1,0 +1,30 @@
+{
+  "question_id": 4552,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23968",
+  "text": "I ciclisti possono viaggiare in tutta sicurezza nel traffico extraurbano perché i conducenti dei veicoli a motore sono sempre capaci di prevedere eventuali loro cadute o pericolosi sbandamenti dovuti ad irregolarità del fondo stradale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza stradale",
+      "Comportamento dei conducenti",
+      "Prevedibilità del comportamento dei ciclisti"
+    ],
+    "exact_keywords": [
+      "ciclisti",
+      "traffico extraurbano",
+      "veicoli a motore",
+      "irregolarità del fondo stradale",
+      "sbandamenti"
+    ],
+    "vector_search_queries": [
+      "prevedibilità del comportamento dei ciclisti in strada",
+      "rischi per i ciclisti nel traffico extraurbano",
+      "condotta dei conducenti di veicoli a motore verso i ciclisti"
+    ],
+    "rule_explanation": "I ciclisti non possono viaggiare in sicurezza nel traffico extraurbano, poiché i conducenti dei veicoli a motore non possono prevedere le loro cadute o sbandamenti dovuti a irregolarità del fondo stradale."
+  }
+}

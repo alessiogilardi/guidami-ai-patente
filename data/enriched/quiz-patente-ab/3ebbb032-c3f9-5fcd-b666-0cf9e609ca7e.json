@@ -1,0 +1,28 @@
+{
+  "question_id": 4527,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23782",
+  "text": "La sosta negli spazi riservati alla fermata e alla sosta dei veicoli per persone invalide, comporta, tra l'altro, la sottrazione di punti dalla patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Parcheggio disabili",
+      "Sanzioni amministrative"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "spazi riservati",
+      "persone invalide",
+      "sottrazione di punti"
+    ],
+    "vector_search_queries": [
+      "sosta in parcheggio disabili sanzioni",
+      "parcheggio riservato invalidi sottrazione punti patente"
+    ],
+    "rule_explanation": "La sosta negli spazi riservati ai veicoli per persone invalide è vietata e comporta, oltre alla rimozione del veicolo, la decurtazione di punti dalla patente."
+  }
+}

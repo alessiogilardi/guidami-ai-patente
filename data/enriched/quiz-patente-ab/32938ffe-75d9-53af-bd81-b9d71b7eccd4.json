@@ -1,0 +1,32 @@
+{
+  "question_id": 4134,
+  "topic": "Segnali di divieto",
+  "number": "19858",
+  "text": "Il segnale raffigurato indica la fine di un centro abitato",
+  "correct_answer": false,
+  "image": "d8dce2d1c8f09a52c75de4be9144dd48.jpeg",
+  "image_description": "Segnale di fine divieti o prescrizioni. Indica la fine di tutti i divieti precedentemente imposti, ad eccezione di quelli relativi alla sosta e al fermata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro è presente una banda nera diagonale, che va dall'angolo in alto a sinistra all'angolo in basso a destra. Questo è il segnale di fine divieti o prescrizioni.",
+    "name": "Segnale di fine divieti o prescrizioni",
+    "description": "Indica la fine di tutti i divieti precedentemente imposti, ad eccezione di quelli relativi alla sosta e al fermata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di fine prescrizione",
+      "Segnali di indicazione"
+    ],
+    "exact_keywords": [
+      "fine centro abitato",
+      "segnali di fine prescrizioni",
+      "segnali di divieto",
+      "segnali di obbligo"
+    ],
+    "vector_search_queries": [
+      "differenza segnale fine centro abitato e segnale fine prescrizioni",
+      "significato segnale fine centro abitato",
+      "segnali che indicano la fine di un centro abitato"
+    ],
+    "rule_explanation": "Il segnale di 'fine centro abitato' è un segnale di indicazione, non di divieto. Indica la fine del centro abitato, non la fine di divieti generici."
+  }
+}

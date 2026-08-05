@@ -1,0 +1,32 @@
+{
+  "question_id": 4354,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22061",
+  "text": "Il segnale raffigurato vieta la sosta agli autoarticolati",
+  "correct_answer": true,
+  "image": "9847053029583ecf4a4b213c0a6311b6.jpeg",
+  "image_description": "Divieto di sosta con pannello integrativo per autoarticolati. Il segnale principale è un segnale di divieto di sosta. Il pannello integrativo specifica che il divieto si applica agli autoarticolati.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu, barrato da una linea diagonale rossa. Sotto questo segnale, vi è un pannello rettangolare bianco con l'immagine stilizzata di un autoarticolato (camion con rimorchio). Il segnale principale è un segnale di divieto. Il pannello integrativo specifica il tipo di veicolo a cui si applica il divieto.",
+    "name": "Divieto di sosta con pannello integrativo per autoarticolati",
+    "description": "Il segnale principale è un segnale di divieto di sosta. Il pannello integrativo specifica che il divieto si applica agli autoarticolati."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Divieto di sosta",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "segnale di divieto di sosta",
+      "pannello integrativo",
+      "autoarticolati",
+      "limitazione della validità"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta con pannello integrativo per autoarticolati",
+      "limitazione del divieto di sosta a specifiche categorie di veicoli"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta può essere integrato con pannelli che ne specificano la validità a determinate categorie di veicoli, come gli autoarticolati."
+  }
+}

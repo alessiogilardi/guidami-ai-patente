@@ -1,0 +1,31 @@
+{
+  "question_id": 4268,
+  "topic": "Segnali di indicazione",
+  "number": "21245",
+  "text": "Il segnale raffigurato indica che sono stati percorsi 55 chilometri dal punto di origine dell'autostrada",
+  "correct_answer": false,
+  "image": "d7cc4dc22ac0caca9adce872f7ee58a4.jpeg",
+  "image_description": "Segnale di itinerario internazionale. Il segnale indica un itinerario di strada internazionale, specificamente la E55.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare di colore verde scuro con bordo bianco. Al suo interno, in lettere e numeri bianchi, è riportata la sigla \"E 55\". Questo tipo di segnale identifica un itinerario di strada di interesse internazionale.",
+    "name": "Segnale di itinerario internazionale",
+    "description": "Il segnale indica un itinerario di strada internazionale, specificamente la E55."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione autostradali",
+      "Segnali di itinerario"
+    ],
+    "exact_keywords": [
+      "segnali di itinerario",
+      "autostrada",
+      "chilometri",
+      "punto di origine"
+    ],
+    "vector_search_queries": [
+      "segnali stradali indicanti itinerario internazionale",
+      "funzione dei segnali di chilometraggio autostradale"
+    ],
+    "rule_explanation": "I segnali di itinerario internazionale indicano la numerazione delle strade europee, non i chilometri percorsi dall'origine dell'autostrada."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4048,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18828",
+  "text": "Il conducente, in vicinanza di un posteggio riservato ai taxi, deve dare la precedenza ai taxi in partenza, qualora s'immettano dal lato sinistro della carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole di precedenza",
+      "Comportamento in prossimità di aree di sosta dedicate"
+    ],
+    "exact_keywords": [
+      "precedenza",
+      "taxi",
+      "posteggio riservato",
+      "immissione nella carreggiata"
+    ],
+    "vector_search_queries": [
+      "precedenza ai taxi in partenza da posteggio riservato",
+      "immissione nella carreggiata da aree di sosta dedicate"
+    ],
+    "rule_explanation": "Non esiste un obbligo generale di dare la precedenza ai taxi in partenza da un posteggio riservato; le regole di precedenza sono definite dal CdS e non includono questa specifica situazione."
+  }
+}

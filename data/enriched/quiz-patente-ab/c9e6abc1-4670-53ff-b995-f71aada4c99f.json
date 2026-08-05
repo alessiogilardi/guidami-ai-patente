@@ -1,0 +1,31 @@
+{
+  "question_id": 4139,
+  "topic": "Segnali di divieto",
+  "number": "19918",
+  "text": "Il segnale (A), integrato con il pannello (B), indica una ZONA RIMOZIONE COATTA",
+  "correct_answer": true,
+  "image": "e46f16f7e28279933e4b1cfb665ab624.jpeg",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo di rimozione coatta. Il segnale A è un segnale di divieto di sosta. Il pannello integrativo B, raffigurante un carro attrezzi che rimuove un'auto, indica che i veicoli in sosta saranno rimossi forzatamente. Pertanto, la combinazione dei due segnali indica una zona di divieto di sosta con rimozione forzata del veicolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi distinti, etichettati come A e B. L'elemento A è un segnale stradale circolare con bordo rosso, sfondo blu e una barra diagonale rossa che lo attraversa. Questo è il segnale di divieto di sosta. L'elemento B è un pannello rettangolare integrativo, posto sotto il segnale A. Il pannello B raffigura un carro attrezzi che sta sollevando e trainando un'autovettura. Questa immagine indica la rimozione forzata dei veicoli. La combinazione dei due elementi suggerisce che il divieto di sosta indicato dal segnale A è accompagnato dalla rimozione forzata dei veicoli in sosta, come specificato dal pannello B.",
+    "name": "Segnale di divieto di sosta con pannello integrativo di rimozione coatta",
+    "description": "Il segnale A è un segnale di divieto di sosta. Il pannello integrativo B, raffigurante un carro attrezzi che rimuove un'auto, indica che i veicoli in sosta saranno rimossi forzatamente. Pertanto, la combinazione dei due segnali indica una zona di divieto di sosta con rimozione forzata del veicolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Rimozione forzata dei veicoli"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "rimozione coatta",
+      "pannello integrativo",
+      "zona rimozione coatta"
+    ],
+    "vector_search_queries": [
+      "segnaletica stradale divieto di sosta con rimozione forzata",
+      "pannello integrativo rimozione coatta veicoli"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta, se integrato con il pannello che indica la rimozione coatta, prescrive tale rimozione per i veicoli in sosta vietata."
+  }
+}

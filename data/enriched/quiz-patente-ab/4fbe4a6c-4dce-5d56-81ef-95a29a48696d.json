@@ -1,0 +1,28 @@
+{
+  "question_id": 4638,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24835",
+  "text": "L'idoneità alla guida può essere compromessa se si fa uso di allucinogeni (LSD, ecstasy, ecc.)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di alterazione psicofisica alla guida",
+      "Sostanze stupefacenti e psicotrope"
+    ],
+    "exact_keywords": [
+      "idoneità alla guida",
+      "sostanze stupefacenti",
+      "allucinogeni",
+      "alterazione delle capacità psichiche"
+    ],
+    "vector_search_queries": [
+      "effetti degli allucinogeni sull'idoneità alla guida",
+      "guida sotto effetto di sostanze stupefacenti e psicotrope",
+      "alterazione delle capacità psichiche dovuta all'uso di droghe"
+    ],
+    "rule_explanation": "L'assunzione di sostanze allucinogene compromette gravemente l'idoneità alla guida alterando le capacità psichiche e cognitive necessarie per la sicurezza stradale."
+  }
+}

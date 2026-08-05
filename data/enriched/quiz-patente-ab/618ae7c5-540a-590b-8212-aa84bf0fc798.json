@@ -1,0 +1,29 @@
+{
+  "question_id": 4662,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25010",
+  "text": "La procedura di risarcimento diretto non è applicabile se vi sono più di due veicoli coinvolti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Risarcimento diretto",
+      "Assicurazione R.C.A.",
+      "Veicoli coinvolti"
+    ],
+    "exact_keywords": [
+      "risarcimento diretto",
+      "veicoli coinvolti",
+      "polizza assicurativa",
+      "sinistro"
+    ],
+    "vector_search_queries": [
+      "condizioni di applicabilità del risarcimento diretto",
+      "limiti al numero di veicoli per il risarcimento diretto",
+      "esclusione del risarcimento diretto con più di due veicoli coinvolti"
+    ],
+    "rule_explanation": "La procedura di risarcimento diretto è applicabile quando nel sinistro sono coinvolti al massimo due veicoli, entrambi immatricolati in Italia e assicurati per la R.C.A."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4598,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24353",
+  "text": "Non è obbligatorio utilizzare le cinture di sicurezza su una autovettura quando si circola ad una velocità inferiore ai 30 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso delle cinture di sicurezza",
+      "Sistemi di ritenuta per bambini"
+    ],
+    "exact_keywords": [
+      "cinture di sicurezza",
+      "autovettura",
+      "obbligo",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "obbligo uso cinture sicurezza autovettura",
+      "uso cinture sicurezza indipendentemente dalla velocità"
+    ],
+    "rule_explanation": "L'obbligo di usare le cinture di sicurezza in autovettura sussiste sempre, indipendentemente dalla velocità, salvo eccezioni specifiche non applicabili in questo caso."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4560,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24015",
+  "text": "L'obbligo di indossare il giubbotto ad alta visibilità si ha quando si sosta fuori dai centri abitati, mentre le bretelle retroriflettenti vanno indossate nelle aree urbane",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di segnalazione visiva esterna per veicoli fermi",
+      "Dispositivi di protezione individuale per la sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "giubbotto ad alta visibilità",
+      "sosta fuori dai centri abitati",
+      "dispositivi retroriflettenti",
+      "aree urbane"
+    ],
+    "vector_search_queries": [
+      "obbligo giubbotto alta visibilità fuori dai centri abitati",
+      "segnalazione veicolo fermo con dispositivi retroriflettenti"
+    ],
+    "rule_explanation": "L'obbligo di indossare il giubbotto ad alta visibilità sussiste quando si scende dal veicolo in marcia fuori dai centri abitati, indipendentemente dalla segnalazione con il triangolo. Non vi è un obbligo specifico per le bretelle nelle aree urbane."
+  }
+}

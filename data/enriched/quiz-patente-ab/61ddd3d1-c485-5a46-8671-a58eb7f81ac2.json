@@ -1,0 +1,27 @@
+{
+  "question_id": 4502,
+  "topic": "Norme sul sorpasso",
+  "number": "23568",
+  "text": "E' vietato il sorpasso se alla sinistra del veicolo si trova una linea bianca discontinua affiancata da una continua",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Divieto di sorpasso"
+    ],
+    "exact_keywords": [
+      "linea discontinua",
+      "linea continua",
+      "sorpasso",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso linea continua e discontinua",
+      "sorpasso con linea di mezzeria mista"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in presenza di una linea continua, anche se affiancata da una discontinua. La linea discontinua da sola non vieta il sorpasso."
+  }
+}

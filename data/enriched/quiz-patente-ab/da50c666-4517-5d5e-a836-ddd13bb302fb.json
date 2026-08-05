@@ -1,0 +1,32 @@
+{
+  "question_id": 4052,
+  "topic": "Segnali di pericolo",
+  "number": "18871",
+  "text": "In presenza del segnale raffigurato è necessario circolare a velocità moderata se si traina un rimorchio",
+  "correct_answer": true,
+  "image": "4232f21e2893d81ba19d77d4285f18fe.jpeg",
+  "image_description": "Segnale di pericolo - Serie di dossi. Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un pittogramma nero che rappresenta una serie di dossi o una cunetta. Non sono presenti pannelli integrativi. Si tratta quindi di un segnale di pericolo che preannuncia una irregolarità del manto stradale.",
+    "name": "Segnale di pericolo - Serie di dossi",
+    "description": "Il segnale preannuncia una serie di dossi o una cunetta. È necessario moderare la velocità per evitare sollecitazioni eccessive al veicolo e danni alle sospensioni, e per mantenere il controllo del mezzo in caso di sbandamenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Velocità adeguata",
+      "Guida con rimorchio"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "velocità moderata",
+      "trainare un rimorchio",
+      "serie di dossi"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in presenza di segnali di pericolo specifici",
+      "adeguamento della velocità alla guida con rimorchio in presenza di dossi"
+    ],
+    "rule_explanation": "In presenza del segnale di pericolo 'serie di dossi', è necessario moderare la velocità, specialmente se si traina un rimorchio, per garantire la stabilità del veicolo e la sicurezza."
+  }
+}

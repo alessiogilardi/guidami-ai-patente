@@ -1,0 +1,29 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18791",
+  "text": "In vicinanza di un attraversamento pedonale, il conducente deve considerare che il pedone potrebbe fermarsi improvvisamente sulle strisce dell'attraversamento pedonale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente verso i pedoni",
+      "Attraversamenti pedonali sicuri",
+      "Principio di cautela nella circolazione"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "pedone",
+      "condizioni di visibilità",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in prossimità di attraversamenti pedonali",
+      "comportamento del pedone sulle strisce pedonali e doveri del conducente",
+      "prevedere il comportamento del pedone all'attraversamento pedonale"
+    ],
+    "rule_explanation": "Il conducente deve prestare particolare attenzione in prossimità degli attraversamenti pedonali, prevedendo possibili comportamenti improvvisi del pedone e moderando la velocità per garantire la sicurezza."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4569,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24128",
+  "text": "Gli organi di traino di un veicolo non devono presentare giochi, deformazioni o incrinature",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di efficienza dei dispositivi di traino",
+      "Sicurezza nella circolazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "organi di traino",
+      "giochi",
+      "deformazioni",
+      "incrinature",
+      "veicolo in avaria"
+    ],
+    "vector_search_queries": [
+      "requisiti di sicurezza per gli organi di traino dei veicoli",
+      "condizioni di efficienza dei dispositivi di traino per veicoli in avaria"
+    ],
+    "rule_explanation": "Gli organi di traino di un veicolo, specialmente se in avaria, non devono presentare giochi, deformazioni o incrinature per garantire la sicurezza del traino."
+  }
+}

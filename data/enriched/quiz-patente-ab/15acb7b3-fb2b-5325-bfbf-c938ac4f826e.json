@@ -1,0 +1,30 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24671",
+  "text": "La perdita di punti sulla patente per infrazione al codice della strada è raddoppiata se effettuata alla guida di motociclo di potenza superiore a 35 kW",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Perdita di punti patente",
+      "Sanzioni accessorie",
+      "Uso del motociclo"
+    ],
+    "exact_keywords": [
+      "punti patente",
+      "sanzione pecuniaria",
+      "sospensione patente",
+      "motociclo",
+      "potenza"
+    ],
+    "vector_search_queries": [
+      "perdita punti patente motociclo potenza superiore 35 kW",
+      "raddoppio decurtazione punti patente per motocicli",
+      "sanzioni accessorie patente guida motociclo"
+    ],
+    "rule_explanation": "La perdita di punti sulla patente non è raddoppiata per la guida di motocicli di potenza superiore a 35 kW; tale raddoppio è previsto solo per specifiche infrazioni commesse da conducenti professionali."
+  }
+}

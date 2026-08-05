@@ -1,0 +1,27 @@
+{
+  "question_id": 4520,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23733",
+  "text": "La sosta è vietata in corrispondenza dei passaggi a livello ma non in loro prossimità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta nei pressi di passaggi a livello",
+      "Regolamentazione della sosta in aree pericolose"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "passaggi a livello",
+      "in prossimità",
+      "in corrispondenza"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta nei passaggi a livello e nelle loro vicinanze",
+      "regolamentazione della sosta in prossimità dei passaggi a livello"
+    ],
+    "rule_explanation": "La sosta è vietata sia in corrispondenza sia in prossimità dei passaggi a livello per garantire la sicurezza della circolazione."
+  }
+}

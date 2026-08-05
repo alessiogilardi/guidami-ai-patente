@@ -1,0 +1,33 @@
+{
+  "question_id": 4491,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23414",
+  "text": "Secondo le norme di precedenza nell'incrocio rappresentato in figura il veicolo C non deve dare la precedenza ad alcun veicolo",
+  "correct_answer": false,
+  "image": "b8d73c5311ac3a8d1b83aaf8a340d127.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra e a sinistra. L'incrocio è a raso. Il veicolo R, proveniente dalla strada secondaria di destra, deve dare la precedenza ai veicoli provenienti dalla strada principale. Il veicolo C, proveniente dalla strada principale da sinistra, deve dare la precedenza ai veicoli provenienti dalla sua destra (in questo caso, il veicolo A). Il veicolo A, proveniente dalla strada principale da destra, deve dare la precedenza ai veicoli provenienti dalla sua sinistra (in questo caso, il veicolo C). Pertanto, l'ordine di transito corretto è C, A, R.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con tre veicoli: un'auto rossa (C), un'auto blu (A) e un'auto gialla (R). Il veicolo C si trova sulla strada principale, proveniente da sinistra e con l'intenzione di svoltare a destra. Il veicolo A si trova sulla strada principale, proveniente da destra e con l'intenzione di proseguire dritto. Il veicolo R si trova su una strada secondaria, proveniente da destra e con l'intenzione di immettersi sulla strada principale. Non sono presenti segnali stradali che regolano la precedenza, quindi si applica la regola generale della precedenza a destra e a sinistra. Il veicolo C ha la precedenza su R perché R è alla sua destra. Il veicolo A ha la precedenza su R perché R è alla sua destra. Il veicolo C deve dare la precedenza ad A perché A è alla sua sinistra. Pertanto, l'ordine di transito corretto è C, poi A, poi R.",
+    "name": "Incrocio a raso con precedenza a destra e a sinistra",
+    "description": "L'incrocio è a raso. Il veicolo R, proveniente dalla strada secondaria di destra, deve dare la precedenza ai veicoli provenienti dalla strada principale. Il veicolo C, proveniente dalla strada principale da sinistra, deve dare la precedenza ai veicoli provenienti dalla sua destra (in questo caso, il veicolo A). Il veicolo A, proveniente dalla strada principale da destra, deve dare la precedenza ai veicoli provenienti dalla sua sinistra (in questo caso, il veicolo C). Pertanto, l'ordine di transito corretto è C, A, R."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza a destra",
+      "Ordine di precedenza agli incroci non regolamentati"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "precedenza",
+      "veicolo",
+      "strada principale",
+      "strada secondaria"
+    ],
+    "vector_search_queries": [
+      "precedenza incrocio non regolamentato",
+      "regola generale di precedenza a destra",
+      "ordine di transito ai incroci stradali"
+    ],
+    "rule_explanation": "Negli incroci non regolamentati, chi proviene da destra ha la precedenza. Il veicolo C deve dare la precedenza al veicolo A che proviene dalla sua destra."
+  }
+}

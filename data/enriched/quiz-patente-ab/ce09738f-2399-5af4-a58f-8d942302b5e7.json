@@ -1,0 +1,27 @@
+{
+  "question_id": 4378,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22365",
+  "text": "Il limite di velocità sulle strade extraurbane principali per coloro che hanno conseguito la patente da meno di 3 anni è di 110 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Neopatentati",
+      "Limiti di velocità su strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "neopatentati",
+      "strade extraurbane principali",
+      "limite di velocità",
+      "patente da meno di 3 anni"
+    ],
+    "vector_search_queries": [
+      "limiti di velocità per neopatentati su strade extraurbane principali",
+      "velocità massima per conducenti con patente da meno di 3 anni su strade extraurbane principali"
+    ],
+    "rule_explanation": "Per i primi 3 anni dal conseguimento della patente, i neopatentati non possono superare i 100 km/h sulle strade extraurbane principali e i 90 km/h sulle altre strade extraurbane."
+  }
+}

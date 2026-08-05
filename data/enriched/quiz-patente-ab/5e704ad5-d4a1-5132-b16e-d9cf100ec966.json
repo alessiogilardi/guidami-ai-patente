@@ -1,0 +1,29 @@
+{
+  "question_id": 4572,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24154",
+  "text": "Durante la marcia, è obbligatorio tenere accese le luci abbaglianti, a partire dal tramonto del sole fino al suo sorgere",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di accensione luci фарї",
+      "Uso delle luci фарї",
+      "Condizioni di visibilità фарї"
+    ],
+    "exact_keywords": [
+      "luci фарї",
+      "abbaglianti фарї",
+      "buio фарї",
+      "visibilità фарї"
+    ],
+    "vector_search_queries": [
+      "uso luci abbaglianti фарї",
+      "accensione luci in condizioni di buio фарї",
+      "obbligo luci фарї"
+    ],
+    "rule_explanation": "Le luci abbaglianti devono essere usate solo quando è necessario per illuminare a sufficienza la strada, e non in modo continuativo dal tramonto all'alba."
+  }
+}

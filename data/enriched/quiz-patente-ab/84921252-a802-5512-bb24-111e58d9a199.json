@@ -1,0 +1,29 @@
+{
+  "question_id": 4707,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25347",
+  "text": "Le sospensioni di un veicolo a motore non entrano in funzione su strada rettilinea",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Funzionamento delle sospensioni",
+      "Stabilità del veicolo",
+      "Manutenzione del veicolo"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "veicolo a motore",
+      "tenuta di strada",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "funzionamento sospensioni veicolo motore su strada rettilinea",
+      "ruolo sospensioni nella stabilità del veicolo",
+      "impatto irregolarità stradali su sospensioni e tenuta di strada"
+    ],
+    "rule_explanation": "Le sospensioni di un veicolo a motore sono sempre in funzione per garantire la stabilità e la tenuta di strada, anche su strada rettilinea, assorbendo le irregolarità del manto stradale."
+  }
+}

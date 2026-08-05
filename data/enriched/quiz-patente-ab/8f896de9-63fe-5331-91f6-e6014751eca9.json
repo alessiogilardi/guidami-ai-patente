@@ -1,0 +1,28 @@
+{
+  "question_id": 4043,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18771",
+  "text": "Quando le persone anziane attraversano la carreggiata bisogna tenere presente che, di solito, attraversano rapidamente e con prudenza",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Comportamento prudente nei confronti di pedoni vulnerabili"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "attraversamento carreggiata",
+      "utente debole",
+      "condotta di guida"
+    ],
+    "vector_search_queries": [
+      "precauzioni per l'attraversamento di persone anziane",
+      "obblighi del conducente verso gli utenti deboli della strada",
+      "moderazione della velocità in prossimità di pedoni vulnerabili"
+    ],
+    "rule_explanation": "Il conducente deve prestare particolare attenzione e moderare la velocità in prossimità di persone anziane che attraversano la carreggiata, poiché queste sono considerate utenti deboli e potrebbero avere difficoltà motorie."
+  }
+}

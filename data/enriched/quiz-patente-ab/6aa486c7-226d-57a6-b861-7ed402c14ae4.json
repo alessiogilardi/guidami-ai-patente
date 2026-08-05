@@ -1,0 +1,29 @@
+{
+  "question_id": 4378,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22359",
+  "text": "Viaggiare ad alta velocità incide sul consumo di carburante e sull'inquinamento ambientale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Velocità di guida",
+      "Consumo di carburante",
+      "Inquinamento ambientale"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "consumo di carburante",
+      "inquinamento ambientale",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "impatto della velocità sul consumo di carburante",
+      "relazione tra velocità di guida ed emissioni inquinanti",
+      "effetti dell'alta velocità sull'ambiente"
+    ],
+    "rule_explanation": "Viaggiare a velocità elevate aumenta significativamente il consumo di carburante e, di conseguenza, le emissioni inquinanti, incidendo negativamente sull'ambiente."
+  }
+}

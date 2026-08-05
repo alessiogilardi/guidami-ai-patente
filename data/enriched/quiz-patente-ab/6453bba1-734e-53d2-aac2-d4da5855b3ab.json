@@ -1,0 +1,32 @@
+{
+  "question_id": 4202,
+  "topic": "Segnali di precedenza",
+  "number": "20622",
+  "text": "Il segnale raffigurato preannuncia un incrocio in cui il conducente ha la precedenza sui veicoli provenienti da destra",
+  "correct_answer": true,
+  "image": "b90ff4c558b4de38c3dd24fc8d62a327.jpeg",
+  "image_description": "Preavviso di incrocio con immissione laterale da destra. Il segnale preannuncia un incrocio con una strada secondaria che si immette da destra. Il conducente deve prestare attenzione e moderare la velocità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una strada principale con una strada secondaria che si immette da destra. La strada principale è rappresentata da una linea a forma di freccia che indica la direzione di marcia in avanti, mentre la strada secondaria è una linea più corta che si innesta perpendicolarmente sulla destra della strada principale. Questo tipo di segnale preannuncia un incrocio.",
+    "name": "Preavviso di incrocio con immissione laterale da destra",
+    "description": "Il segnale preannuncia un incrocio con una strada secondaria che si immette da destra. Il conducente deve prestare attenzione e moderare la velocità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di preavviso di incrocio",
+      "Regola generale di precedenza"
+    ],
+    "exact_keywords": [
+      "preavviso di incrocio",
+      "immissione laterale da destra",
+      "strada secondaria",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "preavviso di incrocio con immissione da destra",
+      "segnali di precedenza incrocio con immissione laterale",
+      "regola di precedenza ai sensi dell'articolo 40 del CdS"
+    ],
+    "rule_explanation": "Il segnale di preavviso di incrocio con immissione da destra indica che si sta per raggiungere un incrocio in cui si ha la precedenza sui veicoli provenienti dalla suddetta direzione."
+  }
+}

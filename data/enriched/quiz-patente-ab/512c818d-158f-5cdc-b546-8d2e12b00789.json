@@ -1,0 +1,34 @@
+{
+  "question_id": 4218,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20782",
+  "text": "I segni gialli e neri in figura dipinti sul bordo del marciapiede indicano che su quel lato della strada non è possibile sostare",
+  "correct_answer": true,
+  "image": "af2602d8031b88f151bcafc37bb4b7e5.jpeg",
+  "image_description": "Segnaletica orizzontale di pericolo/ostacolo (bordi del marciapiede). Il bordo del marciapiede, dipinto con strisce alternate gialle e nere, indica la presenza di un ostacolo o di un pericolo lungo la carreggiata. In questo caso specifico, le strisce sono dipinte sul bordo del marciapiede, suggerendo che l'ostacolo o il pericolo si trova in prossimità del marciapiede stesso. La normativa del Codice della Strada non associa questa segnaletica orizzontale a divieti di sosta o fermata, né a indicazioni di diritto di precedenza. La sua funzione è puramente di avvertimento visivo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di strada con il bordo del marciapiede dipinto con una sequenza di strisce alternate di colore giallo e nero. Le strisce sono orientate in modo da indicare un pericolo o un ostacolo. Non sono presenti altri segnali stradali verticali o orizzontali, né veicoli o pedoni. La segnaletica è applicata sul bordo verticale del marciapiede. Le strisce sono inclinate verso il basso, suggerendo una progressione o un'estensione del pericolo. Non ci sono elementi che indichino lavori in corso, divieti di sosta o fermata, o diritto di precedenza. La funzione primaria di questa segnaletica è quella di avvertire visivamente della presenza di un ostacolo o di un pericolo.",
+    "name": "Segnaletica orizzontale di pericolo/ostacolo (bordi del marciapiede)",
+    "description": "Il bordo del marciapiede, dipinto con strisce alternate gialle e nere, indica la presenza di un ostacolo o di un pericolo lungo la carreggiata. In questo caso specifico, le strisce sono dipinte sul bordo del marciapiede, suggerendo che l'ostacolo o il pericolo si trova in prossimità del marciapiede stesso. La normativa del Codice della Strada non associa questa segnaletica orizzontale a divieti di sosta o fermata, né a indicazioni di diritto di precedenza. La sua funzione è puramente di avvertimento visivo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Segni sugli ostacoli",
+      "Divieto di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "segni sugli ostacoli",
+      "strisce bianche e nere",
+      "marciapiede",
+      "divieto di sosta",
+      "divieto di fermata"
+    ],
+    "vector_search_queries": [
+      "segnaletica orizzontale per ostacoli e pericoli",
+      "significato strisce gialle e nere sul marciapiede",
+      "differenza tra segnaletica di ostacolo e divieto di sosta"
+    ],
+    "rule_explanation": "I segni gialli e neri dipinti sul bordo del marciapiede indicano la presenza di un ostacolo o di un pericolo, non un divieto di sosta o fermata."
+  }
+}

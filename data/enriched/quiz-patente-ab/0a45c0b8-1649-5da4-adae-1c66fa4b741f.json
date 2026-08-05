@@ -1,0 +1,26 @@
+{
+  "question_id": 4012,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18438",
+  "text": "La strada può essere a senso unico di circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Strade a senso unico",
+      "Classificazione delle strade"
+    ],
+    "exact_keywords": [
+      "senso unico di circolazione",
+      "strada",
+      "circolazione stradale"
+    ],
+    "vector_search_queries": [
+      "definizione di strada a senso unico di circolazione",
+      "regolamentazione della circolazione stradale per senso unico"
+    ],
+    "rule_explanation": "Le strade possono essere classificate in base al regime di circolazione, includendo quelle a senso unico dove tutto il traffico fluisce in una sola direzione."
+  }
+}

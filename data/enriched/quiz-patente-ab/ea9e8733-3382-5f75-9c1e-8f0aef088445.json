@@ -1,0 +1,28 @@
+{
+  "question_id": 4396,
+  "topic": "Distanza di sicurezza",
+  "number": "22569",
+  "text": "La distanza di sicurezza dipende dall'efficienza del freno di stazionamento",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Fattori che influenzano la distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "veicolo in sosta",
+      "veicolo in movimento",
+      "freno di stazionamento"
+    ],
+    "vector_search_queries": [
+      "distanza di sicurezza tra veicoli in movimento",
+      "fattori che determinano la distanza di sicurezza",
+      "obbligo di mantenere la distanza di sicurezza"
+    ],
+    "rule_explanation": "La distanza di sicurezza è la distanza minima tra veicoli in movimento, necessaria per evitare collisioni in caso di arresto improvviso del veicolo che precede. Non dipende dal freno di stazionamento."
+  }
+}

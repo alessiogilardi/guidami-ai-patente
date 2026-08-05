@@ -1,0 +1,32 @@
+{
+  "question_id": 4207,
+  "topic": "Segnali di precedenza",
+  "number": "20687",
+  "text": "Il segnale raffigurato si trova alla fine di una strada statale",
+  "correct_answer": false,
+  "image": "ae0a5db589f248f6cde41a1db1f0fe3f.jpeg",
+  "image_description": "Segnale di Diritto di Precedenza. Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con i vertici disposti in modo da formare un rombo. Il bordo esterno del segnale è bianco, seguito da un bordo nero più sottile. All'interno, su sfondo bianco, vi è un rombo più piccolo di colore arancione. Questo è il segnale di Diritto di Precedenza.",
+    "name": "Segnale di Diritto di Precedenza",
+    "description": "Il segnale indica che si ha la precedenza nei confronti dei veicoli provenienti dalle strade laterali. Bisogna comunque moderare la velocità in prossimità degli incroci e assicurarsi che i veicoli provenienti dalle strade laterali diano la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Strade statali"
+    ],
+    "exact_keywords": [
+      "segnali di precedenza",
+      "strada statale",
+      "diritto di precedenza",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di una strada statale",
+      "posizionamento dei segnali di diritto di precedenza",
+      "obblighi del segnale di diritto di precedenza"
+    ],
+    "rule_explanation": "Il segnale di diritto di precedenza non indica la fine di una strada statale, ma impone di dare la precedenza ai veicoli provenienti dalle strade laterali."
+  }
+}

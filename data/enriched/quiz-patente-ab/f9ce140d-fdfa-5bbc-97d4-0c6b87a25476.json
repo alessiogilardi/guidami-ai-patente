@@ -1,0 +1,27 @@
+{
+  "question_id": 4713,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25431",
+  "text": "Nei veicoli a motore a due ruote, l'interruttore d'emergenza è collegato con l'antifurto del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza dei veicoli a motore",
+      "Funzionamento dei sistemi di sicurezza"
+    ],
+    "exact_keywords": [
+      "interruttore d'emergenza",
+      "veicoli a motore a due ruote",
+      "antifurto",
+      "sistema di accensione"
+    ],
+    "vector_search_queries": [
+      "funzione interruttore d'emergenza motocicli",
+      "collegamento interruttore d'emergenza e antifurto"
+    ],
+    "rule_explanation": "L'interruttore d'emergenza sui veicoli a due ruote è un dispositivo di sicurezza che interrompe l'alimentazione elettrica in caso di caduta, non è collegato all'antifurto."
+  }
+}

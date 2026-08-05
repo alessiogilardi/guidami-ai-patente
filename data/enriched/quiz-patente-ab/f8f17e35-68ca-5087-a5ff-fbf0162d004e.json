@@ -1,0 +1,27 @@
+{
+  "question_id": 4542,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23894",
+  "text": "Sulle autostrade e sulle strade extraurbane principali, per uscire dalla carreggiata il conducente può immettersi nella corsia di decelerazione anche nel tratto successivo al suo inizio",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uscita dalla carreggiata su autostrade e strade extraurbane principali",
+      "Utilizzo delle corsie di decelerazione"
+    ],
+    "exact_keywords": [
+      "corsia di decelerazione",
+      "uscita dalla carreggiata",
+      "autostrade",
+      "strade extraurbane principali"
+    ],
+    "vector_search_queries": [
+      "utilizzo corsia di decelerazione per uscita da autostrade e strade extraurbane principali",
+      "divieto di immettersi nel tratto successivo della corsia di decelerazione"
+    ],
+    "rule_explanation": "La corsia di decelerazione deve essere utilizzata dall'inizio del suo tracciato per uscire dalla carreggiata, non è consentito immettersi nel suo tratto successivo."
+  }
+}

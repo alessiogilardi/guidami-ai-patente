@@ -1,0 +1,28 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18737",
+  "text": "Il conducente di un veicolo pesante può tenere un comportamento che è causa di insofferenza negli altri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Doveri del conducente",
+      "Comportamento civile sulla strada",
+      "Rispetto degli altri utenti"
+    ],
+    "exact_keywords": [
+      "comportamento",
+      "veicolo pesante",
+      "insofferenza",
+      "altri utenti"
+    ],
+    "vector_search_queries": [
+      "doveri del conducente di non causare disagio agli altri utenti",
+      "comportamento del conducente di veicolo pesante e rispetto degli altri"
+    ],
+    "rule_explanation": "Il conducente deve sempre mantenere un comportamento che non causi disagio o insofferenza agli altri utenti della strada, indipendentemente dal tipo di veicolo condotto."
+  }
+}

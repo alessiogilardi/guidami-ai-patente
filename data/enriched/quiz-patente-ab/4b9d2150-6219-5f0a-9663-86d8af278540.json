@@ -1,0 +1,31 @@
+{
+  "question_id": 4076,
+  "topic": "Segnali di pericolo",
+  "number": "19175",
+  "text": "Il segnale raffigurato è posto in corrispondenza di un attraversamento ciclabile",
+  "correct_answer": false,
+  "image": "307718ad8143b32f43530c57270b75ee.jpeg",
+  "image_description": "Segnale di pericolo - Attraversamento ciclisti. Il segnale preannuncia la presenza di ciclisti sulla carreggiata o nelle immediate vicinanze, come in un attraversamento ciclabile o una pista ciclabile adiacente. Impone al conducente di moderare la velocità e di prestare attenzione per non costituire pericolo o intralcio per i ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato dalla forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una figura stilizzata di un ciclista in movimento. Non sono presenti altri elementi visivi o segnali aggiuntivi.",
+    "name": "Segnale di pericolo - Attraversamento ciclisti",
+    "description": "Il segnale preannuncia la presenza di ciclisti sulla carreggiata o nelle immediate vicinanze, come in un attraversamento ciclabile o una pista ciclabile adiacente. Impone al conducente di moderare la velocità e di prestare attenzione per non costituire pericolo o intralcio per i ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Attraversamento ciclisti"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "attraversamento ciclisti",
+      "ciclisti sulla carreggiata",
+      "moderare la velocità"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo per attraversamento ciclisti",
+      "obblighi del conducente in presenza di segnale di attraversamento ciclisti"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante ciclisti preannuncia la loro presenza sulla carreggiata o nelle vicinanze, imponendo di moderare la velocità e prestare attenzione."
+  }
+}

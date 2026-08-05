@@ -1,0 +1,34 @@
+{
+  "question_id": 4099,
+  "topic": "Segnali di pericolo",
+  "number": "19453",
+  "text": "Il segnale raffigurato, in caso di forte vento laterale, consente di sorpassare riducendo la distanza laterale dal veicolo che si sta superando",
+  "correct_answer": false,
+  "image": "b6cd263ac2e3188386f2814949cbc505.jpeg",
+  "image_description": "Segnale di pericolo per vento laterale. Il segnale preannuncia un tratto di strada soggetto a forti raffiche di vento laterale. È necessario procedere con prudenza, tenendo saldamente il volante per mantenere la stabilità del veicolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un palo verticale con attaccato un manica a vento, orientata verso destra, con delle strisce che indicano la direzione e l'intensità del vento. Il pittogramma rappresenta un vento laterale.",
+    "name": "Segnale di pericolo per vento laterale",
+    "description": "Il segnale preannuncia un tratto di strada soggetto a forti raffiche di vento laterale. È necessario procedere con prudenza, tenendo saldamente il volante per mantenere la stabilità del veicolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Comportamento in caso di vento laterale",
+      "Sorpasso vietato"
+    ],
+    "exact_keywords": [
+      "vento laterale",
+      "pericolo",
+      "prudenza",
+      "distanza laterale",
+      "sorpassare"
+    ],
+    "vector_search_queries": [
+      "pericolo vento laterale e sorpasso",
+      "distanza di sicurezza con vento laterale",
+      "segnali di pericolo e manovra di sorpasso"
+    ],
+    "rule_explanation": "Il segnale di pericolo per vento laterale impone di procedere con prudenza e di non sorpassare, in quanto la raffica potrebbe compromettere la stabilità del veicolo e la sicurezza del sorpasso."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4018,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18509",
+  "text": "La corsia di decelerazione serve per entrare in una piazzola di sosta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Corsie stradali",
+      "Manovre di immissione e uscita dalla carreggiata",
+      "Uso delle piazzole di sosta"
+    ],
+    "exact_keywords": [
+      "corsia di decelerazione",
+      "piazzola di sosta",
+      "carreggiata",
+      "manovra di immissione"
+    ],
+    "vector_search_queries": [
+      "funzione della corsia di decelerazione",
+      "differenza tra corsia di decelerazione e piazzola di sosta",
+      "manovre consentite nelle corsie di decelerazione"
+    ],
+    "rule_explanation": "La corsia di decelerazione è una corsia speciale destinata a ridurre la velocità per uscire dalla corrente di traffico principale, non per entrare in una piazzola di sosta."
+  }
+}

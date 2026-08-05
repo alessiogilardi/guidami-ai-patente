@@ -1,0 +1,32 @@
+{
+  "question_id": 4119,
+  "topic": "Segnali di divieto",
+  "number": "19700",
+  "text": "Il segnale raffigurato vale, per tutti i veicoli, durante le ore di mercato",
+  "correct_answer": false,
+  "image": "e373a1d22f51974f4916ca4beb315b52.jpeg",
+  "image_description": "Divieto di transito ai veicoli a braccia. Il segnale vieta il transito ai veicoli a braccia, come carretti, carriole e simili.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurata una figura stilizzata di una persona che spinge un carretto a mano. Questo è un segnale di divieto specifico.",
+    "name": "Divieto di transito ai veicoli a braccia",
+    "description": "Il segnale vieta il transito ai veicoli a braccia, come carretti, carriole e simili."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto d'accesso",
+      "Limitazioni alla circolazione per specifici veicoli"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "veicoli a braccia",
+      "ore di mercato",
+      "validità temporale segnale"
+    ],
+    "vector_search_queries": [
+      "validità dei segnali di divieto di transito",
+      "segnali stradali con limitazioni temporali specifiche",
+      "divieto di transito per veicoli a braccia e orari di mercato"
+    ],
+    "rule_explanation": "I segnali di divieto valgono permanentemente, salvo diversa indicazione esplicita. Il segnale di divieto di transito ai veicoli a braccia non è limitato alle ore di mercato."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4030,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18634",
+  "text": "Si definiscono motocicli solo i veicoli a due ruote di cilindrata fino a 125 cm3",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di motociclo",
+      "Classificazione dei veicoli a motore"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "veicoli a motore",
+      "cilindrata",
+      "due ruote"
+    ],
+    "vector_search_queries": [
+      "definizione di motociclo secondo il CdS",
+      "classificazione veicoli a motore a due ruote per cilindrata"
+    ],
+    "rule_explanation": "I motocicli sono veicoli a motore a due ruote con o senza carrozzetta, di cilindrata superiore a 50 cm³ e potenza non superiore a 15 kW."
+  }
+}

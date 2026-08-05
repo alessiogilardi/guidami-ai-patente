@@ -1,0 +1,27 @@
+{
+  "question_id": 4552,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23963",
+  "text": "Il conducente di un'autovettura deve prestare particolare attenzione per la presenza nel traffico di velocipedi utilizzati da conducenti giovanissimi e inesperti o da anziani",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola di prudenza nella circolazione",
+      "Attenzione ai conducenti vulnerabili"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "velocipedi",
+      "particolare attenzione",
+      "inesperti"
+    ],
+    "vector_search_queries": [
+      "obbligo di attenzione per velocipedi con conducenti giovani o anziani",
+      "precauzioni nella circolazione stradale per ciclisti vulnerabili"
+    ],
+    "rule_explanation": "Il conducente deve prestare particolare attenzione ai velocipedi, specialmente se condotti da persone giovani, anziane o inesperte, per garantire la sicurezza stradale."
+  }
+}

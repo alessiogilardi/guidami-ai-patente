@@ -1,0 +1,28 @@
+{
+  "question_id": 4683,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25150",
+  "text": "Guidando un veicolo a cui sono stati modificati il motore e la marmitta, si può incorrere in pesanti sanzioni amministrative",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Modifiche ai veicoli",
+      "Inquinamento acustico e atmosferico",
+      "Sanzioni amministrative"
+    ],
+    "exact_keywords": [
+      "motore",
+      "marmitta",
+      "sanzioni amministrative",
+      "modifiche"
+    ],
+    "vector_search_queries": [
+      "sanzioni per modifiche al motore e marmitta che aumentano l'inquinamento",
+      "veicoli modificati e sanzioni amministrative per violazioni ambientali"
+    ],
+    "rule_explanation": "Le modifiche al motore o alla marmitta che aumentano l'inquinamento acustico o atmosferico comportano sanzioni amministrative pecuniarie."
+  }
+}

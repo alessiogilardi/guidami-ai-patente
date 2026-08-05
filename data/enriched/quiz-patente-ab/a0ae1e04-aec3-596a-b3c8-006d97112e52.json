@@ -1,0 +1,32 @@
+{
+  "question_id": 4431,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22886",
+  "text": "E' obbligatorio dare la precedenza a destra e a sinistra in presenza del segnale ROTATORIA",
+  "correct_answer": false,
+  "image": "38d290655bf8f8975e6c77db50f3154c.jpeg",
+  "image_description": "Segnale di STOP (Arresto obbligatorio). Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia trasversale di arresto e di dare la precedenza a tutti i veicoli che circolano sulla strada in cui si sta per immettersi. Se non è presente la striscia di arresto, l'arresto deve avvenire comunque prima di impegnare l'incrocio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma ottagonale, con sfondo rosso e bordo bianco. Al centro del segnale è presente la scritta \"STOP\" in lettere maiuscole bianche. Questo è il segnale di arresto obbligatorio.",
+    "name": "Segnale di STOP (Arresto obbligatorio)",
+    "description": "Il segnale impone l'obbligo di arrestarsi in corrispondenza della striscia trasversale di arresto e di dare la precedenza a tutti i veicoli che circolano sulla strada in cui si sta per immettersi. Se non è presente la striscia di arresto, l'arresto deve avvenire comunque prima di impegnare l'incrocio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di precedenza agli incroci",
+      "Segnaletica stradale di pericolo e obbligo"
+    ],
+    "exact_keywords": [
+      "dare la precedenza",
+      "segnale di STOP",
+      "arresto obbligatorio",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "obbligo di arresto e precedenza segnale STOP",
+      "differenza precedenza rotatoria e segnale STOP",
+      "regole di precedenza agli incroci con segnale di STOP"
+    ],
+    "rule_explanation": "Il segnale di STOP impone l'arresto e la precedenza a tutti i veicoli, non solo a quelli provenienti da destra o sinistra. La rotatoria ha una segnaletica specifica."
+  }
+}

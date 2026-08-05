@@ -1,0 +1,31 @@
+{
+  "question_id": 4203,
+  "topic": "Segnali di precedenza",
+  "number": "20631",
+  "text": "Il segnale raffigurato prescrive di usare prudenza perché ci si sta avvicinando ad un incrocio",
+  "correct_answer": true,
+  "image": "5c17bf965a93fa39910d1868d73061a2.jpeg",
+  "image_description": "Preavviso di confluenza a destra. Il segnale preannuncia una confluenza a destra, indicando che la strada che si sta percorrendo si immette in un'altra strada da destra. I veicoli provenienti dalla strada di immissione hanno la precedenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale è presente un pittogramma nero che rappresenta una strada principale che prosegue dritta e una strada secondaria che si immette da destra. La forma del pittogramma indica una confluenza, con la strada principale più spessa e la strada secondaria più sottile che si unisce ad essa. La freccia nera più grande indica la direzione principale, mentre la freccia più piccola a sinistra indica la strada che si immette.",
+    "name": "Preavviso di confluenza a destra",
+    "description": "Il segnale preannuncia una confluenza a destra, indicando che la strada che si sta percorrendo si immette in un'altra strada da destra. I veicoli provenienti dalla strada di immissione hanno la precedenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso",
+      "Precedenza in immissione"
+    ],
+    "exact_keywords": [
+      "preavviso di confluenza",
+      "strada di immissione",
+      "confluenza a destra",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di immissione e confluenza",
+      "obbligo di dare precedenza ai veicoli provenienti dalla strada di immissione"
+    ],
+    "rule_explanation": "Il segnale di preavviso di confluenza a destra indica che la strada che si sta percorrendo si immette in un'altra da destra, e i veicoli provenienti da quest'ultima hanno la precedenza."
+  }
+}

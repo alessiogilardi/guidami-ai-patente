@@ -1,0 +1,32 @@
+{
+  "question_id": 4235,
+  "topic": "Segnaletica orizzontale; segni sugli ostacoli",
+  "number": "20929",
+  "text": "L'elemento in figura individua un attraversamento ciclabile",
+  "correct_answer": false,
+  "image": "97c4c907661bce799d46389a0b4573ab.jpeg",
+  "image_description": "Striscia di arresto. L'elemento in figura è una segnaletica orizzontale, nello specifico una striscia di arresto, che indica il limite al quale i veicoli devono fermarsi prima di un incrocio o di un passaggio pedonale. La striscia è composta da segmenti alternati di colore bianco e nero, disposti trasversalmente alla direzione di marcia. L'immagine mostra tre di queste strisce affiancate, ciascuna delimitata da una superficie grigia ai lati.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre elementi identici disposti orizzontalmente. Ciascun elemento è costituito da una superficie grigia su entrambi i lati e una serie di strisce orizzontali alternate di colore giallo e nero al centro. Queste strisce sono curve e sembrano seguire un profilo ondulato. La disposizione delle strisce, con colori alternati e orientamento trasversale, è tipica della segnaletica orizzontale di pericolo o di delimitazione. In particolare, la combinazione di giallo e nero e la forma ricordano le strisce di arresto o i delineatori di ostacoli. Dato il contesto di un quiz per la patente, e la domanda che fa riferimento a un attraversamento ciclabile, è probabile che si tratti di segnaletica orizzontale. La forma e i colori sono coerenti con una striscia di arresto, anche se la curvatura è insolita. L'immagine presenta tre di queste strisce affiancate, suggerendo una possibile ripetizione o un'area più ampia segnalata. Non ci sono altri elementi stradali visibili (segnali verticali, veicoli, incroci) che possano fornire ulteriore contesto. Pertanto, l'analisi si concentra sulla natura di questi elementi come segnaletica orizzontale. La domanda specifica se l'elemento individua un attraversamento ciclabile. Le strisce di arresto sono utilizzate per delimitare la fermata dei veicoli, e possono trovarsi prima di attraversamenti pedonali o ciclabili. La forma e i colori sono tipici di segnaletica di pericolo o di delimitazione di aree specifiche. In questo caso, la combinazione di giallo e nero e la forma curva suggeriscono un avviso di pericolo o la delimitazione di un ostacolo o di un'area di transizione. La domanda fa riferimento a un attraversamento ciclabile, e le strisce di arresto sono spesso poste prima di tali attraversamenti. Pertanto, è plausibile che queste strisce siano parte della segnaletica che precede un attraversamento ciclabile, indicando il punto di arresto.",
+    "name": "Striscia di arresto",
+    "description": "L'elemento in figura è una segnaletica orizzontale, nello specifico una striscia di arresto, che indica il limite al quale i veicoli devono fermarsi prima di un incrocio o di un passaggio pedonale. La striscia è composta da segmenti alternati di colore bianco e nero, disposti trasversalmente alla direzione di marcia. L'immagine mostra tre di queste strisce affiancate, ciascuna delimitata da una superficie grigia ai lati."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Attraversamento pedonale e ciclabile",
+      "Obbligo di arresto"
+    ],
+    "exact_keywords": [
+      "striscia di arresto",
+      "segnaletica orizzontale",
+      "attraversamento ciclabile",
+      "fermandosi prima della striscia"
+    ],
+    "vector_search_queries": [
+      "differenza tra striscia di arresto e attraversamento ciclabile",
+      "segnaletica orizzontale per fermarsi prima di un attraversamento"
+    ],
+    "rule_explanation": "La striscia di arresto, composta da segmenti bianchi e neri, indica il limite al quale i veicoli devono fermarsi prima di un incrocio o attraversamento pedonale/ciclabile, non lo individua esso stesso."
+  }
+}

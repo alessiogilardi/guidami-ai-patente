@@ -1,0 +1,27 @@
+{
+  "question_id": 4519,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23726",
+  "text": "In una zona in cui la sosta è regolata con parchimetro, non occorre utilizzarlo se la sosta è di breve durata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della sosta nei centri abitati",
+      "Obbligo di pagamento per la sosta a parcometro"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "parchimetro",
+      "regolata",
+      "disco orario"
+    ],
+    "vector_search_queries": [
+      "obbligo pagamento parchimetro per sosta regolamentata",
+      "durata sosta in aree a parcometro"
+    ],
+    "rule_explanation": "Nelle aree con sosta regolata da parchimetro, il pagamento è sempre dovuto, indipendentemente dalla durata della sosta, a meno che non sia diversamente indicato (es. disco orario)."
+  }
+}

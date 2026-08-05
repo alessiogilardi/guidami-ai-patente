@@ -1,0 +1,28 @@
+{
+  "question_id": 4578,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24195",
+  "text": "La spia delle luci fendinebbia è di colore rosso",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di segnalazione visiva veicoli",
+      "Indicatori e spie sui veicoli"
+    ],
+    "exact_keywords": [
+      "spia fendinebbia",
+      "luci fendinebbia",
+      "colore spia",
+      "dispositivi di illuminazione"
+    ],
+    "vector_search_queries": [
+      "colore spia luci fendinebbia",
+      "significato spie cruscotto veicoli",
+      "accensione luci fendinebbia e colore spia"
+    ],
+    "rule_explanation": "La spia che segnala l'accensione delle luci fendinebbia è di colore verde, non rosso. Il rosso indica spie di pericolo o anomalie gravi."
+  }
+}

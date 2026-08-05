@@ -1,0 +1,28 @@
+{
+  "question_id": 4699,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25257",
+  "text": "Prima di procedere alla sostituzione di una ruota, bisogna azionare il freno di stazionamento e inserire la prima marcia o la retromarcia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza nella sostituzione degli pneumatici",
+      "Prevenzione del movimento accidentale del veicolo"
+    ],
+    "exact_keywords": [
+      "freno di stazionamento",
+      "ruota di scorta",
+      "sostituzione",
+      "prima marcia",
+      "retromarcia"
+    ],
+    "vector_search_queries": [
+      "misure di sicurezza per la sostituzione della ruota",
+      "azionamento del freno di stazionamento e marcia per la sostituzione degli pneumatici"
+    ],
+    "rule_explanation": "Prima di sostituire una ruota, è obbligatorio inserire il freno di stazionamento e innestare la prima marcia o la retromarcia per impedire il movimento del veicolo."
+  }
+}

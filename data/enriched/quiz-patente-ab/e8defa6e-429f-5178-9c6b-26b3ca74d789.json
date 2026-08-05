@@ -1,0 +1,27 @@
+{
+  "question_id": 4649,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24912",
+  "text": "Se un ferito della strada è in stato di incoscienza bisogna fasciargli la testa",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di incidente stradale",
+      "Gestione del ferito incosciente"
+    ],
+    "exact_keywords": [
+      "primo soccorso",
+      "stato di incoscienza",
+      "ferito",
+      "manovre salvavita"
+    ],
+    "vector_search_queries": [
+      "gestione del ferito incosciente primo soccorso",
+      "manovre corrette per soccorrere persona priva di sensi in incidente stradale"
+    ],
+    "rule_explanation": "In caso di incoscienza, non si devono compiere fasciature alla testa, ma assicurare la pervietà delle vie aeree e attendere i soccorsi qualificati."
+  }
+}

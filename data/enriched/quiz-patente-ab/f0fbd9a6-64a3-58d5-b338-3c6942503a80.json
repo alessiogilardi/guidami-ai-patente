@@ -1,0 +1,28 @@
+{
+  "question_id": 4416,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22745",
+  "text": "Quando, in un centro abitato, il conducente di un veicolo si imbatte in un corteo, deve regolarsi in base alla sua densità, oltrepassandolo o interrompendolo qualora sia possibile",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della circolazione in presenza di cortei",
+      "Comportamento dei veicoli in centri abitati"
+    ],
+    "exact_keywords": [
+      "corteo",
+      "centro abitato",
+      "interrompere",
+      "oltrepassare",
+      "densità"
+    ],
+    "vector_search_queries": [
+      "comportamento veicoli in presenza di cortei in centro abitato",
+      "obbligo di arresto e precedenza ai cortei in ambito urbano"
+    ],
+    "rule_explanation": "Il conducente deve fermarsi o comunque dare la precedenza ai cortei, senza interromperli o oltrepassarli, indipendentemente dalla loro densità."
+  }
+}

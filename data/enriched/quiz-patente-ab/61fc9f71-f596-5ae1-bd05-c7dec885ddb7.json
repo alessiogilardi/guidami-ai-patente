@@ -1,0 +1,28 @@
+{
+  "question_id": 4605,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24461",
+  "text": "E' vietato utilizzare un autoveicolo sulle strade pubbliche quando la carta di circolazione è intestata a persona diversa dal conducente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Utilizzo del veicolo da parte di persona diversa dall'intestatario della carta di circolazione",
+      "Obblighi di comunicazione e aggiornamento della carta di circolazione"
+    ],
+    "exact_keywords": [
+      "carta di circolazione",
+      "intestatario",
+      "conducente",
+      "comunicazione di cessione del veicolo"
+    ],
+    "vector_search_queries": [
+      "utilizzo veicolo con carta di circolazione intestata a terzi",
+      "obbligo comunicazione cessione del veicolo",
+      "documenti di circolazione e intestatario del veicolo"
+    ],
+    "rule_explanation": "Non è vietato guidare un veicolo se la carta di circolazione è intestata a persona diversa, purché sia stata effettuata la prescritta comunicazione di cessione del veicolo entro i termini di legge."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4377,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22350",
+  "text": "Il limite massimo di velocità per un autoveicolo fino a 3,5 tonnellate sulle strade extraurbane principali è di 80 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane principali",
+      "Classificazione dei veicoli per limiti di velocità"
+    ],
+    "exact_keywords": [
+      "limite massimo di velocità",
+      "autoveicolo",
+      "strade extraurbane principali",
+      "tonnellate"
+    ],
+    "vector_search_queries": [
+      "limite velocità autoveicoli 3,5 tonnellate strade extraurbane principali",
+      "velocità massima consentita per autoveicoli su strade extraurbane principali"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per gli autoveicoli fino a 3,5 tonnellate su strade extraurbane principali è di 100 km/h, non 80 km/h."
+  }
+}

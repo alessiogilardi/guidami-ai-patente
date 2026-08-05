@@ -1,0 +1,27 @@
+{
+  "question_id": 4391,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22501",
+  "text": "Nel caso in cui un veicolo rimanga fermo tra le barriere chiuse del passaggio a livello occorre adoperarsi in ogni modo per presegnalare il pericolo a eventuali treni in transito",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo alla circolazione ferroviaria",
+      "Obblighi in caso di arresto in un passaggio a livello"
+    ],
+    "exact_keywords": [
+      "passaggio a livello",
+      "barriere chiuse",
+      "presegnalare il pericolo",
+      "treni in transito"
+    ],
+    "vector_search_queries": [
+      "obbligo di segnalazione pericolo in caso di arresto tra le barriere di un passaggio a livello",
+      "comportamento del conducente con veicolo fermo tra le barriere di un passaggio a livello"
+    ],
+    "rule_explanation": "Se un veicolo si arresta tra le barriere chiuse di un passaggio a livello, è obbligatorio segnalare il pericolo ai treni in arrivo per evitare incidenti."
+  }
+}

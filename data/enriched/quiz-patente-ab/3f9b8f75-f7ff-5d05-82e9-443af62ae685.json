@@ -1,0 +1,27 @@
+{
+  "question_id": 4571,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24146",
+  "text": "Percorrendo una strada extraurbana durante una giornata assolata è sufficiente accendere le luci di posizione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di accensione luci su strade extraurbane",
+      "Uso delle luci in condizioni di scarsa visibilità"
+    ],
+    "exact_keywords": [
+      "luci di posizione",
+      "strada extraurbana",
+      "visibilità",
+      "giornata assolata"
+    ],
+    "vector_search_queries": [
+      "obbligo luci anabbaglianti su strade extraurbane di giorno",
+      "accensione luci per scarsa visibilità su strade extraurbane"
+    ],
+    "rule_explanation": "Su strade extraurbane, anche di giorno, è obbligatorio accendere le luci anabbaglianti se la visibilità è ridotta, non solo le luci di posizione."
+  }
+}

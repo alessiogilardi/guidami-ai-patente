@@ -1,0 +1,29 @@
+{
+  "question_id": 4417,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22752",
+  "text": "Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, è opportuno suonare insistentemente per sollecitare il conducente a rimettersi in moto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento agli incroci",
+      "Uso del clacson",
+      "Obblighi verso altri utenti della strada"
+    ],
+    "exact_keywords": [
+      "incrocio urbano",
+      "via libera",
+      "clacson",
+      "uso improprio",
+      "sollecitare"
+    ],
+    "vector_search_queries": [
+      "uso del clacson agli incroci urbani con via libera",
+      "divieto di uso improprio del clacson per sollecitare la partenza al verde"
+    ],
+    "rule_explanation": "Agli incroci, il clacson non va usato per sollecitare la ripresa della marcia, ma solo in casi di reale necessità per avvertire del proprio passaggio."
+  }
+}

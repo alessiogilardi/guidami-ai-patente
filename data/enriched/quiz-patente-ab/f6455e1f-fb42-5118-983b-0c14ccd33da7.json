@@ -1,0 +1,31 @@
+{
+  "question_id": 4308,
+  "topic": "Segnali di indicazione",
+  "number": "21632",
+  "text": "Il segnale raffigurato indica la distanza di sicurezza da mantenere dal veicolo che sta davanti",
+  "correct_answer": false,
+  "image": "971e98d0321dab35827073bdfb4eb51a.jpeg",
+  "image_description": "Segnale di limite minimo di velocità. Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco e sfondo blu. Al centro del segnale è presente il numero '60' in bianco. Questo è un segnale di prescrizione che indica un limite minimo di velocità.",
+    "name": "Segnale di limite minimo di velocità",
+    "description": "Il segnale indica un limite minimo di velocità. Non è consentito viaggiare a una velocità inferiore a quella indicata."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Limiti minimi di velocità"
+    ],
+    "exact_keywords": [
+      "segnali di prescrizione",
+      "limite minimo di velocità",
+      "velocità minima",
+      "distanza di sicurezza"
+    ],
+    "vector_search_queries": [
+      "segnali che impongono limiti minimi di velocità",
+      "differenza tra segnali di limite minimo di velocità e segnali di distanza di sicurezza"
+    ],
+    "rule_explanation": "Il segnale raffigurato impone un limite minimo di velocità, non indica la distanza di sicurezza da mantenere dal veicolo che precede."
+  }
+}

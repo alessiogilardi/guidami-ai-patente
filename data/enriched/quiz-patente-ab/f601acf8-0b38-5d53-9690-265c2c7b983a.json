@@ -1,0 +1,27 @@
+{
+  "question_id": 4679,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25129",
+  "text": "L'inquinamento dell'aria prodotto dai veicoli a motore può diminuire se si accelera tenendo premuto il pedale della frizione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento atmosferico da veicoli a motore",
+      "Tecniche di guida ecologica"
+    ],
+    "exact_keywords": [
+      "inquinamento dell'aria",
+      "veicoli a motore",
+      "accelerazione",
+      "frizione"
+    ],
+    "vector_search_queries": [
+      "impatto dell'accelerazione con frizione disinserita sulle emissioni inquinanti",
+      "tecniche di guida per ridurre l'inquinamento atmosferico da veicoli a motore"
+    ],
+    "rule_explanation": "L'inquinamento atmosferico da veicoli a motore non diminuisce accelerando con il pedale della frizione premuto, anzi, tale pratica aumenta i consumi e le emissioni inquinanti."
+  }
+}

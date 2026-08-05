@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31018",
+  "text": "Quando si è alla guida, la capacità di attenzione può essere influenzata anche dall’ascolto di musica a volume molto alto",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Capacità di attenzione alla guida",
+      "Fattori di distrazione alla guida",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "conducente",
+      "capacità di attenzione",
+      "distrazione",
+      "volume della musica"
+    ],
+    "vector_search_queries": [
+      "influenza del volume della musica sull'attenzione del conducente",
+      "fattori che distraggono dalla guida e riducono la capacità di attenzione",
+      "mantenimento della concentrazione alla guida e distrazioni sonore"
+    ],
+    "rule_explanation": "La capacità di attenzione del conducente può essere compromessa da fattori esterni come l'ascolto di musica ad alto volume, che costituisce una potenziale fonte di distrazione."
+  }
+}

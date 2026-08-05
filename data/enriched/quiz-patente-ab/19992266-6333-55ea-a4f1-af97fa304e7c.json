@@ -1,0 +1,29 @@
+{
+  "question_id": 4049,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18832",
+  "text": "Quando la carreggiata extraurbana è occupata da ciclisti o pedoni, è consigliabile suonare il clacson prima di sorpassarli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione acustica di pericolo",
+      "Comportamento verso utenti deboli della strada",
+      "Sorpasso di ciclisti e pedoni"
+    ],
+    "exact_keywords": [
+      "clacson",
+      "sorpassare",
+      "ciclisti",
+      "pedoni",
+      "strada extraurbana"
+    ],
+    "vector_search_queries": [
+      "uso del clacson per segnalare la propria presenza a ciclisti e pedoni su strade extraurbane",
+      "obbligo di segnalazione acustica prima di sorpassare utenti vulnerabili"
+    ],
+    "rule_explanation": "L'uso del clacson è consentito per richiamare l'attenzione di altri utenti della strada, specialmente in presenza di pedoni o ciclisti su strade extraurbane, al fine di prevenire pericoli."
+  }
+}

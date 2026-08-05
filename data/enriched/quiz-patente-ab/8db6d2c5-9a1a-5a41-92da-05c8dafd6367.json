@@ -1,0 +1,27 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22479",
+  "text": "In caso di arresto forzato di un veicolo sui binari di un passaggio a livello, bisogna spostarlo, spingendolo quanto prima fuori dai binari",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo alla circolazione",
+      "Comportamento in caso di arresto del veicolo su un passaggio a livello"
+    ],
+    "exact_keywords": [
+      "arresto forzato",
+      "passaggio a livello",
+      "spostare il veicolo",
+      "fuori dai binari"
+    ],
+    "vector_search_queries": [
+      "obbligo di spostare veicolo fermo sui binari di un passaggio a livello",
+      "condotta da tenere in caso di arresto del veicolo su passaggio a livello"
+    ],
+    "rule_explanation": "In caso di arresto forzato del veicolo sui binari di un passaggio a livello, è obbligatorio spostarlo al più presto fuori dai binari per evitare incidenti."
+  }
+}

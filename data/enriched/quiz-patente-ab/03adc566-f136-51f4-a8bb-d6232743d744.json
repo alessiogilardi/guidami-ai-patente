@@ -1,0 +1,30 @@
+{
+  "question_id": 4566,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24088",
+  "text": "Nei rimorchi dotati di freno a inerzia il rimorchio frena circa un secondo prima della motrice",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Freno a inerzia",
+      "Sistema frenante del rimorchio",
+      "Distanza di frenata"
+    ],
+    "exact_keywords": [
+      "freno a inerzia",
+      "rimorchio",
+      "motrice",
+      "sistema frenante",
+      "tempo di reazione"
+    ],
+    "vector_search_queries": [
+      "funzionamento freno a inerzia rimorchio",
+      "attivazione freni rimorchio in decelerazione",
+      "ritardo frenata rimorchio rispetto motrice"
+    ],
+    "rule_explanation": "Il freno a inerzia agisce automaticamente quando la motrice rallenta, ma la sua efficacia e il momento di attivazione dipendono da vari fattori, non da un anticipo fisso di un secondo."
+  }
+}

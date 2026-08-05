@@ -1,0 +1,31 @@
+{
+  "question_id": 4117,
+  "topic": "Segnali di divieto",
+  "number": "19674",
+  "text": "Il segnale raffigurato consente il transito delle biciclette nelle ore notturne",
+  "correct_answer": false,
+  "image": "d62b58e41fee347a25ca241f48772c05.jpeg",
+  "image_description": "Segnale di divieto di transito ai velocipedi. Il segnale vieta il transito ai velocipedi (biciclette).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurata una bicicletta di colore nero. Si tratta di un segnale di divieto.",
+    "name": "Segnale di divieto di transito ai velocipedi",
+    "description": "Il segnale vieta il transito ai velocipedi (biciclette)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Divieto di transito ai velocipedi"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "velocipedi",
+      "transito",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per biciclette",
+      "segnalazione stradale divieto velocipedi"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito ai velocipedi vieta in modo assoluto la circolazione delle biciclette, indipendentemente dall'orario."
+  }
+}

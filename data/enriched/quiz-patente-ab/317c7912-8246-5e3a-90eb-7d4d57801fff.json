@@ -1,0 +1,28 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24756",
+  "text": "In caso di nebbia fitta è opportuno guidare con la massima prudenza e concentrazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Massima prudenza in condizioni di scarsa visibilità",
+      "Guida in condizioni atmosferiche avverse"
+    ],
+    "exact_keywords": [
+      "nebbia fitta",
+      "massima prudenza",
+      "concentrazione",
+      "condizioni di visibilità ridotta"
+    ],
+    "vector_search_queries": [
+      "guida in condizioni di nebbia fitta",
+      "comportamento alla guida con scarsa visibilità",
+      "adeguamento della velocità in caso di nebbia"
+    ],
+    "rule_explanation": "In caso di nebbia fitta, è imperativo guidare con estrema prudenza e massima concentrazione, adattando la velocità alle ridotte condizioni di visibilità per garantire la sicurezza."
+  }
+}

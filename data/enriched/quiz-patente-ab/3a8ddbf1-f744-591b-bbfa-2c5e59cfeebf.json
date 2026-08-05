@@ -1,0 +1,27 @@
+{
+  "question_id": 4411,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22687",
+  "text": "Chi guida un veicolo può sorpassare in ogni condizione di traffico, purché non ci sia il segnale di divieto",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso",
+      "Condizioni di traffico e sicurezza"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "divieto di sorpasso",
+      "condizioni di traffico",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "sorpasso vietato in condizioni di traffico pericoloso",
+      "regole generali sul sorpasso e divieti impliciti"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in ogni condizione di traffico che possa creare pericolo, anche in assenza di specifico segnale di divieto."
+  }
+}

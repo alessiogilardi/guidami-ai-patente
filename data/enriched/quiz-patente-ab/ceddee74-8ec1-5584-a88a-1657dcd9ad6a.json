@@ -1,0 +1,31 @@
+{
+  "question_id": 4147,
+  "topic": "Segnali di divieto",
+  "number": "20006",
+  "text": "Il segnale raffigurato consente la sosta in alcune ore e la vieta in altre",
+  "correct_answer": true,
+  "image": "000b9ec4803628ffc83403efb710b16e.jpeg",
+  "image_description": "Segnale di divieto di sosta con orario e parcheggio con orario. Il segnale indica che la sosta è vietata dalle ore 7.00 alle 9.00 e dalle 17.00 alle 20.00. La sosta è invece consentita dalle ore 9.00 alle 17.00 e dalle 20.00 alle 7.00 del giorno successivo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale composto da due parti. La parte superiore contiene un segnale di divieto di sosta (cerchio rosso con barra diagonale rossa su sfondo blu) accompagnato da due fasce orarie: 7.00-9.00 e 17.00-20.00. La parte inferiore mostra un segnale di parcheggio (P blu su sfondo bianco) anch'esso accompagnato da due fasce orarie: 9.00-17.00 e 20.00-7.00. L'insieme dei due pannelli indica una regolamentazione della sosta e del parcheggio basata sugli orari specificati.",
+    "name": "Segnale di divieto di sosta con orario e parcheggio con orario",
+    "description": "Il segnale indica che la sosta è vietata dalle ore 7.00 alle 9.00 e dalle 17.00 alle 20.00. La sosta è invece consentita dalle ore 9.00 alle 17.00 e dalle 20.00 alle 7.00 del giorno successivo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione (divieto/obbligo)",
+      "Divieto di sosta con limitazioni orarie"
+    ],
+    "exact_keywords": [
+      "segnale di divieto di sosta",
+      "limitazioni orarie",
+      "sosta consentita",
+      "sosta vietata"
+    ],
+    "vector_search_queries": [
+      "segnali stradali che regolamentano la sosta con orario",
+      "interpretazione segnale divieto di sosta con fasce orarie"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta con indicazione oraria specifica le fasce orarie in cui la sosta è vietata, implicando che sia consentita negli altri periodi."
+  }
+}

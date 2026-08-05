@@ -1,0 +1,27 @@
+{
+  "question_id": 4433,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22910",
+  "text": "In vicinanza o in corrispondenza degli incroci extraurbani non è consentito azionare i dispositivi di segnalazione acustica (clacson o trombe)",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei dispositivi acustici",
+      "Regole di circolazione negli incroci"
+    ],
+    "exact_keywords": [
+      "dispositivi di segnalazione acustica",
+      "incroci extraurbani",
+      "clacson",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "uso del clacson negli incroci extraurbani",
+      "segnalazione acustica per evitare pericoli agli incroci"
+    ],
+    "rule_explanation": "Il divieto di usare i dispositivi acustici negli incroci extraurbani non è assoluto; è consentito in caso di necessità per evitare pericoli."
+  }
+}

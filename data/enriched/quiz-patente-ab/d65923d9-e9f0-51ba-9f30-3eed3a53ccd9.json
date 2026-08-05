@@ -1,0 +1,27 @@
+{
+  "question_id": 4566,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24079",
+  "text": "Nel rimorchio è presente un dispositivo di sicurezza che, in caso di sganciamento accidentale, aziona automaticamente il freno di stazionamento",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dispositivi di sicurezza per rimorchi",
+      "Freno di stazionamento per rimorchi"
+    ],
+    "exact_keywords": [
+      "rimorchio",
+      "dispositivo di sicurezza",
+      "sganciamento accidentale",
+      "freno di stazionamento"
+    ],
+    "vector_search_queries": [
+      "dispositivo di sicurezza per rimorchio in caso di sganciamento",
+      "freno di stazionamento automatico per rimorchi sganciati"
+    ],
+    "rule_explanation": "I rimorchi devono essere dotati di un dispositivo di sicurezza che, in caso di sganciamento accidentale dal veicolo trainante, attivi automaticamente il freno di stazionamento per arrestare il rimorchio."
+  }
+}

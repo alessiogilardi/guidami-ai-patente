@@ -1,0 +1,29 @@
+{
+  "question_id": 4705,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25308",
+  "text": "Il freno di stazionamento deve essere utilizzato per bloccare il veicolo in sosta o per situazioni di emergenza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Freno di stazionamento",
+      "Uso del freno di stazionamento",
+      "Situazioni di emergenza"
+    ],
+    "exact_keywords": [
+      "freno di stazionamento",
+      "veicolo in sosta",
+      "situazioni di emergenza",
+      "dispositivo di bloccaggio"
+    ],
+    "vector_search_queries": [
+      "funzione del freno di stazionamento per veicolo in sosta",
+      "impiego del freno di stazionamento in emergenza",
+      "utilizzo del freno di stazionamento per bloccare il veicolo"
+    ],
+    "rule_explanation": "Il freno di stazionamento è un dispositivo di bloccaggio destinato a mantenere il veicolo fermo durante la sosta o a fronteggiare emergenze, non per rallentare o fermare il veicolo in marcia."
+  }
+}

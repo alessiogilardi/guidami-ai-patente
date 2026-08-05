@@ -1,0 +1,31 @@
+{
+  "question_id": 4271,
+  "topic": "Segnali di indicazione",
+  "number": "21266",
+  "text": "Il segnale raffigurato indica un'area da campeggio con tende e sosta per caravan ed autocaravan",
+  "correct_answer": true,
+  "image": "6bf2f66e80435e1fde57046fdd066280.jpeg",
+  "image_description": "Area per campeggio. Il segnale indica la presenza di un'area attrezzata per il campeggio, con possibilità di sosta per tende, caravan e autocaravan.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore marrone con un riquadro bianco al centro. All'interno del riquadro bianco sono presenti due pittogrammi: nella parte superiore, una tenda stilizzata; nella parte inferiore, una roulotte (caravan) con un'auto collegata. Sotto il riquadro bianco, vi è un pannello integrativo di colore marrone, vuoto. Il segnale è di tipo \"indicazione\" e si riferisce a un'area attrezzata per il campeggio.",
+    "name": "Area per campeggio",
+    "description": "Il segnale indica la presenza di un'area attrezzata per il campeggio, con possibilità di sosta per tende, caravan e autocaravan."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Area di campeggio"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "area di campeggio",
+      "sosta caravan",
+      "sosta autocaravan"
+    ],
+    "vector_search_queries": [
+      "segnaletica indicante area di campeggio attrezzata",
+      "indicazioni stradali per aree di sosta camper e caravan"
+    ],
+    "rule_explanation": "Il segnale di campeggio indica un'area attrezzata per il campeggio, consentendo la sosta a tende, caravan e autocaravan."
+  }
+}

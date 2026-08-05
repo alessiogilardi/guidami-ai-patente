@@ -1,0 +1,27 @@
+{
+  "question_id": 4649,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24911",
+  "text": "Se un ferito della strada è in stato di incoscienza bisogna bloccargli le mani",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Gestione del ferito incosciente"
+    ],
+    "exact_keywords": [
+      "stato di incoscienza",
+      "primo soccorso",
+      "ferito",
+      "manovre salvavita"
+    ],
+    "vector_search_queries": [
+      "gestione del ferito in stato di incoscienza primo soccorso",
+      "manovre corrette per soccorrere persona incosciente"
+    ],
+    "rule_explanation": "In caso di incoscienza, non bisogna immobilizzare le mani del ferito, ma assicurare la pervietà delle vie aeree e la posizione laterale di sicurezza."
+  }
+}

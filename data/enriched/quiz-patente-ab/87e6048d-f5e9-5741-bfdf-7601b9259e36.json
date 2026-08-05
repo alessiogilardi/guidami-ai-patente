@@ -1,0 +1,31 @@
+{
+  "question_id": 4278,
+  "topic": "Segnali di indicazione",
+  "number": "21342",
+  "text": "Il segnale raffigurato indica una raffineria",
+  "correct_answer": false,
+  "image": "448eabbee847432f1274ed56814a5934.jpeg",
+  "image_description": "Distributore di carburante. Il segnale indica la presenza di un distributore di carburante nelle vicinanze.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore blu con un bordo bianco. Al centro del segnale, all'interno di un riquadro bianco, è presente il pittogramma di una pompa di benzina stilizzata. Sotto il pittogramma, vi è uno spazio vuoto di colore blu, tipico dei segnali di servizio che indicano la presenza di un servizio lungo la strada. Il segnale è di forma rettangolare verticale.",
+    "name": "Distributore di carburante",
+    "description": "Il segnale indica la presenza di un distributore di carburante nelle vicinanze."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Servizi lungo la strada"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "distributore di carburante",
+      "raffineria",
+      "servizi"
+    ],
+    "vector_search_queries": [
+      "segnali stradali che indicano distributori di carburante",
+      "differenza tra segnale di distributore e raffineria"
+    ],
+    "rule_explanation": "Il segnale raffigurante un distributore di carburante indica la presenza di un impianto di distribuzione di carburante, non una raffineria."
+  }
+}

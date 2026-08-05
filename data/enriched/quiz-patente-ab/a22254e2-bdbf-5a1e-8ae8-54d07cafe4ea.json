@@ -1,0 +1,28 @@
+{
+  "question_id": 4025,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18571",
+  "text": "I quadricicli non leggeri, ai fini della circolazione, sono equiparati ai ciclomotori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli",
+      "Equiparazione giuridica dei veicoli",
+      "Normativa sulla circolazione stradale"
+    ],
+    "exact_keywords": [
+      "quadricicli non leggeri",
+      "ciclomotori",
+      "veicoli",
+      "circolazione stradale"
+    ],
+    "vector_search_queries": [
+      "differenza tra quadricicli non leggeri e ciclomotori nel CdS",
+      "classificazione veicoli stradali quadricicli e ciclomotori"
+    ],
+    "rule_explanation": "I quadricicli non leggeri sono equiparati ai motocicli, non ai ciclomotori, ai fini della circolazione stradale."
+  }
+}

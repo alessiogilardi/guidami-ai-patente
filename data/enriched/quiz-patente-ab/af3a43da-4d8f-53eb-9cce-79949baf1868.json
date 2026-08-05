@@ -1,0 +1,31 @@
+{
+  "question_id": 4322,
+  "topic": "Segnali di indicazione",
+  "number": "21766",
+  "text": "Il segnale raffigurato indica una strada riservata agli autobus",
+  "correct_answer": false,
+  "image": "6a522dfdeecbf56ec4b02389fb3b040e.jpeg",
+  "image_description": "Fermata di autobus. Il segnale indica una fermata di autobus. Può essere integrato da un pannello integrativo che riporta gli orari di partenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare verticale, con bordo blu e sfondo bianco all'interno di un riquadro centrale. Al centro del riquadro bianco è presente il pittogramma stilizzato di un autobus. Sotto il riquadro bianco, la parte inferiore del segnale è di colore blu uniforme. Si tratta di un segnale di indicazione.",
+    "name": "Fermata di autobus",
+    "description": "Il segnale indica una fermata di autobus. Può essere integrato da un pannello integrativo che riporta gli orari di partenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Fermata di autobus"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "fermata di autobus",
+      "strada riservata",
+      "pannello integrativo"
+    ],
+    "vector_search_queries": [
+      "segnali di indicazione fermata autobus",
+      "differenza tra fermata autobus e strada riservata agli autobus"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica una fermata di autobus, non una strada a loro esclusiva riservata. Può essere integrato da pannelli con orari."
+  }
+}

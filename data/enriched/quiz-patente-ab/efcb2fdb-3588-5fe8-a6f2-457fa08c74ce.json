@@ -1,0 +1,27 @@
+{
+  "question_id": 4442,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22979",
+  "text": "Il conducente di un motociclo che parte dal margine della carreggiata e si immette nel flusso della circolazione deve accendere il proiettore anabbagliante",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente all'immissione nella circolazione",
+      "Uso dei proiettori sui motocicli"
+    ],
+    "exact_keywords": [
+      "motociclo",
+      "immissione nel flusso della circolazione",
+      "proiettore anabbagliante",
+      "accensione"
+    ],
+    "vector_search_queries": [
+      "obbligo di accensione proiettori anabbaglianti motocicli in circolazione",
+      "uso luci motocicli all'immissione nel traffico"
+    ],
+    "rule_explanation": "I motocicli devono sempre tenere accesi i proiettori anabbaglianti, anche durante la marcia in pieno giorno e quando non sono in movimento, salvo eccezioni specifiche."
+  }
+}

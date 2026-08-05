@@ -1,0 +1,32 @@
+{
+  "question_id": 4295,
+  "topic": "Segnali di indicazione",
+  "number": "21513",
+  "text": "Il segnale raffigurato indica che il passo dello Stelvio non è raggiungibile",
+  "correct_answer": true,
+  "image": "185a3c1d7ae6a5c7a4ddc4aa235f085d.jpeg",
+  "image_description": "Segnale di indicazione turistica con informazioni aggiuntive. Il segnale indica che il passo dello Stelvio è chiuso e che Trafoi è raggiungibile fino a un certo punto, con l'indicazione di pneumatici invernali o catene obbligatori.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con bordi arrotondati e sfondo blu. Nella parte superiore, in un riquadro rosso, è scritto \"STELVIO\" in bianco. Sotto, in un riquadro rosso più piccolo, si legge \"chiuso ferme closed geschlossen\". Al centro, in un riquadro bianco, sono raffigurati due pneumatici, uno con catene e uno senza, a simboleggiare l'obbligo di catene o pneumatici invernali. Nella parte inferiore, in un riquadro bianco, è indicato \"fino a Jusqu'a' as far as bis nach TRAFOI\", indicando la destinazione raggiungibile.",
+    "name": "Segnale di indicazione turistica con informazioni aggiuntive",
+    "description": "Il segnale indica che il passo dello Stelvio è chiuso e che Trafoi è raggiungibile fino a un certo punto, con l'indicazione di pneumatici invernali o catene obbligatori."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione turistica",
+      "Chiusura stradale per condizioni meteorologiche"
+    ],
+    "exact_keywords": [
+      "passo dello Stelvio",
+      "segnali di indicazione turistica",
+      "chiuso",
+      "pneumatici invernali",
+      "catene"
+    ],
+    "vector_search_queries": [
+      "segnaletica turistica passo Stelvio chiusura invernale",
+      "indicazioni stradali per passi montani in condizioni invernali"
+    ],
+    "rule_explanation": "I segnali di indicazione turistica forniscono informazioni su località, servizi o punti di interesse, inclusa la percorribilità di passi montani in determinate stagioni o condizioni."
+  }
+}

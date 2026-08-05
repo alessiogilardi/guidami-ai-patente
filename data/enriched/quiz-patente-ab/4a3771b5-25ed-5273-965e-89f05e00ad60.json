@@ -1,0 +1,27 @@
+{
+  "question_id": 4641,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24852",
+  "text": "Chi guida un veicolo senza motore, con una concentrazione di alcool nel sangue superiore al limite stabilito, non è soggetto ad alcuna sanzione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Guida in stato di ebbrezza",
+      "Sanzioni per guida sotto influenza di alcool"
+    ],
+    "exact_keywords": [
+      "veicolo senza motore",
+      "concentrazione di alcool nel sangue",
+      "sanzione",
+      "limite stabilito"
+    ],
+    "vector_search_queries": [
+      "sanzioni per guida di veicoli senza motore con alcool nel sangue superiore al limite",
+      "responsabilità per guida in stato di ebbrezza con veicoli non a motore"
+    ],
+    "rule_explanation": "Anche chi guida veicoli senza motore in stato di ebbrezza è soggetto a sanzioni, sebbene diverse da quelle per i veicoli a motore."
+  }
+}

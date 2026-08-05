@@ -1,0 +1,27 @@
+{
+  "question_id": 4447,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23036",
+  "text": "Nei centri abitati non è necessario utilizzare gli specchi retrovisori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di uso degli specchi retrovisori",
+      "Sicurezza nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "manovre",
+      "centri abitati",
+      "condizioni di traffico"
+    ],
+    "vector_search_queries": [
+      "obbligo uso specchi retrovisori per manovre in centri abitati",
+      "utilizzo specchietti retrovisori per cambi di corsia e sorpassi"
+    ],
+    "rule_explanation": "L'uso degli specchi retrovisori è sempre obbligatorio per tutte le manovre, anche nei centri abitati, per garantire la sicurezza e prevenire incidenti."
+  }
+}

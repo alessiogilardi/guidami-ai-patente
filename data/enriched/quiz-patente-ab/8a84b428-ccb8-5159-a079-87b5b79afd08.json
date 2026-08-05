@@ -1,0 +1,31 @@
+{
+  "question_id": 4139,
+  "topic": "Segnali di divieto",
+  "number": "19923",
+  "text": "Il segnale raffigurato, nei centri urbani, prescrive il divieto di sosta dalle ore 20.00 alle ore 8.00, salvo diversa indicazione",
+  "correct_answer": false,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di divieto di sosta",
+      "Limitazioni temporali alla sosta"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "centri abitati",
+      "orario",
+      "sosta vietata"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta nei centri abitati con orario specifico",
+      "interpretazione segnale divieto di sosta con limitazioni orarie"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta vieta la sosta, ma non la fermata, e non ha limitazioni orarie intrinseche se non diversamente indicato."
+  }
+}

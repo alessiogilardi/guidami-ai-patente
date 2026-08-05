@@ -1,0 +1,32 @@
+{
+  "question_id": 4199,
+  "topic": "Segnali di precedenza",
+  "number": "20589",
+  "text": "Il segnale raffigurato indica l'andamento della strada principale",
+  "correct_answer": false,
+  "image": "459c93f6feb9d5a601c34e1088b16155.jpeg",
+  "image_description": "Fine del diritto di precedenza. Indica la fine del diritto di precedenza su una strada che precedentemente lo garantiva. Il conducente dovrà quindi adeguare la propria condotta alle norme generali di precedenza, prestando particolare attenzione ai veicoli provenienti da destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale a forma di rombo con bordo bianco e sfondo bianco. Al centro, un quadrato arancione è attraversato da una barra nera diagonale, che va dall'angolo in alto a sinistra all'angolo in basso a destra. Questo è il segnale di 'Fine del diritto di precedenza'.",
+    "name": "Fine del diritto di precedenza",
+    "description": "Indica la fine del diritto di precedenza su una strada che precedentemente lo garantiva. Il conducente dovrà quindi adeguare la propria condotta alle norme generali di precedenza, prestando particolare attenzione ai veicoli provenienti da destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Fine del diritto di precedenza"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "fine del diritto di precedenza",
+      "strada principale",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine del diritto di precedenza",
+      "obblighi del conducente alla fine del diritto di precedenza",
+      "differenza tra segnale di strada principale e fine diritto di precedenza"
+    ],
+    "rule_explanation": "Il segnale di 'fine del diritto di precedenza' indica che il conducente non ha più la precedenza e deve cedere il passo ai veicoli provenienti da altre direzioni, secondo le norme generali."
+  }
+}

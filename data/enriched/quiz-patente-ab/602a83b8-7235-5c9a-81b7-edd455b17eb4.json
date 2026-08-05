@@ -1,0 +1,28 @@
+{
+  "question_id": 4034,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18673",
+  "text": "Bisogna lasciare libere le immissioni stradali (incroci, confluenze, ingressi dei parcheggi, ecc.) anche in caso di traffico intenso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di non intralcio alla circolazione",
+      "Regola generale di comportamento agli incroci"
+    ],
+    "exact_keywords": [
+      "immissioni stradali",
+      "incroci",
+      "confluenze",
+      "libere",
+      "traffico intenso"
+    ],
+    "vector_search_queries": [
+      "divieto di occupare incroci e immissioni stradali in caso di traffico intenso",
+      "obbligo di mantenere libere le intersezioni stradali"
+    ],
+    "rule_explanation": "È obbligatorio non occupare con il proprio veicolo le immissioni stradali (incroci, confluenze, ecc.) se non si ha la possibilità di liberarle subito dopo, anche in caso di traffico intenso."
+  }
+}

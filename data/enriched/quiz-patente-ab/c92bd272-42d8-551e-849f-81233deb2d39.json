@@ -1,0 +1,30 @@
+{
+  "question_id": 4390,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22480",
+  "text": "In caso di arresto forzato di un veicolo sui binari di un passaggio a livello, se non è possibile spostarlo subito dai binari, bisogna far scendere immediatamente tutte le persone che si trovano a bordo, e avvisare la stazione ferroviaria",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pericolo ai passaggi a livello",
+      "Arresto forzato sui binari",
+      "Evacuazione del veicolo"
+    ],
+    "exact_keywords": [
+      "arresto forzato",
+      "passaggio a livello",
+      "binari",
+      "stazione ferroviaria",
+      "evacuare il veicolo"
+    ],
+    "vector_search_queries": [
+      "comportamento in caso di arresto forzato sui binari di un passaggio a livello",
+      "procedure di sicurezza per veicoli bloccati sui binari ferroviari",
+      "obblighi del conducente in caso di arresto sui binari di un passaggio a livello"
+    ],
+    "rule_explanation": "In caso di arresto forzato sui binari di un passaggio a livello, è necessario evacuare immediatamente il veicolo e avvisare la stazione per evitare incidenti con i treni."
+  }
+}

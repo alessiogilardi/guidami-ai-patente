@@ -1,0 +1,32 @@
+{
+  "question_id": 4323,
+  "topic": "Segnali di indicazione",
+  "number": "21768",
+  "text": "Il segnale raffigurato è posto vicino ad una fermata di autobus",
+  "correct_answer": true,
+  "image": "da13b151d500f0dc7c2b8d13eeeaf14f.jpeg",
+  "image_description": "Parcheggio e fermata di autobus con indicazione linee e pronto soccorso. Il segnale indica la presenza di un parcheggio (simbolo P) e di una fermata di autobus (simbolo di autobus). I numeri 8 e 45 indicano le linee di autobus che servono la fermata. Il simbolo della croce nera indica la vicinanza di un pronto soccorso.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale di colore bianco con bordo nero. Nella parte superiore, a sinistra, è presente un'area blu con la lettera \"P\" bianca, indicante un parcheggio. A destra della \"P\", vi è un simbolo di una croce nera su sfondo bianco, che solitamente indica un pronto soccorso o un ospedale. Nella parte inferiore del segnale, a sinistra, è presente un riquadro bianco con il pittogramma di un autobus, che indica una fermata di autobus. A destra del pittogramma dell'autobus, ci sono due cerchi rossi contenenti, rispettivamente, il numero \"8\" e il numero \"45\". Questi numeri indicano le linee di autobus che servono la fermata.",
+    "name": "Parcheggio e fermata di autobus con indicazione linee e pronto soccorso",
+    "description": "Il segnale indica la presenza di un parcheggio (simbolo P) e di una fermata di autobus (simbolo di autobus). I numeri 8 e 45 indicano le linee di autobus che servono la fermata. Il simbolo della croce nera indica la vicinanza di un pronto soccorso."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Fermata di autobus",
+      "Segnaletica stradale di servizio"
+    ],
+    "exact_keywords": [
+      "segnale di parcheggio",
+      "fermata di autobus",
+      "segnali di servizio",
+      "segnali di indicazione"
+    ],
+    "vector_search_queries": [
+      "segnali stradali di servizio e indicazione fermata autobus",
+      "interpretazione segnale parcheggio e fermata autobus"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la presenza di una fermata di autobus e di un parcheggio, rientrando tra i segnali di servizio che forniscono indicazioni utili agli utenti della strada."
+  }
+}

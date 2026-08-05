@@ -1,0 +1,28 @@
+{
+  "question_id": 4561,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "24025",
+  "text": "Circolando dietro ad un veicolo che trasporta un carico poco sicuro, conviene spostarsi lungo il margine sinistro della carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza stradale",
+      "Gestione del carico sui veicoli",
+      "Comportamento in caso di veicolo con carico instabile"
+    ],
+    "exact_keywords": [
+      "carico instabile",
+      "margine sinistro",
+      "carreggiata",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "comportamento in caso di veicolo con carico instabile",
+      "pericolo derivante da carico instabile e manovre di sorpasso"
+    ],
+    "rule_explanation": "È vietato spostarsi sul margine sinistro della carreggiata per superare un veicolo con carico instabile, in quanto ciò potrebbe creare un pericolo per la circolazione."
+  }
+}

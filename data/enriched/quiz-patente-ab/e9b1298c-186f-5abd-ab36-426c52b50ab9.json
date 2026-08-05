@@ -1,0 +1,31 @@
+{
+  "question_id": 4144,
+  "topic": "Segnali di divieto",
+  "number": "19977",
+  "text": "Il segnale raffigurato preannuncia un parcheggio a 300 metri nel senso della freccia",
+  "correct_answer": true,
+  "image": "6b623ff0745b6619443315dd3d5ad497.jpeg",
+  "image_description": "Parcheggio con indicazione di direzione e distanza. Il segnale indica che un parcheggio si trova nella direzione indicata dalla freccia, a 300 metri di distanza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale di colore blu con la lettera \"P\" bianca maiuscola al centro. Sotto la lettera \"P\", una freccia bianca curva indica una svolta a destra. Sotto questo segnale, vi è un pannello integrativo rettangolare di colore bianco con la scritta \"300 m\" in nero, indicante una distanza. Il segnale è di tipo \"indicazione\", specificamente un segnale di parcheggio con indicazione di direzione e distanza.",
+    "name": "Parcheggio con indicazione di direzione e distanza",
+    "description": "Il segnale indica che un parcheggio si trova nella direzione indicata dalla freccia, a 300 metri di distanza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione stradale",
+      "Preavviso di direzioni e distanze"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "parcheggio",
+      "direzione",
+      "distanza"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di parcheggio con indicazione di direzione e distanza",
+      "interpretazione segnali stradali di parcheggio a distanza predeterminata"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica la presenza di un parcheggio nella direzione indicata dalla freccia, situato a 300 metri."
+  }
+}

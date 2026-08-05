@@ -1,0 +1,28 @@
+{
+  "question_id": 4416,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22739",
+  "text": "È opportuno che il conducente di un veicolo, quando in un centro abitato si imbatte in un corteo, eviti di retrocedere se ciò ostacola il flusso della circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento in presenza di cortei",
+      "Obblighi del conducente in caso di cortei",
+      "Circolazione nei centri abitati"
+    ],
+    "exact_keywords": [
+      "corteo",
+      "centro abitato",
+      "retrocedere",
+      "flusso della circolazione"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente in presenza di cortei nei centri abitati",
+      "divieto di retrocedere in caso di corteo se si ostacola la circolazione"
+    ],
+    "rule_explanation": "Nei centri abitati, il conducente che incontra un corteo deve evitare manovre che ostacolino la circolazione, come la retromarcia."
+  }
+}

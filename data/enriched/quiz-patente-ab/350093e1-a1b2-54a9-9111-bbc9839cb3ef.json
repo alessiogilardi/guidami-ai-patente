@@ -1,0 +1,27 @@
+{
+  "question_id": 4636,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24828",
+  "text": "E' opportuno, per il conducente che accusa segni di stanchezza, avvicinarsi il più possibile al veicolo che lo precede nella marcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in base alla stanchezza",
+      "Distanza di sicurezza tra veicoli"
+    ],
+    "exact_keywords": [
+      "stanchezza",
+      "distanza di sicurezza",
+      "veicolo che precede",
+      "condizioni di guida"
+    ],
+    "vector_search_queries": [
+      "aumento distanza di sicurezza per stanchezza del conducente",
+      "conseguenze della stanchezza sulla capacità di reazione e sulla guida sicura"
+    ],
+    "rule_explanation": "Il conducente stanco deve aumentare la distanza di sicurezza dal veicolo che precede per compensare i ridotti riflessi e la minore capacità di reazione."
+  }
+}

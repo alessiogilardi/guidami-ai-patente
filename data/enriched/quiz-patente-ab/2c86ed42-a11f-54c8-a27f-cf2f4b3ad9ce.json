@@ -1,0 +1,31 @@
+{
+  "question_id": 4174,
+  "topic": "Segnali di obbligo",
+  "number": "20321",
+  "text": "Il segnale raffigurato consente di circolare entro i limiti massimi di velocità vigenti per quella strada",
+  "correct_answer": true,
+  "image": "9b53ff27b5ae803adc33fb8886e036e0.jpeg",
+  "image_description": "Fine del limite di velocità. Indica la fine del divieto o dell'obbligo precedentemente segnalato. Nel caso specifico, segnala la fine del limite di velocità di 30 km/h.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con sfondo blu e un numero '30' bianco al centro. Una barra rossa diagonale attraversa il numero da sinistra a destra. Questo è il segnale di 'Fine del limite di velocità'.",
+    "name": "Fine del limite di velocità",
+    "description": "Indica la fine del divieto o dell'obbligo precedentemente segnalato. Nel caso specifico, segnala la fine del limite di velocità di 30 km/h."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fine di prescrizione",
+      "Segnali di indicazione"
+    ],
+    "exact_keywords": [
+      "fine del divieto",
+      "fine dell'obbligo",
+      "segnali di indicazione",
+      "limite di velocità"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un obbligo o divieto",
+      "segnali di fine prescrizione velocità"
+    ],
+    "rule_explanation": "Il segnale di 'fine del limite di velocità' indica la cessazione del limite di velocità precedentemente imposto, non consente di circolare entro i limiti massimi vigenti."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23638",
+  "text": "Prima di iniziare a guidare un veicolo a motore bisogna regolare il contachilometri parziale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Avviamento del veicolo",
+      "Obblighi del conducente prima di iniziare la marcia"
+    ],
+    "exact_keywords": [
+      "regolare il contachilometri parziale",
+      "avviare la marcia",
+      "veicolo a motore"
+    ],
+    "vector_search_queries": [
+      "obblighi preliminari alla guida del veicolo",
+      "funzione del contachilometri parziale"
+    ],
+    "rule_explanation": "Non esiste alcun obbligo normativo di regolare il contachilometri parziale prima di iniziare a guidare un veicolo a motore."
+  }
+}

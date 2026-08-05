@@ -1,0 +1,29 @@
+{
+  "question_id": 4574,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24166",
+  "text": "Durante la marcia, l'uso delle luci di posizione è sempre consentito in alternativa a quelle anabbaglianti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso delle luci del veicolo",
+      "Luci di posizione",
+      "Luci anabbaglianti"
+    ],
+    "exact_keywords": [
+      "luci di posizione",
+      "luci anabbaglianti",
+      "marcia",
+      "sostituzione"
+    ],
+    "vector_search_queries": [
+      "differenza tra luci di posizione e luci anabbaglianti",
+      "quando usare le luci di posizione e le luci anabbaglianti",
+      "uso alternativo luci di posizione e anabbaglianti in marcia"
+    ],
+    "rule_explanation": "Le luci di posizione non possono sostituire quelle anabbaglianti durante la marcia, ma servono a segnalare la presenza del veicolo in sosta o in condizioni di scarsa visibilità."
+  }
+}

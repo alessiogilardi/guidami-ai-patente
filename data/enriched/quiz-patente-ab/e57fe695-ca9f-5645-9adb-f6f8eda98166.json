@@ -1,0 +1,27 @@
+{
+  "question_id": 4026,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18582",
+  "text": "Le macchine agricole possono essere semoventi o trainate",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione dei veicoli",
+      "Macchine agricole"
+    ],
+    "exact_keywords": [
+      "macchine agricole",
+      "semoventi",
+      "trainate",
+      "definizione di macchina agricola"
+    ],
+    "vector_search_queries": [
+      "distinzione macchine agricole semoventi e trainate",
+      "definizione veicoli stradali macchine agricole"
+    ],
+    "rule_explanation": "Le macchine agricole, ai fini del Codice della Strada, si distinguono in semoventi (dotate di motore proprio) e trainate (rimorchiate da un'altra macchina)."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4351,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22026",
+  "text": "Il segnale raffigurato vieta la sosta dalle ore 7.30 alle ore 19.00",
+  "correct_answer": true,
+  "image": "06ecf1b2c0a988d5526803f59c6579d3.jpeg",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo di orario. Il segnale vieta la sosta, ma solo nell'intervallo orario indicato dal pannello integrativo (dalle 7:30 alle 19:00). Al di fuori di tale orario, la sosta è permessa se non vi sono altri divieti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di sosta, rappresentato da un disco rosso con bordo rosso e sfondo blu, barrato da una singola barra rossa diagonale. Sotto il segnale principale, è presente un pannello integrativo rettangolare bianco con la dicitura '7,30-19,00' in nero, che indica un orario. L'insieme dei due elementi costituisce un segnale stradale completo.",
+    "name": "Segnale di divieto di sosta con pannello integrativo di orario",
+    "description": "Il segnale vieta la sosta, ma solo nell'intervallo orario indicato dal pannello integrativo (dalle 7:30 alle 19:00). Al di fuori di tale orario, la sosta è permessa se non vi sono altri divieti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di prescrizione",
+      "Divieto di sosta",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "pannello integrativo",
+      "orario",
+      "periodo di validità"
+    ],
+    "vector_search_queries": [
+      "efficacia del divieto di sosta con pannello integrativo di orario",
+      "limitazione temporale del divieto di sosta"
+    ],
+    "rule_explanation": "Il pannello integrativo di orario, se abbinato a un segnale di divieto, ne limita l'efficacia all'intervallo temporale indicato."
+  }
+}

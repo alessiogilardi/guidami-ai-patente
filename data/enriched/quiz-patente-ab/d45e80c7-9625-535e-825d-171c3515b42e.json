@@ -1,0 +1,33 @@
+{
+  "question_id": 4357,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22094",
+  "text": "Il segnale raffigurato indica il punto dove termina il divieto di fermata",
+  "correct_answer": true,
+  "image": "5df83d6b6dbcb0276f61047f40c26f78.jpeg",
+  "image_description": "Segnale di divieto di sosta con pannello integrativo di direzione. Il segnale di divieto di sosta con il pannello integrativo indica che il divieto di sosta vige nel tratto di strada successivo, indicato dalla freccia verso destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di sosta, rappresentato da un cerchio rosso con una croce blu all'interno, sormontato da un pannello rettangolare bianco con una freccia nera rivolta verso destra. Il segnale principale è il segnale di divieto di sosta (divieto di fermata e di sosta). Il pannello integrativo indica la direzione in cui si applica il divieto. In questo caso, la freccia indica che il divieto di sosta si applica nel tratto di strada successivo, alla destra del segnale.",
+    "name": "Segnale di divieto di sosta con pannello integrativo di direzione",
+    "description": "Il segnale di divieto di sosta con il pannello integrativo indica che il divieto di sosta vige nel tratto di strada successivo, indicato dalla freccia verso destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fine di un divieto di sosta",
+      "Segnaletica stradale verticale",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "termine del divieto",
+      "segnali integrativi",
+      "direzione del divieto"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine di un divieto di sosta",
+      "pannelli integrativi che modificano la validità spaziale dei divieti di sosta",
+      "interpretazione segnale divieto di sosta con pannello di direzione"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta, integrato con un pannello indicante la direzione, segnala l'inizio del divieto nel tratto successivo. La sua fine è indicata da un segnale specifico o dalla fine della prescrizione."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4697,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25243",
+  "text": "Se in uno pneumatico del tipo \"tubeless\" si è conficcato un chiodo, è possibile, con le necessarie cautele, continuare a guidare, fermandosi quanto prima per riparare il danno",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato degli pneumatici",
+      "Manutenzione del veicolo",
+      "Guida sicura"
+    ],
+    "exact_keywords": [
+      "pneumatico tubeless",
+      "chiodo conficcato",
+      "riparazione danno",
+      "continuare a guidare"
+    ],
+    "vector_search_queries": [
+      "gestione foratura pneumatico tubeless con chiodo",
+      "proseguire marcia con pneumatico danneggiato da chiodo"
+    ],
+    "rule_explanation": "In caso di foratura di uno pneumatico tubeless con un chiodo, è consentito proseguire la marcia con cautela fino al luogo di riparazione più vicino, evitando brusche manovre."
+  }
+}

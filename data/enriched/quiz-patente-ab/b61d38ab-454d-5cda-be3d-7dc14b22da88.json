@@ -1,0 +1,31 @@
+{
+  "question_id": 4298,
+  "topic": "Segnali di indicazione",
+  "number": "21549",
+  "text": "Il segnale raffigurato indica che il prossimo svincolo autostradale si trova a 25 chilometri",
+  "correct_answer": false,
+  "image": "4407c6de338d7872782c9fce7ad59812.jpeg",
+  "image_description": "Segnale di numero di autostrada. Il segnale indica il numero dell'autostrada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma ottagonale con sfondo verde e bordo bianco. Al centro del segnale, in bianco, è riportata la sigla \"A 25\". Questo tipo di segnale viene utilizzato per identificare il numero di un'autostrada.",
+    "name": "Segnale di numero di autostrada",
+    "description": "Il segnale indica il numero dell'autostrada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione autostradali",
+      "Identificazione numerica delle autostrade"
+    ],
+    "exact_keywords": [
+      "segnale autostradale",
+      "numero di autostrada",
+      "distanza svincolo",
+      "chilometri"
+    ],
+    "vector_search_queries": [
+      "segnali autostradali indicanti numero di autostrada",
+      "segnali che indicano la distanza del prossimo svincolo autostradale"
+    ],
+    "rule_explanation": "Il segnale di numero autostradale indica la numerazione dell'autostrada, non la distanza del prossimo svincolo. La distanza è indicata da altri segnali specifici."
+  }
+}

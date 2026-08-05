@@ -1,0 +1,27 @@
+{
+  "question_id": 4011,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18427",
+  "text": "Nelle aree pedonali possono transitare le biciclette",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree pedonali",
+      "Circolazione ciclistica"
+    ],
+    "exact_keywords": [
+      "area pedonale",
+      "biciclette",
+      "transito",
+      "regolamentazione"
+    ],
+    "vector_search_queries": [
+      "circolazione biciclette in aree pedonali",
+      "regolamentazione transito ciclistico aree pedonali"
+    ],
+    "rule_explanation": "Nelle aree pedonali è generalmente vietato il transito ai veicoli, ma possono essere autorizzate eccezioni, come la circolazione delle biciclette, secondo la specifica segnaletica."
+  }
+}

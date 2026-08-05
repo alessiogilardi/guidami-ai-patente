@@ -1,0 +1,27 @@
+{
+  "question_id": 4038,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18708",
+  "text": "Sono consentite le gare di velocità, anche se non autorizzate, purché partecipino solo due autovetture",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di gare di velocità",
+      "Uso della strada e sicurezza pubblica"
+    ],
+    "exact_keywords": [
+      "gare di velocità",
+      "autovetture",
+      "strade pubbliche",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di gare di velocità su strade pubbliche",
+      "sanzioni per competizioni non autorizzate tra veicoli a motore"
+    ],
+    "rule_explanation": "È vietato organizzare o partecipare a gare di velocità su strade pubbliche, indipendentemente dal numero di veicoli coinvolti o dalla loro tipologia."
+  }
+}

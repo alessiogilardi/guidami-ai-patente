@@ -1,0 +1,27 @@
+{
+  "question_id": 4509,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23633",
+  "text": "Prima di iniziare a guidare un veicolo, bisogna essere certi del perfetto stato di efficienza del mezzo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di efficienza del veicolo",
+      "Obblighi del conducente prima di iniziare la marcia"
+    ],
+    "exact_keywords": [
+      "veicolo",
+      "stato di efficienza",
+      "conducente",
+      "partenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di verifica efficienza veicolo prima della partenza",
+      "sicurezza alla guida e stato di efficienza del mezzo"
+    ],
+    "rule_explanation": "Prima di iniziare a guidare, il conducente ha l'obbligo di assicurarsi che il veicolo sia in perfette condizioni di efficienza per garantire la sicurezza."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4583,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24233",
+  "text": "Si devono usare gli indicatori di direzione destri per segnalare che si sta per frenare bruscamente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovre",
+      "Uso dei dispositivi di segnalazione visiva"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "frenata brusca",
+      "segnalazione di arresto",
+      "dispositivi di segnalazione visiva"
+    ],
+    "vector_search_queries": [
+      "segnalazione di frenata brusca con indicatori di direzione",
+      "uso corretto degli indicatori di direzione per manovre di arresto"
+    ],
+    "rule_explanation": "Gli indicatori di direzione servono a segnalare l'intenzione di cambiare direzione di marcia o corsia, non una frenata brusca. Per quest'ultima si usano le luci dei freni."
+  }
+}

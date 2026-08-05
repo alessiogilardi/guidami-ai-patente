@@ -1,0 +1,28 @@
+{
+  "question_id": 4526,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23777",
+  "text": "Nel caso in cui la sosta è espressamente vietata da una norma del codice stradale, l'osservanza di tale divieto non è condizionata dalla presenza di cartelli segnaletici",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta",
+      "Segnaletica stradale",
+      "Gerarchia delle norme di circolazione"
+    ],
+    "exact_keywords": [
+      "sosta vietata",
+      "segnali di divieto",
+      "norme del codice stradale",
+      "cartelli segnaletici"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta imposto da norma del CdS senza necessità di segnaletica",
+      "prevalenza delle norme generali sui divieti di sosta rispetto alla segnaletica verticale"
+    ],
+    "rule_explanation": "Il divieto di sosta, quando imposto da una norma del Codice della Strada, prevale sempre sulla segnaletica verticale, rendendo superflua la presenza di cartelli."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4622,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24688",
+  "text": "Con la patente di guida scaduta di validità è possibile comunque continuare a guidare per un tempo massimo di tre giorni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Validità della patente di guida",
+      "Obbligo di possesso di patente valida",
+      "Sanzioni per guida con patente scaduta"
+    ],
+    "exact_keywords": [
+      "patente di guida scaduta",
+      "validità della patente",
+      "sanzioni amministrative",
+      "forze di polizia"
+    ],
+    "vector_search_queries": [
+      "conseguenze della guida con patente di guida scaduta",
+      "sanzioni per violazione validità patente"
+    ],
+    "rule_explanation": "La guida con patente di guida scaduta di validità è vietata e soggetta a sanzioni amministrative pecuniarie, senza alcun periodo di tolleranza."
+  }
+}

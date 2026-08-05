@@ -1,0 +1,31 @@
+{
+  "question_id": 4244,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21012",
+  "text": "La luce circolare gialla lampeggiante (tipo A di figura) invita a procedere con particolare prudenza",
+  "correct_answer": true,
+  "image": "72f9b60b915b838de4c89ca613cfd8f8.jpeg",
+  "image_description": "Semaforo giallo lampeggiante, attraversamento pedonale, corsia ciclabile. La luce gialla circolare lampeggiante invita a procedere con particolare prudenza. Le luci B e C, con le figure stilizzate di un pedone e di una bicicletta, indicano rispettivamente un attraversamento pedonale e una corsia riservata ai ciclisti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra tre simboli luminosi distinti, etichettati come A, B e C. Il simbolo A è una luce circolare gialla lampeggiante. Il simbolo B è un disco nero con la figura stilizzata di un pedone in giallo. Il simbolo C è un disco nero con la figura stilizzata di una bicicletta in giallo. Questi simboli rappresentano diverse segnalazioni semaforiche o di corsia.",
+    "name": "Semaforo giallo lampeggiante, attraversamento pedonale, corsia ciclabile",
+    "description": "La luce gialla circolare lampeggiante invita a procedere con particolare prudenza. Le luci B e C, con le figure stilizzate di un pedone e di una bicicletta, indicano rispettivamente un attraversamento pedonale e una corsia riservata ai ciclisti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale luminosa",
+      "Disposizioni degli agenti del traffico"
+    ],
+    "exact_keywords": [
+      "luce gialla lampeggiante",
+      "procedere con prudenza",
+      "segnalazioni semaforiche",
+      "incrocio"
+    ],
+    "vector_search_queries": [
+      "significato luce gialla lampeggiante semaforo",
+      "obbligo di prudenza con luce gialla lampeggiante"
+    ],
+    "rule_explanation": "La luce gialla circolare lampeggiante, da sola o alternata con luce rossa, impone al conducente di procedere con prudenza, moderando la velocità e prestando attenzione a eventuali altri segnali o veicoli."
+  }
+}

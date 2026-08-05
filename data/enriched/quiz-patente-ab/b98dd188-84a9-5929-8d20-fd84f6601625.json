@@ -1,0 +1,32 @@
+{
+  "question_id": 4355,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22079",
+  "text": "Il segnale raffigurato evidenzia il punto in cui finisce l'area destinata al parcheggio",
+  "correct_answer": false,
+  "image": "8de98a2e232b482a4d93bc29ef3486d0.jpeg",
+  "image_description": "Parcheggio con pannello integrativo di direzione sinistra. Il segnale indica la presenza di un parcheggio e il pannello integrativo con la freccia indica che il parcheggio si trova alla sinistra del segnale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di parcheggio (la lettera 'P' bianca su sfondo blu) sovrastante un pannello integrativo rettangolare bianco con una freccia nera che punta verso sinistra. L'insieme dei due elementi costituisce un unico segnale stradale.",
+    "name": "Parcheggio con pannello integrativo di direzione sinistra",
+    "description": "Il segnale indica la presenza di un parcheggio e il pannello integrativo con la freccia indica che il parcheggio si trova alla sinistra del segnale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Parcheggio",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "segnale di parcheggio",
+      "pannello integrativo",
+      "direzione",
+      "freccia"
+    ],
+    "vector_search_queries": [
+      "funzione pannello integrativo con freccia per parcheggio",
+      "segnaletica parcheggio e pannelli di direzione"
+    ],
+    "rule_explanation": "Il segnale di parcheggio indica la presenza di un parcheggio, mentre i pannelli integrativi con freccia ne specificano la direzione o la distanza, non la fine dell'area."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4061,
+  "topic": "Segnali di pericolo",
+  "number": "18978",
+  "text": "Il segnale raffigurato può essere integrato con un pannello indicante TORNANTI",
+  "correct_answer": true,
+  "image": "a49a8cac5f2b927e3ec530b85850b619.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che raffigura una doppia curva, con la prima curva rivolta verso sinistra e la seconda verso destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di curve pericolose",
+      "Integrazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "doppia curva",
+      "pannello integrativo",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "integrazione segnali di pericolo con pannelli complementari",
+      "pannelli integrativi per segnali di curve pericolose",
+      "segnali di pericolo che preannunciano tornanti"
+    ],
+    "rule_explanation": "I segnali di pericolo, come quello di doppia curva, possono essere integrati da pannelli complementari che forniscono ulteriori dettagli sulla natura del pericolo, come la sequenza o la tipologia delle curve."
+  }
+}

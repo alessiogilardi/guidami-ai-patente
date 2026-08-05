@@ -1,0 +1,31 @@
+{
+  "question_id": 4105,
+  "topic": "Segnali di divieto",
+  "number": "19517",
+  "text": "Il segnale raffigurato può avere validità limitata nel tempo, indicata in un pannello integrativo",
+  "correct_answer": true,
+  "image": "fbde6a78154edc681ee7715bad203441.jpeg",
+  "image_description": "Segnale di divieto di transito. Il segnale vieta il transito a tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Questo è il segnale di divieto di transito, che indica che il transito è vietato a tutti i veicoli.",
+    "name": "Segnale di divieto di transito",
+    "description": "Il segnale vieta il transito a tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto d'accesso",
+      "Validità temporale dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale di divieto d'accesso",
+      "pannello integrativo",
+      "validità oraria",
+      "limitazione temporale"
+    ],
+    "vector_search_queries": [
+      "validità temporale segnale di divieto d'accesso con pannello integrativo",
+      "limitazione oraria efficacia segnali stradali di divieto"
+    ],
+    "rule_explanation": "I segnali di divieto, come il divieto d'accesso, possono avere la loro validità limitata nel tempo tramite pannelli integrativi che ne specificano l'orario di vigenza."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "question_id": 4064,
+  "topic": "Segnali di pericolo",
+  "number": "19020",
+  "text": "In presenza del segnale raffigurato è opportuno fare particolare attenzione ai veicoli provenienti dal senso opposto",
+  "correct_answer": true,
+  "image": "f3d65cdd3174f51dcbbc55dcae2aec01.jpeg",
+  "image_description": "Segnale di doppia curva pericolosa, la prima a sinistra. Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta una doppia curva, con la prima curva a sinistra e la seconda a destra. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di doppia curva pericolosa, la prima a sinistra",
+    "description": "Il segnale preannuncia una doppia curva pericolosa, la prima a sinistra. Impone di regolare la velocità in relazione alla visibilità e al raggio delle curve."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di curve pericolose",
+      "Regolazione della velocità"
+    ],
+    "exact_keywords": [
+      "doppia curva",
+      "preavviso",
+      "velocità",
+      "visibilità",
+      "raggio"
+    ],
+    "vector_search_queries": [
+      "preavviso di doppia curva pericolosa",
+      "adeguamento della velocità in presenza di curve pericolose",
+      "segnali di pericolo per curve e visibilità"
+    ],
+    "rule_explanation": "Il segnale di doppia curva pericolosa preannuncia un tratto stradale con due curve consecutive, la prima a sinistra, imponendo di moderare la velocità in base a visibilità e raggio."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4616,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24587",
+  "text": "La patente di guida viene immediatamente ritirata, durante la circolazione, quando il conducente circola senza avere con sé la carta di circolazione del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente durante la circolazione",
+      "Documenti di circolazione del veicolo",
+      "Sanzioni amministrative per violazioni del CdS"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "carta di circolazione",
+      "ritiro patente",
+      "sanzione amministrativa",
+      "violazione"
+    ],
+    "vector_search_queries": [
+      "sanzioni per mancata esibizione della carta di circolazione",
+      "conseguenze della circolazione senza carta di circolazione",
+      "ritiro patente per assenza documenti di circolazione"
+    ],
+    "rule_explanation": "La mancata esibizione della carta di circolazione durante la circolazione comporta una sanzione amministrativa, non il ritiro immediato della patente di guida."
+  }
+}

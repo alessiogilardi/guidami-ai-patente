@@ -1,0 +1,29 @@
+{
+  "question_id": 4444,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22991",
+  "text": "Il conducente che intende fermarsi sul margine destro della carreggiata deve tenere conto della posizione, distanza, direzione degli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento del veicolo sulla carreggiata",
+      "Obblighi del conducente in caso di fermata",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "margine destro della carreggiata",
+      "posizione",
+      "distanza",
+      "direzione"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in caso di fermata sul margine destro",
+      "condotta del conducente per la sicurezza durante la fermata del veicolo"
+    ],
+    "rule_explanation": "Il conducente che si ferma sul margine destro deve considerare la posizione, la distanza e la direzione degli altri utenti per garantire la sicurezza della circolazione."
+  }
+}

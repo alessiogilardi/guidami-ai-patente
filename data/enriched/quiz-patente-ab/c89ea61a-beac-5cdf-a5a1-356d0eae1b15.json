@@ -1,0 +1,28 @@
+{
+  "question_id": 4434,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22911",
+  "text": "Se ad un incrocio giungono contemporaneamente da strade diverse due veicoli, l'obbligo di dare la precedenza spetta, di norma, al conducente del veicolo che arriva da sinistra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza agli incroci",
+      "Obbligo di dare la precedenza a destra"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "dare la precedenza",
+      "veicolo",
+      "strade diverse",
+      "sinistra"
+    ],
+    "vector_search_queries": [
+      "precedenza veicoli incrocio da destra",
+      "regola generale di precedenza agli incroci stradali"
+    ],
+    "rule_explanation": "Agli incroci, se due veicoli giungono contemporaneamente da strade diverse, ha la precedenza il veicolo che proviene da destra."
+  }
+}

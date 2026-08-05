@@ -1,0 +1,34 @@
+{
+  "question_id": 4353,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22052",
+  "text": "Il segnale raffigurato vieta il transito agli autocarri di massa complessiva superiore a 3,5 t. nell'orario indicato, dei giorni lavorativi",
+  "correct_answer": true,
+  "image": "bda430f34474e217279e28b2b9c76238.jpeg",
+  "image_description": "Divieto di transito agli autocarri con pannello integrativo di orario e giorni lavorativi. Il segnale vieta il transito ai veicoli indicati dal pittogramma (autocarri) nei giorni lavorativi, dalle ore 8:00 alle ore 20:00.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di transito raffigurante un autocarro, con un pannello integrativo sottostante. Il pannello integrativo indica un orario (8:00 - 20:00) e due simboli che rappresentano un martello e uno scalpello, comunemente associati ai giorni lavorativi. Il segnale principale è circolare con bordo rosso e sfondo bianco, con un'immagine nera di un autocarro al centro. Il pannello integrativo è rettangolare, bianco con bordo nero, contenente i simboli e l'orario.",
+    "name": "Divieto di transito agli autocarri con pannello integrativo di orario e giorni lavorativi",
+    "description": "Il segnale vieta il transito ai veicoli indicati dal pittogramma (autocarri) nei giorni lavorativi, dalle ore 8:00 alle ore 20:00."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di divieto",
+      "Pannelli integrativi",
+      "Limitazioni al transito per massa e orario"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "autocarri",
+      "massa complessiva",
+      "giorni lavorativi",
+      "orario indicato"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto con pannelli integrativi di orario e giorni lavorativi",
+      "limitazioni al transito per autocarri in base a massa e orario specifico",
+      "interpretazione segnale divieto transito autocarri con pannello giorni lavorativi"
+    ],
+    "rule_explanation": "Il segnale di divieto, integrato con pannello indicante massa e giorni/orari lavorativi, vieta il transito ai veicoli specificati (autocarri > 3,5 t) nei giorni e orari indicati."
+  }
+}

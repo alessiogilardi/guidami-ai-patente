@@ -1,0 +1,33 @@
+{
+  "question_id": 4293,
+  "topic": "Segnali di indicazione",
+  "number": "21499",
+  "text": "Il segnale raffigurato indica che la strada è chiusa per l'intenso traffico",
+  "correct_answer": false,
+  "image": "231fe76e20dc7826420df8202ae1ec87.jpeg",
+  "image_description": "Inizio Zona a Traffico Limitato (ZTL). Il segnale indica l'inizio di una Zona a Traffico Limitato (ZTL). All'interno della zona, il transito è vietato a tutti i veicoli non autorizzati. Sono ammessi i veicoli al servizio di persone invalide, i veicoli di polizia, ambulanza e vigili del fuoco per emergenze, e i veicoli per la raccolta rifiuti negli orari specificati (14:30-16:30 e 20:30-09:30).",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale composto da due pannelli. Il pannello superiore ha sfondo bianco con bordi neri e riporta la dicitura \"zona traffico limitato\" in nero. Sotto questa dicitura, è presente un segnale di divieto di transito (cerchio rosso con barra orizzontale rossa su sfondo bianco). Il pannello inferiore, anch'esso con sfondo bianco e bordi neri, specifica le categorie di veicoli ammessi e le eccezioni. Sotto la dicitura \"Divieto di transito:\", sono indicate le limitazioni per i veicoli non autorizzati. Sotto la dicitura \"Eccezioni:\", sono presenti tre riquadri: il primo mostra il simbolo internazionale di accessibilità (sedia a rotelle) con la dicitura \"veicoli autorizzati a servizio di persone invalide\"; il secondo mostra un vigile con un'auto della polizia e un'ambulanza, con la dicitura \"veicoli di polizia, ambulanza, vegl dei fuoc (e auto in_servizio_urgente d'emergenza)\"; il terzo mostra un carrello della spazzatura con la dicitura degli orari di accesso per la raccolta rifiuti: \"14:30 - 16:30\" e \"20:30 - 09:30\".",
+    "name": "Inizio Zona a Traffico Limitato (ZTL)",
+    "description": "Il segnale indica l'inizio di una Zona a Traffico Limitato (ZTL). All'interno della zona, il transito è vietato a tutti i veicoli non autorizzati. Sono ammessi i veicoli al servizio di persone invalide, i veicoli di polizia, ambulanza e vigili del fuoco per emergenze, e i veicoli per la raccolta rifiuti negli orari specificati (14:30-16:30 e 20:30-09:30)."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Zone a Traffico Limitato (ZTL)",
+      "Divieto di transito"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "Zona a Traffico Limitato",
+      "divieto di transito",
+      "veicoli autorizzati"
+    ],
+    "vector_search_queries": [
+      "inizio Zona a Traffico Limitato (ZTL) segnale",
+      "regolamentazione transito in ZTL",
+      "segnali che indicano divieto di transito specifico"
+    ],
+    "rule_explanation": "Il segnale raffigurato indica l'inizio di una Zona a Traffico Limitato (ZTL), non una chiusura per traffico intenso. All'interno della ZTL, il transito è vietato ai non autorizzati."
+  }
+}

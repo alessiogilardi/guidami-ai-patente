@@ -1,0 +1,29 @@
+{
+  "question_id": 4710,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25379",
+  "text": "In un veicolo a motore, gli ammortizzatori scarichi peggiorano la tenuta di strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stabilità del veicolo",
+      "Manutenzione del veicolo",
+      "Tenuta di strada"
+    ],
+    "exact_keywords": [
+      "ammortizzatori",
+      "tenuta di strada",
+      "stabilità",
+      "veicolo a motore"
+    ],
+    "vector_search_queries": [
+      "funzione degli ammortizzatori sulla tenuta di strada",
+      "impatto di ammortizzatori scarichi sulla stabilità del veicolo",
+      "sicurezza stradale e efficienza degli ammortizzatori"
+    ],
+    "rule_explanation": "Gli ammortizzatori sono componenti essenziali per la stabilità e la tenuta di strada del veicolo; ammortizzatori scarichi compromettono tali caratteristiche, peggiorando la sicurezza."
+  }
+}

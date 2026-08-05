@@ -1,0 +1,27 @@
+{
+  "question_id": 4388,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22464",
+  "text": "Quando il traffico risulta canalizzato, è possibile che nella corsia di destra si circoli ad una velocità superiore a quella di sinistra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in base al traffico",
+      "Principio di canalizzazione del traffico"
+    ],
+    "exact_keywords": [
+      "velocità di circolazione",
+      "corsia di destra",
+      "corsia di sinistra",
+      "traffico canalizzato"
+    ],
+    "vector_search_queries": [
+      "velocità corsia destra rispetto a corsia sinistra traffico canalizzato",
+      "sorpasso tra corsie con traffico canalizzato"
+    ],
+    "rule_explanation": "In caso di traffico canalizzato, la corsia di destra può essere utilizzata per una velocità superiore a quella della corsia di sinistra, purché ciò non crei pericolo o intralcio."
+  }
+}

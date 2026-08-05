@@ -1,0 +1,29 @@
+{
+  "question_id": 4012,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18443",
+  "text": "La strada è normalmente riservata alla circolazione dei soli veicoli e animali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso della strada",
+      "Definizione di strada pubblica",
+      "Utenti della strada"
+    ],
+    "exact_keywords": [
+      "strada",
+      "circolazione",
+      "veicoli",
+      "pedoni",
+      "animali"
+    ],
+    "vector_search_queries": [
+      "definizione giuridica di strada pubblica e sue destinazioni d'uso",
+      "diritti di transito e accesso degli utenti sulla strada pubblica"
+    ],
+    "rule_explanation": "La strada è destinata alla circolazione di tutti gli utenti, inclusi pedoni, animali e veicoli, non solo a questi ultimi."
+  }
+}

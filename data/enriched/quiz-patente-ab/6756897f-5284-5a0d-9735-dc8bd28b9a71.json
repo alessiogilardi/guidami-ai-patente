@@ -1,0 +1,30 @@
+{
+  "question_id": 4700,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25267",
+  "text": "In caso di frenata di emergenza, con entrata in azione dell'ABS, bisogna continuare a premere con forza il pedale, senza allentare la pressione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema antibloccaggio (ABS)",
+      "Frenata di emergenza",
+      "Comportamento del conducente con ABS"
+    ],
+    "exact_keywords": [
+      "ABS",
+      "frenata di emergenza",
+      "pedale del freno",
+      "pressione",
+      "bloccaggio delle ruote"
+    ],
+    "vector_search_queries": [
+      "funzionamento ABS frenata emergenza",
+      "mantenere pressione pedale freno con ABS",
+      "evitare bloccaggio ruote con ABS"
+    ],
+    "rule_explanation": "In caso di frenata d'emergenza con ABS, è necessario mantenere una forte pressione costante sul pedale del freno per permettere al sistema di modulare la frenata ed evitare il bloccaggio delle ruote."
+  }
+}

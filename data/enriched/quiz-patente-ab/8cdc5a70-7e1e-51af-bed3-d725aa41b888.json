@@ -1,0 +1,31 @@
+{
+  "question_id": 4332,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21850",
+  "text": "Il segnale raffigurato può essere integrato da pannello che indica la lunghezza del cantiere",
+  "correct_answer": true,
+  "image": "7ac609bcedd29bef7a7c883f0abbcf0c.jpeg",
+  "image_description": "Segnale di lavori in corso. Il segnale preavvisa la presenza di lavori in corso sulla carreggiata o nelle immediate vicinanze. Può essere integrato da pannelli che ne specificano la durata o la natura.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e fondo giallo. Al centro del segnale è raffigurata la silhouette di una persona china che sta scavando con una pala, con un cumulo di terra accanto. Questo è il segnale di \"lavori in corso\". Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di lavori in corso",
+    "description": "Il segnale preavvisa la presenza di lavori in corso sulla carreggiata o nelle immediate vicinanze. Può essere integrato da pannelli che ne specificano la durata o la natura."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali temporanei e di cantiere",
+      "Segnali complementari"
+    ],
+    "exact_keywords": [
+      "lavori in corso",
+      "pannello integrativo",
+      "lunghezza del cantiere",
+      "segnali complementari"
+    ],
+    "vector_search_queries": [
+      "pannelli integrativi per segnali di cantiere",
+      "segnalazione di lavori in corso e pannelli di lunghezza"
+    ],
+    "rule_explanation": "I segnali di cantiere, come il segnale di lavori in corso, possono essere integrati da pannelli complementari che forniscono informazioni aggiuntive sulla durata, la natura o l'estensione del cantiere stesso."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "question_id": 4553,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23978",
+  "text": "Il conducente di un'autovettura può superare a velocità sostenuta, pur rispettando i limiti, un ciclomotorista nonostante la scarsa distanza di sicurezza laterale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza laterale",
+      "Sorpasso di veicoli a due ruote",
+      "Comportamento prudente del conducente"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "distanza laterale di sicurezza",
+      "ciclomotore",
+      "autovettura",
+      "velocità adeguata"
+    ],
+    "vector_search_queries": [
+      "distanza laterale di sicurezza nel sorpasso di ciclomotori",
+      "obblighi del conducente nel sorpassare un ciclomotore in autostrada",
+      "condotta di guida sicura nel superamento di veicoli a due ruote"
+    ],
+    "rule_explanation": "Il sorpasso deve garantire una distanza laterale di sicurezza adeguata, anche a velocità moderata, per non mettere in pericolo il ciclomotorista."
+  }
+}

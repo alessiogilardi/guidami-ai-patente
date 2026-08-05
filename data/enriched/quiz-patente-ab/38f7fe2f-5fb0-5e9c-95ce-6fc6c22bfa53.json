@@ -1,0 +1,28 @@
+{
+  "question_id": 4042,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18756",
+  "text": "Bisogna usare maggiore prudenza nei confronti dei conducenti di veicoli adattati per persone diversamente abili",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Doveri di prudenza e diligenza del conducente"
+    ],
+    "exact_keywords": [
+      "veicoli adattati",
+      "persone diversamente abili",
+      "maggiore prudenza",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza verso veicoli per disabili",
+      "tutela utenti vulnerabili della strada",
+      "conducenti di veicoli adattati diversamente abili"
+    ],
+    "rule_explanation": "È necessario usare particolare prudenza verso i conducenti di veicoli adattati per persone con disabilità, in quanto utenti vulnerabili della strada."
+  }
+}

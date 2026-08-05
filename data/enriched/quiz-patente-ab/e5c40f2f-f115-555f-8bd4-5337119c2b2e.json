@@ -1,0 +1,30 @@
+{
+  "question_id": 4626,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24731",
+  "text": "Su strade coperte di neve occorre aumentare la distanza di sicurezza",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Condizioni avverse della strada",
+      "Prevenzione degli incidenti"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni della strada",
+      "neve",
+      "ghiaccio",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "aumento distanza di sicurezza su strade innevate",
+      "adeguamento distanza di sicurezza in base alle condizioni del fondo stradale",
+      "comportamento di guida su strade con neve o ghiaccio"
+    ],
+    "rule_explanation": "Su strade innevate o ghiacciate, la distanza di sicurezza deve essere aumentata per compensare lo spazio di frenata maggiore e garantire la stabilità del veicolo."
+  }
+}

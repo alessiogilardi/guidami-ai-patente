@@ -1,0 +1,28 @@
+{
+  "question_id": 4712,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25410",
+  "text": "L'impianto di scarico ha lo scopo di ridurre l'inquinamento atmosferico causato dai gas di scarico del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema di scarico dei gas di combustione",
+      "Controllo delle emissioni inquinanti"
+    ],
+    "exact_keywords": [
+      "impianto di scarico",
+      "gas di scarico",
+      "inquinamento atmosferico",
+      "emissioni inquinanti"
+    ],
+    "vector_search_queries": [
+      "funzione impianto di scarico veicolo",
+      "riduzione inquinamento gas di scarico",
+      "normativa emissioni inquinanti auto"
+    ],
+    "rule_explanation": "L'impianto di scarico ha la funzione di convogliare i gas prodotti dalla combustione all'esterno del veicolo, riducendo al contempo l'inquinamento atmosferico e la rumorosità."
+  }
+}

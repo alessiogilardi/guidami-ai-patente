@@ -1,0 +1,28 @@
+{
+  "question_id": 4517,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23708",
+  "text": "Durante la sosta il conducente che lascia il veicolo su strada in salita, deve avere cura di inserire la quarta marcia",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Arresto, sosta e fermata",
+      "Manovre di parcheggio in pendenza"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "veicolo in sosta",
+      "strada in pendenza",
+      "freno di stazionamento",
+      "marcia inserita"
+    ],
+    "vector_search_queries": [
+      "parcheggio in salita con freno di stazionamento e marcia inserita",
+      "disposizioni per la sosta del veicolo su strada in pendenza"
+    ],
+    "rule_explanation": "In caso di sosta su strada in salita, il conducente deve tirare il freno di stazionamento e inserire la prima marcia (o la retromarcia in discesa), non la quarta."
+  }
+}

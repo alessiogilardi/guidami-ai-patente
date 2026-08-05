@@ -1,0 +1,33 @@
+{
+  "question_id": 4426,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22831",
+  "text": "I veicoli che percorrono una curva, su strada a due corsie per ogni senso di marcia, come in figura, possono marciare oltrepassando la striscia discontinua se la strada è libera",
+  "correct_answer": false,
+  "image": "637129125cd2305679f68e11751ad483.jpeg",
+  "image_description": "Carreggiata a doppio senso di circolazione con quattro corsie. La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra una porzione di carreggiata stradale. Si osservano due carreggiate separate da una linea bianca continua. Ogni carreggiata è a sua volta suddivisa in due corsie da strisce bianche discontinue. Questo schema indica una strada con due corsie per senso di marcia, per un totale di quattro corsie. La linea continua centrale separa i due sensi di marcia. Le strisce discontinue all'interno di ciascuna carreggiata indicano la possibilità di superamento o cambio di corsia all'interno dello stesso senso di marcia. Pertanto, la scena rappresenta una carreggiata a doppio senso di circolazione con quattro corsie totali.",
+    "name": "Carreggiata a doppio senso di circolazione con quattro corsie",
+    "description": "La carreggiata è divisa in due corsie per ogni senso di marcia, separate da una linea continua al centro. Le corsie sono delimitate da strisce bianche discontinue. Si tratta di una carreggiata a doppio senso di circolazione con quattro corsie totali, due per ogni direzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento dei veicoli sulla carreggiata",
+      "Superamento della linea di corsia",
+      "Manovre in curva"
+    ],
+    "exact_keywords": [
+      "striscia discontinua",
+      "strada a due corsie per ogni senso di marcia",
+      "oltrepassare la striscia",
+      "sorpasso"
+    ],
+    "vector_search_queries": [
+      "divieto di superamento linea di mezzeria in curva",
+      "posizionamento dei veicoli su carreggiate a doppio senso di marcia con più corsie per senso di marcia",
+      "manovra di sorpasso in curva su strade a doppio senso di circolazione"
+    ],
+    "rule_explanation": "Il superamento della linea di mezzeria, anche se discontinua, è vietato in curva per garantire la sicurezza della circolazione e prevenire collisioni frontali."
+  }
+}

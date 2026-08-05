@@ -1,0 +1,27 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23525",
+  "text": "Il sorpasso è consentito in caso di scarsa visibilità purché si lampeggi durante la manovra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sorpasso in condizioni di scarsa visibilità",
+      "Manovra di sorpasso sicura"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "scarsa visibilità",
+      "pericolo",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "sorpasso in condizioni di scarsa visibilità vietato",
+      "condizioni che impediscono la manovra di sorpasso"
+    ],
+    "rule_explanation": "Il sorpasso è vietato in caso di scarsa visibilità per evitare il pericolo, indipendentemente dall'uso degli indicatori luminosi."
+  }
+}

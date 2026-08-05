@@ -1,0 +1,27 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31037",
+  "text": "Il conducente può distogliere lo sguardo dalla strada quando ritiene che non ci sia pericolo imminente di incidente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di attenzione alla guida",
+      "Divieto di distrazione durante la guida"
+    ],
+    "exact_keywords": [
+      "distogliere lo sguardo",
+      "condizioni di sicurezza",
+      "pericolo imminente",
+      "conducente"
+    ],
+    "vector_search_queries": [
+      "obbligo di attenzione costante del conducente alla strada",
+      "divieto di distrazione alla guida per la sicurezza stradale"
+    ],
+    "rule_explanation": "Il conducente deve mantenere un costante controllo della strada e dell'ambiente circostante, senza mai distogliere lo sguardo, anche se non percepisce un pericolo imminente."
+  }
+}

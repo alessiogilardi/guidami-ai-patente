@@ -1,0 +1,28 @@
+{
+  "question_id": 4446,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "23017",
+  "text": "Le dimensioni degli specchi retrovisori sono proporzionali alla cilindrata del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Dimensioni specchi retrovisori",
+      "Normativa veicoli",
+      "Visibilità e sicurezza"
+    ],
+    "exact_keywords": [
+      "specchi retrovisori",
+      "dimensioni",
+      "cilindrata",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "requisiti dimensioni specchi retrovisori veicoli",
+      "normativa specchi retrovisori obbligatori"
+    ],
+    "rule_explanation": "Le dimensioni degli specchi retrovisori non sono correlate alla cilindrata del veicolo, ma devono garantire un adeguato campo visivo al conducente per la sicurezza."
+  }
+}

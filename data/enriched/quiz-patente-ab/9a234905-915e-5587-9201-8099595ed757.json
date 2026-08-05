@@ -1,0 +1,27 @@
+{
+  "question_id": 4529,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23799",
+  "text": "Allorché si accinge a scendere dall'autoveicolo, il conducente deve assicurarsi, anche mediante lo specchietto retrovisore, che non sopraggiungano altri veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di apertura sportello",
+      "Sicurezza nella circolazione stradale"
+    ],
+    "exact_keywords": [
+      "apertura sportello",
+      "manovra di discesa",
+      "specchietto retrovisore",
+      "altri veicoli"
+    ],
+    "vector_search_queries": [
+      "condizioni di sicurezza per l'apertura dello sportello",
+      "obblighi del conducente prima di scendere dal veicolo"
+    ],
+    "rule_explanation": "Prima di aprire lo sportello per scendere dal veicolo, il conducente deve controllare che la manovra non costituisca pericolo o intralcio, anche usando gli specchietti."
+  }
+}

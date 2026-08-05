@@ -1,0 +1,27 @@
+{
+  "question_id": 4645,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24881",
+  "text": "Se un infortunato della strada ha un'abbondante emorragia esterna, bisogna solo medicare la ferita",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione delle emorragie esterne",
+      "Primo soccorso in caso di incidente stradale"
+    ],
+    "exact_keywords": [
+      "emorragia esterna abbondante",
+      "primo soccorso",
+      "ferita",
+      "pressione diretta"
+    ],
+    "vector_search_queries": [
+      "trattamento emorragia esterna abbondante primo soccorso",
+      "tecniche di primo soccorso per arrestare emorragie esterne"
+    ],
+    "rule_explanation": "In caso di emorragia esterna abbondante, la medicazione della ferita deve essere accompagnata dall'applicazione di pressione diretta per arrestare il sanguinamento."
+  }
+}

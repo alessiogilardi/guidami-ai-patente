@@ -1,0 +1,30 @@
+{
+  "question_id": 4696,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25234",
+  "text": "Il sistema automatico di rilevamento della pressione di gonfiaggio dei pneumatici fa aumentare la sicurezza dei veicoli che ne sono dotati",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistema di monitoraggio pressione pneumatici (TPMS)",
+      "Sicurezza stradale",
+      "Manutenzione veicolo"
+    ],
+    "exact_keywords": [
+      "pressione di gonfiaggio",
+      "pneumatici",
+      "sicurezza",
+      "veicoli",
+      "TPMS"
+    ],
+    "vector_search_queries": [
+      "funzionamento e importanza del TPMS per la sicurezza",
+      "rilevamento automatico pressione pneumatici e prevenzione incidenti",
+      "benefici del monitoraggio pressione pneumatici sulla tenuta di strada"
+    ],
+    "rule_explanation": "Il sistema automatico di rilevamento della pressione dei pneumatici (TPMS) aumenta la sicurezza del veicolo monitorando costantemente la pressione e avvisando il conducente in caso di anomalie, prevenendo rischi legati a gonfiaggio errato."
+  }
+}

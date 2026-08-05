@@ -1,0 +1,27 @@
+{
+  "question_id": 4534,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23839",
+  "text": "Il segnale mobile triangolare di pericolo deve essere posto sul carico accidentalmente caduto sulla carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo",
+      "Obblighi in caso di arresto o emergenza sulla carreggiata"
+    ],
+    "exact_keywords": [
+      "segnale mobile di pericolo",
+      "carreggiata",
+      "veicolo fermo",
+      "carico caduto"
+    ],
+    "vector_search_queries": [
+      "posizionamento segnale mobile di pericolo per veicolo fermo o ostacolo",
+      "distanza di posizionamento del segnale di pericolo per carico caduto sulla carreggiata"
+    ],
+    "rule_explanation": "Il segnale mobile di pericolo va posizionato a distanza adeguata dal veicolo fermo o dall'ostacolo, non sul carico caduto."
+  }
+}

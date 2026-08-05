@@ -1,0 +1,32 @@
+{
+  "question_id": 4336,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21885",
+  "text": "Il segnale raffigurato può essere installato su un veicolo per preavvisare un cantiere stradale",
+  "correct_answer": true,
+  "image": "f1e5c1caead6c28fe5819c396791ed64.jpeg",
+  "image_description": "Preavviso di cantiere stradale e riduzione corsie. Il segnale di destra, di pericolo, preavvisa un cantiere stradale con operai al lavoro. Il pannello integrativo indica che il cantiere si trova a 500 metri. I due segnali gialli lampeggianti indicano la presenza di un cantiere. Il segnale di sinistra indica una riduzione delle corsie disponibili, con la corsia di sinistra che termina.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due segnali stradali affiancati. Il segnale di sinistra è un segnale di prescrizione che indica una riduzione delle corsie disponibili, con la corsia di sinistra che termina e le altre due che proseguono. Il segnale di destra è un segnale di pericolo di colore giallo con bordo rosso, raffigurante un operaio al lavoro, che preavvisa un cantiere stradale. Sopra il segnale di pericolo ci sono due luci gialle lampeggianti. Sotto il segnale di pericolo c'è un pannello integrativo rettangolare bianco con la scritta \"500 m\", che indica la distanza dal cantiere.",
+    "name": "Preavviso di cantiere stradale e riduzione corsie",
+    "description": "Il segnale di destra, di pericolo, preavvisa un cantiere stradale con operai al lavoro. Il pannello integrativo indica che il cantiere si trova a 500 metri. I due segnali gialli lampeggianti indicano la presenza di un cantiere. Il segnale di sinistra indica una riduzione delle corsie disponibili, con la corsia di sinistra che termina."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di cantiere stradale",
+      "Segnali temporanei e di cantiere",
+      "Uso di veicoli per la segnalazione stradale"
+    ],
+    "exact_keywords": [
+      "preavviso di cantiere",
+      "segnali temporanei",
+      "pannello integrativo",
+      "veicolo adibito a cantiere"
+    ],
+    "vector_search_queries": [
+      "segnalazione di cantiere stradale con veicoli in movimento",
+      "uso di veicoli come segnali temporanei per cantieri"
+    ],
+    "rule_explanation": "I veicoli utilizzati per segnalare cantieri stradali devono essere equipaggiati con appositi segnali luminosi e pannelli integrativi per avvisare gli utenti della strada della presenza del cantiere e delle sue caratteristiche."
+  }
+}

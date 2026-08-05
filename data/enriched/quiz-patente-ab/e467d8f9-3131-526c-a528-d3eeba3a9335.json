@@ -1,0 +1,28 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24659",
+  "text": "Il mancato rispetto della distanza di sicurezza da cui sia derivato un incidente, comporta una perdita di punti sulla patente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Incidente stradale",
+      "Sistema sanzionatorio della patente a punti"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "incidente stradale",
+      "perdita di punti",
+      "patente di guida"
+    ],
+    "vector_search_queries": [
+      "conseguenze del mancato rispetto della distanza di sicurezza in caso di incidente",
+      "decurtazione punti patente per violazione distanza di sicurezza con sinistro"
+    ],
+    "rule_explanation": "Il mancato rispetto della distanza di sicurezza, se causa di un incidente, comporta la decurtazione di punti dalla patente di guida ai sensi del Codice della Strada."
+  }
+}

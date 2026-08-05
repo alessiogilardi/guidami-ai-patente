@@ -1,0 +1,27 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31013",
+  "text": "E’ pericoloso, durante la guida, distogliere lo sguardo dalla strada, anche per pochi millisecondi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Massima attenzione alla guida",
+      "Pericolo derivante da distrazione del conducente"
+    ],
+    "exact_keywords": [
+      "distrarre lo sguardo",
+      "condotta di guida",
+      "pericolosità",
+      "attenzione"
+    ],
+    "vector_search_queries": [
+      "pericolo di distogliere lo sguardo dalla strada durante la guida",
+      "obbligo di mantenere l'attenzione alla guida"
+    ],
+    "rule_explanation": "È pericoloso distogliere lo sguardo dalla strada durante la guida, anche per brevi istanti, poiché ciò compromette l'attenzione necessaria alla sicurezza della circolazione."
+  }
+}

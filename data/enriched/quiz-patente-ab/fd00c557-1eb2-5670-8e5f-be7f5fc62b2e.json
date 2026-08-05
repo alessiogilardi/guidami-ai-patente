@@ -1,0 +1,28 @@
+{
+  "question_id": 4620,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24650",
+  "text": "Le violazioni che comportano decurtazione di punti, commesse entro i primi tre anni dal rilascio della prima patente, sono sanzionate con il triplo dei punti previsti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente a punti",
+      "Neopatentati",
+      "Sanzioni amministrative"
+    ],
+    "exact_keywords": [
+      "decurtazione di punti",
+      "prima patente",
+      "periodo di prova",
+      "sanzione pecuniaria"
+    ],
+    "vector_search_queries": [
+      "raddoppio decurtazione punti neopatentati",
+      "sanzioni per violazioni nei primi tre anni di patente"
+    ],
+    "rule_explanation": "Per i primi tre anni dal rilascio della patente, la decurtazione dei punti è raddoppiata rispetto a quella prevista per i conducenti esperti."
+  }
+}

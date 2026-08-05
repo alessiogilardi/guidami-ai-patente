@@ -1,0 +1,28 @@
+{
+  "question_id": 4511,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23652",
+  "text": "Durante la fermata il conducente deve comportarsi in modo da non costituire pericolo agli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Comportamento del conducente durante la sosta",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "fermata",
+      "conducente",
+      "pericolo",
+      "altri utenti della strada"
+    ],
+    "vector_search_queries": [
+      "condotta del conducente durante la fermata del veicolo",
+      "obblighi del conducente in caso di fermata per non costituire pericolo"
+    ],
+    "rule_explanation": "Durante la fermata, il conducente deve adottare tutte le precauzioni necessarie per garantire la sicurezza della circolazione e non arrecare pericolo agli altri utenti della strada."
+  }
+}

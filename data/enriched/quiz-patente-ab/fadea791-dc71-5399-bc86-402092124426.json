@@ -1,0 +1,29 @@
+{
+  "question_id": 4628,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24749",
+  "text": "In caso di nebbia fitta è opportuno lasciarsi guidare dalla segnaletica orizzontale",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti stradali",
+      "Guida in condizioni di scarsa visibilità",
+      "Segnaletica stradale"
+    ],
+    "exact_keywords": [
+      "nebbia fitta",
+      "segnaletica orizzontale",
+      "visibilità ridotta",
+      "comportamento di guida"
+    ],
+    "vector_search_queries": [
+      "importanza della segnaletica orizzontale in condizioni di nebbia fitta",
+      "guida sicura in caso di scarsa visibilità e nebbia",
+      "uso della segnaletica orizzontale per orientarsi in condizioni di scarsa visibilità"
+    ],
+    "rule_explanation": "In caso di nebbia fitta, la segnaletica orizzontale (linee sulla carreggiata) è un riferimento fondamentale per mantenere la traiettoria corretta e la posizione del veicolo."
+  }
+}

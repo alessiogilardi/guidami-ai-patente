@@ -1,0 +1,31 @@
+{
+  "question_id": 4190,
+  "topic": "Segnali di precedenza",
+  "number": "20466",
+  "text": "Il segnale raffigurato è un segnale di precedenza",
+  "correct_answer": true,
+  "image": "626acdf5f84d181e1ad0e9ec805822ed.jpeg",
+  "image_description": "Segnale di dare precedenza. Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma triangolare con il vertice rivolto verso il basso e il bordo di colore rosso su sfondo bianco. Questo è il segnale di 'Dare precedenza'. Non sono presenti pannelli integrativi né altri elementi contestuali.",
+    "name": "Segnale di dare precedenza",
+    "description": "Il segnale impone di dare la precedenza ai veicoli che circolano sulla strada su cui ci si immette. Non obbliga a fermarsi, ma a rallentare e, se necessario, a fermarsi per non creare pericolo o intralcio."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di precedenza",
+      "Obblighi ai segnali di precedenza"
+    ],
+    "exact_keywords": [
+      "segnale di dare precedenza",
+      "precedenza",
+      "obbligo di dare precedenza",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "definizione segnale di dare precedenza",
+      "obblighi imposti dal segnale di dare precedenza"
+    ],
+    "rule_explanation": "Il segnale di \"dare precedenza\" impone di far passare i veicoli che circolano sulla strada in cui ci si immette, senza obbligo di fermarsi ma solo di rallentare o fermarsi se necessario."
+  }
+}

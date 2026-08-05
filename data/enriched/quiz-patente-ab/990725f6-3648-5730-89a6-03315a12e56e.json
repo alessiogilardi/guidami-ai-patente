@@ -1,0 +1,32 @@
+{
+  "question_id": 4581,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24213",
+  "text": "Il simbolo raffigurato è posto su una spia di colore rosso",
+  "correct_answer": false,
+  "image": "d858676ca464e7bde2123392d72cfe99.jpeg",
+  "image_description": "Comando indicatori di direzione. Il simbolo raffigurato indica il comando degli indicatori di direzione, comunemente noti come frecce. Le frecce, una rivolta a sinistra e una a destra, indicano la possibilità di azionare gli indicatori di direzione per segnalare la propria intenzione di svoltare o cambiare corsia in una delle due direzioni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due frecce stilizzate, una rivolta verso sinistra e una verso destra. Entrambe le frecce sono nere su sfondo bianco e presentano una forma a gradino prima della punta della freccia. Questo simbolo è tipicamente associato al comando degli indicatori di direzione su un veicolo.",
+    "name": "Comando indicatori di direzione",
+    "description": "Il simbolo raffigurato indica il comando degli indicatori di direzione, comunemente noti come frecce. Le frecce, una rivolta a sinistra e una a destra, indicano la possibilità di azionare gli indicatori di direzione per segnalare la propria intenzione di svoltare o cambiare corsia in una delle due direzioni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Indicatori di direzione",
+      "Spie luminose di segnalazione"
+    ],
+    "exact_keywords": [
+      "spia",
+      "colore rosso",
+      "comando indicatori di direzione",
+      "frecce"
+    ],
+    "vector_search_queries": [
+      "funzione spie luminose di colore rosso",
+      "segnalazione pericolo con spie rosse",
+      "comando indicatori di direzione e spie"
+    ],
+    "rule_explanation": "Le spie di colore rosso segnalano un malfunzionamento o un pericolo imminente che richiede l'arresto del veicolo. Il comando delle frecce non è una spia di pericolo."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4119,
+  "topic": "Segnali di divieto",
+  "number": "19702",
+  "text": "Il segnale raffigurato vieta il transito ad un motociclo, anche se spinto a braccia",
+  "correct_answer": false,
+  "image": "e373a1d22f51974f4916ca4beb315b52.jpeg",
+  "image_description": "Divieto di transito ai veicoli a braccia. Il segnale vieta il transito ai veicoli a braccia, come carretti, carriole e simili.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto di forma circolare con bordo rosso e sfondo bianco. Al centro è raffigurata una figura stilizzata di una persona che spinge un carretto a mano. Questo è un segnale di divieto specifico.",
+    "name": "Divieto di transito ai veicoli a braccia",
+    "description": "Il segnale vieta il transito ai veicoli a braccia, come carretti, carriole e simili."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "veicoli a braccia",
+      "spinto a braccia",
+      "motociclo"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito per veicoli a braccia",
+      "differenza tra veicoli a braccia e motocicli per segnali stradali"
+    ],
+    "rule_explanation": "Il segnale di 'divieto di transito ai veicoli a braccia' vieta la circolazione a mezzi come carriole e carretti, ma non a motocicli, anche se condotti a mano."
+  }
+}

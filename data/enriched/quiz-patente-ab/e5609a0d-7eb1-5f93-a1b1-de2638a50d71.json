@@ -1,0 +1,29 @@
+{
+  "question_id": 4386,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22450",
+  "text": "Si deve diminuire la velocità quando si è seguiti da un autobus di linea",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni di traffico",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "diminuire la velocità",
+      "autobus di linea",
+      "condizioni di traffico",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in base al traffico",
+      "adeguamento della velocità per evitare pericoli o intralci"
+    ],
+    "rule_explanation": "La velocità va diminuita in base alle condizioni di traffico, non solo perché si è seguiti da un autobus di linea, ma per evitare pericoli o intralci."
+  }
+}

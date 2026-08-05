@@ -1,0 +1,32 @@
+{
+  "question_id": 4099,
+  "topic": "Segnali di pericolo",
+  "number": "19447",
+  "text": "Il segnale raffigurato preannuncia, in caso di forte vento laterale, possibili sbandamenti dei veicoli provenienti dal senso opposto",
+  "correct_answer": true,
+  "image": "b6cd263ac2e3188386f2814949cbc505.jpeg",
+  "image_description": "Segnale di pericolo per vento laterale. Il segnale preannuncia un tratto di strada soggetto a forti raffiche di vento laterale. È necessario procedere con prudenza, tenendo saldamente il volante per mantenere la stabilità del veicolo.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un palo verticale con attaccato un manica a vento, orientata verso destra, con delle strisce che indicano la direzione e l'intensità del vento. Il pittogramma rappresenta un vento laterale.",
+    "name": "Segnale di pericolo per vento laterale",
+    "description": "Il segnale preannuncia un tratto di strada soggetto a forti raffiche di vento laterale. È necessario procedere con prudenza, tenendo saldamente il volante per mantenere la stabilità del veicolo."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Vento laterale",
+      "Adattamento della velocità"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "vento laterale",
+      "sbandamenti",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo vento laterale cause sbandamento",
+      "preavviso pericolo vento laterale e prudenza di guida"
+    ],
+    "rule_explanation": "Il segnale di pericolo per vento laterale preannuncia possibili sbandamenti dovuti a raffiche, imponendo al conducente di procedere con prudenza e di mantenere il controllo del veicolo."
+  }
+}

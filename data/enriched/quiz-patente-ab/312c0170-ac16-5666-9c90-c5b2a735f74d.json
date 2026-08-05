@@ -1,0 +1,31 @@
+{
+  "question_id": 4306,
+  "topic": "Segnali di indicazione",
+  "number": "21605",
+  "text": "Il segnale raffigurato è posto all'inizio di una strada senza uscita per i veicoli",
+  "correct_answer": true,
+  "image": "200351bc67f1cbc394aea09991968512.jpeg",
+  "image_description": "Segnale di strada senza uscita per veicoli. Il segnale indica che la strada che si sta percorrendo termina senza possibilità di proseguire per i veicoli. Non vieta l'accesso ai pedoni.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare con sfondo blu scuro e bordi arrotondati. Al centro del segnale è presente un pittogramma bianco a forma di T, con la barra orizzontale rossa. Questo è il segnale di \"strada senza uscita per veicoli\".",
+    "name": "Segnale di strada senza uscita per veicoli",
+    "description": "Il segnale indica che la strada che si sta percorrendo termina senza possibilità di proseguire per i veicoli. Non vieta l'accesso ai pedoni."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Strada senza uscita"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "strada senza uscita",
+      "divieto di accesso",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "segnaletica stradale di strada senza uscita per veicoli",
+      "interpretazione segnale stradale fine strada per autoveicoli"
+    ],
+    "rule_explanation": "Il segnale di strada senza uscita indica che la strada termina e non è possibile proseguire per i veicoli, pur consentendo l'accesso a pedoni e ciclisti se non diversamente specificato."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4644,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24872",
+  "text": "Se un infortunato della strada ha una ferita sanguinante, bisogna tamponarla con garze sterili o panni puliti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di ferite",
+      "Gestione delle emorragie"
+    ],
+    "exact_keywords": [
+      "infortunato della strada",
+      "ferita sanguinante",
+      "tamponare la ferita",
+      "garze sterili",
+      "panni puliti"
+    ],
+    "vector_search_queries": [
+      "primo soccorso ferita sanguinante tamponamento",
+      "gestione emorragia stradale con garze o panni puliti"
+    ],
+    "rule_explanation": "In caso di ferita sanguinante, è necessario tamponarla con garze sterili o, in loro assenza, con panni puliti per arrestare l'emorragia."
+  }
+}

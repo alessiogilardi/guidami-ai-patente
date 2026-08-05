@@ -1,0 +1,30 @@
+{
+  "question_id": 4552,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23965",
+  "text": "Il conducente di un'autovettura deve prevedere la difficoltà di valutazione della velocità del proprio veicolo da parte di un ciclista che, trovandosi sulla stessa corsia di marcia, si accinge a svoltare a sinistra",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Precedenza tra veicoli e ciclisti",
+      "Regolazione della velocità in relazione al contesto di traffico",
+      "Obblighi del conducente in presenza di utenti vulnerabili"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "ciclista",
+      "sorpasso",
+      "corsia di marcia",
+      "svolta a sinistra"
+    ],
+    "vector_search_queries": [
+      "previsione manovre ciclista in corsia di marcia",
+      "obbligo di moderare velocità in presenza di ciclisti che svoltano",
+      "distanza di sicurezza e precedenza tra autovettura e bicicletta"
+    ],
+    "rule_explanation": "Il conducente di un'autovettura deve moderare la velocità e prevedere le manovre dei ciclisti, specialmente in prossimità di incroci o svolte, garantendo la sicurezza."
+  }
+}

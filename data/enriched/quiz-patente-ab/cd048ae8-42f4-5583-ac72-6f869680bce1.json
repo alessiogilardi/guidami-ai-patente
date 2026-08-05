@@ -1,0 +1,28 @@
+{
+  "question_id": 4648,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24905",
+  "text": "In presenza di un ferito in stato di shock, occorre fargli bere piccole quantità di superalcolici",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Stato di shock",
+      "Somministrazione di liquidi a feriti"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "primo soccorso",
+      "liquidi",
+      "alcolici"
+    ],
+    "vector_search_queries": [
+      "gestione del primo soccorso in caso di shock",
+      "divieto di somministrazione di alcolici a feriti in stato di shock"
+    ],
+    "rule_explanation": "In presenza di un ferito in stato di shock, non bisogna somministrare alcolici, ma solo liquidi in piccole quantità se cosciente e non vi siano controindicazioni."
+  }
+}

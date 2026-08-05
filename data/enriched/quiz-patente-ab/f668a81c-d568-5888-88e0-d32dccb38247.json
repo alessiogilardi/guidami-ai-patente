@@ -1,0 +1,31 @@
+{
+  "question_id": 4431,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22885",
+  "text": "E' obbligatorio dare la precedenza a destra e a sinistra in presenza del segnale in figura",
+  "correct_answer": false,
+  "image": "1ae0a5f9e3fc82a6a91480e94779a5a7.jpeg",
+  "image_description": "Croce di Sant'Andrea (preavviso di incrocio). Il segnale preannuncia un incrocio in cui si deve dare la precedenza a destra, secondo la regola generale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo di forma triangolare con bordo rosso e sfondo bianco. Al centro del triangolo è presente un pittogramma nero a forma di croce a quattro bracci uguali (tipo X), che rappresenta un incrocio. Questo è il segnale di preavviso di incrocio.",
+    "name": "Croce di Sant'Andrea (preavviso di incrocio)",
+    "description": "Il segnale preannuncia un incrocio in cui si deve dare la precedenza a destra, secondo la regola generale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza all'incrocio",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "dare la precedenza",
+      "incrocio",
+      "segnale stradale",
+      "precedenza a destra"
+    ],
+    "vector_search_queries": [
+      "obbligo di precedenza negli incroci regolati da segnali di preavviso",
+      "interpretazione segnale Croce di Sant'Andrea e regola di precedenza"
+    ],
+    "rule_explanation": "Il segnale di preavviso di incrocio (Croce di Sant'Andrea) non impone di dare la precedenza a destra e a sinistra, ma preannuncia un incrocio in cui si applica la regola generale di dare la precedenza a destra."
+  }
+}

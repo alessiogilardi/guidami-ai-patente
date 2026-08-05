@@ -1,0 +1,31 @@
+{
+  "question_id": 4290,
+  "topic": "Segnali di indicazione",
+  "number": "21465",
+  "text": "Il segnale raffigurato indica, con la scritta su fondo marrone, le località turistiche",
+  "correct_answer": true,
+  "image": "1e71e8d46e4c541e18fe8dc1fe8cfd97.jpeg",
+  "image_description": "Preavviso di uscita obbligatoria. Il segnale indica che la prossima uscita è Frosinone e che questa si trova a 500 metri. Vengono inoltre indicate altre località raggiungibili tramite questa uscita: Ceccano-Priverno, Circeo-Terracina, Ferentino-Alatri, Campocatino-Fiuggi. Le località turistiche sono indicate su fondo marrone.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di preavviso di uscita obbligatoria. Il segnale ha uno sfondo blu scuro e presenta la scritta \"uscita FROSINONE\" in alto. Sotto, sono elencate diverse località: \"CECCANO-PRIVERNO\", \"Circeo-TERRACINA\", \"FERENTINO-ALATRI\", e \"Campocatino-FIUGGI\". Le ultime due località sono scritte su un riquadro marrone, indicando che si tratta di destinazioni turistiche. In basso, è presente un pannello integrativo con la scritta \"500 m\", che indica la distanza dall'uscita.",
+    "name": "Preavviso di uscita obbligatoria",
+    "description": "Il segnale indica che la prossima uscita è Frosinone e che questa si trova a 500 metri. Vengono inoltre indicate altre località raggiungibili tramite questa uscita: Ceccano-Priverno, Circeo-Terracina, Ferentino-Alatri, Campocatino-Fiuggi. Le località turistiche sono indicate su fondo marrone."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso di uscita obbligatoria",
+      "Segnaletica turistica"
+    ],
+    "exact_keywords": [
+      "fondo marrone",
+      "località turistica",
+      "uscita obbligatoria",
+      "preavviso di uscita"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso con fondo marrone per località turistiche",
+      "indicazione di destinazioni turistiche su segnali di uscita obbligatoria"
+    ],
+    "rule_explanation": "I segnali di preavviso di uscita obbligatoria con fondo marrone indicano località turistiche, culturali o di particolare interesse, fornendo indicazioni sulle destinazioni raggiungibili tramite quella specifica uscita."
+  }
+}

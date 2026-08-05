@@ -1,0 +1,28 @@
+{
+  "question_id": 4500,
+  "topic": "Norme sul sorpasso",
+  "number": "23532",
+  "text": "E' sempre consentito superare un veicolo a due ruote",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Norme sul sorpasso",
+      "Comportamento dei conducenti"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "veicolo a due ruote",
+      "manovra vietata",
+      "condizioni di sicurezza"
+    ],
+    "vector_search_queries": [
+      "sorpasso veicolo a due ruote condizioni di sicurezza",
+      "distanza laterale minima nel sorpasso",
+      "manovra di sorpasso vietata"
+    ],
+    "rule_explanation": "Il sorpasso di un veicolo a due ruote non è sempre consentito; deve essere effettuato in condizioni di sicurezza e rispettando le norme del CdS, in particolare per quanto riguarda la distanza laterale."
+  }
+}

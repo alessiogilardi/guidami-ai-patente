@@ -1,0 +1,28 @@
+{
+  "question_id": 4041,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18749",
+  "text": "Il conducente di un motociclo può fare lo slalom tra i veicoli fermi al semaforo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento dei conducenti in prossimità di incroci e semafori",
+      "Sicurezza stradale e convivenza tra utenti diversi"
+    ],
+    "exact_keywords": [
+      "motociclo",
+      "veicoli fermi",
+      "semàforo",
+      "manovra di slalom",
+      "pericolo per la sicurezza"
+    ],
+    "vector_search_queries": [
+      "divieto di slalom tra veicoli fermi al semaforo per motocicli",
+      "comportamento dei motocicli ai semafori e sicurezza stradale"
+    ],
+    "rule_explanation": "È vietato effettuare manovre di slalom tra i veicoli fermi ai semafori per non creare pericolo o intralcio alla circolazione, specialmente verso gli utenti più vulnerabili."
+  }
+}

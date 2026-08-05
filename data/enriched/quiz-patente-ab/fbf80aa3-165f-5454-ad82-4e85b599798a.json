@@ -1,0 +1,29 @@
+{
+  "question_id": 4624,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24715",
+  "text": "In caso di pioggia occorre passare velocemente sulle pozzanghere per evitare di rimanere impantanati",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità in base alle condizioni atmosferiche",
+      "Comportamento prudente alla guida"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "pioggia",
+      "pozzanghere",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità in caso di pioggia",
+      "comportamento alla guida in presenza di pozzanghere",
+      "rischio di aquaplaning e spruzzi d'acqua"
+    ],
+    "rule_explanation": "In caso di pioggia, è necessario moderare la velocità per evitare di sollevare spruzzi d'acqua che possono creare pericolo o intralcio agli altri utenti della strada, non passare velocemente sulle pozzanghere."
+  }
+}

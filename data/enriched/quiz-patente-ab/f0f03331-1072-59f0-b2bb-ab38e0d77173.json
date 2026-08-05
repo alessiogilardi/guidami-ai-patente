@@ -1,0 +1,28 @@
+{
+  "question_id": 4005,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18361",
+  "text": "Sulle strade extraurbane principali è consentito circolare alla stessa velocità massima prevista per le autostrade",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità su strade extraurbane principali",
+      "Differenze tra autostrade e strade extraurbane principali",
+      "Sicurezza stradale e adeguatezza della velocità"
+    ],
+    "exact_keywords": [
+      "strade extraurbane principali",
+      "autostrade",
+      "velocità massima",
+      "limiti di velocità"
+    ],
+    "vector_search_queries": [
+      "differenza limiti velocità autostrade e strade extraurbane principali",
+      "velocità massima consentita su strade extraurbane principali"
+    ],
+    "rule_explanation": "Sulle strade extraurbane principali la velocità massima consentita è di 110 km/h, mentre sulle autostrade è di 130 km/h. Non è quindi consentito circolare alla stessa velocità massima."
+  }
+}

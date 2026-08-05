@@ -1,0 +1,27 @@
+{
+  "question_id": 4685,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25167",
+  "text": "E' vietato parcheggiare nelle zone residenziali",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta e fermata",
+      "Regolamentazione della sosta nei centri abitati"
+    ],
+    "exact_keywords": [
+      "parcheggiare",
+      "zone residenziali",
+      "divieto di sosta",
+      "fermata"
+    ],
+    "vector_search_queries": [
+      "regolamentazione sosta zone residenziali",
+      "divieto di parcheggio in aree abitate"
+    ],
+    "rule_explanation": "Non esiste un divieto generalizzato di parcheggio nelle zone residenziali; la sosta è regolamentata dalla segnaletica e dalle norme generali del CdS."
+  }
+}

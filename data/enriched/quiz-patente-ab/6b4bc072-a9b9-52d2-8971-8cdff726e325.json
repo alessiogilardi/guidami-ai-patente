@@ -1,0 +1,29 @@
+{
+  "question_id": 4399,
+  "topic": "Distanza di sicurezza",
+  "number": "22591",
+  "text": "La distrazione del conducente può essere causata dalla ricerca dei comandi della radio o di altri apparecchi elettronici",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distrazione alla guida",
+      "Comportamento del conducente",
+      "Uso di apparecchiature elettroniche in auto"
+    ],
+    "exact_keywords": [
+      "distrazione del conducente",
+      "ricerca dei comandi",
+      "apparecchi elettronici",
+      "comportamento alla guida"
+    ],
+    "vector_search_queries": [
+      "cause di distrazione alla guida per uso di apparecchi elettronici",
+      "ricerca comandi radio e distrazione del conducente",
+      "attenzione alla guida e uso di dispositivi elettronici"
+    ],
+    "rule_explanation": "La distrazione del conducente è causata da qualsiasi attività che riduca l'attenzione alla guida, inclusa la manipolazione di radio o altri dispositivi elettronici."
+  }
+}

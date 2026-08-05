@@ -1,0 +1,27 @@
+{
+  "question_id": 4607,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24469",
+  "text": "Le targhe dei veicoli devono essere apposte saldamente e in posizione corretta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Posizionamento e fissaggio delle targhe",
+      "Obblighi del conducente riguardo i documenti del veicolo"
+    ],
+    "exact_keywords": [
+      "targhe",
+      "apposte saldamente",
+      "posizione corretta",
+      "documenti di circolazione"
+    ],
+    "vector_search_queries": [
+      "obbligo di apporre saldamente le targhe del veicolo",
+      "posizione corretta delle targhe di immatricolazione"
+    ],
+    "rule_explanation": "Le targhe dei veicoli devono essere sempre apposte in modo stabile e nella posizione prescritta per garantirne la leggibilità e la riconoscibilità."
+  }
+}

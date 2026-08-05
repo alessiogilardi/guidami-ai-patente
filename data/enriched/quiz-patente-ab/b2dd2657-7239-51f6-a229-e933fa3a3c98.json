@@ -1,0 +1,27 @@
+{
+  "question_id": 4040,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18735",
+  "text": "Il conducente di un veicolo di grandi dimensioni ha, di norma, la precedenza sul conducente di un veicolo più piccolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza",
+      "Nessuna precedenza basata sulla dimensione del veicolo"
+    ],
+    "exact_keywords": [
+      "precedenza",
+      "veicolo di grandi dimensioni",
+      "veicolo più piccolo",
+      "condizioni di traffico"
+    ],
+    "vector_search_queries": [
+      "precedenza tra veicoli di diverse dimensioni",
+      "regole di precedenza stradale non basate sulla stazza del veicolo"
+    ],
+    "rule_explanation": "Non esiste una regola generale di precedenza basata sulla dimensione del veicolo; la precedenza è determinata da norme specifiche (es. segnali, incroci) e dal comportamento prudente per non creare pericolo o intralcio."
+  }
+}

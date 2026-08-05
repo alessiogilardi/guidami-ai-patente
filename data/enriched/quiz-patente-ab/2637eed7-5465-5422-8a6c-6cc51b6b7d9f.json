@@ -1,0 +1,29 @@
+{
+  "question_id": 4043,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18774",
+  "text": "Quando le persone anziane attraversano la carreggiata bisogna dare la precedenza solo a coloro che attraversano da sinistra a destra",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Obbligo di precedenza nei confronti dei pedoni",
+      "Comportamento prudente del conducente"
+    ],
+    "exact_keywords": [
+      "persone anziane",
+      "attraversano la carreggiata",
+      "dare la precedenza",
+      "condotta del conducente"
+    ],
+    "vector_search_queries": [
+      "precedenza pedoni anziani che attraversano la strada",
+      "doveri del conducente verso pedoni vulnerabili",
+      "attraversamento carreggiata da parte di pedoni anziani"
+    ],
+    "rule_explanation": "Il conducente deve dare la precedenza ai pedoni che attraversano la carreggiata, indipendentemente dalla direzione di provenienza, con particolare riguardo per le persone anziane, i bambini e i disabili."
+  }
+}

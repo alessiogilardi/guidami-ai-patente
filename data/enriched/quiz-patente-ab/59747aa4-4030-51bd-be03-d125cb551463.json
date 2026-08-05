@@ -1,0 +1,30 @@
+{
+  "question_id": 4706,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25334",
+  "text": "Una frenatura poco efficiente o squilibrata può essere causata da pneumatici invernali utilizzati su strade non innevate",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Efficienza del sistema frenante",
+      "Uso appropriato degli pneumatici",
+      "Condizioni di aderenza stradale"
+    ],
+    "exact_keywords": [
+      "frenatura inefficiente",
+      "frenatura squilibrata",
+      "pneumatici invernali",
+      "strade non innevate",
+      "aderenza"
+    ],
+    "vector_search_queries": [
+      "cause di inefficienza o squilibrio del sistema frenante",
+      "prestazioni degli pneumatici invernali su strada asciutta",
+      "manutenzione del veicolo e sicurezza stradale"
+    ],
+    "rule_explanation": "Una frenatura inefficiente o squilibrata è causata da problemi al sistema frenante o da pneumatici usurati/danneggiati, non dall'uso di pneumatici invernali su strade asciutte. Questi pneumatici garantiscono anzi una buona aderenza."
+  }
+}

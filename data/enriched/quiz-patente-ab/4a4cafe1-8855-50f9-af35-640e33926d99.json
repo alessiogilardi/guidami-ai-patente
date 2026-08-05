@@ -1,0 +1,33 @@
+{
+  "question_id": 4097,
+  "topic": "Segnali di pericolo",
+  "number": "19428",
+  "text": "Il segnale raffigurato vieta l'accesso agli aeroporti",
+  "correct_answer": false,
+  "image": "cf70cb24dd929f5727132a64153fad7a.jpeg",
+  "image_description": "Segnale di pericolo - Aeroporto. Il segnale preannuncia la vicinanza di un aeroporto, con possibile transito di aeroplani a bassa quota.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurato il pittogramma di un aeroplano stilizzato in nero, in fase di volo. Questo segnale indica la prossimità di un aeroporto o di aree dove possono verificarsi voli a bassa quota.",
+    "name": "Segnale di pericolo - Aeroporto",
+    "description": "Il segnale preannuncia la vicinanza di un aeroporto, con possibile transito di aeroplani a bassa quota."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di pericolo",
+      "Interpretazione dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "aeroporto",
+      "accesso vietato",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "funzione dei segnali di pericolo",
+      "differenza tra segnali di pericolo e segnali di divieto",
+      "segnali stradali di preavviso di pericolo"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano una situazione di potenziale pericolo, non impongono divieti specifici come il divieto di accesso."
+  }
+}

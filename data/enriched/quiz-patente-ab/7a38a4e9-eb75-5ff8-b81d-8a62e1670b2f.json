@@ -1,0 +1,27 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31045",
+  "text": "Il conducente deve accogliere gli inviti dei passeggeri a guidare più velocemente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di prudenza alla guida",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni di sicurezza",
+      "intralcio alla circolazione",
+      "passeggeri"
+    ],
+    "vector_search_queries": [
+      "adeguare la velocità alle condizioni di sicurezza e non alle richieste dei passeggeri",
+      "responsabilità del conducente nel regolare la velocità in modo prudente"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in base alle condizioni di sicurezza, senza farsi influenzare dalle richieste dei passeggeri di accelerare."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "question_id": 4303,
+  "topic": "Segnali di indicazione",
+  "number": "21589",
+  "text": "Il segnale raffigurato consente di sorpassare un veicolo che si è arrestato per dare la precedenza ai pedoni",
+  "correct_answer": false,
+  "image": "abf3d7b3d288ff886b24a821cd872a9c.jpeg",
+  "image_description": "Segnale di attraversamento pedonale. Il segnale indica la presenza di un attraversamento pedonale. Preavvisa i conducenti della necessità di prestare attenzione ai pedoni che attraversano la strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo blu scuro. Al centro del segnale è presente un triangolo bianco con il vertice rivolto verso l'alto. All'interno del triangolo bianco, su uno sfondo nero che rappresenta le strisce pedonali, è raffigurata la sagoma stilizzata di una persona che cammina. Il segnale è un segnale di prescrizione o indicazione relativo agli attraversamenti pedonali.",
+    "name": "Segnale di attraversamento pedonale",
+    "description": "Il segnale indica la presenza di un attraversamento pedonale. Preavvisa i conducenti della necessità di prestare attenzione ai pedoni che attraversano la strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di attraversamento pedonale",
+      "Obbligo di dare la precedenza ai pedoni",
+      "Divieto di sorpasso in prossimità di attraversamenti pedonali"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "precedenza ai pedoni",
+      "sorpasso",
+      "segnale di pericolo"
+    ],
+    "vector_search_queries": [
+      "regole di sorpasso in prossimità di attraversamenti pedonali",
+      "obblighi del conducente al segnale di attraversamento pedonale",
+      "divieto di sorpasso in corrispondenza delle strisce pedonali"
+    ],
+    "rule_explanation": "Il segnale di attraversamento pedonale impone di dare la precedenza ai pedoni e vieta il sorpasso in prossimità dell'attraversamento per garantire la sicurezza dei pedoni."
+  }
+}

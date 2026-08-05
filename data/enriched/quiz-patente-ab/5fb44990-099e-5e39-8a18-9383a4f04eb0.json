@@ -1,0 +1,27 @@
+{
+  "question_id": 4544,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23907",
+  "text": "Qualora il conducente veda un automobilista fermo per avaria del veicolo in autostrada, se lo ha superato può retrocedere con prudenza per soccorrerlo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di retromarcia in autostrada",
+      "Soccorso stradale e assistenza in autostrada"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "veicolo in avaria",
+      "soccorrere",
+      "retrocedere"
+    ],
+    "vector_search_queries": [
+      "divieto di retromarcia in autostrada per soccorso",
+      "norme di comportamento in caso di veicolo fermo in autostrada"
+    ],
+    "rule_explanation": "In autostrada è vietato retrocedere, anche per prestare soccorso a un veicolo in avaria, salvo eccezioni specifiche per le forze dell'ordine."
+  }
+}

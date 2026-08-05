@@ -1,0 +1,31 @@
+{
+  "question_id": 4163,
+  "topic": "Segnali di obbligo",
+  "number": "20214",
+  "text": "Il segnale raffigurato è un segnale di pericolo",
+  "correct_answer": false,
+  "image": "92d98106f0ae129dab0667c17a9e6a61.jpeg",
+  "image_description": "Preavviso di deviazione (obbligo di svolta a sinistra o proseguire diritto). Il segnale impone di proseguire diritto o di svoltare a sinistra. Non è consentita la svolta a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro sono presenti due frecce bianche: una punta verso l'alto (proseguire diritto) e l'altra piega verso sinistra (svoltare a sinistra). Le frecce indicano le direzioni consentite.",
+    "name": "Preavviso di deviazione (obbligo di svolta a sinistra o proseguire diritto)",
+    "description": "Il segnale impone di proseguire diritto o di svoltare a sinistra. Non è consentita la svolta a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Segnali di prescrizione"
+    ],
+    "exact_keywords": [
+      "segnali di obbligo",
+      "segnali di pericolo",
+      "segnali di prescrizione",
+      "preavviso di deviazione"
+    ],
+    "vector_search_queries": [
+      "distinzione tra segnali di obbligo e segnali di pericolo",
+      "funzione dei segnali di prescrizione e obbligo nella segnaletica stradale"
+    ],
+    "rule_explanation": "I segnali di obbligo (o prescrizione) impongono un comportamento specifico, mentre i segnali di pericolo preannunciano un rischio. L'affermazione che il segnale raffigurato sia di pericolo è errata."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4667,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25045",
+  "text": "I massimali della polizza di assicurazione R.C.A. (responsabilità civile auto) vengono restituiti al cliente alla fine dell'anno, se non si causano incidenti",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Massimale di garanzia assicurativa",
+      "Assicurazione obbligatoria della responsabilità civile auto"
+    ],
+    "exact_keywords": [
+      "massimale",
+      "polizza R.C.A.",
+      "impresa di assicurazione",
+      "risarcimento del danno"
+    ],
+    "vector_search_queries": [
+      "funzione del massimale nella polizza RCA",
+      "limiti di copertura assicurativa RCA",
+      "rimborso premi assicurazione RCA"
+    ],
+    "rule_explanation": "I massimali della polizza R.C.A. rappresentano l'importo massimo erogato dall'assicuratore per risarcire i danni causati a terzi, non sono rimborsabili al cliente."
+  }
+}

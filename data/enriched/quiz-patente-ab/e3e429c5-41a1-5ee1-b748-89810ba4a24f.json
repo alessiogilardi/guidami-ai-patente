@@ -1,0 +1,29 @@
+{
+  "question_id": 4375,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22301",
+  "text": "E' obbligatorio regolare la velocità in caso di nebbia o foschia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Condizioni atmosferiche sfavorevoli",
+      "Pericolo per la circolazione"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "nebbia",
+      "foschia",
+      "pericolo",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità in condizioni di scarsa visibilità (nebbia, foschia)",
+      "obbligo di moderare la velocità per evitare pericoli in caso di nebbia o foschia"
+    ],
+    "rule_explanation": "In caso di nebbia o foschia, è obbligatorio regolare la velocità per garantire la sicurezza e prevenire pericoli o intralci alla circolazione."
+  }
+}

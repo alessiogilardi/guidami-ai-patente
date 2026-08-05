@@ -1,0 +1,27 @@
+{
+  "question_id": 4374,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22270",
+  "text": "Il conducente deve regolare la velocità in relazione alle caratteristiche del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Adeguamento della velocità alle caratteristiche del veicolo",
+      "Regolazione prudente della velocità"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "caratteristiche tecniche del veicolo",
+      "condizioni di marcia",
+      "sicurezza della circolazione"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità alle caratteristiche tecniche del veicolo",
+      "moderazione della velocità in base alle condizioni di marcia e alle caratteristiche del veicolo"
+    ],
+    "rule_explanation": "Il conducente deve regolare la velocità in base alle caratteristiche tecniche del proprio veicolo, al fine di garantire la sicurezza della circolazione e di evitare pericoli."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4053,
+  "topic": "Segnali di pericolo",
+  "number": "18891",
+  "text": "Il segnale raffigurato preannuncia l'ingresso in una galleria",
+  "correct_answer": false,
+  "image": "77a40e39cc4b726c3f05d1759479cd9e.jpeg",
+  "image_description": "Segnale di dosso. Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, identificato da un pannello a forma di triangolo con bordo rosso e sfondo bianco. Al centro del pannello è raffigurato un pittogramma nero che rappresenta un dosso.",
+    "name": "Segnale di dosso",
+    "description": "Il segnale preannuncia la presenza di un dosso artificiale o naturale sulla carreggiata. È necessario moderare la velocità per superarlo in sicurezza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di ostacoli o pericoli stradali"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "dosso",
+      "galleria",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo stradale che preannunciano dossi",
+      "differenza tra segnale di dosso e segnale di galleria"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante un dosso preannuncia la presenza di un avvallamento o rialzo stradale, non l'ingresso in una galleria."
+  }
+}

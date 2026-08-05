@@ -1,0 +1,30 @@
+{
+  "question_id": 4621,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24674",
+  "text": "Circolare con un'autovettura su autostrada o su strada extraurbana principale avendo conseguito la patente di categoria B da meno di sei mesi comporta una perdita di punti sulla patente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Neopatentati",
+      "Limitazioni alla guida per neopatentati",
+      "Decurtazione punti patente"
+    ],
+    "exact_keywords": [
+      "patente B",
+      "neopatentato",
+      "autostrada",
+      "strada extraurbana principale",
+      "punti patente"
+    ],
+    "vector_search_queries": [
+      "limitazioni alla guida per neopatentati su autostrade e strade extraurbane principali",
+      "decurtazione punti patente per chi ha conseguito patente B da meno di sei mesi",
+      "normativa neopatentati e decurtazione punti patente"
+    ],
+    "rule_explanation": "La perdita di punti per neopatentati si applica ai primi tre anni dal conseguimento della patente, non solo ai primi sei mesi, e riguarda veicoli di categoria superiore a quella per cui si è conseguita la patente."
+  }
+}

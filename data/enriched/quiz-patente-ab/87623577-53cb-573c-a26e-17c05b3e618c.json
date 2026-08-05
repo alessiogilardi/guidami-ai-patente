@@ -1,0 +1,32 @@
+{
+  "question_id": 4322,
+  "topic": "Segnali di indicazione",
+  "number": "21761",
+  "text": "Il segnale raffigurato può essere abbinato ad un pannello che riporta gli orari di partenza degli autobus extraurbani",
+  "correct_answer": true,
+  "image": "6a522dfdeecbf56ec4b02389fb3b040e.jpeg",
+  "image_description": "Fermata di autobus. Il segnale indica una fermata di autobus. Può essere integrato da un pannello integrativo che riporta gli orari di partenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma rettangolare verticale, con bordo blu e sfondo bianco all'interno di un riquadro centrale. Al centro del riquadro bianco è presente il pittogramma stilizzato di un autobus. Sotto il riquadro bianco, la parte inferiore del segnale è di colore blu uniforme. Si tratta di un segnale di indicazione.",
+    "name": "Fermata di autobus",
+    "description": "Il segnale indica una fermata di autobus. Può essere integrato da un pannello integrativo che riporta gli orari di partenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di indicazione",
+      "Fermata di autobus",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "segnali di indicazione",
+      "fermata di autobus",
+      "pannello integrativo",
+      "orari di partenza"
+    ],
+    "vector_search_queries": [
+      "abbinamento segnale fermata autobus pannello orari",
+      "pannello integrativo con orari di partenza per fermata autobus"
+    ],
+    "rule_explanation": "Il segnale di fermata di autobus (segnali di indicazione) può essere integrato da un pannello integrativo che specifica gli orari di partenza degli autobus extraurbani."
+  }
+}

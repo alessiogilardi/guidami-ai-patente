@@ -1,0 +1,27 @@
+{
+  "question_id": 4388,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22468",
+  "text": "Nelle autostrade, il limite massimo di velocità è di 150 km/h nelle ore diurne e di 130 km/h in quelle notturne",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità in autostrada",
+      "Condizioni di visibilità e velocità"
+    ],
+    "exact_keywords": [
+      "autostrade",
+      "limite massimo di velocità",
+      "ore diurne",
+      "ore notturne"
+    ],
+    "vector_search_queries": [
+      "limite di velocità autostradale diurno e notturno",
+      "velocità massima consentita in autostrada in base alle condizioni di luce"
+    ],
+    "rule_explanation": "Il limite massimo di velocità in autostrada è di 130 km/h, salvo eccezioni per tratti specifici segnalati con limiti maggiori o minori."
+  }
+}

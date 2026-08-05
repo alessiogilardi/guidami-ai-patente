@@ -1,0 +1,27 @@
+{
+  "question_id": 4655,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24959",
+  "text": "L'assunzione di alcool migliora la vista",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Effetti dell'alcool sulla capacità di guida",
+      "Alterazione delle capacità psicofisiche"
+    ],
+    "exact_keywords": [
+      "alcool",
+      "capacità alla guida",
+      "alterazione",
+      "sostanze psicoattive"
+    ],
+    "vector_search_queries": [
+      "effetti dell'alcool sulla vista e guida",
+      "compromissione delle capacità visive dovuta all'alcool"
+    ],
+    "rule_explanation": "L'assunzione di alcool altera le capacità psicofisiche, inclusa la vista, compromettendo la sicurezza alla guida."
+  }
+}

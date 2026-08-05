@@ -1,0 +1,32 @@
+{
+  "question_id": 4175,
+  "topic": "Segnali di obbligo",
+  "number": "20336",
+  "text": "Il segnale raffigurato presegnala la progressiva chilometrica oltre la quale è obbligatorio l'uso delle catene",
+  "correct_answer": false,
+  "image": "a985afd3ac1c765e157fe601c5667c56.jpeg",
+  "image_description": "Obbligo di catene da neve. Obbligo di circolare con catene da neve o pneumatici invernali.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con sfondo blu e bordo bianco. Al centro del segnale è raffigurato un pneumatico con catene da neve montate. Il pittogramma è bianco su sfondo blu. Si tratta di un segnale di obbligo.",
+    "name": "Obbligo di catene da neve",
+    "description": "Obbligo di circolare con catene da neve o pneumatici invernali."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di obbligo",
+      "Uso di catene da neve",
+      "Pneumatici invernali"
+    ],
+    "exact_keywords": [
+      "catene da neve",
+      "pneumatici invernali",
+      "obbligo",
+      "segnali di prescrizione"
+    ],
+    "vector_search_queries": [
+      "segnali di obbligo di catene da neve o pneumatici invernali",
+      "differenza tra segnali di prescrizione e preavviso per catene da neve"
+    ],
+    "rule_explanation": "Il segnale di obbligo di catene da neve impone l'uso delle stesse o di pneumatici invernali, non presegnala una progressiva chilometrica."
+  }
+}

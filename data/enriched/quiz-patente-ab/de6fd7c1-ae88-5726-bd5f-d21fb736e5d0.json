@@ -1,0 +1,31 @@
+{
+  "question_id": 4288,
+  "topic": "Segnali di indicazione",
+  "number": "21446",
+  "text": "Il segnale raffigurato si trova su strade extraurbane",
+  "correct_answer": false,
+  "image": "c44eb3a3b6c5a3b6de41ee1b1223d78e.jpeg",
+  "image_description": "Preavviso di deviazione con indicazione di destinazioni e percorsi. Il segnale indica che per proseguire diritto si raggiunge Bologna tramite l'autostrada A1. Sulla sinistra, è indicata la destinazione Linate con il simbolo dell'aeroporto, accessibile tramite una deviazione a sinistra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di colore verde, tipico dei segnali di preavviso di direzioni o destinazioni su strade extraurbane o autostrade. Il segnale presenta in alto a sinistra il simbolo \"A1\" racchiuso in un quadrato, che identifica l'autostrada. Accanto, in lettere maiuscole bianche, è indicata la destinazione \"BOLOGNA\". Sulla sinistra del segnale, in un riquadro bianco, è presente il pittogramma di un aereo stilizzato seguito dalla scritta \"Linate\", indicando l'aeroporto di Linate come destinazione. A destra del segnale, sono presenti delle frecce bianche che indicano le direzioni: una freccia curva verso sinistra, che si collega alla destinazione \"Linate\", e una freccia dritta che prosegue verso l'alto, collegata alla destinazione \"BOLOGNA\". La freccia per Bologna è più spessa e continua, mentre quella per Linate è più sottile e curva. Questo schema grafico indica che proseguendo diritto si va a Bologna (probabilmente tramite l'autostrada A1), mentre svoltando a sinistra si raggiunge Linate.",
+    "name": "Preavviso di deviazione con indicazione di destinazioni e percorsi",
+    "description": "Il segnale indica che per proseguire diritto si raggiunge Bologna tramite l'autostrada A1. Sulla sinistra, è indicata la destinazione Linate con il simbolo dell'aeroporto, accessibile tramite una deviazione a sinistra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso",
+      "Segnaletica stradale di direzione ed indicazione"
+    ],
+    "exact_keywords": [
+      "segnali di preavviso",
+      "strade extraurbane",
+      "località",
+      "autostrada"
+    ],
+    "vector_search_queries": [
+      "collocazione segnali di preavviso di deviazione autostradale",
+      "segnaletica di direzione su strade urbane ed extraurbane"
+    ],
+    "rule_explanation": "I segnali di preavviso di deviazione, pur indicando destinazioni raggiungibili tramite autostrada, possono essere installati anche su strade urbane per fornire indicazioni utili ai conducenti."
+  }
+}

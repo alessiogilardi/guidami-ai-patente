@@ -1,0 +1,27 @@
+{
+  "question_id": 4376,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22323",
+  "text": "E' obbligatorio ridurre la velocità e all'occorrenza fermarsi in prossimità delle fermate degli autobus",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di moderazione della velocità",
+      "Comportamento in prossimità di fermate di trasporto pubblico"
+    ],
+    "exact_keywords": [
+      "ridurre la velocità",
+      "fermarsi",
+      "fermate degli autobus",
+      "pericolo o intralcio"
+    ],
+    "vector_search_queries": [
+      "obbligo di moderare la velocità in prossimità di fermate autobus",
+      "comportamento alla fermata di autobus per evitare intralcio"
+    ],
+    "rule_explanation": "Non sussiste un obbligo generale di ridurre la velocità o fermarsi in prossimità delle fermate degli autobus, salvo situazioni di pericolo o intralcio alla circolazione."
+  }
+}

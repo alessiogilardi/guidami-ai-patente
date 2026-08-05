@@ -1,0 +1,28 @@
+{
+  "question_id": 4703,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25295",
+  "text": "Se il parabrezza è coperto dalla polvere, bisogna utilizzare il dispositivo di disappannamento",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Dispositivi di sbrinamento e disappannamento",
+      "Visibilità del conducente"
+    ],
+    "exact_keywords": [
+      "parabrezza",
+      "polvere",
+      "dispositivo di disappannamento",
+      "visibilità"
+    ],
+    "vector_search_queries": [
+      "uso del dispositivo di disappannamento per la condensa sul parabrezza",
+      "pulizia del parabrezza dalla polvere con tergicristalli e lavavetri"
+    ],
+    "rule_explanation": "Il dispositivo di disappannamento serve per eliminare la condensa, non la polvere. Per la polvere sul parabrezza occorre usare i tergicristalli e il lavavetri."
+  }
+}

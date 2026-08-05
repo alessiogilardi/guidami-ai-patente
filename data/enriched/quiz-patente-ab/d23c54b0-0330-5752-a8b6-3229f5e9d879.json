@@ -1,0 +1,31 @@
+{
+  "question_id": 4373,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22267",
+  "text": "Il segnale in figura vieta il transito agli autobus",
+  "correct_answer": false,
+  "image": "b48111d338ed367bc117a752f3c07843.jpeg",
+  "image_description": "Segnale di divieto di transito con pannello integrativo (eccezione per autobus). Il segnale di divieto di transito (cerchio rosso con barra bianca orizzontale) è integrato da un pannello che specifica l'eccezione per gli autobus. Pertanto, il transito è vietato a tutti i veicoli, ad eccezione degli autobus.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di divieto di transito, caratterizzato da un cerchio rosso con una barra bianca orizzontale al centro. Sotto questo segnale principale, è presente un pannello integrativo rettangolare di colore bianco con bordo nero. Sul pannello integrativo è riportata la scritta \"eccetto\" in nero, seguita da un'immagine stilizzata di un autobus, anch'essa in nero. L'insieme dei due elementi costituisce un unico complesso segnaletico.",
+    "name": "Segnale di divieto di transito con pannello integrativo (eccezione per autobus)",
+    "description": "Il segnale di divieto di transito (cerchio rosso con barra bianca orizzontale) è integrato da un pannello che specifica l'eccezione per gli autobus. Pertanto, il transito è vietato a tutti i veicoli, ad eccezione degli autobus."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Pannelli integrativi di eccezione"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "pannello integrativo",
+      "autobus",
+      "eccezione"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito con pannelli integrativi di eccezione",
+      "interpretazione segnale divieto transito con pannello per autobus"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito vieta il transito a tutti i veicoli, salvo diversa indicazione del pannello integrativo che può specificare eccezioni."
+  }
+}

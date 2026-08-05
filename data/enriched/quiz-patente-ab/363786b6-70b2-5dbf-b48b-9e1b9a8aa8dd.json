@@ -1,0 +1,29 @@
+{
+  "question_id": 4014,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18463",
+  "text": "La carreggiata non comprende le piste ciclabili",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di carreggiata",
+      "Infrastrutture stradali",
+      "Uso della strada"
+    ],
+    "exact_keywords": [
+      "carreggiata",
+      "pista ciclabile",
+      "parte della strada",
+      "struttura stradale"
+    ],
+    "vector_search_queries": [
+      "definizione di carreggiata nel codice della strada",
+      "distinzione tra carreggiata e pista ciclabile",
+      "elementi costitutivi della carreggiata"
+    ],
+    "rule_explanation": "La carreggiata è la parte della strada destinata ai veicoli; le piste ciclabili sono separate e non ne fanno parte."
+  }
+}

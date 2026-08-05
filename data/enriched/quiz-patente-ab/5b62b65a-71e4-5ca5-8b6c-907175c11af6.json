@@ -1,0 +1,28 @@
+{
+  "question_id": 4382,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22401",
+  "text": "Salvo diversa segnalazione, il limite massimo di velocità consentito per macchine agricole e macchine operatrici con pneumatici è di 40 km/h",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Limiti di velocità per macchine agricole e operatrici",
+      "Regolamentazione della circolazione dei veicoli lenti"
+    ],
+    "exact_keywords": [
+      "macchine agricole",
+      "macchine operatrici",
+      "pneumatici",
+      "limite massimo di velocità",
+      "40 km/h"
+    ],
+    "vector_search_queries": [
+      "limite di velocità macchine agricole con pneumatici",
+      "velocità massima consentita macchine operatrici pneumatici"
+    ],
+    "rule_explanation": "Il limite massimo di velocità per macchine agricole e operatrici dotate di pneumatici è fissato a 40 km/h, salvo diversa segnalazione specifica."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "question_id": 4435,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22920",
+  "text": "Se un autotreno intende svoltare a destra in una strada stretta, i conducenti degli altri veicoli debbono tener presente che potrebbe diminuire notevolmente la velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di svolta",
+      "Comportamento dei conducenti in prossimità di veicoli ingombranti",
+      "Regolazione della velocità in relazione alle manovre altrui"
+    ],
+    "exact_keywords": [
+      "autotreno",
+      "svolta a destra",
+      "strada stretta",
+      "riduzione di velocità",
+      "conduttori degli altri veicoli"
+    ],
+    "vector_search_queries": [
+      "obblighi dei conducenti in presenza di autotreno in svolta su strada stretta",
+      "prevedibilità della riduzione di velocità di un autotreno durante una manovra di svolta"
+    ],
+    "rule_explanation": "I conducenti devono prevedere e facilitare le manovre dei veicoli ingombranti, come gli autotreni in svolta, tenendo conto di possibili riduzioni di velocità."
+  }
+}

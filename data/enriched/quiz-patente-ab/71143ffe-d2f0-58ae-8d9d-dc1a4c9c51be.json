@@ -1,0 +1,29 @@
+{
+  "question_id": 4629,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24772",
+  "text": "È opportuno che il conducente esegua personalmente la manutenzione della pompa di iniezione del proprio veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Responsabilità del conducente"
+    ],
+    "exact_keywords": [
+      "manutenzione del veicolo",
+      "pompa di iniezione",
+      "conducente",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "manutenzione del veicolo da parte del conducente",
+      "responsabilità del conducente per la manutenzione del veicolo",
+      "sicurezza del veicolo e manutenzione della pompa di iniezione"
+    ],
+    "rule_explanation": "La manutenzione del veicolo, inclusa la pompa di iniezione, deve essere eseguita da personale qualificato per garantire la sicurezza stradale."
+  }
+}

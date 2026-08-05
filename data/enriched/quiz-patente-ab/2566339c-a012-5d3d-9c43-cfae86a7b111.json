@@ -1,0 +1,27 @@
+{
+  "question_id": 4034,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18670",
+  "text": "Bisogna lasciare liberi gli incroci in caso di traffico intenso",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione della circolazione negli incroci",
+      "Principio di non intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "traffico intenso",
+      "libero",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "divieto di impegnare incroci con traffico intenso senza possibilità di liberarlo",
+      "obbligo di mantenere liberi gli incroci in caso di congestione del traffico"
+    ],
+    "rule_explanation": "Nei centri abitati, è vietato impegnare un incrocio se non si ha la possibilità di liberarlo completamente senza causare intralcio alla circolazione trasversale."
+  }
+}

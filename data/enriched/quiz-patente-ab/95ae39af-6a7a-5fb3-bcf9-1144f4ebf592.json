@@ -1,0 +1,30 @@
+{
+  "question_id": 4517,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23709",
+  "text": "Durante la sosta il conducente deve posizionare il cambio di velocità dell'autovettura in folle",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo",
+      "Arresto del veicolo",
+      "Manovre di parcheggio"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "arresto",
+      "cambio di velocità",
+      "autovettura",
+      "folle"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente durante la sosta",
+      "misure di sicurezza durante l'arresto del veicolo",
+      "posizione del cambio durante la sosta"
+    ],
+    "rule_explanation": "Durante la sosta o l'arresto, il conducente deve adottare tutte le misure atte a evitare pericoli e deve essere in grado di muovere il veicolo. Non è obbligatorio mettere il cambio in folle."
+  }
+}

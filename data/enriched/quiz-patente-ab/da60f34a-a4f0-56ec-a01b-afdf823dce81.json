@@ -1,0 +1,28 @@
+{
+  "question_id": 4594,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24323",
+  "text": "Nei veicoli che non sono muniti del comando per disabilitare l'airbag dal lato passeggero, il seggiolino per bambini non deve essere sistemato sul sedile anteriore, con lo schienale rivolto verso la strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sistemi di ritenuta per bambini",
+      "Airbag lato passeggero",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "airbag lato passeggero",
+      "dispositivo di comando per la disattivazione",
+      "seggiolino per bambini",
+      "sedile anteriore"
+    ],
+    "vector_search_queries": [
+      "installazione seggiolino bambini su sedile anteriore con airbag passeggero disattivabile",
+      "divieto di posizionamento seggiolino bambini su sedile anteriore in assenza di comando disattivazione airbag"
+    ],
+    "rule_explanation": "Nei veicoli privi del comando di disattivazione dell'airbag lato passeggero, è vietato installare il seggiolino per bambini sul sedile anteriore con lo schienale rivolto verso la strada."
+  }
+}

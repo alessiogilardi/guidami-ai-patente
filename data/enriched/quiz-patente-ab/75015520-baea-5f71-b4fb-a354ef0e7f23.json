@@ -1,0 +1,30 @@
+{
+  "question_id": 4047,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18814",
+  "text": "In vicinanza di una piazzola di fermata di autobus per scolari, può accadere che i bambini scendano dall'autobus senza fare attenzione ai veicoli che sopraggiungono",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela degli utenti deboli della strada",
+      "Comportamento prudente in prossimità di fermate di scuolabus",
+      "Prevenzione del rischio per i bambini in ambito stradale"
+    ],
+    "exact_keywords": [
+      "scuolabus",
+      "fermata di scuolabus",
+      "bambini",
+      "condotta di guida",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di prudenza in prossimità di fermate di scuolabus",
+      "rischio di attraversamento improvviso da parte di bambini in prossimità di scuolabus",
+      "precauzioni per la sicurezza dei bambini che scendono dallo scuolabus"
+    ],
+    "rule_explanation": "In prossimità delle fermate di scuolabus, è necessario moderare la velocità e prestare la massima attenzione, poiché i bambini potrebbero attraversare la strada senza preavviso."
+  }
+}

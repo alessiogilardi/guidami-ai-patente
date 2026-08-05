@@ -1,0 +1,31 @@
+{
+  "question_id": 4208,
+  "topic": "Segnali di precedenza",
+  "number": "20689",
+  "text": "In presenza del segnale raffigurato dobbiamo accertarci che i veicoli provenienti dal senso contrario ci diano la precedenza",
+  "correct_answer": true,
+  "image": "1d54595537d45c8248194c62b91d2222.jpeg",
+  "image_description": "Segnale di dare precedenza agli veicoli provenienti dal senso di marcia opposto. Il segnale indica che la circolazione avviene in doppio senso e che i veicoli che si avvicinano da senso opposto hanno la precedenza. Pertanto, è necessario dare la precedenza ai veicoli provenienti dalla direzione opposta.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo bianco su sfondo blu scuro. All'interno del segnale sono presenti due frecce: una freccia rossa rivolta verso il basso e una freccia bianca rivolta verso l'alto. La freccia rossa indica la direzione da cui provengono i veicoli che devono dare la precedenza, mentre la freccia bianca indica la direzione da cui provengono i veicoli che hanno la precedenza. Questo segnale è comunemente noto come segnale di \"dare precedenza ai veicoli provenienti dal senso di marcia opposto\" o \"strettoia con doppio senso di circolazione\".",
+    "name": "Segnale di dare precedenza agli veicoli provenienti dal senso di marcia opposto",
+    "description": "Il segnale indica che la circolazione avviene in doppio senso e che i veicoli che si avvicinano da senso opposto hanno la precedenza. Pertanto, è necessario dare la precedenza ai veicoli provenienti dalla direzione opposta."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di dare precedenza",
+      "Regola di precedenza tra veicoli in direzioni opposte"
+    ],
+    "exact_keywords": [
+      "segnale di dare precedenza",
+      "veicoli provenienti dal senso contrario",
+      "circolazione in doppio senso",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "obbligo di dare precedenza ai veicoli provenienti dal senso contrario in presenza del segnale specifico",
+      "interpretazione segnale di dare precedenza in carreggiate a doppio senso di marcia"
+    ],
+    "rule_explanation": "Il segnale di 'dare precedenza' impone al conducente di cedere il passo ai veicoli provenienti dalla direzione opposta quando la circolazione avviene in doppio senso."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4136,
+  "topic": "Segnali di divieto",
+  "number": "19883",
+  "text": "Il segnale raffigurato indica la fine del divieto di sosta su entrambi i lati della strada",
+  "correct_answer": false,
+  "image": "cfd537fd007a42c41805523666d78953.jpeg",
+  "image_description": "Fine divieto di sorpasso. Indica la fine del divieto di sorpasso per tutti i veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso. All'interno del cerchio, una banda diagonale nera parte dall'angolo in alto a sinistra e arriva all'angolo in basso a destra, attraversando il centro del segnale. Ai lati della banda nera, su sfondo bianco, sono raffigurati due veicoli stilizzati, uno a sinistra e uno a destra, visti frontalmente. Il segnale è posizionato isolatamente.",
+    "name": "Fine divieto di sorpasso",
+    "description": "Indica la fine del divieto di sorpasso per tutti i veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Segnali di fine prescrizione"
+    ],
+    "exact_keywords": [
+      "fine del divieto di sosta",
+      "segnali di divieto",
+      "segnali di fine prescrizione",
+      "entrambi i lati della strada"
+    ],
+    "vector_search_queries": [
+      "segnali che indicano la fine del divieto di sosta",
+      "differenza tra divieto di sosta e divieto di fermata",
+      "interpretazione segnali di fine prescrizione"
+    ],
+    "rule_explanation": "Il segnale di fine divieto di sosta indica la cessazione del divieto di sosta, che solitamente riguarda entrambi i lati della strada, ma non il divieto di fermata."
+  }
+}

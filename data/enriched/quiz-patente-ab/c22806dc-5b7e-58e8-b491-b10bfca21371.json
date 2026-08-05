@@ -1,0 +1,27 @@
+{
+  "question_id": 4587,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24268",
+  "text": "Fuori dei centri abitati, i conducenti devono spegnere i proiettori di profondità procedendo con quelli anabbaglianti, quando stanno per incrociare altri veicoli",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Uso dei proiettori di profondità",
+      "Obbligo di alternanza dei fari"
+    ],
+    "exact_keywords": [
+      "proiettori di profondità",
+      "fari anabbaglianti",
+      "incrocio di altri veicoli",
+      "centri abitati"
+    ],
+    "vector_search_queries": [
+      "obbligo spegnimento proiettori di profondità in caso di incrocio fuori dai centri abitati",
+      "uso fari anabbaglianti in presenza di altri veicoli in carreggiata opposta"
+    ],
+    "rule_explanation": "Fuori dei centri abitati, i proiettori di profondità devono essere spenti e sostituiti da quelli anabbaglianti in caso di incrocio con altri veicoli per non abbagliarli."
+  }
+}

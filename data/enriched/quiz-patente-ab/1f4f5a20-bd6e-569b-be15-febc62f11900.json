@@ -1,0 +1,31 @@
+{
+  "question_id": 4058,
+  "topic": "Segnali di pericolo",
+  "number": "18945",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada in cui è consentita la fermata, ma non la sosta",
+  "correct_answer": false,
+  "image": "34d83af03310c64d51078b75499c7efd.jpeg",
+  "image_description": "Segnale di curva pericolosa a destra. Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del triangolo è raffigurata una freccia nera curva che indica una svolta a destra. Questo è il segnale di \"Curva pericolosa a destra\".",
+    "name": "Segnale di curva pericolosa a destra",
+    "description": "Il segnale preannuncia una curva pericolosa a destra. È un segnale di pericolo che impone al conducente di moderare la velocità e di prestare particolare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Divieto di sosta e fermata"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "curva pericolosa",
+      "fermarsi",
+      "sosta"
+    ],
+    "vector_search_queries": [
+      "significato segnali di pericolo generici",
+      "differenza tra sosta e fermata nel CdS"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano un pericolo specifico, come una curva, e impongono di moderare la velocità e prestare attenzione, non di regolare la sosta o la fermata."
+  }
+}

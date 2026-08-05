@@ -1,0 +1,30 @@
+{
+  "question_id": 4645,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24880",
+  "text": "Se un infortunato della strada ha un'abbondante emorragia esterna è opportuno, se possibile, mettere il ferito in posizione seduta o sdraiata, in attesa che arrivino i soccorsi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso",
+      "Gestione emorragie esterne",
+      "Posizionamento del ferito"
+    ],
+    "exact_keywords": [
+      "infortunato della strada",
+      "emorragia esterna",
+      "posizione seduta",
+      "posizione sdraiata",
+      "soccorsi sanitari"
+    ],
+    "vector_search_queries": [
+      "gestione emorragia esterna primo soccorso",
+      "posizionamento ferito con emorragia esterna",
+      "primo soccorso emorragia stradale"
+    ],
+    "rule_explanation": "In caso di emorragia esterna, è opportuno posizionare l'infortunato in posizione seduta o sdraiata per facilitare il controllo dell'emorragia e attendere i soccorsi qualificati."
+  }
+}

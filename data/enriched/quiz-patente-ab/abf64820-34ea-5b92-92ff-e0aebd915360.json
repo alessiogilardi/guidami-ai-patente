@@ -1,0 +1,27 @@
+{
+  "question_id": 4013,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18454",
+  "text": "Nelle autostrade possono circolare solo le autovetture",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolamentazione della circolazione autostradale",
+      "Classificazione dei veicoli ammessi in autostrada"
+    ],
+    "exact_keywords": [
+      "autostrada",
+      "autovetture",
+      "veicoli a motore",
+      "divieto di circolazione"
+    ],
+    "vector_search_queries": [
+      "veicoli ammessi alla circolazione in autostrada",
+      "definizione di autostrada e veicoli ammessi"
+    ],
+    "rule_explanation": "In autostrada è consentita la circolazione a tutti i veicoli a motore, purché non espressamente esclusi dal regolamento, non solo alle autovetture."
+  }
+}

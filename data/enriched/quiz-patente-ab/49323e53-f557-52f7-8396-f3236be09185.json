@@ -1,0 +1,30 @@
+{
+  "question_id": 4708,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25361",
+  "text": "Le sospensioni di un veicolo a motore sono realizzate in modo da non necessitare di verifiche e manutenzioni per tutta la durata della garanzia del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Sicurezza stradale",
+      "Componenti del veicolo"
+    ],
+    "exact_keywords": [
+      "sospensioni",
+      "manutenzione",
+      "verifiche",
+      "sicurezza",
+      "veicolo a motore"
+    ],
+    "vector_search_queries": [
+      "manutenzione obbligatoria delle sospensioni del veicolo",
+      "verifiche periodiche componenti sicurezza veicolo",
+      "obblighi manutentivi per le sospensioni del veicolo a motore"
+    ],
+    "rule_explanation": "Le sospensioni, come altri componenti essenziali per la sicurezza, richiedono verifiche e manutenzioni periodiche, non essendo esentate per tutta la durata della garanzia del veicolo."
+  }
+}

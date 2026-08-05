@@ -1,0 +1,32 @@
+{
+  "question_id": 4100,
+  "topic": "Segnali di pericolo",
+  "number": "19465",
+  "text": "Il segnale raffigurato vieta il transito ai veicoli che trasportano prodotti facilmente infiammabili",
+  "correct_answer": false,
+  "image": "4e35a23fa5e62af4861ff27076a91a69.jpeg",
+  "image_description": "Segnale di pericolo di incendio. Il segnale preannuncia un pericolo di incendio, indicando la possibilità che la vegetazione ai lati della strada possa incendiarsi. È un segnale di pericolo che richiede prudenza da parte dei conducenti.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale ha la forma di un triangolo con il bordo rosso e il fondo bianco. Al centro del segnale è raffigurato un pittogramma che rappresenta un albero stilizzato che brucia, con una fiamma alla base e un fiammifero acceso. Questo pittogramma indica un pericolo di incendio. Non sono presenti pannelli integrativi. L'immagine è focalizzata unicamente sul segnale.",
+    "name": "Segnale di pericolo di incendio",
+    "description": "Il segnale preannuncia un pericolo di incendio, indicando la possibilità che la vegetazione ai lati della strada possa incendiarsi. È un segnale di pericolo che richiede prudenza da parte dei conducenti."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Divieti specifici per determinate categorie di veicoli"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "transito vietato",
+      "veicoli che trasportano sostanze infiammabili",
+      "incendio"
+    ],
+    "vector_search_queries": [
+      "significato segnali di pericolo incendio",
+      "divieto transito veicoli infiammabili segnale stradale",
+      "interpretazione segnali di pericolo con divieti specifici"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano un rischio specifico, ma non impongono divieti di transito diretti, a meno che non siano integrati da pannelli aggiuntivi. Il segnale di incendio indica un pericolo, non un divieto."
+  }
+}

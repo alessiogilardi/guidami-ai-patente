@@ -1,0 +1,27 @@
+{
+  "question_id": 4503,
+  "topic": "Norme sul sorpasso",
+  "number": "23586",
+  "text": "Il sorpasso a destra è consentito quando si percorre una strada extraurbana a senso unico",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale del sorpasso",
+      "Sorpasso a destra"
+    ],
+    "exact_keywords": [
+      "sorpasso a destra",
+      "strada extraurbana",
+      "senso unico",
+      "divieto"
+    ],
+    "vector_search_queries": [
+      "divieto di sorpasso a destra su strade extraurbane a senso unico",
+      "regola generale del sorpasso a sinistra"
+    ],
+    "rule_explanation": "Il sorpasso a destra è vietato, salvo eccezioni specifiche non applicabili alle strade extraurbane a senso unico. La regola generale impone il sorpasso a sinistra."
+  }
+}

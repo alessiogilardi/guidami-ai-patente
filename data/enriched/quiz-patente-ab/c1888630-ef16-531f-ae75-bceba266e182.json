@@ -1,0 +1,30 @@
+{
+  "question_id": 4601,
+  "topic": "Dispositivi di equipaggiamento: funzione ed uso; cinture di sicurezza e sistemi di ritenuta per bambini; casco protettivo; abbigliamento di sicurezza",
+  "number": "24422",
+  "text": "La visiera del casco può essere riparata con nastro adesivo, purché sia di tipo ultra trasparente",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza del conducente",
+      "Dispositivi di protezione individuale",
+      "Casco protettivo"
+    ],
+    "exact_keywords": [
+      "visiera",
+      "casco protettivo",
+      "riparazione",
+      "nastro adesivo",
+      "idoneità"
+    ],
+    "vector_search_queries": [
+      "riparazione visiera casco con nastro adesivo",
+      "idoneità visiera casco protettivo non conforme",
+      "uso di nastro adesivo su visiera casco motociclista"
+    ],
+    "rule_explanation": "La visiera del casco protettivo non può essere riparata con nastro adesivo, anche se trasparente, in quanto ciò potrebbe comprometterne l'idoneità e la sicurezza."
+  }
+}

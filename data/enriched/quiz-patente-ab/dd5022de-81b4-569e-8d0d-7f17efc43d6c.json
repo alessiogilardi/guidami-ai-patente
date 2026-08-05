@@ -1,0 +1,28 @@
+{
+  "question_id": 4011,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18433",
+  "text": "Nelle aree pedonali i ciclomotori possono transitare solo di giorno",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree pedonali",
+      "Regole di circolazione per ciclomotori",
+      "Accesso e transito in aree speciali"
+    ],
+    "exact_keywords": [
+      "aree pedonali",
+      "ciclomotori",
+      "transito",
+      "divieto di transito"
+    ],
+    "vector_search_queries": [
+      "divieto di transito per ciclomotori nelle aree pedonali",
+      "regole di accesso e circolazione dei ciclomotori nelle zone pedonali"
+    ],
+    "rule_explanation": "Nelle aree pedonali il transito dei ciclomotori è generalmente vietato, salvo specifiche eccezioni o orari diversamente indicati dalla segnaletica."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4115,
+  "topic": "Segnali di divieto",
+  "number": "19648",
+  "text": "Il segnale raffigurato consente il transito dei motocicli",
+  "correct_answer": true,
+  "image": "2c1662a4924d2164fcd5f9efc31f87ae.jpeg",
+  "image_description": "Segnale di divieto di transito per veicoli a trazione animale. Il segnale vieta il transito ai veicoli a trazione animale.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di divieto. Il segnale è rotondo con bordo rosso e sfondo bianco. Al centro è raffigurato un cavallo che traina una carrozza, con una persona seduta sulla carrozza. Il pittogramma è nero. Questo segnale indica un divieto specifico.",
+    "name": "Segnale di divieto di transito per veicoli a trazione animale",
+    "description": "Il segnale vieta il transito ai veicoli a trazione animale."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto",
+      "Segnali di indicazione"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "veicoli a trazione animale",
+      "motocicli",
+      "segnali stradali"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito specifici per categoria di veicolo",
+      "interpretazione segnali stradali di divieto e categorie escluse"
+    ],
+    "rule_explanation": "Il segnale di divieto di transito per veicoli a trazione animale non vieta il transito ai motocicli, salvo diversa specifica indicazione."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4610,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24510",
+  "text": "La patente di categoria A2 può essere conseguita solo se si è già in possesso della patente di categoria A1",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Requisiti per il conseguimento delle patenti di guida",
+      "Relazione tra patenti di categoria A1 e A2"
+    ],
+    "exact_keywords": [
+      "patente A2",
+      "patente A1",
+      "conseguimento",
+      "requisiti"
+    ],
+    "vector_search_queries": [
+      "requisiti per conseguire patente A2 senza possedere patente A1",
+      "differenza tra patente A1 e A2 e requisiti di conseguimento"
+    ],
+    "rule_explanation": "Per conseguire la patente A2 non è necessario essere già in possesso della patente A1; i requisiti sono distinti e specifici per ciascuna categoria."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4534,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23831",
+  "text": "Il segnale mobile triangolare di pericolo deve essere posto dietro al veicolo o all'ostacolo da segnalare, ad almeno 50 metri",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di pericolo",
+      "Obblighi del conducente in caso di arresto di emergenza"
+    ],
+    "exact_keywords": [
+      "segnale mobile triangolare",
+      "veicolo fermo",
+      "distanza di preavviso",
+      "200 metri"
+    ],
+    "vector_search_queries": [
+      "posizionamento segnale mobile triangolare autostrada",
+      "distanza di preavviso per veicolo fermo su strade extraurbane principali"
+    ],
+    "rule_explanation": "Il segnale mobile di pericolo va posizionato a 100 metri dall'ostacolo se si circola su strade extraurbane o autostrade, e a 50 metri su altre strade."
+  }
+}

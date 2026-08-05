@@ -1,0 +1,32 @@
+{
+  "question_id": 4330,
+  "topic": "Segnali complementari; segnali temporanei e di cantiere",
+  "number": "21826",
+  "text": "Il pannello raffigurato indica la vicinanza di una curva stretta",
+  "correct_answer": true,
+  "image": "bacab78176dc95f719635f109766d036.jpeg",
+  "image_description": "Cartello indicatore del numero progressivo di un tornante. Il segnale indica il numero progressivo di un tornante, segnalando che si tratta del primo di una serie.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma quadrata con bordo nero e sfondo bianco. Al centro, in alto, è presente il numero '1' con un piccolo cerchio in apice (indicante 'primo'). Sotto il numero, in lettere maiuscole, è scritta la parola 'tornante'. Il segnale è un pannello integrativo che fornisce informazioni aggiuntive su un segnale preesistente (non visibile nell'immagine).",
+    "name": "Cartello indicatore del numero progressivo di un tornante",
+    "description": "Il segnale indica il numero progressivo di un tornante, segnalando che si tratta del primo di una serie."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Curve e deviazioni",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "pannello progressivo",
+      "tornante",
+      "curva stretta",
+      "preavviso di curva"
+    ],
+    "vector_search_queries": [
+      "pannello progressivo di tornante e preavviso di curva stretta",
+      "segnaletica stradale di pericolo per curve e deviazioni"
+    ],
+    "rule_explanation": "Il pannello progressivo di tornante indica la vicinanza di una curva stretta, segnalando il numero progressivo del tornante stesso all'interno di una serie."
+  }
+}

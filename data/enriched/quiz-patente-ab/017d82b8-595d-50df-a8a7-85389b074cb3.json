@@ -1,0 +1,31 @@
+{
+  "question_id": 4270,
+  "topic": "Segnali di indicazione",
+  "number": "21258",
+  "text": "Il segnale raffigurato identifica una strada comunale",
+  "correct_answer": true,
+  "image": "8898484eae51d3fddd775bd2ae9e2572.jpeg",
+  "image_description": "Segnale di numero di strada comunale. Il segnale indica che ci si trova lungo la strada comunale numero 19.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale rettangolare con bordo nero su sfondo bianco. Al centro del segnale sono presenti le lettere \"SC\" seguite dal numero \"19\", anch'essi in nero. Il segnale è un segnale di indicazione che specifica il numero di una strada comunale.",
+    "name": "Segnale di numero di strada comunale",
+    "description": "Il segnale indica che ci si trova lungo la strada comunale numero 19."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Identificazione delle strade comunali"
+    ],
+    "exact_keywords": [
+      "segnale stradale",
+      "strada comunale",
+      "numero civico stradale",
+      "denominazione ufficiale"
+    ],
+    "vector_search_queries": [
+      "segnaletica indicante numero strada comunale",
+      "identificazione ufficiale delle strade comunali tramite segnali stradali"
+    ],
+    "rule_explanation": "Il segnale di numero civico stradale indica la denominazione ufficiale della strada, che per le strade comunali corrisponde al numero assegnato dal Comune."
+  }
+}

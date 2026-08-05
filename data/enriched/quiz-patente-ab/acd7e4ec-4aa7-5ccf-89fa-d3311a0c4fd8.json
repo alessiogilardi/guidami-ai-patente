@@ -1,0 +1,29 @@
+{
+  "question_id": 4675,
+  "topic": "Limitazione dei consumi; rispetto dell¿ambiente; inquinamento: atmosferico, acustico, da cattivo smaltimento dei rifiuti",
+  "number": "25098",
+  "text": "Nelle curve percorse a forte velocità, lo strisciamento dei pneumatici aumenta la rumorosità del veicolo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Inquinamento acustico",
+      "Comportamento alla guida",
+      "Impatto ambientale dei veicoli"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "strisciamento pneumatici",
+      "rumorosità del veicolo",
+      "inquinamento acustico"
+    ],
+    "vector_search_queries": [
+      "aumento rumorosità veicolo per velocità in curva",
+      "impatto dello strisciamento pneumatici sull'inquinamento acustico",
+      "relazione tra velocità, attrito pneumatici e rumore"
+    ],
+    "rule_explanation": "Percorrere le curve a velocità elevata causa un maggiore strisciamento dei pneumatici, aumentando la rumorosità del veicolo e contribuendo all'inquinamento acustico."
+  }
+}

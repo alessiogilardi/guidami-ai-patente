@@ -1,0 +1,28 @@
+{
+  "question_id": 4011,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18425",
+  "text": "Nelle aree pedonali possono transitare i veicoli ad emissione zero (elettrici), se espressamente consentito",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree pedonali",
+      "Veicoli a emissione zero",
+      "Accesso e circolazione stradale"
+    ],
+    "exact_keywords": [
+      "area pedonale",
+      "veicoli ad emissione zero",
+      "veicoli elettrici",
+      "accesso consentito"
+    ],
+    "vector_search_queries": [
+      "accesso veicoli a emissione zero in aree pedonali",
+      "circolazione veicoli elettrici in zone pedonali autorizzate"
+    ],
+    "rule_explanation": "L'accesso alle aree pedonali è generalmente vietato ai veicoli, salvo eccezioni per veicoli a emissione zero se espressamente autorizzati."
+  }
+}

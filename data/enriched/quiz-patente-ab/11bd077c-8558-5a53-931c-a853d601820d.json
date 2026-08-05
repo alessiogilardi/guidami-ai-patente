@@ -1,0 +1,32 @@
+{
+  "question_id": 4140,
+  "topic": "Segnali di divieto",
+  "number": "19927",
+  "text": "Il segnale raffigurato è un segnale di prescrizione",
+  "correct_answer": true,
+  "image": "d4b28695e6068e452924476599e75981.jpeg",
+  "image_description": "Segnale di divieto di sosta. Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo blu. Al centro del disco è presente una barra rossa diagonale che va dall'alto a sinistra verso il basso a destra. Questo è il segnale di divieto di sosta. Non sono presenti pannelli integrativi.",
+    "name": "Segnale di divieto di sosta",
+    "description": "Il segnale vieta la sosta sul lato della strada dove è posto. La fermata è consentita."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di prescrizione",
+      "Segnali di divieto"
+    ],
+    "exact_keywords": [
+      "segnali di prescrizione",
+      "segnali di divieto",
+      "divieto di sosta",
+      "segnali verticali"
+    ],
+    "vector_search_queries": [
+      "classificazione segnali stradali di prescrizione",
+      "segnali di divieto di sosta e loro significato",
+      "differenza tra segnali di prescrizione e divieto"
+    ],
+    "rule_explanation": "I segnali di prescrizione includono i segnali di obbligo e i segnali di divieto, che impongono o vietano specifici comportamenti ai conducenti."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "question_id": 4094,
+  "topic": "Segnali di pericolo",
+  "number": "19390",
+  "text": "Il segnale raffigurato preannuncia un tratto di strada con cantieri stradali",
+  "correct_answer": false,
+  "image": "ddcc6610d88743a87ab49dda7f0f69be.jpeg",
+  "image_description": "Segnale di pericolo di caduta massi. Il segnale preannuncia un pericolo di caduta massi sulla carreggiata. È necessario moderare la velocità e prestare attenzione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo. Il segnale è di forma triangolare con bordo rosso e sfondo bianco. Al centro è raffigurato un pittogramma nero che rappresenta un versante di montagna da cui cadono dei massi. Il pittogramma indica il pericolo di caduta massi.",
+    "name": "Segnale di pericolo di caduta massi",
+    "description": "Il segnale preannuncia un pericolo di caduta massi sulla carreggiata. È necessario moderare la velocità e prestare attenzione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Presegnalazione di pericolo specifico"
+    ],
+    "exact_keywords": [
+      "segnali di pericolo",
+      "caduta massi",
+      "preavviso",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo stradale e loro significato specifico",
+      "differenza tra segnale di caduta massi e segnale di pericolo generico per cantieri"
+    ],
+    "rule_explanation": "I segnali di pericolo preavvisano un pericolo specifico. Il segnale di caduta massi indica questo pericolo, non cantieri stradali."
+  }
+}

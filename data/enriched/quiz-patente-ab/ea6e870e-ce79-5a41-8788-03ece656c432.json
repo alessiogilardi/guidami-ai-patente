@@ -1,0 +1,31 @@
+{
+  "question_id": 4250,
+  "topic": "Segnalazioni semaforiche; segnalazioni degli agenti del traffico",
+  "number": "21070",
+  "text": "La luce verde accesa del semaforo in figura obbliga i pedoni a dare la precedenza ai veicoli che svoltano",
+  "correct_answer": false,
+  "image": "2129f648b286c6c53769eb3846a537af.jpeg",
+  "image_description": "Semaforo pedonale. Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un semaforo pedonale verticale. Le luci sono disposte dall'alto verso il basso: rossa, gialla e verde. Ogni luce contiene la sagoma stilizzata di una figura umana. La luce rossa mostra una figura ferma, la luce gialla una figura ferma, e la luce verde una figura in movimento. Il semaforo è montato su un palo o struttura simile, ma solo il semaforo stesso è visibile chiaramente. Non ci sono altri elementi stradali o veicoli nell'immagine.",
+    "name": "Semaforo pedonale",
+    "description": "Il segnale raffigura un semaforo pedonale con tre luci: rossa (in alto), gialla (al centro) e verde (in basso). La luce rossa, rappresentata da una figura umana stilizzata rossa, indica ai pedoni di fermarsi e non attraversare. La luce gialla, figura umana stilizzata gialla, indica ai pedoni di liberare rapidamente l'attraversamento se già impegnato. La luce verde, figura umana stilizzata verde in movimento, indica ai pedoni che possono attraversare la strada."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regole di precedenza tra pedoni e veicoli in prossimità di semafori",
+      "Segnaletica semaforica pedonale"
+    ],
+    "exact_keywords": [
+      "luce verde pedonale",
+      "attraversamento pedonale",
+      "svolta dei veicoli",
+      "dare la precedenza"
+    ],
+    "vector_search_queries": [
+      "precedenza pedoni semaforo verde",
+      "regole di attraversamento pedonale con semaforo verde e svolta veicoli"
+    ],
+    "rule_explanation": "La luce verde del semaforo pedonale consente l'attraversamento ai pedoni, i quali hanno la precedenza sui veicoli che svoltano, salvo diversa segnalazione."
+  }
+}

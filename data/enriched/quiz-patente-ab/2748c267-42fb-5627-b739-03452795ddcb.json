@@ -1,0 +1,30 @@
+{
+  "question_id": 4687,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25177",
+  "text": "La forza aderente aumenta se l'asfalto è coperto di foglie",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aderenza pneumatico-strada",
+      "Condizioni di aderenza stradale",
+      "Fattori che influenzano l\\'aderenza"
+    ],
+    "exact_keywords": [
+      "forza aderente",
+      "aderenza",
+      "pneumatici",
+      "asfalto",
+      "condizioni della strada"
+    ],
+    "vector_search_queries": [
+      "condizioni che riducono l\\'aderenza degli pneumatici sull\\'asfalto",
+      "impatto delle foglie sull\\'aderenza stradale",
+      "forza aderente e presenza di detriti sulla carreggiata"
+    ],
+    "rule_explanation": "La forza aderente tra pneumatici e asfalto diminuisce in presenza di detriti come foglie, olio o acqua, riducendo la tenuta di strada."
+  }
+}

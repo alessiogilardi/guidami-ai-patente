@@ -1,0 +1,29 @@
+{
+  "question_id": 4714,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25439",
+  "text": "Nei veicoli a motore a due ruote, la catena di trasmissione non necessita di lubrificazione perché è realizzata in acciaio autolubrificante",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manutenzione del veicolo",
+      "Componenti meccaniche",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "catena di trasmissione",
+      "lubrificazione",
+      "acciaio autolubrificante",
+      "veicoli a motore a due ruote"
+    ],
+    "vector_search_queries": [
+      "manutenzione catena trasmissione moto",
+      "lubrificazione catena moto autolubrificante",
+      "usura catena trasmissione veicoli a due ruote"
+    ],
+    "rule_explanation": "La catena di trasmissione dei veicoli a due ruote richiede lubrificazione periodica per garantire efficienza e durata, anche se realizzata con materiali speciali."
+  }
+}

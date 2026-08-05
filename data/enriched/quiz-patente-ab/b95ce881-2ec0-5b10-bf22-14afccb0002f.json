@@ -1,0 +1,27 @@
+{
+  "question_id": 4013,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18449",
+  "text": "I motocicli con cilindrata di almeno 150 cm3 possono circolare in autostrada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione motocicli in autostrada",
+      "Definizione di motociclo"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "cilindrata",
+      "autostrada",
+      "circolare"
+    ],
+    "vector_search_queries": [
+      "circolazione motocicli in autostrada per cilindrata",
+      "requisiti motocicli per l'accesso in autostrada"
+    ],
+    "rule_explanation": "I motocicli con cilindrata superiore a 150 cm3, se dotati di specifiche caratteristiche, possono circolare in autostrada."
+  }
+}

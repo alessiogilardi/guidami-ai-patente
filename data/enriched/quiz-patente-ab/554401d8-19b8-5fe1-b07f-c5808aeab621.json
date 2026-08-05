@@ -1,0 +1,28 @@
+{
+  "question_id": 4609,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24495",
+  "text": "La patente di categoria A1 abilita alla guida di tutti i motocicli di cilindrata fino a 125 cm3",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente di guida per motocicli",
+      "Categorie di patenti",
+      "Cilindrata massima per patente A1"
+    ],
+    "exact_keywords": [
+      "patente A1",
+      "cilindrata",
+      "motocicli",
+      "potenza massima"
+    ],
+    "vector_search_queries": [
+      "requisiti cilindrata potenza patente A1",
+      "limiti guida motocicli con patente A1"
+    ],
+    "rule_explanation": "La patente A1 abilita alla guida di motocicli con cilindrata massima di 125 cm³, potenza massima di 11 kW e rapporto potenza/tara non superiore a 0,1 kW/kg."
+  }
+}

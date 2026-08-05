@@ -1,0 +1,29 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24824",
+  "text": "Quando, in un giorno di pioggia, si deve transitare su rotaie del tram o su tombini presenti sulla carreggiata stradale a bordo di un veicolo a due ruote, è bene farlo in impennata in modo da non farvi transitare sopra la ruota anteriore che è quella direttrice",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Prevenzione incidenti",
+      "Comportamento sicuro su veicoli a due ruote",
+      "Condizioni stradali avverse"
+    ],
+    "exact_keywords": [
+      "veicolo a due ruote",
+      "rotaie",
+      "tombini",
+      "condizioni atmosferiche",
+      "manovra vietata"
+    ],
+    "vector_search_queries": [
+      "transito su rotaie e tombini con veicoli a due ruote in condizioni di pioggia",
+      "pericolosità impennata su tombini e rotaie per motocicli"
+    ],
+    "rule_explanation": "È vietato transitarvi in impennata o con manovre azzardate, specialmente su rotaie o tombini in condizioni di scarsa aderenza, per evitare cadute."
+  }
+}

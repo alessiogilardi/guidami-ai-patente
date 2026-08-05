@@ -1,0 +1,27 @@
+{
+  "question_id": 4584,
+  "topic": "Uso delle luci; uso dei dispositivi acustici; spie e simboli",
+  "number": "24239",
+  "text": "L'uso degli indicatori di direzione è necessario per segnalare l'intenzione di parcheggiare sul margine sinistro di una strada a senso unico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnalazione di manovre",
+      "Uso degli indicatori di direzione"
+    ],
+    "exact_keywords": [
+      "indicatori di direzione",
+      "parcheggiare",
+      "strada a senso unico",
+      "manovra di parcheggio"
+    ],
+    "vector_search_queries": [
+      "segnalazione manovra di parcheggio con indicatori di direzione",
+      "obbligo uso indicatori di direzione per parcheggio su strada a senso unico"
+    ],
+    "rule_explanation": "Gli indicatori di direzione devono essere usati per segnalare con sufficiente preavviso l'intenzione di effettuare qualsiasi manovra, inclusa la fermata o il parcheggio, a prescindere dalla direzione o dal tipo di strada."
+  }
+}

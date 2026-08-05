@@ -1,0 +1,32 @@
+{
+  "question_id": 4455,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23111",
+  "text": "Secondo le norme di precedenza nell'incrocio rappresentato in figura il veicolo N deve passare per ultimo",
+  "correct_answer": true,
+  "image": "3a8cb230a1ce7c2d21cbba534618d150.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso. I veicoli si trovano in posizioni tali da dover applicare la regola generale di precedenza a destra, non essendovi segnali di prescrizione o indicazione che la modifichino. Il veicolo D ha alla sua destra il veicolo P. Il veicolo P ha alla sua destra il veicolo B. Il veicolo B ha alla sua destra il veicolo N. Il veicolo N ha alla sua destra il veicolo D. Pertanto, l'ordine di passaggio corretto è: D, P, B, N.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso senza segnaletica verticale o orizzontale che ne regoli la circolazione. Sono presenti quattro veicoli: D (blu), P (giallo), B (nero) e N (rosso). Il veicolo D si trova in basso a sinistra, il veicolo P in basso a sinistra, il veicolo B in alto a sinistra e il veicolo N in alto a destra. Le traiettorie tratteggiate indicano le direzioni di marcia previste. Poiché non ci sono segnali specifici, si applica la regola generale della precedenza a destra. Il veicolo D deve dare precedenza al veicolo P, che si trova alla sua destra. Il veicolo P deve dare precedenza al veicolo B, che si trova alla sua destra. Il veicolo B deve dare precedenza al veicolo N, che si trova alla sua destra. Il veicolo N deve dare precedenza al veicolo D, che si trova alla sua destra. L'ordine di passaggio corretto è quindi D, P, B, N.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso. I veicoli si trovano in posizioni tali da dover applicare la regola generale di precedenza a destra, non essendovi segnali di prescrizione o indicazione che la modifichino. Il veicolo D ha alla sua destra il veicolo P. Il veicolo P ha alla sua destra il veicolo B. Il veicolo B ha alla sua destra il veicolo N. Il veicolo N ha alla sua destra il veicolo D. Pertanto, l'ordine di passaggio corretto è: D, P, B, N."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale di precedenza a destra",
+      "Ordine di precedenza agli incroci"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "veicolo D",
+      "veicolo P",
+      "veicolo B"
+    ],
+    "vector_search_queries": [
+      "ordine di precedenza negli incroci a raso senza segnaletica",
+      "applicazione regola della precedenza a destra tra veicoli"
+    ],
+    "rule_explanation": "Negli incroci a raso, senza segnaletica specifica, vige la regola della precedenza a destra. Il veicolo che ha un altro veicolo alla propria destra deve cedere il passo."
+  }
+}

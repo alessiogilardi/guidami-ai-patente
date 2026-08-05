@@ -1,0 +1,29 @@
+{
+  "question_id": 4635,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24814",
+  "text": "Le strisce pedonali dipinte sulla carreggiata sono un elemento stradale che può essere pericoloso per la circolazione dei veicoli a due ruote",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica orizzontale",
+      "Pericolosità della segnaletica per veicoli a due ruote",
+      "Prevenzione incidenti stradali"
+    ],
+    "exact_keywords": [
+      "strisce pedonali",
+      "carreggiata",
+      "circolazione dei veicoli a due ruote",
+      "pericolosità"
+    ],
+    "vector_search_queries": [
+      "pericolosità strisce pedonali per motocicli",
+      "aderenza segnaletica orizzontale veicoli a due ruote",
+      "rischio circolazione strisce pedonali"
+    ],
+    "rule_explanation": "Le strisce pedonali, pur essendo segnaletica orizzontale, possono costituire un pericolo per i veicoli a due ruote a causa della ridotta aderenza che offrono, specialmente in condizioni di bagnato."
+  }
+}

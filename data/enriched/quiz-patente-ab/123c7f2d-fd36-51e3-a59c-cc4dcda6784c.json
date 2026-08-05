@@ -1,0 +1,28 @@
+{
+  "question_id": 4647,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24891",
+  "text": "Lo stato di shock si manifesta con pelle molto pallida e fredda",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Stato di shock",
+      "Pronto soccorso",
+      "Sintomatologia medica"
+    ],
+    "exact_keywords": [
+      "stato di shock",
+      "pelle pallida",
+      "pelle fredda",
+      "sintomi"
+    ],
+    "vector_search_queries": [
+      "sintomi dello stato di shock in medicina",
+      "manifestazioni cutanee dello shock (pelle pallida e fredda)"
+    ],
+    "rule_explanation": "Lo stato di shock è una condizione medica caratterizzata da una ridotta perfusione tissutale, che si manifesta esternamente con pelle pallida e fredda, tachicardia e ipotensione."
+  }
+}

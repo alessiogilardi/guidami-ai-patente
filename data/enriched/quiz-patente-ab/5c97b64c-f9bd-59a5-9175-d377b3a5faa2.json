@@ -1,0 +1,31 @@
+{
+  "question_id": 4319,
+  "topic": "Segnali di indicazione",
+  "number": "21735",
+  "text": "Il segnale raffigurato preavvisa l'obbligo di svolta a destra",
+  "correct_answer": false,
+  "image": "cde48dcb8875c390a2c629a904b48266.jpeg",
+  "image_description": "Inizio di corsia o deviazione (preavviso). Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di preavviso di colore blu con bordi arrotondati. Al suo interno sono presenti due frecce bianche su sfondo blu. La freccia di sinistra è dritta e indica la direzione in avanti. La freccia di destra parte dalla stessa origine della freccia di sinistra, ma curva verso destra, indicando una deviazione o una corsia che si separa. Questo tipo di segnale preannuncia una modifica nella configurazione delle corsie di marcia.",
+    "name": "Inizio di corsia o deviazione (preavviso)",
+    "description": "Il segnale indica che una corsia si separa e prosegue verso destra, mentre l'altra corsia prosegue dritta. Preavvisa quindi un cambiamento nel numero di corsie disponibili o una deviazione."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di preavviso",
+      "Segnali di indicazione obbligatoria"
+    ],
+    "exact_keywords": [
+      "segnali di preavviso",
+      "obbligo di svolta",
+      "segnali di indicazione",
+      "deviazione"
+    ],
+    "vector_search_queries": [
+      "segnali di preavviso di deviazione o corsia che si separa",
+      "differenza tra segnali di preavviso e obbligo di svolta"
+    ],
+    "rule_explanation": "Il segnale di preavviso di corsia o deviazione indica che una corsia si separa e prosegue in una direzione, senza imporre un obbligo di svolta."
+  }
+}

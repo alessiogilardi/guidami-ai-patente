@@ -1,0 +1,27 @@
+{
+  "question_id": 4529,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23795",
+  "text": "Quando si aprono le porte di un veicolo, bisogna assicurarsi che ciò non costituisca pericolo o intralcio per gli altri utenti della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Comportamento alla fermata e sosta",
+      "Sicurezza nella manovra di apertura porte"
+    ],
+    "exact_keywords": [
+      "apertura porte",
+      "pericolo",
+      "intralcio",
+      "altri utenti della strada"
+    ],
+    "vector_search_queries": [
+      "apertura porte veicolo e sicurezza circolazione",
+      "divieto di pericolo o intralcio nell'aprire le porte"
+    ],
+    "rule_explanation": "L'apertura delle porte di un veicolo deve avvenire senza costituire pericolo o intralcio per gli altri utenti della strada, i quali hanno la precedenza."
+  }
+}

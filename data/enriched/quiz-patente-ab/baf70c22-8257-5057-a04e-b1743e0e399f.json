@@ -1,0 +1,27 @@
+{
+  "question_id": 4645,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24883",
+  "text": "Se un infortunato della strada ha un'abbondante emorragia esterna non si può assolutamente dargli da bere acqua",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di emorragia",
+      "Gestione dell'infortunato in attesa dei soccorsi sanitari"
+    ],
+    "exact_keywords": [
+      "infortunato",
+      "emorragia esterna",
+      "divieto di somministrazione di liquidi",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "gestione emorragia esterna primo soccorso",
+      "somministrazione liquidi infortunato con emorragia"
+    ],
+    "rule_explanation": "In caso di emorragia esterna, è consentita la somministrazione di liquidi all'infortunato, a meno di specifiche controindicazioni mediche o condizioni di incoscienza."
+  }
+}

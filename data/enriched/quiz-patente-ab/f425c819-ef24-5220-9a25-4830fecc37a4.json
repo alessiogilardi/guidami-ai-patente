@@ -1,0 +1,29 @@
+{
+  "question_id": 4511,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23655",
+  "text": "Non è consentito fermarsi per chiedere informazioni agli agenti del traffico, quando ciò possa causare intralcio o rallentamento alla circolazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata del veicolo",
+      "Arresto del veicolo per informazioni",
+      "Divieto di creare intralcio alla circolazione"
+    ],
+    "exact_keywords": [
+      "fermarsi",
+      "chiedere informazioni",
+      "agenti del traffico",
+      "intralcio alla circolazione",
+      "rallentamento della circolazione"
+    ],
+    "vector_search_queries": [
+      "divieto di fermata per chiedere informazioni agli agenti in caso di intralcio",
+      "condizioni che vietano la sosta per interloquire con le forze dell'ordine"
+    ],
+    "rule_explanation": "La fermata per chiedere informazioni agli agenti del traffico è vietata se causa intralcio o rallentamento alla circolazione."
+  }
+}

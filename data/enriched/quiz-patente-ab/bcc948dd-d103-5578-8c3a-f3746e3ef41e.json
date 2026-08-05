@@ -1,0 +1,31 @@
+{
+  "question_id": 4357,
+  "topic": "Pannelli integrativi dei segnali",
+  "number": "22100",
+  "text": "Il pannello integrativo raffigurato (B), posto sotto il segnale PARCHEGGIO, indica l'inizio della zona destinata al parcheggio",
+  "correct_answer": false,
+  "image": "1ae0f364d86b42a3b3d77543a680f06d.jpeg",
+  "image_description": "Pannello integrativo di percorso (A) e Pannello integrativo di direzione obbligatoria (B). Il segnale A indica una strada chiusa al traffico, con l'unica direzione consentita indicata dalla freccia. Il segnale B indica la direzione obbligatoria a destra.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due pannelli integrativi, etichettati A e B. Il pannello A è di forma rettangolare verticale e contiene una freccia nera rivolta verso il basso, che indica una direzione. Il pannello B è di forma rettangolare orizzontale e contiene una freccia nera rivolta verso destra, che indica una direzione. Entrambi i pannelli hanno un bordo bianco su sfondo bianco. Il pannello A è posizionato sopra e leggermente a sinistra del pannello B.",
+    "name": "Pannello integrativo di percorso (A) e Pannello integrativo di direzione obbligatoria (B)",
+    "description": "Il segnale A indica una strada chiusa al traffico, con l'unica direzione consentita indicata dalla freccia. Il segnale B indica la direzione obbligatoria a destra."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnaletica stradale di indicazione",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "pannello integrativo",
+      "inizio zona",
+      "parcheggio",
+      "segnali complementari"
+    ],
+    "vector_search_queries": [
+      "funzione pannelli integrativi di inizio zona",
+      "segnaletica parcheggio e pannelli complementari"
+    ],
+    "rule_explanation": "Il pannello integrativo di inizio zona (B) non indica l'inizio della zona destinata al parcheggio, ma la direzione obbligatoria a destra. Il segnale PARCHEGGIO, da solo, indica la presenza di un parcheggio."
+  }
+}

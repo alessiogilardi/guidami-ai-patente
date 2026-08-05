@@ -1,0 +1,28 @@
+{
+  "question_id": 4498,
+  "topic": "Norme sul sorpasso",
+  "number": "23473",
+  "text": "Dopo aver effettuato una manovra di sorpasso il conducente del veicolo deve riportarsi a destra appena possibile senza creare pericolo o intralcio",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Manovra di sorpasso",
+      "Comportamento dopo il sorpasso",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "sorpasso",
+      "riportarsi a destra",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "comportamento del conducente dopo il sorpasso",
+      "rientro a destra dopo sorpasso senza pericolo o intralcio"
+    ],
+    "rule_explanation": "Al termine del sorpasso, il conducente deve rientrare nella corsia di destra appena possibile, assicurandosi di non costituire pericolo o intralcio per gli altri utenti della strada."
+  }
+}

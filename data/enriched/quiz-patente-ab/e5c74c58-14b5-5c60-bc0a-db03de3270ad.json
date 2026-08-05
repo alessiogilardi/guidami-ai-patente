@@ -1,0 +1,27 @@
+{
+  "question_id": 4414,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22720",
+  "text": "Quando, giunti in prossimità di un incrocio, ci accorgiamo di aver sbagliato la corsia di preselezione dobbiamo procedere nel senso voluto dalla segnaletica, dando le dovute precedenze",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obblighi del conducente in prossimità di incroci",
+      "Segnaletica stradale e precedenze"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "corsia di preselezione",
+      "segnaletica",
+      "precedenza"
+    ],
+    "vector_search_queries": [
+      "comportamento corretto in caso di errore nella corsia di preselezione all'incrocio",
+      "rispetto della segnaletica e delle precedenze in caso di errata posizione della corsia di preselezione"
+    ],
+    "rule_explanation": "In caso di errore nella corsia di preselezione, il conducente deve rispettare la segnaletica presente e dare la precedenza ai veicoli che circolano regolarmente."
+  }
+}

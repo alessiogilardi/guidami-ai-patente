@@ -1,0 +1,28 @@
+{
+  "question_id": 4035,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18679",
+  "text": "Quando si viaggia in fila con altri veicoli, non bisogna limitarsi a osservare solamente il veicolo che precede, ma occorre porre attenzione anche in lontananza, per controllare la situazione del traffico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Osservazione della strada e del traffico",
+      "Guida prudente e responsabile",
+      "Interazione tra veicoli in colonna"
+    ],
+    "exact_keywords": [
+      "fila di veicoli",
+      "osservare il veicolo che precede",
+      "attenzione in lontananza",
+      "situazione del traffico"
+    ],
+    "vector_search_queries": [
+      "obbligo di osservazione del traffico a distanza nella guida in colonna",
+      "prevedere la situazione del traffico oltre il veicolo che precede"
+    ],
+    "rule_explanation": "Nella guida in colonna, il conducente deve monitorare non solo il veicolo immediatamente davanti, ma anche il traffico a distanza per anticipare pericoli o rallentamenti."
+  }
+}

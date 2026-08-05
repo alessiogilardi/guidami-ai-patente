@@ -1,0 +1,29 @@
+{
+  "question_id": 4386,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22449",
+  "text": "Si deve tenere una velocità sempre superiore a 30 km/h",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regolazione della velocità",
+      "Velocità minima obbligatoria",
+      "Pericolo per la circolazione"
+    ],
+    "exact_keywords": [
+      "velocità adeguata",
+      "condizioni di traffico",
+      "intralcio alla circolazione",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "obbligo di adeguare la velocità alle condizioni di circolazione",
+      "velocità minima non prescritta salvo eccezioni",
+      "rischio di creare pericolo o intralcio per la circolazione"
+    ],
+    "rule_explanation": "Non esiste un limite minimo di velocità imposto per legge, salvo eccezioni specifiche. La velocità deve essere sempre adeguata alle condizioni per non creare pericolo o intralcio."
+  }
+}

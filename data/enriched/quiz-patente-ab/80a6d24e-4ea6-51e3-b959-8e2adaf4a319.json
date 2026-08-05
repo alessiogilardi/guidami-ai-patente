@@ -1,0 +1,32 @@
+{
+  "question_id": 4066,
+  "topic": "Segnali di pericolo",
+  "number": "19049",
+  "text": "In presenza del segnale raffigurato, se il veicolo si ferma per avaria sui binari, il conducente deve adottare ogni iniziativa utile al fine di evitare incidenti",
+  "correct_answer": true,
+  "image": "accabdc7809596ef95d9e34d4b33d06b.jpeg",
+  "image_description": "Segnale di passaggio a livello con barriere o semibarriere. Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo a forma di triangolo con bordo rosso e sfondo bianco. Al centro del triangolo è raffigurato un simbolo nero che rappresenta un passaggio a livello con barriere, costituito da due elementi verticali collegati da tre elementi orizzontali. Il segnale è isolato, non inserito in una scena di guida o in sequenza con altri segnali.",
+    "name": "Segnale di passaggio a livello con barriere o semibarriere",
+    "description": "Il segnale preannuncia un passaggio a livello con barriere o semibarriere. È un segnale di pericolo che impone di moderare la velocità e di essere pronti a fermarsi."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di pericolo",
+      "Passaggio a livello",
+      "Obblighi del conducente in caso di avaria"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "passaggio a livello con barriere",
+      "avaria sui binari",
+      "evitare incidenti"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in presenza di segnale di pericolo per passaggio a livello con barriere",
+      "condotta da tenere in caso di avaria del veicolo sui binari di un passaggio a livello"
+    ],
+    "rule_explanation": "In presenza del segnale di pericolo di passaggio a livello con barriere, il conducente deve moderare la velocità e, in caso di avaria sui binari, adottare ogni iniziativa per evitare incidenti."
+  }
+}

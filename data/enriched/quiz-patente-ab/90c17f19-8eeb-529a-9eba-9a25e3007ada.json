@@ -1,0 +1,27 @@
+{
+  "question_id": 4434,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22919",
+  "text": "Uscendo con un veicolo da una proprietà privata, si ha la precedenza sui pedoni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di dare la precedenza a pedoni e veicoli in transito",
+      "Comportamento dei veicoli in uscita da aree private"
+    ],
+    "exact_keywords": [
+      "dare la precedenza",
+      "veicoli in transito",
+      "proprietà privata",
+      "pedoni"
+    ],
+    "vector_search_queries": [
+      "precedenza pedoni uscita proprietà privata",
+      "obbligo di dare precedenza a pedoni e veicoli in transito uscendo da aree private"
+    ],
+    "rule_explanation": "Chi esce da una proprietà privata deve dare la precedenza a tutti i veicoli in transito sulla strada e ai pedoni, salvo diversa segnalazione."
+  }
+}

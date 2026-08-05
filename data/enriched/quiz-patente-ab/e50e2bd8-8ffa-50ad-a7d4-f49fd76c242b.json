@@ -1,0 +1,33 @@
+{
+  "question_id": 4198,
+  "topic": "Segnali di precedenza",
+  "number": "20573",
+  "text": "In presenza del segnale raffigurato e del semaforo a tre luci dobbiamo dare la precedenza se il semaforo è spento",
+  "correct_answer": true,
+  "image": "cae815558b9cac8a475d91fb6e32c36e.jpeg",
+  "image_description": "Segnale di dare precedenza ai veicoli provenienti dal senso opposto. Il segnale impone di dare la precedenza ai veicoli provenienti dal senso opposto. Viene solitamente preposto a preannunciare uno strettoio in cui il transito è consentito a una sola fila di veicoli.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro sono presenti due frecce, una rossa rivolta verso l'alto e una nera rivolta verso il basso. La freccia rossa è più spessa e posizionata leggermente più avanti rispetto alla freccia nera. Questo è il segnale di \"dare precedenza ai veicoli provenienti dal senso opposto\".",
+    "name": "Segnale di dare precedenza ai veicoli provenienti dal senso opposto",
+    "description": "Il segnale impone di dare la precedenza ai veicoli provenienti dal senso opposto. Viene solitamente preposto a preannunciare uno strettoio in cui il transito è consentito a una sola fila di veicoli."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnale di dare precedenza",
+      "Intersezione stradale",
+      "Regole di precedenza"
+    ],
+    "exact_keywords": [
+      "segnale di dare precedenza",
+      "semaforo spento",
+      "senso opposto",
+      "intersezione"
+    ],
+    "vector_search_queries": [
+      "precedenza con segnale dare precedenza e semaforo spento",
+      "regole di precedenza in caso di semaforo non funzionante",
+      "obbligo di dare precedenza al segnale specifico in assenza di semaforo funzionante"
+    ],
+    "rule_explanation": "In presenza del segnale di dare precedenza e di un semaforo, se quest'ultimo è spento o in avaria, si applicano le regole generali di precedenza, inclusa quella verso i veicoli provenienti dal senso opposto."
+  }
+}

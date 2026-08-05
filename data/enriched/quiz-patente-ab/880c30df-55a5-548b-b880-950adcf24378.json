@@ -1,0 +1,29 @@
+{
+  "question_id": 4386,
+  "topic": "Limiti di velocità; pericolo e intralcio alla circolazione; comportamenti ai passaggi a livello",
+  "number": "22444",
+  "text": "Si deve diminuire la velocità quando la strada è viscida, a causa di acqua, neve, ghiaccio, foglie o fango",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Adeguamento della velocità alle condizioni stradali",
+      "Obbligo di prudenza e sicurezza nella guida"
+    ],
+    "exact_keywords": [
+      "velocità",
+      "strada viscida",
+      "condizioni atmosferiche",
+      "pericolo",
+      "intralcio"
+    ],
+    "vector_search_queries": [
+      "adeguamento velocità strada viscida",
+      "moderazione velocità per condizioni meteo avverse",
+      "obbligo di ridurre la velocità in caso di fondo stradale scivoloso"
+    ],
+    "rule_explanation": "Il conducente deve diminuire la velocità in presenza di acqua, neve, ghiaccio, foglie o fango sulla strada per evitare pericoli o intralci alla circolazione."
+  }
+}

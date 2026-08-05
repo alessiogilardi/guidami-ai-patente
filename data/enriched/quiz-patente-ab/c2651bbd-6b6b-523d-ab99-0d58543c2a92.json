@@ -1,0 +1,28 @@
+{
+  "question_id": 4620,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24643",
+  "text": "Le violazioni che comportano decurtazione di punti, commesse entro i primi tre anni dal rilascio della patente della categoria B, sono sanzionate con il doppio dei punti previsti",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Patente a punti",
+      "Periodo di prova per neopatentati",
+      "Sanzioni per violazioni al Codice della Strada"
+    ],
+    "exact_keywords": [
+      "decurtazione di punti",
+      "patente della categoria B",
+      "primi tre anni",
+      "raddoppio dei punti"
+    ],
+    "vector_search_queries": [
+      "raddoppio decurtazione punti patente B primi tre anni",
+      "sanzioni neopatentati raddoppio punti"
+    ],
+    "rule_explanation": "Per le violazioni commesse entro i primi tre anni dal rilascio della patente B, la decurtazione dei punti è raddoppiata rispetto a quella ordinaria."
+  }
+}

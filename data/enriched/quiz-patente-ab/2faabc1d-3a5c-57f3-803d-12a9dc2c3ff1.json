@@ -1,0 +1,32 @@
+{
+  "question_id": 4111,
+  "topic": "Segnali di divieto",
+  "number": "19602",
+  "text": "Il segnale raffigurato vieta la circolazione dei veicoli di massa totale superiore a 80 quintali",
+  "correct_answer": false,
+  "image": "fa617b370db24cae54893424af1fe4fa.jpeg",
+  "image_description": "Segnale di limite di velocità. Il segnale impone un limite massimo di velocità di 80 km/h. È vietato superare tale velocità.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale circolare con bordo rosso e sfondo bianco. Al centro del segnale è presente il numero '80' in nero. Questo è il segnale di limite di velocità massima.",
+    "name": "Segnale di limite di velocità",
+    "description": "Il segnale impone un limite massimo di velocità di 80 km/h. È vietato superare tale velocità."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di transito",
+      "Masse massime dei veicoli"
+    ],
+    "exact_keywords": [
+      "divieto di transito",
+      "massa a pieno carico",
+      "veicoli di massa superiore",
+      "80 quintali"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di transito per massa a pieno carico",
+      "interpretazione segnale limite di velocità 80 km/h",
+      "differenza tra divieto di transito per massa e limite di velocità"
+    ],
+    "rule_explanation": "Il segnale raffigurato (limite di velocità di 80 km/h) non vieta la circolazione ai veicoli con massa superiore a 80 quintali, ma impone un limite di velocità massimo."
+  }
+}

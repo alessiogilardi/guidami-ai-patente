@@ -1,0 +1,32 @@
+{
+  "question_id": 4478,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23338",
+  "text": "Nell'incrocio rappresentato nella figura il conducente del veicolo A passa per ultimo",
+  "correct_answer": false,
+  "image": "0cf19fb0857f2fd486fcb15f2d04b42a.jpeg",
+  "image_description": "Incrocio a raso con precedenza a destra. L'incrocio è a raso e non sono presenti segnali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo L, provenendo da destra rispetto al veicolo D, ha la precedenza. Il veicolo D, provenendo da destra rispetto ai veicoli A e C, deve dare loro la precedenza. I veicoli A e C si trovano sullo stesso asse e, non essendoci altri veicoli alla loro destra, possono attraversare contemporaneamente. L'ordine di passaggio corretto è: L, poi A e C contemporaneamente, infine D.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con quattro vie di immissione. Sono presenti quattro veicoli: L (nero) in alto a destra, D (blu) in basso a sinistra, A (verde) in basso e C (rosso) in basso. Non sono presenti segnali stradali di prescrizione o preavviso che regolano la circolazione nell'incrocio. Le frecce tratteggiate indicano le possibili traiettorie dei veicoli. Il veicolo L si trova alla destra del veicolo D. I veicoli A e C si trovano alla destra del veicolo D. Il veicolo D si trova alla destra dei veicoli A e C. Non ci sono veicoli alla destra del veicolo L, né alla destra dei veicoli A e C. Pertanto, si applica la regola generale della precedenza a destra.",
+    "name": "Incrocio a raso con precedenza a destra",
+    "description": "L'incrocio è a raso e non sono presenti segnali che regolano la precedenza. Pertanto, si applica la regola generale della precedenza a destra. Il veicolo L, provenendo da destra rispetto al veicolo D, ha la precedenza. Il veicolo D, provenendo da destra rispetto ai veicoli A e C, deve dare loro la precedenza. I veicoli A e C si trovano sullo stesso asse e, non essendoci altri veicoli alla loro destra, possono attraversare contemporaneamente. L'ordine di passaggio corretto è: L, poi A e C contemporaneamente, infine D."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Regola generale della precedenza a destra",
+      "Ordine di precedenza agli incroci non regolamentati"
+    ],
+    "exact_keywords": [
+      "incrocio a raso",
+      "precedenza a destra",
+      "veicolo proveniente da destra",
+      "attraversamento simultaneo"
+    ],
+    "vector_search_queries": [
+      "precedenza veicoli incrocio non regolamentato",
+      "regola generale della precedenza a destra",
+      "ordine di passaggio ai incroci senza segnaletica"
+    ],
+    "rule_explanation": "Negli incroci non regolamentati da segnaletica, la precedenza spetta al veicolo proveniente da destra. L'affermazione è falsa perché il veicolo A non passa per ultimo."
+  }
+}

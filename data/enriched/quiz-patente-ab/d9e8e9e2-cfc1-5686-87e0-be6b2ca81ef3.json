@@ -1,0 +1,34 @@
+{
+  "question_id": 4488,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23387",
+  "text": "Dovendo attraversare l'incrocio rappresentato in figura il veicolo T transita per primo",
+  "correct_answer": true,
+  "image": "edb575872ce916cffb6bea8ee2a9735a.jpeg",
+  "image_description": "Incrocio a T con precedenza a destra e tram. L'incrocio è a T. Il tram (T) si trova sulla strada principale e ha la precedenza. Il veicolo A si trova sulla strada secondaria a sinistra e deve dare la precedenza al tram. Il veicolo S si trova sulla strada secondaria a destra e deve dare la precedenza al tram. Il tram transita per primo, seguito dal veicolo A, poi dal veicolo S.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a T visto dall'alto. Sulla strada principale, in direzione verticale, si trova un tram (T) che procede verso l'alto. Sulla strada secondaria di sinistra, in direzione orizzontale, si trova un'automobile gialla (A) ferma prima dell'incrocio. Sulla strada secondaria di destra, in direzione orizzontale, si trova un camion rosso (S) fermo prima dell'incrocio. La linea tratteggiata indica il percorso del veicolo A che intende svoltare a destra. Non sono presenti segnali stradali visibili che regolano la precedenza, quindi si applica la regola generale della precedenza a destra e la precedenza dei tram sulle strade a loro dedicate. Il tram (T) si trova sulla sua corsia e ha la precedenza. Il veicolo A deve dare la precedenza al tram. Il veicolo S deve dare la precedenza al tram. Tra A e S, A ha la precedenza su S in quanto si trova alla sua destra se entrambi dovessero immettersi sulla strada principale contemporaneamente, ma in questo caso entrambi devono attendere il tram. L'ordine di transito corretto è: T, A, S.",
+    "name": "Incrocio a T con precedenza a destra e tram",
+    "description": "L'incrocio è a T. Il tram (T) si trova sulla strada principale e ha la precedenza. Il veicolo A si trova sulla strada secondaria a sinistra e deve dare la precedenza al tram. Il veicolo S si trova sulla strada secondaria a destra e deve dare la precedenza al tram. Il tram transita per primo, seguito dal veicolo A, poi dal veicolo S."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ordine di precedenza agli incroci",
+      "Precedenza dei tram",
+      "Regole di circolazione negli incroci"
+    ],
+    "exact_keywords": [
+      "incrocio",
+      "veicolo T",
+      "tram",
+      "strada principale",
+      "strada secondaria"
+    ],
+    "vector_search_queries": [
+      "precedenza tram incrocio",
+      "incrocio a T precedenza strada principale",
+      "ordine di precedenza veicoli su strada principale e secondaria"
+    ],
+    "rule_explanation": "Negli incroci a T, i veicoli che circolano sulla strada principale hanno la precedenza rispetto a quelli che si immettono da strade secondarie, salvo diversa segnalazione. I tram hanno comunque la precedenza."
+  }
+}

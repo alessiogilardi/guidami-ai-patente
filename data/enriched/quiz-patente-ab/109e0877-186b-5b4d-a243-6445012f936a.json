@@ -1,0 +1,27 @@
+{
+  "question_id": 4441,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22975",
+  "text": "Il conducente che intende immettersi nel flusso della circolazione deve dare la precedenza ai veicoli in transito solo in presenza di apposito segnale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Immissione nel flusso di circolazione",
+      "Obbligo di precedenza"
+    ],
+    "exact_keywords": [
+      "immissione nel flusso di circolazione",
+      "veicoli in transito",
+      "dare la precedenza",
+      "segnali stradali"
+    ],
+    "vector_search_queries": [
+      "precedenza all'immissione nel flusso di circolazione",
+      "obbligo di dare precedenza ai veicoli in transito senza segnale specifico"
+    ],
+    "rule_explanation": "Chi si immette nel flusso di circolazione deve dare la precedenza ai veicoli già in transito, indipendentemente dalla presenza di segnali specifici."
+  }
+}

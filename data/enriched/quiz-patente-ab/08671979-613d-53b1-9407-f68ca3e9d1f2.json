@@ -1,0 +1,27 @@
+{
+  "question_id": 4394,
+  "topic": "Distanza di sicurezza",
+  "number": "22550",
+  "text": "La distanza fra autotreni, in presenza di segnali di divieto di sorpasso fra di loro, deve essere pari ad almeno 10 metri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza tra veicoli pesanti",
+      "Divieto di sorpasso tra autotreni"
+    ],
+    "exact_keywords": [
+      "autotreni",
+      "distanza di sicurezza",
+      "divieto di sorpasso",
+      "150 metri"
+    ],
+    "vector_search_queries": [
+      "distanza minima tra autotreni in autostrada",
+      "regole di sorpasso tra veicoli pesanti"
+    ],
+    "rule_explanation": "La distanza di sicurezza tra autotreni è di 150 metri, indipendentemente dai segnali di divieto di sorpasso reciproco."
+  }
+}

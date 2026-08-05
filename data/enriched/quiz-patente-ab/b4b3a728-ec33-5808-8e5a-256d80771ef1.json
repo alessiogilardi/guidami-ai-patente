@@ -1,0 +1,29 @@
+{
+  "question_id": 4716,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "31028",
+  "text": "Utilizzare il cellulare alla guida è pericoloso perché riduce l’attenzione alla strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distrazione alla guida",
+      "Uso di dispositivi elettronici durante la guida",
+      "Comportamenti pericolosi alla guida"
+    ],
+    "exact_keywords": [
+      "cellulare",
+      "guida",
+      "attenzione",
+      "pericolo"
+    ],
+    "vector_search_queries": [
+      "uso del cellulare alla guida e distrazione",
+      "conseguenze dell'uso del telefono alla guida",
+      "pericolosità della guida con dispositivi elettronici"
+    ],
+    "rule_explanation": "L'uso del cellulare alla guida è vietato perché costituisce una grave fonte di distrazione, riducendo l'attenzione necessaria per una guida sicura."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4518,
+  "topic": "Fermata, sosta, arresto e partenza",
+  "number": "23714",
+  "text": "Fuori dei centri abitati il conducente deve collocare il veicolo in sosta fuori della carreggiata, ma non sulle banchine, salvo diversa segnalazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sosta del veicolo fuori dai centri abitati",
+      "Posizionamento del veicolo in sosta"
+    ],
+    "exact_keywords": [
+      "sosta",
+      "fuori dei centri abitati",
+      "carreggiata",
+      "banchine"
+    ],
+    "vector_search_queries": [
+      "collocazione del veicolo in sosta fuori dai centri abitati",
+      "divieto di sosta sulle banchine fuori dai centri abitati"
+    ],
+    "rule_explanation": "Fuori dai centri abitati, la sosta deve avvenire fuori dalla carreggiata, ma è consentita sulle banchine se non vietato da segnaletica."
+  }
+}

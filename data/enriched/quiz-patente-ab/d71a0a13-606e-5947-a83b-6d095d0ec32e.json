@@ -1,0 +1,30 @@
+{
+  "question_id": 4045,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18796",
+  "text": "In vicinanza di un attraversamento pedonale, il conducente deve considerare che un pedone munito di bastone bianco ha più esperienza su come attraversare la carreggiata",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Tutela dei pedoni in attraversamento",
+      "Doveri del conducente verso gli utenti deboli",
+      "Attraversamenti pedonali e sicurezza"
+    ],
+    "exact_keywords": [
+      "attraversamento pedonale",
+      "conducente",
+      "pedone",
+      "bastone bianco",
+      "prudenza"
+    ],
+    "vector_search_queries": [
+      "obblighi del conducente in prossimità di attraversamenti pedonali",
+      "priorità del pedone all'attraversamento pedonale",
+      "doveri di prudenza verso pedoni con bastone bianco"
+    ],
+    "rule_explanation": "Il conducente deve sempre prestare la massima prudenza in prossimità degli attraversamenti pedonali, indipendentemente dall'esperienza del pedone, per garantire la sicurezza di quest'ultimo."
+  }
+}

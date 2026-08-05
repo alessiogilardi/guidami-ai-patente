@@ -1,0 +1,29 @@
+{
+  "question_id": 4616,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24581",
+  "text": "La patente di guida viene immediatamente ritirata, durante la circolazione, se a seguito di incidente, sono derivate lesioni a persone",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sospensione della patente",
+      "Incidente con lesioni a persone",
+      "Obblighi verso funzionari ed agenti"
+    ],
+    "exact_keywords": [
+      "patente di guida",
+      "ritiro patente",
+      "incidente stradale",
+      "lesioni a persone",
+      "agenti accertatori"
+    ],
+    "vector_search_queries": [
+      "ritiro patente per incidente con lesioni a persone",
+      "conseguenze del sinistro stradale con feriti sul documento di guida"
+    ],
+    "rule_explanation": "In caso di incidente stradale con lesioni a persone, la patente di guida è soggetta a ritiro da parte degli agenti accertatori."
+  }
+}

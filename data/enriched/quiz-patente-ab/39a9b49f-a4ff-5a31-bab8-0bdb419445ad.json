@@ -1,0 +1,29 @@
+{
+  "question_id": 4619,
+  "topic": "Patenti di guida; documenti di circolazione del veicolo; obbligo verso funzionari ed agenti; sistema sanzionatorio; patente a punti; uso di lenti e di altri apparecchi",
+  "number": "24621",
+  "text": "La sospensione della patente può essere disposta quando si circola, in autostrada, sulla corsia di emergenza in casi non previsti dal codice della strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sospensione della patente",
+      "Uso improprio della corsia di emergenza",
+      "Violazione del Codice della Strada"
+    ],
+    "exact_keywords": [
+      "sospensione della patente",
+      "corsia di emergenza",
+      "autostrada",
+      "violazione del codice della strada"
+    ],
+    "vector_search_queries": [
+      "sanzioni per circolazione su corsia di emergenza in autostrada",
+      "provvedimenti disciplinari per violazioni del CdS in autostrada",
+      "sospensione patente per uso improprio corsia emergenza"
+    ],
+    "rule_explanation": "La sospensione della patente è una sanzione accessoria che può essere disposta anche per la circolazione sulla corsia di emergenza in autostrada in casi non consentiti dal CdS."
+  }
+}
