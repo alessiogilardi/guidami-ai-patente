@@ -123,13 +123,13 @@ dispatches by subcommand to `cli/commands/{prepare,index,reset,status}.py`;
 `build_open_router_provider`, `build_postgres_client`, `build_tracker`,
 `build_health_repositories`) so each command only builds the
 clients/providers it actually needs. Both `dispatch_prepare` branches
-(`knowledge` and, since spec 0005, `quiz`) run their flow(s) directly, with
+(`knowledge` and, since spec 0006, `quiz`) run their flow(s) directly, with
 no coarse per-source-file skip: idempotency lives entirely inside each
 flow's `FilterAlreadyDoneStep`, which drops elements already present in the
 per-element destination layer before the (possibly expensive) transform
 runs. The former `run_preparation` helper (`orchestrators/preparation_runner.py`,
 wrapping a whole flow with an `out_path.exists()` skip) is deleted — spec
-0005/AD-5 removed its last consumer (quiz) once quiz's `cleaned`/`enriched`
+0006/AD-5 removed its last consumer (quiz) once quiz's `cleaned`/`enriched`
 layers became per-element too.
 
 **`--dry-run`** (`prepare`/`index` only, every entity; `status` has
@@ -313,7 +313,7 @@ raises, always exits 0): `cli/services/status/status_inspector.py:
 StatusInspector.evaluate_readiness()` computes a per-(command, entity)
 readiness matrix (`RUNNABLE`/`SKIP`/`BLOCKED`) purely from
 `Path.exists()` checks via `LayerResolver` — no DB, no network, by default.
-Both **knowledge** and, since spec 0005, **quiz** have per-element
+Both **knowledge** and, since spec 0006, **quiz** have per-element
 `cleaned`/`enriched` directories (see the flow descriptions above): `prepare`
 is **never** `SKIP` for either (a directory can be partially populated, so
 there is no honest binary "already done" signal), only `BLOCKED` when the
@@ -432,7 +432,7 @@ already attributed to T-7/FR-5 above). A live re-scrape against normattiva.it is
 once, to regenerate the committed JSON file itself with this corrected content — the offline
 check only confirms the *code* behaves correctly against already-fetched HTML.
 
-**Quiz bank** (`orchestrators/quiz_flows.py`). Since spec 0005, `cleaned` and
+**Quiz bank** (`orchestrators/quiz_flows.py`). Since spec 0006, `cleaned` and
 `enriched` are **per-element** layers for quiz too (one JSON file per cleaned/
 enriched sub-question, named by `commons.utils.element_id("quiz", item.number)`,
 `_quiz_id` in `quiz_flows.py`; `parsed` stays a single monolithic file, same as
@@ -446,7 +446,7 @@ cleaning and enrichment flows directly on every invocation — no coarse
 whole-file skip — mirroring the `knowledge` branch; `--force` threads into
 both flow factories and bypasses their respective `FilterAlreadyDoneStep`s.
 The stale monolithic `data/cleaned/quiz-patente-ab/quiz-patente-ab.json` and
-`data/enriched/quiz-patente-ab/quiz-patente-ab.json` (pre-spec-0005 layout)
+`data/enriched/quiz-patente-ab/quiz-patente-ab.json` (pre-spec-0006 layout)
 were deleted as a one-time manual prerequisite — an un-deleted monolith sitting
 inside what is now a per-element container directory would make `load_all`
 raise a loud `ValueError`, not silently corrupt data.
@@ -484,7 +484,7 @@ See `adr/` for the full history. Currently accepted:
   moved from one monolithic JSON per source to one JSON file per article, so a
   `--force`-less re-run only pays for the articles still missing (see the flow
   description above and `docs/plans/2026-07-17--per-element-knowledge-layers.md`).
-  Spec 0005 brought quiz's `cleaned`/`enriched` layers to the same per-element
+  Spec 0006 brought quiz's `cleaned`/`enriched` layers to the same per-element
   model, reusing the generic `FilterAlreadyDoneStep`/`LoadJsonDirStep`/
   `WriteJsonDirStep` steps as-is (no quiz-specific step classes), keyed by
   `element_id("quiz", item.number)` instead of `element_id(source, number)` —

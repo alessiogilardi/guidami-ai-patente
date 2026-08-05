@@ -1,8 +1,8 @@
-# Spec 0005: Quiz Per-Element Layers
+# Spec 0006: Quiz Per-Element Layers
 
 | | |
 |---|---|
-| **Id** | 0005 |
+| **Id** | 0006 |
 | **Status** | in-progress |
 | **Date** | 2026-08-05 |
 | **Discussion log** | none — compiled directly from conversation |
