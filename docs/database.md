@@ -56,7 +56,7 @@
 
 ## Main schema
 
-Four tables, all defined in `db/init.sql` (the `vector` extension is
+Six tables, all defined in `db/init.sql` (the `vector` extension is
 enabled at the top of that file).
 
 ```text
@@ -91,11 +91,25 @@ quiz_questions
 ├── image_filename (TEXT, nullable)
 ├── core_concepts (TEXT[], nullable)        -- flattened QuizMetadata retrieval key
 ├── exact_keywords (TEXT[], nullable)       -- CdS technical terms, retrieval key
+├── vector_search_queries (TEXT[], nullable) -- phrases the query vector is built from
 ├── rule_explanation (TEXT, nullable)       -- serving payload, not a retrieval key
 ├── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())  -- load-batch timestamp
-├── embedding (VECTOR(1536), nullable)
 ├── INDEX idx_quiz_questions_topic (topic)
 └── INDEX idx_quiz_questions_question_id (question_id)
+
+quiz_question_embeddings                    -- query representations, two axes
+├── id (PK, BIGSERIAL)
+├── quiz_question_id (BIGINT, NOT NULL, REFERENCES quiz_questions(id) ON DELETE CASCADE)
+├── variant (TEXT, NOT NULL)                -- WHICH TEXT was embedded: a row
+├── embedding_3_small (VECTOR(1536), nullable) -- WHICH MODEL produced it: a column
+├── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
+├── UNIQUE (quiz_question_id, variant)
+├── CHECK (num_nonnulls(embedding_3_small) > 0)  -- widen when adding a model column
+└── INDEX idx_quiz_question_embeddings_variant (variant)
+
+quiz_images                                 -- one row per image, not per question
+├── filename (PK, TEXT)                     -- matches quiz_questions.image_filename
+└── description (TEXT, nullable)            -- vision-generated, see ADR 0003
 
 llm_call_logs
 ├── id (PK, BIGSERIAL)
@@ -136,18 +150,30 @@ at the parsed→cleaned mapping boundary), so
 — see `docs/adr/0007-utc-timestamp-convention.md` for the project's full UTC
 timestamp convention (app/log/DB).
 
-The former `quiz_metadata` JSONB blob was flattened into the four
-retrieval/payload columns above (see `docs/adr/0002-flatten-quiz-metadata-columns.md`).
-The metadata's `vector_search_queries` field is **not** persisted — it is only
-the embedding input, consumed to produce `embedding`. The four metadata columns
-are all-or-nothing: `NULL` on rows for which no `QuizMetadata` was generated
-(aligned with `embedding` being `NULL` there). `created_at` is DB-managed and,
-under the truncate + bulk-insert reload strategy, records the load-batch time,
-not first ingestion.
+The former `quiz_metadata` JSONB blob was flattened into the retrieval/payload
+columns above (see `docs/adr/0002-flatten-quiz-metadata-columns.md`);
+`vector_search_queries` joined them later, once it stopped being pure embedder
+input and became the thing under test. The metadata columns are all-or-nothing:
+`NULL` on rows for which no `QuizMetadata` was generated. `created_at` is
+DB-managed and, under the truncate + bulk-insert reload strategy, records the
+load-batch time, not first ingestion.
 
-No index exists on either `embedding` column (no ivfflat/hnsw) — vector
-search currently runs as an exact `<=>` scan. No index yet on the `TEXT[]`
-metadata columns (GIN/FTS deferred with the hybrid-search work).
+Quiz vectors live in `quiz_question_embeddings`, not on `quiz_questions`, along
+two orthogonal axes: **which text** was embedded is a row (`variant`), **which
+model** produced the vector is a column (`embedding_*`). pgvector fixes the
+dimension in the column type, so models of different dimensionality cannot share
+a column. A representation never computed is an absent row; a model not yet run
+for an existing row is a `NULL` column — hence the table-level `CHECK` rather than
+a per-column `NOT NULL`. Adding a representation costs an ingest run; adding a
+model costs one `ADD COLUMN` plus widening that `CHECK`.
+
+`quiz_images` is keyed by filename because a description belongs to an image, not
+to a question: 4147 questions reference 427 distinct images
+(`docs/adr/0003-group-road-sign-description-by-image.md`).
+
+No index exists on any embedding column (no ivfflat/hnsw) — vector search runs as
+an exact `<=>` scan. No index yet on the `TEXT[]` metadata columns (GIN/FTS
+deferred with the hybrid-search work).
 
 `llm_call_logs` is populated by every tracked `BaseAgent` call — see
 `docs/patterns.md` (observability rows), `docs/architecture.md` (prepare-path
@@ -167,21 +193,41 @@ loggable. Tracking is opt-in per `BaseAgent` instance (`tracker` ctor param,
 
 ## Migrations
 
-There is no migration tool (no Alembic, no versioned migration files).
-`db/init.sql` is the single source of schema truth: it's mounted
-read-only into the Postgres container's `/docker-entrypoint-initdb.d/`
-and only runs when the data directory is empty. Any schema change requires
-tearing down the container and wiping the bind-mounted data directory
-(`down -v` no longer applies — there is no named volume left to remove):
+There is still no migration **tool** (no Alembic). `db/init.sql` remains the
+definition of the target schema: it's mounted read-only into the Postgres
+container's `/docker-entrypoint-initdb.d/` and only runs when the data directory
+is empty, so it alone can never alter an existing database.
 
-```bash
-docker compose -f docker/docker-compose.yml down
-rm -rf docker/.volumes/postgres_data
-docker compose -f docker/docker-compose.yml up -d
-```
+Two paths now exist, and a schema change must take **both**:
 
-(see also the "Infrastructure" section of `CLAUDE.md`). There is no
-changelog file tracking schema history beyond `git log db/init.sql`.
+1. **Fresh environment** — edit `db/init.sql`; a newly created volume gets the
+   new schema automatically.
+   ```bash
+   docker compose -f docker/docker-compose.yml down
+   rm -rf docker/.volumes/postgres_data
+   docker compose -f docker/docker-compose.yml up -d
+   ```
+2. **Existing database** — write a matching script under `db/migrations/`, named
+   after the spec that introduces it, and apply it with `psql -f`. Migration
+   scripts are idempotent (`IF EXISTS`/`IF NOT EXISTS`, guarded `DO $$` blocks) and
+   wrapped in a single transaction, so a re-run is a no-op and a failure leaves the
+   schema untouched. Data-preserving steps come *before* destructive ones: see
+   `db/migrations/0008_quiz_query_representations.sql`, which moves
+   `quiz_questions.embedding` into the variant table before dropping the column.
+
+Because there is no tool enforcing it, the two paths can silently diverge — a
+migrated database and a freshly initialised one drifting apart is the standing risk
+of this arrangement. Every migration therefore ships an `information_schema`
+equivalence check to be run against both and diffed; treat any difference as a bug
+in one of the two files, not as an acceptable variation.
+
+There is no changelog file tracking schema history beyond `git log db/init.sql`
+and the contents of `db/migrations/`.
+
+> **Current state:** `db/init.sql` and `db/migrations/0008_*.sql` carry the spec
+> 0008 schema, but the migration has **not** been applied to the local development
+> database, which still holds `quiz_questions.embedding` and neither new table.
+> Spec 0008 is still `draft`.
 
 *Last updated: 2026-08-04 — verified against commit `2248dcc`; switched the Postgres
 volume from a named Docker volume to a bind mount at `docker/.volumes/postgres_data`
@@ -204,3 +250,10 @@ against a live Postgres; `KnowledgeChunk` entity deleted, spec 0001 fully implem
 `articles.source` gained `"reg"` as a third value (spec 0003 Phase 1, FR-4) — no DDL
 change, `UNIQUE (source, number)` already prevented collision with CdS's overlapping
 article numbers.*
+
+*Last updated: 2026-08-05 — verified against commit `6d96b7d`; `quiz_questions` gained
+`vector_search_queries TEXT[]` and lost `embedding`, which moved to the new
+`quiz_question_embeddings` table (variant = which text, `embedding_*` = which model);
+new `quiz_images` table keyed by filename. The Migrations section now documents the
+`db/migrations/` path alongside the wipe-and-reinit one, and their drift risk (spec 0008,
+ADR 0010). Not yet applied to the local dev database.*

@@ -36,7 +36,10 @@ repo/
 │   └── guidami_ai_patente_ingestor/
 ├── configs/                        # Runtime YAML config (ingestor_config.yaml, agents/*.yaml,
 │                                    #   ingestor_config.test-data.yaml — see below)
-├── db/                             # init.sql — Postgres/pgvector schema, applied on container init
+├── db/                             # init.sql — Postgres/pgvector target schema, applied on container init
+│   └── migrations/                 #   idempotent, transactional ALTER scripts for existing DBs,
+│                                    #   named NNNN_<slug>.sql after the spec introducing them;
+│                                    #   must be kept equivalent to init.sql (see database.md)
 ├── docker/                         # docker-compose.yml + .env for the Postgres/pgvector service
 ├── data/                           # Pipeline data at rest: raw/ -> parsed/ -> cleaned/ -> enriched/
 │                                    #   knowledge's cleaned/enriched are per-element (one JSON
@@ -221,3 +224,7 @@ and the `data/test-data/` mirror (ADR 0006).*
 gained a `models/` sub-package (`RunManifest`, `ScrapeManifest`), `RunArtifactWriterConfig`
 was removed, and `guidami_ai_patente_ingestor/cli/models/` gained a `run_artifacts/`
 sub-package (`PrepareManifest`/`IndexManifest`/`ResetManifest`) — spec 0005, ADR 0009.*
+
+*Last updated: 2026-08-05 — verified against commit `6d96b7d`; `db/` gained a
+`migrations/` sub-directory holding idempotent transactional ALTER scripts, a second
+schema-management path alongside `init.sql` (spec 0008, ADR 0010).*
