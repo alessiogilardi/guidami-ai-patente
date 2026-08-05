@@ -720,13 +720,13 @@ def test_process_article_records_fetch_failed_skip(
     params = _article_params()
     client = MagicMock()
     client.get.return_value = httpx.Response(500, text="")
-    writer = MagicMock()
+    manifest = MagicMock()
 
-    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, writer)
+    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, manifest)
 
     assert result is None
     expected_url = _build_article_url(params)
-    writer.record_skip.assert_called_once_with("fetch_failed", "Art. 5", expected_url)
+    manifest.record_skip.assert_called_once_with("fetch_failed", "Art. 5", expected_url)
 
 
 def test_process_article_records_session_invalid_skip(
@@ -736,13 +736,13 @@ def test_process_article_records_session_invalid_skip(
     params = _article_params()
     client = MagicMock()
     client.get.return_value = httpx.Response(200, text="<html>no marker here</html>")
-    writer = MagicMock()
+    manifest = MagicMock()
 
-    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, writer)
+    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, manifest)
 
     assert result is None
     expected_url = _build_article_url(params)
-    writer.record_skip.assert_called_once_with("session_invalid", "Art. 5", expected_url)
+    manifest.record_skip.assert_called_once_with("session_invalid", "Art. 5", expected_url)
 
 
 def test_process_article_records_parse_error_skip(
@@ -758,13 +758,13 @@ def test_process_article_records_parse_error_skip(
     """
     client = MagicMock()
     client.get.return_value = httpx.Response(200, text=article_html)
-    writer = MagicMock()
+    manifest = MagicMock()
 
-    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, writer)
+    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, manifest)
 
     assert result is None
-    writer.record_skip.assert_called_once()
-    category, label, detail = writer.record_skip.call_args[0]
+    manifest.record_skip.assert_called_once()
+    category, label, detail = manifest.record_skip.call_args[0]
     assert category == "parse_error"
     assert label == "Art. 55"
     assert "55" in detail
@@ -786,14 +786,14 @@ def test_process_article_returns_record_on_success_and_records_no_skip(
     """
     client = MagicMock()
     client.get.return_value = httpx.Response(200, text=article_html)
-    writer = MagicMock()
+    manifest = MagicMock()
 
-    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, writer)
+    result = _process_article(params, _TEST_LAW, _TEST_LAW.toc_url, tmp_path, client, manifest)
 
     assert result is not None
     assert result.number == "5"
     assert result.title == ""
-    writer.record_skip.assert_not_called()
+    manifest.record_skip.assert_not_called()
 
 
 def test_main_clean_run_writes_output_and_finalizes_writer(
