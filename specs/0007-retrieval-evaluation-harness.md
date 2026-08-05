@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Id** | 0007 |
-| **Status** | draft |
+| **Status** | in-progress |
 | **Date** | 2026-08-05 |
 | **Discussion log** | none — compiled directly from conversation |
 | **Supersedes / superseded by** | — |
@@ -26,21 +26,27 @@ The probes also demonstrate how easily this kind of measurement misleads. A per-
 statistic (21–35% of `exact_keywords` match no comma anywhere) initially read as evidence
 of a corpus coverage gap. Recomputed per question it inverts: 97.7% of questions have at
 least one matching keyword somewhere in the corpus, and the worst topic is 82.3% covered
-while scoring 31.9% at k=5 — so for that topic the text is present and the ranking fails
-to surface it. A third pass then found that the apparent validation of that coverage
+while scoring 31.9% at k=5. A third pass then found that the apparent validation of that coverage
 figure was circular — `hit@k` is itself defined by keyword matching inside retrieved
 commas, so a question with no keyword anywhere in the corpus cannot be a hit by
 construction. Coverage measured this way is a **lower bound**, not a count: 161 questions
 match nothing at all, while a further 901 are covered only by keywords appearing in more
 than ten commas each, and the most frequent keyword in the bank matches 2894 of 3650
-commas. The true uncovered population plausibly lies between 161 and roughly 1060.
+commas. The true uncovered population plausibly lies between 161 and roughly 1060. It
+follows that no claim of the form "the text is present, so this is a ranking failure" is
+supported for any individual topic — only the bounds are.
 
 Two lessons are baked into this spec. First, hybrid search must not be funded before
 ranking failures and coverage failures are separated, because no fusion algorithm
-retrieves a text that was never ingested. Second, every metric here ships with a
-validity control, because the measurement is as capable of producing a confident wrong
-answer as the retrieval it measures — and the right control is whether a label predicts
-failure, not whether it splits the population evenly.
+retrieves a text that was never ingested. Second — learned the hard way, three times over
+in this spec's own history — a metric validated against a signal derived from its own
+input validates nothing. Every control here is therefore stated together with what it
+cannot rule out, and where no judge-free control exists, the spec says so rather than
+inventing one.
+
+The headline figures quoted above (81.6% / ~27% / 3.2x) are all **keyword-derived** and
+inherit every limitation of `exact_keywords` described in AD-4 and FR-10. They are
+recorded as the historical starting point, not as a target to beat.
 
 ## Functional Requirements
 
@@ -59,47 +65,57 @@ measurement over the quiz bank and the knowledge corpus already stored in Postgr
   would execute and exits without opening a database connection and without writing to
   the filesystem.
 - Given `--plain`, when the command is run, then output is rendered without the live
-  dashboard, consistent with the other `ingest` subcommands.
+  dashboard. Note this command does not run a `flowstep` `Flow`, so it is outside the
+  existing `_MONITORED_COMMANDS` set; the flag must be given a defined meaning for a
+  non-Flow command rather than inherited by analogy.
+- Given a completed run, when artifacts are written, then a manifest type for this command
+  exists — `logging_setup._build_manifest` raises on an unknown command, so the command
+  cannot ship without one.
+- Given the run parameters, when the command is invoked, then **seed**, baseline repetition
+  count `N`, the `k` values for FR-4, and the reporting thresholds of FR-2 are all supplied
+  from configuration (a new evaluation section of `ingestor_config.yaml`), with CLI flags
+  overriding where useful. No run parameter is hardcoded in the harness.
+- Given `--dry-run` on a command with no `Flow` to derive steps from, when the chain is
+  printed, then it is produced from the same declaration the real run executes, not from a
+  hand-maintained parallel list.
 
 ### FR-2: Corpus coverage metric (primary)
 
-For each quiz question, the harness reports whether the corpus contains any comma that
-matches the question — scanning the **entire** corpus, not only the retrieved top-k.
-Coverage is computed from the question's own text, and separately from its
-`exact_keywords`, so the primary metric does not depend on an unvalidated LLM artifact.
+For each quiz question, the harness reports **how strongly** the corpus matches it,
+scanning the entire corpus rather than only the retrieved top-k. Coverage is never a
+binary label and never a single percentage: a binary needs a threshold nobody can justify
+without a judge, and the one binary definition that was tried read 97.7% and discriminated
+nothing.
 
 **Acceptance criteria:**
-- Given a question, when primary coverage is computed, then it is based on a full-text
-  match of the **question text** against the corpus, requiring no `exact_keywords`.
-- Given a question with `exact_keywords`, when secondary coverage is computed, then the
-  keyword-based definition is reported alongside the primary one, and the two are
-  compared rather than merged.
-- Given the two coverage figures, when they disagree for a question, then that question is
-  counted in a reported disagreement bucket — divergence between a human-authored text
-  signal and an LLM-generated keyword signal is a finding about the keywords.
-- Given a question whose `exact_keywords` match at least one comma anywhere in
-  `article_commas`, when secondary coverage is computed, then the question is reported as
-  covered by the keyword definition.
-- Given a question whose `exact_keywords` match no comma anywhere in the corpus, when
-  coverage is computed, then the question is reported as uncovered and is excluded from
-  the covered-subset denominator of the ranking metrics in FR-4.
-- Given a completed run, when the summary is produced, then it reports the coverage band
-  overall and broken down by topic, ordered worst-first.
-- Given a question with `exact_keywords IS NULL` or empty, when coverage is computed,
-  then the question is reported in a separate `not_measurable` bucket, never silently
-  counted as covered or uncovered.
-- Given a completed run, when coverage is reported, then it is reported as a band across
-  keyword document-frequency cutoffs — questions matching nothing, questions covered only
-  by keywords above each cutoff, questions covered by a selective keyword — never as a
-  single coverage percentage.
-- Given the coverage band, when it is rendered, then the "matches nothing" figure is
+- Given a question, when text coverage is computed, then it is the **maximum `ts_rank`
+  achieved by any comma in the corpus** against the tsquery built from the question text —
+  a continuous score per question, requiring no `exact_keywords` and no threshold.
+- Given a completed run, when text coverage is reported, then it is reported as the
+  distribution of that score (median and quartiles) plus the share of questions above each
+  of the configured thresholds — a curve, never one number.
+- Given a question with `exact_keywords`, when keyword coverage is computed, then it is
+  reported as the document-frequency band already defined: questions matching nothing,
+  questions covered only by keywords above each configured DF cutoff, questions covered by
+  a keyword below the lowest cutoff. Note that a **higher** document frequency means a
+  **less** selective keyword.
+- Given the keyword band, when it is rendered, then the "matches nothing" figure is
   labelled a **lower bound** on the uncovered population, not a count.
-- Given the coverage test and the ranking metrics, when either matches a keyword against
-  corpus text, then both search exactly the same fields; a run where the two definitions
-  diverge is a defect, not a finding.
-- Given the coverage metric, when the summary is produced, then it carries an explicit
-  note that no judge-free validity check for coverage exists, because `hit@k` is defined
-  by the same keyword matching and cannot independently corroborate it.
+- Given both coverage views, when they are reported, then each is labelled with its
+  dependency: text coverage depends only on human-authored text, keyword coverage depends
+  on an LLM artifact (FR-10).
+- Given a completed run, when the summary is produced, then both views are reported overall
+  and broken down by topic, ordered worst-first.
+- Given a question with `exact_keywords IS NULL` or empty, when keyword coverage is
+  computed, then the question is reported in a separate `not_measurable` bucket, never
+  silently counted as covered or uncovered.
+- Given the coverage test and the ranking metrics, when either matches text against the
+  corpus, then both search exactly the same fields; a run where the two definitions diverge
+  is a defect, not a finding.
+- Given the coverage metric, when the summary is produced, then it carries an explicit note
+  that **no judge-free validity check for coverage exists**: `hit@k` is defined by the same
+  matching operation and cannot independently corroborate it, and `exact_keywords` are
+  themselves derived from the question text (FR-10), so neither is an outside witness.
 
 ### FR-3: Random baseline control
 
@@ -113,11 +129,19 @@ alongside the real metric.
   computed, then the random comma draw is repeated `N` times with a different sample each
   time, and the summary reports the mean and the spread across repetitions — never a
   single draw.
-- Given the reported spread, when the real metric's lift over the baseline mean is smaller
-  than that spread, then the run is flagged as `metric_not_discriminating`: a lift inside
-  the baseline's own sampling noise is not a lift.
+- Given the baseline and the real metric, when the lift is reported, then it is reported
+  **both** as a ratio and as a difference in percentage points, and the baseline's spread
+  is reported in percentage points alongside it — no comparison mixes the two units.
+- Given the random draw, when it is sampled, then it draws only from the commas the real
+  metric can retrieve (`embedding IS NOT NULL`, 3650 of 3992). A baseline drawn from a
+  different population is not a control for the same thing.
 - Given the same seed and the same `N`, when the run is repeated, then every baseline
   repetition is reproducible.
+- Given `N` repetitions of ~7000 draws each, the between-repetition spread of the mean is
+  expected to be a fraction of a percentage point, so the spread **cannot** serve as a
+  discrimination threshold against a lift measured in tens of points. The harness therefore
+  reports the numbers and does **not** emit an automated `metric_not_discriminating`
+  verdict; a control that can never fire is worse than none, because it reads as reassurance.
 
 ### FR-4: Ranking metrics, reported over both denominators
 
@@ -126,14 +150,20 @@ covered subset and the full measurable set — the two answer different question
 never collapsed into a single headline number.
 
 **Acceptance criteria:**
-- Given a completed run, when the summary is produced, then it reports hit@1, hit@3,
-  hit@5 and hit@10 twice: once over the covered subset (FR-2), once over all measurable
+- Given a completed run, when the summary is produced, then it reports hit@k for the
+  configured `k` values twice: once over the covered subset, once over all measurable
   questions.
+- Given the covered subset, when it is defined, then it is defined by the **keyword**
+  "matches nothing" bucket of FR-2 — the only binary coverage label this spec has — and is
+  labelled as keyword-derived wherever it appears.
 - Given both figures, when they are rendered, then each is labelled with what it answers:
-  the covered-subset figure isolates ranking quality (ceiling 100%), the full-set figure
-  is the end-to-end product figure (ceiling is the coverage rate).
-- Given both figures, when they are rendered, then the gap between them is reported
-  explicitly as the cost attributable to missing corpus coverage.
+  the covered-subset figure isolates ranking quality (ceiling 100%), the full-set figure is
+  the end-to-end product figure.
+- Given both figures, when they are rendered, then the note accompanying them states that
+  because the coverage test and the hit test match identically (FR-2), an uncovered question
+  is a miss by construction and the two figures are related by
+  `full ≈ covered × coverage_rate`. **The gap between them is an arithmetic identity, not a
+  measured cost**, and must not be presented as evidence about the corpus.
 - Given a completed run, when the summary is produced, then it reports the same metrics
   broken down by topic and by presence/absence of `image_filename`.
 - Given the image/non-image breakdown, when it is rendered, then it carries an explicit
@@ -146,15 +176,13 @@ For each retrieved comma the harness computes a continuous adherence score using
 Postgres full-text search with the `italian` configuration, independent of the embedding.
 
 **Acceptance criteria:**
-- Given a question and a retrieved comma, when the adherence score is computed, then it
-  is `ts_rank` of the comma's `to_tsvector('italian', title || ' ' || text)` against a
-  tsquery built from the question text.
-- Given a question whose terms are only partially present in a comma, when the tsquery is
-  built, then the lexemes are combined with OR (`|`) and the resulting score is non-zero.
-- Given the corpus-side tsvector, when it is built, then the article title and the comma
-  text are weighted separately via `setweight` (title `A`, comma text `B`) rather than
-  concatenated into one undifferentiated document, so a title match and a body match are
-  distinguishable.
+- Given a question and a retrieved comma, when the adherence score is computed, then it is
+  `ts_rank` against a tsquery built from the question text, over a corpus-side tsvector
+  built with `setweight` (article title `A`, comma text `B`) — one definition, used
+  everywhere, never a plain `title || ' ' || text` concatenation.
+- Given the question text, when the tsquery is built, then its lexemes are combined with OR
+  (`|`), because `plainto_tsquery` combines with AND and was measured to return 0.0000 on
+  every row of a sample.
 - Given a completed run, when the summary is produced, then it reports the adherence score
   computed on the weighted tsvector and, separately, on title-only and text-only
   tsvectors, so the contribution of each field is visible rather than assumed.
@@ -170,7 +198,8 @@ extra retrieval cost.
 - Given a question, when the agreement signal is computed, then it reports the overlap
   between the top-k set ranked by cosine distance and the top-k set ranked by `ts_rank`.
 - Given a question, when the margin signal is computed, then it reports the difference
-  between the top-1 and top-k cosine distances.
+  between the top-1 cosine distance and the distance at the **largest configured `k`**,
+  so the margin is defined against one fixed depth rather than an ambiguous "top-k".
 - Given a completed run, when the summary is produced, then it reports the share of
   questions where the two rankings disagree entirely (zero overlap in the top-k).
 
@@ -180,12 +209,18 @@ Each run produces a small committed summary for cross-run comparison and a full
 per-question detail file that stays out of git.
 
 **Acceptance criteria:**
-- Given a completed run, when artifacts are written, then a metrics summary is written
-  to a committed path under `data/eval/` in a diffable format.
+- Given a completed run, when artifacts are written, then a metrics summary is written to a
+  committed path under `data/eval/` in a diffable format, with an explicit shape (a
+  versioned model, not an ad-hoc dict) so that a diff between two runs is meaningful.
+- Given `data/eval/`, when it is introduced, then its version-control status is stated
+  explicitly — it is committed, unlike `data/enriched/` (ADR 0005) — and `.gitignore` is
+  left untouched for that path deliberately rather than by omission.
 - Given a completed run, when artifacts are written, then the per-question detail and
-  `run.log` are written under `logs/ingest_evaluate_<YYYYMMDDHHMM>/`, which is gitignored.
-- Given two runs of the same corpus with the same seed, when their summaries are diffed,
-  then the diff is empty.
+  `run.log` are written under `logs/ingest_evaluate_<YYYYMMDDHHMM>/`. That directory will
+  also contain the `manifest.json` and `report.md` that `RunArtifactWriter.__exit__` always
+  writes — four artifacts, not two.
+- Given two runs of the same corpus with the same seed and the same configured parameters,
+  when their summaries are diffed, then the diff is empty.
 - Given `--dry-run`, when the command is run, then neither artifact path is written.
 
 ### FR-8: No network calls at evaluation time
@@ -220,14 +255,22 @@ future judge can consume without any judge being implemented here.
 their usefulness instead of assuming it.
 
 **Acceptance criteria:**
-- Given a completed run, when the summary is produced, then it reports the agreement
-  between the keyword-based hit@k ranking and the `ts_rank` ranking computed from question
-  text, which shares no input with the keywords.
 - Given a completed run, when the summary is produced, then it reports the share of
-  distinct keywords that match no comma anywhere in the corpus, as a direct measure of
-  keyword quality.
-- Given low agreement between the two signals, when the summary is produced, then every
-  keyword-derived metric in the run is marked unreliable rather than reported as fact.
+  distinct keywords that match no comma anywhere in the corpus, and the distribution of
+  keyword document frequency — direct, self-contained measures of keyword quality that
+  depend on no second signal.
+- Given a completed run, when the summary is produced, then it reports the association
+  between keyword-derived hit@k (a per-question binary) and the FR-5 adherence score of the
+  same question's top-1 comma, using a named statistic (point-biserial correlation), not an
+  unspecified "agreement".
+- Given that association, when it is reported, then it is accompanied by the statement that
+  it is **not an independence test**: `exact_keywords` are generated by an LLM *from the
+  question text*, which is also the input to `ts_rank`, so the two signals share their
+  origin and partial agreement is guaranteed. It bounds how badly the keywords diverge from
+  their own source; it cannot confirm they are right.
+- Given no judge, when the summary is produced, then it states that whether
+  `exact_keywords` carry signal about *the corpus* cannot be settled by this harness, and
+  is the question FR-9's export exists to hand to a judge.
 - Given the keyword-free signals (FR-5, FR-6) and the keyword-derived ones, when results
   are presented, then each is labelled with which of the two it depends on, so a reader
   can discard the latter without discarding the run.
@@ -243,14 +286,17 @@ their usefulness instead of assuming it.
   stops at data: no `RelevanceJudge` protocol, no provider abstraction, no prompt.
   Designing an interface for a consumer nobody has chosen yet is how the wrong interface
   gets built.
-- **Implementing hybrid search / RRF** — this spec measures whether that feature is
-  justified; it does not build it. The dense/FTS agreement signal in FR-6 is a
-  measurement, not a retrieval path.
+- **Implementing hybrid search** — fusing a *dense* ranking with a *full-text* ranking into
+  a production retrieval path is out of scope; this spec measures whether that feature is
+  justified. The dense/FTS agreement signal in FR-6 is a measurement, not a retrieval path.
+  This exclusion is deliberately narrower than "RRF": spec 0008 requires this harness to
+  fuse several **dense** rankings by RRF as one of its arms, which is a measurement
+  technique and is **not** excluded here. Fusion machinery built for that arm may be reused
+  later, but reusing it is a separate decision.
 - **A production retrieval API** (`similarity_search`, FastAPI routes) — belongs to
   `src/guidami_ai_patente/` when that app starts, and is not created here.
-- **Schema changes** — no generated `tsvector` column, no GIN or HNSW/IVFFlat index. Any
-  of these would require a database reset and full re-ingest under the project's
-  `db/init.sql` workflow.
+- **Schema changes** — no generated `tsvector` column, no GIN or HNSW/IVFFlat index. All
+  full-text work happens at query time, so this spec needs neither a migration nor a reset.
 - **Fixing the corpus coverage gap** — this spec quantifies it; deciding whether to
   ingest additional non-CdS material (first aid, vehicle mechanics) is a separate call.
 
@@ -270,13 +316,15 @@ their usefulness instead of assuming it.
 
 ### AD-2: Full-text search is computed at query time, with no schema change
 - **Rationale:** `to_tsvector`/`ts_rank` over 3650 commas is fast enough for an offline
-  harness, and the measured dense scan over the full 7098-question corpus already
-  completes in 2m46s. Adding a generated `tsvector` column plus a GIN index would change
-  `db/init.sql`, which under this project's workflow requires wiping the bind mount and
-  re-ingesting the whole corpus — an unjustifiable cost for a measurement, and a
-  commitment to hybrid search before the measurement says it is warranted.
+  harness, and the measured dense scan over the full 7098-question corpus already completes
+  in 2m46s. A generated `tsvector` column plus a GIN index would be a schema change — now
+  possible without a wipe, via the `db/migrations/` path established by ADR 0010, but still
+  a commitment to hybrid search made before the measurement says it is warranted. Keeping
+  the harness schema-free also keeps it runnable against any database state, which matters
+  while spec 0008's schema is in flight.
 - **Rejected alternatives:** Persisted `tsvector` column + GIN index — correct for
-  production hybrid search, premature here, and forces a full DB reset.
+  production hybrid search, premature here; cheap to add later precisely because ADR 0010
+  removed the reset requirement.
 
 ### AD-3: The tsquery is built by OR-joining the question's lexemes
 - **Rationale:** `plainto_tsquery('italian', ...)` combines every term with AND. Against a
@@ -288,51 +336,41 @@ their usefulness instead of assuming it.
 - **Rejected alternatives:** `plainto_tsquery` — measured to return a constant zero here.
   `websearch_to_tsquery` — still defaults to AND for bare terms, same failure.
 
-### AD-4b: Primary coverage is computed from question text, not from `exact_keywords`
-- **Rationale:** `exact_keywords` are generated by an LLM and have never been validated;
-  3685 of 5845 distinct keywords (63%) match no comma anywhere in the corpus, and the most
-  frequent one matches 2894 of 3650. Resting the primary metric on that artifact makes
-  every downstream conclusion inherit its unknown error. The question text is
-  human-authored and always present, so full-text matching it against the corpus yields a
-  coverage signal with no LLM dependency. The keyword definition is retained as a
-  secondary, comparable signal precisely so FR-10 can measure whether it was worth
-  trusting.
-- **Rejected alternatives:** Keeping keyword-based coverage as the only definition —
-  measured evidence already casts doubt on it. Dropping `exact_keywords` entirely —
-  discards a signal before establishing it is worthless, and they may still carry value
-  for exact-term matching, which is the case hybrid search exists to serve.
-
-### AD-4: Coverage is a lexical proxy, and is labelled as such
+### AD-4: Coverage is reported as two distributions, and no binary label is derived from text
 - **Rationale:** Without a judge, "the corpus contains the rule that justifies this
-  question" cannot be determined semantically. What can be determined deterministically is
-  whether the question's LLM-extracted `exact_keywords` appear anywhere in the corpus.
-  ADR 0002 flattened those keywords into first-class columns specifically so they would be
-  queryable with plain SQL, so this uses them as intended. The metric measures lexical
-  presence, not truth: a comma may share vocabulary without justifying the answer. That
-  limitation is stated in the output, not just in this spec. Crucially, the metric cannot
-  be validated against `hit@k`: `hit@k` is defined by the same keyword matching, so a
-  question covered by nothing cannot be a hit by construction and any apparent correlation
-  between the two is circular. Coverage is therefore published as a band bounded below by
-  the "matches nothing" count (161 on 2026-08-05), with the fragile middle quantified
-  (901 questions covered only by keywords appearing in more than ten commas).
-- **Rejected alternatives:** Semantic coverage via a judge — out of scope by decision.
-  Using `rule_explanation` as a pseudo-reference — it is the strongest judge-free signal
-  available, but it originates from the same LLM call as `vector_search_queries`, which
-  produced the query vector; scoring one against the other would partly measure the
-  enrichment step's internal consistency rather than adherence to the corpus.
-  **A single IDF cutoff** picked by calibration against `hit@k` — the calibration run on
-  2026-08-05 appeared to show predictive power growing as the cutoff loosened, but that
-  trend is an artifact: the loosest cutoff is the closest to the circularity described
-  above, so the apparently "best" cutoff is simply the most tautological one. No cutoff
-  can be chosen this way. Document frequency is retained as the axis along which the
-  coverage band is reported, rather than as a threshold that decides a binary label.
+  question" cannot be determined semantically, so every coverage figure here is a lexical
+  proxy — a comma may share vocabulary without justifying the answer. Two proxies are
+  reported, and neither is collapsed to a percentage:
+  **text coverage** is the best `ts_rank` any comma achieves against the question text,
+  reported as a distribution; **keyword coverage** is the document-frequency band over
+  `exact_keywords`, whose "matches nothing" bucket (161 questions) is the one binary label
+  the spec uses, as a lower bound.
+  A binary threshold on text coverage was deliberately **not** introduced: with the
+  OR-joined tsquery of AD-3, any shared lexeme produces a match, and Italian quiz text is
+  saturated with `veicolo`, `strada`, `conducente` — a binary would read near 100% for
+  structural reasons and discriminate less than the 97.7% keyword figure already rejected
+  as uninformative. Trading the keywords' precision defect (63% match nothing) for a recall
+  degeneracy would be a strictly worse metric wearing a better justification.
+- **Rejected alternatives:** A single binary coverage percentage from question text — the
+  degeneracy above; it was drafted, then withdrawn. Keyword-based coverage as the *only*
+  definition — measured evidence casts doubt on the keywords. Dropping `exact_keywords`
+  entirely — discards a signal before establishing it is worthless, and exact-term matching
+  is precisely what hybrid search exists to serve. **A single IDF cutoff** calibrated
+  against `hit@k` — the 2026-08-05 calibration appeared to show predictive power growing as
+  the cutoff loosened, but that trend is an artifact: the loosest cutoff is the closest to
+  the tautology, so the apparently "best" cutoff is simply the most circular one. Document
+  frequency is kept as a reporting axis, never as a threshold. Using `rule_explanation` as
+  a pseudo-reference — it originates from the same LLM call as `vector_search_queries`, so
+  it would partly measure the enrichment step's internal consistency.
 
 ### AD-5: A random baseline is computed on every run, not once
 - **Rationale:** The proxy metric's absolute value is uninterpretable on its own — the
-  measured 81.6% hit@5 only becomes meaningful next to the ~27% random baseline. Because
-  the query vectors come from `vector_search_queries` while the corpus vectors come from
-  article title + comma text, the two sides are generated differently and a control is the
-  only way to detect the metric silently degenerating into "how common is this keyword".
+  measured 81.6% hit@5 only becomes meaningful next to the ~27% random baseline. The
+  baseline is the one control in this spec that is genuinely external to the metric: it
+  replaces the *retrieval* with chance while holding the matching definition fixed, so it
+  detects the metric degenerating into "how common is this keyword" — a failure mode no
+  keyword-derived or text-derived comparison can catch, since both share the metric's own
+  inputs.
 - **Rejected alternatives:** Computing the baseline once and hardcoding it — it drifts
   with the corpus, and a stale constant would mask exactly the degeneration it exists to
   catch.
@@ -356,11 +394,24 @@ No schema change. The harness is read-only against existing tables:
   retrieval results).
 - `article_commas` — `article_id`, `comma_number`, `text`, `embedding` (read). Queries
   must filter `embedding IS NOT NULL`: 342 repealed commas are stored without a vector.
-- `quiz_questions` — `number`, `topic`, `text`, `exact_keywords`, `image_filename`,
-  `embedding` (read).
+- `quiz_questions` — `number`, `topic`, `text`, `exact_keywords`, `image_filename` (read).
+- **Quiz query vectors** — `db/init.sql` no longer carries `quiz_questions.embedding`:
+  spec 0008's DDL landed in `764440b`, and vectors now live in
+  `quiz_question_embeddings (quiz_question_id, variant, embedding_3_small)`. The harness
+  must read them from there, keyed by variant. Until spec 0008's write path is implemented
+  the table is empty on a fresh volume (see 0008's half-migrated constraint), so the harness
+  must fail with a clear message when it finds no vectors rather than reporting zeroes.
 
-New artifact shapes only: a metrics summary model under `data/eval/`, and a per-question
-detail record under `logs/`.
+A read layer does not exist: every repository under `repositories/db/` is write-only bulk
+insert, exposing only `table_exists` and `row_count`. `PostgresClient.fetch` is the
+primitive, but the query layer this harness needs must be created — and its home is a live
+question, since a corpus reader is also what `src/guidami_ai_patente/` will eventually need
+(see AD-1's deviation).
+
+New artifact shapes: a versioned metrics summary model under `data/eval/`, a per-question
+detail record under `logs/`, and an `EvaluateManifest` under
+`cli/models/run_artifacts/` — `logging_setup._build_manifest` raises on an unknown command,
+so the command cannot run without one.
 
 ## Constraints
 
@@ -384,14 +435,14 @@ detail record under `logs/`.
 
 ## Feasibility Evidence
 
-- **AD-1** — supported by: `docs/layout.md:175` — assigns FastAPI/retrieval code to `src/guidami_ai_patente/`, the rule this decision consciously deviates from (verified 2026-08-05 @ 6d96b7d)
+- **AD-1** — supported by: `docs/layout.md:177` — assigns FastAPI/retrieval code to `src/guidami_ai_patente/`, the rule this decision consciously deviates from (verified 2026-08-05 @ 46fad9a)
 - **AD-1** — supported by: `pyproject.toml:31` — `ingest = "guidami_ai_patente_ingestor.cli:main"`, the entry point the new subcommand extends (verified 2026-08-05 @ 6d96b7d)
 - **AD-1** — supported by: `src/guidami_ai_patente_ingestor/cli/parser.py:4` — existing subcommand surface (`prepare`/`index`) with the `--config`/`--dry-run`/`--plain` flags FR-1 mirrors (verified 2026-08-05 @ 6d96b7d)
-- **AD-2** — supported by: `db/init.sql:26` — `embedding VECTOR(1536)` on `article_commas` with no `tsvector` column and no index declared anywhere in the file (verified 2026-08-05 @ 6d96b7d)
-- **AD-3** — supported by: `db/init.sql:24` — `text TEXT NOT NULL`, plain text with no precomputed search vector, so the tsquery must be built at query time (verified 2026-08-05 @ 6d96b7d)
-- **AD-4b** — supported by: `src/guidami_ai_patente_ingestor/agents/mappers/norm_reference_describer_mapper.py:51` — `exact_keywords` is populated from an LLM agent's output, confirming it is a generated artifact rather than source data (verified 2026-08-05 @ 6d96b7d)
-- **AD-4b** — supported by: `db/init.sql:38` — `text TEXT NOT NULL` on `quiz_questions`, the always-present human-authored field the primary coverage definition uses instead (verified 2026-08-05 @ 6d96b7d)
-- **AD-4** — supported by: `db/init.sql:42` — `exact_keywords TEXT[]` as a first-class column, the flattening ADR 0002 performed to make it SQL-queryable (verified 2026-08-05 @ 6d96b7d)
+- **AD-2** — supported by: `db/init.sql:26` — `embedding VECTOR(1536)` on `article_commas`; the file declares no `tsvector` column and no full-text or vector index (the six indexes it does declare are plain b-tree) (verified 2026-08-05 @ 46fad9a)
+- **AD-3** — supported by: `db/init.sql:24` — `text TEXT NOT NULL`, plain text with no precomputed search vector, so the tsquery must be built at query time (verified 2026-08-05 @ 46fad9a)
+- **AD-4** — supported by: `src/guidami_ai_patente_ingestor/agents/mappers/norm_reference_describer_mapper.py:51` — `exact_keywords` is populated from an LLM agent's output, confirming it is a generated artifact rather than source data (verified 2026-08-05 @ 6d96b7d)
+- **AD-4** — supported by: `db/init.sql:38` — `text TEXT NOT NULL` on `quiz_questions`, the always-present human-authored field text coverage uses (verified 2026-08-05 @ 46fad9a)
+- **AD-4** — supported by: `db/init.sql:42` — `exact_keywords TEXT[]` as a first-class column, the flattening ADR 0002 performed to make it SQL-queryable (verified 2026-08-05 @ 46fad9a)
 - **AD-4** — supported by: `src/domain/entities/quiz/quiz_question.py:20` — `exact_keywords: list[str] | None`, nullable, which is why FR-2 needs a `not_measurable` bucket (verified 2026-08-05 @ 6d96b7d)
 - **AD-5** — supported by: `src/guidami_ai_patente_ingestor/models/quiz/quiz_metadata.py:24` — `embedded_text` returns the joined `vector_search_queries`, showing the query vector is generated from different text than the corpus vector (verified 2026-08-05 @ 6d96b7d)
 - **AD-5** — supported by: `src/guidami_ai_patente_ingestor/models/knowledge/embeddable_article_comma.py:22` — corpus `embedded_text` is article title + comma text, the other side of that asymmetry (verified 2026-08-05 @ 6d96b7d)
@@ -400,12 +451,17 @@ detail record under `logs/`.
 
 ## Open Questions
 
-- [ ] **non-blocking** — What minimum lift over the random baseline should trigger the
-  `metric_not_discriminating` flag in FR-3? The measured lift is 3.2x; the threshold is a
-  calibration choice that does not change the design. — owner: user
-- [ ] **non-blocking** — Which document-frequency cutoffs should the FR-2 coverage band
-  report? The 2026-08-05 calibration used 1/2/3/5/10/20/50/100/250/500; the informative
-  region was 1–20, saturating above 50. — owner: user
+- [ ] **non-blocking** — Which document-frequency cutoffs should the FR-2 keyword band
+  report, and which `ts_rank` thresholds the text-coverage curve? The 2026-08-05
+  calibration used DF cutoffs 1/2/3/5/10/20/50/100/250/500; the informative region was
+  1–20, saturating above 50. Observed `ts_rank` values fell in 0.01–0.07 on a small sample,
+  which is not enough to fix a threshold set. Both are reporting parameters, so a wrong
+  first guess costs a re-run, not a redesign. — owner: user
+- [ ] **non-blocking** — Where does the read layer live? Every existing repository is
+  write-only, so this spec creates the first query code in the project. AD-1 places the
+  harness in `cli/`, but a corpus reader is also what `src/guidami_ai_patente/` will need.
+  Putting it in `cli/` risks a later move; putting it in a shared layer pre-empts a
+  decision the FastAPI app has not yet earned. — owner: user
 - [ ] **non-blocking** — The upper end of the uncovered range (~1060) can only be
   resolved by a judge run over the 901 fragile questions. Worth scheduling once this
   harness has run at least once end to end? — owner: user
@@ -417,7 +473,7 @@ detail record under `logs/`.
 
 ## Sign-off
 
-- **Scope approved by user:** pending
+- **Scope approved by user:** Alessio Gilardi, 2026-08-05
 - **Feasibility asserted:** by write-spec on 2026-08-05, based on Feasibility Evidence above
 
 ## Changelog
@@ -485,3 +541,37 @@ detail record under `logs/`.
   survive the doubt cast on its input. FR-3 now repeats the random baseline `N` times
   (default 3, configurable) and reports mean and spread, with the discrimination flag
   keyed to that spread rather than to a fixed lift.
+- **2026-08-05** — Amended after an independent adversarial review, which found that several
+  amendments above had not been propagated and that new circularity had been introduced.
+  Changes, all of them corrections rather than scope moves:
+  **FR-2** — the question-text coverage definition added earlier was withdrawn as a binary:
+  with the OR-joined tsquery of AD-3 it would have read near 100% for structural reasons,
+  making it *less* discriminating than the keyword figure it replaced. Text coverage is now
+  a continuous best-`ts_rank` score reported as a distribution; keyword coverage stays the
+  DF band; neither is collapsed to a percentage.
+  **FR-4** — the "gap between the two denominators is the cost attributable to missing
+  coverage" criterion is deleted. Since FR-2 requires both tests to match identically, an
+  uncovered question is a miss by construction and `full ≈ covered × coverage_rate` — the
+  gap is an arithmetic identity, the same tautology withdrawn two entries above, reintroduced
+  in a criterion added one entry above it. The covered-subset denominator is now explicitly
+  the keyword "matches nothing" bucket, and labelled keyword-derived.
+  **FR-10** — the claim that `ts_rank` "shares no input with the keywords" was false:
+  `exact_keywords` are generated by an LLM *from the question text*. The criterion now names
+  a statistic (point-biserial), and states that it is not an independence test.
+  **FR-3** — the spread-keyed `metric_not_discriminating` flag is removed: with N≈3
+  repetitions of ~7000 draws the spread of the mean is a fraction of a point and the flag
+  could never fire, while comparing a ratio against a percentage-point spread was
+  dimensionally incoherent. The baseline population is now pinned to the retrievable commas.
+  **FR-1** — seed, `N`, `k` values and reporting thresholds are now required inputs from
+  configuration; a manifest type and a dry-run chain source are named as obligations.
+  **AD-4/AD-4b** — merged: two adjacent ADs gave contradictory definitions of the primary
+  metric after AD-4b demoted AD-4 without rewriting it.
+  **Non-Goals** — the RRF exclusion is narrowed to hybrid (dense+FTS) search, resolving a
+  direct contradiction with spec 0008 FR-3, which requires this harness to fuse dense
+  rankings by RRF. **Data Model** — rebased onto the post-`764440b` schema: quiz vectors are
+  read from `quiz_question_embeddings`, not from the removed `quiz_questions.embedding`; the
+  absence of any read layer is recorded. **Evidence** — `docs/layout.md:175`→`:177`, and the
+  AD-2 claim "no index declared anywhere in the file" corrected (six b-tree indexes exist;
+  the true claim is no FTS or vector index). **Problem & Motivation** — the sentence
+  asserting "the text is present and the ranking fails to surface it" is retracted; the
+  bounds do not support it.

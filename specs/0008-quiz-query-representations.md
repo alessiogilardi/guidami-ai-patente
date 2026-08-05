@@ -28,10 +28,11 @@ image, the description of what that image depicts is generated during enrichment
 is then thrown away at the storage boundary — so for well over half the bank, the most
 semantically loaded text about the question never reaches the database at all.
 
-Spec 0007 establishes the instrument that makes the comparison possible and captures a
-baseline of the current single-representation configuration. This spec uses that
-instrument to answer the question the baseline poses: which representation of a quiz
-question retrieves its supporting norm best?
+Spec 0007 builds the instrument that makes the comparison possible. This spec uses it to
+answer the question that instrument poses: which representation of a quiz question
+retrieves its supporting norm best? The current single-representation configuration is
+preserved as the `search_queries` variant by the migration (AD-4), so it remains
+measurable whether or not spec 0007 has run first.
 
 ## Functional Requirements
 
@@ -59,9 +60,9 @@ the representation that produced it.
 - Given the initial configuration, when indexing runs, then it produces at least these
   variants: question text alone; topic + question text; `vector_search_queries`; topic +
   text + `vector_search_queries` combined.
-- Given the `vector_search_queries` variant, when it is computed, then it reproduces the
-  representation measured by the spec 0007 baseline exactly, so the baseline stays
-  comparable.
+- Given the `vector_search_queries` variant, when the migration runs, then it is populated
+  by **moving the existing vectors**, not by recomputing them, so the pre-existing
+  configuration is preserved bit-for-bit as the comparison baseline.
 - Given an item lacking the input a representation needs, when indexing runs, then no row
   is written for that variant and the omission is counted, never stored as a null vector.
 - Given a variant name, when it is written, then it states the text it was computed from;
@@ -128,9 +129,10 @@ available as a query representation.
   would make the results uninterpretable. The variant-table pattern in AD-2 applies
   equally to the corpus side and makes that experiment cheap to run later, once the query
   side has a winner to hold fixed.
-- **Implementing hybrid search** — the fusion arm in FR-3 fuses three dense rankings as a
-  measurement. Fusing dense with full-text search remains a separate, still-unfunded
-  decision that spec 0007's measurements inform.
+- **Implementing hybrid search** — the fusion arm in FR-3 fuses several **dense** rankings
+  as a measurement. Fusing dense with full-text search remains a separate, still-unfunded
+  decision that spec 0007's measurements inform. Spec 0007's Non-Goal is scoped to that
+  dense+FTS combination precisely so it does not forbid the dense-only fusion required here.
 - **Choosing the winning representation** — this spec produces the comparison. Promoting
   one arm to the production default is a decision taken after reading the numbers, and
   will amend this spec or open a new one.
@@ -259,8 +261,7 @@ description column on `quiz_questions` would store each description about ten ti
 Storage impact is negligible: five variants for ~7100 questions is roughly 200 MB. No
 vector index is added, consistent with the exact-scan decision in spec 0007.
 
-`article_commas` and `articles` are untouched in shape, but both are re-populated by the
-reset.
+`article_commas` and `articles` are untouched entirely — not re-populated, not re-embedded.
 
 Migration: apply `db/migrations/0008_quiz_query_representations.sql` to the running
 database, then re-run quiz indexing to populate `vector_search_queries`, `quiz_images`,
@@ -270,6 +271,15 @@ need to be re-run: `articles` and `article_commas` are untouched.
 
 ## Constraints
 
+- **The repository is knowingly left half-migrated until this spec is implemented.**
+  `db/init.sql` already carries the target schema (committed in `764440b`), while
+  `QuizQuestionStoreRepository` and `QuizQuestionEntity` still write and declare
+  `quiz_questions.embedding`. Consequences, accepted deliberately: the migration script must
+  not be applied to the development database before this spec is implemented, and — the
+  part no instruction can prevent — **creating a fresh Postgres volume runs `db/init.sql`
+  automatically and yields a database on which `ingest index quiz` fails**. Anyone
+  recreating the volume before this spec lands must either check out a commit predating
+  `764440b` or implement FR-1/FR-2's write path first.
 - The migration must preserve `quiz_questions.embedding` as the `search_queries` variant
   **before** dropping the column. Dropping it first destroys the spec 0007 baseline arm,
   which is the one thing in this change that cannot be recomputed for free.
@@ -281,8 +291,9 @@ need to be re-run: `articles` and `article_commas` are untouched.
   equivalence check rather than assumed.
 - Vector parameters use the explicit `%s::vector` cast, per
   `.claude/rules/code-conventions.md`.
-- Entities model the insertable projection of the row: the three vector fields are plain
-  nullable fields, and DB-generated columns stay absent, per the same rules file.
+- Entities model the insertable projection of the row: under AD-2 the quiz entity carries
+  no vector field at all, and a separate entity models a `quiz_question_embeddings` row,
+  with DB-generated columns absent, per the same rules file.
 - Re-embedding cost must stay within a few cents: roughly 25 000 items across quiz arms
   and corpus commas at `text-embedding-3-small` rates.
 - No new runtime dependency.
@@ -290,17 +301,17 @@ need to be re-run: `articles` and `article_commas` are untouched.
 ## Feasibility Evidence
 
 - **AD-1** — supported by: `src/guidami_ai_patente_ingestor/mappers/quiz_mapper.py:54` — the mapper docstring states it drops `vector_search_queries` as "embedder input only, not persisted", the exact behaviour FR-1 reverses (verified 2026-08-05 @ 6d96b7d)
-- **AD-1** — supported by: `docs/adr/0002-flatten-quiz-metadata-columns.md:10` — lists `vector_search_queries` among the metadata fields, establishing the flattening precedent this extends (verified 2026-08-05 @ 6d96b7d)
-- **AD-1** — supported by: `db/init.sql:41` — `core_concepts TEXT[]` shows the column shape and nullability the new column follows (verified 2026-08-05 @ 6d96b7d)
-- **AD-2** — supported by: `db/init.sql:44` — the single `embedding VECTOR(1536)` column this decision replaces (verified 2026-08-05 @ 6d96b7d)
-- **AD-2** — supported by: `src/domain/entities/quiz/quiz_question.py:22` — the entity's single `embedding: list[float] | None` field that must become three (verified 2026-08-05 @ 6d96b7d)
-- **AD-2** — supported by: `src/guidami_ai_patente_ingestor/models/quiz/embedded_quiz.py:21` — the intermediate model's single `embedding` field, the second place the three-way split lands (verified 2026-08-05 @ 6d96b7d)
+- **AD-1** — supported by: `docs/adr/0002-flatten-quiz-metadata-columns.md:11` — lists `vector_search_queries` among the metadata fields, establishing the flattening precedent this extends (verified 2026-08-05 @ 6d96b7d)
+- **AD-1** — supported by: `db/init.sql:41` — `core_concepts TEXT[]` shows the column shape and nullability the new column follows (verified 2026-08-05 @ 46fad9a)
+- **AD-2** — supported by: `src/guidami_ai_patente_ingestor/repositories/db/quiz_question_store_repository.py:17` — the write path still lists a single `"embedding"` column, the shape this decision replaces (verified 2026-08-05 @ 46fad9a)
+- **AD-2** — supported by: `src/domain/entities/quiz/quiz_question.py:22` — the entity's single `embedding: list[float] | None` field, which this decision removes in favour of variant rows (verified 2026-08-05 @ 46fad9a)
+- **AD-2** — supported by: `src/guidami_ai_patente_ingestor/models/quiz/embedded_quiz.py:21` — the intermediate model's single `embedding` field, the second place the variant split lands (verified 2026-08-05 @ 46fad9a)
 - **AD-3** — supported by: `src/guidami_ai_patente_ingestor/models/quiz/quiz_metadata.py:24` — `embedded_text` joins `vector_search_queries`, the single representation all four arms are measured against (verified 2026-08-05 @ 6d96b7d)
 - **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/embed_quiz_metadata.py:11` — `EmbedQuizMetadata` computes exactly one vector per item, the step FR-2 generalises (verified 2026-08-05 @ 6d96b7d)
 - **AD-6** — supported by: `src/commons/ai/embedding/configs/embedding_config.py:17` — the comment states `dimensions` "must match `vector_dim` and the `VECTOR(N)` column size", confirming dimension is fixed per column and cannot vary per row (verified 2026-08-05 @ 6d96b7d)
-- **AD-6** — supported by: `db/init.sql:69` — the table-level `CHECK (num_nonnulls(...) > 0)` that replaces the per-column `NOT NULL` once multiple model columns are possible (verified 2026-08-05 @ 6d96b7d)
-- **AD-4** — supported by: `db/migrations/0008_quiz_query_representations.sql:65` — the guarded `INSERT ... SELECT` that moves existing vectors into the variant table before the column is dropped (verified 2026-08-05 @ 6d96b7d)
-- **AD-4** — supported by: `db/init.sql:52` — the target-state definition the migration must match, updated in the same change (verified 2026-08-05 @ 6d96b7d)
+- **AD-6** — supported by: `src/commons/ai/embedding/clients/sentence_transformer_embedding_client.py:27` — a second, alternative embedding client already exists whose dimension differs from the production one, so more than one vector width is a real case and not hypothetical (verified 2026-08-05 @ 46fad9a)
+- **AD-4** — supported by: `docker/docker-compose.yml:13` — `init.sql` is mounted read-only into `/docker-entrypoint-initdb.d/`, so it executes only on volume creation and can never alter an existing database; a migration path is therefore required, not optional (verified 2026-08-05 @ 46fad9a)
+- **AD-4** — supported by: `db/init.sql:26` — `article_commas.embedding VECTOR(1536)`, the 3650 corpus vectors a reset would discard although this spec does not touch them (verified 2026-08-05 @ 46fad9a)
 - **AD-5** — supported by: `docs/adr/0003-group-road-sign-description-by-image.md:24` — "Group by the image filename only", establishing that a description belongs to an image rather than to a question (verified 2026-08-05 @ 6d96b7d)
 - **AD-5** — supported by: `src/guidami_ai_patente_ingestor/mappers/quiz_mapper.py:52` — the mapper discards `image_description` as not persisted, the behaviour FR-5 reverses (verified 2026-08-05 @ 6d96b7d)
 - **AD-5** — supported by: `src/guidami_ai_patente_ingestor/models/quiz/embedded_quiz.py:20` — `image_description: str | None` exists on the intermediate model, so the text is already carried to the storage boundary and only needs a destination (verified 2026-08-05 @ 6d96b7d)
@@ -318,9 +329,9 @@ need to be re-run: `articles` and `article_commas` are untouched.
   latter. — owner: user
 - [ ] **non-blocking** — Which RRF constant `k` should the fusion arm use? The
   conventional default is 60; it has never been calibrated on this corpus. — owner: investigation
-- [ ] **non-blocking** — After the winning arm is chosen, do the losing columns stay in the
-  schema as permanent experiment scaffolding, or are they dropped in a follow-up reset? —
-  owner: user
+- [ ] **non-blocking** — After the winning arm is chosen, do the losing variants stay in
+  the table as permanent experiment scaffolding, or are they deleted? Under AD-2 this is a
+  `DELETE`, not a schema change. — owner: user
 
 ## Sign-off
 
@@ -362,3 +373,19 @@ need to be re-run: `articles` and `article_commas` are untouched.
   now defines an arm as a (variant, model) pair while keeping single-model runs valid. The
   migration carries a commented template for adding a model column together with the
   required CHECK widening.
+
+- **2026-08-05** — Amended after an independent adversarial review of spec 0007 that also
+  covered this spec. Corrections: three Feasibility Evidence entries cited **this spec's own
+  deliverables** (`db/init.sql` lines added by `764440b`, and the migration script itself) —
+  a deliverable cannot establish its own feasibility, so they are replaced by the
+  pre-existing facts that motivate the decisions (the read-only `init.sql` mount, the 3650
+  corpus vectors a reset would discard, the second embedding client whose dimension
+  differs). A fourth entry pointed at a line the same commit had shifted. Residual
+  "three vector columns" wording surviving the AD-2 reversal to variant rows was corrected in
+  Constraints and Open Questions, as was a Data Model sentence claiming `articles` and
+  `article_commas` are "re-populated by the reset" — there is no reset, and the neighbouring
+  constraint already said a run that re-embeds the corpus is a defect. FR-2's
+  "reproduces the 0007 baseline exactly" is restated as what the migration actually does:
+  it *moves* the existing vectors. The hybrid-search Non-Goal now states explicitly that
+  spec 0007's matching Non-Goal is scoped to dense+FTS, so it does not forbid the dense-only
+  RRF arm this spec requires — the two specs previously contradicted each other outright.
