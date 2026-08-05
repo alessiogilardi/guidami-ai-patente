@@ -428,13 +428,13 @@ already attributed to T-7/FR-5 above). A live re-scrape against normattiva.it is
 once, to regenerate the committed JSON file itself with this corrected content — the offline
 check only confirms the *code* behaves correctly against already-fetched HTML.
 
-**Quiz bank** (`orchestrators/quiz_flows.py`). Since spec 0005, `cleaned`
-is a **per-element** layer for quiz too (one JSON file per cleaned
-sub-question, named by `commons.utils.element_id("quiz", item.number)`,
-`_quiz_id` in `quiz_flows.py`; `enriched` stays monolithic for now,
-`parsed` stays a single monolithic file, same as knowledge):
+**Quiz bank** (`orchestrators/quiz_flows.py`). Since spec 0005, `cleaned` and
+`enriched` are **per-element** layers for quiz too (one JSON file per cleaned/
+enriched sub-question, named by `commons.utils.element_id("quiz", item.number)`,
+`_quiz_id` in `quiz_flows.py`; `parsed` stays a single monolithic file, same as
+knowledge):
 1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` (unnest + corpus-wide dedup on normalized-text + correct_answer + image identity — the id depends on `number`, which only exists after this flatten, so the filter can't run any earlier) → `FilterAlreadyDoneStep` (drops items already present in `cleaned/`) → `WriteJsonDirStep` (one file per surviving item).
-2. *Enrichment*: `LoadJsonStep` → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched))` → `AsyncApplyStep(ImageDescriptionEnricher(road_sign_describer_concurrency, RoadSignDescriberAgent), NormReferenceEnricher(NormReferenceDescriberAgent))` → `WriteJsonStep` (cleaned → enriched). The mapping runs in a synchronous `ApplyStep`; both enrichers run in a separate `AsyncApplyStep` (concurrent LLM calls). `ImageDescriptionEnricher` groups quizzes by image filename and issues one concurrent vision call per image (see `patterns.md`), writing both the flat `image_description` (downstream/embedding field) and the structured `image_analysis` (full LLM output, debug-only) onto every quiz sharing that image.
+2. *Enrichment*: `LoadJsonDirStep` (cleaned, per-element) → `FilterAlreadyDoneStep` (drops items already present in `enriched/`, **before** the mapping/LLM transform — the filter runs pre-transform here since enrichment, unlike cleaning, *is* the expensive step) → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched))` → `AsyncApplyStep(ImageDescriptionEnricher(road_sign_describer_concurrency, RoadSignDescriberAgent), NormReferenceEnricher(NormReferenceDescriberAgent))` → `WriteJsonDirStep` (one file per enriched item). The mapping runs in a synchronous `ApplyStep`; both enrichers run in a separate `AsyncApplyStep` (concurrent LLM calls) over whatever subset the filter left — `ImageDescriptionEnricher` groups the *not-yet-done* quizzes by image filename and issues one concurrent vision call per image (see `patterns.md`), writing both the flat `image_description` (downstream/embedding field) and the structured `image_analysis` (full LLM output, debug-only) onto every quiz sharing that image. Corpus-wide dedup already happened at cleaning, so no duplicate-image concern arises across runs.
 3. *Indexing*: `LoadJsonStep` → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embedded))` → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(ForEach(QuizMapper.from_embedded_to_quiz_question))` → `DbStoreStep` (full truncate + bulk insert). `EmbedQuizMetadata` extracts `quiz_metadata` (itself `Embeddable`) from each item and calls `EmbeddingService` on that list directly — not on the `EmbeddedQuizModel` items themselves, which no longer implement `Embeddable`/`Embedded`. Items without `quiz_metadata` end up with `embedding=None`. `QuizMetadata` stays a cohesive nested object through the ingestion models (`EnrichedQuizModel`/`EmbeddedQuizModel`) and is flattened onto the `QuizQuestionEntity` entity columns **only** at the boundary, inside `from_embedded_to_quiz_question`.
 
 ## Relevant architectural decisions
@@ -465,13 +465,20 @@ See `adr/` for the full history. Currently accepted:
   with `openrouter_usage={"include": True}`, and `PydanticAILlmCallCapture`
   sums `ModelResponse.provider_details["cost"]` synchronously; no fallback
   estimate when OpenRouter omits cost (`adr/0004-openrouter-native-cost-tracking.md`).
-- **Per-element knowledge layers, cross-run resumability, write-through
-  deferred** — `cleaned`/`enriched` for the knowledge corpus moved from one
-  monolithic JSON per source to one JSON file per article, so a `--force`-less
-  re-run only pays for the articles still missing (see the flow description
-  above and `docs/plans/2026-07-17--per-element-knowledge-layers.md`). Full
-  write-through (durable progress *during* a run, not just across runs) is
-  explicitly out of scope for this change and left to a follow-up plan.
+- **Per-element knowledge (then quiz) layers, cross-run resumability,
+  write-through deferred** — `cleaned`/`enriched` for the knowledge corpus
+  moved from one monolithic JSON per source to one JSON file per article, so a
+  `--force`-less re-run only pays for the articles still missing (see the flow
+  description above and `docs/plans/2026-07-17--per-element-knowledge-layers.md`).
+  Spec 0005 brought quiz's `cleaned`/`enriched` layers to the same per-element
+  model, reusing the generic `FilterAlreadyDoneStep`/`LoadJsonDirStep`/
+  `WriteJsonDirStep` steps as-is (no quiz-specific step classes), keyed by
+  `element_id("quiz", item.number)` instead of `element_id(source, number)` —
+  quiz has a single fixed source, so no `source` field needed adding to
+  `CleanedQuizModel`/`EnrichedQuizModel` the way knowledge needed one on
+  `CleanedArticleModel`. Full write-through (durable progress *during* a run,
+  not just across runs) is explicitly out of scope for both and left to a
+  follow-up plan.
 - **`ingest` CLI is a self-contained package with lazy DI wiring** — the
   former 278-line `cli.py` monolith (which built a `PostgresClient` and an
   `OpenRouterProvider` eagerly in `main()` for every command) was split into

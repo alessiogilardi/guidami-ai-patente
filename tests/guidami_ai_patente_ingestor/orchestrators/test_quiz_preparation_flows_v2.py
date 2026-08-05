@@ -210,10 +210,10 @@ def test_enrichment_flow_build_with_validate_true_does_not_raise() -> None:
     assert isinstance(flow, Flow)
 
 
-def test_enrichment_flow_has_four_steps_in_order() -> None:
-    """The chain is LoadCleanedQuiz -> ApplyStep(map_cleaned_quiz) -> AsyncApplyStep(enrich_quiz).
+def test_enrichment_flow_has_five_steps_in_order() -> None:
+    """The chain is LoadCleanedQuiz -> Filter -> ApplyStep(map_cleaned_quiz).
 
-    -> WriteEnrichedQuiz (single event loop, Decision 4).
+    -> AsyncApplyStep(enrich_quiz) -> WriteEnrichedQuiz (single event loop, Decision 4).
     """
     with patch.object(RoadSignDescriberAgent, "from_yaml", return_value=_patched_describer()):
         flow = build_quiz_enrichment_flow(
@@ -224,10 +224,84 @@ def test_enrichment_flow_has_four_steps_in_order() -> None:
     steps = flow.get_steps()
     assert [step.name for step in steps] == [
         "load_cleaned_quiz",
+        "filter_enriched_quiz",
         "map_cleaned_quiz",
         "enrich_quiz",
         "write_enriched_quiz",
     ]
+
+
+def test_enrichment_flow_force_false_skips_already_enriched_item_without_llm_call(
+    tmp_path: Path,
+) -> None:
+    """FR-2: an already-enriched item never reaches the LLM enrichers on re-run."""
+    resolver = _quiz_resolver(tmp_path, {"cleaned": "", "enriched": ""})
+    cleaned_dir = resolver.dir("cleaned", "quiz")
+    cleaned_dir.mkdir(parents=True)
+    for number in ("1", "2"):
+        (cleaned_dir / f"{element_id('quiz', number)}.json").write_text(
+            json.dumps(
+                {
+                    "question_id": 1,
+                    "topic": "Segnaletica",
+                    "number": number,
+                    "text": f"Domanda {number}.",
+                    "correct_answer": True,
+                    "image": None,
+                }
+            ),
+            encoding="utf-8",
+        )
+
+    enriched_dir = resolver.dir("enriched", "quiz")
+    enriched_dir.mkdir(parents=True)
+    sentinel_path = enriched_dir / f"{element_id('quiz', '1')}.json"
+    sentinel_path.write_text(
+        json.dumps(
+            {
+                "question_id": 1,
+                "topic": "Segnaletica",
+                "number": "1",
+                "text": "Domanda 1.",
+                "correct_answer": True,
+                "image": None,
+                "quiz_metadata": None,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    config = IngestorConfig(
+        postgres=PostgresConnectionConfig(
+            host="localhost", user="unused", password="unused", dbname="unused"
+        ),
+        project_root=tmp_path,
+    )
+
+    describer = _patched_describer()
+    norm_describer = MagicMock(spec=NormReferenceDescriberAgent)
+    norm_describer.run.return_value = NormReferenceDescriberResponse(
+        core_concepts=["concetto 1", "concetto 2"],
+        exact_keywords=["parola 1", "parola 2", "parola 3"],
+        vector_search_queries=["query 1", "query 2"],
+        rule_explanation="Spiegazione breve.",
+    )
+
+    with (
+        patch.object(RoadSignDescriberAgent, "from_yaml", return_value=describer),
+        patch.object(NormReferenceDescriberAgent, "from_yaml", return_value=norm_describer),
+    ):
+        build_quiz_enrichment_flow(
+            config=config,
+            layer_resolver=resolver,
+            open_router_provider=_PROVIDER,
+            force=False,
+        ).run()
+
+    assert norm_describer.run.call_count == 1
+    files = sorted(enriched_dir.glob("*.json"))
+    assert len(files) == 2
+    assert json.loads(sentinel_path.read_text())["quiz_metadata"] is None
 
 
 # ---------------------------------------------------------------------------
@@ -282,20 +356,18 @@ def test_enrichment_flow_reports_step_and_item_progress(
     tmp_path: Path, progress_recorder: RecordingProgressReporter
 ) -> None:
     resolver = _quiz_resolver(tmp_path, {"cleaned": "", "enriched": ""})
-    cleaned_path = resolver.path("cleaned", "quiz")
-    cleaned_path.parent.mkdir(parents=True)
-    cleaned_path.write_text(
+    cleaned_dir = resolver.dir("cleaned", "quiz")
+    cleaned_dir.mkdir(parents=True)
+    (cleaned_dir / f"{element_id('quiz', '1')}.json").write_text(
         json.dumps(
-            [
-                {
-                    "question_id": 1,
-                    "topic": "Segnaletica",
-                    "number": "1",
-                    "text": "Domanda di prova.",
-                    "correct_answer": True,
-                    "image": None,
-                }
-            ]
+            {
+                "question_id": 1,
+                "topic": "Segnaletica",
+                "number": "1",
+                "text": "Domanda di prova.",
+                "correct_answer": True,
+                "image": None,
+            }
         ),
         encoding="utf-8",
     )
@@ -332,9 +404,9 @@ def test_enrichment_flow_reports_step_and_item_progress(
 
     begin_steps = [args for name, args in progress_recorder.calls if name == "begin_step"]
     end_steps = [args for name, args in progress_recorder.calls if name == "end_step"]
-    assert len(begin_steps) == 4
-    assert len(end_steps) == 4
-    assert [args[1] for args in begin_steps] == [1, 2, 3, 4]
+    assert len(begin_steps) == 5
+    assert len(end_steps) == 5
+    assert [args[1] for args in begin_steps] == [1, 2, 3, 4, 5]
     # Proves the reporter reached both injected quiz enrichers (no image -> 0 images).
     assert ("begin_items", ("images", 0)) in progress_recorder.calls
     assert ("begin_items", ("questions", 1)) in progress_recorder.calls

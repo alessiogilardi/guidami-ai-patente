@@ -25,9 +25,9 @@ from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
     DbStoreStep,
     FilterAlreadyDoneStep,
+    LoadJsonDirStep,
     LoadJsonStep,
     WriteJsonDirStep,
-    WriteJsonStep,
 )
 from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
 from guidami_ai_patente_ingestor.services import LayerResolver
@@ -246,6 +246,7 @@ def build_quiz_enrichment_flow(
     config: IngestorConfig,
     layer_resolver: LayerResolver,
     open_router_provider: OpenRouterProvider,
+    force: bool = False,
     validate: bool = False,
     tracker: LlmCallTracker | None = None,
     progress: ProgressReporter | None = None,
@@ -253,13 +254,16 @@ def build_quiz_enrichment_flow(
     """Assembles the quiz enrichment flow (cleaned → enriched).
 
     Preparation stage: no embed/store. The quiz bank has a single source
-    (`"quiz"`), derived from `config.quiz_preparation.sources[0]`.
+    (`"quiz"`), derived from `config.quiz_preparation.sources[0]`. `enriched` is
+    a per-element layer: one file per enriched item, filtered by
+    `FilterAlreadyDoneStep` (skipped entirely with `force=True`) *before* the
+    expensive LLM transform, then written by `WriteJsonDirStep`.
     The enrichment is Open/Closed: adding a future async enricher only touches the
     list of transforms in the `AsyncApplyStep`, not the generic step.
 
     Step mapping:
-      `LoadJsonStep` → `ApplyStep(map_cleaned_quiz)` → `AsyncApplyStep(enrich_quiz)`
-      → `WriteJsonStep`
+      `LoadJsonDirStep` → `FilterAlreadyDoneStep` → `ApplyStep(map_cleaned_quiz)`
+      → `AsyncApplyStep(enrich_quiz)` → `WriteJsonDirStep`
 
     The whole enrichment phase (`AsyncApplyStep(enrich_quiz)`) runs under a single
     `asyncio.run`: image description enrichment always completes before norm reference
@@ -268,8 +272,9 @@ def build_quiz_enrichment_flow(
 
     Args:
         config: Full ingestor configuration (already loaded at the entry point).
-        layer_resolver: Resolver mapping (layer, source) → JSON file Path.
+        layer_resolver: Resolver mapping (layer, source) → container directory.
         open_router_provider: OpenRouter provider injected into the enrichment agents.
+        force: If True, re-enriches every item even if already present in `enriched/`.
         validate: If True, runs structural validation of the flow before returning it.
             Raises `FlowValidationError` on ERROR.
         tracker: Optional port persisting one `LlmCallLogEntity` per call made by the
@@ -292,15 +297,27 @@ def build_quiz_enrichment_flow(
     if prep.output_layer is None:
         raise ValueError("quiz_preparation.output_layer is not configured")
 
-    load_step = LoadJsonStep(
+    file_system_client = LocalFileSystemClient(config.project_root)
+
+    load_step = LoadJsonDirStep(
         "load_cleaned_quiz",
         _CLEANED_LAYER,
         source,
         context_keys.CLEANED_QUIZ,
         layer_resolver,
-        JsonRepository.get_instance(
-            CleanedQuizModel, file_system_client=LocalFileSystemClient(config.project_root)
-        ),
+        JsonRepository.get_instance(CleanedQuizModel, file_system_client=file_system_client),
+    )
+
+    filter_step = FilterAlreadyDoneStep(
+        "filter_enriched_quiz",
+        context_keys.CLEANED_QUIZ,
+        context_keys.FILTERED_QUIZ,
+        prep.output_layer,
+        source,
+        force,
+        _quiz_id,
+        layer_resolver,
+        file_system_client,
     )
 
     agents_repository = YamlRepository(
@@ -320,7 +337,7 @@ def build_quiz_enrichment_flow(
     map_step = ApplyStep(
         "map_cleaned_quiz",
         ForEach(QuizMapper.from_cleaned_to_enriched),
-        input_key=context_keys.CLEANED_QUIZ,
+        input_key=context_keys.FILTERED_QUIZ,
         output_key=context_keys.MAPPED_QUIZ,
     )
     enrich_step = AsyncApplyStep(
@@ -333,20 +350,20 @@ def build_quiz_enrichment_flow(
         output_key=context_keys.ENRICHED_QUIZ,
     )
 
-    write_step = WriteJsonStep(
+    write_step = WriteJsonDirStep(
         "write_enriched_quiz",
         prep.output_layer,
         source,
         context_keys.ENRICHED_QUIZ,
+        _quiz_id,
         layer_resolver,
-        JsonRepository.get_instance(
-            EnrichedQuizModel, file_system_client=LocalFileSystemClient(config.project_root)
-        ),
+        JsonRepository.get_instance(EnrichedQuizModel, file_system_client=file_system_client),
     )
 
     flow: Flow = (
         FlowBuilder("quiz_enrichment")
         .add_step(load_step)
+        .add_step(filter_step)
         .add_step(map_step)
         .add_step(enrich_step)
         .add_step(write_step)
