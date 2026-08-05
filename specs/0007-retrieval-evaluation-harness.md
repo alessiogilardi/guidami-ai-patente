@@ -363,6 +363,36 @@ their usefulness instead of assuming it.
   a pseudo-reference — it originates from the same LLM call as `vector_search_queries`, so
   it would partly measure the enrichment step's internal consistency.
 
+### AD-7: Read repositories live in `commons/`, and are scoped per entity, not per table
+- **Rationale:** The harness needs the project's first query code — every existing
+  repository under `repositories/db/` is write-only bulk insert. The CLI self-containment
+  rule would put a CLI-only component in `cli/`, but a corpus reader is not CLI-only: it is
+  exactly what `src/guidami_ai_patente/` will need to serve retrieval, and `commons/`
+  already hosts a Postgres repository (`LlmCallLogRepository`) for the same reason — more
+  than one consumer.
+  **Scope is the entity, not the table.** Every knowledge-side read this spec needs is a
+  join: a retrieved comma is useless without its article's `source`, `number` and `title`
+  (FR-4 and FR-9 both require the citation, and FR-5's weighted tsvector puts the title in
+  band `A`). The same holds for the quiz side, where a question is only usable together
+  with its query vector. Two repositories follow — one per aggregate, each taking an
+  injected `PostgresClient`:
+  a **corpus** reader over `articles` + `article_commas`, and a **quiz** reader over
+  `quiz_questions` + `quiz_question_embeddings`.
+  Note the deliberate asymmetry with the write side, which *is* per table
+  (`ArticleStoreRepository`, `ArticleCommaStoreRepository`): an insert targets one table and
+  needs the generated id back to satisfy the foreign key, so it cannot be an aggregate
+  operation. Reads have no such constraint and are shaped by what the caller needs whole.
+- **Rejected alternatives:** One repository per table — the shape this AD originally
+  specified, withdrawn because it made every method either a join anyway (leaving the
+  "per table" label describing nothing) or forced the join into Python, where the caller
+  re-implements what SQL already does and pays an extra round trip. Repositories under
+  `cli/` — satisfies the self-containment rule's letter but fails its stated test ("is this
+  used by anything other than the CLI?"), and guarantees a move once the FastAPI app
+  starts. Ad-hoc SQL inside the evaluation services — no reuse, and it scatters the
+  `%s::vector` cast rule across call sites. Founding `src/guidami_ai_patente/` now to host
+  them — pre-empts a package decision the app has not yet earned, and AD-1 already
+  declined that.
+
 ### AD-5: A random baseline is computed on every run, not once
 - **Rationale:** The proxy metric's absolute value is uninterpretable on its own — the
   measured 81.6% hit@5 only becomes meaningful next to the ~27% random baseline. The
@@ -444,6 +474,9 @@ so the command cannot run without one.
 - **AD-4** — supported by: `db/init.sql:38` — `text TEXT NOT NULL` on `quiz_questions`, the always-present human-authored field text coverage uses (verified 2026-08-05 @ 46fad9a)
 - **AD-4** — supported by: `db/init.sql:42` — `exact_keywords TEXT[]` as a first-class column, the flattening ADR 0002 performed to make it SQL-queryable (verified 2026-08-05 @ 46fad9a)
 - **AD-4** — supported by: `src/domain/entities/quiz/quiz_question.py:20` — `exact_keywords: list[str] | None`, nullable, which is why FR-2 needs a `not_measurable` bucket (verified 2026-08-05 @ 6d96b7d)
+- **AD-7** — supported by: `src/commons/ai/observability/repositories/llm_call_log_repository.py:32` — `LlmCallLogRepository`, an existing Postgres repository living in `commons/` because more than one consumer needs it (verified 2026-08-05 @ 46fad9a)
+- **AD-7** — supported by: `src/commons/ai/observability/repositories/llm_call_log_repository.py:40` — its `__init__(self, client: PostgresClient)` shape, which the read repositories follow (verified 2026-08-05 @ 46fad9a)
+- **AD-7** — supported by: `.claude/rules/cli-structure.md:34` — the deciding test "is this used by anything other than the CLI?", which a corpus reader fails, sending it out of `cli/` (verified 2026-08-05 @ 46fad9a)
 - **AD-5** — supported by: `src/guidami_ai_patente_ingestor/models/quiz/quiz_metadata.py:24` — `embedded_text` returns the joined `vector_search_queries`, showing the query vector is generated from different text than the corpus vector (verified 2026-08-05 @ 6d96b7d)
 - **AD-5** — supported by: `src/guidami_ai_patente_ingestor/models/knowledge/embeddable_article_comma.py:22` — corpus `embedded_text` is article title + comma text, the other side of that asymmetry (verified 2026-08-05 @ 6d96b7d)
 - **AD-6** — supported by: `.gitignore:167` — `logs` is ignored, so run artifacts alone cannot support cross-commit comparison (verified 2026-08-05 @ 6d96b7d)
@@ -575,3 +608,13 @@ so the command cannot run without one.
   the true claim is no FTS or vector index). **Problem & Motivation** — the sentence
   asserting "the text is present and the ranking fails to surface it" is retracted; the
   bounds do not support it.
+- **2026-08-05** — AD-7 amended on the user's observation that the evaluation needs joins
+  throughout: read repositories are now scoped **per entity**, not per table. Every
+  knowledge-side read joins `article_commas` to `articles` (the citation in FR-4/FR-9 and
+  the title weighting in FR-5 all require it), and the quiz side joins `quiz_questions` to
+  `quiz_question_embeddings`. The original "one repository per table" wording described
+  nothing real — the extracted plan had already had to carve out an exception for the
+  articles join rather than fix the decision. The rejected-alternatives list records why
+  per-table was withdrawn, and the AD now states the deliberate asymmetry with the write
+  side, which stays per table because an insert needs its generated id back for the foreign
+  key.
