@@ -1,3 +1,4 @@
+from pydantic import SecretStr
 from rich.console import Console
 
 from commons.configs import PostgresConnectionConfig
@@ -17,7 +18,10 @@ _PLAINTEXT_API_KEY = "sk-top-secret-api-key"
 def _build_config() -> IngestorConfig:
     return IngestorConfig(
         postgres=PostgresConnectionConfig(
-            host="localhost", user="guidami", password=_PLAINTEXT_PASSWORD, dbname="guidami"
+            host="localhost",
+            user="guidami",
+            password=SecretStr(_PLAINTEXT_PASSWORD),
+            dbname="guidami",
         ),
         open_router_config={"api_key": _PLAINTEXT_API_KEY},  # type: ignore[arg-type]
     )

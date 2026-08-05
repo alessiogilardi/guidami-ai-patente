@@ -10,6 +10,7 @@ from unittest.mock import MagicMock
 
 import pytest
 from flowstep import Flow
+from pydantic import SecretStr
 
 from commons.ai.embedding import EmbeddingClient
 from commons.clients import PostgresClient
@@ -33,7 +34,7 @@ def _base_config() -> IngestorConfig:
     return IngestorConfig(
         embedding_batch_size=4,
         postgres=PostgresConnectionConfig(
-            host="localhost", user="unused", password="unused", dbname="unused"
+            host="localhost", user="unused", password=SecretStr("unused"), dbname="unused"
         ),
     )
 
@@ -191,7 +192,7 @@ def test_indexing_flow_reports_step_progress(
     config = IngestorConfig(
         embedding_batch_size=4,
         postgres=PostgresConnectionConfig(
-            host="localhost", user="unused", password="unused", dbname="unused"
+            host="localhost", user="unused", password=SecretStr("unused"), dbname="unused"
         ),
         project_root=tmp_path,
     )
@@ -236,7 +237,7 @@ def test_expand_to_embeddable_commas_step_detects_repeal_by_text_formula(
     config = IngestorConfig(
         embedding_batch_size=4,
         postgres=PostgresConnectionConfig(
-            host="localhost", user="unused", password="unused", dbname="unused"
+            host="localhost", user="unused", password=SecretStr("unused"), dbname="unused"
         ),
         project_root=tmp_path,
     )
@@ -316,7 +317,7 @@ def test_cap_run_does_not_overwrite_cds_run(tmp_path: Path) -> None:
         host="localhost",
         port=5432,
         user="guidami",
-        password="guidami",
+        password=SecretStr("guidami"),
         dbname="guidami_ai_patente",
     )
     pg_client = PostgresClient(db_config)
@@ -372,7 +373,7 @@ def test_rerunning_same_source_is_full_reload(tmp_path: Path) -> None:
         host="localhost",
         port=5432,
         user="guidami",
-        password="guidami",
+        password=SecretStr("guidami"),
         dbname="guidami_ai_patente",
     )
     pg_client = PostgresClient(db_config)

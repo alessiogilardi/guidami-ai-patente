@@ -3,6 +3,7 @@ from datetime import UTC, datetime
 
 import pytest
 from psycopg import sql
+from pydantic import SecretStr
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
@@ -16,7 +17,7 @@ def client() -> Iterator[PostgresClient]:
         host="localhost",
         port=5432,
         user="guidami",
-        password="guidami",
+        password=SecretStr("guidami"),
         dbname="guidami_ai_patente",
     )
     with PostgresClient(config) as client:

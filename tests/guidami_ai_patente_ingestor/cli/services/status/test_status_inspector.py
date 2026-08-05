@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from pydantic import SecretStr
+
 from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.cli.models.status import CommandReadiness, ReadinessState
 from guidami_ai_patente_ingestor.cli.services.status import StatusInspector
@@ -10,7 +12,7 @@ from guidami_ai_patente_ingestor.services import LayerResolver
 def _build_config(tmp_path: Path, **overrides: object) -> IngestorConfig:
     return IngestorConfig(
         postgres=PostgresConnectionConfig(
-            host="localhost", user="unused", password="unused", dbname="unused"
+            host="localhost", user="unused", password=SecretStr("unused"), dbname="unused"
         ),
         layers={
             "parsed": str(tmp_path / "parsed"),

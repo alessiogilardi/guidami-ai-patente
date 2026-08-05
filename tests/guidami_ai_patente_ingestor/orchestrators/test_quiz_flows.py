@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 from unittest.mock import MagicMock
 
 from flowstep import Flow, FlowValidator
+from pydantic import SecretStr
 
 from commons.ai.embedding import EmbeddingClient
 from commons.clients import PostgresClient
@@ -29,7 +30,7 @@ def _base_config() -> IngestorConfig:
     return IngestorConfig(
         embedding_batch_size=4,
         postgres=PostgresConnectionConfig(
-            host="localhost", user="unused", password="unused", dbname="unused"
+            host="localhost", user="unused", password=SecretStr("unused"), dbname="unused"
         ),
     )
 
@@ -129,7 +130,7 @@ def test_indexing_flow_reports_step_progress(
     config = IngestorConfig(
         embedding_batch_size=4,
         postgres=PostgresConnectionConfig(
-            host="localhost", user="unused", password="unused", dbname="unused"
+            host="localhost", user="unused", password=SecretStr("unused"), dbname="unused"
         ),
         project_root=tmp_path,
     )

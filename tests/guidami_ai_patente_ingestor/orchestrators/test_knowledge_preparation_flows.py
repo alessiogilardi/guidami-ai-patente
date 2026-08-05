@@ -17,6 +17,7 @@ from unittest.mock import MagicMock
 import pytest
 from flowstep import Flow, FlowValidator
 from flowstep.steps import ApplyStep
+from pydantic import SecretStr
 
 from commons.configs import PostgresConnectionConfig
 from commons.utils import element_id
@@ -41,7 +42,7 @@ if TYPE_CHECKING:
 def _base_config(**overrides: object) -> IngestorConfig:
     return IngestorConfig(
         postgres=PostgresConnectionConfig(
-            host="localhost", user="unused", password="unused", dbname="unused"
+            host="localhost", user="unused", password=SecretStr("unused"), dbname="unused"
         ),
         **overrides,  # type: ignore[arg-type]
     )

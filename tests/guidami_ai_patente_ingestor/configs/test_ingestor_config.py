@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import pytest
-from pydantic import ValidationError
+from pydantic import SecretStr, ValidationError
 
 from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.configs import IngestorConfig
@@ -10,7 +10,7 @@ from guidami_ai_patente_ingestor.configs import IngestorConfig
 def _build_config(**kwargs) -> IngestorConfig:
     return IngestorConfig(
         postgres=PostgresConnectionConfig(
-            host="localhost", user="unused", password="unused", dbname="unused"
+            host="localhost", user="unused", password=SecretStr("unused"), dbname="unused"
         ),
         **kwargs,
     )

@@ -13,6 +13,7 @@ from typing import TYPE_CHECKING
 from unittest.mock import MagicMock, patch
 
 from flowstep import Flow, FlowValidator
+from pydantic import SecretStr
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.configs import PostgresConnectionConfig
@@ -40,7 +41,7 @@ if TYPE_CHECKING:
 def _base_config() -> IngestorConfig:
     return IngestorConfig(
         postgres=PostgresConnectionConfig(
-            host="localhost", user="unused", password="unused", dbname="unused"
+            host="localhost", user="unused", password=SecretStr("unused"), dbname="unused"
         ),
     )
 
@@ -208,7 +209,7 @@ def test_cleaning_flow_reports_step_progress(
 
     config = IngestorConfig(
         postgres=PostgresConnectionConfig(
-            host="localhost", user="unused", password="unused", dbname="unused"
+            host="localhost", user="unused", password=SecretStr("unused"), dbname="unused"
         ),
         project_root=tmp_path,
     )
@@ -248,7 +249,7 @@ def test_enrichment_flow_reports_step_and_item_progress(
 
     config = IngestorConfig(
         postgres=PostgresConnectionConfig(
-            host="localhost", user="unused", password="unused", dbname="unused"
+            host="localhost", user="unused", password=SecretStr("unused"), dbname="unused"
         ),
         project_root=tmp_path,
     )
