@@ -20,8 +20,12 @@ doing so once the FastAPI app starts):
 - `commons/` — infrastructure: embedding clients, the Postgres client,
   LLM agent base class, `UseCase`/`ForEach` composition primitives,
   configs.
-- `domain/` — entities/models persisted or shared across apps
-  (`knowledge_chunk`, `quiz_question`, `retrieval_result`). `quiz_question`
+- `domain/` — entities/models persisted or shared across apps, grouped by
+  bounded context: `entities/knowledge/` (`ArticleEntity`, `ArticleCommaEntity`),
+  `entities/quiz/` (`QuizQuestionEntity`), `entities/observability/`
+  (`LlmCallLogEntity`). The former `knowledge_chunk` was split into article +
+  comma by spec 0001, and `retrieval_result` was deleted in the same change —
+  a read-path model returns when the retrieval layer actually exists. `quiz_question`
   is flat: its former nested `quiz_metadata` was demoted to a transient
   ingestion model (`guidami_ai_patente_ingestor/models/quiz/quiz_metadata.py`)
   and flattened into columns (see `adr/0002-flatten-quiz-metadata-columns.md`).
@@ -574,3 +578,7 @@ bug where `ingest status` unconditionally created a `run.log`. `_process_article
 *Last updated: 2026-08-05 — verified against commit `b5ce3ea`; the quiz per-element
 layout note now says `load_dir` (renamed from `load_all`) for the loud `ValueError` an
 un-deleted monolith triggers inside a per-element container directory.*
+
+*Last updated: 2026-08-05 — verified against commit `6d96b7d`; corrected the `domain/`
+entry, which still listed `knowledge_chunk` and `retrieval_result`: the former was split
+into `ArticleEntity`/`ArticleCommaEntity` and the latter deleted, both by spec 0001.*
