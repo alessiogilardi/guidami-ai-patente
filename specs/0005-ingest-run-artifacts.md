@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0005 |
-| **Status** | ready |
+| **Status** | in-progress |
 | **Date** | 2026-08-05 |
 | **Discussion log** | `specs/discussions/ingest-run-artifacts.md` |
 | **Supersedes / superseded by** | — |
