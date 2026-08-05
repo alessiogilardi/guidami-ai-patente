@@ -127,8 +127,10 @@ clients/providers it actually needs. Both `dispatch_prepare` branches
 no coarse per-source-file skip: idempotency lives entirely inside each
 flow's `FilterAlreadyDoneStep`, which drops elements already present in the
 per-element destination layer before the (possibly expensive) transform
-runs. The `run_preparation` helper (`orchestrators/preparation_runner.py`)
-still exists at this point but has no remaining caller.
+runs. The former `run_preparation` helper (`orchestrators/preparation_runner.py`,
+wrapping a whole flow with an `out_path.exists()` skip) is deleted — spec
+0005/AD-5 removed its last consumer (quiz) once quiz's `cleaned`/`enriched`
+layers became per-element too.
 
 **`--dry-run`** (`prepare`/`index` only, every entity; `status` has
 none — it never mutates anything): each `run_*` command function checks
