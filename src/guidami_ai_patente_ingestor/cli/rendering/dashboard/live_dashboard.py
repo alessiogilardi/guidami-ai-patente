@@ -32,7 +32,9 @@ class LiveDashboard:
             Layout(name="progress", size=_PROGRESS_REGION_SIZE),
             Layout(name="logs", size=_LOGS_REGION_SIZE),
         )
-        self._live = Live(get_renderable=self._render, console=console, refresh_per_second=4)
+        self._live = Live(
+            get_renderable=self._render, console=console, refresh_per_second=4, screen=True
+        )
 
         self._flow_task: TaskID | None = None
         self._step_task: TaskID | None = None

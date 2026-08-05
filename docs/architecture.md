@@ -252,6 +252,14 @@ around the command dispatch, so it is torn down (its `Live` stopped, its
 `LogPanelHandler` detached from the root logger) *before* any exception from
 the flow propagates to the terminal (FR-5).
 
+`LiveDashboard` renders its `Live` with `screen=True` (alternate screen
+buffer): the fixed 20-row frame (`_PROGRESS_REGION_SIZE` + `_LOGS_REGION_SIZE`)
+is taller than many terminal windows, and without `screen=True` a
+mid-run scroll desyncs `Live`'s cursor-up redraw math, printing a duplicate
+frame instead of overwriting the old one. Trade-off: on exit the terminal
+restores the pre-run screen, so the dashboard's final frame does not remain
+in scrollback (unlike a plain, non-screen `Live`).
+
 Progress rides two independent channels, both driven by the same
 `ProgressReporter`, composed with no branching thanks to the null-object
 default:
