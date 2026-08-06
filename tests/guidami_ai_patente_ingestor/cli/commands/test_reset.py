@@ -65,20 +65,41 @@ def test_run_reset_without_apply_never_opens_a_postgres_connection() -> None:
     pg.assert_not_called()
 
 
-def test_run_reset_quiz_calls_quiz_question_truncate() -> None:
+def test_reset_quiz_truncates_embeddings_and_questions_in_one_statement() -> None:
+    """T-5 (FR-3): the quiz branch truncates both tables in one combined statement.
+
+    Mirrors the knowledge branch — `quiz_question_embeddings`'s FK references
+    `quiz_questions`, so a single-table TRUNCATE fails.
+    """
     args = argparse.Namespace(entity="quiz", apply=True)
     config_mock = MagicMock()
-    mock_repo_class = MagicMock()
+    config_mock.quiz_question_embeddings_table = "quiz_question_embeddings"
+    config_mock.quiz_questions_table = "quiz_questions"
+    mock_client = MagicMock()
 
-    with (
-        patch("guidami_ai_patente_ingestor.cli.commands.reset.wiring.build_postgres_client"),
-        patch(
-            "guidami_ai_patente_ingestor.cli.commands.reset.QuizQuestionStoreRepository",
-            mock_repo_class,
-        ),
+    with patch(
+        "guidami_ai_patente_ingestor.cli.commands.reset.wiring.build_postgres_client",
+        return_value=mock_client,
     ):
         from guidami_ai_patente_ingestor.cli.commands.reset import run_reset
 
         run_reset(config_mock, args)
 
-    mock_repo_class.return_value.truncate.assert_called_once()
+    mock_client.truncate.assert_called_once_with("quiz_question_embeddings", "quiz_questions")
+
+
+def test_reset_quiz_preview_names_both_tables(capsys: pytest.CaptureFixture[str]) -> None:
+    """T-5 (FR-3): the preview names both tables, no DB connection opened."""
+    args = argparse.Namespace(entity="quiz", apply=False)
+
+    with patch(
+        "guidami_ai_patente_ingestor.cli.commands.reset.wiring.build_postgres_client"
+    ) as pg:
+        from guidami_ai_patente_ingestor.cli.commands.reset import run_reset
+
+        run_reset(MagicMock(), args)
+
+    output = capsys.readouterr().out
+    assert "quiz_questions" in output
+    assert "quiz_question_embeddings" in output
+    pg.assert_not_called()
