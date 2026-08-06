@@ -1,9 +1,11 @@
+from collections.abc import Sequence
+
 from psycopg import sql
 
 from commons.clients import PostgresClient
 from domain.entities.knowledge import ArticleCommaEntity
 
-from ._bulk_insert_store_repository import BulkInsertStoreRepository
+from ._upsert_store_repository import UpsertStoreRepository
 
 _ARTICLE_COMMA_TABLE_COLUMNS = (
     "article_id",
@@ -13,14 +15,14 @@ _ARTICLE_COMMA_TABLE_COLUMNS = (
     "is_repealed",
     "embedding",
 )
+_ARTICLE_COMMA_CONFLICT_COLUMNS = ("article_id", "comma_number")
 
 
-class ArticleCommaStoreRepository(BulkInsertStoreRepository[ArticleCommaEntity]):
-    """Writes to `article_commas`.
+class ArticleCommaStoreRepository(UpsertStoreRepository[ArticleCommaEntity]):
+    """Writes to `article_commas` via upsert on `(article_id, comma_number)`.
 
-    Two reset modes:
-    - `delete_source`: full reload of a single source (used by the per-source flow).
-    - `truncate`: wipes the entire table (used by `reset-knowledge-db`).
+    Plus scoped reconciliation. `truncate` remains available for
+    `reset-knowledge-db`'s full wipe.
     """
 
     def __init__(self, table_name: str, client: PostgresClient) -> None:
@@ -28,20 +30,39 @@ class ArticleCommaStoreRepository(BulkInsertStoreRepository[ArticleCommaEntity])
         super().__init__(
             table_name=table_name,
             columns=_ARTICLE_COMMA_TABLE_COLUMNS,
+            conflict_columns=_ARTICLE_COMMA_CONFLICT_COLUMNS,
             row_mapper=self._to_db_row,
             client=client,
         )
 
-    def delete_source(self, source: str) -> None:
-        """Deletes the commas of the given `source` only, ahead of a per-source full reload.
+    def delete_missing(
+        self, article_ids: Sequence[int], present: Sequence[ArticleCommaEntity]
+    ) -> None:
+        """Deletes commas of `article_ids` whose `(article_id, comma_number)` is not in `present`.
 
-        `article_commas` has no `source` column of its own (only via its parent
-        `articles.source`), so the deletion goes through a subquery on `articles`.
+        Returns immediately when `article_ids` is empty. Both `%s::bigint[]`/`%s::text[]`
+        casts are passed even when `present` is empty, so `NOT EXISTS` correctly deletes
+        every comma of those articles in that case.
         """
+        if not article_ids:
+            return
+
         query = sql.SQL(
-            "DELETE FROM {table} WHERE article_id IN (SELECT id FROM articles WHERE source = %s)"
+            "DELETE FROM {table} c "
+            "WHERE c.article_id = ANY(%s) "
+            "AND NOT EXISTS ("
+            "SELECT 1 FROM unnest(%s::bigint[], %s::text[]) AS k(article_id, comma_number) "
+            "WHERE k.article_id = c.article_id AND k.comma_number = c.comma_number"
+            ")"
         ).format(table=sql.Identifier(self._table_name))
-        self._client.execute(query, [source])
+        self._client.execute(
+            query,
+            [
+                list(article_ids),
+                [comma.article_id for comma in present],
+                [comma.comma_number for comma in present],
+            ],
+        )
 
     @staticmethod
     def _to_db_row(item: ArticleCommaEntity) -> tuple[object, ...]:

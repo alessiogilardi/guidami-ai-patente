@@ -1,9 +1,11 @@
+from collections.abc import Sequence
+
 from psycopg import sql
 
 from commons.clients import PostgresClient
 from domain.entities.knowledge import ArticleEntity
 
-from ._bulk_insert_store_repository import BulkInsertStoreRepository
+from ._upsert_store_repository import UpsertStoreRepository
 
 _ARTICLE_TABLE_COLUMNS = (
     "source",
@@ -13,14 +15,13 @@ _ARTICLE_TABLE_COLUMNS = (
     "scraped_at",
     "is_repealed",
 )
+_ARTICLE_CONFLICT_COLUMNS = ("source", "number")
 
 
-class ArticleStoreRepository(BulkInsertStoreRepository[ArticleEntity]):
-    """Writes to `articles`.
+class ArticleStoreRepository(UpsertStoreRepository[ArticleEntity]):
+    """Writes to `articles` via upsert on `(source, number)`, plus scoped reconciliation.
 
-    Two reset modes:
-    - `delete_source`: full reload of a single source (used by the per-source flow).
-    - `truncate`: wipes the entire table (used by `reset-knowledge-db`).
+    `truncate` remains available for `reset-knowledge-db`'s full wipe.
     """
 
     def __init__(self, table_name: str, client: PostgresClient) -> None:
@@ -28,20 +29,21 @@ class ArticleStoreRepository(BulkInsertStoreRepository[ArticleEntity]):
         super().__init__(
             table_name=table_name,
             columns=_ARTICLE_TABLE_COLUMNS,
+            conflict_columns=_ARTICLE_CONFLICT_COLUMNS,
             row_mapper=self._to_db_row,
             client=client,
         )
 
-    def delete_source(self, source: str) -> None:
-        """Deletes the articles of the given `source` only, ahead of a per-source full reload.
+    def delete_missing(self, source: str, present: Sequence[ArticleEntity]) -> None:
+        """Deletes rows of `source` whose `number` is not among `present`.
 
-        The other sources in the table remain intact: indexing is per-source
-        (one run per source), so the entire table cannot be TRUNCATEd.
+        An empty `present` deletes every row of that source — the run legitimately
+        produced nothing, and the table must mirror that.
         """
-        query = sql.SQL("DELETE FROM {table} WHERE source = %s").format(
+        query = sql.SQL("DELETE FROM {table} WHERE source = %s AND NOT (number = ANY(%s))").format(
             table=sql.Identifier(self._table_name)
         )
-        self._client.execute(query, [source])
+        self._client.execute(query, [source, [article.number for article in present]])
 
     def bulk_insert_returning_ids(self, items: list[ArticleEntity]) -> list[int]:
         """Batch-inserts the items and returns their DB-generated ids.

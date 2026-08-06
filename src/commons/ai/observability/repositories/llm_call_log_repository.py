@@ -33,8 +33,8 @@ class LlmCallLogRepository:
     """Append-only repository for `llm_call_logs`.
 
     Commons-level (unlike the ingestor's `*StoreRepository`s): the future FastAPI
-    app will track calls too. Does not extend `BulkInsertStoreRepository` — its
-    truncate + bulk-reload contract does not fit an append-only log.
+    app will track calls too. Does not extend `UpsertStoreRepository` — its
+    truncate/upsert/bulk-insert contract does not fit an append-only log.
     """
 
     def __init__(self, client: PostgresClient) -> None:

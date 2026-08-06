@@ -1,8 +1,7 @@
 from commons.clients import PostgresClient
 from domain.entities.quiz import QuizQuestionEntity
-from guidami_ai_patente_ingestor.repositories.db._bulk_insert_store_repository import (
-    BulkInsertStoreRepository,
-)
+
+from ._upsert_store_repository import UpsertStoreRepository
 
 _QUIZ_QUESTION_TABLE_COLUMNS = (
     "number",
@@ -16,9 +15,10 @@ _QUIZ_QUESTION_TABLE_COLUMNS = (
     "rule_explanation",
     "embedding",
 )
+_QUIZ_QUESTION_CONFLICT_COLUMNS = ("number",)
 
 
-class QuizQuestionStoreRepository(BulkInsertStoreRepository[QuizQuestionEntity]):
+class QuizQuestionStoreRepository(UpsertStoreRepository[QuizQuestionEntity]):
     """Full-reload write to `quiz_questions` (truncate + bulk insert)."""
 
     def __init__(self, table_name: str, client: PostgresClient) -> None:
@@ -26,6 +26,7 @@ class QuizQuestionStoreRepository(BulkInsertStoreRepository[QuizQuestionEntity])
         super().__init__(
             table_name=table_name,
             columns=_QUIZ_QUESTION_TABLE_COLUMNS,
+            conflict_columns=_QUIZ_QUESTION_CONFLICT_COLUMNS,
             row_mapper=self._to_db_row,
             client=client,
         )

@@ -41,7 +41,7 @@
   "articles")` — `CASCADE` was deliberately rejected as the fix, since it
   would silently empty any future table that gains an FK to `articles`, not
   just the one known today. Every pre-existing single-table call site
-  (`quiz_questions`, `llm_call_logs`, `BulkInsertStoreRepository`'s own
+  (`quiz_questions`, `llm_call_logs`, `UpsertStoreRepository`'s own
   table) is unaffected — a single positional argument is just a 1-tuple.
   Real consumer (spec 0001 T-16): `cli/commands/reset.py`'s `knowledge`
   branch calls `postgres_client.truncate(config.article_commas_table,
@@ -154,9 +154,14 @@ The former `quiz_metadata` JSONB blob was flattened into the retrieval/payload
 columns above (see `docs/adr/0002-flatten-quiz-metadata-columns.md`);
 `vector_search_queries` joined them later, once it stopped being pure embedder
 input and became the thing under test. The metadata columns are all-or-nothing:
-`NULL` on rows for which no `QuizMetadata` was generated. `created_at` is
-DB-managed and, under the truncate + bulk-insert reload strategy, records the
-load-batch time, not first ingestion.
+`NULL` on rows for which no `QuizMetadata` was generated. `quiz_questions.created_at`
+is DB-managed and, as long as the quiz write path still truncates + bulk-inserts
+(`DbStoreStep`, spec 0008's FR-6 hasn't landed yet), keeps recording the load-batch
+time rather than first ingestion. `articles`/`article_commas` declare no `created_at`
+column at all, so this caveat never applied to them; both now write through upsert +
+scoped reconciliation instead of truncate + bulk-insert (spec 0010), so a row's
+identity — and, once one is added, any `created_at` on these tables — would already
+survive across runs.
 
 Quiz vectors live in `quiz_question_embeddings`, not on `quiz_questions`, along
 two orthogonal axes: **which text** was embedded is a row (`variant`), **which
@@ -257,3 +262,11 @@ article numbers.*
 new `quiz_images` table keyed by filename. The Migrations section now documents the
 `db/migrations/` path alongside the wipe-and-reinit one, and their drift risk (spec 0008,
 ADR 0010). Not yet applied to the local dev database.*
+
+*Last updated: 2026-08-06 — verified against commit `068c765`; `articles`/`article_commas`
+moved off the truncate + bulk-insert reload strategy onto upsert-on-natural-key plus a
+reconciling delete scoped to the run (spec 0010, AD-1/AD-2) — `ArticleStoreRepository`/
+`ArticleCommaStoreRepository` now extend `UpsertStoreRepository` (renamed from
+`BulkInsertStoreRepository`, which is deleted) and no longer expose `delete_source`. The
+`created_at` caveat under "Main schema" is narrowed to `quiz_questions`, the one table it
+ever applied to; it still holds until spec 0008's FR-6 replaces the quiz write path too.*
