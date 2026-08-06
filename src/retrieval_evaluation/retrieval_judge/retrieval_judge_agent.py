@@ -1,6 +1,6 @@
 from commons.ai.agents import BaseAgent
 
-from .dto.retrieval_judge import RetrievalJudgeRequest, RetrievalJudgeResponse
+from .dto import RetrievalJudgeRequest, RetrievalJudgeResponse
 
 
 class RetrievalJudgeAgent(BaseAgent[RetrievalJudgeRequest, RetrievalJudgeResponse]):

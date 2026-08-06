@@ -207,7 +207,7 @@ gitignored — never committed, safe to delete once the spec they fed is
   self-contained package that replicates the layered structure locally
   instead of polluting the top-level `services/`/`models/` packages.
   Genuinely shared infrastructure (e.g. the `table_exists`/`row_count` read
-  primitives on `BulkInsertStoreRepository`) stays in its own top-level layer
+  primitives on `UpsertStoreRepository`) stays in its own top-level layer
   instead. The internal `cli/` breakdown and the full self-containment
   boundary rule live in `.claude/rules/cli-structure.md` — not restated here.
   `cli/rendering/dashboard/` (`LiveDashboard`, `LogPanelHandler`) is the concrete,
@@ -229,8 +229,10 @@ gitignored — never committed, safe to delete once the spec they fed is
   Postgres/OpenRouter config but is neither a CLI feature nor a
   data-reduction script goes in its own top-level package, sibling to
   `parsers/`/`scrapers/`/`test_data_sampler/`, registered as its own
-  `[project.scripts]` entry: `src/retrieval_evaluation/` (`agents/`,
-  `services/`, `models/`, `wiring.py`, `main.py`) asks `RetrievalJudgeAgent`
+  `[project.scripts]` entry: `src/retrieval_evaluation/` (`retrieval_judge/` —
+  the agent plus its `dto/` sibling, flat rather than nested (no `agents/dto/
+  <agent_name>/` chain, since this module has only one agent) — `services/`,
+  `models/`, `wiring.py`, `main.py`) asks `RetrievalJudgeAgent`
   whether a question's `CorpusReadRepository.dense_top_k` commas justify its
   answer. It deliberately sits outside `ingest evaluate retrieval` (spec
   0007 lists an LLM judge as a Non-Goal) and outside `cli/` (no manifest, no
@@ -273,3 +275,12 @@ repositories, deliberately asymmetric with the per-table write repositories) and
 *Last updated: 2026-08-06 — verified against commit `91c4fe7`; added `src/retrieval_evaluation/`
 (folder tree + new placement bullet), the LLM-as-judge module deliberately outside both
 `ingest evaluate retrieval` and `cli/` (ADR 0013).*
+
+*Last updated: 2026-08-06 — verified against commit `068c765`; the placement bullet's
+`src/retrieval_evaluation/` breakdown now says `retrieval_judge/` (agent + its `dto/`
+sibling, flat) instead of `agents/` — the module has only one agent, so the ingestor's
+`agents/dto/<agent_name>/` nesting convention doesn't apply.*
+
+*Last updated: 2026-08-06 — verified against commit `068c765`; the CLI self-containment
+bullet now names `UpsertStoreRepository` (renamed from `BulkInsertStoreRepository`,
+spec 0010 T-1).*

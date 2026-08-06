@@ -2,9 +2,9 @@ import random
 
 from commons.repositories.db import CorpusReadRepository, QuizReadRepository
 from domain.models.retrieval import QuizEvaluationRow
-from retrieval_evaluation.agents import RetrievalJudgeAgent
-from retrieval_evaluation.agents.dto.retrieval_judge import RetrievalJudgeRequest
 from retrieval_evaluation.models import RetrievalJudgeItemResult
+from retrieval_evaluation.retrieval_judge import RetrievalJudgeAgent
+from retrieval_evaluation.retrieval_judge.dto import RetrievalJudgeRequest
 
 
 class RetrievalJudgeEvaluationService:
