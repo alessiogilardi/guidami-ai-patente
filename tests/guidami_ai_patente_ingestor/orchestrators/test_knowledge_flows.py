@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import TYPE_CHECKING, Literal, cast
+from typing import TYPE_CHECKING, Literal, LiteralString, cast
 from unittest.mock import MagicMock
 
 import pytest
@@ -303,24 +303,19 @@ def _cleaned_resolver(tmp_path: Path) -> LayerResolver:
 def _count(pg_client: PostgresClient, table: str, where: str) -> int:
     from psycopg import sql
 
-    query = sql.SQL(f"SELECT COUNT(*) FROM {table} WHERE " + where)  # noqa: S608
+    query = sql.SQL(cast(LiteralString, f"SELECT COUNT(*) FROM {table} WHERE " + where))  # noqa: S608
     return pg_client.fetch(query)[0][0]
 
 
 @pytest.mark.integration
-def test_cap_run_does_not_overwrite_cds_run(tmp_path: Path) -> None:
+def test_cap_run_does_not_overwrite_cds_run(
+    tmp_path: Path, postgres_test_config: PostgresConnectionConfig
+) -> None:
     """The key point of per-source: a run on 'cap' does not delete 'cds' articles/commas.
 
     Also: repealed comma embeddings stay NULL, non-repealed ones are embedded.
     """
-    db_config = PostgresConnectionConfig(
-        host="localhost",
-        port=5432,
-        user="guidami",
-        password=SecretStr("guidami"),
-        dbname="guidami_ai_patente",
-    )
-    pg_client = PostgresClient(db_config)
+    pg_client = PostgresClient(postgres_test_config)
     pg_client.truncate("article_commas", "articles")
 
     resolver = _cleaned_resolver(tmp_path)
@@ -332,7 +327,9 @@ def test_cap_run_does_not_overwrite_cds_run(tmp_path: Path) -> None:
     _write_cleaned(resolver.dir("cleaned", "cds"), cds_articles)
     _write_cleaned(resolver.dir("cleaned", "cap"), cap_articles)
 
-    config = IngestorConfig(embedding_batch_size=4, postgres=db_config, project_root=tmp_path)
+    config = IngestorConfig(
+        embedding_batch_size=4, postgres=postgres_test_config, project_root=tmp_path
+    )
     embedding_client = _make_embedding_client()
 
     def _run(source: str) -> None:
@@ -367,16 +364,11 @@ def test_cap_run_does_not_overwrite_cds_run(tmp_path: Path) -> None:
 
 
 @pytest.mark.integration
-def test_rerunning_same_source_is_full_reload(tmp_path: Path) -> None:
+def test_rerunning_same_source_is_full_reload(
+    tmp_path: Path, postgres_test_config: PostgresConnectionConfig
+) -> None:
     """Re-running the same source is a per-source full-reload: the count stays stable."""
-    db_config = PostgresConnectionConfig(
-        host="localhost",
-        port=5432,
-        user="guidami",
-        password=SecretStr("guidami"),
-        dbname="guidami_ai_patente",
-    )
-    pg_client = PostgresClient(db_config)
+    pg_client = PostgresClient(postgres_test_config)
     pg_client.truncate("article_commas", "articles")
 
     resolver = _cleaned_resolver(tmp_path)
@@ -385,7 +377,9 @@ def test_rerunning_same_source_is_full_reload(tmp_path: Path) -> None:
         [_make_cleaned_article("1", "cds"), _make_cleaned_article("2", "cds")],
     )
 
-    config = IngestorConfig(embedding_batch_size=4, postgres=db_config, project_root=tmp_path)
+    config = IngestorConfig(
+        embedding_batch_size=4, postgres=postgres_test_config, project_root=tmp_path
+    )
     embedding_client = _make_embedding_client()
 
     def _run() -> None:

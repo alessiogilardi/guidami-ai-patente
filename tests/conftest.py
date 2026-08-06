@@ -1,8 +1,79 @@
 """Shared root fixtures for the test suite."""
 
+import subprocess
+from collections.abc import Iterator
 from dataclasses import dataclass, field
+from pathlib import Path
 
 import pytest
+from pydantic import SecretStr
+
+from commons.configs import PostgresConnectionConfig
+
+_TEST_COMPOSE_FILE = Path(__file__).parent.parent / "docker" / "docker-compose.test.yml"
+_TEST_COMPOSE_PROJECT = "guidami-ai-patente-test"
+_TEST_POSTGRES_PORT = 5433
+_TEST_POSTGRES_DBNAME = "guidami_ai_patente_test"
+
+
+@pytest.fixture(scope="session")
+def _postgres_test_stack() -> Iterator[None]:
+    """Starts the ephemeral, isolated Postgres test stack for the pytest session.
+
+    Runs in its own container on its own port (docker/docker-compose.test.yml,
+    tmpfs data directory), entirely separate from the dev stack started via
+    `docker compose up` in `docker/docker-compose.yml`. Only started when at
+    least one collected test requests `postgres_test_config` (directly or via a
+    module fixture built on top of it); torn down at the end of the session.
+    """
+    subprocess.run(
+        [
+            "docker",
+            "compose",
+            "-f",
+            str(_TEST_COMPOSE_FILE),
+            "-p",
+            _TEST_COMPOSE_PROJECT,
+            "up",
+            "-d",
+            "--wait",
+        ],
+        check=True,
+    )
+    yield
+    subprocess.run(
+        [
+            "docker",
+            "compose",
+            "-f",
+            str(_TEST_COMPOSE_FILE),
+            "-p",
+            _TEST_COMPOSE_PROJECT,
+            "down",
+            "-v",
+        ],
+        check=True,
+    )
+
+
+@pytest.fixture(scope="session")
+def postgres_test_config(_postgres_test_stack: None) -> PostgresConnectionConfig:
+    """Connection config for the isolated test Postgres stack — never the dev database.
+
+    Requesting this fixture starts the ephemeral test stack for the session.
+    """
+    config = PostgresConnectionConfig(
+        host="localhost",
+        port=_TEST_POSTGRES_PORT,
+        user="guidami",
+        password=SecretStr("guidami"),
+        dbname=_TEST_POSTGRES_DBNAME,
+    )
+    assert config.port != 5432, (
+        "integration tests must target the isolated test Postgres stack "
+        "(docker-compose.test.yml), never the dev database"
+    )
+    return config
 
 
 @dataclass

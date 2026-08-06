@@ -34,7 +34,8 @@ uv run pyright
 ### Infrastructure
 
 ```bash
-# Start Postgres + pgvector (required for integration tests and ingestion)
+# Start Postgres + pgvector (required for ingestion; NOT required for integration
+# tests — see below)
 cd docker && docker compose up -d
 
 # Recreate DB from scratch (required after schema changes in db/init.sql)
@@ -44,6 +45,14 @@ docker compose -f docker/docker-compose.yml down
 rm -rf docker/.volumes/postgres_data
 docker compose -f docker/docker-compose.yml up -d
 ```
+
+Integration tests never touch this dev stack. They run against a fully isolated,
+ephemeral Postgres (`docker/docker-compose.test.yml`: separate container, separate
+port 5433, `tmpfs` data directory — never persisted, never the dev database) that
+the `postgres_test_config` session fixture in `tests/conftest.py` starts
+automatically the first time an integration test needs it, and tears down at the
+end of the pytest session. No manual `docker compose` step is needed for it —
+just `uv run pytest -m integration` (Docker must be running).
 
 ### Available scripts
 

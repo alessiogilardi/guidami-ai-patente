@@ -1,0 +1,25 @@
+# Ephemeral Postgres stack for integration tests — fully isolated from the dev
+# stack (docker-compose.yml): different container, different port, in-memory
+# data directory (tmpfs, no bind mount). It cannot ever touch dev data because
+# there is no shared volume and no shared port.
+#
+# Started/stopped automatically by the `_postgres_test_stack` session fixture in
+# tests/conftest.py — never needs to be run manually.
+services:
+  postgres-test:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: guidami
+      POSTGRES_PASSWORD: guidami
+      POSTGRES_DB: guidami_ai_patente_test
+    ports:
+      - "5433:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+    volumes:
+      - ../db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U guidami -d guidami_ai_patente_test"]
+      interval: 1s
+      timeout: 3s
+      retries: 30

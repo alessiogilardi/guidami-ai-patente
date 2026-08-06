@@ -3,7 +3,6 @@ from datetime import UTC, datetime
 
 import pytest
 from psycopg import sql
-from pydantic import SecretStr
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
@@ -15,15 +14,8 @@ from guidami_ai_patente_ingestor.repositories import (
 
 
 @pytest.fixture
-def client() -> Iterator[PostgresClient]:
-    config = PostgresConnectionConfig(
-        host="localhost",
-        port=5432,
-        user="guidami",
-        password=SecretStr("guidami"),
-        dbname="guidami_ai_patente",
-    )
-    with PostgresClient(config) as client:
+def client(postgres_test_config: PostgresConnectionConfig) -> Iterator[PostgresClient]:
+    with PostgresClient(postgres_test_config) as client:
         client.truncate("article_commas", "articles")
         yield client
         client.truncate("article_commas", "articles")

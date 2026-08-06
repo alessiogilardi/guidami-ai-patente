@@ -3,7 +3,6 @@ from decimal import Decimal
 
 import pytest
 from psycopg import sql
-from pydantic import SecretStr
 
 from commons.ai.observability import LlmCallLogRepository
 from commons.clients import PostgresClient
@@ -12,15 +11,8 @@ from domain.entities.observability import LlmCallLogEntity
 
 
 @pytest.fixture
-def client() -> Iterator[PostgresClient]:
-    config = PostgresConnectionConfig(
-        host="localhost",
-        port=5432,
-        user="guidami",
-        password=SecretStr("guidami"),
-        dbname="guidami_ai_patente",
-    )
-    with PostgresClient(config) as client:
+def client(postgres_test_config: PostgresConnectionConfig) -> Iterator[PostgresClient]:
+    with PostgresClient(postgres_test_config) as client:
         client.truncate("llm_call_logs")
         yield client
         client.truncate("llm_call_logs")

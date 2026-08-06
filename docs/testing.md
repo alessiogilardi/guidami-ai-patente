@@ -14,6 +14,18 @@ Default `pytest` invocation excludes integration tests
 `CLAUDE.md`. Run them explicitly when touching Postgres-backed
 repositories or embedding clients.
 
+**Postgres integration tests never touch the dev database.** They run
+against a fully isolated, ephemeral stack defined in
+`docker/docker-compose.test.yml` — its own container, its own port
+(5433, vs. 5432 for the dev stack in `docker/docker-compose.yml`), and a
+`tmpfs` data directory that is never persisted to disk. This exists
+because every Postgres-backed integration test fixture used to hardcode
+`host="localhost", port=5432, dbname="guidami_ai_patente"` — the exact
+connection details of the dev stack's bind-mounted volume — and truncated
+real tables in setup/teardown; running the suite against a populated dev
+database destroyed real ingested data. See "Conventions" below for the
+fixtures that start/stop the isolated stack automatically.
+
 ## Tools
 
 - **pytest** + **pytest-asyncio** (`asyncio_mode = "auto"`) — no
@@ -78,6 +90,22 @@ defines `RecordingProgressReporter`, a test double for the `ProgressReporter`
 protocol that records every call `(method_name, args)` in order (with a
 `count(method)` helper), and the `progress_recorder` fixture that hands out a
 fresh instance per test.
+
+It also defines the two fixtures every Postgres-backed integration test
+relies on for isolation, both session-scoped:
+- `_postgres_test_stack` — starts the isolated test stack
+  (`docker compose -f docker/docker-compose.test.yml -p guidami-ai-patente-test
+  up -d --wait`) the first time a collected test requests it, and tears it
+  down (`down -v`) once at the end of the session. Never invoked directly by
+  test modules.
+- `postgres_test_config` — depends on `_postgres_test_stack` and returns the
+  `PostgresConnectionConfig` for the isolated stack (port 5433). Carries a
+  defensive `assert config.port != 5432` against ever pointing back at the
+  dev database. Every per-module `client` fixture that opens a real
+  `PostgresClient` (e.g.
+  `tests/guidami_ai_patente_ingestor/repositories/test_article_store_repository.py`)
+  requests this fixture rather than building its own
+  `PostgresConnectionConfig`.
 `tests/guidami_ai_patente_ingestor/fixtures/` is a separate mechanism, not
 pytest fixtures — it holds static JSON sample files (`cds_sample.json`,
 `cap_sample.json`, `quiz_bank_sample.json`) used as real input data by
@@ -94,6 +122,7 @@ T-15, after `EnrichedArticleModel` was deleted).
 Naming: `test_*.py`, generally one test file per source file/class (e.g.
 `test_article_cleaner.py` for `article_cleaner.py`).
 
-*Last updated: 2026-08-05 — verified against commit `7d96727`; corrected the
-false "no conftest.py" claim — `tests/conftest.py` exists and provides the
-`RecordingProgressReporter` double plus the `progress_recorder` fixture.*
+*Last updated: 2026-08-06 — verified against commit `91028b2`; documented the
+isolated ephemeral Postgres test stack (`docker/docker-compose.test.yml`) and
+the `_postgres_test_stack`/`postgres_test_config` fixtures that replaced
+per-file hardcoded dev-database connections in integration tests.*
