@@ -1,3 +1,3 @@
-from .retrieval_judge_agent import RetrievalJudgeAgent
+from .retrieval_judge import RetrievalJudgeAgent
 
 __all__ = ["RetrievalJudgeAgent"]

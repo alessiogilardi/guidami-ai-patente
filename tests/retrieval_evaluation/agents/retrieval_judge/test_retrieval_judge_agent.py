@@ -20,7 +20,7 @@ from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import YamlRepository
 from domain.models.retrieval import RetrievedComma
 from retrieval_evaluation.agents import RetrievalJudgeAgent
-from retrieval_evaluation.agents.dto import (
+from retrieval_evaluation.agents.retrieval_judge.dto import (
     RetrievalJudgeRequest,
     RetrievalJudgeResponse,
 )

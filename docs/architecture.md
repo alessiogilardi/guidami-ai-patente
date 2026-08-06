@@ -57,7 +57,7 @@ is a similarly standalone script package — an LLM-as-judge measurement tool
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
 | `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
 | `guidami_ai_patente/` | FastAPI quiz bot — **not started** | FastAPI (planned) |
-| `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013). `RetrievalJudgeAgent` + its DTOs (`agents/`, `BaseAgent` pattern — flat `dto/` inside it, no per-agent subfolder since this module has only one agent) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names/`agents_dir`) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
+| `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013). `RetrievalJudgeAgent` + its DTOs (`agents/retrieval_judge/`, `BaseAgent` pattern — `agents/` is a generic per-role container, today holding the single `retrieval_judge/` agent subpackage) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names/`agents_dir`) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/quiz-patente-ab.json` (questions) + `data/quiz-images/` (extracted images, top-level, sibling of `parsed/` — ADR 0008) | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`) selected via a single `scrape --source <cds\|cap\|reg>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`) | beautifulsoup4, lxml, httpx |
 | `scrapers/rca_extract.py` | Filters the full CAP corpus (`data/parsed/cap/codice_assicurazioni_private.json`) down to `IngestorConfig.rca_ranges` (inclusive numeric ranges over the article's leading number) → `data/parsed/cap/codice_rca.json`; not wired into `main_cap` or the `ingest` CLI — a standalone follow-up step | stdlib only |
@@ -500,10 +500,11 @@ anywhere in the harness (FR-8): it reads only what ingestion already persisted.
 a second, deliberately separate measurement over the same corpus, answering a
 question the harness above does not — do the retrieved commas actually justify
 the answer? — via an LLM judge rather than a deterministic signal.
-`RetrievalJudgeAgent` (`agents/retrieval_judge_agent.py`,
+`RetrievalJudgeAgent` (`agents/retrieval_judge/retrieval_judge_agent.py`,
 `BaseAgent[RetrievalJudgeRequest, RetrievalJudgeResponse]`, its two DTOs in the sibling
-`agents/dto/` — flat, unlike the ingestor's `agents/dto/<agent_name>/` nesting,
-since this module has only one agent — same pattern as
+`agents/retrieval_judge/dto/` — `agents/` is a generic per-role container (parallel to
+`services/`/`models/`), holding one named agent subpackage per agent; today just
+`retrieval_judge/` — same pattern as
 `RoadSignDescriberAgent`/`NormReferenceDescriberAgent`) is asked,
 per sampled quiz question, whether its top-`k` `CorpusReadRepository.dense_top_k`
 commas clearly and unambiguously justify the correct answer;
@@ -683,3 +684,8 @@ row now names `UpsertStoreRepository` (renamed from `BulkInsertStoreRepository`,
 *Last updated: 2026-08-06 — verified against commit `f343270`; the components-table row and
 the "Retrieval judge" paragraph now say `agents/` again instead of `retrieval_judge/` —
 reverted on the user's explicit request.*
+
+*Last updated: 2026-08-06 — verified against commit `f1839b9`; corrected: the agent and its
+DTOs live nested under `agents/retrieval_judge/` (`agents/` is a generic per-role container,
+not the agent's own folder) — the previous entry described them as flat directly under
+`agents/`, which was wrong.*

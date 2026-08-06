@@ -229,10 +229,10 @@ gitignored — never committed, safe to delete once the spec they fed is
   Postgres/OpenRouter config but is neither a CLI feature nor a
   data-reduction script goes in its own top-level package, sibling to
   `parsers/`/`scrapers/`/`test_data_sampler/`, registered as its own
-  `[project.scripts]` entry: `src/retrieval_evaluation/` (`agents/` — the
-  agent plus a flat `dto/` sibling, not nested per-agent like the ingestor's
-  `agents/dto/<agent_name>/`, since this module has only one agent —
-  `services/`, `models/`, `wiring.py`, `main.py`) asks `RetrievalJudgeAgent`
+  `[project.scripts]` entry: `src/retrieval_evaluation/` (`agents/retrieval_judge/`
+  — a generic `agents/` container, today holding the single named `retrieval_judge/`
+  agent subpackage: the agent plus its `dto/` sibling — `services/`, `models/`,
+  `wiring.py`, `main.py`) asks `RetrievalJudgeAgent`
   whether a question's `CorpusReadRepository.dense_top_k` commas justify its
   answer. It deliberately sits outside `ingest evaluate retrieval` (spec
   0007 lists an LLM judge as a Non-Goal) and outside `cli/` (no manifest, no
@@ -288,3 +288,7 @@ spec 0010 T-1).*
 *Last updated: 2026-08-06 — verified against commit `f343270`; the placement bullet's
 `src/retrieval_evaluation/` breakdown now says `agents/` again (agent + flat `dto/`
 sibling) instead of `retrieval_judge/` — reverted on the user's explicit request.*
+
+*Last updated: 2026-08-06 — verified against commit `f1839b9`; corrected: the agent and its
+`dto/` sibling are nested under `agents/retrieval_judge/`, not flat directly under `agents/`
+— `agents/` is a generic per-role container, not the agent's own folder.*

@@ -3,7 +3,7 @@ import random
 from commons.repositories.db import CorpusReadRepository, QuizReadRepository
 from domain.models.retrieval import QuizEvaluationRow
 from retrieval_evaluation.agents import RetrievalJudgeAgent
-from retrieval_evaluation.agents.dto import RetrievalJudgeRequest
+from retrieval_evaluation.agents.retrieval_judge.dto import RetrievalJudgeRequest
 from retrieval_evaluation.models import RetrievalJudgeItemResult
 
 

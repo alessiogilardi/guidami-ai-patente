@@ -6,7 +6,7 @@ from unittest.mock import MagicMock
 from commons.repositories.db import CorpusReadRepository, QuizReadRepository
 from domain.models.retrieval import QuizEvaluationRow, RetrievedComma
 from retrieval_evaluation.agents import RetrievalJudgeAgent
-from retrieval_evaluation.agents.dto import RetrievalJudgeResponse
+from retrieval_evaluation.agents.retrieval_judge.dto import RetrievalJudgeResponse
 from retrieval_evaluation.services import RetrievalJudgeEvaluationService
 
 
