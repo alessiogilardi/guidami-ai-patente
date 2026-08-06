@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Id** | 0010 |
-| **Status** | ready |
+| **Status** | implemented |
 | **Date** | 2026-08-06 |
 | **Discussion log** | none — compiled directly from conversation |
 | **Supersedes / superseded by** | — |
@@ -276,3 +276,29 @@ away on both sides.
   until 0008; the Constraint requiring the two failing quiz integration tests to pass is
   reassigned to 0008; Non-Goals now exclude the quiz write path explicitly. FR-3 stays
   here in full — fixing `ingest reset quiz` needs no entity change.
+
+### 2026-08-06 — plan executed: plans/0010-upsert-write-path-plan.md
+
+- **DoD result:** all items verified mechanically — every per-task failing-test/
+  characterization test passes (T-1 through T-6), full suite green (`uv run pytest`:
+  578 passed; `uv run pytest -m integration`: 24 passed, 2 pre-existing expected
+  failures in the quiz path reassigned to spec 0008, 1 skipped), `ruff format`/
+  `pyright` clean, `ruff check` has one pre-existing unrelated failure
+  (`tests/scrapers/test_rca_extract.py`, predates this plan). File discipline: three
+  files outside any task's Files list, all inside T-6 — user-confirmed in-scope.
+- **Deviations from plan:** T-6 touched three files beyond its stated Files list
+  (`docs/database.md`, `docs/patterns.md`): `docs/architecture.md`, `docs/layout.md`,
+  and `src/commons/ai/observability/repositories/llm_call_log_repository.py` each
+  carried a stale `BulkInsertStoreRepository` reference that T-6's own verification
+  command (a repo-wide grep over `docs/ src/ tests/`) required to be silent — simple
+  renames, no rationale changes, accepted by the user 2026-08-06. One further stale
+  reference was found and left as-is, outside the verification command's own scope:
+  `.claude/rules/cli-structure.md:31` still names `BulkInsertStoreRepository` in an
+  example; noted as optional follow-up, not fixed here.
+- **Learnings:** when a task's Files list is narrower than a verification command it
+  also specifies (T-6's grep spanned `docs/ src/ tests/`, its Files list named only
+  two files), the verification command is the more precise, executable spec of
+  "done" and should win — worth stating that precedence explicitly in future plans
+  to avoid leaving it to the implementer's judgment.
+- **Status change:** in-progress → implemented — confirmed by Alessio Gilardi,
+  2026-08-06.
