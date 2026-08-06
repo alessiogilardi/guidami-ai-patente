@@ -13,6 +13,9 @@ sources:
   reg:
     dir: reg
     file: regolamento_attuazione.json
+  amb:
+    dir: amb
+    file: codice_ambiente_rifiuti.json
   quiz:
     dir: quiz-patente-ab
     file: quiz-patente-ab.json
@@ -20,11 +23,11 @@ sources:
 knowledge_preparation:
   input_layer: parsed
   output_layer: cleaned
-  sources: [cds, cap, reg]
+  sources: [cds, cap, reg, amb]
 
 knowledge_indexing:
   input_layer: cleaned
-  sources: [cds, cap, reg]
+  sources: [cds, cap, reg, amb]
 
 quiz_preparation:
   input_layer: parsed
@@ -52,6 +55,7 @@ quiz_questions_table: quiz_questions
 quiz_question_embeddings_table: quiz_question_embeddings
 embed_repealed: false
 rca_ranges: ["118-165", "278-300"]
+amb_ranges: ["227-237"]
 
 evaluation:
   seed: 42

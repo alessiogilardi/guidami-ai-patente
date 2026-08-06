@@ -39,14 +39,15 @@ class IngestorConfig(BaseSettings):
             "cds": SourceConfig(dir="cds", file="codice_della_strada.json"),
             "cap": SourceConfig(dir="cap", file="codice_rca.json"),
             "reg": SourceConfig(dir="reg", file="regolamento_attuazione.json"),
+            "amb": SourceConfig(dir="amb", file="codice_ambiente_rifiuti.json"),
             "quiz": SourceConfig(dir="quiz-patente-ab", file="quiz-patente-ab.json"),
         }
     )
     knowledge_preparation: PipelineLayerConfig = PipelineLayerConfig(
-        input_layer="parsed", output_layer="cleaned", sources=["cds", "cap", "reg"]
+        input_layer="parsed", output_layer="cleaned", sources=["cds", "cap", "reg", "amb"]
     )
     knowledge_indexing: PipelineLayerConfig = PipelineLayerConfig(
-        input_layer="cleaned", sources=["cds", "cap", "reg"]
+        input_layer="cleaned", sources=["cds", "cap", "reg", "amb"]
     )
     quiz_preparation: PipelineLayerConfig = PipelineLayerConfig(
         input_layer="parsed", output_layer="enriched", sources=["quiz"]
@@ -69,6 +70,7 @@ class IngestorConfig(BaseSettings):
     quiz_question_embeddings_table: str = "quiz_question_embeddings"
     embed_repealed: bool = False
     rca_ranges: list[str] = Field(default_factory=lambda: ["118-165", "278-300"])
+    amb_ranges: list[str] = Field(default_factory=lambda: ["227-237"])
     evaluation: EvaluationConfig = EvaluationConfig()
 
     _config_override_file: ClassVar[Path | None] = None

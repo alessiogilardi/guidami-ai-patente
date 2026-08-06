@@ -27,6 +27,7 @@ dependencies = [
 [project.scripts]
 scrape             = "scrapers.normattiva:cli_main"
 extract-rca        = "scrapers.rca_extract:main"
+extract-amb        = "scrapers.amb_extract:main"
 parse-domande      = "parsers.questions_pdf:main_questions"
 ingest             = "guidami_ai_patente_ingestor.cli:main"
 sample-test-data   = "test_data_sampler.sampler:main"

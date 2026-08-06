@@ -189,7 +189,15 @@ gitignored — never committed, safe to delete once the spec they fed is
   helper.
 - **One-shot data-acquisition scripts** (a new scraper source, a new PDF
   parser) go in `src/scrapers/` or `src/parsers/` respectively, and are
-  registered as a `[project.scripts]` entry in `pyproject.toml`.
+  registered as a `[project.scripts]` entry in `pyproject.toml`. **A
+  single-law narrowing script** (filters one already-scraped law down to
+  configured article ranges — `scrapers/rca_extract.py`, `scrapers/amb_extract.py`)
+  stays in `src/scrapers/` too, next to the scraper whose output it narrows,
+  rather than becoming its own top-level package: it is tightly coupled to
+  one law's parsed shape, not a cross-source operation. This is narrower
+  than — and should not be confused with — the "reduces/samples an existing
+  pipeline layer" rule below, which is for scripts that operate *across every
+  source* (see `test_data_sampler/sampler.py`).
 - **Manual review tooling for pipeline output** (a read-only HTML page to
   eyeball an enriched/cleaned JSON artifact) goes in `src/html_viewers/`:
   self-contained (no build step, no server, no external dependency), kept
@@ -214,9 +222,11 @@ gitignored — never committed, safe to delete once the spec they fed is
   CLI-only `rich` implementation of the `commons/observability/` port — the port
   itself is shared, but nothing outside the CLI renders it, so the renderer stays
   local per the same rule.
-- **A one-shot script that reduces/samples an existing pipeline layer**
-  (reads full JSON, writes a smaller derived JSON — same shape as
-  `scrapers/rca_extract.py`) goes as a flat module in its own top-level
+- **A one-shot script that reduces/samples an existing pipeline layer
+  across every source** (reads full JSON per source, writes a smaller
+  derived JSON per source — unlike `scrapers/rca_extract.py`/
+  `scrapers/amb_extract.py`, which each narrow one specific law, see above)
+  goes as a flat module in its own top-level
   package, sibling to `parsers/`/`scrapers/`, not inside
   `guidami_ai_patente_ingestor/` even if it imports `IngestorConfig`/
   `SourceConfig` from it: `src/test_data_sampler/sampler.py` samples
@@ -292,3 +302,9 @@ sibling) instead of `retrieval_judge/` — reverted on the user's explicit reque
 *Last updated: 2026-08-06 — verified against commit `f1839b9`; corrected: the agent and its
 `dto/` sibling are nested under `agents/retrieval_judge/`, not flat directly under `agents/`
 — `agents/` is a generic per-role container, not the agent's own folder.*
+
+*Last updated: 2026-08-06 — verified against commit `598690c`; clarified that a
+single-law narrowing script (`rca_extract.py`, and now `amb_extract.py`, spec 0009)
+stays inside `scrapers/`, distinct from the cross-source pipeline-layer-sampling rule
+below it (`test_data_sampler/`) — the two bullets previously used `rca_extract.py` as
+an example of both, which was ambiguous.*

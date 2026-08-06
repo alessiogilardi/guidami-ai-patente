@@ -17,7 +17,7 @@ class ArticleMapper:
 
     @staticmethod
     def from_parsed_to_cleaned(
-        article: ParsedArticleModel, source: Literal["cds", "cap", "reg"]
+        article: ParsedArticleModel, source: Literal["cds", "cap", "reg", "amb"]
     ) -> CleanedArticleModel:
         """Stamp the source onto a cleaned article.
 

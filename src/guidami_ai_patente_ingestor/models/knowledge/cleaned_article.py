@@ -19,4 +19,4 @@ class CleanedArticleModel(BaseModel):
     url: str
     scraped_at: datetime
     repealed: bool
-    source: Literal["cds", "cap", "reg"]
+    source: Literal["cds", "cap", "reg", "amb"]

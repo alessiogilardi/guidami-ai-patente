@@ -59,8 +59,10 @@ is a similarly standalone script package — an LLM-as-judge measurement tool
 | `guidami_ai_patente/` | FastAPI quiz bot — **not started** | FastAPI (planned) |
 | `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013). `RetrievalJudgeAgent` + its DTOs (`agents/retrieval_judge/`, `BaseAgent` pattern — `agents/` is a generic per-role container, today holding the single `retrieval_judge/` agent subpackage) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names/`agents_dir`) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/quiz-patente-ab.json` (questions) + `data/quiz-images/` (extracted images, top-level, sibling of `parsed/` — ADR 0008) | pdfplumber, pymupdf |
-| `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`) selected via a single `scrape --source <cds\|cap\|reg>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`) | beautifulsoup4, lxml, httpx |
-| `scrapers/rca_extract.py` | Filters the full CAP corpus (`data/parsed/cap/codice_assicurazioni_private.json`) down to `IngestorConfig.rca_ranges` (inclusive numeric ranges over the article's leading number) → `data/parsed/cap/codice_rca.json`; not wired into `main_cap` or the `ingest` CLI — a standalone follow-up step | stdlib only |
+| `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`/`AMB`) selected via a single `scrape --source <cds\|cap\|reg\|amb>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`; `AMB` — D.Lgs. 152/2006, Codice dell'Ambiente — added by spec 0009) | beautifulsoup4, lxml, httpx |
+| `scrapers/range_filter.py` | Shared core (`filter_articles_by_range(source_path, dest_path, ranges)`) for narrowing a fully-scraped law down to inclusive numeric ranges over the article's leading number; extracted by spec 0009 once a second consumer (`amb_extract.py`) needed the identical algorithm `rca_extract.py` already had | stdlib only |
+| `scrapers/rca_extract.py` | Filters the full CAP corpus (`data/parsed/cap/codice_assicurazioni_private.json`) down to `IngestorConfig.rca_ranges` → `data/parsed/cap/codice_rca.json`, via `range_filter.filter_articles_by_range`; not wired into `main_cap` or the `ingest` CLI — a standalone follow-up step | stdlib only |
+| `scrapers/amb_extract.py` | Filters the full AMB corpus (`data/parsed/amb/codice_ambiente.json`) down to `IngestorConfig.amb_ranges` (Parte IV, Titolo III, artt. 227-237 — waste provisions covering used oil, batteries, tyres) → `data/parsed/amb/codice_ambiente_rifiuti.json`, same shape as `rca_extract.py`, registered as `extract-amb` (spec 0009) | stdlib only |
 | `test_data_sampler/sampler.py` | Samples `--count` random elements per source from `data/parsed/{cds,cap,reg,quiz-patente-ab}` → `data/test-data/parsed/...`, copying only the quiz images the sampled questions reference from `data/quiz-images/` into `data/test-data/quiz-images/`; feeds `ingest --config configs/ingestor_config.test-data.yaml prepare\|index` (ADR 0006, ADR 0008) | stdlib only |
 
 `parsers/questions_pdf.py` extracts each sub-question's image lazily: the
@@ -354,8 +356,10 @@ CLI's self-containment, see `.claude/rules/cli-structure.md`).
 masking `postgres.password`/`open_router_config.api_key` to `****`/
 `missing` — never printed in clear.
 
-**Knowledge corpus** (per source, `cds`/`cap`/`reg` — `orchestrators/knowledge_flows.py`; `reg`
-added by spec 0003 FR-4/FR-5, no source-specific branch anywhere in `prepare`/`index`). `cleaned`
+**Knowledge corpus** (per source, `cds`/`cap`/`reg`/`amb` — `orchestrators/knowledge_flows.py`;
+`reg` added by spec 0003 FR-4/FR-5, `amb` (D.Lgs. 152/2006, narrowed to Parte IV Titolo III
+artt. 227-237 by `scrapers/amb_extract.py`) added by spec 0009 — no source-specific branch
+anywhere in `prepare`/`index`). `cleaned`
 is a **per-element** layer (one JSON file per article, named by a deterministic
 `commons.utils.element_id(source, number)`; `parsed` stays a single monolithic file
 per source — pattern originally introduced for knowledge, then applied identically to
@@ -382,7 +386,7 @@ run still loses that run's unwritten work, since writing stays a terminal
 `WriteJsonDirStep` (write-through is deferred to a future plan). `--force`
 bypasses the filter entirely (every article is kept, no filesystem check).
 `CleanedArticleModel` (`models/knowledge/cleaned_article.py`) carries its own
-`source: Literal["cds", "cap", "reg"]`, stamped on at the parsed→cleaned boundary by
+`source: Literal["cds", "cap", "reg", "amb"]`, stamped on at the parsed→cleaned boundary by
 `ArticleMapper.from_parsed_to_cleaned`, making the element's id (and its
 filename) computable from the element alone, independent of flow context.
 
@@ -689,3 +693,9 @@ reverted on the user's explicit request.*
 DTOs live nested under `agents/retrieval_judge/` (`agents/` is a generic per-role container,
 not the agent's own folder) — the previous entry described them as flat directly under
 `agents/`, which was wrong.*
+
+*Last updated: 2026-08-06 — verified against commit `598690c`; spec 0009 adds `AMB`
+(D.Lgs. 152/2006) as a fourth knowledge source, narrowed to Parte IV Titolo III
+(artt. 227-237) by the new `scrapers/amb_extract.py`, which shares its filtering core
+(`scrapers/range_filter.py`) with `rca_extract.py` — both rows updated, plus the
+`Literal["cds", "cap", "reg"]` reference.*

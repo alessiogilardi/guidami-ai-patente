@@ -62,7 +62,7 @@ enabled at the top of that file).
 ```text
 articles
 ├── id (PK, BIGSERIAL)
-├── source (TEXT, NOT NULL)               -- "cds" | "cap" | "reg"
+├── source (TEXT, NOT NULL)               -- "cds" | "cap" | "reg" | "amb"
 ├── number (TEXT, NOT NULL)
 ├── title (TEXT, NOT NULL)
 ├── url (TEXT, NOT NULL)
@@ -270,3 +270,7 @@ reconciling delete scoped to the run (spec 0010, AD-1/AD-2) — `ArticleStoreRep
 `BulkInsertStoreRepository`, which is deleted) and no longer expose `delete_source`. The
 `created_at` caveat under "Main schema" is narrowed to `quiz_questions`, the one table it
 ever applied to; it still holds until spec 0008's FR-6 replaces the quiz write path too.*
+
+*Last updated: 2026-08-06 — verified against commit `598690c`; `articles.source` gained
+`"amb"` as a fourth value (D.Lgs. 152/2006, Codice dell'Ambiente — spec 0009 FR-3) — no
+DDL change, `UNIQUE (source, number)` already prevented collision.*

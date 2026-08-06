@@ -70,6 +70,12 @@ REG = LawConfig(
     output_name="regolamento_attuazione.json",
 )
 
+AMB = LawConfig(
+    slug="amb",
+    toc_url=BASE_URL + "/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2006-04-03;152!vig=",
+    output_name="codice_ambiente.json",
+)
+
 
 @dataclass(frozen=True)
 class ArticleParams:
@@ -669,7 +675,7 @@ def main(
             logger.info("Done: %d articles saved to %s", len(records), output_path)
 
 
-_SOURCES: dict[str, LawConfig] = {"cds": CDS, "cap": CAP, "reg": REG}
+_SOURCES: dict[str, LawConfig] = {"cds": CDS, "cap": CAP, "reg": REG, "amb": AMB}
 
 
 def _build_parser() -> argparse.ArgumentParser:

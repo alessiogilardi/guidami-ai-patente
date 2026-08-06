@@ -270,6 +270,26 @@ def test_reg_law_config_matches_urn_and_output_name() -> None:
     )
 
 
+# --- T-1: AMB law config (spec 0009 FR-1) ------------------------------------------
+
+
+def test_amb_law_config_matches_urn_and_output_name() -> None:
+    from scrapers.normattiva import AMB, BASE_URL
+
+    assert AMB.slug == "amb"
+    assert AMB.output_name == "codice_ambiente.json"
+    assert (
+        AMB.toc_url
+        == BASE_URL + "/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2006-04-03;152!vig="
+    )
+
+
+def test_amb_registered_in_sources() -> None:
+    from scrapers.normattiva import _SOURCES, AMB
+
+    assert _SOURCES["amb"] is AMB
+
+
 # --- T-2: leading `(Title)` split off the art-just-text-akn body (FR-2) -----------
 
 
