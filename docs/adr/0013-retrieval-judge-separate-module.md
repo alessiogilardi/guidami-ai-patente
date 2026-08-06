@@ -1,0 +1,128 @@
+# ADR 0013: The Retrieval-Quality LLM Judge Is Its Own Top-Level Package
+
+## Status
+
+Proposed
+
+## Context
+
+Spec 0007's retrieval evaluation harness (`ingest evaluate retrieval`) measures
+retrieval quality with deterministic, judge-free signals only. Its Non-Goals
+section explicitly excludes "LLM-as-judge relevance scoring": deterministic
+signals cost nothing and run in CI, and an untargeted judge run over the whole
+corpus would be wasteful before the judge-free signals identify which
+subpopulation to target. FR-9 of that spec exports exactly that subpopulation
+(the questions its deterministic signals cannot decide) for a future judge to
+consume — but deliberately stops at data, with no `RelevanceJudge` protocol, no
+provider abstraction, no prompt.
+
+The user asked for that judge now: an agent that reads a quiz (text + answer)
+and its top-10 most similar commas from dense retrieval, and answers whether
+those commas clearly and unambiguously explain why the answer is true or
+false — plus a service that samples random quiz questions and calls the agent
+per question, and a script to run it. The explicit ask was for the shortest
+path: an agent, a service, a script, nothing more.
+
+Two placement questions had to be resolved before writing any code:
+
+1. Does this measurement live inside `ingest evaluate retrieval` (as a new
+   mode of the existing harness), or as its own thing?
+2. Does building it now mean spec 0007's Non-Goal should be edited to match?
+
+On (2): the user explicitly decided **not** to amend spec 0007. Its Non-Goals
+section still reads as excluding an LLM judge, and this decision records why
+that is not a contradiction: spec 0007 excludes the judge from *itself* — from
+its own manifest-driven, CI-run harness — not from the codebase. This module is
+the judge that Non-Goal deferred, arriving as a separate, deliberately
+lighter-weight tool instead of as an amendment to the harness the Non-Goal was
+written to keep judge-free.
+
+On (1): the ingest CLI's `prepare`/`index`/`reset`/`status`/`evaluate` commands
+all share `RunArtifactWriter`-based run artifacts (`manifest.json`/`report.md`/
+`run.log`), a `--dry-run`/`--plain` flag surface, and a command-specific
+manifest type that `logging_setup._build_manifest` requires on pain of raising.
+That machinery exists because those commands are meant to run unattended in a
+pipeline and be auditable after the fact. This judge is neither: it is an
+exploratory measurement, re-run by hand a few times to gauge whether the LLM
+judge itself is stable, then once more with a larger sample for an estimate —
+closer in spirit to `test_data_sampler/sampler.py`'s one-shot script than to
+`ingest evaluate retrieval`'s run-artifact-producing harness.
+
+## Decision
+
+`src/retrieval_evaluation/` is a new top-level package, a sibling of
+`parsers/`/`scrapers/`/`test_data_sampler/`, not a mode of `ingest evaluate
+retrieval` and not a package under `guidami_ai_patente_ingestor/cli/`:
+
+- `agents/retrieval_judge_agent.py` — `RetrievalJudgeAgent(BaseAgent[
+  RetrievalJudgeRequest, RetrievalJudgeResponse])`, the same pattern as
+  `RoadSignDescriberAgent`/`NormReferenceDescriberAgent`. `agents/dto/
+  retrieval_judge/` holds its request (English) and response (Italian,
+  prompt-facing) DTOs.
+- `services/retrieval_judge_evaluation_service.py` —
+  `RetrievalJudgeEvaluationService`: samples `n` random quiz rows via the
+  existing `QuizReadRepository.fetch_with_vectors`, retrieves each question's
+  top-`k` commas via the existing `CorpusReadRepository.dense_top_k` (both
+  reused unchanged from `commons/repositories/db/`, spec 0007 AD-7 — no new
+  query code), and asks the agent to judge each.
+- `models/retrieval_judge_item_result.py` — `RetrievalJudgeItemResult`, the
+  per-question verdict returned by the service.
+- `wiring.py` + `main.py` — lazy DI builders and an `argparse` entry point
+  registered as `evaluate-retrieval-judge` in `[project.scripts]`. No
+  manifest, no `RunArtifactWriter`, no dry-run chain, no live dashboard: it
+  prints verdicts and a share-clear percentage to stdout and exits.
+
+`wiring.py` reuses `guidami_ai_patente_ingestor.configs.IngestorConfig` for the
+Postgres connection, table names, `agents_dir`, and the OpenRouter provider,
+rather than introducing a settings class of its own — the module's one
+deliberate cross-package dependency, accepted to avoid duplicating
+`.env`/YAML settings loading for a tool with no config surface of its own.
+
+The module has no built-in multi-run averaging: running it several times and
+eyeballing the spread (for judge-stability checks) versus running it once with
+a larger `--n` (for a final estimate) are both just re-invocations of the same
+script with different flags, not a feature the service implements.
+
+## Alternatives considered
+
+- **A new mode of `ingest evaluate retrieval`** (e.g. `--judge`) — rejected:
+  every existing mode of that command inherits manifest/dry-run/`RunArtifactWriter`
+  machinery built for an unattended, auditable, CI-run harness. Reusing it here
+  would mean building a manifest type and a dry-run chain for a script whose
+  whole point is to run by hand a handful of times, and would put an
+  LLM-calling, real-cost operation inside a command spec 0007 (FR-8) requires
+  to make zero network calls.
+- **Amend spec 0007's Non-Goals to no longer exclude an LLM judge** — rejected
+  on the user's explicit instruction. The Non-Goal is left as written; this ADR
+  is the record of why building the judge elsewhere does not contradict it.
+- **A CLI-only component under `guidami_ai_patente_ingestor/cli/`** —
+  rejected by the same test `.claude/rules/cli-structure.md` already applies to
+  the read repositories (AD-7 in spec 0007): "is this used by anything other
+  than the CLI?" This tool isn't used by the CLI at all.
+- **Built-in multi-run averaging in the service** (run `n` samples `m` times,
+  return a mean) — rejected on the user's explicit instruction: the harness
+  will be re-run by hand for stability checks, then once with a larger sample;
+  a averaging feature would solve a problem nobody asked for.
+
+## Consequences
+
+- The judge can be exercised and iterated on without touching spec 0007's
+  harness at all — no manifest type to add, no dry-run chain to extend, no
+  risk of breaking FR-8's "no LLM/network call" guarantee for the existing
+  command.
+- Two independent measurement tools now exist over the same corpus
+  (`ingest evaluate retrieval` and `evaluate-retrieval-judge`), and nothing
+  in the code enforces they agree on shared vocabulary (e.g. both call their
+  retrieval depth `k`, but only informally). A future reader must consult
+  both this ADR and spec 0007 to understand why.
+- `retrieval_evaluation/` depends on `guidami_ai_patente_ingestor.configs`
+  for settings — a top-level package importing another top-level package's
+  config, an asymmetry from every other sibling script
+  (`parsers/`/`scrapers/`/`test_data_sampler/`), which either take no config
+  or take a narrower slice of it. Acceptable while this stays a single
+  exploratory script; would need revisiting if it grows a config surface of
+  its own.
+- Cost/observability: the judge's LLM calls are tracked through the same
+  `QueuedLlmCallTracker`/`LlmCallLogRepository` path as every other agent
+  call, so its OpenRouter spend is visible in `llm_call_logs` like any other
+  agent, even though it runs outside the `ingest` CLI.

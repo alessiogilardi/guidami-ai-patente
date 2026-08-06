@@ -22,6 +22,7 @@
 | **embed_repealed** | Config flag (`IngestorConfig.embed_repealed`, default `False`) controlling whether repealed law articles get indexed/embedded at all. |
 | **image_description** | The flat `f"{name}. {description}"` string on `EnrichedQuizModel`, one per distinct image (see **answer-blind**). Consumed downstream by `NormReferenceEnricher`, the HTML review viewer, and `EmbeddedQuizModel`. |
 | **image_analysis** | `ImageAnalysis` model (`visual_analysis`, `name`, `description`) — the full, structured `RoadSignDescriberAgent` output, persisted inline on `EnrichedQuizModel.image_analysis` for debugging only; not part of the embedding or DB path. `visual_analysis` is the agent's chain-of-thought observation of the image, ahead of the two other fields. |
+| **retrieval judge** | The LLM-as-judge measurement in `src/retrieval_evaluation/`: for a sampled quiz question, `RetrievalJudgeAgent` decides whether its top-`k` `CorpusReadRepository.dense_top_k` commas clearly and unambiguously justify the correct answer (`is_clear: bool` + `rationale`). Distinct from the deterministic **retrieval evaluation harness** (spec 0007, `ingest evaluate retrieval`), which excludes an LLM judge as a Non-Goal — see `adr/0013-retrieval-judge-separate-module.md`. |
 
 *Last updated: 2026-08-01 — verified against commit `3cce407`; added
 **Regolamento** entry and widened **CdS**/**corpus normativo**/**source** to
@@ -31,3 +32,6 @@ three sources (`cds`/`cap`/`reg`) for spec 0003 Phase 1.*
 entry's dead `docs/plans/2026-07-17--per-element-knowledge-layers.md` citation
 (removed by commit `0a18903`) replaced with a pointer to `docs/architecture.md`
 and `specs/0006-quiz-per-element-layers.md`.*
+
+*Last updated: 2026-08-06 — verified against commit `91c4fe7`; added **retrieval
+judge**, the new `src/retrieval_evaluation/` LLM-as-judge module (ADR 0013).*

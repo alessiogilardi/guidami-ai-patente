@@ -30,6 +30,9 @@ repo/
 │   │                                #   inspecting pipeline output (e.g. quiz enrichment
 │   │                                #   review); opened directly in a browser, no server
 │   ├── parsers/                    # Standalone script: quiz PDF -> data/parsed/
+│   ├── retrieval_evaluation/       # Standalone script: LLM-as-judge for retrieval quality —
+│   │                                #   samples quiz questions, judges whether their top-k
+│   │                                #   retrieved commas justify the answer (ADR 0013)
 │   ├── scrapers/                   # Standalone script: normattiva.it -> data/raw/ + data/parsed/
 │   └── test_data_sampler/          # Standalone script: data/parsed/ -> a random subset in
 │                                    #   data/test-data/parsed/ (same C901-exempt tier as
@@ -222,6 +225,19 @@ gitignored — never committed, safe to delete once the spec they fed is
   alongside it (ADR 0008), registered as `sample-test-data` and exempted
   from `C901` in `pyproject.toml` per the same "top-level orchestration is
   low-value to enforce" rationale as its siblings.
+- **A standalone LLM-as-judge measurement tool** that needs the ingestor's
+  Postgres/OpenRouter config but is neither a CLI feature nor a
+  data-reduction script goes in its own top-level package, sibling to
+  `parsers/`/`scrapers/`/`test_data_sampler/`, registered as its own
+  `[project.scripts]` entry: `src/retrieval_evaluation/` (`agents/`,
+  `services/`, `models/`, `wiring.py`, `main.py`) asks `RetrievalJudgeAgent`
+  whether a question's `CorpusReadRepository.dense_top_k` commas justify its
+  answer. It deliberately sits outside `ingest evaluate retrieval` (spec
+  0007 lists an LLM judge as a Non-Goal) and outside `cli/` (no manifest, no
+  dry-run chain, no `RunArtifactWriter` — ADR 0013), reusing
+  `guidami_ai_patente_ingestor.configs.IngestorConfig` and the existing
+  `commons/repositories/db/` read repositories rather than owning new
+  config or new query code.
 
 *Last updated: 2026-08-04 — verified against commit `51cabb3`; `data/` tree entry and the
 `test_data_sampler/sampler.py` placement bullet now describe `data/quiz-images/`, a new
@@ -253,3 +269,7 @@ repositories, deliberately asymmetric with the per-table write repositories) and
 `domain/models/retrieval/` (read DTOs). The CLI-local `cli/services/evaluation/` and
 `cli/models/evaluation/` packages are being added by the same work and follow the existing
 `cli/services/status/` + `cli/models/status/` precedent, so they need no new rule.*
+
+*Last updated: 2026-08-06 — verified against commit `91c4fe7`; added `src/retrieval_evaluation/`
+(folder tree + new placement bullet), the LLM-as-judge module deliberately outside both
+`ingest evaluate retrieval` and `cli/` (ADR 0013).*

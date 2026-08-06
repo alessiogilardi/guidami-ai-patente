@@ -35,7 +35,10 @@ doing so once the FastAPI app starts):
 is built on top of; it is an external git dependency (github.com/alessiogilardi/flowstep,
 tracking `main` — see `[tool.uv.sources]` in `pyproject.toml`), not an
 in-repo package. `parsers/` and `scrapers/` are one-shot data-acquisition
-scripts, each registered as a `[project.scripts]` entry.
+scripts, each registered as a `[project.scripts]` entry. `retrieval_evaluation/`
+is a similarly standalone script package — an LLM-as-judge measurement tool
+(`evaluate-retrieval-judge`), deliberately outside both apps and outside the
+`ingest` CLI (ADR 0013).
 
 ## Main components
 
@@ -54,6 +57,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
 | `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
 | `guidami_ai_patente/` | FastAPI quiz bot — **not started** | FastAPI (planned) |
+| `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013). `RetrievalJudgeAgent` (`agents/`, `BaseAgent` pattern) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names/`agents_dir`) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/quiz-patente-ab.json` (questions) + `data/quiz-images/` (extracted images, top-level, sibling of `parsed/` — ADR 0008) | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`) selected via a single `scrape --source <cds\|cap\|reg>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`) | beautifulsoup4, lxml, httpx |
 | `scrapers/rca_extract.py` | Filters the full CAP corpus (`data/parsed/cap/codice_assicurazioni_private.json`) down to `IngestorConfig.rca_ranges` (inclusive numeric ranges over the article's leading number) → `data/parsed/cap/codice_rca.json`; not wired into `main_cap` or the `ingest` CLI — a standalone follow-up step | stdlib only |
@@ -492,6 +496,30 @@ of the undecidable subset (FR-9 — questions matching no keyword, or covered on
 non-selective keywords) under `logs/ingest_evaluate_<ts>/`, gitignored. No LLM call
 anywhere in the harness (FR-8): it reads only what ingestion already persisted.
 
+**Retrieval judge** (`evaluate-retrieval-judge` script, `src/retrieval_evaluation/`):
+a second, deliberately separate measurement over the same corpus, answering a
+question the harness above does not — do the retrieved commas actually justify
+the answer? — via an LLM judge rather than a deterministic signal.
+`RetrievalJudgeAgent` (`BaseAgent[RetrievalJudgeRequest, RetrievalJudgeResponse]`,
+the same pattern as `RoadSignDescriberAgent`/`NormReferenceDescriberAgent`) is asked,
+per sampled quiz question, whether its top-`k` `CorpusReadRepository.dense_top_k`
+commas clearly and unambiguously justify the correct answer;
+`RetrievalJudgeEvaluationService` samples `n` random rows via
+`QuizReadRepository.fetch_with_vectors` and judges each. It is **not** a mode of
+`ingest evaluate retrieval`: spec 0007 lists "LLM-as-judge relevance scoring" as
+an explicit Non-Goal (deterministic signals cost nothing and run in CI; a judge
+should be targeted, not run over everything) — text the spec still carries
+unchanged, by deliberate choice (ADR 0013). This module is the judge that
+Non-Goal deferred, built as its own top-level package rather than as a spec-0007
+extension, so it carries none of the harness's manifest/`RunArtifactWriter`/
+dry-run-chain machinery: `main.py` is a plain `argparse` script printing
+per-question verdicts and a share-clear percentage to stdout, meant to be
+re-run manually (a few times to gauge judge stability, then once with a larger
+`--n`) rather than averaged automatically across runs. It reuses `IngestorConfig`
+(Postgres connection, table names, `agents_dir`, OpenRouter provider) from
+`guidami_ai_patente_ingestor.configs` rather than owning its own settings class —
+the one deliberate cross-package dependency this module has.
+
 ## Relevant architectural decisions
 
 See `adr/` for the full history. Currently accepted:
@@ -543,6 +571,11 @@ See `adr/` for the full history. Currently accepted:
   (`cli/services/status/`, `cli/models/status/`) are CLI-local rather than
   top-level `services/`/`models/`, since nothing outside the CLI consumes
   them (`.claude/rules/cli-structure.md`).
+- **Retrieval-quality LLM judge lives in its own top-level package, not
+  inside `ingest evaluate retrieval`** — deliberately outside the harness's
+  manifest/dry-run/`RunArtifactWriter` machinery, reusing `IngestorConfig`
+  and the existing read repositories rather than introducing new config or
+  CLI infrastructure (`adr/0013-retrieval-judge-separate-module.md`).
 
 *Last updated: 2026-08-04 — verified against commit `165fa9e`; noted
 `LiteLLMEmbeddingClient._embed` resetting the `"httpx"` logger's level back to
@@ -622,3 +655,8 @@ components table.*
 `docs/plans/2026-07-17--per-element-knowledge-layers.md` citations (removed by commit
 `0a18903`) in the knowledge-corpus flow description and the "Notable implementation
 details" list replaced with pointers to `specs/0006-quiz-per-element-layers.md`.*
+
+*Last updated: 2026-08-06 — verified against commit `91c4fe7`; added `src/retrieval_evaluation/`
+(new components-table row, Overview mention, "Retrieval judge" paragraph, and an ADR bullet):
+an LLM-as-judge for retrieval quality, deliberately separate from `ingest evaluate retrieval`
+(spec 0007's Non-Goal is left unchanged, ADR 0013).*
