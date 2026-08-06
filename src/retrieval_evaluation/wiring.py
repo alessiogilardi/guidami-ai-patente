@@ -10,7 +10,7 @@ from commons.repositories import YamlRepository
 from commons.repositories.db import CorpusReadRepository, QuizReadRepository
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 
-from .retrieval_judge import RetrievalJudgeAgent
+from .agents import RetrievalJudgeAgent
 
 
 def build_open_router_provider(config: IngestorConfig) -> OpenRouterProvider:

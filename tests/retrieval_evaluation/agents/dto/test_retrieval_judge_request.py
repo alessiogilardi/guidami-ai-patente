@@ -1,7 +1,7 @@
 """Tests for RetrievalJudgeRequest's computed prompt-template fields."""
 
 from domain.models.retrieval import RetrievedComma
-from retrieval_evaluation.retrieval_judge.dto import RetrievalJudgeRequest
+from retrieval_evaluation.agents.dto import RetrievalJudgeRequest
 
 
 def _make_comma(

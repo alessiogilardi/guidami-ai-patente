@@ -19,8 +19,8 @@ from commons.ai.agents import AgentConfig
 from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import YamlRepository
 from domain.models.retrieval import RetrievedComma
-from retrieval_evaluation.retrieval_judge import RetrievalJudgeAgent
-from retrieval_evaluation.retrieval_judge.dto import (
+from retrieval_evaluation.agents import RetrievalJudgeAgent
+from retrieval_evaluation.agents.dto import (
     RetrievalJudgeRequest,
     RetrievalJudgeResponse,
 )

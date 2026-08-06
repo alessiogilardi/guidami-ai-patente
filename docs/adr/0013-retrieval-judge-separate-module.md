@@ -54,12 +54,12 @@ closer in spirit to `test_data_sampler/sampler.py`'s one-shot script than to
 `parsers/`/`scrapers/`/`test_data_sampler/`, not a mode of `ingest evaluate
 retrieval` and not a package under `guidami_ai_patente_ingestor/cli/`:
 
-- `retrieval_judge/retrieval_judge_agent.py` — `RetrievalJudgeAgent(BaseAgent[
+- `agents/retrieval_judge_agent.py` — `RetrievalJudgeAgent(BaseAgent[
   RetrievalJudgeRequest, RetrievalJudgeResponse])`, the same pattern as
   `RoadSignDescriberAgent`/`NormReferenceDescriberAgent`. Its sibling
-  `retrieval_judge/dto/` holds its request (English) and response (Italian,
-  prompt-facing) DTOs — flat, not nested under an `agents/` package, since
-  this module has only one agent.
+  `agents/dto/` holds its request (English) and response (Italian,
+  prompt-facing) DTOs — flat, not nested per-agent like the ingestor's
+  `agents/dto/<agent_name>/`, since this module has only one agent.
 - `services/retrieval_judge_evaluation_service.py` —
   `RetrievalJudgeEvaluationService`: samples `n` random quiz rows via the
   existing `QuizReadRepository.fetch_with_vectors`, retrieves each question's
