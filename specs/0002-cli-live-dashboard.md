@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Id** | 0002 |
-| **Status** | ready |
+| **Status** | implemented |
 | **Date** | 2026-07-31 |
 | **Discussion log** | none — compiled directly from conversation |
 | **Supersedes / superseded by** | — |
@@ -68,9 +68,12 @@ While an instrumented long-running step executes, a second progress bar advances
 individual work items complete, so progress is observable during a single step.
 
 **Acceptance criteria:**
-- Given `enrich_articles` processing K articles, when an article's enrichment completes
-  (successfully or by the skip/failure path that returns it unchanged), then the inner
-  bar advances by exactly one and never exceeds K.
+- ~~Given `enrich_articles` processing K articles, when an article's enrichment
+  completes (successfully or by the skip/failure path that returns it unchanged), then
+  the inner bar advances by exactly one and never exceeds K.~~ Removed 2026-08-06: spec
+  0001's article/comma-model refactor deleted the knowledge enrichment step
+  (`ContextEnricher` and the rest of the `knowledge_chunk` pipeline) the day after this
+  criterion was written, so no such step exists to instrument — see Changelog.
 - Given an embedding step processing B batches, when a batch completes, then the inner
   bar advances by exactly one and never exceeds B.
 - Given the quiz enrichment step, when items are deduplicated before dispatch, then the
@@ -117,7 +120,17 @@ A single `prepare` invocation runs two flows back to back; the dashboard shows w
 them is executing, so the step bar restarting is never mistaken for the run restarting.
 
 **Acceptance criteria:**
-- Given `ingest prepare knowledge --source cds` runs the pair `knowledge_cleaning` + `knowledge_enrichment`, when the first flow's final step completes, then the flow bar displays 1 of 2 and the step bar restarts at 1 of the second flow's step count, relabelled with the second flow's name.
+- ~~Given `ingest prepare knowledge --source cds` runs the pair `knowledge_cleaning` +
+  `knowledge_enrichment`, when the first flow's final step completes, then the flow bar
+  displays 1 of 2 and the step bar restarts at 1 of the second flow's step count,
+  relabelled with the second flow's name.~~ Replaced 2026-08-06: spec 0001's
+  article/comma-model refactor removed the `knowledge_enrichment` flow entirely —
+  `prepare knowledge` now runs exactly one flow (`cli/commands/prepare.py:66-67`,
+  `progress.begin_run(1)`). `prepare quiz` is now the sole two-flow example — see
+  Changelog.
+- Given `ingest prepare quiz` runs the pair `quiz_cleaning` + `quiz_enrichment`, when the
+  first flow's final step completes, then the flow bar displays 1 of 2 and the step bar
+  restarts at 1 of the second flow's step count, relabelled with the second flow's name.
 - Given a monitored invocation that runs F flows, when its last flow's last step completes successfully, then the flow bar displays F of F.
 - Given a monitored invocation that runs exactly one flow (`index knowledge`, `index quiz`), when it runs, then the flow bar shows 1 of 1 for the whole run.
 
@@ -257,31 +270,31 @@ flows the invocation will run; the dashboard advances the flow bar as each one f
 
 ## Feasibility Evidence
 
-- **AD-1** — supported by: `src/guidami_ai_patente_ingestor/cli/logging_setup.py:38` — the console handler is a plain `logging.StreamHandler` writing to the same stream a `Live` would redraw; constructed in one place, so substituting it is a localised change (verified 2026-07-31 @ 5790d63)
-- **AD-2** — supported by: `pyproject.toml:23` — `rich>=13` is already a declared runtime dependency, so no new package is required (verified 2026-07-31 @ 5790d63)
-- **AD-2** — supported by: `src/guidami_ai_patente_ingestor/cli/rendering/dry_run_renderer.py:14` — the CLI already composes rich renderables (`Panel`) through a `Console`, establishing the idiom (verified 2026-07-31 @ 5790d63)
-- **AD-3** — supported by: `src/commons/ai/observability/protocols/llm_call_tracker.py:6` — an existing `Protocol` port injected as an optional collaborator, the pattern this decision mirrors (verified 2026-07-31 @ 5790d63)
-- **AD-3** — supported by: `src/commons/ai/observability/services/null_llm_call_tracker.py:4` — the matching no-op implementation that lets call sites avoid branching on absence (verified 2026-07-31 @ 5790d63)
-- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/enrichers/context_enricher.py:50` — `articles = list(request)` materialises the collection before dispatch, so the item total required by FR-3 is known at that point (verified 2026-07-31 @ 5790d63)
-- **AD-3** — supported by: `src/commons/ai/embedding/services/embedding_service.py:27` — `total_batches` is already computed, and line 38 already logs per-batch position, so batch-level ticks require no new counting (verified 2026-07-31 @ 5790d63)
-- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/quiz_flows.py:101` — `EmbedQuizMetadata(embedding_service=EmbeddingService(...))` wraps the service, so the quiz indexing flow needs one hop more than the knowledge flow to reach it (verified 2026-07-31 @ 5790d63)
-- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/enrichers/norm_reference_enricher.py:65` — `unique = list(deduplicate(...))` is the post-dedup collection actually dispatched, confirming the FR-3 total must be taken after deduplication (verified 2026-07-31 @ 5790d63)
-- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/enrichers/image_description_enricher.py:69` — `images = list(requests)` is the deduplicated image set dispatched concurrently, the second post-dedup total (verified 2026-07-31 @ 5790d63)
-- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/builder/flow_builder.py:55` — `FlowBuilder.add_observer(observer: FlowObserver)` already exists, so registering the step-level observer requires no change to the dependency (verified 2026-07-31 @ 5790d63)
-- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/core/observability/protocols/flow_observer.py:19` — the `FlowObserver` protocol declares `on_start`/`on_end`/`on_error`, the exact step-lifecycle contract FR-2 needs (verified 2026-07-31 @ 5790d63)
-- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/core/observability/models/flow_progress.py:16` — `FlowProgress` carries `index` and `total`, i.e. FR-2's "position I of T" with no derivation needed (verified 2026-07-31 @ 5790d63)
-- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/builder/flow_builder.py:89` — `build()` wraps the registered observers in `_CompositeFlowObserver`, so adding ours preserves the default `LoggingFlowObserver` instead of replacing it (verified 2026-07-31 @ 5790d63)
-- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/core/flow/flow.py:73` — the built `Flow` exposes only `run` and `get_steps`; there is no post-construction observer hook, so registration must happen at build time (verified 2026-07-31 @ 5790d63)
-- **AD-4** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/knowledge_flows.py:135` — the factory constructs the `FlowBuilder` internally and returns a sealed `Flow`, so the observer can only be registered inside the factory (verified 2026-07-31 @ 5790d63)
-- **AD-5** — supported by: `.claude/rules/cli-structure.md:27` — the project rule states a component shared beyond the CLI belongs in the shared layer, which is the test this decision applies (verified 2026-07-31 @ 5790d63)
-- **AD-6** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/enrichers/context_enricher.py:52` — per-item work runs under `asyncio.gather`, so ticks originate inside a coroutine owned by the async step rather than on the rendering thread (verified 2026-07-31 @ 5790d63)
-- **AD-6** — supported by: `.venv/Lib/site-packages/flowstep/steps/async_apply_step.py:53` — `AsyncApplyStep.apply` calls `asyncio.run`, confirming the step owns its own event loop that the dashboard must not assume control of (verified 2026-07-31 @ 5790d63)
-- **AD-7** — supported by: `src/guidami_ai_patente_ingestor/cli/commands/prepare.py:87` — `clean_flow.run()` followed by `enrich_flow.run()` on the next line: one `prepare knowledge` invocation runs two independent flows, and only this call site knows it (verified 2026-07-31 @ 5790d63)
-- **AD-7** — supported by: `src/guidami_ai_patente_ingestor/cli/commands/prepare.py:104` — the quiz branch runs its own two-flow pair through `run_preparation`, confirming the two-flow shape is not specific to knowledge (verified 2026-07-31 @ 5790d63)
-- **AD-7** — supported by: `src/guidami_ai_patente_ingestor/cli/commands/index.py:64` — `index` runs a single `flow.run()`, the one-flow case FR-7's third criterion covers (verified 2026-07-31 @ 5790d63)
-- **FR-3** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/quiz_flows.py:283` — `ImageDescriptionEnricher` and `NormReferenceEnricher` are chained inside the single `enrich_quiz` `AsyncApplyStep`, which is why that one step needs two successive inner bars (verified 2026-07-31 @ 5790d63)
-- **Constraints** — supported by: `pyproject.toml:57` — `"G004"` sits in ruff's `ignore` list, so the lazy-`%s` logging convention is not mechanically enforced (verified 2026-07-31 @ 5790d63)
-- **FR-4** — supported by: `src/guidami_ai_patente_ingestor/cli/parser.py:39` — `_add_dry_run_flag` is the established per-leaf-subparser flag helper `--plain` can follow (verified 2026-07-31 @ 5790d63)
+- **AD-1** — supported by: `src/guidami_ai_patente_ingestor/cli/logging_setup.py:58` — the console handler is a plain `logging.StreamHandler` writing to the same stream a `Live` would redraw; constructed in one place (guarded by `use_console_handler`), so substituting it is a localised change (verified 2026-08-06 @ 2d741ac)
+- **AD-2** — supported by: `pyproject.toml:23` — `rich>=13` is already a declared runtime dependency, so no new package is required (verified 2026-08-06 @ 2d741ac)
+- **AD-2** — supported by: `src/guidami_ai_patente_ingestor/cli/rendering/dry_run_renderer.py:15` — the CLI already composes rich renderables (`Panel`) through a `Console`, establishing the idiom (verified 2026-08-06 @ 2d741ac)
+- **AD-3** — supported by: `src/commons/ai/observability/protocols/llm_call_tracker.py:6` — an existing `Protocol` port injected as an optional collaborator, the pattern this decision mirrors (verified 2026-08-06 @ 2d741ac)
+- **AD-3** — supported by: `src/commons/ai/observability/services/null_llm_call_tracker.py:4` — the matching no-op implementation that lets call sites avoid branching on absence (verified 2026-08-06 @ 2d741ac)
+- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/enrichers/norm_reference_enricher.py:83` — `self._progress.begin_items("questions", len(unique))` materialises the deduplicated collection before dispatch, so the item total required by FR-3 is known at that point (verified 2026-08-06 @ 2d741ac; supersedes the original citation of the now-deleted `context_enricher.py`, removed by spec 0001's article/comma-model refactor — see Changelog)
+- **AD-3** — supported by: `src/commons/ai/embedding/services/embedding_service.py:43` — `total_batches` is already computed, and line 59 already logs per-batch position, so batch-level ticks require no new counting (verified 2026-08-06 @ 2d741ac)
+- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/quiz_flows.py:118` — `EmbedQuizMetadata(embedding_service=EmbeddingService(...))` wraps the service, so the quiz indexing flow needs one hop more than the knowledge flow to reach it (verified 2026-08-06 @ 2d741ac)
+- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/enrichers/norm_reference_enricher.py:65` — `unique = list(deduplicate(...))` is the post-dedup collection actually dispatched, confirming the FR-3 total must be taken after deduplication (verified 2026-08-06 @ 2d741ac)
+- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/enrichers/image_description_enricher.py:84` — `images = list(requests)` is the deduplicated image set dispatched concurrently, the second post-dedup total (verified 2026-08-06 @ 2d741ac)
+- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/builder/flow_builder.py:55` — `FlowBuilder.add_observer(observer: FlowObserver)` already exists, so registering the step-level observer requires no change to the dependency (verified 2026-08-06 @ 2d741ac)
+- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/core/observability/protocols/flow_observer.py:19` — the `FlowObserver` protocol declares `on_start`/`on_end`/`on_error`, the exact step-lifecycle contract FR-2 needs (verified 2026-08-06 @ 2d741ac)
+- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/core/observability/models/flow_progress.py:16` — `FlowProgress` carries `index` and `total`, i.e. FR-2's "position I of T" with no derivation needed (verified 2026-08-06 @ 2d741ac)
+- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/builder/flow_builder.py:89` — `build()` wraps the registered observers in `_CompositeFlowObserver`, so adding ours preserves the default `LoggingFlowObserver` instead of replacing it (verified 2026-08-06 @ 2d741ac)
+- **AD-4** — supported by: `.venv/Lib/site-packages/flowstep/core/flow/flow.py:73` — the built `Flow` exposes only `run` and `get_steps`; there is no post-construction observer hook, so registration must happen at build time (verified 2026-08-06 @ 2d741ac)
+- **AD-4** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/knowledge_flows.py:135` — the factory constructs the `FlowBuilder` internally and returns a sealed `Flow`, so the observer can only be registered inside the factory (verified 2026-08-06 @ 2d741ac)
+- **AD-5** — supported by: `.claude/rules/cli-structure.md:28` — the project rule states a component shared beyond the CLI belongs in the shared layer, which is the test this decision applies (verified 2026-08-06 @ 2d741ac)
+- **AD-6** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/enrichers/norm_reference_enricher.py:86` — per-item work runs under `asyncio.gather`, so ticks originate inside a coroutine owned by the async step rather than on the rendering thread (verified 2026-08-06 @ 2d741ac; supersedes the original citation of the now-deleted `context_enricher.py`, removed by spec 0001's article/comma-model refactor — see Changelog)
+- **AD-6** — supported by: `.venv/Lib/site-packages/flowstep/steps/async_apply_step.py:53` — `AsyncApplyStep.apply` calls `asyncio.run`, confirming the step owns its own event loop that the dashboard must not assume control of (verified 2026-08-06 @ 2d741ac)
+- **AD-7** — supported by: `src/guidami_ai_patente_ingestor/cli/commands/prepare.py:101` — `clean_flow.run()` followed by `enrich_flow.run()` at line 105: one `prepare quiz` invocation runs two independent flows, and only this call site knows it (verified 2026-08-06 @ 2d741ac; supersedes the original citation of `prepare.py:87/104`, which described the `prepare knowledge` branch before spec 0001 collapsed it to a single flow — see Changelog)
+- **AD-7** — supported by: `src/guidami_ai_patente_ingestor/cli/commands/prepare.py:66-67` — the knowledge branch now runs exactly one flow (`progress.begin_run(1)`), confirming the two-flow shape is quiz-specific, not universal (verified 2026-08-06 @ 2d741ac)
+- **AD-7** — supported by: `src/guidami_ai_patente_ingestor/cli/commands/index.py:77` — `index` runs a single `flow.run()`, the one-flow case FR-7's third criterion covers (verified 2026-08-06 @ 2d741ac)
+- **FR-3** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/quiz_flows.py:344-346` — `ImageDescriptionEnricher` and `NormReferenceEnricher` are chained inside the single `enrich_quiz` `AsyncApplyStep`, which is why that one step needs two successive inner bars (verified 2026-08-06 @ 2d741ac)
+- **Constraints** — supported by: `pyproject.toml:58` — `"G004"` sits in ruff's `ignore` list, so the lazy-`%s` logging convention is not mechanically enforced (verified 2026-08-06 @ 2d741ac)
+- **FR-4** — supported by: `src/guidami_ai_patente_ingestor/cli/parser.py:74` — `_add_dry_run_flag` is the established per-leaf-subparser flag helper `--plain` can follow (verified 2026-08-06 @ 2d741ac)
 
 ## Open Questions
 
@@ -324,3 +337,55 @@ on 2026-07-31 (see Changelog).
     adapters are tested, `rich`'s rendered output is not (also a Non-Goal).
   - Status deliberately left at `draft`: the changes are material, so scope sign-off and
     promotion remain the user's call.
+
+- **2026-08-06 — spec review and status correction.** Reason: a full audit of specs
+  0001–0006 found this spec's implementation already merged (commits `2bc4f7a`..`2d741ac`,
+  2026-07-31 through 2026-08-05) while Status still read `ready`. Flipped to
+  `in-progress` per the user's confirmation, ahead of running `/close-plan` against
+  `plans/0002-cli-live-dashboard-plan.md`.
+  - **Semantic drift found and resolved** (user confirmed the resolution): spec 0001's
+    article/comma-model refactor (commit `d57f45a`, 2026-08-01 — one day after this
+    dashboard was built) deleted the entire knowledge-side enrichment step
+    (`ContextEnricher` and the rest of the `knowledge_chunk` pipeline). Two things this
+    spec had assumed no longer hold:
+    - **FR-3**'s first acceptance criterion described item-level ticks during
+      `enrich_articles`; that step no longer exists — struck through, not replaced (no
+      knowledge-side step is instrumented today; item-level bars now cover only
+      embedding batches and the two quiz enrichers).
+    - **FR-7**'s first acceptance criterion used `prepare knowledge` as the two-flow
+      example; `prepare knowledge` now runs exactly one flow
+      (`cli/commands/prepare.py:66-67`). Replaced with the equivalent `prepare quiz`
+      example, which is now the sole two-flow `prepare` case.
+  - **Mechanical drift refreshed**: every Feasibility Evidence line re-verified against
+    `2d741ac` and re-stamped; several had merely shifted lines (e.g.
+    `logging_setup.py:38→58`, `embedding_service.py:27→43`), and the two AD-7 citations
+    of `prepare.py:87`/`prepare.py:104` were re-pointed at the current quiz-branch
+    (`101`/`105`) and knowledge-branch (`66-67`) call sites respectively, consistent with
+    the FR-7 fix above.
+  - **Learning**: this spec's Feasibility Evidence became partially inaccurate within a
+    single day of being written, because a sibling spec landed a structural refactor
+    that removed one of the two examples this spec's FRs were built around. Neither
+    spec cross-referenced the other despite touching the same call sites
+    (`cli/commands/prepare.py`) in the same week — worth flagging as a pattern: specs
+    landing close together against the same files should check each other's Feasibility
+    Evidence for invalidation, not just their own.
+
+### 2026-08-06 — plan executed: plans/0002-cli-live-dashboard-plan.md
+
+- **DoD result:** All items verified mechanically except two, reported honestly rather
+  than assumed: (1) `ruff check src tests` surfaced one issue, but in
+  `tests/scrapers/test_rca_extract.py` — unrelated to this spec's scope, pre-existing,
+  not touched by this plan's task; (2) file discipline could not be mechanically
+  verified — this plan is a post-hoc reconciliation (no original plan gated the
+  implementation, so no clean baseline isolates dashboard-only commits from three days
+  of concurrent, unrelated work on the same branch). Everything else green: T-1's
+  verification command (20 passed), the full suite (577 passed), `pyright` (0 errors),
+  type hints/English docstrings (spot-checked).
+- **Deviations from plan:** The plan itself was written after implementation, as a
+  reconciliation artifact — not a deviation in the usual sense, but the reason the file
+  discipline item above is unverifiable rather than green.
+- **Learnings:** Same as the spec-review entry directly above: this spec's Feasibility
+  Evidence went stale within a day of being written because a same-week, same-file
+  refactor (spec 0001) wasn't cross-checked against it. Recommend that future specs
+  touching a file another recent spec also touches include a mutual staleness check.
+- **Status change:** in-progress → implemented — confirmed by Alessio Gilardi, 2026-08-06
