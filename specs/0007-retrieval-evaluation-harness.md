@@ -213,8 +213,8 @@ per-question detail file that stays out of git.
   committed path under `data/eval/` in a diffable format, with an explicit shape (a
   versioned model, not an ad-hoc dict) so that a diff between two runs is meaningful.
 - Given `data/eval/`, when it is introduced, then its version-control status is stated
-  explicitly — it is committed, unlike `data/enriched/` (ADR 0005) — and `.gitignore` is
-  left untouched for that path deliberately rather than by omission.
+  explicitly — it is committed, like `data/enriched/` (ADR 0012, superseding ADR 0005) —
+  and `.gitignore` is left untouched for that path deliberately rather than by omission.
 - Given a completed run, when artifacts are written, then the per-question detail and
   `run.log` are written under `logs/ingest_evaluate_<YYYYMMDDHHMM>/`. That directory will
   also contain the `manifest.json` and `report.md` that `RunArtifactWriter.__exit__` always
@@ -465,9 +465,9 @@ so the command cannot run without one.
 
 ## Feasibility Evidence
 
-- **AD-1** — supported by: `docs/layout.md:177` — assigns FastAPI/retrieval code to `src/guidami_ai_patente/`, the rule this decision consciously deviates from (verified 2026-08-05 @ 46fad9a)
+- **AD-1** — supported by: `docs/layout.md:195` — assigns FastAPI/retrieval code to `src/guidami_ai_patente/`, the rule this decision consciously deviates from (verified 2026-08-06 @ 91c4fe7)
 - **AD-1** — supported by: `pyproject.toml:31` — `ingest = "guidami_ai_patente_ingestor.cli:main"`, the entry point the new subcommand extends (verified 2026-08-05 @ 6d96b7d)
-- **AD-1** — supported by: `src/guidami_ai_patente_ingestor/cli/parser.py:4` — existing subcommand surface (`prepare`/`index`) with the `--config`/`--dry-run`/`--plain` flags FR-1 mirrors (verified 2026-08-05 @ 6d96b7d)
+- **AD-1** — supported by: `src/guidami_ai_patente_ingestor/cli/parser.py:4` — existing subcommand surface (`prepare`/`index`) with the `--config`/`--dry-run`/`--plain` flags FR-1 mirrors (verified 2026-08-06 @ 91c4fe7)
 - **AD-2** — supported by: `db/init.sql:26` — `embedding VECTOR(1536)` on `article_commas`; the file declares no `tsvector` column and no full-text or vector index (the six indexes it does declare are plain b-tree) (verified 2026-08-05 @ 46fad9a)
 - **AD-3** — supported by: `db/init.sql:24` — `text TEXT NOT NULL`, plain text with no precomputed search vector, so the tsquery must be built at query time (verified 2026-08-05 @ 46fad9a)
 - **AD-4** — supported by: `src/guidami_ai_patente_ingestor/agents/mappers/norm_reference_describer_mapper.py:51` — `exact_keywords` is populated from an LLM agent's output, confirming it is a generated artifact rather than source data (verified 2026-08-05 @ 6d96b7d)
@@ -511,6 +511,16 @@ so the command cannot run without one.
 
 ## Changelog
 
+- **2026-08-06** — Evidence anchors refreshed to `91c4fe7`. `docs/layout.md` had shifted,
+  moving the FastAPI/retrieval assignment from line 177 to 195; the `cli/parser.py` claim
+  was re-read and holds unchanged. Mechanical drift only — no acceptance criterion, AD
+  rationale, or constraint is affected, so the status is unchanged.
+- **2026-08-06** — Mechanical drift refresh, status unchanged. An FR-7 acceptance
+  criterion contrasted `data/eval/` (committed) against `data/enriched/` (gitignored);
+  `data/enriched/` has been committed since 2026-08-05 and ADR 0005 is now superseded by
+  ADR 0012, so the contrast is restated as a comparison. No acceptance criterion, decision
+  rationale, or constraint changes: the criterion still requires `data/eval/`'s
+  version-control status to be stated explicitly rather than left implicit.
 - **2026-08-05** — FR-4 now reports hit@k over both denominators (covered subset and all
   measurable questions) instead of the covered subset alone, with the gap between them
   reported explicitly. Requested by the user; the two figures answer different questions

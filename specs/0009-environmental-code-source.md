@@ -153,8 +153,8 @@ then the standard `cleaned/` layer produced by preparation.
 - The scraper must remain a single entry point: no second command, no per-law branch
   outside `_SOURCES`.
 - Article ranges live in `configs/ingestor_config.yaml`, not in code, matching `rca_ranges`.
-- The narrowed parsed output is committed like the other parsed corpora; the enriched layer
-  stays gitignored (ADR 0005).
+- The narrowed parsed output is committed like the other parsed corpora, as is the enriched
+  layer (ADR 0012, superseding ADR 0005).
 - Scraping normattiva must respect whatever request pacing the existing scraper already
   applies; this spec introduces no new fetching behaviour.
 - The `source` slug must be short and stable, since it appears in directory names, config
@@ -165,10 +165,10 @@ then the standard `cleaned/` layer produced by preparation.
 - **AD-1** — supported by: `src/scrapers/normattiva.py:46` — `LawConfig` carries only `slug`, `toc_url` and `output_name`, so a law is pure configuration (verified 2026-08-05 @ 6d96b7d)
 - **AD-1** — supported by: `src/scrapers/normattiva.py:672` — `_SOURCES: dict[str, LawConfig] = {"cds": CDS, "cap": CAP, "reg": REG}`, the single registry a new law joins (verified 2026-08-05 @ 6d96b7d)
 - **AD-1** — supported by: `src/scrapers/normattiva.py:679` — `--source` derives its choices from `sorted(_SOURCES)`, so the CLI surface updates itself (verified 2026-08-05 @ 6d96b7d)
-- **AD-2** — supported by: `src/guidami_ai_patente_ingestor/configs/ingestor_config.py:69` — `rca_ranges: list[str]` with default `["118-165", "278-300"]`, the configured-range precedent this reuses (verified 2026-08-05 @ 6d96b7d)
-- **AD-2** — supported by: `configs/ingestor_config.yaml:10` — the `cap` source points at `codice_rca.json`, the narrowed output rather than the full law, showing the pattern end to end (verified 2026-08-05 @ 6d96b7d)
-- **AD-3** — supported by: `db/init.sql:16` — `UNIQUE (source, number)` on `articles`, which makes a distinct source value sufficient to prevent collisions (verified 2026-08-05 @ 6d96b7d)
-- **AD-3** — supported by: `configs/ingestor_config.yaml:23` — `knowledge_preparation.sources: [cds, cap, reg]`, the list the new slug joins (verified 2026-08-05 @ 6d96b7d)
+- **AD-2** — supported by: `src/guidami_ai_patente_ingestor/configs/ingestor_config.py:71` — `rca_ranges: list[str]` with default `["118-165", "278-300"]`, the configured-range precedent this reuses (verified 2026-08-06 @ 91c4fe7)
+- **AD-2** — supported by: `configs/ingestor_config.yaml:12` — the `cap` source points at `codice_rca.json`, the narrowed output rather than the full law, showing the pattern end to end (verified 2026-08-06 @ 91c4fe7)
+- **AD-3** — supported by: `db/init.sql:16` — `UNIQUE (source, number)` on `articles`, which makes a distinct source value sufficient to prevent collisions (verified 2026-08-06 @ 91c4fe7)
+- **AD-3** — supported by: `configs/ingestor_config.yaml:23` — `knowledge_preparation.sources: [cds, cap, reg]`, the list the new slug joins (verified 2026-08-06 @ 91c4fe7)
 
 ## Open Questions
 
@@ -189,3 +189,17 @@ then the standard `cleaned/` layer produced by preparation.
 
 - **Scope approved by user:** pending
 - **Feasibility asserted:** by write-spec on 2026-08-05, based on Feasibility Evidence above
+
+## Changelog
+
+- **2026-08-06** — Evidence anchors refreshed to `91c4fe7`. `rca_ranges` moved from
+  `ingestor_config.py:69` to `:71` (the file gained `quiz_question_embeddings_table`
+  above it), and the `codice_rca.json` reference now points at the `file:` line itself
+  (`configs/ingestor_config.yaml:12`) rather than the `cap:` block header. The `db/init.sql`
+  and `knowledge_preparation.sources` claims were re-read and hold unchanged. Mechanical
+  drift only — no requirement or decision is affected, so the status is unchanged.
+- **2026-08-06** — Mechanical drift refresh, status unchanged. A Constraint stated that
+  the enriched layer "stays gitignored (ADR 0005)"; it has been committed since
+  2026-08-05 and ADR 0005 is now superseded by ADR 0012. The constraint now says the
+  enriched layer is committed like the parsed output. No requirement or decision is
+  affected — this spec adds a source, it does not choose version-control policy.
