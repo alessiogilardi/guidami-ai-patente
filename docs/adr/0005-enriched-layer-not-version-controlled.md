@@ -2,7 +2,13 @@
 
 ## Status
 
-Accepted
+Superseded by ADR 0012
+
+> The decision below was reversed on 2026-08-05 (commits `5e60b63` and
+> `6bf8d23`): `data/enriched/` and `data/test-data/enriched/` are no longer
+> gitignored, and the enriched quiz layer is committed. The text is kept
+> unedited as the record of the original reasoning — see
+> `0012-enriched-layer-version-controlled.md` for what replaced it and why.
 
 ## Context
 

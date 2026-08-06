@@ -42,6 +42,10 @@ actually on disk.
    `configs/ingestor_config*.yaml` point here. It is committed to git
    like `parsed/`/`cleaned/` (deterministic, not LLM-derived — unlike
    `data/enriched/`, which stays gitignored per ADR 0005).
+   > **Correction:** `data/enriched/` is no longer gitignored — ADR 0005 was
+   > superseded by ADR 0012 on 2026-08-06. This bullet's own decision (that
+   > `data/quiz-images/` is committed) is unaffected; only the contrast it
+   > drew against `enriched/` no longer holds.
 2. `main_questions` (`src/parsers/questions_pdf.py`) now prunes orphaned
    images at the end of every parse run: `_referenced_images(questions)`
    collects every non-null `image` filename actually referenced in the

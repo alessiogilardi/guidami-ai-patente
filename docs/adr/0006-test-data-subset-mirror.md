@@ -81,6 +81,11 @@ Three design questions had to be resolved before implementing this:
   `data/parsed/`/`data/cleaned/`; `data/test-data/enriched/` is
   `.gitignore`d for the identical reason `data/enriched/` already is (ADR
   0005 — non-deterministic, cost-bearing-to-regenerate LLM output).
+  > **No longer accurate.** ADR 0005 was superseded by ADR 0012 on
+  > 2026-08-06: neither `data/enriched/` nor `data/test-data/enriched/` is
+  > gitignored any more, and both are committed. The mirroring principle this
+  > bullet states is unaffected — the two trees are still treated identically,
+  > just on the other side of the line.
 
 ## Alternatives considered
 

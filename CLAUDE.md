@@ -103,8 +103,9 @@ uv run ingest --config configs/ingestor_config.test-data.yaml index quiz
 ```
 
 `data/test-data/parsed/` and `data/test-data/cleaned/` are committed as a pinned
-fixture, same as their main-tree counterparts; `data/test-data/enriched/` is
-`.gitignore`d for the same reason as `data/enriched/` (ADR 0005).
+fixture, same as their main-tree counterparts. `data/test-data/enriched/` is committed
+on the same terms once it exists (it does not yet) — as is `data/enriched/`, which
+holds the 7099 enriched quiz files (ADR 0012, superseding ADR 0005).
 
 ### Secrets required
 
