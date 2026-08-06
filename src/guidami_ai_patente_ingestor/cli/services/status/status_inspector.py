@@ -14,7 +14,7 @@ class StatusInspector:
 
     Both knowledge's and quiz's `cleaned`/`enriched` layers are per-element
     directories (see `docs/plans/2026-07-17--per-element-knowledge-layers.md` and
-    spec 0005): a directory can be partially populated, so there is no honest
+    spec 0006): a directory can be partially populated, so there is no honest
     binary "already done" signal for either. `per_element` is passed in by the
     caller (never inferred from the entity name), so this class stays free of
     hardcoded domain strings.
