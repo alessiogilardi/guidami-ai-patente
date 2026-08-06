@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Id** | 0004 |
-| **Status** | ready |
+| **Status** | implemented |
 | **Date** | 2026-08-02 |
 | **Discussion log** | `specs/discussions/scraper-acquisition-refactor.md` (split from `specs/0003-regolamento-attuazione-corpus.md` §Phase 2 originally; FR-3 through FR-7 compiled from the discussion log's 2 sessions) |
 | **Supersedes / superseded by** | — (split from spec 0003; see spec 0003's Changelog) |
@@ -194,11 +194,11 @@ pairing.
 - **AD-1** — supported by: `src/scrapers/normattiva.py:41` — `class LawConfig(TypedDict)` is erased at runtime, so a misspelled or missing key produces a silently wrong article URL instead of a construction error (verified 2026-08-02 @ 008d5ae)
 - **AD-1** — supported by: `src/scrapers/normattiva.py:83` — `class ArticleRecord(TypedDict)` is the shape written to the parsed JSON, the artifact spec 0003 promotes to a contract; a dataclass preserves that shape while giving it a real runtime type (verified 2026-08-02 @ 008d5ae)
 - **AD-1** — supported by: `src/guidami_ai_patente_ingestor/models/knowledge/parsed_article.py:11` — `ParsedArticleModel` is a Pydantic model loading exactly that JSON, so the validation boundary already exists one layer down and does not need duplicating in the scraper (verified 2026-08-02 @ 008d5ae)
-- **AD-2** — supported by: `src/guidami_ai_patente_ingestor/cli/parser.py:67` — `build_parser(config)` derives `--source` choices from config and attaches `--dry-run` per leaf subparser: the conventions FR-1 mirrors, and the insertion point a future `ingest scrape` would use (verified 2026-08-02 @ 008d5ae)
+- **AD-2** — supported by: `src/guidami_ai_patente_ingestor/cli/parser.py:104-122` — `build_parser(config)` derives `--source` choices from config and attaches `--dry-run` per leaf subparser: the conventions FR-1 mirrors, and the insertion point a future `ingest scrape` would use (verified 2026-08-06 @ 2d741ac; mechanical drift only — same content, shifted from the original `:67` anchor)
 - **AD-2** — supported by: `src/scrapers/normattiva.py:540-556` — `main_cds`/`main_cap`/`main_reg` are three separate entry points for what is one operation parameterised by law (verified 2026-08-02 @ 008d5ae; mechanical drift only — same content, line numbers shifted from the original `538-550` anchor)
-- **AD-3** — supported by: `src/commons/observability/protocols/progress_reporter.py:1-51` — `ProgressReporter`, the existing `Protocol`+service pattern in the same package family that AD-3 deliberately does *not* replicate (verified 2026-08-02 @ 008d5ae)
+- **AD-3** — supported by: `src/commons/observability/progress_reporter/protocols/progress_reporter.py:1-51` — `ProgressReporter`, the existing `Protocol`+service pattern in the same package family that AD-3 deliberately does *not* replicate (verified 2026-08-06 @ 2d741ac; supersedes the original `protocols/progress_reporter.py` path — the package was nested one level deeper under `progress_reporter/` by commit `600b4be`, after this spec was written)
 - **AD-3** — supported by: `src/guidami_ai_patente_ingestor/cli/logging_setup.py:10-27` — the run-dir-with-collision-suffix logic `RunArtifactWriter` absorbs (verified 2026-08-02 @ 008d5ae)
-- **AD-3** — supported by: `docs/layout.md:94-102` — `src/commons/observability/` (top-level, a sibling of `commons/ai/`) already holds `ProgressReporter`/`NullProgressReporter`, the existing precedent `RunArtifactWriter` is placed alongside (verified 2026-08-02 @ 008d5ae)
+- **AD-3** — supported by: `docs/layout.md:140-147` — `observability/progress_reporter/` (top-level, a sibling of `commons/ai/`) already holds `ProgressReporter`/`NullProgressReporter`; the doc now also documents `observability/run_artifact_writer/` alongside it, the placement this decision made (verified 2026-08-06 @ 2d741ac; mechanical drift only — Second Brain restructuring moved this content from the original `:94-102` anchor)
 - **FR-1** — supported by: `pyproject.toml:27-29` — `scrape-codice`, `scrape-cap` and `scrape-regolamento` are three separate `[project.scripts]` entries for what is one operation parameterised by law (verified 2026-08-02 @ 008d5ae)
 - **FR-1** — supported by: `src/scrapers/normattiva.py:269` — a bare `continue` skips a non-article TOC entry (verified 2026-08-02 @ 008d5ae)
 - **FR-1** — supported by: `src/scrapers/normattiva.py:275` — a bare `continue` skips a duplicate TOC entry (verified 2026-08-02 @ 008d5ae)
@@ -206,13 +206,13 @@ pairing.
 - **FR-1** — supported by: `src/scrapers/normattiva.py:510` — a bare `continue` skips a still-invalid session after refresh, same violation (verified 2026-08-02 @ 008d5ae)
 - **FR-2** — supported by: `src/scrapers/normattiva.py:69` — `class ArticleParams(TypedDict)` carries the nine query parameters that build every article URL, the structure whose silent mistyping is hardest to notice (verified 2026-08-02 @ 008d5ae)
 - **FR-3** — supported by: `src/guidami_ai_patente_ingestor/cli/logging_setup.py:10-27` — the existing `run_id` naming and dry-run-skip behavior FR-3 mirrors and extends (verified 2026-08-02 @ 008d5ae)
-- **FR-3** — supported by: `src/scrapers/normattiva.py:485-520` — the three existing skip sites where `record_skip` is called (verified 2026-08-02 @ 008d5ae)
+- **FR-3** — supported by: `src/scrapers/normattiva.py:569-605` — the three skip sites (fetch failure, session invalid, parse error) where `manifest.record_skip(...)` is called (verified 2026-08-06 @ 2d741ac; mechanical drift only — shifted from the original `:485-520` anchor)
 - **FR-4** — supported by: `pyproject.toml:75-76` — `"src/scrapers/**" = ["C901"]` (line 75, to be removed) and `"src/parsers/**" = ["C901"]` (line 76, unaffected) (verified 2026-08-02 @ 008d5ae)
 - **FR-4** — supported by: `tests/scrapers/test_normattiva.py:25-571` — 27 existing tests for `_parse_article` and its helpers, confirming `main()` is the only untested-by-design piece of the module (verified 2026-08-02 @ 008d5ae)
 - **FR-5** — supported by: `src/scrapers/normattiva.py:152` — `_split_leading_title`'s loop explicitly excludes a leading `((` from title-start recognition (verified 2026-08-02 @ 008d5ae)
 - **FR-5** — supported by: `src/scrapers/normattiva.py:320` — the `heading_tag` path's naive `.strip("().")` (verified 2026-08-02 @ 008d5ae)
 - **FR-6** — supported by: `src/scrapers/normattiva.py:174-201` — `_is_marker_start`'s accepted preceding-punctuation set, reproduced live against `data/raw/reg/art_0083_1.html` and `art_0194_1.html` to raise the exact `ValueError`s this spec quotes (verified 2026-08-02 @ 008d5ae)
-- **FR-7** — supported by: `src/guidami_ai_patente_ingestor/mappers/article_mapper.py:1-104` — `_COMMA_REPEALED_PREFIX`'s single-value check at line 10, applied at line 76 (verified 2026-08-02 @ 008d5ae)
+- **FR-7** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/comma_repeal_detector.py:3,30` — `_COMMA_REPEALED_PREFIXES = ("COMMA ABROGATO", "COMMA SOPPRESSO")`, applied in `detect_comma_repeal`, wired into the knowledge flow via `src/guidami_ai_patente_ingestor/orchestrators/knowledge_flows.py:127` (verified 2026-08-06 @ 2d741ac; supersedes the original citation of `article_mapper.py`, which no longer contains this check — commit `abe1335` moved comma-repeal detection from the mapper to a dedicated pipeline step after this spec was written)
 
 ## Open Questions
 
@@ -258,3 +258,55 @@ Regolamento-only). Non-Goals updated: the "fix Known Issues" non-goal is struck 
 deferred to a follow-up spec rather than left an open question. No FRs renumbered or
 removed. Reason: the discussion log converged on all of the above and the user asked to
 compile it.
+
+### 2026-08-06 — spec review and status correction
+Reason: a full audit of specs 0001–0006 found this refactor already merged (commits
+`ff6fb4a`, `3389e6d`, `abe1335`, `e503c94`, `6e04cae`, 2026-08-04/05) while Status still
+read `ready`. Flipped to `in-progress` per the user's confirmation, ahead of running
+`/close-plan` against `plans/0004-scraper-acquisition-refactor-plan.md`.
+- **Mechanical drift refreshed** (evidence describing a still-current mechanism whose
+  location moved since the spec was written): **FR-7**'s citation of
+  `mappers/article_mapper.py` — commit `abe1335` relocated comma-repeal detection into a
+  dedicated `services/knowledge/comma_repeal_detector.py` pipeline step, wired via
+  `orchestrators/knowledge_flows.py:127`; the mapper no longer contains this check at
+  all. **AD-3**'s citation of `commons/observability/protocols/progress_reporter.py` —
+  commit `600b4be` nested it one level deeper under `progress_reporter/`. **AD-2**'s
+  citation of `cli/parser.py:67` and **AD-3**'s citation of `docs/layout.md:94-102` — both
+  re-pointed at their current lines (`parser.py:104-122`, `layout.md:140-147`); the
+  underlying claims are unchanged. **FR-3**'s citation of the three `record_skip` call
+  sites — re-pointed from `normattiva.py:485-520` to `:569-605`.
+- **Reviewed, left unchanged by design:** the remaining 16 stale-anchor warnings (AD-1's
+  `TypedDict` citations, AD-2's three-`main_*`-functions citation, FR-1's `continue`
+  citations, FR-2's `TypedDict` citation, FR-4's pre-refactor test-count citation, FR-5's
+  naive-stripping citations, FR-6's narrow-punctuation citation) all describe the
+  **pre-refactor problem** this spec's FRs fixed. Re-verifying them against `2d741ac`
+  correctly shows they no longer match — the `TypedDict`s are dataclasses now, the
+  `continue`s are gone, the naive stripping is bracket-aware. That is confirmation the
+  fix landed, not a citation defect: re-stamping these to "verified @ 2d741ac" would
+  falsely claim the current code still exhibits the bug being fixed. Left as historical
+  record of what the refactor was for.
+- **Learning:** carrying the same lesson as spec 0002's review entry — this spec's
+  Feasibility Evidence for FR-7 went stale because a same-week refactor (commit
+  `abe1335`, landed inside this spec's own implementation window) moved the exact
+  mechanism the evidence cited, and the spec was never revisited afterward to confirm
+  its own citations still held.
+
+### 2026-08-06 — plan executed: plans/0004-scraper-acquisition-refactor-plan.md
+
+- **DoD result:** All items verified mechanically except two, reported honestly rather
+  than assumed: (1) `ruff check src tests` surfaced one issue, but in
+  `tests/scrapers/test_rca_extract.py` — unrelated to this spec's scope, pre-existing,
+  not touched by this plan's task; (2) file discipline could not be mechanically
+  verified — this plan is a post-hoc reconciliation (no original plan gated the
+  implementation, so no clean baseline isolates this refactor's commits from concurrent,
+  unrelated work on the same branch). Everything else green: T-1's verification command
+  (48 passed), the full suite (577 passed), `pyright` (0 errors), type hints/English
+  docstrings (spot-checked).
+- **Deviations from plan:** The plan itself was written after implementation, as a
+  reconciliation artifact — not a deviation in the usual sense, but the reason the file
+  discipline item above is unverifiable rather than green.
+- **Learnings:** Same as the spec-review entry directly above: FR-7's Feasibility
+  Evidence went stale within this spec's own implementation window because a same-week
+  commit (`abe1335`) relocated the exact mechanism it cited, and nothing flagged the
+  spec for review afterward.
+- **Status change:** in-progress → implemented — confirmed by Alessio Gilardi, 2026-08-06
