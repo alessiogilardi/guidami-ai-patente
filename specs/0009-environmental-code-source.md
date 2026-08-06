@@ -169,21 +169,32 @@ then the standard `cleaned/` layer produced by preparation.
 - **AD-2** — supported by: `configs/ingestor_config.yaml:12` — the `cap` source points at `codice_rca.json`, the narrowed output rather than the full law, showing the pattern end to end (verified 2026-08-06 @ 91c4fe7)
 - **AD-3** — supported by: `db/init.sql:16` — `UNIQUE (source, number)` on `articles`, which makes a distinct source value sufficient to prevent collisions (verified 2026-08-06 @ 91c4fe7)
 - **AD-3** — supported by: `configs/ingestor_config.yaml:23` — `knowledge_preparation.sources: [cds, cap, reg]`, the list the new slug joins (verified 2026-08-06 @ 91c4fe7)
+- **FR-3 scope clarification** — supported by: `src/guidami_ai_patente_ingestor/models/knowledge/cleaned_article.py:22`, `src/guidami_ai_patente_ingestor/mappers/article_mapper.py:20`, `src/guidami_ai_patente_ingestor/orchestrators/knowledge_flows.py:207` — each hardcodes `Literal["cds", "cap", "reg"]` for `source`; each needs `"amb"` added. This is a mechanical typing update (widening an enum of valid values), not new branching pipeline logic, so it doesn't contradict AD-1/AD-3's "no per-law branch" intent, but FR-3's acceptance criteria should be read as "no new pipeline *logic*", not "zero-diff outside config" (verified 2026-08-06 @ aafedf8)
 
 ## Open Questions
 
-- [ ] **blocking** — Which article ranges of D.Lgs. 152/2006 are in scope? The waste
-  provisions are in Parte IV, but the precise ranges covering used oil, lead batteries and
-  end-of-life tyres need to be read off the law itself rather than guessed. FR-2 cannot be
-  verified until they are fixed. — owner: user
-- [ ] **non-blocking** — What slug? `amb` is used throughout this spec as a placeholder;
-  alternatives are `ambiente` or `dlgs152`. It appears in directory names, config keys and
-  every stored row, so it is worth one minute's thought and is cheap to change only before
-  the first scrape. — owner: user
-- [ ] **non-blocking** — Should the narrowing be a separate script like
-  `scrapers/rca_extract.py`, or a flag on the scrape itself? The RCA precedent is a
-  separate script that is not wired into the CLI, which is arguably a wart worth not
-  copying. — owner: user
+- [x] **blocking** — Which article ranges of D.Lgs. 152/2006 are in scope? Resolved
+  2026-08-06: Parte Quarta, **Titolo III — "Gestione di particolari categorie di
+  rifiuti" (artt. 227-237)**. Verified against Brocardi's article-by-article index of
+  the Codice dell'Ambiente: art. 228 is *Pneumatici fuori uso* (end-of-life tyres),
+  art. 236 is *Consorzio nazionale... oli minerali usati* (used mineral oils), art. 227
+  covers *rifiuti di pile e accumulatori* (battery waste; the dedicated lead-battery
+  consortium article, 235, is abrogated but stays in-range as a repealed record, same
+  handling as any other repealed article in the existing corpus). A single range,
+  `["227-237"]`, covers all three concepts named in the Problem & Motivation section.
+  — owner: user, resolved by research
+- [x] **non-blocking** — What slug? Resolved: `amb`, keeping the 3-letter convention
+  shared with `cds`/`cap`/`reg`. — owner: user, resolved by research
+- [x] **non-blocking** — Should the narrowing be a separate script like
+  `scrapers/rca_extract.py`, or a flag on the scrape itself? Resolved: a separate
+  script, `scrapers/amb_extract.py`, mirroring `rca_extract.py`'s shape exactly
+  (same CLI-detachment "wart" as the RCA precedent — not fixed here, since fixing it
+  is a cross-cutting change to an existing script, out of scope for a spec that adds
+  one source). To avoid duplicating the range-filtering algorithm across two nearly
+  identical files, the filtering logic itself (`extract_rca`'s body) is lifted into a
+  shared function both scripts call; each keeps its own thin `main()` (paths + config
+  field) and its own `[project.scripts]` entry, matching the existing precedent of one
+  entry point per operation. — owner: user, resolved by research
 
 ## Sign-off
 
@@ -192,6 +203,14 @@ then the standard `cleaned/` layer produced by preparation.
 
 ## Changelog
 
+- **2026-08-06** — All three Open Questions resolved (article ranges = Titolo III,
+  artt. 227-237, verified against Brocardi's article index; slug = `amb`; narrowing
+  script = `scrapers/amb_extract.py`, sharing its filtering core with
+  `rca_extract.py`). Added a Feasibility Evidence entry noting that FR-3's "no code
+  changes to the pipelines" claim needs a narrow reading: three `Literal["cds",
+  "cap", "reg"]` typing sites (`cleaned_article.py`, `article_mapper.py`,
+  `knowledge_flows.py`) do need `"amb"` added — a mechanical enum widening, not new
+  branching logic. No requirement or decision is otherwise affected.
 - **2026-08-06** — Evidence anchors refreshed to `91c4fe7`. `rca_ranges` moved from
   `ingestor_config.py:69` to `:71` (the file gained `quiz_question_embeddings_table`
   above it), and the `codice_rca.json` reference now points at the `file:` line itself
