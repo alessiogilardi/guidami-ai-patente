@@ -2,7 +2,6 @@ from collections.abc import Iterator
 
 import pytest
 from psycopg import sql
-from pydantic import SecretStr
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
@@ -14,18 +13,11 @@ from guidami_ai_patente_ingestor.repositories.db.quiz_question_store_repository 
 
 
 @pytest.fixture
-def client() -> Iterator[PostgresClient]:
-    config = PostgresConnectionConfig(
-        host="localhost",
-        port=5432,
-        user="guidami",
-        password=SecretStr("guidami"),
-        dbname="guidami_ai_patente",
-    )
-    with PostgresClient(config) as client:
-        client.truncate("quiz_questions")
+def client(postgres_test_config: PostgresConnectionConfig) -> Iterator[PostgresClient]:
+    with PostgresClient(postgres_test_config) as client:
+        client.truncate("quiz_question_embeddings", "quiz_questions")
         yield client
-        client.truncate("quiz_questions")
+        client.truncate("quiz_question_embeddings", "quiz_questions")
 
 
 def _question(number: str, image_filename: str | None = None) -> QuizQuestionEntity:

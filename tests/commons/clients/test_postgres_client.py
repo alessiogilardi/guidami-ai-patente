@@ -1,35 +1,31 @@
 from collections.abc import Iterator
+from datetime import UTC, datetime
 
 import pytest
 from psycopg import sql
-from pydantic import SecretStr
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
 
 
 @pytest.fixture
-def client() -> Iterator[PostgresClient]:
-    config = PostgresConnectionConfig(
-        host="localhost",
-        port=5432,
-        user="guidami",
-        password=SecretStr("guidami"),
-        dbname="guidami_ai_patente",
-    )
-    with PostgresClient(config) as client:
+def client(postgres_test_config: PostgresConnectionConfig) -> Iterator[PostgresClient]:
+    with PostgresClient(postgres_test_config) as client:
         client.truncate("article_commas", "articles")
         yield client
         client.truncate("article_commas", "articles")
 
 
+_SCRAPED_AT = datetime(2026, 1, 1, tzinfo=UTC)
+
 _INSERT_ARTICLE_RETURNING_ID = sql.SQL(
-    "INSERT INTO articles (source, number, title, url, is_repealed) "
-    "VALUES (%s, %s, %s, %s, %s) RETURNING id"
+    "INSERT INTO articles (source, number, title, url, scraped_at, is_repealed) "
+    "VALUES (%s, %s, %s, %s, %s, %s) RETURNING id"
 )
 
 _INSERT_ARTICLE = sql.SQL(
-    "INSERT INTO articles (source, number, title, url, is_repealed) VALUES (%s, %s, %s, %s, %s)"
+    "INSERT INTO articles (source, number, title, url, scraped_at, is_repealed) "
+    "VALUES (%s, %s, %s, %s, %s, %s)"
 )
 
 _INSERT_ARTICLE_COMMA = sql.SQL(
@@ -47,7 +43,8 @@ def test_execute_many_and_fetch_round_trip_with_pgvector(client: PostgresClient)
     embedding = [1.0, *([0.0] * (_EMBEDDING_DIM - 1))]
 
     article_rows = client.fetch(
-        _INSERT_ARTICLE_RETURNING_ID, ["cds", "1", "Articolo 1", "https://example.com/1", False]
+        _INSERT_ARTICLE_RETURNING_ID,
+        ["cds", "1", "Articolo 1", "https://example.com/1", _SCRAPED_AT, False],
     )
     article_id = article_rows[0][0]
 
@@ -66,7 +63,7 @@ def test_execute_many_and_fetch_round_trip_with_pgvector(client: PostgresClient)
 def test_truncate_empties_table(client: PostgresClient) -> None:
     client.execute_many(
         _INSERT_ARTICLE,
-        [("cds", "1", "Articolo 1", "https://example.com/1", False)],
+        [("cds", "1", "Articolo 1", "https://example.com/1", _SCRAPED_AT, False)],
     )
 
     # `articles` is FK-referenced by `article_commas`, so Postgres refuses a bare
@@ -81,7 +78,8 @@ def test_truncate_empties_table(client: PostgresClient) -> None:
 @pytest.mark.integration
 def test_truncate_accepts_multiple_tables_empties_all_of_them(client: PostgresClient) -> None:
     article_rows = client.fetch(
-        _INSERT_ARTICLE_RETURNING_ID, ["cds", "1", "Articolo 1", "https://example.com/1", False]
+        _INSERT_ARTICLE_RETURNING_ID,
+        ["cds", "1", "Articolo 1", "https://example.com/1", _SCRAPED_AT, False],
     )
     article_id = article_rows[0][0]
     client.execute_many(
@@ -100,8 +98,8 @@ def test_execute_runs_parametrized_statement(client: PostgresClient) -> None:
     client.execute_many(
         _INSERT_ARTICLE,
         [
-            ("cds", "1", "Articolo 1", "https://example.com/1", False),
-            ("cap", "2", "Articolo 2", "https://example.com/2", False),
+            ("cds", "1", "Articolo 1", "https://example.com/1", _SCRAPED_AT, False),
+            ("cap", "2", "Articolo 2", "https://example.com/2", _SCRAPED_AT, False),
         ],
     )
 
