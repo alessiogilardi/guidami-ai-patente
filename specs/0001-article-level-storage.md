@@ -473,7 +473,7 @@ No backfill is required.
 - **AD-7** — supported by: `configs/ingestor_config.yaml:12` — the file this key names, `codice_rca.json`, is reproduced exactly by filtering `codice_assicurazioni_private.json` (610 articles) on the leading numeric part with ranges 118-165 and 278-300: 72 + 24 = 96 articles, same numbers, same order (verified 2026-07-31 @ 5790d63)
 - **AD-8** — supported by: `src/scrapers/normattiva.py:166` — the `if not text_span: continue` guard is what drops every comma whose body is a list (verified 2026-07-31 @ 5790d63)
 - **AD-9** — supported by: `src/scrapers/normattiva.py:162` — the comma loop accepts any div carrying a text span, including the note-reference divs whose whole content is `((190))`; 9 such paragraphs survive into `codice_della_strada.json` and 28 into `codice_rca.json` (verified 2026-07-31 @ 5790d63)
-- **AD-10** — supported by: `docs/plans/architecture-hybrid-retrieval.md:96` — the planned fusion query selects payload columns directly from `knowledge_chunks`, so it cannot survive the table's removal unchanged (verified 2026-07-31 @ 5790d63)
+- **AD-10** — supported by: `db/init.sql:8` — `knowledge_chunks` no longer exists as a table (`CREATE TABLE articles` at this line is what replaced it), confirming the hybrid-retrieval plan's fusion query — which selected payload columns directly from `knowledge_chunks` — could not survive unchanged and was correctly marked superseded rather than rewritten (verified 2026-08-06 @ 2d741ac; the original evidence — line 96 of the hybrid-retrieval plan doc under docs/plans/ — was itself deleted as obsolete by commit `0a18903` — see Changelog)
 - **AD-11** — supported by: `src/guidami_ai_patente_ingestor/mappers/article_mapper.py:60` — repeal is `model.repealed or "ABROGAT" in raw_text.upper()`, an unanchored substring match over the whole comma body, sitting on top of the article flag (verified 2026-07-31 @ 5790d63)
 - **AD-11** — supported by: `src/scrapers/normattiva.py:171` — evaluating both rules over the corpus this flag feeds, the current rule marks 271 of 1802 CdS blocks, 268 of them inherited from `repealed`; the formula-anchored comma rule alone marks ~30 (verified 2026-07-31 @ 5790d63)
 - **AD-11** — supported by (historical, `src/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/embed_chunks_step.py` was line-53-and-up at the time, since deleted per FR-11, superseded by `EmbedCommasStep`): repealed chunks were excluded from embedding and retained a null vector, which is how a false positive became invisible to retrieval; deletion confirmed at `specs/0001-article-level-storage.md:559` (verified 2026-08-01 @ c457354)
@@ -489,7 +489,7 @@ No backfill is required.
 - **AD-18** — supported by (historical, `src/guidami_ai_patente_ingestor/services/knowledge/enrichers/context_enricher.py` was line-64-and-up at the time, since deleted per FR-16): `except Exception` logged a warning and returned the article unchanged, so the enricher's failures were silent by construction; deleting it removed the swallow rather than negotiating with it; deletion confirmed at `specs/0001-article-level-storage.md:551` (verified 2026-08-01 @ c457354)
 - **AD-19** — supported by: `configs/ingestor_config.yaml:19` and `configs/ingestor_config.yaml:23` — `knowledge_preparation.output_layer` and `knowledge_indexing.input_layer` are both `enriched`, so removing the enrichment makes the layer name false and both keys must move to `cleaned` (verified 2026-07-31 @ 5790d63)
 - **AD-19** — supported by: `src/guidami_ai_patente_ingestor/cli/services/status/status_inspector.py:14` — the readiness logic already treats knowledge `cleaned`/`enriched` as per-element directories, so keeping one file per article is the status quo, not new work (verified 2026-07-31 @ 5790d63)
-- **AD-19** — supported by: `docs/plans/2026-07-17--per-element-knowledge-layers.md:2` — `status: Implemented`: `element_id`, `LoadJsonDirStep`, `FilterAlreadyDoneStep` and `WriteJsonDirStep` exist, so retaining the per-article split costs nothing even though its original LLM-resumability rationale is gone (verified 2026-07-31 @ 5790d63)
+- **AD-19** — supported by: `specs/0006-quiz-per-element-layers.md:6` — `Status: implemented`: `element_id`, `LoadJsonDirStep`, `FilterAlreadyDoneStep` and `WriteJsonDirStep` exist, so retaining the per-article split costs nothing even though its original LLM-resumability rationale is gone (verified 2026-08-06 @ 2d741ac; supersedes the original citation of `docs/plans/2026-07-17--per-element-knowledge-layers.md`, deleted as obsolete by commit `0a18903` — see Changelog)
 - **AD-16** — supported by (historical, `src/guidami_ai_patente_ingestor/services/knowledge/article_cleaner.py` was line-95-and-up at the time; the file was rewritten by T-6 and is now 55 lines with no `_append_cleaned`): `_append_cleaned` returned early when `_ORDINAL_PREFIX_PATTERN` did not match, so once FR-1 stripped the ordinal from the comma text every comma would have been discarded; the fix is confirmed at `specs/0001-article-level-storage.md:560` (verified 2026-08-01 @ c457354)
 - **AD-16** — supported by (historical, `src/guidami_ai_patente_ingestor/services/knowledge/article_cleaner.py` was line-62-and-up at the time; the file was rewritten by T-6 and is now 55 lines with no `_clean_paragraphs`): `_clean_paragraphs` implemented the `((`/`))` merge and the note-reference filter that FR-3 and FR-4 moved into the scraper; the move is confirmed at `specs/0001-article-level-storage.md:561` (verified 2026-08-01 @ c457354)
 - **AD-17** — supported by: `src/scrapers/normattiva.py:166` — this guard is why 8 CdS articles parse to zero content today (34-bis, 47, 48, 127, 130-bis, 151, 216, 225): 47, 48, 151 and 225 have comma divs that merely lack the text span and are recovered by FR-2, 216 is the FR-14 case, leaving exactly 3 genuinely commaless articles (verified 2026-07-31 @ 5790d63)
@@ -610,3 +610,39 @@ Re-verified every FR and AD against the code and the real corpus at `5790d63`. O
   test-writing itself in those cases — worth budgeting for on any future plan with comparably
   large tasks.
 - **Status change:** in-progress → implemented — confirmed by Alessio Gilardi, 2026-08-01.
+
+### 2026-08-06 — review: two post-close drifts recorded
+
+A full audit of specs 0001–0006 found two legitimate, already-merged changes that
+landed after this spec's Changelog closed on 2026-08-01, neither ever folded back into
+the spec text. Recorded here per the user's request; no Data Model/AD text rewrite —
+the spec's prose above is left as the historical record of what was decided and why,
+and this entry is the record of what has since changed.
+
+Separately, two Feasibility Evidence citations (AD-10, AD-19) pointed into
+`docs/plans/`, which no longer exists (commit `0a18903`, "Remove obsolete docs/plans
+directory") — a repo-wide cleanup unrelated to this spec. Both were mechanically
+repaired (not content changes): AD-10 now cites `db/init.sql:8` (confirming
+`knowledge_chunks` no longer exists, the fact the deleted plan's evidence was making);
+AD-19 now cites `specs/0006-quiz-per-element-layers.md:6` (the same "per-element layers
+already implemented" claim the deleted plan doc made, now made by a spec instead).
+
+- **AD-12/Data Model reversed: `scraped_at` is back on `articles`.** This spec states
+  "`scraped_at` stays on the parsed record but is deliberately **not** carried into
+  `articles`" and its DDL block has no such column. Commit `75556a1` ("Persist
+  scraped_at from scraper through to articles table", 2026-08-04) reintroduced it:
+  `db/init.sql:14` (`scraped_at TIMESTAMPTZ NOT NULL`), `domain/entities/knowledge/article.py:13`,
+  populated by `mappers/article_mapper.py:44`. Documented correctly in the Second Brain
+  (`docs/database.md:238-242`, citing ADR 0007's UTC-timestamp convention) but never
+  reflected back here.
+- **FR-9's per-comma repeal rule extended beyond its stated acceptance criteria.**
+  FR-9 only specifies a `COMMA ABROGATO` prefix check. Commit `abe1335` relocated this
+  logic into `services/knowledge/comma_repeal_detector.py`, which also now recognizes
+  `COMMA SOPPRESSO` (spec 0004 FR-7) and treats an empty/whitespace-only comma text as
+  repealed (commit `e503c94`, 2026-08-04) — a legitimate, documented extension, but one
+  FR-9's acceptance criteria don't describe or cover.
+- **Learning:** same pattern as specs 0002/0004's review entries — an `implemented`
+  spec's Changelog closes at the moment its own plan finishes, but later, unrelated
+  commits can still touch the exact code it describes without ever being checked
+  against it. Worth a periodic re-audit rather than assuming `implemented` means
+  frozen-and-accurate indefinitely.

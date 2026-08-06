@@ -252,3 +252,30 @@ that size is a fraction of a cent.
   - AD-3's "relaxed rule" fallback (base-contiguous + tolerated `-bis` suffix, instead of strict `1,2,3,...`) was pre-authorized in the spec for exactly this situation and used verbatim once evidence justified it (art. 9) — a spec anticipating its own likely failure mode ahead of time paid off directly.
   - The empty-title rate (25/407, 6.1%) and the 2 permanently-skipped articles are real, measured outcomes just over/near the spec's own guardrails — carried forward as `specs/0004-scraper-acquisition-refactor.md` Open Questions rather than gating this close, since fixing them isn't required by FR-1…FR-5's acceptance criteria.
 - **Status change:** in-progress → implemented — confirmed by user, 2026-08-02
+
+### 2026-08-06 — review: FR-1 description superseded by spec 0004's completion
+
+A full audit of specs 0001–0006 found this spec's FR-1 acceptance criteria and
+Feasibility Evidence describing the scraper's shape as it was *before* spec 0004's
+acquisition-layer refactor — a refactor that has itself now landed (see spec 0004's own
+2026-08-06 review entry) and rewrote exactly the code FR-1 describes. No code change,
+no rewrite of FR-1's text — it remains an accurate historical record of what this spec
+built and verified on 2026-08-02. Recorded here per the user's request:
+
+- FR-1's acceptance criteria require registration "under `[project.scripts]` as
+  `scrape-regolamento`" and cite `main_reg` mirroring `main_cds`/`main_cap`. Spec 0004
+  FR-1 collapsed all three into one `scrape` entry point calling a single `main(law,
+  ...)`; `main_cds`/`main_cap`/`main_reg` no longer exist.
+- The TOC filter this spec describes as `if flag != "0": continue` is now the positive
+  guard `if flag == "0" and key not in seen:` (spec 0004 FR-1's no-`continue` rule).
+- Most Feasibility Evidence line-number citations into `src/scrapers/normattiva.py`
+  have drifted beyond simple renumbering, because spec 0004 FR-4 decomposed
+  `_parse_article` into several named helpers (`_extract_numero_and_titolo`,
+  `_build_commi_from_comma_divs`, `_apply_pre_comma_block`, `_detect_article_repeal`,
+  `_apply_just_text_akn_body`) to bring it under the `max-complexity = 10` threshold.
+- **Learning:** same pattern as specs 0001/0002/0004's review entries in this audit —
+  when spec B's implementation rewrites code spec A's Feasibility Evidence cites, spec
+  A needs a review pass too, even though nothing in spec A's own scope changed. A
+  spec's `implemented` status describes what was true at close, not a standing
+  guarantee that its evidence stays accurate through later, unrelated work on the same
+  files.
