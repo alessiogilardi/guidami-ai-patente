@@ -373,11 +373,13 @@ def _build_article_url(params: ArticleParams) -> str:
 def _extract_numero_and_titolo(soup: BeautifulSoup) -> tuple[str, str]:
     """Extracts the article number and heading title.
 
-    Reads `article-num-akn`/`article-heading-akn`.
+    Reads `article-num-akn`/`article-heading-akn`. `article-num-akn` prefixes the
+    number with either the abbreviated `"Art. "` or, for some articles (observed in
+    D.Lgs. 152/2006), the full word `"Articolo "` — both are stripped.
     """
     num_tag = soup.find(class_="article-num-akn")
     numero_raw = num_tag.get_text(strip=True) if num_tag else ""
-    numero = re.sub(r"^Art\.\s*", "", numero_raw)
+    numero = re.sub(r"^Art(?:\.|icolo)\s*", "", numero_raw)
 
     heading_tag = soup.find(class_="article-heading-akn")
     titolo = _extract_heading_title(heading_tag.get_text(strip=True)) if heading_tag else ""

@@ -290,6 +290,25 @@ def test_amb_registered_in_sources() -> None:
     assert _SOURCES["amb"] is AMB
 
 
+def test_parse_article_strips_full_word_articolo_prefix() -> None:
+    """D.Lgs. 152/2006 uses "Articolo N" (full word) instead of "Art. N" for some
+    articles (e.g. 177, 178-bis) — the number must still come out bare.
+    """
+    html = """
+    <div class="article">
+      <span class="article-num-akn">Articolo 177</span>
+      <div class="art-comma-div-akn">
+        <span class="comma-num-akn">1.</span>
+        Testo del comma.
+      </div>
+    </div>
+    """
+
+    result = _parse_article(html, _URL)
+
+    assert result.number == "177"
+
+
 # --- T-2: leading `(Title)` split off the art-just-text-akn body (FR-2) -----------
 
 

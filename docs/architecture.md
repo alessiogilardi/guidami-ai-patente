@@ -390,6 +390,13 @@ bypasses the filter entirely (every article is kept, no filesystem check).
 `ArticleMapper.from_parsed_to_cleaned`, making the element's id (and its
 filename) computable from the element alone, independent of flow context.
 
+D.Lgs. 152/2006 (`amb`) surfaced a second `article-num-akn` prefix variant: about 50 of
+its 440 articles render the number as the full word `"Articolo N"` instead of the
+abbreviated `"Art. N"` every other law (and most of `amb` itself) uses.
+`_extract_numero_and_titolo` strips both (`re.sub(r"^Art(?:\.|icolo)\s*", "", numero_raw)`,
+spec 0009) — discovered because `amb_extract.py`'s range filter needs every article's
+leading numeric part to be parseable, and 'Articolo 177' isn't.
+
 The Regolamento (`reg`, DPR 495/1992) has a markup shape the other two sources don't:
 every article's whole body sits in one `art-just-text-akn` block (no `article-heading-akn`,
 no `art-comma-div-akn`), so `_parse_article` (`scrapers/normattiva.py`) normalizes it to the
@@ -699,3 +706,7 @@ not the agent's own folder) — the previous entry described them as flat direct
 (artt. 227-237) by the new `scrapers/amb_extract.py`, which shares its filtering core
 (`scrapers/range_filter.py`) with `rca_extract.py` — both rows updated, plus the
 `Literal["cds", "cap", "reg"]` reference.*
+
+*Last updated: 2026-08-06 — verified against commit `f6df198`; new paragraph on the
+`"Articolo N"` full-word prefix `_extract_numero_and_titolo` now strips, found via the
+live `amb` scrape.*
