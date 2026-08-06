@@ -94,3 +94,20 @@ def test_evaluate_caps_n_at_the_number_of_available_rows() -> None:
     assert results[0].quiz_number == "1"
     assert results[0].is_clear is False
     assert results[0].rationale == "Non chiaro."
+
+
+def test_evaluate_all_judges_every_available_row() -> None:
+    rows = [_make_row(str(i)) for i in range(5)]
+    quiz_repository = MagicMock(spec=QuizReadRepository)
+    quiz_repository.fetch_with_vectors.return_value = rows
+    corpus_repository = MagicMock(spec=CorpusReadRepository)
+    corpus_repository.dense_top_k.return_value = [_make_comma()]
+    agent = MagicMock(spec=RetrievalJudgeAgent)
+    agent.run_sync.return_value = RetrievalJudgeResponse(is_clear=True, rationale="Chiaro.")
+
+    service = _make_service(quiz_repository, corpus_repository, agent)
+    results = service.evaluate_all()
+
+    assert [result.quiz_number for result in results] == [row.number for row in rows]
+    assert all(result.is_clear for result in results)
+    quiz_repository.fetch_with_vectors.assert_called_once_with("search_queries")

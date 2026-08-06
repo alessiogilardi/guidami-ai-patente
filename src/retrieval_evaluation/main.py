@@ -1,10 +1,12 @@
-"""Samples random quiz questions and judges their retrieved commas for clarity.
+"""Samples quiz questions and judges their retrieved commas for clarity.
 
 Asks an LLM judge whether each question's top-k retrieved commas clearly and
-unambiguously justify its correct answer. Exploratory measurement, deliberately
-outside the `ingest evaluate retrieval` harness (spec 0007): no manifest, no run
-artifacts, no dry-run chain. Re-run with `--n` a few times to gauge judge stability,
-then once with a larger `--n` for a final estimate.
+unambiguously justify its correct answer, either over a random sample (`--n`,
+the default) or over the whole quiz bank (`--all`). Exploratory measurement,
+deliberately outside the `ingest evaluate retrieval` harness (spec 0007): no
+manifest, no run artifacts, no dry-run chain. Re-run with `--n` a few times to
+gauge judge stability, then once with `--all` (or a larger `--n`) for a final
+estimate.
 """
 
 import argparse
@@ -40,11 +42,16 @@ def _report(results: list[RetrievalJudgeItemResult]) -> None:
 
 
 def main() -> None:
-    """Runs one judged sample of `--n` quiz questions and prints the verdicts."""
+    """Runs one judged pass (`--n` sample, or `--all`) and prints the verdicts."""
     logging.basicConfig(level=logging.INFO)
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--n", type=int, default=_DEFAULT_N, help="Number of quiz questions to sample."
+    )
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Judge every quiz question instead of sampling --n.",
     )
     parser.add_argument(
         "--k", type=int, default=_DEFAULT_K, help="Number of commas retrieved per question."
@@ -68,7 +75,11 @@ def main() -> None:
             corpus_repository=build_corpus_repository(config, postgres_client),
             agent=agent,
         )
-        results = service.evaluate(n=args.n, rng=random.Random(args.seed))
+        results = (
+            service.evaluate_all()
+            if args.all
+            else service.evaluate(n=args.n, rng=random.Random(args.seed))
+        )
 
     _report(results)
 

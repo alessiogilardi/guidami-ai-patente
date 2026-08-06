@@ -36,9 +36,16 @@ class RetrievalJudgeEvaluationService:
         `rng` is caller-supplied so each invocation of the harness can draw an
         independent, seedable sample.
         """
-        rows = self._quiz_repository.fetch_with_vectors(self._variant)
+        rows = self._load_rows()
         sample = rng.sample(rows, k=min(n, len(rows)))
         return [self._judge_one(row) for row in sample]
+
+    def evaluate_all(self) -> list[RetrievalJudgeItemResult]:
+        """Judges every quiz question with a query vector for the configured variant."""
+        return [self._judge_one(row) for row in self._load_rows()]
+
+    def _load_rows(self) -> list[QuizEvaluationRow]:
+        return self._quiz_repository.fetch_with_vectors(self._variant)
 
     def _judge_one(self, row: QuizEvaluationRow) -> RetrievalJudgeItemResult:
         commas = self._corpus_repository.dense_top_k(row.embedding, self._k)

@@ -504,8 +504,11 @@ the answer? — via an LLM judge rather than a deterministic signal.
 the same pattern as `RoadSignDescriberAgent`/`NormReferenceDescriberAgent`) is asked,
 per sampled quiz question, whether its top-`k` `CorpusReadRepository.dense_top_k`
 commas clearly and unambiguously justify the correct answer;
-`RetrievalJudgeEvaluationService` samples `n` random rows via
-`QuizReadRepository.fetch_with_vectors` and judges each. It is **not** a mode of
+`RetrievalJudgeEvaluationService` either samples `n` random rows via
+`QuizReadRepository.fetch_with_vectors` (`evaluate`, the default) or judges every
+row it returns (`evaluate_all`, the script's `--all` flag) — both share a private
+`_load_rows` helper and differ only in whether the result is sampled. It is
+**not** a mode of
 `ingest evaluate retrieval`: spec 0007 lists "LLM-as-judge relevance scoring" as
 an explicit Non-Goal (deterministic signals cost nothing and run in CI; a judge
 should be targeted, not run over everything) — text the spec still carries
@@ -514,8 +517,9 @@ Non-Goal deferred, built as its own top-level package rather than as a spec-0007
 extension, so it carries none of the harness's manifest/`RunArtifactWriter`/
 dry-run-chain machinery: `main.py` is a plain `argparse` script printing
 per-question verdicts and a share-clear percentage to stdout, meant to be
-re-run manually (a few times to gauge judge stability, then once with a larger
-`--n`) rather than averaged automatically across runs. It reuses `IngestorConfig`
+re-run manually (a few times to gauge judge stability, then once with `--all`
+or a larger `--n` for a final estimate) rather than averaged automatically
+across runs. It reuses `IngestorConfig`
 (Postgres connection, table names, `agents_dir`, OpenRouter provider) from
 `guidami_ai_patente_ingestor.configs` rather than owning its own settings class —
 the one deliberate cross-package dependency this module has.
@@ -660,3 +664,7 @@ details" list replaced with pointers to `specs/0006-quiz-per-element-layers.md`.
 (new components-table row, Overview mention, "Retrieval judge" paragraph, and an ADR bullet):
 an LLM-as-judge for retrieval quality, deliberately separate from `ingest evaluate retrieval`
 (spec 0007's Non-Goal is left unchanged, ADR 0013).*
+
+*Last updated: 2026-08-06 — verified against commit `7bca08d`; the "Retrieval judge" paragraph
+now covers `RetrievalJudgeEvaluationService.evaluate_all()` and the script's `--all` flag,
+which judge every quiz question with a query vector instead of only a random `n`-sized sample.*
