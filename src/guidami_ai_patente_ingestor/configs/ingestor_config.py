@@ -8,6 +8,7 @@ from pydantic_settings.sources import YamlConfigSettingsSource
 from commons.ai.embedding import EmbeddingConfig
 from commons.configs import OpenRouterConfig, PostgresConnectionConfig
 
+from .evaluation_config import EvaluationConfig
 from .pipeline_layer_config import PipelineLayerConfig
 from .source_config import SourceConfig
 
@@ -65,8 +66,10 @@ class IngestorConfig(BaseSettings):
     articles_table: str = "articles"
     article_commas_table: str = "article_commas"
     quiz_questions_table: str = "quiz_questions"
+    quiz_question_embeddings_table: str = "quiz_question_embeddings"
     embed_repealed: bool = False
     rca_ranges: list[str] = Field(default_factory=lambda: ["118-165", "278-300"])
+    evaluation: EvaluationConfig = EvaluationConfig()
 
     _config_override_file: ClassVar[Path | None] = None
     """Set (on a dynamically-created subclass, never on `IngestorConfig` itself) by

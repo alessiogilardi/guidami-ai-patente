@@ -69,9 +69,10 @@ just `uv run pytest -m integration` (Docker must be running).
 | `uv run ingest reset knowledge [--apply]` | `guidami_ai_patente_ingestor.cli:main` | Truncates `articles` and `article_commas` (full wipe) |
 | `uv run ingest reset quiz [--apply]` | `guidami_ai_patente_ingestor.cli:main` | Truncates `quiz_questions` (full wipe) |
 | `uv run ingest status [--online]` | `guidami_ai_patente_ingestor.cli:main` | Shows config (secrets masked) and per-command readiness; `--online` also checks Postgres reachability and per-table row counts |
+| `uv run ingest evaluate retrieval [--seed N] [--baseline-repetitions N] [--dry-run] [--plain]` | `guidami_ai_patente_ingestor.cli:main` | Measures retrieval quality (corpus coverage, ranking vs. random baseline, lexical adherence, dense/FTS agreement, keyword-quality signals) over the quiz bank and knowledge corpus (spec 0007). `--seed`/`--baseline-repetitions` override `IngestorConfig.evaluation`; writes `data/eval/retrieval-summary.json` (committed) plus per-question detail and a judge-ready export under `logs/ingest_evaluate_<ts>/` |
 
-`--dry-run` (on `prepare`/`index`) prints the step chain that would run and exits — no
-filesystem writes, no LLM calls, no DB connection is ever opened.
+`--dry-run` (on `prepare`/`index`/`evaluate`) prints the step chain that would run and
+exits — no filesystem writes, no LLM calls, no DB connection is ever opened.
 
 `reset` is destructive, so its gate is inverted: it always previews (same no-filesystem/
 no-DB guarantee as `--dry-run`) unless `--apply` is passed, which is required to actually

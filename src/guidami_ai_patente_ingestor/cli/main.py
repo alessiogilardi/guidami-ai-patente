@@ -12,16 +12,18 @@ from commons.observability import NullProgressReporter, ProgressReporter
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 
 from . import wiring
-from .commands import index, prepare, reset, status
+from .commands import evaluate, index, prepare, reset, status
 from .logging_setup import configure_logging
-from .models.run_artifacts import IndexManifest, PrepareManifest
+from .models.run_artifacts import EvaluateManifest, IndexManifest, PrepareManifest
 from .parser import build_parser
 from .rendering.dashboard import LiveDashboard, LogPanelHandler
 
 logger = logging.getLogger(__name__)
 
 # Commands that run a `Flow` and are eligible for the live dashboard; `reset`/`status`
-# execute no `Flow` and define no `--plain` (Non-Goals).
+# execute no `Flow` and define no `--plain` (Non-Goals). `evaluate` defines `--plain`
+# (PD-6) but is also excluded here: it runs no `Flow` either, so `--plain` only
+# controls its final report's formatting, not a dashboard toggle.
 _MONITORED_COMMANDS = frozenset({"prepare", "index"})
 
 
@@ -118,3 +120,7 @@ def main() -> None:
                 reset.run_reset(config, args)
             case "status":
                 status.run_status(config, layer_resolver, args)
+            case "evaluate":
+                manifest = cast(EvaluateManifest, writer.manifest) if writer is not None else None
+                run_dir = writer.run_dir if writer is not None else None
+                evaluate.run_evaluate(config, args, manifest, run_dir)

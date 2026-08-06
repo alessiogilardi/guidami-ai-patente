@@ -7,7 +7,7 @@ from pathlib import Path
 
 from commons.observability import LOG_FORMAT, RunArtifactWriter, RunManifest
 
-from .models.run_artifacts import IndexManifest, PrepareManifest, ResetManifest
+from .models.run_artifacts import EvaluateManifest, IndexManifest, PrepareManifest, ResetManifest
 
 _MUTED_LOGGER_PREFIXES = ("httpx", "httpcore", "litellm", "openai", "urllib3")
 
@@ -84,5 +84,7 @@ def _build_manifest(args: argparse.Namespace) -> RunManifest:
             return IndexManifest(entity=args.entity, source=getattr(args, "source", None))
         case "reset":
             return ResetManifest(entity=args.entity)
+        case "evaluate":
+            return EvaluateManifest(entity=args.entity)
         case _:
             raise AssertionError(f"no manifest builder for command {args.command!r}")

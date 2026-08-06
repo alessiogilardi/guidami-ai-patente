@@ -8,6 +8,8 @@ Subcommand structure:
     ingest [--config PATH] reset knowledge [--apply]
     ingest [--config PATH] reset quiz [--apply]
     ingest [--config PATH] status [--online]
+    ingest [--config PATH] evaluate retrieval [--seed N] [--baseline-repetitions N]
+        [--dry-run] [--plain]
 
 `reset` is destructive, so its gate is inverted from every other command: it
 previews (no DB connection) by default, and `--apply` is required to actually
@@ -40,9 +42,12 @@ Commands:
       Truncate quiz_questions (full wipe). Previews by default; --apply executes.
   status [--online]
       Show config + per-command readiness.
+  evaluate retrieval [--seed N] [--baseline-repetitions N] [--dry-run] [--plain]
+      Measure retrieval quality against the quiz bank (spec 0007). --seed/
+      --baseline-repetitions override the configured values; omit to use config.
 
-`--dry-run` (on `prepare`/`index`) prints the step chain the command would execute
-and exits: no filesystem writes, no LLM calls, no DB connection is ever opened.
+`--dry-run` (on `prepare`/`index`/`evaluate`) prints the step chain the command would
+execute and exits: no filesystem writes, no LLM calls, no DB connection is ever opened.
 
 `reset` is destructive, so it inverts that gate: it previews by default (same
 no-filesystem/no-DB guarantee as `--dry-run`) and requires `--apply` to actually
@@ -61,6 +66,8 @@ Examples:
   ingest prepare knowledge --source cds --dry-run
   ingest index quiz --plain
   ingest --config configs/ingestor_config.test-data.yaml prepare knowledge --source cds
+  ingest evaluate retrieval --dry-run
+  ingest evaluate retrieval --seed 7 --baseline-repetitions 5
 """
 
 
@@ -168,5 +175,26 @@ def build_parser(config: IngestorConfig) -> argparse.ArgumentParser:
         default=False,
         help="Also ping Postgres and report per-table existence and row count.",
     )
+
+    # ---- evaluate ----
+    evaluate_p = cmd_subs.add_parser("evaluate", help="Run the retrieval evaluation harness.")
+    eval_subs = evaluate_p.add_subparsers(dest="entity", required=True)
+    eval_r = eval_subs.add_parser(
+        "retrieval", help="Measure retrieval quality against the quiz bank."
+    )
+    eval_r.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="Override the configured random baseline seed (default: use config).",
+    )
+    eval_r.add_argument(
+        "--baseline-repetitions",
+        type=int,
+        default=None,
+        help="Override the configured baseline repetition count (default: use config).",
+    )
+    _add_dry_run_flag(eval_r)
+    _add_plain_flag(eval_r)
 
     return parser

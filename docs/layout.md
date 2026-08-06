@@ -6,6 +6,8 @@
 repo/
 ├── src/
 │   ├── commons/                    # Shared infra: DI-friendly services, repositories,
+│   │                                #   repositories/db/: per-aggregate READ repositories
+│   │                                #   (CorpusReadRepository, QuizReadRepository) — spec 0007 AD-7;
 │   │                                #   clients, configs, use_cases/ (UseCase, ForEach),
 │   │                                #   ai/ (agents/: BaseAgent + PromptRenderer;
 │   │                                #   embedding/: clients/configs/services;
@@ -18,6 +20,8 @@ repo/
 │   │                                #   ScrapeManifest; RunArtifactWriterConfig removed);
 │   │                                #   sibling of ai/observability/, not AI-specific
 │   ├── domain/                     # Shared domain entities/models (persisted + intermediate),
+│   │                                #   models/retrieval/: read DTOs (RetrievedComma,
+│   │                                #   QuizEvaluationRow) — carry `id`, unlike entities;
 │   │                                #   no I/O or business logic
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
 │   │                                #   normative corpus (CdS/CAP/Regolamento) and quiz bank
@@ -76,6 +80,20 @@ gitignored — never committed, safe to delete once the spec they fed is
 `implemented`.
 
 ## Placement conventions
+
+- **Read (query) repositories** go in `src/commons/repositories/db/`, scoped **per
+  entity/aggregate rather than per table** — a read returns what the caller needs whole,
+  so `CorpusReadRepository` joins `articles`+`article_commas` and `QuizReadRepository`
+  joins `quiz_questions`+`quiz_question_embeddings`. They live in `commons/` because the
+  future FastAPI app needs the same corpus reader, not only the CLI. This is a deliberate
+  asymmetry with the **write** repositories in
+  `guidami_ai_patente_ingestor/repositories/db/`, which stay per table: an insert targets
+  one table and needs its generated id back for the foreign key, so it cannot be an
+  aggregate operation. See spec 0007, AD-7.
+- **Read DTOs** (rows returned by those repositories, e.g. `RetrievedComma`,
+  `QuizEvaluationRow`) go in `src/domain/models/retrieval/` — `domain/entities/` stays
+  reserved for the insertable projection of a table row, which omits DB-generated columns;
+  a read model does the opposite and carries `id`.
 
 - **New batch-pipeline code** (ingestion, enrichment, indexing) goes under
   `src/guidami_ai_patente_ingestor/`, following the package-per-role layout
@@ -228,3 +246,10 @@ sub-package (`PrepareManifest`/`IndexManifest`/`ResetManifest`) — spec 0005, A
 *Last updated: 2026-08-05 — verified against commit `6d96b7d`; `db/` gained a
 `migrations/` sub-directory holding idempotent transactional ALTER scripts, a second
 schema-management path alongside `init.sql` (spec 0008, ADR 0010).*
+
+*Last updated: 2026-08-05 — verified against commit `91028b2`; recorded the new read layer
+introduced while implementing spec 0007: `commons/repositories/db/` (per-aggregate read
+repositories, deliberately asymmetric with the per-table write repositories) and
+`domain/models/retrieval/` (read DTOs). The CLI-local `cli/services/evaluation/` and
+`cli/models/evaluation/` packages are being added by the same work and follow the existing
+`cli/services/status/` + `cli/models/status/` precedent, so they need no new rule.*

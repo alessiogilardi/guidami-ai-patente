@@ -9,3 +9,10 @@ layers:
   enriched: data/test-data/enriched
 
 quiz_images_dir: data/test-data/quiz-images
+
+# Only `output_dir` differs from the base yaml's `evaluation` block: a test-data run's
+# committed summary must not overwrite the full-corpus baseline in data/eval/. Every
+# other evaluation field (seed, baseline_repetitions, k_values, ...) is inherited from
+# the base yaml, same as the fields above it.
+evaluation:
+  output_dir: data/test-data/eval

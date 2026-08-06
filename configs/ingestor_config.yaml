@@ -49,5 +49,15 @@ postgres:
 articles_table: articles
 article_commas_table: article_commas
 quiz_questions_table: quiz_questions
+quiz_question_embeddings_table: quiz_question_embeddings
 embed_repealed: false
 rca_ranges: ["118-165", "278-300"]
+
+evaluation:
+  seed: 42
+  baseline_repetitions: 3
+  k_values: [1, 3, 5, 10]
+  keyword_df_cutoffs: [1, 2, 3, 5, 10, 20, 50, 100, 250, 500]
+  text_coverage_thresholds: [0.01, 0.02, 0.05, 0.10]
+  quiz_embedding_variant: search_queries
+  output_dir: data/eval

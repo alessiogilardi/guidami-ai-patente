@@ -5,6 +5,8 @@ Providers/clients are built per command (not eagerly in `main()`), so `reset` an
 affects the command that actually needs it.
 """
 
+from typing import NamedTuple
+
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.observability import (
@@ -12,6 +14,7 @@ from commons.ai.observability import (
     QueuedLlmCallTracker,
 )
 from commons.clients import PostgresClient
+from commons.repositories.db import CorpusReadRepository, QuizReadRepository
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.repositories import (
     ArticleCommaStoreRepository,
@@ -19,6 +22,13 @@ from guidami_ai_patente_ingestor.repositories import (
     QuizQuestionStoreRepository,
 )
 from guidami_ai_patente_ingestor.services import LayerResolver
+
+
+class EvaluationRepositories(NamedTuple):
+    """The two read repositories `ingest evaluate retrieval` needs (AD-7)."""
+
+    corpus: CorpusReadRepository
+    quiz: QuizReadRepository
 
 
 def build_layer_resolver(config: IngestorConfig) -> LayerResolver:
@@ -54,3 +64,17 @@ def build_health_repositories(
             config.quiz_questions_table, postgres_client
         ),
     }
+
+
+def build_evaluation_repositories(
+    config: IngestorConfig, postgres_client: PostgresClient
+) -> EvaluationRepositories:
+    """Builds the corpus and quiz read repositories the evaluation harness needs (AD-7)."""
+    return EvaluationRepositories(
+        corpus=CorpusReadRepository(
+            config.articles_table, config.article_commas_table, postgres_client
+        ),
+        quiz=QuizReadRepository(
+            config.quiz_questions_table, config.quiz_question_embeddings_table, postgres_client
+        ),
+    )

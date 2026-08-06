@@ -47,6 +47,7 @@ scripts, each registered as a `[project.scripts]` entry.
 | `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | psycopg[binary] |
 | `commons/observability/` | Thin re-exporting `__init__.py` over two self-contained sibling sub-packages: `progress_reporter/` (`ItemProgressReporter`/`ProgressReporter` port + `NullProgressReporter` — progress reporting for the ingest CLI's live dashboard, spec 0002) and `run_artifact_writer/` (`RunArtifactWriter` + a `models/` sub-package holding `RunManifest` (base) and `ScrapeManifest`; `RunArtifactWriterConfig` was removed, spec 0005 AD-5 — `RunArtifactWriter` is domain-agnostic mechanics only, no `protocols/`/`services/` split since AD-3 rejects a `Protocol` here with only one implementation; a context manager that owns one `logs/<prefix>_<timestamp>/` run directory, writing `run.log`/`manifest.json`/`report.md` from whatever `RunManifest` it holds and always finalizing them in `__exit__` even on an unhandled exception — shared between `ingest`'s `configure_logging` and the `scrapers/normattiva.py` scraper, spec 0005 AD-1/AD-4); a sibling of `commons/ai/observability/`, not nested under it, since it is not AI-specific. The `ingest`-only manifests (`PrepareManifest`/`IndexManifest`/`ResetManifest`) live in `guidami_ai_patente_ingestor/cli/models/run_artifacts/` instead, per the CLI self-containment rule (spec 0005 AD-6) | — |
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
+| `commons/repositories/db/` | Read-only Postgres repositories, scoped **per entity** not per table (AD-7, spec 0007) — the project's first query code, every repository under `guidami_ai_patente_ingestor/repositories/db/` being write-only bulk insert. `CorpusReadRepository` (`articles` ⋈ `article_commas`) and `QuizReadRepository` (`quiz_questions` ⋈ `quiz_question_embeddings`), each taking an injected `PostgresClient`, mirroring `LlmCallLogRepository`'s shape. Lives in `commons/` rather than the `ingest` CLI (which the self-containment rule would otherwise suggest) because a corpus reader is also what `src/guidami_ai_patente/` will eventually need — more than one consumer, same reasoning as `LlmCallLogRepository` | psycopg[binary], pgvector |
 | `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach`, `FlatMap` — generic composition primitives used across pipeline steps | — |
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
 | `flowstep` (external dependency) | Generic sequential-pipeline engine (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) | git dependency (github.com/alessiogilardi/flowstep) |
@@ -463,6 +464,33 @@ were deleted as a one-time manual prerequisite — an un-deleted monolith sittin
 inside what is now a per-element container directory would make `load_dir`
 raise a loud `ValueError`, not silently corrupt data.
 
+**Retrieval evaluation harness** (`ingest evaluate retrieval`, spec 0007 — an
+`ingest` CLI feature, not `src/guidami_ai_patente/`, per AD-1's documented
+deviation from `layout.md`): a data-quality instrument, not application runtime,
+that measures whether dense retrieval over the corpus can actually answer a
+quiz question — no retrieval code existed anywhere before this. `RetrievalEvaluator`
+(`cli/services/evaluation/`) sequences one in-memory pass over every quiz question
+with a query vector (`QuizReadRepository.fetch_with_vectors`, raising loudly if the
+configured variant has no rows) through eight named steps (`STEP_NAMES`, shared
+verbatim between the real run and `--dry-run`'s renderer, PD-5), then aggregates:
+FR-2 corpus coverage (a continuous best-`ts_rank` distribution plus a keyword
+document-frequency band — deliberately never a single binary), FR-3 a random
+baseline repeated `N` times (reproducible via `seed:repetition:question_number`),
+FR-4 hit@k over both the keyword-covered subset and the full measurable set, FR-5
+lexical adherence (OR-joined tsquery, AD-3 — `plainto_tsquery`/`websearch_to_tsquery`
+AND their terms and were measured to return 0.0000 on every row of a sample), FR-6
+dense/FTS agreement and distance margin, and FR-10 whether `exact_keywords` carry
+signal at all (point-biserial correlation, explicitly labelled not an independence
+test). All run parameters (seed, baseline repetitions, `k` values, DF cutoffs, text
+coverage thresholds) live in `IngestorConfig.evaluation: EvaluationConfig`, with
+`--seed`/`--baseline-repetitions` CLI overrides layered on top in
+`cli/commands/evaluate.py`. Artifacts: a small versioned `EvaluationSummary` committed
+to `data/eval/retrieval-summary.json` (diffable across runs, no timestamp field, so
+identical runs diff empty per FR-7), plus per-question detail and a judge-ready export
+of the undecidable subset (FR-9 — questions matching no keyword, or covered only by
+non-selective keywords) under `logs/ingest_evaluate_<ts>/`, gitignored. No LLM call
+anywhere in the harness (FR-8): it reads only what ingestion already persisted.
+
 ## Relevant architectural decisions
 
 See `adr/` for the full history. Currently accepted:
@@ -582,3 +610,10 @@ un-deleted monolith triggers inside a per-element container directory.*
 *Last updated: 2026-08-05 — verified against commit `6d96b7d`; corrected the `domain/`
 entry, which still listed `knowledge_chunk` and `retrieval_result`: the former was split
 into `ArticleEntity`/`ArticleCommaEntity` and the latter deleted, both by spec 0001.*
+
+*Last updated: 2026-08-05 — spec 0007 implemented: `commons/repositories/db/` (the
+project's first query code, `CorpusReadRepository`/`QuizReadRepository`, AD-7) and the
+`ingest evaluate retrieval` command (`cli/commands/evaluate.py`,
+`cli/services/evaluation/`, `cli/models/evaluation/`) added. See the "Retrieval
+evaluation harness" paragraph above and the `commons/repositories/db/` row in the
+components table.*
