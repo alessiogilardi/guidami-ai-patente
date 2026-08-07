@@ -23,13 +23,16 @@ from guidami_ai_patente_ingestor.models.quiz import (
 )
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
-    DbStoreStep,
     FilterAlreadyDoneStep,
     LoadJsonDirStep,
     LoadJsonStep,
     WriteJsonDirStep,
 )
-from guidami_ai_patente_ingestor.repositories import QuizQuestionStoreRepository
+from guidami_ai_patente_ingestor.orchestrators.steps.quiz import StoreQuizStep
+from guidami_ai_patente_ingestor.repositories import (
+    QuizImageStoreRepository,
+    QuizQuestionStoreRepository,
+)
 from guidami_ai_patente_ingestor.services import LayerResolver
 from guidami_ai_patente_ingestor.services.quiz import DeduplicateQuizItems, EmbedQuizMetadata
 from guidami_ai_patente_ingestor.services.quiz.enrichers import (
@@ -60,12 +63,14 @@ def build_quiz_indexing_flow(
     """Assembles the quiz indexing flow (quiz bank → embedded → embed → entity → store).
 
     The quiz bank has a single source (`"quiz"`), derived from
-    `config.quiz_indexing.sources[0]`: the store is a full-reload of the entire
-    `quiz_questions` table (truncate + bulk_insert) via the generic `DbStoreStep`.
+    `config.quiz_indexing.sources[0]`: the store upserts `quiz_questions` and
+    `quiz_images` and reconciles `quiz_questions` against this run's input via
+    the domain-specific `StoreQuizStep`.
 
     Step mapping:
       `LoadJsonDirStep` → `ApplyStep(DeduplicateQuizItems, map_to_embedded)`
-      → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(map_to_quiz_entity)` → `DbStoreStep`
+      → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(map_to_quiz_entity)`
+      → `ApplyStep(map_to_quiz_images)` → `StoreQuizStep`
 
     The `map_to_embedded` step chains two transforms: dedup on the triple
     (normalized text, correct answer, image identity) via
@@ -131,10 +136,17 @@ def build_quiz_indexing_flow(
         output_key=context_keys.QUIZ_ENTITIES,
     )
 
-    store_step = DbStoreStep(
+    map_to_quiz_images_step = ApplyStep(
+        "map_to_quiz_images",
+        FlatMap(QuizMapper.from_embedded_to_quiz_images),
+        input_key=context_keys.EMBEDDED_QUIZ,
+        output_key=context_keys.QUIZ_IMAGE_ENTITIES,
+    )
+
+    store_step = StoreQuizStep(
         "store_quiz",
-        context_keys.QUIZ_ENTITIES,
         QuizQuestionStoreRepository(config.quiz_questions_table, postgres_client),
+        QuizImageStoreRepository(config.quiz_images_table, postgres_client),
     )
 
     flow: Flow = (
@@ -143,6 +155,7 @@ def build_quiz_indexing_flow(
         .add_step(map_to_embedded_step)
         .add_step(embed_step)
         .add_step(map_to_quiz_entity_step)
+        .add_step(map_to_quiz_images_step)
         .add_step(store_step)
         .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)

@@ -82,14 +82,15 @@ def test_build_with_validate_true_does_not_raise() -> None:
     assert isinstance(_build(validate=True), Flow)
 
 
-def test_flow_has_five_steps_in_order() -> None:
-    """The chain is Load → MapToEmbedded → Embed → MapToQuizEntity → Store."""
+def test_flow_has_six_steps_in_order() -> None:
+    """The chain is Load → MapToEmbedded → Embed → MapToQuizEntity → MapToQuizImages → Store."""
     steps = _build().get_steps()
     assert [step.name for step in steps] == [
         "load_enriched_quiz",
         "map_to_embedded",
         "embed_quiz",
         "map_to_quiz_entity",
+        "map_to_quiz_images",
         "store_quiz",
     ]
 
@@ -150,9 +151,9 @@ def test_indexing_flow_reports_step_progress(
 
     begin_steps = [args for name, args in progress_recorder.calls if name == "begin_step"]
     end_steps = [args for name, args in progress_recorder.calls if name == "end_step"]
-    assert len(begin_steps) == 5
-    assert len(end_steps) == 5
-    assert [args[1] for args in begin_steps] == [1, 2, 3, 4, 5]
+    assert len(begin_steps) == 6
+    assert len(end_steps) == 6
+    assert [args[1] for args in begin_steps] == [1, 2, 3, 4, 5, 6]
     # Proves the reporter reached the injected EmbeddingService (via EmbedQuizMetadata).
     assert ("begin_items", ("batches", 1)) in progress_recorder.calls
 

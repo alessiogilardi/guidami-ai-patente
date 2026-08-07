@@ -1,6 +1,6 @@
 import logging
 
-from domain.entities.quiz import QuizQuestionEntity
+from domain.entities.quiz import QuizImageEntity, QuizQuestionEntity
 from guidami_ai_patente_ingestor.models.quiz import (
     CleanedQuizModel,
     EmbeddedQuizModel,
@@ -49,10 +49,10 @@ class QuizMapper:
     def from_embedded_to_quiz_question(model: EmbeddedQuizModel) -> QuizQuestionEntity:
         """Maps an `EmbeddedQuizModel` to the `QuizQuestionEntity` entity.
 
-        Discards `image_description` (not persisted), keeps `embedding`.
-        Spreads `quiz_metadata` onto the flat retrieval columns, dropping
-        `vector_search_queries` (embedder input only, not persisted). If
-        `quiz_metadata` is `None`, the three flat fields are `None`.
+        Discards `image_description` (not persisted). Spreads `quiz_metadata`
+        onto the flat retrieval columns, including `vector_search_queries`
+        (now persisted). If `quiz_metadata` is `None`, the four flat fields
+        are `None`.
 
         Args:
             model: Embedded model with embedding already computed.
@@ -65,10 +65,12 @@ class QuizMapper:
             core_concepts = None
             exact_keywords = None
             rule_explanation = None
+            vector_search_queries = None
         else:
             core_concepts = metadata.core_concepts
             exact_keywords = metadata.exact_keywords
             rule_explanation = metadata.rule_explanation
+            vector_search_queries = metadata.vector_search_queries
 
         return QuizQuestionEntity(
             number=model.number,
@@ -80,8 +82,24 @@ class QuizMapper:
             core_concepts=core_concepts,
             exact_keywords=exact_keywords,
             rule_explanation=rule_explanation,
-            embedding=model.embedding,
+            vector_search_queries=vector_search_queries,
         )
+
+    @staticmethod
+    def from_embedded_to_quiz_images(item: EmbeddedQuizModel) -> list[QuizImageEntity]:
+        """Maps an embedded question's image to a `QuizImageEntity`, if it has one.
+
+        Args:
+            item: Embedded question, possibly carrying image_filename/image_description.
+
+        Returns:
+            `[QuizImageEntity]` when `image_filename` is set, `[]` otherwise — meant for
+            `FlatMap`, so several questions sharing one image each safely upsert the same
+            row (PD-8).
+        """
+        if item.image_filename is None:
+            return []
+        return [QuizImageEntity(filename=item.image_filename, description=item.image_description)]
 
     @staticmethod
     def from_cleaned_to_enriched(item: CleanedQuizModel) -> EnrichedQuizModel:

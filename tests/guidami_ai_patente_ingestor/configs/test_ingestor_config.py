@@ -72,6 +72,7 @@ def test_default_table_names() -> None:
     assert config.articles_table == "articles"
     assert config.article_commas_table == "article_commas"
     assert config.quiz_questions_table == "quiz_questions"
+    assert config.quiz_images_table == "quiz_images"
     assert hasattr(config, "knowledge_chunks_table") is False
 
 

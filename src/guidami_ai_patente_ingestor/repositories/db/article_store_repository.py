@@ -30,7 +30,6 @@ class ArticleStoreRepository(UpsertStoreRepository[ArticleEntity]):
             table_name=table_name,
             columns=_ARTICLE_TABLE_COLUMNS,
             conflict_columns=_ARTICLE_CONFLICT_COLUMNS,
-            row_mapper=self._to_db_row,
             client=client,
         )
 

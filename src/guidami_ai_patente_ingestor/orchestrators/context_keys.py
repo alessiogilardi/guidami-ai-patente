@@ -30,6 +30,7 @@ FILTERED_ARTICLES = "filtered_articles"  # FilterAlreadyDoneStep output: element
 ENRICHED_QUIZ = "enriched_quiz"  # input: enriched quiz bank loaded from disk
 EMBEDDED_QUIZ = "embedded_quiz"  # intermediate models → embed
 QUIZ_ENTITIES = "quiz_entities"  # final entities → store
+QUIZ_IMAGE_ENTITIES = "quiz_image_entities"  # map→entity output: list[QuizImageEntity] → store
 
 # --- Quiz preparation (SP06, extended by SP09) ---
 # Cleaning flow: LoadJsonStep → ApplyStep(flatten_quiz) → FilterAlreadyDoneStep →

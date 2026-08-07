@@ -68,6 +68,7 @@ class IngestorConfig(BaseSettings):
     article_commas_table: str = "article_commas"
     quiz_questions_table: str = "quiz_questions"
     quiz_question_embeddings_table: str = "quiz_question_embeddings"
+    quiz_images_table: str = "quiz_images"
     embed_repealed: bool = False
     rca_ranges: list[str] = Field(default_factory=lambda: ["118-165", "278-300"])
     amb_ranges: list[str] = Field(default_factory=lambda: ["227-237"])

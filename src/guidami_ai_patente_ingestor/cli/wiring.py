@@ -19,6 +19,7 @@ from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.repositories import (
     ArticleCommaStoreRepository,
     ArticleStoreRepository,
+    QuizImageStoreRepository,
     QuizQuestionStoreRepository,
 )
 from guidami_ai_patente_ingestor.services import LayerResolver
@@ -53,7 +54,13 @@ def build_tracker(postgres_client: PostgresClient) -> QueuedLlmCallTracker:
 
 def build_health_repositories(
     config: IngestorConfig, postgres_client: PostgresClient
-) -> dict[str, ArticleStoreRepository | ArticleCommaStoreRepository | QuizQuestionStoreRepository]:
+) -> dict[
+    str,
+    ArticleStoreRepository
+    | ArticleCommaStoreRepository
+    | QuizQuestionStoreRepository
+    | QuizImageStoreRepository,
+]:
     """Builds the table-name -> repository map consumed by `TableHealthChecker`."""
     return {
         config.articles_table: ArticleStoreRepository(config.articles_table, postgres_client),
@@ -62,6 +69,9 @@ def build_health_repositories(
         ),
         config.quiz_questions_table: QuizQuestionStoreRepository(
             config.quiz_questions_table, postgres_client
+        ),
+        config.quiz_images_table: QuizImageStoreRepository(
+            config.quiz_images_table, postgres_client
         ),
     }
 
