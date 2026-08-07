@@ -15,7 +15,7 @@ from guidami_ai_patente_ingestor.orchestrators import (
     build_quiz_indexing_flow,
     context_keys,
 )
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 from .. import wiring
 from ..models.run_artifacts import IndexManifest
@@ -49,7 +49,7 @@ def _render_index_dry_run(args: argparse.Namespace) -> None:
 
 def run_index(
     config: IngestorConfig,
-    layer_resolver: LayerResolver,
+    layer_resolver: LayerResolverProvider,
     args: argparse.Namespace,
     manifest: IndexManifest | None,
     progress: ProgressReporter,

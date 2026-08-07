@@ -1,5 +1,5 @@
 from guidami_ai_patente_ingestor.models.knowledge import ParsedArticleModel, ParsedComma
-from guidami_ai_patente_ingestor.services.knowledge import ArticleCleaner
+from guidami_ai_patente_ingestor.services.knowledge import ArticleCleanerService
 
 
 def _article(**kwargs) -> ParsedArticleModel:
@@ -22,7 +22,7 @@ def test_title_wrapped_in_parentheses_is_unwrapped() -> None:
         )
     )
 
-    cleaned = ArticleCleaner().execute(article)
+    cleaned = ArticleCleanerService().execute(article)
 
     assert cleaned.title == (
         "Formalità necessarie per la circolazione degli autoveicoli, motoveicoli e rimorchi "
@@ -33,7 +33,7 @@ def test_title_wrapped_in_parentheses_is_unwrapped() -> None:
 def test_title_without_wrapping_parentheses_is_left_unchanged() -> None:
     article = _article(title="Principi generali")
 
-    cleaned = ArticleCleaner().execute(article)
+    cleaned = ArticleCleanerService().execute(article)
 
     assert cleaned.title == "Principi generali"
 
@@ -41,7 +41,7 @@ def test_title_without_wrapping_parentheses_is_left_unchanged() -> None:
 def test_title_with_missing_closing_paren_keeps_only_orphan_open_paren_stripped() -> None:
     article = _article(title=" (Opposizione all'ordinanza-ingiunzione")
 
-    cleaned = ArticleCleaner().execute(article)
+    cleaned = ArticleCleanerService().execute(article)
 
     assert cleaned.title == "Opposizione all'ordinanza-ingiunzione"
 
@@ -56,7 +56,7 @@ def test_article_cleaner_strips_residual_markers_from_comma_text() -> None:
         commas=[ParsedComma(number="1", text="testo ((con marcatori)) residuo")],
     )
 
-    cleaned = ArticleCleaner().execute(article)
+    cleaned = ArticleCleanerService().execute(article)
 
     assert len(cleaned.commas) == 1
     assert cleaned.commas[0].text == "testo con marcatori residuo"
@@ -72,7 +72,7 @@ def test_article_cleaner_strips_marker_at_the_start_of_a_comma() -> None:
         ]
     )
 
-    cleaned = ArticleCleaner().execute(article)
+    cleaned = ArticleCleanerService().execute(article)
 
     assert cleaned.commas[0].text == "L'utilizzo di un veicolo destinato a noleggio con conducente"
 
@@ -87,7 +87,7 @@ def test_article_cleaner_strips_multiple_marker_pairs_from_the_same_comma() -> N
         ]
     )
 
-    cleaned = ArticleCleaner().execute(article)
+    cleaned = ArticleCleanerService().execute(article)
 
     assert cleaned.commas[0].text == (
         "Sanzione da € 543 a € 2.170 prevista anche per il proprietario 163"
@@ -99,7 +99,7 @@ def test_article_cleaner_comma_with_no_markers_is_left_unchanged() -> None:
         commas=[ParsedComma(number="1", text="Testo del comma senza marcatori residui.")]
     )
 
-    cleaned = ArticleCleaner().execute(article)
+    cleaned = ArticleCleanerService().execute(article)
 
     assert cleaned.commas[0].text == "Testo del comma senza marcatori residui."
 
@@ -112,7 +112,7 @@ def test_article_cleaner_unbalanced_markup_empties_only_that_comma_text() -> Non
         ]
     )
 
-    cleaned = ArticleCleaner().execute(article)
+    cleaned = ArticleCleanerService().execute(article)
 
     assert cleaned.commas[0].text == ""
     assert cleaned.commas[1].text == "Testo regolare del secondo comma."
@@ -132,7 +132,7 @@ def test_article_cleaner_never_drops_a_comma() -> None:
         ],
     )
 
-    cleaned = ArticleCleaner().execute(article)
+    cleaned = ArticleCleanerService().execute(article)
 
     assert [comma.number for comma in cleaned.commas] == ["1", "2", "3"]
 
@@ -146,7 +146,7 @@ def test_article_cleaner_preserves_comma_numbers_and_order() -> None:
         ]
     )
 
-    cleaned = ArticleCleaner().execute(article)
+    cleaned = ArticleCleanerService().execute(article)
 
     assert [comma.number for comma in cleaned.commas] == ["1", "1-bis", "2"]
 
@@ -154,6 +154,6 @@ def test_article_cleaner_preserves_comma_numbers_and_order() -> None:
 def test_article_cleaner_empty_comma_text_is_left_unchanged() -> None:
     article = _article(commas=[ParsedComma(number="1", text="")])
 
-    cleaned = ArticleCleaner().execute(article)
+    cleaned = ArticleCleanerService().execute(article)
 
     assert cleaned.commas[0].text == ""

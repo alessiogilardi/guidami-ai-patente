@@ -1,5 +1,5 @@
 from guidami_ai_patente_ingestor.configs import IngestorConfig, PipelineLayerConfig
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 from ...models.status import CommandReadiness, ReadinessState, SourceReadiness
 
@@ -8,7 +8,7 @@ class StatusInspector:
     """Derives per-(command, entity) executability from the filesystem only.
 
     No DB, no network: `prepare`/`index` readiness is computed from `Path.exists()`
-    on the layers resolved by `LayerResolver`. `reset` has no source dimension and
+    on the layers resolved by `LayerResolverProvider`. `reset` has no source dimension and
     no filesystem signal of its own (its cost is only knowable online, see
     `TableHealthChecker`), so it is always reported `RUNNABLE` offline.
 
@@ -20,7 +20,7 @@ class StatusInspector:
     hardcoded domain strings.
     """
 
-    def __init__(self, config: IngestorConfig, layer_resolver: LayerResolver) -> None:
+    def __init__(self, config: IngestorConfig, layer_resolver: LayerResolverProvider) -> None:
         """Injects the config (source catalogs) and the layer resolver (path lookup)."""
         self._config = config
         self._layer_resolver = layer_resolver

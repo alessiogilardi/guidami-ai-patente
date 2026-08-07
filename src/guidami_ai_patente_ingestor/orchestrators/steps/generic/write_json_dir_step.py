@@ -10,7 +10,7 @@ from typing import cast
 from flowstep import FlowContext, Step
 
 from commons.repositories import FileRepository
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +35,7 @@ class WriteJsonDirStep[T](Step):
         source: str,
         input_key: str,
         id_of: Callable[[T], str],
-        layer_resolver: LayerResolver,
+        layer_resolver: LayerResolverProvider,
         repository: FileRepository[T],
     ) -> None:
         """Injects layer/source/key, then the keyer, resolver, and repository."""

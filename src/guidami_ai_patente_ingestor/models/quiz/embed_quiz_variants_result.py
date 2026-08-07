@@ -4,7 +4,7 @@ from .embeddable_quiz_variant import EmbeddableQuizVariant
 
 
 class EmbedQuizVariantsResult(BaseModel):
-    """Output of `EmbedQuizVariants`: the computed rows plus FR-2's per-variant omission counts.
+    """Output of `EmbedQuizVariantsService`: computed rows plus FR-2's per-variant omission counts.
 
     `omitted_counts` maps variant name -> number of questions for which that variant's
     text builder returned `None` (missing input, e.g. no `quiz_metadata`) — never a

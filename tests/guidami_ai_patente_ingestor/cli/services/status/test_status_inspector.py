@@ -6,7 +6,7 @@ from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.cli.models.status import CommandReadiness, ReadinessState
 from guidami_ai_patente_ingestor.cli.services.status import StatusInspector
 from guidami_ai_patente_ingestor.configs import IngestorConfig, PipelineLayerConfig, SourceConfig
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 
 def _build_config(tmp_path: Path, **overrides: object) -> IngestorConfig:
@@ -51,7 +51,7 @@ def test_knowledge_prepare_never_skips_even_when_enriched_populated(tmp_path: Pa
             sources=["populated_src"],
         ),
     )
-    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    layer_resolver = LayerResolverProvider(layers=config.layers, sources=config.sources)
     inspector = StatusInspector(config, layer_resolver)
 
     readiness = inspector.evaluate_readiness()
@@ -73,7 +73,7 @@ def test_knowledge_prepare_blocked_when_parsed_input_missing(tmp_path: Path) -> 
             sources=["missing_src"],
         ),
     )
-    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    layer_resolver = LayerResolverProvider(layers=config.layers, sources=config.sources)
     inspector = StatusInspector(config, layer_resolver)
 
     readiness = inspector.evaluate_readiness()
@@ -97,7 +97,7 @@ def test_knowledge_index_always_runnable_even_when_enriched_input_missing(tmp_pa
         },
         knowledge_indexing=PipelineLayerConfig(input_layer="enriched", sources=["cds", "cap"]),
     )
-    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    layer_resolver = LayerResolverProvider(layers=config.layers, sources=config.sources)
     inspector = StatusInspector(config, layer_resolver)
 
     readiness = inspector.evaluate_readiness()
@@ -118,7 +118,7 @@ def test_default_config_reports_reg_readiness_for_prepare_and_index(tmp_path: Pa
     that key (see `StatusInspector._prepare_state`/`_index_state`).
     """
     config = _build_config(tmp_path)
-    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    layer_resolver = LayerResolverProvider(layers=config.layers, sources=config.sources)
     inspector = StatusInspector(config, layer_resolver)
 
     readiness = inspector.evaluate_readiness()
@@ -145,7 +145,7 @@ def test_quiz_prepare_never_skips_even_when_enriched_populated(tmp_path: Path) -
             sources=["quiz"],
         ),
     )
-    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    layer_resolver = LayerResolverProvider(layers=config.layers, sources=config.sources)
     inspector = StatusInspector(config, layer_resolver)
 
     readiness = inspector.evaluate_readiness()
@@ -167,7 +167,7 @@ def test_quiz_prepare_blocked_when_parsed_input_missing(tmp_path: Path) -> None:
             sources=["quiz"],
         ),
     )
-    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    layer_resolver = LayerResolverProvider(layers=config.layers, sources=config.sources)
     inspector = StatusInspector(config, layer_resolver)
 
     readiness = inspector.evaluate_readiness()
@@ -184,7 +184,7 @@ def test_quiz_index_always_runnable_even_when_enriched_input_missing(tmp_path: P
         sources={"quiz": SourceConfig(dir="quiz", file="f.json")},
         quiz_indexing=PipelineLayerConfig(input_layer="enriched", sources=["quiz"]),
     )
-    layer_resolver = LayerResolver(layers=config.layers, sources=config.sources)
+    layer_resolver = LayerResolverProvider(layers=config.layers, sources=config.sources)
     inspector = StatusInspector(config, layer_resolver)
 
     readiness = inspector.evaluate_readiness()

@@ -7,11 +7,11 @@ from flowstep import FlowContext
 
 from commons.repositories import JsonRepository
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import LoadJsonStep
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 
-def _make_layer_resolver() -> LayerResolver:
-    resolver = MagicMock(spec=LayerResolver)
+def _make_layer_resolver() -> LayerResolverProvider:
+    resolver = MagicMock(spec=LayerResolverProvider)
     resolver.path.side_effect = lambda layer, src: Path(f"/fake/{layer}/{src}/data.json")
     return resolver
 

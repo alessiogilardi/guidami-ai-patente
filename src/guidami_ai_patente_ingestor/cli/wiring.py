@@ -16,13 +16,13 @@ from commons.ai.observability import (
 from commons.clients import PostgresClient
 from commons.repositories.db import CorpusReadRepository, QuizReadRepository
 from guidami_ai_patente_ingestor.configs import IngestorConfig
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 from guidami_ai_patente_ingestor.repositories import (
     ArticleCommaStoreRepository,
     ArticleStoreRepository,
     QuizImageStoreRepository,
     QuizQuestionStoreRepository,
 )
-from guidami_ai_patente_ingestor.services import LayerResolver
 
 
 class EvaluationRepositories(NamedTuple):
@@ -32,9 +32,9 @@ class EvaluationRepositories(NamedTuple):
     quiz: QuizReadRepository
 
 
-def build_layer_resolver(config: IngestorConfig) -> LayerResolver:
-    """Builds the `LayerResolver` from the configured layers and source catalog."""
-    return LayerResolver(layers=config.layers, sources=config.sources)
+def build_layer_resolver(config: IngestorConfig) -> LayerResolverProvider:
+    """Builds the `LayerResolverProvider` from the configured layers and source catalog."""
+    return LayerResolverProvider(layers=config.layers, sources=config.sources)
 
 
 def build_open_router_provider(config: IngestorConfig) -> OpenRouterProvider:

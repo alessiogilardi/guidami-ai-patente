@@ -3,7 +3,7 @@ from pathlib import Path
 from guidami_ai_patente_ingestor.configs import SourceConfig
 
 
-class LayerResolver:
+class LayerResolverProvider:
     """Resolves the path of an artifact given the layer and the source.
 
     Built by the entry point from `IngestorConfig.layers` and

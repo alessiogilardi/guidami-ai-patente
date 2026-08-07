@@ -19,7 +19,7 @@ from commons.utils import element_id
 from guidami_ai_patente_ingestor.configs import IngestorConfig, SourceConfig
 from guidami_ai_patente_ingestor.models.knowledge import CleanedArticleModel, ParsedComma
 from guidami_ai_patente_ingestor.orchestrators import build_knowledge_indexing_flow
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 if TYPE_CHECKING:
     # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
@@ -67,7 +67,7 @@ def _make_postgres_client() -> PostgresClient:
 def test_build_returns_flow_instance() -> None:
     flow = build_knowledge_indexing_flow(
         config=_base_config(),
-        layer_resolver=MagicMock(spec=LayerResolver),
+        layer_resolver=MagicMock(spec=LayerResolverProvider),
         embedding_client=_make_embedding_client(),
         postgres_client=_make_postgres_client(),
         source="cds",
@@ -78,7 +78,7 @@ def test_build_returns_flow_instance() -> None:
 def test_flow_name_is_knowledge_indexing() -> None:
     flow = build_knowledge_indexing_flow(
         config=_base_config(),
-        layer_resolver=MagicMock(spec=LayerResolver),
+        layer_resolver=MagicMock(spec=LayerResolverProvider),
         embedding_client=_make_embedding_client(),
         postgres_client=_make_postgres_client(),
         source="cap",
@@ -92,7 +92,7 @@ def test_flow_required_input_keys_is_empty_set() -> None:
 
     flow = build_knowledge_indexing_flow(
         config=_base_config(),
-        layer_resolver=MagicMock(spec=LayerResolver),
+        layer_resolver=MagicMock(spec=LayerResolverProvider),
         embedding_client=_make_embedding_client(),
         postgres_client=_make_postgres_client(),
         source="cds",
@@ -106,7 +106,7 @@ def test_build_with_validate_true_does_not_raise() -> None:
     """validate=True does not raise (the WARNING on CHUNKS is benign)."""
     flow = build_knowledge_indexing_flow(
         config=_base_config(),
-        layer_resolver=MagicMock(spec=LayerResolver),
+        layer_resolver=MagicMock(spec=LayerResolverProvider),
         embedding_client=_make_embedding_client(),
         postgres_client=_make_postgres_client(),
         source="cds",
@@ -127,7 +127,7 @@ def test_build_with_unknown_source_raises_value_error() -> None:
     with pytest.raises(ValueError, match="Unknown source"):
         build_knowledge_indexing_flow(
             config=_base_config(),
-            layer_resolver=MagicMock(spec=LayerResolver),
+            layer_resolver=MagicMock(spec=LayerResolverProvider),
             embedding_client=_make_embedding_client(),
             postgres_client=_make_postgres_client(),
             source="quiz",
@@ -137,7 +137,7 @@ def test_build_with_unknown_source_raises_value_error() -> None:
 def test_build_knowledge_indexing_flow_accepts_reg_source() -> None:
     flow = build_knowledge_indexing_flow(
         config=_base_config(),
-        layer_resolver=MagicMock(spec=LayerResolver),
+        layer_resolver=MagicMock(spec=LayerResolverProvider),
         embedding_client=_make_embedding_client(),
         postgres_client=_make_postgres_client(),
         source="reg",
@@ -149,7 +149,7 @@ def test_build_knowledge_indexing_flow_reads_cleaned_layer() -> None:
     """T-14: the flow's first step reads CleanedArticleModel from the 'cleaned' layer."""
     flow = build_knowledge_indexing_flow(
         config=_base_config(),
-        layer_resolver=MagicMock(spec=LayerResolver),
+        layer_resolver=MagicMock(spec=LayerResolverProvider),
         embedding_client=_make_embedding_client(),
         postgres_client=_make_postgres_client(),
         source="cds",
@@ -166,7 +166,7 @@ def test_build_knowledge_indexing_flow_has_five_steps_no_chunker() -> None:
     """T-14: the new comma-based step chain replaces the old chunk-based one."""
     flow = build_knowledge_indexing_flow(
         config=_base_config(),
-        layer_resolver=MagicMock(spec=LayerResolver),
+        layer_resolver=MagicMock(spec=LayerResolverProvider),
         embedding_client=_make_embedding_client(),
         postgres_client=_make_postgres_client(),
         source="cds",
@@ -290,8 +290,8 @@ def _write_cleaned(directory: Path, articles: list[CleanedArticleModel]) -> None
         )
 
 
-def _cleaned_resolver(tmp_path: Path) -> LayerResolver:
-    return LayerResolver(
+def _cleaned_resolver(tmp_path: Path) -> LayerResolverProvider:
+    return LayerResolverProvider(
         layers={"cleaned": str(tmp_path / "cleaned")},
         sources={
             "cds": SourceConfig(dir="cds", file="articles.json"),

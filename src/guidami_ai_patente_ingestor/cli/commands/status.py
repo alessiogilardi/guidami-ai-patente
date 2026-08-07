@@ -10,7 +10,7 @@ from guidami_ai_patente_ingestor.cli.models.status import StatusReport
 from guidami_ai_patente_ingestor.cli.rendering import render
 from guidami_ai_patente_ingestor.cli.services.status import StatusInspector, TableHealthChecker
 from guidami_ai_patente_ingestor.configs import IngestorConfig
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 from .. import wiring
 
@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 def run_status(
-    config: IngestorConfig, layer_resolver: LayerResolver, args: argparse.Namespace
+    config: IngestorConfig, layer_resolver: LayerResolverProvider, args: argparse.Namespace
 ) -> None:
     """Build and render the status report. Never raises: online checks are best-effort."""
     readiness = StatusInspector(config, layer_resolver).evaluate_readiness()

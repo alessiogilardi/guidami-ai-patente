@@ -18,7 +18,7 @@ from guidami_ai_patente_ingestor.configs import IngestorConfig, SourceConfig
 from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 from guidami_ai_patente_ingestor.orchestrators import build_quiz_indexing_flow
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import LoadJsonDirStep
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 if TYPE_CHECKING:
     # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
@@ -59,7 +59,7 @@ def _make_postgres_client() -> PostgresClient:
 def _build(validate: bool = False) -> Flow:
     return build_quiz_indexing_flow(
         config=_base_config(),
-        layer_resolver=MagicMock(spec=LayerResolver),
+        layer_resolver=MagicMock(spec=LayerResolverProvider),
         embedding_client=_make_embedding_client(),
         postgres_client=_make_postgres_client(),
         validate=validate,
@@ -134,7 +134,7 @@ def _enriched_quiz_payload(question_id: int) -> dict:
 def test_indexing_flow_reports_step_progress(
     tmp_path: Path, progress_recorder: RecordingProgressReporter
 ) -> None:
-    resolver = LayerResolver(
+    resolver = LayerResolverProvider(
         layers={"enriched": str(tmp_path / "enriched")},
         sources={"quiz": SourceConfig(dir="quiz", file="quiz.json")},
     )

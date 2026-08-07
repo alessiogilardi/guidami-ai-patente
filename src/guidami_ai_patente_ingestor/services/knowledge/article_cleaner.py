@@ -6,7 +6,7 @@ from guidami_ai_patente_ingestor.models.knowledge import ParsedArticleModel
 _INLINE_MARKUP_PATTERN = re.compile(r"\(\((.*?)\)\)", re.DOTALL)
 
 
-class ArticleCleaner(UseCase[ParsedArticleModel, ParsedArticleModel]):
+class ArticleCleanerService(UseCase[ParsedArticleModel, ParsedArticleModel]):
     """Cleans a `ParsedArticleModel` from normattiva markup.
 
     Comma extraction, list-item merging and note-reference discarding already

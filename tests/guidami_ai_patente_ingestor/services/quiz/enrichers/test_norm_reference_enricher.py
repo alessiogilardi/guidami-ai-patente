@@ -1,4 +1,4 @@
-"""Tests for NormReferenceEnricher."""
+"""Tests for NormReferenceEnricherService."""
 
 from __future__ import annotations
 
@@ -44,10 +44,10 @@ def _make_agent_mock() -> MagicMock:
 
 
 async def test_dedup_calls() -> None:
-    from guidami_ai_patente_ingestor.services.quiz.enrichers import NormReferenceEnricher
+    from guidami_ai_patente_ingestor.services.quiz.enrichers import NormReferenceEnricherService
 
     agent = _make_agent_mock()
-    enricher = NormReferenceEnricher(8, agent)
+    enricher = NormReferenceEnricherService(8, agent)
     questions = [
         _question("1", topic="T", text="Q", correct_answer=True, image="img.jpeg"),
         _question("2", topic="T", text="Q", correct_answer=True, image="img.jpeg"),
@@ -62,10 +62,10 @@ async def test_dedup_calls() -> None:
 
 
 async def test_propagates_to_all_matching_rows() -> None:
-    from guidami_ai_patente_ingestor.services.quiz.enrichers import NormReferenceEnricher
+    from guidami_ai_patente_ingestor.services.quiz.enrichers import NormReferenceEnricherService
 
     agent = _make_agent_mock()
-    enricher = NormReferenceEnricher(8, agent)
+    enricher = NormReferenceEnricherService(8, agent)
     questions = [
         _question("1", topic="T", text="Q", correct_answer=True, image="img.jpeg"),
         _question("2", topic="T", text="Q", correct_answer=True, image="img.jpeg"),
@@ -80,11 +80,11 @@ async def test_propagates_to_all_matching_rows() -> None:
 
 
 async def test_agent_failure_skips_question(caplog) -> None:
-    from guidami_ai_patente_ingestor.services.quiz.enrichers import NormReferenceEnricher
+    from guidami_ai_patente_ingestor.services.quiz.enrichers import NormReferenceEnricherService
 
     agent = MagicMock(spec=NormReferenceDescriberAgent)
     agent.run.side_effect = RuntimeError("agent call failed")
-    enricher = NormReferenceEnricher(8, agent)
+    enricher = NormReferenceEnricherService(8, agent)
     questions = [_question("1")]
 
     with caplog.at_level("WARNING"):
@@ -100,10 +100,10 @@ async def test_agent_failure_skips_question(caplog) -> None:
 
 
 async def test_unique_questions_each_get_a_call() -> None:
-    from guidami_ai_patente_ingestor.services.quiz.enrichers import NormReferenceEnricher
+    from guidami_ai_patente_ingestor.services.quiz.enrichers import NormReferenceEnricherService
 
     agent = _make_agent_mock()
-    enricher = NormReferenceEnricher(8, agent)
+    enricher = NormReferenceEnricherService(8, agent)
     questions = [
         _question("1", topic="Topic A", text="Domanda A", correct_answer=True),
         _question("2", topic="Topic B", text="Domanda B", correct_answer=False),
@@ -120,10 +120,10 @@ async def test_unique_questions_each_get_a_call() -> None:
 async def test_item_total_is_the_post_dedup_unique_count(
     progress_recorder: RecordingProgressReporter,
 ) -> None:
-    from guidami_ai_patente_ingestor.services.quiz.enrichers import NormReferenceEnricher
+    from guidami_ai_patente_ingestor.services.quiz.enrichers import NormReferenceEnricherService
 
     agent = _make_agent_mock()
-    enricher = NormReferenceEnricher(8, agent, progress_recorder)
+    enricher = NormReferenceEnricherService(8, agent, progress_recorder)
     questions = [
         _question("1", topic="T", text="Q", correct_answer=True, image="img.jpeg"),
         _question("2", topic="T", text="Q", correct_answer=True, image="img.jpeg"),

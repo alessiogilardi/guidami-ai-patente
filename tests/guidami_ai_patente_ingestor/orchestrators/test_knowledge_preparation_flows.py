@@ -28,7 +28,7 @@ from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
     LoadJsonStep,
     WriteJsonDirStep,
 )
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 if TYPE_CHECKING:
     # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
@@ -48,8 +48,8 @@ def _base_config(**overrides: object) -> IngestorConfig:
     )
 
 
-def _make_layer_resolver() -> LayerResolver:
-    return MagicMock(spec=LayerResolver)
+def _make_layer_resolver() -> LayerResolverProvider:
+    return MagicMock(spec=LayerResolverProvider)
 
 
 def _parsed_article_payload(number: str) -> dict:
@@ -136,7 +136,7 @@ def test_cleaning_flow_has_four_steps_load_clean_filter_write() -> None:
 
 def test_cleaning_flow_force_false_skips_already_cleaned_article(tmp_path: Path) -> None:
     """Decision 10/18: an article already present in `cleaned/` is not rewritten."""
-    resolver = LayerResolver(
+    resolver = LayerResolverProvider(
         layers={"parsed": str(tmp_path / "parsed"), "cleaned": str(tmp_path / "cleaned")},
         sources={"cds": SourceConfig(dir="cds", file="articles.json")},
     )
@@ -178,7 +178,7 @@ def test_cleaning_flow_force_false_skips_already_cleaned_article(tmp_path: Path)
 def test_cleaning_flow_reports_step_progress(
     tmp_path: Path, progress_recorder: RecordingProgressReporter
 ) -> None:
-    resolver = LayerResolver(
+    resolver = LayerResolverProvider(
         layers={"parsed": str(tmp_path / "parsed"), "cleaned": str(tmp_path / "cleaned")},
         sources={"cds": SourceConfig(dir="cds", file="articles.json")},
     )

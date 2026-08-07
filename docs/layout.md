@@ -115,9 +115,17 @@ gitignored — never committed, safe to delete once the spec they fed is
   `src/guidami_ai_patente_ingestor/`, following the package-per-role layout
   documented in `~/.claude/rules/python/architecture.md`:
   `orchestrators/` (pipelines + builders) → `services/` (domain logic) →
+  `providers/` (thin config/filesystem-path resolution, no business logic —
+  e.g. `LayerResolverProvider`, resolving a `(layer, source)` pair to a
+  `Path`; not part of the generic role table in
+  `~/.claude/rules/python/architecture.md`, added for this app) →
   `repositories/` (data access) → `clients/` (external API adapters) →
   `models/` / `entities/` (data shapes) → `mappers/` (transformations) →
-  `configs/` (Pydantic settings) → `agents/` (LLM agent wrappers). The
+  `configs/` (Pydantic settings) → `agents/` (LLM agent wrappers) →
+  `utils/` (generic, domain-agnostic helpers — e.g.
+  `comma_repeal_detector.py::detect_comma_repeal`/`is_comma_repealed`,
+  re-exported from `services/knowledge/` for call-site cohesion with
+  `ArticleCleanerService`). The
   top-level `mappers/` package (`ArticleMapper`, `QuizMapper`) holds only
   pipeline-stage domain mappers; a mapper that exists solely to translate
   a domain model to/from one agent's request/response DTOs lives in
@@ -158,8 +166,8 @@ gitignored — never committed, safe to delete once the spec they fed is
   holds `ItemProgressReporter`/`ProgressReporter`, `progress_reporter/services/`
   holds `NullProgressReporter` — the progress-reporting port the ingest
   CLI's live dashboard (spec 0002) drives and the three instrumented
-  services (`EmbeddingService`, `ImageDescriptionEnricher`,
-  `NormReferenceEnricher`) depend on. `run_artifact_writer/` (spec 0004
+  services (`EmbeddingService`, `ImageDescriptionEnricherService`,
+  `NormReferenceEnricherService`) depend on. `run_artifact_writer/` (spec 0004
   FR-3/AD-3, generalized in spec 0005) holds `RunArtifactWriter` directly —
   no internal `protocols/`/`services/` split, since there is no port (AD-3
   rejects a `Protocol` here: only one implementation exists) — plus a
@@ -189,7 +197,7 @@ gitignored — never committed, safe to delete once the spec they fed is
   steps that are domain-agnostic but specific to *this repo's* layer/source
   model (e.g. `orchestrators/steps/generic/{load_json_dir_step,
   filter_already_done_step,write_json_dir_step}.py`, parametrized by
-  `LayerResolver`/`FileRepository`/an injected `id_of` keyer) stay in
+  `LayerResolverProvider`/`FileRepository`/an injected `id_of` keyer) stay in
   `guidami_ai_patente_ingestor/orchestrators/steps/generic/`, next to
   `LoadJsonStep`/`WriteJsonStep` — they know nothing of articles or quizzes,
   but they do know this repo's layer/source vocabulary, which `flowstep`
@@ -341,3 +349,15 @@ and `cli/models/evaluation/` gained the multi-arm harness's new files
 (`multi_arm_retrieval_evaluator.py`, `ranking_delta.py`, `arm_result.py`,
 `multi_arm_evaluation_summary.py`) — no new rule needed, the 2026-08-05 entry above already
 covers this pair generically.*
+
+*Last updated: 2026-08-07 — verified against commit `bbec1a0` (working tree ahead of it,
+uncommitted on `feat/ingestion`); `guidami_ai_patente_ingestor/` gained two new top-level
+packages: `providers/` (`LayerResolverProvider`, moved out of `services/` and renamed —
+new role bullet added to the package-per-role chain) and `utils/` (`comma_repeal_detector.py`,
+moved out of `services/knowledge/`, unchanged behavior, still re-exported from
+`services/knowledge/__init__.py`). Also: every `UseCase`/`AsyncUseCase` subclass under a
+`services/` folder now also takes the `Service` suffix (`ArticleCleaner` →
+`ArticleCleanerService`, `DeduplicateQuizItems` → `DeduplicateQuizItemsService`,
+`EmbedQuizVariants` → `EmbedQuizVariantsService`, `ImageDescriptionEnricher` →
+`ImageDescriptionEnricherService`, `NormReferenceEnricher` → `NormReferenceEnricherService`)
+— rule updated in `.claude/rules/code-conventions.md`.*

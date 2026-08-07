@@ -20,7 +20,7 @@ from .quiz_variant_registry import QUIZ_VARIANT_REGISTRY, QuizVariantSpec
 logger = logging.getLogger(__name__)
 
 
-class EmbedQuizVariants(UseCase[Iterable[EmbeddedQuizModel], EmbedQuizVariantsResult]):
+class EmbedQuizVariantsService(UseCase[Iterable[EmbeddedQuizModel], EmbedQuizVariantsResult]):
     """Builds and embeds every configured variant's text, one embedding-service call per variant.
 
     Replaces `EmbedQuizMetadata` (deleted): that class computed exactly one embedding per

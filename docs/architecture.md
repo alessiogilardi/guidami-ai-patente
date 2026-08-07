@@ -93,7 +93,7 @@ knowledge` now runs a cleaning-only flow (no LLM call); the two remaining
 agents are quiz-only:
 - `RoadSignDescriberAgent` — vision agent, quiz enrichment; deliberately
   answer-blind (see ADR below). Owns image-file reading via its
-  `PromptRenderer`/`file_reader`; `ImageDescriptionEnricher` only passes
+  `PromptRenderer`/`file_reader`; `ImageDescriptionEnricherService` only passes
   image paths and holds no reader of its own. Called **once per distinct
   image** (not per quiz), concurrently across images, bounded by
   `IngestorConfig.road_sign_describer_concurrency` (default `8`) — see
@@ -290,7 +290,7 @@ default:
   `commons/observability/` `ProgressReporter` port directly, injected as the
   last constructor argument into the three instrumented services:
   `EmbeddingService` (one tick per batch), and, inside the single
-  `enrich_quiz` step, `ImageDescriptionEnricher` then `NormReferenceEnricher`
+  `enrich_quiz` step, `ImageDescriptionEnricherService` then `NormReferenceEnricherService`
   in sequence (one tick per distinct image, then one tick per post-dedup
   unique question) — two successive item bars for that one step.
   (`ContextEnricher` was a fourth such service before spec 0001/T-13 removed
@@ -331,7 +331,7 @@ dispatches with `tracker=None`: `BaseAgent.__init__` substitutes a `NullLlmCallT
 raises, always exits 0): `cli/services/status/status_inspector.py:
 StatusInspector.evaluate_readiness()` computes a per-(command, entity)
 readiness matrix (`RUNNABLE`/`SKIP`/`BLOCKED`) purely from
-`Path.exists()` checks via `LayerResolver` — no DB, no network, by default.
+`Path.exists()` checks via `LayerResolverProvider` — no DB, no network, by default.
 Both **knowledge** and, since spec 0006, **quiz** have per-element
 `cleaned`/`enriched` directories (see the flow descriptions above): `prepare`
 is **never** `SKIP` for either (a directory can be partially populated, so
@@ -364,9 +364,9 @@ is a **per-element** layer (one JSON file per article, named by a deterministic
 `commons.utils.element_id(source, number)`; `parsed` stays a single monolithic file
 per source — pattern originally introduced for knowledge, then applied identically to
 quiz by `specs/0006-quiz-per-element-layers.md`). The
-`enriched` layer name still exists in `LayerResolver` config, but only the quiz
+`enriched` layer name still exists in `LayerResolverProvider` config, but only the quiz
 pipeline writes to it now (AD-19) — the knowledge corpus has no `enriched` stage:
-1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(ForEach(ArticleCleaner), ForEach(partial(ArticleMapper.from_parsed_to_cleaned, source=source)))` → `FilterAlreadyDoneStep` (drops articles already present in `cleaned/`) → `WriteJsonDirStep` (one file per article). `ArticleCleaner` operates on `ParsedArticleModel.commas: list[ParsedComma]` (structured per-comma, spec 0001 T-5/T-6), not a flat `paragraphs`/`text` pair — it only normalizes the title and strips residual inline markup from each comma's text, never dropping a comma.
+1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(ForEach(ArticleCleanerService), ForEach(partial(ArticleMapper.from_parsed_to_cleaned, source=source)))` → `FilterAlreadyDoneStep` (drops articles already present in `cleaned/`) → `WriteJsonDirStep` (one file per article). `ArticleCleanerService` operates on `ParsedArticleModel.commas: list[ParsedComma]` (structured per-comma, spec 0001 T-5/T-6), not a flat `paragraphs`/`text` pair — it only normalizes the title and strips residual inline markup from each comma's text, never dropping a comma.
 2. *Enrichment* — **removed** (spec 0001 FR-16/AD-18, plan task T-13):
    `ingest prepare knowledge` runs the cleaning flow only; there is no LLM call
    anywhere in the knowledge-preparation path.
@@ -466,11 +466,11 @@ check only confirms the *code* behaves correctly against already-fetched HTML.
 enriched sub-question, named by `commons.utils.element_id("quiz", item.number)`,
 `_quiz_id` in `quiz_flows.py`; `parsed` stays a single monolithic file, same as
 knowledge):
-1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` (unnest + corpus-wide dedup on normalized-text + correct_answer + image identity — the id depends on `number`, which only exists after this flatten, so the filter can't run any earlier) → `FilterAlreadyDoneStep` (drops items already present in `cleaned/`) → `WriteJsonDirStep` (one file per surviving item).
-2. *Enrichment*: `LoadJsonDirStep` (cleaned, per-element) → `FilterAlreadyDoneStep` (drops items already present in `enriched/`, **before** the mapping/LLM transform — the filter runs pre-transform here since enrichment, unlike cleaning, *is* the expensive step) → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched))` → `AsyncApplyStep(ImageDescriptionEnricher(road_sign_describer_concurrency, RoadSignDescriberAgent), NormReferenceEnricher(NormReferenceDescriberAgent))` → `WriteJsonDirStep` (one file per enriched item). The mapping runs in a synchronous `ApplyStep`; both enrichers run in a separate `AsyncApplyStep` (concurrent LLM calls) over whatever subset the filter left — `ImageDescriptionEnricher` groups the *not-yet-done* quizzes by image filename and issues one concurrent vision call per image (see `patterns.md`), writing both the flat `image_description` (downstream/embedding field) and the structured `image_analysis` (full LLM output, debug-only) onto every quiz sharing that image. Corpus-wide dedup already happened at cleaning, so no duplicate-image concern arises across runs.
-3. *Indexing*: `LoadJsonDirStep` (enriched, per-element) → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embedded))` → `ApplyStep(EmbedQuizVariants)` → `ApplyStep(ForEach(QuizMapper.from_embedded_to_quiz_question))` → `ApplyStep(FlatMap(QuizMapper.from_embedded_to_quiz_images))` → `StoreQuizStep` (`orchestrators/steps/quiz/store_quiz_step.py`, spec 0008 — mirrors `StoreArticlesAndCommasStep`: upserts `quiz_questions` on `number` (via `upsert_returning_ids`, resolving each question's DB-generated `id`) then reconciles the whole table via `QuizQuestionStoreRepository.delete_missing`, quiz having a single source unlike the knowledge side's per-source scope; upserts `quiz_images` on `filename` and `quiz_question_embeddings` on `(quiz_question_id, variant)`, neither reconciled — both explicitly deferred open questions). This replaced the former `DbStoreStep` full-reload (truncate + bulk insert) terminal step; `DbStoreStep` and the generic `StoreRepository` protocol it depended on are deleted (AD-10), having zero remaining callers.
+1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItemsService())` (unnest + corpus-wide dedup on normalized-text + correct_answer + image identity — the id depends on `number`, which only exists after this flatten, so the filter can't run any earlier) → `FilterAlreadyDoneStep` (drops items already present in `cleaned/`) → `WriteJsonDirStep` (one file per surviving item).
+2. *Enrichment*: `LoadJsonDirStep` (cleaned, per-element) → `FilterAlreadyDoneStep` (drops items already present in `enriched/`, **before** the mapping/LLM transform — the filter runs pre-transform here since enrichment, unlike cleaning, *is* the expensive step) → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched))` → `AsyncApplyStep(ImageDescriptionEnricherService(road_sign_describer_concurrency, RoadSignDescriberAgent), NormReferenceEnricherService(NormReferenceDescriberAgent))` → `WriteJsonDirStep` (one file per enriched item). The mapping runs in a synchronous `ApplyStep`; both enrichers run in a separate `AsyncApplyStep` (concurrent LLM calls) over whatever subset the filter left — `ImageDescriptionEnricherService` groups the *not-yet-done* quizzes by image filename and issues one concurrent vision call per image (see `patterns.md`), writing both the flat `image_description` (downstream/embedding field) and the structured `image_analysis` (full LLM output, debug-only) onto every quiz sharing that image. Corpus-wide dedup already happened at cleaning, so no duplicate-image concern arises across runs.
+3. *Indexing*: `LoadJsonDirStep` (enriched, per-element) → `ApplyStep(DeduplicateQuizItemsService(), ForEach(QuizMapper.from_enriched_to_embedded))` → `ApplyStep(EmbedQuizVariantsService)` → `ApplyStep(ForEach(QuizMapper.from_embedded_to_quiz_question))` → `ApplyStep(FlatMap(QuizMapper.from_embedded_to_quiz_images))` → `StoreQuizStep` (`orchestrators/steps/quiz/store_quiz_step.py`, spec 0008 — mirrors `StoreArticlesAndCommasStep`: upserts `quiz_questions` on `number` (via `upsert_returning_ids`, resolving each question's DB-generated `id`) then reconciles the whole table via `QuizQuestionStoreRepository.delete_missing`, quiz having a single source unlike the knowledge side's per-source scope; upserts `quiz_images` on `filename` and `quiz_question_embeddings` on `(quiz_question_id, variant)`, neither reconciled — both explicitly deferred open questions). This replaced the former `DbStoreStep` full-reload (truncate + bulk insert) terminal step; `DbStoreStep` and the generic `StoreRepository` protocol it depended on are deleted (AD-10), having zero remaining callers.
 
-   `EmbedQuizVariants` (`services/quiz/embed_quiz_variants.py`, spec 0008 Phase 2, replacing `EmbedQuizMetadata`) computes every variant named in `IngestorConfig.quiz_embedding_variants` from a registry (`services/quiz/quiz_variant_registry.py`, AD-7): each `QuizVariantSpec` pairs a name with a `text_builder: EmbeddedQuizModel -> str | None` (returns `None`, and the omission is counted, when the item lacks that variant's input — e.g. no `quiz_metadata`) and a `dedup_key` (default `item.number`, i.e. no dedup; `image_description` keys by `item.image_filename`, so several questions sharing one image issue exactly one embedding call, AD-8). The six registered variants: `text` (question text alone), `topic_text` (topic + text + image description when present), `search_queries` (`quiz_metadata.vector_search_queries` joined), `combined` (topic + text + search queries), `combined_description` (`combined` + image description when present), `image_description` (the description alone, image questions only). Output is one `EmbeddableQuizVariant` (`question_number`, `variant`, `embedding`) per (question, variant) pair with a computed text, wrapped in an `EmbedQuizVariantsResult` alongside a per-variant omission-count `dict` — `StoreQuizStep` resolves each row's `question_number` to the just-upserted `quiz_question_id` before writing `QuizQuestionEmbeddingEntity` rows via the new `QuizQuestionEmbeddingStoreRepository`; `cli/commands/index.py` reads the same result back off the `FlowContext` `flow.run()` returns and records the omission counts on `IndexManifest` (FR-2). `EmbeddingService.execute` now takes `Sequence[str]` directly (AD-9) rather than a sequence of `Embeddable` objects — the `Embeddable`/`Embedded` protocols are deleted, since one object can express only one text to embed, which multi-variant embedding breaks; `EmbeddableArticleComma.embedded_text` (knowledge side) is unaffected, its caller now just reads the property before calling. `QuizMetadata` stays a cohesive nested object through the ingestion models (`EnrichedQuizModel`/`EmbeddedQuizModel`) and is flattened onto the `QuizQuestionEntity` entity columns **only** at the boundary, inside `from_embedded_to_quiz_question`.
+   `EmbedQuizVariantsService` (`services/quiz/embed_quiz_variants.py`, spec 0008 Phase 2, replacing `EmbedQuizMetadata`) computes every variant named in `IngestorConfig.quiz_embedding_variants` from a registry (`services/quiz/quiz_variant_registry.py`, AD-7): each `QuizVariantSpec` pairs a name with a `text_builder: EmbeddedQuizModel -> str | None` (returns `None`, and the omission is counted, when the item lacks that variant's input — e.g. no `quiz_metadata`) and a `dedup_key` (default `item.number`, i.e. no dedup; `image_description` keys by `item.image_filename`, so several questions sharing one image issue exactly one embedding call, AD-8). The six registered variants: `text` (question text alone), `topic_text` (topic + text + image description when present), `search_queries` (`quiz_metadata.vector_search_queries` joined), `combined` (topic + text + search queries), `combined_description` (`combined` + image description when present), `image_description` (the description alone, image questions only). Output is one `EmbeddableQuizVariant` (`question_number`, `variant`, `embedding`) per (question, variant) pair with a computed text, wrapped in an `EmbedQuizVariantsResult` alongside a per-variant omission-count `dict` — `StoreQuizStep` resolves each row's `question_number` to the just-upserted `quiz_question_id` before writing `QuizQuestionEmbeddingEntity` rows via the new `QuizQuestionEmbeddingStoreRepository`; `cli/commands/index.py` reads the same result back off the `FlowContext` `flow.run()` returns and records the omission counts on `IndexManifest` (FR-2). `EmbeddingService.execute` now takes `Sequence[str]` directly (AD-9) rather than a sequence of `Embeddable` objects — the `Embeddable`/`Embedded` protocols are deleted, since one object can express only one text to embed, which multi-variant embedding breaks; `EmbeddableArticleComma.embedded_text` (knowledge side) is unaffected, its caller now just reads the property before calling. `QuizMetadata` stays a cohesive nested object through the ingestion models (`EnrichedQuizModel`/`EmbeddedQuizModel`) and is flattened onto the `QuizQuestionEntity` entity columns **only** at the boundary, inside `from_embedded_to_quiz_question`.
 
 `dispatch_prepare`'s `quiz` branch (`cli/commands/prepare.py`) runs both the
 cleaning and enrichment flows directly on every invocation — no coarse
@@ -570,7 +570,7 @@ See `adr/` for the full history. Currently accepted:
   `QuizMetadata` is a transient ingestion model, not a persisted entity
   (`adr/0002-flatten-quiz-metadata-columns.md`).
 - **Road sign description is grouped by image, not by quiz** —
-  `ImageDescriptionEnricher` keys on the image filename only; all quizzes
+  `ImageDescriptionEnricherService` keys on the image filename only; all quizzes
   sharing an image get one vision call and one `image_description`/
   `image_analysis` instead of one call per `(image, topic, text)` triple
   (`adr/0003-group-road-sign-description-by-image.md`).
@@ -748,7 +748,7 @@ object can no longer express "the one text to embed" once a question yields seve
 texts).*
 
 *Last updated: 2026-08-07 — verified against commit `bbbb291`; spec 0008 Phase 2 landed in
-full. Quiz indexing's step 3 rewritten: `EmbedQuizVariants`/the `quiz_variant_registry.py`
+full. Quiz indexing's step 3 rewritten: `EmbedQuizVariantsService`/the `quiz_variant_registry.py`
 registry (AD-7) replace `EmbedQuizMetadata`, computing all six configured variants and
 persisting them via the new `quiz_question_embeddings` write path (`QuizQuestionEmbeddingStoreRepository`,
 `StoreQuizStep` now resolving `quiz_question_id` via `upsert_returning_ids` before writing
@@ -761,3 +761,12 @@ and three new report models (`RankingDelta`, `ArmResult`, `MultiArmEvaluationSum
 `src/retrieval_evaluation/services/retrieval_judge_evaluation_service.py` (outside spec 0008's
 scope but coupled to the changed `fetch_with_vectors` signature) was updated to pass
 `"embedding_3_small"` explicitly, the only model column that exists today.*
+
+*Last updated: 2026-08-07 — verified against commit `bbec1a0` (working tree ahead of it,
+uncommitted on `feat/ingestion`); renamed every `UseCase`/`AsyncUseCase` subclass under
+`services/` that also takes the new `Service` suffix (`ArticleCleaner` → `ArticleCleanerService`,
+`DeduplicateQuizItems` → `DeduplicateQuizItemsService`, `EmbedQuizVariants` →
+`EmbedQuizVariantsService`, `ImageDescriptionEnricher` → `ImageDescriptionEnricherService`,
+`NormReferenceEnricher` → `NormReferenceEnricherService`) and `LayerResolver` →
+`LayerResolverProvider` (moved from `services/` to the new `providers/` package — see
+`docs/layout.md`).*

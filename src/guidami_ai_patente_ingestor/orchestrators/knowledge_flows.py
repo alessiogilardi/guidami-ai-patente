@@ -22,12 +22,15 @@ from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
     EmbedCommasStep,
     StoreArticlesAndCommasStep,
 )
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 from guidami_ai_patente_ingestor.repositories import (
     ArticleCommaStoreRepository,
     ArticleStoreRepository,
 )
-from guidami_ai_patente_ingestor.services import LayerResolver
-from guidami_ai_patente_ingestor.services.knowledge import ArticleCleaner, detect_comma_repeal
+from guidami_ai_patente_ingestor.services.knowledge import (
+    ArticleCleanerService,
+    detect_comma_repeal,
+)
 
 from .progress_flow_observer import ProgressFlowObserver
 from .steps.generic import (
@@ -51,7 +54,7 @@ def _article_id(article: CleanedArticleModel) -> str:
 
 def build_knowledge_indexing_flow(
     config: IngestorConfig,
-    layer_resolver: LayerResolver,
+    layer_resolver: LayerResolverProvider,
     embedding_client: EmbeddingClient,
     postgres_client: PostgresClient,
     source: str,
@@ -162,7 +165,7 @@ def build_knowledge_indexing_flow(
 
 def build_knowledge_cleaning_flow(
     config: IngestorConfig,
-    layer_resolver: LayerResolver,
+    layer_resolver: LayerResolverProvider,
     source: str,
     force: bool = False,
     validate: bool = False,
@@ -220,7 +223,7 @@ def build_knowledge_cleaning_flow(
     # Clean first, then stamp the source: the filter needs `a.source` (Decision 18).
     clean_step = ApplyStep(
         "clean_articles",
-        ForEach(ArticleCleaner()),
+        ForEach(ArticleCleanerService()),
         ForEach(partial(ArticleMapper.from_parsed_to_cleaned, source=typed_source)),
         input_key=context_keys.PARSED_ARTICLES,
         output_key=context_keys.CLEANED_ARTICLES,

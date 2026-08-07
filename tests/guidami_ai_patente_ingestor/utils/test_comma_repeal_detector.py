@@ -1,5 +1,5 @@
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableArticleComma
-from guidami_ai_patente_ingestor.services.knowledge import detect_comma_repeal, is_comma_repealed
+from guidami_ai_patente_ingestor.utils import detect_comma_repeal, is_comma_repealed
 
 # --- is_comma_repealed ---
 

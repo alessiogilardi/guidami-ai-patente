@@ -18,7 +18,7 @@ class QuizMapper:
     All methods are static and pure: each maps a model to the next one in
     the chain (`from_X_to_Y`). Dedup does not live here (it's not a 1:1
     mapping, but a collection-level operation): it lives in
-    `DeduplicateQuizItems` (shared by preparation and indexing, chained to
+    `DeduplicateQuizItemsService` (shared by preparation and indexing, chained to
     this mapper in the `flatten_quiz` and `map_to_embedded` steps of
     `quiz_flows.py`). The parsed→cleaned unnest+map (preparation) is instead
     expressed as `FlatMap(QuizMapper.from_parsed_to_cleaned_all)`.
@@ -151,7 +151,7 @@ class QuizMapper:
 
         Maps each sub-question in `parent.sub_questions` by delegating to
         `from_parsed_to_cleaned`, preserving order. Does not deduplicate:
-        deduplication is a separate transform (`DeduplicateQuizItems`),
+        deduplication is a separate transform (`DeduplicateQuizItemsService`),
         chained after `FlatMap(from_parsed_to_cleaned_all)` in
         `build_quiz_cleaning_flow`.
 

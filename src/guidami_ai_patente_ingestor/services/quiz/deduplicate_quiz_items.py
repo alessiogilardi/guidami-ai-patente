@@ -21,7 +21,7 @@ class _QuizItemLike(Protocol):
     number: str
 
 
-class DeduplicateQuizItems[T: _QuizItemLike](UseCase[Iterable[T], list[T]]):
+class DeduplicateQuizItemsService[T: _QuizItemLike](UseCase[Iterable[T], list[T]]):
     """Deduplicates a flat iterable of quiz items on the triple (text, answer, image).
 
     An exact duplicate is identified by (normalized text, correct answer,

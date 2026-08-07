@@ -29,16 +29,19 @@ from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
     WriteJsonDirStep,
 )
 from guidami_ai_patente_ingestor.orchestrators.steps.quiz import StoreQuizStep
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 from guidami_ai_patente_ingestor.repositories import (
     QuizImageStoreRepository,
     QuizQuestionEmbeddingStoreRepository,
     QuizQuestionStoreRepository,
 )
-from guidami_ai_patente_ingestor.services import LayerResolver
-from guidami_ai_patente_ingestor.services.quiz import DeduplicateQuizItems, EmbedQuizVariants
+from guidami_ai_patente_ingestor.services.quiz import (
+    DeduplicateQuizItemsService,
+    EmbedQuizVariantsService,
+)
 from guidami_ai_patente_ingestor.services.quiz.enrichers import (
-    ImageDescriptionEnricher,
-    NormReferenceEnricher,
+    ImageDescriptionEnricherService,
+    NormReferenceEnricherService,
 )
 
 from .progress_flow_observer import ProgressFlowObserver
@@ -55,7 +58,7 @@ def _quiz_id(item: CleanedQuizModel | EnrichedQuizModel) -> str:
 
 def build_quiz_indexing_flow(
     config: IngestorConfig,
-    layer_resolver: LayerResolver,
+    layer_resolver: LayerResolverProvider,
     embedding_client: EmbeddingClient,
     postgres_client: PostgresClient,
     validate: bool = False,
@@ -74,7 +77,7 @@ def build_quiz_indexing_flow(
 
     The `map_to_embedded` step chains two transforms: dedup on the triple
     (normalized text, correct answer, image identity) via
-    `DeduplicateQuizItems` (shared with `build_quiz_cleaning_flow`), then a
+    `DeduplicateQuizItemsService` (shared with `build_quiz_cleaning_flow`), then a
     1:1 enriched→embedded mapping via `ForEach(QuizMapper.from_enriched_to_embedded)`.
 
     The `embed_quiz_variants` step computes and embeds every configured query
@@ -90,7 +93,7 @@ def build_quiz_indexing_flow(
         validate: If True, runs structural validation of the flow before returning it.
             Raises `FlowValidationError` on ERROR.
         progress: Optional reporter driving the step/flow bars (via a registered
-            `ProgressFlowObserver`) and, through `EmbedQuizVariants`, the embedding
+            `ProgressFlowObserver`) and, through `EmbedQuizVariantsService`, the embedding
             step's item bar. When `None`, defaults to `NullProgressReporter`, a no-op
             collaborator.
 
@@ -114,7 +117,7 @@ def build_quiz_indexing_flow(
 
     map_to_embedded_step = ApplyStep(
         "map_to_embedded",
-        DeduplicateQuizItems(),
+        DeduplicateQuizItemsService(),
         ForEach(QuizMapper.from_enriched_to_embedded),
         input_key=context_keys.ENRICHED_QUIZ,
         output_key=context_keys.EMBEDDED_QUIZ,
@@ -122,7 +125,7 @@ def build_quiz_indexing_flow(
 
     embed_variants_step = ApplyStep(
         "embed_quiz_variants",
-        EmbedQuizVariants(
+        EmbedQuizVariantsService(
             config.quiz_embedding_variants,
             EmbeddingService(config.embedding_batch_size, embedding_client, reporter),
         ),
@@ -170,7 +173,7 @@ def build_quiz_indexing_flow(
 
 def build_quiz_cleaning_flow(
     config: IngestorConfig,
-    layer_resolver: LayerResolver,
+    layer_resolver: LayerResolverProvider,
     force: bool = False,
     validate: bool = False,
     progress: ProgressReporter | None = None,
@@ -184,13 +187,13 @@ def build_quiz_cleaning_flow(
     with `force=True`) before being written by `WriteJsonDirStep`.
 
     Step mapping:
-      `LoadJsonStep` → `ApplyStep(FlatMap(...), DeduplicateQuizItems)` →
+      `LoadJsonStep` → `ApplyStep(FlatMap(...), DeduplicateQuizItemsService)` →
       `FilterAlreadyDoneStep` → `WriteJsonDirStep`
 
     The `flatten_quiz` step chains two transforms: unnest+map parsed→cleaned via
     `FlatMap(QuizMapper.from_parsed_to_cleaned_all)`, then dedup on the triple
     (normalized text, correct answer, image identity) via
-    `DeduplicateQuizItems` (shared with `build_quiz_indexing_flow`).
+    `DeduplicateQuizItemsService` (shared with `build_quiz_indexing_flow`).
 
     Args:
         config: Full ingestor configuration (already loaded at the entry point).
@@ -221,7 +224,7 @@ def build_quiz_cleaning_flow(
     flatten_step = ApplyStep(
         "flatten_quiz",
         FlatMap(QuizMapper.from_parsed_to_cleaned_all),
-        DeduplicateQuizItems(),
+        DeduplicateQuizItemsService(),
         input_key=context_keys.PARSED_QUIZ,
         output_key=context_keys.CLEANED_QUIZ,
     )
@@ -261,7 +264,7 @@ def build_quiz_cleaning_flow(
 
 def build_quiz_enrichment_flow(
     config: IngestorConfig,
-    layer_resolver: LayerResolver,
+    layer_resolver: LayerResolverProvider,
     open_router_provider: OpenRouterProvider,
     force: bool = False,
     validate: bool = False,
@@ -359,8 +362,10 @@ def build_quiz_enrichment_flow(
     )
     enrich_step = AsyncApplyStep(
         "enrich_quiz",
-        ImageDescriptionEnricher(config.road_sign_describer_concurrency, describer, reporter),
-        NormReferenceEnricher(
+        ImageDescriptionEnricherService(
+            config.road_sign_describer_concurrency, describer, reporter
+        ),
+        NormReferenceEnricherService(
             config.norm_reference_describer_concurrency, norm_describer, reporter
         ),
         input_key=context_keys.MAPPED_QUIZ,

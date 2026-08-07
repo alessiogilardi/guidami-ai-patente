@@ -1,4 +1,4 @@
-"""Tests for DeduplicateQuizItems (generic UseCase that deduplicates flat quiz items).
+"""Tests for DeduplicateQuizItemsService (generic UseCase that deduplicates flat quiz items).
 
 Uniqueness key: (normalized text, correct answer, image identity),
 shared by `build_quiz_cleaning_flow` (CleanedQuizModel) and
@@ -6,7 +6,7 @@ shared by `build_quiz_cleaning_flow` (CleanedQuizModel) and
 """
 
 from guidami_ai_patente_ingestor.models.quiz import CleanedQuizModel, EnrichedQuizModel
-from guidami_ai_patente_ingestor.services.quiz import DeduplicateQuizItems
+from guidami_ai_patente_ingestor.services.quiz import DeduplicateQuizItemsService
 
 
 def _cleaned(
@@ -43,13 +43,13 @@ def _enriched(
 
 
 def test_empty_input_returns_empty_list() -> None:
-    dedup = DeduplicateQuizItems()
+    dedup = DeduplicateQuizItemsService()
     assert dedup.execute([]) == []
 
 
 def test_no_duplicates_all_preserved() -> None:
     items = [_cleaned("1", "Prima domanda."), _cleaned("2", "Seconda domanda.")]
-    dedup = DeduplicateQuizItems()
+    dedup = DeduplicateQuizItemsService()
 
     assert dedup.execute(items) == items
 
@@ -60,7 +60,7 @@ def test_duplicates_by_stripped_text_answer_image_are_removed() -> None:
         _cleaned("2", "Domanda", correct_answer=True, image="img.jpeg"),
         _cleaned("3", "Altra domanda.", correct_answer=False),
     ]
-    dedup = DeduplicateQuizItems()
+    dedup = DeduplicateQuizItemsService()
 
     result = dedup.execute(items)
 
@@ -73,7 +73,7 @@ def test_same_text_different_image_both_kept() -> None:
         _cleaned("1", "Domanda", correct_answer=True, image="img-a.jpeg"),
         _cleaned("2", "Domanda", correct_answer=True, image="img-b.jpeg"),
     ]
-    dedup = DeduplicateQuizItems()
+    dedup = DeduplicateQuizItemsService()
 
     assert len(dedup.execute(items)) == 2
 
@@ -83,7 +83,7 @@ def test_same_text_different_correct_answer_both_kept() -> None:
         _cleaned("1", "Domanda", correct_answer=True),
         _cleaned("2", "Domanda", correct_answer=False),
     ]
-    dedup = DeduplicateQuizItems()
+    dedup = DeduplicateQuizItemsService()
 
     assert len(dedup.execute(items)) == 2
 
@@ -94,7 +94,7 @@ def test_works_on_cleaned_quiz_model() -> None:
         _cleaned("1", "Domanda", correct_answer=True, image="img.jpeg"),
         _cleaned("2", "Domanda", correct_answer=True, image="img.jpeg"),
     ]
-    dedup = DeduplicateQuizItems()
+    dedup = DeduplicateQuizItemsService()
 
     result = dedup.execute(items)
 
@@ -108,7 +108,7 @@ def test_works_on_enriched_quiz_model() -> None:
         _enriched("1", "Domanda", correct_answer=True, image="img.jpeg"),
         _enriched("2", "Domanda", correct_answer=True, image="img.jpeg"),
     ]
-    dedup = DeduplicateQuizItems()
+    dedup = DeduplicateQuizItemsService()
 
     result = dedup.execute(items)
 
@@ -119,7 +119,7 @@ def test_works_on_enriched_quiz_model() -> None:
 def test_logs_warning_with_item_number_on_duplicate(caplog) -> None:
     """The unified log message reports only item.number (no question_id)."""
     items = [_cleaned("1", "Domanda"), _cleaned("2", "Domanda")]
-    dedup = DeduplicateQuizItems()
+    dedup = DeduplicateQuizItemsService()
 
     with caplog.at_level("WARNING"):
         dedup.execute(items)

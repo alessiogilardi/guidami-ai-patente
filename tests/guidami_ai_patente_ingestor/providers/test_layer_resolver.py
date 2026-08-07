@@ -3,10 +3,10 @@ from pathlib import Path
 import pytest
 
 from guidami_ai_patente_ingestor.configs import SourceConfig
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 
-def _resolver() -> LayerResolver:
+def _resolver() -> LayerResolverProvider:
     layers = {
         "parsed": "data/parsed",
         "cleaned": "data/cleaned",
@@ -17,7 +17,7 @@ def _resolver() -> LayerResolver:
         "cap": SourceConfig(dir="cap", file="codice_rca.json"),
         "quiz": SourceConfig(dir="quiz-patente-ab", file="quiz-patente-ab.json"),
     }
-    return LayerResolver(layers=layers, sources=sources)
+    return LayerResolverProvider(layers=layers, sources=sources)
 
 
 def test_path_resolves_layer_and_source_correctly() -> None:

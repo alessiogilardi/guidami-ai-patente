@@ -17,7 +17,7 @@ from commons.configs import PostgresConnectionConfig
 from commons.utils import element_id
 from guidami_ai_patente_ingestor.configs import IngestorConfig, SourceConfig
 from guidami_ai_patente_ingestor.orchestrators import build_quiz_indexing_flow
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 
 def _make_embedding_client() -> EmbeddingClient:
@@ -52,7 +52,7 @@ def test_quiz_indexing_makes_no_llm_calls_and_matches_enriched_file_count(
     pg_client.truncate("quiz_question_embeddings", "quiz_questions")
     pg_client.truncate("quiz_images")
 
-    resolver = LayerResolver(
+    resolver = LayerResolverProvider(
         layers={"enriched": str(tmp_path / "enriched")},
         sources={"quiz": SourceConfig(dir="quiz", file="quiz.json")},
     )

@@ -1,6 +1,6 @@
 """Quiz bank enrichers (Open/Closed: new enricher = new class)."""
 
-from .image_description_enricher import ImageDescriptionEnricher
-from .norm_reference_enricher import NormReferenceEnricher
+from .image_description_enricher import ImageDescriptionEnricherService
+from .norm_reference_enricher import NormReferenceEnricherService
 
-__all__ = ["ImageDescriptionEnricher", "NormReferenceEnricher"]
+__all__ = ["ImageDescriptionEnricherService", "NormReferenceEnricherService"]

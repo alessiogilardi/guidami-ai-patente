@@ -10,7 +10,7 @@ from typing import cast
 from flowstep import FlowContext, Step
 
 from commons.clients.file_system import LocalFileSystemClient
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +39,7 @@ class FilterAlreadyDoneStep[T](Step):
         source: str,
         force: bool,
         id_of: Callable[[T], str],
-        layer_resolver: LayerResolver,
+        layer_resolver: LayerResolverProvider,
         file_system_client: LocalFileSystemClient,
     ) -> None:
         """Injects layer/source/keys/force, then the keyer, resolver, and client."""

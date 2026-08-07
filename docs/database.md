@@ -300,8 +300,12 @@ the write path for `quiz_question_embeddings`: new `QuizQuestionEmbeddingStoreRe
 (upsert on `(quiz_question_id, variant)`, no reconciliation — same deferred-open-question
 shape as `quiz_images`), populated via a new variant registry (`quiz_variant_registry.py`,
 six representations — `text`/`topic_text`/`search_queries`/`combined`/
-`combined_description`/`image_description`) and `EmbedQuizVariants`, which replaces
+`combined_description`/`image_description`) and `EmbedQuizVariantsService`, which replaces
 `EmbedQuizMetadata`. `StoreQuizStep` now writes all three quiz tables (questions, images,
 variant rows) in one step, resolving `quiz_question_id` via `upsert_returning_ids` before
 the variant rows are built. The "Current state" note under Migrations no longer lists a
 missing write path — the schema is unchanged, only the Python side caught up.*
+
+*Last updated: 2026-08-07 — verified against commit `bbec1a0` (working tree ahead of it,
+uncommitted on `feat/ingestion`); `EmbedQuizVariants` → `EmbedQuizVariantsService` (no schema
+change, `services/`-folder naming rename only).*

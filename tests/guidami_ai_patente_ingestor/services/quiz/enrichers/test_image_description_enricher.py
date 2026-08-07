@@ -1,4 +1,4 @@
-"""Tests for ImageDescriptionEnricher (grouped by image, one call per image, async)."""
+"""Tests for ImageDescriptionEnricherService (grouped by image, one call per image, async)."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
     RoadSignDescriberResponse,
 )
 from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel, ImageAnalysis
-from guidami_ai_patente_ingestor.services.quiz.enrichers import ImageDescriptionEnricher
+from guidami_ai_patente_ingestor.services.quiz.enrichers import ImageDescriptionEnricherService
 
 if TYPE_CHECKING:
     # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
@@ -50,7 +50,7 @@ def _make_describer(name: str = "Stop", description: str = "Segnale rosso.") -> 
 
 async def test_enrich_calls_once_per_image_regardless_of_distinct_texts() -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(4, describer)
+    enricher = ImageDescriptionEnricherService(4, describer)
     questions = [
         _question("1", image="a.jpeg", topic="Segnaletica", text="Prima domanda."),
         _question("2", image="a.jpeg", topic="Segnaletica", text="Seconda domanda."),
@@ -68,7 +68,7 @@ async def test_enrich_calls_once_per_image_regardless_of_distinct_texts() -> Non
 
 async def test_enrich_single_call_carries_both_distinct_contexts() -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(4, describer)
+    enricher = ImageDescriptionEnricherService(4, describer)
     questions = [
         _question("1", image="a.jpeg", topic="Segnaletica", text="Prima domanda."),
         _question("2", image="a.jpeg", topic="Precedenza", text="Seconda domanda."),
@@ -86,7 +86,7 @@ async def test_enrich_single_call_carries_both_distinct_contexts() -> None:
 
 async def test_enrich_calls_once_per_distinct_image() -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(4, describer)
+    enricher = ImageDescriptionEnricherService(4, describer)
     questions = [
         _question("1", image="a.jpeg"),
         _question("2", image="a.jpeg"),
@@ -102,7 +102,7 @@ async def test_enrich_calls_once_per_distinct_image() -> None:
 
 async def test_enrich_no_image_means_description_stays_none_and_no_call() -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(4, describer)
+    enricher = ImageDescriptionEnricherService(4, describer)
     questions = [_question("1", image=None)]
 
     result = await enricher(questions)
@@ -124,7 +124,7 @@ async def test_enrich_failing_image_degrades_alone_others_still_described(caplog
         )
 
     describer.run.side_effect = _side_effect
-    enricher = ImageDescriptionEnricher(4, describer)
+    enricher = ImageDescriptionEnricherService(4, describer)
     questions = [
         _question("1", image="missing.jpeg"),
         _question("2", image="ok.jpeg"),
@@ -153,7 +153,7 @@ async def test_enrich_describe_raising_generic_exception_degrades_that_image_onl
         )
 
     describer.run.side_effect = _side_effect
-    enricher = ImageDescriptionEnricher(4, describer)
+    enricher = ImageDescriptionEnricherService(4, describer)
     questions = [
         _question("1", image="broken.jpeg"),
         _question("2", image="ok.jpeg"),
@@ -175,7 +175,7 @@ async def test_enrich_describe_raising_generic_exception_degrades_that_image_onl
 
 async def test_enrich_does_not_mutate_input_models() -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(4, describer)
+    enricher = ImageDescriptionEnricherService(4, describer)
     original = _question("1", image="stop.jpeg")
     questions = [original]
 
@@ -188,7 +188,7 @@ async def test_item_total_is_the_distinct_image_count(
     progress_recorder: RecordingProgressReporter,
 ) -> None:
     describer = _make_describer()
-    enricher = ImageDescriptionEnricher(4, describer, progress_recorder)
+    enricher = ImageDescriptionEnricherService(4, describer, progress_recorder)
     questions = [
         _question("1", image="a.png"),
         _question("2", image="a.png"),

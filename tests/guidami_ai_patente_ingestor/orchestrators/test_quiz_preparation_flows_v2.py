@@ -28,7 +28,7 @@ from guidami_ai_patente_ingestor.orchestrators import (
     build_quiz_cleaning_flow,
     build_quiz_enrichment_flow,
 )
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 if TYPE_CHECKING:
     # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
@@ -47,8 +47,8 @@ def _base_config() -> IngestorConfig:
     )
 
 
-def _make_layer_resolver() -> LayerResolver:
-    return MagicMock(spec=LayerResolver)
+def _make_layer_resolver() -> LayerResolverProvider:
+    return MagicMock(spec=LayerResolverProvider)
 
 
 _PROVIDER = OpenRouterProvider(api_key="test-key")
@@ -309,8 +309,8 @@ def test_enrichment_flow_force_false_skips_already_enriched_item_without_llm_cal
 # ---------------------------------------------------------------------------
 
 
-def _quiz_resolver(tmp_path: Path, layers: dict[str, str]) -> LayerResolver:
-    return LayerResolver(
+def _quiz_resolver(tmp_path: Path, layers: dict[str, str]) -> LayerResolverProvider:
+    return LayerResolverProvider(
         layers={name: str(tmp_path / name) for name in layers},
         sources={"quiz": SourceConfig(dir="quiz", file="quiz.json")},
     )

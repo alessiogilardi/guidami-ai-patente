@@ -1,9 +1,9 @@
-"""Tests for EmbedQuizVariants (UseCase computing every enabled variant's embedding)."""
+"""Tests for EmbedQuizVariantsService (UseCase computing every enabled variant's embedding)."""
 
 import pytest
 
 from guidami_ai_patente_ingestor.models.quiz import EmbeddedQuizModel, QuizMetadata
-from guidami_ai_patente_ingestor.services.quiz import EmbedQuizVariants
+from guidami_ai_patente_ingestor.services.quiz import EmbedQuizVariantsService
 
 
 class _RecordingFakeEmbeddingService:
@@ -42,7 +42,7 @@ def test_embeds_one_row_per_enabled_variant_per_question() -> None:
     with_metadata = _question(number="1", quiz_metadata=_metadata())
     without_metadata = _question(number="2", quiz_metadata=None)
     fake_service = _RecordingFakeEmbeddingService()
-    use_case = EmbedQuizVariants(["text", "search_queries"], fake_service)  # type: ignore[arg-type]
+    use_case = EmbedQuizVariantsService(["text", "search_queries"], fake_service)  # type: ignore[arg-type]
 
     result = use_case.execute([with_metadata, without_metadata])
 
@@ -65,7 +65,7 @@ def test_dedups_image_description_by_filename_one_embedding_call_per_distinct_im
         number="99", image_filename="give_way.jpeg", image_description="Dare la precedenza."
     )
     fake_service = _RecordingFakeEmbeddingService()
-    use_case = EmbedQuizVariants(["image_description"], fake_service)  # type: ignore[arg-type]
+    use_case = EmbedQuizVariantsService(["image_description"], fake_service)  # type: ignore[arg-type]
 
     result = use_case.execute([*shared_image_items, other_image_item])
 
@@ -80,4 +80,4 @@ def test_unknown_variant_name_raises_key_error() -> None:
     fake_service = _RecordingFakeEmbeddingService()
 
     with pytest.raises(KeyError):
-        EmbedQuizVariants(["not_a_variant"], fake_service)  # type: ignore[arg-type]
+        EmbedQuizVariantsService(["not_a_variant"], fake_service)  # type: ignore[arg-type]

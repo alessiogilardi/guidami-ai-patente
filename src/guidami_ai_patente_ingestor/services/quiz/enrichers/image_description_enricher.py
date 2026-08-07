@@ -17,7 +17,9 @@ from guidami_ai_patente_ingestor.models.quiz import EnrichedQuizModel
 logger = logging.getLogger(__name__)
 
 
-class ImageDescriptionEnricher(AsyncUseCase[Iterable[EnrichedQuizModel], list[EnrichedQuizModel]]):
+class ImageDescriptionEnricherService(
+    AsyncUseCase[Iterable[EnrichedQuizModel], list[EnrichedQuizModel]]
+):
     """Enriches sub-questions with a road sign description, one call per image.
 
     All quizzes that reference the same image are grouped and described in a single

@@ -15,7 +15,7 @@ from guidami_ai_patente_ingestor.orchestrators import (
     build_quiz_cleaning_flow,
     build_quiz_enrichment_flow,
 )
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 from .. import wiring
 from ..models.run_artifacts import PrepareManifest
@@ -51,7 +51,7 @@ def _render_prepare_dry_run(args: argparse.Namespace) -> None:
 
 def dispatch_prepare(
     config: IngestorConfig,
-    layer_resolver: LayerResolver,
+    layer_resolver: LayerResolverProvider,
     open_router_provider: OpenRouterProvider,
     args: argparse.Namespace,
     tracker: LlmCallTracker | None,
@@ -108,7 +108,7 @@ def dispatch_prepare(
 
 def run_prepare(
     config: IngestorConfig,
-    layer_resolver: LayerResolver,
+    layer_resolver: LayerResolverProvider,
     open_router_provider: OpenRouterProvider,
     args: argparse.Namespace,
     manifest: PrepareManifest | None,

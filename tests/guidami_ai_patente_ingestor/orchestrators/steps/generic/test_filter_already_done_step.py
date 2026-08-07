@@ -10,7 +10,7 @@ from flowstep import FlowContext
 
 from commons.clients.file_system import LocalFileSystemClient
 from guidami_ai_patente_ingestor.orchestrators.steps.generic import FilterAlreadyDoneStep
-from guidami_ai_patente_ingestor.services import LayerResolver
+from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 
 @dataclass
@@ -22,8 +22,8 @@ def _id_of(item: _Item) -> str:
     return item.key
 
 
-def _make_layer_resolver() -> LayerResolver:
-    resolver = MagicMock(spec=LayerResolver)
+def _make_layer_resolver() -> LayerResolverProvider:
+    resolver = MagicMock(spec=LayerResolverProvider)
     resolver.dir.side_effect = lambda layer, src: Path(f"/fake/{layer}/{src}")
     return resolver
 

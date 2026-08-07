@@ -7,7 +7,7 @@ class EmbeddedQuizModel(BaseModel):
     """Quiz bank sub-question, ready to be turned into embedding-variant rows.
 
     Contains `image_description` (not persisted in DB). Embeddings are no longer
-    carried on this model at all: `EmbedQuizVariants` computes one embedding per
+    carried on this model at all: `EmbedQuizVariantsService` computes one embedding per
     (question, variant) pair directly from this model's fields, producing
     `EmbeddableQuizVariant` rows instead.
     """
