@@ -291,7 +291,9 @@ def test_amb_registered_in_sources() -> None:
 
 
 def test_parse_article_strips_full_word_articolo_prefix() -> None:
-    """D.Lgs. 152/2006 uses "Articolo N" (full word) instead of "Art. N" for some
+    """Regression test for the full-word "Articolo N" prefix.
+
+    D.Lgs. 152/2006 uses "Articolo N" (full word) instead of "Art. N" for some
     articles (e.g. 177, 178-bis) — the number must still come out bare.
     """
     html = """
