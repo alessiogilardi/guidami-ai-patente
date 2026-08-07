@@ -153,15 +153,17 @@ timestamp convention (app/log/DB).
 The former `quiz_metadata` JSONB blob was flattened into the retrieval/payload
 columns above (see `docs/adr/0002-flatten-quiz-metadata-columns.md`);
 `vector_search_queries` joined them later, once it stopped being pure embedder
-input and became the thing under test. The metadata columns are all-or-nothing:
-`NULL` on rows for which no `QuizMetadata` was generated. `quiz_questions.created_at`
-is DB-managed and, as long as the quiz write path still truncates + bulk-inserts
-(`DbStoreStep`, spec 0008's FR-6 hasn't landed yet), keeps recording the load-batch
-time rather than first ingestion. `articles`/`article_commas` declare no `created_at`
-column at all, so this caveat never applied to them; both now write through upsert +
-scoped reconciliation instead of truncate + bulk-insert (spec 0010), so a row's
-identity — and, once one is added, any `created_at` on these tables — would already
-survive across runs.
+input and became the thing under test — and is now the one metadata field actually
+persisted on `quiz_questions` (spec 0008 Phase 1); `core_concepts`/`exact_keywords`/
+`rule_explanation` continue to flatten the same way. The metadata columns are
+all-or-nothing: `NULL` on rows for which no `QuizMetadata` was generated.
+`quiz_questions` now writes through upsert (on `number`) + reconciliation
+(`QuizQuestionStoreRepository.delete_missing`, whole-table scope — quiz has a
+single source, unlike `ArticleStoreRepository.delete_missing`'s per-source scope)
+instead of truncate + bulk-insert (spec 0008 Phase 1, superseding the `DbStoreStep`
+full-reload path — see `docs/patterns.md`), so `quiz_questions.created_at`, like
+`articles`/`article_commas`' upsert path (spec 0010), now survives across runs
+instead of recording each load-batch's timestamp.
 
 Quiz vectors live in `quiz_question_embeddings`, not on `quiz_questions`, along
 two orthogonal axes: **which text** was embedded is a row (`variant`), **which
@@ -230,9 +232,12 @@ There is no changelog file tracking schema history beyond `git log db/init.sql`
 and the contents of `db/migrations/`.
 
 > **Current state:** `db/init.sql` and `db/migrations/0008_*.sql` carry the spec
-> 0008 schema, but the migration has **not** been applied to the local development
-> database, which still holds `quiz_questions.embedding` and neither new table.
-> Spec 0008 is still `draft`.
+> 0008 schema (spec status: `ready`). The Python write path has caught up for two
+> of the three new/changed tables (Phase 1): `quiz_questions` (via
+> `QuizQuestionStoreRepository`, upsert + reconciliation) and `quiz_images` (via
+> the new `QuizImageStoreRepository`, upsert-only — no reconciliation, orphaned
+> rows are a deferred open question). `quiz_question_embeddings` has no write path
+> yet — `EmbedQuizVariants` and the variant registry are Phase 2.
 
 *Last updated: 2026-08-04 — verified against commit `2248dcc`; switched the Postgres
 volume from a named Docker volume to a bind mount at `docker/.volumes/postgres_data`
@@ -270,3 +275,14 @@ reconciling delete scoped to the run (spec 0010, AD-1/AD-2) — `ArticleStoreRep
 `BulkInsertStoreRepository`, which is deleted) and no longer expose `delete_source`. The
 `created_at` caveat under "Main schema" is narrowed to `quiz_questions`, the one table it
 ever applied to; it still holds until spec 0008's FR-6 replaces the quiz write path too.*
+
+*Last updated: 2026-08-06 — verified against commit `598690c`; `quiz_questions` moved off
+truncate + bulk-insert onto upsert (on `number`) + whole-table reconciliation
+(`QuizQuestionStoreRepository.delete_missing`, no `source` param — quiz has a single
+source, unlike the knowledge side), so its `created_at` caveat no longer applies (spec
+0008 Phase 1, superseding the `DbStoreStep`/`StoreRepository` full-reload path — both
+deleted, zero remaining callers). New `QuizImageStoreRepository` (upsert-only on
+`filename`, no reconciliation — orphaned rows are a deferred open question) writes
+`quiz_images`. `quiz_question_embeddings` still has no write path (Phase 2). Corrected
+the stale "Current state" note under Migrations: `db/init.sql` already carries the
+target schema and spec 0008's status is `ready`, not `draft`.*

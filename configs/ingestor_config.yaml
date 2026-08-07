@@ -50,6 +50,7 @@ articles_table: articles
 article_commas_table: article_commas
 quiz_questions_table: quiz_questions
 quiz_question_embeddings_table: quiz_question_embeddings
+quiz_images_table: quiz_images
 embed_repealed: false
 rca_ranges: ["118-165", "278-300"]
 
