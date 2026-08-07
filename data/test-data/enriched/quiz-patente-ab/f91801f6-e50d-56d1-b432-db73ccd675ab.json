@@ -1,0 +1,27 @@
+{
+  "question_id": 4006,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18380",
+  "text": "L'isola di traffico corrisponde, in genere, al centro storico della città",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di isola di traffico",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "isola di traffico",
+      "centro storico",
+      "area urbana",
+      "dispositivo di traffico"
+    ],
+    "vector_search_queries": [
+      "definizione e funzione dell'isola di traffico",
+      "differenza tra isola di traffico e centro storico"
+    ],
+    "rule_explanation": "L'isola di traffico è un'area delimitata da strisce bianche discontinue, che non può essere oltrepassata o impegnata, salvo che per superarla, se non per le direzioni consentite. Non corrisponde al centro storico."
+  }
+}

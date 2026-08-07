@@ -1,0 +1,27 @@
+{
+  "question_id": 4405,
+  "topic": "Distanza di sicurezza",
+  "number": "22641",
+  "text": "Sulla distanza di sicurezza influisce il numero di marce del cambio di velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Fattori che influenzano la distanza di sicurezza"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni della strada",
+      "velocità",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "fattori che influenzano la distanza di sicurezza tra veicoli",
+      "obbligo di mantenere la distanza di sicurezza in base a velocità e condizioni"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente di evitare pericoli, tenendo conto delle condizioni della strada, del traffico, del veicolo e delle condizioni atmosferiche, non del numero di marce."
+  }
+}

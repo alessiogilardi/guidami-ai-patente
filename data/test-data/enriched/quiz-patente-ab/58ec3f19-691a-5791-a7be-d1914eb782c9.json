@@ -1,0 +1,28 @@
+{
+  "question_id": 4665,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25032",
+  "text": "Il \"fondo di garanzia per le vittime della strada\" risarcisce i danni arrecati dai conducenti minorenni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fondo di garanzia per le vittime della strada",
+      "Responsabilità civile dei conducenti minorenni"
+    ],
+    "exact_keywords": [
+      "Fondo di garanzia per le vittime della strada",
+      "risarcimento",
+      "conducente minorenne",
+      "veicolo non identificato",
+      "sinistro stradale"
+    ],
+    "vector_search_queries": [
+      "risarcimento danni Fondo Garanzia Vittime Strada conducente minorenne",
+      "copertura Fondo Garanzia Vittime Strada veicoli non assicurati o non identificati"
+    ],
+    "rule_explanation": "Il Fondo di Garanzia Vittime della Strada risarcisce i danni causati da veicoli non assicurati o non identificati, ma non quelli causati da conducenti minorenni se il veicolo è coperto da polizza."
+  }
+}

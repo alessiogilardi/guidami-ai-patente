@@ -1,0 +1,32 @@
+{
+  "question_id": 4083,
+  "topic": "Segnali di pericolo",
+  "number": "19252",
+  "text": "Il segnale raffigurato può trovarsi anche su strada a doppio senso di circolazione",
+  "correct_answer": true,
+  "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg",
+  "image_description": "Segnale di pericolo - Restringimento carreggiata lato destro. Il segnale preannuncia un restringimento della carreggiata sul lato destro.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta due linee verticali parallele, di cui quella di destra si interrompe e si sposta verso sinistra, indicando un restringimento della carreggiata su quel lato.",
+    "name": "Segnale di pericolo - Restringimento carreggiata lato destro",
+    "description": "Il segnale preannuncia un restringimento della carreggiata sul lato destro."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Restringimento di carreggiata",
+      "Tipologia di strada"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "restringimento carreggiata",
+      "strada a doppio senso di circolazione",
+      "carreggiata laterale"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo di restringimento carreggiata su strade a doppio senso",
+      "preavviso di restringimento carreggiata su strade a doppio senso di circolazione"
+    ],
+    "rule_explanation": "Il segnale di pericolo di restringimento carreggiata può essere installato sia su strade a senso unico che su strade a doppio senso di circolazione."
+  }
+}

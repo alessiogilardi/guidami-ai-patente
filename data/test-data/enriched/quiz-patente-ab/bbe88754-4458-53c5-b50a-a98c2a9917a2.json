@@ -1,0 +1,27 @@
+{
+  "question_id": 4032,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18652",
+  "text": "Le autovetture possono avere motore elettrico",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autovettura",
+      "Veicoli a motore elettrico"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "motore elettrico",
+      "veicolo",
+      "definizione di autovettura"
+    ],
+    "vector_search_queries": [
+      "definizione di autovettura codice della strada",
+      "veicoli a motore elettrico definizione"
+    ],
+    "rule_explanation": "Le autovetture sono definite come veicoli a motore con quattro ruote e destinati al trasporto di persone, indipendentemente dalla tipologia di propulsione (termica, elettrica, ibrida)."
+  }
+}

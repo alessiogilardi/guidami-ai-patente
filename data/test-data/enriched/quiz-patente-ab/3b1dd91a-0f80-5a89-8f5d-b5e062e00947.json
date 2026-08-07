@@ -1,0 +1,30 @@
+{
+  "question_id": 4625,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24723",
+  "text": "Il fenomeno dell'aquaplaning si verifica più facilmente a bassa velocità",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fenomeno dell'aquaplaning",
+      "Sicurezza stradale",
+      "Velocità di guida"
+    ],
+    "exact_keywords": [
+      "aquaplaning",
+      "velocità",
+      "aderenza",
+      "pneumatici",
+      "asfalto bagnato"
+    ],
+    "vector_search_queries": [
+      "rischio aquaplaning in relazione alla velocità",
+      "condizioni che favoriscono l'aquaplaning",
+      "perdita di aderenza degli pneumatici su bagnato"
+    ],
+    "rule_explanation": "L'aquaplaning si verifica più facilmente ad alta velocità su asfalto bagnato, quando gli pneumatici perdono aderenza a causa dello strato d'acqua."
+  }
+}

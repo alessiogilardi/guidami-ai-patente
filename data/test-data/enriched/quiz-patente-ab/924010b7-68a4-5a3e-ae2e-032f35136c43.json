@@ -1,0 +1,27 @@
+{
+  "question_id": 4701,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25280",
+  "text": "Dopo un incidente, il rischio che scoppi un incendio è maggiore se il veicolo è dotato di interruttore inerziale, che blocca l'afflusso di carburante al motore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza antincendio dei veicoli",
+      "Dispositivi di sicurezza per veicoli"
+    ],
+    "exact_keywords": [
+      "interruttore inerziale",
+      "afflusso di carburante",
+      "rischio incendio",
+      "dispositivo di sicurezza"
+    ],
+    "vector_search_queries": [
+      "funzionamento interruttore inerziale e sicurezza antincendio",
+      "dispositivi di sicurezza veicoli per prevenire incendi in caso di incidente"
+    ],
+    "rule_explanation": "L'interruttore inerziale è un dispositivo di sicurezza che interrompe l'afflusso di carburante in caso di incidente, riducendo il rischio di incendio, non aumentandolo."
+  }
+}

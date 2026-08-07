@@ -1,0 +1,30 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18492",
+  "text": "La corsia è una pista riservata alle vetture da corsa",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di corsia",
+      "Uso della strada",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "corsia",
+      "pista riservata",
+      "vetture da corsa",
+      "veicoli",
+      "circolazione"
+    ],
+    "vector_search_queries": [
+      "definizione di corsia stradale",
+      "uso delle corsie nella circolazione stradale",
+      "differenza tra corsia e pista riservata"
+    ],
+    "rule_explanation": "La corsia è una parte della carreggiata destinata alla circolazione di una sola fila di veicoli, non una pista riservata esclusivamente alle auto da corsa."
+  }
+}

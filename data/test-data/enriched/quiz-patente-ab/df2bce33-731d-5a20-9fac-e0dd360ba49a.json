@@ -1,0 +1,27 @@
+{
+  "question_id": 4022,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18543",
+  "text": "In corrispondenza del passo carrabile è consentita la sosta",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Divieto di sosta in prossimità di accessi carrai",
+      "Regole di circolazione e sosta in aree urbane"
+    ],
+    "exact_keywords": [
+      "passo carrabile",
+      "sosta",
+      "divieto di sosta",
+      "accesso alla proprietà privata"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta in corrispondenza di passi carrabili",
+      "regolamentazione della sosta in prossimità di accessi carrai"
+    ],
+    "rule_explanation": "La sosta è vietata in corrispondenza dei passi carrabili per garantire la libera accessibilità alle proprietà private e la fluidità del traffico."
+  }
+}

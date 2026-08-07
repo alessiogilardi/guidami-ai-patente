@@ -1,0 +1,27 @@
+{
+  "question_id": 4405,
+  "topic": "Distanza di sicurezza",
+  "number": "22635",
+  "text": "Sulla distanza di sicurezza influisce la velocità a cui si viaggia",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Adeguamento della velocità"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "velocità",
+      "condizioni della strada",
+      "manovra di frenatura"
+    ],
+    "vector_search_queries": [
+      "influenza della velocità sulla distanza di sicurezza",
+      "calcolo della distanza di sicurezza in base alla velocità e alle condizioni di marcia"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere tale da consentire al conducente, in sicurezza e senza manovre pericolose, di्मीstopre il veicolo, tenendo conto della velocità, delle condizioni della strada, del traffico e del veicolo stesso."
+  }
+}

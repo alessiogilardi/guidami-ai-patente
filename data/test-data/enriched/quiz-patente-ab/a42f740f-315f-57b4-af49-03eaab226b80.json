@@ -1,0 +1,29 @@
+{
+  "question_id": 4022,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18536",
+  "text": "Il passo carrabile è una zona per l'accesso dei veicoli alle proprietà laterali alla strada",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di passo carrabile",
+      "Accesso a proprietà private",
+      "Uso della strada"
+    ],
+    "exact_keywords": [
+      "passo carrabile",
+      "accesso ai fabbricati",
+      "proprietà laterali",
+      "strada"
+    ],
+    "vector_search_queries": [
+      "definizione di passo carrabile nel CdS",
+      "accesso veicoli a proprietà private laterali alla strada",
+      "cos'è un passo carrabile e a cosa serve"
+    ],
+    "rule_explanation": "Il passo carrabile è un'apertura nella banchina o nel marciapiede, munita di apposita rampa, che consente il transito dei veicoli da o verso una proprietà privata laterale alla strada."
+  }
+}

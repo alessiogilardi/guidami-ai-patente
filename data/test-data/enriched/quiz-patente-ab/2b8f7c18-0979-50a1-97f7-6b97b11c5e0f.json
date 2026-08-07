@@ -1,0 +1,28 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18491",
+  "text": "La corsia può essere a doppio senso di circolazione",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione delle corsie stradali",
+      "Direzionalità del traffico"
+    ],
+    "exact_keywords": [
+      "corsia",
+      "doppio senso di circolazione",
+      "senso unico",
+      "carreggiata"
+    ],
+    "vector_search_queries": [
+      "definizione di corsia stradale",
+      "corsia a senso unico vs corsia a doppio senso di marcia",
+      "caratteristiche delle corsie stradali"
+    ],
+    "rule_explanation": "Una corsia è una singola corsia di marcia all'interno di una carreggiata, e può essere destinata alla circolazione in un solo senso o in entrambi, a seconda della segnaletica e della classificazione della strada."
+  }
+}

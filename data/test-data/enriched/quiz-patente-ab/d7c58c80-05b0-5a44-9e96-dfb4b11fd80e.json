@@ -1,0 +1,28 @@
+{
+  "question_id": 4701,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25277",
+  "text": "In caso di principio d'incendio del veicolo, in mancanza di estintore, si può gettare sabbia o terra alla base delle fiamme",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Gestione principi d'incendio su veicoli",
+      "Uso di mezzi estinguenti alternativi"
+    ],
+    "exact_keywords": [
+      "principio d'incendio",
+      "estintore",
+      "sabbia",
+      "terra",
+      "base delle fiamme"
+    ],
+    "vector_search_queries": [
+      "mezzi alternativi all'estintore per principi d'incendio su veicoli",
+      "uso di sabbia o terra per spegnere fiamme su veicoli"
+    ],
+    "rule_explanation": "In assenza di estintore, è consentito usare sabbia o terra per spegnere un principio d'incendio del veicolo, dirigendoli alla base delle fiamme."
+  }
+}

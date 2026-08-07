@@ -1,0 +1,27 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18489",
+  "text": "La corsia può essere destinata al rallentamento dei veicoli in uscita dalle autostrade",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Corsie di decelerazione",
+      "Uscita da autostrade"
+    ],
+    "exact_keywords": [
+      "corsia di decelerazione",
+      "uscita autostradale",
+      "rallentamento",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "funzione corsia di decelerazione autostradale",
+      "destinazione corsia per rallentamento in uscita da autostrada"
+    ],
+    "rule_explanation": "Le corsie di decelerazione sono specificamente destinate al rallentamento dei veicoli che si accingono a uscire dall'autostrada."
+  }
+}

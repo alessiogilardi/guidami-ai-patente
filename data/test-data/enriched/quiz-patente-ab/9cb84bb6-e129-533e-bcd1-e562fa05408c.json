@@ -1,0 +1,28 @@
+{
+  "question_id": 4538,
+  "topic": "Ingombro della carreggiata; segnalazione di veicolo fermo; norme sulla circolazione in autostrada e strade extraurbane principali; trasporto di persone; carico dei veicoli; pannelli sui veicoli; traino dei veicoli e dei veicoli in avaria; traino dei rimorchi",
+  "number": "23865",
+  "text": "Nelle aree di servizio e nelle aree di sosta delle autostrade e delle strade extraurbane principali gli animali possono circolare solo se debitamente custoditi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Aree di servizio e sosta su autostrade",
+      "Circolazione di animali su strade extraurbane principali"
+    ],
+    "exact_keywords": [
+      "aree di servizio",
+      "aree di sosta",
+      "autostrade",
+      "animali",
+      "custoditi"
+    ],
+    "vector_search_queries": [
+      "regolamentazione circolazione animali aree di servizio autostrada",
+      "prescrizioni per la custodia di animali nelle aree di sosta autostradali"
+    ],
+    "rule_explanation": "Nelle aree di servizio e di sosta delle autostrade e delle strade extraurbane principali, gli animali sono ammessi solo se sotto stretta custodia del proprietario o accompagnatore."
+  }
+}

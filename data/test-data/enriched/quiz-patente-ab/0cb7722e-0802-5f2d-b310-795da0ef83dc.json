@@ -1,0 +1,27 @@
+{
+  "question_id": 4022,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18537",
+  "text": "In corrispondenza del passo carrabile è consentita la fermata",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fermata e sosta in prossimità di accessi stradali",
+      "Regole di circolazione e sosta in aree private e pubbliche"
+    ],
+    "exact_keywords": [
+      "passo carrabile",
+      "fermata",
+      "sosta",
+      "divieto di sosta"
+    ],
+    "vector_search_queries": [
+      "definizione di fermata e sosta in prossimità di passi carrabili",
+      "regolamentazione della sosta e fermata in corrispondenza di accessi privati"
+    ],
+    "rule_explanation": "La fermata è consentita in corrispondenza di un passo carrabile, a differenza della sosta che è vietata per garantire la libera accessibilità."
+  }
+}

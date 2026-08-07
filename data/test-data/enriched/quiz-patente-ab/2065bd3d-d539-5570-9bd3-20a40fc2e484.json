@@ -1,0 +1,32 @@
+{
+  "question_id": 4082,
+  "topic": "Segnali di pericolo",
+  "number": "19239",
+  "text": "Il segnale raffigurato, se a fondo giallo, è posto in presenza di un cantiere stradale che riduce la larghezza della carreggiata",
+  "correct_answer": true,
+  "image": "6a22104defc75f1e908cb883a771b8bc.jpeg",
+  "image_description": "Segnale di pericolo - Restringimento carreggiata. Il segnale preannuncia un restringimento della carreggiata sul lato sinistro.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un pittogramma nero che rappresenta un restringimento della carreggiata sul lato sinistro. Le due linee verticali nere, che simboleggiano i margini della strada, sono di lunghezza uguale all'inizio, ma quella di sinistra si interrompe e si avvicina a quella di destra, indicando una riduzione della larghezza della strada da quel lato.",
+    "name": "Segnale di pericolo - Restringimento carreggiata",
+    "description": "Il segnale preannuncia un restringimento della carreggiata sul lato sinistro."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Segnali di cantiere",
+      "Restringimento carreggiata"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "cantiere stradale",
+      "restringimento carreggiata",
+      "fondo giallo"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo con fondo giallo per cantiere stradale",
+      "preavviso di restringimento carreggiata dovuto a cantiere"
+    ],
+    "rule_explanation": "I segnali di pericolo con fondo giallo preavvisano un cantiere stradale che causa un restringimento della carreggiata."
+  }
+}

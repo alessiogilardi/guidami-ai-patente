@@ -1,0 +1,34 @@
+{
+  "question_id": 4448,
+  "topic": "Esempi di precedenza (ordine di precedenza agli incroci)",
+  "number": "23048",
+  "text": "Nella situazione rappresentata in figura il veicolo A nello svoltare a sinistra ha la destra libera",
+  "correct_answer": false,
+  "image": "5193d63a57a52ce78dba15ecd5bbaf66.jpeg",
+  "image_description": "Incrocio regolato da segnali semaforici e segnale di prescrizione (divieto di voltare a sinistra). L'incrocio è regolato da segnali semaforici e da un segnale di prescrizione (divieto di voltare a sinistra). Il tram ha la precedenza sui veicoli che si immettono nella sua corsia. Il veicolo A, che svolta a sinistra, deve dare la precedenza al tram e al veicolo O. Il veicolo O, che prosegue dritto, deve dare la precedenza al tram. Il ciclista M, che svolta a destra, deve dare la precedenza al tram e al veicolo O.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un incrocio a raso con quattro vie. Sono presenti un tram (T) che transita sui binari che attraversano l'incrocio, un veicolo A (auto gialla) che si trova sulla strada inferiore e intende svoltare a sinistra, un veicolo O (auto nera) che si trova sulla strada superiore e intende proseguire dritto, e un ciclista (M) che si trova sulla strada di destra e intende svoltare a destra. Sono presenti anche segnali semaforici per il veicolo O e un segnale di prescrizione (divieto di voltare a sinistra) per il veicolo A. I binari del tram attraversano l'incrocio orizzontalmente. Il tram si trova all'interno dell'incrocio. Il veicolo A è posizionato per svoltare a sinistra, con una traiettoria tratteggiata che indica il suo percorso. Il veicolo O è posizionato per proseguire dritto, con una traiettoria tratteggiata che indica il suo percorso. Il ciclista M è posizionato per svoltare a destra, con una traiettoria tratteggiata che indica il suo percorso. Vi è anche un segnale di prescrizione raffigurante un ciclista su sfondo bianco, posizionato sulla destra dell'incrocio, che indica un percorso ciclabile obbligatorio o una corsia riservata ai ciclisti. Il tram è un veicolo su rotaia e ha la precedenza in caso di conflitto con altri veicoli. Il veicolo A deve dare la precedenza ai veicoli provenienti dalla sua destra (veicolo O) e a quelli che incrociano la sua traiettoria (tram). Il veicolo O deve dare la precedenza al tram. Il ciclista M deve dare la precedenza ai veicoli provenienti dalla sua sinistra (tram e veicolo O).",
+    "name": "Incrocio regolato da segnali semaforici e segnale di prescrizione (divieto di voltare a sinistra)",
+    "description": "L'incrocio è regolato da segnali semaforici e da un segnale di prescrizione (divieto di voltare a sinistra). Il tram ha la precedenza sui veicoli che si immettono nella sua corsia. Il veicolo A, che svolta a sinistra, deve dare la precedenza al tram e al veicolo O. Il veicolo O, che prosegue dritto, deve dare la precedenza al tram. Il ciclista M, che svolta a destra, deve dare la precedenza al tram e al veicolo O."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ordine di precedenza agli incroci",
+      "Regole di svolta a sinistra",
+      "Segnaletica stradale di prescrizione"
+    ],
+    "exact_keywords": [
+      "svoltare a sinistra",
+      "dare la precedenza",
+      "incrocio",
+      "segnali semaforici",
+      "divieto di voltare a sinistra"
+    ],
+    "vector_search_queries": [
+      "precedenza veicolo che svolta a sinistra incrocio",
+      "regole di precedenza incrocio con tram",
+      "interpretazione segnale divieto di voltare a sinistra"
+    ],
+    "rule_explanation": "Il veicolo che svolta a sinistra deve dare la precedenza ai veicoli provenienti dalla direzione opposta, a meno che non sia diversamente indicato dalla segnaletica. In questo caso, il divieto di voltare a sinistra impone di non effettuare tale manovra."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18495",
+  "text": "La corsia è una strada a scorrimento veloce",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di corsia stradale",
+      "Strada a scorrimento veloce"
+    ],
+    "exact_keywords": [
+      "corsia",
+      "strada a scorrimento veloce",
+      "carreggiata",
+      "sede stradale"
+    ],
+    "vector_search_queries": [
+      "definizione di corsia stradale nel CdS",
+      "differenza tra corsia e strada a scorrimento veloce"
+    ],
+    "rule_explanation": "La corsia è una porzione della carreggiata, delimitata da segnaletica orizzontale, non una strada a scorrimento veloce."
+  }
+}

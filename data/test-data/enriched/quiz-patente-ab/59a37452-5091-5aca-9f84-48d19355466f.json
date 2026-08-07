@@ -1,0 +1,30 @@
+{
+  "question_id": 4405,
+  "topic": "Distanza di sicurezza",
+  "number": "22634",
+  "text": "Sulla distanza di sicurezza influisce la concentrazione del conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Distanza di sicurezza",
+      "Fattori che influenzano la distanza di sicurezza",
+      "Condotta di guida sicura"
+    ],
+    "exact_keywords": [
+      "distanza di sicurezza",
+      "condizioni della strada",
+      "condizioni atmosferiche",
+      "velocità",
+      "concentrazione"
+    ],
+    "vector_search_queries": [
+      "fattori che influenzano la distanza di sicurezza tra veicoli",
+      "adeguamento della distanza di sicurezza in base alla concentrazione del conducente",
+      "distanza di sicurezza e condizioni di guida"
+    ],
+    "rule_explanation": "La distanza di sicurezza deve essere adeguata alle condizioni della strada, atmosferiche, del traffico, del veicolo e alla concentrazione del conducente."
+  }
+}

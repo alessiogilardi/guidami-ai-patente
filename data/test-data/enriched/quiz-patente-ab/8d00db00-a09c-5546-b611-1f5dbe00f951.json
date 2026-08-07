@@ -1,0 +1,28 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18496",
+  "text": "Nei centri abitati, su una stessa corsia possono circolare affiancati due motocicli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Circolazione dei motocicli",
+      "Convivenza civile sulla strada",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "motocicli",
+      "affiancati",
+      "centri abitati",
+      "corsia di marcia"
+    ],
+    "vector_search_queries": [
+      "circolazione motocicli affiancati in centro abitato",
+      "divieto di affiancamento motocicli su medesima corsia di marcia"
+    ],
+    "rule_explanation": "Nei centri abitati, è vietato ai motocicli circolare affiancati sulla stessa corsia di marcia, salvo diversa segnalazione."
+  }
+}

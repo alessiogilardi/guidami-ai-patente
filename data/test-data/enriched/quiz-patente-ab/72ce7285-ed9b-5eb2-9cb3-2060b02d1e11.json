@@ -1,0 +1,27 @@
+{
+  "question_id": 4032,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18655",
+  "text": "Le autovetture non possono trainare carrelli-appendice o rimorchi",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Traino di rimorchi da parte di autovetture",
+      "Classificazione dei veicoli e loro capacità di traino"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "carrello-appendice",
+      "rimorchio",
+      "trainare"
+    ],
+    "vector_search_queries": [
+      "capacità di traino delle autovetture per carrelli-appendice e rimorchi",
+      "condizioni per il traino di rimorchi da parte di autovetture"
+    ],
+    "rule_explanation": "Le autovetture possono trainare carrelli-appendice e rimorchi leggeri, purché la massa complessiva a pieno carico del rimorchio non superi la massa a vuoto dell'autovettura trainante e la velocità sia adeguata."
+  }
+}

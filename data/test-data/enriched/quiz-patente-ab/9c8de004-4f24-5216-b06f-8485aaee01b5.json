@@ -1,0 +1,31 @@
+{
+  "question_id": 4091,
+  "topic": "Segnali di pericolo",
+  "number": "19342",
+  "text": "Il segnale raffigurato è un segnale di pericolo",
+  "correct_answer": true,
+  "image": "d74486cedaf64b4708047a7c8d23f672.jpeg",
+  "image_description": "Segnale di pericolo - doppio senso di circolazione. Il segnale preannuncia che la circolazione avviene in doppio senso. Il segnale è di pericolo e impone di usare maggiore prudenza.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di pericolo, di forma triangolare con bordo rosso e sfondo bianco. Al centro del segnale sono presenti due frecce nere, una rivolta verso l'alto e una verso il basso, che indicano un doppio senso di circolazione.",
+    "name": "Segnale di pericolo - doppio senso di circolazione",
+    "description": "Il segnale preannuncia che la circolazione avviene in doppio senso. Il segnale è di pericolo e impone di usare maggiore prudenza."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Preavviso di deviazione"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "doppio senso di circolazione",
+      "prudenza",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "funzione dei segnali di pericolo nella segnaletica stradale",
+      "obbligo di prudenza in presenza di segnali di pericolo"
+    ],
+    "rule_explanation": "I segnali di pericolo preannunciano una situazione di potenziale pericolo per la circolazione, imponendo al conducente di usare maggiore prudenza."
+  }
+}

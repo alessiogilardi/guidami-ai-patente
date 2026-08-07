@@ -1,0 +1,27 @@
+{
+  "question_id": 4032,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18661",
+  "text": "Le autovetture sono soggette a revisione ogni cinque anni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Revisione periodica dei veicoli",
+      "Obblighi del conducente e del proprietario del veicolo"
+    ],
+    "exact_keywords": [
+      "autovetture",
+      "revisione",
+      "veicoli a motore",
+      "periodicità"
+    ],
+    "vector_search_queries": [
+      "periodicità revisione autovetture",
+      "frequenza controlli tecnici veicoli a motore"
+    ],
+    "rule_explanation": "Le autovetture devono essere sottoposte a revisione ogni due anni, a partire dal quarto anno dalla data di prima immatricolazione."
+  }
+}

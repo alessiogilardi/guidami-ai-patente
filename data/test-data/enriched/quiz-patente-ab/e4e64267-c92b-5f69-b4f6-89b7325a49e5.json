@@ -1,0 +1,27 @@
+{
+  "question_id": 4652,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24931",
+  "text": "Se un ferito della strada ha riportato delle ustioni al busto, conviene coprirle con materiale pulito, possibilmente sterile",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di ustioni",
+      "Gestione delle ferite da ustione"
+    ],
+    "exact_keywords": [
+      "ustioni",
+      "materiale pulito",
+      "materiale sterile",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "trattamento delle ustioni primo soccorso",
+      "copertura ferite da ustione materiale sterile"
+    ],
+    "rule_explanation": "In caso di ustioni, è consigliabile coprire la ferita con materiale pulito o sterile per proteggerla da infezioni e agenti esterni."
+  }
+}

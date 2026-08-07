@@ -1,0 +1,31 @@
+{
+  "question_id": 4107,
+  "topic": "Segnali di divieto",
+  "number": "19546",
+  "text": "Il segnale raffigurato si può trovare sia sulle strade urbane che su quelle extraurbane",
+  "correct_answer": true,
+  "image": "7380bb6088c1077bc47b7ec7cdc26345.jpeg",
+  "image_description": "Segnale di divieto di sorpasso. Il segnale vieta il sorpasso a tutti i veicoli, ad eccezione di quelli a due ruote senza carrozzella, dei quadricicli a motore e dei quadricicli non leggeri. Il divieto si applica anche quando la manovra può essere compiuta sorpassando la striscia continua.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale di forma circolare con bordo rosso e sfondo bianco. Al centro del segnale sono raffigurati due automobili, una rossa e una nera, affiancate. La presenza delle due automobili, una che precede l'altra, indica un divieto di sorpasso.",
+    "name": "Segnale di divieto di sorpasso",
+    "description": "Il segnale vieta il sorpasso a tutti i veicoli, ad eccezione di quelli a due ruote senza carrozzella, dei quadricicli a motore e dei quadricicli non leggeri. Il divieto si applica anche quando la manovra può essere compiuta sorpassando la striscia continua."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di circolazione",
+      "Applicabilità dei segnali stradali"
+    ],
+    "exact_keywords": [
+      "segnali di divieto",
+      "strade urbane",
+      "strade extraurbane",
+      "divieto di sorpasso"
+    ],
+    "vector_search_queries": [
+      "segnali di divieto di sorpasso applicabilità strade urbane ed extraurbane",
+      "utilizzo dei segnali di divieto su diverse tipologie di strade"
+    ],
+    "rule_explanation": "Il segnale di divieto di sorpasso può essere impiegato sia su strade urbane che extraurbane per regolare la sicurezza della circolazione in tratti specifici."
+  }
+}

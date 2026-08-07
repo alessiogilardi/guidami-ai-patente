@@ -1,0 +1,28 @@
+{
+  "question_id": 4022,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18533",
+  "text": "Il passo carrabile consente ai veicoli di accedere alle proprietà private laterali alla strada (garage, cortili, ecc.)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Passo carrabile",
+      "Accesso a proprietà private",
+      "Uso della strada"
+    ],
+    "exact_keywords": [
+      "passo carrabile",
+      "accesso a proprietà private",
+      "strada",
+      "veicoli"
+    ],
+    "vector_search_queries": [
+      "definizione e funzione del passo carrabile",
+      "regole di accesso a proprietà private tramite passo carrabile"
+    ],
+    "rule_explanation": "Il passo carrabile è un'apertura che permette ai veicoli di accedere o uscire da una proprietà privata (come garage o cortili) situata a lato della strada."
+  }
+}

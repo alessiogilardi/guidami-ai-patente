@@ -1,0 +1,30 @@
+{
+  "question_id": 4625,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24724",
+  "text": "Il fenomeno dell'aquaplaning riduce lo sbandamento del veicolo",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fenomeno dell'aquaplaning",
+      "Perdita di aderenza",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "aquaplaning",
+      "aderenza",
+      "pneumatici",
+      "velocità",
+      "condizioni atmosferiche"
+    ],
+    "vector_search_queries": [
+      "effetti dell'aquaplaning sulla tenuta di strada",
+      "rischio di sbandamento dovuto all'aquaplaning",
+      "cause e conseguenze dell'aquaplaning"
+    ],
+    "rule_explanation": "L'aquaplaning si verifica quando uno strato d'acqua impedisce il contatto tra pneumatici e asfalto, causando la perdita di aderenza e aumentando il rischio di sbandamento."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "question_id": 4022,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18540",
+  "text": "Il passo carrabile è una strada riservata agli autocarri",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di passo carrabile",
+      "Uso della strada e convivenza civile"
+    ],
+    "exact_keywords": [
+      "passo carrabile",
+      "strada riservata",
+      "accesso privato",
+      "pubblico passaggio"
+    ],
+    "vector_search_queries": [
+      "definizione di passo carrabile nel CdS",
+      "differenza tra passo carrabile e strada pubblica",
+      "accesso privato tramite passo carrabile"
+    ],
+    "rule_explanation": "Il passo carrabile è un accesso privato a un'area laterale alla strada pubblica, non una strada riservata agli autocarri."
+  }
+}

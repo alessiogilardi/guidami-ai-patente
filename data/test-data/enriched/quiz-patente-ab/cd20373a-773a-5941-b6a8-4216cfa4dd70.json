@@ -1,0 +1,27 @@
+{
+  "question_id": 4652,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24934",
+  "text": "Se un ferito della strada si è ustionato, bisogna disinfettare le bruciature con l'alcool",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di ustioni",
+      "Controindicazioni mediche"
+    ],
+    "exact_keywords": [
+      "ustioni",
+      "alcool",
+      "disinfettare",
+      "ferito"
+    ],
+    "vector_search_queries": [
+      "trattamento primo soccorso ustioni cutanee",
+      "controindicazioni disinfettanti per ustioni gravi"
+    ],
+    "rule_explanation": "In caso di ustioni, non si deve usare l'alcool per disinfettare, poiché può peggiorare il danno tissutale e aumentare il dolore. Si devono usare soluzioni specifiche per il primo soccorso."
+  }
+}

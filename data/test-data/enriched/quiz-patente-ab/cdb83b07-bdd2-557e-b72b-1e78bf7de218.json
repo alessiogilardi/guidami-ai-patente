@@ -1,0 +1,28 @@
+{
+  "question_id": 4022,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18538",
+  "text": "Il passo carrabile è un parcheggio scambiatore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di passo carrabile",
+      "Funzione di parcheggio scambiatore"
+    ],
+    "exact_keywords": [
+      "passo carrabile",
+      "parcheggio scambiatore",
+      "accesso carraio",
+      "area di sosta"
+    ],
+    "vector_search_queries": [
+      "differenza tra passo carrabile e parcheggio scambiatore",
+      "definizione di passo carrabile e sua funzione",
+      "cos'è un parcheggio scambiatore e a cosa serve"
+    ],
+    "rule_explanation": "Il passo carrabile è un'apertura che dà accesso a un'area privata dalla strada, non un parcheggio scambiatore che è un'area di sosta per agevolare il cambio di mezzo di trasporto."
+  }
+}

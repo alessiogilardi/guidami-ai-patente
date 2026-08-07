@@ -1,0 +1,28 @@
+{
+  "question_id": 4006,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18377",
+  "text": "L'isola di traffico è una piazzola di sosta per i veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di isola di traffico",
+      "Segnaletica stradale verticale e orizzontale"
+    ],
+    "exact_keywords": [
+      "isola di traffico",
+      "dispositivo di traffico",
+      "area vietata alla circolazione",
+      "segnalata da apposita segnaletica"
+    ],
+    "vector_search_queries": [
+      "definizione di isola di traffico nel codice della strada",
+      "funzione delle isole di traffico nella canalizzazione del traffico",
+      "differenza tra isola di traffico e piazzola di sosta"
+    ],
+    "rule_explanation": "L'isola di traffico è un'area delimitata da segnaletica orizzontale, destinata a incanalare o separare flussi di traffico, non una piazzola di sosta."
+  }
+}

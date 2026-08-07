@@ -1,0 +1,30 @@
+{
+  "question_id": 4665,
+  "topic": "Responsabilità civile, penale, amministrativa; assicurazione R.C.A.; altre forme assicurative legate al veicolo",
+  "number": "25027",
+  "text": "Il \"fondo di garanzia per le vittime della strada\" prevede il risarcimento dei danni arrecati alle persone da veicoli non coperti da assicurazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fondo di garanzia per le vittime della strada",
+      "Assicurazione obbligatoria R.C.A.",
+      "Risarcimento danni da circolazione stradale"
+    ],
+    "exact_keywords": [
+      "Fondo di Garanzia per le Vittime della Strada",
+      "risarcimento",
+      "danni alle persone",
+      "veicoli non assicurati",
+      "sinistri stradali"
+    ],
+    "vector_search_queries": [
+      "funzionamento Fondo di Garanzia Vittime della Strada",
+      "risarcimento danni da veicoli non assicurati o non identificati",
+      "copertura assicurativa obbligatoria per la responsabilità civile auto"
+    ],
+    "rule_explanation": "Il Fondo di Garanzia per le Vittime della Strada risarcisce i danni alle persone causati da veicoli non identificati, non assicurati, sprovvisti di assicurazione o Diệnati per cause di forza maggiore."
+  }
+}

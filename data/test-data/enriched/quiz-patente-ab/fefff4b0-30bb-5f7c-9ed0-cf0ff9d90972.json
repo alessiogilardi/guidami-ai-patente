@@ -1,0 +1,28 @@
+{
+  "question_id": 4006,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18385",
+  "text": "L'isola di traffico è una zona destinata al parcheggio dei veicoli",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di isola di traffico",
+      "Uso della strada e convivenza civile"
+    ],
+    "exact_keywords": [
+      "isola di traffico",
+      "zona destinata",
+      "parcheggio",
+      "fermata",
+      "sosta"
+    ],
+    "vector_search_queries": [
+      "definizione di isola di traffico nel CdS",
+      "scopo delle isole di traffico e divieto di sosta"
+    ],
+    "rule_explanation": "L'isola di traffico è una zona della strada, opportunamente delimitata e segnalata, destinata a: canalizzare i flussi di traffico, a separare correnti di traffico, a consentire o facilitare l'attraversamento pedonale, ma non al parcheggio dei veicoli."
+  }
+}

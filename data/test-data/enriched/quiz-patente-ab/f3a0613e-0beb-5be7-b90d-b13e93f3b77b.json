@@ -1,0 +1,28 @@
+{
+  "question_id": 4625,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24726",
+  "text": "Il fenomeno dell'aquaplaning aumenta l'aderenza sul fondo stradale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Perdita di aderenza",
+      "Aquaplaning",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "aquaplaning",
+      "aderenza",
+      "fondo stradale",
+      "perdita di controllo"
+    ],
+    "vector_search_queries": [
+      "fenomeno dell'aquaplaning e perdita di aderenza",
+      "effetti dell'aquaplaning sulla tenuta di strada"
+    ],
+    "rule_explanation": "L'aquaplaning si verifica quando uno strato d'acqua si interpone tra pneumatico e fondo stradale, causando una riduzione drastica dell'aderenza e del controllo del veicolo."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18493",
+  "text": "La corsia non può mai essere attraversata dai pedoni",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Pedoni e carreggiata",
+      "Sicurezza stradale e attraversamento"
+    ],
+    "exact_keywords": [
+      "pedoni",
+      "carreggiata",
+      "attraversamento",
+      "regole di circolazione"
+    ],
+    "vector_search_queries": [
+      "attraversamento carreggiata da parte di pedoni",
+      "regole per pedoni su strada pubblica"
+    ],
+    "rule_explanation": "I pedoni non possono attraversare la carreggiata se non dove espressamente consentito e secondo le regole di circolazione, per non intralciare o creare pericolo."
+  }
+}

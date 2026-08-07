@@ -1,0 +1,32 @@
+{
+  "question_id": 4083,
+  "topic": "Segnali di pericolo",
+  "number": "19257",
+  "text": "Il segnale raffigurato indica di disporsi su due file",
+  "correct_answer": false,
+  "image": "ac725b724d8bc2fea3c34c68c685d605.jpeg",
+  "image_description": "Segnale di pericolo - Restringimento carreggiata lato destro. Il segnale preannuncia un restringimento della carreggiata sul lato destro.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro è presente un pittogramma nero che rappresenta due linee verticali parallele, di cui quella di destra si interrompe e si sposta verso sinistra, indicando un restringimento della carreggiata su quel lato.",
+    "name": "Segnale di pericolo - Restringimento carreggiata lato destro",
+    "description": "Il segnale preannuncia un restringimento della carreggiata sul lato destro."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Restringimento di carreggiata"
+    ],
+    "exact_keywords": [
+      "pericolo",
+      "restringimento carreggiata",
+      "disposizione dei veicoli",
+      "preavviso"
+    ],
+    "vector_search_queries": [
+      "segnali di pericolo che indicano restringimento carreggiata",
+      "significato del segnale di restringimento carreggiata",
+      "segnaletica stradale di pericolo e disposizione dei veicoli"
+    ],
+    "rule_explanation": "Il segnale di pericolo raffigurante il restringimento della carreggiata preannuncia una riduzione della larghezza della strada, non una disposizione su due file."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "question_id": 4107,
+  "topic": "Segnali di divieto",
+  "number": "19547",
+  "text": "Il segnale (A) può essere ripetuto dopo ogni incrocio con pannello integrativo (B)",
+  "correct_answer": true,
+  "image": "3f226c27c67abb8abdee66edcfdc0a20.jpeg",
+  "image_description": "Segnale di divieto di sorpasso con pannello integrativo (B). Il segnale A è un segnale di divieto di sorpasso per tutti i veicoli, tranne quelli a due ruote senza motore e i quadricicli non leggeri. Il segnale B è un pannello integrativo che indica che il divieto si applica a tutti i veicoli a motore.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra due elementi, etichettati A e B. L'elemento A è un segnale stradale circolare con bordo rosso e sfondo bianco, raffigurante due automobili, una rossa e una nera, una accanto all'altra, con la rossa leggermente avanti. Questo è un segnale di divieto di sorpasso. L'elemento B è un pannello rettangolare bianco con bordo nero, contenente due frecce nere, una rivolta verso l'alto e una verso il basso, disposte verticalmente. Questo pannello integrativo specifica il tipo di veicoli a cui si applica il divieto indicato dal segnale A. In questo caso, le frecce che indicano direzioni opposte suggeriscono che il divieto si applica a tutti i veicoli a motore.",
+    "name": "Segnale di divieto di sorpasso con pannello integrativo (B)",
+    "description": "Il segnale A è un segnale di divieto di sorpasso per tutti i veicoli, tranne quelli a due ruote senza motore e i quadricicli non leggeri. Il segnale B è un pannello integrativo che indica che il divieto si applica a tutti i veicoli a motore."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Ripetizione dei segnali di divieto",
+      "Segnali di pericolo e prescrizione",
+      "Pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "ripetuto",
+      "incrocio",
+      "pannello integrativo",
+      "segnali di divieto"
+    ],
+    "vector_search_queries": [
+      "ripetizione segnali di divieto dopo incrocio con pannello integrativo",
+      "applicazione segnali di prescrizione con pannelli integrativi"
+    ],
+    "rule_explanation": "I segnali di divieto possono essere ripetuti dopo ogni incrocio se accompagnati da pannello integrativo che ne specifichi l'ambito di applicazione."
+  }
+}

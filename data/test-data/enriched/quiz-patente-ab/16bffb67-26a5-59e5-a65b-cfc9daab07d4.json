@@ -1,0 +1,28 @@
+{
+  "question_id": 4688,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25180",
+  "text": "Se il coefficiente di aderenza diminuisce le ruote motrici potrebbero pattinare",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Coefficiente di aderenza",
+      "Stabilità del veicolo",
+      "Tenuta di strada"
+    ],
+    "exact_keywords": [
+      "coefficiente di aderenza",
+      "aderenza",
+      "pattinare",
+      "ruote motrici"
+    ],
+    "vector_search_queries": [
+      "riduzione coefficiente aderenza e pattinamento ruote motrici",
+      "impatto aderenza su stabilità veicolo"
+    ],
+    "rule_explanation": "La diminuzione del coefficiente di aderenza tra pneumatici e manto stradale può causare lo slittamento (pattinamento) delle ruote motrici, compromettendo la stabilità e la tenuta di strada del veicolo."
+  }
+}

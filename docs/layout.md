@@ -12,6 +12,8 @@ repo/
 │   │                                #   ai/ (agents/: BaseAgent + PromptRenderer;
 │   │                                #   embedding/: clients/configs/services;
 │   │                                #   observability/: LlmCallTracker port + impls;
+│   │                                #   utils/: domain-agnostic retrieval algorithms
+│   │                                #   (reciprocal_rank_fusion) — spec 0008 Phase 2, AD-3;
 │   │                                #   protocols/services/repositories/mappers/models);
 │   │                                #   observability/: two self-contained sub-packages,
 │   │                                #   progress_reporter/ (ItemProgressReporter/ProgressReporter
@@ -35,8 +37,10 @@ repo/
 │   │                                #   retrieved commas justify the answer (ADR 0013)
 │   ├── scrapers/                   # Standalone script: normattiva.it -> data/raw/ + data/parsed/
 │   └── test_data_sampler/          # Standalone script: data/parsed/ -> a random subset in
-│                                    #   data/test-data/parsed/ (same C901-exempt tier as
-│                                    #   parsers/scrapers)
+│                                    #   data/test-data/parsed/, plus the sampled quiz
+│                                    #   subset's already-enriched files copied from
+│                                    #   data/enriched/ into data/test-data/enriched/
+│                                    #   (no LLM call — same C901-exempt tier as parsers/scrapers)
 ├── tests/                          # Mirrors src/ structure, no __init__.py per directory
 │   ├── commons/
 │   ├── domain/
@@ -97,6 +101,15 @@ gitignored — never committed, safe to delete once the spec they fed is
   `QuizEvaluationRow`) go in `src/domain/models/retrieval/` — `domain/entities/` stays
   reserved for the insertable projection of a table row, which omits DB-generated columns;
   a read model does the opposite and carries `id`.
+- **A generic retrieval algorithm with more than one plausible consumer** (not tied to the
+  quiz/corpus domain types) goes in `src/commons/ai/utils/`, per the `utils/` convention in
+  `rules/python/architecture.md` (genuinely generic, no domain-specific logic) —
+  `reciprocal_rank_fusion(rankings, k)` operates on plain ranked id lists, added for the
+  spec 0008 Phase 2 fusion arm but explicitly anticipated for reuse by a later hybrid
+  (dense+FTS) search feature (AD-3). Kept out of `cli/services/evaluation/` (where its only
+  caller, `MultiArmRetrievalEvaluator`, lives) for the same reason `CorpusReadRepository`/
+  `QuizReadRepository` are in `commons/` rather than `cli/`: a named future consumer outside
+  the CLI.
 
 - **New batch-pipeline code** (ingestion, enrichment, indexing) goes under
   `src/guidami_ai_patente_ingestor/`, following the package-per-role layout
@@ -232,9 +245,14 @@ gitignored — never committed, safe to delete once the spec they fed is
   `SourceConfig` from it: `src/test_data_sampler/sampler.py` samples
   `data/parsed/` into `data/test-data/parsed/` (ADR 0006), copying the
   referenced subset of `data/quiz-images/` into `data/test-data/quiz-images/`
-  alongside it (ADR 0008), registered as `sample-test-data` and exempted
-  from `C901` in `pyproject.toml` per the same "top-level orchestration is
-  low-value to enforce" rationale as its siblings.
+  alongside it (ADR 0008), and copying the sampled quiz subset's
+  already-enriched files from `data/enriched/quiz-patente-ab/` into
+  `data/test-data/enriched/quiz-patente-ab/` (`sample_quiz_enriched`, keyed
+  by `element_id("quiz", number)` — a filesystem copy from the already-
+  enriched full bank, never a re-enrichment LLM call), registered as
+  `sample-test-data` and exempted from `C901` in `pyproject.toml` per the
+  same "top-level orchestration is low-value to enforce" rationale as its
+  siblings.
 - **A standalone LLM-as-judge measurement tool** that needs the ingestor's
   Postgres/OpenRouter config but is neither a CLI feature nor a
   data-reduction script goes in its own top-level package, sibling to
@@ -308,3 +326,18 @@ single-law narrowing script (`rca_extract.py`, and now `amb_extract.py`, spec 00
 stays inside `scrapers/`, distinct from the cross-source pipeline-layer-sampling rule
 below it (`test_data_sampler/`) — the two bullets previously used `rca_extract.py` as
 an example of both, which was ambiguous.*
+
+*Last updated: 2026-08-07 — verified against commit `bbbb291`; `test_data_sampler/`
+tree comment and placement bullet now also cover `sample_quiz_enriched`, which copies the
+sampled quiz subset's already-enriched files from `data/enriched/quiz-patente-ab/` into
+`data/test-data/enriched/quiz-patente-ab/` — added while extracting spec 0008 Phase 2's
+plan, since `data/test-data/enriched/` didn't exist yet and generating it for real would
+mean re-running LLM enrichment.*
+
+*Last updated: 2026-08-07 — verified against commit `bbbb291`; spec 0008 Phase 2 landed:
+new `src/commons/ai/utils/` package (`reciprocal_rank_fusion`) plus a matching
+placement bullet, `commons/` tree comment updated to list it. `cli/services/evaluation/`
+and `cli/models/evaluation/` gained the multi-arm harness's new files
+(`multi_arm_retrieval_evaluator.py`, `ranking_delta.py`, `arm_result.py`,
+`multi_arm_evaluation_summary.py`) — no new rule needed, the 2026-08-05 entry above already
+covers this pair generically.*

@@ -1,0 +1,29 @@
+{
+  "question_id": 4032,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18658",
+  "text": "Si definisce autovettura il veicolo blindato e appositamente attrezzato per il trasporto di valori",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di veicolo",
+      "Classificazione dei veicoli",
+      "Uso responsabile della strada"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "veicolo blindato",
+      "trasporto di valori",
+      "definizione di veicolo"
+    ],
+    "vector_search_queries": [
+      "definizione legale di autovettura nel CdS",
+      "differenza tra autovettura e veicolo per trasporto valori",
+      "classificazione dei veicoli a motore per trasporto persone"
+    ],
+    "rule_explanation": "L'autovettura è definita come un veicolo a motore con quattro ruote destinato al trasporto di persone, non un veicolo blindato per il trasporto valori."
+  }
+}

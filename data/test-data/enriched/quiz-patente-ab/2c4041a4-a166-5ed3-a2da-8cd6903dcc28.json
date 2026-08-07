@@ -1,0 +1,27 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18483",
+  "text": "La corsia può essere riservata alla circolazione di alcune categorie di veicoli (taxi, autobus, ecc.)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Flessibilità nell'uso delle corsie stradali",
+      "Riserva di corsia per categorie specifiche di veicoli"
+    ],
+    "exact_keywords": [
+      "corsia riservata",
+      "categorie di veicoli",
+      "taxi",
+      "autobus"
+    ],
+    "vector_search_queries": [
+      "corsie stradali riservate a specifiche categorie di veicoli",
+      "segnaletica indicante corsie riservate a taxi e autobus"
+    ],
+    "rule_explanation": "Una corsia di marcia può essere destinata alla circolazione esclusiva di determinate categorie di veicoli, come taxi o autobus, secondo la segnaletica."
+  }
+}

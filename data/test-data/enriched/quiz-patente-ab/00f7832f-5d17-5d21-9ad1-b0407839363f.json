@@ -1,0 +1,28 @@
+{
+  "question_id": 4688,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25184",
+  "text": "Se il coefficiente di aderenza è basso bisogna ridurre la velocità solo in curva",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Coefficiente di aderenza",
+      "Adeguamento della velocità",
+      "Condizioni di marcia"
+    ],
+    "exact_keywords": [
+      "coefficiente di aderenza",
+      "ridurre la velocità",
+      "condizioni di marcia",
+      "stabilità"
+    ],
+    "vector_search_queries": [
+      "riduzione velocità per basso coefficiente di aderenza in rettilineo e curva",
+      "impatto del coefficiente di aderenza sulla stabilità del veicolo e necessità di moderare la velocità"
+    ],
+    "rule_explanation": "La velocità va ridotta in presenza di basso coefficiente di aderenza non solo in curva, ma anche in rettilineo, per mantenere la stabilità del veicolo."
+  }
+}

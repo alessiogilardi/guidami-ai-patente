@@ -2,7 +2,10 @@ import json
 import random
 from pathlib import Path
 
-from test_data_sampler.sampler import sample_knowledge_source, sample_quiz
+import pytest
+
+from commons.utils import element_id
+from test_data_sampler.sampler import sample_knowledge_source, sample_quiz, sample_quiz_enriched
 
 
 def _article(number: str) -> dict[str, object]:
@@ -110,3 +113,38 @@ def test_sample_quiz_handles_no_images_referenced(tmp_path: Path) -> None:
     )
 
     assert list(images_dest_dir.iterdir()) == []
+
+
+def test_sample_quiz_enriched_copies_only_the_sampled_subquestions(tmp_path: Path) -> None:
+    # _quiz_question("1", ...) / _quiz_question("2", ...) deterministically produce
+    # sub-question numbers "10" / "20" (see _quiz_question's f"{question_id}0").
+    subset = [_quiz_question("1", None), _quiz_question("2", None)]
+    kept_number = "10"
+    other_number = "20"
+    unrelated_number = "999"
+    enriched_source_dir = tmp_path / "enriched"
+    enriched_source_dir.mkdir()
+    for number in (kept_number, other_number, unrelated_number):
+        filename = f"{element_id('quiz', number)}.json"
+        (enriched_source_dir / filename).write_text(
+            json.dumps({"number": number}), encoding="utf-8"
+        )
+    enriched_dest_dir = tmp_path / "test-data" / "enriched"
+
+    sample_quiz_enriched(subset, enriched_source_dir, enriched_dest_dir)
+
+    copied = {path.name for path in enriched_dest_dir.iterdir()}
+    expected = {f"{element_id('quiz', number)}.json" for number in (kept_number, other_number)}
+    assert copied == expected
+
+
+def test_sample_quiz_enriched_raises_when_a_sampled_subquestion_has_no_enriched_file(
+    tmp_path: Path,
+) -> None:
+    subset = [_quiz_question("1", None)]
+    enriched_source_dir = tmp_path / "enriched"
+    enriched_source_dir.mkdir()
+    enriched_dest_dir = tmp_path / "test-data" / "enriched"
+
+    with pytest.raises(FileNotFoundError):
+        sample_quiz_enriched(subset, enriched_source_dir, enriched_dest_dir)

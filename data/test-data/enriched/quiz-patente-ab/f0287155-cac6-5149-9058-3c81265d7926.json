@@ -1,0 +1,31 @@
+{
+  "question_id": 4082,
+  "topic": "Segnali di pericolo",
+  "number": "19236",
+  "text": "Il segnale raffigurato preannuncia una strettoia con probabile difficoltà di incrocio con i veicoli provenienti dal senso opposto",
+  "correct_answer": true,
+  "image": "6a22104defc75f1e908cb883a771b8bc.jpeg",
+  "image_description": "Segnale di pericolo - Restringimento carreggiata. Il segnale preannuncia un restringimento della carreggiata sul lato sinistro.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale di pericolo triangolare con bordo rosso e sfondo bianco. Al centro del segnale è raffigurato un pittogramma nero che rappresenta un restringimento della carreggiata sul lato sinistro. Le due linee verticali nere, che simboleggiano i margini della strada, sono di lunghezza uguale all'inizio, ma quella di sinistra si interrompe e si avvicina a quella di destra, indicando una riduzione della larghezza della strada da quel lato.",
+    "name": "Segnale di pericolo - Restringimento carreggiata",
+    "description": "Il segnale preannuncia un restringimento della carreggiata sul lato sinistro."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di pericolo",
+      "Restringimento carreggiata"
+    ],
+    "exact_keywords": [
+      "segnale di pericolo",
+      "strettoia",
+      "difficoltà di incrocio",
+      "veicoli provenienti dal senso opposto"
+    ],
+    "vector_search_queries": [
+      "preavviso di restringimento carreggiata con difficoltà di incrocio",
+      "segnali stradali di pericolo per restringimento carreggiata e incrocio"
+    ],
+    "rule_explanation": "Il segnale di pericolo di restringimento carreggiata preannuncia una riduzione della larghezza della strada, che può comportare difficoltà di incrocio con veicoli provenienti dalla direzione opposta."
+  }
+}

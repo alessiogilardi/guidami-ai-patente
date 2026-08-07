@@ -1,0 +1,29 @@
+{
+  "question_id": 4415,
+  "topic": "Norme sulla circol. dei veicoli; pos. dei veicoli sulla carreggiata; cambio di direz. di corsia (svolta); comp. in presenza di funerali, cortei, convogli militari; comp. agli incroci; norme di prec.; obblighi verso veicoli di Polizia e di emergenza; rischi legati a manovra e a guida dei diversi tipi di veicolo e relativo campo visivo del cond.",
+  "number": "22729",
+  "text": "In un centro abitato, quando un pedone, fuori delle strisce di attraversamento, non accenni a darci la precedenza, è necessario ridurre la velocità e, occorrendo, fermarsi per non investirlo",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Obbligo di dare la precedenza ai pedoni",
+      "Comportamento prudente del conducente",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "pedone",
+      "centro abitato",
+      "strisce di attraversamento",
+      "ridurre la velocità",
+      "fermarsi"
+    ],
+    "vector_search_queries": [
+      "precedenza pedoni fuori dalle strisce in centro abitato",
+      "obbligo di fermarsi per evitare investimento pedone"
+    ],
+    "rule_explanation": "Nei centri abitati, il conducente deve moderare la velocità e fermarsi se necessario per non investire pedoni, anche se non attraversano sulle strisce designate."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4006,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18369",
+  "text": "L'isola di traffico può essere a raso o in rilievo (rialzata)",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Isola di traffico",
+      "Segnaletica orizzontale e verticale"
+    ],
+    "exact_keywords": [
+      "isola di traffico",
+      "a raso",
+      "in rilievo",
+      "segnaletica orizzontale"
+    ],
+    "vector_search_queries": [
+      "definizione isola di traffico a raso e in rilievo",
+      "caratteristiche fisiche isola di traffico"
+    ],
+    "rule_explanation": "L'isola di traffico, elemento della strada destinato a separare i flussi di traffico, può essere realizzata sia a raso (sullo stesso piano della carreggiata) sia in rilievo (rialzata)."
+  }
+}

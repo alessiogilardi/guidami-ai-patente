@@ -1,0 +1,27 @@
+{
+  "question_id": 4652,
+  "topic": "Guida in relazione alle qualità e condizioni fisiche e psichiche; alcool, droga e farmaci ; primo soccorso",
+  "number": "24928",
+  "text": "Se un ferito della strada si è ustionato e sono ancora presenti delle residue fiamme, bisogna spegnerle , soffocandole, ad esempio, con una coperta",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Primo soccorso in caso di ustioni gravi",
+      "Gestione delle emergenze stradali"
+    ],
+    "exact_keywords": [
+      "ferito gravemente ustionato",
+      "soffocare le fiamme",
+      "coperta",
+      "primo soccorso"
+    ],
+    "vector_search_queries": [
+      "procedure di primo soccorso per ustioni gravi con fiamme",
+      "interruzione della combustione in caso di ustioni gravi con coperta"
+    ],
+    "rule_explanation": "In caso di ustioni con fiamme residue, è necessario soffocarle immediatamente, ad esempio con una coperta, per interrompere la combustione e limitare i danni al ferito."
+  }
+}

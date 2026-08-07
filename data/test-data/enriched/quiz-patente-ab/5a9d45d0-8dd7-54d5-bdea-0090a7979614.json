@@ -1,0 +1,28 @@
+{
+  "question_id": 4701,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25276",
+  "text": "Dopo un incidente, se c'è un rischio d'incendio del veicolo è opportuno spegnere il quadro elettrico girando la chiave di accensione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Sicurezza post-incidente",
+      "Prevenzione incendi",
+      "Gestione emergenze veicolo"
+    ],
+    "exact_keywords": [
+      "rischio d'incendio",
+      "spegnere il quadro elettrico",
+      "chiave di accensione",
+      "veicolo"
+    ],
+    "vector_search_queries": [
+      "misure di sicurezza in caso di rischio incendio veicolo dopo incidente",
+      "interruzione alimentazione elettrica per prevenire incendio veicolo"
+    ],
+    "rule_explanation": "In caso di rischio d'incendio dopo un incidente, è fondamentale interrompere l'alimentazione elettrica spegnendo il quadro con la chiave per prevenire l'innesco di fiamme."
+  }
+}

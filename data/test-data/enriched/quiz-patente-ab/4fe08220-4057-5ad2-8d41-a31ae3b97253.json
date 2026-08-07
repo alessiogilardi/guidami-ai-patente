@@ -1,0 +1,27 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18481",
+  "text": "La corsia può essere di decelerazione",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Classificazione delle corsie stradali",
+      "Funzionalità delle corsie stradali"
+    ],
+    "exact_keywords": [
+      "corsia di decelerazione",
+      "corsia di manovra",
+      "carreggiata",
+      "infrastruttura stradale"
+    ],
+    "vector_search_queries": [
+      "definizione e scopo della corsia di decelerazione",
+      "tipologie di corsie stradali e loro funzioni"
+    ],
+    "rule_explanation": "La corsia di decelerazione è una corsia specializzata per ridurre la velocità di un veicolo prima di una deviazione o di un'uscita dalla carreggiata principale."
+  }
+}

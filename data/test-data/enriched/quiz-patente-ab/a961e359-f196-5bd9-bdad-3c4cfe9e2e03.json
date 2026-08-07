@@ -1,0 +1,29 @@
+{
+  "question_id": 4032,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18654",
+  "text": "Si definiscono autovetture tutti i veicoli a motore che hanno la trazione posteriore",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autovettura",
+      "Classificazione dei veicoli",
+      "Trazione dei veicoli"
+    ],
+    "exact_keywords": [
+      "autovetture",
+      "veicoli a motore",
+      "trazione",
+      "asse motore"
+    ],
+    "vector_search_queries": [
+      "definizione di autovettura codice della strada",
+      "classificazione veicoli a motore per trazione",
+      "requisiti tecnici autovetture codice della strada"
+    ],
+    "rule_explanation": "Le autovetture sono veicoli a motore con almeno quattro ruote, destinati al trasporto di persone, non suscettibili di superare una determinata velocità e con un numero di posti a sedere, escluso quello del conducente, non superiore a nove. La trazione può essere anteriore, posteriore o integrale."
+  }
+}

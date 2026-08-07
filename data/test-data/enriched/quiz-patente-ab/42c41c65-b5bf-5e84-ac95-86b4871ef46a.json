@@ -1,0 +1,29 @@
+{
+  "question_id": 4625,
+  "topic": "Comportamenti per prevenire incidenti stradali; comportamento in caso di incidente stradale; peculiarità della guida di motocicli",
+  "number": "24725",
+  "text": "Il fenomeno dell'aquaplaning aumenta nelle carreggiate a forte pendenza laterale",
+  "correct_answer": false,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Fenomeno dell'aquaplaning",
+      "Condizioni di aderenza stradale"
+    ],
+    "exact_keywords": [
+      "aquaplaning",
+      "aderenza",
+      "pneumatici",
+      "velocità",
+      "pavimentazione"
+    ],
+    "vector_search_queries": [
+      "cause dell'aquaplaning",
+      "aderenza pneumatici su strada bagnata",
+      "fattori che influenzano l'aquaplaning"
+    ],
+    "rule_explanation": "L'aquaplaning è causato da uno strato d'acqua tra pneumatico e asfalto, che riduce l'aderenza. Non è direttamente legato alla pendenza laterale della carreggiata."
+  }
+}

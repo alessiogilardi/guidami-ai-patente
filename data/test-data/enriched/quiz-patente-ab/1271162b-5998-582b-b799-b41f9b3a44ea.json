@@ -1,0 +1,28 @@
+{
+  "question_id": 4688,
+  "topic": "Elementi costitutivi del veicolo importanti per la sicurezza; manutenzione ed uso; stabilità e tenuta di strada del veicolo; comportamenti e cautele di guida",
+  "number": "25182",
+  "text": "Se il coefficiente di aderenza è basso bisogna ridurre la velocità",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Coefficiente di aderenza",
+      "Adeguamento della velocità",
+      "Sicurezza stradale"
+    ],
+    "exact_keywords": [
+      "coefficiente di aderenza",
+      "ridurre la velocità",
+      "condizioni di aderenza al fondo stradale",
+      "stabilità del veicolo"
+    ],
+    "vector_search_queries": [
+      "adeguamento della velocità in base al coefficiente di aderenza",
+      "impatto del coefficiente di aderenza sulla stabilità del veicolo e sulla velocità di percorrenza"
+    ],
+    "rule_explanation": "La velocità deve essere sempre adeguata alle condizioni di aderenza al fondo stradale per garantire la stabilità del veicolo e la sicurezza della marcia."
+  }
+}

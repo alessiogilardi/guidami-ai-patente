@@ -1,0 +1,27 @@
+{
+  "question_id": 4016,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18484",
+  "text": "La corsia può essere destinata ad effettuare sorpassi",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Corsia di sorpasso",
+      "Manovra di sorpasso"
+    ],
+    "exact_keywords": [
+      "corsia",
+      "sorpasso",
+      "veicolo",
+      "velocità"
+    ],
+    "vector_search_queries": [
+      "corsia riservata al sorpasso",
+      "destinazione d\\'uso delle corsie per il sorpasso"
+    ],
+    "rule_explanation": "La corsia può essere destinata al sorpasso quando le condizioni del traffico e della strada lo consentono, permettendo ai veicoli più lenti di essere superati."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "question_id": 4032,
+  "topic": "Definizioni stradali e di traffico; definizioni e classificazione dei veicoli; doveri del conducente nell'uso della strada - convivenza civile ed uso responsabile della strada; riguardo verso gli utenti deboli della strada (anziani, diversamente abili, bambini, pedoni, ciclisti)",
+  "number": "18650",
+  "text": "L'autovettura non può avere più di nove posti, compreso il conducente",
+  "correct_answer": true,
+  "image": null,
+  "image_description": null,
+  "image_analysis": null,
+  "quiz_metadata": {
+    "core_concepts": [
+      "Definizione di autovettura",
+      "Classificazione dei veicoli per numero di posti"
+    ],
+    "exact_keywords": [
+      "autovettura",
+      "numero di posti",
+      "conducente",
+      "trasporto persone"
+    ],
+    "vector_search_queries": [
+      "definizione di autovettura per numero di posti",
+      "veicoli per trasporto persone con al massimo nove posti"
+    ],
+    "rule_explanation": "L'autovettura è un veicolo destinato al trasporto di persone con un numero di posti non superiore a nove, compreso il conducente."
+  }
+}

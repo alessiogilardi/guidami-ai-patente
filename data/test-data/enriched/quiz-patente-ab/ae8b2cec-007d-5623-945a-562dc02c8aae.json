@@ -1,0 +1,34 @@
+{
+  "question_id": 4146,
+  "topic": "Segnali di divieto",
+  "number": "19998",
+  "text": "Il segnale raffigurato è un divieto di sosta per i veicoli al servizio di invalidi, ed indica il più vicino parcheggio",
+  "correct_answer": false,
+  "image": "fa3b825df6cd8568e32c61ec42316b3b.jpeg",
+  "image_description": "Segnale di divieto di sosta con parcheggio riservato agli invalidi. Il segnale indica un divieto di sosta, ma con una deroga specifica per i veicoli al servizio di persone invalide munite dell'apposito contrassegno, che possono sostare nell'area indicata. Sotto il segnale di divieto di sosta, sono presenti due pannelli integrativi: uno indica un parcheggio (la lettera 'P' bianca su sfondo blu) e l'altro un parcheggio riservato agli invalidi (simbolo della sedia a rotelle bianca su sfondo blu). La linea tratteggiata sotto i pannelli indica che la prescrizione si applica per la lunghezza indicata dal pannello integrativo, se presente, o per tutta la lunghezza della strada se non specificato diversamente. In questo caso, la linea tratteggiata suggerisce che la deroga si applica all'area di parcheggio riservato.",
+  "image_analysis": {
+    "visual_analysis": "L'immagine mostra un segnale stradale verticale composto da tre elementi. L'elemento superiore è un segnale di divieto di sosta, caratterizzato da un disco rosso con bordo rosso, sfondo blu e una barra rossa diagonale. Sotto questo segnale, ci sono due pannelli quadrati affiancati. Il pannello di sinistra ha una 'P' bianca su sfondo blu, indicando un parcheggio. Il pannello di destra mostra il simbolo internazionale di accessibilità (una persona in sedia a rotelle) bianco su sfondo blu, indicando un parcheggio riservato agli invalidi. Sotto questi due pannelli, vi è una linea tratteggiata orizzontale. L'insieme dei segnali indica una prescrizione relativa alla sosta e alla disponibilità di parcheggi.",
+    "name": "Segnale di divieto di sosta con parcheggio riservato agli invalidi",
+    "description": "Il segnale indica un divieto di sosta, ma con una deroga specifica per i veicoli al servizio di persone invalide munite dell'apposito contrassegno, che possono sostare nell'area indicata. Sotto il segnale di divieto di sosta, sono presenti due pannelli integrativi: uno indica un parcheggio (la lettera 'P' bianca su sfondo blu) e l'altro un parcheggio riservato agli invalidi (simbolo della sedia a rotelle bianca su sfondo blu). La linea tratteggiata sotto i pannelli indica che la prescrizione si applica per la lunghezza indicata dal pannello integrativo, se presente, o per tutta la lunghezza della strada se non specificato diversamente. In questo caso, la linea tratteggiata suggerisce che la deroga si applica all'area di parcheggio riservato."
+  },
+  "quiz_metadata": {
+    "core_concepts": [
+      "Segnali di divieto di sosta",
+      "Parcheggi riservati agli invalidi",
+      "Uso dei pannelli integrativi"
+    ],
+    "exact_keywords": [
+      "divieto di sosta",
+      "parcheggio riservato",
+      "veicoli al servizio di invalidi",
+      "contrassegno invalidi",
+      "pannello integrativo"
+    ],
+    "vector_search_queries": [
+      "divieto di sosta con parcheggio riservato invalidi",
+      "interpretazione segnale divieto sosta e pannelli integrativi parcheggio invalidi",
+      "deroga divieto sosta per veicoli invalidi con contrassegno"
+    ],
+    "rule_explanation": "Il segnale di divieto di sosta non indica un parcheggio, ma vieta la sosta, salvo per i veicoli al servizio di invalidi muniti di contrassegno, se espressamente consentito da pannelli integrativi."
+  }
+}
