@@ -27,7 +27,6 @@ class QuizQuestionStoreRepository(UpsertStoreRepository[QuizQuestionEntity]):
             table_name=table_name,
             columns=_QUIZ_QUESTION_TABLE_COLUMNS,
             conflict_columns=_QUIZ_QUESTION_CONFLICT_COLUMNS,
-            row_mapper=self._to_db_row,
             client=client,
         )
 

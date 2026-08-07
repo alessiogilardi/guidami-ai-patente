@@ -31,7 +31,6 @@ class ArticleCommaStoreRepository(UpsertStoreRepository[ArticleCommaEntity]):
             table_name=table_name,
             columns=_ARTICLE_COMMA_TABLE_COLUMNS,
             conflict_columns=_ARTICLE_COMMA_CONFLICT_COLUMNS,
-            row_mapper=self._to_db_row,
             client=client,
         )
 

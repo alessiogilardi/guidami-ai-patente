@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from collections.abc import Callable, Sequence
+from collections.abc import Sequence
 
 from psycopg import sql
 
@@ -14,10 +14,9 @@ class UpsertStoreRepository[T](ABC):
         table_name: str,
         columns: Sequence[str],
         conflict_columns: Sequence[str],
-        row_mapper: Callable[[T], Sequence[object]],
         client: PostgresClient,
     ) -> None:
-        """Configures table, target/conflict columns, item -> DB row mapping, and client."""
+        """Configures table, target/conflict columns, and client."""
         if not columns:
             raise ValueError("columns must contain at least one column")
         if not conflict_columns:
@@ -37,7 +36,6 @@ class UpsertStoreRepository[T](ABC):
         self._update_columns = tuple(
             column for column in self._columns if column not in self._conflict_columns
         )
-        self._row_mapper = row_mapper
 
     def truncate(self) -> None:
         """Empties the table ahead of a full reload."""
@@ -56,7 +54,7 @@ class UpsertStoreRepository[T](ABC):
 
         self._client.execute_many(
             query,
-            [self._row_mapper(item) for item in items],
+            [self._to_db_row(item) for item in items],
         )
 
     def upsert(self, items: list[T]) -> None:
@@ -66,7 +64,7 @@ class UpsertStoreRepository[T](ABC):
 
         self._client.execute_many(
             self._upsert_query(),
-            [self._row_mapper(item) for item in items],
+            [self._to_db_row(item) for item in items],
         )
 
     def upsert_returning_ids(self, items: list[T]) -> list[int]:
@@ -87,7 +85,7 @@ class UpsertStoreRepository[T](ABC):
 
         rows = self._client.execute_many_returning(
             self._upsert_query(returning="id"),
-            [self._row_mapper(item) for item in items],
+            [self._to_db_row(item) for item in items],
         )
         return [row[0] for row in rows]
 
