@@ -4,10 +4,10 @@ from pydantic import BaseModel
 class QuizQuestionEntity(BaseModel):
     """Row of the `quiz_questions` table (see db/init.sql).
 
-    Retrieval metadata (`core_concepts`, `exact_keywords`, `rule_explanation`)
-    is flattened onto the entity: all three are `None` together when no
-    metadata was generated for the question. `created_at` is DB-managed
-    (`DEFAULT now()`) and has no corresponding field here.
+    Retrieval metadata (`core_concepts`, `exact_keywords`, `rule_explanation`,
+    `vector_search_queries`) is flattened onto the entity: all four are `None`
+    together when no metadata was generated for the question. `created_at` is
+    DB-managed (`DEFAULT now()`) and has no corresponding field here.
     """
 
     number: str
@@ -19,4 +19,4 @@ class QuizQuestionEntity(BaseModel):
     core_concepts: list[str] | None = None
     exact_keywords: list[str] | None = None
     rule_explanation: str | None = None
-    embedding: list[float] | None = None
+    vector_search_queries: list[str] | None = None

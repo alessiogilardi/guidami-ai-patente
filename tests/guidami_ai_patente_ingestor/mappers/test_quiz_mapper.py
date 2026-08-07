@@ -4,7 +4,7 @@ The preparation methods (`from_parsed_to_cleaned`, `from_cleaned_to_enriched`) a
 tested separately in `test_quiz_mapper_flatten_at_preparation.py` (SP09).
 """
 
-from domain.entities.quiz import QuizQuestionEntity
+from domain.entities.quiz import QuizImageEntity, QuizQuestionEntity
 from guidami_ai_patente_ingestor.mappers import QuizMapper
 from guidami_ai_patente_ingestor.models.quiz import (
     EmbeddedQuizModel,
@@ -131,7 +131,6 @@ def test_from_embedded_to_quiz_question_copies_all_quiz_question_fields() -> Non
     assert result.text == eq.text
     assert result.correct_answer == eq.correct_answer
     assert result.image_filename == eq.image_filename
-    assert result.embedding == eq.embedding
 
 
 def test_from_embedded_to_quiz_question_discards_image_description() -> None:
@@ -139,13 +138,6 @@ def test_from_embedded_to_quiz_question_discards_image_description() -> None:
     result = QuizMapper.from_embedded_to_quiz_question(eq)
 
     assert not hasattr(result, "image_description")
-
-
-def test_from_embedded_to_quiz_question_preserves_none_embedding() -> None:
-    eq = _embedded(embedding=None)
-    result = QuizMapper.from_embedded_to_quiz_question(eq)
-
-    assert result.embedding is None
 
 
 def test_from_embedded_to_quiz_question_preserves_none_image_filename() -> None:
@@ -187,12 +179,13 @@ def test_from_embedded_to_quiz_question_spreads_metadata_into_flat_fields() -> N
     assert not hasattr(result, "named_entities")
 
 
-def test_from_embedded_to_quiz_question_drops_vector_search_queries() -> None:
-    eq = _embedded(quiz_metadata=_metadata())
+def test_from_embedded_to_quiz_question_persists_vector_search_queries() -> None:
+    metadata = _metadata()
+    eq = _embedded(quiz_metadata=metadata)
 
     result = QuizMapper.from_embedded_to_quiz_question(eq)
 
-    assert not hasattr(result, "vector_search_queries")
+    assert result.vector_search_queries == metadata.vector_search_queries
 
 
 def test_from_embedded_to_quiz_question_no_metadata_yields_none_fields() -> None:
@@ -205,9 +198,36 @@ def test_from_embedded_to_quiz_question_no_metadata_yields_none_fields() -> None
     assert result.rule_explanation is None
 
 
+def test_from_embedded_to_quiz_question_no_metadata_yields_none_vector_search_queries() -> None:
+    eq = _embedded(quiz_metadata=None)
+
+    result = QuizMapper.from_embedded_to_quiz_question(eq)
+
+    assert result.vector_search_queries is None
+
+
 def test_from_embedded_to_quiz_question_has_no_nested_quiz_metadata() -> None:
     eq = _embedded(quiz_metadata=_metadata())
 
     result = QuizMapper.from_embedded_to_quiz_question(eq)
 
     assert not hasattr(result, "quiz_metadata")
+
+
+# --- from_embedded_to_quiz_images ---
+
+
+def test_from_embedded_to_quiz_images_returns_one_entity_when_image_present() -> None:
+    eq = _embedded()
+
+    result = QuizMapper.from_embedded_to_quiz_images(eq)
+
+    assert result == [QuizImageEntity(filename="img.jpeg", description="Segnale di stop.")]
+
+
+def test_from_embedded_to_quiz_images_returns_empty_list_when_no_image() -> None:
+    eq = _embedded(image_filename=None, image_description=None)
+
+    result = QuizMapper.from_embedded_to_quiz_images(eq)
+
+    assert result == []

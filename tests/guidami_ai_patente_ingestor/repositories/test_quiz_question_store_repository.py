@@ -42,7 +42,7 @@ def _flat_question(**kwargs: object) -> QuizQuestionEntity:
         core_concepts=["Obbligo di precedenza"],
         exact_keywords=["obbligo di precedenza"],
         rule_explanation="Il segnale impone l'obbligo di precedenza.",
-        embedding=[0.1, 0.2],
+        vector_search_queries=["query"],
     )
     return QuizQuestionEntity(**{**defaults, **kwargs})
 
@@ -58,7 +58,7 @@ def test_table_columns_are_flat_metadata_columns_without_quiz_metadata() -> None
         "core_concepts",
         "exact_keywords",
         "rule_explanation",
-        "embedding",
+        "vector_search_queries",
     )
 
 
@@ -77,7 +77,7 @@ def test_to_db_row_emits_flat_metadata_fields_without_jsonb() -> None:
         question.core_concepts,
         question.exact_keywords,
         question.rule_explanation,
-        question.embedding,
+        question.vector_search_queries,
     )
 
 
@@ -102,11 +102,28 @@ def test_bulk_insert_with_empty_list_is_noop(client: PostgresClient) -> None:
 
 
 @pytest.mark.integration
-def test_truncate_empties_table(client: PostgresClient) -> None:
+def test_upsert_updates_in_place_and_keeps_the_id(client: PostgresClient) -> None:
     repository = QuizQuestionStoreRepository("quiz_questions", client)
-    repository.bulk_insert([_question("1")])
+    repository.upsert([_question("1")])
+    question_id = client.fetch(sql.SQL("SELECT id FROM quiz_questions WHERE number = %s"), ["1"])[
+        0
+    ][0]
 
-    repository.truncate()
+    repository.upsert([_question("1").model_copy(update={"text": "Domanda 1 aggiornata"})])
+
+    rows = client.fetch(sql.SQL("SELECT id, text FROM quiz_questions WHERE number = %s"), ["1"])
+    assert len(rows) == 1, "re-upserting the same natural key must not insert a second row"
+    assert rows[0][0] == question_id, "the id must stay stable across an upsert of the same key"
+    assert rows[0][1] == "Domanda 1 aggiornata"
+
+
+@pytest.mark.integration
+def test_delete_missing_removes_only_absent_numbers(client: PostgresClient) -> None:
+    repository = QuizQuestionStoreRepository("quiz_questions", client)
+    kept = _question("1")
+    repository.upsert([kept, _question("2")])
+
+    repository.delete_missing([kept])
 
     rows = client.fetch(sql.SQL("SELECT number FROM quiz_questions"))
-    assert rows == []
+    assert [row[0] for row in rows] == ["1"]
