@@ -2,11 +2,9 @@
 
 from .clients import EmbeddingClient, LiteLLMEmbeddingClient, SentenceTransformerEmbeddingClient
 from .configs import EmbeddingConfig
-from .services import Embeddable, Embedded, EmbeddingService
+from .services import EmbeddingService
 
 __all__ = [
-    "Embeddable",
-    "Embedded",
     "EmbeddingClient",
     "EmbeddingConfig",
     "EmbeddingService",

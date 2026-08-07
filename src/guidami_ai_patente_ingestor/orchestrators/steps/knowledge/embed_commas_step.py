@@ -54,7 +54,11 @@ class EmbedCommasStep(Step):
         """
         commas = cast(list[EmbeddableArticleComma], context.get(_EMBEDDABLE_ARTICLE_COMMAS_KEY))
         to_embed = [comma for comma in commas if self._should_embed(comma)]
-        vectors = self._embedding_service.execute(to_embed) if to_embed else []
+        vectors = (
+            self._embedding_service.execute([comma.embedded_text for comma in to_embed])
+            if to_embed
+            else []
+        )
         vectors_iter = iter(vectors)
         result = [
             comma.model_copy(update={"embedding": next(vectors_iter)})

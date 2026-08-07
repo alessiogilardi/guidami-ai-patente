@@ -5,15 +5,13 @@ from commons.ai.embedding.clients import EmbeddingClient
 from commons.observability import ItemProgressReporter, NullProgressReporter
 from commons.use_cases import UseCase
 
-from .protocols import Embeddable
-
 logger = logging.getLogger(__name__)
 
 
-class EmbeddingService(UseCase[Sequence[Embeddable], list[list[float]]]):
-    """Computes embeddings for a sequence of Embeddable items in batches.
+class EmbeddingService(UseCase[Sequence[str], list[list[float]]]):
+    """Computes embeddings for a sequence of texts in batches.
 
-    Pure: does not mutate the input items. Returns vectors aligned 1:1 (same order).
+    Pure: returns a new list of vectors, aligned 1:1 to the input texts (same order).
     """
 
     def __init__(
@@ -38,8 +36,8 @@ class EmbeddingService(UseCase[Sequence[Embeddable], list[list[float]]]):
             progress if progress is not None else NullProgressReporter()
         )
 
-    def execute(self, request: Sequence[Embeddable]) -> list[list[float]]:
-        """Returns the vectors aligned to `items` (same order). No mutation."""
+    def execute(self, request: Sequence[str]) -> list[list[float]]:
+        """Returns the vectors aligned to `texts` (same order). No mutation."""
         total_batches = self._get_total_batches(request)
         vectors: list[list[float]] = []
         self._progress.begin_items("batches", total_batches)
@@ -52,12 +50,12 @@ class EmbeddingService(UseCase[Sequence[Embeddable], list[list[float]]]):
         return vectors
 
     def _embed(
-        self, request: Sequence[Embeddable], *, start: int, total_batches: int
+        self, request: Sequence[str], *, start: int, total_batches: int
     ) -> list[list[float]]:
         batch = request[start : start + self._batch_size]
         batch_number = start // self._batch_size + 1
-        logger.info(f"embedding batch {batch_number}/{total_batches} ({len(batch)} items)")
-        return self._client.embed_passages([item.embedded_text for item in batch])
+        logger.info("embedding batch %d/%d (%d items)", batch_number, total_batches, len(batch))
+        return self._client.embed_passages(list(batch))
 
-    def _get_total_batches(self, request: Sequence[Embeddable]) -> int:
+    def _get_total_batches(self, request: Sequence[str]) -> int:
         return -(-len(request) // self._batch_size)
