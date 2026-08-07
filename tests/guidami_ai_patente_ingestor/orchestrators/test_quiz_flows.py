@@ -45,7 +45,15 @@ def _make_embedding_client() -> EmbeddingClient:
 
 
 def _make_postgres_client() -> PostgresClient:
-    return MagicMock(spec=PostgresClient)
+    client = MagicMock(spec=PostgresClient)
+    # StoreQuizStep (T-8/PD-7) resolves each question's DB id via
+    # upsert_returning_ids -> execute_many_returning; a bare MagicMock's default
+    # __iter__ (iter([])) would starve the zip(strict=True) that pairs ids back to
+    # question numbers, so return one id per row instead.
+    client.execute_many_returning.side_effect = lambda query, params_seq: [
+        (i + 1,) for i in range(len(params_seq))
+    ]
+    return client
 
 
 def _build(validate: bool = False) -> Flow:
@@ -83,12 +91,15 @@ def test_build_with_validate_true_does_not_raise() -> None:
 
 
 def test_flow_has_six_steps_in_order() -> None:
-    """The chain is Load → MapToEmbedded → Embed → MapToQuizEntity → MapToQuizImages → Store."""
+    """Load -> MapToEmbedded -> EmbedVariants -> MapToQuizEntity -> MapToQuizImages -> Store.
+
+    T-9: step 3 now embeds every configured variant, not just quiz_metadata.
+    """
     steps = _build().get_steps()
     assert [step.name for step in steps] == [
         "load_enriched_quiz",
         "map_to_embedded",
-        "embed_quiz",
+        "embed_quiz_variants",
         "map_to_quiz_entity",
         "map_to_quiz_images",
         "store_quiz",

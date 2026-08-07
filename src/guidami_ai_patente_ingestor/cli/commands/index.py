@@ -2,15 +2,18 @@
 
 import argparse
 import logging
+from typing import cast
 
 from rich.console import Console
 
 from commons.ai.embedding import LiteLLMEmbeddingClient
 from commons.observability import ProgressReporter
 from guidami_ai_patente_ingestor.configs import IngestorConfig
+from guidami_ai_patente_ingestor.models.quiz import EmbedQuizVariantsResult
 from guidami_ai_patente_ingestor.orchestrators import (
     build_knowledge_indexing_flow,
     build_quiz_indexing_flow,
+    context_keys,
 )
 from guidami_ai_patente_ingestor.services import LayerResolver
 
@@ -37,8 +40,9 @@ def _render_index_dry_run(args: argparse.Namespace) -> None:
         case "quiz":
             steps = [
                 "quiz_indexing: LoadJsonStep(enriched/quiz) -> map_to_embedded (dedup) -> "
-                "embed_quiz -> map_to_quiz_entity -> "
-                "store_quiz (table=quiz_questions, full table reload)",
+                "embed_quiz_variants -> map_to_quiz_entity -> map_to_quiz_images -> "
+                "store_quiz (tables=quiz_questions,quiz_question_embeddings,quiz_images, "
+                "upsert + reconciliation)",
             ]
             render_dry_run(console, f"index {args.entity}", steps)
 
@@ -88,6 +92,11 @@ def run_index(
             logger.info("starting quiz indexing")
             manifest.record_flow("quiz_indexing")
             progress.begin_flow("quiz_indexing")
-            flow.run()
+            result_context = flow.run()
             progress.end_flow()
+            embed_result = cast(
+                EmbedQuizVariantsResult, result_context.get(context_keys.QUIZ_VARIANT_EMBEDDINGS)
+            )
+            manifest.record_quiz_variant_omissions(embed_result.omitted_counts)
+            logger.info("quiz variant omissions: %s", embed_result.omitted_counts)
             logger.info("quiz indexing completed")

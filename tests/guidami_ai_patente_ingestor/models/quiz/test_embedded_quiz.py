@@ -16,4 +16,3 @@ def test_embedded_quiz_question_defaults_image_fields_to_none() -> None:
     q = _question()
     assert q.image_filename is None
     assert q.image_description is None
-    assert q.embedding is None

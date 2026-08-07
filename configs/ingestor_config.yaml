@@ -55,6 +55,7 @@ quiz_questions_table: quiz_questions
 quiz_question_embeddings_table: quiz_question_embeddings
 quiz_images_table: quiz_images
 embed_repealed: false
+quiz_embedding_variants: [text, topic_text, search_queries, combined, combined_description, image_description]
 rca_ranges: ["118-165", "278-300"]
 amb_ranges: ["227-237"]
 
@@ -65,4 +66,5 @@ evaluation:
   keyword_df_cutoffs: [1, 2, 3, 5, 10, 20, 50, 100, 250, 500]
   text_coverage_thresholds: [0.01, 0.02, 0.05, 0.10]
   quiz_embedding_variant: search_queries
+  rrf_k: 60
   output_dir: data/eval

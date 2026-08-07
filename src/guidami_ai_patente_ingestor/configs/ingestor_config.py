@@ -70,6 +70,16 @@ class IngestorConfig(BaseSettings):
     quiz_question_embeddings_table: str = "quiz_question_embeddings"
     quiz_images_table: str = "quiz_images"
     embed_repealed: bool = False
+    quiz_embedding_variants: list[str] = Field(
+        default_factory=lambda: [
+            "text",
+            "topic_text",
+            "search_queries",
+            "combined",
+            "combined_description",
+            "image_description",
+        ]
+    )
     rca_ranges: list[str] = Field(default_factory=lambda: ["118-165", "278-300"])
     amb_ranges: list[str] = Field(default_factory=lambda: ["227-237"])
     evaluation: EvaluationConfig = EvaluationConfig()

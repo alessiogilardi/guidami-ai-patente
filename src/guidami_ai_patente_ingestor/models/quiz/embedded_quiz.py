@@ -4,11 +4,12 @@ from .quiz_metadata import QuizMetadata
 
 
 class EmbeddedQuizModel(BaseModel):
-    """Quiz bank sub-question carrying the computed embedding.
+    """Quiz bank sub-question, ready to be turned into embedding-variant rows.
 
-    Contains `image_description` (not persisted in DB). The embedding is
-    computed from `quiz_metadata` directly (`QuizMetadata` is itself
-    `Embeddable`), not from a delegated property on this model.
+    Contains `image_description` (not persisted in DB). Embeddings are no longer
+    carried on this model at all: `EmbedQuizVariants` computes one embedding per
+    (question, variant) pair directly from this model's fields, producing
+    `EmbeddableQuizVariant` rows instead.
     """
 
     number: str
@@ -18,5 +19,4 @@ class EmbeddedQuizModel(BaseModel):
     correct_answer: bool
     image_filename: str | None = None
     image_description: str | None = None
-    embedding: list[float] | None = None
     quiz_metadata: QuizMetadata | None = None

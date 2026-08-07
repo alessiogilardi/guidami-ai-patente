@@ -19,8 +19,3 @@ class QuizMetadata(BaseModel):
     exact_keywords: list[str]
     vector_search_queries: list[str]
     rule_explanation: str
-
-    @property
-    def embedded_text(self) -> str:
-        """Text to use for computing the embedding (satisfies `Embeddable` via duck typing)."""
-        return "\n".join(self.vector_search_queries)

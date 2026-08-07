@@ -31,10 +31,11 @@ from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
 from guidami_ai_patente_ingestor.orchestrators.steps.quiz import StoreQuizStep
 from guidami_ai_patente_ingestor.repositories import (
     QuizImageStoreRepository,
+    QuizQuestionEmbeddingStoreRepository,
     QuizQuestionStoreRepository,
 )
 from guidami_ai_patente_ingestor.services import LayerResolver
-from guidami_ai_patente_ingestor.services.quiz import DeduplicateQuizItems, EmbedQuizMetadata
+from guidami_ai_patente_ingestor.services.quiz import DeduplicateQuizItems, EmbedQuizVariants
 from guidami_ai_patente_ingestor.services.quiz.enrichers import (
     ImageDescriptionEnricher,
     NormReferenceEnricher,
@@ -60,25 +61,26 @@ def build_quiz_indexing_flow(
     validate: bool = False,
     progress: ProgressReporter | None = None,
 ) -> Flow:
-    """Assembles the quiz indexing flow (quiz bank → embedded → embed → entity → store).
+    """Assembles the quiz indexing flow (quiz bank → embedded → variants → entity → store).
 
     The quiz bank has a single source (`"quiz"`), derived from
-    `config.quiz_indexing.sources[0]`: the store upserts `quiz_questions` and
-    `quiz_images` and reconciles `quiz_questions` against this run's input via
-    the domain-specific `StoreQuizStep`.
+    `config.quiz_indexing.sources[0]`: the store upserts `quiz_questions`,
+    `quiz_question_embeddings`, and `quiz_images`, and reconciles `quiz_questions`
+    against this run's input via the domain-specific `StoreQuizStep`.
 
     Step mapping:
-      `LoadJsonDirStep` → `ApplyStep(DeduplicateQuizItems, map_to_embedded)`
-      → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(map_to_quiz_entity)`
-      → `ApplyStep(map_to_quiz_images)` → `StoreQuizStep`
+      `LoadJsonDirStep` → `ApplyStep(map_to_embedded)` → `ApplyStep(embed_quiz_variants)`
+      → `ApplyStep(map_to_quiz_entity)` → `ApplyStep(map_to_quiz_images)` → `StoreQuizStep`
 
     The `map_to_embedded` step chains two transforms: dedup on the triple
     (normalized text, correct answer, image identity) via
     `DeduplicateQuizItems` (shared with `build_quiz_cleaning_flow`), then a
     1:1 enriched→embedded mapping via `ForEach(QuizMapper.from_enriched_to_embedded)`.
 
-    The embedding is computed from `quiz_metadata.vector_search_queries`, not from
-    the quiz text: items without `quiz_metadata` pass through with `embedding = None`.
+    The `embed_quiz_variants` step computes and embeds every configured query
+    representation (AD-7) for every item — one embedding-service call per variant, not
+    per question — producing `EmbeddableQuizVariant` rows plus per-variant omission
+    counts (`EmbedQuizVariantsResult`), later written by `StoreQuizStep`.
 
     Args:
         config: Full ingestor configuration (already loaded at the entry point).
@@ -88,7 +90,7 @@ def build_quiz_indexing_flow(
         validate: If True, runs structural validation of the flow before returning it.
             Raises `FlowValidationError` on ERROR.
         progress: Optional reporter driving the step/flow bars (via a registered
-            `ProgressFlowObserver`) and, through `EmbedQuizMetadata`, the embedding
+            `ProgressFlowObserver`) and, through `EmbedQuizVariants`, the embedding
             step's item bar. When `None`, defaults to `NullProgressReporter`, a no-op
             collaborator.
 
@@ -118,15 +120,14 @@ def build_quiz_indexing_flow(
         output_key=context_keys.EMBEDDED_QUIZ,
     )
 
-    embed_step = ApplyStep(
-        "embed_quiz",
-        EmbedQuizMetadata(
-            embedding_service=EmbeddingService(
-                config.embedding_batch_size, embedding_client, reporter
-            )
+    embed_variants_step = ApplyStep(
+        "embed_quiz_variants",
+        EmbedQuizVariants(
+            config.quiz_embedding_variants,
+            EmbeddingService(config.embedding_batch_size, embedding_client, reporter),
         ),
         input_key=context_keys.EMBEDDED_QUIZ,
-        output_key=context_keys.EMBEDDED_QUIZ,
+        output_key=context_keys.QUIZ_VARIANT_EMBEDDINGS,
     )
 
     map_to_quiz_entity_step = ApplyStep(
@@ -147,13 +148,16 @@ def build_quiz_indexing_flow(
         "store_quiz",
         QuizQuestionStoreRepository(config.quiz_questions_table, postgres_client),
         QuizImageStoreRepository(config.quiz_images_table, postgres_client),
+        QuizQuestionEmbeddingStoreRepository(
+            config.quiz_question_embeddings_table, postgres_client
+        ),
     )
 
     flow: Flow = (
         FlowBuilder("quiz_indexing")
         .add_step(load_step)
         .add_step(map_to_embedded_step)
-        .add_step(embed_step)
+        .add_step(embed_variants_step)
         .add_step(map_to_quiz_entity_step)
         .add_step(map_to_quiz_images_step)
         .add_step(store_step)

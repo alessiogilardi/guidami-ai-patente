@@ -76,6 +76,19 @@ def test_default_table_names() -> None:
     assert hasattr(config, "knowledge_chunks_table") is False
 
 
+def test_default_quiz_embedding_variants() -> None:
+    """FR-2/AD-7 (T-4): the six starting variants, in FR-2's listing order."""
+    config = _build_config()
+    assert config.quiz_embedding_variants == [
+        "text",
+        "topic_text",
+        "search_queries",
+        "combined",
+        "combined_description",
+        "image_description",
+    ]
+
+
 def test_default_rca_ranges() -> None:
     config = _build_config()
     assert config.rca_ranges == ["118-165", "278-300"]

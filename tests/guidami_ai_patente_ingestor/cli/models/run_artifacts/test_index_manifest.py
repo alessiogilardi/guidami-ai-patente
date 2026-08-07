@@ -25,3 +25,14 @@ def test_model_dump_json_includes_source_for_knowledge() -> None:
 
 def test_index_manifest_has_no_force_field() -> None:
     assert hasattr(IndexManifest, "force") is False
+
+
+def test_record_quiz_variant_omissions_appears_in_report_lines() -> None:
+    """FR-2 (T-10): per-variant omission counts are captured and surfaced in the report."""
+    manifest = IndexManifest(entity="quiz")
+
+    manifest.record_quiz_variant_omissions({"search_queries": 12})
+    lines = manifest.to_report_lines()
+
+    assert manifest.quiz_variant_omissions == {"search_queries": 12}
+    assert any("search_queries" in line and "12" in line for line in lines)

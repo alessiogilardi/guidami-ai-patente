@@ -232,12 +232,16 @@ There is no changelog file tracking schema history beyond `git log db/init.sql`
 and the contents of `db/migrations/`.
 
 > **Current state:** `db/init.sql` and `db/migrations/0008_*.sql` carry the spec
-> 0008 schema (spec status: `ready`). The Python write path has caught up for two
-> of the three new/changed tables (Phase 1): `quiz_questions` (via
-> `QuizQuestionStoreRepository`, upsert + reconciliation) and `quiz_images` (via
-> the new `QuizImageStoreRepository`, upsert-only — no reconciliation, orphaned
-> rows are a deferred open question). `quiz_question_embeddings` has no write path
-> yet — `EmbedQuizVariants` and the variant registry are Phase 2.
+> 0008 schema (spec status: `ready`). The Python write path now covers all three
+> new/changed tables: `quiz_questions` (via `QuizQuestionStoreRepository`, upsert +
+> reconciliation), `quiz_images` (via `QuizImageStoreRepository`, upsert-only — no
+> reconciliation, orphaned rows are a deferred open question), and, as of Phase 2,
+> `quiz_question_embeddings` (via `QuizQuestionEmbeddingStoreRepository`, upsert on
+> `(quiz_question_id, variant)`, likewise no reconciliation for a variant that stops
+> being produced — same deferred-open-question shape). `StoreQuizStep`
+> (`orchestrators/steps/quiz/store_quiz_step.py`) upserts all three in one step,
+> resolving each question's DB-generated `id` via `upsert_returning_ids` before
+> writing its variant rows against it.
 
 *Last updated: 2026-08-04 — verified against commit `2248dcc`; switched the Postgres
 volume from a named Docker volume to a bind mount at `docker/.volumes/postgres_data`
@@ -290,3 +294,14 @@ deleted, zero remaining callers). New `QuizImageStoreRepository` (upsert-only on
 `quiz_images`. `quiz_question_embeddings` still has no write path (Phase 2). Corrected
 the stale "Current state" note under Migrations: `db/init.sql` already carries the
 target schema and spec 0008's status is `ready`, not `draft`.*
+
+*Last updated: 2026-08-07 — verified against commit `bbbb291`; spec 0008 Phase 2 landed
+the write path for `quiz_question_embeddings`: new `QuizQuestionEmbeddingStoreRepository`
+(upsert on `(quiz_question_id, variant)`, no reconciliation — same deferred-open-question
+shape as `quiz_images`), populated via a new variant registry (`quiz_variant_registry.py`,
+six representations — `text`/`topic_text`/`search_queries`/`combined`/
+`combined_description`/`image_description`) and `EmbedQuizVariants`, which replaces
+`EmbedQuizMetadata`. `StoreQuizStep` now writes all three quiz tables (questions, images,
+variant rows) in one step, resolving `quiz_question_id` via `upsert_returning_ids` before
+the variant rows are built. The "Current state" note under Migrations no longer lists a
+missing write path — the schema is unchanged, only the Python side caught up.*
