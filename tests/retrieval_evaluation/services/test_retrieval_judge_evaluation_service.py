@@ -60,7 +60,9 @@ def test_evaluate_judges_a_random_sample_of_n_questions() -> None:
 
     assert len(results) == 3
     assert all(result.is_clear for result in results)
-    quiz_repository.fetch_with_vectors.assert_called_once_with("search_queries")
+    quiz_repository.fetch_with_vectors.assert_called_once_with(
+        "search_queries", "embedding_3_small"
+    )
 
 
 def test_evaluate_retrieves_top_k_commas_per_question() -> None:
@@ -110,4 +112,6 @@ def test_evaluate_all_judges_every_available_row() -> None:
 
     assert [result.quiz_number for result in results] == [row.number for row in rows]
     assert all(result.is_clear for result in results)
-    quiz_repository.fetch_with_vectors.assert_called_once_with("search_queries")
+    quiz_repository.fetch_with_vectors.assert_called_once_with(
+        "search_queries", "embedding_3_small"
+    )

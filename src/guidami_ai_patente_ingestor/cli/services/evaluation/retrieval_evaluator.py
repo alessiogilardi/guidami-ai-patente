@@ -5,7 +5,7 @@ from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
 from typing import Final
 
-from commons.repositories.db import CorpusReadRepository, QuizReadRepository
+from commons.repositories.db import CorpusReadRepository
 from domain.models.retrieval import QuizEvaluationRow, RetrievedComma
 from guidami_ai_patente_ingestor.cli.models.evaluation import (
     EvaluationSummary,
@@ -21,7 +21,6 @@ from .keyword_quality_calculator import KeywordQualityCalculator
 from .ranking_calculator import RankingCalculator
 
 STEP_NAMES: Final[tuple[str, ...]] = (
-    "load quiz rows with vectors",
     "dense retrieval",
     "text retrieval",
     "coverage",
@@ -78,26 +77,27 @@ class RetrievalEvaluator:
     def __init__(
         self,
         config: EvaluationConfig,
-        quiz_repository: QuizReadRepository,
         corpus_repository: CorpusReadRepository,
     ) -> None:
-        """Injects the run config and the two read repositories."""
+        """Injects the run config and the corpus read repository."""
         self._config = config
-        self._quiz_repository = quiz_repository
         self._corpus_repository = corpus_repository
         self._coverage_calculator = CoverageCalculator(config, corpus_repository)
         self._ranking_calculator = RankingCalculator(config)
         self._adherence_calculator = AdherenceCalculator(config, corpus_repository)
         self._keyword_quality_calculator = KeywordQualityCalculator(corpus_repository)
 
-    def evaluate(self) -> tuple[EvaluationSummary, list[QuestionOutcome]]:
-        """Runs every step in `STEP_NAMES` order; returns the summary and per-question detail.
+    def evaluate(
+        self, rows: list[QuizEvaluationRow]
+    ) -> tuple[EvaluationSummary, list[QuestionOutcome]]:
+        """Runs every step in `STEP_NAMES` order over `rows`.
 
-        Raises `ValueError` when the configured quiz embedding variant has no rows —
-        naming both the configured variant and what the table actually contains, so an
-        unpopulated `quiz_question_embeddings` fails loudly instead of reporting zeroes.
+        Returns the summary and per-question detail. `rows` is caller-supplied (T-14):
+        this class no longer loads rows itself, so it no longer decides what an
+        empty/missing arm means — that decision now belongs to the caller
+        (`MultiArmRetrievalEvaluator`).
         """
-        state = _RunState()
+        state = _RunState(rows=rows)
         for _name, step in self._steps():
             step(state)
         assert state.summary is not None
@@ -105,7 +105,6 @@ class RetrievalEvaluator:
 
     def _steps(self) -> tuple[tuple[str, Callable[[_RunState], None]], ...]:
         return (
-            ("load quiz rows with vectors", self._load_rows),
             ("dense retrieval", self._dense_retrieval),
             ("text retrieval", self._text_retrieval),
             ("coverage", self._coverage),
@@ -114,17 +113,6 @@ class RetrievalEvaluator:
             ("keyword quality", self._keyword_quality),
             ("aggregate", self._aggregate),
         )
-
-    def _load_rows(self, state: _RunState) -> None:
-        rows = self._quiz_repository.fetch_with_vectors(self._config.quiz_embedding_variant)
-        if not rows:
-            available = self._quiz_repository.available_variants()
-            raise ValueError(
-                f"no query vectors for configured variant "
-                f"{self._config.quiz_embedding_variant!r}; variants actually present in "
-                f"quiz_question_embeddings: {available!r}"
-            )
-        state.rows = rows
 
     def _dense_retrieval(self, state: _RunState) -> None:
         depth = max(self._config.k_values)
@@ -167,7 +155,13 @@ class RetrievalEvaluator:
     def _baseline_repetition(
         self, state: _RunState, repetition: int, depth: int
     ) -> dict[int, float]:
-        """One reproducible baseline pass: a fresh random draw per question, hit rate per k."""
+        """One reproducible baseline pass: a fresh random draw per question, hit rate per k.
+
+        `0.0` on an empty `state.rows` (T-14: empty input is no longer fatal), matching
+        `_hit_rate`'s identical "0.0 on empty population" convention.
+        """
+        if not state.rows:
+            return dict.fromkeys(self._config.k_values, 0.0)
         random_draws = [
             self._corpus_repository.random_top_k(
                 depth, seed_key=f"{self._config.seed}:{repetition}:{row.number}"

@@ -44,13 +44,13 @@ is a similarly standalone script package — an LLM-as-judge measurement tool
 
 | Component | Role | Main technology |
 |---|---|---|
-| `commons/ai/embedding/` | `clients/`: `EmbeddingClient` ABC (`embed_query`, `embed_passages`); `LiteLLMEmbeddingClient` (production) and `SentenceTransformerEmbeddingClient` (offline alternative, not hot-swappable — different dimension). `services/`: `EmbeddingService` (batching) + `Embeddable`/`Embedded` protocols. `configs/`: `EmbeddingConfig` | litellm (→ OpenRouter), sentence-transformers |
+| `commons/ai/embedding/` | `clients/`: `EmbeddingClient` ABC (`embed_query`, `embed_passages`); `LiteLLMEmbeddingClient` (production) and `SentenceTransformerEmbeddingClient` (offline alternative, not hot-swappable — different dimension). `services/`: `EmbeddingService` (batching) — takes `Sequence[str]` directly (spec 0008 Phase 2, AD-9); the `Embeddable`/`Embedded` protocols it used to depend on are deleted, since one object having exactly one `embedded_text` cannot express multi-variant embedding (a question yielding several different texts). Callers now read their own item's text before calling (e.g. `EmbeddableArticleComma.embedded_text`, unaffected — the property itself survives, only the protocol requiring it is gone). `configs/`: `EmbeddingConfig` | litellm (→ OpenRouter), sentence-transformers |
 | `commons/ai/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` (in `configs/`) from YAML, renders prompts via `PromptRenderer`; requires an injected `OpenRouterProvider` (never reads env itself); optionally tracks every call via an injected `LlmCallTracker` port | pydantic-ai-slim[openrouter] |
 | `commons/configs/` | Shared, app-agnostic Pydantic settings: `PostgresConnectionConfig`, `OpenRouterConfig` (`BaseSettings`, `env_prefix="OPENROUTER_"`, holds `api_key: SecretStr`) | pydantic-settings |
 | `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | psycopg[binary] |
 | `commons/observability/` | Thin re-exporting `__init__.py` over two self-contained sibling sub-packages: `progress_reporter/` (`ItemProgressReporter`/`ProgressReporter` port + `NullProgressReporter` — progress reporting for the ingest CLI's live dashboard, spec 0002) and `run_artifact_writer/` (`RunArtifactWriter` + a `models/` sub-package holding `RunManifest` (base) and `ScrapeManifest`; `RunArtifactWriterConfig` was removed, spec 0005 AD-5 — `RunArtifactWriter` is domain-agnostic mechanics only, no `protocols/`/`services/` split since AD-3 rejects a `Protocol` here with only one implementation; a context manager that owns one `logs/<prefix>_<timestamp>/` run directory, writing `run.log`/`manifest.json`/`report.md` from whatever `RunManifest` it holds and always finalizing them in `__exit__` even on an unhandled exception — shared between `ingest`'s `configure_logging` and the `scrapers/normattiva.py` scraper, spec 0005 AD-1/AD-4); a sibling of `commons/ai/observability/`, not nested under it, since it is not AI-specific. The `ingest`-only manifests (`PrepareManifest`/`IndexManifest`/`ResetManifest`) live in `guidami_ai_patente_ingestor/cli/models/run_artifacts/` instead, per the CLI self-containment rule (spec 0005 AD-6) | — |
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
-| `commons/repositories/db/` | Read-only Postgres repositories, scoped **per entity** not per table (AD-7, spec 0007) — the project's first query code, every repository under `guidami_ai_patente_ingestor/repositories/db/` being write-only bulk insert. `CorpusReadRepository` (`articles` ⋈ `article_commas`) and `QuizReadRepository` (`quiz_questions` ⋈ `quiz_question_embeddings`), each taking an injected `PostgresClient`, mirroring `LlmCallLogRepository`'s shape. Lives in `commons/` rather than the `ingest` CLI (which the self-containment rule would otherwise suggest) because a corpus reader is also what `src/guidami_ai_patente/` will eventually need — more than one consumer, same reasoning as `LlmCallLogRepository` | psycopg[binary], pgvector |
+| `commons/repositories/db/` | Read-only Postgres repositories, scoped **per entity** not per table (AD-7, spec 0007) — the project's first query code, every repository under `guidami_ai_patente_ingestor/repositories/db/` being write-only bulk insert. `CorpusReadRepository` (`articles` ⋈ `article_commas`) and `QuizReadRepository` (`quiz_questions` ⋈ `quiz_question_embeddings`), each taking an injected `PostgresClient`, mirroring `LlmCallLogRepository`'s shape. `QuizReadRepository.fetch_with_vectors(variant, model_column)` takes the model column explicitly (spec 0008 Phase 2, generalized from a single hardcoded `embedding_3_small`); `populated_model_columns()` introspects `information_schema.columns` for `embedding_*`-named columns holding ≥1 non-null vector, so the multi-arm evaluation harness's model axis needs no code change when a second model column is added (AD-6). Lives in `commons/` rather than the `ingest` CLI (which the self-containment rule would otherwise suggest) because a corpus reader is also what `src/guidami_ai_patente/` will eventually need — more than one consumer, same reasoning as `LlmCallLogRepository` | psycopg[binary], pgvector |
 | `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach`, `FlatMap` — generic composition primitives used across pipeline steps | — |
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
 | `flowstep` (external dependency) | Generic sequential-pipeline engine (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) | git dependency (github.com/alessiogilardi/flowstep) |
@@ -63,7 +63,7 @@ is a similarly standalone script package — an LLM-as-judge measurement tool
 | `scrapers/range_filter.py` | Shared core (`filter_articles_by_range(source_path, dest_path, ranges)`) for narrowing a fully-scraped law down to inclusive numeric ranges over the article's leading number; extracted by spec 0009 once a second consumer (`amb_extract.py`) needed the identical algorithm `rca_extract.py` already had | stdlib only |
 | `scrapers/rca_extract.py` | Filters the full CAP corpus (`data/parsed/cap/codice_assicurazioni_private.json`) down to `IngestorConfig.rca_ranges` → `data/parsed/cap/codice_rca.json`, via `range_filter.filter_articles_by_range`; not wired into `main_cap` or the `ingest` CLI — a standalone follow-up step | stdlib only |
 | `scrapers/amb_extract.py` | Filters the full AMB corpus (`data/parsed/amb/codice_ambiente.json`) down to `IngestorConfig.amb_ranges` (Parte IV, Titolo III, artt. 227-237 — waste provisions covering used oil, batteries, tyres) → `data/parsed/amb/codice_ambiente_rifiuti.json`, same shape as `rca_extract.py`, registered as `extract-amb` (spec 0009) | stdlib only |
-| `test_data_sampler/sampler.py` | Samples `--count` random elements per source from `data/parsed/{cds,cap,reg,quiz-patente-ab}` → `data/test-data/parsed/...`, copying only the quiz images the sampled questions reference from `data/quiz-images/` into `data/test-data/quiz-images/`; feeds `ingest --config configs/ingestor_config.test-data.yaml prepare\|index` (ADR 0006, ADR 0008) | stdlib only |
+| `test_data_sampler/sampler.py` | Samples `--count` random elements per source from `data/parsed/{cds,cap,reg,quiz-patente-ab}` → `data/test-data/parsed/...`, copying only the quiz images the sampled questions reference from `data/quiz-images/` into `data/test-data/quiz-images/`; also copies the sampled quiz subset's already-enriched files from `data/enriched/quiz-patente-ab/` into `data/test-data/enriched/quiz-patente-ab/` (`sample_quiz_enriched`, keyed by `element_id("quiz", number)` — filesystem copy, no LLM call, no re-enrichment), so an integration test can exercise `ingest index quiz` end to end without either running enrichment or reading the full 7099-file bank; feeds `ingest --config configs/ingestor_config.test-data.yaml prepare\|index` (ADR 0006, ADR 0008) | stdlib only |
 
 `parsers/questions_pdf.py` extracts each sub-question's image lazily: the
 per-question default image (fallback for rows without their own nearby
@@ -468,7 +468,9 @@ enriched sub-question, named by `commons.utils.element_id("quiz", item.number)`,
 knowledge):
 1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItems())` (unnest + corpus-wide dedup on normalized-text + correct_answer + image identity — the id depends on `number`, which only exists after this flatten, so the filter can't run any earlier) → `FilterAlreadyDoneStep` (drops items already present in `cleaned/`) → `WriteJsonDirStep` (one file per surviving item).
 2. *Enrichment*: `LoadJsonDirStep` (cleaned, per-element) → `FilterAlreadyDoneStep` (drops items already present in `enriched/`, **before** the mapping/LLM transform — the filter runs pre-transform here since enrichment, unlike cleaning, *is* the expensive step) → `ApplyStep(ForEach(QuizMapper.from_cleaned_to_enriched))` → `AsyncApplyStep(ImageDescriptionEnricher(road_sign_describer_concurrency, RoadSignDescriberAgent), NormReferenceEnricher(NormReferenceDescriberAgent))` → `WriteJsonDirStep` (one file per enriched item). The mapping runs in a synchronous `ApplyStep`; both enrichers run in a separate `AsyncApplyStep` (concurrent LLM calls) over whatever subset the filter left — `ImageDescriptionEnricher` groups the *not-yet-done* quizzes by image filename and issues one concurrent vision call per image (see `patterns.md`), writing both the flat `image_description` (downstream/embedding field) and the structured `image_analysis` (full LLM output, debug-only) onto every quiz sharing that image. Corpus-wide dedup already happened at cleaning, so no duplicate-image concern arises across runs.
-3. *Indexing*: `LoadJsonDirStep` (enriched, per-element) → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embedded))` → `ApplyStep(EmbedQuizMetadata)` → `ApplyStep(ForEach(QuizMapper.from_embedded_to_quiz_question))` → `ApplyStep(FlatMap(QuizMapper.from_embedded_to_quiz_images))` → `StoreQuizStep` (`orchestrators/steps/quiz/store_quiz_step.py`, spec 0008 Phase 1 — mirrors `StoreArticlesAndCommasStep`: upserts `quiz_questions` on `number` then reconciles the whole table via `QuizQuestionStoreRepository.delete_missing`, quiz having a single source unlike the knowledge side's per-source scope; upserts `quiz_images` on `filename` with no reconciliation, an explicitly deferred open question). This replaced the former `DbStoreStep` full-reload (truncate + bulk insert) terminal step; `DbStoreStep` and the generic `StoreRepository` protocol it depended on are now deleted (AD-10), having zero remaining callers. Variant rows (`quiz_question_embeddings`, `EmbedQuizVariants`) are Phase 2, not built yet. `EmbedQuizMetadata` extracts `quiz_metadata` (itself `Embeddable`) from each item and calls `EmbeddingService` on that list directly — not on the `EmbeddedQuizModel` items themselves, which no longer implement `Embeddable`/`Embedded`. Items without `quiz_metadata` end up with `vector_search_queries=None` on the persisted entity (the computed embedding itself is not yet persisted anywhere — Phase 2's concern). `QuizMetadata` stays a cohesive nested object through the ingestion models (`EnrichedQuizModel`/`EmbeddedQuizModel`) and is flattened onto the `QuizQuestionEntity` entity columns **only** at the boundary, inside `from_embedded_to_quiz_question`.
+3. *Indexing*: `LoadJsonDirStep` (enriched, per-element) → `ApplyStep(DeduplicateQuizItems(), ForEach(QuizMapper.from_enriched_to_embedded))` → `ApplyStep(EmbedQuizVariants)` → `ApplyStep(ForEach(QuizMapper.from_embedded_to_quiz_question))` → `ApplyStep(FlatMap(QuizMapper.from_embedded_to_quiz_images))` → `StoreQuizStep` (`orchestrators/steps/quiz/store_quiz_step.py`, spec 0008 — mirrors `StoreArticlesAndCommasStep`: upserts `quiz_questions` on `number` (via `upsert_returning_ids`, resolving each question's DB-generated `id`) then reconciles the whole table via `QuizQuestionStoreRepository.delete_missing`, quiz having a single source unlike the knowledge side's per-source scope; upserts `quiz_images` on `filename` and `quiz_question_embeddings` on `(quiz_question_id, variant)`, neither reconciled — both explicitly deferred open questions). This replaced the former `DbStoreStep` full-reload (truncate + bulk insert) terminal step; `DbStoreStep` and the generic `StoreRepository` protocol it depended on are deleted (AD-10), having zero remaining callers.
+
+   `EmbedQuizVariants` (`services/quiz/embed_quiz_variants.py`, spec 0008 Phase 2, replacing `EmbedQuizMetadata`) computes every variant named in `IngestorConfig.quiz_embedding_variants` from a registry (`services/quiz/quiz_variant_registry.py`, AD-7): each `QuizVariantSpec` pairs a name with a `text_builder: EmbeddedQuizModel -> str | None` (returns `None`, and the omission is counted, when the item lacks that variant's input — e.g. no `quiz_metadata`) and a `dedup_key` (default `item.number`, i.e. no dedup; `image_description` keys by `item.image_filename`, so several questions sharing one image issue exactly one embedding call, AD-8). The six registered variants: `text` (question text alone), `topic_text` (topic + text + image description when present), `search_queries` (`quiz_metadata.vector_search_queries` joined), `combined` (topic + text + search queries), `combined_description` (`combined` + image description when present), `image_description` (the description alone, image questions only). Output is one `EmbeddableQuizVariant` (`question_number`, `variant`, `embedding`) per (question, variant) pair with a computed text, wrapped in an `EmbedQuizVariantsResult` alongside a per-variant omission-count `dict` — `StoreQuizStep` resolves each row's `question_number` to the just-upserted `quiz_question_id` before writing `QuizQuestionEmbeddingEntity` rows via the new `QuizQuestionEmbeddingStoreRepository`; `cli/commands/index.py` reads the same result back off the `FlowContext` `flow.run()` returns and records the omission counts on `IndexManifest` (FR-2). `EmbeddingService.execute` now takes `Sequence[str]` directly (AD-9) rather than a sequence of `Embeddable` objects — the `Embeddable`/`Embedded` protocols are deleted, since one object can express only one text to embed, which multi-variant embedding breaks; `EmbeddableArticleComma.embedded_text` (knowledge side) is unaffected, its caller now just reads the property before calling. `QuizMetadata` stays a cohesive nested object through the ingestion models (`EnrichedQuizModel`/`EmbeddedQuizModel`) and is flattened onto the `QuizQuestionEntity` entity columns **only** at the boundary, inside `from_embedded_to_quiz_question`.
 
 `dispatch_prepare`'s `quiz` branch (`cli/commands/prepare.py`) runs both the
 cleaning and enrichment flows directly on every invocation — no coarse
@@ -480,32 +482,49 @@ were deleted as a one-time manual prerequisite — an un-deleted monolith sittin
 inside what is now a per-element container directory would make `load_dir`
 raise a loud `ValueError`, not silently corrupt data.
 
-**Retrieval evaluation harness** (`ingest evaluate retrieval`, spec 0007 — an
-`ingest` CLI feature, not `src/guidami_ai_patente/`, per AD-1's documented
-deviation from `layout.md`): a data-quality instrument, not application runtime,
-that measures whether dense retrieval over the corpus can actually answer a
-quiz question — no retrieval code existed anywhere before this. `RetrievalEvaluator`
-(`cli/services/evaluation/`) sequences one in-memory pass over every quiz question
-with a query vector (`QuizReadRepository.fetch_with_vectors`, raising loudly if the
-configured variant has no rows) through eight named steps (`STEP_NAMES`, shared
-verbatim between the real run and `--dry-run`'s renderer, PD-5), then aggregates:
-FR-2 corpus coverage (a continuous best-`ts_rank` distribution plus a keyword
-document-frequency band — deliberately never a single binary), FR-3 a random
-baseline repeated `N` times (reproducible via `seed:repetition:question_number`),
-FR-4 hit@k over both the keyword-covered subset and the full measurable set, FR-5
-lexical adherence (OR-joined tsquery, AD-3 — `plainto_tsquery`/`websearch_to_tsquery`
-AND their terms and were measured to return 0.0000 on every row of a sample), FR-6
-dense/FTS agreement and distance margin, and FR-10 whether `exact_keywords` carry
-signal at all (point-biserial correlation, explicitly labelled not an independence
-test). All run parameters (seed, baseline repetitions, `k` values, DF cutoffs, text
-coverage thresholds) live in `IngestorConfig.evaluation: EvaluationConfig`, with
+**Retrieval evaluation harness** (`ingest evaluate retrieval`, spec 0007 + spec
+0008 Phase 2's FR-3 multi-arm rearchitecture — an `ingest` CLI feature, not
+`src/guidami_ai_patente/`, per AD-1's documented deviation from `layout.md`): a
+data-quality instrument, not application runtime, that measures whether dense
+retrieval over the corpus can actually answer a quiz question — no retrieval code
+existed anywhere before spec 0007. `MultiArmRetrievalEvaluator`
+(`cli/services/evaluation/multi_arm_retrieval_evaluator.py`) enumerates every
+**arm** — a `(variant, model_column)` pair — from the database rather than a
+hardcoded list: `QuizReadRepository.available_variants()` (distinct `variant`
+values present) crossed with `populated_model_columns()` (columns matching AD-6's
+`embedding_*` naming convention in `information_schema.columns` that hold at least
+one non-null vector, introspected so a second model column needs no harness
+change). A single populated model column collapses each arm's label to the
+variant name alone; more than one appends `::model_column`. For each arm,
+`RetrievalEvaluator` (now a **pure per-arm calculator**: `evaluate(rows)` takes
+already-loaded `QuizEvaluationRow`s and no longer owns row-loading or the
+`quiz_repository` dependency it used to) runs the same eight-ish named steps as
+before (`STEP_NAMES`, shared verbatim with `--dry-run`'s renderer) and aggregates
+FR-2 corpus coverage, FR-3's random baseline, FR-4 hit@k, FR-5 lexical adherence,
+FR-6 dense/FTS agreement, and FR-10's keyword-signal check — see spec 0007's own
+FR list for each metric's definition, unchanged by the rearchitecture. A **fusion**
+arm is added on top: for every question with both a `topic_text` and a `text`
+variant row (required; `image_description` joins in only when that question also
+has one, spec 0008 AD-3/PD-1), `MultiArmRetrievalEvaluator._fuse_dense` retrieves
+each constituent vector's own `dense_top_k` ranking independently and fuses them
+by citation identity via `commons.ai.utils.reciprocal_rank_fusion` (a small,
+domain-agnostic RRF function, `EvaluationConfig.rrf_k`, default 60, uncalibrated) —
+no fused vector is ever queried or stored. The `search_queries` variant is the
+baseline arm (`EvaluationConfig.quiz_embedding_variant`, repurposed from "the only
+variant loaded" to "which arm's numbers become the baseline"); every other arm
+carries a `RankingDelta` (`hit_full` at each `k`, in percentage points) against it.
+Per-arm `excluded_count` is `total_questions - question_count` (a question missing
+that arm's input). Results assemble into `MultiArmEvaluationSummary` (`arms: dict[str,
+ArmResult]`, keyed by label, each holding its own `EvaluationSummary`) — the
+committed `data/eval/retrieval-summary.json` and the console renderer both iterate
+per arm; the per-question detail file and judge-ready export (FR-9) still cover
+only the baseline arm's outcomes, not every arm (spec 0008 Phase 2 PD-13 — FR-3
+requires the *summary* per arm, not per-question artifacts multiplied by arm). All
+run parameters (seed, baseline repetitions, `k` values, DF cutoffs, text coverage
+thresholds, `rrf_k`) live in `IngestorConfig.evaluation: EvaluationConfig`, with
 `--seed`/`--baseline-repetitions` CLI overrides layered on top in
-`cli/commands/evaluate.py`. Artifacts: a small versioned `EvaluationSummary` committed
-to `data/eval/retrieval-summary.json` (diffable across runs, no timestamp field, so
-identical runs diff empty per FR-7), plus per-question detail and a judge-ready export
-of the undecidable subset (FR-9 — questions matching no keyword, or covered only by
-non-selective keywords) under `logs/ingest_evaluate_<ts>/`, gitignored. No LLM call
-anywhere in the harness (FR-8): it reads only what ingestion already persisted.
+`cli/commands/evaluate.py`. No LLM call anywhere in the harness (FR-8): it reads
+only what ingestion already persisted.
 
 **Retrieval judge** (`evaluate-retrieval-judge` script, `src/retrieval_evaluation/`):
 a second, deliberately separate measurement over the same corpus, answering a
@@ -717,3 +736,28 @@ terminal step is now `StoreQuizStep` (new `orchestrators/steps/quiz/` package, m
 reload — `DbStoreStep` and the generic `StoreRepository` protocol are deleted, zero remaining
 callers (spec 0008 Phase 1, AD-10). A new `ApplyStep(FlatMap(QuizMapper.from_embedded_to_quiz_images))`
 step precedes it, mapping each embedded question to zero-or-one `QuizImageEntity`.*
+
+*Last updated: 2026-08-07 — verified against commit `bbbb291`; `test_data_sampler/sampler.py`
+row now also covers `sample_quiz_enriched`, added while extracting spec 0008 Phase 2's plan —
+`data/test-data/enriched/` was previously missing entirely (only `parsed/`/`cleaned/` existed),
+blocking an FR-4 integration test from exercising `ingest index quiz` against a small corpus.
+The fix copies from the already-enriched full bank rather than re-running enrichment. Also:
+`commons/ai/embedding/` row updated for spec 0008 Phase 2, AD-9 — `EmbeddingService`
+now takes `Sequence[str]` directly and the `Embeddable`/`Embedded` protocols are deleted (one
+object can no longer express "the one text to embed" once a question yields several variant
+texts).*
+
+*Last updated: 2026-08-07 — verified against commit `bbbb291`; spec 0008 Phase 2 landed in
+full. Quiz indexing's step 3 rewritten: `EmbedQuizVariants`/the `quiz_variant_registry.py`
+registry (AD-7) replace `EmbedQuizMetadata`, computing all six configured variants and
+persisting them via the new `quiz_question_embeddings` write path (`QuizQuestionEmbeddingStoreRepository`,
+`StoreQuizStep` now resolving `quiz_question_id` via `upsert_returning_ids` before writing
+variant rows); per-variant omission counts reach `IndexManifest` via the `FlowContext`
+`flow.run()` returns. The retrieval evaluation harness is rearchitected from single-arm to
+multi-arm (FR-3): `MultiArmRetrievalEvaluator`, `commons/repositories/db/quiz_read_repository.py`'s
+new `populated_model_columns()`, the fusion arm via the new `commons/ai/utils/reciprocal_rank_fusion.py`,
+and three new report models (`RankingDelta`, `ArmResult`, `MultiArmEvaluationSummary`).
+`RetrievalEvaluator` itself is now a pure per-arm calculator, decoupled from `QuizReadRepository`.
+`src/retrieval_evaluation/services/retrieval_judge_evaluation_service.py` (outside spec 0008's
+scope but coupled to the changed `fetch_with_vectors` signature) was updated to pass
+`"embedding_3_small"` explicitly, the only model column that exists today.*

@@ -12,7 +12,7 @@ from guidami_ai_patente_ingestor.configs import EvaluationConfig, IngestorConfig
 
 from .. import wiring
 from ..rendering import render_dry_run, render_evaluation
-from ..services.evaluation import EvaluationArtifactWriter, RetrievalEvaluator
+from ..services.evaluation import EvaluationArtifactWriter, MultiArmRetrievalEvaluator
 
 logger = logging.getLogger(__name__)
 
@@ -39,6 +39,8 @@ def _judge_subset(
     outcomes: list[QuestionOutcome], config: EvaluationConfig
 ) -> list[QuestionOutcome]:
     """FR-9's undecidable subset: keyword "matches nothing" plus non-selective-only hits."""
+    if not outcomes:
+        return []
     largest_cutoff = max(config.keyword_df_cutoffs)
     return [
         outcome
@@ -56,13 +58,13 @@ def run_evaluate(
 ) -> None:
     """Dispatch `evaluate retrieval`: measure retrieval quality against the quiz bank.
 
-    `--dry-run` prints the step chain (`RetrievalEvaluator.STEP_NAMES`, PD-5) and
+    `--dry-run` prints the step chain (`MultiArmRetrievalEvaluator.STEP_NAMES`, PD-5) and
     returns *before* `wiring.build_postgres_client` is ever called (FR-1): no DB
     connection is opened, and no filesystem write happens either. FR-8 holds trivially
     on this path since a dry run makes no call of any kind.
     """
     if args.dry_run:
-        render_dry_run(Console(), "evaluate", list(RetrievalEvaluator.STEP_NAMES))
+        render_dry_run(Console(), "evaluate", list(MultiArmRetrievalEvaluator.STEP_NAMES))
         return
 
     assert manifest is not None
@@ -72,13 +74,15 @@ def run_evaluate(
 
     with wiring.build_postgres_client(config) as postgres_client:
         repositories = wiring.build_evaluation_repositories(config, postgres_client)
-        evaluator = RetrievalEvaluator(effective_config, repositories.quiz, repositories.corpus)
+        evaluator = MultiArmRetrievalEvaluator(
+            effective_config, repositories.quiz, repositories.corpus
+        )
         logger.info("starting retrieval evaluation")
-        summary, outcomes = evaluator.evaluate()
+        multi_summary, outcomes = evaluator.evaluate()
         logger.info("retrieval evaluation completed")
 
     writer = EvaluationArtifactWriter(effective_config.output_dir, run_dir)
-    writer.write_summary(summary)
+    writer.write_summary(multi_summary)
     writer.write_detail(outcomes)
     writer.write_judge_export(_judge_subset(outcomes, effective_config))
-    render_evaluation(summary, Console(), plain=args.plain)
+    render_evaluation(multi_summary, Console(), plain=args.plain)

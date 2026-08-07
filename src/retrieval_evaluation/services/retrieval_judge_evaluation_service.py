@@ -45,7 +45,11 @@ class RetrievalJudgeEvaluationService:
         return [self._judge_one(row) for row in self._load_rows()]
 
     def _load_rows(self) -> list[QuizEvaluationRow]:
-        return self._quiz_repository.fetch_with_vectors(self._variant)
+        # "embedding_3_small" is the only model column that exists today (AD-6); T-12
+        # generalized fetch_with_vectors to take model_column explicitly, but this
+        # service (outside plan 0008 Phase 2's Files list) has no second model to pick
+        # between yet either.
+        return self._quiz_repository.fetch_with_vectors(self._variant, "embedding_3_small")
 
     def _judge_one(self, row: QuizEvaluationRow) -> RetrievalJudgeItemResult:
         commas = self._corpus_repository.dense_top_k(row.embedding, self._k)

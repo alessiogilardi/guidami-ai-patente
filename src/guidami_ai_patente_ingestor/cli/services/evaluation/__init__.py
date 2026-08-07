@@ -9,6 +9,7 @@ from .adherence_calculator import AdherenceCalculator
 from .artifact_writer import EvaluationArtifactWriter
 from .coverage_calculator import CoverageCalculator
 from .keyword_quality_calculator import KeywordQualityCalculator
+from .multi_arm_retrieval_evaluator import MultiArmRetrievalEvaluator
 from .ranking_calculator import RankingCalculator
 from .retrieval_evaluator import RetrievalEvaluator
 
@@ -17,6 +18,7 @@ __all__ = [
     "CoverageCalculator",
     "EvaluationArtifactWriter",
     "KeywordQualityCalculator",
+    "MultiArmRetrievalEvaluator",
     "RankingCalculator",
     "RetrievalEvaluator",
 ]

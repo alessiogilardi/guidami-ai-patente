@@ -4,7 +4,10 @@ import json
 from collections.abc import Sequence
 from pathlib import Path
 
-from guidami_ai_patente_ingestor.cli.models.evaluation import EvaluationSummary, QuestionOutcome
+from guidami_ai_patente_ingestor.cli.models.evaluation import (
+    MultiArmEvaluationSummary,
+    QuestionOutcome,
+)
 
 _SUMMARY_FILENAME = "retrieval-summary.json"
 _DETAIL_FILENAME = "detail.json"
@@ -25,7 +28,7 @@ class EvaluationArtifactWriter:
         self._output_dir = output_dir
         self._run_dir = run_dir
 
-    def write_summary(self, summary: EvaluationSummary) -> Path:
+    def write_summary(self, summary: MultiArmEvaluationSummary) -> Path:
         """Writes `summary` to `output_dir/retrieval-summary.json`.
 
         Serialised with `model_dump_json(indent=2)`; pydantic emits fields in

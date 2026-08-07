@@ -3,6 +3,8 @@ from psycopg import sql
 from commons.clients import PostgresClient
 from domain.models.retrieval import QuizEvaluationRow
 
+_MODEL_COLUMN_PATTERN = "embedding\\_%"  # noqa: matches literal "embedding_" prefix (AD-6); ESCAPE '\' below stops the underscore acting as a single-char wildcard
+
 
 class QuizReadRepository:
     """Read-only repository over `quiz_questions` joined to `quiz_question_embeddings`.
@@ -28,21 +30,23 @@ class QuizReadRepository:
             embeddings=sql.Identifier(quiz_question_embeddings_table),
         )
 
-    def fetch_with_vectors(self, variant: str) -> list[QuizEvaluationRow]:
+    def fetch_with_vectors(self, variant: str, model_column: str) -> list[QuizEvaluationRow]:
         """Returns every question that has an embedding for `variant`, ordered by number.
 
         The join is an `INNER JOIN` filtered on `e.variant = %s AND
-        e.embedding_3_small IS NOT NULL`: a question with no vector for the requested
-        variant is absent from the result, never present with a null embedding. Does
-        not select `q.embedding` — that column no longer exists on `quiz_questions`.
+        e.{model_column} IS NOT NULL`: a question with no vector for the requested
+        variant/model is absent from the result, never present with a null embedding.
+        `model_column` is caller-selected (FR-3/AD-6, see `populated_model_columns`), not
+        hardcoded. Does not select `q.embedding` — that column no longer exists on
+        `quiz_questions`.
         """
         query = sql.SQL(
             "SELECT q.id, q.number, q.topic, q.text, q.correct_answer, "
-            "q.exact_keywords, q.image_filename, e.embedding_3_small "
+            "q.exact_keywords, q.image_filename, e.{model_column} "
             "FROM {from_clause} "
-            "WHERE e.variant = %s AND e.embedding_3_small IS NOT NULL "
+            "WHERE e.variant = %s AND e.{model_column} IS NOT NULL "
             "ORDER BY q.number"
-        ).format(from_clause=self._from_clause)
+        ).format(from_clause=self._from_clause, model_column=sql.Identifier(model_column))
         rows = self._client.fetch(query, [variant])
         return [
             QuizEvaluationRow(
@@ -68,4 +72,36 @@ class QuizReadRepository:
             table=sql.Identifier(self._quiz_question_embeddings_table)
         )
         rows = self._client.fetch(query)
+        return [row[0] for row in rows]
+
+    def populated_model_columns(self) -> list[str]:
+        """Returns the `embedding_*` columns holding >= 1 non-null vector (FR-3, AD-6).
+
+        Two-step, both driven by the schema/data rather than a hardcoded model list: first
+        lists every column matching AD-6's `embedding_` naming convention via
+        `information_schema.columns`, then checks each for at least one non-null value in
+        one aggregate query. Adding a model column (AD-6) needs no change here.
+        """
+        candidates = self._candidate_model_columns()
+        if not candidates:
+            return []
+        query = sql.SQL("SELECT {aggs} FROM {table}").format(
+            aggs=sql.SQL(", ").join(
+                sql.SQL("bool_or({col} IS NOT NULL)").format(col=sql.Identifier(col))
+                for col in candidates
+            ),
+            table=sql.Identifier(self._quiz_question_embeddings_table),
+        )
+        row = self._client.fetch(query)[0]
+        return [col for col, populated in zip(candidates, row, strict=True) if populated]
+
+    def _candidate_model_columns(self) -> list[str]:
+        query = sql.SQL(
+            "SELECT column_name FROM information_schema.columns "
+            "WHERE table_name = %s AND column_name LIKE %s ESCAPE '\\' "
+            "ORDER BY column_name"
+        )
+        rows = self._client.fetch(
+            query, [self._quiz_question_embeddings_table, _MODEL_COLUMN_PATTERN]
+        )
         return [row[0] for row in rows]

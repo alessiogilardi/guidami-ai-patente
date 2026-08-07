@@ -16,6 +16,7 @@ def test_defaults_present() -> None:
     assert config.text_coverage_thresholds == [0.01, 0.02, 0.05, 0.10]
     assert config.quiz_embedding_variant == "search_queries"
     assert config.output_dir == Path("data/eval")
+    assert config.rrf_k == 60
 
 
 def test_config_is_frozen() -> None:

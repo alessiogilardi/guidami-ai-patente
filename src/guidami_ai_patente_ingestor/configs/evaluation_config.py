@@ -21,7 +21,14 @@ class EvaluationConfig(BaseModel):
         default_factory=lambda: [1, 2, 3, 5, 10, 20, 50, 100, 250, 500]
     )
     text_coverage_thresholds: list[float] = Field(default_factory=lambda: [0.01, 0.02, 0.05, 0.10])
+    # Names which arm is treated as the baseline for MultiArmEvaluationSummary's
+    # baseline_label and every other arm's delta_vs_baseline (FR-3): the harness now
+    # loads every stored arm, not just this one — field name and default unchanged,
+    # only its role.
     quiz_embedding_variant: str = "search_queries"
+    # Reciprocal Rank Fusion constant (AD-3). Conventional default, uncalibrated — spec
+    # 0008's own non-blocking Open Question, owner: investigation.
+    rrf_k: int = 60
     output_dir: Path = Path("data/eval")
 
     @field_validator("baseline_repetitions")

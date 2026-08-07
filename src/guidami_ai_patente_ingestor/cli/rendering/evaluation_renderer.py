@@ -2,11 +2,17 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
 
-from guidami_ai_patente_ingestor.cli.models.evaluation import EvaluationSummary
+from guidami_ai_patente_ingestor.cli.models.evaluation import (
+    ArmResult,
+    EvaluationSummary,
+    MultiArmEvaluationSummary,
+)
 
 
-def render_evaluation(summary: EvaluationSummary, console: Console, plain: bool = False) -> None:
-    """Renders the completed evaluation summary (PD-6).
+def render_evaluation(
+    summary: MultiArmEvaluationSummary, console: Console, plain: bool = False
+) -> None:
+    """Renders the completed multi-arm evaluation summary (PD-6, FR-3), one arm at a time.
 
     This command runs no `Flow`, so there is no live dashboard to disable; `--plain`
     instead gives `plain=True` a defined meaning of its own: plain text lines instead of
@@ -16,13 +22,34 @@ def render_evaluation(summary: EvaluationSummary, console: Console, plain: bool 
         for line in _plain_lines(summary):
             console.print(line)
         return
-    console.print(_coverage_panel(summary))
-    console.print(_ranking_table(summary))
-    console.print(_signals_panel(summary))
-    console.print(_keyword_quality_panel(summary))
+    for label, arm in summary.arms.items():
+        console.print(_arm_header(label, arm))
+        console.print(_coverage_panel(arm.summary))
+        console.print(_ranking_table(arm.summary))
+        console.print(_signals_panel(arm.summary))
+        console.print(_keyword_quality_panel(arm.summary))
 
 
-def _plain_lines(summary: EvaluationSummary) -> list[str]:
+def _arm_header(label: str, arm: ArmResult) -> str:
+    header = f"=== Arm: {label} (questions={arm.question_count}, excluded={arm.excluded_count})"
+    if arm.delta_vs_baseline is not None:
+        deltas = ", ".join(
+            f"k={k}: {value:+.1f}pp"
+            for k, value in sorted(arm.delta_vs_baseline.hit_full_delta_points.items())
+        )
+        return f"{header}, delta vs baseline: {deltas}"
+    return f"{header} (baseline)"
+
+
+def _plain_lines(summary: MultiArmEvaluationSummary) -> list[str]:
+    lines: list[str] = []
+    for label, arm in summary.arms.items():
+        lines.append(_arm_header(label, arm))
+        lines.extend(_arm_plain_lines(arm.summary))
+    return lines
+
+
+def _arm_plain_lines(summary: EvaluationSummary) -> list[str]:
     lines = [
         "Coverage:",
         f"  text_score_median={summary.coverage.text_score_median}",

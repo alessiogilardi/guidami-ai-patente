@@ -1,14 +1,13 @@
 from unittest.mock import patch
 
-from guidami_ai_patente_ingestor.cli.services.evaluation.ranking_calculator import (
-    RankingCalculator,
-)
-
 from domain.models.retrieval import RetrievedComma
 from guidami_ai_patente_ingestor.cli.models.evaluation import RankingAtK, RankingReport
 from guidami_ai_patente_ingestor.cli.services.evaluation import (
     coverage_calculator,
     ranking_calculator,
+)
+from guidami_ai_patente_ingestor.cli.services.evaluation.ranking_calculator import (
+    RankingCalculator,
 )
 from guidami_ai_patente_ingestor.configs import EvaluationConfig
 

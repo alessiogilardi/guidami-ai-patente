@@ -57,8 +57,30 @@ def test_fetch_with_vectors_joins_only_requested_variant(client: PostgresClient)
 
     repository = QuizReadRepository("quiz_questions", "quiz_question_embeddings", client)
 
-    rows = repository.fetch_with_vectors("search_queries")
+    rows = repository.fetch_with_vectors("search_queries", "embedding_3_small")
 
     assert len(rows) == 1
     assert rows[0].number == "0001"
     assert rows[0].embedding == search_queries_vector
+
+
+@pytest.mark.integration
+def test_populated_model_columns_returns_only_columns_with_at_least_one_vector(
+    client: PostgresClient,
+) -> None:
+    """FR-3/AD-6 (T-12): the axis is read from the schema/data, never hardcoded."""
+    question_id = _insert_question(client, "0001", 1)
+    _insert_embedding(client, question_id, "text", _vector(1536, 0))
+
+    repository = QuizReadRepository("quiz_questions", "quiz_question_embeddings", client)
+
+    assert repository.populated_model_columns() == ["embedding_3_small"]
+
+
+@pytest.mark.integration
+def test_populated_model_columns_returns_empty_list_when_table_has_no_rows(
+    client: PostgresClient,
+) -> None:
+    repository = QuizReadRepository("quiz_questions", "quiz_question_embeddings", client)
+
+    assert repository.populated_model_columns() == []
