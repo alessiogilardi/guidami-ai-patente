@@ -62,6 +62,23 @@ note explaining this exception) stays English — only the LLM-facing docstring 
 Configuration classes (any file under `configs/`) must set
 `model_config = ConfigDict(frozen=True)`.
 
+## Data structures — `BaseModel` or `dataclass` by default
+
+Structured data uses **only** Pydantic `BaseModel` or a stdlib `dataclass`. `NamedTuple` and
+`TypedDict` are allowed **only** with a clear, stated reason — never as a default choice.
+
+Reasons that can qualify (non-exhaustive):
+- The structure holds **callables** as fields — a `BaseModel` can't type a `Callable` field
+  cleanly without `arbitrary_types_allowed=True`, which defeats the point of using Pydantic;
+  a `dataclass` would also work, but `NamedTuple`'s default immutability fits a static,
+  never-mutated registry entry better.
+- Positional unpacking is actually used at the call site.
+- Interop with an API that specifically expects a plain tuple or dict (e.g. a stdlib/
+  third-party signature).
+
+Whichever reason applies must be stated **in the class docstring or an inline comment** —
+the choice has to be visible to a reader without having to ask why.
+
 ## Entities — insertable projection of the table row
 
 An entity in `src/domain/entities/` models the **insertable projection** of its DB row,
@@ -86,6 +103,33 @@ not the full row:
 These are persistence DTOs by design. Rich domain entities (behavior + invariants) are
 deferred until the FastAPI app introduces real domain logic, and will be added pull-based
 where an invariant actually emerges.
+
+## Services — class naming in `services/` folders
+
+A class placed in any `services/` folder (top-level or nested, e.g. `cli/services/evaluation/`)
+that is genuinely a service — domain logic with injected config/dependencies, not a stateless
+data container — is named with a suffix that says what it specifically does.
+
+- **A more specific, already-established role suffix always wins**: `*Calculator`
+  (single-purpose computation, e.g. `AdherenceCalculator`, `RankingCalculator`), `*Writer`
+  (persists/renders output, e.g. `EvaluationArtifactWriter`), `*Evaluator`
+  (`RetrievalEvaluator`), `*Inspector` (`StatusInspector`), `*Checker` (`TableHealthChecker`),
+  or a port-implementation class named after the port it implements (`*Tracker` for
+  `LlmCallTracker`, `*Reporter` for `ProgressReporter` — `NullProgressReporter`,
+  `QueuedLlmCallTracker`).
+- **`*Service` is the default fallback** — use it only when no more specific role name applies
+  (e.g. `EmbeddingService`, `RetrievalJudgeEvaluationService`). Never leave a genuine service
+  class with a bare, unsuffixed name.
+- **`UseCase`/`AsyncUseCase` subclasses placed under a `services/` folder also take the
+  `Service` suffix**, appended after their action-verb name (e.g. `ArticleCleaner` →
+  `ArticleCleanerService`, `ImageDescriptionEnricher` → `ImageDescriptionEnricherService`).
+  This overrides the general `feedback_usecase_naming` rule (no `Service`/`UseCase` suffix)
+  specifically for this location: the folder is the naming signal, so a class living under
+  `services/` must read as a service by name alone, regardless of its base class.
+
+**Does not apply to:**
+- `Protocol` classes (ports/interfaces) and private (`_`-prefixed) helper classes.
+- Plain data containers (`NamedTuple`, dataclasses with no injected dependency) — not services.
 
 ## PostgresClient — vector cast
 

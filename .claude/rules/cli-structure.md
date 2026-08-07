@@ -38,5 +38,5 @@ cli/
 
 The general import rules (`~/.claude/rules/python/imports.md`) apply unchanged: relative
 imports within the same `cli/` sub-package, absolute imports when crossing a package
-boundary (e.g. importing `IngestorConfig`, `LayerResolver`, or a repository from outside
+boundary (e.g. importing `IngestorConfig`, `LayerResolverProvider`, or a repository from outside
 `cli/`).
