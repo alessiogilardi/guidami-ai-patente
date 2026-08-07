@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Id** | 0008 |
-| **Status** | ready |
+| **Status** | implemented |
 | **Date** | 2026-08-06 |
 | **Discussion log** | none — compiled directly from conversation |
 | **Supersedes / superseded by** | — |
@@ -467,8 +467,8 @@ needs is a full re-index: `ingest index quiz` to populate `quiz_questions`,
 - **AD-2** — supported by: `src/guidami_ai_patente_ingestor/repositories/db/quiz_question_store_repository.py:17` — the write path still lists a single `"embedding"` column, the shape this decision replaces (verified 2026-08-05 @ 46fad9a)
 - **AD-2** — supported by: `src/domain/entities/quiz/quiz_question.py:22` — the entity's single `embedding: list[float] | None` field, which this decision removes in favour of variant rows (verified 2026-08-05 @ 46fad9a)
 - **AD-2** — supported by: `src/guidami_ai_patente_ingestor/models/quiz/embedded_quiz.py:21` — the intermediate model's single `embedding` field, the second place the variant split lands (verified 2026-08-05 @ 46fad9a)
-- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/models/quiz/quiz_metadata.py:24` — `embedded_text` joins `vector_search_queries`, the single representation all four arms are measured against (verified 2026-08-05 @ 6d96b7d)
-- **AD-3** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/embed_quiz_metadata.py:11` — `EmbedQuizMetadata` computes exactly one vector per item, the step FR-2 generalises (verified 2026-08-05 @ 6d96b7d)
+- **AD-3** — supported by (historical, `src/guidami_ai_patente_ingestor/models/quiz/quiz_metadata.py` was line-24-and-up at the time, since deleted by `75826e3` per AD-9): `embedded_text` joined `vector_search_queries`, the single representation all four arms were measured against; deletion confirmed at `specs/0008-quiz-query-representations.md:647` (verified 2026-08-05 @ 6d96b7d)
+- **AD-3** — supported by (historical, `src/guidami_ai_patente_ingestor/services/quiz/embed_quiz_metadata.py` was line-11-and-up at the time, since deleted by `75826e3`): `EmbedQuizMetadata` computed exactly one vector per item, the step FR-2 generalises; deletion confirmed at `specs/0008-quiz-query-representations.md:650` (verified 2026-08-05 @ 6d96b7d)
 - **AD-6** — supported by: `src/commons/ai/embedding/configs/embedding_config.py:17` — the comment states `dimensions` "must match `vector_dim` and the `VECTOR(N)` column size", confirming dimension is fixed per column and cannot vary per row (verified 2026-08-05 @ 6d96b7d)
 - **AD-6** — supported by: `src/commons/ai/embedding/clients/sentence_transformer_embedding_client.py:27` — a second, alternative embedding client already exists whose dimension differs from the production one, so more than one vector width is a real case and not hypothetical (verified 2026-08-05 @ 46fad9a)
 - **AD-4** — supported by: `docker/docker-compose.yml:13` — `init.sql` is mounted read-only into `/docker-entrypoint-initdb.d/`, so it executes only on volume creation and can never alter an existing database; a migration path is therefore required, not optional (verified 2026-08-05 @ 46fad9a)
@@ -477,16 +477,16 @@ needs is a full re-index: `ingest index quiz` to populate `quiz_questions`,
 - **AD-5** — supported by: `src/guidami_ai_patente_ingestor/mappers/quiz_mapper.py:52` — the mapper discards `image_description` as not persisted, the behaviour FR-5 reverses (verified 2026-08-05 @ 6d96b7d)
 - **AD-5** — supported by: `src/guidami_ai_patente_ingestor/models/quiz/embedded_quiz.py:20` — `image_description: str | None` exists on the intermediate model, so the text is already carried to the storage boundary and only needs a destination (verified 2026-08-05 @ 6d96b7d)
 - **AD-4** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/quiz_flows.py:75` — documents that the embedding comes from `vector_search_queries` rather than the quiz text, confirming the indexing flow is the single place to extend (verified 2026-08-05 @ 6d96b7d)
-- **AD-4** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/steps/generic/db_store_step.py:23` — the quiz store step calls `truncate()` then `bulk_insert()`, so the run that populates the new variants would cascade the migrated baseline away; this is what makes spec 0010 a prerequisite rather than a companion (verified 2026-08-06 @ 2d741ac)
-- **AD-7** — supported by: `src/guidami_ai_patente_ingestor/models/quiz/quiz_metadata.py:24` — `embedded_text` builds the embedded string in Python (`"\n".join(...)`), showing text composition is code and cannot be expressed as a YAML value (verified 2026-08-06 @ 2d741ac)
+- **AD-4** — supported by (historical, `src/guidami_ai_patente_ingestor/orchestrators/steps/generic/db_store_step.py` was line-23-and-up at the time, since deleted by `608a546` per AD-10): the quiz store step called `truncate()` then `bulk_insert()`, so the run that populates the new variants would have cascaded the migrated baseline away; this is what made spec 0010 a prerequisite rather than a companion; deletion confirmed at `specs/0008-quiz-query-representations.md:631` (verified 2026-08-06 @ 2d741ac)
+- **AD-7** — supported by (historical, `src/guidami_ai_patente_ingestor/models/quiz/quiz_metadata.py` was line-24-and-up at the time, since deleted by `75826e3` per AD-9): `embedded_text` built the embedded string in Python (`"\n".join(...)`), showing text composition is code and cannot be expressed as a YAML value; deletion confirmed at `specs/0008-quiz-query-representations.md:647` (verified 2026-08-06 @ 2d741ac)
 - **AD-7** — supported by: `configs/ingestor_config.yaml:62` — `quiz_embedding_variant: search_queries` already carries a variant *name* through configuration, so splitting name-in-config from builder-in-code extends an arrangement that exists rather than introducing one (verified 2026-08-06 @ 2d741ac)
 - **AD-8** — supported by: `src/guidami_ai_patente_ingestor/services/quiz/enrichers/image_description_enricher.py:66` — `_group_by_image` collapses the questions sharing a filename into one group so a single call serves them all, the group-and-broadcast shape this decision reuses for embedding (verified 2026-08-06 @ 2d741ac)
 - **AD-8** — supported by: `src/commons/ai/embedding/services/embedding_service.py:41` — `execute` returns vectors aligned 1:1 with its input and in the same order, which is what makes embedding a deduplicated list and mapping the results back to every referencing question safe (verified 2026-08-06 @ 2d741ac)
-- **AD-9** — supported by: `src/commons/ai/embedding/services/protocols/embeddable.py:8` — `Embeddable` declares a single read-only `embedded_text` property, so one object carries exactly one text to embed, which is the assumption five variants per question break (verified 2026-08-06 @ 2d741ac)
+- **AD-9** — supported by (historical, `src/commons/ai/embedding/services/protocols/embeddable.py` was line-8-and-up at the time, since deleted by `d09ca49`): `Embeddable` declared a single read-only `embedded_text` property, so one object carried exactly one text to embed, which is the assumption five variants per question break; deletion confirmed at `specs/0008-quiz-query-representations.md:647` (verified 2026-08-06 @ 2d741ac)
 - **AD-9** — supported by: `src/commons/ai/embedding/services/embedding_service.py:60` — the protocol is consumed in exactly one expression, `[item.embedded_text for item in batch]`, so the service needs only the strings and nothing else about the objects (verified 2026-08-06 @ 2d741ac)
-- **AD-9** — supported by: `src/guidami_ai_patente_ingestor/models/quiz/quiz_metadata.py:24` — `embedded_text` renders one fixed string (`"\n".join(self.vector_search_queries)`), showing the per-object rendering is hardcoded and cannot vary per variant without external state (verified 2026-08-06 @ 2d741ac)
-- **AD-10** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/quiz_flows.py:134` — the quiz indexing flow is the only place constructing a `DbStoreStep`, so replacing that step leaves the generic sink with no consumer at all (verified 2026-08-06 @ 91c4fe7)
-- **AD-10** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/steps/generic/protocols/store_repository.py:5` — the protocol's docstring defines it as the "contract for a full-reload store (truncate + bulk insert)", a contract the current schema rejects outright (verified 2026-08-06 @ 91c4fe7)
+- **AD-9** — supported by (historical, `src/guidami_ai_patente_ingestor/models/quiz/quiz_metadata.py` was line-24-and-up at the time, since deleted by `75826e3`): `embedded_text` rendered one fixed string (`"\n".join(self.vector_search_queries)`), showing the per-object rendering was hardcoded and could not vary per variant without external state; deletion confirmed at `specs/0008-quiz-query-representations.md:647` (verified 2026-08-06 @ 2d741ac)
+- **AD-10** — supported by (historical, `src/guidami_ai_patente_ingestor/orchestrators/quiz_flows.py:134` was the sole `DbStoreStep` construction site at the time, since replaced by `StoreQuizStep`): the quiz indexing flow was the only place constructing a `DbStoreStep`, so replacing that step left the generic sink with no consumer at all; replacement confirmed at `specs/0008-quiz-query-representations.md:631` (verified 2026-08-06 @ 91c4fe7)
+- **AD-10** — supported by (historical, `src/guidami_ai_patente_ingestor/orchestrators/steps/generic/protocols/store_repository.py` was line-5-and-up at the time, since deleted by `608a546`): the protocol's docstring defined it as the "contract for a full-reload store (truncate + bulk insert)", a contract the current schema rejects outright; deletion confirmed at `specs/0008-quiz-query-representations.md:631` (verified 2026-08-06 @ 91c4fe7)
 - **AD-10** — supported by: `src/guidami_ai_patente_ingestor/orchestrators/steps/knowledge/store_articles_and_commas_step.py:20` — a domain-specific store step resolving parent ids already exists, and is the shape FR-6's quiz step follows (verified 2026-08-06 @ 91c4fe7)
 
 ## Open Questions
@@ -618,3 +618,65 @@ needs is a full re-index: `ingest index quiz` to populate `quiz_questions`,
   it *moves* the existing vectors. The hybrid-search Non-Goal now states explicitly that
   spec 0007's matching Non-Goal is scoped to dense+FTS, so it does not forbid the dense-only
   RRF arm this spec requires — the two specs previously contradicted each other outright.
+
+### 2026-08-07 — plan executed: plans/0008-quiz-query-representations-phase1-plan.md
+
+- **DoD result:** all items verified mechanically — full non-integration suite (620 passed),
+  integration suite (39 passed, 1 skipped) against the ephemeral `docker-compose.test.yml`
+  Postgres, `ruff check`/`ruff format --check`/`pyright` all clean. All 8 tasks confirmed
+  against current repo state: `quiz_images_table` config, `QuizImageEntity`,
+  `QuizImageStoreRepository`, `QuizQuestionEntity`/`QuizQuestionStoreRepository` dropping
+  `embedding` and adding `vector_search_queries` + `delete_missing`, `QuizMapper.
+  from_embedded_to_quiz_images`, `StoreQuizStep`, `quiz_flows.py` rewired with `DbStoreStep`/
+  `StoreRepository` fully deleted (zero remaining callers, AD-10), `quiz_images` registered
+  in CLI wiring health checks.
+- **Deviations from plan:** none.
+- **Learnings:** none beyond what's already recorded in this spec's own changelog above.
+- **Status change:** ready → implemented — confirmed by Alessio Gilardi, 2026-08-07 (the
+  intermediate `in-progress` flip was skipped at extraction time for both this plan and
+  Phase 2; the user chose to close directly from `ready` rather than retroactively inserting
+  the missing transition).
+
+### 2026-08-07 — plan executed: plans/0008-quiz-query-representations-phase2-plan.md
+
+- **DoD result:** all items verified mechanically — full non-integration suite (620 passed),
+  integration suite (39 passed, 1 skipped) against the ephemeral `docker-compose.test.yml`
+  Postgres (including FR-6's two previously-failing quiz integration tests and the new
+  `test_quiz_flows_integration.py`, all now green), `ruff check`/`ruff format --check`/
+  `pyright` all clean. All 17 tasks confirmed against current repo state: `EmbeddingService.
+  execute(Sequence[str])` with `Embeddable`/`Embedded` and the dead generic `EmbedStep`
+  deleted; `EmbeddableQuizVariant`/`EmbedQuizVariantsResult`; `quiz_variant_registry.py` +
+  `IngestorConfig.quiz_embedding_variants` (all six variants configured); `EmbedQuizVariants`
+  replacing `EmbedQuizMetadata`; `QuizQuestionEmbeddingEntity`/
+  `QuizQuestionEmbeddingStoreRepository` (upsert on `(quiz_question_id, variant)`,
+  deliberately no `delete_missing`, PD-6); `StoreQuizStep` extended to all three quiz tables,
+  resolving `quiz_question_id` via `upsert_returning_ids` before writing variant rows;
+  `quiz_flows.py` rewired onto `EmbedQuizVariants`; `IndexManifest.
+  quiz_variant_omissions`; `QuizReadRepository.populated_model_columns()`/generalized
+  `fetch_with_vectors`; `RankingDelta`/`ArmResult`/`MultiArmEvaluationSummary`; decoupled
+  `RetrievalEvaluator`; `reciprocal_rank_fusion` (`commons/ai/utils/`, relocated from an
+  initial `commons/retrieval/` placement on user request after this plan's own T-15 landed);
+  `MultiArmRetrievalEvaluator` + `EvaluationConfig.rrf_k=60`; `evaluate.py` wired onto
+  `MultiArmRetrievalEvaluator`. File discipline: every touched file landed across 5
+  dependency-ordered commits (`d09ca49`, `75826e3`, `f8095c6`, `69fa15b`, plus the unrelated
+  standalone `d575fdb`), each verified scoped via `git diff --cached` before committing.
+- **Deviations from plan:** (1) Task T-11's own plan text already self-records that the
+  assumed committed `data/test-data/enriched/quiz-patente-ab/` fixture didn't exist, so a
+  `tmp_path`-based fixture was used for the FR-4 integration test instead — consistent with
+  FR-4's own non-goal of not re-running LLM enrichment. (2) `data/test-data/enriched/` was
+  subsequently generated for real and committed (`69fa15b`) via a new `test_data_sampler`
+  capability (`sample_quiz_enriched`) that copies the sampled quiz subset's already-enriched
+  files rather than re-running enrichment — ahead of when the plan anticipated this fixture
+  would exist. (3) `reciprocal_rank_fusion` was committed under `commons/retrieval/` by this
+  plan's T-15, then relocated to `commons/ai/utils/` in a same-session follow-up at the
+  user's explicit request (a generic, domain-agnostic utility per the `utils/` convention in
+  `rules/python/architecture.md`), before any of Phase 2's commits landed — so the final
+  committed location differs from what T-15 specified, but the function and its public API
+  are unchanged.
+- **Learnings:** the write-plan → implementation handoff has no mechanical enforcement of the
+  `ready → in-progress` flip at extraction time — both this plan and Phase 1's were extracted
+  while the spec sat at `ready`, and nothing caught the missing transition until this
+  close-plan run. Worth considering for a future process amendment, not addressed here since
+  the user chose to close directly rather than retroactively backfill the transition.
+- **Status change:** ready → implemented — confirmed by Alessio Gilardi, 2026-08-07 (see
+  Phase 1's entry above for the shared rationale).
