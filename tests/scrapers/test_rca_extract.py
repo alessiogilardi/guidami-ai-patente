@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 import pytest
+
 from scrapers.rca_extract import extract_rca
 
 
