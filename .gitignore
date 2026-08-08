@@ -528,3 +528,6 @@ plans/
 .zed/
 # Docker volume bind mounts (docker/docker-compose.yml) — host-persisted data, not source
 docker/.volumes/
+
+# Local git worktrees
+.worktrees/
