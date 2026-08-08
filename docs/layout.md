@@ -10,7 +10,8 @@ repo/
 │   │                                #   (CorpusReadRepository, QuizReadRepository) — spec 0007 AD-7;
 │   │                                #   clients, configs, use_cases/ (UseCase, ForEach),
 │   │                                #   ai/ (agents/: BaseAgent + PromptRenderer;
-│   │                                #   embedding/: clients/configs/services;
+│   │                                #   embedding/: clients/configs/protocols/models/
+│   │                                #   composition/services;
 │   │                                #   observability/: LlmCallTracker port + impls;
 │   │                                #   utils/: domain-agnostic retrieval algorithms
 │   │                                #   (reciprocal_rank_fusion) — spec 0008 Phase 2, AD-3;
@@ -143,11 +144,15 @@ gitignored — never committed, safe to delete once the spec they fed is
   FastAPI app will reuse agents/embedding/observability too. It has three
   subpackages today: `agents/` (`BaseAgent` + `PromptRenderer`, with its
   own `configs/` subfolder for `AgentConfig`), `embedding/` (`clients/`,
-  `configs/`, `services/` for `EmbeddingClient`/`EmbeddingConfig`/
-  `EmbeddingService`), and `observability/`. `observability/` (and, where
-  it applies, `embedding/`) follows a five-subpackage-by-responsibility
-  shape: `protocols/` (genuine cross-package ports only — e.g.
-  `LlmCallTracker`, which `BaseAgent` depends on), `services/` (the
+  `configs/` for `EmbeddingClient`/`EmbeddingClientConfig` — renamed from
+  `EmbeddingConfig`, since it configures the client, not the module —
+  plus `protocols/`, `models/`, `composition/`, `services/` for the
+  composition layer described below), and `observability/`.
+  `observability/` (and, where it applies, `embedding/`) follows a
+  five-subpackage-by-responsibility shape: `protocols/` (genuine
+  cross-package ports only — e.g. `LlmCallTracker`, which `BaseAgent`
+  depends on, or `TextComposer[T]`/`OptionalTextComposer[T]` in
+  `embedding/`), `services/` (the
   concrete behavior classes; a narrow, private `protocols/` may nest
   *inside* `services/` for implementation-detail structural typing that
   never crosses a package boundary — see `docs/patterns.md`),
@@ -155,7 +160,21 @@ gitignored — never committed, safe to delete once the spec they fed is
   transformations), and `models/` (intermediate DTOs consumed only by
   that package's own mappers). `agents/` and `embedding/` only need the
   subset of that shape relevant to their own responsibility (`configs/`
-  instead of a data-access/mapper shape, since neither owns persistence).
+  instead of a data-access/mapper shape, since neither owns persistence;
+  `clients/` instead of `repositories/`, since embedding's external
+  dependency is an API client, not a database). `embedding/` also adds a
+  **sixth**, domain-specific subpackage beyond that shape —
+  `composition/` (`FieldSpecComposer[T]`, implementing
+  `OptionalTextComposer[T]`; `TemplateComposer[T]`/`CallableComposer[T]`,
+  implementing `TextComposer[T]`) — for classes that compose a model into
+  text but aren't services (no `UseCase`/
+  injected-dependency-with-behavior shape) or classic static mappers
+  (they hold config injected at construction, unlike this repo's
+  stateless `*Mapper` convention — see `docs/patterns.md`); the
+  five-subpackage template already anticipates a package using only the
+  subset relevant to its own responsibility, so one extra, narrowly
+  scoped subpackage for a responsibility the template doesn't name is an
+  extension of that principle, not a violation of it.
   `src/commons/observability/` (top-level, a **sibling** of `commons/ai/`,
   not nested under it) is itself just a thin re-exporting `__init__.py` over
   two self-contained sibling sub-packages (same self-containment convention
@@ -361,3 +380,17 @@ moved out of `services/knowledge/`, unchanged behavior, still re-exported from
 `EmbedQuizVariants` → `EmbedQuizVariantsService`, `ImageDescriptionEnricher` →
 `ImageDescriptionEnricherService`, `NormReferenceEnricher` → `NormReferenceEnricherService`)
 — rule updated in `.claude/rules/code-conventions.md`.*
+
+*Last updated: 2026-08-08 — verified against commit `8d85a0bc` (working tree ahead of it,
+uncommitted); `commons/ai/embedding/` gained `protocols/` (`TextComposer[T]` +
+`OptionalTextComposer[T]`), `models/`, and a new sixth subpackage `composition/`
+(`FieldSpecComposer[T]` implementing `OptionalTextComposer[T]`, `TemplateComposer[T]`/
+`CallableComposer[T]` implementing `TextComposer[T]` — a role the five-subpackage template
+doesn't name), alongside the existing `clients/`/`configs/`/`services/`.
+`configs/embedding_config.py` renamed to `configs/embedding_client_config.py`
+(`EmbeddingConfig` → `EmbeddingClientConfig`). `commons/observability/progress_reporter/`
+gained a new `tracker.py` (a generator-function helper, not a class — see `docs/patterns.md`).
+ADR 0014 (a proposed **seventh** subpackage member, `VariantModelEmbeddingService[T]`, to
+generalize quiz's dedup/omission/fan-out mechanics) was rejected — see
+`docs/adr/0014-embedding-composition-layer.md`, status `Rejected`; that logic stays local to
+`guidami_ai_patente_ingestor/services/quiz/` (new file `quiz_variant_spec.py`).*

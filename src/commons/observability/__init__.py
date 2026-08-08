@@ -4,7 +4,12 @@ Separate from `commons/ai/observability/` (LLM call tracking): this package is n
 AI-specific, and is consumed by both `commons/` services and `orchestrators/` factories.
 """
 
-from .progress_reporter import ItemProgressReporter, NullProgressReporter, ProgressReporter
+from .progress_reporter import (
+    ItemProgressReporter,
+    NullProgressReporter,
+    ProgressReporter,
+    tracker,
+)
 from .run_artifact_writer import LOG_FORMAT, RunArtifactWriter, RunManifest, ScrapeManifest
 
 __all__ = [
@@ -15,4 +20,5 @@ __all__ = [
     "RunArtifactWriter",
     "RunManifest",
     "ScrapeManifest",
+    "tracker",
 ]

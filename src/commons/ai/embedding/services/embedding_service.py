@@ -1,8 +1,9 @@
 import logging
 from collections.abc import Sequence
+from itertools import batched
 
 from commons.ai.embedding.clients import EmbeddingClient
-from commons.observability import ItemProgressReporter, NullProgressReporter
+from commons.observability import ItemProgressReporter, NullProgressReporter, tracker
 from commons.use_cases import UseCase
 
 logger = logging.getLogger(__name__)
@@ -38,24 +39,10 @@ class EmbeddingService(UseCase[Sequence[str], list[list[float]]]):
 
     def execute(self, request: Sequence[str]) -> list[list[float]]:
         """Returns the vectors aligned to `texts` (same order). No mutation."""
-        total_batches = self._get_total_batches(request)
+        batches = list(batched(request, self._batch_size))
         vectors: list[list[float]] = []
-        self._progress.begin_items("batches", total_batches)
-        try:
-            for start in range(0, len(request), self._batch_size):
-                vectors.extend(self._embed(request, start=start, total_batches=total_batches))
-                self._progress.advance_item()
-        finally:
-            self._progress.end_items()
+        tracked_batches = tracker(self._progress, "batches", batches)
+        for batch_number, batch in enumerate(tracked_batches, start=1):
+            logger.info("embedding batch %d/%d (%d items)", batch_number, len(batches), len(batch))
+            vectors.extend(self._client.embed_passages(list(batch)))
         return vectors
-
-    def _embed(
-        self, request: Sequence[str], *, start: int, total_batches: int
-    ) -> list[list[float]]:
-        batch = request[start : start + self._batch_size]
-        batch_number = start // self._batch_size + 1
-        logger.info("embedding batch %d/%d (%d items)", batch_number, total_batches, len(batch))
-        return self._client.embed_passages(list(batch))
-
-    def _get_total_batches(self, request: Sequence[str]) -> int:
-        return -(-len(request) // self._batch_size)
