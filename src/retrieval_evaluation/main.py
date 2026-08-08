@@ -12,6 +12,7 @@ stability, then once with `--all` (or a larger `--n`) for a final estimate.
 """
 
 import argparse
+import asyncio
 import json
 import logging
 import random
@@ -35,6 +36,7 @@ logger = logging.getLogger(__name__)
 
 _DEFAULT_N = 10
 _DEFAULT_K = 10
+_DEFAULT_CONCURRENCY = 8
 _RUN_ID_PREFIX = "evaluate_judge"
 
 
@@ -83,6 +85,12 @@ def main() -> None:
         help="Quiz embedding variant to evaluate. Defaults to "
         "config.evaluation.quiz_embedding_variant.",
     )
+    parser.add_argument(
+        "--concurrency",
+        type=int,
+        default=_DEFAULT_CONCURRENCY,
+        help="Maximum number of in-flight judge calls.",
+    )
     args = parser.parse_args()
 
     config = IngestorConfig.load()
@@ -107,11 +115,12 @@ def main() -> None:
         service = RetrievalJudgeEvaluationService(
             k=args.k,
             variant=variant,
+            max_concurrency=args.concurrency,
             quiz_repository=quiz_repository,
             corpus_repository=build_corpus_repository(config, postgres_client),
             agent=agent,
         )
-        results = (
+        results = asyncio.run(
             service.evaluate_all()
             if args.all
             else service.evaluate(n=args.n, rng=random.Random(args.seed))

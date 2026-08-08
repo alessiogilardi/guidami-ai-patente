@@ -1,3 +1,4 @@
+import asyncio
 import random
 
 from commons.repositories.db import CorpusReadRepository, QuizReadRepository
@@ -12,13 +13,16 @@ class RetrievalJudgeEvaluationService:
 
     For every sampled question, retrieves the `k` closest commas by dense retrieval and
     asks `RetrievalJudgeAgent` whether they clearly and unambiguously justify the
-    question's correct answer.
+    question's correct answer. Judge calls run concurrently under `asyncio.gather`,
+    bounded by a semaphore (`max_concurrency`) — same pattern as
+    `NormReferenceEnricherService`/`ImageDescriptionEnricherService`.
     """
 
     def __init__(
         self,
         k: int,
         variant: str,
+        max_concurrency: int,
         quiz_repository: QuizReadRepository,
         corpus_repository: CorpusReadRepository,
         agent: RetrievalJudgeAgent,
@@ -26,11 +30,12 @@ class RetrievalJudgeEvaluationService:
         """Injects the run parameters and the two read repositories plus the judge agent."""
         self._k = k
         self._variant = variant
+        self._max_concurrency = max_concurrency
         self._quiz_repository = quiz_repository
         self._corpus_repository = corpus_repository
         self._agent = agent
 
-    def evaluate(self, n: int, rng: random.Random) -> list[RetrievalJudgeItemResult]:
+    async def evaluate(self, n: int, rng: random.Random) -> list[RetrievalJudgeItemResult]:
         """Judges a random sample of `n` quiz questions (capped at the available rows).
 
         `rng` is caller-supplied so each invocation of the harness can draw an
@@ -38,11 +43,11 @@ class RetrievalJudgeEvaluationService:
         """
         rows = self._load_rows()
         sample = rng.sample(rows, k=min(n, len(rows)))
-        return [self._judge_one(row) for row in sample]
+        return await self._judge_all(sample)
 
-    def evaluate_all(self) -> list[RetrievalJudgeItemResult]:
+    async def evaluate_all(self) -> list[RetrievalJudgeItemResult]:
         """Judges every quiz question with a query vector for the configured variant."""
-        return [self._judge_one(row) for row in self._load_rows()]
+        return await self._judge_all(self._load_rows())
 
     def _load_rows(self) -> list[QuizEvaluationRow]:
         # "embedding_3_small" is the only model column that exists today (AD-6); T-12
@@ -51,7 +56,13 @@ class RetrievalJudgeEvaluationService:
         # between yet either.
         return self._quiz_repository.fetch_with_vectors(self._variant, "embedding_3_small")
 
-    def _judge_one(self, row: QuizEvaluationRow) -> RetrievalJudgeItemResult:
+    async def _judge_all(self, rows: list[QuizEvaluationRow]) -> list[RetrievalJudgeItemResult]:
+        semaphore = asyncio.Semaphore(self._max_concurrency)  # bound to this run's loop
+        return list(await asyncio.gather(*(self._judge_one(row, semaphore) for row in rows)))
+
+    async def _judge_one(
+        self, row: QuizEvaluationRow, semaphore: asyncio.Semaphore
+    ) -> RetrievalJudgeItemResult:
         commas = self._corpus_repository.dense_top_k(row.embedding, self._k)
         request = RetrievalJudgeRequest(
             quiz_text=row.text,
@@ -60,7 +71,8 @@ class RetrievalJudgeEvaluationService:
             image_description=row.image_description
             or "Nessuna immagine allegata a questa domanda.",
         )
-        response = self._agent.run_sync(request)
+        async with semaphore:
+            response = await self._agent.run(request)
         return RetrievalJudgeItemResult(
             quiz_number=row.number,
             topic=row.topic,

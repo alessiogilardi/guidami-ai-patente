@@ -541,7 +541,15 @@ commas clearly and unambiguously justify the correct answer;
 `RetrievalJudgeEvaluationService` either samples `n` random rows via
 `QuizReadRepository.fetch_with_vectors` (`evaluate`, the default) or judges every
 row it returns (`evaluate_all`, the script's `--all` flag) — both share a private
-`_load_rows` helper and differ only in whether the result is sampled.
+`_load_rows` helper and differ only in whether the result is sampled. Both are
+`async` and fan the sample out through `_judge_all`/`_judge_one`: every judge call
+runs via `BaseAgent.run` (not `run_sync`) under `asyncio.gather`, bounded by an
+`asyncio.Semaphore(max_concurrency)` built fresh per call (same per-run-loop
+pattern as `NormReferenceEnricherService`/`ImageDescriptionEnricherService`, not
+stored across calls) — `main()` passes `--concurrency` (default 8) through and
+wraps the whole `evaluate`/`evaluate_all` call in a single `asyncio.run`, with the
+synchronous `dense_top_k` comma lookup still called inline inside each coroutine
+(a single blocking DB round-trip per question, not itself parallelized).
 `fetch_with_vectors`'s `FROM` clause `LEFT JOIN`s `quiz_images` on `image_filename`
 (shared `QuizReadRepository`, so every consumer — this script and the deterministic
 `ingest evaluate retrieval` harness — gets `QuizEvaluationRow.image_description`
@@ -824,3 +832,10 @@ uncommitted on `feat/ingestion`); `RetrievalJudgeRequest` gained `image_descript
 rendered into the judge's own prompt (`configs/agents/retrieval_judge.yaml`) with a rule
 telling it the image description is valid context for judging whether the answer gets
 an adequate explanation.*
+
+*Last updated: 2026-08-08 — verified against commit `f072a30` (working tree ahead of it,
+uncommitted on `feat/ingestion`); `RetrievalJudgeEvaluationService.evaluate`/`evaluate_all`
+are now `async`, calling `BaseAgent.run` instead of `run_sync` for every sampled question
+concurrently under `asyncio.gather`, bounded by an `asyncio.Semaphore(max_concurrency)`
+built per call (same per-run-loop pattern as the enrichers); `main()` gained `--concurrency`
+(default 8) and wraps the evaluation call in `asyncio.run`.*
