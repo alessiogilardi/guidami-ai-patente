@@ -43,22 +43,25 @@ def test_topic_text_omits_missing_image_description() -> None:
         topic="Segnaletica", text="Testo domanda", image_description="Segnale di stop."
     )
 
-    builder = QUIZ_VARIANT_REGISTRY["topic_text"].text_builder
+    composer = QUIZ_VARIANT_REGISTRY["topic_text"].text_composer
 
-    assert builder(imageless) == "Segnaletica\nTesto domanda"
-    assert builder(imaged) == "Segnaletica\nTesto domanda\nSegnale di stop."
+    assert composer.compose_or_none(imageless) == "Segnaletica\nTesto domanda"
+    assert composer.compose_or_none(imaged) == "Segnaletica\nTesto domanda\nSegnale di stop."
 
 
 def test_search_queries_returns_none_without_metadata() -> None:
     item = _question(quiz_metadata=None)
 
-    assert QUIZ_VARIANT_REGISTRY["search_queries"].text_builder(item) is None
+    assert QUIZ_VARIANT_REGISTRY["search_queries"].text_composer.compose_or_none(item) is None
 
 
 def test_search_queries_joins_vector_search_queries() -> None:
     item = _question(quiz_metadata=_metadata(vector_search_queries=["query uno", "query due"]))
 
-    assert QUIZ_VARIANT_REGISTRY["search_queries"].text_builder(item) == "query uno\nquery due"
+    assert (
+        QUIZ_VARIANT_REGISTRY["search_queries"].text_composer.compose_or_none(item)
+        == "query uno\nquery due"
+    )
 
 
 def test_combined_joins_topic_text_and_search_queries() -> None:
@@ -68,7 +71,7 @@ def test_combined_joins_topic_text_and_search_queries() -> None:
         quiz_metadata=_metadata(vector_search_queries=["query uno", "query due"]),
     )
 
-    result = QUIZ_VARIANT_REGISTRY["combined"].text_builder(item)
+    result = QUIZ_VARIANT_REGISTRY["combined"].text_composer.compose_or_none(item)
 
     assert result == "Segnaletica\nTesto domanda\nquery uno\nquery due"
 
@@ -76,7 +79,7 @@ def test_combined_joins_topic_text_and_search_queries() -> None:
 def test_combined_returns_none_without_metadata() -> None:
     item = _question(quiz_metadata=None)
 
-    assert QUIZ_VARIANT_REGISTRY["combined"].text_builder(item) is None
+    assert QUIZ_VARIANT_REGISTRY["combined"].text_composer.compose_or_none(item) is None
 
 
 def test_combined_description_appends_image_description_when_present() -> None:
@@ -87,7 +90,7 @@ def test_combined_description_appends_image_description_when_present() -> None:
         quiz_metadata=_metadata(vector_search_queries=["query uno"]),
     )
 
-    result = QUIZ_VARIANT_REGISTRY["combined_description"].text_builder(item)
+    result = QUIZ_VARIANT_REGISTRY["combined_description"].text_composer.compose_or_none(item)
 
     assert result == "Segnaletica\nTesto domanda\nSegnale di stop.\nquery uno"
 
@@ -100,8 +103,10 @@ def test_combined_description_equals_combined_when_no_image() -> None:
         quiz_metadata=_metadata(vector_search_queries=["query uno"]),
     )
 
-    combined = QUIZ_VARIANT_REGISTRY["combined"].text_builder(item)
-    combined_description = QUIZ_VARIANT_REGISTRY["combined_description"].text_builder(item)
+    combined = QUIZ_VARIANT_REGISTRY["combined"].text_composer.compose_or_none(item)
+    combined_description = QUIZ_VARIANT_REGISTRY[
+        "combined_description"
+    ].text_composer.compose_or_none(item)
 
     assert combined_description == combined
 
@@ -111,14 +116,14 @@ def test_image_description_dedup_key_is_image_filename() -> None:
 
     spec = QUIZ_VARIANT_REGISTRY["image_description"]
 
-    assert spec.text_builder(item) == "Segnale di stop."
+    assert spec.text_composer.compose_or_none(item) == "Segnale di stop."
     assert spec.dedup_key(item) == "stop.jpeg"
 
 
 def test_image_description_returns_none_without_image() -> None:
     item = _question(image_filename=None, image_description=None)
 
-    assert QUIZ_VARIANT_REGISTRY["image_description"].text_builder(item) is None
+    assert QUIZ_VARIANT_REGISTRY["image_description"].text_composer.compose_or_none(item) is None
 
 
 def test_text_variant_dedup_key_defaults_to_question_number() -> None:

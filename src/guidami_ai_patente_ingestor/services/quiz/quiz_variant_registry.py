@@ -1,70 +1,76 @@
 """Registry of quiz query representations (AD-7).
 
 A name, the text it embeds, and how several questions sharing that text dedup to one
-embedding call (AD-8).
+embedding call (AD-8). Every variant is a declarative EmbeddingSpec composed via
+FieldSpecComposer (commons.ai.embedding) — no hand-written text-joining functions.
 
-Adding a seventh representation is exactly one QuizVariantSpec entry here plus one name
-in IngestorConfig.quiz_embedding_variants — no schema change, no change to StoreQuizStep,
-QuizQuestionEmbeddingStoreRepository, or the evaluation harness's arm enumeration (which
-reads variant names from the database, never from this registry).
+Adding a seventh representation is exactly one QuizVariantSpec entry here plus one
+name in IngestorConfig.quiz_embedding_variants — no schema change, no change to
+StoreQuizStep, QuizQuestionEmbeddingStoreRepository, or the evaluation harness's arm
+enumeration (which reads variant names from the database, never from this registry).
 """
 
-from collections.abc import Callable, Mapping
-from typing import NamedTuple
+from collections.abc import Mapping
 
-from guidami_ai_patente_ingestor.models.quiz import EmbeddedQuizModel
+from commons.ai.embedding import EmbeddingSpec, FieldSpec, FieldSpecComposer
 
+from .quiz_variant_spec import QuizVariantSpec
 
-class QuizVariantSpec(NamedTuple):
-    """One registered representation.
+# The only field depending on quiz_metadata; skip_if_none=False marks it "required" —
+# when missing, it makes the whole spec's compose() return None (AD-2/FR-2: never a
+# stored empty-text/null-vector row), not just drop this one field.
+_search_queries_field = FieldSpec(
+    extractor=lambda item: (
+        item.quiz_metadata.vector_search_queries if item.quiz_metadata is not None else None
+    ),
+    formatter=lambda queries: "\n".join(queries),
+    skip_if_none=False,
+)
 
-    `text_builder` returns `None` when the item lacks the input this variant needs
-    (FR-2: no row is written, the omission is counted). `dedup_key` groups items that
-    must share one embedding call and one resulting vector (AD-8); it is only evaluated
-    for items `text_builder` did not return `None` for. Defaults to `item.number` (the
-    natural key — every item is already distinct, so this performs no dedup, matching
-    the five per-question variants' semantics).
-    """
+_text_spec = EmbeddingSpec([FieldSpec.from_attr("text")], separator="\n")
 
-    name: str
-    text_builder: Callable[[EmbeddedQuizModel], str | None]
-    dedup_key: Callable[[EmbeddedQuizModel], str] = lambda item: item.number  # noqa: E731
+_topic_text_spec = EmbeddingSpec(
+    [
+        FieldSpec.from_attr("topic"),
+        FieldSpec.from_attr("text"),
+        FieldSpec.from_attr("image_description"),
+    ],
+    separator="\n",
+)
 
+_image_description_spec = EmbeddingSpec(
+    [FieldSpec.from_attr("image_description", skip_if_none=False)],
+    separator="\n",
+)
 
-def _topic_text(item: EmbeddedQuizModel) -> str:
-    parts = [item.topic, item.text, item.image_description]
-    return "\n".join(part for part in parts if part)
+_search_queries_spec = EmbeddingSpec([_search_queries_field], separator="\n")
 
+_combined_spec = EmbeddingSpec(
+    [FieldSpec.from_attr("topic"), FieldSpec.from_attr("text"), _search_queries_field],
+    separator="\n",
+)
 
-def _search_queries(item: EmbeddedQuizModel) -> str | None:
-    if item.quiz_metadata is None:
-        return None
-    return "\n".join(item.quiz_metadata.vector_search_queries)
-
-
-def _combined(item: EmbeddedQuizModel) -> str | None:
-    if item.quiz_metadata is None:
-        return None
-    return "\n".join([item.topic, item.text, *item.quiz_metadata.vector_search_queries])
-
-
-def _combined_description(item: EmbeddedQuizModel) -> str | None:
-    if item.quiz_metadata is None:
-        return None
-    parts = [item.topic, item.text, item.image_description]
-    parts = [part for part in parts if part]
-    return "\n".join([*parts, *item.quiz_metadata.vector_search_queries])
-
+_combined_description_spec = EmbeddingSpec(
+    [
+        FieldSpec.from_attr("topic"),
+        FieldSpec.from_attr("text"),
+        FieldSpec.from_attr("image_description"),
+        _search_queries_field,
+    ],
+    separator="\n",
+)
 
 QUIZ_VARIANT_REGISTRY: Mapping[str, QuizVariantSpec] = {
-    "text": QuizVariantSpec("text", lambda item: item.text),
-    "topic_text": QuizVariantSpec("topic_text", _topic_text),
-    "search_queries": QuizVariantSpec("search_queries", _search_queries),
-    "combined": QuizVariantSpec("combined", _combined),
-    "combined_description": QuizVariantSpec("combined_description", _combined_description),
+    "text": QuizVariantSpec("text", FieldSpecComposer(_text_spec)),
+    "topic_text": QuizVariantSpec("topic_text", FieldSpecComposer(_topic_text_spec)),
+    "search_queries": QuizVariantSpec("search_queries", FieldSpecComposer(_search_queries_spec)),
+    "combined": QuizVariantSpec("combined", FieldSpecComposer(_combined_spec)),
+    "combined_description": QuizVariantSpec(
+        "combined_description", FieldSpecComposer(_combined_description_spec)
+    ),
     "image_description": QuizVariantSpec(
         "image_description",
-        lambda item: item.image_description,
+        FieldSpecComposer(_image_description_spec),
         dedup_key=lambda item: item.image_filename or item.number,
     ),
 }

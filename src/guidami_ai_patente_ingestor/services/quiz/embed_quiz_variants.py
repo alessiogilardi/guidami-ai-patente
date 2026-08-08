@@ -15,7 +15,8 @@ from guidami_ai_patente_ingestor.models.quiz import (
     EmbedQuizVariantsResult,
 )
 
-from .quiz_variant_registry import QUIZ_VARIANT_REGISTRY, QuizVariantSpec
+from .quiz_variant_registry import QUIZ_VARIANT_REGISTRY
+from .quiz_variant_spec import QuizVariantSpec
 
 logger = logging.getLogger(__name__)
 
@@ -60,7 +61,7 @@ class EmbedQuizVariantsService(UseCase[Iterable[EmbeddedQuizModel], EmbedQuizVar
     def _embed_variant(
         self, spec: QuizVariantSpec, items: list[EmbeddedQuizModel]
     ) -> tuple[list[EmbeddableQuizVariant], int]:
-        texts_by_number = {item.number: spec.text_builder(item) for item in items}
+        texts_by_number = {item.number: spec.text_composer.compose_or_none(item) for item in items}
         present = [item for item in items if texts_by_number[item.number] is not None]
         omitted = len(items) - len(present)
 
@@ -70,7 +71,7 @@ class EmbedQuizVariantsService(UseCase[Iterable[EmbeddedQuizModel], EmbedQuizVar
 
         keys = list(groups.keys())
         texts = [texts_by_number[groups[key][0].number] for key in keys]
-        vectors = self._embedding_service.execute(texts) if texts else []  # type: ignore[arg-type]
+        vectors = self._embedding_service(texts) if texts else []  # type: ignore[arg-type]
         vector_by_key = dict(zip(keys, vectors, strict=True))
 
         rows = [

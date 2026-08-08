@@ -12,7 +12,7 @@ class _RecordingFakeEmbeddingService:
     def __init__(self) -> None:
         self.calls: list[list[str]] = []
 
-    def execute(self, texts: list[str]) -> list[list[float]]:
+    def __call__(self, texts: list[str]) -> list[list[float]]:
         self.calls.append(list(texts))
         return [[float(len(t))] for t in texts]
 
