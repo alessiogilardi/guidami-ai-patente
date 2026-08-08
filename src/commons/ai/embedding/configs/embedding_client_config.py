@@ -1,7 +1,7 @@
 from pydantic import BaseModel, ConfigDict
 
 
-class EmbeddingConfig(BaseModel):
+class EmbeddingClientConfig(BaseModel):
     """Configuration for the default cloud embedder (text-embedding-3-small, 1536 dim).
 
     Used by `LiteLLMEmbeddingClient` via OpenRouter (`OPENROUTER_API_KEY`).

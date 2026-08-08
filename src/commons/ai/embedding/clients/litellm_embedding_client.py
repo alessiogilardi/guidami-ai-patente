@@ -1,7 +1,7 @@
 import logging
 from typing import Any
 
-from commons.ai.embedding.configs import EmbeddingConfig
+from commons.ai.embedding.configs import EmbeddingClientConfig
 
 from .embedding_client import EmbeddingClient
 
@@ -13,7 +13,7 @@ class LiteLLMEmbeddingClient(EmbeddingClient):
     The API key (OPENROUTER_API_KEY) is read by litellm from the environment.
     """
 
-    def __init__(self, config: EmbeddingConfig) -> None:
+    def __init__(self, config: EmbeddingClientConfig) -> None:
         """Stores the embedder configuration."""
         self._config = config
 

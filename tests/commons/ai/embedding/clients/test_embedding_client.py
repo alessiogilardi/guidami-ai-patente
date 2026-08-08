@@ -6,7 +6,7 @@ import litellm
 import pytest
 
 from commons.ai.embedding import (
-    EmbeddingConfig,
+    EmbeddingClientConfig,
     LiteLLMEmbeddingClient,
     SentenceTransformerEmbeddingClient,
 )
@@ -37,19 +37,19 @@ def test_embed_resets_httpx_logger_level_forced_by_litellm(
         monkeypatch.setattr(
             litellm, "embedding", lambda **kwargs: _FakeEmbeddingResponse([[0.0] * 8])
         )
-        LiteLLMEmbeddingClient(EmbeddingConfig(vector_dim=8)).embed_query("x")
+        LiteLLMEmbeddingClient(EmbeddingClientConfig(vector_dim=8)).embed_query("x")
         assert httpx_logger.level == logging.NOTSET
     finally:
         httpx_logger.setLevel(original_level)
 
 
 # ---------------------------------------------------------------------------
-# EmbeddingConfig
+# EmbeddingClientConfig
 # ---------------------------------------------------------------------------
 
 
 def test_embedding_config_defaults_to_text_embedding_3_small() -> None:
-    config = EmbeddingConfig()
+    config = EmbeddingClientConfig()
     assert config.model_name == "openrouter/openai/text-embedding-3-small"
     assert config.vector_dim == 1536
 
@@ -60,12 +60,14 @@ def test_embedding_config_defaults_to_text_embedding_3_small() -> None:
 
 
 @pytest.fixture
-def cloud_config() -> EmbeddingConfig:
-    return EmbeddingConfig(model_name="openrouter/openai/text-embedding-3-small", vector_dim=1536)
+def cloud_config() -> EmbeddingClientConfig:
+    return EmbeddingClientConfig(
+        model_name="openrouter/openai/text-embedding-3-small", vector_dim=1536
+    )
 
 
 def test_embed_query_returns_single_vector_of_configured_dimension(
-    monkeypatch: pytest.MonkeyPatch, cloud_config: EmbeddingConfig
+    monkeypatch: pytest.MonkeyPatch, cloud_config: EmbeddingClientConfig
 ) -> None:
     captured: dict[str, object] = {}
 
@@ -85,7 +87,7 @@ def test_embed_query_returns_single_vector_of_configured_dimension(
 
 
 def test_embed_passages_returns_one_vector_per_input(
-    monkeypatch: pytest.MonkeyPatch, cloud_config: EmbeddingConfig
+    monkeypatch: pytest.MonkeyPatch, cloud_config: EmbeddingClientConfig
 ) -> None:
     def fake_embedding(**kwargs: object) -> _FakeEmbeddingResponse:
         texts = kwargs["input"]
@@ -101,7 +103,7 @@ def test_embed_passages_returns_one_vector_per_input(
 
 
 def test_embed_passages_preserves_input_order_even_if_response_is_unordered(
-    monkeypatch: pytest.MonkeyPatch, cloud_config: EmbeddingConfig
+    monkeypatch: pytest.MonkeyPatch, cloud_config: EmbeddingClientConfig
 ) -> None:
     def fake_embedding(**kwargs: object) -> _FakeEmbeddingResponse:
         response = _FakeEmbeddingResponse([[1.0], [2.0]])
@@ -116,7 +118,7 @@ def test_embed_passages_preserves_input_order_even_if_response_is_unordered(
 
 
 def test_no_prefix_is_added_to_litellm_inputs(
-    monkeypatch: pytest.MonkeyPatch, cloud_config: EmbeddingConfig
+    monkeypatch: pytest.MonkeyPatch, cloud_config: EmbeddingClientConfig
 ) -> None:
     def fake_embedding(**kwargs: object) -> _FakeEmbeddingResponse:
         assert kwargs["input"] == ["testo grezzo"]
@@ -137,13 +139,13 @@ def test_dimensions_is_forwarded_only_when_set(monkeypatch: pytest.MonkeyPatch) 
 
     monkeypatch.setattr(litellm, "embedding", fake_embedding)
 
-    config_no_dim = EmbeddingConfig(
+    config_no_dim = EmbeddingClientConfig(
         model_name="openrouter/openai/text-embedding-3-small", vector_dim=1536, dimensions=None
     )
     LiteLLMEmbeddingClient(config_no_dim).embed_query("x")
     assert "dimensions" not in captured
 
-    config_with_dim = EmbeddingConfig(
+    config_with_dim = EmbeddingClientConfig(
         model_name="openrouter/openai/text-embedding-3-small", vector_dim=1536, dimensions=1024
     )
     LiteLLMEmbeddingClient(config_with_dim).embed_query("x")
@@ -156,7 +158,7 @@ def test_dimensions_is_forwarded_only_when_set(monkeypatch: pytest.MonkeyPatch) 
     reason="requires OPENROUTER_API_KEY to call the real OpenRouter endpoint",
 )
 def test_embed_query_against_openrouter_returns_configured_dimension() -> None:
-    config = EmbeddingConfig(
+    config = EmbeddingClientConfig(
         model_name="openrouter/openai/text-embedding-3-small", vector_dim=1536
     )
     vector = LiteLLMEmbeddingClient(config).embed_query("Quando si accendono gli abbaglianti?")
@@ -193,7 +195,7 @@ def test_st_embed_query_adds_no_prefix_by_default(monkeypatch: pytest.MonkeyPatc
     )
     _mock_sentence_transformer_class(monkeypatch, mock_model)
 
-    client = SentenceTransformerEmbeddingClient(EmbeddingConfig())
+    client = SentenceTransformerEmbeddingClient(EmbeddingClientConfig())
     client.embed_query("Quando si accendono gli abbaglianti?")
 
     assert captured == ["Quando si accendono gli abbaglianti?"]
@@ -209,7 +211,7 @@ def test_st_embed_passages_adds_no_prefix_by_default(monkeypatch: pytest.MonkeyP
     )
     _mock_sentence_transformer_class(monkeypatch, mock_model)
 
-    client = SentenceTransformerEmbeddingClient(EmbeddingConfig())
+    client = SentenceTransformerEmbeddingClient(EmbeddingClientConfig())
     client.embed_passages(["Articolo 1", "Articolo 2"])
 
     assert captured == [["Articolo 1", "Articolo 2"]]
@@ -226,7 +228,7 @@ def test_st_encode_called_with_normalize_embeddings_true(monkeypatch: pytest.Mon
     )
     _mock_sentence_transformer_class(monkeypatch, mock_model)
 
-    SentenceTransformerEmbeddingClient(EmbeddingConfig()).embed_query("test")
+    SentenceTransformerEmbeddingClient(EmbeddingClientConfig()).embed_query("test")
 
     assert encode_kwargs["normalize_embeddings"] is True
 
@@ -241,7 +243,7 @@ def test_st_custom_query_prefix_is_applied(monkeypatch: pytest.MonkeyPatch) -> N
     )
     _mock_sentence_transformer_class(monkeypatch, mock_model)
 
-    config = EmbeddingConfig(model_name="intfloat/multilingual-e5-small", vector_dim=384)
+    config = EmbeddingClientConfig(model_name="intfloat/multilingual-e5-small", vector_dim=384)
     client = SentenceTransformerEmbeddingClient(
         config, query_prefix="query: ", passage_prefix="passage: "
     )
@@ -260,7 +262,7 @@ def test_st_custom_passage_prefix_is_applied(monkeypatch: pytest.MonkeyPatch) ->
     )
     _mock_sentence_transformer_class(monkeypatch, mock_model)
 
-    config = EmbeddingConfig(model_name="intfloat/multilingual-e5-small", vector_dim=384)
+    config = EmbeddingClientConfig(model_name="intfloat/multilingual-e5-small", vector_dim=384)
     client = SentenceTransformerEmbeddingClient(
         config, query_prefix="query: ", passage_prefix="passage: "
     )
@@ -271,7 +273,7 @@ def test_st_custom_passage_prefix_is_applied(monkeypatch: pytest.MonkeyPatch) ->
 
 @pytest.mark.integration
 def test_st_bge_m3_embed_query_returns_1024_dim_vector() -> None:
-    config = EmbeddingConfig(model_name="BAAI/bge-m3", vector_dim=1024)
+    config = EmbeddingClientConfig(model_name="BAAI/bge-m3", vector_dim=1024)
     client = SentenceTransformerEmbeddingClient(config)
     vector = client.embed_query("Quando si accendono gli abbaglianti?")
 

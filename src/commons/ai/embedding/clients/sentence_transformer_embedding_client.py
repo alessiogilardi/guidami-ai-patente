@@ -1,4 +1,4 @@
-from commons.ai.embedding.configs import EmbeddingConfig
+from commons.ai.embedding.configs import EmbeddingClientConfig
 
 from .embedding_client import EmbeddingClient
 
@@ -12,7 +12,7 @@ class SentenceTransformerEmbeddingClient(EmbeddingClient):
 
     def __init__(
         self,
-        config: EmbeddingConfig,
+        config: EmbeddingClientConfig,
         query_prefix: str = "",
         passage_prefix: str = "",
     ) -> None:

@@ -5,7 +5,7 @@ from pydantic import Field
 from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, SettingsConfigDict
 from pydantic_settings.sources import YamlConfigSettingsSource
 
-from commons.ai.embedding import EmbeddingConfig
+from commons.ai.embedding import EmbeddingClientConfig
 from commons.configs import OpenRouterConfig, PostgresConnectionConfig
 
 from .evaluation_config import EvaluationConfig
@@ -62,7 +62,7 @@ class IngestorConfig(BaseSettings):
     embedding_batch_size: int = 64
     road_sign_describer_concurrency: int = 8
     norm_reference_describer_concurrency: int = 8
-    embedding: EmbeddingConfig = EmbeddingConfig()
+    embedding: EmbeddingClientConfig = EmbeddingClientConfig()
     postgres: PostgresConnectionConfig
     articles_table: str = "articles"
     article_commas_table: str = "article_commas"

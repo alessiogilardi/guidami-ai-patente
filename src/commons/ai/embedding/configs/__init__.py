@@ -1,3 +1,3 @@
-from .embedding_config import EmbeddingConfig
+from .embedding_client_config import EmbeddingClientConfig
 
-__all__ = ["EmbeddingConfig"]
+__all__ = ["EmbeddingClientConfig"]
