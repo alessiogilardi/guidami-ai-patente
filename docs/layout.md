@@ -28,7 +28,14 @@ repo/
 │   │                                #   no I/O or business logic
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
 │   │                                #   normative corpus (CdS/CAP/Regolamento) and quiz bank
-│   ├── guidami_ai_patente/         # FastAPI quiz-bot app — scaffold only, not started
+│   ├── guidami_ai_patente/         # FastAPI quiz-bot app — layout scaffolded, no domain
+│   │                                #   endpoints yet. api/ (self-contained web
+│   │                                #   layer: app.py factory, routers/, schemas/) →
+│   │                                #   services/ / repositories/ / models/ / mappers/
+│   │                                #   (empty, pull-based) → configs/ (AppConfig). Only
+│   │                                #   concrete slice: GET /health. Entry point:
+│   │                                #   `guidami_ai_patente.main:main`, registered as the
+│   │                                #   `api` script
 │   ├── html_viewers/               # Standalone, dependency-free HTML pages for manually
 │   │                                #   inspecting pipeline output (e.g. quiz enrichment
 │   │                                #   review); opened directly in a browser, no server
@@ -243,9 +250,28 @@ gitignored — never committed, safe to delete once the spec they fed is
   self-contained (no build step, no server, no external dependency), kept
   in sync with the Pydantic model it renders whenever that model's shape
   changes.
-- **FastAPI routes/services for the quiz bot** (not started yet) go under
-  `src/guidami_ai_patente/`, following the same layered convention as the
-  ingestor once that work begins.
+- **FastAPI routes/services for the quiz bot** go under
+  `src/guidami_ai_patente/`, following the same package-per-role layered
+  convention as the ingestor (`services/`, `repositories/`, `models/`,
+  `mappers/`, `configs/`), with one addition: the HTTP-only concerns
+  (FastAPI app factory, routers, request/response schemas) live in a
+  self-contained `api/` sub-package (`api/app.py::create_app`,
+  `api/routers/`, `api/schemas/`), the same self-containment convention
+  `cli/`/`agents/` follow (`.claude/rules/cli-structure.md`) — a schema or
+  router used only by the HTTP layer never leaks into the top-level
+  `models/`/`services/`. `configs/app_config.py::AppConfig` is the root
+  `BaseSettings`, built once in `main.py` and passed down into
+  `api.app.create_app`, embedding `commons.configs.PostgresConnectionConfig`
+  the same way `IngestorConfig` does. `services/`, `repositories/`,
+  `models/`, and `mappers/` are scaffolded empty (docstring-only
+  `__init__.py`) and filled in pull-based, as with `domain/entities/`
+  elsewhere in this repo — no `orchestrators/` package yet, since that
+  role is for batch-pipeline flows, not a synchronous request/response
+  service. The only concrete vertical slice so far is `GET /health`,
+  proving the wiring end-to-end; it carries no business logic. Entry
+  point: `main.py::main` (loads `AppConfig`, builds the app via
+  `create_app`, serves it with `uvicorn`), registered as the `api`
+  script in `pyproject.toml`.
 - **New tests** mirror the `src/` path of the code under test inside
   `tests/`, with no `__init__.py` in any test directory (see
   `.claude/rules/code-conventions.md`).
@@ -394,3 +420,13 @@ ADR 0014 (a proposed **seventh** subpackage member, `VariantModelEmbeddingServic
 generalize quiz's dedup/omission/fan-out mechanics) was rejected — see
 `docs/adr/0014-embedding-composition-layer.md`, status `Rejected`; that logic stays local to
 `guidami_ai_patente_ingestor/services/quiz/` (new file `quiz_variant_spec.py`).*
+
+*Last updated: 2026-08-08 — verified against commit `507d2dfb` (working tree ahead of it,
+uncommitted, on new branch `feat/backend`); `src/guidami_ai_patente/` layout scaffolded:
+`api/` (self-contained web layer — `app.py::create_app`, `routers/health.py`,
+`schemas/health.py`), `configs/app_config.py::AppConfig` (root `BaseSettings`, embeds
+`commons.configs.PostgresConnectionConfig`), and empty pull-based `services/`,
+`repositories/`, `models/`, `mappers/` packages. Entry point `main.py::main`, registered as
+the `api` script in `pyproject.toml`. Added `fastapi`/`uvicorn[standard]` as project
+dependencies. Only concrete endpoint so far: `GET /health`, verified booting end-to-end
+via `uv run api`.*

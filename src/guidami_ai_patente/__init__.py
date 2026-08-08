@@ -1,1 +1,1 @@
-"""Main package for the guidami-ai-patente app (FastAPI, not yet started)."""
+"""Quiz bot API: FastAPI backend serving deterministic quiz checks and RAG-based explanations."""

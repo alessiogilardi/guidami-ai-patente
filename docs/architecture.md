@@ -12,8 +12,11 @@ Two apps live side by side under `src/`:
 - `guidami_ai_patente_ingestor/` — the batch ingestion app. Fully
   implemented: preparation (clean + enrich) and indexing (embed + store)
   pipelines for both the knowledge corpus and the quiz bank.
-- `guidami_ai_patente/` — the FastAPI quiz-bot app. **Not started**:
-  only a package scaffold (`__init__.py`, `py.typed`) exists.
+- `guidami_ai_patente/` — the FastAPI quiz-bot app. **Layout scaffolded,
+  no domain endpoints yet**: a self-contained `api/` web layer (app
+  factory, routers, schemas), empty pull-based `services/`/
+  `repositories/`/`models/`/`mappers/`, and `configs/` with a root
+  `AppConfig`. Only concrete route so far is `GET /health`.
 
 Two shared foundation packages support both apps (and are meant to keep
 doing so once the FastAPI app starts):
@@ -56,7 +59,7 @@ is a similarly standalone script package — an LLM-as-judge measurement tool
 | `flowstep` (external dependency) | Generic sequential-pipeline engine (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) | git dependency (github.com/alessiogilardi/flowstep) |
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
 | `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
-| `guidami_ai_patente/` | FastAPI quiz bot — **not started** | FastAPI (planned) |
+| `guidami_ai_patente/` | FastAPI quiz bot — layout scaffolded (`api/` self-contained web layer, `configs/app_config.py::AppConfig`, empty pull-based `services/`/`repositories/`/`models/`/`mappers/`), only `GET /health` implemented so far; entry point `main.py::main`, registered as the `api` script | FastAPI, uvicorn |
 | `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013). `RetrievalJudgeAgent` + its DTOs (`agents/retrieval_judge/`, `BaseAgent` pattern — `agents/` is a generic per-role container, today holding the single `retrieval_judge/` agent subpackage) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names/`agents_dir`) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/quiz-patente-ab.json` (questions) + `data/quiz-images/` (extracted images, top-level, sibling of `parsed/` — ADR 0008) | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`/`AMB`) selected via a single `scrape --source <cds\|cap\|reg\|amb>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`; `AMB` — D.Lgs. 152/2006, Codice dell'Ambiente — added by spec 0009) | beautifulsoup4, lxml, httpx |
@@ -865,3 +868,12 @@ are now `async`, calling `BaseAgent.run` instead of `run_sync` for every sampled
 concurrently under `asyncio.gather`, bounded by an `asyncio.Semaphore(max_concurrency)`
 built per call (same per-run-loop pattern as the enrichers); `main()` gained `--concurrency`
 (default 8) and wraps the evaluation call in `asyncio.run`.*
+
+*Last updated: 2026-08-08 — verified against commit `507d2dfb` (working tree ahead of it,
+uncommitted, on new branch `feat/backend`); `guidami_ai_patente/` moved from a bare package
+scaffold to a laid-out FastAPI app: `api/` self-contained web layer (`app.py::create_app`,
+`routers/health.py`, `schemas/health.py`), `configs/app_config.py::AppConfig` (root
+`BaseSettings`, embeds `commons.configs.PostgresConnectionConfig`), and empty pull-based
+`services/`/`repositories/`/`models/`/`mappers/`. `main.py::main` is the entry point,
+registered as the `api` script. Added `fastapi`/`uvicorn[standard]` dependencies. Booted
+and smoke-tested `GET /health` end-to-end via `uv run api`.*
