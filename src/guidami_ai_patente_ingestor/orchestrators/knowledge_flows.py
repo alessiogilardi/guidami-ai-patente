@@ -7,7 +7,14 @@ from typing import Literal, cast
 from flowstep import Flow, FlowBuilder
 from flowstep.steps import ApplyStep
 
-from commons.ai.embedding import EmbeddingClient, EmbeddingService
+from commons.ai.embedding import (
+    EmbeddingClient,
+    EmbeddingService,
+    EmbeddingSpec,
+    FieldSpec,
+    FieldSpecComposer,
+    ModelEmbeddingService,
+)
 from commons.clients import PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
 from commons.observability import NullProgressReporter, ProgressReporter
@@ -16,7 +23,11 @@ from commons.use_cases import FlatMap, ForEach
 from commons.utils import element_id
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.mappers import ArticleMapper
-from guidami_ai_patente_ingestor.models.knowledge import CleanedArticleModel, ParsedArticleModel
+from guidami_ai_patente_ingestor.models.knowledge import (
+    CleanedArticleModel,
+    EmbeddableArticleComma,
+    ParsedArticleModel,
+)
 from guidami_ai_patente_ingestor.orchestrators import context_keys
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import (
     EmbedCommasStep,
@@ -135,8 +146,18 @@ def build_knowledge_indexing_flow(
     embed_step = EmbedCommasStep(
         "embed_commas",
         embed_repealed=config.embed_repealed,
-        embedding_service=EmbeddingService(
-            config.embedding_batch_size, embedding_client, reporter
+        model_embedding_service=ModelEmbeddingService[EmbeddableArticleComma](
+            FieldSpecComposer[EmbeddableArticleComma](
+                EmbeddingSpec(
+                    fields=[
+                        FieldSpec(extractor=lambda comma: comma.article_title or None),
+                        FieldSpec(extractor=lambda comma: comma.text or None),
+                    ],
+                    separator="\n",
+                    normalize_whitespace=False,
+                )
+            ),
+            EmbeddingService(config.embedding_batch_size, embedding_client, reporter),
         ),
     )
 

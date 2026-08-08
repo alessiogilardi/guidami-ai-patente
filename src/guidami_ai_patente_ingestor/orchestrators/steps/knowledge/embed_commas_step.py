@@ -5,7 +5,7 @@ from typing import cast
 
 from flowstep import FlowContext, Step
 
-from commons.ai.embedding import EmbeddingService
+from commons.ai.embedding import EmbeddingResult, ModelEmbeddingService
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableArticleComma
 
 logger = logging.getLogger(__name__)
@@ -30,18 +30,19 @@ class EmbedCommasStep(Step):
         self,
         name: str,
         embed_repealed: bool,
-        embedding_service: EmbeddingService,
+        model_embedding_service: ModelEmbeddingService[EmbeddableArticleComma],
     ) -> None:
-        """Injects the repealed flag and the embedding service.
+        """Injects the repealed flag and the model embedding service.
 
         Args:
             name: Unique step name within the flow.
             embed_repealed: If True, also embeds repealed commas.
-            embedding_service: Service that computes embeddings in batch.
+            model_embedding_service: Service that composes text and computes embeddings
+                in batch for `EmbeddableArticleComma` instances.
         """
         super().__init__(name)
         self._embed_repealed = embed_repealed
-        self._embedding_service = embedding_service
+        self._model_embedding_service = model_embedding_service
 
     def execute(self, context: FlowContext) -> None:
         """Reads `embeddable_article_commas`, assigns vectors, rewrites the same key.
@@ -54,16 +55,10 @@ class EmbedCommasStep(Step):
         """
         commas = cast(list[EmbeddableArticleComma], context.get(_EMBEDDABLE_ARTICLE_COMMAS_KEY))
         to_embed = [comma for comma in commas if self._should_embed(comma)]
-        vectors = (
-            self._embedding_service.execute([comma.embedded_text for comma in to_embed])
-            if to_embed
-            else []
-        )
-        vectors_iter = iter(vectors)
+        embedded = self._model_embedding_service(to_embed) if to_embed else []
+        embedded_iter = iter(embedded)
         result = [
-            comma.model_copy(update={"embedding": next(vectors_iter)})
-            if self._should_embed(comma)
-            else comma
+            self._apply(next(embedded_iter)) if self._should_embed(comma) else comma
             for comma in commas
         ]
 
@@ -75,6 +70,11 @@ class EmbedCommasStep(Step):
 
     def _should_embed(self, comma: EmbeddableArticleComma) -> bool:
         return not (comma.is_repealed and not self._embed_repealed)
+
+    @staticmethod
+    def _apply(result: EmbeddingResult[EmbeddableArticleComma]) -> EmbeddableArticleComma:
+        """Copies the embedded vector back onto the original comma."""
+        return result.model.model_copy(update={"embedding": result.embedding})
 
     def get_required_keys(self) -> set[str]:
         """Requires `embeddable_article_commas` as input."""

@@ -2,9 +2,29 @@
 
 from flowstep import FlowContext
 
-from commons.ai.embedding import EmbeddingClient, EmbeddingService
+from commons.ai.embedding import (
+    EmbeddingClient,
+    EmbeddingService,
+    EmbeddingSpec,
+    FieldSpec,
+    FieldSpecComposer,
+    ModelEmbeddingService,
+)
 from guidami_ai_patente_ingestor.models.knowledge import EmbeddableArticleComma
 from guidami_ai_patente_ingestor.orchestrators.steps.knowledge import EmbedCommasStep
+
+# Mirrors knowledge_flows.py's embed_step wiring (title + comma text, one part per
+# line, discarding empty parts, no normalization) — kept independent so this test
+# module doesn't reach into orchestrators' private module state.
+_COMMA_TEXT_SPEC = EmbeddingSpec(
+    fields=[
+        FieldSpec(extractor=lambda comma: comma.article_title or None),
+        FieldSpec(extractor=lambda comma: comma.text or None),
+    ],
+    separator="\n",
+    normalize_whitespace=False,
+)
+
 
 # EMBEDDABLE_ARTICLE_COMMAS is not yet a context_keys.py constant (added in T-14);
 # EmbedCommasStep reads/writes it as a hardcoded literal until then (per plan T-11).
@@ -38,8 +58,11 @@ class _RecordingClient(EmbeddingClient):
         return [_FIXED_VECTOR for _ in texts]
 
 
-def _make_service(client: EmbeddingClient, batch_size: int = 10) -> EmbeddingService:
-    return EmbeddingService(batch_size=batch_size, client=client)
+def _make_service(
+    client: EmbeddingClient, batch_size: int = 10
+) -> ModelEmbeddingService[EmbeddableArticleComma]:
+    composer = FieldSpecComposer[EmbeddableArticleComma](_COMMA_TEXT_SPEC)
+    return ModelEmbeddingService(composer, EmbeddingService(batch_size=batch_size, client=client))
 
 
 def _make_comma(
@@ -66,7 +89,7 @@ def test_embed_commas_skips_repealed_when_embed_repealed_false() -> None:
     step = EmbedCommasStep(
         "embed_commas",
         embed_repealed=False,
-        embedding_service=_make_service(_FixedVectorClient()),
+        model_embedding_service=_make_service(_FixedVectorClient()),
     )
 
     step.execute(context)
@@ -86,11 +109,26 @@ def test_embed_commas_input_is_title_plus_text() -> None:
     step = EmbedCommasStep(
         "embed_commas",
         embed_repealed=False,
-        embedding_service=_make_service(recording_client),
+        model_embedding_service=_make_service(recording_client),
     )
 
     step.execute(context)
 
     assert "Titolo\nCorpo" in recording_client.calls, (
-        "embedded_text (title + text, no context) must be sent to the embedding client"
+        "title + comma text (no context) must be sent to the embedding client"
     )
+
+
+def test_embed_commas_input_discards_empty_title() -> None:
+    comma = _make_comma(article_title="", text="Corpo")
+    recording_client = _RecordingClient()
+    context = FlowContext({_EMBEDDABLE_ARTICLE_COMMAS_KEY: [comma]})
+    step = EmbedCommasStep(
+        "embed_commas",
+        embed_repealed=False,
+        model_embedding_service=_make_service(recording_client),
+    )
+
+    step.execute(context)
+
+    assert "Corpo" in recording_client.calls, "an empty title must be discarded, not embedded"

@@ -17,13 +17,3 @@ class EmbeddableArticleComma(BaseModel):
     text: str
     is_repealed: bool
     embedding: list[float] | None = None
-
-    @property
-    def embedded_text(self) -> str:
-        """Text used for computing the embedding.
-
-        Concatenates title and comma text, one part per line, discarding
-        empty parts — no context (AD-18: the LLM enrichment step is gone).
-        """
-        parts = [self.article_title, self.text]
-        return "\n".join(part for part in parts if part)
