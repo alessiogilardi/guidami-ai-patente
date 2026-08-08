@@ -1,8 +1,9 @@
 import dataclasses
 
 import pytest
-from commons.ai.embedding.composition import TemplateComposer
 from pydantic import BaseModel
+
+from commons.ai.embedding.composition import TemplateComposer
 
 
 class _ArticleModel(BaseModel):
