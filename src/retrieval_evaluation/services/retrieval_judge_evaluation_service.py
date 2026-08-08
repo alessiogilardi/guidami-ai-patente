@@ -54,9 +54,21 @@ class RetrievalJudgeEvaluationService:
     def _judge_one(self, row: QuizEvaluationRow) -> RetrievalJudgeItemResult:
         commas = self._corpus_repository.dense_top_k(row.embedding, self._k)
         request = RetrievalJudgeRequest(
-            quiz_text=row.text, correct_answer=row.correct_answer, commas=commas
+            quiz_text=row.text,
+            correct_answer=row.correct_answer,
+            commas=commas,
+            image_description=row.image_description
+            or "Nessuna immagine allegata a questa domanda.",
         )
         response = self._agent.run_sync(request)
         return RetrievalJudgeItemResult(
-            quiz_number=row.number, is_clear=response.is_clear, rationale=response.rationale
+            quiz_number=row.number,
+            topic=row.topic,
+            text=row.text,
+            correct_answer=row.correct_answer,
+            image_filename=row.image_filename,
+            image_description=row.image_description,
+            retrieved_commas=commas,
+            is_clear=response.is_clear,
+            rationale=response.rationale,
         )

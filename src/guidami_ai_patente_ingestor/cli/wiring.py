@@ -85,6 +85,9 @@ def build_evaluation_repositories(
             config.articles_table, config.article_commas_table, postgres_client
         ),
         quiz=QuizReadRepository(
-            config.quiz_questions_table, config.quiz_question_embeddings_table, postgres_client
+            config.quiz_questions_table,
+            config.quiz_question_embeddings_table,
+            config.quiz_images_table,
+            postgres_client,
         ),
     )

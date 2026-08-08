@@ -20,4 +20,5 @@ class QuizEvaluationRow(BaseModel):
     correct_answer: bool
     exact_keywords: list[str] | None
     image_filename: str | None
+    image_description: str | None
     embedding: list[float]

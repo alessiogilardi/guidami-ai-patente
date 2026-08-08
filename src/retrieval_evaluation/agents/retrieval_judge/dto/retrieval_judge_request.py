@@ -10,11 +10,13 @@ class RetrievalJudgeRequest(BaseModel):
         quiz_text: Text of the quiz question.
         correct_answer: Correct answer to the question.
         commas: Top-k commas retrieved for this question by dense retrieval.
+        image_description: Description of the attached image (if present).
     """
 
     quiz_text: str = Field(min_length=1)
     correct_answer: bool
     commas: list[RetrievedComma] = Field(min_length=1)
+    image_description: str | None = None
 
     @computed_field  # type: ignore[prop-decorator]
     @property

@@ -26,6 +26,7 @@ def _build_row(number: str, topic: str) -> QuizEvaluationRow:
         correct_answer=True,
         exact_keywords=None,
         image_filename=None,
+        image_description=None,
         embedding=[0.1, 0.2],
     )
 

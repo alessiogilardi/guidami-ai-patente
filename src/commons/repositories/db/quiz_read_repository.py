@@ -18,16 +18,19 @@ class QuizReadRepository:
         self,
         quiz_questions_table: str,
         quiz_question_embeddings_table: str,
+        quiz_images_table: str,
         client: PostgresClient,
     ) -> None:
         """Injects the table names and the `PostgresClient`."""
         self._client = client
         self._quiz_question_embeddings_table = quiz_question_embeddings_table
         self._from_clause = sql.SQL(
-            "{questions} q JOIN {embeddings} e ON e.quiz_question_id = q.id"
+            "{questions} q JOIN {embeddings} e ON e.quiz_question_id = q.id "
+            "LEFT JOIN {images} i ON i.filename = q.image_filename"
         ).format(
             questions=sql.Identifier(quiz_questions_table),
             embeddings=sql.Identifier(quiz_question_embeddings_table),
+            images=sql.Identifier(quiz_images_table),
         )
 
     def fetch_with_vectors(self, variant: str, model_column: str) -> list[QuizEvaluationRow]:
@@ -38,11 +41,12 @@ class QuizReadRepository:
         variant/model is absent from the result, never present with a null embedding.
         `model_column` is caller-selected (FR-3/AD-6, see `populated_model_columns`), not
         hardcoded. Does not select `q.embedding` — that column no longer exists on
-        `quiz_questions`.
+        `quiz_questions`. `quiz_images` is joined with a `LEFT JOIN` (not every question
+        has an image), so `image_description` is `None` for image-less questions.
         """
         query = sql.SQL(
             "SELECT q.id, q.number, q.topic, q.text, q.correct_answer, "
-            "q.exact_keywords, q.image_filename, e.{model_column} "
+            "q.exact_keywords, q.image_filename, i.description, e.{model_column} "
             "FROM {from_clause} "
             "WHERE e.variant = %s AND e.{model_column} IS NOT NULL "
             "ORDER BY q.number"
@@ -57,7 +61,8 @@ class QuizReadRepository:
                 correct_answer=row[4],
                 exact_keywords=row[5],
                 image_filename=row[6],
-                embedding=row[7],
+                image_description=row[7],
+                embedding=row[8],
             )
             for row in rows
         ]

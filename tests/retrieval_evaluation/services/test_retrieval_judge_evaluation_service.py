@@ -19,6 +19,7 @@ def _make_row(number: str) -> QuizEvaluationRow:
         correct_answer=True,
         exact_keywords=["stop"],
         image_filename=None,
+        image_description=None,
         embedding=[0.1, 0.2],
     )
 

@@ -541,19 +541,46 @@ commas clearly and unambiguously justify the correct answer;
 `RetrievalJudgeEvaluationService` either samples `n` random rows via
 `QuizReadRepository.fetch_with_vectors` (`evaluate`, the default) or judges every
 row it returns (`evaluate_all`, the script's `--all` flag) — both share a private
-`_load_rows` helper and differ only in whether the result is sampled. It is
+`_load_rows` helper and differ only in whether the result is sampled.
+`fetch_with_vectors`'s `FROM` clause `LEFT JOIN`s `quiz_images` on `image_filename`
+(shared `QuizReadRepository`, so every consumer — this script and the deterministic
+`ingest evaluate retrieval` harness — gets `QuizEvaluationRow.image_description`
+alongside `image_filename`, `None` for image-less questions or when the image was
+never enriched); `RetrievalJudgeItemResult` carries both through, and both the
+console report and `results.json` show them when present.
+`RetrievalJudgeRequest.image_description` (falling back to a fixed "no image" Italian
+literal when the row has none, same fallback convention as
+`norm_reference_describer_mapper.py`) also reaches the judge's own prompt
+(`configs/agents/retrieval_judge.yaml`): a `$image_description` line in the `<quiz>`
+block plus a system-prompt rule telling the judge the image description is valid
+context for whether the answer gets an adequate explanation — road-sign questions
+often have commas that state the rule abstractly without describing the specific sign,
+which the image description does. Which
+variant is fetched defaults to `config.evaluation.quiz_embedding_variant` but can
+be overridden per run with `--variant`, checked in `main()` against
+`QuizReadRepository.available_variants()` (`argparse.error` on a name with no
+stored rows) before the Postgres connection is used for anything else. It is
 **not** a mode of
 `ingest evaluate retrieval`: spec 0007 lists "LLM-as-judge relevance scoring" as
 an explicit Non-Goal (deterministic signals cost nothing and run in CI; a judge
 should be targeted, not run over everything) — text the spec still carries
 unchanged, by deliberate choice (ADR 0013). This module is the judge that
 Non-Goal deferred, built as its own top-level package rather than as a spec-0007
-extension, so it carries none of the harness's manifest/`RunArtifactWriter`/
+extension, so it carries none of the harness's manifest/`manifest.json`/`report.md`/
 dry-run-chain machinery: `main.py` is a plain `argparse` script printing
 per-question verdicts and a share-clear percentage to stdout, meant to be
 re-run manually (a few times to gauge judge stability, then once with `--all`
 or a larger `--n` for a final estimate) rather than averaged automatically
-across runs. It reuses `IngestorConfig`
+across runs. It does reuse one piece of the harness's plumbing —
+`RunArtifactWriter.build_run_dir` (just the static, collision-safe
+`logs/<prefix>_<timestamp>/` directory helper, not the writer instance or its
+manifest/report machinery) — to reserve `logs/evaluate_judge_<timestamp>/` per
+run, attach a plain `run.log` `FileHandler` (`LOG_FORMAT`, both also imported
+from `commons.observability`) to the root logger, and write `results.json`: the
+full judged records (`RetrievalJudgeItemResult`, now carrying `topic`/`text`/
+`correct_answer`/`retrieved_commas` alongside the verdict, not just the verdict)
+for offline inspection, since the stdout report alone doesn't retain the
+retrieved commas or the quiz context. It reuses `IngestorConfig`
 (Postgres connection, table names, `agents_dir`, OpenRouter provider) from
 `guidami_ai_patente_ingestor.configs` rather than owning its own settings class —
 the one deliberate cross-package dependency this module has.
@@ -770,3 +797,30 @@ uncommitted on `feat/ingestion`); renamed every `UseCase`/`AsyncUseCase` subclas
 `NormReferenceEnricher` → `NormReferenceEnricherService`) and `LayerResolver` →
 `LayerResolverProvider` (moved from `services/` to the new `providers/` package — see
 `docs/layout.md`).*
+
+*Last updated: 2026-08-07 — verified against commit `8d85a0b` (working tree ahead of it,
+uncommitted on `feat/ingestion`); `evaluate-retrieval-judge` gained a `--variant` CLI flag
+(default `config.evaluation.quiz_embedding_variant`), validated in `main()` against
+`QuizReadRepository.available_variants()` before any Postgres/LLM work happens.*
+
+*Last updated: 2026-08-08 — verified against commit `8d85a0b` (working tree ahead of it,
+uncommitted on `feat/ingestion`); `evaluate-retrieval-judge` now writes
+`logs/evaluate_judge_<timestamp>/run.log` and `results.json` per run (reusing
+`RunArtifactWriter.build_run_dir` for the directory only, none of the writer's
+manifest/report machinery); `RetrievalJudgeItemResult` extended with `topic`/`text`/
+`correct_answer`/`retrieved_commas` so the JSON export carries the full judged record,
+not just the verdict.*
+
+*Last updated: 2026-08-08 — verified against commit `8d85a0b` (working tree ahead of it,
+uncommitted on `feat/ingestion`); `QuizReadRepository` (`src/commons/repositories/db/`,
+shared by both the deterministic harness and the retrieval judge) now takes a
+`quiz_images_table` and `LEFT JOIN`s it into `fetch_with_vectors`; `QuizEvaluationRow`
+and `RetrievalJudgeItemResult` gained `image_description` alongside `image_filename`,
+surfaced in the judge's console report and `results.json`.*
+
+*Last updated: 2026-08-08 — verified against commit `8d85a0b` (working tree ahead of it,
+uncommitted on `feat/ingestion`); `RetrievalJudgeRequest` gained `image_description`
+(fallback literal when absent, `norm_reference_describer_mapper.py`'s convention), now
+rendered into the judge's own prompt (`configs/agents/retrieval_judge.yaml`) with a rule
+telling it the image description is valid context for judging whether the answer gets
+an adequate explanation.*
