@@ -30,6 +30,7 @@ def _row(number: str = "0001") -> QuizEvaluationRow:
         correct_answer=True,
         exact_keywords=["keyword"],
         image_filename=None,
+        image_description=None,
         embedding=[0.1, 0.2],
     )
 

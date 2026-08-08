@@ -55,7 +55,9 @@ def test_fetch_with_vectors_joins_only_requested_variant(client: PostgresClient)
     _insert_embedding(client, first_id, "topic_text", _vector(1536, 1))
     _insert_embedding(client, second_id, "topic_text", _vector(1536, 2))
 
-    repository = QuizReadRepository("quiz_questions", "quiz_question_embeddings", client)
+    repository = QuizReadRepository(
+        "quiz_questions", "quiz_question_embeddings", "quiz_images", client
+    )
 
     rows = repository.fetch_with_vectors("search_queries", "embedding_3_small")
 
@@ -72,7 +74,9 @@ def test_populated_model_columns_returns_only_columns_with_at_least_one_vector(
     question_id = _insert_question(client, "0001", 1)
     _insert_embedding(client, question_id, "text", _vector(1536, 0))
 
-    repository = QuizReadRepository("quiz_questions", "quiz_question_embeddings", client)
+    repository = QuizReadRepository(
+        "quiz_questions", "quiz_question_embeddings", "quiz_images", client
+    )
 
     assert repository.populated_model_columns() == ["embedding_3_small"]
 
@@ -81,6 +85,8 @@ def test_populated_model_columns_returns_only_columns_with_at_least_one_vector(
 def test_populated_model_columns_returns_empty_list_when_table_has_no_rows(
     client: PostgresClient,
 ) -> None:
-    repository = QuizReadRepository("quiz_questions", "quiz_question_embeddings", client)
+    repository = QuizReadRepository(
+        "quiz_questions", "quiz_question_embeddings", "quiz_images", client
+    )
 
     assert repository.populated_model_columns() == []

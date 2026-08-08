@@ -17,12 +17,17 @@ system: |
   - Se un solo comma tra i tanti recuperati è davvero pertinente, il giudizio è comunque
     "chiaro": cita quel comma nella motivazione.
   - Non inventare contenuti non presenti nei commi forniti.
+  - Se la domanda ha un'immagine allegata, usa anche la sua descrizione come contesto: può
+    essere utile per capire se la risposta riceve una spiegazione adeguata, ad esempio
+    quando il quiz riguarda il riconoscimento di un segnale e i commi recuperati trattano
+    la regola in astratto senza descrivere il segnale specifico raffigurato.
 user: |
   Valuta se i commi recuperati spiegano perché la risposta è corretta.
 
   <quiz>
   Domanda: $quiz_text
   Risposta corretta: $correct_answer_it
+  Descrizione dell'immagine: $image_description
   </quiz>
 
   <commi_recuperati>

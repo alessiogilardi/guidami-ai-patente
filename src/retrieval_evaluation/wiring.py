@@ -33,7 +33,10 @@ def build_quiz_repository(
 ) -> QuizReadRepository:
     """Builds the quiz read repository, reusing the ingestor's table names."""
     return QuizReadRepository(
-        config.quiz_questions_table, config.quiz_question_embeddings_table, postgres_client
+        config.quiz_questions_table,
+        config.quiz_question_embeddings_table,
+        config.quiz_images_table,
+        postgres_client,
     )
 
 
