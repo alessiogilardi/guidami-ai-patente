@@ -36,3 +36,7 @@ dependencies, and it's an external git dependency, not code in this repo.
 When a constructor takes two dependencies (e.g. `layer_resolver` and
 `repository` in `LoadJsonStep`/`WriteJsonStep`), both go at the end, after all
 plain args, in whatever relative order reads best.
+
+**Does not apply to `src/guidami_ai_patente/`** (the FastAPI app): that package
+uses `pywire` Spring-style field injection instead of constructor injection —
+see [`pywire-di.md`](./pywire-di.md).
