@@ -71,6 +71,14 @@ repo/
 └── .claude/                        # Claude Code config: rules/, skills/, hooks/, agents/
 ```
 
+Every top-level `src/` package that is a `[project.scripts]` entry point or an
+app (`guidami_ai_patente_ingestor/`, `guidami_ai_patente/`, `parsers/`,
+`retrieval_evaluation/`, `scrapers/`, `test_data_sampler/`) carries an empty
+`py.typed` marker file (PEP 561), so `pyright` treats the package as typed
+when resolved via its installed distribution rather than by path.
+`commons/`, `domain/`, and `html_viewers/` don't need one: they're never
+imported as a standalone installed package outside this repo's own checkout.
+
 `docker/.volumes/` (gitignored, not shown in the tree above) holds the
 Postgres data directory bind-mounted by `docker/docker-compose.yml` — see
 `docs/database.md`.
@@ -394,3 +402,7 @@ ADR 0014 (a proposed **seventh** subpackage member, `VariantModelEmbeddingServic
 generalize quiz's dedup/omission/fan-out mechanics) was rejected — see
 `docs/adr/0014-embedding-composition-layer.md`, status `Rejected`; that logic stays local to
 `guidami_ai_patente_ingestor/services/quiz/` (new file `quiz_variant_spec.py`).*
+
+*Last updated: 2026-08-12 — verified against commit `507d2dfb`; noted PEP 561 `py.typed`
+markers, added to `guidami_ai_patente_ingestor/`, `parsers/`, `retrieval_evaluation/`,
+`scrapers/`, and `test_data_sampler/` (joining `guidami_ai_patente/`, which already had one).*
