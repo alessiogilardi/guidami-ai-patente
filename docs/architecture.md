@@ -59,7 +59,7 @@ is a similarly standalone script package — an LLM-as-judge measurement tool
 | `flowstep` (external dependency) | Generic sequential-pipeline engine (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) | git dependency (github.com/alessiogilardi/flowstep) |
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
 | `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
-| `guidami_ai_patente/` | FastAPI quiz bot — layout scaffolded (`api/` self-contained web layer, `configs/app_config.py::AppConfig`, empty pull-based `services/`/`repositories/`/`models/`/`mappers/`), only `GET /health` implemented so far; entry point `main.py::main`, registered as the `api` script | FastAPI, uvicorn |
+| `guidami_ai_patente/` | FastAPI quiz bot — layout scaffolded (`api/` self-contained web layer, `configs/app_config.py::AppConfig`, empty pull-based `services/`/`repositories/`/`models/`/`mappers/`), only `GET /health` implemented so far; entry point `main.py::main`, registered as the `api` script. Dependency injection uses `pywire` (Spring-style `@service`/`@repository`/`@client`/`@component` decorators + `Autowired[T]` field injection), not the manual constructor injection the ingestor uses — see `adr/0015-pywire-di-for-fastapi-app.md` and `.claude/rules/pywire-di.md` | FastAPI, uvicorn, pywire |
 | `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013). `RetrievalJudgeAgent` + its DTOs (`agents/retrieval_judge/`, `BaseAgent` pattern — `agents/` is a generic per-role container, today holding the single `retrieval_judge/` agent subpackage) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names/`agents_dir`) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/quiz-patente-ab.json` (questions) + `data/quiz-images/` (extracted images, top-level, sibling of `parsed/` — ADR 0008) | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`/`AMB`) selected via a single `scrape --source <cds\|cap\|reg\|amb>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`; `AMB` — D.Lgs. 152/2006, Codice dell'Ambiente — added by spec 0009) | beautifulsoup4, lxml, httpx |
@@ -877,3 +877,11 @@ scaffold to a laid-out FastAPI app: `api/` self-contained web layer (`app.py::cr
 `services/`/`repositories/`/`models/`/`mappers/`. `main.py::main` is the entry point,
 registered as the `api` script. Added `fastapi`/`uvicorn[standard]` dependencies. Booted
 and smoke-tested `GET /health` end-to-end via `uv run api`.*
+
+*Last updated: 2026-08-12 — verified against commit `5a215141` (working tree ahead of it,
+uncommitted, on `feat/backend`); added `pywire` as a git dependency
+(`pyproject.toml`/`uv.lock`), adopted for dependency injection in `guidami_ai_patente/`
+only — Spring-style `@service`/`@repository`/`@client`/`@component` decorators +
+`Autowired[T]` field injection, replacing constructor injection for that package. The
+`guidami_ai_patente/` component row now notes this and points at
+`adr/0015-pywire-di-for-fastapi-app.md` and `.claude/rules/pywire-di.md`.*

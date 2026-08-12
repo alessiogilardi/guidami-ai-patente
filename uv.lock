@@ -688,6 +688,7 @@ dependencies = [
     { name = "pydantic-ai-slim", extra = ["openrouter"] },
     { name = "pydantic-settings", extra = ["yaml"] },
     { name = "pymupdf" },
+    { name = "pywire" },
     { name = "pyyaml" },
     { name = "rich" },
     { name = "sentence-transformers" },
@@ -719,6 +720,7 @@ requires-dist = [
     { name = "pydantic-ai-slim", extras = ["openrouter"], specifier = ">=1.107.0" },
     { name = "pydantic-settings", extras = ["yaml"], specifier = ">=2.14.1" },
     { name = "pymupdf", specifier = ">=1.27.2.3" },
+    { name = "pywire", git = "https://github.com/alessiogilardi/pywire.git" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "rich", specifier = ">=13" },
     { name = "sentence-transformers", specifier = ">=5.5.1" },
@@ -2150,6 +2152,11 @@ sdist = { url = "https://files.pythonhosted.org/packages/82/ed/0301aeeac3e5353ef
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0b/d7/1959b9648791274998a9c3526f6d0ec8fd2233e4d4acce81bbae76b44b2a/python_dotenv-1.2.2-py3-none-any.whl", hash = "sha256:1d8214789a24de455a8b8bd8ae6fe3c6b69a5e3d64aa8a8e5d68e694bbcb285a", size = 22101, upload-time = "2026-03-01T16:00:25.09Z" },
 ]
+
+[[package]]
+name = "pywire"
+version = "0.2.1"
+source = { git = "https://github.com/alessiogilardi/pywire.git#3e6dfecdbd14e2be0497412d5c8e18382223457f" }
 
 [[package]]
 name = "pyyaml"

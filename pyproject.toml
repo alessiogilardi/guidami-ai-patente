@@ -24,6 +24,7 @@ dependencies = [
     "pyyaml>=6.0.3",
     "fastapi>=0.141.1",
     "uvicorn[standard]>=0.52.1",
+    "pywire",
 ]
 
 [project.scripts]
@@ -42,6 +43,7 @@ build-backend = "uv_build"
 
 [tool.uv.sources]
 flowstep = { git = "https://github.com/alessiogilardi/flowstep.git", branch = "main" }
+pywire = { git = "https://github.com/alessiogilardi/pywire.git" }
 
 [dependency-groups]
 dev = [
