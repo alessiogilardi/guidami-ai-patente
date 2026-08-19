@@ -75,8 +75,14 @@ the three skip categories plus the success path), each via a mocked
 `main_reg` per-law entry points this section used to call out as untested no
 longer exist (spec 0004 T-5 replaced them with one `cli_main`, itself
 covered by `test_cli_main_dispatches_to_main_with_resolved_source`/
-`test_cli_main_dry_run_flag_forwarded` via a monkeypatched `main`). No
-tests yet for the empty `src/guidami_ai_patente/` scaffold.
+`test_cli_main_dry_run_flag_forwarded` via a monkeypatched `main`).
+`tests/guidami_ai_patente/api/routers/test_health.py` is the first test for
+`src/guidami_ai_patente/`: FastAPI's `TestClient` (`fastapi.testclient`)
+against an app built by `create_app(AppConfig(...))` with an inline,
+non-Docker `PostgresConnectionConfig` — the route under test never opens a
+DB connection, so no fixture from `_postgres_test_stack` is needed. This is
+the project's first use of `TestClient` and establishes the pattern for
+future `guidami_ai_patente/` endpoint tests.
 `flowstep` is an external git dependency (not part of this repo's `src/`
 or `tests/`), so it has no local test mirror here — see
 `docs/architecture.md`.
@@ -126,3 +132,9 @@ Naming: `test_*.py`, generally one test file per source file/class (e.g.
 isolated ephemeral Postgres test stack (`docker/docker-compose.test.yml`) and
 the `_postgres_test_stack`/`postgres_test_config` fixtures that replaced
 per-file hardcoded dev-database connections in integration tests.*
+
+*Last updated: 2026-08-17 — verified against commit `b3ca8b30` (working tree ahead of it,
+uncommitted, on `feat/backend`); added `tests/guidami_ai_patente/api/routers/test_health.py`,
+the first test for `src/guidami_ai_patente/` and the project's first use of FastAPI's
+`TestClient`, covering the `pywire.fastapi.wire()`-based DI added to `GET /health`
+(see `docs/architecture.md` and `adr/0016-pywire-native-fastapi-wiring.md`).*
