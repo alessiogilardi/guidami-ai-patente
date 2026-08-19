@@ -14,9 +14,12 @@ Two apps live side by side under `src/`:
   pipelines for both the knowledge corpus and the quiz bank.
 - `guidami_ai_patente/` — the FastAPI quiz-bot app. **Layout scaffolded,
   no domain endpoints yet**: a self-contained `api/` web layer (app
-  factory, routers, schemas), empty pull-based `services/`/
-  `repositories/`/`models/`/`mappers/`, and `configs/` with a root
-  `AppConfig`. Only concrete route so far is `GET /health`.
+  factory, routers, schemas), pull-based `services/`/`repositories/`
+  holding their first real (non-domain) classes, empty `models/`/
+  `mappers/`, and `configs/` with a root `AppConfig`. Only concrete route
+  so far is `GET /health`, which also doubles as the first live proof of
+  `pywire`'s native FastAPI wiring (`pywire.fastapi.wire()`) — see the
+  `guidami_ai_patente/` row below.
 
 Two shared foundation packages support both apps (and are meant to keep
 doing so once the FastAPI app starts):
@@ -59,7 +62,7 @@ is a similarly standalone script package — an LLM-as-judge measurement tool
 | `flowstep` (external dependency) | Generic sequential-pipeline engine (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) | git dependency (github.com/alessiogilardi/flowstep) |
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
 | `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
-| `guidami_ai_patente/` | FastAPI quiz bot — layout scaffolded (`api/` self-contained web layer, `configs/app_config.py::AppConfig`, empty pull-based `services/`/`repositories/`/`models/`/`mappers/`), only `GET /health` implemented so far; entry point `main.py::main`, registered as the `api` script. Dependency injection uses `pywire` (Spring-style `@service`/`@repository`/`@client`/`@component` decorators + `Autowired[T]` field injection), not the manual constructor injection the ingestor uses — see `adr/0015-pywire-di-for-fastapi-app.md` and `.claude/rules/pywire-di.md` | FastAPI, uvicorn, pywire |
+| `guidami_ai_patente/` | FastAPI quiz bot — layout scaffolded (`api/` self-contained web layer, `configs/app_config.py::AppConfig`, empty pull-based `models/`/`mappers/`), only `GET /health` implemented so far; entry point `main.py::main`, registered as the `api` script. Dependency injection uses `pywire` (Spring-style `@service`/`@repository`/`@client`/`@component` decorators + `Autowired[T]` field injection), not the manual constructor injection the ingestor uses — see `adr/0015-pywire-di-for-fastapi-app.md` and `.claude/rules/pywire-di.md`. `pywire>=0.3.1` adds native FastAPI wiring: a single `wire(app)` call in `api/app.py::create_app` (never on an `APIRouter`) makes bare `Autowired[T]` route parameters resolve on every router mounted on the app; `services/health_check_service.py::HealthCheckService` (`Autowired[DependencyVersionRepository]`) is resolved this way on `GET /health` — no `Depends()` — proven live via `uv run api` + a real HTTP request, not just `TestClient`; see `adr/0016-pywire-native-fastapi-wiring.md` | FastAPI, uvicorn, pywire |
 | `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013). `RetrievalJudgeAgent` + its DTOs (`agents/retrieval_judge/`, `BaseAgent` pattern — `agents/` is a generic per-role container, today holding the single `retrieval_judge/` agent subpackage) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names/`agents_dir`) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/quiz-patente-ab.json` (questions) + `data/quiz-images/` (extracted images, top-level, sibling of `parsed/` — ADR 0008) | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`/`AMB`) selected via a single `scrape --source <cds\|cap\|reg\|amb>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`; `AMB` — D.Lgs. 152/2006, Codice dell'Ambiente — added by spec 0009) | beautifulsoup4, lxml, httpx |
@@ -885,3 +888,22 @@ only — Spring-style `@service`/`@repository`/`@client`/`@component` decorators
 `Autowired[T]` field injection, replacing constructor injection for that package. The
 `guidami_ai_patente/` component row now notes this and points at
 `adr/0015-pywire-di-for-fastapi-app.md` and `.claude/rules/pywire-di.md`.*
+
+*Last updated: 2026-08-17 — verified against commit `b3ca8b30` (working tree ahead of it,
+uncommitted, on `feat/backend`); bumped `pywire` 0.2.1 -> 0.3.1 (`pyproject.toml` now pins
+`[tool.uv.sources]` to `tag = "v0.3.1"` instead of floating on the default branch;
+`pywire[fastapi]` extra added), adopting its new native FastAPI integration.
+`services/` and `repositories/` under `guidami_ai_patente/` gained their first real
+classes — `repositories/dependency_version_repository.py::DependencyVersionRepository`
+and `services/health_check_service.py::HealthCheckService` (the latter
+`Autowired[DependencyVersionRepository]`) — wired into `GET /health` via a bare
+`Autowired[HealthCheckService]` route parameter (`api/routers/health.py`). `wire(app)` is
+called exactly once, in `api/app.py::create_app`, on the `FastAPI` app itself: `pywire`
+0.3.0 required wiring each `APIRouter` individually (wiring the app did not propagate
+through `include_router()`), but 0.3.1 redesigned `wire()` to only accept the app and
+patch route resolution process-wide, removing the per-router call and its
+decoration-order footgun — `api/app.py` imports `pywire.fastapi` before its router
+modules so that patch installs first. Verified end-to-end against a live `uv run api`
+process with a real HTTP request, not only `TestClient`. `.claude/rules/pywire-di.md`
+gained a "FastAPI wiring" section documenting the convention; see
+`adr/0016-pywire-native-fastapi-wiring.md`.*

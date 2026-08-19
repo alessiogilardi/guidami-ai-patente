@@ -262,14 +262,18 @@ gitignored — never committed, safe to delete once the spec they fed is
   `models/`/`services/`. `configs/app_config.py::AppConfig` is the root
   `BaseSettings`, built once in `main.py` and passed down into
   `api.app.create_app`, embedding `commons.configs.PostgresConnectionConfig`
-  the same way `IngestorConfig` does. `services/`, `repositories/`,
-  `models/`, and `mappers/` are scaffolded empty (docstring-only
-  `__init__.py`) and filled in pull-based, as with `domain/entities/`
-  elsewhere in this repo — no `orchestrators/` package yet, since that
-  role is for batch-pipeline flows, not a synchronous request/response
-  service. The only concrete vertical slice so far is `GET /health`,
-  proving the wiring end-to-end; it carries no business logic. Entry
-  point: `main.py::main` (loads `AppConfig`, builds the app via
+  the same way `IngestorConfig` does. `models/` and `mappers/` are still
+  scaffolded empty (docstring-only `__init__.py`), filled in pull-based as
+  with `domain/entities/` elsewhere in this repo; `services/` and
+  `repositories/` gained their first real, non-domain classes —
+  `repositories/dependency_version_repository.py::DependencyVersionRepository`
+  and `services/health_check_service.py::HealthCheckService` — wired into
+  `GET /health` (see `docs/architecture.md` and
+  `adr/0016-pywire-native-fastapi-wiring.md`) — no `orchestrators/` package
+  yet, since that role is for batch-pipeline flows, not a synchronous
+  request/response service. The only concrete vertical slice so far is
+  `GET /health`, proving the wiring end-to-end; it carries no business
+  logic. Entry point: `main.py::main` (loads `AppConfig`, builds the app via
   `create_app`, serves it with `uvicorn`), registered as the `api`
   script in `pyproject.toml`.
 - **New tests** mirror the `src/` path of the code under test inside
@@ -430,3 +434,11 @@ uncommitted, on new branch `feat/backend`); `src/guidami_ai_patente/` layout sca
 the `api` script in `pyproject.toml`. Added `fastapi`/`uvicorn[standard]` as project
 dependencies. Only concrete endpoint so far: `GET /health`, verified booting end-to-end
 via `uv run api`.*
+
+*Last updated: 2026-08-17 — verified against commit `b3ca8b30` (working tree ahead of it,
+uncommitted, on `feat/backend`); `services/` and `repositories/` under
+`src/guidami_ai_patente/` gained their first real classes
+(`DependencyVersionRepository`, `HealthCheckService`), wired into `GET /health` via
+`pywire>=0.3.1`'s native FastAPI integration (`wire(app)` called once in
+`api/app.py::create_app`). See `docs/architecture.md` and
+`adr/0016-pywire-native-fastapi-wiring.md` for the decision and detail.*

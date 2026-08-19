@@ -1,6 +1,7 @@
 """FastAPI application factory."""
 
 from fastapi import FastAPI
+from pywire.fastapi import wire
 
 from guidami_ai_patente.configs import AppConfig
 
@@ -18,5 +19,6 @@ def create_app(config: AppConfig) -> FastAPI:
     """
     app = FastAPI(title="guidami-ai-patente API")
     app.state.config = config
+    wire(app)
     app.include_router(health.router)
     return app
