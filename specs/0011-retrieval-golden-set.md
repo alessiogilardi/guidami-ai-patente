@@ -167,6 +167,11 @@ first-class outcome meaning no comma in the corpus justifies the question.
   an error or a retry condition.
 - Given a judge response naming more than three numbers, when it is validated, then
   validation fails rather than silently truncating.
+- Given a judge response naming the same number more than once, when it is validated, then
+  validation fails rather than deduplicating, so the model is given the chance to correct
+  itself rather than having a repetition silently absorbed.
+- Given a judge response naming two or more numbers, when they are recorded, then their
+  order is the judge's own ordering, most-justifying first.
 - Given a judge response naming a number outside the range of the presented candidates,
   when it is processed, then the run fails for that question with an explicit error rather
   than recording a label.
@@ -211,14 +216,21 @@ the text arm, null where that arm did not retrieve it.
   text-arm-only, dense-arm-only, and both-arm labels is obtainable in a single SQL query
   with no retrieval re-execution.
 
-### FR-10: A run labels the entire quiz bank
+### FR-10: A run labels the entire quiz bank, unless explicitly limited
 
-The labeling entry point processes every quiz question that has a `topic_text` vector, with
-bounded concurrency, and does not sample.
+By default the labeling entry point processes every quiz question that has a `topic_text`
+vector, with bounded concurrency, and does not sample. A run may be explicitly restricted to
+a subset for a trial pass; when it is, the restriction is recorded on the run so a limited
+run is never mistaken for a complete or an interrupted one.
 
 **Acceptance criteria:**
-- Given the populated database, when a labeling run completes, then a `quiz_labelings` row
-  exists for every quiz question that has a `topic_text` vector.
+- Given the populated database, when a labeling run completes with no explicit limit, then a
+  `quiz_labelings` row exists for every quiz question that has a `topic_text` vector.
+- Given a run restricted to `n` questions, when it completes, then it labels at most `n`
+  questions and its row records the requested limit; given a run with no restriction, then
+  that record is absent.
+- Given a restriction and a shuffle seed, when the same restricted run is executed twice
+  against an unchanged bank, then both select the same subset of questions.
 - Given a run in progress, when the number of concurrent judge calls is observed, then it
   never exceeds the configured concurrency bound.
 - Given a run, when it is executed, then it writes a per-run log file under `logs/`
@@ -227,8 +239,8 @@ bounded concurrency, and does not sample.
 ### FR-11: Every run records the provenance needed to reproduce it
 
 The `labeling_runs` row carries the judge model, a prompt version derived from the prompt
-text itself, the candidate variant, both arm depths, the shuffle seed, and the corpus state
-at run time.
+text itself, the candidate variant, both arm depths, the shuffle seed, any explicit question
+limit (FR-10), and the corpus state at run time.
 
 **Acceptance criteria:**
 - Given a completed run, when its row is inspected, then the judge model, candidate
@@ -478,7 +490,13 @@ can never become an index condition, so the two branches are matched separately 
 | `shuffle_seed` | `BIGINT NOT NULL` | reconstructs presentation order (AD-4) |
 | `corpus_commit` | `TEXT NOT NULL` | |
 | `corpus_comma_count` | `INT NOT NULL` | |
+| `question_limit` | `INT` | the limit **requested** (FR-10); null for a full pass |
 | `created_at` | `TIMESTAMPTZ NOT NULL DEFAULT now()` | |
+
+`question_limit` records what was asked for, not what was reached: the number of questions
+actually labeled is the count of `quiz_labelings` rows, so storing it too would duplicate a
+derivable value (AD-6's principle). Together with `shuffle_seed` it is what reconstructs
+which subset a trial run saw.
 
 **`quiz_labelings`** — one row per labeled question (FR-8, AD-6)
 
@@ -499,14 +517,21 @@ children (AD-6).
 |---|---|---|
 | `labeling_id` | `BIGINT NOT NULL` | FK `quiz_labelings (id) ON DELETE CASCADE` |
 | `article_comma_id` | `BIGINT NOT NULL` | FK `article_commas (id) ON DELETE CASCADE` |
-| `position` | `INT NOT NULL CHECK (position > 0)` | order assigned by the judge |
+| `judge_rank` | `INT NOT NULL CHECK (judge_rank > 0)` | the judge's own ordering, most-justifying first (FR-7) |
 | `dense_rank` | `INT` | null when the dense arm did not retrieve it |
 | `text_rank` | `INT` | null when the text arm did not retrieve it |
+
+The three rank columns are deliberately parallel: one per source that had an opinion about
+this comma — the dense arm, the text arm, and the judge. Only `judge_rank` is mandatory,
+because a labeled comma always has a place in the judge's ordering while it may have been
+found by only one arm.
 
 `PRIMARY KEY (labeling_id, article_comma_id)`, plus
 `CHECK (dense_rank IS NOT NULL OR text_rank IS NOT NULL)` — a labeled comma that came from
 neither arm was not among the candidates, which is a bug or a hallucinated citation, and is
-rejected rather than recorded.
+rejected rather than recorded — plus `UNIQUE (labeling_id, judge_rank)`: two commas sharing
+a rank is a self-contradictory ordering, and unlike AD-6's cross-table case this constraint
+lives inside one table, so the database can actually enforce it.
 
 The three-labels-maximum of FR-7 is deliberately not a database constraint: it is a prompt
 policy, enforced on the judge response model, and encoding it in the schema would freeze a
@@ -714,3 +739,42 @@ loses, or changes work.
 
 **Status.** Unchanged at `in-progress`. Confirmed by Alessio Gilardi, 2026-08-20 ("non
 riusiamo lo stesso agente, ne scriviamo uno nuovo").
+
+### 2026-08-20 — trial-run limit, judge ordering, and duplicate-number rejection
+
+**What changed.** Three amendments, all arising from a grilling pass over the phase 2 plan
+whose goal was to remove implementation ambiguity before any code is written.
+
+- **FR-10 reworded** from "processes every quiz question … and does not sample" to a default
+  that does exactly that, plus an explicit, recorded restriction for trial passes. The old
+  wording forbade the only affordable way to measure this run's real cost: the ~$15/~70-minute
+  estimate is extrapolated from a much smaller prompt, and `configs/ingestor_config.test-data.yaml`
+  — which the plan had suggested for a cheap trial — retargets *file* layers only and would
+  change nothing for a job that reads Postgres. Two acceptance criteria added (the limit is
+  recorded; the same limit and seed select the same subset), and the existing criterion is now
+  qualified to a run with no limit.
+- **`labeling_runs.question_limit INT`** (nullable) added to the Data Model, so a limited run
+  is distinguishable from a complete one and from an interrupted one. It records the limit
+  *requested*, not reached — the number actually labeled is the count of `quiz_labelings`
+  rows, and persisting a derivable value is what AD-6 argues against.
+- **`quiz_comma_labels.position` renamed to `judge_rank`**, gaining
+  `UNIQUE (labeling_id, judge_rank)`, and FR-7 gained two criteria: the judge's numbers are
+  ordered most-justifying first, and a repeated number fails validation instead of being
+  deduplicated. `position` recorded an ordering that nothing had asked the judge to produce,
+  so a future metric reading "position 1" would have assumed a relevance rank that did not
+  exist. The new name also makes the three rank columns parallel — `dense_rank`, `text_rank`,
+  `judge_rank`, one per source that had an opinion about the comma.
+
+**Why the duplicate-number criterion is a validation failure rather than an error.** A
+repeated number resolves to two labels for one comma and would surface downstream as a
+primary-key violation naming neither the quiz nor the judge. Failing validation instead lets
+pydantic-ai's existing retry give the model a chance to correct itself — while
+deduplicating silently would hide a judge repeating itself, which is precisely the symptom
+the unverified-accuracy open question requires us to keep visible.
+
+**Scope impact.** `question_limit` is nullable and `judge_rank` is a rename, so no existing
+acceptance criterion is weakened; FR-11's non-null list is unchanged. No architectural
+decision was added or revised.
+
+**Status.** Unchanged at `in-progress`. Confirmed by Alessio Gilardi, 2026-08-20, over an
+18-question grilling pass on the phase 2 plan.
