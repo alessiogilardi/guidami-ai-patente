@@ -62,6 +62,58 @@ note explaining this exception) stays English — only the LLM-facing docstring 
 Configuration classes (any file under `configs/`) must set
 `model_config = ConfigDict(frozen=True)`.
 
+## Enums — their own `enums/` package, never `models/`
+
+An enumeration is a closed vocabulary, not a data carrier. It goes in an `enums/` package
+alongside `entities/` and `models/` — **not** inside `models/`, which is reserved for DTOs,
+Pydantic models and value objects that *hold* data.
+
+```
+src/domain/
+├── entities/   # insertable projections of DB rows
+├── enums/      # closed vocabularies (StrEnum, IntEnum, Enum)
+└── models/     # DTOs, Pydantic models, value objects
+```
+
+One enum per file, named after the enum in snake_case (`lexeme_field.py` →
+`LexemeField`), re-exported from the package `__init__.py` like every other package.
+
+Placement follows the same test as entities: an enum that names part of a **shared shape**
+(a DB column's legal values, a field vocabulary another module will also need) belongs in
+`src/domain/enums/`. An enum that is genuinely internal to one module — never referenced
+outside it — may live in that module's own `enums/` package instead, per the
+self-containment rule in `cli-structure.md`.
+
+Prefer `StrEnum` (Python 3.12+) when the members' values are strings that cross a boundary
+(config, DB, JSON): members compare equal to their string value, so serialization and
+`getattr`/dict lookups work without `.value` gymnastics — while `pyright` still rejects a
+bare string at the call site, which is the whole point of using an enum over `str`.
+
+### Values come from `auto()`, not hand-written literals
+
+```python
+# WRONG — the member name and its value are the same word, written twice
+class LexemeField(StrEnum):
+    TOPIC = "topic"
+    IMAGE_DESCRIPTION = "image_description"
+
+# RIGHT — auto() derives the value from the name
+class LexemeField(StrEnum):
+    TOPIC = auto()
+    IMAGE_DESCRIPTION = auto()
+```
+
+`StrEnum._generate_next_value_` returns `name.lower()`, so `IMAGE_DESCRIPTION = auto()`
+carries the value `"image_description"`. On a plain `Enum`/`IntEnum`, `auto()` yields
+successive integers starting at 1. Either way the value stops being a second place to edit,
+and a member rename can no longer leave a stale literal behind.
+
+**The one exception**: an enum whose values are an *external contract* that must survive a
+member rename — a value already persisted in a DB column, written into a file format, or
+sent over an API. There the value is data, not a restatement of the name, so it is written
+explicitly and an inline comment says why. This is a narrow exception: a value that merely
+*happens* to be consumed elsewhere but is free to change with the name is not one.
+
 ## Data structures — `BaseModel` or `dataclass` by default
 
 Structured data uses **only** Pydantic `BaseModel` or a stdlib `dataclass`. `NamedTuple` and
