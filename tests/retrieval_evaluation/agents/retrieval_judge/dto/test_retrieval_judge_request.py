@@ -9,8 +9,10 @@ def _make_comma(
     comma_number: str,
     text: str,
     article_title: str = "Segnali di pericolo",
+    comma_id: int = 1,
 ) -> RetrievedComma:
     return RetrievedComma(
+        id=comma_id,
         source="cds",
         article_number=article_number,
         article_title=article_title,
@@ -39,8 +41,8 @@ def test_commas_block_renders_citation_and_article_title_per_comma() -> None:
         quiz_text="Domanda.",
         correct_answer=True,
         commas=[
-            _make_comma("41", "1", "Primo comma."),
-            _make_comma("41", "2", "Secondo comma."),
+            _make_comma("41", "1", "Primo comma.", comma_id=1),
+            _make_comma("41", "2", "Secondo comma.", comma_id=2),
         ],
     )
     assert request.commas_block == (
@@ -54,8 +56,12 @@ def test_commas_block_uses_each_comma_s_own_article_title() -> None:
         quiz_text="Domanda.",
         correct_answer=True,
         commas=[
-            _make_comma("41", "1", "Primo comma.", article_title="Segnali di pericolo"),
-            _make_comma("142", "8", "Secondo comma.", article_title="Limiti di velocità"),
+            _make_comma(
+                "41", "1", "Primo comma.", article_title="Segnali di pericolo", comma_id=1
+            ),
+            _make_comma(
+                "142", "8", "Secondo comma.", article_title="Limiti di velocità", comma_id=2
+            ),
         ],
     )
     assert request.commas_block == (

@@ -109,7 +109,10 @@ gitignored — never committed, safe to delete once the spec they fed is
 - **Read DTOs** (rows returned by those repositories, e.g. `RetrievedComma`,
   `QuizEvaluationRow`) go in `src/domain/models/retrieval/` — `domain/entities/` stays
   reserved for the insertable projection of a table row, which omits DB-generated columns;
-  a read model does the opposite and carries `id`.
+  a read model does the opposite and carries `id`. `RetrievedComma` was the standing
+  exception to that rule until spec 0011 FR-3; it now carries the `article_commas.id` of
+  the row it was read from, as a required field with no default, so a consumer can
+  reference that row without a second lookup keyed on the `citation` string.
 - **A generic retrieval algorithm with more than one plausible consumer** (not tied to the
   quiz/corpus domain types) goes in `src/commons/ai/utils/`, per the `utils/` convention in
   `rules/python/architecture.md` (genuinely generic, no domain-specific logic) —
@@ -406,3 +409,8 @@ generalize quiz's dedup/omission/fan-out mechanics) was rejected — see
 *Last updated: 2026-08-12 — verified against commit `507d2dfb`; noted PEP 561 `py.typed`
 markers, added to `guidami_ai_patente_ingestor/`, `parsers/`, `retrieval_evaluation/`,
 `scrapers/`, and `test_data_sampler/` (joining `guidami_ai_patente/`, which already had one).*
+
+*Last updated: 2026-08-19 — verified against commit `2dd56724` (working tree ahead:
+spec 0011 phase 1, T-1); the read-DTO bullet now records that `RetrievedComma` carries
+`article_commas.id`, closing the exception it used to be to the "read models carry `id`"
+rule.*

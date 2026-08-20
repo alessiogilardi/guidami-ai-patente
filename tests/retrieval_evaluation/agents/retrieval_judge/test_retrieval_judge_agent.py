@@ -47,6 +47,7 @@ def _make_request() -> RetrievalJudgeRequest:
         correct_answer=True,
         commas=[
             RetrievedComma(
+                id=1,
                 source="cds",
                 article_number="41",
                 article_title="Segnali di pericolo",

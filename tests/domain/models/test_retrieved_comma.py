@@ -3,6 +3,7 @@ from domain.models.retrieval import RetrievedComma
 
 def test_citation_includes_source() -> None:
     cds_comma = RetrievedComma(
+        id=1,
         source="cds",
         article_number="43",
         article_title="Segnaletica",
@@ -11,6 +12,7 @@ def test_citation_includes_source() -> None:
         distance=0.1,
     )
     reg_comma = RetrievedComma(
+        id=2,
         source="reg",
         article_number="43",
         article_title="Segnaletica",
