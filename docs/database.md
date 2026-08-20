@@ -68,7 +68,9 @@ articles
 ├── url (TEXT, NOT NULL)
 ├── scraped_at (TIMESTAMPTZ, NOT NULL)    -- no default; always app-supplied by ArticleMapper
 ├── is_repealed (BOOLEAN, NOT NULL DEFAULT FALSE)
-└── UNIQUE (source, number)
+├── tsv_title (TSVECTOR, GENERATED ALWAYS ... STORED)  -- setweight(to_tsvector('italian', title), 'A')
+├── UNIQUE (source, number)
+└── INDEX idx_articles_tsv_title (tsv_title) USING GIN
 
 article_commas
 ├── id (PK, BIGSERIAL)
@@ -78,8 +80,10 @@ article_commas
 ├── text (TEXT, NOT NULL)
 ├── is_repealed (BOOLEAN, NOT NULL DEFAULT FALSE)
 ├── embedding (VECTOR(1536), nullable)
+├── tsv_text (TSVECTOR, GENERATED ALWAYS ... STORED)  -- setweight(to_tsvector('italian', text), 'B')
 ├── UNIQUE (article_id, comma_number)
-└── INDEX idx_article_commas_article_id (article_id)
+├── INDEX idx_article_commas_article_id (article_id)
+└── INDEX idx_article_commas_tsv_text (tsv_text) USING GIN
 
 quiz_questions
 ├── id (PK, BIGSERIAL)
@@ -131,6 +135,30 @@ llm_call_logs
 ├── INDEX idx_llm_call_logs_created_at (created_at)
 └── INDEX idx_llm_call_logs_caller (caller)
 ```
+
+`articles.tsv_title` and `article_commas.tsv_text` (spec 0011, FR-1) are the
+materialized halves of the corpus full-text index. They are **two** columns
+rather than one because the weighting in use spans both tables — article title
+in band A, comma text in band B, matching `_WEIGHTED_TSVECTOR` in
+`src/commons/repositories/db/corpus_read_repository.py` — and a generated column
+can only read its own row; ranking queries concatenate them
+(`a.tsv_title || c.tsv_text`) via `ts_rank`/`ts_rank_cd`. Being
+`GENERATED ALWAYS ... STORED`, they are never written by application code and
+cannot fall behind their source text. The two-argument
+`to_tsvector('italian', ...)` form is required: the one-argument form depends on
+`default_text_search_config` and is not `IMMUTABLE`, so `STORED` would be
+rejected.
+
+Matching against *both* columns cannot be a plain `a.tsv_title @@ q OR
+c.tsv_text @@ q`: PostgreSQL never turns a predicate whose `OR` branches
+reference two different joined relations into an index condition on either
+side — it can only evaluate it as a post-join filter, so neither GIN index is
+ever touched, regardless of join strategy or statistics. `CorpusReadRepository`'s
+`text_match_top_k` (`_text_match_query`) instead unions two single-relation id
+sets — one filtered by `idx_articles_tsv_title`, one by
+`idx_article_commas_tsv_text` — and rejoins the union for projection/scoring.
+See `docs/adr/0015-union-decomposed-cross-relation-text-match.md` for the
+full alternatives considered.
 
 `articles`/`article_commas` replaced the former single `knowledge_chunks`
 table (spec 0001 T-7): one row per article plus one row per comma, FK-linked
@@ -221,6 +249,11 @@ Two paths now exist, and a schema change must take **both**:
    schema untouched. Data-preserving steps come *before* destructive ones: see
    `db/migrations/0008_quiz_query_representations.sql`, which moves
    `quiz_questions.embedding` into the variant table before dropping the column.
+   `db/migrations/0011_retrieval_golden_set.sql` (purely additive: the two generated
+   `tsvector` columns and their GIN indexes) shows the other idempotency shape — a
+   generated column cannot be added with `ADD COLUMN IF NOT EXISTS`, so each
+   `ALTER TABLE` sits inside a `DO $$` block guarded on `information_schema.columns`,
+   while the indexes use plain `CREATE INDEX IF NOT EXISTS`.
 
 Because there is no tool enforcing it, the two paths can silently diverge — a
 migrated database and a freshly initialised one drifting apart is the standing risk
@@ -309,3 +342,15 @@ missing write path — the schema is unchanged, only the Python side caught up.*
 *Last updated: 2026-08-07 — verified against commit `bbec1a0` (working tree ahead of it,
 uncommitted on `feat/ingestion`); `EmbedQuizVariants` → `EmbedQuizVariantsService` (no schema
 change, `services/`-folder naming rename only).*
+
+*Last updated: 2026-08-19 — verified against commit `2dd56724` (working tree ahead:
+spec 0011 phase 1, T-2/T-3); `articles` gained the generated `tsv_title` and `article_commas`
+the generated `tsv_text`, each with a GIN index, plus a paragraph on why the corpus
+full-text vector is two columns and not one, and the Migrations section now names
+`0011_retrieval_golden_set.sql` as the guarded-`DO $$` idempotency shape.*
+
+*Last updated: 2026-08-19 — verified against commit `2dd56724` (working tree ahead:
+spec 0011 phase 1 round 2, AD-13/AD-14); corrected the full-text-match paragraph — the
+two generated columns are no longer matched with a plain cross-table `OR`, which
+PostgreSQL can never turn into an index condition; `text_match_top_k` now unions two
+single-relation-filtered id sets instead (ADR 0015).*

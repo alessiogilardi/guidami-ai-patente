@@ -13,8 +13,15 @@ CREATE TABLE articles (
     url         TEXT NOT NULL,
     scraped_at  TIMESTAMPTZ NOT NULL,
     is_repealed BOOLEAN NOT NULL DEFAULT FALSE,
+    -- Generated, never written by application code (spec 0011, FR-1). Weighting (band A)
+    -- must match `_WEIGHTED_TSVECTOR` in corpus_read_repository.py exactly.
+    -- db/migrations/0011_retrieval_golden_set.sql must produce the identical column on an
+    -- existing database.
+    tsv_title   TSVECTOR GENERATED ALWAYS AS (setweight(to_tsvector('italian', title), 'A')) STORED,
     UNIQUE (source, number)
 );
+
+CREATE INDEX idx_articles_tsv_title ON articles USING GIN (tsv_title);
 
 CREATE TABLE article_commas (
     id           BIGSERIAL PRIMARY KEY,
@@ -24,10 +31,16 @@ CREATE TABLE article_commas (
     text         TEXT NOT NULL,
     is_repealed  BOOLEAN NOT NULL DEFAULT FALSE,
     embedding    VECTOR(1536),
+    -- Generated, never written by application code (spec 0011, FR-1). Weighting (band B)
+    -- must match `_WEIGHTED_TSVECTOR` in corpus_read_repository.py exactly.
+    -- db/migrations/0011_retrieval_golden_set.sql must produce the identical column on an
+    -- existing database.
+    tsv_text     TSVECTOR GENERATED ALWAYS AS (setweight(to_tsvector('italian', text), 'B')) STORED,
     UNIQUE (article_id, comma_number)
 );
 
 CREATE INDEX idx_article_commas_article_id ON article_commas (article_id);
+CREATE INDEX idx_article_commas_tsv_text ON article_commas USING GIN (tsv_text);
 
 -- Quiz bank (esame teorico A/B), vedi plans/architecture-quiz-bank.md.
 CREATE TABLE IF NOT EXISTS quiz_questions (
