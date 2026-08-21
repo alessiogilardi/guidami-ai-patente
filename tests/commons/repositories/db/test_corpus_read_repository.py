@@ -7,6 +7,9 @@ from psycopg import sql
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
 from commons.repositories.db import CorpusReadRepository
+from domain.enums import LexemeField
+from domain.models.retrieval import QuizEvaluationRow
+from retrieval_evaluation.services import QuestionLexemeService
 
 
 def _vector(dimension: int, hot_index: int) -> list[float]:
@@ -19,9 +22,9 @@ def _vector(dimension: int, hot_index: int) -> list[float]:
 @pytest.fixture
 def client(postgres_test_config: PostgresConnectionConfig) -> Iterator[PostgresClient]:
     with PostgresClient(postgres_test_config) as client:
-        client.truncate("article_commas", "articles")
+        client.truncate("quiz_comma_labels", "article_commas", "articles")
         yield client
-        client.truncate("article_commas", "articles")
+        client.truncate("quiz_comma_labels", "article_commas", "articles")
 
 
 def _insert_article(client: PostgresClient, source: str, number: str, title: str) -> int:
@@ -349,3 +352,71 @@ def test_dense_top_k_breaks_distance_ties_by_ascending_comma_id(
     results = repository.dense_top_k(embedding, k=3)
 
     assert [comma.id for comma in results] == sorted(comma_ids)
+
+
+def _make_evaluation_row(text: str) -> QuizEvaluationRow:
+    return QuizEvaluationRow(
+        id=1,
+        number="1",
+        topic="",
+        text=text,
+        correct_answer=True,
+        exact_keywords=None,
+        image_filename=None,
+        image_description=None,
+        embedding=[0.1],
+    )
+
+
+@pytest.mark.integration
+def test_extract_lexemes_removes_italian_stop_words(client: PostgresClient) -> None:
+    repository = CorpusReadRepository("articles", "article_commas", client)
+
+    lexemes = repository.extract_lexemes("il conducente deve dare la precedenza")
+
+    assert any("conducent" in lexeme for lexeme in lexemes)
+    assert any("precedent" in lexeme for lexeme in lexemes)
+    assert "il" not in lexemes
+    assert "la" not in lexemes
+    assert "deve" not in lexemes
+
+
+@pytest.mark.integration
+def test_extract_lexemes_returns_empty_for_stop_words_only(client: PostgresClient) -> None:
+    repository = CorpusReadRepository("articles", "article_commas", client)
+
+    lexemes = repository.extract_lexemes("il la e di")
+
+    assert lexemes == []
+
+
+@pytest.mark.integration
+def test_extracted_lexemes_survive_operator_punctuation(client: PostgresClient) -> None:
+    repository = CorpusReadRepository("articles", "article_commas", client)
+    lexeme_service = QuestionLexemeService(
+        lexeme_fields=(LexemeField.TEXT,), repository=repository
+    )
+    row = _make_evaluation_row('-divieto "sosta" or fermata')
+
+    lexemes = lexeme_service.build(row)
+    joined = " ".join(lexemes)
+
+    assert any("divieto" in lexeme for lexeme in lexemes) or "divi" in joined
+    assert any("sost" in lexeme for lexeme in lexemes)
+    assert any("ferm" in lexeme for lexeme in lexemes)
+
+    results = repository.text_match_top_k(lexemes, 5)
+
+    assert results == []
+
+
+@pytest.mark.integration
+def test_comma_count_counts_every_comma_including_unembedded(client: PostgresClient) -> None:
+    article_id = _insert_article(client, "cds", "1", "Titolo")
+    _insert_comma(client, article_id, "1", "Comma con embedding uno.", _vector(1536, 0))
+    _insert_comma(client, article_id, "2", "Comma con embedding due.", _vector(1536, 1))
+    _insert_comma(client, article_id, "3", "Comma senza embedding.", None)
+
+    repository = CorpusReadRepository("articles", "article_commas", client)
+
+    assert repository.comma_count() == 3
