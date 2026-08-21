@@ -523,8 +523,8 @@ $RECYCLE.BIN/
 *.local*
 .playwright-mcp/
 .browser_session/
-specs/discussions/
-plans/
+docs/superpowers/specs/discussions/
+docs/superpowers/plans/
 .zed/
 # Docker volume bind mounts (docker/docker-compose.yml) — host-persisted data, not source
 docker/.volumes/

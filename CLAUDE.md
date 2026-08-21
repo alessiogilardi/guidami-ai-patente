@@ -117,7 +117,8 @@ Copy `.env.example` to `.env` and fill in:
 
 Before starting any implementation task, read the reference documents:
 
-- **Design plans** (including not-yet-implemented ones): `docs/plans/` — index at `docs/plans/_index.md`
+- **Design specs** (feature contracts, "what to build"): `docs/superpowers/specs/` — written by the `superpowers:brainstorming` skill's architectural path
+- **Implementation plans** (not-yet-implemented work, "how it gets built task-by-task"): `docs/superpowers/plans/` — written by the `superpowers:writing-plans` skill; gitignored, pruned once implemented
 - **Implemented architecture, patterns, database, layout, testing, glossary**: the Second Brain under `docs/second-brain/` — start at `docs/second-brain/README.md`, which routes to `architecture.md`, `database.md`, `patterns.md`, `glossary.md`, `layout.md`, `testing.md`, and `adr/`.
 
 Reading and updating these files is governed by the `update-second-brain` skill (see the "Skill: Second Brain" block below) — read the relevant `docs/second-brain/*.md` file directly rather than invoking an agent, and run the skill after any change described in its triggers. The former `doc-reader`/`doc-architect` agents are decommissioned; the Second Brain plugin's skills replace them.

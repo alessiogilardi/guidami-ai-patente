@@ -5,7 +5,7 @@
 | **Id** | 0009 |
 | **Status** | draft |
 | **Date** | 2026-08-05 |
-| **Discussion log** | specs/discussions/corpus-missing-sources.md |
+| **Discussion log** | docs/superpowers/specs/discussions/corpus-missing-sources.md |
 | **Supersedes / superseded by** | — |
 
 ## Problem & Motivation

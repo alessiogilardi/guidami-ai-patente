@@ -311,7 +311,7 @@ Both questions raised during compilation were resolved at sign-off (2026-08-05):
   3. Spec renumbered 0005 → 0006 (this spec, its plan file, and every
      "spec 0005" reference in `docs/architecture.md`/`docs/patterns.md`):
      `feat/ingestion` had, in a parallel session, already merged an unrelated
-     `specs/0005-ingest-run-artifacts.md` (status `implemented`) from the same
+     `docs/superpowers/specs/2026-08-05-ingest-run-artifacts-design.md` (status `implemented`) from the same
      branch point. Renumbering the not-yet-merged spec was necessary to avoid
      an id collision on integration.
 - **Learnings:** Test-file isolation (`pytest path/to/test_file.py`) is not a

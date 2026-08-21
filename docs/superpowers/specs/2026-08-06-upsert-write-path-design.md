@@ -277,7 +277,7 @@ away on both sides.
   reassigned to 0008; Non-Goals now exclude the quiz write path explicitly. FR-3 stays
   here in full — fixing `ingest reset quiz` needs no entity change.
 
-### 2026-08-06 — plan executed: plans/0010-upsert-write-path-plan.md
+### 2026-08-06 — plan executed: docs/superpowers/plans/2026-08-06-upsert-write-path-plan.md
 
 - **DoD result:** all items verified mechanically — every per-task failing-test/
   characterization test passes (T-1 through T-6), full suite green (`uv run pytest`:

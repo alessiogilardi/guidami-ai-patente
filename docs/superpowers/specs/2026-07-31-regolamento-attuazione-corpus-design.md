@@ -45,14 +45,14 @@ coincidence; three make it a shape. Its data structures are `TypedDict`s, which 
 at runtime and validate nothing, and progress goes to `print`, so a scrape leaves no trace
 in the per-run log files every `ingest` command writes. That tidy-up was originally scoped
 here as this spec's own Phase 2 (FR-6/FR-7); now that Phase 1 is implemented, it has been
-split out into `specs/0004-scraper-acquisition-refactor.md` so this spec can close — see
+split out into `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md` so this spec can close — see
 the Changelog.
 
 ## Functional Requirements
 
 FR-1…FR-5 ingest the Regolamento; this is this spec's full remaining scope. The
 acquisition-layer tidy-up originally scoped here as Phase 2 (FR-6, FR-7) has been split
-into `specs/0004-scraper-acquisition-refactor.md` now that this phase is implemented —
+into `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md` now that this phase is implemented —
 see the Changelog and AD-5.
 
 ### FR-1: The Regolamento is a third scraper target
@@ -109,12 +109,12 @@ The cleaning and indexing flows treat `reg` like any other knowledge source.
 
 ### ~~FR-6: One scraper command with `--source`, replacing the per-law entry points~~
 
-**Moved to `specs/0004-scraper-acquisition-refactor.md` FR-1** (2026-08-02), unchanged in
+**Moved to `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md` FR-1** (2026-08-02), unchanged in
 substance — see that spec for the current acceptance criteria.
 
 ### ~~FR-7: The scraper's data structures are dataclasses, not `TypedDict`s~~
 
-**Moved to `specs/0004-scraper-acquisition-refactor.md` FR-2** (2026-08-02), unchanged in
+**Moved to `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md` FR-2** (2026-08-02), unchanged in
 substance — see that spec for the current acceptance criteria.
 
 ## Non-Goals
@@ -124,9 +124,9 @@ substance — see that spec for the current acceptance criteria.
 - **Retrieval, hybrid search, vector indexes.** Unchanged from spec 0001: no read path is built.
 - **Restricting to the signage articles only.** All 409 are ingested. Range-filtering (the FR-6 technique of spec 0001) would cut fetches and noise, but the quiz also covers vehicles, licences and inspections, which the Regolamento details elsewhere; and the ranges are not known.
 - **Re-verifying the CdS/CAP corpus.** This spec adds a source; it does not revisit spec 0001's findings.
-- **Moving the scraper into the ingestor.** It stays in `src/scrapers/`, which is what `docs/layout.md:128` prescribes for data-acquisition scripts. The acquisition-layer CLI/dataclass tidy-up itself is out of scope here entirely — see `specs/0004-scraper-acquisition-refactor.md`.
-- **Full test coverage for the scraper, and lifting its `C901` exemption.** Contrary to this spec's original plan, FR-2/FR-3's parsing rules ended up with substantial unit test coverage (`tests/scrapers/test_normattiva.py`, 27 tests covering `_parse_article` and its helpers) — real-world edge cases found by the live scrape made that necessary, not optional. What remains untested by design are the network-fetching entry points (`main`, `main_cds`, `main_cap`, `main_reg`), and the `C901` cyclomatic-complexity exemption (`docs/testing.md:25`) is unchanged. Further coverage is tracked in `specs/0004-scraper-acquisition-refactor.md`'s Open Questions.
-- **Bringing `src/parsers/` along.** `parsers/questions_pdf.py` is in the same condition (script, `C901`-exempt, one unit test). This spec touches only the scraper, so the two acquisition modules end up on slightly different footings. Deliberate; tracked as an open question in `specs/0004-scraper-acquisition-refactor.md`.
+- **Moving the scraper into the ingestor.** It stays in `src/scrapers/`, which is what `docs/layout.md:128` prescribes for data-acquisition scripts. The acquisition-layer CLI/dataclass tidy-up itself is out of scope here entirely — see `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md`.
+- **Full test coverage for the scraper, and lifting its `C901` exemption.** Contrary to this spec's original plan, FR-2/FR-3's parsing rules ended up with substantial unit test coverage (`tests/scrapers/test_normattiva.py`, 27 tests covering `_parse_article` and its helpers) — real-world edge cases found by the live scrape made that necessary, not optional. What remains untested by design are the network-fetching entry points (`main`, `main_cds`, `main_cap`, `main_reg`), and the `C901` cyclomatic-complexity exemption (`docs/testing.md:25`) is unchanged. Further coverage is tracked in `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md`'s Open Questions.
+- **Bringing `src/parsers/` along.** `parsers/questions_pdf.py` is in the same condition (script, `C901`-exempt, one unit test). This spec touches only the scraper, so the two acquisition modules end up on slightly different footings. Deliberate; tracked as an open question in `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md`.
 
 ## Architectural Decisions
 
@@ -159,18 +159,18 @@ article.
 **Historical record, kept for context.** FR-6 and FR-7 were sequenced after FR-1…FR-5 and
 after spec 0001, precisely so restructuring the module wouldn't collide with `_parse_article`
 being rewritten by spec 0001 and extended by this spec's FR-2/FR-3 at the same time. That
-tidy-up is now `specs/0004-scraper-acquisition-refactor.md`; this decision is why it didn't
+tidy-up is now `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md`; this decision is why it didn't
 happen inside this spec. Original rationale/rejected-alternatives text removed with the move
 (2026-08-02) — see spec 0004 for the refactor's own current rationale.
 
 ### ~~AD-6: Dataclasses inside the scraper; the Pydantic boundary stays in the ingestor~~
 
-**Moved to `specs/0004-scraper-acquisition-refactor.md` AD-1** (2026-08-02), unchanged in
+**Moved to `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md` AD-1** (2026-08-02), unchanged in
 substance.
 
 ### ~~AD-7: The scraper CLI is shaped like `ingest` so a later `ingest scrape` is a delegation~~
 
-**Moved to `specs/0004-scraper-acquisition-refactor.md` AD-2** (2026-08-02), unchanged in
+**Moved to `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md` AD-2** (2026-08-02), unchanged in
 substance.
 
 ## Data Model
@@ -206,7 +206,7 @@ that size is a fraction of a cent.
 ## Feasibility Evidence
 
 - **AD-1** — supported by: `src/scrapers/normattiva.py:325` — the comma loop iterates `art-comma-div-akn`, of which sampled Regolamento articles have **zero**; every article's text is in `art-just-text-akn`, confirmed by the full 409-article scrape (`data/parsed/reg/regolamento_attuazione.json`, 407 records) (verified 2026-08-02 @ 3cce407)
-- **AD-1** — supported by: `specs/0001-article-level-storage.md:225` — FR-14 of spec 0001 is what makes `art-just-text-akn` a body container, hence the hard dependency (verified 2026-08-02 @ 3cce407)
+- **AD-1** — supported by: `docs/superpowers/specs/2026-07-31-article-level-storage-design.md:225` — FR-14 of spec 0001 is what makes `art-just-text-akn` a body container, hence the hard dependency (verified 2026-08-02 @ 3cce407)
 - **AD-2** — supported by: `src/scrapers/normattiva.py:326` — the parser reads a comma number from `comma-num-akn`; the Regolamento has no such span, so the number comes from the inline marker instead (verified 2026-08-02 @ 3cce407)
 - **AD-2** — supported by: `src/scrapers/normattiva.py:296` (`_build_article_url`) — the live scrape confirms multi-comma inline segmentation is the normal case: 1745 commas across 407 articles, several with 15+ commas (e.g. art. 330: 17) (verified 2026-08-02 @ 3cce407)
 - **AD-3** — supported by: `src/scrapers/normattiva.py:220-244` (`_validate_contiguous_numbering`) — implemented as the relaxed rule from the start: base numbers must be contiguous from 1, with a `-bis`/`-ter` suffix tolerated immediately after its base — real articles needed exactly this (art. 9's `1, 2, 3, 3-bis`) (verified 2026-08-02 @ 3cce407)
@@ -222,12 +222,12 @@ that size is a fraction of a cent.
 - **FR-2** — supported by: `src/scrapers/normattiva.py:141-158` — `_split_leading_title` splits the leading parenthesised segment instead, loop-stripping consecutive segments and keeping the last as title (found necessary by the live scrape: some articles carry a cross-reference note before the real title) (verified 2026-08-02 @ 3cce407)
 - **FR-2** — supported by: `src/guidami_ai_patente_ingestor/services/knowledge/article_cleaner.py:30` — `_clean_title` already strips wrapping parentheses, so the convention was established before this spec (verified 2026-08-02 @ 3cce407)
 - **FR-4** — supported by: `db/init.sql:10` — `source TEXT NOT NULL` with `UNIQUE (source, number)`: a third value needed no DDL change and did not collide with overlapping CdS article numbers (verified 2026-08-02 @ 3cce407)
-- **FR-5** — supported by: `specs/0001-article-level-storage.md:142` — FR-16 of spec 0001 removes the knowledge LLM step, so `prepare` for a third source is deterministic cleaning with no per-source cost or concurrency concern (verified 2026-08-02 @ 3cce407)
+- **FR-5** — supported by: `docs/superpowers/specs/2026-07-31-article-level-storage-design.md:142` — FR-16 of spec 0001 removes the knowledge LLM step, so `prepare` for a third source is deterministic cleaning with no per-source cost or concurrency concern (verified 2026-08-02 @ 3cce407)
 
 ## Open Questions
 
-- [x] **non-blocking** — Is the parenthesised-title and contiguous-inline-comma structure uniform across all 409 articles, or only across the 8 sampled? **Resolved by the full 409-article scrape (2026-08-02):** not fully uniform. 25/407 successfully-parsed articles (6.1%) hit FR-2's empty-title fallback — just over the 5% guardrail this question set — and the AD-3 contiguity rule needed its relaxed form (base-contiguous + tolerated `-bis` suffix) for real, not just as a hedge (art. 9's `1, 2, 3, 3-bis`). 2 articles (art. 83, art. 194) fail to parse even after all fixes and are skipped. Follow-up tracked in `specs/0004-scraper-acquisition-refactor.md`'s Open Questions, since fixing them isn't required for this spec's own acceptance criteria — owner: investigation (resolved)
-- [x] **non-blocking** — Does the Regolamento carry repealed articles, and in the same `((ARTICOLO ABROGATO ...))` form spec 0001's FR-13 anchors on? **Resolved by the full scrape:** yes — 4 articles (74, 254, 338, 395) came back `repealed: true` with empty `commas`, exactly matching FR-13's existing rule; no new rule was needed. Separately, comma-*level* repeal uses a different wording (`COMMA SOPPRESSO`, not `COMMA ABROGATO`) not recognised by the existing per-comma check — tracked as a new open question in `specs/0004-scraper-acquisition-refactor.md` — owner: investigation (resolved)
+- [x] **non-blocking** — Is the parenthesised-title and contiguous-inline-comma structure uniform across all 409 articles, or only across the 8 sampled? **Resolved by the full 409-article scrape (2026-08-02):** not fully uniform. 25/407 successfully-parsed articles (6.1%) hit FR-2's empty-title fallback — just over the 5% guardrail this question set — and the AD-3 contiguity rule needed its relaxed form (base-contiguous + tolerated `-bis` suffix) for real, not just as a hedge (art. 9's `1, 2, 3, 3-bis`). 2 articles (art. 83, art. 194) fail to parse even after all fixes and are skipped. Follow-up tracked in `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md`'s Open Questions, since fixing them isn't required for this spec's own acceptance criteria — owner: investigation (resolved)
+- [x] **non-blocking** — Does the Regolamento carry repealed articles, and in the same `((ARTICOLO ABROGATO ...))` form spec 0001's FR-13 anchors on? **Resolved by the full scrape:** yes — 4 articles (74, 254, 338, 395) came back `repealed: true` with empty `commas`, exactly matching FR-13's existing rule; no new rule was needed. Separately, comma-*level* repeal uses a different wording (`COMMA SOPPRESSO`, not `COMMA ABROGATO`) not recognised by the existing per-comma check — tracked as a new open question in `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md` — owner: investigation (resolved)
 - [ ] **non-blocking** — The Regolamento is amended often. Nothing in the project records *when* a source was scraped at corpus level (`scraped_at` is per record and deliberately not stored in `articles`), so there is no signal that a source has gone stale. Out of scope here, but adding a third source makes it more visible — owner: user
 - [ ] **non-blocking** — `(fig. II.48)` references remain unresolved codes in the comma text. Whether they should be stripped, kept verbatim, or one day resolved against the annexes is deferred with the annexes themselves — owner: user
 
@@ -238,19 +238,19 @@ that size is a fraction of a cent.
 
 ## Changelog
 
-- **2026-08-02** — Phase 1 (FR-1…FR-5) implemented and verified against a full live scrape (`data/parsed/reg/regolamento_attuazione.json`, 407/409 articles). Phase 2 (`~~FR-6~~`, `~~FR-7~~`, and their supporting `~~AD-5~~`/`~~AD-6~~`/`~~AD-7~~`) split out into `specs/0004-scraper-acquisition-refactor.md` — unchanged in substance, just relocated now that this spec's own scope (FR-1…FR-5) is complete and Phase 2 no longer needs to share this document. Two Open Questions resolved by the live scrape (title/contiguity uniformity, repealed-article detection); Non-Goals, Constraints and Feasibility Evidence updated to drop Phase-2-only content and refresh stale line-number references (evidence previously anchored at `5790d63`, pre-implementation). Reason: close this spec as `implemented` now that its remaining scope is fully built and verified, without waiting on the unrelated acquisition-layer refactor.
+- **2026-08-02** — Phase 1 (FR-1…FR-5) implemented and verified against a full live scrape (`data/parsed/reg/regolamento_attuazione.json`, 407/409 articles). Phase 2 (`~~FR-6~~`, `~~FR-7~~`, and their supporting `~~AD-5~~`/`~~AD-6~~`/`~~AD-7~~`) split out into `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md` — unchanged in substance, just relocated now that this spec's own scope (FR-1…FR-5) is complete and Phase 2 no longer needs to share this document. Two Open Questions resolved by the live scrape (title/contiguity uniformity, repealed-article detection); Non-Goals, Constraints and Feasibility Evidence updated to drop Phase-2-only content and refresh stale line-number references (evidence previously anchored at `5790d63`, pre-implementation). Reason: close this spec as `implemented` now that its remaining scope is fully built and verified, without waiting on the unrelated acquisition-layer refactor.
 
 ### 2026-08-02 — plan executed: plans/0003-regolamento-attuazione-corpus-phase1-plan.md
 
 - **DoD result:** All items verified mechanically. 13/13 per-task tests pass (`uv run pytest` on each `path::name`); full suite 472 passed; `ruff check`/`ruff format --check`/`pyright` all clean. FR-1 AC1/AC3 verified by a real `uv run scrape-regolamento` run (407/409 articles saved to `data/parsed/reg/regolamento_attuazione.json`); FR-1 AC2/AC4, FR-4 AC3/AC4, FR-5 AC3 verified by inspection/grep exactly as the plan specified. "No `continue` in any modified loop body" holds for T-1…T-4's own additions (zero new `continue` statements) — see Deviations for the one exception found outside those tasks' formal scope.
 - **Deviations from plan:**
-  1. `main()` was modified outside T-1's explicit "do not touch `main`" note, to add a `try`/`except ValueError`/`else` skip around `_parse_article` — the live scrape crashed on two articles (83, 194) the segmentation heuristic can't parse, and producing the corpus required continuing past them rather than aborting the whole 409-article run. This piece's ownership and DoD accounting are reassigned to `specs/0004-scraper-acquisition-refactor.md` FR-1 AC5 (documents it as implemented ahead of that spec) — not counted as this plan's own deliverable, per explicit user decision.
-  2. Files touched beyond the plan's per-task Files lists, accepted as expected companions rather than scope creep: `CLAUDE.md` and `docs/{architecture,database,glossary,layout,testing}.md` (Second Brain / script-table updates required by this repo's own pre-commit policy for any code change); `specs/0003-regolamento-attuazione-corpus.md` and `specs/0004-scraper-acquisition-refactor.md` (the spec split requested after implementation); `data/parsed/reg/`, `data/raw/reg/` (generated data output from the real scrape, not source code).
+  1. `main()` was modified outside T-1's explicit "do not touch `main`" note, to add a `try`/`except ValueError`/`else` skip around `_parse_article` — the live scrape crashed on two articles (83, 194) the segmentation heuristic can't parse, and producing the corpus required continuing past them rather than aborting the whole 409-article run. This piece's ownership and DoD accounting are reassigned to `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md` FR-1 AC5 (documents it as implemented ahead of that spec) — not counted as this plan's own deliverable, per explicit user decision.
+  2. Files touched beyond the plan's per-task Files lists, accepted as expected companions rather than scope creep: `CLAUDE.md` and `docs/{architecture,database,glossary,layout,testing}.md` (Second Brain / script-table updates required by this repo's own pre-commit policy for any code change); `docs/superpowers/specs/2026-07-31-regolamento-attuazione-corpus-design.md` and `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md` (the spec split requested after implementation); `data/parsed/reg/`, `data/raw/reg/` (generated data output from the real scrape, not source code).
   3. 4 real-world parsing bugs were found and fixed during the live scrape that the plan's synthetic test fixtures could not have anticipated: markers immediately after `))`, mid-body `((N.` amendment brackets (not just at an article's start), `((N.))` with no space before the closing bracket, and duplicate-comma-number de-duplication (AD-3's own pre-authorized relaxed-rule fallback, needed for real). 7 regression tests were added to `tests/scrapers/test_normattiva.py` beyond the plan's original 13, pinning each against a minimal reproduction of the real article that exposed it.
 - **Learnings:**
   - A plan's synthetic test fixtures, however carefully derived from a spec's sampled evidence, cannot substitute for running the real acquisition target at full scale: every major parsing-heuristic gap here was found only by the live 409-article scrape, not by the 8-article sample spec 0003 was originally written against. Worth treating "run the real thing once before closing" as a standard step for any spec whose feasibility evidence is sample-based.
   - AD-3's "relaxed rule" fallback (base-contiguous + tolerated `-bis` suffix, instead of strict `1,2,3,...`) was pre-authorized in the spec for exactly this situation and used verbatim once evidence justified it (art. 9) — a spec anticipating its own likely failure mode ahead of time paid off directly.
-  - The empty-title rate (25/407, 6.1%) and the 2 permanently-skipped articles are real, measured outcomes just over/near the spec's own guardrails — carried forward as `specs/0004-scraper-acquisition-refactor.md` Open Questions rather than gating this close, since fixing them isn't required by FR-1…FR-5's acceptance criteria.
+  - The empty-title rate (25/407, 6.1%) and the 2 permanently-skipped articles are real, measured outcomes just over/near the spec's own guardrails — carried forward as `docs/superpowers/specs/2026-08-02-scraper-acquisition-refactor-design.md` Open Questions rather than gating this close, since fixing them isn't required by FR-1…FR-5's acceptance criteria.
 - **Status change:** in-progress → implemented — confirmed by user, 2026-08-02
 
 ### 2026-08-06 — review: FR-1 description superseded by spec 0004's completion

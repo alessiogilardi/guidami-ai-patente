@@ -5,7 +5,7 @@
 | **Id** | 0004 |
 | **Status** | implemented |
 | **Date** | 2026-08-02 |
-| **Discussion log** | `specs/discussions/scraper-acquisition-refactor.md` (split from `specs/0003-regolamento-attuazione-corpus.md` §Phase 2 originally; FR-3 through FR-7 compiled from the discussion log's 2 sessions) |
+| **Discussion log** | `docs/superpowers/specs/discussions/scraper-acquisition-refactor.md` (split from `docs/superpowers/specs/2026-07-31-regolamento-attuazione-corpus-design.md` §Phase 2 originally; FR-3 through FR-7 compiled from the discussion log's 2 sessions) |
 | **Supersedes / superseded by** | — (split from spec 0003; see spec 0003's Changelog) |
 
 ## Problem & Motivation
@@ -243,7 +243,7 @@ promoted `draft` → `ready`. Reason: user requested the fixes and promotion aft
 reviewing the findings.
 
 ### 2026-08-02 — amendment: run artifacts + Open Questions closed
-Compiled from `specs/discussions/scraper-acquisition-refactor.md` (2 sessions). Added
+Compiled from `docs/superpowers/specs/discussions/scraper-acquisition-refactor.md` (2 sessions). Added
 FR-3 (structured per-run artifacts: `logs/<run_id>/{run.log, manifest.json, report.md}`,
 shared with `ingest` via a new `RunArtifactWriter`) and AD-3 (its architectural
 placement: a portless concrete class in `src/commons/observability/`). Closed all six

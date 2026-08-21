@@ -363,7 +363,7 @@ anywhere in `prepare`/`index`). `cleaned`
 is a **per-element** layer (one JSON file per article, named by a deterministic
 `commons.utils.element_id(source, number)`; `parsed` stays a single monolithic file
 per source — pattern originally introduced for knowledge, then applied identically to
-quiz by `specs/0006-quiz-per-element-layers.md`). The
+quiz by `docs/superpowers/specs/2026-08-05-quiz-per-element-layers-design.md`). The
 `enriched` layer name still exists in `LayerResolverProvider` config, but only the quiz
 pipeline writes to it now (AD-19) — the knowledge corpus has no `enriched` stage:
 1. *Cleaning*: `LoadJsonStep` (parsed, single file) → `ApplyStep(ForEach(ArticleCleanerService), ForEach(partial(ArticleMapper.from_parsed_to_cleaned, source=source)))` → `FilterAlreadyDoneStep` (drops articles already present in `cleaned/`) → `WriteJsonDirStep` (one file per article). `ArticleCleanerService` operates on `ParsedArticleModel.commas: list[ParsedComma]` (structured per-comma, spec 0001 T-5/T-6), not a flat `paragraphs`/`text` pair — it only normalizes the title and strips residual inline markup from each comma's text, never dropping a comma.
@@ -693,7 +693,7 @@ See `adr/` for the full history. Currently accepted:
   write-through deferred** — `cleaned`/`enriched` for the knowledge corpus
   moved from one monolithic JSON per source to one JSON file per article, so a
   `--force`-less re-run only pays for the articles still missing (see the flow
-  description above). `specs/0006-quiz-per-element-layers.md` brought quiz's `cleaned`/`enriched` layers to the same per-element
+  description above). `docs/superpowers/specs/2026-08-05-quiz-per-element-layers-design.md` brought quiz's `cleaned`/`enriched` layers to the same per-element
   model, reusing the generic `FilterAlreadyDoneStep`/`LoadJsonDirStep`/
   `WriteJsonDirStep` steps as-is (no quiz-specific step classes), keyed by
   `element_id("quiz", item.number)` instead of `element_id(source, number)` —
@@ -795,7 +795,7 @@ components table.*
 *Last updated: 2026-08-06 — verified against commit `91c4fe7`; the two dead
 `docs/plans/2026-07-17--per-element-knowledge-layers.md` citations (removed by commit
 `0a18903`) in the knowledge-corpus flow description and the "Notable implementation
-details" list replaced with pointers to `specs/0006-quiz-per-element-layers.md`.*
+details" list replaced with pointers to `docs/superpowers/specs/2026-08-05-quiz-per-element-layers-design.md`.*
 
 *Last updated: 2026-08-06 — verified against commit `91c4fe7`; added `src/retrieval_evaluation/`
 (new components-table row, Overview mention, "Retrieval judge" paragraph, and an ADR bullet):

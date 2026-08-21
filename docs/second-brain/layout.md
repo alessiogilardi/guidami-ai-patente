@@ -78,7 +78,7 @@ repo/
 │                                    #   test-data/ mirrors parsed/cleaned/enriched + quiz-images/ on
 │                                    #   a random subset (see ADR 0006, ADR 0008), for fast local
 │                                    #   prepare/index runs
-├── docs/                           # This documentation (Second Brain) + docs/plans/ (design plans)
+├── docs/                           # This documentation (Second Brain) + docs/superpowers/ (SDD state)
 └── .claude/                        # Claude Code config: rules/, skills/, hooks/, agents/
 ```
 
@@ -99,12 +99,16 @@ Postgres data directory bind-mounted by `docker/docker-compose.yml` — see
 (github.com/alessiogilardi/flowstep, tracked via `main` in `pyproject.toml`'s
 `[tool.uv.sources]`) — see `docs/second-brain/architecture.md`.
 
-`specs/` (claude-planner plugin, not shown in the tree above — it's SDD
-pipeline state, not app code) holds two kinds of file with different
-lifetimes: `specs/NNNN-*.md` are the permanent spec contracts, tracked
-normally; `specs/discussions/*.md` are ephemeral brainstorm logs and are
-gitignored — never committed, safe to delete once the spec they fed is
-`implemented`.
+`docs/superpowers/` (superpowers plugin, not shown in the tree above — it's SDD
+pipeline state, not app code; superseded the removed claude-planner plugin's
+`specs/`/`plans/`) holds three kinds of file with different lifetimes:
+`docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` are the permanent spec
+contracts (written by the `brainstorming` skill's architectural path), tracked
+normally; `docs/superpowers/specs/discussions/*.md` are ephemeral brainstorm logs,
+gitignored — never committed, safe to delete once the spec they fed is `implemented`;
+`docs/superpowers/plans/YYYY-MM-DD-<feature>[-phaseN]-plan.md` are implementation
+plans (written by the `writing-plans` skill), also gitignored — pruned once
+implemented.
 
 ## Placement conventions
 
@@ -454,3 +458,10 @@ alongside the pre-existing `agents/retrieval_judge/`. New placement bullets reco
 spec 0011 phase 1, T-1); the read-DTO bullet now records that `RetrievedComma` carries
 `article_commas.id`, closing the exception it used to be to the "read models carry `id`"
 rule.*
+
+*Last updated: 2026-08-21 — verified against commit `800d9924` (working tree ahead:
+adopted the superpowers plugin, superseding the removed claude-planner plugin's SDD
+conventions). `specs/` and the top-level `plans/` are gone; their contents
+moved to `docs/superpowers/specs/` and `docs/superpowers/plans/` under the new
+`YYYY-MM-DD-<topic>[-design|-phaseN-plan].md` naming. The `specs/` paragraph and the
+`docs/` tree-comment above were rewritten accordingly.*
