@@ -22,9 +22,13 @@ def _vector(hot_index: int) -> list[float]:
 @pytest.fixture
 def client(postgres_test_config: PostgresConnectionConfig) -> Iterator[PostgresClient]:
     with PostgresClient(postgres_test_config) as client:
-        client.truncate("quiz_question_embeddings", "quiz_questions")
+        client.truncate(
+            "quiz_comma_labels", "quiz_labelings", "quiz_question_embeddings", "quiz_questions"
+        )
         yield client
-        client.truncate("quiz_question_embeddings", "quiz_questions")
+        client.truncate(
+            "quiz_comma_labels", "quiz_labelings", "quiz_question_embeddings", "quiz_questions"
+        )
 
 
 def _insert_question(client: PostgresClient, number: str = "1") -> int:

@@ -49,7 +49,9 @@ def test_quiz_indexing_makes_no_llm_calls_and_matches_enriched_file_count(
 ) -> None:
     pg_client = PostgresClient(postgres_test_config)
     pg_client.truncate("llm_call_logs")
-    pg_client.truncate("quiz_question_embeddings", "quiz_questions")
+    pg_client.truncate(
+        "quiz_comma_labels", "quiz_labelings", "quiz_question_embeddings", "quiz_questions"
+    )
     pg_client.truncate("quiz_images")
 
     resolver = LayerResolverProvider(
