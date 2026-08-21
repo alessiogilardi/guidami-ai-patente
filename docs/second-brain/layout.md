@@ -92,12 +92,12 @@ imported as a standalone installed package outside this repo's own checkout.
 
 `docker/.volumes/` (gitignored, not shown in the tree above) holds the
 Postgres data directory bind-mounted by `docker/docker-compose.yml` — see
-`docs/database.md`.
+`docs/second-brain/database.md`.
 
 `flowstep` (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) is
 **not** part of this repo's tree: it's an external git dependency
 (github.com/alessiogilardi/flowstep, tracked via `main` in `pyproject.toml`'s
-`[tool.uv.sources]`) — see `docs/architecture.md`.
+`[tool.uv.sources]`) — see `docs/second-brain/architecture.md`.
 
 `specs/` (claude-planner plugin, not shown in the tree above — it's SDD
 pipeline state, not app code) holds two kinds of file with different
@@ -177,7 +177,7 @@ gitignored — never committed, safe to delete once the spec they fed is
   `embedding/`), `services/` (the
   concrete behavior classes; a narrow, private `protocols/` may nest
   *inside* `services/` for implementation-detail structural typing that
-  never crosses a package boundary — see `docs/patterns.md`),
+  never crosses a package boundary — see `docs/second-brain/patterns.md`),
   `repositories/` (data access), `mappers/` (stateless object-to-object
   transformations), and `models/` (intermediate DTOs consumed only by
   that package's own mappers). `agents/` and `embedding/` only need the
@@ -192,7 +192,7 @@ gitignored — never committed, safe to delete once the spec they fed is
   text but aren't services (no `UseCase`/
   injected-dependency-with-behavior shape) or classic static mappers
   (they hold config injected at construction, unlike this repo's
-  stateless `*Mapper` convention — see `docs/patterns.md`); the
+  stateless `*Mapper` convention — see `docs/second-brain/patterns.md`); the
   five-subpackage template already anticipates a package using only the
   subset relevant to its own responsibility, so one extra, narrowly
   scoped subpackage for a responsibility the template doesn't name is an
@@ -224,7 +224,7 @@ gitignored — never committed, safe to delete once the spec they fed is
   `commons/observability/` sub-package is
   under `commons/ai/` because neither is AI-specific (`EmbeddingService` is
   the only one of the three progress-reporting consumers that happens to
-  also be AI-related); see `docs/patterns.md` for both shapes.
+  also be AI-related); see `docs/second-brain/patterns.md` for both shapes.
 - **Persisted or cross-cutting domain shapes** (entities that map 1:1 to a
   DB table, models shared by more than one app) go in `src/domain/`.
   Models that only exist as an intermediate step inside one pipeline stay
@@ -432,10 +432,10 @@ uncommitted); `commons/ai/embedding/` gained `protocols/` (`TextComposer[T]` +
 doesn't name), alongside the existing `clients/`/`configs/`/`services/`.
 `configs/embedding_config.py` renamed to `configs/embedding_client_config.py`
 (`EmbeddingConfig` → `EmbeddingClientConfig`). `commons/observability/progress_reporter/`
-gained a new `tracker.py` (a generator-function helper, not a class — see `docs/patterns.md`).
+gained a new `tracker.py` (a generator-function helper, not a class — see `docs/second-brain/patterns.md`).
 ADR 0014 (a proposed **seventh** subpackage member, `VariantModelEmbeddingService[T]`, to
 generalize quiz's dedup/omission/fan-out mechanics) was rejected — see
-`docs/adr/0014-embedding-composition-layer.md`, status `Rejected`; that logic stays local to
+`docs/second-brain/adr/0014-embedding-composition-layer.md`, status `Rejected`; that logic stays local to
 `guidami_ai_patente_ingestor/services/quiz/` (new file `quiz_variant_spec.py`).*
 
 *Last updated: 2026-08-12 — verified against commit `507d2dfb`; noted PEP 561 `py.typed`

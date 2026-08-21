@@ -18,9 +18,9 @@ There was never a dedicated test database. Running the integration suite
 (`uv run pytest -m integration`) against a dev stack that held real,
 paid-for ingested data (corpus articles/commas, quiz questions, embeddings)
 silently wiped it — which is exactly what happened. Nothing in `docs/` or
-`docs/adr/` documented this connection convention or its risk; it was an
-oversight, not a deliberate choice (confirmed by checking `docs/testing.md`,
-`docs/database.md`, and ADR 0006, none of which cover pytest integration
+`docs/second-brain/adr/` documented this connection convention or its risk; it was an
+oversight, not a deliberate choice (confirmed by checking `docs/second-brain/testing.md`,
+`docs/second-brain/database.md`, and ADR 0006, none of which cover pytest integration
 test isolation — ADR 0006 only addresses the ingest CLI's `--config`
 test-data profile, a different mechanism that intentionally shares the dev
 tables).

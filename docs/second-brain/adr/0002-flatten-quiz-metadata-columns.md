@@ -74,4 +74,4 @@ at the same time, as the load-batch timestamp (see Consequences).
   dropped before the schema shipped. `QuizMetadata` and `quiz_questions` carry
   only `core_concepts`, `exact_keywords`, and `rule_explanation` as flattened
   columns (plus the non-persisted `vector_search_queries`) — see
-  `docs/database.md` for the current schema.
+  `docs/second-brain/database.md` for the current schema.

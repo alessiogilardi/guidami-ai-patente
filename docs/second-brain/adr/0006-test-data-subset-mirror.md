@@ -54,7 +54,7 @@ Three design questions had to be resolved before implementing this:
   every field; every other field (`sources`, `postgres`, `embedding`, table
   names, `rca_ranges`, ...) is inherited straight from the base yaml, with
   nothing to keep in sync. See the "Alternate config profile via a second,
-  higher-precedence yaml source" row in `docs/patterns.md`.
+  higher-precedence yaml source" row in `docs/second-brain/patterns.md`.
 - **DB target**: the test-data profile keeps the same `postgres` connection
   and the same table names (`articles`, `article_commas`,
   `quiz_questions`) as the default profile. Running `ingest index` against
@@ -165,4 +165,4 @@ Three design questions had to be resolved before implementing this:
   set would only surface as a missing-file error the next time
   `sample-test-data` re-samples a question referencing a removed image.
 
-*Referenced from `docs/layout.md`, `docs/patterns.md`.*
+*Referenced from `docs/second-brain/layout.md`, `docs/second-brain/patterns.md`.*

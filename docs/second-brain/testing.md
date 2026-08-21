@@ -79,7 +79,7 @@ covered by `test_cli_main_dispatches_to_main_with_resolved_source`/
 tests yet for the empty `src/guidami_ai_patente/` scaffold.
 `flowstep` is an external git dependency (not part of this repo's `src/`
 or `tests/`), so it has no local test mirror here — see
-`docs/architecture.md`.
+`docs/second-brain/architecture.md`.
 
 No `__init__.py` in any test directory — see
 `.claude/rules/code-conventions.md` for the rule and rationale.

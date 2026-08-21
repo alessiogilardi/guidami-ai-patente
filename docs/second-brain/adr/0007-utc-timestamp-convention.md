@@ -107,7 +107,7 @@ surface:
 - `articles` gains a required `scraped_at TIMESTAMPTZ NOT NULL` column with
   no default. Existing local dev DBs need the already-documented
   tear-down/recreate cycle (`docker compose down -v && up -d`, see
-  `CLAUDE.md` "Infrastructure" and `docs/database.md` "Migrations") — there
+  `CLAUDE.md` "Infrastructure" and `docs/second-brain/database.md` "Migrations") — there
   is no migration tool in this project, `db/init.sql` only runs on first
   volume creation.
 - Every `run.log` across the whole codebase (both `ingest` and `scrape`
