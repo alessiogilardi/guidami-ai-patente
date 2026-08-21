@@ -118,9 +118,9 @@ Copy `.env.example` to `.env` and fill in:
 Before starting any implementation task, read the reference documents:
 
 - **Design plans** (including not-yet-implemented ones): `docs/plans/` — index at `docs/plans/_index.md`
-- **Implemented architecture, patterns, database, layout, testing, glossary**: the Second Brain under `docs/` — start at `docs/README.md`, which routes to `architecture.md`, `database.md`, `patterns.md`, `glossary.md`, `layout.md`, `testing.md`, and `adr/`.
+- **Implemented architecture, patterns, database, layout, testing, glossary**: the Second Brain under `docs/second-brain/` — start at `docs/second-brain/README.md`, which routes to `architecture.md`, `database.md`, `patterns.md`, `glossary.md`, `layout.md`, `testing.md`, and `adr/`.
 
-Reading and updating these files is governed by the `update-second-brain` skill (see the "Skill: Second Brain" block below) — read the relevant `docs/*.md` file directly rather than invoking an agent, and run the skill after any change described in its triggers. The former `doc-reader`/`doc-architect` agents are decommissioned; the Second Brain plugin's skills replace them.
+Reading and updating these files is governed by the `update-second-brain` skill (see the "Skill: Second Brain" block below) — read the relevant `docs/second-brain/*.md` file directly rather than invoking an agent, and run the skill after any change described in its triggers. The former `doc-reader`/`doc-architect` agents are decommissioned; the Second Brain plugin's skills replace them.
 
 ## Code Conventions
 
@@ -141,23 +141,24 @@ Do not wait until the end of the task: update `.claude/rules/` **before** closin
 
 ## Data Notes
 
-Domain terms for the scraped/parsed sources (CdS, CAP, corpus normativo) are in `docs/glossary.md`; the pipeline stages that produce/consume them are in `docs/architecture.md`.
+Domain terms for the scraped/parsed sources (CdS, CAP, corpus normativo) are in `docs/second-brain/glossary.md`; the pipeline stages that produce/consume them are in `docs/second-brain/architecture.md`.
 
 
 <!-- BEGIN SECOND BRAIN SYSTEM (managed by the second-brain plugin: do not edit this block by hand, edit bootstrap/payload/claude-md-block.md and re-run the bootstrap with --refresh-system) -->
 ## Skill: Second Brain
-**Source of Truth:** `docs/` (architecture, ADRs, state).
+**Source of Truth:** `docs/second-brain/` (architecture, ADRs, state).
 **Full Policy:** the `second-brain:update` skill.
 
-@docs/README.md
+@docs/second-brain/README.md
 
 ### Before Non-Trivial Work (MANDATORY)
 Before any analysis, code review, planning, or implementation, delegate to
-the `second-brain:second-brain-reader` subagent to check `docs/` for existing patterns,
-prior decisions, domain terms, and testing conventions. Do not read the
-`docs/*.md` files yourself to answer these questions — that defeats the
-subagent's purpose. Skipping this step means acting on stale assumptions
-about architecture that's already been decided.
+the `second-brain:second-brain-reader` subagent to check `docs/second-brain/`
+for existing patterns, prior decisions, domain terms, and testing
+conventions. Do not read the `docs/second-brain/*.md` files yourself to
+answer these questions — that defeats the subagent's purpose. Skipping this
+step means acting on stale assumptions about architecture that's already
+been decided.
 
 ### Triggers (IMMEDIATE ACTION REQUIRED)
 Run `skill: "second-brain:update"` after:
@@ -166,16 +167,19 @@ Run `skill: "second-brain:update"` after:
 * Testing-strategy changes.
 * `[SECOND BRAIN SYSTEM] COMMIT REJECTED` pre-commit error.
 
-**Exception:** IF `docs/*.md` contains `> Placeholder —`, run `second-brain:onboard` instead.
+**Exception:** IF `docs/second-brain/*.md` contains `> Placeholder —`, run
+`second-brain:onboard` instead.
 
 ### Strict Commit Rule
-Commits touching code **MUST** stage an update to `docs/` **or this file**.
+Commits touching code **MUST** stage an update to `docs/second-brain/` **or
+this file**. Documentation of yours living elsewhere under `docs/` does not
+count — that directory is yours, `docs/second-brain/` is the Second Brain.
 If rejected: 1. Run skill -> 2. Stage docs -> 3. Retry. Never use dummy updates.
-**Never hand-edit `docs/*.md` to satisfy the pre-commit check.** The check
-is syntactic only — it just confirms *some* file under `docs/` changed, it
-cannot tell whether the change is real. Always go through
-`skill: "second-brain:update"`, which routes the fact to the right file,
-proposes an ADR when warranted, and refreshes the freshness footer.
-A hand-edit that skips these steps passes the check but leaves the docs
-wrong or stale, defeating the whole point of the system.
+**Never hand-edit `docs/second-brain/*.md` to satisfy the pre-commit check.**
+The check is syntactic only — it just confirms *some* file under
+`docs/second-brain/` changed, it cannot tell whether the change is real.
+Always go through `skill: "second-brain:update"`, which routes the fact to
+the right file, proposes an ADR when warranted, and refreshes the freshness
+footer. A hand-edit that skips these steps passes the check but leaves the
+docs wrong or stale, defeating the whole point of the system.
 <!-- END SECOND BRAIN SYSTEM -->
