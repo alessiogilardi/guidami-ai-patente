@@ -45,8 +45,8 @@
 # never clobbers a host hook's own variables when injected.
 
 # >>> BEGIN SECOND BRAIN SYSTEM pre-commit >>>
-_sb_default_exclude='^(\.github/|.*\.lock$|package-lock\.json$|yarn\.lock$|pnpm-lock\.yaml$|poetry\.lock$|uv\.lock$|Cargo\.lock$|Gemfile\.lock$|\.claude/|\.githooks/|\.gitattributes$|\.second-brain\.conf$)|(^|/)tests?/'
-_sb_docs_pattern='^docs/|^CLAUDE\.md$'
+_sb_default_exclude='^(\.github/|docs/|.*\.lock$|package-lock\.json$|yarn\.lock$|pnpm-lock\.yaml$|poetry\.lock$|uv\.lock$|Cargo\.lock$|Gemfile\.lock$|\.claude/|\.githooks/|\.gitattributes$|\.second-brain\.conf$)|(^|/)tests?/'
+_sb_docs_pattern='^docs/second-brain/|^CLAUDE\.md$'
 
 # Read KEY from the .second-brain.conf-style file $1. Last assignment wins;
 # surrounding single/double quotes and trailing blanks are stripped; a missing
@@ -69,11 +69,17 @@ if [ -n "$_sb_extra" ]; then
     _sb_exclude="($_sb_exclude)|($_sb_extra)"
 fi
 
+# Evaluation order: the docs/source split runs on the RAW file list, and the
+# denylist is applied to the source side only -- the same asymmetry
+# SB_INCLUDE_PATTERN already has. A filter that answers "is this a source
+# change?" must not be able to remove a file from the "documentation
+# changed" set; that is what lets the broad `docs/` entry in the denylist
+# coexist with docs/second-brain/ (ADR 0008, amending ADR 0007).
 _sb_staged=$(git diff --cached --name-only)
 if [ -n "$_sb_staged" ]; then
-    _sb_relevant=$(printf '%s\n' "$_sb_staged" | grep -vE "$_sb_exclude") || true
-    _sb_docs=$(printf '%s\n' "$_sb_relevant" | grep -E "$_sb_docs_pattern") || true
-    _sb_source=$(printf '%s\n' "$_sb_relevant" | grep -vE "$_sb_docs_pattern") || true
+    _sb_docs=$(printf '%s\n' "$_sb_staged" | grep -E "$_sb_docs_pattern") || true
+    _sb_source=$(printf '%s\n' "$_sb_staged" | grep -vE "$_sb_docs_pattern") || true
+    _sb_source=$(printf '%s\n' "$_sb_source" | grep -vE "$_sb_exclude") || true
     if [ -n "$_sb_include" ]; then
         _sb_source=$(printf '%s\n' "$_sb_source" | grep -E "$_sb_include") || true
     fi
@@ -83,15 +89,15 @@ if [ -n "$_sb_staged" ]; then
         echo "  [SECOND BRAIN SYSTEM] COMMIT REJECTED"
         echo "=================================================================="
         echo ""
-        echo "  You have staged source code changes, but no change in docs/"
-        echo "  or in the CLAUDE.md file."
+        echo "  You have staged source code changes, but no change in"
+        echo "  docs/second-brain/ or in the CLAUDE.md file."
         echo ""
         echo "  Claude, run the second-brain:update skill, then retry the"
-        echo "  commit -- do not hand-edit docs/ just to pass this check,"
-        echo "  that skips the skill's routing/footer/ADR steps. If this"
-        echo "  is a false positive, add the path to SB_EXCLUDE_EXTRA in"
-        echo "  .second-brain.conf. For a legitimate one-off exception,"
-        echo "  see the second-brain:update skill and use"
+        echo "  commit -- do not hand-edit docs/second-brain/ just to pass"
+        echo "  this check, that skips the skill's routing/footer/ADR steps."
+        echo "  If this is a false positive, add the path to"
+        echo "  SB_EXCLUDE_EXTRA in .second-brain.conf. For a legitimate"
+        echo "  one-off exception, see the second-brain:update skill and use"
         echo "  git commit --no-verify."
         echo ""
         echo "=================================================================="
