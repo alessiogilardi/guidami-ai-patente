@@ -9,6 +9,7 @@ from commons.ai.embedding import EmbeddingClientConfig
 from commons.configs import OpenRouterConfig, PostgresConnectionConfig
 
 from .evaluation_config import EvaluationConfig
+from .labeling_config import LabelingConfig
 from .pipeline_layer_config import PipelineLayerConfig
 from .source_config import SourceConfig
 
@@ -69,6 +70,9 @@ class IngestorConfig(BaseSettings):
     quiz_questions_table: str = "quiz_questions"
     quiz_question_embeddings_table: str = "quiz_question_embeddings"
     quiz_images_table: str = "quiz_images"
+    labeling_runs_table: str = "labeling_runs"
+    quiz_labelings_table: str = "quiz_labelings"
+    quiz_comma_labels_table: str = "quiz_comma_labels"
     embed_repealed: bool = False
     quiz_embedding_variants: list[str] = Field(
         default_factory=lambda: [
@@ -83,6 +87,7 @@ class IngestorConfig(BaseSettings):
     rca_ranges: list[str] = Field(default_factory=lambda: ["118-165", "278-300"])
     amb_ranges: list[str] = Field(default_factory=lambda: ["227-237"])
     evaluation: EvaluationConfig = EvaluationConfig()
+    labeling: LabelingConfig = LabelingConfig()
 
     _config_override_file: ClassVar[Path | None] = None
     """Set (on a dynamically-created subclass, never on `IngestorConfig` itself) by

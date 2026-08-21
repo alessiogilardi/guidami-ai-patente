@@ -52,11 +52,18 @@
   the FK reason above (each repository's `truncate()` only ever emits a
   single-table statement). The cross-table call bypasses the repository
   layer's `truncate()` for this one case since the capability is
-  client-level, not repository-level.
+  client-level, not repository-level. The same convention extends to every
+  table added since: `quiz_comma_labels` (FK to `article_commas` and to
+  `quiz_labelings`) must be named alongside whichever parent a call
+  truncates, and `quiz_labelings` (FK to `quiz_questions` and to
+  `labeling_runs`) alongside `quiz_questions`/`labeling_runs` — the same
+  pre-existing gap already existed for `quiz_question_embeddings` (FK to
+  `quiz_questions`), surfaced by spec 0011 phase 2's integration-test
+  fixtures rather than introduced by them.
 
 ## Main schema
 
-Six tables, all defined in `db/init.sql` (the `vector` extension is
+Nine tables, all defined in `db/init.sql` (the `vector` extension is
 enabled at the top of that file).
 
 ```text
@@ -68,7 +75,9 @@ articles
 ├── url (TEXT, NOT NULL)
 ├── scraped_at (TIMESTAMPTZ, NOT NULL)    -- no default; always app-supplied by ArticleMapper
 ├── is_repealed (BOOLEAN, NOT NULL DEFAULT FALSE)
-└── UNIQUE (source, number)
+├── tsv_title (TSVECTOR, GENERATED ALWAYS ... STORED)  -- setweight(to_tsvector('italian', title), 'A')
+├── UNIQUE (source, number)
+└── INDEX idx_articles_tsv_title (tsv_title) USING GIN
 
 article_commas
 ├── id (PK, BIGSERIAL)
@@ -78,8 +87,10 @@ article_commas
 ├── text (TEXT, NOT NULL)
 ├── is_repealed (BOOLEAN, NOT NULL DEFAULT FALSE)
 ├── embedding (VECTOR(1536), nullable)
+├── tsv_text (TSVECTOR, GENERATED ALWAYS ... STORED)  -- setweight(to_tsvector('italian', text), 'B')
 ├── UNIQUE (article_id, comma_number)
-└── INDEX idx_article_commas_article_id (article_id)
+├── INDEX idx_article_commas_article_id (article_id)
+└── INDEX idx_article_commas_tsv_text (tsv_text) USING GIN
 
 quiz_questions
 ├── id (PK, BIGSERIAL)
@@ -130,7 +141,68 @@ llm_call_logs
 ├── end_time (TIMESTAMPTZ, nullable)       -- wall-clock call end
 ├── INDEX idx_llm_call_logs_created_at (created_at)
 └── INDEX idx_llm_call_logs_caller (caller)
+
+labeling_runs                               -- one row per golden-set labeling pass (spec 0011 phase 2)
+├── id (PK, BIGSERIAL)
+├── judge_model (TEXT, NOT NULL)
+├── prompt_version (TEXT, NOT NULL)         -- sha256(system + user)[:16], see run_provenance.py
+├── candidate_variant (TEXT, NOT NULL)      -- quiz_question_embeddings.variant used for retrieval
+├── dense_k (INT, NOT NULL)
+├── text_k (INT, NOT NULL)
+├── shuffle_seed (BIGINT, NOT NULL)         -- seeds both the presentation shuffle and --limit's subset draw
+├── corpus_commit (TEXT, NOT NULL)          -- `git rev-parse HEAD` at run time
+├── corpus_comma_count (INT, NOT NULL)      -- count(*) over article_commas, unfiltered
+├── question_limit (INT, nullable)          -- NULL means an unrestricted (full) pass
+└── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
+
+quiz_labelings                              -- one row per labeled question within a run
+├── id (PK, BIGSERIAL)
+├── run_id (BIGINT, NOT NULL, REFERENCES labeling_runs(id) ON DELETE CASCADE)
+├── quiz_question_id (BIGINT, NOT NULL, REFERENCES quiz_questions(id) ON DELETE CASCADE)
+├── rationale (TEXT, NOT NULL)              -- the judge's own rationale, empty-list case included
+├── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
+├── UNIQUE (run_id, quiz_question_id)
+└── INDEX idx_quiz_labelings_run_id (run_id)
+    -- no outcome column by design: a labeling's outcome is derived by counting its
+    -- quiz_comma_labels children (0 = "corpus doesn't justify it", AD-6), never stored,
+    -- so it cannot drift from the children it describes
+
+quiz_comma_labels                           -- the judge's per-candidate verdicts (<=3 per labeling)
+├── labeling_id (BIGINT, NOT NULL, REFERENCES quiz_labelings(id) ON DELETE CASCADE)
+├── article_comma_id (BIGINT, NOT NULL, REFERENCES article_commas(id) ON DELETE CASCADE)
+├── judge_rank (INT, NOT NULL, CHECK > 0)   -- judge's own order, most-justifying first (1-based)
+├── dense_rank (INT, nullable)              -- 1-based rank within the dense arm, NULL if not retrieved there
+├── text_rank (INT, nullable)               -- 1-based rank within the text arm, NULL if not retrieved there
+├── PRIMARY KEY (labeling_id, article_comma_id)
+├── CHECK (dense_rank IS NOT NULL OR text_rank IS NOT NULL)  -- quiz_comma_labels_at_least_one_arm
+└── UNIQUE (labeling_id, judge_rank)        -- quiz_comma_labels_unique_judge_rank: guards a *code*
+    -- defect (a mis-built loop), not a model one — CommaLabelerResponse already rejects a
+    -- repeated ordinal before the write path is reached (spec 0011 phase 2, T-1)
 ```
+
+`articles.tsv_title` and `article_commas.tsv_text` (spec 0011, FR-1) are the
+materialized halves of the corpus full-text index. They are **two** columns
+rather than one because the weighting in use spans both tables — article title
+in band A, comma text in band B, matching `_WEIGHTED_TSVECTOR` in
+`src/commons/repositories/db/corpus_read_repository.py` — and a generated column
+can only read its own row; ranking queries concatenate them
+(`a.tsv_title || c.tsv_text`) via `ts_rank`/`ts_rank_cd`. Being
+`GENERATED ALWAYS ... STORED`, they are never written by application code and
+cannot fall behind their source text. The two-argument
+`to_tsvector('italian', ...)` form is required: the one-argument form depends on
+`default_text_search_config` and is not `IMMUTABLE`, so `STORED` would be
+rejected.
+
+Matching against *both* columns cannot be a plain `a.tsv_title @@ q OR
+c.tsv_text @@ q`: PostgreSQL never turns a predicate whose `OR` branches
+reference two different joined relations into an index condition on either
+side — it can only evaluate it as a post-join filter, so neither GIN index is
+ever touched, regardless of join strategy or statistics. `CorpusReadRepository`'s
+`text_match_top_k` (`_text_match_query`) instead unions two single-relation id
+sets — one filtered by `idx_articles_tsv_title`, one by
+`idx_article_commas_tsv_text` — and rejoins the union for projection/scoring.
+See `docs/adr/0015-union-decomposed-cross-relation-text-match.md` for the
+full alternatives considered.
 
 `articles`/`article_commas` replaced the former single `knowledge_chunks`
 table (spec 0001 T-7): one row per article plus one row per comma, FK-linked
@@ -221,6 +293,11 @@ Two paths now exist, and a schema change must take **both**:
    schema untouched. Data-preserving steps come *before* destructive ones: see
    `db/migrations/0008_quiz_query_representations.sql`, which moves
    `quiz_questions.embedding` into the variant table before dropping the column.
+   `db/migrations/0011_retrieval_golden_set.sql` (purely additive: the two generated
+   `tsvector` columns and their GIN indexes) shows the other idempotency shape — a
+   generated column cannot be added with `ADD COLUMN IF NOT EXISTS`, so each
+   `ALTER TABLE` sits inside a `DO $$` block guarded on `information_schema.columns`,
+   while the indexes use plain `CREATE INDEX IF NOT EXISTS`.
 
 Because there is no tool enforcing it, the two paths can silently diverge — a
 migrated database and a freshly initialised one drifting apart is the standing risk
@@ -309,3 +386,23 @@ missing write path — the schema is unchanged, only the Python side caught up.*
 *Last updated: 2026-08-07 — verified against commit `bbec1a0` (working tree ahead of it,
 uncommitted on `feat/ingestion`); `EmbedQuizVariants` → `EmbedQuizVariantsService` (no schema
 change, `services/`-folder naming rename only).*
+
+*Last updated: 2026-08-19 — verified against commit `2dd56724` (working tree ahead:
+spec 0011 phase 1, T-2/T-3); `articles` gained the generated `tsv_title` and `article_commas`
+the generated `tsv_text`, each with a GIN index, plus a paragraph on why the corpus
+full-text vector is two columns and not one, and the Migrations section now names
+`0011_retrieval_golden_set.sql` as the guarded-`DO $$` idempotency shape.*
+
+*Last updated: 2026-08-19 — verified against commit `2dd56724` (working tree ahead:
+spec 0011 phase 1 round 2, AD-13/AD-14); corrected the full-text-match paragraph — the
+two generated columns are no longer matched with a plain cross-table `OR`, which
+PostgreSQL can never turn into an index condition; `text_match_top_k` now unions two
+single-relation-filtered id sets instead (ADR 0015).*
+
+*Last updated: 2026-08-21 — verified against commit `e4977a94` (working tree ahead:
+spec 0011 phase 2, T-1/T-2/T-9); three new tables — `labeling_runs`, `quiz_labelings`,
+`quiz_comma_labels` — persist the retrieval golden set. Outcome is derived by counting
+`quiz_comma_labels` children, never stored (AD-6); `insert_labeling` writes a labeling's
+parent row and its children atomically via a single data-modifying CTE, worked around
+`PostgresClient` having no transaction API (PD-15). Noted the `truncate()` convention now
+also covers `quiz_comma_labels`/`quiz_labelings`'s new FKs.*

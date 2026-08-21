@@ -37,6 +37,7 @@ def _row(number: str = "0001") -> QuizEvaluationRow:
 
 def _comma(article_number: str = "1") -> RetrievedComma:
     return RetrievedComma(
+        id=1,
         source="cds",
         article_number=article_number,
         article_title="Titolo",

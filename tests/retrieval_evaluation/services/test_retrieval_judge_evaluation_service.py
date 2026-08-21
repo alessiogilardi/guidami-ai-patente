@@ -26,6 +26,7 @@ def _make_row(number: str) -> QuizEvaluationRow:
 
 def _make_comma() -> RetrievedComma:
     return RetrievedComma(
+        id=1,
         source="cds",
         article_number="41",
         article_title="Segnali di pericolo",

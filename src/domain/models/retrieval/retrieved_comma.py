@@ -6,9 +6,11 @@ class RetrievedComma(BaseModel):
 
     `source` is mandatory because article numbers collide across sources — CdS art. 43
     and Regolamento art. 43 both exist — so `article_number` alone cannot disambiguate
-    a citation.
+    a citation. `id` is the `article_commas.id` of the source row, carried so callers can
+    reference the row without a second lookup by citation.
     """
 
+    id: int
     source: str
     article_number: str
     article_title: str

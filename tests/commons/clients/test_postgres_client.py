@@ -11,9 +11,9 @@ from commons.configs import PostgresConnectionConfig
 @pytest.fixture
 def client(postgres_test_config: PostgresConnectionConfig) -> Iterator[PostgresClient]:
     with PostgresClient(postgres_test_config) as client:
-        client.truncate("article_commas", "articles")
+        client.truncate("quiz_comma_labels", "article_commas", "articles")
         yield client
-        client.truncate("article_commas", "articles")
+        client.truncate("quiz_comma_labels", "article_commas", "articles")
 
 
 _SCRAPED_AT = datetime(2026, 1, 1, tzinfo=UTC)
@@ -69,7 +69,7 @@ def test_truncate_empties_table(client: PostgresClient) -> None:
     # `articles` is FK-referenced by `article_commas`, so Postgres refuses a bare
     # single-table TRUNCATE on it (regardless of whether article_commas has rows) —
     # both names must be named in one combined statement, see PostgresClient.truncate.
-    client.truncate("article_commas", "articles")
+    client.truncate("quiz_comma_labels", "article_commas", "articles")
 
     rows = client.fetch(sql.SQL("SELECT number FROM articles"))
     assert rows == []
@@ -87,7 +87,7 @@ def test_truncate_accepts_multiple_tables_empties_all_of_them(client: PostgresCl
         [(article_id, "1", 0, "Testo", False, None)],
     )
 
-    client.truncate("article_commas", "articles")
+    client.truncate("quiz_comma_labels", "article_commas", "articles")
 
     assert client.fetch(sql.SQL("SELECT id FROM article_commas")) == []
     assert client.fetch(sql.SQL("SELECT id FROM articles")) == []

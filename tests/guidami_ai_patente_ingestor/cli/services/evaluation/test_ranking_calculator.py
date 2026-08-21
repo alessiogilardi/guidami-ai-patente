@@ -31,6 +31,7 @@ def test_report_has_no_discrimination_verdict() -> None:
 def test_hit_uses_same_matching_as_coverage() -> None:
     calculator = RankingCalculator(EvaluationConfig())
     comma = RetrievedComma(
+        id=1,
         source="cds",
         article_number="1",
         article_title="Titolo",

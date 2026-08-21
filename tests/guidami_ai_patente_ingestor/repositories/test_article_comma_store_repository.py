@@ -16,9 +16,9 @@ from guidami_ai_patente_ingestor.repositories import (
 @pytest.fixture
 def client(postgres_test_config: PostgresConnectionConfig) -> Iterator[PostgresClient]:
     with PostgresClient(postgres_test_config) as client:
-        client.truncate("article_commas", "articles")
+        client.truncate("quiz_comma_labels", "article_commas", "articles")
         yield client
-        client.truncate("article_commas", "articles")
+        client.truncate("quiz_comma_labels", "article_commas", "articles")
 
 
 def _insert_article(client: PostgresClient, number: str, source: str) -> int:

@@ -109,6 +109,7 @@ def test_judge_export_records_are_self_contained(tmp_path: Path) -> None:
         embedding=[0.1, 0.2],
     )
     comma = RetrievedComma(
+        id=1,
         source="cds",
         article_number="7",
         article_title="Segnaletica stradale",

@@ -316,7 +316,7 @@ def test_cap_run_does_not_overwrite_cds_run(
     Also: repealed comma embeddings stay NULL, non-repealed ones are embedded.
     """
     pg_client = PostgresClient(postgres_test_config)
-    pg_client.truncate("article_commas", "articles")
+    pg_client.truncate("quiz_comma_labels", "article_commas", "articles")
 
     resolver = _cleaned_resolver(tmp_path)
     cds_articles = [
@@ -369,7 +369,7 @@ def test_rerunning_same_source_is_full_reload(
 ) -> None:
     """Re-running the same source is a per-source full-reload: the count stays stable."""
     pg_client = PostgresClient(postgres_test_config)
-    pg_client.truncate("article_commas", "articles")
+    pg_client.truncate("quiz_comma_labels", "article_commas", "articles")
 
     resolver = _cleaned_resolver(tmp_path)
     _write_cleaned(
