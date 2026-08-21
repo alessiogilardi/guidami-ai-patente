@@ -1,8 +1,10 @@
--- Migration 0011 — Retrieval golden set, phase 1 (spec 0011).
+-- Migration 0011 — Retrieval golden set (spec 0011).
 --
 -- Applies the retrieval-foundation schema of spec 0011 to an EXISTING database:
 -- materialized full-text search vectors on `articles` and `article_commas`, plus the
--- GIN indexes that make them usable.
+-- GIN indexes that make them usable. Also creates the three golden-set tables
+-- (`labeling_runs`, `quiz_labelings`, `quiz_comma_labels`) that persist the labeling
+-- run's output (phase 2).
 --
 -- Target state is defined by db/init.sql: this script and that file MUST produce the
 -- same schema. Run the equivalence check at the bottom after applying, and treat any
@@ -58,6 +60,58 @@ END $$;
 
 CREATE INDEX IF NOT EXISTS idx_article_commas_tsv_text ON article_commas USING GIN (tsv_text);
 
+-- 3. `labeling_runs` — one row per labeling pass, recording its run provenance (spec
+--    0011, FR-11). `CREATE TABLE IF NOT EXISTS` is already idempotent, so no `DO $$`
+--    guard is needed here.
+CREATE TABLE IF NOT EXISTS labeling_runs (
+    id                 BIGSERIAL PRIMARY KEY,
+    judge_model        TEXT NOT NULL,
+    prompt_version     TEXT NOT NULL,
+    candidate_variant  TEXT NOT NULL,
+    dense_k            INT NOT NULL,
+    text_k             INT NOT NULL,
+    shuffle_seed       BIGINT NOT NULL,
+    corpus_commit      TEXT NOT NULL,
+    corpus_comma_count INT NOT NULL,
+    question_limit     INT,
+    created_at         TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- 4. `quiz_labelings` — one row per labeled question within a run. The outcome of a
+--    labeling is the count of its `quiz_comma_labels` children: zero children means
+--    the corpus does not justify the question, a missing row means "never labeled"
+--    (AD-6). No outcome column exists by design.
+CREATE TABLE IF NOT EXISTS quiz_labelings (
+    id               BIGSERIAL PRIMARY KEY,
+    run_id           BIGINT NOT NULL REFERENCES labeling_runs (id) ON DELETE CASCADE,
+    quiz_question_id BIGINT NOT NULL REFERENCES quiz_questions (id) ON DELETE CASCADE,
+    rationale        TEXT NOT NULL,
+    created_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+    UNIQUE (run_id, quiz_question_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_quiz_labelings_run_id ON quiz_labelings (run_id);
+
+-- 5. `quiz_comma_labels` — the judge's chosen commas for a labeling, most-justifying
+--    first (`judge_rank`). FR-7's three-label maximum is deliberately not a database
+--    constraint but a prompt policy enforced on the agent response model
+--    (CommaLabelerResponse, spec 0011 T-7). `quiz_comma_labels_unique_judge_rank`
+--    guards against a *code* defect rather than a model one: CommaLabelerResponse
+--    already rejects a repeated ordinal, so a duplicate rank here can only arise from
+--    a mis-built loop. Both layers are intentional; do not drop either as redundant.
+CREATE TABLE IF NOT EXISTS quiz_comma_labels (
+    labeling_id      BIGINT NOT NULL REFERENCES quiz_labelings (id) ON DELETE CASCADE,
+    article_comma_id BIGINT NOT NULL REFERENCES article_commas (id) ON DELETE CASCADE,
+    judge_rank       INT NOT NULL CHECK (judge_rank > 0),
+    dense_rank       INT,
+    text_rank        INT,
+    PRIMARY KEY (labeling_id, article_comma_id),
+    CONSTRAINT quiz_comma_labels_at_least_one_arm
+        CHECK (dense_rank IS NOT NULL OR text_rank IS NOT NULL),
+    CONSTRAINT quiz_comma_labels_unique_judge_rank
+        UNIQUE (labeling_id, judge_rank)
+);
+
 COMMIT;
 
 
@@ -81,6 +135,12 @@ COMMIT;
 -- SELECT indexname, indexdef FROM pg_indexes
 -- WHERE indexname IN ('idx_articles_tsv_title', 'idx_article_commas_tsv_text')
 -- ORDER BY indexname;
+--
+-- SELECT table_name, column_name, data_type, is_nullable
+-- FROM information_schema.columns
+-- WHERE table_schema = 'public'
+--   AND table_name IN ('labeling_runs', 'quiz_labelings', 'quiz_comma_labels')
+-- ORDER BY table_name, ordinal_position;
 
 
 -- ---------------------------------------------------------------------------
@@ -88,6 +148,7 @@ COMMIT;
 -- so nothing but the derived tsvector itself is dropped.
 -- ---------------------------------------------------------------------------
 -- BEGIN;
+-- DROP TABLE IF EXISTS quiz_comma_labels, quiz_labelings, labeling_runs;
 -- DROP INDEX IF EXISTS idx_articles_tsv_title;
 -- DROP INDEX IF EXISTS idx_article_commas_tsv_text;
 -- ALTER TABLE articles DROP COLUMN IF EXISTS tsv_title;

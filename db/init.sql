@@ -114,3 +114,52 @@ CREATE TABLE IF NOT EXISTS llm_call_logs (
 
 CREATE INDEX IF NOT EXISTS idx_llm_call_logs_created_at ON llm_call_logs (created_at);
 CREATE INDEX IF NOT EXISTS idx_llm_call_logs_caller ON llm_call_logs (caller);
+
+-- Golden-set tables (spec 0011, phase 2). The outcome of a labeling is the count of its
+-- quiz_comma_labels children: zero children means the corpus does not justify the
+-- question, a missing quiz_labelings row means "never labeled" (AD-6). No outcome
+-- column exists by design — it would be a second, potentially contradicting source of
+-- truth for a fact already derivable by counting.
+CREATE TABLE IF NOT EXISTS labeling_runs (
+    id                 BIGSERIAL PRIMARY KEY,
+    judge_model        TEXT NOT NULL,
+    prompt_version     TEXT NOT NULL,
+    candidate_variant  TEXT NOT NULL,
+    dense_k            INT NOT NULL,
+    text_k             INT NOT NULL,
+    shuffle_seed       BIGINT NOT NULL,
+    corpus_commit      TEXT NOT NULL,
+    corpus_comma_count INT NOT NULL,
+    question_limit     INT,
+    created_at         TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS quiz_labelings (
+    id               BIGSERIAL PRIMARY KEY,
+    run_id           BIGINT NOT NULL REFERENCES labeling_runs (id) ON DELETE CASCADE,
+    quiz_question_id BIGINT NOT NULL REFERENCES quiz_questions (id) ON DELETE CASCADE,
+    rationale        TEXT NOT NULL,
+    created_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
+    UNIQUE (run_id, quiz_question_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_quiz_labelings_run_id ON quiz_labelings (run_id);
+
+-- FR-7's three-label maximum is deliberately not a database constraint but a prompt
+-- policy enforced on the agent response model (CommaLabelerResponse, spec 0011 T-7).
+-- quiz_comma_labels_unique_judge_rank guards against a *code* defect rather than a
+-- model one: CommaLabelerResponse already rejects a repeated ordinal, so a duplicate
+-- rank here can only arise from a mis-built loop. Both layers are intentional; do not
+-- drop either as redundant.
+CREATE TABLE IF NOT EXISTS quiz_comma_labels (
+    labeling_id      BIGINT NOT NULL REFERENCES quiz_labelings (id) ON DELETE CASCADE,
+    article_comma_id BIGINT NOT NULL REFERENCES article_commas (id) ON DELETE CASCADE,
+    judge_rank       INT NOT NULL CHECK (judge_rank > 0),
+    dense_rank       INT,
+    text_rank        INT,
+    PRIMARY KEY (labeling_id, article_comma_id),
+    CONSTRAINT quiz_comma_labels_at_least_one_arm
+        CHECK (dense_rank IS NOT NULL OR text_rank IS NOT NULL),
+    CONSTRAINT quiz_comma_labels_unique_judge_rank
+        UNIQUE (labeling_id, judge_rank)
+);

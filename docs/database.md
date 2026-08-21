@@ -52,11 +52,18 @@
   the FK reason above (each repository's `truncate()` only ever emits a
   single-table statement). The cross-table call bypasses the repository
   layer's `truncate()` for this one case since the capability is
-  client-level, not repository-level.
+  client-level, not repository-level. The same convention extends to every
+  table added since: `quiz_comma_labels` (FK to `article_commas` and to
+  `quiz_labelings`) must be named alongside whichever parent a call
+  truncates, and `quiz_labelings` (FK to `quiz_questions` and to
+  `labeling_runs`) alongside `quiz_questions`/`labeling_runs` — the same
+  pre-existing gap already existed for `quiz_question_embeddings` (FK to
+  `quiz_questions`), surfaced by spec 0011 phase 2's integration-test
+  fixtures rather than introduced by them.
 
 ## Main schema
 
-Six tables, all defined in `db/init.sql` (the `vector` extension is
+Nine tables, all defined in `db/init.sql` (the `vector` extension is
 enabled at the top of that file).
 
 ```text
@@ -134,6 +141,43 @@ llm_call_logs
 ├── end_time (TIMESTAMPTZ, nullable)       -- wall-clock call end
 ├── INDEX idx_llm_call_logs_created_at (created_at)
 └── INDEX idx_llm_call_logs_caller (caller)
+
+labeling_runs                               -- one row per golden-set labeling pass (spec 0011 phase 2)
+├── id (PK, BIGSERIAL)
+├── judge_model (TEXT, NOT NULL)
+├── prompt_version (TEXT, NOT NULL)         -- sha256(system + user)[:16], see run_provenance.py
+├── candidate_variant (TEXT, NOT NULL)      -- quiz_question_embeddings.variant used for retrieval
+├── dense_k (INT, NOT NULL)
+├── text_k (INT, NOT NULL)
+├── shuffle_seed (BIGINT, NOT NULL)         -- seeds both the presentation shuffle and --limit's subset draw
+├── corpus_commit (TEXT, NOT NULL)          -- `git rev-parse HEAD` at run time
+├── corpus_comma_count (INT, NOT NULL)      -- count(*) over article_commas, unfiltered
+├── question_limit (INT, nullable)          -- NULL means an unrestricted (full) pass
+└── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
+
+quiz_labelings                              -- one row per labeled question within a run
+├── id (PK, BIGSERIAL)
+├── run_id (BIGINT, NOT NULL, REFERENCES labeling_runs(id) ON DELETE CASCADE)
+├── quiz_question_id (BIGINT, NOT NULL, REFERENCES quiz_questions(id) ON DELETE CASCADE)
+├── rationale (TEXT, NOT NULL)              -- the judge's own rationale, empty-list case included
+├── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
+├── UNIQUE (run_id, quiz_question_id)
+└── INDEX idx_quiz_labelings_run_id (run_id)
+    -- no outcome column by design: a labeling's outcome is derived by counting its
+    -- quiz_comma_labels children (0 = "corpus doesn't justify it", AD-6), never stored,
+    -- so it cannot drift from the children it describes
+
+quiz_comma_labels                           -- the judge's per-candidate verdicts (<=3 per labeling)
+├── labeling_id (BIGINT, NOT NULL, REFERENCES quiz_labelings(id) ON DELETE CASCADE)
+├── article_comma_id (BIGINT, NOT NULL, REFERENCES article_commas(id) ON DELETE CASCADE)
+├── judge_rank (INT, NOT NULL, CHECK > 0)   -- judge's own order, most-justifying first (1-based)
+├── dense_rank (INT, nullable)              -- 1-based rank within the dense arm, NULL if not retrieved there
+├── text_rank (INT, nullable)               -- 1-based rank within the text arm, NULL if not retrieved there
+├── PRIMARY KEY (labeling_id, article_comma_id)
+├── CHECK (dense_rank IS NOT NULL OR text_rank IS NOT NULL)  -- quiz_comma_labels_at_least_one_arm
+└── UNIQUE (labeling_id, judge_rank)        -- quiz_comma_labels_unique_judge_rank: guards a *code*
+    -- defect (a mis-built loop), not a model one — CommaLabelerResponse already rejects a
+    -- repeated ordinal before the write path is reached (spec 0011 phase 2, T-1)
 ```
 
 `articles.tsv_title` and `article_commas.tsv_text` (spec 0011, FR-1) are the
@@ -354,3 +398,11 @@ spec 0011 phase 1 round 2, AD-13/AD-14); corrected the full-text-match paragraph
 two generated columns are no longer matched with a plain cross-table `OR`, which
 PostgreSQL can never turn into an index condition; `text_match_top_k` now unions two
 single-relation-filtered id sets instead (ADR 0015).*
+
+*Last updated: 2026-08-21 — verified against commit `e4977a94` (working tree ahead:
+spec 0011 phase 2, T-1/T-2/T-9); three new tables — `labeling_runs`, `quiz_labelings`,
+`quiz_comma_labels` — persist the retrieval golden set. Outcome is derived by counting
+`quiz_comma_labels` children, never stored (AD-6); `insert_labeling` writes a labeling's
+parent row and its children atomically via a single data-modifying CTE, worked around
+`PostgresClient` having no transaction API (PD-15). Noted the `truncate()` convention now
+also covers `quiz_comma_labels`/`quiz_labelings`'s new FKs.*

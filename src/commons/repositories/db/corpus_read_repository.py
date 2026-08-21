@@ -76,6 +76,12 @@ class CorpusReadRepository:
     per instance, so a retrieved comma always carries its article's `source`, `number`
     and `title` and no method can silently drop the join. Issues no `INSERT`/`UPDATE`/
     `DELETE`/DDL.
+
+    `extract_lexemes` is the one exception to the join-based shape above: it reads no
+    table at all, using Postgres purely as a linguistic engine (PD-5). It lives here,
+    not in a class of its own, because it must draw from the same `italian`
+    dictionary configuration `_to_tsquery_param`/`_WEIGHTED_TSVECTOR` already use to
+    build the GIN-indexed search this class performs (AD-9).
     """
 
     def __init__(
@@ -165,6 +171,18 @@ class CorpusReadRepository:
         rows = self._client.fetch(query, [f"%{keyword}%"])
         return int(rows[0][0])
 
+    def comma_count(self) -> int:
+        """Returns the total number of rows in `article_commas` (FR-11 corpus state).
+
+        Unlike every other comma-returning method on this class, this counts the
+        whole table: no `WHERE c.embedding IS NOT NULL` filter and no join to
+        `articles`. FR-11 records the size of the corpus, not the size of the
+        retrievable subset.
+        """
+        query = sql.SQL("SELECT count(*) FROM {commas}").format(commas=self._article_commas)
+        rows = self._client.fetch(query)
+        return int(rows[0][0])
+
     def text_top_k(self, lexemes: list[str], k: int) -> list[RetrievedComma]:
         """Returns the `k` commas with the highest weighted `ts_rank`, descending.
 
@@ -178,6 +196,31 @@ class CorpusReadRepository:
         ).format(weighted=_WEIGHTED_TSVECTOR, from_clause=self._from_clause)
         rows = self._client.fetch(query, [_to_tsquery_param(lexemes), k])
         return [self._row_to_comma(row) for row in rows]
+
+    def extract_lexemes(self, text: str) -> list[str]:
+        """Extracts the lexemes `text` yields under the `italian` `to_tsquery` dictionary.
+
+        Args:
+            text: Free-form text to extract lexemes from (FR-4). May be empty or
+                consist only of stop words.
+
+        Returns:
+            The distinct lexemes `to_tsvector('italian', text)` produces, sorted for
+            determinism. Raw, not quoted for `to_tsquery` — quoting (PD-6) is the
+            caller's job, so a consumer of this method is not handed a pre-escaped
+            list it did not ask for. An empty or stop-word-only `text` yields `[]`
+            and raises nothing.
+
+        The `italian` configuration is fixed (spec Constraints): stop-word removal
+        and stemming come from the same dictionary the GIN indexes this class
+        searches are built with (AD-9), which is why extraction lives here and not
+        in Python. This method issues no LLM call (FR-4). Uniquely on this class, it
+        reads no table: Postgres is used as a linguistic engine, not as a store, so
+        there is no join to `articles` and no `embedding IS NOT NULL` filter here.
+        """
+        query = sql.SQL("SELECT lexeme FROM unnest(to_tsvector('italian', %s)) ORDER BY lexeme")
+        rows = self._client.fetch(query, [text])
+        return [row[0] for row in rows]
 
     def text_match_top_k(self, lexemes: list[str], k: int) -> list[RetrievedComma]:
         """Returns the `k` commas matching `lexemes`, ranked by `ts_rank_cd`, descending.

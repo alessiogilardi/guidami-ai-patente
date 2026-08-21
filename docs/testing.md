@@ -122,7 +122,20 @@ T-15, after `EnrichedArticleModel` was deleted).
 Naming: `test_*.py`, generally one test file per source file/class (e.g.
 `test_article_cleaner.py` for `article_cleaner.py`).
 
+**Import-boundary test via `ast`** (`tests/retrieval_evaluation/test_wiring.py::
+test_the_labeler_imports_no_private_ingestor_module`, spec 0011 phase 2): parses
+every `.py` file under a package's source tree with `ast`, collects every
+`ImportFrom`/`Import` module path, and asserts none crosses a declared boundary
+(here: no path both starts with `guidami_ai_patente_ingestor` and contains a
+dotted segment beginning with `_`) — a structural convention (FR-12) enforced as a
+regular unit test, no real imports executed, no fixture needed. Reusable pattern
+for any future "package X must not reach into package Y's private internals" rule.
+
 *Last updated: 2026-08-06 — verified against commit `91028b2`; documented the
 isolated ephemeral Postgres test stack (`docker/docker-compose.test.yml`) and
 the `_postgres_test_stack`/`postgres_test_config` fixtures that replaced
 per-file hardcoded dev-database connections in integration tests.*
+
+*Last updated: 2026-08-21 — verified against commit `e4977a94` (working tree ahead:
+spec 0011 phase 2, T-11); documented the `ast`-based import-boundary test convention,
+introduced for `retrieval_evaluation`'s "no private-module import from the ingestor" rule.*

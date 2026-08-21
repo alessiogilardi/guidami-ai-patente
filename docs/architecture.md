@@ -593,6 +593,74 @@ retrieved commas or the quiz context. It reuses `IngestorConfig`
 `guidami_ai_patente_ingestor.configs` rather than owning its own settings class —
 the one deliberate cross-package dependency this module has.
 
+**Golden-set labeler** (`label-golden-set` script, `src/retrieval_evaluation/`): a
+second entry point in the same package, persisting a labeled retrieval golden set
+to Postgres instead of printing a spot-check verdict (spec 0011 phase 2). Where the
+judge above looks at one arm (`dense_top_k`) and writes nothing, the labeler builds
+a **two-arm candidate union** and writes every labeling to three new tables
+(`labeling_runs`, `quiz_labelings`, `quiz_comma_labels` — see `database.md`).
+
+`QuestionLexemeService.build` (`services/question_lexeme_service.py`) concatenates
+a question's configured `LabelingConfig.lexeme_fields` (`topic`/`text`/
+`image_description`, skipping blanks) and hands the text to a new
+`CorpusReadRepository.extract_lexemes` method, which asks Postgres itself —
+`SELECT lexeme FROM unnest(to_tsvector('italian', %s))` — for the exact stemmed,
+stop-word-filtered lexemes the corpus's own GIN indexes are built from (AD-9: same
+dictionary on both sides, so extraction and search cannot silently diverge). The
+returned lexemes are then single-quoted with internal quotes doubled before being
+handed to `text_match_top_k`, since `to_tsquery` treats an unquoted lexeme
+containing punctuation (e.g. `e-mail`) as a syntax error, not a literal.
+`CandidateSetService.build` (`services/candidate_set_service.py`) then unions
+`CorpusReadRepository.dense_top_k` with `text_match_top_k(lexemes, text_k)`, keyed
+by comma id, recording each arm's one-based rank on a `CandidateComma` — the union
+is **not** truncated, sorted or fused (AD-3): its length is the full union, and a
+comma found by both arms carries both ranks.
+
+`GoldenSetLabelingService.label_all` (`services/golden_set_labeling_service.py`)
+drives the pass: for every question with a query vector for the configured
+`candidate_variant` (optionally restricted to `--limit` questions via a seeded
+shuffle independent of the presentation shuffle, PD-18), it builds the candidate
+set *inside* a per-run `asyncio.Semaphore` (PD-16 — keeps at most
+`max_concurrency` candidate sets alive at once, rather than building all ~7k
+eagerly before the first judge call), shuffles the presentation order with
+`random.Random(f"{shuffle_seed}:{question_id}")` (deterministic per question,
+independent of processing order — PD-8), and asks a second, distinct agent,
+`CommaLabelerAgent` (`agents/comma_labeler/`, its own `dto/` — `CommaLabelerRequest`/
+`CommaLabelerResponse`, own `configs/agents/comma_labeler.yaml` prompt — FR-12
+requires this rather than widening `RetrievalJudgeResponse`, since `BaseAgent`
+binds one `output_type` per class), which candidate ordinals (at most three, most-
+justifying first) justify the correct answer. Each returned ordinal resolves to its
+presented candidate by list index, never by matching text (AD-12); an ordinal
+outside the presented range raises `CandidateNumberOutOfRangeError` and aborts the
+whole run rather than recording a label (PD-9 — no `return_exceptions=True` on the
+`gather`, so a partially-labeled run cannot look complete). Only transport-level
+failures are retried (`httpx.TransportError`, or `ModelHTTPError` with a 429/5xx
+status), up to `labeling.transport_retries` times with exponential backoff; every
+other exception, including a permanent 4xx or a validation error, propagates
+immediately (PD-17).
+
+`GoldenSetWriteRepository` (`repositories/golden_set_write_repository.py`) is
+insert-only (AD-10, mirroring `LlmCallLogRepository`'s precedent): `insert_run`
+writes one `labeling_runs` row; `insert_labeling` writes a `quiz_labelings` row and
+its `quiz_comma_labels` children in a **single data-modifying CTE**, atomic despite
+`PostgresClient`'s `autocommit=True` (PD-15) — two separate statements would let a
+failing child insert leave a childless parent indistinguishable from a genuine "no
+justifying comma" outcome (AD-6: the outcome is *derived* by counting children,
+never stored as a column). `outcome_counts` is the one read method on the class (a
+`SELECT`, not a write), used by `label_main.py` to print the with-commas/without-
+commas breakdown after the run. `label_main.py` inserts the `labeling_runs` row
+*before* the pass (recording `judge_model`, a `prompt_version` hashed from the
+loaded prompt text via `run_provenance.prompt_version` — no human-maintained
+version field, AD-11 — `corpus_commit` from `git rev-parse HEAD`, and
+`corpus_comma_count` from a new unfiltered `CorpusReadRepository.comma_count`),
+validates `candidate_variant` against `QuizReadRepository.available_variants()`
+first (same guard as the judge script), and — like the judge script — reuses only
+`RunArtifactWriter.build_run_dir` for its `logs/label_golden_set_<timestamp>/`
+directory, with no manifest, no dry-run chain, no `report.md` (AD-10; the module's
+placement rationale in ADR 0013 extends unchanged to this second script, though the
+ADR's premise that the module writes no persistent artifact no longer holds — see
+the ADR itself).
+
 ## Relevant architectural decisions
 
 See `adr/` for the full history. Currently accepted:
@@ -869,3 +937,10 @@ built per call (same per-run-loop pattern as the enrichers); `main()` gained `--
 *Last updated: 2026-08-19 — verified against commit `2dd56724` (working tree ahead:
 spec 0011 phase 1, T-1); `CorpusReadRepository`'s shared projection now leads with `c.id`,
 noted on the `commons/repositories/db/` component row.*
+
+*Last updated: 2026-08-21 — verified against commit `e4977a94` (working tree ahead:
+spec 0011 phase 2, T-4 through T-11); added the "Golden-set labeler" section —
+`label-golden-set`, a second `retrieval_evaluation/` entry point that persists a labeled
+golden set (two-arm candidate union, `CommaLabelerAgent`, `GoldenSetWriteRepository`'s
+single-CTE atomic write) to the three tables described in `database.md`. `CorpusReadRepository`
+gained `extract_lexemes` (Postgres-side lexeme extraction, AD-9) and `comma_count`.*

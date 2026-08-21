@@ -32,6 +32,7 @@ parse-domande      = "parsers.questions_pdf:main_questions"
 ingest             = "guidami_ai_patente_ingestor.cli:main"
 sample-test-data   = "test_data_sampler.sampler:main"
 evaluate-retrieval-judge = "retrieval_evaluation.main:main"
+label-golden-set   = "retrieval_evaluation.label_main:main"
 
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12.0"]

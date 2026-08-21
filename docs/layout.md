@@ -22,9 +22,14 @@ repo/
 │   │                                #   (RunArtifactWriter + models/: RunManifest base,
 │   │                                #   ScrapeManifest; RunArtifactWriterConfig removed);
 │   │                                #   sibling of ai/observability/, not AI-specific
-│   ├── domain/                     # Shared domain entities/models (persisted + intermediate),
+│   ├── domain/                     # Shared domain entities/models/enums (persisted + intermediate),
 │   │                                #   models/retrieval/: read DTOs (RetrievedComma,
 │   │                                #   QuizEvaluationRow) — carry `id`, unlike entities;
+│   │                                #   entities/: knowledge/, quiz/, observability/, evaluation/
+│   │                                #   (LabelingRunEntity, QuizLabelingEntity,
+│   │                                #   QuizCommaLabelEntity — spec 0011 phase 2);
+│   │                                #   enums/: closed vocabularies, e.g. LexemeField —
+│   │                                #   the project's first enum (spec 0011 phase 2);
 │   │                                #   no I/O or business logic
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
 │   │                                #   normative corpus (CdS/CAP/Regolamento) and quiz bank
@@ -33,9 +38,15 @@ repo/
 │   │                                #   inspecting pipeline output (e.g. quiz enrichment
 │   │                                #   review); opened directly in a browser, no server
 │   ├── parsers/                    # Standalone script: quiz PDF -> data/parsed/
-│   ├── retrieval_evaluation/       # Standalone script: LLM-as-judge for retrieval quality —
+│   ├── retrieval_evaluation/       # Standalone scripts over the same corpus, two entry points:
+│   │                                #   evaluate-retrieval-judge — LLM-as-judge spot-check,
 │   │                                #   samples quiz questions, judges whether their top-k
-│   │                                #   retrieved commas justify the answer (ADR 0013)
+│   │                                #   retrieved commas justify the answer, writes nothing (ADR 0013);
+│   │                                #   label-golden-set — persists a labeled golden set to Postgres
+│   │                                #   (labeling_runs/quiz_labelings/quiz_comma_labels), agents/
+│   │                                #   comma_labeler/ + repositories/ (GoldenSetWriteRepository,
+│   │                                #   insert-only) + exceptions/ + utils/ (run provenance) added
+│   │                                #   alongside agents/retrieval_judge/ (spec 0011 phase 2)
 │   ├── scrapers/                   # Standalone script: normattiva.it -> data/raw/ + data/parsed/
 │   └── test_data_sampler/          # Standalone script: data/parsed/ -> a random subset in
 │                                    #   data/test-data/parsed/, plus the sampled quiz
@@ -305,7 +316,28 @@ gitignored — never committed, safe to delete once the spec they fed is
   dry-run chain, no `RunArtifactWriter` — ADR 0013), reusing
   `guidami_ai_patente_ingestor.configs.IngestorConfig` and the existing
   `commons/repositories/db/` read repositories rather than owning new
-  config or new query code.
+  config or new query code. A second entry point,
+  `label-golden-set` (`label_main.py`), was added alongside it in the same
+  package (spec 0011 phase 2) rather than as a new top-level module or as a
+  mode of the judge script: FR-12 requires a distinct `CommaLabelerAgent`
+  (own DTOs, own prompt file) but the same lightweight, no-manifest shape,
+  and both scripts share `wiring.py`'s DI builders and `IngestorConfig`. It
+  introduces `retrieval_evaluation/repositories/` (a package the judge
+  script never needed, since it writes nothing) for
+  `GoldenSetWriteRepository` — insert-only, `INSERT` statements only, no
+  `UPDATE`/`DELETE`/DDL (AD-10) — placed here rather than promoted into
+  `commons/repositories/db/` (that package is read-only by declared
+  convention) or into the ingestor's per-table write layer (the labeler is
+  not part of `guidami_ai_patente_ingestor/`).
+- **A closed vocabulary that is a shared shape** (a DB column's legal
+  values, or a field name another module also needs) goes in
+  `src/domain/enums/` as a `StrEnum` with `auto()`-derived values, never
+  inside `domain/models/` — an enum is a vocabulary, not a data carrier
+  (`.claude/rules/code-conventions.md`). `LexemeField` (`topic`/`text`/
+  `image_description`, spec 0011 phase 2) is the first occupant; a
+  vocabulary genuinely internal to one module instead follows the
+  self-containment rule (`cli-structure.md`) and lives in that module's own
+  `enums/` package.
 
 *Last updated: 2026-08-04 — verified against commit `51cabb3`; `data/` tree entry and the
 `test_data_sampler/sampler.py` placement bullet now describe `data/quiz-images/`, a new
@@ -409,6 +441,14 @@ generalize quiz's dedup/omission/fan-out mechanics) was rejected — see
 *Last updated: 2026-08-12 — verified against commit `507d2dfb`; noted PEP 561 `py.typed`
 markers, added to `guidami_ai_patente_ingestor/`, `parsers/`, `retrieval_evaluation/`,
 `scrapers/`, and `test_data_sampler/` (joining `guidami_ai_patente/`, which already had one).*
+
+*Last updated: 2026-08-21 — verified against commit `e4977a94` (working tree ahead: spec
+0011 phase 2, T-2/T-3/T-9/T-11); `domain/` gained `entities/evaluation/` (the golden-set
+entities) and `enums/` (`LexemeField`, the project's first enum);
+`retrieval_evaluation/` gained a second entry point, `label-golden-set`, plus
+`repositories/` (`GoldenSetWriteRepository`, insert-only), `exceptions/` and `utils/`
+alongside the pre-existing `agents/retrieval_judge/`. New placement bullets record the
+`enums/` convention and where the golden-set write repository lives and why.*
 
 *Last updated: 2026-08-19 — verified against commit `2dd56724` (working tree ahead:
 spec 0011 phase 1, T-1); the read-DTO bullet now records that `RetrievedComma` carries

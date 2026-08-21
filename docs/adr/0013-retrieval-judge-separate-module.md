@@ -48,6 +48,16 @@ judge itself is stable, then once more with a larger sample for an estimate —
 closer in spirit to `test_data_sampler/sampler.py`'s one-shot script than to
 `ingest evaluate retrieval`'s run-artifact-producing harness.
 
+**Amendment (2026-08-21, spec 0011 phase 2):** this Context described the
+module as a whole when it held one script. It now holds two:
+`evaluate-retrieval-judge` (this ADR's original subject, unchanged, still
+writes nothing but an optional `results.json`) and a second entry point,
+`label-golden-set`, which persists a labeled golden set to Postgres
+(`labeling_runs`/`quiz_labelings`/`quiz_comma_labels` — see `database.md`).
+The reasoning above no longer describes the module's relationship to
+persistence in general — see the Decision and Consequences sections below for
+what changed and what did not.
+
 ## Decision
 
 `src/retrieval_evaluation/` is a new top-level package, a sibling of
@@ -73,6 +83,20 @@ retrieval` and not a package under `guidami_ai_patente_ingestor/cli/`:
   registered as `evaluate-retrieval-judge` in `[project.scripts]`. No
   manifest, no `RunArtifactWriter`, no dry-run chain, no live dashboard: it
   prints verdicts and a share-clear percentage to stdout and exits.
+- **(spec 0011 phase 2)** `label_main.py` — a second `argparse` entry point,
+  `label-golden-set`, sharing `wiring.py`'s DI builders and `IngestorConfig`
+  with the judge script above. Unlike the judge, it persists every verdict:
+  it inserts one `labeling_runs` row per run (provenance: judge model, prompt
+  version, arm depths, shuffle seed, corpus commit/comma count), then writes
+  one `quiz_labelings` row plus its `quiz_comma_labels` children per labeled
+  question through a new, insert-only `GoldenSetWriteRepository`
+  (`repositories/golden_set_write_repository.py` — `INSERT` statements only,
+  no `UPDATE`/`DELETE`/DDL). It still carries none of the `ingest` CLI's
+  manifest/dry-run machinery (same reasoning as (1) above still applies: a
+  labeling pass is re-run by hand, not scheduled), and it still needs a
+  distinct agent — `CommaLabelerAgent` (`agents/comma_labeler/`, its own
+  `dto/` and prompt file) rather than widening `RetrievalJudgeResponse`,
+  since `BaseAgent` binds one `output_type` per class.
 
 `wiring.py` reuses `guidami_ai_patente_ingestor.configs.IngestorConfig` for the
 Postgres connection, table names, `agents_dir`, and the OpenRouter provider,
@@ -128,3 +152,18 @@ script with different flags, not a feature the service implements.
   `QueuedLlmCallTracker`/`LlmCallLogRepository` path as every other agent
   call, so its OpenRouter spend is visible in `llm_call_logs` like any other
   agent, even though it runs outside the `ingest` CLI.
+- **(spec 0011 phase 2)** This module is no longer artifact-free. The
+  original framing above — "exploratory measurement... closer in spirit to a
+  one-shot script than to a run-artifact-producing harness" — described
+  `evaluate-retrieval-judge` accurately and still does today: that script
+  writes nothing but an optional `results.json`. It no longer describes the
+  module as a whole: `label-golden-set` persists every labeling to Postgres,
+  by design, as the module's whole purpose (the golden set is meant to
+  outlive the run that produced it, unlike the judge's spot-check verdicts).
+  What did **not** change is the reason this module sits outside `cli/` and
+  outside `ingest evaluate retrieval`: no manifest type, no `--dry-run`
+  chain, no `RunArtifactWriter` machinery — persistence here means three
+  Postgres tables written by an insert-only repository, not the CLI's
+  audited-run-artifact shape those flags exist for. The placement decision
+  in this ADR stands unchanged; only the "writes no persistent artifact"
+  characterization is retired.
