@@ -85,7 +85,7 @@ the project's first use of `TestClient` and establishes the pattern for
 future `guidami_ai_patente/` endpoint tests.
 `flowstep` is an external git dependency (not part of this repo's `src/`
 or `tests/`), so it has no local test mirror here — see
-`docs/architecture.md`.
+`docs/second-brain/architecture.md`.
 
 No `__init__.py` in any test directory — see
 `.claude/rules/code-conventions.md` for the rule and rationale.

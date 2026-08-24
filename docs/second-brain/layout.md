@@ -85,7 +85,7 @@ repo/
 │                                    #   test-data/ mirrors parsed/cleaned/enriched + quiz-images/ on
 │                                    #   a random subset (see ADR 0006, ADR 0008), for fast local
 │                                    #   prepare/index runs
-├── docs/                           # This documentation (Second Brain) + docs/plans/ (design plans)
+├── docs/                           # This documentation (Second Brain) + docs/superpowers/ (SDD state)
 └── .claude/                        # Claude Code config: rules/, skills/, hooks/, agents/
 ```
 
@@ -99,19 +99,23 @@ imported as a standalone installed package outside this repo's own checkout.
 
 `docker/.volumes/` (gitignored, not shown in the tree above) holds the
 Postgres data directory bind-mounted by `docker/docker-compose.yml` — see
-`docs/database.md`.
+`docs/second-brain/database.md`.
 
 `flowstep` (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) is
 **not** part of this repo's tree: it's an external git dependency
 (github.com/alessiogilardi/flowstep, tracked via `main` in `pyproject.toml`'s
-`[tool.uv.sources]`) — see `docs/architecture.md`.
+`[tool.uv.sources]`) — see `docs/second-brain/architecture.md`.
 
-`specs/` (claude-planner plugin, not shown in the tree above — it's SDD
-pipeline state, not app code) holds two kinds of file with different
-lifetimes: `specs/NNNN-*.md` are the permanent spec contracts, tracked
-normally; `specs/discussions/*.md` are ephemeral brainstorm logs and are
-gitignored — never committed, safe to delete once the spec they fed is
-`implemented`.
+`docs/superpowers/` (superpowers plugin, not shown in the tree above — it's SDD
+pipeline state, not app code; superseded the removed claude-planner plugin's
+`specs/`/`plans/`) holds three kinds of file with different lifetimes:
+`docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` are the permanent spec
+contracts (written by the `brainstorming` skill's architectural path), tracked
+normally; `docs/superpowers/specs/discussions/*.md` are ephemeral brainstorm logs,
+gitignored — never committed, safe to delete once the spec they fed is `implemented`;
+`docs/superpowers/plans/YYYY-MM-DD-<feature>[-phaseN]-plan.md` are implementation
+plans (written by the `writing-plans` skill), also gitignored — pruned once
+implemented.
 
 ## Placement conventions
 
@@ -184,7 +188,7 @@ gitignored — never committed, safe to delete once the spec they fed is
   `embedding/`), `services/` (the
   concrete behavior classes; a narrow, private `protocols/` may nest
   *inside* `services/` for implementation-detail structural typing that
-  never crosses a package boundary — see `docs/patterns.md`),
+  never crosses a package boundary — see `docs/second-brain/patterns.md`),
   `repositories/` (data access), `mappers/` (stateless object-to-object
   transformations), and `models/` (intermediate DTOs consumed only by
   that package's own mappers). `agents/` and `embedding/` only need the
@@ -199,7 +203,7 @@ gitignored — never committed, safe to delete once the spec they fed is
   text but aren't services (no `UseCase`/
   injected-dependency-with-behavior shape) or classic static mappers
   (they hold config injected at construction, unlike this repo's
-  stateless `*Mapper` convention — see `docs/patterns.md`); the
+  stateless `*Mapper` convention — see `docs/second-brain/patterns.md`); the
   five-subpackage template already anticipates a package using only the
   subset relevant to its own responsibility, so one extra, narrowly
   scoped subpackage for a responsibility the template doesn't name is an
@@ -231,7 +235,7 @@ gitignored — never committed, safe to delete once the spec they fed is
   `commons/observability/` sub-package is
   under `commons/ai/` because neither is AI-specific (`EmbeddingService` is
   the only one of the three progress-reporting consumers that happens to
-  also be AI-related); see `docs/patterns.md` for both shapes.
+  also be AI-related); see `docs/second-brain/patterns.md` for both shapes.
 - **Persisted or cross-cutting domain shapes** (entities that map 1:1 to a
   DB table, models shared by more than one app) go in `src/domain/`.
   Models that only exist as an intermediate step inside one pipeline stay
@@ -462,10 +466,10 @@ uncommitted); `commons/ai/embedding/` gained `protocols/` (`TextComposer[T]` +
 doesn't name), alongside the existing `clients/`/`configs/`/`services/`.
 `configs/embedding_config.py` renamed to `configs/embedding_client_config.py`
 (`EmbeddingConfig` → `EmbeddingClientConfig`). `commons/observability/progress_reporter/`
-gained a new `tracker.py` (a generator-function helper, not a class — see `docs/patterns.md`).
+gained a new `tracker.py` (a generator-function helper, not a class — see `docs/second-brain/patterns.md`).
 ADR 0014 (a proposed **seventh** subpackage member, `VariantModelEmbeddingService[T]`, to
 generalize quiz's dedup/omission/fan-out mechanics) was rejected — see
-`docs/adr/0014-embedding-composition-layer.md`, status `Rejected`; that logic stays local to
+`docs/second-brain/adr/0014-embedding-composition-layer.md`, status `Rejected`; that logic stays local to
 `guidami_ai_patente_ingestor/services/quiz/` (new file `quiz_variant_spec.py`).*
 
 *Last updated: 2026-08-08 — verified against commit `507d2dfb` (working tree ahead of it,
@@ -502,3 +506,10 @@ alongside the pre-existing `agents/retrieval_judge/`. New placement bullets reco
 spec 0011 phase 1, T-1); the read-DTO bullet now records that `RetrievedComma` carries
 `article_commas.id`, closing the exception it used to be to the "read models carry `id`"
 rule.*
+
+*Last updated: 2026-08-21 — verified against commit `800d9924` (working tree ahead:
+adopted the superpowers plugin, superseding the removed claude-planner plugin's SDD
+conventions). `specs/` and the top-level `plans/` are gone; their contents
+moved to `docs/superpowers/specs/` and `docs/superpowers/plans/` under the new
+`YYYY-MM-DD-<topic>[-design|-phaseN-plan].md` naming. The `specs/` paragraph and the
+`docs/` tree-comment above were rewritten accordingly.*

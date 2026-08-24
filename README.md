@@ -46,7 +46,7 @@ uv run ingest reset quiz
 uv run ingest status [--online]
 ```
 
-See [`docs/`](./docs/README.md) for architecture, database schema, and design plans.
+See [`docs/second-brain/`](./docs/second-brain/README.md) for architecture, database schema, and design plans.
 
 ### Development
 

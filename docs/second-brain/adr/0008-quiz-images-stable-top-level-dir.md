@@ -9,7 +9,7 @@ Accepted
 Images extracted from the quiz PDF used to live under
 `data/parsed/quiz-patente-ab/images/`, nested inside the pipeline-stage
 tree (`raw/` → `parsed/` → `cleaned/` → `enriched/`, see
-`docs/layout.md`). That tree models transformations applied to the
+`docs/second-brain/layout.md`). That tree models transformations applied to the
 *structured quiz JSON*; image bytes, once extracted by
 `parsers/questions_pdf.py`, never change through those stages — the
 enrichment step (`ImageDescriptionEnricher`) only ever derives new

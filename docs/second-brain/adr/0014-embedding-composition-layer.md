@@ -72,7 +72,7 @@ requires for a `NamedTuple` over a `dataclass`) in favor of the new generic
 ## Decision
 
 `commons/ai/embedding/` gains a **sixth** subpackage, `composition/` (beyond
-the five-subpackage-by-responsibility shape `docs/layout.md` documents for
+the five-subpackage-by-responsibility shape `docs/second-brain/layout.md` documents for
 `commons/ai/`), plus new `models/` and a new `services/` member:
 
 - `protocols/text_composer.py::TextComposer[T]` — `compose(model: T) -> str`.
@@ -152,7 +152,7 @@ the same round of work).
 ## Consequences
 
 - `commons/ai/embedding/` now has six subpackages instead of the
-  five-subpackage-by-responsibility shape `docs/layout.md` documents for
+  five-subpackage-by-responsibility shape `docs/second-brain/layout.md` documents for
   `commons/ai/agents`/`commons/observability/` — an intentional, narrowly
   justified deviation (`composition/` holds classes that are neither
   services nor static mappers), not a precedent for every future package to
@@ -225,6 +225,6 @@ is kept as a local `services/quiz/quiz_variant_spec.py` frozen `dataclass`
 `text_composer: OptionalTextComposer[EmbeddedQuizModel]`. Every entry in
 `QUIZ_VARIANT_REGISTRY` is a `FieldSpecComposer` wrapping a declarative
 `EmbeddingSpec`/`FieldSpec` recipe — the composition layer is reused, only
-the N-variant/dedup/fan-out generalization is not. See `docs/architecture.md`,
-`docs/patterns.md`, and `docs/glossary.md` for the resulting (accurate)
+the N-variant/dedup/fan-out generalization is not. See `docs/second-brain/architecture.md`,
+`docs/second-brain/patterns.md`, and `docs/second-brain/glossary.md` for the resulting (accurate)
 description of `commons/ai/embedding/` and the quiz-variant registry.

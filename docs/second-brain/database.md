@@ -201,7 +201,7 @@ ever touched, regardless of join strategy or statistics. `CorpusReadRepository`'
 `text_match_top_k` (`_text_match_query`) instead unions two single-relation id
 sets — one filtered by `idx_articles_tsv_title`, one by
 `idx_article_commas_tsv_text` — and rejoins the union for projection/scoring.
-See `docs/adr/0015-union-decomposed-cross-relation-text-match.md` for the
+See `docs/second-brain/adr/0015-union-decomposed-cross-relation-text-match.md` for the
 full alternatives considered.
 
 `articles`/`article_commas` replaced the former single `knowledge_chunks`
@@ -219,11 +219,11 @@ duplicated on every row) have both been fully removed (spec 0001 T-7/T-15).
 auto-parses the ISO-8601 string produced by `ParsedArticleModel.scraped_at`
 at the parsed→cleaned mapping boundary), so
 `ArticleMapper.from_cleaned_to_article_entity` just copies the value through
-— see `docs/adr/0007-utc-timestamp-convention.md` for the project's full UTC
+— see `docs/second-brain/adr/0007-utc-timestamp-convention.md` for the project's full UTC
 timestamp convention (app/log/DB).
 
 The former `quiz_metadata` JSONB blob was flattened into the retrieval/payload
-columns above (see `docs/adr/0002-flatten-quiz-metadata-columns.md`);
+columns above (see `docs/second-brain/adr/0002-flatten-quiz-metadata-columns.md`);
 `vector_search_queries` joined them later, once it stopped being pure embedder
 input and became the thing under test — and is now the one metadata field actually
 persisted on `quiz_questions` (spec 0008 Phase 1); `core_concepts`/`exact_keywords`/
@@ -233,7 +233,7 @@ all-or-nothing: `NULL` on rows for which no `QuizMetadata` was generated.
 (`QuizQuestionStoreRepository.delete_missing`, whole-table scope — quiz has a
 single source, unlike `ArticleStoreRepository.delete_missing`'s per-source scope)
 instead of truncate + bulk-insert (spec 0008 Phase 1, superseding the `DbStoreStep`
-full-reload path — see `docs/patterns.md`), so `quiz_questions.created_at`, like
+full-reload path — see `docs/second-brain/patterns.md`), so `quiz_questions.created_at`, like
 `articles`/`article_commas`' upsert path (spec 0010), now survives across runs
 instead of recording each load-batch's timestamp.
 
@@ -248,15 +248,15 @@ model costs one `ADD COLUMN` plus widening that `CHECK`.
 
 `quiz_images` is keyed by filename because a description belongs to an image, not
 to a question: 4147 questions reference 427 distinct images
-(`docs/adr/0003-group-road-sign-description-by-image.md`).
+(`docs/second-brain/adr/0003-group-road-sign-description-by-image.md`).
 
 No index exists on any embedding column (no ivfflat/hnsw) — vector search runs as
 an exact `<=>` scan. No index yet on the `TEXT[]` metadata columns (GIN/FTS
 deferred with the hybrid-search work).
 
 `llm_call_logs` is populated by every tracked `BaseAgent` call — see
-`docs/patterns.md` (observability rows), `docs/architecture.md` (prepare-path
-wiring), and `docs/adr/0004-openrouter-native-cost-tracking.md` for the
+`docs/second-brain/patterns.md` (observability rows), `docs/second-brain/architecture.md` (prepare-path
+wiring), and `docs/second-brain/adr/0004-openrouter-native-cost-tracking.md` for the
 mechanism; this section documents only what each column holds. Column
 semantics worth noting: `start_time`/`end_time` are wall-clock
 `datetime.now(UTC)` stamps, whereas `latency_ms` is measured separately with the
@@ -329,7 +329,7 @@ since there is no named volume left for `-v` to remove.*
 *Last updated: 2026-08-04 — verified against commit `2248dcc`; `articles` gained a
 required `scraped_at TIMESTAMPTZ NOT NULL` column (no default), populated from
 `CleanedArticleModel.scraped_at` (now typed `datetime`, not `str`) via
-`ArticleMapper.from_cleaned_to_article_entity` (`docs/adr/0007-utc-timestamp-convention.md`)
+`ArticleMapper.from_cleaned_to_article_entity` (`docs/second-brain/adr/0007-utc-timestamp-convention.md`)
 — previously computed by the scraper and silently dropped before persistence.*
 
 *Last updated: 2026-08-01 — verified against commit `3cce407`; `knowledge_chunks`

@@ -28,7 +28,7 @@ unconditionally treated as a real, writing run and created an unwanted
 not, even though it performs no other write.
 
 Full requirements/acceptance-criteria detail:
-`specs/0005-ingest-run-artifacts.md`.
+`docs/superpowers/specs/2026-08-05-ingest-run-artifacts-design.md`.
 
 ## Decision
 

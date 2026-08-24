@@ -5,7 +5,7 @@
 | **Id** | 0011 |
 | **Status** | in-progress |
 | **Date** | 2026-08-19 |
-| **Discussion log** | specs/discussions/golden-set-retrieval-evaluation.md |
+| **Discussion log** | docs/superpowers/specs/discussions/golden-set-retrieval-evaluation.md |
 | **Supersedes / superseded by** | — |
 
 ## Problem & Motivation
@@ -651,7 +651,7 @@ latency. Defect 2 was not part of that escalation.
 **Status.** Kept at `ready` rather than dropped to `draft`: the amendment was described in
 full to the user before being written, and authorised in the same exchange.
 
-### 2026-08-20 — plan executed: plans/0011-retrieval-golden-set-phase1-plan.md
+### 2026-08-20 — plan executed: docs/superpowers/plans/2026-08-19-retrieval-golden-set-phase1-plan.md
 
 - **DoD result:** all runnable items verified mechanically. T-1's three test specs and
   T-2's one all exist and pass by name; `uv run pytest` 658 passed; `uv run pytest -m
@@ -679,7 +679,7 @@ full to the user before being written, and authorised in the same exchange.
   (3) Writing a plan file through a shell heredoc hits the platform's argument-length limit;
   use a file-writing tool for artifacts of this size.
 - **Status change:** not flipped to `implemented` — this plan covers only FR-1 … FR-3.
-  FR-4 … FR-12 remain, planned in `plans/0011-retrieval-golden-set-phase2-plan.md`. The
+  FR-4 … FR-12 remain, planned in `docs/superpowers/plans/2026-08-19-retrieval-golden-set-phase2-plan.md`. The
   spec was promoted `ready → in-progress`, confirmed by Alessio Gilardi, 2026-08-20.
 
 ### 2026-08-20 — Feasibility Evidence anchors refreshed; union-size question answered
