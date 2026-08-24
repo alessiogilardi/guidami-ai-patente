@@ -720,7 +720,7 @@ requires-dist = [
     { name = "pydantic-ai-slim", extras = ["openrouter"], specifier = ">=1.107.0" },
     { name = "pydantic-settings", extras = ["yaml"], specifier = ">=2.14.1" },
     { name = "pymupdf", specifier = ">=1.27.2.3" },
-    { name = "pywire", extras = ["fastapi"], git = "https://github.com/alessiogilardi/pywire.git?tag=v0.3.1" },
+    { name = "pywire", extras = ["fastapi"], git = "https://github.com/alessiogilardi/pywire.git?tag=v0.5.0" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "rich", specifier = ">=13" },
     { name = "sentence-transformers", specifier = ">=5.5.1" },
@@ -2155,8 +2155,8 @@ wheels = [
 
 [[package]]
 name = "pywire"
-version = "0.3.1"
-source = { git = "https://github.com/alessiogilardi/pywire.git?tag=v0.3.1#5fc5f62ad910a97041eda1d4727a9176f0e84d2c" }
+version = "0.5.0"
+source = { git = "https://github.com/alessiogilardi/pywire.git?tag=v0.5.0#0b2783942fbe5a1b8b032a93042edfe22a038f39" }
 
 [package.optional-dependencies]
 fastapi = [

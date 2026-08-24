@@ -986,3 +986,19 @@ spec 0011 phase 2, T-4 through T-11); added the "Golden-set labeler" section —
 golden set (two-arm candidate union, `CommaLabelerAgent`, `GoldenSetWriteRepository`'s
 single-CTE atomic write) to the three tables described in `database.md`. `CorpusReadRepository`
 gained `extract_lexemes` (Postgres-side lexeme extraction, AD-9) and `comma_count`.*
+
+*Last updated: 2026-08-24 — verified against commit `677737fb` (working tree ahead: bumped
+`pywire` 0.3.1 -> 0.5.0, `[tool.uv.sources]` tag `v0.3.1` -> `v0.5.0`); the intervening
+release added `Container.register_instance(obj)`/`register_factory(Type, callable)` (publish
+an externally-built instance / a lazy provider, keyed by runtime type or `as_type=`), which
+did not exist when `adr/0017-appconfig-component-and-testable-autowiring.md` was written —
+that ADR's Context section asserts no such mechanism exists and works around its absence by
+making `AppConfig` a fake zero-arg `@component`. `guidami_ai_patente/`'s only current pywire
+usage (`GET /health`'s `HealthCheckService`/`DependencyVersionRepository` field injection,
+`pywire.fastapi.wire()`) still passes end-to-end against 0.5.0 — full suite (709 tests),
+`ruff`, `pyright`, and a live `uv run api` + `GET /health` request all verified — despite an
+intervening breaking change in pywire itself ("Move wiring from class instrumentation into
+resolve()", pywire 0.4.0). The quiz-check-endpoint code ADR 0017 was written for
+(`PostgresClientProvider`, `QuizAnswerChecker`) has not been implemented yet, so no source
+in this repo depends on the workaround today; ADR 0017's Status/Decision are left untouched
+pending a user call on whether to revise them before that endpoint is built.*

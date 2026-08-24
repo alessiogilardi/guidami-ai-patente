@@ -44,7 +44,7 @@ build-backend = "uv_build"
 
 [tool.uv.sources]
 flowstep = { git = "https://github.com/alessiogilardi/flowstep.git", branch = "main" }
-pywire = { git = "https://github.com/alessiogilardi/pywire.git", tag = "v0.3.1" }
+pywire = { git = "https://github.com/alessiogilardi/pywire.git", tag = "v0.5.0" }
 
 [dependency-groups]
 dev = [
