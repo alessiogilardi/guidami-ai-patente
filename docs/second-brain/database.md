@@ -397,7 +397,7 @@ full-text vector is two columns and not one, and the Migrations section now name
 spec 0011 phase 1 round 2, AD-13/AD-14); corrected the full-text-match paragraph — the
 two generated columns are no longer matched with a plain cross-table `OR`, which
 PostgreSQL can never turn into an index condition; `text_match_top_k` now unions two
-single-relation-filtered id sets instead (ADR 0015).*
+single-relation-filtered id sets instead (ADR 0018).*
 
 *Last updated: 2026-08-21 — verified against commit `e4977a94` (working tree ahead:
 spec 0011 phase 2, T-1/T-2/T-9); three new tables — `labeling_runs`, `quiz_labelings`,

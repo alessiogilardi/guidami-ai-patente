@@ -16,7 +16,7 @@ in-progress → implemented once the Definition of Done is verified.
 | **Id** | 0011 |
 | **Status** | draft |
 | **Date** | 2026-08-19 |
-| **Discussion log** | specs/discussions/quiz-check-endpoint.md |
+| **Discussion log** | docs/superpowers/specs/discussions/quiz-check-endpoint.md |
 | **Supersedes / superseded by** | — |
 
 ## Problem & Motivation

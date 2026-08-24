@@ -1,4 +1,4 @@
-# ADR 0015: Union-decomposed query for cross-relation full-text match
+# ADR 0018: Union-decomposed query for cross-relation full-text match
 
 ## Status
 
