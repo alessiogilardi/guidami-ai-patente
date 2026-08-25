@@ -5,7 +5,7 @@ Subcommand structure:
     ingest [--config PATH] prepare quiz [--force] [--dry-run] [--plain]
     ingest [--config PATH] index knowledge --source <cds|cap> [--dry-run] [--plain]
     ingest [--config PATH] index quiz [--dry-run] [--plain]
-    ingest [--config PATH] reset knowledge [--apply]
+    ingest [--config PATH] reset knowledge [--apply] [--force]
     ingest [--config PATH] reset quiz [--apply]
     ingest [--config PATH] status [--online]
     ingest [--config PATH] evaluate retrieval [--seed N] [--baseline-repetitions N]
@@ -36,8 +36,10 @@ Commands:
       Embed + store the knowledge corpus.
   index quiz [--dry-run] [--plain]
       Embed + store the quiz bank.
-  reset knowledge [--apply]
-      Truncate articles and article_commas (wipe). Previews by default; --apply executes.
+  reset knowledge [--apply] [--force]
+      Truncate quiz_comma_labels, quiz_labelings, article_commas and articles (wipe).
+      Previews by default; --apply executes. Refuses when a human-validated labeling
+      would be destroyed unless --force is also passed.
   reset quiz [--apply]
       Truncate quiz_questions (full wipe). Previews by default; --apply executes.
   status [--online]
@@ -88,6 +90,16 @@ def _add_apply_flag(entity_parser: argparse.ArgumentParser) -> None:
         action="store_true",
         default=False,
         help="Actually execute the truncation; without it, only prints what would be deleted.",
+    )
+
+
+def _add_force_flag(entity_parser: argparse.ArgumentParser) -> None:
+    """Adds `--force` to `reset knowledge` (overrides the validated-labeling guard)."""
+    entity_parser.add_argument(
+        "--force",
+        action="store_true",
+        default=False,
+        help="Truncate even when human-validated labelings exist; they are destroyed.",
     )
 
 
@@ -162,8 +174,12 @@ def build_parser(config: IngestorConfig) -> argparse.ArgumentParser:
     # ---- reset ----
     reset_p = cmd_subs.add_parser("reset", help="Truncate DB tables (full wipe).")
     rst_subs = reset_p.add_subparsers(dest="entity", required=True)
-    rst_k = rst_subs.add_parser("knowledge", help="Truncate articles and article_commas tables.")
+    rst_k = rst_subs.add_parser(
+        "knowledge",
+        help="Truncate quiz_comma_labels, quiz_labelings, article_commas and articles tables.",
+    )
     _add_apply_flag(rst_k)
+    _add_force_flag(rst_k)
     rst_q = rst_subs.add_parser("quiz", help="Truncate quiz_questions table.")
     _add_apply_flag(rst_q)
 

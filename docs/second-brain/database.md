@@ -43,23 +43,31 @@
   just the one known today. Every pre-existing single-table call site
   (`quiz_questions`, `llm_call_logs`, `UpsertStoreRepository`'s own
   table) is unaffected — a single positional argument is just a 1-tuple.
-  Real consumer (spec 0001 T-16): `cli/commands/reset.py`'s `knowledge`
-  branch calls `postgres_client.truncate(config.article_commas_table,
-  config.articles_table)` directly — **not** two separate
-  `ArticleCommaStoreRepository(...).truncate()` /
-  `ArticleStoreRepository(...).truncate()` calls, which was the first
-  implementation attempt and crashes against a live Postgres for exactly
-  the FK reason above (each repository's `truncate()` only ever emits a
-  single-table statement). The cross-table call bypasses the repository
-  layer's `truncate()` for this one case since the capability is
-  client-level, not repository-level. The same convention extends to every
-  table added since: `quiz_comma_labels` (FK to `article_commas` and to
-  `quiz_labelings`) must be named alongside whichever parent a call
-  truncates, and `quiz_labelings` (FK to `quiz_questions` and to
-  `labeling_runs`) alongside `quiz_questions`/`labeling_runs` — the same
-  pre-existing gap already existed for `quiz_question_embeddings` (FK to
-  `quiz_questions`), surfaced by spec 0011 phase 2's integration-test
-  fixtures rather than introduced by them.
+  Real consumer (spec 0001 T-16, widened by spec 0012 Task 9/FR-17/AD-28):
+  `cli/commands/reset.py`'s `knowledge` branch calls
+  `postgres_client.truncate(config.quiz_comma_labels_table,
+  config.quiz_labelings_table, config.article_commas_table,
+  config.articles_table)` directly — **not** four separate per-repository
+  `.truncate()` calls, which was the first implementation attempt (`article_commas`/
+  `articles` only) and crashes against a live Postgres for exactly the FK reason
+  above; `quiz_comma_labels` (added on `feat/backend` after that first attempt,
+  spec 0012) has a live FK into `article_commas`, so the original two-table
+  statement is broken against the current schema, not merely incomplete. The
+  cross-table call bypasses the repository layer's `truncate()` for this one case
+  since the capability is client-level, not repository-level. The branch also
+  guards the wipe: `_validated_labeling_count` (CLI-only helper,
+  `cli/commands/reset.py`, counts `quiz_labelings` rows with `validated_at IS NOT
+  NULL`) makes it refuse with `SystemExit` when a human-validated labeling would
+  be destroyed, unless `--force` is passed — the preview stays fully
+  connection-free per FR-17 (no live count shown without `--apply`).
+  **`reset quiz` has the identical bug today, unfixed** (spec 0012 Task 9,
+  decisions D5/D15 amending AD-28 — that fix addressed only the knowledge path):
+  `quiz_labelings.quiz_question_id REFERENCES quiz_questions ON DELETE CASCADE`,
+  so the `quiz` branch's `TRUNCATE quiz_question_embeddings, quiz_questions` fails
+  the same way whenever `quiz_labelings` holds any row. Deliberately deferred, not
+  an oversight — a future change must widen that statement to name
+  `quiz_comma_labels`/`quiz_labelings` too and add the same validated-labeling
+  guard. `run_reset`'s `quiz` branch carries a code comment recording this.
 
 ## Main schema
 
@@ -443,3 +451,13 @@ spec 0011 phase 2, T-1/T-2/T-9); three new tables — `labeling_runs`, `quiz_lab
 parent row and its children atomically via a single data-modifying CTE, worked around
 `PostgresClient` having no transaction API (PD-15). Noted the `truncate()` convention now
 also covers `quiz_comma_labels`/`quiz_labelings`'s new FKs.*
+
+*Last updated: 2026-08-25 — verified against commit `b6e34f4d` (working tree ahead:
+spec 0012 Task 9, FR-17/AD-28); `reset knowledge` widened to a single four-table
+`TRUNCATE` (`quiz_comma_labels, quiz_labelings, article_commas, articles`) — the
+prior two-table statement was already broken against this schema once
+`quiz_comma_labels` landed, not just prospectively incomplete — and gained a
+`--force`-overridable guard refusing to destroy a human-validated `quiz_labelings`
+row. `reset quiz` has the identical unfixed bug (`quiz_labelings.quiz_question_id`
+FK) and was deliberately left alone (D5/D15 errata on AD-28): fixing it is a future
+change, flagged by a code comment on `run_reset`'s `quiz` branch.*

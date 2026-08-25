@@ -90,12 +90,30 @@ or `tests/`), so it has no local test mirror here — see
 No `__init__.py` in any test directory — see
 `.claude/rules/code-conventions.md` for the rule and rationale.
 
-**`tests/conftest.py` is the single, root-level fixture registry for the
-suite** — there is no other `conftest.py` anywhere else in the project. It
+**`tests/conftest.py` is the root-level fixture registry for the suite**,
+holding every fixture shared broadly enough to be worth global visibility. It
 defines `RecordingProgressReporter`, a test double for the `ProgressReporter`
 protocol that records every call `(method_name, args)` in order (with a
 `count(method)` helper), and the `progress_recorder` fixture that hands out a
 fresh instance per test.
+
+**First exception (spec 0012 Task 9): `tests/guidami_ai_patente_ingestor/cli/
+commands/conftest.py`**, scoped to that one directory's tests — the fixtures
+only make sense for `reset knowledge`'s integration tests (seeding the
+golden-set tables and asserting on the validated-labeling guard), so they'd be
+dead weight on every other test module if hoisted to the root registry. It
+defines `ingestor_test_config` (`IngestorConfig.load(postgres=
+postgres_test_config)`), and two labeling-chain seed fixtures built on it —
+`seeded_labeling` and `seeded_validated_labeling` — each inserting one
+article → comma → quiz question → labeling run → `quiz_labelings` row (the
+validated variant sets `validated_at`/`validated_by`, satisfying the
+`quiz_labelings_validation_complete` CHECK), truncating the same
+`_GOLDEN_SET_TABLES` tuple as `tests/labeling/repositories/
+test_golden_set_schema.py`'s fixture before and after. A local, directory-
+scoped `conftest.py` is the right call whenever a fixture's only sensible
+callers already live under one `tests/<pkg>/.../` subtree — prefer the root
+registry by default, but don't force a fixture upward past the tests that
+actually need it.
 
 It also defines the two fixtures every Postgres-backed integration test
 relies on for isolation, both session-scoped:
@@ -165,3 +183,9 @@ introduced for `retrieval_evaluation`'s "no private-module import from the inges
 reuse of the `ast`-based import-boundary convention: four assertions guarding
 `labeling/`'s edges (no `retrieval_evaluation`, no `pywire`, no `guidami_ai_patente`) plus
 one guarding `domain/` never importing back from `labeling/`.*
+
+*Last updated: 2026-08-25 — verified against commit `b6e34f4d` (working tree ahead:
+spec 0012 Task 9, FR-17/AD-28); `tests/guidami_ai_patente_ingestor/cli/commands/
+conftest.py` is the suite's first non-root `conftest.py` — corrected the prior
+"there is no other `conftest.py`" claim and documented why a directory-scoped one
+was the right call here (fixtures only meaningful to `reset knowledge`'s tests).*
