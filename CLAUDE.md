@@ -113,6 +113,16 @@ holds the 7099 enriched quiz files (ADR 0012, superseding ADR 0005).
 Copy `.env.example` to `.env` and fill in:
 - `POSTGRES__USER` / `POSTGRES__PASSWORD` — DB credentials (double underscore = nested delimiter for `IngestorConfig.postgres`)
 - `OPENROUTER_API_KEY` — required for embedding and LLM steps; read by litellm from the environment
+- `AGENTS_DIR` — directory holding the agent YAML files. Has **no default** on either config
+  root (`IngestorConfig.agents_dir` and `LabelingConfig.agents_dir`, spec 0012, AD-22/AD-27):
+  a missing value is a loud `ValidationError` at startup, never a silent fallback, because the
+  batch labeler and the live judge must load the identical prompt file for their
+  configuration-epoch hash (`prompt_version`) to mean the same thing on both sides.
+
+The labeling/judge configuration epoch (`judge_model`, `prompt_version`, `candidate_variant`,
+`dense_k`, `text_k`, `lexeme_fields`) is read from a single file, `configs/labeling.yaml`, via
+`LabelingConfig` — embedded in both `IngestorConfig` and the app's `AppConfig` so the two
+roots can never independently drift (see `docs/second-brain/patterns.md` and ADR 0020).
 
 ## Architecture
 

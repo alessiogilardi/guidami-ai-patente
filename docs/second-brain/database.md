@@ -60,6 +60,19 @@
   NULL`) makes it refuse with `SystemExit` when a human-validated labeling would
   be destroyed, unless `--force` is passed — the preview stays fully
   connection-free per FR-17 (no live count shown without `--apply`).
+- **`ingest reset quiz` is known broken, deliberately deferred (spec 0012,
+  AD-28 addressed only the `knowledge` branch above).** `quiz_labelings.
+  quiz_question_id` references `quiz_questions` with `ON DELETE CASCADE`
+  (same table above), so `cli/commands/reset.py`'s `quiz` branch — still
+  `postgres_client.truncate(config.quiz_question_embeddings_table,
+  config.quiz_questions_table)`, a two-table statement — fails against the
+  live schema with the identical FK error the `knowledge` branch was fixed
+  for, and does so today with 14 rows present in `quiz_labelings`. The fix
+  is the same shape (name `quiz_comma_labels` and `quiz_labelings` in the
+  same `TRUNCATE`, add the validated-labeling guard) and is out of scope for
+  this plan — recorded in code as a `KNOWN BROKEN, deferred` comment at the
+  `case "quiz":` branch rather than silently left to surface as a bare FK
+  error.
 
 ## Main schema
 
@@ -451,3 +464,8 @@ prior two-table statement was already broken against this schema once
 `quiz_comma_labels` landed, not just prospectively incomplete — and gained a
 `--force`-overridable guard refusing to destroy a human-validated `quiz_labelings`
 row.*
+
+*Last updated: 2026-08-25 — verified against commit `c77de38a` (quiz-flow-api-phase1
+plan Task 11); recorded that `ingest reset quiz` is known broken for the identical FK
+reason `reset knowledge` was, deliberately deferred rather than fixed in this plan
+(spec 0012, AD-28 — the AD's own fix covered only the `knowledge` branch).*

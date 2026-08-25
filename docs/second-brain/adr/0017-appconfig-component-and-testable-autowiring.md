@@ -139,3 +139,78 @@ resolves to the same wrapped connection.
   `PostgresClient(postgres_test_config)`, mirroring the ingestion tests' existing pattern
   (`tests/guidami_ai_patente_ingestor/orchestrators/test_quiz_flows_integration.py`,
   `tests/commons/repositories/db/test_quiz_read_repository.py`).
+
+## Amendment (2026-08-26, proposal — not yet accepted, quiz-flow-api-phase1 plan Task 11)
+
+This ADR was written against `pywire` v0.3.x, whose only public registration API was
+`register()`/`@component`-style class registration plus the `Autowired[T]`
+constructor-parameter override this ADR's Decision item 3 relies on. `pyproject.toml`
+now pins `pywire` at `v0.5.0` (`0613545d`, pre-dating this plan), whose `Container`
+(`.venv/Lib/site-packages/pywire/container.py`) ships three methods that did not exist
+when this ADR's Context established "there is no seam through which an
+externally-constructed `AppConfig` instance ... could be handed to the container":
+
+- **`register_instance(instance, *, as_type=None)`** (`container.py:157-198`) —
+  registers an already-built object as the singleton for its own type (or `as_type`).
+  Stored as a factory returning the object handed in, so `clear_instances()` treats it
+  uniformly with every other registration. This is exactly the seam this ADR's Context
+  found missing: `main.py` can now build `AppConfig()` once, the way
+  `rules/python/architecture.md`'s general "config loaded at the entry point" rule
+  already asks for, and hand the instance to the container via `register_instance`,
+  rather than requiring `AppConfig` to be a zero-arg `@component` that constructs
+  itself lazily on first resolution.
+- **`register_factory(target_type, factory)`** (`container.py:121-155`) — registers a
+  callable that builds `target_type`'s singleton on first resolution, for objects the
+  container cannot construct itself. A narrower-scoped alternative to
+  `register_instance` for callers that want lazy construction without a full
+  `@component` class.
+- **`clear_instances()`** (`container.py:255-273`) — drops every cached singleton while
+  keeping every registration, explicitly intended (per its own docstring) "for test
+  isolation of the module-level default container ... and for any caller that wants a
+  fresh object graph without rebuilding the registry." This directly addresses the
+  motivation behind this ADR's Decision item 3 (the constructor-parameter testability
+  exception): a test no longer needs `QuizAnswerChecker(repository=mock)` to dodge a
+  real Postgres connection cascading through field-only `Autowired` resolution — it can
+  register a mock/factory before resolution and call `clear_instances()` between tests
+  instead.
+
+**What this proposes superseding, if accepted:**
+
+- **Decision item 1** (`AppConfig` becomes a zero-arg `@component`, constructing itself
+  lazily from `.env`/YAML on first container resolution) — superseded by: `main.py`
+  loads `AppConfig` once, at the entry point, exactly as
+  `rules/python/architecture.md`'s general rule already prescribes for every other
+  package in this repo, and registers that single instance via
+  `container.register_instance(app_config)`. This closes the exact deviation this ADR's
+  Consequences flagged as a cost: `AppConfig` no longer "loads itself, lazily ... not
+  necessarily at `main.py` startup" — plan 2 makes `main.py` construct it and thread it
+  into the container explicitly, the way every other root config in this codebase is
+  already loaded.
+- **Decision item 3** (a class needing a substitute dependency declares it as an
+  `Autowired[T]` *constructor parameter* rather than a class-level field, as a scoped
+  testability exception) — superseded by: tests register a mock via
+  `register_instance`/`register_factory` against a container instance (or the default
+  container, cleared with `clear_instances()` before/after), and resolve the
+  component-under-test normally through field-only `Autowired[T]`. This removes the
+  need for the exception ADR 0017 carved out of `pywire-di.md`'s "class-level fields,
+  not constructor parameters" default — `QuizAnswerChecker.repository` could revert to
+  a field, tested by pre-registering a mock repository rather than by passing one in
+  through `__init__`.
+- **Decision item 2** (components needing constructor arguments build them inside their
+  own `__init__`, after their own `Autowired` fields are set — `PostgresClientProvider`
+  wrapping `PostgresClient`) is **not** affected: it addresses a different problem (an
+  object pywire cannot construct zero-argument at all, e.g. one needing a
+  `PostgresConnectionConfig`), which `register_factory`/`register_instance` do not
+  independently solve any more cleanly than the existing pattern already does.
+
+**Why this is a proposal, not an accepted change:** `register_instance`/
+`register_factory`/`clear_instances` are new library capability, not yet exercised by
+any code in this repository — no test currently calls `clear_instances()`, and no
+entry point currently calls `register_instance()`. Adopting this amendment means
+rewriting `main.py`'s composition-root wiring and `QuizAnswerChecker`'s test suite,
+neither of which is in scope for the quiz-flow-api-phase1 plan (an ingestion-side,
+non-HTTP plan). This amendment is filed here — as the Second Brain's record that the
+capability gap motivating ADR 0017 no longer exists — for the user to accept,
+edit, or reject before any code changes to `src/guidami_ai_patente/` are made on
+its basis. `Status` above is left as this ADR's pre-existing value, not `Accepted`,
+until that decision is made.

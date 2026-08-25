@@ -953,6 +953,15 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
   `AppConfig` read `configs/ingestor_config.yaml` directly — couples the app to the
   ingestor's configuration file, which ADR 0015's package scoping exists to avoid.
 
+> **Errata (2026-08-25):** the implementation clause "no epoch field may be declared
+> independently on either root" over-reached. `agents_dir` is *also* declared on
+> `IngestorConfig`, because `quiz_flows.py:344` loads the quiz enrichment agents from it
+> and those prompts enter no epoch; routing them through a *labeling* config would make
+> `ingest prepare quiz` fail for a reason unrelated to the judge. Both fields are
+> defaultless and both aliased to `AGENTS_DIR`. The AD's rationale is unchanged: the
+> single-source property comes from one defaultless env var — no second default, no
+> second YAML key — not from a single field declaration.
+
 ### AD-28: A corpus reset invalidates labelings and refuses to discard human validation
 - **Rationale:** `quiz_comma_labels.article_comma_id` references `article_commas` with
   `ON DELETE CASCADE`, and Postgres refuses `TRUNCATE` on a table with an inbound foreign
@@ -974,6 +983,12 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
   nothing outside its scope, but then the breakage must be recorded as a known-broken
   command rather than left to surface as a bare foreign-key error nobody was warned
   about.
+
+> **Errata (2026-08-25):** this AD addressed only `ingest reset knowledge`.
+> `ingest reset quiz` has the identical defect — `quiz_labelings.quiz_question_id`
+> references `quiz_questions ON DELETE CASCADE`, so `TRUNCATE quiz_question_embeddings,
+> quiz_questions` fails the same way, and does so today with 14 rows present. Deferred to
+> a future change, deliberately and not by oversight.
 
 ### AD-29: The golden set records the judge's verdict, not the writer's success
 - **Rationale:** FR-6 ("persisted before the response is returned") and the first draft

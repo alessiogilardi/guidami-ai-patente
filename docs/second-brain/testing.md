@@ -146,6 +146,21 @@ T-15, after `EnrichedArticleModel` was deleted).
 Naming: `test_*.py`, generally one test file per source file/class (e.g.
 `test_article_cleaner.py` for `article_cleaner.py`).
 
+**Third-party exception-hierarchy canary** (`tests/commons/clients/
+test_postgres_client_integration.py::test_pool_failures_are_catchable_as_
+psycopg_errors`, spec 0012, D12): a plain (non-integration) unit test
+asserting `issubclass(psycopg_pool.PoolTimeout, psycopg.Error)` and the same
+for `PoolClosed` — not behaviour of this project's own code, but a pin on an
+upstream library invariant `status.py`/`prepare.py` both rely on when they
+catch broad `psycopg.Error` to report "database unreachable". If a future
+`psycopg_pool` release ever stops `PoolTimeout` subclassing `psycopg.Error`,
+this test fails immediately at that dependency bump instead of the
+regression only surfacing as an uncaught traceback the next time a caller
+hits an exhausted pool. Same file also has
+`test_an_unreachable_database_fails_at_construction_not_at_first_query`
+(integration-marked, D3): asserts `PostgresClient(dead_config)` itself
+raises `psycopg.Error`, not a later `.fetch()` call.
+
 **Import-boundary test via `ast`** (`tests/retrieval_evaluation/test_wiring.py::
 test_the_labeler_imports_no_private_ingestor_module`, spec 0011 phase 2): parses
 every `.py` file under a package's source tree with `ast`, collects every
@@ -189,3 +204,8 @@ spec 0012 Task 9, FR-17/AD-28); `tests/guidami_ai_patente_ingestor/cli/commands/
 conftest.py` is the suite's first non-root `conftest.py` — corrected the prior
 "there is no other `conftest.py`" claim and documented why a directory-scoped one
 was the right call here (fixtures only meaningful to `reset knowledge`'s tests).*
+
+*Last updated: 2026-08-25 — verified against commit `c77de38a` (quiz-flow-api-phase1
+plan Task 11); documented the third-party exception-hierarchy canary test in
+`test_postgres_client_integration.py` (D12) alongside the existing fail-fast-at-
+construction test (D3).*
