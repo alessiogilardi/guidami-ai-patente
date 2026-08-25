@@ -22,14 +22,19 @@ repo/
 │   │                                #   (RunArtifactWriter + models/: RunManifest base,
 │   │                                #   ScrapeManifest; RunArtifactWriterConfig removed);
 │   │                                #   sibling of ai/observability/, not AI-specific
-│   ├── domain/                     # Shared domain entities/models/enums (persisted + intermediate),
-│   │                                #   models/retrieval/: read DTOs (RetrievedComma,
+│   ├── domain/                     # Shared domain entities/models/enums/validators (persisted +
+│   │                                #   intermediate), models/retrieval/: read DTOs (RetrievedComma,
 │   │                                #   QuizEvaluationRow) — carry `id`, unlike entities;
 │   │                                #   entities/: knowledge/, quiz/, observability/, evaluation/
 │   │                                #   (LabelingRunEntity, QuizLabelingEntity,
 │   │                                #   QuizCommaLabelEntity — spec 0011 phase 2);
-│   │                                #   enums/: closed vocabularies, e.g. LexemeField —
-│   │                                #   the project's first enum (spec 0011 phase 2);
+│   │                                #   enums/: closed vocabularies, e.g. LexemeField,
+│   │                                #   LabelingRunOrigin (spec 0012, AD-8);
+│   │                                #   validators/: shared invariant-check functions reused
+│   │                                #   across entities (require_canonical_lexeme_fields — spec
+│   │                                #   0012, D8/D13; new package, first occupant); domain/ never
+│   │                                #   imports labeling/ (not created yet), so shared logic that
+│   │                                #   labeling/ will also need lives here, not there;
 │   │                                #   no I/O or business logic
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
 │   │                                #   normative corpus (CdS/CAP/Regolamento) and quiz bank
@@ -513,3 +518,8 @@ conventions). `specs/` and the top-level `plans/` are gone; their contents
 moved to `docs/superpowers/specs/` and `docs/superpowers/plans/` under the new
 `YYYY-MM-DD-<topic>[-design|-phaseN-plan].md` naming. The `specs/` paragraph and the
 `docs/` tree-comment above were rewritten accordingly.*
+
+*Last updated: 2026-08-25 — verified against commit `2cc0710a` (working tree ahead: spec
+0012, folded commit tasks 7+2+8); `domain/` gained a new `validators/` sub-package
+(`require_canonical_lexeme_fields`, shared by `LabelingRunEntity` now and the future
+`LabelingEpoch` in `labeling/`) and a second enum, `LabelingRunOrigin`.*

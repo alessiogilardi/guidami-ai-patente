@@ -111,6 +111,12 @@ def main() -> None:
                 candidate_variant=labeling.candidate_variant,
                 dense_k=labeling.dense_k,
                 text_k=labeling.text_k,
+                # Stopgap (spec 0012, D9): the sanctioned constructor for this entity
+                # is LabelingEpochMapper (Task 4), which does not exist yet. Sorting
+                # here mirrors the rule it will encapsulate. `origin` needs no explicit
+                # value: LabelingRunOrigin.BATCH is the entity's default and this run
+                # is a batch run.
+                lexeme_fields=tuple(sorted(field.value for field in labeling.lexeme_fields)),
                 shuffle_seed=seed,
                 corpus_commit=corpus_commit(config.project_root),
                 corpus_comma_count=corpus_repository.comma_count(),

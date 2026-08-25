@@ -13,10 +13,12 @@ _RUN_COLUMNS = (
     "candidate_variant",
     "dense_k",
     "text_k",
+    "lexeme_fields",
     "shuffle_seed",
     "corpus_commit",
     "corpus_comma_count",
     "question_limit",
+    "origin",
 )
 
 # Insertable columns of `quiz_labelings`, in table order. `id` and `created_at` are
@@ -29,13 +31,17 @@ _LABELING_COLUMNS = ("run_id", "quiz_question_id", "rationale")
 class GoldenSetWriteRepository:
     """Insert-only repository over the three golden-set tables (AD-10).
 
-    Issues `INSERT` statements only — no `UPDATE`, no upsert/conflict-handling
-    clause, no `DELETE`, no DDL. A run is never corrected in place: a re-labeling is
-    a new run (AD-5 historizes rather than updates).
+    Issues `INSERT` statements only — no `UPDATE`, no `DELETE`, no DDL. A run is
+    never corrected in place: a re-labeling is a new run (AD-5 historizes rather than
+    updates). `insert_labeling` is idempotent under `UNIQUE (run_id,
+    quiz_question_id)` (AD-19, spec 0012): a repeated write for the same pair is
+    silently discarded via `ON CONFLICT DO NOTHING`, so two racing writers never
+    raise, and the loser's `None` return signals "read the existing row instead".
 
-    A labeling's outcome is derived, never stored: zero `quiz_comma_labels` children
-    means "the corpus does not justify this question", which is distinct from a
-    missing `quiz_labelings` row for a question, meaning "never labeled" (AD-6).
+    `has_supporting_commas` is the derived outcome of a labeling (spec 0012, FR-15/
+    AD-10), computed by `insert_labeling` itself from the very array that feeds its
+    children — never supplied by a caller, so the flag and its rows cannot
+    physically disagree.
 
     `insert_labeling` writes the parent `quiz_labelings` row and its
     `quiz_comma_labels` children in a single statement, atomic despite the
@@ -69,29 +75,41 @@ class GoldenSetWriteRepository:
             columns=sql.SQL(", ").join(sql.Identifier(column) for column in _RUN_COLUMNS),
             placeholders=sql.SQL(", ").join(sql.Placeholder() for _ in _RUN_COLUMNS),
         )
-        rows = self._client.fetch(query, [getattr(run, column) for column in _RUN_COLUMNS])
+        # psycopg adapts a `tuple` to a Postgres record, not an array, so `lexeme_fields`
+        # must be passed as a `list` to reach `TEXT[]` correctly.
+        params = [getattr(run, column) for column in _RUN_COLUMNS]
+        params[_RUN_COLUMNS.index("lexeme_fields")] = list(run.lexeme_fields)
+        rows = self._client.fetch(query, params)
         return int(rows[0][0])
 
     def insert_labeling(
         self, labeling: QuizLabelingEntity, labels: Sequence[QuizCommaLabelEntity]
-    ) -> int:
+    ) -> int | None:
         """Inserts one `quiz_labelings` row and its `quiz_comma_labels` children.
 
-        Both are written by a single data-modifying CTE (PD-15), so the pair is
-        atomic: a failing child insert (e.g. a foreign-key violation) leaves no
-        parent row either. An empty `labels` sequence needs no branch — `unnest`
-        over four empty arrays yields no rows, so the child `INSERT` inserts nothing
-        and the parent is written alone, which is the FR-8/AD-6 "no justifying
-        comma" outcome, not an error.
+        Both are written by a single data-modifying CTE, so the pair is atomic: a
+        failing child insert (e.g. a foreign-key violation) leaves no parent row
+        either. An empty `labels` sequence needs no branch — `unnest` over four empty
+        arrays yields no rows, so the child `INSERT` inserts nothing and the parent is
+        written alone, which is the "no justifying comma" outcome, not an error.
 
-        The `children` CTE is never selected from; that is deliberate and required.
-        PostgreSQL executes a data-modifying CTE exactly once whether or not it is
-        referenced, and this statement must return the parent id, not the children.
+        `has_supporting_commas` is derived here, from the very array that feeds the
+        children (spec 0012, FR-15/AD-10): one statement, one array, so the flag and
+        its rows cannot physically disagree. No caller supplies it, and the field is
+        deliberately absent from `QuizLabelingEntity`.
+
+        Returns:
+            The new labeling's id, or `None` when another writer already inserted a
+            labeling for this `(run_id, quiz_question_id)` pair. `None` is not an
+            error (AD-19): the caller re-reads the current labeling instead. The
+            `children` CTE needs no branch for that case — it cross-joins `parent`,
+            so an empty parent inserts nothing.
         """
         query = sql.SQL(
             "WITH parent AS ("
-            "INSERT INTO {labelings} ({labeling_columns}) "
-            "VALUES ({labeling_placeholders}) RETURNING id"
+            "INSERT INTO {labelings} ({labeling_columns}, has_supporting_commas) "
+            "VALUES ({labeling_placeholders}, cardinality(%s::bigint[]) > 0) "
+            "ON CONFLICT (run_id, quiz_question_id) DO NOTHING RETURNING id"
             "), children AS ("
             "INSERT INTO {labels} "
             "(labeling_id, article_comma_id, judge_rank, dense_rank, text_rank) "
@@ -108,17 +126,21 @@ class GoldenSetWriteRepository:
             ),
             labeling_placeholders=sql.SQL(", ").join(sql.Placeholder() for _ in _LABELING_COLUMNS),
         )
+        # Named once and reused for both the `cardinality()` check and the `unnest()`
+        # call, rather than reconstructing the same list twice.
+        comma_ids = [label.article_comma_id for label in labels]
         params: list[object] = [getattr(labeling, column) for column in _LABELING_COLUMNS]
+        params.append(comma_ids)
         params.extend(
             [
-                [label.article_comma_id for label in labels],
+                comma_ids,
                 [label.judge_rank for label in labels],
                 [label.dense_rank for label in labels],
                 [label.text_rank for label in labels],
             ]
         )
         rows = self._client.fetch(query, params)
-        return int(rows[0][0])
+        return int(rows[0][0]) if rows else None
 
     def outcome_counts(self, run_id: int) -> tuple[int, int]:
         """Returns `(with_commas, without_commas)` labeling counts for `run_id`.

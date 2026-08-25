@@ -41,11 +41,19 @@ def test_the_labeling_entry_point_is_registered() -> None:
 
 
 def test_the_golden_set_write_path_issues_inserts_only() -> None:
+    """`ON CONFLICT DO NOTHING` is allowed since spec 0012 (AD-19).
+
+    It discards a duplicate write, it never updates one, so the repository stays
+    insert-only in spirit. A true upsert (`ON CONFLICT ... DO UPDATE`, which always
+    contains the substring `UPDATE `) remains forbidden, alongside `DELETE`,
+    `TRUNCATE` and DDL.
+    """
     repository_file = _RETRIEVAL_EVALUATION_SRC / "repositories" / "golden_set_write_repository.py"
     source_text = repository_file.read_text(encoding="utf-8").upper()
 
     assert "INSERT" in source_text
-    for forbidden in ("UPDATE ", "DELETE ", "ON CONFLICT", "TRUNCATE", "ALTER ", "CREATE "):
+    assert "ON CONFLICT" in source_text
+    for forbidden in ("UPDATE ", "DELETE ", "TRUNCATE", "ALTER ", "CREATE "):
         assert forbidden not in source_text
 
 

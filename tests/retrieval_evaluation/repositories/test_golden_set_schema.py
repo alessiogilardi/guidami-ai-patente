@@ -1,7 +1,8 @@
-"""Schema tests for the three golden-set tables (spec 0011, T-1)."""
+"""Schema tests for the three golden-set tables (spec 0011, T-1; spec 0012, AD-8/AD-9/AD-10)."""
 
 from collections.abc import Iterator
 
+import psycopg
 import pytest
 from psycopg import sql
 
@@ -36,6 +37,16 @@ _EXPECTED_COLUMNS: dict[tuple[str, str], tuple[str, str]] = {
     ("quiz_comma_labels", "dense_rank"): ("integer", "YES"),
     ("quiz_comma_labels", "text_rank"): ("integer", "YES"),
 }
+_EXPECTED_COLUMNS.update(
+    {
+        ("labeling_runs", "origin"): ("text", "NO"),
+        ("labeling_runs", "lexeme_fields"): ("ARRAY", "NO"),
+        ("labeling_runs", "corpus_commit"): ("text", "YES"),
+        ("quiz_labelings", "validated_at"): ("timestamp with time zone", "YES"),
+        ("quiz_labelings", "validated_by"): ("text", "YES"),
+        ("quiz_labelings", "has_supporting_commas"): ("boolean", "NO"),
+    }
+)
 
 
 @pytest.fixture
@@ -119,3 +130,71 @@ def test_golden_set_constraints_exist(client: PostgresClient) -> None:
     assert [row[0] for row in primary_key_columns] == ["labeling_id", "article_comma_id"]
 
     assert _EXPECTED_COLUMNS[("labeling_runs", "question_limit")][1] == "YES"
+
+
+@pytest.mark.integration
+def test_the_live_configuration_epoch_is_unique(client: PostgresClient) -> None:
+    rows = client.fetch(
+        sql.SQL("SELECT indexdef FROM pg_indexes WHERE indexname = %s"),
+        ["uq_labeling_runs_live_config"],
+    )
+
+    assert len(rows) == 1
+    indexdef = rows[0][0]
+    for column in (
+        "judge_model",
+        "prompt_version",
+        "candidate_variant",
+        "dense_k",
+        "text_k",
+        "lexeme_fields",
+    ):
+        assert column in indexdef
+    assert "origin = 'live'" in indexdef.replace('"', "")
+
+
+@pytest.mark.integration
+def test_the_hot_read_by_question_is_indexed(client: PostgresClient) -> None:
+    rows = client.fetch(
+        sql.SQL("SELECT indexdef FROM pg_indexes WHERE indexname = %s"),
+        ["idx_quiz_labelings_question_recent"],
+    )
+
+    assert len(rows) == 1
+    assert "quiz_question_id" in rows[0][0]
+
+
+@pytest.mark.integration
+def test_a_half_filled_validation_is_refused(client: PostgresClient) -> None:
+    with pytest.raises(psycopg.errors.CheckViolation):
+        client.execute(
+            sql.SQL(
+                "INSERT INTO quiz_labelings (run_id, quiz_question_id, rationale, validated_at) "
+                "VALUES (1, 1, 'x', now())"
+            )
+        )
+
+
+@pytest.mark.integration
+def test_a_batch_run_without_a_corpus_commit_is_refused(client: PostgresClient) -> None:
+    with pytest.raises(psycopg.errors.CheckViolation):
+        client.execute(
+            sql.SQL(
+                "INSERT INTO labeling_runs (judge_model, prompt_version, candidate_variant, "
+                "dense_k, text_k, lexeme_fields, shuffle_seed, corpus_comma_count, origin) "
+                "VALUES ('m', 'v', 'topic_text', 1, 1, ARRAY['topic'], 1, 1, 'batch')"
+            )
+        )
+
+
+@pytest.mark.integration
+def test_an_unknown_origin_is_refused(client: PostgresClient) -> None:
+    with pytest.raises(psycopg.errors.CheckViolation):
+        client.execute(
+            sql.SQL(
+                "INSERT INTO labeling_runs (judge_model, prompt_version, candidate_variant, "
+                "dense_k, text_k, lexeme_fields, shuffle_seed, corpus_commit, "
+                "corpus_comma_count, origin) "
+                "VALUES ('m', 'v', 'topic_text', 1, 1, ARRAY['topic'], 1, 'c', 1, 'guess')"
+            )
+        )

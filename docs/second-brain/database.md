@@ -142,30 +142,48 @@ llm_call_logs
 ├── INDEX idx_llm_call_logs_created_at (created_at)
 └── INDEX idx_llm_call_logs_caller (caller)
 
-labeling_runs                               -- one row per golden-set labeling pass (spec 0011 phase 2)
+labeling_runs                               -- one row per golden-set labeling pass (spec 0011 phase 2;
+                                             -- origin/lexeme_fields/nullable corpus_commit: spec 0012, AD-8)
 ├── id (PK, BIGSERIAL)
 ├── judge_model (TEXT, NOT NULL)
 ├── prompt_version (TEXT, NOT NULL)         -- sha256(system + user)[:16], see run_provenance.py
 ├── candidate_variant (TEXT, NOT NULL)      -- quiz_question_embeddings.variant used for retrieval
 ├── dense_k (INT, NOT NULL)
 ├── text_k (INT, NOT NULL)
+├── lexeme_fields (TEXT[], NOT NULL)        -- sixth epoch field (spec 0012); canonicalised sorted
+│                                           -- (LabelingRunEntity / require_canonical_lexeme_fields),
+│                                           -- compared as a whole array by FR-8's precedence query
 ├── shuffle_seed (BIGINT, NOT NULL)         -- seeds both the presentation shuffle and --limit's subset draw
-├── corpus_commit (TEXT, NOT NULL)          -- `git rev-parse HEAD` at run time
+├── corpus_commit (TEXT, nullable)          -- `git rev-parse HEAD` at run time; NULL only for a live run
 ├── corpus_comma_count (INT, NOT NULL)      -- count(*) over article_commas, unfiltered
 ├── question_limit (INT, nullable)          -- NULL means an unrestricted (full) pass
-└── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
+├── origin (TEXT, NOT NULL DEFAULT 'batch') -- CHECK IN ('batch', 'live'); LabelingRunOrigin
+├── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
+├── CHECK (origin <> 'batch' OR corpus_commit IS NOT NULL)  -- labeling_runs_batch_has_corpus_commit
+└── UNIQUE INDEX uq_labeling_runs_live_config
+        (judge_model, prompt_version, candidate_variant, dense_k, text_k, lexeme_fields)
+        WHERE origin = 'live'               -- one live run per configuration epoch (spec 0012, AD-8/FR-9)
 
 quiz_labelings                              -- one row per labeled question within a run
 ├── id (PK, BIGSERIAL)
 ├── run_id (BIGINT, NOT NULL, REFERENCES labeling_runs(id) ON DELETE CASCADE)
 ├── quiz_question_id (BIGINT, NOT NULL, REFERENCES quiz_questions(id) ON DELETE CASCADE)
 ├── rationale (TEXT, NOT NULL)              -- the judge's own rationale, empty-list case included
+├── validated_at (TIMESTAMPTZ, nullable)    -- human validation of the labeling as a whole (spec 0012, AD-9)
+├── validated_by (TEXT, nullable)
+├── has_supporting_commas (BOOLEAN, NOT NULL DEFAULT FALSE)  -- denormalised outcome (spec 0012, AD-10);
+│                                           -- computed by GoldenSetWriteRepository.insert_labeling from the
+│                                           -- same comma-id array that feeds quiz_comma_labels, never
+│                                           -- caller-supplied — see patterns.md
 ├── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
 ├── UNIQUE (run_id, quiz_question_id)
-└── INDEX idx_quiz_labelings_run_id (run_id)
-    -- no outcome column by design: a labeling's outcome is derived by counting its
-    -- quiz_comma_labels children (0 = "corpus doesn't justify it", AD-6), never stored,
-    -- so it cannot drift from the children it describes
+├── CHECK ((validated_at IS NULL) = (validated_by IS NULL))  -- quiz_labelings_validation_complete
+├── INDEX idx_quiz_labelings_run_id (run_id)
+└── INDEX idx_quiz_labelings_question_recent (quiz_question_id, created_at DESC)  -- hot read-by-question path
+    -- pre-spec-0012 the outcome had no column at all (derived purely by counting
+    -- quiz_comma_labels children); has_supporting_commas denormalises that same fact
+    -- for a hot read path, but the derivation rule (0 children = "corpus doesn't
+    -- justify it") and its transactional computation are unchanged, see AD-6/AD-10
 
 quiz_comma_labels                           -- the judge's per-candidate verdicts (<=3 per labeling)
 ├── labeling_id (BIGINT, NOT NULL, REFERENCES quiz_labelings(id) ON DELETE CASCADE)
@@ -298,6 +316,14 @@ Two paths now exist, and a schema change must take **both**:
    generated column cannot be added with `ADD COLUMN IF NOT EXISTS`, so each
    `ALTER TABLE` sits inside a `DO $$` block guarded on `information_schema.columns`,
    while the indexes use plain `CREATE INDEX IF NOT EXISTS`.
+   `db/migrations/0012_quiz_flow_api.sql` (spec 0012) shows a third shape — a plain
+   column takes `ADD COLUMN IF NOT EXISTS`, but a named `CHECK`/`UNIQUE` constraint has
+   no `IF NOT EXISTS` form at all, so each is guarded by a `DO $$` block checking
+   `pg_constraint.conname` first. It also backfills two columns
+   (`labeling_runs.lexeme_fields` from the config value the pre-existing runs were
+   produced under, `quiz_labelings.has_supporting_commas` from the existing
+   `quiz_comma_labels` child count) before dropping the temporary `DEFAULT` that made
+   the `ADD COLUMN ... NOT NULL` step possible on non-empty tables.
 
 Because there is no tool enforcing it, the two paths can silently diverge — a
 migrated database and a freshly initialised one drifting apart is the standing risk
@@ -398,6 +424,17 @@ spec 0011 phase 1 round 2, AD-13/AD-14); corrected the full-text-match paragraph
 two generated columns are no longer matched with a plain cross-table `OR`, which
 PostgreSQL can never turn into an index condition; `text_match_top_k` now unions two
 single-relation-filtered id sets instead (ADR 0018).*
+
+*Last updated: 2026-08-25 — verified against commit `2cc0710a` (working tree ahead:
+spec 0012, folded commit tasks 7+2+8); `labeling_runs` gained `origin` (batch/live
+provenance) and `lexeme_fields` (the sixth configuration-epoch field, canonicalised
+sorted) plus the partial unique index `uq_labeling_runs_live_config` enforcing one
+live run per epoch; `corpus_commit` became nullable, guarded by
+`labeling_runs_batch_has_corpus_commit` so a batch run still requires it.
+`quiz_labelings` gained `validated_at`/`validated_by` (paired by
+`quiz_labelings_validation_complete`) and the denormalised `has_supporting_commas`
+outcome flag, plus `idx_quiz_labelings_question_recent` for the hot read-by-question
+path. New migration `db/migrations/0012_quiz_flow_api.sql`.*
 
 *Last updated: 2026-08-21 — verified against commit `e4977a94` (working tree ahead:
 spec 0011 phase 2, T-1/T-2/T-9); three new tables — `labeling_runs`, `quiz_labelings`,

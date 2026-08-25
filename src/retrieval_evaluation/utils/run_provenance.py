@@ -15,9 +15,12 @@ def prompt_version(system: str, user: str) -> str:
 def corpus_commit(project_root: Path) -> str:
     """Returns the repository's current commit, for the run's corpus state (FR-11).
 
-    Lets `subprocess.CalledProcessError` and `FileNotFoundError` propagate:
-    `labeling_runs.corpus_commit` is `NOT NULL`, so a run that cannot identify its
-    corpus state must fail rather than record a placeholder.
+    Only the batch labeling entry point (`label_main.py`) calls this. Lets
+    `subprocess.CalledProcessError` and `FileNotFoundError` propagate: a batch run
+    requires `corpus_commit` (`labeling_runs_batch_has_corpus_commit`, spec 0012), so
+    a run that cannot identify its corpus state must fail rather than record a
+    placeholder. `corpus_commit` is nullable at the column level only to allow a
+    live run (spec 0012, AD-8), which never calls this function.
     """
     result = subprocess.run(
         ["git", "rev-parse", "HEAD"],

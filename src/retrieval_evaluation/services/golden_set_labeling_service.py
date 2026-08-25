@@ -96,7 +96,7 @@ class GoldenSetLabelingService:
         async with semaphore:
             candidates = self._candidate_set_service.build(row)
             if not candidates:
-                self._write_repository.insert_labeling(
+                labeling_id = self._write_repository.insert_labeling(
                     QuizLabelingEntity(
                         run_id=run_id,
                         quiz_question_id=row.id,
@@ -104,6 +104,18 @@ class GoldenSetLabelingService:
                     ),
                     [],
                 )
+                if labeling_id is None:
+                    # D6: in the batch path `insert_run` just created this run_id and
+                    # each question is visited once, so a conflict is a defect, not a
+                    # race. It is a `warning`, and the discarded write is NOT counted
+                    # as a labeling. `debug`-and-continue belongs to the API caller in
+                    # plan 3, where losing the race is the designed outcome (AD-19).
+                    logger.warning(
+                        "Unexpected: labeling for quiz %s already existed under batch "
+                        "run %d, write discarded",
+                        row.number,
+                        run_id,
+                    )
                 return
 
             presented = list(candidates)
@@ -120,13 +132,26 @@ class GoldenSetLabelingService:
             response = await self._call_agent(row.number, request)
 
             labels = self._resolve_labels(row.number, response, presented)
-            self._write_repository.insert_labeling(
+            labeling_id = self._write_repository.insert_labeling(
                 QuizLabelingEntity(
                     run_id=run_id, quiz_question_id=row.id, rationale=response.rationale
                 ),
                 labels,
             )
-            logger.info("Labeled quiz %s with %d comma(s)", row.number, len(labels))
+            if labeling_id is None:
+                # D6: in the batch path `insert_run` just created this run_id and each
+                # question is visited once, so a conflict is a defect, not a race. It is
+                # a `warning`, and the discarded write is NOT counted as a labeling.
+                # `debug`-and-continue belongs to the API caller in plan 3, where losing
+                # the race is the designed outcome (AD-19).
+                logger.warning(
+                    "Unexpected: labeling for quiz %s already existed under batch run %d, "
+                    "write discarded",
+                    row.number,
+                    run_id,
+                )
+            else:
+                logger.info("Labeled quiz %s with %d comma(s)", row.number, len(labels))
 
     @staticmethod
     def _resolve_labels(

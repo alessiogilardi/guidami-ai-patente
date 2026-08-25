@@ -89,11 +89,26 @@ def _insert_run(client: PostgresClient) -> int:
             candidate_variant="topic_text",
             dense_k=50,
             text_k=50,
+            lexeme_fields=("image_description", "text", "topic"),
             shuffle_seed=42,
             corpus_commit="0" * 40,
             corpus_comma_count=3,
             question_limit=None,
         )
+    )
+
+
+def _run_entity() -> LabelingRunEntity:
+    return LabelingRunEntity(
+        judge_model="openrouter/google/gemini-2.5-flash-lite",
+        prompt_version="0123456789abcdef",
+        candidate_variant="topic_text",
+        dense_k=50,
+        text_k=50,
+        lexeme_fields=("image_description", "text", "topic"),
+        shuffle_seed=42,
+        corpus_commit="deadbeef",
+        corpus_comma_count=3,
     )
 
 
@@ -270,7 +285,14 @@ def test_a_second_run_leaves_the_first_runs_rows_intact(fixture: _Fixture) -> No
 
 
 @pytest.mark.integration
-def test_labeling_the_same_question_twice_in_one_run_is_rejected(fixture: _Fixture) -> None:
+def test_labeling_the_same_question_twice_in_one_run_discards_the_second_write(
+    fixture: _Fixture,
+) -> None:
+    """`insert_labeling` is idempotent under `UNIQUE (run_id, quiz_question_id)` (AD-19).
+
+    A repeated write is silently discarded (`ON CONFLICT DO NOTHING`) and returns
+    `None`, rather than raising `UniqueViolation` as it did before spec 0012.
+    """
     run_id = _insert_run(fixture.client)
     repository = _make_repository(fixture.client)
     repository.insert_labeling(
@@ -282,15 +304,16 @@ def test_labeling_the_same_question_twice_in_one_run_is_rejected(fixture: _Fixtu
         [],
     )
 
-    with pytest.raises(psycopg.errors.UniqueViolation):
-        repository.insert_labeling(
-            QuizLabelingEntity(
-                run_id=run_id,
-                quiz_question_id=fixture.quiz_question_ids[0],
-                rationale="Seconda.",
-            ),
-            [],
-        )
+    second = repository.insert_labeling(
+        QuizLabelingEntity(
+            run_id=run_id,
+            quiz_question_id=fixture.quiz_question_ids[0],
+            rationale="Seconda.",
+        ),
+        [],
+    )
+
+    assert second is None
 
 
 @pytest.mark.integration
@@ -419,3 +442,98 @@ def test_per_arm_label_counts_are_obtainable_in_one_query(fixture: _Fixture) -> 
     assert dense_only == 1
     assert text_only == 1
     assert both_arms == 1
+
+
+@pytest.mark.integration
+def test_the_outcome_flag_is_true_when_children_are_written(fixture: _Fixture) -> None:
+    repository = _make_repository(fixture.client)
+    run_id = repository.insert_run(_run_entity())
+
+    labeling_id = repository.insert_labeling(
+        QuizLabelingEntity(
+            run_id=run_id, quiz_question_id=fixture.quiz_question_ids[0], rationale="ok"
+        ),
+        [
+            QuizCommaLabelEntity(
+                article_comma_id=fixture.article_comma_ids[0], judge_rank=1, dense_rank=1
+            )
+        ],
+    )
+
+    rows = fixture.client.fetch(
+        sql.SQL("SELECT has_supporting_commas FROM quiz_labelings WHERE id = %s"), [labeling_id]
+    )
+    assert rows == [(True,)]
+
+
+@pytest.mark.integration
+def test_the_outcome_flag_is_false_when_no_children_are_written(fixture: _Fixture) -> None:
+    repository = _make_repository(fixture.client)
+    run_id = repository.insert_run(_run_entity())
+
+    labeling_id = repository.insert_labeling(
+        QuizLabelingEntity(
+            run_id=run_id,
+            quiz_question_id=fixture.quiz_question_ids[0],
+            rationale="nessun comma pertinente",
+        ),
+        [],
+    )
+
+    rows = fixture.client.fetch(
+        sql.SQL("SELECT has_supporting_commas FROM quiz_labelings WHERE id = %s"), [labeling_id]
+    )
+    assert rows == [(False,)]
+
+
+@pytest.mark.integration
+def test_the_flag_can_never_be_supplied_by_a_caller() -> None:
+    assert "has_supporting_commas" not in QuizLabelingEntity.model_fields
+
+
+@pytest.mark.integration
+def test_a_second_labeling_for_the_same_run_and_question_returns_none(
+    fixture: _Fixture,
+) -> None:
+    repository = _make_repository(fixture.client)
+    run_id = repository.insert_run(_run_entity())
+    labeling = QuizLabelingEntity(
+        run_id=run_id, quiz_question_id=fixture.quiz_question_ids[0], rationale="prima"
+    )
+    first = repository.insert_labeling(labeling, [])
+
+    second = repository.insert_labeling(
+        QuizLabelingEntity(
+            run_id=run_id, quiz_question_id=fixture.quiz_question_ids[0], rationale="seconda"
+        ),
+        [
+            QuizCommaLabelEntity(
+                article_comma_id=fixture.article_comma_ids[1], judge_rank=1, text_rank=1
+            )
+        ],
+    )
+
+    assert first is not None
+    assert second is None
+
+
+@pytest.mark.integration
+def test_the_losing_racer_writes_no_children(fixture: _Fixture) -> None:
+    repository = _make_repository(fixture.client)
+    run_id = repository.insert_run(_run_entity())
+    labeling = QuizLabelingEntity(
+        run_id=run_id, quiz_question_id=fixture.quiz_question_ids[0], rationale="prima"
+    )
+    repository.insert_labeling(labeling, [])
+
+    repository.insert_labeling(
+        labeling,
+        [
+            QuizCommaLabelEntity(
+                article_comma_id=fixture.article_comma_ids[1], judge_rank=1, text_rank=1
+            )
+        ],
+    )
+
+    rows = fixture.client.fetch(sql.SQL("SELECT count(*) FROM quiz_comma_labels"))
+    assert rows == [(0,)]
