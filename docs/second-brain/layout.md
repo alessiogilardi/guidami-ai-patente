@@ -70,14 +70,19 @@ repo/
 │   │                                #   a BaseSettings reading configs/labeling.yaml), and mappers/
 │   │                                #   (LabelingEpochMapper.from_config_to_epoch — the one place
 │   │                                #   lexeme_fields is sorted — and LabelingRunMapper.
-│   │                                #   from_epoch_to_entity). Still missing: a `wiring.py` of its
-│   │                                #   own — the DI builders that construct this stack's
-│   │                                #   collaborators (Postgres client, OpenRouter provider,
-│   │                                #   comma-labeler agent, golden-set repository, ...) still live
-│   │                                #   duplicated as private helpers in retrieval_evaluation/
-│   │                                #   main.py and label_main.py (see below); Task 6 of the same
-│   │                                #   plan reparameterises them off plain values instead of
-│   │                                #   IngestorConfig and extracts a shared labeling/wiring.py
+│   │                                #   from_epoch_to_entity). As of Task 6 it also holds wiring.py:
+│   │                                #   manual DI builders for this stack's collaborators
+│   │                                #   (build_open_router_provider, build_postgres_client,
+│   │                                #   build_tracker, build_corpus_repository,
+│   │                                #   build_quiz_repository, build_golden_set_repository,
+│   │                                #   build_comma_labeler_config, build_comma_labeler_agent —
+│   │                                #   its tracker param is optional, no request-scoped owner
+│   │                                #   for a QueuedLlmCallTracker's background lifecycle —
+│   │                                #   build_question_lexeme_service, build_candidate_set_service),
+│   │                                #   every parameter LabelingConfig/plain values, never
+│   │                                #   IngestorConfig/AppConfig; retrieval_evaluation/main.py and
+│   │                                #   label_main.py import from it instead of duplicating their
+│   │                                #   own _build_* helpers (resolving the Task 5 duplication)
 │   ├── parsers/                    # Standalone script: quiz PDF -> data/parsed/
 │   ├── retrieval_evaluation/       # Standalone scripts over the same corpus, two entry points:
 │   │                                #   evaluate-retrieval-judge — LLM-as-judge spot-check,
@@ -93,7 +98,13 @@ repo/
 │   │                                #   (renamed from build_agent, reparameterised off a bare
 │   │                                #   agents_dir: Path). Everything comma-labeler/golden-set
 │   │                                #   related (agents/comma_labeler/, repositories/, exceptions/,
-│   │                                #   utils/) moved out to labeling/ — see above
+│   │                                #   utils/) moved out to labeling/ — see above. Since Task 6,
+│   │                                #   main.py and label_main.py import every other builder they
+│   │                                #   need from labeling/wiring.py instead of each duplicating a
+│   │                                #   private _build_* set; both widen their pooled
+│   │                                #   PostgresClient's pool_max_size to
+│   │                                #   max(config.postgres.pool_max_size, concurrency) before
+│   │                                #   building it (D7/D14)
 │   ├── scrapers/                   # Standalone script: normattiva.it -> data/raw/ + data/parsed/
 │   └── test_data_sampler/          # Standalone script: data/parsed/ -> a random subset in
 │                                    #   data/test-data/parsed/, plus the sampled quiz
@@ -403,10 +414,13 @@ implemented.
   (see the next bullet); `retrieval_evaluation/` keeps only what stays specific to
   the two standalone scripts (`agents/retrieval_judge/`, `main.py`, `label_main.py`,
   `services/retrieval_judge_evaluation_service.py`, and a `wiring.py` trimmed to the
-  retrieval-judge builder). The two scripts no longer share a common `wiring.py`
-  DI-builder set for their Postgres/OpenRouter/repository collaborators — each
-  temporarily duplicates its own private `_build_*` helpers pending a reparameterised,
-  shared `labeling/wiring.py` (Task 6 of the same plan).
+  retrieval-judge builder). Since Task 6 of the same plan, both scripts import their
+  Postgres/OpenRouter/repository/service builders from the new `labeling/wiring.py`
+  instead of each duplicating its own private `_build_*` helpers, and both widen the
+  `PostgresClient` they build from `config.postgres.model_copy(update={"pool_max_size":
+  max(config.postgres.pool_max_size, concurrency)})` before opening it — D7/D14, so
+  the `--concurrency` tasks each script fans out over one pooled connection can't
+  starve each other under Task 1's bounded `timeout`.
 - **Code shared by the batch labeling harness and the future FastAPI app's live
   judge** (spec 0012, AD-12) goes in `src/labeling/`, a new top-level package sibling
   to `retrieval_evaluation/`: manual constructor injection only, no `pywire` import
@@ -423,7 +437,17 @@ implemented.
   than the reverse — the standalone scripts are consumers of the shared stack, not its
   owner; `tests/labeling/test_module_boundary.py` enforces this both ways (`labeling/`
   imports nothing from `retrieval_evaluation/`, `pywire`, or `guidami_ai_patente/`;
-  `domain/` imports nothing from `labeling/`).
+  `domain/` imports nothing from `labeling/`). As of Task 6, `labeling/` also holds
+  `wiring.py`: manual DI builders for every collaborator this stack needs (Postgres
+  client, OpenRouter provider, tracker, corpus/quiz read repositories, golden-set write
+  repository, comma-labeler config/agent, question-lexeme service, candidate-set
+  service), each parameterised on `LabelingConfig` and/or plain values — never on
+  `IngestorConfig`/`AppConfig` — so both the batch scripts and the future FastAPI app
+  can drive them without either package importing the other's root config
+  (`tests/labeling/test_wiring.py::test_no_builder_takes_an_ingestor_config` asserts
+  this by inspecting every builder's signature). `retrieval_evaluation/main.py` and
+  `label_main.py` both import from it now, resolving the temporary `_build_*`
+  duplication Task 5 introduced.
 - **A field two config roots must never resolve differently** (e.g. `agents_dir`,
   which both `IngestorConfig` and `LabelingConfig` need because
   `guidami_ai_patente_ingestor/orchestrators/quiz_flows.py`'s quiz-enrichment agents
@@ -635,3 +659,19 @@ are temporarily duplicated as private module-level helpers in both `main.py` and
 `retrieval_evaluation/`, `pywire`, or `guidami_ai_patente/`, and that `domain/` imports
 nothing from `labeling/`) and updated the `labeling/`/`retrieval_evaluation/` placement
 bullets accordingly.*
+
+*Last updated: 2026-08-25 — verified against commit `2a639831` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 6). `labeling/` gained `wiring.py` (nine-plus manual
+DI builders, all parameterised on `LabelingConfig`/plain values, never
+`IngestorConfig`/`AppConfig`); `tests/labeling/` gained `test_wiring.py`. Both
+`retrieval_evaluation/main.py` and `label_main.py` now import their builders from
+`labeling.wiring` and no longer carry duplicated private `_build_*` helpers (resolving
+the Task 5 duplication); both widen their pooled `PostgresClient`'s `pool_max_size` to
+`max(config.postgres.pool_max_size, concurrency)` before building it (D7/D14).
+`label_main.py`'s `labeling_runs` insert now goes through `LabelingEpochMapper`/
+`LabelingRunMapper` instead of an inline `LabelingRunEntity(...)` stopgap.
+`tests/retrieval_evaluation/test_wiring.py` was renamed to `test_entry_points.py`,
+freeing the `test_wiring` basename for the new `tests/labeling/test_wiring.py` (pytest's
+default import mode requires a unique module basename per test file across all of
+`tests/`, since no test directory carries an `__init__.py`) — content unchanged, file
+moved only.*
