@@ -21,11 +21,11 @@ class _FakeResponse:
     rationale: str = "Motivazione."
 
 
-def _make_row(row_id: int) -> QuizEvaluationRow:
+def _make_row(row_id: int, topic: str = "Segnaletica") -> QuizEvaluationRow:
     return QuizEvaluationRow(
         id=row_id,
         number=str(row_id),
-        topic="Segnaletica",
+        topic=topic,
         text="Domanda di prova.",
         correct_answer=True,
         exact_keywords=None,
@@ -188,6 +188,7 @@ def _make_service(
     transport_retries: int = 3,
     retry_backoff_seconds: float = 0.0,
     question_limit: int | None = None,
+    topics: Sequence[str] | None = None,
 ) -> GoldenSetLabelingService:
     return GoldenSetLabelingService(
         candidate_variant="topic_text",
@@ -196,6 +197,7 @@ def _make_service(
         transport_retries=transport_retries,
         retry_backoff_seconds=retry_backoff_seconds,
         question_limit=question_limit,
+        topics=topics,
         quiz_repository=quiz_repository,  # type: ignore[arg-type]
         candidate_set_service=candidate_set_service,  # type: ignore[arg-type]
         write_repository=write_repository,  # type: ignore[arg-type]
@@ -508,3 +510,74 @@ async def test_concurrency_never_exceeds_the_configured_bound() -> None:
 
     assert agent.max_seen <= 3
     assert counter.max_seen <= 3
+
+
+async def test_only_questions_of_the_named_topic_are_labeled() -> None:
+    write_repository = _RecordingWriteRepository()
+    rows = [_make_row(1, topic="velocità"), _make_row(2, topic="segnaletica")]
+    service = _make_service(
+        _StubQuizRepository(rows),
+        _FixedCandidateSetService([_make_candidate(1, dense_rank=1)]),
+        write_repository,
+        _RecordingAgent(response_numbers=[]),
+        topics=["velocità"],
+    )
+
+    await service.label_all(run_id=1)
+
+    assert [call[0].quiz_question_id for call in write_repository.calls] == [1]
+
+
+async def test_repeated_topics_label_their_union() -> None:
+    write_repository = _RecordingWriteRepository()
+    rows = [
+        _make_row(1, topic="velocità"),
+        _make_row(2, topic="segnaletica"),
+        _make_row(3, topic="precedenza"),
+    ]
+    service = _make_service(
+        _StubQuizRepository(rows),
+        _FixedCandidateSetService([_make_candidate(1, dense_rank=1)]),
+        write_repository,
+        _RecordingAgent(response_numbers=[]),
+        topics=["velocità", "precedenza"],
+    )
+
+    await service.label_all(run_id=1)
+
+    assert sorted(call[0].quiz_question_id for call in write_repository.calls) == [1, 3]
+
+
+async def test_no_topic_labels_the_whole_bank() -> None:
+    write_repository = _RecordingWriteRepository()
+    rows = [_make_row(1, topic="velocità"), _make_row(2, topic="segnaletica")]
+    service = _make_service(
+        _StubQuizRepository(rows),
+        _FixedCandidateSetService([_make_candidate(1, dense_rank=1)]),
+        write_repository,
+        _RecordingAgent(response_numbers=[]),
+        topics=None,
+    )
+
+    labeled = await service.label_all(run_id=1)
+
+    assert labeled == 2
+
+
+async def test_the_limit_applies_to_the_filtered_set() -> None:
+    write_repository = _RecordingWriteRepository()
+    rows = [_make_row(i, topic="velocità") for i in range(1, 5)] + [
+        _make_row(9, topic="segnaletica")
+    ]
+    service = _make_service(
+        _StubQuizRepository(rows),
+        _FixedCandidateSetService([_make_candidate(1, dense_rank=1)]),
+        write_repository,
+        _RecordingAgent(response_numbers=[]),
+        topics=["velocità"],
+        question_limit=2,
+    )
+
+    labeled = await service.label_all(run_id=1)
+
+    assert labeled == 2

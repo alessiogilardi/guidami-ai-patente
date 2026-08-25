@@ -6,6 +6,10 @@ the correct answer, and writes the resulting labeling under one `labeling_runs` 
 (spec 0011, phase 2). No `--dry-run`, no manifest, no `report.md` (AD-10): every real
 invocation writes its own `logs/label_golden_set_<timestamp>/run.log`, same shape as
 `retrieval_evaluation.main`.
+
+`--topic` (repeatable) restricts the run to the union of the named topics, applied
+before `--limit` (FR-18). It is a selection criterion only — it never reaches
+`labeling_runs` and plays no part in the judge's configuration epoch.
 """
 
 import argparse
@@ -57,6 +61,17 @@ def main() -> None:
         type=int,
         default=None,
         help="Restrict the run to this many questions, for a trial pass. Defaults to a full pass.",
+    )
+    parser.add_argument(
+        "--topic",
+        action="append",
+        default=None,
+        metavar="TOPIC",
+        help=(
+            "Restrict the run to this topic; repeatable, and the union is labeled. "
+            "Omit for the full bank. Selects which questions are labeled, never how "
+            "they are judged: it is not recorded on the run."
+        ),
     )
     args = parser.parse_args()
     if args.limit is not None and args.limit < 1:
@@ -118,6 +133,7 @@ def main() -> None:
             transport_retries=labeling.transport_retries,
             retry_backoff_seconds=labeling.retry_backoff_seconds,
             question_limit=args.limit,
+            topics=args.topic,
             quiz_repository=quiz_repository,
             candidate_set_service=candidate_set_service,
             write_repository=golden_set_repository,

@@ -641,8 +641,13 @@ comma found by both arms carries both ranks.
 
 `GoldenSetLabelingService.label_all` (`labeling/services/golden_set_labeling_service.py`)
 drives the pass: for every question with a query vector for the configured
-`candidate_variant` (optionally restricted to `--limit` questions via a seeded
-shuffle independent of the presentation shuffle, PD-18), it builds the candidate
+`candidate_variant`, first optionally restricted to the union of `--topic`
+(repeatable) topics when given (FR-18) — a pure selection filter, applied
+*before* the limit so `--limit N --topic t` means "N questions of topic t", and
+never recorded on `labeling_runs` or folded into the judge's configuration
+epoch, since it changes *which* questions are judged, not *how* — then
+optionally restricted to `--limit` questions via a seeded shuffle independent
+of the presentation shuffle, PD-18, it builds the candidate
 set *inside* a per-run `asyncio.Semaphore` (PD-16 — keeps at most
 `max_concurrency` candidate sets alive at once, rather than building all ~7k
 eagerly before the first judge call), shuffles the presentation order with
@@ -1085,3 +1090,12 @@ Task 1's bounded `timeout`. `tests/retrieval_evaluation/test_wiring.py` was rena
 `tests/labeling/test_wiring.py` (pytest's default import mode needs a unique module
 basename per test file across the whole `tests/` tree, since no directory carries an
 `__init__.py`).*
+
+*Last updated: 2026-08-25 — verified against commit `5582529a` (working tree ahead:
+spec 0012, quiz-flow-api-phase1 plan Task 10, FR-18). `GoldenSetLabelingService.__init__`
+gained `topics: Sequence[str] | None`, positioned after `question_limit` and before the
+injected collaborators. `label_all` filters `rows` to the union of `self._topics` (when
+set) *before* applying `self._question_limit`, so `--limit N --topic t` selects "N
+questions of topic t". `label_main.py` gained a repeatable `--topic` flag
+(`action="append"`) passed straight through as `topics=args.topic`; the value is a pure
+selection filter and never reaches `labeling_runs` or the judge's configuration epoch.*

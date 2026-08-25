@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import random
+from collections.abc import Sequence
 
 import httpx
 from pydantic_ai.exceptions import ModelHTTPError
@@ -43,6 +44,13 @@ class GoldenSetLabelingService:
     An out-of-range candidate number, or any non-transport failure, propagates and
     aborts the whole run (PD-9): `asyncio.gather` is never called with
     `return_exceptions=True`, so an incomplete run cannot look complete.
+
+    `topics`, when given, restricts *which* questions are labeled to those whose
+    `topic` is in the set (FR-18) — it is applied before `question_limit`, so
+    `--limit N --topic t` means "N questions of topic t", not "the first N of the
+    bank, of which some happen to be topic t". It is purely a selection criterion:
+    it never reaches `labeling_runs` and is not part of the judge's configuration
+    epoch, since it changes which questions are judged, not how they are judged.
     """
 
     def __init__(
@@ -53,6 +61,7 @@ class GoldenSetLabelingService:
         transport_retries: int,
         retry_backoff_seconds: float,
         question_limit: int | None,
+        topics: Sequence[str] | None,
         quiz_repository: QuizReadRepository,
         candidate_set_service: CandidateSetService,
         write_repository: GoldenSetWriteRepository,
@@ -65,6 +74,7 @@ class GoldenSetLabelingService:
         self._transport_retries = transport_retries
         self._retry_backoff_seconds = retry_backoff_seconds
         self._question_limit = question_limit
+        self._topics = frozenset(topics) if topics else None
         self._quiz_repository = quiz_repository
         self._candidate_set_service = candidate_set_service
         self._write_repository = write_repository
@@ -73,14 +83,20 @@ class GoldenSetLabelingService:
     async def label_all(self, run_id: int) -> int:
         """Labels every question with a vector for the configured variant, under `run_id`.
 
-        Restricted to `self._question_limit` questions when set, selected by a
-        seeded shuffle so the same limit and seed always select the same subset
-        (PD-18); unrestricted (the default) labels every question (FR-10).
+        Restricted to `self._topics` when set (FR-18), applied before
+        `self._question_limit`. Then restricted to `self._question_limit`
+        questions when set, selected by a seeded shuffle so the same limit and
+        seed always select the same subset (PD-18); unrestricted (the default)
+        labels every question (FR-10).
 
         Returns:
             The number of questions labeled (before any labeling could fail).
         """
         rows = self._quiz_repository.fetch_with_vectors(self._candidate_variant, _MODEL_COLUMN)
+        if self._topics is not None:
+            # Filters before the limit, so `--limit N --topic t` means "N questions
+            # of t", not "the first N of the bank, of which some are t" (FR-18).
+            rows = [row for row in rows if row.topic in self._topics]
         if self._question_limit is not None:
             shuffled = list(rows)
             random.Random(f"limit:{self._shuffle_seed}").shuffle(shuffled)
