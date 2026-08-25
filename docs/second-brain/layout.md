@@ -54,15 +54,23 @@ repo/
 │   │                                #   and the future FastAPI app can depend on it without the
 │   │                                #   app pulling in a standalone script's entry point. Manual
 │   │                                #   constructor injection only, no pywire (ADR 0015), and
-│   │                                #   every component stays synchronous (AD-25). As of Task 3
-│   │                                #   of the quiz-flow-api-phase1 plan it holds only
-│   │                                #   configs/ (LabelingConfig, a BaseSettings reading
-│   │                                #   configs/labeling.yaml); later tasks in the same plan
-│   │                                #   move CommaLabelerAgent, CandidateSetService,
+│   │                                #   every component stays synchronous (AD-25). As of Task 4
+│   │                                #   of the quiz-flow-api-phase1 plan it holds configs/
+│   │                                #   (LabelingConfig, a BaseSettings reading
+│   │                                #   configs/labeling.yaml), models/ (LabelingEpoch, the
+│   │                                #   six-input configuration-epoch key), and mappers/
+│   │                                #   (LabelingEpochMapper.from_config_to_epoch — the one place
+│   │                                #   lexeme_fields is sorted — and LabelingRunMapper.
+│   │                                #   from_epoch_to_entity, building an insertable
+│   │                                #   LabelingRunEntity from an epoch plus its run mechanics);
+│   │                                #   `prompt_version` is still imported from
+│   │                                #   `retrieval_evaluation.utils` (Task 5 moves it into
+│   │                                #   `labeling/utils/` via a `git mv`). Later tasks in the
+│   │                                #   same plan move CommaLabelerAgent, CandidateSetService,
 │   │                                #   QuestionLexemeService, GoldenSetWriteRepository, and
 │   │                                #   CandidateComma in from retrieval_evaluation/ (a pure
 │   │                                #   `git mv`, see the plan's Task 5) — this package is not
-│   │                                #   yet the full judge stack, only its configuration root
+│   │                                #   yet the full judge stack
 │   ├── parsers/                    # Standalone script: quiz PDF -> data/parsed/
 │   ├── retrieval_evaluation/       # Standalone scripts over the same corpus, two entry points:
 │   │                                #   evaluate-retrieval-judge — LLM-as-judge spot-check,
@@ -578,3 +586,12 @@ moved to `docs/superpowers/specs/` and `docs/superpowers/plans/` under the new
 Added the placement bullet for `labeling/` and a new placement bullet for the
 `agents_dir` single-sourcing pattern (two defaultless, `AGENTS_DIR`-aliased fields,
 one on `IngestorConfig` and one on `LabelingConfig`, cross-checked by `StatusInspector`).*
+
+*Last updated: 2026-08-25 — verified against commit `564f3df8` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 4). `src/labeling/` gained `models/`
+(`labeling_epoch.py::LabelingEpoch`) and `mappers/` (`labeling_epoch_mapper.py`,
+`labeling_run_mapper.py`), each mirrored under `tests/labeling/`; updated the `labeling/`
+placement bullet accordingly. `prompt_version` is imported into
+`labeling/mappers/labeling_epoch_mapper.py` from `retrieval_evaluation.utils` as a
+deliberate temporary bridge — Task 5's `git mv` of `run_provenance.py` into
+`labeling/utils/` re-points it, per the plan's own Interfaces note for this task.*

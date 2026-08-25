@@ -32,6 +32,7 @@
 | **lexeme** | A stemmed, stop-word-filtered token as PostgreSQL's own `to_tsvector('italian', ...)` produces it — extracted via `CorpusReadRepository.extract_lexemes` from a question's configured text fields (`LabelingConfig.lexeme_fields`: `topic`/`text`/`image_description`) and fed back into `text_match_top_k`'s `to_tsquery`, so extraction and search always agree on the same dictionary (AD-9). |
 | **judge_rank** | The comma labeler's own 1-based ordering of the (at most three) candidates it names as justifying an answer, most-justifying first — persisted on `quiz_comma_labels.judge_rank`, distinct from `dense_rank`/`text_rank` (which record each retrieval arm's position, not the judge's opinion). |
 | **outcome (of a labeling)** | Whether a `quiz_labelings` row has any `quiz_comma_labels` children — **derived** by counting them, never stored as a column: zero children means "the corpus does not justify this question" (a real, meaningful result); no `quiz_labelings` row at all for a question means "never labeled" — a different thing entirely (AD-6). |
+| **configuration epoch** | The six-input judge identity — `judge_model`, `prompt_version`, `candidate_variant`, `dense_k`, `text_k`, `lexeme_fields` (sorted) — that a model or prompt change opens a new instance of, without a single `DELETE` (spec 0012, AD-8). Materialised as the frozen value object `LabelingEpoch` (`src/labeling/models/labeling_epoch.py`), built only via `LabelingEpochMapper.from_config_to_epoch` (`src/labeling/mappers/`, the sole place `lexeme_fields` is sorted); `LabelingRunMapper.from_epoch_to_entity` then adds the run mechanics (`shuffle_seed`, `corpus_commit`, `corpus_comma_count`, `question_limit`, `origin`) to produce an insertable `LabelingRunEntity`. Exactly the columns `uq_labeling_runs_live_config` keys on — see `docs/second-brain/database.md`. |
 
 *Last updated: 2026-08-01 — verified against commit `3cce407`; added
 **Regolamento** entry and widened **CdS**/**corpus normativo**/**source** to
@@ -72,3 +73,7 @@ declaratively, inline in `orchestrators/knowledge_flows.py`'s `EmbedCommasStep` 
 0011 phase 2). Added **golden set**, **labeling run**, **candidate comma**, **two-arm
 union**, **lexeme**, **judge_rank**, and **outcome (of a labeling)** for the new
 `label-golden-set` entry point and its three persisted tables.*
+
+*Last updated: 2026-08-25 — verified against commit `564f3df8` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 4). Added **configuration epoch**, now materialised
+as `LabelingEpoch` plus its two mappers in `src/labeling/`.*
