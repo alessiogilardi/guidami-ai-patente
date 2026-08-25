@@ -1,0 +1,20 @@
+{
+  "languages": {
+    "Python": {
+      "language_servers": ["pyright", "ruff"],
+      "format_on_save": "on",
+      "code_actions_on_format": {
+        "source.organizeImports.ruff": true,
+        "source.fixAll.ruff": true
+      },
+      "formatter": {
+        "language_server": {
+          "name": "ruff"
+        }
+      },
+      // pyproject.toml → [tool.ruff] line-length = 99
+      "wrap_guides": [99],
+      "tab_size": 4
+    }
+  }
+}

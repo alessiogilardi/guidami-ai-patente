@@ -525,6 +525,5 @@ $RECYCLE.BIN/
 .browser_session/
 docs/superpowers/specs/discussions/
 docs/superpowers/plans/
-.zed/
 # Docker volume bind mounts (docker/docker-compose.yml) — host-persisted data, not source
 docker/.volumes/
