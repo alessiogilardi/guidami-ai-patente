@@ -1,3 +1,4 @@
+import logging
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -6,7 +7,9 @@ import yaml
 from pydantic_ai import BinaryContent
 from pydantic_ai.messages import ModelMessage, ModelResponse, TextPart
 from pydantic_ai.models.function import AgentInfo, FunctionModel
+from pydantic_ai.models.openai import OpenAIChatModel
 from pydantic_ai.models.openrouter import OpenRouterModel
+from pydantic_ai.providers.ollama import OllamaProvider
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig, BaseAgent
@@ -16,6 +19,7 @@ from commons.repositories import YamlRepository
 from domain.entities.observability import LlmCallLogEntity
 
 _PROVIDER = OpenRouterProvider(api_key="test-key")
+_OLLAMA_PROVIDER = OllamaProvider(base_url="http://localhost:11434/v1")
 
 
 def _write_yaml(agents_dir: Path, name: str, content: dict) -> None:
@@ -180,6 +184,35 @@ def test_base_agent_uses_openrouter_model(tmp_path: Path) -> None:
     assert isinstance(agent.core_agent.model, OpenRouterModel)
 
 
+def test_base_agent_uses_openai_chat_model_for_non_openrouter_provider(
+    tmp_path: Path,
+) -> None:
+    agents_dir = tmp_path / "agents"
+    _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
+    agent = _StrAgent.from_yaml(
+        "test_agent",
+        YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir)),
+        _OLLAMA_PROVIDER,
+    )
+    assert isinstance(agent.core_agent.model, OpenAIChatModel)
+    assert not isinstance(agent.core_agent.model, OpenRouterModel)
+
+
+def test_base_agent_omits_openrouter_usage_setting_for_non_openrouter_provider(
+    tmp_path: Path,
+) -> None:
+    agents_dir = tmp_path / "agents"
+    _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
+    agent = _StrAgent.from_yaml(
+        "test_agent",
+        YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir)),
+        _OLLAMA_PROVIDER,
+    )
+    settings = agent.core_agent.model_settings
+    assert settings is not None and not callable(settings)
+    assert "openrouter_usage" not in settings
+
+
 # --- BaseAgent tracking (LlmCallTracker injection) ---
 
 
@@ -207,12 +240,16 @@ def _fail(exc: Exception):
     return _func
 
 
-def _load_agent(tmp_path: Path, tracker: _ListTracker | None = None) -> BaseAgent[str, str]:
+def _load_agent(
+    tmp_path: Path,
+    tracker: _ListTracker | None = None,
+    provider: OpenRouterProvider | OllamaProvider = _PROVIDER,
+) -> BaseAgent[str, str]:
     agents_dir = tmp_path / "agents"
     _write_yaml(agents_dir, "test_agent", MINIMAL_CONFIG)
     repo = YamlRepository(AgentConfig, file_system_client=LocalFileSystemClient(agents_dir))
     config = repo.load_one("test_agent.yaml")
-    return _StrAgent(config, _PROVIDER, tracker=tracker)
+    return _StrAgent(config, provider, tracker=tracker)
 
 
 def test_tracked_run_sync_records_success(tmp_path: Path) -> None:
@@ -230,6 +267,18 @@ def test_tracked_run_sync_records_success(tmp_path: Path) -> None:
     assert log.prompt == "Ciao"
     assert log.response == "Risposta di test."
     assert log.status == "success"
+
+
+def test_tracked_run_sync_skips_no_cost_warning_for_non_openrouter_provider(
+    tmp_path: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    caplog.set_level(logging.WARNING)
+    agent = _load_agent(tmp_path, provider=_OLLAMA_PROVIDER)
+
+    with agent.core_agent.override(model=FunctionModel(_respond("Risposta di test."))):
+        agent.run_sync("Ciao")
+
+    assert "reported no cost" not in caplog.text
 
 
 async def test_tracked_run_records_success(tmp_path: Path) -> None:

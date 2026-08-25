@@ -3,9 +3,14 @@ from contextlib import AbstractContextManager
 from pathlib import Path
 from typing import Self, cast
 
+from openai import AsyncOpenAI
 from pydantic_ai import Agent, BinaryContent
+from pydantic_ai.models import Model
+from pydantic_ai.models.openai import OpenAIChatModel
 from pydantic_ai.models.openrouter import OpenRouterModel, OpenRouterModelSettings
+from pydantic_ai.providers import Provider
 from pydantic_ai.providers.openrouter import OpenRouterProvider
+from pydantic_ai.settings import ModelSettings
 
 from commons.ai.observability import LlmCallTracker, NullLlmCallTracker, PydanticAILlmCallCapture
 from commons.clients import FileReaderInterface
@@ -25,7 +30,7 @@ class BaseAgent[T_In, T_Out]:
     def __init__(
         self,
         config: AgentConfig,
-        provider: OpenRouterProvider,
+        provider: Provider[AsyncOpenAI],
         file_reader: FileReaderInterface | None = None,
         tracker: LlmCallTracker | None = None,
     ) -> None:
@@ -35,7 +40,10 @@ class BaseAgent[T_In, T_Out]:
             config: Agent configuration (model, prompts, parameters). `config.name`
                 identifies this agent as `LlmCallLogEntity.caller` in tracked rows,
                 defaulting to the concrete subclass name when `None`.
-            provider: OpenRouter provider injected into the underlying `pydantic_ai` model.
+            provider: Provider injected into the underlying `pydantic_ai` model. An
+                `OpenRouterProvider` selects `OpenRouterModel` (with OpenRouter-specific
+                cost tracking); any other OpenAI-compatible provider (e.g.
+                `OllamaProvider`) selects the generic `OpenAIChatModel`.
             file_reader: Reader used to resolve `images` paths passed to `run`.
                 Optional: only required by agents that pass `images=`.
             tracker: Optional port persisting one `LlmCallLogEntity` per call. When
@@ -62,7 +70,7 @@ class BaseAgent[T_In, T_Out]:
         cls,
         name: str,
         repository: YamlRepository[AgentConfig],
-        provider: OpenRouterProvider,
+        provider: Provider[AsyncOpenAI],
         file_reader: FileReaderInterface | None = None,
         tracker: LlmCallTracker | None = None,
     ) -> Self:
@@ -72,7 +80,8 @@ class BaseAgent[T_In, T_Out]:
             name: Agent name (without the `.yaml` extension); also becomes the
                 agent's identity (`self._name`, i.e. `LlmCallLogEntity.caller`).
             repository: Repository used to load agent configuration files.
-            provider: OpenRouter provider injected into the underlying `pydantic_ai` model.
+            provider: Provider injected into the underlying `pydantic_ai` model. See
+                `BaseAgent.__init__` for the model-selection rule.
             file_reader: Reader used to resolve `images` paths passed to `run`.
                 Optional: only required by agents that pass `images=`.
             tracker: Optional port persisting one `LlmCallLogEntity` per call.
@@ -138,6 +147,16 @@ class BaseAgent[T_In, T_Out]:
         """The underlying pydantic_ai Agent instance."""
         return self._agent
 
+    @property
+    def _is_openrouter(self) -> bool:
+        """Whether this agent's provider is `OpenRouterProvider`.
+
+        Gates every OpenRouter-specific behavior: `OpenRouterModel` selection,
+        the `openrouter_usage` model setting, and the "no cost reported" warning
+        — none of which apply to a generic OpenAI-compatible provider (e.g. Ollama).
+        """
+        return isinstance(self._provider, OpenRouterProvider)
+
     def _tracked(self, prompt: str) -> AbstractContextManager[PydanticAILlmCallCapture]:
         """Binds this agent's fixed identity to `PydanticAILlmCallCapture.tracked`.
 
@@ -154,6 +173,9 @@ class BaseAgent[T_In, T_Out]:
 
         Reads `capture.log` once: it rebuilds the `LlmCallLogEntity` on every access,
         so the fields used here are captured in a local instead of re-read per field.
+        Only `OpenRouterProvider` calls are expected to report a cost (see
+        `_create_model_settings`'s `openrouter_usage` setting), so the warning is
+        skipped for every other provider (e.g. Ollama, which never reports cost).
         """
         log_entry = capture.log
         logger.info(
@@ -166,27 +188,29 @@ class BaseAgent[T_In, T_Out]:
             log_entry.total_tokens,
             log_entry.cost_usd,
         )
-        if log_entry.cost_usd is None:
+        if log_entry.cost_usd is None and self._is_openrouter:
             logger.warning(
                 "Agent %r call succeeded but OpenRouter reported no cost (model=%s)",
                 self._name,
                 self._model_name,
             )
 
-    def _create_model(self) -> OpenRouterModel:
-        return OpenRouterModel(
-            _parse_model_name(self._model_name),
-            provider=self._provider,
-        )
+    def _create_model(self) -> Model:
+        model_name = _parse_model_name(self._model_name)
+        if self._is_openrouter:
+            return OpenRouterModel(model_name, provider=self._provider)
 
-    def _create_model_settings(self, config: AgentConfig) -> OpenRouterModelSettings:
-        settings: OpenRouterModelSettings = {
+        return OpenAIChatModel(model_name, provider=self._provider)
+
+    def _create_model_settings(self, config: AgentConfig) -> ModelSettings:
+        settings: ModelSettings = {
             "temperature": config.temperature,
             "timeout": config.timeout,
-            "openrouter_usage": {"include": True},
         }
         if config.max_tokens is not None:
             settings["max_tokens"] = config.max_tokens
+        if self._is_openrouter:
+            return OpenRouterModelSettings(**settings, openrouter_usage={"include": True})
 
         return settings
 
