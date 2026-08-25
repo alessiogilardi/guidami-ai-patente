@@ -60,14 +60,6 @@
   NULL`) makes it refuse with `SystemExit` when a human-validated labeling would
   be destroyed, unless `--force` is passed — the preview stays fully
   connection-free per FR-17 (no live count shown without `--apply`).
-  **`reset quiz` has the identical bug today, unfixed** (spec 0012 Task 9,
-  decisions D5/D15 amending AD-28 — that fix addressed only the knowledge path):
-  `quiz_labelings.quiz_question_id REFERENCES quiz_questions ON DELETE CASCADE`,
-  so the `quiz` branch's `TRUNCATE quiz_question_embeddings, quiz_questions` fails
-  the same way whenever `quiz_labelings` holds any row. Deliberately deferred, not
-  an oversight — a future change must widen that statement to name
-  `quiz_comma_labels`/`quiz_labelings` too and add the same validated-labeling
-  guard. `run_reset`'s `quiz` branch carries a code comment recording this.
 
 ## Main schema
 
@@ -458,6 +450,4 @@ spec 0012 Task 9, FR-17/AD-28); `reset knowledge` widened to a single four-table
 prior two-table statement was already broken against this schema once
 `quiz_comma_labels` landed, not just prospectively incomplete — and gained a
 `--force`-overridable guard refusing to destroy a human-validated `quiz_labelings`
-row. `reset quiz` has the identical unfixed bug (`quiz_labelings.quiz_question_id`
-FK) and was deliberately left alone (D5/D15 errata on AD-28): fixing it is a future
-change, flagged by a code comment on `run_reset`'s `quiz` branch.*
+row.*
