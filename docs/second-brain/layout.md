@@ -49,6 +49,20 @@ repo/
 │   ├── html_viewers/               # Standalone, dependency-free HTML pages for manually
 │   │                                #   inspecting pipeline output (e.g. quiz enrichment
 │   │                                #   review); opened directly in a browser, no server
+│   ├── labeling/                   # Shared labeling/judge stack (spec 0012, AD-12), split
+│   │                                #   out of retrieval_evaluation/ so both the batch harness
+│   │                                #   and the future FastAPI app can depend on it without the
+│   │                                #   app pulling in a standalone script's entry point. Manual
+│   │                                #   constructor injection only, no pywire (ADR 0015), and
+│   │                                #   every component stays synchronous (AD-25). As of Task 3
+│   │                                #   of the quiz-flow-api-phase1 plan it holds only
+│   │                                #   configs/ (LabelingConfig, a BaseSettings reading
+│   │                                #   configs/labeling.yaml); later tasks in the same plan
+│   │                                #   move CommaLabelerAgent, CandidateSetService,
+│   │                                #   QuestionLexemeService, GoldenSetWriteRepository, and
+│   │                                #   CandidateComma in from retrieval_evaluation/ (a pure
+│   │                                #   `git mv`, see the plan's Task 5) — this package is not
+│   │                                #   yet the full judge stack, only its configuration root
 │   ├── parsers/                    # Standalone script: quiz PDF -> data/parsed/
 │   ├── retrieval_evaluation/       # Standalone scripts over the same corpus, two entry points:
 │   │                                #   evaluate-retrieval-judge — LLM-as-judge spot-check,
@@ -68,7 +82,8 @@ repo/
 ├── tests/                          # Mirrors src/ structure, no __init__.py per directory
 │   ├── commons/
 │   ├── domain/
-│   └── guidami_ai_patente_ingestor/
+│   ├── guidami_ai_patente_ingestor/
+│   └── labeling/
 ├── configs/                        # Runtime YAML config (ingestor_config.yaml, agents/*.yaml,
 │                                    #   ingestor_config.test-data.yaml — see below)
 ├── db/                             # init.sql — Postgres/pgvector target schema, applied on container init
@@ -368,6 +383,37 @@ implemented.
   `commons/repositories/db/` (that package is read-only by declared
   convention) or into the ingestor's per-table write layer (the labeler is
   not part of `guidami_ai_patente_ingestor/`).
+- **Code shared by the batch labeling harness and the future FastAPI app's live
+  judge** (spec 0012, AD-12) goes in `src/labeling/`, a new top-level package sibling
+  to `retrieval_evaluation/`: manual constructor injection only, no `pywire` import
+  anywhere in it (ADR 0015), and every component stays synchronous, since the API
+  calls it via `asyncio.to_thread` rather than an async duplicate (AD-25).
+  `labeling/configs/labeling_config.py::LabelingConfig` (moved out of
+  `guidami_ai_patente_ingestor/configs/`, Task 3 of the quiz-flow-api-phase1 plan) is
+  its first occupant; `retrieval_evaluation/`'s `CommaLabelerAgent`,
+  `CandidateSetService`, `QuestionLexemeService`, `GoldenSetWriteRepository`, and
+  `CandidateComma` follow in a later `git mv` (same plan, Task 5) once `LabelingConfig`
+  and its `LabelingEpoch` companion (Task 4) exist to anchor them. `evaluate-retrieval-judge`
+  and `label-golden-set` (`retrieval_evaluation/`) keep depending on `labeling/` rather
+  than the reverse — the standalone scripts are consumers of the shared stack, not its
+  owner.
+- **A field two config roots must never resolve differently** (e.g. `agents_dir`,
+  which both `IngestorConfig` and `LabelingConfig` need because
+  `guidami_ai_patente_ingestor/orchestrators/quiz_flows.py`'s quiz-enrichment agents
+  and `labeling/`'s judge agent load from the same kind of directory but for
+  unrelated reasons — the judge's prompt hash **is** its configuration epoch,
+  spec 0012 AD-22, while the enrichment agents' prompts enter no epoch at all) is
+  declared **on both roots**, each field defaultless and aliased to the *same* single
+  environment variable (`Field(validation_alias=AliasChoices("AGENTS_DIR",
+  "agents_dir"))` on both `IngestorConfig.agents_dir` and
+  `LabelingConfig.agents_dir`). The single-source guarantee comes from the one
+  defaultless env var every root reads, not from collapsing the two fields into one
+  shared field or a shared default — collapsing them would force one of the two
+  unrelated readers to import the other's config package just to find a directory
+  path. `ingest status` cross-checks the two resolved values and reports a `BLOCKED`
+  readiness row (`command="config", entity="agents_dir"`) if they ever disagree — see
+  `StatusInspector._agents_dir_agreement_readiness` in
+  `guidami_ai_patente_ingestor/cli/services/status/status_inspector.py`.
 - **A closed vocabulary that is a shared shape** (a DB column's legal
   values, or a field name another module also needs) goes in
   `src/domain/enums/` as a `StrEnum` with `auto()`-derived values, never
@@ -523,3 +569,12 @@ moved to `docs/superpowers/specs/` and `docs/superpowers/plans/` under the new
 0012, folded commit tasks 7+2+8); `domain/` gained a new `validators/` sub-package
 (`require_canonical_lexeme_fields`, shared by `LabelingRunEntity` now and the future
 `LabelingEpoch` in `labeling/`) and a second enum, `LabelingRunOrigin`.*
+
+*Last updated: 2026-08-25 — verified against commit `440bad56` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 3); new top-level package `src/labeling/` created
+(`configs/labeling_config.py::LabelingConfig`, moved out of
+`guidami_ai_patente_ingestor/configs/` and promoted from a plain `BaseModel` to a
+`BaseSettings` reading the new `configs/labeling.yaml`); `tests/labeling/` mirrors it.
+Added the placement bullet for `labeling/` and a new placement bullet for the
+`agents_dir` single-sourcing pattern (two defaultless, `AGENTS_DIR`-aliased fields,
+one on `IngestorConfig` and one on `LabelingConfig`, cross-checked by `StatusInspector`).*

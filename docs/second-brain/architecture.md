@@ -63,7 +63,7 @@ is a similarly standalone script package — an LLM-as-judge measurement tool
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
 | `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
 | `guidami_ai_patente/` | FastAPI quiz bot — layout scaffolded (`api/` self-contained web layer, `configs/app_config.py::AppConfig`, empty pull-based `models/`/`mappers/`), only `GET /health` implemented so far; entry point `main.py::main`, registered as the `api` script. Dependency injection uses `pywire` (Spring-style `@service`/`@repository`/`@client`/`@component` decorators + `Autowired[T]` field injection), not the manual constructor injection the ingestor uses — see `adr/0015-pywire-di-for-fastapi-app.md` and `.claude/rules/pywire-di.md`. `pywire>=0.3.1` adds native FastAPI wiring: a single `wire(app)` call in `api/app.py::create_app` (never on an `APIRouter`) makes bare `Autowired[T]` route parameters resolve on every router mounted on the app; `services/health_check_service.py::HealthCheckService` (`Autowired[DependencyVersionRepository]`) is resolved this way on `GET /health` — no `Depends()` — proven live via `uv run api` + a real HTTP request, not just `TestClient`; see `adr/0016-pywire-native-fastapi-wiring.md` | FastAPI, uvicorn, pywire |
-| `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013). `RetrievalJudgeAgent` + its DTOs (`agents/retrieval_judge/`, `BaseAgent` pattern — `agents/` is a generic per-role container, today holding the single `retrieval_judge/` agent subpackage) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names/`agents_dir`) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
+| `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013). `RetrievalJudgeAgent` + its DTOs (`agents/retrieval_judge/`, `BaseAgent` pattern — `agents/` is a generic per-role container, today holding the single `retrieval_judge/` agent subpackage) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names) plus `IngestorConfig.labeling.agents_dir` (`src/labeling/configs/`, spec 0012 Task 3) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/quiz-patente-ab.json` (questions) + `data/quiz-images/` (extracted images, top-level, sibling of `parsed/` — ADR 0008) | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`/`AMB`) selected via a single `scrape --source <cds\|cap\|reg\|amb>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`; `AMB` — D.Lgs. 152/2006, Codice dell'Ambiente — added by spec 0009) | beautifulsoup4, lxml, httpx |
 | `scrapers/range_filter.py` | Shared core (`filter_articles_by_range(source_path, dest_path, ranges)`) for narrowing a fully-scraped law down to inclusive numeric ranges over the article's leading number; extracted by spec 0009 once a second consumer (`amb_extract.py`) needed the identical algorithm `rca_extract.py` already had | stdlib only |
@@ -595,9 +595,14 @@ full judged records (`RetrievalJudgeItemResult`, now carrying `topic`/`text`/
 `correct_answer`/`retrieved_commas` alongside the verdict, not just the verdict)
 for offline inspection, since the stdout report alone doesn't retain the
 retrieved commas or the quiz context. It reuses `IngestorConfig`
-(Postgres connection, table names, `agents_dir`, OpenRouter provider) from
+(Postgres connection, table names, OpenRouter provider) from
 `guidami_ai_patente_ingestor.configs` rather than owning its own settings class —
-the one deliberate cross-package dependency this module has.
+the one deliberate cross-package dependency this module has. Its agent YAML
+(`retrieval_judge.yaml`) loads from `config.labeling.agents_dir`, not a bare
+`agents_dir` on `IngestorConfig` — since spec 0012 Task 3, the judge stack in
+`wiring.py` reads `IngestorConfig.labeling.agents_dir` (`src/labeling/configs/`)
+because that directory feeds the labeling judge's configuration-epoch hash
+(AD-22), which `IngestorConfig.agents_dir` itself does not (see `patterns.md`).
 
 **Golden-set labeler** (`label-golden-set` script, `src/retrieval_evaluation/`): a
 second entry point in the same package, persisting a labeled retrieval golden set
@@ -1014,3 +1019,11 @@ in this repo depends on the workaround today; ADR 0017's Status/Decision are lef
 pending a user call on whether to revise them before that endpoint is built.*
 
 *Last updated: 2026-08-25 — verified against commit `f1a2b74e`.*
+
+*Last updated: 2026-08-25 — verified against commit `440bad56` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 3); the golden-set labeler section and the
+`retrieval_evaluation/` component-table row now say the retrieval judge and comma-labeler
+agent YAML load from `IngestorConfig.labeling.agents_dir` (`src/labeling/configs/`), not a
+bare `agents_dir` field on `IngestorConfig` — `IngestorConfig.agents_dir` still exists,
+but only the quiz-enrichment agents (`quiz_flows.py`) read it now, since their prompts
+enter no configuration epoch. See `patterns.md` for the full single-sourcing rationale.*

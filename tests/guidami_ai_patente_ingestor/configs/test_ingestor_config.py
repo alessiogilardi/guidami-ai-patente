@@ -1,10 +1,14 @@
 from pathlib import Path
 
 import pytest
+import yaml
 from pydantic import SecretStr, ValidationError
 
 from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente_ingestor.configs import IngestorConfig
+from labeling.configs import LabelingConfig
+
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 
 
 def _build_config(**kwargs) -> IngestorConfig:
@@ -57,11 +61,6 @@ def test_knowledge_layers_are_cleaned() -> None:
     assert config.knowledge_indexing.input_layer == "cleaned"
 
 
-def test_default_agents_dir() -> None:
-    config = _build_config()
-    assert config.agents_dir == Path("configs/agents")
-
-
 def test_default_project_root() -> None:
     config = _build_config()
     assert config.project_root == Path(".")
@@ -107,3 +106,79 @@ def test_config_is_frozen() -> None:
 
     with pytest.raises(ValidationError):
         config.embedding_batch_size = 1
+
+
+def test_exposes_the_golden_set_table_names_and_the_labeling_config() -> None:
+    """Moved from the deleted `guidami_ai_patente_ingestor.configs.LabelingConfig` test."""
+    config = _build_config()
+
+    assert config.labeling_runs_table == "labeling_runs"
+    assert config.quiz_labelings_table == "quiz_labelings"
+    assert config.quiz_comma_labels_table == "quiz_comma_labels"
+    assert isinstance(config.labeling, LabelingConfig)
+
+
+def test_both_agents_dir_fields_are_defaultless() -> None:
+    """D2: one defaultless env var is what makes divergence impossible, not one field."""
+    assert IngestorConfig.model_fields["agents_dir"].is_required()
+    assert LabelingConfig.model_fields["agents_dir"].is_required()
+
+
+def test_both_agents_dir_fields_read_the_same_environment_variable() -> None:
+    """D2: two fields, one source — so they cannot disagree within a deployment."""
+    for model in (IngestorConfig, LabelingConfig):
+        alias = model.model_fields["agents_dir"].validation_alias
+        assert "AGENTS_DIR" in alias.choices  # type: ignore[union-attr]
+
+
+def test_the_two_agents_dir_values_agree_when_resolved() -> None:
+    """D11: the check `ingest status` reports on, pinned in-process too."""
+    config = IngestorConfig.load()
+
+    assert config.agents_dir == config.labeling.agents_dir
+
+
+def test_the_base_yaml_no_longer_sets_agents_dir() -> None:
+    raw = yaml.safe_load((_REPO_ROOT / "configs" / "ingestor_config.yaml").read_text("utf-8"))
+
+    assert "agents_dir" not in raw
+
+
+def test_the_base_yaml_does_not_duplicate_the_labeling_section() -> None:
+    raw = yaml.safe_load((_REPO_ROOT / "configs" / "ingestor_config.yaml").read_text("utf-8"))
+
+    assert "labeling" not in raw, (
+        "a labeling: section here would move the duplication rather than remove it (AD-27)"
+    )
+
+
+def test_the_ingestor_embeds_the_shared_labeling_config() -> None:
+    assert IngestorConfig.model_fields["labeling"].annotation is LabelingConfig
+
+
+def test_a_nested_env_override_does_not_break_the_labeling_config(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """D16: `LabelingConfig` is a `BaseSettings` nested in a `BaseSettings`.
+
+    `IngestorConfig` sets `env_nested_delimiter="__"`, so `LABELING__DENSE_K` makes the
+    parent's env source yield `{"labeling": {"dense_k": 10}}`. If pydantic routes that
+    dict through `LabelingConfig.__init__` the nested sources still run and `agents_dir`
+    resolves from `AGENTS_DIR`; if it validates the dict as a plain model instead,
+    `agents_dir` is absent and EVERY `ingest` command breaks for anyone with a
+    `LABELING__*` variable in their shell. Which one happens is pydantic-settings
+    behaviour, so it is pinned rather than assumed.
+
+    If this fails: give `LabelingConfig` its own `env_prefix` so the parent's nested
+    delimiter cannot reach into it, in this same commit.
+    """
+    monkeypatch.setenv("LABELING__DENSE_K", "10")
+
+    config = IngestorConfig.load()
+
+    assert config.labeling.dense_k == 10
+    # Compared against the sibling field (both single-sourced from AGENTS_DIR, per D2)
+    # rather than a hardcoded literal: the session fixture resolves AGENTS_DIR to an
+    # absolute path, so what matters here is that agents_dir did not come back
+    # empty/defaulted by the nested-settings routing, not its literal value.
+    assert config.labeling.agents_dir == config.agents_dir

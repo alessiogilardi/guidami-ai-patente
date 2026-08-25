@@ -53,9 +53,13 @@ def build_corpus_repository(
 def build_agent(
     config: IngestorConfig, provider: OpenRouterProvider, tracker: QueuedLlmCallTracker
 ) -> RetrievalJudgeAgent:
-    """Loads `retrieval_judge.yaml` from the ingestor's configured `agents_dir`."""
+    """Loads `retrieval_judge.yaml` from the shared labeling config's `agents_dir`.
+
+    Evaluation-only, but travels with the judge stack: its prompt lives under the
+    same `agents_dir` as the comma labeler's (spec 0012).
+    """
     agents_repository = YamlRepository(
-        AgentConfig, file_system_client=LocalFileSystemClient(config.agents_dir)
+        AgentConfig, file_system_client=LocalFileSystemClient(config.labeling.agents_dir)
     )
     return RetrievalJudgeAgent.from_yaml(
         "retrieval_judge", agents_repository, provider, tracker=tracker
@@ -63,9 +67,13 @@ def build_agent(
 
 
 def build_comma_labeler_config(config: IngestorConfig) -> AgentConfig:
-    """Loads `comma_labeler.yaml` from the ingestor's configured `agents_dir`."""
+    """Loads `comma_labeler.yaml` from the shared labeling config's `agents_dir`.
+
+    This is the judge: its prompt hash **is** the configuration epoch (AD-22), so it
+    reads `agents_dir` from `LabelingConfig`, not from `IngestorConfig` directly.
+    """
     agents_repository = YamlRepository(
-        AgentConfig, file_system_client=LocalFileSystemClient(config.agents_dir)
+        AgentConfig, file_system_client=LocalFileSystemClient(config.labeling.agents_dir)
     )
     return agents_repository.load_one("comma_labeler.yaml")
 

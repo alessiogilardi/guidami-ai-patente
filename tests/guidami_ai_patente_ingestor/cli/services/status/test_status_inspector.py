@@ -177,6 +177,32 @@ def test_quiz_prepare_blocked_when_parsed_input_missing(tmp_path: Path) -> None:
     assert states_by_source["quiz"] == ReadinessState.BLOCKED
 
 
+def test_agents_dir_agreement_is_runnable_when_the_two_roots_match(tmp_path: Path) -> None:
+    """D11: with `AGENTS_DIR` single-sourced (D2), the two roots agree by construction."""
+    config = _build_config(tmp_path)
+    layer_resolver = LayerResolverProvider(layers=config.layers, sources=config.sources)
+    inspector = StatusInspector(config, layer_resolver)
+
+    readiness = inspector.evaluate_readiness()
+
+    agents_dir_readiness = _entity_readiness(readiness, "config", "agents_dir")
+    states = {s.source: s.state for s in agents_dir_readiness.sources}
+    assert states["agreement"] == ReadinessState.RUNNABLE
+
+
+def test_agents_dir_agreement_is_blocked_when_the_two_roots_diverge(tmp_path: Path) -> None:
+    """D11: a stray override on only one of the two roots must be reported loudly."""
+    config = _build_config(tmp_path, agents_dir=tmp_path / "other-agents")
+    layer_resolver = LayerResolverProvider(layers=config.layers, sources=config.sources)
+    inspector = StatusInspector(config, layer_resolver)
+
+    readiness = inspector.evaluate_readiness()
+
+    agents_dir_readiness = _entity_readiness(readiness, "config", "agents_dir")
+    states = {s.source: s.state for s in agents_dir_readiness.sources}
+    assert states["agreement"] == ReadinessState.BLOCKED
+
+
 def test_quiz_index_always_runnable_even_when_enriched_input_missing(tmp_path: Path) -> None:
     """FR-5: quiz's enriched input is now a directory, so no BLOCKED signal either."""
     config = _build_config(

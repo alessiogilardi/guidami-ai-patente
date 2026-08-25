@@ -1,5 +1,6 @@
 """Shared root fixtures for the test suite."""
 
+import os
 import subprocess
 from collections.abc import Iterator
 from dataclasses import dataclass, field
@@ -14,6 +15,23 @@ _TEST_COMPOSE_FILE = Path(__file__).parent.parent / "docker" / "docker-compose.t
 _TEST_COMPOSE_PROJECT = "guidami-ai-patente-test"
 _TEST_POSTGRES_PORT = 5433
 _TEST_POSTGRES_DBNAME = "guidami_ai_patente_test"
+
+
+@pytest.fixture(scope="session", autouse=True)
+def _agents_dir_environment() -> Iterator[None]:
+    """Pins `AGENTS_DIR` for the whole session (spec 0012, AD-22).
+
+    `LabelingConfig.agents_dir` has no default anywhere, so without this the suite
+    would depend on the developer's shell — and a missing value would surface as a
+    `ValidationError` from an unrelated test.
+    """
+    previous = os.environ.get("AGENTS_DIR")
+    os.environ["AGENTS_DIR"] = str(Path(__file__).parent.parent / "configs" / "agents")
+    yield
+    if previous is None:
+        del os.environ["AGENTS_DIR"]
+    else:
+        os.environ["AGENTS_DIR"] = previous
 
 
 @pytest.fixture(scope="session")

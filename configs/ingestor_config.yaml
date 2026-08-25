@@ -38,7 +38,6 @@ quiz_indexing:
   input_layer: enriched
   sources: [quiz]
 
-agents_dir: configs/agents
 quiz_images_dir: data/quiz-images
 
 embedding_batch_size: 8
