@@ -10,9 +10,9 @@ from pydantic_ai.exceptions import ModelHTTPError
 
 from domain.entities.evaluation import QuizCommaLabelEntity, QuizLabelingEntity
 from domain.models.retrieval import QuizEvaluationRow, RetrievedComma
-from retrieval_evaluation.exceptions import CandidateNumberOutOfRangeError
-from retrieval_evaluation.models import CandidateComma
-from retrieval_evaluation.services import GoldenSetLabelingService
+from labeling.exceptions import CandidateNumberOutOfRangeError
+from labeling.models import CandidateComma
+from labeling.services import GoldenSetLabelingService
 
 
 @dataclass

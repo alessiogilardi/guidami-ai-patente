@@ -18,19 +18,17 @@ import logging
 import random
 from pathlib import Path
 
+from pydantic_ai.providers.openrouter import OpenRouterProvider
+
+from commons.ai.observability import LlmCallLogRepository, QueuedLlmCallTracker
+from commons.clients import PostgresClient
 from commons.observability import LOG_FORMAT, RunArtifactWriter
+from commons.repositories.db import CorpusReadRepository, QuizReadRepository
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 
 from .models import RetrievalJudgeItemResult
 from .services import RetrievalJudgeEvaluationService
-from .wiring import (
-    build_agent,
-    build_corpus_repository,
-    build_open_router_provider,
-    build_postgres_client,
-    build_quiz_repository,
-    build_tracker,
-)
+from .wiring import build_retrieval_judge_agent
 
 logger = logging.getLogger(__name__)
 
@@ -38,6 +36,47 @@ _DEFAULT_N = 10
 _DEFAULT_K = 10
 _DEFAULT_CONCURRENCY = 8
 _RUN_ID_PREFIX = "evaluate_judge"
+
+
+# The following builders are deliberately duplicated in `label_main.py` (spec 0012,
+# Task 5): they used to be shared through `retrieval_evaluation/wiring.py`, but that
+# module is now trimmed to `build_retrieval_judge_agent` only. Task 6 reparameterises
+# them (off plain values instead of `IngestorConfig`) and extracts the reparameterised
+# versions into a shared `labeling.wiring`, at which point this duplication goes away.
+def _build_open_router_provider(config: IngestorConfig) -> OpenRouterProvider:
+    """Builds the OpenRouter provider from the configured API key."""
+    return OpenRouterProvider(api_key=config.open_router_config.api_key.get_secret_value())
+
+
+def _build_postgres_client(config: IngestorConfig) -> PostgresClient:
+    """Opens a Postgres connection. Raises `psycopg.Error` if unreachable."""
+    return PostgresClient(config.postgres)
+
+
+def _build_tracker(postgres_client: PostgresClient) -> QueuedLlmCallTracker:
+    """Builds the queued LLM call tracker, persisted through the given client."""
+    return QueuedLlmCallTracker(LlmCallLogRepository(postgres_client))
+
+
+def _build_quiz_repository(
+    config: IngestorConfig, postgres_client: PostgresClient
+) -> QuizReadRepository:
+    """Builds the quiz read repository, reusing the ingestor's table names."""
+    return QuizReadRepository(
+        config.quiz_questions_table,
+        config.quiz_question_embeddings_table,
+        config.quiz_images_table,
+        postgres_client,
+    )
+
+
+def _build_corpus_repository(
+    config: IngestorConfig, postgres_client: PostgresClient
+) -> CorpusReadRepository:
+    """Builds the corpus read repository, reusing the ingestor's table names."""
+    return CorpusReadRepository(
+        config.articles_table, config.article_commas_table, postgres_client
+    )
 
 
 def _report(results: list[RetrievalJudgeItemResult]) -> None:
@@ -100,24 +139,24 @@ def main() -> None:
     file_handler.setFormatter(logging.Formatter(LOG_FORMAT))
     logging.getLogger().addHandler(file_handler)
 
-    provider = build_open_router_provider(config)
+    provider = _build_open_router_provider(config)
     with (
-        build_postgres_client(config) as postgres_client,
-        build_tracker(postgres_client) as tracker,
+        _build_postgres_client(config) as postgres_client,
+        _build_tracker(postgres_client) as tracker,
     ):
-        quiz_repository = build_quiz_repository(config, postgres_client)
+        quiz_repository = _build_quiz_repository(config, postgres_client)
         variant = args.variant or config.evaluation.quiz_embedding_variant
         available_variants = quiz_repository.available_variants()
         if variant not in available_variants:
             parser.error(f"invalid --variant {variant!r}, must be one of {available_variants}")
 
-        agent = build_agent(config, provider, tracker)
+        agent = build_retrieval_judge_agent(config.labeling.agents_dir, provider, tracker)
         service = RetrievalJudgeEvaluationService(
             k=args.k,
             variant=variant,
             max_concurrency=args.concurrency,
             quiz_repository=quiz_repository,
-            corpus_repository=build_corpus_repository(config, postgres_client),
+            corpus_repository=_build_corpus_repository(config, postgres_client),
             agent=agent,
         )
         results = asyncio.run(

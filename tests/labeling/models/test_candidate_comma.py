@@ -2,7 +2,7 @@ import pytest
 from pydantic import ValidationError
 
 from domain.models.retrieval import RetrievedComma
-from retrieval_evaluation.models import CandidateComma
+from labeling.models import CandidateComma
 
 
 def _make_comma(comma_id: int = 1) -> RetrievedComma:

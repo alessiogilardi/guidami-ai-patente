@@ -1,7 +1,7 @@
 import re
 from pathlib import Path
 
-from retrieval_evaluation.utils import corpus_commit, prompt_version
+from labeling.utils import corpus_commit, prompt_version
 
 _REPO_ROOT = Path(__file__).resolve().parents[3]
 

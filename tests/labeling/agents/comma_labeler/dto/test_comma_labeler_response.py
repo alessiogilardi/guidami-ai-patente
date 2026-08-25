@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from retrieval_evaluation.agents.comma_labeler.dto import CommaLabelerResponse
+from labeling.agents.comma_labeler.dto import CommaLabelerResponse
 
 
 def test_accepts_an_empty_number_list_with_a_rationale() -> None:

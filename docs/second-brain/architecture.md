@@ -63,7 +63,8 @@ is a similarly standalone script package — an LLM-as-judge measurement tool
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
 | `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
 | `guidami_ai_patente/` | FastAPI quiz bot — layout scaffolded (`api/` self-contained web layer, `configs/app_config.py::AppConfig`, empty pull-based `models/`/`mappers/`), only `GET /health` implemented so far; entry point `main.py::main`, registered as the `api` script. Dependency injection uses `pywire` (Spring-style `@service`/`@repository`/`@client`/`@component` decorators + `Autowired[T]` field injection), not the manual constructor injection the ingestor uses — see `adr/0015-pywire-di-for-fastapi-app.md` and `.claude/rules/pywire-di.md`. `pywire>=0.3.1` adds native FastAPI wiring: a single `wire(app)` call in `api/app.py::create_app` (never on an `APIRouter`) makes bare `Autowired[T]` route parameters resolve on every router mounted on the app; `services/health_check_service.py::HealthCheckService` (`Autowired[DependencyVersionRepository]`) is resolved this way on `GET /health` — no `Depends()` — proven live via `uv run api` + a real HTTP request, not just `TestClient`; see `adr/0016-pywire-native-fastapi-wiring.md` | FastAPI, uvicorn, pywire |
-| `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013). `RetrievalJudgeAgent` + its DTOs (`agents/retrieval_judge/`, `BaseAgent` pattern — `agents/` is a generic per-role container, today holding the single `retrieval_judge/` agent subpackage) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names) plus `IngestorConfig.labeling.agents_dir` (`src/labeling/configs/`, spec 0012 Task 3) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
+| `labeling/` | Shared labeling/judge stack (spec 0012, AD-12), split out of `retrieval_evaluation/` so both the batch harness and the future FastAPI app can depend on it without pulling in a standalone script's entry point. Manual constructor injection only, no `pywire` (ADR 0015); every component stays synchronous (AD-25); `tests/labeling/test_module_boundary.py` guards that it imports nothing from `retrieval_evaluation/`, `pywire`, or `guidami_ai_patente/`, and that `domain/` never imports it back. As of spec 0012 Task 5 it holds the full judge stack: `agents/comma_labeler/` (`CommaLabelerAgent`), `models/` (`CandidateComma`, `LabelingEpoch`), `services/` (`CandidateSetService`, `GoldenSetLabelingService`, `QuestionLexemeService`), `repositories/` (`GoldenSetWriteRepository`), `exceptions/` (`CandidateNumberOutOfRangeError`), `utils/` (`corpus_commit`, `prompt_version`), `configs/` (`LabelingConfig`), and `mappers/` (`LabelingEpochMapper`, `LabelingRunMapper`). Still missing its own `wiring.py` — the DI builders for this stack's collaborators live duplicated as private helpers in `retrieval_evaluation/main.py` and `label_main.py` pending Task 6's reparameterised, shared `labeling/wiring.py` | pydantic-ai-slim[openrouter] |
+| `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013) — plus `label-golden-set`, persisting a labeled golden set built from `labeling/`'s collaborators (spec 0011 phase 2). Since spec 0012 Task 5 this package holds only `agents/retrieval_judge/`, `models/retrieval_judge_item_result.py`, `services/retrieval_judge_evaluation_service.py`, `main.py`, `label_main.py`, and a `wiring.py` trimmed to one builder, `build_retrieval_judge_agent(agents_dir, provider, tracker)`. `RetrievalJudgeAgent` + its DTOs (`agents/retrieval_judge/`, `BaseAgent` pattern — `agents/` is a generic per-role container, today holding the single `retrieval_judge/` agent subpackage) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names) plus `IngestorConfig.labeling.agents_dir` (`src/labeling/configs/`, spec 0012 Task 3) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/quiz-patente-ab.json` (questions) + `data/quiz-images/` (extracted images, top-level, sibling of `parsed/` — ADR 0008) | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`/`AMB`) selected via a single `scrape --source <cds\|cap\|reg\|amb>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`; `AMB` — D.Lgs. 152/2006, Codice dell'Ambiente — added by spec 0009) | beautifulsoup4, lxml, httpx |
 | `scrapers/range_filter.py` | Shared core (`filter_articles_by_range(source_path, dest_path, ranges)`) for narrowing a fully-scraped law down to inclusive numeric ranges over the article's leading number; extracted by spec 0009 once a second consumer (`amb_extract.py`) needed the identical algorithm `rca_extract.py` already had | stdlib only |
@@ -599,19 +600,26 @@ retrieved commas or the quiz context. It reuses `IngestorConfig`
 `guidami_ai_patente_ingestor.configs` rather than owning its own settings class —
 the one deliberate cross-package dependency this module has. Its agent YAML
 (`retrieval_judge.yaml`) loads from `config.labeling.agents_dir`, not a bare
-`agents_dir` on `IngestorConfig` — since spec 0012 Task 3, the judge stack in
-`wiring.py` reads `IngestorConfig.labeling.agents_dir` (`src/labeling/configs/`)
-because that directory feeds the labeling judge's configuration-epoch hash
-(AD-22), which `IngestorConfig.agents_dir` itself does not (see `patterns.md`).
+`agents_dir` on `IngestorConfig` — since spec 0012 Task 3, this directory feeds the
+labeling judge's configuration-epoch hash (AD-22), which `IngestorConfig.agents_dir`
+itself does not (see `patterns.md`). Since spec 0012 Task 5, `retrieval_evaluation/
+wiring.py` is trimmed to a single builder, `build_retrieval_judge_agent(agents_dir,
+provider, tracker)` (reparameterised off a bare `agents_dir: Path` rather than
+`IngestorConfig`, so `main()` passes `config.labeling.agents_dir` in explicitly) —
+every other builder that module used to hold (Postgres client, OpenRouter provider,
+tracker, quiz/corpus read repositories) moved into `main.py` itself as private
+module-level helpers, duplicated verbatim in `label_main.py` below, pending Task 6's
+reparameterised, shared `labeling/wiring.py`.
 
-**Golden-set labeler** (`label-golden-set` script, `src/retrieval_evaluation/`): a
-second entry point in the same package, persisting a labeled retrieval golden set
+**Golden-set labeler** (`label-golden-set` script, entry point `src/retrieval_evaluation/
+label_main.py`, its collaborators in `src/labeling/` since spec 0012 Task 5): a
+second entry point over the same corpus, persisting a labeled retrieval golden set
 to Postgres instead of printing a spot-check verdict (spec 0011 phase 2). Where the
 judge above looks at one arm (`dense_top_k`) and writes nothing, the labeler builds
 a **two-arm candidate union** and writes every labeling to three new tables
 (`labeling_runs`, `quiz_labelings`, `quiz_comma_labels` — see `database.md`).
 
-`QuestionLexemeService.build` (`services/question_lexeme_service.py`) concatenates
+`QuestionLexemeService.build` (`labeling/services/question_lexeme_service.py`) concatenates
 a question's configured `LabelingConfig.lexeme_fields` (`topic`/`text`/
 `image_description`, skipping blanks) and hands the text to a new
 `CorpusReadRepository.extract_lexemes` method, which asks Postgres itself —
@@ -621,13 +629,13 @@ dictionary on both sides, so extraction and search cannot silently diverge). The
 returned lexemes are then single-quoted with internal quotes doubled before being
 handed to `text_match_top_k`, since `to_tsquery` treats an unquoted lexeme
 containing punctuation (e.g. `e-mail`) as a syntax error, not a literal.
-`CandidateSetService.build` (`services/candidate_set_service.py`) then unions
+`CandidateSetService.build` (`labeling/services/candidate_set_service.py`) then unions
 `CorpusReadRepository.dense_top_k` with `text_match_top_k(lexemes, text_k)`, keyed
 by comma id, recording each arm's one-based rank on a `CandidateComma` — the union
 is **not** truncated, sorted or fused (AD-3): its length is the full union, and a
 comma found by both arms carries both ranks.
 
-`GoldenSetLabelingService.label_all` (`services/golden_set_labeling_service.py`)
+`GoldenSetLabelingService.label_all` (`labeling/services/golden_set_labeling_service.py`)
 drives the pass: for every question with a query vector for the configured
 `candidate_variant` (optionally restricted to `--limit` questions via a seeded
 shuffle independent of the presentation shuffle, PD-18), it builds the candidate
@@ -636,7 +644,7 @@ set *inside* a per-run `asyncio.Semaphore` (PD-16 — keeps at most
 eagerly before the first judge call), shuffles the presentation order with
 `random.Random(f"{shuffle_seed}:{question_id}")` (deterministic per question,
 independent of processing order — PD-8), and asks a second, distinct agent,
-`CommaLabelerAgent` (`agents/comma_labeler/`, its own `dto/` — `CommaLabelerRequest`/
+`CommaLabelerAgent` (`labeling/agents/comma_labeler/`, its own `dto/` — `CommaLabelerRequest`/
 `CommaLabelerResponse`, own `configs/agents/comma_labeler.yaml` prompt — FR-12
 requires this rather than widening `RetrievalJudgeResponse`, since `BaseAgent`
 binds one `output_type` per class), which candidate ordinals (at most three, most-
@@ -650,7 +658,7 @@ status), up to `labeling.transport_retries` times with exponential backoff; ever
 other exception, including a permanent 4xx or a validation error, propagates
 immediately (PD-17).
 
-`GoldenSetWriteRepository` (`repositories/golden_set_write_repository.py`) is
+`GoldenSetWriteRepository` (`labeling/repositories/golden_set_write_repository.py`) is
 insert-only (AD-10, mirroring `LlmCallLogRepository`'s precedent): `insert_run`
 writes one `labeling_runs` row; `insert_labeling` writes a `quiz_labelings` row and
 its `quiz_comma_labels` children in a **single data-modifying CTE**, atomic despite
@@ -661,7 +669,7 @@ never stored as a column). `outcome_counts` is the one read method on the class 
 `SELECT`, not a write), used by `label_main.py` to print the with-commas/without-
 commas breakdown after the run. `label_main.py` inserts the `labeling_runs` row
 *before* the pass (recording `judge_model`, a `prompt_version` hashed from the
-loaded prompt text via `run_provenance.prompt_version` — no human-maintained
+loaded prompt text via `labeling/utils/run_provenance.py::prompt_version` — no human-maintained
 version field, AD-11 — `corpus_commit` from `git rev-parse HEAD`, and
 `corpus_comma_count` from a new unfiltered `CorpusReadRepository.comma_count`),
 validates `candidate_variant` against `QuizReadRepository.available_variants()`
@@ -1027,3 +1035,21 @@ agent YAML load from `IngestorConfig.labeling.agents_dir` (`src/labeling/configs
 bare `agents_dir` field on `IngestorConfig` — `IngestorConfig.agents_dir` still exists,
 but only the quiz-enrichment agents (`quiz_flows.py`) read it now, since their prompts
 enter no configuration epoch. See `patterns.md` for the full single-sourcing rationale.*
+
+*Last updated: 2026-08-25 — verified against commit `7005ad3f` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 5). Pure `git mv` sweep completed: the "Golden-set
+labeler" section's file-path references and the component table now point at
+`labeling/agents/comma_labeler/`, `labeling/services/`, `labeling/repositories/`, and
+`labeling/utils/run_provenance.py` instead of `retrieval_evaluation/`'s equivalents;
+added a `labeling/` component-table row. `retrieval_evaluation/wiring.py` is trimmed to
+one builder, `build_retrieval_judge_agent(agents_dir, provider, tracker)` (renamed from
+`build_agent`, reparameterised off a bare `agents_dir: Path` instead of `IngestorConfig`).
+The other builders that module used to hold (Postgres client, OpenRouter provider,
+tracker, quiz/corpus read repositories, golden-set repository, comma-labeler config/agent)
+are not yet in a shared `labeling/wiring.py` — that module doesn't exist yet, Task 6
+(builders reparameterisation) hasn't run — so `main.py` and `label_main.py` each carry a
+temporary, verbatim-duplicated set of private `_build_*` helpers instead, flagged with a
+comment pointing at Task 6 as the resolution. Added
+`tests/labeling/test_module_boundary.py` (asserts `labeling/` imports nothing from
+`retrieval_evaluation/`, `pywire`, or `guidami_ai_patente/`, and that `domain/` imports
+nothing from `labeling/`).*

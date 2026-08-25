@@ -8,11 +8,11 @@ from pydantic_ai.exceptions import ModelHTTPError
 from commons.repositories.db import QuizReadRepository
 from domain.entities.evaluation import QuizCommaLabelEntity, QuizLabelingEntity
 from domain.models.retrieval import QuizEvaluationRow
-from retrieval_evaluation.agents import CommaLabelerAgent
-from retrieval_evaluation.agents.comma_labeler.dto import CommaLabelerRequest, CommaLabelerResponse
-from retrieval_evaluation.exceptions import CandidateNumberOutOfRangeError
-from retrieval_evaluation.models import CandidateComma
-from retrieval_evaluation.repositories import GoldenSetWriteRepository
+from labeling.agents import CommaLabelerAgent
+from labeling.agents.comma_labeler.dto import CommaLabelerRequest, CommaLabelerResponse
+from labeling.exceptions import CandidateNumberOutOfRangeError
+from labeling.models import CandidateComma
+from labeling.repositories import GoldenSetWriteRepository
 
 from .candidate_set_service import CandidateSetService
 

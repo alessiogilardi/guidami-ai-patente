@@ -1,6 +1,7 @@
 from collections.abc import Iterator
 from dataclasses import dataclass
 from datetime import UTC, datetime
+from pathlib import Path
 
 import psycopg
 import pytest
@@ -13,7 +14,7 @@ from domain.entities.evaluation import (
     QuizCommaLabelEntity,
     QuizLabelingEntity,
 )
-from retrieval_evaluation.repositories import GoldenSetWriteRepository
+from labeling.repositories import GoldenSetWriteRepository
 
 _GOLDEN_SET_TABLES = (
     "quiz_comma_labels",
@@ -24,6 +25,32 @@ _GOLDEN_SET_TABLES = (
     "article_commas",
     "articles",
 )
+
+
+def test_the_write_path_issues_no_update_delete_or_ddl() -> None:
+    """`ON CONFLICT DO NOTHING` is allowed since spec 0012 (AD-19).
+
+    It discards a duplicate write, it never updates one, so the repository stays
+    insert-only in spirit. A true upsert (`ON CONFLICT ... DO UPDATE`, which always
+    contains the substring `UPDATE `) remains forbidden, alongside `DELETE`,
+    `TRUNCATE` and DDL.
+    """
+    source_text = (
+        (
+            Path(__file__).resolve().parents[3]
+            / "src"
+            / "labeling"
+            / "repositories"
+            / "golden_set_write_repository.py"
+        )
+        .read_text(encoding="utf-8")
+        .upper()
+    )
+
+    assert "INSERT" in source_text
+    # `ON CONFLICT DO NOTHING` is now deliberate (spec 0012, AD-19) and no longer forbidden.
+    for forbidden in ("UPDATE ", "DELETE ", "TRUNCATE", "ALTER ", "CREATE "):
+        assert forbidden not in source_text
 
 
 @dataclass

@@ -3,7 +3,7 @@ from unittest.mock import MagicMock
 from commons.repositories.db import CorpusReadRepository
 from domain.enums import LexemeField
 from domain.models.retrieval import QuizEvaluationRow
-from retrieval_evaluation.services import QuestionLexemeService
+from labeling.services import QuestionLexemeService
 
 
 def _make_row(

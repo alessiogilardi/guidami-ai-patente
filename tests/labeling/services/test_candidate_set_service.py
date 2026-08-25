@@ -2,7 +2,7 @@ from unittest.mock import MagicMock
 
 from commons.repositories.db import CorpusReadRepository
 from domain.models.retrieval import QuizEvaluationRow, RetrievedComma
-from retrieval_evaluation.services import CandidateSetService
+from labeling.services import CandidateSetService
 
 
 class _StubLexemeService:

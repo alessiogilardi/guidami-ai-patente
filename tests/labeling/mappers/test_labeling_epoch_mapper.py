@@ -4,7 +4,7 @@ from commons.ai.agents import AgentConfig
 from domain.enums import LexemeField
 from labeling.configs import LabelingConfig
 from labeling.mappers import LabelingEpochMapper
-from retrieval_evaluation.utils import prompt_version
+from labeling.utils import prompt_version
 
 
 def _agent_config() -> AgentConfig:

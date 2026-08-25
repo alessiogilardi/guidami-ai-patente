@@ -1,7 +1,7 @@
 from commons.ai.agents import AgentConfig
 from labeling.configs import LabelingConfig
 from labeling.models import LabelingEpoch
-from retrieval_evaluation.utils import prompt_version  # TODO(Task 5): re-point to labeling.utils
+from labeling.utils import prompt_version
 
 
 class LabelingEpochMapper:

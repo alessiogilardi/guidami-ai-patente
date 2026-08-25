@@ -9,7 +9,7 @@ from commons.configs import PostgresConnectionConfig
 from commons.repositories.db import CorpusReadRepository
 from domain.enums import LexemeField
 from domain.models.retrieval import QuizEvaluationRow
-from retrieval_evaluation.services import QuestionLexemeService
+from labeling.services import QuestionLexemeService
 
 
 def _vector(dimension: int, hot_index: int) -> list[float]:

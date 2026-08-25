@@ -1,7 +1,7 @@
 """Tests for CommaLabelerRequest's computed prompt-template fields."""
 
 from domain.models.retrieval import RetrievedComma
-from retrieval_evaluation.agents.comma_labeler.dto import CommaLabelerRequest
+from labeling.agents.comma_labeler.dto import CommaLabelerRequest
 
 
 def _make_comma(

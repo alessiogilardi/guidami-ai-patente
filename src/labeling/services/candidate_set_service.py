@@ -1,6 +1,6 @@
 from commons.repositories.db import CorpusReadRepository
 from domain.models.retrieval import QuizEvaluationRow
-from retrieval_evaluation.models import CandidateComma
+from labeling.models import CandidateComma
 
 from .question_lexeme_service import QuestionLexemeService
 

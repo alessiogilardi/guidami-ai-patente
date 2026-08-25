@@ -136,6 +136,14 @@ every `.py` file under a package's source tree with `ast`, collects every
 dotted segment beginning with `_`) — a structural convention (FR-12) enforced as a
 regular unit test, no real imports executed, no fixture needed. Reusable pattern
 for any future "package X must not reach into package Y's private internals" rule.
+Reused by `tests/labeling/test_module_boundary.py` (spec 0012, quiz-flow-api-phase1
+plan Task 5): same `_imported_modules(source_text) -> list[str]` helper, four
+assertions guarding `src/labeling/`'s dependency edges both ways — it imports
+nothing from `retrieval_evaluation` (AD-12), nothing from `pywire` (ADR 0015),
+nothing from `guidami_ai_patente` (the FastAPI app) — plus one guarding the
+opposite direction, that `src/domain/` imports nothing from `labeling` (D13),
+since `labeling/` legitimately imports `domain/` and nothing else prevents the
+edge from silently inverting.
 
 *Last updated: 2026-08-06 — verified against commit `91028b2`; documented the
 isolated ephemeral Postgres test stack (`docker/docker-compose.test.yml`) and
@@ -151,3 +159,9 @@ the first test for `src/guidami_ai_patente/` and the project's first use of Fast
 *Last updated: 2026-08-21 — verified against commit `e4977a94` (working tree ahead:
 spec 0011 phase 2, T-11); documented the `ast`-based import-boundary test convention,
 introduced for `retrieval_evaluation`'s "no private-module import from the ingestor" rule.*
+
+*Last updated: 2026-08-25 — verified against commit `7005ad3f` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 5). Noted `tests/labeling/test_module_boundary.py`'s
+reuse of the `ast`-based import-boundary convention: four assertions guarding
+`labeling/`'s edges (no `retrieval_evaluation`, no `pywire`, no `guidami_ai_patente`) plus
+one guarding `domain/` never importing back from `labeling/`.*

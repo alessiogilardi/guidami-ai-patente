@@ -33,8 +33,9 @@ repo/
 │   │                                #   validators/: shared invariant-check functions reused
 │   │                                #   across entities (require_canonical_lexeme_fields — spec
 │   │                                #   0012, D8/D13; new package, first occupant); domain/ never
-│   │                                #   imports labeling/ (not created yet), so shared logic that
-│   │                                #   labeling/ will also need lives here, not there;
+│   │                                #   imports labeling/, so shared logic that labeling/ also
+│   │                                #   needs lives here, not there (guarded by
+│   │                                #   tests/labeling/test_module_boundary.py, spec 0012, Task 5);
 │   │                                #   no I/O or business logic
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
 │   │                                #   normative corpus (CdS/CAP/Regolamento) and quiz bank
@@ -54,33 +55,45 @@ repo/
 │   │                                #   and the future FastAPI app can depend on it without the
 │   │                                #   app pulling in a standalone script's entry point. Manual
 │   │                                #   constructor injection only, no pywire (ADR 0015), and
-│   │                                #   every component stays synchronous (AD-25). As of Task 4
-│   │                                #   of the quiz-flow-api-phase1 plan it holds configs/
-│   │                                #   (LabelingConfig, a BaseSettings reading
-│   │                                #   configs/labeling.yaml), models/ (LabelingEpoch, the
-│   │                                #   six-input configuration-epoch key), and mappers/
+│   │                                #   every component stays synchronous (AD-25); guarded by
+│   │                                #   tests/labeling/test_module_boundary.py (no import of
+│   │                                #   retrieval_evaluation/, pywire, or guidami_ai_patente/).
+│   │                                #   As of Task 5 of the quiz-flow-api-phase1 plan it holds
+│   │                                #   the full judge stack, all moved from retrieval_evaluation/
+│   │                                #   by `git mv`: agents/comma_labeler/ (CommaLabelerAgent +
+│   │                                #   its dto/), models/ (CandidateComma, LabelingEpoch),
+│   │                                #   services/ (CandidateSetService, GoldenSetLabelingService,
+│   │                                #   QuestionLexemeService), repositories/
+│   │                                #   (GoldenSetWriteRepository, insert-only), exceptions/
+│   │                                #   (CandidateNumberOutOfRangeError), utils/ (corpus_commit,
+│   │                                #   prompt_version — run provenance), configs/ (LabelingConfig,
+│   │                                #   a BaseSettings reading configs/labeling.yaml), and mappers/
 │   │                                #   (LabelingEpochMapper.from_config_to_epoch — the one place
 │   │                                #   lexeme_fields is sorted — and LabelingRunMapper.
-│   │                                #   from_epoch_to_entity, building an insertable
-│   │                                #   LabelingRunEntity from an epoch plus its run mechanics);
-│   │                                #   `prompt_version` is still imported from
-│   │                                #   `retrieval_evaluation.utils` (Task 5 moves it into
-│   │                                #   `labeling/utils/` via a `git mv`). Later tasks in the
-│   │                                #   same plan move CommaLabelerAgent, CandidateSetService,
-│   │                                #   QuestionLexemeService, GoldenSetWriteRepository, and
-│   │                                #   CandidateComma in from retrieval_evaluation/ (a pure
-│   │                                #   `git mv`, see the plan's Task 5) — this package is not
-│   │                                #   yet the full judge stack
+│   │                                #   from_epoch_to_entity). Still missing: a `wiring.py` of its
+│   │                                #   own — the DI builders that construct this stack's
+│   │                                #   collaborators (Postgres client, OpenRouter provider,
+│   │                                #   comma-labeler agent, golden-set repository, ...) still live
+│   │                                #   duplicated as private helpers in retrieval_evaluation/
+│   │                                #   main.py and label_main.py (see below); Task 6 of the same
+│   │                                #   plan reparameterises them off plain values instead of
+│   │                                #   IngestorConfig and extracts a shared labeling/wiring.py
 │   ├── parsers/                    # Standalone script: quiz PDF -> data/parsed/
 │   ├── retrieval_evaluation/       # Standalone scripts over the same corpus, two entry points:
 │   │                                #   evaluate-retrieval-judge — LLM-as-judge spot-check,
 │   │                                #   samples quiz questions, judges whether their top-k
 │   │                                #   retrieved commas justify the answer, writes nothing (ADR 0013);
 │   │                                #   label-golden-set — persists a labeled golden set to Postgres
-│   │                                #   (labeling_runs/quiz_labelings/quiz_comma_labels), agents/
-│   │                                #   comma_labeler/ + repositories/ (GoldenSetWriteRepository,
-│   │                                #   insert-only) + exceptions/ + utils/ (run provenance) added
-│   │                                #   alongside agents/retrieval_judge/ (spec 0011 phase 2)
+│   │                                #   (labeling_runs/quiz_labelings/quiz_comma_labels). Since
+│   │                                #   Task 5 this package holds only agents/retrieval_judge/,
+│   │                                #   models/retrieval_judge_item_result.py,
+│   │                                #   services/retrieval_judge_evaluation_service.py, main.py,
+│   │                                #   label_main.py, and a wiring.py trimmed to one builder,
+│   │                                #   build_retrieval_judge_agent(agents_dir, provider, tracker)
+│   │                                #   (renamed from build_agent, reparameterised off a bare
+│   │                                #   agents_dir: Path). Everything comma-labeler/golden-set
+│   │                                #   related (agents/comma_labeler/, repositories/, exceptions/,
+│   │                                #   utils/) moved out to labeling/ — see above
 │   ├── scrapers/                   # Standalone script: normattiva.it -> data/raw/ + data/parsed/
 │   └── test_data_sampler/          # Standalone script: data/parsed/ -> a random subset in
 │                                    #   data/test-data/parsed/, plus the sampled quiz
@@ -382,29 +395,35 @@ implemented.
   `label-golden-set` (`label_main.py`), was added alongside it in the same
   package (spec 0011 phase 2) rather than as a new top-level module or as a
   mode of the judge script: FR-12 requires a distinct `CommaLabelerAgent`
-  (own DTOs, own prompt file) but the same lightweight, no-manifest shape,
-  and both scripts share `wiring.py`'s DI builders and `IngestorConfig`. It
-  introduces `retrieval_evaluation/repositories/` (a package the judge
-  script never needed, since it writes nothing) for
+  (own DTOs, own prompt file) but the same lightweight, no-manifest shape.
+  It originally introduced `retrieval_evaluation/repositories/` for
   `GoldenSetWriteRepository` — insert-only, `INSERT` statements only, no
-  `UPDATE`/`DELETE`/DDL (AD-10) — placed here rather than promoted into
-  `commons/repositories/db/` (that package is read-only by declared
-  convention) or into the ingestor's per-table write layer (the labeler is
-  not part of `guidami_ai_patente_ingestor/`).
+  `UPDATE`/`DELETE`/DDL (AD-10). Since spec 0012 Task 5, `GoldenSetWriteRepository`
+  and the rest of the golden-set/comma-labeler stack live in `src/labeling/` instead
+  (see the next bullet); `retrieval_evaluation/` keeps only what stays specific to
+  the two standalone scripts (`agents/retrieval_judge/`, `main.py`, `label_main.py`,
+  `services/retrieval_judge_evaluation_service.py`, and a `wiring.py` trimmed to the
+  retrieval-judge builder). The two scripts no longer share a common `wiring.py`
+  DI-builder set for their Postgres/OpenRouter/repository collaborators — each
+  temporarily duplicates its own private `_build_*` helpers pending a reparameterised,
+  shared `labeling/wiring.py` (Task 6 of the same plan).
 - **Code shared by the batch labeling harness and the future FastAPI app's live
   judge** (spec 0012, AD-12) goes in `src/labeling/`, a new top-level package sibling
   to `retrieval_evaluation/`: manual constructor injection only, no `pywire` import
   anywhere in it (ADR 0015), and every component stays synchronous, since the API
   calls it via `asyncio.to_thread` rather than an async duplicate (AD-25).
   `labeling/configs/labeling_config.py::LabelingConfig` (moved out of
-  `guidami_ai_patente_ingestor/configs/`, Task 3 of the quiz-flow-api-phase1 plan) is
-  its first occupant; `retrieval_evaluation/`'s `CommaLabelerAgent`,
-  `CandidateSetService`, `QuestionLexemeService`, `GoldenSetWriteRepository`, and
-  `CandidateComma` follow in a later `git mv` (same plan, Task 5) once `LabelingConfig`
-  and its `LabelingEpoch` companion (Task 4) exist to anchor them. `evaluate-retrieval-judge`
+  `guidami_ai_patente_ingestor/configs/`, Task 3 of the quiz-flow-api-phase1 plan) was
+  its first occupant; as of Task 5 (same plan) it holds the full judge stack, moved
+  from `retrieval_evaluation/` by `git mv`: `CommaLabelerAgent`, `CandidateSetService`,
+  `QuestionLexemeService`, `GoldenSetWriteRepository`, `CandidateComma`,
+  `CandidateNumberOutOfRangeError`, and `corpus_commit`/`prompt_version`, alongside
+  `LabelingEpoch` and its mappers (Task 4). `evaluate-retrieval-judge`
   and `label-golden-set` (`retrieval_evaluation/`) keep depending on `labeling/` rather
   than the reverse — the standalone scripts are consumers of the shared stack, not its
-  owner.
+  owner; `tests/labeling/test_module_boundary.py` enforces this both ways (`labeling/`
+  imports nothing from `retrieval_evaluation/`, `pywire`, or `guidami_ai_patente/`;
+  `domain/` imports nothing from `labeling/`).
 - **A field two config roots must never resolve differently** (e.g. `agents_dir`,
   which both `IngestorConfig` and `LabelingConfig` need because
   `guidami_ai_patente_ingestor/orchestrators/quiz_flows.py`'s quiz-enrichment agents
@@ -595,3 +614,24 @@ placement bullet accordingly. `prompt_version` is imported into
 `labeling/mappers/labeling_epoch_mapper.py` from `retrieval_evaluation.utils` as a
 deliberate temporary bridge — Task 5's `git mv` of `run_provenance.py` into
 `labeling/utils/` re-points it, per the plan's own Interfaces note for this task.*
+
+*Last updated: 2026-08-25 — verified against commit `7005ad3f` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 5). Pure `git mv` sweep: `src/labeling/` gained the
+rest of the judge stack — `agents/comma_labeler/`, `models/candidate_comma.py`,
+`services/{candidate_set_service,question_lexeme_service,golden_set_labeling_service}.py`,
+`repositories/golden_set_write_repository.py`, `exceptions/labeling_errors.py`, and
+`utils/run_provenance.py` — each mirrored under `tests/labeling/`, resolving the
+`retrieval_evaluation.utils` bridge noted in the Task 4 entry above.
+`retrieval_evaluation/` now holds only `agents/retrieval_judge/`, `main.py`,
+`label_main.py`, `services/retrieval_judge_evaluation_service.py`,
+`models/retrieval_judge_item_result.py`, and a `wiring.py` trimmed to one builder,
+`build_retrieval_judge_agent(agents_dir, provider, tracker)`. The other builders that
+used to live in that `wiring.py` (Postgres client, OpenRouter provider, tracker,
+quiz/corpus read repos, golden-set repository, comma-labeler config/agent) are not yet in
+a shared `labeling/wiring.py` — Task 6 (builders reparameterisation) hasn't run — so they
+are temporarily duplicated as private module-level helpers in both `main.py` and
+`label_main.py`, each flagged with a comment pointing at Task 6 as the resolution. Added
+`tests/labeling/test_module_boundary.py` (asserts `labeling/` imports nothing from
+`retrieval_evaluation/`, `pywire`, or `guidami_ai_patente/`, and that `domain/` imports
+nothing from `labeling/`) and updated the `labeling/`/`retrieval_evaluation/` placement
+bullets accordingly.*
