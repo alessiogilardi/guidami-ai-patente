@@ -43,7 +43,9 @@ repo/
 │   │                                #   endpoints yet. api/ (self-contained web
 │   │                                #   layer: app.py factory, routers/, schemas/) →
 │   │                                #   services/ / repositories/ / models/ / mappers/
-│   │                                #   (empty, pull-based) → configs/ (AppConfig). As of
+│   │                                #   (empty, pull-based) → configs/ (AppConfig); enums/ (closed
+│   │                                #   vocabularies: ExplanationStatus, InsufficientKnowledgeReason
+│   │                                #   — spec 0012, Task 5). As of
 │   │                                #   quiz-flow-api-phase2 Task 3, clients/ holds the app's
 │   │                                #   only two `@client` providers — PostgresClientProvider
 │   │                                #   (wraps commons/ PostgresClient via
@@ -698,3 +700,5 @@ first `@client`-provider package (spec 0012, AD-16): `PostgresClientProvider` (w
 the agent prompt files (AD-22) — now re-exported from `repositories/__init__.py` (its
 first re-export; the pre-existing `DependencyVersionRepository` is still imported
 directly from its module).*
+
+*Last updated: 2026-08-26 — verified against commit `64077e1f` (working tree ahead: spec 0012, quiz-flow-api-phase2 plan Task 5). `guidami_ai_patente/` gained `enums/`, holding closed vocabularies `ExplanationStatus` and `InsufficientKnowledgeReason` for the check and insufficient-knowledge responses.*

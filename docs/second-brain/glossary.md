@@ -33,6 +33,8 @@
 | **judge_rank** | The comma labeler's own 1-based ordering of the (at most three) candidates it names as justifying an answer, most-justifying first — persisted on `quiz_comma_labels.judge_rank`, distinct from `dense_rank`/`text_rank` (which record each retrieval arm's position, not the judge's opinion). |
 | **outcome (of a labeling)** | Whether a `quiz_labelings` row has any `quiz_comma_labels` children — **derived** by counting them, never stored as a column: zero children means "the corpus does not justify this question" (a real, meaningful result); no `quiz_labelings` row at all for a question means "never labeled" — a different thing entirely (AD-6). |
 | **configuration epoch** | The six-input judge identity — `judge_model`, `prompt_version`, `candidate_variant`, `dense_k`, `text_k`, `lexeme_fields` (sorted) — that a model or prompt change opens a new instance of, without a single `DELETE` (spec 0012, AD-8). Materialised as the frozen value object `LabelingEpoch` (`src/labeling/models/labeling_epoch.py`), built only via `LabelingEpochMapper.from_config_to_epoch` (`src/labeling/mappers/`, the sole place `lexeme_fields` is sorted); `LabelingRunMapper.from_epoch_to_entity` then adds the run mechanics (`shuffle_seed`, `corpus_commit`, `corpus_comma_count`, `question_limit`, `origin`) to produce an insertable `LabelingRunEntity`. Exactly the columns `uq_labeling_runs_live_config` keys on — see `docs/second-brain/database.md`. |
+| **explanation status** | Three-state cache vocabulary of `ExplanationStatus(StrEnum)` (spec 0012, AD-4, not the superseded AD-3 draft that used latency names): `CACHED` (association already retrieved and judged), `UNCACHED` (association not yet attempted), `UNAVAILABLE` (corpus does not support it). Names the **cache state of the association**, not a latency — FR-5 invokes the writer on every request, so even `CACHED` costs a live LLM call. Persisted in the check response to advertise what the client can expect if it asks for an explanation. |
+| **insufficient knowledge reason** | Closed vocabulary of `InsufficientKnowledgeReason(StrEnum)` (spec 0012, AD-6, names why an explanation cannot be produced): `NOT_INDEXED` — the question was never indexed (a **pipeline** gap, fixed by re-running ingestion); `NO_SUPPORTING_NORM` — corpus contains no supporting comma (a **corpus** gap, unfixable); `NO_SUPPORTING_NORM_CONFIRMED` — corpus gap confirmed by the judge (same as above, with evidence). `NOT_INDEXED` is deliberately separate from the two corpus-gap values so pipeline regressions remain visible (not collapsing into a generic "unavailable"). |
 
 *Last updated: 2026-08-01 — verified against commit `3cce407`; added
 **Regolamento** entry and widened **CdS**/**corpus normativo**/**source** to
@@ -77,3 +79,7 @@ union**, **lexeme**, **judge_rank**, and **outcome (of a labeling)** for the new
 *Last updated: 2026-08-25 — verified against commit `564f3df8` (working tree ahead: spec
 0012, quiz-flow-api-phase1 plan Task 4). Added **configuration epoch**, now materialised
 as `LabelingEpoch` plus its two mappers in `src/labeling/`.*
+
+*Last updated: 2026-08-26 — verified against commit `64077e1f` (working tree ahead: spec
+0012, quiz-flow-api-phase2 plan Task 5). Added **explanation status** and
+**insufficient knowledge reason** — two cache/error vocabularies for the check endpoint.*
