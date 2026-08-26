@@ -242,6 +242,34 @@ plan Task 11); documented the third-party exception-hierarchy canary test in
 `test_postgres_client_integration.py` (D12) alongside the existing fail-fast-at-
 construction test (D3).*
 
+**`object.__new__` container bypass for a pure-unit `@service`/`@repository`/`@client`
+test** (`tests/guidami_ai_patente/services/test_explanation_status_service.py`, spec
+0012, quiz-flow-api-phase2 plan Task 8): `service = object.__new__(ExplanationStatusService)`
+constructs the instance without running pywire's instrumented `__init__` (which would
+resolve the real, container-managed singletons — Postgres, the labeling stack), then the
+test assigns lightweight `@dataclass` doubles directly onto the `Autowired` field names
+(`service.golden_set = _GoldenSetDouble(...)`, etc., each `# type: ignore[assignment]`
+since pyright sees the real `Autowired[T]` annotation). Works whenever the class under
+test declares its collaborators as bare `Autowired[T]` fields with **no constructor body
+of its own** — true for `ExplanationStatusService`/`HealthCheckService`
+(`services/`) and `QuizQuestionRepository`/`GoldenSetReadRepository` (`repositories/`),
+but **not** for a class like `LabelingStackProvider`/`PostgresClientProvider`
+(`clients/`) or `AgentConfigRepository` (`repositories/`), whose `__init__` does real
+work (loading a YAML file, building a pooled client) that pywire's DI is what triggers —
+bypassing it with `object.__new__` there would skip that work entirely, not just the
+container resolution. For a zero-body class, the class's "construction" *is* setting
+those fields, so `object.__new__` plus manual assignment reproduces it exactly, with no
+Docker/Postgres and no pywire container involved at all. Reach for the heavier
+`api_client`/`app_config`
+fixtures (above) instead when the test needs the real DI graph or a live HTTP round trip;
+reach for this bypass when it only needs one class's own logic isolated from its
+collaborators.
+
+*Last updated: 2026-08-26 — verified against commit `f9d436de` (working tree ahead:
+quiz-flow-api-phase2 plan Task 8); documented the `object.__new__` container-bypass
+pattern for pure-unit tests of `Autowired`-only pywire classes, introduced by
+`ExplanationStatusService`'s test.*
+
 *Last updated: 2026-08-26 — verified against commit `ff0b188e` (working tree ahead:
 quiz-flow-api-phase2 plan Task 2); documented the session-scoped `app_config`/
 `api_client`/`_reset_pywire_container` fixtures that make "one `AppConfig` per
