@@ -3,6 +3,7 @@
 from .answer_evaluation import evaluate_answer
 from .explanation_status_service import ExplanationStatusService
 from .health_check_service import HealthCheckService
+from .judge_coherence_checker import JudgeCoherenceChecker
 from .quiz_answer_checker import QuizAnswerChecker
 from .quiz_image_service import QuizImageService
 from .quiz_proposal_service import QuizProposalService
@@ -10,6 +11,7 @@ from .quiz_proposal_service import QuizProposalService
 __all__ = [
     "ExplanationStatusService",
     "HealthCheckService",
+    "JudgeCoherenceChecker",
     "QuizAnswerChecker",
     "QuizImageService",
     "QuizProposalService",
