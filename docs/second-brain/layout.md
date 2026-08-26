@@ -354,10 +354,21 @@ implemented.
   `models/`/`services/`. `configs/app_config.py::AppConfig` is the root
   `BaseSettings`, built once in `main.py` and passed down into
   `api.app.create_app`, embedding `commons.configs.PostgresConnectionConfig`
-  the same way `IngestorConfig` does. `models/` and `mappers/` are still
-  scaffolded empty (docstring-only `__init__.py`), filled in pull-based as
-  with `domain/entities/` elsewhere in this repo; `services/` and
-  `repositories/` gained their first real, non-domain classes —
+  the same way `IngestorConfig` does. `models/` is filled in pull-based as
+  with `domain/entities/` elsewhere in this repo. `mappers/` (spec 0012
+  quiz-flow-api-phase2 plan Task 10) holds its first occupant,
+  `QuizQuestionMapper` (`mappers/quiz_question_mapper.py`), a static mapper
+  in the same style as the ingestor's `mappers/` package, alongside the
+  module-level `QUIZ_IMAGE_URL_PREFIX` constant it declares — re-exported
+  from `mappers/__init__.py`; the FR-12 images router (a later task)
+  imports the constant from there instead of duplicating the literal.
+  `api/schemas/` gained its first non-`health` DTOs in the same task:
+  `quiz_question.py::QuizQuestionResponse` and
+  `quiz_topics.py::{QuizTopicResponse, QuizTopicsResponse}`, neither
+  re-exported from `api/schemas/__init__.py` — routers import them
+  directly from their module, matching `api_error.py`/`health.py`.
+  `services/` and `repositories/` gained their first real, non-domain
+  classes —
   `repositories/dependency_version_repository.py::DependencyVersionRepository`
   and `services/health_check_service.py::HealthCheckService` — wired into
   `GET /health` (see `docs/architecture.md` and
@@ -702,3 +713,5 @@ first re-export; the pre-existing `DependencyVersionRepository` is still importe
 directly from its module).*
 
 *Last updated: 2026-08-26 — verified against commit `64077e1f` (working tree ahead: spec 0012, quiz-flow-api-phase2 plan Task 5). `guidami_ai_patente/` gained `enums/`, holding closed vocabularies `ExplanationStatus` and `InsufficientKnowledgeReason` for the check and insufficient-knowledge responses.*
+
+*Last updated: 2026-08-26 — verified against commit `a48633df` (working tree ahead: spec 0012, quiz-flow-api-phase2 plan Task 10). `guidami_ai_patente/mappers/` (a new top-level package) gained its first occupant, `QuizQuestionMapper` (plus the module-level `QUIZ_IMAGE_URL_PREFIX` constant), re-exported from `mappers/__init__.py`; `api/schemas/` gained its first non-`health` DTOs, `quiz_question.py::QuizQuestionResponse` and `quiz_topics.py::{QuizTopicResponse, QuizTopicsResponse}`; `services/` gained `QuizProposalService` (found-or-404 wrapper over `QuizQuestionRepository`'s `propose`/`fetch`/`topics`).*
