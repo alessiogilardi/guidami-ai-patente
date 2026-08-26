@@ -1,3 +1,8 @@
+---
+paths:
+  - "src/guidami_ai_patente/**"
+---
+
 # pywire — Spring-style DI, scoped to `src/guidami_ai_patente/` only
 
 `pywire` (git dependency, see `pyproject.toml`) is a Spring Boot-style IoC container:
