@@ -43,8 +43,20 @@ repo/
 │   │                                #   endpoints yet. api/ (self-contained web
 │   │                                #   layer: app.py factory, routers/, schemas/) →
 │   │                                #   services/ / repositories/ / models/ / mappers/
-│   │                                #   (empty, pull-based) → configs/ (AppConfig). Only
-│   │                                #   concrete slice: GET /health. Entry point:
+│   │                                #   (empty, pull-based) → configs/ (AppConfig). As of
+│   │                                #   quiz-flow-api-phase2 Task 3, clients/ holds the app's
+│   │                                #   only two `@client` providers — PostgresClientProvider
+│   │                                #   (wraps commons/ PostgresClient via
+│   │                                #   labeling.wiring.build_postgres_client) and
+│   │                                #   LabelingStackProvider (loads comma_labeler.yaml through
+│   │                                #   AgentConfigRepository, derives the LabelingEpoch via
+│   │                                #   LabelingEpochMapper) — reserved for objects shared with
+│   │                                #   the pre-pywire commons/labeling packages (spec 0012,
+│   │                                #   AD-16); repositories/ gains AgentConfigRepository, the
+│   │                                #   API's only door to `agents_dir` and the agent prompt
+│   │                                #   files (AD-22), now re-exported from
+│   │                                #   repositories/__init__.py. Only concrete endpoint slice:
+│   │                                #   GET /health. Entry point:
 │   │                                #   `guidami_ai_patente.main:main`, registered as the
 │   │                                #   `api` script
 │   ├── html_viewers/               # Standalone, dependency-free HTML pages for manually
@@ -675,3 +687,14 @@ freeing the `test_wiring` basename for the new `tests/labeling/test_wiring.py` (
 default import mode requires a unique module basename per test file across all of
 `tests/`, since no test directory carries an `__init__.py`) — content unchanged, file
 moved only.*
+
+*Last updated: 2026-08-26 — verified against commit `546985b5` (working tree ahead: spec
+0012, quiz-flow-api-phase2 plan Task 3). `guidami_ai_patente/` gained `clients/`, the app's
+first `@client`-provider package (spec 0012, AD-16): `PostgresClientProvider` (wraps
+`commons/` `PostgresClient` via `labeling.wiring.build_postgres_client`) and
+`LabelingStackProvider` (loads `comma_labeler.yaml` through the new
+`AgentConfigRepository`, derives the `LabelingEpoch` via `LabelingEpochMapper`).
+`repositories/` gained `AgentConfigRepository` — the API's only door to `agents_dir` and
+the agent prompt files (AD-22) — now re-exported from `repositories/__init__.py` (its
+first re-export; the pre-existing `DependencyVersionRepository` is still imported
+directly from its module).*

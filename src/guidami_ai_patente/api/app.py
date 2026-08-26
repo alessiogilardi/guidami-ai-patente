@@ -7,6 +7,10 @@ from pywire import get_default_container
 from pywire.exceptions import RegistrationError
 from pywire.fastapi import wire
 
+from guidami_ai_patente.clients import (  # noqa: F401  — imported for pywire registration
+    LabelingStackProvider,
+    PostgresClientProvider,
+)
 from guidami_ai_patente.configs import AppConfig
 
 from .routers import health
