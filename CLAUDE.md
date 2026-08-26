@@ -46,13 +46,17 @@ rm -rf docker/.volumes/postgres_data
 docker compose -f docker/docker-compose.yml up -d
 ```
 
-Integration tests never touch this dev stack. They run against a fully isolated,
+No test ever touches this dev stack. They run against a fully isolated,
 ephemeral Postgres (`docker/docker-compose.test.yml`: separate container, separate
 port 5433, `tmpfs` data directory — never persisted, never the dev database) that
 the `postgres_test_config` session fixture in `tests/conftest.py` starts
-automatically the first time an integration test needs it, and tears down at the
-end of the pytest session. No manual `docker compose` step is needed for it —
-just `uv run pytest -m integration` (Docker must be running).
+automatically the first time any collected test needs it — not only
+`integration`-marked tests: several `guidami_ai_patente` API tests consume the
+`app_config`/`api_client` fixtures, which depend on `postgres_test_config`
+transitively. So a plain `uv run pytest` (no `-m integration`) also starts this
+Docker stack, and hard-fails (not a skip) if Docker isn't running. No manual
+`docker compose` step is needed for it either way; the stack tears down at the
+end of the pytest session.
 
 ### Available scripts
 

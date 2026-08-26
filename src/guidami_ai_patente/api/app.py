@@ -49,9 +49,20 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     the app from starting — see `JudgeCoherenceChecker` for why that is deliberate.
     The check is synchronous SQL, so it crosses to a worker thread like every other
     call into the sync stack (AD-25).
+
+    `resolve()` itself is not covered by that guard: building `JudgeCoherenceChecker`
+    transitively constructs `GoldenSetReadRepository` -> `PostgresClientProvider`,
+    whose `__init__` opens a connection pool eagerly with `wait=True` and raises
+    `psycopg_pool.PoolTimeout` if Postgres isn't reachable yet. Startup must survive
+    that too, so resolution gets the same "diagnostic must never abort startup"
+    treatment as the check's own body.
     """
-    checker = get_default_container().resolve(JudgeCoherenceChecker)
-    await asyncio.to_thread(checker.check)
+    try:
+        checker = get_default_container().resolve(JudgeCoherenceChecker)
+    except Exception:  # noqa: BLE001 — a diagnostic must not abort startup (FR-14)
+        logger.warning("Judge coherence checker could not be built; continuing", exc_info=True)
+    else:
+        await asyncio.to_thread(checker.check)
     yield
 
 
