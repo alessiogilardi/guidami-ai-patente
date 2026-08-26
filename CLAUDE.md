@@ -119,9 +119,23 @@ Before starting any implementation task, read the reference documents:
 
 - **Design specs** (feature contracts, "what to build"): `docs/superpowers/specs/` — written by the `superpowers:brainstorming` skill's architectural path
 - **Implementation plans** (not-yet-implemented work, "how it gets built task-by-task"): `docs/superpowers/plans/` — written by the `superpowers:writing-plans` skill; gitignored, pruned once implemented
-- **Implemented architecture, patterns, database, layout, testing, glossary**: the Second Brain under `docs/second-brain/` — start at `docs/second-brain/README.md`, which routes to `architecture.md`, `database.md`, `patterns.md`, `glossary.md`, `layout.md`, `testing.md`, and `adr/`.
+- **Implemented architecture, patterns, database, layout, testing, glossary**: the Second Brain under `docs/second-brain/` — governed by the Second Brain plugin; see the "Skill: Second Brain" block below for how to read and update it. The former `doc-reader`/`doc-architect` agents are decommissioned; the Second Brain plugin's agent/skills replace them.
 
-Reading and updating these files is governed by the `update-second-brain` skill (see the "Skill: Second Brain" block below) — read the relevant `docs/second-brain/*.md` file directly rather than invoking an agent, and run the skill after any change described in its triggers. The former `doc-reader`/`doc-architect` agents are decommissioned; the Second Brain plugin's skills replace them.
+### Complex tasks — brainstorming, then grilling
+
+When a task's horizon is complex (architectural, multi-step, or ambiguous scope), run
+`superpowers:brainstorming` first. Only once that preliminary discussion has produced a
+first-pass shared understanding, hand off to `mattpocock-skills:grilling` to stress-test
+it before writing a spec or plan — grilling sharpens a plan, it does not replace the
+discussion that produces one.
+
+For this project, override grilling's default batching: ask one question at a time, not
+the whole frontier as a list. Each question is multiple-choice, with the recommended
+option marked, and you wait for the user's answer before asking the next.
+
+Put every question to the user — brainstorming's and grilling's alike — through the
+`AskUserQuestion` tool rather than as plain chat text, so each renders as an actual
+multiple-choice prompt with the recommended option first.
 
 ## Code Conventions
 
