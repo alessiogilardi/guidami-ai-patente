@@ -565,8 +565,18 @@ async def test_no_topic_labels_the_whole_bank() -> None:
 
 
 async def test_the_limit_applies_to_the_filtered_set() -> None:
+    """A count-only assertion here is too weak (final whole-branch review, Important #-).
+
+    With 4 of 5 rows on-topic and a limit of 2, a filter-*after*-limit bug (limiting the
+    unfiltered 5 rows to 2, then filtering those down by topic) could still produce
+    `labeled == 2` a majority of the time depending on shuffle — the count alone doesn't
+    distinguish "limit applied to the filtered set" from "limit applied before filtering
+    happened to leave 2 on-topic rows". Asserting the labeled ids are a subset of the
+    on-topic ids (and explicitly exclude the off-topic row) closes that gap.
+    """
     write_repository = _RecordingWriteRepository()
-    rows = [_make_row(i, topic="velocità") for i in range(1, 5)] + [
+    on_topic_ids = {1, 2, 3, 4}
+    rows = [_make_row(i, topic="velocità") for i in on_topic_ids] + [
         _make_row(9, topic="segnaletica")
     ]
     service = _make_service(
@@ -581,3 +591,7 @@ async def test_the_limit_applies_to_the_filtered_set() -> None:
     labeled = await service.label_all(run_id=1)
 
     assert labeled == 2
+    labeled_ids = {call[0].quiz_question_id for call in write_repository.calls}
+    assert len(labeled_ids) == 2
+    assert labeled_ids <= on_topic_ids
+    assert 9 not in labeled_ids

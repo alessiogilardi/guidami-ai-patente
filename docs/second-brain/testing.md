@@ -161,7 +161,7 @@ hits an exhausted pool. Same file also has
 (integration-marked, D3): asserts `PostgresClient(dead_config)` itself
 raises `psycopg.Error`, not a later `.fetch()` call.
 
-**Import-boundary test via `ast`** (`tests/retrieval_evaluation/test_wiring.py::
+**Import-boundary test via `ast`** (`tests/retrieval_evaluation/test_entry_points.py::
 test_the_labeler_imports_no_private_ingestor_module`, spec 0011 phase 2): parses
 every `.py` file under a package's source tree with `ast`, collects every
 `ImportFrom`/`Import` module path, and asserts none crosses a declared boundary

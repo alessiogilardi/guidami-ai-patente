@@ -5,7 +5,7 @@ from ...models.status import CommandReadiness, ReadinessState, SourceReadiness
 
 
 class StatusInspector:
-    """Derives per-(command, entity) executability from the filesystem only.
+    """Derives per-(command, entity) executability from the filesystem and resolved config.
 
     No DB, no network: `prepare`/`index` readiness is computed from `Path.exists()`
     on the layers resolved by `LayerResolverProvider`. `reset` has no source dimension and

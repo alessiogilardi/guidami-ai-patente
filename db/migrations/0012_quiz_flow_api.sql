@@ -114,6 +114,14 @@ COMMIT;
 -- EQUIVALENCE CHECK — a migrated database and a freshly initialised one must have
 -- identical schemas for the new columns and indexes. Run this against both and diff
 -- the output; any difference means db/init.sql and this migration have drifted.
+--
+-- NOTE: this check deliberately does NOT select ordinal_position. The new columns on
+-- labeling_runs and quiz_labelings land at different ordinal positions depending on
+-- which path built the table (fresh db/init.sql vs. this migration applied to an
+-- existing spec-0011 database) — expected, not a defect: every write path in this
+-- codebase names its columns explicitly and never relies on positional `SELECT *`.
+-- If a future maintainer adds ordinal_position to this query, a mismatch here is not
+-- itself a bug to chase.
 -- SELECT table_name, column_name, data_type, is_nullable, udt_name
 -- FROM information_schema.columns
 -- WHERE table_schema = 'public'

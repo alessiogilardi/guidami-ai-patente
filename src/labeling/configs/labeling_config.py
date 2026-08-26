@@ -33,6 +33,14 @@ class LabelingConfig(BaseSettings):
         frozen=True,
         extra="ignore",
         env_file=".env",
+        env_prefix="LABELING_",
+        # Resolved relative to the process's CWD, matching `IngestorConfig`'s existing
+        # convention (see `guidami_ai_patente_ingestor.configs.ingestor_config`). A missing
+        # file is silently skipped by pydantic-settings, so a process started from an
+        # unexpected working directory silently falls back to this class's Python defaults
+        # for the epoch fields that have them (all but `agents_dir`) — known limitation,
+        # to resolve before plan 2's FastAPI app runs this from inside a container, where
+        # `WORKDIR` may not be the repo root.
         yaml_file="configs/labeling.yaml",
     )
 

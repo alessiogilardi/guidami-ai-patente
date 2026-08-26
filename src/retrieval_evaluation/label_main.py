@@ -87,10 +87,18 @@ def main() -> None:
     file_handler.setFormatter(logging.Formatter(LOG_FORMAT))
     logging.getLogger().addHandler(file_handler)
 
-    # D7/D14: fans `concurrency` tasks out over one pooled client — widen the pool so
-    # the surplus borrowers don't queue and time out under Task 1's bounded timeout.
+    # D7/D14: `GoldenSetLabelingService._label_one` makes its Postgres-touching calls
+    # (candidate_set_service.build, write_repository.insert_labeling) synchronously on
+    # the event-loop thread — only the `await self._call_agent(...)` LLM call is
+    # concurrent. So the actual peak simultaneous connection-borrow today is 2 (the
+    # event loop plus QueuedLlmCallTracker's background daemon thread), not
+    # `concurrency`. This sizing is forward-looking headroom for a future
+    # `asyncio.to_thread`-based concurrent path (src/labeling/__init__.py already
+    # anticipates this for the API), not something the current synchronous batch
+    # harness needs today. `+ 1` budgets for the tracker's own connection borrow
+    # alongside the (currently hypothetical) fanned-out workers.
     postgres_config = config.postgres.model_copy(
-        update={"pool_max_size": max(config.postgres.pool_max_size, concurrency)}
+        update={"pool_max_size": max(config.postgres.pool_max_size, concurrency + 1)}
     )
 
     provider = build_open_router_provider(config.open_router_config.api_key.get_secret_value())

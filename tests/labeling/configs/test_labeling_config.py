@@ -97,3 +97,25 @@ def test_rejects_an_empty_lexeme_field_selection() -> None:
 def test_rejects_a_non_positive_arm_depth() -> None:
     with pytest.raises(ValidationError):
         LabelingConfig(dense_k=0)  # type: ignore[call-arg]
+
+
+def test_a_bare_epoch_field_env_var_does_not_override_the_config(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """`env_prefix="LABELING_"` closes the silent-override channel D16 left open.
+
+    Without an `env_prefix`, pydantic-settings' default env source matches field names
+    case-insensitively with no prefix at all, so a bare `DENSE_K` in the process
+    environment would silently win over the Python default — exactly the kind of
+    unrecorded epoch-field override AD-22/AD-27 exist to prevent (D16's own rationale
+    for keeping `configs/labeling.yaml` unreachable from `ingest --config`).
+    """
+    monkeypatch.chdir(tmp_path)  # no configs/labeling.yaml here
+    monkeypatch.setenv("AGENTS_DIR", "configs/agents")
+    monkeypatch.setenv("DENSE_K", "7")
+    monkeypatch.setenv("CONCURRENCY", "99")
+
+    config = LabelingConfig()  # type: ignore[call-arg]
+
+    assert config.dense_k == 50
+    assert config.concurrency == 8
