@@ -81,6 +81,12 @@ this plan's implementation (2026-08-26).
   substance, and is corrected via an amendments note rather than a silent edit.
 - ADR 0017 is amended in place to record its Decision items 1 and 3 as superseded by
   this ADR, with item 2 explicitly carried forward — see that file's amendment section.
-- No code changes yet: this ADR documents an accepted decision ahead of the Phase 2
-  implementation that exercises it (Tasks 1-2 build `create_app`/the session fixtures
-  against this pattern).
+- Implemented by Phase 2 Task 2 (`src/guidami_ai_patente/api/app.py::create_app`/
+  `_register_config`, `tests/conftest.py`'s `app_config`/`api_client`/
+  `_reset_pywire_container` session-scoped fixtures, and
+  `tests/guidami_ai_patente/api/test_container_registration.py`) — see
+  `docs/second-brain/testing.md` for the fixture-level detail. `main.py` already
+  matched Decision item 1 before this ADR was filed (`AppConfig()` built once at the
+  entry point and handed to `create_app`); Task 2 is what made a second, independent
+  `AppConfig` construction anywhere in the pytest session a hard `RegistrationError`
+  instead of a possibility no test happened to exercise.

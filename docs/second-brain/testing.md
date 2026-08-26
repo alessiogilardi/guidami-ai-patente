@@ -78,11 +78,40 @@ covered by `test_cli_main_dispatches_to_main_with_resolved_source`/
 `test_cli_main_dry_run_flag_forwarded` via a monkeypatched `main`).
 `tests/guidami_ai_patente/api/routers/test_health.py` is the first test for
 `src/guidami_ai_patente/`: FastAPI's `TestClient` (`fastapi.testclient`)
-against an app built by `create_app(AppConfig(...))` with an inline,
-non-Docker `PostgresConnectionConfig` — the route under test never opens a
-DB connection, so no fixture from `_postgres_test_stack` is needed. This is
-the project's first use of `TestClient` and establishes the pattern for
-future `guidami_ai_patente/` endpoint tests.
+against the app, resolved through the shared `api_client` fixture (see
+below) rather than building its own `AppConfig`/`TestClient` — this is the
+project's first use of `TestClient` and establishes the pattern for future
+`guidami_ai_patente/` endpoint tests: consume `api_client`, never call
+`create_app` directly from a test.
+
+**At most one `AppConfig` per pytest session (spec 0012 constraint,
+ADR 0023).** `tests/conftest.py` enforces this mechanically, not just by
+convention, via three session-scoped fixtures:
+- `app_config` — the *only* `AppConfig` the whole session may construct,
+  built from `postgres_test_config` (below) plus
+  `quiz_images_dir=Path(__file__).parent.parent / "data" / "quiz-images"`.
+- `api_client` — `TestClient(create_app(app_config))`, entered as a context
+  manager so the app's lifespan runs exactly once for the session (not once
+  per test).
+- `_reset_pywire_container` (autouse) — calls
+  `get_default_container().clear_instances()` at session teardown, dropping
+  cached singletons (notably the pooled `PostgresClient` inside
+  `PostgresClientProvider`) so they don't outlive the session and stall the
+  ephemeral Postgres stack's teardown.
+
+The mechanism, not just the intent: `create_app` (`api/app.py::_register_config`)
+registers `config` on pywire's process-wide default container via
+`container.register_instance(config, as_type=AppConfig)`, which raises
+`pywire.exceptions.RegistrationError` if a *different* `AppConfig` instance
+is already registered — re-registering the *same* object (identity check,
+`is`) is tolerated, so a second `create_app(app_config)` call with the
+session's own fixture is a no-op, but any test that tried to build a second,
+independent `AppConfig` and pass it to `create_app` would fail loudly. This
+is what makes "one `AppConfig` per session" a hard error instead of a
+silent misconfiguration — see ADR 0023 and `.claude/rules/pywire-di.md`.
+`tests/guidami_ai_patente/api/test_container_registration.py` covers all
+three cases: same-instance resolution, tolerated re-registration of the
+same object, and the `RegistrationError` on a genuinely different one.
 `flowstep` is an external git dependency (not part of this repo's `src/`
 or `tests/`), so it has no local test mirror here — see
 `docs/second-brain/architecture.md`.
@@ -130,6 +159,9 @@ relies on for isolation, both session-scoped:
   `tests/guidami_ai_patente_ingestor/repositories/test_article_store_repository.py`)
   requests this fixture rather than building its own
   `PostgresConnectionConfig`.
+- `app_config`/`api_client`/`_reset_pywire_container` — the session-scoped,
+  one-`AppConfig` fixtures for `src/guidami_ai_patente/` (the FastAPI app),
+  described above.
 `tests/guidami_ai_patente_ingestor/fixtures/` is a separate mechanism, not
 pytest fixtures — it holds static JSON sample files (`cds_sample.json`,
 `cap_sample.json`, `quiz_bank_sample.json`) used as real input data by
@@ -209,3 +241,10 @@ was the right call here (fixtures only meaningful to `reset knowledge`'s tests).
 plan Task 11); documented the third-party exception-hierarchy canary test in
 `test_postgres_client_integration.py` (D12) alongside the existing fail-fast-at-
 construction test (D3).*
+
+*Last updated: 2026-08-26 — verified against commit `ff0b188e` (working tree ahead:
+quiz-flow-api-phase2 plan Task 2); documented the session-scoped `app_config`/
+`api_client`/`_reset_pywire_container` fixtures that make "one `AppConfig` per
+pytest session" a hard error via `create_app`'s `register_instance` call (ADR 0023),
+replacing the prior per-test `create_app(AppConfig(...))` pattern in
+`test_health.py`; noted the new `test_container_registration.py` coverage.*
