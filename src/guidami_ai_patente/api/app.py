@@ -13,6 +13,7 @@ from guidami_ai_patente.clients import (  # noqa: F401  — imported for pywire 
 )
 from guidami_ai_patente.configs import AppConfig
 
+from .exception_handlers import register_exception_handlers
 from .routers import health
 
 logger = logging.getLogger(__name__)
@@ -48,6 +49,7 @@ def create_app(config: AppConfig) -> FastAPI:
     app = FastAPI(title="guidami-ai-patente API")
     app.state.config = config
     _register_config(config)
+    register_exception_handlers(app)
     wire(app)
     app.include_router(health.router)
     return app
