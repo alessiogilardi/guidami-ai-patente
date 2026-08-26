@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **guidami-ai-patente** is a tool that makes Italian driving exam information freely accessible. It aggregates official questions, regulations, and reference material — currently scraped from the web and from PDFs — so users can study and query it without paywalls.
 
-The end goal is a **quiz bot** (FastAPI) that checks answers deterministically and explains them using RAG over the corpus normativo (CdS + CAP). The project is currently in the **data ingestion phase**: Postgres/pgvector infrastructure is running, corpus and quiz-bank ingestion pipelines are implemented. The FastAPI app has not been started yet.
+The end goal is a **quiz bot** (FastAPI) that checks answers deterministically and explains them using RAG over the corpus normativo (CdS + CAP). Postgres/pgvector infrastructure is running, corpus and quiz-bank ingestion pipelines are implemented, and the FastAPI app (`src/guidami_ai_patente/`, started with `uv run serve`) now serves the full quiz loop: browse topics, get a question, check an answer, fetch its image. Deterministic answer-checking is live; the RAG-backed explanation endpoint is not implemented yet (tracked as a later plan).
 
 ## Environment & Commands
 
@@ -71,6 +71,7 @@ just `uv run pytest -m integration` (Docker must be running).
 | `uv run ingest status [--online]` | `guidami_ai_patente_ingestor.cli:main` | Shows config (secrets masked) and per-command readiness; `--online` also checks Postgres reachability and per-table row counts |
 | `uv run ingest evaluate retrieval [--seed N] [--baseline-repetitions N] [--dry-run] [--plain]` | `guidami_ai_patente_ingestor.cli:main` | Measures retrieval quality (corpus coverage, ranking vs. random baseline, lexical adherence, dense/FTS agreement, keyword-quality signals) over the quiz bank and knowledge corpus (spec 0007). `--seed`/`--baseline-repetitions` override `IngestorConfig.evaluation`; writes `data/eval/retrieval-summary.json` (committed) plus per-question detail and a judge-ready export under `logs/ingest_evaluate_<ts>/` |
 | `uv run label-golden-set [--concurrency N] [--seed N] [--limit N] [--topic TOPIC]…` | `retrieval_evaluation.label_main:main` | Runs a golden-set labeling pass over the quiz bank via `CommaLabelerAgent`, persisting one `labeling_runs` row plus `quiz_labelings`/`quiz_comma_labels` (spec 0011). `--topic` (repeatable) restricts the run to the union of the named topics, applied before `--limit`; it selects which questions are labeled and is never recorded on the run (FR-18) |
+| `uv run serve` | `guidami_ai_patente.main:main` | Starts the FastAPI service on `AppConfig.host:port` |
 
 `--dry-run` (on `prepare`/`index`/`evaluate`) prints the step chain that would run and
 exits — no filesystem writes, no LLM calls, no DB connection is ever opened.
@@ -85,6 +86,19 @@ same-minute collision). Previews (`--dry-run` on `prepare`/`index`, or `reset` w
 `--apply`) never write to `logs/`, to keep the "no filesystem writes" guarantee.
 
 Register new CLI commands under `[project.scripts]` in `pyproject.toml`.
+
+### API endpoints
+
+Started via `uv run serve` (`docker compose up -d` first, so Postgres is reachable):
+
+| Endpoint | Description |
+|---|---|
+| `GET /health` | Liveness check; reports the resolved `pywire` version |
+| `GET /quiz-questions/topics` | Lists the distinct topics with their question counts (FR-16) |
+| `GET /quiz-questions/random?seed=&index=&topic=` | Proposes the question at `index` of the seeded permutation `seed` induces, optionally restricted to `topic` (FR-1); response never includes `correct_answer` |
+| `GET /quiz-questions/{number}` | Returns one question by its number, in the same shape as `/random` (FR-2) |
+| `POST /quiz-questions/{number}/check` | Grades a submitted true/false answer and advertises the `explanation_status` (`cached`/`uncached`/`unavailable`) for that question (FR-3, FR-4) |
+| `GET /quiz-images/{filename}` | Serves a quiz image, authorized database-first: 404 unless some `quiz_questions` row actually references the filename (FR-12) |
 
 ### Running against a test-data subset
 

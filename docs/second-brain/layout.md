@@ -60,7 +60,7 @@ repo/
 │   │                                #   repositories/__init__.py. Only concrete endpoint slice:
 │   │                                #   GET /health. Entry point:
 │   │                                #   `guidami_ai_patente.main:main`, registered as the
-│   │                                #   `api` script
+│   │                                #   `serve` script
 │   ├── html_viewers/               # Standalone, dependency-free HTML pages for manually
 │   │                                #   inspecting pipeline output (e.g. quiz enrichment
 │   │                                #   review); opened directly in a browser, no server
@@ -377,7 +377,7 @@ implemented.
   request/response service. The only concrete vertical slice so far is
   `GET /health`, proving the wiring end-to-end; it carries no business
   logic. Entry point: `main.py::main` (loads `AppConfig`, builds the app via
-  `create_app`, serves it with `uvicorn`), registered as the `api`
+  `create_app`, serves it with `uvicorn`), registered as the `serve`
   script in `pyproject.toml`.
 - **New tests** mirror the `src/` path of the code under test inside
   `tests/`, with no `__init__.py` in any test directory (see
