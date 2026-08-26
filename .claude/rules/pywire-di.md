@@ -20,8 +20,9 @@ packages intentionally use different DI styles — do not "harmonize" one into t
   is decorated with the role-appropriate pywire decorator (`@service` for
   `services/`, `@repository` for `repositories/`, `@client` for `clients/`, `@component`
   otherwise) — mirrors the `@Service`/`@Repository`/`@Component` split in Spring.
-- Dependencies are declared as class-level `Autowired[T]` fields, **not** as constructor
-  parameters:
+- Dependencies are declared as class-level `Autowired[T]` fields, **always**, with no
+  constructor-parameter exception (ADR 0023 — see "Testing with a substitute
+  dependency" below):
 
   ```python
   from pywire import Autowired, service
@@ -41,10 +42,37 @@ packages intentionally use different DI styles — do not "harmonize" one into t
   container is deliberately the app's composition root, resolved once at startup.
 - Do not hand-instantiate a `@service`/`@repository`/`@client` class directly
   (`QuizAnswerChecker()`); resolve it through the container.
-- `AppConfig` (`configs/app_config.py`) is data, not a component: it is loaded once at
-  the entry point (`main.py`, per `rules/python/architecture.md`) and, if a component
-  needs it, exposed to the container as a registered instance/provider — it is not
-  autowired as if it were itself a `@component`.
+- `AppConfig` (`configs/app_config.py`) is data, not a component: it is loaded **once at
+  the entry point** (`main.py`, per `rules/python/architecture.md`) and handed to the
+  container via `container.register_instance(app_config, as_type=AppConfig)` (ADR 0023,
+  superseding ADR 0017's zero-arg-`@component` workaround) — it is not autowired as if it
+  were itself a `@component` constructing itself lazily on first resolution.
+- Components needing a real constructor argument the container cannot build
+  zero-argument (e.g. `PostgresClientProvider` wrapping
+  `PostgresClient(config.postgres)`) still build it inside their own `__init__`, after
+  their own `Autowired` fields are set (`Container._instrument`'s field-then-`__init__`
+  ordering) — ADR 0017's Decision item 2, unaffected by ADR 0023.
+
+### Testing with a substitute dependency
+
+A class needing a mock/double for a unit test stays **field-only** `Autowired[T]` like
+every other class here — no constructor-parameter exception. Register the substitute on
+the container before resolving the component under test, and call `clear_instances()`
+for isolation between tests (`pywire>=0.5.0`; ADR 0023, superseding ADR 0017's Decision
+item 3):
+
+```python
+from pywire import get_default_container
+
+def test_check_compares_against_the_stored_answer() -> None:
+    container = get_default_container()
+    container.register_instance(FakeQuizQuestionRepository(), as_type=QuizQuestionRepository)
+
+    checker = container.resolve(QuizAnswerChecker)
+    assert checker.check(1, "true") is True
+
+    container.clear_instances()
+```
 
 ## FastAPI wiring — `pywire.fastapi.wire()`, not manual `Depends()`
 
@@ -55,6 +83,7 @@ per request — no manual `Depends(lambda: get_default_container().get(X))` wiri
 ```python
 # api/app.py
 from fastapi import FastAPI
+from pywire import get_default_container
 from pywire.fastapi import wire
 
 from .routers import health
@@ -62,10 +91,16 @@ from .routers import health
 
 def create_app(config: AppConfig) -> FastAPI:
     app = FastAPI(title="guidami-ai-patente API")
+    get_default_container().register_instance(config, as_type=AppConfig)
     wire(app)
     app.include_router(health.router)
     return app
 ```
+
+`register_instance` (ADR 0023) is what lets `main.py` load `AppConfig` once and hand the
+instance to the container, instead of `AppConfig` constructing itself lazily on first
+resolution — see `create_app`'s reference implementation for the `RegistrationError`
+handling a repeated `create_app(config)` call needs.
 
 ```python
 # api/routers/health.py

@@ -2,7 +2,8 @@
 
 ## Status
 
-Proposed
+Decision items 1 and 3 superseded by ADR 0023 (2026-08-26). Decision item 2 remains in
+effect — see the amendment below.
 
 ## Context
 
@@ -203,14 +204,14 @@ externally-constructed `AppConfig` instance ... could be handed to the container
   `PostgresConnectionConfig`), which `register_factory`/`register_instance` do not
   independently solve any more cleanly than the existing pattern already does.
 
-**Why this is a proposal, not an accepted change:** `register_instance`/
-`register_factory`/`clear_instances` are new library capability, not yet exercised by
-any code in this repository — no test currently calls `clear_instances()`, and no
-entry point currently calls `register_instance()`. Adopting this amendment means
-rewriting `main.py`'s composition-root wiring and `QuizAnswerChecker`'s test suite,
-neither of which is in scope for the quiz-flow-api-phase1 plan (an ingestion-side,
-non-HTTP plan). This amendment is filed here — as the Second Brain's record that the
-capability gap motivating ADR 0017 no longer exists — for the user to accept,
-edit, or reject before any code changes to `src/guidami_ai_patente/` are made on
-its basis. `Status` above is left as this ADR's pre-existing value, not `Accepted`,
-until that decision is made.
+**Accepted (2026-08-26), by ADR 0023.** During the grilling/check session that preceded
+the quiz-flow-api-phase2 plan's implementation, the user accepted this amendment: Decision
+items 1 and 3 above are superseded by
+`adr/0023-appconfig-registered-instance-supersedes-0017.md`, which records the accepted
+replacement in full. Decision item 2 (`PostgresClientProvider` building `PostgresClient`
+inside its own `__init__`, after its own `Autowired` fields are set) is **not** affected —
+`register_factory`/`register_instance` do not solve that problem any more cleanly than the
+existing pattern, so it remains this ADR's standing guidance. No code in this repository
+exercised the superseded items 1/3 pattern at the time of acceptance, so nothing needed
+migrating; the quiz-flow-api-phase2 plan's Tasks 1-2 are the first code built against
+ADR 0023 instead.

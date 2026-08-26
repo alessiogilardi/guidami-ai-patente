@@ -1049,6 +1049,18 @@ pending a user call on whether to revise them before that endpoint is built.*
 
 *Last updated: 2026-08-25 — verified against commit `f1a2b74e`.*
 
+*Last updated: 2026-08-26 — verified against commit `d21223b7` (working tree ahead:
+quiz-flow-api-phase2 branch, pre-implementation grilling/check session). ADR 0017's
+zero-arg-`@component` `AppConfig` workaround (Decision item 1) and its
+constructor-parameter testability exception (Decision item 3) are superseded by
+`adr/0023-appconfig-registered-instance-supersedes-0017.md`: `AppConfig` is loaded once
+at `main.py` and registered via `container.register_instance(app_config, as_type=
+AppConfig)`; a class needing a test double stays field-only `Autowired[T]` and the test
+registers a mock plus calls `clear_instances()` instead. ADR 0017's Decision item 2
+(`PostgresClientProvider` building `PostgresClient` in its own `__init__`) is unaffected.
+`.claude/rules/pywire-di.md` updated accordingly. No source code changed — the
+quiz-flow-api-phase2 plan's Tasks 1-2 are the first code built against ADR 0023.*
+
 *Last updated: 2026-08-25 — verified against commit `440bad56` (working tree ahead: spec
 0012, quiz-flow-api-phase1 plan Task 3); the golden-set labeler section and the
 `retrieval_evaluation/` component-table row now say the retrieval judge and comma-labeler
