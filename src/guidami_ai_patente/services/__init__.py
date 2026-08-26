@@ -4,12 +4,14 @@ from .answer_evaluation import evaluate_answer
 from .explanation_status_service import ExplanationStatusService
 from .health_check_service import HealthCheckService
 from .quiz_answer_checker import QuizAnswerChecker
+from .quiz_image_service import QuizImageService
 from .quiz_proposal_service import QuizProposalService
 
 __all__ = [
     "ExplanationStatusService",
     "HealthCheckService",
     "QuizAnswerChecker",
+    "QuizImageService",
     "QuizProposalService",
     "evaluate_answer",
 ]
