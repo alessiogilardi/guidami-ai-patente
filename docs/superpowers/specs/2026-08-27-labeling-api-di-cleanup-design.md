@@ -139,29 +139,25 @@ subclasses, invoked via `__call__` per `.claude/rules/use-case-invocation.md`
 this spec):
 - `guidami_ai_patente/services/`: `ExplanationStatusService`, `QuizImageService`,
   `QuizAnswerChecker`
-- `labeling/services/`: `CandidateSetService`, `QuestionLexemeService`
+- `labeling/services/`: `CandidateSetService`, `QuestionLexemeService`,
+  `GoldenSetLabelingService` (`AsyncUseCase[int, int]` — `run_id` in, the
+  labeled-question count out; its concurrency/retry machinery is internal to
+  `execute` and does not change the contract). Confirmed in during design
+  discussion: the earlier instinct to exclude it for being an async
+  orchestrator was the wrong axis — `UseCase` shape and `orchestrators/`-style
+  *placement* are independent (see the rule file). Whether it *additionally*
+  belongs in `orchestrators/` as a `*Pipeline` is a separate placement
+  question, deliberately left open (see Non-Goals) — it stays in
+  `labeling/services/` for this spec regardless of that outcome.
 
 Each gets a request DTO when its current method takes more than one scalar
 argument (e.g. `QuizAnswerChecker`'s `(number, submitted_answer)`); a
 single-argument method keeps that argument as `T_In` directly (no
 one-field-wrapper DTO for its own sake).
 
-**Open point, not yet decided — flagged for sign-off**: under this corrected
-criterion, `GoldenSetLabelingService.label_all(run_id: int) -> int`
-(`labeling/services/`) is *not* automatically excluded by being an async
-orchestrator with concurrency/retries — that was the wrong axis (see the rule
-file: `UseCase` and `orchestrators/`-style placement are independent). Its
-public contract genuinely is one input (`run_id`) → one output (a count). It
-is left OUT of this spec's conversion list only provisionally, pending an
-explicit decision: converting it also means deciding whether it additionally
-belongs in `orchestrators/` (as an `AsyncUseCase`-implementing `*Pipeline`) —
-a placement question this spec has not yet resolved and that changes its
-constructor-injection shape (labeling's manual DI, not pywire, per FR-5).
-
-The following stay excluded on their own terms — multi-operation or
-void-output, independent of the point above — with the reason recorded
-inline as a class-docstring note so a future reader doesn't re-propose the
-conversion without re-litigating it:
+The following stay excluded — multi-operation or void-output — with the
+reason recorded inline as a class-docstring note so a future reader doesn't
+re-propose the conversion without re-litigating it:
 - `QuizProposalService`, `HealthCheckService` — multiple, unrelated public
   operations grouped by domain/router convenience; splitting each into its
   own `UseCase` class multiplies files and, for `HealthCheckService`, forces
@@ -171,23 +167,21 @@ conversion without re-litigating it:
   no meaningful `T_Out` to type.
 
 **Acceptance criteria:**
-- The five listed classes (six if `GoldenSetLabelingService` is confirmed in)
-  subclass `UseCase`/`AsyncUseCase` (async where the current method already is
-  `async def` — `GoldenSetLabelingService.label_all` if included; the other
-  five are synchronous today and convert to synchronous `UseCase`), implement
-  `execute`, and every call site invokes them via `__call__` (`self._x(request)`),
-  not `.execute(request)`.
-- pywire's field-injection convention is unchanged: the four `guidami_ai_patente`
+- All six listed classes subclass `UseCase`/`AsyncUseCase`
+  (`GoldenSetLabelingService` → `AsyncUseCase`, matching its existing
+  `async def label_all`; the other five are synchronous today and convert to
+  synchronous `UseCase`), implement `execute`, and every call site invokes
+  them via `__call__` (`self._x(request)`), not `.execute(request)`.
+- pywire's field-injection convention is unchanged: the three `guidami_ai_patente`
   classes remain `@service`-decorated with `Autowired[T]` fields; `UseCase`
   inheritance and pywire decoration are independent axes and both apply where
   relevant. The `labeling/services/` classes keep manual constructor injection
   (FR-5) — `UseCase` inheritance there is likewise independent of DI style.
 - The two multi-operation/void-output excluded classes each carry a
   one-to-two-sentence docstring note stating why they were deliberately left
-  out. `GoldenSetLabelingService` carries such a note only if the open point
-  above is resolved as "excluded"; otherwise it converts per this FR.
+  out.
 - `.claude/rules/use-case-invocation.md`'s scope line is updated to include
-  `src/guidami_ai_patente/services/` and `src/labeling/services/` for the five
+  `src/guidami_ai_patente/services/` and `src/labeling/services/` for the six
   converted classes (not a blanket extension to every class in those
   directories).
 
@@ -215,11 +209,11 @@ dependency on `guidami_ai_patente`, enforced by
   `__exit__` on anything), which the batch harness relies on for deterministic
   Postgres-pool and `QueuedLlmCallTracker` cleanup.
 - Converting `QuizProposalService`, `HealthCheckService`, or
-  `JudgeCoherenceChecker` to `UseCase` (see FR-4) — `GoldenSetLabelingService`
-  is an open point in FR-4, not settled as a non-goal.
+  `JudgeCoherenceChecker` to `UseCase` (see FR-4).
 - Any change to endpoint contracts, response schemas, or persisted behavior.
-- Moving `GoldenSetLabelingService` to `orchestrators/` — flagged as a
-  follow-up regardless of the FR-4 open point's outcome, not decided here.
+- Moving `GoldenSetLabelingService` to `orchestrators/` as a `*Pipeline` —
+  it converts to `AsyncUseCase` in place (FR-4) but its *placement* is a
+  separate, deliberately deferred decision.
 
 ## Architectural Decisions
 
