@@ -121,7 +121,17 @@ ADR 0024's bare-import-plus-quoted-`Autowired` mechanism is deleted from
   function of its two parameters (no hidden state read) is added or confirmed
   to already exist.
 
-### FR-4: Single-operation services become `UseCase`/`AsyncUseCase`
+### FR-4: Services whose public contract is one input → one output become `UseCase`/`AsyncUseCase`
+
+Per the general criterion now recorded in
+`.claude/rules/use-case-invocation.md`: a class is `UseCase`-shaped when it
+exposes exactly one public operation with one well-defined input and one
+well-defined output — regardless of how many repositories, services,
+config objects it depends on, and regardless of how much internal
+orchestration (including concurrency/retries) it takes to produce that
+output. Dependency count and internal complexity do **not** disqualify a
+class; only a **multi-operation** public surface or a **void/no-output**
+contract does.
 
 The following convert to `UseCase[T_In, T_Out]` or `AsyncUseCase[T_In, T_Out]`
 subclasses, invoked via `__call__` per `.claude/rules/use-case-invocation.md`
@@ -136,9 +146,22 @@ argument (e.g. `QuizAnswerChecker`'s `(number, submitted_answer)`); a
 single-argument method keeps that argument as `T_In` directly (no
 one-field-wrapper DTO for its own sake).
 
-The following are **not** converted, with the reason recorded inline as a
-class-docstring note so a future reader doesn't re-propose the conversion
-without re-litigating it:
+**Open point, not yet decided — flagged for sign-off**: under this corrected
+criterion, `GoldenSetLabelingService.label_all(run_id: int) -> int`
+(`labeling/services/`) is *not* automatically excluded by being an async
+orchestrator with concurrency/retries — that was the wrong axis (see the rule
+file: `UseCase` and `orchestrators/`-style placement are independent). Its
+public contract genuinely is one input (`run_id`) → one output (a count). It
+is left OUT of this spec's conversion list only provisionally, pending an
+explicit decision: converting it also means deciding whether it additionally
+belongs in `orchestrators/` (as an `AsyncUseCase`-implementing `*Pipeline`) —
+a placement question this spec has not yet resolved and that changes its
+constructor-injection shape (labeling's manual DI, not pywire, per FR-5).
+
+The following stay excluded on their own terms — multi-operation or
+void-output, independent of the point above — with the reason recorded
+inline as a class-docstring note so a future reader doesn't re-propose the
+conversion without re-litigating it:
 - `QuizProposalService`, `HealthCheckService` — multiple, unrelated public
   operations grouped by domain/router convenience; splitting each into its
   own `UseCase` class multiplies files and, for `HealthCheckService`, forces
@@ -146,23 +169,23 @@ without re-litigating it:
   benefit (YAGNI).
 - `JudgeCoherenceChecker` — a void, side-effecting startup diagnostic; it has
   no meaningful `T_Out` to type.
-- `GoldenSetLabelingService` — an async orchestrator with concurrency and
-  retry control; shape-wise closer to a pipeline (`orchestrators/`, see
-  `~/.claude/rules/python/architecture.md`) than a single use case. Out of
-  scope for this spec; noted for a future, separate decision.
 
 **Acceptance criteria:**
-- The five listed classes subclass `UseCase`/`AsyncUseCase` (async where the
-  current method already is `async def`, i.e. none of these five today — all
-  five convert to synchronous `UseCase`), implement `execute`, and every
-  call site invokes them via `__call__` (`self._x(request)`), not
-  `.execute(request)`.
-- pywire's field-injection convention is unchanged: these remain `@service`/
-  plain classes decorated appropriately, with `Autowired[T]` fields; `UseCase`
+- The five listed classes (six if `GoldenSetLabelingService` is confirmed in)
+  subclass `UseCase`/`AsyncUseCase` (async where the current method already is
+  `async def` — `GoldenSetLabelingService.label_all` if included; the other
+  five are synchronous today and convert to synchronous `UseCase`), implement
+  `execute`, and every call site invokes them via `__call__` (`self._x(request)`),
+  not `.execute(request)`.
+- pywire's field-injection convention is unchanged: the four `guidami_ai_patente`
+  classes remain `@service`-decorated with `Autowired[T]` fields; `UseCase`
   inheritance and pywire decoration are independent axes and both apply where
-  relevant.
-- The three excluded classes each carry a one-to-two-sentence docstring note
-  stating why they were deliberately left out.
+  relevant. The `labeling/services/` classes keep manual constructor injection
+  (FR-5) — `UseCase` inheritance there is likewise independent of DI style.
+- The two multi-operation/void-output excluded classes each carry a
+  one-to-two-sentence docstring note stating why they were deliberately left
+  out. `GoldenSetLabelingService` carries such a note only if the open point
+  above is resolved as "excluded"; otherwise it converts per this FR.
 - `.claude/rules/use-case-invocation.md`'s scope line is updated to include
   `src/guidami_ai_patente/services/` and `src/labeling/services/` for the five
   converted classes (not a blanket extension to every class in those
@@ -191,12 +214,12 @@ dependency on `guidami_ai_patente`, enforced by
   (`clear_instances()` only drops the cache, it does not call `close()`/
   `__exit__` on anything), which the batch harness relies on for deterministic
   Postgres-pool and `QueuedLlmCallTracker` cleanup.
-- Converting `QuizProposalService`, `HealthCheckService`,
-  `JudgeCoherenceChecker`, or `GoldenSetLabelingService` to `UseCase` (see
-  FR-4).
+- Converting `QuizProposalService`, `HealthCheckService`, or
+  `JudgeCoherenceChecker` to `UseCase` (see FR-4) — `GoldenSetLabelingService`
+  is an open point in FR-4, not settled as a non-goal.
 - Any change to endpoint contracts, response schemas, or persisted behavior.
 - Moving `GoldenSetLabelingService` to `orchestrators/` — flagged as a
-  follow-up, not decided here.
+  follow-up regardless of the FR-4 open point's outcome, not decided here.
 
 ## Architectural Decisions
 
