@@ -2,7 +2,8 @@
 
 `dispatch_prepare` is tested directly with a hand-built `argparse.Namespace`
 (argument parsing itself is covered by `cli/test_parser.py`). `run_prepare`
-covers the Postgres-degradation path (tracker=None on connection failure).
+covers the Postgres-degradation path (degrades to a `NullLlmCallTracker` on
+connection failure).
 """
 
 from __future__ import annotations
@@ -15,6 +16,7 @@ from unittest.mock import MagicMock, patch
 import psycopg
 import pytest
 
+from commons.ai.observability import NullLlmCallTracker
 from guidami_ai_patente_ingestor.cli.models.run_artifacts import PrepareManifest
 
 if TYPE_CHECKING:
@@ -280,7 +282,7 @@ def test_quiz_branch_records_both_flows_in_order() -> None:
 
 
 def test_run_prepare_degrades_without_postgres(caplog: pytest.LogCaptureFixture) -> None:
-    """When the tracking Postgres client fails to build, prepare dispatches with tracker=None."""
+    """When the Postgres client fails to build, prepare degrades to a NullLlmCallTracker."""
     args = argparse.Namespace(entity="knowledge", source="cds", force=False, dry_run=False)
     config_mock = _make_config_mock()
     manifest = PrepareManifest(entity="knowledge", source="cds", force=False)
@@ -307,7 +309,7 @@ def test_run_prepare_degrades_without_postgres(caplog: pytest.LogCaptureFixture)
             progress=MagicMock(),
         )
 
-    assert dispatch_mock.call_args.kwargs.get("tracker") is None
+    assert isinstance(dispatch_mock.call_args.args[4], NullLlmCallTracker)
     assert any(record.levelno == logging.WARNING for record in caplog.records)
 
 
