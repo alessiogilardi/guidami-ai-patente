@@ -1,6 +1,7 @@
 from collections.abc import Sequence
 from datetime import UTC, datetime
 from decimal import Decimal
+from typing import cast
 
 from psycopg import sql
 
@@ -12,11 +13,17 @@ from commons.ai.observability.repositories.postgres_llm_call_log_repository impo
 from commons.clients import PostgresClient
 
 
-class _RecordingClient(PostgresClient):
-    """Fake `PostgresClient` recording every query and its params.
+class _RecordingClient:
+    """Duck-typed fake recording every query and its params.
 
-    Deliberately skips `super().__init__()` — a real `PostgresClient` opens a live DB
-    connection, which this unit test must not do.
+    Not a `PostgresClient` subclass: `PostgresClient.__init__` opens a live
+    `psycopg.connect()` socket and every other method depends on the resulting
+    `self._connection`, so subclassing without calling it would type-check as a
+    `PostgresClient` while not actually being a usable one. Passed to
+    `PostgresLlmCallLogRepository` via `cast(PostgresClient, ...)` instead, matching
+    the pattern already used for `QueuedLlmCallTracker`'s repository fakes
+    (`_FakeRepository`/`_FlakyRepository`/`_BlockingRepository` in
+    `test_queued_llm_call_tracker.py`).
     """
 
     def __init__(self) -> None:
@@ -74,7 +81,7 @@ def test_to_db_row_projects_log_fields_in_column_order() -> None:
 
 def test_insert_targets_the_configured_table() -> None:
     client = _RecordingClient()
-    repository = PostgresLlmCallLogRepository("custom_logs", client)
+    repository = PostgresLlmCallLogRepository("custom_logs", cast(PostgresClient, client))
 
     repository.insert(LlmCallLogEntity(caller="c", model="m", prompt="p"))
 
