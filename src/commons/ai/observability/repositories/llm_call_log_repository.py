@@ -1,7 +1,8 @@
 from psycopg import sql
 
 from commons.clients import PostgresClient
-from domain.entities.observability import LlmCallLogEntity
+
+from ..entities import LlmCallLogEntity
 
 # Insertable columns of `llm_call_logs`, in table order (see db/init.sql). `id` and
 # `created_at` are DB-generated and excluded (entities-as-insertable-projection rule).

@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from domain.entities.observability import LlmCallLogEntity
+from ...entities import LlmCallLogEntity
 
 
 class _LlmCallLogRepository(Protocol):

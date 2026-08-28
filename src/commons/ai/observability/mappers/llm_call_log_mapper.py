@@ -1,5 +1,4 @@
-from domain.entities.observability import LlmCallLogEntity
-
+from ..entities import LlmCallLogEntity
 from ..models import LlmCallCaptureModel
 
 

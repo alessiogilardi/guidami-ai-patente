@@ -3,7 +3,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from domain.entities.observability import LlmCallLogEntity
+from commons.ai.observability import LlmCallLogEntity
 
 _INSERTABLE_COLUMNS = {
     "caller",

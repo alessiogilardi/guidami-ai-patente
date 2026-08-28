@@ -1,11 +1,11 @@
 from datetime import UTC, datetime
 from decimal import Decimal
 
+from commons.ai.observability import LlmCallLogEntity
 from commons.ai.observability.repositories.llm_call_log_repository import (
     _COLUMNS,
     LlmCallLogRepository,
 )
-from domain.entities.observability import LlmCallLogEntity
 
 
 def test_columns_matches_insertable_table_columns() -> None:

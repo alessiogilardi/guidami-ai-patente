@@ -14,9 +14,9 @@ from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig, BaseAgent
 from commons.ai.agents.utils.prompt_renderer import PromptRenderer
+from commons.ai.observability import LlmCallLogEntity
 from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import YamlRepository
-from domain.entities.observability import LlmCallLogEntity
 
 _PROVIDER = OpenRouterProvider(api_key="test-key")
 _OLLAMA_PROVIDER = OllamaProvider(base_url="http://localhost:11434/v1")

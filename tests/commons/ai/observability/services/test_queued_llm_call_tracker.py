@@ -5,8 +5,7 @@ from decimal import Decimal
 
 import pytest
 
-from commons.ai.observability import QueuedLlmCallTracker
-from domain.entities.observability import LlmCallLogEntity
+from commons.ai.observability import LlmCallLogEntity, QueuedLlmCallTracker
 
 
 class _FakeRepository:

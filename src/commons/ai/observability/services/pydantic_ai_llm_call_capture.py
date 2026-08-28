@@ -10,8 +10,7 @@ from pydantic import BaseModel
 from pydantic_ai.messages import ModelResponse
 from pydantic_ai.run import AgentRunResult
 
-from domain.entities.observability import LlmCallLogEntity
-
+from ..entities import LlmCallLogEntity
 from ..mappers import LlmCallLogMapper
 from ..models import LlmCallCaptureModel
 from ..protocols import LlmCallTracker

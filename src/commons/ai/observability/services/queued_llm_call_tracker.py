@@ -3,8 +3,7 @@ import queue
 import threading
 from types import TracebackType
 
-from domain.entities.observability import LlmCallLogEntity
-
+from ..entities import LlmCallLogEntity
 from .protocols.llm_call_log_repository import _LlmCallLogRepository
 
 logger = logging.getLogger(__name__)

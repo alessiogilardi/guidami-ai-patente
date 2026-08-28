@@ -1,4 +1,4 @@
-from domain.entities.observability import LlmCallLogEntity
+from ..entities import LlmCallLogEntity
 
 
 class NullLlmCallTracker:

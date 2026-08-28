@@ -4,10 +4,9 @@ from decimal import Decimal
 import pytest
 from psycopg import sql
 
-from commons.ai.observability import LlmCallLogRepository
+from commons.ai.observability import LlmCallLogEntity, LlmCallLogRepository
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
-from domain.entities.observability import LlmCallLogEntity
 
 
 @pytest.fixture

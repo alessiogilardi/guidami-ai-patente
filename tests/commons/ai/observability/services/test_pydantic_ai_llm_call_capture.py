@@ -7,8 +7,10 @@ from pydantic_ai.messages import ModelMessage, ModelResponse, TextPart
 from pydantic_ai.run import AgentRunResult
 from pydantic_ai.usage import RunUsage
 
-from commons.ai.observability import PydanticAILlmCallCapture
-from domain.entities.observability import LlmCallLogEntity
+from commons.ai.observability import (
+    LlmCallLogEntity,
+    PydanticAILlmCallCapture,
+)
 
 _MODEL = "openrouter/anthropic/claude-3.5-sonnet"
 

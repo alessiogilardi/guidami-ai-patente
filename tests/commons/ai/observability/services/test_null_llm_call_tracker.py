@@ -1,5 +1,4 @@
-from commons.ai.observability import NullLlmCallTracker
-from domain.entities.observability import LlmCallLogEntity
+from commons.ai.observability import LlmCallLogEntity, NullLlmCallTracker
 
 
 def _make_log() -> LlmCallLogEntity:

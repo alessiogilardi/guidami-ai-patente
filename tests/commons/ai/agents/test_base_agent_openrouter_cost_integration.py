@@ -4,7 +4,7 @@ import pytest
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig, BaseAgent
-from domain.entities.observability import LlmCallLogEntity
+from commons.ai.observability import LlmCallLogEntity
 
 
 class _ListTracker:
