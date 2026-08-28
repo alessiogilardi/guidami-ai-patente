@@ -1,4 +1,4 @@
-"""LLM call tracking: port + implementations populating the `llm_call_logs` table."""
+"""LLM call tracking: one entity, one sink port, one context-manager tracker port."""
 
 from .adapters import PydanticAILlmCallRecorder
 from .configs import ObservabilityConfig
@@ -7,11 +7,8 @@ from .enums import TrackerBackend
 from .models import TrackedCaller
 from .protocols import LlmCallLogRepository, LlmCallTracker
 from .repositories import PostgresLlmCallLogRepository
-from .services import (
-    NullLlmCallTracker,
-    PydanticAILlmCallCapture,
-    QueuedLlmCallTracker,
-)
+from .services import NullLlmCallTracker, QueuedLlmCallTracker
+from .tracker_factory import build_llm_call_tracker
 
 __all__ = [
     "LlmCallLogEntity",
@@ -20,9 +17,9 @@ __all__ = [
     "NullLlmCallTracker",
     "ObservabilityConfig",
     "PostgresLlmCallLogRepository",
-    "PydanticAILlmCallCapture",
     "PydanticAILlmCallRecorder",
     "QueuedLlmCallTracker",
     "TrackedCaller",
     "TrackerBackend",
+    "build_llm_call_tracker",
 ]
