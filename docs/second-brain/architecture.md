@@ -134,7 +134,7 @@ than env/.env), deep-merged by pydantic-settings (ADR 0006, `patterns.md`).
 `cli/main.py` loads `IngestorConfig`, builds the parser (`cli/parser.py:build_parser`) and
 dispatches by subcommand to `cli/commands/{prepare,index,reset,status}.py`;
 `cli/wiring.py` holds the lazy DI builders (`build_layer_resolver`,
-`build_open_router_provider`, `build_postgres_client`, `build_tracker`,
+`build_open_router_provider`, `build_postgres_client`,
 `build_health_repositories`) so each command only builds the
 clients/providers it actually needs. Both `dispatch_prepare` branches
 (`knowledge` and, since spec 0006, `quiz`) run their flow(s) directly, with
@@ -997,3 +997,10 @@ added for the new `ObservabilityConfig` (table name/timeout/backend configurable
 landing: only `ObservabilityConfig` adopts it, `IngestorConfig`/`OpenRouterConfig` are
 unchanged — see `adr/0021-base-config-partial-landing.md`. Corrected a stale claim that
 `PostgresConnectionConfig` is a `BaseSettings`; it is a plain `BaseModel`.*
+
+*Last updated: 2026-08-28 — verified against commit `a68a2c15` (working tree ahead: final
+whole-branch review fix for the observability simplification); corrected the "Main flows"
+section's `cli/wiring.py` DI-builder list, which still named the deleted `build_tracker`.
+`cli/wiring.py` no longer builds a tracker — that responsibility moved to
+`build_llm_call_tracker` (see the `commons/ai/observability/` entry above and the
+"Main flows" prepare-path narrative, both already correct).*
