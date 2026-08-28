@@ -212,7 +212,9 @@ def test_dry_run_quiz_describes_per_element_filter_and_write_steps() -> None:
     with patch("guidami_ai_patente_ingestor.cli.commands.prepare.render_dry_run") as render_mock:
         from guidami_ai_patente_ingestor.cli.commands.prepare import run_prepare
 
-        run_prepare(config_mock, MagicMock(), MagicMock(), args, None, progress=MagicMock())
+        run_prepare(
+            config_mock, MagicMock(), MagicMock(), MagicMock(), args, None, progress=MagicMock()
+        )
 
     steps = render_mock.call_args.args[2]
     assert any("FilterAlreadyDoneStep" in s for s in steps)
@@ -295,7 +297,15 @@ def test_run_prepare_degrades_without_postgres(caplog: pytest.LogCaptureFixture)
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import run_prepare
 
-        run_prepare(config_mock, MagicMock(), MagicMock(), args, manifest, progress=MagicMock())
+        run_prepare(
+            config_mock,
+            MagicMock(),
+            MagicMock(),
+            MagicMock(),
+            args,
+            manifest,
+            progress=MagicMock(),
+        )
 
     assert dispatch_mock.call_args.kwargs.get("tracker") is None
     assert any(record.levelno == logging.WARNING for record in caplog.records)
@@ -315,7 +325,9 @@ def test_run_prepare_dry_run_never_touches_postgres_or_dispatches() -> None:
     ):
         from guidami_ai_patente_ingestor.cli.commands.prepare import run_prepare
 
-        run_prepare(config_mock, MagicMock(), MagicMock(), args, None, progress=MagicMock())
+        run_prepare(
+            config_mock, MagicMock(), MagicMock(), MagicMock(), args, None, progress=MagicMock()
+        )
 
     pg.assert_not_called()
     dispatch_mock.assert_not_called()
@@ -359,6 +371,8 @@ def test_dry_run_emits_no_progress_calls(
 
     from guidami_ai_patente_ingestor.cli.commands.prepare import run_prepare
 
-    run_prepare(config_mock, MagicMock(), MagicMock(), args, None, progress=progress_recorder)
+    run_prepare(
+        config_mock, MagicMock(), MagicMock(), MagicMock(), args, None, progress=progress_recorder
+    )
 
     assert progress_recorder.calls == []
