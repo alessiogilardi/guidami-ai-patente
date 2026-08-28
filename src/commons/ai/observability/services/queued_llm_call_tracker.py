@@ -4,13 +4,9 @@ import threading
 from types import TracebackType
 
 from ..entities import LlmCallLogEntity
-from .protocols.llm_call_log_repository import _LlmCallLogRepository
+from ..protocols import LlmCallLogRepository
 
 logger = logging.getLogger(__name__)
-
-# Not a ctor param: nobody asked for it, and a configurable knob would force
-# plain-data-with-default before required dependencies (see plan Decision 3).
-_JOIN_TIMEOUT_S = 10.0
 
 
 class _Shutdown:
@@ -30,8 +26,9 @@ class QueuedLlmCallTracker:
     break the main flow. Use as a context manager, or call `close()` directly.
     """
 
-    def __init__(self, repository: _LlmCallLogRepository) -> None:
-        """Stores the repository used by the worker thread."""
+    def __init__(self, join_timeout_s: float, repository: LlmCallLogRepository) -> None:
+        """Stores the shutdown join timeout and the repository used by the worker thread."""
+        self._join_timeout_s = join_timeout_s
         self._repository = repository
         self._queue: queue.SimpleQueue[LlmCallLogEntity | _Shutdown] = queue.SimpleQueue()
         self._worker: threading.Thread | None = None
@@ -56,12 +53,12 @@ class QueuedLlmCallTracker:
         self._queue.put(log)
 
     def close(self) -> None:
-        """Enqueues the shutdown sentinel and joins the worker, bounded by `_JOIN_TIMEOUT_S`."""
+        """Enqueues the shutdown sentinel and joins the worker, bounded by `join_timeout_s`."""
         self._queue.put(_SHUTDOWN)
         if self._worker is None:
             return
 
-        self._worker.join(timeout=_JOIN_TIMEOUT_S)
+        self._worker.join(timeout=self._join_timeout_s)
         if self._worker.is_alive():
             logger.warning("QueuedLlmCallTracker worker did not shut down within timeout")
 

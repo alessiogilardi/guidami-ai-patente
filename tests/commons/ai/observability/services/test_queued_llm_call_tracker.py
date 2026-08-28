@@ -61,7 +61,7 @@ def _make_log(cost_usd: Decimal | None = Decimal("0.001234")) -> LlmCallLogEntit
 def test_track_persists_cost_unchanged() -> None:
     repository = _FakeRepository()
 
-    with QueuedLlmCallTracker(repository) as tracker:
+    with QueuedLlmCallTracker(5.0, repository) as tracker:
         tracker.track(_make_log())
 
     assert len(repository.inserted) == 1
@@ -73,7 +73,7 @@ def test_repository_failure_degrades(caplog: pytest.LogCaptureFixture) -> None:
 
     with (
         caplog.at_level(logging.WARNING),
-        QueuedLlmCallTracker(repository) as tracker,
+        QueuedLlmCallTracker(5.0, repository) as tracker,
     ):
         tracker.track(_make_log())
         tracker.track(_make_log())
@@ -84,7 +84,7 @@ def test_repository_failure_degrades(caplog: pytest.LogCaptureFixture) -> None:
 
 def test_close_flushes_pending() -> None:
     repository = _FakeRepository()
-    tracker = QueuedLlmCallTracker(repository)
+    tracker = QueuedLlmCallTracker(5.0, repository)
     tracker.__enter__()
 
     for _ in range(20):
@@ -97,7 +97,7 @@ def test_close_flushes_pending() -> None:
 def test_track_does_not_block() -> None:
     release = threading.Event()
     entered = threading.Event()
-    tracker = QueuedLlmCallTracker(_BlockingRepository(release, entered))
+    tracker = QueuedLlmCallTracker(5.0, _BlockingRepository(release, entered))
 
     with tracker:
         start = time.perf_counter()

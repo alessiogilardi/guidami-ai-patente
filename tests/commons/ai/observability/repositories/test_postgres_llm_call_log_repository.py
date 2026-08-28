@@ -1,11 +1,33 @@
+from collections.abc import Sequence
 from datetime import UTC, datetime
 from decimal import Decimal
 
+from psycopg import sql
+
 from commons.ai.observability import LlmCallLogEntity
-from commons.ai.observability.repositories.llm_call_log_repository import (
+from commons.ai.observability.repositories.postgres_llm_call_log_repository import (
     _COLUMNS,
-    LlmCallLogRepository,
+    PostgresLlmCallLogRepository,
 )
+from commons.clients import PostgresClient
+
+
+class _RecordingClient(PostgresClient):
+    """Fake `PostgresClient` recording every query and its params.
+
+    Deliberately skips `super().__init__()` — a real `PostgresClient` opens a live DB
+    connection, which this unit test must not do.
+    """
+
+    def __init__(self) -> None:
+        self.queries: list[sql.SQL | sql.Composed] = []
+        self.params: list[Sequence[object] | None] = []
+
+    def execute(
+        self, query: sql.SQL | sql.Composed, params: Sequence[object] | None = None
+    ) -> None:
+        self.queries.append(query)
+        self.params.append(params)
 
 
 def test_columns_matches_insertable_table_columns() -> None:
@@ -45,6 +67,15 @@ def test_to_db_row_projects_log_fields_in_column_order() -> None:
         end_time=datetime(2026, 7, 13, 10, 0, 1, tzinfo=UTC),
     )
 
-    row = LlmCallLogRepository._to_db_row(log)
+    row = PostgresLlmCallLogRepository._to_db_row(log)
 
     assert row == tuple(getattr(log, column) for column in _COLUMNS)
+
+
+def test_insert_targets_the_configured_table() -> None:
+    client = _RecordingClient()
+    repository = PostgresLlmCallLogRepository("custom_logs", client)
+
+    repository.insert(LlmCallLogEntity(caller="c", model="m", prompt="p"))
+
+    assert "custom_logs" in client.queries[0].as_string(None)

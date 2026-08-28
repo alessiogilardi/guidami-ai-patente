@@ -10,7 +10,7 @@ from typing import NamedTuple
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.observability import (
-    LlmCallLogRepository,
+    PostgresLlmCallLogRepository,
     QueuedLlmCallTracker,
 )
 from commons.clients import PostgresClient
@@ -49,7 +49,8 @@ def build_postgres_client(config: IngestorConfig) -> PostgresClient:
 
 def build_tracker(postgres_client: PostgresClient) -> QueuedLlmCallTracker:
     """Builds the queued LLM call tracker, persisted through the given client."""
-    return QueuedLlmCallTracker(LlmCallLogRepository(postgres_client))
+    repository = PostgresLlmCallLogRepository("llm_call_logs", postgres_client)
+    return QueuedLlmCallTracker(10.0, repository)
 
 
 def build_health_repositories(

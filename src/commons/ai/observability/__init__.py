@@ -5,8 +5,8 @@ from .configs import ObservabilityConfig
 from .entities import LlmCallLogEntity
 from .enums import TrackerBackend
 from .models import TrackedCaller
-from .protocols import LlmCallTracker
-from .repositories import LlmCallLogRepository
+from .protocols import LlmCallLogRepository, LlmCallTracker
+from .repositories import PostgresLlmCallLogRepository
 from .services import (
     NullLlmCallTracker,
     PydanticAILlmCallCapture,
@@ -19,6 +19,7 @@ __all__ = [
     "LlmCallTracker",
     "NullLlmCallTracker",
     "ObservabilityConfig",
+    "PostgresLlmCallLogRepository",
     "PydanticAILlmCallCapture",
     "PydanticAILlmCallRecorder",
     "QueuedLlmCallTracker",

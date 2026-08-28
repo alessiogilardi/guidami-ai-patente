@@ -4,7 +4,7 @@ from decimal import Decimal
 import pytest
 from psycopg import sql
 
-from commons.ai.observability import LlmCallLogEntity, LlmCallLogRepository
+from commons.ai.observability import LlmCallLogEntity, PostgresLlmCallLogRepository
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
 
@@ -19,7 +19,7 @@ def client(postgres_test_config: PostgresConnectionConfig) -> Iterator[PostgresC
 
 @pytest.mark.integration
 def test_insert_round_trip(client: PostgresClient) -> None:
-    repository = LlmCallLogRepository(client)
+    repository = PostgresLlmCallLogRepository("llm_call_logs", client)
     success_log = LlmCallLogEntity(
         caller="road_sign_describer",
         model="openrouter/anthropic/claude-3.5-sonnet",
