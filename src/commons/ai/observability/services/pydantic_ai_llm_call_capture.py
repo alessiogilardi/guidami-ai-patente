@@ -4,7 +4,7 @@ from contextlib import contextmanager
 from datetime import UTC, datetime
 from decimal import Decimal
 from types import TracebackType
-from typing import Any, Literal
+from typing import Any, Literal, Protocol
 
 from pydantic import BaseModel
 from pydantic_ai.messages import ModelResponse
@@ -13,10 +13,20 @@ from pydantic_ai.run import AgentRunResult
 from ..entities import LlmCallLogEntity
 from ..mappers import LlmCallLogMapper
 from ..models import LlmCallCaptureModel
-from ..protocols import LlmCallTracker
 
 # Matches the `NUMERIC(12, 6)` column type of `llm_call_logs.cost_usd`.
 _QUANTIZE = Decimal("0.000001")
+
+
+class _LegacyLlmCallTracker(Protocol):
+    """Shape `tracked()` still calls: superseded by the `LlmCallTracker` port (Task 6).
+
+    Kept local (rather than importing the current `LlmCallTracker`) because that port
+    was flipped to a context-manager shape this class never adopted — this class is
+    unused by `BaseAgent` and slated for removal in Task 8.
+    """
+
+    def track(self, log: LlmCallLogEntity) -> None: ...
 
 
 class PydanticAILlmCallCapture:
@@ -73,7 +83,7 @@ class PydanticAILlmCallCapture:
         model: str,
         prompt: str,
         system_prompt: str | None,
-        tracker: LlmCallTracker,
+        tracker: _LegacyLlmCallTracker,
     ) -> Iterator["PydanticAILlmCallCapture"]:
         """Builds a capture for one call and tracks its `log` via `tracker` on exit.
 

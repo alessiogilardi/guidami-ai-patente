@@ -1,11 +1,12 @@
 import logging
 import threading
 import time
-from decimal import Decimal
 
 import pytest
 
-from commons.ai.observability import LlmCallLogEntity, QueuedLlmCallTracker
+from commons.ai.observability import LlmCallLogEntity, QueuedLlmCallTracker, TrackedCaller
+
+_CALLER = TrackedCaller(caller="agent", model="m", system_prompt=None, expects_cost=False)
 
 
 class _FakeRepository:
@@ -44,28 +45,24 @@ class _BlockingRepository:
         self._release.wait(timeout=5)
 
 
-def _make_log(cost_usd: Decimal | None = Decimal("0.001234")) -> LlmCallLogEntity:
-    return LlmCallLogEntity(
-        caller="test_agent",
-        model="openrouter/anthropic/claude-3.5-sonnet",
-        prompt="Domanda.",
-        response="Risposta.",
-        input_tokens=10,
-        output_tokens=5,
-        total_tokens=15,
-        cost_usd=cost_usd,
-        latency_ms=42,
-    )
+class _RecordingRepository:
+    """Collects inserted logs in memory, in insertion order."""
+
+    def __init__(self) -> None:
+        self.logs: list[LlmCallLogEntity] = []
+
+    def insert(self, log: LlmCallLogEntity) -> None:
+        self.logs.append(log)
 
 
 def test_track_persists_cost_unchanged() -> None:
     repository = _FakeRepository()
 
-    with QueuedLlmCallTracker(5.0, repository) as tracker:
-        tracker.track(_make_log())
+    with QueuedLlmCallTracker(5.0, repository) as tracker, tracker.track(_CALLER, "prompt"):
+        pass
 
     assert len(repository.inserted) == 1
-    assert repository.inserted[0].cost_usd == Decimal("0.001234")
+    assert repository.inserted[0].prompt == "prompt"
 
 
 def test_repository_failure_degrades(caplog: pytest.LogCaptureFixture) -> None:
@@ -75,8 +72,10 @@ def test_repository_failure_degrades(caplog: pytest.LogCaptureFixture) -> None:
         caplog.at_level(logging.WARNING),
         QueuedLlmCallTracker(5.0, repository) as tracker,
     ):
-        tracker.track(_make_log())
-        tracker.track(_make_log())
+        with tracker.track(_CALLER, "prompt"):
+            pass
+        with tracker.track(_CALLER, "prompt"):
+            pass
 
     assert len(repository.inserted) == 1, "the second log must still be persisted"
     assert any(record.levelno == logging.WARNING for record in caplog.records)
@@ -88,7 +87,8 @@ def test_close_flushes_pending() -> None:
     tracker.__enter__()
 
     for _ in range(20):
-        tracker.track(_make_log())
+        with tracker.track(_CALLER, "prompt"):
+            pass
     tracker.close()
 
     assert len(repository.inserted) == 20
@@ -101,9 +101,34 @@ def test_track_does_not_block() -> None:
 
     with tracker:
         start = time.perf_counter()
-        tracker.track(_make_log())
+        with tracker.track(_CALLER, "prompt"):
+            pass
         elapsed = time.perf_counter() - start
 
         assert entered.wait(timeout=5), "the worker thread never picked up the item"
         assert elapsed < 0.05, "track() must return immediately, not wait on the insert"
         release.set()
+
+
+def test_persists_one_row_per_tracked_call() -> None:
+    repository = _RecordingRepository()
+
+    with QueuedLlmCallTracker(1.0, repository) as tracker, tracker.track(_CALLER, "prompt"):
+        pass
+
+    assert len(repository.logs) == 1
+    assert repository.logs[0].prompt == "prompt"
+
+
+def test_persists_the_call_even_when_it_raises() -> None:
+    repository = _RecordingRepository()
+
+    with (
+        QueuedLlmCallTracker(1.0, repository) as tracker,
+        pytest.raises(ValueError),
+        tracker.track(_CALLER, "prompt"),
+    ):
+        raise ValueError("boom")
+
+    assert len(repository.logs) == 1
+    assert repository.logs[0].status == "error"
