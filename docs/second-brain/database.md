@@ -256,8 +256,14 @@ deferred with the hybrid-search work).
 
 `llm_call_logs` is populated by every tracked `BaseAgent` call — see
 `docs/second-brain/patterns.md` (observability rows), `docs/second-brain/architecture.md` (prepare-path
-wiring), and `docs/second-brain/adr/0004-openrouter-native-cost-tracking.md` for the
-mechanism; this section documents only what each column holds. Column
+wiring), `docs/second-brain/adr/0004-openrouter-native-cost-tracking.md` for the cost
+mechanism, and `docs/second-brain/adr/0020-context-manager-tracker-port.md` for the
+tracker port shape. Its row entity, `LlmCallLogEntity`, lives at
+`src/commons/ai/observability/entities/llm_call_log.py` (moved out of the now-removed
+`domain/entities/observability/`). The table name itself is no longer hardcoded:
+`ObservabilityConfig.table` (default `"llm_call_logs"`, `src/commons/ai/observability/configs/`)
+is passed into `PostgresLlmCallLogRepository`'s constructor — this section documents the
+default schema, not a fixed one. Column
 semantics worth noting: `start_time`/`end_time` are wall-clock
 `datetime.now(UTC)` stamps, whereas `latency_ms` is measured separately with the
 monotonic `time.perf_counter()`, so it is not guaranteed to equal
@@ -406,3 +412,10 @@ spec 0011 phase 2, T-1/T-2/T-9); three new tables — `labeling_runs`, `quiz_lab
 parent row and its children atomically via a single data-modifying CTE, worked around
 `PostgresClient` having no transaction API (PD-15). Noted the `truncate()` convention now
 also covers `quiz_comma_labels`/`quiz_labelings`'s new FKs.*
+
+*Last updated: 2026-08-28 — verified against commit `ab1b8f82`; the `llm_call_logs`
+paragraph now points at `LlmCallLogEntity`'s new location
+(`commons/ai/observability/entities/llm_call_log.py`, moved out of the removed
+`domain/entities/observability/`) and notes the table name is configurable via
+`ObservabilityConfig.table` (default unchanged, `"llm_call_logs"`) rather than
+hardcoded — see `adr/0020-context-manager-tracker-port.md`.*

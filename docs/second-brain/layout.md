@@ -12,10 +12,10 @@ repo/
 │   │                                #   ai/ (agents/: BaseAgent + PromptRenderer;
 │   │                                #   embedding/: clients/configs/protocols/models/
 │   │                                #   composition/services;
-│   │                                #   observability/: LlmCallTracker port + impls;
+│   │                                #   observability/: LlmCallTracker port (context mgr) +
 │   │                                #   utils/: domain-agnostic retrieval algorithms
 │   │                                #   (reciprocal_rank_fusion) — spec 0008 Phase 2, AD-3;
-│   │                                #   protocols/services/repositories/mappers/models);
+│   │                                #   adapters/entities/enums/configs/services/repositories/models);
 │   │                                #   observability/: two self-contained sub-packages,
 │   │                                #   progress_reporter/ (ItemProgressReporter/ProgressReporter
 │   │                                #   port + NullProgressReporter) and run_artifact_writer/
@@ -25,9 +25,11 @@ repo/
 │   ├── domain/                     # Shared domain entities/models/enums (persisted + intermediate),
 │   │                                #   models/retrieval/: read DTOs (RetrievedComma,
 │   │                                #   QuizEvaluationRow) — carry `id`, unlike entities;
-│   │                                #   entities/: knowledge/, quiz/, observability/, evaluation/
+│   │                                #   entities/: knowledge/, quiz/, evaluation/
 │   │                                #   (LabelingRunEntity, QuizLabelingEntity,
 │   │                                #   QuizCommaLabelEntity — spec 0011 phase 2);
+│   │                                #   entities/observability/ removed — LlmCallLogEntity
+│   │                                #   moved into commons/ai/observability/entities/;
 │   │                                #   enums/: closed vocabularies, e.g. LexemeField —
 │   │                                #   the project's first enum (spec 0011 phase 2);
 │   │                                #   no I/O or business logic
@@ -174,33 +176,60 @@ implemented.
   `EmbeddingConfig`, since it configures the client, not the module —
   plus `protocols/`, `models/`, `composition/`, `services/` for the
   composition layer described below), and `observability/`.
-  `observability/` (and, where it applies, `embedding/`) follows a
-  five-subpackage-by-responsibility shape: `protocols/` (genuine
-  cross-package ports only — e.g. `LlmCallTracker`, which `BaseAgent`
-  depends on, or `TextComposer[T]`/`OptionalTextComposer[T]` in
-  `embedding/`), `services/` (the
-  concrete behavior classes; a narrow, private `protocols/` may nest
-  *inside* `services/` for implementation-detail structural typing that
-  never crosses a package boundary — see `docs/second-brain/patterns.md`),
-  `repositories/` (data access), `mappers/` (stateless object-to-object
-  transformations), and `models/` (intermediate DTOs consumed only by
-  that package's own mappers). `agents/` and `embedding/` only need the
-  subset of that shape relevant to their own responsibility (`configs/`
-  instead of a data-access/mapper shape, since neither owns persistence;
-  `clients/` instead of `repositories/`, since embedding's external
-  dependency is an API client, not a database). `embedding/` also adds a
-  **sixth**, domain-specific subpackage beyond that shape —
-  `composition/` (`FieldSpecComposer[T]`, implementing
-  `OptionalTextComposer[T]`; `TemplateComposer[T]`/`CallableComposer[T]`,
-  implementing `TextComposer[T]`) — for classes that compose a model into
-  text but aren't services (no `UseCase`/
-  injected-dependency-with-behavior shape) or classic static mappers
-  (they hold config injected at construction, unlike this repo's
-  stateless `*Mapper` convention — see `docs/second-brain/patterns.md`); the
-  five-subpackage template already anticipates a package using only the
-  subset relevant to its own responsibility, so one extra, narrowly
-  scoped subpackage for a responsibility the template doesn't name is an
-  extension of that principle, not a violation of it.
+  `embedding/` follows the original five-subpackage-by-responsibility
+  shape: `protocols/` (genuine cross-package ports only — e.g.
+  `TextComposer[T]`/`OptionalTextComposer[T]`), `services/`,
+  `repositories/`, `mappers/` (stateless object-to-object transformations),
+  and `models/` (intermediate DTOs consumed only by that package's own
+  mappers) — using only the subset relevant to its own responsibility
+  (`configs/` instead of a data-access/mapper shape, since it owns no
+  persistence; `clients/` instead of `repositories/`, since embedding's
+  external dependency is an API client, not a database), plus a
+  **sixth**, domain-specific subpackage beyond that shape — `composition/`
+  (`FieldSpecComposer[T]`, implementing `OptionalTextComposer[T]`;
+  `TemplateComposer[T]`/`CallableComposer[T]`, implementing
+  `TextComposer[T]`) — for classes that compose a model into text but
+  aren't services (no `UseCase`/injected-dependency-with-behavior shape)
+  or classic static mappers (they hold config injected at construction,
+  unlike this repo's stateless `*Mapper` convention — see
+  `docs/second-brain/patterns.md`); the five-subpackage template already
+  anticipates a package using only the subset relevant to its own
+  responsibility, so one extra, narrowly scoped subpackage for a
+  responsibility the template doesn't name is an extension of that
+  principle, not a violation of it.
+
+  `observability/` no longer follows that template: the simplification
+  that removed `mappers/`, `models/llm_call_capture_model.py`, and the
+  private `services/protocols/` sink port (see `docs/second-brain/patterns.md`
+  and `adr/0020-context-manager-tracker-port.md`) replaced it with a shape
+  built around a **stateful adapter** rather than a stateless mapper.
+  Today: `protocols/` (two genuine cross-package ports, both public now —
+  `LlmCallTracker`, a context manager `BaseAgent` depends on, and
+  `LlmCallLogRepository`, the sink port `QueuedLlmCallTracker` depends on;
+  the narrow private `protocols/` that used to nest *inside* `services/`
+  for the sink port is gone along with the port it typed), `adapters/`
+  (`PydanticAILlmCallRecorder` — a **stateful** translation from
+  pydantic_ai's own result/message types to `LlmCallLogEntity`, built
+  fresh per call; see `.claude/rules/code-conventions.md`'s `adapters/`
+  package-naming convention for why it lives here rather than in
+  `services/` — chiefly, to avoid a `protocols/` ↔ `services/` import
+  cycle, since `protocols/` needs the recorder's type and `services/`
+  needs the ports), `services/` (`NullLlmCallTracker`,
+  `QueuedLlmCallTracker` — the concrete `LlmCallTracker` implementations),
+  `repositories/` (`PostgresLlmCallLogRepository`, table name now a
+  constructor argument), `entities/` (`LlmCallLogEntity`, moved in from
+  `domain/entities/observability/` — the module's own persisted row shape
+  now lives with the rest of the module, so it stays removable in one
+  piece), `enums/` (`TrackerBackend`), `configs/` (`ObservabilityConfig`,
+  a self-loading `commons.configs.BaseConfig` subclass — see the
+  `commons/configs/` bullet in `docs/second-brain/architecture.md`),
+  `models/` (`TrackedCaller`, the per-agent-lifetime identity
+  `BaseAgent.__init__` builds once and passes by reference on every call
+  — no longer an intermediate DTO consumed only by a mapper, since there
+  is no mapper left), and a package-root `tracker_factory.py`
+  (`build_llm_call_tracker`, a `@contextmanager` composition-root
+  factory, replacing the duplicated `build_tracker` helper that used to
+  live separately in `cli/wiring.py` and `retrieval_evaluation/wiring.py`).
   `src/commons/observability/` (top-level, a **sibling** of `commons/ai/`,
   not nested under it) is itself just a thin re-exporting `__init__.py` over
   two self-contained sibling sub-packages (same self-containment convention
@@ -465,3 +494,13 @@ conventions). `specs/` and the top-level `plans/` are gone; their contents
 moved to `docs/superpowers/specs/` and `docs/superpowers/plans/` under the new
 `YYYY-MM-DD-<topic>[-design|-phaseN-plan].md` naming. The `specs/` paragraph and the
 `docs/` tree-comment above were rewritten accordingly.*
+
+*Last updated: 2026-08-28 — verified against commit `ab1b8f82`; `commons/ai/observability/`
+no longer follows the plain five-subpackage template — the `observability/` paragraph is
+rewritten to describe its current shape (`protocols/` now fully public, `adapters/` added
+for the stateful `PydanticAILlmCallRecorder`, `entities/`/`enums/`/`configs/` added,
+`mappers/` gone, `models/` repurposed for `TrackedCaller`, package-root
+`tracker_factory.py`); `embedding/`'s paragraph split out on its own since it still
+matches the original template. `domain/entities/observability/` is gone from both the
+tree comment and the placement-guidance list — `LlmCallLogEntity` moved into
+`commons/ai/observability/entities/`.*
