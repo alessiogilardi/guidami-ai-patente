@@ -268,8 +268,9 @@ semantics worth noting: `start_time`/`end_time` are wall-clock
 `datetime.now(UTC)` stamps, whereas `latency_ms` is measured separately with the
 monotonic `time.perf_counter()`, so it is not guaranteed to equal
 `end_time - start_time` under clock adjustments. `cost_usd` is OpenRouter's own
-reported cost, summed synchronously in `PydanticAILlmCallCapture.record()` across
-every `ModelResponse` in the call (no litellm pricing lookup, no deferred
+reported cost, summed synchronously in `PydanticAILlmCallRecorder.record()` (via
+the module-level `_call_cost()` helper, `adapters/pydantic_ai_llm_call_recorder.py`)
+across every `ModelResponse` in the call (no litellm pricing lookup, no deferred
 computation); it stays `NULL` when OpenRouter omits a cost. Failures are
 first-class: `status`/`error_message` are always populated, while `response` and
 the token/cost/latency/timestamp columns are nullable so a failed call is still
@@ -419,3 +420,9 @@ paragraph now points at `LlmCallLogEntity`'s new location
 `domain/entities/observability/`) and notes the table name is configurable via
 `ObservabilityConfig.table` (default unchanged, `"llm_call_logs"`) rather than
 hardcoded — see `adr/0020-context-manager-tracker-port.md`.*
+
+*Last updated: 2026-08-28 — verified against commit `ee22bcdf`; fixed an internal
+inconsistency left by the previous edit in this same paragraph — the `cost_usd`
+sentence still named the deleted `PydanticAILlmCallCapture.record()`; corrected to
+`PydanticAILlmCallRecorder.record()` (which delegates to the module-level
+`_call_cost()` helper in `adapters/pydantic_ai_llm_call_recorder.py`).*
