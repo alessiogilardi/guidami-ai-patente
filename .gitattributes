@@ -1,5 +1,3 @@
 # [SECOND BRAIN SYSTEM] keep the git hook LF so #!/bin/sh works on every platform
 .claude/hooks/pre-commit text eol=lf
-
-# [SECOND BRAIN SYSTEM] keep the git hook LF so #!/bin/sh works on every platform
-C:\Users\alessio.gilardi\PycharmProjects\Personal\guidami-ai-patente\.claude\hooks/pre-commit text eol=lf
+.claude/hooks/pre-push text eol=lf
