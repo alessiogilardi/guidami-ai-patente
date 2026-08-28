@@ -12,6 +12,7 @@ import argparse
 import asyncio
 import logging
 
+from commons.ai.observability import ObservabilityConfig, build_llm_call_tracker
 from commons.observability import LOG_FORMAT, RunArtifactWriter
 from domain.entities.evaluation import LabelingRunEntity
 from guidami_ai_patente_ingestor.configs import IngestorConfig
@@ -26,7 +27,6 @@ from .wiring import (
     build_open_router_provider,
     build_postgres_client,
     build_quiz_repository,
-    build_tracker,
 )
 
 logger = logging.getLogger(__name__)
@@ -61,6 +61,7 @@ def main() -> None:
         parser.error(f"--limit must be >= 1, got {args.limit}")
 
     config = IngestorConfig.load()
+    observability_config = ObservabilityConfig.load()
     labeling = config.labeling
     seed = args.seed if args.seed is not None else labeling.shuffle_seed
     concurrency = args.concurrency if args.concurrency is not None else labeling.concurrency
@@ -73,7 +74,7 @@ def main() -> None:
     provider = build_open_router_provider(config)
     with (
         build_postgres_client(config) as postgres_client,
-        build_tracker(postgres_client) as tracker,
+        build_llm_call_tracker(observability_config, postgres_client) as tracker,
     ):
         quiz_repository = build_quiz_repository(config, postgres_client)
         available_variants = quiz_repository.available_variants()
