@@ -9,10 +9,6 @@ from typing import NamedTuple
 
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
-from commons.ai.observability import (
-    LlmCallLogRepository,
-    QueuedLlmCallTracker,
-)
 from commons.clients import PostgresClient
 from commons.repositories.db import CorpusReadRepository, QuizReadRepository
 from guidami_ai_patente_ingestor.configs import IngestorConfig
@@ -45,11 +41,6 @@ def build_open_router_provider(config: IngestorConfig) -> OpenRouterProvider:
 def build_postgres_client(config: IngestorConfig) -> PostgresClient:
     """Opens a Postgres connection. Raises `psycopg.Error` if unreachable."""
     return PostgresClient(config.postgres)
-
-
-def build_tracker(postgres_client: PostgresClient) -> QueuedLlmCallTracker:
-    """Builds the queued LLM call tracker, persisted through the given client."""
-    return QueuedLlmCallTracker(LlmCallLogRepository(postgres_client))
 
 
 def build_health_repositories(

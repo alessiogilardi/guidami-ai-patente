@@ -52,12 +52,25 @@ only** — f-strings remain the default everywhere else in the codebase.
 `src/commons/ai/agents/base_agent.py::BaseAgent.run`/`run_sync` — `debug` before
 dispatch (agent name, model, image count, prompt char length — summarized, not the
 payload itself; useful to reconstruct call ordering when multiple agents/enrichers
-interleave in the same pipeline run), `info` after a successful call via the shared
-`_log_call_completed` helper (latency, input/output/total tokens, cost — operational
-visibility, read once off `capture.log` and passed to a single log call rather than
-re-derived per field). `_log_call_completed` also emits a `warning` when
-`capture.log.cost_usd` is `None` (OpenRouter reported no cost for an otherwise
-successful call — a degraded-but-recoverable condition, not a failure). No log on the
-exception path: `run`/`run_sync` don't catch, so the exception propagates to whichever
-call site logs it once (e.g. `NormReferenceEnricher._call_agent`,
-`ImageDescriptionEnricher._describe_image`).
+interleave in the same pipeline run). The per-call `info`/`warning` logging itself no
+longer lives on `BaseAgent`: it moved to
+`src/commons/ai/observability/adapters/pydantic_ai_llm_call_recorder.py::PydanticAILlmCallRecorder._log_completion`,
+called from `__exit__` of the context manager `BaseAgent.run`/`run_sync` enter via
+`self._tracker.track(...)`. `_log_completion` emits `info` **unconditionally**
+(latency, input/output/total tokens, cost — operational visibility, read once off the
+recorder's own instance state and passed to a single log call rather than re-derived
+per field), then a `warning` only when the call succeeded and an expected cost is
+missing (`status == "success"` and `cost_usd is None` while
+`TrackedCaller.expects_cost` — OpenRouter reported no cost for an otherwise successful
+call, a degraded-but-recoverable condition, not a failure; gated on success only,
+since a failed call has no cost to report in the first place).
+
+Unlike the helper this replaced (`BaseAgent._log_call_completed`, called only *after*
+the tracked `with` block, so a raising call skipped it entirely), `_log_completion`
+runs from `__exit__`, which always runs — **the `info` line now fires on the failure
+path too** (`status="error"`, `error_message` populated, latency still stamped), a
+deliberate behavior change. `run`/`run_sync` themselves still don't catch: the
+exception propagates unchanged past the recorder (`__exit__` returns `False`) to
+whichever call site logs it once (e.g. `NormReferenceEnricher._call_agent`,
+`ImageDescriptionEnricher._describe_image`) — only the completion *log line* now
+covers the failure path, not exception handling itself.

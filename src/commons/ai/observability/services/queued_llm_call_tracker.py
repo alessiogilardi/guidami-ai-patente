@@ -1,17 +1,16 @@
 import logging
 import queue
 import threading
+from collections.abc import Iterator
+from contextlib import contextmanager
 from types import TracebackType
 
-from domain.entities.observability import LlmCallLogEntity
-
-from .protocols.llm_call_log_repository import _LlmCallLogRepository
+from ..adapters import PydanticAILlmCallRecorder
+from ..entities import LlmCallLogEntity
+from ..models import TrackedCaller
+from ..protocols import LlmCallLogRepository
 
 logger = logging.getLogger(__name__)
-
-# Not a ctor param: nobody asked for it, and a configurable knob would force
-# plain-data-with-default before required dependencies (see plan Decision 3).
-_JOIN_TIMEOUT_S = 10.0
 
 
 class _Shutdown:
@@ -24,15 +23,17 @@ _SHUTDOWN = _Shutdown()
 class QueuedLlmCallTracker:
     """`LlmCallTracker` persisting logs from a background daemon worker thread.
 
-    `track()` is a `queue.SimpleQueue.put` (microseconds, thread-safe), so it serves
-    both `BaseAgent.run` and `run_sync` without touching the event loop. The worker
-    drains the queue sequentially, calling `repository.insert` for each log. A failing
-    `insert` is logged and swallowed (see plan Decision 4) — observability must never
-    break the main flow. Use as a context manager, or call `close()` directly.
+    `track()` yields a recorder and enqueues its log on exit (`queue.SimpleQueue.put`,
+    microseconds, thread-safe), so it serves both `BaseAgent.run` and `run_sync` without
+    touching the event loop. The worker drains the queue sequentially, calling
+    `repository.insert` for each log. A failing `insert` is logged and swallowed (see
+    plan Decision 4) — observability must never break the main flow. Use as a context
+    manager, or call `close()` directly.
     """
 
-    def __init__(self, repository: _LlmCallLogRepository) -> None:
-        """Stores the repository used by the worker thread."""
+    def __init__(self, join_timeout_s: float, repository: LlmCallLogRepository) -> None:
+        """Stores the shutdown join timeout and the repository used by the worker thread."""
+        self._join_timeout_s = join_timeout_s
         self._repository = repository
         self._queue: queue.SimpleQueue[LlmCallLogEntity | _Shutdown] = queue.SimpleQueue()
         self._worker: threading.Thread | None = None
@@ -52,17 +53,30 @@ class QueuedLlmCallTracker:
         """Flushes pending logs (see `close`)."""
         self.close()
 
-    def track(self, log: LlmCallLogEntity) -> None:
-        """Enqueues `log` for the worker thread; returns immediately."""
-        self._queue.put(log)
+    @contextmanager
+    def track(
+        self, tracked_caller: TrackedCaller, prompt: str
+    ) -> Iterator[PydanticAILlmCallRecorder]:
+        """Measures the call and enqueues its log for the worker thread.
+
+        The enqueue happens in `finally`, so a call that raised is logged too; the
+        exception is never swallowed (`PydanticAILlmCallRecorder.__exit__` returns
+        `False`).
+        """
+        recorder = PydanticAILlmCallRecorder(tracked_caller, prompt)
+        try:
+            with recorder:
+                yield recorder
+        finally:
+            self._queue.put(recorder.log)
 
     def close(self) -> None:
-        """Enqueues the shutdown sentinel and joins the worker, bounded by `_JOIN_TIMEOUT_S`."""
+        """Enqueues the shutdown sentinel and joins the worker, bounded by `join_timeout_s`."""
         self._queue.put(_SHUTDOWN)
         if self._worker is None:
             return
 
-        self._worker.join(timeout=_JOIN_TIMEOUT_S)
+        self._worker.join(timeout=self._join_timeout_s)
         if self._worker.is_alive():
             logger.warning("QueuedLlmCallTracker worker did not shut down within timeout")
 

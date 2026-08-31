@@ -3,7 +3,7 @@
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig
-from commons.ai.observability import LlmCallLogRepository, QueuedLlmCallTracker
+from commons.ai.observability import LlmCallTracker
 from commons.clients import PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import YamlRepository
@@ -22,11 +22,6 @@ def build_open_router_provider(config: IngestorConfig) -> OpenRouterProvider:
 def build_postgres_client(config: IngestorConfig) -> PostgresClient:
     """Opens a Postgres connection. Raises `psycopg.Error` if unreachable."""
     return PostgresClient(config.postgres)
-
-
-def build_tracker(postgres_client: PostgresClient) -> QueuedLlmCallTracker:
-    """Builds the queued LLM call tracker, persisted through the given client."""
-    return QueuedLlmCallTracker(LlmCallLogRepository(postgres_client))
 
 
 def build_quiz_repository(
@@ -51,7 +46,7 @@ def build_corpus_repository(
 
 
 def build_agent(
-    config: IngestorConfig, provider: OpenRouterProvider, tracker: QueuedLlmCallTracker
+    config: IngestorConfig, provider: OpenRouterProvider, tracker: LlmCallTracker
 ) -> RetrievalJudgeAgent:
     """Loads `retrieval_judge.yaml` from the ingestor's configured `agents_dir`."""
     agents_repository = YamlRepository(
@@ -73,7 +68,7 @@ def build_comma_labeler_config(config: IngestorConfig) -> AgentConfig:
 def build_comma_labeler_agent(
     agent_config: AgentConfig,
     provider: OpenRouterProvider,
-    tracker: QueuedLlmCallTracker,
+    tracker: LlmCallTracker,
 ) -> CommaLabelerAgent:
     """Builds the comma-labeler agent from an already-loaded `AgentConfig`.
 

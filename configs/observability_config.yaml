@@ -1,0 +1,6 @@
+# LLM call tracking (see src/commons/ai/observability/). Every key can be
+# overridden by an LLM_TRACKING_* environment variable.
+enabled: true
+backend: postgres
+table: llm_call_logs
+queue_join_timeout_s: 10.0

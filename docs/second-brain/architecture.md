@@ -28,8 +28,11 @@ doing so once the FastAPI app starts):
   configs.
 - `domain/` — entities/models persisted or shared across apps, grouped by
   bounded context: `entities/knowledge/` (`ArticleEntity`, `ArticleCommaEntity`),
-  `entities/quiz/` (`QuizQuestionEntity`), `entities/observability/`
-  (`LlmCallLogEntity`). The former `knowledge_chunk` was split into article +
+  `entities/quiz/` (`QuizQuestionEntity`). `entities/observability/`
+  (`LlmCallLogEntity`) has been removed: the entity moved into
+  `commons/ai/observability/entities/` (see that component's row below), so the
+  whole module — including its own persisted row shape — stays removable in one
+  piece. The former `knowledge_chunk` was split into article +
   comma by spec 0001, and `retrieval_result` was deleted in the same change —
   a read-path model returns when the retrieval layer actually exists. `quiz_question`
   is flat: its former nested `quiz_metadata` was demoted to a transient
@@ -52,8 +55,8 @@ is a similarly standalone script package — an LLM-as-judge measurement tool
 |---|---|---|
 | `commons/ai/embedding/` | `clients/`: `EmbeddingClient` ABC (`embed_query`, `embed_passages`); `LiteLLMEmbeddingClient` (production) and `SentenceTransformerEmbeddingClient` (offline alternative, not hot-swappable — different dimension) — unchanged. `configs/`: `EmbeddingClientConfig` (renamed from `EmbeddingConfig` — it configures the *client*, not the module). `protocols/`: `TextComposer[T]` (`compose(model: T) -> str`, the 1:1 case — always a string, the port `ModelEmbeddingService[T]` depends on) and `OptionalTextComposer[T]` (`compose_or_none(model: T) -> str | None`, its counterpart for a representation that may legitimately be absent for a given model — `None` signals "nothing to embed", never a partial text; a distinct method name, not an overload of `compose`, since one class can implement both protocols at once). `models/`: `FieldSpec`/`EmbeddingSpec` (declarative composition recipe, dataclasses — `Callable` fields rule out `BaseModel`), `EmbeddingResult[T]` (`model`/`text`/`embedding` triple). `composition/`: `FieldSpecComposer[T]` (declarative, field-by-field; implements **both** `TextComposer[T]` (`compose`, always a string) and `OptionalTextComposer[T]` (`compose_or_none`, `None` when a field marked `skip_if_none=False` — "required" — is missing) — the caller picks whichever method its pipeline needs), `TemplateComposer[T]` (`string.Template` `$var` substitution against a `BaseModel`/dataclass/`Mapping`, dispatch ported from `agents/utils/prompt_renderer.py::PromptRenderer`, but strict `.substitute()` not `.safe_substitute()` — an unresolved placeholder must fail loud, not get embedded literally into the text sent for embedding; implements `TextComposer[T]`), `CallableComposer[T]` (wraps any `Callable[[T], str]`, e.g. a model's own computed property, avoiding a throwaway composer class per model type; implements `TextComposer[T]`). `services/`: `EmbeddingService` (batching, `Sequence[str] -> list[list[float]]`, unchanged public contract — internals now use `itertools.batched` and a new `commons.observability.progress_reporter.tracker` generator instead of manual chunking); `ModelEmbeddingService[T]` (composes+embeds a batch of models 1:1 via an injected `TextComposer[T]`, delegating all chunking/progress to the injected `EmbeddingService`). Per-variant dedup/omission/fan-out (N text representations of one model, each with its own omission rule and dedup key) is **not** generalized here: ADR 0014 proposed a `VariantSpec[T]`/`VariantModelEmbeddingService[T]` pair for it, and was rejected (`docs/second-brain/adr/0014-embedding-composition-layer.md`, status `Rejected`) — it stays domain logic local to `guidami_ai_patente_ingestor/services/quiz/` (see the quiz-indexing walkthrough below). Every `UseCase` in this module — and in the codebase generally — is invoked via `__call__`, never `.execute()` directly (`.claude/rules/use-case-invocation.md`) | litellm (→ OpenRouter), sentence-transformers |
 | `commons/ai/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` (in `configs/`) from YAML, renders prompts via `PromptRenderer`; requires an injected `pydantic_ai.providers.Provider[AsyncOpenAI]` (never reads env itself) — `OpenRouterProvider` selects `OpenRouterModel` (OpenRouter-specific cost tracking/settings), any other provider (e.g. `OllamaProvider`) selects the generic `OpenAIChatModel`, dispatched via the `_is_openrouter` property (`adr/0019-base-agent-generic-provider-ollama.md`); optionally tracks every call via an injected `LlmCallTracker` port | pydantic-ai-slim[openrouter] |
-| `commons/configs/` | Shared, app-agnostic Pydantic settings: `PostgresConnectionConfig`, `OpenRouterConfig` (`BaseSettings`, `env_prefix="OPENROUTER_"`, holds `api_key: SecretStr`) | pydantic-settings |
-| `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | psycopg[binary] |
+| `commons/configs/` | Shared, app-agnostic Pydantic config: `PostgresConnectionConfig` (plain frozen `BaseModel` — not self-loading, populated by `IngestorConfig`'s own env/yaml loading; this row previously misdescribed it as a `BaseSettings`, corrected 2026-08-28), `OpenRouterConfig` (`BaseSettings`, self-loading, `env_prefix="OPENROUTER_"`, holds `api_key: SecretStr`), `BaseConfig` (new root, self-loading `BaseSettings` base — `load(config_override=None, **init_kwargs)`, precedence init > env/.env > override yaml > base yaml, same profile-switching shape `IngestorConfig.load` already had; **partial landing**: only `ObservabilityConfig` adopts it so far, `IngestorConfig`/`OpenRouterConfig` are explicitly not migrated yet — see `adr/0021-base-config-partial-landing.md`) | pydantic-settings |
+| `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`, now a context manager: `track(tracked_caller, prompt) -> AbstractContextManager[PydanticAILlmCallRecorder]`) + `LlmCallLogRepository` port (`protocols/`, public — replaces the former private duplicate nested inside `services/`) + `PydanticAILlmCallRecorder` (`adapters/` — stateful pydantic_ai → `LlmCallLogEntity` translation, builds the entity directly, no DTO/mapper; owns the per-call `info`/`warning` logs, see `patterns.md`) + `NullLlmCallTracker`/`QueuedLlmCallTracker` (`services/`) + `PostgresLlmCallLogRepository` (`repositories/`, table name now a constructor arg) + `LlmCallLogEntity` (`entities/`, moved in from `domain/entities/observability/`) + `TrackerBackend` (`enums/`) + `ObservabilityConfig` (`configs/`, self-loading `BaseConfig`) + `TrackedCaller` (`models/`, per-agent-lifetime identity built once in `BaseAgent.__init__`) + `build_llm_call_tracker` (package-root `tracker_factory.py`, `@contextmanager` composition-root factory, replacing the duplicated `build_tracker` helper that used to live separately in `cli/wiring.py` and `retrieval_evaluation/wiring.py`) — populates `llm_call_logs` (`adr/0020-context-manager-tracker-port.md`); commons-level (not ingestor-only) because the future FastAPI app will track calls too | psycopg[binary] |
 | `commons/observability/` | Thin re-exporting `__init__.py` over two self-contained sibling sub-packages: `progress_reporter/` (`ItemProgressReporter`/`ProgressReporter` port + `NullProgressReporter` + a `tracker(progress, label, items)` generator helper — iterates `items`, opening the track before the first, advancing after each is consumed, closing once exhausted or on exception; unrelated to the `LlmCallTracker`/`tracker` local variable in the LLM-observability narrative below, a pure naming coincidence — progress reporting for the ingest CLI's live dashboard, spec 0002) and `run_artifact_writer/` (`RunArtifactWriter` + a `models/` sub-package holding `RunManifest` (base) and `ScrapeManifest`; `RunArtifactWriterConfig` was removed, spec 0005 AD-5 — `RunArtifactWriter` is domain-agnostic mechanics only, no `protocols/`/`services/` split since AD-3 rejects a `Protocol` here with only one implementation; a context manager that owns one `logs/<prefix>_<timestamp>/` run directory, writing `run.log`/`manifest.json`/`report.md` from whatever `RunManifest` it holds and always finalizing them in `__exit__` even on an unhandled exception — shared between `ingest`'s `configure_logging` and the `scrapers/normattiva.py` scraper, spec 0005 AD-1/AD-4); a sibling of `commons/ai/observability/`, not nested under it, since it is not AI-specific. The `ingest`-only manifests (`PrepareManifest`/`IndexManifest`/`ResetManifest`) live in `guidami_ai_patente_ingestor/cli/models/run_artifacts/` instead, per the CLI self-containment rule (spec 0005 AD-6) | — |
 | `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
 | `commons/repositories/db/` | Read-only Postgres repositories, scoped **per entity** not per table (AD-7, spec 0007) — the project's first query code, every repository under `guidami_ai_patente_ingestor/repositories/db/` being write-only bulk insert. `CorpusReadRepository` (`articles` ⋈ `article_commas`) and `QuizReadRepository` (`quiz_questions` ⋈ `quiz_question_embeddings`), each taking an injected `PostgresClient`, mirroring `LlmCallLogRepository`'s shape. `CorpusReadRepository`'s shared `_BASE_SELECT` projection leads with `c.id` (spec 0011 FR-3), so every comma it returns — dense, random or text — can be joined back to its `article_commas` row without resolving a citation string. `QuizReadRepository.fetch_with_vectors(variant, model_column)` takes the model column explicitly (spec 0008 Phase 2, generalized from a single hardcoded `embedding_3_small`); `populated_model_columns()` introspects `information_schema.columns` for `embedding_*`-named columns holding ≥1 non-null vector, so the multi-arm evaluation harness's model axis needs no code change when a second model column is added (AD-6). Lives in `commons/` rather than the `ingest` CLI (which the self-containment rule would otherwise suggest) because a corpus reader is also what `src/guidami_ai_patente/` will eventually need — more than one consumer, same reasoning as `LlmCallLogRepository` | psycopg[binary], pgvector |
@@ -137,7 +140,7 @@ than env/.env), deep-merged by pydantic-settings (ADR 0006, `patterns.md`).
 `cli/main.py` loads `IngestorConfig`, builds the parser (`cli/parser.py:build_parser`) and
 dispatches by subcommand to `cli/commands/{prepare,index,reset,status}.py`;
 `cli/wiring.py` holds the lazy DI builders (`build_layer_resolver`,
-`build_open_router_provider`, `build_postgres_client`, `build_tracker`,
+`build_open_router_provider`, `build_postgres_client`,
 `build_health_repositories`) so each command only builds the
 clients/providers it actually needs. Both `dispatch_prepare` branches
 (`knowledge` and, since spec 0006, `quiz`) run their flow(s) directly, with
@@ -314,24 +317,37 @@ the root logger in `LiveDashboard.__enter__`, detached and closed in
 plain-logging behavior, satisfying FR-4 with no separate code path.
 
 **LLM call observability** (`prepare` path only, no agent calls on `index`/`reset`):
-`cli/commands/prepare.py:run_prepare` opens a `PostgresClient` (via
-`wiring.build_postgres_client`) and, inside `with postgres_client,
-wiring.build_tracker(postgres_client) as tracker:`, dispatches to
+`cli/commands/prepare.py:run_prepare` opens an `ExitStack`, best-effort opens a
+`PostgresClient` (via `wiring.build_postgres_client`, catching `psycopg.Error` and
+falling back to `postgres_client=None` on failure), then unconditionally builds the
+tracker via `stack.enter_context(build_llm_call_tracker(observability_config,
+postgres_client))` (`commons/ai/observability/tracker_factory.py`) and dispatches to
 `dispatch_prepare(..., tracker)`, which forwards `tracker` into
 `build_quiz_enrichment_flow` → the agents' `from_yaml(..., tracker=tracker)`
 (the knowledge side has no enrichment flow/agent left to forward it to,
 since T-13 removed context enrichment — `tracker` is simply unused on that
-branch). Inside `BaseAgent.run`/`run_sync`, a tracked call is
-wrapped in `PydanticAILlmCallCapture` (records prompt/response/tokens/latency/status
-synchronously, including `cost_usd` — summed from OpenRouter's own reported cost on every
-`ModelResponse` in the run, see `adr/0004-openrouter-native-cost-tracking.md`) and
-`tracker.track(capture.log)` enqueues the already-final log for the background worker,
-which just inserts it via `LlmCallLogRepository` — off the hot path, so a slow/failing
-DB write never blocks the LLM call. If
-`PostgresClient` construction fails (`psycopg.Error`), `run_prepare` logs a warning and
-dispatches with `tracker=None`: `BaseAgent.__init__` substitutes a `NullLlmCallTracker`
-(Null Object, see `docs/second-brain/patterns.md`), so the capture is still built on every call but
-`track()` is a no-op — the LLM output is unaffected, only the DB write is skipped.
+branch). `build_llm_call_tracker` (a `@contextmanager`) yields `NullLlmCallTracker`
+when tracking is disabled or no DB client could be opened, else a
+`QueuedLlmCallTracker` wrapping `PostgresLlmCallLogRepository` — so `tracker` reaching
+`dispatch_prepare` is always a real `LlmCallTracker`, never `None` (the former
+`tracker=None` degradation branch is gone: `NullLlmCallTracker` now stands in for it
+uniformly). `BaseAgent.__init__` builds a `TrackedCaller` (identity: caller/model/
+system_prompt/`expects_cost`) once, for the agent's lifetime; `run`/`run_sync` do
+`with self._tracker.track(self._tracked_caller, prompt_text) as recorder: result =
+await self._agent.run(...); recorder.record(result)`. The context manager
+(`PydanticAILlmCallRecorder`, `adapters/`) measures the call and builds the
+`LlmCallLogEntity` directly from `TrackedCaller` + the prompt + `record`'s
+`AgentRunResult` (no intermediate DTO, no mapper), including `cost_usd` — summed from
+OpenRouter's own reported cost on every `ModelResponse` in the run, see
+`adr/0004-openrouter-native-cost-tracking.md` — and on `__exit__` (which always runs,
+success or failure) logs this call's `info` line and enqueues the log for
+`QueuedLlmCallTracker`'s background worker, which inserts it via
+`LlmCallLogRepository.insert` — off the hot path, so a slow/failing DB write never
+blocks the LLM call. Unlike the code it replaced, this `info` line fires on a failed
+call too (previously it sat after the `with` block in `BaseAgent` and was skipped on
+exception); the "no cost reported" warning stays gated on success only, since a failed
+call never has a cost to report. See `adr/0020-context-manager-tracker-port.md` and
+`docs/second-brain/patterns.md` for the full shape.
 
 **`ingest status [--online]`** (`cli/commands/status.py:run_status`, never
 raises, always exits 0): `cli/services/status/status_inspector.py:
@@ -683,28 +699,37 @@ See `adr/` for the full history. Currently accepted:
   sharing an image get one vision call and one `image_description`/
   `image_analysis` instead of one call per `(image, topic, text)` triple
   (`adr/0003-group-road-sign-description-by-image.md`).
-- **LLM call tracking is a port injected into `BaseAgent`, not an external
-  wrapper** — token usage (`result.usage()`) only exists inside
+- **LLM call tracking is a context-manager port injected into `BaseAgent`, not
+  an external wrapper** — token usage (`result.usage`) only exists inside
   `run`/`run_sync`; an external decorator would force `BaseAgent.run` to
-  return a rich result object, breaking every enricher. `LlmCallTracker`
-  persistence failures degrade gracefully (log a warning, never abort the
-  pipeline) — a deliberate, documented exception to "never swallow
-  exceptions" (`.claude/rules/python/standards.md`; see also `patterns.md`).
+  return a rich result object, breaking every enricher. `LlmCallTracker.track`
+  returns `AbstractContextManager[PydanticAILlmCallRecorder]` rather than the
+  earlier `track(log) -> None`, so `BaseAgent` never assembles the log itself
+  — it enters the context, awaits the call, and hands the `AgentRunResult` to
+  `recorder.record(...)`; the recorder (not `BaseAgent`) builds the entity and
+  logs the call, on both the success and failure path
+  (`adr/0020-context-manager-tracker-port.md`). `LlmCallTracker` persistence
+  failures degrade gracefully (log a warning, never abort the pipeline) — a
+  deliberate, documented exception to "never swallow exceptions"
+  (`.claude/rules/python/standards.md`; see also `patterns.md`).
 - **`cost_usd` comes from OpenRouter's own reported cost, not a litellm
   pricing-table lookup** — `BaseAgent` uses `pydantic_ai`'s `OpenRouterModel`
-  with `openrouter_usage={"include": True}`, and `PydanticAILlmCallCapture`
+  with `openrouter_usage={"include": True}`, and `PydanticAILlmCallRecorder`
   sums `ModelResponse.provider_details["cost"]` synchronously; no fallback
   estimate when OpenRouter omits cost (`adr/0004-openrouter-native-cost-tracking.md`).
 - **`BaseAgent` takes a generic `Provider[AsyncOpenAI]`, not an
-  `OpenRouterProvider`** — `_create_model`/`_create_model_settings`/
-  `_log_call_completed` all dispatch on `isinstance(provider, OpenRouterProvider)`
-  (the `_is_openrouter` property): OpenRouter gets `OpenRouterModel` +
-  `openrouter_usage` + the "no cost" warning; any other OpenAI-compatible
-  provider (e.g. `OllamaProvider`) gets the generic `OpenAIChatModel`, no
-  OpenRouter-only settings, and no cost warning (a local model never
-  reports a cost, so the warning would otherwise fire on every call —
-  `.claude/rules/logging.md`). No agent is wired to Ollama yet — this
-  only widens `BaseAgent` itself (`adr/0019-base-agent-generic-provider-ollama.md`).
+  `OpenRouterProvider`** — `_create_model`/`_create_model_settings` dispatch on
+  `isinstance(provider, OpenRouterProvider)` (the `_is_openrouter` property):
+  OpenRouter gets `OpenRouterModel` + `openrouter_usage`; any other
+  OpenAI-compatible provider (e.g. `OllamaProvider`) gets the generic
+  `OpenAIChatModel`, no OpenRouter-only settings. The "no cost" warning is
+  gated the same way, but one level down: `_is_openrouter` is read once, at
+  construction, into `TrackedCaller.expects_cost`, and
+  `PydanticAILlmCallRecorder` (not `BaseAgent`) checks that flag before
+  warning — a local model never reports a cost, so the warning would
+  otherwise fire on every call (`.claude/rules/logging.md`). No agent is
+  wired to Ollama yet — this only widens `BaseAgent` itself
+  (`adr/0019-base-agent-generic-provider-ollama.md`).
 - **Per-element knowledge (then quiz) layers, cross-run resumability,
   write-through deferred** — `cleaned`/`enriched` for the knowledge corpus
   moved from one monolithic JSON per source to one JSON file per article, so a
@@ -1018,3 +1043,22 @@ branch); `BaseAgent` now takes a generic `pydantic_ai.providers.Provider[AsyncOp
 instead of `OpenRouterProvider`, dispatching `_create_model`/`_create_model_settings`/the
 "no cost" warning on provider type (`_is_openrouter` property) so it can also be built
 with `OllamaProvider` — see `adr/0019-base-agent-generic-provider-ollama.md` (Proposed).*
+
+*Last updated: 2026-08-28 — verified against commit `ab1b8f82`; `commons/ai/observability/`
+restructured: `LlmCallTracker` is now a context-manager port, `adapters/` added for the
+stateful `PydanticAILlmCallRecorder` (replaces the deleted capture/model/mapper trio and
+now owns the per-call logging, firing on failure too), `entities/` holds `LlmCallLogEntity`
+moved in from the now-removed `domain/entities/observability/`, `enums/` and `configs/`
+added for the new `ObservabilityConfig` (table name/timeout/backend configurable),
+`mappers/` and the private `services/protocols/` sink port are gone — see
+`adr/0020-context-manager-tracker-port.md`. New `commons/configs/BaseConfig` is a partial
+landing: only `ObservabilityConfig` adopts it, `IngestorConfig`/`OpenRouterConfig` are
+unchanged — see `adr/0021-base-config-partial-landing.md`. Corrected a stale claim that
+`PostgresConnectionConfig` is a `BaseSettings`; it is a plain `BaseModel`.*
+
+*Last updated: 2026-08-28 — verified against commit `a68a2c15` (working tree ahead: final
+whole-branch review fix for the observability simplification); corrected the "Main flows"
+section's `cli/wiring.py` DI-builder list, which still named the deleted `build_tracker`.
+`cli/wiring.py` no longer builds a tracker — that responsibility moved to
+`build_llm_call_tracker` (see the `commons/ai/observability/` entry above and the
+"Main flows" prepare-path narrative, both already correct).*

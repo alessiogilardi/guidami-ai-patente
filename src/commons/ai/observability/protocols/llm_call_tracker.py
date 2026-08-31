@@ -1,23 +1,28 @@
+from contextlib import AbstractContextManager
 from typing import Protocol
 
-from domain.entities.observability import LlmCallLogEntity
+from ..adapters import PydanticAILlmCallRecorder
+from ..models import TrackedCaller
 
 
 class LlmCallTracker(Protocol):
-    """Port for persisting one `LlmCallLogEntity` per `BaseAgent` call.
+    """Port `BaseAgent` uses to record one call.
 
-    Injected into `BaseAgent` as an optional dependency (see
-    `docs/plans/2026-07-13--llm-call-tracking.md`, Decision 1). Call sites see
-    only this single method (ISP); lifecycle concerns (e.g. flushing pending
-    writes on shutdown) live on the concrete implementation, owned by the
-    composition root.
+    Injected into `BaseAgent` as an optional dependency; `None` is normalized to
+    `NullLlmCallTracker`, so the tracked code path is always the same one.
+
+    Call sites see a single method (ISP). Lifecycle concerns — starting and draining a
+    background worker — live on the concrete implementation and are owned by the
+    composition root through `build_llm_call_tracker`.
     """
 
-    def track(self, log: LlmCallLogEntity) -> None:
-        """Records `log`.
+    def track(
+        self, tracked_caller: TrackedCaller, prompt: str
+    ) -> AbstractContextManager[PydanticAILlmCallRecorder]:
+        """Measures one call and records it on exit.
 
-        Contractually non-blocking: implementations must not sit on the
-        critical path of the LLM call (e.g. by enqueueing the log for a
-        background worker rather than persisting synchronously).
+        The returned context manager yields the recorder: pass the `AgentRunResult` to
+        `recorder.record(...)` inside the block. Implementations must record the call on
+        the failure path too, and must never swallow the block's exception.
         """
         ...
