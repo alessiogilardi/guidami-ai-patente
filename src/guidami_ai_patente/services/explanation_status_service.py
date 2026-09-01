@@ -30,7 +30,8 @@ class ExplanationStatusService:
 
     def resolve(self, number: str) -> ExplanationStatus:
         """Returns the cache state of this question's comma association (FR-4)."""
-        labeling = self.golden_set.find_current_labeling(number)
+        epoch = self.labeling_stack.epoch
+        labeling = self.golden_set.find_current_labeling(number, epoch)
         if labeling is not None:
             return (
                 ExplanationStatus.CACHED
@@ -38,9 +39,8 @@ class ExplanationStatusService:
                 else ExplanationStatus.UNAVAILABLE
             )
 
-        variant = self.labeling_stack.epoch.candidate_variant
         return (
             ExplanationStatus.UNCACHED
-            if self.questions.has_embedding(number, variant)
+            if self.questions.has_embedding(number, epoch.candidate_variant)
             else ExplanationStatus.UNAVAILABLE
         )

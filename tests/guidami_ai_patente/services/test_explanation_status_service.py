@@ -5,13 +5,14 @@ from dataclasses import dataclass, field
 from guidami_ai_patente.enums import ExplanationStatus
 from guidami_ai_patente.models import CurrentLabeling
 from guidami_ai_patente.services import ExplanationStatusService
+from labeling.models import LabelingEpoch
 
 
 @dataclass
 class _GoldenSetDouble:
     labeling: CurrentLabeling | None = None
 
-    def find_current_labeling(self, number: str) -> CurrentLabeling | None:
+    def find_current_labeling(self, number: str, epoch: LabelingEpoch) -> CurrentLabeling | None:
         return self.labeling
 
 

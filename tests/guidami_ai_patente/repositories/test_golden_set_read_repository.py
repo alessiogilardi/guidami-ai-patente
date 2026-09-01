@@ -104,7 +104,8 @@ def test_no_labeling_at_all_is_a_cache_miss(
     golden_set: tuple[PostgresClient, int, LabelingEpoch],
     repository: GoldenSetReadRepository,
 ) -> None:
-    assert repository.find_current_labeling("0001") is None
+    _, _, epoch = golden_set
+    assert repository.find_current_labeling("0001", epoch) is None
 
 
 @pytest.mark.integration
@@ -116,7 +117,7 @@ def test_a_matching_run_labeling_is_current(
     run_id = _insert_run(client, epoch, "batch")
     _insert_labeling(client, run_id, question_id, "trovato", has_commas=True)
 
-    current = repository.find_current_labeling("0001")
+    current = repository.find_current_labeling("0001", epoch)
 
     assert current is not None
     assert (current.rationale, current.has_supporting_commas, current.origin) == (
@@ -139,7 +140,7 @@ def test_a_human_validated_labeling_wins_over_a_matching_run(
     )
     _insert_labeling(client, current_run, question_id, "automatico", has_commas=True)
 
-    current = repository.find_current_labeling("0001")
+    current = repository.find_current_labeling("0001", epoch)
 
     assert current is not None
     assert (current.rationale, current.human_validated) == ("validato a mano", True)
@@ -170,7 +171,7 @@ def test_the_most_recent_matching_labeling_wins(
         created_at=datetime(2026, 1, 1, tzinfo=UTC),
     )
 
-    current = repository.find_current_labeling("0001")
+    current = repository.find_current_labeling("0001", epoch)
 
     assert current is not None
     assert current.rationale == "nuova"
@@ -185,7 +186,7 @@ def test_a_labeling_from_another_epoch_is_not_current(
     stale = _insert_run(client, epoch.model_copy(update={"dense_k": epoch.dense_k + 1}), "batch")
     _insert_labeling(client, stale, question_id, "altra epoca", has_commas=True)
 
-    assert repository.find_current_labeling("0001") is None
+    assert repository.find_current_labeling("0001", epoch) is None
 
 
 @pytest.mark.integration
@@ -204,7 +205,7 @@ def test_reordered_lexeme_fields_are_the_same_epoch(
         [reordered, run_id],
     )
 
-    assert repository.find_current_labeling("0001") is None, (
+    assert repository.find_current_labeling("0001", epoch) is None, (
         "a run written with an unsorted array is out of epoch by construction — which "
         "is why AD-8 canonicalises on write rather than normalising on read"
     )
@@ -219,7 +220,7 @@ def test_the_empty_verdict_is_still_a_current_labeling(
     run_id = _insert_run(client, epoch, "batch")
     _insert_labeling(client, run_id, question_id, "nessun comma", has_commas=False)
 
-    current = repository.find_current_labeling("0001")
+    current = repository.find_current_labeling("0001", epoch)
 
     assert current is not None
     assert current.has_supporting_commas is False
