@@ -46,7 +46,7 @@ def _register_instance[T](instance: T, as_type: type[T]) -> None:
 
 @asynccontextmanager
 async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
-    """Runs the startup diagnostics, then serves.
+    """Runs the startup diagnostics, then serves; closes the container on shutdown.
 
     The judge-coherence check (FR-14) swallows its own failures, so this never keeps
     the app from starting — see `JudgeCoherenceChecker` for why that is deliberate.
@@ -59,6 +59,12 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     `psycopg_pool.PoolTimeout` if Postgres isn't reachable yet. Startup must survive
     that too, so resolution gets the same "diagnostic must never abort startup"
     treatment as the check's own body.
+
+    Shutdown (spec 0013, FR-6) closes the default container, which runs every
+    resolved bean's `@pre_destroy` hook — today only `PostgresClientProvider`'s pool.
+    Unlike the startup diagnostic, a shutdown teardown failure is allowed to
+    propagate and be logged by uvicorn: nothing downstream depends on the process
+    surviving it.
     """
     try:
         checker = get_default_container().resolve(JudgeCoherenceChecker)
@@ -67,6 +73,7 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     else:
         await asyncio.to_thread(checker.check)
     yield
+    await asyncio.to_thread(get_default_container().close)
 
 
 def create_app(config: AppConfig, labeling_config: LabelingConfig) -> FastAPI:
