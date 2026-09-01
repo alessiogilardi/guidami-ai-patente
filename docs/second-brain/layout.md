@@ -41,8 +41,11 @@ repo/
 │   │                                #   no I/O or business logic
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
 │   │                                #   normative corpus (CdS/CAP/Regolamento) and quiz bank
-│   ├── guidami_ai_patente/         # FastAPI quiz-bot app — layout scaffolded, no domain
-│   │                                #   endpoints yet. api/ (self-contained web
+│   ├── guidami_ai_patente/         # FastAPI quiz-bot app — serves the full quiz loop
+│   │                                #   (topics, propose/fetch a question, check an
+│   │                                #   answer, fetch its image); the RAG-backed
+│   │                                #   explanation endpoint is not implemented yet.
+│   │                                #   api/ (self-contained web
 │   │                                #   layer: app.py factory, routers/, schemas/) →
 │   │                                #   services/ / repositories/ / models/ / mappers/
 │   │                                #   (empty, pull-based) → configs/ (AppConfig); enums/ (closed
@@ -63,8 +66,11 @@ repo/
 │   │                                #   AgentConfigRepository, the
 │   │                                #   API's only door to `agents_dir` and the agent prompt
 │   │                                #   files (AD-22), now re-exported from
-│   │                                #   repositories/__init__.py. Only concrete endpoint slice:
-│   │                                #   GET /health. Entry point:
+│   │                                #   repositories/__init__.py. Six live endpoints: GET
+│   │                                #   /health plus five quiz-domain routes (topics,
+│   │                                #   propose/fetch a question, check an answer, fetch
+│   │                                #   its image — see architecture.md for the full list).
+│   │                                #   Entry point:
 │   │                                #   `guidami_ai_patente.main:main`, registered as the
 │   │                                #   `serve` script
 │   ├── html_viewers/               # Standalone, dependency-free HTML pages for manually
