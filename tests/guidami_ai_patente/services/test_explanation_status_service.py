@@ -67,13 +67,13 @@ def _labeling(*, has_commas: bool) -> CurrentLabeling:
 def test_a_labeling_with_commas_is_cached() -> None:
     service, _ = _service(_labeling(has_commas=True), embedded=False)
 
-    assert service.resolve("0001") is ExplanationStatus.CACHED
+    assert service("0001") is ExplanationStatus.CACHED
 
 
 def test_a_cache_hit_never_probes_the_embedding() -> None:
     service, questions = _service(_labeling(has_commas=True), embedded=False)
 
-    service.resolve("0001")
+    service("0001")
 
     assert questions.probes == [], (
         "FR-4: a cache hit needs no retrieval and therefore no query vector, so the "
@@ -84,24 +84,24 @@ def test_a_cache_hit_never_probes_the_embedding() -> None:
 def test_a_labeling_without_commas_is_unavailable() -> None:
     service, _ = _service(_labeling(has_commas=False), embedded=True)
 
-    assert service.resolve("0001") is ExplanationStatus.UNAVAILABLE
+    assert service("0001") is ExplanationStatus.UNAVAILABLE
 
 
 def test_no_labeling_but_an_embedding_is_uncached() -> None:
     service, _ = _service(None, embedded=True)
 
-    assert service.resolve("0001") is ExplanationStatus.UNCACHED
+    assert service("0001") is ExplanationStatus.UNCACHED
 
 
 def test_no_labeling_and_no_embedding_is_unavailable() -> None:
     service, _ = _service(None, embedded=False)
 
-    assert service.resolve("0001") is ExplanationStatus.UNAVAILABLE
+    assert service("0001") is ExplanationStatus.UNAVAILABLE
 
 
 def test_the_probe_uses_the_configured_variant() -> None:
     service, questions = _service(None, embedded=True)
 
-    service.resolve("0042")
+    service("0042")
 
     assert questions.probes == [("0042", "topic_text")]

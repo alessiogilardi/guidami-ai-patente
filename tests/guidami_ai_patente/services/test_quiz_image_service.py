@@ -53,7 +53,7 @@ def image_service(api_client: object) -> QuizImageService:
 def test_a_referenced_image_is_served_with_its_media_type(
     bank_with_image: PostgresClient, image_service: QuizImageService, app_config: AppConfig
 ) -> None:
-    image = image_service.load(_REFERENCED)
+    image = image_service(_REFERENCED)
 
     assert image.media_type == "image/jpeg"
     assert image.content == (app_config.quiz_images_dir / _REFERENCED).read_bytes()
@@ -70,7 +70,7 @@ def test_an_unreferenced_name_is_rejected_even_when_the_file_exists(
     )
 
     with pytest.raises(QuizImageNotFoundError):
-        image_service.load(existing_but_unreferenced)
+        image_service(existing_but_unreferenced)
 
 
 @pytest.mark.integration
@@ -79,7 +79,7 @@ def test_a_traversal_attempt_is_rejected_without_touching_the_filesystem(
     bank_with_image: PostgresClient, image_service: QuizImageService, attempt: str
 ) -> None:
     with pytest.raises(QuizImageNotFoundError):
-        image_service.load(attempt)
+        image_service(attempt)
 
 
 @pytest.mark.integration
@@ -92,4 +92,4 @@ def test_a_referenced_row_whose_file_is_missing_is_a_404(
     )
 
     with pytest.raises(QuizImageNotFoundError):
-        image_service.load("absent-from-disk.jpeg")
+        image_service("absent-from-disk.jpeg")

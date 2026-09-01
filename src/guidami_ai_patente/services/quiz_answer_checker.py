@@ -2,8 +2,10 @@
 
 from pywire import Autowired, service
 
+from commons.use_cases import UseCase
 from guidami_ai_patente.enums import ExplanationStatus
 from guidami_ai_patente.exceptions import QuestionNotFoundError
+from guidami_ai_patente.models import QuizAnswerCheckRequest
 from guidami_ai_patente.repositories import QuizQuestionRepository
 
 from .answer_evaluation import evaluate_answer
@@ -11,7 +13,7 @@ from .explanation_status_service import ExplanationStatusService
 
 
 @service
-class QuizAnswerChecker:
+class QuizAnswerChecker(UseCase[QuizAnswerCheckRequest, tuple[bool, ExplanationStatus]]):
     """Sequences the answer lookup, the comparison and the status advertisement.
 
     Deliberately thin (AD-17): the comparison lives in `evaluate_answer`, which is
@@ -23,23 +25,15 @@ class QuizAnswerChecker:
     questions: Autowired[QuizQuestionRepository]
     explanation_status: Autowired[ExplanationStatusService]
 
-    def check(self, number: str, submitted_answer: bool) -> tuple[bool, ExplanationStatus]:
-        """Grades `submitted_answer` and resolves the explanation status (FR-3, FR-4).
-
-        Args:
-            number: The question's `quiz_questions.number`.
-            submitted_answer: The boolean the client answered.
-
-        Returns:
-            Whether the answer was correct, and the cache state of the question's
-            comma association.
+    def execute(self, request: QuizAnswerCheckRequest) -> tuple[bool, ExplanationStatus]:
+        """Grades the submitted answer and resolves the explanation status (FR-3, FR-4).
 
         Raises:
-            QuestionNotFoundError: No question carries `number` (404).
+            QuestionNotFoundError: No question carries `request.number` (404).
         """
-        stored_answer = self.questions.find_correct_answer(number)
+        stored_answer = self.questions.find_correct_answer(request.number)
         if stored_answer is None:
-            raise QuestionNotFoundError(number)
+            raise QuestionNotFoundError(request.number)
 
-        correct = evaluate_answer(stored_answer, submitted_answer)
-        return correct, self.explanation_status.resolve(number)
+        correct = evaluate_answer(stored_answer, request.submitted_answer)
+        return correct, self.explanation_status(request.number)

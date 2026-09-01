@@ -2,13 +2,14 @@
 
 from pywire import Autowired, service
 
+from commons.use_cases import UseCase
 from guidami_ai_patente.enums import ExplanationStatus
 from guidami_ai_patente.providers import LabelingStackProvider
 from guidami_ai_patente.repositories import GoldenSetReadRepository, QuizQuestionRepository
 
 
 @service
-class ExplanationStatusService:
+class ExplanationStatusService(UseCase[str, ExplanationStatus]):
     """Applies FR-4's three cases in order; the first match wins.
 
     1. A current labeling (FR-8) with supporting commas → `CACHED`, **regardless of
@@ -28,10 +29,13 @@ class ExplanationStatusService:
     golden_set: Autowired[GoldenSetReadRepository]
     questions: Autowired[QuizQuestionRepository]
 
-    def resolve(self, number: str) -> ExplanationStatus:
-        """Returns the cache state of this question's comma association (FR-4)."""
+    def execute(self, request: str) -> ExplanationStatus:
+        """Returns the cache state of a question's comma association (FR-4).
+
+        `request` is the question's number.
+        """
         epoch = self.labeling_stack.epoch
-        labeling = self.golden_set.find_current_labeling(number, epoch)
+        labeling = self.golden_set.find_current_labeling(request, epoch)
         if labeling is not None:
             return (
                 ExplanationStatus.CACHED
@@ -41,6 +45,6 @@ class ExplanationStatusService:
 
         return (
             ExplanationStatus.UNCACHED
-            if self.questions.has_embedding(number, epoch.candidate_variant)
+            if self.questions.has_embedding(request, epoch.candidate_variant)
             else ExplanationStatus.UNAVAILABLE
         )

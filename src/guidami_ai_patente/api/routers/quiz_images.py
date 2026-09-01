@@ -18,5 +18,5 @@ async def get_quiz_image(filename: str, service: Autowired[QuizImageService]) ->
     filesystem access, so an unreferenced name — including a traversal attempt — is a
     404 raised in the domain layer and rendered by the global handler (AD-24).
     """
-    image = await asyncio.to_thread(service.load, filename)
+    image = await asyncio.to_thread(service, filename)
     return Response(content=image.content, media_type=image.media_type)

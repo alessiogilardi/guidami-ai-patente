@@ -5,6 +5,7 @@ import mimetypes
 
 from pywire import Autowired, service
 
+from commons.use_cases import UseCase
 from guidami_ai_patente.exceptions import QuizImageNotFoundError
 from guidami_ai_patente.models import QuizImage
 from guidami_ai_patente.repositories import QuizImageRepository, QuizQuestionRepository
@@ -15,7 +16,7 @@ _DEFAULT_MEDIA_TYPE = "application/octet-stream"
 
 
 @service
-class QuizImageService:
+class QuizImageService(UseCase[str, QuizImage]):
     """Resolves a filename to image bytes, database first (FR-12, AD-24).
 
     The order is the security property. The name is looked up in
@@ -30,16 +31,25 @@ class QuizImageService:
     Both of the store's failures collapse into a 404. A `PermissionError` is deliberately
     not a 403: telling a caller that its traversal was *recognised* is more than it needs
     to know, and the client has already logged the attempt.
+
+    Stays a `@service`, not a `@provider` (spec 0013, FR-2, AD-1): the raw I/O already
+    lives one layer down, in `QuizQuestionRepository`/`QuizImageRepository` — this class
+    orchestrates the two (authorize, then read), applies the DB-first ordering as a real
+    business rule, and translates their low-level I/O failures into
+    `QuizImageNotFoundError`. A provider *supplies* something; this class *decides*
+    something (the authorization ordering) — that is what disqualifies it under AD-16's
+    revised, direction-of-dependency test (`.claude/rules/pywire-di.md`'s `@provider`
+    section), just as it did under the retired zero-arg-constructor one.
     """
 
     questions: Autowired[QuizQuestionRepository]
     images: Autowired[QuizImageRepository]
 
-    def load(self, filename: str) -> QuizImage:
+    def execute(self, request: str) -> QuizImage:
         """Returns the bytes of a referenced image and its media type.
 
         Args:
-            filename: The `quiz_questions.image_filename` value the client asked for.
+            request: The `quiz_questions.image_filename` value the client asked for.
 
         Returns:
             The file's content and the media type inferred from its suffix.
@@ -50,19 +60,19 @@ class QuizImageService:
                 are a 404: the client asked for an image that, as far as this API is
                 concerned, does not exist.
         """
-        if not self.questions.image_is_referenced(filename):
-            raise QuizImageNotFoundError(filename)
+        if not self.questions.image_is_referenced(request):
+            raise QuizImageNotFoundError(request)
 
         try:
-            content = self.images.read(filename)
+            content = self.images.read(request)
         except (FileNotFoundError, PermissionError) as error:
             logger.warning(
                 "Question references %r but the image store cannot serve it: %s",
-                filename,
+                request,
                 error,
             )
-            raise QuizImageNotFoundError(filename) from error
+            raise QuizImageNotFoundError(request) from error
 
-        media_type, _ = mimetypes.guess_type(filename)
-        logger.debug("Serving quiz image %r as %s (%d bytes)", filename, media_type, len(content))
+        media_type, _ = mimetypes.guess_type(request)
+        logger.debug("Serving quiz image %r as %s (%d bytes)", request, media_type, len(content))
         return QuizImage(content=content, media_type=media_type or _DEFAULT_MEDIA_TYPE)

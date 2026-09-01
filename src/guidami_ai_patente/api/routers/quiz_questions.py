@@ -6,6 +6,7 @@ from fastapi import APIRouter, Query
 from pywire import Autowired
 
 from guidami_ai_patente.mappers import QuizQuestionMapper
+from guidami_ai_patente.models import QuizAnswerCheckRequest
 from guidami_ai_patente.services import QuizAnswerChecker, QuizProposalService
 
 from ..schemas.quiz_check import QuizCheckRequest, QuizCheckResponse
@@ -58,5 +59,7 @@ async def check_answer(
     number: str, request: QuizCheckRequest, checker: Autowired[QuizAnswerChecker]
 ) -> QuizCheckResponse:
     """Grades the submitted answer and advertises the explanation status (FR-3, FR-4)."""
-    correct, explanation_status = await asyncio.to_thread(checker.check, number, request.answer)
+    correct, explanation_status = await asyncio.to_thread(
+        checker, QuizAnswerCheckRequest(number=number, submitted_answer=request.answer)
+    )
     return QuizCheckResponse(correct=correct, explanation_status=explanation_status)
