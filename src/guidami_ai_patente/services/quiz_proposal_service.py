@@ -16,6 +16,9 @@ class QuizProposalService:
     decision the repository deliberately leaves to the caller, plus a pass-through
     for the topics listing so the router depends on one service rather than reaching
     into the repository directly.
+
+    Deliberately not a `UseCase` (spec 0013, FR-4): it exposes three independent
+    public operations (`propose`, `fetch`, `topics`), and `UseCase` has exactly one.
     """
 
     questions: Autowired[QuizQuestionRepository]

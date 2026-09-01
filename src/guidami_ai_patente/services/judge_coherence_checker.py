@@ -24,6 +24,9 @@ class JudgeCoherenceChecker:
     a failing check (database not up yet) must never keep the app from starting. This
     is the one place the module swallows an exception, and it says so in a warning
     rather than passing silently.
+
+    Deliberately not a `UseCase` (spec 0013, FR-4): `check` is void — a side-effecting
+    startup diagnostic with no meaningful `T_Out` to type.
     """
 
     labeling_stack: Autowired[LabelingStackProvider]

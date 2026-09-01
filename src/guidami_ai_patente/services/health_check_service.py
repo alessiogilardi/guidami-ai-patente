@@ -9,7 +9,12 @@ from guidami_ai_patente.repositories.dependency_version_repository import (
 
 @service
 class HealthCheckService:
-    """Reports service liveness and the resolved runtime dependency versions."""
+    """Reports service liveness and the resolved runtime dependency versions.
+
+    Deliberately not a `UseCase` (spec 0013, FR-4): it exposes two independent,
+    argument-less public operations (`check`, `pywire_version`), and forcing a
+    no-op request DTO on either would add ceremony for no behavioral benefit.
+    """
 
     repository: Autowired[DependencyVersionRepository]
 
