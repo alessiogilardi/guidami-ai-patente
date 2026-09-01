@@ -3,10 +3,7 @@
 from psycopg import sql
 from pywire import Autowired, repository
 
-# Direct file import (not the `guidami_ai_patente.clients` package re-export): avoids a
-# clients<->repositories package-init circular import, since `clients/__init__` imports
-# `AgentConfigRepository` from this package.
-from guidami_ai_patente.clients.postgres_client_provider import PostgresClientProvider
+from guidami_ai_patente.clients import PostgresClientProvider
 from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente.models import QuizQuestionSummary, TopicCount
 

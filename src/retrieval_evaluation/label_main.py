@@ -89,7 +89,7 @@ def main() -> None:
     logging.getLogger().addHandler(file_handler)
 
     # D7/D14: `GoldenSetLabelingService._label_one` makes its Postgres-touching calls
-    # (candidate_set_service.build, write_repository.insert_labeling) synchronously on
+    # (candidate_set_service(row), write_repository.insert_labeling) synchronously on
     # the event-loop thread — only the `await self._call_agent(...)` LLM call is
     # concurrent. So the actual peak simultaneous connection-borrow today is 2 (the
     # event loop plus QueuedLlmCallTracker's background daemon thread), not

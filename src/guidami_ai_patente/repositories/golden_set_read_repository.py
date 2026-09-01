@@ -3,12 +3,7 @@
 from psycopg import sql
 from pywire import Autowired, repository
 
-# Direct file import (not the `guidami_ai_patente.clients` package re-export): avoids a
-# clients<->repositories package-init circular import, same as quiz_question_repository.py
-# (Task 6). `postgres_client_provider.py` is a leaf with no back-dependency, so importing
-# its submodule directly succeeds regardless of which package -- this one or `clients` --
-# gets imported first.
-from guidami_ai_patente.clients.postgres_client_provider import PostgresClientProvider
+from guidami_ai_patente.clients import PostgresClientProvider
 from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente.models import CurrentLabeling
 from labeling.models import LabelingEpoch
