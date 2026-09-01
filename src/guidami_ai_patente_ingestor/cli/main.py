@@ -8,6 +8,7 @@ from typing import cast
 
 from rich.console import Console
 
+from commons.ai.observability import ObservabilityConfig
 from commons.observability import NullProgressReporter, ProgressReporter
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 
@@ -81,6 +82,7 @@ def main() -> None:
     """Loads config, builds the parser, configures logging, and dispatches to the command."""
     config_override, remaining_argv = _parse_config_override()
     config = IngestorConfig.load(config_override)
+    observability_config = ObservabilityConfig.load()
     layer_resolver = wiring.build_layer_resolver(config)
 
     parser = build_parser(config)
@@ -107,6 +109,7 @@ def main() -> None:
                 manifest = cast(PrepareManifest, writer.manifest) if writer is not None else None
                 prepare.run_prepare(
                     config,
+                    observability_config,
                     layer_resolver,
                     open_router_provider,
                     args,

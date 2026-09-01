@@ -287,14 +287,21 @@ deferred with the hybrid-search work).
 
 `llm_call_logs` is populated by every tracked `BaseAgent` call — see
 `docs/second-brain/patterns.md` (observability rows), `docs/second-brain/architecture.md` (prepare-path
-wiring), and `docs/second-brain/adr/0004-openrouter-native-cost-tracking.md` for the
-mechanism; this section documents only what each column holds. Column
+wiring), `docs/second-brain/adr/0004-openrouter-native-cost-tracking.md` for the cost
+mechanism, and `docs/second-brain/adr/0020-context-manager-tracker-port.md` for the
+tracker port shape. Its row entity, `LlmCallLogEntity`, lives at
+`src/commons/ai/observability/entities/llm_call_log.py` (moved out of the now-removed
+`domain/entities/observability/`). The table name itself is no longer hardcoded:
+`ObservabilityConfig.table` (default `"llm_call_logs"`, `src/commons/ai/observability/configs/`)
+is passed into `PostgresLlmCallLogRepository`'s constructor — this section documents the
+default schema, not a fixed one. Column
 semantics worth noting: `start_time`/`end_time` are wall-clock
 `datetime.now(UTC)` stamps, whereas `latency_ms` is measured separately with the
 monotonic `time.perf_counter()`, so it is not guaranteed to equal
 `end_time - start_time` under clock adjustments. `cost_usd` is OpenRouter's own
-reported cost, summed synchronously in `PydanticAILlmCallCapture.record()` across
-every `ModelResponse` in the call (no litellm pricing lookup, no deferred
+reported cost, summed synchronously in `PydanticAILlmCallRecorder.record()` (via
+the module-level `_call_cost()` helper, `adapters/pydantic_ai_llm_call_recorder.py`)
+across every `ModelResponse` in the call (no litellm pricing lookup, no deferred
 computation); it stays `NULL` when OpenRouter omits a cost. Failures are
 first-class: `status`/`error_message` are always populated, while `response` and
 the token/cost/latency/timestamp columns are nullable so a failed call is still
@@ -469,3 +476,16 @@ row.*
 plan Task 11); recorded that `ingest reset quiz` is known broken for the identical FK
 reason `reset knowledge` was, deliberately deferred rather than fixed in this plan
 (spec 0012, AD-28 — the AD's own fix covered only the `knowledge` branch).*
+
+*Last updated: 2026-08-28 — verified against commit `ab1b8f82`; the `llm_call_logs`
+paragraph now points at `LlmCallLogEntity`'s new location
+(`commons/ai/observability/entities/llm_call_log.py`, moved out of the removed
+`domain/entities/observability/`) and notes the table name is configurable via
+`ObservabilityConfig.table` (default unchanged, `"llm_call_logs"`) rather than
+hardcoded — see `adr/0020-context-manager-tracker-port.md`.*
+
+*Last updated: 2026-08-28 — verified against commit `ee22bcdf`; fixed an internal
+inconsistency left by the previous edit in this same paragraph — the `cost_usd`
+sentence still named the deleted `PydanticAILlmCallCapture.record()`; corrected to
+`PydanticAILlmCallRecorder.record()` (which delegates to the module-level
+`_call_cost()` helper in `adapters/pydantic_ai_llm_call_recorder.py`).*

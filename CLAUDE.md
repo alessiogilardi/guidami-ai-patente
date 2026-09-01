@@ -148,9 +148,23 @@ Before starting any implementation task, read the reference documents:
 
 - **Design specs** (feature contracts, "what to build"): `docs/superpowers/specs/` — written by the `superpowers:brainstorming` skill's architectural path
 - **Implementation plans** (not-yet-implemented work, "how it gets built task-by-task"): `docs/superpowers/plans/` — written by the `superpowers:writing-plans` skill; gitignored, pruned once implemented
-- **Implemented architecture, patterns, database, layout, testing, glossary**: the Second Brain under `docs/second-brain/` — start at `docs/second-brain/README.md`, which routes to `architecture.md`, `database.md`, `patterns.md`, `glossary.md`, `layout.md`, `testing.md`, and `adr/`.
+- **Implemented architecture, patterns, database, layout, testing, glossary**: the Second Brain under `docs/second-brain/` — governed by the Second Brain plugin; see the "Skill: Second Brain" block below for how to read and update it. The former `doc-reader`/`doc-architect` agents are decommissioned; the Second Brain plugin's agent/skills replace them.
 
-Reading and updating these files is governed by the `update-second-brain` skill (see the "Skill: Second Brain" block below) — read the relevant `docs/second-brain/*.md` file directly rather than invoking an agent, and run the skill after any change described in its triggers. The former `doc-reader`/`doc-architect` agents are decommissioned; the Second Brain plugin's skills replace them.
+### Complex tasks — brainstorming, then grilling
+
+When a task's horizon is complex (architectural, multi-step, or ambiguous scope), run
+`superpowers:brainstorming` first. Only once that preliminary discussion has produced a
+first-pass shared understanding, hand off to `mattpocock-skills:grilling` to stress-test
+it before writing a spec or plan — grilling sharpens a plan, it does not replace the
+discussion that produces one.
+
+For this project, override grilling's default batching: ask one question at a time, not
+the whole frontier as a list. Each question is multiple-choice, with the recommended
+option marked, and you wait for the user's answer before asking the next.
+
+Put every question to the user — brainstorming's and grilling's alike — through the
+`AskUserQuestion` tool rather than as plain chat text, so each renders as an actual
+multiple-choice prompt with the recommended option first.
 
 ## Code Conventions
 
@@ -202,9 +216,10 @@ Run `skill: "second-brain:update"` after:
 
 ### Strict Commit Rule
 Commits touching code **MUST** stage an update to `docs/second-brain/` **or
-this file**. Documentation of yours living elsewhere under `docs/` does not
-count — that directory is yours, `docs/second-brain/` is the Second Brain.
-If rejected: 1. Run skill -> 2. Stage docs -> 3. Retry. Never use dummy updates.
+this file**. (If the project sets `SB_GATE=push` in `.second-brain.conf`, the
+requirement applies to the branch rather than to each commit — the pre-push
+hook checks the whole branch diff.) If rejected: 1. Run skill -> 2. Stage docs
+-> 3. Retry. Never use dummy updates.
 **Never hand-edit `docs/second-brain/*.md` to satisfy the pre-commit check.**
 The check is syntactic only — it just confirms *some* file under
 `docs/second-brain/` changed, it cannot tell whether the change is real.

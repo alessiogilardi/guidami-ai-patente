@@ -10,7 +10,7 @@ from pathlib import Path
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig
-from commons.ai.observability import LlmCallLogRepository, LlmCallTracker, QueuedLlmCallTracker
+from commons.ai.observability import LlmCallTracker
 from commons.clients import PostgresClient
 from commons.clients.file_system import LocalFileSystemClient
 from commons.configs import PostgresConnectionConfig
@@ -33,11 +33,6 @@ def build_open_router_provider(api_key: str) -> OpenRouterProvider:
 def build_postgres_client(config: PostgresConnectionConfig) -> PostgresClient:
     """Opens a Postgres connection. Raises `psycopg.Error` if unreachable."""
     return PostgresClient(config)
-
-
-def build_tracker(postgres_client: PostgresClient) -> QueuedLlmCallTracker:
-    """Builds the queued LLM call tracker, persisted through the given client."""
-    return QueuedLlmCallTracker(LlmCallLogRepository(postgres_client))
 
 
 def build_corpus_repository(

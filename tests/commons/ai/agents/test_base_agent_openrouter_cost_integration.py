@@ -1,10 +1,12 @@
 import os
+from collections.abc import Iterator
+from contextlib import contextmanager
 
 import pytest
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig, BaseAgent
-from domain.entities.observability import LlmCallLogEntity
+from commons.ai.observability import LlmCallLogEntity, PydanticAILlmCallRecorder, TrackedCaller
 
 
 class _ListTracker:
@@ -13,8 +15,16 @@ class _ListTracker:
     def __init__(self) -> None:
         self.logs: list[LlmCallLogEntity] = []
 
-    def track(self, log: LlmCallLogEntity) -> None:
-        self.logs.append(log)
+    @contextmanager
+    def track(
+        self, tracked_caller: TrackedCaller, prompt: str
+    ) -> Iterator[PydanticAILlmCallRecorder]:
+        recorder = PydanticAILlmCallRecorder(tracked_caller, prompt)
+        try:
+            with recorder:
+                yield recorder
+        finally:
+            self.logs.append(recorder.log)
 
 
 class _StrAgent(BaseAgent[str, str]):

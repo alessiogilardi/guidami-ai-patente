@@ -1,4 +1,6 @@
 import logging
+from collections.abc import Iterator
+from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -14,9 +16,9 @@ from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig, BaseAgent
 from commons.ai.agents.utils.prompt_renderer import PromptRenderer
+from commons.ai.observability import LlmCallLogEntity, PydanticAILlmCallRecorder, TrackedCaller
 from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import YamlRepository
-from domain.entities.observability import LlmCallLogEntity
 
 _PROVIDER = OpenRouterProvider(api_key="test-key")
 _OLLAMA_PROVIDER = OllamaProvider(base_url="http://localhost:11434/v1")
@@ -222,8 +224,16 @@ class _ListTracker:
     def __init__(self) -> None:
         self.logs: list[LlmCallLogEntity] = []
 
-    def track(self, log: LlmCallLogEntity) -> None:
-        self.logs.append(log)
+    @contextmanager
+    def track(
+        self, tracked_caller: TrackedCaller, prompt: str
+    ) -> Iterator[PydanticAILlmCallRecorder]:
+        recorder = PydanticAILlmCallRecorder(tracked_caller, prompt)
+        try:
+            with recorder:
+                yield recorder
+        finally:
+            self.logs.append(recorder.log)
 
 
 def _respond(text: str):

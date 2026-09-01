@@ -1,3 +1,8 @@
+---
+paths:
+  - "src/guidami_ai_patente_ingestor/cli/**"
+---
+
 # CLI structure — self-contained package
 
 The `cli/` package (`src/guidami_ai_patente_ingestor/cli/`) is **self-contained**:

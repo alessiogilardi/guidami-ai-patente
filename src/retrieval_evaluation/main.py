@@ -18,6 +18,7 @@ import logging
 import random
 from pathlib import Path
 
+from commons.ai.observability import ObservabilityConfig, build_llm_call_tracker
 from commons.observability import LOG_FORMAT, RunArtifactWriter
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from labeling.wiring import (
@@ -25,7 +26,6 @@ from labeling.wiring import (
     build_open_router_provider,
     build_postgres_client,
     build_quiz_repository,
-    build_tracker,
 )
 
 from .models import RetrievalJudgeItemResult
@@ -94,6 +94,7 @@ def main() -> None:
     args = parser.parse_args()
 
     config = IngestorConfig.load()
+    observability_config = ObservabilityConfig.load()
 
     run_dir = RunArtifactWriter.build_run_dir(config.project_root / "logs", _RUN_ID_PREFIX)
     file_handler = logging.FileHandler(run_dir / "run.log")
@@ -117,7 +118,7 @@ def main() -> None:
     provider = build_open_router_provider(config.open_router_config.api_key.get_secret_value())
     with (
         build_postgres_client(postgres_config) as postgres_client,
-        build_tracker(postgres_client) as tracker,
+        build_llm_call_tracker(observability_config, postgres_client) as tracker,
     ):
         quiz_repository = build_quiz_repository(
             config.quiz_questions_table,

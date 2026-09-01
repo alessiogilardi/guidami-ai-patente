@@ -2,12 +2,14 @@
 
 import argparse
 import logging
+from contextlib import ExitStack
 
 import psycopg
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 from rich.console import Console
 
-from commons.ai.observability import LlmCallTracker
+from commons.ai.observability import LlmCallTracker, ObservabilityConfig, build_llm_call_tracker
+from commons.clients import PostgresClient
 from commons.observability import ProgressReporter
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from guidami_ai_patente_ingestor.orchestrators import (
@@ -54,7 +56,7 @@ def dispatch_prepare(
     layer_resolver: LayerResolverProvider,
     open_router_provider: OpenRouterProvider,
     args: argparse.Namespace,
-    tracker: LlmCallTracker | None,
+    tracker: LlmCallTracker,
     manifest: PrepareManifest,
     progress: ProgressReporter,
 ) -> None:
@@ -108,42 +110,25 @@ def dispatch_prepare(
 
 def run_prepare(
     config: IngestorConfig,
+    observability_config: ObservabilityConfig,
     layer_resolver: LayerResolverProvider,
     open_router_provider: OpenRouterProvider,
     args: argparse.Namespace,
     manifest: PrepareManifest | None,
     progress: ProgressReporter,
 ) -> None:
-    """Build the tracking DB client (best-effort) and dispatch the prepare subcommand.
-
-    `PostgresClient` connects eagerly and `prepare` does not otherwise need a DB, so a
-    connection/setup failure degrades gracefully: a warning is logged and the flows run
-    untracked (`tracker=None`) instead of aborting the pipeline. `psycopg.Error` (not
-    just `OperationalError`) is caught here: any failure while establishing the tracking
-    connection is an observability concern, never a reason to abort `prepare`.
-    """
+    """Opens the tracking DB best-effort and dispatches the prepare subcommand."""
     if args.dry_run:
         _render_prepare_dry_run(args)
         return
 
     assert manifest is not None
 
-    try:
-        postgres_client = wiring.build_postgres_client(config)
-    except psycopg.Error:
-        logger.warning("Postgres unavailable; prepare will run without LLM call tracking")
-        dispatch_prepare(
-            config,
-            layer_resolver,
-            open_router_provider,
-            args,
-            tracker=None,
-            manifest=manifest,
-            progress=progress,
+    with ExitStack() as stack:
+        postgres_client = _open_tracking_client(config, stack)
+        tracker = stack.enter_context(
+            build_llm_call_tracker(observability_config, postgres_client)
         )
-        return
-
-    with postgres_client, wiring.build_tracker(postgres_client) as tracker:
         dispatch_prepare(
             config,
             layer_resolver,
@@ -153,3 +138,22 @@ def run_prepare(
             manifest=manifest,
             progress=progress,
         )
+
+
+def _open_tracking_client(config: IngestorConfig, stack: ExitStack) -> PostgresClient | None:
+    """Opens the tracking DB connection, or returns `None` when Postgres is unreachable.
+
+    `PostgresClient` connects eagerly and `prepare` needs no DB of its own, so a
+    connection failure degrades to an untracked run instead of aborting the pipeline.
+    `psycopg.Error` (not just `OperationalError`) is caught: any failure while
+    establishing the tracking connection is an observability concern, never a reason to
+    abort `prepare`.
+    """
+    try:
+        client = wiring.build_postgres_client(config)
+    except psycopg.Error:
+        logger.warning("Postgres unavailable; prepare will run without LLM call tracking")
+        return None
+
+    stack.enter_context(client)
+    return client

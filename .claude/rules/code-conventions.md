@@ -278,3 +278,42 @@ of the real source package. The rule applies uniformly to all directories under 
 
 `@pytest.mark.integration` marks tests that require external services (Postgres,
 model downloads). `uv run pytest` without flags skips them automatically.
+
+## `adapters/` — stateful translation from an external library's types
+
+A package named `adapters/` (alongside `entities/`, `mappers/`, `services/`,
+`clients/`, etc.) is a legitimate package kind for a class that translates an
+**external library's own types** into this project's entities, and that needs
+**per-call state** to do it (a stopwatch, a partially-built result accumulated
+across an `__enter__`/`record`/`__exit__` lifecycle) — not a stateless,
+one-shot field-to-field copy.
+
+This is distinct from the two package kinds it sits between:
+
+- **`mappers/`** — stateless, static, one pure function per transform
+  (`from_X_to_Y`, see the "Static, verbose mapper methods" convention in
+  `docs/second-brain/patterns.md`). No instance state, no lifecycle, always a
+  plain function of its input.
+- **`clients/`** — a thin wrapper around an external **API** (network calls),
+  not around an external **library's data types**. A client's job is "make the
+  call"; an adapter's job here is "hold state across one call's lifecycle and
+  emit our own entity at the end of it".
+
+**Reference implementation**:
+`src/commons/ai/observability/adapters/pydantic_ai_llm_call_recorder.py`
+(`PydanticAILlmCallRecorder`) — one instance per LLM call, entered as a context
+manager around the call. It accumulates `pydantic_ai`'s own result/message
+types (`AgentRunResult`, `ModelResponse`) as instance state across
+`__enter__`/`record`/`__exit__`, then exposes a `log` property that builds
+`LlmCallLogEntity` directly from that state — no intermediate DTO, no separate
+mapper class. It replaced a `models/` DTO + `mappers/` object-to-object mapper
+pair that existed solely to shuttle the same fields from one shape to another
+with no real transformation to justify the extra layer.
+
+**Why not `services/`**: placing a class like this in `services/` alongside
+the package's `Protocol` ports would create an import cycle specific to this
+kind of package layout — `protocols/` needs the adapter's type (a port method
+returns it, e.g. `LlmCallTracker.track(...) -> AbstractContextManager[PydanticAILlmCallRecorder]`),
+and `services/` needs the ports from `protocols/` to implement them. A
+sibling `adapters/` package breaks the cycle: `protocols/` depends on
+`adapters/`, `services/` depends on both, and `adapters/` depends on neither.
