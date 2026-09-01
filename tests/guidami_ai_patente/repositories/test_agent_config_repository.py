@@ -4,8 +4,8 @@ import pytest
 from pywire import get_default_container
 
 from commons.ai.agents import AgentConfig
-from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente.repositories import AgentConfigRepository
+from labeling.configs import LabelingConfig
 
 
 def test_it_loads_a_prompt_by_bare_name(api_client: object) -> None:
@@ -31,11 +31,11 @@ def test_a_traversal_name_is_refused_by_the_client(api_client: object) -> None:
 
 
 def test_it_reads_from_the_configured_agents_dir(
-    app_config: AppConfig, api_client: object
+    labeling_config: LabelingConfig, api_client: object
 ) -> None:
     repository = get_default_container().resolve(AgentConfigRepository)
 
     assert repository.load("comma_labeler") == repository.load("comma_labeler"), (
         "AD-22: `agents_dir` is resolved once, here, and nowhere else in the API"
     )
-    assert (app_config.labeling.agents_dir / "comma_labeler.yaml").is_file()
+    assert (labeling_config.agents_dir / "comma_labeler.yaml").is_file()
