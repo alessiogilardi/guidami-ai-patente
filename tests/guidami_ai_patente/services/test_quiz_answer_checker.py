@@ -2,6 +2,8 @@
 
 from dataclasses import dataclass
 
+import pytest
+
 from guidami_ai_patente.enums import ExplanationStatus
 from guidami_ai_patente.exceptions import QuestionNotFoundError
 from guidami_ai_patente.models import QuizAnswerCheckRequest
@@ -76,9 +78,5 @@ def test_the_explanation_status_is_probed_with_the_requests_number() -> None:
 def test_an_unknown_number_raises_named() -> None:
     checker, _ = _checker(correct_answer=None, status=ExplanationStatus.UNAVAILABLE)
 
-    try:
+    with pytest.raises(QuestionNotFoundError, match="9999"):
         checker(QuizAnswerCheckRequest(number="9999", submitted_answer=True))
-    except QuestionNotFoundError as error:
-        assert "9999" in str(error)
-    else:
-        raise AssertionError("expected QuestionNotFoundError")

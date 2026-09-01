@@ -1,10 +1,15 @@
 """AppConfig and LabelingConfig are two independent config roots (spec 0013, FR-1)."""
 
 import hashlib
+from pathlib import Path
 
 from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente_ingestor.configs import IngestorConfig
 from labeling.configs import LabelingConfig
+
+
+def test_the_quiz_image_root_defaults_to_the_committed_directory() -> None:
+    assert AppConfig.model_fields["quiz_images_dir"].default == Path("data/quiz-images")
 
 
 def test_the_app_declares_no_labeling_field() -> None:

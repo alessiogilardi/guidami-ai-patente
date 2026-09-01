@@ -24,7 +24,7 @@ def _make_row(
     )
 
 
-def test_build_uses_all_three_configured_fields() -> None:
+def test_execute_uses_all_three_configured_fields() -> None:
     repository = MagicMock(spec=CorpusReadRepository)
     repository.extract_lexemes.return_value = ["lexeme"]
     row = _make_row(
@@ -44,7 +44,7 @@ def test_build_uses_all_three_configured_fields() -> None:
     assert "SENTINEL_IMAGE" in called_text
 
 
-def test_build_skips_a_missing_image_description() -> None:
+def test_execute_skips_a_missing_image_description() -> None:
     repository = MagicMock(spec=CorpusReadRepository)
     repository.extract_lexemes.return_value = ["lexeme"]
     row = _make_row(topic="SENTINEL_TOPIC", text="SENTINEL_TEXT", image_description=None)
@@ -61,7 +61,7 @@ def test_build_skips_a_missing_image_description() -> None:
     assert "None" not in called_text
 
 
-def test_build_quotes_each_returned_lexeme() -> None:
+def test_execute_quotes_each_returned_lexeme() -> None:
     repository = MagicMock(spec=CorpusReadRepository)
     repository.extract_lexemes.return_value = ["e-mail", "sosta"]
     service = QuestionLexemeService(lexeme_fields=(LexemeField.TEXT,), repository=repository)
@@ -71,7 +71,7 @@ def test_build_quotes_each_returned_lexeme() -> None:
     assert result == ["'e-mail'", "'sosta'"]
 
 
-def test_build_is_driven_by_the_configured_field_list() -> None:
+def test_execute_is_driven_by_the_configured_field_list() -> None:
     repository = MagicMock(spec=CorpusReadRepository)
     repository.extract_lexemes.return_value = ["lexeme"]
     row = _make_row(
