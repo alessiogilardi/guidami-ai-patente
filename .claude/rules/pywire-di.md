@@ -32,13 +32,16 @@ packages intentionally use different DI styles — do not "harmonize" one into t
   ```python
   from pywire import Autowired, service
 
-  @service
-  class QuizAnswerChecker:
-      repository: Autowired[QuizQuestionRepository]
+  from guidami_ai_patente.repositories.dependency_version_repository import (
+      DependencyVersionRepository,
+  )
 
-      def check(self, question_id: int, answer: str) -> bool:
-          question = self.repository.get(question_id)
-          return question.correct_answer == answer
+  @service
+  class HealthCheckService:
+      repository: Autowired[DependencyVersionRepository]
+
+      def check(self) -> str:
+          return "ok"
   ```
 
 - This intentionally **overrides**, within this package only, the general
@@ -58,6 +61,57 @@ packages intentionally use different DI styles — do not "harmonize" one into t
   their own `Autowired` fields are set (`Container._instrument`'s field-then-`__init__`
   ordering) — ADR 0017's Decision item 2, unaffected by ADR 0023.
 
+### `@provider` — infrastructure implementing an inner-layer contract
+
+A `@provider` is an infrastructure-layer component that implements a contract the
+inner layers (a `UseCase`, a `*Service`, the domain) rely on, in order to supply a
+technical service or access to an external resource, while those inner layers stay
+unaware of the implementation detail behind it. The defining property is the
+**direction of the dependency** — infrastructure supplies the inner layers, never the
+reverse — **not constructor arity**. An earlier, narrower framing said a provider is
+"whatever has a zero-argument `__init__` that performs I/O once"; that framing is
+retired. It happened to fit the two examples that existed at the time
+(`LabelingStackProvider`, `PostgresClientProvider`), but it was never the actual
+defining property, and a class can supply a resource regardless of how its
+constructor is shaped.
+
+**The "is this a provider" test**: does the class *decide* something (a business
+rule, a branch depending on domain state), or does it only *supply* something (a
+resource, a technical capability) for another layer to decide with? A class that
+decides stays a `@service`/`UseCase` even if it also "hands back a resource" on the
+surface.
+
+**Reference counter-example** — `QuizImageService`
+(`src/guidami_ai_patente/services/quiz_image_service.py`): it enforces the FR-12
+DB-first authorization ordering (`QuizQuestionRepository.image_is_referenced` before
+`QuizImageRepository.read`) before touching the file store. That ordering is a
+business rule it decides, so it stays a `@service`, not a `@provider`, despite
+superficially "returning an image resource."
+
+**Reference examples**:
+
+- `LabelingStackProvider` (`src/guidami_ai_patente/providers/labeling_stack_provider.py`,
+  decorated `@provider`) — loads `comma_labeler.yaml` once via the autowired
+  `AgentConfigRepository` and exposes the `LabelingEpoch` derived from it; every
+  consumer (the FR-8 precedence query, the FR-14 startup check) reads the same value
+  without knowing how it was built.
+- `PostgresClientProvider` (`src/guidami_ai_patente/clients/postgres_client_provider.py`)
+  — hands the pooled `PostgresClient` to every repository that reads through it, none
+  of which knows how the pool was built, which fits the `@provider` definition
+  conceptually. It **stays** decorated `@client` and physically in `clients/`: its
+  placement there is temporary, pending `commons/` itself adopting pywire, and
+  changing its decorator without moving its file would blur the distinction rather
+  than sharpen it — the file-move is what marks a class as "the `providers/`
+  pattern," not the decorator alone.
+
+**The `@pre_destroy`/teardown shape**: `PostgresClientProvider` has a
+`@pre_destroy`-decorated `close` method, which calls `self.client.close()` and
+nothing else. This is pywire 0.6.0's bean-teardown mechanism: it is discovered
+automatically at registration time regardless of which decorator (`@client`,
+`@provider`, ...) the class carries, and run by `Container.close()` in reverse
+build order. `api/app.py::_lifespan` calls `Container.close()` from the ASGI
+shutdown path, after `yield`.
+
 ### Testing with a substitute dependency
 
 A class needing a mock/double for a unit test stays **field-only** `Autowired[T]` like
@@ -74,7 +128,8 @@ def test_check_compares_against_the_stored_answer() -> None:
     container.register_instance(FakeQuizQuestionRepository(), as_type=QuizQuestionRepository)
 
     checker = container.resolve(QuizAnswerChecker)
-    assert checker.check(1, "true") is True
+    correct, _ = checker(QuizAnswerCheckRequest(number="0001", submitted_answer=True))
+    assert correct is True
 
     container.clear_instances()
 ```

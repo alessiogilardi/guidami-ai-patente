@@ -29,6 +29,12 @@ the same time, if its own public contract is one input → one output — the tw
 conventions answer different questions ("where does this file live" vs. "what
 is its calling contract") and are not mutually exclusive.
 
+When a class's current method takes more than one scalar argument, it gets a
+request DTO for `T_In` — e.g. `QuizAnswerChecker`'s `(number, submitted_answer)`
+became `QuizAnswerCheckRequest`. A method that already takes a single argument
+keeps that argument as `T_In` directly; it gets no one-field wrapper DTO for its
+own sake.
+
 ## Invocation — always via `__call__`, never `.execute()`
 
 `UseCase.__call__`/`AsyncUseCase.__call__` (`commons/use_cases/use_case.py`) are
