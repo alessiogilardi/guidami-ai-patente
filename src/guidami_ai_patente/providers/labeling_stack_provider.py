@@ -1,6 +1,6 @@
 """Container-managed provider for the shared labeling configuration epoch."""
 
-from pywire import Autowired, client
+from pywire import Autowired, provider
 
 from commons.ai.agents import AgentConfig
 from guidami_ai_patente.repositories import AgentConfigRepository
@@ -9,7 +9,7 @@ from labeling.mappers import LabelingEpochMapper
 from labeling.models import LabelingEpoch
 
 
-@client
+@provider
 class LabelingStackProvider:
     """Loads the judge's prompt once and exposes the epoch it implies.
 

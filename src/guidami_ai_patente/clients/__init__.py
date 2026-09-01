@@ -1,11 +1,12 @@
-"""Providers for objects the container cannot build itself (spec 0012, AD-16).
+"""Thin adapters to a resource still owned by a pre-pywire package or a third party.
 
-Reserved for classes shared with the pre-pywire packages (`commons/`, `labeling/`)
-or owned by a third party. New API code is pywire-native and belongs in
-`services/`, `repositories/` or `agents/` instead.
+`PostgresClientProvider` wraps `commons.clients.PostgresClient`; its placement here is
+temporary, pending `commons/` itself adopting pywire (spec 0013, Non-Goals). New API
+code that builds a shared value the container cannot autowire directly belongs in
+`guidami_ai_patente/providers/` instead — see that package's docstring for the
+criterion (AD-16).
 """
 
-from .labeling_stack_provider import LabelingStackProvider
 from .postgres_client_provider import PostgresClientProvider
 
-__all__ = ["LabelingStackProvider", "PostgresClientProvider"]
+__all__ = ["PostgresClientProvider"]

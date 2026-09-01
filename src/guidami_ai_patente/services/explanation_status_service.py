@@ -2,8 +2,8 @@
 
 from pywire import Autowired, service
 
-from guidami_ai_patente.clients import LabelingStackProvider
 from guidami_ai_patente.enums import ExplanationStatus
+from guidami_ai_patente.providers import LabelingStackProvider
 from guidami_ai_patente.repositories import GoldenSetReadRepository, QuizQuestionRepository
 
 

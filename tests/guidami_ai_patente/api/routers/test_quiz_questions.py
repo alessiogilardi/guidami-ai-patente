@@ -9,7 +9,8 @@ from psycopg import sql
 from pywire import get_default_container
 
 from commons.clients import PostgresClient
-from guidami_ai_patente.clients import LabelingStackProvider, PostgresClientProvider
+from guidami_ai_patente.clients import PostgresClientProvider
+from guidami_ai_patente.providers import LabelingStackProvider
 from labeling.models import LabelingEpoch
 
 _TABLES = (
