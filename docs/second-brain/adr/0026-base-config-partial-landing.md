@@ -1,4 +1,4 @@
-# ADR 0021: `BaseConfig` Lands as a Partial Migration, `ObservabilityConfig` Its First Adopter
+# ADR 0026: `BaseConfig` Lands as a Partial Migration, `ObservabilityConfig` Its First Adopter
 
 ## Status
 

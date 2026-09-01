@@ -1,4 +1,4 @@
-# ADR 0020: `LlmCallTracker.track` Becomes a Context-Manager Port
+# ADR 0025: `LlmCallTracker.track` Becomes a Context-Manager Port
 
 ## Status
 
