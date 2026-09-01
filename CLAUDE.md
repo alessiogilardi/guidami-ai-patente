@@ -139,8 +139,10 @@ Copy `.env.example` to `.env` and fill in:
 
 The labeling/judge configuration epoch (`judge_model`, `prompt_version`, `candidate_variant`,
 `dense_k`, `text_k`, `lexeme_fields`) is read from a single file, `configs/labeling.yaml`, via
-`LabelingConfig` — embedded in both `IngestorConfig` and the app's `AppConfig` so the two
-roots can never independently drift (see `docs/second-brain/patterns.md` and ADR 0020).
+`LabelingConfig` — embedded in `IngestorConfig` on the batch side; the API side loads and
+registers its own independent `LabelingConfig` instance from the same file/env at `main.py`
+(spec 0013, FR-1) rather than nesting it inside `AppConfig`, so the two roots read the same
+source without either one owning the other (see `docs/second-brain/patterns.md` and ADR 0020).
 
 ## Architecture
 

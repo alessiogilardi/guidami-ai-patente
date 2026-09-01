@@ -288,7 +288,7 @@ deferred with the hybrid-search work).
 `llm_call_logs` is populated by every tracked `BaseAgent` call — see
 `docs/second-brain/patterns.md` (observability rows), `docs/second-brain/architecture.md` (prepare-path
 wiring), `docs/second-brain/adr/0004-openrouter-native-cost-tracking.md` for the cost
-mechanism, and `docs/second-brain/adr/0020-context-manager-tracker-port.md` for the
+mechanism, and `docs/second-brain/adr/0025-context-manager-tracker-port.md` for the
 tracker port shape. Its row entity, `LlmCallLogEntity`, lives at
 `src/commons/ai/observability/entities/llm_call_log.py` (moved out of the now-removed
 `domain/entities/observability/`). The table name itself is no longer hardcoded:
@@ -482,10 +482,17 @@ paragraph now points at `LlmCallLogEntity`'s new location
 (`commons/ai/observability/entities/llm_call_log.py`, moved out of the removed
 `domain/entities/observability/`) and notes the table name is configurable via
 `ObservabilityConfig.table` (default unchanged, `"llm_call_logs"`) rather than
-hardcoded — see `adr/0020-context-manager-tracker-port.md`.*
+hardcoded — see `adr/0025-context-manager-tracker-port.md`.*
 
 *Last updated: 2026-08-28 — verified against commit `ee22bcdf`; fixed an internal
 inconsistency left by the previous edit in this same paragraph — the `cost_usd`
 sentence still named the deleted `PydanticAILlmCallCapture.record()`; corrected to
 `PydanticAILlmCallRecorder.record()` (which delegates to the module-level
 `_call_cost()` helper in `adapters/pydantic_ai_llm_call_recorder.py`).*
+
+*Last updated: 2026-09-01 — verified against commit `51dcba1a`; fixed two stale
+`adr/0020-context-manager-tracker-port.md` cross-references — the `feat/backend` merge
+brought that ADR in under number 0020, colliding with this branch's own pre-existing
+ADR 0020 (`dual-agents-dir-single-sourced-by-env-var.md`); renumbered the merged-in one
+to ADR 0025 (`0020-dual-agents-dir...` keeps its original number, per the ADR-numbering
+collision rule — the later-merged one renumbers).*

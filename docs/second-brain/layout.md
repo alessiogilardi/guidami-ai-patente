@@ -48,15 +48,19 @@ repo/
 │   │                                #   (empty, pull-based) → configs/ (AppConfig); enums/ (closed
 │   │                                #   vocabularies: ExplanationStatus, InsufficientKnowledgeReason
 │   │                                #   — spec 0012, Task 5). As of
-│   │                                #   quiz-flow-api-phase2 Task 3, clients/ holds the app's
-│   │                                #   only two `@client` providers — PostgresClientProvider
-│   │                                #   (wraps commons/ PostgresClient via
-│   │                                #   labeling.wiring.build_postgres_client) and
+│   │                                #   quiz-flow-api-phase2 Task 3, clients/ held the app's
+│   │                                #   first two `@client` providers; since spec 0013 FR-2,
+│   │                                #   clients/ holds only PostgresClientProvider (wraps
+│   │                                #   commons/ PostgresClient via
+│   │                                #   labeling.wiring.build_postgres_client — its placement
+│   │                                #   here is temporary, pending commons/ adopting pywire).
+│   │                                #   New sibling package providers/ holds
 │   │                                #   LabelingStackProvider (loads comma_labeler.yaml through
 │   │                                #   AgentConfigRepository, derives the LabelingEpoch via
-│   │                                #   LabelingEpochMapper) — reserved for objects shared with
-│   │                                #   the pre-pywire commons/labeling packages (spec 0012,
-│   │                                #   AD-16); repositories/ gains AgentConfigRepository, the
+│   │                                #   LabelingEpochMapper), decorated @provider — the revised
+│   │                                #   AD-16 test is direction-of-dependency, not constructor
+│   │                                #   arity, see .claude/rules/pywire-di.md; repositories/ gains
+│   │                                #   AgentConfigRepository, the
 │   │                                #   API's only door to `agents_dir` and the agent prompt
 │   │                                #   files (AD-22), now re-exported from
 │   │                                #   repositories/__init__.py. Only concrete endpoint slice:
@@ -274,7 +278,7 @@ implemented.
   `observability/` no longer follows that template: the simplification
   that removed `mappers/`, `models/llm_call_capture_model.py`, and the
   private `services/protocols/` sink port (see `docs/second-brain/patterns.md`
-  and `adr/0020-context-manager-tracker-port.md`) replaced it with a shape
+  and `adr/0025-context-manager-tracker-port.md`) replaced it with a shape
   built around a **stateful adapter** rather than a stateless mapper.
   Today: `protocols/` (two genuine cross-package ports, both public now —
   `LlmCallTracker`, a context manager `BaseAgent` depends on, and
@@ -761,3 +765,14 @@ reconciled by hand (topics don't overlap — `domain/`+`labeling/`+`guidami_ai_p
 growth on this branch vs. the `commons/ai/observability/` restructure on `feat/backend`),
 see `architecture.md`'s matching merge entry for the code-level reconciliation
 (`retrieval_evaluation/`/`labeling/wiring.py`'s `build_tracker` removal).*
+
+*Last updated: 2026-09-01 — verified against commit `51dcba1a`; fixed a stale
+`adr/0020-context-manager-tracker-port.md` cross-reference — that ADR was renumbered to
+0025 (see `database.md`'s matching entry for why: an ADR-number collision from the
+`feat/backend` merge). Updated the `guidami_ai_patente/` tree-comment's `clients/`
+placement bullet: since spec 0013 FR-2, `clients/` holds only `PostgresClientProvider`;
+new sibling package `providers/` holds `LabelingStackProvider`, decorated `@provider`.
+Flagging for a future pass, not addressed here: this file is well past the ~200-line
+split threshold this skill's own guidance recommends (`layout.md` → `layout.md` +
+`layout/<topic>.md`) — out of scope for spec 0013, but worth doing before much more
+content accumulates.*
