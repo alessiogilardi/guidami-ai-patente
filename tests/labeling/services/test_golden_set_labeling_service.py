@@ -76,7 +76,7 @@ class _FixedCandidateSetService:
     def __init__(self, candidates: Sequence[CandidateComma]) -> None:
         self._candidates = list(candidates)
 
-    def build(self, row: QuizEvaluationRow) -> list[CandidateComma]:
+    def __call__(self, row: QuizEvaluationRow) -> list[CandidateComma]:
         return list(self._candidates)
 
 
@@ -143,7 +143,7 @@ class _TrackingCandidateSetService:
         self._candidates = list(candidates)
         self._counter = counter
 
-    def build(self, row: QuizEvaluationRow) -> list[CandidateComma]:
+    def __call__(self, row: QuizEvaluationRow) -> list[CandidateComma]:
         self._counter.inc()
         return list(self._candidates)
 
@@ -225,8 +225,8 @@ async def test_the_presentation_order_is_identical_for_the_same_seed() -> None:
         shuffle_seed=7,
     )
 
-    await service_a.label_all(run_id=1)
-    await service_b.label_all(run_id=1)
+    await service_a(1)
+    await service_b(1)
 
     assert agent_a.received_candidate_ids[0] == agent_b.received_candidate_ids[0]
 
@@ -251,8 +251,8 @@ async def test_the_presentation_order_differs_for_different_seeds() -> None:
         shuffle_seed=2,
     )
 
-    await service_a.label_all(run_id=1)
-    await service_b.label_all(run_id=1)
+    await service_a(1)
+    await service_b(1)
 
     assert agent_a.received_candidate_ids[0] != agent_b.received_candidate_ids[0]
 
@@ -267,7 +267,7 @@ async def test_an_empty_number_list_writes_a_labeling_with_no_labels() -> None:
         agent,
     )
 
-    await service.label_all(run_id=1)
+    await service(1)
 
     assert agent.call_count == 1
     assert len(write_repository.calls) == 1
@@ -288,7 +288,7 @@ async def test_an_out_of_range_number_raises_and_writes_nothing() -> None:
     )
 
     with pytest.raises(CandidateNumberOutOfRangeError):
-        await service.label_all(run_id=1)
+        await service(1)
 
     assert write_repository.calls == []
 
@@ -308,7 +308,7 @@ async def test_numbers_resolve_to_the_presented_candidates_ids() -> None:
         agent,
     )
 
-    await service.label_all(run_id=1)
+    await service(1)
 
     presented_ids = agent.received_candidate_ids[0]
     _, labels = write_repository.calls[0]
@@ -329,7 +329,7 @@ async def test_each_label_carries_the_rank_each_arm_gave_it() -> None:
         agent,
     )
 
-    await service.label_all(run_id=1)
+    await service(1)
 
     _, labels = write_repository.calls[0]
     assert [label.judge_rank for label in labels] == [1, 2, 3]
@@ -350,7 +350,7 @@ async def test_every_question_with_a_vector_is_labeled() -> None:
         _RecordingAgent(response_numbers=[]),
     )
 
-    labeled = await service.label_all(run_id=1)
+    labeled = await service(1)
 
     assert labeled == 5
     assert len(write_repository.calls) == 5
@@ -368,7 +368,7 @@ async def test_only_the_configured_number_of_questions_is_labeled_when_limited()
         question_limit=3,
     )
 
-    labeled = await service.label_all(run_id=1)
+    labeled = await service(1)
 
     assert labeled == 3
     assert len(write_repository.calls) == 3
@@ -395,8 +395,8 @@ async def test_the_limited_subset_is_the_same_for_the_same_seed() -> None:
         question_limit=3,
     )
 
-    await service_a.label_all(run_id=1)
-    await service_b.label_all(run_id=1)
+    await service_a(1)
+    await service_b(1)
 
     ids_a = {call[0].quiz_question_id for call in write_repository_a.calls}
     ids_b = {call[0].quiz_question_id for call in write_repository_b.calls}
@@ -414,7 +414,7 @@ async def test_no_limit_labels_every_question() -> None:
         question_limit=None,
     )
 
-    await service.label_all(run_id=1)
+    await service(1)
 
     assert {call[0].quiz_question_id for call in write_repository.calls} == set(range(1, 11))
 
@@ -433,7 +433,7 @@ async def test_a_transport_error_is_retried_then_succeeds() -> None:
         retry_backoff_seconds=0.0,
     )
 
-    await service.label_all(run_id=1)
+    await service(1)
 
     assert agent.call_count == 3
     assert len(write_repository.calls) == 1
@@ -452,7 +452,7 @@ async def test_a_rate_limit_is_retried_but_an_auth_error_is_not() -> None:
         transport_retries=3,
         retry_backoff_seconds=0.0,
     )
-    await retried_service.label_all(run_id=1)
+    await retried_service(1)
     assert retried_agent.call_count == 2
     assert len(write_repository_retried.calls) == 1
 
@@ -468,7 +468,7 @@ async def test_a_rate_limit_is_retried_but_an_auth_error_is_not() -> None:
     )
 
     with pytest.raises(ModelHTTPError):
-        await permanent_service.label_all(run_id=1)
+        await permanent_service(1)
 
     assert permanent_agent.call_count == 1
 
@@ -485,7 +485,7 @@ async def test_a_validation_error_is_not_retried_as_transport() -> None:
     )
 
     with pytest.raises(ValidationError):
-        await service.label_all(run_id=1)
+        await service(1)
 
     assert agent.call_count == 1
 
@@ -506,7 +506,7 @@ async def test_concurrency_never_exceeds_the_configured_bound() -> None:
         max_concurrency=3,
     )
 
-    await service.label_all(run_id=1)
+    await service(1)
 
     assert agent.max_seen <= 3
     assert counter.max_seen <= 3
@@ -523,7 +523,7 @@ async def test_only_questions_of_the_named_topic_are_labeled() -> None:
         topics=["velocità"],
     )
 
-    await service.label_all(run_id=1)
+    await service(1)
 
     assert [call[0].quiz_question_id for call in write_repository.calls] == [1]
 
@@ -543,7 +543,7 @@ async def test_repeated_topics_label_their_union() -> None:
         topics=["velocità", "precedenza"],
     )
 
-    await service.label_all(run_id=1)
+    await service(1)
 
     assert sorted(call[0].quiz_question_id for call in write_repository.calls) == [1, 3]
 
@@ -559,7 +559,7 @@ async def test_no_topic_labels_the_whole_bank() -> None:
         topics=None,
     )
 
-    labeled = await service.label_all(run_id=1)
+    labeled = await service(1)
 
     assert labeled == 2
 
@@ -588,7 +588,7 @@ async def test_the_limit_applies_to_the_filtered_set() -> None:
         question_limit=2,
     )
 
-    labeled = await service.label_all(run_id=1)
+    labeled = await service(1)
 
     assert labeled == 2
     labeled_ids = {call[0].quiz_question_id for call in write_repository.calls}

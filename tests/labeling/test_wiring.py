@@ -12,7 +12,7 @@ from labeling.services import CandidateSetService, QuestionLexemeService
 class _StubLexemeService:
     """Local stand-in for `QuestionLexemeService`, avoiding a dependency on it."""
 
-    def build(self, row: QuizEvaluationRow) -> list[str]:
+    def __call__(self, row: QuizEvaluationRow) -> list[str]:
         return ["'x'"]
 
 
@@ -63,7 +63,7 @@ def test_the_candidate_set_service_receives_both_arm_depths() -> None:
     corpus_repository.text_match_top_k.return_value = []
 
     service = wiring.build_candidate_set_service(config, corpus_repository, _StubLexemeService())
-    service.build(_make_row())
+    service(_make_row())
 
     assert isinstance(service, CandidateSetService)
     corpus_repository.dense_top_k.assert_called_once()

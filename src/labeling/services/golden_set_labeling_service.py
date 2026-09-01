@@ -7,6 +7,7 @@ import httpx
 from pydantic_ai.exceptions import ModelHTTPError
 
 from commons.repositories.db import QuizReadRepository
+from commons.use_cases import AsyncUseCase
 from domain.entities.evaluation import QuizCommaLabelEntity, QuizLabelingEntity
 from domain.models.retrieval import QuizEvaluationRow
 from labeling.agents import CommaLabelerAgent
@@ -30,14 +31,14 @@ _RETRYABLE_STATUS_CODES = frozenset({429, 500, 502, 503, 504})
 _NO_CANDIDATES_RATIONALE = "Nessun candidato recuperato per questa domanda."
 
 
-class GoldenSetLabelingService:
+class GoldenSetLabelingService(AsyncUseCase[int, int]):
     """Runs the labeling pass over every quiz question with a query vector (FR-6, FR-7, FR-10).
 
     For each question, builds the two-arm candidate union, shuffles it into a
     presentation order seeded per-question (PD-8), asks `CommaLabelerAgent` which
     candidates justify the correct answer, and writes the resulting labeling. Judge
     calls run concurrently under `asyncio.gather`, bounded by a semaphore built inside
-    `label_all` — never on `self` (a semaphore binds to the event loop of its first
+    `execute` — never on `self` (a semaphore binds to the event loop of its first
     use). The candidate set is built inside that same semaphore (PD-16), so at most
     `max_concurrency` candidate sets are ever alive at once.
 
@@ -80,14 +81,14 @@ class GoldenSetLabelingService:
         self._write_repository = write_repository
         self._agent = agent
 
-    async def label_all(self, run_id: int) -> int:
-        """Labels every question with a vector for the configured variant, under `run_id`.
+    async def execute(self, request: int) -> int:
+        """Labels every question with a vector for the configured variant.
 
-        Restricted to `self._topics` when set (FR-18), applied before
-        `self._question_limit`. Then restricted to `self._question_limit`
-        questions when set, selected by a seeded shuffle so the same limit and
-        seed always select the same subset (PD-18); unrestricted (the default)
-        labels every question (FR-10).
+        `request` is the batch/live run id. Restricted to `self._topics` when set
+        (FR-18), applied before `self._question_limit`. Then restricted to
+        `self._question_limit` questions when set, selected by a seeded shuffle so
+        the same limit and seed always select the same subset (PD-18); unrestricted
+        (the default) labels every question (FR-10).
 
         Returns:
             The number of questions labeled (before any labeling could fail).
@@ -103,14 +104,14 @@ class GoldenSetLabelingService:
             rows = shuffled[: self._question_limit]
 
         semaphore = asyncio.Semaphore(self._max_concurrency)  # bound to this run's loop
-        await asyncio.gather(*(self._label_one(row, run_id, semaphore) for row in rows))
+        await asyncio.gather(*(self._label_one(row, request, semaphore) for row in rows))
         return len(rows)
 
     async def _label_one(
         self, row: QuizEvaluationRow, run_id: int, semaphore: asyncio.Semaphore
     ) -> None:
         async with semaphore:
-            candidates = self._candidate_set_service.build(row)
+            candidates = self._candidate_set_service(row)
             if not candidates:
                 labeling_id = self._write_repository.insert_labeling(
                     QuizLabelingEntity(

@@ -1,11 +1,12 @@
 from commons.repositories.db import CorpusReadRepository
+from commons.use_cases import UseCase
 from domain.models.retrieval import QuizEvaluationRow
 from labeling.models import CandidateComma
 
 from .question_lexeme_service import QuestionLexemeService
 
 
-class CandidateSetService:
+class CandidateSetService(UseCase[QuizEvaluationRow, list[CandidateComma]]):
     """Builds the two-arm candidate union for a quiz question (FR-5, FR-9).
 
     Unions the dense and text arms' results, keyed by comma id, carrying each arm's
@@ -28,10 +29,10 @@ class CandidateSetService:
         self._corpus_repository = corpus_repository
         self._lexeme_service = lexeme_service
 
-    def build(self, row: QuizEvaluationRow) -> list[CandidateComma]:
-        """Returns every comma retrieved by either arm for `row`, each with its ranks."""
-        dense_results = self._corpus_repository.dense_top_k(row.embedding, self._dense_k)
-        lexemes = self._lexeme_service.build(row)
+    def execute(self, request: QuizEvaluationRow) -> list[CandidateComma]:
+        """Returns every comma retrieved by either arm for `request`, each with its ranks."""
+        dense_results = self._corpus_repository.dense_top_k(request.embedding, self._dense_k)
+        lexemes = self._lexeme_service(request)
         text_results = (
             self._corpus_repository.text_match_top_k(lexemes, self._text_k) if lexemes else []
         )

@@ -35,7 +35,7 @@ def test_build_uses_all_three_configured_fields() -> None:
         repository=repository,
     )
 
-    service.build(row)
+    service(row)
 
     repository.extract_lexemes.assert_called_once()
     (called_text,), _ = repository.extract_lexemes.call_args
@@ -53,7 +53,7 @@ def test_build_skips_a_missing_image_description() -> None:
         repository=repository,
     )
 
-    service.build(row)
+    service(row)
 
     (called_text,), _ = repository.extract_lexemes.call_args
     assert "SENTINEL_TOPIC" in called_text
@@ -66,7 +66,7 @@ def test_build_quotes_each_returned_lexeme() -> None:
     repository.extract_lexemes.return_value = ["e-mail", "sosta"]
     service = QuestionLexemeService(lexeme_fields=(LexemeField.TEXT,), repository=repository)
 
-    result = service.build(_make_row())
+    result = service(_make_row())
 
     assert result == ["'e-mail'", "'sosta'"]
 
@@ -79,7 +79,7 @@ def test_build_is_driven_by_the_configured_field_list() -> None:
     )
     service = QuestionLexemeService(lexeme_fields=(LexemeField.TEXT,), repository=repository)
 
-    service.build(row)
+    service(row)
 
     (called_text,), _ = repository.extract_lexemes.call_args
     assert "SENTINEL_TEXT" in called_text

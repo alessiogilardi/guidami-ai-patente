@@ -161,7 +161,7 @@ def main() -> None:
             )
         )
 
-        labeled = asyncio.run(service.label_all(run_id))
+        labeled = asyncio.run(service(run_id))
 
         with_commas, without_commas = golden_set_repository.outcome_counts(run_id)
 

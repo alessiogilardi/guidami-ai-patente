@@ -11,7 +11,7 @@ class _StubLexemeService:
     def __init__(self, lexemes: list[str]) -> None:
         self._lexemes = lexemes
 
-    def build(self, row: QuizEvaluationRow) -> list[str]:
+    def __call__(self, row: QuizEvaluationRow) -> list[str]:
         return self._lexemes
 
 
@@ -57,7 +57,7 @@ def test_union_contains_every_comma_of_both_arms_exactly_once() -> None:
         lexeme_service=_StubLexemeService(["'x'"]),
     )
 
-    candidates = service.build(_make_row())
+    candidates = service(_make_row())
 
     assert {candidate.comma.id for candidate in candidates} == {1, 2, 3, 4}
     assert len(candidates) == 4
@@ -72,7 +72,7 @@ def test_a_comma_found_by_both_arms_carries_both_ranks() -> None:
         lexeme_service=_StubLexemeService(["'x'"]),
     )
 
-    candidates = service.build(_make_row())
+    candidates = service(_make_row())
 
     both_arms = next(candidate for candidate in candidates if candidate.comma.id == 3)
     assert both_arms.dense_rank == 3
@@ -88,7 +88,7 @@ def test_a_single_arm_comma_leaves_the_other_rank_null() -> None:
         lexeme_service=_StubLexemeService(["'x'"]),
     )
 
-    candidates = service.build(_make_row())
+    candidates = service(_make_row())
     by_id = {candidate.comma.id: candidate for candidate in candidates}
 
     assert by_id[1].dense_rank == 1
@@ -106,7 +106,7 @@ def test_a_short_arm_does_not_raise() -> None:
         lexeme_service=_StubLexemeService(["'x'"]),
     )
 
-    candidates = service.build(_make_row())
+    candidates = service(_make_row())
 
     assert len(candidates) == 1
     assert candidates[0].comma.id == 1
@@ -121,7 +121,7 @@ def test_the_union_is_not_truncated_to_either_depth() -> None:
         lexeme_service=_StubLexemeService(["'x'"]),
     )
 
-    candidates = service.build(_make_row())
+    candidates = service(_make_row())
 
     assert len(candidates) == 4
 
@@ -135,7 +135,7 @@ def test_the_arm_depths_are_taken_from_configuration() -> None:
         lexeme_service=_StubLexemeService(["'x'"]),
     )
 
-    service.build(_make_row())
+    service(_make_row())
 
     corpus_repository.dense_top_k.assert_called_once()
     assert corpus_repository.dense_top_k.call_args.args[1] == 7
@@ -152,7 +152,7 @@ def test_an_empty_lexeme_list_skips_the_text_arm() -> None:
         lexeme_service=_StubLexemeService([]),
     )
 
-    candidates = service.build(_make_row())
+    candidates = service(_make_row())
 
     corpus_repository.text_match_top_k.assert_not_called()
     assert {candidate.comma.id for candidate in candidates} == {1, 2}
@@ -168,8 +168,8 @@ def test_two_builds_of_the_same_question_give_the_same_set() -> None:
     )
     row = _make_row()
 
-    first = service.build(row)
-    second = service.build(row)
+    first = service(row)
+    second = service(row)
 
     first_view = [(c.comma.id, c.dense_rank, c.text_rank) for c in first]
     second_view = [(c.comma.id, c.dense_rank, c.text_rank) for c in second]

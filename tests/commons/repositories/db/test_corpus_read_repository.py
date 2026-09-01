@@ -398,7 +398,7 @@ def test_extracted_lexemes_survive_operator_punctuation(client: PostgresClient) 
     )
     row = _make_evaluation_row('-divieto "sosta" or fermata')
 
-    lexemes = lexeme_service.build(row)
+    lexemes = lexeme_service(row)
     joined = " ".join(lexemes)
 
     assert any("divieto" in lexeme for lexeme in lexemes) or "divi" in joined
