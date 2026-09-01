@@ -42,9 +42,11 @@ This deletes ADR 0024's entire mechanism from
 `golden_set_read_repository.py`: the bare `import guidami_ai_patente.clients
 as clients` line, the quoted `Autowired["clients.LabelingStackProvider"]`
 field, and the class-body comment explaining why. `GoldenSetReadRepository`
-now imports nothing from `clients`/`providers` except the pre-existing
-direct-submodule import of `PostgresClientProvider` (a true leaf, unaffected
-by any of this).
+now imports nothing from `clients`/`providers` except `PostgresClientProvider`
+(a true leaf, unaffected by any of this) — from the `clients` package
+re-export, not a direct-submodule import: once the cycle was confirmed gone,
+the post-review fix wave simplified this off its former direct-submodule
+exception too.
 
 Verified:
 

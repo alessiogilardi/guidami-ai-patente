@@ -171,8 +171,9 @@ ADR 0024's bare-import-plus-quoted-`Autowired` mechanism is deleted from
 
 **Acceptance criteria:**
 - `repositories/` contains no import of anything from `clients/` or
-  `providers/` other than the existing direct-submodule import of
-  `PostgresClientProvider` (a true leaf — unaffected by this change).
+  `providers/` other than `PostgresClientProvider` (a true leaf — unaffected
+  by this change, and importable from the `clients` package re-export like
+  any other consumer once the cycle is gone).
 - `import guidami_ai_patente.repositories; import guidami_ai_patente.providers`
   and the reverse order both succeed in a fresh process (the empirical check
   ADR 0024 itself used).
@@ -261,15 +262,16 @@ dependency on `guidami_ai_patente`, enforced by
   collaborators are constructed (manual constructor injection, unchanged
   argument list) or wired (`labeling/wiring.py` builder functions, unchanged
   signatures) — this is what "the batch harness is untouched" means. The one
-  exception, forced by FR-4's own `__call__`-only invocation rule: `label_
-  main.py`'s two call sites change from method calls to `__call__` — `service.
-  label_all(run_id)` → `service(run_id)` and `self._candidate_set_service.
-  build(row)` / `self._lexeme_service.build(row)` (inside `GoldenSetLabelingService`
-  and `CandidateSetService` respectively) → `self._candidate_set_service(row)` /
-  `self._lexeme_service(row)`. These are one-line call-syntax updates at
-  existing call sites, not new dependencies, new construction logic, or a DI-
-  style change — the original "no changes" wording undersold this and is
-  corrected here.
+  exception, forced by FR-4's own `__call__`-only invocation rule: three
+  existing call sites change from method calls to `__call__`, one of them in
+  `label_main.py` and two internal to `labeling/services/` itself —
+  `label_main.py`'s `service.label_all(run_id)` → `service(run_id)`, and
+  (inside `GoldenSetLabelingService`/`CandidateSetService` respectively)
+  `self._candidate_set_service.build(row)` → `self._candidate_set_service(row)`
+  and `self._lexeme_service.build(row)` → `self._lexeme_service(row)`. These
+  are one-line call-syntax updates at existing call sites, not new
+  dependencies, new construction logic, or a DI-style change — the original
+  "no changes" wording undersold this and is corrected here.
 
 ## Non-Goals
 
