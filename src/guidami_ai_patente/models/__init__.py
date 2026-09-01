@@ -1,8 +1,15 @@
 """Intermediate domain models of the API (not persisted, not the wire contract)."""
 
 from .current_labeling import CurrentLabeling
+from .quiz_answer_check_request import QuizAnswerCheckRequest
 from .quiz_image import QuizImage
 from .quiz_question_summary import QuizQuestionSummary
 from .topic_count import TopicCount
 
-__all__ = ["CurrentLabeling", "QuizImage", "QuizQuestionSummary", "TopicCount"]
+__all__ = [
+    "CurrentLabeling",
+    "QuizAnswerCheckRequest",
+    "QuizImage",
+    "QuizQuestionSummary",
+    "TopicCount",
+]
