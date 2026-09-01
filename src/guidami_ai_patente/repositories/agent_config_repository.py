@@ -5,7 +5,7 @@ from pywire import Autowired, repository
 from commons.ai.agents import AgentConfig
 from commons.clients.file_system import LocalFileSystemClient
 from commons.repositories import YamlRepository
-from guidami_ai_patente.configs import AppConfig
+from labeling.configs import LabelingConfig
 
 
 @repository
@@ -26,13 +26,13 @@ class AgentConfigRepository:
     the same fail-fast intent as the variable having no default anywhere (AD-22).
     """
 
-    config: Autowired[AppConfig]
+    labeling_config: Autowired[LabelingConfig]
 
     def __init__(self) -> None:
         """Anchors a YAML repository to the configured agents directory."""
         self._repository: YamlRepository[AgentConfig] = YamlRepository(
             AgentConfig,
-            file_system_client=LocalFileSystemClient(self.config.labeling.agents_dir),
+            file_system_client=LocalFileSystemClient(self.labeling_config.agents_dir),
         )
 
     def load(self, name: str) -> AgentConfig:

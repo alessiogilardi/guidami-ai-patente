@@ -4,6 +4,8 @@ import logging
 
 import uvicorn
 
+from labeling.configs import LabelingConfig
+
 from .api.app import create_app
 from .configs import AppConfig
 
@@ -14,7 +16,8 @@ def main() -> None:
     """Boots the guidami-ai-patente API service."""
     logging.basicConfig(level=logging.INFO)
     config = AppConfig()  # pyright: ignore[reportCallIssue]
-    app = create_app(config)
+    labeling_config = LabelingConfig()  # pyright: ignore[reportCallIssue]
+    app = create_app(config, labeling_config)
     logger.info("Starting guidami-ai-patente API on %s:%d", config.host, config.port)
     uvicorn.run(app, host=config.host, port=config.port)
 

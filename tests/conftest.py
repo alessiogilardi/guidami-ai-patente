@@ -14,6 +14,7 @@ from pywire import get_default_container
 from commons.configs import PostgresConnectionConfig
 from guidami_ai_patente.api.app import create_app
 from guidami_ai_patente.configs import AppConfig
+from labeling.configs import LabelingConfig
 
 _TEST_COMPOSE_FILE = Path(__file__).parent.parent / "docker" / "docker-compose.test.yml"
 _TEST_COMPOSE_PROJECT = "guidami-ai-patente-test"
@@ -115,15 +116,26 @@ def app_config(postgres_test_config: PostgresConnectionConfig) -> AppConfig:
 
 
 @pytest.fixture(scope="session")
-def api_client(app_config: AppConfig) -> Iterator[TestClient]:
+def labeling_config() -> LabelingConfig:
+    """The one `LabelingConfig` the whole pytest session may build (spec 0013, FR-1).
+
+    Same one-instance-per-process reasoning as `app_config`: `AGENTS_DIR` is pinned by
+    the autouse `_agents_dir_environment` fixture, so this always resolves the same
+    `comma_labeler.yaml` the ingestor does (AD-22).
+    """
+    return LabelingConfig()  # pyright: ignore[reportCallIssue]
+
+
+@pytest.fixture(scope="session")
+def api_client(app_config: AppConfig, labeling_config: LabelingConfig) -> Iterator[TestClient]:
     """A `TestClient` over the single application instance of this session.
 
-    Session-scoped for the same reason `app_config` is: `create_app` registers the
-    config on the process-wide container, and a per-test app would re-register it.
+    Session-scoped for the same reason `app_config` is: `create_app` registers both
+    configs on the process-wide container, and a per-test app would re-register them.
     `TestClient` as a context manager runs the app's lifespan, so FR-14's startup
     check executes exactly as it does under uvicorn.
     """
-    with TestClient(create_app(app_config)) as client:
+    with TestClient(create_app(app_config, labeling_config)) as client:
         yield client
 
 

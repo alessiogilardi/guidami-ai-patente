@@ -2,11 +2,9 @@
 
 from pathlib import Path
 
-from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from commons.configs import PostgresConnectionConfig
-from labeling.configs import LabelingConfig
 
 
 class AppConfig(BaseSettings):
@@ -17,13 +15,11 @@ class AppConfig(BaseSettings):
     twice in one process (a second instance would be silently ignored by the
     container's singleton cache).
 
-    `labeling` is the shared `LabelingConfig`, resolved from the same
-    `configs/labeling.yaml` and `AGENTS_DIR` the ingestor reads (spec 0012, AD-27).
-    No epoch input may be declared here as a field of its own: the batch judge and
-    the live judge agree about their identity only because there is one source.
-    Pool sizing, by contrast, is deployment capacity and lives on
-    `postgres` — never on `LabelingConfig`, which would put it in the epoch key
-    (AD-26).
+    Declares no `labeling` field: `LabelingConfig` is a `BaseSettings` in its own
+    right, loaded and registered independently by `main.py` (spec 0013, FR-1). A
+    consumer that needs the shared labeling epoch declares its own
+    `labeling_config: Autowired[LabelingConfig]` rather than reading
+    `self.config.labeling`.
     """
 
     model_config = SettingsConfigDict(
@@ -45,5 +41,3 @@ class AppConfig(BaseSettings):
     labeling_runs_table: str = "labeling_runs"
     quiz_labelings_table: str = "quiz_labelings"
     quiz_comma_labels_table: str = "quiz_comma_labels"
-
-    labeling: LabelingConfig = Field(default_factory=LabelingConfig)  # pyright: ignore[reportArgumentType]

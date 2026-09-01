@@ -16,6 +16,7 @@ from guidami_ai_patente.clients import (  # noqa: F401  — imported for pywire 
 )
 from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente.services import JudgeCoherenceChecker
+from labeling.configs import LabelingConfig
 
 from .exception_handlers import register_exception_handlers
 from .routers import health, quiz_images, quiz_questions
@@ -23,21 +24,21 @@ from .routers import health, quiz_images, quiz_questions
 logger = logging.getLogger(__name__)
 
 
-def _register_config(config: AppConfig) -> None:
-    """Registers `config` as the container's single `AppConfig` instance.
+def _register_instance[T](instance: T, as_type: type[T]) -> None:
+    """Registers `instance` as the container's single `as_type` instance.
 
     pywire refuses to displace an existing registration, which is what makes the
-    "one AppConfig per process" rule mechanical rather than conventional. Rebuilding
+    "one instance per process" rule mechanical rather than conventional. Rebuilding
     the app with the *same* object (a reload, a second `create_app` in a script) is
     therefore tolerated; rebuilding it with a *different* one raises, because every
     already-resolved component would keep pointing at the first — silently, and
-    possibly at another database.
+    possibly at another database or a different judge epoch (spec 0013, FR-1).
     """
     container = get_default_container()
     try:
-        container.register_instance(config, as_type=AppConfig)
+        container.register_instance(instance, as_type=as_type)
     except RegistrationError:
-        if container.resolve(AppConfig) is not config:
+        if container.resolve(as_type) is not instance:
             raise
 
 
@@ -66,18 +67,22 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     yield
 
 
-def create_app(config: AppConfig) -> FastAPI:
+def create_app(config: AppConfig, labeling_config: LabelingConfig) -> FastAPI:
     """Builds and configures the FastAPI application instance.
 
     Args:
         config: Validated application configuration, built once at the entry point.
+        labeling_config: The shared judge/run configuration (spec 0013, FR-1), loaded
+            independently of `config` from the same `configs/labeling.yaml` the
+            ingestor reads.
 
     Returns:
         A configured FastAPI application, ready to be served.
     """
     app = FastAPI(title="guidami-ai-patente API", lifespan=_lifespan)
     app.state.config = config
-    _register_config(config)
+    _register_instance(config, AppConfig)
+    _register_instance(labeling_config, LabelingConfig)
     register_exception_handlers(app)
     wire(app)
     app.include_router(health.router)

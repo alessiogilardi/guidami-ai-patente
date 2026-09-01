@@ -3,8 +3,8 @@
 from pywire import Autowired, client
 
 from commons.ai.agents import AgentConfig
-from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente.repositories import AgentConfigRepository
+from labeling.configs import LabelingConfig
 from labeling.mappers import LabelingEpochMapper
 from labeling.models import LabelingEpoch
 
@@ -35,12 +35,12 @@ class LabelingStackProvider:
     `OpenRouterProvider` and the agents built on it.
     """
 
-    config: Autowired[AppConfig]
+    labeling_config: Autowired[LabelingConfig]
     agent_configs: Autowired[AgentConfigRepository]
 
     def __init__(self) -> None:
         """Loads `comma_labeler.yaml` and derives the configuration epoch from it."""
         self.agent_config: AgentConfig = self.agent_configs.load("comma_labeler")
         self.epoch: LabelingEpoch = LabelingEpochMapper.from_config_to_epoch(
-            self.config.labeling, self.agent_config
+            self.labeling_config, self.agent_config
         )
