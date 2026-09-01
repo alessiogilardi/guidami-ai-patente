@@ -72,8 +72,10 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
         logger.warning("Judge coherence checker could not be built; continuing", exc_info=True)
     else:
         await asyncio.to_thread(checker.check)
-    yield
-    await asyncio.to_thread(get_default_container().close)
+    try:
+        yield
+    finally:
+        await asyncio.to_thread(get_default_container().close)
 
 
 def create_app(config: AppConfig, labeling_config: LabelingConfig) -> FastAPI:
