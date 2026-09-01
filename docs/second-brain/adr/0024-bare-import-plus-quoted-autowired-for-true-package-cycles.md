@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposed
+Superseded by ADR 0027
 
 ## Context
 
