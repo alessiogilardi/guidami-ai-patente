@@ -31,6 +31,7 @@ from labeling.wiring import (
     build_golden_set_repository,
     build_open_router_provider,
     build_postgres_client,
+    build_question_labeling_service,
     build_question_lexeme_service,
     build_quiz_repository,
 )
@@ -88,16 +89,11 @@ def main() -> None:
     file_handler.setFormatter(logging.Formatter(LOG_FORMAT))
     logging.getLogger().addHandler(file_handler)
 
-    # D7/D14: `GoldenSetLabelingService._label_one` makes its Postgres-touching calls
-    # (candidate_set_service(row), write_repository.insert_labeling) synchronously on
-    # the event-loop thread — only the `await self._call_agent(...)` LLM call is
-    # concurrent. So the actual peak simultaneous connection-borrow today is 2 (the
-    # event loop plus QueuedLlmCallTracker's background daemon thread), not
-    # `concurrency`. This sizing is forward-looking headroom for a future
-    # `asyncio.to_thread`-based concurrent path (src/labeling/__init__.py already
-    # anticipates this for the API), not something the current synchronous batch
-    # harness needs today. `+ 1` budgets for the tracker's own connection borrow
-    # alongside the (currently hypothetical) fanned-out workers.
+    # D7/D14: `QuestionLabelingService` crosses `asyncio.to_thread` for its
+    # Postgres-touching calls (candidate set, labeling insert), so up to
+    # `concurrency` workers borrow a connection simultaneously — no longer the
+    # implicit serialisation of the pre-extraction code path. `+ 1` budgets for
+    # QueuedLlmCallTracker's own background borrow alongside them.
     postgres_config = config.postgres.model_copy(
         update={"pool_max_size": max(config.postgres.pool_max_size, concurrency + 1)}
     )
@@ -135,18 +131,17 @@ def main() -> None:
         candidate_set_service = build_candidate_set_service(
             labeling, corpus_repository, lexeme_service
         )
+        question_labeling_service = build_question_labeling_service(
+            labeling, seed, candidate_set_service, golden_set_repository, agent
+        )
         service = GoldenSetLabelingService(
             candidate_variant=labeling.candidate_variant,
             shuffle_seed=seed,
             max_concurrency=concurrency,
-            transport_retries=labeling.transport_retries,
-            retry_backoff_seconds=labeling.retry_backoff_seconds,
             question_limit=args.limit,
             topics=args.topic,
             quiz_repository=quiz_repository,
-            candidate_set_service=candidate_set_service,
-            write_repository=golden_set_repository,
-            agent=agent,
+            question_labeling_service=question_labeling_service,
         )
 
         epoch = LabelingEpochMapper.from_config_to_epoch(labeling, agent_config)

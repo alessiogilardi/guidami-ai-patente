@@ -20,7 +20,7 @@ from commons.repositories.db import CorpusReadRepository, QuizReadRepository
 from .agents import CommaLabelerAgent
 from .configs import LabelingConfig
 from .repositories import GoldenSetWriteRepository
-from .services import CandidateSetService, QuestionLexemeService
+from .services import CandidateSetService, QuestionLabelingService, QuestionLexemeService
 
 _COMMA_LABELER_FILE = "comma_labeler.yaml"
 
@@ -113,3 +113,25 @@ def build_candidate_set_service(
 ) -> CandidateSetService:
     """Builds the two-arm candidate union service at the configured arm depths."""
     return CandidateSetService(config.dense_k, config.text_k, corpus_repository, lexeme_service)
+
+
+def build_question_labeling_service(
+    config: LabelingConfig,
+    shuffle_seed: int,
+    candidate_set_service: CandidateSetService,
+    write_repository: GoldenSetWriteRepository,
+    agent: CommaLabelerAgent,
+) -> QuestionLabelingService:
+    """Builds the shared per-question labeling unit.
+
+    `shuffle_seed` is passed explicitly rather than read off `config`: the batch lets
+    `--seed` override it, while the API always uses the configured value.
+    """
+    return QuestionLabelingService(
+        shuffle_seed,
+        config.transport_retries,
+        config.retry_backoff_seconds,
+        candidate_set_service,
+        write_repository,
+        agent,
+    )
