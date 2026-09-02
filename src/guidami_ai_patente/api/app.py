@@ -18,6 +18,8 @@ from guidami_ai_patente.clients import (  # noqa: F401  — imported for pywire 
 from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente.providers import (  # noqa: F401  — imported for pywire registration
     LabelingStackProvider,
+    LlmCallTrackerProvider,
+    OpenRouterProviderComponent,
 )
 from guidami_ai_patente.services import JudgeCoherenceChecker
 from labeling.configs import LabelingConfig

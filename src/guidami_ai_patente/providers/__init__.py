@@ -20,8 +20,18 @@ pending `commons/` itself adopting pywire).
 `AgentConfig` plus the `LabelingEpoch` derived from it — is a value multiple
 consumers (the FR-8 precedence query, the FR-14 startup check) read without knowing
 how it was built, built once at first resolution rather than re-read per caller.
+
+`OpenRouterProviderComponent` and `LlmCallTrackerProvider` are the two providers plan
+3 adds: the one `OpenRouterProvider` every agent shares, and the tracker whose
+background-worker lifecycle now has a container-scoped owner (`@pre_destroy`).
 """
 
 from .labeling_stack_provider import LabelingStackProvider
+from .llm_call_tracker_provider import LlmCallTrackerProvider
+from .open_router_provider_component import OpenRouterProviderComponent
 
-__all__ = ["LabelingStackProvider"]
+__all__ = [
+    "LabelingStackProvider",
+    "LlmCallTrackerProvider",
+    "OpenRouterProviderComponent",
+]
