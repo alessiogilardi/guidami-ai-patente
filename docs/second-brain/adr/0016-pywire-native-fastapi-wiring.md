@@ -2,7 +2,11 @@
 
 ## Status
 
-Proposed
+Superseded by ADR 0028 — on Decision item 3 only. Items 1, 2 and 4 (tag-pinning
+`pywire`, the `pywire[fastapi]` extra, and proving the integration against a real
+dependency chain on `GET /health`) remain in force. `pywire.fastapi.wire()`, the
+mechanism item 3 mandates, was deprecated in pywire 0.7.0 and removed in 0.8.0;
+`pywire_lifespan` replaces it.
 
 ## Context
 

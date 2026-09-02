@@ -18,8 +18,8 @@ Two apps live side by side under `src/`:
   empty `models/`/`mappers/`, and `configs/` with a root `AppConfig`.
   Live routes now include `GET /health` — which also doubles as the
   first live proof of `pywire`'s native FastAPI wiring
-  (`pywire.fastapi.wire()`) — plus five quiz domain endpoints; see the
-  `guidami_ai_patente/` row below.
+  (`pywire.fastapi.pywire_lifespan`, ADR 0028) — plus five quiz domain
+  endpoints; see the `guidami_ai_patente/` row below.
 
 Two shared foundation packages support both apps (and are meant to keep
 doing so once the FastAPI app starts):
@@ -1187,3 +1187,22 @@ a known gap surfaced in conversation on the `commons/clients/postgres_client.py`
 `PostgresClient` has no async variant, so `guidami_ai_patente/` relies on `asyncio.to_thread`
 per request (AD-25) instead. A future async `PostgresClient` is a possible enhancement, not
 a decision — no ADR was opened for it.*
+
+*Last updated: 2026-09-02 — verified against commit `8d8443e5` (working tree ahead:
+uncommitted, on `feat/quiz-flow-api-phase1`); bumped `pywire` 0.7.0 -> 0.8.0
+(`[tool.uv.sources]` tag `v0.7.0` -> `v0.8.0`). The release's **sole breaking change** is
+the removal of `pywire.fastapi.wire()`, deprecated one release earlier — `pywire.fastapi`
+now exports only `pywire_lifespan`, and `from pywire.fastapi import wire` raises
+`ImportError`. `Container`'s API is unchanged (`register`, `register_factory`,
+`register_instance`, `resolve`, `get`, `clear_instances`, `close`, `as_type=`,
+`@pre_destroy`), so no DI mechanism this repo relies on moved. No source change was needed
+beyond the pin: `api/app.py::_lifespan` had already migrated to `pywire_lifespan` in the
+previous entry, and no `wire()` call existed in `src/` or `tests/` — only a docstring in
+`api/app.py::_lifespan` still called `wire()` "deprecated" rather than removed, now
+corrected. Verified on 0.8.0: 810 tests passed, `uv run pytest -m integration` green,
+`ruff check`/`ruff format --check` clean, `pyright` 0 errors. `adr/0016` is now
+`Superseded by ADR 0028` on its Decision item 3 only (items 1, 2, 4 stand); see
+`adr/0028-pywire-lifespan-sole-fastapi-wiring-entry-point.md`, which also records the
+one real cost of the migration — a `TestClient(app)` used without `with` never runs the
+lifespan, so `Autowired[T]` routes fall back to the default container **silently**
+(`tests/conftest.py::api_client` is the reference fixture).*

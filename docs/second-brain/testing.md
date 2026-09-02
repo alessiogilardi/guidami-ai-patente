@@ -276,3 +276,17 @@ quiz-flow-api-phase2 plan Task 2); documented the session-scoped `app_config`/
 pytest session" a hard error via `create_app`'s `register_instance` call (ADR 0023),
 replacing the prior per-test `create_app(AppConfig(...))` pattern in
 `test_health.py`; noted the new `test_container_registration.py` coverage.*
+
+*Last updated: 2026-09-02 — verified against commit `8d8443e5` (working tree ahead:
+uncommitted, on `feat/quiz-flow-api-phase1`). `pywire` 0.7.0 -> 0.8.0 removed
+`pywire.fastapi.wire()`, leaving `pywire_lifespan` as the only way to bind a container
+to a FastAPI app (ADR 0028) — which makes a **testing constraint** out of what used to be
+a style choice: `TestClient(app)` binds `app.state.pywire_container` **only** when used
+as a context manager, because that is what runs the lifespan. Without the `with`, every
+`Autowired[T]` route parameter resolves against the module-level default container
+instead, silently — no error, possibly a different instance than the test set up. Any
+test exercising an endpoint must therefore go through `tests/conftest.py::api_client`
+(`with TestClient(create_app(...)) as client`, session-scoped) rather than constructing
+its own `TestClient`. `wire()` had no such hazard: it bound eagerly at call time. The
+`object.__new__` container-bypass pattern for pure-unit tests of `Autowired`-only classes
+(2026-08-26 entry above) is unaffected — it never touches the app or its lifespan.*
