@@ -6,8 +6,9 @@ including its transport retry policy) is exercised on `QuestionLabelingService` 
 limit) and the fan-out's own concurrency bound.
 """
 
+import threading
 from collections.abc import Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from domain.entities.evaluation import QuizCommaLabelEntity, QuizLabelingEntity
 from domain.models.retrieval import QuizEvaluationRow, RetrievedComma
@@ -101,15 +102,28 @@ class _RecordingAgent:
 
 @dataclass
 class _Counter:
+    """Peak-concurrency probe, incremented/decremented from `asyncio.to_thread` workers.
+
+    `candidate_set_service`/`insert_labeling` now run on worker threads (this task's
+    own `asyncio.to_thread` change), so a plain, unguarded read-modify-write would
+    race: a lost increment under-reports `max_seen` (a silent false pass on the
+    `<= max_concurrency` assertion), a lost decrement inflates `current` and can
+    over-report a later `max_seen` (a false failure). The lock makes both operations
+    atomic; it is test-only code, so a plain `threading.Lock` is enough.
+    """
+
     current: int = 0
     max_seen: int = 0
+    _lock: threading.Lock = field(default_factory=threading.Lock, repr=False, compare=False)
 
     def inc(self) -> None:
-        self.current += 1
-        self.max_seen = max(self.max_seen, self.current)
+        with self._lock:
+            self.current += 1
+            self.max_seen = max(self.max_seen, self.current)
 
     def dec(self) -> None:
-        self.current -= 1
+        with self._lock:
+            self.current -= 1
 
 
 class _TrackingCandidateSetService:
