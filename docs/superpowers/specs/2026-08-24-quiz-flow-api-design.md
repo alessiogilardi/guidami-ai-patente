@@ -1330,8 +1330,18 @@ independent value.
 - Routers contain no `try/except` and no HTTP-status logic; domain exceptions are
   mapped by a global handler registered on the app.
 - At most one `AppConfig` is constructed per pytest session, via the shared session
-  fixture — pywire's singleton cache makes any second construction silently
-  ineffective and can point the suite at the dev database.
+  fixture.
+
+  > **Errata (2026-09-02):** the stated *reason* — "pywire's singleton cache makes any
+  > second construction silently ineffective" — was true only of pywire ≤0.5.0, whose
+  > `register()` patched the registered class's `__new__`/`__init__`. Since 0.6.0
+  > *"`register()` never modifies the class it registers"*: `AppConfig(...)` is an
+  > ordinary Python call that returns a fresh, unwired object, and the container holds
+  > whatever `register_instance` was handed (ADR 0023). The constraint itself survives
+  > with a different mechanism: `register_instance` **refuses to displace an existing
+  > registration**, so a second construction is not silent — it raises
+  > `RegistrationError`, or leaves the container pointing at the first instance. Keeping
+  > one session fixture is still what stops the suite aiming at the dev database.
 - Integration tests target only the ephemeral test stack
   (`docker/docker-compose.test.yml`, port 5433), never the dev database (ADR 0011).
 - The batch labeler and the live labeler are the same `CommaLabelerAgent` instance
@@ -1567,11 +1577,13 @@ independent value.
   `CandidateSetService` expects, and its name reflects the evaluation origin. Decide
   during the AD-12 extraction whether it is renamed or kept — owner: whoever implements
   the extraction.
-- [ ] **non-blocking** — `ADR 0017` is still `Proposed` and still carries the
-  constructor-parameter testability exception that the superseded quiz-check spec's
-  AD-9 concluded does not work (pywire's patched `__new__` returns the cached singleton,
-  so a second construction's keyword is discarded). That item should be removed when
-  ADR 0017 is accepted — owner: whoever implements AD-16.
+- [x] **resolved 2026-09-02** — `ADR 0017`'s constructor-parameter testability
+  exception. The premise on both sides of that question is gone: pywire ≤0.5.0's patched
+  `__new__` (which made the exception necessary *and* made it not work) no longer exists
+  — since 0.6.0 `register()` leaves the class untouched. **ADR 0023** supersedes ADR 0017
+  on this point: field-only `Autowired[T]`, substitutes injected with
+  `register_instance(fake, as_type=...)` and isolated with `clear_instances()`. See
+  `.claude/rules/pywire-di.md`, "Testing with a substitute dependency".
 - [ ] **non-blocking** — `quiz_questions.rule_explanation` becomes orphaned at runtime
   (AD-7). Decide separately whether the ingestion still needs to produce it — owner:
   a later ingestion-scope review.
@@ -1656,3 +1668,21 @@ independent value.
   as an accepted limitation rather than left implicit (AD-8). Three open questions
   closed. `GET /health` deliberately left untouched. Material change — status stays
   `draft`, scope needs approval.
+- **2026-09-02** — Re-verified the DI decisions against the pinned `pywire`, bumped
+  `v0.7.0` → **`v0.8.0`** (suite green: 810 tests, ruff clean, pyright 0 errors). Two
+  statements in this spec were written against pywire ≤0.5.0 and had gone stale without
+  anyone noticing, because the Feasibility Evidence carries a verification date but no
+  mechanism that re-checks it after a dependency bump:
+  **(1)** the Constraints entry justifying the one-`AppConfig`-per-session fixture by
+  "pywire's singleton cache" — since 0.6.0 `register()` does not modify the registered
+  class at all, so the mechanism is `register_instance` refusing to displace an existing
+  registration, not a patched `__new__`. Errata added in place; the constraint stands.
+  **(2)** the open question about ADR 0017's constructor-parameter testability
+  exception — closed, superseded by ADR 0023.
+  **v0.8.0 itself is a single breaking change: `pywire.fastapi.wire()` is removed**
+  (`pywire_lifespan` is now the only way to configure a container on a FastAPI app).
+  It costs this spec nothing — `api/app.py` migrated to `pywire_lifespan` on 2026-09-01
+  (spec 0013, FR-6) and no `wire()` call exists anywhere in `src/` or `tests/` — but it
+  invalidates ADR 0016's Decision item 3 and three passages of
+  `.claude/rules/pywire-di.md`, both updated separately. No FR, no AD and no acceptance
+  criterion changed: **not** a material change, status unaffected.
