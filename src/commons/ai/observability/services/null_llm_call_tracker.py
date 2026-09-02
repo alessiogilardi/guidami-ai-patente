@@ -1,4 +1,4 @@
-from collections.abc import Iterator
+from collections.abc import Generator
 from contextlib import contextmanager
 
 from ..adapters import PydanticAILlmCallRecorder
@@ -15,7 +15,7 @@ class NullLlmCallTracker:
     @contextmanager
     def track(
         self, tracked_caller: TrackedCaller, prompt: str
-    ) -> Iterator[PydanticAILlmCallRecorder]:
+    ) -> Generator[PydanticAILlmCallRecorder]:
         """Measures the call and discards the resulting log."""
         with PydanticAILlmCallRecorder(tracked_caller, prompt) as recorder:
             yield recorder

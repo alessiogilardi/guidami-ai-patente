@@ -1,4 +1,4 @@
-from collections.abc import Iterator
+from collections.abc import Generator
 from contextlib import contextmanager
 
 from commons.clients import PostgresClient
@@ -13,7 +13,7 @@ from .services import NullLlmCallTracker, QueuedLlmCallTracker
 @contextmanager
 def build_llm_call_tracker(
     config: ObservabilityConfig, postgres_client: PostgresClient | None
-) -> Iterator[LlmCallTracker]:
+) -> Generator[LlmCallTracker]:
     """Yields the configured tracker, draining its worker on exit.
 
     A context manager rather than a plain factory so the worker's lifecycle stays off
