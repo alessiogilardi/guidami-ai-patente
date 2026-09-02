@@ -2,13 +2,13 @@
 
 import asyncio
 import logging
-from collections.abc import AsyncIterator
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from pywire import get_default_container
 from pywire.exceptions import RegistrationError
-from pywire.fastapi import wire
+from pywire.fastapi import pywire_lifespan
 
 from guidami_ai_patente.clients import (  # noqa: F401  — imported for pywire registration
     PostgresClientProvider,
@@ -44,14 +44,13 @@ def _register_instance[T](instance: T, as_type: type[T]) -> None:
             raise
 
 
-@asynccontextmanager
-async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
-    """Runs the startup diagnostics, then serves; closes the container on shutdown.
+async def _run_judge_coherence_check() -> None:
+    """Resolves and runs `JudgeCoherenceChecker`; never raises (FR-14).
 
-    The judge-coherence check (FR-14) swallows its own failures, so this never keeps
-    the app from starting — see `JudgeCoherenceChecker` for why that is deliberate.
-    The check is synchronous SQL, so it crosses to a worker thread like every other
-    call into the sync stack (AD-25).
+    `check()` swallows its own failures, so this never keeps the app from starting —
+    see `JudgeCoherenceChecker` for why that is deliberate. The check is synchronous
+    SQL, so it crosses to a worker thread like every other call into the sync stack
+    (AD-25).
 
     `resolve()` itself is not covered by that guard: building `JudgeCoherenceChecker`
     transitively constructs `GoldenSetReadRepository` -> `PostgresClientProvider`,
@@ -60,11 +59,10 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     that too, so resolution gets the same "diagnostic must never abort startup"
     treatment as the check's own body.
 
-    Shutdown (spec 0013, FR-6) closes the default container, which runs every
-    resolved bean's `@pre_destroy` hook — today only `PostgresClientProvider`'s pool.
-    Unlike the startup diagnostic, a shutdown teardown failure is allowed to
-    propagate and be logged by uvicorn: nothing downstream depends on the process
-    surviving it.
+    Kept as its own top-level function, rather than inlined in `_lifespan`, so a test
+    can exercise the resolve-can-also-raise guard directly without going through
+    `pywire_lifespan` — entering that would bind/close the real process-wide default
+    container, tearing down beans other tests in the same session may still hold.
     """
     try:
         checker = get_default_container().resolve(JudgeCoherenceChecker)
@@ -72,10 +70,26 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
         logger.warning("Judge coherence checker could not be built; continuing", exc_info=True)
     else:
         await asyncio.to_thread(checker.check)
-    try:
+
+
+@asynccontextmanager
+async def _lifespan(app: FastAPI) -> AsyncGenerator[None]:
+    """Binds the default container to the app, runs startup diagnostics, then serves.
+
+    `pywire_lifespan` (pywire>=0.7.0, superseding the deprecated `wire()`) is nested on
+    the outside per its documented composition pattern: it binds `app.state.
+    pywire_container` before our own startup code below runs, and its own teardown —
+    `Container.close()`, running every resolved bean's `@pre_destroy` hook, today only
+    `PostgresClientProvider`'s pool — sits in a `finally`, so it only fires after our
+    `yield` returns control, i.e. after our own shutdown, none of which we have here.
+
+    Shutdown teardown (spec 0013, FR-6) is `pywire_lifespan`'s own; a teardown failure
+    is allowed to propagate and be logged by uvicorn: nothing downstream depends on the
+    process surviving it.
+    """
+    async with pywire_lifespan(app):
+        await _run_judge_coherence_check()
         yield
-    finally:
-        await asyncio.to_thread(get_default_container().close)
 
 
 def create_app(config: AppConfig, labeling_config: LabelingConfig) -> FastAPI:
@@ -95,7 +109,6 @@ def create_app(config: AppConfig, labeling_config: LabelingConfig) -> FastAPI:
     _register_instance(config, AppConfig)
     _register_instance(labeling_config, LabelingConfig)
     register_exception_handlers(app)
-    wire(app)
     app.include_router(health.router)
     app.include_router(quiz_questions.router)
     app.include_router(quiz_images.router)
