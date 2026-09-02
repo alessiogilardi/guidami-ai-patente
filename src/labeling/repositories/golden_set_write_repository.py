@@ -4,6 +4,7 @@ from psycopg import sql
 
 from commons.clients import PostgresClient
 from domain.entities.evaluation import LabelingRunEntity, QuizCommaLabelEntity, QuizLabelingEntity
+from domain.enums import LabelingRunOrigin
 
 # Insertable columns of `labeling_runs`, in table order (see db/init.sql). `id` and
 # `created_at` are DB-generated and excluded (entities-as-insertable-projection rule).
@@ -51,6 +52,10 @@ class GoldenSetWriteRepository:
 
     The caller is responsible for the `judge_rank` values carried on `labels` — this
     repository writes them as given, with no reordering or validation of its own.
+
+    `outcome_counts` and `find_or_create_live_run` are the two `SELECT`s on this class:
+    "issues `INSERT` statements only" constrains the *write* path — no `UPDATE`, no
+    `DELETE`, no DDL is ever issued here.
     """
 
     def __init__(
@@ -80,6 +85,72 @@ class GoldenSetWriteRepository:
         params = [getattr(run, column) for column in _RUN_COLUMNS]
         params[_RUN_COLUMNS.index("lexeme_fields")] = list(run.lexeme_fields)
         rows = self._client.fetch(query, params)
+        return int(rows[0][0])
+
+    def find_or_create_live_run(self, run: LabelingRunEntity) -> int:
+        """Returns the id of the live run for `run`'s epoch, creating it if absent (FR-9).
+
+        Two statements, no application lock. The `INSERT` carries a bare
+        `ON CONFLICT DO NOTHING` — bare because `uq_labeling_runs_live_config` is a
+        *partial* index (`WHERE origin = 'live'`), which a targeted conflict clause
+        would have to restate to match — and the `SELECT` then reads whichever row
+        won. Concurrent workers therefore converge on one row without either of them
+        raising (AD-8, AD-19).
+
+        The epoch key is read off `run` itself rather than taken as a second argument:
+        the entity already carries all six columns, so there is nothing for a caller to
+        get out of step with.
+
+        Args:
+            run: The live run to insert, already carrying `origin = LIVE` and a
+                canonical (sorted) `lexeme_fields`. `corpus_commit` is `None` — a
+                running container cannot know it (AD-8).
+
+        Returns:
+            The id of the one live run for this configuration epoch.
+
+        Raises:
+            ValueError: `run.origin` is not `LIVE`. The partial index does not cover
+                batch rows, so `ON CONFLICT DO NOTHING` would never fire for one and
+                every call would append a duplicate; batch runs go through
+                `insert_run`.
+        """
+        if run.origin is not LabelingRunOrigin.LIVE:
+            raise ValueError(
+                f"find_or_create_live_run requires origin={LabelingRunOrigin.LIVE!s}, "
+                f"got {run.origin!s}; batch runs go through insert_run"
+            )
+
+        insert = sql.SQL(
+            "INSERT INTO {table} ({columns}) VALUES ({placeholders}) ON CONFLICT DO NOTHING"
+        ).format(
+            table=self._labeling_runs,
+            columns=sql.SQL(", ").join(sql.Identifier(column) for column in _RUN_COLUMNS),
+            placeholders=sql.SQL(", ").join(sql.Placeholder() for _ in _RUN_COLUMNS),
+        )
+        # Same `tuple` -> `list` adaptation `insert_run` needs: psycopg maps a tuple to a
+        # Postgres record, not to the `TEXT[]` the column actually is.
+        params = [getattr(run, column) for column in _RUN_COLUMNS]
+        params[_RUN_COLUMNS.index("lexeme_fields")] = list(run.lexeme_fields)
+        self._client.execute(insert, params)
+
+        select = sql.SQL(
+            "SELECT id FROM {table} WHERE origin = %s AND judge_model = %s "
+            "AND prompt_version = %s AND candidate_variant = %s AND dense_k = %s "
+            "AND text_k = %s AND lexeme_fields = %s"
+        ).format(table=self._labeling_runs)
+        rows = self._client.fetch(
+            select,
+            [
+                str(LabelingRunOrigin.LIVE),
+                run.judge_model,
+                run.prompt_version,
+                run.candidate_variant,
+                run.dense_k,
+                run.text_k,
+                list(run.lexeme_fields),
+            ],
+        )
         return int(rows[0][0])
 
     def insert_labeling(
