@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from commons.configs import PostgresConnectionConfig
@@ -36,6 +37,16 @@ class AppConfig(BaseSettings):
     port: int = 8000
     postgres: PostgresConnectionConfig
     quiz_images_dir: Path = Path("data/quiz-images")
+    agents_dir: Path = Field(
+        validation_alias=AliasChoices("AGENTS_DIR", "agents_dir"),
+        description=(
+            "Directory holding the agent YAML files, for the API's own agents whose "
+            "prompts enter no configuration epoch (today: explanation_writer.yaml). "
+            "Declared separately from LabelingConfig.agents_dir, which resolves the "
+            "epoch-controlled judge prompt, per ADR 0020's dual-directory shape; both "
+            "alias AGENTS_DIR and are deliberately defaultless (AD-22)."
+        ),
+    )
 
     articles_table: str = "articles"
     article_commas_table: str = "article_commas"
@@ -44,3 +55,15 @@ class AppConfig(BaseSettings):
     labeling_runs_table: str = "labeling_runs"
     quiz_labelings_table: str = "quiz_labelings"
     quiz_comma_labels_table: str = "quiz_comma_labels"
+    quiz_images_table: str = "quiz_images"
+    explanation_deadline_s: float = Field(
+        default=25.0,
+        gt=0.0,
+        description=(
+            "Wall-clock budget for one explanation request, judge and writer included "
+            "(FR-13, D10). Deployment configuration, never judge identity: it is not on "
+            "LabelingConfig and does not enter the epoch key. Enforced by "
+            "ExplanationService rather than by lowering comma_labeler.yaml's own "
+            "timeout, which the batch shares and needs longer."
+        ),
+    )

@@ -10,6 +10,8 @@ from pywire import get_default_container
 from pywire.exceptions import RegistrationError
 from pywire.fastapi import pywire_lifespan
 
+from commons.ai.observability import ObservabilityConfig
+from commons.configs import OpenRouterConfig
 from guidami_ai_patente.clients import (  # noqa: F401  — imported for pywire registration
     PostgresClientProvider,
 )
@@ -93,7 +95,13 @@ async def _lifespan(app: FastAPI) -> AsyncGenerator[None]:
         yield
 
 
-def create_app(config: AppConfig, labeling_config: LabelingConfig) -> FastAPI:
+def create_app(
+    config: AppConfig,
+    labeling_config: LabelingConfig,
+    *,
+    open_router_config: OpenRouterConfig,
+    observability_config: ObservabilityConfig,
+) -> FastAPI:
     """Builds and configures the FastAPI application instance.
 
     Args:
@@ -101,6 +109,9 @@ def create_app(config: AppConfig, labeling_config: LabelingConfig) -> FastAPI:
         labeling_config: The shared judge/run configuration (spec 0013, FR-1), loaded
             independently of `config` from the same `configs/labeling.yaml` the
             ingestor reads.
+        open_router_config: The model credentials, a root settings class of its own
+            rather than a nested field — same reasoning as `labeling_config`.
+        observability_config: LLM call tracking settings (D5), likewise a root.
 
     Returns:
         A configured FastAPI application, ready to be served.
@@ -109,6 +120,8 @@ def create_app(config: AppConfig, labeling_config: LabelingConfig) -> FastAPI:
     app.state.config = config
     _register_instance(config, AppConfig)
     _register_instance(labeling_config, LabelingConfig)
+    _register_instance(open_router_config, OpenRouterConfig)
+    _register_instance(observability_config, ObservabilityConfig)
     register_exception_handlers(app)
     app.include_router(health.router)
     app.include_router(quiz_questions.router)
