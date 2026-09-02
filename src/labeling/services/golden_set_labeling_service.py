@@ -12,6 +12,7 @@ from domain.entities.evaluation import QuizCommaLabelEntity, QuizLabelingEntity
 from domain.models.retrieval import QuizEvaluationRow
 from labeling.agents import CommaLabelerAgent
 from labeling.agents.comma_labeler.dto import CommaLabelerRequest, CommaLabelerResponse
+from labeling.constants import EMBEDDING_MODEL_COLUMN
 from labeling.exceptions import CandidateNumberOutOfRangeError
 from labeling.models import CandidateComma
 from labeling.repositories import GoldenSetWriteRepository
@@ -19,10 +20,6 @@ from labeling.repositories import GoldenSetWriteRepository
 from .candidate_set_service import CandidateSetService
 
 logger = logging.getLogger(__name__)
-
-# "embedding_3_small" is the only model column that exists today (PD-11), mirroring
-# retrieval_judge_evaluation_service.py's `_load_rows`.
-_MODEL_COLUMN = "embedding_3_small"
 
 # Retried transport-level failures only (PD-17): a network blip is recoverable, a
 # hallucinated ordinal or a permanent 4xx is not.
@@ -93,7 +90,9 @@ class GoldenSetLabelingService(AsyncUseCase[int, int]):
         Returns:
             The number of questions labeled (before any labeling could fail).
         """
-        rows = self._quiz_repository.fetch_with_vectors(self._candidate_variant, _MODEL_COLUMN)
+        rows = self._quiz_repository.fetch_with_vectors(
+            self._candidate_variant, EMBEDDING_MODEL_COLUMN
+        )
         if self._topics is not None:
             # Filters before the limit, so `--limit N --topic t` means "N questions
             # of t", not "the first N of the bank, of which some are t" (FR-18).

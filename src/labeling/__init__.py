@@ -4,3 +4,7 @@ Manual constructor injection only: no `pywire` import may appear anywhere in thi
 package (ADR 0015). Every component here is synchronous — the API calls it through
 `asyncio.to_thread` rather than an async duplicate (AD-25).
 """
+
+from .constants import EMBEDDING_MODEL_COLUMN
+
+__all__ = ["EMBEDDING_MODEL_COLUMN"]
