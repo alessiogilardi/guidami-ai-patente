@@ -96,7 +96,7 @@ class _RecordingWriteRepository:
 
 
 class _RecordingAgent:
-    """Captures, per call, the candidate ids presented in `request.candidates`."""
+    """Captures, per call, the candidate ids and image description the agent received."""
 
     def __init__(
         self, response_numbers: list[int] | None = None, rationale: str = "Motivazione."
@@ -104,12 +104,16 @@ class _RecordingAgent:
         self._response_numbers = response_numbers if response_numbers is not None else []
         self._rationale = rationale
         self.received_candidate_ids: list[list[int]] = []
+        self.received_image_descriptions: list[str | None] = []
         self.call_count = 0
 
     async def run(self, request: object) -> _FakeResponse:
         self.call_count += 1
         self.received_candidate_ids.append(
             [comma.id for comma in request.candidates]  # type: ignore[attr-defined]
+        )
+        self.received_image_descriptions.append(
+            request.image_description  # type: ignore[attr-defined]
         )
         return _FakeResponse(comma_numbers=self._response_numbers, rationale=self._rationale)
 
@@ -202,6 +206,35 @@ async def test_an_empty_number_list_writes_a_labeling_with_no_labels() -> None:
     labeling, labels = write_repository.calls[0]
     assert labels == []
     assert labeling.rationale == "Nessun candidato pertinente."
+
+
+async def test_no_candidates_writes_the_no_candidates_rationale_literal() -> None:
+    """Pins `_NO_CANDIDATES_RATIONALE` (AD-12): the epoch key cannot capture this text.
+
+    Distinct from `test_an_empty_number_list_writes_a_labeling_with_no_labels` above,
+    which drives the judge's own empty-verdict rationale — this drives the *retrieval*
+    short-circuit (`not candidates`), where the agent is never even called.
+    """
+    write_repository = _RecordingWriteRepository()
+    agent = _RecordingAgent()
+    service = _service([], agent, write_repository)
+
+    await service(QuestionLabelingRequest(row=_make_row(1), resolve_run_id=lambda: 1))
+
+    assert agent.call_count == 0
+    labeling, labels = write_repository.calls[0]
+    assert labels == []
+    assert labeling.rationale == "Nessun candidato recuperato per questa domanda."
+
+
+async def test_a_missing_image_description_falls_back_to_the_no_image_literal() -> None:
+    """Pins `_NO_IMAGE_DESCRIPTION` (AD-12): the epoch key cannot capture this text."""
+    agent = _RecordingAgent(response_numbers=[])
+    service = _service([_make_candidate(1)], agent, _RecordingWriteRepository())
+
+    await service(QuestionLabelingRequest(row=_make_row(1), resolve_run_id=lambda: 1))
+
+    assert agent.received_image_descriptions[0] == "Nessuna immagine allegata a questa domanda."
 
 
 async def test_an_out_of_range_number_raises_and_writes_nothing() -> None:
