@@ -141,11 +141,17 @@ Since `pywire>=0.3.0` (`pywire[fastapi]` extra, see `pyproject.toml`), route han
 declare their dependencies as **bare `Autowired[T]` parameters**, resolved automatically
 per request — no manual `Depends(lambda: get_default_container().get(X))` wiring.
 
-Since `pywire>=0.7.0`, the app is wired via `FastAPI(lifespan=pywire_lifespan)` (or a
-custom lifespan that nests it) — **not** the older `wire(app)` call. `wire()` still
-works and is not scheduled for removal, but it only *binds* the container; it never
-tears it down, so a bean's `@pre_destroy`/`on_close` hook never runs when the app
-stops. `pywire_lifespan` does both: bind at startup, `Container.close()` at shutdown.
+The app is wired via `FastAPI(lifespan=pywire_lifespan)` (or a custom lifespan that
+nests it). `pywire_lifespan` does two things: bind the container at startup, and call
+`Container.close()` at shutdown — which is the only thing in the FastAPI integration
+that ever fires a bean's `@pre_destroy`/`on_close` hook.
+
+**`wire(app)` no longer exists.** It was the pre-0.7.0 mechanism, deprecated in 0.7.0
+(it only *bound* the container, never tore it down) and **removed outright in
+`pywire` 0.8.0** — `from pywire.fastapi import wire` now raises `ImportError`.
+`pywire_lifespan` is the single supported entry point. If you need an app that
+deliberately does not own its container's lifetime, that is
+`pywire_lifespan(close_on_shutdown=False)`, not a resurrected `wire()`.
 
 ```python
 # api/app.py
@@ -214,12 +220,13 @@ async def get_health(service: Autowired[HealthCheckService]) -> HealthResponse:
 - **Import order still matters**: `pywire.fastapi` must be imported *before* any router
   module decorates a route with `Autowired[T]`, so the `add_api_route` patch (installed
   at `pywire.fastapi` import time) is in place first — `api/app.py` imports
-  `pywire.fastapi` before `from .routers import health` for exactly this reason. This
-  holds regardless of whether the app uses `pywire_lifespan` or the older `wire(app)`.
-- If neither `pywire_lifespan` nor `wire(app, container=...)` is configured for a given
-  `FastAPI` instance, `Autowired[T]` parameters still resolve — silently against the
-  default container — which may not have the expected component registered. Always
-  configure one of the two in `create_app`.
+  `pywire.fastapi` before `from .routers import health` for exactly this reason. The
+  patch is installed at `pywire.fastapi`'s own import time, independently of when (or
+  whether) the app's container is configured.
+- If no container is configured for a given `FastAPI` instance, `Autowired[T]`
+  parameters still resolve — silently against the default container — which may not
+  have the expected component registered. Always pass `lifespan=pywire_lifespan` in
+  `create_app`.
 - `TestClient(app)` only runs the lifespan when used as a context manager
   (`with TestClient(app) as client: ...`); without the `with`, a
   `pywire_lifespan`-configured app never binds `app.state.pywire_container`, and
