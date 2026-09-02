@@ -12,6 +12,9 @@ from pywire.fastapi import pywire_lifespan
 
 from commons.ai.observability import ObservabilityConfig
 from commons.configs import OpenRouterConfig
+from guidami_ai_patente.agents import (  # noqa: F401  — imported for pywire registration
+    ExplanationWriterAgent,
+)
 from guidami_ai_patente.clients import (  # noqa: F401  — imported for pywire registration
     PostgresClientProvider,
 )
