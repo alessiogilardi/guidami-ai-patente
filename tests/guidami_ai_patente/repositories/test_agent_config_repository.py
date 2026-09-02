@@ -39,3 +39,22 @@ def test_it_reads_from_the_configured_agents_dir(
         "AD-22: `agents_dir` is resolved once, here, and nowhere else in the API"
     )
     assert (labeling_config.agents_dir / "comma_labeler.yaml").is_file()
+
+
+def test_the_app_anchor_loads_a_non_epoch_agent(api_client: object) -> None:
+    repository = get_default_container().resolve(AgentConfigRepository)
+
+    assert repository.load("road_sign_describer").model_name != ""
+
+
+def test_the_judge_anchor_loads_the_comma_labeler(api_client: object) -> None:
+    repository = get_default_container().resolve(AgentConfigRepository)
+
+    assert repository.load_judge("comma_labeler").model_name != ""
+
+
+def test_a_name_outside_the_directory_is_refused(api_client: object) -> None:
+    repository = get_default_container().resolve(AgentConfigRepository)
+
+    with pytest.raises(PermissionError):
+        repository.load("../../.env")

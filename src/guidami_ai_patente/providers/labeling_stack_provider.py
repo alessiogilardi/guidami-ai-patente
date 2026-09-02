@@ -24,12 +24,13 @@ class LabelingStackProvider:
     unreadable `comma_labeler.yaml` a startup failure rather than a per-request one —
     the same fail-fast intent as `agents_dir` having no default (AD-22).
 
-    The prompt is loaded through `AgentConfigRepository`, the same door
-    `ExplanationWriterAgent` uses in plan 3. `labeling.wiring.build_comma_labeler_config`
-    is deliberately not called: it is a scoped YAML load and nothing more, so using it
-    would only add a second way to read the same file. What AD-12 actually requires to be
-    single-implementation is the *derivation* — `prompt_version(system, user)` and
-    `LabelingEpochMapper` — and that is exactly what this class delegates to.
+    The prompt is loaded through `AgentConfigRepository.load_judge`, the epoch-anchored
+    half of that door; `ExplanationWriterAgent` uses `load`, the non-epoch half (D4).
+    `labeling.wiring.build_comma_labeler_config` is deliberately not called: it is a
+    scoped YAML load and nothing more, so using it would only add a second way to read
+    the same file. What AD-12 actually requires to be single-implementation is the
+    *derivation* — `prompt_version(system, user)` and `LabelingEpochMapper` — and that is
+    exactly what this class delegates to.
 
     This plan needs no model client: the quiz endpoints call nothing. Plan 3 adds the
     `OpenRouterProvider` and the agents built on it.
@@ -40,7 +41,7 @@ class LabelingStackProvider:
 
     def __init__(self) -> None:
         """Loads `comma_labeler.yaml` and derives the configuration epoch from it."""
-        self.agent_config: AgentConfig = self.agent_configs.load("comma_labeler")
+        self.agent_config: AgentConfig = self.agent_configs.load_judge("comma_labeler")
         self.epoch: LabelingEpoch = LabelingEpochMapper.from_config_to_epoch(
             self.labeling_config, self.agent_config
         )
