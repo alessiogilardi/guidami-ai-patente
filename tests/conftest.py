@@ -11,7 +11,8 @@ from fastapi.testclient import TestClient
 from pydantic import SecretStr
 from pywire import get_default_container
 
-from commons.configs import PostgresConnectionConfig
+from commons.ai.observability import ObservabilityConfig
+from commons.configs import OpenRouterConfig, PostgresConnectionConfig
 from guidami_ai_patente.api.app import create_app
 from guidami_ai_patente.configs import AppConfig
 from labeling.configs import LabelingConfig
@@ -37,6 +38,23 @@ def _agents_dir_environment() -> Iterator[None]:
         del os.environ["AGENTS_DIR"]
     else:
         os.environ["AGENTS_DIR"] = previous
+
+
+@pytest.fixture(scope="session", autouse=True)
+def _open_router_environment() -> Iterator[None]:
+    """Pins a dummy `OPENROUTER_API_KEY` for the whole session.
+
+    `OpenRouterConfig.api_key` is required, and the suite must neither depend on the
+    developer's real key nor risk billing a real call: every test that reaches an agent
+    substitutes a double for it.
+    """
+    previous = os.environ.get("OPENROUTER_API_KEY")
+    os.environ["OPENROUTER_API_KEY"] = "test-key-not-a-real-credential"
+    yield
+    if previous is None:
+        del os.environ["OPENROUTER_API_KEY"]
+    else:
+        os.environ["OPENROUTER_API_KEY"] = previous
 
 
 @pytest.fixture(scope="session")
@@ -109,7 +127,7 @@ def app_config(postgres_test_config: PostgresConnectionConfig) -> AppConfig:
     (port 5433), never the dev database (ADR 0011), and at the committed image
     directory FR-12 serves from.
     """
-    return AppConfig(
+    return AppConfig(  # pyright: ignore[reportCallIssue]
         postgres=postgres_test_config,
         quiz_images_dir=Path(__file__).parent.parent / "data" / "quiz-images",
     )
@@ -127,7 +145,29 @@ def labeling_config() -> LabelingConfig:
 
 
 @pytest.fixture(scope="session")
-def api_client(app_config: AppConfig, labeling_config: LabelingConfig) -> Iterator[TestClient]:
+def open_router_config() -> OpenRouterConfig:
+    """The one `OpenRouterConfig` of the session, reading the pinned dummy key."""
+    return OpenRouterConfig()  # pyright: ignore[reportCallIssue]
+
+
+@pytest.fixture(scope="session")
+def observability_config() -> ObservabilityConfig:
+    """LLM call tracking, disabled for the suite.
+
+    `build_llm_call_tracker` falls back to `NullLlmCallTracker` when `enabled` is
+    false, so no background worker thread and no `llm_call_logs` writes happen during
+    tests. The tracker provider's own teardown is covered directly in its unit test.
+    """
+    return ObservabilityConfig(enabled=False)
+
+
+@pytest.fixture(scope="session")
+def api_client(
+    app_config: AppConfig,
+    labeling_config: LabelingConfig,
+    open_router_config: OpenRouterConfig,
+    observability_config: ObservabilityConfig,
+) -> Iterator[TestClient]:
     """A `TestClient` over the single application instance of this session.
 
     Session-scoped for the same reason `app_config` is: `create_app` registers both
@@ -135,7 +175,13 @@ def api_client(app_config: AppConfig, labeling_config: LabelingConfig) -> Iterat
     `TestClient` as a context manager runs the app's lifespan, so FR-14's startup
     check executes exactly as it does under uvicorn.
     """
-    with TestClient(create_app(app_config, labeling_config)) as client:
+    app = create_app(
+        app_config,
+        labeling_config,
+        open_router_config=open_router_config,
+        observability_config=observability_config,
+    )
+    with TestClient(app) as client:
         yield client
 
 
