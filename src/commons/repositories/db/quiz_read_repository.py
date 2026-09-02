@@ -52,20 +52,46 @@ class QuizReadRepository:
             "ORDER BY q.number"
         ).format(from_clause=self._from_clause, model_column=sql.Identifier(model_column))
         rows = self._client.fetch(query, [variant])
-        return [
-            QuizEvaluationRow(
-                id=row[0],
-                number=row[1],
-                topic=row[2],
-                text=row[3],
-                correct_answer=row[4],
-                exact_keywords=row[5],
-                image_filename=row[6],
-                image_description=row[7],
-                embedding=row[8],
-            )
-            for row in rows
-        ]
+        return [self._to_evaluation_row(row) for row in rows]
+
+    def find_with_vector(
+        self, number: str, variant: str, model_column: str
+    ) -> QuizEvaluationRow | None:
+        """Returns the one question carrying `number`, or `None` (spec 0012, FR-6).
+
+        The single-row counterpart of `fetch_with_vectors`, for the API's live labeling
+        path: same three-table join, same projection, same `IS NOT NULL` guard, one
+        extra `WHERE q.number = %s`. Sharing the join and the row mapping is the point
+        — a second implementation could read a different model column or drop the
+        `quiz_images` join and change what the judge sees under an identical epoch key.
+
+        `None` covers both "no such question" and "no vector for this variant/model":
+        FR-7 renders either as `not_indexed`, so the caller branches on the absence
+        rather than on a reason this layer would have to invent.
+        """
+        query = sql.SQL(
+            "SELECT q.id, q.number, q.topic, q.text, q.correct_answer, "
+            "q.exact_keywords, q.image_filename, i.description, e.{model_column} "
+            "FROM {from_clause} "
+            "WHERE q.number = %s AND e.variant = %s AND e.{model_column} IS NOT NULL"
+        ).format(from_clause=self._from_clause, model_column=sql.Identifier(model_column))
+        rows = self._client.fetch(query, [number, variant])
+        return self._to_evaluation_row(rows[0]) if rows else None
+
+    @staticmethod
+    def _to_evaluation_row(row: tuple) -> QuizEvaluationRow:
+        """Maps the nine-column projection both reads share."""
+        return QuizEvaluationRow(
+            id=row[0],
+            number=row[1],
+            topic=row[2],
+            text=row[3],
+            correct_answer=row[4],
+            exact_keywords=row[5],
+            image_filename=row[6],
+            image_description=row[7],
+            embedding=row[8],
+        )
 
     def available_variants(self) -> list[str]:
         """Returns the distinct `variant` values actually present, ordered alphabetically.
