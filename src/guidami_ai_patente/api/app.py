@@ -76,7 +76,8 @@ async def _run_judge_coherence_check() -> None:
 async def _lifespan(app: FastAPI) -> AsyncGenerator[None]:
     """Binds the default container to the app, runs startup diagnostics, then serves.
 
-    `pywire_lifespan` (pywire>=0.7.0, superseding the deprecated `wire()`) is nested on
+    `pywire_lifespan` is the only way to configure a container on a FastAPI app: the
+    older `wire()` was deprecated in pywire 0.7.0 and removed in 0.8.0. It is nested on
     the outside per its documented composition pattern: it binds `app.state.
     pywire_container` before our own startup code below runs, and its own teardown —
     `Container.close()`, running every resolved bean's `@pre_destroy` hook, today only
