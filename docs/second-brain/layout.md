@@ -43,9 +43,8 @@ repo/
 │   │                                #   normative corpus (CdS/CAP/Regolamento) and quiz bank
 │   ├── guidami_ai_patente/         # FastAPI quiz-bot app — serves the full quiz loop
 │   │                                #   (topics, propose/fetch a question, check an
-│   │                                #   answer, fetch its image); the RAG-backed
-│   │                                #   explanation endpoint is not implemented yet.
-│   │                                #   api/ (self-contained web
+│   │                                #   answer, fetch its image, explain the correct
+│   │                                #   answer — spec 0012 phase 3). api/ (self-contained web
 │   │                                #   layer: app.py factory, routers/, schemas/) →
 │   │                                #   services/ / repositories/ / models/ / mappers/
 │   │                                #   (empty, pull-based) → configs/ (AppConfig); enums/ (closed
@@ -57,19 +56,24 @@ repo/
 │   │                                #   commons/ PostgresClient via
 │   │                                #   labeling.wiring.build_postgres_client — its placement
 │   │                                #   here is temporary, pending commons/ adopting pywire).
-│   │                                #   New sibling package providers/ holds
-│   │                                #   LabelingStackProvider (loads comma_labeler.yaml through
+│   │                                #   New sibling package providers/ holds three
+│   │                                #   providers (spec 0012 phase 3, D3): LabelingStackProvider
+│   │                                #   (judge identity only — loads comma_labeler.yaml through
 │   │                                #   AgentConfigRepository, derives the LabelingEpoch via
-│   │                                #   LabelingEpochMapper), decorated @provider — the revised
+│   │                                #   LabelingEpochMapper), LiveLabelingStackProvider (the
+│   │                                #   live judge machinery — see adr/0029), and
+│   │                                #   OpenRouterProviderComponent + LlmCallTrackerProvider
+│   │                                #   (D5, adr/0031); all decorated @provider — the revised
 │   │                                #   AD-16 test is direction-of-dependency, not constructor
 │   │                                #   arity, see .claude/rules/pywire-di.md; repositories/ gains
 │   │                                #   AgentConfigRepository, the
 │   │                                #   API's only door to `agents_dir` and the agent prompt
 │   │                                #   files (AD-22), now re-exported from
-│   │                                #   repositories/__init__.py. Six live endpoints: GET
-│   │                                #   /health plus five quiz-domain routes (topics,
+│   │                                #   repositories/__init__.py. Seven live endpoints: GET
+│   │                                #   /health plus six quiz-domain routes (topics,
 │   │                                #   propose/fetch a question, check an answer, fetch
-│   │                                #   its image — see architecture.md for the full list).
+│   │                                #   its image, explain the correct answer — see
+│   │                                #   architecture.md for the full list).
 │   │                                #   Entry point:
 │   │                                #   `guidami_ai_patente.main:main`, registered as the
 │   │                                #   `serve` script
@@ -89,7 +93,9 @@ repo/
 │   │                                #   by `git mv`: agents/comma_labeler/ (CommaLabelerAgent +
 │   │                                #   its dto/), models/ (CandidateComma, LabelingEpoch),
 │   │                                #   services/ (CandidateSetService, GoldenSetLabelingService,
-│   │                                #   QuestionLexemeService), repositories/
+│   │                                #   QuestionLabelingService — the shared per-question unit,
+│   │                                #   spec 0012 phase 3, adr/0030 — QuestionLexemeService),
+│   │                                #   constants.py (EMBEDDING_MODEL_COLUMN), repositories/
 │   │                                #   (GoldenSetWriteRepository, insert-only), exceptions/
 │   │                                #   (CandidateNumberOutOfRangeError), utils/ (corpus_commit,
 │   │                                #   prompt_version — run provenance), configs/ (LabelingConfig,
@@ -782,3 +788,14 @@ Flagging for a future pass, not addressed here: this file is well past the ~200-
 split threshold this skill's own guidance recommends (`layout.md` → `layout.md` +
 `layout/<topic>.md`) — out of scope for spec 0013, but worth doing before much more
 content accumulates.*
+
+*Last updated: 2026-09-03 — verified against commit `e592b110` (quiz-flow-api-phase3
+plan Task 14, close-out). Corrected two stale claims: the `guidami_ai_patente/`
+tree-comment no longer says the explanation endpoint "is not implemented yet" (it is,
+spec 0012 phase 3) and the endpoint count is now seven (`GET /health` plus six
+quiz-domain routes, not five). `providers/` tree-comment now lists all three providers
+(`LabelingStackProvider`, `LiveLabelingStackProvider`, `OpenRouterProviderComponent`,
+`LlmCallTrackerProvider` — D3/D5, `adr/0029`/`adr/0031`), not just the first one.
+`labeling/`'s `services/` enumeration gained `QuestionLabelingService` (`adr/0030`) and
+a new `constants.py` (`EMBEDDING_MODEL_COLUMN`). The ~200-line split flagged in the
+previous entry is still not addressed — deferred again, same reasoning.*
