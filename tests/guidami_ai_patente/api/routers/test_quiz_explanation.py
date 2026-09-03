@@ -16,8 +16,10 @@ from guidami_ai_patente.agents.explanation_writer.dto import (
     ExplanationWriterResponse,
 )
 from guidami_ai_patente.clients import PostgresClientProvider
-from guidami_ai_patente.providers import LabelingStackProvider
+from guidami_ai_patente.providers import LabelingStackProvider, LiveLabelingStackProvider
 from guidami_ai_patente.services import ExplanationService
+from labeling import EMBEDDING_MODEL_COLUMN
+from labeling.agents.comma_labeler.dto import CommaLabelerRequest, CommaLabelerResponse
 
 _TABLES = (
     "quiz_comma_labels",
@@ -42,6 +44,20 @@ class _WriterDouble:
         return ExplanationWriterResponse(
             explanation="La sosta è vietata perché la norma lo prevede.",
             cited_comma_numbers=[1],
+        )
+
+
+@dataclass
+class _JudgeDouble:
+    """Stands in for `CommaLabelerAgent` on a genuine cache miss (composed AD-29 test)."""
+
+    ordinals: list[int]
+    calls: int = 0
+
+    async def run(self, request: CommaLabelerRequest) -> CommaLabelerResponse:
+        self.calls += 1
+        return CommaLabelerResponse(
+            comma_numbers=self.ordinals, rationale="il comma giustifica la risposta"
         )
 
 
@@ -126,6 +142,54 @@ def cached_question(api_client: TestClient) -> Iterator[PostgresClient]:
     client.truncate(*_TABLES)
 
 
+@pytest.fixture
+def live_question(api_client: TestClient) -> Iterator[PostgresClient]:
+    """One question with a query vector and no existing labeling — a genuine cache miss."""
+    client: PostgresClient = get_default_container().resolve(PostgresClientProvider).client
+    client.truncate(*_TABLES)
+
+    article_id = int(
+        client.fetch(
+            sql.SQL(
+                "INSERT INTO articles (source, number, title, url, scraped_at) "
+                "VALUES (%s, %s, %s, %s, %s) RETURNING id"
+            ),
+            [
+                "cds",
+                "157",
+                "Arresto, fermata e sosta dei veicoli",
+                "https://example.test/art-157",
+                datetime.now(UTC),
+            ],
+        )[0][0]
+    )
+    client.execute(
+        sql.SQL(
+            "INSERT INTO article_commas (article_id, comma_number, position, text, embedding) "
+            "VALUES (%s, %s, %s, %s, %s::vector)"
+        ),
+        [article_id, "3", 0, "È vietata la sosta negli spazi riservati.", [0.1] * 1536],
+    )
+    question_id = int(
+        client.fetch(
+            sql.SQL(
+                "INSERT INTO quiz_questions (number, question_id, topic, text, correct_answer) "
+                "VALUES (%s, %s, %s, %s, %s) RETURNING id"
+            ),
+            ["0001", 1, "sosta", "È vietata la sosta?", True],
+        )[0][0]
+    )
+    client.execute(
+        sql.SQL(
+            "INSERT INTO quiz_question_embeddings (quiz_question_id, variant, {column}) "
+            "VALUES (%s, %s, %s::vector)"
+        ).format(column=sql.Identifier(EMBEDDING_MODEL_COLUMN)),
+        [question_id, "topic_text", [0.1] * 1536],
+    )
+    yield client
+    client.truncate(*_TABLES)
+
+
 def _install_writer(monkeypatch: pytest.MonkeyPatch, writer: _WriterDouble) -> None:
     """Substitutes the writer on the resolved service singleton.
 
@@ -135,6 +199,18 @@ def _install_writer(monkeypatch: pytest.MonkeyPatch, writer: _WriterDouble) -> N
     """
     service = get_default_container().resolve(ExplanationService)
     monkeypatch.setattr(service, "writer", writer)
+
+
+def _install_judge(monkeypatch: pytest.MonkeyPatch, agent: _JudgeDouble) -> None:
+    """Substitutes the live judge's agent, the same substitution mechanism as the writer.
+
+    `LiveLabelingStackProvider` is built once (a container singleton), so resolving it
+    here returns the exact `QuestionLabelingService` instance `CommaSelectorService`
+    reads through its own `Autowired[LiveLabelingStackProvider]` field — patching its
+    private `_agent` reaches the object a live request actually calls.
+    """
+    provider = get_default_container().resolve(LiveLabelingStackProvider)
+    monkeypatch.setattr(provider.question_labeling, "_agent", agent)  # noqa: SLF001
 
 
 @pytest.mark.integration
@@ -237,3 +313,25 @@ def test_the_check_still_reports_cached_after_a_writer_failure(
     response = api_client.post("/quiz-questions/0001/check", json={"answer": True})
 
     assert response.json()["explanation_status"] == "cached"
+
+
+@pytest.mark.integration
+def test_a_writer_failure_after_a_live_judge_success_keeps_the_labeling_and_caches_the_retry(
+    api_client: TestClient, live_question: PostgresClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The plan's gate assertion 3, composed (AD-29, FR-13) — not two halves that never combine."""
+    judge = _JudgeDouble([1])
+    _install_judge(monkeypatch, judge)
+    _install_writer(monkeypatch, _WriterDouble(error=RuntimeError("provider is down")))
+
+    first = api_client.get("/quiz-questions/0001/explanation")
+
+    assert first.status_code == HTTPStatus.SERVICE_UNAVAILABLE
+    remaining = int(live_question.fetch(sql.SQL("SELECT count(*) FROM quiz_labelings"))[0][0])
+    assert remaining == 1, "AD-29: the writer's failure must not roll back the judge's live write"
+
+    _install_writer(monkeypatch, _WriterDouble())
+    second = api_client.get("/quiz-questions/0001/explanation")
+
+    assert second.status_code == HTTPStatus.OK
+    assert judge.calls == 1, "the retry must be a cache hit, not a second live judge run"
