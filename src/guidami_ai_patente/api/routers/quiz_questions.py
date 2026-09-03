@@ -5,11 +5,12 @@ import asyncio
 from fastapi import APIRouter, Query
 from pywire import Autowired
 
-from guidami_ai_patente.mappers import QuizQuestionMapper
-from guidami_ai_patente.models import QuizAnswerCheckRequest
-from guidami_ai_patente.services import QuizAnswerChecker, QuizProposalService
+from guidami_ai_patente.mappers import ExplanationMapper, QuizQuestionMapper
+from guidami_ai_patente.models import ExplanationRequest, QuizAnswerCheckRequest
+from guidami_ai_patente.services import ExplanationService, QuizAnswerChecker, QuizProposalService
 
 from ..schemas.quiz_check import QuizCheckRequest, QuizCheckResponse
+from ..schemas.quiz_explanation import QuizExplanationResponse
 from ..schemas.quiz_question import QuizQuestionResponse
 from ..schemas.quiz_topics import QuizTopicResponse, QuizTopicsResponse
 
@@ -63,3 +64,28 @@ async def check_answer(
         checker, QuizAnswerCheckRequest(number=number, submitted_answer=request.answer)
     )
     return QuizCheckResponse(correct=correct, explanation_status=explanation_status)
+
+
+@router.get("/{number}/explanation", response_model=QuizExplanationResponse)
+async def explain_answer(
+    number: str,
+    service: Autowired[ExplanationService],
+    submitted: bool | None = Query(
+        default=None,
+        description=(
+            "The answer the user submitted, so the explanation can address a wrong "
+            "answer directly. Omit for a neutral explanation."
+        ),
+    ),
+) -> QuizExplanationResponse:
+    """Explains why the correct answer is what it is, grounded in the corpus (FR-5, FR-11).
+
+    No `asyncio.to_thread` here: the service is genuinely async — it awaits the judge
+    and the writer, and crosses into the synchronous SQL stack itself (AD-25).
+
+    A cache miss runs retrieval plus the judge before answering, so this call can take
+    seconds; `POST /{number}/check`'s `explanation_status` is what lets a client decide
+    which affordance to offer beforehand (FR-4).
+    """
+    explanation = await service(ExplanationRequest(number=number, submitted=submitted))
+    return ExplanationMapper.from_explanation_to_response(explanation)
