@@ -5,7 +5,7 @@ from pywire import Autowired, repository
 
 from guidami_ai_patente.clients import PostgresClientProvider
 from guidami_ai_patente.configs import AppConfig
-from guidami_ai_patente.models import QuizQuestionSummary, TopicCount
+from guidami_ai_patente.models import QuestionContext, QuizQuestionSummary, TopicCount
 
 
 @repository
@@ -15,9 +15,11 @@ class QuizQuestionRepository:
     Deliberately lean and app-local rather than an extension of
     `commons.QuizReadRepository`, which is shaped for the evaluation harness (it
     inner-joins the embeddings table and returns whole `QuizEvaluationRow`s carrying
-    the correct answer and the query vector). The API needs four narrow projections
+    the correct answer and the query vector). The API needs seven narrow projections
     and none of that payload — AD-17 carried this choice forward from the superseded
-    quiz-check spec.
+    quiz-check spec. `find_question_context` is the one projection among the seven
+    that reaches beyond `quiz_questions`, `LEFT JOIN`ing `quiz_images` for the
+    explanation writer (FR-10).
 
     Synchronous by construction: psycopg is, and the routers cross the boundary with
     `asyncio.to_thread` (AD-25). Absence is returned as `None`/`False`/`[]`, never
@@ -119,6 +121,33 @@ class QuizQuestionRepository:
         )
         rows = self.postgres.client.fetch(query, [number, variant])
         return bool(rows[0][0])
+
+    def find_question_context(self, number: str) -> QuestionContext | None:
+        """Returns what the writer needs about a question, or `None` (FR-10).
+
+        One read instead of `find_by_number` plus `find_correct_answer`, and the only
+        place the API reaches `quiz_images.description`: the description is what lets
+        the writer explain a sign-recognition question whose commas state the rule in
+        the abstract. `LEFT JOIN` because most questions have no image.
+
+        `None` means no such question, which the caller renders as a 404 — the same
+        absence-not-exception convention as every other read here.
+        """
+        query = sql.SQL(
+            "SELECT q.text, q.correct_answer, i.description FROM {questions} q "
+            "LEFT JOIN {images} i ON i.filename = q.image_filename "
+            "WHERE q.number = %s"
+        ).format(
+            questions=sql.Identifier(self.config.quiz_questions_table),
+            images=sql.Identifier(self.config.quiz_images_table),
+        )
+        rows = self.postgres.client.fetch(query, [number])
+        if not rows:
+            return None
+        text, correct_answer, image_description = rows[0]
+        return QuestionContext(
+            text=text, correct_answer=bool(correct_answer), image_description=image_description
+        )
 
     @staticmethod
     def _to_summary(rows: list[tuple]) -> QuizQuestionSummary | None:

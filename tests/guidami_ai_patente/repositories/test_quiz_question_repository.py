@@ -16,6 +16,7 @@ _TABLES = (
     "labeling_runs",
     "quiz_question_embeddings",
     "quiz_questions",
+    "quiz_images",
 )
 
 _QUESTIONS = (
@@ -25,6 +26,8 @@ _QUESTIONS = (
     ("0004", 4, "velocità", "Il limite in centro abitato è 70 km/h?", False, None),
     ("0005", 5, "velocità", "La velocità va adeguata alle condizioni?", True, None),
 )
+
+_IMAGES = (("s0001.jpeg", "Segnale di divieto di sosta"),)
 
 
 def _insert_questions(client: PostgresClient) -> None:
@@ -36,11 +39,15 @@ def _insert_questions(client: PostgresClient) -> None:
         ),
         [list(row) for row in _QUESTIONS],
     )
+    client.execute_many(
+        sql.SQL("INSERT INTO quiz_images (filename, description) VALUES (%s, %s)"),
+        [list(row) for row in _IMAGES],
+    )
 
 
 @pytest.fixture
 def bank(api_client: object) -> Iterator[PostgresClient]:
-    """A five-question bank on the ephemeral stack, torn down after each test."""
+    """A five-question, one-image bank on the ephemeral stack, torn down after each test."""
     client = get_default_container().resolve(PostgresClientProvider).client
     client.truncate(*_TABLES)
     _insert_questions(client)
@@ -191,3 +198,34 @@ def test_the_embedding_probe_sees_only_the_requested_variant(
     assert repository.has_embedding("0001", "topic_text") is True
     assert repository.has_embedding("0001", "combined") is False
     assert repository.has_embedding("0002", "topic_text") is False
+
+
+@pytest.mark.integration
+def test_the_question_context_carries_the_answer_and_the_image_description(
+    bank: PostgresClient, repository: QuizQuestionRepository
+) -> None:
+    """FR-10: exactly what the writer must receive, in one read."""
+    context = repository.find_question_context("0001")
+
+    assert context is not None
+    assert (context.correct_answer, context.image_description) == (
+        True,
+        "Segnale di divieto di sosta",
+    )
+
+
+@pytest.mark.integration
+def test_an_image_less_question_has_no_description(
+    bank: PostgresClient, repository: QuizQuestionRepository
+) -> None:
+    context = repository.find_question_context("0002")
+
+    assert context is not None
+    assert context.image_description is None
+
+
+@pytest.mark.integration
+def test_an_unknown_number_has_no_context(
+    bank: PostgresClient, repository: QuizQuestionRepository
+) -> None:
+    assert repository.find_question_context("9999") is None
