@@ -1,6 +1,7 @@
 """FR-5, FR-7, FR-10, FR-11, FR-13: render the commas, or refuse with a reason."""
 
 import asyncio
+import time
 from dataclasses import dataclass, field
 
 import pytest
@@ -292,3 +293,27 @@ async def test_exceeding_the_deadline_becomes_a_503() -> None:
 
     with pytest.raises(ExplanationUnavailableError):
         await service(ExplanationRequest(number="0001"))
+
+
+@pytest.mark.asyncio
+async def test_exceeding_the_deadline_with_a_slow_writer_becomes_a_503() -> None:
+    """D10: the single deadline spans the writer stage too, not just the selector."""
+
+    @dataclass
+    class _SlowWriter:
+        requests: list[ExplanationWriterRequest] = field(default_factory=list)
+
+        async def run(self, request: ExplanationWriterRequest) -> ExplanationWriterResponse:
+            self.requests.append(request)
+            await asyncio.sleep(1)
+            return _explained([1])
+
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    service = _service(_SelectorDouble(selection), _SlowWriter())  # type: ignore[arg-type]
+    service.config = _ConfigDouble(explanation_deadline_s=0.01)  # type: ignore[assignment]
+
+    started = time.monotonic()
+    with pytest.raises(ExplanationUnavailableError):
+        await service(ExplanationRequest(number="0001"))
+
+    assert time.monotonic() - started < 0.5
