@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **guidami-ai-patente** is a tool that makes Italian driving exam information freely accessible. It aggregates official questions, regulations, and reference material — currently scraped from the web and from PDFs — so users can study and query it without paywalls.
 
-The end goal is a **quiz bot** (FastAPI) that checks answers deterministically and explains them using RAG over the corpus normativo (CdS + CAP). Postgres/pgvector infrastructure is running, corpus and quiz-bank ingestion pipelines are implemented, and the FastAPI app (`src/guidami_ai_patente/`, started with `uv run serve`) now serves the full quiz loop: browse topics, get a question, check an answer, fetch its image. Deterministic answer-checking is live; the RAG-backed explanation endpoint is not implemented yet (tracked as a later plan).
+The end goal is a **quiz bot** (FastAPI) that checks answers deterministically and explains them using RAG over the corpus normativo (CdS + CAP). Postgres/pgvector infrastructure is running, corpus and quiz-bank ingestion pipelines are implemented, and the FastAPI app (`src/guidami_ai_patente/`, started with `uv run serve`) now serves the full quiz loop: browse topics, get a question, check an answer, fetch its image, and get a RAG-backed explanation of the correct answer. Deterministic answer-checking and the explanation endpoint are both live.
 
 ## Environment & Commands
 
