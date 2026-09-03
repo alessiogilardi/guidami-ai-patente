@@ -261,6 +261,8 @@ async def test_a_judge_failure_becomes_a_503() -> None:
     with pytest.raises(ExplanationUnavailableError):
         await _service(_GoldenSetDouble(labelings=[None]), live_stack)("0001")
 
+    assert live_stack.golden_set.runs == 0, "AD-20: a raised judge must leave no run row"
+
 
 @pytest.mark.asyncio
 async def test_a_missing_labeling_after_a_successful_write_is_a_503() -> None:
