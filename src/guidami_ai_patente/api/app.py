@@ -21,6 +21,7 @@ from guidami_ai_patente.clients import (  # noqa: F401  — imported for pywire 
 from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente.providers import (  # noqa: F401  — imported for pywire registration
     LabelingStackProvider,
+    LiveLabelingStackProvider,
     LlmCallTrackerProvider,
     OpenRouterProviderComponent,
 )

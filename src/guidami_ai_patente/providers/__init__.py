@@ -21,17 +21,23 @@ pending `commons/` itself adopting pywire).
 consumers (the FR-8 precedence query, the FR-14 startup check) read without knowing
 how it was built, built once at first resolution rather than re-read per caller.
 
-`OpenRouterProviderComponent` and `LlmCallTrackerProvider` are the two providers plan
-3 adds: the one `OpenRouterProvider` every agent shares, and the tracker whose
+`OpenRouterProviderComponent` and `LlmCallTrackerProvider` are two of the providers
+plan 3 adds: the one `OpenRouterProvider` every agent shares, and the tracker whose
 background-worker lifecycle now has a container-scoped owner (`@pre_destroy`).
+`LiveLabelingStackProvider` is a third: it assembles everything the live judging path
+needs — retrieval repositories, the candidate-set service and Task 5's
+`QuestionLabelingService` — deliberately kept out of `LabelingStackProvider` so the
+FR-14 diagnostic and the no-LLM `POST /check` path never construct the judge (D3).
 """
 
 from .labeling_stack_provider import LabelingStackProvider
+from .live_labeling_stack_provider import LiveLabelingStackProvider
 from .llm_call_tracker_provider import LlmCallTrackerProvider
 from .open_router_provider_component import OpenRouterProviderComponent
 
 __all__ = [
     "LabelingStackProvider",
+    "LiveLabelingStackProvider",
     "LlmCallTrackerProvider",
     "OpenRouterProviderComponent",
 ]
