@@ -5,7 +5,7 @@ from pywire import Autowired, repository
 
 from guidami_ai_patente.clients import PostgresClientProvider
 from guidami_ai_patente.configs import AppConfig
-from guidami_ai_patente.models import CurrentLabeling
+from guidami_ai_patente.models import CurrentLabeling, LabeledComma
 from labeling.models import LabelingEpoch
 
 
@@ -97,3 +97,41 @@ class GoldenSetReadRepository:
             runs=sql.Identifier(self.config.labeling_runs_table)
         )
         return [row[0] for row in self.postgres.client.fetch(query)]
+
+    def find_labeled_commas(self, labeling_id: int) -> list[LabeledComma]:
+        """Returns the commas of a labeling, ordered by ascending `judge_rank` (FR-5).
+
+        The order is the contract, not a convenience: FR-5 requires the citations
+        ordered by the judge's own ranking, and the ordering is expressed in SQL rather
+        than re-sorted in Python so a caller cannot lose it.
+
+        An empty list means the labeling has no supporting comma — the "the corpus does
+        not justify this" verdict (FR-7), which is a legitimate outcome and not an
+        error. It can also mean `has_supporting_commas` is `true` while the child rows
+        were cascaded away by a corpus delete: the invariant hole AD-10 documents as a
+        detection problem. The caller is what notices and logs it, since only it knows
+        the flag it read.
+        """
+        query = sql.SQL(
+            "SELECT a.source, a.number, a.title, c.comma_number, c.text, cl.judge_rank "
+            "FROM {labels} cl "
+            "JOIN {commas} c ON c.id = cl.article_comma_id "
+            "JOIN {articles} a ON a.id = c.article_id "
+            "WHERE cl.labeling_id = %s ORDER BY cl.judge_rank"
+        ).format(
+            labels=sql.Identifier(self.config.quiz_comma_labels_table),
+            commas=sql.Identifier(self.config.article_commas_table),
+            articles=sql.Identifier(self.config.articles_table),
+        )
+        rows = self.postgres.client.fetch(query, [labeling_id])
+        return [
+            LabeledComma(
+                source=row[0],
+                article_number=row[1],
+                article_title=row[2],
+                comma_number=row[3],
+                text=row[4],
+                judge_rank=int(row[5]),
+            )
+            for row in rows
+        ]
