@@ -212,6 +212,11 @@ client is told why.
   stored `quiz_labelings.rationale` when a labeling exists, and `null` for
   `not_indexed`.
 
+> **Errata (2026-09-02):** "the explanation writer agent is **not instantiated** and
+> not called" — under pywire the agent is a container singleton, so instantiation is
+> not per-request and cannot be branch-dependent. The guarantee the endpoint delivers
+> and the suite asserts is that it is never **called**.
+
 ### FR-8: Deterministic precedence among competing labelings
 
 Where several labelings exist for one question, exactly one is "current": a
@@ -399,6 +404,9 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
 - Given any `--topic` value, then it does **not** appear in `labeling_runs` and does not
   participate in the configuration epoch: it selects *which* questions are labeled, not
   *how* they are judged (FR-9).
+
+> **Errata (2026-09-02):** delivered in plan 1, not plan 3. Plan 3's obligation was
+> reduced to verification plus the AD-30 run.
 
 ## Non-Goals
 
@@ -697,6 +705,15 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
   one provider per shared class — mechanically uniform but seven near-identical
   wrappers for a graph the extracted builders already know how to assemble.
 
+> **Errata (2026-09-02):** the shared stack is assembled by **three** providers, not
+> two: `PostgresClientProvider`, `LabelingStackProvider` (the judge's identity) and
+> `LiveLabelingStackProvider` (the machinery), plus `OpenRouterProviderComponent` and
+> `LlmCallTrackerProvider`. Folding the machinery into the identity provider would let
+> FR-14's deliberately-swallowing startup diagnostic mask a malformed prompt file or a
+> bad credential, and would drag an LLM graph onto the hot `POST /check` path. This AD's
+> rejected alternative was *seven near-identical per-class wrappers*; this is not that
+> (D3).
+
 ### AD-16b: `GoldenSetReadRepository` is app-local and pywire-native, not part of `src/labeling/`
 - **Rationale:** The golden set has only ever had a write path; this read path exists
   solely to serve the explanation endpoint. By the self-containment test in
@@ -776,6 +793,12 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
   branch on the HTTP status would treat it as an answer; a bare `500` — correct in
   kind but gives the client nothing to distinguish "retry in a moment" from "this is
   broken".
+
+> **Errata (2026-09-02):** "persisted before the response is returned" (FR-6) now
+> happens with a **lazily resolved** run id: the `labeling_runs` row is created
+> immediately before the labeling insert, not before the judge call, so FR-13's "no row
+> is written to any golden-set table" after a judge failure is literally true (D8's
+> `resolve_run_id`).
 
 ### AD-21: The explanation endpoint accepts an optional `submitted` answer, passed to the writer
 - **Rationale:** An explanation addressed to someone who got it wrong is a different
@@ -880,6 +903,12 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
   path that makes a cached judgement reproducible; plain `def` routes on FastAPI's
   threadpool — works, and is the honest fallback, but leaves the 10s call occupying a
   worker thread and gives up the natural `await` on an already-async agent.
+
+> **Errata (2026-09-02):** the shared `QuestionLabelingService` crosses
+> `asyncio.to_thread` for its own synchronous calls. This also changes the **batch**:
+> its candidate-set and insert work now fans out under the semaphore instead of
+> serialising on the event-loop thread. `label_main` already sizes the pool at
+> `concurrency + 1` for exactly this.
 
 ### AD-26: `PostgresClient` becomes pooled, and that change ships in plan 1 gated on the batch suite
 - **Rationale:** `PostgresClient.__init__` opens **one** `psycopg.connect(...,
@@ -1686,3 +1715,24 @@ independent value.
   invalidates ADR 0016's Decision item 3 and three passages of
   `.claude/rules/pywire-di.md`, both updated separately. No FR, no AD and no acceptance
   criterion changed: **not** a material change, status unaffected.
+
+> **Errata (2026-09-02):** the API tracks its LLM calls (`LlmCallTrackerProvider`, D5).
+> This spec specified no observability for the API path, and
+> `labeling.wiring.build_comma_labeler_agent`'s docstring claiming the API "runs without
+> a `QueuedLlmCallTracker`" was true only while pywire had no teardown; that docstring
+> has since been corrected.
+
+> **Errata (2026-09-02):** `AppConfig.explanation_deadline_s` (D10). FR-13 names
+> "timeout" as a 503 cause without saying whose; the answer is an explicit request-wide
+> budget in the app, leaving `comma_labeler.yaml`'s 60s to the batch.
+
+> **Errata (2026-09-02):** debt recorded, deliberately not fixed here (D11, D7):
+> `ingest reset quiz` is still broken on the inbound `quiz_labelings` foreign key — same
+> shape as the `reset knowledge` repair (AD-28). `LabelingConfig`'s `yaml_file` is
+> CWD-relative, so a process started from the wrong directory silently falls back to the
+> Python defaults for every epoch field except `agents_dir` — harmless only while the
+> defaults mirror the YAML, and **not** caught by FR-14 (which compares `prompt_version`,
+> sourced from the defaultless `AGENTS_DIR`). And the embedding column is a shared
+> constant, not configuration: the symmetric parameterisation — per-model columns on
+> `article_commas`, a parameterised `dense_top_k`, the column inside the epoch key, an
+> ingestion write path that targets it — needs its own spec.
