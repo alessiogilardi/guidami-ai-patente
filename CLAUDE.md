@@ -102,6 +102,7 @@ Started via `uv run serve` (`docker compose up -d` first, so Postgres is reachab
 | `GET /quiz-questions/random?seed=&index=&topic=` | Proposes the question at `index` of the seeded permutation `seed` induces, optionally restricted to `topic` (FR-1); response never includes `correct_answer` |
 | `GET /quiz-questions/{number}` | Returns one question by its number, in the same shape as `/random` (FR-2) |
 | `POST /quiz-questions/{number}/check` | Grades a submitted true/false answer and advertises the `explanation_status` (`cached`/`uncached`/`unavailable`) for that question (FR-3, FR-4) |
+| `GET /quiz-questions/{number}/explanation?submitted=` | Explains why the correct answer is correct, grounded in the labeled commas: served from the golden-set cache when it holds them, computed live (retrieve → judge → write through) when it does not (FR-5, FR-6). `200` with `status: insufficient_knowledge` and a machine-readable `reason` when the corpus does not justify the question (FR-7); `503` when the judge or the writer fails (FR-13). Optional `submitted` tailors the wording to the answer the user gave (FR-11) |
 | `GET /quiz-images/{filename}` | Serves a quiz image, authorized database-first: 404 unless some `quiz_questions` row actually references the filename (FR-12) |
 
 ### Running against a test-data subset
@@ -130,12 +131,19 @@ holds the 7099 enriched quiz files (ADR 0012, superseding ADR 0005).
 
 Copy `.env.example` to `.env` and fill in:
 - `POSTGRES__USER` / `POSTGRES__PASSWORD` — DB credentials (double underscore = nested delimiter for `IngestorConfig.postgres`)
-- `OPENROUTER_API_KEY` — required for embedding and LLM steps; read by litellm from the environment
-- `AGENTS_DIR` — directory holding the agent YAML files. Has **no default** on either config
-  root (`IngestorConfig.agents_dir` and `LabelingConfig.agents_dir`, spec 0012, AD-22/AD-27):
-  a missing value is a loud `ValidationError` at startup, never a silent fallback, because the
-  batch labeler and the live judge must load the identical prompt file for their
-  configuration-epoch hash (`prompt_version`) to mean the same thing on both sides.
+- `OPENROUTER_API_KEY` — read by litellm from the environment; required for embedding and LLM
+  steps in ingestion, **and required to start the API at all**: `main.py` loads
+  `OpenRouterConfig`, whose `api_key` has no default, so `uv run serve` raises a
+  `ValidationError` without it, even for `GET /health`.
+- `AGENTS_DIR` — directory holding the agent YAML files. Has **no default** on any of
+  **three** config roots (`IngestorConfig.agents_dir`, `LabelingConfig.agents_dir` and
+  `AppConfig.agents_dir`, spec 0012, AD-22/AD-27): a missing value is a loud
+  `ValidationError` at startup, never a silent fallback, because the batch labeler and the
+  live judge must load the identical prompt file for their configuration-epoch hash
+  (`prompt_version`) to mean the same thing on both sides. `AppConfig.agents_dir` is
+  declared separately from `LabelingConfig.agents_dir` because it resolves a different kind
+  of prompt: the API's own agents whose prompts enter no configuration epoch (today,
+  `explanation_writer.yaml`), versus the epoch-controlled judge prompt (D4, ADR 0020).
 
 The labeling/judge configuration epoch (`judge_model`, `prompt_version`, `candidate_variant`,
 `dense_k`, `text_k`, `lexeme_fields`) is read from a single file, `configs/labeling.yaml`, via

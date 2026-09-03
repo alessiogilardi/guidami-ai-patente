@@ -93,8 +93,10 @@ def build_comma_labeler_agent(
 
     Takes the config already loaded (rather than calling `from_yaml`) so the caller
     loads the prompt exactly once and both hashes it into the epoch and builds the
-    agent from it. `tracker` is optional: the API path runs without a
-    `QueuedLlmCallTracker`, whose background lifecycle has no request-scoped owner.
+    agent from it. `tracker` is optional so a caller with no sink can omit it; both real
+    callers pass one — the batch through `build_llm_call_tracker`, the API through
+    `LlmCallTrackerProvider`, whose `@pre_destroy` hook gives the background worker a
+    container-scoped owner (pywire 0.6.0, spec 0013 FR-6).
     """
     return CommaLabelerAgent(config=agent_config, provider=provider, tracker=tracker)
 
