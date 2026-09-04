@@ -76,8 +76,10 @@ async def test_an_out_of_range_ordinal_self_corrects_on_retry(
 
 
 async def test_an_ordinal_that_never_self_corrects_raises_unexpected_model_behavior() -> None:
-    """num_retries=3 allows 4 total attempts (verified: pydantic_ai's own retry budget
-    counts *failed* attempts, raising once output_retries_used > max_output_retries).
+    """Validates retry behavior on ordinals that never self-correct.
+
+    With num_retries=3, 4 total attempts are allowed. pydantic_ai counts failed
+    attempts and raises UnexpectedModelBehavior once the retry budget is exceeded.
     """
     agent = CommaLabelerAgent(_TEST_CONFIG, _PROVIDER)
     request = _make_request(candidate_count=2)

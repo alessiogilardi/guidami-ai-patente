@@ -25,6 +25,7 @@ class CommaLabelerAgent(BaseAgent[CommaLabelerRequest, CommaLabelerResponse]):
         file_reader: FileReaderInterface | None = None,
         tracker: LlmCallTracker | None = None,
     ) -> None:
+        """Registers the out-of-range ordinal validator on the wrapped agent."""
         super().__init__(config, provider, file_reader, tracker)
         self._agent.output_validator(self._validate_comma_numbers)
 
