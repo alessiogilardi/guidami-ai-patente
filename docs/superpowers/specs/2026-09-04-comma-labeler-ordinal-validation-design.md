@@ -158,6 +158,17 @@ model calls) and in `pydantic_ai/result.py`, where `ValidationError` and
 the installed 1.107.0 source) and funneled through the same
 `consume_output_retry` budget.
 
+Before raising, `_validate_comma_numbers` logs a `warning` — the canonical
+level for "a retry happened" per `.claude/rules/logging.md`. Without this, the
+retry is invisible unless the budget is later exhausted (at which point
+`UnexpectedModelBehavior` propagates and is logged elsewhere, but every
+self-corrected attempt in between leaves no trace). `CommaLabelerRequest`
+carries no quiz identifier (`CommaLabelerAgent` is a "pure LLM wrapper" by its
+own docstring, with no knowledge of quiz identity), so the message reports
+only the offending ordinal(s) and the valid range — not which question
+triggered it. No `exc_info=True`: this is the detection point, not a handler
+for an already-active exception.
+
 **Acceptance criteria:**
 - `CommaLabelerAgent` overrides `__init__` with the exact same typed
   parameter list as `BaseAgent.__init__` (`config`, `provider`, `file_reader`,
@@ -165,13 +176,19 @@ the installed 1.107.0 source) and funneled through the same
   standard), calls `super().__init__(config, provider, file_reader, tracker)`,
   then calls `self._agent.output_validator(self._validate_comma_numbers)`.
 - `_validate_comma_numbers(self, ctx: RunContext[CommaLabelerRequest], data:
-  CommaLabelerResponse) -> CommaLabelerResponse` raises `ModelRetry` on any
-  out-of-range ordinal and otherwise returns `data` unchanged.
+  CommaLabelerResponse) -> CommaLabelerResponse` calls `logger.warning` with
+  lazy `%s` args (`.claude/rules/logging.md` — never an f-string, enforced by
+  ruff's `G004`) carrying the offending ordinal(s) and the valid range, then
+  raises `ModelRetry` with the same information rendered as a plain string
+  (the `ModelRetry` message is prompt-facing text shipped back to the model,
+  not a logging call, so `G004` does not apply to it); otherwise returns
+  `data` unchanged with no log.
 - New test file `tests/labeling/agents/comma_labeler/test_comma_labeler_agent.py`
   (following the `FunctionModel`-based pattern already used in
   `tests/commons/ai/agents/test_base_agent.py`) covers:
   - an out-of-range ordinal on attempt 1, in-range on attempt 2 → the agent
-    returns the attempt-2 response after exactly 2 model calls;
+    returns the attempt-2 response after exactly 2 model calls, and exactly
+    one `warning` record was emitted (via `caplog`);
   - an ordinal that stays out of range for every attempt → the run raises
     `pydantic_ai.exceptions.UnexpectedModelBehavior` once
     `config.num_retries` is exhausted (confirmed message shape in
@@ -192,6 +209,22 @@ The existing bounds check in `_resolve_labels` and
   `BaseAgent`/pydantic-ai's output-validation pipeline at all, so FR-3 does not
   touch that path.
 
+### FR-5: `comma-labeler`'s `num_retries` is raised from the default (3) to 5
+
+`configs/agents/comma_labeler.yaml` does not override `num_retries` today, so
+it inherits `AgentConfig`'s default of 3 — a budget originally sized for one
+failure mode (`_reject_repeated_numbers`). FR-3 adds a second, independent
+condition that competes for the same budget (`ModelRetry` on an out-of-range
+ordinal), so the shared budget is raised to leave room for one mistake of
+each kind plus margin, without guessing at a much larger number the next
+labeling run's data hasn't justified yet.
+
+**Acceptance criteria:**
+- `configs/agents/comma_labeler.yaml` sets `num_retries: 5` explicitly (no
+  other agent's YAML config changes).
+- `uv run ingest status` (or the equivalent config-loading test) confirms the
+  loaded `AgentConfig` for `comma-labeler` reflects `num_retries == 5`.
+
 ## Non-Goals
 
 - Removing or weakening `_resolve_labels`'s manual guard (FR-4) — it stays as
@@ -211,6 +244,10 @@ The existing bounds check in `_resolve_labels` and
   behavior change.
 - Any change to `CommaLabelerResponse`'s own `_reject_repeated_numbers`
   validator or its retry behavior.
+- Tuning `num_retries` beyond the FR-5 bump to 5, or introducing a distinct
+  retry budget per failure mode. Further tuning is deferred to a future pass
+  once FR-3's new `warning` logs give real data on how often each failure
+  mode actually fires.
 
 ## Architectural Decisions
 
@@ -303,3 +340,5 @@ plan:
 - FR-4 requires no code change, only verification that the existing test
   (`test_an_out_of_range_number_raises_and_writes_nothing`) still passes
   unchanged after FR-1–FR-3 land.
+- FR-5 (the YAML config bump) is independent of FR-1–FR-4 and can land in any
+  order relative to them — it touches only `configs/agents/comma_labeler.yaml`.
