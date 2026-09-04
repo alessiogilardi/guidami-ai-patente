@@ -1,0 +1,20 @@
+"""Pins comma-labeler's num_retries (spec 0014, FR-5)."""
+
+import os
+from pathlib import Path
+
+import yaml
+
+from commons.ai.agents import AgentConfig
+
+
+def test_comma_labeler_num_retries_is_five() -> None:
+    """Two independent retry-triggering conditions (repeated ordinal, out-of-range
+    ordinal) now share this budget — raised from the shared default (3) to leave
+    room for one mistake of each kind plus margin.
+    """
+    agents_dir = Path(os.environ["AGENTS_DIR"])
+    raw = yaml.safe_load((agents_dir / "comma_labeler.yaml").read_text(encoding="utf-8"))
+    config = AgentConfig(**raw)
+
+    assert config.num_retries == 5
