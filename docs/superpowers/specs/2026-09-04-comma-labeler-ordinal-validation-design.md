@@ -50,8 +50,8 @@ given, before falling back to today's hard failure.
 
 ### Approaches considered and rejected
 
-Three alternatives were explored and rejected in favor of the chosen design
-(AD-1 below); recorded here so the exploration isn't silently lost:
+Four alternatives were explored and rejected in favor of the chosen design
+(AD-1/AD-2 below); recorded here so the exploration isn't silently lost:
 
 - **Dynamic per-call `output_type=`**: build a narrower Pydantic model per call
   with `Annotated[int, Field(ge=1, le=len(presented))]` and pass it as an
@@ -75,6 +75,25 @@ Three alternatives were explored and rejected in favor of the chosen design
   live `AttributeError` on a constructed `Agent`. It is the pre-1.0 name for
   what is now `Agent.output_validator` (same rename family as
   `result_type`→`output_type`, `RunResult`→`AgentRunResult`).
+- **`input_type: type[T_In]` class attribute, mirroring `output_type`**: this
+  spec's own first draft. Typing `self._agent: Agent[T_In, T_Out]` requires
+  passing `deps_type=` to the wrapped `Agent(...)` with a real runtime value
+  whose static type is `type[T_In]` — otherwise pyright rejects the
+  construction outright (confirmed: `Agent(...)` without `deps_type=` infers
+  `Agent[None, T_Out]`, and assigning that to a variable annotated
+  `Agent[T_In, T_Out]` fails with `"Agent[None, T_Out]" is not assignable to
+  "Agent[T_In, T_Out]"` — `AgentDepsT` is contravariant and `None` is not a
+  supertype of an arbitrary `T_In`). The only way to supply that value is a new
+  required class attribute on every subclass, exactly like `output_type`.
+  Rejected after verifying with pyright that a simpler `Agent[Any, T_Out]`
+  typing on `BaseAgent` gives **identical** type-safety inside
+  `CommaLabelerAgent`'s own validator: pyright checks a function body against
+  its own declared parameter annotations, independent of how the enclosing
+  `Agent` is (erased-)typed. Confirmed both ways with `reveal_type(ctx.deps)`
+  (returns the concrete request type in both cases) and a deliberately
+  mistyped attribute access (`reportAttributeAccessIssue` in both cases).
+  `Agent[Any, T_Out]` gets the same safety where it actually matters, without
+  touching the 4 unrelated agents or the 3 test doubles at all.
 
 ## Functional Requirements
 
@@ -98,30 +117,24 @@ internal wiring change.
   runtime type checking of deps against `self._deps_type`, but that's a
   slippery slope" — it does not).
 
-### FR-2: `BaseAgent` subclasses declare an explicit `input_type: type[T_In]`, mirroring `output_type`
+### FR-2: `BaseAgent`'s wrapped `Agent` is typed `Agent[Any, T_Out]` — no new class attribute required
 
-For `self._agent.run(..., deps=request)` (FR-1) to type-check, the wrapped
-`Agent` must be `Agent[T_In, T_Out]` (not today's `Agent[None, T_Out]`), which
-requires a real `deps_type=` value at construction. Python does not preserve a
-class's own generic type arguments as an introspectable runtime value, so —
-exactly like the existing `output_type: type[T_Out]` class attribute — every
-`BaseAgent` subclass declares `input_type: type[T_In]`. `BaseAgent.__init__`
-passes `deps_type=self.input_type` to the wrapped `Agent(...)`.
+`self._agent`'s declared type widens from `Agent[None, T_Out]` to
+`Agent[Any, T_Out]`. No `deps_type=` kwarg is passed to the wrapped
+`Agent(...)` constructor — it keeps defaulting to `NoneType` at runtime, which
+is irrelevant, since pydantic-ai never checks a passed `deps` value against
+`deps_type` (FR-1). The `Any` widening only relaxes the type pyright assigns
+to `self._agent`'s own `deps` parameter; it has no effect on how precisely
+`CommaLabelerAgent`'s own validator is typed (FR-3), since a function's
+parameter annotations are checked against its own declared signature,
+independent of how the object it's registered on is (erased-)typed.
 
 **Acceptance criteria:**
-- `BaseAgent` declares `input_type: type[T_In]` (bare annotation, no default —
-  same style as `output_type`) and `self._agent: Agent[T_In, T_Out]` typed
-  accordingly.
-- All 5 concrete agents gain `input_type = <ThisAgent'sRequest>` alongside
-  their existing `output_type = ...`: `ExplanationWriterAgent`,
-  `RetrievalJudgeAgent`, `CommaLabelerAgent`, `RoadSignDescriberAgent`,
-  `NormReferenceDescriberAgent`.
-- All 3 test-double `BaseAgent` subclasses under `tests/commons/ai/agents/`
-  (`test_base_agent.py`, `test_base_agent_openrouter_cost_integration.py`,
-  `test_base_agent_from_yaml_injection.py`) gain a matching `input_type = ...`
-  so they keep constructing successfully.
-- No behavior change for the 4 agents other than `CommaLabelerAgent`: `deps` is
-  threaded but never read by any of them.
+- `self._agent: Agent[Any, T_Out]` in `BaseAgent.__init__` (not
+  `Agent[None, T_Out]`, not `Agent[T_In, T_Out]`).
+- No new class attribute on `BaseAgent` or on any of its 5 concrete
+  subclasses or 3 test doubles; `output_type` remains the only required one.
+- `uv run pyright` on `src` and `tests` reports zero new errors.
 
 ### FR-3: `CommaLabelerAgent` retries an out-of-range ordinal via `ModelRetry`
 
@@ -146,8 +159,11 @@ the installed 1.107.0 source) and funneled through the same
 `consume_output_retry` budget.
 
 **Acceptance criteria:**
-- `CommaLabelerAgent.__init__` mirrors `BaseAgent.__init__`'s parameter list,
-  calls `super().__init__(...)`, then registers the validator.
+- `CommaLabelerAgent` overrides `__init__` with the exact same typed
+  parameter list as `BaseAgent.__init__` (`config`, `provider`, `file_reader`,
+  `tracker` — no `*args`/`**kwargs`, per the project's "type hints everywhere"
+  standard), calls `super().__init__(config, provider, file_reader, tracker)`,
+  then calls `self._agent.output_validator(self._validate_comma_numbers)`.
 - `_validate_comma_numbers(self, ctx: RunContext[CommaLabelerRequest], data:
   CommaLabelerResponse) -> CommaLabelerResponse` raises `ModelRetry` on any
   out-of-range ordinal and otherwise returns `data` unchanged.
@@ -190,8 +206,8 @@ The existing bounds check in `_resolve_labels` and
   own exhausted retries already do today).
 - Applying `deps`-aware output validation to any agent other than
   `CommaLabelerAgent`. `ExplanationWriterAgent`, `RetrievalJudgeAgent`,
-  `RoadSignDescriberAgent`, and `NormReferenceDescriberAgent` gain `input_type`
-  (FR-2) and unused `deps` plumbing (FR-1) but no new validator and no
+  `RoadSignDescriberAgent`, and `NormReferenceDescriberAgent` gain unused
+  `deps` plumbing (FR-1) but no new class attribute, no new validator, and no
   behavior change.
 - Any change to `CommaLabelerResponse`'s own `_reject_repeated_numbers`
   validator or its retry behavior.
@@ -214,12 +230,35 @@ The existing bounds check in `_resolve_labels` and
   Dynamic per-call `output_type=` narrowing was rejected as needing more new
   surface (a second `run` overload/method plus per-count model caching) for a
   retry-budget benefit `output_validator` already provides for free.
-- **Consequence:** `BaseAgent[T_In, T_Out]`'s wrapped `Agent` becomes
-  `Agent[T_In, T_Out]` (deps_type=T_In) instead of `Agent[None, T_Out]`; every
-  subclass declares `input_type` alongside `output_type` (FR-2), a small,
-  uniform, mechanical addition across 5 production agents and 3 test doubles.
+- **Consequence:** `BaseAgent[T_In, T_Out]`'s wrapped `Agent` is retyped
+  `Agent[Any, T_Out]` (FR-2) so `deps=request` (FR-1) type-checks; no new
+  class attribute is needed on any of the 5 production agents or 3 test
+  doubles — only `CommaLabelerAgent` gains new code (FR-3).
 
-### AD-2: `@agent.result_validator` is confirmed dead code in this dependency, not a viable alternative
+### AD-2: `Agent[Any, T_Out]`, not `Agent[T_In, T_Out]` + `input_type` — verified with pyright to give identical safety where it matters
+
+- **Rationale:** forcing `self._agent: Agent[T_In, T_Out]` requires a new
+  `input_type: type[T_In]` class attribute on every subclass (see "Approaches
+  considered and rejected" above for the concrete pyright error this
+  produces without one). Two isolated probes were run through `uv run
+  pyright` to compare the alternative directly: with `Agent[Any, T_Out]` on
+  `BaseAgent` and no `input_type` anywhere, `CommaLabelerAgent`'s own
+  `_validate_comma_numbers(ctx: RunContext[CommaLabelerRequest], data:
+  CommaLabelerResponse)` still resolves `reveal_type(ctx.deps)` to the
+  concrete request type and still flags a mistyped attribute access
+  (`reportAttributeAccessIssue`) — identical to the `input_type` variant. The
+  `Any` widening only affects the *wiring* boundary inside `BaseAgent`
+  (whether pyright cross-checks the declared `deps_type` against what's
+  passed to `.run()`), not the *validator body* boundary (checked from its
+  own explicit annotation regardless) — and only the latter is where a real
+  mistake (e.g. reading the wrong field off `ctx.deps`) would actually be
+  caught.
+- **Consequence:** `ExplanationWriterAgent`, `RetrievalJudgeAgent`,
+  `RoadSignDescriberAgent`, `NormReferenceDescriberAgent`, and the 3
+  `BaseAgent` test doubles under `tests/commons/ai/agents/` need no change at
+  all beyond inheriting `deps=request` being passed with no effect.
+
+### AD-3: `@agent.result_validator` is confirmed dead code in this dependency, not a viable alternative
 
 - **Rationale:** `hasattr(Agent, "result_validator")` is `False` on
   `pydantic_ai==1.107.0`, and calling it on a live `Agent` instance raises
@@ -230,7 +269,7 @@ The existing bounds check in `_resolve_labels` and
   future reader who finds it in older pydantic-ai documentation should read
   `output_validator` instead.
 
-### AD-3: `_resolve_labels`'s manual guard is kept because it protects a different boundary than FR-3 does
+### AD-4: `_resolve_labels`'s manual guard is kept because it protects a different boundary than FR-3 does
 
 - **Rationale:** against the real `CommaLabelerAgent`, FR-3's validator
   inspects every `comma_numbers` entry on every attempt, so an out-of-range
@@ -255,11 +294,12 @@ This spec deliberately does not sequence the work — that is the
 `writing-plans` skill's job. Two ordering constraints worth carrying into the
 plan:
 - FR-1 and FR-2 are not independently shippable: `self._agent.run(...,
-  deps=request)` (FR-1) does not type-check without `Agent[T_In, T_Out]`
-  (FR-2) already in place. They land as one change.
-- FR-3 depends on FR-1+FR-2 landing first: `RunContext[CommaLabelerRequest]`
-  inside `_validate_comma_numbers` requires `CommaLabelerAgent.input_type =
-  CommaLabelerRequest` to already exist.
+  deps=request)` (FR-1) does not type-check unless `self._agent` is already
+  typed `Agent[Any, T_Out]` (FR-2). They land as one change, entirely within
+  `base_agent.py`.
+- FR-3 depends on FR-1+FR-2 landing first: `CommaLabelerAgent`'s overridden
+  `__init__` calls `self._agent.output_validator(...)` on the `self._agent`
+  that FR-1/FR-2 already construct.
 - FR-4 requires no code change, only verification that the existing test
   (`test_an_out_of_range_number_raises_and_writes_nothing`) still passes
   unchanged after FR-1–FR-3 land.
