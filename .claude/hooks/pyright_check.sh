@@ -6,6 +6,8 @@
 # flags those the same way it flags a real typo.
 set -uo pipefail
 
+[[ -n "${PY_HOOKS_DISABLE:-}" ]] && exit 0
+
 source "$(dirname "${BASH_SOURCE[0]}")/lib/hook_common.sh"
 read_hook_target
 
@@ -15,9 +17,9 @@ read_hook_target
 cd "$HOOK_CWD" || exit 0
 
 command -v uv >/dev/null 2>&1 || report_missing "pyright_check hook: 'uv' not found on PATH — skipped pyright for $HOOK_FILE_PATH"
-uv run pyright --version >/dev/null 2>&1 || report_missing "pyright_check hook: 'pyright' not available via 'uv run' — skipped for $HOOK_FILE_PATH"
 
 if ! output="$(uv run pyright "$HOOK_FILE_PATH" 2>&1)"; then
+  uv run pyright --version >/dev/null 2>&1 || report_missing "pyright_check hook: 'pyright' not available via 'uv run' — skipped for $HOOK_FILE_PATH"
   printf '%s\n' "$output" >&2
   # Normalize backslashes: on Windows, HOOK_FILE_PATH uses native '\' separators.
   normalized_path="$(printf '%s' "$HOOK_FILE_PATH" | tr '\\' '/')"
