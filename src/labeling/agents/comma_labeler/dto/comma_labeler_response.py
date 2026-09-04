@@ -38,5 +38,9 @@ class CommaLabelerResponse(BaseModel):
     def _reject_repeated_numbers(self) -> "CommaLabelerResponse":
         """Rejects a repeated ordinal so pydantic-ai retries instead of the write path."""
         if len(set(self.comma_numbers)) != len(self.comma_numbers):
-            raise ValueError("comma_numbers must not repeat a candidate number")
+            # Italian: pydantic-ai sends this message back into comma-labeler's
+            # all-Italian conversation as retry feedback
+            # (.claude/rules/code-conventions.md's "prompt-facing text" exception,
+            # extended to validator retry messages by spec 0014).
+            raise ValueError("Non ripetere mai lo stesso ordinale in comma_numbers.")
         return self

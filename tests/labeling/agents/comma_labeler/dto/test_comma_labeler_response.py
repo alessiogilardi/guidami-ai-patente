@@ -16,7 +16,7 @@ def test_rejects_more_than_three_numbers() -> None:
 
 
 def test_rejects_a_repeated_number() -> None:
-    with pytest.raises(ValidationError, match="must not repeat a candidate number"):
+    with pytest.raises(ValidationError, match="Non ripetere mai lo stesso ordinale"):
         CommaLabelerResponse(comma_numbers=[2, 2, 3], rationale="Motivazione.")
 
 
