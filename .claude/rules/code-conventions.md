@@ -23,6 +23,38 @@ for quiz in questions:
         seen_texts.add(quiz.text)
 ```
 
+## `@contextmanager` / `@asynccontextmanager` — return type is `Generator[Y]` / `AsyncGenerator[Y]`, never `Iterator[Y]` / `AsyncIterator[Y]`
+
+A generator function decorated with `@contextmanager` or `@asynccontextmanager` must
+annotate its return type as `Generator[YieldType]` / `AsyncGenerator[YieldType]`
+(single type argument — `SendType`/`ReturnType` default to `None`), not
+`Iterator[YieldType]` / `AsyncIterator[YieldType]`. The `Iterator`/`AsyncIterator`
+spelling is flagged as a deprecated annotation by static analysis for these two
+decorators specifically — `Generator`/`AsyncGenerator` says explicitly that the
+function is a generator, which is what the decorator requires.
+
+```python
+# WRONG
+from collections.abc import Iterator
+from contextlib import contextmanager
+
+@contextmanager
+def _io_operation(self, path: str | Path) -> Iterator[Path]:
+    yield safe_path
+
+# RIGHT
+from collections.abc import Generator
+from contextlib import contextmanager
+
+@contextmanager
+def _io_operation(self, path: str | Path) -> Generator[Path]:
+    yield safe_path
+```
+
+This does not apply to a plain (non-decorated) async generator function used as a
+regular async iterator (e.g. a streaming `read_stream` method) — `AsyncIterator[Y]`
+stays correct there, since no `@asynccontextmanager` decorator is involved.
+
 User preference, no further rationale given — apply uniformly across `src/` and
 `tests/`. This does not affect the separate, already-established preference for
 early *returns* in functions (`~/.claude/rules/python/standards.md`); it is

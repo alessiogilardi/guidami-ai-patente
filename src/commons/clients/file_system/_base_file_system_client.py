@@ -1,7 +1,7 @@
 """Base class for file system clients — path security only, no I/O."""
 
 import logging
-from collections.abc import Iterator
+from collections.abc import Generator
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Literal
@@ -120,7 +120,7 @@ class BaseFileSystemClient:
         return sorted(safe_dir.glob(pattern))
 
     @contextmanager
-    def _io_operation(self, path: str | Path, mode: Literal["r", "w"] = "r") -> Iterator[Path]:
+    def _io_operation(self, path: str | Path, mode: Literal["r", "w"] = "r") -> Generator[Path]:
         logger.debug("Starting I/O operation on '%s'", path)
         try:
             yield self._get_safe_path(path, mode)

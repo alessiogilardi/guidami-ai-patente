@@ -1,7 +1,7 @@
 import logging
 import queue
 import threading
-from collections.abc import Iterator
+from collections.abc import Generator
 from contextlib import contextmanager
 from types import TracebackType
 
@@ -56,7 +56,7 @@ class QueuedLlmCallTracker:
     @contextmanager
     def track(
         self, tracked_caller: TrackedCaller, prompt: str
-    ) -> Iterator[PydanticAILlmCallRecorder]:
+    ) -> Generator[PydanticAILlmCallRecorder]:
         """Measures the call and enqueues its log for the worker thread.
 
         The enqueue happens in `finally`, so a call that raised is logged too; the
