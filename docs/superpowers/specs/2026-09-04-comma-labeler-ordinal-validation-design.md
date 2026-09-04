@@ -137,7 +137,11 @@ independent of how the object it's registered on is (erased-)typed.
   `Agent[None, T_Out]`, not `Agent[T_In, T_Out]`).
 - No new class attribute on `BaseAgent` or on any of its 5 concrete
   subclasses or 3 test doubles; `output_type` remains the only required one.
-- `uv run pyright` on `src` and `tests` reports zero new errors.
+- `uv run pyright src tests` introduces no new errors beyond the pre-existing
+  63-error baseline (measured 2026-09-04, entirely in
+  `tests/labeling/services/test_candidate_set_service.py` and
+  `tests/labeling/test_wiring.py`, unrelated to this spec's files) — the
+  count after this change is 63, not a delta the implementer must eyeball.
 
 ### FR-3: `CommaLabelerAgent` retries an out-of-range ordinal via `ModelRetry`
 
@@ -316,7 +320,8 @@ message.
 - **Consequence:** `BaseAgent[T_In, T_Out]`'s wrapped `Agent` is retyped
   `Agent[Any, T_Out]` (FR-2) so `deps=request` (FR-1) type-checks; no new
   class attribute is needed on any of the 5 production agents or 3 test
-  doubles — only `CommaLabelerAgent` gains new code (FR-3).
+  doubles — only `CommaLabelerAgent` and its own response DTO gain new code
+  (FR-3, FR-6).
 
 ### AD-2: `Agent[Any, T_Out]`, not `Agent[T_In, T_Out]` + `input_type` — verified with pyright to give identical safety where it matters
 
