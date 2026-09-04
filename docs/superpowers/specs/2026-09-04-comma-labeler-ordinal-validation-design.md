@@ -30,9 +30,12 @@ On the live API path this becomes a `503` for one request. On the batch path
 (`GoldenSetLabelingService`) it is worse: `asyncio.gather` runs without
 `return_exceptions=True` by design (PD-9, spec 0011 — "any failure propagates and
 aborts the whole run"), so one hallucinated ordinal kills the *entire* run,
-discarding every already-successful labeling alongside it. AD-30's test run
+discarding every already-successful labeling alongside it. A labeling test run
 observed exactly this: a single hallucinated ordinal aborted the run after 14 of
-20 questions had already been labeled successfully, discarding all 14.
+20 questions had already been labeled successfully, discarding all 14. (Note:
+this is an informal observation from that run, not a citation of the
+project's own AD-30 — AD-30, spec 0012, is an unrelated decision about
+golden-set cache pre-warming strategy.)
 
 `CommaLabelerResponse` already has a precedent for asking pydantic-ai to retry a
 bad response: `_reject_repeated_numbers` (a `@model_validator(mode="after")`
@@ -145,7 +148,14 @@ overridden `__init__` after `super().__init__(...)` — that inspects
 with) and raises `pydantic_ai.ModelRetry` when any entry of
 `response.comma_numbers` falls outside `[1, len(ctx.deps.candidates)]`. The
 `ModelRetry` message states the offending number(s) and the valid range, so the
-retried prompt carries concrete corrective guidance.
+retried prompt carries concrete corrective guidance — **in Italian**: pydantic-ai
+injects this message back into the live conversation as the model's next-turn
+context, and `comma-labeler`'s system/user prompts are entirely Italian
+(`configs/agents/comma_labeler.yaml`), so an English correction would splice a
+language switch into an otherwise all-Italian conversation. This extends
+`.claude/rules/code-conventions.md`'s existing "prompt-facing text" exception
+(previously scoped to response-DTO docstrings/`Field(description=...)`) to
+`ModelRetry` messages specifically — updated as part of this spec.
 
 This reuses `retries=config.num_retries` — the exact same output-retry budget
 that already retries `CommaLabelerResponse._reject_repeated_numbers` — with no
@@ -176,13 +186,15 @@ for an already-active exception.
   standard), calls `super().__init__(config, provider, file_reader, tracker)`,
   then calls `self._agent.output_validator(self._validate_comma_numbers)`.
 - `_validate_comma_numbers(self, ctx: RunContext[CommaLabelerRequest], data:
-  CommaLabelerResponse) -> CommaLabelerResponse` calls `logger.warning` with
-  lazy `%s` args (`.claude/rules/logging.md` — never an f-string, enforced by
-  ruff's `G004`) carrying the offending ordinal(s) and the valid range, then
-  raises `ModelRetry` with the same information rendered as a plain string
-  (the `ModelRetry` message is prompt-facing text shipped back to the model,
-  not a logging call, so `G004` does not apply to it); otherwise returns
-  `data` unchanged with no log.
+  CommaLabelerResponse) -> CommaLabelerResponse` calls `logger.warning` in
+  English, with lazy `%s` args (`.claude/rules/logging.md` — never an
+  f-string, enforced by ruff's `G004`), carrying the offending ordinal(s) and
+  the valid range; then raises `ModelRetry` with a **separate, Italian**
+  message carrying the same facts, since it is prompt content sent back into
+  `comma-labeler`'s all-Italian conversation, not a logging call (`G004`
+  does not apply to it — see the extended exception in
+  `.claude/rules/code-conventions.md`). Otherwise returns `data` unchanged
+  with no log.
 - New test file `tests/labeling/agents/comma_labeler/test_comma_labeler_agent.py`
   (following the `FunctionModel`-based pattern already used in
   `tests/commons/ai/agents/test_base_agent.py`) covers:
@@ -225,6 +237,39 @@ labeling run's data hasn't justified yet.
 - `uv run ingest status` (or the equivalent config-loading test) confirms the
   loaded `AgentConfig` for `comma-labeler` reflects `num_retries == 5`.
 
+### FR-6: `_reject_repeated_numbers`'s retry message switches to Italian
+
+Verified in `pydantic_ai/_output.py:121-129` (`_make_retry_prompt`): a
+`ValidationError`'s content sent back to the model is
+`e.errors(include_url=False, include_context=False)` — pydantic's structured
+error list, whose `msg` field carries the custom message from the
+`raise ValueError(...)` inside the validator. This is exactly as
+prompt-facing as a `ModelRetry` message (FR-3): both are injected into the
+live conversation as retry feedback. `_reject_repeated_numbers`'s message
+("comma_numbers must not repeat a candidate number") predates this spec and
+is in English, splicing a language switch into `comma-labeler`'s all-Italian
+conversation on every retry it triggers — the same inconsistency FR-3 avoids
+introducing. This FR closes that pre-existing gap rather than leaving it as a
+second, inconsistent precedent alongside FR-3's new Italian `ModelRetry`
+message.
+
+**Acceptance criteria:**
+- The `raise ValueError(...)` inside `CommaLabelerResponse._reject_repeated_numbers`
+  (`src/labeling/agents/comma_labeler/dto/comma_labeler_response.py`) carries
+  an Italian message stating the same fact (no repeated ordinal allowed),
+  in a tone consistent with the class's existing Italian docstring and
+  `Field(description=...)` text.
+- An inline comment immediately above the `raise` states *why* the message is
+  Italian (the WHY, not the WHAT — code-conventions.md style): it is
+  prompt-facing text sent back to the model as retry feedback, per
+  `.claude/rules/code-conventions.md`'s "prompt-facing text" exception
+  (extended by FR-3/this spec to cover validator retry messages, not only
+  DTO docstrings/`Field(description=...)`).
+- `tests/labeling/agents/comma_labeler/dto/test_comma_labeler_response.py:19`
+  (`pytest.raises(ValidationError, match="must not repeat a candidate
+  number")`) is updated to match the new Italian message text — this test
+  pins the literal English string today and will fail otherwise.
+
 ## Non-Goals
 
 - Removing or weakening `_resolve_labels`'s manual guard (FR-4) — it stays as
@@ -242,8 +287,9 @@ labeling run's data hasn't justified yet.
   `RoadSignDescriberAgent`, and `NormReferenceDescriberAgent` gain unused
   `deps` plumbing (FR-1) but no new class attribute, no new validator, and no
   behavior change.
-- Any change to `CommaLabelerResponse`'s own `_reject_repeated_numbers`
-  validator or its retry behavior.
+- Changing `_reject_repeated_numbers`'s *retry behavior* (it keeps rejecting
+  on any repeated ordinal, unconditionally) — only its message text changes
+  (FR-6).
 - Tuning `num_retries` beyond the FR-5 bump to 5, or introducing a distinct
   retry budget per failure mode. Further tuning is deferred to a future pass
   once FR-3's new `warning` logs give real data on how often each failure
@@ -328,7 +374,7 @@ labeling run's data hasn't justified yet.
 ## Migration Notes (for the implementation plan)
 
 This spec deliberately does not sequence the work — that is the
-`writing-plans` skill's job. Two ordering constraints worth carrying into the
+`writing-plans` skill's job. Ordering constraints worth carrying into the
 plan:
 - FR-1 and FR-2 are not independently shippable: `self._agent.run(...,
   deps=request)` (FR-1) does not type-check unless `self._agent` is already
@@ -342,3 +388,8 @@ plan:
   unchanged after FR-1–FR-3 land.
 - FR-5 (the YAML config bump) is independent of FR-1–FR-4 and can land in any
   order relative to them — it touches only `configs/agents/comma_labeler.yaml`.
+- FR-6 (the `_reject_repeated_numbers` message translation) is independent of
+  FR-1–FR-5 — it touches only `comma_labeler_response.py` and its own test —
+  but should land in the same commit or immediately alongside FR-3, since
+  both establish the same new convention (Italian retry-feedback messages)
+  and reviewing them apart would make the convention easy to miss.
