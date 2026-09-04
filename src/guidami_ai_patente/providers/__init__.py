@@ -1,0 +1,43 @@
+"""Infrastructure components implementing a technical contract (spec 0013, AD-16).
+
+Infrastructure components implementing a contract the inner layers (a `UseCase`,
+a `*Service`, the domain) rely on, to supply a technical service or access to an
+external resource — while those inner layers stay unaware of the implementation
+detail behind it (AD-16, revised; full definition in
+`.claude/rules/pywire-di.md`'s "`@provider`" section). The test is the direction of
+the dependency, not constructor arity: a provider *supplies* something, it never
+*decides* something — a class that branches on a business rule stays a `@service`/
+`UseCase` even if it also hands back a resource (see `QuizImageService`).
+
+Distinct from a `repository` (parameterized reads against a store — no caller wants
+the repository's own collaborators, they want a read result) and a `client` (a thin
+adapter to an external API or a resource still owned by a pre-pywire package, e.g.
+`guidami_ai_patente/clients/postgres_client_provider.py::PostgresClientProvider`,
+which fits this definition conceptually but keeps `@client` and stays in `clients/`
+pending `commons/` itself adopting pywire).
+
+`LabelingStackProvider` is the reference example: what it exposes — the loaded
+`AgentConfig` plus the `LabelingEpoch` derived from it — is a value multiple
+consumers (the FR-8 precedence query, the FR-14 startup check) read without knowing
+how it was built, built once at first resolution rather than re-read per caller.
+
+`OpenRouterProviderComponent` and `LlmCallTrackerProvider` are two of the providers
+plan 3 adds: the one `OpenRouterProvider` every agent shares, and the tracker whose
+background-worker lifecycle now has a container-scoped owner (`@pre_destroy`).
+`LiveLabelingStackProvider` is a third: it assembles everything the live judging path
+needs — retrieval repositories, the candidate-set service and Task 5's
+`QuestionLabelingService` — deliberately kept out of `LabelingStackProvider` so the
+FR-14 diagnostic and the no-LLM `POST /check` path never construct the judge (D3).
+"""
+
+from .labeling_stack_provider import LabelingStackProvider
+from .live_labeling_stack_provider import LiveLabelingStackProvider
+from .llm_call_tracker_provider import LlmCallTrackerProvider
+from .open_router_provider_component import OpenRouterProviderComponent
+
+__all__ = [
+    "LabelingStackProvider",
+    "LiveLabelingStackProvider",
+    "LlmCallTrackerProvider",
+    "OpenRouterProviderComponent",
+]

@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0012 |
-| **Status** | ready |
+| **Status** | in-progress |
 | **Date** | 2026-08-24 |
 | **Discussion log** | — (brainstormed in-session, 2026-08-24) |
 | **Supersedes / superseded by** | Supersedes `docs/superpowers/specs/2026-08-19-quiz-check-endpoint-design.md` (mis-numbered "Spec 0011", never signed off — see AD-17). Amends the golden-set decision AD-6 of `2026-08-19-retrieval-golden-set-design.md` (the real Spec 0011) — see AD-10. |
@@ -212,6 +212,11 @@ client is told why.
   stored `quiz_labelings.rationale` when a labeling exists, and `null` for
   `not_indexed`.
 
+> **Errata (2026-09-02):** "the explanation writer agent is **not instantiated** and
+> not called" — under pywire the agent is a container singleton, so instantiation is
+> not per-request and cannot be branch-dependent. The guarantee the endpoint delivers
+> and the suite asserts is that it is never **called**.
+
 ### FR-8: Deterministic precedence among competing labelings
 
 Where several labelings exist for one question, exactly one is "current": a
@@ -399,6 +404,9 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
 - Given any `--topic` value, then it does **not** appear in `labeling_runs` and does not
   participate in the configuration epoch: it selects *which* questions are labeled, not
   *how* they are judged (FR-9).
+
+> **Errata (2026-09-02):** delivered in plan 1, not plan 3. Plan 3's obligation was
+> reduced to verification plus the AD-30 run.
 
 ## Non-Goals
 
@@ -697,6 +705,15 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
   one provider per shared class — mechanically uniform but seven near-identical
   wrappers for a graph the extracted builders already know how to assemble.
 
+> **Errata (2026-09-02):** the shared stack is assembled by **three** providers, not
+> two: `PostgresClientProvider`, `LabelingStackProvider` (the judge's identity) and
+> `LiveLabelingStackProvider` (the machinery), plus `OpenRouterProviderComponent` and
+> `LlmCallTrackerProvider`. Folding the machinery into the identity provider would let
+> FR-14's deliberately-swallowing startup diagnostic mask a malformed prompt file or a
+> bad credential, and would drag an LLM graph onto the hot `POST /check` path. This AD's
+> rejected alternative was *seven near-identical per-class wrappers*; this is not that
+> (D3).
+
 ### AD-16b: `GoldenSetReadRepository` is app-local and pywire-native, not part of `src/labeling/`
 - **Rationale:** The golden set has only ever had a write path; this read path exists
   solely to serve the explanation endpoint. By the self-containment test in
@@ -776,6 +793,12 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
   branch on the HTTP status would treat it as an answer; a bare `500` — correct in
   kind but gives the client nothing to distinguish "retry in a moment" from "this is
   broken".
+
+> **Errata (2026-09-02):** "persisted before the response is returned" (FR-6) now
+> happens with a **lazily resolved** run id: the `labeling_runs` row is created
+> immediately before the labeling insert, not before the judge call, so FR-13's "no row
+> is written to any golden-set table" after a judge failure is literally true (D8's
+> `resolve_run_id`).
 
 ### AD-21: The explanation endpoint accepts an optional `submitted` answer, passed to the writer
 - **Rationale:** An explanation addressed to someone who got it wrong is a different
@@ -881,6 +904,12 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
   threadpool — works, and is the honest fallback, but leaves the 10s call occupying a
   worker thread and gives up the natural `await` on an already-async agent.
 
+> **Errata (2026-09-02):** the shared `QuestionLabelingService` crosses
+> `asyncio.to_thread` for its own synchronous calls. This also changes the **batch**:
+> its candidate-set and insert work now fans out under the semaphore instead of
+> serialising on the event-loop thread. `label_main` already sizes the pool at
+> `concurrency + 1` for exactly this.
+
 ### AD-26: `PostgresClient` becomes pooled, and that change ships in plan 1 gated on the batch suite
 - **Rationale:** `PostgresClient.__init__` opens **one** `psycopg.connect(...,
   autocommit=True)` and it is a process-wide pywire singleton. psycopg3 guards a
@@ -953,6 +982,15 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
   `AppConfig` read `configs/ingestor_config.yaml` directly — couples the app to the
   ingestor's configuration file, which ADR 0015's package scoping exists to avoid.
 
+> **Errata (2026-08-25):** the implementation clause "no epoch field may be declared
+> independently on either root" over-reached. `agents_dir` is *also* declared on
+> `IngestorConfig`, because `quiz_flows.py:344` loads the quiz enrichment agents from it
+> and those prompts enter no epoch; routing them through a *labeling* config would make
+> `ingest prepare quiz` fail for a reason unrelated to the judge. Both fields are
+> defaultless and both aliased to `AGENTS_DIR`. The AD's rationale is unchanged: the
+> single-source property comes from one defaultless env var — no second default, no
+> second YAML key — not from a single field declaration.
+
 ### AD-28: A corpus reset invalidates labelings and refuses to discard human validation
 - **Rationale:** `quiz_comma_labels.article_comma_id` references `article_commas` with
   `ON DELETE CASCADE`, and Postgres refuses `TRUNCATE` on a table with an inbound foreign
@@ -974,6 +1012,12 @@ slice at a time and a single topic can be re-labeled after a prompt change (AD-3
   nothing outside its scope, but then the breakage must be recorded as a known-broken
   command rather than left to surface as a bare foreign-key error nobody was warned
   about.
+
+> **Errata (2026-08-25):** this AD addressed only `ingest reset knowledge`.
+> `ingest reset quiz` has the identical defect — `quiz_labelings.quiz_question_id`
+> references `quiz_questions ON DELETE CASCADE`, so `TRUNCATE quiz_question_embeddings,
+> quiz_questions` fails the same way, and does so today with 14 rows present. Deferred to
+> a future change, deliberately and not by oversight.
 
 ### AD-29: The golden set records the judge's verdict, not the writer's success
 - **Rationale:** FR-6 ("persisted before the response is returned") and the first draft
@@ -1315,8 +1359,18 @@ independent value.
 - Routers contain no `try/except` and no HTTP-status logic; domain exceptions are
   mapped by a global handler registered on the app.
 - At most one `AppConfig` is constructed per pytest session, via the shared session
-  fixture — pywire's singleton cache makes any second construction silently
-  ineffective and can point the suite at the dev database.
+  fixture.
+
+  > **Errata (2026-09-02):** the stated *reason* — "pywire's singleton cache makes any
+  > second construction silently ineffective" — was true only of pywire ≤0.5.0, whose
+  > `register()` patched the registered class's `__new__`/`__init__`. Since 0.6.0
+  > *"`register()` never modifies the class it registers"*: `AppConfig(...)` is an
+  > ordinary Python call that returns a fresh, unwired object, and the container holds
+  > whatever `register_instance` was handed (ADR 0023). The constraint itself survives
+  > with a different mechanism: `register_instance` **refuses to displace an existing
+  > registration**, so a second construction is not silent — it raises
+  > `RegistrationError`, or leaves the container pointing at the first instance. Keeping
+  > one session fixture is still what stops the suite aiming at the dev database.
 - Integration tests target only the ephemeral test stack
   (`docker/docker-compose.test.yml`, port 5433), never the dev database (ADR 0011).
 - The batch labeler and the live labeler are the same `CommaLabelerAgent` instance
@@ -1552,11 +1606,13 @@ independent value.
   `CandidateSetService` expects, and its name reflects the evaluation origin. Decide
   during the AD-12 extraction whether it is renamed or kept — owner: whoever implements
   the extraction.
-- [ ] **non-blocking** — `ADR 0017` is still `Proposed` and still carries the
-  constructor-parameter testability exception that the superseded quiz-check spec's
-  AD-9 concluded does not work (pywire's patched `__new__` returns the cached singleton,
-  so a second construction's keyword is discarded). That item should be removed when
-  ADR 0017 is accepted — owner: whoever implements AD-16.
+- [x] **resolved 2026-09-02** — `ADR 0017`'s constructor-parameter testability
+  exception. The premise on both sides of that question is gone: pywire ≤0.5.0's patched
+  `__new__` (which made the exception necessary *and* made it not work) no longer exists
+  — since 0.6.0 `register()` leaves the class untouched. **ADR 0023** supersedes ADR 0017
+  on this point: field-only `Autowired[T]`, substitutes injected with
+  `register_instance(fake, as_type=...)` and isolated with `clear_instances()`. See
+  `.claude/rules/pywire-di.md`, "Testing with a substitute dependency".
 - [ ] **non-blocking** — `quiz_questions.rule_explanation` becomes orphaned at runtime
   (AD-7). Decide separately whether the ingestion still needs to produce it — owner:
   a later ingestion-scope review.
@@ -1641,3 +1697,42 @@ independent value.
   as an accepted limitation rather than left implicit (AD-8). Three open questions
   closed. `GET /health` deliberately left untouched. Material change — status stays
   `draft`, scope needs approval.
+- **2026-09-02** — Re-verified the DI decisions against the pinned `pywire`, bumped
+  `v0.7.0` → **`v0.8.0`** (suite green: 810 tests, ruff clean, pyright 0 errors). Two
+  statements in this spec were written against pywire ≤0.5.0 and had gone stale without
+  anyone noticing, because the Feasibility Evidence carries a verification date but no
+  mechanism that re-checks it after a dependency bump:
+  **(1)** the Constraints entry justifying the one-`AppConfig`-per-session fixture by
+  "pywire's singleton cache" — since 0.6.0 `register()` does not modify the registered
+  class at all, so the mechanism is `register_instance` refusing to displace an existing
+  registration, not a patched `__new__`. Errata added in place; the constraint stands.
+  **(2)** the open question about ADR 0017's constructor-parameter testability
+  exception — closed, superseded by ADR 0023.
+  **v0.8.0 itself is a single breaking change: `pywire.fastapi.wire()` is removed**
+  (`pywire_lifespan` is now the only way to configure a container on a FastAPI app).
+  It costs this spec nothing — `api/app.py` migrated to `pywire_lifespan` on 2026-09-01
+  (spec 0013, FR-6) and no `wire()` call exists anywhere in `src/` or `tests/` — but it
+  invalidates ADR 0016's Decision item 3 and three passages of
+  `.claude/rules/pywire-di.md`, both updated separately. No FR, no AD and no acceptance
+  criterion changed: **not** a material change, status unaffected.
+
+> **Errata (2026-09-02):** the API tracks its LLM calls (`LlmCallTrackerProvider`, D5).
+> This spec specified no observability for the API path, and
+> `labeling.wiring.build_comma_labeler_agent`'s docstring claiming the API "runs without
+> a `QueuedLlmCallTracker`" was true only while pywire had no teardown; that docstring
+> has since been corrected.
+
+> **Errata (2026-09-02):** `AppConfig.explanation_deadline_s` (D10). FR-13 names
+> "timeout" as a 503 cause without saying whose; the answer is an explicit request-wide
+> budget in the app, leaving `comma_labeler.yaml`'s 60s to the batch.
+
+> **Errata (2026-09-02):** debt recorded, deliberately not fixed here (D11, D7):
+> `ingest reset quiz` is still broken on the inbound `quiz_labelings` foreign key — same
+> shape as the `reset knowledge` repair (AD-28). `LabelingConfig`'s `yaml_file` is
+> CWD-relative, so a process started from the wrong directory silently falls back to the
+> Python defaults for every epoch field except `agents_dir` — harmless only while the
+> defaults mirror the YAML, and **not** caught by FR-14 (which compares `prompt_version`,
+> sourced from the defaultless `AGENTS_DIR`). And the embedding column is a shared
+> constant, not configuration: the symmetric parameterisation — per-model columns on
+> `article_commas`, a parameterised `dense_top_k`, the column inside the epoch key, an
+> ingestion write path that targets it — needs its own spec.

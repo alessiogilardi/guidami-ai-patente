@@ -9,7 +9,7 @@ from commons.configs import PostgresConnectionConfig
 from commons.repositories.db import CorpusReadRepository
 from domain.enums import LexemeField
 from domain.models.retrieval import QuizEvaluationRow
-from retrieval_evaluation.services import QuestionLexemeService
+from labeling.services import QuestionLexemeService
 
 
 def _vector(dimension: int, hot_index: int) -> list[float]:
@@ -398,7 +398,7 @@ def test_extracted_lexemes_survive_operator_punctuation(client: PostgresClient) 
     )
     row = _make_evaluation_row('-divieto "sosta" or fermata')
 
-    lexemes = lexeme_service.build(row)
+    lexemes = lexeme_service(row)
     joined = " ".join(lexemes)
 
     assert any("divieto" in lexeme for lexeme in lexemes) or "divi" in joined

@@ -11,7 +11,7 @@ dependencies = [
     "pdfplumber>=0.11.9",
     "pillow>=10.0.0",
     "pgvector>=0.4.2",
-    "psycopg[binary]>=3.3.4",
+    "psycopg[binary,pool]>=3.3.4",
     "pydantic>=2.13.4",
     "pydantic-settings[yaml]>=2.14.1",
     "pymupdf>=1.27.2.3",
@@ -35,7 +35,7 @@ parse-domande      = "parsers.questions_pdf:main_questions"
 ingest             = "guidami_ai_patente_ingestor.cli:main"
 sample-test-data   = "test_data_sampler.sampler:main"
 evaluate-retrieval-judge = "retrieval_evaluation.main:main"
-api                = "guidami_ai_patente.main:main"
+serve              = "guidami_ai_patente.main:main"
 label-golden-set   = "retrieval_evaluation.label_main:main"
 
 [build-system]
@@ -44,7 +44,7 @@ build-backend = "uv_build"
 
 [tool.uv.sources]
 flowstep = { git = "https://github.com/alessiogilardi/flowstep.git", branch = "main" }
-pywire = { git = "https://github.com/alessiogilardi/pywire.git", tag = "v0.6.0" }
+pywire = { git = "https://github.com/alessiogilardi/pywire.git", tag = "v0.8.0" }
 
 [dependency-groups]
 dev = [

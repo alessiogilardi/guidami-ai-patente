@@ -12,14 +12,14 @@ Two apps live side by side under `src/`:
 - `guidami_ai_patente_ingestor/` — the batch ingestion app. Fully
   implemented: preparation (clean + enrich) and indexing (embed + store)
   pipelines for both the knowledge corpus and the quiz bank.
-- `guidami_ai_patente/` — the FastAPI quiz-bot app. **Layout scaffolded,
-  no domain endpoints yet**: a self-contained `api/` web layer (app
-  factory, routers, schemas), pull-based `services/`/`repositories/`
-  holding their first real (non-domain) classes, empty `models/`/
-  `mappers/`, and `configs/` with a root `AppConfig`. Only concrete route
-  so far is `GET /health`, which also doubles as the first live proof of
-  `pywire`'s native FastAPI wiring (`pywire.fastapi.wire()`) — see the
-  `guidami_ai_patente/` row below.
+- `guidami_ai_patente/` — the FastAPI quiz-bot app. A self-contained
+  `api/` web layer (app factory, routers, schemas), `services/`/
+  `repositories/` holding both infra classes and quiz domain logic,
+  empty `models/`/`mappers/`, and `configs/` with a root `AppConfig`.
+  Live routes now include `GET /health` — which also doubles as the
+  first live proof of `pywire`'s native FastAPI wiring
+  (`pywire.fastapi.pywire_lifespan`, ADR 0028) — plus five quiz domain
+  endpoints; see the `guidami_ai_patente/` row below.
 
 Two shared foundation packages support both apps (and are meant to keep
 doing so once the FastAPI app starts):
@@ -28,11 +28,8 @@ doing so once the FastAPI app starts):
   configs.
 - `domain/` — entities/models persisted or shared across apps, grouped by
   bounded context: `entities/knowledge/` (`ArticleEntity`, `ArticleCommaEntity`),
-  `entities/quiz/` (`QuizQuestionEntity`). `entities/observability/`
-  (`LlmCallLogEntity`) has been removed: the entity moved into
-  `commons/ai/observability/entities/` (see that component's row below), so the
-  whole module — including its own persisted row shape — stays removable in one
-  piece. The former `knowledge_chunk` was split into article +
+  `entities/quiz/` (`QuizQuestionEntity`), `entities/observability/`
+  (`LlmCallLogEntity`). The former `knowledge_chunk` was split into article +
   comma by spec 0001, and `retrieval_result` was deleted in the same change —
   a read-path model returns when the retrieval layer actually exists. `quiz_question`
   is flat: its former nested `quiz_metadata` was demoted to a transient
@@ -55,18 +52,19 @@ is a similarly standalone script package — an LLM-as-judge measurement tool
 |---|---|---|
 | `commons/ai/embedding/` | `clients/`: `EmbeddingClient` ABC (`embed_query`, `embed_passages`); `LiteLLMEmbeddingClient` (production) and `SentenceTransformerEmbeddingClient` (offline alternative, not hot-swappable — different dimension) — unchanged. `configs/`: `EmbeddingClientConfig` (renamed from `EmbeddingConfig` — it configures the *client*, not the module). `protocols/`: `TextComposer[T]` (`compose(model: T) -> str`, the 1:1 case — always a string, the port `ModelEmbeddingService[T]` depends on) and `OptionalTextComposer[T]` (`compose_or_none(model: T) -> str | None`, its counterpart for a representation that may legitimately be absent for a given model — `None` signals "nothing to embed", never a partial text; a distinct method name, not an overload of `compose`, since one class can implement both protocols at once). `models/`: `FieldSpec`/`EmbeddingSpec` (declarative composition recipe, dataclasses — `Callable` fields rule out `BaseModel`), `EmbeddingResult[T]` (`model`/`text`/`embedding` triple). `composition/`: `FieldSpecComposer[T]` (declarative, field-by-field; implements **both** `TextComposer[T]` (`compose`, always a string) and `OptionalTextComposer[T]` (`compose_or_none`, `None` when a field marked `skip_if_none=False` — "required" — is missing) — the caller picks whichever method its pipeline needs), `TemplateComposer[T]` (`string.Template` `$var` substitution against a `BaseModel`/dataclass/`Mapping`, dispatch ported from `agents/utils/prompt_renderer.py::PromptRenderer`, but strict `.substitute()` not `.safe_substitute()` — an unresolved placeholder must fail loud, not get embedded literally into the text sent for embedding; implements `TextComposer[T]`), `CallableComposer[T]` (wraps any `Callable[[T], str]`, e.g. a model's own computed property, avoiding a throwaway composer class per model type; implements `TextComposer[T]`). `services/`: `EmbeddingService` (batching, `Sequence[str] -> list[list[float]]`, unchanged public contract — internals now use `itertools.batched` and a new `commons.observability.progress_reporter.tracker` generator instead of manual chunking); `ModelEmbeddingService[T]` (composes+embeds a batch of models 1:1 via an injected `TextComposer[T]`, delegating all chunking/progress to the injected `EmbeddingService`). Per-variant dedup/omission/fan-out (N text representations of one model, each with its own omission rule and dedup key) is **not** generalized here: ADR 0014 proposed a `VariantSpec[T]`/`VariantModelEmbeddingService[T]` pair for it, and was rejected (`docs/second-brain/adr/0014-embedding-composition-layer.md`, status `Rejected`) — it stays domain logic local to `guidami_ai_patente_ingestor/services/quiz/` (see the quiz-indexing walkthrough below). Every `UseCase` in this module — and in the codebase generally — is invoked via `__call__`, never `.execute()` directly (`.claude/rules/use-case-invocation.md`) | litellm (→ OpenRouter), sentence-transformers |
 | `commons/ai/agents/` | `BaseAgent[T_In, T_Out]` — wraps `pydantic_ai.Agent`, loads `AgentConfig` (in `configs/`) from YAML, renders prompts via `PromptRenderer`; requires an injected `pydantic_ai.providers.Provider[AsyncOpenAI]` (never reads env itself) — `OpenRouterProvider` selects `OpenRouterModel` (OpenRouter-specific cost tracking/settings), any other provider (e.g. `OllamaProvider`) selects the generic `OpenAIChatModel`, dispatched via the `_is_openrouter` property (`adr/0019-base-agent-generic-provider-ollama.md`); optionally tracks every call via an injected `LlmCallTracker` port | pydantic-ai-slim[openrouter] |
-| `commons/configs/` | Shared, app-agnostic Pydantic config: `PostgresConnectionConfig` (plain frozen `BaseModel` — not self-loading, populated by `IngestorConfig`'s own env/yaml loading; this row previously misdescribed it as a `BaseSettings`, corrected 2026-08-28), `OpenRouterConfig` (`BaseSettings`, self-loading, `env_prefix="OPENROUTER_"`, holds `api_key: SecretStr`), `BaseConfig` (new root, self-loading `BaseSettings` base — `load(config_override=None, **init_kwargs)`, precedence init > env/.env > override yaml > base yaml, same profile-switching shape `IngestorConfig.load` already had; **partial landing**: only `ObservabilityConfig` adopts it so far, `IngestorConfig`/`OpenRouterConfig` are explicitly not migrated yet — see `adr/0021-base-config-partial-landing.md`) | pydantic-settings |
-| `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`, now a context manager: `track(tracked_caller, prompt) -> AbstractContextManager[PydanticAILlmCallRecorder]`) + `LlmCallLogRepository` port (`protocols/`, public — replaces the former private duplicate nested inside `services/`) + `PydanticAILlmCallRecorder` (`adapters/` — stateful pydantic_ai → `LlmCallLogEntity` translation, builds the entity directly, no DTO/mapper; owns the per-call `info`/`warning` logs, see `patterns.md`) + `NullLlmCallTracker`/`QueuedLlmCallTracker` (`services/`) + `PostgresLlmCallLogRepository` (`repositories/`, table name now a constructor arg) + `LlmCallLogEntity` (`entities/`, moved in from `domain/entities/observability/`) + `TrackerBackend` (`enums/`) + `ObservabilityConfig` (`configs/`, self-loading `BaseConfig`) + `TrackedCaller` (`models/`, per-agent-lifetime identity built once in `BaseAgent.__init__`) + `build_llm_call_tracker` (package-root `tracker_factory.py`, `@contextmanager` composition-root factory, replacing the duplicated `build_tracker` helper that used to live separately in `cli/wiring.py` and `retrieval_evaluation/wiring.py`) — populates `llm_call_logs` (`adr/0020-context-manager-tracker-port.md`); commons-level (not ingestor-only) because the future FastAPI app will track calls too | psycopg[binary] |
+| `commons/configs/` | Shared, app-agnostic Pydantic settings: `PostgresConnectionConfig`, `OpenRouterConfig` (`BaseSettings`, `env_prefix="OPENROUTER_"`, holds `api_key: SecretStr`) | pydantic-settings |
+| `commons/ai/observability/` | `LlmCallTracker` port (`protocols/`) + `PydanticAILlmCallCapture`/`QueuedLlmCallTracker` (`services/`) + `LlmCallLogRepository` (`repositories/`) + `LlmCallLogMapper`/`LlmCallCaptureModel` (`mappers/`, `models/`) — populates `llm_call_logs`; commons-level (not ingestor-only) because the future FastAPI app will track calls too | psycopg[binary] |
 | `commons/observability/` | Thin re-exporting `__init__.py` over two self-contained sibling sub-packages: `progress_reporter/` (`ItemProgressReporter`/`ProgressReporter` port + `NullProgressReporter` + a `tracker(progress, label, items)` generator helper — iterates `items`, opening the track before the first, advancing after each is consumed, closing once exhausted or on exception; unrelated to the `LlmCallTracker`/`tracker` local variable in the LLM-observability narrative below, a pure naming coincidence — progress reporting for the ingest CLI's live dashboard, spec 0002) and `run_artifact_writer/` (`RunArtifactWriter` + a `models/` sub-package holding `RunManifest` (base) and `ScrapeManifest`; `RunArtifactWriterConfig` was removed, spec 0005 AD-5 — `RunArtifactWriter` is domain-agnostic mechanics only, no `protocols/`/`services/` split since AD-3 rejects a `Protocol` here with only one implementation; a context manager that owns one `logs/<prefix>_<timestamp>/` run directory, writing `run.log`/`manifest.json`/`report.md` from whatever `RunManifest` it holds and always finalizing them in `__exit__` even on an unhandled exception — shared between `ingest`'s `configure_logging` and the `scrapers/normattiva.py` scraper, spec 0005 AD-1/AD-4); a sibling of `commons/ai/observability/`, not nested under it, since it is not AI-specific. The `ingest`-only manifests (`PrepareManifest`/`IndexManifest`/`ResetManifest`) live in `guidami_ai_patente_ingestor/cli/models/run_artifacts/` instead, per the CLI self-containment rule (spec 0005 AD-6) | — |
-| `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client | psycopg[binary], pgvector |
+| `commons/clients/postgres_client.py` | Generic, table-agnostic Postgres/pgvector client backed by a `psycopg_pool.ConnectionPool` (AD-26): holds min/max pool size from `PostgresConnectionConfig.pool_min_size`/`pool_max_size` (defaults 1/8), opens eagerly with `wait=True` to fail fast on an unreachable database (D3), registers the pgvector adapter on every connection via a `configure=_configure` hook, and asserts no session state survives a borrow via a `reset=_reset` hook (D4). Public method surface unchanged (`truncate`, `execute`, `execute_many`, `execute_many_returning`, `fetch`, `close`, `__enter__`, `__exit__`): every call site borrows a connection from the pool. It wraps sync `psycopg`/`psycopg_pool`, not their async counterparts (`AsyncConnection`/`AsyncConnectionPool`) — shared as-is with the fully synchronous `guidami_ai_patente_ingestor` batch pipeline, which never runs inside an event loop. `guidami_ai_patente/`'s route handlers compensate per request via `asyncio.to_thread` (AD-25) rather than the client itself being non-blocking; swapping `PostgresClient` to psycopg's async API instead of that per-request thread hop is a possible future enhancement — not yet planned, decided, or tracked by an ADR. | psycopg[binary,pool], pgvector |
 | `commons/repositories/db/` | Read-only Postgres repositories, scoped **per entity** not per table (AD-7, spec 0007) — the project's first query code, every repository under `guidami_ai_patente_ingestor/repositories/db/` being write-only bulk insert. `CorpusReadRepository` (`articles` ⋈ `article_commas`) and `QuizReadRepository` (`quiz_questions` ⋈ `quiz_question_embeddings`), each taking an injected `PostgresClient`, mirroring `LlmCallLogRepository`'s shape. `CorpusReadRepository`'s shared `_BASE_SELECT` projection leads with `c.id` (spec 0011 FR-3), so every comma it returns — dense, random or text — can be joined back to its `article_commas` row without resolving a citation string. `QuizReadRepository.fetch_with_vectors(variant, model_column)` takes the model column explicitly (spec 0008 Phase 2, generalized from a single hardcoded `embedding_3_small`); `populated_model_columns()` introspects `information_schema.columns` for `embedding_*`-named columns holding ≥1 non-null vector, so the multi-arm evaluation harness's model axis needs no code change when a second model column is added (AD-6). Lives in `commons/` rather than the `ingest` CLI (which the self-containment rule would otherwise suggest) because a corpus reader is also what `src/guidami_ai_patente/` will eventually need — more than one consumer, same reasoning as `LlmCallLogRepository` | psycopg[binary], pgvector |
 | `commons/use_cases/` | `UseCase`/`AsyncUseCase`, `ForEach`, `FlatMap` — generic composition primitives used across pipeline steps | — |
 | `domain/entities/`, `domain/models/` | Persisted entities and shared cross-app models | pydantic |
 | `flowstep` (external dependency) | Generic sequential-pipeline engine (`Flow`, `Step`, `FlowBuilder`, `FlowContext`, `ApplyStep`) | git dependency (github.com/alessiogilardi/flowstep) |
 | `guidami_ai_patente_ingestor/` | Batch ingestion app — orchestrators, services, repositories, mappers, agents, models, configs (see flows below) | — |
 | `guidami_ai_patente_ingestor/cli/` | Self-contained `ingest` CLI package (entry point, argument parsing, lazy DI wiring, per-subcommand dispatch, CLI-local `status` services/DTOs/renderer) — see `.claude/rules/cli-structure.md` and the `ingest status` flow below | argparse, rich |
-| `guidami_ai_patente/` | FastAPI quiz bot — layout scaffolded (`api/` self-contained web layer, `configs/app_config.py::AppConfig`, empty pull-based `models/`/`mappers/`), only `GET /health` implemented so far; entry point `main.py::main`, registered as the `api` script. Dependency injection uses `pywire` (Spring-style `@service`/`@repository`/`@client`/`@component` decorators + `Autowired[T]` field injection), not the manual constructor injection the ingestor uses — see `adr/0015-pywire-di-for-fastapi-app.md` and `.claude/rules/pywire-di.md`. `pywire>=0.3.1` adds native FastAPI wiring: a single `wire(app)` call in `api/app.py::create_app` (never on an `APIRouter`) makes bare `Autowired[T]` route parameters resolve on every router mounted on the app; `services/health_check_service.py::HealthCheckService` (`Autowired[DependencyVersionRepository]`) is resolved this way on `GET /health` — no `Depends()` — proven live via `uv run api` + a real HTTP request, not just `TestClient`; see `adr/0016-pywire-native-fastapi-wiring.md` | FastAPI, uvicorn, pywire |
-| `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013). `RetrievalJudgeAgent` + its DTOs (`agents/retrieval_judge/`, `BaseAgent` pattern — `agents/` is a generic per-role container, today holding the single `retrieval_judge/` agent subpackage) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names/`agents_dir`) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
+| `guidami_ai_patente/` | FastAPI quiz bot — `api/` self-contained web layer, `configs/app_config.py::AppConfig`, empty pull-based `models/`/`mappers/`; seven live endpoints (`GET /health` plus six quiz domain routes, detailed below); entry point `main.py::main`, registered as the `serve` script. `AppConfig` (`BaseSettings`) loads once at startup and is registered on the `pywire` container as a singleton: it holds `postgres` (connection pool config, `pool_min_size`/`pool_max_size`); `quiz_images_dir` (root directory for quiz image access, default `Path("data/quiz-images")` — FR-12); and table-name fields (`articles_table`, `article_commas_table`, `quiz_questions_table`, `quiz_question_embeddings_table`, `labeling_runs_table`, `quiz_labelings_table`, `quiz_comma_labels_table`, all defaults matching the schema) parameterizing the API's repositories. Since spec 0013 FR-1, `AppConfig` declares **no** `labeling` field — `main.py` loads and registers an independent `LabelingConfig` instance (the same `BaseSettings` root `IngestorConfig.labeling` embeds on the batch side, single-sourced from `configs/labeling.yaml`/`AGENTS_DIR`) via a generalized `_register_instance[T]` helper, and every consumer that used to read `self.config.labeling.X` now declares its own `labeling_config: Autowired[LabelingConfig]`. `LabelingConfig.yaml_file` is `configs/labeling.yaml`, resolved relative to the process's **working directory**, not the repo root — a pre-existing, undismissed limitation (`labeling/configs/labeling_config.py`'s own class docstring/`model_config` comment) that now also applies to the API: a process started from the wrong `CWD` silently falls back to this class's Python defaults for every epoch field except `agents_dir` (env-var-sourced, defaultless), and is **not** caught by FR-14's coherence check, which compares `prompt_version` — sourced from `AGENTS_DIR`, not from `yaml_file` — so a divergence here is invisible to that diagnostic. Deliberately not fixed in spec 0012 phase 3 (D11). Dependency injection uses `pywire` (Spring-style `@service`/`@repository`/`@client`/`@component` decorators + `Autowired[T]` field injection), not the manual constructor injection the ingestor uses — see `adr/0015-pywire-di-for-fastapi-app.md` and `.claude/rules/pywire-di.md`. `pywire>=0.3.1` adds native FastAPI wiring: bare `Autowired[T]` route parameters resolve on every router mounted on the app once the container is bound to it — originally via a single `wire(app)` call in `api/app.py::create_app` (never on an `APIRouter`); since `pywire>=0.7.0`, via `pywire_lifespan` instead (see the Task 13 note below — `wire()` still works but never tears the container down). `services/health_check_service.py::HealthCheckService` (`Autowired[DependencyVersionRepository]`) is resolved this way on `GET /health` — no `Depends()` — proven live via `uv run api` + a real HTTP request, not just `TestClient`; see `adr/0016-pywire-native-fastapi-wiring.md`. As of quiz-flow-api-phase2 Task 3, `clients/` held the app's first two `@client` providers (spec 0012, AD-16). Since spec 0013 FR-2 (AD-16 revised — the test is now direction-of-dependency, not constructor arity; full definition in `.claude/rules/pywire-di.md`'s `@provider` section), `clients/` holds only `PostgresClientProvider` (`config: Autowired[AppConfig]`, builds `self.client: PostgresClient` in its own `__init__` via `labeling.wiring.build_postgres_client(config.postgres)` — one pooled client for the whole process, sizing from `AppConfig.postgres`, never from `LabelingConfig`, AD-26; also gained a `@pre_destroy` method calling `self.client.close()`, spec 0013 FR-6, run by `Container.close()` — since `pywire>=0.7.0` called by `pywire_lifespan` itself, nested inside `api/app.py::_lifespan` rather than invoked by `_lifespan` directly — after `yield`). A new sibling package, `providers/`, holds `LabelingStackProvider` (decorated `@provider`, `labeling_config: Autowired[LabelingConfig]`/`agent_configs: Autowired[AgentConfigRepository]`, loads `comma_labeler.yaml` once via `AgentConfigRepository.load("comma_labeler")` and derives `self.epoch: LabelingEpoch` via `LabelingEpochMapper.from_config_to_epoch` — the same six-field epoch the FR-8 precedence query and the FR-14 startup check both compare against; deliberately does not call `labeling.wiring.build_comma_labeler_config`, which would be a second, uncoordinated read of the same file). `repositories/` gained `AgentConfigRepository` (`@repository`, `labeling_config: Autowired[LabelingConfig]` — since spec 0013 FR-1, not `AppConfig`), the API's single door to resolving `LabelingConfig.agents_dir` and reading agent prompt YAML (AD-22): its `__init__` anchors a `commons.repositories.YamlRepository[AgentConfig]` to a `commons.clients.file_system.LocalFileSystemClient(self.labeling_config.agents_dir)`, and `load(name) -> AgentConfig` reads `<name>.yaml`, raising `FileNotFoundError` for a missing file and `PermissionError` for a name that resolves outside `agents_dir` (the file-system client's own containment check, not caller-side sanitisation). As of quiz-flow-api-phase2 Task 6, `repositories/` also holds `QuizQuestionRepository` (`@repository`, `config`/`postgres: Autowired[AppConfig, PostgresClientProvider]`) — every read the quiz endpoints make: `find_by_permutation`/`find_by_number`/`find_correct_answer`/`list_topics`/`image_is_referenced`/`has_embedding`, all synchronous, all returning `None`/`False`/`[]` on absence rather than raising (see `patterns.md` for the seeded-permutation and FR-12 database-first-authorization details, and the note there — since spec 0013 FR-2/FR-3 removed the `clients`<->`repositories` cycle at the root, this repository now imports `PostgresClientProvider` from the `clients` package re-export like any other consumer, no direct-submodule exception needed anymore). Both providers and the repositories are zero-argument constructible, building their real work inside `__init__` after pywire sets their `Autowired` fields (ADR 0017); `api/app.py` imports `LabelingStackProvider`/`PostgresClientProvider` for their pywire-registration side effect, same as every other decorated class. As of quiz-flow-api-phase2 Task 7, `repositories/` also holds `GoldenSetReadRepository` (AD-16b, app-local rather than beside `GoldenSetWriteRepository` in `src/labeling/`): `find_current_labeling(number, epoch)` (FR-8's precedence query, SQL-expressed) and `distinct_prompt_versions` (FR-14's coherence probe). Since spec 0013 FR-3 (ADR 0027, superseding ADR 0024), `find_current_labeling` takes `epoch: LabelingEpoch` as an explicit parameter instead of autowiring `LabelingStackProvider` — it is now a pure function of its two parameters, with no `clients`/`providers` dependency at all beyond `PostgresClientProvider`, now imported from the `clients` package re-export (the fix-wave following the final review simplified this off its former direct-submodule import once the cycle was confirmed gone). ADR 0024's bare-import-plus-quoted-`Autowired["clients.LabelingStackProvider"]` mechanism, which had routed around a *true* mutual `clients`<->`repositories` package-init cycle, is gone from this file entirely — the cycle is removed at the root, verified in both import orders. As of quiz-flow-api-phase2 Task 8, `services/` gained `ExplanationStatusService` (`@service`, `labeling_stack`/`golden_set`/`questions: Autowired[LabelingStackProvider \| GoldenSetReadRepository \| QuizQuestionRepository]`, all plain package-level imports — `services/` sits above both `clients/` and `repositories/` in the dependency direction, so it triggers neither of the two `clients`<->`repositories` cycles Tasks 6/7 had to work around): (since spec 0013 FR-4, `ExplanationStatusService(UseCase[str, ExplanationStatus])`, method renamed `resolve`→`execute`, invoked via `__call__`) — its `execute(request: str) -> ExplanationStatus` applies FR-4's three cases in order, reading `epoch = self.labeling_stack.epoch` once and passing it explicitly into `find_current_labeling` (spec 0013 FR-3) — a current labeling with supporting commas is `CACHED` regardless of whether an embedding exists (the cached path never retrieves, so it never needs a query vector); a current labeling without supporting commas is `UNAVAILABLE` (the judge already answered "no", re-probing the embedding wouldn't change that); only when there is **no** current labeling does it fall back to `QuizQuestionRepository.has_embedding(number, variant)` (`variant` from `LabelingStackProvider.epoch.candidate_variant`) — present is `UNCACHED`, absent is `UNAVAILABLE` (FR-7's `not_indexed`). The order is load-bearing: checking the embedding before the labeling would let a missing vector wrongly downgrade a valid cache hit. As of quiz-flow-api-phase2 Task 12, `services/` also holds `JudgeCoherenceChecker` (`@service`, `labeling_stack`/`golden_set: Autowired[LabelingStackProvider \| GoldenSetReadRepository]`) — a startup diagnostic (FR-14) that warns when this deployment's judge prompt diverges from what the batch labeling used (wired into the lifespan in Task 13). Compares `LabelingStackProvider.epoch.prompt_version` against `GoldenSetReadRepository.distinct_prompt_versions()`: logs a warning if they mismatch, or if the check itself fails (database not yet ready); never raises, so a deployment can start even if the check is blocked or the judge diverges. An empty golden set is not a divergence (first deployment or post-reset state). As of quiz-flow-api-phase2 Task 13, `api/app.py::create_app` wires `_lifespan` (an `@asynccontextmanager`, passed as `FastAPI(..., lifespan=_lifespan)`) which — since `pywire>=0.7.0` — nests `pywire_lifespan(app)` (binding the container to the app and closing it on shutdown, superseding the deprecated `wire()`) and, inside that, awaits `_run_judge_coherence_check()`: a standalone top-level function, kept separate from `_lifespan` precisely so a test can exercise its "container `resolve()` can also raise" guard directly, without entering `pywire_lifespan` and thereby binding/closing the real process-wide default container. `_run_judge_coherence_check` resolves `JudgeCoherenceChecker` from the container and runs its `check()` via `asyncio.to_thread` before `yield` — every request-serving route only starts accepting traffic after the FR-14 diagnostic has had its one shot, though (per the paragraph above) a failing check never blocks that startup. The app now registers two new routers, `api/routers/quiz_questions.py` (`router = APIRouter(prefix="/quiz-questions", ...)`) and `api/routers/quiz_images.py` (`prefix="/quiz-images"`), giving the API its first five real domain endpoints: `GET /quiz-questions/topics` (`QuizProposalService.topics`, FR-16), `GET /quiz-questions/random?seed=&index=&topic=` (`QuizProposalService.propose`, FR-1), `GET /quiz-questions/{number}` (`QuizProposalService.fetch`, FR-2), `POST /quiz-questions/{number}/check` (`QuizAnswerChecker`, FR-3/FR-4 — since spec 0013 FR-4, `UseCase[QuizAnswerCheckRequest, tuple[bool, ExplanationStatus]]`, invoked via `__call__` with the new `QuizAnswerCheckRequest` DTO assembled from the path param + wire-format body; request/response wire DTOs `QuizCheckRequest`/`QuizCheckResponse` in `api/schemas/quiz_check.py` are unchanged), and `GET /quiz-images/{filename}` (`QuizImageService`, FR-12 — since spec 0013 FR-4, `UseCase[str, QuizImage]`, method renamed `load`→`execute`, invoked via `__call__`, returns a raw `fastapi.Response` with the image's bytes/media type, not a `response_model`). `/topics` and `/random` are declared **before** `/{number}` in `quiz_questions.py` — FastAPI matches routes in declaration order, so a parameterised route declared first would swallow the literal paths and return a nonexistent-question 404 instead of the topics menu or a validation error. Every handler in both routers is `async def` and reaches its synchronous service/mapper call through `asyncio.to_thread` (AD-25, same rule as the lifespan check above); none contains a `try`/`except` or HTTP status logic — every domain exception (`QuestionNotFoundError`, `QuizImageNotFoundError`) is raised by the service/repository layer and rendered by the global handlers registered in `register_exception_handlers` (Task 4), never caught in a router. Since quiz-flow-api-phase3, `providers/` holds **three** providers over the shared labeling stack, not two — AD-16 called for two total, and this is a deliberate deviation recorded as a spec errata (plan decision D3): `LabelingStackProvider` stays the judge's *identity* only (the loaded prompt and the epoch it implies, read on every `POST /check`), while a new `LiveLabelingStackProvider` (`Autowired[AppConfig, LabelingConfig, LabelingStackProvider, PostgresClientProvider, OpenRouterProviderComponent, LlmCallTrackerProvider]`) builds the *machinery* — the corpus/quiz/golden-set repositories, the candidate-set service, the built `CommaLabelerAgent` (from `LabelingStackProvider.agent_config`, never reloaded) and the shared `QuestionLabelingService` (`labeling.wiring.build_question_labeling_service`) — exposed as plain attributes (`corpus`, `quiz`, `golden_set`, `candidate_set`, `question_labeling`). Splitting them keeps FR-14's deliberately-swallowing startup diagnostic from masking a malformed prompt file or a bad credential (resolving the epoch would otherwise also construct the whole LLM graph) and keeps the hot `POST /check` path — which only reads the epoch — from ever building an LLM graph it never calls. Two more providers complete the stack: `OpenRouterProviderComponent` (`Autowired[OpenRouterConfig]`, builds the one `pydantic_ai.providers.openrouter.OpenRouterProvider` every agent in the process shares, via `labeling.wiring.build_open_router_provider` — third-party class, not ours to decorate, AD-16 rule 2) and `LlmCallTrackerProvider` (`Autowired[ObservabilityConfig, PostgresClientProvider]`, D5) which enters `build_llm_call_tracker`'s context manager once through an `ExitStack` at construction and exposes `self.tracker: LlmCallTracker`, closed by a `@pre_destroy` hook that `Container.close()` runs — built *after* `PostgresClientProvider` since it depends on it, so reverse build order drains the tracker's queue before closing the pool it writes through; with `ObservabilityConfig.enabled` false it holds a `NullLlmCallTracker` instead, so disabling tracking is a config change, never a code path. This closes a standing gap: `labeling.wiring.build_comma_labeler_agent`'s `tracker` parameter used to be documented as unusable from the API (no request-scoped owner for a `QueuedLlmCallTracker`'s background worker) — pywire 0.6.0's `@pre_destroy` removed that obstacle, and the docstring is corrected accordingly (spec 0013 FR-6, phase 3 Task 14). `services/` gained `CommaSelectorService` (`AsyncUseCase[str, CommaSelection]`, `Autowired[LabelingConfig, LabelingStackProvider, LiveLabelingStackProvider, GoldenSetReadRepository]`) — on a hit it reads FR-8's current labeling and issues no retrieval and no judge call; on a miss it reads the precomputed query vector via `QuizReadRepository.find_with_vector(number, variant, EMBEDDING_MODEL_COLUMN)` (the single-row counterpart of `fetch_with_vectors`, same three-table join, `None` covering both "no such question" and "no vector for this variant/model" so the caller renders either as `not_indexed`) and delegates to the shared `LiveLabelingStackProvider.question_labeling`, resolving the live run id lazily — only right before the write, via `GoldenSetWriteRepository.find_or_create_live_run`, called from inside `QuestionLabelingService`'s own `asyncio.to_thread` hop — so a failed judge leaves no `labeling_runs` row behind either (spec 0012 AD-20/FR-6 errata, D8). `services/` also gained `ExplanationService` (`AsyncUseCase[ExplanationRequest, Explanation]`, `Autowired[AppConfig, QuizQuestionRepository, CommaSelectorService, ExplanationWriterAgent]`), which wraps the whole request — selector and writer both — in one `asyncio.timeout(config.explanation_deadline_s)` (`AppConfig.explanation_deadline_s`, default 25.0s, D10): a single request-wide budget, not a per-stage sum and not a lower `comma_labeler.yaml` timeout, since the batch shares that file and its content hash is `prompt_version`. The writer (`ExplanationWriterAgent`, a container singleton) is never called without supporting commas (FR-7) and is retried up to 3 times if it cites an ordinal outside the supplied commas (FR-10). `api/routers/quiz_questions.py` gained the sixth route, `GET /quiz-questions/{number}/explanation?submitted=` (`ExplanationService`, FR-5/FR-6/FR-7/FR-11/FR-13), declared genuinely `async def` with no `to_thread` wrapper — unlike its five siblings, the service itself is async at the LLM boundary (AD-25) — returning `200` with `status: insufficient_knowledge` plus a machine-readable `reason` when the corpus does not justify the answer, and mapped by `register_exception_handlers` to `503` on `ExplanationUnavailableError` (judge/writer failure or an exceeded deadline) | FastAPI, uvicorn, pywire |
+| `labeling/` | Shared labeling/judge stack (spec 0012, AD-12), split out of `retrieval_evaluation/` so both the batch harness and the future FastAPI app can depend on it without pulling in a standalone script's entry point. Manual constructor injection only, no `pywire` (ADR 0015); every component stays synchronous (AD-25); `tests/labeling/test_module_boundary.py` guards that it imports nothing from `retrieval_evaluation/`, `pywire`, or `guidami_ai_patente/`, and that `domain/` never imports it back. As of spec 0012 Task 5 it holds the full judge stack: `agents/comma_labeler/` (`CommaLabelerAgent`), `models/` (`CandidateComma`, `LabelingEpoch`, `QuestionLabelingRequest`), `services/` (`CandidateSetService`, `GoldenSetLabelingService`, `QuestionLabelingService`, `QuestionLexemeService`), `repositories/` (`GoldenSetWriteRepository`), `exceptions/` (`CandidateNumberOutOfRangeError`), `utils/` (`corpus_commit`, `prompt_version`), `configs/` (`LabelingConfig`), `constants.py` (`EMBEDDING_MODEL_COLUMN = "embedding_3_small"`, re-exported from the package `__init__.py` — deliberately a constant, not configuration, because it names which `quiz_question_embeddings` column both the batch pass and the live path read for the dense arm, and making it configurable would oblige it to enter the epoch key. A true symmetric parameterisation — per-model columns on `article_commas` too, a parameterised `dense_top_k`, the column inside the epoch key, an ingestion write path targeting it — is deliberately out of scope here and needs its own spec, spec 0012 phase 3 D7), and `mappers/` (`LabelingEpochMapper`, `LabelingRunMapper`). `QuestionLabelingService` (spec 0012 phase 3 Task 5, AD-12) is the extraction that makes this package's sharing real rather than aspirational: it is the **one** implementation of "judge this question and record the verdict" — candidate retrieval, per-question shuffle, judge call with transport retry, ordinal resolution and the write — called by both `GoldenSetLabelingService` (the batch fan-out) and `guidami_ai_patente/services/comma_selector_service.py::CommaSelectorService` (the live cache fill), so a batch labeling and a live labeling under the same epoch key are the same code path, not two lookalikes (see "Relevant architectural decisions" and the pattern entry in `patterns.md`). Since Task 6 it also holds `wiring.py`: manual DI builders for this stack's collaborators (`build_open_router_provider`, `build_postgres_client`, `build_tracker`, `build_corpus_repository`, `build_quiz_repository`, `build_golden_set_repository`, `build_comma_labeler_config`, `build_comma_labeler_agent` — its `tracker` parameter is optional so a caller with no sink can omit it, but both real callers pass one: the batch through `build_llm_call_tracker`, the API through `guidami_ai_patente/providers/llm_call_tracker_provider.py::LlmCallTrackerProvider`, whose `@pre_destroy` hook gives the background worker a container-scoped owner (pywire 0.6.0, spec 0013 FR-6) — `build_question_lexeme_service`, `build_candidate_set_service`, and, since Task 5, `build_question_labeling_service`), each parameterised on `LabelingConfig`/plain values rather than `IngestorConfig`/`AppConfig` (`tests/labeling/test_wiring.py::test_no_builder_takes_an_ingestor_config` asserts this by signature inspection). `retrieval_evaluation/main.py` and `label_main.py` both consume it instead of duplicating their own `_build_*` helpers | pydantic-ai-slim[openrouter] |
+| `retrieval_evaluation/` | LLM-as-judge for retrieval quality (`evaluate-retrieval-judge` script) — deliberately separate from `ingest evaluate retrieval` (spec 0007 excludes an LLM judge as a Non-Goal, ADR 0013) — plus `label-golden-set`, persisting a labeled golden set built from `labeling/`'s collaborators (spec 0011 phase 2). Since spec 0012 Task 5 this package holds only `agents/retrieval_judge/`, `models/retrieval_judge_item_result.py`, `services/retrieval_judge_evaluation_service.py`, `main.py`, `label_main.py`, and a `wiring.py` trimmed to one builder, `build_retrieval_judge_agent(agents_dir, provider, tracker)`. Since Task 6, `main.py` and `label_main.py` import every other DI builder they need from `labeling.wiring` (`build_open_router_provider`, `build_postgres_client`, `build_tracker`, `build_corpus_repository`, `build_quiz_repository`, and — `label_main.py` only — `build_golden_set_repository`, `build_comma_labeler_config`, `build_comma_labeler_agent`, `build_question_lexeme_service`, `build_candidate_set_service`) rather than each carrying its own duplicated `_build_*` set; both widen their pooled `PostgresClient`'s `pool_max_size` to `max(config.postgres.pool_max_size, concurrency)` before building it (D7/D14), since each fans `concurrency` tasks out over one shared connection pool. `RetrievalJudgeAgent` + its DTOs (`agents/retrieval_judge/`, `BaseAgent` pattern — `agents/` is a generic per-role container, today holding the single `retrieval_judge/` agent subpackage) + `RetrievalJudgeEvaluationService` (`services/`) reuse `commons.repositories.db.{CorpusReadRepository,QuizReadRepository}` and `guidami_ai_patente_ingestor.configs.IngestorConfig` (Postgres/OpenRouter/table names) plus `IngestorConfig.labeling.agents_dir` (`src/labeling/configs/`, spec 0012 Task 3) rather than owning new config or CLI infra | pydantic-ai-slim[openrouter] |
 | `parsers/questions_pdf.py` | Quiz PDF → `data/parsed/quiz-patente-ab/quiz-patente-ab.json` (questions) + `data/quiz-images/` (extracted images, top-level, sibling of `parsed/` — ADR 0008) | pdfplumber, pymupdf |
 | `scrapers/normattiva.py` | normattiva.it → `data/raw/` + `data/parsed/`, one `LawConfig` per law (`CDS`/`CAP`/`REG`/`AMB`) selected via a single `scrape --source <cds\|cap\|reg\|amb>` CLI entry point (`cli_main` — spec 0004 FR-1, replacing spec 0003's per-law `main_cds`/`main_cap`/`main_reg`; `AMB` — D.Lgs. 152/2006, Codice dell'Ambiente — added by spec 0009) | beautifulsoup4, lxml, httpx |
 | `scrapers/range_filter.py` | Shared core (`filter_articles_by_range(source_path, dest_path, ranges)`) for narrowing a fully-scraped law down to inclusive numeric ranges over the article's leading number; extracted by spec 0009 once a second consumer (`amb_extract.py`) needed the identical algorithm `rca_extract.py` already had | stdlib only |
@@ -140,7 +138,7 @@ than env/.env), deep-merged by pydantic-settings (ADR 0006, `patterns.md`).
 `cli/main.py` loads `IngestorConfig`, builds the parser (`cli/parser.py:build_parser`) and
 dispatches by subcommand to `cli/commands/{prepare,index,reset,status}.py`;
 `cli/wiring.py` holds the lazy DI builders (`build_layer_resolver`,
-`build_open_router_provider`, `build_postgres_client`,
+`build_open_router_provider`, `build_postgres_client`, `build_tracker`,
 `build_health_repositories`) so each command only builds the
 clients/providers it actually needs. Both `dispatch_prepare` branches
 (`knowledge` and, since spec 0006, `quiz`) run their flow(s) directly, with
@@ -317,37 +315,24 @@ the root logger in `LiveDashboard.__enter__`, detached and closed in
 plain-logging behavior, satisfying FR-4 with no separate code path.
 
 **LLM call observability** (`prepare` path only, no agent calls on `index`/`reset`):
-`cli/commands/prepare.py:run_prepare` opens an `ExitStack`, best-effort opens a
-`PostgresClient` (via `wiring.build_postgres_client`, catching `psycopg.Error` and
-falling back to `postgres_client=None` on failure), then unconditionally builds the
-tracker via `stack.enter_context(build_llm_call_tracker(observability_config,
-postgres_client))` (`commons/ai/observability/tracker_factory.py`) and dispatches to
+`cli/commands/prepare.py:run_prepare` opens a `PostgresClient` (via
+`wiring.build_postgres_client`) and, inside `with postgres_client,
+wiring.build_tracker(postgres_client) as tracker:`, dispatches to
 `dispatch_prepare(..., tracker)`, which forwards `tracker` into
 `build_quiz_enrichment_flow` → the agents' `from_yaml(..., tracker=tracker)`
 (the knowledge side has no enrichment flow/agent left to forward it to,
 since T-13 removed context enrichment — `tracker` is simply unused on that
-branch). `build_llm_call_tracker` (a `@contextmanager`) yields `NullLlmCallTracker`
-when tracking is disabled or no DB client could be opened, else a
-`QueuedLlmCallTracker` wrapping `PostgresLlmCallLogRepository` — so `tracker` reaching
-`dispatch_prepare` is always a real `LlmCallTracker`, never `None` (the former
-`tracker=None` degradation branch is gone: `NullLlmCallTracker` now stands in for it
-uniformly). `BaseAgent.__init__` builds a `TrackedCaller` (identity: caller/model/
-system_prompt/`expects_cost`) once, for the agent's lifetime; `run`/`run_sync` do
-`with self._tracker.track(self._tracked_caller, prompt_text) as recorder: result =
-await self._agent.run(...); recorder.record(result)`. The context manager
-(`PydanticAILlmCallRecorder`, `adapters/`) measures the call and builds the
-`LlmCallLogEntity` directly from `TrackedCaller` + the prompt + `record`'s
-`AgentRunResult` (no intermediate DTO, no mapper), including `cost_usd` — summed from
-OpenRouter's own reported cost on every `ModelResponse` in the run, see
-`adr/0004-openrouter-native-cost-tracking.md` — and on `__exit__` (which always runs,
-success or failure) logs this call's `info` line and enqueues the log for
-`QueuedLlmCallTracker`'s background worker, which inserts it via
-`LlmCallLogRepository.insert` — off the hot path, so a slow/failing DB write never
-blocks the LLM call. Unlike the code it replaced, this `info` line fires on a failed
-call too (previously it sat after the `with` block in `BaseAgent` and was skipped on
-exception); the "no cost reported" warning stays gated on success only, since a failed
-call never has a cost to report. See `adr/0020-context-manager-tracker-port.md` and
-`docs/second-brain/patterns.md` for the full shape.
+branch). Inside `BaseAgent.run`/`run_sync`, a tracked call is
+wrapped in `PydanticAILlmCallCapture` (records prompt/response/tokens/latency/status
+synchronously, including `cost_usd` — summed from OpenRouter's own reported cost on every
+`ModelResponse` in the run, see `adr/0004-openrouter-native-cost-tracking.md`) and
+`tracker.track(capture.log)` enqueues the already-final log for the background worker,
+which just inserts it via `LlmCallLogRepository` — off the hot path, so a slow/failing
+DB write never blocks the LLM call. If
+`PostgresClient` construction fails (`psycopg.Error`), `run_prepare` logs a warning and
+dispatches with `tracker=None`: `BaseAgent.__init__` substitutes a `NullLlmCallTracker`
+(Null Object, see `docs/second-brain/patterns.md`), so the capture is still built on every call but
+`track()` is a no-op — the LLM output is unaffected, only the DB write is skipped.
 
 **`ingest status [--online]`** (`cli/commands/status.py:run_status`, never
 raises, always exits 0): `cli/services/status/status_inspector.py:
@@ -611,18 +596,34 @@ full judged records (`RetrievalJudgeItemResult`, now carrying `topic`/`text`/
 `correct_answer`/`retrieved_commas` alongside the verdict, not just the verdict)
 for offline inspection, since the stdout report alone doesn't retain the
 retrieved commas or the quiz context. It reuses `IngestorConfig`
-(Postgres connection, table names, `agents_dir`, OpenRouter provider) from
+(Postgres connection, table names, OpenRouter provider) from
 `guidami_ai_patente_ingestor.configs` rather than owning its own settings class —
-the one deliberate cross-package dependency this module has.
+the one deliberate cross-package dependency this module has. Its agent YAML
+(`retrieval_judge.yaml`) loads from `config.labeling.agents_dir`, not a bare
+`agents_dir` on `IngestorConfig` — since spec 0012 Task 3, this directory feeds the
+labeling judge's configuration-epoch hash (AD-22), which `IngestorConfig.agents_dir`
+itself does not (see `patterns.md`). Since spec 0012 Task 5, `retrieval_evaluation/
+wiring.py` is trimmed to a single builder, `build_retrieval_judge_agent(agents_dir,
+provider, tracker)` (reparameterised off a bare `agents_dir: Path` rather than
+`IngestorConfig`, so `main()` passes `config.labeling.agents_dir` in explicitly). Since
+Task 6, every other builder this script needs (`build_open_router_provider`,
+`build_postgres_client`, `build_tracker`, `build_corpus_repository`,
+`build_quiz_repository`) is imported from `labeling.wiring` instead of a private,
+duplicated `_build_*` helper — `main.py` no longer carries its own copies. `main()`
+also widens the client it builds: `config.postgres.model_copy(update={"pool_max_size":
+max(config.postgres.pool_max_size, args.concurrency)})`, so `--concurrency` judge calls
+fanning out over one pooled connection don't starve each other under Task 1's bounded
+`timeout` (D7/D14) — the same widening `label_main.py` below applies.
 
-**Golden-set labeler** (`label-golden-set` script, `src/retrieval_evaluation/`): a
-second entry point in the same package, persisting a labeled retrieval golden set
+**Golden-set labeler** (`label-golden-set` script, entry point `src/retrieval_evaluation/
+label_main.py`, its collaborators in `src/labeling/` since spec 0012 Task 5): a
+second entry point over the same corpus, persisting a labeled retrieval golden set
 to Postgres instead of printing a spot-check verdict (spec 0011 phase 2). Where the
 judge above looks at one arm (`dense_top_k`) and writes nothing, the labeler builds
 a **two-arm candidate union** and writes every labeling to three new tables
 (`labeling_runs`, `quiz_labelings`, `quiz_comma_labels` — see `database.md`).
 
-`QuestionLexemeService.build` (`services/question_lexeme_service.py`) concatenates
+`QuestionLexemeService.build` (`labeling/services/question_lexeme_service.py`) concatenates
 a question's configured `LabelingConfig.lexeme_fields` (`topic`/`text`/
 `image_description`, skipping blanks) and hands the text to a new
 `CorpusReadRepository.extract_lexemes` method, which asks Postgres itself —
@@ -632,36 +633,66 @@ dictionary on both sides, so extraction and search cannot silently diverge). The
 returned lexemes are then single-quoted with internal quotes doubled before being
 handed to `text_match_top_k`, since `to_tsquery` treats an unquoted lexeme
 containing punctuation (e.g. `e-mail`) as a syntax error, not a literal.
-`CandidateSetService.build` (`services/candidate_set_service.py`) then unions
+`CandidateSetService.build` (`labeling/services/candidate_set_service.py`) then unions
 `CorpusReadRepository.dense_top_k` with `text_match_top_k(lexemes, text_k)`, keyed
 by comma id, recording each arm's one-based rank on a `CandidateComma` — the union
 is **not** truncated, sorted or fused (AD-3): its length is the full union, and a
 comma found by both arms carries both ranks.
 
-`GoldenSetLabelingService.label_all` (`services/golden_set_labeling_service.py`)
-drives the pass: for every question with a query vector for the configured
-`candidate_variant` (optionally restricted to `--limit` questions via a seeded
-shuffle independent of the presentation shuffle, PD-18), it builds the candidate
-set *inside* a per-run `asyncio.Semaphore` (PD-16 — keeps at most
-`max_concurrency` candidate sets alive at once, rather than building all ~7k
-eagerly before the first judge call), shuffles the presentation order with
-`random.Random(f"{shuffle_seed}:{question_id}")` (deterministic per question,
-independent of processing order — PD-8), and asks a second, distinct agent,
-`CommaLabelerAgent` (`agents/comma_labeler/`, its own `dto/` — `CommaLabelerRequest`/
+Since spec 0012 phase 3 Task 5, the pass is split across two collaborators instead of
+one. `GoldenSetLabelingService.execute` (`labeling/services/golden_set_labeling_service.py`,
+`AsyncUseCase[int, int]`, `request` is the already-created `run_id`) does **selection and
+concurrency only**: for every question with a query vector for the configured
+`candidate_variant`, first optionally restricted to the union of `--topic` (repeatable)
+topics when given (FR-18) — a pure selection filter, applied *before* the limit so
+`--limit N --topic t` means "N questions of topic t", and never recorded on
+`labeling_runs` or folded into the judge's configuration epoch, since it changes *which*
+questions are judged, not *how* — then optionally restricted to `--limit` questions via a
+seeded shuffle independent of the presentation shuffle (PD-18), it fans the selected rows
+out under a per-run `asyncio.Semaphore` built inside `execute` (bound to the event loop of
+its first use, so it cannot live on `self`), bounded by `max_concurrency`, and awaits
+`QuestionLabelingService(QuestionLabelingRequest(row=row, resolve_run_id=lambda: run_id))`
+for each one via `asyncio.gather` with no `return_exceptions=True` (PD-9 — a partially-
+labeled run cannot look complete; any failure aborts the whole run).
+
+The judging itself — candidate retrieval, presentation shuffle, the judge call, ordinal
+resolution and the write — lives in `QuestionLabelingService.execute`
+(`labeling/services/question_labeling_service.py`, `AsyncUseCase[QuestionLabelingRequest,
+int | None]`), extracted out of what used to be `GoldenSetLabelingService.label_all`
+specifically so the batch pass and the API's live cache fill (`CommaSelectorService`,
+below) run **one** implementation — the epoch key cannot tell two judging implementations
+apart (AD-12). It calls the injected `CandidateSetService` and shuffles the presentation
+order with `random.Random(f"{shuffle_seed}:{question_id}")` (deterministic per question,
+independent of processing order — PD-8), then asks a second, distinct agent,
+`CommaLabelerAgent` (`labeling/agents/comma_labeler/`, its own `dto/` — `CommaLabelerRequest`/
 `CommaLabelerResponse`, own `configs/agents/comma_labeler.yaml` prompt — FR-12
 requires this rather than widening `RetrievalJudgeResponse`, since `BaseAgent`
 binds one `output_type` per class), which candidate ordinals (at most three, most-
 justifying first) justify the correct answer. Each returned ordinal resolves to its
 presented candidate by list index, never by matching text (AD-12); an ordinal
-outside the presented range raises `CandidateNumberOutOfRangeError` and aborts the
-whole run rather than recording a label (PD-9 — no `return_exceptions=True` on the
-`gather`, so a partially-labeled run cannot look complete). Only transport-level
+outside the presented range raises `CandidateNumberOutOfRangeError` and propagates —
+nothing is written and no run id is resolved (FR-13). Only transport-level
 failures are retried (`httpx.TransportError`, or `ModelHTTPError` with a 429/5xx
 status), up to `labeling.transport_retries` times with exponential backoff; every
 other exception, including a permanent 4xx or a validation error, propagates
-immediately (PD-17).
+immediately (PD-17). Every synchronous collaborator here (`CandidateSetService`, the
+insert) is crossed with `asyncio.to_thread` (AD-25) — not only for the API, whose event
+loop must not block, but for the batch too: its candidate-set and insert work now fans
+out under the semaphore instead of serialising on the event-loop thread, which is what
+`label_main`'s pool sizing (below) is for.
 
-`GoldenSetWriteRepository` (`repositories/golden_set_write_repository.py`) is
+**The run id is resolved lazily, inside the write, after the judge has answered**
+(`QuestionLabelingService._write`, calling `request.resolve_run_id()`) — not before the
+judge call. For the batch this closure is trivial (`lambda: run_id`, the id
+`label_main.py` already created before the pass); for the live API path
+(`CommaSelectorService._live_run_id`) it does real work,
+`GoldenSetWriteRepository.find_or_create_live_run`, and only runs once the judge has
+produced a verdict. This is what makes "on judge failure, no row is written to *any*
+golden-set table" literally true for a live request: an eagerly-created `labeling_runs`
+row would otherwise survive a failed judge call as an orphan (spec 0012 AD-20/FR-6
+errata, quiz-flow-api-phase3 plan decision D8).
+
+`GoldenSetWriteRepository` (`labeling/repositories/golden_set_write_repository.py`) is
 insert-only (AD-10, mirroring `LlmCallLogRepository`'s precedent): `insert_run`
 writes one `labeling_runs` row; `insert_labeling` writes a `quiz_labelings` row and
 its `quiz_comma_labels` children in a **single data-modifying CTE**, atomic despite
@@ -671,17 +702,32 @@ justifying comma" outcome (AD-6: the outcome is *derived* by counting children,
 never stored as a column). `outcome_counts` is the one read method on the class (a
 `SELECT`, not a write), used by `label_main.py` to print the with-commas/without-
 commas breakdown after the run. `label_main.py` inserts the `labeling_runs` row
-*before* the pass (recording `judge_model`, a `prompt_version` hashed from the
-loaded prompt text via `run_provenance.prompt_version` — no human-maintained
-version field, AD-11 — `corpus_commit` from `git rev-parse HEAD`, and
-`corpus_comma_count` from a new unfiltered `CorpusReadRepository.comma_count`),
-validates `candidate_variant` against `QuizReadRepository.available_variants()`
-first (same guard as the judge script), and — like the judge script — reuses only
-`RunArtifactWriter.build_run_dir` for its `logs/label_golden_set_<timestamp>/`
-directory, with no manifest, no dry-run chain, no `report.md` (AD-10; the module's
-placement rationale in ADR 0013 extends unchanged to this second script, though the
-ADR's premise that the module writes no persistent artifact no longer holds — see
-the ADR itself).
+*before* the pass, built via `LabelingEpochMapper.from_config_to_epoch(labeling,
+agent_config)` (the epoch: `judge_model`, a `prompt_version` hashed from the loaded
+prompt text via `labeling/utils/run_provenance.py::prompt_version` — no human-maintained
+version field, AD-11 — `candidate_variant`, `dense_k`, `text_k`, sorted `lexeme_fields`)
+followed by `LabelingRunMapper.from_epoch_to_entity(epoch, LabelingRunOrigin.BATCH,
+shuffle_seed=..., corpus_comma_count=..., corpus_commit=..., question_limit=...)` — the
+sanctioned constructor as of Task 6, replacing the inline `LabelingRunEntity(...)`
+stopgap the earlier tasks used before the mappers existed. `corpus_comma_count` comes
+from a new unfiltered `CorpusReadRepository.comma_count`, `corpus_commit` from `git
+rev-parse HEAD`. `label_main.py` also validates `candidate_variant` against
+`QuizReadRepository.available_variants()` first (same guard as the judge script), widens
+its pooled `PostgresClient`'s `pool_max_size` to `max(config.postgres.pool_max_size,
+concurrency + 1)` before building it — since spec 0012 phase 3 Task 5, the `+ 1` (not
+just `concurrency`) is deliberate: `QuestionLabelingService` now crosses
+`asyncio.to_thread` for its candidate-set and insert work too, so up to `concurrency`
+workers can each hold a connection for that hop, on top of the connection the request
+that triggered the fan-out itself may still be holding — and — like
+the judge script — reuses only `RunArtifactWriter.build_run_dir` for its
+`logs/label_golden_set_<timestamp>/` directory, with no manifest, no dry-run chain, no
+`report.md` (AD-10; the module's placement rationale in ADR 0013 extends unchanged to
+this second script, though the ADR's premise that the module writes no persistent
+artifact no longer holds — see the ADR itself). Since Task 6, both `main.py` and
+`label_main.py` build every shared collaborator (Postgres client, OpenRouter provider,
+tracker, quiz/corpus read repositories, golden-set repository, comma-labeler
+config/agent, question-lexeme service, candidate-set service) via `labeling.wiring`
+instead of a private, duplicated `_build_*` helper set.
 
 ## Relevant architectural decisions
 
@@ -699,37 +745,28 @@ See `adr/` for the full history. Currently accepted:
   sharing an image get one vision call and one `image_description`/
   `image_analysis` instead of one call per `(image, topic, text)` triple
   (`adr/0003-group-road-sign-description-by-image.md`).
-- **LLM call tracking is a context-manager port injected into `BaseAgent`, not
-  an external wrapper** — token usage (`result.usage`) only exists inside
+- **LLM call tracking is a port injected into `BaseAgent`, not an external
+  wrapper** — token usage (`result.usage()`) only exists inside
   `run`/`run_sync`; an external decorator would force `BaseAgent.run` to
-  return a rich result object, breaking every enricher. `LlmCallTracker.track`
-  returns `AbstractContextManager[PydanticAILlmCallRecorder]` rather than the
-  earlier `track(log) -> None`, so `BaseAgent` never assembles the log itself
-  — it enters the context, awaits the call, and hands the `AgentRunResult` to
-  `recorder.record(...)`; the recorder (not `BaseAgent`) builds the entity and
-  logs the call, on both the success and failure path
-  (`adr/0020-context-manager-tracker-port.md`). `LlmCallTracker` persistence
-  failures degrade gracefully (log a warning, never abort the pipeline) — a
-  deliberate, documented exception to "never swallow exceptions"
-  (`.claude/rules/python/standards.md`; see also `patterns.md`).
+  return a rich result object, breaking every enricher. `LlmCallTracker`
+  persistence failures degrade gracefully (log a warning, never abort the
+  pipeline) — a deliberate, documented exception to "never swallow
+  exceptions" (`.claude/rules/python/standards.md`; see also `patterns.md`).
 - **`cost_usd` comes from OpenRouter's own reported cost, not a litellm
   pricing-table lookup** — `BaseAgent` uses `pydantic_ai`'s `OpenRouterModel`
-  with `openrouter_usage={"include": True}`, and `PydanticAILlmCallRecorder`
+  with `openrouter_usage={"include": True}`, and `PydanticAILlmCallCapture`
   sums `ModelResponse.provider_details["cost"]` synchronously; no fallback
   estimate when OpenRouter omits cost (`adr/0004-openrouter-native-cost-tracking.md`).
 - **`BaseAgent` takes a generic `Provider[AsyncOpenAI]`, not an
-  `OpenRouterProvider`** — `_create_model`/`_create_model_settings` dispatch on
-  `isinstance(provider, OpenRouterProvider)` (the `_is_openrouter` property):
-  OpenRouter gets `OpenRouterModel` + `openrouter_usage`; any other
-  OpenAI-compatible provider (e.g. `OllamaProvider`) gets the generic
-  `OpenAIChatModel`, no OpenRouter-only settings. The "no cost" warning is
-  gated the same way, but one level down: `_is_openrouter` is read once, at
-  construction, into `TrackedCaller.expects_cost`, and
-  `PydanticAILlmCallRecorder` (not `BaseAgent`) checks that flag before
-  warning — a local model never reports a cost, so the warning would
-  otherwise fire on every call (`.claude/rules/logging.md`). No agent is
-  wired to Ollama yet — this only widens `BaseAgent` itself
-  (`adr/0019-base-agent-generic-provider-ollama.md`).
+  `OpenRouterProvider`** — `_create_model`/`_create_model_settings`/
+  `_log_call_completed` all dispatch on `isinstance(provider, OpenRouterProvider)`
+  (the `_is_openrouter` property): OpenRouter gets `OpenRouterModel` +
+  `openrouter_usage` + the "no cost" warning; any other OpenAI-compatible
+  provider (e.g. `OllamaProvider`) gets the generic `OpenAIChatModel`, no
+  OpenRouter-only settings, and no cost warning (a local model never
+  reports a cost, so the warning would otherwise fire on every call —
+  `.claude/rules/logging.md`). No agent is wired to Ollama yet — this
+  only widens `BaseAgent` itself (`adr/0019-base-agent-generic-provider-ollama.md`).
 - **Per-element knowledge (then quiz) layers, cross-run resumability,
   write-through deferred** — `cleaned`/`enriched` for the knowledge corpus
   moved from one monolithic JSON per source to one JSON file per article, so a
@@ -1038,27 +1075,183 @@ resolve()", pywire 0.4.0). The quiz-check-endpoint code ADR 0017 was written for
 in this repo depends on the workaround today; ADR 0017's Status/Decision are left untouched
 pending a user call on whether to revise them before that endpoint is built.*
 
-*Last updated: 2026-08-25 — verified against commit `2826f9d5` (working tree ahead: `feat/agent-ollama`
-branch); `BaseAgent` now takes a generic `pydantic_ai.providers.Provider[AsyncOpenAI]`
-instead of `OpenRouterProvider`, dispatching `_create_model`/`_create_model_settings`/the
-"no cost" warning on provider type (`_is_openrouter` property) so it can also be built
-with `OllamaProvider` — see `adr/0019-base-agent-generic-provider-ollama.md` (Proposed).*
+*Last updated: 2026-08-25 — verified against commit `f1a2b74e`.*
 
-*Last updated: 2026-08-28 — verified against commit `ab1b8f82`; `commons/ai/observability/`
-restructured: `LlmCallTracker` is now a context-manager port, `adapters/` added for the
-stateful `PydanticAILlmCallRecorder` (replaces the deleted capture/model/mapper trio and
-now owns the per-call logging, firing on failure too), `entities/` holds `LlmCallLogEntity`
-moved in from the now-removed `domain/entities/observability/`, `enums/` and `configs/`
-added for the new `ObservabilityConfig` (table name/timeout/backend configurable),
-`mappers/` and the private `services/protocols/` sink port are gone — see
-`adr/0020-context-manager-tracker-port.md`. New `commons/configs/BaseConfig` is a partial
-landing: only `ObservabilityConfig` adopts it, `IngestorConfig`/`OpenRouterConfig` are
-unchanged — see `adr/0021-base-config-partial-landing.md`. Corrected a stale claim that
-`PostgresConnectionConfig` is a `BaseSettings`; it is a plain `BaseModel`.*
+*Last updated: 2026-08-26 — verified against commit `d21223b7` (working tree ahead:
+quiz-flow-api-phase2 branch, pre-implementation grilling/check session). ADR 0017's
+zero-arg-`@component` `AppConfig` workaround (Decision item 1) and its
+constructor-parameter testability exception (Decision item 3) are superseded by
+`adr/0023-appconfig-registered-instance-supersedes-0017.md`: `AppConfig` is loaded once
+at `main.py` and registered via `container.register_instance(app_config, as_type=
+AppConfig)`; a class needing a test double stays field-only `Autowired[T]` and the test
+registers a mock plus calls `clear_instances()` instead. ADR 0017's Decision item 2
+(`PostgresClientProvider` building `PostgresClient` in its own `__init__`) is unaffected.
+`.claude/rules/pywire-di.md` updated accordingly. No source code changed — the
+quiz-flow-api-phase2 plan's Tasks 1-2 are the first code built against ADR 0023.*
 
-*Last updated: 2026-08-28 — verified against commit `a68a2c15` (working tree ahead: final
-whole-branch review fix for the observability simplification); corrected the "Main flows"
-section's `cli/wiring.py` DI-builder list, which still named the deleted `build_tracker`.
-`cli/wiring.py` no longer builds a tracker — that responsibility moved to
-`build_llm_call_tracker` (see the `commons/ai/observability/` entry above and the
-"Main flows" prepare-path narrative, both already correct).*
+*Last updated: 2026-08-25 — verified against commit `440bad56` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 3); the golden-set labeler section and the
+`retrieval_evaluation/` component-table row now say the retrieval judge and comma-labeler
+agent YAML load from `IngestorConfig.labeling.agents_dir` (`src/labeling/configs/`), not a
+bare `agents_dir` field on `IngestorConfig` — `IngestorConfig.agents_dir` still exists,
+but only the quiz-enrichment agents (`quiz_flows.py`) read it now, since their prompts
+enter no configuration epoch. See `patterns.md` for the full single-sourcing rationale.*
+
+*Last updated: 2026-08-25 — verified against commit `7005ad3f` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 5). Pure `git mv` sweep completed: the "Golden-set
+labeler" section's file-path references and the component table now point at
+`labeling/agents/comma_labeler/`, `labeling/services/`, `labeling/repositories/`, and
+`labeling/utils/run_provenance.py` instead of `retrieval_evaluation/`'s equivalents;
+added a `labeling/` component-table row. `retrieval_evaluation/wiring.py` is trimmed to
+one builder, `build_retrieval_judge_agent(agents_dir, provider, tracker)` (renamed from
+`build_agent`, reparameterised off a bare `agents_dir: Path` instead of `IngestorConfig`).
+The other builders that module used to hold (Postgres client, OpenRouter provider,
+tracker, quiz/corpus read repositories, golden-set repository, comma-labeler config/agent)
+are not yet in a shared `labeling/wiring.py` — that module doesn't exist yet, Task 6
+(builders reparameterisation) hasn't run — so `main.py` and `label_main.py` each carry a
+temporary, verbatim-duplicated set of private `_build_*` helpers instead, flagged with a
+comment pointing at Task 6 as the resolution. Added
+`tests/labeling/test_module_boundary.py` (asserts `labeling/` imports nothing from
+`retrieval_evaluation/`, `pywire`, or `guidami_ai_patente/`, and that `domain/` imports
+nothing from `labeling/`).*
+
+*Last updated: 2026-08-25 — verified against commit `2a639831` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 6). `labeling/` gained `wiring.py` (manual DI
+builders, all reparameterised off `LabelingConfig`/plain values, never `IngestorConfig`/
+`AppConfig`); `retrieval_evaluation/main.py` and `label_main.py` now import from it
+instead of each carrying its own duplicated `_build_*` helper set, resolving the Task 5
+duplication. `label_main.py`'s `labeling_runs` insert is now built via
+`LabelingEpochMapper.from_config_to_epoch` + `LabelingRunMapper.from_epoch_to_entity`,
+replacing the inline `LabelingRunEntity(...)` stopgap. Both scripts widen their pooled
+`PostgresClient`'s `pool_max_size` to `max(config.postgres.pool_max_size, concurrency)`
+before building it (D7/D14), so their `--concurrency` fan-out can't starve the pool under
+Task 1's bounded `timeout`. `tests/retrieval_evaluation/test_wiring.py` was renamed to
+`test_entry_points.py` to free the `test_wiring` basename for the new
+`tests/labeling/test_wiring.py` (pytest's default import mode needs a unique module
+basename per test file across the whole `tests/` tree, since no directory carries an
+`__init__.py`).*
+
+*Last updated: 2026-08-25 — verified against commit `5582529a` (working tree ahead:
+spec 0012, quiz-flow-api-phase1 plan Task 10, FR-18). `GoldenSetLabelingService.__init__`
+gained `topics: Sequence[str] | None`, positioned after `question_limit` and before the
+injected collaborators. `label_all` filters `rows` to the union of `self._topics` (when
+set) *before* applying `self._question_limit`, so `--limit N --topic t` selects "N
+questions of topic t". `label_main.py` gained a repeatable `--topic` flag
+(`action="append"`) passed straight through as `topics=args.topic`; the value is a pure
+selection filter and never reaches `labeling_runs` or the judge's configuration epoch.*
+
+*Last updated: 2026-08-26 — verified against commit `0526fe74` (quiz-flow-api-phase2 Task 1). `AppConfig` now embeds the shared `LabelingConfig` as a `labeling` field (single-sourced from the same YAML and env, spec 0012 AD-27), gains `quiz_images_dir` for image access (FR-12, default `Path("data/quiz-images")`), and adds table-name fields for repository parameterization.*
+
+*Last updated: 2026-08-26 — verified against commit `546985b5` (working tree ahead: spec
+0012, quiz-flow-api-phase2 plan Task 3). `guidami_ai_patente/clients/` added: the app's
+first two `@client` providers, `PostgresClientProvider` and `LabelingStackProvider`
+(AD-16). `guidami_ai_patente/repositories/` gained `AgentConfigRepository`, the API's only
+door to `agents_dir` and the agent prompt files (AD-22), re-exported from
+`repositories/__init__.py`.*
+
+*Last updated: 2026-08-26 — verified against commit `2eab1e35` (working tree ahead: spec
+0012, quiz-flow-api-phase2 plan Task 6). `guidami_ai_patente/repositories/` gained
+`QuizQuestionRepository`, the API's only reads against `quiz_questions`/
+`quiz_question_embeddings` (FR-1/2/3/4/12/16), re-exported from `repositories/__init__.py`
+alongside `DependencyVersionRepository` (which was implemented earlier but not yet
+re-exported there). See `patterns.md` for the seeded-permutation, absence-handling, and
+FR-12 authorization-pattern details.*
+
+*Last updated: 2026-08-26 — verified against commit `ec2cb784` (working tree ahead: spec
+0012, quiz-flow-api-phase2 plan Task 7). `guidami_ai_patente/repositories/` gained
+`GoldenSetReadRepository` (AD-16b): `find_current_labeling(number) -> CurrentLabeling |
+None` implements FR-8's precedence rule entirely in SQL (human-validated always qualifies;
+otherwise only a labeling whose run matches the active `LabelingStackProvider.epoch`;
+`(validated_at IS NOT NULL) DESC, created_at DESC` picks the winner), and
+`distinct_prompt_versions() -> list[str]` feeds the FR-14 startup coherence check.
+App-local rather than beside `GoldenSetWriteRepository` in `src/labeling/`, re-exported
+from `repositories/__init__.py`. Its dependency on `LabelingStackProvider` is a true
+`clients`<->`repositories` package-init cycle that Task 6's direct-submodule-import trick
+cannot resolve (the requested class is not a leaf — it is the exact module whose own import
+pulls `repositories/__init__.py` in, in the `clients`-first order); resolved instead with a
+bare `import guidami_ai_patente.clients as clients` plus a quoted
+`Autowired["clients.LabelingStackProvider"]` forward reference, which `pywire` evaluates
+lazily against this module's globals only when the container resolves the class — see
+ADR 0024 and `patterns.md` for the full mechanism.*
+
+*Last updated: 2026-08-26 — verified against commit `c8da3a25` (quiz-flow-api-phase2 plan Task 12). `guidami_ai_patente/services/` also gained `JudgeCoherenceChecker` (FR-14 startup diagnostic): warns at app startup if this deployment's judge prompt diverges from what the batch labeling recorded, never raises to block startup. See the `guidami_ai_patente/` row above for full details.*
+
+*Last updated: 2026-08-26 — verified against commit `1ca436ca` (quiz-flow-api-phase2 plan Task 13). `api/app.py::create_app` now wires the FR-14 startup check via a `_lifespan` context manager, and registers the app's first two domain routers — `api/routers/quiz_questions.py` (4 routes) and `api/routers/quiz_images.py` (1 route) — exposing the five endpoints described in the `guidami_ai_patente/` row above. New `api/schemas/quiz_check.py` holds `QuizCheckRequest`/`QuizCheckResponse`. This is the first task to expose real, externally-callable REST endpoints beyond `GET /health`.*
+
+*Last updated: 2026-08-26 — verified against commit `dc3a932d` (whole-branch review fix). Corrected a stale claim carried over from the scaffolding stage: the Overview and the `guidami_ai_patente/` component row both still opened with "only `GET /health` implemented so far" / "no domain endpoints yet", even though the same row already went on to describe five live quiz endpoints (Tasks 6-13). No behavior changed — text only.*
+
+*Last updated: 2026-09-01 — verified against commit `51dcba1a`; spec 0013 (labeling/API
+dependency-injection cleanup) landed on `feat/quiz-flow-api-phase1`. Rewrote the
+`guidami_ai_patente/` component row in five places: (1) `AppConfig` no longer declares a
+`labeling` field (FR-1) — `main.py` loads/registers an independent `LabelingConfig`
+instance instead; (2) `clients/` holds only `PostgresClientProvider` now, which also
+gained a `@pre_destroy` teardown hook (FR-6); `LabelingStackProvider` moved to a new
+`providers/` package, decorated `@provider` (FR-2, AD-16 revised — direction-of-dependency
+test, not constructor arity); (3) `AgentConfigRepository` autowires `LabelingConfig`
+directly, not `AppConfig.labeling` (FR-1); (4) `GoldenSetReadRepository
+.find_current_labeling` takes an explicit `epoch` parameter instead of autowiring
+`LabelingStackProvider` — ADR 0024's bare-import-plus-quoted-`Autowired` mechanism is gone
+from this file, the `clients`<->`repositories` cycle is removed at the root (ADR 0027,
+superseding ADR 0024); (5) `ExplanationStatusService`, `QuizAnswerChecker`,
+`QuizImageService` are now `UseCase` subclasses invoked via `__call__` (FR-4;
+`QuizAnswerChecker` takes the new `QuizAnswerCheckRequest` DTO). No endpoint, response
+shape, or persisted behavior changed anywhere in this pass — a pure structural cleanup.*
+
+*Last updated: 2026-09-02 — verified against commit `6f729600` (working tree ahead:
+uncommitted, on `feat/quiz-flow-api-phase1`); bumped `pywire` 0.6.0 -> 0.7.0
+(`pyproject.toml`'s `[tool.uv.sources]` tag `v0.6.0` -> `v0.7.0`). `api/app.py::create_app`
+no longer calls `pywire.fastapi.wire()` (deprecated in 0.7.0 — it binds the container but
+never tears it down); `_lifespan` now nests `pywire_lifespan(app)`, which binds
+`app.state.pywire_container` at startup and runs `Container.close()` at shutdown (spec
+0013 FR-6, same `@pre_destroy` teardown as before). The FR-14 judge-coherence startup
+diagnostic, previously inlined in `_lifespan`, is now `_run_judge_coherence_check()`, a
+standalone top-level `async def` — `tests/guidami_ai_patente/api/test_app.py` now calls
+it directly instead of entering `_lifespan`/`pywire_lifespan`, so the test no longer
+binds/closes the real process-wide default container as a side effect. `.claude/rules/
+pywire-di.md`'s "FastAPI wiring" section rewritten around `pywire_lifespan`.*
+
+*Last updated: 2026-09-02 — verified against commit `9ae6dbd1`. No code changed; annotated
+a known gap surfaced in conversation on the `commons/clients/postgres_client.py` row —
+`PostgresClient` has no async variant, so `guidami_ai_patente/` relies on `asyncio.to_thread`
+per request (AD-25) instead. A future async `PostgresClient` is a possible enhancement, not
+a decision — no ADR was opened for it.*
+
+*Last updated: 2026-09-02 — verified against commit `8d8443e5` (working tree ahead:
+uncommitted, on `feat/quiz-flow-api-phase1`); bumped `pywire` 0.7.0 -> 0.8.0
+(`[tool.uv.sources]` tag `v0.7.0` -> `v0.8.0`). The release's **sole breaking change** is
+the removal of `pywire.fastapi.wire()`, deprecated one release earlier — `pywire.fastapi`
+now exports only `pywire_lifespan`, and `from pywire.fastapi import wire` raises
+`ImportError`. `Container`'s API is unchanged (`register`, `register_factory`,
+`register_instance`, `resolve`, `get`, `clear_instances`, `close`, `as_type=`,
+`@pre_destroy`), so no DI mechanism this repo relies on moved. No source change was needed
+beyond the pin: `api/app.py::_lifespan` had already migrated to `pywire_lifespan` in the
+previous entry, and no `wire()` call existed in `src/` or `tests/` — only a docstring in
+`api/app.py::_lifespan` still called `wire()` "deprecated" rather than removed, now
+corrected. Verified on 0.8.0: 810 tests passed, `uv run pytest -m integration` green,
+`ruff check`/`ruff format --check` clean, `pyright` 0 errors. `adr/0016` is now
+`Superseded by ADR 0028` on its Decision item 3 only (items 1, 2, 4 stand); see
+`adr/0028-pywire-lifespan-sole-fastapi-wiring-entry-point.md`, which also records the
+one real cost of the migration — a `TestClient(app)` used without `with` never runs the
+lifespan, so `Autowired[T]` routes fall back to the default container **silently**
+(`tests/conftest.py::api_client` is the reference fixture).*
+
+*Last updated: 2026-09-03 — verified against commit `e592b110` (quiz-flow-api-phase3
+plan Task 14, close-out). `providers/` now holds three providers over the shared
+labeling stack, not two: `LabelingStackProvider` (judge identity only) and a new
+`LiveLabelingStackProvider` (the machinery — corpus/quiz/golden-set repositories,
+candidate-set service, the built `CommaLabelerAgent`, `QuestionLabelingService`),
+plus `OpenRouterProviderComponent` and `LlmCallTrackerProvider` — a deliberate
+deviation from AD-16, recorded as a spec errata (D3, `adr/0029`). `labeling/services/`
+gained `QuestionLabelingService`, the one shared per-question labeling unit called by
+both the batch (`GoldenSetLabelingService`) and the live path (`CommaSelectorService`),
+crossing `asyncio.to_thread` internally and resolving the live run id lazily, right
+before the write (D8, `adr/0030`). `services/` gained `CommaSelectorService` and
+`ExplanationService`; `api/routers/quiz_questions.py` gained
+`GET /quiz-questions/{number}/explanation?submitted=` (FR-5/FR-6/FR-7/FR-11/FR-13),
+bounded by a new `AppConfig.explanation_deadline_s` (default 25.0s, D10). API-side LLM
+call tracking now exists via `LlmCallTrackerProvider`'s `@pre_destroy` hook (D5,
+`adr/0031`), closing the gap `labeling.wiring.build_comma_labeler_agent`'s docstring
+used to document. Two recorded-but-not-fixed debt items added: `LabelingConfig.yaml_file`
+is CWD-relative (D11) and `EMBEDDING_MODEL_COLUMN` is a shared constant pending a
+symmetric parameterisation spec (D7) — `ingest reset quiz`'s FK breakage was already
+documented in `database.md` before this task.*

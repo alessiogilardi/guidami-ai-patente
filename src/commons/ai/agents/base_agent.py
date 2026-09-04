@@ -1,6 +1,6 @@
 import logging
 from pathlib import Path
-from typing import Self, cast
+from typing import Any, Self, cast
 
 from openai import AsyncOpenAI
 from pydantic_ai import Agent, BinaryContent
@@ -66,7 +66,7 @@ class BaseAgent[T_In, T_Out]:
             expects_cost=self._is_openrouter,
         )
 
-        self._agent: Agent[None, T_Out] = Agent(
+        self._agent: Agent[Any, T_Out] = Agent(
             self._create_model(),
             output_type=self.output_type,
             system_prompt=self._system_prompt,
@@ -122,7 +122,7 @@ class BaseAgent[T_In, T_Out]:
             len(prompt_text),
         )
         with self._tracker.track(self._tracked_caller, prompt_text) as recorder:
-            result = await self._agent.run(prompt_content)
+            result = await self._agent.run(prompt_content, deps=request)
             recorder.record(result)
         return result.output
 
@@ -138,7 +138,7 @@ class BaseAgent[T_In, T_Out]:
             len(prompt_text),
         )
         with self._tracker.track(self._tracked_caller, prompt_text) as recorder:
-            result = self._agent.run_sync(prompt_content)
+            result = self._agent.run_sync(prompt_content, deps=request)
             recorder.record(result)
         return result.output
 
@@ -151,7 +151,7 @@ class BaseAgent[T_In, T_Out]:
         return f"{type(self).__name__}(name={self._name!r})"
 
     @property
-    def core_agent(self) -> Agent[None, T_Out]:
+    def core_agent(self) -> Agent[Any, T_Out]:
         """The underlying pydantic_ai Agent instance."""
         return self._agent
 

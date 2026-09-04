@@ -78,11 +78,40 @@ covered by `test_cli_main_dispatches_to_main_with_resolved_source`/
 `test_cli_main_dry_run_flag_forwarded` via a monkeypatched `main`).
 `tests/guidami_ai_patente/api/routers/test_health.py` is the first test for
 `src/guidami_ai_patente/`: FastAPI's `TestClient` (`fastapi.testclient`)
-against an app built by `create_app(AppConfig(...))` with an inline,
-non-Docker `PostgresConnectionConfig` — the route under test never opens a
-DB connection, so no fixture from `_postgres_test_stack` is needed. This is
-the project's first use of `TestClient` and establishes the pattern for
-future `guidami_ai_patente/` endpoint tests.
+against the app, resolved through the shared `api_client` fixture (see
+below) rather than building its own `AppConfig`/`TestClient` — this is the
+project's first use of `TestClient` and establishes the pattern for future
+`guidami_ai_patente/` endpoint tests: consume `api_client`, never call
+`create_app` directly from a test.
+
+**At most one `AppConfig` per pytest session (spec 0012 constraint,
+ADR 0023).** `tests/conftest.py` enforces this mechanically, not just by
+convention, via three session-scoped fixtures:
+- `app_config` — the *only* `AppConfig` the whole session may construct,
+  built from `postgres_test_config` (below) plus
+  `quiz_images_dir=Path(__file__).parent.parent / "data" / "quiz-images"`.
+- `api_client` — `TestClient(create_app(app_config))`, entered as a context
+  manager so the app's lifespan runs exactly once for the session (not once
+  per test).
+- `_reset_pywire_container` (autouse) — calls
+  `get_default_container().clear_instances()` at session teardown, dropping
+  cached singletons (notably the pooled `PostgresClient` inside
+  `PostgresClientProvider`) so they don't outlive the session and stall the
+  ephemeral Postgres stack's teardown.
+
+The mechanism, not just the intent: `create_app` (`api/app.py::_register_config`)
+registers `config` on pywire's process-wide default container via
+`container.register_instance(config, as_type=AppConfig)`, which raises
+`pywire.exceptions.RegistrationError` if a *different* `AppConfig` instance
+is already registered — re-registering the *same* object (identity check,
+`is`) is tolerated, so a second `create_app(app_config)` call with the
+session's own fixture is a no-op, but any test that tried to build a second,
+independent `AppConfig` and pass it to `create_app` would fail loudly. This
+is what makes "one `AppConfig` per session" a hard error instead of a
+silent misconfiguration — see ADR 0023 and `.claude/rules/pywire-di.md`.
+`tests/guidami_ai_patente/api/test_container_registration.py` covers all
+three cases: same-instance resolution, tolerated re-registration of the
+same object, and the `RegistrationError` on a genuinely different one.
 `flowstep` is an external git dependency (not part of this repo's `src/`
 or `tests/`), so it has no local test mirror here — see
 `docs/second-brain/architecture.md`.
@@ -90,12 +119,30 @@ or `tests/`), so it has no local test mirror here — see
 No `__init__.py` in any test directory — see
 `.claude/rules/code-conventions.md` for the rule and rationale.
 
-**`tests/conftest.py` is the single, root-level fixture registry for the
-suite** — there is no other `conftest.py` anywhere else in the project. It
+**`tests/conftest.py` is the root-level fixture registry for the suite**,
+holding every fixture shared broadly enough to be worth global visibility. It
 defines `RecordingProgressReporter`, a test double for the `ProgressReporter`
 protocol that records every call `(method_name, args)` in order (with a
 `count(method)` helper), and the `progress_recorder` fixture that hands out a
 fresh instance per test.
+
+**First exception (spec 0012 Task 9): `tests/guidami_ai_patente_ingestor/cli/
+commands/conftest.py`**, scoped to that one directory's tests — the fixtures
+only make sense for `reset knowledge`'s integration tests (seeding the
+golden-set tables and asserting on the validated-labeling guard), so they'd be
+dead weight on every other test module if hoisted to the root registry. It
+defines `ingestor_test_config` (`IngestorConfig.load(postgres=
+postgres_test_config)`), and two labeling-chain seed fixtures built on it —
+`seeded_labeling` and `seeded_validated_labeling` — each inserting one
+article → comma → quiz question → labeling run → `quiz_labelings` row (the
+validated variant sets `validated_at`/`validated_by`, satisfying the
+`quiz_labelings_validation_complete` CHECK), truncating the same
+`_GOLDEN_SET_TABLES` tuple as `tests/labeling/repositories/
+test_golden_set_schema.py`'s fixture before and after. A local, directory-
+scoped `conftest.py` is the right call whenever a fixture's only sensible
+callers already live under one `tests/<pkg>/.../` subtree — prefer the root
+registry by default, but don't force a fixture upward past the tests that
+actually need it.
 
 It also defines the two fixtures every Postgres-backed integration test
 relies on for isolation, both session-scoped:
@@ -112,6 +159,9 @@ relies on for isolation, both session-scoped:
   `tests/guidami_ai_patente_ingestor/repositories/test_article_store_repository.py`)
   requests this fixture rather than building its own
   `PostgresConnectionConfig`.
+- `app_config`/`api_client`/`_reset_pywire_container` — the session-scoped,
+  one-`AppConfig` fixtures for `src/guidami_ai_patente/` (the FastAPI app),
+  described above.
 `tests/guidami_ai_patente_ingestor/fixtures/` is a separate mechanism, not
 pytest fixtures — it holds static JSON sample files (`cds_sample.json`,
 `cap_sample.json`, `quiz_bank_sample.json`) used as real input data by
@@ -128,7 +178,22 @@ T-15, after `EnrichedArticleModel` was deleted).
 Naming: `test_*.py`, generally one test file per source file/class (e.g.
 `test_article_cleaner.py` for `article_cleaner.py`).
 
-**Import-boundary test via `ast`** (`tests/retrieval_evaluation/test_wiring.py::
+**Third-party exception-hierarchy canary** (`tests/commons/clients/
+test_postgres_client_integration.py::test_pool_failures_are_catchable_as_
+psycopg_errors`, spec 0012, D12): a plain (non-integration) unit test
+asserting `issubclass(psycopg_pool.PoolTimeout, psycopg.Error)` and the same
+for `PoolClosed` — not behaviour of this project's own code, but a pin on an
+upstream library invariant `status.py`/`prepare.py` both rely on when they
+catch broad `psycopg.Error` to report "database unreachable". If a future
+`psycopg_pool` release ever stops `PoolTimeout` subclassing `psycopg.Error`,
+this test fails immediately at that dependency bump instead of the
+regression only surfacing as an uncaught traceback the next time a caller
+hits an exhausted pool. Same file also has
+`test_an_unreachable_database_fails_at_construction_not_at_first_query`
+(integration-marked, D3): asserts `PostgresClient(dead_config)` itself
+raises `psycopg.Error`, not a later `.fetch()` call.
+
+**Import-boundary test via `ast`** (`tests/retrieval_evaluation/test_entry_points.py::
 test_the_labeler_imports_no_private_ingestor_module`, spec 0011 phase 2): parses
 every `.py` file under a package's source tree with `ast`, collects every
 `ImportFrom`/`Import` module path, and asserts none crosses a declared boundary
@@ -136,6 +201,14 @@ every `.py` file under a package's source tree with `ast`, collects every
 dotted segment beginning with `_`) — a structural convention (FR-12) enforced as a
 regular unit test, no real imports executed, no fixture needed. Reusable pattern
 for any future "package X must not reach into package Y's private internals" rule.
+Reused by `tests/labeling/test_module_boundary.py` (spec 0012, quiz-flow-api-phase1
+plan Task 5): same `_imported_modules(source_text) -> list[str]` helper, four
+assertions guarding `src/labeling/`'s dependency edges both ways — it imports
+nothing from `retrieval_evaluation` (AD-12), nothing from `pywire` (ADR 0015),
+nothing from `guidami_ai_patente` (the FastAPI app) — plus one guarding the
+opposite direction, that `src/domain/` imports nothing from `labeling` (D13),
+since `labeling/` legitimately imports `domain/` and nothing else prevents the
+edge from silently inverting.
 
 *Last updated: 2026-08-06 — verified against commit `91028b2`; documented the
 isolated ephemeral Postgres test stack (`docker/docker-compose.test.yml`) and
@@ -151,3 +224,69 @@ the first test for `src/guidami_ai_patente/` and the project's first use of Fast
 *Last updated: 2026-08-21 — verified against commit `e4977a94` (working tree ahead:
 spec 0011 phase 2, T-11); documented the `ast`-based import-boundary test convention,
 introduced for `retrieval_evaluation`'s "no private-module import from the ingestor" rule.*
+
+*Last updated: 2026-08-25 — verified against commit `7005ad3f` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 5). Noted `tests/labeling/test_module_boundary.py`'s
+reuse of the `ast`-based import-boundary convention: four assertions guarding
+`labeling/`'s edges (no `retrieval_evaluation`, no `pywire`, no `guidami_ai_patente`) plus
+one guarding `domain/` never importing back from `labeling/`.*
+
+*Last updated: 2026-08-25 — verified against commit `b6e34f4d` (working tree ahead:
+spec 0012 Task 9, FR-17/AD-28); `tests/guidami_ai_patente_ingestor/cli/commands/
+conftest.py` is the suite's first non-root `conftest.py` — corrected the prior
+"there is no other `conftest.py`" claim and documented why a directory-scoped one
+was the right call here (fixtures only meaningful to `reset knowledge`'s tests).*
+
+*Last updated: 2026-08-25 — verified against commit `c77de38a` (quiz-flow-api-phase1
+plan Task 11); documented the third-party exception-hierarchy canary test in
+`test_postgres_client_integration.py` (D12) alongside the existing fail-fast-at-
+construction test (D3).*
+
+**`object.__new__` container bypass for a pure-unit `@service`/`@repository`/`@client`
+test** (`tests/guidami_ai_patente/services/test_explanation_status_service.py`, spec
+0012, quiz-flow-api-phase2 plan Task 8): `service = object.__new__(ExplanationStatusService)`
+constructs the instance without running pywire's instrumented `__init__` (which would
+resolve the real, container-managed singletons — Postgres, the labeling stack), then the
+test assigns lightweight `@dataclass` doubles directly onto the `Autowired` field names
+(`service.golden_set = _GoldenSetDouble(...)`, etc., each `# type: ignore[assignment]`
+since pyright sees the real `Autowired[T]` annotation). Works whenever the class under
+test declares its collaborators as bare `Autowired[T]` fields with **no constructor body
+of its own** — true for `ExplanationStatusService`/`HealthCheckService`
+(`services/`) and `QuizQuestionRepository`/`GoldenSetReadRepository` (`repositories/`),
+but **not** for a class like `LabelingStackProvider`/`PostgresClientProvider`
+(`clients/`) or `AgentConfigRepository` (`repositories/`), whose `__init__` does real
+work (loading a YAML file, building a pooled client) that pywire's DI is what triggers —
+bypassing it with `object.__new__` there would skip that work entirely, not just the
+container resolution. For a zero-body class, the class's "construction" *is* setting
+those fields, so `object.__new__` plus manual assignment reproduces it exactly, with no
+Docker/Postgres and no pywire container involved at all. Reach for the heavier
+`api_client`/`app_config`
+fixtures (above) instead when the test needs the real DI graph or a live HTTP round trip;
+reach for this bypass when it only needs one class's own logic isolated from its
+collaborators.
+
+*Last updated: 2026-08-26 — verified against commit `f9d436de` (working tree ahead:
+quiz-flow-api-phase2 plan Task 8); documented the `object.__new__` container-bypass
+pattern for pure-unit tests of `Autowired`-only pywire classes, introduced by
+`ExplanationStatusService`'s test.*
+
+*Last updated: 2026-08-26 — verified against commit `ff0b188e` (working tree ahead:
+quiz-flow-api-phase2 plan Task 2); documented the session-scoped `app_config`/
+`api_client`/`_reset_pywire_container` fixtures that make "one `AppConfig` per
+pytest session" a hard error via `create_app`'s `register_instance` call (ADR 0023),
+replacing the prior per-test `create_app(AppConfig(...))` pattern in
+`test_health.py`; noted the new `test_container_registration.py` coverage.*
+
+*Last updated: 2026-09-02 — verified against commit `8d8443e5` (working tree ahead:
+uncommitted, on `feat/quiz-flow-api-phase1`). `pywire` 0.7.0 -> 0.8.0 removed
+`pywire.fastapi.wire()`, leaving `pywire_lifespan` as the only way to bind a container
+to a FastAPI app (ADR 0028) — which makes a **testing constraint** out of what used to be
+a style choice: `TestClient(app)` binds `app.state.pywire_container` **only** when used
+as a context manager, because that is what runs the lifespan. Without the `with`, every
+`Autowired[T]` route parameter resolves against the module-level default container
+instead, silently — no error, possibly a different instance than the test set up. Any
+test exercising an endpoint must therefore go through `tests/conftest.py::api_client`
+(`with TestClient(create_app(...)) as client`, session-scoped) rather than constructing
+its own `TestClient`. `wire()` had no such hazard: it bound eagerly at call time. The
+`object.__new__` container-bypass pattern for pure-unit tests of `Autowired`-only classes
+(2026-08-26 entry above) is unaffected — it never touches the app or its lifespan.*

@@ -22,40 +22,121 @@ repo/
 │   │                                #   (RunArtifactWriter + models/: RunManifest base,
 │   │                                #   ScrapeManifest; RunArtifactWriterConfig removed);
 │   │                                #   sibling of ai/observability/, not AI-specific
-│   ├── domain/                     # Shared domain entities/models/enums (persisted + intermediate),
-│   │                                #   models/retrieval/: read DTOs (RetrievedComma,
+│   ├── domain/                     # Shared domain entities/models/enums/validators (persisted +
+│   │                                #   intermediate), models/retrieval/: read DTOs (RetrievedComma,
 │   │                                #   QuizEvaluationRow) — carry `id`, unlike entities;
 │   │                                #   entities/: knowledge/, quiz/, evaluation/
 │   │                                #   (LabelingRunEntity, QuizLabelingEntity,
 │   │                                #   QuizCommaLabelEntity — spec 0011 phase 2);
 │   │                                #   entities/observability/ removed — LlmCallLogEntity
 │   │                                #   moved into commons/ai/observability/entities/;
-│   │                                #   enums/: closed vocabularies, e.g. LexemeField —
-│   │                                #   the project's first enum (spec 0011 phase 2);
+│   │                                #   enums/: closed vocabularies, e.g. LexemeField,
+│   │                                #   LabelingRunOrigin (spec 0012, AD-8);
+│   │                                #   validators/: shared invariant-check functions reused
+│   │                                #   across entities (require_canonical_lexeme_fields — spec
+│   │                                #   0012, D8/D13; new package, first occupant); domain/ never
+│   │                                #   imports labeling/, so shared logic that labeling/ also
+│   │                                #   needs lives here, not there (guarded by
+│   │                                #   tests/labeling/test_module_boundary.py, spec 0012, Task 5);
 │   │                                #   no I/O or business logic
 │   ├── guidami_ai_patente_ingestor/ # Batch ingestion app: prepares + indexes the
 │   │                                #   normative corpus (CdS/CAP/Regolamento) and quiz bank
-│   ├── guidami_ai_patente/         # FastAPI quiz-bot app — layout scaffolded, no domain
-│   │                                #   endpoints yet. api/ (self-contained web
+│   ├── guidami_ai_patente/         # FastAPI quiz-bot app — serves the full quiz loop
+│   │                                #   (topics, propose/fetch a question, check an
+│   │                                #   answer, fetch its image, explain the correct
+│   │                                #   answer — spec 0012 phase 3). api/ (self-contained web
 │   │                                #   layer: app.py factory, routers/, schemas/) →
 │   │                                #   services/ / repositories/ / models/ / mappers/
-│   │                                #   (empty, pull-based) → configs/ (AppConfig). Only
-│   │                                #   concrete slice: GET /health. Entry point:
+│   │                                #   (empty, pull-based) → configs/ (AppConfig); enums/ (closed
+│   │                                #   vocabularies: ExplanationStatus, InsufficientKnowledgeReason
+│   │                                #   — spec 0012, Task 5). As of
+│   │                                #   quiz-flow-api-phase2 Task 3, clients/ held the app's
+│   │                                #   first two `@client` providers; since spec 0013 FR-2,
+│   │                                #   clients/ holds only PostgresClientProvider (wraps
+│   │                                #   commons/ PostgresClient via
+│   │                                #   labeling.wiring.build_postgres_client — its placement
+│   │                                #   here is temporary, pending commons/ adopting pywire).
+│   │                                #   New sibling package providers/ holds three
+│   │                                #   providers (spec 0012 phase 3, D3): LabelingStackProvider
+│   │                                #   (judge identity only — loads comma_labeler.yaml through
+│   │                                #   AgentConfigRepository, derives the LabelingEpoch via
+│   │                                #   LabelingEpochMapper), LiveLabelingStackProvider (the
+│   │                                #   live judge machinery — see adr/0029), and
+│   │                                #   OpenRouterProviderComponent + LlmCallTrackerProvider
+│   │                                #   (D5, adr/0031); all decorated @provider — the revised
+│   │                                #   AD-16 test is direction-of-dependency, not constructor
+│   │                                #   arity, see .claude/rules/pywire-di.md; repositories/ gains
+│   │                                #   AgentConfigRepository, the
+│   │                                #   API's only door to `agents_dir` and the agent prompt
+│   │                                #   files (AD-22), now re-exported from
+│   │                                #   repositories/__init__.py. Seven live endpoints: GET
+│   │                                #   /health plus six quiz-domain routes (topics,
+│   │                                #   propose/fetch a question, check an answer, fetch
+│   │                                #   its image, explain the correct answer — see
+│   │                                #   architecture.md for the full list).
+│   │                                #   Entry point:
 │   │                                #   `guidami_ai_patente.main:main`, registered as the
-│   │                                #   `api` script
+│   │                                #   `serve` script
 │   ├── html_viewers/               # Standalone, dependency-free HTML pages for manually
 │   │                                #   inspecting pipeline output (e.g. quiz enrichment
 │   │                                #   review); opened directly in a browser, no server
+│   ├── labeling/                   # Shared labeling/judge stack (spec 0012, AD-12), split
+│   │                                #   out of retrieval_evaluation/ so both the batch harness
+│   │                                #   and the future FastAPI app can depend on it without the
+│   │                                #   app pulling in a standalone script's entry point. Manual
+│   │                                #   constructor injection only, no pywire (ADR 0015), and
+│   │                                #   every component stays synchronous (AD-25); guarded by
+│   │                                #   tests/labeling/test_module_boundary.py (no import of
+│   │                                #   retrieval_evaluation/, pywire, or guidami_ai_patente/).
+│   │                                #   As of Task 5 of the quiz-flow-api-phase1 plan it holds
+│   │                                #   the full judge stack, all moved from retrieval_evaluation/
+│   │                                #   by `git mv`: agents/comma_labeler/ (CommaLabelerAgent +
+│   │                                #   its dto/), models/ (CandidateComma, LabelingEpoch),
+│   │                                #   services/ (CandidateSetService, GoldenSetLabelingService,
+│   │                                #   QuestionLabelingService — the shared per-question unit,
+│   │                                #   spec 0012 phase 3, adr/0030 — QuestionLexemeService),
+│   │                                #   constants.py (EMBEDDING_MODEL_COLUMN), repositories/
+│   │                                #   (GoldenSetWriteRepository, insert-only), exceptions/
+│   │                                #   (CandidateNumberOutOfRangeError), utils/ (corpus_commit,
+│   │                                #   prompt_version — run provenance), configs/ (LabelingConfig,
+│   │                                #   a BaseSettings reading configs/labeling.yaml), and mappers/
+│   │                                #   (LabelingEpochMapper.from_config_to_epoch — the one place
+│   │                                #   lexeme_fields is sorted — and LabelingRunMapper.
+│   │                                #   from_epoch_to_entity). As of Task 6 it also holds wiring.py:
+│   │                                #   manual DI builders for this stack's collaborators
+│   │                                #   (build_open_router_provider, build_postgres_client,
+│   │                                #   build_tracker, build_corpus_repository,
+│   │                                #   build_quiz_repository, build_golden_set_repository,
+│   │                                #   build_comma_labeler_config, build_comma_labeler_agent —
+│   │                                #   its tracker param is optional, no request-scoped owner
+│   │                                #   for a QueuedLlmCallTracker's background lifecycle —
+│   │                                #   build_question_lexeme_service, build_candidate_set_service),
+│   │                                #   every parameter LabelingConfig/plain values, never
+│   │                                #   IngestorConfig/AppConfig; retrieval_evaluation/main.py and
+│   │                                #   label_main.py import from it instead of duplicating their
+│   │                                #   own _build_* helpers (resolving the Task 5 duplication)
 │   ├── parsers/                    # Standalone script: quiz PDF -> data/parsed/
 │   ├── retrieval_evaluation/       # Standalone scripts over the same corpus, two entry points:
 │   │                                #   evaluate-retrieval-judge — LLM-as-judge spot-check,
 │   │                                #   samples quiz questions, judges whether their top-k
 │   │                                #   retrieved commas justify the answer, writes nothing (ADR 0013);
 │   │                                #   label-golden-set — persists a labeled golden set to Postgres
-│   │                                #   (labeling_runs/quiz_labelings/quiz_comma_labels), agents/
-│   │                                #   comma_labeler/ + repositories/ (GoldenSetWriteRepository,
-│   │                                #   insert-only) + exceptions/ + utils/ (run provenance) added
-│   │                                #   alongside agents/retrieval_judge/ (spec 0011 phase 2)
+│   │                                #   (labeling_runs/quiz_labelings/quiz_comma_labels). Since
+│   │                                #   Task 5 this package holds only agents/retrieval_judge/,
+│   │                                #   models/retrieval_judge_item_result.py,
+│   │                                #   services/retrieval_judge_evaluation_service.py, main.py,
+│   │                                #   label_main.py, and a wiring.py trimmed to one builder,
+│   │                                #   build_retrieval_judge_agent(agents_dir, provider, tracker)
+│   │                                #   (renamed from build_agent, reparameterised off a bare
+│   │                                #   agents_dir: Path). Everything comma-labeler/golden-set
+│   │                                #   related (agents/comma_labeler/, repositories/, exceptions/,
+│   │                                #   utils/) moved out to labeling/ — see above. Since Task 6,
+│   │                                #   main.py and label_main.py import every other builder they
+│   │                                #   need from labeling/wiring.py instead of each duplicating a
+│   │                                #   private _build_* set; both widen their pooled
+│   │                                #   PostgresClient's pool_max_size to
+│   │                                #   max(config.postgres.pool_max_size, concurrency) before
+│   │                                #   building it (D7/D14)
 │   ├── scrapers/                   # Standalone script: normattiva.it -> data/raw/ + data/parsed/
 │   └── test_data_sampler/          # Standalone script: data/parsed/ -> a random subset in
 │                                    #   data/test-data/parsed/, plus the sampled quiz
@@ -65,7 +146,8 @@ repo/
 ├── tests/                          # Mirrors src/ structure, no __init__.py per directory
 │   ├── commons/
 │   ├── domain/
-│   └── guidami_ai_patente_ingestor/
+│   ├── guidami_ai_patente_ingestor/
+│   └── labeling/
 ├── configs/                        # Runtime YAML config (ingestor_config.yaml, agents/*.yaml,
 │                                    #   ingestor_config.test-data.yaml — see below)
 ├── db/                             # init.sql — Postgres/pgvector target schema, applied on container init
@@ -208,7 +290,7 @@ implemented.
   `observability/` no longer follows that template: the simplification
   that removed `mappers/`, `models/llm_call_capture_model.py`, and the
   private `services/protocols/` sink port (see `docs/second-brain/patterns.md`
-  and `adr/0020-context-manager-tracker-port.md`) replaced it with a shape
+  and `adr/0025-context-manager-tracker-port.md`) replaced it with a shape
   built around a **stateful adapter** rather than a stateless mapper.
   Today: `protocols/` (two genuine cross-package ports, both public now —
   `LlmCallTracker`, a context manager `BaseAgent` depends on, and
@@ -317,10 +399,21 @@ implemented.
   `models/`/`services/`. `configs/app_config.py::AppConfig` is the root
   `BaseSettings`, built once in `main.py` and passed down into
   `api.app.create_app`, embedding `commons.configs.PostgresConnectionConfig`
-  the same way `IngestorConfig` does. `models/` and `mappers/` are still
-  scaffolded empty (docstring-only `__init__.py`), filled in pull-based as
-  with `domain/entities/` elsewhere in this repo; `services/` and
-  `repositories/` gained their first real, non-domain classes —
+  the same way `IngestorConfig` does. `models/` is filled in pull-based as
+  with `domain/entities/` elsewhere in this repo. `mappers/` (spec 0012
+  quiz-flow-api-phase2 plan Task 10) holds its first occupant,
+  `QuizQuestionMapper` (`mappers/quiz_question_mapper.py`), a static mapper
+  in the same style as the ingestor's `mappers/` package, alongside the
+  module-level `QUIZ_IMAGE_URL_PREFIX` constant it declares — re-exported
+  from `mappers/__init__.py`; the FR-12 images router (a later task)
+  imports the constant from there instead of duplicating the literal.
+  `api/schemas/` gained its first non-`health` DTOs in the same task:
+  `quiz_question.py::QuizQuestionResponse` and
+  `quiz_topics.py::{QuizTopicResponse, QuizTopicsResponse}`, neither
+  re-exported from `api/schemas/__init__.py` — routers import them
+  directly from their module, matching `api_error.py`/`health.py`.
+  `services/` and `repositories/` gained their first real, non-domain
+  classes —
   `repositories/dependency_version_repository.py::DependencyVersionRepository`
   and `services/health_check_service.py::HealthCheckService` — wired into
   `GET /health` (see `docs/architecture.md` and
@@ -329,7 +422,7 @@ implemented.
   request/response service. The only concrete vertical slice so far is
   `GET /health`, proving the wiring end-to-end; it carries no business
   logic. Entry point: `main.py::main` (loads `AppConfig`, builds the app via
-  `create_app`, serves it with `uvicorn`), registered as the `api`
+  `create_app`, serves it with `uvicorn`), registered as the `serve`
   script in `pyproject.toml`.
 - **New tests** mirror the `src/` path of the code under test inside
   `tests/`, with no `__init__.py` in any test directory (see
@@ -383,15 +476,65 @@ implemented.
   `label-golden-set` (`label_main.py`), was added alongside it in the same
   package (spec 0011 phase 2) rather than as a new top-level module or as a
   mode of the judge script: FR-12 requires a distinct `CommaLabelerAgent`
-  (own DTOs, own prompt file) but the same lightweight, no-manifest shape,
-  and both scripts share `wiring.py`'s DI builders and `IngestorConfig`. It
-  introduces `retrieval_evaluation/repositories/` (a package the judge
-  script never needed, since it writes nothing) for
+  (own DTOs, own prompt file) but the same lightweight, no-manifest shape.
+  It originally introduced `retrieval_evaluation/repositories/` for
   `GoldenSetWriteRepository` — insert-only, `INSERT` statements only, no
-  `UPDATE`/`DELETE`/DDL (AD-10) — placed here rather than promoted into
-  `commons/repositories/db/` (that package is read-only by declared
-  convention) or into the ingestor's per-table write layer (the labeler is
-  not part of `guidami_ai_patente_ingestor/`).
+  `UPDATE`/`DELETE`/DDL (AD-10). Since spec 0012 Task 5, `GoldenSetWriteRepository`
+  and the rest of the golden-set/comma-labeler stack live in `src/labeling/` instead
+  (see the next bullet); `retrieval_evaluation/` keeps only what stays specific to
+  the two standalone scripts (`agents/retrieval_judge/`, `main.py`, `label_main.py`,
+  `services/retrieval_judge_evaluation_service.py`, and a `wiring.py` trimmed to the
+  retrieval-judge builder). Since Task 6 of the same plan, both scripts import their
+  Postgres/OpenRouter/repository/service builders from the new `labeling/wiring.py`
+  instead of each duplicating its own private `_build_*` helpers, and both widen the
+  `PostgresClient` they build from `config.postgres.model_copy(update={"pool_max_size":
+  max(config.postgres.pool_max_size, concurrency)})` before opening it — D7/D14, so
+  the `--concurrency` tasks each script fans out over one pooled connection can't
+  starve each other under Task 1's bounded `timeout`.
+- **Code shared by the batch labeling harness and the future FastAPI app's live
+  judge** (spec 0012, AD-12) goes in `src/labeling/`, a new top-level package sibling
+  to `retrieval_evaluation/`: manual constructor injection only, no `pywire` import
+  anywhere in it (ADR 0015), and every component stays synchronous, since the API
+  calls it via `asyncio.to_thread` rather than an async duplicate (AD-25).
+  `labeling/configs/labeling_config.py::LabelingConfig` (moved out of
+  `guidami_ai_patente_ingestor/configs/`, Task 3 of the quiz-flow-api-phase1 plan) was
+  its first occupant; as of Task 5 (same plan) it holds the full judge stack, moved
+  from `retrieval_evaluation/` by `git mv`: `CommaLabelerAgent`, `CandidateSetService`,
+  `QuestionLexemeService`, `GoldenSetWriteRepository`, `CandidateComma`,
+  `CandidateNumberOutOfRangeError`, and `corpus_commit`/`prompt_version`, alongside
+  `LabelingEpoch` and its mappers (Task 4). `evaluate-retrieval-judge`
+  and `label-golden-set` (`retrieval_evaluation/`) keep depending on `labeling/` rather
+  than the reverse — the standalone scripts are consumers of the shared stack, not its
+  owner; `tests/labeling/test_module_boundary.py` enforces this both ways (`labeling/`
+  imports nothing from `retrieval_evaluation/`, `pywire`, or `guidami_ai_patente/`;
+  `domain/` imports nothing from `labeling/`). As of Task 6, `labeling/` also holds
+  `wiring.py`: manual DI builders for every collaborator this stack needs (Postgres
+  client, OpenRouter provider, tracker, corpus/quiz read repositories, golden-set write
+  repository, comma-labeler config/agent, question-lexeme service, candidate-set
+  service), each parameterised on `LabelingConfig` and/or plain values — never on
+  `IngestorConfig`/`AppConfig` — so both the batch scripts and the future FastAPI app
+  can drive them without either package importing the other's root config
+  (`tests/labeling/test_wiring.py::test_no_builder_takes_an_ingestor_config` asserts
+  this by inspecting every builder's signature). `retrieval_evaluation/main.py` and
+  `label_main.py` both import from it now, resolving the temporary `_build_*`
+  duplication Task 5 introduced.
+- **A field two config roots must never resolve differently** (e.g. `agents_dir`,
+  which both `IngestorConfig` and `LabelingConfig` need because
+  `guidami_ai_patente_ingestor/orchestrators/quiz_flows.py`'s quiz-enrichment agents
+  and `labeling/`'s judge agent load from the same kind of directory but for
+  unrelated reasons — the judge's prompt hash **is** its configuration epoch,
+  spec 0012 AD-22, while the enrichment agents' prompts enter no epoch at all) is
+  declared **on both roots**, each field defaultless and aliased to the *same* single
+  environment variable (`Field(validation_alias=AliasChoices("AGENTS_DIR",
+  "agents_dir"))` on both `IngestorConfig.agents_dir` and
+  `LabelingConfig.agents_dir`). The single-source guarantee comes from the one
+  defaultless env var every root reads, not from collapsing the two fields into one
+  shared field or a shared default — collapsing them would force one of the two
+  unrelated readers to import the other's config package just to find a directory
+  path. `ingest status` cross-checks the two resolved values and reports a `BLOCKED`
+  readiness row (`command="config", entity="agents_dir"`) if they ever disagree — see
+  `StatusInspector._agents_dir_agreement_readiness` in
+  `guidami_ai_patente_ingestor/cli/services/status/status_inspector.py`.
 - **A closed vocabulary that is a shared shape** (a DB column's legal
   values, or a field name another module also needs) goes in
   `src/domain/enums/` as a `StrEnum` with `auto()`-derived values, never
@@ -543,6 +686,81 @@ moved to `docs/superpowers/specs/` and `docs/superpowers/plans/` under the new
 `YYYY-MM-DD-<topic>[-design|-phaseN-plan].md` naming. The `specs/` paragraph and the
 `docs/` tree-comment above were rewritten accordingly.*
 
+*Last updated: 2026-08-25 — verified against commit `2cc0710a` (working tree ahead: spec
+0012, folded commit tasks 7+2+8); `domain/` gained a new `validators/` sub-package
+(`require_canonical_lexeme_fields`, shared by `LabelingRunEntity` now and the future
+`LabelingEpoch` in `labeling/`) and a second enum, `LabelingRunOrigin`.*
+
+*Last updated: 2026-08-25 — verified against commit `440bad56` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 3); new top-level package `src/labeling/` created
+(`configs/labeling_config.py::LabelingConfig`, moved out of
+`guidami_ai_patente_ingestor/configs/` and promoted from a plain `BaseModel` to a
+`BaseSettings` reading the new `configs/labeling.yaml`); `tests/labeling/` mirrors it.
+Added the placement bullet for `labeling/` and a new placement bullet for the
+`agents_dir` single-sourcing pattern (two defaultless, `AGENTS_DIR`-aliased fields,
+one on `IngestorConfig` and one on `LabelingConfig`, cross-checked by `StatusInspector`).*
+
+*Last updated: 2026-08-25 — verified against commit `564f3df8` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 4). `src/labeling/` gained `models/`
+(`labeling_epoch.py::LabelingEpoch`) and `mappers/` (`labeling_epoch_mapper.py`,
+`labeling_run_mapper.py`), each mirrored under `tests/labeling/`; updated the `labeling/`
+placement bullet accordingly. `prompt_version` is imported into
+`labeling/mappers/labeling_epoch_mapper.py` from `retrieval_evaluation.utils` as a
+deliberate temporary bridge — Task 5's `git mv` of `run_provenance.py` into
+`labeling/utils/` re-points it, per the plan's own Interfaces note for this task.*
+
+*Last updated: 2026-08-25 — verified against commit `7005ad3f` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 5). Pure `git mv` sweep: `src/labeling/` gained the
+rest of the judge stack — `agents/comma_labeler/`, `models/candidate_comma.py`,
+`services/{candidate_set_service,question_lexeme_service,golden_set_labeling_service}.py`,
+`repositories/golden_set_write_repository.py`, `exceptions/labeling_errors.py`, and
+`utils/run_provenance.py` — each mirrored under `tests/labeling/`, resolving the
+`retrieval_evaluation.utils` bridge noted in the Task 4 entry above.
+`retrieval_evaluation/` now holds only `agents/retrieval_judge/`, `main.py`,
+`label_main.py`, `services/retrieval_judge_evaluation_service.py`,
+`models/retrieval_judge_item_result.py`, and a `wiring.py` trimmed to one builder,
+`build_retrieval_judge_agent(agents_dir, provider, tracker)`. The other builders that
+used to live in that `wiring.py` (Postgres client, OpenRouter provider, tracker,
+quiz/corpus read repos, golden-set repository, comma-labeler config/agent) are not yet in
+a shared `labeling/wiring.py` — Task 6 (builders reparameterisation) hasn't run — so they
+are temporarily duplicated as private module-level helpers in both `main.py` and
+`label_main.py`, each flagged with a comment pointing at Task 6 as the resolution. Added
+`tests/labeling/test_module_boundary.py` (asserts `labeling/` imports nothing from
+`retrieval_evaluation/`, `pywire`, or `guidami_ai_patente/`, and that `domain/` imports
+nothing from `labeling/`) and updated the `labeling/`/`retrieval_evaluation/` placement
+bullets accordingly.*
+
+*Last updated: 2026-08-25 — verified against commit `2a639831` (working tree ahead: spec
+0012, quiz-flow-api-phase1 plan Task 6). `labeling/` gained `wiring.py` (nine-plus manual
+DI builders, all parameterised on `LabelingConfig`/plain values, never
+`IngestorConfig`/`AppConfig`); `tests/labeling/` gained `test_wiring.py`. Both
+`retrieval_evaluation/main.py` and `label_main.py` now import their builders from
+`labeling.wiring` and no longer carry duplicated private `_build_*` helpers (resolving
+the Task 5 duplication); both widen their pooled `PostgresClient`'s `pool_max_size` to
+`max(config.postgres.pool_max_size, concurrency)` before building it (D7/D14).
+`label_main.py`'s `labeling_runs` insert now goes through `LabelingEpochMapper`/
+`LabelingRunMapper` instead of an inline `LabelingRunEntity(...)` stopgap.
+`tests/retrieval_evaluation/test_wiring.py` was renamed to `test_entry_points.py`,
+freeing the `test_wiring` basename for the new `tests/labeling/test_wiring.py` (pytest's
+default import mode requires a unique module basename per test file across all of
+`tests/`, since no test directory carries an `__init__.py`) — content unchanged, file
+moved only.*
+
+*Last updated: 2026-08-26 — verified against commit `546985b5` (working tree ahead: spec
+0012, quiz-flow-api-phase2 plan Task 3). `guidami_ai_patente/` gained `clients/`, the app's
+first `@client`-provider package (spec 0012, AD-16): `PostgresClientProvider` (wraps
+`commons/` `PostgresClient` via `labeling.wiring.build_postgres_client`) and
+`LabelingStackProvider` (loads `comma_labeler.yaml` through the new
+`AgentConfigRepository`, derives the `LabelingEpoch` via `LabelingEpochMapper`).
+`repositories/` gained `AgentConfigRepository` — the API's only door to `agents_dir` and
+the agent prompt files (AD-22) — now re-exported from `repositories/__init__.py` (its
+first re-export; the pre-existing `DependencyVersionRepository` is still imported
+directly from its module).*
+
+*Last updated: 2026-08-26 — verified against commit `64077e1f` (working tree ahead: spec 0012, quiz-flow-api-phase2 plan Task 5). `guidami_ai_patente/` gained `enums/`, holding closed vocabularies `ExplanationStatus` and `InsufficientKnowledgeReason` for the check and insufficient-knowledge responses.*
+
+*Last updated: 2026-08-26 — verified against commit `a48633df` (working tree ahead: spec 0012, quiz-flow-api-phase2 plan Task 10). `guidami_ai_patente/mappers/` (a new top-level package) gained its first occupant, `QuizQuestionMapper` (plus the module-level `QUIZ_IMAGE_URL_PREFIX` constant), re-exported from `mappers/__init__.py`; `api/schemas/` gained its first non-`health` DTOs, `quiz_question.py::QuizQuestionResponse` and `quiz_topics.py::{QuizTopicResponse, QuizTopicsResponse}`; `services/` gained `QuizProposalService` (found-or-404 wrapper over `QuizQuestionRepository`'s `propose`/`fetch`/`topics`).*
+
 *Last updated: 2026-08-28 — verified against commit `ab1b8f82`; `commons/ai/observability/`
 no longer follows the plain five-subpackage template — the `observability/` paragraph is
 rewritten to describe its current shape (`protocols/` now fully public, `adapters/` added
@@ -552,3 +770,32 @@ for the stateful `PydanticAILlmCallRecorder`, `entities/`/`enums/`/`configs/` ad
 matches the original template. `domain/entities/observability/` is gone from both the
 tree comment and the placement-guidance list — `LlmCallLogEntity` moved into
 `commons/ai/observability/entities/`.*
+
+*Last updated: 2026-09-01 — merged `feat/backend` into `feat/quiz-flow-api-phase1` ahead
+of spec 0013 implementation; the two conflicting tree-comment/changelog regions above were
+reconciled by hand (topics don't overlap — `domain/`+`labeling/`+`guidami_ai_patente/`
+growth on this branch vs. the `commons/ai/observability/` restructure on `feat/backend`),
+see `architecture.md`'s matching merge entry for the code-level reconciliation
+(`retrieval_evaluation/`/`labeling/wiring.py`'s `build_tracker` removal).*
+
+*Last updated: 2026-09-01 — verified against commit `51dcba1a`; fixed a stale
+`adr/0020-context-manager-tracker-port.md` cross-reference — that ADR was renumbered to
+0025 (see `database.md`'s matching entry for why: an ADR-number collision from the
+`feat/backend` merge). Updated the `guidami_ai_patente/` tree-comment's `clients/`
+placement bullet: since spec 0013 FR-2, `clients/` holds only `PostgresClientProvider`;
+new sibling package `providers/` holds `LabelingStackProvider`, decorated `@provider`.
+Flagging for a future pass, not addressed here: this file is well past the ~200-line
+split threshold this skill's own guidance recommends (`layout.md` → `layout.md` +
+`layout/<topic>.md`) — out of scope for spec 0013, but worth doing before much more
+content accumulates.*
+
+*Last updated: 2026-09-03 — verified against commit `e592b110` (quiz-flow-api-phase3
+plan Task 14, close-out). Corrected two stale claims: the `guidami_ai_patente/`
+tree-comment no longer says the explanation endpoint "is not implemented yet" (it is,
+spec 0012 phase 3) and the endpoint count is now seven (`GET /health` plus six
+quiz-domain routes, not five). `providers/` tree-comment now lists all three providers
+(`LabelingStackProvider`, `LiveLabelingStackProvider`, `OpenRouterProviderComponent`,
+`LlmCallTrackerProvider` — D3/D5, `adr/0029`/`adr/0031`), not just the first one.
+`labeling/`'s `services/` enumeration gained `QuestionLabelingService` (`adr/0030`) and
+a new `constants.py` (`EMBEDDING_MODEL_COLUMN`). The ~200-line split flagged in the
+previous entry is still not addressed — deferred again, same reasoning.*

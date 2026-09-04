@@ -89,6 +89,20 @@ stay English. Every other docstring/comment/log on a response DTO (e.g. an inlin
 note explaining this exception) stays English — only the LLM-facing docstring and
 `Field(description=...)` text switch to Italian.
 
+### Exception — `pydantic_ai.ModelRetry` messages raised from an `output_validator`
+
+The same rationale extends to a `ModelRetry` message raised from an agent's own
+`@agent.output_validator`-registered function (see `BaseAgent`/`CommaLabelerAgent`):
+pydantic-ai injects that message back into the live conversation as corrective
+feedback for the next attempt — it is prompt content the model reads mid-conversation,
+even more directly than a DTO's `Field(description=...)`, which is only baked into
+the JSON schema once. When the agent's system/user prompts are Italian (as
+`comma-labeler`'s are), the `ModelRetry` message is written in Italian too, so the
+correction doesn't splice English into an otherwise all-Italian conversation. A
+`logger.warning`/`logger.debug` call logging that same retry is a separate string
+and stays English per the blanket rule above — only the string actually sent to the
+model switches language.
+
 ## Pydantic
 
 Configuration classes (any file under `configs/`) must set

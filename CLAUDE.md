@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **guidami-ai-patente** is a tool that makes Italian driving exam information freely accessible. It aggregates official questions, regulations, and reference material — currently scraped from the web and from PDFs — so users can study and query it without paywalls.
 
-The end goal is a **quiz bot** (FastAPI) that checks answers deterministically and explains them using RAG over the corpus normativo (CdS + CAP). The project is currently in the **data ingestion phase**: Postgres/pgvector infrastructure is running, corpus and quiz-bank ingestion pipelines are implemented. The FastAPI app has not been started yet.
+The end goal is a **quiz bot** (FastAPI) that checks answers deterministically and explains them using RAG over the corpus normativo (CdS + CAP). Postgres/pgvector infrastructure is running, corpus and quiz-bank ingestion pipelines are implemented, and the FastAPI app (`src/guidami_ai_patente/`, started with `uv run serve`) now serves the full quiz loop: browse topics, get a question, check an answer, fetch its image, and get a RAG-backed explanation of the correct answer. Deterministic answer-checking and the explanation endpoint are both live.
 
 ## Environment & Commands
 
@@ -46,13 +46,17 @@ rm -rf docker/.volumes/postgres_data
 docker compose -f docker/docker-compose.yml up -d
 ```
 
-Integration tests never touch this dev stack. They run against a fully isolated,
+No test ever touches this dev stack. They run against a fully isolated,
 ephemeral Postgres (`docker/docker-compose.test.yml`: separate container, separate
 port 5433, `tmpfs` data directory — never persisted, never the dev database) that
 the `postgres_test_config` session fixture in `tests/conftest.py` starts
-automatically the first time an integration test needs it, and tears down at the
-end of the pytest session. No manual `docker compose` step is needed for it —
-just `uv run pytest -m integration` (Docker must be running).
+automatically the first time any collected test needs it — not only
+`integration`-marked tests: several `guidami_ai_patente` API tests consume the
+`app_config`/`api_client` fixtures, which depend on `postgres_test_config`
+transitively. So a plain `uv run pytest` (no `-m integration`) also starts this
+Docker stack, and hard-fails (not a skip) if Docker isn't running. No manual
+`docker compose` step is needed for it either way; the stack tears down at the
+end of the pytest session.
 
 ### Available scripts
 
@@ -66,10 +70,12 @@ just `uv run pytest -m integration` (Docker must be running).
 | `uv run ingest prepare quiz [--force] [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Prepare quiz bank (enriched with image descriptions) |
 | `uv run ingest index knowledge --source <cds\|cap> [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Embed + store knowledge corpus for one source |
 | `uv run ingest index quiz [--dry-run]` | `guidami_ai_patente_ingestor.cli:main` | Embed + store quiz bank |
-| `uv run ingest reset knowledge [--apply]` | `guidami_ai_patente_ingestor.cli:main` | Truncates `articles` and `article_commas` (full wipe) |
+| `uv run ingest reset knowledge [--apply] [--force]` | `guidami_ai_patente_ingestor.cli:main` | Truncates `quiz_comma_labels`, `quiz_labelings`, `article_commas` and `articles` in one statement (full wipe); refuses when a human-validated labeling would be destroyed unless `--force` is also passed |
 | `uv run ingest reset quiz [--apply]` | `guidami_ai_patente_ingestor.cli:main` | Truncates `quiz_questions` (full wipe) |
 | `uv run ingest status [--online]` | `guidami_ai_patente_ingestor.cli:main` | Shows config (secrets masked) and per-command readiness; `--online` also checks Postgres reachability and per-table row counts |
 | `uv run ingest evaluate retrieval [--seed N] [--baseline-repetitions N] [--dry-run] [--plain]` | `guidami_ai_patente_ingestor.cli:main` | Measures retrieval quality (corpus coverage, ranking vs. random baseline, lexical adherence, dense/FTS agreement, keyword-quality signals) over the quiz bank and knowledge corpus (spec 0007). `--seed`/`--baseline-repetitions` override `IngestorConfig.evaluation`; writes `data/eval/retrieval-summary.json` (committed) plus per-question detail and a judge-ready export under `logs/ingest_evaluate_<ts>/` |
+| `uv run label-golden-set [--concurrency N] [--seed N] [--limit N] [--topic TOPIC]…` | `retrieval_evaluation.label_main:main` | Runs a golden-set labeling pass over the quiz bank via `CommaLabelerAgent`, persisting one `labeling_runs` row plus `quiz_labelings`/`quiz_comma_labels` (spec 0011). `--topic` (repeatable) restricts the run to the union of the named topics, applied before `--limit`; it selects which questions are labeled and is never recorded on the run (FR-18) |
+| `uv run serve` | `guidami_ai_patente.main:main` | Starts the FastAPI service on `AppConfig.host:port` |
 
 `--dry-run` (on `prepare`/`index`/`evaluate`) prints the step chain that would run and
 exits — no filesystem writes, no LLM calls, no DB connection is ever opened.
@@ -84,6 +90,20 @@ same-minute collision). Previews (`--dry-run` on `prepare`/`index`, or `reset` w
 `--apply`) never write to `logs/`, to keep the "no filesystem writes" guarantee.
 
 Register new CLI commands under `[project.scripts]` in `pyproject.toml`.
+
+### API endpoints
+
+Started via `uv run serve` (`docker compose up -d` first, so Postgres is reachable):
+
+| Endpoint | Description |
+|---|---|
+| `GET /health` | Liveness check; reports the resolved `pywire` version |
+| `GET /quiz-questions/topics` | Lists the distinct topics with their question counts (FR-16) |
+| `GET /quiz-questions/random?seed=&index=&topic=` | Proposes the question at `index` of the seeded permutation `seed` induces, optionally restricted to `topic` (FR-1); response never includes `correct_answer` |
+| `GET /quiz-questions/{number}` | Returns one question by its number, in the same shape as `/random` (FR-2) |
+| `POST /quiz-questions/{number}/check` | Grades a submitted true/false answer and advertises the `explanation_status` (`cached`/`uncached`/`unavailable`) for that question (FR-3, FR-4) |
+| `GET /quiz-questions/{number}/explanation?submitted=` | Explains why the correct answer is correct, grounded in the labeled commas: served from the golden-set cache when it holds them, computed live (retrieve → judge → write through) when it does not (FR-5, FR-6). `200` with `status: insufficient_knowledge` and a machine-readable `reason` when the corpus does not justify the question (FR-7); `503` when the judge or the writer fails (FR-13). Optional `submitted` tailors the wording to the answer the user gave (FR-11) |
+| `GET /quiz-images/{filename}` | Serves a quiz image, authorized database-first: 404 unless some `quiz_questions` row actually references the filename (FR-12) |
 
 ### Running against a test-data subset
 
@@ -111,7 +131,26 @@ holds the 7099 enriched quiz files (ADR 0012, superseding ADR 0005).
 
 Copy `.env.example` to `.env` and fill in:
 - `POSTGRES__USER` / `POSTGRES__PASSWORD` — DB credentials (double underscore = nested delimiter for `IngestorConfig.postgres`)
-- `OPENROUTER_API_KEY` — required for embedding and LLM steps; read by litellm from the environment
+- `OPENROUTER_API_KEY` — read by litellm from the environment; required for embedding and LLM
+  steps in ingestion, **and required to start the API at all**: `main.py` loads
+  `OpenRouterConfig`, whose `api_key` has no default, so `uv run serve` raises a
+  `ValidationError` without it, even for `GET /health`.
+- `AGENTS_DIR` — directory holding the agent YAML files. Has **no default** on any of
+  **three** config roots (`IngestorConfig.agents_dir`, `LabelingConfig.agents_dir` and
+  `AppConfig.agents_dir`, spec 0012, AD-22/AD-27): a missing value is a loud
+  `ValidationError` at startup, never a silent fallback, because the batch labeler and the
+  live judge must load the identical prompt file for their configuration-epoch hash
+  (`prompt_version`) to mean the same thing on both sides. `AppConfig.agents_dir` is
+  declared separately from `LabelingConfig.agents_dir` because it resolves a different kind
+  of prompt: the API's own agents whose prompts enter no configuration epoch (today,
+  `explanation_writer.yaml`), versus the epoch-controlled judge prompt (D4, ADR 0020).
+
+The labeling/judge configuration epoch (`judge_model`, `prompt_version`, `candidate_variant`,
+`dense_k`, `text_k`, `lexeme_fields`) is read from a single file, `configs/labeling.yaml`, via
+`LabelingConfig` — embedded in `IngestorConfig` on the batch side; the API side loads and
+registers its own independent `LabelingConfig` instance from the same file/env at `main.py`
+(spec 0013, FR-1) rather than nesting it inside `AppConfig`, so the two roots read the same
+source without either one owning the other (see `docs/second-brain/patterns.md` and ADR 0020).
 
 ## Architecture
 

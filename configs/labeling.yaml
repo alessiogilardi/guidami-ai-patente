@@ -1,0 +1,17 @@
+# Single source of the judge's configuration epoch (spec 0012, AD-27). Read by BOTH
+# IngestorConfig and AppConfig — never duplicate any of these keys into
+# configs/ingestor_config.yaml or an app YAML.
+#
+# `agents_dir` is deliberately absent: it comes from the AGENTS_DIR environment
+# variable and has no default anywhere (AD-22).
+
+candidate_variant: topic_text
+dense_k: 50
+text_k: 50
+lexeme_fields: [topic, text, image_description]
+
+# Run mechanics — not part of the epoch key.
+shuffle_seed: 42
+concurrency: 8
+transport_retries: 3
+retry_backoff_seconds: 2.0

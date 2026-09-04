@@ -2,6 +2,7 @@ name: comma-labeler
 model_name: openrouter/google/gemini-2.5-flash-lite
 temperature: 0.0
 max_tokens: 700
+num_retries: 5
 system: |
   Sei un istruttore di scuola guida ed esperto del Codice della Strada (CdS) e del Codice
   delle Assicurazioni Private (CAP).

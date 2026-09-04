@@ -115,11 +115,13 @@ CREATE TABLE IF NOT EXISTS llm_call_logs (
 CREATE INDEX IF NOT EXISTS idx_llm_call_logs_created_at ON llm_call_logs (created_at);
 CREATE INDEX IF NOT EXISTS idx_llm_call_logs_caller ON llm_call_logs (caller);
 
--- Golden-set tables (spec 0011, phase 2). The outcome of a labeling is the count of its
--- quiz_comma_labels children: zero children means the corpus does not justify the
--- question, a missing quiz_labelings row means "never labeled" (AD-6). No outcome
--- column exists by design — it would be a second, potentially contradicting source of
--- truth for a fact already derivable by counting.
+-- Golden-set tables (spec 0011, phase 2; amended by spec 0012).
+-- `has_supporting_commas` denormalises the outcome for the API's hot read path
+-- (spec 0012, AD-10). It is NOT supplied by any caller: `insert_labeling` computes it
+-- as `cardinality(<comma id array>) > 0` inside the same statement that inserts the
+-- children it summarises, so the flag and its rows cannot physically disagree (FR-15).
+-- The one residual hole is an `article_commas` delete cascading children away under a
+-- `true` parent; that is a detection problem, surfaced by `ingest status`.
 CREATE TABLE IF NOT EXISTS labeling_runs (
     id                 BIGSERIAL PRIMARY KEY,
     judge_model        TEXT NOT NULL,
@@ -127,23 +129,56 @@ CREATE TABLE IF NOT EXISTS labeling_runs (
     candidate_variant  TEXT NOT NULL,
     dense_k            INT NOT NULL,
     text_k             INT NOT NULL,
+    -- Completes the configuration epoch (spec 0012, AD-8): it determines the entire
+    -- text arm, so omitting it would let the judge see a different candidate set under
+    -- an identical epoch key. Stored sorted, canonicalised on write by
+    -- LabelingEpochMapper, so a cosmetic YAML reordering cannot invalidate the bank.
+    lexeme_fields      TEXT[] NOT NULL,
     shuffle_seed       BIGINT NOT NULL,
-    corpus_commit      TEXT NOT NULL,
+    -- Nullable since spec 0012: a live run cannot know the corpus commit. The CHECK
+    -- below preserves the NOT NULL guarantee exactly where it applied — `corpus_commit()`
+    -- deliberately lets `git rev-parse` fail rather than record a placeholder.
+    corpus_commit      TEXT,
     corpus_comma_count INT NOT NULL,
     question_limit     INT,
-    created_at         TIMESTAMPTZ NOT NULL DEFAULT now()
+    origin             TEXT NOT NULL DEFAULT 'batch' CHECK (origin IN ('batch', 'live')),
+    created_at         TIMESTAMPTZ NOT NULL DEFAULT now(),
+    CONSTRAINT labeling_runs_batch_has_corpus_commit
+        CHECK (origin <> 'batch' OR corpus_commit IS NOT NULL)
 );
 
+-- One live run per configuration epoch (spec 0012, AD-8/FR-9). Makes lazy creation
+-- race-safe across workers via INSERT ... ON CONFLICT DO NOTHING + SELECT, with no
+-- application lock, and makes a model or prompt change open a NEW epoch — which is
+-- what invalidates the cache without a single DELETE.
+CREATE UNIQUE INDEX IF NOT EXISTS uq_labeling_runs_live_config
+    ON labeling_runs (judge_model, prompt_version, candidate_variant, dense_k, text_k,
+                      lexeme_fields)
+    WHERE origin = 'live';
+
 CREATE TABLE IF NOT EXISTS quiz_labelings (
-    id               BIGSERIAL PRIMARY KEY,
-    run_id           BIGINT NOT NULL REFERENCES labeling_runs (id) ON DELETE CASCADE,
-    quiz_question_id BIGINT NOT NULL REFERENCES quiz_questions (id) ON DELETE CASCADE,
-    rationale        TEXT NOT NULL,
-    created_at       TIMESTAMPTZ NOT NULL DEFAULT now(),
-    UNIQUE (run_id, quiz_question_id)
+    id                    BIGSERIAL PRIMARY KEY,
+    run_id                BIGINT NOT NULL REFERENCES labeling_runs (id) ON DELETE CASCADE,
+    quiz_question_id      BIGINT NOT NULL REFERENCES quiz_questions (id) ON DELETE CASCADE,
+    rationale             TEXT NOT NULL,
+    -- Human validation of the labeling as a whole (spec 0012, AD-9). The verdict most
+    -- worth confirming is the EMPTY one, which has zero quiz_comma_labels children —
+    -- so the flag cannot hang off a child row.
+    validated_at          TIMESTAMPTZ,
+    validated_by          TEXT,
+    has_supporting_commas BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at            TIMESTAMPTZ NOT NULL DEFAULT now(),
+    UNIQUE (run_id, quiz_question_id),
+    CONSTRAINT quiz_labelings_validation_complete
+        CHECK ((validated_at IS NULL) = (validated_by IS NULL))
 );
 
 CREATE INDEX IF NOT EXISTS idx_quiz_labelings_run_id ON quiz_labelings (run_id);
+
+-- The hot read is by question, which no existing index serves: idx_quiz_labelings_run_id
+-- is on run_id, and UNIQUE (run_id, quiz_question_id) is left-anchored on run_id.
+CREATE INDEX IF NOT EXISTS idx_quiz_labelings_question_recent
+    ON quiz_labelings (quiz_question_id, created_at DESC);
 
 -- FR-7's three-label maximum is deliberately not a database constraint but a prompt
 -- policy enforced on the agent response model (CommaLabelerResponse, spec 0011 T-7).

@@ -5,7 +5,7 @@ from ...models.status import CommandReadiness, ReadinessState, SourceReadiness
 
 
 class StatusInspector:
-    """Derives per-(command, entity) executability from the filesystem only.
+    """Derives per-(command, entity) executability from the filesystem and resolved config.
 
     No DB, no network: `prepare`/`index` readiness is computed from `Path.exists()`
     on the layers resolved by `LayerResolverProvider`. `reset` has no source dimension and
@@ -34,7 +34,28 @@ class StatusInspector:
             self._index_readiness("quiz", self._config.quiz_indexing, True),
             self._reset_readiness("knowledge"),
             self._reset_readiness("quiz"),
+            self._agents_dir_agreement_readiness(),
         ]
+
+    def _agents_dir_agreement_readiness(self) -> CommandReadiness:
+        """D11: asserts `IngestorConfig.agents_dir` and `LabelingConfig.agents_dir` agree.
+
+        Both are single-sourced from the defaultless `AGENTS_DIR` environment variable
+        (D2), which makes divergence impossible today; a later stray `agents_dir:` key
+        added to one of the two YAML files would not be caught by that guarantee. This
+        check reports the mismatch loudly, offline — the in-process counterpart of
+        AD-23's startup warning, with no DB and no LLM call involved.
+        """
+        state = (
+            ReadinessState.RUNNABLE
+            if self._config.agents_dir == self._config.labeling.agents_dir
+            else ReadinessState.BLOCKED
+        )
+        return CommandReadiness(
+            command="config",
+            entity="agents_dir",
+            sources=[SourceReadiness(source="agreement", state=state)],
+        )
 
     def _prepare_readiness(
         self, entity: str, layer_config: PipelineLayerConfig, per_element: bool

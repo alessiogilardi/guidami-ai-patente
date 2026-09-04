@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 import yaml
-from pydantic_ai import BinaryContent
+from pydantic_ai import BinaryContent, RunContext
 from pydantic_ai.messages import ModelMessage, ModelResponse, TextPart
 from pydantic_ai.models.function import AgentInfo, FunctionModel
 from pydantic_ai.models.openai import OpenAIChatModel
@@ -326,6 +326,22 @@ def test_untracked_agent_unchanged(tmp_path: Path) -> None:
         output = agent.run_sync("Ciao")
 
     assert output == "ok"
+
+
+async def test_deps_is_threaded_through_to_the_wrapped_agent(tmp_path: Path) -> None:
+    """FR-1 (spec 0014): BaseAgent.run always passes request as deps, unconditionally."""
+    agent = _load_agent(tmp_path)
+    seen_deps: list[str] = []
+
+    @agent.core_agent.output_validator
+    def _capture_deps(ctx: RunContext[str], data: str) -> str:
+        seen_deps.append(ctx.deps)
+        return data
+
+    with agent.core_agent.override(model=FunctionModel(_respond("ok"))):
+        await agent.run("the-request")
+
+    assert seen_deps == ["the-request"]
 
 
 def test_repr(tmp_path: Path) -> None:

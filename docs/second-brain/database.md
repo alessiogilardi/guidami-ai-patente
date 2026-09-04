@@ -43,23 +43,36 @@
   just the one known today. Every pre-existing single-table call site
   (`quiz_questions`, `llm_call_logs`, `UpsertStoreRepository`'s own
   table) is unaffected — a single positional argument is just a 1-tuple.
-  Real consumer (spec 0001 T-16): `cli/commands/reset.py`'s `knowledge`
-  branch calls `postgres_client.truncate(config.article_commas_table,
-  config.articles_table)` directly — **not** two separate
-  `ArticleCommaStoreRepository(...).truncate()` /
-  `ArticleStoreRepository(...).truncate()` calls, which was the first
-  implementation attempt and crashes against a live Postgres for exactly
-  the FK reason above (each repository's `truncate()` only ever emits a
-  single-table statement). The cross-table call bypasses the repository
-  layer's `truncate()` for this one case since the capability is
-  client-level, not repository-level. The same convention extends to every
-  table added since: `quiz_comma_labels` (FK to `article_commas` and to
-  `quiz_labelings`) must be named alongside whichever parent a call
-  truncates, and `quiz_labelings` (FK to `quiz_questions` and to
-  `labeling_runs`) alongside `quiz_questions`/`labeling_runs` — the same
-  pre-existing gap already existed for `quiz_question_embeddings` (FK to
-  `quiz_questions`), surfaced by spec 0011 phase 2's integration-test
-  fixtures rather than introduced by them.
+  Real consumer (spec 0001 T-16, widened by spec 0012 Task 9/FR-17/AD-28):
+  `cli/commands/reset.py`'s `knowledge` branch calls
+  `postgres_client.truncate(config.quiz_comma_labels_table,
+  config.quiz_labelings_table, config.article_commas_table,
+  config.articles_table)` directly — **not** four separate per-repository
+  `.truncate()` calls, which was the first implementation attempt (`article_commas`/
+  `articles` only) and crashes against a live Postgres for exactly the FK reason
+  above; `quiz_comma_labels` (added on `feat/backend` after that first attempt,
+  spec 0012) has a live FK into `article_commas`, so the original two-table
+  statement is broken against the current schema, not merely incomplete. The
+  cross-table call bypasses the repository layer's `truncate()` for this one case
+  since the capability is client-level, not repository-level. The branch also
+  guards the wipe: `_validated_labeling_count` (CLI-only helper,
+  `cli/commands/reset.py`, counts `quiz_labelings` rows with `validated_at IS NOT
+  NULL`) makes it refuse with `SystemExit` when a human-validated labeling would
+  be destroyed, unless `--force` is passed — the preview stays fully
+  connection-free per FR-17 (no live count shown without `--apply`).
+- **`ingest reset quiz` is known broken, deliberately deferred (spec 0012,
+  AD-28 addressed only the `knowledge` branch above).** `quiz_labelings.
+  quiz_question_id` references `quiz_questions` with `ON DELETE CASCADE`
+  (same table above), so `cli/commands/reset.py`'s `quiz` branch — still
+  `postgres_client.truncate(config.quiz_question_embeddings_table,
+  config.quiz_questions_table)`, a two-table statement — fails against the
+  live schema with the identical FK error the `knowledge` branch was fixed
+  for, and does so today with 14 rows present in `quiz_labelings`. The fix
+  is the same shape (name `quiz_comma_labels` and `quiz_labelings` in the
+  same `TRUNCATE`, add the validated-labeling guard) and is out of scope for
+  this plan — recorded in code as a `KNOWN BROKEN, deferred` comment at the
+  `case "quiz":` branch rather than silently left to surface as a bare FK
+  error.
 
 ## Main schema
 
@@ -142,30 +155,48 @@ llm_call_logs
 ├── INDEX idx_llm_call_logs_created_at (created_at)
 └── INDEX idx_llm_call_logs_caller (caller)
 
-labeling_runs                               -- one row per golden-set labeling pass (spec 0011 phase 2)
+labeling_runs                               -- one row per golden-set labeling pass (spec 0011 phase 2;
+                                             -- origin/lexeme_fields/nullable corpus_commit: spec 0012, AD-8)
 ├── id (PK, BIGSERIAL)
 ├── judge_model (TEXT, NOT NULL)
 ├── prompt_version (TEXT, NOT NULL)         -- sha256(system + user)[:16], see run_provenance.py
 ├── candidate_variant (TEXT, NOT NULL)      -- quiz_question_embeddings.variant used for retrieval
 ├── dense_k (INT, NOT NULL)
 ├── text_k (INT, NOT NULL)
+├── lexeme_fields (TEXT[], NOT NULL)        -- sixth epoch field (spec 0012); canonicalised sorted
+│                                           -- (LabelingRunEntity / require_canonical_lexeme_fields),
+│                                           -- compared as a whole array by FR-8's precedence query
 ├── shuffle_seed (BIGINT, NOT NULL)         -- seeds both the presentation shuffle and --limit's subset draw
-├── corpus_commit (TEXT, NOT NULL)          -- `git rev-parse HEAD` at run time
+├── corpus_commit (TEXT, nullable)          -- `git rev-parse HEAD` at run time; NULL only for a live run
 ├── corpus_comma_count (INT, NOT NULL)      -- count(*) over article_commas, unfiltered
 ├── question_limit (INT, nullable)          -- NULL means an unrestricted (full) pass
-└── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
+├── origin (TEXT, NOT NULL DEFAULT 'batch') -- CHECK IN ('batch', 'live'); LabelingRunOrigin
+├── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
+├── CHECK (origin <> 'batch' OR corpus_commit IS NOT NULL)  -- labeling_runs_batch_has_corpus_commit
+└── UNIQUE INDEX uq_labeling_runs_live_config
+        (judge_model, prompt_version, candidate_variant, dense_k, text_k, lexeme_fields)
+        WHERE origin = 'live'               -- one live run per configuration epoch (spec 0012, AD-8/FR-9)
 
 quiz_labelings                              -- one row per labeled question within a run
 ├── id (PK, BIGSERIAL)
 ├── run_id (BIGINT, NOT NULL, REFERENCES labeling_runs(id) ON DELETE CASCADE)
 ├── quiz_question_id (BIGINT, NOT NULL, REFERENCES quiz_questions(id) ON DELETE CASCADE)
 ├── rationale (TEXT, NOT NULL)              -- the judge's own rationale, empty-list case included
+├── validated_at (TIMESTAMPTZ, nullable)    -- human validation of the labeling as a whole (spec 0012, AD-9)
+├── validated_by (TEXT, nullable)
+├── has_supporting_commas (BOOLEAN, NOT NULL DEFAULT FALSE)  -- denormalised outcome (spec 0012, AD-10);
+│                                           -- computed by GoldenSetWriteRepository.insert_labeling from the
+│                                           -- same comma-id array that feeds quiz_comma_labels, never
+│                                           -- caller-supplied — see patterns.md
 ├── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
 ├── UNIQUE (run_id, quiz_question_id)
-└── INDEX idx_quiz_labelings_run_id (run_id)
-    -- no outcome column by design: a labeling's outcome is derived by counting its
-    -- quiz_comma_labels children (0 = "corpus doesn't justify it", AD-6), never stored,
-    -- so it cannot drift from the children it describes
+├── CHECK ((validated_at IS NULL) = (validated_by IS NULL))  -- quiz_labelings_validation_complete
+├── INDEX idx_quiz_labelings_run_id (run_id)
+└── INDEX idx_quiz_labelings_question_recent (quiz_question_id, created_at DESC)  -- hot read-by-question path
+    -- pre-spec-0012 the outcome had no column at all (derived purely by counting
+    -- quiz_comma_labels children); has_supporting_commas denormalises that same fact
+    -- for a hot read path, but the derivation rule (0 children = "corpus doesn't
+    -- justify it") and its transactional computation are unchanged, see AD-6/AD-10
 
 quiz_comma_labels                           -- the judge's per-candidate verdicts (<=3 per labeling)
 ├── labeling_id (BIGINT, NOT NULL, REFERENCES quiz_labelings(id) ON DELETE CASCADE)
@@ -257,7 +288,7 @@ deferred with the hybrid-search work).
 `llm_call_logs` is populated by every tracked `BaseAgent` call — see
 `docs/second-brain/patterns.md` (observability rows), `docs/second-brain/architecture.md` (prepare-path
 wiring), `docs/second-brain/adr/0004-openrouter-native-cost-tracking.md` for the cost
-mechanism, and `docs/second-brain/adr/0020-context-manager-tracker-port.md` for the
+mechanism, and `docs/second-brain/adr/0025-context-manager-tracker-port.md` for the
 tracker port shape. Its row entity, `LlmCallLogEntity`, lives at
 `src/commons/ai/observability/entities/llm_call_log.py` (moved out of the now-removed
 `domain/entities/observability/`). The table name itself is no longer hardcoded:
@@ -305,6 +336,14 @@ Two paths now exist, and a schema change must take **both**:
    generated column cannot be added with `ADD COLUMN IF NOT EXISTS`, so each
    `ALTER TABLE` sits inside a `DO $$` block guarded on `information_schema.columns`,
    while the indexes use plain `CREATE INDEX IF NOT EXISTS`.
+   `db/migrations/0012_quiz_flow_api.sql` (spec 0012) shows a third shape — a plain
+   column takes `ADD COLUMN IF NOT EXISTS`, but a named `CHECK`/`UNIQUE` constraint has
+   no `IF NOT EXISTS` form at all, so each is guarded by a `DO $$` block checking
+   `pg_constraint.conname` first. It also backfills two columns
+   (`labeling_runs.lexeme_fields` from the config value the pre-existing runs were
+   produced under, `quiz_labelings.has_supporting_commas` from the existing
+   `quiz_comma_labels` child count) before dropping the temporary `DEFAULT` that made
+   the `ADD COLUMN ... NOT NULL` step possible on non-empty tables.
 
 Because there is no tool enforcing it, the two paths can silently diverge — a
 migrated database and a freshly initialised one drifting apart is the standing risk
@@ -406,6 +445,17 @@ two generated columns are no longer matched with a plain cross-table `OR`, which
 PostgreSQL can never turn into an index condition; `text_match_top_k` now unions two
 single-relation-filtered id sets instead (ADR 0018).*
 
+*Last updated: 2026-08-25 — verified against commit `2cc0710a` (working tree ahead:
+spec 0012, folded commit tasks 7+2+8); `labeling_runs` gained `origin` (batch/live
+provenance) and `lexeme_fields` (the sixth configuration-epoch field, canonicalised
+sorted) plus the partial unique index `uq_labeling_runs_live_config` enforcing one
+live run per epoch; `corpus_commit` became nullable, guarded by
+`labeling_runs_batch_has_corpus_commit` so a batch run still requires it.
+`quiz_labelings` gained `validated_at`/`validated_by` (paired by
+`quiz_labelings_validation_complete`) and the denormalised `has_supporting_commas`
+outcome flag, plus `idx_quiz_labelings_question_recent` for the hot read-by-question
+path. New migration `db/migrations/0012_quiz_flow_api.sql`.*
+
 *Last updated: 2026-08-21 — verified against commit `e4977a94` (working tree ahead:
 spec 0011 phase 2, T-1/T-2/T-9); three new tables — `labeling_runs`, `quiz_labelings`,
 `quiz_comma_labels` — persist the retrieval golden set. Outcome is derived by counting
@@ -414,15 +464,35 @@ parent row and its children atomically via a single data-modifying CTE, worked a
 `PostgresClient` having no transaction API (PD-15). Noted the `truncate()` convention now
 also covers `quiz_comma_labels`/`quiz_labelings`'s new FKs.*
 
+*Last updated: 2026-08-25 — verified against commit `b6e34f4d` (working tree ahead:
+spec 0012 Task 9, FR-17/AD-28); `reset knowledge` widened to a single four-table
+`TRUNCATE` (`quiz_comma_labels, quiz_labelings, article_commas, articles`) — the
+prior two-table statement was already broken against this schema once
+`quiz_comma_labels` landed, not just prospectively incomplete — and gained a
+`--force`-overridable guard refusing to destroy a human-validated `quiz_labelings`
+row.*
+
+*Last updated: 2026-08-25 — verified against commit `c77de38a` (quiz-flow-api-phase1
+plan Task 11); recorded that `ingest reset quiz` is known broken for the identical FK
+reason `reset knowledge` was, deliberately deferred rather than fixed in this plan
+(spec 0012, AD-28 — the AD's own fix covered only the `knowledge` branch).*
+
 *Last updated: 2026-08-28 — verified against commit `ab1b8f82`; the `llm_call_logs`
 paragraph now points at `LlmCallLogEntity`'s new location
 (`commons/ai/observability/entities/llm_call_log.py`, moved out of the removed
 `domain/entities/observability/`) and notes the table name is configurable via
 `ObservabilityConfig.table` (default unchanged, `"llm_call_logs"`) rather than
-hardcoded — see `adr/0020-context-manager-tracker-port.md`.*
+hardcoded — see `adr/0025-context-manager-tracker-port.md`.*
 
 *Last updated: 2026-08-28 — verified against commit `ee22bcdf`; fixed an internal
 inconsistency left by the previous edit in this same paragraph — the `cost_usd`
 sentence still named the deleted `PydanticAILlmCallCapture.record()`; corrected to
 `PydanticAILlmCallRecorder.record()` (which delegates to the module-level
 `_call_cost()` helper in `adapters/pydantic_ai_llm_call_recorder.py`).*
+
+*Last updated: 2026-09-01 — verified against commit `51dcba1a`; fixed two stale
+`adr/0020-context-manager-tracker-port.md` cross-references — the `feat/backend` merge
+brought that ADR in under number 0020, colliding with this branch's own pre-existing
+ADR 0020 (`dual-agents-dir-single-sourced-by-env-var.md`); renumbered the merged-in one
+to ADR 0025 (`0020-dual-agents-dir...` keeps its original number, per the ADR-numbering
+collision rule — the later-merged one renumbers).*

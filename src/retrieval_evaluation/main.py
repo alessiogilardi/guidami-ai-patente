@@ -21,16 +21,16 @@ from pathlib import Path
 from commons.ai.observability import ObservabilityConfig, build_llm_call_tracker
 from commons.observability import LOG_FORMAT, RunArtifactWriter
 from guidami_ai_patente_ingestor.configs import IngestorConfig
-
-from .models import RetrievalJudgeItemResult
-from .services import RetrievalJudgeEvaluationService
-from .wiring import (
-    build_agent,
+from labeling.wiring import (
     build_corpus_repository,
     build_open_router_provider,
     build_postgres_client,
     build_quiz_repository,
 )
+
+from .models import RetrievalJudgeItemResult
+from .services import RetrievalJudgeEvaluationService
+from .wiring import build_retrieval_judge_agent
 
 logger = logging.getLogger(__name__)
 
@@ -101,24 +101,46 @@ def main() -> None:
     file_handler.setFormatter(logging.Formatter(LOG_FORMAT))
     logging.getLogger().addHandler(file_handler)
 
-    provider = build_open_router_provider(config)
+    # D7/D14: `RetrievalJudgeEvaluationService._judge_one` makes its Postgres-touching
+    # calls synchronously on the event-loop thread — only the `await
+    # self._call_agent(...)` LLM call is concurrent. So the actual peak simultaneous
+    # connection-borrow today is 2 (the event loop plus QueuedLlmCallTracker's
+    # background daemon thread), not `args.concurrency`. This sizing is
+    # forward-looking headroom for a future `asyncio.to_thread`-based concurrent path
+    # (src/labeling/__init__.py already anticipates this for the API), not something
+    # the current synchronous batch/harness code needs today. `+ 1` budgets for the
+    # tracker's own connection borrow alongside the (currently hypothetical) fanned-out
+    # workers.
+    postgres_config = config.postgres.model_copy(
+        update={"pool_max_size": max(config.postgres.pool_max_size, args.concurrency + 1)}
+    )
+
+    provider = build_open_router_provider(config.open_router_config.api_key.get_secret_value())
     with (
-        build_postgres_client(config) as postgres_client,
+        build_postgres_client(postgres_config) as postgres_client,
         build_llm_call_tracker(observability_config, postgres_client) as tracker,
     ):
-        quiz_repository = build_quiz_repository(config, postgres_client)
+        quiz_repository = build_quiz_repository(
+            config.quiz_questions_table,
+            config.quiz_question_embeddings_table,
+            config.quiz_images_table,
+            postgres_client,
+        )
         variant = args.variant or config.evaluation.quiz_embedding_variant
         available_variants = quiz_repository.available_variants()
         if variant not in available_variants:
             parser.error(f"invalid --variant {variant!r}, must be one of {available_variants}")
 
-        agent = build_agent(config, provider, tracker)
+        agent = build_retrieval_judge_agent(config.labeling.agents_dir, provider, tracker)
+        corpus_repository = build_corpus_repository(
+            config.articles_table, config.article_commas_table, postgres_client
+        )
         service = RetrievalJudgeEvaluationService(
             k=args.k,
             variant=variant,
             max_concurrency=args.concurrency,
             quiz_repository=quiz_repository,
-            corpus_repository=build_corpus_repository(config, postgres_client),
+            corpus_repository=corpus_repository,
             agent=agent,
         )
         results = asyncio.run(

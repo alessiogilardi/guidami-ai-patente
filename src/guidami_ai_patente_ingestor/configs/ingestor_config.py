@@ -1,15 +1,15 @@
 from pathlib import Path
 from typing import ClassVar
 
-from pydantic import Field
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, SettingsConfigDict
 from pydantic_settings.sources import YamlConfigSettingsSource
 
 from commons.ai.embedding import EmbeddingClientConfig
 from commons.configs import OpenRouterConfig, PostgresConnectionConfig
+from labeling.configs import LabelingConfig
 
 from .evaluation_config import EvaluationConfig
-from .labeling_config import LabelingConfig
 from .pipeline_layer_config import PipelineLayerConfig
 from .source_config import SourceConfig
 
@@ -56,7 +56,17 @@ class IngestorConfig(BaseSettings):
     quiz_indexing: PipelineLayerConfig = PipelineLayerConfig(
         input_layer="enriched", sources=["quiz"]
     )
-    agents_dir: Path = Path("configs/agents")
+    agents_dir: Path = Field(
+        validation_alias=AliasChoices("AGENTS_DIR", "agents_dir"),
+        description=(
+            "Directory holding the agent YAML files, for the quiz enrichment agents "
+            "(quiz_flows.py:344) whose prompts enter no configuration epoch. Declared "
+            "here as well as on LabelingConfig, both defaultless and both fed by "
+            "AGENTS_DIR: the single-source property comes from one defaultless env var, "
+            "not from one field, so there is no second default and no second YAML key "
+            "for the two to disagree through (D2, errata on AD-27)."
+        ),
+    )
     quiz_images_dir: Path = Path("data/quiz-images")
     project_root: Path = Path(".")
 
@@ -87,7 +97,7 @@ class IngestorConfig(BaseSettings):
     rca_ranges: list[str] = Field(default_factory=lambda: ["118-165", "278-300"])
     amb_ranges: list[str] = Field(default_factory=lambda: ["227-237"])
     evaluation: EvaluationConfig = EvaluationConfig()
-    labeling: LabelingConfig = LabelingConfig()
+    labeling: LabelingConfig = Field(default_factory=LabelingConfig)  # pyright: ignore[reportArgumentType]
 
     _config_override_file: ClassVar[Path | None] = None
     """Set (on a dynamically-created subclass, never on `IngestorConfig` itself) by
