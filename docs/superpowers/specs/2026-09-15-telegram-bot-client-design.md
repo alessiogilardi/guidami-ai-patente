@@ -163,12 +163,14 @@ re-entrant from `context.user_data` alone. `python-telegram-bot`'s
   a later iteration adds topic selection or multi-step settings.
 
 ### AD-5: Package layout mirrors existing app conventions
-`configs/` (Pydantic `BaseSettings`, `frozen=True`, loaded once in `main.py`),
-`clients/` (thin `QuizApiClient` httpx adapter, one method per endpoint shape),
-`models/` (response DTOs + the `QuizSession` state shape), `services/`
-(`QuizFlowService` — the only place with orchestration logic), `handlers/`
-(thin controllers analogous to FastAPI routes — parse update, call service,
-send response, no business logic), `exceptions/` (`QuizApiError`).
+`configs/` (`BotConfig(BaseConfig)`, `frozen=True`, loaded once in
+`main.py` — see AD-7), `clients/` (thin `QuizApiClient` httpx adapter, one
+method per endpoint shape, pywire `@client` — see AD-8), `models/` (response
+DTOs + the `QuizSession` state shape), `services/` (`QuizFlowService` — the
+only place with orchestration logic, pywire `@service` — see AD-8),
+`handlers/` (thin controllers analogous to FastAPI routes — parse update,
+call service, send response, no business logic), `exceptions/`
+(`QuizApiError`).
 - **Rationale:** consistent with `~/.claude/rules/python/architecture.md`'s
   package-role table and with the "FastAPI routes = thin controllers only"
   rule, applied here to Telegram handlers.
@@ -180,6 +182,52 @@ in the same turn that handles the button tap, per FR-2.
   avoids an extra conversational round-trip and an extra piece of session
   state to track "has this question been explained yet".
 
+### AD-7: Configuration via `BotConfig(BaseConfig)`, dedicated YAML + env
+`configs/bot_config.py::BotConfig` extends
+`commons/configs/base_config.py::BaseConfig` — not a bare `BaseSettings`
+subclass — inheriting its layered precedence (init > env/.env > YAML,
+`settings_customise_sources`) and its `load()` override mechanism. It gets
+its own base YAML file (`model_config`'s `yaml_file`) plus env var reads via
+`BaseConfig`'s `env_nested_delimiter="__"`/`env_file=".env"`. Fields:
+`telegram_bot_token: SecretStr` (no default — a missing token is a loud
+`ValidationError` at startup, same posture as `OpenRouterConfig.api_key`),
+`api_base_url: str`, `request_timeout_seconds: float`. Loaded once in
+`main.py` (never inside a handler/service), then registered on the pywire
+container via `register_instance` (AD-8) rather than autowired as if it
+constructed itself.
+- **Rationale:** matches `BaseConfig`'s own stated purpose ("base class for
+  every root, self-loading settings class in the project") and makes
+  `BotConfig` the second adopter after `ObservabilityConfig` (ADR 0026),
+  continuing that rollout instead of adding a third, bespoke root-config
+  shape alongside it.
+
+### AD-8: pywire for the bot's instantiable components (ADR 0032)
+`QuizApiClient` is decorated `@client`, `QuizFlowService` is decorated
+`@service`; both declare their dependencies as `Autowired[T]` fields — the
+same convention `.claude/rules/pywire-di.md` documents for
+`guidami_ai_patente`. `BotConfig` is registered as an instance
+(`register_instance`), never autowired as a self-constructing component,
+mirroring `AppConfig`'s treatment (ADR 0023). Handlers resolve their one or
+two dependencies through the container at wiring time in `main.py`; whether
+`python-telegram-bot`'s handler-registration model supports bare
+`Autowired[T]` handler parameters the way FastAPI routers do, or needs an
+explicit `container.resolve(...)` per handler, is left for the
+implementation plan to confirm against pywire's actual API outside of a
+FastAPI host.
+- **Rationale:** ADR 0032 extends pywire's scope (previously
+  `guidami_ai_patente`-only per ADR 0015) to this package specifically
+  because the bot is a second long-running process with a composition root
+  resolved once at startup and components reused across every update — the
+  same shape that justified pywire over manual constructor injection for the
+  FastAPI app. `commons/` and `guidami_ai_patente_ingestor/` are unaffected.
+- **Known, deliberately deferred gap (ADR 0032):** pywire (pinned at
+  `v0.8.0`, the latest published tag) has no released support for a
+  component that is itself an async context manager. `QuizApiClient`'s
+  underlying `httpx.AsyncClient` is therefore closed with an explicit
+  `await client.aclose()` in `main.py`'s own shutdown sequence, outside of
+  any pywire `@pre_destroy` hook — not a workaround pywire is expected to
+  absorb automatically later.
+
 ## Definition of Done
 
 - `uv run telegram-bot` starts the bot against a running `guidami_ai_patente`
@@ -189,6 +237,6 @@ in the same turn that handles the button tap, per FR-2.
   `uv run pytest`), with no live Postgres/Telegram dependency.
 - `uv run ruff check`, `uv run ruff format --check`, and `uv run pyright`
   pass on the new package.
-- `docs/second-brain/` updated (new package in `layout.md`/`architecture.md`
-  as applicable) before this branch is pushed, per the repo's Second Brain
-  gate.
+- `docs/second-brain/` updated (new package in `layout.md`/`architecture.md`,
+  and `.claude/rules/pywire-di.md`'s scope statement extended per ADR 0032)
+  before this branch is pushed, per the repo's Second Brain gate.
