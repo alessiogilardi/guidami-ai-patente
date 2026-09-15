@@ -1,9 +1,10 @@
 ---
 paths:
   - "src/guidami_ai_patente/**"
+  - "src/guidami_ai_patente_bot/**"
 ---
 
-# pywire — Spring-style DI, scoped to `src/guidami_ai_patente/` only
+# pywire — Spring-style DI, scoped to `guidami_ai_patente` and `guidami_ai_patente_bot`
 
 `pywire` (git dependency, see `pyproject.toml`) is a Spring Boot-style IoC container:
 `@component`/`@service`/`@repository`/`@client`/`@agent` decorators (all aliases of the
@@ -13,11 +14,22 @@ the container after instantiation (`Container._instrument`, `pywire/container.py
 
 ## Scope — does not apply to the ingestion pipeline
 
-This pattern applies **only** to the FastAPI app under `src/guidami_ai_patente/`
-(routers, services, repositories, mappers, configs). It does **not** apply to
+This pattern applies **only** to the two long-running, request/update-scoped apps in
+this repo: the FastAPI app under `src/guidami_ai_patente/` (routers, services,
+repositories, mappers, configs) and the Telegram bot under
+`src/guidami_ai_patente_bot/` (handlers, services, clients, configs — ADR 0032, which
+extended ADR 0015's original FastAPI-only scope). It does **not** apply to
 `src/guidami_ai_patente_ingestor/` or `src/commons/`, which keep manual constructor
-injection per [`dependency-injection.md`](./dependency-injection.md) unchanged. The two
-packages intentionally use different DI styles — do not "harmonize" one into the other.
+injection per [`dependency-injection.md`](./dependency-injection.md) unchanged — those
+two run as batch/one-shot processes with no startup-resolved composition root to
+justify a container. The DI styles are intentionally different across these groups —
+do not "harmonize" one into the other.
+
+`guidami_ai_patente_bot` has one documented gap relative to `guidami_ai_patente`: pywire
+has no released support for a component that is itself an async context manager (needed
+to `await` a clean `httpx.AsyncClient.aclose()`). Until pywire adds that upstream, the
+bot closes its async HTTP client with an explicit `await` in its own `main.py` shutdown
+sequence, not through a `@pre_destroy` hook (ADR 0032).
 
 ## Convention — pure field injection, Spring style
 
