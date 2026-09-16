@@ -3,24 +3,33 @@
 from typing import Any, Self
 
 import httpx
-from pywire import Autowired, async_component
+from pywire import Autowired
 
 from guidami_ai_patente_bot.configs import BotConfig
 from guidami_ai_patente_bot.exceptions import QuizApiError
 from guidami_ai_patente_bot.models import QuizExplanation, QuizQuestion
 
 
-@async_component
 class QuizApiClient:
     """Thin async adapter over `guidami_ai_patente`'s HTTP API (AD-1, AD-8).
 
-    An `@async_component` (pywire 0.9.0): the container builds `self.config` first
-    (ordinary field injection), then enters this bean via `__aenter__` inside
-    `container.lifespan()` (Task 6's `main.py`), and exits it via `__aexit__` on the
-    same container's `aclose()`, in reverse registration order. This supersedes
-    ADR 0032's original v0.8.0-era workaround (a hand-called `await client.aclose()`
-    from `main.py`, with no pywire teardown hook at all) now that pywire ships
-    real async-component support.
+    An async component (pywire 0.9.0), registered explicitly by `main.py::_run`
+    via `get_default_container().register_async_component(QuizApiClient)`, called
+    before `container.lifespan()` is entered — deliberately *not* the `@async_component`
+    class decorator, which would register it on pywire's process-wide default
+    container the moment this module is imported. `guidami_ai_patente`'s FastAPI app
+    (`api/app.py`) uses that same default container (`FastAPI(lifespan=pywire_lifespan)`);
+    a decorator-time registration would make its `astart()` try to enter `QuizApiClient`
+    too and fail resolving `BotConfig`, which only the bot's own composition root ever
+    registers. Explicit registration keeps merely importing this module (or the
+    `clients` package) free of any side effect on a shared container.
+
+    Once registered, the container builds `self.config` first (ordinary field
+    injection), then enters this bean via `__aenter__` inside `container.lifespan()`
+    (`main.py`), and exits it via `__aexit__` on the same container's `aclose()`, in
+    reverse registration order. This supersedes ADR 0032's original v0.8.0-era
+    workaround (a hand-called `await client.aclose()` from `main.py`, with no pywire
+    teardown hook at all) now that pywire ships real async-component support.
     """
 
     config: Autowired[BotConfig]

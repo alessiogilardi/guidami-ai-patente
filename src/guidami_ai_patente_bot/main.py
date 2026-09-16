@@ -8,7 +8,7 @@ import signal
 from pywire import get_default_container
 from telegram.ext import Application, CallbackQueryHandler, CommandHandler
 
-from .clients import QuizApiClient  # noqa: F401  — imported for pywire registration
+from .clients import QuizApiClient
 from .configs import BotConfig
 from .handlers.error_handler import handle_error
 from .handlers.quiz_handlers import (
@@ -25,20 +25,26 @@ logger = logging.getLogger(__name__)
 def main() -> None:
     """Boots the Telegram bot process."""
     logging.basicConfig(level=logging.INFO)
+    # httpx logs each request at INFO with the full URL, and Telegram's Bot API URL
+    # embeds the bot token unmasked (https://api.telegram.org/bot<TOKEN>/getUpdates) —
+    # silence it to WARNING so the token never hits stdout on every long-poll request.
+    logging.getLogger("httpx").setLevel(logging.WARNING)
     asyncio.run(_run())
 
 
 async def _run() -> None:
     """Runs pywire's async beans, then `python-telegram-bot`'s own, in one scope.
 
-    `container.lifespan()` enters every `@async_component` (here, `QuizApiClient`)
-    on the way in and exits it on the way out (pywire 0.9.0) — the module import
-    above is what makes `QuizApiClient` visible to `astart()` before it runs, per
-    pywire's "import every module declaring an `@async_component` before starting
-    the container" rule.
+    `container.lifespan()` enters every registered async component (here,
+    `QuizApiClient`) on the way in and exits it on the way out (pywire 0.9.0).
+    `QuizApiClient` is registered explicitly below via `register_async_component`,
+    rather than via the `@async_component` class decorator, precisely so importing
+    the `clients` package has no side effect on the shared default container that
+    `guidami_ai_patente`'s FastAPI app also uses (see `QuizApiClient`'s docstring).
     """
     config = BotConfig()  # pyright: ignore[reportCallIssue]
     get_default_container().register_instance(config, as_type=BotConfig)
+    get_default_container().register_async_component(QuizApiClient)
 
     application = Application.builder().token(config.telegram_bot_token.get_secret_value()).build()
     assert application.updater is not None
