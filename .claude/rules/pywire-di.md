@@ -25,11 +25,23 @@ two run as batch/one-shot processes with no startup-resolved composition root to
 justify a container. The DI styles are intentionally different across these groups —
 do not "harmonize" one into the other.
 
-`guidami_ai_patente_bot` has one documented gap relative to `guidami_ai_patente`: pywire
-has no released support for a component that is itself an async context manager (needed
-to `await` a clean `httpx.AsyncClient.aclose()`). Until pywire adds that upstream, the
-bot closes its async HTTP client with an explicit `await` in its own `main.py` shutdown
-sequence, not through a `@pre_destroy` hook (ADR 0032).
+`guidami_ai_patente_bot` uses pywire 0.9.0's `register_async_component`/
+`Container.astart()`/`aclose()`/`container.lifespan()` for a component that is itself
+an async context manager (needed to `await` a clean `httpx.AsyncClient.aclose()`).
+`QuizApiClient` (`src/guidami_ai_patente_bot/clients/quiz_api_client.py`) is the
+reference example: `container.lifespan()` wraps the whole async body in `main.py::_run`,
+entering the bean via `__aenter__` (which opens the `httpx.AsyncClient`) and exiting it
+via `__aexit__` (which closes it). It is registered **explicitly** —
+`get_default_container().register_async_component(QuizApiClient)` in `_run`, before
+`container.lifespan()` is entered — rather than via the `@async_component` class
+decorator, specifically to avoid registering it on the shared default container merely
+by being imported: `guidami_ai_patente`'s FastAPI app (`api/app.py`) runs
+`FastAPI(lifespan=pywire_lifespan)` against that same default container, and a
+decorator-time registration would make its own `astart()` try to enter `QuizApiClient`
+too, failing to resolve `BotConfig` (which only the bot's own composition root
+registers). ADR 0032 recorded the older, pre-0.9.0 workaround (a hand-called `await
+client.aclose()` from `main.py`, with no pywire teardown hook at all) and is now
+outdated — it still needs to be superseded to reflect the above.
 
 ## Convention — pure field injection, Spring style
 

@@ -76,6 +76,7 @@ end of the pytest session.
 | `uv run ingest evaluate retrieval [--seed N] [--baseline-repetitions N] [--dry-run] [--plain]` | `guidami_ai_patente_ingestor.cli:main` | Measures retrieval quality (corpus coverage, ranking vs. random baseline, lexical adherence, dense/FTS agreement, keyword-quality signals) over the quiz bank and knowledge corpus (spec 0007). `--seed`/`--baseline-repetitions` override `IngestorConfig.evaluation`; writes `data/eval/retrieval-summary.json` (committed) plus per-question detail and a judge-ready export under `logs/ingest_evaluate_<ts>/` |
 | `uv run label-golden-set [--concurrency N] [--seed N] [--limit N] [--topic TOPIC]…` | `retrieval_evaluation.label_main:main` | Runs a golden-set labeling pass over the quiz bank via `CommaLabelerAgent`, persisting one `labeling_runs` row plus `quiz_labelings`/`quiz_comma_labels` (spec 0011). `--topic` (repeatable) restricts the run to the union of the named topics, applied before `--limit`; it selects which questions are labeled and is never recorded on the run (FR-18) |
 | `uv run serve` | `guidami_ai_patente.main:main` | Starts the FastAPI service on `AppConfig.host:port` |
+| `uv run telegram-bot` | `guidami_ai_patente_bot.main:main` | Starts the Telegram bot client, long-polling against a running `guidami_ai_patente` instance |
 
 `--dry-run` (on `prepare`/`index`/`evaluate`) prints the step chain that would run and
 exits — no filesystem writes, no LLM calls, no DB connection is ever opened.
@@ -144,6 +145,9 @@ Copy `.env.example` to `.env` and fill in:
   declared separately from `LabelingConfig.agents_dir` because it resolves a different kind
   of prompt: the API's own agents whose prompts enter no configuration epoch (today,
   `explanation_writer.yaml`), versus the epoch-controlled judge prompt (D4, ADR 0020).
+- `TELEGRAM_BOT_TOKEN` — the bot's Telegram Bot API token. `BotConfig.telegram_bot_token`
+  has no default, so a missing value is a loud `ValidationError` at startup: `uv run
+  telegram-bot` refuses to start rather than polling with no credentials.
 
 The labeling/judge configuration epoch (`judge_model`, `prompt_version`, `candidate_variant`,
 `dense_k`, `text_k`, `lexeme_fields`) is read from a single file, `configs/labeling.yaml`, via
