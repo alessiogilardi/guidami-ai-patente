@@ -77,6 +77,38 @@ repo/
 │   │                                #   Entry point:
 │   │                                #   `guidami_ai_patente.main:main`, registered as the
 │   │                                #   `serve` script
+│   ├── guidami_ai_patente_bot/     # Telegram bot client (spec 0015) — drives propose →
+│   │                                #   answer → explanation against the already-live
+│   │                                #   guidami_ai_patente FastAPI app, coupled to it only
+│   │                                #   over HTTP (AD-1), never a Python import of its
+│   │                                #   services/enums/DTOs. Package-per-role, same pywire
+│   │                                #   posture as guidami_ai_patente/ (ADR 0032 extended
+│   │                                #   pywire's scope to this app): configs/ (BotConfig,
+│   │                                #   root BaseSettings, loaded once in main.py),
+│   │                                #   enums/ (ExplanationOutcome, mirroring the API's wire
+│   │                                #   vocabulary), models/ (QuizQuestion, QuizExplanation —
+│   │                                #   both independent DTOs, not imports of the API's own
+│   │                                #   schemas; QuizSession, the per-chat state kept in
+│   │                                #   context.user_data for the process lifetime, AD-2),
+│   │                                #   exceptions/ (QuizApiError, StaleQuestionError),
+│   │                                #   clients/ (QuizApiClient, a pywire @async_component —
+│   │                                #   pywire>=0.9.0 — wrapping one httpx.AsyncClient,
+│   │                                #   entered/exited by Container.astart()/aclose() via
+│   │                                #   container.lifespan(), superseding ADR 0032's original
+│   │                                #   v0.8.0-era hand-called-aclose() workaround), services/
+│   │                                #   (QuizFlowService, the only place with orchestration
+│   │                                #   logic — derives QuizSession, enforces the FR-3
+│   │                                #   stale-button guard), handlers/ (python-telegram-bot
+│   │                                #   controllers — parse the update, call
+│   │                                #   QuizFlowService, render the response; resolve it via
+│   │                                #   pywire.get_default_container().resolve(...) rather
+│   │                                #   than Autowired-as-parameter, since plain-callable PTB
+│   │                                #   handlers are not FastAPI routes). Entry point:
+│   │                                #   `guidami_ai_patente_bot.main:main`, registered as the
+│   │                                #   `telegram-bot` script; long polling only, no webhook
+│   │                                #   (AD-3); no ConversationHandler, plain handlers +
+│   │                                #   context.user_data (AD-4); no persistence across
+│   │                                #   restarts (AD-2, Non-Goals)
 │   ├── html_viewers/               # Standalone, dependency-free HTML pages for manually
 │   │                                #   inspecting pipeline output (e.g. quiz enrichment
 │   │                                #   review); opened directly in a browser, no server
@@ -535,6 +567,18 @@ implemented.
   readiness row (`command="config", entity="agents_dir"`) if they ever disagree — see
   `StatusInspector._agents_dir_agreement_readiness` in
   `guidami_ai_patente_ingestor/cli/services/status/status_inspector.py`.
+- **Telegram-bot-only components** (new handlers, session-flow logic, HTTP
+  adapters to `guidami_ai_patente`) go under `src/guidami_ai_patente_bot/`,
+  following AD-5's fixed package set: `configs/`, `enums/`, `models/`,
+  `exceptions/`, `clients/`, `services/`, `handlers/` — no other top-level
+  subpackage. `enums/` is not in AD-5's own closed-list prose (spec 0015) but
+  the plan that first populated it (`docs/superpowers/plans/2026-09-16-telegram-bot-client-mvp.md`,
+  Task 2) creates it anyway, per the project-wide `.claude/rules/code-conventions.md`
+  "enums get their own package" rule, which is more specific and takes
+  precedence — AD-5's prose is stale on this point and should be corrected to
+  list `enums/` explicitly. The bot never imports `guidami_ai_patente`'s
+  services/enums/DTOs (AD-1): every bot-side model/enum is declared
+  independently even when it mirrors a wire shape 1:1.
 - **A closed vocabulary that is a shared shape** (a DB column's legal
   values, or a field name another module also needs) goes in
   `src/domain/enums/` as a `StrEnum` with `auto()`-derived values, never
@@ -799,3 +843,14 @@ quiz-domain routes, not five). `providers/` tree-comment now lists all three pro
 `labeling/`'s `services/` enumeration gained `QuestionLabelingService` (`adr/0030`) and
 a new `constants.py` (`EMBEDDING_MODEL_COLUMN`). The ~200-line split flagged in the
 previous entry is still not addressed — deferred again, same reasoning.*
+
+*Last updated: 2026-09-16 — verified against commit `1f6c7739` (spec 0015,
+telegram-bot-client-mvp plan, Tasks 1-4 committed; Task 5 in progress). New
+top-level package `src/guidami_ai_patente_bot/` created: `configs/` (`BotConfig`),
+`enums/` (`ExplanationOutcome`), `models/` (`QuizQuestion`, `QuizExplanation`,
+`QuizSession`), `exceptions/` (`QuizApiError`, `StaleQuestionError`), `clients/`
+(`QuizApiClient`, a pywire `@async_component` — pywire bumped to v0.9.0 for this),
+`services/` (`QuizFlowService`). Added the matching placement bullet and tree
+entry, and flagged that AD-5's closed package-set prose in spec 0015 is stale
+(omits `enums/`, which the plan's own Task 2 creates per the project-wide enum
+placement rule).*

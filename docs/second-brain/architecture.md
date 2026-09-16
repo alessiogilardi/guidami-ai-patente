@@ -1272,3 +1272,22 @@ implementation-plan stage (`docs/superpowers/plans/`, gitignored) — so this en
 records only the dependency bump. Once that package lands, `QuizApiClient` is planned
 to adopt `@async_component` instead of the manual-`aclose()` workaround `adr/0032`
 describes, and that ADR will need marking `Superseded by` the ADR recording the switch.*
+
+*Last updated: 2026-09-16 — verified against commit `1f6c7739` (telegram-bot-client-mvp
+plan, Tasks 1-4 committed; Task 5 in progress, uncommitted). `src/guidami_ai_patente_bot/`
+now exists and is coupled to `guidami_ai_patente` only over HTTP (AD-1) — no import of
+its services/enums/DTOs. Component graph so far: `QuizApiClient` (a pywire
+`@async_component`, the previous entry's "planned" adoption is now real — its
+`httpx.AsyncClient` opens in `__aenter__`/closes in `__aexit__`, entered/exited by
+`Container.astart()`/`aclose()`) wraps one HTTP method per endpoint shape
+(`propose_question`, `download_image`, `check_answer`, `get_explanation`), wrapping
+every failure into `QuizApiError`. `QuizFlowService` (a pywire `@service`, `api:
+Autowired[QuizApiClient]`) is the only place with orchestration logic: it derives the
+chat's `QuizSession` (seed/index/current question — a fresh session gets a new
+`uuid4().hex` seed at index 0, an existing one reuses its seed and advances index by
+one) and enforces the FR-3 stale-button guard (`StaleQuestionError` before any API call
+if the tapped question isn't the chat's current one). `docs/second-brain/database.md`
+needs no change: this app has no database of its own, only the FastAPI app's HTTP API.
+`adr/0032` still needs marking `Superseded by` a new ADR recording the `@async_component`
+switch — not yet done, tracked in the plan's own "After this plan" section, to be run via
+`second-brain:adr` once the whole plan lands.*
