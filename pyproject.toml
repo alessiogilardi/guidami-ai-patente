@@ -25,6 +25,7 @@ dependencies = [
     "fastapi>=0.141.1",
     "uvicorn[standard]>=0.52.1",
     "pywire[fastapi]",
+    "python-telegram-bot>=22.8",
 ]
 
 [project.scripts]
