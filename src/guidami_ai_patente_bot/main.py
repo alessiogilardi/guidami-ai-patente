@@ -65,9 +65,11 @@ async def _run() -> None:
     async with get_default_container().lifespan(), application:
         await application.start()
         await application.updater.start_polling()
-        await stop_event.wait()
-        await application.updater.stop()
-        await application.stop()
+        try:
+            await stop_event.wait()
+        finally:
+            await application.updater.stop()
+            await application.stop()
 
 
 if __name__ == "__main__":
