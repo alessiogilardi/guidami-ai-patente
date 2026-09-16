@@ -91,16 +91,26 @@ repo/
 │   │                                #   schemas; QuizSession, the per-chat state kept in
 │   │                                #   context.user_data for the process lifetime, AD-2),
 │   │                                #   exceptions/ (QuizApiError, StaleQuestionError),
-│   │                                #   clients/ (QuizApiClient, a pywire @async_component —
-│   │                                #   pywire>=0.9.0 — wrapping one httpx.AsyncClient,
-│   │                                #   entered/exited by Container.astart()/aclose() via
-│   │                                #   container.lifespan(), superseding ADR 0032's original
-│   │                                #   v0.8.0-era hand-called-aclose() workaround), services/
-│   │                                #   (QuizFlowService, the only place with orchestration
-│   │                                #   logic — derives QuizSession, enforces the FR-3
-│   │                                #   stale-button guard), handlers/ (python-telegram-bot
-│   │                                #   controllers — parse the update, call
-│   │                                #   QuizFlowService, render the response; resolve it via
+│   │                                #   clients/ (QuizApiClient, an async-context-manager bean —
+│   │                                #   pywire>=0.9.0's register_async_component() — wrapping
+│   │                                #   one httpx.AsyncClient, entered/exited by
+│   │                                #   Container.astart()/aclose() via container.lifespan().
+│   │                                #   Registered explicitly from main.py::_run, NOT via the
+│   │                                #   @async_component class decorator: guidami_ai_patente's
+│   │                                #   FastAPI app shares the same process-wide default pywire
+│   │                                #   container, and a decorator-time registration would make
+│   │                                #   its own astart() try to enter QuizApiClient too, failing
+│   │                                #   to resolve BotConfig — superseding ADR 0032's original
+│   │                                #   v0.8.0-era hand-called-aclose() workaround, see ADR 0033),
+│   │                                #   services/ (QuizFlowService, the only place with
+│   │                                #   orchestration logic — derives QuizSession, enforces the
+│   │                                #   FR-3 stale-button guard, and falls back to an
+│   │                                #   "insufficient knowledge"-shaped QuizExplanation if the
+│   │                                #   explanation fetch itself fails after a successful grade,
+│   │                                #   so a transient API error never strands an already-graded
+│   │                                #   answer), handlers/ (python-telegram-bot controllers —
+│   │                                #   parse the update, call QuizFlowService, render the
+│   │                                #   response; resolve it via
 │   │                                #   pywire.get_default_container().resolve(...) rather
 │   │                                #   than Autowired-as-parameter, since plain-callable PTB
 │   │                                #   handlers are not FastAPI routes). Entry point:
@@ -854,3 +864,25 @@ top-level package `src/guidami_ai_patente_bot/` created: `configs/` (`BotConfig`
 entry, and flagged that AD-5's closed package-set prose in spec 0015 is stale
 (omits `enums/`, which the plan's own Task 2 creates per the project-wide enum
 placement rule).*
+
+*Last updated: 2026-09-16 — verified against commit `f53ad73f` (telegram-bot-client-mvp
+plan, all six tasks complete plus a final-review fix wave). `guidami_ai_patente_bot/`
+gained its remaining two pieces: `handlers/` (`quiz_handlers.py` — `start_or_quiz`,
+`handle_next_callback`, `handle_answer_callback`, each resolving `QuizFlowService`
+via `pywire.get_default_container().resolve(...)` since plain PTB callables aren't
+FastAPI routes; `error_handler.py` — the global PTB error boundary) and
+`main.py` (entry point: loads `BotConfig` once, `register_instance`s it, then
+`register_async_component(QuizApiClient)` **explicitly** — not via the
+`@async_component` decorator, which would have registered it at import time on
+the same process-wide default container `guidami_ai_patente`'s FastAPI app shares,
+breaking that app's own `astart()` — then drives `python-telegram-bot`'s manual
+async lifecycle inside `container.lifespan()`). This explicit-registration
+correction was a Critical finding from the final whole-branch review (`uv run
+pytest` broke for the whole API test suite the moment both test trees were
+collected together — invisible to any single-task review); see ADR 0033, which
+supersedes ADR 0032 accordingly. Corrected this file's own `clients/` tree-comment
+bullet to describe the fix (it previously said `@async_component` bare-decorated,
+now stale). `QuizFlowService.handle_answer` also gained a fallback: a failed
+`get_explanation` call after a successful `check_answer` no longer strands the
+graded answer — it falls back to an `INSUFFICIENT_KNOWLEDGE`-shaped
+`QuizExplanation` instead of propagating uncaught.*

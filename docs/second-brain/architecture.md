@@ -1276,8 +1276,9 @@ describes, and that ADR will need marking `Superseded by` the ADR recording the 
 *Last updated: 2026-09-16 — verified against commit `1f6c7739` (telegram-bot-client-mvp
 plan, Tasks 1-4 committed; Task 5 in progress, uncommitted). `src/guidami_ai_patente_bot/`
 now exists and is coupled to `guidami_ai_patente` only over HTTP (AD-1) — no import of
-its services/enums/DTOs. Component graph so far: `QuizApiClient` (a pywire
-`@async_component`, the previous entry's "planned" adoption is now real — its
+its services/enums/DTOs. Component graph so far: `QuizApiClient` (an async-context-manager
+bean, the previous entry's "planned" `@async_component` adoption is now real — see the
+2026-09-16/`f53ad73f` entry below for a correction to how it's registered — its
 `httpx.AsyncClient` opens in `__aenter__`/closes in `__aexit__`, entered/exited by
 `Container.astart()`/`aclose()`) wraps one HTTP method per endpoint shape
 (`propose_question`, `download_image`, `check_answer`, `get_explanation`), wrapping
@@ -1291,3 +1292,57 @@ needs no change: this app has no database of its own, only the FastAPI app's HTT
 `adr/0032` still needs marking `Superseded by` a new ADR recording the `@async_component`
 switch — not yet done, tracked in the plan's own "After this plan" section, to be run via
 `second-brain:adr` once the whole plan lands.*
+
+*Last updated: 2026-09-16 — verified against commit `f53ad73f` (telegram-bot-client-mvp
+plan complete: all six tasks plus a final whole-branch-review fix wave). Component graph
+finished: `handlers/` (`quiz_handlers.py`, `error_handler.py`) are thin PTB controllers —
+parse the update, resolve `QuizFlowService` via
+`pywire.get_default_container().resolve(...)` (plain PTB callables aren't FastAPI routes,
+so `Autowired`-as-parameter doesn't apply — this confirms spec 0015's AD-8 open question),
+call it, render the response, no business logic. `main.py::_run` is the composition root:
+loads `BotConfig` once and `register_instance`s it, then calls
+`get_default_container().register_async_component(QuizApiClient)` **explicitly**, then
+runs `python-telegram-bot`'s manual async lifecycle (`async with application`,
+`application.start()`/`updater.start_polling()`, a `try/finally`-guarded
+`stop_event.wait()` so `updater.stop()`/`application.stop()` always run before the
+`async with` unwinds) inside `container.lifespan()`, all inside one `asyncio.run()`.
+
+The explicit-registration call (rather than decorating `QuizApiClient` with
+`@async_component` at class-definition time, which the plan originally specified) was a
+**Critical** finding from the final whole-branch review, not visible to any single-task
+review: `guidami_ai_patente`'s FastAPI app (`api/app.py`) runs
+`FastAPI(lifespan=pywire_lifespan)` against the same process-wide *default* pywire
+container `@async_component`/`@service`/etc. all write into. A decorator-time
+registration meant merely *importing* `guidami_ai_patente_bot.clients` — which happens
+the instant both test trees are collected in the same `uv run pytest` invocation —
+registered `QuizApiClient` on that shared container, and the API's own `astart()` then
+tried to enter it too, failing to resolve `BotConfig` (which only the bot's own
+composition root provides). Fixed by moving registration into `main.py::_run`, so
+merely importing the bot package has no side effect on any container it doesn't own.
+See `adr/0033-explicit-async-component-registration-for-shared-container.md`, which
+supersedes `adr/0032`.
+
+`QuizFlowService.handle_answer` also gained a narrow fallback (a second final-review
+finding): if `check_answer` succeeds but the subsequent `get_explanation` call raises
+`QuizApiError` — a `503` from that endpoint is a first-class, documented outcome (API
+FR-13/AD-20), not a rare failure — the already-computed grade no longer gets discarded.
+The method catches `QuizApiError` around the `get_explanation` call only (a
+`check_answer` failure still propagates normally, since no grade exists yet) and falls
+back to `QuizExplanation(status=ExplanationOutcome.INSUFFICIENT_KNOWLEDGE,
+explanation=None)`, reusing the handler's already-correct "no explanation available"
+rendering rather than adding a new enum member or changing the method's return shape.
+
+Also fixed: `httpx`'s own INFO-level request logging was printing
+`https://api.telegram.org/bot<TOKEN>/...` (the bot token, unmasked) to stdout on every
+long-poll request, since `main.py` sets the root logger to INFO —
+`logging.getLogger("httpx").setLevel(logging.WARNING)` closes it.
+
+Two items intentionally left open by this plan, tracked for the user rather than fixed
+unilaterally (both are spec/process drift, not code defects): spec 0015's AD-5 (closed
+package list) and AD-8 (the pre-v0.9.0 async-component workaround) are now stale against
+the implemented code — the spec is user-owned, so this needs a human edit, not an
+agent one. Separately, most of this plan's commits went through a plain `git commit -m`
+rather than this repo's mandated `commit-moji` skill, and several also carry a
+`Co-Authored-By` trailer `.claude/rules/commits.md`'s Hard Rules explicitly forbid —
+judged not worth a mid-plan history rewrite (would need `git rebase -i`), flagged for the
+user's own call instead.*
