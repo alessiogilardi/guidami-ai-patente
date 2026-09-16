@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 import pytest
 
 from guidami_ai_patente_bot.enums import ExplanationOutcome
-from guidami_ai_patente_bot.exceptions import StaleQuestionError
+from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
 from guidami_ai_patente_bot.models import QuizExplanation, QuizQuestion, QuizSession
 from guidami_ai_patente_bot.services import QuizFlowService
 
@@ -19,6 +19,7 @@ class _ApiDouble:
         )
     )
     correct: bool = True
+    raise_api_error: bool = False
     propose_calls: list[tuple[str, int]] = field(default_factory=list)
     check_calls: list[tuple[str, bool]] = field(default_factory=list)
 
@@ -31,6 +32,8 @@ class _ApiDouble:
         return self.correct
 
     async def get_explanation(self, number: str, submitted: bool) -> QuizExplanation:
+        if self.raise_api_error:
+            raise QuizApiError("boom")
         return self.explanation
 
     async def download_image(self, image_url: str) -> bytes:
@@ -84,6 +87,19 @@ async def test_a_matching_answer_is_checked_and_explained() -> None:
     assert correct is True
     assert explanation.status is ExplanationOutcome.EXPLAINED
     assert api.check_calls == [("0001", True)]
+
+
+@pytest.mark.asyncio
+async def test_a_failed_explanation_fetch_falls_back_to_no_explanation_available() -> None:
+    api = _ApiDouble(question=_question(), correct=True, raise_api_error=True)
+    service = _service(api)
+    session = QuizSession(seed="abc", index=0, current_question_number="0001")
+
+    correct, explanation = await service.handle_answer(session, "0001", True)
+
+    assert correct is True
+    assert explanation.status is ExplanationOutcome.INSUFFICIENT_KNOWLEDGE
+    assert explanation.explanation is None
 
 
 @pytest.mark.asyncio

@@ -5,7 +5,8 @@ import uuid
 from pywire import Autowired, service
 
 from guidami_ai_patente_bot.clients import QuizApiClient
-from guidami_ai_patente_bot.exceptions import StaleQuestionError
+from guidami_ai_patente_bot.enums import ExplanationOutcome
+from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
 from guidami_ai_patente_bot.models import QuizExplanation, QuizQuestion, QuizSession
 
 
@@ -39,6 +40,12 @@ class QuizFlowService:
     ) -> tuple[bool, QuizExplanation]:
         """Grades `answer` and fetches its explanation in the same turn (FR-2).
 
+        The grade survives even when the explanation fetch itself fails (the API's
+        explanation endpoint returns a 503 by design when the judge/writer fails — an
+        expected outcome, not a rare edge case): in that case the already-computed
+        `correct` is kept and `explanation` falls back to the same "no explanation
+        available" shape used for `ExplanationOutcome.INSUFFICIENT_KNOWLEDGE`.
+
         Raises:
             StaleQuestionError: `number` is not the chat's current question — no
                 session at all, or a session pointing at a different one (FR-3).
@@ -46,7 +53,12 @@ class QuizFlowService:
         if session is None or session.current_question_number != number:
             raise StaleQuestionError(number)
         correct = await self.api.check_answer(number, answer)
-        explanation = await self.api.get_explanation(number, submitted=answer)
+        try:
+            explanation = await self.api.get_explanation(number, submitted=answer)
+        except QuizApiError:
+            explanation = QuizExplanation(
+                status=ExplanationOutcome.INSUFFICIENT_KNOWLEDGE, explanation=None
+            )
         return correct, explanation
 
     async def download_image(self, image_url: str) -> bytes:
