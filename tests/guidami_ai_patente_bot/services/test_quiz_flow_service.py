@@ -3,11 +3,11 @@
 from dataclasses import dataclass, field
 
 import pytest
-from guidami_ai_patente_bot.services import QuizFlowService
 
 from guidami_ai_patente_bot.enums import ExplanationOutcome
 from guidami_ai_patente_bot.exceptions import StaleQuestionError
 from guidami_ai_patente_bot.models import QuizExplanation, QuizQuestion, QuizSession
+from guidami_ai_patente_bot.services import QuizFlowService
 
 
 @dataclass
