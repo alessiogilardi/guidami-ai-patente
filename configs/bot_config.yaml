@@ -1,0 +1,6 @@
+# Telegram bot process (see src/guidami_ai_patente_bot/). Every key can be
+# overridden by an environment variable of the same name (uppercased).
+# telegram_bot_token is deliberately absent: it is a secret, read only from
+# TELEGRAM_BOT_TOKEN (env or .env), never committed here.
+api_base_url: http://localhost:8000
+request_timeout_seconds: 15.0
