@@ -1255,3 +1255,20 @@ used to document. Two recorded-but-not-fixed debt items added: `LabelingConfig.y
 is CWD-relative (D11) and `EMBEDDING_MODEL_COLUMN` is a shared constant pending a
 symmetric parameterisation spec (D7) — `ingest reset quiz`'s FK breakage was already
 documented in `database.md` before this task.*
+
+*Last updated: 2026-09-16 — verified against commit `68f98012` (working tree ahead:
+uncommitted, on `feat/backend`); bumped `pywire` 0.8.0 -> 0.9.0 (`[tool.uv.sources]` tag
+`v0.8.0` -> `v0.9.0`). The release adds async-component support: `@async_component`
+registers a class that is itself an async context manager (`__aenter__`/`__aexit__`),
+entered/exited by the new `Container.astart()`/`aclose()`, composable as `async with
+container.lifespan(): ...` for a non-FastAPI async entrypoint — the capability
+`adr/0032` (Telegram bot design, spec 0015) documented as absent in v0.8.0.
+`Container`'s existing sync API (`register`, `register_instance`, `resolve`, `close`,
+`@pre_destroy`) is unchanged, so no source change was needed in `guidami_ai_patente/`,
+which uses none of the new async-component API today. Verified on 0.9.0: 78 tests
+passed (`tests/guidami_ai_patente`), `ruff check`/`ruff format --check` clean, `pyright`
+0 errors. No `guidami_ai_patente_bot/` package exists yet — spec 0015 is still at the
+implementation-plan stage (`docs/superpowers/plans/`, gitignored) — so this entry
+records only the dependency bump. Once that package lands, `QuizApiClient` is planned
+to adopt `@async_component` instead of the manual-`aclose()` workaround `adr/0032`
+describes, and that ADR will need marking `Superseded by` the ADR recording the switch.*
