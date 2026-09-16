@@ -26,12 +26,14 @@ class QuizApiClient:
     config: Autowired[BotConfig]
 
     async def __aenter__(self) -> Self:
+        """Opens the underlying `httpx.AsyncClient` (entered by `container.lifespan()`)."""
         self._http: httpx.AsyncClient = httpx.AsyncClient(
             base_url=self.config.api_base_url, timeout=self.config.request_timeout_seconds
         )
         return self
 
     async def __aexit__(self, *exc_info: object) -> None:
+        """Closes the underlying `httpx.AsyncClient` (exited by `container.lifespan()`)."""
         await self._http.aclose()
 
     async def propose_question(self, seed: str, index: int) -> QuizQuestion:

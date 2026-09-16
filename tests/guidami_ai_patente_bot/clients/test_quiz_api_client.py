@@ -4,8 +4,8 @@ from collections.abc import Awaitable, Callable
 
 import httpx
 import pytest
-from guidami_ai_patente_bot.clients import QuizApiClient
 
+from guidami_ai_patente_bot.clients import QuizApiClient
 from guidami_ai_patente_bot.configs import BotConfig
 from guidami_ai_patente_bot.exceptions import QuizApiError
 
