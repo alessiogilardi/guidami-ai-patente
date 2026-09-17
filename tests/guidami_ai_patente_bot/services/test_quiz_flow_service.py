@@ -6,7 +6,12 @@ import pytest
 
 from guidami_ai_patente_bot.enums import ExplanationOutcome
 from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
-from guidami_ai_patente_bot.models import QuizExplanation, QuizQuestion, QuizSession
+from guidami_ai_patente_bot.models import (
+    QuizExplanation,
+    QuizQuestion,
+    QuizSession,
+    SessionSummary,
+)
 from guidami_ai_patente_bot.services import QuizFlowService
 
 
@@ -20,24 +25,40 @@ class _ApiDouble:
     )
     correct: bool = True
     raise_api_error: bool = False
-    propose_calls: list[tuple[str, int]] = field(default_factory=list)
-    check_calls: list[tuple[str, bool]] = field(default_factory=list)
+    registered: bool = True
+    summary: SessionSummary = field(default_factory=lambda: SessionSummary(answered=0, correct=0))
+    propose_calls: list[tuple[int, str, int]] = field(default_factory=list)
+    check_calls: list[tuple[int, str, bool, str]] = field(default_factory=list)
+    registration_calls: list[int] = field(default_factory=list)
+    summary_calls: list[tuple[int, str]] = field(default_factory=list)
 
-    async def propose_question(self, seed: str, index: int) -> QuizQuestion:
-        self.propose_calls.append((seed, index))
+    async def propose_question(self, telegram_user_id: int, seed: str, index: int) -> QuizQuestion:
+        self.propose_calls.append((telegram_user_id, seed, index))
         return self.question
 
-    async def check_answer(self, number: str, answer: bool) -> bool:
-        self.check_calls.append((number, answer))
+    async def check_answer(
+        self, telegram_user_id: int, number: str, answer: bool, session_id: str
+    ) -> bool:
+        self.check_calls.append((telegram_user_id, number, answer, session_id))
         return self.correct
 
-    async def get_explanation(self, number: str, submitted: bool) -> QuizExplanation:
+    async def get_explanation(
+        self, telegram_user_id: int, number: str, submitted: bool
+    ) -> QuizExplanation:
         if self.raise_api_error:
             raise QuizApiError("boom")
         return self.explanation
 
-    async def download_image(self, image_url: str) -> bytes:
+    async def download_image(self, telegram_user_id: int, image_url: str) -> bytes:
         return b"image"
+
+    async def check_registration_status(self, telegram_user_id: int) -> bool:
+        self.registration_calls.append(telegram_user_id)
+        return self.registered
+
+    async def get_session_summary(self, telegram_user_id: int, session_id: str) -> SessionSummary:
+        self.summary_calls.append((telegram_user_id, session_id))
+        return self.summary
 
 
 def _question(number: str = "0001") -> QuizQuestion:
@@ -56,9 +77,9 @@ async def test_a_fresh_session_proposes_index_zero_with_a_new_seed() -> None:
     api = _ApiDouble(question=_question())
     service = _service(api)
 
-    _, session = await service.propose_question(None)
+    _, session = await service.propose_question(None, 7)
 
-    assert api.propose_calls == [(session.seed, 0)]
+    assert api.propose_calls == [(7, session.seed, 0)]
     assert session.index == 0
 
 
@@ -68,25 +89,25 @@ async def test_an_existing_session_reuses_the_seed_and_advances_the_index() -> N
     service = _service(api)
     previous = QuizSession(seed="abc", index=3, current_question_number="0001")
 
-    _, session = await service.propose_question(previous)
+    _, session = await service.propose_question(previous, 7)
 
-    assert api.propose_calls == [("abc", 4)]
+    assert api.propose_calls == [(7, "abc", 4)]
     assert session.seed == "abc"
     assert session.index == 4
     assert session.current_question_number == "0002"
 
 
 @pytest.mark.asyncio
-async def test_a_matching_answer_is_checked_and_explained() -> None:
+async def test_a_matching_answer_is_checked_with_the_sessions_seed_and_explained() -> None:
     api = _ApiDouble(question=_question(), correct=True)
     service = _service(api)
     session = QuizSession(seed="abc", index=0, current_question_number="0001")
 
-    correct, explanation = await service.handle_answer(session, "0001", True)
+    correct, explanation = await service.handle_answer(session, "0001", True, 7)
 
     assert correct is True
     assert explanation.status is ExplanationOutcome.EXPLAINED
-    assert api.check_calls == [("0001", True)]
+    assert api.check_calls == [(7, "0001", True, "abc")]
 
 
 @pytest.mark.asyncio
@@ -95,7 +116,7 @@ async def test_a_failed_explanation_fetch_falls_back_to_no_explanation_available
     service = _service(api)
     session = QuizSession(seed="abc", index=0, current_question_number="0001")
 
-    correct, explanation = await service.handle_answer(session, "0001", True)
+    correct, explanation = await service.handle_answer(session, "0001", True, 7)
 
     assert correct is True
     assert explanation.status is ExplanationOutcome.INSUFFICIENT_KNOWLEDGE
@@ -109,7 +130,7 @@ async def test_a_stale_number_raises_without_calling_the_api() -> None:
     session = QuizSession(seed="abc", index=0, current_question_number="0001")
 
     with pytest.raises(StaleQuestionError):
-        await service.handle_answer(session, "0002", True)
+        await service.handle_answer(session, "0002", True, 7)
 
     assert api.check_calls == []
 
@@ -120,4 +141,26 @@ async def test_no_session_at_all_is_also_stale() -> None:
     service = _service(api)
 
     with pytest.raises(StaleQuestionError):
-        await service.handle_answer(None, "0001", True)
+        await service.handle_answer(None, "0001", True, 7)
+
+
+@pytest.mark.asyncio
+async def test_check_registration_status_passes_through() -> None:
+    api = _ApiDouble(question=_question(), registered=True)
+    service = _service(api)
+
+    registered = await service.check_registration_status(7)
+
+    assert registered is True
+    assert api.registration_calls == [7]
+
+
+@pytest.mark.asyncio
+async def test_session_summary_passes_through() -> None:
+    api = _ApiDouble(question=_question(), summary=SessionSummary(answered=5, correct=3))
+    service = _service(api)
+
+    summary = await service.session_summary(7, "seed-abc")
+
+    assert (summary.answered, summary.correct) == (5, 3)
+    assert api.summary_calls == [(7, "seed-abc")]
