@@ -3,12 +3,12 @@
 from pathlib import Path
 
 from pydantic import AliasChoices, Field
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import SettingsConfigDict
 
-from commons.configs import PostgresConnectionConfig
+from commons.configs import BaseConfig, PostgresConnectionConfig
 
 
-class AppConfig(BaseSettings):
+class AppConfig(BaseConfig):
     """Root settings for the guidami-ai-patente API service.
 
     Built once at the entry point (`main.py`) and registered on the pywire container
@@ -24,14 +24,15 @@ class AppConfig(BaseSettings):
     consumer that needs the shared labeling epoch declares its own
     `labeling_config: Autowired[LabelingConfig]` rather than reading
     `self.config.labeling`.
+
+    Public, non-secret fields default from `configs/app_config.yaml` (`BaseConfig`'s
+    `YamlConfigSettingsSource`, same posture as `IngestorConfig`/`LabelingConfig`/
+    `BotConfig`); `.env`/environment variables still take precedence and remain the
+    only source for secrets (`postgres.user`/`postgres.password`) and for
+    `agents_dir`, which stays defaultless everywhere on purpose (AD-22).
     """
 
-    model_config = SettingsConfigDict(
-        frozen=True,
-        extra="ignore",
-        env_nested_delimiter="__",
-        env_file=".env",
-    )
+    model_config = SettingsConfigDict(yaml_file="configs/app_config.yaml")
 
     host: str = "0.0.0.0"
     port: int = 8000

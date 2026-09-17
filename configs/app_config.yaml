@@ -1,0 +1,30 @@
+# FastAPI service (see src/guidami_ai_patente/). Every key can be overridden by an
+# environment variable of the same name (uppercased; use "__" for nested keys, e.g.
+# POSTGRES__HOST).
+#
+# postgres.user / postgres.password are deliberately absent: secrets, read only from
+# POSTGRES__USER / POSTGRES__PASSWORD (env or .env), never committed here.
+#
+# agents_dir is deliberately absent too: it comes from the AGENTS_DIR environment
+# variable and has no default anywhere (AD-22).
+
+host: 0.0.0.0
+port: 8000
+
+postgres:
+  host: localhost
+  port: 5432
+  dbname: guidami_ai_patente
+
+quiz_images_dir: data/quiz-images
+
+articles_table: articles
+article_commas_table: article_commas
+quiz_questions_table: quiz_questions
+quiz_question_embeddings_table: quiz_question_embeddings
+labeling_runs_table: labeling_runs
+quiz_labelings_table: quiz_labelings
+quiz_comma_labels_table: quiz_comma_labels
+quiz_images_table: quiz_images
+
+explanation_deadline_s: 25.0
