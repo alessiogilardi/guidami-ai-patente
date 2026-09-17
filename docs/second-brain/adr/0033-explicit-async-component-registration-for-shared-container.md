@@ -104,6 +104,19 @@ async-managed bean unconditionally.
   whose module might be imported by more than one app" from a one-off
   exception into a documented `pywire-di.md` rule, rather than re-deriving
   the reasoning from scratch each time.
+- **Candidate upstream improvement (pywire itself), not decided or scheduled
+  here**: today every bare decorator (`@component`, `@service`, `@client`,
+  `@async_component`, ...) registers unconditionally on the one process-wide
+  default container the moment its module is imported — safe for a single
+  app per process, but exactly what breaks the moment two apps in the same
+  repo/venv end up imported into one process together (as `uv run pytest`
+  does here). A decorator mode that registers lazily instead of at
+  import-time, or that binds to an explicitly-named/scoped container rather
+  than always the module-level default, would let `@async_component` (and
+  the other bare decorators) stay usable even in that situation, removing
+  the need for this ADR's explicit-registration exception entirely. Worth
+  floating as a pywire issue/feature request; not pursued as part of this
+  plan, since it's out of scope for this repo's own codebase.
 - Supersedes ADR 0032's `QuizApiClient` registration detail (its async-
   context-manager gap is now closed by pywire 0.9.0, as ADR 0032 itself
   anticipated) — but not ADR 0032's broader decision to extend pywire's DI
