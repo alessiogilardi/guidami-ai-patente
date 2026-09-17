@@ -7,8 +7,9 @@ from unittest.mock import AsyncMock
 import pytest
 from telegram import Chat, Message, Update
 
+from guidami_ai_patente_bot.exceptions import UnauthorizedError
 from guidami_ai_patente_bot.handlers.error_handler import handle_error
-from guidami_ai_patente_bot.messages import GENERIC_ERROR_MESSAGE
+from guidami_ai_patente_bot.messages import GENERIC_ERROR_MESSAGE, UNAUTHORIZED_MESSAGE
 
 
 def _update_with_chat(chat_id: int) -> Update:
@@ -34,3 +35,13 @@ async def test_a_non_update_object_is_logged_without_sending_anything() -> None:
     await handle_error(None, context)
 
     context.bot.send_message.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_an_unauthorized_error_shows_the_specific_message() -> None:
+    context = SimpleNamespace(bot=AsyncMock(), error=UnauthorizedError("403"))
+    update = _update_with_chat(42)
+
+    await handle_error(update, context)
+
+    context.bot.send_message.assert_awaited_once_with(chat_id=42, text=UNAUTHORIZED_MESSAGE)
