@@ -46,7 +46,12 @@ async def _run() -> None:
     get_default_container().register_instance(config, as_type=BotConfig)
     get_default_container().register_async_component(QuizApiClient)
 
-    application = Application.builder().token(config.telegram_bot_token.get_secret_value()).build()
+    application = (
+        Application.builder()
+        .token(config.telegram_bot_token.get_secret_value())
+        .read_timeout(config.telegram_read_timeout_seconds)
+        .build()
+    )
     assert application.updater is not None
     application.add_handler(CommandHandler(["start", "quiz"], start_or_quiz))
     application.add_handler(
