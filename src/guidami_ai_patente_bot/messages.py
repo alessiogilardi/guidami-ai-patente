@@ -12,6 +12,10 @@ STALE_NOTICE = "Questa domanda non è più valida, usa /quiz"
 GENERIC_ERROR_MESSAGE = "Si è verificato un errore, riprova con /quiz"
 
 
+WELCOME_MESSAGE = "Benvenuto! Usa /quiz per iniziare."
+PENDING_APPROVAL_MESSAGE = "Richiesta in attesa di approvazione da parte del gestore del bot."
+
+
 def outcome_line(correct: bool) -> str:
     """Renders the ✅/❌ line shown right after grading an answer (FR-2)."""
     return "✅ Risposta corretta!" if correct else "❌ Risposta sbagliata."

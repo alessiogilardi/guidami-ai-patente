@@ -1,4 +1,4 @@
-"""Telegram update handlers: thin controllers over QuizFlowService (AD-5)."""
+"""Telegram update handlers: thin controllers over QuizFlowService (AD-5, spec 0016 AD-11)."""
 
 from io import BytesIO
 from typing import cast
@@ -35,16 +35,14 @@ def _question_keyboard(number: str) -> InlineKeyboardMarkup:
     )
 
 
-async def _send_question(chat_id: int, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Proposes the next question in the chat's permutation and sends it (FR-1, FR-4).
-
-    Always sends a *new* message — see the plan's design note on why "Prossima
-    domanda" does not edit the previous one.
-    """
+async def _send_question(
+    chat_id: int, telegram_user_id: int, context: ContextTypes.DEFAULT_TYPE
+) -> None:
+    """Proposes the next question in the chat's permutation and sends it (FR-1, FR-4)."""
     assert context.user_data is not None
     service = container.resolve(context, QuizFlowService)
     session: QuizSession | None = context.user_data.get("session")
-    question, session = await service.propose_question(session)
+    question, session = await service.propose_question(session, telegram_user_id)
     context.user_data["session"] = session
 
     keyboard = _question_keyboard(question.number)
@@ -52,7 +50,7 @@ async def _send_question(chat_id: int, context: ContextTypes.DEFAULT_TYPE) -> No
         await context.bot.send_message(chat_id=chat_id, text=question.text, reply_markup=keyboard)
         return
 
-    image_bytes = await service.download_image(question.image_url)
+    image_bytes = await service.download_image(question.image_url, telegram_user_id)
     await context.bot.send_photo(
         chat_id=chat_id,
         photo=BytesIO(image_bytes),
@@ -61,18 +59,30 @@ async def _send_question(chat_id: int, context: ContextTypes.DEFAULT_TYPE) -> No
     )
 
 
-async def start_or_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Handles `/start` and `/quiz`: proposes a question (FR-1)."""
+async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handles `/start`: reports registration status, never proposes a question (FR-7)."""
     assert update.effective_chat is not None
-    await _send_question(update.effective_chat.id, context)
+    assert update.effective_user is not None
+    service = container.resolve(context, QuizFlowService)
+    registered = await service.check_registration_status(update.effective_user.id)
+    text = messages.WELCOME_MESSAGE if registered else messages.PENDING_APPROVAL_MESSAGE
+    await context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+
+
+async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Handles `/quiz`: proposes a question, resuming a pending session if any (FR-8)."""
+    assert update.effective_chat is not None
+    assert update.effective_user is not None
+    await _send_question(update.effective_chat.id, update.effective_user.id, context)
 
 
 async def handle_next_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handles "Prossima domanda ▶": proposes the next question (FR-4)."""
     assert update.callback_query is not None
     assert update.effective_chat is not None
+    assert update.effective_user is not None
     await update.callback_query.answer()
-    await _send_question(update.effective_chat.id, context)
+    await _send_question(update.effective_chat.id, update.effective_user.id, context)
 
 
 async def handle_answer_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -80,6 +90,7 @@ async def handle_answer_callback(update: Update, context: ContextTypes.DEFAULT_T
     query = update.callback_query
     assert query is not None
     assert query.data is not None
+    assert update.effective_user is not None
     rest = query.data.removeprefix(ANSWER_CALLBACK_PREFIX)
     number, _, flag = rest.rpartition(":")
     answer = flag == "1"
@@ -88,7 +99,9 @@ async def handle_answer_callback(update: Update, context: ContextTypes.DEFAULT_T
     service = container.resolve(context, QuizFlowService)
     session: QuizSession | None = context.user_data.get("session")
     try:
-        correct, explanation = await service.handle_answer(session, number, answer)
+        correct, explanation = await service.handle_answer(
+            session, number, answer, update.effective_user.id
+        )
     except StaleQuestionError:
         await query.answer(messages.STALE_NOTICE)
         return

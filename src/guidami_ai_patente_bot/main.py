@@ -17,7 +17,8 @@ from .handlers.quiz_handlers import (
     NEXT_CALLBACK_DATA,
     handle_answer_callback,
     handle_next_callback,
-    start_or_quiz,
+    quiz_command,
+    start_command,
 )
 
 logger = logging.getLogger(__name__)
@@ -55,7 +56,8 @@ async def _run() -> None:
     )
     application.bot_data[container.BOT_DATA_CONTAINER_KEY] = get_default_container()
     assert application.updater is not None
-    application.add_handler(CommandHandler(["start", "quiz"], start_or_quiz))
+    application.add_handler(CommandHandler("start", start_command))
+    application.add_handler(CommandHandler("quiz", quiz_command))
     application.add_handler(
         CallbackQueryHandler(handle_answer_callback, pattern=f"^{ANSWER_CALLBACK_PREFIX}")
     )
