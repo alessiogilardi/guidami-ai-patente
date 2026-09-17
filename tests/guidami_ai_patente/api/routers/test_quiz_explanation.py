@@ -26,6 +26,7 @@ _TABLES = (
     "quiz_labelings",
     "labeling_runs",
     "quiz_question_embeddings",
+    "quiz_answers",
     "quiz_questions",
     "article_commas",
     "articles",
@@ -215,11 +216,14 @@ def _install_judge(monkeypatch: pytest.MonkeyPatch, agent: _JudgeDouble) -> None
 
 @pytest.mark.integration
 def test_a_cached_question_is_explained_with_its_citations(
-    api_client: TestClient, cached_question: PostgresClient, monkeypatch: pytest.MonkeyPatch
+    api_client: TestClient,
+    cached_question: PostgresClient,
+    monkeypatch: pytest.MonkeyPatch,
+    registered_headers: dict[str, str],
 ) -> None:
     _install_writer(monkeypatch, _WriterDouble())
 
-    response = api_client.get("/quiz-questions/0001/explanation")
+    response = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
 
     assert response.status_code == HTTPStatus.OK
     body = response.json()
@@ -232,25 +236,31 @@ def test_a_cached_question_is_explained_with_its_citations(
 
 @pytest.mark.integration
 def test_the_submitted_answer_reaches_the_writer(
-    api_client: TestClient, cached_question: PostgresClient, monkeypatch: pytest.MonkeyPatch
+    api_client: TestClient,
+    cached_question: PostgresClient,
+    monkeypatch: pytest.MonkeyPatch,
+    registered_headers: dict[str, str],
 ) -> None:
     """FR-11: `?submitted=false` tells the writer the user got it wrong."""
     writer = _WriterDouble()
     _install_writer(monkeypatch, writer)
 
-    api_client.get("/quiz-questions/0001/explanation?submitted=false")
+    api_client.get("/quiz-questions/0001/explanation?submitted=false", headers=registered_headers)
 
     assert writer.requests[0].submitted_answer is False
 
 
 @pytest.mark.integration
 def test_an_omitted_submitted_answer_is_still_served(
-    api_client: TestClient, cached_question: PostgresClient, monkeypatch: pytest.MonkeyPatch
+    api_client: TestClient,
+    cached_question: PostgresClient,
+    monkeypatch: pytest.MonkeyPatch,
+    registered_headers: dict[str, str],
 ) -> None:
     writer = _WriterDouble()
     _install_writer(monkeypatch, writer)
 
-    response = api_client.get("/quiz-questions/0001/explanation")
+    response = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
 
     assert response.status_code == HTTPStatus.OK
     assert writer.requests[0].submitted_answer is None
@@ -258,14 +268,17 @@ def test_an_omitted_submitted_answer_is_still_served(
 
 @pytest.mark.integration
 def test_a_question_with_no_vector_and_no_labeling_is_not_indexed(
-    api_client: TestClient, cached_question: PostgresClient, monkeypatch: pytest.MonkeyPatch
+    api_client: TestClient,
+    cached_question: PostgresClient,
+    monkeypatch: pytest.MonkeyPatch,
+    registered_headers: dict[str, str],
 ) -> None:
     """FR-7: a pipeline gap, reported as a 200 with a machine-readable reason (AD-5)."""
     writer = _WriterDouble()
     _install_writer(monkeypatch, writer)
     cached_question.execute(sql.SQL("DELETE FROM quiz_labelings"))
 
-    response = api_client.get("/quiz-questions/0001/explanation")
+    response = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
 
     assert response.status_code == HTTPStatus.OK
     body = response.json()
@@ -277,21 +290,24 @@ def test_a_question_with_no_vector_and_no_labeling_is_not_indexed(
 
 @pytest.mark.integration
 def test_an_unknown_number_is_a_404(
-    api_client: TestClient, cached_question: PostgresClient
+    api_client: TestClient, cached_question: PostgresClient, registered_headers: dict[str, str]
 ) -> None:
-    response = api_client.get("/quiz-questions/9999/explanation")
+    response = api_client.get("/quiz-questions/9999/explanation", headers=registered_headers)
 
     assert response.status_code == HTTPStatus.NOT_FOUND
 
 
 @pytest.mark.integration
 def test_a_writer_failure_is_a_503_and_keeps_the_labeling(
-    api_client: TestClient, cached_question: PostgresClient, monkeypatch: pytest.MonkeyPatch
+    api_client: TestClient,
+    cached_question: PostgresClient,
+    monkeypatch: pytest.MonkeyPatch,
+    registered_headers: dict[str, str],
 ) -> None:
     """The plan's gate assertion 3 (AD-29, FR-13)."""
     _install_writer(monkeypatch, _WriterDouble(error=RuntimeError("provider is down")))
 
-    response = api_client.get("/quiz-questions/0001/explanation")
+    response = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
 
     assert response.status_code == HTTPStatus.SERVICE_UNAVAILABLE
     assert "no_supporting_norm" not in response.text
@@ -304,34 +320,44 @@ def test_a_writer_failure_is_a_503_and_keeps_the_labeling(
 
 @pytest.mark.integration
 def test_the_check_still_reports_cached_after_a_writer_failure(
-    api_client: TestClient, cached_question: PostgresClient, monkeypatch: pytest.MonkeyPatch
+    api_client: TestClient,
+    cached_question: PostgresClient,
+    monkeypatch: pytest.MonkeyPatch,
+    registered_headers: dict[str, str],
 ) -> None:
     """FR-13: the association exists even though the last render did not complete."""
     _install_writer(monkeypatch, _WriterDouble(error=RuntimeError("provider is down")))
-    api_client.get("/quiz-questions/0001/explanation")
+    api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
 
-    response = api_client.post("/quiz-questions/0001/check", json={"answer": True})
+    response = api_client.post(
+        "/quiz-questions/0001/check",
+        json={"answer": True},
+        headers=registered_headers,
+    )
 
     assert response.json()["explanation_status"] == "cached"
 
 
 @pytest.mark.integration
 def test_a_writer_failure_after_a_live_judge_success_keeps_the_labeling_and_caches_the_retry(
-    api_client: TestClient, live_question: PostgresClient, monkeypatch: pytest.MonkeyPatch
+    api_client: TestClient,
+    live_question: PostgresClient,
+    monkeypatch: pytest.MonkeyPatch,
+    registered_headers: dict[str, str],
 ) -> None:
     """The plan's gate assertion 3, composed (AD-29, FR-13) — not two halves that never combine."""
     judge = _JudgeDouble([1])
     _install_judge(monkeypatch, judge)
     _install_writer(monkeypatch, _WriterDouble(error=RuntimeError("provider is down")))
 
-    first = api_client.get("/quiz-questions/0001/explanation")
+    first = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
 
     assert first.status_code == HTTPStatus.SERVICE_UNAVAILABLE
     remaining = int(live_question.fetch(sql.SQL("SELECT count(*) FROM quiz_labelings"))[0][0])
     assert remaining == 1, "AD-29: the writer's failure must not roll back the judge's live write"
 
     _install_writer(monkeypatch, _WriterDouble())
-    second = api_client.get("/quiz-questions/0001/explanation")
+    second = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
 
     assert second.status_code == HTTPStatus.OK
     assert judge.calls == 1, "the retry must be a cache hit, not a second live judge run"

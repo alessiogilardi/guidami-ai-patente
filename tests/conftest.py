@@ -8,12 +8,14 @@ from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
+from psycopg import sql
 from pydantic import SecretStr
 from pywire import get_default_container
 
 from commons.ai.observability import ObservabilityConfig
 from commons.configs import OpenRouterConfig, PostgresConnectionConfig
 from guidami_ai_patente.api.app import create_app
+from guidami_ai_patente.clients import PostgresClientProvider
 from guidami_ai_patente.configs import AppConfig
 from labeling.configs import LabelingConfig
 
@@ -183,6 +185,25 @@ def api_client(
     )
     with TestClient(app) as client:
         yield client
+
+
+@pytest.fixture
+def registered_headers(api_client: TestClient) -> Iterator[dict[str, str]]:
+    """Headers for a pre-approved caller, and the row that backs them (spec 0016).
+
+    Every integration test for a `require_registered_user`-gated endpoint depends on
+    this instead of hand-rolling its own `users` row, so the whitelist row's shape
+    stays in one place. Truncates `users`/`quiz_answers` before and after, the same
+    bracket pattern every other integration fixture in this file uses for its own
+    tables.
+    """
+    client = get_default_container().resolve(PostgresClientProvider).client
+    client.truncate("quiz_answers", "users")
+    client.execute(
+        sql.SQL("INSERT INTO users (telegram_user_id, registered) VALUES (%s, true)"), [1]
+    )
+    yield {"X-Telegram-User-Id": "1"}
+    client.truncate("quiz_answers", "users")
 
 
 @pytest.fixture(scope="session", autouse=True)

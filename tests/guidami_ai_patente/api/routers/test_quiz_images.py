@@ -17,6 +17,7 @@ _TABLES = (
     "quiz_labelings",
     "labeling_runs",
     "quiz_question_embeddings",
+    "quiz_answers",
     "quiz_questions",
 )
 
@@ -39,9 +40,12 @@ def bank_with_image(api_client: TestClient) -> Iterator[PostgresClient]:
 
 @pytest.mark.integration
 def test_a_referenced_image_is_served_with_its_bytes_and_type(
-    bank_with_image: PostgresClient, api_client: TestClient, app_config: AppConfig
+    bank_with_image: PostgresClient,
+    api_client: TestClient,
+    app_config: AppConfig,
+    registered_headers: dict[str, str],
 ) -> None:
-    response = api_client.get(f"/quiz-images/{_REFERENCED}")
+    response = api_client.get(f"/quiz-images/{_REFERENCED}", headers=registered_headers)
 
     assert response.status_code == 200
     assert response.headers["content-type"] == "image/jpeg"
@@ -50,16 +54,19 @@ def test_a_referenced_image_is_served_with_its_bytes_and_type(
 
 @pytest.mark.integration
 def test_an_unreferenced_name_is_a_404(
-    bank_with_image: PostgresClient, api_client: TestClient
+    bank_with_image: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    assert api_client.get("/quiz-images/never-referenced.png").status_code == 404
+    assert (
+        api_client.get("/quiz-images/never-referenced.png", headers=registered_headers).status_code
+        == 404
+    )
 
 
 @pytest.mark.integration
 def test_a_traversal_attempt_is_a_404_and_leaks_nothing(
-    bank_with_image: PostgresClient, api_client: TestClient
+    bank_with_image: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    response = api_client.get("/quiz-images/..%2F..%2F.env")
+    response = api_client.get("/quiz-images/..%2F..%2F.env", headers=registered_headers)
 
     assert response.status_code == 404
     assert b"POSTGRES" not in response.content
@@ -67,8 +74,10 @@ def test_a_traversal_attempt_is_a_404_and_leaks_nothing(
 
 @pytest.mark.integration
 def test_the_url_a_proposal_returns_is_directly_callable(
-    bank_with_image: PostgresClient, api_client: TestClient
+    bank_with_image: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    image_url = api_client.get("/quiz-questions/0001").json()["image_url"]
+    image_url = api_client.get("/quiz-questions/0001", headers=registered_headers).json()[
+        "image_url"
+    ]
 
-    assert api_client.get(image_url).status_code == 200
+    assert api_client.get(image_url, headers=registered_headers).status_code == 200

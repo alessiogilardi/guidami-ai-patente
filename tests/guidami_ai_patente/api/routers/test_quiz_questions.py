@@ -18,6 +18,7 @@ _TABLES = (
     "quiz_labelings",
     "labeling_runs",
     "quiz_question_embeddings",
+    "quiz_answers",
     "quiz_questions",
 )
 
@@ -97,78 +98,103 @@ def _insert_labeling(client: PostgresClient, number: str, *, has_commas: bool) -
 
 @pytest.mark.integration
 def test_a_proposal_is_reproducible_for_the_same_seed_and_index(
-    bank: PostgresClient, api_client: TestClient
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    first = api_client.get("/quiz-questions/random", params={"seed": "abc", "index": 0})
-    second = api_client.get("/quiz-questions/random", params={"seed": "abc", "index": 0})
+    first = api_client.get(
+        "/quiz-questions/random", params={"seed": "abc", "index": 0}, headers=registered_headers
+    )
+    second = api_client.get(
+        "/quiz-questions/random", params={"seed": "abc", "index": 0}, headers=registered_headers
+    )
 
     assert first.status_code == 200
     assert first.json()["number"] == second.json()["number"]
 
 
 @pytest.mark.integration
-def test_a_proposal_never_leaks_the_answer(bank: PostgresClient, api_client: TestClient) -> None:
-    body = api_client.get("/quiz-questions/random", params={"seed": "abc", "index": 0}).json()
+def test_a_proposal_never_leaks_the_answer(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    body = api_client.get(
+        "/quiz-questions/random", params={"seed": "abc", "index": 0}, headers=registered_headers
+    ).json()
 
     assert set(body) == {"number", "topic", "text", "image_url"}
 
 
 @pytest.mark.integration
 def test_an_illustrated_proposal_carries_a_callable_image_url(
-    bank: PostgresClient, api_client: TestClient
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    body = api_client.get("/quiz-questions/0001").json()
+    body = api_client.get("/quiz-questions/0001", headers=registered_headers).json()
 
     assert body["image_url"] == "/quiz-images/s0001.jpeg"
 
 
 @pytest.mark.integration
 def test_an_image_less_proposal_carries_a_null_url(
-    bank: PostgresClient, api_client: TestClient
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    assert api_client.get("/quiz-questions/0003").json()["image_url"] is None
+    assert (
+        api_client.get("/quiz-questions/0003", headers=registered_headers).json()["image_url"]
+        is None
+    )
 
 
 @pytest.mark.integration
-def test_an_index_past_the_end_is_a_404(bank: PostgresClient, api_client: TestClient) -> None:
-    response = api_client.get("/quiz-questions/random", params={"seed": "abc", "index": 3})
+def test_an_index_past_the_end_is_a_404(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    response = api_client.get(
+        "/quiz-questions/random", params={"seed": "abc", "index": 3}, headers=registered_headers
+    )
 
     assert response.status_code == 404
 
 
 @pytest.mark.integration
 def test_a_negative_index_is_rejected_as_a_validation_error(
-    bank: PostgresClient, api_client: TestClient
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    response = api_client.get("/quiz-questions/random", params={"seed": "abc", "index": -1})
+    response = api_client.get(
+        "/quiz-questions/random", params={"seed": "abc", "index": -1}, headers=registered_headers
+    )
 
     assert response.status_code == 422
 
 
 @pytest.mark.integration
-def test_the_seed_and_index_are_required(bank: PostgresClient, api_client: TestClient) -> None:
-    assert api_client.get("/quiz-questions/random").status_code == 422
+def test_the_seed_and_index_are_required(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    assert api_client.get("/quiz-questions/random", headers=registered_headers).status_code == 422
 
 
 @pytest.mark.integration
-def test_the_topic_filter_is_honoured(bank: PostgresClient, api_client: TestClient) -> None:
+def test_the_topic_filter_is_honoured(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
     body = api_client.get(
-        "/quiz-questions/random", params={"seed": "abc", "index": 0, "topic": "velocità"}
+        "/quiz-questions/random",
+        params={"seed": "abc", "index": 0, "topic": "velocità"},
+        headers=registered_headers,
     ).json()
 
     assert body["topic"] == "velocità"
 
 
 @pytest.mark.integration
-def test_an_unknown_number_is_a_404(bank: PostgresClient, api_client: TestClient) -> None:
-    assert api_client.get("/quiz-questions/9999").status_code == 404
+def test_an_unknown_number_is_a_404(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    assert api_client.get("/quiz-questions/9999", headers=registered_headers).status_code == 404
 
 
 @pytest.mark.integration
 def test_the_topics_endpoint_is_not_shadowed_by_the_number_route(
-    bank: PostgresClient, api_client: TestClient
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    response = api_client.get("/quiz-questions/topics")
+    response = api_client.get("/quiz-questions/topics", headers=registered_headers)
 
     assert response.status_code == 200
     assert response.json()["topics"] == [
@@ -179,11 +205,11 @@ def test_the_topics_endpoint_is_not_shadowed_by_the_number_route(
 
 @pytest.mark.integration
 def test_an_empty_bank_lists_no_topics_rather_than_404(
-    bank: PostgresClient, api_client: TestClient
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
     bank.truncate(*_TABLES)
 
-    response = api_client.get("/quiz-questions/topics")
+    response = api_client.get("/quiz-questions/topics", headers=registered_headers)
 
     assert response.status_code == 200
     assert response.json() == {"topics": []}
@@ -191,76 +217,130 @@ def test_an_empty_bank_lists_no_topics_rather_than_404(
 
 @pytest.mark.integration
 def test_a_listed_topic_resolves_at_index_zero(
-    bank: PostgresClient, api_client: TestClient
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    topic = api_client.get("/quiz-questions/topics").json()["topics"][0]["topic"]
+    topic = api_client.get("/quiz-questions/topics", headers=registered_headers).json()["topics"][
+        0
+    ]["topic"]
 
     response = api_client.get(
-        "/quiz-questions/random", params={"seed": "abc", "index": 0, "topic": topic}
+        "/quiz-questions/random",
+        params={"seed": "abc", "index": 0, "topic": topic},
+        headers=registered_headers,
     )
 
     assert response.status_code == 200
 
 
 @pytest.mark.integration
-def test_a_correct_answer_is_graded_true(bank: PostgresClient, api_client: TestClient) -> None:
-    response = api_client.post("/quiz-questions/0001/check", json={"answer": True})
+def test_a_correct_answer_is_graded_true(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    response = api_client.post(
+        "/quiz-questions/0001/check", json={"answer": True}, headers=registered_headers
+    )
 
     assert response.status_code == 200
     assert response.json()["correct"] is True
 
 
 @pytest.mark.integration
-def test_a_wrong_answer_is_graded_false(bank: PostgresClient, api_client: TestClient) -> None:
+def test_a_wrong_answer_is_graded_false(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
     assert (
-        api_client.post("/quiz-questions/0001/check", json={"answer": False}).json()["correct"]
+        api_client.post(
+            "/quiz-questions/0001/check", json={"answer": False}, headers=registered_headers
+        ).json()["correct"]
         is False
     )
 
 
 @pytest.mark.integration
-def test_checking_an_unknown_number_is_a_404(bank: PostgresClient, api_client: TestClient) -> None:
-    assert api_client.post("/quiz-questions/9999/check", json={"answer": True}).status_code == 404
+def test_checking_an_unknown_number_is_a_404(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    assert (
+        api_client.post(
+            "/quiz-questions/9999/check", json={"answer": True}, headers=registered_headers
+        ).status_code
+        == 404
+    )
 
 
 @pytest.mark.integration
 def test_an_unlabeled_unembedded_question_advertises_unavailable(
-    bank: PostgresClient, api_client: TestClient
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
-    body = api_client.post("/quiz-questions/0002/check", json={"answer": False}).json()
+    body = api_client.post(
+        "/quiz-questions/0002/check", json={"answer": False}, headers=registered_headers
+    ).json()
 
     assert body["explanation_status"] == "unavailable"
 
 
 @pytest.mark.integration
 def test_an_embedded_but_unlabeled_question_advertises_uncached(
-    bank: PostgresClient, api_client: TestClient
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
     _insert_embedding(bank, "0002", _epoch().candidate_variant)
 
-    body = api_client.post("/quiz-questions/0002/check", json={"answer": False}).json()
+    body = api_client.post(
+        "/quiz-questions/0002/check", json={"answer": False}, headers=registered_headers
+    ).json()
 
     assert body["explanation_status"] == "uncached"
 
 
 @pytest.mark.integration
 def test_a_labeled_question_advertises_cached_without_an_embedding(
-    bank: PostgresClient, api_client: TestClient
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
     _insert_labeling(bank, "0003", has_commas=True)
 
-    body = api_client.post("/quiz-questions/0003/check", json={"answer": True}).json()
+    body = api_client.post(
+        "/quiz-questions/0003/check", json={"answer": True}, headers=registered_headers
+    ).json()
 
     assert body["explanation_status"] == "cached"
 
 
 @pytest.mark.integration
 def test_an_empty_verdict_advertises_unavailable_even_with_an_embedding(
-    bank: PostgresClient, api_client: TestClient
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
     _insert_embedding(bank, "0003", _epoch().candidate_variant)
     _insert_labeling(bank, "0003", has_commas=False)
 
-    body = api_client.post("/quiz-questions/0003/check", json={"answer": True}).json()
+    body = api_client.post(
+        "/quiz-questions/0003/check", json={"answer": True}, headers=registered_headers
+    ).json()
 
     assert body["explanation_status"] == "unavailable"
+
+
+@pytest.mark.integration
+def test_an_unregistered_caller_is_rejected_on_check(
+    bank: PostgresClient, api_client: TestClient
+) -> None:
+    response = api_client.post(
+        "/quiz-questions/0001/check",
+        json={"answer": True},
+        headers={"X-Telegram-User-Id": "999"},
+    )
+
+    assert response.status_code == 403
+
+
+@pytest.mark.integration
+def test_an_unregistered_caller_still_gets_provisioned(
+    bank: PostgresClient, api_client: TestClient
+) -> None:
+    api_client.get("/quiz-questions/topics", headers={"X-Telegram-User-Id": "12345"})
+
+    row = (
+        get_default_container()
+        .resolve(PostgresClientProvider)
+        .client.fetch(sql.SQL("SELECT registered FROM users WHERE telegram_user_id = %s"), [12345])
+    )
+    assert row == [(False,)]
