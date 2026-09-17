@@ -10,6 +10,7 @@ from guidami_ai_patente.exceptions import (
     ExplanationUnavailableError,
     QuestionNotFoundError,
     QuizImageNotFoundError,
+    UnregisteredUserError,
 )
 
 from .schemas.api_error import ApiErrorResponse
@@ -40,6 +41,20 @@ async def _service_unavailable(request: Request, exc: Exception) -> JSONResponse
     )
 
 
+async def _forbidden(request: Request, exc: Exception) -> JSONResponse:
+    """Renders an unapproved caller as a 403 with its own message (FR-3).
+
+    `debug`, like the 404 path: a caller who has not yet been approved is an
+    expected, routine condition — not an operator-actionable event — the same
+    reasoning `_not_found` already applies to "client named something absent".
+    """
+    logger.debug("Resolving %r to 403: %s", type(exc).__name__, exc)
+    return JSONResponse(
+        status_code=HTTPStatus.FORBIDDEN,
+        content=ApiErrorResponse(detail=str(exc)).model_dump(),
+    )
+
+
 def register_exception_handlers(app: FastAPI) -> None:
     """Registers every domain-exception → status mapping on `app`.
 
@@ -51,3 +66,4 @@ def register_exception_handlers(app: FastAPI) -> None:
     app.add_exception_handler(QuestionNotFoundError, _not_found)
     app.add_exception_handler(QuizImageNotFoundError, _not_found)
     app.add_exception_handler(ExplanationUnavailableError, _service_unavailable)
+    app.add_exception_handler(UnregisteredUserError, _forbidden)

@@ -12,6 +12,7 @@ from guidami_ai_patente.exceptions import (
     GuidamiApiError,
     QuestionNotFoundError,
     QuizImageNotFoundError,
+    UnregisteredUserError,
 )
 
 
@@ -71,3 +72,14 @@ def test_the_503_body_carries_no_insufficient_knowledge_reason(api_client: TestC
 
     assert b"no_supporting_norm" not in response.body
     assert b"not_indexed" not in response.body
+
+
+def test_an_unregistered_caller_is_a_403() -> None:
+    response = _client_raising(UnregisteredUserError(42)).get("/boom")
+
+    assert response.status_code == 403
+    assert "42" in response.json()["detail"]
+
+
+def test_an_unregistered_user_error_inherits_the_shared_base() -> None:
+    assert issubclass(UnregisteredUserError, GuidamiApiError)
