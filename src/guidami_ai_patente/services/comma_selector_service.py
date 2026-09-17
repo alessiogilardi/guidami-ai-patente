@@ -50,21 +50,21 @@ class CommaSelectorService(AsyncUseCase[str, CommaSelection]):
     live_stack: Autowired[LiveLabelingStackProvider]
     golden_set: Autowired[GoldenSetReadRepository]
 
-    async def execute(self, request: str) -> CommaSelection:
-        """Returns the commas grounding `request`'s explanation, computing them if needed.
+    async def execute(self, number: str) -> CommaSelection:
+        """Returns the commas grounding a question's explanation, computing them if needed.
 
         Args:
-            request: The question's `number`.
+            number: The question's `number`.
 
         Raises:
             ExplanationUnavailableError: The live stage failed, or its written labeling
                 cannot be read back (FR-13).
         """
         epoch = self.judge_identity.epoch
-        current = await asyncio.to_thread(self.golden_set.find_current_labeling, request, epoch)
+        current = await asyncio.to_thread(self.golden_set.find_current_labeling, number, epoch)
         if current is not None:
             return await self._selection_for(current)
-        return await self._label_live(request, epoch)
+        return await self._label_live(number, epoch)
 
     async def _label_live(self, number: str, epoch: LabelingEpoch) -> CommaSelection:
         """Runs the shared labeling unit for one question and serves the result."""

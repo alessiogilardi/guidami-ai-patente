@@ -18,7 +18,7 @@ class UseCase[T_In, T_Out](ABC):
         return self.execute(request)
 
     @abstractmethod
-    def execute(self, request: T_In) -> T_Out:
+    def execute(self, request: T_In, /) -> T_Out:
         """Executes the main logic of the use case.
 
         Args:
@@ -46,7 +46,7 @@ class AsyncUseCase[T_In, T_Out](ABC):
         return await self.execute(request)
 
     @abstractmethod
-    async def execute(self, request: T_In) -> T_Out:
+    async def execute(self, request: T_In, /) -> T_Out:
         """Executes the main logic of the use case.
 
         Args:

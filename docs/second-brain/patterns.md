@@ -10,6 +10,7 @@ it does not restate those rules.
 | Pattern | Where it's used | Why |
 |---|---|---|
 | `UseCase[T_In, T_Out]` / `AsyncUseCase` protocol | `src/commons/use_cases/use_case.py` — `__call__` is `@final`, delegates to abstract `execute()` | Uniform callable contract for domain logic; every business-logic unit is typed, testable, composable |
+| Domain-specific `execute()` parameter name, base kept positional-only | `src/commons/use_cases/use_case.py` — `UseCase.execute(self, request: T_In, /)` / `AsyncUseCase.execute` (trailing `/` makes `request` positional-only); concrete subclasses name the parameter after what it actually holds instead of inheriting the generic base name, e.g. `CommaSelectorService.execute(self, number: str)`, `ExplanationStatusService.execute(self, number: str)`, `QuizImageService.execute(self, filename: str)` | The base names its `T_In` parameter `request` because the type is abstract; a concrete `UseCase[str, ...]` subclass has a real domain meaning for that `str` and should say so. Positional-only on the base is what lets each subclass rename freely without tripping pyright's `reportIncompatibleMethodOverride` |
 | `ForEach[T, U]` | `src/commons/use_cases/for_each.py` — a `UseCase[Iterable[T], list[U]]` wrapping a per-item callable | Turns any `UseCase`/callable into a list-mapper without per-step loop boilerplate |
 | `FlatMap[T, U]` | `src/commons/use_cases/flat_map.py` — a `UseCase[Iterable[T], list[U]]` wrapping a per-item `Callable[[T], Iterable[U]]`, concatenating results | One-to-many transforms (one input produces N outputs); e.g. `ApplyStep("expand_to_embeddable_commas", FlatMap(ArticleMapper.from_cleaned_to_embeddable_commas), ...)` in `orchestrators/knowledge_flows.py` (a plain `@staticmethod` reference works directly, no callable-instance wrapper needed — `FlatMap.__init__` only requires `Callable[[T], Iterable[U]]`) and `ApplyStep("flatten_quiz", FlatMap(QuizMapper.from_parsed_to_cleaned_all), DeduplicateQuizItemsService(), ...)` in `orchestrators/quiz_flows.py`. A third shape, zero-or-one rather than one-to-many: `ApplyStep("map_to_quiz_images", FlatMap(QuizMapper.from_embedded_to_quiz_images), ...)` (spec 0008 Phase 1) returns `[QuizImageEntity]` when the question has an image, `[]` otherwise — `FlatMap` needs no dedicated zero-or-one variant, since a `Callable[[T], Iterable[U]]` already covers the empty-list case for free |
 | `ApplyStep(ForEach(...))` composition | `orchestrators/knowledge_flows.py` — e.g. `ApplyStep("map_to_chunk_entity", ForEach(ArticleMapper.from_embeddable_chunk_to_knowledge_chunk), ...)` | Standard glue between the domain-agnostic `flowstep` framework (external git dependency, see `docs/second-brain/architecture.md`) and per-item domain transforms/mappers |
@@ -334,10 +335,10 @@ threading `deps=request` through to the wrapped `pydantic_ai.Agent` (`self._agen
 `Agent[Any, T_Out]`). The `BaseAgent[T_In, T_Out]` + `PromptRenderer` row above is unchanged
 — it still describes every other concrete agent.*
 
-*Last updated: 2026-09-17 — verified against commit `dea4c64a` (working tree ahead of
-HEAD). `AppConfig` (`src/guidami_ai_patente/configs/app_config.py`) now extends
-`commons.configs.BaseConfig` and reads public, non-secret defaults from a new
-`configs/app_config.yaml`, closing the prior asymmetry where it was the one root config
-with no YAML source. Added a new row documenting the `BaseConfig` + companion-YAML
-pattern across its three current adopters (`ObservabilityConfig`, `BotConfig`,
-`AppConfig`).*
+*Last updated: 2026-09-17 — verified against commit `6e0507b7` (working tree ahead of
+HEAD). `UseCase`/`AsyncUseCase.execute()` (`src/commons/use_cases/use_case.py`) is now
+positional-only on its `request` parameter, so concrete subclasses can name it after
+their own domain meaning (`number`, `filename`, ...) instead of inheriting the generic
+base name, without tripping pyright's `reportIncompatibleMethodOverride`. Added a new
+row documenting the convention, applied to `CommaSelectorService`,
+`ExplanationStatusService`, and `QuizImageService`.*

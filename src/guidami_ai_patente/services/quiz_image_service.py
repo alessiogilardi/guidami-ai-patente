@@ -45,11 +45,11 @@ class QuizImageService(UseCase[str, QuizImage]):
     questions: Autowired[QuizQuestionRepository]
     images: Autowired[QuizImageRepository]
 
-    def execute(self, request: str) -> QuizImage:
+    def execute(self, filename: str) -> QuizImage:
         """Returns the bytes of a referenced image and its media type.
 
         Args:
-            request: The `quiz_questions.image_filename` value the client asked for.
+            filename: The `quiz_questions.image_filename` value the client asked for.
 
         Returns:
             The file's content and the media type inferred from its suffix.
@@ -60,19 +60,19 @@ class QuizImageService(UseCase[str, QuizImage]):
                 are a 404: the client asked for an image that, as far as this API is
                 concerned, does not exist.
         """
-        if not self.questions.image_is_referenced(request):
-            raise QuizImageNotFoundError(request)
+        if not self.questions.image_is_referenced(filename):
+            raise QuizImageNotFoundError(filename)
 
         try:
-            content = self.images.read(request)
+            content = self.images.read(filename)
         except (FileNotFoundError, PermissionError) as error:
             logger.warning(
                 "Question references %r but the image store cannot serve it: %s",
-                request,
+                filename,
                 error,
             )
-            raise QuizImageNotFoundError(request) from error
+            raise QuizImageNotFoundError(filename) from error
 
-        media_type, _ = mimetypes.guess_type(request)
-        logger.debug("Serving quiz image %r as %s (%d bytes)", request, media_type, len(content))
+        media_type, _ = mimetypes.guess_type(filename)
+        logger.debug("Serving quiz image %r as %s (%d bytes)", filename, media_type, len(content))
         return QuizImage(content=content, media_type=media_type or _DEFAULT_MEDIA_TYPE)
