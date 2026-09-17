@@ -14,6 +14,12 @@ GENERIC_ERROR_MESSAGE = "Si è verificato un errore, riprova con /quiz"
 
 WELCOME_MESSAGE = "Benvenuto! Usa /quiz per iniziare."
 PENDING_APPROVAL_MESSAGE = "Richiesta in attesa di approvazione da parte del gestore del bot."
+NO_SESSION_MESSAGE = "Nessuna sessione in corso."
+
+
+def summary_message(answered: int, correct: int) -> str:
+    """Renders the /stop summary line (FR-9)."""
+    return f"{answered} domande, {correct} corrette"
 
 
 def outcome_line(correct: bool) -> str:

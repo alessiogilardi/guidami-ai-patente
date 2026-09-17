@@ -19,6 +19,7 @@ from .handlers.quiz_handlers import (
     handle_next_callback,
     quiz_command,
     start_command,
+    stop_command,
 )
 
 logger = logging.getLogger(__name__)
@@ -58,6 +59,7 @@ async def _run() -> None:
     assert application.updater is not None
     application.add_handler(CommandHandler("start", start_command))
     application.add_handler(CommandHandler("quiz", quiz_command))
+    application.add_handler(CommandHandler("stop", stop_command))
     application.add_handler(
         CallbackQueryHandler(handle_answer_callback, pattern=f"^{ANSWER_CALLBACK_PREFIX}")
     )

@@ -8,15 +8,21 @@ import pytest
 
 from guidami_ai_patente_bot import container
 from guidami_ai_patente_bot.enums import ExplanationOutcome
-from guidami_ai_patente_bot.exceptions import StaleQuestionError
+from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
 from guidami_ai_patente_bot.handlers.quiz_handlers import (
     ANSWER_CALLBACK_PREFIX,
     handle_answer_callback,
     handle_next_callback,
     quiz_command,
     start_command,
+    stop_command,
 )
-from guidami_ai_patente_bot.models import QuizExplanation, QuizQuestion, QuizSession
+from guidami_ai_patente_bot.models import (
+    QuizExplanation,
+    QuizQuestion,
+    QuizSession,
+    SessionSummary,
+)
 from guidami_ai_patente_bot.services import QuizFlowService
 
 _TELEGRAM_USER_ID = 7
@@ -36,6 +42,9 @@ class _FlowServiceDouble:
     propose_calls: list[int] = field(default_factory=list)
     handle_answer_calls: list[tuple[str, bool, int]] = field(default_factory=list)
     registration_calls: list[int] = field(default_factory=list)
+    summary: SessionSummary = field(default_factory=lambda: SessionSummary(answered=0, correct=0))
+    raise_summary_error: bool = False
+    summary_calls: list[tuple[int, str]] = field(default_factory=list)
 
     async def propose_question(
         self, session: QuizSession | None, telegram_user_id: int
@@ -62,6 +71,12 @@ class _FlowServiceDouble:
     async def check_registration_status(self, telegram_user_id: int) -> bool:
         self.registration_calls.append(telegram_user_id)
         return self.registered
+
+    async def session_summary(self, telegram_user_id: int, session_id: str) -> SessionSummary:
+        self.summary_calls.append((telegram_user_id, session_id))
+        if self.raise_summary_error:
+            raise QuizApiError("boom")
+        return self.summary
 
 
 class _StubContainer:
@@ -233,3 +248,44 @@ async def test_a_stale_answer_gets_a_notice_and_no_edit() -> None:
     assert "non è più valida" in query.answer.call_args.args[0]
     query.edit_message_text.assert_not_awaited()
     query.edit_message_caption.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_stop_shows_the_summary_and_clears_the_session() -> None:
+    double = _FlowServiceDouble(
+        question=_question(), summary=SessionSummary(answered=5, correct=3)
+    )
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="abc", index=4, current_question_number="0001")
+
+    await stop_command(_update(), context)
+
+    assert double.summary_calls == [(_TELEGRAM_USER_ID, "abc")]
+    text = context.bot.send_message.call_args.kwargs["text"]
+    assert "5" in text and "3" in text
+    assert "session" not in context.user_data
+
+
+@pytest.mark.asyncio
+async def test_stop_with_no_active_session_sends_a_notice_and_calls_nothing() -> None:
+    double = _FlowServiceDouble(question=_question())
+    context = _context(double)
+
+    await stop_command(_update(), context)
+
+    assert double.summary_calls == []
+    text = context.bot.send_message.call_args.kwargs["text"]
+    assert "nessuna sessione" in text.lower()
+
+
+@pytest.mark.asyncio
+async def test_stop_does_not_clear_the_session_when_the_summary_call_fails() -> None:
+    context = _context(_FlowServiceDouble(question=_question(), raise_summary_error=True))
+    context.user_data["session"] = QuizSession(seed="abc", index=4, current_question_number="0001")
+
+    with pytest.raises(QuizApiError):
+        await stop_command(_update(), context)
+
+    assert "session" in context.user_data, (
+        "D-16: a failed summary call must not strand the user without their session"
+    )

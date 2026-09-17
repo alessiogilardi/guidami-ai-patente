@@ -76,6 +76,34 @@ async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     await _send_question(update.effective_chat.id, update.effective_user.id, context)
 
 
+async def stop_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Ends the active session and shows its summary (spec 0016, FR-9).
+
+    A failed summary call (network error, backend down) is **not** caught here: it
+    propagates to the bot's single global error boundary (`handlers/error_handler.py`,
+    spec 0015 FR-5) exactly like any other `QuizApiError`, and — critically — the
+    session is not cleared in that case, since the `del` below is never reached
+    (D-16).
+    """
+    assert update.effective_chat is not None
+    assert update.effective_user is not None
+    assert context.user_data is not None
+    session: QuizSession | None = context.user_data.get("session")
+    if session is None:
+        await context.bot.send_message(
+            chat_id=update.effective_chat.id, text=messages.NO_SESSION_MESSAGE
+        )
+        return
+
+    service = container.resolve(context, QuizFlowService)
+    summary = await service.session_summary(update.effective_user.id, session.seed)
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=messages.summary_message(summary.answered, summary.correct),
+    )
+    del context.user_data["session"]
+
+
 async def handle_next_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handles "Prossima domanda ▶": proposes the next question (FR-4)."""
     assert update.callback_query is not None
