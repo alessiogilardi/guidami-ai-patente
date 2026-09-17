@@ -237,7 +237,9 @@ def test_a_correct_answer_is_graded_true(
     bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
     response = api_client.post(
-        "/quiz-questions/0001/check", json={"answer": True}, headers=registered_headers
+        "/quiz-questions/0001/check",
+        json={"answer": True, "session_id": "test-session"},
+        headers=registered_headers,
     )
 
     assert response.status_code == 200
@@ -250,7 +252,9 @@ def test_a_wrong_answer_is_graded_false(
 ) -> None:
     assert (
         api_client.post(
-            "/quiz-questions/0001/check", json={"answer": False}, headers=registered_headers
+            "/quiz-questions/0001/check",
+            json={"answer": False, "session_id": "test-session"},
+            headers=registered_headers,
         ).json()["correct"]
         is False
     )
@@ -262,7 +266,9 @@ def test_checking_an_unknown_number_is_a_404(
 ) -> None:
     assert (
         api_client.post(
-            "/quiz-questions/9999/check", json={"answer": True}, headers=registered_headers
+            "/quiz-questions/9999/check",
+            json={"answer": True, "session_id": "test-session"},
+            headers=registered_headers,
         ).status_code
         == 404
     )
@@ -273,7 +279,9 @@ def test_an_unlabeled_unembedded_question_advertises_unavailable(
     bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:
     body = api_client.post(
-        "/quiz-questions/0002/check", json={"answer": False}, headers=registered_headers
+        "/quiz-questions/0002/check",
+        json={"answer": False, "session_id": "test-session"},
+        headers=registered_headers,
     ).json()
 
     assert body["explanation_status"] == "unavailable"
@@ -286,7 +294,9 @@ def test_an_embedded_but_unlabeled_question_advertises_uncached(
     _insert_embedding(bank, "0002", _epoch().candidate_variant)
 
     body = api_client.post(
-        "/quiz-questions/0002/check", json={"answer": False}, headers=registered_headers
+        "/quiz-questions/0002/check",
+        json={"answer": False, "session_id": "test-session"},
+        headers=registered_headers,
     ).json()
 
     assert body["explanation_status"] == "uncached"
@@ -299,7 +309,9 @@ def test_a_labeled_question_advertises_cached_without_an_embedding(
     _insert_labeling(bank, "0003", has_commas=True)
 
     body = api_client.post(
-        "/quiz-questions/0003/check", json={"answer": True}, headers=registered_headers
+        "/quiz-questions/0003/check",
+        json={"answer": True, "session_id": "test-session"},
+        headers=registered_headers,
     ).json()
 
     assert body["explanation_status"] == "cached"
@@ -313,7 +325,9 @@ def test_an_empty_verdict_advertises_unavailable_even_with_an_embedding(
     _insert_labeling(bank, "0003", has_commas=False)
 
     body = api_client.post(
-        "/quiz-questions/0003/check", json={"answer": True}, headers=registered_headers
+        "/quiz-questions/0003/check",
+        json={"answer": True, "session_id": "test-session"},
+        headers=registered_headers,
     ).json()
 
     assert body["explanation_status"] == "unavailable"
@@ -344,3 +358,38 @@ def test_an_unregistered_caller_still_gets_provisioned(
         .client.fetch(sql.SQL("SELECT registered FROM users WHERE telegram_user_id = %s"), [12345])
     )
     assert row == [(False,)]
+
+
+@pytest.mark.integration
+def test_checking_an_answer_persists_it_with_the_session_id(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    api_client.post(
+        "/quiz-questions/0001/check",
+        json={"answer": True, "session_id": "seed-xyz"},
+        headers=registered_headers,
+    )
+
+    row = bank.fetch(
+        sql.SQL(
+            "SELECT session_id, user_answer FROM quiz_answers "
+            "JOIN users ON users.id = quiz_answers.user_id "
+            "WHERE users.telegram_user_id = 1"
+        )
+    )
+    assert row == [("seed-xyz", True)]
+
+
+@pytest.mark.integration
+def test_checking_the_same_question_twice_records_two_rows(
+    bank: PostgresClient, api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    for _ in range(2):
+        api_client.post(
+            "/quiz-questions/0001/check",
+            json={"answer": True, "session_id": "seed-xyz"},
+            headers=registered_headers,
+        )
+
+    count = bank.fetch(sql.SQL("SELECT count(*) FROM quiz_answers"))[0][0]
+    assert count == 2

@@ -331,7 +331,7 @@ def test_the_check_still_reports_cached_after_a_writer_failure(
 
     response = api_client.post(
         "/quiz-questions/0001/check",
-        json={"answer": True},
+        json={"answer": True, "session_id": "test-session"},
         headers=registered_headers,
     )
 

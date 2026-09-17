@@ -6,9 +6,10 @@ from guidami_ai_patente.enums import ExplanationStatus
 
 
 class QuizCheckRequest(BaseModel):
-    """The answer the user submitted (FR-3)."""
+    """The answer the user submitted, and the session it was answered in (FR-3, FR-5)."""
 
     answer: bool
+    session_id: str
 
 
 class QuizCheckResponse(BaseModel):

@@ -79,9 +79,15 @@ async def check_answer(
     user: _RequireRegisteredUser,
     checker: Autowired[QuizAnswerChecker],
 ) -> QuizCheckResponse:
-    """Grades the submitted answer and advertises the explanation status (FR-3, FR-4)."""
+    """Grades the submitted answer, records it, and advertises the explanation status."""
     correct, explanation_status = await asyncio.to_thread(
-        checker, QuizAnswerCheckRequest(number=number, submitted_answer=request.answer)
+        checker,
+        QuizAnswerCheckRequest(
+            number=number,
+            submitted_answer=request.answer,
+            session_id=request.session_id,
+            telegram_user_id=user.telegram_user_id,
+        ),
     )
     return QuizCheckResponse(correct=correct, explanation_status=explanation_status)
 
