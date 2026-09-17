@@ -29,7 +29,7 @@ from guidami_ai_patente.services import JudgeCoherenceChecker
 from labeling.configs import LabelingConfig
 
 from .exception_handlers import register_exception_handlers
-from .routers import health, quiz_images, quiz_questions
+from .routers import health, me, quiz_images, quiz_questions
 
 logger = logging.getLogger(__name__)
 
@@ -130,6 +130,7 @@ def create_app(
     _register_instance(observability_config, ObservabilityConfig)
     register_exception_handlers(app)
     app.include_router(health.router)
+    app.include_router(me.router)
     app.include_router(quiz_questions.router)
     app.include_router(quiz_images.router)
     return app
