@@ -7,7 +7,8 @@ from unittest.mock import AsyncMock
 import pytest
 from telegram import Chat, Message, Update
 
-from guidami_ai_patente_bot.handlers.error_handler import GENERIC_ERROR_MESSAGE, handle_error
+from guidami_ai_patente_bot.handlers.error_handler import handle_error
+from guidami_ai_patente_bot.messages import GENERIC_ERROR_MESSAGE
 
 
 def _update_with_chat(chat_id: int) -> Update:

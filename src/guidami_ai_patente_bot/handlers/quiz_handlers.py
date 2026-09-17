@@ -7,6 +7,7 @@ from pywire import get_default_container
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Message, Update
 from telegram.ext import ContextTypes
 
+from guidami_ai_patente_bot import messages
 from guidami_ai_patente_bot.enums import ExplanationOutcome
 from guidami_ai_patente_bot.exceptions import StaleQuestionError
 from guidami_ai_patente_bot.models import QuizSession
@@ -15,8 +16,6 @@ from guidami_ai_patente_bot.services import QuizFlowService
 ANSWER_CALLBACK_PREFIX = "quiz:answer:"
 NEXT_CALLBACK_DATA = "quiz:next"
 
-_NO_EXPLANATION_LINE = "Nessuna spiegazione disponibile per questa domanda."
-_STALE_NOTICE = "Questa domanda non è più valida, usa /quiz"
 _NEXT_KEYBOARD = InlineKeyboardMarkup(
     [[InlineKeyboardButton("Prossima domanda ▶", callback_data=NEXT_CALLBACK_DATA)]]
 )
@@ -92,13 +91,13 @@ async def handle_answer_callback(update: Update, context: ContextTypes.DEFAULT_T
     try:
         correct, explanation = await service.handle_answer(session, number, answer)
     except StaleQuestionError:
-        await query.answer(_STALE_NOTICE)
+        await query.answer(messages.STALE_NOTICE)
         return
 
     await query.answer()
-    outcome_line = "✅ Risposta corretta!" if correct else "❌ Risposta sbagliata."
+    outcome_line = messages.outcome_line(correct)
     explanation_line = (
-        _NO_EXPLANATION_LINE
+        messages.NO_EXPLANATION_LINE
         if explanation.status is ExplanationOutcome.INSUFFICIENT_KNOWLEDGE
         else (explanation.explanation or "")
     )
