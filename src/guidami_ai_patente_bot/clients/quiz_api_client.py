@@ -8,7 +8,7 @@ from pywire import Autowired
 
 from guidami_ai_patente_bot.configs import BotConfig
 from guidami_ai_patente_bot.exceptions import QuizApiError, UnauthorizedError
-from guidami_ai_patente_bot.models import QuizExplanation, QuizQuestion
+from guidami_ai_patente_bot.models import QuizExplanation, QuizQuestion, SessionSummary
 
 
 class QuizApiClient:
@@ -78,6 +78,13 @@ class QuizApiClient:
             params={"submitted": submitted},
         )
         return QuizExplanation.model_validate(response.json())
+
+    async def get_session_summary(self, telegram_user_id: int, session_id: str) -> SessionSummary:
+        """Calls `GET /quiz-answers/summary` (spec 0016, FR-9, AD-16)."""
+        response = await self._request(
+            "GET", "/quiz-answers/summary", telegram_user_id, params={"session_id": session_id}
+        )
+        return SessionSummary.model_validate(response.json())
 
     async def _request(
         self, method: str, url: str, telegram_user_id: int, **kwargs: Any

@@ -3,5 +3,6 @@
 from .quiz_explanation import QuizExplanation
 from .quiz_question import QuizQuestion
 from .quiz_session import QuizSession
+from .session_summary import SessionSummary
 
-__all__ = ["QuizExplanation", "QuizQuestion", "QuizSession"]
+__all__ = ["QuizExplanation", "QuizQuestion", "QuizSession", "SessionSummary"]

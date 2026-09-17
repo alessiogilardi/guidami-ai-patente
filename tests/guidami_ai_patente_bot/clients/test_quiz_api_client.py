@@ -143,3 +143,17 @@ async def test_a_connection_failure_raises_quiz_api_error() -> None:
 
     with pytest.raises(QuizApiError):
         await client.propose_question(7, "abc", 0)
+
+
+@pytest.mark.asyncio
+async def test_get_session_summary_parses_the_response() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        assert request.url.path == "/quiz-answers/summary"
+        assert request.url.params["session_id"] == "seed-abc"
+        return httpx.Response(200, json={"answered": 5, "correct": 3})
+
+    client = _client(handler)
+
+    summary = await client.get_session_summary(7, "seed-abc")
+
+    assert (summary.answered, summary.correct) == (5, 3)
