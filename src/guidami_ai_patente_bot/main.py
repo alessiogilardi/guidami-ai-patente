@@ -8,6 +8,7 @@ import signal
 from pywire import get_default_container
 from telegram.ext import Application, CallbackQueryHandler, CommandHandler
 
+from . import container
 from .clients import QuizApiClient
 from .configs import BotConfig
 from .handlers.error_handler import handle_error
@@ -52,6 +53,7 @@ async def _run() -> None:
         .read_timeout(config.telegram_read_timeout_seconds)
         .build()
     )
+    application.bot_data[container.BOT_DATA_CONTAINER_KEY] = get_default_container()
     assert application.updater is not None
     application.add_handler(CommandHandler(["start", "quiz"], start_or_quiz))
     application.add_handler(

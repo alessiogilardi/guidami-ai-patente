@@ -3,11 +3,10 @@
 from io import BytesIO
 from typing import cast
 
-from pywire import get_default_container
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Message, Update
 from telegram.ext import ContextTypes
 
-from guidami_ai_patente_bot import messages
+from guidami_ai_patente_bot import container, messages
 from guidami_ai_patente_bot.enums import ExplanationOutcome
 from guidami_ai_patente_bot.exceptions import StaleQuestionError
 from guidami_ai_patente_bot.models import QuizSession
@@ -43,7 +42,7 @@ async def _send_question(chat_id: int, context: ContextTypes.DEFAULT_TYPE) -> No
     domanda" does not edit the previous one.
     """
     assert context.user_data is not None
-    service = get_default_container().resolve(QuizFlowService)
+    service = container.resolve(context, QuizFlowService)
     session: QuizSession | None = context.user_data.get("session")
     question, session = await service.propose_question(session)
     context.user_data["session"] = session
@@ -86,7 +85,7 @@ async def handle_answer_callback(update: Update, context: ContextTypes.DEFAULT_T
     answer = flag == "1"
 
     assert context.user_data is not None
-    service = get_default_container().resolve(QuizFlowService)
+    service = container.resolve(context, QuizFlowService)
     session: QuizSession | None = context.user_data.get("session")
     try:
         correct, explanation = await service.handle_answer(session, number, answer)

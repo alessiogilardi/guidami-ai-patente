@@ -1,15 +1,14 @@
 """Telegram handlers are thin controllers over QuizFlowService (AD-5)."""
 
-from collections.abc import Callable
 from dataclasses import dataclass, field
 from types import SimpleNamespace
 from unittest.mock import AsyncMock
 
 import pytest
 
+from guidami_ai_patente_bot import container
 from guidami_ai_patente_bot.enums import ExplanationOutcome
 from guidami_ai_patente_bot.exceptions import StaleQuestionError
-from guidami_ai_patente_bot.handlers import quiz_handlers
 from guidami_ai_patente_bot.handlers.quiz_handlers import (
     ANSWER_CALLBACK_PREFIX,
     handle_answer_callback,
@@ -55,13 +54,7 @@ class _FlowServiceDouble:
 
 
 class _StubContainer:
-    """Minimal resolve()-only stand-in for pywire's container.
-
-    pywire's real `Container._put` refuses to let `register_instance` override
-    a key `@service` already auto-registered at import time, so the fixture
-    below intercepts `quiz_handlers.get_default_container` instead of touching
-    the real container's registry.
-    """
+    """Minimal resolve()-only stand-in for pywire's container, bound via `bot_data`."""
 
     def __init__(self, service: _FlowServiceDouble) -> None:
         self._service = service
@@ -71,19 +64,12 @@ class _StubContainer:
         return self._service
 
 
-@pytest.fixture
-def register_flow_service(
-    monkeypatch: pytest.MonkeyPatch,
-) -> Callable[[_FlowServiceDouble], _FlowServiceDouble]:
-    def _register(double: _FlowServiceDouble) -> _FlowServiceDouble:
-        monkeypatch.setattr(quiz_handlers, "get_default_container", lambda: _StubContainer(double))
-        return double
-
-    return _register
-
-
-def _context() -> SimpleNamespace:
-    return SimpleNamespace(bot=AsyncMock(), user_data={})
+def _context(double: _FlowServiceDouble) -> SimpleNamespace:
+    return SimpleNamespace(
+        bot=AsyncMock(),
+        user_data={},
+        bot_data={container.BOT_DATA_CONTAINER_KEY: _StubContainer(double)},
+    )
 
 
 def _update(chat_id: int = 123) -> SimpleNamespace:
@@ -106,12 +92,9 @@ def _callback_update(
 
 
 @pytest.mark.asyncio
-async def test_start_sends_a_text_message_when_the_question_has_no_image(
-    register_flow_service: Callable[[_FlowServiceDouble], _FlowServiceDouble],
-) -> None:
+async def test_start_sends_a_text_message_when_the_question_has_no_image() -> None:
     question = QuizQuestion(number="0001", topic="segnaletica", text="Domanda?", image_url=None)
-    register_flow_service(_FlowServiceDouble(question=question))
-    context = _context()
+    context = _context(_FlowServiceDouble(question=question))
 
     await start_or_quiz(_update(), context)
 
@@ -121,14 +104,11 @@ async def test_start_sends_a_text_message_when_the_question_has_no_image(
 
 
 @pytest.mark.asyncio
-async def test_start_sends_a_photo_when_the_question_has_an_image(
-    register_flow_service: Callable[[_FlowServiceDouble], _FlowServiceDouble],
-) -> None:
+async def test_start_sends_a_photo_when_the_question_has_an_image() -> None:
     question = QuizQuestion(
         number="0001", topic="segnaletica", text="Domanda?", image_url="/quiz-images/x.jpg"
     )
-    register_flow_service(_FlowServiceDouble(question=question))
-    context = _context()
+    context = _context(_FlowServiceDouble(question=question))
 
     await start_or_quiz(_update(), context)
 
@@ -137,12 +117,9 @@ async def test_start_sends_a_photo_when_the_question_has_an_image(
 
 
 @pytest.mark.asyncio
-async def test_next_callback_acks_then_proposes_a_question(
-    register_flow_service: Callable[[_FlowServiceDouble], _FlowServiceDouble],
-) -> None:
+async def test_next_callback_acks_then_proposes_a_question() -> None:
     question = QuizQuestion(number="0002", topic="segnaletica", text="Altra?", image_url=None)
-    register_flow_service(_FlowServiceDouble(question=question))
-    context = _context()
+    context = _context(_FlowServiceDouble(question=question))
     update, query = _callback_update("quiz:next")
 
     await handle_next_callback(update, context)
@@ -152,12 +129,9 @@ async def test_next_callback_acks_then_proposes_a_question(
 
 
 @pytest.mark.asyncio
-async def test_a_valid_answer_edits_the_text_message_with_the_outcome(
-    register_flow_service: Callable[[_FlowServiceDouble], _FlowServiceDouble],
-) -> None:
+async def test_a_valid_answer_edits_the_text_message_with_the_outcome() -> None:
     question = QuizQuestion(number="0001", topic="segnaletica", text="Domanda?", image_url=None)
-    register_flow_service(_FlowServiceDouble(question=question, correct=True))
-    context = _context()
+    context = _context(_FlowServiceDouble(question=question, correct=True))
     context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
     update, query = _callback_update(f"{ANSWER_CALLBACK_PREFIX}0001:1")
 
@@ -168,14 +142,11 @@ async def test_a_valid_answer_edits_the_text_message_with_the_outcome(
 
 
 @pytest.mark.asyncio
-async def test_a_valid_answer_on_a_photo_message_edits_the_caption(
-    register_flow_service: Callable[[_FlowServiceDouble], _FlowServiceDouble],
-) -> None:
+async def test_a_valid_answer_on_a_photo_message_edits_the_caption() -> None:
     question = QuizQuestion(
         number="0001", topic="segnaletica", text="Domanda?", image_url="/x.jpg"
     )
-    register_flow_service(_FlowServiceDouble(question=question, correct=False))
-    context = _context()
+    context = _context(_FlowServiceDouble(question=question, correct=False))
     context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
     update, query = _callback_update(f"{ANSWER_CALLBACK_PREFIX}0001:0", has_photo=True)
 
@@ -186,17 +157,14 @@ async def test_a_valid_answer_on_a_photo_message_edits_the_caption(
 
 
 @pytest.mark.asyncio
-async def test_insufficient_knowledge_shows_the_fallback_line(
-    register_flow_service: Callable[[_FlowServiceDouble], _FlowServiceDouble],
-) -> None:
+async def test_insufficient_knowledge_shows_the_fallback_line() -> None:
     question = QuizQuestion(number="0001", topic="segnaletica", text="Domanda?", image_url=None)
     explanation = QuizExplanation(
         status=ExplanationOutcome.INSUFFICIENT_KNOWLEDGE, explanation=None
     )
-    register_flow_service(
+    context = _context(
         _FlowServiceDouble(question=question, explanation=explanation, correct=True)
     )
-    context = _context()
     context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
     update, query = _callback_update(f"{ANSWER_CALLBACK_PREFIX}0001:1")
 
@@ -206,12 +174,9 @@ async def test_insufficient_knowledge_shows_the_fallback_line(
 
 
 @pytest.mark.asyncio
-async def test_a_stale_answer_gets_a_notice_and_no_edit(
-    register_flow_service: Callable[[_FlowServiceDouble], _FlowServiceDouble],
-) -> None:
+async def test_a_stale_answer_gets_a_notice_and_no_edit() -> None:
     question = QuizQuestion(number="0001", topic="segnaletica", text="Domanda?", image_url=None)
-    register_flow_service(_FlowServiceDouble(question=question, raise_stale=True))
-    context = _context()
+    context = _context(_FlowServiceDouble(question=question, raise_stale=True))
     context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
     update, query = _callback_update(f"{ANSWER_CALLBACK_PREFIX}0002:1")
 
