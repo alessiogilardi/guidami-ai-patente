@@ -10,6 +10,7 @@ from .quiz_answer_check_request import QuizAnswerCheckRequest
 from .quiz_image import QuizImage
 from .quiz_question_summary import QuizQuestionSummary
 from .session_summary import SessionSummary
+from .session_summary_request import SessionSummaryRequest
 from .topic_count import TopicCount
 
 __all__ = [
@@ -23,5 +24,6 @@ __all__ = [
     "QuizImage",
     "QuizQuestionSummary",
     "SessionSummary",
+    "SessionSummaryRequest",
     "TopicCount",
 ]
