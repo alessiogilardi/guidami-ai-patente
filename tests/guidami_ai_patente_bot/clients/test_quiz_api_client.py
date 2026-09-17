@@ -1,4 +1,4 @@
-"""QuizApiClient wraps HTTP calls to guidami_ai_patente and their failures (FR-5)."""
+"""QuizApiClient wraps HTTP calls to guidami_ai_patente and their failures (FR-5, FR-6, FR-10)."""
 
 from collections.abc import Awaitable, Callable
 
@@ -7,19 +7,13 @@ import pytest
 
 from guidami_ai_patente_bot.clients import QuizApiClient
 from guidami_ai_patente_bot.configs import BotConfig
-from guidami_ai_patente_bot.exceptions import QuizApiError
+from guidami_ai_patente_bot.exceptions import QuizApiError, UnauthorizedError
 
 _Handler = Callable[[httpx.Request], httpx.Response | Awaitable[httpx.Response]]
 
 
 def _client(handler: _Handler) -> QuizApiClient:
-    """Builds a QuizApiClient with a mock transport, sidestepping pywire's async lifecycle.
-
-    `object.__new__` skips pywire's instrumentation and `__aenter__` (same
-    sidestep pattern `tests/guidami_ai_patente/services/test_quiz_answer_checker.py::_checker`
-    uses for a sync bean's `__init__`), so `config` and `_http` are set by hand here
-    instead — no `container.astart()` involved.
-    """
+    """Builds a QuizApiClient with a mock transport, sidestepping pywire's async lifecycle."""
     api_client = object.__new__(QuizApiClient)
     api_client.config = BotConfig(  # type: ignore[assignment]
         telegram_bot_token="token",
@@ -29,6 +23,20 @@ def _client(handler: _Handler) -> QuizApiClient:
         base_url="http://api.test", transport=httpx.MockTransport(handler)
     )
     return api_client
+
+
+@pytest.mark.asyncio
+async def test_every_call_carries_the_telegram_user_id_header() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        assert request.headers["X-Telegram-User-Id"] == "7"
+        return httpx.Response(
+            200,
+            json={"number": "0001", "topic": "segnaletica", "text": "...", "image_url": None},
+        )
+
+    client = _client(handler)
+
+    await client.propose_question(7, "abc", 2)
 
 
 @pytest.mark.asyncio
@@ -44,22 +52,26 @@ async def test_propose_question_parses_the_response() -> None:
 
     client = _client(handler)
 
-    question = await client.propose_question("abc", 2)
+    question = await client.propose_question(7, "abc", 2)
 
     assert question.number == "0001"
     assert question.image_url is None
 
 
 @pytest.mark.asyncio
-async def test_check_answer_returns_the_correctness_flag() -> None:
+async def test_check_answer_sends_the_session_id_and_returns_the_correctness_flag() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         assert request.method == "POST"
         assert request.url.path == "/quiz-questions/0001/check"
+        import json
+
+        body = json.loads(request.content)
+        assert body == {"answer": True, "session_id": "seed-abc"}
         return httpx.Response(200, json={"correct": True, "explanation_status": "cached"})
 
     client = _client(handler)
 
-    correct = await client.check_answer("0001", True)
+    correct = await client.check_answer(7, "0001", True, "seed-abc")
 
     assert correct is True
 
@@ -82,7 +94,7 @@ async def test_get_explanation_parses_the_response_ignoring_extra_fields() -> No
 
     client = _client(handler)
 
-    explanation = await client.get_explanation("0001", submitted=True)
+    explanation = await client.get_explanation(7, "0001", submitted=True)
 
     assert explanation.explanation == "perché..."
 
@@ -95,7 +107,7 @@ async def test_download_image_returns_the_raw_bytes() -> None:
 
     client = _client(handler)
 
-    content = await client.download_image("/quiz-images/abc.jpg")
+    content = await client.download_image(7, "/quiz-images/abc.jpg")
 
     assert content == b"\x89PNG"
 
@@ -108,7 +120,18 @@ async def test_a_non_2xx_response_raises_quiz_api_error() -> None:
     client = _client(handler)
 
     with pytest.raises(QuizApiError):
-        await client.check_answer("9999", True)
+        await client.check_answer(7, "9999", True, "seed-abc")
+
+
+@pytest.mark.asyncio
+async def test_a_403_response_raises_unauthorized_error_specifically() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(403)
+
+    client = _client(handler)
+
+    with pytest.raises(UnauthorizedError):
+        await client.check_answer(7, "0001", True, "seed-abc")
 
 
 @pytest.mark.asyncio
@@ -119,4 +142,4 @@ async def test_a_connection_failure_raises_quiz_api_error() -> None:
     client = _client(handler)
 
     with pytest.raises(QuizApiError):
-        await client.propose_question("abc", 0)
+        await client.propose_question(7, "abc", 0)

@@ -1,35 +1,22 @@
 """HTTP adapter to the guidami-ai-patente API — one method per endpoint shape (AD-1)."""
 
+from http import HTTPStatus
 from typing import Any, Self
 
 import httpx
 from pywire import Autowired
 
 from guidami_ai_patente_bot.configs import BotConfig
-from guidami_ai_patente_bot.exceptions import QuizApiError
+from guidami_ai_patente_bot.exceptions import QuizApiError, UnauthorizedError
 from guidami_ai_patente_bot.models import QuizExplanation, QuizQuestion
 
 
 class QuizApiClient:
-    """Thin async adapter over `guidami_ai_patente`'s HTTP API (AD-1, AD-8).
+    """Thin async adapter over `guidami_ai_patente`'s HTTP API (AD-1, AD-8, spec 0016 AD-13).
 
-    An async component (pywire 0.9.0), registered explicitly by `main.py::_run`
-    via `get_default_container().register_async_component(QuizApiClient)`, called
-    before `container.lifespan()` is entered — deliberately *not* the `@async_component`
-    class decorator, which would register it on pywire's process-wide default
-    container the moment this module is imported. `guidami_ai_patente`'s FastAPI app
-    (`api/app.py`) uses that same default container (`FastAPI(lifespan=pywire_lifespan)`);
-    a decorator-time registration would make its `astart()` try to enter `QuizApiClient`
-    too and fail resolving `BotConfig`, which only the bot's own composition root ever
-    registers. Explicit registration keeps merely importing this module (or the
-    `clients` package) free of any side effect on a shared container.
-
-    Once registered, the container builds `self.config` first (ordinary field
-    injection), then enters this bean via `__aenter__` inside `container.lifespan()`
-    (`main.py`), and exits it via `__aexit__` on the same container's `aclose()`, in
-    reverse registration order. This supersedes ADR 0032's original v0.8.0-era
-    workaround (a hand-called `await client.aclose()` from `main.py`, with no pywire
-    teardown hook at all) now that pywire ships real async-component support.
+    Registered explicitly by `main.py::_run` (see the class's original docstring in
+    ADR 0032/ADR 0033 for the full async-component-lifecycle rationale — unchanged by
+    this plan).
     """
 
     config: Autowired[BotConfig]
@@ -45,37 +32,68 @@ class QuizApiClient:
         """Closes the underlying `httpx.AsyncClient` (exited by `container.lifespan()`)."""
         await self._http.aclose()
 
-    async def propose_question(self, seed: str, index: int) -> QuizQuestion:
+    async def check_registration_status(self, telegram_user_id: int) -> bool:
+        """Calls `GET /me` (spec 0016, FR-2).
+
+        Never raises `UnauthorizedError`: `/me` never 403s.
+        """
+        response = await self._request("GET", "/me", telegram_user_id)
+        return bool(response.json()["registered"])
+
+    async def propose_question(self, telegram_user_id: int, seed: str, index: int) -> QuizQuestion:
         """Calls `GET /quiz-questions/random` (FR-1, FR-4)."""
         response = await self._request(
-            "GET", "/quiz-questions/random", params={"seed": seed, "index": index}
+            "GET",
+            "/quiz-questions/random",
+            telegram_user_id,
+            params={"seed": seed, "index": index},
         )
         return QuizQuestion.model_validate(response.json())
 
-    async def download_image(self, image_url: str) -> bytes:
+    async def download_image(self, telegram_user_id: int, image_url: str) -> bytes:
         """Downloads the bytes at `image_url`, the exact path the API returned (FR-1)."""
-        response = await self._request("GET", image_url)
+        response = await self._request("GET", image_url, telegram_user_id)
         return response.content
 
-    async def check_answer(self, number: str, answer: bool) -> bool:
-        """Calls `POST /quiz-questions/{number}/check` (FR-2)."""
+    async def check_answer(
+        self, telegram_user_id: int, number: str, answer: bool, session_id: str
+    ) -> bool:
+        """Calls `POST /quiz-questions/{number}/check` (FR-2, spec 0016 FR-5)."""
         response = await self._request(
-            "POST", f"/quiz-questions/{number}/check", json={"answer": answer}
+            "POST",
+            f"/quiz-questions/{number}/check",
+            telegram_user_id,
+            json={"answer": answer, "session_id": session_id},
         )
         return bool(response.json()["correct"])
 
-    async def get_explanation(self, number: str, submitted: bool) -> QuizExplanation:
+    async def get_explanation(
+        self, telegram_user_id: int, number: str, submitted: bool
+    ) -> QuizExplanation:
         """Calls `GET /quiz-questions/{number}/explanation` (FR-2)."""
         response = await self._request(
-            "GET", f"/quiz-questions/{number}/explanation", params={"submitted": submitted}
+            "GET",
+            f"/quiz-questions/{number}/explanation",
+            telegram_user_id,
+            params={"submitted": submitted},
         )
         return QuizExplanation.model_validate(response.json())
 
-    async def _request(self, method: str, url: str, **kwargs: Any) -> httpx.Response:
-        """Issues one HTTP call, wrapping any failure into a single `QuizApiError` (FR-5)."""
+    async def _request(
+        self, method: str, url: str, telegram_user_id: int, **kwargs: Any
+    ) -> httpx.Response:
+        """Issues one HTTP call, attaching identity and wrapping any failure.
+
+        Covers FR-5, FR-6, FR-10.
+        """
+        headers = {"X-Telegram-User-Id": str(telegram_user_id)}
         try:
-            response = await self._http.request(method, url, **kwargs)
+            response = await self._http.request(method, url, headers=headers, **kwargs)
             response.raise_for_status()
+        except httpx.HTTPStatusError as exc:
+            if exc.response.status_code == HTTPStatus.FORBIDDEN:
+                raise UnauthorizedError(f"{method} {url} failed: {exc}") from exc
+            raise QuizApiError(f"{method} {url} failed: {exc}") from exc
         except httpx.HTTPError as exc:
             raise QuizApiError(f"{method} {url} failed: {exc}") from exc
         return response
