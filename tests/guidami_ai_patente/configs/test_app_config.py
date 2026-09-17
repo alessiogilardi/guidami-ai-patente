@@ -74,3 +74,8 @@ def test_no_epoch_field_is_declared_on_the_root(app_config: AppConfig) -> None:
     declared = set(type(app_config).model_fields)
 
     assert declared.isdisjoint({"candidate_variant", "dense_k", "text_k", "lexeme_fields"})
+
+
+def test_the_new_spec_0016_tables_have_defaults(app_config: AppConfig) -> None:
+    assert app_config.users_table == "users"
+    assert app_config.quiz_answers_table == "quiz_answers"

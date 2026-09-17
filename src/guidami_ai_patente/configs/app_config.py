@@ -57,6 +57,8 @@ class AppConfig(BaseConfig):
     quiz_labelings_table: str = "quiz_labelings"
     quiz_comma_labels_table: str = "quiz_comma_labels"
     quiz_images_table: str = "quiz_images"
+    users_table: str = "users"
+    quiz_answers_table: str = "quiz_answers"
     explanation_deadline_s: float = Field(
         default=25.0,
         gt=0.0,

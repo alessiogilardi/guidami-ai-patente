@@ -26,5 +26,7 @@ labeling_runs_table: labeling_runs
 quiz_labelings_table: quiz_labelings
 quiz_comma_labels_table: quiz_comma_labels
 quiz_images_table: quiz_images
+users_table: users
+quiz_answers_table: quiz_answers
 
 explanation_deadline_s: 25.0
