@@ -9,6 +9,7 @@ from .dependency_version_repository import DependencyVersionRepository
 from .golden_set_read_repository import GoldenSetReadRepository
 from .quiz_image_repository import QuizImageRepository
 from .quiz_question_repository import QuizQuestionRepository
+from .user_repository import UserRepository
 
 __all__ = [
     "AgentConfigRepository",
@@ -16,4 +17,5 @@ __all__ = [
     "GoldenSetReadRepository",
     "QuizImageRepository",
     "QuizQuestionRepository",
+    "UserRepository",
 ]
