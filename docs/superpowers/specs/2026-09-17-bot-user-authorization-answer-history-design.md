@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0016 |
-| **Status** | draft |
+| **Status** | ready |
 | **Date** | 2026-09-17 |
 | **Discussion log** | docs/superpowers/specs/discussions/bot-persistent-session.md |
 | **Supersedes / superseded by** | — |
@@ -642,6 +642,6 @@ next session-scoped start.
 
 ## Sign-off
 
-- **Scope approved by user:** pending
+- **Scope approved by user:** approved 2026-09-17.
 - **Feasibility asserted:** by write-spec on 2026-09-17, based on
   Feasibility Evidence above.
