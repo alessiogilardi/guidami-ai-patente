@@ -198,3 +198,32 @@ CREATE TABLE IF NOT EXISTS quiz_comma_labels (
     CONSTRAINT quiz_comma_labels_unique_judge_rank
         UNIQUE (labeling_id, judge_rank)
 );
+
+-- Telegram user whitelist for the bot (spec 0016, AD-2). A row is provisioned on
+-- first contact with `registered = false`; flipping it to `true` is a manual,
+-- out-of-band action by the project owner (spec 0016 Non-Goals).
+CREATE TABLE IF NOT EXISTS users (
+    id                BIGSERIAL PRIMARY KEY,
+    telegram_user_id  BIGINT NOT NULL UNIQUE,
+    registered        BOOLEAN NOT NULL DEFAULT false,
+    created_at        TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- One row per submitted answer (spec 0016, AD-3). `session_id` is an opaque tag
+-- copied from the bot's own per-QuizSession seed (spec 0015, AD-2) — deliberately
+-- not a foreign key to a session table, since nothing needs session-level metadata
+-- beyond grouping answers by it. `user_answer` stores only the raw submitted
+-- boolean; correctness is always derived via a JOIN against
+-- quiz_questions.correct_answer, never cached, so it cannot drift out of sync.
+CREATE TABLE IF NOT EXISTS quiz_answers (
+    id               BIGSERIAL PRIMARY KEY,
+    user_id          BIGINT NOT NULL REFERENCES users (id),
+    quiz_id          BIGINT NOT NULL REFERENCES quiz_questions (id),
+    session_id       TEXT NOT NULL,
+    user_answer      BOOLEAN NOT NULL,
+    answer_datetime  TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_quiz_answers_user_id ON quiz_answers (user_id);
+CREATE INDEX IF NOT EXISTS idx_quiz_answers_quiz_id ON quiz_answers (quiz_id);
+CREATE INDEX IF NOT EXISTS idx_quiz_answers_session_id ON quiz_answers (session_id);
