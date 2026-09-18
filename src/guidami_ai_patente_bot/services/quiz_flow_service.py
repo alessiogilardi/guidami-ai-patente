@@ -5,7 +5,7 @@ import uuid
 from pywire import Autowired, service
 
 from guidami_ai_patente_bot.clients import QuizApiClient
-from guidami_ai_patente_bot.enums import ExplanationOutcome
+from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus
 from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
 from guidami_ai_patente_bot.models import (
     QuizExplanation,
@@ -41,27 +41,40 @@ class QuizFlowService:
 
     async def handle_answer(
         self, session: QuizSession | None, number: str, answer: bool, telegram_user_id: int
-    ) -> tuple[bool, QuizExplanation]:
-        """Grades `answer` and fetches its explanation in the same turn (FR-2).
+    ) -> tuple[bool, ExplanationStatus]:
+        """Grades `answer` and advertises the explanation status (FR-2; spec 0017 FR-1).
 
         The session's own seed is sent as the backend's `session_id` (spec 0016,
-        D-12) — the bot never invents a second identifier for the same concept.
+        D-12) — the bot never invents a second identifier for the same concept. The
+        explanation is deliberately not fetched here anymore (spec 0017): the caller
+        renders a "Spiega" button instead and calls `handle_explanation_request` only
+        if the user taps it.
 
         Raises:
             StaleQuestionError: `number` is not the chat's current question (FR-3).
         """
         if session is None or session.current_question_number != number:
             raise StaleQuestionError(number)
-        correct = await self.api.check_answer(telegram_user_id, number, answer, session.seed)
+        return await self.api.check_answer(telegram_user_id, number, answer, session.seed)
+
+    async def handle_explanation_request(
+        self, number: str, telegram_user_id: int, submitted: bool
+    ) -> QuizExplanation:
+        """Ensures the labeling, then fetches the explanation, in sequence (spec 0017 FR-3).
+
+        `label_question` is always called first and awaited, unconditionally (AD-5):
+        even when the check-time status was already cached, the extra call is a
+        cheap cache read. Either call failing falls back to the same "no
+        explanation available" rendering (AD-12) — `label_question`'s own failure
+        short-circuits before `get_explanation` is ever called.
+        """
         try:
-            explanation = await self.api.get_explanation(
-                telegram_user_id, number, submitted=answer
-            )
+            await self.api.label_question(telegram_user_id, number)
+            return await self.api.get_explanation(telegram_user_id, number, submitted=submitted)
         except QuizApiError:
-            explanation = QuizExplanation(
+            return QuizExplanation(
                 status=ExplanationOutcome.INSUFFICIENT_KNOWLEDGE, explanation=None
             )
-        return correct, explanation
 
     async def download_image(self, image_url: str, telegram_user_id: int) -> bytes:
         """Passes through to `QuizApiClient` so handlers never depend on it directly (AD-5)."""
