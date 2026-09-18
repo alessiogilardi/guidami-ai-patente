@@ -7,6 +7,7 @@ import httpx
 from pywire import Autowired
 
 from guidami_ai_patente_bot.configs import BotConfig
+from guidami_ai_patente_bot.enums import ExplanationStatus
 from guidami_ai_patente_bot.exceptions import QuizApiError, UnauthorizedError
 from guidami_ai_patente_bot.models import QuizExplanation, QuizQuestion, SessionSummary
 
@@ -57,15 +58,30 @@ class QuizApiClient:
 
     async def check_answer(
         self, telegram_user_id: int, number: str, answer: bool, session_id: str
-    ) -> bool:
-        """Calls `POST /quiz-questions/{number}/check` (FR-2, spec 0016 FR-5)."""
+    ) -> tuple[bool, ExplanationStatus]:
+        """Calls `POST /quiz-questions/{number}/check` (FR-2, spec 0016 FR-5, spec 0017 FR-6)."""
         response = await self._request(
             "POST",
             f"/quiz-questions/{number}/check",
             telegram_user_id,
             json={"answer": answer, "session_id": session_id},
         )
-        return bool(response.json()["correct"])
+        body = response.json()
+        return bool(body["correct"]), ExplanationStatus(body["explanation_status"])
+
+    async def label_question(self, telegram_user_id: int, number: str) -> None:
+        """Calls `POST /quiz-questions/{number}/label` (spec 0017, FR-4).
+
+        Passes an explicit timeout override: the server's own `labeling_deadline_s`
+        defaults to 25.0s, longer than `request_timeout_seconds`'s 15.0s default,
+        which is tuned for the other, fast endpoints (AD-10).
+        """
+        await self._request(
+            "POST",
+            f"/quiz-questions/{number}/label",
+            telegram_user_id,
+            timeout=self.config.label_request_timeout_seconds,
+        )
 
     async def get_explanation(
         self, telegram_user_id: int, number: str, submitted: bool
@@ -87,13 +103,24 @@ class QuizApiClient:
         return SessionSummary.model_validate(response.json())
 
     async def _request(
-        self, method: str, url: str, telegram_user_id: int, **kwargs: Any
+        self,
+        method: str,
+        url: str,
+        telegram_user_id: int,
+        *,
+        timeout: float | None = None,
+        **kwargs: Any,
     ) -> httpx.Response:
         """Issues one HTTP call, attaching identity and wrapping any failure.
 
-        Covers FR-5, FR-6, FR-10.
+        Covers FR-5, FR-6, FR-10. `timeout`, when given, overrides the client's
+        default for this one call only (spec 0017, AD-10) — when omitted, the
+        request kwarg is not passed at all, so httpx falls back to the client's own
+        configured default rather than to `None`, which would mean "no timeout."
         """
         headers = {"X-Telegram-User-Id": str(telegram_user_id)}
+        if timeout is not None:
+            kwargs["timeout"] = timeout
         try:
             response = await self._http.request(method, url, headers=headers, **kwargs)
             response.raise_for_status()

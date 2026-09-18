@@ -7,6 +7,7 @@ import pytest
 
 from guidami_ai_patente_bot.clients import QuizApiClient
 from guidami_ai_patente_bot.configs import BotConfig
+from guidami_ai_patente_bot.enums import ExplanationStatus
 from guidami_ai_patente_bot.exceptions import QuizApiError, UnauthorizedError
 
 _Handler = Callable[[httpx.Request], httpx.Response | Awaitable[httpx.Response]]
@@ -59,7 +60,7 @@ async def test_propose_question_parses_the_response() -> None:
 
 
 @pytest.mark.asyncio
-async def test_check_answer_sends_the_session_id_and_returns_the_correctness_flag() -> None:
+async def test_check_answer_sends_the_session_id_and_returns_the_grade_and_status() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         assert request.method == "POST"
         assert request.url.path == "/quiz-questions/0001/check"
@@ -71,9 +72,22 @@ async def test_check_answer_sends_the_session_id_and_returns_the_correctness_fla
 
     client = _client(handler)
 
-    correct = await client.check_answer(7, "0001", True, "seed-abc")
+    correct, status = await client.check_answer(7, "0001", True, "seed-abc")
 
     assert correct is True
+    assert status is ExplanationStatus.CACHED
+
+
+@pytest.mark.asyncio
+async def test_label_question_posts_to_the_label_endpoint() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        assert request.method == "POST"
+        assert request.url.path == "/quiz-questions/0001/label"
+        return httpx.Response(204)
+
+    client = _client(handler)
+
+    await client.label_question(7, "0001")
 
 
 @pytest.mark.asyncio
