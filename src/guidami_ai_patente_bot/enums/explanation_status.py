@@ -1,4 +1,4 @@
-"""Cache state of a question's comma association, mirroring guidami_ai_patente's wire vocabulary."""
+"""Mirrors the API's explanation_status vocabulary, declared locally for HTTP coupling."""
 
 from enum import StrEnum, auto
 
