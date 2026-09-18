@@ -23,6 +23,7 @@ _TABLES = (
     "quiz_labelings",
     "labeling_runs",
     "quiz_question_embeddings",
+    "quiz_answers",
     "quiz_questions",
     "article_commas",
     "articles",
