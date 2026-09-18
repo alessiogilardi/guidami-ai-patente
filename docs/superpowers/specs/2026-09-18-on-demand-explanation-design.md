@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0017 |
-| **Status** | draft |
+| **Status** | implemented |
 | **Date** | 2026-09-18 |
 | **Discussion log** | — (brainstormed inline via `superpowers:brainstorming`, no separate transcript file) |
 | **Supersedes / superseded by** | — |
@@ -359,8 +359,8 @@ tables through the existing `GoldenSetReadRepository`/`GoldenSetWriteRepository`
 
 ## Sign-off
 
-- **Scope approved by user:** pending
-- **Feasibility asserted:** by the assistant on 2026-09-18, based on Feasibility Evidence above (source reads, not a dedicated feasibility-compiling skill)
+- **Scope approved by user:** yes (2026-09-18, plan grilling round)
+- **Feasibility asserted:** by the assistant on 2026-09-18, based on Feasibility Evidence above (source reads, not a dedicated feasibility-compiling skill) — confirmed correct by implementation
 
 ## Changelog
 
@@ -385,3 +385,5 @@ tables through the existing `GoldenSetReadRepository`/`GoldenSetWriteRepository`
   `CurrentLabeling` domain model and `GoldenSetReadRepository`'s `Read`
   prefix, making the read-only nature explicit. Non-material amendment —
   status stays draft.
+- **2026-09-18** — Implemented (Tasks 1-10 of
+  `docs/superpowers/plans/2026-09-18-on-demand-explanation.md`). Status: implemented.
