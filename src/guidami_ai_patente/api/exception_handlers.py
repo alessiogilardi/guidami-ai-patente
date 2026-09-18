@@ -8,6 +8,7 @@ from fastapi.responses import JSONResponse
 
 from guidami_ai_patente.exceptions import (
     ExplanationUnavailableError,
+    LabelingNotReadyError,
     QuestionNotFoundError,
     QuizImageNotFoundError,
     UnregisteredUserError,
@@ -55,6 +56,20 @@ async def _forbidden(request: Request, exc: Exception) -> JSONResponse:
     )
 
 
+async def _conflict(request: Request, exc: Exception) -> JSONResponse:
+    """Renders a contract violation as a 409 with its own message (spec 0017, AD-4).
+
+    `warning`, like `_service_unavailable`: this means a caller skipped `POST
+    /label` before `GET /explanation`, which should never happen from the bot's own
+    orchestration — worth an operator's attention if it does.
+    """
+    logger.warning("Resolving %r to 409: %s", type(exc).__name__, exc)
+    return JSONResponse(
+        status_code=HTTPStatus.CONFLICT,
+        content=ApiErrorResponse(detail=str(exc)).model_dump(),
+    )
+
+
 def register_exception_handlers(app: FastAPI) -> None:
     """Registers every domain-exception → status mapping on `app`.
 
@@ -66,4 +81,5 @@ def register_exception_handlers(app: FastAPI) -> None:
     app.add_exception_handler(QuestionNotFoundError, _not_found)
     app.add_exception_handler(QuizImageNotFoundError, _not_found)
     app.add_exception_handler(ExplanationUnavailableError, _service_unavailable)
+    app.add_exception_handler(LabelingNotReadyError, _conflict)
     app.add_exception_handler(UnregisteredUserError, _forbidden)
