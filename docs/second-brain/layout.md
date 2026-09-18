@@ -27,7 +27,8 @@ repo/
 │   │                                #   QuizEvaluationRow) — carry `id`, unlike entities;
 │   │                                #   entities/: knowledge/, quiz/, evaluation/
 │   │                                #   (LabelingRunEntity, QuizLabelingEntity,
-│   │                                #   QuizCommaLabelEntity — spec 0011 phase 2);
+│   │                                #   QuizCommaLabelEntity — spec 0011 phase 2), users/
+│   │                                #   (UserEntity — spec 0016);
 │   │                                #   entities/observability/ removed — LlmCallLogEntity
 │   │                                #   moved into commons/ai/observability/entities/;
 │   │                                #   enums/: closed vocabularies, e.g. LexemeField,
@@ -69,11 +70,20 @@ repo/
 │   │                                #   AgentConfigRepository, the
 │   │                                #   API's only door to `agents_dir` and the agent prompt
 │   │                                #   files (AD-22), now re-exported from
-│   │                                #   repositories/__init__.py. Seven live endpoints: GET
-│   │                                #   /health plus six quiz-domain routes (topics,
+│   │                                #   repositories/__init__.py. Since spec 0016, also
+│   │                                #   UserRepository (users whitelist, provision-then-select)
+│   │                                #   and QuizAnswerRepository (quiz_answers write + session
+│   │                                #   summary read). New api/dependencies/ package
+│   │                                #   (user_identity.py: resolve_identity/
+│   │                                #   require_registered_user, plain Depends() functions, not
+│   │                                #   pywire components — see patterns.md) gates every
+│   │                                #   business route; exceptions/ gained
+│   │                                #   unregistered_user_error.py -> 403. Nine live endpoints:
+│   │                                #   GET /health, GET /me, six quiz-domain routes (topics,
 │   │                                #   propose/fetch a question, check an answer, fetch
 │   │                                #   its image, explain the correct answer — see
-│   │                                #   architecture.md for the full list).
+│   │                                #   architecture.md for the full list), and
+│   │                                #   GET /quiz-answers/summary.
 │   │                                #   Entry point:
 │   │                                #   `guidami_ai_patente.main:main`, registered as the
 │   │                                #   `serve` script
@@ -90,7 +100,14 @@ repo/
 │   │                                #   both independent DTOs, not imports of the API's own
 │   │                                #   schemas; QuizSession, the per-chat state kept in
 │   │                                #   context.user_data for the process lifetime, AD-2),
-│   │                                #   exceptions/ (QuizApiError, StaleQuestionError),
+│   │                                #   exceptions/ (QuizApiError, StaleQuestionError,
+│   │                                #   UnauthorizedError — spec 0016, raised by QuizApiClient
+│   │                                #   on a 403), messages.py (centralized user-facing
+│   │                                #   strings, spec 0016), container.py (resolve(context,
+│   │                                #   service_type): resolves a pywire component through
+│   │                                #   Application.bot_data, mirroring the API's own
+│   │                                #   app.state fallback — see patterns.md; replaces every
+│   │                                #   handler's own pywire.get_default_container().resolve(...) call),
 │   │                                #   clients/ (QuizApiClient, an async-context-manager bean —
 │   │                                #   pywire>=0.9.0's register_async_component() — wrapping
 │   │                                #   one httpx.AsyncClient, entered/exited by
@@ -110,10 +127,15 @@ repo/
 │   │                                #   so a transient API error never strands an already-graded
 │   │                                #   answer), handlers/ (python-telegram-bot controllers —
 │   │                                #   parse the update, call QuizFlowService, render the
-│   │                                #   response; resolve it via
-│   │                                #   pywire.get_default_container().resolve(...) rather
-│   │                                #   than Autowired-as-parameter, since plain-callable PTB
-│   │                                #   handlers are not FastAPI routes). Entry point:
+│   │                                #   response; resolve components via container.resolve(...)
+│   │                                #   rather than Autowired-as-parameter, since plain-callable
+│   │                                #   PTB handlers are not FastAPI routes. Since spec 0016,
+│   │                                #   /start (start_command, reports registration status
+│   │                                #   only) and /quiz (quiz_command) are separate handlers —
+│   │                                #   previously one combined start_or_quiz; a new
+│   │                                #   stop_command backs /stop, ending the session and
+│   │                                #   showing its SessionSummary, never clearing the session
+│   │                                #   on a failed summary call, D-16). Entry point:
 │   │                                #   `guidami_ai_patente_bot.main:main`, registered as the
 │   │                                #   `telegram-bot` script; long polling only, no webhook
 │   │                                #   (AD-3); no ConversationHandler, plain handlers +
@@ -886,3 +908,19 @@ now stale). `QuizFlowService.handle_answer` also gained a fallback: a failed
 `get_explanation` call after a successful `check_answer` no longer strands the
 graded answer — it falls back to an `INSUFFICIENT_KNOWLEDGE`-shaped
 `QuizExplanation` instead of propagating uncaught.*
+
+*Last updated: 2026-09-18 — verified against commit `68575993` (spec 0016, bot user
+authorization & answer history — db-schema, backend, and telegram-bot plans, all three
+implemented in sequence). `domain/entities/` tree comment gained `users/` (`UserEntity`).
+`guidami_ai_patente/` tree comment: new `api/dependencies/` package
+(`resolve_identity`/`require_registered_user`, plain `Depends()` functions gating every
+business route), `UserRepository`/`QuizAnswerRepository`, `unregistered_user_error.py`;
+endpoint count is now nine (added `GET /me`, `GET /quiz-answers/summary`).
+`guidami_ai_patente_bot/` tree comment: new `container.py` (centralizes resolving a pywire
+component through `Application.bot_data`, replacing each handler's own
+`pywire.get_default_container().resolve(...)` call), new `messages.py` (centralized
+user-facing strings), `exceptions/` gained `UnauthorizedError`; `/start`/`/quiz` split
+into separate handlers (previously one combined `start_or_quiz`), new `/stop` handler.
+Manual live-Telegram verification (spec 0016's Definition of Done item 4) and a possible
+ADR for the `Application.bot_data` container-resolution pattern are both still open — see
+`architecture.md`'s matching entry.*

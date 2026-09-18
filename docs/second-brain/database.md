@@ -76,7 +76,7 @@
 
 ## Main schema
 
-Nine tables, all defined in `db/init.sql` (the `vector` extension is
+Eleven tables, all defined in `db/init.sql` (the `vector` extension is
 enabled at the top of that file).
 
 ```text
@@ -209,6 +209,23 @@ quiz_comma_labels                           -- the judge's per-candidate verdict
 └── UNIQUE (labeling_id, judge_rank)        -- quiz_comma_labels_unique_judge_rank: guards a *code*
     -- defect (a mis-built loop), not a model one — CommaLabelerResponse already rejects a
     -- repeated ordinal before the write path is reached (spec 0011 phase 2, T-1)
+
+users                                       -- Telegram user whitelist for the bot (spec 0016, AD-2)
+├── id (PK, BIGSERIAL)
+├── telegram_user_id (BIGINT, NOT NULL, UNIQUE)
+├── registered (BOOLEAN, NOT NULL DEFAULT false)  -- flipped manually by the project owner
+└── created_at (TIMESTAMPTZ, NOT NULL DEFAULT now())
+
+quiz_answers                                -- one row per submitted answer (spec 0016, AD-3)
+├── id (PK, BIGSERIAL)
+├── user_id (BIGINT, NOT NULL, REFERENCES users(id))
+├── quiz_id (BIGINT, NOT NULL, REFERENCES quiz_questions(id))
+├── session_id (TEXT, NOT NULL)              -- opaque tag copied from the bot's per-QuizSession seed
+├── user_answer (BOOLEAN, NOT NULL)          -- raw submitted value; correctness always derived via JOIN
+├── answer_datetime (TIMESTAMPTZ, NOT NULL DEFAULT now())
+├── INDEX idx_quiz_answers_user_id (user_id)
+├── INDEX idx_quiz_answers_quiz_id (quiz_id)
+└── INDEX idx_quiz_answers_session_id (session_id)
 ```
 
 `articles.tsv_title` and `article_commas.tsv_text` (spec 0011, FR-1) are the
@@ -280,6 +297,20 @@ model costs one `ADD COLUMN` plus widening that `CHECK`.
 `quiz_images` is keyed by filename because a description belongs to an image, not
 to a question: 4147 questions reference 427 distinct images
 (`docs/second-brain/adr/0003-group-road-sign-description-by-image.md`).
+
+`users`/`quiz_answers` (spec 0016, AD-2/AD-3) back the bot's authorization gate and
+answer history. A `users` row is provisioned on first Telegram contact with
+`registered = false`; there is no in-app tooling to flip it — the project owner does
+so with a direct `UPDATE users SET registered = true WHERE telegram_user_id = ...`
+(spec 0016 Non-Goals). `quiz_answers.user_id`/`quiz_id` are surrogate FKs, never
+resolved to a Python value anywhere in the design; `session_id` is a plain `TEXT` tag,
+not a FK, since nothing needs session-level metadata beyond grouping answers by it —
+it is the same opaque seed the bot's `QuizSession` already carries (spec 0015, AD-2).
+`user_answer` stores only the raw submitted boolean: correctness is always derived by
+joining back to `quiz_questions.correct_answer` at read time (`QuizAnswerRepository
+.session_summary`), never cached, so it cannot drift out of sync — the same rule
+AD-3 already applies to answer-checking elsewhere in this spec. No deduplication: the
+same question answered twice (same or different session) produces two rows.
 
 No index exists on any embedding column (no ivfflat/hnsw) — vector search runs as
 an exact `<=>` scan. No index yet on the `TEXT[]` metadata columns (GIN/FTS
@@ -496,3 +527,14 @@ brought that ADR in under number 0020, colliding with this branch's own pre-exis
 ADR 0020 (`dual-agents-dir-single-sourced-by-env-var.md`); renumbered the merged-in one
 to ADR 0025 (`0020-dual-agents-dir...` keeps its original number, per the ADR-numbering
 collision rule — the later-merged one renumbers).*
+
+*Last updated: 2026-09-18 — verified against commit `68575993` (spec 0016, bot user
+authorization & answer history, db-schema + backend plans). Two new tables: `users`
+(Telegram whitelist, `registered` flipped manually, no in-app tooling by design) and
+`quiz_answers` (one row per submitted answer, surrogate FKs to `users`/`quiz_questions`,
+`session_id` a plain `TEXT` tag copied from the bot's `QuizSession` seed, no
+deduplication). `AppConfig` gained `users_table`/`quiz_answers_table` fields, matching
+every other table-name field's convention. Existing integration-test FK-truncate fixture
+lists (`tests/guidami_ai_patente/api/routers/test_quiz_questions.py` and siblings) had to
+widen to include `quiz_answers` once its FK into `quiz_questions` landed — see
+`testing.md` for the fixture-list convention this confirms.*

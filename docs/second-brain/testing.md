@@ -290,3 +290,36 @@ test exercising an endpoint must therefore go through `tests/conftest.py::api_cl
 its own `TestClient`. `wire()` had no such hazard: it bound eagerly at call time. The
 `object.__new__` container-bypass pattern for pure-unit tests of `Autowired`-only classes
 (2026-08-26 entry above) is unaffected — it never touches the app or its lifespan.*
+
+*Last updated: 2026-09-18 — verified against commit `68575993` (spec 0016, bot user
+authorization & answer history). Documented the FK-truncate fixture-list convention
+(every existing fixture truncating a table `quiz_answers` now FK-references had to add
+it to its tuple) and the new function-scoped `registered_headers` fixture
+(`tests/conftest.py`) that truncates/seeds a `registered = true` `users` row (bracketed
+truncate before and after, same pattern every other integration fixture in that file
+uses) and yields the `X-Telegram-User-Id` header gated-endpoint tests attach to their
+`api_client` calls.*
+
+**FK-truncate fixture lists must grow with the schema.** Every integration-test fixture
+that truncates a set of tables between tests (e.g. `bank`/`cached_question`/
+`live_question`/`bank_with_image` in `tests/guidami_ai_patente/api/routers/
+test_quiz_questions.py` and its siblings in `test_quiz_images.py`/
+`test_quiz_explanation.py`) names its tables as an explicit tuple passed to
+`PostgresClient.truncate(*table_names)` — required, not just convenient, since Postgres
+refuses to `TRUNCATE` a table another live table's FK references unless the referencing
+table is named in the same statement (`database.md`'s `PostgresClient.truncate()`
+paragraph). When `quiz_answers` gained an FK into `quiz_questions` (spec 0016), every
+one of these fixtures had to add `"quiz_answers"` to its tuple — otherwise the fixture's
+own teardown/setup `TRUNCATE` fails with `psycopg.errors.FeatureNotSupported`,
+independent of and unrelated to whatever the test itself is checking. Adding a new table
+with a live FK into an already-truncated table is therefore not purely additive: search
+`tests/` for that referenced table's existing truncate-fixture tuples and widen them in
+the same change, or every integration test touching that fixture breaks for a reason
+that has nothing to do with the change being made.
+
+`tests/conftest.py` gained a `registered_headers` fixture (spec 0016) — the
+`{"X-Telegram-User-Id": ...}` header dict every gated-endpoint integration test now
+attaches to its `api_client` calls, after seeding the corresponding `users` row with
+`registered = true`. An unregistered/absent header is what the auth-gate tests
+(`tests/guidami_ai_patente/api/dependencies/test_user_identity.py`,
+`tests/guidami_ai_patente/api/test_exception_handlers.py`) exercise instead.
