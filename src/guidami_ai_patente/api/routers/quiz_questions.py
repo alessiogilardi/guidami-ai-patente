@@ -9,7 +9,12 @@ from pywire import Autowired
 from domain.entities.users import UserEntity
 from guidami_ai_patente.mappers import ExplanationMapper, QuizQuestionMapper
 from guidami_ai_patente.models import ExplanationRequest, QuizAnswerCheckRequest
-from guidami_ai_patente.services import ExplanationService, QuizAnswerChecker, QuizProposalService
+from guidami_ai_patente.services import (
+    ExplanationService,
+    LabelingService,
+    QuizAnswerChecker,
+    QuizProposalService,
+)
 
 from ..dependencies.user_identity import require_registered_user
 from ..schemas.quiz_check import QuizCheckRequest, QuizCheckResponse
@@ -90,6 +95,21 @@ async def check_answer(
         ),
     )
     return QuizCheckResponse(correct=correct, explanation_status=explanation_status)
+
+
+@router.post("/{number}/label", status_code=204)
+async def label_question(
+    number: str, user: _RequireRegisteredUser, service: Autowired[LabelingService]
+) -> None:
+    """Ensures a current comma labeling exists for `number` (FR-4, spec 0017).
+
+    No response body on success: the caller (the bot's "Spiega" tap, AD-5) always
+    follows this with `GET /{number}/explanation` regardless of the outcome, so
+    there is nothing for a client to branch on here. `LabelingService` raises
+    `QuestionNotFoundError` for an unknown `number`, mapped to 404 the same way
+    `/check` and `/explanation` already are.
+    """
+    await service(number)
 
 
 @router.get("/{number}/explanation", response_model=QuizExplanationResponse)

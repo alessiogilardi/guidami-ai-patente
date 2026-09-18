@@ -16,10 +16,9 @@ from guidami_ai_patente.agents.explanation_writer.dto import (
     ExplanationWriterResponse,
 )
 from guidami_ai_patente.clients import PostgresClientProvider
-from guidami_ai_patente.providers import LabelingStackProvider, LiveLabelingStackProvider
+from guidami_ai_patente.providers import LabelingStackProvider
 from guidami_ai_patente.services import ExplanationService
 from labeling import EMBEDDING_MODEL_COLUMN
-from labeling.agents.comma_labeler.dto import CommaLabelerRequest, CommaLabelerResponse
 
 _TABLES = (
     "quiz_comma_labels",
@@ -45,20 +44,6 @@ class _WriterDouble:
         return ExplanationWriterResponse(
             explanation="La sosta è vietata perché la norma lo prevede.",
             cited_comma_numbers=[1],
-        )
-
-
-@dataclass
-class _JudgeDouble:
-    """Stands in for `CommaLabelerAgent` on a genuine cache miss (composed AD-29 test)."""
-
-    ordinals: list[int]
-    calls: int = 0
-
-    async def run(self, request: CommaLabelerRequest) -> CommaLabelerResponse:
-        self.calls += 1
-        return CommaLabelerResponse(
-            comma_numbers=self.ordinals, rationale="il comma giustifica la risposta"
         )
 
 
@@ -202,18 +187,6 @@ def _install_writer(monkeypatch: pytest.MonkeyPatch, writer: _WriterDouble) -> N
     monkeypatch.setattr(service, "writer", writer)
 
 
-def _install_judge(monkeypatch: pytest.MonkeyPatch, agent: _JudgeDouble) -> None:
-    """Substitutes the live judge's agent, the same substitution mechanism as the writer.
-
-    `LiveLabelingStackProvider` is built once (a container singleton), so resolving it
-    here returns the exact `QuestionLabelingService` instance `CommaSelectorService`
-    reads through its own `Autowired[LiveLabelingStackProvider]` field — patching its
-    private `_agent` reaches the object a live request actually calls.
-    """
-    provider = get_default_container().resolve(LiveLabelingStackProvider)
-    monkeypatch.setattr(provider.question_labeling, "_agent", agent)  # noqa: SLF001
-
-
 @pytest.mark.integration
 def test_a_cached_question_is_explained_with_its_citations(
     api_client: TestClient,
@@ -339,25 +312,12 @@ def test_the_check_still_reports_cached_after_a_writer_failure(
 
 
 @pytest.mark.integration
-def test_a_writer_failure_after_a_live_judge_success_keeps_the_labeling_and_caches_the_retry(
+def test_an_embedded_but_unlabeled_question_is_a_conflict(
     api_client: TestClient,
     live_question: PostgresClient,
-    monkeypatch: pytest.MonkeyPatch,
     registered_headers: dict[str, str],
 ) -> None:
-    """The plan's gate assertion 3, composed (AD-29, FR-13) — not two halves that never combine."""
-    judge = _JudgeDouble([1])
-    _install_judge(monkeypatch, judge)
-    _install_writer(monkeypatch, _WriterDouble(error=RuntimeError("provider is down")))
+    """Spec 0017 AD-4: a contract violation — POST /label should have been called first."""
+    response = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
 
-    first = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
-
-    assert first.status_code == HTTPStatus.SERVICE_UNAVAILABLE
-    remaining = int(live_question.fetch(sql.SQL("SELECT count(*) FROM quiz_labelings"))[0][0])
-    assert remaining == 1, "AD-29: the writer's failure must not roll back the judge's live write"
-
-    _install_writer(monkeypatch, _WriterDouble())
-    second = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
-
-    assert second.status_code == HTTPStatus.OK
-    assert judge.calls == 1, "the retry must be a cache hit, not a second live judge run"
+    assert response.status_code == HTTPStatus.CONFLICT
