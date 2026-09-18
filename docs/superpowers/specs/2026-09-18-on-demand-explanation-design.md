@@ -79,21 +79,33 @@ offered.
 
 ### FR-3: Tapping "Spiega" ensures the labeling, then renders the explanation, then edits the message in place
 
-On tap, the bot calls, in sequence and awaited: `POST
+On tap, the bot first edits the message optimistically — before calling
+anything — removing "Spiega" from the keyboard (keeping "Prossima domanda
+▶") and appending a loading line ("⏳ Generando spiegazione...") to the
+text/caption. It then calls, in sequence and awaited: `POST
 /quiz-questions/{number}/label`, then `GET
-/quiz-questions/{number}/explanation`. The original message (containing the
-question and the grade) is then edited to append the explanation (or the
-existing "no explanation available" line on failure), and the keyboard is
-replaced with just "Prossima domanda ▶".
+/quiz-questions/{number}/explanation`. The message is edited a second time
+to replace the loading line with the explanation (or the existing "no
+explanation available" line on failure), keeping the keyboard at just
+"Prossima domanda ▶" (already the state after the first edit).
+
+"Prossima domanda ▶" is never disabled during this wait: the user may tap
+it while the explanation is still loading for the previous question. The
+in-flight `/label`→`/explanation` sequence still completes and performs its
+final edit on that now-superseded message — harmless, since the user has
+already moved on and the edit has no effect on the new question's flow.
 
 ### FR-4: `POST /quiz-questions/{number}/label` ensures a current comma labeling exists
 
-New endpoint. It computes a labeling live (retrieval + judge + write) only
-if none is already current for the question under the active epoch;
-otherwise it is a cache read with no retrieval and no judge call
-(idempotent). It reuses the existing `CommaSelectorService`
+New endpoint, returning `204 No Content` on success. It computes a labeling
+live (retrieval + judge + write) only if none is already current for the
+question under the active epoch; otherwise it is a cache read with no
+retrieval and no judge call (idempotent). It reuses the existing
+`CommaSelectorService`
 (`src/guidami_ai_patente/services/comma_selector_service.py:22-133`)
-unchanged.
+unchanged. It runs under its own explicit deadline (see AD-10); exceeding it
+is a `503`, handled by the bot exactly like any other failure of this
+endpoint (see AD-12).
 
 ### FR-5: `GET /quiz-questions/{number}/explanation` never triggers labeling
 
@@ -105,7 +117,8 @@ by the caller, a contract violation in the intended flow), it fails
 explicitly rather than silently computing the labeling itself (see AD-4).
 The existing "insufficient knowledge" outcome (a labeling exists but the
 judge found no supporting commas, or the question was never indexed at all)
-is unchanged.
+is unchanged. Its own deadline shrinks accordingly, now covering only the
+writer stage (see AD-11).
 
 ### FR-6: `POST /check`'s `explanation_status` reaches the bot
 
@@ -236,6 +249,56 @@ handler can decide whether to render the "Spiega" button.
   explain, `UNAVAILABLE` (no button shown), and a `QuizApiError` from either
   `/label` or `/explanation` (fallback rendering).
 
+### AD-10: `/label` runs under its own explicit deadline, covering retrieval+judge
+
+Rather than relying only on the bot's HTTP client timeout (which would
+leave the judge running server-side after the bot gives up on the
+connection), `/label`'s implementation wraps the `CommaSelectorService`
+call in `asyncio.timeout`, the same pattern `ExplanationService._explain`
+uses today (`explanation_service.py:83-95`). The config value is a new
+`AppConfig` field (exact name left to implementation, e.g.
+`labeling_deadline_s`), replacing the retrieval+judge portion of today's
+`explanation_deadline_s`. Exceeding it raises the existing
+`ExplanationUnavailableError`, mapped to `503`, unchanged.
+
+### AD-11: `/explanation`'s deadline shrinks to cover only the writer stage
+
+With retrieval+judge moved to `/label`, `/explanation`'s own deadline no
+longer needs to budget for the ~11k-token judge call — only
+`ExplanationWriterAgent.run` and its citation-grounding retries
+(`explanation_service.py:126-159`). This is a new, much shorter `AppConfig`
+value (exact name left to implementation), replacing `explanation_deadline_s`
+for this endpoint.
+
+### AD-12: One unified failure fallback, no distinction by cause
+
+A `/label` timeout (AD-10), a judge failure, a writer failure, and the new
+`LabelingNotReadyError` (AD-4) all reach the bot as some `QuizApiError` and
+all render the same existing fallback (`messages.NO_EXPLANATION_LINE`, no
+retry affordance) — the same treatment `handle_answer` already gives an
+`/explanation` failure today (`quiz_flow_service.py:56-63`). Deliberately
+not split into "transient, retry" vs. "permanent, no retry": kept simple
+per this project's stated "simple even at some cost" priority (spec 0016),
+revisited only if it proves confusing in practice.
+
+### AD-13: Optimistic UI update on tap prevents a double-tap on "Spiega"
+
+The first edit (FR-3) — removing "Spiega" from the keyboard and adding the
+loading line — happens before `/label` is even called, so a second tap on
+the same message cannot happen: the button is gone from the message the
+moment the first tap is handled. This is simpler than any request-level
+guard (in-flight tracking, idempotency key) and needs no new bot-side
+state.
+
+### AD-14: "Prossima domanda ▶" stays active during the loading wait
+
+Deliberately not disabled alongside "Spiega" (AD-13): the user is free to
+move on while an explanation loads for the previous question. The
+in-flight sequence's final edit still lands on the now-superseded message
+when it completes — a cosmetic no-op from the user's point of view, not a
+correctness issue, since nothing about the new question's flow depends on
+that edit.
+
 ## Note for future work
 
 The user explicitly asked that this be recorded: endpoints — and the
@@ -255,12 +318,11 @@ tables through the existing `GoldenSetReadRepository`/`GoldenSetWriteRepository`
 
 ## Constraints
 
-- `ExplanationService`'s per-request deadline
-  (`AppConfig.explanation_deadline_s`, `explanation_service.py:39-55, 84`)
-  no longer needs to cover the judge stage (that moved to `/label`), but
-  removing/narrowing it is an implementation detail, not a scope change —
-  `/label` itself has no documented deadline today and this spec does not
-  add one.
+- `AppConfig.explanation_deadline_s` (`explanation_service.py:39-55, 84`)
+  is replaced by two new values per AD-10/AD-11: one for `/label`
+  (retrieval+judge, similar magnitude to today's ~25s) and one for
+  `/explanation` (writer only, much shorter). Exact field names are left to
+  implementation.
 - Router bodies stay thin controllers — no `try/except` or status-code
   mapping in `api/routers/quiz_questions.py` (existing convention, e.g.
   `quiz_questions.py:75-118`); the new `LabelingNotReadyError` → 409 mapping
@@ -286,8 +348,8 @@ tables through the existing `GoldenSetReadRepository`/`GoldenSetWriteRepository`
 
 ## Open Questions
 
-- [ ] **non-blocking** — exact response body of `POST /label` (e.g. echoing the resulting status, or `204 No Content`) — left to implementation, does not affect any FR.
 - [ ] **non-blocking** — exact name and method shape of `CommaSelectionReader` (or equivalent) — left to implementation; this spec fixes only its responsibility boundary (AD-3).
+- [ ] **non-blocking** — exact `AppConfig` field names for the two new deadlines (AD-10, AD-11) — left to implementation.
 
 ## Sign-off
 
@@ -297,3 +359,12 @@ tables through the existing `GoldenSetReadRepository`/`GoldenSetWriteRepository`
 ## Changelog
 
 - **2026-09-18** — Initial draft, from an interactive `superpowers:brainstorming` session.
+- **2026-09-18** — Amended after a `mattpocock-skills:grilling` round (AD-10
+  through AD-14, plus FR-3/FR-4/FR-5 and Constraints updates): split
+  `explanation_deadline_s` into a `/label`-side deadline (retrieval+judge)
+  and a much shorter `/explanation`-side deadline (writer only); confirmed
+  `/label` returns `204 No Content`; confirmed one unified failure fallback
+  covers `/label` timeouts too, with no retry affordance; added the
+  optimistic UI edit (remove "Spiega", show a loading line) on tap to
+  prevent a double-tap, with "Prossima domanda ▶" deliberately left active
+  during the wait. Non-material amendment — status stays draft.
