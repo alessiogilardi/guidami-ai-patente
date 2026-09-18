@@ -11,7 +11,11 @@ from guidami_ai_patente.agents.explanation_writer.dto import (
     ExplanationWriterResponse,
 )
 from guidami_ai_patente.enums import ExplanationResult, InsufficientKnowledgeReason
-from guidami_ai_patente.exceptions import ExplanationUnavailableError, QuestionNotFoundError
+from guidami_ai_patente.exceptions import (
+    ExplanationUnavailableError,
+    LabelingNotReadyError,
+    QuestionNotFoundError,
+)
 from guidami_ai_patente.models import (
     CommaSelection,
     CurrentLabeling,
@@ -56,7 +60,7 @@ class _QuestionsDouble:
 
 
 @dataclass
-class _SelectorDouble:
+class _ReaderDouble:
     selection: CommaSelection = field(default_factory=lambda: CommaSelection(labeling=None))
     calls: list[str] = field(default_factory=list)
 
@@ -84,14 +88,14 @@ class _ConfigDouble:
 
 
 def _service(
-    selector: _SelectorDouble,
+    reader: _ReaderDouble,
     writer: _WriterDouble,
     questions: _QuestionsDouble | None = None,
 ) -> ExplanationService:
     service = object.__new__(ExplanationService)
     service.config = _ConfigDouble()  # type: ignore[assignment]
     service.questions = questions or _QuestionsDouble()  # type: ignore[assignment]
-    service.selector = selector  # type: ignore[assignment]
+    service.reader = reader  # type: ignore[assignment]
     service.writer = writer  # type: ignore[assignment]
     return service
 
@@ -105,7 +109,7 @@ def _explained(ordinals: list[int]) -> ExplanationWriterResponse:
 
 @pytest.mark.asyncio
 async def test_an_unknown_question_is_a_404() -> None:
-    service = _service(_SelectorDouble(), _WriterDouble(), _QuestionsDouble(context=None))
+    service = _service(_ReaderDouble(), _WriterDouble(), _QuestionsDouble(context=None))
 
     with pytest.raises(QuestionNotFoundError):
         await service(ExplanationRequest(number="9999"))
@@ -116,7 +120,7 @@ async def test_labeled_commas_are_rendered_and_cited() -> None:
     selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1), _comma(2)))
     writer = _WriterDouble(responses=[_explained([1, 2])])
 
-    explanation = await _service(_SelectorDouble(selection), writer)(
+    explanation = await _service(_ReaderDouble(selection), writer)(
         ExplanationRequest(number="0001")
     )
 
@@ -133,7 +137,7 @@ async def test_the_provenance_of_the_used_labeling_is_returned() -> None:
     )
     writer = _WriterDouble(responses=[_explained([1])])
 
-    explanation = await _service(_SelectorDouble(selection), writer)(
+    explanation = await _service(_ReaderDouble(selection), writer)(
         ExplanationRequest(number="0001")
     )
 
@@ -150,7 +154,7 @@ async def test_the_writer_receives_only_the_labeled_commas() -> None:
     selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
     writer = _WriterDouble(responses=[_explained([1])])
 
-    await _service(_SelectorDouble(selection), writer)(ExplanationRequest(number="0001"))
+    await _service(_ReaderDouble(selection), writer)(ExplanationRequest(number="0001"))
 
     assert len(writer.requests[0].commas) == 1
 
@@ -160,7 +164,7 @@ async def test_the_writer_receives_the_question_answer_and_image_description() -
     selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
     writer = _WriterDouble(responses=[_explained([1])])
 
-    await _service(_SelectorDouble(selection), writer)(ExplanationRequest(number="0001"))
+    await _service(_ReaderDouble(selection), writer)(ExplanationRequest(number="0001"))
 
     sent = writer.requests[0]
     assert (sent.quiz_text, sent.correct_answer, sent.image_description) == (
@@ -176,7 +180,7 @@ async def test_the_submitted_answer_reaches_the_writer() -> None:
     selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
     writer = _WriterDouble(responses=[_explained([1])])
 
-    await _service(_SelectorDouble(selection), writer)(
+    await _service(_ReaderDouble(selection), writer)(
         ExplanationRequest(number="0001", submitted=False)
     )
 
@@ -189,7 +193,7 @@ async def test_an_omitted_submitted_answer_is_served_normally() -> None:
     selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
     writer = _WriterDouble(responses=[_explained([1])])
 
-    explanation = await _service(_SelectorDouble(selection), writer)(
+    explanation = await _service(_ReaderDouble(selection), writer)(
         ExplanationRequest(number="0001")
     )
 
@@ -202,7 +206,7 @@ async def test_an_empty_verdict_refuses_without_calling_the_writer() -> None:
     """FR-7: the writer is never invoked without supporting commas."""
     writer = _WriterDouble()
 
-    explanation = await _service(_SelectorDouble(CommaSelection(labeling=_labeling())), writer)(
+    explanation = await _service(_ReaderDouble(CommaSelection(labeling=_labeling())), writer)(
         ExplanationRequest(number="0001")
     )
 
@@ -214,7 +218,7 @@ async def test_an_empty_verdict_refuses_without_calling_the_writer() -> None:
 @pytest.mark.asyncio
 async def test_a_non_validated_empty_verdict_reads_no_supporting_norm() -> None:
     explanation = await _service(
-        _SelectorDouble(CommaSelection(labeling=_labeling())), _WriterDouble()
+        _ReaderDouble(CommaSelection(labeling=_labeling())), _WriterDouble()
     )(ExplanationRequest(number="0001"))
 
     assert explanation.reason is InsufficientKnowledgeReason.NO_SUPPORTING_NORM
@@ -224,7 +228,7 @@ async def test_a_non_validated_empty_verdict_reads_no_supporting_norm() -> None:
 @pytest.mark.asyncio
 async def test_a_validated_empty_verdict_reads_confirmed() -> None:
     explanation = await _service(
-        _SelectorDouble(CommaSelection(labeling=_labeling(validated=True))), _WriterDouble()
+        _ReaderDouble(CommaSelection(labeling=_labeling(validated=True))), _WriterDouble()
     )(ExplanationRequest(number="0001"))
 
     assert explanation.reason is InsufficientKnowledgeReason.NO_SUPPORTING_NORM_CONFIRMED
@@ -233,7 +237,7 @@ async def test_a_validated_empty_verdict_reads_confirmed() -> None:
 @pytest.mark.asyncio
 async def test_no_labeling_at_all_reads_not_indexed_with_no_rationale() -> None:
     """FR-7: a pipeline gap, distinct from a corpus gap, and there is no judge to quote."""
-    explanation = await _service(_SelectorDouble(CommaSelection(labeling=None)), _WriterDouble())(
+    explanation = await _service(_ReaderDouble(CommaSelection(labeling=None)), _WriterDouble())(
         ExplanationRequest(number="0001")
     )
 
@@ -248,7 +252,7 @@ async def test_an_out_of_range_citation_is_retried_then_becomes_a_503() -> None:
     writer = _WriterDouble(responses=[_explained([4]), _explained([9]), _explained([7])])
 
     with pytest.raises(ExplanationUnavailableError):
-        await _service(_SelectorDouble(selection), writer)(ExplanationRequest(number="0001"))
+        await _service(_ReaderDouble(selection), writer)(ExplanationRequest(number="0001"))
 
     assert len(writer.requests) == 3
 
@@ -258,7 +262,7 @@ async def test_a_retry_that_cites_correctly_is_accepted() -> None:
     selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
     writer = _WriterDouble(responses=[_explained([5]), _explained([1])])
 
-    explanation = await _service(_SelectorDouble(selection), writer)(
+    explanation = await _service(_ReaderDouble(selection), writer)(
         ExplanationRequest(number="0001")
     )
 
@@ -273,7 +277,7 @@ async def test_a_writer_failure_becomes_a_503() -> None:
     writer = _WriterDouble(error=RuntimeError("provider is down"))
 
     with pytest.raises(ExplanationUnavailableError):
-        await _service(_SelectorDouble(selection), writer)(ExplanationRequest(number="0001"))
+        await _service(_ReaderDouble(selection), writer)(ExplanationRequest(number="0001"))
 
 
 @pytest.mark.asyncio
@@ -309,7 +313,7 @@ async def test_exceeding_the_deadline_with_a_slow_writer_becomes_a_503() -> None
             return _explained([1])
 
     selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
-    service = _service(_SelectorDouble(selection), _SlowWriter())  # type: ignore[arg-type]
+    service = _service(_ReaderDouble(selection), _SlowWriter())  # type: ignore[arg-type]
     service.config = _ConfigDouble(explanation_deadline_s=0.01)  # type: ignore[assignment]
 
     started = time.monotonic()
@@ -317,3 +321,18 @@ async def test_exceeding_the_deadline_with_a_slow_writer_becomes_a_503() -> None
         await service(ExplanationRequest(number="0001"))
 
     assert time.monotonic() - started < 0.5
+
+
+@pytest.mark.asyncio
+async def test_a_labeling_not_ready_error_propagates_uncaught() -> None:
+    """Spec 0017 AD-4: a contract violation must not be reported as insufficient_knowledge."""
+
+    @dataclass
+    class _RaisingReader:
+        async def __call__(self, request: str) -> CommaSelection:
+            raise LabelingNotReadyError(request)
+
+    service = _service(_RaisingReader(), _WriterDouble())  # type: ignore[arg-type]
+
+    with pytest.raises(LabelingNotReadyError):
+        await service(ExplanationRequest(number="0001"))
