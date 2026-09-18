@@ -7,14 +7,15 @@ from pywire import Autowired, service
 
 from commons.use_cases import AsyncUseCase
 from domain.enums import LabelingRunOrigin
-from guidami_ai_patente.exceptions import ExplanationUnavailableError
-from guidami_ai_patente.models import CommaSelection, CurrentLabeling
+from guidami_ai_patente.exceptions import ExplanationUnavailableError, LabelingNotReadyError
+from guidami_ai_patente.models import CommaSelection
 from guidami_ai_patente.providers import LabelingStackProvider, LiveLabelingStackProvider
-from guidami_ai_patente.repositories import GoldenSetReadRepository
 from labeling import EMBEDDING_MODEL_COLUMN
 from labeling.configs import LabelingConfig
 from labeling.mappers import LabelingRunMapper
 from labeling.models import LabelingEpoch, QuestionLabelingRequest
+
+from .current_labeling_read_service import CurrentLabelingReadService
 
 logger = logging.getLogger(__name__)
 
@@ -23,32 +24,39 @@ logger = logging.getLogger(__name__)
 class CommaSelectorService(AsyncUseCase[str, CommaSelection]):
     """Serves the cached comma association, or computes it live and writes it through.
 
-    On a hit (FR-5) it reads the FR-8 current labeling and its comma rows and issues
-    **no** retrieval query and **no** judge call — the property the endpoint's whole
-    cost model rests on. On a miss (FR-6) it reads the precomputed query vector for the
-    epoch's variant and delegates to the shared `QuestionLabelingService`, the same unit
-    the batch pass runs, so a live labeling and a batch labeling under one epoch key are
-    genuinely interchangeable (AD-12).
+    On a hit (FR-5) `reader` — `CurrentLabelingReadService` — answers directly, no
+    retrieval query and no judge call, the property the endpoint's whole cost model
+    rests on. `reader` raising `LabelingNotReadyError` is this service's *own* signal
+    to compute live (FR-6): reads the precomputed query vector for the epoch's
+    variant and delegates to the shared `QuestionLabelingService`, the same unit the
+    batch pass runs, so a live labeling and a batch labeling under one epoch key are
+    genuinely interchangeable (AD-12). `reader`'s own `not_indexed` result (no
+    embedding at all) is returned as-is: there is nothing to compute from.
 
     Nothing is embedded at request time: `quiz_question_embeddings` already holds the
     vector for the configured variant, and recomputing it would add an embedding client
     and ~200ms for a byte-identical result (AD-13).
 
-    The labeling is re-read after the live stage rather than reconstructed from the id
-    the unit returns: the provenance block needs `rationale`, `origin`, `judge_model`
-    and `human_validated`, and re-reading gives the race's winner and its loser one code
+    The labeling is re-read (via `reader`, so its comma-loading logic is not
+    duplicated here) rather than reconstructed from the id the unit returns: the
+    provenance block needs `rationale`, `origin`, `judge_model` and
+    `human_validated`, and re-reading gives the race's winner and its loser one code
     path (AD-19) while proving FR-8's precedence agrees with what was just written.
+    If that re-read still finds nothing labeled, that is the pre-existing "written
+    labeling not readable back" anomaly, not a second miss — spelled out as
+    `ExplanationUnavailableError`, never as a second live-labeling attempt.
 
     Every failure of the judge stage becomes `ExplanationUnavailableError`, and by
-    construction leaves no golden-set row: the run id is resolved inside the shared unit
-    only after the judge answers (AD-20, FR-13). `asyncio.CancelledError` is
-    deliberately not caught — `ExplanationService`'s deadline needs it to propagate.
+    construction leaves no golden-set row: the run id is resolved inside the shared
+    unit only after the judge answers (AD-20, FR-13). `asyncio.CancelledError` is
+    deliberately not caught — `LabelingService`'s deadline needs it to propagate
+    (spec 0017, AD-10).
     """
 
     labeling_config: Autowired[LabelingConfig]
     judge_identity: Autowired[LabelingStackProvider]
     live_stack: Autowired[LiveLabelingStackProvider]
-    golden_set: Autowired[GoldenSetReadRepository]
+    reader: Autowired[CurrentLabelingReadService]
 
     async def execute(self, number: str) -> CommaSelection:
         """Returns the commas grounding a question's explanation, computing them if needed.
@@ -61,10 +69,10 @@ class CommaSelectorService(AsyncUseCase[str, CommaSelection]):
                 cannot be read back (FR-13).
         """
         epoch = self.judge_identity.epoch
-        current = await asyncio.to_thread(self.golden_set.find_current_labeling, number, epoch)
-        if current is not None:
-            return await self._selection_for(current)
-        return await self._label_live(number, epoch)
+        try:
+            return await self.reader(number)
+        except LabelingNotReadyError:
+            return await self._label_live(number, epoch)
 
     async def _label_live(self, number: str, epoch: LabelingEpoch) -> CommaSelection:
         """Runs the shared labeling unit for one question and serves the result."""
@@ -96,12 +104,12 @@ class CommaSelectorService(AsyncUseCase[str, CommaSelection]):
         if labeling_id is None:
             logger.debug("Another request labeled quiz %s first; reading its labeling", number)
 
-        current = await asyncio.to_thread(self.golden_set.find_current_labeling, number, epoch)
-        if current is None:
+        try:
+            return await self.reader(number)
+        except LabelingNotReadyError as error:
             raise ExplanationUnavailableError(
                 f"the labeling just written for question {number} is not readable back"
-            )
-        return await self._selection_for(current)
+            ) from error
 
     def _live_run_id(self, epoch: LabelingEpoch) -> int:
         """Creates or reuses the one live run for this epoch (FR-9).
@@ -117,17 +125,3 @@ class CommaSelectorService(AsyncUseCase[str, CommaSelection]):
                 corpus_comma_count=self.live_stack.corpus.comma_count(),
             )
         )
-
-    async def _selection_for(self, current: CurrentLabeling) -> CommaSelection:
-        """Reads a current labeling's commas, or reports its empty verdict."""
-        if not current.has_supporting_commas:
-            return CommaSelection(labeling=current)
-
-        commas = await asyncio.to_thread(self.golden_set.find_labeled_commas, current.id)
-        if not commas:
-            logger.warning(
-                "Labeling %d has has_supporting_commas=true but no comma rows: a corpus "
-                "delete cascaded them away (AD-10's detection hole)",
-                current.id,
-            )
-        return CommaSelection(labeling=current, commas=tuple(commas))
