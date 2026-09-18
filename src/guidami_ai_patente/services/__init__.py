@@ -2,6 +2,7 @@
 
 from .answer_evaluation import evaluate_answer
 from .comma_selector_service import CommaSelectorService
+from .current_labeling_read_service import CurrentLabelingReadService
 from .explanation_service import ExplanationService
 from .explanation_status_service import ExplanationStatusService
 from .health_check_service import HealthCheckService
@@ -13,6 +14,7 @@ from .session_summary_service import SessionSummaryService
 
 __all__ = [
     "CommaSelectorService",
+    "CurrentLabelingReadService",
     "ExplanationService",
     "ExplanationStatusService",
     "HealthCheckService",
