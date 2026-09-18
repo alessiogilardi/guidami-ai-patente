@@ -7,12 +7,13 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Message, Update
 from telegram.ext import ContextTypes
 
 from guidami_ai_patente_bot import container, messages
-from guidami_ai_patente_bot.enums import ExplanationOutcome
+from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus
 from guidami_ai_patente_bot.exceptions import StaleQuestionError
 from guidami_ai_patente_bot.models import QuizSession
 from guidami_ai_patente_bot.services import QuizFlowService
 
 ANSWER_CALLBACK_PREFIX = "quiz:answer:"
+EXPLAIN_CALLBACK_PREFIX = "quiz:explain:"
 NEXT_CALLBACK_DATA = "quiz:next"
 
 _NEXT_KEYBOARD = InlineKeyboardMarkup(
@@ -24,6 +25,10 @@ def _answer_callback_data(number: str, answer: bool) -> str:
     return f"{ANSWER_CALLBACK_PREFIX}{number}:{int(answer)}"
 
 
+def _explain_callback_data(number: str, answer: bool) -> str:
+    return f"{EXPLAIN_CALLBACK_PREFIX}{number}:{int(answer)}"
+
+
 def _question_keyboard(number: str) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
@@ -33,6 +38,23 @@ def _question_keyboard(number: str) -> InlineKeyboardMarkup:
             ]
         ]
     )
+
+
+def _answer_result_keyboard(
+    number: str, answer: bool, *, explanation_status: ExplanationStatus
+) -> InlineKeyboardMarkup:
+    """Offers "Spiega" alongside "Prossima domanda", unless there is nothing to explain.
+
+    spec 0017, FR-2: `UNAVAILABLE` means a tap would always fail, so the button is
+    not offered at all rather than offered and then shown failing.
+    """
+    rows: list[list[InlineKeyboardButton]] = []
+    if explanation_status is not ExplanationStatus.UNAVAILABLE:
+        rows.append(
+            [InlineKeyboardButton("Spiega", callback_data=_explain_callback_data(number, answer))]
+        )
+    rows.append([InlineKeyboardButton("Prossima domanda ▶", callback_data=NEXT_CALLBACK_DATA)])
+    return InlineKeyboardMarkup(rows)
 
 
 async def _send_question(
@@ -113,21 +135,26 @@ async def handle_next_callback(update: Update, context: ContextTypes.DEFAULT_TYP
     await _send_question(update.effective_chat.id, update.effective_user.id, context)
 
 
+def _parse_callback(data: str, prefix: str) -> tuple[str, bool]:
+    """Splits `{prefix}{number}:{0|1}` into the question number and the boolean flag."""
+    rest = data.removeprefix(prefix)
+    number, _, flag = rest.rpartition(":")
+    return number, flag == "1"
+
+
 async def handle_answer_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Grades a tapped answer and shows its explanation in the same turn (FR-2, FR-3)."""
+    """Grades a tapped answer and offers to explain it (FR-2, FR-3; spec 0017 FR-1, FR-2)."""
     query = update.callback_query
     assert query is not None
     assert query.data is not None
     assert update.effective_user is not None
-    rest = query.data.removeprefix(ANSWER_CALLBACK_PREFIX)
-    number, _, flag = rest.rpartition(":")
-    answer = flag == "1"
+    number, answer = _parse_callback(query.data, ANSWER_CALLBACK_PREFIX)
 
     assert context.user_data is not None
     service = container.resolve(context, QuizFlowService)
     session: QuizSession | None = context.user_data.get("session")
     try:
-        correct, explanation = await service.handle_answer(
+        correct, explanation_status = await service.handle_answer(
             session, number, answer, update.effective_user.id
         )
     except StaleQuestionError:
@@ -135,16 +162,56 @@ async def handle_answer_callback(update: Update, context: ContextTypes.DEFAULT_T
         return
 
     await query.answer()
-    outcome_line = messages.outcome_line(correct)
+    text = messages.outcome_line(correct)
+    keyboard = _answer_result_keyboard(number, answer, explanation_status=explanation_status)
+
+    message = cast(Message, query.message)
+    if message.photo:
+        await query.edit_message_caption(caption=text, reply_markup=keyboard)
+    else:
+        await query.edit_message_text(text=text, reply_markup=keyboard)
+
+
+async def handle_explain_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Ensures the labeling, fetches the explanation, and appends it in place (spec 0017 FR-3).
+
+    Edits the message twice: an optimistic edit first (loading line, "Spiega"
+    removed from the keyboard — AD-13, prevents a double-tap), then a final edit
+    once `label` and `explanation` have both completed, in sequence.
+    """
+    query = update.callback_query
+    assert query is not None
+    assert query.data is not None
+    assert update.effective_user is not None
+    number, answer = _parse_callback(query.data, EXPLAIN_CALLBACK_PREFIX)
+
+    assert context.user_data is not None
+    session: QuizSession | None = context.user_data.get("session")
+    if session is None or session.current_question_number != number:
+        await query.answer(messages.STALE_NOTICE)
+        return
+
+    await query.answer()
+    message = cast(Message, query.message)
+    base_text = message.caption if message.photo else message.text
+    loading_text = f"{base_text}\n\n{messages.LOADING_EXPLANATION_LINE}"
+    if message.photo:
+        await query.edit_message_caption(caption=loading_text, reply_markup=_NEXT_KEYBOARD)
+    else:
+        await query.edit_message_text(text=loading_text, reply_markup=_NEXT_KEYBOARD)
+
+    service = container.resolve(context, QuizFlowService)
+    explanation = await service.handle_explanation_request(
+        number, update.effective_user.id, answer
+    )
+
     explanation_line = (
         messages.NO_EXPLANATION_LINE
         if explanation.status is ExplanationOutcome.INSUFFICIENT_KNOWLEDGE
         else (explanation.explanation or "")
     )
-    text = f"{outcome_line}\n\n{explanation_line}"
-
-    message = cast(Message, query.message)
+    final_text = f"{base_text}\n\n{explanation_line}"
     if message.photo:
-        await query.edit_message_caption(caption=text, reply_markup=_NEXT_KEYBOARD)
+        await query.edit_message_caption(caption=final_text, reply_markup=_NEXT_KEYBOARD)
     else:
-        await query.edit_message_text(text=text, reply_markup=_NEXT_KEYBOARD)
+        await query.edit_message_text(text=final_text, reply_markup=_NEXT_KEYBOARD)

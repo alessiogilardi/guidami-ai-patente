@@ -1,4 +1,4 @@
-"""Telegram handlers are thin controllers over QuizFlowService (AD-5, spec 0016)."""
+"""Telegram handlers are thin controllers over QuizFlowService (AD-5, spec 0016, spec 0017)."""
 
 from dataclasses import dataclass, field
 from types import SimpleNamespace
@@ -6,12 +6,14 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-from guidami_ai_patente_bot import container
-from guidami_ai_patente_bot.enums import ExplanationOutcome
+from guidami_ai_patente_bot import container, messages
+from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus
 from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
 from guidami_ai_patente_bot.handlers.quiz_handlers import (
     ANSWER_CALLBACK_PREFIX,
+    EXPLAIN_CALLBACK_PREFIX,
     handle_answer_callback,
+    handle_explain_callback,
     handle_next_callback,
     quiz_command,
     start_command,
@@ -37,10 +39,12 @@ class _FlowServiceDouble:
         )
     )
     correct: bool = True
+    explanation_status: ExplanationStatus = ExplanationStatus.CACHED
     raise_stale: bool = False
     registered: bool = True
     propose_calls: list[int] = field(default_factory=list)
     handle_answer_calls: list[tuple[str, bool, int]] = field(default_factory=list)
+    explanation_request_calls: list[tuple[str, int, bool]] = field(default_factory=list)
     registration_calls: list[int] = field(default_factory=list)
     summary: SessionSummary = field(default_factory=lambda: SessionSummary(answered=0, correct=0))
     raise_summary_error: bool = False
@@ -59,11 +63,17 @@ class _FlowServiceDouble:
 
     async def handle_answer(
         self, session: QuizSession | None, number: str, answer: bool, telegram_user_id: int
-    ) -> tuple[bool, QuizExplanation]:
+    ) -> tuple[bool, ExplanationStatus]:
         self.handle_answer_calls.append((number, answer, telegram_user_id))
         if self.raise_stale:
             raise StaleQuestionError(number)
-        return self.correct, self.explanation
+        return self.correct, self.explanation_status
+
+    async def handle_explanation_request(
+        self, number: str, telegram_user_id: int, submitted: bool
+    ) -> QuizExplanation:
+        self.explanation_request_calls.append((number, telegram_user_id, submitted))
+        return self.explanation
 
     async def download_image(self, image_url: str, telegram_user_id: int) -> bytes:
         return b"image-bytes"
@@ -105,9 +115,17 @@ def _update(chat_id: int = 123, user_id: int = _TELEGRAM_USER_ID) -> SimpleNames
 
 
 def _callback_update(
-    data: str, *, has_photo: bool = False, user_id: int = _TELEGRAM_USER_ID
+    data: str,
+    *,
+    has_photo: bool = False,
+    user_id: int = _TELEGRAM_USER_ID,
+    text: str = "❌ Risposta sbagliata.",
 ) -> tuple[SimpleNamespace, SimpleNamespace]:
-    message = SimpleNamespace(photo=(b"x",) if has_photo else ())
+    message = SimpleNamespace(
+        photo=(b"x",) if has_photo else (),
+        text=None if has_photo else text,
+        caption=text if has_photo else None,
+    )
     query = SimpleNamespace(
         data=data,
         message=message,
@@ -125,6 +143,10 @@ def _callback_update(
 
 def _question() -> QuizQuestion:
     return QuizQuestion(number="0001", topic="segnaletica", text="Domanda?", image_url=None)
+
+
+def _button_texts(keyboard: object) -> list[str]:
+    return [button.text for row in keyboard.inline_keyboard for button in row]  # type: ignore[attr-defined]
 
 
 @pytest.mark.asyncio
@@ -189,9 +211,14 @@ async def test_next_callback_acks_then_proposes_a_question() -> None:
 
 
 @pytest.mark.asyncio
-async def test_a_valid_answer_edits_the_text_message_with_the_outcome() -> None:
+async def test_a_valid_answer_edits_the_text_message_with_the_outcome_and_offers_to_explain() -> (
+    None
+):
+    """Spec 0017 FR-1: the explanation is not shown yet, only the outcome and the buttons."""
     question = QuizQuestion(number="0001", topic="segnaletica", text="Domanda?", image_url=None)
-    double = _FlowServiceDouble(question=question, correct=True)
+    double = _FlowServiceDouble(
+        question=question, correct=True, explanation_status=ExplanationStatus.CACHED
+    )
     context = _context(double)
     context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
     update, query = _callback_update(f"{ANSWER_CALLBACK_PREFIX}0001:1")
@@ -199,16 +226,31 @@ async def test_a_valid_answer_edits_the_text_message_with_the_outcome() -> None:
     await handle_answer_callback(update, context)
 
     query.edit_message_text.assert_awaited_once()
-    assert "corretta" in query.edit_message_text.call_args.kwargs["text"]
+    call = query.edit_message_text.call_args
+    assert "corretta" in call.kwargs["text"]
     assert double.handle_answer_calls == [("0001", True, _TELEGRAM_USER_ID)]
+    assert double.explanation_request_calls == [], "spec 0017: no explanation fetched on grading"
+    assert _button_texts(call.kwargs["reply_markup"]) == ["Spiega", "Prossima domanda ▶"]
+
+
+@pytest.mark.asyncio
+async def test_an_unavailable_explanation_status_omits_the_spiega_button() -> None:
+    double = _FlowServiceDouble(
+        question=_question(), correct=True, explanation_status=ExplanationStatus.UNAVAILABLE
+    )
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(f"{ANSWER_CALLBACK_PREFIX}0001:1")
+
+    await handle_answer_callback(update, context)
+
+    call = query.edit_message_text.call_args
+    assert _button_texts(call.kwargs["reply_markup"]) == ["Prossima domanda ▶"]
 
 
 @pytest.mark.asyncio
 async def test_a_valid_answer_on_a_photo_message_edits_the_caption() -> None:
-    question = QuizQuestion(
-        number="0001", topic="segnaletica", text="Domanda?", image_url="/x.jpg"
-    )
-    context = _context(_FlowServiceDouble(question=question, correct=False))
+    context = _context(_FlowServiceDouble(question=_question(), correct=False))
     context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
     update, query = _callback_update(f"{ANSWER_CALLBACK_PREFIX}0001:0", has_photo=True)
 
@@ -219,26 +261,8 @@ async def test_a_valid_answer_on_a_photo_message_edits_the_caption() -> None:
 
 
 @pytest.mark.asyncio
-async def test_insufficient_knowledge_shows_the_fallback_line() -> None:
-    question = QuizQuestion(number="0001", topic="segnaletica", text="Domanda?", image_url=None)
-    explanation = QuizExplanation(
-        status=ExplanationOutcome.INSUFFICIENT_KNOWLEDGE, explanation=None
-    )
-    context = _context(
-        _FlowServiceDouble(question=question, explanation=explanation, correct=True)
-    )
-    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
-    update, query = _callback_update(f"{ANSWER_CALLBACK_PREFIX}0001:1")
-
-    await handle_answer_callback(update, context)
-
-    assert "Nessuna spiegazione" in query.edit_message_text.call_args.kwargs["text"]
-
-
-@pytest.mark.asyncio
 async def test_a_stale_answer_gets_a_notice_and_no_edit() -> None:
-    question = QuizQuestion(number="0001", topic="segnaletica", text="Domanda?", image_url=None)
-    context = _context(_FlowServiceDouble(question=question, raise_stale=True))
+    context = _context(_FlowServiceDouble(question=_question(), raise_stale=True))
     context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
     update, query = _callback_update(f"{ANSWER_CALLBACK_PREFIX}0002:1")
 
@@ -248,6 +272,75 @@ async def test_a_stale_answer_gets_a_notice_and_no_edit() -> None:
     assert "non è più valida" in query.answer.call_args.args[0]
     query.edit_message_text.assert_not_awaited()
     query.edit_message_caption.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_explain_callback_shows_a_loading_line_then_the_explanation() -> None:
+    """Spec 0017 FR-3, AD-13: optimistic edit first, then the real explanation."""
+    explanation = QuizExplanation(status=ExplanationOutcome.EXPLAINED, explanation="perché...")
+    double = _FlowServiceDouble(explanation=explanation, question=_question())
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(
+        f"{EXPLAIN_CALLBACK_PREFIX}0001:1", text="❌ Risposta sbagliata."
+    )
+
+    await handle_explain_callback(update, context)
+
+    assert query.edit_message_text.await_count == 2
+    first_call, second_call = query.edit_message_text.await_args_list
+    assert messages.LOADING_EXPLANATION_LINE in first_call.kwargs["text"]
+    assert "❌ Risposta sbagliata." in first_call.kwargs["text"]
+    assert _button_texts(first_call.kwargs["reply_markup"]) == ["Prossima domanda ▶"]
+    assert "perché..." in second_call.kwargs["text"]
+    assert "❌ Risposta sbagliata." in second_call.kwargs["text"]
+    assert double.explanation_request_calls == [("0001", _TELEGRAM_USER_ID, True)]
+
+
+@pytest.mark.asyncio
+async def test_explain_callback_on_a_photo_message_edits_the_caption_twice() -> None:
+    double = _FlowServiceDouble(question=_question())
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(f"{EXPLAIN_CALLBACK_PREFIX}0001:1", has_photo=True)
+
+    await handle_explain_callback(update, context)
+
+    assert query.edit_message_caption.await_count == 2
+    query.edit_message_text.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_explain_callback_insufficient_knowledge_shows_the_fallback_line() -> None:
+    explanation = QuizExplanation(
+        status=ExplanationOutcome.INSUFFICIENT_KNOWLEDGE, explanation=None
+    )
+    double = _FlowServiceDouble(explanation=explanation, question=_question())
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(f"{EXPLAIN_CALLBACK_PREFIX}0001:1")
+
+    await handle_explain_callback(update, context)
+
+    _, second_call = query.edit_message_text.await_args_list
+    assert messages.NO_EXPLANATION_LINE in second_call.kwargs["text"]
+
+
+@pytest.mark.asyncio
+async def test_a_stale_explain_tap_gets_a_notice_and_no_edit_at_all() -> None:
+    """The optimistic edit must not fire for a question the chat has moved past (AD-13)."""
+    double = _FlowServiceDouble(question=_question())
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(f"{EXPLAIN_CALLBACK_PREFIX}0002:1")
+
+    await handle_explain_callback(update, context)
+
+    query.answer.assert_awaited_once()
+    assert "non è più valida" in query.answer.call_args.args[0]
+    query.edit_message_text.assert_not_awaited()
+    query.edit_message_caption.assert_not_awaited()
+    assert double.explanation_request_calls == []
 
 
 @pytest.mark.asyncio
