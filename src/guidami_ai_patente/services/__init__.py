@@ -7,6 +7,7 @@ from .explanation_service import ExplanationService
 from .explanation_status_service import ExplanationStatusService
 from .health_check_service import HealthCheckService
 from .judge_coherence_checker import JudgeCoherenceChecker
+from .labeling_service import LabelingService
 from .quiz_answer_checker import QuizAnswerChecker
 from .quiz_image_service import QuizImageService
 from .quiz_proposal_service import QuizProposalService
@@ -19,6 +20,7 @@ __all__ = [
     "ExplanationStatusService",
     "HealthCheckService",
     "JudgeCoherenceChecker",
+    "LabelingService",
     "QuizAnswerChecker",
     "QuizImageService",
     "QuizProposalService",
