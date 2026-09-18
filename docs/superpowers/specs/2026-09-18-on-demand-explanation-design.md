@@ -161,7 +161,7 @@ No new domain logic: `CommaSelectorService.execute` already is "serve the
 cached comma association, or compute it live and write it through"
 (`comma_selector_service.py:24-31`), which is exactly `/label`'s contract.
 
-### AD-3: `ExplanationService` swaps `CommaSelectorService` for a new read-only `CommaSelectionReader`; `CommaSelectorService` is refactored to use the same reader for its own hit branch
+### AD-3: `ExplanationService` swaps `CommaSelectorService` for a new read-only `CommaSelectionService`; `CommaSelectorService` is refactored to use it for its own hit branch
 
 Today `ExplanationService.selector: Autowired[CommaSelectorService]`
 (`explanation_service.py:68`) can trigger live labeling on a miss via
@@ -170,15 +170,17 @@ Today `ExplanationService.selector: Autowired[CommaSelectorService]`
 must never do that. The read-only path already exists as
 `CommaSelectorService`'s hit branch — `find_current_labeling` +
 `_selection_for` (`comma_selector_service.py:63-66, 121-133`) — so it is
-extracted into its own component (`CommaSelectionReader`, exact shape left
-to implementation) used by **both** `CommaSelectorService` (hit branch) and
+extracted into its own `@service` component, `CommaSelectionService`
+(named per `.claude/rules/code-conventions.md`'s `*Service` fallback — it
+is a domain component with injected dependencies, not a repository or a
+mapper), used by **both** `CommaSelectorService` (hit branch) and
 `ExplanationService` (its only path), instead of duplicating that logic in
 two places. This is the single-responsibility split the user asked to note
 for future work (see "Note for future work" below).
 
 ### AD-4: A current-labeling miss with an existing embedding is a new, explicit error from `/explanation`
 
-`CommaSelectionReader` must distinguish two shapes of "no current labeling
+`CommaSelectionService` must distinguish two shapes of "no current labeling
 found," mirroring the classification `ExplanationStatusService` already
 performs (`explanation_status_service.py:32-51`):
 
@@ -235,7 +237,7 @@ handler can decide whether to render the "Spiega" button.
 
 ### AD-9: Testing
 
-- Unit tests for `CommaSelectionReader` and the refactored
+- Unit tests for `CommaSelectionService` and the refactored
   `CommaSelectorService`/`ExplanationService`, with `GoldenSetReadRepository`
   and `QuizQuestionRepository` mocked, covering all three "no current
   labeling" shapes (not indexed / has commas / no commas) plus the new
@@ -340,7 +342,7 @@ tables through the existing `GoldenSetReadRepository`/`GoldenSetWriteRepository`
 - **FR-4/AD-2** — supported by: `src/guidami_ai_patente/services/comma_selector_service.py:22-67` — `CommaSelectorService.execute` already implements "cache hit reads, cache miss computes and writes" (verified 2026-09-18)
 - **FR-5/AD-3** — supported by: `src/guidami_ai_patente/services/explanation_service.py:66-99` — `ExplanationService.selector: Autowired[CommaSelectorService]`, called at line 99 with no distinction between a cache hit and a live-computed result (verified 2026-09-18)
 - **AD-3** — supported by: `src/guidami_ai_patente/services/comma_selector_service.py:63-67, 121-133` — the hit-branch logic (`find_current_labeling` + `_selection_for`) is already isolated enough to extract (verified 2026-09-18)
-- **AD-4** — supported by: `src/guidami_ai_patente/services/explanation_status_service.py:32-51` — the three-way classification (cached / no-commas / not-indexed) this spec's `CommaSelectionReader` must mirror already exists here (verified 2026-09-18)
+- **AD-4** — supported by: `src/guidami_ai_patente/services/explanation_status_service.py:32-51` — the three-way classification (cached / no-commas / not-indexed) this spec's `CommaSelectionService` must mirror already exists here (verified 2026-09-18)
 - **AD-4** — supported by: `src/guidami_ai_patente/exceptions/` (directory listing: `explanation_unavailable_error.py`, `question_not_found_error.py`, `quiz_image_not_found_error.py`, `unregistered_user_error.py`, `guidami_api_error.py`) — confirms the existing one-exception-per-file convention `LabelingNotReadyError` follows (verified 2026-09-18)
 - **FR-6/AD-8** — supported by: `src/guidami_ai_patente_bot/clients/quiz_api_client.py:58-68` — `check_answer` returns only `bool(response.json()["correct"])`, discarding `explanation_status` (verified 2026-09-18)
 - **AD-7** — supported by: `src/guidami_ai_patente_bot/handlers/quiz_handlers.py:107-150` — existing callback-handler and `edit_message_text`/`edit_message_caption` pattern the new "Spiega" handler follows (verified 2026-09-18)
@@ -348,7 +350,7 @@ tables through the existing `GoldenSetReadRepository`/`GoldenSetWriteRepository`
 
 ## Open Questions
 
-- [ ] **non-blocking** — exact name and method shape of `CommaSelectionReader` (or equivalent) — left to implementation; this spec fixes only its responsibility boundary (AD-3).
+- [ ] **non-blocking** — exact method shape of `CommaSelectionService` (its name is settled, AD-3) — left to implementation.
 - [ ] **non-blocking** — exact `AppConfig` field names for the two new deadlines (AD-10, AD-11) — left to implementation.
 
 ## Sign-off
@@ -368,3 +370,7 @@ tables through the existing `GoldenSetReadRepository`/`GoldenSetWriteRepository`
   optimistic UI edit (remove "Spiega", show a loading line) on tap to
   prevent a double-tap, with "Prossima domanda ▶" deliberately left active
   during the wait. Non-material amendment — status stays draft.
+- **2026-09-18** — Named the new read-only component from AD-3
+  `CommaSelectionService` (not `CommaSelectionReader`), per this project's
+  `*Service` fallback naming convention for a domain component with
+  injected dependencies. Non-material amendment — status stays draft.
