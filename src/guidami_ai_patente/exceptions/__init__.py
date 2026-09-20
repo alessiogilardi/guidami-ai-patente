@@ -6,6 +6,7 @@ from .labeling_not_ready_error import LabelingNotReadyError
 from .question_not_found_error import QuestionNotFoundError
 from .quiz_image_not_found_error import QuizImageNotFoundError
 from .unregistered_user_error import UnregisteredUserError
+from .unsupported_language_error import UnsupportedLanguageError
 
 __all__ = [
     "ExplanationUnavailableError",
@@ -14,4 +15,5 @@ __all__ = [
     "QuestionNotFoundError",
     "QuizImageNotFoundError",
     "UnregisteredUserError",
+    "UnsupportedLanguageError",
 ]

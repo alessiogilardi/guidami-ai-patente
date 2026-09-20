@@ -13,6 +13,7 @@ from guidami_ai_patente.exceptions import (
     QuestionNotFoundError,
     QuizImageNotFoundError,
     UnregisteredUserError,
+    UnsupportedLanguageError,
 )
 
 
@@ -83,3 +84,10 @@ def test_an_unregistered_caller_is_a_403() -> None:
 
 def test_an_unregistered_user_error_inherits_the_shared_base() -> None:
     assert issubclass(UnregisteredUserError, GuidamiApiError)
+
+
+def test_an_unsupported_language_is_a_400() -> None:
+    response = _client_raising(UnsupportedLanguageError("en")).get("/boom")
+
+    assert response.status_code == 400
+    assert "en" in response.json()["detail"]

@@ -12,6 +12,7 @@ from guidami_ai_patente.exceptions import (
     QuestionNotFoundError,
     QuizImageNotFoundError,
     UnregisteredUserError,
+    UnsupportedLanguageError,
 )
 
 from .schemas.api_error import ApiErrorResponse
@@ -56,6 +57,19 @@ async def _forbidden(request: Request, exc: Exception) -> JSONResponse:
     )
 
 
+async def _bad_request(request: Request, exc: Exception) -> JSONResponse:
+    """Renders a malformed caller request as a 400 with its own message (spec 0018, FR-2).
+
+    `debug`, like `_not_found`/`_forbidden`: a caller naming an unsupported language is
+    an expected, routine condition, not an operator-actionable event.
+    """
+    logger.debug("Resolving %r to 400: %s", type(exc).__name__, exc)
+    return JSONResponse(
+        status_code=HTTPStatus.BAD_REQUEST,
+        content=ApiErrorResponse(detail=str(exc)).model_dump(),
+    )
+
+
 async def _conflict(request: Request, exc: Exception) -> JSONResponse:
     """Renders a contract violation as a 409 with its own message (spec 0017, AD-4).
 
@@ -83,3 +97,4 @@ def register_exception_handlers(app: FastAPI) -> None:
     app.add_exception_handler(ExplanationUnavailableError, _service_unavailable)
     app.add_exception_handler(LabelingNotReadyError, _conflict)
     app.add_exception_handler(UnregisteredUserError, _forbidden)
+    app.add_exception_handler(UnsupportedLanguageError, _bad_request)
