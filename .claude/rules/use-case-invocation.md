@@ -59,11 +59,13 @@ rule makes it explicit and applies it uniformly.
 ## Scope
 
 Applies to every `UseCase`/`AsyncUseCase` consumer in `src/commons/` and
-`src/guidami_ai_patente_ingestor/`, plus — since spec 0013 — nine specific classes:
+`src/guidami_ai_patente_ingestor/`, plus — since spec 0013 (and spec 0017 for the two
+labeling-split additions) — eleven specific classes:
 `src/guidami_ai_patente/services/`'s `ExplanationStatusService`, `QuizImageService`,
-`QuizAnswerChecker`, `CommaSelectorService`, `ExplanationService`, and
-`src/labeling/services/`'s `CandidateSetService`, `QuestionLexemeService`,
-`GoldenSetLabelingService`, `QuestionLabelingService`. This is not a blanket extension
+`QuizAnswerChecker`, `CommaSelectorService`, `ExplanationService`,
+`CurrentLabelingReadService`, `LabelingService`, and `src/labeling/services/`'s
+`CandidateSetService`, `QuestionLexemeService`, `GoldenSetLabelingService`,
+`QuestionLabelingService`. This is not a blanket extension
 to every class in those two directories — `QuizProposalService`, `HealthCheckService`
 and `JudgeCoherenceChecker` in `guidami_ai_patente/services/` stay outside `UseCase`
 (multi-operation or void-output; see each class's own docstring). A repo-wide sweep of

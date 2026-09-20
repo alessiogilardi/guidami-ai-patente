@@ -34,3 +34,14 @@ class BotConfig(BaseConfig):
             "reply, which previously surfaced as an unhandled telegram.error.TimedOut."
         ),
     )
+    label_request_timeout_seconds: float = Field(
+        default=30.0,
+        gt=0.0,
+        description=(
+            "Per-call timeout override for POST /quiz-questions/{number}/label "
+            "(spec 0017, AD-10). Distinct from request_timeout_seconds (15.0s "
+            "default), which is tuned for the fast endpoints: the server's own "
+            "labeling_deadline_s defaults to 25.0s, so the generic client timeout "
+            "would give up before the server's deadline could ever fire."
+        ),
+    )

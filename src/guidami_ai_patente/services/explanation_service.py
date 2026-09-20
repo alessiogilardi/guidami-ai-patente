@@ -22,7 +22,7 @@ from guidami_ai_patente.models import (
 )
 from guidami_ai_patente.repositories import QuizQuestionRepository
 
-from .comma_selector_service import CommaSelectorService
+from .current_labeling_read_service import CurrentLabelingReadService
 
 logger = logging.getLogger(__name__)
 
@@ -36,15 +36,16 @@ _CITATION_ATTEMPTS = 3
 class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
     """Turns a comma selection into prose, or into an honest refusal (FR-5, FR-7).
 
-    The whole request runs under **one** deadline (`AppConfig.explanation_deadline_s`),
-    covering the selector — retrieval and the ~11k-token judge on a cache miss — and
-    the writer. A single budget rather than a per-stage sum, and deliberately not a
-    lower `timeout` in `comma_labeler.yaml`: the batch shares that file, needs the
-    tolerance, and its content hash is `prompt_version` (D10).
+    The request runs under `AppConfig.explanation_deadline_s`, which — since spec
+    0017 moved retrieval and the judge to `POST /label` (`LabelingService`) — now
+    covers only the writer stage: `reader` (`CurrentLabelingReadService`) never
+    retrieves and never judges, so its own cost is a handful of indexed reads. The
+    deadline is deliberately not a lower `timeout` in `comma_labeler.yaml` either
+    way: that file is the batch's own, shared and untouched by this service.
 
-    `asyncio.timeout` cancels the inner work, which surfaces there as `CancelledError`
-    — a `BaseException`, so `CommaSelectorService`'s `except Exception` cannot swallow
-    it — and re-raises `TimeoutError` here, which becomes FR-13's 503.
+    `asyncio.timeout` cancels the inner work, which surfaces as `CancelledError` — a
+    `BaseException`, so nothing in the writer's `except Exception` (`_call_writer`)
+    can swallow it — and re-raises `TimeoutError` here, which becomes FR-13's 503.
 
     The budget bounds the `await`ed work, not a `to_thread` call already running: an
     executor thread cannot be interrupted, so a cancellation lands only when it
@@ -65,7 +66,7 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
 
     config: Autowired[AppConfig]
     questions: Autowired[QuizQuestionRepository]
-    selector: Autowired[CommaSelectorService]
+    reader: Autowired[CurrentLabelingReadService]
     writer: Autowired[ExplanationWriterAgent]
 
     async def execute(self, request: ExplanationRequest) -> Explanation:
@@ -73,8 +74,10 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
 
         Raises:
             QuestionNotFoundError: No question carries that number (404).
-            ExplanationUnavailableError: The judge or the writer failed, or the request
-                exceeded its deadline (503, FR-13).
+            LabelingNotReadyError: The question is embedded but has no current
+                labeling (409) — the caller should call POST /{number}/label first.
+            ExplanationUnavailableError: The writer failed, or the request exceeded
+                its deadline (503, FR-13).
         """
         context = await asyncio.to_thread(self.questions.find_question_context, request.number)
         if context is None:
@@ -96,7 +99,7 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
 
     async def _explain(self, request: ExplanationRequest, context: QuestionContext) -> Explanation:
         """Selects the commas, then renders them or refuses."""
-        selection = await self.selector(request.number)
+        selection = await self.reader(request.number)
         if not selection.commas:
             return self._insufficient(selection)
 

@@ -59,14 +59,28 @@ class AppConfig(BaseConfig):
     quiz_images_table: str = "quiz_images"
     users_table: str = "users"
     quiz_answers_table: str = "quiz_answers"
-    explanation_deadline_s: float = Field(
+    labeling_deadline_s: float = Field(
         default=25.0,
         gt=0.0,
         description=(
-            "Wall-clock budget for one explanation request, judge and writer included "
-            "(FR-13, D10). Deployment configuration, never judge identity: it is not on "
-            "LabelingConfig and does not enter the epoch key. Enforced by "
-            "ExplanationService rather than by lowering comma_labeler.yaml's own "
-            "timeout, which the batch shares and needs longer."
+            "Wall-clock budget for POST /label's retrieval-plus-judge stage on a cache "
+            "miss (spec 0017, AD-10). Deployment configuration, never judge identity: "
+            "it is not on LabelingConfig and does not enter the epoch key. Enforced by "
+            "LabelingService rather than by lowering comma_labeler.yaml's own timeout, "
+            "which the batch shares and needs longer."
+        ),
+    )
+    explanation_deadline_s: float = Field(
+        default=20.0,
+        gt=0.0,
+        description=(
+            "Wall-clock budget for GET /explanation, writer stage only (FR-13; spec "
+            "0017 narrowed this from covering the judge too — that moved to "
+            "labeling_deadline_s). Deployment configuration, never judge identity. "
+            "Must cover up to _CITATION_ATTEMPTS=3 sequential ExplanationWriterAgent "
+            "calls (explanation_service.py) plus pydantic-ai's own validation "
+            "retries; no measured production latency data exists yet, so 20.0s gives "
+            "headroom while staying under the original pre-split 25.0s combined "
+            "budget — tune with real data once available."
         ),
     )

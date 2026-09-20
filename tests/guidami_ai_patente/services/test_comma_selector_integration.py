@@ -12,8 +12,7 @@ from commons.clients import PostgresClient
 from guidami_ai_patente.clients import PostgresClientProvider
 from guidami_ai_patente.exceptions import ExplanationUnavailableError
 from guidami_ai_patente.providers import LabelingStackProvider, LiveLabelingStackProvider
-from guidami_ai_patente.repositories import GoldenSetReadRepository
-from guidami_ai_patente.services import CommaSelectorService
+from guidami_ai_patente.services import CommaSelectorService, CurrentLabelingReadService
 from labeling import EMBEDDING_MODEL_COLUMN
 from labeling.agents.comma_labeler.dto import CommaLabelerRequest, CommaLabelerResponse
 from labeling.configs import LabelingConfig
@@ -24,6 +23,7 @@ _TABLES = (
     "quiz_labelings",
     "labeling_runs",
     "quiz_question_embeddings",
+    "quiz_answers",
     "quiz_questions",
     "article_commas",
     "articles",
@@ -114,7 +114,7 @@ def _selector(agent: object) -> CommaSelectorService:
     service = object.__new__(CommaSelectorService)
     service.labeling_config = labeling_config  # type: ignore[assignment]
     service.judge_identity = container.resolve(LabelingStackProvider)  # type: ignore[assignment]
-    service.golden_set = container.resolve(GoldenSetReadRepository)  # type: ignore[assignment]
+    service.reader = container.resolve(CurrentLabelingReadService)  # type: ignore[assignment]
     service.live_stack = _LiveStack(  # type: ignore[assignment]
         quiz=live_stack.quiz,
         golden_set=live_stack.golden_set,

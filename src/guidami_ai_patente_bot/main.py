@@ -14,8 +14,10 @@ from .configs import BotConfig
 from .handlers.error_handler import handle_error
 from .handlers.quiz_handlers import (
     ANSWER_CALLBACK_PREFIX,
+    EXPLAIN_CALLBACK_PREFIX,
     NEXT_CALLBACK_DATA,
     handle_answer_callback,
+    handle_explain_callback,
     handle_next_callback,
     quiz_command,
     start_command,
@@ -62,6 +64,9 @@ async def _run() -> None:
     application.add_handler(CommandHandler("stop", stop_command))
     application.add_handler(
         CallbackQueryHandler(handle_answer_callback, pattern=f"^{ANSWER_CALLBACK_PREFIX}")
+    )
+    application.add_handler(
+        CallbackQueryHandler(handle_explain_callback, pattern=f"^{EXPLAIN_CALLBACK_PREFIX}")
     )
     application.add_handler(
         CallbackQueryHandler(handle_next_callback, pattern=f"^{NEXT_CALLBACK_DATA}$")

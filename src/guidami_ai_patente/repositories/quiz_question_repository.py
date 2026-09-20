@@ -111,6 +111,16 @@ class QuizQuestionRepository:
         Only reached on a cache miss: a current labeling needs no retrieval and
         therefore no vector, so a missing embedding can never downgrade a cache hit
         (FR-4, FR-7).
+
+        Note: this only checks that an embedding ROW exists for the variant (an
+        `EXISTS` over the join), not that any specific model column on it is
+        non-NULL — unlike `commons/repositories/db/quiz_read_repository.py`'s
+        `find_with_vector`, which additionally requires the given model column to be
+        non-NULL. This is currently safe because `db/init.sql`'s
+        `CHECK (num_nonnulls(embedding_3_small) > 0)` constraint prevents a row from
+        existing with a NULL embedding column at all. If a second `embedding_*`
+        column is ever added and that CHECK relaxed, this method would need to also
+        check the specific column, the same way `find_with_vector` does.
         """
         query = sql.SQL(
             "SELECT EXISTS (SELECT 1 FROM {embeddings} e JOIN {questions} q "

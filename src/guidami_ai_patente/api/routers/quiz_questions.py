@@ -1,4 +1,4 @@
-"""Quiz question endpoints: propose, list topics, fetch, check."""
+"""Quiz question endpoints: propose, list topics, fetch, check, label, explain."""
 
 import asyncio
 from typing import Annotated
@@ -9,7 +9,12 @@ from pywire import Autowired
 from domain.entities.users import UserEntity
 from guidami_ai_patente.mappers import ExplanationMapper, QuizQuestionMapper
 from guidami_ai_patente.models import ExplanationRequest, QuizAnswerCheckRequest
-from guidami_ai_patente.services import ExplanationService, QuizAnswerChecker, QuizProposalService
+from guidami_ai_patente.services import (
+    ExplanationService,
+    LabelingService,
+    QuizAnswerChecker,
+    QuizProposalService,
+)
 
 from ..dependencies.user_identity import require_registered_user
 from ..schemas.quiz_check import QuizCheckRequest, QuizCheckResponse
@@ -92,6 +97,21 @@ async def check_answer(
     return QuizCheckResponse(correct=correct, explanation_status=explanation_status)
 
 
+@router.post("/{number}/label", status_code=204)
+async def label_question(
+    number: str, user: _RequireRegisteredUser, service: Autowired[LabelingService]
+) -> None:
+    """Ensures a current comma labeling exists for `number` (FR-4, spec 0017).
+
+    No response body on success: the caller (the bot's "Spiega" tap, AD-5) always
+    follows this with `GET /{number}/explanation` regardless of the outcome, so
+    there is nothing for a client to branch on here. `LabelingService` raises
+    `QuestionNotFoundError` for an unknown `number`, mapped to 404 the same way
+    `/check` and `/explanation` already are.
+    """
+    await service(number)
+
+
 @router.get("/{number}/explanation", response_model=QuizExplanationResponse)
 async def explain_answer(
     number: str,
@@ -107,12 +127,15 @@ async def explain_answer(
 ) -> QuizExplanationResponse:
     """Explains why the correct answer is what it is, grounded in the corpus (FR-5, FR-11).
 
-    No `asyncio.to_thread` here: the service is genuinely async — it awaits the judge
-    and the writer, and crosses into the synchronous SQL stack itself (AD-25).
+    No `asyncio.to_thread` here: the service is genuinely async — it awaits the writer
+    and crosses into the synchronous SQL stack itself (AD-25).
 
-    A cache miss runs retrieval plus the judge before answering, so this call can take
-    seconds; `POST /{number}/check`'s `explanation_status` is what lets a client decide
-    which affordance to offer beforehand (FR-4).
+    Renders from an already-existing comma labeling only: it never runs retrieval or
+    the judge itself. Raises `LabelingNotReadyError` (409) when the question is
+    embedded but has no current labeling yet — the caller must call
+    `POST /{number}/label` first, which is the only place retrieval and the judge run
+    (spec 0017, AD-1). `POST /{number}/check`'s `explanation_status` is what lets a
+    client decide beforehand whether that prerequisite call is needed (FR-4).
     """
     explanation = await service(ExplanationRequest(number=number, submitted=submitted))
     return ExplanationMapper.from_explanation_to_response(explanation)

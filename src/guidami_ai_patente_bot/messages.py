@@ -8,6 +8,7 @@ that it is user-facing copy, not a domain constant.
 """
 
 NO_EXPLANATION_LINE = "Nessuna spiegazione disponibile per questa domanda."
+LOADING_EXPLANATION_LINE = "⏳ Generando spiegazione..."
 STALE_NOTICE = "Questa domanda non è più valida, usa /quiz"
 GENERIC_ERROR_MESSAGE = "Si è verificato un errore, riprova con /quiz"
 

@@ -64,9 +64,10 @@ def test_the_agents_dir_has_no_default(
         AppConfig(postgres=postgres_test_config, _env_file=None)  # pyright: ignore[reportCallIssue]
 
 
-def test_the_quiz_images_table_and_deadline_have_defaults(app_config: AppConfig) -> None:
+def test_the_quiz_images_table_and_deadlines_have_defaults(app_config: AppConfig) -> None:
     assert app_config.quiz_images_table == "quiz_images"
     assert app_config.explanation_deadline_s > 0
+    assert app_config.labeling_deadline_s > 0
 
 
 def test_no_epoch_field_is_declared_on_the_root(app_config: AppConfig) -> None:
