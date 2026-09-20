@@ -495,6 +495,38 @@ async def test_a_failed_translation_reverts_the_edit_and_sends_an_error_notice()
 
 
 @pytest.mark.asyncio
+async def test_a_failed_translation_on_a_photo_message_reverts_the_caption() -> None:
+    """Photo + failure: the caption revert must use edit_message_caption, never edit_message_text.
+
+    Picking the wrong edit method here is a runtime Telegram BadRequest
+    ("there is no text in the message to edit"), not a type error.
+    """
+    double = _FlowServiceDouble(question=_question(), raise_translate_error=True)
+    context = _context(double)
+    context.user_data["session"] = QuizSession(
+        seed="s", index=0, current_question_number="0001", last_explanation="perché..."
+    )
+    update, query = _callback_update(
+        f"{TRANSLATE_CALLBACK_PREFIX}0001",
+        has_photo=True,
+        text="❌ Risposta sbagliata.\n\nperché...",
+    )
+
+    await handle_translate_callback(update, context)
+
+    assert query.edit_message_caption.await_count == 2
+    query.edit_message_text.assert_not_awaited()
+    final_call = query.edit_message_caption.await_args_list[1]
+    assert final_call.kwargs["caption"] == "❌ Risposta sbagliata.\n\nperché..."
+    assert _button_texts(final_call.kwargs["reply_markup"]) == [
+        "🇷🇺 Traduci",
+        "Prossima domanda ▶",
+    ]
+    context.bot.send_message.assert_awaited_once()
+    assert context.bot.send_message.call_args.kwargs["text"] == messages.TRANSLATION_ERROR_MESSAGE
+
+
+@pytest.mark.asyncio
 async def test_stop_shows_the_summary_and_clears_the_session() -> None:
     double = _FlowServiceDouble(
         question=_question(), summary=SessionSummary(answered=5, correct=3)
