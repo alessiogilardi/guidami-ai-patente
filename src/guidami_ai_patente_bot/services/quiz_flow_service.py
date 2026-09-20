@@ -76,6 +76,24 @@ class QuizFlowService:
                 status=ExplanationOutcome.INSUFFICIENT_KNOWLEDGE, explanation=None
             )
 
+    async def handle_translation_request(self, text: str, telegram_user_id: int) -> str:
+        """Translates `text` to Russian (spec 0018 bot UX).
+
+        Takes the already-validated explanation text directly rather than a
+        session/number pair, mirroring `handle_explanation_request`'s own shape:
+        the caller (the "Traduci" tap handler) is responsible for staleness
+        checking before this runs — by the time it is called, `text` is already
+        known to be the chat's current, previously-shown explanation.
+
+        Raises:
+            QuizApiError: The translation call failed. Left to propagate, unlike
+                `handle_explanation_request`'s fallback: the caller needs to
+                distinguish success from failure to decide between showing the
+                translation and reverting its optimistic edit with a retry
+                affordance (spec 0018 bot UX).
+        """
+        return await self.api.translate_explanation(telegram_user_id, text)
+
     async def download_image(self, image_url: str, telegram_user_id: int) -> bytes:
         """Passes through to `QuizApiClient` so handlers never depend on it directly (AD-5)."""
         return await self.api.download_image(telegram_user_id, image_url)

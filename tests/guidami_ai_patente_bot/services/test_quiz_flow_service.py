@@ -27,6 +27,9 @@ class _ApiDouble:
     explanation_status: ExplanationStatus = ExplanationStatus.CACHED
     raise_label_error: bool = False
     raise_explanation_error: bool = False
+    translation: str = "Перевод."
+    raise_translate_error: bool = False
+    translate_calls: list[tuple[int, str]] = field(default_factory=list)
     registered: bool = True
     summary: SessionSummary = field(default_factory=lambda: SessionSummary(answered=0, correct=0))
     propose_calls: list[tuple[int, str, int]] = field(default_factory=list)
@@ -58,6 +61,12 @@ class _ApiDouble:
         if self.raise_explanation_error:
             raise QuizApiError("boom")
         return self.explanation
+
+    async def translate_explanation(self, telegram_user_id: int, text: str) -> str:
+        self.translate_calls.append((telegram_user_id, text))
+        if self.raise_translate_error:
+            raise QuizApiError("boom")
+        return self.translation
 
     async def download_image(self, telegram_user_id: int, image_url: str) -> bytes:
         return b"image"
@@ -202,3 +211,24 @@ async def test_session_summary_passes_through() -> None:
 
     assert (summary.answered, summary.correct) == (5, 3)
     assert api.summary_calls == [(7, "seed-abc")]
+
+
+@pytest.mark.asyncio
+async def test_a_translation_request_delegates_to_the_api() -> None:
+    """Spec 0018 bot UX: the caller already validated staleness; this just calls through."""
+    api = _ApiDouble(question=_question(), translation="Перевод.")
+    service = _service(api)
+
+    translated = await service.handle_translation_request("Testo da tradurre.", 7)
+
+    assert translated == "Перевод."
+    assert api.translate_calls == [(7, "Testo da tradurre.")]
+
+
+@pytest.mark.asyncio
+async def test_a_translation_api_failure_propagates() -> None:
+    api = _ApiDouble(question=_question(), raise_translate_error=True)
+    service = _service(api)
+
+    with pytest.raises(QuizApiError):
+        await service.handle_translation_request("Testo da tradurre.", 7)
