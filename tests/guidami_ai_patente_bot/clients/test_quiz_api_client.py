@@ -83,6 +83,17 @@ async def test_label_question_posts_to_the_label_endpoint() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         assert request.method == "POST"
         assert request.url.path == "/quiz-questions/0001/label"
+        # AD-10: the per-call timeout override must actually reach the outgoing
+        # request, not just be set on the client's config — httpx.Client.build_request
+        # stamps it onto request.extensions["timeout"] (a dict with connect/read/
+        # write/pool keys, all equal here since QuizApiClient passes a single float).
+        override = client.config.label_request_timeout_seconds
+        assert request.extensions["timeout"] == {
+            "connect": override,
+            "read": override,
+            "write": override,
+            "pool": override,
+        }
         return httpx.Response(204)
 
     client = _client(handler)

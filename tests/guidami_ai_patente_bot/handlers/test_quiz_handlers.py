@@ -249,6 +249,26 @@ async def test_an_unavailable_explanation_status_omits_the_spiega_button() -> No
 
 
 @pytest.mark.asyncio
+async def test_an_uncached_explanation_status_shows_the_spiega_button() -> None:
+    """The omission predicate is `is not UNAVAILABLE`, so UNCACHED must still show it.
+
+    This is the third, most on-demand-relevant status: a genuine cache miss that
+    `POST /label` (not shown yet) would compute live once the user taps "Spiega".
+    """
+    double = _FlowServiceDouble(
+        question=_question(), correct=True, explanation_status=ExplanationStatus.UNCACHED
+    )
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(f"{ANSWER_CALLBACK_PREFIX}0001:1")
+
+    await handle_answer_callback(update, context)
+
+    call = query.edit_message_text.call_args
+    assert _button_texts(call.kwargs["reply_markup"]) == ["Spiega", "Prossima domanda ▶"]
+
+
+@pytest.mark.asyncio
 async def test_a_valid_answer_on_a_photo_message_edits_the_caption() -> None:
     context = _context(_FlowServiceDouble(question=_question(), correct=False))
     context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")

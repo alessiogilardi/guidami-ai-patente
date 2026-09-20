@@ -1,7 +1,7 @@
 """POST /quiz-questions/{number}/label, end to end (FR-4, AD-2, AD-10)."""
 
 from collections.abc import Iterator
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from http import HTTPStatus
 
@@ -11,8 +11,13 @@ from psycopg import sql
 from pywire import get_default_container
 
 from commons.clients import PostgresClient
+from guidami_ai_patente.agents.explanation_writer.dto import (
+    ExplanationWriterRequest,
+    ExplanationWriterResponse,
+)
 from guidami_ai_patente.clients import PostgresClientProvider
 from guidami_ai_patente.providers import LiveLabelingStackProvider
+from guidami_ai_patente.services import ExplanationService
 from labeling import EMBEDDING_MODEL_COLUMN
 from labeling.agents.comma_labeler.dto import CommaLabelerRequest, CommaLabelerResponse
 
@@ -37,6 +42,21 @@ class _JudgeDouble:
         self.calls += 1
         return CommaLabelerResponse(
             comma_numbers=self.ordinals, rationale="il comma giustifica la risposta"
+        )
+
+
+@dataclass
+class _WriterDouble:
+    error: Exception | None = None
+    requests: list[ExplanationWriterRequest] = field(default_factory=list)
+
+    async def run(self, request: ExplanationWriterRequest) -> ExplanationWriterResponse:
+        self.requests.append(request)
+        if self.error is not None:
+            raise self.error
+        return ExplanationWriterResponse(
+            explanation="La sosta è vietata perché la norma lo prevede.",
+            cited_comma_numbers=[1],
         )
 
 
@@ -92,6 +112,17 @@ def _install_judge(monkeypatch: pytest.MonkeyPatch, agent: _JudgeDouble) -> None
     """Substitutes the live judge's agent (same mechanism as `test_quiz_explanation.py`)."""
     provider = get_default_container().resolve(LiveLabelingStackProvider)
     monkeypatch.setattr(provider.question_labeling, "_agent", agent)  # noqa: SLF001
+
+
+def _install_writer(monkeypatch: pytest.MonkeyPatch, writer: _WriterDouble) -> None:
+    """Substitutes the writer on the resolved `ExplanationService` singleton.
+
+    Same mechanism as `test_quiz_explanation.py::_install_writer`: `register_instance`
+    would refuse to displace the `@agent` registration, and the route resolves the
+    same `ExplanationService` singleton this patches.
+    """
+    service = get_default_container().resolve(ExplanationService)
+    monkeypatch.setattr(service, "writer", writer)
 
 
 @pytest.mark.integration
@@ -160,3 +191,31 @@ def test_an_unknown_number_is_a_404(
     response = api_client.post("/quiz-questions/9999/label", headers=registered_headers)
 
     assert response.status_code == HTTPStatus.NOT_FOUND
+
+
+@pytest.mark.integration
+def test_a_label_call_makes_the_explanation_readable_under_the_same_epoch(
+    api_client: TestClient,
+    live_question: PostgresClient,
+    monkeypatch: pytest.MonkeyPatch,
+    registered_headers: dict[str, str],
+) -> None:
+    """A labeling written by POST /label is correctly readable by GET /explanation.
+
+    This is the seam between `LabelingService` (writes the live labeling via
+    `CommaSelectorService`) and `CurrentLabelingReadService` (reads it back through
+    `ExplanationService`, never triggering the judge itself) — both must agree on the
+    same `LabelingStackProvider` epoch for the read to see what the write produced.
+    """
+    _install_judge(monkeypatch, _JudgeDouble([1]))
+    _install_writer(monkeypatch, _WriterDouble())
+
+    label_response = api_client.post("/quiz-questions/0001/label", headers=registered_headers)
+    assert label_response.status_code == HTTPStatus.NO_CONTENT
+
+    response = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
+
+    assert response.status_code == HTTPStatus.OK
+    body = response.json()
+    assert body["status"] == "explained"
+    assert body["provenance"]["origin"] == "live"
