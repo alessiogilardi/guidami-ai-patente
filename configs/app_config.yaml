@@ -30,4 +30,4 @@ users_table: users
 quiz_answers_table: quiz_answers
 
 labeling_deadline_s: 25.0
-explanation_deadline_s: 10.0
+explanation_deadline_s: 20.0
