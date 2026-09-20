@@ -1,4 +1,4 @@
-"""Telegram handlers are thin controllers over QuizFlowService (AD-5, spec 0016, spec 0017)."""
+"""Telegram handlers are thin controllers over QuizFlowService (AD-5, spec 0016/0017/0018)."""
 
 from dataclasses import dataclass, field
 from types import SimpleNamespace
@@ -12,9 +12,11 @@ from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
 from guidami_ai_patente_bot.handlers.quiz_handlers import (
     ANSWER_CALLBACK_PREFIX,
     EXPLAIN_CALLBACK_PREFIX,
+    TRANSLATE_CALLBACK_PREFIX,
     handle_answer_callback,
     handle_explain_callback,
     handle_next_callback,
+    handle_translate_callback,
     quiz_command,
     start_command,
     stop_command,
@@ -40,11 +42,14 @@ class _FlowServiceDouble:
     )
     correct: bool = True
     explanation_status: ExplanationStatus = ExplanationStatus.CACHED
+    translation: str = "Перевод."
     raise_stale: bool = False
+    raise_translate_error: bool = False
     registered: bool = True
     propose_calls: list[int] = field(default_factory=list)
     handle_answer_calls: list[tuple[str, bool, int]] = field(default_factory=list)
     explanation_request_calls: list[tuple[str, int, bool]] = field(default_factory=list)
+    translate_request_calls: list[tuple[str, int]] = field(default_factory=list)
     registration_calls: list[int] = field(default_factory=list)
     summary: SessionSummary = field(default_factory=lambda: SessionSummary(answered=0, correct=0))
     raise_summary_error: bool = False
@@ -74,6 +79,12 @@ class _FlowServiceDouble:
     ) -> QuizExplanation:
         self.explanation_request_calls.append((number, telegram_user_id, submitted))
         return self.explanation
+
+    async def handle_translation_request(self, text: str, telegram_user_id: int) -> str:
+        self.translate_request_calls.append((text, telegram_user_id))
+        if self.raise_translate_error:
+            raise QuizApiError("boom")
+        return self.translation
 
     async def download_image(self, image_url: str, telegram_user_id: int) -> bytes:
         return b"image-bytes"
@@ -296,7 +307,11 @@ async def test_a_stale_answer_gets_a_notice_and_no_edit() -> None:
 
 @pytest.mark.asyncio
 async def test_explain_callback_shows_a_loading_line_then_the_explanation() -> None:
-    """Spec 0017 FR-3, AD-13: optimistic edit first, then the real explanation."""
+    """Spec 0017 FR-3, AD-13: optimistic edit first, then the real explanation.
+
+    Spec 0018 bot UX: the final keyboard also offers "🇷🇺 Traduci", and the shown
+    Italian text is stashed on the session as `last_explanation`.
+    """
     explanation = QuizExplanation(status=ExplanationOutcome.EXPLAINED, explanation="perché...")
     double = _FlowServiceDouble(explanation=explanation, question=_question())
     context = _context(double)
@@ -315,6 +330,11 @@ async def test_explain_callback_shows_a_loading_line_then_the_explanation() -> N
     assert "perché..." in second_call.kwargs["text"]
     assert "❌ Risposta sbagliata." in second_call.kwargs["text"]
     assert double.explanation_request_calls == [("0001", _TELEGRAM_USER_ID, True)]
+    assert _button_texts(second_call.kwargs["reply_markup"]) == [
+        "🇷🇺 Traduci",
+        "Prossima domanda ▶",
+    ]
+    assert context.user_data["session"].last_explanation == "perché..."
 
 
 @pytest.mark.asyncio
@@ -328,10 +348,12 @@ async def test_explain_callback_on_a_photo_message_edits_the_caption_twice() -> 
 
     assert query.edit_message_caption.await_count == 2
     query.edit_message_text.assert_not_awaited()
+    assert context.user_data["session"].last_explanation == "perché..."
 
 
 @pytest.mark.asyncio
 async def test_explain_callback_insufficient_knowledge_shows_the_fallback_line() -> None:
+    """Spec 0018 bot UX: nothing to translate, so "Traduci" is omitted, mirroring "Spiega"."""
     explanation = QuizExplanation(
         status=ExplanationOutcome.INSUFFICIENT_KNOWLEDGE, explanation=None
     )
@@ -344,6 +366,8 @@ async def test_explain_callback_insufficient_knowledge_shows_the_fallback_line()
 
     _, second_call = query.edit_message_text.await_args_list
     assert messages.NO_EXPLANATION_LINE in second_call.kwargs["text"]
+    assert _button_texts(second_call.kwargs["reply_markup"]) == ["Prossima domanda ▶"]
+    assert context.user_data["session"].last_explanation is None
 
 
 @pytest.mark.asyncio
@@ -361,6 +385,113 @@ async def test_a_stale_explain_tap_gets_a_notice_and_no_edit_at_all() -> None:
     query.edit_message_text.assert_not_awaited()
     query.edit_message_caption.assert_not_awaited()
     assert double.explanation_request_calls == []
+
+
+@pytest.mark.asyncio
+async def test_translate_callback_replaces_the_text_with_a_bilingual_message() -> None:
+    """Spec 0018 bot UX: loading edit, then the Italian text plus the Russian line."""
+    double = _FlowServiceDouble(question=_question(), translation="Перевод.")
+    context = _context(double)
+    context.user_data["session"] = QuizSession(
+        seed="s", index=0, current_question_number="0001", last_explanation="perché..."
+    )
+    update, query = _callback_update(
+        f"{TRANSLATE_CALLBACK_PREFIX}0001", text="❌ Risposta sbagliata.\n\nperché..."
+    )
+
+    await handle_translate_callback(update, context)
+
+    assert query.edit_message_text.await_count == 2
+    first_call, second_call = query.edit_message_text.await_args_list
+    assert messages.LOADING_TRANSLATION_LINE in first_call.kwargs["text"]
+    assert _button_texts(first_call.kwargs["reply_markup"]) == ["Prossima domanda ▶"]
+    assert "❌ Risposta sbagliata.\n\nperché..." in second_call.kwargs["text"]
+    assert "🇷🇺 Перевод." in second_call.kwargs["text"]
+    assert _button_texts(second_call.kwargs["reply_markup"]) == ["Prossima domanda ▶"]
+    assert double.translate_request_calls == [("perché...", _TELEGRAM_USER_ID)]
+    context.bot.send_message.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_translate_callback_on_a_photo_message_sends_a_separate_message() -> None:
+    """The 1024-char caption limit means the translation is a new message, not an append."""
+    double = _FlowServiceDouble(question=_question(), translation="Перевод.")
+    context = _context(double)
+    context.user_data["session"] = QuizSession(
+        seed="s", index=0, current_question_number="0001", last_explanation="perché..."
+    )
+    update, query = _callback_update(
+        f"{TRANSLATE_CALLBACK_PREFIX}0001",
+        has_photo=True,
+        text="❌ Risposta sbagliata.\n\nperché...",
+    )
+
+    await handle_translate_callback(update, context)
+
+    assert query.edit_message_caption.await_count == 2
+    final_call = query.edit_message_caption.await_args_list[1]
+    assert final_call.kwargs["caption"] == "❌ Risposta sbagliata.\n\nperché..."
+    query.edit_message_text.assert_not_awaited()
+    context.bot.send_message.assert_awaited_once()
+    assert context.bot.send_message.call_args.kwargs["text"] == "🇷🇺 Перевод."
+
+
+@pytest.mark.asyncio
+async def test_translate_callback_a_stale_tap_gets_a_notice_and_no_edit() -> None:
+    double = _FlowServiceDouble(question=_question())
+    context = _context(double)
+    context.user_data["session"] = QuizSession(
+        seed="s", index=0, current_question_number="0001", last_explanation="perché..."
+    )
+    update, query = _callback_update(f"{TRANSLATE_CALLBACK_PREFIX}0002")
+
+    await handle_translate_callback(update, context)
+
+    query.answer.assert_awaited_once()
+    assert "non è più valida" in query.answer.call_args.args[0]
+    query.edit_message_text.assert_not_awaited()
+    query.edit_message_caption.assert_not_awaited()
+    assert double.translate_request_calls == []
+
+
+@pytest.mark.asyncio
+async def test_translate_callback_with_no_stored_explanation_is_also_stale() -> None:
+    """A session that never had `handle_explain_callback` run for it has nothing to translate."""
+    double = _FlowServiceDouble(question=_question())
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(f"{TRANSLATE_CALLBACK_PREFIX}0001")
+
+    await handle_translate_callback(update, context)
+
+    query.answer.assert_awaited_once()
+    assert "non è più valida" in query.answer.call_args.args[0]
+    assert double.translate_request_calls == []
+
+
+@pytest.mark.asyncio
+async def test_a_failed_translation_reverts_the_edit_and_sends_an_error_notice() -> None:
+    """No native alert is possible here (the answer() slot is spent on the loading edit)."""
+    double = _FlowServiceDouble(question=_question(), raise_translate_error=True)
+    context = _context(double)
+    context.user_data["session"] = QuizSession(
+        seed="s", index=0, current_question_number="0001", last_explanation="perché..."
+    )
+    update, query = _callback_update(
+        f"{TRANSLATE_CALLBACK_PREFIX}0001", text="❌ Risposta sbagliata.\n\nperché..."
+    )
+
+    await handle_translate_callback(update, context)
+
+    assert query.edit_message_text.await_count == 2
+    _, second_call = query.edit_message_text.await_args_list
+    assert second_call.kwargs["text"] == "❌ Risposta sbagliata.\n\nperché..."
+    assert _button_texts(second_call.kwargs["reply_markup"]) == [
+        "🇷🇺 Traduci",
+        "Prossima domanda ▶",
+    ]
+    context.bot.send_message.assert_awaited_once()
+    assert context.bot.send_message.call_args.kwargs["text"] == messages.TRANSLATION_ERROR_MESSAGE
 
 
 @pytest.mark.asyncio

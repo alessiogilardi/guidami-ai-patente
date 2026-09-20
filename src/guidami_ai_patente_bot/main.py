@@ -16,9 +16,11 @@ from .handlers.quiz_handlers import (
     ANSWER_CALLBACK_PREFIX,
     EXPLAIN_CALLBACK_PREFIX,
     NEXT_CALLBACK_DATA,
+    TRANSLATE_CALLBACK_PREFIX,
     handle_answer_callback,
     handle_explain_callback,
     handle_next_callback,
+    handle_translate_callback,
     quiz_command,
     start_command,
     stop_command,
@@ -67,6 +69,9 @@ async def _run() -> None:
     )
     application.add_handler(
         CallbackQueryHandler(handle_explain_callback, pattern=f"^{EXPLAIN_CALLBACK_PREFIX}")
+    )
+    application.add_handler(
+        CallbackQueryHandler(handle_translate_callback, pattern=f"^{TRANSLATE_CALLBACK_PREFIX}")
     )
     application.add_handler(
         CallbackQueryHandler(handle_next_callback, pattern=f"^{NEXT_CALLBACK_DATA}$")

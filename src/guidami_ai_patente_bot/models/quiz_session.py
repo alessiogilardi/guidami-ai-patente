@@ -7,6 +7,10 @@ class QuizSession(BaseModel):
     """The seeded permutation position and the question currently on screen.
 
     `current_question_number` is what a stale button tap is compared against (FR-3).
+    `last_explanation` holds the Italian text last shown by "Spiega" for that same
+    question (spec 0018 bot UX) — `None` until an explanation has actually been
+    displayed. A "Traduci" tap treats a `None` value as its own staleness signal,
+    exactly like a `current_question_number` mismatch.
     """
 
     model_config = ConfigDict(frozen=True)
@@ -14,3 +18,4 @@ class QuizSession(BaseModel):
     seed: str
     index: int
     current_question_number: str
+    last_explanation: str | None = None
