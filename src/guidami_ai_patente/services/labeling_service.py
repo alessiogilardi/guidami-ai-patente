@@ -28,6 +28,15 @@ class LabelingService(AsyncUseCase[str, CommaSelection]):
     one endpoint of the three behaving differently for a typo'd number.
     `find_correct_answer` is the same cheap existence probe `QuizAnswerChecker`
     already uses for the identical purpose.
+
+    `asyncio.timeout` only bounds `await`ed work, not code already running inside
+    `asyncio.to_thread`: an executor thread cannot be interrupted, so a cancellation
+    only lands once that thread call returns (see `ExplanationService`'s docstring
+    for the fuller explanation — same deliberate design, not a bug). It is arguably
+    more load-bearing here than there: `execute` wraps `selector`
+    (`CommaSelectorService`), whose own path is mostly threaded SQL (retrieval,
+    golden-set reads/writes) plus a single awaited judge call, so most of the wall
+    clock this deadline is meant to bound is exactly the part it cannot cancel.
     """
 
     config: Autowired[AppConfig]

@@ -74,8 +74,10 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
 
         Raises:
             QuestionNotFoundError: No question carries that number (404).
-            ExplanationUnavailableError: The judge or the writer failed, or the request
-                exceeded its deadline (503, FR-13).
+            LabelingNotReadyError: The question is embedded but has no current
+                labeling (409) — the caller should call POST /{number}/label first.
+            ExplanationUnavailableError: The writer failed, or the request exceeded
+                its deadline (503, FR-13).
         """
         context = await asyncio.to_thread(self.questions.find_question_context, request.number)
         if context is None:

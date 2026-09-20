@@ -1,4 +1,4 @@
-"""Quiz question endpoints: propose, list topics, fetch, check."""
+"""Quiz question endpoints: propose, list topics, fetch, check, label, explain."""
 
 import asyncio
 from typing import Annotated
@@ -127,12 +127,15 @@ async def explain_answer(
 ) -> QuizExplanationResponse:
     """Explains why the correct answer is what it is, grounded in the corpus (FR-5, FR-11).
 
-    No `asyncio.to_thread` here: the service is genuinely async — it awaits the judge
-    and the writer, and crosses into the synchronous SQL stack itself (AD-25).
+    No `asyncio.to_thread` here: the service is genuinely async — it awaits the writer
+    and crosses into the synchronous SQL stack itself (AD-25).
 
-    A cache miss runs retrieval plus the judge before answering, so this call can take
-    seconds; `POST /{number}/check`'s `explanation_status` is what lets a client decide
-    which affordance to offer beforehand (FR-4).
+    Renders from an already-existing comma labeling only: it never runs retrieval or
+    the judge itself. Raises `LabelingNotReadyError` (409) when the question is
+    embedded but has no current labeling yet — the caller must call
+    `POST /{number}/label` first, which is the only place retrieval and the judge run
+    (spec 0017, AD-1). `POST /{number}/check`'s `explanation_status` is what lets a
+    client decide beforehand whether that prerequisite call is needed (FR-4).
     """
     explanation = await service(ExplanationRequest(number=number, submitted=submitted))
     return ExplanationMapper.from_explanation_to_response(explanation)
