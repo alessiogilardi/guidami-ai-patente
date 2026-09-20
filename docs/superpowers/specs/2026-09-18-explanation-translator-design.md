@@ -209,13 +209,16 @@ it raises the same `ExplanationUnavailableError`, already mapped to `503`.
 
 ### AD-5: `translation_deadline_s` defaults to `20.0`
 
-`AppConfig.explanation_deadline_s` is being narrowed by the concurrent spec
-0017 plan to `10.0` (writer stage only, `max_tokens: 600`, a single LLM
-call). The translator is likewise a single LLM call, but with
-`max_tokens: 2400` (AD-6, 4x the writer's), so its deadline is set to `20.0`
-— 2x the new single-call benchmark, a deliberately generous but bounded
-margin rather than a value inherited from the writer's own old (pre-spec
-0017) 25s budget.
+The concurrent spec 0017 plan (`docs/superpowers/plans/2026-09-18-on-demand-explanation.md`)
+has since merged, narrowing `AppConfig.explanation_deadline_s` to a writer-stage-only
+budget; a follow-up commit (`ebea2c0e`, "Raise explanation_deadline_s to 20s for retry
+headroom") then raised it from that plan's original `10.0` to its current `20.0` on
+`main` — not `10.0` as this AD originally assumed when drafted. The translator is
+likewise a single LLM call, but with `max_tokens: 2400` (AD-6, 4x the writer's
+`600`), so its own deadline is also set to `20.0`: the same order of magnitude as
+`explanation_deadline_s` rather than a multiple of it — both cover one round trip
+plus pydantic-ai's own validation retries, and no measured production latency data
+exists yet to justify a wider margin for the translator specifically.
 
 ### AD-6: Input/output size bounded, doubled from the initial proposal for safety margin
 
@@ -295,11 +298,12 @@ persisted by this feature.
   (`LabelingService.execute`) — raises the existing `ExplanationUnavailableError`
   for its own timeout, rather than a new exception, the precedent this
   spec's AD-4 follows (verified 2026-09-18).
-- **AD-5** — supported by: `src/guidami_ai_patente/configs/app_config.py:62-72` (current
-  `explanation_deadline_s: float = Field(default=25.0, ...)`) and
-  `docs/superpowers/plans/2026-09-18-on-demand-explanation.md` Task 4, which narrows it to
-  `default=10.0` (writer stage only) and adds `labeling_deadline_s: float = Field(default=25.0, ...)`
-  for the retrieval+judge stage (verified 2026-09-18).
+- **AD-5** — supported by: `src/guidami_ai_patente/configs/app_config.py:62-86` — the
+  `on-demand-explanation` plan has since merged and split the old combined budget into
+  `labeling_deadline_s: float = Field(default=25.0, ...)` (retrieval+judge stage) and
+  `explanation_deadline_s: float = Field(default=20.0, ...)` (writer stage only, raised
+  from that plan's original `10.0` by a follow-up commit, `ebea2c0e`) — both confirmed
+  present on `main` at their current values (re-verified 2026-09-20).
 - **AD-6** — supported by: `configs/agents/explanation_writer.yaml:2-4` (`max_tokens: 600`),
   `configs/agents/comma_labeler.yaml:4` (`max_tokens: 700`),
   `configs/agents/retrieval_judge.yaml:4` (`max_tokens: 500`) — the comparison
@@ -354,3 +358,10 @@ persisted by this feature.
   `ExplanationUnavailableError` instead of a new exception class (AD-4),
   and recalibrated `translation_deadline_s` from `30.0` to `20.0` against
   the plan's new `explanation_deadline_s=10.0` single-call benchmark (AD-5).
+- **2026-09-20** — Corrected AD-5 and its Feasibility Evidence: the
+  `on-demand-explanation` plan has since merged, and a follow-up commit
+  (`ebea2c0e`) raised `explanation_deadline_s` from that plan's `10.0` to
+  `20.0` on `main`. `translation_deadline_s`'s own value (`20.0`) is
+  unchanged; only the now-false "2x" rationale was corrected to "same order
+  of magnitude." Found while verifying the downstream implementation plan's
+  feasibility against current `main`.
