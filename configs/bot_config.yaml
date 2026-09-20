@@ -6,3 +6,4 @@ api_base_url: http://localhost:8000
 request_timeout_seconds: 15.0
 telegram_read_timeout_seconds: 30.0
 label_request_timeout_seconds: 30.0
+translation_request_timeout_seconds: 25.0

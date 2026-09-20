@@ -102,6 +102,36 @@ async def test_label_question_posts_to_the_label_endpoint() -> None:
 
 
 @pytest.mark.asyncio
+async def test_translate_explanation_posts_the_text_and_returns_the_translation() -> None:
+    async def handler(request: httpx.Request) -> httpx.Response:
+        assert request.method == "POST"
+        assert request.url.path == "/explanations/translate"
+        assert request.url.params["lang"] == "ru"
+        import json
+
+        body = json.loads(request.content)
+        assert body == {"text": "La sosta è vietata."}
+        # AD-10-style override (mirrors test_label_question_posts_to_the_label_endpoint):
+        # the server's own translation_deadline_s defaults to 20.0s, so the client's
+        # per-call timeout must exceed it, not fall back to request_timeout_seconds's
+        # 15.0s default tuned for the fast endpoints.
+        override = client.config.translation_request_timeout_seconds
+        assert request.extensions["timeout"] == {
+            "connect": override,
+            "read": override,
+            "write": override,
+            "pool": override,
+        }
+        return httpx.Response(200, json={"translated_text": "Остановка запрещена."})
+
+    client = _client(handler)
+
+    translated = await client.translate_explanation(7, "La sosta è vietata.")
+
+    assert translated == "Остановка запрещена."
+
+
+@pytest.mark.asyncio
 async def test_get_explanation_parses_the_response_ignoring_extra_fields() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         assert request.url.params["submitted"] == "true"

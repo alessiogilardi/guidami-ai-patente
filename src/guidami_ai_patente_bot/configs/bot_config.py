@@ -45,3 +45,14 @@ class BotConfig(BaseConfig):
             "would give up before the server's deadline could ever fire."
         ),
     )
+    translation_request_timeout_seconds: float = Field(
+        default=25.0,
+        gt=0.0,
+        description=(
+            "Per-call timeout override for POST /explanations/translate (spec 0018 "
+            "bot UX). Distinct from request_timeout_seconds (15.0s default), which "
+            "is tuned for the fast endpoints: the server's own translation_deadline_s "
+            "defaults to 20.0s, so the generic client timeout would give up before "
+            "the server's deadline could ever fire."
+        ),
+    )

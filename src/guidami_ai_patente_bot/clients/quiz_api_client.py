@@ -95,6 +95,24 @@ class QuizApiClient:
         )
         return QuizExplanation.model_validate(response.json())
 
+    async def translate_explanation(self, telegram_user_id: int, text: str) -> str:
+        """Calls `POST /explanations/translate?lang=ru` (spec 0018 bot UX).
+
+        Only "ru" is wired today — the bot has no language picker yet, and the
+        query parameter stays hardcoded until a second language is offered.
+        Passes an explicit timeout override for the same reason `label_question`
+        does: the server's own deadline is longer than the client's generic default.
+        """
+        response = await self._request(
+            "POST",
+            "/explanations/translate",
+            telegram_user_id,
+            params={"lang": "ru"},
+            json={"text": text},
+            timeout=self.config.translation_request_timeout_seconds,
+        )
+        return str(response.json()["translated_text"])
+
     async def get_session_summary(self, telegram_user_id: int, session_id: str) -> SessionSummary:
         """Calls `GET /quiz-answers/summary` (spec 0016, FR-9, AD-16)."""
         response = await self._request(
