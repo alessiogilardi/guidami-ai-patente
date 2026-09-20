@@ -78,12 +78,18 @@ repo/
 │   │                                #   require_registered_user, plain Depends() functions, not
 │   │                                #   pywire components — see patterns.md) gates every
 │   │                                #   business route; exceptions/ gained
-│   │                                #   unregistered_user_error.py -> 403. Nine live endpoints:
-│   │                                #   GET /health, GET /me, six quiz-domain routes (topics,
-│   │                                #   propose/fetch a question, check an answer, fetch
-│   │                                #   its image, explain the correct answer — see
-│   │                                #   architecture.md for the full list), and
-│   │                                #   GET /quiz-answers/summary.
+│   │                                #   unregistered_user_error.py -> 403. Eleven live endpoints:
+│   │                                #   GET /health, GET /me, seven quiz-domain routes (topics,
+│   │                                #   propose/fetch a question, check an answer, ensure a
+│   │                                #   labeling, fetch its image, explain the correct answer —
+│   │                                #   see architecture.md for the full list),
+│   │                                #   GET /quiz-answers/summary, and (spec 0018)
+│   │                                #   POST /explanations/translate — one route in
+│   │                                #   api/routers/explanation_translations.py, backed by
+│   │                                #   agents/explanation_translator/,
+│   │                                #   services/explanation_translation_service.py,
+│   │                                #   api/dependencies/language.py and
+│   │                                #   exceptions/unsupported_language_error.py -> 400.
 │   │                                #   Entry point:
 │   │                                #   `guidami_ai_patente.main:main`, registered as the
 │   │                                #   `serve` script
@@ -924,3 +930,11 @@ into separate handlers (previously one combined `start_or_quiz`), new `/stop` ha
 Manual live-Telegram verification (spec 0016's Definition of Done item 4) and a possible
 ADR for the `Application.bot_data` container-resolution pattern are both still open — see
 `architecture.md`'s matching entry.*
+
+*Last updated: 2026-09-20 — verified against commit `ed51081c` (spec 0018 backend,
+explanation-translator plan, Tasks 1-5 on `feat/backend`). `guidami_ai_patente/` tree
+comment: endpoint count corrected to eleven (the "Nine" figure predated the spec 0017
+`/label` route and undercounted the quiz-domain routes) and the new
+`POST /explanations/translate` route plus the files backing it listed. No new top-level
+package: the feature is one router, one dependency, one service, one agent and one
+exception slotted into existing `guidami_ai_patente/` packages.*
