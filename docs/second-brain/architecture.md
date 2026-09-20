@@ -1406,3 +1406,30 @@ explanation replaces the message. Full regression: 957 tests passed (0 failures,
 integration tests deselected), `ruff check`/`ruff format --check` clean, `pyright` 0
 errors. See `patterns.md` for the new "single-responsibility endpoints and the services
 they call" convention this split establishes for future endpoint design.*
+
+*Last updated: 2026-09-20 — verified against commit `57f40f5d` (spec 0018 bot UX,
+explanation-translator-bot-ux plan, Tasks 1-3 complete on `feat/backend`). On the bot side
+(`src/guidami_ai_patente_bot/`), the on-demand explanation flow (spec 0017) gained a
+translate-to-Russian step. `QuizApiClient` gained `translate_explanation(telegram_user_id,
+text) -> str`, calling `POST /explanations/translate?lang=ru` (the `"ru"` query param is
+hardcoded — no language picker exists yet) with its own timeout override
+(`BotConfig.translation_request_timeout_seconds`), the same shape `label_question` already
+established for an endpoint slower than the client's generic default. `QuizFlowService`
+gained `handle_translation_request(text, telegram_user_id) -> str`, a thin passthrough
+that — unlike `handle_explanation_request`'s "insufficient knowledge" fallback —
+deliberately lets `QuizApiError` propagate: the caller (the new "Traduci" tap handler)
+needs to distinguish success from failure to decide between showing the translation and
+reverting its optimistic edit. `QuizSession` gained `last_explanation: str | None = None`
+— the Italian text last shown by "Spiega", stashed by `handle_explain_callback` only when
+the explanation is `EXPLAINED` with non-empty text, and read by the new "Traduci" tap
+(a `None` value is treated as its own staleness signal, exactly like a
+`current_question_number` mismatch). `handlers/quiz_handlers.py` gained
+`TRANSLATE_CALLBACK_PREFIX`/`handle_translate_callback` (registered in `main.py`): a
+"🇷🇺 Traduci" button appears alongside "Prossima domanda" whenever `handle_explain_callback`
+renders a non-empty explanation. `handle_translate_callback` answers the callback query
+*before* the (possibly slow) translation call — see `patterns.md`'s new "one `answer()`
+per callback query" row for the full rationale and the failure-revert shape this forces —
+then shows a loading line, and on success either extends the message text or, for a photo
+message (Telegram's 1024-char caption limit), reverts the caption and sends the
+translation as a separate chat message instead. Full regression: 966 tests passed,
+`ruff check`/`ruff format --check` clean, `pyright` 0 errors.*
