@@ -84,3 +84,16 @@ class AppConfig(BaseConfig):
             "budget — tune with real data once available."
         ),
     )
+    translation_deadline_s: float = Field(
+        default=20.0,
+        gt=0.0,
+        description=(
+            "Wall-clock budget for one POST /explanations/translate call (spec 0018, "
+            "AD-5). A single LLM round trip, like the writer stage, but with a higher "
+            "max_tokens (2400 vs. 600). Set to the same order of magnitude as "
+            "explanation_deadline_s (also 20.0s) rather than doubling it: both cover "
+            "one round trip plus pydantic-ai's own validation retries, and no measured "
+            "production latency data exists yet to justify a wider margin here. "
+            "Deployment configuration, never judge identity."
+        ),
+    )
