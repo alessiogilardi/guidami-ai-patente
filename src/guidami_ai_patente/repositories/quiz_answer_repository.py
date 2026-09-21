@@ -5,7 +5,7 @@ from pywire import Autowired, repository
 
 from guidami_ai_patente.clients import PostgresClientProvider
 from guidami_ai_patente.configs import AppConfig
-from guidami_ai_patente.models import SessionSummary
+from guidami_ai_patente.models import SessionSummary, TopicSummary, WrongQuestion
 
 
 @repository
@@ -55,15 +55,50 @@ class QuizAnswerRepository:
             )
 
     def session_summary(self, telegram_user_id: int, session_id: str) -> SessionSummary:
-        """Returns how many answers were recorded for this session, and how many were correct.
+        """Returns a session's totals, per-topic breakdown and wrongly answered questions.
 
         Correctness is computed via a `JOIN` against `quiz_questions.correct_answer` on
         every call, never cached (same rule AD-3 already applies to every other
-        correctness check in this spec) — `AD-16`.
+        correctness check in this spec) — `AD-16`. The totals are the sums of the
+        per-topic rows, so the three parts can never disagree with each other.
         """
-        query = sql.SQL(
-            "SELECT count(*), "
-            "count(*) FILTER (WHERE qa.user_answer = q.correct_answer) "
+        params = [telegram_user_id, session_id]
+        topic_rows = self.postgres.client.fetch(
+            sql.SQL(
+                "SELECT q.topic, count(*), "
+                "count(*) FILTER (WHERE qa.user_answer = q.correct_answer) "
+                "{scope} GROUP BY q.topic ORDER BY q.topic"
+            ).format(scope=self._session_scope()),
+            params,
+        )
+        wrong_rows = self.postgres.client.fetch(
+            sql.SQL(
+                "SELECT q.number, q.text {scope} AND qa.user_answer <> q.correct_answer "
+                "GROUP BY q.number, q.text ORDER BY min(qa.id)"
+            ).format(scope=self._session_scope()),
+            params,
+        )
+        by_topic = [
+            TopicSummary(topic=topic, answered=int(answered), correct=int(correct))
+            for topic, answered, correct in topic_rows
+        ]
+        return SessionSummary(
+            answered=sum(topic.answered for topic in by_topic),
+            correct=sum(topic.correct for topic in by_topic),
+            by_topic=by_topic,
+            wrong_questions=[
+                WrongQuestion(number=number, text=text) for number, text in wrong_rows
+            ],
+        )
+
+    def _session_scope(self) -> sql.Composed:
+        """The `FROM ... WHERE` that limits a summary query to one user's one session (AD-16).
+
+        Shared by every `session_summary` query so the two of them can never scope
+        differently: `u.telegram_user_id` too, not just `session_id`, so a reused
+        `session_id` never exposes another user's answers.
+        """
+        return sql.SQL(
             "FROM {answers} qa "
             "JOIN {users} u ON u.id = qa.user_id "
             "JOIN {questions} q ON q.id = qa.quiz_id "
@@ -73,6 +108,3 @@ class QuizAnswerRepository:
             users=sql.Identifier(self.config.users_table),
             questions=sql.Identifier(self.config.quiz_questions_table),
         )
-        rows = self.postgres.client.fetch(query, [telegram_user_id, session_id])
-        answered, correct = rows[0]
-        return SessionSummary(answered=int(answered), correct=int(correct))

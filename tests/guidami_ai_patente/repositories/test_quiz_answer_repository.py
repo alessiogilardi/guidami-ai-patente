@@ -8,6 +8,7 @@ from pywire import get_default_container
 
 from commons.clients import PostgresClient
 from guidami_ai_patente.clients import PostgresClientProvider
+from guidami_ai_patente.models import TopicSummary, WrongQuestion
 from guidami_ai_patente.repositories import QuizAnswerRepository, UserRepository
 
 _TABLES = (
@@ -20,20 +21,22 @@ _TABLES = (
 )
 
 _QUESTION = ("0001", 1, "segnaletica", "Il segnale vieta il sorpasso?", True, None)
+_OTHER_QUESTION = ("0002", 2, "precedenza", "Chi ha la precedenza?", False, None)
 
 
 @pytest.fixture
 def bank(api_client: object) -> Iterator[PostgresClient]:
     client = get_default_container().resolve(PostgresClientProvider).client
     client.truncate(*_TABLES)
-    client.execute(
-        sql.SQL(
-            "INSERT INTO quiz_questions "
-            "(number, question_id, topic, text, correct_answer, image_filename) "
-            "VALUES (%s, %s, %s, %s, %s, %s)"
-        ),
-        list(_QUESTION),
-    )
+    for question in (_QUESTION, _OTHER_QUESTION):
+        client.execute(
+            sql.SQL(
+                "INSERT INTO quiz_questions "
+                "(number, question_id, topic, text, correct_answer, image_filename) "
+                "VALUES (%s, %s, %s, %s, %s, %s)"
+            ),
+            list(question),
+        )
     get_default_container().resolve(UserRepository).provision(42)
     yield client
     client.truncate(*_TABLES)
@@ -104,3 +107,61 @@ def test_session_summary_is_scoped_to_the_requesting_user(
     summary = repository.session_summary(42, "shared-seed")
 
     assert summary.answered == 1
+
+
+@pytest.mark.integration
+def test_session_summary_groups_answers_by_topic_ordered_by_topic_name(
+    bank: PostgresClient, repository: QuizAnswerRepository
+) -> None:
+    repository.record_answer(42, "0001", "seed-abc", True)  # segnaletica, correct
+    repository.record_answer(42, "0001", "seed-abc", False)  # segnaletica, wrong
+    repository.record_answer(42, "0002", "seed-abc", False)  # precedenza, correct
+
+    summary = repository.session_summary(42, "seed-abc")
+
+    assert summary.by_topic == [
+        TopicSummary(topic="precedenza", answered=1, correct=1),
+        TopicSummary(topic="segnaletica", answered=2, correct=1),
+    ]
+    assert (summary.answered, summary.correct) == (3, 2)
+
+
+@pytest.mark.integration
+def test_session_summary_lists_each_wrong_question_once_in_answer_order(
+    bank: PostgresClient, repository: QuizAnswerRepository
+) -> None:
+    repository.record_answer(42, "0002", "seed-abc", True)  # wrong (stored answer is False)
+    repository.record_answer(42, "0001", "seed-abc", False)  # wrong
+    repository.record_answer(42, "0001", "seed-abc", False)  # wrong again: still listed once
+    repository.record_answer(42, "0001", "seed-abc", True)  # correct: never listed on its own
+
+    summary = repository.session_summary(42, "seed-abc")
+
+    assert summary.wrong_questions == [
+        WrongQuestion(number="0002", text="Chi ha la precedenza?"),
+        WrongQuestion(number="0001", text="Il segnale vieta il sorpasso?"),
+    ]
+
+
+@pytest.mark.integration
+def test_session_summary_breakdowns_are_empty_for_a_session_with_no_answers(
+    bank: PostgresClient, repository: QuizAnswerRepository
+) -> None:
+    summary = repository.session_summary(42, "never-played")
+
+    assert summary.by_topic == []
+    assert summary.wrong_questions == []
+
+
+@pytest.mark.integration
+def test_session_summary_breakdowns_are_scoped_to_the_requesting_user(
+    bank: PostgresClient, repository: QuizAnswerRepository
+) -> None:
+    get_default_container().resolve(UserRepository).provision(99)
+    repository.record_answer(42, "0001", "shared-seed", True)
+    repository.record_answer(99, "0002", "shared-seed", True)  # wrong, but not user 42's
+
+    summary = repository.session_summary(42, "shared-seed")
+
+    assert summary.by_topic == [TopicSummary(topic="segnaletica", answered=1, correct=1)]
+    assert summary.wrong_questions == []

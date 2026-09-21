@@ -57,7 +57,12 @@ def test_the_summary_counts_answered_and_correct(
     )
 
     assert response.status_code == 200
-    assert response.json() == {"answered": 2, "correct": 1}
+    assert response.json() == {
+        "answered": 2,
+        "correct": 1,
+        "by_topic": [{"topic": "segnaletica", "answered": 2, "correct": 1}],
+        "wrong_questions": [{"number": "0001", "text": "Il segnale vieta il sorpasso?"}],
+    }
 
 
 @pytest.mark.integration
@@ -68,7 +73,12 @@ def test_an_unplayed_session_summarizes_to_zero(
         "/quiz-answers/summary", params={"session_id": "never-played"}, headers=registered_headers
     )
 
-    assert response.json() == {"answered": 0, "correct": 0}
+    assert response.json() == {
+        "answered": 0,
+        "correct": 0,
+        "by_topic": [],
+        "wrong_questions": [],
+    }
 
 
 @pytest.mark.integration

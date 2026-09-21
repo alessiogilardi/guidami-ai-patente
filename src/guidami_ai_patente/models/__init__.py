@@ -12,6 +12,8 @@ from .quiz_question_summary import QuizQuestionSummary
 from .session_summary import SessionSummary
 from .session_summary_request import SessionSummaryRequest
 from .topic_count import TopicCount
+from .topic_summary import TopicSummary
+from .wrong_question import WrongQuestion
 
 __all__ = [
     "CommaSelection",
@@ -26,4 +28,6 @@ __all__ = [
     "SessionSummary",
     "SessionSummaryRequest",
     "TopicCount",
+    "TopicSummary",
+    "WrongQuestion",
 ]

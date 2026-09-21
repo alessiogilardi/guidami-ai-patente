@@ -1,4 +1,4 @@
-"""GET /quiz-answers/summary: a session's answered/correct counts (spec 0016, FR-9)."""
+"""GET /quiz-answers/summary: a session's totals and breakdowns (spec 0016, FR-9)."""
 
 from typing import Annotated
 
@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends, Query
 from pywire import Autowired
 
 from domain.entities.users import UserEntity
+from guidami_ai_patente.mappers import SessionSummaryMapper
 from guidami_ai_patente.models import SessionSummaryRequest
 from guidami_ai_patente.services import SessionSummaryService
 
@@ -21,7 +22,9 @@ async def get_session_summary(
     service: Autowired[SessionSummaryService],
     session_id: str = Query(description="The bot's per-QuizSession seed."),
 ) -> SessionSummaryResponse:
-    """Returns the session's answered/correct counts, scoped by both user and session.
+    """Returns the session's totals, topic breakdown and wrong questions.
+
+    Scoped by both user and session.
 
     Plain `await`, not `asyncio.to_thread`: `SessionSummaryService` is an
     `AsyncUseCase` (see its own docstring) — the sync-to-thread crossing already
@@ -38,4 +41,4 @@ async def get_session_summary(
     summary = await service(
         SessionSummaryRequest(telegram_user_id=user.telegram_user_id, session_id=session_id)
     )
-    return SessionSummaryResponse(answered=summary.answered, correct=summary.correct)
+    return SessionSummaryMapper.from_summary_to_response(summary)
