@@ -324,22 +324,27 @@ attaches to its `api_client` calls, after seeding the corresponding `users` row 
 (`tests/guidami_ai_patente/api/dependencies/test_user_identity.py`,
 `tests/guidami_ai_patente/api/test_exception_handlers.py`) exercise instead.
 
-**Known gap (2026-09-21): most truncate fixtures still omit `quiz_answers`.** The paragraph
-above lists the fixtures that were widened for spec 0016, but a full run of `uv run pytest
--m "integration or not integration"` on `feat/backend` still ends with 1 failure and 70
-errors, all `psycopg.errors.FeatureNotSupported: cannot truncate a table referenced in a
-foreign key constraint … Truncate "quiz_answers"`. They come from 12 files that truncate
-`quiz_questions` without naming `quiz_answers`: under `tests/commons/repositories/db/`,
-`tests/guidami_ai_patente/repositories/` (`test_quiz_question_repository.py`,
-`test_golden_set_*`), `tests/guidami_ai_patente/services/test_quiz_image_service.py`,
-`tests/guidami_ai_patente_ingestor/` (`cli/commands/`, `orchestrators/`, `repositories/`) and
-`tests/labeling/repositories/test_golden_set_write_repository.py`. They fail on any checkout
-of this branch, independent of the change under test, and are still open. Run a narrowed
-selection (the file under change plus its neighbours) rather than trusting a green full run
-until they are widened.
+**Closed gap (2026-09-21): every truncate list now names `quiz_answers`.** The paragraph
+above lists the fixtures widened for spec 0016 at the time, but twelve more test files
+(under `tests/commons/repositories/db/`, `tests/guidami_ai_patente/`,
+`tests/guidami_ai_patente_ingestor/` — including `cli/commands/conftest.py`, which
+`test_reset.py` seeds through — and `tests/labeling/repositories/`) still truncated
+`quiz_questions` without it, so a full `uv run pytest -m "integration or not integration"`
+ended with 1 failure and 70 errors (`FeatureNotSupported … Truncate "quiz_answers"`) on this
+branch, independent of the change under test. All twelve now name `quiz_answers`, and the
+full run is green (1198 passed, 2 skipped). All of them reach Postgres only through
+`postgres_test_config` — directly, via `api_client`/`app_config`, or via
+`ingestor_test_config` — i.e. the ephemeral stack on port 5433, never the dev database.
+When a new FK lands, grep `tests/` for every `truncate(` list that names the referenced
+table, not just the fixtures of the tests you are editing.
 
 *Last updated: 2026-09-21 — verified against commit `61c290f1`. Recorded the gap above; the
 summary work itself added integration tests to
 `tests/guidami_ai_patente/repositories/test_quiz_answer_repository.py` and
 `tests/guidami_ai_patente/api/routers/test_quiz_answers.py` whose fixtures do truncate
 `quiz_answers`, and plain unit tests for the bot's `messages.summary_message`.*
+
+*Last updated: 2026-09-21 — verified against commit `d9c44f28`. Replaced the "known gap"
+note with its resolution: twelve test files widened their `truncate` lists with
+`quiz_answers`; full run 1198 passed, 2 skipped, dev database row counts unchanged before
+and after the run.*
