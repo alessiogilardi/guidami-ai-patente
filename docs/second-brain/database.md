@@ -311,6 +311,12 @@ joining back to `quiz_questions.correct_answer` at read time (`QuizAnswerReposit
 .session_summary`), never cached, so it cannot drift out of sync — the same rule
 AD-3 already applies to answer-checking elsewhere in this spec. No deduplication: the
 same question answered twice (same or different session) produces two rows.
+`session_summary` reads the same table three ways off one shared `FROM ... WHERE`
+(scoped by `telegram_user_id` *and* `session_id`): totals are the sums of a
+`GROUP BY quiz_questions.topic` (ordered by topic), and the wrongly answered questions
+are `GROUP BY number, text` over `user_answer <> correct_answer`, ordered by
+`min(quiz_answers.id)` so each is listed once, in the order it was first missed. No
+schema change was needed for the breakdowns.
 
 No index exists on any embedding column (no ivfflat/hnsw) — vector search runs as
 an exact `<=>` scan. No index yet on the `TEXT[]` metadata columns (GIN/FTS
@@ -538,3 +544,11 @@ every other table-name field's convention. Existing integration-test FK-truncate
 lists (`tests/guidami_ai_patente/api/routers/test_quiz_questions.py` and siblings) had to
 widen to include `quiz_answers` once its FK into `quiz_questions` landed — see
 `testing.md` for the fixture-list convention this confirms.*
+
+*Last updated: 2026-09-21 — verified against commit `61c290f1`. `QuizAnswerRepository
+.session_summary` now derives a per-topic breakdown and a wrong-question list from
+`quiz_answers` joined to `quiz_questions` (see the `users`/`quiz_answers` paragraph); no DDL
+change. Note for existing dev volumes: `db/init.sql` runs only on a fresh volume, so a
+Postgres volume created before spec 0016 has no `users`/`quiz_answers` until their
+`CREATE TABLE IF NOT EXISTS` statements are applied by hand — the API then fails every
+gated request with `relation "users" does not exist`.*

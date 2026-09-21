@@ -323,3 +323,23 @@ attaches to its `api_client` calls, after seeding the corresponding `users` row 
 `registered = true`. An unregistered/absent header is what the auth-gate tests
 (`tests/guidami_ai_patente/api/dependencies/test_user_identity.py`,
 `tests/guidami_ai_patente/api/test_exception_handlers.py`) exercise instead.
+
+**Known gap (2026-09-21): most truncate fixtures still omit `quiz_answers`.** The paragraph
+above lists the fixtures that were widened for spec 0016, but a full run of `uv run pytest
+-m "integration or not integration"` on `feat/backend` still ends with 1 failure and 70
+errors, all `psycopg.errors.FeatureNotSupported: cannot truncate a table referenced in a
+foreign key constraint … Truncate "quiz_answers"`. They come from 12 files that truncate
+`quiz_questions` without naming `quiz_answers`: under `tests/commons/repositories/db/`,
+`tests/guidami_ai_patente/repositories/` (`test_quiz_question_repository.py`,
+`test_golden_set_*`), `tests/guidami_ai_patente/services/test_quiz_image_service.py`,
+`tests/guidami_ai_patente_ingestor/` (`cli/commands/`, `orchestrators/`, `repositories/`) and
+`tests/labeling/repositories/test_golden_set_write_repository.py`. They fail on any checkout
+of this branch, independent of the change under test, and are still open. Run a narrowed
+selection (the file under change plus its neighbours) rather than trusting a green full run
+until they are widened.
+
+*Last updated: 2026-09-21 — verified against commit `61c290f1`. Recorded the gap above; the
+summary work itself added integration tests to
+`tests/guidami_ai_patente/repositories/test_quiz_answer_repository.py` and
+`tests/guidami_ai_patente/api/routers/test_quiz_answers.py` whose fixtures do truncate
+`quiz_answers`, and plain unit tests for the bot's `messages.summary_message`.*

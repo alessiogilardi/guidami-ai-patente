@@ -140,7 +140,10 @@ repo/
 │   │                                #   only) and /quiz (quiz_command) are separate handlers —
 │   │                                #   previously one combined start_or_quiz; a new
 │   │                                #   stop_command backs /stop, ending the session and
-│   │                                #   showing its SessionSummary, never clearing the session
+│   │                                #   showing its SessionSummary (totals, per-topic rows, wrong
+│   │                                #   questions; rendered as plain text by
+│   │                                #   messages.summary_message; models/ mirrors it with
+│   │                                #   TopicSummary/WrongQuestion), never clearing the session
 │   │                                #   on a failed summary call, D-16). Entry point:
 │   │                                #   `guidami_ai_patente_bot.main:main`, registered as the
 │   │                                #   `telegram-bot` script; long polling only, no webhook
@@ -938,3 +941,11 @@ comment: endpoint count corrected to eleven (the "Nine" figure predated the spec
 `POST /explanations/translate` route plus the files backing it listed. No new top-level
 package: the feature is one router, one dependency, one service, one agent and one
 exception slotted into existing `guidami_ai_patente/` packages.*
+
+*Last updated: 2026-09-21 — verified against commit `61c290f1`. `guidami_ai_patente/`:
+`models/` gained `topic_summary.py`/`wrong_question.py` (and `session_summary.py` now nests
+them), `mappers/` gained `session_summary_mapper.py`. `guidami_ai_patente_bot/`: `models/`
+gained the mirroring `topic_summary.py`/`wrong_question.py`; `messages.py` now also holds the
+command list, the `/quiz` intro and `summary_message`, which renders the whole `/stop`
+summary. Tests: `tests/guidami_ai_patente_bot/test_messages.py` and
+`tests/guidami_ai_patente/mappers/test_session_summary_mapper.py` are new.*
