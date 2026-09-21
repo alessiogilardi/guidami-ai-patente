@@ -6,11 +6,14 @@ import argparse
 from typing import TYPE_CHECKING
 from unittest.mock import MagicMock, patch
 
+import pytest
+
 from guidami_ai_patente_ingestor.cli.models.run_artifacts import IndexManifest
 
 if TYPE_CHECKING:
     # See test_embedding_service.py for why this import is TYPE_CHECKING-guarded.
     from tests.conftest import RecordingProgressReporter
+    from tests.guidami_ai_patente_ingestor.cli.commands.conftest import TrackedPostgresClient
 
 
 def test_run_index_knowledge_builds_flow_with_source_and_runs() -> None:
@@ -148,3 +151,53 @@ def test_quiz_branch_records_flow_on_manifest() -> None:
         run_index(MagicMock(), MagicMock(), args, manifest, progress=MagicMock())
 
     assert manifest.flows == ["quiz_indexing"]
+
+
+def test_run_index_closes_the_postgres_client_once_the_flow_has_run(
+    tracked_postgres_client: TrackedPostgresClient,
+) -> None:
+    """The client owns a connection pool: leaving it open leaks its worker threads."""
+    args = argparse.Namespace(entity="quiz", dry_run=False)
+
+    with (
+        patch("guidami_ai_patente_ingestor.cli.commands.index.LiteLLMEmbeddingClient"),
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.index.wiring.build_postgres_client",
+            return_value=tracked_postgres_client,
+        ),
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.index.build_quiz_indexing_flow",
+            return_value=MagicMock(),
+        ),
+    ):
+        from guidami_ai_patente_ingestor.cli.commands.index import run_index
+
+        run_index(MagicMock(), MagicMock(), args, IndexManifest(entity="quiz"), MagicMock())
+
+    assert tracked_postgres_client.closed
+
+
+def test_run_index_closes_the_postgres_client_even_when_the_flow_fails(
+    tracked_postgres_client: TrackedPostgresClient,
+) -> None:
+    args = argparse.Namespace(entity="quiz", dry_run=False)
+    flow = MagicMock()
+    flow.run.side_effect = RuntimeError("boom")
+
+    with (
+        patch("guidami_ai_patente_ingestor.cli.commands.index.LiteLLMEmbeddingClient"),
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.index.wiring.build_postgres_client",
+            return_value=tracked_postgres_client,
+        ),
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.index.build_quiz_indexing_flow",
+            return_value=flow,
+        ),
+        pytest.raises(RuntimeError, match="boom"),
+    ):
+        from guidami_ai_patente_ingestor.cli.commands.index import run_index
+
+        run_index(MagicMock(), MagicMock(), args, IndexManifest(entity="quiz"), MagicMock())
+
+    assert tracked_postgres_client.closed

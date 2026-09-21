@@ -1,6 +1,9 @@
 """Tests for cli/commands/reset.py (migrated from the retired test_cli.py)."""
 
+from __future__ import annotations
+
 import argparse
+from typing import TYPE_CHECKING
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -8,6 +11,10 @@ from psycopg import sql
 
 from commons.clients import PostgresClient
 from guidami_ai_patente_ingestor.cli.commands.reset import run_reset
+
+if TYPE_CHECKING:
+    # Fixture return type only; see test_index.py for why this import is TYPE_CHECKING-guarded.
+    from tests.guidami_ai_patente_ingestor.cli.commands.conftest import TrackedPostgresClient
 
 
 def _args(entity: str, apply: bool = False, force: bool = False) -> argparse.Namespace:
@@ -114,3 +121,43 @@ def test_reset_quiz_preview_names_both_tables(capsys: pytest.CaptureFixture[str]
     assert "quiz_questions" in output
     assert "quiz_question_embeddings" in output
     pg.assert_not_called()
+
+
+def test_reset_closes_the_postgres_client_once_it_has_truncated(
+    tracked_postgres_client: TrackedPostgresClient,
+) -> None:
+    """The client owns a connection pool: leaving it open leaks its worker threads."""
+    args = argparse.Namespace(command="reset", entity="quiz", apply=True)
+    config = MagicMock()
+    config.quiz_question_embeddings_table = "quiz_question_embeddings"
+    config.quiz_questions_table = "quiz_questions"
+
+    with patch(
+        "guidami_ai_patente_ingestor.cli.commands.reset.wiring.build_postgres_client",
+        return_value=tracked_postgres_client,
+    ):
+        run_reset(config, args)
+
+    assert tracked_postgres_client.truncated == [("quiz_question_embeddings", "quiz_questions")]
+    assert tracked_postgres_client.closed
+
+
+def test_reset_closes_the_postgres_client_even_when_the_guard_refuses(
+    tracked_postgres_client: TrackedPostgresClient,
+) -> None:
+    args = argparse.Namespace(command="reset", entity="knowledge", apply=True, force=False)
+    config = MagicMock()
+    config.quiz_labelings_table = "quiz_labelings"
+    tracked_postgres_client.validated_labelings = 1
+
+    with (
+        patch(
+            "guidami_ai_patente_ingestor.cli.commands.reset.wiring.build_postgres_client",
+            return_value=tracked_postgres_client,
+        ),
+        pytest.raises(SystemExit),
+    ):
+        run_reset(config, args)
+
+    assert tracked_postgres_client.truncated == []
+    assert tracked_postgres_client.closed

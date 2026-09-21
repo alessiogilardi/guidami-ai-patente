@@ -7,7 +7,9 @@ one article -> one comma -> one quiz question -> one labeling run -> one labelin
 """
 
 from collections.abc import Iterator
+from dataclasses import dataclass, field
 from datetime import UTC, datetime
+from typing import Self
 
 import pytest
 from psycopg import sql
@@ -26,6 +28,43 @@ _GOLDEN_SET_TABLES = (
     "article_commas",
     "articles",
 )
+
+
+@dataclass
+class TrackedPostgresClient:
+    """Stand-in for `PostgresClient` that records whether it was closed and what it was asked.
+
+    A real client owns a connection pool that must be closed explicitly; a command that
+    forgets to leaks it (see `test_reset.py`/`test_index.py`). `validated_labelings` is
+    what the reset guard's count query reads back.
+    """
+
+    validated_labelings: int = 0
+    closed: bool = False
+    truncated: list[tuple[str, ...]] = field(default_factory=list)
+
+    def __enter__(self) -> Self:
+        """Allows use as a context manager, like the real client."""
+        return self
+
+    def __exit__(self, *exc_info: object) -> None:
+        """Closes the client on leaving the `with` block, like the real client."""
+        self.close()
+
+    def close(self) -> None:
+        self.closed = True
+
+    def truncate(self, *table_names: str) -> None:
+        self.truncated.append(table_names)
+
+    def fetch(self, query: object, params: object = None) -> list[tuple[int]]:
+        return [(self.validated_labelings,)]
+
+
+@pytest.fixture
+def tracked_postgres_client() -> TrackedPostgresClient:
+    """A fresh `TrackedPostgresClient`, for tests that patch `wiring.build_postgres_client`."""
+    return TrackedPostgresClient()
 
 
 @pytest.fixture

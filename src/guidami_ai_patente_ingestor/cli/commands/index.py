@@ -63,40 +63,42 @@ def run_index(
 
     embedding_client = LiteLLMEmbeddingClient(config.embedding)
     postgres_client = wiring.build_postgres_client(config)
-    progress.begin_run(1)
-    match args.entity:
-        case "knowledge":
-            source: str = args.source
-            flow = build_knowledge_indexing_flow(
-                config=config,
-                layer_resolver=layer_resolver,
-                embedding_client=embedding_client,
-                postgres_client=postgres_client,
-                source=source,
-                progress=progress,
-            )
-            logger.info(f"starting knowledge indexing for source '{source}'")
-            manifest.record_flow("knowledge_indexing")
-            progress.begin_flow("knowledge_indexing")
-            flow.run()
-            progress.end_flow()
-            logger.info(f"knowledge indexing completed for source '{source}'")
-        case "quiz":
-            flow = build_quiz_indexing_flow(
-                config=config,
-                layer_resolver=layer_resolver,
-                embedding_client=embedding_client,
-                postgres_client=postgres_client,
-                progress=progress,
-            )
-            logger.info("starting quiz indexing")
-            manifest.record_flow("quiz_indexing")
-            progress.begin_flow("quiz_indexing")
-            result_context = flow.run()
-            progress.end_flow()
-            embed_result = cast(
-                EmbedQuizVariantsResult, result_context.get(context_keys.QUIZ_VARIANT_EMBEDDINGS)
-            )
-            manifest.record_quiz_variant_omissions(embed_result.omitted_counts)
-            logger.info("quiz variant omissions: %s", embed_result.omitted_counts)
-            logger.info("quiz indexing completed")
+    with postgres_client:
+        progress.begin_run(1)
+        match args.entity:
+            case "knowledge":
+                source: str = args.source
+                flow = build_knowledge_indexing_flow(
+                    config=config,
+                    layer_resolver=layer_resolver,
+                    embedding_client=embedding_client,
+                    postgres_client=postgres_client,
+                    source=source,
+                    progress=progress,
+                )
+                logger.info(f"starting knowledge indexing for source '{source}'")
+                manifest.record_flow("knowledge_indexing")
+                progress.begin_flow("knowledge_indexing")
+                flow.run()
+                progress.end_flow()
+                logger.info(f"knowledge indexing completed for source '{source}'")
+            case "quiz":
+                flow = build_quiz_indexing_flow(
+                    config=config,
+                    layer_resolver=layer_resolver,
+                    embedding_client=embedding_client,
+                    postgres_client=postgres_client,
+                    progress=progress,
+                )
+                logger.info("starting quiz indexing")
+                manifest.record_flow("quiz_indexing")
+                progress.begin_flow("quiz_indexing")
+                result_context = flow.run()
+                progress.end_flow()
+                embed_result = cast(
+                    EmbedQuizVariantsResult,
+                    result_context.get(context_keys.QUIZ_VARIANT_EMBEDDINGS),
+                )
+                manifest.record_quiz_variant_omissions(embed_result.omitted_counts)
+                logger.info("quiz variant omissions: %s", embed_result.omitted_counts)
+                logger.info("quiz indexing completed")

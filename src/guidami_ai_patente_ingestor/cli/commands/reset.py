@@ -67,41 +67,42 @@ def run_reset(config: IngestorConfig, args: argparse.Namespace) -> None:
         return
 
     postgres_client = wiring.build_postgres_client(config)
-    match args.entity:
-        case "knowledge":
-            validated = _validated_labeling_count(postgres_client, config.quiz_labelings_table)
-            if validated > 0 and not args.force:
-                logger.error(
-                    "Refusing to truncate: %d human-validated labeling(s) would be destroyed",
-                    validated,
+    with postgres_client:
+        match args.entity:
+            case "knowledge":
+                validated = _validated_labeling_count(postgres_client, config.quiz_labelings_table)
+                if validated > 0 and not args.force:
+                    logger.error(
+                        "Refusing to truncate: %d human-validated labeling(s) would be destroyed",
+                        validated,
+                    )
+                    raise SystemExit(
+                        f"reset knowledge would destroy {validated} human-validated "
+                        f"labeling(s). Re-run with --force to proceed anyway."
+                    )
+                # One statement, not four: Postgres refuses to TRUNCATE a table referenced
+                # by a live FK unless the referencing table is named in the SAME statement.
+                # quiz_comma_labels references article_commas, which is why the current
+                # two-table command is already broken against this schema (spec 0012, AD-28).
+                postgres_client.truncate(
+                    config.quiz_comma_labels_table,
+                    config.quiz_labelings_table,
+                    config.article_commas_table,
+                    config.articles_table,
                 )
-                raise SystemExit(
-                    f"reset knowledge would destroy {validated} human-validated "
-                    f"labeling(s). Re-run with --force to proceed anyway."
+                logger.info("articles, article_commas and the golden-set tables truncated")
+            case "quiz":
+                # KNOWN BROKEN, deferred: quiz_labelings.quiz_question_id references
+                # quiz_questions ON DELETE CASCADE, so this TRUNCATE fails with the same FK
+                # error the knowledge branch above was fixed for (spec 0012, AD-28, which
+                # addressed only the knowledge path). The fix is the same shape — name
+                # quiz_comma_labels and quiz_labelings in this statement and add the
+                # validated-labeling guard — and is out of scope for this plan.
+                # Combined statement, not a single-table repository .truncate() call:
+                # Postgres refuses to TRUNCATE `quiz_questions` while
+                # `quiz_question_embeddings`'s FK references it, unless both tables
+                # are named in the SAME TRUNCATE statement (mirrors the knowledge branch).
+                postgres_client.truncate(
+                    config.quiz_question_embeddings_table, config.quiz_questions_table
                 )
-            # One statement, not four: Postgres refuses to TRUNCATE a table referenced
-            # by a live FK unless the referencing table is named in the SAME statement.
-            # quiz_comma_labels references article_commas, which is why the current
-            # two-table command is already broken against this schema (spec 0012, AD-28).
-            postgres_client.truncate(
-                config.quiz_comma_labels_table,
-                config.quiz_labelings_table,
-                config.article_commas_table,
-                config.articles_table,
-            )
-            logger.info("articles, article_commas and the golden-set tables truncated")
-        case "quiz":
-            # KNOWN BROKEN, deferred: quiz_labelings.quiz_question_id references
-            # quiz_questions ON DELETE CASCADE, so this TRUNCATE fails with the same FK
-            # error the knowledge branch above was fixed for (spec 0012, AD-28, which
-            # addressed only the knowledge path). The fix is the same shape — name
-            # quiz_comma_labels and quiz_labelings in this statement and add the
-            # validated-labeling guard — and is out of scope for this plan.
-            # Combined statement, not a single-table repository .truncate() call:
-            # Postgres refuses to TRUNCATE `quiz_questions` while
-            # `quiz_question_embeddings`'s FK references it, unless both tables
-            # are named in the SAME TRUNCATE statement (mirrors the knowledge branch).
-            postgres_client.truncate(
-                config.quiz_question_embeddings_table, config.quiz_questions_table
-            )
-            logger.info("quiz_question_embeddings and quiz_questions tables truncated")
+                logger.info("quiz_question_embeddings and quiz_questions tables truncated")
