@@ -15,7 +15,19 @@ STALE_NOTICE = "Questa domanda non è più valida, usa /quiz"
 GENERIC_ERROR_MESSAGE = "Si è verificato un errore, riprova con /quiz"
 
 
-WELCOME_MESSAGE = "Benvenuto! Usa /quiz per iniziare."
+COMMANDS_LIST = (
+    "Comandi disponibili:\n"
+    "/quiz — inizia o riprendi il quiz\n"
+    "/stop — termina la sessione e mostra il riepilogo\n"
+    "/start — mostra questo messaggio"
+)
+WELCOME_MESSAGE = f"Benvenuto! 👋\n\n{COMMANDS_LIST}"
+QUIZ_INTRO_MESSAGE = (
+    "🚗 Quiz patente\n\n"
+    "Ti proporrò domande a risposta Vero/Falso: rispondi con i pulsanti sotto ogni domanda. "
+    "Dopo la risposta puoi chiedere una spiegazione o passare alla domanda successiva.\n\n"
+    "Usa /stop quando vuoi terminare e vedere il riepilogo."
+)
 PENDING_APPROVAL_MESSAGE = "Richiesta in attesa di approvazione da parte del gestore del bot."
 NO_SESSION_MESSAGE = "Nessuna sessione in corso."
 UNAUTHORIZED_MESSAGE = "Non sei ancora abilitato a usare questo bot."

@@ -17,6 +17,10 @@ EXPLAIN_CALLBACK_PREFIX = "quiz:explain:"
 TRANSLATE_CALLBACK_PREFIX = "quiz:translate:"
 NEXT_CALLBACK_DATA = "quiz:next"
 
+# Telegram's cap on a photo's caption. A question's own caption sits far below it, so only
+# the explanation appended to it can overflow (see `handle_explain_callback`).
+_CAPTION_LIMIT = 1024
+
 _NEXT_KEYBOARD = InlineKeyboardMarkup(
     [[InlineKeyboardButton("Prossima domanda ▶", callback_data=NEXT_CALLBACK_DATA)]]
 )
@@ -118,6 +122,11 @@ async def quiz_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     """Handles `/quiz`: proposes a question, resuming a pending session if any (FR-8)."""
     assert update.effective_chat is not None
     assert update.effective_user is not None
+    assert context.user_data is not None
+    if "session" not in context.user_data:
+        await context.bot.send_message(
+            chat_id=update.effective_chat.id, text=messages.QUIZ_INTRO_MESSAGE
+        )
     await _send_question(update.effective_chat.id, update.effective_user.id, context)
 
 
@@ -185,10 +194,11 @@ async def handle_answer_callback(update: Update, context: ContextTypes.DEFAULT_T
         return
 
     await query.answer()
-    text = messages.outcome_line(correct)
+    message = cast(Message, query.message)
+    question_text = message.caption if message.photo else message.text
+    text = f"{question_text}\n\n{messages.outcome_line(correct)}"
     keyboard = _answer_result_keyboard(number, answer, explanation_status=explanation_status)
 
-    message = cast(Message, query.message)
     if message.photo:
         await query.edit_message_caption(caption=text, reply_markup=keyboard)
     else:
@@ -209,6 +219,7 @@ async def handle_explain_callback(update: Update, context: ContextTypes.DEFAULT_
     query = update.callback_query
     assert query is not None
     assert query.data is not None
+    assert update.effective_chat is not None
     assert update.effective_user is not None
     number, answer = _parse_callback(query.data, EXPLAIN_CALLBACK_PREFIX)
 
@@ -242,7 +253,10 @@ async def handle_explain_callback(update: Update, context: ContextTypes.DEFAULT_
     )
     final_text = f"{base_text}\n\n{explanation_line}"
     final_keyboard = _explanation_result_keyboard(number, translatable=translatable)
-    if message.photo:
+    if message.photo and len(final_text) > _CAPTION_LIMIT:
+        await query.edit_message_caption(caption=base_text, reply_markup=final_keyboard)
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=explanation_line)
+    elif message.photo:
         await query.edit_message_caption(caption=final_text, reply_markup=final_keyboard)
     else:
         await query.edit_message_text(text=final_text, reply_markup=final_keyboard)

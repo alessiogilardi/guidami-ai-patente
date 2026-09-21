@@ -173,6 +173,17 @@ async def test_start_shows_the_welcome_message_when_registered() -> None:
 
 
 @pytest.mark.asyncio
+async def test_start_lists_the_available_commands_when_registered() -> None:
+    context = _context(_FlowServiceDouble(question=_question(), registered=True))
+
+    await start_command(_update(), context)
+
+    text = context.bot.send_message.call_args.kwargs["text"]
+    assert "/quiz" in text
+    assert "/stop" in text
+
+
+@pytest.mark.asyncio
 async def test_start_shows_the_pending_approval_message_when_unregistered() -> None:
     context = _context(_FlowServiceDouble(question=_question(), registered=False))
 
@@ -190,10 +201,32 @@ async def test_quiz_sends_a_text_message_when_the_question_has_no_image() -> Non
 
     await quiz_command(_update(), context)
 
-    context.bot.send_message.assert_awaited_once()
     assert context.bot.send_message.call_args.kwargs["text"] == "Domanda?"
     assert context.user_data["session"].current_question_number == "0001"
     assert double.propose_calls == [_TELEGRAM_USER_ID]
+
+
+@pytest.mark.asyncio
+async def test_quiz_introduces_the_session_before_the_first_question() -> None:
+    """A new session (no `session` in user_data yet) opens with the intro, then the question."""
+    context = _context(_FlowServiceDouble(question=_question()))
+
+    await quiz_command(_update(), context)
+
+    sent_texts = [call.kwargs["text"] for call in context.bot.send_message.await_args_list]
+    assert sent_texts == [messages.QUIZ_INTRO_MESSAGE, "Domanda?"]
+    assert "/stop" in messages.QUIZ_INTRO_MESSAGE
+
+
+@pytest.mark.asyncio
+async def test_quiz_resuming_a_pending_session_skips_the_intro() -> None:
+    context = _context(_FlowServiceDouble(question=_question()))
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+
+    await quiz_command(_update(), context)
+
+    context.bot.send_message.assert_awaited_once()
+    assert context.bot.send_message.call_args.kwargs["text"] == "Domanda?"
 
 
 @pytest.mark.asyncio
@@ -242,6 +275,33 @@ async def test_a_valid_answer_edits_the_text_message_with_the_outcome_and_offers
     assert double.handle_answer_calls == [("0001", True, _TELEGRAM_USER_ID)]
     assert double.explanation_request_calls == [], "spec 0017: no explanation fetched on grading"
     assert _button_texts(call.kwargs["reply_markup"]) == ["Spiega", "Prossima domanda ▶"]
+
+
+@pytest.mark.asyncio
+async def test_a_valid_answer_keeps_the_question_text_above_the_outcome() -> None:
+    """The user must not lose the question they just answered."""
+    context = _context(_FlowServiceDouble(question=_question(), correct=False))
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(f"{ANSWER_CALLBACK_PREFIX}0001:1", text="Domanda?")
+
+    await handle_answer_callback(update, context)
+
+    text = query.edit_message_text.call_args.kwargs["text"]
+    assert text == f"Domanda?\n\n{messages.outcome_line(False)}"
+
+
+@pytest.mark.asyncio
+async def test_a_valid_answer_on_a_photo_message_keeps_the_question_in_the_caption() -> None:
+    context = _context(_FlowServiceDouble(question=_question(), correct=True))
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(
+        f"{ANSWER_CALLBACK_PREFIX}0001:1", has_photo=True, text="Domanda?"
+    )
+
+    await handle_answer_callback(update, context)
+
+    caption = query.edit_message_caption.call_args.kwargs["caption"]
+    assert caption == f"Domanda?\n\n{messages.outcome_line(True)}"
 
 
 @pytest.mark.asyncio
@@ -349,6 +409,42 @@ async def test_explain_callback_on_a_photo_message_edits_the_caption_twice() -> 
     assert query.edit_message_caption.await_count == 2
     query.edit_message_text.assert_not_awaited()
     assert context.user_data["session"].last_explanation == "perché..."
+
+
+@pytest.mark.asyncio
+async def test_explain_callback_on_a_photo_sends_an_oversized_explanation_separately() -> None:
+    """Telegram caps a caption at 1024 chars: an explanation past it goes out as a message.
+
+    The loading line still fits (caption + 26 chars), so it is shown; the final edit then
+    reverts the caption to the question/outcome text and keeps the keyboard (so "Traduci"
+    still works), while the explanation travels as its own message.
+    """
+    long_caption = "Domanda? " + "x" * 950
+    long_explanation = "y" * 100
+    double = _FlowServiceDouble(
+        question=_question(),
+        explanation=QuizExplanation(
+            status=ExplanationOutcome.EXPLAINED, explanation=long_explanation
+        ),
+    )
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(
+        f"{EXPLAIN_CALLBACK_PREFIX}0001:1", has_photo=True, text=long_caption
+    )
+
+    await handle_explain_callback(update, context)
+
+    first_call, second_call = query.edit_message_caption.await_args_list
+    assert first_call.kwargs["caption"] == f"{long_caption}\n\n{messages.LOADING_EXPLANATION_LINE}"
+    assert second_call.kwargs["caption"] == long_caption
+    assert _button_texts(second_call.kwargs["reply_markup"]) == [
+        "🇷🇺 Traduci",
+        "Prossima domanda ▶",
+    ]
+    context.bot.send_message.assert_awaited_once()
+    assert context.bot.send_message.call_args.kwargs["text"] == long_explanation
+    assert context.user_data["session"].last_explanation == long_explanation
 
 
 @pytest.mark.asyncio
