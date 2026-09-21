@@ -26,6 +26,8 @@ from guidami_ai_patente_bot.models import (
     QuizQuestion,
     QuizSession,
     SessionSummary,
+    TopicSummary,
+    WrongQuestion,
 )
 from guidami_ai_patente_bot.services import QuizFlowService
 
@@ -51,7 +53,11 @@ class _FlowServiceDouble:
     explanation_request_calls: list[tuple[str, int, bool]] = field(default_factory=list)
     translate_request_calls: list[tuple[str, int]] = field(default_factory=list)
     registration_calls: list[int] = field(default_factory=list)
-    summary: SessionSummary = field(default_factory=lambda: SessionSummary(answered=0, correct=0))
+    summary: SessionSummary = field(
+        default_factory=lambda: SessionSummary(
+            answered=0, correct=0, by_topic=[], wrong_questions=[]
+        )
+    )
     raise_summary_error: bool = False
     summary_calls: list[tuple[int, str]] = field(default_factory=list)
 
@@ -624,9 +630,13 @@ async def test_a_failed_translation_on_a_photo_message_reverts_the_caption() -> 
 
 @pytest.mark.asyncio
 async def test_stop_shows_the_summary_and_clears_the_session() -> None:
-    double = _FlowServiceDouble(
-        question=_question(), summary=SessionSummary(answered=5, correct=3)
+    summary = SessionSummary(
+        answered=5,
+        correct=3,
+        by_topic=[TopicSummary(topic="Precedenza", answered=5, correct=3)],
+        wrong_questions=[WrongQuestion(number="0001", text="Domanda?")],
     )
+    double = _FlowServiceDouble(question=_question(), summary=summary)
     context = _context(double)
     context.user_data["session"] = QuizSession(seed="abc", index=4, current_question_number="0001")
 
@@ -634,7 +644,7 @@ async def test_stop_shows_the_summary_and_clears_the_session() -> None:
 
     assert double.summary_calls == [(_TELEGRAM_USER_ID, "abc")]
     text = context.bot.send_message.call_args.kwargs["text"]
-    assert "5" in text and "3" in text
+    assert text == messages.summary_message(summary)
     assert "session" not in context.user_data
 
 

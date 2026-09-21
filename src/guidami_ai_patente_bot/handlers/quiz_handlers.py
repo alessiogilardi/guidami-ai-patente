@@ -153,7 +153,7 @@ async def stop_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     summary = await service.session_summary(update.effective_user.id, session.seed)
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text=messages.summary_message(summary.answered, summary.correct),
+        text=messages.summary_message(summary),
     )
     del context.user_data["session"]
 

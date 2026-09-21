@@ -9,6 +9,7 @@ from guidami_ai_patente_bot.clients import QuizApiClient
 from guidami_ai_patente_bot.configs import BotConfig
 from guidami_ai_patente_bot.enums import ExplanationStatus
 from guidami_ai_patente_bot.exceptions import QuizApiError, UnauthorizedError
+from guidami_ai_patente_bot.models import TopicSummary, WrongQuestion
 
 _Handler = Callable[[httpx.Request], httpx.Response | Awaitable[httpx.Response]]
 
@@ -205,10 +206,20 @@ async def test_get_session_summary_parses_the_response() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         assert request.url.path == "/quiz-answers/summary"
         assert request.url.params["session_id"] == "seed-abc"
-        return httpx.Response(200, json={"answered": 5, "correct": 3})
+        return httpx.Response(
+            200,
+            json={
+                "answered": 5,
+                "correct": 3,
+                "by_topic": [{"topic": "Precedenza", "answered": 5, "correct": 3}],
+                "wrong_questions": [{"number": "0001", "text": "Domanda?"}],
+            },
+        )
 
     client = _client(handler)
 
     summary = await client.get_session_summary(7, "seed-abc")
 
     assert (summary.answered, summary.correct) == (5, 3)
+    assert summary.by_topic == [TopicSummary(topic="Precedenza", answered=5, correct=3)]
+    assert summary.wrong_questions == [WrongQuestion(number="0001", text="Domanda?")]

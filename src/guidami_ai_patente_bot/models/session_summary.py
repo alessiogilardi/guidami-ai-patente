@@ -2,9 +2,12 @@
 
 from pydantic import BaseModel, ConfigDict
 
+from .topic_summary import TopicSummary
+from .wrong_question import WrongQuestion
+
 
 class SessionSummary(BaseModel):
-    """How many questions were answered in the session, and how many were correct.
+    """A session's totals, its per-topic breakdown and the questions worth reviewing.
 
     Field-for-field mirror of the backend's own `SessionSummaryResponse`: declared
     independently, same posture as `QuizQuestion`/`QuizExplanation` (AD-1).
@@ -14,3 +17,5 @@ class SessionSummary(BaseModel):
 
     answered: int
     correct: int
+    by_topic: list[TopicSummary]
+    wrong_questions: list[WrongQuestion]

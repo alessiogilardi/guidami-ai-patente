@@ -31,7 +31,11 @@ class _ApiDouble:
     raise_translate_error: bool = False
     translate_calls: list[tuple[int, str]] = field(default_factory=list)
     registered: bool = True
-    summary: SessionSummary = field(default_factory=lambda: SessionSummary(answered=0, correct=0))
+    summary: SessionSummary = field(
+        default_factory=lambda: SessionSummary(
+            answered=0, correct=0, by_topic=[], wrong_questions=[]
+        )
+    )
     propose_calls: list[tuple[int, str, int]] = field(default_factory=list)
     check_calls: list[tuple[int, str, bool, str]] = field(default_factory=list)
     label_calls: list[tuple[int, str]] = field(default_factory=list)
@@ -204,12 +208,13 @@ async def test_check_registration_status_passes_through() -> None:
 
 @pytest.mark.asyncio
 async def test_session_summary_passes_through() -> None:
-    api = _ApiDouble(question=_question(), summary=SessionSummary(answered=5, correct=3))
+    expected = SessionSummary(answered=5, correct=3, by_topic=[], wrong_questions=[])
+    api = _ApiDouble(question=_question(), summary=expected)
     service = _service(api)
 
     summary = await service.session_summary(7, "seed-abc")
 
-    assert (summary.answered, summary.correct) == (5, 3)
+    assert summary == expected
     assert api.summary_calls == [(7, "seed-abc")]
 
 
