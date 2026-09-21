@@ -26,12 +26,20 @@ from guidami_ai_patente_ingestor.repositories import (
 def client(postgres_test_config: PostgresConnectionConfig) -> Iterator[PostgresClient]:
     with PostgresClient(postgres_test_config) as client:
         client.truncate(
-            "quiz_comma_labels", "quiz_labelings", "quiz_question_embeddings", "quiz_questions"
+            "quiz_comma_labels",
+            "quiz_labelings",
+            "quiz_question_embeddings",
+            "quiz_answers",
+            "quiz_questions",
         )
         client.truncate("quiz_images")
         yield client
         client.truncate(
-            "quiz_comma_labels", "quiz_labelings", "quiz_question_embeddings", "quiz_questions"
+            "quiz_comma_labels",
+            "quiz_labelings",
+            "quiz_question_embeddings",
+            "quiz_answers",
+            "quiz_questions",
         )
         client.truncate("quiz_images")
 

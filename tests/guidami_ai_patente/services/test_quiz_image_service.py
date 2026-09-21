@@ -24,6 +24,7 @@ def bank_with_image(api_client: object) -> Iterator[PostgresClient]:
         "quiz_labelings",
         "labeling_runs",
         "quiz_question_embeddings",
+        "quiz_answers",
         "quiz_questions",
     )
     client.execute(
@@ -40,6 +41,7 @@ def bank_with_image(api_client: object) -> Iterator[PostgresClient]:
         "quiz_labelings",
         "labeling_runs",
         "quiz_question_embeddings",
+        "quiz_answers",
         "quiz_questions",
     )
 

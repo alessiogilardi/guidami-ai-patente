@@ -18,6 +18,7 @@ _TABLES = (
     "quiz_comma_labels",
     "quiz_labelings",
     "quiz_question_embeddings",
+    "quiz_answers",
     "quiz_questions",
     "quiz_images",
 )
