@@ -154,7 +154,9 @@ class, no new handler registration.
 - No database caching or persistence of translations.
 - No `output_validator`-style automated fidelity check on normative
   references — prompt instructions only (FR-5).
-- No curated glossary resource injected into the prompt.
+- No curated glossary resource injected into the prompt. **Superseded** by FR-8/AD-9
+  below (2026-09-22 amendment, driven by spec 0020): a caller may now inject specific
+  term hints, though still no standing glossary resource is *owned* by this spec.
 - No rate limiting beyond the existing per-request `max_length` bound
   (FR-3) — consistent with every other endpoint in this API today, none of
   which rate-limit per user.
@@ -256,10 +258,41 @@ the *content* it describes (`translated_text`) is Russian.
 `ExplanationTranslationRequest`'s docstring stays English, since it is
 never shipped to the model as schema.
 
+### FR-8: Optional translation hints anchor specific terms (amendment, driven by spec 0020)
+
+The request gains an optional field: `hints: list[TranslationHint] = []`
+(`TranslationHint = {"term": str, "term_ru": str}`), bounded `max_length=10`, each
+`term`/`term_ru` `max_length=80`. When present, the agent's prompt instructs it to
+render every occurrence of `term` in `text` using `term_ru` as the word choice
+(grammatically inflected into the sentence as Russian requires — case, number — never
+substituted with a different word), and, on the term's first occurrence only, to show
+it paired with the Italian original in guillemets: `«TERMINE» (rendering)`, mirroring
+the existing "Vero"/"Falso" convention already in the system prompt.
+
+This lets a caller that already owns a reviewed, authoritative translation for a
+specific term (spec 0020's glossary, spec 0019) guarantee the same Russian rendering
+appears every time that term is translated, instead of leaving the model to infer it
+fresh, and possibly inconsistently, on every call. A request with no `hints` behaves
+exactly as before — this is a backward-compatible addition, not a behavior change to
+the existing contract.
+
+### AD-9: Hints are advisory-authoritative, never a verbatim substitution
+
+`hints` bounds the *choice* of Russian word, not its exact surface form: the agent
+still inflects it into the sentence's grammatical case, as a human translator would
+use a dictionary entry. This is deliberately different from the exact-substring
+verbatim rule spec 0019's extractor `output_validator` enforces on Italian legal text
+— Russian's case system would make a rigid substitution produce ungrammatical output.
+Fidelity to a hint is therefore left to the prompt, not a mechanical validator,
+consistent with FR-5's "prompt-only fidelity" precedent for every agent in this
+codebase except `CommaLabelerAgent`.
+
 ## Data Model
 
-No schema changes. No new tables, columns, or migrations. Nothing is
-persisted by this feature.
+No schema changes to this feature's own scope. No new tables, columns, or migrations
+are introduced *here*; `hints` is request-only data, never persisted. (Spec 0019
+separately adds a `term_ru` column to its own `glossary_entries` table, to have
+something to pass as a hint — that table is not this spec's concern.)
 
 ## Constraints
 
@@ -347,6 +380,11 @@ persisted by this feature.
 
 ## Changelog
 
+- **2026-09-22** — Amended for spec 0020: added the optional `hints` field (FR-8,
+  AD-9) so a caller can anchor a specific term to an already-reviewed translation
+  instead of leaving the model to infer it fresh every call. Backward-compatible: a
+  request with no `hints` is unaffected. Marked the "no curated glossary resource"
+  Non-Goal as superseded by this amendment.
 - **2026-09-18** — Initial draft, from an interactive `superpowers:brainstorming`
   session (endpoint shape, no caching, `503` on failure, prompt-only
   reference fidelity).
