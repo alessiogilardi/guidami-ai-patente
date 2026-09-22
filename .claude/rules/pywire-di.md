@@ -4,26 +4,46 @@ paths:
   - "src/guidami_ai_patente_bot/**"
 ---
 
-# pywire — Spring-style DI, scoped to `guidami_ai_patente` and `guidami_ai_patente_bot`
+# pywire — Spring-style DI
 
 `pywire` (git dependency, see `pyproject.toml`) is a Spring Boot-style IoC container:
 `@component`/`@service`/`@repository`/`@client`/`@agent` decorators (all aliases of the
 same registration, `pywire/decorators.py`) register a class on the process-wide default
 container (`get_default_container()`); fields annotated `Autowired[T]` are populated by
-the container after instantiation (`Container._instrument`, `pywire/container.py`).
+the container after instantiation (`Container._instrument`, `pywire/container.py`). The
+container has no FastAPI dependency of its own — only the separate `pywire.fastapi`
+integration does — so it works unchanged in a plain script's `main()`: register data
+(`register_instance`) and any manually-built `commons` primitives once, `resolve()` the
+top-level use case, run it, and (if anything registered a `@pre_destroy` hook)
+`container.close()` before exiting.
 
-## Scope — does not apply to the ingestion pipeline
+## Scope
 
-This pattern applies **only** to the two long-running, request/update-scoped apps in
+This pattern is the default for the two long-running, request/update-scoped apps in
 this repo: the FastAPI app under `src/guidami_ai_patente/` (routers, services,
 repositories, mappers, configs) and the Telegram bot under
 `src/guidami_ai_patente_bot/` (handlers, services, clients, configs — ADR 0032, which
-extended ADR 0015's original FastAPI-only scope). It does **not** apply to
-`src/guidami_ai_patente_ingestor/` or `src/commons/`, which keep manual constructor
-injection per [`dependency-injection.md`](./dependency-injection.md) unchanged — those
-two run as batch/one-shot processes with no startup-resolved composition root to
-justify a container. The DI styles are intentionally different across these groups —
-do not "harmonize" one into the other.
+extended ADR 0015's original FastAPI-only scope).
+
+It also applies to `src/glossary/` (spec 0019's standalone glossary-build package,
+2026-09-22): a deliberate, narrow exception to the batch/one-shot default below,
+chosen because the package's own agent/service/repository graph benefits from field
+injection the same way the API's does, and because it never imports (and is never
+imported by) the two batch packages that stay manual — there is no shared-container
+collision risk to design around (contrast the bot/API `QuizApiClient` case documented
+below). `src/glossary/main.py` is the composition root: it loads `GlossaryConfig`,
+builds the few `commons` primitives pywire does not know how to construct
+(`PostgresClient`, `EmbeddingService`, the OpenRouter provider) and registers them with
+`register_instance`, then `resolve()`s `GlossaryBuildService` and runs it — no
+`pywire.fastapi`, no lifespan, just the container's core API.
+
+It does **not** apply to `src/guidami_ai_patente_ingestor/`, `src/labeling/`,
+`src/retrieval_evaluation/` or `src/commons/`, which keep manual constructor injection
+per [`dependency-injection.md`](./dependency-injection.md) unchanged: **this is a
+convention choice already made for those packages, not a technical limitation of
+pywire itself** (see the container's FastAPI-independence above) — revisiting it for
+any of them is a separate, larger decision, not implied by `glossary` adopting pywire.
+Do not "harmonize" one into the other without that decision being made explicitly.
 
 `guidami_ai_patente_bot` uses pywire 0.9.0's `register_async_component`/
 `Container.astart()`/`aclose()`/`container.lifespan()` for a component that is itself
