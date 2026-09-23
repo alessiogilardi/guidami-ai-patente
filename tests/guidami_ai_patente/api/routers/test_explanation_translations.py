@@ -53,6 +53,90 @@ def test_a_valid_request_is_translated(
     assert response.status_code == HTTPStatus.OK
     assert response.json()["translated_text"] == "Перевод."
     assert translator.requests[0].text == "La sosta è vietata perché la norma lo prevede."
+    assert translator.requests[0].hints == ()
+
+
+@pytest.mark.integration
+def test_hints_are_forwarded_to_the_agent(
+    api_client: TestClient, monkeypatch: pytest.MonkeyPatch, registered_headers: dict[str, str]
+) -> None:
+    translator = _TranslatorDouble()
+    _install_translator(monkeypatch, translator)
+
+    response = api_client.post(
+        "/explanations/translate?lang=ru",
+        json={
+            "text": "La carreggiata è stretta.",
+            "hints": [{"term": "carreggiata", "term_ru": "проезжая часть"}],
+        },
+        headers=registered_headers,
+    )
+
+    assert response.status_code == HTTPStatus.OK
+    forwarded = translator.requests[0].hints
+    assert len(forwarded) == 1
+    assert forwarded[0].term == "carreggiata"
+    assert forwarded[0].term_ru == "проезжая часть"
+
+
+@pytest.mark.integration
+def test_more_than_ten_hints_is_a_422(
+    api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    hints = [{"term": f"termine{i}", "term_ru": f"термин{i}"} for i in range(11)]
+
+    response = api_client.post(
+        "/explanations/translate?lang=ru",
+        json={"text": "Testo.", "hints": hints},
+        headers=registered_headers,
+    )
+
+    assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY
+
+
+@pytest.mark.integration
+def test_a_hint_term_over_the_length_limit_is_a_422(
+    api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    response = api_client.post(
+        "/explanations/translate?lang=ru",
+        json={"text": "Testo.", "hints": [{"term": "a" * 81, "term_ru": "термин"}]},
+        headers=registered_headers,
+    )
+
+    assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY
+
+
+@pytest.mark.integration
+def test_a_whitespace_only_hint_term_is_a_422(
+    api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    response = api_client.post(
+        "/explanations/translate?lang=ru",
+        json={"text": "Testo.", "hints": [{"term": "   ", "term_ru": "термин"}]},
+        headers=registered_headers,
+    )
+
+    assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY
+
+
+@pytest.mark.integration
+def test_duplicate_hint_terms_is_a_422(
+    api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    response = api_client.post(
+        "/explanations/translate?lang=ru",
+        json={
+            "text": "La carreggiata è stretta.",
+            "hints": [
+                {"term": "carreggiata", "term_ru": "проезжая часть"},
+                {"term": "Carreggiata", "term_ru": "дорога"},
+            ],
+        },
+        headers=registered_headers,
+    )
+
+    assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY
 
 
 @pytest.mark.integration
