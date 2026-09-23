@@ -4,6 +4,7 @@ from pydantic import BaseModel, ConfigDict, model_validator
 
 from guidami_ai_patente.enums import ExplanationResult, InsufficientKnowledgeReason
 
+from .cited_glossary_term import CitedGlossaryTerm
 from .current_labeling import CurrentLabeling
 from .labeled_comma import LabeledComma
 
@@ -19,6 +20,12 @@ class Explanation(BaseModel):
     `judge_rationale` passes the judge's stored `rationale` through for transparency
     (AD-6); it is written in evaluation meta-language, so the client decides whether to
     show it. `reason` is the closed vocabulary the client renders wording from.
+
+    `term_explanation`/`translation_hints` are the vocabulary stage's own output (spec
+    0020) and are populated independently of `result`/`explanation`/`citations` — an
+    insufficient-knowledge refusal can still carry a term explanation (AD-1). They sit
+    deliberately outside `_require_a_coherent_shape`, which validates only the legal
+    explanation's shape.
     """
 
     model_config = ConfigDict(frozen=True)
@@ -29,6 +36,8 @@ class Explanation(BaseModel):
     provenance: CurrentLabeling | None = None
     reason: InsufficientKnowledgeReason | None = None
     judge_rationale: str | None = None
+    term_explanation: str | None = None
+    translation_hints: tuple[CitedGlossaryTerm, ...] = ()
 
     @model_validator(mode="after")
     def _require_a_coherent_shape(self) -> "Explanation":

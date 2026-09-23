@@ -2,25 +2,28 @@
 
 import asyncio
 import logging
+import random
 
 from pywire import Autowired, service
 
 from commons.use_cases import AsyncUseCase
-from guidami_ai_patente.agents import ExplanationWriterAgent
+from guidami_ai_patente.agents import ExplanationWriterAgent, QuestionExplainerAgent
 from guidami_ai_patente.agents.explanation_writer.dto import (
     ExplanationWriterRequest,
     ExplanationWriterResponse,
 )
+from guidami_ai_patente.agents.question_explainer.dto import QuestionExplainerRequest
 from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente.enums import ExplanationResult, InsufficientKnowledgeReason
 from guidami_ai_patente.exceptions import ExplanationUnavailableError, QuestionNotFoundError
 from guidami_ai_patente.models import (
+    CitedGlossaryTerm,
     CommaSelection,
     Explanation,
     ExplanationRequest,
     QuestionContext,
 )
-from guidami_ai_patente.repositories import QuizQuestionRepository
+from guidami_ai_patente.repositories import GlossaryReadRepository, QuizQuestionRepository
 
 from .current_labeling_read_service import CurrentLabelingReadService
 
@@ -59,12 +62,25 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
     `CommaLabelerAgent`, spec 0014). `_call_writer` no longer retries anything: it maps
     a raised exception — including `UnexpectedModelBehavior` once the agent's own retry
     budget (`config.num_retries`) is exhausted — to a 503, never a fabricated citation.
+
+    Since spec 0020, `_explain` gathers two independent stages concurrently via
+    `asyncio.gather`: the legal explanation above (`_legal_outcome`, unchanged) and the
+    vocabulary explanation (`_vocabulary_outcome`, new). The vocabulary stage never
+    raises — any failure degrades to `(None, ())` (FR-5), so a vocabulary-stage outage
+    can never turn into an outage of the already-shipped legal explanation (AD-1). Before
+    handing its retrieved candidates to `QuestionExplainerAgent`, `_vocabulary_outcome`
+    shuffles them (`random.shuffle`, no fixed seed — this is live, per-request serving,
+    unlike the batch labeler's seeded `shuffle_seed`) so retrieval rank never leaks in as
+    an implicit relevance signal, then reuses that same shuffled list to resolve
+    `cited_term_numbers` back into `CitedGlossaryTerm`s.
     """
 
     config: Autowired[AppConfig]
     questions: Autowired[QuizQuestionRepository]
     reader: Autowired[CurrentLabelingReadService]
     writer: Autowired[ExplanationWriterAgent]
+    vocabulary_agent: Autowired[QuestionExplainerAgent]
+    glossary: Autowired[GlossaryReadRepository]
 
     async def execute(self, request: ExplanationRequest) -> Explanation:
         """Explains `request.number`, or reports why it cannot be explained.
@@ -95,8 +111,24 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
             ) from error
 
     async def _explain(self, request: ExplanationRequest, context: QuestionContext) -> Explanation:
-        """Selects the commas, then renders them or refuses."""
+        """Renders the legal and vocabulary explanations, concurrently and independently.
+
+        FR-1, FR-3, AD-1.
+        """
         selection = await self.reader(request.number)
+        legal = self._legal_outcome(selection, context, request)
+        vocabulary = self._vocabulary_outcome(request.number)
+        legal_result, (term_explanation, translation_hints) = await asyncio.gather(
+            legal, vocabulary
+        )
+        return legal_result.model_copy(
+            update={"term_explanation": term_explanation, "translation_hints": translation_hints}
+        )
+
+    async def _legal_outcome(
+        self, selection: CommaSelection, context: QuestionContext, request: ExplanationRequest
+    ) -> Explanation:
+        """The unchanged spec 0017 legal-explanation path (FR-7)."""
         if not selection.commas:
             return self._insufficient(selection)
 
@@ -122,6 +154,45 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
             citations=selection.commas,
             provenance=selection.labeling,
         )
+
+    async def _vocabulary_outcome(
+        self, number: str
+    ) -> tuple[str | None, tuple[CitedGlossaryTerm, ...]]:
+        """The vocabulary stage: never raises, degrades to `(None, ())` on any failure (FR-5).
+
+        Shuffles the RRF-ordered candidates from `GlossaryReadRepository` before handing
+        them to the agent, so retrieval rank never leaks in as an implicit relevance
+        signal (grilling round, 2026-09-23) — mirrors `QuestionLabelingService`'s
+        "retrieve → shuffle → judge" shape. `candidates` (the shuffled list) is reused,
+        not re-fetched, to resolve `cited_term_numbers` afterward: the ordinal is a
+        1-based index into the exact list the agent's prompt was built from.
+        """
+        try:
+            context = await asyncio.to_thread(
+                self.questions.find_question_vocabulary_context, number
+            )
+            assert context is not None  # `execute` already 404'd on an unknown number
+            retrieved = await asyncio.to_thread(
+                self.glossary.candidates_for, context.text, context.embedding
+            )
+            candidates = list(retrieved)
+            random.shuffle(candidates)
+            response = await self.vocabulary_agent.run(
+                QuestionExplainerRequest(
+                    text=context.text,
+                    image_description=context.image_description,
+                    candidates=candidates,
+                )
+            )
+        except Exception:
+            logger.warning("Vocabulary stage failed for quiz %s", number, exc_info=True)
+            return None, ()
+
+        hints = tuple(
+            CitedGlossaryTerm(term=c.term, definition=c.definition, term_ru=c.term_ru)
+            for c in (candidates[i - 1] for i in response.cited_term_numbers)
+        )
+        return response.explanation, hints
 
     async def _call_writer(
         self, writer_request: ExplanationWriterRequest, number: str

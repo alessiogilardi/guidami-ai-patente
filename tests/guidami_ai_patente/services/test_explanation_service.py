@@ -10,6 +10,10 @@ from guidami_ai_patente.agents.explanation_writer.dto import (
     ExplanationWriterRequest,
     ExplanationWriterResponse,
 )
+from guidami_ai_patente.agents.question_explainer.dto import (
+    QuestionExplainerRequest,
+    QuestionExplainerResponse,
+)
 from guidami_ai_patente.enums import ExplanationResult, InsufficientKnowledgeReason
 from guidami_ai_patente.exceptions import (
     ExplanationUnavailableError,
@@ -17,11 +21,14 @@ from guidami_ai_patente.exceptions import (
     QuestionNotFoundError,
 )
 from guidami_ai_patente.models import (
+    CitedGlossaryTerm,
     CommaSelection,
     CurrentLabeling,
     ExplanationRequest,
+    GlossaryCandidate,
     LabeledComma,
     QuestionContext,
+    QuestionVocabularyContext,
 )
 from guidami_ai_patente.services import ExplanationService
 
@@ -49,14 +56,26 @@ def _comma(judge_rank: int) -> LabeledComma:
     )
 
 
+def _vocabulary_context() -> QuestionVocabularyContext:
+    return QuestionVocabularyContext(
+        text="La carreggiata è larga?", image_description=None, embedding=None
+    )
+
+
 @dataclass
 class _QuestionsDouble:
     context: QuestionContext | None = QuestionContext(
         text="Il segnale vieta la sosta?", correct_answer=True, image_description="Segnale"
     )
+    vocabulary_context: QuestionVocabularyContext | None = field(
+        default_factory=_vocabulary_context
+    )
 
     def find_question_context(self, number: str) -> QuestionContext | None:
         return self.context
+
+    def find_question_vocabulary_context(self, number: str) -> QuestionVocabularyContext | None:
+        return self.vocabulary_context
 
 
 @dataclass
@@ -87,16 +106,44 @@ class _ConfigDouble:
     explanation_deadline_s: float = 5.0
 
 
+@dataclass
+class _VocabularyAgentDouble:
+    response: QuestionExplainerResponse | None = None
+    error: Exception | None = None
+    requests: list[QuestionExplainerRequest] = field(default_factory=list)
+
+    async def run(self, request: QuestionExplainerRequest) -> QuestionExplainerResponse:
+        self.requests.append(request)
+        if self.error is not None:
+            raise self.error
+        assert self.response is not None
+        return self.response
+
+
+@dataclass
+class _GlossaryDouble:
+    candidates: list[GlossaryCandidate] = field(default_factory=list)
+
+    def candidates_for(self, text: str, embedding: list[float] | None) -> list[GlossaryCandidate]:
+        return self.candidates
+
+
 def _service(
     reader: _ReaderDouble,
     writer: _WriterDouble,
     questions: _QuestionsDouble | None = None,
+    vocabulary_agent: _VocabularyAgentDouble | None = None,
+    glossary: _GlossaryDouble | None = None,
 ) -> ExplanationService:
     service = object.__new__(ExplanationService)
     service.config = _ConfigDouble()  # type: ignore[assignment]
     service.questions = questions or _QuestionsDouble()  # type: ignore[assignment]
     service.reader = reader  # type: ignore[assignment]
     service.writer = writer  # type: ignore[assignment]
+    service.vocabulary_agent = vocabulary_agent or _VocabularyAgentDouble(  # type: ignore[assignment]
+        response=QuestionExplainerResponse(explanation="Spiegazione.", cited_term_numbers=[])
+    )
+    service.glossary = glossary or _GlossaryDouble()  # type: ignore[assignment]
     return service
 
 
@@ -105,6 +152,120 @@ def _explained(ordinals: list[int]) -> ExplanationWriterResponse:
         explanation="La sosta è vietata perché la norma lo prevede.",
         cited_comma_numbers=ordinals,
     )
+
+
+@pytest.mark.asyncio
+async def test_the_vocabulary_stage_runs_even_when_the_legal_stage_refuses() -> None:
+    """AD-1: independent of `result`."""
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(
+            explanation="La domanda chiede...", cited_term_numbers=[]
+        )
+    )
+    explanation = await _service(
+        _ReaderDouble(CommaSelection(labeling=_labeling())),
+        _WriterDouble(),
+        vocabulary_agent=vocabulary_agent,
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.result is ExplanationResult.INSUFFICIENT_KNOWLEDGE
+    assert explanation.term_explanation == "La domanda chiede..."
+
+
+@pytest.mark.asyncio
+async def test_a_vocabulary_agent_failure_degrades_without_affecting_the_legal_stage() -> None:
+    """FR-5: term_explanation becomes null, the legal explanation is untouched."""
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    vocabulary_agent = _VocabularyAgentDouble(error=RuntimeError("boom"))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.result is ExplanationResult.EXPLAINED
+    assert explanation.term_explanation is None
+    assert explanation.translation_hints == ()
+
+
+@pytest.mark.asyncio
+async def test_cited_terms_are_resolved_into_translation_hints() -> None:
+    candidate = GlossaryCandidate(
+        id=1,
+        source="cds",
+        article_number="3",
+        comma_number="1",
+        term="carreggiata",
+        definition="Parte della strada...",
+        term_ru="проезжая часть",
+    )
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(
+            explanation="La «carreggiata» è...", cited_term_numbers=[1]
+        )
+    )
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        glossary=_GlossaryDouble(candidates=[candidate]),
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.translation_hints == (
+        CitedGlossaryTerm(
+            term="carreggiata", definition="Parte della strada...", term_ru="проезжая часть"
+        ),
+    )
+
+
+@pytest.mark.asyncio
+async def test_citation_ordinals_resolve_against_the_shuffled_list_the_agent_saw() -> None:
+    """The ordinal the agent returns is a 1-based index into the *shuffled* list it was shown.
+
+    Not into `GlossaryReadRepository`'s RRF order — the service must reuse the same
+    shuffled list for both prompt-building and ordinal resolution (grilling round,
+    2026-09-23). `_VocabularyAgentDouble.requests` captures the exact request the agent
+    received, so this test can assert against that list's own order rather than the
+    glossary double's (RRF) order.
+    """
+    candidates = [
+        GlossaryCandidate(
+            id=1,
+            source="cds",
+            article_number="3",
+            comma_number="1",
+            term="a",
+            definition="A",
+            term_ru="a",
+        ),
+        GlossaryCandidate(
+            id=2,
+            source="cds",
+            article_number="3",
+            comma_number="2",
+            term="b",
+            definition="B",
+            term_ru="b",
+        ),
+    ]
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[2])
+    )
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        glossary=_GlossaryDouble(candidates=candidates),
+    )(ExplanationRequest(number="0001"))
+
+    seen_candidates = vocabulary_agent.requests[0].candidates
+    expected_term = seen_candidates[1].term  # ordinal 2 == index 1 of the list the agent saw
+    assert explanation.translation_hints[0].term == expected_term
 
 
 @pytest.mark.asyncio
