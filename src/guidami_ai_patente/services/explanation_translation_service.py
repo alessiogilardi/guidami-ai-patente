@@ -17,10 +17,10 @@ logger = logging.getLogger(__name__)
 
 @service
 class ExplanationTranslationService(AsyncUseCase[TranslationRequest, str]):
-    """Translates `request.text` to Russian via `ExplanationTranslatorAgent`, honoring
-    any `request.hints` (spec 0018, FR-1, FR-7, FR-8).
+    """Translates `request.text` to Russian via `ExplanationTranslatorAgent` (spec 0018).
 
-    Takes `TranslationRequest` rather than a bare `str`: FR-8 added `hints` as a
+    Honors any `request.hints` (FR-1, FR-7, FR-8). Takes `TranslationRequest` rather
+    than a bare `str`: FR-8 added `hints` as a
     second input, so `.claude/rules/use-case-invocation.md`'s "more than one scalar
     argument" threshold now applies — it did not while the service only took `text`.
 

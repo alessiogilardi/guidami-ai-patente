@@ -25,7 +25,7 @@ class ExplanationTranslatorRequest(BaseModel):
     @computed_field  # type: ignore[prop-decorator]
     @property
     def hints_block(self) -> str:
-        """Renders `hints` as a labeled block for the `$hints_block` template slot.
+        r"""Renders `hints` as a labeled block for the `$hints_block` template slot.
 
         Empty when there are no hints (FR-8's backward-compatibility clause): the
         template attaches `$hints_block` directly after `</testo>` with no line of

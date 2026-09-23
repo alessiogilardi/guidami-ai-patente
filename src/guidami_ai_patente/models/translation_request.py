@@ -6,8 +6,7 @@ from .translation_hint import TranslationHint
 
 
 class TranslationRequest(BaseModel):
-    """Two arguments, so a request DTO rather than a bare `str`
-    (`.claude/rules/use-case-invocation.md`).
+    """A request DTO, per `.claude/rules/use-case-invocation.md`'s two-argument rule.
 
     Not the same type as
     `api/schemas/explanation_translation.py::ExplanationTranslationRequest`: that one
