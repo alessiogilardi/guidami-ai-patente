@@ -1,5 +1,7 @@
 """Tests for GlossaryReadRepository's hybrid retrieval (FR-4)."""
 
+from collections.abc import Generator
+
 import pytest
 from psycopg import sql
 from pywire import get_default_container
@@ -12,7 +14,7 @@ _TABLES = ("glossary_entries",)
 
 
 @pytest.fixture(autouse=True)
-def _clean_glossary(api_client: object) -> None:
+def _clean_glossary(api_client: object) -> Generator[None]:
     """Truncates glossary_entries before and after every test in this file."""
     client = get_default_container().resolve(PostgresClientProvider).client
     client.truncate(*_TABLES)
