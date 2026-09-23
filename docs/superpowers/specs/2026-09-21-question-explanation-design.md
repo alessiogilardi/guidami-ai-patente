@@ -21,6 +21,7 @@ in-progress → implemented once the Definition of Done is verified.
 | **Extends** | Spec 0017 (on-demand explanation): this spec adds a second, concurrent stage to the existing `GET /quiz-questions/{number}/explanation`; it introduces no new endpoint |
 | **Enhanced by** | Spec 0019 (definition glossary): retrieval degrades gracefully to ungrounded output while its table is empty or absent-but-created (see Independence from Spec 0019) |
 | **Enhanced by** | Spec 0018's FR-8/AD-9 amendment (translation hints): improves the fidelity of the *existing* "🇷🇺 Traduci" step when present; the feature works, with lower term-translation consistency, if that amendment is not yet deployed |
+| **Companion** | `2026-09-23-question-explanation-flow.md` — non-normative worked-example walkthrough (sequence diagram + concrete payloads) of this spec's request flow; regenerate it if this spec's FR/AD text and that file ever disagree |
 
 ## Problem & Motivation
 
@@ -80,7 +81,12 @@ reader does not re-propose them:
   single flowing Italian paragraph, mirroring `ExplanationWriterAgent`'s own style, is
   simpler to combine, render and translate as one text. Term grounding is still
   internally ordinal-checked (FR-4) — only the *externally visible shape* changed from
-  a structured list to prose plus a small hint list (FR-6).
+  a structured list to prose plus a small hint list (FR-6). **Partially revisited
+  2026-09-23 (FR-8, AD-9)**: `translation_hints` gained a `definition` field and the
+  bot renders it as a separate block — narrower than what this bullet rejected, since
+  `term_explanation`'s flowing paragraph is unchanged and stays the primary
+  explanation; the glossary block is additive, not a replacement, and costs no new
+  LLM output (`definition` is read straight from `glossary_entries`, spec 0019).
 - **Pre-translating the vocabulary explanation into Russian directly** — rejected: the
   merged message (vocabulary + legal reasoning) is translated *as a whole*, once, by
   the existing translator (spec 0018), not generated twice per language.
@@ -105,16 +111,25 @@ No new endpoint, no new query parameter. The existing response
   "reason": null,
   "judge_rationale": null,
   "term_explanation": "La domanda chiede se… «carreggiata» indica…",
-  "translation_hints": [{"term": "carreggiata", "term_ru": "проезжая часть"}]
+  "translation_hints": [
+    {
+      "term": "carreggiata",
+      "definition": "Parte della strada destinata alla circolazione dei veicoli.",
+      "term_ru": "проезжая часть"
+    }
+  ]
 }
 ```
 
 `term_explanation` is `null` when the second agent found nothing worth explaining, or
 failed, or timed out (FR-5 — a degraded, not a failed, call). `translation_hints` is
 `[]` whenever `term_explanation` is `null`, and otherwise carries the `(term,
-term_ru)` pairs of every glossary entry `term_explanation` actually cites (FR-4);
-terms the agent explains from its own knowledge, with no matching glossary entry,
-appear in the prose but contribute no hint.
+definition, term_ru)` triple of every glossary entry `term_explanation` actually cites
+(FR-4); terms the agent explains from its own knowledge, with no matching glossary
+entry, appear in the prose but contribute no hint. `definition` is the glossary row's
+own Italian text (spec 0019), not agent-generated (FR-8, AD-9) — it is now also
+rendered as its own block by the bot, separate from `term_explanation`'s prose (FR-8),
+in addition to feeding the translator's per-term pinning (FR-7, spec 0018 FR-8/AD-9).
 
 `term_explanation` and its hints are populated **regardless of `status`**: even when
 `status` is `insufficient_knowledge` (the corpus cannot justify the legal answer),
@@ -169,7 +184,7 @@ caught, logged at `warning`, and yields `term_explanation: null` — the respons
 returns `200` with the legal explanation intact. The vocabulary stage is additive value,
 not a load-bearing part of the existing contract.
 
-### FR-6: Vocabulary grounding is ordinal-checked, mirroring the legal stage
+### FR-6: Vocabulary grounding is ordinal-checked, via the agent's own output_validator
 
 `QuestionExplainerAgent` returns:
 
@@ -185,24 +200,92 @@ not a load-bearing part of the existing contract.
   actually quoted, possibly empty (unlike the legal stage's `cited_comma_numbers`,
   which requires at least one — a question may need no official term at all).
 
-`ExplanationService` validates ordinals exactly as `_call_writer` already does for the
-legal stage (`1 <= ordinal <= supplied`, no repeats — the latter enforced by the
-response model's own validator, mirroring `ExplanationWriterResponse`
-`_reject_repeated_ordinals`): an out-of-range ordinal is retried up to
-`_CITATION_ATTEMPTS`, and an exhaustion degrades per FR-5 rather than raising. The
-service resolves the cited ordinals back to their glossary rows to build
-`translation_hints`.
+`QuestionExplainerAgent` validates its own ordinals via a pydantic-ai `output_validator`
+registered on the wrapped agent (mirroring `CommaLabelerAgent._validate_comma_numbers`,
+spec 0014, AD-8): an out-of-range `cited_term_numbers` ordinal raises `ModelRetry`,
+which pydantic-ai feeds back into the same conversation as corrective feedback before
+the next attempt, up to `AgentConfig.num_retries` — the one retry budget for this and
+any structural output issue, no separate service-level attempt counter.
+`ExplanationService` no longer range-checks a citation itself: it only maps an
+exhausted `UnexpectedModelBehavior` to the FR-5 degrade (`term_explanation: null`),
+then resolves the cited ordinals of whatever valid response it did get back into their
+glossary rows to build `translation_hints`.
 
-### FR-7: Bot rendering is one message, unchanged shape otherwise
+`ExplanationWriterAgent` (spec 0012/0017) is migrated to the identical pattern as a
+companion change (AD-8): both stages `ExplanationService` gathers concurrently (FR-3)
+now validate their own citations the same way, so a reader of `ExplanationService`
+finds no retry logic for either stage — only two `try/except` blocks mapping an agent
+failure to its own outcome (FR-5's degrade for the vocabulary stage, FR-13's 503 for
+the legal stage).
 
-`handle_explain_callback` renders `term_explanation` (when present) followed by the
-existing legal `explanation`/refusal line, as two paragraphs of the **same** message —
-no new button, no new keyboard row (AD-3). The combined text is what gets stashed as
-`session.last_explanation` for a later "🇷🇺 Traduci" tap; `translation_hints` is stashed
-alongside it (`session.last_explanation_hints`) and forwarded, unchanged, to `POST
-/explanations/translate` (spec 0018, FR-8) on that tap. Everything else about the
-"Spiega"/"Traduci" flow — the optimistic edits, the staleness checks, the photo-caption
-overflow handling — is unchanged.
+### FR-7: Bot rendering stays one edited-in-place message
+
+`handle_explain_callback` renders `term_explanation` (when present), the existing
+legal `explanation`/refusal line, and the glossary block (FR-8, when
+`translation_hints` is non-empty) as sections of the **same** message — no new button,
+no new keyboard row (AD-3). The combined text (all sections that were rendered) is
+what gets stashed as `session.last_explanation` for a later "🇷🇺 Traduci" tap;
+`translation_hints` is stashed alongside it (`session.last_explanation_hints`) and
+forwarded, unchanged, to `POST /explanations/translate` (spec 0018, FR-8) on that tap
+— the translator receives the glossary block as ordinary text within
+`last_explanation` (it was already composed into the message the user saw) and uses
+`translation_hints`' `term`/`term_ru` pair to keep the cited term itself pinned, the
+same mechanism spec 0018 already applies to `term_explanation`'s prose; `definition`
+is not part of what is forwarded to the translator, only of what the bot renders
+locally (FR-8). Everything else about the "Spiega"/"Traduci" flow — the optimistic
+edits, the staleness checks, the photo-caption overflow handling — is unchanged.
+
+### FR-8: The glossary is a separate block, not woven into the prose
+
+Each entry `term_explanation` cites (FR-6) is also shown as its own line, under a
+short heading, **below** both paragraphs rather than only as an inline `«term»`
+quotation inside the prose:
+
+```
+{term_explanation prose}
+
+{legal explanation}
+
+📖 carreggiata — Parte della strada destinata alla circolazione dei veicoli.
+📖 banchina — Parte della strada, esterna alla carreggiata, destinata alla sosta o al transito dei pedoni.
+```
+
+The prose (FR-6) is unchanged — it still explains the question in context and still
+quotes cited terms in guillemets on first use — this block is additive, a scannable
+recap for a candidate who wants the definition without re-reading the paragraph, not a
+replacement for it. Built entirely from `translation_hints` (FR-1): one line per hint,
+`term` and `definition` exactly as `glossary_entries` (spec 0019) stores them, in the
+same order `cited_term_numbers` (FR-6) lists them. No block is rendered when
+`translation_hints` is empty (`term_explanation: null`, or a prose with no cited
+term).
+
+QUI forse ha senso rivedere un po' il data model di storage, se salvare nella cache non solo l'ultima ma tutte legate all'id del messaggio
+in un dizionario e salvare
+```python
+class TermExplanation(BaseModel):
+    term: str
+    term_ru: str
+    definition: str
+
+class QuestionExplanation(BaseModel):
+    text: str # Generato da LLM
+    terms: list[TermExplanation]
+    
+class QuizExplanation(BaseModel): 
+    question_explanation: QuestionExplanation
+    answer_explattion: str # Generato da LLM
+
+bot_cache_state: dict[int, QuizExplanation] = {}
+
+state[1] = {
+    "question_explanation": {
+        "text": "...", 
+        "terms": [{"term": "...", "term_ru": "...", "explanation": "..."}, ...]
+    },
+    "answer_explanation": "..."
+}
+
+```
 
 ## Non-Goals
 
@@ -299,6 +382,52 @@ The legal stage's failure/timeout semantics are unchanged (spec 0017, FR-13): st
 `ExplanationUnavailableError`, still `503`. The vocabulary stage never raises it — its
 failure is swallowed per FR-5. No new exception class.
 
+### AD-8: Both agents self-correct via `output_validator`, not a service-level retry loop
+
+Ordinal-range grounding (FR-6) is enforced by each agent itself, not by
+`ExplanationService`. This departs from `ExplanationWriterAgent`'s original spec 0012
+design (`_call_writer`'s manual retry loop, keyed off a service-level
+`_CITATION_ATTEMPTS` constant) in favor of the pattern `CommaLabelerAgent` already uses
+(spec 0014): an `output_validator` raising `ModelRetry` when `ctx.deps` shows an
+ordinal outside the supplied set.
+
+Chosen over keeping `_call_writer`'s loop for two reasons: `ModelRetry` gives the model
+targeted, in-conversation feedback ("ordinals X are invalid, choose within 1-N") before
+its next attempt, instead of a blind independent `agent.run()` call with no memory of
+what it got wrong; and it removes duplicated range-check logic from the service (today
+`1 <= ordinal <= supplied` is recomputed by hand in `_call_writer`) in favor of a single
+place, next to the prompt that produced the ordinal, exactly where `ctx.deps` already
+carries the count needed to check it.
+
+This is a **decision that also reaches back into already-shipped spec 0017 code**:
+`ExplanationWriterAgent`/`ExplanationService._call_writer` are migrated to the same
+pattern as a companion change to this spec's implementation, not a spec of their own —
+the two agents `ExplanationService` gathers (FR-3) would otherwise validate
+identically-shaped citations two different, mutually invisible ways. The migration
+removes `_CITATION_ATTEMPTS`/the retry loop from `_call_writer`, which becomes a single
+`try/except` around one `agent.run()` call; `AppConfig.explanation_deadline_s`'s
+existing default already assumed the *combined* cost of what is now the agent's own
+retries, so no config change follows from this alone.
+
+### AD-9: The glossary block costs no new LLM call, and translates for free
+
+`definition` (FR-8) is read straight from the `glossary_entries` row (spec 0019,
+FR-7 there) that `ExplanationService` already resolves each `cited_term_numbers`
+ordinal against to build `translation_hints` (FR-6) — no new agent output field, no
+new retrieval, no new prompt. `QuestionExplainerAgent`'s own response is unchanged by
+FR-8: it still only returns `explanation` and `cited_term_numbers`.
+
+Translation is equally free: spec 0019 (Rejected shapes) deliberately does not store a
+pre-translated Russian definition, precisely because "the whole message is translated
+once, on demand" by `ExplanationTranslatorAgent` (spec 0018) — a decision this spec's
+glossary block relies on rather than revisits. Once the block is composed into the
+message text the user sees (FR-7), a "Traduci" tap translates it exactly like the rest
+of the message: the *term* stays pinned via `translation_hints`' `term_ru` (the
+existing spec 0018 FR-8/AD-9 mechanism, unchanged), while its *definition* is
+translated freely by the same LLM call already translating
+`term_explanation`/`explanation` — never a separately stored or separately requested
+Russian definition.
+
 ## Independence from Spec 0019
 
 The vocabulary stage's retrieval (FR-4) is written to tolerate an empty
@@ -319,7 +448,10 @@ configuration, never judge identity, same status as `explanation_deadline_s`. No
 to `explanation_deadline_s` itself (FR-3: concurrent, not additive).
 
 `QuizExplanationResponse` (API): + `term_explanation: str | None`, +
-`translation_hints: list[TranslationHintResponse]` (`{term: str, term_ru: str}`).
+`translation_hints: list[TranslationHintResponse]` (`{term: str, definition: str,
+term_ru: str}` — `definition` added by FR-8, sourced verbatim from the `glossary_entries`
+row (spec 0019) `ExplanationService` already resolves each cited ordinal against, no
+new read).
 `Explanation` (domain model, `guidami_ai_patente/models/explanation.py`): +
 `term_explanation: str | None = None`, + `translation_hints: tuple[TranslationHint,
 ...] = ()` — both fields sit outside the existing `_require_a_coherent_shape`
@@ -345,11 +477,23 @@ tuple[TranslationHint, ...] = ()` alongside the existing `last_explanation`.
 
 ## Testing
 
-- **Ordinal validation** (unit): an out-of-range `cited_term_numbers` value is retried
-  like the legal stage's citations; exhaustion degrades (`term_explanation: None`),
-  it does not raise (`test_vocabulary_stage_degrades_on_exhausted_retries`). A repeated
-  ordinal is rejected by the response model itself
+- **Ordinal validation** (unit, agent-level): an out-of-range `cited_term_numbers`
+  ordinal self-corrects via `QuestionExplainerAgent`'s own `output_validator`
+  (`test_an_out_of_range_ordinal_self_corrects_on_retry`, mirroring
+  `test_comma_labeler_agent.py`); once `AgentConfig.num_retries` is exhausted the agent
+  raises `UnexpectedModelBehavior`
+  (`test_an_ordinal_that_never_self_corrects_raises_unexpected_model_behavior`). A
+  repeated ordinal is rejected by the response model itself
   (`test_question_explainer_response_rejects_repeated_ordinal`).
+- **Degrade on exhaustion** (unit, service-level, fakes): `ExplanationService` maps an
+  `UnexpectedModelBehavior` raised by the vocabulary agent to `term_explanation: None`
+  (FR-5), it does not propagate it
+  (`test_vocabulary_stage_degrades_on_exhausted_retries`).
+- **`ExplanationWriterAgent` migration** (unit, agent-level, AD-8): the same two tests
+  mirrored for the legal stage (self-correction, exhausted-retry), replacing the two
+  service-level retry tests this migration retires
+  (`test_an_out_of_range_citation_is_retried_then_becomes_a_503`,
+  `test_a_retry_that_cites_correctly_is_accepted`).
 - **Answer-blindness** (unit): the vocabulary request DTO and the new context/read model
   expose no `correct_answer`/`rule_explanation`/`core_concepts`/`topic` field
   (`test_question_explainer_request_has_no_answer_field`).
@@ -371,6 +515,12 @@ tuple[TranslationHint, ...] = ()` alongside the existing `last_explanation`.
   `last_explanation_hints` are both stashed after a successful "Spiega"; a later
   "Traduci" tap forwards the stashed hints unchanged; no new keyboard row appears
   anywhere.
+- **Glossary block** (FR-8, unit): the rendered message includes one line per
+  `translation_hints` entry, in `cited_term_numbers` order, using `term`/`definition`
+  verbatim; no block appears when `translation_hints` is empty
+  (`test_glossary_block_omitted_when_no_terms_cited`). `definition` in the API response
+  matches the `glossary_entries` row's own text, not agent output
+  (`test_translation_hint_definition_is_read_from_the_glossary_row`).
 
 ## Feasibility Evidence
 
@@ -381,8 +531,19 @@ Verified 2026-09-21/22 on branch `feat/backend`.
   select-then-write sequencing this spec parallelizes); `agents/explanation_writer/dto/
   explanation_writer_response.py:19-46` (`explanation`, `cited_comma_numbers`, the
   `_reject_repeated_ordinals` validator this spec's `QuestionExplainerResponse`
-  mirrors); `services/explanation_service.py:129-162` (`_call_writer`'s ordinal-range
-  retry loop, mirrored by FR-6).
+  mirrors).
+- **AD-8** — `labeling/agents/comma_labeler/comma_labeler_agent.py:30-57`
+  (`_validate_comma_numbers`/`output_validator`/`ModelRetry`, the pattern FR-6 mirrors
+  for both agents); `tests/labeling/agents/comma_labeler/test_comma_labeler_agent.py`
+  (`test_an_out_of_range_ordinal_self_corrects_on_retry`, the test shape to mirror for
+  `QuestionExplainerAgent` and the migrated `ExplanationWriterAgent`).
+- **FR-8 / AD-9** — `docs/superpowers/specs/2026-09-21-definition-glossary-design.md`
+  FR-7 and its `CREATE TABLE glossary_entries` (Data Model there): the table already
+  carries the Italian `definition` alongside `term`, so FR-8 reads an existing column,
+  not agent output; that same spec's Rejected shapes entry "Storing a full Russian
+  translation (definition, summary) per glossary entry" is the prior decision AD-9
+  relies on (the whole merged message, glossary block included, is translated once by
+  `ExplanationTranslatorAgent`, spec 0018 — never a stored Russian definition).
 - **AD-4** — `repositories/quiz_question_repository.py:135-160` selects
   `q.correct_answer`; `labeling/services/question_labeling_service.py:87-92` passes
   `correct_answer` to the judge; `ingestor/services/quiz/quiz_variant_registry.py:30-61`:
@@ -430,9 +591,14 @@ Verified 2026-09-21/22 on branch `feat/backend`.
   confirm.
 - [ ] **non-blocking** — Message-length margin once real output lengths are known:
   `term_explanation` (`max_length=900`) plus the existing legal explanation (itself
-  unbounded today but consistently short in practice) should stay well inside
+  unbounded today but consistently short in practice) plus the FR-8 glossary block
+  (one line per cited term, unbounded by count today) should stay well inside
   Telegram's 4096-character limit; the plan should confirm with a rendering test rather
   than recomputing worst-case arithmetic here.
+- [ ] **non-blocking** — Exact glossary-block heading/formatting (the `📖` marker and
+  layout above are illustrative) and whether `glossary_max_candidates`/`cited_term_numbers`
+  need their own cap on *rendered* lines, separate from the retrieval-candidate cap
+  (FR-4) — left to implementation.
 
 ## Follow-ups after implementation
 
@@ -452,6 +618,24 @@ Verified 2026-09-21/22 on branch `feat/backend`.
 
 ## Changelog
 
+- **2026-09-23 (later)** — FR-8/AD-9: the glossary is now also rendered as its own
+  block, separate from `term_explanation`'s prose, not only as inline `«term»`
+  guillemets — partially revisiting the "structured, API-visible glossary array"
+  rejection (Shapes considered and rejected). `translation_hints` gains a `definition`
+  field, read verbatim from the `glossary_entries` row already resolved for FR-6 (no
+  new agent output, no new retrieval); on "Traduci", the block translates for free as
+  part of the whole merged message (spec 0018), with only the term itself pinned via
+  the existing `term_ru` hint — no stored Russian definition, consistent with spec
+  0019's own Rejected shapes.
+- **2026-09-23** — FR-6/AD-8: `QuestionExplainerAgent`'s ordinal-grounding moves from a
+  service-level retry loop (`ExplanationService`, mirroring `_call_writer`'s original
+  spec 0012 shape) to a pydantic-ai `output_validator` on the agent itself, mirroring
+  `CommaLabelerAgent` (spec 0014) — chosen for targeted in-conversation retry feedback
+  over a blind independent retry, and to keep the range check next to the prompt that
+  produced the ordinal. `ExplanationWriterAgent` (spec 0012/0017) is migrated to the
+  same pattern as a companion change, so both stages `ExplanationService` gathers
+  (FR-3) validate citations identically; `_CITATION_ATTEMPTS` and `_call_writer`'s
+  retry loop are retired.
 - **2026-09-22 (later)** — Full redesign after discussing the shape with the actual
   end user: merged into the *existing* `GET /explanation` (spec 0017) instead of a new
   endpoint/button; two agents now run concurrently via `asyncio.gather` under the
