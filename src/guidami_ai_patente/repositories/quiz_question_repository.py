@@ -5,7 +5,12 @@ from pywire import Autowired, repository
 
 from guidami_ai_patente.clients import PostgresClientProvider
 from guidami_ai_patente.configs import AppConfig
-from guidami_ai_patente.models import QuestionContext, QuizQuestionSummary, TopicCount
+from guidami_ai_patente.models import (
+    QuestionContext,
+    QuestionVocabularyContext,
+    QuizQuestionSummary,
+    TopicCount,
+)
 
 
 @repository
@@ -157,6 +162,32 @@ class QuizQuestionRepository:
         text, correct_answer, image_description = rows[0]
         return QuestionContext(
             text=text, correct_answer=bool(correct_answer), image_description=image_description
+        )
+
+    def find_question_vocabulary_context(self, number: str) -> QuestionVocabularyContext | None:
+        """Returns what the vocabulary stage needs about a question, or `None` (AD-4).
+
+        Answer-blind by construction: the projection has no `correct_answer` column, not
+        merely an unused one. `embedding` is `None` when no `text`-variant row exists for
+        this question — `GlossaryReadRepository` (Task 5) degrades to its full-text arm
+        in that case (FR-4), it does not fail.
+        """
+        query = sql.SQL(
+            "SELECT q.text, i.description, e.embedding_3_small FROM {questions} q "
+            "LEFT JOIN {images} i ON i.filename = q.image_filename "
+            "LEFT JOIN {embeddings} e ON e.quiz_question_id = q.id AND e.variant = 'text' "
+            "WHERE q.number = %s"
+        ).format(
+            questions=sql.Identifier(self.config.quiz_questions_table),
+            images=sql.Identifier(self.config.quiz_images_table),
+            embeddings=sql.Identifier(self.config.quiz_question_embeddings_table),
+        )
+        rows = self.postgres.client.fetch(query, [number])
+        if not rows:
+            return None
+        text, image_description, embedding = rows[0]
+        return QuestionVocabularyContext(
+            text=text, image_description=image_description, embedding=embedding
         )
 
     @staticmethod
