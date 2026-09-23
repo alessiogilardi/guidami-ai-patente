@@ -15,6 +15,10 @@ from guidami_ai_patente.agents.explanation_writer.dto import (
     ExplanationWriterRequest,
     ExplanationWriterResponse,
 )
+from guidami_ai_patente.agents.question_explainer.dto import (
+    QuestionExplainerRequest,
+    QuestionExplainerResponse,
+)
 from guidami_ai_patente.clients import PostgresClientProvider
 from guidami_ai_patente.providers import LabelingStackProvider
 from guidami_ai_patente.services import ExplanationService
@@ -176,6 +180,20 @@ def live_question(api_client: TestClient) -> Iterator[PostgresClient]:
     client.truncate(*_TABLES)
 
 
+@dataclass
+class _VocabularyAgentDouble:
+    response: QuestionExplainerResponse | None = None
+    error: Exception | None = None
+    requests: list[QuestionExplainerRequest] = field(default_factory=list)
+
+    async def run(self, request: QuestionExplainerRequest) -> QuestionExplainerResponse:
+        self.requests.append(request)
+        if self.error is not None:
+            raise self.error
+        assert self.response is not None
+        return self.response
+
+
 def _install_writer(monkeypatch: pytest.MonkeyPatch, writer: _WriterDouble) -> None:
     """Substitutes the writer on the resolved service singleton.
 
@@ -185,6 +203,20 @@ def _install_writer(monkeypatch: pytest.MonkeyPatch, writer: _WriterDouble) -> N
     """
     service = get_default_container().resolve(ExplanationService)
     monkeypatch.setattr(service, "writer", writer)
+
+
+def _install_vocabulary_agent(
+    monkeypatch: pytest.MonkeyPatch, agent: _VocabularyAgentDouble
+) -> None:
+    """Substitutes the vocabulary agent on the resolved service singleton.
+
+    Same substitution idiom as `_install_writer`; `_install_writer`'s existing callers
+    are unaffected — `ExplanationService.vocabulary_agent` still resolves to the real
+    `QuestionExplainerAgent`, run against an empty `glossary_entries` table, unless a
+    test opts into this helper.
+    """
+    service = get_default_container().resolve(ExplanationService)
+    monkeypatch.setattr(service, "vocabulary_agent", agent)
 
 
 @pytest.mark.integration
@@ -321,3 +353,45 @@ def test_an_embedded_but_unlabeled_question_is_a_conflict(
     response = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
 
     assert response.status_code == HTTPStatus.CONFLICT
+
+
+@pytest.mark.integration
+def test_the_response_carries_term_explanation_and_hints(
+    api_client: TestClient,
+    cached_question: PostgresClient,
+    monkeypatch: pytest.MonkeyPatch,
+    registered_headers: dict[str, str],
+) -> None:
+    _install_writer(monkeypatch, _WriterDouble())
+    _install_vocabulary_agent(
+        monkeypatch,
+        _VocabularyAgentDouble(
+            response=QuestionExplainerResponse(
+                explanation="La domanda chiede...", cited_term_numbers=[]
+            )
+        ),
+    )
+
+    response = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
+
+    body = response.json()
+    assert body["term_explanation"] == "La domanda chiede..."
+    assert body["translation_hints"] == []
+
+
+@pytest.mark.integration
+def test_a_vocabulary_agent_failure_still_returns_200(
+    api_client: TestClient,
+    cached_question: PostgresClient,
+    monkeypatch: pytest.MonkeyPatch,
+    registered_headers: dict[str, str],
+) -> None:
+    _install_writer(monkeypatch, _WriterDouble())
+    _install_vocabulary_agent(monkeypatch, _VocabularyAgentDouble(error=RuntimeError("boom")))
+
+    response = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
+
+    assert response.status_code == HTTPStatus.OK
+    body = response.json()
+    assert body["status"] == "explained"
+    assert body["term_explanation"] is None

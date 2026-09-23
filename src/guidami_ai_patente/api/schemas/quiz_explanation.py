@@ -35,6 +35,21 @@ class ProvenanceResponse(BaseModel):
     judge_model: str
 
 
+class CitedGlossaryTermResponse(BaseModel):
+    """A glossary entry the vocabulary explanation cited (FR-1, FR-8).
+
+    Not the same shape as spec 0018's own translate-endpoint wire types
+    (`TranslationHintRequest`/`TranslationHint`, `term`/`term_ru` only) — this one also
+    carries `definition`, which is rendered by the bot as its own glossary-block line,
+    separate from `term_explanation`'s prose (FR-8); `term`/`term_ru` are also what a
+    later `POST /explanations/translate` call pins the term to (spec 0018 FR-8/AD-9).
+    """
+
+    term: str
+    definition: str
+    term_ru: str
+
+
 class QuizExplanationResponse(BaseModel):
     """The explanation, or the reasoned refusal, of one quiz answer.
 
@@ -46,6 +61,10 @@ class QuizExplanationResponse(BaseModel):
     `judge_rationale` is the judge's own stored text, passed through for transparency
     and debugging: it is written in evaluation meta-language and mentions the
     candidates it was shown, so the client decides whether to surface it.
+
+    `term_explanation`/`translation_hints` are the vocabulary stage's own output (spec
+    0020, FR-1) and are populated independently of `status` — an
+    `insufficient_knowledge` refusal can still carry a term explanation (AD-1).
     """
 
     status: ExplanationResult
@@ -54,3 +73,5 @@ class QuizExplanationResponse(BaseModel):
     provenance: ProvenanceResponse | None
     reason: InsufficientKnowledgeReason | None
     judge_rationale: str | None
+    term_explanation: str | None
+    translation_hints: list[CitedGlossaryTermResponse]

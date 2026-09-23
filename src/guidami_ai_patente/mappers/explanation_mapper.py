@@ -2,6 +2,7 @@
 
 from guidami_ai_patente.api.schemas.quiz_explanation import (
     CitationResponse,
+    CitedGlossaryTermResponse,
     ProvenanceResponse,
     QuizExplanationResponse,
 )
@@ -34,6 +35,13 @@ class ExplanationMapper:
             ),
             reason=explanation.reason,
             judge_rationale=explanation.judge_rationale,
+            term_explanation=explanation.term_explanation,
+            translation_hints=[
+                CitedGlossaryTermResponse(
+                    term=hint.term, definition=hint.definition, term_ru=hint.term_ru
+                )
+                for hint in explanation.translation_hints
+            ],
         )
 
     @staticmethod

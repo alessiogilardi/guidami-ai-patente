@@ -1,8 +1,9 @@
 """The domain outcome, on the wire (FR-5, FR-7)."""
 
+from guidami_ai_patente.api.schemas.quiz_explanation import CitedGlossaryTermResponse
 from guidami_ai_patente.enums import ExplanationResult, InsufficientKnowledgeReason
 from guidami_ai_patente.mappers import ExplanationMapper
-from guidami_ai_patente.models import CurrentLabeling, Explanation, LabeledComma
+from guidami_ai_patente.models import CitedGlossaryTerm, CurrentLabeling, Explanation, LabeledComma
 
 
 def _comma(judge_rank: int) -> LabeledComma:
@@ -72,3 +73,36 @@ def test_a_refusal_carries_the_reason_and_no_prose() -> None:
     assert response.status is ExplanationResult.INSUFFICIENT_KNOWLEDGE
     assert (response.explanation, response.citations, response.provenance) == (None, [], None)
     assert response.reason is InsufficientKnowledgeReason.NOT_INDEXED
+
+
+def test_term_explanation_and_hints_are_mapped_through() -> None:
+    response = ExplanationMapper.from_explanation_to_response(
+        Explanation(
+            result=ExplanationResult.EXPLAINED,
+            explanation="La sosta è vietata.",
+            citations=(_comma(1),),
+            provenance=_labeling(),
+            term_explanation="La domanda chiede...",
+            translation_hints=(CitedGlossaryTerm(term="x", definition="y", term_ru="z"),),
+        )
+    )
+
+    assert response.term_explanation == "La domanda chiede..."
+    assert response.translation_hints == [
+        CitedGlossaryTermResponse(term="x", definition="y", term_ru="z")
+    ]
+
+
+def test_a_refusal_still_carries_term_explanation_and_hints() -> None:
+    """AD-1: independent of `result` — the coherent-shape validator (Task 7) allows this."""
+    response = ExplanationMapper.from_explanation_to_response(
+        Explanation(
+            result=ExplanationResult.INSUFFICIENT_KNOWLEDGE,
+            reason=InsufficientKnowledgeReason.NOT_INDEXED,
+            term_explanation="La domanda chiede...",
+            translation_hints=(CitedGlossaryTerm(term="x", definition="y", term_ru="z"),),
+        )
+    )
+
+    assert response.status is ExplanationResult.INSUFFICIENT_KNOWLEDGE
+    assert response.term_explanation == "La domanda chiede..."
