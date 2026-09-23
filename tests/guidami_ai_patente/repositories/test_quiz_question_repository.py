@@ -46,14 +46,32 @@ def _insert_questions(client: PostgresClient) -> None:
     )
 
 
+def _truncate_and_restart_identity(client: PostgresClient) -> None:
+    """Truncates `_TABLES` and resets their `BIGSERIAL` sequences.
+
+    `PostgresQuestionRepository.find_by_permutation`'s ranking hashes
+    `id::text || seed`, so leaving a prior test's rows' `id` offset in place
+    changes which `quiz_questions.id` values back this fixture's fixed 5-row bank
+    — making `test_two_seeds_do_not_produce_the_same_whole_sequence` pass or fail
+    depending on which other integration tests ran first in the same session.
+    `PostgresClient.truncate` has no `RESTART IDENTITY` option, so this issues the
+    raw statement directly via `client.execute`, scoped to this fixture only —
+    not a change to `PostgresClient` itself.
+    """
+    query = sql.SQL("TRUNCATE TABLE {tables} RESTART IDENTITY").format(
+        tables=sql.SQL(", ").join(sql.Identifier(name) for name in _TABLES)
+    )
+    client.execute(query)
+
+
 @pytest.fixture
 def bank(api_client: object) -> Iterator[PostgresClient]:
     """A five-question, one-image bank on the ephemeral stack, torn down after each test."""
     client = get_default_container().resolve(PostgresClientProvider).client
-    client.truncate(*_TABLES)
+    _truncate_and_restart_identity(client)
     _insert_questions(client)
     yield client
-    client.truncate(*_TABLES)
+    _truncate_and_restart_identity(client)
 
 
 @pytest.fixture
