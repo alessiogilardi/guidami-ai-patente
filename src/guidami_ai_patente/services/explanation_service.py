@@ -26,11 +26,6 @@ from .current_labeling_read_service import CurrentLabelingReadService
 
 logger = logging.getLogger(__name__)
 
-# Attempts at a grounded citation list before giving up (FR-10). The response model
-# already rejects an empty or repeated list, which pydantic-ai retries on its own; this
-# covers the one failure it cannot see, an ordinal outside the supplied commas.
-_CITATION_ATTEMPTS = 3
-
 
 @service
 class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
@@ -59,9 +54,11 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
     singleton, so it exists whether or not a given request calls it; what the endpoint
     guarantees is that a refusal issues no call, which is what the unit test counts.
 
-    FR-10's grounding is enforced here rather than in the response model, which cannot
-    see how many commas were supplied: an ordinal outside the set is retried, and
-    exhausting `_CITATION_ATTEMPTS` is a 503, not a fabricated citation.
+    FR-10's grounding is enforced by `ExplanationWriterAgent` itself, via a pydantic-ai
+    `output_validator` that retries an out-of-range ordinal in-conversation (mirroring
+    `CommaLabelerAgent`, spec 0014). `_call_writer` no longer retries anything: it maps
+    a raised exception — including `UnexpectedModelBehavior` once the agent's own retry
+    budget (`config.num_retries`) is exhausted — to a 503, never a fabricated citation.
     """
 
     config: Autowired[AppConfig]
@@ -129,37 +126,21 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
     async def _call_writer(
         self, writer_request: ExplanationWriterRequest, number: str
     ) -> ExplanationWriterResponse:
-        """Calls the writer until its citations are grounded (FR-10, AD-14).
+        """Calls the writer, mapping any failure to a 503 (FR-10, FR-13).
 
         Raises:
-            ExplanationUnavailableError: The writer raised, or kept citing an ordinal
-                outside the supplied commas.
+            ExplanationUnavailableError: The writer raised, including
+                `UnexpectedModelBehavior` once its own ordinal-grounding retries
+                (FR-10, enforced by `ExplanationWriterAgent`'s `output_validator`) are
+                exhausted.
         """
-        supplied = len(writer_request.commas)
-        for attempt in range(_CITATION_ATTEMPTS):
-            try:
-                response = await self.writer.run(writer_request)
-            except Exception as error:
-                logger.warning("Explanation writer failed for quiz %s", number, exc_info=True)
-                raise ExplanationUnavailableError(
-                    f"the explanation writer failed for question {number}"
-                ) from error
-
-            if all(1 <= ordinal <= supplied for ordinal in response.cited_comma_numbers):
-                return response
-
-            logger.warning(
-                "Writer cited %r, outside the %d supplied commas for quiz %s (attempt %d/%d)",
-                response.cited_comma_numbers,
-                supplied,
-                number,
-                attempt + 1,
-                _CITATION_ATTEMPTS,
-            )
-
-        raise ExplanationUnavailableError(
-            f"the explanation writer kept citing a comma it was not given for question {number}"
-        )
+        try:
+            return await self.writer.run(writer_request)
+        except Exception as error:
+            logger.warning("Explanation writer failed for quiz %s", number, exc_info=True)
+            raise ExplanationUnavailableError(
+                f"the explanation writer failed for question {number}"
+            ) from error
 
     @staticmethod
     def _insufficient(selection: CommaSelection) -> Explanation:

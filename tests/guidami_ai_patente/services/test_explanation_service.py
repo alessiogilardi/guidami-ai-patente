@@ -246,28 +246,22 @@ async def test_no_labeling_at_all_reads_not_indexed_with_no_rationale() -> None:
 
 
 @pytest.mark.asyncio
-async def test_an_out_of_range_citation_is_retried_then_becomes_a_503() -> None:
-    """FR-10/AD-14: grounding is enforced, not requested."""
+async def test_the_service_calls_the_writer_once_and_trusts_its_output() -> None:
+    """The service trusts the writer's output as-is; it no longer retries citations.
+
+    FR-10 grounding now lives in `ExplanationWriterAgent`'s own `output_validator`
+    (mirroring `CommaLabelerAgent`, spec 0014): the service no longer retries or
+    range-checks `cited_comma_numbers` itself, it just renders what the writer returns.
+    """
     selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
-    writer = _WriterDouble(responses=[_explained([4]), _explained([9]), _explained([7])])
-
-    with pytest.raises(ExplanationUnavailableError):
-        await _service(_ReaderDouble(selection), writer)(ExplanationRequest(number="0001"))
-
-    assert len(writer.requests) == 3
-
-
-@pytest.mark.asyncio
-async def test_a_retry_that_cites_correctly_is_accepted() -> None:
-    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
-    writer = _WriterDouble(responses=[_explained([5]), _explained([1])])
+    writer = _WriterDouble(responses=[_explained([9])])
 
     explanation = await _service(_ReaderDouble(selection), writer)(
         ExplanationRequest(number="0001")
     )
 
     assert explanation.result is ExplanationResult.EXPLAINED
-    assert len(writer.requests) == 2
+    assert len(writer.requests) == 1
 
 
 @pytest.mark.asyncio

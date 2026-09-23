@@ -77,11 +77,14 @@ class AppConfig(BaseConfig):
             "Wall-clock budget for GET /explanation, writer stage only (FR-13; spec "
             "0017 narrowed this from covering the judge too — that moved to "
             "labeling_deadline_s). Deployment configuration, never judge identity. "
-            "Must cover up to _CITATION_ATTEMPTS=3 sequential ExplanationWriterAgent "
-            "calls (explanation_service.py) plus pydantic-ai's own validation "
-            "retries; no measured production latency data exists yet, so 20.0s gives "
-            "headroom while staying under the original pre-split 25.0s combined "
-            "budget — tune with real data once available."
+            "Must cover one ExplanationWriterAgent.run call, including its own "
+            "in-conversation ordinal-grounding retries (its output_validator, up to "
+            "config.num_retries=3) plus pydantic-ai's structural validation retries — "
+            "no longer 3 sequential ExplanationService-level calls, since FR-10's "
+            "grounding moved into the agent itself; no measured production latency "
+            "data exists yet, so 20.0s gives headroom while staying under the "
+            "original pre-split 25.0s combined budget — tune with real data once "
+            "available."
         ),
     )
     translation_deadline_s: float = Field(
