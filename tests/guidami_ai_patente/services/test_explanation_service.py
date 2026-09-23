@@ -92,10 +92,13 @@ class _ReaderDouble:
 class _WriterDouble:
     responses: list[ExplanationWriterResponse] = field(default_factory=list)
     error: Exception | None = None
+    delay: float = 0.0
     requests: list[ExplanationWriterRequest] = field(default_factory=list)
 
     async def run(self, request: ExplanationWriterRequest) -> ExplanationWriterResponse:
         self.requests.append(request)
+        if self.delay:
+            await asyncio.sleep(self.delay)
         if self.error is not None:
             raise self.error
         return self.responses.pop(0)
@@ -110,12 +113,20 @@ class _ConfigDouble:
 class _VocabularyAgentDouble:
     response: QuestionExplainerResponse | None = None
     error: Exception | None = None
+    delay: float = 0.0
     requests: list[QuestionExplainerRequest] = field(default_factory=list)
+    cancelled: bool = False
 
     async def run(self, request: QuestionExplainerRequest) -> QuestionExplainerResponse:
         self.requests.append(request)
         if self.error is not None:
             raise self.error
+        if self.delay:
+            try:
+                await asyncio.sleep(self.delay)
+            except asyncio.CancelledError:
+                self.cancelled = True
+                raise
         assert self.response is not None
         return self.response
 
@@ -221,6 +232,18 @@ async def test_cited_terms_are_resolved_into_translation_hints() -> None:
     )
 
 
+def _candidate(ordinal: int, *, term: str | None = None) -> GlossaryCandidate:
+    return GlossaryCandidate(
+        id=ordinal,
+        source="cds",
+        article_number="3",
+        comma_number=str(ordinal),
+        term=term or f"term-{ordinal}",
+        definition=f"Definizione {ordinal}.",
+        term_ru=f"term-ru-{ordinal}",
+    )
+
+
 @pytest.mark.asyncio
 async def test_citation_ordinals_resolve_against_the_shuffled_list_the_agent_saw() -> None:
     """The ordinal the agent returns is a 1-based index into the *shuffled* list it was shown.
@@ -230,27 +253,13 @@ async def test_citation_ordinals_resolve_against_the_shuffled_list_the_agent_saw
     2026-09-23). `_VocabularyAgentDouble.requests` captures the exact request the agent
     received, so this test can assert against that list's own order rather than the
     glossary double's (RRF) order.
+
+    Uses 5 candidates (not 2): with only 2, a double-shuffle regression (shuffling once
+    for the prompt and again, differently, for ordinal resolution) has only a ~50%
+    chance of producing a different order and being caught — 5 candidates make a
+    coincidental match between two independent shuffles exceedingly unlikely (1/120).
     """
-    candidates = [
-        GlossaryCandidate(
-            id=1,
-            source="cds",
-            article_number="3",
-            comma_number="1",
-            term="a",
-            definition="A",
-            term_ru="a",
-        ),
-        GlossaryCandidate(
-            id=2,
-            source="cds",
-            article_number="3",
-            comma_number="2",
-            term="b",
-            definition="B",
-            term_ru="b",
-        ),
-    ]
+    candidates = [_candidate(i) for i in range(1, 6)]
     vocabulary_agent = _VocabularyAgentDouble(
         response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[2])
     )
@@ -266,6 +275,189 @@ async def test_citation_ordinals_resolve_against_the_shuffled_list_the_agent_saw
     seen_candidates = vocabulary_agent.requests[0].candidates
     expected_term = seen_candidates[1].term  # ordinal 2 == index 1 of the list the agent saw
     assert explanation.translation_hints[0].term == expected_term
+
+
+@pytest.mark.asyncio
+async def test_duplicate_cited_terms_are_deduplicated_in_translation_hints() -> None:
+    """FR-8 fix: two distinct rows sharing a `term` must not double up in the hints.
+
+    `glossary_entries` is unique on `(source, article_number, comma_number, term)`, so
+    a CdS and a CAP row can legitimately carry the same `term` — citing both must still
+    resolve to a single `translation_hints` entry, or the translation endpoint's
+    wire-layer validator 422s on the duplicate `term`.
+    """
+    first = GlossaryCandidate(
+        id=1,
+        source="cds",
+        article_number="3",
+        comma_number="1",
+        term="obbligo",
+        definition="Definizione CdS.",
+        term_ru="obligation-cds",
+    )
+    second = GlossaryCandidate(
+        id=2,
+        source="cap",
+        article_number="7",
+        comma_number="2",
+        term="Obbligo",  # same term, different case
+        definition="Definizione CAP.",
+        term_ru="obligation-cap",
+    )
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[1, 2])
+    )
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        glossary=_GlossaryDouble(candidates=[first, second]),
+    )(ExplanationRequest(number="0001"))
+
+    # `candidates` is shuffled before the agent sees it, so ordinal 1 may resolve to
+    # either row depending on shuffle order — only the casefolded identity is stable.
+    assert len(explanation.translation_hints) == 1
+    assert explanation.translation_hints[0].term.casefold() == "obbligo"
+
+
+@pytest.mark.asyncio
+async def test_an_oversized_glossary_term_degrades_the_vocabulary_stage() -> None:
+    """Fix #1: a `CitedGlossaryTerm` validation failure must stay inside the FR-5 boundary.
+
+    `glossary_entries.term` is an unbounded `TEXT` column — nothing at the DB layer
+    stops a term over `CitedGlossaryTerm`'s 80-char `max_length` from being cited.
+    Before the fix, constructing `CitedGlossaryTerm` happened *after* the vocabulary
+    stage's `try/except`, so this `ValidationError` escaped and crashed the whole
+    request via `asyncio.gather`/`TaskGroup`, taking the already-shipped legal
+    explanation down with it.
+    """
+    oversized = GlossaryCandidate(
+        id=1,
+        source="cds",
+        article_number="3",
+        comma_number="1",
+        term="x" * 81,
+        definition="Definizione.",
+        term_ru="term-ru",
+    )
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[1])
+    )
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        glossary=_GlossaryDouble(candidates=[oversized]),
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.result is ExplanationResult.EXPLAINED
+    assert explanation.term_explanation is None
+    assert explanation.translation_hints == ()
+
+
+@pytest.mark.asyncio
+async def test_a_slow_vocabulary_stage_degrades_without_tripping_the_outer_deadline() -> None:
+    """Fix #2b: the vocabulary stage's own inner timeout catches a slow call first.
+
+    With `explanation_deadline_s=3.0`, the inner vocabulary budget is
+    `3.0 - _VOCABULARY_DEADLINE_MARGIN_S == 1.0`. The vocabulary agent sleeps for 5s
+    (far longer than either budget), so if the inner timeout is working the whole
+    request should complete around the ~1.0s inner budget — never anywhere near the
+    3.0s outer deadline, and the already-succeeding legal stage must not 503.
+    """
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    vocabulary_agent = _VocabularyAgentDouble(
+        delay=5.0,
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[]),
+    )
+    service = _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+    )
+    service.config = _ConfigDouble(explanation_deadline_s=3.0)  # type: ignore[assignment]
+
+    started = time.monotonic()
+    explanation = await service(ExplanationRequest(number="0001"))
+    elapsed = time.monotonic() - started
+
+    assert explanation.result is ExplanationResult.EXPLAINED
+    assert explanation.term_explanation is None
+    assert explanation.translation_hints == ()
+    assert elapsed < 2.0  # well under the 3.0s outer deadline
+
+
+@pytest.mark.asyncio
+async def test_a_legal_stage_failure_cancels_the_still_running_vocabulary_task() -> None:
+    """Fix #2a: `_legal_outcome` raising must actually cancel `_vocabulary_outcome`.
+
+    The writer has a short delay (50ms) before raising — just long enough for the
+    vocabulary task to actually start and enter its own 5s sleep, so the cancellation
+    this test observes is a genuine mid-flight interruption, not merely "the sibling
+    task was never scheduled." If the sibling were left running instead (the pre-fix
+    `asyncio.gather` behavior), the double's `asyncio.CancelledError` handler would
+    never fire and the whole call would take ~5s; the assertions below fail loudly in
+    that case rather than just running slow.
+    """
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    writer = _WriterDouble(error=RuntimeError("provider is down"), delay=0.05)
+    vocabulary_agent = _VocabularyAgentDouble(
+        delay=5.0,
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[]),
+    )
+
+    started = time.monotonic()
+    with pytest.raises(ExplanationUnavailableError):
+        await _service(_ReaderDouble(selection), writer, vocabulary_agent=vocabulary_agent)(
+            ExplanationRequest(number="0001")
+        )
+    elapsed = time.monotonic() - started
+
+    assert elapsed < 1.0
+    assert vocabulary_agent.cancelled is True
+
+
+@pytest.mark.asyncio
+async def test_a_missing_text_variant_embedding_logs_a_warning(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    """FR-4: no `text`-variant embedding row means the dense retrieval arm is skipped."""
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    questions = _QuestionsDouble(
+        vocabulary_context=QuestionVocabularyContext(
+            text="La carreggiata è larga?", image_description=None, embedding=None
+        )
+    )
+
+    with caplog.at_level("WARNING"):
+        await _service(
+            _ReaderDouble(selection), _WriterDouble(responses=[_explained([1])]), questions
+        )(ExplanationRequest(number="0001"))
+
+    assert any("no text-variant embedding" in record.message for record in caplog.records)
+
+
+@pytest.mark.asyncio
+async def test_a_present_text_variant_embedding_does_not_log_a_warning(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    questions = _QuestionsDouble(
+        vocabulary_context=QuestionVocabularyContext(
+            text="La carreggiata è larga?", image_description=None, embedding=[0.1] * 1536
+        )
+    )
+
+    with caplog.at_level("WARNING"):
+        await _service(
+            _ReaderDouble(selection), _WriterDouble(responses=[_explained([1])]), questions
+        )(ExplanationRequest(number="0001"))
+
+    assert not any("no text-variant embedding" in record.message for record in caplog.records)
 
 
 @pytest.mark.asyncio
