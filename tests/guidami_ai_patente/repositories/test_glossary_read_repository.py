@@ -127,20 +127,39 @@ def test_text_only_matches_keep_their_own_relevance_order(
     breaking ties by `id` instead of by `ts_rank` — a stronger lexical match could
     come back after a weaker one. RRF's `1/(60+text_rank)` term preserves the real
     order.
+
+    Both terms here are genuine (non-zero) matches against the query's tsquery
+    ('cos' | 'intend' | 'sost' | 'veicol', the stems of "Cosa si intende per sosta
+    di un veicolo?") — this is what actually exercises the bug this test guards
+    against, without relying on the `WHERE g.tsv_term @@ p.tsquery` floor being
+    absent (a later, separate bug: a floor-less query would let true zero-overlap
+    noise, like "fermata" → 'ferm', into the arm; that is covered by
+    `test_the_full_text_arm_finds_an_inflected_form` and the WHERE clause itself,
+    not by this test).
+    `glossary_entries.tsv_term` is generated from `term` alone, at a single weight
+    ('A'), and `ts_rank` here is unnormalized — so any two single-word terms that
+    each match exactly one query lexeme tie exactly (verified against live
+    Postgres: both come back at 0.15198177). A genuine, *unequal* ranking
+    therefore requires the two terms to match a different **number** of the
+    query's lexemes, not merely "a strong word" vs "a weak word": "sosta dei
+    veicoli" matches two of the four query lexemes ('sost' + 'veicol', ts_rank
+    0.30396354), while "veicolo" alone matches only one ('veicol', ts_rank
+    0.15198177) — both are real, on-topic matches for the question, but the
+    former is more textually relevant and must rank first.
     """
     _seed_entry(
-        term="sosta",
-        definition="Fermata del veicolo protratta oltre il tempo per la salita/discesa.",
+        term="sosta dei veicoli",
+        definition="Sospensione della marcia non giustificata da esigenze della circolazione.",
         source="cds",
         article_number="157",
         comma_number="1",
     )
     _seed_entry(
-        term="fermata",
-        definition="Sospensione della marcia limitata al tempo per la salita/discesa.",
+        term="veicolo",
+        definition="Ogni macchina di qualsiasi specie che circola sulla strada guidata dall'uomo.",
         source="cds",
-        article_number="157",
-        comma_number="6",
+        article_number="3",
+        comma_number="1",
     )
 
     repository = get_default_container().resolve(GlossaryReadRepository)
@@ -149,4 +168,4 @@ def test_text_only_matches_keep_their_own_relevance_order(
     )
 
     terms = [c.term for c in candidates]
-    assert terms.index("sosta") < terms.index("fermata")
+    assert terms.index("sosta dei veicoli") < terms.index("veicolo")

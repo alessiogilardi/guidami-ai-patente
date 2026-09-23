@@ -29,6 +29,7 @@ _QUERY = sql.SQL(
     "text_matches AS ("
     "  SELECT g.id, ROW_NUMBER() OVER (ORDER BY ts_rank(g.tsv_term, p.tsquery) DESC, g.id) AS rnk "
     "  FROM {table} g, params p "
+    "  WHERE g.tsv_term @@ p.tsquery "
     "  ORDER BY ts_rank(g.tsv_term, p.tsquery) DESC, g.id LIMIT %s"
     "), "
     "fused AS ("
