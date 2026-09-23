@@ -86,11 +86,15 @@ for that question (fixed in the same final-review pass as points 3 and 4 above).
 - **Sequence the two stages** (legal, then vocabulary) instead of gathering them.
   Rejected — the two calls share no data dependency, so sequencing would only add
   latency (their sum instead of their max) for no correctness benefit.
-- **Give the vocabulary stage its own, independent deadline** (wider or narrower than
-  `explanation_deadline_s`) rather than sharing the existing one. Rejected — a second,
-  independent timeout would let the endpoint's total worst-case latency grow whenever
-  the vocabulary stage's own budget is the looser of the two, silently widening the
-  contract every caller of `/explanation` already depends on.
+- **Give the vocabulary stage its own, independent (caller-visible) deadline** —
+  a second timeout the endpoint's total worst-case latency would grow to accommodate.
+  Rejected — that would silently widen the contract every caller of `/explanation`
+  already depends on. The inner `asyncio.timeout` point 2 of the Decision actually
+  uses is a different thing: a *strictly narrower* sub-budget nested inside the
+  existing `explanation_deadline_s`, never widening the total. Its purpose is not to
+  give the vocabulary stage more room — it's to make sure a slow vocabulary call
+  degrades on its own before it could otherwise be the specific thing that trips the
+  shared outer deadline and turns into a 503 for the legal stage too.
 - **Let a vocabulary-stage failure propagate** (matching how a legal-stage failure
   becomes a 503 via `ExplanationUnavailableError`) instead of degrading silently.
   Rejected — the vocabulary stage is additive; a caller that already worked before
@@ -105,13 +109,16 @@ regress the existing legal-explanation guarantee — verified both by task revie
 and by a real-model smoke test showing a legal-stage refusal (`insufficient_knowledge`)
 still carrying a real, independently-computed vocabulary explanation.
 
-The cost: the vocabulary stage's own failure mode is invisible to the API response —
-a caller cannot distinguish "no glossary term applied to this question" from "the
-vocabulary stage crashed" from the response alone. Both degrade to the exact same
-shape, `term_explanation: null` and `translation_hints: []` — point 3 above means
-*any* vocabulary-stage failure (an empty/failed retrieval, an agent error, a
-malformed glossary row, an inner-timeout expiry) takes this one path, never a
-"generic non-null" fallback sentence. The only place either cause is visible at all
-is the `warning` log line, never surfaced to the client. If per-cause visibility
-becomes a real product need later, that is a new, separate decision (a status field
-on the response, or similar), not implied by this one.
+The cost: the vocabulary stage's *failure* mode is invisible to the API response — a
+caller cannot distinguish "the vocabulary agent errored" from "the DB read failed"
+from "the inner timeout expired" from the response alone; all of them take the one
+degrade path (point 3 of the Decision) to `term_explanation: null`, `translation_hints:
+[]`, with the specific cause visible only in the `warning` log line, never surfaced to
+the client. This is *not* the same as "no glossary term applied to this question" — an
+empty or non-matching candidate retrieval is not a failure at all: `QuestionExplainerRequest.candidates`
+may legitimately be empty (FR-4/FR-6), the agent still runs, and `term_explanation` comes
+back as a real, non-null sentence with `translation_hints: ()` (confirmed live by the
+Task 11 smoke test's clean no-match case). `null` only ever means a genuine failure
+happened, never "nothing to say." If per-failure-cause visibility becomes a real product
+need later, that is a new, separate decision (a status field on the response, or
+similar), not implied by this one.

@@ -407,9 +407,14 @@ side. See `architecture.md`'s 2026-09-23 entry for the endpoint-level detail.*
 
 *Last updated: 2026-09-23 — verified against commit `4d8d4484` (spec 0020, question vocabulary
 explanation). Added two rows: the `output_validator` citation-grounding pattern (row 29) now has
-a third and fourth occupant (`ExplanationWriterAgent` migrated off a service-level retry loop,
+a second and third occupant (`ExplanationWriterAgent` migrated off a service-level retry loop,
 `QuestionExplainerAgent` new) — confirming it's a repo-wide convention, not `CommaLabelerAgent`-
 only; and "Reciprocal Rank Fusion computed entirely in one SQL query" for
 `GlossaryReadRepository.candidates_for`, including the task-review-caught bug where an earlier
 draft dropped the full-text arm's relevance floor entirely (rather than pairing an OR-joined
 tsquery with a kept floor) and let zero-relevance rows into the fused ranking.*
+
+*Last updated: 2026-09-24 — verified against commit `4f40b96d`. Corrected a stale footer entry
+above (2026-09-23) that still said "third and fourth occupant" for the `output_validator`
+pattern after the row itself had already been fixed to "second and third" — the final-review
+scoped re-review caught the footer/row mismatch.*
