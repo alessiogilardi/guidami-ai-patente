@@ -1466,3 +1466,29 @@ fields. The first live end-to-end Telegram run (spec 0016's Definition of Done i
 open above) surfaced that the dev DB predated spec 0016's `users`/`quiz_answers` DDL:
 `db/init.sql` only runs on a fresh volume, so an existing dev volume needs those tables
 applied by hand.*
+
+*Last updated: 2026-09-23 — verified against commit `ac86ab52` (spec 0018 amendment,
+FR-8/AD-9, explanation-translator-hints plan, Tasks 1-5 plus one final-review fix wave, via
+`superpowers:subagent-driven-development` in an isolated worktree). `POST
+/explanations/translate?lang=ru` gains an optional `hints: list[{term, term_ru}]` field (max
+10 entries, each field max 80 chars) letting a caller anchor a specific Italian term to an
+already-reviewed Russian rendering instead of leaving `ExplanationTranslatorAgent` to infer it
+fresh every call. Two new domain models in `guidami_ai_patente/models/`: `TranslationHint`
+(frozen, `term`/`term_ru`, blank/whitespace-only and control-character values rejected, valid
+values stripped) and `TranslationRequest` (the translation `UseCase`'s new input —
+`ExplanationTranslationService.execute` now takes it instead of a bare `str` — `text` plus
+`hints`, rejecting two hints that share the same `term` case-insensitively). The wire schema
+(`api/schemas/explanation_translation.py`'s `TranslationHintRequest`/
+`ExplanationTranslationRequest`) duplicates both the blank/control-char and duplicate-term
+validators rather than delegating to `TranslationRequest`'s own: `TranslationRequest` itself
+has no length/duplicate guard, so without the wire-layer duplication a bad request would only
+fail deep inside the router's `TranslationRequest(...)` construction as an unhandled `500`,
+not a clean `422` (`patterns.md` records the general rule). A request with no `hints` is
+byte-identical to before this amendment on the ENTIRE rendered prompt, not just the user
+template: `ExplanationTranslatorRequest.hints_block` (a `@computed_field`) is `""` when empty
+and, when non-empty, carries the *entire* hint-honoring instruction itself (term list,
+grammatical-inflection guidance, first-occurrence «TERMINE» (resa) formatting) — the static
+`system:` block in `configs/agents/explanation_translator.yaml` was deliberately kept free of
+any hint-conditional text so it never changes per-request, hints or not. Full regression:
+default suite 1025 passed, integration suite 205 passed/2 skipped (pre-existing
+Docker-dependent skips), `ruff check`/`ruff format --check`/`pyright` all clean.*
