@@ -34,7 +34,7 @@ class ExplanationTranslatorRequest(BaseModel):
         similar (grilling round, 2026-09-23; see
         `test_the_rendered_prompt_with_no_hints_is_byte_identical_to_before_fr8`).
 
-        The leading `"\\n\\n"` when hints are present supplies the blank-line
+        The leading `"\n\n"` when hints are present supplies the blank-line
         separator from `</testo>` itself, matching the blank line already used
         elsewhere in this prompt (e.g. before `<testo>`).
         """
