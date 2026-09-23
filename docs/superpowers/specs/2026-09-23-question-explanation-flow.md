@@ -82,7 +82,7 @@ sequenceDiagram
         ES->>GRR: candidates_for("0001")
         activate GRR
         GRR->>DB: dense (embedding_3_small) + full-text (tsv_term)<br/>su glossary_entries
-        GRR-->>ES: [banchina, carreggiata] (fino a glossary_max_candidates)
+        GRR-->>ES: [banchina, carreggiata] (fino a AppConfig.glossary.max_candidates)
         deactivate GRR
         ES->>QEA: run(QuestionExplainerRequest(<br/>text, image_description, candidates=[...]))
         activate QEA

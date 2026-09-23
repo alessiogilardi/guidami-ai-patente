@@ -158,14 +158,17 @@ cancelled and the call fails exactly as it does today (`ExplanationUnavailableEr
 
 ### FR-4: Vocabulary candidates come from a hybrid retrieval over `glossary_entries`
 
-`GlossaryReadRepository` returns up to `AppConfig.glossary_max_candidates` (default
-`10`) entries as the union of two arms, deduplicated by id:
+`GlossaryReadRepository` returns up to `AppConfig.glossary.max_candidates` (default
+`10`) entries as the union of two arms, deduplicated by id — `glossary` is a dedicated
+nested `GlossaryRetrievalConfig`, mirroring `AppConfig.postgres: PostgresConnectionConfig`'s
+existing shape (bare field names, the nesting itself is the namespace), not four flat
+`glossary_*` fields on `AppConfig` directly:
 
-- **dense** — the `glossary_dense_k` (default `5`) entries nearest, by `<=>` over
+- **dense** — the `glossary.dense_k` (default `5`) entries nearest, by `<=>` over
   `embedding_3_small`, to the question's stored embedding of variant **`text`** in
   `quiz_question_embeddings` (the variant built from the question text alone, so no
   answer-derived field enters the query vector). No embedding call at runtime.
-- **full-text** — the `glossary_text_k` (default `5`) entries whose `tsv_term` matches
+- **full-text** — the `glossary.text_k` (default `5`) entries whose `tsv_term` matches
   an OR of the question's Italian lexemes, ranked by `ts_rank`. The `italian`
   configuration stems both sides, so inflected uses of a term still match.
 
@@ -442,10 +445,12 @@ the table already present and does not redefine it.
 
 ## Data Model
 
-No new table owned by this spec. `AppConfig` gains: `glossary_dense_k`,
-`glossary_text_k`, `glossary_max_candidates` (retrieval depths, FR-4) — deployment
-configuration, never judge identity, same status as `explanation_deadline_s`. No change
-to `explanation_deadline_s` itself (FR-3: concurrent, not additive).
+No new table owned by this spec. `AppConfig` gains a nested `glossary: GlossaryRetrievalConfig`
+(`entries_table`, `dense_k`, `text_k`, `max_candidates` — retrieval depths, FR-4),
+mirroring `AppConfig.postgres: PostgresConnectionConfig`'s existing shape rather than
+four flat `glossary_*` fields — deployment configuration, never judge identity, same
+status as `explanation_deadline_s`. No change to `explanation_deadline_s` itself (FR-3:
+concurrent, not additive).
 
 `QuizExplanationResponse` (API): + `term_explanation: str | None`, +
 `translation_hints: list[TranslationHintResponse]` (`{term: str, definition: str,
@@ -582,8 +587,8 @@ Verified 2026-09-21/22 on branch `feat/backend`.
   whose image has no stored description) — left to implementation.
 - [ ] **non-blocking** — `max_tokens` and model for `QuestionExplainerAgent` (proposed:
   same `openrouter/google/gemini-2.5-flash` as its siblings) — tune with real output.
-- [ ] **non-blocking** — Retrieval depths `glossary_dense_k`/`glossary_text_k`/
-  `glossary_max_candidates` (proposed 5/5/10): tune on real questions once spec 0019's
+- [ ] **non-blocking** — Retrieval depths `GlossaryRetrievalConfig.dense_k`/`text_k`/
+  `max_candidates` (proposed 5/5/10): tune on real questions once spec 0019's
   table has data; before that, every question exercises the "empty result" path
   (FR-4), which is exactly what needs to keep working regardless.
 - [ ] **non-blocking** — Whether a real-LLM integration test is added for the new
@@ -596,9 +601,9 @@ Verified 2026-09-21/22 on branch `feat/backend`.
   Telegram's 4096-character limit; the plan should confirm with a rendering test rather
   than recomputing worst-case arithmetic here.
 - [ ] **non-blocking** — Exact glossary-block heading/formatting (the `📖` marker and
-  layout above are illustrative) and whether `glossary_max_candidates`/`cited_term_numbers`
-  need their own cap on *rendered* lines, separate from the retrieval-candidate cap
-  (FR-4) — left to implementation.
+  layout above are illustrative) and whether `GlossaryRetrievalConfig.max_candidates`/
+  `cited_term_numbers` need their own cap on *rendered* lines, separate from the
+  retrieval-candidate cap (FR-4) — left to implementation.
 
 ## Follow-ups after implementation
 
@@ -618,6 +623,11 @@ Verified 2026-09-21/22 on branch `feat/backend`.
 
 ## Changelog
 
+- **2026-09-23 (even later)** — FR-4/Data Model: the four `glossary_*` fields move off
+  `AppConfig` flat and into a dedicated nested `GlossaryRetrievalConfig` (`AppConfig.glossary`),
+  mirroring `AppConfig.postgres: PostgresConnectionConfig`'s existing shape in the same
+  file — bare field names (`dense_k`, not `glossary_dense_k`), the nesting itself is the
+  namespace. No behavior change, naming/structure only.
 - **2026-09-23 (later)** — FR-8/AD-9: the glossary is now also rendered as its own
   block, separate from `term_explanation`'s prose, not only as inline `«term»`
   guillemets — partially revisiting the "structured, API-visible glossary array"
