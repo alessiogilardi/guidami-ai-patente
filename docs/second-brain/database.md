@@ -226,6 +226,24 @@ quiz_answers                                -- one row per submitted answer (spe
 ├── INDEX idx_quiz_answers_user_id (user_id)
 ├── INDEX idx_quiz_answers_quiz_id (quiz_id)
 └── INDEX idx_quiz_answers_session_id (session_id)
+
+glossary_entries                            -- precomputed Italian glossary (spec 0019 schema,
+│                                            -- spec 0020 read path); never written by
+│                                            -- guidami_ai_patente, only by the standalone
+│                                            -- src/glossary/ package (not yet built)
+├── id (PK, BIGSERIAL)
+├── source (TEXT, NOT NULL)
+├── article_number (TEXT, NOT NULL)
+├── comma_number (TEXT, NOT NULL)
+├── term (TEXT, NOT NULL)
+├── definition (TEXT, NOT NULL)
+├── term_ru (TEXT, NOT NULL)                -- translation-hint pin for POST /explanations/translate,
+│                                            -- never returned by any API field of its own
+├── embedding_3_small (VECTOR(1536), nullable)
+├── tsv_term (TSVECTOR, GENERATED ALWAYS ... STORED)  -- setweight(to_tsvector('italian', term), 'A')
+├── UNIQUE (source, article_number, comma_number, term)
+├── CHECK (num_nonnulls(embedding_3_small) > 0)
+└── INDEX idx_glossary_entries_tsv_term (tsv_term) USING GIN
 ```
 
 `articles.tsv_title` and `article_commas.tsv_text` (spec 0011, FR-1) are the
@@ -317,6 +335,15 @@ same question answered twice (same or different session) produces two rows.
 are `GROUP BY number, text` over `user_answer <> correct_answer`, ordered by
 `min(quiz_answers.id)` so each is listed once, in the order it was first missed. No
 schema change was needed for the breakdowns.
+
+`glossary_entries` (spec 0019 schema, spec 0020 read path) is read answer-blind by the
+explanation endpoint's vocabulary stage — see `docs/second-brain/patterns.md`'s RRF-in-SQL
+entry for how `GlossaryReadRepository.candidates_for` queries it (one query, both arms and
+the fusion computed in Postgres, not two queries merged in Python). `term_ru` exists purely
+as a translation-hint pin for `POST /explanations/translate` (spec 0018) — it is never
+returned by any response field of its own. No write path exists in `guidami_ai_patente`
+yet; the table is populated by a standalone `src/glossary/` package (spec 0019) that has
+not been built as of this note.
 
 No index exists on any embedding column (no ivfflat/hnsw) — vector search runs as
 an exact `<=>` scan. No index yet on the `TEXT[]` metadata columns (GIN/FTS
@@ -565,3 +592,10 @@ Strengthened the Migrations section's path-1/path-2 distinction after an agent s
 generated a plan step that ran path 1 (wipe `docker/.volumes/postgres_data`) against a
 dev stack holding real ingested data — the two paths were already documented, but not
 which one applies to an already-populated dev DB.*
+
+*Last updated: 2026-09-23 — verified against commit `4d8d4484` (spec 0020, question
+vocabulary explanation). New `glossary_entries` table (spec 0019 schema, applied here
+since spec 0020's plan landed first — `db/migrations/0019_glossary_entries.sql`,
+purely additive `IF NOT EXISTS`): one row per glossary term, dense + generated-tsvector
+full-text columns, read answer-blind by the new vocabulary explanation stage. No write
+path in this app yet — see the new paragraph above the "No index exists..." line.*
