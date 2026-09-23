@@ -25,7 +25,13 @@ def _clean_glossary(api_client: object) -> Generator[None]:
 def _seed_entry(
     *, term: str, definition: str, source: str, article_number: str, comma_number: str
 ) -> None:
-    """Inserts one glossary_entries row with no embedding (full-text-arm-only fixture)."""
+    """Inserts one glossary_entries row with a fixed, non-distinctive embedding.
+
+    Full-text-arm-only fixture: the embedding is a constant vector (not `NULL`, since
+    `embedding_3_small` participates in the table's `glossary_entries_at_least_one_vector`
+    check), shared by every row this helper seeds, so it never wins a dense-arm exact
+    match the way `_seed_entry_with_embedding`'s distinctive vector does.
+    """
     client = get_default_container().resolve(PostgresClientProvider).client
     client.execute(
         sql.SQL(

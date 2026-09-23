@@ -10,9 +10,10 @@
 -- same schema. Run the equivalence check at the bottom after applying, and treat any
 -- difference as a bug in one of the two.
 --
--- Idempotent: safe to run more than once (every statement is already IF NOT EXISTS; no
--- generated-column ADD COLUMN or named constraint is involved, so this migration needs
--- none of 0011's/0012's DO $$ guards).
+-- Idempotent: safe to run more than once (every statement is already IF NOT EXISTS; the
+-- named constraint glossary_entries_at_least_one_vector is declared inline on
+-- CREATE TABLE IF NOT EXISTS, not added after the fact via a separate ADD CONSTRAINT, so
+-- this migration still needs none of 0011's/0012's DO $$ guards).
 -- Transactional: either the whole migration applies, or none of it does.
 --
 --   psql -U "$POSTGRES__USER" -d guidami_ai_patente -f db/migrations/0019_glossary_entries.sql
