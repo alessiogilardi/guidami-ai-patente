@@ -4,7 +4,7 @@ from pydantic import BaseModel, ConfigDict
 
 
 class CitedGlossaryTerm(BaseModel):
-    """Deliberately narrower than nothing — identical shape to the API's own.
+    """A bot-local mirror of the API's `CitedGlossaryTerm` shape.
 
     Kept as its own bot-side class (not a re-import of `guidami_ai_patente`'s), matching
     this package's existing convention of never importing across the API/bot process

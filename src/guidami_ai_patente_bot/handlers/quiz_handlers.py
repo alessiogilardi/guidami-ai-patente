@@ -21,6 +21,11 @@ NEXT_CALLBACK_DATA = "quiz:next"
 # the explanation appended to it can overflow (see `handle_explain_callback`).
 _CAPTION_LIMIT = 1024
 
+# Telegram's cap on a plain text message (the non-photo counterpart of `_CAPTION_LIMIT`).
+# `term_explanation` (up to ~900 chars) plus the legal explanation plus a multi-line
+# glossary block can realistically exceed this once combined with the question text.
+_TEXT_LIMIT = 4096
+
 _NEXT_KEYBOARD = InlineKeyboardMarkup(
     [[InlineKeyboardButton("Prossima domanda ▶", callback_data=NEXT_CALLBACK_DATA)]]
 )
@@ -220,12 +225,17 @@ async def handle_explain_callback(update: Update, context: ContextTypes.DEFAULT_
     `term_explanation` (vocabulary prose), the legal explanation line, and the
     `_glossary_block` built from `translation_hints` — any section that is empty
     is simply omitted, never rendered as a blank line. The final keyboard offers
-    "🇷🇺 Traduci" only when there is text worth translating (spec 0018 bot UX),
-    and — in that same case — the full rendered body (not just the legal
+    "🇷🇺 Traduci" whenever there is text worth translating (spec 0018 bot UX): either
+    the legal stage succeeded, or — AD-1, the two stages are independent —
+    `term_explanation` is a real, non-null sentence even though the legal stage
+    itself refused. In that same case, the full rendered body (not just the legal
     explanation) is stashed on the session as `last_explanation`, together with
     `last_explanation_hints`, so a later "Traduci" tap translates everything the
     user was shown, and can forward the same hints (FR-7's "what you see is what
-    you translate" guarantee).
+    you translate" guarantee). A text (non-photo) message that would exceed
+    Telegram's 4096-char limit is edited down to just the question text, with the
+    full body sent as a separate follow-up message, mirroring the photo path's
+    existing `_CAPTION_LIMIT` overflow guard.
     """
     query = update.callback_query
     assert query is not None
@@ -269,9 +279,12 @@ async def handle_explain_callback(update: Update, context: ContextTypes.DEFAULT_
         if section
     ]
     body = "\n\n".join(sections)
-    translatable = explanation.status is ExplanationOutcome.EXPLAINED and bool(
-        explanation.explanation
-    )
+    # AD-1: the legal and vocabulary stages are independent, so a refused legal
+    # explanation (INSUFFICIENT_KNOWLEDGE) still has something worth translating
+    # whenever the vocabulary stage produced a real term_explanation.
+    translatable = (
+        explanation.status is ExplanationOutcome.EXPLAINED and bool(explanation.explanation)
+    ) or bool(explanation.term_explanation)
     final_text = f"{base_text}\n\n{body}"
     final_keyboard = _explanation_result_keyboard(number, translatable=translatable)
     if message.photo and len(final_text) > _CAPTION_LIMIT:
@@ -279,11 +292,13 @@ async def handle_explain_callback(update: Update, context: ContextTypes.DEFAULT_
         await context.bot.send_message(chat_id=update.effective_chat.id, text=body)
     elif message.photo:
         await query.edit_message_caption(caption=final_text, reply_markup=final_keyboard)
+    elif len(final_text) > _TEXT_LIMIT:
+        await query.edit_message_text(text=cast(str, base_text), reply_markup=final_keyboard)
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=body)
     else:
         await query.edit_message_text(text=final_text, reply_markup=final_keyboard)
 
     if translatable:
-        assert explanation.explanation is not None
         context.user_data["session"] = session.model_copy(
             update={
                 "last_explanation": body,
@@ -306,7 +321,12 @@ async def handle_translate_callback(update: Update, context: ContextTypes.DEFAUL
 
     A photo message's caption is never extended with the translation (Telegram's
     1024-char caption limit): on success the caption reverts to its pre-tap text
-    and the Russian text is sent as a separate message in the same chat.
+    and the Russian text is sent as a separate message in the same chat. A text
+    (non-photo) message follows the same rule once appending the translation would
+    exceed Telegram's 4096-char text limit — `pre_text` alone can already sit close
+    to that limit, and the translation roughly doubles the body — reverting the
+    message to `pre_text` and sending the translation as a separate follow-up
+    message instead, mirroring `handle_explain_callback`'s own text-overflow guard.
     """
     query = update.callback_query
     assert query is not None
@@ -354,6 +374,11 @@ async def handle_translate_callback(update: Update, context: ContextTypes.DEFAUL
     if message.photo:
         await query.edit_message_caption(caption=pre_text, reply_markup=_NEXT_KEYBOARD)
         await context.bot.send_message(chat_id=update.effective_chat.id, text=translated_line)
+        return
+
+    final_text = f"{pre_text}\n\n{translated_line}"
+    if len(final_text) > _TEXT_LIMIT:
+        await query.edit_message_text(text=cast(str, pre_text), reply_markup=_NEXT_KEYBOARD)
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=translated_line)
     else:
-        final_text = f"{pre_text}\n\n{translated_line}"
         await query.edit_message_text(text=final_text, reply_markup=_NEXT_KEYBOARD)

@@ -552,6 +552,74 @@ async def test_explain_callback_oversized_message_includes_vocabulary_and_glossa
 
 
 @pytest.mark.asyncio
+async def test_explain_callback_on_a_text_message_sends_an_oversized_explanation_separately() -> (
+    None
+):
+    """Fix #5: the same overflow guard as the photo path, for Telegram's 4096-char text limit.
+
+    `term_explanation` + the legal explanation + a glossary block can realistically push a
+    text (non-photo) message's combined body past 4096 chars; before this fix nothing
+    caught that, so `edit_message_text` would raise `BadRequest` and strand the message
+    in its loading state.
+    """
+    long_text = "Domanda? " + "x" * 4070
+    long_explanation = "y" * 100
+    double = _FlowServiceDouble(
+        question=_question(),
+        explanation=QuizExplanation(
+            status=ExplanationOutcome.EXPLAINED, explanation=long_explanation
+        ),
+    )
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(f"{EXPLAIN_CALLBACK_PREFIX}0001:1", text=long_text)
+
+    await handle_explain_callback(update, context)
+
+    first_call, second_call = query.edit_message_text.await_args_list
+    assert first_call.kwargs["text"] == f"{long_text}\n\n{messages.LOADING_EXPLANATION_LINE}"
+    assert second_call.kwargs["text"] == long_text
+    assert _button_texts(second_call.kwargs["reply_markup"]) == [
+        "🇷🇺 Traduci",
+        "Prossima domanda ▶",
+    ]
+    context.bot.send_message.assert_awaited_once()
+    assert context.bot.send_message.call_args.kwargs["text"] == long_explanation
+    assert context.user_data["session"].last_explanation == long_explanation
+
+
+@pytest.mark.asyncio
+async def test_explain_callback_oversized_text_message_includes_vocabulary_and_glossary() -> None:
+    """The text-path overflow follow-up must also carry the full body, not just the legal line."""
+    long_text = "Domanda? " + "x" * 4070
+    hints = (
+        CitedGlossaryTerm(term="banchina", definition="Parte della strada...", term_ru="обочина"),
+    )
+    double = _FlowServiceDouble(
+        question=_question(),
+        explanation=QuizExplanation(
+            status=ExplanationOutcome.EXPLAINED,
+            explanation="perché...",
+            term_explanation="Vocabolario: banchina è il margine della strada.",
+            translation_hints=hints,
+        ),
+    )
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(f"{EXPLAIN_CALLBACK_PREFIX}0001:1", text=long_text)
+
+    await handle_explain_callback(update, context)
+
+    context.bot.send_message.assert_awaited_once()
+    sent_text = context.bot.send_message.call_args.kwargs["text"]
+    assert "Vocabolario: banchina è il margine della strada." in sent_text
+    assert "perché..." in sent_text
+    assert "📖 banchina — Parte della strada..." in sent_text
+    assert context.user_data["session"].last_explanation == sent_text
+    assert context.user_data["session"].last_explanation_hints == hints
+
+
+@pytest.mark.asyncio
 async def test_explain_callback_insufficient_knowledge_shows_the_fallback_line() -> None:
     """Spec 0018 bot UX: nothing to translate, so "Traduci" is omitted, mirroring "Spiega"."""
     explanation = QuizExplanation(
@@ -568,6 +636,38 @@ async def test_explain_callback_insufficient_knowledge_shows_the_fallback_line()
     assert messages.NO_EXPLANATION_LINE in second_call.kwargs["text"]
     assert _button_texts(second_call.kwargs["reply_markup"]) == ["Prossima domanda ▶"]
     assert context.user_data["session"].last_explanation is None
+
+
+@pytest.mark.asyncio
+async def test_explain_callback_insufficient_knowledge_with_term_explanation_offers_traduci() -> (
+    None
+):
+    """Fix #6: AD-1's two stages are independent.
+
+    A refused legal stage still has a real vocabulary explanation worth translating,
+    so "Traduci" must not be omitted.
+    """
+    explanation = QuizExplanation(
+        status=ExplanationOutcome.INSUFFICIENT_KNOWLEDGE,
+        explanation=None,
+        term_explanation="Vocabolario: banchina è il margine della strada.",
+    )
+    double = _FlowServiceDouble(explanation=explanation, question=_question())
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(f"{EXPLAIN_CALLBACK_PREFIX}0001:1")
+
+    await handle_explain_callback(update, context)
+
+    _, second_call = query.edit_message_text.await_args_list
+    assert messages.NO_EXPLANATION_LINE in second_call.kwargs["text"]
+    assert "Vocabolario: banchina è il margine della strada." in second_call.kwargs["text"]
+    assert _button_texts(second_call.kwargs["reply_markup"]) == [
+        "🇷🇺 Traduci",
+        "Prossima domanda ▶",
+    ]
+    assert context.user_data["session"].last_explanation is not None
+    assert "Vocabolario" in context.user_data["session"].last_explanation
 
 
 @pytest.mark.asyncio
@@ -658,6 +758,28 @@ async def test_translate_callback_on_a_photo_message_sends_a_separate_message() 
     query.edit_message_text.assert_not_awaited()
     context.bot.send_message.assert_awaited_once()
     assert context.bot.send_message.call_args.kwargs["text"] == "🇷🇺 Перевод."
+
+
+@pytest.mark.asyncio
+async def test_translate_callback_on_text_sends_an_oversized_translation_separately() -> None:
+    """Fix #5: "Traduci" roughly doubles the body, so the text path needs the same guard."""
+    long_pre_text = "Domanda? " + "x" * 4070
+    long_translation = "y" * 100
+    double = _FlowServiceDouble(question=_question(), translation=long_translation)
+    context = _context(double)
+    context.user_data["session"] = QuizSession(
+        seed="s", index=0, current_question_number="0001", last_explanation="perché..."
+    )
+    update, query = _callback_update(f"{TRANSLATE_CALLBACK_PREFIX}0001", text=long_pre_text)
+
+    await handle_translate_callback(update, context)
+
+    assert query.edit_message_text.await_count == 2
+    _, second_call = query.edit_message_text.await_args_list
+    assert second_call.kwargs["text"] == long_pre_text
+    assert _button_texts(second_call.kwargs["reply_markup"]) == ["Prossima domanda ▶"]
+    context.bot.send_message.assert_awaited_once()
+    assert context.bot.send_message.call_args.kwargs["text"] == f"🇷🇺 {long_translation}"
 
 
 @pytest.mark.asyncio
