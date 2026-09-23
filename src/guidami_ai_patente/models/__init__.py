@@ -13,6 +13,7 @@ from .session_summary import SessionSummary
 from .session_summary_request import SessionSummaryRequest
 from .topic_count import TopicCount
 from .topic_summary import TopicSummary
+from .translation_hint import TranslationHint
 from .wrong_question import WrongQuestion
 
 __all__ = [
@@ -29,5 +30,6 @@ __all__ = [
     "SessionSummaryRequest",
     "TopicCount",
     "TopicSummary",
+    "TranslationHint",
     "WrongQuestion",
 ]
