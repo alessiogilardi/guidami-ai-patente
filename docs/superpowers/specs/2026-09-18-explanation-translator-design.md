@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0018 |
-| **Status** | draft |
+| **Status** | ready |
 | **Date** | 2026-09-18 |
 | **Discussion log** | — (brainstormed inline via `superpowers:brainstorming`, then stress-tested via `mattpocock-skills:grilling`; no separate transcript file) |
 | **Supersedes / superseded by** | — |
@@ -373,7 +373,9 @@ something to pass as a hint — that table is not this spec's concern.)
 
 ## Sign-off
 
-- **Scope approved by user:** pending
+- **Scope approved by user:** approved 2026-09-22 (FR-8/AD-9, the only remaining
+  scope — FR-1 through FR-7 were already implemented and shipped before this
+  amendment)
 - **Feasibility asserted:** by the assistant on 2026-09-18, based on
   Feasibility Evidence above (source reads via dispatched research
   subagents, not a dedicated feasibility-compiling skill)
