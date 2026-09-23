@@ -37,14 +37,42 @@ uv run pyright
 # Start Postgres + pgvector (required for ingestion; NOT required for integration
 # tests — see below)
 cd docker && docker compose up -d
-
-# Recreate DB from scratch (required after schema changes in db/init.sql)
-# Data persists to the docker/.volumes/postgres_data bind mount (gitignored) — down -v
-# has nothing left to remove, so wipe the directory instead
-docker compose -f docker/docker-compose.yml down
-rm -rf docker/.volumes/postgres_data
-docker compose -f docker/docker-compose.yml up -d
 ```
+
+`db/init.sql` only ever auto-runs against a **fresh, empty** volume (Postgres executes
+`/docker-entrypoint-initdb.d/*.sql` on first container init only, never again). It is
+mounted read-only from `../db/init.sql` in `docker/docker-compose.yml`, and data persists
+to the `docker/.volumes/postgres_data` bind mount (gitignored).
+
+**Applying a schema change** — two paths exist (`docs/second-brain/database.md`'s
+Migrations section is authoritative; this is the short version):
+
+1. **Fresh environment only** (a brand-new checkout with no data worth keeping) — edit
+   `db/init.sql`, then wipe and recreate:
+   ```bash
+   docker compose -f docker/docker-compose.yml down
+   rm -rf docker/.volumes/postgres_data
+   docker compose -f docker/docker-compose.yml up -d
+   ```
+2. **The actual dev stack** (the normal case once the project is past first setup —
+   it holds real, non-versioned data: scraped/ingested corpus, embeddings, labelings).
+   **Never run path 1 against it — that is an irreversible full wipe with no backup.**
+   Instead, write a new, idempotent script under `db/migrations/`, named after the
+   spec introducing the change (`IF EXISTS`/`IF NOT EXISTS`, guarded `DO $$` blocks
+   where no `IF NOT EXISTS` form exists — see any existing file in `db/migrations/`
+   for the shape), and apply it directly:
+   ```bash
+   docker compose -f docker/docker-compose.yml exec -T postgres \
+     psql -U "${POSTGRES_USER:-guidami}" -d "${POSTGRES_DB:-guidami_ai_patente}" \
+     -f db/migrations/<name>.sql
+   ```
+   Verify afterward that an existing table's row count is unchanged (e.g. `SELECT
+   count(*) FROM quiz_questions;` before and after) as evidence the change was
+   additive, not just that it didn't error.
+
+Also edit `db/init.sql` itself in the same change (path 2 does not replace that — a
+schema change must take **both**, per `database.md`, so a *future* fresh environment
+gets the same schema a migration just gave this one).
 
 No test ever touches this dev stack. They run against a fully isolated,
 ephemeral Postgres (`docker/docker-compose.test.yml`: separate container, separate

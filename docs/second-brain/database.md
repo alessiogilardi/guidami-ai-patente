@@ -352,7 +352,14 @@ definition of the target schema: it's mounted read-only into the Postgres
 container's `/docker-entrypoint-initdb.d/` and only runs when the data directory
 is empty, so it alone can never alter an existing database.
 
-Two paths now exist, and a schema change must take **both**:
+Two paths now exist, and a schema change must take **both** — but they are not
+interchangeable, and picking the wrong one for the dev stack is destructive and
+irreversible: **never wipe `docker/.volumes/postgres_data` (path 1) on a dev
+Postgres that already holds real, non-versioned data** (ingested corpus,
+embeddings, labelings — the normal state once a project is past first setup).
+Path 1 is only for an environment explicitly being thrown away (a brand-new
+checkout with nothing worth keeping). Applying a schema change to the dev
+stack's actual data is always path 2.
 
 1. **Fresh environment** — edit `db/init.sql`; a newly created volume gets the
    new schema automatically.
@@ -552,3 +559,9 @@ change. Note for existing dev volumes: `db/init.sql` runs only on a fresh volume
 Postgres volume created before spec 0016 has no `users`/`quiz_answers` until their
 `CREATE TABLE IF NOT EXISTS` statements are applied by hand — the API then fails every
 gated request with `relation "users" does not exist`.*
+
+*Last updated: 2026-09-23 — verified against commit `0e23259d`; no DDL change.
+Strengthened the Migrations section's path-1/path-2 distinction after an agent session
+generated a plan step that ran path 1 (wipe `docker/.volumes/postgres_data`) against a
+dev stack holding real ingested data — the two paths were already documented, but not
+which one applies to an already-populated dev DB.*
