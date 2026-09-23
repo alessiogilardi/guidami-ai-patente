@@ -7,6 +7,8 @@ from pydantic_settings import SettingsConfigDict
 
 from commons.configs import BaseConfig, PostgresConnectionConfig
 
+from .glossary_retrieval_config import GlossaryRetrievalConfig
+
 
 class AppConfig(BaseConfig):
     """Root settings for the guidami-ai-patente API service.
@@ -37,6 +39,7 @@ class AppConfig(BaseConfig):
     host: str = "0.0.0.0"
     port: int = 8000
     postgres: PostgresConnectionConfig
+    glossary: GlossaryRetrievalConfig = Field(default_factory=GlossaryRetrievalConfig)
     quiz_images_dir: Path = Path("data/quiz-images")
     agents_dir: Path = Field(
         validation_alias=AliasChoices("AGENTS_DIR", "agents_dir"),

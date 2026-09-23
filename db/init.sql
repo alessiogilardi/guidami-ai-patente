@@ -227,3 +227,30 @@ CREATE TABLE IF NOT EXISTS quiz_answers (
 CREATE INDEX IF NOT EXISTS idx_quiz_answers_user_id ON quiz_answers (user_id);
 CREATE INDEX IF NOT EXISTS idx_quiz_answers_quiz_id ON quiz_answers (quiz_id);
 CREATE INDEX IF NOT EXISTS idx_quiz_answers_session_id ON quiz_answers (session_id);
+
+-- Precomputed Italian glossary (spec 0019), read answer-blind by the vocabulary
+-- explanation stage (spec 0020). Built by the standalone src/glossary/ package, never
+-- written by guidami_ai_patente.
+CREATE TABLE IF NOT EXISTS glossary_entries (
+    id                BIGSERIAL PRIMARY KEY,
+    source            TEXT NOT NULL,
+    article_number    TEXT NOT NULL,
+    comma_number      TEXT NOT NULL,
+    term              TEXT NOT NULL,
+    definition        TEXT NOT NULL,
+    -- Consumed only as a spec 0020 translation hint (POST /explanations/translate,
+    -- spec 0018 FR-8) — never returned by any API response field of its own (FR-4).
+    term_ru           TEXT NOT NULL,
+    embedding_3_small VECTOR(1536),
+    -- Generated, never written by application code (same convention as
+    -- articles.tsv_title); band A because only the term is indexed (AD-4).
+    tsv_term          TSVECTOR GENERATED ALWAYS AS
+                          (setweight(to_tsvector('italian', term), 'A')) STORED,
+    created_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+    UNIQUE (source, article_number, comma_number, term),
+    CONSTRAINT glossary_entries_at_least_one_vector
+        CHECK (num_nonnulls(embedding_3_small) > 0)
+);
+
+CREATE INDEX IF NOT EXISTS idx_glossary_entries_tsv_term
+    ON glossary_entries USING GIN (tsv_term);

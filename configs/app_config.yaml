@@ -16,6 +16,12 @@ postgres:
   port: 5432
   dbname: guidami_ai_patente
 
+glossary:
+  entries_table: glossary_entries
+  dense_k: 5
+  text_k: 5
+  max_candidates: 10
+
 quiz_images_dir: data/quiz-images
 
 articles_table: articles
