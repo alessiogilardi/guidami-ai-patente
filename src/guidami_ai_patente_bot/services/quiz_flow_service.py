@@ -8,6 +8,7 @@ from guidami_ai_patente_bot.clients import QuizApiClient
 from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus
 from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
 from guidami_ai_patente_bot.models import (
+    CitedGlossaryTerm,
     QuizExplanation,
     QuizQuestion,
     QuizSession,
@@ -76,14 +77,18 @@ class QuizFlowService:
                 status=ExplanationOutcome.INSUFFICIENT_KNOWLEDGE, explanation=None
             )
 
-    async def handle_translation_request(self, text: str, telegram_user_id: int) -> str:
-        """Translates `text` to Russian (spec 0018 bot UX).
+    async def handle_translation_request(
+        self, text: str, telegram_user_id: int, hints: tuple[CitedGlossaryTerm, ...]
+    ) -> str:
+        """Translates `text` to Russian, forwarding `hints` (spec 0018 bot UX, spec 0020 FR-7).
 
         Takes the already-validated explanation text directly rather than a
         session/number pair, mirroring `handle_explanation_request`'s own shape:
         the caller (the "Traduci" tap handler) is responsible for staleness
         checking before this runs — by the time it is called, `text` is already
-        known to be the chat's current, previously-shown explanation.
+        known to be the chat's current, previously-shown explanation. `hints` is
+        `session.last_explanation_hints`, passed through unchanged to
+        `QuizApiClient.translate_explanation`.
 
         Raises:
             QuizApiError: The translation call failed. Left to propagate, unlike
@@ -92,7 +97,7 @@ class QuizFlowService:
                 translation and reverting its optimistic edit with a retry
                 affordance (spec 0018 bot UX).
         """
-        return await self.api.translate_explanation(telegram_user_id, text)
+        return await self.api.translate_explanation(telegram_user_id, text, hints)
 
     async def download_image(self, image_url: str, telegram_user_id: int) -> bytes:
         """Passes through to `QuizApiClient` so handlers never depend on it directly (AD-5)."""

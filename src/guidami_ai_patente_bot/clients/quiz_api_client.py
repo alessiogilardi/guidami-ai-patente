@@ -9,7 +9,12 @@ from pywire import Autowired
 from guidami_ai_patente_bot.configs import BotConfig
 from guidami_ai_patente_bot.enums import ExplanationStatus
 from guidami_ai_patente_bot.exceptions import QuizApiError, UnauthorizedError
-from guidami_ai_patente_bot.models import QuizExplanation, QuizQuestion, SessionSummary
+from guidami_ai_patente_bot.models import (
+    CitedGlossaryTerm,
+    QuizExplanation,
+    QuizQuestion,
+    SessionSummary,
+)
 
 
 class QuizApiClient:
@@ -95,20 +100,30 @@ class QuizApiClient:
         )
         return QuizExplanation.model_validate(response.json())
 
-    async def translate_explanation(self, telegram_user_id: int, text: str) -> str:
-        """Calls `POST /explanations/translate?lang=ru` (spec 0018 bot UX).
+    async def translate_explanation(
+        self, telegram_user_id: int, text: str, hints: tuple[CitedGlossaryTerm, ...] = ()
+    ) -> str:
+        """Calls `POST /explanations/translate?lang=ru` (spec 0018 bot UX, spec 0020 FR-7).
 
         Only "ru" is wired today — the bot has no language picker yet, and the
         query parameter stays hardcoded until a second language is offered.
         Passes an explicit timeout override for the same reason `label_question`
         does: the server's own deadline is longer than the client's generic default.
+
+        `hints` is forwarded as `{"term": ..., "term_ru": ...}` pairs, matching
+        `ExplanationTranslationRequest.hints`'s `TranslationHintRequest` shape exactly —
+        never `definition`, which is local render data only (FR-7) and has no
+        equivalent field on the wire schema.
         """
         response = await self._request(
             "POST",
             "/explanations/translate",
             telegram_user_id,
             params={"lang": "ru"},
-            json={"text": text},
+            json={
+                "text": text,
+                "hints": [{"term": h.term, "term_ru": h.term_ru} for h in hints],
+            },
             timeout=self.config.translation_request_timeout_seconds,
         )
         return str(response.json()["translated_text"])

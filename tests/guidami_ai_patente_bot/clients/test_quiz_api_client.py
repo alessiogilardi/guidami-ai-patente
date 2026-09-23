@@ -9,7 +9,7 @@ from guidami_ai_patente_bot.clients import QuizApiClient
 from guidami_ai_patente_bot.configs import BotConfig
 from guidami_ai_patente_bot.enums import ExplanationStatus
 from guidami_ai_patente_bot.exceptions import QuizApiError, UnauthorizedError
-from guidami_ai_patente_bot.models import TopicSummary, WrongQuestion
+from guidami_ai_patente_bot.models import CitedGlossaryTerm, TopicSummary, WrongQuestion
 
 _Handler = Callable[[httpx.Request], httpx.Response | Awaitable[httpx.Response]]
 
@@ -111,7 +111,7 @@ async def test_translate_explanation_posts_the_text_and_returns_the_translation(
         import json
 
         body = json.loads(request.content)
-        assert body == {"text": "La sosta è vietata."}
+        assert body == {"text": "La sosta è vietata.", "hints": []}
         # AD-10-style override (mirrors test_label_question_posts_to_the_label_endpoint):
         # the server's own translation_deadline_s defaults to 20.0s, so the client's
         # per-call timeout must exceed it, not fall back to request_timeout_seconds's
@@ -130,6 +130,28 @@ async def test_translate_explanation_posts_the_text_and_returns_the_translation(
     translated = await client.translate_explanation(7, "La sosta è vietata.")
 
     assert translated == "Остановка запрещена."
+
+
+@pytest.mark.asyncio
+async def test_translate_explanation_forwards_hints_as_term_term_ru_pairs() -> None:
+    """Spec 0020 FR-7: `definition` is local render data and never crosses the wire."""
+    hints = (
+        CitedGlossaryTerm(term="banchina", definition="Parte della strada...", term_ru="обочина"),
+    )
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        import json
+
+        body = json.loads(request.content)
+        assert body == {
+            "text": "La sosta è vietata.",
+            "hints": [{"term": "banchina", "term_ru": "обочина"}],
+        }
+        return httpx.Response(200, json={"translated_text": "Остановка запрещена."})
+
+    client = _client(handler)
+
+    await client.translate_explanation(7, "La sosta è vietata.", hints)
 
 
 @pytest.mark.asyncio

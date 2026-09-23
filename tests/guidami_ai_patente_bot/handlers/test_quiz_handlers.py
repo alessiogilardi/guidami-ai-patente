@@ -13,6 +13,7 @@ from guidami_ai_patente_bot.handlers.quiz_handlers import (
     ANSWER_CALLBACK_PREFIX,
     EXPLAIN_CALLBACK_PREFIX,
     TRANSLATE_CALLBACK_PREFIX,
+    _glossary_block,
     handle_answer_callback,
     handle_explain_callback,
     handle_next_callback,
@@ -22,6 +23,7 @@ from guidami_ai_patente_bot.handlers.quiz_handlers import (
     stop_command,
 )
 from guidami_ai_patente_bot.models import (
+    CitedGlossaryTerm,
     QuizExplanation,
     QuizQuestion,
     QuizSession,
@@ -51,7 +53,9 @@ class _FlowServiceDouble:
     propose_calls: list[int] = field(default_factory=list)
     handle_answer_calls: list[tuple[str, bool, int]] = field(default_factory=list)
     explanation_request_calls: list[tuple[str, int, bool]] = field(default_factory=list)
-    translate_request_calls: list[tuple[str, int]] = field(default_factory=list)
+    translate_request_calls: list[tuple[str, int, tuple[CitedGlossaryTerm, ...]]] = field(
+        default_factory=list
+    )
     registration_calls: list[int] = field(default_factory=list)
     summary: SessionSummary = field(
         default_factory=lambda: SessionSummary(
@@ -86,8 +90,10 @@ class _FlowServiceDouble:
         self.explanation_request_calls.append((number, telegram_user_id, submitted))
         return self.explanation
 
-    async def handle_translation_request(self, text: str, telegram_user_id: int) -> str:
-        self.translate_request_calls.append((text, telegram_user_id))
+    async def handle_translation_request(
+        self, text: str, telegram_user_id: int, hints: tuple[CitedGlossaryTerm, ...]
+    ) -> str:
+        self.translate_request_calls.append((text, telegram_user_id, hints))
         if self.raise_translate_error:
             raise QuizApiError("boom")
         return self.translation
@@ -164,6 +170,23 @@ def _question() -> QuizQuestion:
 
 def _button_texts(keyboard: object) -> list[str]:
     return [button.text for row in keyboard.inline_keyboard for button in row]  # type: ignore[attr-defined]
+
+
+def test_glossary_block_renders_one_line_per_hint_in_order() -> None:
+    hints = (
+        CitedGlossaryTerm(term="banchina", definition="Parte della strada...", term_ru="обочина"),
+        CitedGlossaryTerm(
+            term="carreggiata", definition="Parte della strada...", term_ru="проезжая часть"
+        ),
+    )
+    block = _glossary_block(hints)
+    lines = block.splitlines()
+    assert lines[0] == "📖 banchina — Parte della strada..."
+    assert lines[1] == "📖 carreggiata — Parte della strada..."
+
+
+def test_glossary_block_is_empty_string_for_no_hints() -> None:
+    assert _glossary_block(()) == ""
 
 
 @pytest.mark.asyncio
@@ -404,6 +427,41 @@ async def test_explain_callback_shows_a_loading_line_then_the_explanation() -> N
 
 
 @pytest.mark.asyncio
+async def test_explain_callback_renders_vocabulary_and_glossary_around_the_explanation() -> None:
+    """Spec 0020 FR-7, FR-8: three sections, in order, blank ones simply omitted."""
+    hints = (
+        CitedGlossaryTerm(term="banchina", definition="Parte della strada...", term_ru="обочина"),
+    )
+    explanation = QuizExplanation(
+        status=ExplanationOutcome.EXPLAINED,
+        explanation="perché...",
+        term_explanation="Vocabolario: banchina è il margine della strada.",
+        translation_hints=hints,
+    )
+    double = _FlowServiceDouble(explanation=explanation, question=_question())
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(
+        f"{EXPLAIN_CALLBACK_PREFIX}0001:1", text="❌ Risposta sbagliata."
+    )
+
+    await handle_explain_callback(update, context)
+
+    _, second_call = query.edit_message_text.await_args_list
+    text = second_call.kwargs["text"]
+    vocab_index = text.index("Vocabolario: banchina è il margine della strada.")
+    explanation_index = text.index("perché...")
+    glossary_index = text.index("📖 banchina — Parte della strada...")
+    assert vocab_index < explanation_index < glossary_index
+    assert context.user_data["session"].last_explanation == (
+        "Vocabolario: banchina è il margine della strada.\n\n"
+        "perché...\n\n"
+        "📖 banchina — Parte della strada..."
+    )
+    assert context.user_data["session"].last_explanation_hints == hints
+
+
+@pytest.mark.asyncio
 async def test_explain_callback_on_a_photo_message_edits_the_caption_twice() -> None:
     double = _FlowServiceDouble(question=_question())
     context = _context(double)
@@ -451,6 +509,46 @@ async def test_explain_callback_on_a_photo_sends_an_oversized_explanation_separa
     context.bot.send_message.assert_awaited_once()
     assert context.bot.send_message.call_args.kwargs["text"] == long_explanation
     assert context.user_data["session"].last_explanation == long_explanation
+
+
+@pytest.mark.asyncio
+async def test_explain_callback_oversized_message_includes_vocabulary_and_glossary() -> None:
+    """The overflow follow-up message must send the full body, not just the legal explanation.
+
+    Regression test for a fix applied in a grilling round (spec 0020, 2026-09-23): this
+    path used to send the narrower `explanation_line` as the follow-up message, so a long
+    vocabulary paragraph or glossary block was silently dropped whenever a message was
+    long enough to trigger the overflow branch — which a vocabulary section and glossary
+    block make more likely, not less.
+    """
+    long_caption = "Domanda? " + "x" * 950
+    hints = (
+        CitedGlossaryTerm(term="banchina", definition="Parte della strada...", term_ru="обочина"),
+    )
+    double = _FlowServiceDouble(
+        question=_question(),
+        explanation=QuizExplanation(
+            status=ExplanationOutcome.EXPLAINED,
+            explanation="perché...",
+            term_explanation="Vocabolario: banchina è il margine della strada.",
+            translation_hints=hints,
+        ),
+    )
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(
+        f"{EXPLAIN_CALLBACK_PREFIX}0001:1", has_photo=True, text=long_caption
+    )
+
+    await handle_explain_callback(update, context)
+
+    context.bot.send_message.assert_awaited_once()
+    sent_text = context.bot.send_message.call_args.kwargs["text"]
+    assert "Vocabolario: banchina è il margine della strada." in sent_text
+    assert "perché..." in sent_text
+    assert "📖 banchina — Parte della strada..." in sent_text
+    assert context.user_data["session"].last_explanation == sent_text
+    assert context.user_data["session"].last_explanation_hints == hints
 
 
 @pytest.mark.asyncio
@@ -510,8 +608,32 @@ async def test_translate_callback_replaces_the_text_with_a_bilingual_message() -
     assert "❌ Risposta sbagliata.\n\nperché..." in second_call.kwargs["text"]
     assert "🇷🇺 Перевод." in second_call.kwargs["text"]
     assert _button_texts(second_call.kwargs["reply_markup"]) == ["Prossima domanda ▶"]
-    assert double.translate_request_calls == [("perché...", _TELEGRAM_USER_ID)]
+    assert double.translate_request_calls == [("perché...", _TELEGRAM_USER_ID, ())]
     context.bot.send_message.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_translate_callback_forwards_the_stored_hints() -> None:
+    """Spec 0020 FR-7: the hints shown alongside the explanation travel with a "Traduci" tap."""
+    hints = (
+        CitedGlossaryTerm(term="banchina", definition="Parte della strada...", term_ru="обочина"),
+    )
+    double = _FlowServiceDouble(question=_question(), translation="Перевод.")
+    context = _context(double)
+    context.user_data["session"] = QuizSession(
+        seed="s",
+        index=0,
+        current_question_number="0001",
+        last_explanation="perché...",
+        last_explanation_hints=hints,
+    )
+    update, query = _callback_update(
+        f"{TRANSLATE_CALLBACK_PREFIX}0001", text="❌ Risposta sbagliata.\n\nperché..."
+    )
+
+    await handle_translate_callback(update, context)
+
+    assert double.translate_request_calls == [("perché...", _TELEGRAM_USER_ID, hints)]
 
 
 @pytest.mark.asyncio

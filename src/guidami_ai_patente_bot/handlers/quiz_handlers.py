@@ -9,7 +9,7 @@ from telegram.ext import ContextTypes
 from guidami_ai_patente_bot import container, messages
 from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus
 from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
-from guidami_ai_patente_bot.models import QuizSession
+from guidami_ai_patente_bot.models import CitedGlossaryTerm, QuizSession
 from guidami_ai_patente_bot.services import QuizFlowService
 
 ANSWER_CALLBACK_PREFIX = "quiz:answer:"
@@ -82,6 +82,11 @@ def _explanation_result_keyboard(number: str, *, translatable: bool) -> InlineKe
         )
     rows.append([InlineKeyboardButton("Prossima domanda ▶", callback_data=NEXT_CALLBACK_DATA)])
     return InlineKeyboardMarkup(rows)
+
+
+def _glossary_block(hints: tuple[CitedGlossaryTerm, ...]) -> str:
+    """Renders FR-8's glossary block: one '📖 term — definition' line per hint."""
+    return "\n".join(f"📖 {hint.term} — {hint.definition}" for hint in hints)
 
 
 async def _send_question(
@@ -211,10 +216,16 @@ async def handle_explain_callback(update: Update, context: ContextTypes.DEFAULT_
     Edits the message twice: an optimistic edit first (loading line, "Spiega"
     removed from the keyboard — AD-13, prevents a double-tap), then a final edit
     once `label` and `explanation` have both completed, in sequence. The final
-    keyboard offers "🇷🇺 Traduci" only when there is text worth translating (spec
-    0018 bot UX), and — in that same case — the shown Italian text is stashed on
-    the session as `last_explanation`, so a later "Traduci" tap has something to
-    send without re-parsing the message.
+    body renders up to three sections, in order (spec 0020 FR-7, FR-8):
+    `term_explanation` (vocabulary prose), the legal explanation line, and the
+    `_glossary_block` built from `translation_hints` — any section that is empty
+    is simply omitted, never rendered as a blank line. The final keyboard offers
+    "🇷🇺 Traduci" only when there is text worth translating (spec 0018 bot UX),
+    and — in that same case — the full rendered body (not just the legal
+    explanation) is stashed on the session as `last_explanation`, together with
+    `last_explanation_hints`, so a later "Traduci" tap translates everything the
+    user was shown, and can forward the same hints (FR-7's "what you see is what
+    you translate" guarantee).
     """
     query = update.callback_query
     assert query is not None
@@ -248,14 +259,24 @@ async def handle_explain_callback(update: Update, context: ContextTypes.DEFAULT_
         if explanation.status is ExplanationOutcome.INSUFFICIENT_KNOWLEDGE
         else (explanation.explanation or "")
     )
+    sections = [
+        section
+        for section in (
+            explanation.term_explanation,
+            explanation_line,
+            _glossary_block(explanation.translation_hints),
+        )
+        if section
+    ]
+    body = "\n\n".join(sections)
     translatable = explanation.status is ExplanationOutcome.EXPLAINED and bool(
         explanation.explanation
     )
-    final_text = f"{base_text}\n\n{explanation_line}"
+    final_text = f"{base_text}\n\n{body}"
     final_keyboard = _explanation_result_keyboard(number, translatable=translatable)
     if message.photo and len(final_text) > _CAPTION_LIMIT:
         await query.edit_message_caption(caption=base_text, reply_markup=final_keyboard)
-        await context.bot.send_message(chat_id=update.effective_chat.id, text=explanation_line)
+        await context.bot.send_message(chat_id=update.effective_chat.id, text=body)
     elif message.photo:
         await query.edit_message_caption(caption=final_text, reply_markup=final_keyboard)
     else:
@@ -264,7 +285,10 @@ async def handle_explain_callback(update: Update, context: ContextTypes.DEFAULT_
     if translatable:
         assert explanation.explanation is not None
         context.user_data["session"] = session.model_copy(
-            update={"last_explanation": explanation.explanation}
+            update={
+                "last_explanation": body,
+                "last_explanation_hints": explanation.translation_hints,
+            }
         )
 
 
@@ -313,7 +337,7 @@ async def handle_translate_callback(update: Update, context: ContextTypes.DEFAUL
     service = container.resolve(context, QuizFlowService)
     try:
         translated = await service.handle_translation_request(
-            session.last_explanation, update.effective_user.id
+            session.last_explanation, update.effective_user.id, session.last_explanation_hints
         )
     except QuizApiError:
         retry_keyboard = _explanation_result_keyboard(number, translatable=True)

@@ -7,6 +7,7 @@ import pytest
 from guidami_ai_patente_bot.enums import ExplanationOutcome, ExplanationStatus
 from guidami_ai_patente_bot.exceptions import QuizApiError, StaleQuestionError
 from guidami_ai_patente_bot.models import (
+    CitedGlossaryTerm,
     QuizExplanation,
     QuizQuestion,
     QuizSession,
@@ -29,7 +30,9 @@ class _ApiDouble:
     raise_explanation_error: bool = False
     translation: str = "Перевод."
     raise_translate_error: bool = False
-    translate_calls: list[tuple[int, str]] = field(default_factory=list)
+    translate_calls: list[tuple[int, str, tuple[CitedGlossaryTerm, ...]]] = field(
+        default_factory=list
+    )
     registered: bool = True
     summary: SessionSummary = field(
         default_factory=lambda: SessionSummary(
@@ -66,8 +69,10 @@ class _ApiDouble:
             raise QuizApiError("boom")
         return self.explanation
 
-    async def translate_explanation(self, telegram_user_id: int, text: str) -> str:
-        self.translate_calls.append((telegram_user_id, text))
+    async def translate_explanation(
+        self, telegram_user_id: int, text: str, hints: tuple[CitedGlossaryTerm, ...] = ()
+    ) -> str:
+        self.translate_calls.append((telegram_user_id, text, hints))
         if self.raise_translate_error:
             raise QuizApiError("boom")
         return self.translation
@@ -224,10 +229,22 @@ async def test_a_translation_request_delegates_to_the_api() -> None:
     api = _ApiDouble(question=_question(), translation="Перевод.")
     service = _service(api)
 
-    translated = await service.handle_translation_request("Testo da tradurre.", 7)
+    translated = await service.handle_translation_request("Testo da tradurre.", 7, ())
 
     assert translated == "Перевод."
-    assert api.translate_calls == [(7, "Testo da tradurre.")]
+    assert api.translate_calls == [(7, "Testo da tradurre.", ())]
+
+
+@pytest.mark.asyncio
+async def test_a_translation_request_forwards_hints() -> None:
+    """Spec 0020 FR-7: the glossary hints shown alongside the explanation are forwarded."""
+    hints = (CitedGlossaryTerm(term="banchina", definition="...", term_ru="обочина"),)
+    api = _ApiDouble(question=_question(), translation="Перевод.")
+    service = _service(api)
+
+    await service.handle_translation_request("Testo da tradurre.", 7, hints)
+
+    assert api.translate_calls == [(7, "Testo da tradurre.", hints)]
 
 
 @pytest.mark.asyncio
@@ -236,4 +253,4 @@ async def test_a_translation_api_failure_propagates() -> None:
     service = _service(api)
 
     with pytest.raises(QuizApiError):
-        await service.handle_translation_request("Testo da tradurre.", 7)
+        await service.handle_translation_request("Testo da tradurre.", 7, ())
