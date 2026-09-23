@@ -37,4 +37,4 @@ user: |
 
   <testo>
   $text
-  </testo>
+  </testo>$hints_block

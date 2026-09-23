@@ -10,6 +10,7 @@ from guidami_ai_patente.agents.explanation_translator.dto import (
     ExplanationTranslatorResponse,
 )
 from guidami_ai_patente.exceptions import ExplanationUnavailableError
+from guidami_ai_patente.models import TranslationHint, TranslationRequest
 from guidami_ai_patente.services import ExplanationTranslationService
 
 
@@ -44,10 +45,22 @@ async def test_the_translated_text_is_returned() -> None:
         responses=[ExplanationTranslatorResponse(translated_text="Перевод.")]
     )
 
-    result = await _service(translator)("Testo da tradurre.")
+    result = await _service(translator)(TranslationRequest(text="Testo da tradurre."))
 
     assert result == "Перевод."
     assert translator.requests[0].text == "Testo da tradurre."
+
+
+@pytest.mark.asyncio
+async def test_hints_are_forwarded_to_the_agent() -> None:
+    hint = TranslationHint(term="carreggiata", term_ru="проезжая часть")
+    translator = _TranslatorDouble(
+        responses=[ExplanationTranslatorResponse(translated_text="Перевод.")]
+    )
+
+    await _service(translator)(TranslationRequest(text="La carreggiata è stretta.", hints=(hint,)))
+
+    assert translator.requests[0].hints == (hint,)
 
 
 @pytest.mark.asyncio
@@ -55,7 +68,7 @@ async def test_an_agent_failure_becomes_a_503() -> None:
     translator = _TranslatorDouble(error=RuntimeError("provider is down"))
 
     with pytest.raises(ExplanationUnavailableError):
-        await _service(translator)("Testo da tradurre.")
+        await _service(translator)(TranslationRequest(text="Testo da tradurre."))
 
 
 @pytest.mark.asyncio
@@ -77,4 +90,4 @@ async def test_exceeding_the_deadline_becomes_a_503() -> None:
     service.config = _ConfigDouble(translation_deadline_s=0.01)  # type: ignore[assignment]
 
     with pytest.raises(ExplanationUnavailableError):
-        await service("Testo da tradurre.")
+        await service(TranslationRequest(text="Testo da tradurre."))

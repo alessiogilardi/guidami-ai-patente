@@ -10,19 +10,19 @@ from guidami_ai_patente.agents import ExplanationTranslatorAgent
 from guidami_ai_patente.agents.explanation_translator.dto import ExplanationTranslatorRequest
 from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente.exceptions import ExplanationUnavailableError
+from guidami_ai_patente.models import TranslationRequest
 
 logger = logging.getLogger(__name__)
 
 
 @service
-class ExplanationTranslationService(AsyncUseCase[str, str]):
-    """Translates `text` to Russian via `ExplanationTranslatorAgent` (spec 0018, FR-1, FR-7).
+class ExplanationTranslationService(AsyncUseCase[TranslationRequest, str]):
+    """Translates `request.text` to Russian via `ExplanationTranslatorAgent` (spec 0018).
 
-    Takes and returns a plain `str` rather than a one-field wrapper DTO: the service
-    reduces to exactly one input and one output, and
-    `.claude/rules/use-case-invocation.md` only asks for a request DTO once a method
-    needs more than one scalar argument (mirrors `CurrentLabelingReadService`'s own
-    `AsyncUseCase[str, CommaSelection]`).
+    Honors any `request.hints` (FR-1, FR-7, FR-8). Takes `TranslationRequest` rather
+    than a bare `str`: FR-8 added `hints` as a
+    second input, so `.claude/rules/use-case-invocation.md`'s "more than one scalar
+    argument" threshold now applies — it did not while the service only took `text`.
 
     Reuses `ExplanationUnavailableError` for both a timeout and an agent-call failure
     (spec 0018, AD-4): the meaning is identical to what `ExplanationService`/
@@ -34,11 +34,12 @@ class ExplanationTranslationService(AsyncUseCase[str, str]):
     config: Autowired[AppConfig]
     translator: Autowired[ExplanationTranslatorAgent]
 
-    async def execute(self, text: str) -> str:
-        """Translates `text` to Russian, or raises if the agent fails or times out.
+    async def execute(self, request: TranslationRequest) -> str:
+        """Translates `request.text` to Russian, or raises if the agent fails or times out.
 
         Args:
-            text: The Italian text to translate.
+            request: The Italian text to translate, plus any already-reviewed term
+                hints to honor (FR-8).
 
         Raises:
             ExplanationUnavailableError: The agent failed, or the call exceeded its
@@ -46,7 +47,9 @@ class ExplanationTranslationService(AsyncUseCase[str, str]):
         """
         try:
             async with asyncio.timeout(self.config.translation_deadline_s):
-                response = await self.translator.run(ExplanationTranslatorRequest(text=text))
+                response = await self.translator.run(
+                    ExplanationTranslatorRequest(text=request.text, hints=request.hints)
+                )
         except TimeoutError as error:
             logger.warning(
                 "Translation exceeded its %.1fs budget", self.config.translation_deadline_s

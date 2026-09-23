@@ -6,6 +6,7 @@ from fastapi import APIRouter, Depends
 from pywire import Autowired
 
 from domain.entities.users import UserEntity
+from guidami_ai_patente.models import TranslationHint, TranslationRequest
 from guidami_ai_patente.services import ExplanationTranslationService
 
 from ..dependencies.language import require_supported_language
@@ -28,11 +29,17 @@ async def translate_explanation(
     lang: _RequireSupportedLanguage,
     service: Autowired[ExplanationTranslationService],
 ) -> ExplanationTranslationResponse:
-    """Translates `request.text` to Russian (spec 0018, FR-1).
+    """Translates `request.text` to Russian, honoring any `request.hints` (FR-1, FR-8).
 
     Takes no `{number}`: the client already holds the Italian text from its own
     prior `GET /quiz-questions/{number}/explanation` call and passes it directly
     (AD-1) — this endpoint never re-reads or recomputes it.
     """
-    translated_text = await service(request.text)
+    translation_request = TranslationRequest(
+        text=request.text,
+        hints=tuple(
+            TranslationHint(term=hint.term, term_ru=hint.term_ru) for hint in request.hints
+        ),
+    )
+    translated_text = await service(translation_request)
     return ExplanationTranslationResponse(translated_text=translated_text)
