@@ -121,6 +121,19 @@ def test_a_whitespace_only_hint_term_is_a_422(
 
 
 @pytest.mark.integration
+def test_a_hint_term_with_a_control_character_is_a_422(
+    api_client: TestClient, registered_headers: dict[str, str]
+) -> None:
+    response = api_client.post(
+        "/explanations/translate?lang=ru",
+        json={"text": "Testo.", "hints": [{"term": "carreggiata\n", "term_ru": "термин"}]},
+        headers=registered_headers,
+    )
+
+    assert response.status_code == HTTPStatus.UNPROCESSABLE_ENTITY
+
+
+@pytest.mark.integration
 def test_duplicate_hint_terms_is_a_422(
     api_client: TestClient, registered_headers: dict[str, str]
 ) -> None:

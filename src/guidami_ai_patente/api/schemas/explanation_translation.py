@@ -18,9 +18,12 @@ class TranslationHintRequest(BaseModel):
     @classmethod
     def _reject_blank(cls, value: str) -> str:
         """Same rule as `TranslationHint._reject_blank` (grilling round, 2026-09-23)."""
-        if not value.strip():
+        if any(ord(char) < 0x20 for char in value):
+            raise ValueError("must not contain control characters")
+        stripped = value.strip()
+        if not stripped:
             raise ValueError("must not be blank")
-        return value
+        return stripped
 
 
 class ExplanationTranslationRequest(BaseModel):

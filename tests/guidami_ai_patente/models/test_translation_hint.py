@@ -48,3 +48,14 @@ def test_a_valid_hint_is_accepted() -> None:
 
     assert hint.term == "carreggiata"
     assert hint.term_ru == "проезжая часть"
+
+
+def test_a_term_with_surrounding_whitespace_is_stripped() -> None:
+    hint = TranslationHint(term=" carreggiata ", term_ru="х")
+
+    assert hint.term == "carreggiata"
+
+
+def test_a_term_with_a_control_character_is_rejected() -> None:
+    with pytest.raises(ValidationError):
+        TranslationHint(term="carreggiata\n", term_ru="проезжая часть")
