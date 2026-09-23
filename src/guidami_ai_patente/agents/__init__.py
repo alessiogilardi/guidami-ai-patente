@@ -2,5 +2,6 @@
 
 from .explanation_translator import ExplanationTranslatorAgent
 from .explanation_writer import ExplanationWriterAgent
+from .question_explainer import QuestionExplainerAgent
 
-__all__ = ["ExplanationTranslatorAgent", "ExplanationWriterAgent"]
+__all__ = ["ExplanationTranslatorAgent", "ExplanationWriterAgent", "QuestionExplainerAgent"]
