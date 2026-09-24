@@ -1,0 +1,19 @@
+# Standalone glossary package (see src/glossary/). Every key can be overridden by an
+# environment variable of the same name (uppercased; use "__" for nested keys).
+#
+# postgres.user / postgres.password are deliberately absent: secrets, read only from
+# POSTGRES__USER / POSTGRES__PASSWORD (env or .env).
+#
+# agents_dir is deliberately absent too: it comes from AGENTS_DIR, defaultless (AD-5).
+
+postgres:
+  host: localhost
+  port: 5432
+  dbname: guidami_ai_patente
+
+parsed_dir: data/parsed
+max_block_chars: 6000
+translation_batch_size: 10
+embedding_batch_size: 16
+glossary_entries_table: glossary_entries
+embedding_column: embedding_3_small
