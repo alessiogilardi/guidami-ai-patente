@@ -94,6 +94,43 @@ def _glossary_block(hints: tuple[CitedGlossaryTerm, ...]) -> str:
     return "\n".join(f"📖 {hint.term} — {hint.definition}" for hint in hints)
 
 
+def _chunk_text(text: str, limit: int = _TEXT_LIMIT) -> list[str]:
+    """Splits `text` into chunks of at most `limit` chars, none dropped.
+
+    Greedily packs whole blank-line-separated sections into a chunk, so a section (e.g.
+    the vocabulary paragraph, the legal explanation, one glossary line) stays intact
+    whenever it fits. A single section still longer than `limit` on its own is
+    hard-split at the character limit as a last resort — content is only ever split
+    further, never dropped.
+    """
+    sections = text.split("\n\n")
+    chunks: list[str] = []
+    current = ""
+    for section in sections:
+        candidate = f"{current}\n\n{section}" if current else section
+        if len(candidate) <= limit:
+            current = candidate
+        else:
+            if current:
+                chunks.append(current)
+                current = ""
+            if len(section) <= limit:
+                current = section
+            else:
+                chunks.extend(
+                    section[start : start + limit] for start in range(0, len(section), limit)
+                )
+    if current:
+        chunks.append(current)
+    return chunks
+
+
+async def _send_text(chat_id: int, text: str, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Sends `text` as one or more `send_message` calls, none exceeding `_TEXT_LIMIT`."""
+    for chunk in _chunk_text(text):
+        await context.bot.send_message(chat_id=chat_id, text=chunk)
+
+
 async def _send_question(
     chat_id: int, telegram_user_id: int, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -234,8 +271,12 @@ async def handle_explain_callback(update: Update, context: ContextTypes.DEFAULT_
     user was shown, and can forward the same hints (FR-7's "what you see is what
     you translate" guarantee). A text (non-photo) message that would exceed
     Telegram's 4096-char limit is edited down to just the question text, with the
-    full body sent as a separate follow-up message, mirroring the photo path's
-    existing `_CAPTION_LIMIT` overflow guard.
+    full body sent as one or more separate follow-up messages (`_send_text`),
+    mirroring the photo path's existing `_CAPTION_LIMIT` overflow guard. The
+    follow-up body itself is never dropped or hard-capped: `_send_text` chunks it
+    across multiple `send_message` calls whenever it alone exceeds 4096 chars —
+    realistic once `term_explanation` and a multi-line glossary block are both
+    present.
     """
     query = update.callback_query
     assert query is not None
@@ -289,12 +330,12 @@ async def handle_explain_callback(update: Update, context: ContextTypes.DEFAULT_
     final_keyboard = _explanation_result_keyboard(number, translatable=translatable)
     if message.photo and len(final_text) > _CAPTION_LIMIT:
         await query.edit_message_caption(caption=base_text, reply_markup=final_keyboard)
-        await context.bot.send_message(chat_id=update.effective_chat.id, text=body)
+        await _send_text(update.effective_chat.id, body, context)
     elif message.photo:
         await query.edit_message_caption(caption=final_text, reply_markup=final_keyboard)
     elif len(final_text) > _TEXT_LIMIT:
         await query.edit_message_text(text=cast(str, base_text), reply_markup=final_keyboard)
-        await context.bot.send_message(chat_id=update.effective_chat.id, text=body)
+        await _send_text(update.effective_chat.id, body, context)
     else:
         await query.edit_message_text(text=final_text, reply_markup=final_keyboard)
 
@@ -327,6 +368,19 @@ async def handle_translate_callback(update: Update, context: ContextTypes.DEFAUL
     to that limit, and the translation roughly doubles the body — reverting the
     message to `pre_text` and sending the translation as a separate follow-up
     message instead, mirroring `handle_explain_callback`'s own text-overflow guard.
+    Every follow-up translation message goes through `_send_text`, so a translation
+    long enough to exceed 4096 chars on its own is chunked across several
+    `send_message` calls rather than dropped.
+
+    `pre_text` itself is not bounded by this handler — it is whatever the pre-tap
+    message already held, which spec 0020's `handle_explain_callback` guarantees
+    stays within Telegram's 4096-char limit — but the *loading* edit appends
+    `LOADING_TRANSLATION_LINE` on top of it, which can push a `pre_text` sitting
+    close to that limit over it. That combined edit is size-checked the same way:
+    when it would overflow, the loading line is dropped and the edit carries
+    `pre_text` alone (still swapping in `_NEXT_KEYBOARD` to disable the button and
+    prevent a double-tap, AD-13) — the loading indicator is decorative, so it is the
+    one piece of content this handler is allowed to simply omit rather than split.
     """
     query = update.callback_query
     assert query is not None
@@ -351,8 +405,10 @@ async def handle_translate_callback(update: Update, context: ContextTypes.DEFAUL
     loading_text = f"{pre_text}\n\n{messages.LOADING_TRANSLATION_LINE}"
     if message.photo:
         await query.edit_message_caption(caption=loading_text, reply_markup=_NEXT_KEYBOARD)
-    else:
+    elif len(loading_text) <= _TEXT_LIMIT:
         await query.edit_message_text(text=loading_text, reply_markup=_NEXT_KEYBOARD)
+    else:
+        await query.edit_message_text(text=cast(str, pre_text), reply_markup=_NEXT_KEYBOARD)
 
     service = container.resolve(context, QuizFlowService)
     try:
@@ -373,12 +429,12 @@ async def handle_translate_callback(update: Update, context: ContextTypes.DEFAUL
     translated_line = f"🇷🇺 {translated}"
     if message.photo:
         await query.edit_message_caption(caption=pre_text, reply_markup=_NEXT_KEYBOARD)
-        await context.bot.send_message(chat_id=update.effective_chat.id, text=translated_line)
+        await _send_text(update.effective_chat.id, translated_line, context)
         return
 
     final_text = f"{pre_text}\n\n{translated_line}"
     if len(final_text) > _TEXT_LIMIT:
         await query.edit_message_text(text=cast(str, pre_text), reply_markup=_NEXT_KEYBOARD)
-        await context.bot.send_message(chat_id=update.effective_chat.id, text=translated_line)
+        await _send_text(update.effective_chat.id, translated_line, context)
     else:
         await query.edit_message_text(text=final_text, reply_markup=_NEXT_KEYBOARD)

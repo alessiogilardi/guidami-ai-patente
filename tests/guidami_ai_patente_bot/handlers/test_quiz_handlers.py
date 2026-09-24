@@ -620,6 +620,46 @@ async def test_explain_callback_oversized_text_message_includes_vocabulary_and_g
 
 
 @pytest.mark.asyncio
+async def test_explain_callback_oversized_follow_up_is_split_across_several_messages() -> None:
+    """A body over 4096 chars on its own must be delivered in full, chunked, never dropped.
+
+    Reproduces the gap left by the prior fix wave: `handle_explain_callback`'s overflow
+    follow-up used a single unguarded `send_message` call, so a long `term_explanation`
+    plus the legal explanation plus a glossary block (realistic combined sizes per the
+    module-level `_TEXT_LIMIT` comment) could itself exceed Telegram's 4096-char text-
+    message limit and raise `BadRequest`.
+    """
+    term_explanation = "V" * 2000
+    explanation_text = "E" * 2000
+    hint = CitedGlossaryTerm(term="termine", definition="D" * 200, term_ru="термин")
+    glossary_block = _glossary_block((hint,))
+    body = "\n\n".join([term_explanation, explanation_text, glossary_block])
+    assert len(body) > 4096, "the test body must actually require chunking"
+
+    double = _FlowServiceDouble(
+        question=_question(),
+        explanation=QuizExplanation(
+            status=ExplanationOutcome.EXPLAINED,
+            explanation=explanation_text,
+            term_explanation=term_explanation,
+            translation_hints=(hint,),
+        ),
+    )
+    context = _context(double)
+    context.user_data["session"] = QuizSession(seed="s", index=0, current_question_number="0001")
+    update, query = _callback_update(f"{EXPLAIN_CALLBACK_PREFIX}0001:1", text="Domanda?")
+
+    await handle_explain_callback(update, context)
+
+    sent_texts = [call.kwargs["text"] for call in context.bot.send_message.await_args_list]
+    assert len(sent_texts) > 1, "a body this long must be split across multiple send_message calls"
+    assert all(len(text) <= 4096 for text in sent_texts)
+    assert "\n\n".join(sent_texts) == body, "no content may be dropped, only split further"
+    _, second_call = query.edit_message_text.await_args_list
+    assert second_call.kwargs["text"] == "Domanda?"
+
+
+@pytest.mark.asyncio
 async def test_explain_callback_insufficient_knowledge_shows_the_fallback_line() -> None:
     """Spec 0018 bot UX: nothing to translate, so "Traduci" is omitted, mirroring "Spiega"."""
     explanation = QuizExplanation(
@@ -780,6 +820,39 @@ async def test_translate_callback_on_text_sends_an_oversized_translation_separat
     assert _button_texts(second_call.kwargs["reply_markup"]) == ["Prossima domanda ▶"]
     context.bot.send_message.assert_awaited_once()
     assert context.bot.send_message.call_args.kwargs["text"] == f"🇷🇺 {long_translation}"
+
+
+@pytest.mark.asyncio
+async def test_translate_callback_loading_edit_never_exceeds_the_text_limit() -> None:
+    """The loading edit itself must respect 4096 chars, not just the final edit.
+
+    `pre_text` can already sit at Telegram's 4096-char limit (a non-overflowing
+    `/explanation` message, per `handle_explain_callback`'s own guard). Appending
+    `LOADING_TRANSLATION_LINE` to that would push the *loading* `edit_message_text`
+    call itself past the limit — a gap the prior fix wave's guard (on the final edit
+    only) never covered. The loading line must be dropped rather than sent oversized.
+    """
+    long_pre_text = "Domanda? " + "x" * 4087
+    assert len(long_pre_text) == 4096, "pre_text must sit exactly at the limit"
+    loading_text = f"{long_pre_text}\n\n{messages.LOADING_TRANSLATION_LINE}"
+    assert len(loading_text) > 4096, "combining with the loading line must actually overflow"
+
+    double = _FlowServiceDouble(question=_question(), translation="Перевод.")
+    context = _context(double)
+    context.user_data["session"] = QuizSession(
+        seed="s", index=0, current_question_number="0001", last_explanation="perché..."
+    )
+    update, query = _callback_update(f"{TRANSLATE_CALLBACK_PREFIX}0001", text=long_pre_text)
+
+    await handle_translate_callback(update, context)
+
+    for call in query.edit_message_text.await_args_list:
+        assert len(call.kwargs["text"]) <= 4096
+    first_call = query.edit_message_text.await_args_list[0]
+    assert first_call.kwargs["text"] == long_pre_text, (
+        "the loading line must be dropped, not appended, once it would overflow"
+    )
+    assert _button_texts(first_call.kwargs["reply_markup"]) == ["Prossima domanda ▶"]
 
 
 @pytest.mark.asyncio
