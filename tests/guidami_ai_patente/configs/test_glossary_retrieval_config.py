@@ -1,0 +1,15 @@
+"""GlossaryRetrievalConfig.embedding_column — which glossary_entries vector column to read.
+
+AD-4: a new embedding model is a new embedding_* column, chosen via config.
+"""
+
+from guidami_ai_patente.configs.glossary_retrieval_config import GlossaryRetrievalConfig
+
+
+def test_embedding_column_defaults_to_embedding_3_small() -> None:
+    assert GlossaryRetrievalConfig().embedding_column == "embedding_3_small"
+
+
+def test_embedding_column_is_configurable() -> None:
+    config = GlossaryRetrievalConfig(embedding_column="embedding_ada_002")
+    assert config.embedding_column == "embedding_ada_002"

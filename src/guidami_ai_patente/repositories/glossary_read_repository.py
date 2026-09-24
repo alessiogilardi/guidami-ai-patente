@@ -21,10 +21,11 @@ _QUERY = sql.SQL(
     "             FROM unnest(to_tsvector('italian', %s)) AS lexeme), '')) AS tsquery"
     "), "
     "dense AS ("
-    "  SELECT g.id, ROW_NUMBER() OVER (ORDER BY g.embedding_3_small <=> p.embedding, g.id) AS rnk "
+    "  SELECT g.id, "
+    "         ROW_NUMBER() OVER (ORDER BY g.{embedding_column} <=> p.embedding, g.id) AS rnk "
     "  FROM {table} g, params p "
-    "  WHERE p.embedding IS NOT NULL AND g.embedding_3_small IS NOT NULL "
-    "  ORDER BY g.embedding_3_small <=> p.embedding, g.id LIMIT %s"
+    "  WHERE p.embedding IS NOT NULL AND g.{embedding_column} IS NOT NULL "
+    "  ORDER BY g.{embedding_column} <=> p.embedding, g.id LIMIT %s"
     "), "
     "text_matches AS ("
     "  SELECT g.id, ROW_NUMBER() OVER (ORDER BY ts_rank(g.tsv_term, p.tsquery) DESC, g.id) AS rnk "
@@ -67,7 +68,9 @@ class GlossaryReadRepository:
         and testable.
         """
         query = _QUERY.format(
-            table=sql.Identifier(self.config.glossary.entries_table), columns=_COLUMNS
+            table=sql.Identifier(self.config.glossary.entries_table),
+            columns=_COLUMNS,
+            embedding_column=sql.Identifier(self.config.glossary.embedding_column),
         )
         rows = self.postgres.client.fetch(
             query,

@@ -14,6 +14,15 @@ class GlossaryRetrievalConfig(BaseModel):
     model_config = ConfigDict(frozen=True)
 
     entries_table: str = "glossary_entries"
+    embedding_column: str = Field(
+        default="embedding_3_small",
+        description=(
+            "Which glossary_entries vector column the dense arm reads (AD-4: a new "
+            "embedding model is a new embedding_* column, chosen here without a code "
+            "change). Must match the build side's GlossaryConfig.embedding_column — "
+            "the column build-glossary actually wrote to."
+        ),
+    )
     dense_k: int = Field(
         default=5, gt=0, description="Dense arm depth for glossary retrieval (FR-4)."
     )
