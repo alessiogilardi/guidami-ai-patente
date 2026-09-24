@@ -237,8 +237,9 @@ glossary_entries                            -- precomputed Italian glossary (spe
 ├── comma_number (TEXT, NOT NULL)
 ├── term (TEXT, NOT NULL)
 ├── definition (TEXT, NOT NULL)
-├── term_ru (TEXT, NOT NULL)                -- translation-hint pin for POST /explanations/translate,
-│                                            -- never returned by any API field of its own
+├── term_ru (TEXT, nullable)                 -- translation-hint pin for POST /explanations/translate;
+│                                            -- only ever written by translate-glossary-terms's
+│                                            -- separate UPDATE (build-glossary always writes NULL)
 ├── embedding_3_small (VECTOR(1536), nullable)
 ├── tsv_term (TSVECTOR, GENERATED ALWAYS ... STORED)  -- setweight(to_tsvector('italian', term), 'A')
 ├── UNIQUE (source, article_number, comma_number, term)
@@ -599,3 +600,13 @@ since spec 0020's plan landed first — `db/migrations/0019_glossary_entries.sql
 purely additive `IF NOT EXISTS`): one row per glossary term, dense + generated-tsvector
 full-text columns, read answer-blind by the new vocabulary explanation stage. No write
 path in this app yet — see the new paragraph above the "No index exists..." line.*
+
+*Last updated: 2026-09-24 — verified against commit `810b6c6b` (spec 0019 infra follow-ups).
+`glossary_entries.term_ru` becomes nullable (new `db/migrations/0020_glossary_term_ru_nullable.sql`,
+idempotent `DROP NOT NULL`, plus the matching `db/init.sql` edit) — `build-glossary` (a
+separate, not-yet-built package) always writes `term_ru = NULL`; only the standalone
+`translate-glossary-terms` script ever fills it in later, via a plain `UPDATE` (AD-11). Not
+yet applied to the dev stack's existing `glossary_entries` table — see the Migrations section's
+path-2 note; the table is currently empty, so no data is at risk either way. Removed the
+"never returned by any API field of its own" comment on `term_ru`, which was already stale:
+`CitedGlossaryTermResponse` (spec 0020) returns it.*
