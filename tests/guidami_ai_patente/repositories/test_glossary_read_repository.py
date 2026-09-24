@@ -23,7 +23,13 @@ def _clean_glossary(api_client: object) -> Generator[None]:
 
 
 def _seed_entry(
-    *, term: str, definition: str, source: str, article_number: str, comma_number: str
+    *,
+    term: str,
+    definition: str,
+    source: str,
+    article_number: str,
+    comma_number: str,
+    term_ru: str | None = "x",
 ) -> None:
     """Inserts one glossary_entries row with a fixed, non-distinctive embedding.
 
@@ -31,6 +37,10 @@ def _seed_entry(
     `embedding_3_small` participates in the table's `glossary_entries_at_least_one_vector`
     check), shared by every row this helper seeds, so it never wins a dense-arm exact
     match the way `_seed_entry_with_embedding`'s distinctive vector does.
+
+    `term_ru` defaults to a placeholder non-blank value; a test seeding `term_ru=None`
+    covers the actual bug this fixes (spec 0019 AD-11: `build-glossary` never
+    translates, so a row may legitimately have no Russian term yet).
     """
     client = get_default_container().resolve(PostgresClientProvider).client
     client.execute(
@@ -39,7 +49,7 @@ def _seed_entry(
             "(source, article_number, comma_number, term, definition, term_ru, embedding_3_small) "
             "VALUES (%s, %s, %s, %s, %s, %s, %s::vector)"
         ),
-        [source, article_number, comma_number, term, definition, "x", [0.1] * 1536],
+        [source, article_number, comma_number, term, definition, term_ru, [0.1] * 1536],
     )
 
 
@@ -85,6 +95,37 @@ def test_the_full_text_arm_finds_an_inflected_form(
     candidates = repository.candidates_for("Le carreggiate a doppio senso.", embedding=None)
 
     assert any(c.term == "carreggiata" for c in candidates)
+
+
+@pytest.mark.integration
+def test_a_row_with_no_russian_term_is_returned_without_raising(
+    postgres_test_config: PostgresConnectionConfig,
+) -> None:
+    """Spec 0019 AD-11 regression.
+
+    `build-glossary` never translates — only `translate-glossary-terms`'s separate
+    pass does — so `glossary_entries.term_ru` can legitimately be `NULL` on the row
+    `_row_to_candidate` maps. Before this fix, building `GlossaryCandidate(term_ru=
+    None)` raised a `pydantic.ValidationError` here, inside `ExplanationService`'s
+    vocabulary-stage `try` block, which the broad `except Exception` there silently
+    swallowed as "Vocabulary stage failed" — dropping every citation for the request.
+    This asserts the mapping itself no longer raises and preserves the `None`.
+    """
+    _seed_entry(
+        term="carreggiata",
+        definition="...",
+        source="cds",
+        article_number="3",
+        comma_number="1",
+        term_ru=None,
+    )
+
+    repository = get_default_container().resolve(GlossaryReadRepository)
+    candidates = repository.candidates_for("Le carreggiate a doppio senso.", embedding=None)
+
+    matches = [c for c in candidates if c.term == "carreggiata"]
+    assert len(matches) == 1
+    assert matches[0].term_ru is None
 
 
 @pytest.mark.integration

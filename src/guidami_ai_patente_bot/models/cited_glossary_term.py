@@ -12,6 +12,11 @@ class CitedGlossaryTerm(BaseModel):
     `CitedGlossaryTerm`, not `TranslationHint`: this project has no bot-side
     `TranslationHint` at all (spec 0018's hints are constructed inline, as a plain dict,
     at the point `QuizApiClient.translate_explanation` forwards them — Task 10).
+    `term_ru` may be `None`: `build-glossary` never translates, only
+    `translate-glossary-terms`'s separate pass does, so the API can legitimately send
+    a citation with no Russian rendering yet (spec 0019 AD-11) — `QuizApiClient`
+    forwards it, and `translate_explanation` omits such a hint rather than sending it
+    on the wire.
     """
 
     model_config = ConfigDict(frozen=True)

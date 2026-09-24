@@ -232,6 +232,47 @@ async def test_cited_terms_are_resolved_into_translation_hints() -> None:
     )
 
 
+@pytest.mark.asyncio
+async def test_a_null_term_ru_candidate_still_resolves_into_a_translation_hint() -> None:
+    """Spec 0019 AD-11 regression, paired with the repository-level test.
+
+    Before the fix, `GlossaryCandidate(term_ru=None)` (which `_row_to_candidate` builds
+    for a row `translate-glossary-terms` has not reached yet) raised a
+    `pydantic.ValidationError` when `_deduplicated_hints` rebuilt it as a
+    `CitedGlossaryTerm` — caught by the broad `except Exception` around the whole
+    vocabulary stage and logged as "Vocabulary stage failed", silently dropping the
+    citation. This asserts the stage completes normally and the hint carries
+    `term_ru=None` through, instead of degrading.
+    """
+    candidate = GlossaryCandidate(
+        id=1,
+        source="cds",
+        article_number="3",
+        comma_number="1",
+        term="carreggiata",
+        definition="Parte della strada...",
+        term_ru=None,
+    )
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(
+            explanation="La «carreggiata» è...", cited_term_numbers=[1]
+        )
+    )
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        glossary=_GlossaryDouble(candidates=[candidate]),
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.term_explanation == "La «carreggiata» è..."
+    assert explanation.translation_hints == (
+        CitedGlossaryTerm(term="carreggiata", definition="Parte della strada...", term_ru=None),
+    )
+
+
 def _candidate(ordinal: int, *, term: str | None = None) -> GlossaryCandidate:
     return GlossaryCandidate(
         id=ordinal,

@@ -43,6 +43,9 @@ class CitedGlossaryTermResponse(BaseModel):
     carries `definition`, which is rendered by the bot as its own glossary-block line,
     separate from `term_explanation`'s prose (FR-8); `term`/`term_ru` are also what a
     later `POST /explanations/translate` call pins the term to (spec 0018 FR-8/AD-9).
+    `term_ru` may be `None`: `build-glossary` never translates, only
+    `translate-glossary-terms`'s separate pass does, so a cited term can legitimately
+    have no Russian rendering yet (spec 0019 AD-11).
     """
 
     term: str
