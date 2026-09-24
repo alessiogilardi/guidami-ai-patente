@@ -238,9 +238,9 @@ CREATE TABLE IF NOT EXISTS glossary_entries (
     comma_number      TEXT NOT NULL,
     term              TEXT NOT NULL,
     definition        TEXT NOT NULL,
-    -- Consumed only as a spec 0020 translation hint (POST /explanations/translate,
-    -- spec 0018 FR-8) — never returned by any API response field of its own (FR-4).
-    term_ru           TEXT NOT NULL,
+    -- Written only by translate-glossary-terms (FR-5), never by initial insert.
+    -- Consumed as a spec 0020 translation hint (POST /explanations/translate, spec 0018 FR-8).
+    term_ru           TEXT,
     embedding_3_small VECTOR(1536),
     -- Generated, never written by application code (same convention as
     -- articles.tsv_title); band A because only the term is indexed (AD-4).
