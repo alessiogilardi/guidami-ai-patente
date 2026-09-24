@@ -8,7 +8,7 @@ from guidami_ai_patente.repositories import AgentConfigRepository
 
 from .dto import ExplanationTranslatorRequest, ExplanationTranslatorResponse
 
-_AGENT_NAME = "explanation_translator"
+_AGENT_NAME = "explanation_translator.ru"
 
 
 @agent
@@ -30,7 +30,7 @@ class ExplanationTranslatorAgent(
     tracker_provider: Autowired[LlmCallTrackerProvider]
 
     def __init__(self) -> None:
-        """Builds the underlying `pydantic_ai` agent from `explanation_translator.yaml`."""
+        """Builds the underlying `pydantic_ai` agent from `explanation_translator.ru.yaml`."""
         super().__init__(
             config=self.agent_configs.load(_AGENT_NAME),
             provider=self.open_router.provider,

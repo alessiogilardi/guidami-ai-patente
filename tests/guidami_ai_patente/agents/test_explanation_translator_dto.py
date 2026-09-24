@@ -98,11 +98,13 @@ def test_the_rendered_prompt_with_no_hints_is_byte_identical_to_before_fr8(
 ) -> None:
     """Regression for FR-8's backward-compatibility clause (grilling round, 2026-09-23).
 
-    Renders the *real* `configs/agents/explanation_translator.yaml` `user` template —
+    Renders the *real* `configs/agents/explanation_translator.ru.yaml` `user` template —
     not a copy — so a future edit to that file that reintroduces a stray blank line is
     caught here, not just by reading the YAML.
     """
-    config = get_default_container().resolve(AgentConfigRepository).load("explanation_translator")
+    config = (
+        get_default_container().resolve(AgentConfigRepository).load("explanation_translator.ru")
+    )
     renderer = PromptRenderer(config.user)
     request = ExplanationTranslatorRequest(text="La sosta è vietata.")
 
@@ -118,11 +120,13 @@ def test_the_system_prompt_is_unchanged_regardless_of_hints() -> None:
 
     The earlier byte-identity regression only covered the *user* prompt, letting the
     *system* prompt drift when FR-8 was implemented. Loads the real
-    `configs/agents/explanation_translator.yaml` and asserts its
+    `configs/agents/explanation_translator.ru.yaml` and asserts its
     `system` block is exactly the pre-FR-8 text — hints are honored entirely through
     `hints_block` in the user message, never through a standing system-prompt rule.
     """
-    config = get_default_container().resolve(AgentConfigRepository).load("explanation_translator")
+    config = (
+        get_default_container().resolve(AgentConfigRepository).load("explanation_translator.ru")
+    )
 
     assert config.system == (
         "Sei un traduttore professionista specializzato in testi italiani sul Codice della\n"
