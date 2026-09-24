@@ -3,7 +3,7 @@
 AD-4: a new embedding model is a new embedding_* column, chosen via config.
 """
 
-from guidami_ai_patente.configs.glossary_retrieval_config import GlossaryRetrievalConfig
+from guidami_ai_patente.configs import GlossaryRetrievalConfig
 
 
 def test_embedding_column_defaults_to_embedding_3_small() -> None:

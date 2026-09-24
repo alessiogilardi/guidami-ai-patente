@@ -32,6 +32,6 @@ prompt targets one language as its output carries the suffix.
   language would add a second config file, and only then decide whether the agent needs
   a language parameter.
 - **A rename is a refactor commit**, separate from feature work. It changes the file
-  name, the `_AGENT_NAME` constant and — because `config.name` becomes
-  `LlmCallLogEntity.caller` — the caller recorded in `llm_call_logs` from that point on
-  (older rows keep the previous caller).
+  name and the `_AGENT_NAME` constant. The caller recorded in `llm_call_logs` is
+  determined by the YAML's own `name:` field (independent of the filename) and does
+  not change unless the YAML is also edited.
