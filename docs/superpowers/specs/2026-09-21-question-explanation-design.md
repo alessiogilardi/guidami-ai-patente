@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0020 |
-| **Status** | draft |
+| **Status** | implemented |
 | **Date** | 2026-09-21/22 |
 | **Discussion log** | — (brainstormed inline via `superpowers:brainstorming`, then stress-tested via `mattpocock-skills:grilling`; no separate transcript file) |
 | **Supersedes / superseded by** | — |
@@ -262,33 +262,18 @@ same order `cited_term_numbers` (FR-6) lists them. No block is rendered when
 `translation_hints` is empty (`term_explanation: null`, or a prose with no cited
 term).
 
-QUI forse ha senso rivedere un po' il data model di storage, se salvare nella cache non solo l'ultima ma tutte legate all'id del messaggio
-in un dizionario e salvare
-```python
-class TermExplanation(BaseModel):
-    term: str
-    term_ru: str
-    definition: str
-
-class QuestionExplanation(BaseModel):
-    text: str # Generato da LLM
-    terms: list[TermExplanation]
-    
-class QuizExplanation(BaseModel): 
-    question_explanation: QuestionExplanation
-    answer_explattion: str # Generato da LLM
-
-bot_cache_state: dict[int, QuizExplanation] = {}
-
-state[1] = {
-    "question_explanation": {
-        "text": "...", 
-        "terms": [{"term": "...", "term_ru": "...", "explanation": "..."}, ...]
-    },
-    "answer_explanation": "..."
-}
-
-```
+**Resolved 2026-09-24 (post-implementation).** An earlier author note here questioned
+whether `QuizSession`'s storage should widen from a single `last_explanation`/
+`last_explanation_hints` pair to a `dict[message_id, QuizExplanation]` keyed by message,
+so more than one message's explanation could stay cached and translatable at once.
+Deferred, not adopted: `QuizSession` (spec 0015/0016) already models one "current"
+question per chat session, and every other piece of per-question state on it
+(`last_explanation` included) follows that same singular shape — widening only the
+explanation cache to a multi-message dictionary would be a standalone data-model change
+with no other part of the session driving it, and no observed need (a candidate acts on
+one "Spiega"/"Traduci" pair at a time, for the question currently on screen). Revisit
+only if a real multi-message use case shows up; the as-shipped singular-field model is
+what Tasks 9-10 implemented and Task 11's smoke test verified end to end.
 
 ## Non-Goals
 
@@ -616,13 +601,22 @@ Verified 2026-09-21/22 on branch `feat/backend`.
 
 ## Sign-off
 
-- **Scope approved by user:** pending
+- **Scope approved by user:** 2026-09-24 — approved after implementation (all 11 plan
+  tasks landed, task-reviewed, final whole-branch-reviewed with one fix wave and a
+  scoped re-review, merged into `feat/backend`; ADR 0034 and ADR 0035 accepted in the
+  same session)
 - **Feasibility asserted:** by the assistant on 2026-09-21/22, based on the
   Feasibility Evidence above (source reads and a dispatched read-only research
   subagent, not a dedicated feasibility-compiling skill)
+- **Definition of Done verified:** 2026-09-24 — full suite green post-merge (1065
+  passed default, 217 passed/2 skipped integration), real-model smoke test confirmed
+  both the matching-glossary-term and clean-no-match cases end to end (Task 11)
 
 ## Changelog
 
+- **2026-09-24** — Status `draft` → `implemented`, sign-off recorded (see above). FR-8's
+  stray author note on an alternative multi-message storage shape resolved: deferred,
+  not adopted — see FR-8's own "Resolved 2026-09-24" paragraph for the reasoning.
 - **2026-09-23 (even later)** — FR-4/Data Model: the four `glossary_*` fields move off
   `AppConfig` flat and into a dedicated nested `GlossaryRetrievalConfig` (`AppConfig.glossary`),
   mirroring `AppConfig.postgres: PostgresConnectionConfig`'s existing shape in the same
