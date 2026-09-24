@@ -41,3 +41,12 @@ def test_a_valid_term_is_accepted() -> None:
         term_ru="проезжая часть",
     )
     assert term.term_ru == "проезжая часть"
+
+
+def test_a_null_term_ru_is_accepted() -> None:
+    term = CitedGlossaryTerm(
+        term="carreggiata",
+        definition="Parte della strada destinata alla circolazione dei veicoli.",
+        term_ru=None,
+    )
+    assert term.term_ru is None

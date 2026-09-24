@@ -47,7 +47,7 @@ class CitedGlossaryTermResponse(BaseModel):
 
     term: str
     definition: str
-    term_ru: str
+    term_ru: str | None
 
 
 class QuizExplanationResponse(BaseModel):

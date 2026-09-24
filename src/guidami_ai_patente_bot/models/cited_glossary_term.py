@@ -18,4 +18,4 @@ class CitedGlossaryTerm(BaseModel):
 
     term: str
     definition: str
-    term_ru: str
+    term_ru: str | None

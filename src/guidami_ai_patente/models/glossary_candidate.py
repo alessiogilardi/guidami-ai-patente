@@ -17,4 +17,4 @@ class GlossaryCandidate(BaseModel):
     comma_number: str
     term: str
     definition: str
-    term_ru: str
+    term_ru: str | None

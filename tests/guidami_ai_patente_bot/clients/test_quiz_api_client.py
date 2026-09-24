@@ -155,6 +155,24 @@ async def test_translate_explanation_forwards_hints_as_term_term_ru_pairs() -> N
 
 
 @pytest.mark.asyncio
+async def test_translate_explanation_omits_hints_with_no_term_ru() -> None:
+    hints = (
+        CitedGlossaryTerm(term="banchina", definition="Parte della strada...", term_ru="обочина"),
+        CitedGlossaryTerm(term="carreggiata", definition="Parte della strada...", term_ru=None),
+    )
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        import json
+
+        body = json.loads(request.content)
+        assert body["hints"] == [{"term": "banchina", "term_ru": "обочина"}]
+        return httpx.Response(200, json={"translated_text": "Остановка запрещена."})
+
+    client = _client(handler)
+    await client.translate_explanation(1, "La sosta è vietata.", hints=hints)
+
+
+@pytest.mark.asyncio
 async def test_get_explanation_parses_the_response_ignoring_extra_fields() -> None:
     async def handler(request: httpx.Request) -> httpx.Response:
         assert request.url.params["submitted"] == "true"

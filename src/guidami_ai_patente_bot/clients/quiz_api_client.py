@@ -113,7 +113,10 @@ class QuizApiClient:
         `hints` is forwarded as `{"term": ..., "term_ru": ...}` pairs, matching
         `ExplanationTranslationRequest.hints`'s `TranslationHintRequest` shape exactly —
         never `definition`, which is local render data only (FR-7) and has no
-        equivalent field on the wire schema.
+        equivalent field on the wire schema. A hint whose `term_ru` is `None` (no
+        translation yet, spec 0019 AD-11) is silently omitted rather than forwarded as
+        `"term_ru": null` — the wire schema's `min_length=1` would reject the whole
+        request for that one untranslated hint.
         """
         response = await self._request(
             "POST",
@@ -122,7 +125,9 @@ class QuizApiClient:
             params={"lang": "ru"},
             json={
                 "text": text,
-                "hints": [{"term": h.term, "term_ru": h.term_ru} for h in hints],
+                "hints": [
+                    {"term": h.term, "term_ru": h.term_ru} for h in hints if h.term_ru is not None
+                ],
             },
             timeout=self.config.translation_request_timeout_seconds,
         )
