@@ -61,7 +61,7 @@ class GlossaryConfig(BaseConfig):
     on being set.
     """
 
-    model_config = SettingsConfigDict(yaml_file="configs/glossary.yaml", env_file=None)
+    model_config = SettingsConfigDict(yaml_file="configs/glossary.yaml")
 
     postgres: PostgresConnectionConfig
     agents_dir: Path = Field(

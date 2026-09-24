@@ -1,6 +1,9 @@
+from pathlib import Path
+
 import pytest
-from glossary.configs import GlossaryConfig
 from pydantic import ValidationError
+
+from glossary.configs import GlossaryConfig
 
 
 @pytest.fixture(autouse=True)
@@ -25,7 +28,8 @@ def test_embedding_column_is_configurable() -> None:
     assert config.embedding_column == "embedding_ada_002"
 
 
-def test_missing_agents_dir_raises(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_missing_agents_dir_raises(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.chdir(tmp_path)
     monkeypatch.delenv("AGENTS_DIR", raising=False)
     with pytest.raises(ValidationError):
         GlossaryConfig(postgres={"host": "localhost", "user": "u", "password": "p", "dbname": "d"})
