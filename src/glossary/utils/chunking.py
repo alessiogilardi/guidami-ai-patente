@@ -5,18 +5,7 @@ asks the model to locate a cut inside a wall of text. This module only detects
 boundaries; it never extracts a term or definition itself (AD-10).
 """
 
-import re
-
-# CdS art. 3's own marker: "1) AREA DI INTERSEZIONE: ... 2) Area pedonale: ...",
-# preceded by ". " (end of the previous entry) or the start of the text.
-_NUMERIC_MARKER = re.compile(r"(?:(?<=\. )|^)\d+(?:-bis|-ter)?\)\s+(?=[A-ZÀÈÉÌÒÙ])")
-
-# CAP art. 1's own marker: "a) termine: definizione; b) termine: definizione; ...",
-# preceded by "; " or the start of the text — excludes nested "1) ... 2) ..."
-# sub-items (those are preceded by ": ", never "; ").
-_ALPHA_MARKER = re.compile(r"(?:(?<=; )|^)[a-z]{1,3}\)\s")
-
-_MARKERS = (_NUMERIC_MARKER, _ALPHA_MARKER)
+from .entry_markers import MARKERS
 
 
 def split_into_chunks(text: str, max_chars: int) -> list[tuple[int, str]]:
@@ -38,7 +27,7 @@ def split_into_chunks(text: str, max_chars: int) -> list[tuple[int, str]]:
 
 
 def _find_boundaries(text: str) -> list[int] | None:
-    for marker in _MARKERS:
+    for marker in MARKERS:
         positions = [match.start() for match in marker.finditer(text)]
         if len(positions) >= 2:
             return positions
