@@ -11,12 +11,13 @@ from commons.ai.embedding import EmbeddingService
 from commons.ai.embedding.clients import LiteLLMEmbeddingClient
 from commons.ai.embedding.configs import EmbeddingClientConfig
 from commons.clients import PostgresClient
-from commons.configs import PostgresConnectionConfig
+from commons.configs import OpenRouterConfig, PostgresConnectionConfig
+from glossary.configs import GlossaryEmbeddingConfig
 
 
-def build_open_router_provider(api_key: str) -> OpenRouterProvider:
+def build_open_router_provider(config: OpenRouterConfig) -> OpenRouterProvider:
     """Builds the OpenRouter provider from the configured API key."""
-    return OpenRouterProvider(api_key=api_key)
+    return OpenRouterProvider(api_key=config.api_key.get_secret_value())
 
 
 def build_postgres_client(config: PostgresConnectionConfig) -> PostgresClient:
@@ -24,6 +25,6 @@ def build_postgres_client(config: PostgresConnectionConfig) -> PostgresClient:
     return PostgresClient(config)
 
 
-def build_embedding_service(batch_size: int) -> EmbeddingService:
+def build_embedding_service(config: GlossaryEmbeddingConfig) -> EmbeddingService:
     r"""Builds the embedder used for `f'{term}\n{definition}'` (FR-6)."""
-    return EmbeddingService(batch_size, LiteLLMEmbeddingClient(EmbeddingClientConfig()))
+    return EmbeddingService(config.batch_size, LiteLLMEmbeddingClient(EmbeddingClientConfig()))

@@ -51,14 +51,9 @@ def main() -> None:
         )
         return
 
-    run_dir = RunArtifactWriter.build_run_dir(config.project_root / "logs", _RUN_ID_PREFIX)
-    file_handler = logging.FileHandler(run_dir / "run.log")
-    file_handler.setFormatter(logging.Formatter(LOG_FORMAT))
-    logging.getLogger().addHandler(file_handler)
+    _setup_logging(config)
 
-    provider = build_open_router_provider(
-        OpenRouterConfig().api_key.get_secret_value()  # pyright: ignore[reportCallIssue]
-    )
+    provider = build_open_router_provider(OpenRouterConfig())  # pyright: ignore[reportCallIssue]
     observability_config = ObservabilityConfig.load()
 
     with (
@@ -78,6 +73,13 @@ def main() -> None:
         except GlossaryTranslationError as error:
             print(f"FAILED: {error}")
             raise SystemExit(1) from error
+
+
+def _setup_logging(config: GlossaryConfig) -> None:
+    run_dir = RunArtifactWriter.build_run_dir(config.project_root / "logs", _RUN_ID_PREFIX)
+    file_handler = logging.FileHandler(run_dir / "run.log")
+    file_handler.setFormatter(logging.Formatter(LOG_FORMAT))
+    logging.getLogger().addHandler(file_handler)
 
 
 if __name__ == "__main__":

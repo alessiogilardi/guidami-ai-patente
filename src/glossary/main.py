@@ -14,6 +14,7 @@ from pydantic_ai.providers import Provider
 from pywire import get_default_container
 
 from commons.ai.observability import LlmCallTracker, ObservabilityConfig, build_llm_call_tracker
+from commons.configs import OpenRouterConfig
 from commons.observability import LOG_FORMAT, RunArtifactWriter
 from glossary.configs import GlossaryConfig
 from glossary.exceptions import GlossaryBuildError
@@ -53,13 +54,9 @@ def main() -> None:
             )
         return
 
-    run_dir = RunArtifactWriter.build_run_dir(config.project_root / "logs", _RUN_ID_PREFIX)
-    file_handler = logging.FileHandler(run_dir / "run.log")
-    file_handler.setFormatter(logging.Formatter(LOG_FORMAT))
-    logging.getLogger().addHandler(file_handler)
+    _setup_logging(config)
 
-    open_router_config_key = _load_open_router_api_key()
-    provider = build_open_router_provider(open_router_config_key)
+    provider = build_open_router_provider(OpenRouterConfig())  # pyright: ignore[reportCallIssue]
     observability_config = ObservabilityConfig.load()
 
     with (
@@ -71,7 +68,7 @@ def main() -> None:
         container.register_instance(postgres_client, as_type=type(postgres_client))
         container.register_instance(provider, as_type=Provider[AsyncOpenAI])
         container.register_instance(tracker, as_type=LlmCallTracker)
-        embedding_service = build_embedding_service(config.embedding_batch_size)
+        embedding_service = build_embedding_service(config.embedding)
         container.register_instance(embedding_service, as_type=type(embedding_service))
 
         service = container.resolve(GlossaryBuildService)
@@ -84,10 +81,11 @@ def main() -> None:
             raise SystemExit(1) from error
 
 
-def _load_open_router_api_key() -> str:
-    from commons.configs import OpenRouterConfig
-
-    return OpenRouterConfig().api_key.get_secret_value()  # pyright: ignore[reportCallIssue]
+def _setup_logging(config: GlossaryConfig) -> None:
+    run_dir = RunArtifactWriter.build_run_dir(config.project_root / "logs", _RUN_ID_PREFIX)
+    file_handler = logging.FileHandler(run_dir / "run.log")
+    file_handler.setFormatter(logging.Formatter(LOG_FORMAT))
+    logging.getLogger().addHandler(file_handler)
 
 
 def _print_outcomes(outcomes) -> None:  # noqa: ANN001

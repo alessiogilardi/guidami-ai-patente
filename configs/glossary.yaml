@@ -14,6 +14,7 @@ postgres:
 parsed_dir: data/parsed
 max_block_chars: 6000
 translation_batch_size: 10
-embedding_batch_size: 16
+embedding:
+  batch_size: 16
 glossary_entries_table: glossary_entries
 embedding_column: embedding_3_small

@@ -5,6 +5,8 @@ from pydantic_settings import SettingsConfigDict
 
 from commons.configs import BaseConfig, PostgresConnectionConfig
 
+from .glossary_embedding_config import GlossaryEmbeddingConfig
+
 
 class GlossaryBlockConfig(BaseModel):
     """One definitions block to extract (FR-1).
@@ -75,7 +77,7 @@ class GlossaryConfig(BaseConfig):
     blocks: tuple[GlossaryBlockConfig, ...] = _DEFAULT_BLOCKS
     max_block_chars: int = 6000
     translation_batch_size: int = 10
-    embedding_batch_size: int = 16
+    embedding: GlossaryEmbeddingConfig = GlossaryEmbeddingConfig()
     glossary_entries_table: str = "glossary_entries"
     embedding_column: str = Field(
         default="embedding_3_small",
@@ -87,7 +89,7 @@ class GlossaryConfig(BaseConfig):
         ),
     )
 
-    @field_validator("max_block_chars", "translation_batch_size", "embedding_batch_size")
+    @field_validator("max_block_chars", "translation_batch_size")
     @classmethod
     def _validate_positive(cls, value: int, info: object) -> int:
         if value < 1:
