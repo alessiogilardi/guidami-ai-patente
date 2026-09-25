@@ -10,12 +10,8 @@ from guidami_ai_patente.agents.question_explainer.dto import (
 from guidami_ai_patente.models import GlossaryCandidate
 
 
-def _candidate(id_: int, term: str) -> GlossaryCandidate:
+def _candidate(term: str) -> GlossaryCandidate:
     return GlossaryCandidate(
-        id=id_,
-        source="cds",
-        article_number="3",
-        comma_number="1",
         term=term,
         definition=f"Definizione di {term}.",
         term_ru="x",
@@ -32,7 +28,7 @@ def test_candidates_block_renders_one_line_per_candidate_starting_at_one() -> No
     request = QuestionExplainerRequest(
         text="La carreggiata è larga?",
         image_description=None,
-        candidates=[_candidate(1, "carreggiata"), _candidate(2, "banchina")],
+        candidates=[_candidate("carreggiata"), _candidate("banchina")],
     )
     assert "1. [carreggiata]" in request.candidates_block
     assert "2. [banchina]" in request.candidates_block

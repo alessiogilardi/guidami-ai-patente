@@ -87,21 +87,26 @@ class GlossaryReadRepository:
 
     @staticmethod
     def _row_to_candidate(row: tuple) -> GlossaryCandidate:
+        """Builds a `GlossaryCandidate` from a fused-query row.
+
+        The four identity columns (`id`/`source`/`article_number`/`comma_number`) are
+        still unpacked from the row — the SQL fusion in `_QUERY` needs `g.id` — but are
+        no longer forwarded onto the narrowed model (AD-8): nothing outside this
+        repository reads them on a `GlossaryCandidate`. `origin` is left at its
+        `GlossaryTermOrigin.VERBATIM_CORPUS` default: every row this repository returns
+        came from `glossary_entries`, never from the live enricher (spec 0021).
+        """
         (
-            comma_id,
-            source,
-            article_number,
-            comma_number,
+            _comma_id,
+            _source,
+            _article_number,
+            _comma_number,
             term,
             definition,
             definition_plain,
             term_ru,
         ) = row
         return GlossaryCandidate(
-            id=comma_id,
-            source=source,
-            article_number=article_number,
-            comma_number=comma_number,
             term=term,
             definition=definition,
             definition_plain=definition_plain,

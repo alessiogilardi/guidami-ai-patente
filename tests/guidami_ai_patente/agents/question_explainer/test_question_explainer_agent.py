@@ -54,10 +54,6 @@ def _make_agent() -> QuestionExplainerAgent:
 def _make_request(candidate_count: int) -> QuestionExplainerRequest:
     candidates = [
         GlossaryCandidate(
-            id=i,
-            source="cds",
-            article_number="3",
-            comma_number="1",
             term=f"termine{i}",
             definition=f"Definizione {i}.",
             term_ru="x",
