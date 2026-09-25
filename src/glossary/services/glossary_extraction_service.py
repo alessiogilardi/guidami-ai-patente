@@ -33,7 +33,7 @@ class GlossaryExtractionService(AsyncUseCase[GlossaryBlock, list[ExtractedEntry]
                     ExtractedEntry(
                         term=dto.term,
                         definition=dto.definition,
-                        comma_number=request.comma_number_at(absolute_offset),
+                        comma_number=request.get_comma_number_at(absolute_offset),
                     )
                 )
         return entries

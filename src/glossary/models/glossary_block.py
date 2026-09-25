@@ -21,7 +21,7 @@ class GlossaryBlock(BaseModel):
     text: str
     comma_spans: tuple[CommaSpan, ...]
 
-    def comma_number_at(self, offset: int) -> str:
+    def get_comma_number_at(self, offset: int) -> str:
         """Resolves an offset into `text` to the comma it came from (Data Model).
 
         Raises:

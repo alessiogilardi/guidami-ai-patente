@@ -35,7 +35,7 @@ def test_comma_number_at_resolves_an_offset_to_its_source_comma() -> None:
         GlossaryBlockConfig(source="cds", file="sample_article.json", article_number="9")
     )
     offset_in_second_comma = block.text.index("Seconda")
-    assert block.comma_number_at(offset_in_second_comma) == "2"
+    assert block.get_comma_number_at(offset_in_second_comma) == "2"
 
 
 def test_an_unknown_article_raises_a_clear_error() -> None:
