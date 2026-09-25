@@ -233,6 +233,75 @@ async def test_cited_terms_are_resolved_into_translation_hints() -> None:
 
 
 @pytest.mark.asyncio
+async def test_a_cited_term_with_a_plain_definition_uses_it_over_the_verbatim_one() -> None:
+    candidate = GlossaryCandidate(
+        id=1,
+        source="cds",
+        article_number="3",
+        comma_number="1",
+        term="carreggiata",
+        definition="Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli.",
+        definition_plain="La parte della strada per i veicoli.",
+        term_ru="проезжая часть",
+    )
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(
+            explanation="La «carreggiata» è...", cited_term_numbers=[1]
+        )
+    )
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        glossary=_GlossaryDouble(candidates=[candidate]),
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.translation_hints == (
+        CitedGlossaryTerm(
+            term="carreggiata",
+            definition="La parte della strada per i veicoli.",
+            term_ru="проезжая часть",
+        ),
+    )
+
+
+@pytest.mark.asyncio
+async def test_a_cited_term_with_no_plain_definition_falls_back_to_the_verbatim_one() -> None:
+    candidate = GlossaryCandidate(
+        id=1,
+        source="cds",
+        article_number="3",
+        comma_number="1",
+        term="carreggiata",
+        definition="Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli.",
+        term_ru="проезжая часть",
+    )
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(
+            explanation="La «carreggiata» è...", cited_term_numbers=[1]
+        )
+    )
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        glossary=_GlossaryDouble(candidates=[candidate]),
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.translation_hints == (
+        CitedGlossaryTerm(
+            term="carreggiata",
+            definition="Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli.",
+            term_ru="проезжая часть",
+        ),
+    )
+
+
+@pytest.mark.asyncio
 async def test_a_null_term_ru_candidate_still_resolves_into_a_translation_hint() -> None:
     """Spec 0019 AD-11 regression, paired with the repository-level test.
 

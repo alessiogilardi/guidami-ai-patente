@@ -259,6 +259,11 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
         first-cited occurrence per term avoids a duplicate-`term` payload, which
         `ExplanationTranslationRequest`'s wire-layer validator rejects with a 422 —
         permanently breaking "Traduci" for that question.
+
+        `candidate.definition_plain or candidate.definition` prefers the plain-language
+        rendering (spec 0022 FR-5) and falls back to the verbatim legal text when a row
+        has not been simplified yet (`definition_plain is None`) — the only read-side
+        change spec 0022 makes; `CitedGlossaryTerm` itself gains no new field.
         """
         seen_terms: set[str] = set()
         hints: list[CitedGlossaryTerm] = []
@@ -270,7 +275,7 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
                 hints.append(
                     CitedGlossaryTerm(
                         term=candidate.term,
-                        definition=candidate.definition,
+                        definition=candidate.definition_plain or candidate.definition,
                         term_ru=candidate.term_ru,
                     )
                 )
