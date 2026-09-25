@@ -5,6 +5,7 @@ from .extracted_entry import ExtractedEntry
 from .glossary_block import CommaSpan, GlossaryBlock
 from .glossary_build_report import GlossaryBuildReport
 from .glossary_build_request import GlossaryBuildRequest
+from .glossary_term_row import GlossaryTermRow
 
 __all__ = [
     "CommaSpan",
@@ -13,4 +14,5 @@ __all__ = [
     "BlockOutcome",
     "GlossaryBuildRequest",
     "GlossaryBuildReport",
+    "GlossaryTermRow",
 ]
