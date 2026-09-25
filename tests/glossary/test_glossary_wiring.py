@@ -35,6 +35,9 @@ from commons.ai.observability import LlmCallTracker, NullLlmCallTracker
 from commons.clients import PostgresClient
 from glossary.configs import GlossaryConfig
 from glossary.services.glossary_build_service import GlossaryBuildService
+from glossary.services.glossary_definition_simplification_run_service import (
+    GlossaryDefinitionSimplificationRunService,
+)
 from glossary.services.glossary_term_translation_run_service import (
     GlossaryTermTranslationRunService,
 )
@@ -104,3 +107,18 @@ def test_container_resolves_glossary_term_translation_run_service_end_to_end() -
     service = get_default_container().resolve(GlossaryTermTranslationRunService)
 
     assert isinstance(service, GlossaryTermTranslationRunService)
+
+
+def test_container_resolves_glossary_definition_simplification_run_service_end_to_end() -> None:
+    """The exact call `simplify_main.main()` makes: `container.resolve(...)` (spec 0022).
+
+    Same coverage as the two tests above, for `GlossaryDefinitionSimplifierAgent`'s
+    identical `provider_dep: Autowired[Provider[AsyncOpenAI]]` field and its own
+    `agent_configs: Autowired[GlossaryAgentConfigRepository]` load of
+    `glossary_definition_simplifier.yaml` — final-review addition, closing the same
+    coverage gap the two tests above were added to close for `build-glossary`/
+    `translate-glossary-terms`.
+    """
+    service = get_default_container().resolve(GlossaryDefinitionSimplificationRunService)
+
+    assert isinstance(service, GlossaryDefinitionSimplificationRunService)
