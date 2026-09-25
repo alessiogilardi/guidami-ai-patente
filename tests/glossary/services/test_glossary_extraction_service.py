@@ -94,3 +94,103 @@ async def test_each_entry_is_attributed_to_the_comma_it_came_from() -> None:
     )
     entries = await _service(agent)(block)
     assert {e.term: e.comma_number for e in entries} == {"A": "1", "B": "2"}
+
+
+async def test_terms_are_normalized_to_uppercase() -> None:
+    text = "1) alfa: uno. 2) Beta: due."
+    block = GlossaryBlock(
+        source="cds",
+        article_number="9",
+        text=text,
+        comma_spans=(CommaSpan(comma_number="1", start=0, end=len(text)),),
+    )
+    agent = _FakeExtractorAgent(
+        [
+            GlossaryExtractorResponse(
+                entries=[
+                    ExtractedEntryDto(term="alfa", definition="uno"),
+                    ExtractedEntryDto(term="Beta", definition="due"),
+                ]
+            )
+        ]
+    )
+    entries = await _service(agent)(block)
+    assert [e.term for e in entries] == ["ALFA", "BETA"]
+
+
+async def test_a_definitions_first_letter_is_capitalized() -> None:
+    text = "1) alfa: uno di alfa. 2) beta: due di beta."
+    block = GlossaryBlock(
+        source="cds",
+        article_number="9",
+        text=text,
+        comma_spans=(CommaSpan(comma_number="1", start=0, end=len(text)),),
+    )
+    agent = _FakeExtractorAgent(
+        [
+            GlossaryExtractorResponse(
+                entries=[
+                    ExtractedEntryDto(term="alfa", definition="uno di alfa"),
+                    ExtractedEntryDto(term="beta", definition="due di beta"),
+                ]
+            )
+        ]
+    )
+    entries = await _service(agent)(block)
+    assert [e.definition for e in entries] == ["Uno di alfa", "Due di beta"]
+
+
+async def test_a_duplicate_term_across_chunks_in_the_same_comma_is_deduplicated() -> None:
+    # The raw text keeps "BETA" uppercase so the numeric-marker regex still matches it
+    # (it requires an uppercase letter after the marker); the fake agent response below
+    # is what actually returns the lowercase duplicate, simulating inconsistent casing
+    # across two separate chunk-level extraction calls.
+    text = "1) ALFA: uno due tre. 2) BETA: quattro cinque sei. 3) GAMMA: sette otto nove."
+    block = GlossaryBlock(
+        source="cds",
+        article_number="9",
+        text=text,
+        comma_spans=(CommaSpan(comma_number="1", start=0, end=len(text)),),
+    )
+    agent = _FakeExtractorAgent(
+        [
+            GlossaryExtractorResponse(
+                entries=[ExtractedEntryDto(term="ALFA", definition="uno due tre")]
+            ),
+            GlossaryExtractorResponse(
+                entries=[
+                    ExtractedEntryDto(term="alfa", definition="quattro cinque sei"),
+                    ExtractedEntryDto(term="GAMMA", definition="sette otto nove"),
+                ]
+            ),
+        ]
+    )
+    entries = await _service(agent, max_block_chars=40)(block)
+    assert len(agent.calls) == 2
+    assert [e.term for e in entries] == ["ALFA", "GAMMA"]
+    assert entries[0].definition == "Uno due tre"
+
+
+async def test_the_same_term_in_different_commas_is_not_deduplicated() -> None:
+    text = "Prima\n\nSeconda"
+    block = GlossaryBlock(
+        source="cds",
+        article_number="9",
+        text=text,
+        comma_spans=(
+            CommaSpan(comma_number="1", start=0, end=5),
+            CommaSpan(comma_number="2", start=7, end=14),
+        ),
+    )
+    agent = _FakeExtractorAgent(
+        [
+            GlossaryExtractorResponse(
+                entries=[
+                    ExtractedEntryDto(term="Alfa", definition="Prima"),
+                    ExtractedEntryDto(term="ALFA", definition="Seconda"),
+                ]
+            )
+        ]
+    )
+    entries = await _service(agent)(block)
+    assert [(e.term, e.comma_number) for e in entries] == [("ALFA", "1"), ("ALFA", "2")]

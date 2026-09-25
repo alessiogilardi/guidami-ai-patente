@@ -2,5 +2,13 @@
 
 from .chunking import split_into_chunks
 from .entry_markers import count_expected_entries, is_abrogated, is_cross_reference
+from .normalization import capitalize_definition, normalize_term
 
-__all__ = ["count_expected_entries", "is_abrogated", "is_cross_reference", "split_into_chunks"]
+__all__ = [
+    "capitalize_definition",
+    "count_expected_entries",
+    "is_abrogated",
+    "is_cross_reference",
+    "normalize_term",
+    "split_into_chunks",
+]
