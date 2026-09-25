@@ -1,5 +1,4 @@
 import pytest
-from glossary.agents.glossary_extractor.glossary_extractor_agent import GlossaryExtractorAgent
 from pydantic_ai.exceptions import UnexpectedModelBehavior
 from pydantic_ai.messages import ModelMessage, ModelResponse, ToolCallPart
 from pydantic_ai.models.function import AgentInfo, FunctionModel
@@ -8,6 +7,7 @@ from pydantic_ai.providers.openrouter import OpenRouterProvider
 from commons.ai.agents import AgentConfig
 from commons.ai.observability import NullLlmCallTracker
 from glossary.agents.glossary_extractor.dto import GlossaryExtractorRequest
+from glossary.agents.glossary_extractor.glossary_extractor_agent import GlossaryExtractorAgent
 
 _PROVIDER = OpenRouterProvider(api_key="test-key")
 _TEST_CONFIG = AgentConfig(
@@ -20,7 +20,9 @@ _BLOCK_TEXT = "1) ALFA: significato di alfa. 2) BETA: significato di beta."
 
 
 def _agent() -> GlossaryExtractorAgent:
-    """Passes `tracker` explicitly too — `GlossaryExtractorAgent.__init__` falls back to
+    """Builds a test agent, bypassing the pywire container.
+
+    Passes `tracker` explicitly too — `GlossaryExtractorAgent.__init__` falls back to
     the autowired `self.tracker` otherwise, which raises `AttributeError` here since this
     bypasses the pywire container entirely (see the constructor's own docstring).
     """

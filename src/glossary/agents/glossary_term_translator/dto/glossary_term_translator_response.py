@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class TranslatedTermItemDto(BaseModel):
@@ -8,6 +8,14 @@ class TranslatedTermItemDto(BaseModel):
     """
 
     term_ru: str = Field(min_length=1, max_length=80)
+
+    @field_validator("term_ru")
+    @classmethod
+    def _reject_blank(cls, value: str) -> str:
+        """Rejects a whitespace-only translation `min_length=1` alone would let through."""
+        if not value.strip():
+            raise ValueError("term_ru must not be blank")
+        return value
 
 
 class GlossaryTermTranslatorResponse(BaseModel):

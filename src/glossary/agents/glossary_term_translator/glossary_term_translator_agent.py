@@ -38,7 +38,9 @@ class GlossaryTermTranslatorAgent(
         provider: Provider[AsyncOpenAI] | None = None,
         tracker: LlmCallTracker | None = None,
     ) -> None:
-        """`config`/`provider`/`tracker` are only ever passed directly in a test; `tracker`
+        """Builds the underlying `pydantic_ai` agent, resolving collaborators as needed.
+
+        `config`/`provider`/`tracker` are only ever passed directly in a test; `tracker`
         must be guarded exactly like the other two (see `GlossaryExtractorAgent`, Task 5, for
         why an unconditional `self.tracker` read raises `AttributeError` outside the container).
         """

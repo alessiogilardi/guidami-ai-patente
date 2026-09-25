@@ -25,5 +25,5 @@ def build_postgres_client(config: PostgresConnectionConfig) -> PostgresClient:
 
 
 def build_embedding_service(batch_size: int) -> EmbeddingService:
-    """Builds the embedder used for `f'{term}\\n{definition}'` (FR-6)."""
+    r"""Builds the embedder used for `f'{term}\n{definition}'` (FR-6)."""
     return EmbeddingService(batch_size, LiteLLMEmbeddingClient(EmbeddingClientConfig()))

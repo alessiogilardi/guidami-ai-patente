@@ -37,7 +37,9 @@ class GlossaryExtractorAgent(BaseAgent[GlossaryExtractorRequest, GlossaryExtract
         provider: Provider[AsyncOpenAI] | None = None,
         tracker: LlmCallTracker | None = None,
     ) -> None:
-        """`config`/`provider`/`tracker` are only ever passed directly in a test; pywire
+        """Builds the underlying `pydantic_ai` agent, resolving collaborators as needed.
+
+        `config`/`provider`/`tracker` are only ever passed directly in a test; pywire
         resolution loads them from the autowired collaborators instead. `tracker` must be
         guarded exactly like the other two — accessing `self.tracker` unconditionally would
         raise `AttributeError` for an instance built outside the pywire container, since

@@ -1,9 +1,8 @@
 import types
 
-from glossary.services.glossary_extraction_service import GlossaryExtractionService
-
 from glossary.agents.glossary_extractor.dto import ExtractedEntryDto, GlossaryExtractorResponse
 from glossary.models import CommaSpan, GlossaryBlock
+from glossary.services.glossary_extraction_service import GlossaryExtractionService
 
 
 class _FakeExtractorAgent:

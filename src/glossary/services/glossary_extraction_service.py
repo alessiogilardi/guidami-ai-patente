@@ -22,6 +22,7 @@ class GlossaryExtractionService(AsyncUseCase[GlossaryBlock, list[ExtractedEntry]
     agent: Autowired[GlossaryExtractorAgent]
 
     async def execute(self, request: GlossaryBlock) -> list[ExtractedEntry]:
+        """Extracts every term/definition pair from `request`'s block text."""
         entries: list[ExtractedEntry] = []
         for chunk_start, chunk_text in split_into_chunks(
             request.text, self.config.max_block_chars

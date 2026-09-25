@@ -2,6 +2,8 @@ from pydantic import BaseModel, ConfigDict
 
 
 class BlockOutcome(BaseModel):
+    """One block's `build-glossary` result: written, skipped, or (via the caller) failed."""
+
     model_config = ConfigDict(frozen=True)
 
     source: str
@@ -12,5 +14,6 @@ class BlockOutcome(BaseModel):
 
     @property
     def label(self) -> str:
+        """The block's `source/article_number/comma_number` identity, `comma_number` -> "all"."""
         comma = self.comma_number or "all"
         return f"{self.source}/{self.article_number}/{comma}"

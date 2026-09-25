@@ -1,10 +1,9 @@
-from glossary.services.glossary_term_translation_service import GlossaryTermTranslationService
-
 from glossary.agents.glossary_term_translator.dto import (
     GlossaryTermTranslatorResponse,
     TranslatedTermItemDto,
 )
 from glossary.models import GlossaryTermRow
+from glossary.services.glossary_term_translation_service import GlossaryTermTranslationService
 
 
 class _FakeAgent:

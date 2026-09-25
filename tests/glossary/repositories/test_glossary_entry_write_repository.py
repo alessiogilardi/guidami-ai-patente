@@ -1,11 +1,11 @@
 import pytest
-from glossary.repositories.glossary_entry_write_repository import GlossaryEntryWriteRepository
 from psycopg import sql
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
 from domain.entities.glossary import GlossaryEntryEntity
 from glossary.configs import GlossaryBlockConfig
+from glossary.repositories.glossary_entry_write_repository import GlossaryEntryWriteRepository
 
 _EMBEDDING = [0.1] * 1536
 

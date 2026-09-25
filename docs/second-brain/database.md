@@ -608,9 +608,10 @@ path in this app yet — see the new paragraph above the "No index exists..." li
 `glossary_entries.term_ru` becomes nullable (new `db/migrations/0020_glossary_term_ru_nullable.sql`,
 idempotent `DROP NOT NULL`, plus the matching `db/init.sql` edit) — `build-glossary` always
 writes `term_ru = NULL`; only the standalone `translate-glossary-terms` script ever fills it
-in later, via a plain `UPDATE` (AD-11). Not yet applied to the dev stack's existing
-`glossary_entries` table — see the Migrations section's path-2 note; the table is currently
-empty, so no data is at risk either way. Removed the "never returned by any API field of its
+in later, via a plain `UPDATE` (AD-11). Applied to the dev stack's existing
+`glossary_entries` table (verified: `term_ru`'s `is_nullable` is `YES`) via the Migrations
+section's path-2 procedure; the table is currently empty, so no data was at risk either way.
+Removed the "never returned by any API field of its
 own" comment on `term_ru`, which was already stale: `CitedGlossaryTermResponse` (spec 0020)
 returns it.*
 

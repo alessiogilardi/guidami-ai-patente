@@ -10,7 +10,9 @@ class GlossaryEntryMapper:
     def from_extracted_to_entity(
         entry: ExtractedEntry, block: GlossaryBlockConfig, embedding: list[float]
     ) -> GlossaryEntryEntity:
-        """`term_ru` is always `None` here — only `GlossaryTermUpdateRepository`
+        """Maps one extracted entry to its insertable entity.
+
+        `term_ru` is always `None` here — only `GlossaryTermUpdateRepository`
         (FR-5) ever writes a non-null value (AD-11).
         """
         return GlossaryEntryEntity(

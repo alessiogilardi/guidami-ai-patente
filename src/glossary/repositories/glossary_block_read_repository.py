@@ -37,7 +37,9 @@ class GlossaryBlockReadRepository:
     config: Autowired[GlossaryConfig]
 
     def __init__(self, parsed_dir: Path | None = None) -> None:
-        """`parsed_dir` is only ever passed directly in a test; pywire resolution
+        """Defers the file-system client's construction until first use.
+
+        `parsed_dir` is only ever passed directly in a test; pywire resolution
         uses `self.config.parsed_dir` instead (set on first use, see `_client`).
         """
         self._explicit_parsed_dir = parsed_dir
@@ -87,4 +89,13 @@ class GlossaryBlockReadRepository:
 
     @staticmethod
     def _clean(text: str) -> str:
-        return _INLINE_MARKUP_PATTERN.sub(r"\1", text).strip()
+        """Strips inline markup and collapses whitespace to single spaces.
+
+        The raw parsed corpus text has occasional whitespace irregularities (double
+        spaces, embedded newlines). Collapsing them here -- once, at the source --
+        keeps the block text `GlossaryExtractionService.execute`'s `.index()` call
+        searches, the text the model sees, and `_validate_verbatim`'s comparison all
+        whitespace-consistent, so a model-normalized definition can never fail to
+        `.index()` into the raw chunk text.
+        """
+        return " ".join(_INLINE_MARKUP_PATTERN.sub(r"\1", text).split())

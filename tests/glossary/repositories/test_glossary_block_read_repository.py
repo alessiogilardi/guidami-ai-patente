@@ -52,3 +52,15 @@ def test_an_unknown_comma_raises_a_clear_error() -> None:
                 source="cds", file="sample_article.json", article_number="9", comma_number="99"
             )
         )
+
+
+def test_double_spaces_and_embedded_newlines_are_collapsed_to_a_single_space() -> None:
+    block = _repository().read(
+        GlossaryBlockConfig(
+            source="cds",
+            file="sample_article_whitespace.json",
+            article_number="9",
+            comma_number="1",
+        )
+    )
+    assert block.text == "Prima definizione: con doppio spazio e a capo."

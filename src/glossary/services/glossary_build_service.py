@@ -1,6 +1,7 @@
 import logging
 
 import psycopg
+from openai import OpenAIError
 from pydantic import ValidationError
 from pydantic_ai.exceptions import ModelHTTPError, UnexpectedModelBehavior
 from pywire import Autowired, service
@@ -22,14 +23,18 @@ from .glossary_extraction_service import GlossaryExtractionService
 logger = logging.getLogger(__name__)
 
 # One block's failure must not abort its siblings (FR-7), but only for the runtime
-# failure modes a block can actually hit: an exhausted/misbehaving LLM call, a
-# Postgres write failure, or invalid data. Anything else (e.g. a TypeError in mapping
-# code) is a programming bug and must propagate, not be reported as a "failed block".
+# failure modes a block can actually hit: an exhausted/misbehaving LLM call, an
+# embedding-API failure, a Postgres write failure, or invalid data. Anything else
+# (e.g. a TypeError in mapping code) is a programming bug and must propagate, not be
+# reported as a "failed block". OpenAIError is the common base every litellm-wrapped
+# embedding API error subclasses (litellm.exceptions.APIError -> openai.APIError ->
+# openai.OpenAIError), so it isolates an EmbeddingService failure the same way.
 _ISOLATED_BLOCK_FAILURES = (
     psycopg.Error,
     ModelHTTPError,
     UnexpectedModelBehavior,
     ValidationError,
+    OpenAIError,
 )
 
 
@@ -49,6 +54,7 @@ class GlossaryBuildService(AsyncUseCase[GlossaryBuildRequest, GlossaryBuildRepor
     entry_writer: Autowired[GlossaryEntryWriteRepository]
 
     async def execute(self, request: GlossaryBuildRequest) -> GlossaryBuildReport:
+        """Builds every configured block, isolating a failing block from its siblings (FR-7)."""
         outcomes: list[BlockOutcome] = []
         failed_labels: list[str] = []
         for block in self.config.blocks:
@@ -57,7 +63,7 @@ class GlossaryBuildService(AsyncUseCase[GlossaryBuildRequest, GlossaryBuildRepor
             try:
                 outcome = await self._build_one(block, request.force)
             except _ISOLATED_BLOCK_FAILURES:
-                logger.error("Block %s failed", label, exc_info=True)
+                logger.exception("Block %s failed", label)
                 failed_labels.append(label)
 
             if outcome is not None:

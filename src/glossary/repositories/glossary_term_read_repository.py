@@ -21,6 +21,7 @@ class GlossaryTermReadRepository:
         self._explicit_client = client
 
     def find_missing_translations(self, force: bool) -> list[GlossaryTermRow]:
+        """Returns every row needing translation, or every row when `force` is set."""
         table = self._explicit_table or self.config.glossary_entries_table
         client = self._explicit_client or self.postgres
         where = sql.SQL("") if force else sql.SQL(" WHERE term_ru IS NULL")

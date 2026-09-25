@@ -49,24 +49,22 @@ class GlossaryTermTranslationRunService(
     async def execute(
         self, request: GlossaryTermTranslationRequest
     ) -> GlossaryTermTranslationReport:
+        """Translates every batch, isolating a failing batch's read+write from its siblings."""
         rows = self.read_repository.find_missing_translations(request.force)
         translated = 0
         failed_ids: list[int] = []
         for batch in batched(rows, self.config.translation_batch_size):
             batch = list(batch)
-            translations: list[TranslatedTerm] | None = None
             try:
-                translations = await self.translation_service(batch)
-            except _ISOLATED_BATCH_FAILURES:
-                ids = [row.id for row in batch]
-                logger.error("Translation batch failed for term ids %s", ids, exc_info=True)
-                failed_ids.extend(ids)
-
-            if translations is not None:
+                translations: list[TranslatedTerm] = await self.translation_service(batch)
                 self.update_repository.update_many(
                     [(row.id, t.term_ru) for row, t in zip(batch, translations, strict=True)]
                 )
                 translated += len(batch)
+            except _ISOLATED_BATCH_FAILURES:
+                ids = [row.id for row in batch]
+                logger.exception("Translation batch failed for term ids %s", ids)
+                failed_ids.extend(ids)
 
         if failed_ids:
             raise GlossaryTranslationError(failed_ids)

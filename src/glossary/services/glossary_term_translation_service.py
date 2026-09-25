@@ -22,6 +22,7 @@ class GlossaryTermTranslationService(
     agent: Autowired[GlossaryTermTranslatorAgent]
 
     async def execute(self, request: Sequence[GlossaryTermRow]) -> list[TranslatedTerm]:
+        """Translates one batch of rows, aligned 1:1 to `request` by position."""
         response = await self.agent.run(
             GlossaryTermTranslatorRequest(
                 entries=[

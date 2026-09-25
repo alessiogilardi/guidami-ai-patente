@@ -1,6 +1,5 @@
-from glossary.mappers import GlossaryEntryMapper
-
 from glossary.configs import GlossaryBlockConfig
+from glossary.mappers import GlossaryEntryMapper
 from glossary.models import ExtractedEntry
 
 

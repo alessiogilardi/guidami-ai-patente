@@ -12,7 +12,9 @@ import pytest
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 
 from commons.ai.agents import AgentConfig
+from commons.ai.observability import NullLlmCallTracker
 from commons.clients.file_system import LocalFileSystemClient
+from commons.repositories import YamlRepository
 from glossary.agents.glossary_extractor.dto import GlossaryExtractorRequest
 from glossary.agents.glossary_extractor.glossary_extractor_agent import GlossaryExtractorAgent
 from glossary.configs import GlossaryBlockConfig
@@ -46,15 +48,13 @@ async def test_extraction_produces_a_plausible_entry_count(
     reader = GlossaryBlockReadRepository(parsed_dir="data/parsed")
     block = reader.read(block_config)
 
-    agent_config_repository = LocalFileSystemClient("configs/agents")
-    agent_config = AgentConfig.model_validate_json(
-        __import__("yaml").safe_dump(
-            __import__("yaml").safe_load(
-                agent_config_repository.read_text("glossary_extractor.yaml")
-            )
-        )
+    agent_config_repository = YamlRepository(
+        AgentConfig, file_system_client=LocalFileSystemClient("configs/agents")
     )
-    agent = GlossaryExtractorAgent(agent_config, OpenRouterProvider(api_key=_REAL_KEY))
+    agent_config = agent_config_repository.load_one("glossary_extractor.yaml")
+    agent = GlossaryExtractorAgent(
+        agent_config, OpenRouterProvider(api_key=_REAL_KEY), NullLlmCallTracker()
+    )
 
     entries = []
     for _, chunk_text in split_into_chunks(block.text, max_chars=6000):

@@ -1,9 +1,7 @@
 import types
 
+import psycopg
 import pytest
-from glossary.services.glossary_term_translation_run_service import (
-    GlossaryTermTranslationRunService,
-)
 from pydantic_ai.exceptions import UnexpectedModelBehavior
 
 from glossary.exceptions import GlossaryTranslationError
@@ -11,6 +9,9 @@ from glossary.models import (
     GlossaryTermRow,
     GlossaryTermTranslationRequest,
     TranslatedTerm,
+)
+from glossary.services.glossary_term_translation_run_service import (
+    GlossaryTermTranslationRunService,
 )
 
 _ROWS = [
@@ -35,6 +36,20 @@ class _FakeUpdateRepository:
         self.updates: list[tuple[int, str]] = []
 
     def update_many(self, translations) -> None:  # noqa: ANN001
+        self.updates.extend(translations)
+
+
+class _FailingSecondBatchUpdateRepository:
+    """Raises a `psycopg.Error` on the second batch's write, succeeds otherwise."""
+
+    def __init__(self) -> None:
+        self.calls = 0
+        self.updates: list[tuple[int, str]] = []
+
+    def update_many(self, translations) -> None:  # noqa: ANN001
+        self.calls += 1
+        if self.calls == 2:
+            raise psycopg.Error("boom")
         self.updates.extend(translations)
 
 
@@ -63,6 +78,22 @@ async def test_a_failing_batch_is_skipped_and_the_run_raises_listing_it() -> Non
     update_repository = _FakeUpdateRepository()
     translation_service = _FailingSecondBatchTranslationService()
     service = _service(1, read_repository, update_repository, translation_service)
+
+    with pytest.raises(GlossaryTranslationError) as excinfo:
+        await service(GlossaryTermTranslationRequest(force=False))
+
+    assert excinfo.value.failed_ids == (2,)
+    assert {entry_id for entry_id, _ in update_repository.updates} == {1, 3}
+
+
+async def test_a_failing_write_is_isolated_to_its_own_batch_and_the_run_raises() -> None:
+    read_repository = _FakeReadRepository(_ROWS)
+    update_repository = _FailingSecondBatchUpdateRepository()
+
+    async def _translate(rows):  # noqa: ANN001
+        return [TranslatedTerm(term=r.term, term_ru=f"{r.term}-ru") for r in rows]
+
+    service = _service(1, read_repository, update_repository, _translate)
 
     with pytest.raises(GlossaryTranslationError) as excinfo:
         await service(GlossaryTermTranslationRequest(force=False))

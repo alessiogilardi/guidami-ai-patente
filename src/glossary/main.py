@@ -9,6 +9,8 @@ import argparse
 import asyncio
 import logging
 
+from openai import AsyncOpenAI
+from pydantic_ai.providers import Provider
 from pywire import get_default_container
 
 from commons.ai.observability import LlmCallTracker, ObservabilityConfig, build_llm_call_tracker
@@ -67,7 +69,7 @@ def main() -> None:
         container = get_default_container()
         container.register_instance(config, as_type=GlossaryConfig)
         container.register_instance(postgres_client, as_type=type(postgres_client))
-        container.register_instance(provider, as_type=type(provider))
+        container.register_instance(provider, as_type=Provider[AsyncOpenAI])
         container.register_instance(tracker, as_type=LlmCallTracker)
         embedding_service = build_embedding_service(config.embedding_batch_size)
         container.register_instance(embedding_service, as_type=type(embedding_service))

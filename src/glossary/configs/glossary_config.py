@@ -66,7 +66,9 @@ class GlossaryConfig(BaseConfig):
     postgres: PostgresConnectionConfig
     agents_dir: Path = Field(
         validation_alias=AliasChoices("AGENTS_DIR", "agents_dir"),
-        description="Directory holding glossary_extractor.yaml and glossary_term_translator.ru.yaml.",
+        description=(
+            "Directory holding glossary_extractor.yaml and glossary_term_translator.ru.yaml."
+        ),
     )
     parsed_dir: Path = Path("data/parsed")
     project_root: Path = Path(".")

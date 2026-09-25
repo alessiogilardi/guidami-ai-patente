@@ -1,10 +1,10 @@
 import pytest
-from glossary.repositories.glossary_entry_read_repository import GlossaryEntryReadRepository
 from psycopg import sql
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
 from glossary.configs import GlossaryBlockConfig
+from glossary.repositories.glossary_entry_read_repository import GlossaryEntryReadRepository
 
 
 @pytest.fixture

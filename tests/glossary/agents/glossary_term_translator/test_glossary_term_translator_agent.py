@@ -1,7 +1,4 @@
 import pytest
-from glossary.agents.glossary_term_translator.glossary_term_translator_agent import (
-    GlossaryTermTranslatorAgent,
-)
 from pydantic_ai.exceptions import UnexpectedModelBehavior
 from pydantic_ai.messages import ModelMessage, ModelResponse, ToolCallPart
 from pydantic_ai.models.function import AgentInfo, FunctionModel
@@ -12,6 +9,9 @@ from commons.ai.observability import NullLlmCallTracker
 from glossary.agents.glossary_term_translator.dto import (
     GlossaryTermTranslatorRequest,
     TermToTranslateDto,
+)
+from glossary.agents.glossary_term_translator.glossary_term_translator_agent import (
+    GlossaryTermTranslatorAgent,
 )
 
 _PROVIDER = OpenRouterProvider(api_key="test-key")

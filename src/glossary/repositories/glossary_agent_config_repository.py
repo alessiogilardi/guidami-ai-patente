@@ -20,6 +20,7 @@ class GlossaryAgentConfigRepository:
     config: Autowired[GlossaryConfig]
 
     def __init__(self) -> None:
+        """Builds the underlying `YamlRepository`, anchored at `GlossaryConfig.agents_dir`."""
         self._agents = YamlRepository(
             AgentConfig, file_system_client=LocalFileSystemClient(self.config.agents_dir)
         )

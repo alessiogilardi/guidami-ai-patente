@@ -33,6 +33,7 @@ class GlossaryEntryWriteRepository:
         self._explicit_embedding_column = embedding_column
 
     def write(self, block: GlossaryBlockConfig, entries: Sequence[GlossaryEntryEntity]) -> None:
+        """Upserts `entries` for `block`, then deletes any of `block`'s rows not in `entries`."""
         table = self._explicit_table or self.config.glossary_entries_table
         client = self._explicit_client or self.postgres
 

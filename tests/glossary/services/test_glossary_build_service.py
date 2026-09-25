@@ -1,12 +1,13 @@
 import types
 
 import pytest
-from glossary.services.glossary_build_service import GlossaryBuildService
+from openai import APIConnectionError
 from pydantic_ai.exceptions import UnexpectedModelBehavior
 
 from glossary.configs import GlossaryBlockConfig
 from glossary.exceptions import GlossaryBuildError
 from glossary.models import ExtractedEntry, GlossaryBlock, GlossaryBuildRequest
+from glossary.services.glossary_build_service import GlossaryBuildService
 
 _ONE_BLOCK = (
     GlossaryBlockConfig(source="cds", file="x.json", article_number="157", comma_number="1"),
@@ -133,6 +134,28 @@ async def test_a_failing_block_does_not_stop_its_siblings_and_the_run_raises() -
     assert writer.written == [("3", 1)]
 
 
+async def test_a_failing_embedding_call_does_not_stop_its_siblings_and_the_run_raises() -> None:
+    writer = _FakeEntryWriter()
+    entries = {
+        "157": [ExtractedEntry(term="arresto", definition="def", comma_number="1")],
+        "3": [ExtractedEntry(term="carreggiata", definition="def", comma_number="1")],
+    }
+    service = _service(
+        _TWO_BLOCKS,
+        _FakeBlockReader(),
+        _FakeEntryReader(set()),
+        _FakeExtractionService(entries),
+        writer,
+    )
+    service.embedding_service = _RaisingForTermEmbeddingService("arresto")  # type: ignore[attr-defined]
+
+    with pytest.raises(GlossaryBuildError) as excinfo:
+        await service(GlossaryBuildRequest(force=False))
+
+    assert excinfo.value.failed_labels == ("cds/157/1",)
+    assert writer.written == [("3", 1)]
+
+
 class _MixedExtractionService:
     def __init__(self, entries_by_article: dict[str, list[ExtractedEntry]]) -> None:
         self._entries_by_article = entries_by_article
@@ -141,3 +164,15 @@ class _MixedExtractionService:
         if block.article_number == "157":
             raise UnexpectedModelBehavior("boom")
         return self._entries_by_article.get(block.article_number, [])
+
+
+class _RaisingForTermEmbeddingService:
+    """Isolates the failing block by content: raises only for the poisoned term."""
+
+    def __init__(self, poisoned_term: str) -> None:
+        self._poisoned_term = poisoned_term
+
+    def __call__(self, texts):  # noqa: ANN001, ANN201
+        if any(text.startswith(self._poisoned_term) for text in texts):
+            raise APIConnectionError(request=object())  # type: ignore[arg-type]
+        return [[0.1] * 1536 for _ in texts]
