@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0022 |
-| **Status** | draft |
+| **Status** | ready |
 | **Date** | 2026-09-25 |
 | **Discussion log** | — (brainstormed inline via `superpowers:brainstorming`; no separate transcript file) |
 | **Supersedes / superseded by** | — |
@@ -466,14 +466,17 @@ Verified 2026-09-25 on branch `feat/backend`.
 
 ## Sign-off
 
-- **Scope approved by user:** pending — spec written 2026-09-25 from an interactive
-  `superpowers:brainstorming` session; awaiting the user's review of this file.
+- **Scope approved by user:** yes, 2026-09-25 — after the initial `superpowers:brainstorming`
+  session and a `mattpocock-skills:grilling` round that resolved FR-1a and the FR-3
+  model/length bounds.
 - **Feasibility asserted:** by the assistant on 2026-09-25, based on the Feasibility
   Evidence above (direct source reads of the `term_ru` pipeline this spec mirrors).
 - **Definition of Done verified:** not yet — pending implementation.
 
 ## Changelog
 
+- **2026-09-25 (latest)** — Scope approved by the user; status moved `draft` → `ready`.
+  Proceeding to `superpowers:writing-plans` for the implementation plan.
 - **2026-09-25 (later)** — Grilling round (`mattpocock-skills:grilling`, one question at
   a time per this project's CLAUDE.md override). Found and closed a real staleness gap:
   `GlossaryEntryWriteRepository`'s upsert already resets `term_ru = NULL` on every
