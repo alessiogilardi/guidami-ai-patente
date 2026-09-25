@@ -105,6 +105,7 @@ end of the pytest session.
 | `uv run label-golden-set [--concurrency N] [--seed N] [--limit N] [--topic TOPIC]…` | `retrieval_evaluation.label_main:main` | Runs a golden-set labeling pass over the quiz bank via `CommaLabelerAgent`, persisting one `labeling_runs` row plus `quiz_labelings`/`quiz_comma_labels` (spec 0011). `--topic` (repeatable) restricts the run to the union of the named topics, applied before `--limit`; it selects which questions are labeled and is never recorded on the run (FR-18) |
 | `uv run build-glossary [--force] [--dry-run]` | `glossary.main:main` | Extracts the Italian legal-definitions glossary from the parsed corpus into `glossary_entries`, block by block; never translates (spec 0019) |
 | `uv run translate-glossary-terms [--force] [--dry-run]` | `glossary.translate_main:main` | Fills `glossary_entries.term_ru` independently and idempotently, in batches (spec 0019) |
+| `uv run simplify-glossary-definitions [--force] [--dry-run]` | `glossary.simplify_main:main` | Fills `glossary_entries.definition_plain` (a plain-language rewrite of the verbatim `definition`) independently and idempotently, in batches (spec 0022) |
 | `uv run serve` | `guidami_ai_patente.main:main` | Starts the FastAPI service on `AppConfig.host:port` |
 | `uv run telegram-bot` | `guidami_ai_patente_bot.main:main` | Starts the Telegram bot client, long-polling against a running `guidami_ai_patente` instance |
 

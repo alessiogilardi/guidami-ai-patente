@@ -237,6 +237,10 @@ glossary_entries                            -- precomputed Italian glossary (spe
 ├── comma_number (TEXT, NOT NULL)
 ├── term (TEXT, NOT NULL)
 ├── definition (TEXT, NOT NULL)
+├── definition_plain (TEXT, nullable)        -- plain-language rewrite of `definition` (spec 0022);
+│                                            -- only ever written by simplify-glossary-definitions's
+│                                            -- separate UPDATE (build-glossary always writes NULL,
+│                                            -- and resets it to NULL on any upsert conflict too)
 ├── term_ru (TEXT, nullable)                 -- translation-hint pin for POST /explanations/translate;
 │                                            -- only ever written by translate-glossary-terms's
 │                                            -- separate UPDATE (build-glossary always writes NULL)
@@ -342,12 +346,19 @@ explanation endpoint's vocabulary stage — see `docs/second-brain/patterns.md`'
 entry for how `GlossaryReadRepository.candidates_for` queries it (one query, both arms and
 the fusion computed in Postgres, not two queries merged in Python). `term_ru` exists purely
 as a translation-hint pin for `POST /explanations/translate` (spec 0018) — it is never
-returned by any response field of its own. No write path exists in `guidami_ai_patente`;
-the table is populated by the standalone `src/glossary/` package (spec 0019, two scripts —
-`build-glossary` writes `source`/`article_number`/`comma_number`/`term`/`definition`/the
-embedding column, always `term_ru = NULL`; `translate-glossary-terms` is the only writer of
-`term_ru`, via a plain `UPDATE`, AD-11). See `docs/second-brain/architecture.md`'s
-`glossary/` row for the full package breakdown.
+returned by any response field of its own. No write path exists in `guidami_ai_patente`
+except the read-side mapping itself (`GlossaryCandidate.definition_plain`, populated by
+`_row_to_candidate`); the table's rows are populated by the standalone `src/glossary/`
+package (spec 0019/0022, three scripts — `build-glossary` writes
+`source`/`article_number`/`comma_number`/`term`/`definition`/the embedding column, always
+`term_ru = NULL` and `definition_plain = NULL`, resetting both to `NULL` on any upsert
+conflict too; `translate-glossary-terms` is the only writer of `term_ru`, via a plain
+`UPDATE`, AD-11; `simplify-glossary-definitions` is the only writer of `definition_plain`,
+via its own plain `UPDATE`, same decoupled shape). `ExplanationService._deduplicated_hints`
+is the only consumer of `definition_plain`: it prefers it over verbatim `definition` when
+non-`NULL`, falling back to the verbatim text otherwise (spec 0022 FR-5) — `CitedGlossaryTerm`/
+`CitedGlossaryTermResponse` gain no field of their own for it. See
+`docs/second-brain/architecture.md`'s `glossary/` row for the full package breakdown.
 
 No index exists on any embedding column (no ivfflat/hnsw) — vector search runs as
 an exact `<=>` scan. No index yet on the `TEXT[]` metadata columns (GIN/FTS
@@ -621,3 +632,16 @@ block-scoped reconciliation delete via `GlossaryEntryWriteRepository`) and
 `translate-glossary-terms` (the only `term_ru` writer, `GlossaryTermUpdateRepository`) — see
 `docs/second-brain/architecture.md`'s `glossary/` row. No schema change; the table's still
 empty in the dev stack until one of the two scripts is actually run.*
+
+*Last updated: 2026-09-25 — verified against commit `a20f3e49` (spec 0022, plain-language
+glossary definitions). `glossary_entries` gains `definition_plain TEXT` (nullable,
+`db/migrations/0022_glossary_definition_plain.sql` + matching `db/init.sql` edit): a
+plain-language rewrite of `definition`, filled independently by a new third script,
+`simplify-glossary-definitions` (`GlossaryDefinitionUpdateRepository`'s the only writer,
+plain `UPDATE`, same decoupled shape as `term_ru`). `GlossaryEntryWriteRepository`'s
+upsert now also resets `definition_plain = NULL` on conflict, alongside its existing
+`term_ru = NULL` reset. `GlossaryCandidate.definition_plain` (default `None`) is the only
+new field on the read side; `ExplanationService._deduplicated_hints` is the only consumer,
+preferring it over verbatim `definition` and falling back when `NULL` — no change to
+`CitedGlossaryTerm`/`CitedGlossaryTermResponse`. See
+`docs/second-brain/architecture.md`'s `glossary/` row for the full pipeline.*
