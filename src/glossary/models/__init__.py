@@ -6,6 +6,8 @@ from .glossary_block import CommaSpan, GlossaryBlock
 from .glossary_build_report import GlossaryBuildReport
 from .glossary_build_request import GlossaryBuildRequest
 from .glossary_definition_row import GlossaryDefinitionRow
+from .glossary_definition_simplification_report import GlossaryDefinitionSimplificationReport
+from .glossary_definition_simplification_request import GlossaryDefinitionSimplificationRequest
 from .glossary_term_row import GlossaryTermRow
 from .glossary_term_translation_report import GlossaryTermTranslationReport
 from .glossary_term_translation_request import GlossaryTermTranslationRequest
@@ -20,6 +22,8 @@ __all__ = [
     "GlossaryBuildRequest",
     "GlossaryBuildReport",
     "GlossaryDefinitionRow",
+    "GlossaryDefinitionSimplificationReport",
+    "GlossaryDefinitionSimplificationRequest",
     "GlossaryTermRow",
     "SimplifiedDefinition",
     "TranslatedTerm",

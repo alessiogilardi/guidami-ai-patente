@@ -1,3 +1,11 @@
-from .glossary_errors import GlossaryBuildError, GlossaryTranslationError
+from .glossary_errors import (
+    GlossaryBuildError,
+    GlossaryDefinitionSimplificationError,
+    GlossaryTranslationError,
+)
 
-__all__ = ["GlossaryBuildError", "GlossaryTranslationError"]
+__all__ = [
+    "GlossaryBuildError",
+    "GlossaryDefinitionSimplificationError",
+    "GlossaryTranslationError",
+]

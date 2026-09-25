@@ -20,3 +20,12 @@ class GlossaryTranslationError(RuntimeError):
         """Carries the ids of every `glossary_entries` row whose translation batch failed."""
         super().__init__(f"{len(failed_ids)} term(s) failed to translate: {list(failed_ids)}")
         self.failed_ids = tuple(failed_ids)
+
+
+class GlossaryDefinitionSimplificationError(RuntimeError):
+    """Raised when one or more batches failed during `simplify-glossary-definitions`."""
+
+    def __init__(self, failed_ids: Sequence[int]) -> None:
+        """Carries the ids of every `glossary_entries` row whose simplification batch failed."""
+        super().__init__(f"{len(failed_ids)} definition(s) failed to simplify: {list(failed_ids)}")
+        self.failed_ids = tuple(failed_ids)
