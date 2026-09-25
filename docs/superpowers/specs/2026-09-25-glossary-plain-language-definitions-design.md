@@ -18,7 +18,7 @@ in-progress → implemented once the Definition of Done is verified.
 | **Date** | 2026-09-25 |
 | **Discussion log** | — (brainstormed inline via `superpowers:brainstorming`; no separate transcript file) |
 | **Supersedes / superseded by** | — |
-| **Extends** | Spec 0019 (definition glossary): adds a third, independent pipeline (`simplify-glossary-definitions`) and one nullable column (`definition_plain`) to the table spec 0019 owns and is the only writer of (besides this new column). Does not touch `build-glossary`, `translate-glossary-terms`, extraction, embedding, or ADR 0038's verbatim guarantee on `definition`. |
+| **Extends** | Spec 0019 (definition glossary): adds a third, independent pipeline (`simplify-glossary-definitions`) and one nullable column (`definition_plain`) to the table spec 0019 owns and is the only writer of (besides this new column). Does not touch extraction, embedding, `translate-glossary-terms`, or ADR 0038's verbatim guarantee on `definition` — the one exception is a one-line addition to `GlossaryEntryWriteRepository`'s upsert (FR-1a), mirroring its existing `term_ru` reset. |
 | **Coordinates with** | Spec 0021 (on-demand glossary enrichment, draft, pending sign-off — not yet implemented): both specs touch `GlossaryCandidate`, `CitedGlossaryTerm`/`CitedGlossaryTermResponse` and `ExplanationService._vocabulary_outcome`/`_deduplicated_hints`. Per the user's explicit direction, **this spec is implemented first**; spec 0021's implementation must build on top of this spec's changes to those classes, not the other way around. |
 
 ## Problem & Motivation
@@ -78,10 +78,28 @@ not re-propose them:**
 ### FR-1: A new nullable column holds the plain-language rendering
 
 `glossary_entries` gains `definition_plain TEXT` (nullable, no `CHECK`, no `NOT NULL`),
-written only by the new `simplify-glossary-definitions` script (FR-2). `build-glossary`
-(spec 0019) is not modified and never writes it — every row it inserts or upserts still
-leaves `definition_plain` at its column default, `NULL`, exactly mirroring how it
-already always writes `term_ru = NULL` (spec 0019, ADR 0039).
+written only by the new `simplify-glossary-definitions` script (FR-2). A freshly
+inserted row leaves `definition_plain` at its column default, `NULL`.
+
+### FR-1a: `build-glossary`'s upsert resets `definition_plain` on conflict, mirroring `term_ru`
+
+(Added during grilling, 2026-09-25.) `GlossaryEntryWriteRepository._upsert`
+(`src/glossary/repositories/glossary_entry_write_repository.py:53-58`) already resets
+`term_ru = NULL` on every conflict, unconditionally — even when the re-extracted
+`definition` is byte-identical to what was already stored — precisely so a `--force`
+rebuild never leaves a translation pinned to a `definition` that may have changed. The
+same staleness risk applies to `definition_plain`: without an equivalent reset, a
+`--force` rebuild that changes a block's verbatim text (e.g. an upstream parser fix)
+would silently leave the *old* plain-language rendering in place forever — nothing else
+in the system ever invalidates it, since `simplify-glossary-definitions` only ever
+selects rows where `definition_plain IS NULL`.
+
+The `ON CONFLICT ... DO UPDATE SET` clause therefore also resets
+`definition_plain = NULL`, alongside the existing `term_ru = NULL` reset — a one-line
+addition to the same `SET` clause, not a new query or a new responsibility for the
+class. This is the one and only touch this spec makes to `build-glossary`'s own write
+path; extraction, chunking and embedding remain entirely unmodified (FR-3 is a
+genuinely new, independent script — see Non-Goals).
 
 ### FR-2: `uv run simplify-glossary-definitions [--force] [--dry-run]`
 
@@ -117,10 +135,32 @@ plain, everyday Italian a learner driver understands — no article/comma citati
 legal jargon, 1-2 short sentences.
 
 Unlike `GlossaryExtractorAgent`, this agent has **no verbatim constraint** — rewriting
-is its entire job, the opposite invariant from ADR 0038. Its `output_validator` only
-rejects a response that does not return exactly one item per input entry, in order
-(`ModelRetry`, mirroring `GlossaryTermTranslatorAgent`'s count-match validator, spec
-0019 FR-4) — not a text-fidelity check, since none applies here.
+is its entire job, the opposite invariant from ADR 0038. Its `output_validator` rejects
+a response that does not return exactly one item per input entry, in order (`ModelRetry`,
+mirroring `GlossaryTermTranslatorAgent`'s count-match validator, spec 0019 FR-4) — not a
+text-fidelity check, since none applies here.
+
+`SimplifiedDefinitionItemDto.definition_plain` is bounded by `Field(min_length=1,
+max_length=400)` (added during grilling, 2026-09-25) — a mechanical backstop alongside
+the prompt's own "1-2 frasi brevi" instruction, rejecting (`ModelRetry`, mirroring
+`TranslatedTermItemDto._reject_blank`'s blank check) a response that drifts into a full
+paragraph instead of a short plain-language rewrite. 400 characters is generous for two
+short Italian sentences while still catching a genuinely runaway generation.
+
+The agent's own YAML config (`configs/agents/glossary_definition_simplifier.yaml`) sets
+`model_name: openrouter/google/gemini-2.5-flash-lite` (added during grilling,
+2026-09-25 — the same model `glossary_term_translator.ru.yaml` already uses for its own
+small, well-bounded batch task; simplification is a similarly narrow, per-entry
+rewrite, not open-ended generation, so the lighter/cheaper sibling model is the right
+default rather than the `-flash` tier `glossary_extractor.yaml` upgraded to) and
+`max_tokens` explicitly, as every sibling agent config already does
+(`glossary_term_translator.ru.yaml:4` sets `max_tokens: 800` for a much smaller
+per-item payload — a bare term, not a sentence). Sized against
+`GlossaryConfig.simplification_batch_size`'s default (10) and the 400-character cap
+above (~100 tokens per Italian sentence at ~4 chars/token, so ~1000 tokens of pure
+content for a full batch), doubled for JSON-structure and formatting overhead:
+`max_tokens: 2000`. Both values remain tunable during implementation on real output,
+like the exact prompt text (Open Questions).
 
 This agent is invoked exclusively by `simplify-glossary-definitions` (FR-2), never by
 `build-glossary` or `translate-glossary-terms`.
@@ -175,8 +215,12 @@ only schema change to that model and that repository.
 
 ## Non-Goals
 
-- No change to `build-glossary`, `GlossaryExtractorAgent`, `GlossaryEntryWriteRepository`,
-  chunking, embedding, or ADR 0038's verbatim guarantee.
+- No change to `build-glossary`'s extraction, chunking, embedding, or ADR 0038's
+  verbatim guarantee — `GlossaryExtractorAgent` and the extraction service are
+  untouched. The one exception is `GlossaryEntryWriteRepository`'s upsert, which gains
+  a one-line `definition_plain = NULL` reset alongside its existing `term_ru = NULL`
+  reset (FR-1a) — a cache-invalidation touch, not a functional coupling: the write
+  repository still never calls, imports, or knows about the new agent or script.
 - No change to `translate-glossary-terms`, `GlossaryTermTranslatorAgent`, or `term_ru`.
 - No change to `QuestionExplainerAgent`'s prompt, request, or response contract — it
   keeps reading verbatim `definition` via `candidates_block` (FR-5).
@@ -197,7 +241,11 @@ Mirrors spec 0019's ADR 0039 (term translation) for exactly the same reason, one
 over: a simplification failure must never fail, retry, or skip an extraction — `build-
 glossary`'s job is producing the verbatim `definition` and its embedding, which is what
 retrieval actually depends on; `definition_plain` is a presentation-only derived value
-nothing else in the system depends on.
+nothing else in the system depends on. FR-1a's upsert reset does not weaken this
+decision: resetting a column to `NULL` on conflict is data invalidation the write
+repository already performs for `term_ru`, not a call into the simplification pipeline
+— `build-glossary` still runs, succeeds, or fails without ever knowing
+`GlossaryDefinitionSimplifierAgent` exists.
 
 ### AD-2: The verbatim column is never touched, in either direction
 
@@ -317,7 +365,13 @@ src/glossary/
 ## Testing
 
 - **Simplifier validator** (unit): a batch response with fewer/more items than the
-  input batch is rejected (`ModelRetry`); a matching-count response is accepted.
+  input batch is rejected (`ModelRetry`); a matching-count response is accepted; an
+  item over `max_length=400` or blank is rejected by `SimplifiedDefinitionItemDto`'s
+  own field validation (mirroring `TranslatedTermItemDto`'s tests).
+- **Write repository reset** (`@pytest.mark.integration`, regression + new behavior):
+  re-upserting an existing `(source, article_number, comma_number, term)` row whose
+  `definition_plain` was already set resets it to `NULL` on conflict, exactly like the
+  existing `term_ru` reset this test extends.
 - **Simplification service** (unit, fake agent): one batch in, one `SimplifiedDefinition`
   per row out, aligned 1:1 by position (`zip(..., strict=True)`).
 - **Definition read repository** (unit, fixture rows): selects only rows with
@@ -355,6 +409,10 @@ Verified 2026-09-25 on branch `feat/backend`.
 - **FR-1/Data Model** — `db/init.sql:234-253` (current `glossary_entries` DDL, `term_ru`'s
   existing nullable/no-`CHECK` shape as the precedent this column copies);
   `db/migrations/0020_glossary_term_ru_nullable.sql` (the migration-naming/shape precedent).
+- **FR-1a** (added during grilling, 2026-09-25) —
+  `src/glossary/repositories/glossary_entry_write_repository.py:47-58` (`_upsert`'s
+  `ON CONFLICT ... DO UPDATE SET ..., term_ru = NULL` — confirmed the existing,
+  unconditional reset this spec's `definition_plain = NULL` addition mirrors exactly).
 - **FR-2/FR-3/FR-4/Package Structure** — direct reads of
   `src/glossary/repositories/glossary_term_read_repository.py`,
   `glossary_term_update_repository.py`,
@@ -389,13 +447,11 @@ Verified 2026-09-25 on branch `feat/backend`.
 
 - [ ] **non-blocking** — Exact prompt text for `GlossaryDefinitionSimplifierAgent`
   (register, sentence count, whether to name the concept being defined at the start of
-  the sentence) and its model/config (proposed: same
-  `openrouter/google/gemini-2.5-flash` family as its siblings) — left to implementation,
-  tuned on real output.
-- [ ] **non-blocking** — Whether `SimplifiedDefinitionItemDto.definition_plain` needs a
-  `max_length` bound (mirroring `TranslatedTermItemDto.term_ru`'s `max_length=80`) —
-  a plain-language definition is a sentence, not a single term, so a much larger bound
-  (or none) is expected; confirm during implementation against real agent output.
+  the sentence) — left to implementation, tuned on real output. Model
+  (`openrouter/google/gemini-2.5-flash-lite`), `max_tokens` (2000) and the
+  `definition_plain` length bound (`max_length=400`) were resolved during grilling
+  (2026-09-25) — see FR-3 — but remain tunable if real output shows the bounds are
+  wrong in either direction.
 
 ## Follow-ups after implementation
 
@@ -418,6 +474,19 @@ Verified 2026-09-25 on branch `feat/backend`.
 
 ## Changelog
 
+- **2026-09-25 (later)** — Grilling round (`mattpocock-skills:grilling`, one question at
+  a time per this project's CLAUDE.md override). Found and closed a real staleness gap:
+  `GlossaryEntryWriteRepository`'s upsert already resets `term_ru = NULL` on every
+  conflict but had no equivalent for `definition_plain`, so a `--force` rebuild
+  changing a block's verbatim text would silently orphan the old plain-language
+  rendering forever — added FR-1a to reset it too, and corrected the Non-Goals bullet
+  that had claimed `GlossaryEntryWriteRepository` stays fully untouched. Added a
+  mechanical `max_length=400` bound to `SimplifiedDefinitionItemDto.definition_plain`
+  (previously left fully open) and fixed the agent's model
+  (`openrouter/google/gemini-2.5-flash-lite`, matching `glossary_term_translator.ru`'s
+  choice for a similarly narrow per-entry task) and `max_tokens` (2000, sized against
+  the batch size default and the new length bound) — both requested directly by the
+  user rather than surfaced as open questions.
 - **2026-09-25** — Initial draft, from an interactive `superpowers:brainstorming`
   session (schema direction, consumer scope, NULL fallback, and pipeline shape all
   decided conversationally, one question at a time, per this project's CLAUDE.md
