@@ -10,7 +10,7 @@ from glossary.configs import GlossaryConfig
 
 @repository
 class GlossaryAgentConfigRepository:
-    """The package's single door to its two agent prompt files.
+    """The package's single door to its three agent prompt files.
 
     Unlike `guidami_ai_patente`'s `AgentConfigRepository`, there is only one
     directory here: `GlossaryConfig.agents_dir` (AD-5) — this prompt enters no
