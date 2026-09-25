@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field
 from pydantic_settings import SettingsConfigDict
 
 from commons.configs import BaseConfig, PostgresConnectionConfig
@@ -75,9 +75,9 @@ class GlossaryConfig(BaseConfig):
     parsed_dir: Path = Path("data/parsed")
     project_root: Path = Path(".")
     blocks: tuple[GlossaryBlockConfig, ...] = _DEFAULT_BLOCKS
-    max_block_chars: int = 6000
-    translation_batch_size: int = 10
-    embedding: GlossaryEmbeddingConfig = GlossaryEmbeddingConfig()
+    max_block_chars: int = Field(default=6000, ge=1)
+    translation_batch_size: int = Field(default=10, ge=1)
+    embedding: GlossaryEmbeddingConfig = Field(default_factory=GlossaryEmbeddingConfig)
     glossary_entries_table: str = "glossary_entries"
     embedding_column: str = Field(
         default="embedding_3_small",
@@ -88,10 +88,3 @@ class GlossaryConfig(BaseConfig):
             "for the app to read what this actually wrote."
         ),
     )
-
-    @field_validator("max_block_chars", "translation_batch_size")
-    @classmethod
-    def _validate_positive(cls, value: int, info: object) -> int:
-        if value < 1:
-            raise ValueError(f"{info.field_name} must be >= 1, got {value}")  # type: ignore[attr-defined]
-        return value
