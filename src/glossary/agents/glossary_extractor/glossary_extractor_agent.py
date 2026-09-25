@@ -8,6 +8,7 @@ from pywire import Autowired, agent
 from commons.ai.agents import AgentConfig, BaseAgent
 from commons.ai.observability import LlmCallTracker
 from glossary.repositories import GlossaryAgentConfigRepository
+from glossary.utils import count_expected_entries, is_abrogated, is_cross_reference
 
 from .dto import GlossaryExtractorRequest, GlossaryExtractorResponse
 
@@ -21,8 +22,10 @@ class GlossaryExtractorAgent(BaseAgent[GlossaryExtractorRequest, GlossaryExtract
     """Extracts term/definition pairs from one block's text, verbatim (FR-3, AD-2).
 
     The model may only select and split the normative text, never rewrite it: the
-    `output_validator` rejects a non-verbatim definition, an absent term, or a
-    repeated term, following `CommaLabelerAgent`'s precedent (spec 0014).
+    `output_validator` rejects a non-verbatim definition, an absent term, a repeated
+    term, an abrogated entry, a cross-reference-only ("cfr.") entry, or a response with
+    fewer entries than the chunk's own markers guarantee (a lower bound, see
+    `count_expected_entries`), following `CommaLabelerAgent`'s precedent (spec 0014).
     """
 
     output_type = GlossaryExtractorResponse
@@ -79,6 +82,29 @@ class GlossaryExtractorAgent(BaseAgent[GlossaryExtractorRequest, GlossaryExtract
                     "Ogni termine deve comparire una sola volta."
                 )
             seen_terms.add(term_key)
+            if is_abrogated(entry.term) or is_abrogated(entry.definition):
+                logger.warning("Abrogated entry %r rejected", entry.term)
+                raise ModelRetry(
+                    f'La voce "{entry.term}" è abrogata. Escludi le voci abrogate dal risultato.'
+                )
+            if is_cross_reference(entry.definition):
+                logger.warning("Cross-reference-only entry %r rejected", entry.term)
+                raise ModelRetry(
+                    f'La voce "{entry.term}" è solo un rinvio ("cfr.") a un\'altra voce. '
+                    "Escludi le voci di solo rinvio dal risultato."
+                )
+        expected = count_expected_entries(ctx.deps.block_text)
+        if len(data.entries) < expected:
+            logger.warning(
+                "Incomplete extraction rejected: %d entries, at least %d expected",
+                len(data.entries),
+                expected,
+            )
+            raise ModelRetry(
+                f"Hai estratto {len(data.entries)} voci, ma il testo ne contiene almeno "
+                f"{expected} (escluse le voci abrogate e quelle di solo rinvio). "
+                "Estrai tutte le voci, senza ometterne nessuna."
+            )
         return data
 
 

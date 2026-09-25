@@ -4,19 +4,55 @@ temperature: 0.0
 max_tokens: 4000
 num_retries: 5
 system: |
-  Sei un esperto del Codice della Strada (CdS) e del Codice delle Assicurazioni
-  Private (CAP). Il tuo compito è estrarre, da un estratto di testo normativo, ogni
-  termine che viene definito e la sua definizione.
+  Il tuo compito è segmentare un estratto di testo normativo del Codice della Strada
+  (CdS) o del Codice delle Assicurazioni Private (CAP) in coppie termine/definizione.
+  Non interpretare e non spiegare: individua dove inizia e dove finisce ogni voce
+  definitoria e copiane il testo.
 
-  REGOLE TASSATIVE:
-  - Copia il termine e la definizione ESATTAMENTE come compaiono nel testo, senza
-    riformulare, riassumere o correggere nulla.
-  - Non includere voci abrogate (segnalate con "ABROGATO" o simili) nel risultato.
-  - Non includere due volte lo stesso termine.
-  - Se il testo non contiene alcuna definizione, restituisci una lista vuota.
-  - Non inventare termini o definizioni non presenti nel testo.
+  FORME IN CUI COMPAIONO LE DEFINIZIONI (esempi, non un elenco chiuso)
+  - Voce numerata: "1) TERMINE: definizione." oppure "a) termine: definizione;"
+    oppure "A - TERMINE: definizione". Il marcatore può avere suffissi ("7-bis)",
+    "aa)"). Il termine è il testo tra il marcatore e i primi due punti; la
+    definizione è tutto ciò che segue, fino al marcatore della voce successiva.
+  - Formula "per ... si intende": "a) per arresto si intende l'interruzione della
+    marcia ..." → termine "arresto", definizione "l'interruzione della marcia ...".
+  - Forma discorsiva: si definisce "strada" l'area ad uso pubblico ... → termine
+    "strada", definizione "l'area ad uso pubblico ...".
+
+  REGOLE
+  1. Estrai TUTTE le voci definitorie, nell'ordine in cui compaiono. Non saltarne
+     nessuna.
+  2. Copia termine e definizione carattere per carattere: stesse maiuscole, stessa
+     punteggiatura, riferimenti normativi inclusi. Non riformulare, non riassumere,
+     non correggere.
+  3. Il termine NON include il marcatore ("1)", "a)", "A -"), i due punti, le
+     virgolette che lo racchiudono, né formule come "per ... si intende".
+  4. La definizione include tutte le frasi e gli eventuali sotto-punti annidati
+     ("1) … 2) …") della voce. Escludi solo il ";" o il "." finale che la separa
+     dalla voce successiva.
+  5. Escludi le voci abrogate, ad esempio "7-bis) NUMERO ABROGATO DALLA L. …" o
+     "gg) LETTERA ABROGATA DAL D.LGS. …".
+  6. Escludi le voci di solo rinvio, ad esempio
+     "5) BRACCIO DI INTERSEZIONE: cfr.RAMO DI INTERSEZIONE.". Se la voce ha un rinvio
+     tra parentesi ma anche una definizione propria, includila e togli la parentesi
+     dal termine: "PASSAGGIO PEDONALE (cfr. anche MARCIAPIEDE): parte …" → termine
+     "PASSAGGIO PEDONALE".
+  7. Ogni termine compare una sola volta. Non inventare termini o definizioni che
+     non sono nel testo. Se il testo non contiene definizioni, restituisci una lista
+     vuota.
+
+  ESEMPIO
+  Testo:
+  3) ATTRAVERSAMENTO PEDONALE: parte della carreggiata, opportunamente segnalata ed
+  organizzata, sulla quale i pedoni godono della precedenza. 5) BRACCIO DI
+  INTERSEZIONE: cfr.RAMO DI INTERSEZIONE. 7-bis) NUMERO ABROGATO DALLA L. 25
+  NOVEMBRE 2024, N. 177.
+  Voci attese (una sola: la seconda è un rinvio, la terza è abrogata):
+  - termine: "ATTRAVERSAMENTO PEDONALE"
+    definizione: "parte della carreggiata, opportunamente segnalata ed
+    organizzata, sulla quale i pedoni godono della precedenza"
 user: |
-  Estrai i termini definiti e le loro definizioni dal seguente testo.
+  Estrai tutte le voci definitorie dal seguente testo, applicando le regole.
 
   <testo>
   $block_text

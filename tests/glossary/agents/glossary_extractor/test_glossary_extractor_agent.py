@@ -17,6 +17,8 @@ _TEST_CONFIG = AgentConfig(
     num_retries=3,
 )
 _BLOCK_TEXT = "1) ALFA: significato di alfa. 2) BETA: significato di beta."
+_ALFA = {"term": "ALFA", "definition": "significato di alfa"}
+_BETA = {"term": "BETA", "definition": "significato di beta"}
 
 
 def _agent() -> GlossaryExtractorAgent:
@@ -45,10 +47,9 @@ def _scripted_model(entry_lists: list[list[dict]]) -> FunctionModel:
 async def test_a_non_verbatim_definition_self_corrects_on_retry() -> None:
     agent = _agent()
     request = GlossaryExtractorRequest(block_text=_BLOCK_TEXT)
-    bad = [{"term": "ALFA", "definition": "un significato inventato"}]
-    good = [{"term": "ALFA", "definition": "significato di alfa"}]
+    bad = [{"term": "ALFA", "definition": "un significato inventato"}, _BETA]
 
-    with agent.core_agent.override(model=_scripted_model([bad, good])):
+    with agent.core_agent.override(model=_scripted_model([bad, [_ALFA, _BETA]])):
         response = await agent.run(request)
 
     assert response.entries[0].definition == "significato di alfa"
@@ -69,27 +70,63 @@ async def test_an_absent_term_never_self_corrects_and_exhausts_retries() -> None
 async def test_a_duplicate_term_is_rejected() -> None:
     agent = _agent()
     request = GlossaryExtractorRequest(block_text=_BLOCK_TEXT)
-    duplicate = [
-        {"term": "ALFA", "definition": "significato di alfa"},
-        {"term": "ALFA", "definition": "significato di alfa"},
-    ]
-    good = [{"term": "ALFA", "definition": "significato di alfa"}]
+    duplicate = [_ALFA, _ALFA, _BETA]
 
-    with agent.core_agent.override(model=_scripted_model([duplicate, good])):
+    with agent.core_agent.override(model=_scripted_model([duplicate, [_ALFA, _BETA]])):
         response = await agent.run(request)
 
-    assert len(response.entries) == 1
+    assert len(response.entries) == 2
 
 
 async def test_a_valid_response_is_accepted_without_retry() -> None:
     agent = _agent()
     request = GlossaryExtractorRequest(block_text=_BLOCK_TEXT)
-    good = [
-        {"term": "ALFA", "definition": "significato di alfa"},
-        {"term": "BETA", "definition": "significato di beta"},
-    ]
 
-    with agent.core_agent.override(model=_scripted_model([good])):
+    with agent.core_agent.override(model=_scripted_model([[_ALFA, _BETA]])):
+        response = await agent.run(request)
+
+    assert [e.term for e in response.entries] == ["ALFA", "BETA"]
+
+
+async def test_an_incomplete_response_self_corrects_on_retry() -> None:
+    agent = _agent()
+    request = GlossaryExtractorRequest(block_text=_BLOCK_TEXT)
+
+    with agent.core_agent.override(model=_scripted_model([[_ALFA], [_ALFA, _BETA]])):
+        response = await agent.run(request)
+
+    assert [e.term for e in response.entries] == ["ALFA", "BETA"]
+
+
+async def test_an_abrogated_entry_is_rejected() -> None:
+    agent = _agent()
+    block_text = (
+        "1) ALFA: significato di alfa. 1-bis) NUMERO ABROGATO DALLA L. 1 GENNAIO 2020, N. 1. "
+        "2) BETA: significato di beta."
+    )
+    request = GlossaryExtractorRequest(block_text=block_text)
+    abrogated = {
+        "term": "NUMERO ABROGATO",
+        "definition": "NUMERO ABROGATO DALLA L. 1 GENNAIO 2020",
+    }
+
+    with agent.core_agent.override(
+        model=_scripted_model([[_ALFA, abrogated, _BETA], [_ALFA, _BETA]])
+    ):
+        response = await agent.run(request)
+
+    assert [e.term for e in response.entries] == ["ALFA", "BETA"]
+
+
+async def test_a_cross_reference_only_entry_is_rejected() -> None:
+    agent = _agent()
+    block_text = "1) ALFA: significato di alfa. 2) BETA: significato di beta. 3) GAMMA: cfr. ALFA."
+    request = GlossaryExtractorRequest(block_text=block_text)
+    cross_reference = {"term": "GAMMA", "definition": "cfr. ALFA."}
+
+    with agent.core_agent.override(
+        model=_scripted_model([[_ALFA, _BETA, cross_reference], [_ALFA, _BETA]])
+    ):
         response = await agent.run(request)
 
     assert [e.term for e in response.entries] == ["ALFA", "BETA"]
