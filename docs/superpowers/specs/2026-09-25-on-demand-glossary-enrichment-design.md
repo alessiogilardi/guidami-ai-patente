@@ -109,17 +109,43 @@ empty list, which is a normal, non-error outcome.
 
 ### FR-2: Grounding reuses the existing legal-retrieval infrastructure, unchanged
 
-Before generating, `GlossaryEnricherAgent`'s caller supplies it with the same
+Before generating, `ExplanationService` supplies `GlossaryEnricherAgent` with the same
 dense+full-text candidate commas `CandidateSetService`
 (`labeling/services/candidate_set_service.py`) already retrieves to ground the legal
-explanation — reached via `LiveLabelingStackProvider.candidate_set`
-(`providers/live_labeling_stack_provider.py:81-83`), the identical instance
-`CommaSelectorService` uses for live comma labeling. This retrieval is answer-blind by
-construction: `CandidateSetService.execute` and the `CorpusReadRepository` methods it
-calls (`dense_top_k`, `text_match_top_k`, `extract_lexemes`) take only an embedding and
-lexemes, never `correct_answer` — only the comma-labeling *judge*, which this feature
-never invokes, reads the answer. No new retrieval infrastructure is introduced; this
-feature only adds a second caller of retrieval that already exists.
+explanation, obtained exactly the way `CommaSelectorService._label_live` already does
+it:
+
+1. `LiveLabelingStackProvider.quiz.find_with_vector(number, judge_identity.epoch
+   .candidate_variant, EMBEDDING_MODEL_COLUMN)` — the identical call, same variant, same
+   model column — returns the question's `QuizEvaluationRow`, or `None` if the question
+   has no embedding for that variant yet (not indexed).
+2. `None` is not a failure: `GlossaryEnricherAgent` still runs, with an empty list of
+   candidate commas, and falls back to general knowledge for every term (FR-3) exactly
+   as it would for a term no comma addresses. There is nothing special to catch here —
+   an empty list is already a valid input.
+3. Otherwise, `LiveLabelingStackProvider.candidate_set.execute(row)` — the same
+   `CandidateSetService` instance `CommaSelectorService` resolves through the same
+   provider — returns the two-arm union of `CandidateComma`s; only the wrapped
+   `RetrievedComma` (`.comma`) is forwarded to `GlossaryEnricherRequest`, not the
+   `dense_rank`/`text_rank` fields, which exist for a downstream judge this feature
+   never runs.
+
+**On `QuizEvaluationRow` carrying `correct_answer`** (resolved during grilling,
+2026-09-25): `QuizEvaluationRow` does structurally carry `correct_answer: bool`
+(`domain/models/retrieval/quiz_evaluation_row.py:20`), and an earlier draft of this FR
+proposed bypassing `CandidateSetService` entirely to avoid that object ever entering
+`_vocabulary_outcome`'s scope, mirroring spec 0020 AD-4's structural answer-blindness.
+That draft was reconsidered and dropped: spec 0020's FR-2 itself already notes that
+answer-blindness stopped being a privacy requirement once "Spiega" became reachable
+only *after* the user has submitted and seen their own result — it survives today only
+as a prompt-focus/testability convention, and that convention is about what
+`GlossaryEnricherRequest` (the DTO actually sent to the LLM) contains, not about what
+local variables `ExplanationService` briefly holds during retrieval.
+`LabelingConfig.lexeme_fields`/the `LexemeField` enum (`domain/enums/lexeme_field.py`)
+confirm `CandidateSetService.execute`'s own lexeme extraction never reads
+`correct_answer` in practice either — the enum has no member for it. The guarantee this
+spec keeps, and tests, is the same one `QuestionExplainerRequest` already has:
+`GlossaryEnricherRequest` has no field derived from the answer, structurally.
 
 ### FR-3: General knowledge is a fallback, never a competing source
 
@@ -169,6 +195,10 @@ standalone, stateless, no injected dependency) merges the two sources:
   (`candidate.definition_plain or candidate.definition`) then simply resolves to the
   on-demand agent's own `definition` unchanged, exactly like any other
   not-yet-simplified DB row.
+- An on-demand `GlossaryCandidate` is built from only `term`/`definition` (the agent's
+  output) plus `origin=AGENT_GENERATED` — after `GlossaryCandidate` is narrowed to the
+  fields the vocabulary pipeline actually reads (AD-8), there is no DB-row identity
+  field left to fake a value for.
 
 ### FR-7: A failure of the on-demand source degrades to DB-only candidates
 
@@ -189,12 +219,13 @@ A new enum, `GlossaryTermOrigin` (`enums/`, `StrEnum`, members `VERBATIM_CORPUS`
 `AGENT_GENERATED`, values from `auto()`), is added to:
 
 - `GlossaryCandidate` — new field
-  `origin: GlossaryTermOrigin = GlossaryTermOrigin.VERBATIM_CORPUS`.
-  The default keeps `GlossaryReadRepository._row_to_candidate`'s existing construction
-  call unchanged; the merge function (FR-6) is the only caller that ever passes
-  `AGENT_GENERATED`. This is a **new, distinct field from `GlossaryCandidate.source`**,
-  which already exists and means the corpus source (`cds`/`cap`) — not provenance; the
-  two are never confused.
+  `origin: GlossaryTermOrigin = GlossaryTermOrigin.VERBATIM_CORPUS`. The default means
+  `GlossaryReadRepository._row_to_candidate` need not pass `origin` explicitly at all;
+  the merge function (FR-6) is the only caller that ever passes `AGENT_GENERATED`. This
+  spec's `origin` is unrelated to `GlossaryCandidate.source` (`cds`/`cap`), which AD-8
+  removes from the model entirely as part of the same change — the two were never at
+  risk of being confused with each other, but `source` is gone regardless, for the
+  independent reason AD-8 gives (unread outside the repository).
 - `CitedGlossaryTerm` (domain model) and `CitedGlossaryTermResponse` (API schema) —
   both gain `origin: GlossaryTermOrigin`, populated by
   `ExplanationService._deduplicated_hints` from the candidate's own `origin` field
@@ -245,18 +276,28 @@ stages, this spec gathers the vocabulary stage's own two glossary sources *insid
 merge here, rather than teaching `QuestionExplainerAgent` about two sources, keeps that
 agent's contract exactly what spec 0020 already tested and shipped.
 
-### AD-2: Grounding reuses `LiveLabelingStackProvider.candidate_set`, not a new repository
+### AD-2: Grounding reuses `LiveLabelingStackProvider.candidate_set` unmodified, fed by `quiz.find_with_vector`
 
 `ExplanationService` gains `Autowired[LiveLabelingStackProvider]` (already a
 `@provider` resolvable in this container, `providers/live_labeling_stack_provider.py`)
-alongside its existing fields, and reads `.candidate_set` — the same
-`CandidateSetService` instance `CommaSelectorService` already resolves through the same
-provider for live comma labeling. No new pywire component, no new SQL: this feature's
-only new database interaction is the LLM call itself. This choice trades a small
-cross-cutting dependency (the vocabulary stage now touches a labeling-stack provider it
-did not touch before) for zero new retrieval code to maintain and test — retrieval
-correctness for `article_commas` stays proven by `CandidateSetService`'s and
-`CorpusReadRepository`'s own existing tests.
+alongside its existing fields, and reads `.quiz.find_with_vector` then
+`.candidate_set.execute` — the exact same two calls, in the exact same order, that
+`CommaSelectorService._label_live` already makes for live comma labeling (FR-2). No new
+pywire component, no new SQL, no new orchestration logic to reason about: this
+feature's only new database interaction is the LLM call itself, and its only new
+runtime logic is unwrapping `CandidateComma.comma` and handling `find_with_vector`'s
+`None`. This choice trades a small cross-cutting dependency (the vocabulary stage now
+touches a labeling-stack provider it did not touch before) for zero new retrieval code
+to maintain and test — retrieval correctness for `article_commas` stays proven by
+`CandidateSetService`'s and `CorpusReadRepository`'s own existing tests.
+
+Grilling (2026-09-25) considered and rejected re-implementing the two-arm union
+directly against `LiveLabelingStackProvider.corpus: CorpusReadRepository`, specifically
+to avoid ever fetching a `QuizEvaluationRow` (which carries `correct_answer`) into
+`_vocabulary_outcome`. Rejected once traced against spec 0020's own FR-2, which already
+demoted answer-blindness from a privacy requirement to a testability convention once
+"Spiega" became post-answer-only — see FR-2's "On `QuizEvaluationRow` carrying
+`correct_answer`" note for the full reasoning.
 
 ### AD-3: `GlossaryEnricherAgent` is a new, distinct agent — not a reconfigured `GlossaryExtractorAgent`
 
@@ -264,10 +305,11 @@ Per the rejected-shapes discussion: `GlossaryExtractorAgent`'s verbatim
 `output_validator` (ADR 0038) is not a switch to flip, it is the class's entire reason
 to exist. `GlossaryEnricherAgent` gets its own config
 (`configs/agents/glossary_enricher.yaml`, unsuffixed — Italian output, the project's
-base language), its own request/response DTOs, and, if needed, its own duplicate-term
-`model_validator` (mirroring `QuestionExplainerResponse._reject_repeated_ordinals`) —
-independent of `GlossaryExtractorAgent` in every respect except sharing the general
-"agent extracts/generates term+definition pairs" shape.
+base language), its own request/response DTOs, and its own duplicate-term
+`model_validator` (mirroring `QuestionExplainerResponse._reject_repeated_ordinals`,
+confirmed during grilling, 2026-09-25 — not conditional) — independent of
+`GlossaryExtractorAgent` in every respect except sharing the general "agent
+extracts/generates term+definition pairs" shape.
 
 ### AD-4: Ephemeral by design — `glossary_entries` keeps one writer
 
@@ -279,12 +321,15 @@ schema change to a table this spec has no reason to touch. Ephemeral generation 
 that decision entirely; if a future spec wants persistence, it is a separate, explicit
 schema change with its own migration, not a side effect of this one.
 
-### AD-5: Provenance field is new and separate from the existing `source` field
+### AD-5: The new provenance field is named `origin`, after an existing precedent
 
-`GlossaryCandidate.source` already means the corpus source (`cds`/`cap`) — reusing that
-name for retrieval-vs-generation provenance would silently overload it. `origin`
-(`GlossaryTermOrigin`) is a new, independent field, named after the existing
-`ProvenanceResponse.origin` precedent (spec 0017) rather than invented fresh.
+`GlossaryCandidate.source` meant the corpus source (`cds`/`cap`) before this spec — a
+name this spec's own `origin` was deliberately never going to reuse, to avoid silently
+overloading it. AD-8 later removes `source` from the model outright (unread outside
+`GlossaryReadRepository`), which makes the naming collision moot in the shipped code,
+but the naming choice itself stands independently: `origin` (`GlossaryTermOrigin`) is
+named after the existing `ProvenanceResponse.origin` precedent (spec 0017), not invented
+fresh.
 
 ### AD-6: Merge dedup key mirrors the existing `_deduplicated_hints` key
 
@@ -303,28 +348,59 @@ by spec 0020 (degrade the whole stage) — this spec adds a second call whose fa
 should degrade only its own contribution, which `TaskGroup`'s all-or-nothing
 cancellation cannot express.
 
+### AD-8: `GlossaryCandidate` is narrowed to the fields the vocabulary pipeline actually reads
+
+Resolved during grilling (2026-09-25), replacing an earlier draft that gave an
+`AGENT_GENERATED` candidate placeholder values (a negative synthetic `id`, sentinel
+strings) for `GlossaryCandidate`'s DB-row-identity fields. A repo-wide search confirmed
+`id`/`source`/`article_number`/`comma_number` are read nowhere outside
+`GlossaryReadRepository` itself — the dense/full-text fusion these fields exist for
+happens entirely in SQL (the `fused` CTE), before `_row_to_candidate` ever builds a
+`GlossaryCandidate`. `GlossaryCandidate` is therefore trimmed to exactly
+`term`/`definition`/`definition_plain`/`term_ru`/`origin` (FR-8) — a vocabulary
+candidate, not a `glossary_entries` row projection — and `_row_to_candidate` still reads
+all seven SQL columns (the four identity columns remain necessary for the query's own
+fusion) but only forwards the five that matter onto the model. An on-demand candidate
+then has exactly the same shape as a DB one, with no placeholder value anywhere. This
+also updates the class's own docstring (`"One glossary_entries row a hybrid retrieval
+returned"` no longer describes it accurately) and requires updating every existing test
+that constructs a `GlossaryCandidate` with the four now-removed fields — an expected,
+mechanical consequence of narrowing a model to its real readers, not a behavior change.
+
 ## Data Model
 
 No new table, no new column on any existing table. All changes are Python-level:
 
 - New `enums/glossary_term_origin.py`: `GlossaryTermOrigin(StrEnum)` — `VERBATIM_CORPUS`,
   `AGENT_GENERATED` (values via `auto()`, i.e. `"verbatim_corpus"`, `"agent_generated"`).
-- `models/glossary_candidate.py`: `GlossaryCandidate` gains
-  `origin: GlossaryTermOrigin = GlossaryTermOrigin.VERBATIM_CORPUS`, alongside the
-  `definition_plain: str | None = None` field spec 0022 already added (implemented,
-  current file). The two fields are independent: `origin` says *who produced* the
-  candidate, `definition_plain` says *which register* its definition is in — an
-  on-demand candidate has `origin=AGENT_GENERATED` and `definition_plain=None` (FR-6).
+- `models/glossary_candidate.py`: `GlossaryCandidate` is narrowed (AD-8) to
+  `term: str`, `definition: str`, `definition_plain: str | None = None` (spec 0022,
+  already implemented), `term_ru: str | None`, and this spec's new
+  `origin: GlossaryTermOrigin = GlossaryTermOrigin.VERBATIM_CORPUS` — dropping
+  `id`/`source`/`article_number`/`comma_number`, confirmed unread outside
+  `GlossaryReadRepository`. `origin` says *who produced* the candidate,
+  `definition_plain` says *which register* its definition is in — an on-demand
+  candidate has `origin=AGENT_GENERATED` and `definition_plain=None` (FR-6).
+- `repositories/glossary_read_repository.py`: `_row_to_candidate` keeps reading all
+  seven SQL columns (`_COLUMNS` is unchanged — the fusion CTEs still need `id`) but
+  only forwards `term`/`definition`/`definition_plain`/`term_ru` onto the narrowed
+  `GlossaryCandidate` (`origin` defaults to `VERBATIM_CORPUS`, untouched call site
+  otherwise).
 - `models/cited_glossary_term.py`: `CitedGlossaryTerm` gains
   `origin: GlossaryTermOrigin` (no default — always resolved explicitly from the
   candidate it was built from).
 - `api/schemas/quiz_explanation.py`: `CitedGlossaryTermResponse` gains
   `origin: GlossaryTermOrigin`.
 - New `agents/glossary_enricher/` package: `GlossaryEnricherAgent`,
-  `GlossaryEnricherRequest` (question `text`, `image_description`, the retrieved
-  candidate commas), `GlossaryEnricherResponse` (a list of `{term, definition}`
-  entries — response DTO, Italian docstring/`Field(description=...)` per the
-  code-conventions exception for agent response DTOs).
+  `GlossaryEnricherRequest` (question `text`, `image_description`, and `commas:
+  list[RetrievedComma]` — the unwrapped `.comma` of each `CandidateComma`
+  `LiveLabelingStackProvider.candidate_set.execute` returns, FR-2; no rank fields, this
+  feature has no judge stage to rank for), `GlossaryEnricherResponse` (a list of
+  `{term, definition}` entries, its own `model_validator` rejecting a duplicate
+  `term.casefold()` within one response, mirroring
+  `QuestionExplainerResponse._reject_repeated_ordinals` — response DTO, Italian
+  docstring/`Field(description=...)` per the code-conventions exception for agent
+  response DTOs).
 - New `configs/agents/glossary_enricher.yaml`.
 - New merge function, `utils/glossary/merge_glossary_candidates.py` (exact path/name
   left to implementation, following the precedent of `comma_repeal_detector`/
@@ -332,19 +408,11 @@ No new table, no new column on any existing table. All changes are Python-level:
 - `services/explanation_service.py`: `ExplanationService` gains
   `enricher: Autowired[GlossaryEnricherAgent]` and
   `labeling_stack: Autowired[LiveLabelingStackProvider]` (AD-2); `_vocabulary_outcome`
-  is restructured per FR-2/FR-6/FR-7.
+  is restructured per FR-2/FR-6/FR-7. No new retrieval-depth config: the shared
+  `candidate_set` instance's own `LabelingConfig.dense_k`/`text_k` apply, unchanged.
 
-`GlossaryCandidate`'s `id: int`, `source: str`, `article_number: str`,
-`comma_number: str` fields are all non-optional today and none of them are read
-downstream past `_deduplicated_hints` (only `term`/`definition`/`definition_plain`/
-`term_ru`/`origin` are read there — `definition_plain` only through spec 0022's own
-`or` fallback, not copied onto `CitedGlossaryTerm` as its own field). For an
-`AGENT_GENERATED` candidate, which has no real `glossary_entries` row, these four
-fields are populated with placeholder values
-(exact scheme — e.g. a negative synthetic `id` sequence, a sentinel string for
-`source`/`article_number`/`comma_number` — left to implementation; see Open
-Questions). `term_ru` is always `None` for an `AGENT_GENERATED` candidate: this feature
-generates Italian only, exactly like `GlossaryExtractorAgent` does before
+`term_ru` is always `None` for an `AGENT_GENERATED` candidate: this feature generates
+Italian only, exactly like `GlossaryExtractorAgent` does before
 `translate-glossary-terms` runs its own separate pass (spec 0019, AD-11).
 
 ## Constraints
@@ -371,9 +439,10 @@ generates Italian only, exactly like `GlossaryExtractorAgent` does before
 - **Agent-level** (`GlossaryEnricherAgent`, mirroring `question_explainer`'s test
   shape): grounds a definition in a supplied candidate comma when one is relevant;
   falls back to general knowledge, still producing an entry, when no supplied comma is
-  relevant to a given term; a duplicate `term.casefold()` within one response is
-  rejected (if a `model_validator` is added per AD-3) or otherwise documented as
-  tolerated — confirmed during implementation.
+  relevant to a given term, and also when the supplied comma list is empty (FR-2's
+  `find_with_vector` → `None` case); a duplicate `term.casefold()` within one response
+  is rejected by `GlossaryEnricherResponse`'s own `model_validator` (AD-3), mirroring
+  `test_question_explainer_response_rejects_repeated_ordinal`'s shape.
 - **Merge function** (unit, pure, no fakes needed): a DB candidate and an on-demand
   entry sharing a normalized term — the on-demand one is dropped, the DB one keeps
   `origin=VERBATIM_CORPUS`; a non-conflicting on-demand entry is kept with
@@ -387,13 +456,22 @@ generates Italian only, exactly like `GlossaryExtractorAgent` does before
   `term_explanation` built from DB-only candidates, unchanged from spec 0020's current
   behavior; (c) `GlossaryReadRepository.candidates_for` raises — the whole stage still
   degrades to `(None, ())`, exactly as today (regression guard: this spec must not
-  change this existing behavior).
+  change this existing behavior); (d) `LiveLabelingStackProvider.quiz.find_with_vector`
+  returns `None` (not indexed under `candidate_variant`) — `GlossaryEnricherAgent` still
+  runs, with an empty comma list, not a degrade (FR-2).
 - **Endpoint** (`api_client`, fake agents): `GET .../explanation` response's
   `translation_hints` entries carry the correct `origin` for a DB-sourced and an
   agent-generated hint in the same response.
-- **`GlossaryCandidate`/`CitedGlossaryTerm` construction**: existing
-  `GlossaryReadRepository._row_to_candidate` call sites still produce
-  `origin=VERBATIM_CORPUS` without being touched (default-value regression guard).
+- **`GlossaryCandidate` narrowing** (AD-8, regression guard): every existing test
+  constructing a `GlossaryCandidate` is updated to the five-field shape
+  (`term`/`definition`/`definition_plain`/`term_ru`/`origin`); existing
+  `GlossaryReadRepository._row_to_candidate` behavior is otherwise unchanged —
+  `origin` defaults to `VERBATIM_CORPUS` without that call site passing it explicitly.
+- **`GlossaryEnricherRequest`** (unit): has no field derived from the answer,
+  structurally — same assertion shape as
+  `test_question_explainer_request_has_no_answer_field` (spec 0020), confirming FR-2's
+  guarantee holds regardless of what `ExplanationService` fetches internally to build
+  it.
 
 ## Feasibility Evidence
 
@@ -403,16 +481,27 @@ Verified 2026-09-25 on branch `feat/backend`.
   `agents/question_explainer/dto/question_explainer_request.py:1-51`,
   `agents/question_explainer/dto/question_explainer_response.py:1-38` (the unchanged
   contract this spec's merged candidate list feeds into).
-- **FR-2/AD-2** — `services/comma_selector_service.py:56-127` (`CommaSelectorService`
-  already resolving `LiveLabelingStackProvider` and reading `.corpus`/labeling
-  collaborators through it, the pattern this spec's `ExplanationService` addition
-  mirrors); `providers/live_labeling_stack_provider.py:55-96` (`.corpus:
-  CorpusReadRepository`, `.candidate_set: CandidateSetService`, both built once in
-  `__init__`); `labeling/services/candidate_set_service.py:1-51`
+- **FR-2/AD-2** — `services/comma_selector_service.py:56-127` (`CommaSelectorService
+  ._label_live`'s exact `find_with_vector` → `candidate_set.execute` sequence, the call
+  order this spec's `ExplanationService` addition mirrors verbatim);
+  `providers/live_labeling_stack_provider.py:55-96` (`.corpus: CorpusReadRepository`,
+  `.candidate_set: CandidateSetService`, `.quiz: QuizReadRepository`, all built once in
+  `__init__`); `commons/repositories/db/quiz_read_repository.py:57-88`
+  (`find_with_vector`'s signature and its `None` semantics — "no such question" and
+  "no vector for this variant/model" both collapse to `None`, confirmed the caller must
+  treat that as "not indexed", not an error); `domain/models/retrieval/
+  quiz_evaluation_row.py:1-24` (confirmed `QuizEvaluationRow.correct_answer: bool` is
+  present structurally — the fact this spec's FR-2 note and AD-2 discuss); `domain/
+  enums/lexeme_field.py` (confirmed `LexemeField` has no member for `correct_answer`/
+  `rule_explanation`/`core_concepts` — `topic`/`text`/`image_description` only,
+  `configs/labeling.yaml:11`); `labeling/services/candidate_set_service.py:1-51`
   (`CandidateSetService.execute`, dense+text union, no `correct_answer` anywhere in its
   signature or body); `commons/repositories/db/corpus_read_repository.py:103-144,225-252`
   (`dense_top_k`, `text_match_top_k`, `extract_lexemes` — confirmed answer-blind,
-  parameterized only by embedding/lexemes/`k`).
+  parameterized only by embedding/lexemes/`k`); `db/init.sql:33,78,249` (`article_commas
+  .embedding`, `quiz_question_embeddings.embedding_3_small`, `glossary_entries
+  .embedding_3_small` all `VECTOR(1536)` — confirmed the same embedding space, relevant
+  only to the rejected bypass draft, kept for the record).
 - **FR-4/AD-3/AD-4** — glossary extraction verbatim contract, quoted from
   `docs/second-brain/adr/0038-glossary-extraction-mechanical-verbatim-and-chunking.md:38-45`
   via the `second-brain:second-brain-reader` subagent this session dispatched; ADR 0036
@@ -428,12 +517,19 @@ Verified 2026-09-25 on branch `feat/backend`.
   at `services/explanation_service.py:80-97` explaining why `TaskGroup` is used one
   level up in `_explain` but not appropriate for this spec's two independent,
   same-stage calls).
-- **FR-8/AD-5** — `models/glossary_candidate.py:1-24` (confirmed `source` already means
-  CdS/CAP, not provenance, and that `definition_plain: str | None = None` — spec 0022,
-  implemented — already sits alongside it); `api/schemas/quiz_explanation.py:25-53`
+- **FR-8/AD-5** — `models/glossary_candidate.py:1-24` (confirmed `source` (pre-AD-8)
+  means CdS/CAP, not provenance, and that `definition_plain: str | None = None` — spec
+  0022, implemented — already sits alongside it); `api/schemas/quiz_explanation.py:25-53`
   (`ProvenanceResponse.origin`, the naming precedent this spec's new field follows;
   `CitedGlossaryTermResponse`'s current shape, still `term`/`definition`/`term_ru` only
   — spec 0022 confirmed to add no field there, per its own Non-Goals).
+- **AD-8 (grilling, 2026-09-25)** — a repo-wide `Grep` for `candidate.id`/`candidate
+  .source`/`candidate.article_number`/`candidate.comma_number` across `src/` returned no
+  matches: confirmed these four `GlossaryCandidate` fields are read nowhere outside
+  `glossary_read_repository.py` itself, which is what makes narrowing the model safe.
+  `repositories/glossary_read_repository.py:13-16,88-109` (`_COLUMNS`, `_row_to_candidate`
+  — confirmed the SQL fusion needs `g.id` in the query, not on the returned Python
+  object).
 - **Spec 0022 (re-verification pass, 2026-09-25)** — confirmed implemented and merged
   (`git log`: `30d122c7`…`769aab21`, spec status `ready`/sign-off recorded). Read the
   real, current `models/glossary_candidate.py`, `repositories/glossary_read_repository.py`
@@ -456,24 +552,11 @@ Verified 2026-09-25 on branch `feat/backend`.
 
 ## Open Questions
 
-- [ ] **non-blocking** — Exact adaptation needed to call `CandidateSetService.execute`
-  from `ExplanationService`: it takes a `QuizEvaluationRow`
-  (`domain.models.retrieval.QuizEvaluationRow`), an evaluation-harness domain model.
-  Whether `_vocabulary_outcome` constructs a minimal instance inline, or a narrower
-  request shape is introduced, is left to implementation to confirm against that
-  model's actual required fields.
-- [ ] **non-blocking** — Placeholder scheme for `AGENT_GENERATED` `GlossaryCandidate`'s
-  non-optional `id`/`source`/`article_number`/`comma_number` fields (proposed: a
-  negative synthetic `id` sequence, a sentinel string for the other three) — confirm
-  nothing downstream ever inspects these fields for such a candidate before finalizing.
-- [ ] **non-blocking** — Whether `GlossaryEnricherResponse` needs its own
-  `model_validator` rejecting a duplicate `term.casefold()` within one response
-  (mirroring `QuestionExplainerResponse._reject_repeated_ordinals`) — recommended,
-  confirm during implementation.
-- [ ] **non-blocking** — Retrieval depths for the grounding call: reuse
-  `LabelingConfig`'s existing `dense_k`/`text_k` (via the shared `candidate_set`
-  instance, AD-2) or introduce separate ones tuned for this use — left to
-  implementation; reusing the shared instance's own depths is the simpler default.
+Every previously-open question about the grounding-retrieval integration, the
+candidate placeholder scheme, the duplicate-term validator and retrieval depths was
+resolved during the 2026-09-25 grilling round — see AD-2, AD-3, AD-8, FR-2 and the
+Changelog. What remains genuinely deferrable to implementation:
+
 - [ ] **non-blocking** — Exact prompt text for `GlossaryEnricherAgent` (how many terms
   to surface per question, how strongly to prefer corpus grounding, register) and its
   model/config (proposed: same `openrouter/google/gemini-2.5-flash` as its siblings) —
@@ -482,6 +565,12 @@ Verified 2026-09-25 on branch `feat/backend`.
   `agent_generated` hint from a `verbatim_corpus` one in the rendered glossary block
   (spec 0020, FR-8) — out of this spec's scope (Non-Goals); left to a future, separate
   decision if the plain-text distinction ever matters to a user.
+- [ ] **non-blocking** — No cap on the merged candidate list's total size beyond
+  `GlossaryReadRepository`'s existing `max_candidates` on its own DB-side arm
+  (confirmed during grilling: the on-demand agent typically surfaces only the handful
+  of terms the DB missed, not an exhaustive extraction, so practical overflow is
+  expected to be rare) — revisit only if `QuestionExplainerAgent`'s prompt cost proves
+  to be a real problem in practice.
 
 ## Follow-ups after implementation
 
@@ -493,22 +582,51 @@ Verified 2026-09-25 on branch `feat/backend`.
 - Record an ADR (`second-brain:adr`) for: generating supplementary glossary candidates
   live and merging them with DB priority instead of gap-detection-then-fill, and for
   keeping them ephemeral rather than write-through, given `glossary_entries`' verbatim
-  contract (ADR 0038).
+  contract (ADR 0038). Fold in the AD-2/FR-2 finding from the grilling round while
+  writing it: spec 0020's vocabulary-stage answer-blindness is a testability
+  convention, not a privacy boundary, now that "Spiega" is post-answer-only — worth
+  recording once so a future feature in this stage doesn't re-derive it from scratch.
 - Update the `CLAUDE.md` API endpoints table's description of `GET
   /{number}/explanation` to mention `translation_hints[].origin`.
 
 ## Sign-off
 
 - **Scope approved by user:** pending — spec written 2026-09-25 from an interactive
-  `superpowers:brainstorming` session; awaiting the user's review of this file.
-- **Feasibility asserted:** by the assistant on 2026-09-25, re-verified the same day
-  after spec 0022 landed (see Changelog), based on the Feasibility Evidence above
-  (direct source reads plus one `second-brain:second-brain-reader` dispatch for
-  glossary-system ADRs).
+  `superpowers:brainstorming` session, then stress-tested via `mattpocock-skills:grilling`
+  (same day); the user confirmed shared understanding at the end of the grilling round.
+  Awaiting explicit sign-off before handing off to `writing-plans`.
+- **Feasibility asserted:** by the assistant on 2026-09-25, re-verified twice the same
+  day — once after spec 0022 landed, once during the grilling round's own
+  investigation (AD-2, AD-8) — based on the Feasibility Evidence above (direct source
+  reads plus one `second-brain:second-brain-reader` dispatch for glossary-system ADRs).
 - **Definition of Done verified:** not yet — pending implementation.
 
 ## Changelog
 
+- **2026-09-25 (grilling)** — Stress-tested via `mattpocock-skills:grilling`, one
+  question at a time per this project's CLAUDE.md override. Resolved: (1) grounding
+  retrieval reuses `CandidateSetService` exactly as originally planned in AD-2 (an
+  intermediate draft proposed bypassing it to avoid `QuizEvaluationRow`'s
+  `correct_answer` field entirely; reconsidered and dropped once traced against spec
+  0020's own FR-2, which already demoted answer-blindness from a privacy requirement to
+  a testability convention — see FR-2's new note and AD-2); (2) the embedding variant
+  for that retrieval is `judge_identity.epoch.candidate_variant`, the same one grounding
+  the legal explanation, not `"text"`; (3) `find_with_vector` returning `None`
+  (not-indexed) yields an empty comma list and the agent still runs, not a degrade;
+  (4) no new retrieval-depth config — the shared `candidate_set` instance's own depths
+  apply; (5) `GlossaryCandidate` is narrowed to
+  `term`/`definition`/`definition_plain`/`term_ru`/`origin` (new AD-8), dropping
+  `id`/`source`/`article_number`/`comma_number` after a repo-wide search confirmed they
+  are read nowhere outside `GlossaryReadRepository` — replaces the earlier
+  placeholder-value draft entirely, no sentinel scheme needed; (6) `GlossaryEnricherResponse`
+  gets its own duplicate-term `model_validator`, confirmed, not conditional; (7) no cap
+  on the merged candidate list's total size, for now. Updated: FR-2 (rewritten with the
+  concrete integration and the answer-blindness note), FR-6, AD-2/AD-3 (rewritten), new
+  AD-8, Data Model (`GlossaryCandidate` narrowing, `GlossaryEnricherRequest`'s `commas:
+  list[RetrievedComma]` shape), Testing (new cases), Feasibility Evidence (new citations:
+  `quiz_read_repository.py`, `quiz_evaluation_row.py`, `lexeme_field.py`,
+  `configs/labeling.yaml`, `db/init.sql`'s embedding columns), Open Questions (four
+  items resolved and removed), Follow-ups (one ADR item added).
 - **2026-09-25 (later)** — Re-verified feasible after spec 0022 (plain-language
   glossary definitions) landed and was merged, since both specs touch
   `GlossaryCandidate`, `CitedGlossaryTerm`/`CitedGlossaryTermResponse` and
