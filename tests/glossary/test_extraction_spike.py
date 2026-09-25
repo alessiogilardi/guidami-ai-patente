@@ -32,7 +32,7 @@ from glossary.agents.glossary_extractor.dto import GlossaryExtractorRequest
 from glossary.agents.glossary_extractor.glossary_extractor_agent import GlossaryExtractorAgent
 from glossary.configs import GlossaryBlockConfig
 from glossary.repositories import GlossaryBlockReadRepository
-from glossary.services._chunking import split_into_chunks
+from glossary.utils import split_into_chunks
 
 pytestmark = pytest.mark.integration
 

@@ -1,4 +1,4 @@
-from glossary.services._chunking import split_into_chunks
+from glossary.utils import split_into_chunks
 
 
 def test_text_under_the_limit_is_a_single_chunk() -> None:

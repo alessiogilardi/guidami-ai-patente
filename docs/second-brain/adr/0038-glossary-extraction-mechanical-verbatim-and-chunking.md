@@ -46,7 +46,7 @@ not left to the prompt.
 
 When a block's text exceeds `GlossaryConfig.max_block_chars`, it is split *before*
 reaching the model by a small, mechanical, per-block regex
-(`services/_chunking.py::split_into_chunks`) that finds the block's own top-level
+(`utils/chunking.py::split_into_chunks`) that finds the block's own top-level
 enumeration marker (numeric `N)` or alphabetic `lettera)`) and packs consecutive entries
 up to the limit, never cutting mid-entry; a block with no detectable marker falls back
 to a raw character-count split. This module only detects chunk *boundaries* — it never

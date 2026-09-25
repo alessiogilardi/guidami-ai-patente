@@ -159,8 +159,11 @@ repo/
 │   │                                #   read+write, GlossaryAgentConfigRepository shared by both
 │   │                                #   agents) → services/ (GlossaryExtractionService,
 │   │                                #   GlossaryBuildService, GlossaryTermTranslationService,
-│   │                                #   GlossaryTermTranslationRunService, plus a private
-│   │                                #   _chunking.py pure-function module) → agents/
+│   │                                #   GlossaryTermTranslationRunService) → utils/ (chunking.py's
+│   │                                #   split_into_chunks, a stateless, domain-specific
+│   │                                #   pure-function module — same placement rationale as
+│   │                                #   guidami_ai_patente_ingestor/utils/comma_repeal_detector.py)
+│   │                                #   → agents/
 │   │                                #   (GlossaryExtractorAgent, GlossaryTermTranslatorAgent) →
 │   │                                #   mappers/ (GlossaryEntryMapper, static) → models/ →
 │   │                                #   exceptions/ → wiring.py (builder functions for the
@@ -989,3 +992,9 @@ package, a 16-task plan via `superpowers:subagent-driven-development`). New top-
 package `src/glossary/`, first occupant of a new placement-convention bullet; new mirroring
 `tests/glossary/`. See `docs/second-brain/architecture.md`'s `glossary/` row for the full
 component breakdown this file deliberately doesn't duplicate.*
+
+*Last updated: 2026-09-25 — verified against commit `ae97d2e3` (working tree ahead).
+`glossary/` gained a `utils/` package: the mechanical `split_into_chunks` moved out of
+`services/` into `utils/chunking.py`, mirroring `guidami_ai_patente_ingestor/utils/`'s
+existing convention for a stateless, domain-specific pure-function module. Mirroring
+`tests/glossary/utils/` added.*

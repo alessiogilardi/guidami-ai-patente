@@ -1,1 +1,1 @@
-"""Glossary extraction and chunking services."""
+"""Glossary extraction services."""

@@ -5,8 +5,7 @@ from glossary.agents.glossary_extractor.dto import GlossaryExtractorRequest
 from glossary.agents.glossary_extractor.glossary_extractor_agent import GlossaryExtractorAgent
 from glossary.configs import GlossaryConfig
 from glossary.models import ExtractedEntry, GlossaryBlock
-
-from ._chunking import split_into_chunks
+from glossary.utils import split_into_chunks
 
 
 @service
