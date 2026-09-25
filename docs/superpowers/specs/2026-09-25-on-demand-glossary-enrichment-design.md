@@ -21,6 +21,7 @@ in-progress → implemented once the Definition of Done is verified.
 | **Extends** | Spec 0020 (unified "Spiega"): adds a second, independent source of glossary candidates inside the existing `_vocabulary_outcome` stage. Introduces no new endpoint. |
 | **Enhanced by** | Spec 0019 (definition glossary): the DB-side candidate source this feature merges with, unchanged. |
 | **Reuses** | Spec 0011/0012's live comma-retrieval infrastructure (`CandidateSetService` over `CorpusReadRepository`), read-only, for the on-demand agent's corpus grounding. |
+| **Coordinates with** | Spec 0022 (plain-language glossary definitions) — **implemented first**, per that spec's own header/changelog. It already added `GlossaryCandidate.definition_plain: str | None = None`, `GlossaryReadRepository`'s extra column, and `_deduplicated_hints`' `candidate.definition_plain or candidate.definition` fallback (`services/explanation_service.py:250-282`, current). This spec's implementation builds `origin` on top of that already-landed shape (FR-6/FR-8, Data Model) — re-verified feasible against the real, current code on 2026-09-25 (see Changelog). |
 
 ## Problem & Motivation
 
@@ -162,6 +163,12 @@ standalone, stateless, no injected dependency) merges the two sources:
   but nothing outside this function enforces it) are both kept; the pre-existing
   `_deduplicated_hints` dedup (keyed the same way, first-cited order) still applies
   downstream once `QuestionExplainerAgent` decides what to cite, unchanged.
+- An on-demand `GlossaryCandidate` leaves `definition_plain` at its field default
+  (`None`, added by spec 0022, now implemented) — the merge function never sets it.
+  This is correct, not an oversight: spec 0022's `_deduplicated_hints` fallback
+  (`candidate.definition_plain or candidate.definition`) then simply resolves to the
+  on-demand agent's own `definition` unchanged, exactly like any other
+  not-yet-simplified DB row.
 
 ### FR-7: A failure of the on-demand source degrades to DB-only candidates
 
@@ -191,7 +198,12 @@ A new enum, `GlossaryTermOrigin` (`enums/`, `StrEnum`, members `VERBATIM_CORPUS`
 - `CitedGlossaryTerm` (domain model) and `CitedGlossaryTermResponse` (API schema) —
   both gain `origin: GlossaryTermOrigin`, populated by
   `ExplanationService._deduplicated_hints` from the candidate's own `origin` field
-  (`candidate.origin`), alongside the `term`/`definition`/`term_ru` it already copies.
+  (`candidate.origin`), alongside the `term`/`term_ru` it already copies and the
+  `definition` it already builds via spec 0022's own
+  `candidate.definition_plain or candidate.definition` fallback (implemented,
+  `services/explanation_service.py:274-282`) — this spec only adds the `origin=`
+  keyword to that same, already-landed constructor call, it does not touch the
+  `definition` expression itself.
 
 ```json
 {
@@ -298,7 +310,11 @@ No new table, no new column on any existing table. All changes are Python-level:
 - New `enums/glossary_term_origin.py`: `GlossaryTermOrigin(StrEnum)` — `VERBATIM_CORPUS`,
   `AGENT_GENERATED` (values via `auto()`, i.e. `"verbatim_corpus"`, `"agent_generated"`).
 - `models/glossary_candidate.py`: `GlossaryCandidate` gains
-  `origin: GlossaryTermOrigin = GlossaryTermOrigin.VERBATIM_CORPUS`.
+  `origin: GlossaryTermOrigin = GlossaryTermOrigin.VERBATIM_CORPUS`, alongside the
+  `definition_plain: str | None = None` field spec 0022 already added (implemented,
+  current file). The two fields are independent: `origin` says *who produced* the
+  candidate, `definition_plain` says *which register* its definition is in — an
+  on-demand candidate has `origin=AGENT_GENERATED` and `definition_plain=None` (FR-6).
 - `models/cited_glossary_term.py`: `CitedGlossaryTerm` gains
   `origin: GlossaryTermOrigin` (no default — always resolved explicitly from the
   candidate it was built from).
@@ -320,9 +336,11 @@ No new table, no new column on any existing table. All changes are Python-level:
 
 `GlossaryCandidate`'s `id: int`, `source: str`, `article_number: str`,
 `comma_number: str` fields are all non-optional today and none of them are read
-downstream past `_deduplicated_hints` (only `term`/`definition`/`term_ru`/`origin`
-are copied into `CitedGlossaryTerm`). For an `AGENT_GENERATED` candidate, which has no
-real `glossary_entries` row, these four fields are populated with placeholder values
+downstream past `_deduplicated_hints` (only `term`/`definition`/`definition_plain`/
+`term_ru`/`origin` are read there — `definition_plain` only through spec 0022's own
+`or` fallback, not copied onto `CitedGlossaryTerm` as its own field). For an
+`AGENT_GENERATED` candidate, which has no real `glossary_entries` row, these four
+fields are populated with placeholder values
 (exact scheme — e.g. a negative synthetic `id` sequence, a sentinel string for
 `source`/`article_number`/`comma_number` — left to implementation; see Open
 Questions). `term_ru` is always `None` for an `AGENT_GENERATED` candidate: this feature
@@ -359,9 +377,9 @@ generates Italian only, exactly like `GlossaryExtractorAgent` does before
 - **Merge function** (unit, pure, no fakes needed): a DB candidate and an on-demand
   entry sharing a normalized term — the on-demand one is dropped, the DB one keeps
   `origin=VERBATIM_CORPUS`; a non-conflicting on-demand entry is kept with
-  `origin=AGENT_GENERATED`;
-  an empty on-demand list returns the DB list unchanged; case/whitespace variants of
-  the same term are still recognized as a conflict (`term.casefold()`).
+  `origin=AGENT_GENERATED` and `definition_plain=None`; an empty on-demand list returns
+  the DB list unchanged; case/whitespace variants of the same term are still
+  recognized as a conflict (`term.casefold()`).
 - **`ExplanationService._vocabulary_outcome`** (unit, fakes): (a) both sources succeed
   — the merged, shuffled list reaches `QuestionExplainerAgent` and a cited
   `AGENT_GENERATED` term surfaces with the right `origin` in the result; (b) the
@@ -399,18 +417,33 @@ Verified 2026-09-25 on branch `feat/backend`.
   `docs/second-brain/adr/0038-glossary-extraction-mechanical-verbatim-and-chunking.md:38-45`
   via the `second-brain:second-brain-reader` subagent this session dispatched; ADR 0036
   ("glossary is a new, independently-owned derived table") from the same dispatch.
-- **FR-6/AD-6** — `services/explanation_service.py:250-277`
+- **FR-6/AD-6** — `services/explanation_service.py:250-282`
   (`_deduplicated_hints`, the existing `term.casefold()` dedup key and first-cited-order
-  behavior this spec's merge step is written to stay consistent with).
+  behavior this spec's merge step is written to stay consistent with; current version,
+  post spec 0022, already builds `definition=candidate.definition_plain or
+  candidate.definition` at line 278 — this spec adds `origin=` to that same call, per
+  the Coordinates-with note in the header).
 - **FR-7/AD-7** — `services/explanation_service.py:192-248` (`_vocabulary_outcome`'s
   current single-`try` shape, the one inner `asyncio.timeout`, and the class docstring
   at `services/explanation_service.py:80-97` explaining why `TaskGroup` is used one
   level up in `_explain` but not appropriate for this spec's two independent,
   same-stage calls).
-- **FR-8/AD-5** — `models/glossary_candidate.py:1-20` (confirmed `source` already means
-  CdS/CAP, not provenance); `api/schemas/quiz_explanation.py:25-53`
+- **FR-8/AD-5** — `models/glossary_candidate.py:1-24` (confirmed `source` already means
+  CdS/CAP, not provenance, and that `definition_plain: str | None = None` — spec 0022,
+  implemented — already sits alongside it); `api/schemas/quiz_explanation.py:25-53`
   (`ProvenanceResponse.origin`, the naming precedent this spec's new field follows;
-  `CitedGlossaryTermResponse`'s current shape, `term`/`definition`/`term_ru` only).
+  `CitedGlossaryTermResponse`'s current shape, still `term`/`definition`/`term_ru` only
+  — spec 0022 confirmed to add no field there, per its own Non-Goals).
+- **Spec 0022 (re-verification pass, 2026-09-25)** — confirmed implemented and merged
+  (`git log`: `30d122c7`…`769aab21`, spec status `ready`/sign-off recorded). Read the
+  real, current `models/glossary_candidate.py`, `repositories/glossary_read_repository.py`
+  (`_COLUMNS`/`_row_to_candidate`, now at lines 13-16/88-109) and
+  `services/explanation_service.py:250-282` to confirm none of this spec's decisions
+  (FR-1 through FR-8, AD-1 through AD-7) are invalidated by spec 0022's landed changes —
+  only line-number citations and the FR-6/FR-8/Data Model text above needed updating to
+  describe the current, post-0022 shape of `GlossaryCandidate` and `_deduplicated_hints`.
+  `CitedGlossaryTerm`/`CitedGlossaryTermResponse` confirmed still exactly as this spec
+  originally described (spec 0022 added no field to either).
 - **Constraints** — `.claude/rules/pywire-di.md` (`@provider`/`Autowired` conventions);
   `.claude/rules/agent-config-naming.md` (unsuffixed = Italian/base language);
   `.claude/rules/utils-package-placement.md` (merge function's placement);
@@ -446,9 +479,9 @@ Verified 2026-09-25 on branch `feat/backend`.
   model/config (proposed: same `openrouter/google/gemini-2.5-flash` as its siblings) —
   left to implementation, tuned on real output.
 - [ ] **non-blocking** — Whether the bot should visually distinguish an
-  `agent_generated` hint from a `db` one in the rendered glossary block (spec 0020,
-  FR-8) — out of this spec's scope (Non-Goals); left to a future, separate decision if
-  the plain-text distinction ever matters to a user.
+  `agent_generated` hint from a `verbatim_corpus` one in the rendered glossary block
+  (spec 0020, FR-8) — out of this spec's scope (Non-Goals); left to a future, separate
+  decision if the plain-text distinction ever matters to a user.
 
 ## Follow-ups after implementation
 
@@ -468,13 +501,27 @@ Verified 2026-09-25 on branch `feat/backend`.
 
 - **Scope approved by user:** pending — spec written 2026-09-25 from an interactive
   `superpowers:brainstorming` session; awaiting the user's review of this file.
-- **Feasibility asserted:** by the assistant on 2026-09-25, based on the Feasibility
-  Evidence above (direct source reads plus one `second-brain:second-brain-reader`
-  dispatch for glossary-system ADRs).
+- **Feasibility asserted:** by the assistant on 2026-09-25, re-verified the same day
+  after spec 0022 landed (see Changelog), based on the Feasibility Evidence above
+  (direct source reads plus one `second-brain:second-brain-reader` dispatch for
+  glossary-system ADRs).
 - **Definition of Done verified:** not yet — pending implementation.
 
 ## Changelog
 
+- **2026-09-25 (later)** — Re-verified feasible after spec 0022 (plain-language
+  glossary definitions) landed and was merged, since both specs touch
+  `GlossaryCandidate`, `CitedGlossaryTerm`/`CitedGlossaryTermResponse` and
+  `ExplanationService._deduplicated_hints`. Outcome: **still fully implementable, no
+  design change** — spec 0022 added `GlossaryCandidate.definition_plain` (defaulted
+  `None`) and a `definition_plain or definition` fallback inside the very constructor
+  call this spec's FR-8 adds `origin=` to; the two fields are independent and compose
+  without conflict (FR-6). Updated: header (new "Coordinates with" row), FR-6 (on-demand
+  candidates leave `definition_plain` at its spec-0022 default), FR-8/Data Model (the
+  `origin=` addition now described against the real, current constructor and model
+  shape), and every Feasibility Evidence line-number citation that had shifted because
+  of spec 0022's edits to the same files. `CitedGlossaryTerm`/`CitedGlossaryTermResponse`
+  confirmed unchanged by spec 0022, exactly as it promised in its own Non-Goals.
 - **2026-09-25** — Initial draft, from an interactive `superpowers:brainstorming`
   session (detection-mechanism, grounding, trigger, write-through, new-agent,
   dedup-key, retrieval-reuse and provenance-granularity decisions all made
