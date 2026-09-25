@@ -41,3 +41,11 @@ def test_max_block_chars_below_one_is_rejected() -> None:
             postgres={"host": "localhost", "user": "u", "password": "p", "dbname": "d"},
             max_block_chars=0,
         )
+
+
+def test_simplification_batch_size_below_one_is_rejected() -> None:
+    with pytest.raises(ValidationError):
+        GlossaryConfig(
+            postgres={"host": "localhost", "user": "u", "password": "p", "dbname": "d"},
+            simplification_batch_size=0,
+        )

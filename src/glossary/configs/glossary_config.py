@@ -69,7 +69,8 @@ class GlossaryConfig(BaseConfig):
     agents_dir: Path = Field(
         validation_alias=AliasChoices("AGENTS_DIR", "agents_dir"),
         description=(
-            "Directory holding glossary_extractor.yaml and glossary_term_translator.ru.yaml."
+            "Directory holding glossary_extractor.yaml, glossary_term_translator.ru.yaml "
+            "and glossary_definition_simplifier.yaml."
         ),
     )
     parsed_dir: Path = Path("data/parsed")
@@ -77,6 +78,7 @@ class GlossaryConfig(BaseConfig):
     blocks: tuple[GlossaryBlockConfig, ...] = _DEFAULT_BLOCKS
     max_block_chars: int = Field(default=6000, ge=1)
     translation_batch_size: int = Field(default=10, ge=1)
+    simplification_batch_size: int = Field(default=10, ge=1)
     embedding: GlossaryEmbeddingConfig = Field(default_factory=GlossaryEmbeddingConfig)
     glossary_entries_table: str = "glossary_entries"
     embedding_column: str = Field(
