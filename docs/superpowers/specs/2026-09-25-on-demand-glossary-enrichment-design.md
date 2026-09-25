@@ -152,8 +152,8 @@ spec: the agent still just cites ordinals from whatever list it is given.
 A new pure function (`utils/`, per `.claude/rules/utils-package-placement.md` —
 standalone, stateless, no injected dependency) merges the two sources:
 
-- Every DB-retrieved `GlossaryCandidate` (`origin=DB`, the new enum default, FR-8) is
-  kept as-is.
+- Every DB-retrieved `GlossaryCandidate` (`origin=VERBATIM_CORPUS`, the new enum
+  default, FR-8) is kept as-is.
 - Each on-demand `{term, definition}` pair becomes a `GlossaryCandidate` with
   `origin=AGENT_GENERATED` (FR-8), *unless* its `term.casefold()` already matches a
   DB-retrieved candidate's `term.casefold()`, in which case it is dropped — the DB
@@ -178,10 +178,11 @@ best-effort value, applied one level deeper.
 
 ### FR-8: Provenance is surfaced per cited term in the API response
 
-A new enum, `GlossaryTermOrigin` (`enums/`, `StrEnum`, members `DB` and
+A new enum, `GlossaryTermOrigin` (`enums/`, `StrEnum`, members `VERBATIM_CORPUS` and
 `AGENT_GENERATED`, values from `auto()`), is added to:
 
-- `GlossaryCandidate` — new field `origin: GlossaryTermOrigin = GlossaryTermOrigin.DB`.
+- `GlossaryCandidate` — new field
+  `origin: GlossaryTermOrigin = GlossaryTermOrigin.VERBATIM_CORPUS`.
   The default keeps `GlossaryReadRepository._row_to_candidate`'s existing construction
   call unchanged; the merge function (FR-6) is the only caller that ever passes
   `AGENT_GENERATED`. This is a **new, distinct field from `GlossaryCandidate.source`**,
@@ -195,7 +196,7 @@ A new enum, `GlossaryTermOrigin` (`enums/`, `StrEnum`, members `DB` and
 ```json
 {
   "translation_hints": [
-    { "term": "carreggiata", "definition": "…", "term_ru": "…", "origin": "db" },
+    { "term": "carreggiata", "definition": "…", "term_ru": "…", "origin": "verbatim_corpus" },
     { "term": "revoca", "definition": "…", "term_ru": null, "origin": "agent_generated" }
   ]
 }
@@ -294,10 +295,10 @@ cancellation cannot express.
 
 No new table, no new column on any existing table. All changes are Python-level:
 
-- New `enums/glossary_term_origin.py`: `GlossaryTermOrigin(StrEnum)` — `DB`,
-  `AGENT_GENERATED` (values via `auto()`, i.e. `"db"`, `"agent_generated"`).
+- New `enums/glossary_term_origin.py`: `GlossaryTermOrigin(StrEnum)` — `VERBATIM_CORPUS`,
+  `AGENT_GENERATED` (values via `auto()`, i.e. `"verbatim_corpus"`, `"agent_generated"`).
 - `models/glossary_candidate.py`: `GlossaryCandidate` gains
-  `origin: GlossaryTermOrigin = GlossaryTermOrigin.DB`.
+  `origin: GlossaryTermOrigin = GlossaryTermOrigin.VERBATIM_CORPUS`.
 - `models/cited_glossary_term.py`: `CitedGlossaryTerm` gains
   `origin: GlossaryTermOrigin` (no default — always resolved explicitly from the
   candidate it was built from).
@@ -357,7 +358,8 @@ generates Italian only, exactly like `GlossaryExtractorAgent` does before
   tolerated — confirmed during implementation.
 - **Merge function** (unit, pure, no fakes needed): a DB candidate and an on-demand
   entry sharing a normalized term — the on-demand one is dropped, the DB one keeps
-  `origin=DB`; a non-conflicting on-demand entry is kept with `origin=AGENT_GENERATED`;
+  `origin=VERBATIM_CORPUS`; a non-conflicting on-demand entry is kept with
+  `origin=AGENT_GENERATED`;
   an empty on-demand list returns the DB list unchanged; case/whitespace variants of
   the same term are still recognized as a conflict (`term.casefold()`).
 - **`ExplanationService._vocabulary_outcome`** (unit, fakes): (a) both sources succeed
@@ -372,8 +374,8 @@ generates Italian only, exactly like `GlossaryExtractorAgent` does before
   `translation_hints` entries carry the correct `origin` for a DB-sourced and an
   agent-generated hint in the same response.
 - **`GlossaryCandidate`/`CitedGlossaryTerm` construction**: existing
-  `GlossaryReadRepository._row_to_candidate` call sites still produce `origin=DB`
-  without being touched (default-value regression guard).
+  `GlossaryReadRepository._row_to_candidate` call sites still produce
+  `origin=VERBATIM_CORPUS` without being touched (default-value regression guard).
 
 ## Feasibility Evidence
 
