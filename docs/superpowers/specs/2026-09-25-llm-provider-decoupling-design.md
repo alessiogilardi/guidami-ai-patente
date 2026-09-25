@@ -64,9 +64,10 @@ plan it.
   `LlmModelProvider` port only.
 - Provider becomes an explicit, typed concept (`LLMProvider` enum) wherever it's
   recorded, decoupled from the model name string (YAML, DB columns).
-- `llm_call_logs`/`labeling_runs` gain an explicit `provider`/`judge_provider` column;
-  `judge_provider` joins the judge's configuration-epoch key alongside `judge_model`.
-- Adding a second provider later (Phase 2) touches only `commons/ai/providers/` (one
+- `llm_call_logs`/`labeling_runs` gain an explicit `model_provider`/`judge_model_provider`
+  column (named to mirror the existing `model`/`judge_model` columns they sit next to);
+  `judge_model_provider` joins the judge's configuration-epoch key alongside `judge_model`.
+- Adding a second provider later (Phase 2) touches only `commons/ai/llm_providers/` (one
   new adapter file + one new `match` arm in the factory) — zero changes to `BaseAgent`
   or to any of the nine agent classes.
 
@@ -84,17 +85,22 @@ plan it.
 
 ### 1. `LLMProvider` enum
 
-`src/domain/enums/llm_provider.py`:
+`src/commons/ai/llm_providers/enums/llm_provider.py`:
 
 ```python
 class LLMProvider(StrEnum):
     OPENROUTER = auto()
 ```
 
-Re-exported from `domain/enums/__init__.py`, per the project's enum conventions (one
-file per enum, `StrEnum` + `auto()`). A single member today; Phase 2 adds to this file
-when a second provider is actually implemented — it is not pre-populated with
-placeholder members that have no adapter behind them.
+Lives inside `commons/ai/llm_providers/`, not `domain/enums/` — mirrors the existing
+`commons/ai/observability/enums/tracker_backend.py` precedent (`TrackerBackend`),
+where an enum owned by one `commons/ai/` subsystem lives inside that subsystem's own
+`enums/` package rather than the project-wide `domain/enums/`. Re-exported from
+`commons/ai/llm_providers/enums/__init__.py` and then from the package's own
+`__init__.py`, per the project's enum conventions (one file per enum, `StrEnum` +
+`auto()`). A single member today; Phase 2 adds to this file when a second provider is
+actually implemented — it is not pre-populated with placeholder members that have no
+adapter behind them.
 
 ### 2. Provider credentials — unchanged
 
@@ -111,13 +117,21 @@ Mirrors the existing `commons/ai/observability/` shape (`protocols/` + `services
 a package-root factory function, see `LlmCallTracker`/`build_llm_call_tracker`):
 
 ```
-commons/ai/providers/
+commons/ai/llm_providers/
+├── enums/
+│   └── llm_provider.py             # LLMProvider(StrEnum)
 ├── protocols/
 │   └── llm_model_provider.py       # LlmModelProvider(Protocol)
 ├── services/
 │   └── open_router_model_provider.py
 └── model_provider_factory.py       # create_llm_model_provider(config) -> LlmModelProvider
 ```
+
+Named `llm_providers/`, not `providers/`, to avoid colliding with
+`guidami_ai_patente/providers/` — that directory already holds pywire `@provider`
+components of various kinds (`LabelingStackProvider`, `PostgresClientProvider`,
+`OpenRouterProviderComponent`), and a second same-named `providers/` package under
+`commons/ai/` would be ambiguous at a glance.
 
 ```python
 class LlmModelProvider(Protocol):
@@ -163,7 +177,7 @@ directly, so that future extension is additive.
 `_create_model_settings`'s isinstance branch (delegates to
 `llm_model_provider.create_model_settings`), and `_parse_model_name` (dead: YAML no
 longer carries a prefix to strip). `TrackedCaller.expects_cost` and the new
-`TrackedCaller.provider` are read from `llm_model_provider.expects_cost`/`.provider`.
+`TrackedCaller.model_provider` are read from `llm_model_provider.expects_cost`/`.provider`.
 
 ### 5. Call sites
 
@@ -185,38 +199,39 @@ parameter becomes `llm_model_provider: LlmModelProvider`.
 
 ### 6. Observability
 
-- `TrackedCaller` and `LlmCallLogEntity` gain `provider: LLMProvider`.
-- `PydanticAILlmCallRecorder` copies `provider` from `TrackedCaller` into the entity,
-  the same way it already copies `model`.
-- `BaseAgent` populates `TrackedCaller.provider` from `llm_model_provider.provider`.
+- `TrackedCaller` and `LlmCallLogEntity` gain `model_provider: LLMProvider`.
+- `PydanticAILlmCallRecorder` copies `model_provider` from `TrackedCaller` into the
+  entity, the same way it already copies `model`.
+- `BaseAgent` populates `TrackedCaller.model_provider` from `llm_model_provider.provider`.
 
 ### 7. `LabelingEpoch` / judge configuration epoch
 
-`LabelingEpoch` gains a 7th field, `judge_provider: LLMProvider`, next to
+`LabelingEpoch` gains a 7th field, `judge_model_provider: LLMProvider`, next to
 `judge_model`. `LabelingEpochMapper.from_config_to_epoch` gains a `provider:
 LLMProvider` parameter (no longer derivable from `agent_config`, since YAML no longer
-carries it) — both call sites (`retrieval_evaluation/label_main.py`,
+carries it), which populates `judge_model_provider` — both call sites
+(`retrieval_evaluation/label_main.py`,
 `guidami_ai_patente/providers/labeling_stack_provider.py`) already have access to the
 `LlmModelProvider`/`LLMProvider` value at that point.
 
 ### 8. Database
 
 ```sql
-ALTER TABLE llm_call_logs ADD COLUMN IF NOT EXISTS provider TEXT;
+ALTER TABLE llm_call_logs ADD COLUMN IF NOT EXISTS model_provider TEXT;
 UPDATE llm_call_logs
-SET provider = 'openrouter', model = regexp_replace(model, '^openrouter/', '')
+SET model_provider = 'openrouter', model = regexp_replace(model, '^openrouter/', '')
 WHERE model LIKE 'openrouter/%';
-ALTER TABLE llm_call_logs ALTER COLUMN provider SET NOT NULL;
+ALTER TABLE llm_call_logs ALTER COLUMN model_provider SET NOT NULL;
 
-ALTER TABLE labeling_runs ADD COLUMN IF NOT EXISTS judge_provider TEXT;
+ALTER TABLE labeling_runs ADD COLUMN IF NOT EXISTS judge_model_provider TEXT;
 UPDATE labeling_runs
-SET judge_provider = 'openrouter', judge_model = regexp_replace(judge_model, '^openrouter/', '')
+SET judge_model_provider = 'openrouter', judge_model = regexp_replace(judge_model, '^openrouter/', '')
 WHERE judge_model LIKE 'openrouter/%';
-ALTER TABLE labeling_runs ALTER COLUMN judge_provider SET NOT NULL;
+ALTER TABLE labeling_runs ALTER COLUMN judge_model_provider SET NOT NULL;
 
 DROP INDEX IF EXISTS uq_labeling_runs_live_config;
 CREATE UNIQUE INDEX IF NOT EXISTS uq_labeling_runs_live_config
-    ON labeling_runs (judge_model, judge_provider, prompt_version, candidate_variant,
+    ON labeling_runs (judge_model, judge_model_provider, prompt_version, candidate_variant,
                       dense_k, text_k, lexeme_fields)
     WHERE origin = 'live';
 ```
@@ -254,26 +269,26 @@ call sites, nine agent classes' constructor calls) and the DB/log ambiguity betw
 - `model_provider_factory` — asserts `create_llm_model_provider` returns an
   `OpenRouterModelProvider`.
 - `BaseAgent` — existing tests swap their `Provider[AsyncOpenAI]` double for an
-  `LlmModelProvider` double; behavior (model/settings built, `expects_cost`/`provider`
-  wired into `TrackedCaller`) re-verified against the new seam.
-- `LabelingEpochMapper` — existing epoch tests gain `judge_provider` as an input/output
-  assertion.
+  `LlmModelProvider` double; behavior (model/settings built, `expects_cost`/
+  `model_provider` wired into `TrackedCaller`) re-verified against the new seam.
+- `LabelingEpochMapper` — existing epoch tests gain `judge_model_provider` as an
+  input/output assertion.
 - Migration — integration test (or manual verification per `CLAUDE.md`'s migration
   section) confirming row counts unchanged and every backfilled row satisfies
-  `provider = 'openrouter' AND model NOT LIKE 'openrouter/%'`.
+  `model_provider = 'openrouter' AND model NOT LIKE 'openrouter/%'`.
 - End-to-end: run the existing quiz/labeling flows against the real dev stack after
   the refactor and confirm `llm_call_logs`/`labeling_runs` rows look identical to
-  pre-refactor ones except for the new `provider`/`judge_provider` columns and the
-  stripped `model`/`judge_model` prefix.
+  pre-refactor ones except for the new `model_provider`/`judge_model_provider` columns
+  and the stripped `model`/`judge_model` prefix.
 
 ## Risks / edge cases
 
 - **Nine call sites, not five**: the actual diff touches every agent class, not just
   the five provider-construction points — sized accordingly in the implementation
   plan (Section "Call sites" above enumerates all nine).
-- **Epoch invalidation timing**: adding `judge_provider` to the unique index does
+- **Epoch invalidation timing**: adding `judge_model_provider` to the unique index does
   **not** invalidate anything at migration time — the backfill sets every historical
-  row's `judge_provider` to `'openrouter'`, matching the still-active provider right
-  after this ships. It only invalidates cached `live` labelings the first time the
-  provider is genuinely switched later (Phase 2) — the same mechanism as any other
+  row's `judge_model_provider` to `'openrouter'`, matching the still-active provider
+  right after this ships. It only invalidates cached `live` labelings the first time
+  the provider is genuinely switched later (Phase 2) — the same mechanism as any other
   epoch-field change, and the correct, intended behavior at that point.
