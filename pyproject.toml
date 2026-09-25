@@ -38,8 +38,9 @@ sample-test-data   = "test_data_sampler.sampler:main"
 build-glossary     = "glossary.main:main"
 evaluate-retrieval-judge = "retrieval_evaluation.main:main"
 serve              = "guidami_ai_patente.main:main"
-label-golden-set   = "retrieval_evaluation.label_main:main"
-telegram-bot       = "guidami_ai_patente_bot.main:main"
+label-golden-set       = "retrieval_evaluation.label_main:main"
+telegram-bot           = "guidami_ai_patente_bot.main:main"
+translate-glossary-terms = "glossary.translate_main:main"
 
 [build-system]
 requires = ["uv_build>=0.11.8,<0.12.0"]
