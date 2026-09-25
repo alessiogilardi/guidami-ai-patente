@@ -2,9 +2,6 @@ import types
 
 import psycopg
 import pytest
-from glossary.services.glossary_definition_simplification_run_service import (
-    GlossaryDefinitionSimplificationRunService,
-)
 from pydantic_ai.exceptions import UnexpectedModelBehavior
 
 from glossary.exceptions import GlossaryDefinitionSimplificationError
@@ -12,6 +9,9 @@ from glossary.models import (
     GlossaryDefinitionRow,
     GlossaryDefinitionSimplificationRequest,
     SimplifiedDefinition,
+)
+from glossary.services.glossary_definition_simplification_run_service import (
+    GlossaryDefinitionSimplificationRunService,
 )
 
 _ROWS = [

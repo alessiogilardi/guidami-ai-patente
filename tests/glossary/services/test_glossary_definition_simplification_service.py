@@ -1,12 +1,11 @@
-from glossary.services.glossary_definition_simplification_service import (
-    GlossaryDefinitionSimplificationService,
-)
-
 from glossary.agents.glossary_definition_simplifier.dto import (
     GlossaryDefinitionSimplifierResponse,
     SimplifiedDefinitionItemDto,
 )
 from glossary.models import GlossaryDefinitionRow
+from glossary.services.glossary_definition_simplification_service import (
+    GlossaryDefinitionSimplificationService,
+)
 
 
 class _FakeAgent:

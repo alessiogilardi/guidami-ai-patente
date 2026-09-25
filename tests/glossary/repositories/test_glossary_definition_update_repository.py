@@ -1,11 +1,11 @@
 import pytest
-from glossary.repositories.glossary_definition_update_repository import (
-    GlossaryDefinitionUpdateRepository,
-)
 from psycopg import sql
 
 from commons.clients import PostgresClient
 from commons.configs import PostgresConnectionConfig
+from glossary.repositories.glossary_definition_update_repository import (
+    GlossaryDefinitionUpdateRepository,
+)
 
 _EMBEDDING = [0.1] * 1536
 

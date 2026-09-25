@@ -240,7 +240,9 @@ async def test_a_cited_term_with_a_plain_definition_uses_it_over_the_verbatim_on
         article_number="3",
         comma_number="1",
         term="carreggiata",
-        definition="Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli.",
+        definition=(
+            "Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli."
+        ),
         definition_plain="La parte della strada per i veicoli.",
         term_ru="проезжая часть",
     )
@@ -275,7 +277,9 @@ async def test_a_cited_term_with_no_plain_definition_falls_back_to_the_verbatim_
         article_number="3",
         comma_number="1",
         term="carreggiata",
-        definition="Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli.",
+        definition=(
+            "Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli."
+        ),
         term_ru="проезжая часть",
     )
     vocabulary_agent = _VocabularyAgentDouble(
@@ -295,7 +299,9 @@ async def test_a_cited_term_with_no_plain_definition_falls_back_to_the_verbatim_
     assert explanation.translation_hints == (
         CitedGlossaryTerm(
             term="carreggiata",
-            definition="Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli.",
+            definition=(
+                "Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli."
+            ),
             term_ru="проезжая часть",
         ),
     )

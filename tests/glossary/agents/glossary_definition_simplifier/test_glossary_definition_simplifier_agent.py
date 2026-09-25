@@ -1,7 +1,4 @@
 import pytest
-from glossary.agents.glossary_definition_simplifier.glossary_definition_simplifier_agent import (
-    GlossaryDefinitionSimplifierAgent,
-)
 from pydantic_ai.exceptions import UnexpectedModelBehavior
 from pydantic_ai.messages import ModelMessage, ModelResponse, ToolCallPart
 from pydantic_ai.models.function import AgentInfo, FunctionModel
@@ -12,6 +9,9 @@ from commons.ai.observability import NullLlmCallTracker
 from glossary.agents.glossary_definition_simplifier.dto import (
     DefinitionToSimplifyDto,
     GlossaryDefinitionSimplifierRequest,
+)
+from glossary.agents.glossary_definition_simplifier.glossary_definition_simplifier_agent import (
+    GlossaryDefinitionSimplifierAgent,
 )
 
 _PROVIDER = OpenRouterProvider(api_key="test-key")

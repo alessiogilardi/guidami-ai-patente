@@ -1,6 +1,7 @@
 import pytest
-from glossary.agents.glossary_definition_simplifier.dto import SimplifiedDefinitionItemDto
 from pydantic import ValidationError
+
+from glossary.agents.glossary_definition_simplifier.dto import SimplifiedDefinitionItemDto
 
 
 def test_a_whitespace_only_definition_plain_is_rejected() -> None:

@@ -21,6 +21,6 @@ class SimplifiedDefinitionItemDto(BaseModel):
 
 
 class GlossaryDefinitionSimplifierResponse(BaseModel):
-    """Le riscritture in italiano semplice, una per ogni definizione del lotto, nello stesso ordine."""
+    """Le riscritture in italiano semplice, una per definizione, nello stesso ordine."""
 
     simplifications: list[SimplifiedDefinitionItemDto] = Field(min_length=1)
