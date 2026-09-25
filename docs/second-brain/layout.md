@@ -150,6 +150,25 @@ repo/
 │   │                                #   (AD-3); no ConversationHandler, plain handlers +
 │   │                                #   context.user_data (AD-4); no persistence across
 │   │                                #   restarts (AD-2, Non-Goals)
+│   ├── glossary/                   # Standalone package (spec 0019): Italian legal-definitions
+│   │                                #   glossary. Imports only commons/domain (AD-1); pywire
+│   │                                #   field injection throughout (AD-1a), a narrow exception
+│   │                                #   to this repo's batch-package constructor-DI default —
+│   │                                #   see .claude/rules/pywire-di.md. configs/ (GlossaryConfig,
+│   │                                #   GlossaryBlockConfig) → repositories/ (block/entry/term
+│   │                                #   read+write, GlossaryAgentConfigRepository shared by both
+│   │                                #   agents) → services/ (GlossaryExtractionService,
+│   │                                #   GlossaryBuildService, GlossaryTermTranslationService,
+│   │                                #   GlossaryTermTranslationRunService, plus a private
+│   │                                #   _chunking.py pure-function module) → agents/
+│   │                                #   (GlossaryExtractorAgent, GlossaryTermTranslatorAgent) →
+│   │                                #   mappers/ (GlossaryEntryMapper, static) → models/ →
+│   │                                #   exceptions/ → wiring.py (builder functions for the
+│   │                                #   commons primitives pywire has no recipe for) → main.py /
+│   │                                #   translate_main.py, the two `[project.scripts]` entry
+│   │                                #   points (build-glossary, translate-glossary-terms). See
+│   │                                #   docs/second-brain/architecture.md's `glossary/` row for
+│   │                                #   the full component breakdown
 │   ├── html_viewers/               # Standalone, dependency-free HTML pages for manually
 │   │                                #   inspecting pipeline output (e.g. quiz enrichment
 │   │                                #   review); opened directly in a browser, no server
@@ -219,6 +238,7 @@ repo/
 ├── tests/                          # Mirrors src/ structure, no __init__.py per directory
 │   ├── commons/
 │   ├── domain/
+│   ├── glossary/
 │   ├── guidami_ai_patente_ingestor/
 │   └── labeling/
 ├── configs/                        # Runtime YAML config (ingestor_config.yaml, agents/*.yaml,
@@ -620,6 +640,20 @@ implemented.
   list `enums/` explicitly. The bot never imports `guidami_ai_patente`'s
   services/enums/DTOs (AD-1): every bot-side model/enum is declared
   independently even when it mirrors a wire shape 1:1.
+- **Code specific to the Italian legal-definitions glossary** (extraction, translation,
+  anything that reads/writes `glossary_entries`) goes in `src/glossary/`, a standalone
+  package sibling to `labeling/`/`retrieval_evaluation/`: imports only `commons`/`domain`
+  (AD-1), never `guidami_ai_patente_ingestor`/`labeling`/`guidami_ai_patente`/the bot. Unlike
+  every other batch-pipeline/standalone-script package in this tree, it is wired with
+  `pywire` field injection (`Autowired[T]`), not manual constructor injection — a deliberate,
+  narrow exception (AD-1a) so a future second FastAPI-style app doesn't have to redo this
+  package's DI. `GlossaryConfig` and the commons primitives pywire can't autowire
+  (`PostgresClient`, `EmbeddingService`, `OpenRouterProvider`, `LlmCallTracker`) are built
+  once in each entry point's `main()`/`translate_main()` and registered via
+  `container.register_instance`, never autowired as self-constructing — see
+  `.claude/rules/pywire-di.md`. Two independent `[project.scripts]` entry points
+  (`build-glossary`, `translate-glossary-terms`) live at the package root, following the same
+  `wiring.py`-plus-`main.py` shape as `labeling/`'s manually-wired scripts.
 - **A closed vocabulary that is a shared shape** (a DB column's legal
   values, or a field name another module also needs) goes in
   `src/domain/enums/` as a `StrEnum` with `auto()`-derived values, never
@@ -949,3 +983,9 @@ gained the mirroring `topic_summary.py`/`wrong_question.py`; `messages.py` now a
 command list, the `/quiz` intro and `summary_message`, which renders the whole `/stop`
 summary. Tests: `tests/guidami_ai_patente_bot/test_messages.py` and
 `tests/guidami_ai_patente/mappers/test_session_summary_mapper.py` are new.*
+
+*Last updated: 2026-09-25 — verified against commit `3c418a5d` (spec 0019, `src/glossary/`
+package, a 16-task plan via `superpowers:subagent-driven-development`). New top-level
+package `src/glossary/`, first occupant of a new placement-convention bullet; new mirroring
+`tests/glossary/`. See `docs/second-brain/architecture.md`'s `glossary/` row for the full
+component breakdown this file deliberately doesn't duplicate.*

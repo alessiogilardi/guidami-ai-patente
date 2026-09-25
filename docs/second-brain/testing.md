@@ -348,3 +348,41 @@ summary work itself added integration tests to
 note with its resolution: twelve test files widened their `truncate` lists with
 `quiz_answers`; full run 1198 passed, 2 skipped, dev database row counts unchanged before
 and after the run.*
+
+**A fetched `vector` column round-trips as `numpy.ndarray`, not a plain `list`.**
+`commons/clients/postgres_client.py` registers `pgvector.psycopg.register_vector` on every
+connection, so `PostgresClient.fetch(...)` on a query selecting a `vector` column returns
+rows containing a `numpy.ndarray`. Comparing two such rows directly with Python's tuple/list
+`==` (e.g. `assert before == after` in an integration test asserting an UPDATE didn't touch
+an unrelated vector column) raises `ValueError: The truth value of an array with more than
+one element is ambiguous` — numpy's own `==` elementwise-overrides comparison, and the outer
+tuple/list equality can't reduce that back to one bool. Normalize the vector field to a
+plain `list()` before comparing (`[(term, definition, list(embedding)) for term, definition,
+embedding in rows]`); see `tests/glossary/repositories/test_glossary_term_update_repository.py`
+(`_normalized_rows`, spec 0019).
+
+**A `--dry-run` subprocess test can't isolate itself with `monkeypatch.chdir(tmp_path)`
+when the entry point's config needs a real `configs/*.yaml`/`.env` from cwd.** A CLI whose
+root config (e.g. `GlossaryConfig`) is constructed unconditionally before the `--dry-run`
+branch — because even the dry-run print needs config values — will fail that construction
+first if the subprocess's cwd is an isolated, empty `tmp_path` with no `configs/*.yaml`/
+`.env` to source required fields from (a `ValidationError`, not the intended dry-run exit).
+Verify the "no filesystem write" guarantee a different way instead: run the subprocess from
+the real project root, and snapshot the real `logs/` directory's run-prefixed subdirectories
+(`RunArtifactWriter.build_run_dir`'s naming convention, e.g. `build_glossary_*`) before and
+after, asserting no new one appeared — the log directory is only ever created past the
+dry-run's early return, so the guarantee is verified without touching the config's own I/O
+requirements. See `tests/glossary/test_main.py`/`tests/glossary/test_translate_main.py`
+(spec 0019). Passing `tmp_path` as a fixture parameter but never wiring it into
+`subprocess.run(..., cwd=...)` produces a *silently* vacuous assertion (it compiles, it
+passes, it verifies nothing) rather than the loud `ValidationError` above — a sharper trap,
+since nothing fails to flag the gap.
+
+*Last updated: 2026-09-25 — verified against commit `3c418a5d` (spec 0019, `src/glossary/`
+package). Documented two testing gotchas the `glossary/` package's pywire-wired,
+Postgres/vector-backed, subprocess-tested shape surfaced for the first time in this repo:
+the numpy `vector`-column comparison trap and the `--dry-run` subprocess cwd-isolation trap.
+The existing `object.__new__` container-bypass pattern (2026-08-26 entry above) needed no
+change — `glossary/`'s services follow it correctly (bare `Autowired` field names,
+zero-constructor-body classes), confirmed against `pywire/container.py`'s actual
+`_inject_fields` behavior (plain `setattr(instance, name, value)`, never underscore-prefixed).*

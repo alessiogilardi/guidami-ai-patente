@@ -227,10 +227,10 @@ quiz_answers                                -- one row per submitted answer (spe
 ├── INDEX idx_quiz_answers_quiz_id (quiz_id)
 └── INDEX idx_quiz_answers_session_id (session_id)
 
-glossary_entries                            -- precomputed Italian glossary (spec 0019 schema,
-│                                            -- spec 0020 read path); never written by
-│                                            -- guidami_ai_patente, only by the standalone
-│                                            -- src/glossary/ package (not yet built)
+glossary_entries                            -- precomputed Italian glossary (spec 0019 schema
+│                                            -- and package, spec 0020 read path); never
+│                                            -- written by guidami_ai_patente, only by the
+│                                            -- standalone src/glossary/ package
 ├── id (PK, BIGSERIAL)
 ├── source (TEXT, NOT NULL)
 ├── article_number (TEXT, NOT NULL)
@@ -342,9 +342,12 @@ explanation endpoint's vocabulary stage — see `docs/second-brain/patterns.md`'
 entry for how `GlossaryReadRepository.candidates_for` queries it (one query, both arms and
 the fusion computed in Postgres, not two queries merged in Python). `term_ru` exists purely
 as a translation-hint pin for `POST /explanations/translate` (spec 0018) — it is never
-returned by any response field of its own. No write path exists in `guidami_ai_patente`
-yet; the table is populated by a standalone `src/glossary/` package (spec 0019) that has
-not been built as of this note.
+returned by any response field of its own. No write path exists in `guidami_ai_patente`;
+the table is populated by the standalone `src/glossary/` package (spec 0019, two scripts —
+`build-glossary` writes `source`/`article_number`/`comma_number`/`term`/`definition`/the
+embedding column, always `term_ru = NULL`; `translate-glossary-terms` is the only writer of
+`term_ru`, via a plain `UPDATE`, AD-11). See `docs/second-brain/architecture.md`'s
+`glossary/` row for the full package breakdown.
 
 No index exists on any embedding column (no ivfflat/hnsw) — vector search runs as
 an exact `<=>` scan. No index yet on the `TEXT[]` metadata columns (GIN/FTS
@@ -603,10 +606,17 @@ path in this app yet — see the new paragraph above the "No index exists..." li
 
 *Last updated: 2026-09-24 — verified against commit `810b6c6b` (spec 0019 infra follow-ups).
 `glossary_entries.term_ru` becomes nullable (new `db/migrations/0020_glossary_term_ru_nullable.sql`,
-idempotent `DROP NOT NULL`, plus the matching `db/init.sql` edit) — `build-glossary` (a
-separate, not-yet-built package) always writes `term_ru = NULL`; only the standalone
-`translate-glossary-terms` script ever fills it in later, via a plain `UPDATE` (AD-11). Not
-yet applied to the dev stack's existing `glossary_entries` table — see the Migrations section's
-path-2 note; the table is currently empty, so no data is at risk either way. Removed the
-"never returned by any API field of its own" comment on `term_ru`, which was already stale:
-`CitedGlossaryTermResponse` (spec 0020) returns it.*
+idempotent `DROP NOT NULL`, plus the matching `db/init.sql` edit) — `build-glossary` always
+writes `term_ru = NULL`; only the standalone `translate-glossary-terms` script ever fills it
+in later, via a plain `UPDATE` (AD-11). Not yet applied to the dev stack's existing
+`glossary_entries` table — see the Migrations section's path-2 note; the table is currently
+empty, so no data is at risk either way. Removed the "never returned by any API field of its
+own" comment on `term_ru`, which was already stale: `CitedGlossaryTermResponse` (spec 0020)
+returns it.*
+
+*Last updated: 2026-09-25 — verified against commit `3c418a5d` (spec 0019, `src/glossary/`
+package). `glossary_entries` now has a real write path: `build-glossary` (upsert +
+block-scoped reconciliation delete via `GlossaryEntryWriteRepository`) and
+`translate-glossary-terms` (the only `term_ru` writer, `GlossaryTermUpdateRepository`) — see
+`docs/second-brain/architecture.md`'s `glossary/` row. No schema change; the table's still
+empty in the dev stack until one of the two scripts is actually run.*
