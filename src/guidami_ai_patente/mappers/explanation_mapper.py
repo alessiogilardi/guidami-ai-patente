@@ -38,7 +38,10 @@ class ExplanationMapper:
             term_explanation=explanation.term_explanation,
             translation_hints=[
                 CitedGlossaryTermResponse(
-                    term=hint.term, definition=hint.definition, term_ru=hint.term_ru
+                    term=hint.term,
+                    definition=hint.definition,
+                    term_ru=hint.term_ru,
+                    origin=hint.origin,
                 )
                 for hint in explanation.translation_hints
             ],

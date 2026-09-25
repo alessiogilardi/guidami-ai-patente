@@ -100,8 +100,32 @@ def test_term_explanation_and_hints_are_mapped_through() -> None:
 
     assert response.term_explanation == "La domanda chiede..."
     assert response.translation_hints == [
-        CitedGlossaryTermResponse(term="x", definition="y", term_ru="z")
+        CitedGlossaryTermResponse(
+            term="x", definition="y", term_ru="z", origin=GlossaryTermOrigin.VERBATIM_CORPUS
+        )
     ]
+
+
+def test_the_hints_origin_is_mapped_through() -> None:
+    """FR-8: an agent-generated hint's origin must survive onto the wire response."""
+    response = ExplanationMapper.from_explanation_to_response(
+        Explanation(
+            result=ExplanationResult.EXPLAINED,
+            explanation="La sosta è vietata.",
+            citations=(_comma(1),),
+            provenance=_labeling(),
+            translation_hints=(
+                CitedGlossaryTerm(
+                    term="revoca",
+                    definition="...",
+                    term_ru=None,
+                    origin=GlossaryTermOrigin.AGENT_GENERATED,
+                ),
+            ),
+        )
+    )
+
+    assert response.translation_hints[0].origin is GlossaryTermOrigin.AGENT_GENERATED
 
 
 def test_a_refusal_still_carries_term_explanation_and_hints() -> None:

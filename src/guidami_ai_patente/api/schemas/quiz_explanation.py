@@ -2,7 +2,11 @@
 
 from pydantic import BaseModel
 
-from guidami_ai_patente.enums import ExplanationResult, InsufficientKnowledgeReason
+from guidami_ai_patente.enums import (
+    ExplanationResult,
+    GlossaryTermOrigin,
+    InsufficientKnowledgeReason,
+)
 
 
 class CitationResponse(BaseModel):
@@ -40,17 +44,15 @@ class CitedGlossaryTermResponse(BaseModel):
 
     Not the same shape as spec 0018's own translate-endpoint wire types
     (`TranslationHintRequest`/`TranslationHint`, `term`/`term_ru` only) — this one also
-    carries `definition`, which is rendered by the bot as its own glossary-block line,
-    separate from `term_explanation`'s prose (FR-8); `term`/`term_ru` are also what a
-    later `POST /explanations/translate` call pins the term to (spec 0018 FR-8/AD-9).
-    `term_ru` may be `None`: `build-glossary` never translates, only
-    `translate-glossary-terms`'s separate pass does, so a cited term can legitimately
-    have no Russian rendering yet (spec 0019 AD-11).
+    carries `definition`, rendered by the bot as its own glossary-block line. `origin`
+    (spec 0021) tells the client whether the definition came from the precomputed
+    corpus glossary or was generated live for a term the corpus pass has not reached.
     """
 
     term: str
     definition: str
     term_ru: str | None
+    origin: GlossaryTermOrigin
 
 
 class QuizExplanationResponse(BaseModel):
