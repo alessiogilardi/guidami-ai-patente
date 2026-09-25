@@ -113,8 +113,11 @@ job.
 
 ### 3. `LlmModelProvider` port + `OpenRouterModelProvider` adapter
 
-Mirrors the existing `commons/ai/observability/` shape (`protocols/` + `services/` +
-a package-root factory function, see `LlmCallTracker`/`build_llm_call_tracker`):
+Mirrors the existing `commons/ai/observability/` shape (`protocols/` + a package-root
+factory function, see `LlmCallTracker`/`build_llm_call_tracker`), but names the
+implementation folder `providers/` rather than `services/` — every file in it is
+literally a `*ModelProvider` implementing the port, so the folder name says what's in
+it instead of falling back to the generic default:
 
 ```
 commons/ai/llm_providers/
@@ -122,7 +125,7 @@ commons/ai/llm_providers/
 │   └── llm_provider.py             # LLMProvider(StrEnum)
 ├── protocols/
 │   └── llm_model_provider.py       # LlmModelProvider(Protocol)
-├── services/
+├── providers/
 │   └── open_router_model_provider.py
 └── model_provider_factory.py       # create_llm_model_provider(config) -> LlmModelProvider
 ```
