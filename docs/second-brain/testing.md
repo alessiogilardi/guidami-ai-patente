@@ -386,3 +386,29 @@ The existing `object.__new__` container-bypass pattern (2026-08-26 entry above) 
 change — `glossary/`'s services follow it correctly (bare `Autowired` field names,
 zero-constructor-body classes), confirmed against `pywire/container.py`'s actual
 `_inject_fields` behavior (plain `setattr(instance, name, value)`, never underscore-prefixed).*
+
+**A module-level `os.environ.get(...)` constant runs before any fixture, including a
+session-scoped `autouse` one meant to protect it.** `tests/conftest.py`'s
+`_open_router_environment` fixture pins `OPENROUTER_API_KEY` to a dummy value for the whole
+session — but that pin applies at test *setup* time, which is always after pytest finishes
+*collecting* every test module. A real-key gate written as a bare module-level assignment
+(`_REAL_KEY = os.environ.get("OPENROUTER_API_KEY", "")`, evaluated once, at import time,
+during collection) captures whatever the ambient environment held *before* the session
+fixture ever ran — the fixture's later pin has no effect on an already-evaluated constant.
+`tests/glossary/test_extraction_spike.py` shipped with exactly this shape and, under one
+specific invocation (`rtk proxy uv run pytest -m integration`, this project's raw/unfiltered
+CLI proxy mode — see `RTK.md`), the ambient environment genuinely did carry a real
+`OPENROUTER_API_KEY` at collection time, which the session fixture's dummy value never
+overrode: the "requires a real key" spike ran for real and made a billed call, despite the
+suite's own protection existing specifically to prevent that. Root-caused rather than papered
+over: the fix is not a stronger `skipif` string check (any check computed at collection time
+has the identical hole) but reading the gate fresh, inside the test body, at call time, after
+the session fixture has already run — and, for a genuinely destructive/billable real-API-call
+test, requiring a *second*, independent opt-in env var (`GLOSSARY_SPIKE_LIVE=1`) on top of a
+real key, so no single leaked variable alone can trigger it. Any future real-API-call
+integration test in this repo should follow this shape, not the module-constant one.
+
+*Last updated: 2026-09-25 — verified against commit (pending final review fix, same session).
+Documented the module-level-env-capture-races-ahead-of-fixtures trap after it caused a real,
+unintended, billed OpenRouter call during this plan's own finishing-branch verification —
+fixed in `test_extraction_spike.py` with a call-time, two-condition gate.*
