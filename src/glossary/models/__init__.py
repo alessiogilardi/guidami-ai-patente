@@ -6,6 +6,9 @@ from .glossary_block import CommaSpan, GlossaryBlock
 from .glossary_build_report import GlossaryBuildReport
 from .glossary_build_request import GlossaryBuildRequest
 from .glossary_term_row import GlossaryTermRow
+from .glossary_term_translation_report import GlossaryTermTranslationReport
+from .glossary_term_translation_request import GlossaryTermTranslationRequest
+from .translated_term import TranslatedTerm
 
 __all__ = [
     "CommaSpan",
@@ -15,4 +18,7 @@ __all__ = [
     "GlossaryBuildRequest",
     "GlossaryBuildReport",
     "GlossaryTermRow",
+    "TranslatedTerm",
+    "GlossaryTermTranslationRequest",
+    "GlossaryTermTranslationReport",
 ]
