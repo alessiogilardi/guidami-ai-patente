@@ -162,8 +162,9 @@ repo/
 │   │                                #   GlossaryTermTranslationRunService) → utils/ (chunking.py's
 │   │                                #   split_into_chunks + entry_markers.py's shared marker
 │   │                                #   regexes and count_expected_entries/is_abrogated/
-│   │                                #   is_cross_reference, stateless, domain-specific
-│   │                                #   pure-function module — same placement rationale as
+│   │                                #   is_cross_reference + normalization.py's normalize_term/
+│   │                                #   capitalize_definition, all stateless, domain-specific
+│   │                                #   pure-function modules — same placement rationale as
 │   │                                #   guidami_ai_patente_ingestor/utils/comma_repeal_detector.py)
 │   │                                #   → agents/
 │   │                                #   (GlossaryExtractorAgent, GlossaryTermTranslatorAgent) →
@@ -1005,3 +1006,8 @@ existing convention for a stateless, domain-specific pure-function module. Mirro
 `glossary/utils/` gained `entry_markers.py` (the numeric/alphabetic marker regexes, now
 shared with `chunking.py`, plus `count_expected_entries`, `is_abrogated`,
 `is_cross_reference`), with `tests/glossary/utils/test_entry_markers.py` mirroring it.*
+
+*Last updated: 2026-09-25 — verified against commit `f6e2c152` (working tree ahead).
+`glossary/utils/` gained `normalization.py` (`normalize_term`, `capitalize_definition`),
+used by `GlossaryExtractionService`; `tests/glossary/utils/test_normalization.py` mirroring
+it.*
