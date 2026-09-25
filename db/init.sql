@@ -238,6 +238,11 @@ CREATE TABLE IF NOT EXISTS glossary_entries (
     comma_number      TEXT NOT NULL,
     term              TEXT NOT NULL,
     definition        TEXT NOT NULL,
+    -- Plain-language rendering of `definition`, filled independently by
+    -- simplify-glossary-definitions (spec 0022). NULL until simplified; a row is a
+    -- complete, servable glossary entry either way (spec 0022 AD-4) — the read side
+    -- falls back to `definition` verbatim when this is NULL.
+    definition_plain  TEXT,
     -- Written only by translate-glossary-terms (FR-5), never by initial insert.
     -- Consumed as a spec 0020 translation hint (POST /explanations/translate, spec 0018 FR-8).
     term_ru           TEXT,

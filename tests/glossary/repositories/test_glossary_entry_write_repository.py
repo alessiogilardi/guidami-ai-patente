@@ -66,6 +66,26 @@ def test_a_rebuild_resets_term_ru_to_null(
 
 
 @pytest.mark.integration
+def test_a_rebuild_resets_definition_plain_to_null(
+    postgres_test_config: PostgresConnectionConfig, client: PostgresClient
+) -> None:
+    repository = GlossaryEntryWriteRepository("glossary_entries", client, "embedding_3_small")
+    block = GlossaryBlockConfig(source="cds", file="x.json", article_number="3", comma_number="1")
+    repository.write(block, [_entity("carreggiata")])
+    client.execute(sql.SQL("UPDATE glossary_entries SET definition_plain = 'Parte della strada.'"))
+
+    repository.write(block, [_entity("carreggiata")])
+
+    rows = client.fetch(
+        sql.SQL(
+            "SELECT term, definition_plain FROM glossary_entries "
+            "WHERE article_number = '3' ORDER BY term"
+        )
+    )
+    assert rows == [("carreggiata", None)]
+
+
+@pytest.mark.integration
 def test_reconciliation_deletes_only_this_blocks_stale_entries(
     postgres_test_config: PostgresConnectionConfig, client: PostgresClient
 ) -> None:

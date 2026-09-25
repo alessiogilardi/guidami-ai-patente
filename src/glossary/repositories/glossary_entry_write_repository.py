@@ -44,8 +44,10 @@ class GlossaryEntryWriteRepository:
     def _upsert(
         self, table: str, client: PostgresClient, entries: Sequence[GlossaryEntryEntity]
     ) -> None:
-        # term_ru is always reset to NULL on conflict (FR-6/AD-11): build-glossary
-        # never translates, so a rebuilt row must not keep a stale prior translation.
+        # term_ru and definition_plain are always reset to NULL on conflict (FR-6/AD-11,
+        # spec 0022 FR-1a): build-glossary never translates or simplifies, so a rebuilt
+        # row must not keep a stale prior translation or plain-language rendering tied
+        # to a definition that may have changed.
         # The embedding column itself is parametric (AD-4): a new embedding model is
         # a new embedding_* column, chosen via GlossaryConfig.embedding_column, never
         # a literal in this query.
@@ -55,7 +57,8 @@ class GlossaryEntryWriteRepository:
             "VALUES ({placeholders}, %s::vector) "
             "ON CONFLICT (source, article_number, comma_number, term) "
             "DO UPDATE SET definition = EXCLUDED.definition, "
-            "{embedding_column} = EXCLUDED.{embedding_column}, term_ru = NULL"
+            "{embedding_column} = EXCLUDED.{embedding_column}, "
+            "term_ru = NULL, definition_plain = NULL"
         ).format(
             table=sql.Identifier(table),
             columns=sql.SQL(", ").join(sql.Identifier(c) for c in _COLUMNS),
