@@ -11,7 +11,8 @@ from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente.models import GlossaryCandidate
 
 _COLUMNS = sql.SQL(
-    "g.id, g.source, g.article_number, g.comma_number, g.term, g.definition, g.term_ru"
+    "g.id, g.source, g.article_number, g.comma_number, g.term, g.definition, "
+    "g.definition_plain, g.term_ru"
 )
 
 _QUERY = sql.SQL(
@@ -86,7 +87,16 @@ class GlossaryReadRepository:
 
     @staticmethod
     def _row_to_candidate(row: tuple) -> GlossaryCandidate:
-        comma_id, source, article_number, comma_number, term, definition, term_ru = row
+        (
+            comma_id,
+            source,
+            article_number,
+            comma_number,
+            term,
+            definition,
+            definition_plain,
+            term_ru,
+        ) = row
         return GlossaryCandidate(
             id=comma_id,
             source=source,
@@ -94,5 +104,6 @@ class GlossaryReadRepository:
             comma_number=comma_number,
             term=term,
             definition=definition,
+            definition_plain=definition_plain,
             term_ru=term_ru,
         )

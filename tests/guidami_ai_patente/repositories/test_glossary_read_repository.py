@@ -30,6 +30,7 @@ def _seed_entry(
     article_number: str,
     comma_number: str,
     term_ru: str | None = "x",
+    definition_plain: str | None = None,
 ) -> None:
     """Inserts one glossary_entries row with a fixed, non-distinctive embedding.
 
@@ -40,16 +41,28 @@ def _seed_entry(
 
     `term_ru` defaults to a placeholder non-blank value; a test seeding `term_ru=None`
     covers the actual bug this fixes (spec 0019 AD-11: `build-glossary` never
-    translates, so a row may legitimately have no Russian term yet).
+    translates, so a row may legitimately have no Russian term yet). `definition_plain`
+    defaults to `None`, matching a row `simplify-glossary-definitions` has not reached
+    yet (spec 0022).
     """
     client = get_default_container().resolve(PostgresClientProvider).client
     client.execute(
         sql.SQL(
             "INSERT INTO glossary_entries "
-            "(source, article_number, comma_number, term, definition, term_ru, embedding_3_small) "
-            "VALUES (%s, %s, %s, %s, %s, %s, %s::vector)"
+            "(source, article_number, comma_number, term, definition, term_ru, "
+            "definition_plain, embedding_3_small) "
+            "VALUES (%s, %s, %s, %s, %s, %s, %s, %s::vector)"
         ),
-        [source, article_number, comma_number, term, definition, term_ru, [0.1] * 1536],
+        [
+            source,
+            article_number,
+            comma_number,
+            term,
+            definition,
+            term_ru,
+            definition_plain,
+            [0.1] * 1536,
+        ],
     )
 
 
@@ -218,3 +231,31 @@ def test_text_only_matches_keep_their_own_relevance_order(
 
     terms = [c.term for c in candidates]
     assert terms.index("sosta dei veicoli") < terms.index("veicolo")
+
+
+@pytest.mark.integration
+def test_definition_plain_round_trips_including_the_null_case(
+    postgres_test_config: PostgresConnectionConfig,
+) -> None:
+    _seed_entry(
+        term="carreggiata",
+        definition="...",
+        source="cds",
+        article_number="3",
+        comma_number="1",
+        definition_plain="La parte della strada per i veicoli.",
+    )
+    _seed_entry(
+        term="banchina",
+        definition="...",
+        source="cds",
+        article_number="3",
+        comma_number="1",
+    )
+
+    repository = get_default_container().resolve(GlossaryReadRepository)
+    candidates = repository.candidates_for("La carreggiata e la banchina.", embedding=None)
+
+    by_term = {c.term: c.definition_plain for c in candidates}
+    assert by_term["carreggiata"] == "La parte della strada per i veicoli."
+    assert by_term["banchina"] is None
