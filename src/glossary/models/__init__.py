@@ -9,6 +9,7 @@ from .glossary_definition_row import GlossaryDefinitionRow
 from .glossary_term_row import GlossaryTermRow
 from .glossary_term_translation_report import GlossaryTermTranslationReport
 from .glossary_term_translation_request import GlossaryTermTranslationRequest
+from .simplified_definition import SimplifiedDefinition
 from .translated_term import TranslatedTerm
 
 __all__ = [
@@ -20,6 +21,7 @@ __all__ = [
     "GlossaryBuildReport",
     "GlossaryDefinitionRow",
     "GlossaryTermRow",
+    "SimplifiedDefinition",
     "TranslatedTerm",
     "GlossaryTermTranslationRequest",
     "GlossaryTermTranslationReport",
