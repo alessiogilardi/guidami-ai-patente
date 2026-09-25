@@ -160,7 +160,9 @@ repo/
 │   │                                #   agents) → services/ (GlossaryExtractionService,
 │   │                                #   GlossaryBuildService, GlossaryTermTranslationService,
 │   │                                #   GlossaryTermTranslationRunService) → utils/ (chunking.py's
-│   │                                #   split_into_chunks, a stateless, domain-specific
+│   │                                #   split_into_chunks + entry_markers.py's shared marker
+│   │                                #   regexes and count_expected_entries/is_abrogated/
+│   │                                #   is_cross_reference, stateless, domain-specific
 │   │                                #   pure-function module — same placement rationale as
 │   │                                #   guidami_ai_patente_ingestor/utils/comma_repeal_detector.py)
 │   │                                #   → agents/
@@ -998,3 +1000,8 @@ component breakdown this file deliberately doesn't duplicate.*
 `services/` into `utils/chunking.py`, mirroring `guidami_ai_patente_ingestor/utils/`'s
 existing convention for a stateless, domain-specific pure-function module. Mirroring
 `tests/glossary/utils/` added.*
+
+*Last updated: 2026-09-25 — verified against commit `459af9b5` (working tree ahead).
+`glossary/utils/` gained `entry_markers.py` (the numeric/alphabetic marker regexes, now
+shared with `chunking.py`, plus `count_expected_entries`, `is_abrogated`,
+`is_cross_reference`), with `tests/glossary/utils/test_entry_markers.py` mirroring it.*
