@@ -1,7 +1,11 @@
 """The domain outcome, on the wire (FR-5, FR-7)."""
 
 from guidami_ai_patente.api.schemas.quiz_explanation import CitedGlossaryTermResponse
-from guidami_ai_patente.enums import ExplanationResult, InsufficientKnowledgeReason
+from guidami_ai_patente.enums import (
+    ExplanationResult,
+    GlossaryTermOrigin,
+    InsufficientKnowledgeReason,
+)
 from guidami_ai_patente.mappers import ExplanationMapper
 from guidami_ai_patente.models import CitedGlossaryTerm, CurrentLabeling, Explanation, LabeledComma
 
@@ -83,7 +87,14 @@ def test_term_explanation_and_hints_are_mapped_through() -> None:
             citations=(_comma(1),),
             provenance=_labeling(),
             term_explanation="La domanda chiede...",
-            translation_hints=(CitedGlossaryTerm(term="x", definition="y", term_ru="z"),),
+            translation_hints=(
+                CitedGlossaryTerm(
+                    term="x",
+                    definition="y",
+                    term_ru="z",
+                    origin=GlossaryTermOrigin.VERBATIM_CORPUS,
+                ),
+            ),
         )
     )
 
@@ -100,7 +111,14 @@ def test_a_refusal_still_carries_term_explanation_and_hints() -> None:
             result=ExplanationResult.INSUFFICIENT_KNOWLEDGE,
             reason=InsufficientKnowledgeReason.NOT_INDEXED,
             term_explanation="La domanda chiede...",
-            translation_hints=(CitedGlossaryTerm(term="x", definition="y", term_ru="z"),),
+            translation_hints=(
+                CitedGlossaryTerm(
+                    term="x",
+                    definition="y",
+                    term_ru="z",
+                    origin=GlossaryTermOrigin.VERBATIM_CORPUS,
+                ),
+            ),
         )
     )
 

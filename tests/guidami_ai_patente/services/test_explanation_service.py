@@ -14,7 +14,11 @@ from guidami_ai_patente.agents.question_explainer.dto import (
     QuestionExplainerRequest,
     QuestionExplainerResponse,
 )
-from guidami_ai_patente.enums import ExplanationResult, InsufficientKnowledgeReason
+from guidami_ai_patente.enums import (
+    ExplanationResult,
+    GlossaryTermOrigin,
+    InsufficientKnowledgeReason,
+)
 from guidami_ai_patente.exceptions import (
     ExplanationUnavailableError,
     LabelingNotReadyError,
@@ -203,13 +207,7 @@ async def test_a_vocabulary_agent_failure_degrades_without_affecting_the_legal_s
 @pytest.mark.asyncio
 async def test_cited_terms_are_resolved_into_translation_hints() -> None:
     candidate = GlossaryCandidate(
-        id=1,
-        source="cds",
-        article_number="3",
-        comma_number="1",
-        term="carreggiata",
-        definition="Parte della strada...",
-        term_ru="проезжая часть",
+        term="carreggiata", definition="Parte della strada...", term_ru="проезжая часть"
     )
     vocabulary_agent = _VocabularyAgentDouble(
         response=QuestionExplainerResponse(
@@ -227,7 +225,10 @@ async def test_cited_terms_are_resolved_into_translation_hints() -> None:
 
     assert explanation.translation_hints == (
         CitedGlossaryTerm(
-            term="carreggiata", definition="Parte della strada...", term_ru="проезжая часть"
+            term="carreggiata",
+            definition="Parte della strada...",
+            term_ru="проезжая часть",
+            origin=GlossaryTermOrigin.VERBATIM_CORPUS,
         ),
     )
 
@@ -235,10 +236,6 @@ async def test_cited_terms_are_resolved_into_translation_hints() -> None:
 @pytest.mark.asyncio
 async def test_a_cited_term_with_a_plain_definition_uses_it_over_the_verbatim_one() -> None:
     candidate = GlossaryCandidate(
-        id=1,
-        source="cds",
-        article_number="3",
-        comma_number="1",
         term="carreggiata",
         definition=(
             "Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli."
@@ -265,6 +262,7 @@ async def test_a_cited_term_with_a_plain_definition_uses_it_over_the_verbatim_on
             term="carreggiata",
             definition="La parte della strada per i veicoli.",
             term_ru="проезжая часть",
+            origin=GlossaryTermOrigin.VERBATIM_CORPUS,
         ),
     )
 
@@ -272,10 +270,6 @@ async def test_a_cited_term_with_a_plain_definition_uses_it_over_the_verbatim_on
 @pytest.mark.asyncio
 async def test_a_cited_term_with_no_plain_definition_falls_back_to_the_verbatim_one() -> None:
     candidate = GlossaryCandidate(
-        id=1,
-        source="cds",
-        article_number="3",
-        comma_number="1",
         term="carreggiata",
         definition=(
             "Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli."
@@ -303,6 +297,7 @@ async def test_a_cited_term_with_no_plain_definition_falls_back_to_the_verbatim_
                 "Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli."
             ),
             term_ru="проезжая часть",
+            origin=GlossaryTermOrigin.VERBATIM_CORPUS,
         ),
     )
 
@@ -317,10 +312,6 @@ async def test_a_cited_term_with_an_empty_string_plain_definition_falls_back_too
     this case only, since the `None`-only test above would still pass.
     """
     candidate = GlossaryCandidate(
-        id=1,
-        source="cds",
-        article_number="3",
-        comma_number="1",
         term="carreggiata",
         definition=(
             "Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli."
@@ -349,6 +340,7 @@ async def test_a_cited_term_with_an_empty_string_plain_definition_falls_back_too
                 "Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli."
             ),
             term_ru="проезжая часть",
+            origin=GlossaryTermOrigin.VERBATIM_CORPUS,
         ),
     )
 
@@ -366,13 +358,7 @@ async def test_a_null_term_ru_candidate_still_resolves_into_a_translation_hint()
     `term_ru=None` through, instead of degrading.
     """
     candidate = GlossaryCandidate(
-        id=1,
-        source="cds",
-        article_number="3",
-        comma_number="1",
-        term="carreggiata",
-        definition="Parte della strada...",
-        term_ru=None,
+        term="carreggiata", definition="Parte della strada...", term_ru=None
     )
     vocabulary_agent = _VocabularyAgentDouble(
         response=QuestionExplainerResponse(
@@ -390,16 +376,17 @@ async def test_a_null_term_ru_candidate_still_resolves_into_a_translation_hint()
 
     assert explanation.term_explanation == "La «carreggiata» è..."
     assert explanation.translation_hints == (
-        CitedGlossaryTerm(term="carreggiata", definition="Parte della strada...", term_ru=None),
+        CitedGlossaryTerm(
+            term="carreggiata",
+            definition="Parte della strada...",
+            term_ru=None,
+            origin=GlossaryTermOrigin.VERBATIM_CORPUS,
+        ),
     )
 
 
 def _candidate(ordinal: int, *, term: str | None = None) -> GlossaryCandidate:
     return GlossaryCandidate(
-        id=ordinal,
-        source="cds",
-        article_number="3",
-        comma_number=str(ordinal),
         term=term or f"term-{ordinal}",
         definition=f"Definizione {ordinal}.",
         term_ru=f"term-ru-{ordinal}",
@@ -449,22 +436,10 @@ async def test_duplicate_cited_terms_are_deduplicated_in_translation_hints() -> 
     wire-layer validator 422s on the duplicate `term`.
     """
     first = GlossaryCandidate(
-        id=1,
-        source="cds",
-        article_number="3",
-        comma_number="1",
-        term="obbligo",
-        definition="Definizione CdS.",
-        term_ru="obligation-cds",
+        term="obbligo", definition="Definizione CdS.", term_ru="obligation-cds"
     )
     second = GlossaryCandidate(
-        id=2,
-        source="cap",
-        article_number="7",
-        comma_number="2",
-        term="Obbligo",  # same term, different case
-        definition="Definizione CAP.",
-        term_ru="obligation-cap",
+        term="Obbligo", definition="Definizione CAP.", term_ru="obligation-cap"
     )
     vocabulary_agent = _VocabularyAgentDouble(
         response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[1, 2])
@@ -485,6 +460,31 @@ async def test_duplicate_cited_terms_are_deduplicated_in_translation_hints() -> 
 
 
 @pytest.mark.asyncio
+async def test_a_whitespace_only_duplicate_term_is_still_deduplicated() -> None:
+    """AD-6 (second grilling round): bare `casefold()` does not strip whitespace.
+
+    Before the fix, " Obbligo " and "obbligo" would NOT be recognized as the same
+    term and both would surface as separate translation_hints.
+    """
+    first = GlossaryCandidate(term="obbligo", definition="Definizione CdS.", term_ru="x")
+    second = GlossaryCandidate(term=" Obbligo ", definition="Definizione CAP.", term_ru="y")
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[1, 2])
+    )
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        glossary=_GlossaryDouble(candidates=[first, second]),
+    )(ExplanationRequest(number="0001"))
+
+    assert len(explanation.translation_hints) == 1
+    assert explanation.translation_hints[0].term.strip().casefold() == "obbligo"
+
+
+@pytest.mark.asyncio
 async def test_an_oversized_glossary_term_degrades_the_vocabulary_stage() -> None:
     """Fix #1: a `CitedGlossaryTerm` validation failure must stay inside the FR-5 boundary.
 
@@ -495,15 +495,7 @@ async def test_an_oversized_glossary_term_degrades_the_vocabulary_stage() -> Non
     request via `asyncio.gather`/`TaskGroup`, taking the already-shipped legal
     explanation down with it.
     """
-    oversized = GlossaryCandidate(
-        id=1,
-        source="cds",
-        article_number="3",
-        comma_number="1",
-        term="x" * 81,
-        definition="Definizione.",
-        term_ru="term-ru",
-    )
+    oversized = GlossaryCandidate(term="x" * 81, definition="Definizione.", term_ru="term-ru")
     vocabulary_agent = _VocabularyAgentDouble(
         response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[1])
     )

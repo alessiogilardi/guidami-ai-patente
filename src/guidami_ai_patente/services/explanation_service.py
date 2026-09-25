@@ -251,25 +251,29 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
     def _deduplicated_hints(
         candidates: list[GlossaryCandidate], cited_term_numbers: list[int]
     ) -> tuple[CitedGlossaryTerm, ...]:
-        """Resolves cited ordinals into hints, deduplicated by `term.casefold()`.
+        """Resolves cited ordinals into hints, deduplicated by `term.strip().casefold()`.
 
         `glossary_entries` is unique on `(source, article_number, comma_number, term)`,
         so two distinct rows can legitimately share the same `term` (e.g. a CdS and a
-        CAP definition of the same word). If the agent cites both, keeping only the
-        first-cited occurrence per term avoids a duplicate-`term` payload, which
-        `ExplanationTranslationRequest`'s wire-layer validator rejects with a 422 —
-        permanently breaking "Traduci" for that question.
+        CAP definition of the same word); an on-demand candidate (spec 0021) can also
+        collide with a DB one by case or stray whitespace. Keeping only the first-cited
+        occurrence per normalized term avoids a duplicate-`term` payload, which
+        `ExplanationTranslationRequest`'s wire-layer validator rejects with a 422.
+
+        The `.strip()` is load-bearing (AD-6, spec 0021 second grilling round): bare
+        `casefold()` alone does not normalize whitespace, so a term differing only by a
+        leading/trailing space would otherwise survive as a separate hint.
 
         `candidate.definition_plain or candidate.definition` prefers the plain-language
         rendering (spec 0022 FR-5) and falls back to the verbatim legal text when a row
-        has not been simplified yet (`definition_plain is None`) — the only read-side
-        change spec 0022 makes; `CitedGlossaryTerm` itself gains no new field.
+        has not been simplified yet (`definition_plain is None`) — always the case for
+        an `AGENT_GENERATED` candidate (spec 0021 FR-6).
         """
         seen_terms: set[str] = set()
         hints: list[CitedGlossaryTerm] = []
         for ordinal in cited_term_numbers:
             candidate = candidates[ordinal - 1]
-            term_key = candidate.term.casefold()
+            term_key = candidate.term.strip().casefold()
             if term_key not in seen_terms:
                 seen_terms.add(term_key)
                 hints.append(
@@ -277,6 +281,7 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
                         term=candidate.term,
                         definition=candidate.definition_plain or candidate.definition,
                         term_ru=candidate.term_ru,
+                        origin=candidate.origin,
                     )
                 )
         return tuple(hints)
