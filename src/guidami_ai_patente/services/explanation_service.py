@@ -99,10 +99,14 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
     per-request serving, unlike the batch labeler's seeded `shuffle_seed`) so retrieval
     rank never leaks in as an implicit relevance signal, then reuses that same shuffled
     list to resolve `cited_term_numbers` back into `CitedGlossaryTerm`s — deduplicated by
-    `term.casefold()` (first-cited order kept), since `glossary_entries` is only unique
-    on `(source, article_number, comma_number, term)`, so two distinct rows can
+    `term.strip().casefold()` (first-cited order kept), since `glossary_entries` is only
+    unique on `(source, article_number, comma_number, term)`, so two distinct rows can
     legitimately share a `term` and would otherwise produce duplicate
     `translation_hints`, which the translation endpoint's wire-layer validator rejects.
+
+    Since spec 0021, `_vocabulary_outcome` gathers a second, independent glossary
+    source alongside the existing DB read — a live `GlossaryEnricherAgent` call — and
+    merges the two via `merge_glossary_candidates` (DB wins on conflict).
     """
 
     _VOCABULARY_DEADLINE_MARGIN_S = 2.0

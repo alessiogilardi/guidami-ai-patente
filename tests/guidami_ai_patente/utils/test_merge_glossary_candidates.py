@@ -1,9 +1,8 @@
 """Tests for merge_glossary_candidates (FR-6, AD-6)."""
 
-from guidami_ai_patente.utils import merge_glossary_candidates
-
 from guidami_ai_patente.enums import GlossaryTermOrigin
 from guidami_ai_patente.models import GlossaryCandidate
+from guidami_ai_patente.utils import merge_glossary_candidates
 
 
 def test_an_empty_on_demand_list_returns_the_db_list_unchanged() -> None:
