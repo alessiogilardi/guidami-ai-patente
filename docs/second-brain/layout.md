@@ -90,6 +90,14 @@ repo/
 │   │                                #   services/explanation_translation_service.py,
 │   │                                #   api/dependencies/language.py and
 │   │                                #   exceptions/unsupported_language_error.py -> 400.
+│   │                                #   Since spec 0021, first utils/ package in this app
+│   │                                #   (merge_glossary_candidates.py — pure, standalone
+│   │                                #   merge function, no injected dependency, mirroring
+│   │                                #   the ingestor's utils/ precedent); enums/ gained
+│   │                                #   GlossaryTermOrigin; agents/ gained
+│   │                                #   glossary_enricher/ (GlossaryEnricherAgent + dto/),
+│   │                                #   an answer-blind live agent grounded on
+│   │                                #   LiveLabelingStackProvider's retrieval stack.
 │   │                                #   Entry point:
 │   │                                #   `guidami_ai_patente.main:main`, registered as the
 │   │                                #   `serve` script
@@ -1011,3 +1019,11 @@ shared with `chunking.py`, plus `count_expected_entries`, `is_abrogated`,
 `glossary/utils/` gained `normalization.py` (`normalize_term`, `capitalize_definition`),
 used by `GlossaryExtractionService`; `tests/glossary/utils/test_normalization.py` mirroring
 it.*
+
+*Last updated: 2026-09-26 — verified against commit `3980e7ba` (spec 0021, on-demand
+glossary enrichment, fully implemented on feat/backend). `guidami_ai_patente/` gained its
+first `utils/` package (`merge_glossary_candidates.py`), mirroring the same
+stateless-standalone-function convention already established in `guidami_ai_patente_ingestor/utils/`
+and `glossary/utils/`; `enums/` gained `glossary_term_origin.py`; `agents/` gained
+`glossary_enricher/` (agent + `dto/`). Mirroring `tests/guidami_ai_patente/utils/` and
+`tests/guidami_ai_patente/agents/glossary_enricher/` added.*
