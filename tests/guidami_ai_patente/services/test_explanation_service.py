@@ -927,7 +927,7 @@ async def test_a_whitespace_variant_between_db_and_on_demand_terms_merges_end_to
         )
     )
 
-    explanation = await _service(
+    await _service(
         _ReaderDouble(selection),
         _WriterDouble(responses=[_explained([1])]),
         vocabulary_agent=vocabulary_agent,
@@ -935,9 +935,16 @@ async def test_a_whitespace_variant_between_db_and_on_demand_terms_merges_end_to
         enricher=enricher,
     )(ExplanationRequest(number="0001"))
 
-    assert len(explanation.translation_hints) == 1
-    assert explanation.translation_hints[0].definition == "Definizione DB."
-    assert explanation.translation_hints[0].origin is GlossaryTermOrigin.VERBATIM_CORPUS
+    # Asserted against what the vocabulary agent actually received, not against the
+    # final cited hint: with a single `cited_term_numbers` ordinal, a broken
+    # normalization would leave 2 candidates instead of 1 and `random.shuffle` would
+    # make ordinal 1 resolve to either one — ~50% of the time hiding the regression
+    # this test exists to catch. Asserting the merge itself collapsed to one candidate
+    # is independent of shuffle order and of `cited_term_numbers`.
+    merged_candidates = vocabulary_agent.requests[0].candidates
+    assert len(merged_candidates) == 1
+    assert merged_candidates[0].definition == "Definizione DB."
+    assert merged_candidates[0].origin is GlossaryTermOrigin.VERBATIM_CORPUS
 
 
 @pytest.mark.asyncio
