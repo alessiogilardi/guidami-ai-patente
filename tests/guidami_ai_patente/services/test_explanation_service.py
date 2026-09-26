@@ -6,9 +6,15 @@ from dataclasses import dataclass, field
 
 import pytest
 
+from domain.models.retrieval import QuizEvaluationRow, RetrievedComma
 from guidami_ai_patente.agents.explanation_writer.dto import (
     ExplanationWriterRequest,
     ExplanationWriterResponse,
+)
+from guidami_ai_patente.agents.glossary_enricher.dto import (
+    GlossaryEnricherEntryDto,
+    GlossaryEnricherRequest,
+    GlossaryEnricherResponse,
 )
 from guidami_ai_patente.agents.question_explainer.dto import (
     QuestionExplainerRequest,
@@ -35,6 +41,7 @@ from guidami_ai_patente.models import (
     QuestionVocabularyContext,
 )
 from guidami_ai_patente.services import ExplanationService
+from labeling.models import CandidateComma, LabelingEpoch
 
 
 def _labeling(*, has_commas: bool = False, validated: bool = False) -> CurrentLabeling:
@@ -143,12 +150,78 @@ class _GlossaryDouble:
         return self.candidates
 
 
+@dataclass
+class _EnricherDouble:
+    response: GlossaryEnricherResponse | None = None
+    error: Exception | None = None
+    delay: float = 0.0
+    requests: list[GlossaryEnricherRequest] = field(default_factory=list)
+
+    async def run(self, request: GlossaryEnricherRequest) -> GlossaryEnricherResponse:
+        self.requests.append(request)
+        if self.delay:
+            await asyncio.sleep(self.delay)
+        if self.error is not None:
+            raise self.error
+        assert self.response is not None
+        return self.response
+
+
+@dataclass
+class _QuizStackDouble:
+    row: QuizEvaluationRow | None = None
+    calls: list[tuple[str, str, str]] = field(default_factory=list)
+
+    def find_with_vector(
+        self, number: str, variant: str, model_column: str
+    ) -> QuizEvaluationRow | None:
+        self.calls.append((number, variant, model_column))
+        return self.row
+
+
+@dataclass
+class _CandidateSetDouble:
+    """Callable, not `.execute()`-only: production code invokes it via `__call__`.
+
+    (`.claude/rules/use-case-invocation.md`), inside `asyncio.to_thread` (AD-25) — this
+    double must be callable the same way for `_enrich`'s real call shape to be exercised.
+    """
+
+    candidates: list[CandidateComma] = field(default_factory=list)
+
+    def __call__(self, row: QuizEvaluationRow) -> list[CandidateComma]:
+        return self.candidates
+
+
+@dataclass
+class _LabelingStackDouble:
+    quiz: _QuizStackDouble = field(default_factory=_QuizStackDouble)
+    candidate_set: _CandidateSetDouble = field(default_factory=_CandidateSetDouble)
+
+
+@dataclass
+class _JudgeIdentityDouble:
+    epoch: LabelingEpoch = field(
+        default_factory=lambda: LabelingEpoch(
+            judge_model="openrouter/google/gemini-2.5-flash-lite",
+            prompt_version="0123456789abcdef",
+            candidate_variant="topic_text",
+            dense_k=50,
+            text_k=50,
+            lexeme_fields=("image_description", "text", "topic"),
+        )
+    )
+
+
 def _service(
     reader: _ReaderDouble,
     writer: _WriterDouble,
     questions: _QuestionsDouble | None = None,
     vocabulary_agent: _VocabularyAgentDouble | None = None,
     glossary: _GlossaryDouble | None = None,
+    enricher: _EnricherDouble | None = None,
+    labeling_stack: _LabelingStackDouble | None = None,
+    judge_identity: _JudgeIdentityDouble | None = None,
 ) -> ExplanationService:
     service = object.__new__(ExplanationService)
     service.config = _ConfigDouble()  # type: ignore[assignment]
@@ -159,6 +232,11 @@ def _service(
         response=QuestionExplainerResponse(explanation="Spiegazione.", cited_term_numbers=[])
     )
     service.glossary = glossary or _GlossaryDouble()  # type: ignore[assignment]
+    service.enricher = enricher or _EnricherDouble(  # type: ignore[assignment]
+        response=GlossaryEnricherResponse()
+    )
+    service.labeling_stack = labeling_stack or _LabelingStackDouble()  # type: ignore[assignment]
+    service.judge_identity = judge_identity or _JudgeIdentityDouble()  # type: ignore[assignment]
     return service
 
 
@@ -612,6 +690,282 @@ async def test_a_present_text_variant_embedding_does_not_log_a_warning(
         )(ExplanationRequest(number="0001"))
 
     assert not any("no text-variant embedding" in record.message for record in caplog.records)
+
+
+def _candidate_comma(comma_id: int, text: str) -> CandidateComma:
+    return CandidateComma(
+        comma=RetrievedComma(
+            id=comma_id,
+            source="cds",
+            article_number="157",
+            article_title="Sosta",
+            comma_number="1",
+            text=text,
+            distance=0.1,
+        ),
+        dense_rank=1,
+    )
+
+
+def _evaluation_row() -> QuizEvaluationRow:
+    return QuizEvaluationRow(
+        id=1,
+        number="0001",
+        topic="sosta",
+        text="È vietata la sosta?",
+        correct_answer=True,
+        exact_keywords=None,
+        image_filename=None,
+        image_description=None,
+        embedding=[0.1] * 4,
+    )
+
+
+@pytest.mark.asyncio
+async def test_the_enricher_receives_only_the_unwrapped_retrieved_commas() -> None:
+    """FR-2 point 3: only CandidateComma.comma is forwarded, not the rank fields.
+
+    `quiz=_QuizStackDouble(row=...)` is required here (not the double's `row=None`
+    default) — `_enrich` only calls `candidate_set` (via `__call__`) when `find_with_vector`
+    returns a row; with the default `None` this test would trivially pass with an
+    empty `commas` list regardless of what `candidate_set` returns.
+    """
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    labeling_stack = _LabelingStackDouble(
+        quiz=_QuizStackDouble(row=_evaluation_row()),
+        candidate_set=_CandidateSetDouble(
+            candidates=[_candidate_comma(1, "È vietata la sosta negli spazi riservati.")]
+        ),
+    )
+    enricher = _EnricherDouble(response=GlossaryEnricherResponse())
+
+    await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        labeling_stack=labeling_stack,
+        enricher=enricher,
+    )(ExplanationRequest(number="0001"))
+
+    sent_commas = enricher.requests[0].commas
+    assert len(sent_commas) == 1
+    assert isinstance(sent_commas[0], RetrievedComma)
+    assert sent_commas[0].text == "È vietata la sosta negli spazi riservati."
+
+
+@pytest.mark.asyncio
+async def test_an_agent_generated_term_is_merged_in_with_the_right_origin() -> None:
+    """Both sources succeed: the merged, shuffled list reaches QuestionExplainerAgent."""
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[1])
+    )
+    enricher = _EnricherDouble(
+        response=GlossaryEnricherResponse(
+            entries=[GlossaryEnricherEntryDto(term="revoca", definition="Definizione live.")]
+        )
+    )
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        enricher=enricher,
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.translation_hints[0].term == "revoca"
+    assert explanation.translation_hints[0].origin is GlossaryTermOrigin.AGENT_GENERATED
+
+
+@pytest.mark.asyncio
+async def test_an_enricher_failure_degrades_only_its_own_contribution() -> None:
+    """FR-7: a non-timeout enricher exception still yields the DB-only candidates."""
+    candidate = GlossaryCandidate(term="carreggiata", definition="...", term_ru="x")
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[1])
+    )
+    enricher = _EnricherDouble(error=RuntimeError("boom"))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        glossary=_GlossaryDouble(candidates=[candidate]),
+        enricher=enricher,
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.result is ExplanationResult.EXPLAINED
+    assert explanation.translation_hints[0].term == "carreggiata"
+    assert explanation.translation_hints[0].origin is GlossaryTermOrigin.VERBATIM_CORPUS
+
+
+@pytest.mark.asyncio
+async def test_an_unexpected_model_behavior_from_the_enricher_also_degrades_only_its_own_contribution() -> (  # noqa: E501
+    None
+):
+    """Review Focus: a real retry-exhaustion failure, not just a generic RuntimeError."""
+    from pydantic_ai.exceptions import UnexpectedModelBehavior
+
+    candidate = GlossaryCandidate(term="carreggiata", definition="...", term_ru="x")
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[1])
+    )
+    enricher = _EnricherDouble(error=UnexpectedModelBehavior("Exceeded maximum output retries"))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        glossary=_GlossaryDouble(candidates=[candidate]),
+        enricher=enricher,
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.translation_hints[0].term == "carreggiata"
+
+
+@pytest.mark.asyncio
+async def test_both_sources_failing_still_degrades_the_whole_stage_without_crashing() -> None:
+    """Review Focus: DB raises AND enricher raises in the same gather call."""
+
+    @dataclass
+    class _RaisingGlossary:
+        def candidates_for(
+            self, text: str, embedding: list[float] | None
+        ) -> list[GlossaryCandidate]:
+            raise RuntimeError("db down")
+
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    enricher = _EnricherDouble(error=RuntimeError("enricher down too"))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        glossary=_RaisingGlossary(),  # type: ignore[arg-type]
+        enricher=enricher,
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.result is ExplanationResult.EXPLAINED
+    assert explanation.term_explanation is None
+    assert explanation.translation_hints == ()
+
+
+@pytest.mark.asyncio
+async def test_a_not_indexed_question_still_runs_the_enricher_with_an_empty_comma_list() -> None:
+    """FR-2: find_with_vector returning None is not a degrade."""
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[])
+    )
+    enricher = _EnricherDouble(response=GlossaryEnricherResponse())
+    labeling_stack = _LabelingStackDouble(quiz=_QuizStackDouble(row=None))
+
+    await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        enricher=enricher,
+        labeling_stack=labeling_stack,
+    )(ExplanationRequest(number="0001"))
+
+    assert enricher.requests[0].commas == []
+
+
+@pytest.mark.asyncio
+async def test_the_query_vector_is_looked_up_under_the_epochs_variant() -> None:
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    labeling_stack = _LabelingStackDouble(quiz=_QuizStackDouble(row=None))
+
+    await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        labeling_stack=labeling_stack,
+    )(ExplanationRequest(number="0001"))
+
+    assert labeling_stack.quiz.calls == [("0001", "topic_text", "embedding_3_small")]
+
+
+@pytest.mark.asyncio
+async def test_a_shared_timeout_during_the_enricher_branch_fully_degrades_the_stage() -> None:
+    """Review Focus / FR-7: a shared-timeout expiry is stage-level, never partial.
+
+    The DB branch returns instantly; only the enricher branch sleeps past the inner
+    deadline. Before this spec, a wrong assumption would have let the already-returned
+    DB candidates survive as a partial result — they must not.
+    """
+    candidate = GlossaryCandidate(term="carreggiata", definition="...", term_ru="x")
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    enricher = _EnricherDouble(delay=5.0, response=GlossaryEnricherResponse())
+    service = _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        glossary=_GlossaryDouble(candidates=[candidate]),
+        enricher=enricher,
+    )
+    service.config = _ConfigDouble(explanation_deadline_s=3.0)  # type: ignore[assignment]
+
+    explanation = await service(ExplanationRequest(number="0001"))
+
+    assert explanation.result is ExplanationResult.EXPLAINED
+    assert explanation.term_explanation is None
+    assert explanation.translation_hints == ()
+
+
+@pytest.mark.asyncio
+async def test_a_whitespace_variant_between_db_and_on_demand_terms_merges_end_to_end() -> None:
+    """Review Focus: the AD-6 normalization must hold through the real gather/merge wiring."""
+    candidate = GlossaryCandidate(term="Sospensione", definition="Definizione DB.", term_ru="x")
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[1])
+    )
+    enricher = _EnricherDouble(
+        response=GlossaryEnricherResponse(
+            entries=[
+                GlossaryEnricherEntryDto(term=" sospensione ", definition="Definizione live.")
+            ]
+        )
+    )
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        vocabulary_agent=vocabulary_agent,
+        glossary=_GlossaryDouble(candidates=[candidate]),
+        enricher=enricher,
+    )(ExplanationRequest(number="0001"))
+
+    assert len(explanation.translation_hints) == 1
+    assert explanation.translation_hints[0].definition == "Definizione DB."
+    assert explanation.translation_hints[0].origin is GlossaryTermOrigin.VERBATIM_CORPUS
+
+
+@pytest.mark.asyncio
+async def test_a_glossary_repository_failure_still_degrades_the_whole_stage() -> None:
+    """Regression guard (spec 0021 Testing (c)).
+
+    This spec must not change this existing behavior, but no test in the pre-0021
+    suite actually exercised it — added here.
+    """
+
+    @dataclass
+    class _RaisingGlossary:
+        def candidates_for(
+            self, text: str, embedding: list[float] | None
+        ) -> list[GlossaryCandidate]:
+            raise RuntimeError("db down")
+
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+
+    explanation = await _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        glossary=_RaisingGlossary(),  # type: ignore[arg-type]
+    )(ExplanationRequest(number="0001"))
+
+    assert explanation.result is ExplanationResult.EXPLAINED
+    assert explanation.term_explanation is None
+    assert explanation.translation_hints == ()
 
 
 @pytest.mark.asyncio

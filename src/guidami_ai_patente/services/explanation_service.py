@@ -7,11 +7,16 @@ import random
 from pywire import Autowired, service
 
 from commons.use_cases import AsyncUseCase
-from guidami_ai_patente.agents import ExplanationWriterAgent, QuestionExplainerAgent
+from guidami_ai_patente.agents import (
+    ExplanationWriterAgent,
+    GlossaryEnricherAgent,
+    QuestionExplainerAgent,
+)
 from guidami_ai_patente.agents.explanation_writer.dto import (
     ExplanationWriterRequest,
     ExplanationWriterResponse,
 )
+from guidami_ai_patente.agents.glossary_enricher.dto import GlossaryEnricherRequest
 from guidami_ai_patente.agents.question_explainer.dto import QuestionExplainerRequest
 from guidami_ai_patente.configs import AppConfig
 from guidami_ai_patente.enums import ExplanationResult, InsufficientKnowledgeReason
@@ -23,8 +28,12 @@ from guidami_ai_patente.models import (
     ExplanationRequest,
     GlossaryCandidate,
     QuestionContext,
+    QuestionVocabularyContext,
 )
+from guidami_ai_patente.providers import LabelingStackProvider, LiveLabelingStackProvider
 from guidami_ai_patente.repositories import GlossaryReadRepository, QuizQuestionRepository
+from guidami_ai_patente.utils import merge_glossary_candidates
+from labeling import EMBEDDING_MODEL_COLUMN
 
 from .current_labeling_read_service import CurrentLabelingReadService
 
@@ -107,6 +116,9 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
     writer: Autowired[ExplanationWriterAgent]
     vocabulary_agent: Autowired[QuestionExplainerAgent]
     glossary: Autowired[GlossaryReadRepository]
+    enricher: Autowired[GlossaryEnricherAgent]
+    judge_identity: Autowired[LabelingStackProvider]
+    labeling_stack: Autowired[LiveLabelingStackProvider]
 
     async def execute(self, request: ExplanationRequest) -> Explanation:
         """Explains `request.number`, or reports why it cannot be explained.
@@ -194,24 +206,23 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
     ) -> tuple[str | None, tuple[CitedGlossaryTerm, ...]]:
         """The vocabulary stage: never raises, degrades to `(None, ())` on any failure (FR-5).
 
-        The entire body — retrieval, the agent call and resolving `cited_term_numbers`
-        into `CitedGlossaryTerm`s — sits inside one `try`, so a malformed glossary row
-        (e.g. a `term` over `CitedGlossaryTerm`'s 80-char `max_length`, or blank; neither
-        is enforced at the DB layer) degrades this stage instead of raising a
-        `ValidationError` past the FR-5 boundary and crashing the whole request.
+        Since spec 0021, two independent sources of glossary candidates are gathered
+        concurrently — `GlossaryReadRepository.candidates_for` (DB, unchanged) and
+        `_enrich` (live, on-demand) — via `asyncio.gather(..., return_exceptions=True)`,
+        not `TaskGroup`: a DB failure still degrades the whole stage exactly as before
+        (FR-7), while a non-timeout `_enrich` exception is isolated to its own
+        contribution and treated as an empty on-demand list (FR-7). `merge_glossary_
+        candidates` then combines the two (FR-6, DB wins on a normalized-term conflict)
+        before the existing shuffle and `QuestionExplainerAgent` call, whose own
+        contract is unchanged (FR-5).
 
-        Also bounded by its own inner `asyncio.timeout` (`_VOCABULARY_DEADLINE_MARGIN_S`
-        below `explanation_deadline_s`), so a slow vocabulary call degrades on its own
-        budget rather than being the thing that fires the shared *outer* deadline and
-        503s the legal stage too — `TimeoutError` here is just another `Exception`
-        caught below, like any other vocabulary-stage failure.
-
-        Shuffles the RRF-ordered candidates from `GlossaryReadRepository` before handing
-        them to the agent, so retrieval rank never leaks in as an implicit relevance
-        signal (grilling round, 2026-09-23) — mirrors `QuestionLabelingService`'s
-        "retrieve → shuffle → judge" shape. `candidates` (the shuffled list) is reused,
-        not re-fetched, to resolve `cited_term_numbers` afterward: the ordinal is a
-        1-based index into the exact list the agent's prompt was built from.
+        Exactly one timeout bounds all of this: the pre-existing inner `asyncio.timeout`
+        below, sized the same as before this spec. Its expiry cancels both gathered
+        branches together and degrades the whole stage — there is no per-branch
+        sub-budget (FR-7, resolved during the 2026-09-25 second grilling round: no
+        timeout anywhere else in this codebase carries one, and a shared
+        `asyncio.timeout` cancels every branch it wraps simultaneously on expiry, so it
+        cannot be attributed to "only the enricher").
         """
         vocabulary_deadline_s = max(
             self.config.explanation_deadline_s - self._VOCABULARY_DEADLINE_MARGIN_S, 0.0
@@ -228,10 +239,23 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
                         "full-text only",
                         number,
                     )
-                retrieved = await asyncio.to_thread(
-                    self.glossary.candidates_for, context.text, context.embedding
+                db_result, on_demand_result = await asyncio.gather(
+                    asyncio.to_thread(
+                        self.glossary.candidates_for, context.text, context.embedding
+                    ),
+                    self._enrich(number, context),
+                    return_exceptions=True,
                 )
-                candidates = list(retrieved)
+                if isinstance(db_result, BaseException):
+                    raise db_result
+                if isinstance(on_demand_result, BaseException):
+                    logger.warning(
+                        "On-demand glossary enrichment failed for quiz %s",
+                        number,
+                        exc_info=on_demand_result,
+                    )
+                    on_demand_result = []
+                candidates = merge_glossary_candidates(db_result, on_demand_result)
                 random.shuffle(candidates)
                 response = await self.vocabulary_agent.run(
                     QuestionExplainerRequest(
@@ -246,6 +270,52 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
             return None, ()
 
         return response.explanation, hints
+
+    async def _enrich(
+        self, number: str, context: QuestionVocabularyContext
+    ) -> list[tuple[str, str]]:
+        """Runs the on-demand glossary agent, grounded on live comma retrieval (FR-1, FR-2).
+
+        Reuses `LiveLabelingStackProvider` exactly as `CommaSelectorService._label_live`
+        does for live comma labeling (AD-2): the same `find_with_vector` →
+        `candidate_set` sequence, same epoch variant. `find_with_vector` returning
+        `None` (not indexed under this variant) is not a failure — the agent still
+        runs, with an empty comma list, falling back to general knowledge for every
+        term (FR-2, FR-3). Any exception raised here (including
+        `GlossaryEnricherResponse`'s own validator exhausting the agent's retries) is
+        left to propagate to the caller's `asyncio.gather(..., return_exceptions=True)`,
+        which is what isolates it to this branch alone (FR-7).
+
+        `candidate_set` is a `CandidateSetService` (a `UseCase`), invoked via `__call__`
+        (`.claude/rules/use-case-invocation.md`), crossed with `asyncio.to_thread`
+        (AD-25) — the identical pattern `QuestionLabelingService.execute` already uses
+        for this same collaborator (`src/labeling/services/question_labeling_service.py
+        :79`), so this stage does not block the event loop on every `GET
+        .../explanation` call (grilling, 2026-09-26: an earlier draft of this task
+        called `.candidate_set.execute(row)` directly and synchronously, contradicting
+        both AD-25 and the use-case-invocation rule).
+        """
+        epoch = self.judge_identity.epoch
+        row = await asyncio.to_thread(
+            self.labeling_stack.quiz.find_with_vector,
+            number,
+            epoch.candidate_variant,
+            EMBEDDING_MODEL_COLUMN,
+        )
+        commas = (
+            []
+            if row is None
+            else [
+                candidate.comma
+                for candidate in await asyncio.to_thread(self.labeling_stack.candidate_set, row)
+            ]
+        )
+        response = await self.enricher.run(
+            GlossaryEnricherRequest(
+                text=context.text, image_description=context.image_description, commas=commas
+            )
+        )
+        return [(entry.term, entry.definition) for entry in response.entries]
 
     @staticmethod
     def _deduplicated_hints(
