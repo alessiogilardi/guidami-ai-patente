@@ -182,13 +182,18 @@ standalone, stateless, no injected dependency) merges the two sources:
 - Every DB-retrieved `GlossaryCandidate` (`origin=VERBATIM_CORPUS`, the new enum
   default, FR-8) is kept as-is.
 - Each on-demand `{term, definition}` pair becomes a `GlossaryCandidate` with
-  `origin=AGENT_GENERATED` (FR-8), *unless* its `term.casefold()` already matches a
-  DB-retrieved candidate's `term.casefold()`, in which case it is dropped — the DB
-  entry, extracted verbatim from the corpus, wins.
+  `origin=AGENT_GENERATED` (FR-8), *unless* its `term.strip().casefold()` already
+  matches a DB-retrieved candidate's `term.strip().casefold()`, in which case it is
+  dropped — the DB entry, extracted verbatim from the corpus, wins. The `.strip()` is
+  load-bearing, not decorative (resolved during grilling, 2026-09-25, second round):
+  bare `casefold()` alone does not normalize whitespace, so a term differing only by a
+  stray leading/trailing space would otherwise NOT be recognized as the same term — see
+  AD-6.
 - Two on-demand entries sharing a normalized term (the agent should not produce this,
   but nothing outside this function enforces it) are both kept; the pre-existing
-  `_deduplicated_hints` dedup (keyed the same way, first-cited order) still applies
-  downstream once `QuestionExplainerAgent` decides what to cite, unchanged.
+  `_deduplicated_hints` dedup (keyed the same way — `term.strip().casefold()`, also
+  updated by this spec, see AD-6 — first-cited order) still applies downstream once
+  `QuestionExplainerAgent` decides what to cite, unchanged otherwise.
 - An on-demand `GlossaryCandidate` leaves `definition_plain` at its field default
   (`None`, added by spec 0022, now implemented) — the merge function never sets it.
   This is correct, not an oversight: spec 0022's `_deduplicated_hints` fallback
@@ -200,18 +205,38 @@ standalone, stateless, no injected dependency) merges the two sources:
   fields the vocabulary pipeline actually reads (AD-8), there is no DB-row identity
   field left to fake a value for.
 
-### FR-7: A failure of the on-demand source degrades to DB-only candidates
+### FR-7: A failure of the on-demand source degrades to DB-only candidates — a timeout does not distinguish sides
 
 `_vocabulary_outcome` runs the DB retrieval and the on-demand agent call concurrently
 via `asyncio.gather(..., return_exceptions=True)` — not `asyncio.TaskGroup`, so one
 side's failure does not cancel the other. If `GlossaryReadRepository.candidates_for`
 raises, the whole vocabulary stage degrades to `(None, ())`, exactly as it does today
-(unchanged). If only `GlossaryEnricherAgent` raises or exceeds its own share of the
-stage's inner timeout, that failure is logged at `warning` and treated as an empty
-on-demand list — the merge (FR-6) then trivially yields the DB-only candidates, and
-`QuestionExplainerAgent` runs exactly as it does today without this feature. This
+(unchanged). If only `GlossaryEnricherAgent` raises a non-timeout exception (an agent
+error, or `UnexpectedModelBehavior` once its own duplicate-term retry budget is
+exhausted, AD-3), that failure is logged at `warning` and treated as an empty on-demand
+list — the merge (FR-6) then trivially yields the DB-only candidates, and
+`QuestionExplainerAgent` runs exactly as it does today without this feature.
+
+**Resolved during grilling (2026-09-25, second round)**: there is exactly **one**
+timeout for the whole stage — the existing inner `asyncio.timeout(vocabulary_deadline_s)`
+that already wraps `_vocabulary_outcome`'s body today, unchanged, now wrapping the
+`gather` call plus the merge/shuffle/`QuestionExplainerAgent` sequence that follows it.
+An earlier draft of this FR implied the on-demand agent carries its own smaller
+sub-budget ("its own share of the stage's inner timeout"), so that a slow enricher call
+alone could degrade partially without affecting the DB branch. That draft was dropped:
+no timeout anywhere else in this codebase (`LabelingService`, `ExplanationService`'s
+outer deadline, this same inner one) uses a per-branch sub-budget — every one is a
+single budget around a sequential or gathered `await`. When the shared timeout fires,
+`asyncio.timeout` cancels *both* gathered branches at once (cancellation reaches the
+awaiting task, not just the coroutines that happened to raise), so there is no way to
+attribute the expiry to "only the enricher" — a timeout is therefore stage-level and
+degrades the whole stage to `(None, ())`, exactly like a `GlossaryReadRepository`
+failure. Only a non-timeout exception raised by `GlossaryEnricherAgent` itself is
+isolated to its own contribution; a non-timeout exception raised by
+`GlossaryReadRepository.candidates_for` still degrades the whole stage, unchanged. This
 mirrors spec 0020's own principle (FR-5 there) that the vocabulary stage is additive,
-best-effort value, applied one level deeper.
+best-effort value, applied one level deeper — narrowed to exception isolation only, not
+timeout isolation.
 
 ### FR-8: Provenance is surfaced per cited term in the API response
 
@@ -306,10 +331,15 @@ Per the rejected-shapes discussion: `GlossaryExtractorAgent`'s verbatim
 to exist. `GlossaryEnricherAgent` gets its own config
 (`configs/agents/glossary_enricher.yaml`, unsuffixed — Italian output, the project's
 base language), its own request/response DTOs, and its own duplicate-term
-`model_validator` (mirroring `QuestionExplainerResponse._reject_repeated_ordinals`,
-confirmed during grilling, 2026-09-25 — not conditional) — independent of
-`GlossaryExtractorAgent` in every respect except sharing the general "agent
-extracts/generates term+definition pairs" shape.
+`model_validator` (mirroring `QuestionExplainerResponse._reject_repeated_ordinals`'s
+*pattern* — raise `ValueError` on a duplicate so pydantic-ai retries — confirmed during
+grilling, 2026-09-25 — not conditional) — independent of `GlossaryExtractorAgent` in
+every respect except sharing the general "agent extracts/generates term+definition
+pairs" shape. Unlike the ordinal check it mirrors (which compares `int`s directly),
+this validator's own dedup key is `term.strip().casefold()` (resolved during grilling,
+2026-09-25, second round — see AD-6): the same normalization rule used everywhere else
+this spec compares terms, applied here to catch the agent producing the same term
+twice, once with different casing/whitespace, within one response.
 
 ### AD-4: Ephemeral by design — `glossary_entries` keeps one writer
 
@@ -331,11 +361,29 @@ but the naming choice itself stands independently: `origin` (`GlossaryTermOrigin
 named after the existing `ProvenanceResponse.origin` precedent (spec 0017), not invented
 fresh.
 
-### AD-6: Merge dedup key mirrors the existing `_deduplicated_hints` key
+### AD-6: One normalization rule, `term.strip().casefold()`, used in every term comparison in the vocabulary stage
 
-`term.casefold()`, DB priority. Keeping the same normalization as the pre-existing
-downstream dedup (FR-6) means a reader only has to learn one term-equality rule for the
-whole vocabulary stage, not two slightly different ones.
+DB priority on conflict (FR-6). **Resolved during grilling (2026-09-25, second
+round)**: the rule is `term.strip().casefold()`, not bare `term.casefold()` as an
+earlier draft of this spec proposed (and as the pre-existing `_deduplicated_hints` key
+already did, pre-dating this spec). Plain `casefold()` normalizes case but not
+whitespace — `"sospensione ".casefold() != "sospensione".casefold()` — so a term
+differing only by a stray leading/trailing space would not be recognized as a conflict,
+contradicting this spec's own Testing section, which explicitly claims whitespace
+variants are caught. Rather than scope the fix to only this spec's new merge function
+(which would leave two slightly different term-equality rules in the same stage — the
+exact duplication this AD originally set out to avoid), `term.strip().casefold()` is
+now used in all three places a term is compared anywhere in the vocabulary stage:
+
+- the new merge function (FR-6);
+- the pre-existing `ExplanationService._deduplicated_hints` (spec 0020,
+  `services/explanation_service.py:250-282`) — its key changes from `term.casefold()`
+  to `term.strip().casefold()`, a one-line change to already-shipped code, made here
+  specifically to keep this AD's "one rule for the whole stage" premise true rather
+  than merely aspirational;
+- `GlossaryEnricherResponse`'s own duplicate-term `model_validator` (AD-3).
+
+A reader still only has to learn one term-equality rule for the whole vocabulary stage.
 
 ### AD-7: Partial degradation, scoped to exactly the on-demand agent's own failure
 
@@ -344,9 +392,18 @@ departure from spec 0020's `_explain`-level use of `TaskGroup` (which *does* wan
 sibling's failure to cancel the other, at that outer level). Here the two gathered
 calls are independent value contributors to the *same* final list, and one existing
 call (`GlossaryReadRepository.candidates_for`) already has its failure semantics fixed
-by spec 0020 (degrade the whole stage) — this spec adds a second call whose failure
+by spec 0020 (degrade the whole stage) — this spec adds a second call whose *exception*
 should degrade only its own contribution, which `TaskGroup`'s all-or-nothing
 cancellation cannot express.
+
+This isolation is scoped to exceptions only, not to the shared inner
+`asyncio.timeout(vocabulary_deadline_s)` that still wraps the whole `gather` call
+unchanged (resolved during grilling, 2026-09-25, second round — see FR-7): that timeout
+has no per-branch sub-budget, so its expiry cancels both branches together and degrades
+the whole stage, exactly as a `GlossaryReadRepository` failure does. `gather`'s
+`return_exceptions=True` is what lets a *raised* exception from `GlossaryEnricherAgent`
+be inspected and swallowed into an empty list instead of propagating — it does nothing
+to change what a shared timeout cancels.
 
 ### AD-8: `GlossaryCandidate` is narrowed to the fields the vocabulary pipeline actually reads
 
@@ -408,8 +465,12 @@ No new table, no new column on any existing table. All changes are Python-level:
 - `services/explanation_service.py`: `ExplanationService` gains
   `enricher: Autowired[GlossaryEnricherAgent]` and
   `labeling_stack: Autowired[LiveLabelingStackProvider]` (AD-2); `_vocabulary_outcome`
-  is restructured per FR-2/FR-6/FR-7. No new retrieval-depth config: the shared
-  `candidate_set` instance's own `LabelingConfig.dense_k`/`text_k` apply, unchanged.
+  is restructured per FR-2/FR-6/FR-7, keeping its existing single inner
+  `asyncio.timeout(vocabulary_deadline_s)` around the whole (now gathered) body,
+  unchanged (FR-7). No new retrieval-depth config: the shared `candidate_set`
+  instance's own `LabelingConfig.dense_k`/`text_k` apply, unchanged. `_deduplicated_hints`'s
+  dedup key changes from `term.casefold()` to `term.strip().casefold()` (AD-6,
+  resolved during grilling, 2026-09-25, second round) — its only change from this spec.
 
 `term_ru` is always `None` for an `AGENT_GENERATED` candidate: this feature generates
 Italian only, exactly like `GlossaryExtractorAgent` does before
@@ -440,25 +501,37 @@ Italian only, exactly like `GlossaryExtractorAgent` does before
   shape): grounds a definition in a supplied candidate comma when one is relevant;
   falls back to general knowledge, still producing an entry, when no supplied comma is
   relevant to a given term, and also when the supplied comma list is empty (FR-2's
-  `find_with_vector` → `None` case); a duplicate `term.casefold()` within one response
-  is rejected by `GlossaryEnricherResponse`'s own `model_validator` (AD-3), mirroring
+  `find_with_vector` → `None` case); a duplicate `term.strip().casefold()` within one
+  response (including a case/whitespace-only variant, not just an exact repeat) is
+  rejected by `GlossaryEnricherResponse`'s own `model_validator` (AD-3), mirroring
   `test_question_explainer_response_rejects_repeated_ordinal`'s shape.
 - **Merge function** (unit, pure, no fakes needed): a DB candidate and an on-demand
   entry sharing a normalized term — the on-demand one is dropped, the DB one keeps
   `origin=VERBATIM_CORPUS`; a non-conflicting on-demand entry is kept with
   `origin=AGENT_GENERATED` and `definition_plain=None`; an empty on-demand list returns
-  the DB list unchanged; case/whitespace variants of the same term are still
-  recognized as a conflict (`term.casefold()`).
+  the DB list unchanged; case *and* whitespace variants of the same term (e.g.
+  `"Sospensione"` vs. `" sospensione "`) are still recognized as a conflict
+  (`term.strip().casefold()`, AD-6).
+- **`ExplanationService._deduplicated_hints`** (regression guard, resolved during
+  grilling, 2026-09-25, second round): a whitespace-only variant of an already-seen
+  term (not just a case variant) is now also deduplicated, since its key changed to
+  `term.strip().casefold()` (AD-6) — add this case alongside the existing case-variant
+  test for this method.
 - **`ExplanationService._vocabulary_outcome`** (unit, fakes): (a) both sources succeed
   — the merged, shuffled list reaches `QuestionExplainerAgent` and a cited
   `AGENT_GENERATED` term surfaces with the right `origin` in the result; (b) the
-  on-demand agent raises or times out — the stage still returns a non-`None`
-  `term_explanation` built from DB-only candidates, unchanged from spec 0020's current
-  behavior; (c) `GlossaryReadRepository.candidates_for` raises — the whole stage still
-  degrades to `(None, ())`, exactly as today (regression guard: this spec must not
-  change this existing behavior); (d) `LiveLabelingStackProvider.quiz.find_with_vector`
-  returns `None` (not indexed under `candidate_variant`) — `GlossaryEnricherAgent` still
-  runs, with an empty comma list, not a degrade (FR-2).
+  on-demand agent raises a non-timeout exception — the stage still returns a
+  non-`None` `term_explanation` built from DB-only candidates, unchanged from spec
+  0020's current behavior; (c) `GlossaryReadRepository.candidates_for` raises — the
+  whole stage still degrades to `(None, ())`, exactly as today (regression guard: this
+  spec must not change this existing behavior); (d)
+  `LiveLabelingStackProvider.quiz.find_with_vector` returns `None` (not indexed under
+  `candidate_variant`) — `GlossaryEnricherAgent` still runs, with an empty comma list,
+  not a degrade (FR-2); (e) the shared inner timeout fires while the on-demand call is
+  still running — the whole stage degrades to `(None, ())`, **not** a partial
+  DB-only result (regression guard distinguishing this from case (b): a timeout is
+  stage-level, an exception is branch-level — FR-7, resolved during grilling,
+  2026-09-25, second round).
 - **Endpoint** (`api_client`, fake agents): `GET .../explanation` response's
   `translation_hints` entries carry the correct `origin` for a DB-sourced and an
   agent-generated hint in the same response.
@@ -591,18 +664,42 @@ Changelog. What remains genuinely deferrable to implementation:
 
 ## Sign-off
 
-- **Scope approved by user:** pending — spec written 2026-09-25 from an interactive
-  `superpowers:brainstorming` session, then stress-tested via `mattpocock-skills:grilling`
-  (same day); the user confirmed shared understanding at the end of the grilling round.
-  Awaiting explicit sign-off before handing off to `writing-plans`.
-- **Feasibility asserted:** by the assistant on 2026-09-25, re-verified twice the same
-  day — once after spec 0022 landed, once during the grilling round's own
-  investigation (AD-2, AD-8) — based on the Feasibility Evidence above (direct source
-  reads plus one `second-brain:second-brain-reader` dispatch for glossary-system ADRs).
+- **Scope approved by user:** yes, 2026-09-25 — spec written 2026-09-25 from an
+  interactive `superpowers:brainstorming` session, then stress-tested via
+  `mattpocock-skills:grilling` across two separate rounds the same day; the user
+  confirmed shared understanding at the end of both, then asked to proceed to
+  `writing-plans` directly, taken as sign-off. Per the status lifecycle note above,
+  `Status` itself (draft → ready) is left for the user to update explicitly rather than
+  changed by this skill.
+- **Feasibility asserted:** by the assistant on 2026-09-25, re-verified three times the
+  same day — once after spec 0022 landed, once during the first grilling round's own
+  investigation (AD-2, AD-8), once during the second grilling round (FR-7 timeout
+  structure, AD-6 whitespace normalization) — based on the Feasibility Evidence above
+  (direct source reads plus one `second-brain:second-brain-reader` dispatch for
+  glossary-system ADRs).
 - **Definition of Done verified:** not yet — pending implementation.
 
 ## Changelog
 
+- **2026-09-25 (grilling, second round)** — Stress-tested again via
+  `mattpocock-skills:grilling`, one question at a time. Resolved: (1) FR-7's "own share
+  of the stage's inner timeout" language for the on-demand agent was a design gap, not
+  an implementation detail — no timeout anywhere else in this codebase carries a
+  per-branch sub-budget, and a single shared `asyncio.timeout` wrapping
+  `asyncio.gather(...)` cancels both branches together on expiry, so it cannot be
+  attributed to "only the enricher" as originally worded. Resolved to: one shared inner
+  timeout (unchanged from today), whose expiry degrades the whole stage exactly like a
+  `GlossaryReadRepository` failure; only a *non-timeout* exception from
+  `GlossaryEnricherAgent` is isolated to its own contribution. (2) The stated dedup
+  guarantee ("case/whitespace variants... recognized as a conflict") was not actually
+  achieved by bare `term.casefold()`, which normalizes case but not whitespace — fixed
+  by using `term.strip().casefold()` everywhere a term is compared in the vocabulary
+  stage: the new merge function (FR-6), the pre-existing `_deduplicated_hints` (a
+  one-line change to already-shipped spec-0020 code, AD-6), and
+  `GlossaryEnricherResponse`'s own duplicate-term `model_validator` (AD-3). Updated:
+  FR-6, FR-7 (rewritten), AD-3, AD-6 (rewritten), AD-7, Data Model
+  (`explanation_service.py` bullet), Testing (new/split cases for the timeout-vs-
+  exception distinction and the whitespace regression guard), Sign-off.
 - **2026-09-25 (grilling)** — Stress-tested via `mattpocock-skills:grilling`, one
   question at a time per this project's CLAUDE.md override. Resolved: (1) grounding
   retrieval reuses `CandidateSetService` exactly as originally planned in AD-2 (an
