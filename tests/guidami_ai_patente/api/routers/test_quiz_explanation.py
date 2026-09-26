@@ -15,6 +15,11 @@ from guidami_ai_patente.agents.explanation_writer.dto import (
     ExplanationWriterRequest,
     ExplanationWriterResponse,
 )
+from guidami_ai_patente.agents.glossary_enricher.dto import (
+    GlossaryEnricherEntryDto,
+    GlossaryEnricherRequest,
+    GlossaryEnricherResponse,
+)
 from guidami_ai_patente.agents.question_explainer.dto import (
     QuestionExplainerRequest,
     QuestionExplainerResponse,
@@ -33,6 +38,7 @@ _TABLES = (
     "quiz_questions",
     "article_commas",
     "articles",
+    "glossary_entries",
 )
 
 
@@ -395,3 +401,80 @@ def test_a_vocabulary_agent_failure_still_returns_200(
     body = response.json()
     assert body["status"] == "explained"
     assert body["term_explanation"] is None
+
+
+def _seed_glossary_entry(client: PostgresClient, *, term: str, definition: str) -> None:
+    """Inserts one glossary_entries row with a fixed, non-distinctive embedding.
+
+    Mirrors `tests/guidami_ai_patente/repositories/test_glossary_read_repository.py`'s
+    own `_seed_entry` helper (not imported from there — that module has no importable
+    public helpers, per `docs/second-brain/testing.md`'s "no `__init__.py` in test
+    directories" rule, which also means test modules do not import fixtures from each
+    other by convention in this repo).
+    """
+    client.execute(
+        sql.SQL(
+            "INSERT INTO glossary_entries "
+            "(source, article_number, comma_number, term, definition, term_ru, "
+            "embedding_3_small) VALUES (%s, %s, %s, %s, %s, %s, %s::vector)"
+        ),
+        ["cds", "157", "3", term, definition, "sosta-ru", [0.1] * 1536],
+    )
+
+
+@dataclass
+class _EnricherDouble:
+    response: GlossaryEnricherResponse
+    requests: list[GlossaryEnricherRequest] = field(default_factory=list)
+
+    async def run(self, request: GlossaryEnricherRequest) -> GlossaryEnricherResponse:
+        self.requests.append(request)
+        return self.response
+
+
+def _install_enricher(monkeypatch: pytest.MonkeyPatch, enricher: _EnricherDouble) -> None:
+    """Substitutes the on-demand glossary agent on the resolved service singleton.
+
+    Same substitution idiom as `_install_writer`/`_install_vocabulary_agent`; the real
+    `LiveLabelingStackProvider` still resolves and runs `find_with_vector` against the
+    real (Postgres-backed) `cached_question`/`live_question` fixtures — this only
+    replaces the LLM call at the end of that chain, not the retrieval itself.
+    """
+    service = get_default_container().resolve(ExplanationService)
+    monkeypatch.setattr(service, "enricher", enricher)
+
+
+@pytest.mark.integration
+def test_a_db_and_an_agent_generated_hint_both_carry_the_right_origin_in_one_response(
+    api_client: TestClient,
+    cached_question: PostgresClient,
+    monkeypatch: pytest.MonkeyPatch,
+    registered_headers: dict[str, str],
+) -> None:
+    """FR-8: a DB-sourced and an agent-generated hint, cited in the same response."""
+    _seed_glossary_entry(cached_question, term="sosta", definition="Definizione dal corpus.")
+    _install_writer(monkeypatch, _WriterDouble())
+    _install_vocabulary_agent(
+        monkeypatch,
+        _VocabularyAgentDouble(
+            response=QuestionExplainerResponse(
+                explanation="La «sosta» è collegata alla «revoca».", cited_term_numbers=[1, 2]
+            )
+        ),
+    )
+    _install_enricher(
+        monkeypatch,
+        _EnricherDouble(
+            response=GlossaryEnricherResponse(
+                entries=[GlossaryEnricherEntryDto(term="revoca", definition="Definizione live.")]
+            )
+        ),
+    )
+
+    response = api_client.get("/quiz-questions/0001/explanation", headers=registered_headers)
+
+    assert response.status_code == HTTPStatus.OK
+    body = response.json()
+    hints = {hint["term"]: hint["origin"] for hint in body["translation_hints"]}
+    assert hints.get("sosta") == "verbatim_corpus"
+    assert hints.get("revoca") == "agent_generated"
