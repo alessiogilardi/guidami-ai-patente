@@ -41,6 +41,7 @@
           {
             "type": "command",
             "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/pyright_project_check.sh\"",
+            "if": "Write(**/*.py)",
             "timeout": 120,
             "statusMessage": "Running project-wide pyright..."
           }
