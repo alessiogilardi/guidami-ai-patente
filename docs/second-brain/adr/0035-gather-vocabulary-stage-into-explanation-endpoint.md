@@ -122,3 +122,16 @@ Task 11 smoke test's clean no-match case). `null` only ever means a genuine fail
 happened, never "nothing to say." If per-failure-cause visibility becomes a real product
 need later, that is a new, separate decision (a status field on the response, or
 similar), not implied by this one.
+
+**Note (spec 0021, added 2026-09-26, first grilling round finding)**: the vocabulary
+stage's answer-blindness (AD-4 above) was originally adopted as a testability
+convention, mirroring the already-answer-blind `RoadSignDescriberAgent` (ADR 0001), not
+as a genuine privacy/leakage boundary. `GET .../explanation` is reachable only
+post-answer — the caller has already submitted and seen the verdict via
+`POST .../check` before this endpoint is ever called — so there is no actual
+information being protected by keeping `_vocabulary_outcome`/`QuestionExplainerAgent`
+(and, since spec 0021, `GlossaryEnricherAgent`) from seeing `correct_answer` at the
+API-contract level. It is kept anyway for architectural consistency with the sibling
+agent and to keep the vocabulary stage decoupled from grading logic — not because
+leaking the answer here would be a real problem. This does not change the Decision
+above; it only corrects the rationale a future reader might otherwise assume.
