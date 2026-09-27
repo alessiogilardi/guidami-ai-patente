@@ -4,5 +4,6 @@ Domain-specific logic is fine here (see `.claude/rules/utils-package-placement.m
 """
 
 from .merge_glossary_candidates import merge_glossary_candidates
+from .normalize_term_casing import normalize_term_casing
 
-__all__ = ["merge_glossary_candidates"]
+__all__ = ["merge_glossary_candidates", "normalize_term_casing"]

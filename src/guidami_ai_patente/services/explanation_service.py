@@ -32,7 +32,7 @@ from guidami_ai_patente.models import (
 )
 from guidami_ai_patente.providers import LabelingStackProvider, LiveLabelingStackProvider
 from guidami_ai_patente.repositories import GlossaryReadRepository, QuizQuestionRepository
-from guidami_ai_patente.utils import merge_glossary_candidates
+from guidami_ai_patente.utils import merge_glossary_candidates, normalize_term_casing
 from labeling import EMBEDDING_MODEL_COLUMN
 
 from .current_labeling_read_service import CurrentLabelingReadService
@@ -349,6 +349,13 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
         rendering (spec 0022 FR-5) and falls back to the verbatim legal text when a row
         has not been simplified yet (`definition_plain is None`) — always the case for
         an `AGENT_GENERATED` candidate (spec 0021 FR-6).
+
+        `term=normalize_term_casing(candidate.term)` renders the displayed term in
+        sentence case: DB-sourced terms are stored ALL CAPS by the build pipeline, while
+        `GlossaryEnricherAgent`'s live terms preserve the question's own casing, and
+        mixing both verbatim in the same response looked inconsistent. The dedup key
+        above stays keyed on the raw `candidate.term` (casefold already ignores casing),
+        so this display-only transform cannot affect which candidate is kept.
         """
         seen_terms: set[str] = set()
         hints: list[CitedGlossaryTerm] = []
@@ -359,7 +366,7 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
                 seen_terms.add(term_key)
                 hints.append(
                     CitedGlossaryTerm(
-                        term=candidate.term,
+                        term=normalize_term_casing(candidate.term),
                         definition=candidate.definition_plain or candidate.definition,
                         term_ru=candidate.term_ru,
                         origin=candidate.origin,

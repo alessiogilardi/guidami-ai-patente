@@ -337,7 +337,7 @@ async def test_cited_terms_are_resolved_into_translation_hints() -> None:
 
     assert explanation.translation_hints == (
         CitedGlossaryTerm(
-            term="carreggiata",
+            term="Carreggiata",
             definition="Parte della strada...",
             term_ru="проезжая часть",
             origin=GlossaryTermOrigin.VERBATIM_CORPUS,
@@ -371,7 +371,7 @@ async def test_a_cited_term_with_a_plain_definition_uses_it_over_the_verbatim_on
 
     assert explanation.translation_hints == (
         CitedGlossaryTerm(
-            term="carreggiata",
+            term="Carreggiata",
             definition="La parte della strada per i veicoli.",
             term_ru="проезжая часть",
             origin=GlossaryTermOrigin.VERBATIM_CORPUS,
@@ -404,7 +404,7 @@ async def test_a_cited_term_with_no_plain_definition_falls_back_to_the_verbatim_
 
     assert explanation.translation_hints == (
         CitedGlossaryTerm(
-            term="carreggiata",
+            term="Carreggiata",
             definition=(
                 "Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli."
             ),
@@ -447,7 +447,7 @@ async def test_a_cited_term_with_an_empty_string_plain_definition_falls_back_too
 
     assert explanation.translation_hints == (
         CitedGlossaryTerm(
-            term="carreggiata",
+            term="Carreggiata",
             definition=(
                 "Parte della strada, esclusa la banchina, destinata alla circolazione dei veicoli."
             ),
@@ -489,7 +489,7 @@ async def test_a_null_term_ru_candidate_still_resolves_into_a_translation_hint()
     assert explanation.term_explanation == "La «carreggiata» è..."
     assert explanation.translation_hints == (
         CitedGlossaryTerm(
-            term="carreggiata",
+            term="Carreggiata",
             definition="Parte della strada...",
             term_ru=None,
             origin=GlossaryTermOrigin.VERBATIM_CORPUS,
@@ -535,7 +535,9 @@ async def test_citation_ordinals_resolve_against_the_shuffled_list_the_agent_saw
 
     seen_candidates = vocabulary_agent.requests[0].candidates
     expected_term = seen_candidates[1].term  # ordinal 2 == index 1 of the list the agent saw
-    assert explanation.translation_hints[0].term == expected_term
+    # casefold, not `==`: `_deduplicated_hints` sentence-cases the display term, so the
+    # raw candidate term and the resolved hint's term differ in casing by design.
+    assert explanation.translation_hints[0].term.casefold() == expected_term.casefold()
 
 
 @pytest.mark.asyncio
@@ -806,7 +808,7 @@ async def test_an_agent_generated_term_is_merged_in_with_the_right_origin() -> N
         enricher=enricher,
     )(ExplanationRequest(number="0001"))
 
-    assert explanation.translation_hints[0].term == "revoca"
+    assert explanation.translation_hints[0].term == "Revoca"
     assert explanation.translation_hints[0].origin is GlossaryTermOrigin.AGENT_GENERATED
 
 
@@ -829,7 +831,7 @@ async def test_an_enricher_failure_degrades_only_its_own_contribution() -> None:
     )(ExplanationRequest(number="0001"))
 
     assert explanation.result is ExplanationResult.EXPLAINED
-    assert explanation.translation_hints[0].term == "carreggiata"
+    assert explanation.translation_hints[0].term == "Carreggiata"
     assert explanation.translation_hints[0].origin is GlossaryTermOrigin.VERBATIM_CORPUS
 
 
@@ -855,7 +857,7 @@ async def test_an_unexpected_model_behavior_from_the_enricher_also_degrades_only
         enricher=enricher,
     )(ExplanationRequest(number="0001"))
 
-    assert explanation.translation_hints[0].term == "carreggiata"
+    assert explanation.translation_hints[0].term == "Carreggiata"
 
 
 @pytest.mark.asyncio
