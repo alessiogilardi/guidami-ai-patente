@@ -20,8 +20,9 @@ class ExplanationWriterResponse(BaseModel):
         min_length=1,
         description=(
             "La spiegazione rivolta al candidato, in italiano semplice, al massimo "
-            "quattro frasi. Non citare il fatto che i commi provengono da una ricerca: "
-            "per il candidato esistono solo la domanda e la norma."
+            "tre frasi brevi. Inizia direttamente dalla regola, senza commentare la "
+            "risposta del candidato. Non citare il fatto che i commi provengono da una "
+            "ricerca: per il candidato esistono solo la domanda e la norma."
         ),
     )
     cited_comma_numbers: list[int] = Field(
