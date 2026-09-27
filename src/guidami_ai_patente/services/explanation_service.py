@@ -227,7 +227,14 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
         timeout anywhere else in this codebase carries one, and a shared
         `asyncio.timeout` cancels every branch it wraps simultaneously on expiry, so it
         cannot be attributed to "only the enricher").
+
+        `AppConfig.glossary.enabled=False` short-circuits before any of the above: no DB
+        read, no `GlossaryEnricherAgent` call, no `QuestionExplainerAgent` call — not
+        merely an empty result. This is a deployment kill switch, not a degrade path.
         """
+        if not self.config.glossary.enabled:
+            return None, ()
+
         vocabulary_deadline_s = max(
             self.config.explanation_deadline_s - self._VOCABULARY_DEADLINE_MARGIN_S, 0.0
         )

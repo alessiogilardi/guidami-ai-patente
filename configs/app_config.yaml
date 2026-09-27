@@ -17,6 +17,7 @@ postgres:
   dbname: guidami_ai_patente
 
 glossary:
+  enabled: false
   entries_table: glossary_entries
   embedding_column: embedding_3_small
   dense_k: 5

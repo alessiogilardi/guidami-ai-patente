@@ -20,6 +20,7 @@ from guidami_ai_patente.agents.question_explainer.dto import (
     QuestionExplainerRequest,
     QuestionExplainerResponse,
 )
+from guidami_ai_patente.configs import GlossaryRetrievalConfig
 from guidami_ai_patente.enums import (
     ExplanationResult,
     GlossaryTermOrigin,
@@ -118,6 +119,7 @@ class _WriterDouble:
 @dataclass
 class _ConfigDouble:
     explanation_deadline_s: float = 5.0
+    glossary: GlossaryRetrievalConfig = field(default_factory=GlossaryRetrievalConfig)
 
 
 @dataclass
@@ -145,8 +147,10 @@ class _VocabularyAgentDouble:
 @dataclass
 class _GlossaryDouble:
     candidates: list[GlossaryCandidate] = field(default_factory=list)
+    calls: list[str] = field(default_factory=list)
 
     def candidates_for(self, text: str, embedding: list[float] | None) -> list[GlossaryCandidate]:
+        self.calls.append(text)
         return self.candidates
 
 
@@ -280,6 +284,36 @@ async def test_a_vocabulary_agent_failure_degrades_without_affecting_the_legal_s
     assert explanation.result is ExplanationResult.EXPLAINED
     assert explanation.term_explanation is None
     assert explanation.translation_hints == ()
+
+
+@pytest.mark.asyncio
+async def test_a_disabled_glossary_config_skips_the_whole_vocabulary_stage() -> None:
+    """`GlossaryRetrievalConfig.enabled=False` short-circuits before any I/O or LLM call."""
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    glossary = _GlossaryDouble(candidates=[_candidate(1)])
+    enricher = _EnricherDouble(response=GlossaryEnricherResponse())
+    vocabulary_agent = _VocabularyAgentDouble(
+        response=QuestionExplainerResponse(explanation="Testo.", cited_term_numbers=[])
+    )
+    service = _service(
+        _ReaderDouble(selection),
+        _WriterDouble(responses=[_explained([1])]),
+        glossary=glossary,
+        enricher=enricher,
+        vocabulary_agent=vocabulary_agent,
+    )
+    service.config = _ConfigDouble(  # type: ignore[assignment]
+        glossary=GlossaryRetrievalConfig(enabled=False)
+    )
+
+    explanation = await service(ExplanationRequest(number="0001"))
+
+    assert explanation.result is ExplanationResult.EXPLAINED
+    assert explanation.term_explanation is None
+    assert explanation.translation_hints == ()
+    assert glossary.calls == []
+    assert enricher.requests == []
+    assert vocabulary_agent.requests == []
 
 
 @pytest.mark.asyncio

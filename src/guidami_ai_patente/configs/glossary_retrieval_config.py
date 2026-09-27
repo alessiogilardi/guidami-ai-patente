@@ -13,6 +13,15 @@ class GlossaryRetrievalConfig(BaseModel):
 
     model_config = ConfigDict(frozen=True)
 
+    enabled: bool = Field(
+        default=True,
+        description=(
+            "Master switch for the vocabulary explanation stage (ExplanationService."
+            "_vocabulary_outcome): term_explanation and translation_hints. When False, "
+            "the stage returns immediately with no DB read, no GlossaryEnricherAgent "
+            "call and no QuestionExplainerAgent call — not merely an empty result."
+        ),
+    )
     entries_table: str = "glossary_entries"
     embedding_column: str = Field(
         default="embedding_3_small",
