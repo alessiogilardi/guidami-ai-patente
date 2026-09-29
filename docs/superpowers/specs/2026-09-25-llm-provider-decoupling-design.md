@@ -196,6 +196,10 @@ class LlmModelProvider(Protocol):
   and reuses it for every `create_model` call — preserving today's "one shared
   provider (one HTTP client) per process" property of `OpenRouterProviderComponent`.
 - `create_model(model_name)` → `OpenRouterModel(model_name, provider=self._provider)`.
+  Raises `ValueError` when `model_name` still starts with `openrouter/`: with
+  `_parse_model_name` gone, a stale prefixed YAML would otherwise surface only as a
+  model-not-found error on the first real call; this makes it a startup failure
+  (`BaseAgent.__init__` builds the model).
 - `create_model_settings(base)` → `OpenRouterModelSettings(**base, openrouter_usage={"include": True})`.
 - `expects_cost` → `True`; `provider` → `LlmProvider.OPENROUTER`.
 
@@ -253,8 +257,12 @@ prefix.
     identity of the one the component already owns, which keeps ADR 0029's
     "identity only" split.
   - Batch: `retrieval_evaluation/label_main.py` passes `llm_model_provider.provider`.
-- `LabelingRunEntity` gains `judge_model_provider: LlmProvider`; `LabelingRunMapper`
-  copies it from the epoch.
+- `LabelingRunEntity` gains `judge_model_provider: str` — `str`, not `LlmProvider`:
+  `domain/` imports nothing from `commons/` today (the dependency runs
+  `commons` → `domain`), and typing a `domain` entity with a `commons` enum would
+  introduce a package cycle (ADP). The entity is a DB-row projection, like
+  `judge_model: str` next to it; `LabelingRunMapper` copies the epoch's `LlmProvider`
+  (a `StrEnum`, hence a `str`) into it.
 - `golden_set_write_repository.py`: `_RUN_COLUMNS` gains `judge_model_provider`, and the
   live-run lookup after `INSERT … ON CONFLICT DO NOTHING` filters on it (D6) — without
   it, two live runs differing only by provider would both match and `rows[0]` would be
