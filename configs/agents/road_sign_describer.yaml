@@ -1,5 +1,5 @@
 name: road-sign-describer
-model_name: openrouter/google/gemini-2.5-flash-lite
+model_name: openrouter/google/gemini-2.5-flash
 temperature: 0.0
 max_tokens: 8000
 
