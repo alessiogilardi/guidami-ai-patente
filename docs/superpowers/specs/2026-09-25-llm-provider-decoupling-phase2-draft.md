@@ -8,10 +8,13 @@ below as unresolved; do not hand this to `writing-plans` until they're answered.
 
 ## Preconditions
 
-Phase 1 must be shipped first: `LlmModelProvider` port, `OpenRouterModelProvider`,
-`model_provider_factory`, `BaseAgent` depending on the port, `model_provider`/
-`judge_model_provider` DB columns already in place. Phase 2 is purely additive on top
-of that seam — it touches no `BaseAgent` code and none of the nine agent classes.
+Phase 1 (Spec 0025) must be shipped first: `LlmModelProvider` port,
+`OpenRouterModelProvider` and `OllamaModelProvider` (ADR 0019's capability, preserved as
+an adapter), `BaseAgent` depending on the port, `model_provider`/`judge_model_provider`
+DB columns already in place, `judge_model_provider` part of the epoch. Phase 1
+deliberately has **no factory** (Phase 1 D1): every composition root constructs
+`OpenRouterModelProvider(OpenRouterConfig)` directly. Phase 2 touches no `BaseAgent`
+code and none of the 11 agent classes — but it does change the composition roots.
 
 ## Goal
 
@@ -24,16 +27,16 @@ Make the second provider — Ollama, native Gemini, or both — a real, working
    once doubles the unverified surface (two sets of real credentials/endpoints to
    confirm) for a single Phase 2 pass.
 2. **Ollama**: is a local Ollama instance actually running today, and at what
-   `base_url`? Which models are pulled — do they cover what the 9 agents need
+   `base_url`? Which models are pulled — do they cover what the 11 agents need
    (structured-output / tool-calling capable models), or would some agents need a
    different model entirely on Ollama than their current OpenRouter one?
 3. **Gemini**: real Google AI Studio API key available? Google AI Studio (simple
    `api_key`) vs. Vertex AI (`credentials`/`project`/`location`, pydantic-ai's
    `GoogleCloudProvider`) — this design assumes AI Studio; Vertex is a different
    provider class entirely and changes `GeminiProviderSettings`'s shape.
-4. **Per-agent model catalog**: whichever provider is chosen, every one of the 9
+4. **Per-agent model catalog**: whichever provider is chosen, every one of the 11
    YAML `model_name` values needs a real, working id in that provider's catalog
-   (flagged as a caveat in Phase 1, Section 9) — this needs to be verified model by
+   (flagged as a caveat in Phase 1, Section 10) — this needs to be verified model by
    model, not assumed to "just work" by analogy to the OpenRouter names.
 5. **Structured output / tool calling support**: several agents rely on pydantic-ai's
    structured output (`output_type=...`) and one (`CommaLabelerAgent`) on
@@ -42,16 +45,17 @@ Make the second provider — Ollama, native Gemini, or both — a real, working
 
 ## Tentative design (pending the above)
 
-### 1. `LLMProvider` enum grows
+### 1. `LlmProvider` enum grows
 
-`commons/ai/llm_providers/enums/llm_provider.py` gains the member(s) actually being
-implemented this pass:
+`commons/ai/llm_providers/enums/llm_provider.py` gains `GEMINI` if in scope this pass
+(`OPENROUTER`/`OLLAMA` exist since Phase 1). Values stay explicit literals — they are
+persisted and returned by the API:
 
 ```python
-class LLMProvider(StrEnum):
-    OPENROUTER = auto()
-    OLLAMA = auto()    # if in scope this pass
-    GEMINI = auto()    # if in scope this pass
+class LlmProvider(StrEnum):
+    OPENROUTER = "openrouter"
+    OLLAMA = "ollama"
+    GEMINI = "gemini"    # if in scope this pass
 ```
 
 ### 2. Discriminated-union provider settings
@@ -62,15 +66,15 @@ provider becomes one config value instead of a code choice:
 ```python
 # commons/ai/llm_providers/configs/llm_provider_settings.py
 class OpenRouterProviderSettings(BaseModel):
-    provider: Literal[LLMProvider.OPENROUTER] = LLMProvider.OPENROUTER
+    provider: Literal[LlmProvider.OPENROUTER] = LlmProvider.OPENROUTER
     api_key: SecretStr
 
 class OllamaProviderSettings(BaseModel):
-    provider: Literal[LLMProvider.OLLAMA] = LLMProvider.OLLAMA
+    provider: Literal[LlmProvider.OLLAMA] = LlmProvider.OLLAMA
     base_url: str
 
 class GeminiProviderSettings(BaseModel):
-    provider: Literal[LLMProvider.GEMINI] = LLMProvider.GEMINI
+    provider: Literal[LlmProvider.GEMINI] = LlmProvider.GEMINI
     api_key: SecretStr
 
 LlmProviderSettings = Annotated[
@@ -126,15 +130,16 @@ commons/ai/llm_providers/
 │   ├── llm_provider_settings.py    # OpenRouter/Ollama/GeminiProviderSettings + union
 │   └── llm_provider_config.py      # LlmProviderConfig(BaseConfig)
 └── providers/
-    ├── open_router_model_provider.py   # unchanged from Phase 1
-    ├── ollama_model_provider.py        # new
+    ├── open_router_model_provider.py   # constructor switches to OpenRouterProviderSettings
+    ├── ollama_model_provider.py        # exists since Phase 1; constructor switches to OllamaProviderSettings
     └── gemini_model_provider.py        # new
+model_provider_factory.py               # new: create_llm_model_provider(settings)
 ```
 
-- `OllamaModelProvider.create_model` → `OpenAIChatModel(model_name, provider=OllamaProvider(base_url=self._settings.base_url))`. `expects_cost` → `False` (no cost reporting from a local model). `create_model_settings` → base settings, unmodified (no Ollama-specific settings needed today).
+- `OllamaModelProvider` already exists (Phase 1, `base_url: str`); only its constructor changes to take `OllamaProviderSettings`.
 - `GeminiModelProvider.create_model` → `GoogleModel(model_name, provider=GoogleProvider(api_key=self._settings.api_key.get_secret_value()))`. `expects_cost` → `False` (OpenRouter is the only provider that reports per-call cost). `create_model_settings` → base settings, unmodified.
 
-`model_provider_factory.py` grows a real `match`:
+`model_provider_factory.py` is created (Phase 1 had none, D1) with a real `match`:
 
 ```python
 def create_llm_model_provider(settings: LlmProviderSettings) -> LlmModelProvider:
@@ -149,7 +154,7 @@ def create_llm_model_provider(settings: LlmProviderSettings) -> LlmModelProvider
 
 ### 4. Wiring
 
-Every Phase-1 call site's `create_llm_model_provider(OpenRouterConfig())` becomes
+Every Phase-1 composition root's `OpenRouterModelProvider(<OpenRouterConfig>)` becomes
 `create_llm_model_provider(LlmProviderConfig().llm_config)`. `guidami_ai_patente`'s
 `LlmModelProviderComponent` switches its `Autowired` field from `OpenRouterConfig` to
 `LlmProviderConfig`. No other call site changes — this is exactly the seam Phase 1
@@ -165,7 +170,9 @@ needed if Gemini is in this pass. Confirmed today: importing
 
 **No migration needed** — `model_provider`/`judge_model_provider` (Phase 1) are
 already plain `TEXT` columns; Phase 2 just writes a different value into them
-(`'ollama'`/`'gemini'`) once that provider is actually selected.
+(`'ollama'`/`'gemini'`) once that provider is actually selected. Since
+`judge_model_provider` is part of the epoch (Phase 1 D6), the switch invalidates
+non-validated live labelings — as does the `judge_model` rewrite it comes with.
 
 ### 7. Cutover — separate from "Phase 2 ships"
 

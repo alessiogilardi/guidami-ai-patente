@@ -1,297 +1,384 @@
-# LLM provider decoupling — design spec (Phase 1: seam + OpenRouter only)
+# LLM provider decoupling — design spec (Spec 0025, Phase 1: seam + existing providers)
 
-Date: 2026-09-25
-Status: Draft, pending user review
+Date: 2026-09-25 (revised 2026-09-29 after grilling + clean-architecture review)
+Status: Draft, grilled — pending user approval
 
 ## Context
 
 Today the identity of the LLM provider is smuggled inside the model name: every
-agent YAML (`configs/agents/*.yaml`) sets `model_name: openrouter/google/gemini-2.5-flash-lite`,
-and `BaseAgent._parse_model_name` strips the `"openrouter/"` prefix before handing the
-bare name to `OpenRouterModel`/`OpenAIChatModel`. The raw, prefixed string is also what
-gets persisted verbatim in `llm_call_logs.model` and `labeling_runs.judge_model`
-(the latter is part of the judge's "configuration epoch" unique index). Which
-`Provider` object gets constructed is hardcoded as `OpenRouterProvider(api_key=...)`
-in five separate wiring call sites (`glossary/wiring.py`, `labeling/wiring.py`,
-`guidami_ai_patente_ingestor/cli/wiring.py`, `guidami_ai_patente/main.py` +
-`open_router_provider_component.py`, `glossary/translate_main.py`), and `BaseAgent`
-dispatches model-class selection via `isinstance(self._provider, OpenRouterProvider)`.
+agent YAML (`configs/agents/*.yaml`, **11 files**) sets e.g.
+`model_name: openrouter/google/gemini-2.5-flash-lite`, and `BaseAgent._parse_model_name`
+strips the `"openrouter/"` prefix before handing the bare name to
+`OpenRouterModel`/`OpenAIChatModel`. The raw, prefixed string is also what gets
+persisted verbatim in `llm_call_logs.model` and `labeling_runs.judge_model` (the latter
+is part of the judge's configuration epoch — spec 0012, AD-8), and what the API
+returns as `provenance.judge_model` on `GET /quiz-questions/{number}/explanation`.
 
-That single construction point is not the whole blast radius: **nine** agent classes
-actually pass `provider=` into `BaseAgent`/its own builders — `ExplanationWriterAgent`,
-`QuestionExplainerAgent`, `ExplanationTranslatorAgent`, `GlossaryExtractorAgent`,
-`GlossaryTermTranslatorAgent`, `CommaLabelerAgent`, `RetrievalJudgeAgent`,
-`RoadSignDescriberAgent`, `NormReferenceDescriberAgent`. Most of the pywire-registered
-ones (`guidami_ai_patente`, `glossary`) do it via a zero-argument `__init__` that reads
-`Autowired[OpenRouterProviderComponent].provider` and forwards it to
-`super().__init__(provider=...)` (ADR 0017/0023's pywire-agent pattern);
-`CommaLabelerAgent` goes through a dedicated `labeling/wiring.py::build_comma_labeler_agent`
-helper that also types its parameter concretely as `OpenRouterProvider`. Every one of
-these needs updating.
+`BaseAgent` (`src/commons/ai/agents/base_agent.py`) takes a
+`pydantic_ai.providers.Provider[AsyncOpenAI]` and dispatches on
+`isinstance(self._provider, OpenRouterProvider)` (`_is_openrouter`) in three places:
+model class (`OpenRouterModel` vs generic `OpenAIChatModel`), model settings
+(`openrouter_usage={"include": True}`), and `TrackedCaller.expects_cost`. The
+non-OpenRouter branch is not dead: **ADR 0019** introduced it deliberately so
+`BaseAgent` can run against any OpenAI-compatible backend (e.g. `OllamaProvider`). It is
+exercised by `tests/commons/ai/agents/test_base_agent.py` but not used by any `src/`
+wiring today.
 
-The user's underlying goal is being able to move at least some agents off OpenRouter
-later (confirmed during brainstorming: real native Google Gemini API access, and
-Ollama). That surfaced a structural limit worth fixing now: pydantic-ai's
-`GoogleProvider`/`GoogleModel` do not implement `Provider[AsyncOpenAI]` — they wrap a
-`google-genai` client, a fundamentally different interface from `OpenRouterProvider`/
-`OllamaProvider`. A third `isinstance` branch bolted onto `BaseAgent` would not be
-enough; the provider needs a real seam.
+The concrete `OpenRouterProvider` reaches the 11 agents through three different
+mechanisms:
 
-## Scope of this document — Phase 1 only
+| Mechanism | Agents | Where the provider comes from |
+|---|---|---|
+| pywire `Autowired[OpenRouterProviderComponent]` (ADR 0017/0023) | `ExplanationWriterAgent`, `QuestionExplainerAgent`, `ExplanationTranslatorAgent`, `GlossaryEnricherAgent` (`guidami_ai_patente/agents/`) | `guidami_ai_patente/providers/open_router_provider_component.py` |
+| pywire `Autowired[Provider[AsyncOpenAI]]` + `register_instance` | `GlossaryExtractorAgent`, `GlossaryTermTranslatorAgent`, `GlossaryDefinitionSimplifierAgent` (`glossary/agents/`) | `glossary/main.py`, `translate_main.py`, `simplify_main.py` |
+| plain constructor / `from_yaml` argument | `CommaLabelerAgent` (`labeling/wiring.py::build_comma_labeler_agent`, also via `guidami_ai_patente/providers/live_labeling_stack_provider.py`), `RetrievalJudgeAgent` (`retrieval_evaluation/wiring.py`), `RoadSignDescriberAgent` + `NormReferenceDescriberAgent` (`guidami_ai_patente_ingestor/orchestrators/quiz_flows.py`, threaded through `cli/commands/prepare.py`) | see below |
 
-Grilling this design surfaced that the full scope (three real provider adapters, a
-discriminated-union config, a new `google-genai` dependency) is speculative today:
-**OpenRouter is the only provider actually in use**, and Ollama/Gemini's real
-constraints (credentials, exact model catalog, whether Ollama runs locally at all)
-aren't known yet. Building against guessed constraints risks a second rewrite once
-they're known for real.
+`OpenRouterProvider(api_key=...)` is built by **three duplicated helpers** named
+`build_open_router_provider` (`labeling/wiring.py`, `glossary/wiring.py`,
+`guidami_ai_patente_ingestor/cli/wiring.py`), called from **seven composition roots**:
+`retrieval_evaluation/main.py`, `retrieval_evaluation/label_main.py`, `glossary/main.py`,
+`glossary/translate_main.py`, `glossary/simplify_main.py`,
+`guidami_ai_patente_ingestor/cli/main.py`, and (through pywire)
+`OpenRouterProviderComponent`.
 
-This document therefore scopes **Phase 1 only**: build the seam (an
-`LlmModelProvider` port `BaseAgent` depends on instead of a concrete pydantic-ai
-`Provider` type) and move every current consumer onto it, with **one adapter,
-`OpenRouterModelProvider`, wrapping exactly today's behavior** — no config-driven
-provider switching yet, no new dependency, no discriminated union. Phase 1 is a
-behavior-preserving refactor: after it ships, every agent still talks to OpenRouter,
-identically, just through the new seam. **Phase 2** (a second real adapter — Ollama,
-Gemini, or whatever is actually chosen) is explicitly deferred to a future
-brainstorming session, once its real constraints are known; this document does not
-plan it.
+The user's underlying goal is being able to move agents off OpenRouter later (native
+Google Gemini API, Ollama). pydantic-ai's `GoogleProvider`/`GoogleModel` do not
+implement `Provider[AsyncOpenAI]` — they wrap a `google-genai` client — so a third
+`isinstance` branch in `BaseAgent` cannot absorb them. The provider needs a real seam.
+
+## Scope — Phase 1
+
+Build the seam — an `LlmModelProvider` port that `BaseAgent` depends on instead of a
+concrete pydantic-ai `Provider` type — and move every current consumer onto it, with
+**two adapters wrapping exactly today's two behaviors**:
+
+- `OpenRouterModelProvider` — today's `_is_openrouter` branch; the only one wired in
+  production.
+- `OllamaModelProvider` — today's generic `OpenAIChatModel` branch (ADR 0019),
+  preserved as an adapter rather than dropped.
+
+Phase 1 is a behavior-preserving refactor: after it ships, every agent still talks to
+OpenRouter, identically, through the new seam. **Phase 2** (config-driven provider
+selection, a Gemini adapter, a provider factory) is deferred to its own grilling pass —
+see `2026-09-25-llm-provider-decoupling-phase2-draft.md`.
 
 ## Goals (Phase 1)
 
-- `BaseAgent` stops knowing anything about concrete provider types (`OpenRouterProvider`,
-  `isinstance` dispatch, the `"openrouter/"` prefix parsing) — it depends on the
+- `BaseAgent` stops knowing concrete provider types (`OpenRouterProvider`,
+  `isinstance` dispatch, `"openrouter/"` prefix parsing) — it depends on the
   `LlmModelProvider` port only.
-- Provider becomes an explicit, typed concept (`LLMProvider` enum) wherever it's
-  recorded, decoupled from the model name string (YAML, DB columns).
-- `llm_call_logs`/`labeling_runs` gain an explicit `model_provider`/`judge_model_provider`
-  column (named to mirror the existing `model`/`judge_model` columns they sit next to);
-  `judge_model_provider` joins the judge's configuration-epoch key alongside `judge_model`.
-- Adding a second provider later (Phase 2) touches only `commons/ai/llm_providers/` (one
-  new adapter file + one new `match` arm in the factory) — zero changes to `BaseAgent`
-  or to any of the nine agent classes.
+- Provider becomes an explicit, typed concept (`LlmProvider` enum) wherever it is
+  recorded, decoupled from the model-name string (YAML, DB columns, API provenance).
+- `llm_call_logs`/`labeling_runs` gain `model_provider`/`judge_model_provider`
+  (mirroring `model`/`judge_model`); `judge_model_provider` becomes a full member of the
+  judge's configuration epoch.
+- Adding a provider later means one new adapter in `commons/ai/llm_providers/providers/`
+  plus composition-root wiring — **zero** changes to `BaseAgent` or any agent class.
+  (It does *not* mean zero call-site changes: Phase 2's config-driven selection changes
+  what the composition roots construct. That is expected; the seam protects the agents,
+  not the entry points.)
 
 ## Non-goals (Phase 1)
 
-- Implementing Ollama or Gemini support — deferred to Phase 2, planned separately when
-  actually needed.
-- Config-driven provider switching — with one real provider there is nothing to switch
-  between yet; the factory exists as the extension seam, not as a dispatcher.
-- Per-agent provider selection (confirmed out of scope regardless of phase: provider is
-  one global choice per deployment, shared by every agent).
+- A Gemini adapter, the `google-genai` dependency, config-driven provider switching,
+  a provider factory/dispatcher (D1) — all Phase 2.
+- Wiring `OllamaModelProvider` into any composition root — it exists as a preserved,
+  tested capability, not an active deployment option.
+- Per-agent provider selection (out of scope regardless of phase: provider is one
+  global choice per deployment, shared by every agent).
+- **Embeddings.** `EmbeddingClientConfig.model_name = "openrouter/openai/text-embedding-3-small"`
+  (and `configs/ingestor_config.yaml`) goes through litellm, where the `openrouter/`
+  prefix is litellm's own routing syntax and must stay. Untouched.
+- A provider-neutral model identifier. `model_name` stays in the active provider's
+  own catalog syntax (see §9).
 - Any change to which agents exist or what they do.
+
+## Decisions (from grilling, 2026-09-29)
+
+- **D1 — No factory in Phase 1.** Each composition root constructs
+  `OpenRouterModelProvider(OpenRouterConfig)` directly and hands it on as
+  `LlmModelProvider`. A single-branch `create_llm_model_provider(config: OpenRouterConfig)`
+  would shield nothing: Phase 2 changes its signature (`OpenRouterConfig` →
+  `LlmProviderSettings`) and every call site anyway. The factory is born in Phase 2,
+  when there is a real `match` to write. The three `build_open_router_provider`
+  helpers are deleted.
+- **D2 — Ollama kept as an adapter.** `OllamaModelProvider` preserves ADR 0019's
+  capability through the new port. A new ADR records the port and marks ADR 0019
+  superseded (its `isinstance` dispatch is gone; its capability lives on in the adapter).
+- **D3 — API exposes the provider.** `provenance.judge_model_provider` is added next to
+  `provenance.judge_model` on the explanation response (additive). Without it, the
+  stripped `judge_model` would lose information today's string carries.
+- **D4 — Migration rewrites history in both tables.** The `openrouter/` prefix is
+  stripped from both `labeling_runs.judge_model` (mandatory: the epoch must match the
+  stripped YAML) and `llm_call_logs.model` (one format per column; the information
+  moves to `model_provider`).
+- **D5 — The epoch reads the provider from the wired adapter.** The epoch's
+  `judge_model_provider` is `llm_model_provider.provider` of the adapter actually in
+  use — never a separately declared config value that could diverge from it.
+- **D6 — `judge_model_provider` is fully part of the epoch.** In the unique index, in
+  `LabelingEpoch`, and in both SQL epoch matches. Rationale: every real provider switch
+  also changes `judge_model` (model ids are catalog-specific, §9), so excluding the
+  provider would not avoid invalidation in practice — it would only make run-level
+  provenance lie (new labelings attached to a run created under another provider) and
+  leave the index and the lookup queries disagreeing.
 
 ## Design
 
-### 1. `LLMProvider` enum
+### 1. `LlmProvider` enum
 
 `src/commons/ai/llm_providers/enums/llm_provider.py`:
 
 ```python
-class LLMProvider(StrEnum):
-    OPENROUTER = auto()
+class LlmProvider(StrEnum):
+    """The backend an LLM call is routed through.
+
+    Values are written explicitly, not via `auto()`: they are persisted in
+    `llm_call_logs.model_provider` and `labeling_runs.judge_model_provider` and returned
+    by the API, so they are an external contract that must survive a member rename.
+    """
+
+    OPENROUTER = "openrouter"
+    OLLAMA = "ollama"
 ```
 
-Lives inside `commons/ai/llm_providers/`, not `domain/enums/` — mirrors the existing
-`commons/ai/observability/enums/tracker_backend.py` precedent (`TrackerBackend`),
-where an enum owned by one `commons/ai/` subsystem lives inside that subsystem's own
-`enums/` package rather than the project-wide `domain/enums/`. Re-exported from
-`commons/ai/llm_providers/enums/__init__.py` and then from the package's own
-`__init__.py`, per the project's enum conventions (one file per enum, `StrEnum` +
-`auto()`). A single member today; Phase 2 adds to this file when a second provider is
-actually implemented — it is not pre-populated with placeholder members that have no
-adapter behind them.
+Named `LlmProvider` (not `LLMProvider`) to match the project's `Llm*` casing
+(`LlmCallTracker`, `LlmCallLogEntity`). Lives inside `commons/ai/llm_providers/`, not
+`domain/enums/`, following the `commons/ai/observability/enums/tracker_backend.py`
+precedent. One member per adapter that exists — no placeholder members.
 
 ### 2. Provider credentials — unchanged
 
-`commons/configs/open_router_config.py`'s `OpenRouterConfig` (`BaseSettings`,
-`env_prefix="OPENROUTER_"`, `api_key: SecretStr`) is **not touched** in Phase 1: it
-already does exactly what's needed (self-loads OpenRouter's one credential from env).
-No discriminated union, no new config class — that machinery is only justified once a
-second provider variant actually exists to discriminate against, which is Phase 2's
-job.
+`commons/configs/open_router_config.py::OpenRouterConfig` is not touched. It is still
+loaded at each entry point and injected into `OpenRouterModelProvider`.
+`OllamaModelProvider` takes a plain `base_url: str` (no config class: nothing loads it
+from the environment in Phase 1).
 
-### 3. `LlmModelProvider` port + `OpenRouterModelProvider` adapter
-
-Mirrors the existing `commons/ai/observability/` shape (`protocols/` + a package-root
-factory function, see `LlmCallTracker`/`build_llm_call_tracker`), but names the
-implementation folder `providers/` rather than `services/` — every file in it is
-literally a `*ModelProvider` implementing the port, so the folder name says what's in
-it instead of falling back to the generic default:
+### 3. `LlmModelProvider` port + adapters
 
 ```
 commons/ai/llm_providers/
+├── __init__.py                         # re-exports LlmProvider, LlmModelProvider, both adapters
 ├── enums/
-│   └── llm_provider.py             # LLMProvider(StrEnum)
+│   ├── __init__.py
+│   └── llm_provider.py                 # LlmProvider(StrEnum)
 ├── protocols/
-│   └── llm_model_provider.py       # LlmModelProvider(Protocol)
-├── providers/
-│   └── open_router_model_provider.py
-└── model_provider_factory.py       # create_llm_model_provider(config) -> LlmModelProvider
+│   ├── __init__.py
+│   └── llm_model_provider.py           # LlmModelProvider(Protocol)
+└── providers/
+    ├── __init__.py
+    ├── open_router_model_provider.py   # OpenRouterModelProvider
+    └── ollama_model_provider.py        # OllamaModelProvider
 ```
 
-Named `llm_providers/`, not `providers/`, to avoid colliding with
-`guidami_ai_patente/providers/` — that directory already holds pywire `@provider`
-components of various kinds (`LabelingStackProvider`, `PostgresClientProvider`,
-`OpenRouterProviderComponent`), and a second same-named `providers/` package under
-`commons/ai/` would be ambiguous at a glance.
+Named `llm_providers/` to avoid colliding with `guidami_ai_patente/providers/` (pywire
+`@provider` components). The implementation folder is `providers/` rather than
+`services/`: every file in it is literally a `*ModelProvider` implementing the port.
 
 ```python
 class LlmModelProvider(Protocol):
-    """Port BaseAgent uses to build its pydantic-ai Model, provider-agnostically."""
+    """Port `BaseAgent` uses to build its pydantic-ai model, provider-agnostically."""
 
-    def create_model(self, model_name: str) -> Model: ...
-    def create_model_settings(self, base: ModelSettings) -> ModelSettings: ...
+    @property
+    def provider(self) -> LlmProvider: ...
 
     @property
     def expects_cost(self) -> bool: ...
 
-    @property
-    def provider(self) -> LLMProvider: ...
+    def create_model(self, model_name: str) -> Model: ...
+
+    def create_model_settings(self, base: ModelSettings) -> ModelSettings: ...
 ```
 
-`OpenRouterModelProvider` is constructed with the existing `OpenRouterConfig`
-(injected dependency) and owns exactly the logic `BaseAgent` currently inlines:
+**`OpenRouterModelProvider(config: OpenRouterConfig)`** — owns exactly the logic
+`BaseAgent` inlines today:
 
-- `create_model` → `OpenRouterModel(model_name, provider=OpenRouterProvider(api_key=self._config.api_key.get_secret_value()))`.
-- `create_model_settings` → attaches `openrouter_usage={"include": True}` (today's
-  `OpenRouterModelSettings` branch) — unconditionally, since this adapter is only ever
-  built for OpenRouter.
-- `expects_cost` → `True`.
-- `provider` → `LLMProvider.OPENROUTER` (a constant on this class).
+- Builds **one** `pydantic_ai.providers.openrouter.OpenRouterProvider` in `__init__`
+  and reuses it for every `create_model` call — preserving today's "one shared
+  provider (one HTTP client) per process" property of `OpenRouterProviderComponent`.
+- `create_model(model_name)` → `OpenRouterModel(model_name, provider=self._provider)`.
+- `create_model_settings(base)` → `OpenRouterModelSettings(**base, openrouter_usage={"include": True})`.
+- `expects_cost` → `True`; `provider` → `LlmProvider.OPENROUTER`.
 
-`model_provider_factory.py`:
+**`OllamaModelProvider(base_url: str)`** — today's generic branch:
 
-```python
-def create_llm_model_provider(config: OpenRouterConfig) -> LlmModelProvider:
-    return OpenRouterModelProvider(config)
-```
-
-A single-branch function today, deliberately — it is the one place Phase 2 extends
-(`match` on a discriminated config once a second variant exists) without touching any
-caller. Callers already depend on `LlmModelProvider`, not on `OpenRouterModelProvider`
-directly, so that future extension is additive.
+- Builds one `pydantic_ai.providers.ollama.OllamaProvider(base_url=base_url)` in
+  `__init__`.
+- `create_model(model_name)` → `OpenAIChatModel(model_name, provider=self._provider)`.
+- `create_model_settings(base)` → `base` unchanged.
+- `expects_cost` → `False`; `provider` → `LlmProvider.OLLAMA`.
 
 ### 4. `BaseAgent` refactor
 
 `BaseAgent.__init__`/`from_yaml` replace `provider: Provider[AsyncOpenAI]` with
-`llm_model_provider: LlmModelProvider`. Removed entirely: `_is_openrouter`,
-`_create_model`'s isinstance branch (delegates to `llm_model_provider.create_model`),
-`_create_model_settings`'s isinstance branch (delegates to
-`llm_model_provider.create_model_settings`), and `_parse_model_name` (dead: YAML no
-longer carries a prefix to strip). `TrackedCaller.expects_cost` and the new
-`TrackedCaller.model_provider` are read from `llm_model_provider.expects_cost`/`.provider`.
+`llm_model_provider: LlmModelProvider` (same position: an injected dependency, before
+the optional `file_reader`/`tracker`). Removed: `_is_openrouter`, both `isinstance`
+branches, `_parse_model_name`, and the `openai`/`OpenRouter*`/`OpenAIChatModel`/
+`Provider` imports. `_create_model` delegates to `llm_model_provider.create_model`;
+`_create_model_settings` builds the base settings (temperature, timeout, max_tokens) and
+passes them through `llm_model_provider.create_model_settings`.
+`TrackedCaller.expects_cost` and the new `TrackedCaller.model_provider` are read from
+the port. `AgentConfig.model_name`'s `description` example drops the `openrouter/`
+prefix.
 
 ### 5. Call sites
 
-The five hardcoded `OpenRouterProvider(api_key=...)` construction sites become:
-
-```python
-llm_model_provider = create_llm_model_provider(OpenRouterConfig())  # pyright: ignore[reportCallIssue]
-```
-
-`guidami_ai_patente`'s pywire `OpenRouterProviderComponent` is renamed/replaced by
-`LlmModelProviderComponent` (`@provider`), `Autowired[OpenRouterConfig]`, calling the
-factory in its `__init__` and exposing `.model_provider: LlmModelProvider` instead of
-`.provider: OpenRouterProvider`. Every one of the nine agent classes updates its
-`Autowired[OpenRouterProviderComponent]` field to
-`Autowired[LlmModelProviderComponent]` and its `super().__init__(provider=...)` call
-to `super().__init__(llm_model_provider=self.<field>.model_provider)`.
-`labeling/wiring.py::build_comma_labeler_agent`'s `provider: OpenRouterProvider`
-parameter becomes `llm_model_provider: LlmModelProvider`.
+| Where | Change |
+|---|---|
+| `labeling/wiring.py`, `glossary/wiring.py`, `guidami_ai_patente_ingestor/cli/wiring.py` | delete `build_open_router_provider` |
+| 6 CLI composition roots (`retrieval_evaluation/main.py`, `label_main.py`, `glossary/main.py`, `translate_main.py`, `simplify_main.py`, `guidami_ai_patente_ingestor/cli/main.py`) | `llm_model_provider = OpenRouterModelProvider(<OpenRouterConfig instance>)` |
+| `glossary/{main,translate_main,simplify_main}.py` | `register_instance(llm_model_provider, as_type=LlmModelProvider)` instead of `Provider[AsyncOpenAI]` |
+| `glossary/agents/*` (3) | `provider_dep: Autowired[LlmModelProvider]`; constructor override param `llm_model_provider: LlmModelProvider \| None` |
+| `guidami_ai_patente/providers/open_router_provider_component.py` | replaced by `llm_model_provider_component.py::LlmModelProviderComponent` (`@provider`, `Autowired[OpenRouterConfig]`, exposes `.model_provider: LlmModelProvider`) |
+| `guidami_ai_patente/agents/*` (4) | `Autowired[LlmModelProviderComponent]`, `super().__init__(llm_model_provider=self.<field>.model_provider, ...)` |
+| `guidami_ai_patente/providers/live_labeling_stack_provider.py` | autowires `LlmModelProviderComponent` instead of `OpenRouterProviderComponent` |
+| `labeling/wiring.py::build_comma_labeler_agent`, `CommaLabelerAgent.__init__` | `llm_model_provider: LlmModelProvider` |
+| `retrieval_evaluation/wiring.py`, `quiz_flows.py`, `cli/commands/prepare.py` | parameter type/name `llm_model_provider: LlmModelProvider` |
+| `guidami_ai_patente/api/app.py` | import/registration list updated for the renamed component |
 
 ### 6. Observability
 
-- `TrackedCaller` and `LlmCallLogEntity` gain `model_provider: LLMProvider`.
+- `TrackedCaller` and `LlmCallLogEntity` gain `model_provider: LlmProvider`.
 - `PydanticAILlmCallRecorder` copies `model_provider` from `TrackedCaller` into the
-  entity, the same way it already copies `model`.
-- `BaseAgent` populates `TrackedCaller.model_provider` from `llm_model_provider.provider`.
+  entity, the same way it copies `model`.
+- `PostgresLlmCallLogRepository` persists the new column.
 
-### 7. `LabelingEpoch` / judge configuration epoch
+### 7. Judge configuration epoch
 
-`LabelingEpoch` gains a 7th field, `judge_model_provider: LLMProvider`, next to
-`judge_model`. `LabelingEpochMapper.from_config_to_epoch` gains a `provider:
-LLMProvider` parameter (no longer derivable from `agent_config`, since YAML no longer
-carries it), which populates `judge_model_provider` — both call sites
-(`retrieval_evaluation/label_main.py`,
-`guidami_ai_patente/providers/labeling_stack_provider.py`) already have access to the
-`LlmModelProvider`/`LLMProvider` value at that point.
+- `LabelingEpoch` gains `judge_model_provider: LlmProvider` next to `judge_model`
+  (seven fields; docstring updated).
+- `LabelingEpochMapper.from_config_to_epoch(config, agent_config, provider: LlmProvider)`
+  — the provider is no longer derivable from `agent_config` (D5).
+  - API: `LabelingStackProvider` autowires `LlmModelProviderComponent` and passes
+    `.model_provider.provider`. It still constructs no LLM client itself — it reads the
+    identity of the one the component already owns, which keeps ADR 0029's
+    "identity only" split.
+  - Batch: `retrieval_evaluation/label_main.py` passes `llm_model_provider.provider`.
+- `LabelingRunEntity` gains `judge_model_provider: LlmProvider`; `LabelingRunMapper`
+  copies it from the epoch.
+- `golden_set_write_repository.py`: `_RUN_COLUMNS` gains `judge_model_provider`, and the
+  live-run lookup after `INSERT … ON CONFLICT DO NOTHING` filters on it (D6) — without
+  it, two live runs differing only by provider would both match and `rows[0]` would be
+  arbitrary.
+- `golden_set_read_repository.py` precedence query adds `r.judge_model_provider = %s`
+  to the non-validated branch, and selects `r.judge_model_provider` for provenance.
 
-### 8. Database
+### 8. API provenance (D3)
+
+`CurrentLabeling` gains `judge_model_provider: LlmProvider`; `ExplanationMapper` copies
+it; the explanation response schema (`guidami_ai_patente/api/schemas/quiz_explanation.py`)
+gains `judge_model_provider: str` next to `judge_model`. Additive for clients;
+`guidami_ai_patente_bot` does not read provenance. `judge_model`'s *value* loses the
+`openrouter/` prefix — a visible, intended change.
+
+### 9. Database — `db/migrations/0025_llm_provider_decoupling.sql`
+
+Follows the established shape of `0011`/`0012`: wrapped in a single `BEGIN`/`COMMIT`,
+idempotent, with a commented `information_schema` equivalence check for diffing a
+migrated database against a fresh `init.sql` one (`database.md`, Migrations).
 
 ```sql
+BEGIN;
+
 ALTER TABLE llm_call_logs ADD COLUMN IF NOT EXISTS model_provider TEXT;
 UPDATE llm_call_logs
 SET model_provider = 'openrouter', model = regexp_replace(model, '^openrouter/', '')
-WHERE model LIKE 'openrouter/%';
+WHERE model_provider IS NULL;
 ALTER TABLE llm_call_logs ALTER COLUMN model_provider SET NOT NULL;
 
 ALTER TABLE labeling_runs ADD COLUMN IF NOT EXISTS judge_model_provider TEXT;
 UPDATE labeling_runs
-SET judge_model_provider = 'openrouter', judge_model = regexp_replace(judge_model, '^openrouter/', '')
-WHERE judge_model LIKE 'openrouter/%';
+SET judge_model_provider = 'openrouter',
+    judge_model = regexp_replace(judge_model, '^openrouter/', '')
+WHERE judge_model_provider IS NULL;
 ALTER TABLE labeling_runs ALTER COLUMN judge_model_provider SET NOT NULL;
 
 DROP INDEX IF EXISTS uq_labeling_runs_live_config;
-CREATE UNIQUE INDEX IF NOT EXISTS uq_labeling_runs_live_config
+CREATE UNIQUE INDEX uq_labeling_runs_live_config
     ON labeling_runs (judge_model, judge_model_provider, prompt_version, candidate_variant,
                       dense_k, text_k, lexeme_fields)
     WHERE origin = 'live';
+
+COMMIT;
 ```
 
-Written as a new idempotent file under `db/migrations/`, applied directly to the dev
-stack (path 2 per `CLAUDE.md`), with the matching shape mirrored into `db/init.sql`
-for future fresh environments. Every existing row is provably `openrouter` (the only
-provider ever used), so the backfill is a safe, full rewrite — no ambiguous rows. No
-explicit `BEGIN`/`COMMIT` wrapping: existing migrations (`0011`, `0012`) don't use one
-either, so this follows the established convention.
+The backfill keys on `*_provider IS NULL` (not on the prefix), so every pre-existing
+row — all of which were produced through OpenRouter, the only provider ever wired — is
+tagged, and a re-run touches nothing. Stripping is 1:1, so it cannot create a
+unique-index collision among existing live runs. `db/init.sql` gets the same final
+shape (both columns `NOT NULL`, the seven-column index).
 
-### 9. YAML
+**Deployment order** (dev stack, path 2 per `CLAUDE.md`): stop `serve`/`telegram-bot`
+and any running CLI → apply the migration → start the new code. Old code running
+against the migrated schema would fail inserting `llm_call_logs` (NOT NULL, no default)
+and would look up `openrouter/…` epochs that no longer exist. Verify row counts of
+`llm_call_logs` and `labeling_runs` are unchanged, and that
+`count(*) WHERE model LIKE 'openrouter/%'` is 0 afterwards.
 
-All 9 files under `configs/agents/` lose the `"openrouter/"` prefix from
-`model_name` (e.g. `openrouter/google/gemini-2.5-flash-lite` →
-`google/gemini-2.5-flash-lite`). Mechanical, no field added — `AgentConfig` itself is
-unchanged; the provider concept never lived on `AgentConfig` and still doesn't.
+### 10. YAML
 
-**Important caveat**: the string that remains after stripping the prefix is still in
-*OpenRouter's own* catalog syntax (`vendor/model`) — it is not a provider-neutral
-identifier, and this design does not attempt to make it one. Native Gemini's id for
-that same model is `gemini-2.5-flash-lite` (no `google/`), and Ollama has an entirely
-different tag catalog with no Gemini models at all. Whichever Phase 2 provider gets
-chosen, `model_name` in each YAML will need updating to that provider's own naming at
-that time — this design only removes the *code* duplication (five hardcoded wiring
-call sites, nine agent classes' constructor calls) and the DB/log ambiguity between
-"provider" and "model name" baked into one string.
+All 11 files under `configs/agents/` lose the `openrouter/` prefix from `model_name`
+(`openrouter/google/gemini-2.5-flash-lite` → `google/gemini-2.5-flash-lite`).
+`AgentConfig` is unchanged; the provider concept never lives on it.
+
+**Caveat**: the remaining string is still OpenRouter's catalog syntax (`vendor/model`),
+not a provider-neutral id. Native Gemini calls the same model `gemini-2.5-flash-lite`;
+Ollama has an entirely different catalog. Any future provider switch rewrites
+`model_name` too — which is also why D6 costs nothing extra in invalidations.
+
+## Clean-architecture review
+
+- **Dependency Rule / DIP**: `commons/ai/agents` (policy: how an agent runs) depends on
+  the `LlmModelProvider` abstraction in `commons/ai/llm_providers/protocols/`; the
+  concrete adapters (details) depend on pydantic-ai and `OpenRouterConfig`. Composition
+  roots (entry points, pywire providers) are the only place a concrete adapter is
+  named — Main as the dirtiest component (ch26).
+- **OCP**: a new provider is a new adapter; `BaseAgent` and the 11 agents are closed to
+  that change.
+- **ISP**: the port has exactly the four members `BaseAgent` consumes.
+- **SRP**: provider-specific model construction/settings/cost semantics move out of
+  `BaseAgent` into one class per provider (one reason to change each).
+- **Deliberate deviation**: the port's signatures expose pydantic-ai types (`Model`,
+  `ModelSettings`). Accepted: `BaseAgent` is itself a pydantic-ai adapter living in the
+  same ring, so the port is a seam *within* the framework-adapter layer, not a boundary
+  between domain and framework. Abstracting pydantic-ai away would be a different,
+  much larger project.
+- **Component coupling**: no cycle — `llm_providers` depends on `commons.configs` and
+  pydantic-ai only; `agents` and `observability` depend on `llm_providers` (the enum),
+  never the reverse.
 
 ## Testing
 
-- `OpenRouterModelProvider` — unit test asserting `create_model`/`create_model_settings`/
-  `expects_cost`/`provider` match today's `BaseAgent._create_model`/
-  `_create_model_settings`/`_is_openrouter` behavior exactly (this is a
-  behavior-preserving refactor; the test is the proof).
-- `model_provider_factory` — asserts `create_llm_model_provider` returns an
-  `OpenRouterModelProvider`.
-- `BaseAgent` — existing tests swap their `Provider[AsyncOpenAI]` double for an
-  `LlmModelProvider` double; behavior (model/settings built, `expects_cost`/
-  `model_provider` wired into `TrackedCaller`) re-verified against the new seam.
-- `LabelingEpochMapper` — existing epoch tests gain `judge_model_provider` as an
-  input/output assertion.
-- Migration — integration test (or manual verification per `CLAUDE.md`'s migration
-  section) confirming row counts unchanged and every backfilled row satisfies
-  `model_provider = 'openrouter' AND model NOT LIKE 'openrouter/%'`.
-- End-to-end: run the existing quiz/labeling flows against the real dev stack after
-  the refactor and confirm `llm_call_logs`/`labeling_runs` rows look identical to
-  pre-refactor ones except for the new `model_provider`/`judge_model_provider` columns
-  and the stripped `model`/`judge_model` prefix.
+- `OpenRouterModelProvider` / `OllamaModelProvider` — unit tests: model class
+  (`OpenRouterModel` / `OpenAIChatModel`), model name passed through verbatim,
+  settings (`openrouter_usage` attached / base unchanged), `expects_cost`, `provider`,
+  and that repeated `create_model` calls share one pydantic-ai provider instance.
+- `BaseAgent` — existing tests swap their `OpenRouterProvider`/`OllamaProvider` doubles
+  for the two adapters (or an `LlmModelProvider` double); re-verify model/settings
+  built, and `expects_cost`/`model_provider` wired into `TrackedCaller`.
+- `PydanticAILlmCallRecorder` / `PostgresLlmCallLogRepository` — `model_provider`
+  copied and persisted (integration test against the test stack).
+- `LabelingEpochMapper` — `judge_model_provider` is taken from the argument.
+- `golden_set_write_repository` (integration) — two live runs with identical epoch
+  fields except `judge_model_provider` get distinct ids, and each lookup returns its own.
+- `golden_set_read_repository` (integration) — a non-validated labeling under a
+  different `judge_model_provider` is not current; a human-validated one still wins
+  regardless of provider; provenance carries `judge_model_provider`.
+- Explanation API — response carries `provenance.judge_model_provider`.
+- Wiring — `LlmModelProviderComponent` resolves a singleton `OpenRouterModelProvider`;
+  glossary container resolves agents with the registered `LlmModelProvider`.
+- Migration — manual verification per §9 (row counts, no remaining prefix,
+  `information_schema` equivalence vs fresh `init.sql`).
 
 ## Risks / edge cases
 
-- **Nine call sites, not five**: the actual diff touches every agent class, not just
-  the five provider-construction points — sized accordingly in the implementation
-  plan (Section "Call sites" above enumerates all nine).
-- **Epoch invalidation timing**: adding `judge_model_provider` to the unique index does
-  **not** invalidate anything at migration time — the backfill sets every historical
-  row's `judge_model_provider` to `'openrouter'`, matching the still-active provider
-  right after this ships. It only invalidates cached `live` labelings the first time
-  the provider is genuinely switched later (Phase 2) — the same mechanism as any other
-  epoch-field change, and the correct, intended behavior at that point.
+- **Blast radius**: 11 agents, 7 composition roots, 4 pass-through modules, 3 wiring
+  mechanisms — sized accordingly in the plan.
+- **Epoch invalidation**: none at migration time — every historical run is backfilled
+  to `openrouter` with its prefix stripped, matching the stripped YAML the new code
+  derives. A future provider switch invalidates non-validated cached labelings (via
+  both `judge_model` and `judge_model_provider`); human-validated labelings keep
+  winning regardless (FR-8 precedence).
+- **Deploy skew**: old code against the new schema fails loudly (see §9 deployment
+  order) — acceptable for a single-user dev stack, but the order must be followed.
+- **ADR 0019 superseded**: must be marked as such in the same branch, with the new ADR
+  pointing to the adapter that carries its capability.
