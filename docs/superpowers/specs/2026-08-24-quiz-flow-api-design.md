@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0012 |
-| **Status** | in-progress |
+| **Status** | implemented |
 | **Date** | 2026-08-24 |
 | **Discussion log** | — (brainstormed in-session, 2026-08-24) |
 | **Supersedes / superseded by** | Supersedes `docs/superpowers/specs/2026-08-19-quiz-check-endpoint-design.md` (mis-numbered "Spec 0011", never signed off — see AD-17). Amends the golden-set decision AD-6 of `2026-08-19-retrieval-golden-set-design.md` (the real Spec 0011) — see AD-10. |

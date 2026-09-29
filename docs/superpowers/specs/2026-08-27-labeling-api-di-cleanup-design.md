@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0013 |
-| **Status** | draft |
+| **Status** | implemented |
 | **Date** | 2026-08-27 |
 | **Discussion log** | — (discussed live in conversation) |
 | **Supersedes / superseded by** | Supersedes ADR 0024's workaround (removes it, does not merely amend it) |

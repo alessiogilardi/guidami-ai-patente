@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Id** | 0009 |
-| **Status** | draft |
+| **Status** | in-progress |
 | **Date** | 2026-08-05 |
 | **Discussion log** | docs/superpowers/specs/discussions/corpus-missing-sources.md |
 | **Supersedes / superseded by** | — |

@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Id** | 0011 |
-| **Status** | in-progress |
+| **Status** | implemented |
 | **Date** | 2026-08-19 |
 | **Discussion log** | docs/superpowers/specs/discussions/golden-set-retrieval-evaluation.md |
 | **Supersedes / superseded by** | — |

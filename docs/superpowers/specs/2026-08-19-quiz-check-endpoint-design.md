@@ -14,10 +14,10 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0011 |
-| **Status** | draft |
+| **Status** | superseded |
 | **Date** | 2026-08-19 |
 | **Discussion log** | docs/superpowers/specs/discussions/quiz-check-endpoint.md |
-| **Supersedes / superseded by** | — |
+| **Supersedes / superseded by** | Superseded by `2026-08-24-quiz-flow-api-design.md` (Spec 0012, AD-17) |
 
 ## Problem & Motivation
 

@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0016 |
-| **Status** | ready |
+| **Status** | implemented |
 | **Date** | 2026-09-17 |
 | **Discussion log** | docs/superpowers/specs/discussions/bot-persistent-session.md |
 | **Supersedes / superseded by** | — |

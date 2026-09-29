@@ -14,7 +14,7 @@ in-progress → implemented once the Definition of Done is verified.
 | | |
 |---|---|
 | **Id** | 0014 |
-| **Status** | draft |
+| **Status** | implemented |
 | **Date** | 2026-09-04 |
 | **Discussion log** | — (discussed live in conversation) |
 | **Supersedes / superseded by** | — |
