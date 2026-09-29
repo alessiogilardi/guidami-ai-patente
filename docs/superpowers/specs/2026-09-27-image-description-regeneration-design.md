@@ -126,6 +126,10 @@ A new `InvalidateStaleLabelingsStep`, placed immediately before `StoreQuizStep` 
 - For every question whose image's description changed (or which had none before and
   now has one), deletes its `quiz_labelings` rows **not** validated by a human
   (`validated_at IS NULL`), with their `quiz_comma_labels`.
+- The deletion covers labelings of **every** run origin (`live` and `batch`): golden-set
+  labelings (spec 0011) computed against a superseded description are invalidated too.
+  Decided by the user on 2026-09-29: the golden set was never human-validated, so it is
+  expendable; it is regenerated with `label-golden-set` when needed.
 - Human-validated labelings on a changed image are never deleted; the step logs a
   `warning` with their count.
 - Logs an `info` line with the number of changed images and deleted labelings; does
@@ -172,6 +176,20 @@ store then fails, the only effect is deleted labelings that get recomputed on de
 Precedent for the ingestor writing labeling tables: `ingest reset knowledge` already
 truncates `quiz_labelings`/`quiz_comma_labels`.
 
+### AD-4: The ingestor owns its own invalidation repository (clean-architecture check)
+
+Checked against `clean-architecture` on 2026-09-29. Dependency Rule holds:
+`InvalidateStaleLabelingsStep` (`orchestrators/`) → `QuizLabelingInvalidationRepository`
+(`repositories/`), never the reverse. SRP: invalidation is a distinct reason to change
+from storing quiz rows, hence its own step (AD-3). The step writes tables owned by the
+labeling context; rather than depend on `labeling`'s repositories (which would couple the
+ingestor to that package's internals and to the epoch machinery of ADR 0027), the
+ingestor gets a small repository of its own, scoped to the two statements it needs.
+Trade-off: the `quiz_labelings`/`quiz_comma_labels` table knowledge is duplicated in a
+second place; accepted because the step needs only a delete keyed on `validated_at IS
+NULL`, and `quiz_comma_labels` rows go away via `ON DELETE CASCADE`. Precedent:
+`ingest reset knowledge` already writes these tables from the ingestor.
+
 ## Data Model
 
 No schema change. `quiz_images.description`, `quiz_labelings.validated_at` and the
@@ -186,7 +204,8 @@ src/guidami_ai_patente_ingestor/
 ├── agents/mappers/road_sign_describer_mapper.py                   # FR-1
 ├── orchestrators/quiz_flows.py              # FR-4 new factory; FR-5 step wired in
 ├── orchestrators/steps/quiz/invalidate_stale_labelings_step.py    # FR-5 (new)
-├── repositories/…                           # FR-5 read of current descriptions + delete
+├── repositories/db/quiz_labeling_invalidation_repository.py       # FR-5 (new): read current
+│                                            #   quiz_images.description + delete unvalidated labelings
 └── cli/commands/prepare.py                  # FR-4 flags, dry-run rendering
 ```
 
@@ -263,3 +282,6 @@ hard images (21137, 20568, …), review the descriptions, then run on all images
 ## Changelog
 
 - **2026-09-27** — Initial draft from the brainstorming session.
+- **2026-09-29** — FR-5 explicitly covers batch (golden-set) labelings, per user decision;
+  named the invalidation repository in Package Structure; added AD-4 (clean-architecture
+  check).
