@@ -41,6 +41,8 @@ def _render_index_dry_run(args: argparse.Namespace) -> None:
             steps = [
                 "quiz_indexing: LoadJsonStep(enriched/quiz) -> map_to_embedded (dedup) -> "
                 "embed_quiz_variants -> map_to_quiz_entity -> map_to_quiz_images -> "
+                "invalidate_stale_labelings (deletes non-validated labelings of images "
+                "whose description changed) -> "
                 "store_quiz (tables=quiz_questions,quiz_question_embeddings,quiz_images, "
                 "upsert + reconciliation)",
             ]

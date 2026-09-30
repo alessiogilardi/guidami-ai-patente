@@ -53,6 +53,7 @@ def _make_postgres_client() -> PostgresClient:
     client.execute_many_returning.side_effect = lambda query, params_seq: [
         (i + 1,) for i in range(len(params_seq))
     ]
+    client.fetch.return_value = []  # no stored description, no labelings
     return client
 
 
@@ -90,8 +91,8 @@ def test_build_with_validate_true_does_not_raise() -> None:
     assert isinstance(_build(validate=True), Flow)
 
 
-def test_flow_has_six_steps_in_order() -> None:
-    """Load -> MapToEmbedded -> EmbedVariants -> MapToQuizEntity -> MapToQuizImages -> Store.
+def test_flow_has_seven_steps_in_order() -> None:
+    """Seven steps, ending MapToQuizImages -> InvalidateStaleLabelings -> Store.
 
     T-9: step 3 now embeds every configured variant, not just quiz_metadata.
     """
@@ -102,6 +103,7 @@ def test_flow_has_six_steps_in_order() -> None:
         "embed_quiz_variants",
         "map_to_quiz_entity",
         "map_to_quiz_images",
+        "invalidate_stale_labelings",
         "store_quiz",
     ]
 
@@ -162,9 +164,9 @@ def test_indexing_flow_reports_step_progress(
 
     begin_steps = [args for name, args in progress_recorder.calls if name == "begin_step"]
     end_steps = [args for name, args in progress_recorder.calls if name == "end_step"]
-    assert len(begin_steps) == 6
-    assert len(end_steps) == 6
-    assert [args[1] for args in begin_steps] == [1, 2, 3, 4, 5, 6]
+    assert len(begin_steps) == 7
+    assert len(end_steps) == 7
+    assert [args[1] for args in begin_steps] == [1, 2, 3, 4, 5, 6, 7]
     # Proves the reporter reached the injected EmbeddingService (via EmbedQuizMetadata).
     assert ("begin_items", ("batches", 1)) in progress_recorder.calls
 

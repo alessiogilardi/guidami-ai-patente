@@ -201,3 +201,15 @@ def test_run_index_closes_the_postgres_client_even_when_the_flow_fails(
         run_index(MagicMock(), MagicMock(), args, IndexManifest(entity="quiz"), MagicMock())
 
     assert tracked_postgres_client.closed
+
+
+def test_run_index_quiz_dry_run_mentions_the_invalidation_step(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    args = argparse.Namespace(entity="quiz", dry_run=True)
+
+    from guidami_ai_patente_ingestor.cli.commands.index import run_index
+
+    run_index(MagicMock(), MagicMock(), args, None, progress=MagicMock())
+
+    assert "invalidate_stale_labelings" in capsys.readouterr().out

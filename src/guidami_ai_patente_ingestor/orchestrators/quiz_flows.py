@@ -33,10 +33,15 @@ from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
     LoadJsonStep,
     WriteJsonDirStep,
 )
-from guidami_ai_patente_ingestor.orchestrators.steps.quiz import FilterByImageStep, StoreQuizStep
+from guidami_ai_patente_ingestor.orchestrators.steps.quiz import (
+    FilterByImageStep,
+    InvalidateStaleLabelingsStep,
+    StoreQuizStep,
+)
 from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 from guidami_ai_patente_ingestor.repositories import (
     QuizImageStoreRepository,
+    QuizLabelingInvalidationRepository,
     QuizQuestionEmbeddingStoreRepository,
     QuizQuestionStoreRepository,
 )
@@ -78,7 +83,8 @@ def build_quiz_indexing_flow(
 
     Step mapping:
       `LoadJsonDirStep` → `ApplyStep(map_to_embedded)` → `ApplyStep(embed_quiz_variants)`
-      → `ApplyStep(map_to_quiz_entity)` → `ApplyStep(map_to_quiz_images)` → `StoreQuizStep`
+      → `ApplyStep(map_to_quiz_entity)` → `ApplyStep(map_to_quiz_images)`
+      → `InvalidateStaleLabelingsStep` → `StoreQuizStep`
 
     The `map_to_embedded` step chains two transforms: dedup on the triple
     (normalized text, correct answer, image identity) via
@@ -89,6 +95,10 @@ def build_quiz_indexing_flow(
     representation (AD-7) for every item — one embedding-service call per variant, not
     per question — producing `EmbeddableQuizVariant` rows plus per-variant omission
     counts (`EmbedQuizVariantsResult`), later written by `StoreQuizStep`.
+
+    `InvalidateStaleLabelingsStep` deletes the non-validated labelings of questions whose
+    image description differs from the stored one, before `StoreQuizStep` overwrites it
+    (spec 0023).
 
     Args:
         config: Full ingestor configuration (already loaded at the entry point).
@@ -152,6 +162,16 @@ def build_quiz_indexing_flow(
         output_key=context_keys.QUIZ_IMAGE_ENTITIES,
     )
 
+    invalidate_step = InvalidateStaleLabelingsStep(
+        "invalidate_stale_labelings",
+        QuizLabelingInvalidationRepository(
+            config.quiz_images_table,
+            config.quiz_questions_table,
+            config.quiz_labelings_table,
+            postgres_client,
+        ),
+    )
+
     store_step = StoreQuizStep(
         "store_quiz",
         QuizQuestionStoreRepository(config.quiz_questions_table, postgres_client),
@@ -168,6 +188,7 @@ def build_quiz_indexing_flow(
         .add_step(embed_variants_step)
         .add_step(map_to_quiz_entity_step)
         .add_step(map_to_quiz_images_step)
+        .add_step(invalidate_step)
         .add_step(store_step)
         .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)

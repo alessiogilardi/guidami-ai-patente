@@ -4,6 +4,7 @@ from .db import (
     ArticleCommaStoreRepository,
     ArticleStoreRepository,
     QuizImageStoreRepository,
+    QuizLabelingInvalidationRepository,
     QuizQuestionEmbeddingStoreRepository,
     QuizQuestionStoreRepository,
 )
@@ -12,6 +13,7 @@ __all__ = [
     "ArticleCommaStoreRepository",
     "ArticleStoreRepository",
     "QuizImageStoreRepository",
+    "QuizLabelingInvalidationRepository",
     "QuizQuestionEmbeddingStoreRepository",
     "QuizQuestionStoreRepository",
 ]
