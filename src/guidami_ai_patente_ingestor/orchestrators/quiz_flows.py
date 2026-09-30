@@ -262,6 +262,22 @@ def build_quiz_cleaning_flow(
     return flow
 
 
+def _build_road_sign_describer(
+    config: IngestorConfig,
+    agents_repository: YamlRepository[AgentConfig],
+    open_router_provider: OpenRouterProvider,
+    tracker: LlmCallTracker | None,
+) -> RoadSignDescriberAgent:
+    """Builds the road sign describer agent shared by the enrichment and regeneration flows."""
+    return RoadSignDescriberAgent.from_yaml(
+        "road_sign_describer",
+        agents_repository,
+        open_router_provider,
+        LocalFileSystemClient(config.quiz_images_dir),
+        tracker,
+    )
+
+
 def build_quiz_enrichment_flow(
     config: IngestorConfig,
     layer_resolver: LayerResolverProvider,
@@ -343,13 +359,8 @@ def build_quiz_enrichment_flow(
     agents_repository = YamlRepository(
         AgentConfig, file_system_client=LocalFileSystemClient(config.agents_dir)
     )
-    images_file_reader = LocalFileSystemClient(config.quiz_images_dir)
-    describer = RoadSignDescriberAgent.from_yaml(
-        "road_sign_describer",
-        agents_repository,
-        open_router_provider,
-        images_file_reader,
-        tracker,
+    describer = _build_road_sign_describer(
+        config, agents_repository, open_router_provider, tracker
     )
     norm_describer = NormReferenceDescriberAgent.from_yaml(
         "norm_reference_describer", agents_repository, open_router_provider, tracker=tracker
