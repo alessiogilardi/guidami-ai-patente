@@ -1,10 +1,11 @@
-"""`ingest prepare` dispatch: knowledge cleaning, quiz clean + enrich pair."""
+"""`ingest prepare` dispatch: knowledge cleaning, quiz clean + enrich, image regeneration."""
 
 import argparse
 import logging
 from contextlib import ExitStack
 
 import psycopg
+from flowstep import FlowExecutionError
 from pydantic_ai.providers.openrouter import OpenRouterProvider
 from rich.console import Console
 
@@ -12,14 +13,17 @@ from commons.ai.observability import LlmCallTracker, ObservabilityConfig, build_
 from commons.clients import PostgresClient
 from commons.observability import ProgressReporter
 from guidami_ai_patente_ingestor.configs import IngestorConfig
+from guidami_ai_patente_ingestor.exceptions import UnknownImageError
 from guidami_ai_patente_ingestor.orchestrators import (
     build_knowledge_cleaning_flow,
     build_quiz_cleaning_flow,
     build_quiz_enrichment_flow,
+    build_quiz_image_description_flow,
 )
 from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 
 from .. import wiring
+from ..exceptions import UsageError
 from ..models.run_artifacts import PrepareManifest
 from ..rendering import render_dry_run
 
@@ -39,6 +43,16 @@ def _render_prepare_dry_run(args: argparse.Namespace) -> None:
                 f"WriteJsonDirStep(cleaned/{source})",
             ]
             render_dry_run(console, f"prepare {args.entity}", steps)
+        case "quiz" if getattr(args, "only", None) == "image-descriptions":
+            images: list[str] | None = getattr(args, "image", None)
+            image_filter = ", ".join(images) if images else "all images in use"
+            steps = [
+                "quiz_image_descriptions: LoadJsonDirStep(enriched/quiz) -> "
+                f"FilterByImageStep(images: {image_filter}) -> "
+                "LLM enrich (RoadSignDescriberAgent only) -> "
+                "WriteJsonDirStep(enriched/quiz; image_description + image_analysis only)",
+            ]
+            render_dry_run(console, f"prepare {args.entity} --only image-descriptions", steps)
         case "quiz":
             steps = [
                 "quiz_cleaning: LoadJsonStep(parsed/quiz) -> flatten + dedup -> "
@@ -60,7 +74,11 @@ def dispatch_prepare(
     manifest: PrepareManifest,
     progress: ProgressReporter,
 ) -> None:
-    """Dispatch prepare subcommand: knowledge cleaning only, quiz clean + enrich pair."""
+    """Dispatch prepare subcommand: knowledge cleaning, quiz clean + enrich, or image regeneration.
+
+    Raises:
+        UsageError: if a requested `--image` is used by no enriched quiz.
+    """
     force: bool = args.force
     match args.entity:
         case "knowledge":
@@ -80,6 +98,10 @@ def dispatch_prepare(
             progress.begin_flow("knowledge_cleaning")
             clean_flow.run()
             progress.end_flow()
+        case "quiz" if getattr(args, "only", None) == "image-descriptions":
+            _run_image_descriptions(
+                config, layer_resolver, open_router_provider, args, tracker, manifest, progress
+            )
         case "quiz":
             progress.begin_run(2)
             clean_flow = build_quiz_cleaning_flow(
@@ -106,6 +128,40 @@ def dispatch_prepare(
             progress.begin_flow("quiz_enrichment")
             enrich_flow.run()
             progress.end_flow()
+
+
+def _run_image_descriptions(
+    config: IngestorConfig,
+    layer_resolver: LayerResolverProvider,
+    open_router_provider: OpenRouterProvider,
+    args: argparse.Namespace,
+    tracker: LlmCallTracker,
+    manifest: PrepareManifest,
+    progress: ProgressReporter,
+) -> None:
+    """Runs the image-description regeneration flow (`prepare quiz --only image-descriptions`).
+
+    Raises:
+        UsageError: if a requested `--image` is used by no enriched quiz.
+    """
+    progress.begin_run(1)
+    flow = build_quiz_image_description_flow(
+        config=config,
+        layer_resolver=layer_resolver,
+        open_router_provider=open_router_provider,
+        images=getattr(args, "image", None) or [],
+        tracker=tracker,
+        progress=progress,
+    )
+    manifest.record_flow("quiz_image_descriptions")
+    progress.begin_flow("quiz_image_descriptions")
+    try:
+        flow.run()
+    except FlowExecutionError as exc:
+        if isinstance(exc.original_error, UnknownImageError):
+            raise UsageError(str(exc.original_error)) from exc
+        raise
+    progress.end_flow()
 
 
 def run_prepare(

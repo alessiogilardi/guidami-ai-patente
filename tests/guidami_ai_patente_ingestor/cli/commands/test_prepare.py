@@ -378,3 +378,132 @@ def test_dry_run_emits_no_progress_calls(
     )
 
     assert progress_recorder.calls == []
+
+
+_PREPARE = "guidami_ai_patente_ingestor.cli.commands.prepare"
+
+
+def _image_args(image: list[str] | None = None) -> argparse.Namespace:
+    return argparse.Namespace(
+        entity="quiz", force=False, dry_run=False, only="image-descriptions", image=image
+    )
+
+
+def test_dispatch_prepare_only_image_descriptions_runs_just_the_regeneration_flow() -> None:
+    from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
+
+    flow = MagicMock()
+    manifest = PrepareManifest(entity="quiz", force=False)
+
+    with (
+        patch(f"{_PREPARE}.build_quiz_image_description_flow", return_value=flow) as build,
+        patch(f"{_PREPARE}.build_quiz_cleaning_flow") as cleaning,
+        patch(f"{_PREPARE}.build_quiz_enrichment_flow") as enrichment,
+    ):
+        dispatch_prepare(
+            _make_config_mock(),
+            MagicMock(),
+            MagicMock(),
+            _image_args(["a.jpeg", "b.jpeg"]),
+            tracker=None,
+            manifest=manifest,
+            progress=MagicMock(),
+        )
+
+    flow.run.assert_called_once()
+    cleaning.assert_not_called()
+    enrichment.assert_not_called()
+    assert build.call_args.kwargs["images"] == ["a.jpeg", "b.jpeg"]
+    assert manifest.flows == ["quiz_image_descriptions"]
+
+
+def test_dispatch_prepare_only_image_descriptions_without_image_means_all_images() -> None:
+    from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
+
+    with patch(f"{_PREPARE}.build_quiz_image_description_flow", return_value=MagicMock()) as build:
+        dispatch_prepare(
+            _make_config_mock(),
+            MagicMock(),
+            MagicMock(),
+            _image_args(None),
+            tracker=None,
+            manifest=PrepareManifest(entity="quiz", force=False),
+            progress=MagicMock(),
+        )
+
+    assert build.call_args.kwargs["images"] == []
+
+
+def test_dispatch_prepare_turns_an_unknown_image_into_a_usage_error() -> None:
+    from flowstep import FlowExecutionError
+
+    from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
+    from guidami_ai_patente_ingestor.cli.exceptions import UsageError
+    from guidami_ai_patente_ingestor.exceptions import UnknownImageError
+
+    flow = MagicMock()
+    flow.run.side_effect = FlowExecutionError(
+        "filter_quiz_by_image", UnknownImageError(["nope.jpeg"])
+    )
+
+    with (
+        patch(f"{_PREPARE}.build_quiz_image_description_flow", return_value=flow),
+        pytest.raises(UsageError, match="nope.jpeg"),
+    ):
+        dispatch_prepare(
+            _make_config_mock(),
+            MagicMock(),
+            MagicMock(),
+            _image_args(["nope.jpeg"]),
+            tracker=None,
+            manifest=PrepareManifest(entity="quiz", force=False),
+            progress=MagicMock(),
+        )
+
+
+def test_dispatch_prepare_reraises_other_flow_errors_untouched() -> None:
+    from flowstep import FlowExecutionError
+
+    from guidami_ai_patente_ingestor.cli.commands.prepare import dispatch_prepare
+
+    flow = MagicMock()
+    flow.run.side_effect = FlowExecutionError("describe_images", RuntimeError("boom"))
+
+    with (
+        patch(f"{_PREPARE}.build_quiz_image_description_flow", return_value=flow),
+        pytest.raises(FlowExecutionError),
+    ):
+        dispatch_prepare(
+            _make_config_mock(),
+            MagicMock(),
+            MagicMock(),
+            _image_args(None),
+            tracker=None,
+            manifest=PrepareManifest(entity="quiz", force=False),
+            progress=MagicMock(),
+        )
+
+
+def test_run_prepare_dry_run_only_image_descriptions_touches_nothing(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    from guidami_ai_patente_ingestor.cli.commands.prepare import run_prepare
+
+    args = argparse.Namespace(
+        entity="quiz", force=False, dry_run=True, only="image-descriptions", image=["a.jpeg"]
+    )
+
+    with (
+        patch(f"{_PREPARE}.wiring.build_postgres_client") as postgres,
+        patch(f"{_PREPARE}.build_quiz_image_description_flow") as build,
+    ):
+        run_prepare(
+            _make_config_mock(), MagicMock(), MagicMock(), MagicMock(), args, None, MagicMock()
+        )
+
+    postgres.assert_not_called()
+    build.assert_not_called()
+    out = capsys.readouterr().out
+    assert "quiz_image_descriptions" in out
+    assert "a.jpeg" in out
+    assert "NormReferenceDescriberAgent" not in out

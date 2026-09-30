@@ -14,9 +14,10 @@ from guidami_ai_patente_ingestor.configs import IngestorConfig
 
 from . import wiring
 from .commands import evaluate, index, prepare, reset, status
+from .exceptions import UsageError
 from .logging_setup import configure_logging
 from .models.run_artifacts import EvaluateManifest, IndexManifest, PrepareManifest
-from .parser import build_parser
+from .parser import build_parser, validate_args
 from .rendering.dashboard import LiveDashboard, LogPanelHandler
 
 logger = logging.getLogger(__name__)
@@ -87,6 +88,7 @@ def main() -> None:
 
     parser = build_parser(config)
     args = parser.parse_args(remaining_argv)
+    validate_args(parser, args)
 
     dashboard = _build_dashboard(args)
     writer = configure_logging(
@@ -103,27 +105,34 @@ def main() -> None:
         if writer is not None:
             stack.enter_context(writer)
             logger.info("Logging to %s", writer.log_file)
-        match args.command:
-            case "prepare":
-                open_router_provider = wiring.build_open_router_provider(config)
-                manifest = cast(PrepareManifest, writer.manifest) if writer is not None else None
-                prepare.run_prepare(
-                    config,
-                    observability_config,
-                    layer_resolver,
-                    open_router_provider,
-                    args,
-                    manifest,
-                    progress=progress,
-                )
-            case "index":
-                manifest = cast(IndexManifest, writer.manifest) if writer is not None else None
-                index.run_index(config, layer_resolver, args, manifest, progress=progress)
-            case "reset":
-                reset.run_reset(config, args)
-            case "status":
-                status.run_status(config, layer_resolver, args)
-            case "evaluate":
-                manifest = cast(EvaluateManifest, writer.manifest) if writer is not None else None
-                run_dir = writer.run_dir if writer is not None else None
-                evaluate.run_evaluate(config, args, manifest, run_dir)
+        try:
+            match args.command:
+                case "prepare":
+                    open_router_provider = wiring.build_open_router_provider(config)
+                    manifest = (
+                        cast(PrepareManifest, writer.manifest) if writer is not None else None
+                    )
+                    prepare.run_prepare(
+                        config,
+                        observability_config,
+                        layer_resolver,
+                        open_router_provider,
+                        args,
+                        manifest,
+                        progress=progress,
+                    )
+                case "index":
+                    manifest = cast(IndexManifest, writer.manifest) if writer is not None else None
+                    index.run_index(config, layer_resolver, args, manifest, progress=progress)
+                case "reset":
+                    reset.run_reset(config, args)
+                case "status":
+                    status.run_status(config, layer_resolver, args)
+                case "evaluate":
+                    manifest = (
+                        cast(EvaluateManifest, writer.manifest) if writer is not None else None
+                    )
+                    run_dir = writer.run_dir if writer is not None else None
+                    evaluate.run_evaluate(config, args, manifest, run_dir)
+        except UsageError as exc:
+            parser.error(str(exc))

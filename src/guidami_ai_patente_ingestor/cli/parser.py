@@ -2,7 +2,8 @@
 
 Subcommand structure:
     ingest [--config PATH] prepare knowledge --source <cds|cap> [--force] [--dry-run] [--plain]
-    ingest [--config PATH] prepare quiz [--force] [--dry-run] [--plain]
+    ingest [--config PATH] prepare quiz [--force] [--only image-descriptions [--image FILE]…]
+        [--dry-run] [--plain]
     ingest [--config PATH] index knowledge --source <cds|cap> [--dry-run] [--plain]
     ingest [--config PATH] index quiz [--dry-run] [--plain]
     ingest [--config PATH] reset knowledge [--apply] [--force]
@@ -32,6 +33,10 @@ Commands:
       Clean + enrich the knowledge corpus.
   prepare quiz [--force] [--dry-run] [--plain]
       Clean + enrich the quiz bank.
+  prepare quiz --only image-descriptions [--image FILE]... [--dry-run] [--plain]
+      Regenerate only the image descriptions, from the enriched layer. --image restricts
+      the run to the named image files (repeatable); an unknown name is a usage error.
+      Cannot be combined with --force.
   index knowledge --source <cds|cap> [--dry-run] [--plain]
       Embed + store the knowledge corpus.
   index quiz [--dry-run] [--plain]
@@ -150,6 +155,19 @@ def build_parser(config: IngestorConfig) -> argparse.ArgumentParser:
         default=False,
         help="Re-run even if output already exists.",
     )
+    prep_q.add_argument(
+        "--only",
+        choices=("image-descriptions",),
+        default=None,
+        help="Run just one enrichment: regenerate image descriptions from the enriched layer.",
+    )
+    prep_q.add_argument(
+        "--image",
+        action="append",
+        default=None,
+        metavar="FILE",
+        help="With --only image-descriptions: restrict to this image file (repeatable).",
+    )
     _add_dry_run_flag(prep_q)
     _add_plain_flag(prep_q)
 
@@ -214,3 +232,12 @@ def build_parser(config: IngestorConfig) -> argparse.ArgumentParser:
     _add_plain_flag(eval_r)
 
     return parser
+
+
+def validate_args(parser: argparse.ArgumentParser, args: argparse.Namespace) -> None:
+    """Rejects flag combinations argparse cannot express, exiting with a usage error."""
+    if args.command == "prepare" and args.entity == "quiz":
+        if args.only is not None and args.force:
+            parser.error("--force cannot be combined with --only: regeneration always re-runs")
+        if args.only is None and args.image:
+            parser.error("--image requires --only image-descriptions")

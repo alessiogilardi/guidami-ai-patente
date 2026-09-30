@@ -111,3 +111,62 @@ def test_plain_flag_only_on_monitored_commands() -> None:
         parser.parse_args(["reset", "knowledge", "--plain"])
     with pytest.raises(SystemExit):
         parser.parse_args(["status", "--plain"])
+
+
+def _parse(argv: list[str]):
+    from guidami_ai_patente_ingestor.cli.parser import build_parser, validate_args
+
+    parser = build_parser(_make_config_mock())
+    args = parser.parse_args(argv)
+    validate_args(parser, args)
+    return args
+
+
+def test_prepare_quiz_accepts_only_image_descriptions_with_repeatable_image() -> None:
+    args = _parse(
+        [
+            "prepare",
+            "quiz",
+            "--only",
+            "image-descriptions",
+            "--image",
+            "a.jpeg",
+            "--image",
+            "b.jpeg",
+        ]
+    )
+
+    assert args.only == "image-descriptions"
+    assert args.image == ["a.jpeg", "b.jpeg"]
+
+
+def test_prepare_quiz_without_only_defaults_to_the_full_pair() -> None:
+    args = _parse(["prepare", "quiz"])
+
+    assert args.only is None
+    assert args.image is None
+
+
+def test_prepare_quiz_rejects_unknown_only_value() -> None:
+    with pytest.raises(SystemExit):
+        _parse(["prepare", "quiz", "--only", "everything"])
+
+
+def test_prepare_quiz_only_rejects_force(capsys: pytest.CaptureFixture[str]) -> None:
+    with pytest.raises(SystemExit) as excinfo:
+        _parse(["prepare", "quiz", "--only", "image-descriptions", "--force"])
+
+    assert excinfo.value.code == 2
+    assert "--force" in capsys.readouterr().err
+
+
+def test_prepare_quiz_image_requires_only(capsys: pytest.CaptureFixture[str]) -> None:
+    with pytest.raises(SystemExit) as excinfo:
+        _parse(["prepare", "quiz", "--image", "a.jpeg"])
+
+    assert excinfo.value.code == 2
+    assert "--only" in capsys.readouterr().err
+
+
+def test_validate_args_ignores_commands_without_the_flags() -> None:
+    assert _parse(["index", "quiz"]).command == "index"
