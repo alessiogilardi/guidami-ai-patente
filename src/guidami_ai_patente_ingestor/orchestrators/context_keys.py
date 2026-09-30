@@ -44,3 +44,9 @@ PARSED_QUIZ = "parsed_quiz"  # input: nested quiz bank loaded from the "parsed" 
 CLEANED_QUIZ = "cleaned_quiz"  # cleaning output / enrichment input: list[CleanedQuizModel] flat
 FILTERED_QUIZ = "filtered_quiz"  # FilterAlreadyDoneStep output: elements still to process
 MAPPED_QUIZ = "mapped_quiz"  # cleaned→enriched map output; async-enrichment input
+
+# --- Quiz image-description regeneration (spec 0023) ---
+# Regeneration flow: LoadJsonDirStep (ENRICHED_QUIZ) -> FilterByImageStep -> AsyncApplyStep ->
+#   WriteJsonDirStep.
+IMAGE_QUIZZES = "image_quizzes"  # FilterByImageStep output: quizzes whose image is re-described
+REDESCRIBED_QUIZ = "redescribed_quiz"  # ImageDescriptionEnricherService output: same quizzes

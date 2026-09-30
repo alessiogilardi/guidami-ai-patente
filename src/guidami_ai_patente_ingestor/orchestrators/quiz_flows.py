@@ -1,4 +1,9 @@
-"""Factories for the quiz indexing (SP04) and quiz preparation (SP06, extended by SP09) flows."""
+"""Factories for the quiz indexing, quiz preparation and image-description regeneration flows.
+
+Covers SP04 (indexing), SP06/SP09 (preparation) and spec 0023 (image-description regeneration).
+"""
+
+from collections.abc import Sequence
 
 from flowstep import Flow, FlowBuilder
 from flowstep.steps import ApplyStep, AsyncApplyStep
@@ -28,7 +33,7 @@ from guidami_ai_patente_ingestor.orchestrators.steps.generic import (
     LoadJsonStep,
     WriteJsonDirStep,
 )
-from guidami_ai_patente_ingestor.orchestrators.steps.quiz import StoreQuizStep
+from guidami_ai_patente_ingestor.orchestrators.steps.quiz import FilterByImageStep, StoreQuizStep
 from guidami_ai_patente_ingestor.providers import LayerResolverProvider
 from guidami_ai_patente_ingestor.repositories import (
     QuizImageStoreRepository,
@@ -399,6 +404,107 @@ def build_quiz_enrichment_flow(
         .add_step(filter_step)
         .add_step(map_step)
         .add_step(enrich_step)
+        .add_step(write_step)
+        .add_observer(ProgressFlowObserver(reporter))
+        .build(validate=validate)
+    )
+
+    return flow
+
+
+def build_quiz_image_description_flow(
+    config: IngestorConfig,
+    layer_resolver: LayerResolverProvider,
+    open_router_provider: OpenRouterProvider,
+    images: Sequence[str] = (),
+    validate: bool = False,
+    tracker: LlmCallTracker | None = None,
+    progress: ProgressReporter | None = None,
+) -> Flow:
+    """Assembles the image-description regeneration flow (enriched -> enriched).
+
+    Loads the *whole* enriched layer (never `cleaned`), so grouping by image always sees
+    every question that uses it. Only `ImageDescriptionEnricherService` runs - never the
+    norm-reference enricher - and there is no `FilterAlreadyDoneStep`: regeneration is
+    the point. Only the files of the selected quizzes are rewritten, and only their
+    `image_description`/`image_analysis` change; an image whose description fails keeps
+    its previous text (the enricher's per-image degrade).
+
+    Step mapping:
+      `LoadJsonDirStep` -> `FilterByImageStep` -> `AsyncApplyStep(describe_images)`
+      -> `WriteJsonDirStep`
+
+    Args:
+        config: Full ingestor configuration (already loaded at the entry point).
+        layer_resolver: Resolver mapping (layer, source) -> container directory.
+        open_router_provider: OpenRouter provider injected into the describer agent.
+        images: Image filenames to regenerate; empty regenerates every image in use.
+        validate: If True, runs structural validation of the flow before returning it.
+        tracker: Optional port persisting one `LlmCallLogEntity` per describer call.
+        progress: Optional reporter driving the step/flow bars and the image item bar.
+            Defaults to `NullProgressReporter`.
+
+    Returns:
+        Flow configured and ready for execution.
+
+    Raises:
+        ValueError: if `config.quiz_preparation.output_layer` is not configured.
+    """
+    prep = config.quiz_preparation
+    source = prep.sources[0]
+    reporter: ProgressReporter = progress if progress is not None else NullProgressReporter()
+
+    if prep.output_layer is None:
+        raise ValueError("quiz_preparation.output_layer is not configured")
+
+    file_system_client = LocalFileSystemClient(config.project_root)
+    enriched_repository = JsonRepository.get_instance(
+        EnrichedQuizModel, file_system_client=file_system_client
+    )
+
+    load_step = LoadJsonDirStep(
+        "load_enriched_quiz",
+        prep.output_layer,
+        source,
+        context_keys.ENRICHED_QUIZ,
+        layer_resolver,
+        enriched_repository,
+    )
+    filter_step = FilterByImageStep(
+        "filter_quiz_by_image",
+        context_keys.ENRICHED_QUIZ,
+        context_keys.IMAGE_QUIZZES,
+        images,
+    )
+    agents_repository = YamlRepository(
+        AgentConfig, file_system_client=LocalFileSystemClient(config.agents_dir)
+    )
+    describer = _build_road_sign_describer(
+        config, agents_repository, open_router_provider, tracker
+    )
+    describe_step = AsyncApplyStep(
+        "describe_images",
+        ImageDescriptionEnricherService(
+            config.road_sign_describer_concurrency, describer, reporter
+        ),
+        input_key=context_keys.IMAGE_QUIZZES,
+        output_key=context_keys.REDESCRIBED_QUIZ,
+    )
+    write_step = WriteJsonDirStep(
+        "write_enriched_quiz",
+        prep.output_layer,
+        source,
+        context_keys.REDESCRIBED_QUIZ,
+        _quiz_id,
+        layer_resolver,
+        enriched_repository,
+    )
+
+    flow: Flow = (
+        FlowBuilder("quiz_image_descriptions")
+        .add_step(load_step)
+        .add_step(filter_step)
+        .add_step(describe_step)
         .add_step(write_step)
         .add_observer(ProgressFlowObserver(reporter))
         .build(validate=validate)

@@ -8,6 +8,7 @@ from .progress_flow_observer import ProgressFlowObserver
 from .quiz_flows import (
     build_quiz_cleaning_flow,
     build_quiz_enrichment_flow,
+    build_quiz_image_description_flow,
     build_quiz_indexing_flow,
 )
 
@@ -17,5 +18,6 @@ __all__ = [
     "build_knowledge_indexing_flow",
     "build_quiz_cleaning_flow",
     "build_quiz_enrichment_flow",
+    "build_quiz_image_description_flow",
     "build_quiz_indexing_flow",
 ]
