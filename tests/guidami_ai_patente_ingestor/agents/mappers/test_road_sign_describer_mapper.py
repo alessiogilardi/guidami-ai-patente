@@ -2,6 +2,7 @@
 
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
     QuizContextModel,
+    QuizStatementModel,
     RoadSignDescriberResponse,
 )
 from guidami_ai_patente_ingestor.agents.mappers import RoadSignDescriberMapper
@@ -13,15 +14,20 @@ def _question(
     topic: str = "Segnaletica",
     text: str = "Domanda.",
     image: str | None = "stop.jpeg",
+    correct_answer: bool = True,
 ) -> EnrichedQuizModel:
     return EnrichedQuizModel(
         question_id=1,
         topic=topic,
         number=number,
         text=text,
-        correct_answer=True,
+        correct_answer=correct_answer,
         image=image,
     )
+
+
+def _statement(text: str, correct_answer: bool = True) -> QuizStatementModel:
+    return QuizStatementModel(text=text, correct_answer=correct_answer)
 
 
 def test_from_enriched_quizzes_to_request_collapses_duplicate_topic_text() -> None:
@@ -34,8 +40,8 @@ def test_from_enriched_quizzes_to_request_collapses_duplicate_topic_text() -> No
     )
 
     assert request.contexts == [
-        QuizContextModel(topic="Segnaletica", texts=["Domanda."]),
-        QuizContextModel(topic="Precedenza", texts=["Altra domanda."]),
+        QuizContextModel(topic="Segnaletica", statements=[_statement("Domanda.")]),
+        QuizContextModel(topic="Precedenza", statements=[_statement("Altra domanda.")]),
     ]
 
 
@@ -46,7 +52,10 @@ def test_from_enriched_quizzes_to_request_groups_distinct_texts_under_same_topic
     request = RoadSignDescriberMapper.from_enriched_quizzes_to_request([q1, q2])
 
     assert request.contexts == [
-        QuizContextModel(topic="Segnaletica", texts=["Prima domanda.", "Seconda domanda."]),
+        QuizContextModel(
+            topic="Segnaletica",
+            statements=[_statement("Prima domanda."), _statement("Seconda domanda.")],
+        ),
     ]
 
 
@@ -57,7 +66,7 @@ def test_from_enriched_quizzes_to_request_dedupes_repeated_text_across_topics() 
     request = RoadSignDescriberMapper.from_enriched_quizzes_to_request([q1, q2])
 
     assert request.contexts == [
-        QuizContextModel(topic="Segnaletica", texts=["Testo identico."]),
+        QuizContextModel(topic="Segnaletica", statements=[_statement("Testo identico.")]),
     ]
 
 
@@ -68,8 +77,34 @@ def test_from_enriched_quizzes_to_request_preserves_first_seen_order() -> None:
     request = RoadSignDescriberMapper.from_enriched_quizzes_to_request([q1, q2])
 
     assert request.contexts == [
-        QuizContextModel(topic="B", texts=["Seconda."]),
-        QuizContextModel(topic="A", texts=["Prima."]),
+        QuizContextModel(topic="B", statements=[_statement("Seconda.")]),
+        QuizContextModel(topic="A", statements=[_statement("Prima.")]),
+    ]
+
+
+def test_from_enriched_quizzes_to_request_carries_the_correct_answer() -> None:
+    true_quiz = _question("1", text="Vera.", correct_answer=True)
+    false_quiz = _question("2", text="Falsa.", correct_answer=False)
+
+    request = RoadSignDescriberMapper.from_enriched_quizzes_to_request([true_quiz, false_quiz])
+
+    assert request.contexts == [
+        QuizContextModel(
+            topic="Segnaletica",
+            statements=[_statement("Vera.", True), _statement("Falsa.", False)],
+        )
+    ]
+
+
+def test_from_enriched_quizzes_to_request_keeps_first_label_for_conflicting_duplicate() -> None:
+    """Review Focus 1: identical text with opposite answers collapses to the first-seen one."""
+    first = _question("1", text="Stessa frase.", correct_answer=True)
+    conflicting = _question("2", text="Stessa frase.", correct_answer=False)
+
+    request = RoadSignDescriberMapper.from_enriched_quizzes_to_request([first, conflicting])
+
+    assert request.contexts == [
+        QuizContextModel(topic="Segnaletica", statements=[_statement("Stessa frase.", True)])
     ]
 
 

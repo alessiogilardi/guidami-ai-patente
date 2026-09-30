@@ -4,6 +4,7 @@ from collections.abc import Iterable
 from commons.utils import deduplicate
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
     QuizContextModel,
+    QuizStatementModel,
     RoadSignDescriberRequest,
     RoadSignDescriberResponse,
 )
@@ -31,7 +32,7 @@ class RoadSignDescriberMapper:
 
         Returns:
             `RoadSignDescriberRequest` with one context per distinct topic, each
-            holding its distinct (and globally text-deduplicated) quiz texts.
+            holding its distinct (and globally text-deduplicated) labeled quiz statements.
         """
         unique = deduplicate(questions, key=lambda q: (q.topic, q.text))
         contexts = RoadSignDescriberMapper._from_enriched_quizzes_to_quiz_context(unique)
@@ -69,11 +70,16 @@ class RoadSignDescriberMapper:
     def _from_enriched_quizzes_to_quiz_context(
         questions: Iterable[EnrichedQuizModel],
     ) -> list[QuizContextModel]:
-        contexts: defaultdict[str, list[str]] = defaultdict(list)
+        contexts: defaultdict[str, list[QuizStatementModel]] = defaultdict(list)
         seen_texts: set[str] = set()
         for quiz in questions:
             if quiz.text not in seen_texts:
-                contexts[quiz.topic].append(quiz.text)
+                contexts[quiz.topic].append(
+                    QuizStatementModel(text=quiz.text, correct_answer=quiz.correct_answer)
+                )
                 seen_texts.add(quiz.text)
 
-        return [QuizContextModel(topic=topic, texts=texts) for topic, texts in contexts.items()]
+        return [
+            QuizContextModel(topic=topic, statements=statements)
+            for topic, statements in contexts.items()
+        ]

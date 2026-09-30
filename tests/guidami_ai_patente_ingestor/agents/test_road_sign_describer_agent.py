@@ -20,6 +20,7 @@ from commons.repositories import YamlRepository
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
     QuizContextModel,
+    QuizStatementModel,
     RoadSignDescriberRequest,
     RoadSignDescriberResponse,
 )
@@ -45,7 +46,14 @@ def test_run_sync_returns_road_sign_describer_response(
 ) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
     request = RoadSignDescriberRequest(
-        contexts=[QuizContextModel(topic="Segnaletica", texts=["Cosa indica il segnale?"])]
+        contexts=[
+            QuizContextModel(
+                topic="Segnaletica",
+                statements=[
+                    QuizStatementModel(text="Cosa indica il segnale?", correct_answer=True)
+                ],
+            )
+        ]
     )
 
     agent = RoadSignDescriberAgent.from_yaml(
@@ -73,7 +81,12 @@ def test_run_sync_returns_road_sign_describer_response(
 def test_run_sync_sends_binary_content(agents_dir: YamlRepository, tmp_path: Path) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
     request = RoadSignDescriberRequest(
-        contexts=[QuizContextModel(topic="Segnaletica", texts=["Domanda."])]
+        contexts=[
+            QuizContextModel(
+                topic="Segnaletica",
+                statements=[QuizStatementModel(text="Domanda.", correct_answer=True)],
+            )
+        ]
     )
 
     agent = RoadSignDescriberAgent.from_yaml(
@@ -112,7 +125,12 @@ def test_run_sync_sends_binary_content(agents_dir: YamlRepository, tmp_path: Pat
 def test_run_sync_passes_topic_in_prompt(agents_dir: YamlRepository, tmp_path: Path) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
     request = RoadSignDescriberRequest(
-        contexts=[QuizContextModel(topic="Precedenza", texts=["Domanda sul segnale."])]
+        contexts=[
+            QuizContextModel(
+                topic="Precedenza",
+                statements=[QuizStatementModel(text="Domanda sul segnale.", correct_answer=True)],
+            )
+        ]
     )
 
     agent = RoadSignDescriberAgent.from_yaml(
@@ -151,7 +169,12 @@ def test_render_prompt_with_image_includes_binary_content(
 ) -> None:
     (tmp_path / "stop.jpg").write_bytes(b"\xff\xd8\xff")
     request = RoadSignDescriberRequest(
-        contexts=[QuizContextModel(topic="Segnaletica", texts=["Domanda di test."])]
+        contexts=[
+            QuizContextModel(
+                topic="Segnaletica",
+                statements=[QuizStatementModel(text="Domanda di test.", correct_answer=True)],
+            )
+        ]
     )
 
     agent = RoadSignDescriberAgent.from_yaml(

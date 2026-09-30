@@ -5,44 +5,54 @@ from pydantic import ValidationError
 
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
     QuizContextModel,
+    QuizStatementModel,
     RoadSignDescriberRequest,
 )
+
+
+def _statement(text: str, correct_answer: bool = True) -> QuizStatementModel:
+    return QuizStatementModel(text=text, correct_answer=correct_answer)
 
 
 def test_request_accepts_a_list_of_quiz_contexts() -> None:
     request = RoadSignDescriberRequest(
         contexts=[
-            QuizContextModel(topic="A", texts=["uno"]),
-            QuizContextModel(topic="B", texts=["due"]),
+            QuizContextModel(topic="A", statements=[_statement("uno")]),
+            QuizContextModel(topic="B", statements=[_statement("due")]),
         ]
     )
-    assert request.contexts == [
-        QuizContextModel(topic="A", texts=["uno"]),
-        QuizContextModel(topic="B", texts=["due"]),
-    ]
+    assert [c.topic for c in request.contexts] == ["A", "B"]
+    assert request.contexts[0].statements == [_statement("uno")]
 
 
-def test_request_contexts_block_renders_topic_and_dot_list_of_questions() -> None:
+def test_request_contexts_block_renders_answer_label_before_each_statement() -> None:
     request = RoadSignDescriberRequest(
-        contexts=[QuizContextModel(topic="Segnaletica", texts=["a", "b"])]
+        contexts=[
+            QuizContextModel(
+                topic="Segnaletica",
+                statements=[_statement("a", True), _statement("b", False)],
+            )
+        ]
     )
-    assert request.contexts_block == "Argomento: Segnaletica\nDomande:\n- a\n- b"
+    assert request.contexts_block == ("Argomento: Segnaletica\nDomande:\n- (Vero) a\n- (Falso) b")
 
 
 def test_request_contexts_block_joins_multiple_topics_with_blank_line() -> None:
     request = RoadSignDescriberRequest(
         contexts=[
-            QuizContextModel(topic="A", texts=["uno"]),
-            QuizContextModel(topic="B", texts=["due"]),
+            QuizContextModel(topic="A", statements=[_statement("uno")]),
+            QuizContextModel(topic="B", statements=[_statement("due", False)]),
         ]
     )
     assert request.contexts_block == (
-        "Argomento: A\nDomande:\n- uno\n\nArgomento: B\nDomande:\n- due"
+        "Argomento: A\nDomande:\n- (Vero) uno\n\nArgomento: B\nDomande:\n- (Falso) due"
     )
 
 
 def test_request_contexts_block_is_exposed_in_model_dump() -> None:
-    request = RoadSignDescriberRequest(contexts=[QuizContextModel(topic="A", texts=["a"])])
+    request = RoadSignDescriberRequest(
+        contexts=[QuizContextModel(topic="A", statements=[_statement("a")])]
+    )
     assert "contexts_block" in request.model_dump()
 
 

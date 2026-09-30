@@ -9,6 +9,7 @@ from unittest.mock import MagicMock
 from guidami_ai_patente_ingestor.agents import RoadSignDescriberAgent
 from guidami_ai_patente_ingestor.agents.dto.road_sign_describer import (
     QuizContextModel,
+    QuizStatementModel,
     RoadSignDescriberRequest,
     RoadSignDescriberResponse,
 )
@@ -79,8 +80,14 @@ async def test_enrich_single_call_carries_both_distinct_contexts() -> None:
     request_dto = describer.run.call_args_list[0].args[0]
     assert isinstance(request_dto, RoadSignDescriberRequest)
     assert request_dto.contexts == [
-        QuizContextModel(topic="Segnaletica", texts=["Prima domanda."]),
-        QuizContextModel(topic="Precedenza", texts=["Seconda domanda."]),
+        QuizContextModel(
+            topic="Segnaletica",
+            statements=[QuizStatementModel(text="Prima domanda.", correct_answer=True)],
+        ),
+        QuizContextModel(
+            topic="Precedenza",
+            statements=[QuizStatementModel(text="Seconda domanda.", correct_answer=True)],
+        ),
     ]
 
 
