@@ -238,17 +238,18 @@ class ExplanationService(AsyncUseCase[ExplanationRequest, Explanation]):
         vocabulary_deadline_s = max(
             self.config.explanation_deadline_s - self._VOCABULARY_DEADLINE_MARGIN_S, 0.0
         )
+        variant = self.judge_identity.epoch.candidate_variant
         try:
             async with asyncio.timeout(vocabulary_deadline_s):
                 context = await asyncio.to_thread(
-                    self.questions.find_question_vocabulary_context, number
+                    self.questions.find_question_vocabulary_context, number, variant
                 )
                 assert context is not None  # `execute` already 404'd on an unknown number
                 if context.embedding is None:
                     logger.warning(
-                        "Quiz %s has no text-variant embedding; glossary retrieval is "
-                        "full-text only",
+                        "Quiz %s has no %s embedding; glossary retrieval is full-text only",
                         number,
+                        variant,
                     )
                 db_result, on_demand_result = await asyncio.gather(
                     asyncio.to_thread(

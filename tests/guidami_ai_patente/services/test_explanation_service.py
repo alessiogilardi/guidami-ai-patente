@@ -82,11 +82,15 @@ class _QuestionsDouble:
     vocabulary_context: QuestionVocabularyContext | None = field(
         default_factory=_vocabulary_context
     )
+    vocabulary_calls: list[tuple[str, str]] = field(default_factory=list)
 
     def find_question_context(self, number: str) -> QuestionContext | None:
         return self.context
 
-    def find_question_vocabulary_context(self, number: str) -> QuestionVocabularyContext | None:
+    def find_question_vocabulary_context(
+        self, number: str, variant: str
+    ) -> QuestionVocabularyContext | None:
+        self.vocabulary_calls.append((number, variant))
         return self.vocabulary_context
 
 
@@ -690,10 +694,10 @@ async def test_a_legal_stage_failure_cancels_the_still_running_vocabulary_task()
 
 
 @pytest.mark.asyncio
-async def test_a_missing_text_variant_embedding_logs_a_warning(
+async def test_a_missing_query_embedding_logs_a_warning(
     caplog: pytest.LogCaptureFixture,
 ) -> None:
-    """FR-4: no `text`-variant embedding row means the dense retrieval arm is skipped."""
+    """FR-4: no embedding row for the epoch variant means the dense retrieval arm is skipped."""
     selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
     questions = _QuestionsDouble(
         vocabulary_context=QuestionVocabularyContext(
@@ -706,11 +710,11 @@ async def test_a_missing_text_variant_embedding_logs_a_warning(
             _ReaderDouble(selection), _WriterDouble(responses=[_explained([1])]), questions
         )(ExplanationRequest(number="0001"))
 
-    assert any("no text-variant embedding" in record.message for record in caplog.records)
+    assert any("has no topic_text embedding" in record.message for record in caplog.records)
 
 
 @pytest.mark.asyncio
-async def test_a_present_text_variant_embedding_does_not_log_a_warning(
+async def test_a_present_query_embedding_does_not_log_a_warning(
     caplog: pytest.LogCaptureFixture,
 ) -> None:
     selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
@@ -725,7 +729,7 @@ async def test_a_present_text_variant_embedding_does_not_log_a_warning(
             _ReaderDouble(selection), _WriterDouble(responses=[_explained([1])]), questions
         )(ExplanationRequest(number="0001"))
 
-    assert not any("no text-variant embedding" in record.message for record in caplog.records)
+    assert not any("has no topic_text embedding" in record.message for record in caplog.records)
 
 
 def _candidate_comma(comma_id: int, text: str) -> CandidateComma:
@@ -919,6 +923,19 @@ async def test_the_query_vector_is_looked_up_under_the_epochs_variant() -> None:
     )(ExplanationRequest(number="0001"))
 
     assert labeling_stack.quiz.calls == [("0001", "topic_text", "embedding_3_small")]
+
+
+@pytest.mark.asyncio
+async def test_the_vocabulary_probe_uses_the_epochs_variant() -> None:
+    """The glossary dense arm reads the same variant as comma retrieval, never a literal."""
+    selection = CommaSelection(labeling=_labeling(has_commas=True), commas=(_comma(1),))
+    questions = _QuestionsDouble()
+
+    await _service(
+        _ReaderDouble(selection), _WriterDouble(responses=[_explained([1])]), questions
+    )(ExplanationRequest(number="0001"))
+
+    assert questions.vocabulary_calls == [("0001", "topic_text")]
 
 
 @pytest.mark.asyncio

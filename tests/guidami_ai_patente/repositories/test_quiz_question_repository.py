@@ -255,17 +255,14 @@ def test_the_vocabulary_context_has_no_answer_field(
     bank: PostgresClient, repository: QuizQuestionRepository
 ) -> None:
     """AD-4: no correct_answer anywhere in the returned shape."""
-    context = repository.find_question_vocabulary_context("0001")
+    context = repository.find_question_vocabulary_context("0001", "topic_text")
 
     assert context is not None
     assert "correct_answer" not in type(context).model_fields
 
 
-@pytest.mark.integration
-def test_the_vocabulary_context_reads_the_text_variant_embedding(
-    bank: PostgresClient, repository: QuizQuestionRepository
-) -> None:
-    question_id = bank.fetch(sql.SQL("SELECT id FROM quiz_questions WHERE number = %s"), ["0001"])[
+def _store_embedding(bank: PostgresClient, number: str, variant: str) -> None:
+    question_id = bank.fetch(sql.SQL("SELECT id FROM quiz_questions WHERE number = %s"), [number])[
         0
     ][0]
     bank.execute(
@@ -273,13 +270,33 @@ def test_the_vocabulary_context_reads_the_text_variant_embedding(
             "INSERT INTO quiz_question_embeddings (quiz_question_id, variant, embedding_3_small) "
             "VALUES (%s, %s, %s::vector)"
         ),
-        [question_id, "text", [0.0] * 1536],
+        [question_id, variant, [0.0] * 1536],
     )
 
-    context = repository.find_question_vocabulary_context("0001")
+
+@pytest.mark.integration
+def test_the_vocabulary_context_reads_the_requested_variant_embedding(
+    bank: PostgresClient, repository: QuizQuestionRepository
+) -> None:
+    _store_embedding(bank, "0001", "topic_text")
+
+    context = repository.find_question_vocabulary_context("0001", "topic_text")
 
     assert context is not None
     assert context.embedding is not None
+
+
+@pytest.mark.integration
+def test_the_vocabulary_context_ignores_other_variants(
+    bank: PostgresClient, repository: QuizQuestionRepository
+) -> None:
+    """A stale `text` row must never stand in for the requested variant's vector."""
+    _store_embedding(bank, "0001", "text")
+
+    context = repository.find_question_vocabulary_context("0001", "topic_text")
+
+    assert context is not None
+    assert context.embedding is None
 
 
 @pytest.mark.integration
@@ -287,7 +304,7 @@ def test_the_vocabulary_context_has_no_embedding_when_none_is_stored(
     bank: PostgresClient, repository: QuizQuestionRepository
 ) -> None:
     """FR-4's full-text-only fallback starts here: `embedding` is `None`, not an error."""
-    context = repository.find_question_vocabulary_context("0001")
+    context = repository.find_question_vocabulary_context("0001", "topic_text")
 
     assert context is not None
     assert context.embedding is None
@@ -297,4 +314,4 @@ def test_the_vocabulary_context_has_no_embedding_when_none_is_stored(
 def test_an_unknown_number_has_no_vocabulary_context(
     bank: PostgresClient, repository: QuizQuestionRepository
 ) -> None:
-    assert repository.find_question_vocabulary_context("9999") is None
+    assert repository.find_question_vocabulary_context("9999", "topic_text") is None
